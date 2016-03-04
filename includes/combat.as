@@ -2,6 +2,7 @@
 import classes.Scenes.Areas.HighMountains.Izumi;
 import classes.Scenes.Areas.Mountain.Minotaur;
 import classes.Scenes.Dungeons.D3.Doppleganger;
+import classes.Scenes.Dungeons.D3.DriderIncubus;
 import classes.Scenes.Dungeons.D3.JeanClaude;
 import classes.Scenes.Dungeons.D3.LivingStatue;
 import classes.Scenes.Dungeons.D3.LivingStatueScenes;
@@ -128,7 +129,7 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 	var attacks:Function = normalAttack;
 	var magic:Function = (canUseMagic() ? magicMenu : null);
 	var pSpecials:Function = physicalSpecials;
-    
+	
 	if (monster.findStatusAffect(StatusAffects.AttackDisabled) >= 0) {
 		outputText("\n<b>Chained up as you are, you can't manage any real physical attacks!</b>");
 		attacks = null;
@@ -136,6 +137,19 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 	if (monster.findStatusAffect(StatusAffects.PhysicalDisabled) >= 0) {
 		outputText("<b>  Even physical special attacks are out of the question.</b>");
 		pSpecials = null;
+	}
+	if (player.findStatusAffect(StatusAffects.TaintedMind) >= 0) {
+		addButton(0, "Attack", (monster as DriderIncubus).taintedMindAttackAttempt);
+		addButton(1, "Tease", teaseAttack);
+		addButton(2, "Spells", magic);
+		addButton(3, "Items", inventory.inventoryMenu);
+		addButton(4, "Run", runAway);
+		addButton(5, "P. Specials", (monster as DriderIncubus).taintedMindAttackAttempt);
+		addButton(6, "M. Specials", magicalSpecials);
+		addButton(7, (monster.findStatusAffect(StatusAffects.Level) >= 0 ? "Climb" : "Wait"), wait);
+		addButton(8, "Fantasize", fantasize);
+		var m:DriderIncubus = monster as DriderIncubus;
+		if (!m.goblinFree) addButton(9, "Goblin", m.freeGoblin);
 	}
 	if (player.findStatusAffect(StatusAffects.KnockedBack) >= 0) {
 		outputText("\n<b>You'll need to close some distance before you can use any physical attacks!</b>");
@@ -206,7 +220,9 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		addButton(6, "M. Specials", magicalSpecials);
 		addButton(7, (monster.findStatusAffect(StatusAffects.Level) >= 0 ? "Climb" : "Wait"), wait);
 		addButton(8, "Fantasize", fantasize);
-		if (CoC_Settings.debugBuild && !debug) addButton(9, "Inspect", debugInspect);
+		//if (CoC_Settings.debugBuild && !debug) addButton(9, "Inspect", debugInspect);
+		m = monster as DriderIncubus;
+		if (!m.goblinFree) addButton(9, "Goblin", m.freeGoblin);
 	}
 }
 
@@ -1425,7 +1441,7 @@ private function combatStatusesUpdate():void {
 	var oldOutfit:String = "";
 	var changed:Boolean = false;
 	//Reset menuloc
-//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
+	//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 	hideUpDown();
 	if(player.findStatusAffect(StatusAffects.Sealed) >= 0) {
 		//Countdown and remove as necessary
@@ -1433,6 +1449,31 @@ private function combatStatusesUpdate():void {
 			player.addStatusValue(StatusAffects.Sealed,1,-1);
 			if(player.statusAffectv1(StatusAffects.Sealed) <= 0) player.removeStatusAffect(StatusAffects.Sealed);
 			else outputText("<b>One of your combat abilities is currently sealed by magic!</b>\n\n");
+		}
+	}
+	if (player.findStatusAffect(StatusAffects.TaintedMind) >= 0) {
+		player.addStatusValue(StatusAffects.TaintedMind, 1, 1);
+		if (player.statusAffectv1(StatusAffects.TaintedMind) <= 0)
+		{
+			player.removeStatusAffect(StatusAffects.TaintedMind);
+			outputText("Some of the drider’s magic fades, and you heft your [weapon] with a grin. No more of this ‘fight like a demon’ crap!");
+		}
+		else
+		{
+			outputText("There is a thin film of filth layered upon your mind, latent and waiting. The drider said something about fighting like a demon. Is this supposed to interfere with your ability to fight?\n\n");
+		}
+	}
+	if (player.findStatusAffect(StatusAffects.PurpleHaze) >= 0) {
+		player.addStatusValue(StatusAffects.PurpleHaze, 1, -1);
+		if (playerStinger.statusAffectv1(StatusAffects.PurpleHaze) <= 0)
+		{
+			player.removeStatusAffect(StatusAffects.PurpleHaze);
+			player.removeStatusAffect(StatusAffects.Blind);
+			outputText("The swirling mists that once obscured your vision part, allowing you to see your foe once more! <b>You are no longer blinded!</b>\n\n");
+		}
+		else
+		{
+			outputText("Your vision is still clouded by swirling purple mists bearing erotic shapes. You are effectively blinded and a little turned on by the display.");
 		}
 	}
 	monster.combatRoundUpdate();
@@ -1482,7 +1523,7 @@ private function combatStatusesUpdate():void {
 	}
 	if(player.findStatusAffect(StatusAffects.UBERWEB) >= 0)
 		outputText("<b>You're pinned under a pile of webbing!  You should probably struggle out of it and get back in the fight!</b>\n\n", false);
-	if (player.findStatusAffect(StatusAffects.Blind) >= 0 && monster.findStatusAffect(StatusAffects.Sandstorm) < 0) 
+	if (player.findStatusAffect(StatusAffects.Blind) >= 0 && monster.findStatusAffect(StatusAffects.Sandstorm) < 0 && player.findStatusAffect(StatusAffects.PurpleHaze) < 0) 
 	{
 		if (player.findStatusAffect(StatusAffects.SheilaOil) >= 0) 
 		{
@@ -1707,6 +1748,33 @@ private function combatStatusesUpdate():void {
 		outputText("The feeling of the tight, leather straps holding tightly to your body while exposing so much of it turns you on a little bit more.\n\n", false);
 		dynStats("lus", 2);
 	}
+	// Drider incubus venom
+	if (player.findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0)
+	{
+		if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 41) {
+			outputText("You negate the effects of the drider incubus’ venom with your knowledge of medicine!\n\n", false);
+			
+			player.str += player.statusAffectv2(StatusAffects.DriderIncubusVenom);
+			player.removeStatusAffect(StatusAffects.DriderIncubusVenom);
+			kGAMECLASS.mainView.statsView.showStatUp('str');
+		}
+		else
+		{
+			player.addStatusValue(StatusAffects.DriderIncubusVenom, 1, -1);
+			if (player.statusAffectv1(StatusAffects.DriderIncubusVenom) <= 0)
+			{
+				player.str += player.statusAffectv2(StatusAffects.DriderIncubusVenom);
+				player.removeStatusAffect(StatusAffects.DriderIncubusVenom);
+				kGAMECLASS.mainView.statsView.showStatUp('str');
+				outputText("The drider incubus’ venom wanes, the effects of the poision weakening as strength returns to your limbs!\n\n");
+			}
+			else
+			{
+				outputText("The demonic drider managed to bite you, infecting you with his strength-draining poison!\n\n");
+			}
+		}
+	}
+	
 	regeneration(true);
 	if(player.lust >= 100) doNext(endLustLoss);
 	if(player.HP <= 0) doNext(endHpLoss);

@@ -25,6 +25,7 @@ package classes.Scenes.Dungeons.D3
 		public var livingStatue:LivingStatueScenes = new LivingStatueScenes();
 		public var succubusGardener:SuccubusGardenerScenes = new SuccubusGardenerScenes();
 		public var hermCentaur:HermCentaurScenes = new HermCentaurScenes();
+		public var driderIncubus:DriderIncubusScenes = new DriderIncubusScenes();
 		
 		public function D3() 
 		{
@@ -679,6 +680,16 @@ package classes.Scenes.Dungeons.D3
 			incubusMechanic.meetAtElevator();
 			
 			return false;
+		}
+		
+		private function throneRoom():Boolean
+		{
+			if (flags[kFLAGS.DRIDERINCUBUS_DEFEATED] == 0)
+			{
+				driderIncubus.encounterDriderIncbutt();
+				return true;
+			}
+			
 		}
 	}
 }

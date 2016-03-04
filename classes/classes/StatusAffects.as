@@ -298,7 +298,9 @@ package classes
 		public static const ShowerDotEffect:CombatStatusAffect = mk2("Shower Dot Effect");
 		public static const GardenerSapSpeed:CombatStatusAffect = mk2("Sap Speed");
 		public static const VineHealUsed:CombatStatusAffect = mk2("Vine Heal Used");
-
+		public static const DriderIncubusVenom:CombatStatusAffect = mk2("Drider Incubus Venom");
+		public static const TaintedMind:CombatStatusAffect = mk2("Tainted Mind");
+		public static const PurpleHaze:CombatStatusAffect = mk2("Purple Haze");
 		/**
 		 * Creates non-combat status affect
 		 */

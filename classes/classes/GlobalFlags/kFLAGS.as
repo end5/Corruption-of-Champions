@@ -1266,11 +1266,11 @@ public static const BEE_GIRL_COMBAT_LOSSES:int                                  
 public static const KATHERINE_MILK_OPTIONS:int                                      = 1258;
 public static const SCYLLA_FURRY_FOURSOME_COUNT:int                                 = 1259;
 public static const SCYLLA_SMALLCOCK_INTRO:int		                                = 1260; // Player has had the initial lil' dick intro version with scylla
-public static const UNKNOWN_FLAG_NUMBER_01261:int                                   = 1261;
-public static const UNKNOWN_FLAG_NUMBER_01262:int                                   = 1262;
-public static const UNKNOWN_FLAG_NUMBER_01263:int                                   = 1263;
-public static const UNKNOWN_FLAG_NUMBER_01264:int                                   = 1264;
-public static const UNKNOWN_FLAG_NUMBER_01265:int                                   = 1265;
+public static const DRIDERINCUBUS_DEFEATED:int                                   = 1261;
+public static const DRIDERINCUBUS_KILLED:int                                   = 1262;
+public static const MITZI_RECRUITED:int                                   = 1263;
+public static const MITZI_FUCKED:int                                   = 1264;
+public static const DRIDERINCUBUS_FUCKED:int                                   = 1265;
 public static const UNKNOWN_FLAG_NUMBER_01266:int                                   = 1266;
 public static const UNKNOWN_FLAG_NUMBER_01267:int                                   = 1267;
 public static const UNKNOWN_FLAG_NUMBER_01268:int                                   = 1268;

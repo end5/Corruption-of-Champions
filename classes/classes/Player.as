@@ -1617,6 +1617,12 @@ use namespace kGAMECLASS;
 
 		public function clearStatuses(visibility:Boolean):void
 		{
+			if (findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0)
+			{
+				str += statusAffectv2(StatusAffects.DriderIncubusVenom);
+				removeStatusAffect(StatusAffects.DriderIncubusVenom);
+				kGAMECLASS.mainView.statsView.showStatUp('str');
+			}
 			while(findStatusAffect(StatusAffects.Web) >= 0) {
 				spe += statusAffectv1(StatusAffects.Web);
 				kGAMECLASS.mainView.statsView.showStatUp( 'spe' );

@@ -122,34 +122,33 @@ package classes.Scenes.Dungeons.D3
 			
 			game.dynStats("lus+", 8 + (player.lib / 10) + (player.sens / 10));
 
-	if (player.lust < 30) outputText("\n\nYou close your mouth tight and endure the shimmering shower, trying your damnedest to resist the effects of this insidious liquid.  Wherever it strikes you, it vanishes soon after, absorbed directly into your body.");
-	else if (player.lust < 40) outputText("\n\nYour heart beats faster.");
-	else if (player.lust < 50) outputText("\n\nYour cheeks color as you try not to imagine how you could fuck such a beast.");
-	else if (player.lust < 60) outputText("\n\nYour blink, but find your eyes staying closed a moment longer than you intended, visions of yourself suckling down the pink sweetness occupying your mind.");
-	else if (player.lust < 70) 
-	{
-		outputText("\n\nYou groan in disappointment when you realize what's going to happen, but as soon as you're slicked with the aphrodisiac,");
-		if (player.hasCock()) outputText(" [eachCock] awakens, filling itself towards full erection.");
-		else if (player.hasVagina()) outputText(" a wet heat answers in your loins, growing more insistent from moment to moment.");
-		else outputText(" your [asshole] tingles, craving something to fill it.");
-	}
-	else if (player.lust < 80) 
-	{
-		outputText("\n\nYou sigh and try to gain a better position during the pink rain");
-		if (player.hasCock()) outputText(" ignoring the stiffening pressure of [eachCock]");
-		else outputText(" ignoring the increasing wetness of your inner [armor]");
-		outputText(". It's getting harder to think straight with all this desire welling up inside you.  It isn't for a few moments that you realize you tongue is hanging out and drooling all over youself.  Gods, you want to fuck!");
-	}
-	else if (player.lust < 90)
-	{
-		outputText("\n\nPanting feverishly, you try to ignore the blush-colored downfall, but it's a futile gesture.  It makes your " + player.skinFurScales() + " burn hot, wicking inside you with devilish efficiency to stoke the fires of your lust beyond normal limits.");
-		if (player.hasCock()) outputText("  Pre begins to dribble from your hot-and-ready cum-slit, eager to pour out in a deluge of sperm.");
-		else if (player.hasVagina()) outputText("  A flood of sopping moisture dribbles down your [legs], the proof of your unholy desire to breed.");
-		outputText(" You NEED to fuck soon.  You can barely contain yourself!");
-	}
-	else if (player.lust < 100) outputText("\n\nMoaning out loud, you smear the stuff across your [chest] as it sprinkles you, the mounting desire almost at your limit.  You want to touch yourself SO BADLY, but you know that if you do, you'll wind up a mare to this centaur, perhaps forever.  You have to resist!  You can't fall victim to this... alluring creature.");
-	else outputText(" Sinking to your knees, you start trying to tear your way out of your [armor].  You don't care about winning anymore - fucking this woman... this beast... that's all that matters.  You don't care how she takes you, as long as you get to cum all over her!");
-	
+			if (player.lust < 30) outputText("\n\nYou close your mouth tight and endure the shimmering shower, trying your damnedest to resist the effects of this insidious liquid.  Wherever it strikes you, it vanishes soon after, absorbed directly into your body.");
+			else if (player.lust < 40) outputText("\n\nYour heart beats faster.");
+			else if (player.lust < 50) outputText("\n\nYour cheeks color as you try not to imagine how you could fuck such a beast.");
+			else if (player.lust < 60) outputText("\n\nYour blink, but find your eyes staying closed a moment longer than you intended, visions of yourself suckling down the pink sweetness occupying your mind.");
+			else if (player.lust < 70) 
+			{
+				outputText("\n\nYou groan in disappointment when you realize what's going to happen, but as soon as you're slicked with the aphrodisiac,");
+				if (player.hasCock()) outputText(" [eachCock] awakens, filling itself towards full erection.");
+				else if (player.hasVagina()) outputText(" a wet heat answers in your loins, growing more insistent from moment to moment.");
+				else outputText(" your [asshole] tingles, craving something to fill it.");
+			}
+			else if (player.lust < 80) 
+			{
+				outputText("\n\nYou sigh and try to gain a better position during the pink rain");
+				if (player.hasCock()) outputText(" ignoring the stiffening pressure of [eachCock]");
+				else outputText(" ignoring the increasing wetness of your inner [armor]");
+				outputText(". It's getting harder to think straight with all this desire welling up inside you.  It isn't for a few moments that you realize you tongue is hanging out and drooling all over youself.  Gods, you want to fuck!");
+			}
+			else if (player.lust < 90)
+			{
+				outputText("\n\nPanting feverishly, you try to ignore the blush-colored downfall, but it's a futile gesture.  It makes your " + player.skinFurScales() + " burn hot, wicking inside you with devilish efficiency to stoke the fires of your lust beyond normal limits.");
+				if (player.hasCock()) outputText("  Pre begins to dribble from your hot-and-ready cum-slit, eager to pour out in a deluge of sperm.");
+				else if (player.hasVagina()) outputText("  A flood of sopping moisture dribbles down your [legs], the proof of your unholy desire to breed.");
+				outputText(" You NEED to fuck soon.  You can barely contain yourself!");
+			}
+			else if (player.lust < 100) outputText("\n\nMoaning out loud, you smear the stuff across your [chest] as it sprinkles you, the mounting desire almost at your limit.  You want to touch yourself SO BADLY, but you know that if you do, you'll wind up a mare to this centaur, perhaps forever.  You have to resist!  You can't fall victim to this... alluring creature.");
+			else outputText(" Sinking to your knees, you start trying to tear your way out of your [armor].  You don't care about winning anymore - fucking this woman... this beast... that's all that matters.  You don't care how she takes you, as long as you get to cum all over her!");
 		}
 		
 		private function arouseSpellCharge():void
