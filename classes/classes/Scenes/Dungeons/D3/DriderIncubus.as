@@ -7,6 +7,7 @@ package classes.Scenes.Dungeons.D3
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.CockTypesEnum;
 	import classes.StatusAffects;
+	import classes.PerkLib;
 
 	public class DriderIncubus extends AbstractSpiderMorph
 	{
@@ -57,6 +58,7 @@ package classes.Scenes.Dungeons.D3
 		}
 		
 		private var _goblinFree:Boolean = false;
+		public function get goblinFree():Boolean { return _goblinFree; }
 		public function set goblinFree(v:Boolean):void
 		{
 			if (v != _goblinFree)
@@ -126,7 +128,7 @@ package classes.Scenes.Dungeons.D3
 			else
 			{
 				var opts:Array = [arouseSpell, arouseSpell, purpleHaze];
-				if (player.findStatusAffect(StatusAffects.TaintedMind) < 0)) opts.push(taintedMind);
+				if (player.findStatusAffect(StatusAffects.TaintedMind) < 0) opts.push(taintedMind);
 				opts[rand(opts.length)]();
 			}
 		}
@@ -204,6 +206,8 @@ package classes.Scenes.Dungeons.D3
 		
 		private function bite():void
 		{
+			var amount:Number;
+			
 			//Inflicts venom that reduces strength.
 			if (player.findStatusAffect(StatusAffects.Stunned) >= 0 || (player.spe <= 1 && player.findStatusAffect(StatusAffects.Web) >= 2))
 			{
@@ -216,7 +220,7 @@ package classes.Scenes.Dungeons.D3
 					player.createStatusAffect(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
 				}					
 				
-				var amount:Number = 15;
+				amount = 15;
 				
 				if (player.str - amount < 1)
 				{
@@ -261,7 +265,7 @@ package classes.Scenes.Dungeons.D3
 						player.createStatusAffect(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
 					}					
 					
-					var amount:Number = 15;
+					amount = 15;
 					
 					if (player.str - amount < 1)
 					{
@@ -417,7 +421,7 @@ package classes.Scenes.Dungeons.D3
 		public function taintedMindAttackAttempt():void
 		{
 			outputText("You ready an attack, but find your hands groping your own body instead. Somehow the demon’s magic has made it impossible to strike at him, crossing wires that weren’t meant to be crossed. Frowning, you look down at your more aroused form, determined not to fall for this a second time.");
-			dynStats("lus", 10);
+			game.dynStats("lus", 10);
 		}
 		
 		//On same round timer as physical stun

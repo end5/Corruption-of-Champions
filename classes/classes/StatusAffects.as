@@ -301,6 +301,9 @@ package classes
 		public static const DriderIncubusVenom:CombatStatusAffect = mk2("Drider Incubus Venom");
 		public static const TaintedMind:CombatStatusAffect = mk2("Tainted Mind");
 		public static const PurpleHaze:CombatStatusAffect = mk2("Purple Haze");
+		public static const MinotaurKingMusk:CombatStatusAffect = mk2("Minotaur King Musk");
+		public static const MinotaurKingsTouch:CombatStatusAffect = mk2("Minotaur Kings Touch");
+		
 		/**
 		 * Creates non-combat status affect
 		 */

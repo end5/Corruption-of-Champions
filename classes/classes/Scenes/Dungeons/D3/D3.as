@@ -26,6 +26,7 @@ package classes.Scenes.Dungeons.D3
 		public var succubusGardener:SuccubusGardenerScenes = new SuccubusGardenerScenes();
 		public var hermCentaur:HermCentaurScenes = new HermCentaurScenes();
 		public var driderIncubus:DriderIncubusScenes = new DriderIncubusScenes();
+		public var minotaurKing:MinotaurKingScenes = new MinotaurKingScenes();
 		
 		public function D3() 
 		{
@@ -689,7 +690,17 @@ package classes.Scenes.Dungeons.D3
 				driderIncubus.encounterDriderIncbutt();
 				return true;
 			}
+			else if (flags[kFLAGS.MINOTAURKING_DEFEATED] == 0)
+			{
+				minotaurKing.encounterMinotaurKing();
+				return true;
+			}
+			else if (flags[kFLAGS.LETHICE_DEFEATED] == 0)
+			{
+				return true;
+			}
 			
+			return false;
 		}
 	}
 }

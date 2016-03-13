@@ -3,6 +3,10 @@ package classes.Scenes.Dungeons.D3
 	import classes.BaseContent;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Appearance;
+	import classes.Items.WeaponLib;
+	import classes.StatusAffects;
+	import classes.PerkLib;
+	import classes.PregnancyStore;
 
 	public class DriderIncubusScenes extends BaseContent
 	{
@@ -19,6 +23,8 @@ package classes.Scenes.Dungeons.D3
 		public function spooderbuttGetsANewCockSleeve(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
 			clearOutput();
+			
+			var m:DriderIncubus = monster as DriderIncubus;
 
 			//Because I ran out of steam for writing more!
 			outputText("\n\nThe floor of Lethice’s throne room isn’t as cold as you would have thought against your");
@@ -46,7 +52,7 @@ package classes.Scenes.Dungeons.D3
 			outputText(" If only you could move!");
 			outputText("\n\nKinarial easily passes you to his human hands, tucking you under a shoulder");
 			if (!player.isTaur() && !player.isDrider()) outputText(" and across the top portion of his spidery back");
-			if ((monster as DriderIncubus).goblinFree) outputText(" while his goblin slave remounts his dick");
+			if (m.goblinFree) outputText(" while his goblin slave remounts his dick");
 			outputText(". <i>“I must confess, I wondered what Lethice would choose to do with such a prize. Would she try to turn you into a loyal demonic footsoldier or break you into a beast of burden, suitable only to serve our whims and salacious desires?”</i> He skitters through the throng of spectating demons. <i>“Time to find out.”</i>");
 			outputText("\n\nA deathly silence falls over the assembled corruptors and their slaves while you are carried to the throne at the end of the hall. A gigantic minotaur and his big-breasted cow-slave even make way for Kinariel.");
 
@@ -83,7 +89,7 @@ package classes.Scenes.Dungeons.D3
 			outputText(". You’re drowning in those infinitely deep eyes, aware for once that even a champion cannot hold a candle to an immortal devourer of souls.");
 			outputText("\n\nThe pink-skinned queen lazy jostles her chalice of pink crystals, nodding. <i>“You see now, don’t you? The truth of it... You never had a chance against me. Your foolish crusade was as unimportant as the scrabbling of an ant, destined only to carry you to your inevitable fate.”</i> She smiles a smile that never quite reaches those ink-wrapped eyes of hers. <i>“Now that you’re here, I can begin your education.”</i>");
 			outputText("\n\nYou want to deny her, desperately so, but she’s right, isn’t she? Your elders sold you out to the demons. For all your fighting and struggling");
-			if (player.corr >= 50) outputText(", you’ve let yourself become corrupted");
+			if (player.cor >= 50) outputText(", you’ve let yourself become corrupted");
 			else outputText(", you’ve been sorely tempted by the rampant corruption of these lands");
 			outputText(".");
 			if (player.findStatusAffect(StatusAffects.FactoryOverload) >= 0) outputText(" You couldn’t even save one of the last pure spirits in this place, Marae.");
@@ -106,7 +112,7 @@ package classes.Scenes.Dungeons.D3
 			clearOutput();
 
 			outputText("Lethice’s will presses on you like a physical thing.");
-			if (player.corr < 50) outputText(" No matter how repugnant the idea of eating her out might have seemed a moment ago, you find your thoughts increasingly turning to her pussy.");
+			if (player.cor < 50) outputText(" No matter how repugnant the idea of eating her out might have seemed a moment ago, you find your thoughts increasingly turning to her pussy.");
 			else outputText(" No matter what objections you might have had to the idea, you’re too horny to make even a token effort at resistance.");
 			outputText(" What will she taste like? She’s a demon; it could be anything. Her pussy could be flavored with the sweetest strawberries or contain flavors your mortal tongue could barely comprehend.");
 			outputText("\n\nYou struggle up and wipe the drool from the side of your mouth. When did that start?");
@@ -117,7 +123,7 @@ package classes.Scenes.Dungeons.D3
 			if (player.vaginas.length > 0)
 			{
 				outputText(" judging by the way your [armor] is clinging to your crotch, she’s not the only one.");
-				if (silly) outputText(" You could probably drown someone in your panties.");
+				if (silly()) outputText(" You could probably drown someone in your panties.");
 			}
 			else if (player.cocks.length > 0)
 			{
@@ -149,7 +155,7 @@ package classes.Scenes.Dungeons.D3
 			if (player.vaginas.length > 0)
 			{
 				outputText(" Your [vagina]");
-				if (player.cocks.length == ) outputText(" drenches your undergarments");
+				if (player.cocks.length == 0) outputText(" drenches your undergarments");
 				else outputText(" mixes right in with all that waste cum");
 				outputText(".");
 			}
@@ -180,15 +186,15 @@ package classes.Scenes.Dungeons.D3
 			else outputText(" and");
 			outputText(" served in the breeding pits, endlessly fornicating to maintain an army of expendable imps.");
 			outputText("\n\nThe Dark Queen did not forget her favorite prize. At least once a week, time permitting, she would visit the former champion and allow "+ player.mf("him", "her") +" to tend to her endless, corrupted needs. Hours would pass with little more than the friction of a tongue against a slick slit, and the former champion had never been happier.");
-			game.gameOver();
+			getGame().gameOver();
 		}
 
-		public function beatTheSpooderbutt(hpVictory:Boolean)
+		public function beatTheSpooderbutt(hpVictory:Boolean):void
 		{
 			flags[kFLAGS.DRIDERINCUBUS_DEFEATED] = 1;
 
 			clearOutput();
-			var m:DriderIncubus = monster as Driderincubus;
+			var m:DriderIncubus = monster as DriderIncubus;
 			//HP
 			if (hpVictory)
 			{
@@ -282,7 +288,7 @@ package classes.Scenes.Dungeons.D3
 			clearOutput();
 
 			outputText("You shrug and start stripping out of your [armor] while you have the chance. Demons aren’t exactly known for their trustworthiness, but she’s doing this as a show of strength. Resorting to trickery to beat a simple mortal might lower her subordinates’ opinions of her. If there’s one thing you’ve learned to count on with demons");
-			if (silly) outputText(" and smut writers");
+			if (silly()) outputText(" and smut writers");
 			outputText(", it’s hubris.");
 			outputText("\n\nMitzi gapes at the sight of your [cocks] springing free. Her master looks on, stroking his own with a forlorn look in his eyes, unable to stop jacking it even when you’re about to claim his playtoy as your own.");
 			outputText("\n\n<i>“You like that?”</i> you ask the goblin, pivoting to swing your [cock biggest] under her nose.");
@@ -318,7 +324,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			//Back to errybody
 			outputText("\n\n");
-			if (player.biggestCockArea <= 250) outputText("Bottoming out");
+			if (player.biggestCockArea() <= 250) outputText("Bottoming out");
 			else outputText("Filling her with as much as she can take");
 			outputText(" is too much for little Mitzi. Her slender arms buckle, dropping her onto her tits. Her head lays sideways against the floor, her exquisitely long tongue hanging out, drooling. She’s not really talking anymore, just kind of idly grunting with every movement you make. Her brain cells are either too busy controlling the fluttering muscles in her cunt or routing pleasure signals to form cogent thoughts.");
 			outputText("\n\nYou don’t see any point in giving her any warning. Grabbing hold of her plump ass with both hands, you pull yourself back until she’s almost entirely empty. A disappointed little mewl escapes her lips. Then, you thrust back in, letting your veiny mass revel in its slick back-and-forth journey. Your [cock biggest] twitches happily within the living dicksheath, dumping a few hot globs of pre-seed into her furthest recesses with every pump.");
@@ -326,10 +332,10 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nJust looking at the goblin’s smiling face as you smear it back and forth through puddles of demon-cum has you almost ready to go off. You swat her cushy heiny in between rapid-fire thrusts, wondering if you should keep her while your orgasm rises up like a slumbering beast.");
 
 			//Followers
-			if (companionsCount() > 0)
+			if (getGame().camp.companionsCount() > 0)
 			{
 				outputText("\n\nYour other follower");
-				if (companionsCount() > 1) outputText("s");
+				if (getGame().camp.companionsCount() > 1) outputText("s");
 				outputText(" wouldn’t mind having a well-practiced goblin cooze around, would they? You certainly wouldn’t.");
 			}
 			//No Followers
@@ -339,7 +345,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			//Continue from both forks, no new PG
 			outputText("\n\n");
-			if (player.corr <= 33) outputText(" You could even try to help her cope with her excessive sexual desires, maybe see what she’s like when she doesn’t want to be plugged with dick.");
+			if (player.cor <= 33) outputText(" You could even try to help her cope with her excessive sexual desires, maybe see what she’s like when she doesn’t want to be plugged with dick.");
 			outputText(" There’s no harm in waking up with a sexpot milking every drop from your [cocks]. You’d be way more resistant to the demons that way.");
 			if (player.cumQ() >= 15000) outputText(" The thought that you produce cum far too fast for that to matter doesn’t even occur to you.");
 			outputText(" Maybe she’d even give you some daughters. You could raise up an army of petite greenskins to rebuild the land.");
@@ -597,8 +603,8 @@ package classes.Scenes.Dungeons.D3
 			else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) outputText(" clop");
 			else outputText(" stride");
 			outputText(" victoriously toward your prize, still hard and jutting, polished to a mirror sheen by the goblin’s vigorous, mid-fight fucking. Trickles of pearlescent pre-cum spill from the tip the moment your eyes fix upon it. The mere sight is enough to conjure the taste to your tongue, and the needy whines from the fallen goblin whore beside you spur you forward.");
-			if (player.corr <= 33) outputText(" You feel a little guilty, about to copulate with a demon to better slay another. You’re supposed to be a force of purity, not stuffing a hot, throbbing, demonic dick inside yourself in Lethice’s throneroom, but you can’t see any better way to ensure you’re fully sated before the next confrontation.");
-			else if (player.corr <= 75) outputText(" You’ve only got this one chance to get your rocks off before confronting the slut queen. You’ll need to hurry.");
+			if (player.cor <= 33) outputText(" You feel a little guilty, about to copulate with a demon to better slay another. You’re supposed to be a force of purity, not stuffing a hot, throbbing, demonic dick inside yourself in Lethice’s throneroom, but you can’t see any better way to ensure you’re fully sated before the next confrontation.");
+			else if (player.cor <= 75) outputText(" You’ve only got this one chance to get your rocks off before confronting the slut queen. You’ll need to hurry.");
 			else outputText(" This drider and his glorious cock are yours to use and abuse now, no one else’s. Even Lethice can see the truth of it.");
 			outputText("\n\n<i>“Hey, Champion, please... use the goblin. Let me save face. I won’t oppose you again,”</i> Kinariel pleads. <i>“Let me save face.”</i>");
 			outputText("\n\nKneeling over him, you consider him and his desperately pulsating member. You could change your mind and use the goblin if you wanted him to owe you a favor... or you could force him to indulge the obvious fetish he has for his own humiliation by riding him into the ground in front of his peers and superiors. Your call.");
@@ -631,7 +637,7 @@ package classes.Scenes.Dungeons.D3
 			clearOutput();
 
 			outputText("<i>“Fat chance,”</i> You hiss in the drider demon’s ear. <i>“");
-			if (player.corr <= 33) outputText("You deserve worse than a little humiliation, but I’m so turned on that this’ll have to do.");
+			if (player.cor <= 33) outputText("You deserve worse than a little humiliation, but I’m so turned on that this’ll have to do.");
 			else outputText("I’m going to work your dick better than that goblin hussy ever could. You’re going to beg like a bitch to the pathetic </i>mortal<i> in front of all your cohorts. They’ll never respect you again.");
 			outputText("”</i>");
 			outputText("\n\nKinariel looks up with a mix of terror and arousal, suddenly aware of just how precarious his position in the demonic hierarchy was. He trembles while you loop his own silk around his wrists, and his cock weeps liquid excitement. You smear some of it down the length of his cock, making him gasp and twitch on the floor, writhing in forced ecstasy while his peers laugh, jeer, and masturbate to his humiliation.");
@@ -686,7 +692,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			outputText(". He floods you with his tainted seed, stuffing your passage until every nook and cranny is chock full of demonspunk, bathed in his reproductive corruption.");
 			outputText("\n\nYou go off with him, unsubtly triggered by the feeling of being so suitably and powerfully filled, not just by a wonderful, cunt-stroking cock but by the sinfully slippery love juice he pours into you, seemingly without end. You close your eyes and turn your [pc.hips] loose to buck as wildly as they wish, even if the violent spasm force torrential gouts of ivory goo to squirt from between your fluttering lips. It’s a");
-			if (flags[kFLAGS.PC_FETISH] < 1 || player.hasVirginVagina() || player.corr <= 33) outputText("n unexpectedly");
+			if (flags[kFLAGS.PC_FETISH] < 1 || player.hasVirginVagina() || player.cor <= 33) outputText("n unexpectedly");
 			outputText(" wonderful feeling, getting to cum in front of an audience like this.");
 			outputText("\n\nYou ride the waves of ecstasy just as you ride the gnarly pussy-pleaser that gave gave them to you. The sweaty, orgasmically writhing whore that you’ve become may be a long way from the");
 			if (player.findPerk(PerkLib.HistorySlut) < 0 && player.findPerk(PerkLib.HistoryWhore) < 0) outputText(" chaste");
@@ -695,12 +701,12 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nIt’s only when your newly minted slut comes down that you follow suit. His dick must have finally gone dry, though not before his other one managed to significantly expand Mitzi’s belly. The goblin looks about at dazed as you feel, rubbing her tummy excitedly while half-heartedly trying to reach her master’s dick for a few more kisses.");
 
 			//Low corruption
-			if (player.corr <= 33)
+			if (player.cor <= 33)
 			{
 				outputText("\n\nYou stagger up feeling more than a little dirty. Demonic seed slides down your thighs in thick streams, but at least you’re not horny any more. You should be ready for whatever comes next so long as you can keep yourself from scoping out all the other hard cocks in the room. They seem to call to you...");
 			}
 			//Middle corr
-			else if (player.corr <= 75)
+			else if (player.cor <= 75)
 			{
 				outputText("\n\nYou stagger up feeling better than ever. Sure, there’s demonic cum streaming down your thighs, and you’re surrounded by Lethice’s lieutenants, but at least  you’re wonderfully, totally sated. All you have to do is keep it together until you defeat the Demon Queen, and then you can have all the cocks you want. That’s what you came here for right? It’s getting hard to remember.");
 			}
@@ -714,7 +720,7 @@ package classes.Scenes.Dungeons.D3
 			//Orgasm
 			//Pass an hour.
 			flags[kFLAGS.DRIDERINCUBUS_FUCKED] = 1;
-			game.dynStats("cor+", 20);
+			getGame().dynStats("cor+", 20);
 			player.orgasm();
 			player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 			driderDefeatMenu();
@@ -728,11 +734,11 @@ package classes.Scenes.Dungeons.D3
 			outputText("You look the defeated drider over, contemplating what <i>“reward”</i> you intend to take from him. Your eyes trace over his semi-human form, a twisted cavalcade of humanity and pitch-black demonic corruption. Your hands trace over his curling, razor-edged horns, making the defeated spider-man recoil in... not fear, but something else. Anticipation, maybe?");
 			if ((monster as DriderIncubus).goblinFree) outputText(" You can see his turgid rod hanging between his legs jump at your touch, spurting a thick, viscous trickle of corrupted spunk across the marble floor.");
 			else outputText(" The goblin slung under his insectile abdomen yelps as the cock buried balls-deep in her gash twitches, blowing a load of corrupted pre into her womb.");
-			if (player.corr > 75) outputText(" What a magnificent creature. You look forward to seeing what this... Kinarial can do.");
+			if (player.cor > 75) outputText(" What a magnificent creature. You look forward to seeing what this... Kinarial can do.");
 			outputText("\n\nYou make your way behind the demon drider, observing the twitching, drooling masses of his many spinnerets. The strange, insectile orifices twitch and drool wet-looking silk from his engorged backside, making rivulets that run stickily along the floor under your [feet]. Once you’re around behind him, you eye the sleek black carapace of his insectile half, and the curve of his back up to his human half. The drider glances over his shoulder at you, scowling.");
 			outputText("\n\n<i>“Get on with it,”</i> he growls, glancing between you and Lethice upon her throne. <i>“As the Mistress wills it.”</i>");
 			outputText("\n\nYou follow his gaze up to the throne, to the Demon Queen sat there. <i>“You want to see what kind of lover I am?”</i> you shout to her, over the cacophonous voices of her demon court. The voices hush to a low murmur at a slight flick of Lethice’s wrist.");
-			if (player.corr > 75) outputText(" <i>“Watch closely - this is what </i>you<i>’re in for, too, bitch!”</i>");
+			if (player.cor > 75) outputText(" <i>“Watch closely - this is what </i>you<i>’re in for, too, bitch!”</i>");
 			else outputText(" <i>“Enjoy this show - you’re next!”</i>");
 			outputText(" you shout,");
 			if (player.isTaur()) outputText(" lunging up onto the drider’s back, your bestial lower body carrying you up to mount him like your bitch. He lets out an alarmed shout as your massive weight slams down onto him, making his spidery legs buckle. Your [hips] hammer against him, bringing your [cock] to attention and slamming it against his undercarriage, probing for a hole to fuck.");
@@ -780,11 +786,12 @@ package classes.Scenes.Dungeons.D3
 			else outputText(" You flood the drider’s ass with a torrential wave of seed, bloating the demon’s gut with your spunk. Cum spurts out of his ass around your thrusting member, pouring out with every motion.");
 
 			outputText("\n\nMoaning weakly, the spunk-bloated demon slumps forward. You withdraw from him with a wet <i>pop</i> the echoes throughout the court, silencing the demon host. You make eye contact with Lethice, holding her gaze as you gather your [armor]. Behind you, the drider is helpless but to moan and leak spooge from his well-fucked ass.");
-			if (player.corr >= 75) outputText(" You can't wait to see how the Demon Queen feels when she's skewered on your rod!");
+			if (player.cor >= 75) outputText(" You can't wait to see how the Demon Queen feels when she's skewered on your rod!");
 
-			game.dynStats("cor+", 20);
+			getGame().dynStats("cor+", 20);
 			player.orgasm();
 			player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 			driderDefeatMenu();
+		}
 	}
 }
