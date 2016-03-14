@@ -303,6 +303,11 @@ package classes
 		public static const PurpleHaze:CombatStatusAffect = mk2("Purple Haze");
 		public static const MinotaurKingMusk:CombatStatusAffect = mk2("Minotaur King Musk");
 		public static const MinotaurKingsTouch:CombatStatusAffect = mk2("Minotaur Kings Touch");
+		public static const LethicesRapeTentacles:CombatStatusAffect = mk2("Lethices Rape Tentacles");
+		public static const OnFire:CombatStatusAffect = mk2("On Fire");
+		public static const LethicesShell:CombatStatusAffect = mk2("Lethices Magic Shell");
+		public static const WhipSilence:CombatStatusAffect = mk2("Whip Silence");
+		public static const PigbysHands:CombatStatusAffect = mk2("Pigbys Hands");
 		
 		/**
 		 * Creates non-combat status affect

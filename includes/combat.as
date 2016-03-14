@@ -5,6 +5,8 @@ import classes.Scenes.Areas.Mountain.Minotaur;
 import classes.Scenes.Dungeons.D3.Doppleganger;
 import classes.Scenes.Dungeons.D3.DriderIncubus;
 import classes.Scenes.Dungeons.D3.JeanClaude;
+import classes.Scenes.Dungeons.D3.Lethice;
+import classes.Scenes.Dungeons.D3.LethiceScenes;
 import classes.Scenes.Dungeons.D3.LivingStatue;
 import classes.Scenes.Dungeons.D3.LivingStatueScenes;
 import classes.Scenes.Dungeons.D3.SuccubusGardener;
@@ -131,6 +133,11 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 	var magic:Function = (canUseMagic() ? magicMenu : null);
 	var pSpecials:Function = physicalSpecials;
 	
+	if (player.findStatusAffect(StatusAffects.WhipSilence) >= 0)
+	{
+		magic = null;
+	}
+	
 	if (monster.findStatusAffect(StatusAffects.AttackDisabled) >= 0) {
 		outputText("\n<b>Chained up as you are, you can't manage any real physical attacks!</b>");
 		attacks = null;
@@ -149,8 +156,11 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		addButton(6, "M. Specials", magicalSpecials);
 		addButton(7, (monster.findStatusAffect(StatusAffects.Level) >= 0 ? "Climb" : "Wait"), wait);
 		addButton(8, "Fantasize", fantasize);
-		var m:DriderIncubus = monster as DriderIncubus;
-		if (!m.goblinFree) addButton(9, "Goblin", m.freeGoblin);
+		if (monster is DriderIncubus)
+		{
+			var mdi:DriderIncubus = monster as DriderIncubus;
+			if (!m.goblinFree) addButton(9, "Goblin", m.freeGoblin);
+		}
 	}
 	if (player.findStatusAffect(StatusAffects.KnockedBack) >= 0) {
 		outputText("\n<b>You'll need to close some distance before you can use any physical attacks!</b>");
@@ -211,6 +221,21 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		addButton(0, "Struggle", (monster as SuccubusGardener).grappleStruggle);
 		addButton(5, "Wait", (monster as SuccubusGardener).grappleWait);
 	}
+	else if (player.findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0 && player.statusAffectv3(StatusAffects.LethicesRapeTentacles) == 1) {
+		outputText("\n<b>Lethice's tentacles have a firm grip of your limbs!</b>");
+		addButton(0, "Struggle", (monster as Lethice).grappleStruggle);
+		addButton(5, "Wait", (monster as Lethice).grappleWait);
+		
+		var whitefireLustCap:int = 75;
+		if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) whitefireLustCap += 10;
+		
+		var gotEnergy:Boolean = player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
+		
+		if (player.lust < whitefireLustCap && player.findStatusAffect(StatusAffects.KnowsWhitefire) >= 0 && gotEnergy)
+		{
+			addButton(1, "Dispell", (monster as Lethice).dispellRapetacles);
+		}
+	}
 	else { //REGULAR MENU
 		addButton(0, "Attack", attacks);
 		addButton(1, "Tease", teaseAttack);
@@ -222,8 +247,27 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		addButton(7, (monster.findStatusAffect(StatusAffects.Level) >= 0 ? "Climb" : "Wait"), wait);
 		addButton(8, "Fantasize", fantasize);
 		//if (CoC_Settings.debugBuild && !debug) addButton(9, "Inspect", debugInspect);
-		m = monster as DriderIncubus;
-		if (!m.goblinFree) addButton(9, "Goblin", m.freeGoblin);
+		if (monster is DriderIncubus)
+		{
+			mdi = monster as DriderIncubus;
+			if (!mdi.goblinFree) addButton(9, "Goblin", mdi.freeGoblin);
+		}
+		else if (monster is Lethice)
+		{
+			var ml:Lethice = monster as Lethice;
+			whitefireLustCap = 75;
+			if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) whitefireLustCap += 10;
+			
+			gotEnergy = player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
+			
+			if (player.findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0)
+			{
+				if (player.lust < whitefireLustCap && player.findStatusAffect(StatusAffects.KnowsWhitefire) >= 0 && gotEnergy)
+				{
+					addButton(9, "Dispell", ml.dispellRapetacles);
+				}
+			}
+		}
 	}
 }
 
@@ -292,6 +336,7 @@ public function packAttack():void {
 }
 
 public function lustAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	if (player.lust < 35) {
 		outputText("The " + monster.short + " press in close against you and although they fail to hit you with an attack, the sensation of their skin rubbing against yours feels highly erotic.");
 	}
@@ -506,6 +551,7 @@ private function struggle():void {
 
 private function fireBow():void {
 	clearOutput();
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 1;
 	if (player.fatigue + physicalCost(25) > 100) {
 		outputText("You're too fatigued to fire the bow!");
 		menu();
@@ -585,6 +631,12 @@ private function fireBow():void {
 		enemyAI();
 		return;
 	}
+	if (monster is Lethice && monster.findStatusAffect(StatusAffects.Shell) >= 0)
+	{
+		outputText("Your arrow pings of the side of the shield and spins end over end into the air. Useless.\n\n");
+		enemyAI();
+		return;
+	}
 	//Hit!  Damage calc! 20 +
 	var damage:Number = 0;
 	damage = int((20 + player.str / 3 + player.statusAffectv1(StatusAffects.Kelt) / 1.2) + player.spe / 3 - rand(monster.tou) - monster.armorDef);
@@ -615,10 +667,16 @@ private function fireBow():void {
 		return;
 	}
 	else outputText(".  It's clearly very painful. (" + String(damage) + ")\n\n");
+	if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+	{
+		outputText("\n\n<i>“Ouch. Such a cowardly weapon,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your pathetic arrows?”</i>\n\n");
+		monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
+	}
 	enemyAI();
 }
 
 private function fireBreathMenu():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	outputText("Which of your special fire-breath attacks would you like to use?");
 	simpleChoices("Akbal's", fireballuuuuu, "Hellfire", hellFire, "Dragonfire", dragonBreath, "", null, "Back", playerMenu);
@@ -677,6 +735,7 @@ public function fantasize():void {
 //Mouf Attack
 // (Similar to the bow attack, high damage but it raises your fatigue).
 public function bite():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	if(player.fatigue + physicalCost(25) > 100) {
 		outputText("You're too fatigued to use your shark-like jaws!", true);
 		menu();
@@ -752,6 +811,7 @@ public function fatigueRecovery():void {
 
 //ATTACK
 public function attack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	if(player.findStatusAffect(StatusAffects.FirstAttack) < 0) {
 		outputText("", true);
 		fatigueRecovery();
@@ -1089,6 +1149,7 @@ public function attack():void {
 }
 //Gore Attack - uses 15 fatigue!
 public function goreAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	clearOutput();
 //This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 	if (monster.short == "worms") {
@@ -1188,6 +1249,7 @@ public function goreAttack():void {
 }
 //Player sting attack
 public function playerStinger():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	clearOutput();
 	//Keep logic sane if this attack brings victory
 //This is now automatic - newRound arg defaults to true:	menuLoc = 0;
@@ -1458,6 +1520,22 @@ private function combatStatusesUpdate():void {
 			else outputText("<b>One of your combat abilities is currently sealed by magic!</b>\n\n");
 		}
 	}
+	
+	if (player.findStatusAffect(StatusAffects.WhipSilence) >= 0)
+	{
+		player.addStatusValue(StatusAffects.WhipSilence, 1, -1);
+		if (player.statusAffectv1(StatusAffects.WhipSilence) <= 0)
+		{
+			player.removeStatusAffect(StatusAffects.WhipSilence);
+			outputText("<b>The constricting cords encircling your neck fall away, their flames guttering into nothingness. It seems even a Demon Queen’s magic has an expiration date.</b>\n\n");
+		}
+	}
+	
+	if (player.findStatusAffect(StatusAffects.PigbysHands) >= 0)
+	{
+		dynStats("lus", 5);
+	}
+	
 	if (player.findStatusAffect(StatusAffects.TaintedMind) >= 0) {
 		player.addStatusValue(StatusAffects.TaintedMind, 1, 1);
 		if (player.statusAffectv1(StatusAffects.TaintedMind) <= 0)
@@ -1481,6 +1559,91 @@ private function combatStatusesUpdate():void {
 		else
 		{
 			outputText("Your vision is still clouded by swirling purple mists bearing erotic shapes. You are effectively blinded and a little turned on by the display.");
+		}
+	}
+	if (player.findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0)
+	{
+		player.addStatusValue(StatusAffects.LethicesRapeTentacles, 1, -1);
+		
+		if (player.statusAffectv3(StatusAffects.LethicesRapeTentacles) != 0)
+		{
+			player.addStatusValue(StatusAffects.LetchiesRapeTentacles, 2, 1);
+			
+			var tentaround:Number = player.statusAffectv2(StatusAffects.LethicesRapeTentacles);
+			
+			if (tentaround == 1)
+			{
+				outputText("Taking advantage of your helpless state, the tentacles wind deeper under your [armor], caressing your [nipples] and coating your [butt] in slippery goo. One even seeks out your crotch, none-too-gently prodding around for weak points.");
+				dynStats("lus", 5);
+			}
+			else if (tentaround == 2)
+			{
+				outputText("Now that they’ve settled in, the tentacles go to work on your body, rudely molesting every sensitive place they can find.");
+				if (player.hasCock()) outputText(" They twirl and writhe around your [cocks].");
+				if (player.hasVagina()) outputText(" One flosses your nether-lips, rubbing slippery bumps maddenly against your [clit].");
+				outputText(" " + num2Text(player.totalNipples()) + " tendrils encircle your [pc.nipples]");
+				if (player.hasFuckableNipples()) outputText(", threatening to slide inside them at a moment’s notice");
+				else
+				{
+					outputText(", pinching and tugging them");
+					if (player.isLactating()) outputText(", squeezing out small jets of milk");
+				}
+				outputText(". Worst of all is the tentacle slithering between your buttcheeks. It keeps stopping to rub around the edge of your [asshole]. You really ought to break free...");
+				dynStats("lus", 5);
+			}
+			else if (tentaround == 3)
+			{
+				outputText("Another inky length rises up from the floor and slaps against your face, inexpertly attempting to thrust itself inside your mouth. Resenting its temerity, you steadfastly hold your lips closed and turn your head away. The corrupt magics powering this spell won’t let you get off so easily, though. The others redouble their efforts, inundating you with maddening pleasure. You can’t help but gasp and moan, giving the oiled feeler all the opening it needs to enter your maw.");
+				dynStats("lus", 5);
+			}
+			else if (tentaround == 4)
+			{
+				outputText("If you thought having one tentacle in your mouth was bad, then the two floating in front of you are potentially terrifying. Unfortunately, they turn out to be mere distractions. The tendril plying your buns rears back and stabs inside, splitting your sphincter");
+				if (player.hasVagina())
+				{
+					outputText(" while its brother simultaneously pierces your tender folds, rapaciously double-penetrating you");
+					if (player.hasVirginVagina()) outputText(" <b>You've come all this way only to lose your virginity to these things!</b>");
+				}
+				outputText(".");
+				if (player.hasFuckableNipples()) outputText(" Your [nipples] are similarly entered.");
+				if (player.hasCock()) outputText(" And [eachCock] is suddenly coated in slimy, extraplanar oil and pumped with rapid, sure strokes.");
+				outputText(" There’s too much. If you don’t break free, you’re going to wind up losing to a simple spell!");
+				dynStats("lus", 10);
+			}
+			else
+			{
+				outputText("You’ve really fucked up now. An entire throne room full of demons is watching a bunch of summoned tentacles rape you in every hole, bouncing your body back and forth with the force of their thrusts, repeatedly spilling their corruptive payloads into your receptive holes. The worst part is");
+				if (player.cor >= 50) outputText(" how much of a bitch it makes you look like... and how good it feels to be Lethice’s bitch.");
+				else outputText(" how dirty it makes you feel... and how good it feels to be dirty.");
+				
+				dynStats("lus", 10, "cor", 1);
+			}
+		}
+		else
+		{
+			outputText("The tentacles grab at you again!");
+			if (player.canFly()) outputText(" No matter how they strain, they can’t reach you.");
+			else if (combatMiss() || combatEvade() || combatFlexibility()) outputText(" You twist out of their slick, bizarrely sensuous grasp for now.");
+			else
+			{
+				outputText(" Damn, they got you! They yank your arms and [legs] taut, holding you helpless in the air for their brothers to further violate. You can already feel a few oily tendrils sneaking under your [armor].");
+				player.setStatusValue(StatusAffects.LethicesRapeTentacles, 3, 1);
+				dynStats("lus", 5);
+			}
+		}
+		
+		if (player.statusAffectv1(StatusAffects.LethicesRapeTentacles) <= 0)
+		{
+			if (player.statusAffectv3(StatusAffects.LethicesRapeTentacles) != 0)
+			{
+				outputText("\n\nThe tentacles in front of you suddenly pop like balloons of black smoke, leaving a greasy mist in their wake. A breeze from nowhere dissipates the remnants of the rapacious tendrils, their magic expended.");
+			}
+			else
+			{
+				outputText("\n\nThe tentacles holding you abruptly let go, dropping you to the ground. Climbing up, you look around in alarm, but the tendrils have faded into puffs of black smoke. A breeze from nowhere blows them away, their magic expended.");
+			}
+			player.removeStatusAffect(StatusAffects.LethicesRapeTentacles);
+			
 		}
 	}
 	monster.combatRoundUpdate();
@@ -1552,7 +1715,14 @@ private function combatStatusesUpdate():void {
 				//Alert PC that blind is gone if no more stacks are there.
 				if (player.findStatusAffect(StatusAffects.Blind) < 0) 
 				{
-					outputText("<b>Your eyes have cleared and you are no longer blind!</b>\n\n", false);
+					if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+					{
+						outputText("<b>You finally blink away the last of the demonic spooge from your eyes!</b>\n\n", false);
+					}
+					else
+					{
+						outputText("<b>Your eyes have cleared and you are no longer blind!</b>\n\n", false);
+					}
 				}
 				else outputText("<b>You are blind, and many physical attacks will miss much more often.</b>\n\n", false);
 			}
@@ -1780,6 +1950,23 @@ private function combatStatusesUpdate():void {
 				outputText("The demonic drider managed to bite you, infecting you with his strength-draining poison!\n\n");
 			}
 		}
+	}
+	
+	if (monster.findStatusAffect(StatusAffects.OnFire) >= 0)
+	{
+		var damage:Number = 20 + rand(5);
+		monster.HP -= damage;
+		monster.addStatusValue(StatusAffects.OnFire, 1, -1);
+		if (monster.statusAffectv1(StatusAffects.OnFire) <= 0)
+		{
+			monster.removeStatusAffect(StatusAffects.OnFire);
+			outputText("\n\nFlames lick at the horde of demons before finally petering out!");
+		}
+		else
+		{
+			outputText("\n\nFlames continue to lick at the horde of demons!");
+		}
+		
 	}
 	
 	regeneration(true);
@@ -3772,6 +3959,7 @@ public function spellChargeWeapon():void {
 }
 //(20) Blind – reduces your opponent's accuracy, giving an additional 50% miss chance to physical attacks.
 public function spellBlind():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
 		outputText("You are too tired to cast this spell.", true);
@@ -3817,6 +4005,20 @@ public function spellBlind():void {
 		else enemyAI();
 		return;
 	}
+	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	{
+		outputText("You hold your [pc.weapon] aloft and thrust your will forward, causing it to erupt in a blinding flash of light. The demons of the court scream and recoil from the radiant burst, clutching at their eyes and trampling over each other to get back.");
+
+		outputText("\n\n<i>“Damn you, fight!”</i> Lethice screams, grabbing her whip and lashing out at the back-most demons, driving them forward -- and causing the middle bunch to be crushed between competing forces of retreating demons! <i>“Fight, or you'll be in the submission tanks for the rest of your miserable lives!”</i>");
+		
+		monster.createStatusAffect(StatusAffects.Blind, 5 * spellMod(), 0, 0, 0);
+		outputText("\n\n", false);
+		flags[kFLAGS.SPELLS_CAST]++;
+		spellPerkUnlock();
+		statScreenRefresh();
+		enemyAI();
+		return;
+	}
 	outputText("You glare at " + monster.a + monster.short + " and point at " + monster.pronoun2 + ".  A bright flash erupts before " + monster.pronoun2 + "!\n", true);
 	if (monster is LivingStatue)
 	{
@@ -3845,6 +4047,7 @@ public function spellBlind():void {
 }
 //(30) Whitefire – burns the enemy for 10 + int/3 + rand(int/2) * spellMod.
 public function spellWhitefire():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100) {
 		outputText("You are too tired to cast this spell.", true);
@@ -3868,27 +4071,52 @@ public function spellWhitefire():void {
 		spellPerkUnlock();
 		return;
 	}
-	outputText("You narrow your eyes, focusing your mind with deadly intent.  You snap your fingers and " + monster.a + monster.short + " is enveloped in a flash of white flames!\n", true);
-	temp = int(10+(player.inte/3 + rand(player.inte/2)) * spellMod());
-	//High damage to goes.
-	if(monster.short == "goo-girl") temp = Math.round(temp * 1.5);
-	outputText(monster.capitalA + monster.short + " takes " + temp + " damage.", false);
-	//Using fire attacks on the goo]
-	if(monster.short == "goo-girl") {
-		outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer.", false);
-		if(monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid,0,0,0,0);
+	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	{
+		//Attack gains burn DoT for 2-3 turns.
+		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!");
+		monster.createStatusAffect(StatusAffects.OnFire, 2 + rand(2), 0, 0, 0);
+		temp = int(10 + (player.inte / 3 + rand(player.inte / 2)) * spellMod());
+		temp *= 1.75;
+		outputText(" (" + temp + ")");
+	}
+	else
+	{
+		outputText("You narrow your eyes, focusing your mind with deadly intent.  You snap your fingers and " + monster.a + monster.short + " is enveloped in a flash of white flames!\n", true);
+		temp = int(10+(player.inte/3 + rand(player.inte/2)) * spellMod());
+		//High damage to goes.
+		if(monster.short == "goo-girl") temp = Math.round(temp * 1.5);
+		outputText(monster.capitalA + monster.short + " takes " + temp + " damage.", false);
+		//Using fire attacks on the goo]
+		if(monster.short == "goo-girl") {
+			outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer.", false);
+			if(monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid,0,0,0,0);
+		}
 	}
 	outputText("\n\n", false);
 	flags[kFLAGS.SPELLS_CAST]++;
 	spellPerkUnlock();
 	monster.HP -= temp;
 	statScreenRefresh();
-	if(monster.HP < 1) doNext(endHpVictory);
-	else enemyAI();
+	
+	if (monster.HP < 1)
+	{
+		doNext(endHpVictory);
+	}
+	else
+	{
+		if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+		{
+			outputText("\n\n<i>“Ouch. Such arcane skills for one so uncouth,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your magics?”</i>\n\n");
+			monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
+		}
+		enemyAI();
+	}
 }
 
 public function spellCleansingPalm():void
 {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100) {
 		outputText("You are too tired to cast this spell.", true);
@@ -3975,6 +4203,8 @@ public function spellPerkUnlock():void {
 //Hellfire deals physical damage to completely pure foes, 
 //lust damage to completely corrupt foes, and a mix for those in between.  Its power is based on the PC's corruption and level.  Appearance is slightly changed to mention that the PC's eyes and mouth occasionally show flicks of fire from within them, text could possibly vary based on corruption.
 public function hellFire():void {
+	if (moster.cor < 50) flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+	else flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	outputText("", true);
 	if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
 		outputText("You are too tired to breathe fire.\n", true);
@@ -3993,6 +4223,24 @@ public function hellFire():void {
 	{
 		outputText("The fire courses over the stone behemoths skin harmlessly. It does leave the surface of the statue glossier in its wake.");
 		enemyAI();
+		return;
+	}
+	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	{
+		//Attack gains burn DoT for 2-3 turns.
+		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!");
+		monster.createStatusAffect(StatusAffects.OnFire, 2 + rand(2), 0, 0, 0);
+		var damage:Number = (player.level * 8 + rand(10) + player.cor / 5);
+		damage *= 1.75;
+		outputText(" (" + damage + ")");
+		monster.HP -= damage;
+		if(monster.HP < 1) {
+			doNext(endHpVictory);
+		}
+		else if(monster.lust >= 99) {
+			doNext(endLustVictory);
+		}
+		else enemyAI();
 		return;
 	}
 	var damage:Number = (player.level * 8 + rand(10) + player.cor/5);
@@ -4054,10 +4302,19 @@ public function hellFire():void {
 	else if(monster.lust >= 99) {
 		doNext(endLustVictory);
 	}
-	else enemyAI();
+	else
+	{
+		if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+		{
+			outputText("\n\n<i>“Ouch. Such arcane skills for one so uncouth,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your magics?”</i>\n\n");
+			monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
+		}
+		enemyAI();
+	}
 }
 
 public function kick():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	if(player.fatigue + physicalCost(15) > 100) {
 		outputText("You're too fatigued to use a charge attack!", true);
@@ -4177,6 +4434,7 @@ public function kick():void {
 }
 
 public function PCWebAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//Keep logic sane if this attack brings victory
 	if(player.tailVenom < 33) {
@@ -4221,6 +4479,7 @@ public function PCWebAttack():void {
 	else enemyAI();
 }
 public function nagaBiteAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//FATIIIIGUE
 	if(player.fatigue + physicalCost(10) > 100) {
@@ -4269,6 +4528,7 @@ public function nagaBiteAttack():void {
 	else enemyAI();
 }
 public function spiderBiteAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//FATIIIIGUE
 	if(player.fatigue + physicalCost(10) > 100) {
@@ -4322,6 +4582,7 @@ public function spiderBiteAttack():void {
 //[Abilities]
 //Whisper 
 public function superWhisperAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(10) > 100)
 	{
@@ -4383,6 +4644,7 @@ public function superWhisperAttack():void {
 	//once a day or something
 	//Effect of attack: Damages and stuns the enemy for the turn you used this attack on, plus 2 more turns. High chance of success.
 public function dragonBreath():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100)
 	{
@@ -4420,6 +4682,22 @@ public function dragonBreath():void {
 	{
 		outputText("The fire courses by the stone skin harmlessly. It does leave the surface of the statue glossier in its wake.");
 		enemyAI();
+		return;
+	}
+	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	{
+		//Attack gains burn DoT for 2-3 turns.
+		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!\n\n");
+		monster.createStatusAffect(StatusAffects.OnFire, 2 + rand(2), 0, 0, 0);
+		damage = int(player.level * 8 + 25 + rand(10));
+		if(player.findStatusAffect(StatusAffects.DragonBreathBoost) >= 0) {
+			player.removeStatusAffect(StatusAffects.DragonBreathBoost);
+			damage *= 1.5;
+		}
+		damage *= 1.75;
+		outputText(" (" + damage + ")");
+		monster.HP -= damage;
+		combatRoundOver();
 		return;
 	}
 	outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, so forceful that even the environs crumble around " + monster.pronoun2 + ".  " + monster.capitalA + monster.short + " does " + monster.pronoun3 + " best to avoid it, but the wave of force is too fast.");
@@ -4470,12 +4748,19 @@ public function dragonBreath():void {
 		outputText(" (" + damage + ")");
 	}
 	outputText("\n\n");
-	if(monster.short == "Holli" && monster.findStatusAffect(StatusAffects.HolliBurning) < 0) (monster as Holli).lightHolliOnFireMagically();
-	combatRoundOver();
+	if (monster.short == "Holli" && monster.findStatusAffect(StatusAffects.HolliBurning) < 0) (monster as Holli).lightHolliOnFireMagically();
+	if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+	{
+		outputText("\n\n<i>“Ouch. Such arcane skills for one so uncouth,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your magics?”</i>\n\n");
+		monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
+		enemyAI();
+	}
+	else combatRoundOver();
 }
 
 //* Terrestrial Fire
 public function fireballuuuuu():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if(player.fatigue + 20 > 100) {
 		outputText("You are too tired to breathe fire.", true);
@@ -4499,6 +4784,24 @@ public function fireballuuuuu():void {
 	{
 		outputText("The fire courses by the stone skin harmlessly. It does leave the surface of the statue glossier in its wake.");
 		enemyAI();
+		return;
+	}
+	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	{
+		//Attack gains burn DoT for 2-3 turns.
+		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!\n\n");
+		monster.createStatusAffect(StatusAffects.OnFire, 2 + rand(2), 0, 0, 0);
+		damage = int(player.level * 10 + 45 + rand(10));
+		damage *= 1.75;
+		outputText(" (" + damage + ")");
+		monster.HP -= damage;
+		if(monster.HP < 1) {
+			doNext(endHpVictory);
+		}
+		else if(monster.lust >= 99) {
+			doNext(endLustVictory);
+		}
+		else enemyAI();
 		return;
 	}
 	//[Failure]
@@ -4571,6 +4874,7 @@ public function fireballuuuuu():void {
 }
 
 public function kissAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	if(player.findStatusAffect(StatusAffects.Blind) >= 0) {
 		outputText("There's no way you'd be able to find their lips while you're blind!", true);
 //Pass false to combatMenu instead:		menuLoc = 3;
@@ -4671,6 +4975,7 @@ public function kissAttack():void {
 	if(!combatRoundOver()) enemyAI();
 }
 public function possess():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	outputText("", true);
 	if(monster.short == "plain girl" || monster.findPerk(PerkLib.Incorporeality) >= 0) {
 		outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself toward the opponent's frame.  Sadly, it was doomed to fail, as you bounce right off your foe's ghostly form.", false);
@@ -4952,6 +5257,7 @@ public function runAway(callHook:Boolean = true):void {
 }
 
 public function anemoneSting():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//-sting with hair (combines both bee-sting effects, but weaker than either one separately):
 	//Fail!
@@ -5124,6 +5430,7 @@ public function berzerk():void {
 
 //Corrupted Fox Fire
 public function corruptedFoxFire():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
 		outputText("You are too tired to use this ability.", true);
@@ -5158,6 +5465,7 @@ public function corruptedFoxFire():void {
 }
 //Fox Fire
 public function foxFire():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
 		outputText("You are too tired to use this ability.", true);
@@ -5279,6 +5587,7 @@ public function kitsuneIllusion():void {
 //tiny damage and lower monster armor by ~75% for one turn
 //hit
 public function tailWhipAttack():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	clearOutput();
 	//miss
 	if((player.findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
@@ -5304,6 +5613,7 @@ public function tailWhipAttack():void {
 //Arian's stuff
 //Using the Talisman in combat
 public function immolationSpell():void {
+	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	outputText("You gather energy in your Talisman and unleash the spell contained within.  A wave of burning flames gathers around " + monster.a + monster.short + ", slowly burning " + monster.pronoun2 + ".");
 	var temp:int = int(75+(player.inte/3 + rand(player.inte/2)) * spellMod());
