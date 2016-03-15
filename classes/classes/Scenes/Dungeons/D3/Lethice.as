@@ -8,14 +8,14 @@ package classes.Scenes.Dungeons.D3
 	import classes.CockTypesEnum;
 	import classes.StatusAffects;
 	import classes.PerkLib;
+	import classes.GlobalFlags.kFLAGS;
 
-	public class Lethice extends AbstractSpiderMorph
+	public class Lethice extends Monster
 	{
 		public function Lethice()
 		{
 			this.a = "";
-			if (!silly()) this.short = "lethice";
-			else this.short = "lettuce";
+			this.short = "lethice";
 			this.long = "";
 			
 			this.tallness = 12 * 9;
@@ -80,20 +80,20 @@ package classes.Scenes.Dungeons.D3
 				}
 			}
 
-			if (player.findStatusAffects(StatusAffects.LethicesRapeTentacles) >= 0)
+			if (player.findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0)
 			{
 				str += "\n\n<b>A forest of black tentacles sprout from the floor, snaring any demons unlucky enough to venture close - or any champions unlucky enough to be in the center of it all.";
 				if (player.statusAffectv3(StatusAffects.LethicesRapeTentacles) != 0) outputText(" Unfortunately, they’ve grabbed you. You need to break free to do anything!");
-				if (player.findStatusAffects(StatusAffects.KnowsWhitefire) >= 0)
+				if (player.findStatusAffect(StatusAffects.KnowsWhitefire) >= 0)
 				{
-					outputText(" A blast of white-fire could probably dispel them, or you could rely on your";
+					outputText(" A blast of white-fire could probably dispel them, or you could rely on your");
 					if (player.canFly()) outputText(" flight");
 					else outputText(" quickness");
-					outputText(" to stay safe. Either way, you’re free for now.</b>";
+					outputText(" to stay safe. Either way, you’re free for now.</b>");
 				}
 			}
 
-			if (monster.hasStatusAffect(StatusAffects.Shell) >= 0)
+			if (game.monster.findStatusAffect(StatusAffects.Shell) >= 0)
 			{
 				outputText("\n\n<b>Lethice is surrounded by a shimmering dome of magical energy. Spells and ranged attacks will be ineffective!</b>");
 			}
@@ -206,7 +206,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			outputText(" spray forth a torrent of white flame, burning the shadowy constructs away in the light of your pure, focused fire. In the span of seconds, Lethice’s spell is gone.");
 
-			game.doNext(combatMenu);
+			game.doNext(game.combatMenu);
 			game.fatigue(30,1);
 			outputText("\n\n", false);
 			flags[kFLAGS.SPELLS_CAST]++;
@@ -240,6 +240,7 @@ package classes.Scenes.Dungeons.D3
 				player.createStatusAffect(StatusAffects.Blind, 2, 0, 0, 0);
 				player.takeDamage(1);
 				outputText(" (1)");
+			}
 		}
 
 		private function claw():void
@@ -248,7 +249,7 @@ package classes.Scenes.Dungeons.D3
 
 			var damage:Number = str + weaponAttack - rand(player.tou);
 
-			if (combatDodge())
+			if (combatMiss())
 			{
 				outputText("You manage to dodge her slash!");
 			}
@@ -277,8 +278,22 @@ package classes.Scenes.Dungeons.D3
 				}
 			}
 		}
-
-		private function phase1Ends(hpVictory:Boolean)
+		
+		public function grappleStruggle():void 
+		{
+			clearOutput();
+			outputText("You pull with all your might against the grasping tentacles to no avail; their grip is simply too strong!");
+			game.enemyAI();
+		}
+		
+		public function grappleWait():void
+		{
+			clearOutput();
+			outputText("You can't bring yourself to fight back against Lethice's tentaclespawn. The sensuous, coiling grasp around your limbs, their questing, pliant tips digging around inside your [armor]... you relax in their grip for a little while longer, too enticed by their movement to struggle right now.");
+			game.enemyAI();
+		}
+		
+		private function phase1Ends(hpVictory:Boolean):void
 		{
 			clearOutput();
 			if (hpVictory)
@@ -287,6 +302,7 @@ package classes.Scenes.Dungeons.D3
 				{
 					outputText("Even held aloft by her sprawling dragon wings, Lethice can’t hide from your righteous wrath.");
 					outputText(" Taking wing yourself, you slam into the demoness, striking a final blow that sends her toppling to the ground. She shrieks and spirals, crashing into the hard stone floor just before her throne.");
+				}
 				else if (flags[kFLAGS.LAST_ATTACK_TYPE] == 1)
 				{
 					outputText("Even held aloft by her sprawling dragon wings, Lethice can’t hide from your righteous wrath.");
@@ -306,7 +322,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nOh, shit. You look up in time to see a cavalcade of demonic flesh swooping down from on high, bodies practically tumbling one over the other to get at you. The horde takes every physical form imaginable: towering, hulking brutish males, inhumanly curvaceous succubi, and the reverse of both - not to mention hermaphrodites masculine and feminine - and all with every sort of transformation. Bestial creatures, dragon-like incubi, and succubi whose skins range the colors of the rainbow and so, so much more come piling down the throne hall in a ceaseless barrage of flesh and decadence. They won’t stop until they’ve dragged you to the ground and fucked you into submission!");
 
 			// 9999 reconfigure for the group
-			HP = MaxHP();
+			HP = eMaxHP();
 			lust = 10;
 			_fightPhase = 2;
 			combatRoundOver();
@@ -367,7 +383,7 @@ package classes.Scenes.Dungeons.D3
 		{
 			outputText("Several of the demons nearest you have grown immense sets of curling, sharp horns. When they can’t get at you to sexually provoke or hurl magic at you, they’re more than content to just give you an old-fashioned ram!");
 
-			if (combatDodge())
+			if (combatMiss())
 			{
 				outputText(" You deftly dodge out of the way!");
 			}
@@ -411,7 +427,7 @@ package classes.Scenes.Dungeons.D3
 		{
 			outputText("Considering how half of the demon host is just getting fucked by whoever’s behind them, it’s just a question of how long they last before the cum starts flowing. The answer just happens to be now! You gasp and gag as the air is suddenly flooded by the reek of potent, virile jizz, and ropes of thick white spunk start flying through the air. This is less of a gank mob and more of an orgy now!");
 
-			if (combatDodge())
+			if (combatMiss())
 			{
 				outputText(" You grab the biggest incubus you can find and shove him in the way of the airborne bukkake, letting his burly back take the brunt of the demons’ load. He grunts in displeasure, giving you a rough shove back into the demonic gang-bang. <i>“No escape!”</i>");
 			}
@@ -432,7 +448,7 @@ package classes.Scenes.Dungeons.D3
 			{
 				outputText(" You take a huge, fat, musky glob of spunk right to the eyes! You yelp in alarm, trying to wipe the salty, burning demonic cock-cream out, but it's simply too thick! Yuck!");
 				game.dynStats("lus", 5);
-				player.createStatusAFfect(StatusAffects.Blind, 2 + rand(2), 0, 0, 0);
+				player.createStatusAffect(StatusAffects.Blind, 2 + rand(2), 0, 0, 0);
 			}
 		}
 
@@ -450,10 +466,10 @@ package classes.Scenes.Dungeons.D3
 
 			outputText("\n\nWhile the demons are down, and Lethice is still recovering from your first skirmish, you have a much-needed moment to relieve the tensions starting to grow within you. Or you could press the attack, and take the fight to the queen.");
 
-			menu();
-			if (player.hasCock() || player.hasVagina()) addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
-			if (player.findStatusAffect(StatusAffects.KnowsHeal) >= 0) addButton(1, "Heal", p2Heal);
-			addButton(2, "Next", p2Next);
+			game.menu();
+			if (player.hasCock() || player.hasVagina()) game.addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
+			if (player.findStatusAffect(StatusAffects.KnowsHeal) >= 0) game.addButton(1, "Heal", p2Heal);
+			game.addButton(2, "Next", p2Next);
 		}
 
 		private function p2DemonFuck(hpVictory:Boolean):void
@@ -472,18 +488,18 @@ package classes.Scenes.Dungeons.D3
 			if (player.hasCock()) outputText(" wrap around your [cock]");
 			else outputText(" lap across the lips of your [cunt]");
 			outputText(". Shudders of pleasure almost instantly begin to wrack your body, reacting to the demoness’s talented touch. She’s certainly skilled with her tongue, flicking and licking and caressing your sex with vigorous determination. You guide her movements by her demonic horns at first, but soon find yourself too busy gasping and moaning to try and control her - there’s no point, when she’s this good at");
-			if (!pc.hasCock()) outputText(" munching rug.");
+			if (!player.hasCock()) outputText(" munching rug.");
 			else outputText(" sucking cock.");
 			outputText("\n\nAround you, spurred on by your face-fucking the omnibus, the defeated demon court undulates in waves of orgiastic pleasure, gleefully sucking each other’s cocks, penetrating any hole they can find, or simply rolling on the floor locked in each other’s sensual embraces. Those that didn’t join the fight hoot and holler from the stands, encouraging you to fuck the omnibus like the eager slut she is. For her part, the horny demon just smirks up at you between long, loving licks across your sex.");
 
 			// [Oral Finish] [Fuck Demoncunt] [Ride Dogcock]
-			menu();
-			addButton(0, "OralFinish", oralFinish);
-			if (player.hasCock()) addButton(1, "FuckDemon", fuckDemon);
-			addButton(2, "RideCock", rideCock);
+			game.menu();
+			game.addButton(0, "OralFinish", oralFinish);
+			if (player.hasCock()) game.addButton(1, "FuckDemon", fuckDemon);
+			game.addButton(2, "RideCock", rideCock);
 		}
 
-		private function oralFinishMale():void
+		private function oralFinish():void
 		{
 			clearOutput();
 
@@ -553,7 +569,7 @@ package classes.Scenes.Dungeons.D3
 		{
 			clearOutput();
 			outputText("Drawing on your magic, you use the opportunity to mend your wounds. No foe dares challenge you during the brief lull in battle, enabling you to maintain perfect concentration. With your flesh freshly knit and ready for battle, you look to Lethice.");
-			var temp:Number = int((player.inte/(2 + rand(3)) * spellMod()) * (maxHP()/150));
+			var temp:Number = int((player.inte / (2 + rand(3)) * game.spellMod()) * (player.maxHP() / 150));
 			if(player.armorName == "skimpy nurse's outfit") temp *= 1.2;
 			game.HPChange(temp,false);
 
@@ -575,7 +591,7 @@ package classes.Scenes.Dungeons.D3
 			// 9999 configure phase 3
 
 			_fightPhase = 3;
-			HP = HPMax();
+			HP = eMaxHP();
 			lust = 10;
 			_defMode = 1;
 			combatRoundOver();
@@ -608,11 +624,11 @@ package classes.Scenes.Dungeons.D3
 				lustVuln = 0.0;
 			}
 
-			if (_combatRound == 5) gropehands()
+			if (_roundCount == 5) gropehands()
 			else
 			{
 				var atks:Array = [parasiteThrowingStars, whiptrip, sonicwhip];
-				if (player.findStatusAffect(StatusAffects.WhipChoke) < 0) atks.push(whipchoke);
+				if (player.findStatusAffect(StatusAffects.WhipSilence) < 0) atks.push(whipchoke);
 
 				atks[rand(atks.length)]();
 			}
@@ -624,7 +640,7 @@ package classes.Scenes.Dungeons.D3
 		{
 			outputText("Lethice retrieves three squirming, star-shaped creatures from beneath her clothes and flings them at you. A split second after they leave her hand, needles burst from their edges!");
 
-			if (combatDodge())
+			if (combatMiss())
 			{
 				outputText(" The living throwing stars whistle by you, barely missing you.");
 			}
@@ -676,7 +692,7 @@ package classes.Scenes.Dungeons.D3
 
 			var minDamage:Boolean = false;
 
-			if (combatDodge())
+			if (combatMiss())
 			{
 				outputText(" You jump over it at the last second, the heat singing your [feet].");
 				minDamage = true;
@@ -729,7 +745,7 @@ package classes.Scenes.Dungeons.D3
 		{
 			outputText("<i>“Silence your prattling, curr.”</i> Lethice strikes out with her whip, aimed at your neck!");
 
-			if (combatDodge())
+			if (combatMiss())
 			{
 				outputText(" You barely avoid it.");
 			}
@@ -769,7 +785,7 @@ package classes.Scenes.Dungeons.D3
 				if (attackSucceeded())
 				{
 					var damage:Number = eOneAttack();
-					outputAttack();
+					outputAttack(damage);
 					postAttack(damage);
 					game.statScreenRefresh();
 					outputText("\n");

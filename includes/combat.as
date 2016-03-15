@@ -159,7 +159,7 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		if (monster is DriderIncubus)
 		{
 			var mdi:DriderIncubus = monster as DriderIncubus;
-			if (!m.goblinFree) addButton(9, "Goblin", m.freeGoblin);
+			if (!mdi.goblinFree) addButton(9, "Goblin", mdi.freeGoblin);
 		}
 	}
 	if (player.findStatusAffect(StatusAffects.KnockedBack) >= 0) {
@@ -1567,7 +1567,7 @@ private function combatStatusesUpdate():void {
 		
 		if (player.statusAffectv3(StatusAffects.LethicesRapeTentacles) != 0)
 		{
-			player.addStatusValue(StatusAffects.LetchiesRapeTentacles, 2, 1);
+			player.addStatusValue(StatusAffects.LethicesRapeTentacles, 2, 1);
 			
 			var tentaround:Number = player.statusAffectv2(StatusAffects.LethicesRapeTentacles);
 			
@@ -1627,7 +1627,7 @@ private function combatStatusesUpdate():void {
 			else
 			{
 				outputText(" Damn, they got you! They yank your arms and [legs] taut, holding you helpless in the air for their brothers to further violate. You can already feel a few oily tendrils sneaking under your [armor].");
-				player.setStatusValue(StatusAffects.LethicesRapeTentacles, 3, 1);
+				player.changeStatusValue(StatusAffects.LethicesRapeTentacles, 3, 1);
 				dynStats("lus", 5);
 			}
 		}
@@ -4203,7 +4203,7 @@ public function spellPerkUnlock():void {
 //Hellfire deals physical damage to completely pure foes, 
 //lust damage to completely corrupt foes, and a mix for those in between.  Its power is based on the PC's corruption and level.  Appearance is slightly changed to mention that the PC's eyes and mouth occasionally show flicks of fire from within them, text could possibly vary based on corruption.
 public function hellFire():void {
-	if (moster.cor < 50) flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+	if (monster.cor < 50) flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	else flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	outputText("", true);
 	if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
