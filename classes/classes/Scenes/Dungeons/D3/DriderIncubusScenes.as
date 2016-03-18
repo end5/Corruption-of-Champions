@@ -17,7 +17,13 @@ package classes.Scenes.Dungeons.D3
 
 		public function encounterDriderIncbutt():void
 		{
-
+			clearOutput();
+			outputText("The door swings freely from the slightest touch, allowing you to push the well-worked portal open with ease. The view is astonishing. An open chamber big enough to house your entire village stretches away, filled with cavorting, glistening slaves of all shapes and races, locked in displays of unending, licentious delights. Lethice’s throne rises above it all, located at the back end of the room - the peak of this plane’s perversion. The corrupt queen hasn’t noticed you yet, but an eight-legged spider-man has, turning from a captive bee-girl with cruel pleasure in his eyes.");
+			outputText("\n\n<i>“Whoah there, Champion. Did you really think you could waltz into Lethice’s throne room unopposed?”</i> He clicks his teeth, almost chittering. <i>“I’m going to beat you. I’m going to bind you. And I’m going to drop you at her feet and bask in the glory of watching her transform you into a mindless, rutting beast.”</i> He skitters closer, abandoning his captive and raising a spear, malice glittering in his eyes.");
+			outputText("\n\nThe torchlight glitters on his coal-black skin, revealing another captive - this one strapped to his humanoid half’s middle. She’s a typical goblin by the looks of her, presently impaled on a writhing, demonic shaft that sprouts from where the drider’s chitin transforms into skin. He seems to pay her no regard as he advances. <i>“Why not surrender and spare your tender flesh from my spear?”</i>");
+			outputText("\n\nAs if. Looks like you’ll have to fight past him.");
+			
+			startCombat(new DriderIncubus());
 		}
 
 		public function spooderbuttGetsANewCockSleeve(hpVictory:Boolean, pcCameWorms:Boolean):void
@@ -239,12 +245,19 @@ package classes.Scenes.Dungeons.D3
 
 		public function driderDefeatMenu():void
 		{
+			var doneDriderbus:Boolean = false;
+			var doneGoblin:Boolean = false;
+			
 			menu();
 			if (flags[kFLAGS.DRIDERINCUBUS_KILLED] != 1 && flags[kFLAGS.DRIDERINCUBUS_FUCKED] != 1)
 			{
 				addButton(0, "Kill Drider", killDrider);
 				if (player.vaginas.length > 0) addButton(1, "Ride Drider", rideDrider);
 				if (player.cocks.length > 0) addButton(2, "Buttfuck Drider", buttfuckDrider);
+			}
+			else
+			{
+				doneDriderbus = true;
 			}
 
 			if (flags[kFLAGS.MITZI_RECRUITED] != 1)
@@ -258,14 +271,24 @@ package classes.Scenes.Dungeons.D3
 					}
 					if (player.vaginas.length > 0) addButton(7, "Goblin Licks", mitziEatsPussy);
 				}
-
 				addButton(8, "Recruit Goblin", recruitMitzi);
+				
+				if (doneDriderbus)
+				{
+					addButton(9, "Leave Goblin", afterDriderbuttFight);
+				}
 			}
-			addButton(9, "Next", afterDriderbuttFight);
+			else
+			{
+				doneGoblin = true;
+			}
+			
+			if (doneDriderbus && doneGoblin) afterDriderbuttFight();
 		}
 
 		public function afterDriderbuttFight():void
 		{
+			
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 

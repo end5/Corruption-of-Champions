@@ -21,6 +21,7 @@ package classes.Scenes.Dungeons.D3
 			this.tallness = 12 * 9;
 			
 			this.createCock(24, 5, CockTypesEnum.DEMON);
+			this.createBreastRow(8);
 			
 			this.balls = 2;
 			this.ballSize = 4;

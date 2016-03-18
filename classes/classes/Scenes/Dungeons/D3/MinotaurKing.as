@@ -14,10 +14,12 @@ package classes.Scenes.Dungeons.D3
 		{
 			this.a = "the ";
 			this.short = "minotaur king";
+			this.long = "";
 			
 			this.tallness = 12 * 14;
 			
 			this.createCock(24, 5, CockTypesEnum.HORSE);
+			this.createBreastRow(0);
 			
 			this.balls = 2;
 			this.ballSize = 4;
@@ -38,7 +40,7 @@ package classes.Scenes.Dungeons.D3
 			this.gems = 75 + rand(50);
 			this.level = 22;
 			
-			this.lustVuln = 0.6;
+			this.lustVuln = 0.15;
 			
 			this.drop = NO_DROP;
 
@@ -102,6 +104,20 @@ package classes.Scenes.Dungeons.D3
 		
 		override protected function performCombatAction():void
 		{
+			
+			if (_orgasms == 0 && lust >= 90)
+			{
+				lustDump();
+				combatRoundOver();
+				return;
+			}
+			else if (HPRatio() <= 0.3)
+			{
+				hpRestore();
+				combatRoundOver();
+				return;
+			}
+			
 			// Attempt dickslap if the player was stunned in the last round
 			if (_lastRoundStun)
 			{
@@ -121,14 +137,8 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				backhand();
-				battleaxe();
-				minoPheromones();
-			}
-
-			if (_orgasms == 0)
-			{
-
+				var atks:Array = [backhand, battleaxe, minoPheromones];
+				atks[rand(atks.length)]();
 			}
 
 			combatRoundOver();

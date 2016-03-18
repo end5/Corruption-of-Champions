@@ -4,6 +4,7 @@ package classes.Scenes.Dungeons.D3
 	import classes.StatusAffects;
 	import classes.Items.WeaponLib;
 	import classes.GlobalFlags.kFLAGS;
+	import flash.net.SharedObject;
 	
 	public class LethiceScenes extends BaseContent
 	{
@@ -19,7 +20,34 @@ package classes.Scenes.Dungeons.D3
 		private function saveExport():void
 		{
 			menu();
-			// 9999 todo
+			addButton(0, "Export", exportSaveData);
+		}
+		
+		private function exportSaveData():void
+		{
+			// This is turbo wankle style shit, but it'll work well enough for now.
+			
+			// 1. This will be a nightmare to get into CoC2 directly...
+			// 2. But I could throw down a shitty little converter SWF as an interim step.
+			// 3. It also avoids having to rewrite all the fuckin save code all over again to get the shit out in a better format *right now*
+			
+			var foundFreeFile:Boolean = false;
+			var baseFileName:String = "CoC_EndExport_";
+			var currFileName:String;
+			var attemptNum:int = 1;
+			
+			while (!foundFreeFile)
+			{
+				currFileName = baseFileName + String(attemptNum);
+				var sharedObject:SharedObject = SharedObject.getLocal(currFileName, "/");
+				if (sharedObject.size <= 100) foundFreeFile = true;
+				sharedObject.close();
+			}
+			
+			// Found a free file, throw it at the base save code by abusing the fuck out of Slot
+			getGame().saves.saveGameObject(currFileName, false);
+			
+			// Now would be a good time to pray this shit works.
 		}
 
 		public function LethiceScenes()

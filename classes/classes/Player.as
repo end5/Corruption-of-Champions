@@ -1781,6 +1781,20 @@ use namespace kGAMECLASS;
 				removeStatusAffect(StatusAffects.GardenerSapSpeed);
 			}
 			if (findStatusAffect(StatusAffects.VineHealUsed) >= 0) removeStatusAffect(StatusAffects.VineHealUsed);
+			if (findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0)
+			{
+				str += statusAffectv2(StatusAffects.DriderIncubusVenom);
+				removeStatusAffect(StatusAffects.DriderIncubusVenom);
+			}
+			if (findStatusAffect(StatusAffects.TaintedMind) >= 0) removeStatusAffect(StatusAffects.TaintedMind);
+			if (findStatusAffect(StatusAffects.PurpleHaze) >= 0) removeStatusAffect(StatusAffects.PurpleHaze);
+			if (findStatusAffect(StatusAffects.MinotaurKingMusk) >= 0) removeStatusAffect(StatusAffects.MinotaurKingMusk);
+			if (findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) removeStatusAffect(StatusAffects.MinotaurKingsTouch);
+			if (findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0) removeStatusAffect(StatusAffects.LethicesRapeTentacles);
+			if (findStatusAffect(StatusAffects.OnFire) >= 0) removeStatusAffect(StatusAffects.OnFire);
+			if (findStatusAffect(StatusAffects.LethicesShell) >= 0) removeStatusAffect(StatusAffects.LethicesShell);
+			if (findStatusAffect(StatusAffects.WhipSilence) >= 0) removeStatusAffect(StatusAffects.WhipSilence);
+			if (findStatusAffect(StatusAffects.PigbysHands) >= 0) removeStatusAffect(StatusAffects.PigbysHands);
 		}
 
 		public function consumeItem(itype:ItemType, amount:int = 1):Boolean {

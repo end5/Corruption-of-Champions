@@ -20,9 +20,11 @@ package classes.Scenes.Dungeons.D3
 			this.tallness = 12 * 9;
 			
 			this.createCock(24, 5, CockTypesEnum.DEMON);
+			this.createBreastRow(0);
 			
 			this.balls = 2;
 			this.ballSize = 4;
+			this.hoursSinceCum = 9999;
 			
 			this.hipRating = HIP_RATING_SLENDER;
 			this.buttRating = BUTT_RATING_TIGHT;
@@ -402,7 +404,7 @@ package classes.Scenes.Dungeons.D3
 			game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
 			
 			outputText(". Your body rebels against you under the unholy influence");
-			if (player.lust < 100) outputText(", but the effect is fleeting, thankfully You try to ignore the residual tingles. You can’t afford to lose this close to your goal!");
+			if (player.lust < 100) outputText(", but the effect is fleeting, thankfully. You try to ignore the residual tingles. You can’t afford to lose this close to your goal!");
 			else outputText(".");
 		}
 		

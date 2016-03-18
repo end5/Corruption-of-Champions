@@ -164,7 +164,14 @@ package classes.Scenes.Dungeons.D3
 			tRoom.RoomName = "northcourtyard";
 			tRoom.EastExit = "northeastcourtyard";
 			tRoom.WestExit = "northwestcourtyard";
+			tRoom.NorthExit = "throneroom";
 			tRoom.RoomFunction = northcourtyardRoomFunc;
+			rooms[tRoom.RoomName] = tRoom;
+			
+			tRoom = new room();
+			tRoom.RoomName = "throneroom";
+			tRoom.SouthExit = "northcourtyard";
+			tRoom.RoomFunction = throneRoom;
 			rooms[tRoom.RoomName] = tRoom;
 			
 			// North East Courtyard
