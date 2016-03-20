@@ -29,20 +29,21 @@ package classes.Scenes.Dungeons.D3
 			this.hipRating = HIP_RATING_SLENDER;
 			this.buttRating = BUTT_RATING_TIGHT;
 			
-			initStrTouSpeInte(100, 100, 70, 70);
-			initLibSensCor(85, 40, 100);
+			initStrTouSpeInte(65, 80, 90, 70);
+			initLibSensCor(66, 40, 100);
 			
-			this.weaponName = "fists";
-			this.weaponAttack = 1;
-			this.weaponVerb = "punch";
-			this.armorName = "wraps";
+			this.weaponName = "spear";
+			this.weaponAttack = 19;
+			this.weaponVerb = "lunge";
+			this.armorName = "chitin";
+			this.armorDef = 40;
 			
-			this.bonusHP = 800;
+			this.bonusHP = 500;
 			
 			this.gems = 75 + rand(50);
 			this.level = 22;
 			
-			this.lustVuln = 0.6;
+			this.lustVuln = 0.45;
 			
 			this.drop = NO_DROP;
 			
@@ -94,7 +95,7 @@ package classes.Scenes.Dungeons.D3
 				dropHpAndLust();
 			}
 			
-			if (rand(100) < lust)
+			if (rand(100) > lust + 10)
 			{
 				spearStrike();
 				outputText("\n\n");
@@ -129,8 +130,9 @@ package classes.Scenes.Dungeons.D3
 			if (_combatRound >= 3 && (_combatRound % 6 == 0 || _combatRound == 3)) constrictingThoughts();
 			else
 			{
-				var opts:Array = [arouseSpell, arouseSpell, purpleHaze];
-				if (player.findStatusAffect(StatusAffects.TaintedMind) < 0) opts.push(taintedMind);
+				var opts:Array = [arouseSpell, arouseSpell];
+				if (player.findStatusAffect(StatusAffects.TaintedMind) < 0 && !_seenResolute) opts.push(taintedMind);
+				if (!_seenResolute) opts.push(purpleHaze);
 				opts[rand(opts.length)]();
 			}
 		}
@@ -185,7 +187,7 @@ package classes.Scenes.Dungeons.D3
 			//Drider’s spear ignores armor and toughness completely.
 			outputText("The drider rears back, lancing out with his spear.");
 			
-			var damage:Number = str + weaponAttack;
+			var damage:Number = (str + weaponAttack) * 0.40;
 			
 			if (damage <= 0 || (combatMiss() || combatFlexibility()))
 			{
@@ -222,7 +224,7 @@ package classes.Scenes.Dungeons.D3
 					player.createStatusAffect(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
 				}					
 				
-				amount = 15;
+				amount = 30;
 				
 				if (player.str - amount < 1)
 				{
@@ -267,7 +269,7 @@ package classes.Scenes.Dungeons.D3
 						player.createStatusAffect(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
 					}					
 					
-					amount = 15;
+					amount = 30;
 					
 					if (player.str - amount < 1)
 					{
@@ -295,7 +297,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				var damage:Number = (str + weaponAttack) - rand(player.tou);
+				var damage:Number = (str + weaponAttack + 25) - rand(player.tou);
 				
 				if (damage > 0)
 				{
@@ -330,7 +332,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				var damage:Number = (str + weaponAttack) - rand(player.tou);
+				var damage:Number = (str + weaponAttack - 25) - rand(player.tou);
 				
 				if (damage > 0)
 				{
@@ -364,7 +366,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("He skitters forward and presses his attack, stabbing out with his spear once more.");
 			
 			//Use hit/dodge messages from above.
-			var damage:Number = str + weaponAttack;
+			var damage:Number = str + weaponAttack + 10 - rand(player.tou);
 			
 			if (damage <= 0 || (combatMiss() || combatFlexibility()))
 			{
@@ -401,7 +403,7 @@ package classes.Scenes.Dungeons.D3
 				outputText(" ache to be touched");
 			}
 			
-			game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+			game.dynStats("lus", (player.lib / 10 + player.cor / 10) + 15);
 			
 			outputText(". Your body rebels against you under the unholy influence");
 			if (player.lust < 100) outputText(", but the effect is fleeting, thankfully. You try to ignore the residual tingles. You can’t afford to lose this close to your goal!");
@@ -423,7 +425,7 @@ package classes.Scenes.Dungeons.D3
 		public function taintedMindAttackAttempt():void
 		{
 			outputText("You ready an attack, but find your hands groping your own body instead. Somehow the demon’s magic has made it impossible to strike at him, crossing wires that weren’t meant to be crossed. Frowning, you look down at your more aroused form, determined not to fall for this a second time.");
-			game.dynStats("lus", 10);
+			game.dynStats("lus", 15);
 		}
 		
 		//On same round timer as physical stun
@@ -435,16 +437,19 @@ package classes.Scenes.Dungeons.D3
 			//Resist, no new line
 			if (player.findPerk(PerkLib.Resolute) >= 0)
 			{
+				_seenResolute = true;
 				outputText(" You marshal your mental discipline and discard the errant thoughts.");
 			}
 			//Elsewise
 			else
 			{
 				outputText(" The intensity overwhelms your ability to act, arousing and stunning you.");
-				game.dynStats("lus", player.lib / 15 + player.cor / 15 + 8);
+				game.dynStats("lus", (player.lib / 15 + player.cor / 15) + 15);
 				player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
 			}
 		}
+		
+		private var _seenResolute:Boolean = false;
 		
 		private function purpleHaze():void
 		{
@@ -455,13 +460,14 @@ package classes.Scenes.Dungeons.D3
 			// 9999, scale avoidance off lust/lib/corr?
 			if (player.findPerk(PerkLib.Resolute) >= 0 || rand(3) >= 0)
 			{
+				if (player.findPerk(PerkLib.Resolute) >= 0) _seenResolute = true;
 				outputText(" You flex your considerable will and feel the concentrated mental filth slough off. Whatever his attack was, it failed!");
 			}
 			else
 			{
 				//Fail
 				outputText(" You concentrate to try and throw it off, but he overwhelms your mental defenses. Clouds of swirling pink filled with unsubtle erotic silhouettes fill your vision, effectively blinding you!");
-				game.dynStats("lus", 15);
+				game.dynStats("lus", 25);
 				player.createStatusAffect(StatusAffects.PurpleHaze, 2 + rand(2), 0, 0, 0);
 				player.createStatusAffect(StatusAffects.Blind, player.statusAffectv1(StatusAffects.PurpleHaze), 0, 0, 0);
 			}

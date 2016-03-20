@@ -7,6 +7,8 @@ package classes.Scenes.Dungeons.D3
 	import classes.CockTypesEnum;
 	import classes.PerkLib;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.internals.ChainedDrop;
+	import classes.internals.WeightedDrop;
 
 	public class MinotaurKing extends Monster
 	{
@@ -23,26 +25,29 @@ package classes.Scenes.Dungeons.D3
 			
 			this.balls = 2;
 			this.ballSize = 4;
+			this.hoursSinceCum = 9999;
 			
 			this.hipRating = HIP_RATING_SLENDER;
 			this.buttRating = BUTT_RATING_TIGHT;
 			
-			initStrTouSpeInte(100, 100, 70, 70);
-			initLibSensCor(85, 40, 100);
+			initStrTouSpeInte(100, 100, 50, 60);
+			initLibSensCor(66, 10, 100);
 			
-			this.weaponName = "fists";
-			this.weaponAttack = 1;
-			this.weaponVerb = "punch";
-			this.armorName = "wraps";
+			this.weaponName = "axe";
+			this.weaponAttack = 50;
+			this.weaponVerb = "swing";
+			this.armorName = "rags";
+			this.armorDef = 60;
 			
-			this.bonusHP = 800;
+			this.bonusHP = 850;
 			
 			this.gems = 75 + rand(50);
 			this.level = 22;
 			
-			this.lustVuln = 0.15;
+			this.lustVuln = 0.05;
 			
 			this.drop = NO_DROP;
+			drop = new WeightedDrop(consumables.PROMEAD, 1);
 
 			//I don’t know if we ever got multiple item drops set up for CoC. If we did, have this guy drop a five-stack of God’s Mead for the Lethice fight. Otherwise, perhaps drop a single item that will full heal once?
 			
@@ -88,6 +93,20 @@ package classes.Scenes.Dungeons.D3
 
 		override public function defeated(hpVictory:Boolean):void
 		{
+			if (_orgasms == 0 && !hpVictory)
+			{
+				lustDump();
+				combatRoundOver();
+				return;
+			}
+			
+			if (hpVictory)
+			{
+				hpRestore();
+				combatRoundOver();
+				return;
+			}
+			
 			game.d3.minotaurKing.theKingIsDeadLongLiveTheKing(hpVictory);
 		}
 
@@ -104,20 +123,6 @@ package classes.Scenes.Dungeons.D3
 		
 		override protected function performCombatAction():void
 		{
-			
-			if (_orgasms == 0 && lust >= 90)
-			{
-				lustDump();
-				combatRoundOver();
-				return;
-			}
-			else if (HPRatio() <= 0.3)
-			{
-				hpRestore();
-				combatRoundOver();
-				return;
-			}
-			
 			// Attempt dickslap if the player was stunned in the last round
 			if (_lastRoundStun)
 			{

@@ -33,7 +33,7 @@ package classes.Scenes.Dungeons.D3
 			var m:DriderIncubus = monster as DriderIncubus;
 
 			//Because I ran out of steam for writing more!
-			outputText("\n\nThe floor of Lethice’s throne room isn’t as cold as you would have thought against your");
+			outputText("The floor of Lethice’s throne room isn’t as cold as you would have thought against your");
 			if (hpVictory) outputText(" wounded");
 			else outputText(" flushed");
 			outputText(" cheek.");
@@ -86,7 +86,7 @@ package classes.Scenes.Dungeons.D3
 		{
 			clearOutput();
 
-			outputText("Your bindings are cut from you by something short and sharp, the point pressing hard enough that you worry it will score your [pc.skin]");
+			outputText("Your bindings are cut from you by something short and sharp, the point pressing hard enough that you worry it will score your [skin]");
 			if (player.skinType != 0) outputText(" through your [skinFurScales]");
 			outputText(". It doesn’t. Lethice is too skilled to physically damage what she sees as her future property. To think, you believed you’d be able to defeat her all by yourself, and now you’re on the floor, unable to stop her from handling your supine form as she will.");
 			outputText("\n\nThe webbing falls away, and a firm hand rolls you to your back for your first good look at your captor. She’s beautiful. You want to hate her. You want her to be an ugly, wretched hag, but she isn’t. Her face is perfectly proportioned and topped with luxurious purple hair. Curling demonic crowns grow from her temples like two halves of a majestic, white crown while smaller, nubbier growths protrude cutely from her forehead.");
@@ -141,7 +141,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				outputText(" judging by how hot your [pc.skin] feels, she’s not the only one overcome with randiness.");
+				outputText(" judging by how hot your [skin] feels, she’s not the only one overcome with randiness.");
 			}
 			outputText(" With each droplet that spills from her feminine crevice, your curiosity and instinctive desire spikes. The splatter of a droplet on the floor is like a lightning bolt of erotic energy to your brain.");
 			outputText("\n\nYou do the only thing you can when kneeling before a demon queen’s dripping snatch. You moan and extend your tongue, leaning forward with rapacious hunger. Lethice’s eyes slip away, and your gaze is filled with her puffy mons and purple-flushed lips. The dribbles journeying down her legs seem to slide against your very soul. The pink center of it all beckons for you to touch it, to taste it. Your [legs] quiver as you close in.");
@@ -410,7 +410,7 @@ package classes.Scenes.Dungeons.D3
 			//Kinathis shall do his best -with help from Fenoxo!
 			//Something something Mitzi puts that 3’ tongue to use on female PC
 
-			outputText("\n\nYou shrug and start stripping out of your [armor] while you have the chance. Demons aren’t exactly known for their trustworthiness, but she’s doing this as a show of strength. Resorting to trickery to beat a simple mortal might lower her subordinates’ opinions of her. If there’s one thing you’ve learned to count on with demons, it’s hubris.");
+			outputText("You shrug and start stripping out of your [armor] while you have the chance. Demons aren’t exactly known for their trustworthiness, but she’s doing this as a show of strength. Resorting to trickery to beat a simple mortal might lower her subordinates’ opinions of her. If there’s one thing you’ve learned to count on with demons, it’s hubris.");
 			outputText("\n\nThis goblin, like most of her kind, is obsessed with cock");
 			if (player.cocks.length > 0) outputText(" and while you do have one for her to lavish her attention upon");
 			else outputText(" and while you may lack such bulgy organs");
@@ -516,7 +516,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nGradually, the involuntary contractions running through your frame fade, leaving you still hard, still unsatisfied, and still standing there with your dick out in front of the sluttiest goblin you’ve seen");
 			if (flags[kFLAGS.TAMANI_MET] > 0) outputText(" since meeting Tamani");
 			outputText(". Even the breezes feel good on your dick.");
-			outputText("\n\nYou look over where an oiled up succubus with pert C-cups and wide-open pussy is winking at you. It’d be so easy to take her, to sink into the hilt and unload again and again until your [pc.balls] ran dry and your exhaustion overcame you.");
+			outputText("\n\nYou look over where an oiled up succubus with pert C-cups and wide-open pussy is winking at you. It’d be so easy to take her, to sink into the hilt and unload again and again until your [balls] ran dry and your exhaustion overcame you.");
 			outputText("\n\nMitzi actually snarls at the corrupted hussy, baring her own miniature fangs. A tail much like the succubus’s own has risen above her head, somehow making the little green girl look larger and more imposing. <i>“This is <b>my</b> cum,”</i> she hisses, grabbing your [cock biggest] and squeezing none too gently. <i>“<b>Mitzi’s new [master].</b>”</i>");
 			outputText("\n\nAmazingly, the demon backs off, fading into the arms of a nearby satyr.");
 			outputText("\n\nThen her breasts are compressing about you once more, wringing more ecstasy from your [cock biggest] than you knew it could give short of an orgasm. Echoes of your past almost-gasms combine with the swelteringly slick embrace enfolding you, making it difficult to do anything but moan for the miniature slut. Part of you wonders what her pussy must feel like if her tits can wring this much excitement from you. No wonder this emerald treasure has been locked away in Lethice’s throne room.");
@@ -714,7 +714,7 @@ package classes.Scenes.Dungeons.D3
 				else outputText(" give you a handjob");
 			}
 			outputText(". He floods you with his tainted seed, stuffing your passage until every nook and cranny is chock full of demonspunk, bathed in his reproductive corruption.");
-			outputText("\n\nYou go off with him, unsubtly triggered by the feeling of being so suitably and powerfully filled, not just by a wonderful, cunt-stroking cock but by the sinfully slippery love juice he pours into you, seemingly without end. You close your eyes and turn your [pc.hips] loose to buck as wildly as they wish, even if the violent spasm force torrential gouts of ivory goo to squirt from between your fluttering lips. It’s a");
+			outputText("\n\nYou go off with him, unsubtly triggered by the feeling of being so suitably and powerfully filled, not just by a wonderful, cunt-stroking cock but by the sinfully slippery love juice he pours into you, seemingly without end. You close your eyes and turn your [hips] loose to buck as wildly as they wish, even if the violent spasm force torrential gouts of ivory goo to squirt from between your fluttering lips. It’s a");
 			if (flags[kFLAGS.PC_FETISH] < 1 || player.hasVirginVagina() || player.cor <= 33) outputText("n unexpectedly");
 			outputText(" wonderful feeling, getting to cum in front of an audience like this.");
 			outputText("\n\nYou ride the waves of ecstasy just as you ride the gnarly pussy-pleaser that gave gave them to you. The sweaty, orgasmically writhing whore that you’ve become may be a long way from the");

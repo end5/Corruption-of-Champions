@@ -15,12 +15,12 @@ package classes.Scenes.Dungeons.D3
 		public function Lethice()
 		{
 			this.a = "";
-			this.short = "lethice";
+			this.short = "Lethice";
 			this.long = "";
 			
 			this.tallness = 12 * 9;
 			
-			this.createCock(24, 5, CockTypesEnum.DEMON);
+			this.createVagina(false, 3, 3);
 			this.createBreastRow(8);
 			
 			this.balls = 2;
@@ -29,20 +29,21 @@ package classes.Scenes.Dungeons.D3
 			this.hipRating = HIP_RATING_SLENDER;
 			this.buttRating = BUTT_RATING_TIGHT;
 			
-			initStrTouSpeInte(100, 100, 70, 70);
-			initLibSensCor(85, 40, 100);
+			initStrTouSpeInte(100, 100, 100, 100);
+			initLibSensCor(100, 40, 100);
 			
-			this.weaponName = "fists";
-			this.weaponAttack = 1;
-			this.weaponVerb = "punch";
+			this.weaponName = "whip";
+			this.weaponAttack = 25;
+			this.weaponVerb = "whip";
 			this.armorName = "wraps";
+			this.armorDef = 15;
 			
-			this.bonusHP = 800;
+			this.bonusHP = 650;
 			
 			this.gems = 75 + rand(50);
-			this.level = 22;
+			this.level = 25;
 			
-			this.lustVuln = 0.6;
+			this.lustVuln = 0.15;
 			
 			this.drop = NO_DROP;
 			
@@ -150,16 +151,18 @@ package classes.Scenes.Dungeons.D3
 
 		private function phase1():void
 		{
-			demonicArouse();
-			if (_roundCount % 10 == 3) rapetacles();
-			demonfire();
-			if (player.findStatusAffect(StatusAffects.Blind) < 0) wingbuffet();
+			var atks:Array = [demonicArouse, demonfire];
+			if (_roundCount % 10 == 3) atks.push(rapetacles);
+			if (player.findStatusAffect(StatusAffects.Blind) < 0) atks.push(wingbuffet);
+			atks[rand(atks.length)]();
 		}
 
 		private function demonicArouse():void
 		{
 			outputText("Lethice’s hands blur in a familiar set of arcane motions, similar to the magical gestures you’ve seen from the imps. Hers are a thousand times more intricate. Her slender fingers move with all the precision of a master artist’s brush, wreathed in sparks of black energy.");
-			game.dynStats("lus", player.lib / 10 + player.cor / 10 + 15);
+			var l:Number = player.lib / 10 + player.cor / 10 + 25;
+			if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+			game.dynStats("lus", l);
 	
 			if (player.lust <= 30) outputText("\n\nYou feel strangely warm.");
 			else if (player.lust <= 60) outputText("\n\nBlood rushes to your groin as a surge of arousal hits you, making your knees weak.");
@@ -221,7 +224,7 @@ package classes.Scenes.Dungeons.D3
 			//I can’t believe it’s not whitefire. Cannot be avoided/blocked. Medium damage.
 			outputText("Lethice narrows her eyes, focusing her mind with deadly intent. She snaps her fingers and a gout of black, twisting flames engulfs you!");
 
-			var damage:Number = 20;
+			var damage:Number = 100 + rand(25);
 			damage = player.takeDamage(damage);
 
 			outputText(" (" + damage + ")");
@@ -319,13 +322,23 @@ package classes.Scenes.Dungeons.D3
 				outputText("Unable to resist your sensual assault, Lethice lets loose a howl of frustration and swoops back to the earth, mounting her throne once again.");
 			}
 
-			outputText("\n\n<i>“I tire of this game!”</i> she shouts, grasping at the arms of her towering throne. Suddenly, her gaze snaps from you, to the horde of demons clamoring in the stands. <i>“What are you waiting for, fools!? Get [himHer]!”</i>");
+			outputText("\n\n<i>“I tire of this game!”</i> she shouts, grasping at the arms of her towering throne. Suddenly, her gaze snaps from you, to the horde of demons clamoring in the stands. <i>“What are you waiting for, fools!? Get [himher]!”</i>");
 			outputText("\n\nOh, shit. You look up in time to see a cavalcade of demonic flesh swooping down from on high, bodies practically tumbling one over the other to get at you. The horde takes every physical form imaginable: towering, hulking brutish males, inhumanly curvaceous succubi, and the reverse of both - not to mention hermaphrodites masculine and feminine - and all with every sort of transformation. Bestial creatures, dragon-like incubi, and succubi whose skins range the colors of the rainbow and so, so much more come piling down the throne hall in a ceaseless barrage of flesh and decadence. They won’t stop until they’ve dragged you to the ground and fucked you into submission!");
 
 			// 9999 reconfigure for the group
 			HP = eMaxHP();
 			lust = 10;
 			_fightPhase = 2;
+			a = "the ";
+			short = "demons";
+			plural = true;
+			pronoun1 = "they";
+			pronoun2 = "them";
+			pronoun3 = "their";
+			
+			if (findStatusAffect(StatusAffects.PhysicalDisabled) >= 0) removeStatusAffect(StatusAffects.PhysicalDisabled);
+			if (findStatusAffect(StatusAffects.AttackDisabled) >= 0) removeStatusAffect(StatusAffects.AttackDisabled);
+			
 			combatRoundOver();
 		}
 
@@ -340,6 +353,7 @@ package classes.Scenes.Dungeons.D3
 
 		private function demonLustMagic():void
 		{
+			var l:Number = 0;
 			outputText("Though the front rank of demons are compressed so tight against you by their cohorts that they can’t move, the second and third rings have more than ample room to move their arms about, tracing arcane runes in the air. You know you can resist the lust-magics of a mere demon, but so many at once...");
 
 			if (rand(100) >= player.lib / 2)
@@ -349,34 +363,41 @@ package classes.Scenes.Dungeons.D3
 			else if (player.lust <= 33)
 			{
 				outputText("\n\nYou try your hardest to push back the lustful, submissive thoughts that begin to permeate your mind, but against so many concentrated wills... even you can't hold back. You moan as the first hints of arousal spread through you, burning in your loins. What you wouldn't give for a fuck about now!");
-				game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+				l = player.lib / 10 + player.cor / 10 + 10;
+				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+				game.dynStats("lus", l);
 			}
 			else if (player.lust <= 66)
 			{
 				outputText("\n\nAt first, you try to think of something else... but in your state, that just ends up being sex: hot, dirty, sweaty fucking surrounded by a sea of bodies. With a gasp, you realize you've left yourself open to the demons, and they're all too happy to flood your mind with images of submission and wanton debauchery, trying to trick you into letting them take you!");
-				game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+				l = player.lib / 10 + player.cor / 10 + 10;
+				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+				game.dynStats("lus", l);
 			}
 			else
 			{
 				outputText("\n\nYou don't even try to resist anymore -- your mind is already a cornucopia of lustful thoughts, mixed together with desire that burns in your veins and swells in your loins, all but crippling your ability to resist. The demons only add to it, fueling your wanton imagination with images of hedonistic submission, of all the wondrous things they could do to you if you only gave them the chance. It's damn hard not to.");
-				game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+				l = player.lib / 10 + player.cor / 10 + 10
+				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+				game.dynStats("lus", l);
 			}
 		}
 
 		private function dirtyDancing():void
 		{
-			outputText("The demons closest to you are basically pinned between your body and those behind them, all surging forward to get at you - and half of them are being fucked or teased by the laggards, with cocks and over-sized clits thrusting with wild abandon. Nevertheless, the closest demons are just as determined as the others to make you theirs, even if their options are severely limited. So they do what they can: they dance and grind and thrust themselves against you, smearing your [pc.armor] with milk and feminine excitement and musky, salty pre-cum between showing you with ample, soft flesh and hard muscle.");
+			outputText("The demons closest to you are basically pinned between your body and those behind them, all surging forward to get at you - and half of them are being fucked or teased by the laggards, with cocks and over-sized clits thrusting with wild abandon. Nevertheless, the closest demons are just as determined as the others to make you theirs, even if their options are severely limited. So they do what they can: they dance and grind and thrust themselves against you, smearing your [armor] with milk and feminine excitement and musky, salty pre-cum between showing you with ample, soft flesh and hard muscle.");
 			if (rand(100) >= player.lib / 2)
 			{
 				outputText("\n\nYou push back as hard as you can, throwing back the whorish bodies trying to capture your attentions. Several succubi whine and moan at you, pouting that their lustful dances weren't satisfying to you -- like you just insulted them on a personal level. Others are quick to replace them, though, instantly filling the gaps you leave in the crushing tide of bodies.");
 			}
 			else
 			{
-				if (player.lust <= 33) outputText("\n\nYou try and push back, to ignore the lustful bodies and lurid performances going on around you, but the effect they have on you is undeniable -- heat spreads like wildfire through your [pc.skinFurScales], and your [pc.armor] suddenly feels a whole lot less comfortable.");
+				if (player.lust <= 33) outputText("\n\nYou try and push back, to ignore the lustful bodies and lurid performances going on around you, but the effect they have on you is undeniable -- heat spreads like wildfire through your [skinFurScales], and your [armor] suddenly feels a whole lot less comfortable.");
 				else if (player.lust <= 66) outputText("\n\nTry as you might to resist, the demons are having an effect on you! Your whole body is flushed with unbidden arousal, burning with lust for the demonic sluts pressing against you. The temptresses are almost enough to want to make you lay down your arms and bend one of them double for a good, hard fuck!");
 				else outputText("\n\nOh gods! The way their bodies undulate, caressing and cumming, moaning as they're fucked from behind and transfer all of that energy to you, makes your body burn with desire. It's almost too much to bear!");
-
-				game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+				var l:Number = player.lib / 10 + player.cor / 10 + 10;
+				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+				game.dynStats("lus", l);
 			}
 		}
 
@@ -442,7 +463,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else if (combatEvade())
 			{
-				outputText(" You at least manage to close your eyes before the wave of spooge hits you, splattering all over your [pc.armor].");
+				outputText(" You at least manage to close your eyes before the wave of spooge hits you, splattering all over your [armor].");
 				game.dynStats("lus", 5);
 			}
 			else
@@ -516,7 +537,7 @@ package classes.Scenes.Dungeons.D3
 			}
 
 			player.orgasm();
-			beginPhase3();
+			beginPhase3(true);
 		}
 
 		private function fuckDemon():void
@@ -527,7 +548,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nYou lunge on her the moment you see that vermillion slit opening, driving your [cock] to the hilt inside the sloppy twat and making the omnibus moan with delight. Her canid cock bobs up at full mast, poking at your [chest]");
 			if (player.hasFuckableNipples()) outputText(" until you give her a wicked grin and guide the tip inside your [nipple]");
 			else outputText(" and smearing your [skinFurScales] with pre");
-			outputText(". You grab her melon-sized tits and squeeze them as hard as you can while you hammer your [pc.hips] forward, taking advantage of the silky-wet vice of her twat to milk yourself to orgasm. She’s practically an ona-hole for you, only able to squirm around and moan while you pound away.");
+			outputText(". You grab her melon-sized tits and squeeze them as hard as you can while you hammer your [hips] forward, taking advantage of the silky-wet vice of her twat to milk yourself to orgasm. She’s practically an ona-hole for you, only able to squirm around and moan while you pound away.");
 			outputText("\n\nSuddenly, your entire body tenses, shivering with new sensation. You look over your shoulder in time to see another succubus crawling up behind you, running her tongue through the crack of your ass");
 			if (player.balls > 0) outputText(" and around your balls");
 			else outputText(" down to the base of your cock");
@@ -540,7 +561,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nShuddering at the thought, you grab your gear and stagger up and away, leaving the demons to finish each other off. Confident in your readiness, you advance on Lethice.");
 
 			player.orgasm();
-			beginPhase3();
+			beginPhase3(true);
 		}
 
 		private function rideCock():void
@@ -549,7 +570,7 @@ package classes.Scenes.Dungeons.D3
 
 			outputText("Considering the demons seem intent on having you get down and dirty with their defeated compatriot, you figure you might as well get the most out of the moment. Lethice doesn’t seem to be in any hurry to resume your battle, after all!");
 			outputText("\n\nYou give the buxom demon hermaphrodite down on her ass, letting her rest her head in the lap of another cow-girl demon who’s busy sucking off a two-cock’d incubus, and crawl up her shapely red body. <i>“Oooh,”</i> the omnibus coos as her throbbing red rocket is pressed between your bodies. <i>“Gonna go for a ride, Champion?”</i>");
-			outputText("\n\nDamn right you are. You grab her tits, sinking your fingers into the soft, crimson udders as you straddle her hips and grind your [pc.vagOrAss] against the demon’s tumescent shaft. She’s hung like a stud, rock hard and ready to roll before you even get near her pointed crown. You feel her hands grasp your [pc.hips], guiding you down until your [vagOrAss] is sinking onto her thick rod. Your belly bulges with the sheer length of cockflesh sliding into you, and your mind goes blank with overwhelming pleasure.");
+			outputText("\n\nDamn right you are. You grab her tits, sinking your fingers into the soft, crimson udders as you straddle her hips and grind your [vagOrAss] against the demon’s tumescent shaft. She’s hung like a stud, rock hard and ready to roll before you even get near her pointed crown. You feel her hands grasp your [hips], guiding you down until your [vagOrAss] is sinking onto her thick rod. Your belly bulges with the sheer length of cockflesh sliding into you, and your mind goes blank with overwhelming pleasure.");
 			outputText("\n\nIt takes you a moment to recover from the initial shock, but when you do, you start moving with a vengeance, bouncing on the demonic doggy-cock with mounting speed. Its owner moans and squirms beneath you, too weakened from your fight to do anything but go along for the ride. Still, her big, black nipples are hard as rocks in your hand, and her pussy soaks both your thighs in her ever-rising excitement.");
 			outputText("\n\nSuddenly, your entire body tenses, shivering with new sensation. You look over your shoulder in time to see another succubus crawling up behind you,");
 			if (player.hasVagina()) outputText(" licking at your [cunt]");
@@ -563,7 +584,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nYou shove the demoness away, suddenly reminded of her true nature. At least for now, you’re sated. Confident in your readiness, you advance on Lethice.");
 
 			player.orgasm();
-			beginPhase3();
+			beginPhase3(true);
 		}
 
 		private function p2Heal():void
@@ -574,20 +595,22 @@ package classes.Scenes.Dungeons.D3
 			if(player.armorName == "skimpy nurse's outfit") temp *= 1.2;
 			game.HPChange(temp,false);
 
-			beginPhase3();
+			beginPhase3(true);
 		}
 
 		private function p2Next():void
 		{
 			clearOutput();
 
-			outputText("\n\n<i>“Useless whelps,”</i> Lethice growls, rising back to her feet and spreading her { if lost by physical 1st: tattered} draconic wings behind herself, letting them flare out to their full majesty. She grabs a whip from her flank and uncoils it with a snap, cracking it just over your head. Black fire seethes on the length of the whip, burning with corrupt magics that make the air reek of sex and desire around her.");
+			outputText("<i>“Useless whelps,”</i> Lethice growls, rising back to her feet and spreading her");
+			if (_wingsDestroyed) outputText(" tattered");
+			outputText(" draconic wings behind herself, letting them flare out to their full majesty. She grabs a whip from her flank and uncoils it with a snap, cracking it just over your head. Black fire seethes on the length of the whip, burning with corrupt magics that make the air reek of sex and desire around her.");
 			outputText("\n\n<i>“Very well, Champion,”</i> she snarls, throwing aside her goblet of Lethicite. The crystals go scattering as the vessel shatters on the flagstone, and in an instant even the defeated demons are scrambling for the gems, making the floor you fight on a rabid hell to walk through. <i>“I see I’ll have to finish you myself! Let us see what you’re really made of... before I rape your soul out of your body!”</i>");
 
-			beginPhase3();
+			beginPhase3(false);
 		}
 
-		private function beginPhase3():void
+		private function beginPhase3(doLethNext:Boolean):void
 		{
 			// 9999 configure phase 3
 
@@ -595,7 +618,18 @@ package classes.Scenes.Dungeons.D3
 			HP = eMaxHP();
 			lust = 10;
 			_defMode = 1;
-			combatRoundOver();
+			
+			a = "";
+			short = "Lethice";
+			plural = false;
+			pronoun1 = "she";
+			pronoun2 = "her";
+			pronoun3 = "her";
+			
+			game.menu();
+			
+			if (doLethNext) game.addButton(0, "Next", p2Next);
+			else combatRoundOver();
 		}
 
 		private function phase3():void
@@ -603,7 +637,7 @@ package classes.Scenes.Dungeons.D3
 			//Every turn she boosts her defense against lust or HP depending on how the PC damaged her. 
 			
 			// If you hit her with a physical attack, the next turn she’ll have massive evasion (200 speed or some shit) and massively boosted defense. 
-			// GEDNOTE: We can't really do this- CoCs combat was NEVER designed with that in mind wrt to enemy stats, it would mean modifying EVERY player attack, spell and special to account for it.
+			// GEDNOTE: We can't really do this- CoCs combat was NEVER designed with that in mind wrt to enemy stats, it would mean modifying EVERY player attack, spell and special to account for it. However, I figured out a potential workaround that covers this so....
 			
 			// If you hit her with a lusty-damaging attack, she will become immune to lust damage for one turn. Might also have other special resistances too. Will detail in text in the “Reactions” section.
 			
@@ -633,8 +667,6 @@ package classes.Scenes.Dungeons.D3
 
 				atks[rand(atks.length)]();
 			}
-
-			combatRoundOver();
 		}
 
 		private function parasiteThrowingStars():void
@@ -659,7 +691,9 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+				var l:Number = player.lib / 10 + player.cor / 10 + 10
+				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+				game.dynStats("lus", l);
 				
 				var damage:Number = str + weaponAttack - rand(player.tou);
 				damage = player.takeDamage(damage);

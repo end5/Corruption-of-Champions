@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.D3
 {
 	import classes.BaseContent;
+	import classes.Monster;
 	import classes.StatusAffects;
 	import classes.Items.WeaponLib;
 	import classes.GlobalFlags.kFLAGS;
@@ -42,6 +43,7 @@ package classes.Scenes.Dungeons.D3
 				var sharedObject:SharedObject = SharedObject.getLocal(currFileName, "/");
 				if (sharedObject.size <= 100) foundFreeFile = true;
 				sharedObject.close();
+				attemptNum++;
 			}
 			
 			// Found a free file, throw it at the base save code by abusing the fuck out of Slot
@@ -71,11 +73,22 @@ package classes.Scenes.Dungeons.D3
 
 		private function goFight():void
 		{
-			outputText("\n\n<i>“So be it.”</i> Lethice rises from her throne, pacing pensively back and forth. Wings unfurl from behind her back, casting you into the darkness of her demonic shadow. <i>“You seek a fight with the Queen of Mareth, and you shall have one.”</i> With feline grace, she launches herself dozens of feet into the air, flips forward, and snaps her wings out to catch her midair. <i>“My pets! My lovelies! Watch what this mortal’s foolishness earns "+ player.mf("him", "her") +"!”</i>");
+			outputText("<i>“So be it.”</i> Lethice rises from her throne, pacing pensively back and forth. Wings unfurl from behind her back, casting you into the darkness of her demonic shadow. <i>“You seek a fight with the Queen of Mareth, and you shall have one.”</i> With feline grace, she launches herself dozens of feet into the air, flips forward, and snaps her wings out to catch her midair. <i>“My pets! My lovelies! Watch what this mortal’s foolishness earns "+ player.mf("him", "her") +"!”</i>");
 			outputText("\n\nScattered applause breaks out as Lethice wings around to engage you.");
 			if (!player.canFly()) outputText(" Good thing she’s not the only one that can fly!");
 			outputText("\n\n<b>It’s a fight!</b>");
-			startCombat(new Lethice());
+			
+			var m:Lethice = new Lethice();
+			if (player.wingType != 0)
+			{
+				m.createStatusAffect(StatusAffects.PhysicalDisabled, 0, 0, 0, 0);
+				m.createStatusAffect(StatusAffects.AttackDisabled, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.MINOTAURKINGS_TOUCH] == 1)
+			{
+				player.createStatusAffect(StatusAffects.MinotaurKingsTouch, 0, 0, 0, 0);
+			}
+			startCombat(m);
 		}
 
 		public function defeated(hpVictory:Boolean):void
@@ -129,7 +142,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nYou’re already hard as a rock, your");
 			if (player.cocks.length == 1) outputText(" [cock]");
 			else outputText(" cocks");
-			outputText(" [cocks] pushing uncomfortably against your [pc.armor]. Deciding she’s had enough of an ass-beating, you shrug out of your gear and grab your prick, letting it flop mightily between Lethice’s up-turned cheeks. She gasps, clawing her fingers into the seat of her throne but finding no purchase as your [pc.hips] bear down on her. After the spanking you’ve given her, though, Lethice is too lust-addled and weak-kneed to do anything but whimper and lift her spaded tail like a bitch in heat, all but inviting you to plow your cock into her sweet demon’s cunny.");
+			outputText(" [cocks] pushing uncomfortably against your [armor]. Deciding she’s had enough of an ass-beating, you shrug out of your gear and grab your prick, letting it flop mightily between Lethice’s up-turned cheeks. She gasps, clawing her fingers into the seat of her throne but finding no purchase as your [hips] bear down on her. After the spanking you’ve given her, though, Lethice is too lust-addled and weak-kneed to do anything but whimper and lift her spaded tail like a bitch in heat, all but inviting you to plow your cock into her sweet demon’s cunny.");
 
 			if (player.cocks.length == 1)
 			{
@@ -153,24 +166,24 @@ package classes.Scenes.Dungeons.D3
 
 			outputText("Lethice is primed and ready, spanked into submission twice over and drooling with her eagerness for a victorious fucking. You have to wonder when the last time this haughty bitch was put on the bottom - how long has she gotten to play top dog, with nobody to tell her otherwise?");
 			
-			outputText("\n\nGrinning to yourself, you decide it’s high time you put Lethice in her place. You grab your [pc.cock] and drag it through the sodden valley between her legs, slathering yourself in the steaming fuck-juice her first orgasm’s left behind before bringing your [pc.cockHead] to rest firmly between the puffy lips of Lethice’s pink fuckhole.");
+			outputText("\n\nGrinning to yourself, you decide it’s high time you put Lethice in her place. You grab your [cock] and drag it through the sodden valley between her legs, slathering yourself in the steaming fuck-juice her first orgasm’s left behind before bringing your [cockHead] to rest firmly between the puffy lips of Lethice’s pink fuckhole.");
 			
 			outputText("\n\nBefore you can do anything else, Lethice manages one final act of defiance and thrusts her hips back against your tumescent shaft, taking you to the hilt in one sudden swoop. You gasp with a mix of surprise and absolute, overwhelming pleasure, having to grab her red flanks to keep from being pushed off the dias - or pushed over the edge to orgasm. You punish her would-be transgression with a firm spank, sending her ass-cheeks quaking around your buried shaft and making the sodden, silky sheath around your prick squeeze wonderfully tight.");
 			
-			outputText("\n\nLethice’s wings beat weakly against the throne, but her tail swishes around your [pc.chest] - a clear sign she likes everything you’re doing to her. You grin and give the slender appendage a good yank, just enough to make its owner moan and grind her hips firmly against your crotch. Keeping the other hand on her shining-red rump to steady her, you start to pull back out, slowly taking your shaft back through every inch of her inhumanly wet twat. You withdraw all the way back, until just your [pc.cockHead] is spreading her pussy open. Her cavernous hole seems to be sucking you back in before you can blink, though, and before you know it you’re starting pound away at the demoness’s upraised ass with abandon.");
+			outputText("\n\nLethice’s wings beat weakly against the throne, but her tail swishes around your [chest] - a clear sign she likes everything you’re doing to her. You grin and give the slender appendage a good yank, just enough to make its owner moan and grind her hips firmly against your crotch. Keeping the other hand on her shining-red rump to steady her, you start to pull back out, slowly taking your shaft back through every inch of her inhumanly wet twat. You withdraw all the way back, until just your [cockHead] is spreading her pussy open. Her cavernous hole seems to be sucking you back in before you can blink, though, and before you know it you’re starting pound away at the demoness’s upraised ass with abandon.");
 			
 			outputText("\n\nYou just can’t resist Lethice’s sex - she’s positively addictive, so tight yet so soft and welcoming inside that you could positively lose yourself in fucking her, day and night, forever and ever. Her pussy is magic around your member, so much so that you can barely restrain yourself from just hilting inside her and spilling your seed. You grab at Lethice’s hips, trying to anchor yourself, to hold back from the brink... but as if she knows what you’re trying to do, the demoness wails and throws back her head, sable locks tossed across your hands as she gives voice to her absolute, climactic ecstasy.");
 			
-			outputText("\n\nLethice’s orgasm treats you to a whole new kind of sensation. A wave of feminine slime floods past your [pc.cock], lubing the demon’s slit up like never before and squirting a thick, musky feminine slime across her crotch and your pistoning hips. Your cock instantly finds itself in a firm, lube-slicked grip, being massaged and milking you for all you’re worth as the fallen queen surrenders to your sexual prowess. You try and hold back with all your might, determined not to let the defeated demon dictate when you cum.");
+			outputText("\n\nLethice’s orgasm treats you to a whole new kind of sensation. A wave of feminine slime floods past your [cock], lubing the demon’s slit up like never before and squirting a thick, musky feminine slime across her crotch and your pistoning hips. Your cock instantly finds itself in a firm, lube-slicked grip, being massaged and milking you for all you’re worth as the fallen queen surrenders to your sexual prowess. You try and hold back with all your might, determined not to let the defeated demon dictate when you cum.");
 			
-			outputText("\n\nRiding out her climax takes every ounce of willpower you have left, but in the end, it’s worth the strain just to make sure that only when Lethice has completely and totally given in, surrendered her body to you in a cascade of fem-cum... only then do you slam your hips hard against her battered ass, driving your [pc.cock] to the hilt in her quivering quim before unleashing your load deep in Lethice’s womb, flooding her twat with every last drop of cum you’ve got.");
+			outputText("\n\nRiding out her climax takes every ounce of willpower you have left, but in the end, it’s worth the strain just to make sure that only when Lethice has completely and totally given in, surrendered her body to you in a cascade of fem-cum... only then do you slam your hips hard against her battered ass, driving your [cock] to the hilt in her quivering quim before unleashing your load deep in Lethice’s womb, flooding her twat with every last drop of cum you’ve got.");
 			
 			outputText("\n\nWhen you’re done, you stagger back with a victorious howl of triumph. Cum drools in languid rivulets from Lethice’s thoroughly-bred pussy, pooling on the ground and intermixing with her own vast release of fem-cum. She’s completely motionless on the throne, save for ragged breaths and gasps of echoing pleasure. One of her hands absently tugs at her clit, stirring up the cascade of juices plastering her sex.");
 			
 			outputText("\n\nWith a smirk, you grab Lethice by the hips and yank her off the throne once and for all, letting the well-fucked slut marinate in the pool of cum you’ve left on the floor. She gives a final gasp of unexpected pleasure, collapsing beside the throne with a mighty beat of her wings. Content in your final victory, you swing yourself into her throne in her stead, letting Lethice’s half-conscious head rest against your leg. The other demons look positively");
 			if (player.cor >= 66) outputText(" gleeful");
 			else outputText(" shocked");
-			outputText(" at what you’ve done, but none dare challenge the Champion in [pc.hisHer] moment of victory.");
+			outputText(" at what you’ve done, but none dare challenge the Champion in [hisHer] moment of victory.");
 			
 			outputText("\n\nAnd now, you’ve got a choice to make...");
 
@@ -184,28 +197,28 @@ package classes.Scenes.Dungeons.D3
 
 			outputText("As tempting as that drooling slit might be, you’ve got other plans for the Demon Queen. You grind your hips through the reddened, sensitive valley of her rump, making sure to slather up in the drenched swamp of her eager pussy. Lethice actually tries to push back against you, to take your throbbing cock when your crown parts her lips, but another rough spank and a push down into the throne stops that. This is <i>your</i> victory, and you’re not letting her decide how it goes down!");
 			
-			outputText("\n\nInstead, you grab your schlong and press the [pc.cockHead] into the dark, tight ring of the demoness’s pert behind. She gasps and squirms, tail flicking weakly at you in protest, but there’s not a damn thing she can do to stop you now. Slowly, steadily, you push your [pc.hips] forward against the resistant but weakened grip of Lethice’s ass. She tries to push you out on basic instinct, but a few extra spanks have her opening up and screaming your name as you drive your shaft on home.");
+			outputText("\n\nInstead, you grab your schlong and press the [cockHead] into the dark, tight ring of the demoness’s pert behind. She gasps and squirms, tail flicking weakly at you in protest, but there’s not a damn thing she can do to stop you now. Slowly, steadily, you push your [hips] forward against the resistant but weakened grip of Lethice’s ass. She tries to push you out on basic instinct, but a few extra spanks have her opening up and screaming your name as you drive your shaft on home.");
 			
-			outputText("\n\nShe cries out in pain and pleasure as she’s speared on your [pc.cock], ass forced wide open to accept your throbbing manhood. Her mouth hangs open in a contorted look of shock and boundless pleasure, not even capable of screaming anymore by the time you bottom out inside her. Even the sultry shapeshifter seems unable, or perhaps unwilling, to adapt her ass to better suit your cock - she’s no different from a whimpering human virgin.");
+			outputText("\n\nShe cries out in pain and pleasure as she’s speared on your [cock], ass forced wide open to accept your throbbing manhood. Her mouth hangs open in a contorted look of shock and boundless pleasure, not even capable of screaming anymore by the time you bottom out inside her. Even the sultry shapeshifter seems unable, or perhaps unwilling, to adapt her ass to better suit your cock - she’s no different from a whimpering human virgin.");
 			
 			outputText("\n\nYou give her ass another appreciative spank, gasping at the way her asshole crunches down on your cock so hard even you can’t help but grunt with rising pleasure. Slowly, her body recovers, relaxing enough for you to move a little. You slowly piston your hips back out until just your cockhead remains buried in her ass, keeping her spread open. Another spank nearly pops you out of her, squeezed out by how hard she contracts - and this time she screams again, burying her face in the cushions of the throne as if to hide her shame and pleasure from her followers.");
 			
-			outputText("\n\nContent in Lethice’s complete and utter humiliation, you pick up the pace, starting to really fuck that demonic hole. Your [pc.cock] slides eagerly back inside her, spreading those tight, silken walls back out before they can recover from the last thrust.");
+			outputText("\n\nContent in Lethice’s complete and utter humiliation, you pick up the pace, starting to really fuck that demonic hole. Your [cock] slides eagerly back inside her, spreading those tight, silken walls back out before they can recover from the last thrust.");
 			
 			outputText("\n\n<i>“How do you like your queen now?”</i> you shout to the demon horde around you as you sodomize Lethice in full view of them all. Some of them actually cheer, but most take that as encouragement to start fucking each other, surrendering to the building lust that’s permeating the air around their defeated queen. You just laugh and jackhammer your hips, pounding away at the spasming demonic hole until its owner’s cries fade to a constant, wordless moan.");
 			
-			outputText("\n\nHer ass is like a silken vice around your [pc.cock], so tight and yet so warm and hungry for more that you can barely restrain yourself from just hilting inside her and spilling your seed. You grab at Lethice’s hips, trying to anchor yourself, to hold back from the brink... but as if she knows what you’re trying to do, the demoness wails and throws back her head, sable locks tossed across your hands as she gives voice to her absolute, climactic ecstasy.");
+			outputText("\n\nHer ass is like a silken vice around your [cock], so tight and yet so warm and hungry for more that you can barely restrain yourself from just hilting inside her and spilling your seed. You grab at Lethice’s hips, trying to anchor yourself, to hold back from the brink... but as if she knows what you’re trying to do, the demoness wails and throws back her head, sable locks tossed across your hands as she gives voice to her absolute, climactic ecstasy.");
 			
 			outputText("\n\nLethice’s orgasm treats you to a whole new kind of sensation. A flood of feminine slime slathers your thighs as she orgasms, squirting a thick, musky feminine slime across her crotch and your pistoning hips. Your cock, meanwhile, is massaged and groped with feverish ferocity, milking you for all you’re worth as the fallen queen surrenders to your sexual prowess. You try and hold back with all your might, determined not to let the defeated demon dictate when you cum.");
 			
-			outputText("\n\nRiding out her climax takes every ounce of willpower you have left, but in the end, it’s worth the strain just to make sure that only when Lethice has completely and totally given in, surrendered her body to you in a cascade of fem-cum... only then do you slam your hips hard against her battered ass, driving your [pc.cock] to the hilt in her quivering asshole before unleashing your load deep in the demoness’s bowels, flooding her butt with every last drop of cum you’ve got.");
+			outputText("\n\nRiding out her climax takes every ounce of willpower you have left, but in the end, it’s worth the strain just to make sure that only when Lethice has completely and totally given in, surrendered her body to you in a cascade of fem-cum... only then do you slam your hips hard against her battered ass, driving your [cock] to the hilt in her quivering asshole before unleashing your load deep in the demoness’s bowels, flooding her butt with every last drop of cum you’ve got.");
 			
 			outputText("\n\nWhen you’re done, you stagger back with a victorious howl of triumph. Cum drools in languid rivulets from Lethice’s thoroughly-fucked ass, pooling on the ground and intermixing with her own vast release of fem-cum. She’s completely motionless on the throne, save for ragged breaths and gasps of echoing pleasure.");
 			
 			outputText("\n\nWith a contemptuous smirk, you push Lethice off her throne once and for all, letting the sodomized slut marinate in the pool of cum you’ve left on the floor. Content in your final victory, you swing yourself into her throne{ and prop your feet up on the Demon Queen’s prostrate back, smearing her face down in your seed}. The demons look positively");
 			if (player.cor >= 66) outputText(" gleeful");
 			else outputText(" shocked");
-			outputText(" at what you’ve done, but none dare challenge the Champion in [pc.hisHer] moment of victory.");
+			outputText(" at what you’ve done, but none dare challenge the Champion in [hisHer] moment of victory.");
 			
 			outputText("\n\nAnd now, you’ve got a choice to make...");
 
@@ -216,12 +229,12 @@ package classes.Scenes.Dungeons.D3
 		{
 			clearOutput();
 
-			outputText("You smirk down at Lethice’s winged back and reddened ass, letting your multiple cocks tell her what’s in store. Your [pc.cock] presses against the tight, dark ring of her asshole while the");
+			outputText("You smirk down at Lethice’s winged back and reddened ass, letting your multiple cocks tell her what’s in store. Your [cock] presses against the tight, dark ring of her asshole while the");
 			if (player.cocks.length == 2) outputText(" other");
 			else outputText(" next");
 			outputText(" member sloppily nestles between the lips of her pussy, slathering its crown with demonic juices. Lethice can only groan and weakly struggle against your firm, dominant hand when she realizes what you intend.");
 			
-			outputText("\n\nRelentlessly, remorselessly, you push your [pc.hips] forward against the desperate resistance of Lethice’s tight ass, and into the sloppy, welcoming embrace of her pussy. With a final, sudden release, you find yourself almost falling forward into her, slapping your hips against her sore rump. She cries out in pain and pleasure as she’s speared in both holes, spread wide open around your throbbing manhoods. Her mouth hangs open in a contorted look of shock and boundless pleasure, not even capable of screaming anymore by the time you bottom out inside her. Even the sultry shapeshifter seems unable, or perhaps unwilling, to adapt her body to the sudden double penetration.");
+			outputText("\n\nRelentlessly, remorselessly, you push your [hips] forward against the desperate resistance of Lethice’s tight ass, and into the sloppy, welcoming embrace of her pussy. With a final, sudden release, you find yourself almost falling forward into her, slapping your hips against her sore rump. She cries out in pain and pleasure as she’s speared in both holes, spread wide open around your throbbing manhoods. Her mouth hangs open in a contorted look of shock and boundless pleasure, not even capable of screaming anymore by the time you bottom out inside her. Even the sultry shapeshifter seems unable, or perhaps unwilling, to adapt her body to the sudden double penetration.");
 			
 			outputText("\n\nFor now, at least, Lethice is taking this like a mere human. You give her ass another appreciative spank, gasping at the way her holes crunch down on your cocks, slathering the lower one with slick juices and squeezing the top so hard even you can’t help but grunt with rising pleasure. Slowly, her body recovers, relaxing enough for you to move a little, slowly pistoning your hips back out until just your cockheads remain buried in her holes. Another spank nearly pops you out of her, squeezed out by how hard she contracts - and this time she screams again, burying her face in the cushions of the throne as if to hide her shame and pleasure from her followers.");
 			
@@ -251,14 +264,14 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\nBut she’s not. Queen Lethice is a sick mockery of their purity - the purity of the world you left behind. At least now she’ll never hurt anyone again. Not much of a queen, lying on her knees and reeling from the fight. She’s a plaything for you to use and discard, a living promise of one final climactic victory before you complete your quest. Smiling to yourself at the thought, you");
 			if (!player.isNaga()) outputText(" step");
 			else outputText(" slither");
-			outputText(" forward, pulling your [pc.armor] off as you loom over the defeated demoness.");
+			outputText(" forward, pulling your [armor] off as you loom over the defeated demoness.");
 			
 			outputText("\n\n<i>“So that’s it?”</i> Lethice manages to groan, even as you push her over. She rolls onto her back, draconic wings spreading out around her like pools of midnight. <i>“You’re not so different from us after all. Go ahead, take me! Show just how far you’ve fallen!”</i>");
 			
 			outputText("\n\n");
 			if (player.cor < 66) outputText("Scowling at the haughty bitch’s implications");
 			else outputText("Laughing right in the bitch’s face");
-			outputText(", you swing a [pc.leg] over her and straddle her shoulders, shutting her up with a face-full of [pc.cunt]. Lethice splutters and squirms under you, kicking her legs up in a pitiful show of resistance. Using your [pc.knees], you pin her arms and wings to the flagstone floor while you grab her by the horns, forcing her face up into your crotch. After a few moments, the demoness’s resistance falters, and you feel her full lips start to move. Some demonic instinct to just give in to sex, you think to yourself... that, or Lethice might just have a subby streak under all that bravado!");
+			outputText(", you swing a [leg] over her and straddle her shoulders, shutting her up with a face-full of [cunt]. Lethice splutters and squirms under you, kicking her legs up in a pitiful show of resistance. Using your [knees], you pin her arms and wings to the flagstone floor while you grab her by the horns, forcing her face up into your crotch. After a few moments, the demoness’s resistance falters, and you feel her full lips start to move. Some demonic instinct to just give in to sex, you think to yourself... that, or Lethice might just have a subby streak under all that bravado!");
 			
 			outputText("\n\nEither way, you’re treated to a kiss right on your lower lips, spreading them ever-so-slightly apart so that Lethice’s slender tongue can slide inside. You moan,");
 			if (player.biggestTitSize() >= 2) outputText(" cupping a tit");
@@ -269,15 +282,15 @@ package classes.Scenes.Dungeons.D3
 			
 			outputText("\n\nLetting her continue on her way, you glance up to the remaining demons in the stands, and the horde flopping around the floor more towards the door. They hoot and holler, stroking their cocks or brazenly fingering themselves, urging you to claim your conquest any way you want. Clearly Lethice isn’t too well-loved, it seems - or demons just value voyeurism more than loyalty. Not surprising, but your heart still hammers all the harder for the added encouragement.");
 			
-			outputText("\n\nYour [pc.hips] rock back and forth, smearing the demon’s chin with musky slime");
-			if (player.hasCock()) outputText(" and dragging your [pc.cock] across her face, smearing pre all through her hair");
+			outputText("\n\nYour [hips] rock back and forth, smearing the demon’s chin with musky slime");
+			if (player.hasCock()) outputText(" and dragging your [cock] across her face, smearing pre all through her hair");
 			outputText(". She keeps wriggling under you, trying to rest herself free of your pin, but you’re relentless in your determination: she’s not moving from this spot until you cum all over her face!");
 			
 			outputText("\n\n<i>“Lick harder, bitch!”</i> you shout, giving in to your dominant side and bucking your hips against Lethice’s demonic tongue.");
 			
 			outputText("\n\nShe does, and you instantly regret your command. The tongue buried inside you suddenly changes in texture, growing rings of concentric, rounded nubs all along its length that rub viciously against your walls with even the slightest motion, and she’s more than happy the thrust deep inside you, pounding away like a proper cock... but with all the flexibility of a tentacle, coiling around itself and exploring every inch of pussy it can get. Under that kind of pressure, you can’t help but moan and gasp, putting a hand on your belly and able to feel her tongue-cock inside yourself. Your flesh bulges obscenely, straining to contain Lethice’s immense cock.");
 			
-			outputText("\n\nUnder that kind of treatment, it doesn’t take long for you to reach your limit. With a shrill cry that echoes thunderously through the throne room, you give voice to your climax. Femcum pours freely down your thighs, drenching Lethice’s face and leaving her gasping for breath! The erstwhile queen’s long since given up struggling, surrendering to her fate as you positively drown her in your [pc.cunt]. Her tongue stays buried to the hilt inside you, letting you bounce and grind on the nubby shaft to your heart’s content.");
+			outputText("\n\nUnder that kind of treatment, it doesn’t take long for you to reach your limit. With a shrill cry that echoes thunderously through the throne room, you give voice to your climax. Femcum pours freely down your thighs, drenching Lethice’s face and leaving her gasping for breath! The erstwhile queen’s long since given up struggling, surrendering to her fate as you positively drown her in your [cunt]. Her tongue stays buried to the hilt inside you, letting you bounce and grind on the nubby shaft to your heart’s content.");
 			
 			outputText("\n\nWhen the last shivering vestiges of orgasm finally pass, you sigh with satisfaction and stagger");
 			if (player.isBiped()) outputText(" to your feet");
@@ -316,9 +329,9 @@ package classes.Scenes.Dungeons.D3
 			
 			if (player.hasCock())
 			{
-				outputText("\n\nYanking off your [pc.armor], you grab your [pc.cock] and let the hardening slab of meat flop into the growing valley of Lethice’s cleavage. The Demon Queen licks her lips at the sight of it, her dark eyes gleaming hungrily. You have to give her another rough push down, putting the demoness back in her place: she’s not in charge here!");
+				outputText("\n\nYanking off your [armor], you grab your [cock] and let the hardening slab of meat flop into the growing valley of Lethice’s cleavage. The Demon Queen licks her lips at the sight of it, her dark eyes gleaming hungrily. You have to give her another rough push down, putting the demoness back in her place: she’s not in charge here!");
 				
-				outputText("\n\nHer back goes flat against the flagstone, making her grunt with surprise, but she just giggles and cups her breasts, inviting you to ravish the slip of flesh between them. Her tits are two plump orbs now, sinfully soft and jiggling with every one of their owner’s quickened breaths. You ram your hips forward, more than happy to take advantage of the quivering valley you’ve brought into existence. Each thrust between the Demon Queen’s tits just makes them grow more and more, at first lovingly caressing your [pc.cock], then enveloping it completely. She’s quickly surrounded your entire member in her ever-expanding titflesh, and shows no sign of stopping! The once petite queen looks positively cowgirl-like now, and you’re starting to feel liquid sloshing around in her chest too! She gasps, and a squirt of pale purple milk squirts out of her now saucer-sized teats. Geysers of corrupted cream spurt out of her every time your [pc.hips] slam into Lethice’s jiggling underside, eliciting a sensual moan from the soulless faux-nun with each mighty thrust.");
+				outputText("\n\nHer back goes flat against the flagstone, making her grunt with surprise, but she just giggles and cups her breasts, inviting you to ravish the slip of flesh between them. Her tits are two plump orbs now, sinfully soft and jiggling with every one of their owner’s quickened breaths. You ram your hips forward, more than happy to take advantage of the quivering valley you’ve brought into existence. Each thrust between the Demon Queen’s tits just makes them grow more and more, at first lovingly caressing your [cock], then enveloping it completely. She’s quickly surrounded your entire member in her ever-expanding titflesh, and shows no sign of stopping! The once petite queen looks positively cowgirl-like now, and you’re starting to feel liquid sloshing around in her chest too! She gasps, and a squirt of pale purple milk squirts out of her now saucer-sized teats. Geysers of corrupted cream spurt out of her every time your [hips] slam into Lethice’s jiggling underside, eliciting a sensual moan from the soulless faux-nun with each mighty thrust.");
 				
 				outputText("\n\n<i>“So strong... so <b>vigorous</b>!”</i> Lethice moans, lifting herself onto her elbows to get a look at you over the still-inflating mass of her breasts. <i>“You fought so hard to get here, and now all you can think about is a pair of tits! It’s almost funny, Champion.”</i>");
 				
@@ -327,13 +340,13 @@ package classes.Scenes.Dungeons.D3
 				else outputText(" like you’re some kind of demon yourself");
 				outputText(" is maddening!");
 				
-				outputText("\n\nWith a grunt of annoyance, you reach around the Demon Queen by the horns. She gasps in surprise and starts to say something, but you’re having none of it. You cut off her next teasing reprimand by giving the demon a mouthful of cock, bending her neck forward at an angle only a demon could manage, right into the depths of her cleavage. You don’t get to see her reaction, but the <i>glugging</i> sound and a sudden rush of pleasure around your [pc.cockHead]. Lethice’s lips are thicker than you’d have thought, so plush and soft that you’re afraid their mere touch will send you over the edge.");
+				outputText("\n\nWith a grunt of annoyance, you reach around the Demon Queen by the horns. She gasps in surprise and starts to say something, but you’re having none of it. You cut off her next teasing reprimand by giving the demon a mouthful of cock, bending her neck forward at an angle only a demon could manage, right into the depths of her cleavage. You don’t get to see her reaction, but the <i>glugging</i> sound and a sudden rush of pleasure around your [cockHead]. Lethice’s lips are thicker than you’d have thought, so plush and soft that you’re afraid their mere touch will send you over the edge.");
 				
-				outputText("\n\nYou’re pretty sure you hear Lethice mumbling something about your enjoyment of her, but the words are drowned out by her cock-laden lips. You give her a rough thrust through the valley of her cleavage, hammering at her mouth until she gives up talking to moan like a whore instead. Her tremendous wings beat against the stone of the floor, keeping pace with your thrusting [pc.hips] until you start to worry she means to take off with you!");
+				outputText("\n\nYou’re pretty sure you hear Lethice mumbling something about your enjoyment of her, but the words are drowned out by her cock-laden lips. You give her a rough thrust through the valley of her cleavage, hammering at her mouth until she gives up talking to moan like a whore instead. Her tremendous wings beat against the stone of the floor, keeping pace with your thrusting [hips] until you start to worry she means to take off with you!");
 				
-				outputText("\n\nThankfully, you’re pretty sure the demoness’s grossly swollen tits are more than enough to keep her weighted to the ground. She’s probably put on fifty pounds of boob now, both so full of corrupted milk. You give her a gloating grin and reach up to tweak her nipples, making Lethice cry out around your [pc.cockHead]. Now this is more like it!");
+				outputText("\n\nThankfully, you’re pretty sure the demoness’s grossly swollen tits are more than enough to keep her weighted to the ground. She’s probably put on fifty pounds of boob now, both so full of corrupted milk. You give her a gloating grin and reach up to tweak her nipples, making Lethice cry out around your [cockHead]. Now this is more like it!");
 				
-				outputText("\n\nThe Demon Queen’s finally learning her place: firmly planted on your cock, using every inch of her tainted body for your pleasure - and yours only. Seeing Lethice on her back, used like a common tramp, drives you wild with renewed lust. Pistoning your [pc.hips] ever harder, you feel your climax rising steadily, milked out by the soft embrace of the demoness’s tits, now slathered with a thick coating of their owner’s milk like a glaze of lube.");
+				outputText("\n\nThe Demon Queen’s finally learning her place: firmly planted on your cock, using every inch of her tainted body for your pleasure - and yours only. Seeing Lethice on her back, used like a common tramp, drives you wild with renewed lust. Pistoning your [hips] ever harder, you feel your climax rising steadily, milked out by the soft embrace of the demoness’s tits, now slathered with a thick coating of their owner’s milk like a glaze of lube.");
 				
 				outputText("\n\nYour hands close firmly on Lethice’s thick, pink teats, clutching hard enough to make her back arch beneath you. The added sensation of her tits grinding against your shaft, pinched between her writhing body and your firm hands, is just what you needed to send you over the edge. You feel a rush of spunk surging through your meaty shaft, rushing up to meet the Demon Queen’s lush red lips. The next thing you hear is a familiar choking, gasping cough as Lethice’s mouth is flooded with your seed. You keep pistoning your hips, hammering the queen’s corrupted mouth until you’ve spent every drop you have left into her.");
 				
@@ -351,7 +364,7 @@ package classes.Scenes.Dungeons.D3
 				
 				outputText("\n\nYour hands keep groping and pulling on Lethice’s exposed nipples, and sure enough, they keep growing just like her tits were a moment ago, eagerly responding to your rough caresses. It’s like her body wants this, wants to mold itself into the perfect fuck-toy for you! A few more vindictive seconds of teasing and Lethice’s teats look like a pair of great big pink dicks: two pillars of flesh jutting up from her teats and drooling with purple-tainted demon-milk.");
 				
-				outputText("\n\nPerfect. You lick your lips with anticipation, crawling up the erstwhile queen’s prone form until your [pc.hips] are grinding against the jiggly, milky mounds of the once-petite queen’s udders. She gives a little gasp, squirming in pleasure beneath you as you man-handle her towering teats, aligning one of them with your [pc.vagOrAss]. <i>“Oooh, delightfully deviant,”</i> Lethice laughs, taking a deep breath that seems to make her chest swell up even more, nestling the base of her teat between your [pc.legs]. As she does, you feel the tip of her teat shift, its flesh melding into the form of a human-like cock, complete with a rounded head and thick glans, perfect for your pleasure.");
+				outputText("\n\nPerfect. You lick your lips with anticipation, crawling up the erstwhile queen’s prone form until your [hips] are grinding against the jiggly, milky mounds of the once-petite queen’s udders. She gives a little gasp, squirming in pleasure beneath you as you man-handle her towering teats, aligning one of them with your [vagOrAss]. <i>“Oooh, delightfully deviant,”</i> Lethice laughs, taking a deep breath that seems to make her chest swell up even more, nestling the base of her teat between your [legs]. As she does, you feel the tip of her teat shift, its flesh melding into the form of a human-like cock, complete with a rounded head and thick glans, perfect for your pleasure.");
 				
 				outputText("\n\nWell, at least she’s not <i>resisting</i>, you suppose.");
 				
@@ -368,7 +381,7 @@ package classes.Scenes.Dungeons.D3
 					outputText("One cock’s not enough for you now. Not at the end of your adventure, after everything this bitch and her minions have put you through. You need <b>more</b>! You hike");
 					if (!player.isNaga()) outputText(" a leg");
 					else outputText(" your coils");
-					outputText(" over Lethice’s body, starting to ride her sideways. The feeling of her nipple-cock twisting around inside you, gushing milk all the harder, but it’s not what you’re looking for. Instead, you reach back and grab the other dick-nipple, angling it towards your [pc.asshole]. Like the first, it’s slicked with plenty of tainted milk, making the entrance as easy as you’d like. You give out a shuddering sigh as you sink down on both of the Demon Queen’s dicks, filling your holes with throbbing, milky meat.\n\n");
+					outputText(" over Lethice’s body, starting to ride her sideways. The feeling of her nipple-cock twisting around inside you, gushing milk all the harder, but it’s not what you’re looking for. Instead, you reach back and grab the other dick-nipple, angling it towards your [asshole]. Like the first, it’s slicked with plenty of tainted milk, making the entrance as easy as you’d like. You give out a shuddering sigh as you sink down on both of the Demon Queen’s dicks, filling your holes with throbbing, milky meat.\n\n");
 				}
 				
 				outputText("You start to move, grinding against Lethice’s jiggling rack and drawing her dick-nipple");
@@ -376,7 +389,7 @@ package classes.Scenes.Dungeons.D3
 				outputText(" through you, again and again. The demons around you hoot and holler, driven wild with lust as you rape their queen, and you can’t help but smile.");
 				if (player.cor >= 66) outputText(" You’re finally where you belong!");
 				else outputText(" Even the demons recognize what you’ve done! Now the only question is what to do with them afterwards...");
-				outputText(" For now, though, you sate yourself by riding faster, bouncing on Lethice’s plump chest. Faster and faster, you piston your [pc.hips] until you and Lethice both are moaning with pleasure, your bodies quaking with growing ecstasy.");
+				outputText(" For now, though, you sate yourself by riding faster, bouncing on Lethice’s plump chest. Faster and faster, you piston your [hips] until you and Lethice both are moaning with pleasure, your bodies quaking with growing ecstasy.");
 				
 				outputText("\n\nGiving little concern to your corrupted partner’s pleasure, you ride her dick-nipple");
 				if (player.hasVagina()) outputText("s");
@@ -432,7 +445,7 @@ package classes.Scenes.Dungeons.D3
 			
 			outputText("\n\nHauling a bound and gagged Lethice behind you, you approach the great tree in the middle of the island. Marae’s humanoid incarnation, half buried in the ancient oak’s bark, turns to greet you with a beneficent smile on her full lips, matronly breasts bobbing freely in the wind. <i>“My Champion!”</i> she gasps, eyes widening as you present the erstwhile Demon Queen to your goddess, forcing the succubus to her knees. <i>“You... you’ve done it! Even I had hesitated to hope...”</i>");
 			
-			outputText("\n\nYou smile at Marae, saying that human perseverance should never be underestimated. Though your trials were long and hard, taking you far and wide through the corrupted landscape of her world, no force could stop you from saving Mareth so long as you held onto the purity in your heart. The goddess beams, smiling with such joy as you’ve never seen from her before, and reaches out a hand to you. Taking it, you find yourself drawn into a long embrace, with Marae burying her face in your [pc.chest]. A ragged, gasping sound escapes her, all but muffled in your clothing. You’d almost say she’s struggling to hide tears from the demoness, though of joy or sheer relief you cannot say.");
+			outputText("\n\nYou smile at Marae, saying that human perseverance should never be underestimated. Though your trials were long and hard, taking you far and wide through the corrupted landscape of her world, no force could stop you from saving Mareth so long as you held onto the purity in your heart. The goddess beams, smiling with such joy as you’ve never seen from her before, and reaches out a hand to you. Taking it, you find yourself drawn into a long embrace, with Marae burying her face in your [chest]. A ragged, gasping sound escapes her, all but muffled in your clothing. You’d almost say she’s struggling to hide tears from the demoness, though of joy or sheer relief you cannot say.");
 			
 			outputText("\n\nMarae recovers in but a moment, composing herself back into the serene deity of motherly grace she always was, and turns her attentions towards Lethice. <i>“I recognize your hostage. Why have you brought her, Champion? Though long have I wished for a chance to see the wicked queen of demons brought low, why does she yet live?”</i>");
 			
@@ -595,7 +608,7 @@ package classes.Scenes.Dungeons.D3
 			else outputText(" Fucked your way");
 			outputText(" through my keep. And all this to... what? Become my new bodyguard?”</i>");
 			
-			outputText("\n\n<i>“Something like that,”</i> you answer, grabbing the demoness by the hips and yanking her close, tight against your chest so that you can feel her pert breasts hot against your [pc.armor]. She gasps with surprise, but the moment of weakness is just that: momentary. In the blink of an eyes, she’s right back to unflappable, regal dominatrix. One of her legs hikes up around your hip, pressing her crotch against yours, and her hands reach up to cup your cheeks.");
+			outputText("\n\n<i>“Something like that,”</i> you answer, grabbing the demoness by the hips and yanking her close, tight against your chest so that you can feel her pert breasts hot against your [armor]. She gasps with surprise, but the moment of weakness is just that: momentary. In the blink of an eyes, she’s right back to unflappable, regal dominatrix. One of her legs hikes up around your hip, pressing her crotch against yours, and her hands reach up to cup your cheeks.");
 			
 			outputText("\n\n<i>“My, my,”</i> Lethice smirks, <i>“You continue to surprise... and delight. I see every one of the stories I’d heard about this so-called Champion seems to be true.”</i>");
 			
@@ -615,11 +628,11 @@ package classes.Scenes.Dungeons.D3
 			
 			outputText("\n\nYou approach the throne and slink down to your knees, placing your hands firmly on the Demon Queen’s creamy thighs. She smiles regally, hungrily, down upon you while you explore the gulf between her legs, moving ever closer to her alluring hole. Eventually, your lips close with hers, gently teasing your way until the you taste the first sweet droplets of corrupted, feminine excitement.");
 			
-			outputText("\n\nAn explosion of sensation erupts through your [pc.tongue], spreading as a tingling warmth all through your mouth, throat, and beyond. You’ve barely gotten your tongue out of your mouth before the alien feeling has spread through your entire body, infusing you with renewed lust above and beyond anything you’ve felt for the statuesque demoness. Like a "+ player.mf("man", "woman") +" starving, you dig in with desperate abandon, munching that demonic rug with everything you have.");
+			outputText("\n\nAn explosion of sensation erupts through your [tongue], spreading as a tingling warmth all through your mouth, throat, and beyond. You’ve barely gotten your tongue out of your mouth before the alien feeling has spread through your entire body, infusing you with renewed lust above and beyond anything you’ve felt for the statuesque demoness. Like a "+ player.mf("man", "woman") +" starving, you dig in with desperate abandon, munching that demonic rug with everything you have.");
 			
-			outputText("\n\n<i>“Mmm, intent on making a sterling first impression, aren’t you?”</i> Lethice murmurs, wrapping her thighs around your [pc.face]. Turning her gaze upwards to the demons in the stands, she shouts, <i>“Do you see, my dears? Another would-be Champion reduced to nothing more than a fuck-hungry animal like us, even without the help of the factory. Our plans are quite on track! Humans, beast-morphs, even the so-called gods of this realm all end just as this one has: on their knees, worshipping my twat like the perverse altar of our wonderful Demon Realm.”</i>");
+			outputText("\n\n<i>“Mmm, intent on making a sterling first impression, aren’t you?”</i> Lethice murmurs, wrapping her thighs around your [face]. Turning her gaze upwards to the demons in the stands, she shouts, <i>“Do you see, my dears? Another would-be Champion reduced to nothing more than a fuck-hungry animal like us, even without the help of the factory. Our plans are quite on track! Humans, beast-morphs, even the so-called gods of this realm all end just as this one has: on their knees, worshipping my twat like the perverse altar of our wonderful Demon Realm.”</i>");
 			
-			outputText("\n\nYou feel Lethice’s satin-soft hand on your [pc.hair], caressing you. <i>“More importantly, though, I’ve gained a very, very promising new stalwart. Someone who might just be strong enough to help us finish off our conquest. Oh, I have so many questions before you forget yourself to pleasure. Like where your friends and companions are, and the location of the last cities I’ve heard so many rumors of. You’ll tell me these things, won’t you?”</i>");
+			outputText("\n\nYou feel Lethice’s satin-soft hand on your [hair], caressing you. <i>“More importantly, though, I’ve gained a very, very promising new stalwart. Someone who might just be strong enough to help us finish off our conquest. Oh, I have so many questions before you forget yourself to pleasure. Like where your friends and companions are, and the location of the last cities I’ve heard so many rumors of. You’ll tell me these things, won’t you?”</i>");
 			
 			outputText("\n\nOf course you will. Even if there were an ounce of resistance left in you, any fleeting desire to save your soul and hold to your duty, some small part of your mind realizes that the Demon Queen’s very sex has ensorcelled you, sinking talons of magic deep into your spirit. You’re hers, utterly and completely, body and mind and soul.");
 			
@@ -699,13 +712,13 @@ package classes.Scenes.Dungeons.D3
 			else outputText(" too weak to even ball your fists");
 			outputText(" as the victorious demon strides towards you.");
 			
-			outputText("\n\n<i>“Ah, now <b>that</b> is what I like to see,”</i> she purrs, lifting her arms triumphantly to the gibbering host of demons still crowding around the throne room. <i>“Another would-be savior on [pc.hisHer] knees before me! Once again,”</i> she sneers, turning her gaze down to you, her demonic heels clacking one after the other on the cold floor, <i>“we see that nothing... no one... can stand against me.”</i>");
+			outputText("\n\n<i>“Ah, now <b>that</b> is what I like to see,”</i> she purrs, lifting her arms triumphantly to the gibbering host of demons still crowding around the throne room. <i>“Another would-be savior on [hisHer] knees before me! Once again,”</i> she sneers, turning her gaze down to you, her demonic heels clacking one after the other on the cold floor, <i>“we see that nothing... no one... can stand against me.”</i>");
 			
 			outputText("\n\nLethice reaches down, cupping your chin with her long-nailed fingers and tilting your head up. She’s not forceful, more like a mother disappointed in her child, forcing you to confront your misdeeds. In her churchy outfit, you could easily mistake her for one of the priestesses that would teach you and the other children back in Ingnam, save for the tremendous wings and curling horns. She must recognize the look you give her, and she smiles almost beatifically. Beautifully.");
 			
 			outputText("\n\n<i>“So powerful, so self-righteous... and here you are, kneeling before me like so many before you. Still, I have to give you credit, Champion. You got so much further than most: I almost broke a sweat breaking you.");
 			if (monster.lust < 50 && monster.HP > (monster.eMaxHP() * 0.5)) outputText(" Almost.");
-			outputText("”</i> She licks her lips, and gives your chin a sharp release. <i>“I think you deserve a special... reward... for your efforts, Champion. Oh, except that’s not what you are anymore, is it? A Champion doesn’t bow down, hoping a pretty little demon doesn’t rip [pc.hisHer] soul out, does [pc.heShe]? No, that’s something I’d expect my dog to do. Is that what you are: a dog?”</i>");
+			outputText("”</i> She licks her lips, and gives your chin a sharp release. <i>“I think you deserve a special... reward... for your efforts, Champion. Oh, except that’s not what you are anymore, is it? A Champion doesn’t bow down, hoping a pretty little demon doesn’t rip [hisHer] soul out, does [heShe]? No, that’s something I’d expect my dog to do. Is that what you are: a dog?”</i>");
 			
 			outputText("\n\nYou look away from Lethice, trying");
 			if (hpVictory) outputText(" to hide just how turned on she’s left you... how close you are to orgasm, just in need of her lurid touch");
@@ -724,7 +737,7 @@ package classes.Scenes.Dungeons.D3
 			
 			outputText("\n\n<i>“Heel, Champ!”</i>");
 			
-			outputText("\n\nYou look up with a start, blinking away the haze of lust that has fallen over you. Your [pc.hips] are still pistoning like a jackhammer, but you wrest your attentions up to the glorious throne high above you where Mistress reclines, casually consuming the glowing soul-crystals that bear her name. The black-skinned dragoness beneath you moans and shudders, cum gushing from her corrupted cock and splattering onto the floor. Her whole body convulses in mindless pleasure, making a mess of your mistress’s throne dais.");
+			outputText("\n\nYou look up with a start, blinking away the haze of lust that has fallen over you. Your [hips] are still pistoning like a jackhammer, but you wrest your attentions up to the glorious throne high above you where Mistress reclines, casually consuming the glowing soul-crystals that bear her name. The black-skinned dragoness beneath you moans and shudders, cum gushing from her corrupted cock and splattering onto the floor. Her whole body convulses in mindless pleasure, making a mess of your mistress’s throne dais.");
 			
 			outputText("\n\n<i>“Tsk! Now look what you’ve done, Champ,”</i> Mistress chides, tracing one of her lush fingers across the rim of her goblet. Slowly, sensuously, she drops her hand down to the side of her throne and coils her slender digits around a leather strap hooked there. Mistress coils her hand around it and gives the strap a harsh pull, yanking you by the neck off of the prostrate woman. Cum sprays from your");
 			if (player.dogCocks() == 0) outputText(" newly-grown doggy cock");
@@ -741,7 +754,7 @@ package classes.Scenes.Dungeons.D3
 			
 			outputText("\n\n<i>“So, this is the next so-called ‘Champion,’ hmm?”</i> Mistress murmurs, tugging on your leash.");
 			
-			outputText("\n\nObedient dog that you are, you bound up to your lovely owner, taking your rightful place wiggling and dripping cum at her feet. She reaches down, caressing your [pc.hair]. You pant happily, nuzzling against her leg, waiting for your next command. But for now, Mistress’s attention is elsewhere: on the girl. The Champion.");
+			outputText("\n\nObedient dog that you are, you bound up to your lovely owner, taking your rightful place wiggling and dripping cum at her feet. She reaches down, caressing your [hair]. You pant happily, nuzzling against her leg, waiting for your next command. But for now, Mistress’s attention is elsewhere: on the girl. The Champion.");
 			
 			outputText("\n\nA silent, salient moment passes before the Champion looks up, gritting her teeth, staring up at you and your Mistress with burning blue eyes alive with hatred unlike anything you’ve ever seen. She grits her teeth, wiping the fluids from her face and flicking them to the ground.");
 			
@@ -771,7 +784,7 @@ package classes.Scenes.Dungeons.D3
 
 			outputText("You bark excitedly, ready to be your loving, forgiving mistress’s means of meeting out punishment. The Champion’s eyes turn to you, and her jaw drops like an anchor.");
 			
-			outputText("\n\n<i>“No... [pc.name]? [pc.name] is that you?”</i> she gasps, staring wide-eyed. <i>“Oh, gods, no...”</i>");
+			outputText("\n\n<i>“No... [name]? [name] is that you?”</i> she gasps, staring wide-eyed. <i>“Oh, gods, no...”</i>");
 			
 			outputText("\n\nYou cock your head aside, confused. That’s not your name. You’re Champ. You’re Mistress’s favorite puppy-"+ player.mf("stud", "slut") +".");
 			
@@ -783,11 +796,11 @@ package classes.Scenes.Dungeons.D3
 			
 			outputText("\n\nSacrificial? You don’t really know what Mistress means, but you guess that doesn’t matter. Mistress is so much smarter than you after all. Whatever she wants you to be, that’s what you are!");
 			
-			outputText("\n\nThe Champion girl stares at you with wide eyes, ignoring Mistress’s words. You can smell the fear on her now, intermixing with the scent that truly has your heart hammering: the scent of a bitch ready to be bred. <i>“[pc.name], listen to me,”</i> she mewls. <i>“I don’t know what they’ve done to you, but you have to snap out of it. Please! Don’t... don’t you recognize me?”</i>");
+			outputText("\n\nThe Champion girl stares at you with wide eyes, ignoring Mistress’s words. You can smell the fear on her now, intermixing with the scent that truly has your heart hammering: the scent of a bitch ready to be bred. <i>“[name], listen to me,”</i> she mewls. <i>“I don’t know what they’ve done to you, but you have to snap out of it. Please! Don’t... don’t you recognize me?”</i>");
 			
 			outputText("\n\nYour nose twitches as you stare down the strange woman. Why would you recognize her - and why does your head hurt? You give yourself a vigorous shake before glancing up at Mistress. She’s smiling down at you, her rosy lips looking so lush and loving that you’d give anything just to touch them. The thought of ramming yourself between them, shooting your seed into Mistress’s beautiful mouth tonight, when she’s had done with this random human, makes you shiver in anticipation.");
 			
-			outputText("\n\n<i>“[pc.name], come on!”</i> the girl cries. <i>“You can fight this! You’re still... still human on this inside, I know it!”</i>");
+			outputText("\n\n<i>“[name], come on!”</i> the girl cries. <i>“You can fight this! You’re still... still human on this inside, I know it!”</i>");
 			
 			outputText("\n\nWhy is she still talking to you!? Your head is starting to hurt with all her blabbering. You’re not a human, you’re a dog! A good, obedient dog. Mistress’s favorite dog.");
 			
@@ -801,11 +814,11 @@ package classes.Scenes.Dungeons.D3
 			
 			outputText("\n\n<i>“Go get her, Champ,”</i> Mistress coos behind you, munching on her snacks while you defile her prisoner.");
 			
-			outputText("\n\nYour lips lock around a pink teat, sucking hard; fingers scour her flesh, pulling the girl’s pert cheeks apart to expose a rosy hole so tight you can barely get a finger in before she squeals. <i>“[pc.name], get off! Get off!”</i> she yelps, but her body practically begs you to keep going: her teat stiffens between your teeth, and her pussy slathers your furred digit with juices: she’s desperate to get ready for you, to welcome your alpha’s member inside and soak up your seed. Your legs spread hers out, hiking her knees around her shoulders as you align your veiny, throbbing canid member with her breed-hungry hole.");
+			outputText("\n\nYour lips lock around a pink teat, sucking hard; fingers scour her flesh, pulling the girl’s pert cheeks apart to expose a rosy hole so tight you can barely get a finger in before she squeals. <i>“[name], get off! Get off!”</i> she yelps, but her body practically begs you to keep going: her teat stiffens between your teeth, and her pussy slathers your furred digit with juices: she’s desperate to get ready for you, to welcome your alpha’s member inside and soak up your seed. Your legs spread hers out, hiking her knees around her shoulders as you align your veiny, throbbing canid member with her breed-hungry hole.");
 			
 			outputText("\n\nThe girl’s struggling stops the moment your ram your hips in, spreading her slick, hot walls wide open around a pillar of dominant meat big enough to make even Mistress’s pet dragons mewl. The Champion’s gut bulges between your bodies and her womb spreads open around your pointed crown, taking you like any of Mistress’s other breeding cows. You just know this one will make a perfect new toy!");
 			
-			outputText("\n\n<i>“[pc.name]...”</i> she gasps, voice ragged and husky, barely able to form the alien, unfamiliar word. <i>“Please...”</i>");
+			outputText("\n\n<i>“[name]...”</i> she gasps, voice ragged and husky, barely able to form the alien, unfamiliar word. <i>“Please...”</i>");
 			
 			outputText("\n\nPlease fuck her harder? Please fill her womb with virile seed until she’s bloated with your pups? You grin ear to floppy ear and piston your hips, hammering into the juicy honeypot between the would-be champion’s legs with renewed vigor. Her voice breaks, no longer able to form words - she descends into incoherent cries and moans, squirming helplessly beneath you.");
 			
@@ -899,7 +912,8 @@ package classes.Scenes.Dungeons.D3
 			if (player.cor <= 33) outputText(" Despite the fear and terror of "+ player.mf("his", "her") +" arrival, "+ player.mf("he", "she") +" proved a fair and wise monarch. The village soon became a town, and that town a city. Prosperity came to those who lived in the valley, guided by the strength of its unshakable ruler.");
 			else if (player.cor <= 66) outputText(" Despite the fear and terror of "+ player.mf("his", "her") +" arrival, "+ player.mf("he", "she") +" proved a competent, if harsh monarch. The village’s prosperity was marred only by its limited liberties. Still, it was soon a town, and later a city. Most folk were willing to sacrifice their freedoms for the safety "+ player.mf("he", "she") +" provided.");
 			else outputText(" Despite the fear and terror of "+ player.mf("his", "her") +" arrival, "+ player.mf("he", "she") +" proved a capable monarch in spite of "+ player.mf("his", "her") +" rapacious tastes. The villagers dared not protest when their once-Champion treated their sons and daughters as little more than slaves. They feared to question where the fruits "+ player.mf("he", "she") +" provided came from, and why they felt so strange after eating them. Of course, these concerns did not stop them from breeding. Soon, nothing could. As the population of the valley swelled, the Champion amassed an army, one large enough to rival the nearby countries that had ignored it for so long.");
-			// 9999 end, export
+			
+			saveExport();
 		}
 
 		private function goHomeJustice():void
@@ -918,8 +932,9 @@ package classes.Scenes.Dungeons.D3
 			outputText(" warrior. With a seemingly infallable champion there to defend it");
 			if (getGame().camp.companionsCount() > 0) outputText(" to say nothing of "+ player.mf("his", "her") +" bizarre friends");
 			outputText(", Ingnam prospered. The tiny village soon grew into a bustling town, and later a city.");
-			outputText("\n\nWhen age finally claimed the unexpected "+ player.mf("hero", "heroine") +", a stone statue of immense proportions was erected so that future generations could forever live under the protection of their greatest hero.");
-			// 9999 end, export
+			outputText("\n\nWhen age finally claimed the unexpected " + player.mf("hero", "heroine") +", a stone statue of immense proportions was erected so that future generations could forever live under the protection of their greatest hero.");
+			
+			saveExport();
 		}
 
 		private function claimFortress():void

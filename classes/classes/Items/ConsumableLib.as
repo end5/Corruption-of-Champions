@@ -46,7 +46,8 @@ package classes.Items
 		public const FRRTFRT:SimpleConsumable = mk("Frrtfrt","Frrtfrt","a ferret fruit", m.ferretTF, "This fruit is curved oddly, just like the tree it came from.  The skin is fuzzy and brown, like the skin of a peach.");
 		public const FOXJEWL:SimpleConsumable = mk("FoxJewl","Fox Jewel", "a fox jewel", curry(m.foxJewel,false), "A shining teardrop-shaped jewel.  An eerie blue flame dances beneath the surface.");
 		public const GLDSEED:SimpleConsumable = mk("GldSeed","GoldenSeed", "a golden seed", curry(m.goldenSeed,0),"This seed looks and smells absolutely delicious.  Though it has an unusual color, the harpies prize these nuts as delicious treats.  Eating one might induce some physical transformations.");
-		public const GODMEAD:SimpleConsumable = mk("GodMead","GodMead", "a pint of god's mead", m.godMead,null);
+		public const GODMEAD:SimpleConsumable = mk("GodMead", "GodMead", "a pint of god's mead", m.godMead, null);
+		public const PROMEAD:SimpleConsumable = mk("ProMead", "ProMead", "a pint of premium god's mead", m.proMead, null);
 		public const GOB_ALE:SimpleConsumable = mk("Gob.Ale","Gob.Ale", "a flagon of potent goblin ale", m.goblinAle, "This sealed flagon of 'Goblin Ale' sloshes noisily with alcoholic brew.  Judging by the markings on the flagon, it's a VERY strong drink, and not to be trifled with.");
 		public const GRAYDYE:SimpleConsumable = mk("GrayDye","GrayDye", "a vial of gray hair dye", curry(m.hairDye, "gray"),"This bottle of dye will allow you to change the color of your hair.  Of course if you don't have hair, using this would be a waste.");
 		public const GREEN_D:SimpleConsumable = mk("Green D","Green D", "a vial of green hair dye", curry(m.hairDye, "green"),"This bottle of dye will allow you to change the color of your hair.  Of course if you don't have hair, using this would be a waste.");

@@ -138,11 +138,20 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		magic = null;
 	}
 	
-	if (monster.findStatusAffect(StatusAffects.AttackDisabled) >= 0) {
-		outputText("\n<b>Chained up as you are, you can't manage any real physical attacks!</b>");
+	if (monster.findStatusAffect(StatusAffects.AttackDisabled) >= 0) 
+	{
+		if (monster is Lethice)
+		{
+			outputText("\n<b>With Lethice up in the air, you've got no way to reach her with your attacks!</b>");
+		}
+		else
+		{
+			outputText("\n<b>Chained up as you are, you can't manage any real physical attacks!</b>");
+		}
 		attacks = null;
 	}
-	if (monster.findStatusAffect(StatusAffects.PhysicalDisabled) >= 0) {
+	if (monster.findStatusAffect(StatusAffects.PhysicalDisabled) >= 0)
+	{
 		outputText("<b>  Even physical special attacks are out of the question.</b>");
 		pSpecials = null;
 	}
@@ -1581,7 +1590,7 @@ private function combatStatusesUpdate():void {
 				outputText("Now that they’ve settled in, the tentacles go to work on your body, rudely molesting every sensitive place they can find.");
 				if (player.hasCock()) outputText(" They twirl and writhe around your [cocks].");
 				if (player.hasVagina()) outputText(" One flosses your nether-lips, rubbing slippery bumps maddenly against your [clit].");
-				outputText(" " + num2Text(player.totalNipples()) + " tendrils encircle your [pc.nipples]");
+				outputText(" " + num2Text(player.totalNipples()) + " tendrils encircle your [nipples]");
 				if (player.hasFuckableNipples()) outputText(", threatening to slide inside them at a moment’s notice");
 				else
 				{
@@ -4025,7 +4034,7 @@ public function spellBlind():void {
 	}
 	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
 	{
-		outputText("You hold your [pc.weapon] aloft and thrust your will forward, causing it to erupt in a blinding flash of light. The demons of the court scream and recoil from the radiant burst, clutching at their eyes and trampling over each other to get back.");
+		outputText("You hold your [weapon] aloft and thrust your will forward, causing it to erupt in a blinding flash of light. The demons of the court scream and recoil from the radiant burst, clutching at their eyes and trampling over each other to get back.");
 
 		outputText("\n\n<i>“Damn you, fight!”</i> Lethice screams, grabbing her whip and lashing out at the back-most demons, driving them forward -- and causing the middle bunch to be crushed between competing forces of retreating demons! <i>“Fight, or you'll be in the submission tanks for the rest of your miserable lives!”</i>");
 		
@@ -4221,6 +4230,7 @@ public function spellPerkUnlock():void {
 //Hellfire deals physical damage to completely pure foes, 
 //lust damage to completely corrupt foes, and a mix for those in between.  Its power is based on the PC's corruption and level.  Appearance is slightly changed to mention that the PC's eyes and mouth occasionally show flicks of fire from within them, text could possibly vary based on corruption.
 public function hellFire():void {
+	var damage:Number = 0;
 	if (monster.cor < 50) flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	else flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	outputText("", true);
@@ -4248,7 +4258,7 @@ public function hellFire():void {
 		//Attack gains burn DoT for 2-3 turns.
 		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!");
 		monster.createStatusAffect(StatusAffects.OnFire, 2 + rand(2), 0, 0, 0);
-		var damage:Number = (player.level * 8 + rand(10) + player.cor / 5);
+		damage = (player.level * 8 + rand(10) + player.cor / 5);
 		damage *= 1.75;
 		outputText(" (" + damage + ")");
 		monster.HP -= damage;
@@ -4261,7 +4271,7 @@ public function hellFire():void {
 		else enemyAI();
 		return;
 	}
-	var damage:Number = (player.level * 8 + rand(10) + player.cor/5);
+	damage = (player.level * 8 + rand(10) + player.cor/5);
 	if(player.findStatusAffect(StatusAffects.GooArmorSilence) < 0) outputText("You take in a deep breath and unleash a wave of corrupt red flames from deep within.", false);
 	
 	if(player.findStatusAffect(StatusAffects.WebSilence) >= 0) {

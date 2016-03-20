@@ -258,7 +258,7 @@ package classes.Scenes.Dungeons.D3
 			else outputText(" in your loins");
 			outputText(" is too demanding, too all consuming to mind one way or the other. Why should it matter anyway? You’re going to bounce on this lordly stud’s prick until your pussy is raw and flooded, bathed in spunk.");
 			outputText("\n\nYou hear the quiet pop of another ring entering your pussy. Drizzles of excitement slide out around him, and in between moans, you’re shocked to realize that you nearly came. Your hand winds down to your [clit] to finish the job.");
-			outputText("\n\nBelow, the bull king is groaning and grunting. One meaty hand cradles your [pc.butt]");
+			outputText("\n\nBelow, the bull king is groaning and grunting. One meaty hand cradles your [butt]");
 			if (!player.isTaur()) outputText(" in its entirety");
 			outputText(" while his hips lift to meet your downward strokes. A cylindrical bulge distends your belly. The assembled audience can actually watch the progress of his member into your canal. They can see the head flare wider when your cunt pleases him");
 			if (player.tallness <= 50 && player.thickness <= 4) outputText(", stretching your skin until it shines");
@@ -288,7 +288,7 @@ package classes.Scenes.Dungeons.D3
 			outputText(". The artificial euphoria this has brought you makes it difficult not to crawl over to the nearest incubus and offer your body up, but you still have to deal with Lethice. Maybe you can make her lick the drippings from your slit after you take her down.");
 			outputText("\n\nWith that fantasy firmly in mind, you stand up and fix your [armor]. You can still do this, right?");
 			player.orgasm();
-			player.lust += 5;
+			dynStats("lus", 5, "resisted", false);
 			player.createStatusAffect(StatusAffects.MinotaurKingsTouch, 0, 0, 0, 0);
 			flags[kFLAGS.MINOTAURKINGS_TOUCH] = 1;
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
