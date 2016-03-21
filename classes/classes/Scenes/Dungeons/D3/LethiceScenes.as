@@ -50,6 +50,8 @@ package classes.Scenes.Dungeons.D3
 			getGame().saves.saveGameObject(currFileName, false);
 			
 			// Now would be a good time to pray this shit works.
+			menu();
+			addButton(0, "Game Over", function():void { } );
 		}
 
 		public function LethiceScenes()

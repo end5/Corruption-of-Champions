@@ -373,7 +373,7 @@
 			//model.debug = debug; // TODO: Set on model?
 
 			//Version NUMBER
-			ver = "1.0.0";
+			ver = "1.0.1";
 			version = ver + " (<b>The final countdownnnnnnnn</b>)";
 
 			//Indicates if building for mobile?
