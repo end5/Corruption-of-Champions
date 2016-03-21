@@ -21,6 +21,13 @@ package classes.Scenes.Monsters
 			var canFeed:Boolean = (player.findStatusAffect(StatusAffects.Feeder) >= 0);
 			var canBikiniTits:Boolean = (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor is LustyMaidensArmor);
 			outputText("You smile in satisfaction as " + monster.a + monster.short + " collapses and begins masturbating feverishly.");
+			
+			// fuckit, making sure the leave button is ALWAYS present
+			// I have a feeling somehow one of the returns is getting hit and its shitting up the button being added
+			menu();
+			addButton(9, "Leave", cleanupAfterCombat);
+			
+			
 			if (canFeed) {
 				if (player.lust >= 33)
 					outputText("  Sadly you realize your own needs have not been met.  Of course you could always rape the poor thing, but it might be more fun to force it to guzzle your breast-milk.\n\nWhat do you do?");
@@ -33,7 +40,6 @@ package classes.Scenes.Monsters
 				cleanupAfterCombat();
 				return;
 			}
-			menu();
 			if (player.lust > 33) 
 			{
 				var maleRape:Function = null;
@@ -59,7 +65,6 @@ package classes.Scenes.Monsters
 			if (canFeed) addButton(3, "Breastfeed", areImpsLactoseIntolerant);
 			if (canBikiniTits) addButton(4, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri);
 			if (player.canOvipositBee()) addButton(8, "Oviposit", putBeeEggsInAnImpYouMonster);
-			addButton(9, "Leave", cleanupAfterCombat);
 		}
 		
 		private function rapeImpWithDick():void {
