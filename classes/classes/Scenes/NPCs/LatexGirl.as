@@ -689,7 +689,8 @@ private function latexyEatsADickItem(item:ItemType):void {
 	player.consumeItem(item,1);
 	clearOutput();
 	outputText(flags[kFLAGS.GOO_NAME] + " uses your proffered item without a second though.  Surprisingly she doesn't seem to react in any way, aside from closing her eyes and taking on a look of incredible concentration.  ");
-	if(flags[kFLAGS.GOO_DICK_LENGTH] == 0) {
+	if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) 
+	{
 		outputText("Her onyx mound bulges, the luscious lips spreading around something internal.  Gradually, they part like a silken veil to reveal a ");
 		if(item == consumables.MINOBLO) outputText("flattened head");
 		else outputText("bulbous crown");
@@ -698,7 +699,6 @@ private function latexyEatsADickItem(item:ItemType):void {
 		if(item == consumables.MINOBLO) {
 			outputText("On and on it comes.  She's truly going to be hung like a stallion at this rate!   ");
 			flags[kFLAGS.GOO_DICK_LENGTH] = 13;
-			flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
 		}
 		outputText("Then, it begins to stiffen, arching up into full arousal.  The new-grown cock appears to have grown from her clit, but as you lean down to examine her vagina, you realize her cunt has shifted down slightly, and a new clit has grown to replace the old.");
 		outputText("\n\n\"<i>You're making it harder!</i>\" " + flags[kFLAGS.GOO_NAME] + " whines, trying to cover it with her hands.  Of course, that only makes it harder, and a bead of oily pre-cum beads at the tip.  You could get used to this.  <b>" + flags[kFLAGS.GOO_NAME] + " now has a " + num2Text(flags[kFLAGS.GOO_DICK_LENGTH]) + "-inch ");
@@ -717,16 +717,18 @@ private function latexyEatsADickItem(item:ItemType):void {
 		}
 		else {
 			outputText("Her " + gooCock() + " rapidly erects, rising to full tumescence in seconds.  The veins begin to shift, crawling around under her onyx skin like little worms as her penis reshapes it.  A muffled moan escapes from " + flags[kFLAGS.GOO_NAME] + "'s lips along with a discharge of black pre-cum from her tip and slit.  Then, with a powerful flex, the latex woman's penis solidifies into a new shape.  <b>" + flags[kFLAGS.GOO_NAME] + "'s maleness is now a ");
-			if(item == consumables.CANINEP) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DOG;
-			if(item == consumables.EQUINUM) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
-			if(item == consumables.P_DRAFT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
-			if(item == consumables.W_FRUIT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.CAT;
-			if(item == consumables.INCUBID) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DEMON;
-			if(item == consumables.MINOBLO) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
 			outputText(gooCock() + "!</b>");
 		}
 		gooObedience(2);
 	}
+	
+	if(item == consumables.CANINEP) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DOG;
+	if(item == consumables.EQUINUM) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+	if(item == consumables.P_DRAFT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
+	if(item == consumables.W_FRUIT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.CAT;
+	if(item == consumables.INCUBID) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DEMON;
+	if(item == consumables.MINOBLO) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+	
 	menu();
 	addButton(0,"Next",approachLatexy);
 }
