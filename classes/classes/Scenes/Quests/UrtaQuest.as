@@ -5,6 +5,8 @@
 	import classes.Scenes.Areas.Plains.GnollSpearThrower;
 	import classes.Scenes.NPCs.NPCAwareContent;
 	import classes.Scenes.Quests.UrtaQuest.*;
+	
+	import coc.view.MainView;
 
 	public class UrtaQuest extends NPCAwareContent
 	{
@@ -171,7 +173,12 @@ public function infertilityQuestions():void {
 	outputText("\n\n(<b>Encouraging her to visit the Covenant will begin a segment where you play as Urta for a time, and saving will be disabled.  It is recommended you decline and save first if you have not saved in some time.</b>)");
 	menu();
 	addButton(0,"Look Into It",startUrtaQuest);
-	addButton(1,"Maybe Later",camp.returnToCampUseOneHour);
+	addButton(1, "Maybe Later", camp.returnToCampUseOneHour);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 private function resetToPC():void {
@@ -293,7 +300,12 @@ public function startUrtaQuest():void {
 	outputText("\n\nYou are currently garbed for work in your usual stud-reinforced leather jerkin, though you go without suitable groin protection due to your cock interfering with efforts to wear normal pants.  An armored leather skirt provides a decent stand to protect your lower body, though as you erect, your maleness has a habit of lifting it out of the way and leaving you vulnerable.  When you desire modesty, you wrap your cock against your leg with your tail.  You are also carrying your favorite halberd; it's not fancy looking, but it's strong, sharp, and well-maintained.  The weaponsmith does good work.");
 
 	menu();
-	addButton(0,"Next",towerOfTheCovanant);
+	addButton(0, "Next", towerOfTheCovanant);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //The Tower of the Covenant(C)*
@@ -321,7 +333,12 @@ private function towerOfTheCovanant():void {
 
 	//[NEXT]
 	menu();
-	addButton(0,"Next",towerOfTheCovenantII);
+	addButton(0, "Next", towerOfTheCovenantII);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 private function towerOfTheCovenantII():void {
@@ -383,7 +400,12 @@ private function towerOfTheCovenantII():void {
 
 	addButton(1,"Visit",visitPCPreUrtaQuest,false);
 	addButton(2,"Visit Truth",visitPCPreUrtaQuest,true);
-	addButton(3,"Embark",runIntoAGoblin);
+	addButton(3, "Embark", runIntoAGoblin);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Savin Contriboots to UrtaQuest: Get Wrekt by Hel, Miko, and Mai. (Or, Needs More Foursomes)
@@ -418,7 +440,12 @@ private function getHelBangedAsUrta():void {
 	//[Head Out] [Get \"<i>Help</i>\"]
 	menu();
 	addButton(0,"Head Out",leaveB4HelFucksUrta);
-	addButton(1,"Get \"Help\"",fuckHelAndKitsunesAsUrta);
+	addButton(1, "Get \"Help\"", fuckHelAndKitsunesAsUrta);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Head Out
@@ -432,7 +459,12 @@ private function leaveB4HelFucksUrta():void {
 	menu();
 	addButton(1,"Visit",visitPCPreUrtaQuest,false);
 	addButton(2,"Visit Truth",visitPCPreUrtaQuest,true);
-	addButton(3,"Embark",runIntoAGoblin);
+	addButton(3, "Embark", runIntoAGoblin);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Get \"<i>Help</i>\"
@@ -484,7 +516,12 @@ private function fuckHelAndKitsunesAsUrta():void {
 	//Advance to next day, jump to leaving text
 	//{Resume UrtaQUEST!}
 	menu();
-	addButton(0,"Next",runIntoAGoblin);
+	addButton(0, "Next", runIntoAGoblin);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Last Rendezvous with PC - Intro + Sex Menu(C)*
@@ -533,7 +570,12 @@ private function visitPCPreUrtaQuest(truth:Boolean):void {
 	if(player2.hasCock())
 		addButton(3,"Fuck Ass",urtaPutsHerDickInPCsWithDicks, truth);
 	//PC blows Urta(C)*
-	addButton(4,"Get BJ",pcBlowsUrtasDong, truth);
+	addButton(4, "Get BJ", pcBlowsUrtasDong, truth);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Last Rendezvous with PC - Sex(C)*
@@ -593,7 +635,12 @@ private function urtaPutsHerDickInPCsWithDicks(truth:Boolean):void {
 	dynStats("sen", -2);
 	menu();
 	//To morning after fuck departure
-	addButton(0,"Next",morningAfterCampVisitEmbark, truth);
+	addButton(0, "Next", morningAfterCampVisitEmbark, truth);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //PC blows Urta(C)*
@@ -633,7 +680,12 @@ private function pcBlowsUrtasDong(truth:Boolean):void {
 	player.orgasm();
 	dynStats("sen", -2);
 	menu();
-	addButton(0,"Next",morningAfterCampVisitEmbark, truth);
+	addButton(0, "Next", morningAfterCampVisitEmbark, truth);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Put a PC dick in Urta's vag(C)*
@@ -723,7 +775,12 @@ private function putAPCDickInUrtaCoochies(truth:Boolean):void {
 	player.orgasm();
 	dynStats("sen", -2);
 	menu();
-	addButton(0,"Next",morningAfterCampVisitEmbark, truth);
+	addButton(0, "Next", morningAfterCampVisitEmbark, truth);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Put Urta dick in girl PC's vag(C)*
@@ -810,7 +867,12 @@ private function putUrtasWangInPCsCunt(truth:Boolean):void {
 	player.orgasm();
 	dynStats("sen", -2);
 	menu();
-	addButton(0,"Next",morningAfterCampVisitEmbark, truth);
+	addButton(0, "Next", morningAfterCampVisitEmbark, truth);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 //Snuggle(C)*
@@ -845,7 +907,12 @@ private function snuggleWithUrta(truth:Boolean):void {
 	outputText("\n\nTo your own surprise, you find your eyes growing heavier and heavier.  But you don't want to let your " + player2.short + " go yet... besides, may as well start searching from here in the morning, right?  So, you and " + player2.short + " carefully lay yourselves back down and quietly drift off to sleep, still holding fast to each other as you do.  The last sounds you hear for the night are your lover breathing, accompanied by the beating of " + player2.mf("his","her") + " heart, and you idly hope that " + player2.mf("he","she") + " can hear the same sounds from you...");
 	dynStats("lus", 14);
 	menu();
-	addButton(0,"Next",morningAfterCampVisitEmbark, truth);
+	addButton(0, "Next", morningAfterCampVisitEmbark, truth);
+	
+	mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 //Embark(C)*
 private function morningAfterCampVisitEmbark(truth:Boolean):void {
@@ -873,7 +940,12 @@ private function morningAfterCampVisitEmbark(truth:Boolean):void {
 	outputText(player2.short + " nods, and you leave " + player2.mf("him","her") + " behind.  You keep glancing over your shoulder as you leave, praying silently to any god who'll listen that you return safely to your lover.");
 
 	menu();
-	addButton(0,"Next",runIntoAGoblin,true);
+	addButton(0, "Next", runIntoAGoblin, true);
+	
+	getGame().mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
+	mainView.hideMenuButton( MainView.MENU_LEVEL );
+	mainView.hideMenuButton( MainView.MENU_PERKS );
 }
 
 
