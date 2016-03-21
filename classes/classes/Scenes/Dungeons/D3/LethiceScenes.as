@@ -50,6 +50,9 @@ package classes.Scenes.Dungeons.D3
 			getGame().saves.saveGameObject(currFileName, false);
 			
 			// Now would be a good time to pray this shit works.
+			
+			clearOutput();
+			outputText("<b>The End...</b>");
 			menu();
 			addButton(0, "Game Over", function():void { } );
 		}

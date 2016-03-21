@@ -39,12 +39,14 @@ package classes.Scenes.Dungeons.D3
 			this.armorName = "rags";
 			this.armorDef = 60;
 			
-			this.bonusHP = 850;
+			CONFIG::release
+			{
+				this.bonusHP = 850;
+				this.lustVuln = 0.05;
+			}
 			
 			this.gems = 75 + rand(50);
 			this.level = 22;
-			
-			this.lustVuln = 0.05;
 			
 			this.drop = NO_DROP;
 			drop = new WeightedDrop(consumables.PROMEAD, 1);

@@ -38,12 +38,14 @@ package classes.Scenes.Dungeons.D3
 			this.armorName = "chitin";
 			this.armorDef = 40;
 			
-			this.bonusHP = 500;
+			CONFIG::release
+			{
+				this.bonusHP = 500;
+				this.lustVuln = 0.45;
+			}
 			
 			this.gems = 75 + rand(50);
 			this.level = 22;
-			
-			this.lustVuln = 0.45;
 			
 			this.drop = NO_DROP;
 			

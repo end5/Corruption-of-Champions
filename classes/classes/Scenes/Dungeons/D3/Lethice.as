@@ -38,12 +38,14 @@ package classes.Scenes.Dungeons.D3
 			this.armorName = "wraps";
 			this.armorDef = 15;
 			
-			this.bonusHP = 650;
+			CONFIG::release
+			{
+				this.bonusHP = 650;
+				this.lustVuln = 0.15;
+			}
 			
 			this.gems = 75 + rand(50);
 			this.level = 25;
-			
-			this.lustVuln = 0.15;
 			
 			this.drop = NO_DROP;
 			
