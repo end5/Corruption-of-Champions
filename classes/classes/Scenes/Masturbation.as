@@ -1860,7 +1860,7 @@ package classes.Scenes {
 			onaholeContinuation();
 		}
 		
-		private function deluxeOnaholeUse():void {
+		public function deluxeOnaholeUse():void {
 			clearOutput();
 			//Flag after first use!
 			if (player.findStatusAffect(StatusAffects.DeluxeOnaholeUsed) < 0) {

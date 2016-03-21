@@ -34,7 +34,8 @@ package classes.Scenes.Monsters
 				return;
 			}
 			menu();
-			if (player.lust > 33) {
+			if (player.lust > 33) 
+			{
 				var maleRape:Function = null;
 				if (player.hasCock()) {
 					if (player.cockThatFits(monster.analCapacity()) == -1)
@@ -59,54 +60,6 @@ package classes.Scenes.Monsters
 			if (canBikiniTits) addButton(4, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri);
 			if (player.canOvipositBee()) addButton(8, "Oviposit", putBeeEggsInAnImpYouMonster);
 			addButton(9, "Leave", cleanupAfterCombat);
-			
-			/* The old way
-			var maleRape:Function =null;
-			var femaleRape:Function =null;
-			var centaurGang:Function =null;
-			var feeder:Function =null;
-			var nipFuck:Function =null;
-			var bikiniTits:Function =null;
-			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor is LustyMaidensArmor) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
-			if (player.hasFuckableNipples() && player.lust >= 33) nipFuck = noogaisNippleRape;
-			if (player.findStatusAffect(StatusAffects.Feeder) >= 0) feeder = areImpsLactoseIntolerant;
-			//Taurs have different scenes
-			if(player.isTaur()) {
-				if(player.hasCock() && player.lust >= 33) {
-					if(player.cockThatFits(monster.analCapacity()) == -1) outputText("\n\n<b>You're too big to rape an imp with " + oMultiCockDesc() + ".</b>");
-					else maleRape = centaurOnImpStart;
-				}
-				if(player.hasVagina() && player.lust >= 33) {
-					maleRape = centaurOnImpStart;
-					centaurGang = centaurGirlOnImps;
-				}
-				if(nipFuck + femaleRape  + maleRape + feeder <= 0) cleanupAfterCombat();
-				else simpleChoices("Centaur Rape",maleRape,"NippleFuck",nipFuck,"Group Vaginal",centaurGang,"Breastfeed",feeder,"Leave",cleanupAfterCombat);
-				return;
-			}
-			//Regular folks!
-			else {
-				if(player.hasCock() && player.lust >= 33) {
-					if(player.cockThatFits(monster.analCapacity()) == -1) outputText("\n\n<b>You're too big to rape an imp with " + oMultiCockDesc() + ".</b>");
-					else maleRape = rapeImpWithDick;
-				}
-				if(player.hasVagina()) femaleRape = rapeImpWithPussy;
-			}
-			var eggDump:Boolean = false;
-			if(player.canOvipositBee()) eggDump = true;
-			if(nipFuck==null && femaleRape==null && maleRape==null && feeder==null && bikiniTits==null && !eggDump) cleanupAfterCombat();
-			else {
-				menu();
-				addButton(0,"Male Fuck",maleRape);
-				addButton(1,"Female Fuck",femaleRape);
-				addButton(2,"NippleFuck",nipFuck);
-				addButton(3,"Breastfeed",feeder);
-				addButton(4,"B.Titfuck",bikiniTits);
-				if(eggDump > 0) addButton(8,"Oviposit",putBeeEggsInAnImpYouMonster);
-				addButton(9,"Leave",cleanupAfterCombat);
-				//choices("Male Rape",maleRape,"Female Rape",femaleRape,"NippleFuck",nipFuck,"Breastfeed",feeder,"B.Titfuck",bikiniTits,"",0,"",0,"",0,"",0,"Leave",cleanupAfterCombat);
-			}
-			*/
 		}
 		
 		private function rapeImpWithDick():void {
