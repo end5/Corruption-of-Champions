@@ -9,13 +9,12 @@
 
 	  ;
 
-	export class TelAdreAbstractContent extends BaseContent
+	export class TelAdreAbstractContent
 	{
 		protected  get telAdre():TelAdre {
-			return kGAMECLASS.telAdre;
+			return telAdre;
 		}
 		public  constructor()
 		{
 		}
 	}
-

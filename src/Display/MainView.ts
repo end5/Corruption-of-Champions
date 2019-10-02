@@ -578,7 +578,7 @@
 			var scale :number;
 
 			// TODO: When flags goes away, if it goes away, replace this with the appropriate settings thing.
-			if( index < 0 || this.model.flags[kFLAGS.SHOW_SPRITES_FLAG] ) // = SHOW_SPRITES_FLAG from flagDefs...
+			if( index < 0 || game.flags[kFLAGS.SHOW_SPRITES_FLAG] ) // = SHOW_SPRITES_FLAG from flagDefs...
 				this.sprite.visible = false;
 			else {
 				this.sprite.visible = true;

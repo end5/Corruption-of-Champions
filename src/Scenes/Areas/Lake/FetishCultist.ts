@@ -79,7 +79,7 @@
 			else {
 				outputText("She suddenly starts mauling her shapely breasts, her fingers nearly disappearing briefly in the soft, full flesh, while fingering herself eagerly, emitting a variety of lewd noises.  You are entranced by the scene, the sexual excitement she's experiencing penetrating your body in warm waves coming from your groin.", false);
 			}
-			game.dynStats("lus", (player.lib/10 + player.cor/20)+4);
+			dynStats("lus", (player.lib/10 + player.cor/20)+4);
 			if (player.lust >= 100)
 				doNext(game.endLustLoss);
 			else doNext(game.combatMenu);
@@ -102,7 +102,7 @@
 				else if(player.cockTotal() > 0) outputText("  A sudden influx of pre-cum blurts out and streams down your " + player.multiCockDescriptLight() + ", painfully hardened by a vast amount of blood rushing to your groin.", false);
 				if(player.gender == 0) outputText("  Your genderless body is suddenly filled by a perverted warmth.", false);
 				outputText("\n\nYou notice that the young woman seems to have calmed down some.", false);
-				game.dynStats("lus", (lust/3 * (1 + player.cor/300)));
+				dynStats("lus", (lust/3 * (1 + player.cor/300)));
 				lust -= 50;
 				if(lust < 0) lust = 10;
 			}
@@ -123,12 +123,12 @@
 			}
 			if(player.lust >= 33 && player.gender > 0) {
 				outputText("  You realize she'd make a perfect receptacle for your lusts.  Do you have your way with her?", false);
-				game.simpleChoices("Sex", game.lake.fetishCultistScene.playerRapesCultist, "", null, "", null, "B. Feed", temp2, "Leave", game.cleanupAfterCombat);
+				simpleChoices("Sex", game.lake.fetishCultistScene.playerRapesCultist, "", null, "", null, "B. Feed", temp2, "Leave", game.cleanupAfterCombat);
 			}
 			else {
 				if(temp2!=null) {
 					outputText("  She looks like she might take some of your milk if you offered it to her.  What do you do?", false);
-					game.simpleChoices("B. Feed", temp2, "", null, "", null, "", null, "Leave", game.cleanupAfterCombat);
+					simpleChoices("B. Feed", temp2, "", null, "", null, "", null, "Leave", game.cleanupAfterCombat);
 				}
 				else game.cleanupAfterCombat();
 			}
@@ -188,4 +188,3 @@
 		}
 
 	}
-

@@ -14,7 +14,7 @@
 		private  shouldrattack():void {
 			var damage:number = 0;
 			//return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 			//Determine if dodged!
 			if(player.spe - spe > 0 && int(Math.random()*(((player.spe-spe)/4)+80)) > 80) {
 				outputText("The girl wades in for a swing, but you deftly dodge to the side. She recovers quickly, spinning back at you.", false);
@@ -45,7 +45,7 @@
 				//(regular attack 1)
 				if(choice == 0) outputText("Ducking in close, the girl thunders a punch against your midsection, leaving a painful sting.", false);
 				//(regular attack 2)
-				else if(choice == 1) outputText("The girl feints a charge, leans back, and snaps a kick against your " + kGAMECLASS.hipDescript() + ". You stagger, correct your posture, and plunge back into combat.", false);
+				else if(choice == 1) outputText("The girl feints a charge, leans back, and snaps a kick against your " + hipDescript() + ". You stagger, correct your posture, and plunge back into combat.", false);
 				//(regular attack 3)
 				else if(choice == 2) outputText("You momentarily drop your guard as the girl appears to stumble. She rights herself as you step forward and lands a one-two combination against your torso.", false);
 				outputText(" (" + damage + ")", false);
@@ -65,7 +65,7 @@
 		private  shouldraLustAttack():void {
 			if(rand(2) == 0) outputText("The girl spins away from one of your swings, her tunic flaring around her hips. The motion gives you a good view of her firm and moderately large butt. She notices your glance and gives you a little wink.\n", false);
 			else outputText("The girl's feet get tangled on each other and she tumbles to the ground. Before you can capitalize on her slip, she rolls with the impact and comes up smoothly. As she rises, however, you reel back and raise an eyebrow in confusion; are her breasts FILLING the normally-loose tunic? She notices your gaze and smiles, performing a small pirouette on her heel before squaring up to you again. Your confusion only heightens when her torso comes back into view, her breasts back to their normal proportions. A trick of the light, perhaps? You shake your head and try to fall into the rhythm of the fight.\n", false);
-			game.dynStats("lus", (8+player.lib/10));
+			dynStats("lus", (8+player.lib/10));
 			combatRoundOver();
 		}
 		//(magic attack)
@@ -127,4 +127,3 @@
 		}
 		
 	}
-

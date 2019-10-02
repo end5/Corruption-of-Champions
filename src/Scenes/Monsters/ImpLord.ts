@@ -12,7 +12,7 @@
 			//[-HP // +Lust(minor)]
 			var damage:number = 40 + rand(10);
 			player.takeDamage(damage);
-			game.dynStats("lus", 20 + player.cor / 10);
+			dynStats("lus", 20 + player.cor / 10);
 			combatRoundOver();
 		}
 		
@@ -36,7 +36,7 @@
 		{
 			outputText("Lowering his loincloth the imp reveals his inhumanly thick shaft.  He smirks and licks his lips as he gives his cock a squeeze, milking a few beads of clear pre from the tip.  You shake your head and try to ignore your growing need.");
 			//[+Lust]
-			game.dynStats("lus", 5 + player.lib / 5 + player.cor / 5);
+			dynStats("lus", 5 + player.lib / 5 + player.cor / 5);
 			combatRoundOver();
 		}
 
@@ -48,7 +48,7 @@
 			damage = player.takeDamage(damage);
 			outputText(" (" + damage + ")");
 			//[-HP(minor) // +Lust]
-			game.dynStats("lus", 5 + player.sens / 4 + player.cor / 10);
+			dynStats("lus", 5 + player.sens / 4 + player.cor / 10);
 			combatRoundOver();
 		}
          protected  performCombatAction():void
@@ -116,4 +116,3 @@
 		}
 		
 	}
-

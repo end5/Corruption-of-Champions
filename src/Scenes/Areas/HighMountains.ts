@@ -10,7 +10,7 @@
 
 	  ;
 
-	export class HighMountains extends BaseContent
+	export class HighMountains
 	{
 		public  basiliskScene:BasiliskScene = new BasiliskScene();
 		public  harpyScene:HarpyScene = new HarpyScene();
@@ -28,7 +28,7 @@
 			flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
 			doNext(playerMenu);
 			
-			if (kGAMECLASS.d3.discoverD3() == true)
+			if (d3.discoverD3() == true)
 			{
 				return;
 			}
@@ -39,13 +39,13 @@
 				chooser = 1;
 			}
 			//Helia monogamy fucks
-			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helScene.followerHel()) {
-				kGAMECLASS.helScene.helSexualAmbush();
+			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
+				helScene.helSexualAmbush();
 				return;
 			}
 			//Gats xmas adventure!
 			if (rand(5) == 0 && player.gender > 0 && isHolidays() && flags[kFLAGS.GATS_ANGEL_DISABLED] == 0 && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] == 0 && (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] == 0 || player.hasKeyItem("North Star Key") >= 0)) {
-				kGAMECLASS.gatsSpectacularRouter();
+				gatsSpectacularRouter();
 				return;
 			}
 			//Minerva
@@ -80,10 +80,10 @@
 				//Cum addictus interruptus!  LOL HARRY POTTERFAG
 				//Withdrawl auto-fuck!
 				if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3) {
-					getGame().mountain.minotaurScene.minoAddictionFuck();
+					mountain.minotaurScene.minoAddictionFuck();
 					return;
 				}
-				getGame().mountain.minotaurScene.getRapedByMinotaur(true);
+				mountain.minotaurScene.getRapedByMinotaur(true);
 				spriteSelect(44);
 				return;
 			}
@@ -103,14 +103,14 @@
 			}
 			//Sophie
 			if (chooser == 2) {
-				if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || kGAMECLASS.sophieFollowerScene.sophieFollower()) {
+				if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || sophieFollowerScene.sophieFollower()) {
 					outputText("A harpy wings out of the sky and attacks!", true);
 					startCombat(new Harpy());
 					spriteSelect(26);
 				}
 				else {
-					if (flags[kFLAGS.MET_SOPHIE_COUNTER] == 0) kGAMECLASS.sophieScene.meetSophie();
-					else kGAMECLASS.sophieScene.meetSophieRepeat();
+					if (flags[kFLAGS.MET_SOPHIE_COUNTER] == 0) sophieScene.meetSophie();
+					else sophieScene.meetSophieRepeat();
 				}
 			}
 			if (chooser == 3) 
@@ -207,4 +207,3 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-

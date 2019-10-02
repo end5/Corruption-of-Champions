@@ -28,12 +28,12 @@
 			if (rand(20) + 1 + player.spe / 20 > 17) {
 				outputText("With your trained reflexes, you manage to duck and roll, narrowly avoiding getting sprayed with milk.");
 				outputText("\n\n\"<i>Such a waste.</i>\"  The succubus pouts.  \"<i>No worries, I'll just have Fido clean it up later... perhaps I'll even have you do it later, when you become mine.</i>\"  The succubus giggles.");
-				kGAMECLASS.dynStats("lus", 6);
+				dynStats("lus", 6);
 			}
 			//Hit:
 			else {
 				outputText("All you manage to do is cover your face; the rest of you, however, gets completely soaked in the demon's corrupted milk.  Looking down at yourself, you realize that you are panting, and the places where the milk splashed your fur begin to heat up.  Oh no! <b>You'd better finish off this succubus before you succumb to your lusts!</b>");
-				kGAMECLASS.dynStats("lus", 15);
+				dynStats("lus", 15);
 				createStatusAffect(StatusAffects.MilkyUrta, 3, 0, 0, 0);
 			}
 			combatRoundOver();
@@ -63,7 +63,7 @@
 			else if (rand(3) == 0) outputText("The succubus squeezes her spotted, sweat-oiled breasts together, squirting out trickles of fresh, creamy, succubi milk.  Bending down, she laps at her own bounty, taking to meet your eyes, her own glowing violet.  You can feel her next words as much as hear them, reaching into your brain and stirring a familiar heat in your loins.  \"<i>Giving in would mean pleasure unending, my dear vixen.</i>\"");
 			else if (rand(2) == 0) outputText("The succubus turns slightly and slowly bends over, sliding her hands down the sides of her milk laden jugs. \"<i>Mmm, would you help a poor girl relax? These things need some attention,</i>\" she says with a lust filled moan as her hands reach her multitude of nipples.");
 			else outputText("The succubus leans forwards holding her tits, while wrapping her fingers around her nipples.  \"<i>My boobs are soo full.  Would you like to help me drain them?</i>\" she says with a husky voice.");
-			kGAMECLASS.dynStats("lus", 20);
+			dynStats("lus", 20);
 			combatRoundOver();
 		}
 
@@ -135,4 +135,3 @@
 		}
 
 	}
-

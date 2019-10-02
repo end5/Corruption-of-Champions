@@ -50,7 +50,7 @@ WIN:
 			//Increase Roxanne's growing dick size...
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225]++;
 			//Reset if she finds someone to take it (random at high values)
-			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225] >= 300 && model.time.hours == 1 && rand(5) == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225] = 1;
+			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225] >= 300 && game.time.hours == 1 && rand(5) == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225] = 1;
 			//hangover status stuff
 			if (player.findStatusAffect(StatusAffects.Hangover) >= 0) {
 			//Countdown
@@ -67,7 +67,7 @@ WIN:
 					return true;
 				}
 			}
-			if (model.time.hours > 23 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00227] > 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00227]--; //Reduce drinking contest bonus
+			if (game.time.hours > 23 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00227] > 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00227]--; //Reduce drinking contest bonus
 			return false;
 		}
 	
@@ -79,7 +79,7 @@ WIN:
 //[Drinking Table Appearance]
 public  RoxanneAppearance():() => void {
 	//When she there?
-	if(model.time.hours > 12 && model.time.hours < 19) {
+	if(game.time.hours > 12 && game.time.hours < 19) {
 		//(Not Met) 
 		if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00221] == 0) outputText("\n\nThere's a table with a half-dozen oddly-dressed lizans not too far from the fire.  A keg is set up a few feet away and they seem to be having a good time.", false);
 		//Met) 
@@ -155,7 +155,7 @@ private  RoxanneChooseApproachOrRepeat():void {
 }
 
 private  roxanneDrinkingContestNo():void {
-	if (model.time.hours == 19 || model.time.hours == 20) {
+	if (game.time.hours == 19 || game.time.hours == 20) {
 		flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE]++;
 		if (flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE] % 4 == 0 && player.gender == 1) {
 			bazaar.nightBazaarButtfuck();
@@ -261,7 +261,7 @@ private  roxanneGivesABlowjob():void {
 	spriteSelect(78);
 	outputText("", true);
 	var x:number = player.biggestCockIndex();
-	outputText("You open the lower portion of your " + player.armorName + " and, pulling it back, hang out your " + multiCockDescriptLight() + "; ", false);
+	outputText("You open the lower portion of your " + player.armorName + " and, pulling it back, hang out your " + game.player.multiCockDescriptLight() + "; ", false);
 	if(player.lust < 70) outputText("it stiffens to a full, erect state.", false);
 	else outputText("the already-hard cock-flesh stands proud and erect.", false);
 	outputText("  Roxanne giggles drunkenly, her half-lidded eyes looking up as she wobbles back and forth on her knees.  \"<i>I don't do thish that much, but when you've got a dick that getsh as big as mine... you learn just where the good spotsh are.</i>\"\n\n", false);
@@ -270,20 +270,20 @@ private  roxanneGivesABlowjob():void {
 	if(player.hasKnot(x)) outputText("knot", false);
 	else if(player.hasSheath()) outputText("sheath", false);
 	else outputText("base", false);
-	outputText(", squeezing you softly while she steadies herself on your " + cockDescript(x) + ".  She titters, letting a few inches of tongue slip through her lips to envelop your sensitive " + player.cockHead(x) + ", circling the engorged cock-flesh with drunken slobbers.  ", false);
+	outputText(", squeezing you softly while she steadies herself on your " + game.player.cockDescript(x) + ".  She titters, letting a few inches of tongue slip through her lips to envelop your sensitive " + player.cockHead(x) + ", circling the engorged cock-flesh with drunken slobbers.  ", false);
 	if(player.balls > 0) outputText("A set of warm, long-nailed fingers squeeze your " + ballsDescriptLight() + ", dragging sharp nail-tips along the underside of your sack to tease the poor, cum-packed orbs.  ", false);
 	outputText("The lizan glances back up at you, inebriated; her half-vacant eyes make love to you while her pink tongue worships your beer- and spit-covered member.\n\n", false);
 	
-	outputText("You slump back in your chair, sprawling out your " + player.legs() + " around you, completely relaxed by the alcohol flowing through your veins and the exquisite oral service.  Roxanne returns her focus to your " + cockDescript(x) + ", more tongue spilling from her gaping maw to curl around your lust-engorged shaft.  The drunken lizard's oral organ devours ", false);
-	if(player.cockArea(x) < 60) outputText("the entire length of your " + cockDescript(x), false);
+	outputText("You slump back in your chair, sprawling out your " + player.legs() + " around you, completely relaxed by the alcohol flowing through your veins and the exquisite oral service.  Roxanne returns her focus to your " + game.player.cockDescript(x) + ", more tongue spilling from her gaping maw to curl around your lust-engorged shaft.  The drunken lizard's oral organ devours ", false);
+	if(player.cockArea(x) < 60) outputText("the entire length of your " + game.player.cockDescript(x), false);
 	else outputText("as much of your over-sized member as she can encompass", false);
-	outputText(", constricting, snake-like, to hold you in a slippery, warm embrace.  Suddenly, a pointed nail drags over your taint, pressing just hard enough to hold you still while the shemale pirate works your " + cockDescript(x) + " with her tongue", false);
+	outputText(", constricting, snake-like, to hold you in a slippery, warm embrace.  Suddenly, a pointed nail drags over your taint, pressing just hard enough to hold you still while the shemale pirate works your " + game.player.cockDescript(x) + " with her tongue", false);
 	if(player.hasVagina()) outputText(", stopping just short of your female entrance", false);
 	outputText(".\n\n", false);
 	
-	outputText("Slurping and pumping, the pulsating tongue drags over your " + cockDescript(x) + ", molding into a perfect cock-sleeve.  At first it's a slow, gradual pump that smears your shaft with booze-flavored spit, but when the first dollop of pre-cum rolls onto the flexible fellatio-tool, the pirate goes into over-drive, pumping with wild abandon.  Her tail whips back and forth, passionately slapping the table, chairs, and dirt in her excitement.\n\n", false);
+	outputText("Slurping and pumping, the pulsating tongue drags over your " + game.player.cockDescript(x) + ", molding into a perfect cock-sleeve.  At first it's a slow, gradual pump that smears your shaft with booze-flavored spit, but when the first dollop of pre-cum rolls onto the flexible fellatio-tool, the pirate goes into over-drive, pumping with wild abandon.  Her tail whips back and forth, passionately slapping the table, chairs, and dirt in her excitement.\n\n", false);
 	
-	outputText("A few demons start to approach, but the lizan crew interposes themselves between their captain and the interlopers, shooing them off before they can start something.  You barely notice, so focused are you on the feel of saliva running down your " + cockDescript(x) + " and the soft, pliant mouth flesh trying to wring the jism from your shaft.   The warmth of orgasm starts to build in your loins, and you begin to pump at the tongue instinctively, hips rising up off the chair in spite of the sharp fingernail's warning.\n\n", false);
+	outputText("A few demons start to approach, but the lizan crew interposes themselves between their captain and the interlopers, shooing them off before they can start something.  You barely notice, so focused are you on the feel of saliva running down your " + game.player.cockDescript(x) + " and the soft, pliant mouth flesh trying to wring the jism from your shaft.   The warmth of orgasm starts to build in your loins, and you begin to pump at the tongue instinctively, hips rising up off the chair in spite of the sharp fingernail's warning.\n\n", false);
 	
 	outputText("SMACK!  Roxanne's tail slaps into your " + buttDescript() + ", stinging the exposed " + player.skinDesc + ".  Her eyebrows narrow in irritation while she wraps her arms around your waistline, steadying her off-balance body while she spanks and pumps you in a drunken frenzy.  You hump her face, pressing your " + player.cockHead(x) + " against her lips to smear them with a glaze of leaky pre-cum.  Grabbing her horns, you cry out and pleasure and try to pull her down, but she spanks you, HARD.  You yelp in pain, dropping her horns and submitting completely to her tongue and the pleasure it brings.\n\n", false);
 	
@@ -291,11 +291,11 @@ private  roxanneGivesABlowjob():void {
 	if(player.cumQ() >= 1500) outputText("huge torrent utterly drenches her face, horns, neck, and tight top", false);
 	else if(player.cumQ() >= 500) outputText("a huge spurt soaks her face and horns", false);
 	else outputText("big spurt splatters her face", false);
-	outputText(" with cum.  Her soft, oral organ squeezes the spit-slick surface, milking the rest of your cum from your " + cockDescript(x) + " and " + ballsDescriptLight() + ".\n\n", false);
+	outputText(" with cum.  Her soft, oral organ squeezes the spit-slick surface, milking the rest of your cum from your " + game.player.cockDescript(x) + " and " + ballsDescriptLight() + ".\n\n", false);
 	
 	outputText("The pirate pulls back, uncoiling her tongue to slurp the heavy load from her face", false);
 	if(player.cumQ() >= 1500) outputText(" and body", false);
-	outputText(".  \"<i>Jeeze, pent up much?</i>\" she laughs, struggling to stand while giggling at her own supposed cleverness.  Happy with how the contest worked out, you slip " + sMultiCockDesc() + " into your " + player.armorName + " and wobble off back to camp.", false);
+	outputText(".  \"<i>Jeeze, pent up much?</i>\" she laughs, struggling to stand while giggling at her own supposed cleverness.  Happy with how the contest worked out, you slip " + game.player.sMultiCockDesc() + " into your " + player.armorName + " and wobble off back to camp.", false);
 	//(-100 lust, -1 int)
 	player.orgasm();
 	dynStats("int", -1);
@@ -336,7 +336,7 @@ private  roxanneCunnilingus():void {
 	outputText("Unable to dam the pressure up inside you any longer, you cum with brain-breaking, mouth-babbling intensity.  The lizan doesn't relent in the slightest as you begin to spasm", false);
 	if(player.wetness() >= 5) outputText(" and squirt", false);
 	outputText(" against her.  She tightens her grip and speeds up her tongue's sensual massaging, nearly blacking you out while you writhe in her embrace.  Heat, pure, blissful heat, spreads through you, draining the strength from your uncontrollable twitches and leaving languid warmth in its place.  ", false);
-	if(player.hasCock()) outputText(SMultiCockDesc() + " bounces on her head, between her horns, spilling a trail of sticky seed down her back.  ", false);
+	if(player.hasCock()) outputText(game.player.SMultiCockDesc() + " bounces on her head, between her horns, spilling a trail of sticky seed down her back.  ", false);
 	outputText("You slouch down, pleasure-drunk and giggling while Roxanne disentangles herself.\n\n", false);
 	
 	outputText("The cocky, drunken lizan slurs, \"<i>Boysh, I'ma need a while to schleep this one off.  Next time I plug her asssshh!</i>\"\n\n", false);
@@ -357,7 +357,7 @@ private  roxanneRimjob():void {
 	
 	outputText("Roxanne groans and gives your " + buttDescript() + " a raunchy squeeze, making love to your cheeks as her tongue worships your asshole.  She murmers, \"<i>Thish would be sho much better if it was jussht foreplay.  Why don't you lose next time, okay babe?</i>\"  You moan out loud when her tongue returns to its task, arching your back and whimpering from the intense, anal pleasure.  ", false);
 	if(player.hasCock()) {
-		outputText(SMultiCockDesc() + " ", false);
+		outputText(game.player.SMultiCockDesc() + " ", false);
 		if(player.lust < 70) outputText("hardens", false);
 		else outputText("pulses with need", false);
 		outputText(", a bead of pre-cum already hanging from the tip.  ", false);
@@ -435,7 +435,7 @@ private  roxanneReamsYouNormal():void {
 	
 	//(DICKS:  
 	if(player.hasCock()) {
-		outputText("The constant pressure of her thrusts seems to flow straight to " + sMultiCockDesc() + " as if each of Roxanne's prostate-pounding bumps is injecting you with her lust.  ", false);
+		outputText("The constant pressure of her thrusts seems to flow straight to " + game.player.sMultiCockDesc() + " as if each of Roxanne's prostate-pounding bumps is injecting you with her lust.  ", false);
 		if(player.cockTotal() == 1) outputText("It bounces against your belly with your heartbeats, loving the forced anal pressure.  ", false);
 		else outputText("They bounce against your belly with your heartbeats, loving the anal pressure.  ", false);
 		outputText("Sticky droplets of pre-cum leak from you, and you can't stifle the pleasured gasps that burst from your maw.", false);
@@ -464,12 +464,12 @@ private  roxanneReamsYouNormal():void {
 	if(player.hasCock()) {
 		outputText("  ", false);
 		if(player.cumQ() >= 1500) {
-			outputText("A torrential outpouring of spunk pours from " + sMultiCockDesc() + ", leaking in a steady, submissive flow to grow a ", false);
+			outputText("A torrential outpouring of spunk pours from " + game.player.sMultiCockDesc() + ", leaking in a steady, submissive flow to grow a ", false);
 			if(player.cumQ() <= 2500) outputText("puddle", false);
 			else outputText("lake", false);
 			outputText("below the table.", false);
 		}
-		else outputText("An outpouring of spunk drools from " + sMultiCockDesc() + ", spurting submissively under the table.", false);
+		else outputText("An outpouring of spunk drools from " + game.player.sMultiCockDesc() + ", spurting submissively under the table.", false);
 	}
 	if(player.biggestLactation() >= 2) outputText("  Bursts of milk erupt from your pinned " + nippleDescript(0) +"s, blasting out while you cum to stain the table white.", false);
 	outputText("  As it winds down, you fall into slumber, snoring happily after your violation.\n\n", false);
@@ -637,4 +637,3 @@ private  bigBootyRoxanneContestLoss():void {
 	doNext(camp.returnToCampUseFourHours);
 }
 }
-

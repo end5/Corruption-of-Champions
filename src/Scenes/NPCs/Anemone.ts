@@ -25,26 +25,26 @@
 			//First application
 			if (player.findStatusAffect(StatusAffects.AnemoneVenom) < 0) player.createStatusAffect(StatusAffects.AnemoneVenom, 0, 0, 0, 0);
 			//Gain some lust
-			game.dynStats("lus", (2 * str));
+			dynStats("lus", (2 * str));
 
 			//Loop through applying 1 point of venom at a time.
 			while (str > 0) {
 				str--;
 				//Str bottommed out, convert to lust
-				if (player.str < 2) game.dynStats("lus", 2);
+				if (player.str < 2) dynStats("lus", 2);
 				//Lose a point of str.
 				else {
-					showStatDown("str");
+					mainView.statsView.showStatDown("str");
 					// strDown.visible = true;
 					// strUp.visible = false;
 					player.str--;
 					player.addStatusValue(StatusAffects.AnemoneVenom, 1, 1);
 				}
 				//Spe bottomed out, convert to lust
-				if (player.spe < 2) game.dynStats("lus", 2);
+				if (player.spe < 2) dynStats("lus", 2);
 				//Lose a point of spe.
 				else {
-					showStatDown("spe");
+					mainView.statsView.showStatDown("spe");
 					// speDown.visible = true;
 					// speUp.visible = false;
 					player.spe--;
@@ -113,4 +113,3 @@
 		}
 		
 	}
-

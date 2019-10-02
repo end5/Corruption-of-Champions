@@ -31,7 +31,7 @@
 		//Attack Three: Harpy Ass Grind GO!
 		private  BrigidAssGrind():void {
 			outputText("Brigid grins as she approaches you.  She handily deflects a few defensive blows and grabs you by the shoulders.  She forces you onto your knees and before you can blink, has turned around and smashed your face into her ass!  \"<i>Mmm, you like that, don'tcha?</i>\" she growls, grinding her huge, soft ass across your face, giving you an up-close and personal feel of her egg-laying hips.");
-			game.dynStats("lus", 30);
+			dynStats("lus", 30);
 			game.combatRoundOver();
 		}
 		 protected  performCombatAction():void
@@ -101,4 +101,3 @@
 		}
 		
 	}
-

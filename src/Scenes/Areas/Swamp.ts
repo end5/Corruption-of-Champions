@@ -10,7 +10,7 @@
 
 	  ;
 
-	export class Swamp extends BaseContent
+	export class Swamp
 	{
 		public  corruptedDriderScene:CorruptedDriderScene = new CorruptedDriderScene();
 		public  femaleSpiderMorphScene:FemaleSpiderMorphScene = new FemaleSpiderMorphScene();
@@ -31,17 +31,17 @@
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272]++;
 			/*  SPECIAL SCENE OVERWRITES */
 			//KIHA X HEL THREESOME!
-			if (!kGAMECLASS.kihaFollower.followerKiha() && player.cor < 60 && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.hasCock() && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0) {
-				kGAMECLASS.kihaFollower.kihaXSalamander();
+			if (!kihaFollower.followerKiha() && player.cor < 60 && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.hasCock() && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0) {
+				kihaFollower.kihaXSalamander();
 				return;
 			}
 			//Helia monogamy fucks
-			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helFollower.followerHel()) {
-				kGAMECLASS.helScene.helSexualAmbush();
+			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helFollower.followerHel()) {
+				helScene.helSexualAmbush();
 				return;
 			}
 			if (flags[kFLAGS.TOOK_EMBER_EGG] == 0 && flags[kFLAGS.EGG_BROKEN] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] > 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] % 40 == 0)) {
-				kGAMECLASS.emberScene.findEmbersEgg();
+				emberScene.findEmbersEgg();
 				return;
 			}
 			/*  STANDARD SCENE SELECTION  */
@@ -75,8 +75,8 @@
 					break;
 				case 4:
 					//Kiha follower gets to explore her territory!
-					if (kGAMECLASS.kihaFollower.followerKiha()) kGAMECLASS.kihaScene.kihaExplore();
-					else kGAMECLASS.kihaScene.encounterKiha();
+					if (kihaFollower.followerKiha()) kihaScene.kihaExplore();
+					else kihaScene.encounterKiha();
 					break;
 				default:
 					outputText("New explore code fucked up.  YOU BONED (TELL FEN)");
@@ -85,4 +85,3 @@
 			}
 		}
 	}
-

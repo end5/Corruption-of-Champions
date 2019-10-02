@@ -35,23 +35,23 @@
 			outputText("The sand witch points at you, drawing a circle in the air and mouthing strange words.\n\n");
 			if (player.findStatusAffect(StatusAffects.StoneLust) >= 0) {
 				outputText("The orb inside you grows warm, almost hot, suffusing your body with heat and arousal.  ");
-				game.dynStats("lus", 8 + int(player.sens) / 10);
+				dynStats("lus", 8 + int(player.sens) / 10);
 			}
 			else {
 				outputText("You feel the sands shift by your " + player.feet() + ", and look down to see something slip out of the sands and into your clothes!  It feels incredibly smooth and circular as it glides upward along your " + player.leg() + ", its progress unaffected by your frantic effort to dislodge it.  ");
 				if (player.vaginas.length > 0) outputText("It glides up your thighs to the entrance of your sex, and its intentions dawn on you!\n\nToo late! You reach to stop it, but it pushes against your lips and slips inside your " + vaginaDescript(0) + " in an instant.  You groan in frustration as it begins pulsing and vibrating, sometimes even seeming to change size.");
 				else outputText("It glides up your thighs, curving around your buttocks, and its intentions dawn on you.\n\nYou desperately grab for it, but are too late!  It pushes firmly against your rectum and slips inside instantaneously.  You groan in frustration as it begins pulsing and vibrating, sometimes even seeming to change size.");
 				player.createStatusAffect(StatusAffects.StoneLust, 0, 0, 0, 0);
-				game.dynStats("lus", 4 + int(player.sens) / 10);
+				dynStats("lus", 4 + int(player.sens) / 10);
 			}
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 		}
 		
 		public  constructor()
 		{
 			trace("SandWitch Constructor!");
 			this.a = "the ";
-			if(game.silly()){
+			if(silly()){
 				this.short = "sand witch";
 				this.imageName = "sandwidch";
 			} else {
@@ -95,4 +95,3 @@
 		}
 
 	}
-

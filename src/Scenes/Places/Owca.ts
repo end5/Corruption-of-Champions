@@ -5,7 +5,7 @@
 	 
 	 
 
-	export class Owca extends BaseContent{
+	export class Owca{
 
 	public  constructor()
 	{
@@ -171,7 +171,7 @@ private  acceptRebeccsPlea(firstTime:boolean = false, sacrificed:boolean = false
 		outputText("\n\nYou lick your lips in anticipation, your ");
 		if(player.hasVagina()) outputText(vaginaDescript(0));
 		if(player.hasVagina() && player.hasCock()) outputText(" and ");
-		if(player.hasCock()) outputText(multiCockDescriptLight());
+		if(player.hasCock()) outputText(game.player.multiCockDescriptLight());
 		outputText(" already slickening with sexual juices; the sight of these restraints brings all kinds of perverted thoughts to your mind: dozens of ways to be used and deliciously abused like a sex-toy by wretched and well-endowed beings.");
 	}
 	//[else]
@@ -185,10 +185,10 @@ private  acceptRebeccsPlea(firstTime:boolean = false, sacrificed:boolean = false
 private  intoTheDemonPit(sacrifice:boolean = true):void {
 	clearOutput();
 	//N is the number of hours left before night
-	if(model.time.hours < 21) {
-		var passed:number = 21 - model.time.hours;
+	if(game.time.hours < 21) {
+		var passed:number = 21 - game.time.hours;
 		outputText("<b>" + Num2Text(passed) + " " + (passed > 1 ? "hours pass" : "hour passes") + "...</b>\n");
-		model.time.hours = 21;
+		game.time.hours = 21;
 		statScreenRefresh();
 	}
 	outputText("You are awakened by a sudden cackling, and open your eyes; you are almost entirely surrounded by darkness, and the dim light provided by the menacing red moon only makes the landscape bleaker.");
@@ -255,7 +255,7 @@ public  loseOrSubmitToVapula():void {
 	clearOutput();
 	outputText("Vapula taunts you as she circles around you.  \"<i>Look at the slutty pet!  Ain't you a slutty pet?  Yes, you are!  Don't pretend you're not hungry for some fat demon cock, I know you are.</i>\"  As she speaks, the crowd gathers closer.  A few creatures show some temerity, giving you pinches and gropes as they near.  The cock-belted imp unties his tentacle; the horror wriggles and squirms as it drops to the ground and slithers toward you.  The tip of the absurdly long pecker inspects your body, pressing itself against your flesh, massaging you in the most sensual places, wetting you with sap-like pre-cum and teasingly grinding itself against your mouth, and then your " +assholeDescript());
 	if(player.hasVagina()) outputText(", followed by your "+vaginaDescript(0));
-	if(player.hasCock()) outputText(", before finally wrapping around your " +cockDescript(0)+ " and stroking it; the friction uncontrollably arouses you, and you find yourself reaching full erectness");
+	if(player.hasCock()) outputText(", before finally wrapping around your " +game.player.cockDescript(0)+ " and stroking it; the friction uncontrollably arouses you, and you find yourself reaching full erectness");
 	outputText(".  As more and more hands start playing with your flesh, the succubus grabs your head and gives you a fierce kiss, literally crushing your lips under hers; her mouth tastes like wine and her tongue is driving you over the edge as it intertwines with yours.  Her strong natural scent makes you dizzy and you gradually lose control over your body.  \"<i>Don't worry, darling, it'll be all right...</i>\"");
 	outputText("\n\nSoon you find yourself completely overwhelmed by hot demon hands and dicks touching every part of your body.  In no time at all two imps bend you over and forcefully ram your " +assholeDescript()+ " with their mammoth peckers.");
 	//[ass stretching check]
@@ -285,14 +285,14 @@ public  loseOrSubmitToVapula():void {
 	}
 	//[if cocks]
 	if(player.hasCock()) {
-		outputText("\n\nA soft brush against your " +cockDescript(0)+ " warns you that your crotch is going to get some more love.  At least four hands are caressing it, helping you rise and thicken until it can't grow anymore.  After a while of playful stroking, the hands are suddenly gone, only to be replaced by a fluid-gushing cunt.  It impales itself on your " +cockDescript(0)+ " at full force, driving a very whorish and high-pitched cry from its owner.");
+		outputText("\n\nA soft brush against your " +game.player.cockDescript(0)+ " warns you that your crotch is going to get some more love.  At least four hands are caressing it, helping you rise and thicken until it can't grow anymore.  After a while of playful stroking, the hands are suddenly gone, only to be replaced by a fluid-gushing cunt.  It impales itself on your " +game.player.cockDescript(0)+ " at full force, driving a very whorish and high-pitched cry from its owner.");
 		//[if more than 1 and less than 4 cocks]
 		if(player.cockTotal() > 1) outputText("  She is soon joined by other horny girls, too eager to wait for a piece of your crotch to play with.  They all comfortably position themselves, positioning their pussy or anus atop each of your cocks before riding you like there's no tomorrow.");
 		//[if 4 to 7 cocks]
 		if(player.cockTotal() >= 4) outputText("  Nevertheless, they aren't satisfied with a single insertion and most grab hold of one of your extra cocks before forcefully stuffing it in their other hole, howling and thrashing all the more as they are penetrated a second time.");
 		//[if 7 cocks or more]
 		if(player.cockTotal() >= 7) {
-			outputText("  Sadly, surrounded as you are, no one will be able to find extra room to ride your remaining cocks; fortunately, you feel warm, long demonic tongues being pressed against your " +cockDescript(6));
+			outputText("  Sadly, surrounded as you are, no one will be able to find extra room to ride your remaining cocks; fortunately, you feel warm, long demonic tongues being pressed against your " +game.player.cockDescript(6));
 			if(player.cockTotal() > 8) outputText(" as well as your remaining pricks");
 			outputText(".  The tongues expertly lick your meat and wrap themselves around it, and questing lips give it multiple kisses before one pair suddenly loses patience and deepthroats you with voracity; the tightness of these lips makes them feel like a very efficient cock-ring.  However, it is hard to focus on the sweet warmth provided by these avid mouths when all your other cocks are being clamped by powerful, inhuman vaginal muscles.");
 		}
@@ -306,7 +306,7 @@ public  loseOrSubmitToVapula():void {
 	outputText("\n\nEventually, your insane mix of violation-induced pleasure and pain proves too much for your wrecked body and your whole consciousness winds up as you brace yourself for your incoming climax.  Your eventual spasm is so strong that some of the demons lose the grip they have on you.  Your hands twitch, unintentionally squeezing the cocks pressing against them.  Your head bumps against a wall of dicks, and your nose lodges itself in a miraculously free pussy that was waiting its turn near your mouth.  You even manage to liberate your mouth from that duo of monster-sized members; as you gasp for some air, you can't help but let out a shrilling cry of pleasure.  You scream aimlessly; all the violations you've endured, every sensation inflicted upon your body is expressed in that helpless shriek.  Of course, you can't hear yourself screaming because of all the cum that has been unloaded onto your ears, but you don't care.  Your body is becoming a nexus of pleasure in this show of debauchery as unholy liquids are pumped in and out of it.  As you scream, your groin clenches and you climax with unequaled intensity.");
 	//[if cocks]
 	if(player.hasCock()) {
-		outputText("  " + SMultiCockDesc() + " pulsates and throbs");
+		outputText("  " + game.player.SMultiCockDesc() + " pulsates and throbs");
 		//[[if balls]
 		if(player.balls > 0) outputText(", and your balls swell and boil");
 		outputText("; a gigantic spooge-flow pushes its way up your urethra and spurts outside in the waiting love-tunnels");
@@ -321,7 +321,7 @@ public  loseOrSubmitToVapula():void {
 	//[if vagina]
 	if(player.hasVagina()) outputText("\n\nYour own " +vaginaDescript(0)+ " clenches too, doing its best to waste as little semen as possible.  Your muscles quiver as they feel the incoming last release.  Then, in climax, you squirt your own girl-cum, splattering the demon dicks with your juice.");
 	//[if lactating breasts]
-	if(player.lactationQ() > 0) outputText("\n\nThe combined efforts of a dozen demons proves too much for your poor " +chestDesc()+ " and your nipples let out a white creamy flood, which is immediately gobbled by thirsty imps.  ");
+	if(player.lactationQ() > 0) outputText("\n\nThe combined efforts of a dozen demons proves too much for your poor " +game.player.chestDesc()+ " and your nipples let out a white creamy flood, which is immediately gobbled by thirsty imps.  ");
 	else outputText("\n\n");
 	outputText("Everywhere around you, people keep cumming and shooting ropes of jism.  In no time your entire body is drenched with spooge.  Your eyes and ears are completely covered with sticky goo, preventing you from hearing and seeing.  Still, you can feel penises being stuffed into your mouth again as they unload their unholy swill.  The taste is strong, hot, and salty, but not unpleasant.  You swallow until your belly swells, but you don't care; temporarily reduced to the instincts of breeding stock, you want more spunk and you suck it up as if your life depended on it.");
 	outputText("\n\nYou keep oozing out fluids until you reach your own body's capacity.  When the flow of various juices starts to ebb, you relax, completely exhausted.  You simply lie there in a bed of cocks and naked flesh, abandoning all hope of struggling against the demons' will.  Of course, they aren't done yet.  A few seconds later - the time needed for everyone to switch positions - and they're at it again.  You are touched and caressed, filled and used again, and again, and again.  You black out.");
@@ -338,14 +338,14 @@ public  loseOrSubmitToVapula():void {
 
 private  wakeUpAfterDemonGangBangs():void {
 	clearOutput();
-	model.time.hours = 7;
-	model.time.days++;
+	game.time.hours = 7;
+	game.time.days++;
 	outputText("When you wake up, you are alone, and your restraints are broken.  You are sloshing in a pool of stinky juices; your mouth and ears are still full of it.  Your whole body is covered with a thin white layer that must certainly be dried spooge.  Underneath, you're nothing but bruises and every movement seems to hurt.  A few meters away, outside the pit, you notice your items and your gear.  The village itself appears to be empty... your best assumption is that the residents are hiding, either from shame at having sacrificed you or from awkwardness at the prospect of talking to a sloshing, crusty cumdumpster.  Wearily, you head back to your camp.");
 	//+med-high corruption, - libido, - toughness, - strength, +20 fatigue, high imp preg chance, slimefeed
 	fatigue(20);
 	player.slimeFeed();
 	dynStats("str", -2,"tou", -2, "spe", -1, "int", -1, "lib", 1, "sen", 1, "lus=", 100, "cor", 3);
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 	//PC is redirected to camp, next morning. No nightly camp scenes or dreams.
@@ -397,7 +397,7 @@ private  rapeZeVapula():void {
 		clearOutput();
 		outputText("The demon horde struggles before you.  With a disdainful smile, you fully expose your genitals for everyone to see.  ");
 		//[if cocks]
-		if(player.hasCock()) outputText("\n\nYou gently stroke your " +cockDescript(0)+ ", bringing it to full erectness.  ");
+		if(player.hasCock()) outputText("\n\nYou gently stroke your " +game.player.cockDescript(0)+ ", bringing it to full erectness.  ");
 		//[if vagina]
 		if(player.hasVagina()) outputText("You stick a finger in your own " +vaginaDescript()+ " in order to lubricate it.  ");
 		outputText("The defeated horde watches you touch yourself with avid, almost desperate eyes.  You keep teasing yourself, saving your lust for the torrid storm of rape you're about to unleash on the poor creatures who dared attack you.  You walk among the battered bodies, looking for the prey that will best suit you; then you find her.  Vapula is lying here, her purple skin masking ");
@@ -412,7 +412,7 @@ private  rapeZeVapula():void {
 		outputText("\n\nFor a moment as she tries her best to be as proud as possible in such an uncomfortable situation; you savor her helplessness, then decide to tease her a bit; first, a fiery kiss, probing the inside of her mouth with your tongue.  Next, you toy with her nipples, slap her plush ass and cup her tits, enjoying the supple texture of her tender flesh.  You keep molesting her body until she can't help but moan like a whore under your dexterous ministrations.  Her vagina is now freely spilling its juice; she keeps squirming against her restraints, uncontrollably shaken by her arousal.");
 		outputText("\n\n\"<i>What are you waiting for?</i>\" she moans.  \"<i>Fuck me already, you dirty bastard.  Go ahead, stuff me.  Why don't you get down to business?  Are you afraid that you might last only a minute?  What are you, a poor little sissy with no stamina?  You innocent little " + player.mf("manlet","maiden") + ", I will–</i>\"");
 		outputText("\n\nSLAP!  The back of your hand impacts her cheek, muting her for a moment and opening the way for your own comment.  \"<i>Shut up, whore.  I'm the one deciding who fucks who here.  You want sex?  Don't worry, you'll see plenty soon.</i>\"");
-		outputText("\n\nWith lazy nonchalance you grab hold of another demon crawling at your feet, another succubus; although not so tall or big-breasted as Vapula, her provocative curves are a delight to your eyes.  You bend her over and, without ceremony, start working her tight pucker, filling her insides with your " +cockDescript(0)+ ".");
+		outputText("\n\nWith lazy nonchalance you grab hold of another demon crawling at your feet, another succubus; although not so tall or big-breasted as Vapula, her provocative curves are a delight to your eyes.  You bend her over and, without ceremony, start working her tight pucker, filling her insides with your " +game.player.cockDescript(0)+ ".");
 		if(player.cockTotal() > 1) outputText("  Seeing that she has extra room left, you grab another of your dongs and put it at the entrance of her dripping cunt before forcing it in.");
 		outputText("\n\nYou keep thrusting back and forth, treating the worthless horned-girl like a disposable cock-sleeve. As you pump in and out of her, you look at Vapula, warning her.  \"<i>Don't turn your head.  If you ever look away or close your eyes, you will regret it.</i>\"  Overwhelmed by your dominance and subdued by the defeat, Vapula can only nod.  You work the succubus's lush hole");
 		if(player.cockTotal() > 1) outputText("s");
@@ -427,10 +427,10 @@ private  rapeZeVapula():void {
 		outputText(" session has brought Vapula to a new level of arousal; she is struggling to free her arms and finger herself, but her tight restraints only allow her to wriggle uncomfortably.  Her pussy is gushing of its own and she whimpers from time to time, unable to control her lust.");
 		outputText("\n\nYou throw away your expendable");
 		if(player.cumQ() > 1000) outputText(", expandable");
-		outputText(" cumdumpster and grab another slut.  This time you feel like you could use a blowjob to clean off the demonic sweat and slime from your cock; you forcefully open her jaw and shove your " +cockDescript(0)+ " down her throat without any care.  The sudden influx of dickflesh blocking her air-flow makes her choke and cough, but a withdrawal and a good cock-slap reminds her of her place.  \"<i>You fucking bitch!  You goddamn worthless slut!  What good are you if you can't even give proper head?  Lick, you whore!  I want your tongue all over my crotch!  You can breathe when you've properly moistened my ");
+		outputText(" cumdumpster and grab another slut.  This time you feel like you could use a blowjob to clean off the demonic sweat and slime from your cock; you forcefully open her jaw and shove your " +game.player.cockDescript(0)+ " down her throat without any care.  The sudden influx of dickflesh blocking her air-flow makes her choke and cough, but a withdrawal and a good cock-slap reminds her of her place.  \"<i>You fucking bitch!  You goddamn worthless slut!  What good are you if you can't even give proper head?  Lick, you whore!  I want your tongue all over my crotch!  You can breathe when you've properly moistened my ");
 		if(player.balls > 0) outputText("balls");
 		else outputText(player.skin());
-		outputText("!</i>\"  The poor demoness, cheek stained with semen, mutters an apology and proceeds to lick your " +cockDescript(0)+ ", suckling the tip, ");
+		outputText("!</i>\"  The poor demoness, cheek stained with semen, mutters an apology and proceeds to lick your " +game.player.cockDescript(0)+ ", suckling the tip, ");
 		if(player.balls > 0) outputText("fondling your " +ballsDescriptLight()+ ", ");
 		//[if multicocks] 
 		if(player.cockTotal() > 1) outputText("alternatively deepthroating or jerking every cock of yours, ");
@@ -440,16 +440,16 @@ private  rapeZeVapula():void {
 		outputText("again as the demoness sucks you off; Vapula can't help but take a quick glance at it, but you pretend not to notice.  After all, she's only teasing herself for you.");
 		outputText("\n\n\"<i>Please... take me,</i>\" she whimpers.  \"<i>I don't care if I only get your leftovers.  Take me in any way you like.  I'll give you head, I'll give you my ass, anything.  Just fuck me!  My pussy is so horny it hurts!</i>\"");
 		outputText("\n\n\"<i>Piss off, bitch.</i>\"");
-		outputText("\n\nYou seize your fuck-toy by the waist and, turning her, gratuitously ram her asshole, her face right next to Vapula's pussy and staring at it with timid yet longing eyes.  She cries in pleasure and darts her tongue out; your toy almost manages to take a lick before you impale her all the way back on your " +cockDescript(0)+ ".  After a few more mad thrusts, you feel another wave of seed flooding your urethra and spurting inside the slut's colon.  But this time, you pull out your cream-spraying pecker");
+		outputText("\n\nYou seize your fuck-toy by the waist and, turning her, gratuitously ram her asshole, her face right next to Vapula's pussy and staring at it with timid yet longing eyes.  She cries in pleasure and darts her tongue out; your toy almost manages to take a lick before you impale her all the way back on your " +game.player.cockDescript(0)+ ".  After a few more mad thrusts, you feel another wave of seed flooding your urethra and spurting inside the slut's colon.  But this time, you pull out your cream-spraying pecker");
 		if(player.cockTotal() > 1) outputText("s");
 		outputText(" and aim at Vapula, splattering her body with your spunk.  Words cannot describe the sheer triumph you feel.  You burst into laughter as you drench that unworthy bitch with your seed.");
-		outputText("\n\nGods, this is only the beginning.  Your next target is an unconscious imp with a monstrously thick pecker.  You lift him by his arms and jam his little pucker on your " +cockDescript(0)+ ", making sure his own cock points toward Vapula.  The sudden anal penetration wakes him up and makes his dick, already half-mast from his perverted imp dreams, instantly rock hard.  You begin stroking his dick with enthusiasm as you violate his insides, your own cum serving as lube for the rough anal penetration.  The tight confines of the little red creature as well as your furious handjob prove too much for both of you and in no time you are both ejaculating in chorus.  Milky torrents burst from his mammoth member, further soaking the horny ex-dominatrix.");
+		outputText("\n\nGods, this is only the beginning.  Your next target is an unconscious imp with a monstrously thick pecker.  You lift him by his arms and jam his little pucker on your " +game.player.cockDescript(0)+ ", making sure his own cock points toward Vapula.  The sudden anal penetration wakes him up and makes his dick, already half-mast from his perverted imp dreams, instantly rock hard.  You begin stroking his dick with enthusiasm as you violate his insides, your own cum serving as lube for the rough anal penetration.  The tight confines of the little red creature as well as your furious handjob prove too much for both of you and in no time you are both ejaculating in chorus.  Milky torrents burst from his mammoth member, further soaking the horny ex-dominatrix.");
 		outputText("\n\nBut you're not satiated yet.  You grab another demon, fuck it rough and fast; when you know you're about to reach another orgasm, you pull out before cumming what your body can manage on Vapula's body.  You fuck another creature this way.  And another, and another...  When whatever you're fucking happens to have a cock, you ruthlessly rub it until it squirts everything it has on the tied succubus.  ");
-		if(player.cockTotal() > 1) outputText("In an unholy sex-frenzy, you want more; you start grabbing creatures by groups and alternatively pump in and out of their asses with your " +cockDescript(0)+ ", always hungry for more anal.");
+		if(player.cockTotal() > 1) outputText("In an unholy sex-frenzy, you want more; you start grabbing creatures by groups and alternatively pump in and out of their asses with your " +game.player.cockDescript(0)+ ", always hungry for more anal.");
 		outputText("\n\nVapula is now entirely covered in a thick white liquid blanket.  The contact of all this hot seed against her untouched skin is driving her crazy; after some futile squirming in a desperate attempt to quench her burning pussy, she is now openly sobbing in frustration.");
 		outputText("\n\n\"<i>You're... you violate my pets, yet you won't deign to touch me.  Why?  D-don't you like my body?  Don't you like my cunt?  Look, it's aching for a cock like yours.  It needs you.  I need your meat inside of me, please fuck me fuck me fuck me fuckmefuckme... <b>why won't you fuck me?  Please, I need to cum! Please!</b></i>\"");
-		outputText("\n\nHa!  Without a word, you keep thrusting your " +cockDescript(0)+ " inside your current hot hole while staring at her.  You resolutely ignore her, determined to let her see you fuck the entirety of her horde.  The various demons in your grasp appear resigned to be used as mere fuck-toys for your sole enjoyment – and their mistress' torment.  Most of them barely struggle as you ferociously stretch their interior; instead, they moan like the bunch of bitches they truly are, letting their mistress know that a dominant stud is giving them more pleasure than she ever did.");
-		outputText("\n\nAt last, you reach the limit of your prodigious stamina.  When you're done pounding the last untouched hole in the pit, when your " +cockDescript(0)+ " is done squirting its ultimate drop of goo over the wanton succubus, you relax and drop the fuck-toy you were using.  Your " +cockDescript(0)+ " is finally softening and you have no further use of any broken toy in the pit.  All but one...");
+		outputText("\n\nHa!  Without a word, you keep thrusting your " +game.player.cockDescript(0)+ " inside your current hot hole while staring at her.  You resolutely ignore her, determined to let her see you fuck the entirety of her horde.  The various demons in your grasp appear resigned to be used as mere fuck-toys for your sole enjoyment – and their mistress' torment.  Most of them barely struggle as you ferociously stretch their interior; instead, they moan like the bunch of bitches they truly are, letting their mistress know that a dominant stud is giving them more pleasure than she ever did.");
+		outputText("\n\nAt last, you reach the limit of your prodigious stamina.  When you're done pounding the last untouched hole in the pit, when your " +game.player.cockDescript(0)+ " is done squirting its ultimate drop of goo over the wanton succubus, you relax and drop the fuck-toy you were using.  Your " +game.player.cockDescript(0)+ " is finally softening and you have no further use of any broken toy in the pit.  All but one...");
 		outputText("\n\nWhen you walk up to Vapula, she is barely recognizable. Her will is utterly broken and she seems considerably mollified.  Your repeated denials made her mind collapse; she's but an empty shell driven crazy by her burning unsatisfied lust.  With a content smirk, you lean down and give her a tender kiss, enjoying the taste of secondhand sexual juices coating her lips.  You whisper to her, \"<i>Good night, beauty.</i>\"  She doesn't seem to hear your taunt.");
 		outputText("\n\nA few meters away, outside the pit, you notice your items and your gear.  The village appears to be deserted.  Considering these demons will have a hard time threatening anyone with white goo oozing out of their absurdly stretched holes, you let them rest, wallowing in a pool of mixed spunk.  You pick up your belongings and head back to camp.");
 		if(silly()) outputText("  As you look back, you snicker, \"<i>Ass for ass, assholes.</i>\"");
@@ -462,7 +462,7 @@ private  rapeZeVapula():void {
 		clearOutput();
 		outputText("The demon horde struggles before you.  With a disdainful smile, you fully expose your genitals for everyone to see.  ");
 		//[if cocks]
-		if(player.hasCock()) outputText("\n\nYou gently stroke your " +cockDescript(0)+ ", bringing it to full erectness.  ");
+		if(player.hasCock()) outputText("\n\nYou gently stroke your " +game.player.cockDescript(0)+ ", bringing it to full erectness.  ");
 		//[if vagina]
 		if(player.hasVagina()) outputText("You stick a finger in your own " +vaginaDescript()+ " in order to lubricate it.  ");
 		outputText("The defeated horde watches you touch yourself with avid, almost desperate eyes.  You keep teasing yourself, saving your lust for the torrid storm of rape you're about to unleash on the poor creatures who dared attack you.  You walk among the battered bodies, looking for the prey that will best suit you; then you find her.  Vapula is lying here, her purple skin masking ");
@@ -487,7 +487,7 @@ private  rapeZeVapula():void {
 		outputText("Against your relentless milking pressure he stands no chance and he moans raggedly as he cums in tandem, still incapable of moving his body as your mixed juices dribble down him.");
 		outputText("\n\nNeedless to say, watching this rough session has brought Vapula to a new level of arousal; she is struggling to free her arms and finger herself, but her tight restraints only allow her to wriggle uncomfortably.  Her pussy is gushing of its own accord and she whimpers from time to time, unable to control her lust.");
 		outputText("\n\nYou throw your expendable cock toy to one side and grab another slut, this time a succubus.  Your semen-dribbling cunt is now in need of a cleaning, and without any ado you sit yourself straight down onto her face, banging the back of her head against the ground.  She whines into your " +vaginaDescript()+ ", to which you respond by pulling her hair.  \"<i>You fucking bitch!  You worthless slut!  What good are you if you can't even munch rug properly?  Lick, you whore!  I want your tongue to clean up what your useless fuckhead of a friend couldn't keep to himself.</i>\"  The poor demoness mutters an apology and proceeds to lap up the juices drooling out of your hole, licking your labia and mons clean of what the incubus left, darting her wet muscle across your " +clitDescript()+ " before reaching into your vagina, carefully teasing out and drinking every drop of jizz she can find, making your own juices run afresh.  You enjoy her ministrations while staring Vapula in the eyes; she has trouble looking back at you as her body trembles and her eyes widen at your sheer display of depravity.  Your " +nippleDescript(0)+ "s harden");
-		if(player.biggestTitSize() >= 2) outputText(" and your " +breastDescript(0)+ " bounce gently");
+		if(player.biggestTitSize() >= 2) outputText(" and your " +game.player.breastDescript(0)+ " bounce gently");
 		outputText(" as you grind your snatch into the succubus's face; Vapula can't help but take a quick glance at your oozing, slippery cunt, but you pretend not to notice.  After all, she's only teasing herself for you.");
 		outputText("\n\n\"<i>Please... take me,</i>\" the tied demon whines.  \"<i>I don't care if I only get your leftovers.  Take me in any way you like.  I'll lick your cunt, I'll scissor you, I'll magic you a strap-on, anything.  Just fuck me; my pussy is so horny it hurts!</i>\"");
 		outputText("\n\n\"<i>Piss off, bitch.</i>\"");
@@ -518,8 +518,8 @@ private  rapeZeVapula():void {
 		player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 	}
 	//PC is redirected to camp, next morning. No nightly camp scenes. 
-	model.time.hours = 7;
-	model.time.days++;
+	game.time.hours = 7;
+	game.time.days++;
 	cleanupAfterCombat();
 }
 
@@ -528,7 +528,7 @@ private  rapeZeVapula():void {
 private  owcaMainScreenOn():void {
 	clearOutput();
 	
-	if(flags[kFLAGS.REBECCS_LAST_PLEA] == 1 && !kGAMECLASS.vapula.vapulaSlave()) {
+	if(flags[kFLAGS.REBECCS_LAST_PLEA] == 1 && !vapula.vapulaSlave()) {
 		rebeccsLastPlea();
 		return;
 	}
@@ -569,7 +569,7 @@ private  owcaMainScreenOn():void {
 	var pit:() => void = null;
 	var herd:() => void = null;
 	var tavern:() => void = null;
-	if(model.time.hours >= 16 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) {
+	if(game.time.hours >= 16 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) {
 		//Pit. Requires 16:00 or later. Leads to the night gangbang (with possible fight) scene, this time fully equipped and clothed. Attitude is raised by 3.
 		pit = zePit;
 	}
@@ -695,7 +695,7 @@ private  rebeccBathScene():void {
 	if(player.gender == 0) outputText("."); 
 	else {
 		//[if cock]
-		if(player.hasCock()) outputText("; your " + cockDescript(0) + " grows to full erect size");
+		if(player.hasCock()) outputText("; your " + game.player.cockDescript(0) + " grows to full erect size");
 		if(player.hasVagina() && player.hasCock()) outputText(" and ");
 		else if(player.hasVagina()) outputText("; ");
 		if(player.hasVagina()) outputText("your " + vaginaDescript() + " leaks a little trickle of girl-juice");
@@ -715,19 +715,19 @@ private  rapeRebecc(outside:boolean = false):void {
 	if(player.hasCock()) {
 		outputText("Within three strides you are upon Rebecc; you slap her twice on her cheeks, brutally yank her hair and in a harsh gesture, you turn her around.  The woman yells, \"<i>W-what are you doing?  No, please stop!</i>\"  Completely caught unaware, she gasps and jolts in surprise, crying loudly until you slap her again to shut her up.");
 		outputText("\n\nYou quickly proceed to denude her, tearing her peasant dress to reveal her bountiful, jiggling breasts.  This enormous rack is begging to be touched; you ruthlessly grope them, forcefully bringing her nipples into their erect state.  She tries to struggle away but you hold her tight, her resistance and endless writhing making [eachCock] harder; to better please yourself, you pull it free of your [armor].  You grind against her plush butt through the coarse cloth of her dress until it is completely drenched with pre-cum, then feverishly remove it, tearing the poor girl's gown to rags in the process to give you a clear view of her ample buttocks.  Pressing yourself on her more, you thoroughly enjoy the soft touch of her healthy rump.  You pinch and grope her fat butt repeatedly, making her whimper in humiliation, until it goes red from your rough treatment.  Gods, this girl has a fine ass; you give it a few slaps here and there as it jiggles in the most enticing way.");
-		outputText("\n\nThe sight of her glorious rear is too tempting a target to resist, and you quickly shove the tip of your " + cockDescript(0) + " between her plush cheeks, bracing yourself for torrid anal penetration.  She keeps whining, unable to break free of your iron grasp.  In her constant struggles you notice an opening between her buttocks - you thrust inside with all your might, devastating her backdoor entrance, stretching her holes, tearing her insides and grinding against her rugged anal walls in a extremely rough way.");
+		outputText("\n\nThe sight of her glorious rear is too tempting a target to resist, and you quickly shove the tip of your " + game.player.cockDescript(0) + " between her plush cheeks, bracing yourself for torrid anal penetration.  She keeps whining, unable to break free of your iron grasp.  In her constant struggles you notice an opening between her buttocks - you thrust inside with all your might, devastating her backdoor entrance, stretching her holes, tearing her insides and grinding against her rugged anal walls in a extremely rough way.");
 		//[if cock is too long, >12 inches]
-		if(player.cocks[0].cockLength > 12) outputText("  You keep burying more of your " + cockDescript(0) + " deep inside her rectum until you reach her limit and can't fit more cock in.");
+		if(player.cocks[0].cockLength > 12) outputText("  You keep burying more of your " + game.player.cockDescript(0) + " deep inside her rectum until you reach her limit and can't fit more cock in.");
 		else outputText("  Eventually the entirety of your prick is lodged inside her lush asshole.");
 		outputText("  She trills and bleats in pain and flounders about in your arms, futilely trying to avoid the incoming butt-rape.  You lock her arms with yours, implacably kneading her tits, and her shivering flesh brings the most exquisite contact to your fingers; you toy with her nipples as well, making her scream savagely in forced pleasure.");
-		outputText("\n\nAfter a few minutes of resistance, her body tenses up and you ease yourself into effectively butt-fucking her.  You pull her white fuzzy hair, seize her squeezable hips for more leverage and start raping her ass; the thrusts come hard and fast, almost bringing your " + cockDescript(0) + " out before jamming it all the way inside again.  This forceful and tigerish motion makes her shriek in excruciating ecstasy; she groans and moans rhythmically at the pace of your regular ass-pounding.  The torment you're inflicting on her poor interior walls is too much to bear and she twists violently to escape the dick-beast dominating her pucker; however, all she can do is wave her appreciable butt, bringing extra sensations to your " + cockDescript(0)+ " and adding extra spice to your already ardent anal-rape.");
-		outputText("\n\nThe cadenced wobbling of her rump as well as your constant pumping is bringing you to a higher state of pleasure; the heavenly tingle your " + cockDescript(0) + " is receiving is making you heedless of anything else but the burning heat of her insides cooking your meat.  You feel your lust rise as you keep riding the buttslut below you, ignoring her muffled complaints and whining, her tight confines gradually taking over any control you have over your rod.  You pound Rebecc's ass as if your life depended on it, clutching her curvy hips instinctively like an imp in rut.  Your groin impacts her buttocks with a loud SLAP at every thrust");
+		outputText("\n\nAfter a few minutes of resistance, her body tenses up and you ease yourself into effectively butt-fucking her.  You pull her white fuzzy hair, seize her squeezable hips for more leverage and start raping her ass; the thrusts come hard and fast, almost bringing your " + game.player.cockDescript(0) + " out before jamming it all the way inside again.  This forceful and tigerish motion makes her shriek in excruciating ecstasy; she groans and moans rhythmically at the pace of your regular ass-pounding.  The torment you're inflicting on her poor interior walls is too much to bear and she twists violently to escape the dick-beast dominating her pucker; however, all she can do is wave her appreciable butt, bringing extra sensations to your " + game.player.cockDescript(0)+ " and adding extra spice to your already ardent anal-rape.");
+		outputText("\n\nThe cadenced wobbling of her rump as well as your constant pumping is bringing you to a higher state of pleasure; the heavenly tingle your " + game.player.cockDescript(0) + " is receiving is making you heedless of anything else but the burning heat of her insides cooking your meat.  You feel your lust rise as you keep riding the buttslut below you, ignoring her muffled complaints and whining, her tight confines gradually taking over any control you have over your rod.  You pound Rebecc's ass as if your life depended on it, clutching her curvy hips instinctively like an imp in rut.  Your groin impacts her buttocks with a loud SLAP at every thrust");
 		//[if balls]
 		if(player.balls > 0) outputText(", and your " + ballsDescriptLight() + " almost feel sore from colliding with her dribbling cunt");
 		outputText(".  Finally, when you think you're about to pass out from exhaustion, you cum in a powerful jet, literally blasting Rebecc's ass with your spooge, globs of  goo being propelled like projectiles into her colon and splattering her backside with huge white smears.");
 		if(player.cumQ() > 1500) outputText("  After completely filling up her rectum, your baby-batter erupts in thick spurts from her anus despite her instinctive ass-clenching efforts to hold as much semen as possible inside.  The sheer might of your cumshot is enough to send Rebecc over the edge, and she releases an absolutely torrential stream of girl-cum, squirting against her will all over your groins and mixing her own fluids with yours in a pathetic show of sluttiness.");
 		outputText("  She unconsciously milks you of all your spunk, her anal muscles working on their own to massage your meat and extract every drop from your urethra.");
-		outputText("\n\nWith a last, satisfied sigh, you fall over, " + cockDescript(0) + " deeply buried inside Rebecc's butt as you feel her warm, curvy body slowly waggling below you.  ");
+		outputText("\n\nWith a last, satisfied sigh, you fall over, " + game.player.cockDescript(0) + " deeply buried inside Rebecc's butt as you feel her warm, curvy body slowly waggling below you.  ");
 		if(outside) outputText("Some of the villagers are apathetically watching you, too stunned and bruised to intervene.  ");
 		outputText("You silently remove your prick from your girl's ass, watch her contentedly as her exposed rectum is literally oozing with spooge and walk back to your camp.");
 		outputText("\n\nThis is a more-than-appropriate goodbye gift");
@@ -765,7 +765,7 @@ private  rapeRebecc(outside:boolean = false):void {
 	dynStats("lib", -2, "cor", 5);
 	flags[kFLAGS.OWCA_UNLOCKED] = -1;
 	
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }
@@ -876,7 +876,7 @@ private  forgiveOwca():void {
 	flags[kFLAGS.OWCAS_ATTITUDE] = 60;
 	flags[kFLAGS.OWCA_ANGER_DISABLED] = 1;
 	//To main owca menu
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat(gangbangVillageStuff);
 	else doNext(gangbangVillageStuff);
 }
@@ -885,7 +885,7 @@ private  fuckThisShit():void {
 	clearOutput();
 	outputText("You stare at the wretched, whimpering creature before you for a moment.  There's nothing to say.  Without a word, you head back to your camp, carefully closing Rebecc's door behind you as you leave.");
 	flags[kFLAGS.REBECCS_LAST_PLEA] = 1;
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }
@@ -942,7 +942,7 @@ private  slaveToVapulaBadEnd():void {
 	outputText("\n\nThese spontaneous, dirty words make the imp fucking you from behind instantly cum; with a powerful last push, he blasts you with his seed, filling and soaking your backside with thick white goo.  You reach for Vapula, helplessly hugging her tits and suckling her nipples as you sob in pleasure-induced humiliation.");
 	outputText("\n\n\"<i>Very well, slut.  Your former life as a villager is over.  It's time to move on to your new life; and trust me, it's going to be much more exciting.  Actually, I don't think you'll be willing to ever leave this place...</i>\"");
 	outputText("\n\nYou furiously nod in approval.");
-	getGame().gameOver();
+	gameOver();
 }
 
 //Subdue Vapula Scene - begins Vapula Follower Content(Z)
@@ -1030,4 +1030,3 @@ private  enslaveVapulaAsACuntWielder():void {
 }
 	
 }
-

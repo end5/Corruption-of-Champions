@@ -11,12 +11,12 @@
 	{
 		 public  defeated(hpVictory:boolean):void
 		{
-			game.clearOutput();
+			clearOutput();
 			outputText("The goblin broodmother is defeated!  You find a bottle of succubi milk on her.  That stuff is banned in Tel'Adre - and for good reason, but it might come in handy.  You pocket the foul fluid for now.");
 			outputText("  You could use her for a quick, willing fuck to sate your lusts before continuing on.  Do you?");
-			game.menu();
-			game.addButton(0,"Fuck",game.urtaQuest.winFuckAGoblinBroodmotherAsUrta);
-			game.addButton(4,"Leave",game.urtaQuest.nagaPleaseNagaStoleMyDick);
+			menu();
+			addButton(0,"Fuck",game.urtaQuest.winFuckAGoblinBroodmotherAsUrta);
+			addButton(4,"Leave",game.urtaQuest.nagaPleaseNagaStoleMyDick);
 		}
 
 		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
@@ -68,4 +68,3 @@
 			checkMonster();
 		}
 	}
-

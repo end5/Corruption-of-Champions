@@ -785,7 +785,7 @@ public  fuckRubi():void {
 	if(player.hasCock())
 	{
 		// trace("Rubi - PlayerHasCock");
-		outputText(cockDescript(x), false);
+		outputText(game.player.cockDescript(x), false);
 	}
 	else
 		outputText(clitDescript(), false);
@@ -819,7 +819,7 @@ public  fuckRubi():void {
 	if(player.hasCock()) outputText("cock");
 	else outputText("clit");
 	outputText(", Rubi slips off your lap and kneels on the floor.  [rubi Ey] pauses a moment, taking in your ");
-	if(player.hasCock()) outputText(cockDescript(x));
+	if(player.hasCock()) outputText(game.player.cockDescript(x));
 	else outputText("[clit]");
 	outputText(" with [rubi eir] eyes before leaning in and giving it a tentative lick, which sends a shiver up your spine.  Seeing that, [rubi ey] gives a little smile and licks again, running [rubi eir] smooth tongue all along the length of your ");
 	if(player.hasCock()) outputText("swollen member");
@@ -835,7 +835,7 @@ public  fuckRubi():void {
 	if(size < 2) {
 		//(Normal/Incubus Rubi)
 		outputText("\n\nFiguring [rubi ey]'s had enough time in charge, you stand and get behind Rubi, pushing [rubi em] so that [rubi eir] chest and head are resting on the edge of the bed.  You lift [rubi eir] tail and place your ");
-		if(player.hasCock()) outputText(cockDescript(x));
+		if(player.hasCock()) outputText(game.player.cockDescript(x));
 		else outputText("[clit]");
 		outputText(" at [rubi eir] tight ");
 		if(flags[kFLAGS.RUBI_NO_CUNT] > 0) outputText("tailhole");
@@ -848,7 +848,7 @@ public  fuckRubi():void {
 	//(These two paragraphs for cocks over 24 area)
 	else {
 		outputText("\n\nFiguring [rubi ey]'s had enough time in charge, you stand and get behind Rubi, pushing [rubi em] so that [rubi eir] chest and head are resting on the edge of the bed.  You lift [rubi eir] tail, press [rubi eir] legs together, and place your ");
-		if(player.hasCock()) outputText(cockDescript(x));
+		if(player.hasCock()) outputText(game.player.cockDescript(x));
 		else outputText("[clit]");
 		outputText(" at the space just below [rubi eir] ");
 		if(flags[kFLAGS.RUBI_NO_CUNT] > 0) outputText("balls");
@@ -858,7 +858,7 @@ public  fuckRubi():void {
 		if(rubiBimbo()) outputText(", not that [rubi ey] needs the extra lubrication, as she's practically dripping like a faucet, which dribbles down [rubi eir] legs suitably enough");
 		outputText(".");
 		outputText("\n\nYou press forward, your enormous ");
-		if(player.hasCock()) outputText(cockDescript(x));
+		if(player.hasCock()) outputText(game.player.cockDescript(x));
 		else outputText("[clit]");
 		outputText(" slipping between Rubi's thighs, which grip you tightly.  You feel [rubi eir] ");
 		if(flags[kFLAGS.RUBI_COCK_SIZE] > 0) outputText("hard cock");
@@ -880,7 +880,7 @@ public  fuckRubi():void {
 	outputText("\n\nYou keep this up for as long as you can, steeling yourself until you just can't take any more.  With a final, deep thrust, you groan and let your mind blank as the orgasm overtakes you.  ");
 	//(Player has cock under 24 area?)
 	if(player.hasCock() && player.cockArea(x) <= rubiCapacity()) {
-		outputText("Your " + cockDescript(x) + " engorges for a second before erupting deep inside your demonic little fucktoy.  ");
+		outputText("Your " + game.player.cockDescript(x) + " engorges for a second before erupting deep inside your demonic little fucktoy.  ");
 		if(player.cumQ() < 250) outputText("Cum dribbles out from [rubi eir] hole as you give a couple extra thrusts.");
 		else if(player.cumQ() < 1000) outputText("A generous amount of cum trickles from [rubi eir] depths as you give a couple extra thrusts.");
 		else if(player.cumQ() < 2000) {
@@ -891,7 +891,7 @@ public  fuckRubi():void {
 		}
 	}
 	else if(player.hasCock()) {
-		outputText("Your " + cockDescript(x) + " engorges for a second before erupting beneath Rubi, splattering [rubi em] and the blankets ");
+		outputText("Your " + game.player.cockDescript(x) + " engorges for a second before erupting beneath Rubi, splattering [rubi em] and the blankets ");
 		if(player.cumQ() < 250) outputText("with a fair amount of your seed.");
 		else if(player.cumQ() < 1000) outputText("with a generous amount of your spunk.");
 		else outputText("with a veritable torrent of potent pearlescent spooge.");
@@ -2426,7 +2426,7 @@ private  getFuckedByRubi():void {
 	if(!player.hasVagina()) outputText("asshole");
 	else outputText("cunt");
 	outputText(" of yours all ready for me.</i>\"  Rubi's head descends between your legs");
-	if(player.hasCock()) outputText(", ignoring your " + multiCockDescriptLight() + " completely,");
+	if(player.hasCock()) outputText(", ignoring your " + game.player.multiCockDescriptLight() + " completely,");
 	outputText(" and presses [rubi eir] face into your [vagOrAss], inhaling deeply.  [rubi Eir] lips pucker as [rubi ey] plants a kiss directly onto your ");
 	if(!player.hasVagina()) outputText("ass");
 	else outputText("moistening pussy");
@@ -3620,7 +3620,7 @@ public  hypnoBimboficationForRubiSloots():void
 	outputText("\n\nRubi is watching you in open mouthed fascination. His lips move, stammering, trying to talk, but he just can't get the words out. It's no wonder, really - you've got your big, hard tool");
 	if(player.cockTotal() > 1) outputText("s");
 	outputText(" whipped out and swaying with your sinuous movements, and all he has is his comparatively undersized little pecker. You rock your whole body with the snake-like grace given to you by your naga body, swaying rhythmically as you meet his eyes. Knowing full well just what kinds of depravity you'd like to force him into, you feel a ");
-	if(kGAMECLASS.monk >= 5) outputText("familiar ");
+	if(game.monk >= 5) outputText("familiar ");
 	else outputText("strange ");
 	outputText("dark power welling up within you.");
 	outputText("\n\nRubi is powerless to resist your hypnotic gaze. Your very eyes seem alight with wisps of dark, almost-demonic power, beginning to entrance the vulnerable ");
@@ -3686,4 +3686,3 @@ public  hypnoBimboficationForRubiSloots():void
 }
 //These need to stay here, I think.
 }
-

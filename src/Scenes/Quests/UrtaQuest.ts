@@ -188,7 +188,7 @@ private  resetToPC():void {
 	player.itemSlot3 = urtaQItems3;
 	player.itemSlot4 = urtaQItems4;
 	player.itemSlot5 = urtaQItems5;
-	model.player = player;
+	game.player = player;
 
 	// See called method comment.
 	player.fixFuckingCockTypesEnum();
@@ -213,7 +213,7 @@ public  startUrtaQuest():void {
 	player2 = player;
 
 	player = new Player();
-	model.player = player;
+	game.player = player;
 	player.short = "Urta";
 	player.tallness = 71;
 	player.hairColor = "gray";
@@ -512,7 +512,7 @@ private  fuckHelAndKitsunesAsUrta():void {
 	outputText("\n\nYou wake alone, and as the sun rises, you realize it's time to leave the city on your quest...");
 	flags[kFLAGS.URTA_FUCKED_HEL] = 1;
 	player.orgasm();
-	model.time.days++;
+	game.time.days++;
 	//Advance to next day, jump to leaving text
 	//{Resume UrtaQUEST!}
 	menu();
@@ -917,7 +917,7 @@ private  snuggleWithUrta(truth:boolean):void {
 //Embark(C)*
 private  morningAfterCampVisitEmbark(truth:boolean):void {
 	clearOutput();
-	model.time.days++;
+	game.time.days++;
 	statScreenRefresh();
 	outputText("Sadly, morning comes, and your time with " + player2.short + " comes to an end.  You push " + player2.mf("his", "her") + " shoulder gently to rouse " + player2.mf("him", "her") + ", smiling at " + player2.mf("him", "her") + " when " + player2.mf("he", "she") + " wakes.  You kiss " + player2.mf("him", "her") + " on the lips before rolling out from under the blanket.  The two of you eat a quiet breakfast together, simply enjoying each other's company.  ");
 
@@ -942,7 +942,7 @@ private  morningAfterCampVisitEmbark(truth:boolean):void {
 	menu();
 	addButton(0, "Next", runIntoAGoblin, true);
 	
-	getGame().mainView.hideMenuButton( MainView.MENU_DATA );
+	mainView.hideMenuButton( MainView.MENU_DATA );
 	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
 	mainView.hideMenuButton( MainView.MENU_LEVEL );
 	mainView.hideMenuButton( MainView.MENU_PERKS );
@@ -1106,11 +1106,11 @@ private  loseToGoblinsPartIVAsUrta():void {
 private  urtaGameOver():void {
 	clearOutput();
 	outputText("<b>Urta has been lost to her fate...  Meanwhile, back at camp...</b>");
-	getGame().inCombat = false;
+	game.inCombat = false;
 	flags[kFLAGS.URTA_QUEST_STATUS] = -1;
-	model.time.days++;
+	game.time.days++;
 	resetToPC();
-	model.time.hours = 6;
+	game.time.hours = 6;
 	statScreenRefresh();
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -1141,10 +1141,10 @@ private  urtaGameOver():void {
 
 public  urtaSpecials():void {
 //Gone	menuLoc = 3;
-	if (getGame().inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 5) {
+	if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 5) {
 		clearOutput();
 		outputText("You try to ready a special attack, but wind up stumbling dizzily instead.  <b>Your ability to use physical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
-		getGame().enemyAI();
+		enemyAI();
 		return;
 	}
 	menu();
@@ -1154,7 +1154,7 @@ public  urtaSpecials():void {
 	addButton(3, "Dirt Kick", urtaDirtKick);
 	addButton(4, "Metabolize", urtaMetabolize);
 	addButton(5, "SecondWind", urtaSecondWind);
-	addButton(9, "Back", getGame().combatMenu, false);
+	addButton(9, "Back", combatMenu, false);
 }
 
 private  urtaMetabolize():void {
@@ -1162,7 +1162,7 @@ private  urtaMetabolize():void {
 	var damage:number = player.takeDamage(Math.round(player.maxHP()/10));
 	outputText("You work your body as hard as you can, restoring your fatigue at the cost of health. (" + damage + ")\nRestored 20 fatigue!\n\n");
 	fatigue(-20);
-	kGAMECLASS.enemyAI();
+	enemyAI();
 }
 
 private  urtaSecondWind():void {
@@ -1170,9 +1170,9 @@ private  urtaSecondWind():void {
 	if(monster.findStatusAffect(StatusAffects.UrtaSecondWinded) >= 0) {
 		outputText("You've already pushed yourself as hard as you can!");
 //Gone		menuLoc = 3;
-//		doNext(getGame().combatMenu);
+//		doNext(combatMenu);
 		menu();
-		addButton(0, "Next", kGAMECLASS.combatMenu, false);
+		addButton(0, "Next", combatMenu, false);
 		return;
 	}
 	monster.createStatusAffect(StatusAffects.UrtaSecondWinded,0,0,0,0);
@@ -1180,7 +1180,7 @@ private  urtaSecondWind():void {
 	fatigue(-50);
 	dynStats("lus", -50);
 	outputText("Closing your eyes for a moment, you focus all of your willpower on pushing yourself to your absolute limits, forcing your lusts down and drawing on reserves of energy you didn't know you had!\n\n");
-	kGAMECLASS.enemyAI();
+	enemyAI();
 }
 
 //Combo: 3x attack, higher miss chance, guaranteed hit vs blind
@@ -1190,9 +1190,9 @@ private  urtaComboAttack():void {
 		if(player.fatigue + 25 > 100) {
 			outputText("You are too fatigued to use that attack!");
 //Gone			menuLoc = 3;
-//			doNext(getGame().combatMenu);
+//			doNext(combatMenu);
 			menu();
-			addButton(0, "Next", kGAMECLASS.combatMenu, false);
+			addButton(0, "Next", combatMenu, false);
 			return;
 		}
 		fatigue(25);
@@ -1224,7 +1224,7 @@ private  urtaComboAttack():void {
 		}
 		else {
 			outputText("\n", false);
-			kGAMECLASS.enemyAI();
+			enemyAI();
 			return;
 		}
 	}
@@ -1273,7 +1273,7 @@ private  urtaComboAttack():void {
 
 	if(damage > 0) {
 		if(player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
-		damage = kGAMECLASS.doDamage(damage);
+		damage = doDamage(damage);
 	}
 	if(damage <= 0) {
 		damage = 0;
@@ -1298,11 +1298,11 @@ private  urtaComboAttack():void {
 		}
 		trace("DONE ATTACK");
 		outputText("\n", false);
-		kGAMECLASS.enemyAI();
+		enemyAI();
 	}
 	else {
-		if(monster.HP <= 0) doNext(kGAMECLASS.endHpVictory);
-		else doNext(kGAMECLASS.endLustVictory);
+		if(monster.HP <= 0) doNext(endHpVictory);
+		else doNext(endLustVictory);
 	}
 }
 
@@ -1312,9 +1312,9 @@ private  urtaDirtKick():void {
 	if(player.fatigue + 5 > 100) {
 		outputText("You are too fatigued to use that ability!");
 //Gone		menuLoc = 3;
-//		doNext(getGame().combatMenu);
+//		doNext(combatMenu);
 		menu();
-		addButton(0, "Next", kGAMECLASS.combatMenu, false);
+		addButton(0, "Next", combatMenu, false);
 		return;
 	}
 	fatigue(5);
@@ -1326,7 +1326,7 @@ private  urtaDirtKick():void {
 	//Dodged!
 	if(rand(20) + 1 + monster.spe/20 > 15 + player.spe/20) {
 		outputText(monster.mf("He","She") + " manages to shield " + monster.mf("his","her") + " eyes.  Damn!\n\n");
-		kGAMECLASS.enemyAI();
+		enemyAI();
 		return;
 	}
 	else if(monster.findStatusAffect(StatusAffects.Blind) >= 0) {
@@ -1336,7 +1336,7 @@ private  urtaDirtKick():void {
 		outputText(monster.mf("He","She") + "'s blinded!\n\n");
 		monster.createStatusAffect(StatusAffects.Blind,2 + rand(3),0,0,0);
 	}
-	kGAMECLASS.enemyAI();
+	enemyAI();
 }
 
 //SideWinder: 70% damage + stun chance
@@ -1345,9 +1345,9 @@ private  urtaSidewinder():void {
 	if(player.fatigue + 10 > 100) {
 		outputText("You are too fatigued to use that attack!");
 //Gone		menuLoc = 3;
-//		doNext(getGame().combatMenu);
+//		doNext(combatMenu);
 		menu();
-		addButton(0, "Next", kGAMECLASS.combatMenu, false);
+		addButton(0, "Next", combatMenu, false);
 		return;
 	}
 	fatigue(10);
@@ -1363,7 +1363,7 @@ private  urtaSidewinder():void {
 		if(monster.spe - player.spe >= 8 && monster.spe-player.spe < 20) outputText(monster.capitalA + monster.short + " dodges your attack with superior quickness!", false);
 		if(monster.spe - player.spe >= 20) outputText(monster.capitalA + monster.short + " deftly avoids your slow attack.", false);
 		outputText("\n\n", false);
-		kGAMECLASS.enemyAI();
+		enemyAI();
 		return;
 	}
 	//Determine damage
@@ -1413,7 +1413,7 @@ private  urtaSidewinder():void {
 
 	if(damage > 0) {
 		if(player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
-		damage = kGAMECLASS.doDamage(damage);
+		damage = doDamage(damage);
 	}
 	if(damage <= 0) {
 		damage = 0;
@@ -1441,15 +1441,15 @@ private  urtaSidewinder():void {
 	//Kick back to main if no damage occured!
 	if(monster.HP >= 1 && monster.lust <= 99) {
 		if(player.findStatusAffect(StatusAffects.FirstAttack) >= 0) {
-			kGAMECLASS.attack();
+			attack();
 			return;
 		}
 		outputText("\n", false);
-		kGAMECLASS.enemyAI();
+		enemyAI();
 	}
 	else {
-		if(monster.HP <= 0) doNext(kGAMECLASS.endHpVictory);
-		else doNext(kGAMECLASS.endLustVictory);
+		if(monster.HP <= 0) doNext(endHpVictory);
+		else doNext(endLustVictory);
 	}
 }
 
@@ -1460,15 +1460,15 @@ private  urtaVaultAttack():void {
 	if(player.fatigue + 20 > 100) {
 		outputText("You are too fatigued to use that attack!");
 //Gone		menuLoc = 3;
-//		doNext(getGame().combatMenu);
+//		doNext(combatMenu);
 		menu();
-		addButton(0, "Next", kGAMECLASS.combatMenu, false);
+		addButton(0, "Next", combatMenu, false);
 		return;
 	}
 	fatigue(20);
 	if(player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 0) {
 		outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  The seals have made normal attack impossible!  Maybe you could try something else?\n\n", false);
-		kGAMECLASS.enemyAI();
+		enemyAI();
 		return;
 	}
 	//Blind
@@ -1484,11 +1484,11 @@ private  urtaVaultAttack():void {
 		if(monster.spe - player.spe >= 20) outputText(monster.capitalA + monster.short + " deftly avoids your slow attack.", false);
 		outputText("\n", false);
 		if(player.findStatusAffect(StatusAffects.FirstAttack) >= 0) {
-			kGAMECLASS.attack();
+			attack();
 			return;
 		}
 		else outputText("\n", false);
-		kGAMECLASS.enemyAI();
+		enemyAI();
 		return;
 	}
 	//Determine damage
@@ -1538,7 +1538,7 @@ private  urtaVaultAttack():void {
 
 	if(damage > 0) {
 		if(player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
-		damage = kGAMECLASS.doDamage(damage);
+		damage = doDamage(damage);
 	}
 	if(damage <= 0) {
 		damage = 0;
@@ -1557,15 +1557,15 @@ private  urtaVaultAttack():void {
 	//Kick back to main if no damage occured!
 	if(monster.HP >= 1 && monster.lust <= 99) {
 		if(player.findStatusAffect(StatusAffects.FirstAttack) >= 0) {
-			kGAMECLASS.attack();
+			attack();
 			return;
 		}
 		outputText("\n", false);
-		kGAMECLASS.enemyAI();
+		enemyAI();
 	}
 	else {
-		if(monster.HP <= 0) doNext(kGAMECLASS.endHpVictory);
-		else doNext(kGAMECLASS.endLustVictory);
+		if(monster.HP <= 0) doNext(endHpVictory);
+		else doNext(endLustVictory);
 	}
 }
 
@@ -1594,7 +1594,7 @@ public  nagaPleaseNagaStoleMyDick():void {
 	outputText("\n\n\"<i>You invade my territory... ssstep on my tail... and have the gall to tell me you're not going to make up for it!</i>\"  He hisses ominously.  \"<i>Hey, it was an acci-</i>\"  \"<i>Worthlesss female!  You are mine!</i>\"  He charges at you!");
 
 	outputText("\n\n<b>It's a fight!</b>");
-	kGAMECLASS.clearStatuses(false);
+	clearStatuses(false);
 	startCombat(new Sirius());
 }
 
@@ -1811,7 +1811,7 @@ private  gnollAlphaBitchIntro():void {
 
 	outputText("\n\nHow wrong you are.  A spear smacks into the ground, the tip exploding into some sticky, restraining substance by your foot.  A high pitched war-cry chases the missile, barely giving you the warning you need to avoid the onrushing gnoll!  This one doesn't quite look like what you'd expect from their race, but she's moving too fast to really dwell on it.");
 	outputText("\n\n<b>It's a fight!</b>");
-	kGAMECLASS.clearStatuses(false);
+	clearStatuses(false);
 	startCombat(new GnollSpearThrower());
 	monster.bonusHP = 350;
 	monster.short = "alpha gnoll";
@@ -2119,7 +2119,7 @@ public  urtaNightSleep():void {
 //Armor Sleep*
 private  urtaSleepsArmored():void {
 	clearOutput();
-	model.time.days++;
+	game.time.days++;
 	outputText("You go to sleep wearing your armor.  It turns out to have been a good idea when you're woken by tentacles probing at your chest-plate, seeking to undo the numerous straps holding it in place.  You roll to the side and easily squeeze out of the slippery tendrils.  Your hand falls on your halberd with practiced ease, hefting its reassuring weight in your hands as you spring up off your paws.");
 	outputText("\n\nThe tentacles wave about wildly, and the shambling mound begins to retreat.  \"<i>Fuck this!</i>\" it shouts, \"<i>I just wanted a snack!</i>\"");
 	outputText("\n\nWhat?!  That gigantic tentacle beast didn't try to fight you?  You suppose it's used to easier prey at this time of night and didn't want to expend the effort on a fight.  How fortunate for you.");
@@ -2251,7 +2251,7 @@ private  introSuccubiAndMinotaur():void {
 	outputText("\n\nThe minotaur lord thunders towards you, picking up the loose chain to use a weapon.  It's a fight!");
 
 	//{start fight}
-	kGAMECLASS.clearStatuses(false);
+	clearStatuses(false);
 	startCombat(new MinotaurLord());
 }
 
@@ -2518,7 +2518,7 @@ public  beatMinoLordOnToSuccubi():void {
 	outputText("\n\n\"<i>We'll see how your tune changes when you're licking my heels and begging for a drop of my milk!</i>\"  She snaps her whip angrily.");
 
 	outputText("\n\n<b>It's a fight!</b>");
-	kGAMECLASS.clearStatuses(false);
+	clearStatuses(false);
 	player.setWeapon(weapons.URTAHLB);
 	//player.weapon = weapons.URTAHLB;
 	startCombat(new MilkySuccubus(),true);
@@ -2803,9 +2803,9 @@ private  knockUpUrtaWithGodChild():void {
 	else outputText(" [oneCock]");
 	outputText(".  The nub of her clit is a diamond-hard button that drags across your sensitive " + player.skin() + ", aggressively smashed into your genitals.  Still, somehow, she seems to be holding back, probing you with some last vestige of sanity for your consent.");
 
-	outputText("\n\nSighing, you figure you may as well lie back and enjoy it, and you push your tongue back against hers, letting her set the fevered, frenzied pace but along for the ride regardless.  She picks up on the change in your attitude and shifts, a soft-fingered grip snaring [oneCock] and lifting it up, pressing it into the slick wetness between her thighs.  You gasp, muffled by her overwhelmingly intense french-kiss, the fox-girl's puffy black lips smothering your own in warm, wet affection.  Likewise, the onyx opening of her vagina yields against your " + cockDescript(x) + ", clinging tightly around your girth as they swallow the first few inches of you.  Already, you can feel her inner walls massaging your tender erection towards orgasm.  They squeeze and tug on your " + player.cockHead(x) + " powerfully while small squirts of fox-lube drizzle down to your [sheath].  The fox drives herself the rest of the way down onto you.  Her hips hit yours with a loud smack, splattering her moisture down your [legs].");
+	outputText("\n\nSighing, you figure you may as well lie back and enjoy it, and you push your tongue back against hers, letting her set the fevered, frenzied pace but along for the ride regardless.  She picks up on the change in your attitude and shifts, a soft-fingered grip snaring [oneCock] and lifting it up, pressing it into the slick wetness between her thighs.  You gasp, muffled by her overwhelmingly intense french-kiss, the fox-girl's puffy black lips smothering your own in warm, wet affection.  Likewise, the onyx opening of her vagina yields against your " + game.player.cockDescript(x) + ", clinging tightly around your girth as they swallow the first few inches of you.  Already, you can feel her inner walls massaging your tender erection towards orgasm.  They squeeze and tug on your " + player.cockHead(x) + " powerfully while small squirts of fox-lube drizzle down to your [sheath].  The fox drives herself the rest of the way down onto you.  Her hips hit yours with a loud smack, splattering her moisture down your [legs].");
 
-	outputText("\n\nFinally, Urta breaks the kiss, panting for air as she begins to buck and rock atop you.  Your " + cockDescript(x) + " shivers against the squeezing pressures the frenzied fox is forcing upon you, and already you can feel yourself trickling and leaking into her sodden vice.  Both of your bodies have become absolutely drenched in sticky, musky horse-pre");
+	outputText("\n\nFinally, Urta breaks the kiss, panting for air as she begins to buck and rock atop you.  Your " + game.player.cockDescript(x) + " shivers against the squeezing pressures the frenzied fox is forcing upon you, and already you can feel yourself trickling and leaking into her sodden vice.  Both of your bodies have become absolutely drenched in sticky, musky horse-pre");
 	if(player.cockTotal() > 1) outputText(", the mess made worse by your multiple-cocked virility.  There's so much that the clear juices roll off you to either side, puddling in your blankets below");
 	outputText(".  Her nipples dig into yours");
 	if(player.hasFuckableNipples()) {
@@ -2815,7 +2815,7 @@ private  knockUpUrtaWithGodChild():void {
 	}
 	else outputText(", shooting tingling excitement through your nubs as you grind against each other");
 	outputText(".  Urta's artless humping would be cringeworthy if she weren't so incredibly wet or overly tight.");
-	outputText("\n\nThe confused girl begins to moan, howl even, yipping wildly as she bottoms out again and again, slathering your loins in her honeyed, female syrup.  She shudders, lost to lust, and the clingy, clenching hole gives a tremendous squeeze around your " + cockDescript(x) + ".  Urta babbles, \"<i>So good... so good...</i>\" over and over, her eyes rolling wildly.  You grab hold of her cushiony, furry behind like a drowning man holding on to a life raft while the pleasure mounts within you, seeming to bubble out of your very balls.  \"<i>Cumcumcumcum!</i>\" the vixen chants, milking you desperately.  You do just that, squirting out a nice, thick load for the her greedy pussy to drink down.  The runny girl-cum that's oozing over your ");
+	outputText("\n\nThe confused girl begins to moan, howl even, yipping wildly as she bottoms out again and again, slathering your loins in her honeyed, female syrup.  She shudders, lost to lust, and the clingy, clenching hole gives a tremendous squeeze around your " + game.player.cockDescript(x) + ".  Urta babbles, \"<i>So good... so good...</i>\" over and over, her eyes rolling wildly.  You grab hold of her cushiony, furry behind like a drowning man holding on to a life raft while the pleasure mounts within you, seeming to bubble out of your very balls.  \"<i>Cumcumcumcum!</i>\" the vixen chants, milking you desperately.  You do just that, squirting out a nice, thick load for the her greedy pussy to drink down.  The runny girl-cum that's oozing over your ");
 	if(player.balls > 0) outputText("[sack]");
 	else outputText("taint");
 	outputText(" tints off-white from your liquid, squirting out of her tunnel faster than ever when she climaxes with you");
@@ -2847,8 +2847,8 @@ private  postFuckUrtaUp():void {
 	outputText("\n\nBefore you know it, the two of you are being waved through the gates.  Edryn boggles at the sight of her friend swollen up with pregnancy, but doesn't protest as you assist Urta in clambering up onto the centauress' back. Together, the two of you manage to haul the unnaturally gravid fox to the Covenant's tower.  Countless guards have to be addressed at each step of the journey, but eventually, you're both brought to a comfortable chamber and allowed to rest... when the mages aren't busily probing Urta with magic, that is.  Urta has you stay by her side the entire time, and you do your best to continue supporting her, not leaving even when she falls asleep on your shoulder, completely tuckered out.  You snuggle up against her once the mages finally agree to let you snooze with her, under the vigilant eyes of your guards.  Rest comes surprisingly easy, despite the tensions of your present situation, and you drift off wondering how long it will take Urta to give birth.");
 	menu();
 	addButton(0,"Next",preggedUrtaWithGodChildEpilogue);
-	model.time.days++;
-	model.time.hours = 7;
+	game.time.days++;
+	game.time.hours = 7;
 }
 
 //Pregged Urta With God-child epilogue:*
@@ -2879,7 +2879,7 @@ private  preggedUrtaWithGodChildEpilogue():void {
 
 	outputText("\n\nYou help her leave the tower, arm in arm, saying goodbye to her only after she's tucked tightly into her bed at home, to rest.  Urta gives you a teary kiss before you leave with a little swagger in your step.  You wonder if Taoth will help the Covenant, or if they've bitten off more than they can chew?  Either way, it seems there's a potent new ally on the field.");
 	flags[kFLAGS.URTA_QUEST_STATUS] = 1;
-	getGame().inCombat = false;
+	game.inCombat = false;
 	doNext(camp.returnToCampUseOneHour);
 }
 
@@ -3015,8 +3015,8 @@ private  getKnockedUpUrtaEpilogue():void {
 	//[Next]
 	menu();
 	addButton(0,"Next",getKnockedUpByUrtaEpilogueII);
-	model.time.days++;
-	model.time.hours = 7;
+	game.time.days++;
+	game.time.hours = 7;
 }
 //Urta & Pregged PC  With God-child epilogue:
 private  getKnockedUpByUrtaEpilogueII():void {
@@ -3049,7 +3049,7 @@ private  getKnockedUpByUrtaEpilogueII():void {
 
 	outputText("\n\nShe helps leave the tower, arm in arm, saying her goodbye only after she's tucked you in to take a rest.  Urta gives you a teary kiss and trots back towards the city with a swagger in her step.  You wonder if Taoth will help the Covenant, or if they've bitten off more than they can chew?  Either way, it seems there's a potent new ally on the field.");
 	flags[kFLAGS.URTA_QUEST_STATUS] = 1;
-	getGame().inCombat = false;
+	game.inCombat = false;
 	doNext(camp.returnToCampUseOneHour);
 }
 
@@ -3061,7 +3061,7 @@ private  urtaAndEdrynGodChild():void {
 	flags[kFLAGS.URTA_FERTILE]        = telAdre.edryn.pregnancy.type;       //Use these two flags to store the pregnancy that Taoth is overriding.
 	flags[kFLAGS.URTA_PREG_EVERYBODY] = telAdre.edryn.pregnancy.incubation; //Since they can't be in use prior to Taoth being born this is fine.
 	telAdre.edryn.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_TAOTH, 24);
-	getGame().inCombat = false;
+	game.inCombat = false;
 	doNext(camp.returnToCampUseOneHour);
 }
 
@@ -3087,9 +3087,9 @@ private  urtaAndEdrynGodChildEpilogueII():void {
 	//{pre-pregnant }
 
 	outputText("horse-girl.");
-	if (kGAMECLASS.telAdre.edryn.pregnancy.isPregnant) outputText("  Just how did she get pregnant again when she was already knocked up?  ...Magic, maybe.");
+	if (telAdre.edryn.pregnancy.isPregnant) outputText("  Just how did she get pregnant again when she was already knocked up?  ...Magic, maybe.");
 	outputText("  Urta leads you around a bend, squeezing your hand for comfort.  \"<i>Thank you for everything, " + player.short + ", most of all being so understanding.</i>\"  The gray-furred fox pushes past the sixth pair of guards you've seen since entering the tower, just inside to see Edryn splayed on the floor, groaning and heaving, her ");
-	if (kGAMECLASS.telAdre.edryn.pregnancy.isPregnant) outputText("massively ");
+	if (telAdre.edryn.pregnancy.isPregnant) outputText("massively ");
 	outputText("pregnant flanks rippling with muscular contractions.   Something is bulging against her nether-lips, stretching the massive horse-cunt wider and wider with each passing moment.");
 
 	outputText("\n\nSlick with birthing fluids, a ball of fur, skin, and bones rolls out onto a mat placed there a moment before by a nearby centaur.  You squint at it, wondering just what everybody is so excited about - it looks little and messy, like any other newborn.");
@@ -3099,7 +3099,7 @@ private  urtaAndEdrynGodChildEpilogueII():void {
 	outputText("\n\n<i>I live.</i>");
 
 	outputText("\n\nThe voice isn't spoken aloud but inside, inside your head.  A glance to Urta reveals that she heard it too.  The creature - Taoth, you correct yourself, cocks its head toward Urta, giving Edryn's ass a familiar pat.");
-	if (kGAMECLASS.telAdre.edryn.pregnancy.isPregnant) outputText("  The centaur guardswoman is still just as pregnant with your offspring as before.  Your child is unharmed by whatever just transpired.");
+	if (telAdre.edryn.pregnancy.isPregnant) outputText("  The centaur guardswoman is still just as pregnant with your offspring as before.  Your child is unharmed by whatever just transpired.");
 	outputText("  Edryn's eyes immediately close, sinking into a deep, restful sleep.");
 	outputText("\n\n<i>Thank you, Urta-father.</i>  The mental voice speaks again, unmatched by the newborn's vocal cords.  It strides confidently forward, with long, loping steps, seeming... almost unnatural in the way that the limbs seem to sway and dance.  Just a few steps away from Urta, a moment of panic surges through you - what if he hurts her?!  You start to interpose yourself between them, but Urta puts a reassuring hand to your chest, flicking her emerald eyes towards you, begging you not to interfere.  You step back, reluctantly");
 	if(player.cor > 66) outputText(", what do you care, anyway?");
@@ -3112,8 +3112,7 @@ private  urtaAndEdrynGodChildEpilogueII():void {
 	outputText("\n\nYou leave the tower arm in arm, saying your goodbye when Urta stops at her place to rest.  She gives you a teary kiss and sends you on your way with a swagger in your step.  You wonder if Taoth will help the Covenant, or if they've bitten off more than they can chew?  Either way, it seems there's a potent new ally on the field.");
 	//set completed tags!
 	flags[kFLAGS.URTA_QUEST_STATUS] = 1;
-	getGame().inCombat = false;
+	game.inCombat = false;
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

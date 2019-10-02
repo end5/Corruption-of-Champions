@@ -109,7 +109,7 @@ Also go play <u><a href='http://www.furaffinity.net/view/9830293/'>Nimin</a></u>
 
 	]]>`, false, true);
 
-	if(debug)
+	if(game.debug)
 		outputText("\n\n<b>DEBUG MODE ENABLED:  ITEMS WILL NOT BE CONSUMED BY USE.</b>");
 	if(flags[kFLAGS.SHOW_SPRITES_FLAG])
 		outputText("\n\n<b>Sprites disabled.</b>");
@@ -134,7 +134,7 @@ export function settingsScreen():void
 	
 	outputText("<b>Settings toggles:</b>\n", true);
 
-	if(debug)
+	if(game.debug)
 		outputText("Debug mode enabled: <b>Yes</b>\n	Items will not be consumed by use, fleeing always succeeds, and bad-ends can be ignored.");
 	else
 		outputText("Debug mode enabled: <b>No</b>\n	Items consumption will occur as normal.");
@@ -251,10 +251,10 @@ export function toggleHyperHappy():void
 export function toggleDebug():void
 {
 	//toggle debug
-	if(debug)
-		debug = false;
+	if(game.debug)
+        game.debug = false;
 	else
-		debug = true;
+        game.debug = true;
 		
 	mainView.showMenuButton( MainView.MENU_DATA );
 	settingsScreen();
@@ -461,4 +461,3 @@ export function howToPlay():void {
 	outputText("<b>Save often using the Data Menu</b> - you never know when your journey will come to an end!", false);
 	doNext(mainMenu);
 }
-

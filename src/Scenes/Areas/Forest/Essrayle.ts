@@ -2,7 +2,7 @@
 	 
 	 
 
-	export class Essrayle extends BaseContent{
+	export class Essrayle{
 
 	public  constructor()
 	{
@@ -441,4 +441,3 @@ public  askMotherToReleaseEssy():void {
 	doNext(playerMenu);
 }
 }
-

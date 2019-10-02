@@ -10,7 +10,7 @@
 
 	  ;
 
-	export class Lake extends BaseContent
+	export class Lake
 	{
 		public  fetishCultistScene:FetishCultistScene = new FetishCultistScene();
 		public  fetishZealotScene:FetishZealotScene = new FetishZealotScene();
@@ -26,11 +26,11 @@
 		{
 			//Increment exploration count
 			player.exploredLake++;
-			if (kGAMECLASS.poniesYN()) return;
+			if (poniesYN()) return;
 
 			//Helia monogamy fucks
-			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helScene.followerHel()) {
-				kGAMECLASS.helScene.helSexualAmbush();
+			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
+				helScene.helSexualAmbush();
 				return;
 			}
 			if (player.exploredLake % 20 == 0) {
@@ -78,7 +78,7 @@
 			//UNCOMMON EVENTS
 			//Goo finding!
 			if (rand(30) == 0 && flags[kFLAGS.GOO_TFED_MEAN] + flags[kFLAGS.GOO_TFED_NICE] > 0 && flags[kFLAGS.GOO_SLAVE_RECRUITED] == 0) {
-				kGAMECLASS.latexGirl.encounterLeftBehindGooSlave();
+				latexGirl.encounterLeftBehindGooSlave();
 				return;
 			}
 			//Chance of dick-dragging! OLD:10% + 10% per two foot up to 30%
@@ -105,7 +105,7 @@
 			//==============================
 			//Pre-emptive chance of discovering Amily the stupidshit mouse
 			if (select == 9) {
-				kGAMECLASS.amilyScene.discoverAmilyVillage();
+				amilyScene.discoverAmilyVillage();
 			}
 			//Pre-emptive chance of discovering the Beautiful Sword
 			else if (select == 10) {
@@ -113,16 +113,16 @@
 			}
 			//Pre-emptive chance of finding the boat
 			else if (select == 11) {
-				kGAMECLASS.boat.discoverBoat();
+				boat.discoverBoat();
 			}
 			//Meet Izma every 8 attempts
 			else if (select == 5) {
-				kGAMECLASS.izmaScene.meetIzmaAtLake();
+				izmaScene.meetIzmaAtLake();
 			}
 			//Chance of dick-dragging! 10% + 10% per two foot up to 30%
 			else if (select == 8) {
 				//True sets to use lake scene!
-				kGAMECLASS.forest.bigJunkForestScene(true);
+				forest.bigJunkForestScene(true);
 			}
 			else if (select == 4) {
 				//Chance of seeing ooze convert goo!
@@ -228,10 +228,10 @@
 							findLakeLoot();
 						}
 						//If you havent met whitney enough to know the farm....
-						else kGAMECLASS.farm.farmExploreEncounter();
+						else farm.farmExploreEncounter();
 					}
 					//If you havent met whitney, you can find the farm....
-					else kGAMECLASS.farm.farmExploreEncounter();
+					else farm.farmExploreEncounter();
 				}
 			}
 			else if (select == 3) {
@@ -248,7 +248,7 @@
 				fetishCultistScene.fetishCultistEncounter();
 			}
 			else if (select == 6) {
-				kGAMECLASS.rathazul.encounterRathazul();
+				rathazul.encounterRathazul();
 			}
 			else {
 				outputText("OH SHIT! LAKE EXPLORE BE BROKED.  SELECT: " + select + ".  You should probably go to fenoxo.com and click the link to report a bug and tell Fen about it.");
@@ -386,7 +386,7 @@
 			else outputText("bad boy");
 			outputText(" to slip right in, don't we?</i>\"  Callu murrs back at you.  You most certainly do, so you lean your head forward ever-so-slightly, extending your tongue and lapping at her delicate pussy lips.  In no time at all they become puffy and flushed, blossoming outwards like a perverse flower.  You run your tongue up and down each and every fold, occasionally stopping to flick over her rapidly hardening clitoris.");
 
-			outputText("\n\nLikewise, her tongue and lips dance over your " + cockDescript(x) + " like a trio of dancers. They spin, twist, hop and tease, ensuring that no inch is left untouched.");
+			outputText("\n\nLikewise, her tongue and lips dance over your " + game.player.cockDescript(x) + " like a trio of dancers. They spin, twist, hop and tease, ensuring that no inch is left untouched.");
 			outputText("  She pays particularly close attention ");
 
 
@@ -406,7 +406,7 @@
 			else outputText("ass");
 			outputText(" as they dribble down and form a small puddle between your [legs].");
 
-			outputText("\n\nAfter several minutes of this, Callu relinquishes her hold on your member and says, \"<i>Mm, I reckon that'll work just fine.</i>\"  She sits up and positions herself over your " + cockDescript(x) + ".  Slowly she lowers herself, first taking your " + player.cockHead(x) + ".  Her cunt, slick and aroused as it is, offers no resistance despite its tightness.  Its walls pulse and quiver around you, as though the otter has complete control over it.  Inch by inch she sinks down further, ");
+			outputText("\n\nAfter several minutes of this, Callu relinquishes her hold on your member and says, \"<i>Mm, I reckon that'll work just fine.</i>\"  She sits up and positions herself over your " + game.player.cockDescript(x) + ".  Slowly she lowers herself, first taking your " + player.cockHead(x) + ".  Her cunt, slick and aroused as it is, offers no resistance despite its tightness.  Its walls pulse and quiver around you, as though the otter has complete control over it.  Inch by inch she sinks down further, ");
 			//(dicks 10" or less)
 			if (player.cocks[x].cockLength < 10) outputText("until she comes to rest on your lap");
 			//(10"-24")
@@ -418,11 +418,11 @@
 			if (player.cocks[x].cockThickness >= 3) outputText("impressive ");
 			outputText("girth within her she settles down on your lap, stretching her legs out before retrieving her fishing rod.  \"<i>Now don't you go movin' about, darlin',</i>\" Callu says over her shoulder.  \"<i>Don't wanna go scarin' the fish away.  I'll let ya go after I catch a few good ones.</i>\"");
 
-			outputText("\n\nSurprisingly, you can still feel a throbbing around your " + cockDescript(x) + ", reaffirming your belief that she can somehow control the muscles buried within her abdomen.  Even as you lay stock-still on the sandy beach, you feel the sensation of thrusting, as though you were actively fucking this little slut sitting atop you.  The feeling is extremely pleasant, not to mention a little hypnotic.  You reach your hands up to grasp Callu's hips lightly.  She doesn't seem to mind, though as you start squeezing her in time with your phantom thrusts a quick swat to your hand lets you know that you're crossing an unspoken boundary.");
+			outputText("\n\nSurprisingly, you can still feel a throbbing around your " + game.player.cockDescript(x) + ", reaffirming your belief that she can somehow control the muscles buried within her abdomen.  Even as you lay stock-still on the sandy beach, you feel the sensation of thrusting, as though you were actively fucking this little slut sitting atop you.  The feeling is extremely pleasant, not to mention a little hypnotic.  You reach your hands up to grasp Callu's hips lightly.  She doesn't seem to mind, though as you start squeezing her in time with your phantom thrusts a quick swat to your hand lets you know that you're crossing an unspoken boundary.");
 
 			outputText("\n\nWith nothing else to do, you close your eyes and relax.  The rhythmic pulsing of this otter-girl's tight pussy seems to deepen your relaxation, though your dick remains as hard as it's ever been. Minutes pass, and the thrusting sensation doesn't appear to be dying down.");
 
-			outputText("\n\nA sudden, strange high-pitched sound suddenly rings out and your head bolts upright, only to see Callu reeling in a fish.  She looks it over, nods once to herself and tucks it away in an ice chest cleverly buried under the sand right next to the two of you.  Afterwards she stands up, letting your dick fall out of her.  Your " + cockDescript(x) + " feels strange, and uncomfortably naked somehow, especially as a cool wind blows over its saliva and femcum-covered skin.");
+			outputText("\n\nA sudden, strange high-pitched sound suddenly rings out and your head bolts upright, only to see Callu reeling in a fish.  She looks it over, nods once to herself and tucks it away in an ice chest cleverly buried under the sand right next to the two of you.  Afterwards she stands up, letting your dick fall out of her.  Your " + game.player.cockDescript(x) + " feels strange, and uncomfortably naked somehow, especially as a cool wind blows over its saliva and femcum-covered skin.");
 
 			outputText("\n\nIt doesn't have to suffer long, at least, as Callu casts a new line and positions herself over your cock once more. Inch by delicious inch sinks into her, making you shiver all over.  However, this time she doesn't sit all the way down.  Instead she straddles your waist, standing on the balls of her feet.  The now-familiar pulsing returns, but in addition she gyrates her hips, circling them around and around.  With each rotation it feels as though your cock is being squeezed tighter and tighter, but this time you can't simply relax and close your eyes, not with that captivating bubble butt swaying in front of your face.");
 
@@ -539,4 +539,3 @@
 			inventory.takeItem(consumables.FISHFIL, camp.returnToCampUseOneHour);
 		}
 	}
-

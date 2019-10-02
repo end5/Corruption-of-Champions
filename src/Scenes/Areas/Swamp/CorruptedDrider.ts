@@ -57,7 +57,7 @@
 			
 			else if(player.findStatusAffect(StatusAffects.DriderKiss) < 0) {
 				//(HIT? + 10 lust)
-				game.dynStats("lus", 10);
+				dynStats("lus", 10);
 				outputText("Before you can move, she's right on top of you, leaning ", false);
 				if(player.tallness < 72) outputText("down", false);
 				else outputText("over", false);
@@ -70,9 +70,9 @@
 				player.addStatusValue(StatusAffects.DriderKiss,1,1);
 				if(player.statusAffectv1(StatusAffects.DriderKiss) == 1) {
 					//(HIT? + 15 lust)
-					game.dynStats("lus", 15);
+					dynStats("lus", 15);
 					outputText("Again, the drider ties your mouth up in her syrupy lip-lock, seeming to bind your mouth as effectively as her webs bind your body.  Her sweet venom bubbles and froths at the corners of the oral embrace, dripping over her many-breasted bosom and your " + player.chestDesc() + ".", false);
-					if(player.hasCock()) outputText("  " + SMultiCockDesc() + " spews a rope of pre-cum into your " + player.armorName + ", desperate to get out and fuck.", false);
+					if(player.hasCock()) outputText("  " + game.player.SMultiCockDesc() + " spews a rope of pre-cum into your " + player.armorName + ", desperate to get out and fuck.", false);
 					if(player.hasVagina()) outputText("  Fem-cum dribbles down your " + player.legs() + " while your " + player.clitDescript() + " gets so hard you think it'll explode.", false);
 					outputText("  This time, the drider is the one to break the kiss.  She asks, \"<i>Are you ready, my horny little morsel?</i>\"\n", false);
 					if(player.lust <= 99) outputText("You shake your head 'no' and stand your ground!\n", false);
@@ -81,7 +81,7 @@
 				else {
 					outputText("This time you barely move.  Your body is too entranced by the idea of another venom-laced kiss to resist.  Glorious purple goo washes into your mouth as her lips meet yours, sealing tight but letting your tongue enter her mouth to swirl around and feel the venom drip from her fangs.  It's heavenly!  Your " + player.skin() + " grows hot and tingly, and you ache to be touched so badly.  Your " + nippleDescript(0) + "s feel hard enough to cut glass, and a growing part of you admits that you'd love to feel the drider's chitinous fingers pulling on them.", false);
 					//(HIT? + 20 lust)
-					game.dynStats("lus", 20);
+					dynStats("lus", 20);
 					if(player.hasCock() || player.hasVagina()) {
 						outputText("  The moisture in your crotch only gets worse.  At this point, a ", false);
 						if(player.wetness() < 3 && player.cumQ() < 200) outputText("small", false);
@@ -98,7 +98,7 @@
 		public  driderMasturbate():void {
 			//-Masturbate - (Lowers lust by 50, raises PC lust)
 			lust -= 30;
-			game.dynStats("lus", (10+player.lib/20));
+			dynStats("lus", (10+player.lib/20));
 			outputText("The spider-woman skitters back and gives you a lusty, hungry expression.  She shudders and moans, \"<i>Mmm, just watch what you're missing out on...</i>\"\n\n", false);
 			outputText("As soon as she finishes, her large clit puffs up, balloon-like.  A second later, it slides forward, revealing nine inches of glossy, girl-spunk-soaked shaft.  Nodules ring the corrupted penis' surface, while the tiny cum-slit perched atop the tip dribbles heavy flows of pre-cum.  She pumps at the fleshy organ while her other hand paws at her jiggling breasts, tugging on the hard ", false);
 			if(nipplesPierced > 0) outputText("pierced ", false);
@@ -203,4 +203,3 @@
 		}
 
 	}
-

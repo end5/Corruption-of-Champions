@@ -38,7 +38,7 @@
 			}
 			outputText("Izma rushes you with impressive speed, striking a few precise locations on your joints with her fingertips before leaping back.  It doesn't hurt, but you feel tired and sore. \"<i>Pressure points...</i>\" she laughs, seeing your confused expression.", false);
 			//(Fatigue damage)
-			game.fatigue(20+rand(20));
+			fatigue(20+rand(20));
 		}
 
 		private  IzmaSpecials2():void {
@@ -83,7 +83,7 @@
 		private  IzmaSpecials3():void {
 			outputText("Rather than move to attack you, Izma grins at you and grabs her breasts, massaging them as she caresses her long penis with one knee. Her tail thrashes and thumps the sand heavily behind her as she simulates an orgasm, moaning loudly into the air. The whole display leaves you more aroused than before.", false);
 			//(lust gain)
-			game.dynStats("lus", (20 + player.lib/5));
+			dynStats("lus", (20 + player.lib/5));
 		}
 
 		private  IzmaAI():void {
@@ -178,5 +178,3 @@
 		}
 		
 	}
-
-

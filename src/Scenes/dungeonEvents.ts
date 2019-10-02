@@ -103,7 +103,7 @@ public function doDungeon(eventNo:Number):void {
 		if(player.biggestLactation() >= 3) outputText("Your " + nippleDescript(0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false); 
 		//Cock – single
 		if(player.cocks.length == 1) {
-			if(player.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(0) + " to full hardness in seconds.  ", false);
+			if(player.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + game.player.cockDescript(0) + " to full hardness in seconds.  ", false);
 			//Cock – single big
 			if(player.cockArea(0) >= 30 && player.cockArea(0) < 100) outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ".  ", false);
 			//Cock -megahuge
@@ -137,8 +137,8 @@ public function doDungeon(eventNo:Number):void {
 			}
 		}
 		else {
-			if(player.vaginas.length > 0) outputText("a vacuum pump to your clit, and a pump many times bigger than your " + cockDescript(0) + " to it.  ", false);
-			else outputText("and a pump many times bigger than your " + cockDescript(0) + " to it.  ", false);
+			if(player.vaginas.length > 0) outputText("a vacuum pump to your clit, and a pump many times bigger than your " + game.player.cockDescript(0) + " to it.  ", false);
+			else outputText("and a pump many times bigger than your " + game.player.cockDescript(0) + " to it.  ", false);
 		}
 		outputText("At first there is only a gentle suction, you assume in order to keep them in place.  Unfinished, your captor places something large and hollow against your backdoor", false);
 		if(player.vaginas.length == 0) outputText(".", false);
@@ -161,7 +161,7 @@ public function doDungeon(eventNo:Number):void {
 			//else
 			else outputText("the suction and drugs make it so easy to just keep cumming and cumming.  ", false);
 			//either or:
-			outputText("Dimly, you feel a needle lodged in your taint, pumping your prostate full of something.  Your " + cockDescript(0) + " begins growing mid-orgasm, the skin turning a deep purple even as small nodule-like bumps form all over it, rapidly becoming a bloated parody of its demonic counterparts.  ", false);
+			outputText("Dimly, you feel a needle lodged in your taint, pumping your prostate full of something.  Your " + game.player.cockDescript(0) + " begins growing mid-orgasm, the skin turning a deep purple even as small nodule-like bumps form all over it, rapidly becoming a bloated parody of its demonic counterparts.  ", false);
 		}
 		//Puss Orgasmz
 		if(player.vaginas.length > 0) outputText("Clenching tightly, your " + vaginaDescript(0) + " squeezes tightly on its intruder as its repeatedly violated by the machines.  ", false);
@@ -517,7 +517,7 @@ public function doDungeon(eventNo:Number):void {
 			else {
 				outputText("The milk splashes into your " + player.armorName + ", soaking you effectively.  ", false);
 				if(player.cocks.length > 0) {
-					outputText("Your " + cockDescript(0) + " gets hard as the milk lubricates and stimulates it.  ", false);
+					outputText("Your " + game.player.cockDescript(0) + " gets hard as the milk lubricates and stimulates it.  ", false);
 					dynStats("lus", 5);
 				}
 				if(player.vaginas.length > 0) {
@@ -573,16 +573,16 @@ public function doDungeon(eventNo:Number):void {
 		//Multiple Rows...
 		else {
 			//Top row + 3, all other rows brought up to par.
-			outputText("Your top " + breastDescript(0) + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 4 cup sizes!</b>  ", false);
+			outputText("Your top " + game.player.breastDescript(0) + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 4 cup sizes!</b>  ", false);
 			player.breastRows[0].breastRating += 4;
-			outputText("The next row of " + breastDescript(1) + " jiggle and tingle with even more pleasure than the first.  They pulsate for a few seconds, shrinking and growing rapidly until they settle at a size just below your top " + breastDescript(0) + ".  ", false);
+			outputText("The next row of " + game.player.breastDescript(1) + " jiggle and tingle with even more pleasure than the first.  They pulsate for a few seconds, shrinking and growing rapidly until they settle at a size just below your top " + game.player.breastDescript(0) + ".  ", false);
 			player.breastRows[1].breastRating = player.breastRows[0].breastRating-1;
 			if(player.breastRows.length >= 3) {
-				outputText("Your third group of " + breastDescript(2) + " seem to follow their sister's example, tingling briefly before settling at a size just below the breasts above.  ", false);
+				outputText("Your third group of " + game.player.breastDescript(2) + " seem to follow their sister's example, tingling briefly before settling at a size just below the breasts above.  ", false);
 				player.breastRows[2].breastRating = player.breastRows[1].breastRating-1;
 			}
 			if(player.breastRows.length >= 4) {
-				outputText("Your remaining " + breastDescript(3) + " feel so wonderful that you just can't resist cupping and squeezing them as they reshape to fit in perfectly with the rest of your breasts.  ", false);
+				outputText("Your remaining " + game.player.breastDescript(3) + " feel so wonderful that you just can't resist cupping and squeezing them as they reshape to fit in perfectly with the rest of your breasts.  ", false);
 				player.breastRows[3].breastRating = player.breastRows[2].breastRating-1;
 				if(player.breastRows.length == 5) player.breastRows[4].breastRating = player.breastRows[3].breastRating-1;
 			}
@@ -612,17 +612,17 @@ public function doDungeon(eventNo:Number):void {
 		}
 		if(player.cocks.length == 1) {
 			if(player.demonCocks() < 1) {
-				outputText("You smile, watching your " + cockDescript(0) + " grow longer.  Inches of newfound dick-flesh erupt from your crotch in response to omnibus' dark magics.  Before you can play with your transformed tool, a wave of burning desire passes through you.  ", false);
-				if(player.cor < 80) outputText("You watch in horror as the skin of your " + cockDescript(0) + " turns shiny and purplish-black.  ", false);
-				else outputText("Curious, you watch the skin of your " + cockDescript(0) + " turn a shiny-dark purple.  ", false);
+				outputText("You smile, watching your " + game.player.cockDescript(0) + " grow longer.  Inches of newfound dick-flesh erupt from your crotch in response to omnibus' dark magics.  Before you can play with your transformed tool, a wave of burning desire passes through you.  ", false);
+				if(player.cor < 80) outputText("You watch in horror as the skin of your " + game.player.cockDescript(0) + " turns shiny and purplish-black.  ", false);
+				else outputText("Curious, you watch the skin of your " + game.player.cockDescript(0) + " turn a shiny-dark purple.  ", false);
 				player.cocks[0].cockLength += 3 + rand(5);
 				player.cocks[0].thickenCock(2);
 				player.cocks[0].cockType = CockTypesEnum.DEMON;
-				if(player.cor < 50) outputText("Corrupt nodules begin to spring up over its entire length.  <b>Your penis is transforming into a " + cockDescript(0) + "!<\b>  The new nubs wriggle about as they sprout over every inch of surface, save for the head.  Unable to do anything but groan with forced pleasure and horror, you can only watch.  One last batch of nodules forms in a ring around the crown of your " + cockDescript(0) + ", seemingly completing its transformation, until you notice, almost throwing up, that your testicles are also getting covered in black veins under your powerless eyes!  ", false);
-				else outputText("As you watch expectantly, tiny wriggling nodules begin to erupt from the purplish skin, like those magnificent cocks you saw on demons!  <b>Your penis is transforming into a " + cockDescript(0) + "!<\b>  You pant and moan in happiness as it lengthens one last time.  As you stroke all of its amazing length with both hands, the excitement of possessing such a beautiful pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your " + cockDescript(0) + "'s crown, you notice that the squirts getting out of your cock-slit are not completely white and gradually become darker, the last drops being pitch-black! Your new " + cockDescript(0) + " pulsates darkly with each beat of your heart, but the thick, throbbing veins that are finishing to cover your testicles do not contain blood, but a black liquid which apparently has perverted them. You ponder what its purpose might be, but then you decide, as you stroke the huge, dark, bumpy shaft, that if this feels as good as this looks, it doesn't really matter.  ", false);
+				if(player.cor < 50) outputText("Corrupt nodules begin to spring up over its entire length.  <b>Your penis is transforming into a " + game.player.cockDescript(0) + "!<\b>  The new nubs wriggle about as they sprout over every inch of surface, save for the head.  Unable to do anything but groan with forced pleasure and horror, you can only watch.  One last batch of nodules forms in a ring around the crown of your " + game.player.cockDescript(0) + ", seemingly completing its transformation, until you notice, almost throwing up, that your testicles are also getting covered in black veins under your powerless eyes!  ", false);
+				else outputText("As you watch expectantly, tiny wriggling nodules begin to erupt from the purplish skin, like those magnificent cocks you saw on demons!  <b>Your penis is transforming into a " + game.player.cockDescript(0) + "!<\b>  You pant and moan in happiness as it lengthens one last time.  As you stroke all of its amazing length with both hands, the excitement of possessing such a beautiful pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your " + game.player.cockDescript(0) + "'s crown, you notice that the squirts getting out of your cock-slit are not completely white and gradually become darker, the last drops being pitch-black! Your new " + game.player.cockDescript(0) + " pulsates darkly with each beat of your heart, but the thick, throbbing veins that are finishing to cover your testicles do not contain blood, but a black liquid which apparently has perverted them. You ponder what its purpose might be, but then you decide, as you stroke the huge, dark, bumpy shaft, that if this feels as good as this looks, it doesn't really matter.  ", false);
 			}
 			else {
-				outputText("Your " + cockDescript(0) + " leaps forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + cockDescript(0) + " gets longer and thicker.  It pulsates, as if promising dark pleasure as it settles into its new enhanced size.", false);
+				outputText("Your " + game.player.cockDescript(0) + " leaps forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + game.player.cockDescript(0) + " gets longer and thicker.  It pulsates, as if promising dark pleasure as it settles into its new enhanced size.", false);
 				player.cocks[0].cockLength += 6 + rand(10);
 				player.cocks[0].thickenCock(3);				
 			}
@@ -744,7 +744,7 @@ public function doDungeon(eventNo:Number):void {
 		outputText("You feel a strange shivering sensation pass through you.  ", true);
 		//Remove multiple.
 		if(player.cocks.length > 1) {
-			outputText("Your " + player.multiCockDescriptLight() + " shiver and retract back towards your body.  When the process finishes you are left with only your " + cockDescript(0) + ".  ", false);
+			outputText("Your " + player.multiCockDescriptLight() + " shiver and retract back towards your body.  When the process finishes you are left with only your " + game.player.cockDescript(0) + ".  ", false);
 			player.removeCock(1,player.cocks.length-1);
 			genderCheck();
 			temp++;
@@ -752,25 +752,25 @@ public function doDungeon(eventNo:Number):void {
 		//Super long nerf
 		if(player.hasCock()) {
 			if(player.cocks[0].cockLength > 12) {
-				outputText("A tingling sensation worms through your " + cockDescript(0) + " as it shrinks down to a more modest eleven inches.  ", false);
+				outputText("A tingling sensation worms through your " + game.player.cockDescript(0) + " as it shrinks down to a more modest eleven inches.  ", false);
 				player.cocks[0].cockLength = 11;
 				temp++;
 			}
 			//Super thick nerf
 			if(player.cocks[0].cockThickness > 2) {
-				outputText("Your " + cockDescript(0) + "'s obscene thickness withers down to roughly two inches of girth.  ", false);
+				outputText("Your " + game.player.cockDescript(0) + "'s obscene thickness withers down to roughly two inches of girth.  ", false);
 				player.cocks[0].cockThickness = 2;
 				temp++;
 			}
 			//Humanitize
 			if(player.cocks[0].cockType != CockTypesEnum.HUMAN && player.cocks[0].cockType != CockTypesEnum.DEMON) {
-				outputText("The inhuman appearance of your " + cockDescript(0) + " shifts, the flesh rearranging itself into a more human configuration.  After a few seconds you have a very normal looking penis.  ", false);
+				outputText("The inhuman appearance of your " + game.player.cockDescript(0) + " shifts, the flesh rearranging itself into a more human configuration.  After a few seconds you have a very normal looking penis.  ", false);
 				player.cocks[0].cockType = CockTypesEnum.HUMAN;
 				temp++;
 			}
 			//If demon cocked....
 			if(player.cocks[0].cockType == CockTypesEnum.DEMON) {
-				outputText("Your " + cockDescript(0) + " tingles as the bumps begin to fade.  After a moment the flesh darkens, and every single nodule reappears.  <b>Your corrupt penis resisted the magic!</b>  ", false);
+				outputText("Your " + game.player.cockDescript(0) + " tingles as the bumps begin to fade.  After a moment the flesh darkens, and every single nodule reappears.  <b>Your corrupt penis resisted the magic!</b>  ", false);
 				temp++;
 			}
 		}

@@ -19,7 +19,7 @@
 
 		public  get threesome():KatherineThreesome { return telAdre.katherineThreesome; }
 
-		public  get urta():Urta { return kGAMECLASS.urta; }
+		public  get urta():Urta { return urta; }
 
 		public  employmentTalk():void
 		{
@@ -452,8 +452,8 @@
 		{
 //Triggers when you visit Kath with her training score at or over 100
 //    (KATHERINE_UNLOCKED == 2) && (KATHERINE_TRAINING >= 100)
-			if (urta.urtaDrunk() || model.time.hours >= 15) {
-				if (model.time.hours >= 15)
+			if (urta.urtaDrunk() || game.time.hours >= 15) {
+				if (game.time.hours >= 15)
 					outputText("Although Kath is ready for testing you think it would be best to catch Urta while she’s filling out paperwork at the Wet Bitch.  That way you won’t risk interrupting her while she’s doing something important or on patrol.");
 				else outputText("Although Kath is ready for testing you don’t think the captain of Tel’Adre’s guard is going to be in any condition to test her.  You’re better off waiting until she’s sober.");
 				outputText("\n\nKath is pleased to see you anyway and even more pleased that you feel she’s ready.  “<i>I know I haven’t passed yet, but I’m so excited.  Maybe we could do something to celebrate the end of my training?</i>”  She leans back on the crate and runs her hands over her breasts suggestively.");
@@ -658,7 +658,7 @@
 			if (silly()) {
 				outputText("You joke that maybe you should get your ghostbusting gear?  Just in case?\n\n");
 				outputText("“<i>There’s no such thing as ghosts!</i>” Urta snaps.");
-				if (kGAMECLASS.shouldraFollower.followerShouldra()) {
+				if (shouldraFollower.followerShouldra()) {
 					outputText("You would beg to differ, you happen to not only know one... but is also carrying one right at this instant...\n\n");
 					outputText("“<i>Oh? So why doesn’t he come out and say hello, huh?</i>” Urta snarks, clearly feeling very put out.\n\n");
 					outputText("“<i>Don’t mind if I do!</i>” an ethereal voice replies out of your chest.  A familiar face emerges, grinning widely.  “<i>Boo,</i>” Shouldra states, simply.\n\n");
@@ -1081,7 +1081,7 @@
 		private  katherineTrainingWithUrtaCompleteContinued():void
 		{
 			clearOutput();
-			outputText("Later that " + (model.time.hours + 3 > 18 ? "evening" : "day") + "...\n\n");
+			outputText("Later that " + (game.time.hours + 3 > 18 ? "evening" : "day") + "...\n\n");
 			outputText("You laugh at Urta’s joke, indicating that if that were you, things would have been very different.  Then you take a sip of your drink.  Kath is currently gulping her way down a very large, fruity-smelling drink, while Urta, having finished her joke, is chugging down yet another " + (urta.pregnancy.isPregnant ? "virgin margarita.  You and Kath already had a laugh about how inappropriate it is for any of you to be drinking something 'virgin'" : "of her favorite bottles of alcohol, the strange amber-colored stuff with the JD label - odd, you can’t remember what it’s called") + ".  The two herms seem to be having a great time here.\n\n");
 			outputText("Once you finish your drink you announce that you will have to leave shortly.  “<i>Wha?  Already?  But we're just getting started!</i>” Urta protests.  “<i>Yeah, " + player.short + ".  Don’t be such a spoilsport!</i>” Kath protests alongside, stopping momentarily to sip her drink.  “<i>Wow... tish shtuff is really good... no wonder you’re always here drinking your face off prickvixen,</i>” Kath comments happily.  The vixen laughs drunkenly and retorts “<i>Look who’s slurring their words already!  You’re such a lightweight, my little pussy.</i>”\n\n");
 			outputText("You laugh and reply that as much as you’d love to stay, you have to return to your duties... speaking of which... don’t they have duties of their own to return to?  “<i>Not today, sexy!  I officially took the day off - and my little corporal pussy is taking it off with me,</i>” Urta laughs.  “<i>Yeah, you tell [him] boss,</i>” Kath giggles at that statement.  You click your tongue and shake your head... scolding them jokingly, saying that you didn’t get Kath off the streets so they could waste their days away at a bar.\n\n");
@@ -1163,4 +1163,3 @@
 		}
 
 	}
-

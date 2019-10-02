@@ -59,7 +59,7 @@
 
 				outputText("\n\n“<i>What’s the matter, [name]?</i>” " + player.mf("he", "she") +" breathes, staring lustfully into your eyes as " + player.mf("he", "she") +" sinks both hands into " + player.mf("his", "her") +" crotch and bends forward, forcing you close to " + player.mf("his", "her") +" face. “<i>Never tried it in front of a mirror? You were missing out on the nasty little tramp you are.</i>”");
 				
-				game.dynStats("lus", damage + (rand(7) - 3));
+				dynStats("lus", damage + (rand(7) - 3));
 			}
 			addTalkShit();
 		}
@@ -129,7 +129,7 @@
 				case 5:
 					outputText("\n\nThe shimmering intensifies for a moment as something... shifts....");
 					
-					game.dynStats("lus+", 1000);
+					dynStats("lus+", 1000);
 					
 					break;
 					
@@ -143,12 +143,12 @@
 		
 		 public  defeated(hpVictory:boolean):void
 		{
-			game.d3.doppleganger.punchYourselfInTheBalls();
+			d3.doppleganger.punchYourselfInTheBalls();
 		}
 		
 		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
-			game.d3.doppleganger.inSovietCoCSelfFucksYou();
+			d3.doppleganger.inSovietCoCSelfFucksYou();
 		}
 		
 		public  handleSpellResistance(spell:string):void
@@ -334,5 +334,3 @@
 		}
 		
 	}
-
-

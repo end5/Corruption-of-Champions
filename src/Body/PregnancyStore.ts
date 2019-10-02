@@ -108,13 +108,13 @@
 			}
 		}
 	
-		public  get type():number { return (_pregnancyTypeFlag == 0 ? 0 : kGAMECLASS.flags[_pregnancyTypeFlag] & PREG_TYPE_MASK); }
+		public  get type():number { return (_pregnancyTypeFlag == 0 ? 0 : game.flags[_pregnancyTypeFlag] & PREG_TYPE_MASK); }
 
-		public  get incubation():number { return (_pregnancyIncubationFlag == 0 ? 0 : kGAMECLASS.flags[_pregnancyIncubationFlag]); }
+		public  get incubation():number { return (_pregnancyIncubationFlag == 0 ? 0 : game.flags[_pregnancyIncubationFlag]); }
 
-		public  get buttType():number { return (_buttPregnancyTypeFlag == 0 ? 0 : kGAMECLASS.flags[_buttPregnancyTypeFlag] & PREG_TYPE_MASK); }
+		public  get buttType():number { return (_buttPregnancyTypeFlag == 0 ? 0 : game.flags[_buttPregnancyTypeFlag] & PREG_TYPE_MASK); }
 
-		public  get buttIncubation():number { return (_buttPregnancyIncubationFlag == 0 ? 0 : kGAMECLASS.flags[_buttPregnancyIncubationFlag]); }
+		public  get buttIncubation():number { return (_buttPregnancyIncubationFlag == 0 ? 0 : game.flags[_buttPregnancyIncubationFlag]); }
 		
 		public  get isPregnant():boolean { return type != 0; } //At birth the incubation can be zero so a check vs. type is safer
 
@@ -151,10 +151,10 @@
 		public  knockUpForce(newPregType:number = 0, newPregIncubation:number = 0):void
 		{
 			if (_pregnancyTypeFlag == 0 || _pregnancyIncubationFlag == 0) return; //Check that these variables were provided by the containing class
-			if (newPregType != 0) newPregType = (kGAMECLASS.flags[_pregnancyTypeFlag] & PREG_NOTICE_MASK) + newPregType;
+			if (newPregType != 0) newPregType = (game.flags[_pregnancyTypeFlag] & PREG_NOTICE_MASK) + newPregType;
 				//If a pregnancy 'continues' an existing pregnancy then do not change the value for last noticed stage
-			kGAMECLASS.flags[_pregnancyTypeFlag] = newPregType;
-			kGAMECLASS.flags[_pregnancyIncubationFlag] = (newPregType == 0 ? 0 : newPregIncubation); //Won't allow incubation time without pregnancy type
+			game.flags[_pregnancyTypeFlag] = newPregType;
+			game.flags[_pregnancyIncubationFlag] = (newPregType == 0 ? 0 : newPregIncubation); //Won't allow incubation time without pregnancy type
 		}
 	
 		public  buttKnockUp(newPregType:number = 0, newPregIncubation:number = 0):void
@@ -165,22 +165,22 @@
 		public  buttKnockUpForce(newPregType:number = 0, newPregIncubation:number = 0):void
 		{
 			if (_buttPregnancyTypeFlag == 0 || _buttPregnancyIncubationFlag == 0) return; //Check that these variables were provided by the containing class
-			if (newPregType != 0) newPregType = (kGAMECLASS.flags[_buttPregnancyTypeFlag] & PREG_NOTICE_MASK) + newPregType;
+			if (newPregType != 0) newPregType = (game.flags[_buttPregnancyTypeFlag] & PREG_NOTICE_MASK) + newPregType;
 				//If a pregnancy 'continues' an existing pregnancy then do not change the value for last noticed stage
-			kGAMECLASS.flags[_buttPregnancyTypeFlag] = newPregType;
-			kGAMECLASS.flags[_buttPregnancyIncubationFlag] = (newPregType == 0 ? 0 : newPregIncubation); //Won't allow incubation time without pregnancy type
+			game.flags[_buttPregnancyTypeFlag] = newPregType;
+			game.flags[_buttPregnancyIncubationFlag] = (newPregType == 0 ? 0 : newPregIncubation); //Won't allow incubation time without pregnancy type
 		}
 
 		//The containing class is responsible for calling pregnancyAdvance, usually once per timeChange()
 		public  pregnancyAdvance():void //Separate function so it can be called more often than timeChange if neccessary
 		{
 			if (incubation != 0) {
-				kGAMECLASS.flags[_pregnancyIncubationFlag]--;
-				if (kGAMECLASS.flags[_pregnancyIncubationFlag] < 0) kGAMECLASS.flags[_pregnancyIncubationFlag] = 0;
+				game.flags[_pregnancyIncubationFlag]--;
+				if (game.flags[_pregnancyIncubationFlag] < 0) game.flags[_pregnancyIncubationFlag] = 0;
 			}
 			if (buttIncubation != 0) {
-				kGAMECLASS.flags[_buttPregnancyIncubationFlag]--;
-				if (kGAMECLASS.flags[_buttPregnancyIncubationFlag] < 0) kGAMECLASS.flags[_buttPregnancyIncubationFlag] = 0;
+				game.flags[_buttPregnancyIncubationFlag]--;
+				if (game.flags[_buttPregnancyIncubationFlag] < 0) game.flags[_buttPregnancyIncubationFlag] = 0;
 			}
 		}
 
@@ -227,9 +227,9 @@
 		public  eventTriggered():number
 		{
 			var currentStage:number = event;
-			var lastNoticed:number = kGAMECLASS.flags[_pregnancyTypeFlag] & PREG_NOTICE_MASK;
+			var lastNoticed:number = game.flags[_pregnancyTypeFlag] & PREG_NOTICE_MASK;
 			if (currentStage * 65536 == lastNoticed) return 0; //Player has already noticed this stage
-			kGAMECLASS.flags[_pregnancyTypeFlag] = (kGAMECLASS.flags[_pregnancyTypeFlag] & PREG_TYPE_MASK) + (currentStage * 65536);
+			game.flags[_pregnancyTypeFlag] = (game.flags[_pregnancyTypeFlag] & PREG_TYPE_MASK) + (currentStage * 65536);
 				//Strip off the old noticed value by ANDing with PREG_TYPE_MASK
 			return currentStage;
 		}
@@ -238,9 +238,9 @@
 		public  buttEventTriggered():number
 		{
 			var currentStage:number = buttEvent;
-			var lastNoticed:number = kGAMECLASS.flags[_buttPregnancyTypeFlag] & PREG_NOTICE_MASK;
+			var lastNoticed:number = game.flags[_buttPregnancyTypeFlag] & PREG_NOTICE_MASK;
 			if (currentStage * 65536 == lastNoticed) return 0; //Player has already noticed this stage
-			kGAMECLASS.flags[_buttPregnancyTypeFlag] = (kGAMECLASS.flags[_buttPregnancyTypeFlag] & PREG_TYPE_MASK) + (currentStage * 65536);
+			game.flags[_buttPregnancyTypeFlag] = (game.flags[_buttPregnancyTypeFlag] & PREG_TYPE_MASK) + (currentStage * 65536);
 				//Strip off the old noticed value by ANDing with PREG_TYPE_MASK
 			return currentStage;
 		}

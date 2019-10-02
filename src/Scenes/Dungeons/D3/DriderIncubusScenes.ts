@@ -8,7 +8,7 @@
 	 
 	 
 
-	export class DriderIncubusScenes extends BaseContent
+	export class DriderIncubusScenes
 	{
 		public  constructor()
 		{
@@ -192,7 +192,7 @@
 			else outputText(" and");
 			outputText(" served in the breeding pits, endlessly fornicating to maintain an army of expendable imps.");
 			outputText("\n\nThe Dark Queen did not forget her favorite prize. At least once a week, time permitting, she would visit the former champion and allow "+ player.mf("him", "her") +" to tend to her endless, corrupted needs. Hours would pass with little more than the friction of a tongue against a slick slit, and the former champion had never been happier.");
-			getGame().gameOver();
+			gameOver();
 		}
 
 		public  beatTheSpooderbutt(hpVictory:boolean):void
@@ -289,7 +289,7 @@
 		public  afterDriderbuttFight():void
 		{
 			
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 
 		public  killDrider():void
@@ -355,10 +355,10 @@
 			outputText("\n\nJust looking at the goblin’s smiling face as you smear it back and forth through puddles of demon-cum has you almost ready to go off. You swat her cushy heiny in between rapid-fire thrusts, wondering if you should keep her while your orgasm rises up like a slumbering beast.");
 
 			//Followers
-			if (getGame().camp.companionsCount() > 0)
+			if (camp.companionsCount() > 0)
 			{
 				outputText("\n\nYour other follower");
-				if (getGame().camp.companionsCount() > 1) outputText("s");
+				if (camp.companionsCount() > 1) outputText("s");
 				outputText(" wouldn’t mind having a well-practiced goblin cooze around, would they? You certainly wouldn’t.");
 			}
 			//No Followers
@@ -743,7 +743,7 @@
 			//Orgasm
 			//Pass an hour.
 			flags[kFLAGS.DRIDERINCUBUS_FUCKED] = 1;
-			getGame().dynStats("cor+", 20);
+			dynStats("cor+", 20);
 			player.orgasm();
 			player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 			driderDefeatMenu();
@@ -811,7 +811,7 @@
 			outputText("\n\nMoaning weakly, the spunk-bloated demon slumps forward. You withdraw from him with a wet <i>pop</i> the echoes throughout the court, silencing the demon host. You make eye contact with Lethice, holding her gaze as you gather your [armor]. Behind you, the drider is helpless but to moan and leak spooge from his well-fucked ass.");
 			if (player.cor >= 75) outputText(" You can't wait to see how the Demon Queen feels when she's skewered on your rod!");
 
-			getGame().dynStats("cor+", 20);
+			dynStats("cor+", 20);
 			player.orgasm();
 			player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 			driderDefeatMenu();

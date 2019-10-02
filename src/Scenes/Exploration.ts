@@ -10,7 +10,7 @@
 	 
 	 
 
-	export class Exploration extends BaseContent
+	export class Exploration
 	{
 		public  exploreDebug:ExploreDebug = new ExploreDebug();
 		public  giacomo:Giacomo = new Giacomo();
@@ -42,14 +42,14 @@
 			}
 			menu();
 			addButton(0, "Explore", tryDiscover);
-			if (player.exploredDesert > 0) addButton(1, "Desert", kGAMECLASS.desert.exploreDesert);
-			if (player.exploredForest > 0) addButton(2, "Forest", kGAMECLASS.forest.exploreForest);
-			if (player.exploredLake > 0) addButton(3, "Lake", kGAMECLASS.lake.exploreLake);
+			if (player.exploredDesert > 0) addButton(1, "Desert", desert.exploreDesert);
+			if (player.exploredForest > 0) addButton(2, "Forest", forest.exploreForest);
+			if (player.exploredLake > 0) addButton(3, "Lake", lake.exploreLake);
 			addButton(4, "Next", explorePageII);
-			if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(5, "Plains", kGAMECLASS.plains.explorePlains);
-			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] > 0) addButton(6, "Swamp", kGAMECLASS.swamp.exploreSwamp);
-			if (player.findStatusAffect(StatusAffects.ExploredDeepwoods) >= 0) addButton(7, "Deepwoods", kGAMECLASS.forest.exploreDeepwoods);
-			if (player.exploredMountain > 0) addButton(8, "Mountain", kGAMECLASS.mountain.exploreMountain);
+			if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(5, "Plains", plains.explorePlains);
+			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] > 0) addButton(6, "Swamp", swamp.exploreSwamp);
+			if (player.findStatusAffect(StatusAffects.ExploredDeepwoods) >= 0) addButton(7, "Deepwoods", forest.exploreDeepwoods);
+			if (player.exploredMountain > 0) addButton(8, "Mountain", mountain.exploreMountain);
 			addButton(9, "Back", playerMenu);
 		}
 
@@ -57,10 +57,10 @@
 		{
 			flags[kFLAGS.EXPLORATION_PAGE] = 2;
 			menu();
-			if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(0, "High Mountain", kGAMECLASS.highMountains.exploreHighMountain);
-			if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(1, "Bog", kGAMECLASS.bog.exploreBog);
+			if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(0, "High Mountain", highMountains.exploreHighMountain);
+			if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(1, "Bog", bog.exploreBog);
 			addButton(4, "Previous", goBackToPageI);
-			if (debug) addButton(8, "Debug", exploreDebug.doExploreDebug);
+			if (game.debug) addButton(8, "Debug", exploreDebug.doExploreDebug);
 			addButton(9, "Back", playerMenu);
 		}
 
@@ -75,11 +75,11 @@
 		public  tryDiscover():void
 		{
 
-			// kGAMECLASS.goblinAssassinScene.goblinAssassinEncounter();
+			// goblinAssassinScene.goblinAssassinEncounter();
 			// return;
 
-			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helFollower.followerHel()) {
-				kGAMECLASS.helScene.helSexualAmbush();
+			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helFollower.followerHel()) {
+				helScene.helSexualAmbush();
 				return;
 			}
 			if (player.explored > 1) {
@@ -143,13 +143,13 @@
 				}
 				else if (choosey == 1) {
 					player.explored++;
-					kGAMECLASS.lumi.lumiEncounter();
+					lumi.lumiEncounter();
 					return;
 				}
 				else if (choosey == 2) {
 					player.explored++;
-					if (flags[kFLAGS.GAR_NAME] == 0) kGAMECLASS.gargoyle.gargoylesTheShowNowOnWBNetwork();
-					else kGAMECLASS.gargoyle.returnToCathedral();
+					if (flags[kFLAGS.GAR_NAME] == 0) gargoyle.gargoylesTheShowNowOnWBNetwork();
+					else gargoyle.returnToCathedral();
 					return;
 				}
 				//Monster - 50/50 imp/gob split.
@@ -159,7 +159,7 @@
 					//Imptacular Encounter
 					if (rand(10) < impGob) {
 						if (player.level >= 8 && rand(2) == 0) {
-							kGAMECLASS.impScene.impLordEncounter();
+							impScene.impLordEncounter();
 							spriteSelect(29);
 							return;
 						}
@@ -174,7 +174,7 @@
 					else {
 						//50% of the time, goblin assassin!
 						if (player.level >= 10 && rand(2) == 0) {
-							kGAMECLASS.goblinAssassinScene.goblinAssassinEncounter();
+							goblinAssassinScene.goblinAssassinEncounter();
 							return;
 						}
 						if (player.gender > 0) {
@@ -215,22 +215,22 @@
 			outputText("", true);
 			var x:number = player.longestCock();
 			//PARAGRAPH 1
-			outputText("Walking along the sandy dunes of the desert you find yourself increasingly impeded by the bulk of your " + cockDescript(x) + " dragging along the sandscape behind you.  The incredibly hot surface of the desert causes your loins to sweat heavily and fills them with relentless heat.", false);
+			outputText("Walking along the sandy dunes of the desert you find yourself increasingly impeded by the bulk of your " + game.player.cockDescript(x) + " dragging along the sandscape behind you.  The incredibly hot surface of the desert causes your loins to sweat heavily and fills them with relentless heat.", false);
 
 			if (player.cocks.length == 1) outputText("  As it drags along the dunes, the sensation forces you to imagine the rough textured tongue of a monstrous animal sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ".", false);
-			else if (player.cocks.length >= 2) outputText("  With all of your " + multiCockDescriptLight() + " dragging through the sands they begin feeling as if the rough textured tongues of " + num2Text(player.cockTotal()) + " different monstrous animals were slobbering over each one.", false);
+			else if (player.cocks.length >= 2) outputText("  With all of your " + game.player.multiCockDescriptLight() + " dragging through the sands they begin feeling as if the rough textured tongues of " + num2Text(player.cockTotal()) + " different monstrous animals were slobbering over each one.", false);
 			outputText("\n\n", false);
 
 			//PARAGRAPH 2
 
 			//FOR NON-CENTAURS]
 			if (!player.isTaur()) {
-				outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight() + ", which forces your torso to the ground.  Normally your erection would merely raise itself skyward but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead you feel your body forcibly pivoting at the hips until your torso is compelled to rest face down on top of your obscene " + multiCockDescriptLight() + ".", false);
+				outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + game.player.multiCockDescriptLight() + ", which forces your torso to the ground.  Normally your erection would merely raise itself skyward but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead you feel your body forcibly pivoting at the hips until your torso is compelled to rest face down on top of your obscene " + game.player.multiCockDescriptLight() + ".", false);
 
 				//IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
-				if (player.biggestTitSize() >= 35)  outputText("  Your " + kGAMECLASS.allBreastsDescript() + " hang lewdly off your torso to rest on the desert sands, seeming to bury the dunes on either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  The burning heat of the desert teases your " + nippleDescript(0) + "s mercilessly as they grind in the sand.", false);
+				if (player.biggestTitSize() >= 35)  outputText("  Your " + allBreastsDescript() + " hang lewdly off your torso to rest on the desert sands, seeming to bury the dunes on either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  The burning heat of the desert teases your " + nippleDescript(0) + "s mercilessly as they grind in the sand.", false);
 				//IF CHARACTER HAS A BALLS ADD SENTENCE
-				if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript() + " rests beneath your raised " + buttDescript() + ".  The fiery warmth of the desert caresses it, causing your " + ballsDescriptLight() + " to pulse with the need to release their sperm through your " + multiCockDescriptLight() + ".", false);
+				if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  The fiery warmth of the desert caresses it, causing your " + ballsDescriptLight() + " to pulse with the need to release their sperm through your " + game.player.multiCockDescriptLight() + ".", false);
 				//IF CHARACTER HAS A VAGINA ADD SENTENCE
 				if (player.vaginas.length >= 1) {
 					outputText("  Your " + vaginaDescript() + " and " + clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescript() + " above.", false);
@@ -240,11 +240,11 @@
 			}
 			//FOR CENTAURS
 			else {
-				outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight() + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hindquarters until you rest atop your " + multiCockDescriptLight() + ".", false);
+				outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + game.player.multiCockDescriptLight() + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hindquarters until you rest atop your " + game.player.multiCockDescriptLight() + ".", false);
 				//IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
-				if (player.biggestTitSize() >= 35)  outputText("  Your " + kGAMECLASS.allBreastsDescript() + " pull your human torso forward until it also is forced to rest facedown, just like your horse half.  Your tits rest, pinned on the desert sand to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  The burning heat of the desert teases your " + nippleDescript(0) + "s incessantly.", false);
+				if (player.biggestTitSize() >= 35)  outputText("  Your " + allBreastsDescript() + " pull your human torso forward until it also is forced to rest facedown, just like your horse half.  Your tits rest, pinned on the desert sand to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  The burning heat of the desert teases your " + nippleDescript(0) + "s incessantly.", false);
 				//IF CHARACTER HAS A BALLS ADD SENTENCE
-				if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript() + " rests beneath your raised " + buttDescript() + ".  The airy warmth of the desert teases it, causing your " + ballsDescriptLight() + " pulse with the need to release their sperm through your " + multiCockDescriptLight() + ".", false);
+				if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  The airy warmth of the desert teases it, causing your " + ballsDescriptLight() + " pulse with the need to release their sperm through your " + game.player.multiCockDescriptLight() + ".", false);
 				//IF CHARACTER HAS A VAGINA ADD SENTENCE
 				if (player.vaginas.length >= 1) {
 					outputText("  Your " + vaginaDescript() + " and " + clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescript() + " above.", false);
@@ -265,7 +265,7 @@
 			//SCENE END IF CHARACTER HAS CENTAUR BODY
 			else if (player.isTaur()) outputText("  You struggle and work your equine legs against the surface of the dune you are trapped on.  Your " + player.feet() + " have consistent trouble finding footing, the soft sand failing to provide enough leverage to lift your bulk.  You breath in deeply and lean from side to side, trying to find some easier vertical leverage.  Eventually, with a crude crawl, your legs manage to push the bulk of your body onto more solid ground.  With great difficulty, you spend the next hour shuffling your genitals across the sandscape and back to camp.", false);
 			//SCENE END = FOR ALL OTHER CHARACTERS
-			else outputText("  You struggle and push with your " + player.legs() + " as hard as you can, but it's no use.  You do the only thing you can and begin stroking your " + multiCockDescriptLight() + " with as much vigor as you can muster.  Eventually your body tenses and a light load of jizz erupts from your body, but the orgasm is truly mild compared to what you need.  You're simply too weary from struggling to give yourself the masturbation you truly need, but you continue to try.  Nearly an hour later " + sMultiCockDesc() + " softens enough to allow you to stand again, and you make your way back to camp, still dragging your genitals across the warm sand.", false);
+			else outputText("  You struggle and push with your " + player.legs() + " as hard as you can, but it's no use.  You do the only thing you can and begin stroking your " + game.player.multiCockDescriptLight() + " with as much vigor as you can muster.  Eventually your body tenses and a light load of jizz erupts from your body, but the orgasm is truly mild compared to what you need.  You're simply too weary from struggling to give yourself the masturbation you truly need, but you continue to try.  Nearly an hour later " + game.player.sMultiCockDesc() + " softens enough to allow you to stand again, and you make your way back to camp, still dragging your genitals across the warm sand.", false);
 			dynStats("lus", 25 + rand(player.cor / 5), "resisted", false);
 			fatigue(5);
 			doNext(camp.returnToCampUseOneHour);
@@ -273,4 +273,3 @@
 
 
 	}
-

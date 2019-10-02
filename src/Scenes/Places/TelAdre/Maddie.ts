@@ -148,7 +148,7 @@ private  talkToMaddie():void {
 	if(player.hasCock()) {
 		var x:number = player.cockThatFits(60);
 		if (x < 0) x = 0;
-		outputText("\"<i>Dad said my name is Madeleine, but that's no fun.  Just call me Maddie.  You've got lots of icing like Dad, right?  I-I... need more icing.  It's in my recipe,</i>\" says Maddie.  The baked broad strips your " + player.armorName + " to expose your " + multiCockDescriptLight() + ".  Cooing with excitement, she examines your ", false);
+		outputText("\"<i>Dad said my name is Madeleine, but that's no fun.  Just call me Maddie.  You've got lots of icing like Dad, right?  I-I... need more icing.  It's in my recipe,</i>\" says Maddie.  The baked broad strips your " + player.armorName + " to expose your " + game.player.multiCockDescriptLight() + ".  Cooing with excitement, she examines your ", false);
 		if(player.lust >= 75) outputText("rock-hard", false);
 		else outputText("hardening", false);
 		outputText(" shaft", false);
@@ -160,21 +160,21 @@ private  talkToMaddie():void {
 		if(player.cor < 33) outputText("You muster as much authority as you can in such a compromising position and explain to Maddie that what comes out of there is NOT icing.", false);
 		else if(player.cor < 66) outputText("You offhandedly mention that you don't actually make icing.", false);
 		else outputText("You smirk and mention that what you squirt isn't quite icing.", false);
-		outputText("  \"<i>Liar!  If that wasn't icing, then why would Daddy have put his in all those eclairs and me?</i>\" retorts the busty cupcake, continuing on to say, \"<i>I know, I can suck it out!</i>\"  She purses her jelly-like lips and plunges forward, slurping all " + num2Text(Math.floor(player.cocks[x].cockLength)) + " inches into her oven-warmed esophagus.  Your protests are cut off by the tightness squeezing around your " + cockDescript(x) + ".  It milks you in rippling motions, buttery-slick and pulsing hungrily.\n\n", false);
+		outputText("  \"<i>Liar!  If that wasn't icing, then why would Daddy have put his in all those eclairs and me?</i>\" retorts the busty cupcake, continuing on to say, \"<i>I know, I can suck it out!</i>\"  She purses her jelly-like lips and plunges forward, slurping all " + num2Text(Math.floor(player.cocks[x].cockLength)) + " inches into her oven-warmed esophagus.  Your protests are cut off by the tightness squeezing around your " + game.player.cockDescript(x) + ".  It milks you in rippling motions, buttery-slick and pulsing hungrily.\n\n", false);
 		
 		outputText("A half-melted tongue ", false);
 		if(!player.hasSheath()) outputText("encircles the base", false);
 		else outputText("pokes and prods into your sheath", false);
-		outputText(", leaving a syrupy residue trailing over your " + cockDescript(x) + ".  You groan, sagging into the sugary suspension.  The strength is completely gone from your limbs, stolen by the pastry's prick-devouring maw.  Her shining eyes look up to gloat once she realizes how completely you've submitted to her ministrations, and in no time, her cake-soft hands catch and squeeze your " + cockDescript(x) + " into the gargantuan swell of her spongy breasts.  A smile crosses your face as you get pleasured by the motherly mounds and the familiar, sweet smell that Maddie exudes.\n\n", false);
+		outputText(", leaving a syrupy residue trailing over your " + game.player.cockDescript(x) + ".  You groan, sagging into the sugary suspension.  The strength is completely gone from your limbs, stolen by the pastry's prick-devouring maw.  Her shining eyes look up to gloat once she realizes how completely you've submitted to her ministrations, and in no time, her cake-soft hands catch and squeeze your " + game.player.cockDescript(x) + " into the gargantuan swell of her spongy breasts.  A smile crosses your face as you get pleasured by the motherly mounds and the familiar, sweet smell that Maddie exudes.\n\n", false);
 		
-		outputText("Suction starts, hollowing the cupcake-girl's plush cheeks into a concave, cock-slurping form.  The constant squeezing of your " + cockDescript(x) + " combines with the sucking to make you swell larger inside Maddie's gullet while she kisses your groin.  The confection's oral charms show no signs of stopping as she noisily slurps away at her treat, and her pillowy breasts are so spongy-soft and calming that you're happy to let her sample your 'icing' if it means you can feel like this.  Your " + hipDescript() + " push back into the baby blue lips, pumping and thrusting as your instinct to fuck and breed takes over, working your " + cockDescript(x) + " in and out of the pastry's puckered mouth.\n\n", false);
+		outputText("Suction starts, hollowing the cupcake-girl's plush cheeks into a concave, cock-slurping form.  The constant squeezing of your " + game.player.cockDescript(x) + " combines with the sucking to make you swell larger inside Maddie's gullet while she kisses your groin.  The confection's oral charms show no signs of stopping as she noisily slurps away at her treat, and her pillowy breasts are so spongy-soft and calming that you're happy to let her sample your 'icing' if it means you can feel like this.  Your " + hipDescript() + " push back into the baby blue lips, pumping and thrusting as your instinct to fuck and breed takes over, working your " + game.player.cockDescript(x) + " in and out of the pastry's puckered mouth.\n\n", false);
 		
 		outputText("Maddie pushes further forward, her bosom crushing you against the wall to hold your hips immobile while she sucks harder and harder.  Your cock balloons from the suction, thickening inside her neck and beginning to twitch from the irresistible fellative pleasure. An orgasm grows in your " + ballsDescriptLight(), false);
 		if(player.balls > 0) outputText(", the cum-heavy spheres bouncing in your twitching sack as they get ready to explode", false);
 		outputText(".  Maddie squeezes her puckered cock-suckers tight around the turgid shaft while she whips her melty tongue in circles around it.  Your climax hits like a hammer-blow to the temple, knocking the thoughts from your head while you pump rope after rope of 'icing' down the cupcake's dick-gripping neck-hole.  The suction relaxes as you fill the ravenous pastry with your seed and let your head limply sink deeper against the cushion of her sponge-cake-soft breast.\n\n", false);
 		
 		outputText("Maddie milks you for what seems like ages", false);
-		if(player.cockTotal() == 1) outputText(", your " + cockDescript(x) + " emptying every drop of jizz into the baked cum-tank.", false);
+		if(player.cockTotal() == 1) outputText(", your " + game.player.cockDescript(x) + " emptying every drop of jizz into the baked cum-tank.", false);
 		else {
 			outputText(" while her skin absorbs the generous donation of your other member", false);
 			if(player.cockTotal() > 2) outputText("s", false);
@@ -243,4 +243,3 @@ public  bakeryEpilogue():void {
 	doNext(telAdre.bakeryScene.bakeryuuuuuu);
 }
 }
-

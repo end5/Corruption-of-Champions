@@ -9,7 +9,7 @@
 
 		 public  desc(params:PerkClass = null):string
 		{
-			if (kGAMECLASS.player.cor >= 30) return "<b>DISABLED</b> - Corruption too high!";
+			if (game.player.cor >= 30) return "<b>DISABLED</b> - Corruption too high!";
 			else return super.desc(params);
 		}
 

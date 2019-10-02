@@ -7,13 +7,12 @@
 	 
 	 
 
-	export class AbstractLakeContent extends BaseContent
+	export class AbstractLakeContent
 	{
 		protected  get lake():Lake{
-			return kGAMECLASS.lake;
+			return lake;
 		}
 		public  constructor()
 		{
 		}
 	}
-

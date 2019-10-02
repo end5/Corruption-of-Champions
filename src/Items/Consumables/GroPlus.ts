@@ -29,7 +29,7 @@
 			var gpNipples:() => void	= (game.player.totalNipples() > 0 ? growPlusNipples : null);
 			clearOutput();
 			outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?  ");
-			game.choices("Balls", gpBalls, "Breasts", gpBreasts, "Clit", gpClit, "Cock", gpCock, "Nipples", gpNipples, "", null, "", null, "", null, "", null, "Nevermind", growPlusCancel);
+			choices("Balls", gpBalls, "Breasts", gpBreasts, "Clit", gpClit, "Cock", gpCock, "Nipples", gpNipples, "", null, "", null, "", null, "", null, "Nevermind", growPlusCancel);
 			return(true);
 		}
 		
@@ -48,8 +48,8 @@
 				outputText("You feel your testicles shift, pulling the skin of your " + game.player.sackDescript() + " a little bit as they grow to " + game.player.ballsDescriptLight() + ".  ");
 			}
 			if (game.player.ballSize > 10) outputText("Walking gets even tougher with the swollen masses between your legs.  Maybe this was a bad idea.");
-			game.dynStats("lus", 10);
-			game.inventory.itemGoNext();
+			dynStats("lus", 10);
+			inventory.itemGoNext();
 		}
 
 		private  growPlusBreasts():void {
@@ -60,8 +60,8 @@
 				game.player.growTits(Utils.rand(5) + 1, 1, true, 1);
 			else
 				game.player.growTits(Utils.rand(2) + 1, game.player.breastRows.length, true, 1);
-			game.dynStats("lus", 10);
-			game.inventory.itemGoNext();
+			dynStats("lus", 10);
+			inventory.itemGoNext();
 		}
 
 		private  growPlusClit():void {
@@ -70,8 +70,8 @@
 			outputText("You sink the needle into your clit, nearly crying with how much it hurts.  You push down the plunger and the pain vanishes as your clit starts to grow.\n\n");
 			game.player.clitLength++;
 			outputText("Your " + game.player.clitDescript() + " stops growing after an inch of new flesh surges free of your netherlips.  It twitches, feeling incredibly sensitive.");
-			game.dynStats("sen", 2, "lus", 10);
-			game.inventory.itemGoNext();
+			dynStats("sen", 2, "lus", 10);
+			inventory.itemGoNext();
 		}
 
 		private  growPlusCock():void {
@@ -96,8 +96,8 @@
 			if (game.player.hasSheath())
 				outputText("sheath.");
 			else outputText("crotch.");
-			game.dynStats("sen", 2, "lus", 10);
-			game.inventory.itemGoNext();
+			dynStats("sen", 2, "lus", 10);
+			inventory.itemGoNext();
 		}
 
 		private  growPlusNipples():void {
@@ -107,7 +107,7 @@
 		//Grow nipples
 			outputText("Your nipples engorge, prodding hard against the inside of your " + game.player.armorName + ".  Abruptly you realize they've grown more than an additional quarter-inch.\n\n");
 			game.player.nippleLength += (Utils.rand(2) + 3) / 10;
-			game.dynStats("lus", 15);
+			dynStats("lus", 15);
 			//NIPPLECUNTZZZ
 			if (!game.player.hasFuckableNipples() && Utils.rand(4) == 0) {
 				var nowFuckable:boolean = false;
@@ -120,13 +120,12 @@
 				//Talk about if anything was changed.
 				if (nowFuckable) outputText("Your " + game.player.allBreastsDescript() + " tingle with warmth that slowly migrates to your nipples, filling them with warmth.  You pant and moan, rubbing them with your fingers.  A trickle of wetness suddenly coats your finger as it slips inside the nipple.  Shocked, you pull the finger free.  <b>You now have fuckable nipples!</b>\n\n");
 			}
-			game.inventory.itemGoNext();
+			inventory.itemGoNext();
 		}
 
 		private  growPlusCancel():void {
 			clearOutput();
 			outputText("You put the vial away.\n\n");
-			game.inventory.returnItemToInventory(this);
+			inventory.returnItemToInventory(this);
 		}
 	}
-

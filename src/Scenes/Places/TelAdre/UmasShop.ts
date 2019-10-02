@@ -1596,7 +1596,7 @@
 			outputText("The milf mare smiles at you.  \"<i>Very well, dear.  Follow me,</i>\" she turns to leave her office and head down the corridor, towards the far back of the clinic, equine tail swishing lazily side to side.  You follow closely in her wake, looking forward to her \"special treatment.\"\n\n");
 			outputText("The room she leads you to is quite simple; wooden walls and floor, a couple of drains set in the floor that are probably for the more fluid generous clientele, ");
 
-			if (kGAMECLASS.urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
+			if (urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
 
 			outputText("and a sizable table, made from bamboo. It's covered in a white cloth, and has an upraised headboard with a hole in it that looks like it's big enough to fit your head through.  This is the only piece of furniture in the room, apart from a small cupboard in the corner.  Though spartan in its layout, the room is quite comfortably warm.\n\n");
 			outputText("Clearing her throat to get your attention the mare chuckles.  \"<i>If you're done examining your surroundings, you'd better get those [armorname] off, unless you want them to get dirty dear,</i>\" Uma says, pointing at your garments.  \"<i>You can put them inside the cupboard,</i>\" she motions over to the cupboard and begins undoing her kimono, with practiced moves and elegant grace, careful not to wrinkle the fabric and ensuring it's all neatly folded.\n\n");
@@ -1666,7 +1666,7 @@
 			outputText("\"<i>Very well, dear.  Come with me,</i>\" she turns to leave her office and head down the corridor, towards the far back of the clinic, equine tail swishing lazily side to side.  You follow closely in her wake, looking forward to her \"special treatment\".\n\n");
 			outputText("The room she leads you to is quite simple; wooden walls and floor, a couple of drains set in the floor that are probably for the more... fluid generous clientele, ");
 
-			if (kGAMECLASS.urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
+			if (urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
 
 			outputText("and a sizable table, made from bamboo. It's covered in a white cloth, and has an upraised headboard with a hole in it that looks like it's big enough to fit your head through.  This is the only piece of furniture in the room, apart from a small cupboard in the corner.  Though spartan in its layout, the room is quite comfortably warm.\n\n");
 			outputText("Clearing her throat to get your attention the mare chuckles.  \"<i>Now, dear.  I can't quite get my hands where they need to be if you're still wearing your [armorname].  So why don't you strip down and put them in the cupboard over in the corner,</i>\"  she instructs, beginning to strip herself.  You nod your head in understanding and promptly strip down, ");
@@ -1776,7 +1776,7 @@
 			outputText("\"<i>Hmm, I suppose I could, come with me,</i>\" the mare leads you away, out her office and head down the corridor, towards the far back of the clinic, equine tail swishing lazily side to side.  You follow closely in her wake, looking forward to her \"<i>special treatment</i>\".\n\n");
 			outputText("The room she leads you to is quite simple; wooden walls and floor, a couple of drains set in the floor that are probably for the more... fluid generous clientele, ");
 
-			if (kGAMECLASS.urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
+			if (urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
 
 			outputText("and a sizable table, made from bamboo; it's covered in a white cloth, and has an upraised headboard with a hole in it that looks like it's big enough to fit your head through.  This is the only piece of furniture in the room, apart from a small cupboard in the corner.  Though spartan in its layout, the room is quite comfortably warm.\n\n");
 			outputText("She starts stripping and motions for you to do the same.  \"<i>As talented as I am with my hands, I still haven't figured a way to properly take care of you while dressed, dear,</i>\" she giggles.  You nod your head in understanding and promptly strip down, ");
@@ -1864,7 +1864,7 @@
 			outputText(" grinding and growing is well-worth the obvious discomfort.");
 			
 			outputText("\n\nThe room she leads you to is quite simple: wooden walls and floor, a couple of drains set in the boards that are probably for the more... fluid generous clientele, ");
-			if(kGAMECLASS.urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
+			if(urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
 			outputText("and a sizable bamboo table.  It's covered in a white cloth and has an upraised board with a hole in it that looks like it’s big enough to fit your head through.  It is the only piece of furniture in the room apart from a small cupboard in the corner. Though spartan in its layout, this odd chamber is quite comfortably warm.");
 			
 			outputText("\n\n\"<i>Strip, dear,</i>\" Uma says cheerfully while beginning to strip herself.  You need no further encouragement, eagerly getting naked ");
@@ -1903,7 +1903,7 @@
 			outputText("\n\nGrunting softly at her ministrations, you let your [hips] shiver as she passes over your " + player.cockHead(x) + " once more.  Her tightly sealed lips glide over your spit-slicked length at an even, nerve-tickling pace");
 			if(player.cocks[x].cockLength < 9) outputText(" until she hits your [sheath]");
 			else outputText(" until she has her mouth as full as she can handle");
-			outputText(".  She holds you like that, letting you feel her hot breath wash over the [skinFurScales] of your crotch.  Her tongue wags back and forth underneath you, slipping and sliding against you. Inside her mouth, your " + cockDescript(x) + " twitches and jumps in her maw.  Beads of pre-cum are beading and dripping out onto her busy organ.");
+			outputText(".  She holds you like that, letting you feel her hot breath wash over the [skinFurScales] of your crotch.  Her tongue wags back and forth underneath you, slipping and sliding against you. Inside her mouth, your " + game.player.cockDescript(x) + " twitches and jumps in her maw.  Beads of pre-cum are beading and dripping out onto her busy organ.");
 			
 			outputText("\n\nUma's shaft-muffled voice mumbles, \"<i>");
 			if(flags[kFLAGS.UMA_TIMES_SUCKED_YOU] < 2) outputText("Girls taste better.");
@@ -1931,7 +1931,7 @@
 				else outputText(" is");
 				outputText(" the perfect mate to your spare length");
 				if(player.cockTotal() > 2) outputText("s");
-				outputText(", and soon you are dribbling and dripping from all of your " + multiCockDescriptLight() + ".");
+				outputText(", and soon you are dribbling and dripping from all of your " + game.player.multiCockDescriptLight() + ".");
 			}
 			
 			outputText("\n\nWhile the steady pleasure her mouth and tongue gives you has you feeling very, very good, it isn't quite bringing you towards the orgasm you came here craving.  You suggest she begin to bob up and down on you. \"<i>Cocks need to feel like they're fucking something,</i>\" you ");
@@ -1956,7 +1956,7 @@
 			}
 			//{More than five blowjobs!}
 			else {
-				outputText("\n\nUma valiantly holds herself in place on your " + cockDescript(x) + ", just in time for the flow of your juices to turn white and salty, an inevitable prelude to the coming discharge of your orgasm.  She noisily slurps, emptying her mouth of precum to make room, and in the process, inadvertently provides you with even more impetus to unload.  ");
+				outputText("\n\nUma valiantly holds herself in place on your " + game.player.cockDescript(x) + ", just in time for the flow of your juices to turn white and salty, an inevitable prelude to the coming discharge of your orgasm.  She noisily slurps, emptying her mouth of precum to make room, and in the process, inadvertently provides you with even more impetus to unload.  ");
 				if(player.cumQ() <= 25) outputText("She dutifully swallows every drop of your average-sized load, her long tongue slipping and sliding around your shaft as she ensures it is completely cleaned.");
 				else if(player.cumQ() <= 100) 
 				{
@@ -2035,7 +2035,7 @@
 			outputText("The mare leads you away, out her office and down the corridor, towards the far back of the clinic, equine tail swishing lazily side to side.  You follow closely in her wake, looking forward to her \"special treatment\".\n\n");
 			outputText("The room she leads you to is quite simple; wooden walls and floor, a couple of drains set in the floor that are probably for the more fluid generous clientele, ");
 
-			if (kGAMECLASS.urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
+			if (urta.urtaLove()) outputText("something that makes you wonder if Urta would like to come and take a spin here, ");
 
 			outputText("and a sizable table, made from bamboo; it's covered in a white cloth, and has an upraised headboard with a hole in it that looks like it's big enough to fit your head through.  This is the only piece of furniture in the room, apart from a small cupboard in the corner.  Though spartan in its layout, the room is quite comfortably warm.\n\n");
 			outputText("Uma begins stripping while you watch the older mare's beautifully sculpted body.  You wonder how old she is?  With a body like hers, she could probably pass for Loppe's sister, although she does have a few signs of being more mature.  Rather than making her look less beautiful, they make her even more stunning.  \"<i>Dear?  Hello, dear?</i>\" Uma waves a hand in front of you,  \"<i>Still there, dear?</i>\"  You shake your wandering thoughts out of your head and turn to look at her.  The seductive mare giggles.  \"<i>You should undress.  That is, unless you want your [armorname] to smell like horny mare.</i>\"  You nod in understanding, stripping yourself down and storing your things carefully in the nearby cupboard, beside Uma's own clothing.\n\n");
@@ -2088,4 +2088,3 @@ You think the matter over, and ask what if you volunteered to help Loppe with he
 [Should we move this to its own doc? Give the rest over to Fen to implement?]
 		}*/
 	}
-

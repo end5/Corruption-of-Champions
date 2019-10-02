@@ -8,7 +8,7 @@
   const DUNGEON_FACTORY_PUMP_CONTROL:number		= 7;
   const DUNGEON_FACTORY_STORE_ROOM:number			= 8;
 
-export function get inDungeon():boolean { return dungeonLoc != 0; }
+export function get inDungeon():boolean { return game.dungeonLoc != 0; }
 
  function dungeonMenu():void {
 /*	//Dungeon Choices!
@@ -46,7 +46,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 	}
 	menu();
 	//Entry Room
-	if(dungeonLoc == DUNGEON_FACTORY_FOYER) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_FOYER) {
 		outputText("<b><u>The Factory Foyer</u></b>\nThe door swings shut behind you with an ominous 'creeeeeaaaaaaak' followed by a loud 'SLAM'.  Glancing around, you find yourself in some kind of stylish foyer, complete with works of art and a receptionist's desk.  Looking closer at the paintings on the wall quickly reveals their tainted and demonic nature: One appears at first to be a painting of a beautiful smiling woman, except you notice dripping tentacles coiling around the hem of her dress.  Behind the receptionist's desk, the second painting is even less discreet, openly depicting a number of imps gang-raping a vaguely familiar-looking woman.  Luckily, whatever demon is employed as the receptionist is away at the moment.  Behind the desk on the northern wall stands a secure-looking iron door.  On the eastern wall is a simple wooden door, though the color of the wood itself is far darker and redder than any of the hard woods from your homeland.  Behind you to the south is the rusty iron entry door.", true);
 //		choice1 = 11001;
 //		text1 = "North";
@@ -59,7 +59,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(6, "South", leaveFactory);
 	}
 	//Pump Room
-	if(dungeonLoc == DUNGEON_FACTORY_PUMP_ROOM) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_PUMP_ROOM) {
 		if(player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
 			outputText("<u><b>Pump Room</b></u>\nAs you step through the iron door, a cacophony of thrumming mechanical noise assaults your ears.  Coppery pipes arch overhead, riveted into spiked iron brackets that hang from the ceiling in twisted pairs.  The constant thrum-thrum-thrum of concealed pumps and mechanisms makes it difficult to hear anything, but you swear you can make out the faint sounds of sexual pleasure emanating from the northwest side of the room.  Investigating further, you spot a door along the west wall of the room that appears to be the source of the licentious sounds.  The vibrations of all the machinery are strongest along the east walls, indicating the possible site of this hellish place's power-plant. There is a door on the east wall and a door on the north.  To the south is a solid iron door that leads back to the lobby.", true);
 		}
@@ -78,7 +78,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_FACTORY_FOYER);
 	}
 	//Break Room
-	if(dungeonLoc == DUNGEON_FACTORY_BREAK_ROOM) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_BREAK_ROOM) {
 		spriteSelect(96);
 		outputText("Stepping through the dark red doorway, you wander into an expansive break room. Tables surrounded by crude wooden chairs fill most of the floor space. Along the far eastern wall sits a small counter, complete with a strange ebony sculpture of a busty woman with 'Mrs. Coffee' printed on the side. Below the sculpture is a pot of steaming hot coffee, giving off an invigoratingly rich smell.", true);
 		//Hooks for succubi encounter
@@ -166,7 +166,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		}
 	}
 	//Furnace Room
-	if(dungeonLoc == DUNGEON_FACTORY_FURNACE_ROOM) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_FURNACE_ROOM) {
 		if(player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
 			outputText("<b><u>Furnace Room</u></b>\nThe air inside this room is hot enough to coat your " + player.skinTone + " " + player.skinDesc + " in a fine sheen of sweat.  The eastern side of the chamber is more machine than wall, a solid mass of iron piping covered in small metal blast-doors through which fuel is to be fed.  A small transparent plate is riveted into the wall, allowing you to see some kind of pink crystalline fuel being burned by purple-white fire.  The few visible controls and gauges don't seem to be linked into anything important, and the machinery looks far too durable to damage with what you have.  The only exit is a heavy iron door on the west wall.  ", true);
 		}
@@ -204,7 +204,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		}
 	}
 	//Repair Closet
-	if(dungeonLoc == DUNGEON_FACTORY_REPAIR_CLOSET) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_REPAIR_CLOSET) {
 		outputText("<b><u>Repair Closet</u></b>\nAs you carefully slip inside the room, you note with some relief that it seems to be an empty storage closet. The room is tiny, barely 6' by 8' and almost entirely empty.  The one piece of furniture inside the closet is a simple wooden cabinet, placed against the far wall.  ", true);
 		if (player.findStatusAffect(StatusAffects.BuiltMilker) >= 0)
 			outputText("The shelves are empty.  ", false);
@@ -234,7 +234,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(6, "South", openFactoryDoor);
 	}
 	//Main Chamber
-	if(dungeonLoc == DUNGEON_FACTORY_MAIN_CHAMBER) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_MAIN_CHAMBER) {
 		//Dungeon still operational
 		if(player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
 			outputText("<b><u>Main Chamber</u></b>\nThis cavernous chamber is filled with a cacophony of sexual moans.  Rows of harnesses are spaced evenly throughout this room, nearly all of them filled with delirious-looking humans.  Each is over-endowed with huge breasts and a penis of elephantine proportions.  The source of their delirium hangs down from the ceiling - groups of hoses that end with needles buried deep into the poor 'girls' flesh, pumping them full of demonic chemicals.  Constant sucking and slurping noises emanate from nipple and cock pumps as they keep the victims in a state of near-constant orgasm.  ", true);
@@ -258,7 +258,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(6, "South(Up)", dungeonEnterRoom, DUNGEON_FACTORY_FOREMANS_OFFICE);
 	}
 	//Foreman's Office
-	if(dungeonLoc == DUNGEON_FACTORY_FOREMANS_OFFICE) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_FOREMANS_OFFICE) {
 		outputText("<b><u>Foreman's Office</u></b>\nThis office provides an excellent view of the 'factory floor' through a glass wall along the north side.  Towards the south side of the room is a simple desk with an even simpler chair behind it.  The desk's surface is clear of any paperwork, and only has a small inkwell and quill on top of it.  There are a few statues of women and men posted at the corners of the room.  All are nude and appear to be trapped in mid-orgasm.  You wonder if they're statues or perhaps some kind of perverted petrified art.  The north has a glass door leading back to the factory.  There are two other doors, both made of very solid looking metal.  One is on the east wall and another is on the south, behind the desk.  The one behind the desk is marked 'Premium Storage' (though it appears to be locked).", true);
 		if(player.findStatusAffect(StatusAffects.FactoryOmnibusDefeated) < 0) {
 			spriteSelect(16);
@@ -291,7 +291,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		}
 	}
 	//Pump controll room...
-	if(dungeonLoc == DUNGEON_FACTORY_PUMP_CONTROL) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_PUMP_CONTROL) {
 		//PUMP CONTROL ROOM
 		outputText("<b><u>Pump Control Room</u></b>\n", true);
 		if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
@@ -317,7 +317,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_FACTORY_FOREMANS_OFFICE);
 	}
 	//Premium Products
-	if(dungeonLoc == DUNGEON_FACTORY_STORE_ROOM) {
+	if(game.dungeonLoc == DUNGEON_FACTORY_STORE_ROOM) {
 		outputText("<b><u>Premium Products</u></b>\nThis store room is filled with a few opened crates, meant to store the various substances in the factory.  It looks as if the current overseer has allowed supplies to run low, as there is not much to be gleaned from this meager stash.\n\n", true);
 //		text1 = "North";
 //		choice1 = 11006;
@@ -352,7 +352,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		}
 	}
 	//DUNGEON 2 START: ROOM 10
-	if(dungeonLoc == DUNGEON_CAVE_ENTRANCE) {
+	if(game.dungeonLoc == DUNGEON_CAVE_ENTRANCE) {
 		outputText("<b><u>The Cave Entrance</u></b>\n", true);
 		outputText("The entrance to this cave is far bigger than the cave itself.  It looks to be a totally natural formation.  Outside, to the south, is a veritable jungle of plant-life.  There are massive trees, vines, and ferns everywhere.  The cave grows narrower the further north you go, until it's little more than a claustrophobic tunnel burrowing deep into the earth.", false);
 		
@@ -379,7 +379,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		}
 	}
 	//D2: Tunnel
-	if(dungeonLoc == DUNGEON_CAVE_TUNNEL) {
+	if(game.dungeonLoc == DUNGEON_CAVE_TUNNEL) {
 		outputText("<b><u>Cave Tunnel</u></b>\n", true);
 		outputText("This cave tunnel slants downwards to the north, and upwards to the south.  You can see sunlight and feel a fresh breeze from the latter direction, though the walls and air around you are damp with moisture.  You realize that the floor of this cave is fairly smooth and even, as if some attempt had been made to level it out.  You can see a bricked up wall along the north end of the tunnel.  It has a crudely fashioned wooden door in the center of it.", false);
 //		text7 = "South";
@@ -390,7 +390,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_CAVE_ENTRANCE);
 	}
 	//D2: [GATHERING HALL]
-	if(dungeonLoc == DUNGEON_CAVE_GATHERING_HALL) {
+	if(game.dungeonLoc == DUNGEON_CAVE_GATHERING_HALL) {
 		outputText("<b><u>Gathering Hall</u></b>\n", true);
 		outputText("This room is clearly some kind of dining or gathering hall.  The chamber's shape has been hewn from the surrounding stone, and judging by the visible tool-marks, it wasn't done with a great deal of care.  Two long wooden tables fill out the room.  They're surprisingly well made, though it appears that part of their legs were hacked off with axes to lower their overall height.  You can't help but wonder where they were stolen from.  The tables haven't been cleaned in ages, as evidenced by their many stains and a number of half-rotten bones that still rest on their battered surfaces.  Two rows of crudely crafted chairs flank their better-made brethren, made to accommodate very short beings.", false);
 		//[Imp Mob Fight]
@@ -415,7 +415,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 			addButton(6, "South", dungeonEnterRoom, DUNGEON_CAVE_TUNNEL);
 		}
 	}
-	if(dungeonLoc == DUNGEON_CAVE_FUNGUS_CAVERN) {
+	if(game.dungeonLoc == DUNGEON_CAVE_FUNGUS_CAVERN) {
 		outputText("<b><u>Fungus Cavern</u></b>\n", true);
 		if(flags[kFLAGS.ZETAZ_FUNGUS_ROOM_DEFEATED] == 0) {
 			outputText("This cavern is huge!  Though you can see the edge of a large stalactite to the west, the rest of the cave disappears into darkness beyond twenty or thirty feet away.  The floor is covered in spongy, leaf-shaped fungus.  They're huge, shiny, and purple, and they cover the cavern floor for as far as the illumination will reach.  A strange, sweet smell hangs in the cavern's humid air, probably coming from the copious fungal flora.  At the edge of your vision you can see a humanoid skeleton propped up against a stalagmite.  There's a rapier laying a few feet in front of it, and it still looks as good as new.  What do you do?", false);
@@ -440,7 +440,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(1, "East", dungeonEnterRoom, DUNGEON_CAVE_GATHERING_HALL);
 	}
 	//Vala's bitch room
-	if(dungeonLoc == DUNGEON_CAVE_TORTURE_ROOM) {
+	if(game.dungeonLoc == DUNGEON_CAVE_TORTURE_ROOM) {
 		outputText("<b><u>Filthy Torture Room</u></b>\n", true);
 		outputText("You step into a dank room, outfitted somewhere between a prison cell and a torture chamber. The ceiling of the sulfur-lined room is hung with an inventive variety of shackles, chains, and devices whose intent are not clear to you. Against the north wall, there appears to be an alchemy lab, laden with a dizzying collection of vials, flasks, and beakers. Against the south, there is a long, sinister-looking wooden rack bearing a sequence of progressively larger and thicker devices, carved to resemble monstrous cocks.  ", false);
 		//Vala here?
@@ -491,7 +491,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_CAVE_GATHERING_HALL);
 	}
 	//Backdoor Banditos!
-	if(dungeonLoc == DUNGEON_CAVE_SECRET_TUNNEL) {
+	if(game.dungeonLoc == DUNGEON_CAVE_SECRET_TUNNEL) {
 		outputText("<b><u>Secret Tunnel</u></b>\n", true);
 		outputText("This passage is the least livable area that you've seen out of the entire cave.  The walls and floor are little more than dirt and rocks, and explosions of dust burst from the ceiling with each tentative movement you make.  For a moment, a wave of claustrophobia threatens to rob you of your nerve, but you blink the pervasive particles from your eyes and focus on why you're here.  ", false);
 		//If zetaz not yet defeated
@@ -514,7 +514,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_CAVE_TORTURE_ROOM);
 	}
 	//Zetaz' Lair!
-	if(dungeonLoc == DUNGEON_CAVE_ZETAZ_CHAMBER) {
+	if(game.dungeonLoc == DUNGEON_CAVE_ZETAZ_CHAMBER) {
 		outputText("<b><u>Zetaz's Chambers</u></b>\n", true);
 		outputText("You've stepped into the most lavish room in the entire cave system, and marvel at the difference between this magnificent abode and your own crudely constructed campsite.  The stone walls are covered in stolen tapestries that each look to have been liberated from a unique source.  Judging by the variety of depictions and art styles in this one room, you've barely met a fraction of the races that once inhabited the lands of Mareth.  A pair of bright, smokeless lanterns hang from each wall, lit from within by obviously magical spheres of luminescence.  Various pieces of stolen furniture decorate the room, surrounding a four-post bed decorated with masterfully done carvings of various carnal acts.", false);
 		if(flags[kFLAGS.ZETAZ_DOOR_UNLOCKED] == 0) {
@@ -539,7 +539,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		}
 	}
 	//HELIA DUNGEONNNNNOOOO 1
-	if(dungeonLoc == DUNGEON_HEL_GUARD_HALL) {
+	if(game.dungeonLoc == DUNGEON_HEL_GUARD_HALL) {
 		//ROOM 1: Guard Hall
 		outputText("<b><u>Guard Hall</u></b>\n", true);
 		//Room Description:
@@ -560,7 +560,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(0, "North Door", dungeonEnterRoom, DUNGEON_HEL_STAIR_WELL);
 		addButton(2, "Trapdoor", dungeonEnterRoom, DUNGEON_HEL_WINE_CELLAR);
 	}
-	if(dungeonLoc == DUNGEON_HEL_WINE_CELLAR) {
+	if(game.dungeonLoc == DUNGEON_HEL_WINE_CELLAR) {
 		outputText("<b><u>Wine Cellar</u></b>\n", true);
 		//(Accessed from the Trapdoor button)
 		outputText("You've dropped down into a small underground hidey-hole, with ");
@@ -578,7 +578,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 //		choice3 = 11084;
 		addButton(2, "Climb Up", dungeonEnterRoom, DUNGEON_HEL_GUARD_HALL);
 	}
-	if(dungeonLoc == DUNGEON_HEL_STAIR_WELL) {
+	if(game.dungeonLoc == DUNGEON_HEL_STAIR_WELL) {
 		clearOutput();
 		//Room 3: Stair Well
 		outputText("<b><u>Stair Well</u></b>\n", true);
@@ -626,7 +626,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 			addButton(7, "Go Downstairs", dungeonEnterRoom, DUNGEON_HEL_DUNGEON);
 		}
 	}
-	if(dungeonLoc == DUNGEON_HEL_DUNGEON) {
+	if(game.dungeonLoc == DUNGEON_HEL_DUNGEON) {
 		clearOutput();
 		outputText("<b><u>Dungeon</u></b>\n", true);
 		//(Intro -- Before Fight)
@@ -663,7 +663,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 			addButton(4, "Torture Gear", tortureGear);
 		}
 	}
-	if(dungeonLoc == DUNGEON_HEL_MEZZANINE) {
+	if(game.dungeonLoc == DUNGEON_HEL_MEZZANINE) {
 		clearOutput();
 		outputText("<b><u>Mezzanine</u></b>\n", true);
 		//(Intro; Before Battle)
@@ -687,7 +687,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 			addButton(7, "Downstairs", dungeonEnterRoom, DUNGEON_HEL_STAIR_WELL);
 		}
 	}
-	if(dungeonLoc == DUNGEON_HEL_THRONE_ROOM) {
+	if(game.dungeonLoc == DUNGEON_HEL_THRONE_ROOM) {
 		clearOutput();
 		outputText("<b><u>Throne Room</u></b>\n");
 		//Throne Room Descript (Before Combat!)
@@ -744,7 +744,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 //			}
 		}
 	}
-	if(dungeonLoc == DUNGEON_WITCH_ENTRANCE_GATEWAY) {
+	if(game.dungeonLoc == DUNGEON_WITCH_ENTRANCE_GATEWAY) {
 		clearOutput();
 		outputText("<b><u>Strange Gateway in the Sands</u></b>\n");
 		if(flags[kFLAGS.SANURA_DISABLED] > 0) {
@@ -800,7 +800,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		}
 		addButton(4, "Leave", leaveBoobsDungeon);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_CAVERNOUS_COMMONS) {
+	if(game.dungeonLoc == DUNGEON_WITCH_CAVERNOUS_COMMONS) {
 		clearOutput();
 		outputText("<b><u>Cavernous Commons</u></b>\n");
 		outputText("Dancing lights swirl around the roof of the cavern, twirling around each other in patterns too intricate to follow.  Whatever they are, they're clearly magical, and they lend this place an otherworldly ambience unmatched by anything you've seen.  This huge room reminds you of your village commons in a way - it's clearly a communal area.  There's a water-pump in the northwest corner and a blazing purple bonfire in the center of the chamber, heating the cool underground air.  The ground is dirt, rather than sand, and hard-packed as any road.  Various chairs and benches are set up for witches to relax in.  ");
@@ -831,7 +831,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_WITCH_WEST_WARRENS_MAIN);
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_ENTRANCE_GATEWAY);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_WEST_WARRENS_MAIN) {
+	if(game.dungeonLoc == DUNGEON_WITCH_WEST_WARRENS_MAIN) {
 		clearOutput();
 		outputText("<b><u>West Warrens Main Hall</u></b>\n");
 		outputText("The supernatural illumination so prevalent to the east is present here as well, though in smaller quantity and vastly diminished brightness.  Swirls of bluish-white hue slide along the ceiling in slow, measured motions, a stark contrast to the jubilant dancing of the preceding cavern.  The ceiling is almost twelve feet high in places, with the sides of the east-west passage dipping down the lowest.  The floor is sandstone here, as you would expect in a desert cave, though it is liberally obfuscated with an array of woven rugs.  Sand Witches march by on errands, only pausing to give you disinterested glances.  Most of them bear the signs of pregnancy or have young girls in tow.  Whatever the case, there doesn't seem to be any fight in these women.  Along the north and south walls are small, door-sized openings, draped with heavy curtains that easily muffle any noise.  To the west, the tunnel bores on unimpeded.  However, to the east the cave opens up into a much, much larger chamber.");
@@ -848,7 +848,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_WITCH_WEST_WARRENS_WEST);
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_PREGNANT_LUST_ROOM);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_CHILDRENS_PLAYROOM) {
+	if(game.dungeonLoc == DUNGEON_WITCH_CHILDRENS_PLAYROOM) {
 		clearOutput();
 		outputText("<b><u>West Warrens Eastern Portion North Side (Children's Play Room)</u></b>\n");
 		outputText("Behind the thick curtain is the last thing you would expect to see.  There's nearly a dozen children and three busty, pregnant sand witches watching them.  Toys have been scattered everywhere by the young blonde children.  Their wardens were busy knitting when you intruded, but they glare at you balefully and make shooing gestures.  Unless you had planned to rob children of their toys and beat up pregnant women, there's nothing to be had here.");
@@ -856,7 +856,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 //		choice7 = 11135;
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_WEST_WARRENS_MAIN);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_PREGNANT_LUST_ROOM) {
+	if(game.dungeonLoc == DUNGEON_WITCH_PREGNANT_LUST_ROOM) {
 		clearOutput();
 		outputText("<b><u>West Warrens Eastern Portion South Side (Lust Room)</u></b>\n");
 		outputText("This room is surprisingly large - big enough to hold the " + num2Text(rand(6) + 5) + " heavily pregnant women inside plus perhaps a dozen more.  Like the outer tunnel, this room is lit by magic, though its contents are equally mundane, if a great deal more... interesting.  There's female sex-toys of every variety on almost every surface.  They sit in piles on the floor, they hang from the walls, and there are even some mounted on the wall, to be fucked in place.  Many such toys have multiple shafts and come in shapes from standard to canine to obscenely equine.  All of the witches are presently engaged in coitus with each other or their 'marital aids', but once you enter, they glance at you with hungry, lust-filled eyes.");
@@ -870,7 +870,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 			addButton(2, "FuckWitches", knockUpSomeDoubleStuffedSandWitches);
 		}
 	}
-	if(dungeonLoc == DUNGEON_WITCH_WEST_WARRENS_WEST) {
+	if(game.dungeonLoc == DUNGEON_WITCH_WEST_WARRENS_WEST) {
 		clearOutput();
 		outputText("<b><u>West Warrens Main Hall (Western Portion)</u></b>\n");
 		outputText("The smooth tunnel comes to an end here, blocked by the omnipresent sandstone.  The sapphire light plays beautifully across the rough-hewn stone as you watch, but you don't take the time to give it much thought.  To the east, the arching hallway leads back towards a large common area of a cave.  Along the north and south walls are door-sized openings, blocked with rugs of fine make and thick fabric.  They don't leave enough of a gap for any light or sound to bleed into the hall.  You'll have to take a peek if you want to see what's going on.");
@@ -897,7 +897,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(1, "East", dungeonEnterRoom, DUNGEON_WITCH_WEST_WARRENS_MAIN);
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_PHARMACY);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_NURSERY) {
+	if(game.dungeonLoc == DUNGEON_WITCH_NURSERY) {
 		clearOutput();
 		outputText("<b><u>West Warrens Western Portion North Side (Nursery)</u></b>\n");
 		outputText("As soon as you clear the curtain, you realize there's nothing of interest to you here.  The room is lit with rose pink globes, and the furniture in the room is filled with sleeping mothers, nursing infants, or older children taking naps.  The room is packed with bodies, and while it smells strongly of femininity, there's nothing worth looking into present here.");
@@ -905,7 +905,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 //		choice7 = 11138;
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_WEST_WARRENS_WEST);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_PHARMACY) {
+	if(game.dungeonLoc == DUNGEON_WITCH_PHARMACY) {
 		clearOutput();
 		outputText("<b><u>West Warrens Western Portion South Side (Pharmacy)</u></b>\n");
 		outputText("This room is so tiny it can barely get away with being called that.  If anything, it's more of a small, cozy nook.  There isn't anyone else here, though the room is illuminated by the same omnipresent magics found elsewhere in this little cave of wonders.  Standing silent vigil on the southern wall, a large chest looms over you, stretching most of the way to the ceiling.  It is completely, almost impossibly neat, with every drawer fully and completely closed.  Spurred on by this strangeness, you pop a few of them open.  One drawer has pink pills, another brown.  Searching drawer by drawer until you discover that every single compartment houses the same dual medicines.  You glance about the room and spy a faded parchment on the wall.  It reads \"<i>Tnangerp rof knip, nerrab rof nworb.</i>\"  There is an opening in the wall to the north.");
@@ -925,7 +925,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(2, "Brown Pill", takeBarrenPills);
 		addButton(3, "Pink Pill", takeFertilePills);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_EAST_WARRENS_MAIN) {
+	if(game.dungeonLoc == DUNGEON_WITCH_EAST_WARRENS_MAIN) {
 		clearOutput();
 		outputText("<b><u>Eastern Warrens Main Hall (Western Portion)</u></b>\n");
 		outputText("This smooth, sandstone tunnel proceeds in a perfectly straight line from east to west, as if aligned to some titanic, invisible compass buried below the floor.  Flickering white plumes of illumination undulate through the air along the arched ceiling, trailing streamers of pearl incandescence that light the entire chamber with ghostly brightness.  You are at the entrance to the eastern warrens - the commons are still clearly visible to the west, and the pathway to the east goes on a-ways.  Hand woven tapestries adorn the walls, telling the history of this enclave in pictographic form, from its inception to present day.  Further east, you can see a few empty places, ready to be covered with more cloth, once the next chapter of history is ready to be told.  To the north, there is a small opening in the wall, blocked off by plain white curtains.");
@@ -941,7 +941,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(1, "East", dungeonEnterRoom, DUNGEON_WITCH_EAST_WARRENS_EAST);
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_WITCH_CAVERNOUS_COMMONS);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_SLEEPING_CHAMBER) {
+	if(game.dungeonLoc == DUNGEON_WITCH_SLEEPING_CHAMBER) {
 		clearOutput();
 		outputText("<b><u>Eastern Warrens West Portion North Side (Sleeping Chamber)</u></b>\n");
 		outputText("Inside this expansive but cosy chamber are a few dozen beds, arranged in neat patterns marred only by a few cots that dare to be positioned adjacent to one another.  Clearly this is the tribe's primary sleeping area.  The floor is obscured by heavy, hand-woven rugs that ruffle oh so softly against your [feet].  Instead of the usual ghostly lights you've grown to expect, the interior of this dwelling is lit by glass-paneled constructs resembling lanterns.  There is no fuel or wick of course, only flicking phantasmal illumination trapped as if it were a flame.  Shutters allow the lanterns to be dimmed, but as you are alone in here for now, there's no reason to make it harder to see.  There is a door to the east and a curtained off opening to the south.");
@@ -952,7 +952,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(1, "East", dungeonEnterRoom, DUNGEON_WITCH_BATH_ROOM);
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_EAST_WARRENS_MAIN);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_BATH_ROOM) {
+	if(game.dungeonLoc == DUNGEON_WITCH_BATH_ROOM) {
 		clearOutput();
 		outputText("<b><u>Eastern Warrens East Portion North Side (Bath Room)</u></b>\n");
 		outputText("As soon as you step in, you can smell a sweet, dairy-like scent in the air, but as your eyes adjust to the dimmer lighting, you realize you've stumbled into the sand witches' bathroom!  Fluffy towels hang from the wall, ready for use.  There's one giant tub in the center of the room, recessed deep into the floor.  It has a number of seats carved into the side with a small, open hole in the bottom.  Hanging from the ceiling, a long chain dangles down, topped with a plug.");
@@ -967,7 +967,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 //		choice6 = 11142;
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_WITCH_SLEEPING_CHAMBER);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_EAST_WARRENS_EAST) {
+	if(game.dungeonLoc == DUNGEON_WITCH_EAST_WARRENS_EAST) {
 		clearOutput();
 		outputText("<b><u>Eastern Warrens Main Hall (Eastern Portion)</u></b>\n");
 		outputText("Coming to an end here, the eastern warrens' main hall ends in little more than a bare, flat stone wall.  The area is well illuminated by the familiar magical lights, giving you a good view of the historical tapestries and blank spaces yet to be filled in.  You can't help but wonder if the Witches will simply stop recording their history once this area is full, or if they will expand in order to give themselves more room.  Looking over the events depicted here, it's clear that this enclave is one of the oldest, roughly two decades old.  There are pictures of a blond haired woman in fluttering, golden robes leaving a town of demons behind and journeying towards the desert.  Could that be how the sand witches began?  You shake your head and look over the rest of the room.  There's a curtained off doorway to the south, and of course, the tunnel leads back to the west.");
@@ -982,7 +982,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_WITCH_EAST_WARRENS_MAIN);
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_CUM_WITCH_BEDROOM);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_CUM_WITCH_BEDROOM) {
+	if(game.dungeonLoc == DUNGEON_WITCH_CUM_WITCH_BEDROOM) {
 		clearOutput();
 		outputText("<b><u>Eastern Warrens East Portion South Side (Cum Witch's Bedroom)</u></b>\n");
 		outputText("As soon as you brush back the curtain, you're assaulted by a pungent, salty smell.  It almost reminds you of tepid ocean water... or cum.  Regardless, you force your way in and take a look around.  This area has all the furnishings of a small domicile and comes complete with a solid oak bed and mattress.  The mattress and sheets seem to be cared for with immaculate precision, perhaps magically aided.  There is a simple dresser here, and though it looks to have been fashioned by crude tools, the wood looks sturdy and serviceable.  All of the drawers are closed, of course.  A few books sit on a nearby table, but it's obvious they're written in a language beyond your comprehension.  Whoever wrote them either did so in a different tongue or a magical language that would take years to decipher.  A thick curtain walls this chamber off from the eastern warrens' main hall, to the north.  To the west, there is a thinner, gauzy sheet hanging from an opening in the rock - likely leading to a similar room.");
@@ -993,7 +993,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(0, "North", dungeonEnterRoom, DUNGEON_WITCH_EAST_WARRENS_EAST);
 		addButton(5, "West", dungeonEnterRoom, DUNGEON_WITCH_CUM_WITCH_OFFICE);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_CUM_WITCH_OFFICE) {
+	if(game.dungeonLoc == DUNGEON_WITCH_CUM_WITCH_OFFICE) {
 		clearOutput();
 		outputText("<b><u>Eastern Warrens West Portion South Side (Cum Witch's Office)</u></b>\n");
 		if (flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0) {
@@ -1039,7 +1039,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 //		choice2 = 11145;
 		addButton(1, "East", dungeonEnterRoom, DUNGEON_WITCH_CUM_WITCH_BEDROOM);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_SACRIFICIAL_ALTAR) {
+	if(game.dungeonLoc == DUNGEON_WITCH_SACRIFICIAL_ALTAR) {
 		clearOutput();
 		outputText("<b><u>Sacrificial Altar</u></b>\n");
 		outputText("This chamber clearly holds some kind of important significance to the witch coven.  The floor and walls are covered in shining white, reflective tiles, and a large number of carved jugs ring the outer edge of the room.  The entire place smells faintly of milk.  Sniffing, you close in on the source of the aroma.  It's emanating from what looks like a golden well, positioned dead-center before you.  The various containers also smell faintly of the alabaster treat, and oddly, you can't catch even a single whiff of spoilage; it all smells fresh.  There must be some magic at work.  Peeping over the edge of the well, you can barely make out what seems like a sea of milk stored below: white-capped ivory waves sloshing around in a chamber so large you can't see the walls of it.  It must be preserved through magic.\n\nThere is a doorway to the south and one on the north wall.");
@@ -1050,7 +1050,7 @@ export function get inDungeon():boolean { return dungeonLoc != 0; }
 		addButton(0, "North", dungeonEnterRoom, DUNGEON_WITCH_THRONE_ROOM);
 		addButton(6, "South", dungeonEnterRoom, DUNGEON_WITCH_CAVERNOUS_COMMONS);
 	}
-	if(dungeonLoc == DUNGEON_WITCH_THRONE_ROOM) {
+	if(game.dungeonLoc == DUNGEON_WITCH_THRONE_ROOM) {
 		clearOutput();
 		outputText("<b><u>Sand Mother's Throne</u></b>\n");
 		outputText("This chamber is lit by swirling vortexes of magical colors, each hue dancing around another in coordinated motions.  The walls are made of hewn sandstone inlaid with ivory engravings that appear to depict what must be flowing milk.  Ahead there is a huge, white throne, also made from ivory.  It is a magnificent piece of craftsmanship.  Clearly, you have found the leader's throne room.  There is a robed figure atop it.");
@@ -1086,19 +1086,19 @@ export function enterFactory():void {
 }
 
  function dungeonEnterRoom(room:number):void {
-	dungeonLoc = room;
+	game.dungeonLoc = room;
 	playerMenu();
 }
 
  function actuallyEnterFactory():void {
 //	inDungeon = true;
-	dungeonLoc = DUNGEON_FACTORY_FOYER;
+	game.dungeonLoc = DUNGEON_FACTORY_FOYER;
 	playerMenu();
 }
 
 export function leaveFactory():void {
 //	inDungeon = false;
-	dungeonLoc = 0;
+	game.dungeonLoc = 0;
 	clearOutput();
 	outputText("You slip out the door and disappear, heading back towards your camp, leaving the hellish factory behind.");
 	doNext(camp.returnToCampUseOneHour);
@@ -1309,7 +1309,7 @@ export function secretarialSuccubusInsult():void {
 	}
 	if (player.cocks.length == 1) { //Cock – single
 		if (player.cockArea(0) < 30) {
-			outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(0) + " to full hardness in seconds.  ");
+			outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + game.player.cockDescript(0) + " to full hardness in seconds.  ");
 		}
 		else if (player.cockArea(0) < 100) { //Cock – single big
 			outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ".  ");
@@ -1346,8 +1346,8 @@ export function secretarialSuccubusInsult():void {
 		}
 	}
 	else if (player.vaginas.length > 0)
-		outputText("a vacuum pump to your clit, and a pump many times bigger than your " + cockDescript(0) + " to it.  ");
-	else outputText("and a pump many times bigger than your " + cockDescript(0) + " to it.  ");
+		outputText("a vacuum pump to your clit, and a pump many times bigger than your " + game.player.cockDescript(0) + " to it.  ");
+	else outputText("and a pump many times bigger than your " + game.player.cockDescript(0) + " to it.  ");
 	outputText("At first there is only a gentle suction, you assume in order to keep them in place.  Unfinished, your captor places something large and hollow against your backdoor");
 	if (player.vaginas.length == 0)
 		outputText(".");
@@ -1371,7 +1371,7 @@ export function secretarialSuccubusInsult():void {
 		//else
 		else outputText("the suction and drugs make it so easy to just keep cumming and cumming.  ");
 		//either or:
-		outputText("Dimly, you feel a needle lodged in your taint, pumping your prostate full of something.  Your " + cockDescript(0) + " begins growing mid-orgasm, the skin turning a deep purple even as small nodule-like bumps form all over it, rapidly becoming a bloated parody of its demonic counterparts.  ");
+		outputText("Dimly, you feel a needle lodged in your taint, pumping your prostate full of something.  Your " + game.player.cockDescript(0) + " begins growing mid-orgasm, the skin turning a deep purple even as small nodule-like bumps form all over it, rapidly becoming a bloated parody of its demonic counterparts.  ");
 	}
 	//Puss Orgasmz
 	if (player.vaginas.length > 0) outputText("Clenching tightly, your " + vaginaDescript(0) + " squeezes tightly on its intruder as its repeatedly violated by the machines.  ");
@@ -1403,11 +1403,11 @@ export function succubusLossRape():void {
 			//[[balls]]
 			if(player.ballSize < 6) outputText("Your sultry captor leans low over you, her luscious tits wobbling enticingly as she reaches down and caresses your " + ballsDescriptLight() + " with soft touches.  Almost immediately you feel them clench with boiling heat, growing heavy and churning with a load big enough to satisfy a thirsty succubus.", false); 
 			//[[huge balls]]
-			else outputText("Your sultry captor leans low, marveling at the size of your " + ballsDescriptLight() + " as she reaches down to caress them.  Her tits swing lewdly above you, bouncing in hypnotic motions. Her hands work gently, taking each one of your " + ballsDescriptLight() + " and hefting it gently.  Almost immediately you feel them fill with an unnatural heat that spreads everywhere her slender fingers touch.  They begin to feel full and heavy, practically sloshing as the pent up need inside you is channeled into liquid form.  \"So ripe... and full,\" she whispers to herself as she caresses them, her silken foot still sliding all over your " + cockDescript(0) + ", pumping stroke after stroke of pleasure into your lust-weakened form.", false);
+			else outputText("Your sultry captor leans low, marveling at the size of your " + ballsDescriptLight() + " as she reaches down to caress them.  Her tits swing lewdly above you, bouncing in hypnotic motions. Her hands work gently, taking each one of your " + ballsDescriptLight() + " and hefting it gently.  Almost immediately you feel them fill with an unnatural heat that spreads everywhere her slender fingers touch.  They begin to feel full and heavy, practically sloshing as the pent up need inside you is channeled into liquid form.  \"So ripe... and full,\" she whispers to herself as she caresses them, her silken foot still sliding all over your " + game.player.cockDescript(0) + ", pumping stroke after stroke of pleasure into your lust-weakened form.", false);
 		}
 		else {
 			//[[no balls no pussy]]
-			if(player.vaginas.length == 0) outputText("Your sultry captor leans low over you, her luscious tits wobbling enticingly as she reaches down and caresses the skin between your " + cockDescript(0) + " and " + assholeDescript() + " with a slender finger.  Almost immediately you feel your groin clench with the boiling heat of a growing orgasm, thick cum churning out from your prostate as your body readies a load large enough to satisfy a thirsty succubus.", false);
+			if(player.vaginas.length == 0) outputText("Your sultry captor leans low over you, her luscious tits wobbling enticingly as she reaches down and caresses the skin between your " + game.player.cockDescript(0) + " and " + assholeDescript() + " with a slender finger.  Almost immediately you feel your groin clench with the boiling heat of a growing orgasm, thick cum churning out from your prostate as your body readies a load large enough to satisfy a thirsty succubus.", false);
 			//[[no balls + pussy]]
 			else outputText("Your sultry captor leans low over you, her luscious tits wobbling enticingly as she reaches down and caresses the slick skin of your slit with a single digit.  Other fingers circle your " + clitDescript() + ", teasing it from between the folds as it grows hard, peeking out from the hood and turning cherry-red.  Almost immediately you feel your groin clench with the boiling heat of a growing orgasm, thick cum churning in your prostate as your body readies a load large enough to satisfy a thirsty succubus.", false);
 		}
@@ -1418,13 +1418,13 @@ export function succubusLossRape():void {
 		outputText("She wastes no time, and caresses you again.  You instantly feel another surge of heat and desire as a fresh load of cum brews behind your first strangled orgasm.  You need to cum so bad, her foot still stroking and squeezing you full of perverted desire.  She slaps your ", false);
 		if(player.balls > 0) outputText("balls", false);
 		else outputText("ass", false);
-		outputText(" as she releases your " + cockDescript(0) + ", shouting, \"<i>CUM!  Feed me!</i>\"  You are all too happy to oblige.  ", false);
+		outputText(" as she releases your " + game.player.cockDescript(0) + ", shouting, \"<i>CUM!  Feed me!</i>\"  You are all too happy to oblige.  ", false);
 		//[[normal volume]]
-		if(player.cumQ() < 50) outputText("Freed at last, your body clenches tightly as it squirts the first jet of cum from your " + cockDescript(0) + ".  She smears her foot over the head, catching the cum and using it to lubricate her silken foot as it massages your member with merciless strokes, alternatively catching your spooge and milking more from your obedient maleness.  Your orgasm lasts many times longer than normal as your dual loads feed her demonic hunger.", false); 
+		if(player.cumQ() < 50) outputText("Freed at last, your body clenches tightly as it squirts the first jet of cum from your " + game.player.cockDescript(0) + ".  She smears her foot over the head, catching the cum and using it to lubricate her silken foot as it massages your member with merciless strokes, alternatively catching your spooge and milking more from your obedient maleness.  Your orgasm lasts many times longer than normal as your dual loads feed her demonic hunger.", false); 
 		//[[big volume]]
-		if(player.cumQ() >= 50 && player.cumQ() < 400) outputText("Freed at last, your body clenches tightly as it spurts a big glob of cum onto her waiting sole, soaking the bottom of her foot with slippery male-milk.  She smears her cum-covered foot over every inch of your " + cockDescript(0) + ", making each successive spurt bigger and messier than the last. Somehow she manages to catch more and more of your jizm over her foot, bathing you in cummy silkiness.  You groan helplessly as she milks more and more of from you till her foot is dripping steadily, your own groin and belly soaked with the stuff.  You give a few final exhausted squirts as she languidly rubs it into you.", false);
+		if(player.cumQ() >= 50 && player.cumQ() < 400) outputText("Freed at last, your body clenches tightly as it spurts a big glob of cum onto her waiting sole, soaking the bottom of her foot with slippery male-milk.  She smears her cum-covered foot over every inch of your " + game.player.cockDescript(0) + ", making each successive spurt bigger and messier than the last. Somehow she manages to catch more and more of your jizm over her foot, bathing you in cummy silkiness.  You groan helplessly as she milks more and more of from you till her foot is dripping steadily, your own groin and belly soaked with the stuff.  You give a few final exhausted squirts as she languidly rubs it into you.", false);
 		//[[huge volume]]
-		if(player.cumQ() > 400) outputText("Freed at last, your body clenches powerfully as a massive eruption of cum launches from your " + cockDescript(0) + " onto her waiting foot.  The succubus looks on incredulously as her entire foot is soaked with your sticky whiteness, forgetting to move as the second wave of cum drenches her to the ankle and rains down over your stomach.  She giggles and moves it back to your cock, massaging your slick spooge into your cock with her foot, wringing an even bigger explosion of cum from your tortured body.  Flopping back, she gets her other foot in on the action, milking you between her feet as you soak yourself completely with bigger and bigger eruptions until at last your orgasm begins to wane.  She slides forwards, rubbing against you and smearing the mess over herself with a blissful expression.", false);
+		if(player.cumQ() > 400) outputText("Freed at last, your body clenches powerfully as a massive eruption of cum launches from your " + game.player.cockDescript(0) + " onto her waiting foot.  The succubus looks on incredulously as her entire foot is soaked with your sticky whiteness, forgetting to move as the second wave of cum drenches her to the ankle and rains down over your stomach.  She giggles and moves it back to your cock, massaging your slick spooge into your cock with her foot, wringing an even bigger explosion of cum from your tortured body.  Flopping back, she gets her other foot in on the action, milking you between her feet as you soak yourself completely with bigger and bigger eruptions until at last your orgasm begins to wane.  She slides forwards, rubbing against you and smearing the mess over herself with a blissful expression.", false);
 		outputText("\n\n\"<i>Good boy,</i>\" she croons, mopping the cum up as it seems to wick into her stockings, \"<i>You'll do well once we get you on the line.</i>\"  You don't have time to ponder the significance of that as you lose consciousness.", false);
 		//ONWARD TO BAD-END-IA!
 		player.orgasm();
@@ -1469,26 +1469,26 @@ export function succubusVictoryRape():void {
 		outputText("While pondering the best way to take your horny prize, her complexion begins to change, the marks of combat disappearing from her toned body.  The demonic horns crowning her perfect visage begin withdrawing into her head, and her hair ", false);
 		if(player.hairLength > monster.hairLength) outputText("lengthens", false);
 		else outputText("shortens", false);
-		outputText(", shifting to " + player.hairColor + ".  The bone structures of her cheeks, nose, and face shift ever so slightly, and you suddenly realize you are looking down at a slutty version of yourself!  You aren't sure if it's the growing pool of succubus fluid below you or how hot your female twin is, but your " + cockDescript(0) + " is as hard as a rock.\n\n", false);
-		outputText("Well, you DID decide to rape her, and now you know that you ARE smoking hot.  You shrug and shove your fem-double's legs apart, exposing her glistening fuck-target.  You bend down and bite her nipple as you position yourself at her entrance, allowing her to grasp your " + cockDescript(0) + " and coat it with her slick dark fluids.  It tingles as the tainted cunt-juices wick up into your dick like the oil from a lantern back home. At first it burns painfully, as if badly sunburned, but you adjust to the discomfort and marvel as your skin turns blackish-purple. Midnight-colored nodules sprout along the upper and lower portions of your " + cockDescript(0) + ", perfectly shaped to tease clits.  Just under its head, a ring of larger growths emerge, somewhat pointy, but flexible, rubbery and incredibly sensitive.  Your " + cockDescript(0) + " gets harder and harder as it grows slightly beyond its normal size.  It tugs your groin forwards, practically leaping towards its demonic mate on its own volition.  You cave in and press forwards, parting her folds and submerging your crown in corruptive bliss.\n\n", false); 
+		outputText(", shifting to " + player.hairColor + ".  The bone structures of her cheeks, nose, and face shift ever so slightly, and you suddenly realize you are looking down at a slutty version of yourself!  You aren't sure if it's the growing pool of succubus fluid below you or how hot your female twin is, but your " + game.player.cockDescript(0) + " is as hard as a rock.\n\n", false);
+		outputText("Well, you DID decide to rape her, and now you know that you ARE smoking hot.  You shrug and shove your fem-double's legs apart, exposing her glistening fuck-target.  You bend down and bite her nipple as you position yourself at her entrance, allowing her to grasp your " + game.player.cockDescript(0) + " and coat it with her slick dark fluids.  It tingles as the tainted cunt-juices wick up into your dick like the oil from a lantern back home. At first it burns painfully, as if badly sunburned, but you adjust to the discomfort and marvel as your skin turns blackish-purple. Midnight-colored nodules sprout along the upper and lower portions of your " + game.player.cockDescript(0) + ", perfectly shaped to tease clits.  Just under its head, a ring of larger growths emerge, somewhat pointy, but flexible, rubbery and incredibly sensitive.  Your " + game.player.cockDescript(0) + " gets harder and harder as it grows slightly beyond its normal size.  It tugs your groin forwards, practically leaping towards its demonic mate on its own volition.  You cave in and press forwards, parting her folds and submerging your crown in corruptive bliss.\n\n", false); 
 		//((TOO BIG))
 		if(player.cockArea(0) > monster.vaginalCapacity()) {
 			outputText("But the pleasure is short-lived, as even her altered physiology can't accommodate your massive tool. With a grunt of frustration you yank your hungry demonic cock away from your goal.  She smiles knowingly and massages her breasts, releasing streams of the same black fluid from her tumescent nipples. It coats the valley of her pornstar-sized breasts, allowing the fluid to flow down and pool in her tight little belly button.\n\n", false);
-			outputText("\"<i>This will, like, be even better anyways stud!</i>\" coos a higher pitched you, smashing her tits together wetly for emphasis.  Viscous strings of lubricants form a mesmerizing lattice between her mountainous tits as she puts on a show for you.  Entirely of its own accord, your " + cockDescript(0) + " drags you into her web of corruption, plopping itself firmly into the river of desire that fountains from the peaks on either side. With a steady rhythm, you rock your " + hipDescript() + " back and forwards, plunging into her delicious fuckpillows without abandon. With an inhuman strength, she pushes them together, forcing them to completely encircle your over-sized pole with a tight ring of corruption-dripping tit-flesh.\n\n", false);
+			outputText("\"<i>This will, like, be even better anyways stud!</i>\" coos a higher pitched you, smashing her tits together wetly for emphasis.  Viscous strings of lubricants form a mesmerizing lattice between her mountainous tits as she puts on a show for you.  Entirely of its own accord, your " + game.player.cockDescript(0) + " drags you into her web of corruption, plopping itself firmly into the river of desire that fountains from the peaks on either side. With a steady rhythm, you rock your " + hipDescript() + " back and forwards, plunging into her delicious fuckpillows without abandon. With an inhuman strength, she pushes them together, forcing them to completely encircle your over-sized pole with a tight ring of corruption-dripping tit-flesh.\n\n", false);
 			player.cocks[0].cockType = CockTypesEnum.DEMON;
 			//[normal]
 			if(player.cumQ() < 50) outputText("Droplets of pre begin to escape your cock-slit every time your sensitive nodules pass between your fem-clone's wondrous pleasure-tits.  You fuck harder, no longer caring if it's your choice or your cock's, mashing your purplish head against her lips with every stroke.  The flash-fire of an orgasm sweeps over you, over-engorging the nodules all over your cock and doubling their size.  Your hips resort to tiny rocking motions as you rub your cock-slit into your fem-self's open mouth, blasting thick ropes of tainted black cum into her mouth. Though you quickly empty of cum and collapse onto her, your " + hipDescript() + " continue to fuck like a machine.  All you can do is hang on to your meat and try to stay conscious as your demonic prick feasts on your double.\n\n", false); 
 			//[high]
 			if(player.cumQ() >= 50 && player.cumQ() < 500) {
-				outputText("A steady stream of pre begins to escape your cock-slit, drooling over your double's face and tits as you pound away at her bouncing ring of titflesh.  Every new bump and nodule seems as sensitive as your entire maleness used to be.  Every thrust into the dark wet prison only makes your pre-cum drool faster and your " + cockDescript(0) + "'s new adornments grow fuller and even more tender.  In a flash, the fire of orgasm overwhelms your body's new taint-saturated cock.  Like a kinky 'wave', each nodule from the base to the pointy ring at your crown grows larger as your muscles clench.  ", false);
+				outputText("A steady stream of pre begins to escape your cock-slit, drooling over your double's face and tits as you pound away at her bouncing ring of titflesh.  Every new bump and nodule seems as sensitive as your entire maleness used to be.  Every thrust into the dark wet prison only makes your pre-cum drool faster and your " + game.player.cockDescript(0) + "'s new adornments grow fuller and even more tender.  In a flash, the fire of orgasm overwhelms your body's new taint-saturated cock.  Like a kinky 'wave', each nodule from the base to the pointy ring at your crown grows larger as your muscles clench.  ", false);
 				if(player.balls > 0) outputText("Your " + ballsDescriptLight() + " practically glow with relief as they begin contracting.  Their entire surface is covered with black veins that radiate from your demonic prick, sharing the corruption with your sperm factories.  ", false);  
 				outputText("You throw back your head as the first wave of release pours from your tip, splattering your female clone with inky black cum!  The color startles you for a moment before the next blast moves down your shaft, visibly distending your urethra until it bursts free to coat her hair.  Your hips keep moving of their own accord, massaging the crown-ring with tits during each thrust forwards and accompanying cumshot.  By the fourth load, your double is opening her soaked lips wide and guzzling it down.  By the sixth she's sputtering and coughing as the black sex juice sloughs off her.  By the ninth she's managed to clamp her lips over your cock-tip, and her throat bulges ludicrously with the effort of taking each load.  Thankfully, your orgasm finally winds down.  As the last few globs of inky jism escape from you, you realize your hips are still moving, plunging your massive possessed tool into its new favorite place.  Sighing, you hang onto your endowment and try to stay conscious in spite of your exhaustion and the overwhelming feelings coming from your groin.\n\n", false);
 			}
 			//[ultrahigh]
 			if(player.cumQ() >= 500) {
-				outputText("A river of pre-cum begins pouring from your cock-tip's slit, soaking your slutty double's face and tits as it mixes with the corruptive fluids already smeared about.  The alien bumps and nodules upon your " + cockDescript(0) + " flex and twitch at every pass through the fuck-able foe's soft tits, slowly growing as they absorb more of your slut-self's taint.  The tight squeeze around your newly retextured " + cockDescript(0) + " overwhelms any sense of control you may have had as your arousal-soaked groin takes over completely.  You begin pounding the tit-pussy as if your life depended on it, jack-hammering  your " + cockDescript(0) + " forward and back hard enough to make the mountains of breast ripple and shake like jello during an earthquake.  The ring of pointed nodules around your crown continues to swell and grow with every pass through the inky passage, soaking up more and more of the corruption until they are each nearly two inches long.  Overwhelmed by the pleasure, your eyes roll back and a mighty orgasm comes to boil in your groin.  ", false);
+				outputText("A river of pre-cum begins pouring from your cock-tip's slit, soaking your slutty double's face and tits as it mixes with the corruptive fluids already smeared about.  The alien bumps and nodules upon your " + game.player.cockDescript(0) + " flex and twitch at every pass through the fuck-able foe's soft tits, slowly growing as they absorb more of your slut-self's taint.  The tight squeeze around your newly retextured " + game.player.cockDescript(0) + " overwhelms any sense of control you may have had as your arousal-soaked groin takes over completely.  You begin pounding the tit-pussy as if your life depended on it, jack-hammering  your " + game.player.cockDescript(0) + " forward and back hard enough to make the mountains of breast ripple and shake like jello during an earthquake.  The ring of pointed nodules around your crown continues to swell and grow with every pass through the inky passage, soaking up more and more of the corruption until they are each nearly two inches long.  Overwhelmed by the pleasure, your eyes roll back and a mighty orgasm comes to boil in your groin.  ", false);
 				if(player.balls > 0) outputText("Your " + ballsDescript() + " twitch and shake, the veiny surface of your sack darkening as the corruption begins to fill them.  ", false);
-				outputText("\n\nLike a perverted version of the wave, the nodules along your length fill with blood, doubling in size along your length as a massive bulge of cum rushes out your urethra.  Black cream drizzles from the tiny growths as the first blast of cum passes into your dick's crown moments before erupting like a volcano.  One second the sexy female version of you is moaning like a whore and licking her lips. The next she is sputtering and gasping as a half-gallon of inky black cum soaks her from head to tits.  Heedless of her discomfort, your legs keep sawing your " + cockDescript(0) + " deeper into this perfect titfuck as more thick bulges of tainted spunk begin to stretch your urethra on their way out.  You babble incoherently as your cock's tip plants itself against her open lips, blasting even more spunk directly into her waiting gullet.  Her cheeks bulge comically as the stuff drips from her nose, but somehow she manages to swallow the bulk of it, her hands vigorously milking your " + cockDescript(0) + " with her fuck-bags.  By the time the third jet of cum erupts, she's unhinged her jaw and somehow taken the head into her mouth, giving unfettered access to pump her belly full of your black jism.  You groan with uncontrollable pleasure as her belly fills with spunk.  Her eyes roll back as the next blasts expand her belly further, at first making her look slightly pregnant and then gradually stretching her belly until she looks like she could have minotaur twins.  You lose count of how much cum you put into her, but eventually she can take no more and your cock is pushed free by the pressure, splattering her face again.  Far from finished, you blast cum over her face as you realize she's lost consciousness; her eyes are totally rolled back and her tongue lolls from her mouth like that of a sleeping bitch.  Eventually your orgasm winds down, but not before leaving her in a 4 inch deep puddle of spunk, looking like more like a blue balloon full of dark water than woman.\n\n", false); 
+				outputText("\n\nLike a perverted version of the wave, the nodules along your length fill with blood, doubling in size along your length as a massive bulge of cum rushes out your urethra.  Black cream drizzles from the tiny growths as the first blast of cum passes into your dick's crown moments before erupting like a volcano.  One second the sexy female version of you is moaning like a whore and licking her lips. The next she is sputtering and gasping as a half-gallon of inky black cum soaks her from head to tits.  Heedless of her discomfort, your legs keep sawing your " + game.player.cockDescript(0) + " deeper into this perfect titfuck as more thick bulges of tainted spunk begin to stretch your urethra on their way out.  You babble incoherently as your cock's tip plants itself against her open lips, blasting even more spunk directly into her waiting gullet.  Her cheeks bulge comically as the stuff drips from her nose, but somehow she manages to swallow the bulk of it, her hands vigorously milking your " + game.player.cockDescript(0) + " with her fuck-bags.  By the time the third jet of cum erupts, she's unhinged her jaw and somehow taken the head into her mouth, giving unfettered access to pump her belly full of your black jism.  You groan with uncontrollable pleasure as her belly fills with spunk.  Her eyes roll back as the next blasts expand her belly further, at first making her look slightly pregnant and then gradually stretching her belly until she looks like she could have minotaur twins.  You lose count of how much cum you put into her, but eventually she can take no more and your cock is pushed free by the pressure, splattering her face again.  Far from finished, you blast cum over her face as you realize she's lost consciousness; her eyes are totally rolled back and her tongue lolls from her mouth like that of a sleeping bitch.  Eventually your orgasm winds down, but not before leaving her in a 4 inch deep puddle of spunk, looking like more like a blue balloon full of dark water than woman.\n\n", false); 
 			}
 			outputText("Still, your possessed maleness is far from finished as it continues to slide along her belly and between her still-dripping tits, and before long you feel another orgasm building.  You hang on for dear life, hoping just to stay conscious through the ordeal...\n\n\nHours later you pull away, sated.  For now.", false);
 		}
@@ -1504,15 +1504,15 @@ export function succubusVictoryRape():void {
 			outputText("The succubus bucks her hips weakly, still clearly defeated, but egging on your orgasm as dark fluids squelch free from her quim.  \"<i>Please... can't you see how hot you're making me?  I've made your cock perfect, so please make me cum!</i>\" she begs as she quivers with delight.  ", false);  
 			outputText("You pause to think about it, not noticing that your groin is pounding away with furious energy, splattering cum and pre over her thighs as your new cock's instincts take control from your waist down.  Gasping with sudden pleasure, you feel a flash of heat pass through your tainted meatstick as an orgasm builds.", false);
 			//New PG
-			outputText("Each of the new bumps and rounded spines of your " + cockDescript(0) + " flood with blood, doubling in size as orgasm overtakes you.  ", false);
-			outputText("Your hips bury your entire length inside her, acting on their own as your " + cockDescript(0) + " clenches, pouring more and more spunk inside her", false);
+			outputText("Each of the new bumps and rounded spines of your " + game.player.cockDescript(0) + " flood with blood, doubling in size as orgasm overtakes you.  ", false);
+			outputText("Your hips bury your entire length inside her, acting on their own as your " + game.player.cockDescript(0) + " clenches, pouring more and more spunk inside her", false);
 			if(player.balls > 0) outputText(" as your balls empty their load queue", false);
 			outputText(".  ", false);
 			//Big cum
 			if(player.cumQ() >= 50 && player.cumQ() < 400) outputText("You inhale as black cum spatters from her entrance, her belly distending slightly as you empty what feels like a gallon inside her.  ", false);
 			//((Ginormohuge)) 
 			if(player.cumQ() >= 400) outputText("Gasping in pleasure and surprise, you marvel as her belly visibly expands with each eruption of your dark load.  At first it looks like a tiny belly, but by the time the orgasm finishes, your girlish double looks like a woman in her ninth month of pregnancy – with twins.", false);
-			outputText("\n\nYou pant with exertion and pull back, only to have your " + cockDescript(0) + " plunge right back in. Beginning another rough fucking session, your hips force-fuck her beyond your control.  Exhausted, you lean over her, figuring you may as well enjoy your double's wondrous breasts until your demonic cock has finally sated itself.  You just hope you don't black out from the waves of pleasure each of your new nubs radiates.\n\n\nHours later you pull away, sated.  For now.", false); 
+			outputText("\n\nYou pant with exertion and pull back, only to have your " + game.player.cockDescript(0) + " plunge right back in. Beginning another rough fucking session, your hips force-fuck her beyond your control.  Exhausted, you lean over her, figuring you may as well enjoy your double's wondrous breasts until your demonic cock has finally sated itself.  You just hope you don't black out from the waves of pleasure each of your new nubs radiates.\n\n\nHours later you pull away, sated.  For now.", false); 
 		}
 		outputText("\n\nThe succubus licks her fingers clean, looking totally recovered.  In the blink of an eye, she dashes out the door, disappearing.", false);
 		player.orgasm();
@@ -1554,7 +1554,7 @@ export function dungeonSuccubusForceFeed():void {
 	if(player.biggestTitSize() > 6) outputText(", nearly smothering the succubus with the swell of tit-flesh", false);
 	outputText(".  You jiggle back and forth, lining up a " + nippleDescript(0) + " with the demon's parted lips.  You press your weight down threateningly, making it clear you could suffocate her with a boob.\n\n", false);  
 	outputText("\"<i>Drink up bitch, these tits are full!</i>\" you command.\n\n", false);
-	outputText("The succubus tentatively takes a " + nippleDescript(0) + " into her mouth, sighing at the tangy taste of your sweat-drenched skin.  Her lips gently suckle, wrapping around the perky hardening nub as it fills with arousal and milk.  You feel something let go inside your " + breastDescript(0) + " and the succubus smiles, now working to free more of your trapped cream.\n\n", false);
+	outputText("The succubus tentatively takes a " + nippleDescript(0) + " into her mouth, sighing at the tangy taste of your sweat-drenched skin.  Her lips gently suckle, wrapping around the perky hardening nub as it fills with arousal and milk.  You feel something let go inside your " + game.player.breastDescript(0) + " and the succubus smiles, now working to free more of your trapped cream.\n\n", false);
 	if(player.biggestLactation() < 2) outputText("Her flexible tongue easily curls around one of your " + nippleDescript(0) + "'s, letting her pull and tug on it as she increases the suction from her lips.  Your body rewards her efforts with a faster flow of milk that she sucks down as if she were starving.\n\n", false); 
 	if(player.biggestLactation() >= 2 && player.biggestLactation() < 3) {
 		outputText("Her flexible tongue wraps around your milk-engorged nipple, pulling it tightly as she increases the suction of her lips.  Your body wastes no time rewarding her and she begins gulping down a steady supply of your breastmilk with a pleased expression on her face. You muse to yourself that perhaps succubi are masochists as breast-milk runs freely from your un-milked ", false);
@@ -1618,8 +1618,8 @@ export function dungeonSuccubusForceFeed():void {
 		clearOutput();
 		outputText("The door is locked with a key that is not in your possession.");
 	}
-	else dungeonLoc = 1;
-	dungeonEnterRoom(dungeonLoc);
+	else game.dungeonLoc = 1;
+	dungeonEnterRoom(game.dungeonLoc);
 }
 
  function takeCockMilker():void {
@@ -1719,7 +1719,7 @@ export function incubusLossRape():void {
 		if(player.vaginas.length > 0) outputText("squeezing your legs around them and grinding your " + clitDescript() + " against the oddly textured demon-cock.", false);
 		else {
 			if(player.balls > 0) outputText("grinding down against the ribbed and textured demonic cock as it slides between your " + ballsDescriptLight() + ".", false);
-			else if(player.cocks.length > 0) outputText("squeezing your legs around the thick demonic flesh as a steady dribble of pre-cum drips from your " + cockDescript(0) + ".", false);
+			else if(player.cocks.length > 0) outputText("squeezing your legs around the thick demonic flesh as a steady dribble of pre-cum drips from your " + game.player.cockDescript(0) + ".", false);
 			if(player.gender == 0) outputText("grinding suggestively on your captor's rods, barely noticing as the last of your " + player.armorName + " falls away.", false);
 		}
 		outputText("\n\n", false);
@@ -1753,12 +1753,12 @@ export function incubusLossRape():void {
 		//Male/Genderless
 		else {
 			outputText("The incubus at last decides to tend to your over-aroused body and pulls you off the ground with his tentacles, suspending you in mid-air.  You feel your " + player.legs() + " lifted and pulled tight as countless demonic cocks encircle your body, binding and constraining you further.  You whimper as a demonic tentacle probes your back door, slathering your " + assholeDescript() + " with a nubby cock-head as it slowly presses forward and fills you with incredible tainted warmth.  Each nub and ridge that grinds past your sphincter bumps against the organs in your backdoor and fills you with pleasure that only increases as more of the demonic pre-cum is wicked into your body.  The gasp you started fades into a soft croon of pleasure before being muffled entirely by another thick prick.  The shaft belonging to the dick in your mouth curls around your neck like the collar a pet or submissive slut would wear.", false);
-			if(player.cocks.length > 0) outputText("  As your body's orifices fill with more and more dripping demonic dick-flesh, your " + cockDescript(0) + " becomes painfully hard.  Another tentacle wastes no time in wrapping itself tightly around the base like a cock-ring.  The rest of the demon's prehensile tool slides along your shaft, curling around to squeeze and jerk you off.", false);
-			if(player.balls > 0) outputText("  You groan around the dick plugging your throat as another tentacle-like appendage wraps around your " + sackDescript() + ", pulling your " + ballsDescriptLight() + " down and gently squeezing them.", false);
+			if(player.cocks.length > 0) outputText("  As your body's orifices fill with more and more dripping demonic dick-flesh, your " + game.player.cockDescript(0) + " becomes painfully hard.  Another tentacle wastes no time in wrapping itself tightly around the base like a cock-ring.  The rest of the demon's prehensile tool slides along your shaft, curling around to squeeze and jerk you off.", false);
+			if(player.balls > 0) outputText("  You groan around the dick plugging your throat as another tentacle-like appendage wraps around your " + sackDescript(player) + ", pulling your " + ballsDescriptLight() + " down and gently squeezing them.", false);
 			outputText("\n\n", false);
 			//Genderless Orgasm
 			if(player.gender == 0) outputText("The tainted cum mixed with the sensation of fullness provide you with pleasures beyond what your genderless body could accomplish on its own.  You writhe as the demon face-fucks you with one tendril while another continues to bury itself ever-deeper into your abused " + assholeDescript() + ".  ", false);
-			if(player.cocks.length > 0) outputText("The cock-tentacle around your " + cockDescript(0) + "  increases the pace of its stimulation as it begins to spurt hot wet cum over you, giving it lubrication as it jacks you off while staying tight around your base to prevent you from an orgasming.  ", false);
+			if(player.cocks.length > 0) outputText("The cock-tentacle around your " + game.player.cockDescript(0) + "  increases the pace of its stimulation as it begins to spurt hot wet cum over you, giving it lubrication as it jacks you off while staying tight around your base to prevent you from an orgasming.  ", false);
 			outputText("You feel cum pulse through the tentacles encircling you as the incubus loses control of his tentacles.  Cum pumps into your belly, suffusing you with drug-like warmth as the tentacle around your neck pulls tight enough to squeeze the cock inside your throat.  You squirm and gasp for oxygen as spooge begins unloading into and around your body to the point where you aren't sure where your body begins and the demonic-spunk ends.  You twitch in what you assume is orgasm as you fight to breathe; all the while more cum is squeezed into your stuffed belly and ruined anus. The tentacle in your ass backs out slowly, having filled every inch of your intestines with cum, until it pops free with a splatter.", false);
 			outputText("\n\n", false);
 			if(player.cocks.length > 0) {
@@ -1771,7 +1771,7 @@ export function incubusLossRape():void {
 				//Big cum
 				if(player.cumQ() >= 50 && player.cumQ() < 400) outputText("Your orgasm goes off like a shotgun blast, splattering the incubus with a huge wad of cum.  It's but the first of many, and though each load of jizz is of comparable size, the force behind them diminishes until the last few blasts drip down your body and soak your " + player.legs() + " and " + player.feet() + ".  ", false);
 				//Huge cum
-				if(player.cumQ() >= 400) outputText("Your orgasm goes off like a volcano, visibly distending your " + cockDescript(0) + " as a huge wave of cum erupts from your groin, painting the incubus and floor with your spoo.  You cry from the sheer pleasure as the next wave builds and erupts, nearly as large as the last.  The demon-cock controlling your prick aims this blast up, forcing you to soak your " + hairDescript() + " and face with slick goo. The orgasming drags on and on while you slowly turn blue from oxygen deprivation. Before long, both you and the incubus are buried under a wave of white.  ", false);
+				if(player.cumQ() >= 400) outputText("Your orgasm goes off like a volcano, visibly distending your " + game.player.cockDescript(0) + " as a huge wave of cum erupts from your groin, painting the incubus and floor with your spoo.  You cry from the sheer pleasure as the next wave builds and erupts, nearly as large as the last.  The demon-cock controlling your prick aims this blast up, forcing you to soak your " + hairDescript() + " and face with slick goo. The orgasming drags on and on while you slowly turn blue from oxygen deprivation. Before long, both you and the incubus are buried under a wave of white.  ", false);
 			}
 			outputText("The feeling is so intense that your " + hipDescript() + " twitch and move of their own volition while your eyes roll back in pleasure.\n\n", false);
 			outputText("You black out just as you feel the cock-tentacle in your throat retracting. You dully feel your body drop to the ground, your pregnant-looking belly sloshing with demon jizz.", false);
@@ -1813,7 +1813,7 @@ export function incubusVictoryRapeSex():void {
 			else outputText(player.multiCockDescriptLight(), false);
 		}
 		outputText(".  Having resolved to take the demon's backdoor, you approach his weakened form with brimming confidence.  He looks up, clearly hoping your plan is to squat on his throbbing member.  You dispel his misguided notion when you grab him by the horns and shove his face against the floor. He struggles weakly until you press down harder, making it clear he is to stay in position - on his knees with his head down and his ass in the air.  Circling your prey, you inspect his flawless body and carefully note that the hole at his crotch actually exposes a fair portion of his very supple and surprisingly feminine-looking backside.\n\n", false);
-		outputText("You don't waste any time, gripping your " + cockDescript(0) + " in one hand and ", false);
+		outputText("You don't waste any time, gripping your " + game.player.cockDescript(0) + " in one hand and ", false);
 		if(player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("pressing your thick flare ", false);
 		if(player.cocks[0].cockType == CockTypesEnum.DOG) outputText("pressing your pointed tip ", false);
 		if(player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType.Index > 2) outputText("pressing your head ", false);
@@ -1825,13 +1825,13 @@ export function incubusVictoryRapeSex():void {
 		outputText("\n\n", false);
 		//(CUM)  
 		if(player.balls > 0) outputText("You feel your " + ballsDescriptLight() + " draw up tight against your body.  ", false);
-		outputText("Warm heat begins to build inside your groin, pooling under the base of your " + cockDescript(0) + ".  You realize you're about to paint this demon's gut with white, the thought only turning you on more.  ", false);
+		outputText("Warm heat begins to build inside your groin, pooling under the base of your " + game.player.cockDescript(0) + ".  You realize you're about to paint this demon's gut with white, the thought only turning you on more.  ", false);
 		if(player.cumQ() > 200) outputText("You groan as you feel your urethra being stretched by the sheer volume of fluid beginning to shoot through it.  ", false);
 		outputText("You throw back your head and cum, slapping the incubus' ass with one hand while you grip and squeeze the jiggling flesh of his other cheek.  ", false);
 		if(player.cumQ() < 50) outputText("A few thick spurts later and y", false);
 		if(player.cumQ() >= 50 && player.cumQ() < 400) outputText("Thick jets of cum pump into the demon's plump backside, soon building up a wave of pressure that pushes back against you.  Y", false);
 		if(player.cumQ() >= 400) outputText("A massive cock-distending bulge of cum works through your shaft, splashing into the demon's rectum in an explosive burst of pleasure. Unfortunately for your victim, it is only the first of many such cum-blasts. In no time flat, jism is spurting from his overfilled rectum while his belly looks a few months pregnant. You feel weak from discharging so much fluid, and y", false);
-		outputText("ou fall back, the fluid of your orgasm dripping from your " + cockDescript(0) + " and the gaping asshole of your latest conquest.\n\nYou turn to gather your " + player.armorName + ", and when you look back the demon is gone, leaving only a small puddle of male fluids in his wake.", false);
+		outputText("ou fall back, the fluid of your orgasm dripping from your " + game.player.cockDescript(0) + " and the gaping asshole of your latest conquest.\n\nYou turn to gather your " + player.armorName + ", and when you look back the demon is gone, leaving only a small puddle of male fluids in his wake.", false);
 		player.orgasm();
 		cleanupAfterCombat();
 		return;
@@ -1941,16 +1941,16 @@ export function omnibusVictoryEvent():void {
 	//Multiple Rows...
 	else {
 		//Top row + 3, all other rows brought up to par.
-		outputText("Your top " + breastDescript(0) + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 4 cup sizes!</b>  ");
+		outputText("Your top " + game.player.breastDescript(0) + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 4 cup sizes!</b>  ");
 		player.breastRows[0].breastRating += 4;
-		outputText("The next row of " + breastDescript(1) + " jiggle and tingle with even more pleasure than the first.  They pulsate for a few seconds, shrinking and growing rapidly until they settle at a size just below your top " + breastDescript(0) + ".  ");
+		outputText("The next row of " + game.player.breastDescript(1) + " jiggle and tingle with even more pleasure than the first.  They pulsate for a few seconds, shrinking and growing rapidly until they settle at a size just below your top " + game.player.breastDescript(0) + ".  ");
 		player.breastRows[1].breastRating = player.breastRows[0].breastRating - 1;
 		if (player.breastRows.length >= 3) {
-			outputText("Your third group of " + breastDescript(2) + " seem to follow their sister's example, tingling briefly before settling at a size just below the breasts above.  ", false);
+			outputText("Your third group of " + game.player.breastDescript(2) + " seem to follow their sister's example, tingling briefly before settling at a size just below the breasts above.  ", false);
 			player.breastRows[2].breastRating = player.breastRows[1].breastRating - 1;
 		}
 		if (player.breastRows.length >= 4) {
-			outputText("Your remaining " + breastDescript(3) + " feel so wonderful that you just can't resist cupping and squeezing them as they reshape to fit in perfectly with the rest of your breasts.  ");
+			outputText("Your remaining " + game.player.breastDescript(3) + " feel so wonderful that you just can't resist cupping and squeezing them as they reshape to fit in perfectly with the rest of your breasts.  ");
 			player.breastRows[3].breastRating = player.breastRows[2].breastRating - 1;
 			if (player.breastRows.length == 5) player.breastRows[4].breastRating = player.breastRows[3].breastRating - 1;
 		}
@@ -1980,18 +1980,18 @@ export function omnibusVictoryEvent():void {
 	}
 	if (player.cocks.length == 1) {
 		if (player.demonCocks() < 1) {
-			outputText("You smile, watching your " + cockDescript(0) + " grow longer.  Inches of newfound dick-flesh erupt from your crotch in response to omnibus' dark magics.  Before you can play with your transformed tool, a wave of burning desire passes through you.  ");
-			if (player.cor < 80) outputText("You watch in horror as the skin of your " + cockDescript(0) + " turns shiny and purplish-black.  ");
-			else outputText("Curious, you watch the skin of your " + cockDescript(0) + " turn a shiny-dark purple.  ");
+			outputText("You smile, watching your " + game.player.cockDescript(0) + " grow longer.  Inches of newfound dick-flesh erupt from your crotch in response to omnibus' dark magics.  Before you can play with your transformed tool, a wave of burning desire passes through you.  ");
+			if (player.cor < 80) outputText("You watch in horror as the skin of your " + game.player.cockDescript(0) + " turns shiny and purplish-black.  ");
+			else outputText("Curious, you watch the skin of your " + game.player.cockDescript(0) + " turn a shiny-dark purple.  ");
 			player.cocks[0].cockLength += 3 + rand(5);
 			player.cocks[0].thickenCock(2);
 			player.cocks[0].cockType = CockTypesEnum.DEMON;
 			if (player.cor < 50)
-				outputText("Corrupt nodules begin to spring up over its entire length.  <b>Your penis is transforming into a " + cockDescript(0) + "!<\b>  The new nubs wriggle about as they sprout over every inch of surface, save for the head.  Unable to do anything but groan with forced pleasure and horror, you can only watch.  One last batch of nodules forms in a ring around the crown of your " + cockDescript(0) + ", seemingly completing its transformation, until you notice, almost throwing up, that your testicles are also getting covered in black veins under your powerless eyes!  ");
-			else outputText("As you watch expectantly, tiny wriggling nodules begin to erupt from the purplish skin, like those magnificent cocks you saw on demons!  <b>Your penis is transforming into a " + cockDescript(0) + "!<\b>  You pant and moan in happiness as it lengthens one last time.  As you stroke all of its amazing length with both hands, the excitement of possessing such a beautiful pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your " + cockDescript(0) + "'s crown, you notice that the squirts getting out of your cock-slit are not completely white and gradually become darker, the last drops being pitch-black! Your new " + cockDescript(0) + " pulsates darkly with each beat of your heart, but the thick, throbbing veins that are finishing to cover your testicles do not contain blood, but a black liquid which apparently has perverted them. You ponder what its purpose might be, but then you decide, as you stroke the huge, dark, bumpy shaft, that if this feels as good as this looks, it doesn't really matter.  ");
+				outputText("Corrupt nodules begin to spring up over its entire length.  <b>Your penis is transforming into a " + game.player.cockDescript(0) + "!<\b>  The new nubs wriggle about as they sprout over every inch of surface, save for the head.  Unable to do anything but groan with forced pleasure and horror, you can only watch.  One last batch of nodules forms in a ring around the crown of your " + game.player.cockDescript(0) + ", seemingly completing its transformation, until you notice, almost throwing up, that your testicles are also getting covered in black veins under your powerless eyes!  ");
+			else outputText("As you watch expectantly, tiny wriggling nodules begin to erupt from the purplish skin, like those magnificent cocks you saw on demons!  <b>Your penis is transforming into a " + game.player.cockDescript(0) + "!<\b>  You pant and moan in happiness as it lengthens one last time.  As you stroke all of its amazing length with both hands, the excitement of possessing such a beautiful pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your " + game.player.cockDescript(0) + "'s crown, you notice that the squirts getting out of your cock-slit are not completely white and gradually become darker, the last drops being pitch-black! Your new " + game.player.cockDescript(0) + " pulsates darkly with each beat of your heart, but the thick, throbbing veins that are finishing to cover your testicles do not contain blood, but a black liquid which apparently has perverted them. You ponder what its purpose might be, but then you decide, as you stroke the huge, dark, bumpy shaft, that if this feels as good as this looks, it doesn't really matter.  ");
 		}
 		else {
-			outputText("Your " + cockDescript(0) + " leaps forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + cockDescript(0) + " gets longer and thicker.  It pulsates, as if promising dark pleasure as it settles into its new enhanced size.");
+			outputText("Your " + game.player.cockDescript(0) + " leaps forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + game.player.cockDescript(0) + " gets longer and thicker.  It pulsates, as if promising dark pleasure as it settles into its new enhanced size.");
 			player.cocks[0].cockLength += 6 + rand(10);
 			player.cocks[0].thickenCock(3);				
 		}
@@ -2109,7 +2109,7 @@ export function omnibusVictoryEvent():void {
 	outputText("You feel a strange shivering sensation pass through you.  ");
 	//Remove multiple.
 	if (player.cocks.length > 1) {
-		outputText("Your " + player.multiCockDescriptLight() + " shiver and retract back towards your body.  When the process finishes you are left with only your " + cockDescript(0) + ".  ");
+		outputText("Your " + player.multiCockDescriptLight() + " shiver and retract back towards your body.  When the process finishes you are left with only your " + game.player.cockDescript(0) + ".  ");
 		player.removeCock(1, player.cocks.length - 1);
 		genderCheck();
 		changed = true;
@@ -2117,24 +2117,24 @@ export function omnibusVictoryEvent():void {
 	//Super long nerf
 	if (player.hasCock()) {
 		if (player.cocks[0].cockLength > 12) {
-			outputText("A tingling sensation worms through your " + cockDescript(0) + " as it shrinks down to a more modest eleven inches.  ");
+			outputText("A tingling sensation worms through your " + game.player.cockDescript(0) + " as it shrinks down to a more modest eleven inches.  ");
 			player.cocks[0].cockLength = 11;
 			changed = true;
 		}
 		//Super thick nerf
 		if (player.cocks[0].cockThickness > 2) {
-			outputText("Your " + cockDescript(0) + "'s obscene thickness withers down to roughly two inches of girth.  ");
+			outputText("Your " + game.player.cockDescript(0) + "'s obscene thickness withers down to roughly two inches of girth.  ");
 			player.cocks[0].cockThickness = 2;
 			changed = true;
 		}
 		//Humanitize
 		//If demon cocked....
 		if (player.cocks[0].cockType == CockTypesEnum.DEMON) {
-			outputText("Your " + cockDescript(0) + " tingles as the bumps begin to fade.  After a moment the flesh darkens, and every single nodule reappears.  <b>Your corrupt penis resisted the magic!</b>  ");
+			outputText("Your " + game.player.cockDescript(0) + " tingles as the bumps begin to fade.  After a moment the flesh darkens, and every single nodule reappears.  <b>Your corrupt penis resisted the magic!</b>  ");
 			changed = true;
 		}
 		else if (player.cocks[0].cockType != CockTypesEnum.HUMAN) {
-			outputText("The inhuman appearance of your " + cockDescript(0) + " shifts, the flesh rearranging itself into a more human configuration.  After a few seconds you have a very normal looking penis.  ");
+			outputText("The inhuman appearance of your " + game.player.cockDescript(0) + " shifts, the flesh rearranging itself into a more human configuration.  After a few seconds you have a very normal looking penis.  ");
 			player.cocks[0].cockType = CockTypesEnum.HUMAN;
 			changed = true;
 		}
@@ -2275,8 +2275,8 @@ export function omnibusLossRape2():void {
 		if(player.cor < 33) outputText("sweet ", false);
 		if(player.cor >= 66) outputText("tainted ", false);
 		outputText("sexual energies deep into its gullet.  And that's just the start!</i>\"  Her hands let go of the squirming mass, dropping it squarely into your lap.\n\n", false);
-		if(player.averageCockLength() < 15) outputText("With one swift motion, the beast engulfs your " + cockDescript(0) + " in its slimy maw.  ", false);
-		else outputText("Distending obscenely, the beast starts engulfing your " + cockDescript(0) + " in its slimy maw, progressing along its entire length until you can no longer see your pleasure tool.  ", false);		
+		if(player.averageCockLength() < 15) outputText("With one swift motion, the beast engulfs your " + game.player.cockDescript(0) + " in its slimy maw.  ", false);
+		else outputText("Distending obscenely, the beast starts engulfing your " + game.player.cockDescript(0) + " in its slimy maw, progressing along its entire length until you can no longer see your pleasure tool.  ", false);		
 		outputText("The slimy tentacles waste no time, massaging you with mechanical precision.  You groan in helpless pleasure, growing to painful hardness within the squirming confines of the creature.  Three protrusions sprout from the creature's core, dripping with slime of their own, and covered on the inside with the same wriggling protrusions that now massage your trapped member.  Two curl around your " + hipDescript() + ", while the last one", false);
 		if(player.balls > 0) outputText(" smothers your balls, entrapping them in sticky sensation as it continues across your taint between your butt-cheeks.  ", false);
 		else outputText(" journeys over your taint before travelling between your butt-cheeks.  ", false);
@@ -2284,9 +2284,9 @@ export function omnibusLossRape2():void {
 		outputText("You try to endure, but the humiliation is too much for you to take.  The pleasure and shame push you past your limit.  You let out a squeal of mixed agony and delight as the proof of your pleasure boils out into the creature.  You pant and twitch, helpless to resist the strength of your orgasm as your jism fills the creature, distorting it visibly around your member.  Sighing, you relax as the assault winds down, the squirming tentacles relaxing noticeably as they work to digest their 'meal'.\n\n", false);
 		outputText("\"<i>Enjoy yourself?  The best part is about to start,</i>\" she says with an evil glint in her eye.  You sit bolt upright as your living thong squirms and shifts, pressing something rigid against the ring of your " + assholeDescript() + ".  You reach down, trying to pull the creature off, but its outer covering is surprisingly hard, and seals almost perfectly against your " + player.skinDesc + ".  You look up with terror in your eyes, a pleading look painted across your face.\n\n", false);
 		outputText("She cocks her head to the side with an inquisitive look and asks, \"<i>So it's found your back door I take it?</i>\"  You nod sheepishly, squealing as the rigid growth pushes through your sphincter, violating you completely.  She continues with a nonchalant tone, though her eyes seem to be drinking in the scene, \"<i>That thing you feel drilling into your ass?  It's a carefully evolved injection appendage.  Don't worry, once it settles in it won't move much.  It's just going to get nice and cozy with your prostate and a few major blood vessels.  Then it's going to reward you for cumming!</i>\"\n\n", false);
-		outputText("You feel it burrow a little deeper, and then curve up.  It presses against something inside of you in a way that makes your " + cockDescript(0) + " twitch uncontrollably.  You're sure that if it weren't for the greedy tentacle-panties around your dick you would've seen a huge dollop of pre-cum squeeze out.  Filled with angst and worry as to what is to come, you ask, \"<i>Ummm, h-h-how is it going to reward me?</i>\"\n\n", false);
+		outputText("You feel it burrow a little deeper, and then curve up.  It presses against something inside of you in a way that makes your " + game.player.cockDescript(0) + " twitch uncontrollably.  You're sure that if it weren't for the greedy tentacle-panties around your dick you would've seen a huge dollop of pre-cum squeeze out.  Filled with angst and worry as to what is to come, you ask, \"<i>Ummm, h-h-how is it going to reward me?</i>\"\n\n", false);
 		outputText("She winks, petting the mottled surface of your purple-cock-prison as you feel a sensation of warm wetness in your backside.  At the same time you nearly jump as you feel a painful pinch in your prostate.  The demoness licks her lips and answers, \"<i>Well, it rewards you in two ways pet.  One:  It empties a specially designed cocktail of drugs directly into your bowels, where they'll be absorbed slowly into the body.</i>\"  As if on cue a gentle warmth spreads through your torso, radiating out into your limbs, and settling like calming mist in your head.  You relax utterly, enjoying the feeling in spite of your worries.\n\n", false);
-		outputText("She coos, petting your still-hard member and the creature around it.  Miraculously you can feel both the touch of her silky fingers and the constant pleasurable squirming of the panties themselves.  You twitch your " + cockDescript(0) + " against her hand, giggling happily.\n\n", false);
+		outputText("She coos, petting your still-hard member and the creature around it.  Miraculously you can feel both the touch of her silky fingers and the constant pleasurable squirming of the panties themselves.  You twitch your " + game.player.cockDescript(0) + " against her hand, giggling happily.\n\n", false);
 		outputText("\"<i>That's right, it's a good reward isn't it?</i>\" she asks as she continues to fondle you, \"<i>those drugs are making you docile and extraordinarily suggestible.  For instance – every time I talk you can feel my hands caressing and fondling your member", false);
 		if(player.balls > 0) outputText(" and teasing your balls", false);
 		outputText(".  You see?  I'm not even touching you anymore and you're still twitching.  My my, what an obedient slave you're going to be.</i>\"\n\n", false);
@@ -2383,18 +2383,18 @@ export function demonBadEnd():void {
 		//Multispoooooo
 		if(player.cockTotal() > 1) {
 			outputText(player.multiCockDescriptLight() + " pulsate, straining for just a touch of the succubus' hand.  She paces around you, giggling and toying with you as your " + player.multiCockDescript() + " seem to follow her, twitching and thickening any time she takes a step closer.\n\n", false);
-			outputText("She reaches out, cupping the underside of a shaft, slowly stroking your most sensitive places while she stops the bimbo-like voice and teases, \"<i>Awww, so hard and ready.  It looks to me like you're already a slave to your desires.  You're twitching and dripping, just from the soft touches of your enemy's fingers.  Are you truly so in need of release as to willingly offer it to me?  No, don't answer, your " + cockDescript(0) + " already has.</i>\"\n\n", false);
+			outputText("She reaches out, cupping the underside of a shaft, slowly stroking your most sensitive places while she stops the bimbo-like voice and teases, \"<i>Awww, so hard and ready.  It looks to me like you're already a slave to your desires.  You're twitching and dripping, just from the soft touches of your enemy's fingers.  Are you truly so in need of release as to willingly offer it to me?  No, don't answer, your " + game.player.cockDescript(0) + " already has.</i>\"\n\n", false);
 			outputText("You glance down, seeing just how hard her words have made you.  You squirm your " + hipDescript() + "s pathetically, trying to hump her hand and increase the stimulation.  The succubus immediately releases you and draws back, shedding her secretary's clothes like a snake sheds its skin.  Now clad only in a tight leather corset and thigh-high stockings with garters, the succubus tosses you onto a table, surprising you with her raw strength.  Seemingly from nowhere, she produces a whip, winding it tightly around ", false);
 			if(player.balls > 0) outputText("your " + ballsDescriptLight() + " and ", false);
 			outputText("the bases of your " + player.multiCockDescriptLight() + ".\n\n", false);
 			outputText("\"<i>There, that'll make sure you feel every squeeze and caress of my velvet walls, and keep you from getting off until you're ready,</i>\" says the succubus as she climbs the table and straddles your eager form.\n\n", false);
 			outputText("She lifts herself up with her shapely legs and spreads her thighs, proudly revealing her puffy pierced folds.  They drip with demonic nectar as she wiggles over you, spattering you with demon-honey.  Slowly, nearly imperceptibly, she swivels the lewd opening closer and closer, and your cocks, as if possessed, angle themselves upward towards the juicy target.  The grinning succubus looks over her shoulder and asks, \"<i>Ready are we? Ok, I won't keep you waiting.</i>\"\n\n", false);
-			outputText("Marvelous heat and wetness sweeps over you in a fluid motion, wrapping your " + cockDescript(0) + " tightly.  You sigh happily, already lost in the feeling of having a succubus' tight walls wriggling around you.  Were you not already so corrupt, you would probably be coming already, but as it is, you can lie there and enjoy it, reveling in the sensations your unholy lover is spreading through your body.  You shiver, finally approaching your climax, but as it nears you find yourself denied by the whip binding your " + player.multiCockDescriptLight() + ".  It isn't just the physical tightness either – something else about it keeps your release buried deep, inaccessible.\n\n", false);
+			outputText("Marvelous heat and wetness sweeps over you in a fluid motion, wrapping your " + game.player.cockDescript(0) + " tightly.  You sigh happily, already lost in the feeling of having a succubus' tight walls wriggling around you.  Were you not already so corrupt, you would probably be coming already, but as it is, you can lie there and enjoy it, reveling in the sensations your unholy lover is spreading through your body.  You shiver, finally approaching your climax, but as it nears you find yourself denied by the whip binding your " + player.multiCockDescriptLight() + ".  It isn't just the physical tightness either – something else about it keeps your release buried deep, inaccessible.\n\n", false);
 			outputText("\"<i>Have you hit it yet?</i>\" the succubus asks as she rocks on top of you, \"<i>I've placed a block inside you.  Don't worry, it's temporary, it'll only stop you from orgasming for a few days...</i>\"\n\n", false);
 			outputText("You moan pitifully, begging for her to remove it and allow you to cum.\n\n", false);
 			outputText("\"<i>Oh I can't remove it,</i>\" she says, \"<i>The only way you'll be rid of it with any sort of certainty is to melt through it with something stronger.  Something, like, I don't know, the focused remains of your soul and humanity.  Now you think on that while I melt away any doubts you might have.</i>\"\n\n", false);
 			outputText("She resumes fucking you, driving you insane with need, all the while fiddling with her clit and pulling up a nipple to lick.  It feels so good, but you NEED to cum.  She fucks you like that for hours, until the table collapses under the pair of you and dumps you both on the floor. More than anything you crave release, and over time you cave in further and further to the need.  In time, you can feel the block weakening, melting, and eroding.  Your life has been distilled down into this one moment, this one desire, this need for release.  The block shatters, melting away under the force of your need.\n\n", false);
-			outputText("A look of shock and pleasure spreads over the succubus's face as you release into her hot snatch, cumming with a force unlike anything you've felt before.  Her walls squeeze and caress in time with your orgasm, milking you of every drop.  Your body clenches and squeezes, shuddering as the orgasm continues for far longer than normal.  Though you don't feel like you're pushing out as much fluid as normal, somehow it feels even better, like a slow drip of pleasure and release.  When at last your " + cockDescript(0) + " empties, you feel drained and strangely energized at the same time, and your entire torso is spattered with rapidly hardening pink crystals.\n\n", false);
+			outputText("A look of shock and pleasure spreads over the succubus's face as you release into her hot snatch, cumming with a force unlike anything you've felt before.  Her walls squeeze and caress in time with your orgasm, milking you of every drop.  Your body clenches and squeezes, shuddering as the orgasm continues for far longer than normal.  Though you don't feel like you're pushing out as much fluid as normal, somehow it feels even better, like a slow drip of pleasure and release.  When at last your " + game.player.cockDescript(0) + " empties, you feel drained and strangely energized at the same time, and your entire torso is spattered with rapidly hardening pink crystals.\n\n", false);
 			outputText("The slutty succubus stands up, her puffy vulva coated in a shining pink fluid.  Did that just come out of you?  She grunts, her eyes glowing for a moment as the pink goop disappears into her skin, vanishing entirely.\n\n", false);
 			outputText("\"<i>Ahhhhh,</i>\" she sighs, \"<i>nothing like fresh Lethicite.  Mmmm, yours was potent!</i>\"\n\n", false);
 			outputText("You stand up, dissatisfied at the sudden lack of sensation you're forced to endure.  The gloating demoness looks rather pleased with herself, and brimming with newfound power.  You resolve to ", false);
@@ -2408,18 +2408,18 @@ export function demonBadEnd():void {
 		//SINGLEZ NITE
 		else {
 			outputText(player.multiCockDescriptLight() + " pulsates, straining for just a touch of the succubus' hand.  She paces around you, giggling and toying with you as your " + player.multiCockDescript() + " seems to follow her, twitching and thickening anytime she takes a step closer.\n\n", false);
-			outputText("She reaches out, cupping the underside of the shaft, slowly stroking your most sensitive places while she stops the bimbo-like voice and teases, \"<i>Awww, so hard and ready.  It looks to me like you're already a slave to your desires.  You're twitching and dripping, just from the soft touches of your enemy's fingers.  Are you truly so in need of release as to willingly offer it to me?  No, don't answer, your " + cockDescript(0) + " already has.</i>\"\n\n", false);
+			outputText("She reaches out, cupping the underside of the shaft, slowly stroking your most sensitive places while she stops the bimbo-like voice and teases, \"<i>Awww, so hard and ready.  It looks to me like you're already a slave to your desires.  You're twitching and dripping, just from the soft touches of your enemy's fingers.  Are you truly so in need of release as to willingly offer it to me?  No, don't answer, your " + game.player.cockDescript(0) + " already has.</i>\"\n\n", false);
 			outputText("You glance down, seeing just how hard her words have made you.  You squirm your " + hipDescript() + "s pathetically, trying to hump her hand and increase the stimulation.  The succubus immediately releases you and draws back, shedding her secretary's clothes like a snake sheds its skin.  Now clad only in a tight leather corset and thigh-high stockings with garters, the succubus tosses you onto a table, surprising you with her raw strength.  Seemingly from nowhere, she produces a whip, winding it tightly around ", false);
 			if(player.balls > 0) outputText("your " + ballsDescriptLight() + " and ", false);
-			outputText("the base of your " + cockDescript(0) + ".\n\n", false);
+			outputText("the base of your " + game.player.cockDescript(0) + ".\n\n", false);
 			outputText("\"<i>There, that'll make sure you feel every squeeze and caress of my velvet walls, and keep you from getting off until you're ready,</i>\" says the succubus as she climbs the table and straddles your eager form.\n\n", false);
 			outputText("She lifts herself up with her shapely legs and spreads her thighs, proudly revealing her puffy pierced folds.  They drip with demonic nectar as she wiggles over you, spattering you with demon-honey.  Slowly, nearly imperceptibly, she swivels the lewd opening closer and closer, and your cock, as if possessed, angles itself upwards towards the juicy target.  The grinning succubus looks over her shoulder and asks, \"<i>Ready are we? Ok, I won't keep you waiting.</i>\"\n\n", false);
-			outputText("Marvelous heat and wetness sweeps over you in a fluid motion, wrapping your " + cockDescript(0) + " tightly.  You sigh happily, already lost in the feeling of having a succubus' tight walls wriggling around you.  Were you not already so corrupt, you would probably be coming already, but as it is, you can lie there and enjoy it, reveling in the sensations your unholy lover is spreading through your body.  You shiver, finally approaching your climax, but as it nears you find yourself denied by the whip binding your " + cockDescript(0) + ".  It isn't just the physical tightness either – something else about it keeps your release buried deep, inaccessible.\n\n", false);
+			outputText("Marvelous heat and wetness sweeps over you in a fluid motion, wrapping your " + game.player.cockDescript(0) + " tightly.  You sigh happily, already lost in the feeling of having a succubus' tight walls wriggling around you.  Were you not already so corrupt, you would probably be coming already, but as it is, you can lie there and enjoy it, reveling in the sensations your unholy lover is spreading through your body.  You shiver, finally approaching your climax, but as it nears you find yourself denied by the whip binding your " + game.player.cockDescript(0) + ".  It isn't just the physical tightness either – something else about it keeps your release buried deep, inaccessible.\n\n", false);
 			outputText("\"<i>Have you hit it yet?</i>\" the succubus asks as she rocks on top of you, \"<i>I've placed a block inside you.  Don't worry, it's temporary, it'll only stop you from orgasming for a few days...</i>\"\n\n", false);
 			outputText("You moan pitifully, begging for her to remove it and allow you to cum.\n\n", false);
 			outputText("\"<i>Oh I can't remove it,</i>\" she says, \"<i>The only way you'll be rid of it with any sort of certainty is to melt through it with something stronger.  Something, like, I don't know, the focused remains of your soul and humanity.  Now you think on that while I melt away any doubts you might have.</i>\"\n\n", false);
 			outputText("She resumes fucking you, driving you insane with need, all the while fiddling with her clit and pulling up a nipple to lick.  It feels so good, but you NEED to cum.  She fucks you like that for hours, until the table collapses under the pair of you and dumps you both on the floor. More than anything you crave release, and over time you cave in further and further to the need.  In time, you can feel the block weakening, melting, and eroding.  Your life has been distilled down into this one moment, this one desire, this need for release.  The block shatters, melting away under the force of your need.\n\n", false);
-			outputText("A look of shock and pleasure spreads over the succubus's face as you release into her hot snatch, cumming with a force unlike anything you've felt before.  Her walls squeeze and caress in time with your orgasm, milking you of every drop.  Your body clenches and squeezes, shuddering as the orgasm continues for far longer than normal.  Though you don't feel like you're pushing out as much fluid as normal, somehow it feels even better, like a slow drip of pleasure and release.  When at last your " + cockDescript(0) + " empties, you feel drained and strangely energized at the same time.\n\n", false);
+			outputText("A look of shock and pleasure spreads over the succubus's face as you release into her hot snatch, cumming with a force unlike anything you've felt before.  Her walls squeeze and caress in time with your orgasm, milking you of every drop.  Your body clenches and squeezes, shuddering as the orgasm continues for far longer than normal.  Though you don't feel like you're pushing out as much fluid as normal, somehow it feels even better, like a slow drip of pleasure and release.  When at last your " + game.player.cockDescript(0) + " empties, you feel drained and strangely energized at the same time.\n\n", false);
 			outputText("The slutty succubus stands up, her puffy vulva coated in a shining pink fluid.  Did that just come out of you?  She grunts, her eyes glowing for a moment as the pink goop disappears into her skin, vanishing entirely.\n\n", false);
 			outputText("\"<i>Ahhhhh,</i>\" she sighs, \"<i>nothing like fresh Lethicite.  Mmmm your's was potent!</i>\"\n\n", false);
 			outputText("You stand up, dissatisfied at the sudden lack of sensation you're forced to endure.  The gloating demoness looks rather pleased with herself, and brimming with newfound power.  You resolve to ", false);
@@ -2457,15 +2457,15 @@ export function demonBadEnd():void {
 		//Buh.  Zombie fen need brains.
 		outputText(player.multiCockDescript() + " and " + vaginaDescript(0) + " grow wet and ready, both starting to leak fluids as the succubus' hand traces your inner thigh.  She teases, \"<i>Oh my! You're so wet and ready and I haven't even touched your moist little cum-receptacle.  And that throbbing cock!  How obscene!  You're a slut aren't you?  Who else would be so turned on by the idea of cumming until your humanity is splattered between my legs?</i>\"\n\n", false);
 		outputText("The words make you blush hard, shaming you and stoking the growing fire between your legs.  You know two things for certain: she's right and you're more turned on that ever.  You don't resist as the demoness easily lifts you up, setting you down on a table with your legs spread.  \"<i>There,</i>\" she comments, \"<i>now all of your fun-parts are on display.  Maybe I should call in an incubus and a few imps to watch.  I bet you'd like that wouldn't you?</i>\"\n\n", false);
-		outputText("She effortlessly swings her lissomelegs onto the table as she pulls herself up, mounting you in a single swift motion.  You can feel waves of heat rolling off her sex, bathing your " + cockDescript(0) + " in her warmth.  ", false);
+		outputText("She effortlessly swings her lissomelegs onto the table as she pulls herself up, mounting you in a single swift motion.  You can feel waves of heat rolling off her sex, bathing your " + game.player.cockDescript(0) + " in her warmth.  ", false);
 		if(player.clitLength >= 2) outputText("Your " + clitDescript() + " pushes free, nuzzling against her tight asshole and slipping inside, as if drawn in by its desire.  She openly moans, and begins rocking on top of you.  You gasp in delight as she rides your " + clitDescript() + ", fucking her ass and grinding against it.", false);
 		else outputText("She lowers herself down, rubbing smooth hairless netherlips over your crotch and vulva, smearing you with her fragrant demon-honey.  You feel her clit grinding on your belly, drawing out gasps of delight from both of your mouths as she relentlessly works her body against your own.", false);
-		outputText("\n\nMarvelous heat and wetness wraps your " + cockDescript(0) + " tightly.  You sigh happily, already lost in the feeling of having a succubus' tight walls wriggling around you.  Were you not already so corrupt, you would probably be cumming already, but as it is, you can lie there and enjoy it, reveling in the sensations your unholy lover is spreading through your body.  You shiver, finally approaching your climax, but as it nears you find yourself denied by something deep inside you, pushing away your release and hiding it somewhere inaccessible.\n\n", false);
+		outputText("\n\nMarvelous heat and wetness wraps your " + game.player.cockDescript(0) + " tightly.  You sigh happily, already lost in the feeling of having a succubus' tight walls wriggling around you.  Were you not already so corrupt, you would probably be cumming already, but as it is, you can lie there and enjoy it, reveling in the sensations your unholy lover is spreading through your body.  You shiver, finally approaching your climax, but as it nears you find yourself denied by something deep inside you, pushing away your release and hiding it somewhere inaccessible.\n\n", false);
 		outputText("\"<i>Have you hit it yet?</i>\" the succubus asks as she rocks on top of you, \"<i>I've placed a block inside you.  Don't worry, it's temporary, it'll only stop you from orgasming for a few days...</i>\"\n\n", false);
 		outputText("You moan pitifully, begging for her to remove it and allow you to cum.\n\n", false);
 		outputText("\"<i>Oh I can't remove it,</i>\" she says, \"<i>The only way you'll be rid of it with any sort of certainty is to melt through it with something stronger.  Something, like, I don't know, the focused remains of your soul and humanity.  Now you think on that while I melt away any doubts you might have.</i>\"\n\n", false);
 		outputText("She resumes fucking you, driving you insane with need, all the while fiddling with her clit and pulling up a nipple to lick.  It feels so good, but you NEED to cum.  She fucks you like that for hours, until the table collapses under the pair of you and dumps you both on the floor. More than anything you crave release, and over time you cave in further and further to the need.  Eventually, you can feel the block weakening, melting, and eroding.  Your life has been distilled down into this one moment, this one desire, this need for release.  The block shatters, melting away under the force of your need.\n\n", false);
-		outputText("A look of shock and pleasure spreads over the succubus' face as you release into her hot snatch, cumming with a force unlike anything you've felt before.  Her walls squeeze and caress in time with your orgasm, milking you of every drop.  Your body clenches and squeezes, shuddering as the orgasm continues for far longer than normal.  Though you don't feel like you're pushing out as much fluid as normal, somehow it feels even better, like a slow drip of pleasure and release.  When at last your " + cockDescript(0) + " empties, you feel drained and strangely energized at the same time.\n\n", false);
+		outputText("A look of shock and pleasure spreads over the succubus' face as you release into her hot snatch, cumming with a force unlike anything you've felt before.  Her walls squeeze and caress in time with your orgasm, milking you of every drop.  Your body clenches and squeezes, shuddering as the orgasm continues for far longer than normal.  Though you don't feel like you're pushing out as much fluid as normal, somehow it feels even better, like a slow drip of pleasure and release.  When at last your " + game.player.cockDescript(0) + " empties, you feel drained and strangely energized at the same time.\n\n", false);
 		outputText("The slutty succubus stands up, her puffy vulva coated in a shining pink fluid.  Did that just come out of you?  She grunts, her eyes glowing for a moment as the pink goop disappears into her skin, vanishing entirely.\n\n", false);
 		outputText("\"<i>Ahhhhh,</i>\" she sighs, \"<i>nothing like fresh Lethicite.  Mmmm, your's was soooo potent!</i>\"\n\n", false);
 		outputText("You stand up, dissatisfied at the sudden lack of sensation you're forced to endure.  The gloating demoness looks rather pleased with herself, and brimming with her new-found power.  You resolve to ", false);
@@ -2502,8 +2502,8 @@ export function openPumpRoom():void {
 		clearOutput();
 		outputText("The door is locked with a key that is not in your possession.");
 	}
-	else dungeonLoc = DUNGEON_FACTORY_STORE_ROOM;
-	dungeonEnterRoom(dungeonLoc);
+	else game.dungeonLoc = DUNGEON_FACTORY_STORE_ROOM;
+	dungeonEnterRoom(game.dungeonLoc);
 }
 
 export function storageTakeLactaid():void {

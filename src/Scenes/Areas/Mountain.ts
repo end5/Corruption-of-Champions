@@ -12,7 +12,7 @@
 
 	  ;
 
-	export class Mountain extends BaseContent
+	export class Mountain
 	{
 		public  hellHoundScene:HellHoundScene = new HellHoundScene();
 		public  infestedHellhoundScene:InfestedHellhoundScene = new InfestedHellhoundScene();
@@ -27,8 +27,8 @@
 			player.exploredMountain++;
 			var chooser:number = rand(4);
 			//Helia monogamy fucks
-			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helScene.followerHel()) {
-				kGAMECLASS.helScene.helSexualAmbush();
+			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
+				helScene.helSexualAmbush();
 				return;
 			}
 			//Discover 'high mountain' at level 5 or 40 explores of mountain
@@ -41,11 +41,11 @@
 			if (isHolidays()) {
 				//Gats xmas adventure!
 				if (rand(5) == 0 && player.gender > 0 && isHolidays() && flags[kFLAGS.GATS_ANGEL_DISABLED] == 0 && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] == 0 && (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] > 0 && player.hasKeyItem("North Star Key") < 0)) {
-					kGAMECLASS.gatsSpectacularRouter();
+					gatsSpectacularRouter();
 					return;
 				}
 				if (rand(6) == 0 && flags[kFLAGS.JACK_FROST_YEAR] < date.fullYear && silly()) {
-					kGAMECLASS.meetJackFrostInTheMountains();
+					meetJackFrostInTheMountains();
 					return;
 				}
 			}
@@ -70,20 +70,20 @@
 			}
 			//Rarer 'nice' Ceraph encounter
 			//Overlaps half the old encounters once pierced.
-			if (!kGAMECLASS.ceraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 30 == 0) && flags[kFLAGS.PC_FETISH] > 0) {
-				kGAMECLASS.ceraphScene.friendlyNeighborhoodSpiderManCeraph();
+			if (!ceraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 30 == 0) && flags[kFLAGS.PC_FETISH] > 0) {
+				ceraphScene.friendlyNeighborhoodSpiderManCeraph();
 				return;
 			}
 			//15% chance of Ceraph
-			if (!kGAMECLASS.ceraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 15 == 0) && flags[kFLAGS.PC_FETISH] != 1) {
-				kGAMECLASS.ceraphScene.encounterCeraph();
+			if (!ceraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 15 == 0) && flags[kFLAGS.PC_FETISH] != 1) {
+				ceraphScene.encounterCeraph();
 				return;
 			}
 			//10% chance of hairdresser encounter if not found yet
 			if (rand(10) == 0 && player.findStatusAffect(StatusAffects.HairdresserMeeting) < 0) chooser = 4;
 			if ((rand(8) == 0 && player.findStatusAffect(StatusAffects.MetMarae) >= 0)
 					&& player.findStatusAffect(StatusAffects.FoundFactory) < 0) {
-				kGAMECLASS.enterFactory();
+				enterFactory();
 				return;
 			}
 			//Boosts mino and hellhound rates!
@@ -123,7 +123,7 @@
 				//Imptacular Encounter
 				if (rand(10) < impGob) {
 					if (player.level >= 8 && rand(2) == 0) {
-						kGAMECLASS.impScene.impLordEncounter();
+						impScene.impLordEncounter();
 					}
 					else {
 						outputText("An imp leaps out from behind a rock and attacks!", true);
@@ -136,7 +136,7 @@
 				else {
 					//50% of the time, goblin assassin!
 					if (player.level >= 10 && rand(2) == 0) {
-						kGAMECLASS.goblinAssassinScene.goblinAssassinEncounter();
+						goblinAssassinScene.goblinAssassinEncounter();
 						return;
 					}
 					if (player.gender > 0) {
@@ -240,7 +240,7 @@
 						doNext(camp.returnToCampUseOneHour);
 						return;
 					}
-					kGAMECLASS.wormEncounter();
+					wormEncounter();
 				}
 				else {
 					//If worms are off or the PC is infested, no worms.
@@ -256,7 +256,7 @@
 						doNext(camp.returnToCampUseOneHour);
 					}
 					else {
-						kGAMECLASS.wormToggle();
+						wormToggle();
 					}
 				}
 			}
@@ -403,7 +403,7 @@
 				player.changeStatusValue(StatusAffects.Feeder, 2, 0);
 			}
 			//(Acquired minotaur cum!)
-			model.time.hours++;
+			game.time.hours++;
 			inventory.takeItem(consumables.MINOCUM, camp.returnToCampUseOneHour);
 		}
 
@@ -449,4 +449,3 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-

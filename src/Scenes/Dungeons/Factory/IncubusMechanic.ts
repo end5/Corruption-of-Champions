@@ -26,28 +26,28 @@
 			else outputText("You smile in satisfaction as the " + short + " collapses, masturbating happily.");
 			if (player.gender == 0) {
 				outputText("  Now would be the perfect opportunity to test his demonic tool...\n\nHow do you want to handle him?");
-				game.simpleChoices("Anally", game.incubusVictoryRapeBackdoor, "Orally", game.incubusVictoryService, "", null, "", null, "Leave", game.cleanupAfterCombat);
+				simpleChoices("Anally", game.incubusVictoryRapeBackdoor, "Orally", game.incubusVictoryService, "", null, "", null, "Leave", game.cleanupAfterCombat);
 			}
 			else {
-				game.dynStats("lus", 1);
+				dynStats("lus", 1);
 				if (hpVictory) {
 					outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do, rape him, service him, or let him take you anally?");
-					game.simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "", null, "Nothing", game.cleanupAfterCombat);
+					simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "", null, "Nothing", game.cleanupAfterCombat);
 				}
 				else {
 					outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
 					var titfuck:() => void = null;
 					if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
-						titfuck = game.createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
+						titfuck = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
 					}
-					game.simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "B.Titfuck", titfuck, "Nothing", game.cleanupAfterCombat);
+					simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "B.Titfuck", titfuck, "Nothing", game.cleanupAfterCombat);
 				}
 			}
 		}
 		
 		private  defeatedInDungeon3(hpVictory:boolean):void
 		{
-			game.d3.incubusMechanic.beatDaMechanic(hpVictory);
+			d3.incubusMechanic.beatDaMechanic(hpVictory);
 		}
 
 		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
@@ -74,7 +74,7 @@
 		
 		private  wonInDungeon3(hpVictory:boolean, pcCameWorms:boolean):void
 		{
-			game.d3.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
+			d3.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
 		}
 		
 		private  cockTripAttack():void {
@@ -91,15 +91,15 @@
 				outputText("  You land hard on your ass, momentarily stunned as the demonic cock-tentacle curls around your " + player.legs() + ", smearing them with oozing demonic fluids.");
 				if (player.lust >= 80 || player.cor >= 80) {
 					outputText("  Moaning with desire, you lick your lips as you slide your well-lubricated " + player.legs() + " free.  You gather a dollop of cum and lick it seductively, winking at the incubus and hoping to make him cave into his desire.");
-					game.dynStats("lus", 13, "cor", 1);
+					dynStats("lus", 13, "cor", 1);
 				}
 				else if (player.lust >= 50 || player.cor >= 50) {
 					outputText("  Blushing at the scent and feel of cum on your " + player.legs() + ", you twist and pull free.  You find yourself wondering what this demon's dick would taste like.");
-					game.dynStats("lus", 8 + player.cor / 20);
+					dynStats("lus", 8 + player.cor / 20);
 				}
 				else {
 					outputText("  Disgusted, you pull away from the purplish monstrosity, the act made easier by your well-slimed " + player.legs() + ".");
-					game.dynStats("lus", 5 + player.cor / 20);
+					dynStats("lus", 5 + player.cor / 20);
 				}
 				game.takeDamage(5);
 			}
@@ -118,7 +118,7 @@
 			switch (rand(3)) {
 				case 0: //Face
 					outputText("face.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your mouth and nose!  You can feel it moving around inside you, doing its best to prepare you for its master.");
-					game.dynStats("lus", 3);
+					dynStats("lus", 3);
 					if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
 						player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);
 					else player.addStatusValue(StatusAffects.DemonSeed, 1, 7);
@@ -127,7 +127,7 @@
 				case 1: //Chest
 					if (player.hasFuckableNipples()) {
 						outputText(allBreastsDescript() + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.");
-						game.dynStats("lus", 3);
+						dynStats("lus", 3);
 						if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
 							player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);
 						else player.addStatusValue(StatusAffects.DemonSeed, 1, 8);
@@ -138,7 +138,7 @@
 				default: //Crotch
 					if (player.vaginas.length > 0) {
 						outputText("crotch.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way past your " + player.armorName + " and into your " + vaginaDescript(0) + ".  You can feel it moving around inside you, doing its best to prepare you for its master.");
-						game.dynStats("lus", 3);
+						dynStats("lus", 3);
 						if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
 							player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);
 						else player.addStatusValue(StatusAffects.DemonSeed, 1, 8);

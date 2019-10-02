@@ -7,13 +7,12 @@
 	 
 	 
 
-	export class AbstractBoatContent extends BaseContent
+	export class AbstractBoatContent
 	{
 		protected  get boat():Boat {
-			return kGAMECLASS.boat;
+			return boat;
 		}
 		public  constructor()
 		{
 		}
 	}
-

@@ -11,7 +11,7 @@
 	/**
 	 * Contains handy references to scenes and methods
 	 */
-	export class NPCAwareContent extends BaseContent
+	export class NPCAwareContent
 	{
 		public  constructor()
 		{
@@ -20,278 +20,277 @@
 		// Common scenes
 		protected  get telAdre():TelAdre
 		{
-			return kGAMECLASS.telAdre;
+			return telAdre;
 		}
 		// Follower interactions
 		protected  get finter():FollowerInteractions
 		{
-			return kGAMECLASS.followerInteractions;
+			return followerInteractions;
 		}
 
 		// Amily
 		protected  get amilyScene():AmilyScene
 		{
-			return kGAMECLASS.amilyScene;
+			return amilyScene;
 		}
 
 		public  amilyFollower():boolean
 		{
-			return kGAMECLASS.amilyScene.amilyFollower();
+			return amilyScene.amilyFollower();
 		}
 		// Anemone
 		protected  get anemoneScene():AnemoneScene
 		{
-			return kGAMECLASS.anemoneScene;
+			return anemoneScene;
 		}
 		// Arian
 		protected  get arianScene():ArianScene
 		{
-			return kGAMECLASS.arianScene;
+			return arianScene;
 		}
 		public  arianFollower():boolean
 		{
-			return kGAMECLASS.arianScene.arianFollower();
+			return arianScene.arianFollower();
 		}
 		// Ceraph
 		protected  get ceraphScene():CeraphScene
 		{
-			return kGAMECLASS.ceraphScene;
+			return ceraphScene;
 		}
 		protected  get ceraphFollowerScene():CeraphFollowerScene
 		{
-			return kGAMECLASS.ceraphFollowerScene;
+			return ceraphFollowerScene;
 		}
 		public  ceraphIsFollower():boolean
 		{
-			return kGAMECLASS.ceraphFollowerScene.ceraphIsFollower();
+			return ceraphFollowerScene.ceraphIsFollower();
 		}
 		// Ember
 		protected  get emberScene():EmberScene
 		{
-			return kGAMECLASS.emberScene;
+			return emberScene;
 		}
 		public  followerEmber():boolean
 		{
-			return kGAMECLASS.emberScene.followerEmber();
+			return emberScene.followerEmber();
 		}
 		public  emberMF(man:string,woman:string):string
 		{
-			return kGAMECLASS.emberScene.emberMF(man,woman);
+			return emberScene.emberMF(man,woman);
 		}
 		// Exgartuan
 		protected  get exgartuan():Exgartuan
 		{
-			return kGAMECLASS.exgartuan;
+			return exgartuan;
 		}
 		// Helia
 		protected  get helScene():HelScene
 		{
-			return kGAMECLASS.helScene;
+			return helScene;
 		}
 		protected  get helFollower():HelFollower
 		{
-			return kGAMECLASS.helFollower;
+			return helFollower;
 		}
 		public  followerHel():boolean
 		{
-			return kGAMECLASS.helScene.followerHel();
+			return helScene.followerHel();
 		}
 		// Helia spawn
 		protected  get helSpawnScene():HelSpawnScene
 		{
-			return kGAMECLASS.helSpawnScene;
+			return helSpawnScene;
 		}
 
 		public  helPregnant():boolean
 		{
-			return kGAMECLASS.helSpawnScene.helPregnant();
+			return helSpawnScene.helPregnant();
 		}
 		public  helspawnFollower():boolean
 		{
-			return kGAMECLASS.helSpawnScene.helspawnFollower();
+			return helSpawnScene.helspawnFollower();
 		}
 
 		// Holli
 		protected  get holliScene():HolliScene
 		{
-			return kGAMECLASS.holliScene;
+			return holliScene;
 		}
 		// Isabella
 		protected  get isabellaScene():IsabellaScene
 		{
-			return kGAMECLASS.isabellaScene;
+			return isabellaScene;
 		}
 		protected  get isabellaFollowerScene():IsabellaFollowerScene
 		{
-			return kGAMECLASS.isabellaFollowerScene;
+			return isabellaFollowerScene;
 		}
 
 		public  isabellaFollower():boolean
 		{
-			return kGAMECLASS.isabellaFollowerScene.isabellaFollower();
+			return isabellaFollowerScene.isabellaFollower();
 		}
 
 		public  isabellaAccent():boolean
 		{
-			return kGAMECLASS.isabellaFollowerScene.isabellaAccent();
+			return isabellaFollowerScene.isabellaAccent();
 		}
 
 		// Izma
 		public  izmaFollower():boolean
 		{
-			return kGAMECLASS.izmaScene.izmaFollower();
+			return izmaScene.izmaFollower();
 		}
 		protected  get izmaScene():IzmaScene
 		{
-			return kGAMECLASS.izmaScene;
+			return izmaScene;
 		}
 		// Jojo
 		protected  get jojoScene():JojoScene
 		{
-			return kGAMECLASS.jojoScene;
+			return jojoScene;
 		}
 		protected  get monk():number {
-			return kGAMECLASS.monk;
+			return game.monk;
 		}
 		public  campCorruptJojo():boolean
 		{
-			return kGAMECLASS.jojoScene.campCorruptJojo();
+			return jojoScene.campCorruptJojo();
 		}
 		// Kiha
 		protected  get kihaFollower():KihaFollower
 		{
-			return kGAMECLASS.kihaFollower;
+			return kihaFollower;
 		}
 		protected  get kihaScene():KihaScene
 		{
-			return kGAMECLASS.kihaScene;
+			return kihaScene;
 		}
 
 		public  followerKiha():boolean
 		{
-			return kGAMECLASS.kihaFollower.followerKiha();
+			return kihaFollower.followerKiha();
 		}
 
 		// Latex Girl
 		protected  get latexGirl():LatexGirl
 		{
-			return kGAMECLASS.latexGirl;
+			return latexGirl;
 		}
 		public  latexGooFollower():boolean
 		{
-			return kGAMECLASS.latexGirl.latexGooFollower();
+			return latexGirl.latexGooFollower();
 		}
 		// Marble
 		protected  get marbleScene():MarbleScene
 		{
-			return kGAMECLASS.marbleScene;
+			return marbleScene;
 		}
 		protected  get marblePurification():MarblePurification
 		{
-			return kGAMECLASS.marblePurification;
+			return marblePurification;
 		}
 		public  marbleFollower():boolean
 		{
-			return kGAMECLASS.marbleScene.marbleFollower();
+			return marbleScene.marbleFollower();
 		}
 		// Milk slave
 		public  milkSlave():boolean
 		{
-			return kGAMECLASS.milkWaifu.milkSlave();
+			return milkWaifu.milkSlave();
 		}
 		protected  get milkWaifu():MilkWaifu
 		{
-			return kGAMECLASS.milkWaifu;
+			return milkWaifu;
 		}
 		// Raphael
 		protected  raphael():Raphael
 		{
-			return kGAMECLASS.raphael;
+			return raphael;
 		}
 		public  RaphaelLikes():boolean
 		{
-			return kGAMECLASS.raphael.RaphaelLikes();
+			return raphael.RaphaelLikes();
 		}
 		// Rathazul
 		protected  rathazul():Rathazul
 		{
-			return kGAMECLASS.rathazul;
+			return rathazul;
 		}
 		// Sheila
 		protected  get sheilaScene():SheilaScene
 		{
-			return kGAMECLASS.sheilaScene;
+			return sheilaScene;
 		}
 		// Shouldra
 		protected  get shouldraFollower():ShouldraFollower
 		{
-			return kGAMECLASS.shouldraFollower;
+			return shouldraFollower;
 		}
 
 		protected  get shouldraScene():ShouldraScene
 		{
-			return kGAMECLASS.shouldraScene;
+			return shouldraScene;
 		}
 
 		public  followerShouldra():boolean
 		{
-			return kGAMECLASS.shouldraFollower.followerShouldra();
+			return shouldraFollower.followerShouldra();
 		}
 
 		// Sophie
 		protected  get sophieBimbo():SophieBimbo
 		{
-			return kGAMECLASS.sophieBimbo;
+			return sophieBimbo;
 		}
 		protected  get sophieScene():SophieScene
 		{
-			return kGAMECLASS.sophieScene;
+			return sophieScene;
 		}
 
 		protected  get sophieFollowerScene():SophieFollowerScene
 		{
-			return kGAMECLASS.sophieFollowerScene;
+			return sophieFollowerScene;
 		}
 
 		public  bimboSophie():boolean
 		{
-			return kGAMECLASS.sophieBimbo.bimboSophie();
+			return sophieBimbo.bimboSophie();
 		}
 
 		public  sophieFollower():boolean
 		{
-			return kGAMECLASS.sophieFollowerScene.sophieFollower();
+			return sophieFollowerScene.sophieFollower();
 		}
 		// Urta
 		public  urtaLove(love:number = 0):boolean {
-			return kGAMECLASS.urta.urtaLove(love);
+			return urta.urtaLove(love);
 		}
 		protected  get urta():Urta
 		{
-			return kGAMECLASS.urta;
+			return urta;
 		}
 		protected  get urtaPregs():UrtaPregs
 		{
-			return kGAMECLASS.urtaPregs;
+			return urtaPregs;
 		}
 		protected  get urtaHeatRut():UrtaHeatRut
 		{
-			return kGAMECLASS.urtaHeatRut;
+			return urtaHeatRut;
 		}
 		// Valeria
 		protected  get valeria():Valeria
 		{
-			return kGAMECLASS.valeria;
+			return valeria;
 		}
 		// Vapula
 		protected  get vapula():Vapula
 		{
-			return kGAMECLASS.vapula;
+			return vapula;
 		}
 		public  vapulaSlave():boolean
 		{
-			return kGAMECLASS.vapula.vapulaSlave();
+			return vapula.vapulaSlave();
 		}
 
 	}
-

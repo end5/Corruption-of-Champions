@@ -16,12 +16,12 @@
 		 public  defeated(hpVictory:boolean):void
 		{
 			flags[kFLAGS.D3_STATUE_DEFEATED] = 1;
-			game.d3.livingStatue.beatUpDaStatue(hpVictory);
+			d3.livingStatue.beatUpDaStatue(hpVictory);
 		}
 		
 		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
-			game.d3.livingStatue.fuckinMarbleOP(hpVictory, pcCameWorms);
+			d3.livingStatue.fuckinMarbleOP(hpVictory, pcCameWorms);
 		}
 		
 		public  constructor() 
@@ -57,13 +57,13 @@
 		
 		 protected  handleStun():boolean
 		{
-			game.outputText("The stone giant's unforgiving flesh seems incapable of being stunned.");
+			outputText("The stone giant's unforgiving flesh seems incapable of being stunned.");
 			return true;
 		}
 		
 		 protected  handleFear():boolean
 		{
-			game.outputText("The stone giant cares little for your attempted intimidation.");
+			outputText("The stone giant cares little for your attempted intimidation.");
 			return true;
 		}
 		
@@ -213,4 +213,3 @@
 		}
 		
 	}
-

@@ -51,7 +51,7 @@ private  calledShot():void {
 				affect--;
 				player.addStatusValue(StatusAffects.CalledShot,1,1);
 				player.spe--;
-				showStatDown( 'spe' );
+				mainView.statsView.showStatDown( 'spe' );
 				// speDown.visible = true;
 				// speUp.visible = false;
 			}
@@ -62,7 +62,7 @@ private  calledShot():void {
 				affect--;
 				player.addStatusValue(StatusAffects.CalledShot,1,1);
 				player.spe--;
-				showStatDown( 'spe' );
+				mainView.statsView.showStatDown( 'spe' );
 				// speDown.visible = true;
 				// speUp.visible = false;
 			}
@@ -207,4 +207,3 @@ private  calledShot():void {
 		}
 
 	}
-

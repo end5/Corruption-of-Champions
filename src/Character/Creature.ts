@@ -412,14 +412,14 @@
 		//Functions			
 		public  orgasm():void
 		{
-			game.dynStats("lus=",0,"res",false);
+			dynStats("lus=",0,"res",false);
 			hoursSinceCum = 0;
 			
 			if (countCockSocks("gilded") > 0) {
 			
 				var randomCock:number = rand( cocks.length );
 				var bonusGems:number = rand( cocks[randomCock].cockThickness ) + countCockSocks("gilded"); // int so AS rounds to whole numbers
-				game.outputText("\n\nFeeling some minor discomfort in your " + cockDescript(randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n" );
+				outputText("\n\nFeeling some minor discomfort in your " + cockDescript(randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n" );
 				gems += bonusGems;
 	}
 		}
@@ -3666,6 +3666,3 @@
 			return Appearance.breastSize(val);
 		}
 	}
-
-
-

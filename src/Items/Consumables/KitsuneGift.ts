@@ -19,7 +19,7 @@
 				case 0: 
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, sitting in the center is a small teardrop-shaped jewel!");
 				outputText("\n\n<b>You've received a shining Fox Jewel from the kitsune's gift!  How generous!</b>  ");
-				game.inventory.takeItem(game.consumables.FOXJEWL, game.inventory.inventoryMenu);
+				inventory.takeItem(consumables.FOXJEWL, inventory.inventoryMenu);
 				return(true);
 
 			//[Fox Berries]
@@ -27,7 +27,7 @@
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, there is a small cluster of orange-colored berries sitting in the center!");
 				outputText("\n\n<b>You've received a fox berry from the kitsune's gift!  How generous!</b>  ");
 				//add Fox Berries to inventory
-				game.inventory.takeItem(game.consumables.FOXBERY, game.inventory.inventoryMenu);
+				inventory.takeItem(consumables.FOXBERY, inventory.inventoryMenu);
 				return(true);
 
 			//[Gems]
@@ -45,22 +45,22 @@
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it contains a small bag of dried tea leaves!");
 				outputText("\n\n<b>You've received a bag of tea from the kitsune's gift!  How thoughtful!</b>  ");
 				//add Kitsune Tea/Scholar's Tea to inventory
-				game.inventory.takeItem(game.consumables.SMART_T, game.inventory.inventoryMenu);
+				inventory.takeItem(consumables.SMART_T, inventory.inventoryMenu);
 				return(true);
 
 			//[Hair Dye]
 				case 4:
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it contains a small vial filled with hair dye!");
 				var itype:Consumable = [
-					game.consumables.RED_DYE,
-					game.consumables.BLOND_D,
-					game.consumables.BLACK_D,
-					game.consumables.WHITEDY
+					consumables.RED_DYE,
+					consumables.BLOND_D,
+					consumables.BLACK_D,
+					consumables.WHITEDY
 				][Utils.rand(4)];
 
 				outputText("\n\n<b>You've received " + itype.longName + " from the kitsune's gift!  How generous!</b>  ");
 				//add <color> Dye to inventory
-				game.inventory.takeItem(itype, game.inventory.inventoryMenu);
+				inventory.takeItem(itype, inventory.inventoryMenu);
 				return(true);
 
 			//[Knowledge Spell]
@@ -69,7 +69,7 @@
 
 				outputText("\n\n<b>The kitsune has shared some of its knowledge with you!</b>  But in the process, you've gained some of the kitsune's promiscuous trickster nature...");
 				//Increase INT and Libido, +10 LUST
-				game.dynStats("int", 4, "sen", 2, "lus", 10);
+				dynStats("int", 4, "sen", 2, "lus", 10);
 				break;
 
 			//[Thief!]
@@ -88,7 +88,7 @@
 
 				outputText("\n\n<b>The kitsune's familiar has drawn all over your face!</b>  The resilient marks take about an hour to completely scrub off in the nearby stream.  You could swear you heard some mirthful snickering among the trees while you were cleaning yourself off.");
 				//Advance time 1 hour, -20 LUST
-				game.dynStats("lus", -20);
+				dynStats("lus", -20);
 				break;
 
 			//[Aphrodisiac]
@@ -96,14 +96,14 @@
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and sitting in the center is an artfully crafted paper doll.  Before your eyes, the doll springs to life, dancing about fancifully.  Without warning, it tosses a handful of sweet-smelling pink dust into your face, then hops over the rim of the box and gallavants off into the woods.  Before you know what has happened, you feel yourself growing hot and flushed, unable to keep your hands away from your groin.");
 				outputText("\n\n<b>Oh no!  The kitsune's familiar has hit you with a powerful aphrodisiac!  You are debilitatingly aroused and can think of nothing other than masturbating.</b>");
 				//+100 LUST
-				game.dynStats("lus=", 100, "resisted", false);
+				dynStats("lus=", 100, "resisted", false);
 				break;
 
 			//[Wither]
 				case 9:
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and sitting in the center is an artfully crafted paper doll.  Before your eyes, the doll springs to life, dancing about fancifully.  Without warning, it tosses a handful of sour-smelling orange powder into your face, then hops over the rim of the box and gallavants off into the woods.  Before you know what has happened, you feel the strength draining from your muscles, withering away before your eyes.");
 				outputText("\n\n<b>Oh no!  The kitsune's familiar has hit you with a strength draining spell!  Hopefully it's only temporary...</b>");
-				game.dynStats("str", -5, "tou", -5);
+				dynStats("str", -5, "tou", -5);
 				break;
 
 			//[Dud]
@@ -116,7 +116,7 @@
 				case 11:
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, but to your disappointment, the only other contents appear to be nothing more than twigs, leaves, and other forest refuse.  Upon further investigation, though, you find a shard of shiny black chitinous plating mixed in with the other useless junk.");
 					outputText("\n\n<b>At least you managed to salvage a shard of black chitin from it...</b>  ");
-				game.inventory.takeItem(game.useables.B_CHITN, game.inventory.inventoryMenu);
+				inventory.takeItem(useables.B_CHITN, inventory.inventoryMenu);
 				return(true);
 
 				default: trace("Kitsune's gift roll foobar...");
@@ -124,4 +124,3 @@
 			return(false); //Any other case does not have a sub-menu.
 		}
 	}
-

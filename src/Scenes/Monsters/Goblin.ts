@@ -67,7 +67,7 @@
 				else if (color == "black") {
 					//Increase fatigue
 					outputText("\nThe black fluid splashes all over you and wicks into your skin near-instantly.  It makes you feel tired and drowsy.\n", false);
-					game.fatigue(10 + rand(25));
+					fatigue(10 + rand(25));
 				}
 			}
 			if (!plural) combatRoundOver();
@@ -78,7 +78,7 @@
 			if(det == 0) outputText(capitalA + short + " runs her hands along her leather-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.", false);
 			if(det == 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She caresses her snatch and gives you a come hither look.", false);
 			if(det == 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.", false);
-			game.dynStats("lus", rand(player.lib/10)+8);
+			dynStats("lus", rand(player.lib/10)+8);
 			outputText("  The display distracts you long enough to prevent you from taking advantage of her awkward pose, leaving you more than a little flushed.\n\n", false);
 			combatRoundOver();
 		}
@@ -143,5 +143,3 @@
 		}
 
 	}
-
-

@@ -5,7 +5,7 @@
 	 * ...
 	 * @author Gedan
 	 */
-	export class TestContent extends BaseContent
+	export class TestContent
 	{
 		
 		public  constructor() 
@@ -20,12 +20,12 @@
 			outputText("<b>Parser Cheet Sheet:</b>\n\n");
 			outputText("Descriptor (descriptor.as) Functions:\n");
 			
-			outputText("\nsackDescript " + sackDescript());
+			outputText("\nsackDescript " + sackDescript(player));
 			outputText("\ncockClit " + cockClit);
 //			outputText("\nballs " + balls(0, 0));
 			outputText("\nsheathDesc " + player.sheathDesc());
-			outputText("\nchestDesc " + chestDesc());
-			outputText("\nallChestDesc " + allChestDesc());
+			outputText("\nchestDesc " + game.player.chestDesc());
+			outputText("\nallChestDesc " + game.player.allChestDesc());
 			outputText("\nsMultiCockDesc " + player.sMultiCockDesc());
 			outputText("\nSMultiCockDesc " + player.SMultiCockDesc());
 			outputText("\noMultiCockDesc " + player.oMultiCockDesc());
@@ -46,12 +46,12 @@
 			outputText("\nclitDescript " + clitDescript());
 			outputText("\nvaginaDescript " + vaginaDescript());
 			outputText("\nallVaginaDescript " + allVaginaDescript());
-			outputText("\nmultiCockDescriptLight " + multiCockDescriptLight());
+			outputText("\nmultiCockDescriptLight " + game.player.multiCockDescriptLight());
 			outputText("\ncockAdjective " + player.cockAdjective());
-			outputText("\ncockDescript " + cockDescript(0));
-			outputText("\nbiggestBreastSizeDescript " + biggestBreastSizeDescript());
+			outputText("\ncockDescript " + game.player.cockDescript(0));
+			outputText("\nbiggestBreastSizeDescript " + biggestBreastSizeDescript(player));
 			outputText("\nbreaseSize 5" + breastSize(5));
-			outputText("\nbreastDescript " + breastDescript(0));
+			outputText("\nbreastDescript " + game.player.breastDescript(0));
 			outputText("\ncockHead " + player.cockHead());
 			outputText("\nbreastCup 5 " + breastCup(5));
 			
@@ -111,4 +111,3 @@
 		}
 		
 	}
-

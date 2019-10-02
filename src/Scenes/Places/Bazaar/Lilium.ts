@@ -28,7 +28,7 @@ public  LiliumText(output:boolean = false):() => void {
 		//After paying:
 		else outputText("\n\nYou can see Lilium standing in her usual spot.", false);
 	}
-	if(model.time.hours >= 17) return approachLilium;
+	if(game.time.hours >= 17) return approachLilium;
 	return null;
 }
 
@@ -117,12 +117,12 @@ private  buttFuckTongueJeorb():void {
 	if(x < 0) x = 0;
 	outputText("The two of you find a secluded alley between two buildings.  Lilium removes her corset and skirt before moving to help you remove your " + player.armorName + ".\n\n", false);
 	
-	outputText("Squatting before you, she traces a single gloved finger along the underside of your " + cockDescript(x) + ", teasing it until it grows to its full " + Math.round(player.cocks[x].cockLength) + "-inch length.  Once your maleness has sprung to life, she turns around and bends over to brace herself against the wall before looking back over her shoulder at you mischievously and giving her hips a little wiggle.  Taking position behind her, you slide your " + cockDescript(x) + " between her soft thighs.", false);
+	outputText("Squatting before you, she traces a single gloved finger along the underside of your " + game.player.cockDescript(x) + ", teasing it until it grows to its full " + Math.round(player.cocks[x].cockLength) + "-inch length.  Once your maleness has sprung to life, she turns around and bends over to brace herself against the wall before looking back over her shoulder at you mischievously and giving her hips a little wiggle.  Taking position behind her, you slide your " + game.player.cockDescript(x) + " between her soft thighs.", false);
 	//(If player cock length > 8 inches)
-	if(player.cocks[x].cockLength > 8) outputText("  You can feel Lilium's smaller cock resting atop your " + cockDescript(x) + ".", false);
+	if(player.cocks[x].cockLength > 8) outputText("  You can feel Lilium's smaller cock resting atop your " + game.player.cockDescript(x) + ".", false);
 	outputText("  With each thrust you can feel more and more feminine lube coating your shaft as you glide across Lilium's labia, her dick stiffening with arousal.\n\n", false);
 
-	outputText("One last time, you slowly draw your " + cockDescript(x) + " from between her thighs and let it flop against her lower back, your hands moving from Lilium's hips to her pearlescent ass cheeks.  Spreading her wide, you let your " + cockDescript(x) + " gradually inch down the cleft between them until the head rests against her back entrance.  With an agonizing slowness you begin to push.  The faintest gasps escape Lilium's lips as her ass finally envelops the head of your cock, followed by a squeak of surprise as you suddenly drive the remaining length in; the force of your " + hipDescript() + " meeting her ass pushes her entirely up against the wall.\n\n", false);
+	outputText("One last time, you slowly draw your " + game.player.cockDescript(x) + " from between her thighs and let it flop against her lower back, your hands moving from Lilium's hips to her pearlescent ass cheeks.  Spreading her wide, you let your " + game.player.cockDescript(x) + " gradually inch down the cleft between them until the head rests against her back entrance.  With an agonizing slowness you begin to push.  The faintest gasps escape Lilium's lips as her ass finally envelops the head of your cock, followed by a squeak of surprise as you suddenly drive the remaining length in; the force of your " + hipDescript() + " meeting her ass pushes her entirely up against the wall.\n\n", false);
 	
 	outputText("Your lips part slightly as you let your tongue begin to extend.  It journeys around Lilium's trim waist and down across her taut tummy until it finds its target: her turgid penis.  Your long tongue wraps around her shaft tightly and as its tip meets her tip you can taste the pre-cum leaking through her perfumed cock sock.  You begin to massage the unholy herm's cock by flexing your tongue as you speed up your thrusts into her round ass.\n\n", false);
 	
@@ -135,7 +135,7 @@ private  buttFuckTongueJeorb():void {
 	}
 	outputText("\n\n", false);
 	
-	outputText("The pace of Lilium's breathing quickens and soon she begins to shudder as her cock throbs within your tongue's grasp.  Jets of the satanic streetwalker's cum shoot out against the tip of the sock and she lets out a moan of contentment.  Her internal muscles clench down on your shaft as she ejaculates, causing a wave of goose bumps to cover your body which signals your own impending orgasm.  Your knees buckle and tongue loses its grip on her sock; the wet fabric flies off her cock with her next spurt, hitting the ground with a tiny 'plap'.  The tingling across your body focuses itself in on the base of your " + cockDescript(x) + ", and you grab the root of Lilium's demonic tail for more leverage, pulling her roughly against you as you grunt loudly, the proof of your pleasure exploding into her bubble butt.  This final thrust forces an extra gout of cum from her cock, which then leaks down its tongue prison, giving you a last taste of her fluids.\n\n", false);
+	outputText("The pace of Lilium's breathing quickens and soon she begins to shudder as her cock throbs within your tongue's grasp.  Jets of the satanic streetwalker's cum shoot out against the tip of the sock and she lets out a moan of contentment.  Her internal muscles clench down on your shaft as she ejaculates, causing a wave of goose bumps to cover your body which signals your own impending orgasm.  Your knees buckle and tongue loses its grip on her sock; the wet fabric flies off her cock with her next spurt, hitting the ground with a tiny 'plap'.  The tingling across your body focuses itself in on the base of your " + game.player.cockDescript(x) + ", and you grab the root of Lilium's demonic tail for more leverage, pulling her roughly against you as you grunt loudly, the proof of your pleasure exploding into her bubble butt.  This final thrust forces an extra gout of cum from her cock, which then leaks down its tongue prison, giving you a last taste of her fluids.\n\n", false);
 
 	outputText("Panting, Lilium grabs your hands and moves them around her waist, holding them against her stomach.  ", false);
 	//(If naga body)
@@ -175,7 +175,7 @@ private  liliumDickRidah():void {
 
 	//(if player has breasts)
 	if(player.biggestTitSize() >= 1) {
-		outputText("You turn your attention to your own " + allBreastsDescript() + " and how they bounce from the force of your vigorous fucking, supporting the weight of your " + breastDescript(0) + " with your hands as you continue to ride Lilium's cock.", false);
+		outputText("You turn your attention to your own " + allBreastsDescript() + " and how they bounce from the force of your vigorous fucking, supporting the weight of your " + game.player.breastDescript(0) + " with your hands as you continue to ride Lilium's cock.", false);
 		//(if demonic tongue)
 		if(player.tongueType == TONUGE_DEMONIC) outputText("  Letting your demonic tongue extend out from between your lips, you wrap it around one " + nippleDescript(0) + " and gently squeeze, sending an electric thrill that flows to your core and back out to the tips of your fingers.", false);
 		//(else if no demonic tongue)
@@ -217,20 +217,20 @@ private  liliumNippleFuck():void {
 	
 	outputText("Lilium takes you to a secluded spot in the Bazaar for you to be able to enjoy each other's company. She kneels down before you and you strip out of your " + player.armorName + ", baring your naked body before her.\n\n", false);
 
-	outputText("Lilium begins to gently rub her palms against the side of your flacid cock.  As it begins to harden in her hands she leans in close, letting it grow stiff against her soft cheek.  You feel her wet tongue against the base of your " + cockDescript(x) + " before it begins sliding along the underside of your cock as Lilium licks the length of your maleness right to the tip.  ", false);
+	outputText("Lilium begins to gently rub her palms against the side of your flacid cock.  As it begins to harden in her hands she leans in close, letting it grow stiff against her soft cheek.  You feel her wet tongue against the base of your " + game.player.cockDescript(x) + " before it begins sliding along the underside of your cock as Lilium licks the length of your maleness right to the tip.  ", false);
 	//(If cock is pierced)
 	if(player.cocks[x].pierced > 0) outputText("You can feel a slight bump as her tongue passes over each piercing and she gives the head of your cock a flick with the tip of her tongue as she reaches the end.  ", false);
 	//(else)
-	else outputText("As her tongue reaches the end of its journey she gives the head of your " + cockDescript(x) + " a little flick with the tip of her tongue.  ", false);
-	outputText("Taking one black tress in hand she draws it slowly across your glans, sending a shiver down your spine. Taking obvious delight in your reaction she starts brushing the lock of plush hair up and down your shaft.  You can see her bring her free hand up to her breast as she continues to tickle your " + cockDescript(x) + " with the soft strands of hair.  At first she cups and massages the pale flesh slightly, before slipping a finger inside her rosy nipplecunt.  She bites down on her lip as she begins working the finger in and out.\n\n", false);
+	else outputText("As her tongue reaches the end of its journey she gives the head of your " + game.player.cockDescript(x) + " a little flick with the tip of her tongue.  ", false);
+	outputText("Taking one black tress in hand she draws it slowly across your glans, sending a shiver down your spine. Taking obvious delight in your reaction she starts brushing the lock of plush hair up and down your shaft.  You can see her bring her free hand up to her breast as she continues to tickle your " + game.player.cockDescript(x) + " with the soft strands of hair.  At first she cups and massages the pale flesh slightly, before slipping a finger inside her rosy nipplecunt.  She bites down on her lip as she begins working the finger in and out.\n\n", false);
 
-	outputText("Not content with just the teasing Lilium continues to give your " + cockDescript(x) + ", you grab her shoulders and push her back against the wall, the shock of which causes her finger to come free of her nipple.  With one hand you line the head of your " + cockDescript(x) + " up with the now dripping entrance to her breast and drive forward.  There is a slight resistance at first, but then Lilium coos as you overcome it and her breast envelops you.  Her boobs are sadly not large enough to take you to the hilt, but pumping part of your shaft in and out of her chest is pleasurable all the same. The soft flesh mound distorts as you fuck it, stretching out as you draw back and squishing together as you thrust in.  Lilium's eyes unfocus and she begins to pant louder and louder as you fuck her breast.\n\n", false);
+	outputText("Not content with just the teasing Lilium continues to give your " + game.player.cockDescript(x) + ", you grab her shoulders and push her back against the wall, the shock of which causes her finger to come free of her nipple.  With one hand you line the head of your " + game.player.cockDescript(x) + " up with the now dripping entrance to her breast and drive forward.  There is a slight resistance at first, but then Lilium coos as you overcome it and her breast envelops you.  Her boobs are sadly not large enough to take you to the hilt, but pumping part of your shaft in and out of her chest is pleasurable all the same. The soft flesh mound distorts as you fuck it, stretching out as you draw back and squishing together as you thrust in.  Lilium's eyes unfocus and she begins to pant louder and louder as you fuck her breast.\n\n", false);
 
 	var doubleNipFuck:boolean = false;
 	//(if multicock)
 	if(player.cockTotal() >= 2) {
 		doubleNipFuck = true;
-		outputText("Thinking it unfair that just one of her breasts receives your attention, you grab another of your " + multiCockDescriptLight() + " and unceremoniously jam it into Lilium's lonely nipple-cunt, causing her to let out a loud squeal from the extra penetration.  The extra purchase on Lilium's body from both your cocks now being inside her breasts causes the demon's body to rock back and forth vigorously with each of your thrusts.  You move yourself backwards slightly, pulling her with you away from the wall to avoid concussing her.  When you resume your thrusts you can hear her moans warble as her body rocks with yours.\n\n", false);
+		outputText("Thinking it unfair that just one of her breasts receives your attention, you grab another of your " + game.player.multiCockDescriptLight() + " and unceremoniously jam it into Lilium's lonely nipple-cunt, causing her to let out a loud squeal from the extra penetration.  The extra purchase on Lilium's body from both your cocks now being inside her breasts causes the demon's body to rock back and forth vigorously with each of your thrusts.  You move yourself backwards slightly, pulling her with you away from the wall to avoid concussing her.  When you resume your thrusts you can hear her moans warble as her body rocks with yours.\n\n", false);
 		doubleNipFuck = true;
 	}
 	//(else if demon/naga tail)
@@ -265,4 +265,3 @@ private  liliumNippleFuck():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

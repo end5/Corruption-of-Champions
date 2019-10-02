@@ -9,7 +9,7 @@
 //const PHYLLA_GEMS_HUNTED_TODAY:int = 893;
 
 export function playerMenu():void {
-	if (!inCombat) spriteSelect(-1);
+	if (!game.inCombat) spriteSelect(-1);
 	mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", charCreation.newGameGo);
 	mainView.nameBox.visible = false;
 	if (gameState == 1 || gameState == 2) {
@@ -18,12 +18,12 @@ export function playerMenu():void {
 	}
 	//Clear restriction on item overlaps if not in combat
 	plotFight = false;
-	if (inDungeon) {
+	if (game.inDungeon) {
 		dungeonMenu();
 		return;
 	}
-	else if (inRoomedDungeon) {
-		if (inRoomedDungeonResume != null) inRoomedDungeonResume();
+	else if (game.inRoomedDungeon) {
+		if (game.inRoomedDungeonResume != null) game.inRoomedDungeonResume();
 		return;
 	}
 	flags[kFLAGS.PLAYER_PREGGO_WITH_WORMS] = 0;
@@ -100,8 +100,8 @@ export function gameOver(clear:boolean = false):void { //Leaves text on screen u
 		gameOverMenuOverride();
 		
 	}
-	inCombat = false;
-	dungeonLoc = 0; //Replaces inDungeon = false;
+	game.inCombat = false;
+	game.dungeonLoc = 0; //Replaces inDungeon = false;
 }
 
  function gameOverMenuOverride():void { //Game over event; override whatever the fuck has been done to the UI up to this point to force display of the data and new game buttons
@@ -132,15 +132,15 @@ public function doSystem(eventNo:Number):void {
 			}
 			//Clear restriction on item overlaps if not in combat
 			plotFight = false;
-			if (inDungeon) {
+			if (game.inDungeon) {
 //This is now automatic - newRound arg defaults to true				menuLoc = 0;
 				dungeonMenu();
 				return;
 			}
-			else if (inRoomedDungeon)
+			else if (game.inRoomedDungeon)
 			{
 //This is now automatic - newRound arg defaults to true				menuLoc = 0;
-				if (inRoomedDungeonResume != null) inRoomedDungeonResume();
+				if (game.inRoomedDungeonResume != null) game.inRoomedDungeonResume();
 				return;
 			}
 //This is now automatic - newRound arg defaults to true			menuLoc = 0;
@@ -491,20 +491,20 @@ export function goNext(time:number, needNext:boolean):boolean  {
 	}
 	while (timeQ > 0) {
 		timeQ--;
-		model.time.hours++;
+		game.time.hours++;
 		genderCheck();
 		regeneration(false);
 		//Inform all time aware classes that a new hour has arrived
 		for (const tac = 0; tac < _timeAwareClassList.length; tac++) if (_timeAwareClassList[tac].timeChange()) needNext = true;
-		if (model.time.hours > 23) {
-			model.time.hours = 0;
-			model.time.days++;
+		if (game.time.hours > 23) {
+			game.time.hours = 0;
+			game.time.days++;
 		}
-		else if (model.time.hours == 21) {
+		else if (game.time.hours == 21) {
 			outputText("\nThe sky darkens as a starless night falls.  The blood-red moon slowly rises up over the horizon.\n");
 			needNext = true;
 		}
-		else if (model.time.hours == 6) {
+		else if (game.time.hours == 6) {
 			outputText("\nThe sky begins to grow brighter as the moon descends over distant mountains, casting a few last ominous shadows before they burn away in the light.\n");
 			needNext = true;
 		}
@@ -528,8 +528,8 @@ export function goNext(time:number, needNext:boolean):boolean  {
 		if (player.findPerk(PerkLib.PiercedLethite) >= 0) temp += 4;
 		if (player.inHeat) temp += 2;
 		if (vapula.vapulaSlave()) temp += 7;
-		if (model.time.hours == 2) {
-			if (model.time.days % 30 == 0 && flags[kFLAGS.ANEMONE_KID] > 0 && player.hasCock() && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
+		if (game.time.hours == 2) {
+			if (game.time.days % 30 == 0 && flags[kFLAGS.ANEMONE_KID] > 0 && player.hasCock() && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
 				anemoneScene.goblinNightAnemone();
 				needNext = true;
 			}
@@ -825,10 +825,10 @@ export function goNext(time:number, needNext:boolean):boolean  {
 export function cheatTime(time:number):void {
 	while(time > 0) {
 		time--;
-		model.time.hours++;
-		if(model.time.hours > 23) {
-			model.time.days++;
-			model.time.hours = 0;
+		game.time.hours++;
+		if(game.time.hours > 23) {
+			game.time.days++;
+			game.time.hours = 0;
 		}
 	}
 	statScreenRefresh();

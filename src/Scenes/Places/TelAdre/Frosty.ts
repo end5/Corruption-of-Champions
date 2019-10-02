@@ -73,7 +73,7 @@ public  frostyMainMenu():void
 	if(player.gems >= 200) addButton(3,"x20",cupcakeBuy,20);
 	if(flags[kFLAGS.SIGNED_FROSTYS_CONTRACT] == 0) addButton(8,"Contract",getAFuckingFuckContractFromFucks);
 	else addButton(8,"Specials",frostysLimitedSpecialMenu);
-	addButton(9,"Leave",kGAMECLASS.telAdre.telAdreMenu);
+	addButton(9,"Leave",telAdre.telAdreMenu);
 	
 }
 
@@ -136,7 +136,7 @@ public  noIDontWantAFreebieDiseaseYouSlut():void {
 	clearOutput();
 	outputText("You’re too busy right now, so you deny the free service. “<i>Okeydokey, see you around, [name]!</i>” Frosty does a twirl on one foot and runs back to her stand. Such a nice girl.");
 	menu();
-	addButton(0,"Next",kGAMECLASS.telAdre.telAdreMenu);
+	addButton(0,"Next",telAdre.telAdreMenu);
 }
 
 //[No](for the contract)
@@ -146,7 +146,7 @@ public  noContractForMeSloot():void {
 	outputText("\n\n“<i>Well, you can still buy my tasty cupcakes. You just won’t get any perks for buying them, but eating them is a benefit in its own way. Join the BETA if you change your mind on the whole thing.</i>”");
 	outputText("\n\nYou nod at her suggestion and make your way back to the main street.");
 	menu();
-	addButton(0,"Next",kGAMECLASS.telAdre.telAdreMenu);
+	addButton(0,"Next",telAdre.telAdreMenu);
 }
 
 //[Choosing Buttons 1-4]
@@ -511,10 +511,10 @@ function pitcherInTheRyeAndByRyeIMeanFrostysBrownHole():void
 	clearOutput();
 	outputText("“<i>Ok, let’s see if you can strike me out.</i>”  She closes one eye and sticks her tongue out at you.  This girl has a few screws loose, doesn’t she? You see her pull the strings of her bikini-bottom and you can assume she bare ass naked  behind the counter now. Through you couldn’t really see from where you standing, as the countertop is a little above waist level to her. She motions for you to walk around and join her on the cashier side.  You move around the counter, and you were right, her bikini bottom has fallen to the  ground and Frosty is practically naked, save for the little bit of cloth holding back her massive, pink tits.");
 	outputText("\n\n“<i>Well, what are you waiting for? Get that thing out and let the fun start!</i>\"");
-	outputText("\n\nYou squeeze behind her, there being just enough room for the two to stand front to butt from one another, your body squishing against her soft back-side.  You reach into your [armor] and release your " + multiCockDescriptLight() + " from ");
+	outputText("\n\nYou squeeze behind her, there being just enough room for the two to stand front to butt from one another, your body squishing against her soft back-side.  You reach into your [armor] and release your " + game.player.multiCockDescriptLight() + " from ");
 	if(player.cockTotal() == 1) output("its");
 	else output("their");
-	outputText(" prision, the hot mass getting tangled in the curly hair draping over her back. It’ll take some maneuvering from the both of you but eventually your cock-head makes contact with her tight pink hole. Frosty take a deep breath and starts easing her-self down your " + cockDescript(x) + ". It takes her only a few moment for your cock to  be snugly secured in her insides. She stands up straight and the grip around your cock becomes tighter. She breath out “This is like the only service where I can man the shop and pleasure a customer, a bit exhausting but business is business.”   
+	outputText(" prision, the hot mass getting tangled in the curly hair draping over her back. It’ll take some maneuvering from the both of you but eventually your cock-head makes contact with her tight pink hole. Frosty take a deep breath and starts easing her-self down your " + game.player.cockDescript(x) + ". It takes her only a few moment for your cock to  be snugly secured in her insides. She stands up straight and the grip around your cock becomes tighter. She breath out “This is like the only service where I can man the shop and pleasure a customer, a bit exhausting but business is business.”   
 
 “Mph, you reply as you begin to rock your [hips], starting the pleasurable fiction. As you begin revving up, a centauress trot over to the booth. She has blonde hair done up in a bun and is sporting  two big lovely breast. She looks perplexed on why you're standing behind Frosty and why she’s breathing heavily and has a flushed look on her face. It’s doesn’t take long for her to put two and two together. She’s about to give you two some privately but Frosty quickly stops her.
 	
@@ -532,7 +532,7 @@ The centauress comes back, trying her best to ignore you fucking the back-door o
 
 Frosty regains as much composure as she can with you still going at it. She goes back to talking to the centauress, who looks more flushed than Frosty does right now
 “As-as-as I was saying. yooooou can get get p-p-points...”  Frosty let’s out a moan, she’s been holding back, out.
-“points! for every i-i-i-item you buy.  The-the-these point can be used to-to-to fuck meeeee!!!!” she blurts out that last part out and just fully indulges herself in you. Sticking her tongue out like a panting bitch, her eyes dreamily half-closed  with lusty ass pleasure. Letting out any little moan that builds up in her.  “More, MORE!” she yells and you grab her long legs out from under her and hold them up.  Frosty entire weight is pushed down on your [cockDescript(0)] and her pink ass-hole is bounced every time you thrust up, making her pink tits jiggle out  from her top and bounce as fuck this nympho slut. 
+“points! for every i-i-i-item you buy.  The-the-these point can be used to-to-to fuck meeeee!!!!” she blurts out that last part out and just fully indulges herself in you. Sticking her tongue out like a panting bitch, her eyes dreamily half-closed  with lusty ass pleasure. Letting out any little moan that builds up in her.  “More, MORE!” she yells and you grab her long legs out from under her and hold them up.  Frosty entire weight is pushed down on your [game.player.cockDescript(0)] and her pink ass-hole is bounced every time you thrust up, making her pink tits jiggle out  from her top and bounce as fuck this nympho slut. 
 
 The centauress stares at this show, biting on her knuckle and holding her side. Making her already big chest puppies look even perkier.  She must be trying to hold back some new feeling she has, now that she’s seeing your cock going directly into Frosty’s ass, in and out as she moans like a bimbo in heat. She must be imagining what it must feels like while trying to resist the thought at the same time. You gaze catches the centauress’, she bashfully looks away. Taking a side-glance at your fuck stick.  
 
@@ -615,7 +615,7 @@ You continue to stare at her with those cold eyes, her smiling back at them, hop
 
 You re-brace yourself as Frosty grabs onto your [hair.descipt] this time.  You arch your back  in pain  causing you to be pushed harder against the sex toy, you whine a little in agony as that devilous nymph begins rocking back and forth, you can feel the object move in you. 
 
-It moves only few inches on your onsides. Your mind starts racing with pleasure as Frosty’s other hand wanders over your [allBreastsDescript] and pinches on your [nippleDescript(0)], pulling and twisting the nip and taking nice hard grabs at your [ breastDescript(0)] A familiar build-up forms down in your crotch, you start pushing back against Frosty’s “cock” to hurry up the climax and start pinching your other [nippleDescript(0)] minicing the same action as the torturous nymph does, abusing the sensitive bud all in the name of sexaul pleasure.   
+It moves only few inches on your onsides. Your mind starts racing with pleasure as Frosty’s other hand wanders over your [allBreastsDescript] and pinches on your [nippleDescript(0)], pulling and twisting the nip and taking nice hard grabs at your [ game.player.breastDescript(0)] A familiar build-up forms down in your crotch, you start pushing back against Frosty’s “cock” to hurry up the climax and start pinching your other [nippleDescript(0)] minicing the same action as the torturous nymph does, abusing the sensitive bud all in the name of sexaul pleasure.   
 
 Frosty pushes your chest against the counter and starts thrusting more of the horsecock in and out of you, slapping her pink thighs against you [butt.descipt] when every push, A whole foot of body hot sex toy is being thrusted in with a loud smack and pulled back out with a moan from you.  Both of you keep twisting your nips, the desert hot wooden counter top, warming your chest and stomach, pushing the hands already against your body harder into you. She starting taking bigger thrust, pulling at least 2ft of the strap-on out of you and shoving it back in with echoing slap of flesh.  Your moans grow faster and her breath gets hotter, and in the next moment []
 
@@ -766,4 +766,3 @@ Maddie makes a fist and only pulls her arm back a little. Frosty braces herself 
 -WIP-*/
 
 	}
-

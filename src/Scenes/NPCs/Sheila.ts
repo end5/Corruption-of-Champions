@@ -21,7 +21,7 @@
 			if(player.tallness < 42 && rand(2) == 0) {
 				outputText("Sheila bounces up to you and crouches low, curling her body like a watchspring.  She uncoils with her fist aimed at your jaw, but you easily perform a crouch of your own and duck under her lanky form, unbending yourself to push her legs up as she flies harmlessly overhead.  You can hear a partial shriek before she crashes face-first into the dirt behind you.");
 				damage = 3 + rand(10);
-				damage = kGAMECLASS.doDamage(damage);
+				damage = doDamage(damage);
 				outputText(" (" + damage + ")");
 			}
 			//Miss:
@@ -34,13 +34,13 @@
 				else outputText(".");
 				outputText("  Blushing pinkly, she crosses her arms over her chest as she resumes her distance.");
 				//(+med-small lib-based lust damage to PC)
-				kGAMECLASS.dynStats("lus", 10+rand(player.sens/10));
+				dynStats("lus", 10+rand(player.sens/10));
 			}
 			//Hit:
 			else {
 				outputText("Sheila bounces up to you and crouches low, curling up her body like a watchspring.  The girl uncoils just as quickly, launching herself at your face with a fist raised in front of her.  She lands a staggering crack on your jaw which knocks your head back and blurs your vision!");
 				//deals minor concussion which adds 5-10 pts fatigue, may stun pc and prevent attack, misses while blinded or misfires on pcs under 3'6")
-				kGAMECLASS.fatigue(5+rand(5));
+				fatigue(5+rand(5));
 				if(rand(2) == 0 && player.findPerk(PerkLib.Resolute) < 0) {
 					player.createStatusAffect(StatusAffects.Stunned,1,0,0,0);
 					outputText("  <b>You are stunned!</b>");
@@ -63,7 +63,7 @@
 				outputText("Sheila squats down, then bounds explosively toward you!  She swings her leg out in front to kick, but you roll to the side and she slips past your shoulder.  You hear an \"<i>Oof!</i>\" as she lands on her butt behind you.  When you turn to look, she's already back to her feet, rubbing her smarting posterior and looking a bit embarrassed.");
 				//(small Sheila HP loss)
 				damage = 3 + rand(10);
-				damage = kGAMECLASS.doDamage(damage);
+				damage = doDamage(damage);
 				outputText(" (" + damage + ")");
 			}
 			//Hit:
@@ -78,7 +78,7 @@
 				if(damage < 1) damage = 2;
 				damage = player.takeDamage(damage);
 				outputText(" (" + damage + ")");
-				kGAMECLASS.fatigue(10+rand(6));
+				fatigue(10+rand(6));
 			}
 			spe += 60;
 			combatRoundOver();
@@ -118,7 +118,7 @@
 				if(findStatusAffect(StatusAffects.TwuWuv) < 0) {
 					createStatusAffect(StatusAffects.TwuWuv,0,0,0,0);
 					var counter:number = 40+rand(5);
-					showStatDown( 'inte' );
+					mainView.statsView.showStatDown( 'inte' );
 					// inteDown.visible = true;
 					// inteUp.visible = false;
 					while(counter > 0) {
@@ -129,7 +129,7 @@
 						counter--;
 					}
 				}
-				game.dynStats("lus", 30 + player.lib/10 + player.cor/10);
+				dynStats("lus", 30 + player.lib/10 + player.cor/10);
 			}
 			combatRoundOver();
 		}
@@ -144,7 +144,7 @@
 			else if(game.sheilaScene.sheilaCorruption() < 150) {
 				outputText("  As her hands run over the soft-looking mammaries, kneading and squeezing them, teasing the nipples relentlessly until she lets out a cute little moan, you feel the blood rush to your face.  \"<i>Enjoying this, are you?</i>\" she calls sweetly.  \"<i>Why don't you stop being contrary and come play with them too?</i>\"");
 				//med lib-based lust damage if 20 < sheila corruption < 150
-				game.dynStats("lus", 25+player.lib/10);
+				dynStats("lus", 25+player.lib/10);
 			}
 			//(else; 'miss')
 			else {
@@ -199,13 +199,13 @@
 			//Miss:
 			if(player.inte / 15 + rand(20) + 1 > 16) {
 				outputText("\n\nBefore the fantasy can advance, you recoil and pull out of the demon's hands, shoving her away.");
-				game.dynStats("lus", 15+player.sens/20 + player.lib/20);
+				dynStats("lus", 15+player.sens/20 + player.lib/20);
 			}
 			//(int check failed)
 			else {
 				outputText("\n\nYour ego's urgent danger warnings are drowned in a sea of rising lust, and you find yourself transfixed.  The vision continues until Sheila tires of fantasizing.");
 				//mild lib-based lust gain if PC resists; else big int drop and big lib-based lust gain plus Infest lock for remainder of fight
-				game.dynStats("lus", 25+player.sens/20 + player.lib/20);
+				dynStats("lus", 25+player.sens/20 + player.lib/20);
 				//harder to resist and bigger damage than normal Suspicious Glint
 			}
 			combatRoundOver();
@@ -219,11 +219,11 @@
 			//[(sheila corruption < 100; hit, 'light damage')]
 			if(game.sheilaScene.sheilaCorruption() < 100) {
 				outputText("The silence is broken with a giggle as the demon catches you in an embrace, pressing her " + game.sheilaScene.sheilaCup() + " breasts into you.  You shiver as she drags the perky nipples over your " + player.skinFurScales() + ", but push her away.");
-				game.dynStats("lus", 15+player.sens/20 + player.lib/20);
+				dynStats("lus", 15+player.sens/20 + player.lib/20);
 			}
 			else if(game.sheilaScene.sheilaCorruption() < 300) {
 				outputText("A sigh ends the silence as your body is partially enfolded in the hot valley of an aroused Sheila's cleavage. As the demon grabs you and pushes her tits into you, the skin-on-" + player.skinFurScales() + " contact makes you shiver, and your attempts to get free meet with some resistance... or rather, a lack of resistance, as the soft, yielding breast flesh quivers and heats to your touch without moving the demon overmuch.  You accidentally brush her nipples several times before you can escape, unleashing horny moans from Sheila that linger in your mind.");
-				game.dynStats("lus", 25+player.sens/20 + player.lib/20);
+				dynStats("lus", 25+player.sens/20 + player.lib/20);
 			}
 			else {//; miss)
 				outputText("You're a bit unnerved, but soon realize that you can tell where Sheila is by listening for the telltale sounds of her colossal breasts scraping the ground as she draws closer to you.  With this in mind, you continue to face your opponent and back away as you wipe your eyes.");
@@ -351,4 +351,3 @@
 		}
 
 	}
-

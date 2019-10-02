@@ -28,7 +28,7 @@
 			return game.player;
 		}
 		protected   outputText(text:string,clear:boolean=false):void{
-			game.outputText(text,clear);
+			outputText(text,clear);
 		}
 		protected   combatRoundOver():void{
 			game.combatRoundOver();
@@ -38,13 +38,13 @@
 			game.cleanupAfterCombat();
 		}
 		protected static  showStatDown(a:string):void{
-			kGAMECLASS.mainView.statsView.showStatDown(a);
+			mainView.statsView.showStatDown(a);
 		}
 		protected   statScreenRefresh():void {
 			game.statScreenRefresh();
 		}
 		protected   doNext(eventNo:() => void):void { //Now typesafe
-			game.doNext(eventNo);
+			doNext(eventNo);
 		}
 		protected   combatMiss():boolean {
 			return game.combatMiss();
@@ -598,7 +598,7 @@
 				attacks--;
 			}
 			removeStatusAffect(StatusAffects.Attacks);
-//			if (!game.combatRoundOver()) game.doNext(1);
+//			if (!game.combatRoundOver()) doNext(1);
 			game.combatRoundOver(); //The doNext here was not required
 		}
 
@@ -713,7 +713,7 @@
 			}
 			//Exgartuan gets to do stuff!
 			if (game.player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && game.player.statusAffectv2(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
-				if (game.exgartuan.exgartuanCombatUpdate()) game.outputText("\n\n", false);
+				if (game.exgartuan.exgartuanCombatUpdate()) outputText("\n\n", false);
 			}
 			if (findStatusAffect(StatusAffects.Constricted) >= 0) {
 				if (!handleConstricted()) return;
@@ -746,9 +746,9 @@
 		protected  handleConstricted():boolean
 		{
 			//Enemy struggles -
-			game.outputText("Your prey pushes at your tail, twisting and writhing in an effort to escape from your tail's tight bonds.", false);
+			outputText("Your prey pushes at your tail, twisting and writhing in an effort to escape from your tail's tight bonds.", false);
 			if (statusAffectv1(StatusAffects.Constricted) <= 0) {
-				game.outputText("  " + capitalA + short + " proves to be too much for your tail to handle, breaking free of your tightly bound coils.", false);
+				outputText("  " + capitalA + short + " proves to be too much for your tail to handle, breaking free of your tightly bound coils.", false);
 				removeStatusAffect(StatusAffects.Constricted);
 			}
 			addStatusValue(StatusAffects.Constricted, 1, -1);
@@ -764,17 +764,17 @@
 			if (statusAffectv1(StatusAffects.Fear) == 0) {
 				if (plural) {
 					removeStatusAffect(StatusAffects.Fear);
-					game.outputText("Your foes shake free of their fear and ready themselves for battle.", false);
+					outputText("Your foes shake free of their fear and ready themselves for battle.", false);
 				}
 				else {
 					removeStatusAffect(StatusAffects.Fear);
-					game.outputText("Your foe shakes free of its fear and readies itself for battle.", false);
+					outputText("Your foe shakes free of its fear and readies itself for battle.", false);
 				}
 			}
 			else {
 				addStatusValue(StatusAffects.Fear, 1, -1);
-				if (plural) game.outputText(capitalA + short + " are too busy shivering with fear to fight.", false);
-				else game.outputText(capitalA + short + " is too busy shivering with fear to fight.", false);
+				if (plural) outputText(capitalA + short + " are too busy shivering with fear to fight.", false);
+				else outputText(capitalA + short + " is too busy shivering with fear to fight.", false);
 			}
 			game.combatRoundOver();
 			return false;
@@ -785,8 +785,8 @@
 		 */
 		protected  handleStun():boolean
 		{
-			if (plural) game.outputText("Your foes are too dazed from your last hit to strike back!", false);
-			else game.outputText("Your foe is too dazed from your last hit to strike back!", false);
+			if (plural) outputText("Your foes are too dazed from your last hit to strike back!", false);
+			else outputText("Your foe is too dazed from your last hit to strike back!", false);
 			if (statusAffectv1(StatusAffects.Stunned) <= 0) removeStatusAffect(StatusAffects.Stunned);
 			else addStatusValue(StatusAffects.Stunned, 1, -1);
 			game.combatRoundOver();
@@ -838,7 +838,7 @@
 			if(temp > player.gems) temp = player.gems;
 			outputText("\n\nYou'll probably wake up in eight hours or so, missing " + temp + " gems.", false);
 			player.gems -= temp;
-			game.doNext(game.camp.returnToCampUseEightHours);
+			doNext(camp.returnToCampUseEightHours);
 		}
 
 		/**
@@ -1030,7 +1030,7 @@
 
 		protected  clearOutput():void
 		{
-			game.clearOutput();
+			clearOutput();
 		}
 
 		public  dropLoot():ItemType
@@ -1167,18 +1167,18 @@
 				//when Entwined
 				outputText("You are bound tightly in the kitsune's tails.  <b>The only thing you can do is try to struggle free!</b>\n\n");
 				outputText("Stimulated by the coils of fur, you find yourself growing more and more aroused...\n\n");
-				game.dynStats("lus", 5+player.sens/10);
+				dynStats("lus", 5+player.sens/10);
 			}
 			if(findStatusAffect(StatusAffects.QueenBind) >= 0) {
 				outputText("You're utterly restrained by the Harpy Queen's magical ropes!\n\n");
-				if(flags[kFLAGS.PC_FETISH] >= 2) game.dynStats("lus", 3);
+				if(flags[kFLAGS.PC_FETISH] >= 2) dynStats("lus", 3);
 			}
 			if(this instanceof SecretarialSuccubus || this instanceof MilkySuccubus) {
 				if(player.lust < 45) outputText("There is something in the air around your opponent that makes you feel warm.\n\n", false);
 				if(player.lust >= 45 && player.lust < 70) outputText("You aren't sure why but you have difficulty keeping your eyes off your opponent's lewd form.\n\n", false);
 				if(player.lust >= 70 && player.lust < 90) outputText("You blush when you catch yourself staring at your foe's rack, watching it wobble with every step she takes.\n\n", false);
 				if(player.lust >= 90) outputText("You have trouble keeping your greedy hands away from your groin.  It would be so easy to just lay down and masturbate to the sight of your curvy enemy.  The succubus looks at you with a sexy, knowing expression.\n\n", false);
-				game.dynStats("lus", 1+rand(8));
+				dynStats("lus", 1+rand(8));
 			}
 			//[LUST GAINED PER ROUND] - Omnibus
 			if(findStatusAffect(StatusAffects.LustAura) >= 0) {
@@ -1192,7 +1192,7 @@
 					if(temp == 1) outputText("You swoon and lick your lips, tasting the scent of the demon's pussy in the air.\n\n", false);
 					if(temp == 3) outputText("She winks at you and licks her lips, and you can't help but imagine her tongue sliding all over your body.  You regain composure moments before throwing yourself at her.  That was close.\n\n", false);
 				}
-				game.dynStats("lus", (3 + int(player.lib/20 + player.cor/30)));
+				dynStats("lus", (3 + int(player.lib/20 + player.cor/30)));
 			}
 		}
 		

@@ -27,8 +27,8 @@
 		public  boatExplore():void
 		{
 			//Helia monogamy fucks
-			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helScene.followerHel()) {
-				kGAMECLASS.helScene.helSexualAmbush();
+			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
+				helScene.helSexualAmbush();
 				return;
 			}
 			outputText("You reach the dock without any incident and board the small rowboat.  The water is calm and placid, perfect for rowing.  ", true);
@@ -37,8 +37,8 @@
 				if (player.inte > 40) outputText("You realize what it smells like – sex.  ", false);
 			}
 			//3% chance of finding lost daughters
-			if (rand(100) <= 3 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00412] > 0 && kGAMECLASS.izmaScene.izmaFollower()) {
-				kGAMECLASS.izmaScene.findLostIzmaKids();
+			if (rand(100) <= 3 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00412] > 0 && izmaScene.izmaFollower()) {
+				izmaScene.findLostIzmaKids();
 				return;
 			}
 			outputText("You set out, wondering if you'll find any strange islands or creatures in the lake.\n\n", false);
@@ -48,7 +48,7 @@
 				return;
 			}
 			//10% chance of corrupt Marae followups
-			if ((debug || rand(10) == 0) && flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] == 0 && player.findStatusAffect(StatusAffects.MetCorruptMarae) >= 0 && player.gender > 0) {
+			if ((game.debug || rand(10) == 0) && flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] == 0 && player.findStatusAffect(StatusAffects.MetCorruptMarae) >= 0 && player.gender > 0) {
 				marae.level2MaraeEncounter();
 				return;
 			}
@@ -79,10 +79,9 @@
 					lake.fetishZealotScene.zealotBoat();
 					return;
 				case 5:
-					kGAMECLASS.anemoneScene.mortalAnemoneeeeee();
+					anemoneScene.mortalAnemoneeeeee();
 					return;
 			}
 
 		}
 	}
-

@@ -25,7 +25,7 @@
 			outputText("The demoness blinks her eyes closed and knits her eyebrows in concentration.  The red orbs open wide and she smiles, licking her lips.   The air around her grows warmer, and muskier, as if her presence has saturated it with lust.");
 			if (findStatusAffect(StatusAffects.LustAura) >= 0) {
 				outputText("  Your eyes cross with unexpected feelings as the taste of desire in the air worms its way into you.  The intense aura quickly subsides, but it's already done its job.");
-				game.dynStats("lus", (8 + int(player.lib / 20 + player.cor / 25)));
+				dynStats("lus", (8 + int(player.lib / 20 + player.cor / 25)));
 			}
 			else {
 				createStatusAffect(StatusAffects.LustAura, 0, 0, 0, 0);
@@ -48,15 +48,15 @@
 				else {
 					outputText("The milk splashes into your " + player.armorName + ", soaking you effectively.  ");
 					if (player.cocks.length > 0) {
-						outputText("Your " + cockDescript(0) + " gets hard as the milk lubricates and stimulates it.  ");
-						game.dynStats("lus", 5);
+						outputText("Your " + game.player.cockDescript(0) + " gets hard as the milk lubricates and stimulates it.  ");
+						dynStats("lus", 5);
 					}
 					if (player.vaginas.length > 0) {
 						outputText("You rub your thighs together as the milk slides between your pussy lips, stimulating you far more than it should.  ");
-						game.dynStats("lus", 5);
+						dynStats("lus", 5);
 					}
 				}
-				game.dynStats("lus", 7 + player.sens / 20);
+				dynStats("lus", 7 + player.sens / 20);
 				if (player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript() + " in sympathy.");
 			}
 			game.combatRoundOver();
@@ -110,4 +110,3 @@
 		}
 		
 	}
-

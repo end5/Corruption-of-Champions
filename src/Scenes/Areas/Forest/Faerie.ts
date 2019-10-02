@@ -1,7 +1,7 @@
  
 	 
 
-	export class Faerie extends BaseContent{
+	export class Faerie{
 
 	public  constructor()
 	{
@@ -210,21 +210,21 @@ private  faerieCaptureHJ():void {
 		outputText("You hold her tightly and scold her, \"<i>If you don't like hard cocks, you shouldn't be dressed up like a such a slut, flying around and teasing me like that.  You should be ashamed of yourself.  Now you've got me all worked up - so you better make it up to me and take care of my little 'problem'</i>.\"\n\n", false);
 		outputText("She looks up at you and gulps before nodding silently, unwilling or unable to resist your command.   ", false);
 	}
-	outputText("You let her loose and she hovers in place, as if pondering her one last chance to escape.  She sighs and looks back up, blushing fiercely as she lands on your hip and gazes down at the bulge of your groin.  You can't help but laugh as she slips under your " + player.armorName + ", crawling across your sensitive thigh towards your " + multiCockDescriptLight() + ".\n\n", false);
+	outputText("You let her loose and she hovers in place, as if pondering her one last chance to escape.  She sighs and looks back up, blushing fiercely as she lands on your hip and gazes down at the bulge of your groin.  You can't help but laugh as she slips under your " + player.armorName + ", crawling across your sensitive thigh towards your " + game.player.multiCockDescriptLight() + ".\n\n", false);
 	//Taurs get a special scene!
 	if(player.isTaur()) {
-		outputText("The tiny Faerie climbs on top of your " + cockDescript(0), false);
+		outputText("The tiny Faerie climbs on top of your " + game.player.cockDescript(0), false);
 		if(player.cockTotal() > 0) outputText("largest " + Appearance.cockNoun(CockTypesEnum.HUMAN), false);
 		outputText(" and crawls about on it for a while, getting used to its shape and taking in deep lungfuls of its musky odor. She wraps herself around you and begins rubbing herself up and down your hard length. As she moves around her tiny slit leaks cum in long streaks, teasing you with a cunt you can't penetrate. Pre begins to leak steadily from your tip as the faerie continues to work her way around, moaning quietly and betraying her inner desire.\n\n", false);
 		outputText("Your body begins to naturally jerk forward and backward, attempting to hump the mare that isn't there. You can feel the faerie sliding about until she clenches onto you tighter, which only serves to make you hump harder. Realizing her mistake too late, she attempts to loosen herself, but your wild bucking sends her flying forward.\n\n", false);
-		outputText("She smashes onto the end of your " + multiCockDescriptLight() + " and grasps at it. Her face crushes into your urethra as her tiny legs wrap themselves around the tip. Your wildly flailing cock starts to grow larger as your orgasm approaches, but the faerie doesn't notice as she happily drinks up your pre.\n\n", false);
+		outputText("She smashes onto the end of your " + game.player.multiCockDescriptLight() + " and grasps at it. Her face crushes into your urethra as her tiny legs wrap themselves around the tip. Your wildly flailing cock starts to grow larger as your orgasm approaches, but the faerie doesn't notice as she happily drinks up your pre.\n\n", false);
 		//[No testicles:
 		if(player.balls == 0) outputText("Your tiny globules of semen go straight into her open mouth and she sucks them down gleefully before falling with a splat onto the pre soaked ground.\n\n", false);
 		else {
 			//[Small amount of cum:
 			if(player.cumQ() < 50) outputText("Your semen splashes straight into her face and she's quick to suck it up. She falls with a splat onto the pre soaked ground while your member drips periodic droplets of cum onto her head.\n\n", false);
 			//[Normal amount of cum:
-			else if(player.cumQ() < 200) outputText("Your semen washes into her face and she loses her grip on your " + multiCockDescriptLight() + ". She falls with a splat onto the pre soaked ground and you spray her with periodic spurts of fresh cum.\n\n", false);
+			else if(player.cumQ() < 200) outputText("Your semen washes into her face and she loses her grip on your " + game.player.multiCockDescriptLight() + ". She falls with a splat onto the pre soaked ground and you spray her with periodic spurts of fresh cum.\n\n", false);
 			//[Huge amount of cum:
 			else outputText("Your semen collides with her face and she is propelled off of your cock onto the pre soaked ground. Your " + ballsDescriptLight() + " continue pumping out cum like a hose until she's almost swimming in it.\n\n", false);
 		}
@@ -241,9 +241,9 @@ private  faerieCaptureHJ():void {
 	else {
 		outputText("The faerie reaches your swollen member and ", false);
 		if(player.hasKnot(0)) outputText("climbs atop your knot, wrapping her legs around the narrower shaft to hold on.  You can feel her cheeks resting atop the 'bulb' of your canine anatomy, teasing you with feminine features you're far too large to penetrate.  ", false);
-		else if(player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("climbs atop your " + cockDescript(0) + ", hanging onto your ring of prepuce and wrapping her legs as far around your horse-like maleness as she can.  ", false);
-		else if(player.cocks[0].cockType == CockTypesEnum.DEMON) outputText("climbs atop your " + cockDescript(0) + ", hanging on to the corrupted nubs and nodules as she threads her legs between them, squeezing you tightly as she hangs on.  You can feel her wet gash sitting atop a particularly sensitive bump, teasing you with a tiny cunt you'll never be able to penetrate.  ", false);
-		else if(player.cocks[0].cockType == CockTypesEnum.TENTACLE) outputText("climbs onto your squirming " + cockDescript(0) + ", wrapping her legs tightly around it as it wiggles and writhes with excitement.  Unbidden, it curls around and rubs its reddish-purple head against her face like an animal.  She gives it a gentle squeeze and licks it.  ", false);
+		else if(player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("climbs atop your " + game.player.cockDescript(0) + ", hanging onto your ring of prepuce and wrapping her legs as far around your horse-like maleness as she can.  ", false);
+		else if(player.cocks[0].cockType == CockTypesEnum.DEMON) outputText("climbs atop your " + game.player.cockDescript(0) + ", hanging on to the corrupted nubs and nodules as she threads her legs between them, squeezing you tightly as she hangs on.  You can feel her wet gash sitting atop a particularly sensitive bump, teasing you with a tiny cunt you'll never be able to penetrate.  ", false);
+		else if(player.cocks[0].cockType == CockTypesEnum.TENTACLE) outputText("climbs onto your squirming " + game.player.cockDescript(0) + ", wrapping her legs tightly around it as it wiggles and writhes with excitement.  Unbidden, it curls around and rubs its reddish-purple head against her face like an animal.  She gives it a gentle squeeze and licks it.  ", false);
 		else outputText("climbs on to your hardness, wrapping her legs tightly around it as she secures a perch against you.   You can feel her wet gash rubbing against your sensitive skin, teasing you with a tiny cunt you'll never be able to penetrate.  ", false);
 		outputText("Your internal muscles clench unconsciously, squeezing out a dollop of pre that rolls down into the faerie's hair, soaking her head and face.  You can't see her reaction, but you can feel it oozing between her body and you, lubricating her as she humps and rubs against you.  Tiny muffled moans escape your " + player.armorName + ", indicating that some part of her is enjoying the task.\n\n", false);
 		outputText("Though she can only stimulate a few inches of you at a time, it feels really good – better than it should, and a budding warmth on the edge of release builds inside you.  Too late you realize you should have gotten at least partially undressed.  You cum before you can do anything about it, splattering your " + player.armorName + " with seed and leaving a wet patch on the crotch.  You can feel it dripping back onto you and the faerie as more spunk squirts out, soaking the tiny girl in spooge as the wet spot grows.  ", false);
@@ -269,4 +269,3 @@ private  faerieCaptureHJ():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

@@ -54,12 +54,12 @@
 		
 		 public  defeated(hpVictory:boolean):void
 		{
-			game.d3.driderIncubus.beatTheSpooderbutt(hpVictory);
+			d3.driderIncubus.beatTheSpooderbutt(hpVictory);
 		}
 		
 		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
-			game.d3.driderIncubus.spooderbuttGetsANewCockSleeve(hpVictory, pcCameWorms);
+			d3.driderIncubus.spooderbuttGetsANewCockSleeve(hpVictory, pcCameWorms);
 		}
 		
 		private  _goblinFree:boolean = false;
@@ -234,7 +234,7 @@
 				}
 				
 				player.str -= amount;
-				showStatDown('str');
+				mainView.statsView.showStatDown('str');
 				player.addStatusValue(StatusAffects.DriderIncubusVenom, 2, amount);
 					
 				//Alternate if PC cannot move
@@ -279,7 +279,7 @@
 					}
 					
 					player.str -= amount;
-					showStatDown('str');
+					mainView.statsView.showStatDown('str');
 					player.addStatusValue(StatusAffects.DriderIncubusVenom, 2, amount);
 				}				
 			}
@@ -405,7 +405,7 @@
 				outputText(" ache to be touched");
 			}
 			
-			game.dynStats("lus", (player.lib / 10 + player.cor / 10) + 15);
+			dynStats("lus", (player.lib / 10 + player.cor / 10) + 15);
 			
 			outputText(". Your body rebels against you under the unholy influence");
 			if (player.lust < 100) outputText(", but the effect is fleeting, thankfully. You try to ignore the residual tingles. You can’t afford to lose this close to your goal!");
@@ -427,7 +427,7 @@
 		public  taintedMindAttackAttempt():void
 		{
 			outputText("You ready an attack, but find your hands groping your own body instead. Somehow the demon’s magic has made it impossible to strike at him, crossing wires that weren’t meant to be crossed. Frowning, you look down at your more aroused form, determined not to fall for this a second time.");
-			game.dynStats("lus", 15);
+			dynStats("lus", 15);
 		}
 		
 		//On same round timer as physical stun
@@ -446,7 +446,7 @@
 			else
 			{
 				outputText(" The intensity overwhelms your ability to act, arousing and stunning you.");
-				game.dynStats("lus", (player.lib / 15 + player.cor / 15) + 15);
+				dynStats("lus", (player.lib / 15 + player.cor / 15) + 15);
 				player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
 			}
 		}
@@ -469,7 +469,7 @@
 			{
 				//Fail
 				outputText(" You concentrate to try and throw it off, but he overwhelms your mental defenses. Clouds of swirling pink filled with unsubtle erotic silhouettes fill your vision, effectively blinding you!");
-				game.dynStats("lus", 25);
+				dynStats("lus", 25);
 				player.createStatusAffect(StatusAffects.PurpleHaze, 2 + rand(2), 0, 0, 0);
 				player.createStatusAffect(StatusAffects.Blind, player.statusAffectv1(StatusAffects.PurpleHaze), 0, 0, 0);
 			}
@@ -533,7 +533,7 @@
 			outputText("\n\nShe dances and spins to the side, cooing, <i>“Don’t you want me anymore, baby? Look how ready I am”</i> Her nipples are taut and stiff, and the junction between her thighs absolutely drenched. Neither you nor your foe can keep from sparing lusty glances her way.");
 			
 			lust += 7;
-			game.dynStats("lus", 7);
+			dynStats("lus", 7);
 		}
 		
 		public  freeGoblin():void
@@ -544,6 +544,6 @@
 			outputText("\n\nYou’re forced to drop her as the enraged drider prepares his counterattack. She lands on her feet, surprisingly enough.");
 			outputText("\n\n<i>“Oh, forgive me master! I’ll still get you off - I promise!”</i> The green slut wiggles away from you, trying to get at her master’s loins.");
 			outputText("\n\nWell... maybe she didn’t want free after all. At least she’ll make for a good distraction.");
-			kGAMECLASS.enemyAI();
+			enemyAI();
 		}
 	}

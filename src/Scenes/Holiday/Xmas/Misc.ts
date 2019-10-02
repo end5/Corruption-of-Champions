@@ -31,7 +31,7 @@ export function candyCaneTrapDiscovery():void {
 	menu();
 	addButton(0,"Investigate",investigateCandyCaneBun);
 	addButton(4,"Leave",leaveBeforeMeetingCandyCaneBun);
-	trace("FUNC SETUP LENGTH: " + funcs.length);
+	// trace("FUNC SETUP LENGTH: " + funcs.length);
 }
 
 //LEAVE
@@ -335,15 +335,15 @@ export function giveKamiTheChristmasRooAnal():void {
 	outputText("\n\nKami squeals between each of your dominating thrusts");
 	//[If player has balls]
 	if(player.balls > 0) outputText(", your balls slapping against her with every push");
-	outputText(".  \"<i>Anh! No! Ah!</i>\"  She winces between each thrust, your [hips] doing little to help as they pick up the pace.  You continue pounding her ass for as long as you can, briefly releasing her wrists to give her bubble-butt a hard smack.  Kami's passage is warm and moist with your pre, and it isn't long before you find your cock sliding in and out of your slut's snug ass-tunnel as if it was made for you.  Eventually, Kami's vice-like grip on your " + cockDescript(x) + " loosens, and she begins lose herself to your dominating display.  Swaying her head side to side in enjoyment, you fuck her raw and hard - her hat bobbing up and down in a manner as hypnotising as her jiggling flesh.  You pull her to the ground to give her your final few thrusts before you churn out your spunk, falling over her and weakly bucking like some manner of beast.");
+	outputText(".  \"<i>Anh! No! Ah!</i>\"  She winces between each thrust, your [hips] doing little to help as they pick up the pace.  You continue pounding her ass for as long as you can, briefly releasing her wrists to give her bubble-butt a hard smack.  Kami's passage is warm and moist with your pre, and it isn't long before you find your cock sliding in and out of your slut's snug ass-tunnel as if it was made for you.  Eventually, Kami's vice-like grip on your " + game.player.cockDescript(x) + " loosens, and she begins lose herself to your dominating display.  Swaying her head side to side in enjoyment, you fuck her raw and hard - her hat bobbing up and down in a manner as hypnotising as her jiggling flesh.  You pull her to the ground to give her your final few thrusts before you churn out your spunk, falling over her and weakly bucking like some manner of beast.");
 
 	outputText("\n\n\Kami squeals excitedly as she reaches her own climax underneath you, tugging rapidly on her precum-soaked herm cock, milking it like crazy onto the ground beneath her.  You can feel her dripping fem-sex mesh against your own [sack] as you empty into her tight passage.");
 
 	//{If cum quantity = light, medium}
-	if(player.cumQ() < 1000) outputText("  \"<i>Mmm... just like that, babe,</i>\" Kami moans submissively, her asshole clenching one last time before you pull out and climb off your satiated conquest, your " + cockDescript(x) + " still dripping creamy white spunk.");
+	if(player.cumQ() < 1000) outputText("  \"<i>Mmm... just like that, babe,</i>\" Kami moans submissively, her asshole clenching one last time before you pull out and climb off your satiated conquest, your " + game.player.cockDescript(x) + " still dripping creamy white spunk.");
 	//{if cum quantity ≧ heavy}
 	else
-		outputText("  One of Kami's hands flies from her dick to her suddenly swollen belly as your mighty seed gushes forth.  The unexpectedly heavy girl sinks further into the ground, your load swishing back up and loosening her tunnel around you and forcing you to remove your still-spewing " + cockDescript(x) + " before something unfortunate happens.  Semen starts tumbling out as soon as you dismount your kangaroo conquest, but judging by the slow pace, she's going to look heavily pregnant for a while.");
+		outputText("  One of Kami's hands flies from her dick to her suddenly swollen belly as your mighty seed gushes forth.  The unexpectedly heavy girl sinks further into the ground, your load swishing back up and loosening her tunnel around you and forcing you to remove your still-spewing " + game.player.cockDescript(x) + " before something unfortunate happens.  Semen starts tumbling out as soon as you dismount your kangaroo conquest, but judging by the slow pace, she's going to look heavily pregnant for a while.");
 	
 	outputText("\n\n\Replacing your clothes, you give Kami one last glance over before you leave.  She's lying happily encumbered on the floor, covered in a combination of your fluids.  She'll probably be good to head home later - that is, if she can still walk.");
 	//[Player heads back to camp, An hour passes, Lust is reduced to zero and KamiEnc = 1]
@@ -418,7 +418,7 @@ export function KamiDoubleDickFuck():void {
 	outputText("You chuckle heartily - of course you're going to ravish her!  How ridiculous to assume otherwise.  In a split second, you've already grabbed her by her arms, forcing her back against the wall.  Kami passionately yelps, but her eagerness to grind against your growing package reveals her true intentions.");
 	outputText("\n\nTaking the initiative, you hold the waitress by the throat whilst you free room in your [armor] for your succulent snatch-hungry sausages.  Wasting no time at all, you align your rock-hard rods underneath her huge phallus and directly at her needy orifices, moving your hands underneath her legs and lifting her slightly to add leverage for yourself.  Kami pants in anticipation, gently pressing herself against your cockheads in an attempt to entice you.  Ever the tease, you notice the waitress gasp between her delectable lips.  \"<i>Are you gonna put those fine-ass rods to use, or do I have to do it myself?</i>\"  Not about to disappoint, you push into her, penetrating the soft confines of her pussy before reaching into her tight little ass, slowly but steadily plunging further and further inside until your needy tools can't reach any further.  \"<i>F-Fuck!  Drill me hard!</i>\" she cries desperately.");
 	outputText("\n\nRearing out slower than you had entered, her hips support yourself as you dive your way back in, slowly speeding up the frequency of your thrusts each time.  As you aggressively pump into your new kanga-slut, you force the waitress to press further against the alleyway wall behind her, her arms spreading out while her pillowy chest is squished against the brick.");
-	outputText("\n\n\"<i>I could do this all goddamn day!</i>\"  Kami screams, your wicked thrashing leaving her pelvis moist with sheer bliss.  You can already feel your own orgasm approaching, so with due haste you grab Kami's ample bust and pick up your thrusts energetically, ramming your cocks home with as much speed as you can muster.  Your ass-engorged " + cockDescript(x) + " cums first, packing Kami's tight hole with your sticky seed, shortly followed by your other " + cockDescript(y) + " giving her delicate-yet-punished pussy the same treatment.");
+	outputText("\n\n\"<i>I could do this all goddamn day!</i>\"  Kami screams, your wicked thrashing leaving her pelvis moist with sheer bliss.  You can already feel your own orgasm approaching, so with due haste you grab Kami's ample bust and pick up your thrusts energetically, ramming your cocks home with as much speed as you can muster.  Your ass-engorged " + game.player.cockDescript(x) + " cums first, packing Kami's tight hole with your sticky seed, shortly followed by your other " + game.player.cockDescript(y) + " giving her delicate-yet-punished pussy the same treatment.");
 	
 	outputText("\n\nKami is only seconds behind, her figure leaning forward into your arms and spasming up against you in a sexual seizure.  \"<i>Oh my god!</i>\"  The 'roo girl squeals, her tongue lolling out in intense arousal as her 14 inch cock spurts its pent-up frustration all over your abdomen.  You can feel the fur on her thighs standing briefly on end as she coils them around you, the sensation gradually fading away slowly as her frantic panting slows down.");
 	
@@ -781,35 +781,35 @@ export function noNoKeepNieve():void {
 //Camp Description
 export function nieveCampDescs():void {
 	//6:00
-	if(model.time.hours == 6) outputText("Nieve is sitting cross-legged in the snowdrift, munching on what looks to be icicles.  As you watch, " + nieveMF("he","she") + " reaches down into the glittering powder surrounding " + nieveMF("him","her") + " and produces another one.");
+	if(game.time.hours == 6) outputText("Nieve is sitting cross-legged in the snowdrift, munching on what looks to be icicles.  As you watch, " + nieveMF("he","she") + " reaches down into the glittering powder surrounding " + nieveMF("him","her") + " and produces another one.");
 	//7:00
-	else if(model.time.hours == 7) outputText("Nieve is giggling and laughing as a fresh flurry flutters down on " + nieveMF("him","her") + ".  You wonder idly if " + nieveMF("he","she") + "'s causing it to happen.");
+	else if(game.time.hours == 7) outputText("Nieve is giggling and laughing as a fresh flurry flutters down on " + nieveMF("him","her") + ".  You wonder idly if " + nieveMF("he","she") + "'s causing it to happen.");
 	//8:00
-	else if(model.time.hours == 8) outputText("Nieve is sitting in the white wintery wonderland, carefully constructing a snowman.  It strikes you as strange, and almost masturbatory in a way.  " + nieveMF("He","She") + " spots you and gives you a wave and a smile.  For a moment, you think the snowman has too, but you eventually conclude it's your imagination.");
+	else if(game.time.hours == 8) outputText("Nieve is sitting in the white wintery wonderland, carefully constructing a snowman.  It strikes you as strange, and almost masturbatory in a way.  " + nieveMF("He","She") + " spots you and gives you a wave and a smile.  For a moment, you think the snowman has too, but you eventually conclude it's your imagination.");
 	//9:00
-	else if(model.time.hours == 9) outputText("Nieve is sprawled out in the icy field, creating a series of snow angels without a care in the world.  When " + nieveMF("he","she") + " catches sight of you, she gives a friendly wave, then dives back into the snow.");
+	else if(game.time.hours == 9) outputText("Nieve is sprawled out in the icy field, creating a series of snow angels without a care in the world.  When " + nieveMF("he","she") + " catches sight of you, she gives a friendly wave, then dives back into the snow.");
 	//10:00
-	else if(model.time.hours == 10) outputText("Nieve, the ice spirit, sits quietly at the edge of the snowdrift, looking out at the landscape beyond.  When " + nieveMF("he","she") + " sees you looking, " + nieveMF("he","she") + " gives a somber wave.");
+	else if(game.time.hours == 10) outputText("Nieve, the ice spirit, sits quietly at the edge of the snowdrift, looking out at the landscape beyond.  When " + nieveMF("he","she") + " sees you looking, " + nieveMF("he","she") + " gives a somber wave.");
 	//11:00
-	else if(model.time.hours == 11) outputText("Nieve is in your camp, poking around your supplies and water barrels. You notice " + nieveMF("he","she") + " seems a little uncomfortable to be away from " + nieveMF("his","her") + " snowdrift.");
+	else if(game.time.hours == 11) outputText("Nieve is in your camp, poking around your supplies and water barrels. You notice " + nieveMF("he","she") + " seems a little uncomfortable to be away from " + nieveMF("his","her") + " snowdrift.");
 	//12:00
-	else if(model.time.hours == 12) outputText("Nieve is carefully compressing snowballs in " + nieveMF("his","her") + " little camp.  To your surprise, " + nieveMF("he","she") + " picks one up and begins eating it like you would an apple.  When " + nieveMF("he","she") + " catches you looking mid-bite, " + nieveMF("he","she") + " gives you a grin with her mouth full, " + nieveMF("his","her") + " cheeks puffed out.");
+	else if(game.time.hours == 12) outputText("Nieve is carefully compressing snowballs in " + nieveMF("his","her") + " little camp.  To your surprise, " + nieveMF("he","she") + " picks one up and begins eating it like you would an apple.  When " + nieveMF("he","she") + " catches you looking mid-bite, " + nieveMF("he","she") + " gives you a grin with her mouth full, " + nieveMF("his","her") + " cheeks puffed out.");
 	//13:00
-	else if(model.time.hours == 13) outputText("Nieve is sitting cross-legged, in the middle of what appears to be an argument with a snowman " + nieveMF("he","she") + "'s just made.");
+	else if(game.time.hours == 13) outputText("Nieve is sitting cross-legged, in the middle of what appears to be an argument with a snowman " + nieveMF("he","she") + "'s just made.");
 	//14:00
-	else if(model.time.hours == 14) outputText("Nieve is in " + nieveMF("his","her") + " usual spot, seemingly deep in concentration.  Around " + nieveMF("him","her") + " snow begins to fall slowly, then quicker and quicker, whipping " + nieveMF("his","her") + " hair around wildly.  Although strangely, the air is still where you are.");
+	else if(game.time.hours == 14) outputText("Nieve is in " + nieveMF("his","her") + " usual spot, seemingly deep in concentration.  Around " + nieveMF("him","her") + " snow begins to fall slowly, then quicker and quicker, whipping " + nieveMF("his","her") + " hair around wildly.  Although strangely, the air is still where you are.");
 	//15:00
-	else if(model.time.hours == 15) outputText("\n\nNieve the ice spirit is whirling around " + nieveMF("his","her") + " area, practicing with what appears to be a translucent blue spear.  " + nieveMF("He","She") + " jabs and thrusts, spins and swipes.  " + nieveMF("He","She") + " may be new to Mareth, but you've got to hand it to " + nieveMF("him","her") + ", it looks like " + nieveMF("he","she") + " could take care of " + nieveMF("him","her") + "self.");
+	else if(game.time.hours == 15) outputText("\n\nNieve the ice spirit is whirling around " + nieveMF("his","her") + " area, practicing with what appears to be a translucent blue spear.  " + nieveMF("He","She") + " jabs and thrusts, spins and swipes.  " + nieveMF("He","She") + " may be new to Mareth, but you've got to hand it to " + nieveMF("him","her") + ", it looks like " + nieveMF("he","she") + " could take care of " + nieveMF("him","her") + "self.");
 	//16:00
-	else if(model.time.hours == 16) outputText("\n\nNieve is at first nowhere to be seen.  Then you see " + nieveMF("his","her") + " head pop out of a snowdrift.  " + nieveMF("He","She") + " looks around quickly, then leaps into the air, diving head first into another pile of the powdery stuff.");
+	else if(game.time.hours == 16) outputText("\n\nNieve is at first nowhere to be seen.  Then you see " + nieveMF("his","her") + " head pop out of a snowdrift.  " + nieveMF("He","She") + " looks around quickly, then leaps into the air, diving head first into another pile of the powdery stuff.");
 	//17:00
-	else if(model.time.hours == 17) outputText("\n\nNieve appears to have constructed a firepit constructed from translucent blue logs and rocks.  A vivid blue flame roars in the pit, over which Nieve appears to be roasting... marshmallows?  As you watch " + nieveMF("he","she") + " peels the burnt black skin off a marshmallow, gobbles it down, and begins roasting the rest.");
+	else if(game.time.hours == 17) outputText("\n\nNieve appears to have constructed a firepit constructed from translucent blue logs and rocks.  A vivid blue flame roars in the pit, over which Nieve appears to be roasting... marshmallows?  As you watch " + nieveMF("he","she") + " peels the burnt black skin off a marshmallow, gobbles it down, and begins roasting the rest.");
 	//18:00
-	else if(model.time.hours == 18) outputText("\n\nNieve seems to be working on a spear, sharpening it with a jagged piece of ice.  When " + nieveMF("he","she") + " catches sight of you " + nieveMF("he","she") + " waves and gives a friendly smile.");
+	else if(game.time.hours == 18) outputText("\n\nNieve seems to be working on a spear, sharpening it with a jagged piece of ice.  When " + nieveMF("he","she") + " catches sight of you " + nieveMF("he","she") + " waves and gives a friendly smile.");
 	//19:00
-	else if(model.time.hours == 19) outputText("\n\nNieve is sitting at the edge of " + nieveMF("his","her") + " icy expanse, staring off at the distant mountains.  You wonder if " + nieveMF("he","she") + "'s looking for home.");
+	else if(game.time.hours == 19) outputText("\n\nNieve is sitting at the edge of " + nieveMF("his","her") + " icy expanse, staring off at the distant mountains.  You wonder if " + nieveMF("he","she") + "'s looking for home.");
 	//20:00
-	else if(model.time.hours == 20) outputText("\n\nNieve is, surprisingly, outside of " + nieveMF("his","her") + " cold camp.  " + nieveMF("He","She") + "'s dancing along the battered, parched ground, calling down snow.  Wherever a flake hits, it's immediately devoured by the thirsty earth.  Is Nieve perhaps trying to... water the ground?");
+	else if(game.time.hours == 20) outputText("\n\nNieve is, surprisingly, outside of " + nieveMF("his","her") + " cold camp.  " + nieveMF("He","She") + "'s dancing along the battered, parched ground, calling down snow.  Wherever a flake hits, it's immediately devoured by the thirsty earth.  Is Nieve perhaps trying to... water the ground?");
 	//21:00
 	else outputText("\n\nYou can hear Nieve sleeping soundly from within a small ice-fort.");
 }
@@ -1024,7 +1024,7 @@ export function fuckNieve():void {
 	outputText(".  With a smirk, you tell her it's not over yet.  That was just the appetizer.");
 
 	outputText("\n\nWith a command Nieve falls backwards into the white, glittering powder and spreads her legs, revealing her deep blue nethers, wet and slick despite the intense cold of her body.  With a smile spreading across your face, you get down onto your knees between hers, and rub the head of your " + cockClit(x) + " against her icy cavern.  A chill runs down it and up your spine, but you ignore it. You tease and taunt Nieve's cunt, flicking her joy buzzer ");
-	if(x >= 0) outputText("with your " + cockDescript(x) + "");
+	if(x >= 0) outputText("with your " + game.player.cockDescript(x) + "");
 	else outputText("with yours");
 	outputText(", and just slipping the tip in before pulling out.  You do this until your snowbound lover is biting her lip, squirming with barely contained pleasure.");
 	

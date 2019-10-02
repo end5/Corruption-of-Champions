@@ -9,7 +9,7 @@
 	 * ...
 	 * @author Gedan
 	 */
-	export class HermCentaurScenes extends BaseContent
+	export class HermCentaurScenes
 	{
 		
 		public  constructor() 
@@ -61,7 +61,7 @@
 			flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_KILLED;
 
 			menu();
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 
 		private  letHerGo():void
@@ -71,7 +71,7 @@
 			flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_RELEASED;
 
 			menu();
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 
 		private  maleFuckHer():void
@@ -87,7 +87,7 @@
 
 			outputText("\n\nReduced a whimpering mare, the demon-taur can do naught but eagerly nod and lift her tail at the sight of your encroaching erection");
 			if (player.cocks.length > 1) outputText("s");
-			outputText(".  [EachCock] is a hard, throbbing mess by the time you're aligned behind her, so close to her drooling gash that the waves hot, slippery heat rolling off it make [eachCock] glisten, shining dully in the light.  It feels so good that it makes your head swim, and you haven't even pushed inside that black-lipped vice yet!  Almost of their own volition, your [hips] surge forward to bury your "+ cockDescript(y) +" into the demon's channel, a gush of fresh fluids splattering out to soak your loins as the unholy warmth shrouds your member in bliss.");
+			outputText(".  [EachCock] is a hard, throbbing mess by the time you're aligned behind her, so close to her drooling gash that the waves hot, slippery heat rolling off it make [eachCock] glisten, shining dully in the light.  It feels so good that it makes your head swim, and you haven't even pushed inside that black-lipped vice yet!  Almost of their own volition, your [hips] surge forward to bury your "+ game.player.cockDescript(y) +" into the demon's channel, a gush of fresh fluids splattering out to soak your loins as the unholy warmth shrouds your member in bliss.");
 
 			outputText("\n\nYour unholy companion's human-half sighs into a relaxed stupor, moaning happily at the forceful plowing of her folds.");
 			if (player.balls > 0) outputText(" Slapping wetly against hers, your [balls] ring in an increasing torrent of fleshy slaps.");
@@ -101,9 +101,9 @@
 
 			outputText("\n\nGlancing back, you can see a puddle of white forming beneath her flaring cock-tip.  Her pre is coming out so thick that it's become indistinguishable from cum at this point.  As encouragement, you slap [eachCock] into her cheek, slowly dragging it across her face.  Of course, you slow down when you slide over her lips and across her nose, giving her a few more nice long drags of her own fertile pheromones.  Her hind legs begin to twitch and buck, clawing at the air in a frenzy but only managing to drag her spunk-splorting prick back and forth through her own puddled spunk.  The demoness moans, \"Fffffuuuck yooooouuuu,</i>\" in a voice that's more lusty than furious.");
 
-			outputText("\n\n\"<i>No,</i>\" you answer, \"<i>I'm fucking you.</i>\"  You push your "+ cockDescript(y) +" at her parted mouth, and they yield immediately, pleasantly opening to gratefully accept the taste of the mixed juices that soak it.  Her fair, freckled cheeks go so red that her freckles are actually lighter than the skin around them as she begins to suck, slurping lewdly at you with the skills of a professional cock-sucker.  You compliment her for being such a good mare and make sure to remind her that she's no stud.  Her dick flexes tightly at your words, flooding with so much blood that its skin shines from being stretched taut.  The masochistic cunt is getting off on sniffing her own fem-spunk and being humiliated!");
+			outputText("\n\n\"<i>No,</i>\" you answer, \"<i>I'm fucking you.</i>\"  You push your "+ game.player.cockDescript(y) +" at her parted mouth, and they yield immediately, pleasantly opening to gratefully accept the taste of the mixed juices that soak it.  Her fair, freckled cheeks go so red that her freckles are actually lighter than the skin around them as she begins to suck, slurping lewdly at you with the skills of a professional cock-sucker.  You compliment her for being such a good mare and make sure to remind her that she's no stud.  Her dick flexes tightly at your words, flooding with so much blood that its skin shines from being stretched taut.  The masochistic cunt is getting off on sniffing her own fem-spunk and being humiliated!");
 
-			outputText("\n\nYou take her onyx horn in your hands and adjust the angle of her head before pumping forward again, stuffing your "+ cockDescript(y) +" into her gullet with a forceful thrust.  She gurgles messily, still trying to breathe through her nose while her tongue lashes madly across the sensitive underside of your dick.  This suits your purpose perfectly, as it keeps her so high on her own fuck-odor that she can't think straight, let alone slow the fevered pumping of her bloated sausage.  While fucking her throat raw, you feel the familiar tingling of your budding orgasm, and this time, you don't try to step it.  In fact, you pick up the pace, reaching down to tweak at the cherry-sized nipples below.");
+			outputText("\n\nYou take her onyx horn in your hands and adjust the angle of her head before pumping forward again, stuffing your "+ game.player.cockDescript(y) +" into her gullet with a forceful thrust.  She gurgles messily, still trying to breathe through her nose while her tongue lashes madly across the sensitive underside of your dick.  This suits your purpose perfectly, as it keeps her so high on her own fuck-odor that she can't think straight, let alone slow the fevered pumping of her bloated sausage.  While fucking her throat raw, you feel the familiar tingling of your budding orgasm, and this time, you don't try to step it.  In fact, you pick up the pace, reaching down to tweak at the cherry-sized nipples below.");
 
 			outputText("\n\nThe centaur's eyes roll back as she squirts pink milk from her abused teat.  It's all you can do to hold her still with the horn in your other hand while she begins to cum, thrashing and kicking, the sheer size of her warhorse-like body threatening to take you along with it.  Somehow, you hold on, and ride out her frenzied shakes.  Her tongue, wild and unrestrained, assaults your cock in a flurry of convulsive lucks.  It's just what you need to get off with her, finally letting her spurting tit free to grab hold of her red hair as your cum begins to well up from your [balls].");
 
@@ -119,7 +119,7 @@
 			player.orgasm();
 			dynStats("cor+", 5);
 
-			cleanupAfterCombat(getGame().d3.resumeFromFight)
+			cleanupAfterCombat(d3.resumeFromFight)
 		}
 
 		private  HORZGOG:number = 0;
@@ -248,7 +248,7 @@
 			dynStats("cor+", 5);
 			player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 			menu();
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 		
 		public  inSovietCoCPonyRidesYou(hpVictory:boolean, pcCameWorms:boolean):void
@@ -278,7 +278,7 @@
 				{
 					outputText(" and");
 					if (player.balls > 0) outputText(" [sack]");
-					else outputText(" " + multiCockDescriptLight());
+					else outputText(" " + game.player.multiCockDescriptLight());
 				}
 				outputText(" to the pervy, sexy equine.");
 			}
@@ -307,7 +307,7 @@
 			outputText("\n\nYou're moved to the other side, with a fresh, juicy nipple for you to nuzzle.  You do so without thought, effortlessly clasping your lips in a tight seal around the heavenly nub and suckling, even as you rest your cheek against the pale, freckled skin of the melon-sized tit.  The fluid begins to flow almost effortlessly, flooding out in response to the slightest hint of suction from your hungry mouth.  Bubbling, almost boiling over, your lust mounts to higher and higher levels, your loins seeming to simmer with molten desire to be bred.  In response, you begin peeling away your [armor].  You know this delicious milk will be gone soon, and when you finish, you want to be mounted, hard.");
 			
 			outputText("\n\nWith your [vagina]");
-			if (player.hasCock()) outputText(" and " + multiCockDescriptLight());
+			if (player.hasCock()) outputText(" and " + game.player.multiCockDescriptLight());
 			outputText(" freed, your hands unabashedly dive into your folds, spreading them as wide as possible, heedless to the discomfort.  You drink and stretch, swallow and tug.  Over and over, you give into the artificial, hedonistic desires your dual - endowed mistress's milk instills in you.  There's no fighting it, only giving in utterly as you prepare yourself to be filled, speared upon your mistress's mighty member and filled with her hot cum until your body turns into a quivering, orgasmic wreck.");
 			
 			outputText("\n\nThe tainted centaur pulls you back even as your lips stretch forward in desperation, but at last, you pop off the nipple, disappointed.  She tilts your head to look up at her green eyes and glittering, black horn.  She's a terrible demon, a beautiful maiden, and a monstrously large, giant-like centaur, all at once.  You pant, whining with your exhalations until she gently releases you.  Flopping down nervelessly, you catch yourself before you smack off the hard stone.  You rise up again, ready to fuck, only to come up into a face full of slime-lubed horse-cunt.");
@@ -364,7 +364,7 @@
 			outputText("\n\nYou sigh as your latest litter of imps clamor around your nipples, hungry for their mother's milk.  They're such greedy, ceaselessly ravenous creatures.  Having their clutching mouths on your nipples all the time makes it so hard to sleep, and it doesn't help that the 'father' insists on rutting with you and knotting you for hours until she's 'sure' your pregnant.");
 
 			outputText("\n\nThe rest of your days are lived out like that, interrupted only for fresh injections of demonic chemicals and thick centaur-cum.  Amazingly, the demon's experiments bear fruit, and you have the honor of birthing the first true demon offspring - the first of many.  Though you're eventually traded to a new owner once you're well used and other sluts have been similar prepared, you keep a sense of a perverse pride through it all.  You were the first demon mother.  You helped the new species propagate and assure their dominance over lesser forms of life, like yourself.");
-			getGame().gameOver();
+			gameOver();
 		}
 		
 		private  maleLoss(hpVictory:boolean):void
@@ -439,7 +439,7 @@
 			else outputText(" head");
 			outputText(" and sidles forward, ramming her glans into your mouth and down the back of your throat.  You can feel her glans pulsing deep inside you, and as soon as the herm starts moaning, the centaur starts trotting forward again.  Amazingly, having her holding you up makes it easy to maintain your position and keep your dick bouncing in that hot twat. Fuck it! You're too horny to care anymore.");
 
-			outputText("\n\nSlurping hard, you lick and suck the dick in your throat, so busy tending to the omnibus that you barely the notice the throbbing ache in your loins.  You cast lusty, inviting eyes around at every feminine form you see during journey to the stables, located in some backwater, seemingly forgotten part of the fortress.  You quiver with need and explode in passion, moaning into the Omnibus's cock as your " + cockDescript(y) + " spends its lust into the oozing horse-pussy, wasting your champion-seed to father nothing more than a batch of shiftless imps.");
+			outputText("\n\nSlurping hard, you lick and suck the dick in your throat, so busy tending to the omnibus that you barely the notice the throbbing ache in your loins.  You cast lusty, inviting eyes around at every feminine form you see during journey to the stables, located in some backwater, seemingly forgotten part of the fortress.  You quiver with need and explode in passion, moaning into the Omnibus's cock as your " + game.player.cockDescript(y) + " spends its lust into the oozing horse-pussy, wasting your champion-seed to father nothing more than a batch of shiftless imps.");
 
 			outputText("\n\nThe vibrations of your moans of pleasure set the omnibus alight with delight, and her dick surges deeper down your throat, releasing a thick batch of creamy seed to fill your belly.  Shuddering in bliss, you swallow and cum over and over, spunking up the equine cunt happily while swallowing an equal measure orally.  Locked in cunt and on cock and finally allowed orgasm after an endlessly long tease, you feel as if you're atop an orgasmic wave, riding the spooge all the way into shore.  The hot vice around your dick quivers and squirts thanks to your donation.");
 
@@ -457,9 +457,7 @@
 		{
 			clearOutput();
 			outputText("As the years roll by, you see lots of pussy, and lots of injections.  They test all kinds of cocktails on you.  Ones that makes your balls swell, or your seed runny, or thick, or even black.  Eventually, one of your children comes out as something other than an imp.  The first proper demon infant.  Too fucked up to feel anything but pride, you can only marvel at your amazing virility as you seed the birth of a new species, knocking up every demon with a cunt in a month-long orgy.  Your jism fuels the ascendency of an entire race, dooming Mareth.");
-			getGame().gameOver();
+			gameOver();
 		}
 		
 	}
-
-

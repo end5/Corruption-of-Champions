@@ -49,7 +49,7 @@ export function enterBoobsDungeon():void {
 
 export function leaveBoobsDungeon():void {
 //	inDungeon = false;
-	dungeonLoc = 0;
+    game.dungeonLoc = 0;
 	clearOutput();
 	outputText("You leave the door behind and take off through the desert back towards camp.");
 	doNext(camp.returnToCampUseOneHour);
@@ -163,7 +163,7 @@ export function getMockedForSmallDongBySammitchMob():void {
 	//[if for fun]
 	if(flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0) {
 		outputText("\n\nYou wake up hours later outside the dungeon with all your belongs and surprisingly not missing any gems.");
-		dungeonLoc = 0; //Replaces		inDungeon = false;
+		game.dungeonLoc = 0; //Replaces		inDungeon = false;
 		player.orgasm();
 		dynStats("lib", 1, "sen", -1);
 		cleanupAfterCombat();
@@ -255,7 +255,7 @@ export function femaleGirlsLoseToSammitches():void {
 export function sandWitchMobNotBadEnd():void {
 	clearOutput();
 	outputText("You wake up hours later outside the dungeon with all your belongings, surprisingly not missing any gems.");
-	dungeonLoc = 0; //Replaces	inDungeon = false;
+	game.dungeonLoc = 0; //Replaces	inDungeon = false;
 	player.orgasm();
 	dynStats("lib", 1, "sen", -1);
 	cleanupAfterCombat();
@@ -438,8 +438,8 @@ export function dicksHaveSexWithAWitch():void {
 	if(player.smallestCockArea() <= monster.vaginalCapacity()) {
 		var x:number = player.cockThatFits(monster.vaginalCapacity());
 		var y:number = player.cockThatFits2(monster.vaginalCapacity());
-		outputText("\n\nPutting her down on all fours, you admire the curve of her bouncy bottom and the glossy moisture that's beading on her numerous, plump cunt-lips.  The witch's pussy is tinged red with her feverish lust and totally engorged.  You can see her twin clits peeking out of her their hoods, just begging to be touched.  Who are you to deny them?  Reaching around her hip, you start to circle a finger around one of the lucky buzzers while you get your " + cockDescript(x) + " lined up with one of her cunts");
-		if(y >= 0) outputText(" and your " + cockDescript(y) + " aimed at her other one");
+		outputText("\n\nPutting her down on all fours, you admire the curve of her bouncy bottom and the glossy moisture that's beading on her numerous, plump cunt-lips.  The witch's pussy is tinged red with her feverish lust and totally engorged.  You can see her twin clits peeking out of her their hoods, just begging to be touched.  Who are you to deny them?  Reaching around her hip, you start to circle a finger around one of the lucky buzzers while you get your " + game.player.cockDescript(x) + " lined up with one of her cunts");
+		if(y >= 0) outputText(" and your " + game.player.cockDescript(y) + " aimed at her other one");
 		outputText(".  Her knees buckle, but you're ready for it, and she slides straight onto your supporting shaft");
 		if(y >= 0) outputText("s");
 		outputText(", impaling herself to the hilt.");
@@ -448,14 +448,14 @@ export function dicksHaveSexWithAWitch():void {
 		else outputText("pussies cling tightly to you");
 		outputText(".  Supported entirely by your body, the sand witch's muscles go slack (aside from the ones hugging your dick");
 		if(y >= 0) outputText("s");
-		outputText(").  She's breathing nice and heavy as you lift her and swing your hips back, pulling most of your " + cockDescript(x));
-		if(y >= 0) outputText(" and " + cockDescript(y));
+		outputText(").  She's breathing nice and heavy as you lift her and swing your hips back, pulling most of your " + game.player.cockDescript(x));
+		if(y >= 0) outputText(" and " + game.player.cockDescript(y));
 		outputText(" out before reversing the motion nigh-instantly, slamming yourself in to the hilt.  The once proud enchantress is reduced to a quivering puddle of fuck by your jackhammering thrusts, so taken by the sensations in her quim");
 		if(y >= 0) outputText("s");
 		outputText(" that her brains are practically drooling out of her cunts.");
 		outputText("\n\nYou continue to fuck the pretty, big-breasted sand witch faster and faster, enjoying the way her tits bounce and dribble in your palms, her sisters forced to watch the lascivious way you take her.  They're no strangers to lust, and many of them are openly jilling themselves off to the show in between sucking on the closest girl's teats.  You take one hand back to your partner's mons and press your index and middle fingers onto her clits.  The whimpering sex-puddle in your arms gasps.");
 		outputText("\n\nCircling her buttons as you plow her, you watch with almost detached curiosity as she creams herself around your ");
-		if(y < 0) outputText(cockDescript(x));
+		if(y < 0) outputText(game.player.cockDescript(x));
 		else outputText("double dongs");
 		outputText(".  Waves of rippling contractions sheath you in shimmering, ephemeral ecstasy.  Like something clicking into place in your brain, a biological prerogative asserts itself, unleashing a heat that boils up out of your core like lava from a volcano.  [EachCock] spasms and releases a flow of salty jism.  The witch must feel it, because as soon as your seed makes contact with her juicy cunt");
 		if(y >= 0) outputText("s");
@@ -467,7 +467,7 @@ export function dicksHaveSexWithAWitch():void {
 		}
 		outputText("\n\nSetting her down in front of her sisters, you let her slide off your ");
 		if(y >= 0) outputText("twin cocks");
-		else outputText(cockDescript(x));
+		else outputText(game.player.cockDescript(x));
 		outputText(" onto the floor as an example of just what you're capable of.  You can beat the best they have and fuck them into a twitching puddle in the dirt.  Though the mob seems cowed by your display of authority, they're still fucking themselves to the sight of what you've done to their sister.  You make the rest of them take turns licking your spent spunk and caked-on cunt-juice from your phallus");
 		if(y >= 0) outputText("es");
 		outputText(" before getting dressed and getting back to business.");
@@ -1084,11 +1084,11 @@ export function repeatLoseToCumWitchForDudes():void {
 		if(player.totalNipples() > 2) outputText("two of ");
 		outputText("your [nipples]");
 		if(player.hasFuckableNipples()) outputText(", sinking inside your moist tit-holes almost immediately");
-		outputText(".  With two vibrators savaging your [nipples] and the black-hued beauty riding your cock like her own personal rocket, you can barely contain yourself.  Your back arches, and you try to buck your hips, to fuck her, her cock, whatever, but you're still too exhausted from the fight to shift her body weight.  You can do nothing but lie there while she uses you, humping your cock, her ebony length dragging its lurid pleasure across your " + cockDescript(x) + " while you wriggle and writhe ecstatically.");
+		outputText(".  With two vibrators savaging your [nipples] and the black-hued beauty riding your cock like her own personal rocket, you can barely contain yourself.  Your back arches, and you try to buck your hips, to fuck her, her cock, whatever, but you're still too exhausted from the fight to shift her body weight.  You can do nothing but lie there while she uses you, humping your cock, her ebony length dragging its lurid pleasure across your " + game.player.cockDescript(x) + " while you wriggle and writhe ecstatically.");
 		
 		outputText("\n\nAfter a while of continual teasing, the sable seductress leans over you and lets her huge breasts sweetly kiss on your elephantine mass.  She leans down as if to kiss you, but at the last moment, she swerves to the side, licking the nape of your neck up to your ear before breathily whispering promises into your ear, \"<i>There's nothing like blowing off some steam out here in the sands after my work.  And to have such a... gifted " + player.mf("boy","girl") + " to play with is a treat in and of itself.</i>\"  She grunts, sweaty balls bouncing on your [sheath].  \"<i>You look so helpless for someone who's packing so much.  I look forward to seeing how you look with my cum hiding that expression.</i>\"");
 		
-		outputText("\n\nYou frown until she rubs a particularly sensitive spot on your " + cockDescript(x) + ", then a dopey, pleasure-addled smile replaces it.  She kissing your cheek and coos, \"<i>That's more like it, pet.  I'm going to make you so messy.</i>\"  Her toes fondle your [sheath] as they slide down to your ");
+		outputText("\n\nYou frown until she rubs a particularly sensitive spot on your " + game.player.cockDescript(x) + ", then a dopey, pleasure-addled smile replaces it.  She kissing your cheek and coos, \"<i>That's more like it, pet.  I'm going to make you so messy.</i>\"  Her toes fondle your [sheath] as they slide down to your ");
 		if(player.balls > 0) {
 			outputText("[balls], rolling the ");
 			if(player.ballSize < 2) outputText("petite ");
@@ -1111,17 +1111,17 @@ export function repeatLoseToCumWitchForDudes():void {
 		//Get cock ridden
 		outputText("\n\nAbruptly, the Cum Witch climbs atop your lust-wracked body.  Her robe is off in a flash, and you're finally able to appreciate her sweat-slicked, onyx-skinned body as she sits on your midsection, glistening in the desert sun.  She crosses her arms under her immense breasts, so large they'd put a cow-girl to shame, and flexes to make them shake and wobble, big brown nipples swaying hypnotically before you.  Your eyes gravitate towards the heavenly teats, each wide and supple, capped with a hard, pebbly protrusion that seems to call for your tongue.  Giggling, she moves one of her arms back to grab [oneCock], and she rolls her hips back until your boner is devoured by her slippy butt-cheeks, pressing through the ebony crack until it feels her dusky, moist cunt-lips dragging along it.  Your " + player.cockHead(x) + " appears underneath her large balls, peeping out to leak its lust onto your belly.");
 		
-		outputText("\n\n\"<i>How about this?  I can just slide back and forth on you while your eyes track my tits, entranced by nipples until you're creaming your little tummy with your spent seed.</i>\" she suggests, interrupted by her own coo of pleasure when your " + cockDescript(x) + " lurches underneath her and floods with excitement.  \"<i>Oh, you liked that huh?  Does the Champion have a titty little hypno-fetish?</i>\"  Her breasts continue to sway slowly, and her hips join in with the same slow rhythm.  Each of her hands is glowing now, lighting up with purplish-white intensite as she shakes her breasts and butt for your pleasure.  Confidently, she explains, \"<i>I'm quite skilled at mental manipulation, but surely you know that already.  My nipples ARE quite erotic.  You can't even look away any more, but surely you don't mind?</i>\"");
+		outputText("\n\n\"<i>How about this?  I can just slide back and forth on you while your eyes track my tits, entranced by nipples until you're creaming your little tummy with your spent seed.</i>\" she suggests, interrupted by her own coo of pleasure when your " + game.player.cockDescript(x) + " lurches underneath her and floods with excitement.  \"<i>Oh, you liked that huh?  Does the Champion have a titty little hypno-fetish?</i>\"  Her breasts continue to sway slowly, and her hips join in with the same slow rhythm.  Each of her hands is glowing now, lighting up with purplish-white intensite as she shakes her breasts and butt for your pleasure.  Confidently, she explains, \"<i>I'm quite skilled at mental manipulation, but surely you know that already.  My nipples ARE quite erotic.  You can't even look away any more, but surely you don't mind?</i>\"");
 		
-		outputText("\n\nSqueezing her cheeks around your spasming erection, the Cum Witch releases your " + cockDescript(x) + " so that she can support herself as she leans forward, bringing her bouncing, hypnotic breasts closer to your face.  You open your eyes wider to try and take in more of their erotic expanse.  Your " + cockDescript(x) + " is getting hotter and wetter, and the sorceress's own erection has risen to complete and full hardness, the ebony tool bouncing lewdly on your [chest] as she grinds her sopping-wet cunt across you.");
+		outputText("\n\nSqueezing her cheeks around your spasming erection, the Cum Witch releases your " + game.player.cockDescript(x) + " so that she can support herself as she leans forward, bringing her bouncing, hypnotic breasts closer to your face.  You open your eyes wider to try and take in more of their erotic expanse.  Your " + game.player.cockDescript(x) + " is getting hotter and wetter, and the sorceress's own erection has risen to complete and full hardness, the ebony tool bouncing lewdly on your [chest] as she grinds her sopping-wet cunt across you.");
 		
 		outputText("\n\nHer voice purrs, \"<i>Just focus on my nipples and let me worry about making you feel good.  My pussy has your cock entranced and obedient, sure to cum before long, and you can just relax and enjoy the swaying, heavenly shape of chest, can't you?</i>\"");
 		
 		outputText("\n\nYou DO feel good... so good.  It probably won't be long before you're erupting, and as close as her breasts are, there's nothing else to look at anyways.  Increasingly, your muscles are going slack, and a dopey smile has spread on your face.  This woman knows her way around a dick.");
 		
-		outputText("\n\n\"<i>See?  I told you that focusing on my nipples would help you feel good.  Now, just keep looking at them.  Let your mind completely fixate on them to exclusion of all else and I'll keep you feeling better and better,</i>\" the witch says, as everything excepting her supple, dark buds seems to fade into a haze of pleasure.  Her voice goes low and husky as she continues, \"<i>That's right, pet.  You focus on the nipples and listen to my voice.  It'll tell you what you're feeling.</i>\"  There's a sloppy, wet squish as your " + cockDescript(x) + " is pulled into a silky, wet hole.  \"<i>And you're feeling so good thanks to how well you're focusing.  The more you focus, the better it feels and the less you have to worry about what I'm saying and simply FEEL.</i>\"");
+		outputText("\n\n\"<i>See?  I told you that focusing on my nipples would help you feel good.  Now, just keep looking at them.  Let your mind completely fixate on them to exclusion of all else and I'll keep you feeling better and better,</i>\" the witch says, as everything excepting her supple, dark buds seems to fade into a haze of pleasure.  Her voice goes low and husky as she continues, \"<i>That's right, pet.  You focus on the nipples and listen to my voice.  It'll tell you what you're feeling.</i>\"  There's a sloppy, wet squish as your " + game.player.cockDescript(x) + " is pulled into a silky, wet hole.  \"<i>And you're feeling so good thanks to how well you're focusing.  The more you focus, the better it feels and the less you have to worry about what I'm saying and simply FEEL.</i>\"");
 		
-		outputText("\n\nShe's so right, and it feels so good.  It's like your head is slowly emptying of everything but the view of her nipples, and warm, wet pleasure is filling in along with the periphery, along with words you can't take the time to process - enjoying the view and the pleasure is too important.  A high pitched whimper of pleasure escapes your lips when you the snug tunnel compress around your " + cockDescript(x) + ".  It's so perfect - like it was crafted for you and you alone, and the folds are sliding and rubbing every vein, every nerve ending, every part of your tool, washing you with unholy pleasure that you're barely conscious of.  It feels so good to relax underneath her.");
+		outputText("\n\nShe's so right, and it feels so good.  It's like your head is slowly emptying of everything but the view of her nipples, and warm, wet pleasure is filling in along with the periphery, along with words you can't take the time to process - enjoying the view and the pleasure is too important.  A high pitched whimper of pleasure escapes your lips when you the snug tunnel compress around your " + game.player.cockDescript(x) + ".  It's so perfect - like it was crafted for you and you alone, and the folds are sliding and rubbing every vein, every nerve ending, every part of your tool, washing you with unholy pleasure that you're barely conscious of.  It feels so good to relax underneath her.");
 		
 		outputText("\n\nThe breasts stop swaying, but that doesn't matter - it just lets you oggle her nipples more effectively.  Even when she moves to press one into your lips, you can still see it your minds eye as if viewed from a disembodied perspective.  Her beautiful, bountiful breasts are all over you, and everything is so warm and wet and pleasant that you just feel like you could melt right into her bosom.  It tastes as marvelous as it looks, and you suckle with unthinking passion.");
 		
@@ -1143,7 +1143,7 @@ export function repeatLoseToCumWitchForDudes():void {
 			outputText(" some cream up the ebony arch of your mistress's back");
 		}
 		else outputText(" from her bouncing, ebony erection");
-		outputText(".  At the same time, her clenching, pussy climaxes around you while you fill it.  You're spraying ropes of spooge into her so fast that it's backwashing out around your " + cockDescript(x) + ", the veins pumping almost as hard as your overactive reproductive system.");
+		outputText(".  At the same time, her clenching, pussy climaxes around you while you fill it.  You're spraying ropes of spooge into her so fast that it's backwashing out around your " + game.player.cockDescript(x) + ", the veins pumping almost as hard as your overactive reproductive system.");
 		
 		outputText("\n\nIt goes on for so long that you're still cumming long after you would have thought it should end, and you just can't take it anymore.  Even though you're still fixated on her gorgeous nipples, your eyes start rolling back into your head, jerking further under your eyelids with the frothy seed-packed payloads you're releasing.  You whimper when she pulls off you, seed still dripping from her well-used cunt and slowly-deflating cock.  Still cumming, still feeling the glorious bliss she's conditioned you to feel in the presence of her breasts, you squirt wet ropes straight into the air while she dresses and kneels down next to you, whispering promises of how she'll make you cum more and more every time you give in to her.");
 		
@@ -1164,7 +1164,7 @@ export function tooBigCumWitchLossFacial():void {
 	else if(player.cor < 66) outputText("  You catch yourself licking your lips as the knowledge of what is about to happen to you sinks in. Despite hastily stopping yourself, the Cum Witch still saw, and she smiles.");
 	else outputText("  You give her a lewd look and lick your tongue across your lips as you anticipate the big, fat load she's going to feed you, hungry for wet, decadent pleasure regardless of inhibitions.");
 	
-	outputText("\n\nThe hot moisture she's secreting all over your " + cockDescript(x) + " seems to be affecting you as well as the vibrations ");
+	outputText("\n\nThe hot moisture she's secreting all over your " + game.player.cockDescript(x) + " seems to be affecting you as well as the vibrations ");
 	if(player.hasFuckableNipples()) outputText("in");
 	else outputText("on");
 	outputText(" your [nipples].  It feels like there's so much blood being forced inside your erection that the sheer over-tumescence will make you burst.  The need is overwhelming.  You HAVE to cum, and you're so wet, so stained with spunk and juice that there's no time like now.  The Cum Witch's heels press in on your ");
@@ -1216,12 +1216,12 @@ export function TDMsLoseToCumWitchScene():void {
 	clearOutput();
 	var x:number = player.cockThatFits(monster.vaginalCapacity());
 	if(x < 0) x = player.smallestCockIndex();
-	outputText("Robes already lay discarded nearby and the cum witch stands triumphantly over your body.  A bobbing cock brushes up next to your face, quite erect and eager for service.  The hermaphrodite doesn't bother with conversation and roughly forces you onto your back.  She snaps her fingers; curving bands of stone snap out of the ground, curling over your limbs and binding you securely to the ground.  It's clear that you're about to get fucked, whether you like it or not.  Looking up, a cryptic smile plays across the black woman's visage as she deftly removes your [armor].  In an instant, your " + cockDescript(x) + " has been mounted.");
+	outputText("Robes already lay discarded nearby and the cum witch stands triumphantly over your body.  A bobbing cock brushes up next to your face, quite erect and eager for service.  The hermaphrodite doesn't bother with conversation and roughly forces you onto your back.  She snaps her fingers; curving bands of stone snap out of the ground, curling over your limbs and binding you securely to the ground.  It's clear that you're about to get fucked, whether you like it or not.  Looking up, a cryptic smile plays across the black woman's visage as she deftly removes your [armor].  In an instant, your " + game.player.cockDescript(x) + " has been mounted.");
 	
 	//multicock section
 	//if the PC has more than one dick, this witch puts hoods on them, which make them feel like they don't exist.
 	if(player.cockTotal() > 1) {
-		outputText("\n\nWith your " + cockDescript(x) + " well entrenched in her singular vagina, the witch reaches over and pulls several small cloth pouches out of her discarded robes.  She smiles when she notices your confusion, but refrains from giving an explanation before putting a pouch onto ");
+		outputText("\n\nWith your " + game.player.cockDescript(x) + " well entrenched in her singular vagina, the witch reaches over and pulls several small cloth pouches out of her discarded robes.  She smiles when she notices your confusion, but refrains from giving an explanation before putting a pouch onto ");
 		//if (cocks = 2)
 		if(player.cockTotal() == 2) outputText("your other phallus.");
 		//[if (cocks > 2)
@@ -1253,7 +1253,7 @@ export function TDMsLoseToCumWitchScene():void {
 	else outputText("It isn't as sensitive as yours {are/is}, for one thing, but");
 	outputText(" the flow of her constantly dribbling pre, tingling with magical power is something that you've never felt before.  Making things more interesting, the position that you're in leaves your grip on her dick remarkably different than how you'd grab your own while masturbating.  Of course what is important is that you want to rub every last inch of her lovely length, and feel every second of it through her strange spell.  The feeling of your cum being sucked out of your [balls] only makes the whole experience feel even better.");
 	
-	outputText("\n\nA loud slapping noise fills the air, and you notice that you're actually trying to thrust up into the cum witch's pussy with your " + cockDescript(x) + ", despite the fact that you can't feel it.  You stop yourself, only to have the witch start to gyrate her hips, spinning you around her insides with your " + cockDescript(x) + ", while simultaniously thrusting her cock through your hands.  You guess that while you can't feel your shaft inside her, she certainly can.");
+	outputText("\n\nA loud slapping noise fills the air, and you notice that you're actually trying to thrust up into the cum witch's pussy with your " + game.player.cockDescript(x) + ", despite the fact that you can't feel it.  You stop yourself, only to have the witch start to gyrate her hips, spinning you around her insides with your " + game.player.cockDescript(x) + ", while simultaniously thrusting her cock through your hands.  You guess that while you can't feel your shaft inside her, she certainly can.");
 	
 	//orgasmsssss
 	outputText("\n\nNow nearing your peak, the witch commands you to take your hands off her length; you do so reluctantly.  Things seem to pass in slow-motion to you, black hands move down and grip the cock you were just jacking firmly.  The witch leans back.  She aims her hermhood skyward, and a massive gout of spunk flies into the air.");
@@ -1279,7 +1279,7 @@ export function TDMsLoseToCumWitchScene():void {
 
 
 export function defeatedByCumWitch():void {
-	if(inDungeon) {
+	if(game.inDungeon) {
 		//Dudally-diddly.
 		if(player.hasCock() && (player.gender == 1 || rand(2) == 0)) cumWitchCumPumpBadEnd();
 		//Ladies and Genderless
@@ -1317,7 +1317,7 @@ export function cumWitchDefeated():void {
 	//Female Victory Sex
 	if(player.hasVagina()) addButton(3,"Ladysex",ladyVictorySex);
 	
-	if (inCombat) {
+	if (game.inCombat) {
 		if(monster.HP >= 1) addButton(9,"Leave",declineSandWitch);
 		else addButton(9,"Leave",cleanupAfterCombat);
 	}
@@ -1328,7 +1328,7 @@ export function cumWitchDefeated():void {
 export function declineSandWitch():void {
 	clearOutput();
 	outputText("Dusting yourself off, you lower your [weapon] and leave the cum witch to recover from the humiliation of losing to you.  The haunted, hungry look in her eyes leaves little doubt that she'll challenge you again or that she still wants to fuck you.  For now, she slips down into her own puddled cum, idly touching herself.");
-	if (inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(playerMenu);
 }
@@ -1346,7 +1346,7 @@ export function menFuckUpSomeCumWitch():void {
 	outputText("\n\n\"<i>You think THAT compares to m-my wondrous... perfect penis?  I've knocked up more women than youUUU-</i>\" she taunts until you cut her off with a well-placed thrust.  [OneCock] vanishes ");
 	if(player.cockThatFits(monster.vaginalCapacity()) < 0) outputText("most of");
 	else outputText("all of the way");
-	outputText(" inside her, sheathed deep in her under-used twat.  Her tight passage fits around your " + cockDescript(x) + " like a custom-made glove, a slippery warm embrace that threatens to rob you of your very reason.  The witch begins pumping her ebony cock along with the motions of your hips, throwing her head back in wordless pleasure that only a true hermaphrodite can experience.");
+	outputText(" inside her, sheathed deep in her under-used twat.  Her tight passage fits around your " + game.player.cockDescript(x) + " like a custom-made glove, a slippery warm embrace that threatens to rob you of your very reason.  The witch begins pumping her ebony cock along with the motions of your hips, throwing her head back in wordless pleasure that only a true hermaphrodite can experience.");
 	if(player.hasVagina()) outputText("  Two can play at that game.");
 	//Herm sexback
 	if(player.gender == 3) {
@@ -1374,9 +1374,9 @@ export function menFuckUpSomeCumWitch():void {
 	}
 	//DP Males
 	else if(y >= 0) {
-		outputText("\n\nScowling, you pull her hand away from her bouncing, super-hard rod and say, \"<i>You want to feel twice the pleasure?  Then feel THIS!</i>\"  You punctuate the declaration by pulling back and aligning your " + cockDescript(y) + " with her back-door, slamming it home without waiting.  She winces in pain and shock, looking up at you aghast but wordless.  Smirking, you twirl a thick lock of her blonde hair about your fist and yank her up for a kiss, tonguing her mouth with the same brutal, forceful intensity that now violates her anus.  The woman screams in pleasure and pain, tongue-fucking back with hateful passion as her muffled cries fade away.");
+		outputText("\n\nScowling, you pull her hand away from her bouncing, super-hard rod and say, \"<i>You want to feel twice the pleasure?  Then feel THIS!</i>\"  You punctuate the declaration by pulling back and aligning your " + game.player.cockDescript(y) + " with her back-door, slamming it home without waiting.  She winces in pain and shock, looking up at you aghast but wordless.  Smirking, you twirl a thick lock of her blonde hair about your fist and yank her up for a kiss, tonguing her mouth with the same brutal, forceful intensity that now violates her anus.  The woman screams in pleasure and pain, tongue-fucking back with hateful passion as her muffled cries fade away.");
 		
-		outputText("\n\nThough she still grapples with you, her silken tunnel is soon anxiously squeezing your " + cockDescript(x) + ", and her tight pucker gradually loosens.  Even relaxed, it still flutters with a tight warmth that far exceeds her pussy.  You could almost grow addicted to it.  The hapless brown-skinned goddess milks the " + cockDescript(y) + " in her butt while her engorged nipples press against your own, sliding slickly over your sweaty skin.  You bite her lip and pound her all the harder, mounting her with hard pounding strokes.  This is entirely about getting YOUR " + player.multiCockDescriptLight() + " off, and you don't worry in the least about her pleasure.");
+		outputText("\n\nThough she still grapples with you, her silken tunnel is soon anxiously squeezing your " + game.player.cockDescript(x) + ", and her tight pucker gradually loosens.  Even relaxed, it still flutters with a tight warmth that far exceeds her pussy.  You could almost grow addicted to it.  The hapless brown-skinned goddess milks the " + game.player.cockDescript(y) + " in her butt while her engorged nipples press against your own, sliding slickly over your sweaty skin.  You bite her lip and pound her all the harder, mounting her with hard pounding strokes.  This is entirely about getting YOUR " + player.multiCockDescriptLight() + " off, and you don't worry in the least about her pleasure.");
 		
 		outputText("\n\nThe witch weakly tries to grab at her cock again while you brutalize her ass, but you crudely slap one of her breasts.  She squeezes and drips thick ribbons of pre-cum at the harsh contact.  Well, if that's what she wants...  You begin slapping her tits in time with your thrusts, pounding the mammaries until the dusky, sweat-oiled skin is flushed red in irritation.  Her nipples seem even bigger and harder from the abuse, and once you tire of the pleasant jiggle your strikes induce, you grab one of the chest-buds and pinch, hard.");
 		
@@ -1406,9 +1406,9 @@ export function menFuckUpSomeCumWitch():void {
 		
 		outputText("\n\nYou kiss up the lady's lithe neck to her ear and whisper, \"<i>That's better,</i>\" just before giving her lobe a soft nibble.  She looks up at you when you pull back, partly confused and more than a little lust-lost, licking her lips and asking, \"<i>Harder... please?</i>\"");
 		
-		outputText("\n\nBrushing back the blond tresses, you give a gentle nod and begin to move faster, sawing your " + cockDescript(x) + " through the velvet tunnel faster and faster.  She arches her back hard enough to lift her tits to your mouth, and you greedily suckle one, allowing your fingers to dive down into her spasming cleft to rub her button.  Throughout it all, the witch's member is fitfully bouncing and pulsing as if desperate for attention.  You ignore it and the steadily growing puddle of pre, focused utterly on showing the woman what it means to love as a woman.");
+		outputText("\n\nBrushing back the blond tresses, you give a gentle nod and begin to move faster, sawing your " + game.player.cockDescript(x) + " through the velvet tunnel faster and faster.  She arches her back hard enough to lift her tits to your mouth, and you greedily suckle one, allowing your fingers to dive down into her spasming cleft to rub her button.  Throughout it all, the witch's member is fitfully bouncing and pulsing as if desperate for attention.  You ignore it and the steadily growing puddle of pre, focused utterly on showing the woman what it means to love as a woman.");
 		
-		outputText("\n\nHer legs tremble behind you, gradually losing their grip.  The witch looks pleadingly looks up and begs, \"<i>I'm gonna... p-p-please... can I - OOooooh... c-can I cum!?  I'm so close... just... just let me cum!</i>\"  Being none too far from climax yourself, you graciously nod and slam your " + cockDescript(x) + " deep into its new home, crushing the witch's soft buns into your thighs.  She squeals happily and seizes up, her heels pressing hard into your back, trapping you inside her.  At the same time, her thick tool lifts an inch off her belly and thickens, the urethra bulging out for a moment before it begins to convulse and spray her goo over her tits and face. Her pussy drenches your loins in fragrant female goo, and you finally let go, pushing harder against her even though you're already dick-deep in quim.  Your " + cockDescript(x) + " unloads your thick gouts of spunk without delay");
+		outputText("\n\nHer legs tremble behind you, gradually losing their grip.  The witch looks pleadingly looks up and begs, \"<i>I'm gonna... p-p-please... can I - OOooooh... c-can I cum!?  I'm so close... just... just let me cum!</i>\"  Being none too far from climax yourself, you graciously nod and slam your " + game.player.cockDescript(x) + " deep into its new home, crushing the witch's soft buns into your thighs.  She squeals happily and seizes up, her heels pressing hard into your back, trapping you inside her.  At the same time, her thick tool lifts an inch off her belly and thickens, the urethra bulging out for a moment before it begins to convulse and spray her goo over her tits and face. Her pussy drenches your loins in fragrant female goo, and you finally let go, pushing harder against her even though you're already dick-deep in quim.  Your " + game.player.cockDescript(x) + " unloads your thick gouts of spunk without delay");
 		if(player.cumQ() < 700) outputText(", spurting with unceasing quantity until she's absolutely flooded with jizz and a little bulgy around the middle.");
 		else outputText(", spooging up her cunny until it's completely flooded, her belly bloated into a rounded dome.");
 		if(player.cumQ() >= 1500) outputText("  You keep going beyond that, but there's just no room, and spouts of semen spurt from the woman's poor, over-filled twat.");
@@ -1421,13 +1421,13 @@ export function menFuckUpSomeCumWitch():void {
 		else outputText("  You smirk as you wonder if she'll learn anything from this.  You hope not - it's a fun lesson to teach.");
 		player.orgasm();
 	}
-	if (inDungeon) {
-		if (inCombat)
+	if (game.inDungeon) {
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(playerMenu);
 	}
 	else { 
-		if (inCombat)
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(camp.returnToCampUseOneHour);
 	}
@@ -1436,7 +1436,7 @@ export function menFuckUpSomeCumWitch():void {
 export function maleTooBigVictorySex():void {
 	clearOutput();
 	var x:number = player.biggestCockIndex();
-	outputText("You slip out of your [armor] with deliberate slowness, the tight, constraining pressure on your massive tool shifting in the most delicious way.  The uncomfortable yet tantalizing weight lessens gradually, and at the first hint of freedom, your " + cockDescript(x) + " flops free to taste the freedom of the open air, nearly doubling in size as your blood surges through it.  The witch's eyes look up in confusion at your prodigious proportions and widen in shock.");
+	outputText("You slip out of your [armor] with deliberate slowness, the tight, constraining pressure on your massive tool shifting in the most delicious way.  The uncomfortable yet tantalizing weight lessens gradually, and at the first hint of freedom, your " + game.player.cockDescript(x) + " flops free to taste the freedom of the open air, nearly doubling in size as your blood surges through it.  The witch's eyes look up in confusion at your prodigious proportions and widen in shock.");
 	
 	outputText("\n\n\"<i>Y-you're bigger than me...</i>\" she drawls, her mouth hanging open in shock at the declaration.  She covers the hanging orifice with her palm, lamely trying to conceal her shock at your gargantuan boner.");
 	
@@ -1458,21 +1458,21 @@ export function maleTooBigVictorySex():void {
 	
 	outputText("\n\nThe cum-soaked, hermaphrodite witch tries to beg for your cum, but you shut her up with another load of bubbling pre.  As you watch her try to swallow it all, you feel a twinge of heat inside yourself");
 	if(player.balls > 0) outputText(" along with your [balls] growing tight");
-	outputText(", and you know your climax has arrived.  You hammer your " + cockDescript(x) + " back home, smashing it into her face.  The first wave seems to languish in your body forever, gradually stretching your urethra wide until you see your " + player.cockHead(x) + " swell and open.  A wave of white fills the bitch's mouth, soaks her hair, and washes over her shoulders.  There's so much of the alabaster gunk that ropes of it dangle around her head in a shroud, slowly dripping into a puddle onto the floor.  You inch back a bit, and let the next explosion take her in the tits.  The jism pours out like it water from a five gallon bucket, and the black tits are immediately wreathed in glistening white.");
+	outputText(", and you know your climax has arrived.  You hammer your " + game.player.cockDescript(x) + " back home, smashing it into her face.  The first wave seems to languish in your body forever, gradually stretching your urethra wide until you see your " + player.cockHead(x) + " swell and open.  A wave of white fills the bitch's mouth, soaks her hair, and washes over her shoulders.  There's so much of the alabaster gunk that ropes of it dangle around her head in a shroud, slowly dripping into a puddle onto the floor.  You inch back a bit, and let the next explosion take her in the tits.  The jism pours out like it water from a five gallon bucket, and the black tits are immediately wreathed in glistening white.");
 	
-	outputText("\n\nDemanding more friction, your " + cockDescript(x) + " draws you right back up to her face, and this time she doesn't even try to catch it in her mouth.  The black slut simply plants a kiss just below your opening and meets your gaze as the alabaster flow takes her, holding eye contact for as long as she can.  Of course, that isn't long, and she's quickly drenched in spunk, her eyes glued shut with syrupy strings of spooge.");
+	outputText("\n\nDemanding more friction, your " + game.player.cockDescript(x) + " draws you right back up to her face, and this time she doesn't even try to catch it in her mouth.  The black slut simply plants a kiss just below your opening and meets your gaze as the alabaster flow takes her, holding eye contact for as long as she can.  Of course, that isn't long, and she's quickly drenched in spunk, her eyes glued shut with syrupy strings of spooge.");
 	
 	outputText("\n\nYou aren't done!  Not by a long shot!  This dark creature blessed you with unholy levels of virility, and you aren't going to waste it.  You stand away and butt your " + player.cockHead(x) + " into her nether-lips, and the remainder of your orgasm is injected directly into the woman's waiting womb.  Her belly rounds into a nice, gravid bump that carries her cock up with it, and you're given the first chance to see the results of the cum witch's own orgasm.  The dark, glossy cock is absolutely soaked in sperm, while her balls are wreathed in churned up, frothy cum.  Once you've made her uterus a swollen dome, you aim up and drizzle the last ropes atop her pathetic, half-limp dick.");
 	
-	outputText("\n\nExhausted at last, you pat your " + cockDescript(x) + " affectionately.  You'd wipe it off on the witch's hair, if it wasn't messier than the " + player.skin() + " you plan to clean.  She begins to lick her fingers and clean the stuff off her face.  You just laugh, and get dressed.  There's still much to do.");
+	outputText("\n\nExhausted at last, you pat your " + game.player.cockDescript(x) + " affectionately.  You'd wipe it off on the witch's hair, if it wasn't messier than the " + player.skin() + " you plan to clean.  She begins to lick her fingers and clean the stuff off her face.  You just laugh, and get dressed.  There's still much to do.");
 	player.orgasm();
-	if (inDungeon) {
-		if (inCombat)
+	if (game.inDungeon) {
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(playerMenu);
 	}
 	else { 
-		if (inCombat)
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(camp.returnToCampUseOneHour);
 	}
@@ -1507,13 +1507,13 @@ export function ladyVictorySex():void {
 	
 	player.knockUp(PregnancyStore.PREGNANCY_SAND_WITCH, PregnancyStore.INCUBATION_SAND_WITCH, 90);
 	player.orgasm();
-	if (inDungeon) {
-		if (inCombat)
+	if (game.inDungeon) {
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(playerMenu);
 	}
 	else { 
-		if (inCombat)
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(camp.returnToCampUseOneHour);
 	}
@@ -1549,13 +1549,13 @@ export function tentacleVictoryGangbangCumWitch():void {
 	outputText("\n\nYou retract your spent shafts and smirk at the backflow of bukkake that bursts from the cum witch's soiled loins.  She's utterly wrecked, dominated by dick in every sense.  What delicious irony that a sorceress should be taken with the very type of organ she glorifies!  Getting dressed, you give her a lazy wave and invite her to try again some other time.");
 	
 	player.orgasm();
-	if (inDungeon) {
-		if (inCombat)
+	if (game.inDungeon) {
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(playerMenu);
 	}
 	else { 
-		if (inCombat)
+		if (game.inCombat)
 			cleanupAfterCombat();
 		else doNext(camp.returnToCampUseOneHour);
 	}
@@ -1739,7 +1739,7 @@ export function lionpaws(skipped:boolean = false):void {
 	dynStats("sen", -2);
 	menu();
 	if (skipped) {
-		dungeonLoc = 0; //Replaces inDungeon = false;
+		game.dungeonLoc = 0; //Replaces inDungeon = false;
 		addButton(0, "Next", camp.returnToCampUseOneHour);
 	}
 	else {
@@ -2090,7 +2090,7 @@ export function getBlown(submit:boolean = false):void {
 	player.orgasm();
 	menu();
 	if (submit) {
-		dungeonLoc = 0; //Replaces inDungeon = false;
+		game.dungeonLoc = 0; //Replaces inDungeon = false;
 		addButton(0, "Next", camp.returnToCampUseOneHour);
 	}
 	else {
@@ -2304,7 +2304,7 @@ export function fenPutsHisShittyFetishInYoSphinx():void {
 	outputText("\n\nYou collapse in a well-fucked heap while Sanura's extra addition fades away.  She lays down next to you, fanning her face with her wings as you try to recover.  Her arm rubs one of your cheeks, still sensitive from whatever magic was in her balls, and she says, \"<i>That was great fun.  Let's do it again sometime?</i>\"");
 	outputText("\n\nYou muster the strength for a thumbs up, a dopey smile still painted on your face.");
 	player.orgasm();
-	dungeonLoc = 0; //Replaces inDungeon = false;
+	game.dungeonLoc = 0; //Replaces inDungeon = false;
 	menu();
 	addButton(0, "Next", camp.returnToCampUseOneHour);
 }
@@ -2322,7 +2322,7 @@ export function fenPutsHisShittyFetishInYoSphinx():void {
 export function sandWitchMotherFriendlyMenu():void {
 	if(monster.short != "Sand Mother") {
 		startCombat(new SandMother(),true);
-		inCombat = false;
+		game.inCombat = false;
 		monster.HP = 0;
 	}
 	menu();
@@ -2387,7 +2387,7 @@ export function slavesDiscussion():void {
 	outputText("\n\nShe sighs, shaking her head sadly as she starts back toward the throne room.  \"<i>You're a bleeding heart idealist, [name].  You'd condemn the girl to torment for the sake of your petty morality.  There's no room for sentimentality these days.  Every soul I keep from becoming a demon, even if I keep them in chains, is on my conscious.  Yet I bear that weight gladly, [name].  Perhaps one day, when you're ready to take on that same responsibility, you'll understand.</i>\"");
 	//[PC is left in Milk Room]
 	dungeonEnterRoom(DUNGEON_WITCH_BATH_ROOM);
-//	kGAMECLASS.dungeonLoc = 33;
+//	dungeonLoc = 33;
 //	doNext(camp.campMenu);
 }
 
@@ -2420,7 +2420,7 @@ export function slavesDiscussion():void {
 	outputText("\n\nThe Sand Mother shrugs and says, \"<i>Then ask after her when you do.</i>\"  She doesn't stick around long enough for you to reply, leaving you standing there with the milk girl.");
 	outputText("\n\n\"<i>Bath time?</i>\"");
 	dungeonEnterRoom(DUNGEON_WITCH_BATH_ROOM);
-//	kGAMECLASS.dungeonLoc = 33;
+//	dungeonLoc = 33;
 //	doNext(camp.campMenu);
 }
 
@@ -2445,7 +2445,7 @@ export function slavesDiscussion():void {
 
 	outputText("\n\nYou thank the Sand Mother for her understanding, and the kindness she's shown your milky friend.  She nods, a wry smile on her dusky lips as you steady the milkmaid, helping her out of the room she's called home for gods know how long, and out into the desert sands - to camp.  To her new home.");
 
-	dungeonLoc = 0; //After buying her the player leaves the dungeon and returns to camp
+	game.dungeonLoc = 0; //After buying her the player leaves the dungeon and returns to camp
 	//[Next] (To Arriving At Camp)
 	menu();
 	addButton(0, "Next", milkWaifu.arriveWithLacticWaifuAtCamp);
@@ -2466,7 +2466,7 @@ export function sexWithFriendlySandMother():void {
 export function sandMotherPOMenu():void {
 	if(monster.short != "Sand Mother") {
 		startCombat(new SandMother(),true);
-		inCombat = false;
+		game.inCombat = false;
 		monster.HP = 0;
 	}
 	menu();
@@ -2706,7 +2706,7 @@ export function talkDownTheMother():void {
 	statScreenRefresh();
 	//(Set friendly)
 	flags[kFLAGS.SAND_WITCHES_FRIENDLY] = 1;
-	inCombat = false;
+	game.inCombat = false;
 	sandWitchMotherFriendlyMenu();
 }
 //*Tentacle Gangbang
@@ -2765,7 +2765,7 @@ export function tentacleGangBang():void {
 	flags[kFLAGS.TIMES_TENTACLED_SAND_MOTHER]++;
 	player.orgasm();
 	dynStats("cor", 1);
-	if (!inCombat)
+	if (!game.inCombat)
 		doNext(playerMenu);
 	else cleanupAfterCombat();
 }
@@ -2773,9 +2773,9 @@ export function tentacleGangBang():void {
 //>Sets to resisting with options for repeat rapes.
 export function fuckTheSandMothersCunt():void {
 	clearOutput();
-	if (!inCombat) {
+	if (!game.inCombat) {
 		startCombat(new SandMother(),true);
-		inCombat = false;
+		game.inCombat = false;
 		monster.HP = 0;
 	}
 	var x:number = player.cockThatFits(monster.vaginalCapacity());
@@ -2791,7 +2791,7 @@ export function fuckTheSandMothersCunt():void {
 	else outputText("on her stomach,");
 	outputText(" then shift position to cup her swollen mammaries.  The super-soft, fluid-filled breasts seem to devour your fingers with their softness, and you begin to roughly grope and knead them, expressing a few drops of milk as you maul her tits.  Her nipples grow hard under your less-than-gentle ministrations, engorging to near double their original size.  You flick one and smile when the huge-breasted Queen of the desert lets out a little moan of a whimper.");
 	
-	outputText("\n\nYou go back to grabbing her ass with one hand and fondling her pussy with the other until your digits are soaked with the slobbery lady-lube.  Now that she's nice and ready, you smear her juices across your " + cockDescript(x) + ", mixing it in with your own bubbling pre.  She starts to push back into you, hungry for stimulation now that you've left her womanhood untended.  You smirk and aim your slippery member at one of the approaching holes");
+	outputText("\n\nYou go back to grabbing her ass with one hand and fondling her pussy with the other until your digits are soaked with the slobbery lady-lube.  Now that she's nice and ready, you smear her juices across your " + game.player.cockDescript(x) + ", mixing it in with your own bubbling pre.  She starts to push back into you, hungry for stimulation now that you've left her womanhood untended.  You smirk and aim your slippery member at one of the approaching holes");
 	if(y >= 0) outputText(", grabbing a second cock as well, intent on penetrating both of her sopping entrances");
 	outputText(".  The moment her labia caress your ");
 	if(y >= 0) outputText("cockheads");
@@ -2800,7 +2800,7 @@ export function fuckTheSandMothersCunt():void {
 	
 	outputText("\n\nIntent on penetration, you grab hold of the witch's well-developed hips and drag her weakened body down, smoothly impaling her on your ");
 	if(y >= 0) outputText("tools");
-	else outputText(cockDescript(x));
+	else outputText(game.player.cockDescript(x));
 	outputText(".  She moans out loud, throwing her bleached tresses around wildly in pleasure while inch after inch of cock snakes into her passage");
 	if(y >= 0) outputText("s");
 	outputText(".  Your [hips] clap against her jiggly butt when you bottom out, rocking her whole body forward from the impact and setting all four breasts bouncing and swaying beneath her, painting trails of milk across the floor.  Gradually, you draw back, exposing your sex-slicked length, and thrust back in, leaving no time for her to pull away.  As soon as you hilt yourself to the [sheath], you bounce away, pushing in and out, back and forth, a slow, steady fuck that leaves the Sorceress little time to do anything but roll her hips in your palms and moan like a whore in heat.");
@@ -2844,7 +2844,7 @@ export function fuckTheSandMothersCunt():void {
 	else outputText("\n\nThey may not think much of you, but turning the Sand Witch Queen into a mewling slut never gets old.");
 	player.orgasm();
 	dynStats("cor", 1);
-	if (!inCombat)
+	if (!game.inCombat)
 		doNext(playerMenu);
 	else cleanupAfterCombat();
 }
@@ -2895,7 +2895,7 @@ export function scissorAndDrink():void {
 	else outputText("\n\nThey may not think much of you, but turning the Sand Witch Queen into a mewling slut never gets old.");
 	player.orgasm();
 	dynStats("cor", 1);
-	if (!inCombat)
+	if (!game.inCombat)
 		doNext(playerMenu);
 	else cleanupAfterCombat();
 }
@@ -3112,7 +3112,7 @@ export function sandMotherBadEndsLadiesEpilogue():void {
 export function friendlySandMotherFuck():void {
 	clearOutput();
 	startCombat(new SandMother(),true);
-	inCombat = false;
+	game.inCombat = false;
 	var x:number = player.cockThatFits(monster.vaginalCapacity());
 	var y:number = player.cockThatFits2(monster.vaginalCapacity());
 	//First Time:
@@ -3166,7 +3166,7 @@ export function friendlySandMotherFuck():void {
 	if(y >= 0) outputText("s");
 	outputText(".  The large woman sighs with relief as you scratch her unspoken, hidden itch.  Your [hips] push forward with such fervor that you doubt you could stop if you wanted, pressing hard on her sensitive, innermost folds with ");
 	if(y >= 0) outputText("both your cocks");
-	else outputText("your " + cockDescript(x));
+	else outputText("your " + game.player.cockDescript(x));
 	outputText(".");
 			   
 	//HOARSES:
@@ -3748,7 +3748,7 @@ export function fuckOneSandWitch():void {
 		multi = true;
 	}
 	//else if player has one non-tentacle cock, or only one cock that fits
-	else outputText("\n\nYour hands slide along the witch's legs and up her thighs until they grasp her hips. You allow the shaft of your " + cockDescript(x) + " to slide up and down the folds of her dripping labia until your cockhead slips in between and presses against her entrance.  \"<i>P-please!  Q-quickly!  I n-n-neeeed it!</i>\"  You're all too eager to service her as you thrust forwards.");
+	else outputText("\n\nYour hands slide along the witch's legs and up her thighs until they grasp her hips. You allow the shaft of your " + game.player.cockDescript(x) + " to slide up and down the folds of her dripping labia until your cockhead slips in between and presses against her entrance.  \"<i>P-please!  Q-quickly!  I n-n-neeeed it!</i>\"  You're all too eager to service her as you thrust forwards.");
 	outputText("  The witch's moans and grunts of pleasure arouse the other witches in the room as they watch with the utmost jealously.  Some grab their nipples while others try to finger their pussies; whining and getting off on their envious voyeurism as they watch you fuck their sister.");
 	
 	//{all} 
@@ -3818,7 +3818,7 @@ export function fuckOneSandWitch():void {
 		if(player.cockTotal() > 1) outputText("s");
 		outputText(" continue");
 		if(player.cockTotal() == 1) outputText("s");
-		outputText(" to release loads of cum.  Ropes of your white jizz splash over the witch's bare belly and naked breasts.  With both hands you stroke your " + cockDescript(x) + " until it has soaked the tanned beauty from head to foot in your cum.  The other witches quickly set upon the exhausted girl, licking the cum from her breasts and scooping it out of her various valleys of cleavage to slop against their own pussies in the desperate hope of seeding their own extra wombs.");
+		outputText(" to release loads of cum.  Ropes of your white jizz splash over the witch's bare belly and naked breasts.  With both hands you stroke your " + game.player.cockDescript(x) + " until it has soaked the tanned beauty from head to foot in your cum.  The other witches quickly set upon the exhausted girl, licking the cum from her breasts and scooping it out of her various valleys of cleavage to slop against their own pussies in the desperate hope of seeding their own extra wombs.");
 	}
 	player.orgasm();
 	dynStats("sen", -2);
@@ -3830,7 +3830,7 @@ export function fuckTwoPregWitches():void {
 	clearOutput();
 	var x:number = player.cockThatFits(50);
 	var y:number = player.cockThatFits2(50);
-	outputText("These hormonally overwrought witches are each little more than five huge fleshy orbs of tits and bellies, desperately crawling towards you on hands and knees as their stares fixate on your " + cockDescript(y) + ".  ");
+	outputText("These hormonally overwrought witches are each little more than five huge fleshy orbs of tits and bellies, desperately crawling towards you on hands and knees as their stares fixate on your " + game.player.cockDescript(y) + ".  ");
 	//{if player has two long tentacle cocks} 
 	if(player.tentacleCocks() >= 2) outputText("Almost of their own accord your tentacle cocks lash out, wrapping around the arms of the two closest girls, lifting them to their knees only to roll them backwards and on to their sides with their backs to each other.  ");
 	else outputText("It takes little effort to grab the closest two witches and pull them up only to push them down again and on to their sides with their backs pressed against each other.  ");
@@ -4170,7 +4170,7 @@ export function fuckMilkbabeWithPenor():void {
 		x = player.smallestCockIndex();
 	}
 	
-	outputText("You turn around and pull the milk-slut against you, her massive teats pressing hard against your [chest] until they spurt milk.  You stroke her cheeks, bringing her lips up to yours. Her hand finds your [cock] again, stroking you with mounting speed as your tongue finds its way into her mouth, your hands wandering down to grope her sizable ass and flared, breeder's hips.  Your milk maid sighs heavily, breath filled with lust as you push her up against the rim of the tub, her legs spreading wide for easy access to her milk-lubed cunt.  She locks her arms around your shoulder, moaning happily as you press into her, your " + cockDescript(x) + " sliding easily into her sodden box.");
+	outputText("You turn around and pull the milk-slut against you, her massive teats pressing hard against your [chest] until they spurt milk.  You stroke her cheeks, bringing her lips up to yours. Her hand finds your [cock] again, stroking you with mounting speed as your tongue finds its way into her mouth, your hands wandering down to grope her sizable ass and flared, breeder's hips.  Your milk maid sighs heavily, breath filled with lust as you push her up against the rim of the tub, her legs spreading wide for easy access to her milk-lubed cunt.  She locks her arms around your shoulder, moaning happily as you press into her, your " + game.player.cockDescript(x) + " sliding easily into her sodden box.");
 	outputText("\n\nSubmerged beneath a sea of creamy milk, it's so very, very easy to slide into the slave girl, ");
 	if(player.cockArea(x) < 30) outputText("hilting her in one long stroke");
 	else if(player.cockArea(x) < 50) outputText("pushing your many inches into her until your hips join, her nice and loose cunt easily taking your length");
@@ -4360,4 +4360,3 @@ export function birthAWitch():void {
 	outputText("\n\nYou soon find your way to the hidden caves of the Sand Witches, where you present your new daughter to the nursery.  The sand witches there aren't too happy about the idea of looking after her themselves, insisting you should stay here with them and rear her yourself, but you are insistent that you cannot stay here and it's not safe to keep your daughter with you.  Finally, they give in and start fussing over your daughter, giving you the opportunity to quietly slip out and head back home.\n");
 	fatigue(40);
 }
-

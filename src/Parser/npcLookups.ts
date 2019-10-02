@@ -16,18 +16,18 @@
 
 		export var arianLookups:Record<string, any> = // For subject: "arian"
 		{
-			"man"		: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianMF("man","woman")},
+			"man"		: function(thisPtr:CoC):string {return arianScene.arianMF("man","woman")},
 			// argh! "Man" is the mass-noun for humanity, and I'm loathe to choose an even more esoteric variant.
 			// Elverson/Spivak terminology is already esoteric enough, and it lacks a ungendered mass noun.
 
-			"ey"		: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianMF("he","she")},
-			"em"		: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianMF("him","her")},
-			"eir"		: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianMF("his","her")},
-			"eirs"		: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianMF("his","hers")},
-			"emself"	: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianMF("himself","herself")},
+			"ey"		: function(thisPtr:CoC):string {return arianScene.arianMF("he","she")},
+			"em"		: function(thisPtr:CoC):string {return arianScene.arianMF("him","her")},
+			"eir"		: function(thisPtr:CoC):string {return arianScene.arianMF("his","her")},
+			"eirs"		: function(thisPtr:CoC):string {return arianScene.arianMF("his","hers")},
+			"emself"	: function(thisPtr:CoC):string {return arianScene.arianMF("himself","herself")},
 
-			"chestadj"	: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianChestAdjective()},
-			"chest"		: function(thisPtr:CoC):string {return kGAMECLASS.arianScene.arianChest()}
+			"chestadj"	: function(thisPtr:CoC):string {return arianScene.arianChestAdjective()},
+			"chest"		: function(thisPtr:CoC):string {return arianScene.arianChest()}
 		}
 		// Arian unhandled terms (I have not decided how to support them yet):
 		// arianMF("mas","mis")
@@ -38,16 +38,16 @@
 
 		export var rubiLookups:Record<string, any> = // For subject: "rubi"
 		{
-			"man"		: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiMF("man","woman")},
+			"man"		: function(thisPtr:CoC):string {return telAdre.rubi.rubiMF("man","woman")},
 
-			"ey"		: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiMF("he","she")},
-			"em"		: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiMF("him","her")},
-			"eir"		: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiMF("his","her")},
-			"eirs"		: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiMF("his","hers")},
-			"emself"	: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiMF("himself","herself")},
+			"ey"		: function(thisPtr:CoC):string {return telAdre.rubi.rubiMF("he","she")},
+			"em"		: function(thisPtr:CoC):string {return telAdre.rubi.rubiMF("him","her")},
+			"eir"		: function(thisPtr:CoC):string {return telAdre.rubi.rubiMF("his","her")},
+			"eirs"		: function(thisPtr:CoC):string {return telAdre.rubi.rubiMF("his","hers")},
+			"emself"	: function(thisPtr:CoC):string {return telAdre.rubi.rubiMF("himself","herself")},
 
-			"cock"		: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiCock()},
-			"breasts"	: function(thisPtr:CoC):string {return kGAMECLASS.telAdre.rubi.rubiBreasts()}
+			"cock"		: function(thisPtr:CoC):string {return telAdre.rubi.rubiCock()},
+			"breasts"	: function(thisPtr:CoC):string {return telAdre.rubi.rubiBreasts()}
 
 		}
 		//Rubi unhandled terms :

@@ -7,14 +7,13 @@
 	 
 	 
 
-	export class AbstractFarmContent extends BaseContent
+	export class AbstractFarmContent
 	{
 		public  constructor()
 		{
 		}
 		protected  get farm():Farm {
-			return kGAMECLASS.farm;
+			return farm;
 		}
 
 	}
-

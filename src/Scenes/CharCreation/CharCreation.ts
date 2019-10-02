@@ -8,7 +8,7 @@
 
 //	import flash.events.MouseEvent;
 
-	export class CharCreation extends BaseContent {
+	export class CharCreation {
 		
 		private  customPlayerProfile:() => void;
 		
@@ -26,8 +26,6 @@
 		}
 		
 		public  newGameGo():void {
-			funcs = [];
-			args = [];
 			mainView.eventTestInput.x = -10207.5;
 			mainView.eventTestInput.y = -1055.1;
 			hideStats();
@@ -76,15 +74,15 @@
 			player.slotName = "VOID";
 			player.autoSave = false;
 			//RESET DUNGEOn
-//No need, dungeonLoc = 0 does this:			kGAMECLASS.inDungeon = false;
-			kGAMECLASS.dungeonLoc = 0;
-			kGAMECLASS.inRoomedDungeon = false;
-			kGAMECLASS.inRoomedDungeonResume = null;
+//No need, dungeonLoc = 0 does this:			inDungeon = false;
+            game.dungeonLoc = 0;
+			game.inRoomedDungeon = false;
+			game.inRoomedDungeonResume = null;
 			//Hold onto old data for NG+
 			var oldPlayer:Player = player;
 			//Reset all standard stats
 			player = new Player();
-			model.player = player;
+			game.player = player;
 			player.str = 15;
 			player.tou = 15;
 			player.spe = 15;
@@ -94,7 +92,7 @@
 			player.cor = 0;
 			player.lust = 15;
 			
-			kGAMECLASS.notes = "No Notes Available.";
+			notes = "No Notes Available.";
 			player.XP = flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP];
 			player.level = 1;
 			player.HP = player.maxHP();
@@ -154,13 +152,13 @@
 			player.nosePShort = "";
 			player.nosePLong = "";
 			//PLOTZ
-			kGAMECLASS.monk = 0;
-			kGAMECLASS.whitney = 0;
-			kGAMECLASS.sand = 0;
-		//Replaced by flag	kGAMECLASS.beeProgress = 0;
-			kGAMECLASS.giacomo = 0;
+			game.monk = 0;
+			game.whitney = 0;
+			game.sand = 0;
+		//Replaced by flag	beeProgress = 0;
+			game.giacomo = 0;
 			//Lets get this bitch started
-			kGAMECLASS.inCombat = false;
+			game.inCombat = false;
 			//NG+ Clothes reset
 			if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS] != 0) 
 			{
@@ -195,8 +193,8 @@
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00102] = 1;
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02999] = 3;
 			//Time reset
-			model.time.days = 0;
-			model.time.hours = 0;
+			game.time.days = 0;
+			game.time.hours = 0;
 			//Clear cocks
 			while (player.cocks.length > 0) {
 				player.removeCock(0, 1);
@@ -222,7 +220,7 @@
 		}
 		
 		private  chooseName():void {
-			if (kGAMECLASS.testingBlockExiting) {
+			if (testingBlockExiting) {
 				// We're running under the testing script.
 				// Stuff a name in the box and go go go
 				mainView.nameBox.text = "Derpy";
@@ -645,7 +643,7 @@
 			player.tone += 5;
 			player.thickness += 5;
 			player.createPerk(PerkLib.Tough, 0.25, 0, 0, 0);
-			player.HP = kGAMECLASS.maxHP();
+			player.HP = maxHP();
 			chooseHistory();
 		}
 		
@@ -804,7 +802,7 @@
 			
 		private  arrival():void {
 			statScreenRefresh();
-			model.time.hours = 11;
+			game.time.hours = 11;
 			clearOutput();
 			outputText("You are prepared for what is to come.  Most of the last year has been spent honing your body and mind to prepare for the challenges ahead.  You are the Champion of Ingnam.  The one who will journey to the demon realm and guarantee the safety of your friends and family, even though you'll never see them again.  You wipe away a tear as you enter the courtyard and see Elder Nomur waiting for you.  You are ready.\n\n");
 			outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.   You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.\n\n");
@@ -823,7 +821,7 @@
 			clearOutput();
 			hideUpDown();
 			dynStats("lus", 40, "cor", 2);
-			model.time.hours = 18;
+			game.time.hours = 18;
 			outputText("You wake with a splitting headache and a body full of burning desire.  A shadow darkens your view momentarily and your training kicks in.  You roll to the side across the bare ground and leap to your feet.  A surprised looking imp stands a few feet away, holding an empty vial.  He's completely naked, an improbably sized pulsing red cock hanging between his spindly legs.  You flush with desire as a wave of lust washes over you, your mind reeling as you fight ");
 			if (player.gender == GENDER_FEMALE)
 				outputText("the urge to chase down his rod and impale yourself on it.\n\n");
@@ -1177,7 +1175,7 @@
 				player.createVagina();
 				if(player.clitLength == 0) player.clitLength = 0.25;
 			}
-			kGAMECLASS.genderCheck();
+			genderCheck();
 			//Hair length: Very long
 			player.hairLength = 22;
 			//Breast size: HH
@@ -1314,7 +1312,7 @@
 			//Gender: Female	
 			if(!player.hasVagina()) {
 				player.createVagina();
-				kGAMECLASS.genderCheck();
+				genderCheck();
 			}
 			//"Ears: Bunny
 			player.earType = EARS_BUNNY;
@@ -1349,8 +1347,8 @@
 			player.sens = 15;
 			player.lib = 15;
 			player.cor = 0;
-			kGAMECLASS.notes = "No Notes Available.";
-			player.HP = kGAMECLASS.maxHP();
+			notes = "No Notes Available.";
+			player.HP = maxHP();
 			player.hairLength=13;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
@@ -1431,8 +1429,8 @@
 			player.sens = 15;
 			player.lib = 15;
 			player.cor = 0;
-			kGAMECLASS.notes = "No Notes Available.";
-			player.HP = kGAMECLASS.maxHP();
+			notes = "No Notes Available.";
+			player.HP = maxHP();
 			player.hairLength = 1;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.skinTone = "light";
@@ -1830,8 +1828,8 @@
 			player.sens = 15;
 			player.lib = 15;
 			player.cor = 0;
-			kGAMECLASS.notes = "No Notes Available.";
-			player.HP = kGAMECLASS.maxHP();
+			notes = "No Notes Available.";
+			player.HP = maxHP();
 			
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
@@ -2073,8 +2071,8 @@
 			player.sens = 100;
 			player.lib = 30;
 			player.cor = 71;
-			kGAMECLASS.notes = "Cheater!";
-			player.HP = kGAMECLASS.maxHP();
+			notes = "Cheater!";
+			player.HP = maxHP();
 			player.hairLength = 10;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
@@ -2180,7 +2178,7 @@
 			flags[kFLAGS.AMILY_FOLLOWER] = 2;
 			
 			// Jojo
-			kGAMECLASS.monk = 5;
+			game.monk = 5;
 			
 			// Bimbo Sophie
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] = 1;
@@ -2289,8 +2287,8 @@
 			player.sens = 15;
 			player.lib = 15;
 			player.cor = 0;
-			kGAMECLASS.notes = "No Notes Available.";
-			player.HP = kGAMECLASS.maxHP();
+			notes = "No Notes Available.";
+			player.HP = maxHP();
 			player.hairLength = 10;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
@@ -2658,7 +2656,7 @@ public function doCreation(eventNo:Number):void {
 			player.tone += 5;
 			player.thickness += 5;
 			player.createPerk(PerkLib.Tough, 0.25, 0, 0, 0);
-			player.HP = kGAMECLASS.maxHP();
+			player.HP = maxHP();
 		}
 		if(temp == 3) {
 			player.spe += 5;
@@ -2716,7 +2714,7 @@ public function doCreation(eventNo:Number):void {
 	//Choose name
 	if(eventNo == 10034)
 	{
-		if (kGAMECLASS.testingBlockExiting)
+		if (testingBlockExiting)
 		{
 			// We're running under the testing script.
 			// Stuff a name in the box and go go go
@@ -2863,12 +2861,12 @@ public function doCreation(eventNo:Number):void {
 		if(flags[kFLAGS.CUSTOM_PC_ENABLED] == 1) {
 			clearOutput();
 			flags[kFLAGS.CUSTOM_PC_ENABLED] = 0;
-			kGAMECLASS.customPCSetup();
+			customPCSetup();
 			doNext(10045);
 			return;
 		}
 		statScreenRefresh();
-		model.time.hours = 11;
+		game.time.hours = 11;
 		outputText("You are prepared for what is to come.  Most of the last year has been spent honing your body and mind to prepare for the challenges ahead.  You are the Champion of Ingnam.  The one who will journey to the demon realm and guarantee the safety of your friends and family, even though you'll never see them again.  You wipe away a tear as you enter the courtyard and see Elder Nomur waiting for you.  You are ready.\n\n", true);
 		outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.   You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.\n\n", false);
 		outputText("The entrance of the cave gapes open, sharp stalactites hanging over the entrance, giving it the appearance of a monstrous mouth.  Elder Nomur stops and nods to you, gesturing for you to proceed alone.\n\n", false);

@@ -103,7 +103,7 @@ public  benoitInClutch():boolean
 	
 	// Benoit enters "clutch" every 21 days, for 7 days
 	var startDay:number = flags[kFLAGS.FEMOIT_NEXTDAY_EVENT];
-	var currDay:number = this.getGame().model.time.days;
+	var currDay:number = game.time.days;
 	var diffDays:number = (currDay - startDay) % 28;
 
 	if (diffDays >= 21) return true;
@@ -161,7 +161,7 @@ public  clearBenoitPreggers():void
 		flags[kFLAGS.FEMOIT_EGGS_LAID] += flags[kFLAGS.FEMOIT_EGGS];
 		flags[kFLAGS.FEMOIT_EGGS] = 0;
 		flags[kFLAGS.FEMOIT_INCUBATION] = 0;
-		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = this.getGame().model.time.days; // Cycle "resets" based off birth day.
+		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = game.time.days; // Cycle "resets" based off birth day.
 	}
 }
 
@@ -183,7 +183,7 @@ public  benoitIntro():void {
 		suggest = eggySuggest;
 		suggestText = "Suggest";
 	}
-	else if (flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] <= this.getGame().model.time.days && flags[kFLAGS.BENOIT_STATUS] == 0)
+	else if (flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] <= game.time.days && flags[kFLAGS.BENOIT_STATUS] == 0)
 	{
 		femoitNextDayEvent();
 	}
@@ -219,7 +219,7 @@ public  benoitIntro():void {
 			return;
 		}
 	}
-	else if (!benoitInClutch() && !benoitPreggers() && (this.getGame().model.time.days - flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] >= 30) && (flags[kFLAGS.BENOIT_STATUS] > 0))
+	else if (!benoitInClutch() && !benoitPreggers() && (game.time.days - flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] >= 30) && (flags[kFLAGS.BENOIT_STATUS] > 0))
 	{
 		if (flags[kFLAGS.FEMOIT_FIRST_CLUTCH_MISSED] == 0)
 		{
@@ -814,7 +814,7 @@ private  eggySuggest():void {
 		if(player.hasCock()) {
 			if(!player.isTaur()) outputText("  Stuck between your two burning bodies, y");
 			else outputText("Y");
-			outputText("our " + cockDescript(0) + " spurts in sympathy to your female high, soaking ");
+			outputText("our " + game.player.cockDescript(0) + " spurts in sympathy to your female high, soaking ");
 			if(!player.isTaur()) outputText("both of you");
 			else outputText("the dry dirt");
 			outputText(" with white.");
@@ -994,7 +994,7 @@ private  repeatBenoitFuckTakeCharge():void {
 			//[(not horse)
 			if(!player.isTaur()) outputText("  Stuck between your two burning bodies, y");
 			else outputText("Y");
-			outputText("our " + cockDescript(0) + " spurts in sympathy to your female high, soaking ");
+			outputText("our " + game.player.cockDescript(0) + " spurts in sympathy to your female high, soaking ");
 			if(!player.isTaur()) outputText("both of you");
 			else outputText("the dry dirt");
 			outputText(" with white.");
@@ -1230,7 +1230,7 @@ public  benoitFeminise():void
 	{
 		outputText("You don't have the necessary ingredients to attempt this yet.");
 		outputText("\n\n<b>(Requires 2x Purified Succubus Milk, 1x Large Pink Egg, 1x Ovi Elixir, 1x Reptilium.)</b>");
-		this.getGame().flushOutputTextToGUI();
+		this.flushOutputTextToGUI();
 	}
 	else
 	{
@@ -1253,7 +1253,7 @@ public  benoitFeminise():void
 
 		outputText("\n\n\"<i>C... could you come back tomorrow?</i>\" says Benoit unevenly.  \"<i>Zis is... I need some time to get my 'ead around zis.</i>\"  You put the books back on the counter, scratch a terrified-looking Pierre behind the ear, and take your leave.");
 
-		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = this.getGame().model.time.days + 1;
+		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = game.time.days + 1;
 		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] = 1;
 
 		menu();
@@ -1574,5 +1574,3 @@ public  femoitBirths():void
 		doNext(camp.returnToCampUseOneHour);
 	}
 }
-
-

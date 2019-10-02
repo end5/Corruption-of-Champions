@@ -6,7 +6,7 @@
 	 
 	 
 
-	export class BrigidScene extends BaseContent
+	export class BrigidScene
 	{
 		public  constructor()
 		{
@@ -33,7 +33,7 @@
 				outputText("\"<i>Tsk tsk tsk,</i>\" the harpy jailer croons, looming over you as you slump to the ground. \"<i>You shouldn't have messed with me, bitch!</i>\" she snaps, giving you a rough kick to the side. \"<i>Now, let's see what Mother has to say about this...</i>\"");
 				//(Go to \"<i>Harpy Breeding Slut</i>\" Bad End)
 				menu();
-				addButton(0, "Next", getGame().harpyQueenBeatsUpPCBadEnd, true);
+				addButton(0, "Next", harpyQueenBeatsUpPCBadEnd, true);
 			}
 			else {
 				outputText("\"<i>That's it?!</i>\" Brigid screams, as you collapse in front of her.  \"<i>A weak little piece of trash like you took out our queen?</i>\"");
@@ -79,7 +79,7 @@
 				outputText("\n\nKiri strokes your prick with her body vigorously, pushing you toward your limit and keeping up appearances even as she whispers to you.  \"<i>Please, [name]... just endure it for now.  I'll think of a way to get you out of here, I promise.</i>\"  She shifts her hips downward, engulfing your shaft again, and rolls her head passionately as her cheeks flush.  \"<i>I-it may be a while, though,</i>\" she says, kissing your chest.  \"<i>I - ah! I'm not very much by myself, so... the only thing I can do is make lots of loyal, strong daughters with your seed... s-someday there'll be enough to make a break for it!  J-just hold on and... and... fertilize me!  </i>Fertilize me<i>, [name]!</i>\"");
 
 				outputText("\n\nThe harpy's eyes roll back in her head as she moans and sinks down one last time in orgasm, sucking at your cock with her vagina; your throbbing prick obeys, ejaculating a load of semen into the open-mouthed bird-girl.  \"<i>Ohh god,</i>\" Kiri gasps, \"<i>YES!  Cover my eggs in your sticky cum!  Fill me up!</i>\"");
-				if(player.cockTotal() > 1 || player.cumQ() > 1000) outputText("  " + SMultiCockDesc() + " holds forth for a while, until Kiri's ass, pussy, and tailfeathers are soaked with oozing, white cum.");
+				if(player.cockTotal() > 1 || player.cumQ() > 1000) outputText("  " + game.player.SMultiCockDesc() + " holds forth for a while, until Kiri's ass, pussy, and tailfeathers are soaked with oozing, white cum.");
 				outputText("  Next to you, the salamander on the other table climaxes as well, dumping a load into Hel that sizzles when it leaks onto his fiery, iron-bound tail.  Your former lover squirms and shivers as the scalding-hot load fills her cunt, and her own prick twitches weakly, depositing a small string of bubbling jism on the stone table.");
 
 				outputText("\n\n\"<i>Oh dad... Hel... I'm sorry,</i>\" Kiri whimpers, unable to pull her eyes away from them as your cock dribbles the last of your seed into her.  The bound man's single eye widens as he hears the name of his partner, and his face deforms with rage as a roar pours out of him with enough volume to shake the room.  Kiri buries her face in your [chest] and shudders as the prisoner bellows his frustration; Hel simply looks left and right, confused and anxious as the echoing roar dies off; Brigid pushes her toy pussy away and rises from her stool.");
@@ -88,14 +88,14 @@
 
 				outputText("\n\nKiri frowns unhappily as she slips your cock from her pussy, then kisses you.  \"<i>Remember, [name]... just hold on!  And... save some of your seed for me!</i>\"  She lingers for a while, looking in your eyes affectionately, but Brigid grabs her by the hair and, swearing filthily, pulls her away.  A sadistic-looking phoenix takes her place, straddling you and slipping your sore prick into her cunt... the last thing you manage to do before your head is filled with the agony and ecstasy of having your raw shaft ridden again right after orgasm is to wonder exactly how long salamander-harpy half-breeds gestate...");
 				//[GAME THE FUCK OVER, SON; WHERE IS MY MONEY?]
-				getGame().gameOver();
+				gameOver();
 			}
 			//(else if not visibly pregnant F or H)
 			else {
 				//hymen check]
 				player.cuntChange(15,false,false,false);
 				outputText("The heat in your [vagina] is the first thing to stir you.  Your eyes open painfully, fluttering with each soft pulse of your head; it feels like an imp was set loose inside, covering your brain with thick jizz, but eventually you manage to focus and look down.  What greets you is the sight of ");
-				if(player.hasCock()) outputText(sMultiCockDesc() + " bobbing up and down, drooling pre-cum, as ");
+				if(player.hasCock()) outputText(game.player.sMultiCockDesc() + " bobbing up and down, drooling pre-cum, as ");
 				outputText("your red, sore pussy is pounded viciously by a thick cock dotted with scales.  Below it dangles a pair of swollen balls, bouncing as the shaft is thrust into you; with an inkling of understanding, you look back to confirm your suspicion.  Sure enough, you're mounted atop the table-bound salamander from before, who grunts as he pushes into you.  The hot cock, hotter than your body, slides in with a sizzle, and some of your juices roll down the shaft, only to evaporate when they hit the salamander's flaming, iron-bound tail.  Your own limbs are chained to the table via a massive iron ring and Brigid stands in front of you, watching you expectantly; behind her are arranged a score of assorted harpies and surviving phoenixes in various stages of coitus.");
 
 				outputText("\n\nIt takes you a while to realize that the gasps you're hearing aren't all coming from you and the rabble; you turn your head to the table next to you, upon which is strapped Hel.  The woman is restrained much the same way as your salamander, except her legs are spread wide open, displaying her pussy for all to see, and an additional iron mask completely covers her face.  Atop Hel sits Kiri, the little orange-feathered harpy from before, grinding her feathery pelvis into Hel's.  \"<i>S-sorry dad; [name],</i>\" Kiri says, wincing as she notices your stare.  \"<i>Just... try to... t-to hold on!</i>\"  She reclines and pulls away from Hel, and for the first time you can see what she's grinding on; a small, orange-scaled dick is jutting fron Hel's crotch!  Kiri moans as she stirs her pussy with it, throwing her hips upward to reveal that she, too, sports a brand-new, oozing penis.");
@@ -114,9 +114,8 @@
 				if(player.hasCock()) outputText(" as the phoenix's cunt slides onto your [cock smallest]");
 				outputText(".  Brigid makes her way up the stairs, leaving you and the others at the mercy of the assorted horde.  The harpy rides your mouth greedily, knocking your head into the hard stone floor, and the last thing you can see around her feathery thighs before you slip into unconsciousness again is Kiri being pulled roughly from her resting place atop Hel by a mean-looking, wide-hipped harpy matron who takes her place, sitting sideways and drawing her talons sadistically across Hel's vulnerable chest to smear Kiri's seed around...");
 				//[GAME OVER, MOTHERFUCKER]
-				getGame().gameOver();
+				gameOver();
 			}
 		}
 
 	}
-

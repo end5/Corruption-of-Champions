@@ -32,7 +32,7 @@
 			var rdtNipples:() => void	= (game.player.nippleLength > 0.25 ? reductoNipples : null);
 			clearOutput();
 			outputText("You ponder the paste in your hand and wonder what part of your body you would like to shrink.  What will you use it on?");
-			game.choices("Balls", rdtBalls, "Breasts", rdtBreasts, "Butt", rdtButt, "Clit", rdtClit, "Cock", rdtCock,
+			choices("Balls", rdtBalls, "Breasts", rdtBreasts, "Butt", rdtButt, "Clit", rdtClit, "Cock", rdtCock,
 				"Hips", rdtHips, "Nipples", rdtNipples, "", null, "", null, "Nevermind", reductoCancel);
 			return(true);
 		}
@@ -43,8 +43,8 @@
 			game.player.ballSize -= Utils.rand(4) + 2;
 			if (game.player.ballSize < 1) game.player.ballSize = 1;
 			outputText("You feel your scrotum shift, shrinking down along with your " + game.player.ballsDescriptLight() + ".  Within a few seconds the paste has been totally absorbed and the shrinking stops.");
-			game.dynStats("lib", -2, "lus", -10);
-			game.inventory.itemGoNext();
+			dynStats("lib", -2, "lus", -10);
+			inventory.itemGoNext();
 		}
 		
 		private  reductoBreasts():void {
@@ -56,8 +56,8 @@
 				game.player.shrinkTits(true);
 			}
 			outputText("\nThe last of it wicks away into your skin, completing the changes.");
-			game.dynStats("sen", -2, "lus", -5);
-			game.inventory.itemGoNext();
+			dynStats("sen", -2, "lus", -5);
+			inventory.itemGoNext();
 		}
 		
 		private  reductoButt():void {
@@ -76,8 +76,8 @@
 				if (game.player.buttRating < 1) game.player.buttRating = 1;
 				outputText("After a few seconds your " + game.player.buttDescript() + " has shrunk to a much smaller size!");
 			}
-			game.dynStats("lib", -2, "lus", -10);
-			game.inventory.itemGoNext();
+			dynStats("lib", -2, "lus", -10);
+			inventory.itemGoNext();
 		}
 		
 		private  reductoClit():void {
@@ -87,8 +87,8 @@
 			//Set clitlength down to 2 digits in length
 			game.player.clitLength = int(game.player.clitLength * 100) / 100;
 			outputText("Your " + game.player.clitDescript() + " shrinks rapidly, dwindling down to almost half its old size before it finishes absorbing the paste.");
-			game.dynStats("sen", 2, "lus", 10);
-			game.inventory.itemGoNext();
+			dynStats("sen", 2, "lus", 10);
+			inventory.itemGoNext();
 		}
 		
 		private  reductoCock():void {
@@ -112,8 +112,8 @@
 					}
 				}
 			}
-			game.dynStats("sen", -2, "lus", -10);
-			game.inventory.itemGoNext();
+			dynStats("sen", -2, "lus", -10);
+			inventory.itemGoNext();
 		}
 		
 		private  reductoHips():void {
@@ -132,8 +132,8 @@
 				if (game.player.hipRating < 1) game.player.hipRating = 1;
 				outputText("After a few seconds your [hips] have shrunk to a much smaller size!");
 			}
-			game.dynStats("lib", -2, "lus", -10);
-			game.inventory.itemGoNext();
+			dynStats("lib", -2, "lus", -10);
+			inventory.itemGoNext();
 		}
 		
 		private  reductoNipples():void {
@@ -148,14 +148,13 @@
 				outputText("Your " + game.player.nippleDescript(0) + "s get smaller and smaller, stopping when they are roughly half their previous size.");
 				game.player.nippleLength /= 2;
 			}
-			game.dynStats("sen", -5, "lus", -5);
-			game.inventory.itemGoNext();
+			dynStats("sen", -5, "lus", -5);
+			inventory.itemGoNext();
 		}
 		
 		private  reductoCancel():void {
 			clearOutput();
 			outputText("You put the salve away.\n\n");
-			game.inventory.returnItemToInventory(this);
+			inventory.returnItemToInventory(this);
 		}
 	}
-

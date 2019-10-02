@@ -6,7 +6,7 @@
 	 
 	 
 
-	export class HellHoundScene extends BaseContent
+	export class HellHoundScene
 	{
 		public  constructor()
 		{
@@ -83,13 +83,13 @@
 			outputText("", true);
 			//(Raped by player)
 			//[if player has only one dick and no vagina]
-			if (player.cocks.length == 1 && player.vaginas.length == 0) outputText("The twin heads of the hellhound eagerly lick your " + cockDescript(0) + " for a while.  The large, flat tongues give you a rather unusual feeling, but it is definitely effective. As you approach your peak, one of the heads tries to take your manhood into its mouth. But the other head doesn't seem all that pleased with this, and the two start to nip at each other in an effort to claim the right to be the one to push you over the edge. Annoyed at being ignored, you give both heads a smack with your hand. After a moment of recoil, they look down apologetically before resuming their licking. As you peak, the heads pull back and try to catch all the cum that erupts from your " + cockDescript(0) + " in their mouths. The fierce competition between the two means that most of the cum ends up outside their eager maws, but they are nontheless satisfied.  With a pair of happy barks, the hellhound turns and runs away.", false);
+			if (player.cocks.length == 1 && player.vaginas.length == 0) outputText("The twin heads of the hellhound eagerly lick your " + game.player.cockDescript(0) + " for a while.  The large, flat tongues give you a rather unusual feeling, but it is definitely effective. As you approach your peak, one of the heads tries to take your manhood into its mouth. But the other head doesn't seem all that pleased with this, and the two start to nip at each other in an effort to claim the right to be the one to push you over the edge. Annoyed at being ignored, you give both heads a smack with your hand. After a moment of recoil, they look down apologetically before resuming their licking. As you peak, the heads pull back and try to catch all the cum that erupts from your " + game.player.cockDescript(0) + " in their mouths. The fierce competition between the two means that most of the cum ends up outside their eager maws, but they are nontheless satisfied.  With a pair of happy barks, the hellhound turns and runs away.", false);
 			//[if player has only a vagina and no dick] 
 			if (player.gender == 2) outputText("The twin heads of the hellhound eagerly lick your " + vaginaDescript(0) + " for a while.  The large, flat tongues give you a rather unusual feeling, but it is definitely effective. As you approach your peak, one of the heads tries to force the other out of the way and push its snout into your " + vaginaDescript(0) + ". But the other head doesn't seem all that pleased with this, and the two start to nip at each other in an effort to claim the right to be the one to push you over the edge. Annoyed at being ignored, you give both heads a smack with your hand. After a moment of recoil, they look down apologetically before resuming their licking. As you peak, the heads resume their quarrel and try to drink as much as the fluids coming from your " + vaginaDescript(0) + " as they can.  You don't know which got the most, but before long your " + vaginaDescript(0) + " is definitely quite clean.  With a pair of happy barks, the hellhound turns and runs away.", false);
 			//[if player has a dick and a vagina] 
-			if (player.gender == 3 && player.cocks.length == 1) outputText("One of the heads eagerly starts licking your " + cockDescript(0) + " while the other starts working on your " + vaginaDescript(0) + ". The large, flat tongues give you a rather unusual feeling, but it is definitely effective.  As you approach your peak, the head that had been licking your " + cockDescript(0) + " suddenly takes it into its mouth while the other pushes its snout into your " + vaginaDescript(0) + ". The pleasure from this new arrangement quickly overwhelms you, leaving you dazed.  When your senses return to you, you look up to see the hellhound's tongues running all over their mouths, clearly very happy.  With a pair of happy barks, the hellhound turns and runs away.", false);
+			if (player.gender == 3 && player.cocks.length == 1) outputText("One of the heads eagerly starts licking your " + game.player.cockDescript(0) + " while the other starts working on your " + vaginaDescript(0) + ". The large, flat tongues give you a rather unusual feeling, but it is definitely effective.  As you approach your peak, the head that had been licking your " + game.player.cockDescript(0) + " suddenly takes it into its mouth while the other pushes its snout into your " + vaginaDescript(0) + ". The pleasure from this new arrangement quickly overwhelms you, leaving you dazed.  When your senses return to you, you look up to see the hellhound's tongues running all over their mouths, clearly very happy.  With a pair of happy barks, the hellhound turns and runs away.", false);
 			//If player has multiple endowments
-			if (player.cocks.length > 1) outputText("One of the heads eagerly starts licking your " + cockDescript(0) + " while the other starts to work on your " + cockDescript(1) + ". The large, flat tongues give you a rather unusual feeling, but it is definitely effective.   As you approach your peak, the heads quickly take your " + cockDescript(0) + " and " + cockDescript(1) + " into their mouths. The pleasure from this new arrangement quickly overwhelms you, leaving you dazed.  When your senses return to you, you look up to see the hellhound's tongues running all over their mouths, clearly very happy.  With a pair of happy barks, the hellhound turns and runs away.", false);
+			if (player.cocks.length > 1) outputText("One of the heads eagerly starts licking your " + game.player.cockDescript(0) + " while the other starts to work on your " + game.player.cockDescript(1) + ". The large, flat tongues give you a rather unusual feeling, but it is definitely effective.   As you approach your peak, the heads quickly take your " + game.player.cockDescript(0) + " and " + game.player.cockDescript(1) + " into their mouths. The pleasure from this new arrangement quickly overwhelms you, leaving you dazed.  When your senses return to you, you look up to see the hellhound's tongues running all over their mouths, clearly very happy.  With a pair of happy barks, the hellhound turns and runs away.", false);
 			//[if player has no endowments] 
 			if (player.gender == 0) outputText("The two heads stare at your lack of sexual endowments for a few seconds before looking up at you sadly.  With a whine, the hellhound wanders off.  Feeling rather unsatisfied, you think that you should probably fix your lack of sexual 'parts'...", false);
 			else player.orgasm();
@@ -238,7 +238,7 @@
 				//make sure that the PC will fit in the bitch
 				//(PC's dog cocks are not each of an area of 20 to 60 OR PC has more than two cocks)
 				if (player.totalCocks() > 2 || player.cockThatFits(60) < 0) {
-					outputText("He then reaches around your waist and takes a hold of your " + multiCockDescriptLight() + ".  \"<i>Before we get started, let's make sure you're just right for Cremera.</i>\"  He then reforms your body to have twin doggy pricks of appropriately sized.  \"<i>Now.</i>\"\n\n", false);
+					outputText("He then reaches around your waist and takes a hold of your " + game.player.multiCockDescriptLight() + ".  \"<i>Before we get started, let's make sure you're just right for Cremera.</i>\"  He then reforms your body to have twin doggy pricks of appropriately sized.  \"<i>Now.</i>\"\n\n", false);
 					//PC's dicks become two 14 by 3 inch dog dicks, all other dicks are removed
 					player.cocks[0].cockType = CockTypesEnum.DOG;
 					player.cocks[1].cockType = CockTypesEnum.DOG;
@@ -289,7 +289,7 @@
 			outputText("You feel inclined to agree at the wonderful feeling of your new body, and the incredible amount of power you feel rushing through you.  You move one of your hands so that you can play with both your dicks and your cunts, relishing in the feeling of them and the flames that lie within.  You gasp for a moment, and open your mouth as a rush of heat rises up from your chest and a burst of flame emerges from your mouth.\n\n", false);
 
 			outputText("A powerful demon steps out in front of you, and picks up the crystal.  You can feel a strong connection with him, and you know this is your master.  \"<i>Well now, I think you need a new name now in commemoration of being the first three headed hellhound, and for being the one who will give me the world.</i>\"  He unceremoniously puts the crystal in his mouth and swallows it.  \"<i>Your new name is Cerberus, and you're my greatest pet.</i>\"  He steps closer and looks into your center head's eyes for a moment.  \"<i>That's much better than being a champion ever was, isn't it?</i>\"  You can't help but eagerly nod in agreement.", false);
-			getGame().gameOver();
+			gameOver();
 		}
 
 		public  hellHoundPropahRape():void
@@ -324,16 +324,16 @@
 				}
 				//--- ELSE (CORRUPTION >= 40) ---
 				outputText("His magical natural flames fill your body with fierce warmth, arousing you further. You pick yourself up, letting the hellhound's cocks nearly escape your nethers just to sit down again, taking the duo of dog members to the hilt. Grabbing his hind legs like the handlebars of an exercise machine, you bring yourself into position for a good amount of training. Gradually, you pick up the pace, rocking your hips up and down, enjoying the awesome double penetration.", false);
-				if (player.biggestTitSize() > 1) outputText("  Your " + chestDesc() + " jiggle in exquisite ways along with your bumping, grinding motions.", false);
+				if (player.biggestTitSize() > 1) outputText("  Your " + game.player.chestDesc() + " jiggle in exquisite ways along with your bumping, grinding motions.", false);
 				outputText("  Riding the hound for a couple of minutes, you feel the dick in your " + assholeDescript() + " extending, giving you a good stretching. Its brother in your " + vaginaDescript(0) + " does the same, pushing more and more girl-fluids out of your slippery slit while stimulating your sensitive clit from the inside. You lean forward, running your hands through your fuckpet's dense midnight black fur, feeling his animal body warmth. The hellhound is moaning and panting beneath you, unsure whether to fear you or to enjoy what you are doing to him.\n\n", false);
 
 				//--- IF PC HAS PENIS ---
 				if (player.hasCock()) {
 					outputText("His canine cock in your anus stimulates your prostate perfectly. His exotic black dong applies pressure in parts of your body you wouldn't expect to get such pleasure from.", false);
 					//--- IF ONE PENIS ---
-					if (player.totalCocks() == 1) outputText("  Soon your own " + cockDescript(0) + " reacts, quickly growing into a full throbbing erection. You leave your member alone, and it keeps flapping against the hellhound's belly while you ride him.", false);
+					if (player.totalCocks() == 1) outputText("  Soon your own " + game.player.cockDescript(0) + " reacts, quickly growing into a full throbbing erection. You leave your member alone, and it keeps flapping against the hellhound's belly while you ride him.", false);
 					//--- ELSE ---
-					else outputText("  Soon " + sMultiCockDesc() + " reacts, quickly growing into a throbbing erection.  You leave your members alone, and they flap against the hellhound's belly while you ride him.", false);
+					else outputText("  Soon " + game.player.sMultiCockDesc() + " reacts, quickly growing into a throbbing erection.  You leave your members alone, and they flap against the hellhound's belly while you ride him.", false);
 				}
 				//--- IF PC HAS BALLS ---
 				if (player.balls > 0) outputText("  Whenever you lower your hips to your mates belly, your " + ballsDescriptLight() + " touches his. The magical flames fill your scrotum with unnatural heat but no pain. You literally feel the cum in your balls boiling upwards, building up immense pressure.", false);
@@ -345,9 +345,9 @@
 				//--- IF PC HAS PENIS ---
 				if (player.totalCocks() > 0) {
 					// --- IF ONE PENIS ---
-					if (player.cockTotal() == 1) outputText("Your " + cockDescript(0) + " twitches as it ejects its sticky load.", false);
+					if (player.cockTotal() == 1) outputText("Your " + game.player.cockDescript(0) + " twitches as it ejects its sticky load.", false);
 					//--- ELSE ---
-					else outputText("Your " + multiCockDescriptLight() + " twitch as they eject their sticky loads.", false);
+					else outputText("Your " + game.player.multiCockDescriptLight() + " twitch as they eject their sticky loads.", false);
 					outputText("  Keeping up your motions, you scatter your cum across the hellhound's body and the ground nearby.", false);
 					//--- IF MESSY ORGASM PERK OR CUM MULTIPILER > 5 ---
 					if (player.cumQ() > 700) outputText("  As your orgasm drags on, you practically drench the hellhound in your seed. An especially large load lands on his snouts and the heads greedily start licking your juice with their canine toungues. Your mate's black fur is soaked with your cum, and he'll definitely be busy licking himself clean for some time.", false);
@@ -371,4 +371,3 @@
 			cleanupAfterCombat();
 		}
 	}
-

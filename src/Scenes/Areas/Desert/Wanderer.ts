@@ -1,7 +1,7 @@
   
 	 
 
-	export class Wanderer extends BaseContent{
+	export class Wanderer{
 
 		public  constructor()
 		{

@@ -396,7 +396,7 @@
 
 			//The Player object, used everywhere
 			player = new Player();
-			model.player = player;
+			game.player = player;
 			player2 = new Player();
 			playerEvent = new PlayerEvents();
 
@@ -419,7 +419,7 @@
 			//The extreme flag state array. This needs to go. Holds information about everything, whether it be certain attacks for NPCs 
 			//or state information to do with the game. 
 			flags = new DefaultDict();
-			model.flags = flags;
+			game.flags = flags;
 
 
 			///Used everywhere to establish what the current game state is
@@ -476,7 +476,7 @@
 
 			//Holds the date and time display in the bottom left
 			time = new TimeModel();
-			model.time = time;
+			game.time = time;
 
 			//The string holds all the "story" text, mainly used in engineCore
 			currentText = "";
@@ -526,8 +526,8 @@
 			temp = 0;
 
 			//Used to set what each action buttons displays and does.
-			args = [];
-			funcs = [];
+			// args = [];
+			// funcs = [];
 
 			//Used for stat tracking to keep up/down arrows correct.
 			oldStats = {};
@@ -608,4 +608,3 @@
 			}
 		}
 	}
-

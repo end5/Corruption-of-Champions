@@ -16,10 +16,10 @@
 					outputText("You smile in satisfaction as the " + short + " spreads her legs and starts frigging her honey-soaked cunt.  The sweet scent oozing from between her legs is too much to bear, arousing you painfully, and you see an easy way to relieve it..\n\nWhat do you do to her?");
 				}
 				player.lust = 98;
-				game.dynStats("lus", 1);
+				dynStats("lus", 1);
 				var dildoRape:() => void = (player.hasKeyItem("Deluxe Dildo") >= 0 ? game.forest.beeGirlScene.beeGirlsGetsDildoed : null);
 				var milkAndHoney:() => void = (player.findStatusAffect(StatusAffects.Feeder) >= 0 ? game.forest.beeGirlScene.milkAndHoneyAreKindaFunny : null);
-				game.simpleChoices("Rape", game.forest.beeGirlScene.rapeTheBeeGirl, "Dildo Rape", dildoRape, "", null, "B. Feed", milkAndHoney, "Leave", leaveAfterDefeating);
+				simpleChoices("Rape", game.forest.beeGirlScene.rapeTheBeeGirl, "Dildo Rape", dildoRape, "", null, "B. Feed", milkAndHoney, "Leave", leaveAfterDefeating);
 			}
 			else if (player.findStatusAffect(StatusAffects.Feeder) >= 0) { //Genderless can still breastfeed
 				if (hpVictory) {
@@ -28,7 +28,7 @@
 				else {
 					outputText("You smile in satisfaction as the " + short + " spreads her legs and starts frigging her honey-soaked cunt.  The sweet scent oozing from between her legs is too much to bear, arousing you painfully.\n\nWhat do you do?");
 				}
-				game.simpleChoices("B. Feed", game.forest.beeGirlScene.milkAndHoneyAreKindaFunny, "", null, "", null, "", null, "Leave", leaveAfterDefeating);
+				simpleChoices("B. Feed", game.forest.beeGirlScene.milkAndHoneyAreKindaFunny, "", null, "", null, "", null, "Leave", leaveAfterDefeating);
 			}
 			else {
                 game.finishCombat();
@@ -85,7 +85,7 @@
 				if (player.gender == 1) outputText("or dripping honey-slicked cunts beckoning you. ");
 				if (player.gender == 2) outputText("planting your aching sex over her face while you lick her sweet honeypot. ");
 				if (player.gender == 3) outputText("or cocks, tits, and puffy nipples. ");
-				game.dynStats("lus", 25);
+				dynStats("lus", 25);
 				if (player.lust > 60) {
 					outputText(" You shake your head and struggle to stay focused,");
 					if (player.gender == 1 || player.gender == 3) outputText(" but it's difficult with the sensitive bulge in your groin.");
@@ -102,18 +102,18 @@
 				if (paralyzeIndex >= 0) {
 					player.statusAffect(paralyzeIndex).value1 += 2.9; //v1 - strenght penalty, v2 speed penalty
 					player.statusAffect(paralyzeIndex).value2 += 2.9;
-					game.dynStats("str", -3, "spe", -3);
+					dynStats("str", -3, "spe", -3);
 					outputText("  It's getting much harder to move, you're not sure how many more stings like that you can take!");
 				}
 				else {
 					player.createStatusAffect(StatusAffects.ParalyzeVenom, 2, 2, 0, 0);
-					game.dynStats("str", -2, "spe", -2);
+					dynStats("str", -2, "spe", -2);
 					outputText("  You've fallen prey to paralyzation venom!  Better end this quick!");
 				}
 			}
 			if (player.lust >= 100)
 				doNext(game.endLustLoss);
-			else doNext(game.playerMenu);
+			else doNext(playerMenu);
 		}
 
 		public  constructor()
@@ -155,5 +155,3 @@
 		}
 
 	}
-
-

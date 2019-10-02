@@ -249,7 +249,7 @@ public  AmilyIntroducesSelfToRathazul():void {
 	
 	//(+5 lust!)/
 	dynStats("lus", 5);
-	doNext(kGAMECLASS.rathazul.returnToRathazulMenu);
+	doNext(rathazul.returnToRathazulMenu);
 }
 //[Amily delivers ingredients to Rathazul – happens at Rathazul]
 public  amilyIngredientDelivery():void {
@@ -265,7 +265,7 @@ public  amilyIngredientDelivery():void {
 	dynStats("lus", 4);
 	//[Prices reduced for reducto!
 	flags[kFLAGS.AMILY_MET_RATHAZUL]++;
-	doNext(kGAMECLASS.rathazul.returnToRathazulMenu);
+	doNext(rathazul.returnToRathazulMenu);
 }
 
 //[Amily ask Rathazul what happened to his village]
@@ -277,7 +277,7 @@ public  amilyAsksAboutRathazulsVillage():void {
 	outputText("Rathazul sighs and shuffles around uncomfortably as he wraps it up, \"<i>'What-ifs' will get us nowhere.  Our villages are gone, and we must look to the future, child.</i>\"\n\n", false);
 	
 	outputText("Amily nods solemnly and says her farewells.  She looks a little bleary-eyed as you pass her, and you give her a comforting squeeze on the shoulder.   The mouse gives you a tight smile and continues away, leaving you alone with the rat.", false);
-	doNext(kGAMECLASS.rathazul.returnToRathazulMenu);
+	doNext(rathazul.returnToRathazulMenu);
 }
 
 //[Rathazul and Corrupt/Tentacle Jojo] – Occurs instead of camp
@@ -338,7 +338,7 @@ public  jojoOffersRathazulMeditation():void {
 	
 	outputText("Jojo turns to you, gives a quick bow, and departs.", false);
 	//[To rathazul]
-	doNext(kGAMECLASS.rathazul.returnToRathazulMenu);
+	doNext(rathazul.returnToRathazulMenu);
 }
 //[Rathazul Napping]
 public  catchRathazulNapping():void {
@@ -431,7 +431,7 @@ private  srslyPimpinGuyz():void {
 	player.itemSlot3.quantity = 0;
 	player.itemSlot4.quantity = 0;
 	player.itemSlot5.quantity = 0;
-	player.setArmor(getGame().armors.C_CLOTH); //Old armor disappears unless it's Valeria
+	player.setArmor(armors.C_CLOTH); //Old armor disappears unless it's Valeria
 	player.setWeapon(WeaponLib.FISTS);
 //	player.armor = armors.C_CLOTH;
 //	player.weapon.unequip(player,false,true);
@@ -528,9 +528,9 @@ public  amilyUrtaReaction():void {
 public  askAboutAmily():void {
 	outputText("", true);
 	//after 1400 and Urta's on duty:
-	if(model.time.hours > 14) {
+	if(game.time.hours > 14) {
 		outputText("You ask the assembled bar patrons if anybody has seen either a strange mouse-woman or Urta around, but don't get much of a response.  One cat-boy drinking at the bar haltingly suggests he may have noticed someone like that earlier in the day, but that was before Urta went on duty.  You thank him for the info.", false);
-		doNext(kGAMECLASS.telAdre.barTelAdre);
+		doNext(telAdre.barTelAdre);
 		return;
 	}
 	//before Urta goes on duty at 1400:
@@ -733,4 +733,3 @@ private  amilyUrtaSexWatch():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

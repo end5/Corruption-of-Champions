@@ -23,7 +23,7 @@
 			var dodged:number = 0;
 			var damage:number;
 			//return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
@@ -101,7 +101,7 @@
 			var dodged:number = 0;
 			var damage:number = 0;
 			//return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				dodged++;
@@ -205,14 +205,14 @@
 					poison--;
 					if (player.str >= 2) {
 						player.str--;
-						showStatDown("str");
+						mainView.statsView.showStatDown("str");
 						// strDown.visible = true;
 						// strUp.visible = false;
 						player.addStatusValue(StatusAffects.AmilyVenom, 1, 1);
 					}
 					if (player.spe >= 2) {
 						player.spe--;
-						showStatDown("spe");
+						mainView.statsView.showStatDown("spe");
 						// speDown.visible = true;
 						// speUp.visible = false;
 						player.addStatusValue(StatusAffects.AmilyVenom, 2, 1);
@@ -290,4 +290,3 @@
 		}
 		
 	}
-

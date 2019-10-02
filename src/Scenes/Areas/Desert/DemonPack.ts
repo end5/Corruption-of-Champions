@@ -19,7 +19,7 @@
 		{
 			if (hpVictory) {
 				outputText("You strike out and the last of the demons tumbles to the ground with a thud. You stand there for a second surrounded by dead or unconscious demons feeling like a god of battle. Then you realize that if a god of battle does exist he lives on a demonic plane like this, so to avoid insulting him you take your hands off your hips and your " + player.legs() + " off the head of the demon leader before you start to search the bodies.", true);
-				game.dynStats("lus", 1);
+				dynStats("lus", 1);
 			} else {
 				outputText("The demons stop attacking, and reach out to touch your body. Some are already masturbating like it's the only thing in the world and you know that right now, if you wanted to, you could make each and every one of them fuck you.");
 			}
@@ -29,7 +29,7 @@
 				game.cleanupAfterCombat();
 			} else {
 				outputText("  Do you rape them?", true);
-				game.doYesNo(rapeDemons, game.cleanupAfterCombat);
+				doYesNo(rapeDemons, game.cleanupAfterCombat);
 			}
 		}
 
@@ -63,7 +63,7 @@
 				}
 				if(player.vaginas.length > 0) {
 					if(!player.hasCock()) outputText("Your ", false);
-					outputText(game.vaginaDescript(0) + " burns ", false);
+					outputText(vaginaDescript(0) + " burns ", false);
 				}
 				outputText("with arousal.  You make a grab for the nearest demon and catch a handful of jiggly breast. You try desperately to use your other arm to pull her closer to slake your thirst but you both go tumbling to the ground. The demonic leader laughs out loud and the rest of the tribe falls on you, grabbing for anything it can find.", false);
 				doNext(game.desert.oasis.oasisSexing);
@@ -87,7 +87,7 @@
 			this.a = "the ";
 			this.short = "demons";
 			this.imageName = "demonmob";
-			this.long= "The group is composed of roughly twenty tan-skinned demons, mostly humanoid in shape with many and varied corruptions across the mob. You see demonic high heels, twisting horns and swinging cocks of all shapes and sizes. There even seems to be a bull head in there somewhere. You also make out plenty of breasts ranging from tiny ones to a pair that requires a second person to carry them, and with those breasts a wide range of pussies, dripping and dry, sometimes nestled below some form of demonic dick.  The small tribe carries no weapons and what little clothing they wear is well-shredded, except for one hefty male wearing a cloak of what appears to be snakeskin across his broad shoulders." + (game.silly() ? "  You spot an odd patch that reads, \"<i>41st Engineer Company: Vaginal Clearance</i>\" on his shoulder." : "");
+			this.long= "The group is composed of roughly twenty tan-skinned demons, mostly humanoid in shape with many and varied corruptions across the mob. You see demonic high heels, twisting horns and swinging cocks of all shapes and sizes. There even seems to be a bull head in there somewhere. You also make out plenty of breasts ranging from tiny ones to a pair that requires a second person to carry them, and with those breasts a wide range of pussies, dripping and dry, sometimes nestled below some form of demonic dick.  The small tribe carries no weapons and what little clothing they wear is well-shredded, except for one hefty male wearing a cloak of what appears to be snakeskin across his broad shoulders." + (silly() ? "  You spot an odd patch that reads, \"<i>41st Engineer Company: Vaginal Clearance</i>\" on his shoulder." : "");
 			this.plural = true;
 			this.pronoun1 = "they";
 			this.pronoun2 = "them";
@@ -132,4 +132,3 @@
 		}
 
 	}
-

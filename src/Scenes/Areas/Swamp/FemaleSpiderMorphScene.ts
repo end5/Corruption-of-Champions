@@ -7,7 +7,7 @@
 	 
 	 
 
-	export class FemaleSpiderMorphScene extends BaseContent implements TimeAwareInterface
+	export class FemaleSpiderMorphScene implements TimeAwareInterface
 	{
 
 		public  pregnancy:PregnancyStore;
@@ -25,7 +25,7 @@
 		{
 			pregnancy.pregnancyAdvance();
 			if (pregnancy.isPregnant && pregnancy.incubation == 0) pregnancy.knockUpForce(); //Silently clear the spider morph's pregnancy if the player doesn't see the egg sac in time
-			trace("\nFemale Spidermorph time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			trace("\nFemale Spidermorph time change: Time is " + game.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			return false;
 		}
 	
@@ -79,7 +79,7 @@
 			//The other 50% will start combat and then immediately attempt to run.
 			else {
 				startCombat(new FemaleSpiderMorph());
-				kGAMECLASS.runAway();
+				runAway();
 			}
 		}
 
@@ -124,7 +124,7 @@
 		{
 			startCombat(new FemaleSpiderMorph());
 			spriteSelect(73);
-			getGame().inCombat = false;
+			game.inCombat = false;
 			loseToFemaleSpiderMorph();
 		}
 
@@ -144,7 +144,7 @@
 			outputText("", true);
 			spriteSelect(73);
 			//(Noncombat Intro)
-			if (!getGame().inCombat) {
+			if (!game.inCombat) {
 				outputText("You agree to have sex with the poor, pent-up arachnid maid, and ", false);
 				if (player.cor < 33) outputText("nervously", false);
 				else if (player.cor < 66) outputText("playfully", false);
@@ -177,7 +177,7 @@
 				}
 				outputText("\n\n", false);
 
-				outputText("The arachnid woman turns around and shakes her bottom at you, letting your eyes trace up and down the surface of her shiny, thigh-high carapace to her pert, heart-shaped ass and pendulous abdomen.  It contracts and trembles, wobbling dangerously before it disgorges a heavy spray of webbing.  The sticky, organic bindings smack into you and pin you to the ground, though the cushiony peat moss is soft enough to prevent injury.  In fact, it's nearly mattress-like in its sponginess.  You give a futile half-struggle before the spider hits you with another wave of webbing, completely gluing you down in an impenetrable mass of white stickiness.  You can't help but notice that she's avoided your groin, face, and " + chestDesc() + " entirely.\n\n", false);
+				outputText("The arachnid woman turns around and shakes her bottom at you, letting your eyes trace up and down the surface of her shiny, thigh-high carapace to her pert, heart-shaped ass and pendulous abdomen.  It contracts and trembles, wobbling dangerously before it disgorges a heavy spray of webbing.  The sticky, organic bindings smack into you and pin you to the ground, though the cushiony peat moss is soft enough to prevent injury.  In fact, it's nearly mattress-like in its sponginess.  You give a futile half-struggle before the spider hits you with another wave of webbing, completely gluing you down in an impenetrable mass of white stickiness.  You can't help but notice that she's avoided your groin, face, and " + game.player.chestDesc() + " entirely.\n\n", false);
 
 				outputText("\"<i>Just one more for safety,</i>\" coos the spider with a hungry, almost feral look in her eye.  Her carapace-clad knees knock together and she grunts softly before spraying one last layer of her web atop you.  She climbs on to you now that her task has been finished and explains, \"<i>We wouldn't want my skin to get stuck to the sticky web while we're fucking, now would we?</i>\"  You nod, a little worried about your position for the first time.\n\n", false);
 
@@ -196,7 +196,7 @@
 			//(Combat Intro: Lust Loss)
 			else {
 				outputText("You drop to the ground and begin to furiously finger your " + vaginaDescript(0) + ", arching your " + hipDescript() + " as the aching need for sexual contact overpowers your inhibitions.  ", false);
-				if (player.hasCock()) outputText(SMultiCockDesc() + " flop about lewdly, leaving trails of pre-cum everywhere that they touch.  ", false);
+				if (player.hasCock()) outputText(game.player.SMultiCockDesc() + " flop about lewdly, leaving trails of pre-cum everywhere that they touch.  ", false);
 				outputText("The spider-girl looks down at your prone, masturbating form and slowly begins to diddle her own needy box.  She turns about and spreads her legs, never slowing in her ministrations.  Her pale, heart-shaped ass begins to bob from side to side in time with her fingering, frequently eclipsed by the heavy weight of her spider-like abdomen.\n\n", false);
 
 				outputText("Numerous protrusions bulge up from the spherical, arachnid organ, each engorging and twisting slightly in perfect sync with each other.  In truth, you barely notice as you're too focused on the steamy wet delta of her sex to care about her weird spider-bits.  Unfortunately, each of those spinnerets unloads its webbing at you in a wave, pulling your hands away from your sex and completely pinning you to the ground.  You struggle futilely, desperate to get a finger back in your aching box, but the sticky threads hold fast, immobilizing you.  They repeat their contortions again, and a moment later you're buried further under the gossamer threads.\n\n", false);
@@ -261,7 +261,7 @@
 			//[end]
 			player.orgasm();
 			dynStats("lib", 2, "sen", 1);
-			if (!getGame().inCombat)
+			if (!game.inCombat)
 				doNext(camp.returnToCampUseOneHour);
 			else cleanupAfterCombat();
 		}
@@ -275,14 +275,14 @@
 			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = 0;
 			//(Noncombat Intro:) 
-			if (!getGame().inCombat) {
-				outputText("You shuck your " + player.armorName + " and toss it aside, feeling " + sMultiCockDesc() + " ", false);
+			if (!game.inCombat) {
+				outputText("You shuck your " + player.armorName + " and toss it aside, feeling " + game.player.sMultiCockDesc() + " ", false);
 				if (player.lust < 70) outputText("twitch and begin to stiffen in anticipation of sex with the beautiful spider-maid.", false);
 				else outputText("twitch, already hard and aching for the touch of the beautiful spider-maid.", false);
 				outputText("  Striding forward, you close to an arms-length away before she stops you with an outstretched palm.  She says, \"<i>Not yet, lie down over there so I can take you properly.</i>\"\n\n", false);
 			}
 			//(All:) 
-			if (!getGame().inCombat) outputText("You shrug and step back to lay down in the soft moss,", false);
+			if (!game.inCombat) outputText("You shrug and step back to lay down in the soft moss,", false);
 			else if (player.HP < 1) outputText("You collapse into the soft moss,", false);
 			else outputText("You collapse into the soft moss and begin to masturbate,", false);
 			outputText(" sinking slightly into it while you watch the arachnid woman turn around and begin to shake her cute backside at you.  It sways entrancingly, the hefty weight of her large abdomen bobbing past with each shake to momentarily obstruct your view.  As you watch, a number of protuberances on the abdomen twist and writhe for a half-second before spraying out a huge quantity of sticky webbing.  It hits you like a hammer, knocking you completely flat and plastering your naked form to the dirt.", false);
@@ -290,14 +290,14 @@
 			outputText("  Once it finishes, you find that your head, chest, and crotch were all left uncovered by the sticky strands.  She unleashes another burst of pearlescent webbing to coat the first, and you're left completely, utterly restrained.\n\n", false);
 
 			outputText("\"<i>Perfect, now that you're nice and comfortable, we can have sex!</i>\" decrees the ", false);
-			if (getGame().inCombat) outputText("victorious arachnid.", false);
+			if (game.inCombat) outputText("victorious arachnid.", false);
 			else outputText("arachnid with a dangerous gleam in her eyes.  Why did you agree to this?", false);
 			outputText("\n\n", false);
 
 			outputText("Once again, the inhuman brunette turns around, bobbing her ass above your prone body, and unconsciously, ", false);
 			if (player.lust >= 80) outputText("you thrust up as if you could somehow mate with her vagina in spite of your restraints", false);
 			else outputText("you grow harder and harder, entranced by the sexy sight", false);
-			outputText(".  She giggles at you before squirting another few strands of webbing at you, this time directly at your " + cockDescript(x) + ".  It sticks snugly around the ", false);
+			outputText(".  She giggles at you before squirting another few strands of webbing at you, this time directly at your " + game.player.cockDescript(x) + ".  It sticks snugly around the ", false);
 			if (!player.hasSheath()) outputText("base", false);
 			else outputText("sheath", false);
 			outputText(", a tight ring that holds your dick immobile in its vice-like grasp.  ", false);
@@ -309,7 +309,7 @@
 				if (player.cockTotal() > 2) outputText("es", false);
 				outputText(" as well, making sure you'll be completely bound.  ", false);
 			}
-			outputText("You wince from the onset of tightness and wonder if you'll be able to cum like this, but she immediately shoots out more of her silky strands, sealing a perfect sheath of non-sticky fibers around your " + cockDescript(x) + ", anchored to the ring.\n\n", false);
+			outputText("You wince from the onset of tightness and wonder if you'll be able to cum like this, but she immediately shoots out more of her silky strands, sealing a perfect sheath of non-sticky fibers around your " + game.player.cockDescript(x) + ", anchored to the ring.\n\n", false);
 
 			outputText("\"<i>We wouldn't want me to get pregnant from a ", false);
 			if (player.spiderScore() < 4) outputText("beast's seed", false);
@@ -322,17 +322,17 @@
 			}
 			outputText(" caresses the poor, bound cock as she looks down at you, a cruel smile spreading over her face as her violet-hued eyes bore into yours.\n\n", false);
 
-			outputText("\"<i>How does it feel, having your dick bound and useless, cradled in a spider-woman's slippery grip?  I bet you can feel perfectly through those nice, thin webs I used to make your condom can't you?  Well don't spurt.  I'm going to be using this,</i>\" teases the spider-woman, emphasizing the last of her words with a gentle slap at your " + cockDescript(x) + ".\n\n", false);
+			outputText("\"<i>How does it feel, having your dick bound and useless, cradled in a spider-woman's slippery grip?  I bet you can feel perfectly through those nice, thin webs I used to make your condom can't you?  Well don't spurt.  I'm going to be using this,</i>\" teases the spider-woman, emphasizing the last of her words with a gentle slap at your " + game.player.cockDescript(x) + ".\n\n", false);
 
 			outputText("You groan at the treatment, struggling against your bonds, but it's utterly futile.  You're bound from your " + player.feet() + " to your neck in the stuff, and you won't be getting loose from the iron-strong strands at this rate.  The spider-woman interrupts your struggles by straddling your waist and giving you a perfect view of her shining, black snatch.  Her puffy lips practically ooze moisture, looking almost like someone oiled them up before your encounter, but with the strong female scent pouring off them, there's no way that's anything but a reflection of her needy, aroused state.  The black flesh fades to a dusky color before merging into the pale skin around them, highlighting her vulva like the perfect target for you to plunge into.  Sadly, there's nothing for you to do but wait.\n\n", false);
 
-			outputText("The arachnid-girl begins to lower herself down, but pauses and shifts once she brushes your " + cockDescript(x) + ".  With the change in angle, her lips slide over your silk-girded penis, slathering the smooth cocoon with wetness that you can somehow feel through it.  She leans forward, placing her hands to either side of your torso and letting her unrestrained breasts bounce above you, the dark nipples ", false);
+			outputText("The arachnid-girl begins to lower herself down, but pauses and shifts once she brushes your " + game.player.cockDescript(x) + ".  With the change in angle, her lips slide over your silk-girded penis, slathering the smooth cocoon with wetness that you can somehow feel through it.  She leans forward, placing her hands to either side of your torso and letting her unrestrained breasts bounce above you, the dark nipples ", false);
 
 			if (player.biggestTitSize() >= 2) outputText("dragging over your own " + nippleDescript(0) + "s", false);
 			else outputText("hovering just above your chest", false);
 			outputText(".  The spider-maiden seem to tire of the teasing once you begin to twitch against her.\n\n", false);
 
-			outputText("\"<i>Are those pathetic twitches all you can give me?  I'll have to fix that,</i>\" proclaims your arachnid lover.  She leans further down to kiss your " + chestDesc() + ", then a moment later opens wider and bites down, hard.  Her fangs slide into your flesh with minimal resistance, narrow enough that it feels more like a pinch than anything truly painful, but then her venom begins to flow.  You feel it forcing its way into your veins, burning hotly as the foreign fluid permeates your very being.  Starting at the site of her bite, the heat spreads outward slowly, slowly shifting from boiling discomfort to the fiery blaze of arousal.  Your " + cockDescript(x) + " begins to pulse in time with your heartbeat under its wrappings, actually starting to ache with need.", false);
+			outputText("\"<i>Are those pathetic twitches all you can give me?  I'll have to fix that,</i>\" proclaims your arachnid lover.  She leans further down to kiss your " + game.player.chestDesc() + ", then a moment later opens wider and bites down, hard.  Her fangs slide into your flesh with minimal resistance, narrow enough that it feels more like a pinch than anything truly painful, but then her venom begins to flow.  You feel it forcing its way into your veins, burning hotly as the foreign fluid permeates your very being.  Starting at the site of her bite, the heat spreads outward slowly, slowly shifting from boiling discomfort to the fiery blaze of arousal.  Your " + game.player.cockDescript(x) + " begins to pulse in time with your heartbeat under its wrappings, actually starting to ache with need.", false);
 			if (player.cockTotal() > 1) {
 				outputText("  Meanwhile, your extra penis", false);
 				if (player.cockTotal() > 2) outputText("es", false);
@@ -345,13 +345,13 @@
 			}
 			outputText("\n\n", false);
 
-			outputText("Your dick is suddenly grabbed in the vice-like grip of the carapace and shoved directly into the wet, velvet grip of the spider-girl's vagina.  The sudden change in temperature and pressure is too much for your venom-filled body, and you start to cum immediately.  You feel the jizz boiling up through your body, but the tight ring of silk around your " + cockDescript(x) + " pens it in, preventing you from achieving even the smallest release.  It actually hurts you to be stopped so suddenly.  The spider notices your expression and smirks, tracing her fingertips along the side of your " + player.face() + " as she says, \"<i>Aww, I couldn't have you going soft yet.  Maybe if you're good and completely sate me, I'll let you cum later on.</i>\"\n\n", false);
+			outputText("Your dick is suddenly grabbed in the vice-like grip of the carapace and shoved directly into the wet, velvet grip of the spider-girl's vagina.  The sudden change in temperature and pressure is too much for your venom-filled body, and you start to cum immediately.  You feel the jizz boiling up through your body, but the tight ring of silk around your " + game.player.cockDescript(x) + " pens it in, preventing you from achieving even the smallest release.  It actually hurts you to be stopped so suddenly.  The spider notices your expression and smirks, tracing her fingertips along the side of your " + player.face() + " as she says, \"<i>Aww, I couldn't have you going soft yet.  Maybe if you're good and completely sate me, I'll let you cum later on.</i>\"\n\n", false);
 
 			outputText("A tortured groan is your only response - how are you supposed to satisfy a woman when you can't even move and you're constantly on the edge of orgasm, but unable to achieve it?  Her clutching womanhood squeezes you particularly hard, shattering your concentration and reminding you of the unnatural sexual desire coursing through your body.  The spider-girl fucks you hard and fast, slapping noisily into your bound " + hipDescript() + " repeatedly while she massages one of her breasts and tweaks at her nipple.\n\n", false);
 
-			outputText("You cum again, just like last time, but the only thing it brings you is pain and the agony of pent-up release.  That tortuous vice... it squeezes and caresses, egging you on to release, but you know release will only bring pain and frustration.  You try to hold it back, holding your feverish body absolutely still while you're raped by the ecstatic bug-bitch, but it's impossible.  She's moving too fast, and her pussy is far too hot for your " + cockDescript(x) + " to last.  Your eyes cross from the effort of it all, and then she's cumming, and the rippling, milking squeezes of her pussy force you to cum on the spot.\n\n", false);
+			outputText("You cum again, just like last time, but the only thing it brings you is pain and the agony of pent-up release.  That tortuous vice... it squeezes and caresses, egging you on to release, but you know release will only bring pain and frustration.  You try to hold it back, holding your feverish body absolutely still while you're raped by the ecstatic bug-bitch, but it's impossible.  She's moving too fast, and her pussy is far too hot for your " + game.player.cockDescript(x) + " to last.  Your eyes cross from the effort of it all, and then she's cumming, and the rippling, milking squeezes of her pussy force you to cum on the spot.\n\n", false);
 
-			outputText("Your entire body locks up, pushing up with every ounce of muscle while your body tries to squeeze out the pent-up seed.  There's a snapping, tearing sound from the web-ring around your " + cockDescript(x) + ", and you feel it loosen somewhat - not completely, but just enough for your seed to finally escape!  It pumps out in huge globules, at last granting you the sweet feeling of absolute, penultimate release.  Spooge bubbles from your urethra, packing the condom with multiple loads worth of goo until it balloons out, filling the spider-slut's vagina.\n\n", false);
+			outputText("Your entire body locks up, pushing up with every ounce of muscle while your body tries to squeeze out the pent-up seed.  There's a snapping, tearing sound from the web-ring around your " + game.player.cockDescript(x) + ", and you feel it loosen somewhat - not completely, but just enough for your seed to finally escape!  It pumps out in huge globules, at last granting you the sweet feeling of absolute, penultimate release.  Spooge bubbles from your urethra, packing the condom with multiple loads worth of goo until it balloons out, filling the spider-slut's vagina.\n\n", false);
 
 			outputText("She rolls off of you, letting the slowly inflating cum-balloon pop out of her snatch while she gasps and tries to regain her breath.  You moan, still locked in orgasm while you force out every last goopy drop of your jism.  The balloon grows and grows until it stops, nearly as big around as ", false);
 			if (player.cumQ() < 25) outputText("a baseball", false);
@@ -366,7 +366,7 @@
 
 			player.orgasm();
 			dynStats("lib", 2, "sen", 1);
-			if (!getGame().inCombat)
+			if (!game.inCombat)
 				doNext(camp.returnToCampUseOneHour);
 			else cleanupAfterCombat();
 		}
@@ -380,26 +380,26 @@
 			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = 0;
 			//(Consensual)
-			if (!getGame().inCombat) {
-				outputText("You hastily remove your " + player.armorName + " and toss it aside, glad to be able to let " + sMultiCockDesc() + " flop out and breathe.  The spider-girl's eyes widen as she takes in ALL of your ", false);
+			if (!game.inCombat) {
+				outputText("You hastily remove your " + player.armorName + " and toss it aside, glad to be able to let " + game.player.sMultiCockDesc() + " flop out and breathe.  The spider-girl's eyes widen as she takes in ALL of your ", false);
 				if (player.lust < 70) outputText("expanding", false);
 				else outputText("hard", false);
 				outputText(" length.  Her expression of incredulous disbelief is actually kind of cute, so you start stroking yourself to make it even bigger.\n\n", false);
 
 				outputText("\"<i>W-wow, you're a big " + player.mf("boy", "girl") + ", aren't you?  Why don't you lie down and get comfortable while I get you restrained... I wouldn't want that beast between your legs to kill me!</i>\" she says.\n\n", false);
 
-				outputText("You lay down, quite confident in your plus-sized erection and daydreaming about all the ways she could take you.  Is she going to thigh-fuck you?  Maybe she'll give you a hand-job with that slippery-smooth carapace of hers?  Of course, you suppose she could always just grind her gorgeous little gash on your mammoth manhood.  " + SMultiCockDesc() + " drips a nice, fat drop of pre-cum from its slightly-dilated slit at its " + player.cockHead() + " from all your dirty thoughts.  The wet droplet reminds you of where you are, and you look up in time get a nice view of the pale woman's well-rounded ass as it shakes back and forth, jiggling slightly while her abdomen sways heavily above it.\n\n", false);
+				outputText("You lay down, quite confident in your plus-sized erection and daydreaming about all the ways she could take you.  Is she going to thigh-fuck you?  Maybe she'll give you a hand-job with that slippery-smooth carapace of hers?  Of course, you suppose she could always just grind her gorgeous little gash on your mammoth manhood.  " + game.player.SMultiCockDesc() + " drips a nice, fat drop of pre-cum from its slightly-dilated slit at its " + player.cockHead() + " from all your dirty thoughts.  The wet droplet reminds you of where you are, and you look up in time get a nice view of the pale woman's well-rounded ass as it shakes back and forth, jiggling slightly while her abdomen sways heavily above it.\n\n", false);
 
-				outputText("All over the spherical, arachnid organ, her spinnerets engorge, becoming more visible.  They twist for a moment before spurting out heavy flows of webbing, the weighty strands coating your " + player.legs() + ", arms, parts of your torso , and even your " + player.feet() + ".  The only places left totally uncovered are your head and crotch.  A second blast of smooth, non-sticky threads encase the first, making sure your lover won't get stuck to you once things get intimate.  The spider-maid giggles as she saunters up to get a closer look at your " + cockDescript(x), false);
+				outputText("All over the spherical, arachnid organ, her spinnerets engorge, becoming more visible.  They twist for a moment before spurting out heavy flows of webbing, the weighty strands coating your " + player.legs() + ", arms, parts of your torso , and even your " + player.feet() + ".  The only places left totally uncovered are your head and crotch.  A second blast of smooth, non-sticky threads encase the first, making sure your lover won't get stuck to you once things get intimate.  The spider-maid giggles as she saunters up to get a closer look at your " + game.player.cockDescript(x), false);
 				if (player.cockTotal() > 1) outputText(", ignoring the other, smaller members", false);
 				outputText(".  She asks, \"<i>This is your pride and joy, isn't it?  Well, I don't have much use for such a bulky thing, but if you eat me out good enough, maybe I'll see if its orgasm is as impressive as its size.</i>\"\n\n", false);
 			}
 			//(COMBAT LOSS)
 			else {
 				outputText("You drop to the ground and ", false);
-				if (player.lust > 99) outputText("stick your hands into your groin, fondling " + oMultiCockDesc() + " with need", false);
+				if (player.lust > 99) outputText("stick your hands into your groin, fondling " + game.player.oMultiCockDesc() + " with need", false);
 				else outputText("groan in obvious pain, unable to move", false);
-				outputText(".  The spider-girl advances, giggling girlishly at your state while she painstakingly removes every piece of armor, visibly gasping at the size of your " + cockDescript(x) + " as it flops out.\n\n", false);
+				outputText(".  The spider-girl advances, giggling girlishly at your state while she painstakingly removes every piece of armor, visibly gasping at the size of your " + game.player.cockDescript(x) + " as it flops out.\n\n", false);
 
 				outputText("\"<i>T-this is so big!  I'll never be able to ride this monster... maybe you can help me in another way though,</i>\" she muses.\n\n", false);
 
@@ -408,19 +408,19 @@
 				outputText("The spider-girl asks, \"<i>You don't mind if I don't waste my time trying to fuck this, do you?  It's so big that it's worthless as a dick, and more like an obscene toy than anything practical.  Maybe if you please me enough I'll still let it squirt though.</i>\"\n\n", false);
 			}
 			//(All)
-			outputText("You start to protest, but the dominatrix squats down, resting the smooth carapace of her abdomen directly on top of your " + cockDescript(x) + ", squishing the urethral bulge flat under its weight.  She sighs and rocks her hips back and forth, dragging the weighty bulb back and forth over your dick with slow, teasing motions that cause the poor member to rapidly fill to its maximum, twitching size.  Looking quite satisfied, she announces, \"<i>That's a good " + player.mf("boy", "girl") + ".  Now to knit a nice, soft, little cock-sock to muzzle this beast.</i>\"\n\n", false);
+			outputText("You start to protest, but the dominatrix squats down, resting the smooth carapace of her abdomen directly on top of your " + game.player.cockDescript(x) + ", squishing the urethral bulge flat under its weight.  She sighs and rocks her hips back and forth, dragging the weighty bulb back and forth over your dick with slow, teasing motions that cause the poor member to rapidly fill to its maximum, twitching size.  Looking quite satisfied, she announces, \"<i>That's a good " + player.mf("boy", "girl") + ".  Now to knit a nice, soft, little cock-sock to muzzle this beast.</i>\"\n\n", false);
 
-			outputText("Immediately, smooth silk strands start to slide out from her spinnerets, sliding in long loops around your " + cockDescript(x) + " until the top third of it is completely covered.  You realize that unlike the webs pinning you down, these gossamer threads don't stick at all, and while the wonderfully soft cock-sock she's weaving feels quite tight, it easily flexes and slides a little bit each time it's touched.  That wonderful encapsulation continues, binding every inch of your dick in a tight alabaster sheath until there's not a single speck of your skin visible.  The spider-girl stands and rubs the warm webs up and down, masterbating you with the silken tube a few times until you start to groan in pleasure.\n\n", false);
+			outputText("Immediately, smooth silk strands start to slide out from her spinnerets, sliding in long loops around your " + game.player.cockDescript(x) + " until the top third of it is completely covered.  You realize that unlike the webs pinning you down, these gossamer threads don't stick at all, and while the wonderfully soft cock-sock she's weaving feels quite tight, it easily flexes and slides a little bit each time it's touched.  That wonderful encapsulation continues, binding every inch of your dick in a tight alabaster sheath until there's not a single speck of your skin visible.  The spider-girl stands and rubs the warm webs up and down, masterbating you with the silken tube a few times until you start to groan in pleasure.\n\n", false);
 
 			outputText("The female arachnid stops and announces, \"<i>No cumming yet my cute, big-dicked prey.  You still need to service me, remember?</i>\"  You grunt and try to twist upward and push your bound penis up into her hands again, but the enveloping, sticky mess of her webbing keeps you pinned totally in place, unable to raise your hips even an inch.  While you struggle, she changes position to bring herself above your face.  Her abdomen blocks much of the light from your view, but you can see her tight, dark ring and black-skinned, glistening sex in startling detail from your submissive position in the dirt.\n\n", false);
 
-			outputText("Your arachnid mistress doesn't delay, sitting down to place her squishing-wet lips in position to brush against your mouth and nose while her smooth, nearly porcelain-white cheeks envelop most of your face.  Dully, you note the weight of her abdomen resting atop your head, and you hope that she doesn't web your face once she's done.  She wouldn't do that, would she?  Before you have time to ponder the situation further, you feel two hard nipples grazing your " + cockDescript(x) + " and belly.  Two dagger-sharp points bury themselves in your thigh, and a moment later, liquid arousal is thrumming through your veins, making your dick slowly fill the space inside its sheath with a steady dribble of pre-cum.\n\n", false);
+			outputText("Your arachnid mistress doesn't delay, sitting down to place her squishing-wet lips in position to brush against your mouth and nose while her smooth, nearly porcelain-white cheeks envelop most of your face.  Dully, you note the weight of her abdomen resting atop your head, and you hope that she doesn't web your face once she's done.  She wouldn't do that, would she?  Before you have time to ponder the situation further, you feel two hard nipples grazing your " + game.player.cockDescript(x) + " and belly.  Two dagger-sharp points bury themselves in your thigh, and a moment later, liquid arousal is thrumming through your veins, making your dick slowly fill the space inside its sheath with a steady dribble of pre-cum.\n\n", false);
 
 			outputText("Pulling out, the spider-woman slaps the fresh wound and demands, \"<i>Lick me, my deliciously-dicked morsel!  Pleasure me or I'll keep biting you until you obey!</i>\"\n\n", false);
 
 			outputText("You're already shivering and panting with need, exhaling hot lungfuls of air onto the moist spider-snatch as you try to get ahold of yourself.  More bites... there's no way you could handle being that turned on and not getting ANY relief.  You tilt your head to press your lips into the sloppy vulva and extend your tongue for the first, hesitant taste of her feminine drippings.  They're sweet!  Her pussy is like honey, almost sickeningly sweet, like a slowly dripping fountain of sugar that makes your tongue buzz in delight with each plunge into the syrupy muff.\n\n", false);
 
-			outputText("\"<i>Oooh, that's right, my little insect, keep licking... service me, your mistress,</i>\" commands the spider-girl while she takes your web-wrapped cock in her hands.  After being ignored for so long, the touches of her slender digits upon your " + cockDescript(x) + " provide a cacophany of sensation that makes your head swim.  Eager for more rewards, your tongue attacks the sloppy puss above with almost religious fervor, worshipping the dripping pussy with long licks while you gently suckle the tiny bulb of her clit.  The spider-girl begins to slowly jack you off with the pre-cum-soaked sheath, the warm, wet tightness of it feeling like a huge pussy sliding along your girth.  She pumps it up and down, fucking you with her webs to the tempo of your thrashing tongue.\n\n", false);
+			outputText("\"<i>Oooh, that's right, my little insect, keep licking... service me, your mistress,</i>\" commands the spider-girl while she takes your web-wrapped cock in her hands.  After being ignored for so long, the touches of her slender digits upon your " + game.player.cockDescript(x) + " provide a cacophany of sensation that makes your head swim.  Eager for more rewards, your tongue attacks the sloppy puss above with almost religious fervor, worshipping the dripping pussy with long licks while you gently suckle the tiny bulb of her clit.  The spider-girl begins to slowly jack you off with the pre-cum-soaked sheath, the warm, wet tightness of it feeling like a huge pussy sliding along your girth.  She pumps it up and down, fucking you with her webs to the tempo of your thrashing tongue.\n\n", false);
 
 			outputText("The faster you go, the faster she jerks you with the webs.  Soon both of you are breathing hard, gasping out nonsense noises of pleasure, and drizzling your lusty fluids freely.  The fast pumping, slippery web-pussy bunches up around your base, pulling tight at your tip with every downstroke, and with each upstroke, it creates a small vacuum, sucking on your cock while it exposes a little of your flesh to the air.  It feels wondrous, and though you're utterly and completely bound, the muscles of your " + hipDescript() + " continually thrust and buck against their restraints, trying to rut with the gossamer sleeve like some unthinking beast.\n\n", false);
 
@@ -442,7 +442,7 @@
 			outputText("  You sigh and fall into a fitful slumber, barely registering the spider-girl cutting your restraints.", false);
 			player.orgasm();
 			dynStats("lib", 2, "sen", 1);
-			if (!getGame().inCombat)
+			if (!game.inCombat)
 				doNext(camp.returnToCampUseOneHour);
 			else cleanupAfterCombat();
 		}
@@ -521,7 +521,7 @@
 
 			outputText("You roll and buck, your hips moving entirely of their own volition.  Eyes closed, you enjoy the moment and let your fingertips curl into the mossy ground beneath while rolling pleasure radiates from your womanhood.  ", false);
 			if (player.cockTotal() > 1) {
-				outputText("Throughout it all, " + sMultiCockDesc() + " spews wasted seed over her leg", false);
+				outputText("Throughout it all, " + game.player.sMultiCockDesc() + " spews wasted seed over her leg", false);
 				if (player.cumQ() >= 400) {
 					outputText(", even leaving a ", false);
 					if (player.cumQ() >= 400 && player.cumQ() < 1000) outputText("small ", false);
@@ -540,7 +540,7 @@
 			else if (player.cor < 66) outputText("You feel a little guilty, and before you go, you untie the bindings around her hands so that she'll be able to free herself.", false);
 			else outputText("You leave her there with her hands and feet completely restrained.  Sucks to be her.", false);
 			player.orgasm();
-			if (!getGame().inCombat)
+			if (!game.inCombat)
 				doNext(camp.returnToCampUseOneHour);
 			else cleanupAfterCombat();
 		}
@@ -553,17 +553,17 @@
 			if (x < 0) x = 0;
 			outputText("", true);
 			spriteSelect(73);
-			outputText("You push the spider-girl onto her back, getting a good long look at your conquest before you take off your " + player.armorName + ".  At the sight of your " + multiCockDescriptLight() + ", she ", false);
+			outputText("You push the spider-girl onto her back, getting a good long look at your conquest before you take off your " + player.armorName + ".  At the sight of your " + game.player.multiCockDescriptLight() + ", she ", false);
 			if (monster.lust <= 99) outputText("relaxes a bit.  The smell of an aroused female wafts up from her, reminding you that is probably what she wanted from the get-go.", false);
 			else outputText("salivates, both holes dripping liquid in anticipation of the coming sex.  The smell of sex fills the air, and you realize you're about to give her exactly what she wants.", false);
 			outputText("  It doesn't matter - you're going to fuck her pussy full of cum.\n\n", false);
 
 			outputText("The spider-girl spreads her legs wide, giving you a nice view of the strange, glossy black entrance that is her slit.  Unlike her arms and legs, her pussy lips aren't shining onyx due to a carapace, but because of their pigmentation and dripping moisture.  The dark skin fades from its dusky hue to a porcelain white, drawing your gaze to lock upon that slowly-blooming, midnight-black tunnel.  Spellbound, you watch as she completely submits, stroking two fingers over the puffy lips of her vulva before sinking her fingers into the welcoming depths of her cunt.\n\n", false);
 
-			outputText("You advance, " + sMultiCockDesc() + " ", false);
+			outputText("You advance, " + game.player.sMultiCockDesc() + " ", false);
 			if (player.lust < 70) outputText("thickening ", false);
 			else outputText("pulsating", false);
-			outputText(" and ready to penetrate that beckoning, arachnid pussy.  The moist lips slip around your " + cockDescript(x) + " easily, squelching wetly while you slide home.  You gasp from the sudden change, rocking your " + hipDescript() + " slowly against the spider-morph's while you acclimate yourself, reveling in the heat of her loins.  She grabs your head in that moment, guiding you down with a weak tug to place your lips upon her breast, and with a smile, you start to suckle the chocolate skin of her nub.\n\n", false);
+			outputText(" and ready to penetrate that beckoning, arachnid pussy.  The moist lips slip around your " + game.player.cockDescript(x) + " easily, squelching wetly while you slide home.  You gasp from the sudden change, rocking your " + hipDescript() + " slowly against the spider-morph's while you acclimate yourself, reveling in the heat of her loins.  She grabs your head in that moment, guiding you down with a weak tug to place your lips upon her breast, and with a smile, you start to suckle the chocolate skin of her nub.\n\n", false);
 
 			outputText("The defeated arachnid trembles visibly, moaning out loud while you plunge into her depths over and over, slowly beginning to fuck her with faster, more confident strokes.  She actually starts to whine, \"<i>P-please j-just pull out before you cum?  I want you to keep fucking me, b-but I don't want to be pregnant.</i>\"\n\n", false);
 
@@ -580,7 +580,7 @@
 
 			outputText("You bottom out", false);
 			if (player.balls > 0) outputText(" and slap your balls into her soaked taint", false);
-			outputText(", " + cockDescript(x) + " twitching", false);
+			outputText(", " + game.player.cockDescript(x) + " twitching", false);
 			if (player.cockTotal() > 1) {
 				outputText(" while the ", false);
 				if (player.cockTotal() > 2) outputText("rest spasm pointlessly", false);
@@ -595,7 +595,7 @@
 			}
 			outputText("\n\n", false);
 
-			outputText("The soon-to-be expecting mother comes down from her orgasm first, regaining control of herself while your " + cockDescript(x) + " is giving the last of its gifts to her pussy.  Her hands roam over her ", false);
+			outputText("The soon-to-be expecting mother comes down from her orgasm first, regaining control of herself while your " + game.player.cockDescript(x) + " is giving the last of its gifts to her pussy.  Her hands roam over her ", false);
 			if (player.cumQ() >= 1000) outputText("distended ", false);
 			outputText("belly, a look of shocked disbelief on her face while she moans and begins to cry, \"<i>I'm going to be pregnant!  I n-n-never asked for this...</i>\"\n\n", false);
 
@@ -607,7 +607,7 @@
 
 			player.orgasm();
 			pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SPIDER - 200); //Spiders carry for half as long as the player does for some reason
-			if (!getGame().inCombat)
+			if (!game.inCombat)
 				doNext(camp.returnToCampUseOneHour);
 			else cleanupAfterCombat();
 		}
@@ -628,25 +628,25 @@
 			if (monster.lust > 99) outputText("She mewls with disappointment.  ", false);
 			outputText("This is a much better position for her; ass-up, with her pussy and pucker fully exposed.\n\n", false);
 
-			outputText("The spider-morph looks back fearfully, but she flexes her back to raise up her abdomen and allow you easier access to her holes like the obedient slut she truly is.  You wrap your arms around the heavy, exoskeletal organ and step forward, leveraging your " + cockDescript(x) + " to slide it into her welcoming pussy.  The arachnid cunt sucks you in with a wet slurp, welcoming your cock to the oozing sheath with uncommon eagerness until the plush black pussy lips are compressing against your loins.  You have trouble not giving into the hot, moist pressure of the silken canal and rutting her like a beast then and there, but a tighter, better hole beckons for your now-lubricated fuck-stick's attention.\n\n", false);
+			outputText("The spider-morph looks back fearfully, but she flexes her back to raise up her abdomen and allow you easier access to her holes like the obedient slut she truly is.  You wrap your arms around the heavy, exoskeletal organ and step forward, leveraging your " + game.player.cockDescript(x) + " to slide it into her welcoming pussy.  The arachnid cunt sucks you in with a wet slurp, welcoming your cock to the oozing sheath with uncommon eagerness until the plush black pussy lips are compressing against your loins.  You have trouble not giving into the hot, moist pressure of the silken canal and rutting her like a beast then and there, but a tighter, better hole beckons for your now-lubricated fuck-stick's attention.\n\n", false);
 
 			outputText("You circle a finger along the pebbly skin just outside the spider-slut's rectum, watching the tight hole wink with each brush across her sensitive skin.  She looks back and asks with a worried frown, \"<i>Y-you aren't going to put anything in there, are you?  It feels weird!</i>\"\n\n", false);
 
-			outputText("Of course you will.  You answer her query by withdrawing from the velvet tunnel and planting your " + cockDescript(x) + " squarely at the spider-morph's tight asshole.  She yelps in surprise and tries to scrabble away, but you hold her fast, leaning on her to push her tits and face into the loamy swamp dirt.  Pressing on, you mount her, thrusting your " + cockDescript(x) + " deep into her dark hole", false);
-			if (y >= 0) outputText(", while your " + cockDescript(y) + " slips into her warmed-up cunt.", false);
+			outputText("Of course you will.  You answer her query by withdrawing from the velvet tunnel and planting your " + game.player.cockDescript(x) + " squarely at the spider-morph's tight asshole.  She yelps in surprise and tries to scrabble away, but you hold her fast, leaning on her to push her tits and face into the loamy swamp dirt.  Pressing on, you mount her, thrusting your " + game.player.cockDescript(x) + " deep into her dark hole", false);
+			if (y >= 0) outputText(", while your " + game.player.cockDescript(y) + " slips into her warmed-up cunt.", false);
 			else outputText(", the tight ring of her sphincter clutching feebly at you while you stretch it wider.", false);
 			outputText("  Her carapace-clad finger-tips dig into the ground, and her back arches reflexively as if she could somehow twist away from the stimulation.  You pin her down underneath you and hold her tight until her struggles cease.\n\n", false);
 
 			outputText("At last, she gives up on resisting the forced sodomy and relaxes.  Once you feel her sphincter release its death-grip on your member, you start to fuck her ass.  You pump her hard and fast, with little concern for her pleasure, reveling in the claiming of this untamed monster-girl's tight, possibly virgin hole.  Each hard-pushing, butt-fucking stroke leaves her clenching ring a little looser, a little more accommodating of your maleness.  The slowly-widening sphincter gets stretched wide, leaving her hole slightly agape with each pull back", false);
-			if (y >= 0) outputText(", but it's still tighter than the sloppy spider-cunt that keeps rhythmically devouring your " + cockDescript(y), false);
+			if (y >= 0) outputText(", but it's still tighter than the sloppy spider-cunt that keeps rhythmically devouring your " + game.player.cockDescript(y), false);
 			outputText(".\n\n", false);
 
-			outputText("Your victim bites her lip, trying to hold in the gasps of pleasure, but you slap her pillowy asscheek, forcing her to cry out in surprise.  With the dam broken, you're treated to an audible symphony of verbal enjoyment.  The spider-girl gasps and croons, moans and pants, and eventually just starts babbling 'yes' with every ass-filling thrust of your " + cockDescript(x) + ".  Her legs go weak, and you're forced to hold her aloft by her abdomen while you rail away at her exposed ass, fucking the spider-girl as hard as your muscles will allow.\n\n", false);
+			outputText("Your victim bites her lip, trying to hold in the gasps of pleasure, but you slap her pillowy asscheek, forcing her to cry out in surprise.  With the dam broken, you're treated to an audible symphony of verbal enjoyment.  The spider-girl gasps and croons, moans and pants, and eventually just starts babbling 'yes' with every ass-filling thrust of your " + game.player.cockDescript(x) + ".  Her legs go weak, and you're forced to hold her aloft by her abdomen while you rail away at her exposed ass, fucking the spider-girl as hard as your muscles will allow.\n\n", false);
 
 			outputText("The spider-skank cums hard, revealing her orgasm ", false);
 			if (y == -1) outputText("by splattering her fragrant lady-spunk into the dirt", false);
 			else {
-				outputText("by splattering your " + cockDescript(y), false);
+				outputText("by splattering your " + game.player.cockDescript(y), false);
 				if (player.balls > 0) outputText(" and balls", false);
 				outputText(" with her copious lady-spunk", false);
 			}
@@ -676,7 +676,7 @@
 			outputText(" of seed rushes out of her gaped anus, pooling on the swamp floor as she slowly loses consciousness.  You give her ass an affectionate slap and get dressed, feeling sated and ready to resume your adventures.", false);
 			if (y != 1) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SPIDER - 200); //Spiders carry for half as long as the player does for some reason
 			player.orgasm();
-			if (!getGame().inCombat)
+			if (!game.inCombat)
 				doNext(camp.returnToCampUseOneHour);
 			else cleanupAfterCombat();
 		}
@@ -700,4 +700,3 @@
 
 		 alright*/
 	}
-

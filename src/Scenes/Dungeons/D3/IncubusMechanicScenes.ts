@@ -12,7 +12,7 @@
 	 * ...
 	 * @author Gedan
 	 */
-	export class IncubusMechanicScenes extends BaseContent
+	export class IncubusMechanicScenes
 	{
 		
 		public  constructor() 
@@ -137,7 +137,7 @@
 			outputText("\n\nThe platform touches down roughly thirty minutes after your departure, and you head back to camp with all due haste.");
 
 			menu();
-			addButton(0, "Next", getGame().d3.exitD3);
+			addButton(0, "Next", d3.exitD3);
 		}
 		
 		private  useLiftPostDefeat():void
@@ -148,7 +148,7 @@
 			
 			outputText("\n\nThe platform touches down roughly thirty minutes after your departure, and you head back to camp with all due haste.");
 			
-			addButton(0, "Next", getGame().d3.exitD3);
+			addButton(0, "Next", d3.exitD3);
 		}
 		
 		public  suckIncubusDick():void
@@ -204,7 +204,7 @@
 			dynStats("lib+", 5, "cor+", 5, "lus+", 100);
 
 			menu();
-			addButton(0, "Next", getGame().d3.exitD3);
+			addButton(0, "Next", d3.exitD3);
 		}
 		
 		public  beatDaMechanic(hpVictory:boolean):void
@@ -229,7 +229,7 @@
 			flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_KILLED;
 			clearOutput();
 			outputText("He proves blessedly easy to kill, and you roll the body off the cliffs to avoid alerting any of Lethice's other ilk.");
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 
 		private  letMechanicGo(hpVictory:boolean):void
@@ -245,7 +245,7 @@
 	
 			outputText("\n\nThe incubus mechanic flies away for good, though you can’t can say whether he will wreak havoc or live quietly.");
 
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 		
 		private  buttfuckTheMechanic(hpVictory:boolean):void
@@ -282,11 +282,11 @@
 			
 			outputText("\n\n\"<i>Just relax and let it happen,</i>\" you instruct as you slowly squeeze another inch inside him. The incubus' insides are just so... so tight around your length and so warm compared to the outside air. You lean down over him, listening to him grunt, enjoying the feel of his entrance slowly slackening as he obeys. A huge blob of pre or cum (you can't be sure which) splatters into the growing puddle below him as your " + player.cockHead(x) + " inexpertly milks his prostate. The incubus shakes from head to toe, and you feed yourself in to the halfway point.");
 
-			outputText("\n\nYou enjoy the muscular tightness of the demon's tainted anus for a moment, but he has ideas of his own. An inch of cock vanishes inside him, pulled inside by contractions a human could never manage. Gods, it feels good, and he's just getting started. He's pulling you inside him like some kind of sucking vacuum, drawing the entirety of your length inside him in seconds. You gasp, barely having the presence of mind to paddle his rosy asscheeks for his disobedience, but that only encourages him. Muscular ripples roll around your " + cockDescript(x) + " in a way that conjures up the image of the inside of a tornado - a suckling, insatiable vortex that's twisting and stroking until it pulls everything inside it.");
+			outputText("\n\nYou enjoy the muscular tightness of the demon's tainted anus for a moment, but he has ideas of his own. An inch of cock vanishes inside him, pulled inside by contractions a human could never manage. Gods, it feels good, and he's just getting started. He's pulling you inside him like some kind of sucking vacuum, drawing the entirety of your length inside him in seconds. You gasp, barely having the presence of mind to paddle his rosy asscheeks for his disobedience, but that only encourages him. Muscular ripples roll around your " + game.player.cockDescript(x) + " in a way that conjures up the image of the inside of a tornado - a suckling, insatiable vortex that's twisting and stroking until it pulls everything inside it.");
 
 			outputText("\n\nThe demon has the audacity to smile back over his shoulder at you. \"<i>You didn't honestly think I wouldn't find the pleasure in a little buttlove, did you?</i>\" He smirks and squeezes you so expertly that you feel ready to explode.");
 
-			outputText("\n\nNo! He's not going to win, even if him 'winning' is just making you cum into his asshole. You put your hands on his near-bruised bottom and pull away, struggling with all your might to extract your " + cockDescript(x) + " from his hungry asshole. It's slow going, and tremendously pleasurable, but you manage to extract yourself with a noisy 'schliiiiiiiiick' that never seems to end. When you finally pop your " + player.cockHead(x) + " out, you adjust your positioning and thrust with all your might, slapping your [hips] into his curvy backside with enough force to audibly slap. You hear the echo of your dominance rebound off the walls of Lethice's fortress, washing over her prone lieutenant.");
+			outputText("\n\nNo! He's not going to win, even if him 'winning' is just making you cum into his asshole. You put your hands on his near-bruised bottom and pull away, struggling with all your might to extract your " + game.player.cockDescript(x) + " from his hungry asshole. It's slow going, and tremendously pleasurable, but you manage to extract yourself with a noisy 'schliiiiiiiiick' that never seems to end. When you finally pop your " + player.cockHead(x) + " out, you adjust your positioning and thrust with all your might, slapping your [hips] into his curvy backside with enough force to audibly slap. You hear the echo of your dominance rebound off the walls of Lethice's fortress, washing over her prone lieutenant.");
 
 			outputText("\n\nYou can actually feel your " + player.cockHead(x) + " nearly mashing his prostate flat as it grinds past. Shuddering, the incubus loses his focus, and his butthole slackens. You don't give him a chance for a second wind, bouncing back off and immediately starting your next thrust. Your hold is firm, and your strokes sure. His ass bounces beautifully with each prick-hilting slam against it. Down below, the demon's nubby phallus is bobbing back and forth like a pendulum, practically pissing out streams of pre-cum each time you bottom out. He's getting awful close, and all he can do is gasp and drool.");
 
@@ -296,9 +296,9 @@
 
 			outputText("\n\nYour own pleasure rising, you start fuck him even faster. \"<i>No.</i>\"");
 
-			outputText("\n\nThe incubus's dick-flopping diminishes as it begins to properly engorge once more, aiming higher with each beat of the demon's heart as he nears his orgasm. You push him down a bit so that your " + cockDescript(x) + " will press more powerfully across his prostate, panting from your own exertion. It's enough. The demon mewls out a long, high-pitched moan and erupts, painting a line of white up his overalls all the way to his chin. The next blobs of cum splatter off his chin. Each new ejaculation seems a little larger than the one before. You're doing your best to milk him from behind, and he's doing his best to whimper like a bitch and paint his face. A smile breaks across your face. It's more than a fair trade.");
+			outputText("\n\nThe incubus's dick-flopping diminishes as it begins to properly engorge once more, aiming higher with each beat of the demon's heart as he nears his orgasm. You push him down a bit so that your " + game.player.cockDescript(x) + " will press more powerfully across his prostate, panting from your own exertion. It's enough. The demon mewls out a long, high-pitched moan and erupts, painting a line of white up his overalls all the way to his chin. The next blobs of cum splatter off his chin. Each new ejaculation seems a little larger than the one before. You're doing your best to milk him from behind, and he's doing his best to whimper like a bitch and paint his face. A smile breaks across your face. It's more than a fair trade.");
 
-			outputText("\n\nEventually, the spent demon finishes, dribbling semen so weak that it's practically clear into a salty puddle between his knees. You don't slow or stop. In fact, your " + cockDescript(x) + " feels bigger and harder than it was a few seconds. The velvety folds of the demon's pre-slickened asshole are caressing you wonderfully, slowly egging you towards a climax of your own. You fuck him hard enough to knock him off-balance, dropping his cheek into his own spooge-puddle. Then, you cum, flooding your toy's asshole with its reward for a job well done.");
+			outputText("\n\nEventually, the spent demon finishes, dribbling semen so weak that it's practically clear into a salty puddle between his knees. You don't slow or stop. In fact, your " + game.player.cockDescript(x) + " feels bigger and harder than it was a few seconds. The velvety folds of the demon's pre-slickened asshole are caressing you wonderfully, slowly egging you towards a climax of your own. You fuck him hard enough to knock him off-balance, dropping his cheek into his own spooge-puddle. Then, you cum, flooding your toy's asshole with its reward for a job well done.");
 
 			////Low cum exit
 			if (player.cumQ() <= 250)
@@ -336,12 +336,12 @@
 			//No new paragraph
 			outputText("The incubus slumps down into the puddled semen, gasping in exhaustion.");
 
-			outputText("\n\nYou wipe your " + cockDescript(x) + " off on his practically glowing bottom before turning to re-dress. When you turn back, he's gone, though a trail of white drops indicates the direction of his flight. It looks like he fled towards the cliff, perhaps growing wings. Oh well, that's one less obstacle between you and Lethice.");
+			outputText("\n\nYou wipe your " + game.player.cockDescript(x) + " off on his practically glowing bottom before turning to re-dress. When you turn back, he's gone, though a trail of white drops indicates the direction of his flight. It looks like he fled towards the cliff, perhaps growing wings. Oh well, that's one less obstacle between you and Lethice.");
 
 			player.orgasm();
 			dynStats("cor+", 5);
 
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 		
 		private  MECHANIC_DEMON_COCK:number = 0;
@@ -525,7 +525,7 @@
 			player.orgasm();
 			dynStats("cor+", 5);
 
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 		
 		public  mechanicFuckedYouUp(hpVictory:boolean, pcCameWorms:boolean):void
@@ -589,7 +589,7 @@
 			{
 				outputText("Dropping prone, you gasp for breath, struggling against your injured body to rise. Your muscles burn with the effort, exhausted from the fight, and ultimately, you fail to stand. Slumping down on the ground, you're forced to come to terms with your defeat. The incubus has won. You came all this way, gave your best, and got smacked down by a lower demon for all your troubles. Some champion you are.");
 	
-				outputText("\n\nLeering down at you, the incubus swiftly tears away your [armor], his fingers suddenly razor-sharp claws. He is precise in his attentions, leaving your [skin] pristine and unbroken. You get the impression he doesn't want damaged goods. He regards your " + multiCockDescriptLight() + " with interest, judging them.");
+				outputText("\n\nLeering down at you, the incubus swiftly tears away your [armor], his fingers suddenly razor-sharp claws. He is precise in his attentions, leaving your [skin] pristine and unbroken. You get the impression he doesn't want damaged goods. He regards your " + game.player.multiCockDescriptLight() + " with interest, judging them.");
 	
 				//Small cocks
 				if (player.biggestCockLength() < 6)
@@ -629,7 +629,7 @@
 			//Multicock
 			if (player.cocks.length > 1)
 			{
-				outputText("\n\nThe incubus gathers your " + multiCockDescriptLight() + " together in his hands, pressing them together into a column of compressed cock. His touch feels so nice that you piston your [hips] against him, trying to fuck his hands, but he holds you firmly. A warm tightness, pleasant and yet entirely unyielding presses down against your tips, so tight that whimper at the slight pinch of pain. You crane your head, careful not to lose your mouth's grip on its leaking fixation. What you see nearly makes you spit it out.");
+				outputText("\n\nThe incubus gathers your " + game.player.multiCockDescriptLight() + " together in his hands, pressing them together into a column of compressed cock. His touch feels so nice that you piston your [hips] against him, trying to fuck his hands, but he holds you firmly. A warm tightness, pleasant and yet entirely unyielding presses down against your tips, so tight that whimper at the slight pinch of pain. You crane your head, careful not to lose your mouth's grip on its leaking fixation. What you see nearly makes you spit it out.");
 
 				outputText("\n\nThe ring is being forced down your bundled shafts. Below, your dicks remain as they are. Above, they're being merged together into one impressive tool.");
 
@@ -695,7 +695,7 @@
 		{
 			clearOutput();
 			outputText("The champion finally got to cum once Lethice had her turn, but by that point, pussy was all " + player.mf("he","she") + " could think about. Release came more frequently with the demon queen's permission. It didn't really matter, though. The champion was addicted to riding on the edge of climax, broken into nothing more than a demonic vibrator.");
-			getGame().gameOver();
+			gameOver();
 		}
 		
 		
@@ -822,9 +822,7 @@
 			outputText("\n\nYou suck harder, [legs] quivering from how hard you're trying to squeeze your button, and feel a sudden warmth explode in the back of your throat. It pours a thick, rich load of cum into your belly's wanton stomach. You can feel its corruptive influence acting on you already, helping you come to terms with your new station. Your tongue worships the underside of his knot, the tip tickling his quaking, emptying balls. This is your place after all, to pleasure with your mouth and drip with your cunt, always horny and willing, always delirious with the pleasant, corrupted buzz of an insatiable need.");
 
 			outputText("\n\nYou'll do anything to keep yourself pleasantly slick for your masters. You don't even protest when the plug is forced back into your mouth and hooked to a nutrient solution.");
-			getGame().gameOver();
+			gameOver();
 		}
 		
 	}
-
-

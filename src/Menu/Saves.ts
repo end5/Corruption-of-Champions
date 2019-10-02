@@ -26,7 +26,7 @@
 	 
 
 
-export class Saves extends BaseContent {
+export class Saves {
 
 	private static  SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:number		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
@@ -326,17 +326,17 @@ public  saveLoad(e:MouseEvent = null):void
 		addButton(1, "Load", loadScreen);
 		addButton(2, "Load File", loadFromFile);
 		addButton(3, "Delete", deleteScreen);
-		addButton(4, "Back", kGAMECLASS.gameOver, true);
+		addButton(4, "Back", gameOver, true);
 		return;
 	}
 	if (player.str == 0)
 	{
-		simpleChoices("", null, "Load", loadScreen, "Load File", loadFromFile, "Delete", deleteScreen, "Back", kGAMECLASS.mainMenu);
+		simpleChoices("", null, "Load", loadScreen, "Load File", loadFromFile, "Delete", deleteScreen, "Back", mainMenu);
 		return;
 	}
-	if (inDungeon)
+	if (game.inDungeon)
 	{
-		simpleChoices("", null, "Load", loadScreen, "Load File", loadFromFile, "Delete", deleteScreen, "Back", kGAMECLASS.playerMenu);
+		simpleChoices("", null, "Load", loadScreen, "Load File", loadFromFile, "Delete", deleteScreen, "Back", playerMenu);
 		return;
 	}
 	if (gameStateGet() == 3)
@@ -362,7 +362,7 @@ public  saveLoad(e:MouseEvent = null):void
 					"Load File",      loadFromFile,
 					"",               null,
 					"",               null,
-					"Back",           kGAMECLASS.playerMenu);
+					"Back",           playerMenu);
 		else
 			choices("Save",           saveScreen,
 					"Load",           loadScreen,
@@ -373,7 +373,7 @@ public  saveLoad(e:MouseEvent = null):void
 					"Load File",      loadFromFile,
 					"",               null,
 					"",               null,
-					"Back",           kGAMECLASS.playerMenu);
+					"Back",           playerMenu);
 	}
 }
 
@@ -580,10 +580,10 @@ public  saveGameObject(slot:string, isFile:boolean):void
 	if (mainView.nameBox.text != "")
 	{
 		saveFile.data.notes = mainView.nameBox.text;
-		getGame().notes = mainView.nameBox.text;
+		notes = mainView.nameBox.text;
 	}
 	else
-		saveFile.data.notes = getGame().notes;
+		saveFile.data.notes = notes;
 	mainView.nameBox.visible = false;
 	
 	var processingError:boolean = false;
@@ -861,23 +861,23 @@ public  saveGameObject(slot:string, isFile:boolean):void
 		saveFile.data.exploredForest = player.exploredForest;
 		saveFile.data.exploredDesert = player.exploredDesert;
 		saveFile.data.explored = player.explored;
-		saveFile.data.foundForest = getGame().foundForest;
-		saveFile.data.foundDesert = getGame().foundDesert;
-		saveFile.data.foundMountain = getGame().foundMountain;
-		saveFile.data.foundLake = getGame().foundLake;
+		saveFile.data.foundForest = game.foundForest;
+		saveFile.data.foundDesert = game.foundDesert;
+		saveFile.data.foundMountain = game.foundMountain;
+		saveFile.data.foundLake = game.foundLake;
 		saveFile.data.gameState = gameStateGet();
 		
 		//Time and Items
-		saveFile.data.hours = model.time.hours;
-		saveFile.data.days = model.time.days;
+		saveFile.data.hours = game.time.hours;
+		saveFile.data.days = game.time.days;
 		saveFile.data.autoSave = player.autoSave;
 		
 		//PLOTZ
-		saveFile.data.whitney = getGame().whitney;
-		saveFile.data.monk = getGame().monk;
-		saveFile.data.sand = getGame().sand;
-		saveFile.data.giacomo = getGame().giacomo;
-		saveFile.data.beeProgress = 0; //Now saved in a flag. getGame().beeProgress;
+		saveFile.data.whitney = game.whitney;
+		saveFile.data.monk = game.monk;
+		saveFile.data.sand = game.sand;
+		saveFile.data.giacomo = game.giacomo;
+		saveFile.data.beeProgress = 0; //Now saved in a flag. beeProgress;
 		
 		//ITEMZ. Item1s
 		saveFile.data.itemSlot1 = [];
@@ -906,7 +906,7 @@ public  saveGameObject(slot:string, isFile:boolean):void
 		saveFile.data.itemSlot5.unlocked = player.itemSlot5.unlocked;
 		
 		// Keybinds
-		saveFile.data.controls = getGame().inputManager.SaveBindsToObj();
+		saveFile.data.controls = inputManager.SaveBindsToObj();
 	}
 	catch (error:Error)
 	{
@@ -923,7 +923,7 @@ public  saveGameObject(slot:string, isFile:boolean):void
 	// Something to do in the future
 	if (isFile && !processingError)
 	{
-		if (!(kGAMECLASS.monkey.run))
+		if (!(game.monkey.run))
 		{
 			//outputText(serializeToString(saveFile.data), true);
 			var bytes:ByteArray = new ByteArray();
@@ -1037,7 +1037,7 @@ public  openSave():void
 {
 
 	// Block when running the chaos monkey
-	if (!(kGAMECLASS.monkey.run))
+	if (!(game.monkey.run))
 	{
 		CONFIG::AIR
 		{
@@ -1162,7 +1162,7 @@ public  loadGameObject(saveData:Record<string, any>, slot:string = "VOID"):void
 		//KILL ALL COCKS;
 		player = new Player();
 		flags = new DefaultDict();
-		model.player = player;		
+		game.player = player;		
 		
 		//trace("Type of saveFile.data = ", getClass(saveFile.data));
 		
@@ -1783,8 +1783,8 @@ public  loadGameObject(saveData:Record<string, any>, slot:string = "VOID"):void
 		
 		//Days
 		//Time and Items
-		model.time.hours = saveFile.data.hours;
-		model.time.days = saveFile.data.days;
+		game.time.hours = saveFile.data.hours;
+		game.time.days = saveFile.data.days;
 		if (saveFile.data.autoSave == undefined)
 			player.autoSave = false;
 		else
@@ -1931,8 +1931,8 @@ public  unFuckSave():void
 
 	var flagData:any[] = String(flags[kFLAGS.KATHERINE_BREAST_SIZE]).split("^");
 	if (flagData.length < 7 && flags[kFLAGS.KATHERINE_BREAST_SIZE] > 0) { //Older format only stored breast size or zero if not yet initialized
-		getGame().telAdre.katherine.breasts.cupSize			= flags[kFLAGS.KATHERINE_BREAST_SIZE];
-		getGame().telAdre.katherine.breasts.lactationLevel	= BreastStore.LACTATION_DISABLED;
+		telAdre.katherine.breasts.cupSize			= flags[kFLAGS.KATHERINE_BREAST_SIZE];
+		telAdre.katherine.breasts.lactationLevel	= BreastStore.LACTATION_DISABLED;
 	}
 	
 	if (flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] < 816) {
@@ -1966,7 +1966,7 @@ public  unFuckSave():void
 		}
 
 		if (flags[kFLAGS.HELSPAWN_AGE] > 0) {
-			kGAMECLASS.helScene.pregnancy.knockUpForce(); //Clear Pregnancy, also removed any old value from HEL_PREGNANCY_NOTICES
+			helScene.pregnancy.knockUpForce(); //Clear Pregnancy, also removed any old value from HEL_PREGNANCY_NOTICES
 		}
 		else if (flags[kFLAGS.HEL_PREGNANCY_INCUBATION] > 0) {
 			if (flags[kFLAGS.HELIA_PREGNANCY_TYPE] > 3) return; //Must be a new format save

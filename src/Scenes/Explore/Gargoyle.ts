@@ -3,7 +3,7 @@
 	 
 	 
 
-	export class Gargoyle extends BaseContent{
+	export class Gargoyle{
 
 	public  constructor()
 	{
@@ -43,7 +43,7 @@ public  gargoylesTheShowNowOnWBNetwork():void {
 	//[Next]
 	menu();
 	addButton(0,"Next",gargoyleMeeting2);
-	model.time.hours++;
+	game.time.hours++;
 }
 
 //(Advance time by 1 hour) 
@@ -116,7 +116,7 @@ private  breakZeChains():void {
 }
 
 private  nameZeGargoyle():void {
-	if (kGAMECLASS.testingBlockExiting)
+	if (testingBlockExiting)
 	{
 		// We're running under the testing script.
 		// Stuff a name in the box and go go go
@@ -243,10 +243,10 @@ public  returnToCathedral(woken:boolean = false):void {
 	}
 	menu();
 	//[b]Cathedral Interior – 06:00 –> 09:00 & 18:00 –> 21:00[/b]
-	if(model.time.hours <= 9 || model.time.hours >= 18 || woken) {
+	if(game.time.hours <= 9 || game.time.hours >= 18 || woken) {
 		if(!woken) {
 			outputText("\n\nIn the dim ");
-			if(model.time.hours <= 9) outputText("early morning");
+			if(game.time.hours <= 9) outputText("early morning");
 			else outputText("late evening");
 			outputText(" light streaming in from the broken windows, you see " + flags[kFLAGS.GAR_NAME] + " poking around some of the rubble, slowly but surely making efforts to repair the damage done to the Cathedral.  Seeing you, however, she immediately drops what she was doing and ");
 			if(gargoyleConfidence() < 70) outputText("kneels before you, head bowed low.");
@@ -366,7 +366,7 @@ private  gargoyleCoochiiGetsPlowed():void {
 	
 	outputText("\n\nYou're rewarded for your efforts by " + flags[kFLAGS.GAR_NAME] + " bucking her hips into your hands, moaning, \"<i>M-Master... please...</i>\"  Not done teasing her yet, you put your other hand on her flat belly and start to crawl it up, tickling her as you make your way toward her sizable breasts.  You glomp onto one of them, giving it a rough squeeze as you drive your finger into her a little further than before.  \"<i>Masterrrrr...</i>\" " + flags[kFLAGS.GAR_NAME] + " whines, reaching up to stroke your cheek.  Deciding you've teased the poor girl enough, you prepare for the main course.");
 	
-	outputText("\n\nYou pull your " + cockDescript(x) + " from your [armor], letting it flop down atop her crotch.  Embarrassed, " + flags[kFLAGS.GAR_NAME] + " looks away as you rub the underside of your cock across her mons, spitting on it for a bit of extra lubricant.  You lean back, lining the tip of your cockhead with the gargoyle's tight slit, and press forward.  She lets out a sharp gasp as your cock presses against her, pushing it past her lips and finally slipping into her depths.");
+	outputText("\n\nYou pull your " + game.player.cockDescript(x) + " from your [armor], letting it flop down atop her crotch.  Embarrassed, " + flags[kFLAGS.GAR_NAME] + " looks away as you rub the underside of your cock across her mons, spitting on it for a bit of extra lubricant.  You lean back, lining the tip of your cockhead with the gargoyle's tight slit, and press forward.  She lets out a sharp gasp as your cock presses against her, pushing it past her lips and finally slipping into her depths.");
 	
 	outputText("\n\nThough her opening was painfully tight, her inner passage expands easily around your cock, letting you slip in more and more of your dickmeat until you're buried ");
 	if(player.cockArea(x) > 60) outputText("as far as she can take you.");
@@ -376,7 +376,7 @@ private  gargoyleCoochiiGetsPlowed():void {
 	
 	outputText("\n\nTo your dismay, you feel the tell-tale clenching in your gut, signaling your impending orgasm.  You clutch at " + flags[kFLAGS.GAR_NAME] + "'s shoulders as you slam into her one last time, as far as you'll go, and shoot out the first of your load.  The sensation of your thick, hot jizz exploding into her sets the gargoyle off as well: she rolls her head back and lets out a soft scream, crunching down on your cock until you're afraid it's going to burst.  You bury your face in her neck and let her milk your cock for all it's worth, until your spooge threatens to overflow and pool on the ground.");
 	
-	outputText("\n\nThe two of you lay there for a while after, until your " + cockDescript(x) + " has deflated and you've both stopped panting from exertion and pleasure.  Giving her another kiss, you pull out of her cold depths – now significantly warmer thanks to your passion – and stuff your dick back into your armor.");
+	outputText("\n\nThe two of you lay there for a while after, until your " + game.player.cockDescript(x) + " has deflated and you've both stopped panting from exertion and pleasure.  Giving her another kiss, you pull out of her cold depths – now significantly warmer thanks to your passion – and stuff your dick back into your armor.");
 	if(gargoyleConfidence() >= 70) outputText("  Before you can stand, though, " + flags[kFLAGS.GAR_NAME] + " hugs her arms tightly around you pulling you down on top of her and mashing your face between her soft tits.");
 	
 	outputText("\n\n\"<i>Thank you, Master,</i>\" she says, running a hand through your " + hairDescript() + ".  \"<i>That was wonderful.</i>\"");
@@ -712,7 +712,7 @@ private  kinkyBodyRitual():void {
 	
 	outputText("\n\nShe plays easily within you, running her cool appendage over your own tongue, letting it slide across your teeth and cheeks as she slides a hand down to your ");
 	//if Male/Herm: 
-	if(player.hasCock()) outputText(cockDescript(0));
+	if(player.hasCock()) outputText(game.player.cockDescript(0));
 	else if(player.hasVagina()) outputText(vaginaDescript());
 	else outputText("barren crotch");
 	outputText(".  She breaks the kiss and steps back, laying on one last time – CRACK! with the crop, stinging you again with an intense mix of pain and pleasure.  Gasping and panting from stimulation, you nearly collapse when " + flags[kFLAGS.GAR_NAME] + " unbinds you, though she's quick to catch you before you fall.");
@@ -901,7 +901,7 @@ private  historyOfGargoylesB():void {
 private  gargoyleHistoryC():void {
 	clearOutput();
 	//(PC has both Isabella and Izma as followers)
-	if(kGAMECLASS.izmaScene.izmaFollower() && kGAMECLASS.isabellaFollowerScene.isabellaFollower()) {
+	if(izmaScene.izmaFollower() && isabellaFollowerScene.isabellaFollower()) {
 		outputText("You ask " + flags[kFLAGS.GAR_NAME] + " to tell you a little bit about the world of Mareth.  Giving it a few moments of quiet thought, she answers: \"<i>I do not have any experience outside of the church grounds, Master, but I remember the words of the last Master, and the parishioners before her.  There are... the world has a vast expanse of plains and woodlands, broken up by a mountain range and lake.  Those last two are populated by savage beasts, minotaurs, cow-girls, anemone, and shark-people, both of whom will rend your flesh or rape you half to death.</i>\"");
 		outputText("\n\nWhoa, there. You stop " + flags[kFLAGS.GAR_NAME] + " and explain to her that some of your lovers – mates, even – are just such beasts.  You tell her a little bit about Izma and Isabella, enforcing the fact that they're both not only quite friendly, but sweet as well.  They're just regular people");
 		if(gargoyleConfidence() > 50) outputText(" just like her");
@@ -925,7 +925,7 @@ private  gargoyleHistoryC():void {
 		addButton(1,"Doesn'tCount",gargoyleDoesntCountAsAWaifu);
 	}
 	//(If PC has Izma as a follower)
-	else if(kGAMECLASS.izmaScene.izmaFollower()) {
+	else if(izmaScene.izmaFollower()) {
 		outputText("You ask " + flags[kFLAGS.GAR_NAME] + " to tell you a little bit about the world of Mareth.  Giving it a few moments of quiet thought, she answers: \"<i>I do not have any experience outside of the church grounds, Master, but I remember the words of the last Master, and the parishioners before her.  There are... the world has a vast expanse of plains and woodlands, broken up by a great mountain range.  There is a lake not far from here, if I recall; a race of very dangerous shark-folk live there.</i>\"  With a chuckle, you tell " + flags[kFLAGS.GAR_NAME] + " that you're more than well aware of that; indeed, you consider one such creature to be your mate, your beta.  She makes a slight gasp, and gushes out an apology.  \"<i>I'm so sorry, Master!  I hadn't realized... I thought...</i>\" she falls silent for a moment, then says shyly, \"<i>I wasn't aware Master had a girlfriend.</i>\"  Obviously, knowing that she's not your only lady-friend has upset the poor thing.");
 		
 		outputText("\n\nWell. What do you say to that: that you're not exclusive with Izma, or that she doesn't count, being a statue and all?");
@@ -1279,4 +1279,3 @@ private  gargoyleAppearance():void {
 	returnToCathedral(true);
 }
 }
-

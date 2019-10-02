@@ -126,7 +126,7 @@ export function rawOutputText(output: string, purgeText: boolean = false): void 
 
 	//OUTPUT!
 	if (purgeText) {
-		//if(!debug) mainText.htmlText = output;
+		//if(!game.debug) mainText.htmlText = output;
 		//trace("Purging and writing Text", output);
 		clearOutput();
 		currentText = output;
@@ -163,14 +163,14 @@ export function outputText(output: string,
 
 	//OUTPUT!
 	if (purgeText) {
-		//if(!debug) mainText.htmlText = output;
+		//if(!game.debug) mainText.htmlText = output;
 		currentText = output;
 	}
 	else {
 		currentText += output;
-		//if(!debug) mainText.htmlText = currentText;
+		//if(!game.debug) mainText.htmlText = currentText;
 	}
-	if (debug) {
+	if (game.debug) {
 		mainView.setOutputText(currentText);
 	}
 
@@ -619,14 +619,14 @@ export function getButtonToolTipText(buttonText: string): string {
 	//combat
 	//wombat
 	if (buttonText == "Attack") {
-		if (!inCombat) toolTipText = "";
+		if (!game.inCombat) toolTipText = "";
 		else toolTipText = "Attempt to attack the enemy with your " + player.weaponName + ".  Damage done is determined by your strength and weapon.";
 	}
 	if (buttonText == "Kiss") {
 		toolTipText = "Attempt to kiss your foe on the lips with drugged lipstick.  It has no effect on those without a penis.";
 	}
 	if (buttonText == "Tease") {
-		if (!inCombat) toolTipText = "";
+		if (!game.inCombat) toolTipText = "";
 		else toolTipText = "Attempt to make an enemy more aroused by striking a seductive pose and exposing parts of your body.";
 	}
 	if (buttonText == "Kick") {
@@ -686,7 +686,7 @@ export function getButtonToolTipText(buttonText: string): string {
 	if (buttonText.indexOf("Aroused") != -1) {
 	}
 	if (buttonText.indexOf("Arouse") != -1) {
-		if (!inCombat) toolTipText = "";
+		if (!game.inCombat) toolTipText = "";
 		else toolTipText = "The arouse spell draws on your own inner lust in order to enflame the enemy's passions.  (Fatigue Cost: " + spellCost(15) + ")";
 	}
 	if (buttonText == "Heal") {
@@ -696,7 +696,7 @@ export function getButtonToolTipText(buttonText: string): string {
 		toolTipText = "The Might spell draws upon your lust and uses it to fuel a temporary increase in muscle size and power.  It does carry the risk of backfiring and raising lust, like all black magic used on oneself.  (Fatigue Cost: " + spellCost(25) + ")";
 	}
 	//Wait
-	if (buttonText.indexOf("Wait") != -1 && inCombat) {
+	if (buttonText.indexOf("Wait") != -1 && game.inCombat) {
 		toolTipText = "Take no action for this round.  Why would you do this?  This is a terrible idea.";
 	}
 	//Sting

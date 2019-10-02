@@ -42,7 +42,7 @@ export function endLustLoss():void
 //combat is over. Clear shit out and go to main
 export function cleanupAfterCombat(nextFunc:() => void = null):void {
 	if (nextFunc == null) nextFunc = camp.returnToCampUseOneHour;
-	if (inCombat) {
+	if (game.inCombat) {
 		//clear status
 		clearStatuses(false);
 		//Clear itemswapping in case it hung somehow
@@ -56,7 +56,7 @@ export function cleanupAfterCombat(nextFunc:() => void = null):void {
 			if(monster.statusAffectv1(StatusAffects.Sparring) == 2) {
 				outputText("The cow-girl has defeated you in a practice fight!", true);
 				outputText("\n\nYou have to lean on Isabella's shoulder while the two of your hike back to camp.  She clearly won.", false);
-				inCombat = false;
+				game.inCombat = false;
 				player.HP = 1;
 				statScreenRefresh();
 				doNext(nextFunc);
@@ -64,24 +64,24 @@ export function cleanupAfterCombat(nextFunc:() => void = null):void {
 			}
 			//Next button is handled within the minerva loss function
 			if(monster.findStatusAffect(StatusAffects.PeachLootLoss) >= 0) {
-				inCombat = false;
+				game.inCombat = false;
 				player.HP = 1;
 				statScreenRefresh();
 				return;
 			}
 			if(monster.short == "Ember") {
-				inCombat = false;
+				game.inCombat = false;
 				player.HP = 1;
 				statScreenRefresh();
 				doNext(nextFunc);
 				return;
 			}
 			temp = rand(10) + 1 + Math.round(monster.level / 2);
-			if (inDungeon) temp += 20 + monster.level*2;
+			if (game.inDungeon) temp += 20 + monster.level*2;
 			if (temp > player.gems) temp = player.gems;
-			var timePasses:number = monster.handleCombatLossText(inDungeon, temp); //Allows monsters to customize the loss text and the amount of time lost
+			var timePasses:number = monster.handleCombatLossText(game.inDungeon, temp); //Allows monsters to customize the loss text and the amount of time lost
 			player.gems -= temp;
-			inCombat = false;
+			game.inCombat = false;
 			//BUNUS XPZ
 			if(flags[kFLAGS.COMBAT_BONUS_XP_VALUE] > 0) {
 				player.XP += flags[kFLAGS.COMBAT_BONUS_XP_VALUE];
@@ -1479,7 +1479,7 @@ export function dropItem(monster:Monster):void {
 	}
 	monster.handleAwardItemText(itype); //Each monster can now override the default award text
 	if (itype != null) {
-		if (inDungeon)
+		if (game.inDungeon)
 			inventory.takeItem(itype, playerMenu);
 		else inventory.takeItem(itype, camp.returnToCampUseOneHour);
 	}
@@ -1494,11 +1494,11 @@ export function awardPlayer():void
 		//trace( "to: " + monster.gems )
 	}
 	monster.handleAwardText(); //Each monster can now override the default award text
-	if (!inDungeon && !inRoomedDungeon)
+	if (!game.inDungeon && !game.inRoomedDungeon)
 		doNext(camp.returnToCampUseOneHour);
 	else doNext(playerMenu);
 	dropItem(monster);
-	inCombat = false;
+	game.inCombat = false;
 	player.gems += monster.gems;
 	player.XP += monster.XP;
 }
@@ -1942,7 +1942,7 @@ export function clearStatuses(visibility:boolean):void {
 			
 			player.str += player.statusAffectv2(StatusAffects.DriderIncubusVenom);
 			player.removeStatusAffect(StatusAffects.DriderIncubusVenom);
-			kGAMECLASS.mainView.statsView.showStatUp('str');
+			mainView.statsView.showStatUp('str');
 		}
 		else
 		{
@@ -1951,7 +1951,7 @@ export function clearStatuses(visibility:boolean):void {
 			{
 				player.str += player.statusAffectv2(StatusAffects.DriderIncubusVenom);
 				player.removeStatusAffect(StatusAffects.DriderIncubusVenom);
-				kGAMECLASS.mainView.statsView.showStatUp('str');
+				mainView.statsView.showStatUp('str');
 				outputText("The drider incubus’ venom wanes, the effects of the poision weakening as strength returns to your limbs!\n\n");
 			}
 			else
@@ -2015,7 +2015,7 @@ export function startCombat(monster_:Monster,plotFight_:boolean=false):void {
 	mainView.hideMenuButton( MainView.MENU_LEVEL );
 	mainView.hideMenuButton( MainView.MENU_PERKS );
 	//Flag the game as being "in combat"
-	inCombat = true;
+	game.inCombat = true;
 	monster = monster_;
 	if(monster.short == "Ember") {
 		monster.pronoun1 = emberScene.emberMF("he","she");
@@ -2037,7 +2037,7 @@ export function startCombatImmediate(monster_:Monster, _plotFight:boolean):void
 	mainView.hideMenuButton( MainView.MENU_LEVEL );
 	mainView.hideMenuButton( MainView.MENU_PERKS );
 	//Flag the game as being "in combat"
-	inCombat = true;
+	game.inCombat = true;
 	monster = monster_;
 	if(monster.short == "Ember") {
 		monster.pronoun1 = emberScene.emberMF("he","she");
@@ -2175,7 +2175,7 @@ export function display():void {
 		}
 	}
 	
-	if (debug){
+	if (game.debug){
 		outputText("\n----------------------------\n");
 		outputText(monster.generateDebugDescription(),false);
 	}
@@ -2881,13 +2881,13 @@ export function tease(justText:boolean = false):void {
 			//Single breast row
 			if(player.breastRows.length == 1) {
 				//50+ breastsize% success rate
-				outputText("Your lift your top, exposing your " + breastDescript(0) + " to " + monster.a + monster.short + ".  You shake them from side to side enticingly.", false);
+				outputText("Your lift your top, exposing your " + game.player.breastDescript(0) + " to " + monster.a + monster.short + ".  You shake them from side to side enticingly.", false);
 				if(player.lust >= 50) outputText("  Your " + nippleDescript(0) + "s seem to demand " + monster.pronoun3 + " attention.", false);
 			}
 			//Multirow
 			if(player.breastRows.length > 1) {
 				//50 + 10% per breastRow + breastSize%
-				outputText("You lift your top, freeing your rows of " + breastDescript(0) + " to jiggle freely.  You shake them from side to side enticingly", false);
+				outputText("You lift your top, freeing your rows of " + game.player.breastDescript(0) + " to jiggle freely.  You shake them from side to side enticingly", false);
 				if(player.lust >= 50) outputText(", your " + nippleDescript(0) + "s painfully visible.", false);
 				else outputText(".", false);
 				chance++;
@@ -3003,7 +3003,7 @@ export function tease(justText:boolean = false):void {
 			break;
 		//7 special Adjatha-crafted bend over bimbo times
 		case 7:
-			outputText("The glinting of light catches your eye and you whip around to inspect the glittering object, turning your back on " + monster.a + monster.short + ".  Locking your knees, you bend waaaaay over, " + chestDesc() + " swinging in the open air while your " + buttDescript() + " juts out at the " + monster.a + monster.short + ".  Your plump cheeks and " + hipDescript() + " form a jiggling heart-shape as you eagerly rub your thighs together.\n\n", false);
+			outputText("The glinting of light catches your eye and you whip around to inspect the glittering object, turning your back on " + monster.a + monster.short + ".  Locking your knees, you bend waaaaay over, " + game.player.chestDesc() + " swinging in the open air while your " + buttDescript() + " juts out at the " + monster.a + monster.short + ".  Your plump cheeks and " + hipDescript() + " form a jiggling heart-shape as you eagerly rub your thighs together.\n\n", false);
 			outputText("The clear, warm fluid of your happy excitement trickles down from your loins, polishing your " + player.skin() + " to a glossy, inviting shine.  Retrieving the useless, though shiny, bauble, you hold your pose for just a moment longer, a sly little smile playing across your lips as you wiggle your cheeks one more time before straightening up and turning back around.", false);
 			vagina = true;
 			chance++;
@@ -3066,7 +3066,7 @@ export function tease(justText:boolean = false):void {
 			outputText("You lean back, feigning a swoon while pressing a hand on the small of your back.  The pose juts your huge, pregnant belly forward and makes the shiny spherical stomach look even bigger.  With a teasing groan, you rub the protruding tummy gently, biting your lip gently as you stare at " + monster.a + monster.short + " through heavily lidded eyes.  \"<i>All of this estrogen is making me frisky,</i>\" you moan, stroking hand gradually shifting to the southern hemisphere of your big baby-bump.", false);
 			//if lactating] 
 			if(player.biggestLactation() >= 1) {
-				outputText("  Your other hand moves to expose your " + chestDesc() + ", cupping and squeezing a stream of milk to leak down the front of your " + player.armorName + ".  \"<i>Help a mommy out.</i>\"\n\n", false);
+				outputText("  Your other hand moves to expose your " + game.player.chestDesc() + ", cupping and squeezing a stream of milk to leak down the front of your " + player.armorName + ".  \"<i>Help a mommy out.</i>\"\n\n", false);
 				chance += 2;
 				damage += 4;
 			}
@@ -3095,18 +3095,18 @@ export function tease(justText:boolean = false):void {
 		case 15:
 			//Req's tits & Pussy
 			if(player.biggestTitSize() > 1 && player.hasVagina() && rand(2) == 0) {
-				outputText("Closing your eyes, you lean forward and slip a hand under your " + player.armorName + ".  You let out the slightest of gasps as your fingers find your drooling honeypot, warm tips poking, one after another between your engorged lips.  When you withdraw your hand, your fingers have been soaked in the dripping passion of your cunny, translucent beads rolling down to wet your palm.  With your other hand, you pull down the top of your " + player.armorName + " and bare your " + chestDesc() + " to " + monster.a + monster.short + ".\n\n", false);
+				outputText("Closing your eyes, you lean forward and slip a hand under your " + player.armorName + ".  You let out the slightest of gasps as your fingers find your drooling honeypot, warm tips poking, one after another between your engorged lips.  When you withdraw your hand, your fingers have been soaked in the dripping passion of your cunny, translucent beads rolling down to wet your palm.  With your other hand, you pull down the top of your " + player.armorName + " and bare your " + game.player.chestDesc() + " to " + monster.a + monster.short + ".\n\n", false);
 				outputText("Drawing your lust-slick hand to your " + nippleDescript(0) + "s, the yielding flesh of your cunt-like nipples parts before the teasing digits.  Using your own girl cum as added lubrication, you pump your fingers in and out of your nipples, moaning as you add progressively more digits until only your thumb remains to stroke the inflamed flesh of your over-stimulated chest.  Your throat releases the faintest squeak of your near-orgasmic delight and you pant, withdrawing your hands and readjusting your armor.\n\n", false);
 				outputText("Despite how quiet you were, it's clear that every lewd, desperate noise you made was heard by " + monster.a + monster.short + ".", false);
 				chance += 2;
 				damage += 4;
 			}
 			else if(player.biggestTitSize() > 1 && rand(2) == 0) {
-				outputText("You yank off the top of your " + player.armorName + ", revealing your " + chestDesc() + " and the gaping nipplecunts on each.  With a lusty smirk, you slip a pair of fingers into the nipples of your " + chestDesc() + ", pulling the nipplecunt lips wide, revealing the lengthy, tight passage within.  You fingerfuck your nipplecunts, giving your enemy a good show before pulling your armor back on, leaving the tantalizing image of your gaping titpussies to linger in your foe's mind.", false);
+				outputText("You yank off the top of your " + player.armorName + ", revealing your " + game.player.chestDesc() + " and the gaping nipplecunts on each.  With a lusty smirk, you slip a pair of fingers into the nipples of your " + game.player.chestDesc() + ", pulling the nipplecunt lips wide, revealing the lengthy, tight passage within.  You fingerfuck your nipplecunts, giving your enemy a good show before pulling your armor back on, leaving the tantalizing image of your gaping titpussies to linger in your foe's mind.", false);
 				chance += 1;
 				damage += 2;
 			}
-			else outputText("You remove the front of your " + player.armorName + " exposing your " + chestDesc() + ".  Using both of your hands, you thrust two fingers into your nipple cunts, milky girl cum soaking your hands and fingers.  \"<i>Wouldn't you like to try out these holes too?</i>\"", false);
+			else outputText("You remove the front of your " + player.armorName + " exposing your " + game.player.chestDesc() + ".  Using both of your hands, you thrust two fingers into your nipple cunts, milky girl cum soaking your hands and fingers.  \"<i>Wouldn't you like to try out these holes too?</i>\"", false);
 			breasts = true;
 			break;
 		//16 Anal gape
@@ -3167,7 +3167,7 @@ export function tease(justText:boolean = false):void {
 			break;
 		//24 STAFF POLEDANCE
 		case 24:
-			outputText("You run your tongue across your lips as you plant your staff into the ground.  Before your enemy can react, you spin onto the long, wooden shaft, using it like an impromptu pole.  You lean back against the planted staff, giving your enemy a good look at your body.  You stretch backwards like a cat, nearly touching your fingertips to the ground beneath you, now holding onto the staff with only one leg.  You pull yourself upright and give your " + buttDescript() + " a little slap and your " + chestDesc() + " a wiggle before pulling open your " + player.armorName + " and sliding the pole between your tits.  You drop down to a low crouch, only just covering your genitals with your hand as you shake your " + buttDescript() + " playfully.  You give the enemy a little smirk as you slip your " + player.armorName + " back on and pick up your staff.", false);
+			outputText("You run your tongue across your lips as you plant your staff into the ground.  Before your enemy can react, you spin onto the long, wooden shaft, using it like an impromptu pole.  You lean back against the planted staff, giving your enemy a good look at your body.  You stretch backwards like a cat, nearly touching your fingertips to the ground beneath you, now holding onto the staff with only one leg.  You pull yourself upright and give your " + buttDescript() + " a little slap and your " + game.player.chestDesc() + " a wiggle before pulling open your " + player.armorName + " and sliding the pole between your tits.  You drop down to a low crouch, only just covering your genitals with your hand as you shake your " + buttDescript() + " playfully.  You give the enemy a little smirk as you slip your " + player.armorName + " back on and pick up your staff.", false);
 			ass = true;
 			breasts = true;
 			break;
@@ -3256,7 +3256,7 @@ export function tease(justText:boolean = false):void {
 			damage+= 3;
 			break;
 		case 38:
-			outputText( "You wet your lips, narrowing your eyes into a smoldering, hungry gaze.  Licking the tip of your index finger, you trail it slowly and sensually down the front of your " + player.armorName + ", following the line of your " + chestDesc() + " teasingly.  You hook your thumbs into your top and shimmy it downward at an agonizingly slow pace.  The very instant that your [nipples] pop free, your tail crosses in front, obscuring " + monster.a + monster.short + "'s view.");
+			outputText( "You wet your lips, narrowing your eyes into a smoldering, hungry gaze.  Licking the tip of your index finger, you trail it slowly and sensually down the front of your " + player.armorName + ", following the line of your " + game.player.chestDesc() + " teasingly.  You hook your thumbs into your top and shimmy it downward at an agonizingly slow pace.  The very instant that your [nipples] pop free, your tail crosses in front, obscuring " + monster.a + monster.short + "'s view.");
 			breasts = true;
 			chance++;
 			damage++;
@@ -3698,7 +3698,7 @@ export function teaseXP(XP:number = 0):void {
 //VICTORY OR DEATH?
 export function combatRoundOver():boolean { //Called after the monster's action
 	statScreenRefresh();
-	if (!inCombat) return false;
+	if (!game.inCombat) return false;
 	if(monster.HP < 1) {
 		doNext(endHpVictory);
 		return true;
@@ -3738,7 +3738,7 @@ export function spellCount():number {
 
 export function magicMenu():void {
 //Pass false to combatMenu instead:	menuLoc = 3;
-	if (inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 2) {
+	if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 2) {
 		clearOutput();
 		outputText("You reach for your magic, but you just can't manage the focus necessary.  <b>Your ability to use magic was sealed, and now you've wasted a chance to attack!</b>\n\n");
 		enemyAI();
@@ -4164,7 +4164,7 @@ export function spellCleansingPalm():void
 	if (monster.short == "Jojo")
 	{
 		// Not a completely corrupted monkmouse
-		if (kGAMECLASS.monk < 2)
+		if (game.monk < 2)
 		{
 			outputText("You thrust your palm forward, sending a blast of pure energy towards Jojo. At the last second he sends a blast of his own against yours canceling it out\n\n");
 			flags[kFLAGS.SPELLS_CAST]++;
@@ -5037,7 +5037,7 @@ export function runAway(callHook:boolean = true):void {
 		return;
 	}
 	outputText("", true);
-	if (inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 4) {
+	if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 4) {
 		clearOutput();
 		outputText("You try to run, but you just can't seem to escape.  <b>Your ability to run was sealed, and now you've wasted a chance to attack!</b>\n\n");
 		enemyAI();
@@ -5055,7 +5055,7 @@ export function runAway(callHook:boolean = true):void {
 	if(monster.findStatusAffect(StatusAffects.Level) >= 0 && player.canFly()) {
 		clearOutput();
 		outputText("You flex the muscles in your back and, shaking clear of the sand, burst into the air!  Wasting no time you fly free of the sandtrap and its treacherous pit.  \"One day your wings will fall off, little ant,\" the snarling voice of the thwarted androgyne carries up to you as you make your escape.  \"And I will be waiting for you when they do!\"");
-		inCombat = false;
+		game.inCombat = false;
 		clearStatuses(false);
 		doNext(camp.returnToCampUseOneHour);
 		return;
@@ -5088,7 +5088,7 @@ export function runAway(callHook:boolean = true):void {
 		flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00329] = 0;
 		//(Free run away) 
 		outputText("You slink away while the pack of brutes is arguing.  Once they finish that argument, they'll be sorely disappointed!", true);
-		inCombat = false;
+		game.inCombat = false;
 		clearStatuses(false);
 		doNext(camp.returnToCampUseOneHour);
 		return;
@@ -5101,7 +5101,7 @@ export function runAway(callHook:boolean = true):void {
 		addButton(0, "Next", combatMenu, false);
 		return;
 	}
-	if(inDungeon || inRoomedDungeon) {
+	if(game.inDungeon || game.inRoomedDungeon) {
 		outputText("You're trapped in your foe's home turf - there is nowhere to run!\n\n", true);
 		enemyAI();
 		return;
@@ -5129,7 +5129,7 @@ export function runAway(callHook:boolean = true):void {
 		
 	//Calculations
 	var escapeMod:number = 20 + monster.level * 3;
-	if(debug) escapeMod -= 300;
+	if(game.debug) escapeMod -= 300;
 	if(player.canFly()) escapeMod -= 20;
 	if(player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
 	
@@ -5148,7 +5148,7 @@ export function runAway(callHook:boolean = true):void {
 		//Autosuccess - less than 60 lust
 		if(player.lust < 60) {
 			outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.", true);
-			inCombat = false;
+			game.inCombat = false;
 			clearStatuses(false);
 			doNext(camp.returnToCampUseOneHour);
 			return;
@@ -5157,7 +5157,7 @@ export function runAway(callHook:boolean = true):void {
 		else {
 			//Success
 			if(player.spe > rand(monster.spe+escapeMod)) {
-				inCombat = false;
+				game.inCombat = false;
 				clearStatuses(false);
 				outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.", true);
 				doNext(camp.returnToCampUseOneHour);
@@ -5181,7 +5181,7 @@ export function runAway(callHook:boolean = true):void {
 			else outputText("Y");
 			outputText("ou easily outpace the dragon, who begins hurling imprecations at you.  \"What the hell, [name], you weenie; are you so scared that you can't even stick out your punishment?\"");
 			outputText("\n\nNot to be outdone, you call back, \"Sucks to you!  If even the mighty Last Ember of Hope can't catch me, why do I need to train?  Later, little bird!\"");
-			inCombat = false;
+			game.inCombat = false;
 			clearStatuses(false);
 			doNext(camp.returnToCampUseOneHour);
 		}
@@ -5205,14 +5205,14 @@ export function runAway(callHook:boolean = true):void {
 		if(monster.short == "Izma") {
 			outputText("\n\nAs you leave the tigershark behind, her taunting voice rings out after you.  \"<i>Oooh, look at that fine backside!  Are you running or trying to entice me?  Haha, looks like we know who's the superior specimen now!  Remember: next time we meet, you owe me that ass!</i>\"  Your cheek tingles in shame at her catcalls.", false);
 		}
-		inCombat = false;
+		game.inCombat = false;
 		clearStatuses(false);
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}
 	//Runner perk chance
 	else if(player.findPerk(PerkLib.Runner) >= 0 && rand(100) < 50) {
-		inCombat = false;
+		game.inCombat = false;
 		outputText("Thanks to your talent for running, you manage to escape.", false);
 		if(monster.short == "Izma") {
 			outputText("\n\nAs you leave the tigershark behind, her taunting voice rings out after you.  \"<i>Oooh, look at that fine backside!  Are you running or trying to entice me?  Haha, looks like we know who's the superior specimen now!  Remember: next time we meet, you owe me that ass!</i>\"  Your cheek tingles in shame at her catcalls.", false);
@@ -5251,20 +5251,20 @@ export function runAway(callHook:boolean = true):void {
 					{
 						outputText("Your " + hipDescript() + " forces your gait to lurch slightly side to side, which causes the fat of your " + player.skinTone + " ", false);
 						if(player.buttRating >= 20) outputText(buttDescript() + " and ", false);
-						outputText(chestDesc() + " to wobble immensely, throwing you off balance and preventing you from moving quick enough to escape.", false);
+						outputText(game.player.chestDesc() + " to wobble immensely, throwing you off balance and preventing you from moving quick enough to escape.", false);
 					}
-					else if(player.buttRating >= 20) outputText("Your " + player.skinTone + buttDescript() + " and " + chestDesc() + " wobble and bounce heavily, throwing you off balance and preventing you from moving quick enough to escape.", false);
-					else outputText("Your " + chestDesc() + " jiggle and wobble side to side like the " + player.skinTone + " sacks of milky fat they are, with such force as to constantly throw you off balance, preventing you from moving quick enough to escape.", false);
+					else if(player.buttRating >= 20) outputText("Your " + player.skinTone + buttDescript() + " and " + game.player.chestDesc() + " wobble and bounce heavily, throwing you off balance and preventing you from moving quick enough to escape.", false);
+					else outputText("Your " + game.player.chestDesc() + " jiggle and wobble side to side like the " + player.skinTone + " sacks of milky fat they are, with such force as to constantly throw you off balance, preventing you from moving quick enough to escape.", false);
 				}
 				//FOR PLAYERS WITH MASSIVE BREASTS
 				else if(player.biggestTitSize() >= 66) {
 					if(player.hipRating >= 20) {
-						outputText("Your " + chestDesc() + " nearly drag along the ground while your " + hipDescript() + " swing side to side ", false);
+						outputText("Your " + game.player.chestDesc() + " nearly drag along the ground while your " + hipDescript() + " swing side to side ", false);
 						if(player.buttRating >= 20) outputText("causing the fat of your " + player.skinTone + buttDescript() + " to wobble heavily, ", false);
 						outputText("forcing your body off balance and preventing you from moving quick enough to get escape.", false);
 					}
-					else if(player.buttRating >= 20) outputText("Your " +chestDesc() + " nearly drag along the ground while the fat of your " + player.skinTone + buttDescript() + " wobbles heavily from side to side, forcing your body off balance and preventing you from moving quick enough to escape.", false);
-					else outputText("Your " + chestDesc() + " nearly drag along the ground, preventing you from moving quick enough to get escape.", false);
+					else if(player.buttRating >= 20) outputText("Your " +game.player.chestDesc() + " nearly drag along the ground while the fat of your " + player.skinTone + buttDescript() + " wobbles heavily from side to side, forcing your body off balance and preventing you from moving quick enough to escape.", false);
+					else outputText("Your " + game.player.chestDesc() + " nearly drag along the ground, preventing you from moving quick enough to get escape.", false);
 				}
 				//FOR PLAYERS WITH EITHER GIANT HIPS OR BUTT BUT NOT THE BREASTS
 				else if(player.hipRating >= 20) {
@@ -5333,7 +5333,7 @@ export function anemoneSting():void {
 }
 
 export function magicalSpecials():void {
-	if (inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 6) {
+	if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 6) {
 		clearOutput();
 		outputText("You try to ready a special ability, but wind up stumbling dizzily instead.  <b>Your ability to use magical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
 		enemyAI();
@@ -5381,7 +5381,7 @@ export function physicalSpecials():void {
 		return;
 	}
 //Pass false to combatMenu instead:	menuLoc = 3;
-	if (inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 5) {
+	if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 5) {
 		clearOutput();
 		outputText("You try to ready a special attack, but wind up stumbling dizzily instead.  <b>Your ability to use physical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
 		enemyAI();

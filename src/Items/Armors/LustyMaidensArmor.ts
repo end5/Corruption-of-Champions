@@ -35,7 +35,7 @@
 			outputText("You slide the bikini top over your more than ample chest, shivering at the touch of the cold metal on your sensitive nipples.  It stretches taut around each of your globes, and by the time you're snapping the narrow leather strap behind your back, the exotic metal bra has grown warm enough to make your chest tingle pleasantly.  Your hands find their way to your jiggling, gilded mounds and grab hold, fingers sinking into the shimmering flesh without meaning to.  Your nipples scrape along a diaphanous inner lining so pleasantly that a moan slips out of your mouth as you admire how your cleavage bulges out above the glittery cups.  A narrow band of steel with a shiny black leather thong underneath connects the two halfs of the top, padded for comfort but pulled away from you by the sheer size of your straining bosoms.");
 			outputText("\n\nAs you examine the material, you realize that leather band isn't just padding.  It's as slippery as butter on grease and has a subtle indentation, one that would let it perfectly cushion something round, thick... and throbbing.  Your cheeks color when you catch yourself thinking of titfucking some beast while dressed in this outfit, taking a thick load of monster or dick-girl seed right over your cleavage, face, and hair.  You could even line it up with your mouth and drink down a few swallows if you wanted to.");
 			outputText("\n\nYou shake your head and smile ruefully - maybe once you finish getting dressed!  There's still a bottom to put on, after all.  Regardless, one of your hands keeps coming to rest on your boob, idly groping and fondling your heavy tit whenever you have a free moment.  This sure is some fun armor!");
-			game.dynStats("lus", 25, "resisted", false);
+			dynStats("lus", 25, "resisted", false);
 			outputText("\n\nNow, the bottom is a leather thong and skirt combination.  The thong itself is leather dyed radiant white, with intricate gold filigree covering the front triangle.  On the back triangle, there's a similar pattern, though you could swear that from a distance the pattern looks a bit like arrows pointing towards where your [asshole] will be with golden sperm surrounding them. No, that has to be your imagination.  All this time in this strange land must really be getting to you!  Both pieces are molded to accentuate the female form, with a crease in the gusset that will rest over your vagina, ensuring ");
 			if (game.player.hasCock() || game.player.balls > 0) {
 				outputText("that it won't fit you ");
@@ -127,21 +127,21 @@
 			game.flags[kFLAGS.BIKINI_ARMOR_BONUS] += 2;
 			if(game.flags[kFLAGS.BIKINI_ARMOR_BONUS] > 8) game.flags[kFLAGS.BIKINI_ARMOR_BONUS] = 8;
 			player.orgasm();
-			game.dynStats("sen", 2);
-			if(player.hasVirginVagina()) game.dynStats("cor", -1);
+			dynStats("sen", 2);
+			if(player.hasVirginVagina()) dynStats("cor", -1);
 			//If minotaur, increase addiction slightly.
 			if(monster instanceof Minotaur || monster instanceof MinotaurMob) player.minoCumAddiction(3);
 			if(monster.short == "Ceraph") game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
 			//Usable on: Imps, Minotaurs, Satyrs, Incubus Mechanic, Anemones, Spider Guys, Akbal, Drider, Fetish Zealot, Sand Trap, Very Corrupt Jojo (Maybe slight decorruption to him), Ceraph, Red Kitsune if cock out.
 			if (game.inCombat)
 				game.cleanupAfterCombat();
-			else game.doNext(game.camp.returnToCampUseOneHour);
+			else doNext(camp.returnToCampUseOneHour);
 		}
 
 /*
 		override public function equipEffect(wearer:Player, output:Boolean):void
 		{
-			if(wearer.lib < 50) game.dynStats("lib", 1, "sen", 1);
+			if(wearer.lib < 50) dynStats("lib", 1, "sen", 1);
 			/*Stats: Virgin - 9, Non-Virgin - 5
 
 			//NONVIRGIN:
@@ -167,4 +167,3 @@
 		}
 */
 	}
-

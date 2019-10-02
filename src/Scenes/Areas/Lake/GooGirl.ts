@@ -7,7 +7,7 @@
 	{
 		/*Fight-
 		 You are fighting a goo-girl.
-		 The goo-girl has a curious expression on her youthful, shimmering face. Her body is slender and globs of slime regularly drip from her limbs, splattering into the goo puddle pooling beneath her hips. A small, heart-shaped nucleus pulses in her chest with a red glow. [if the player has a c-cup or larger chest: She has apparently made herself a bit more like you, as her chest appears to be a perfect copy of your " + biggestBreastSizeDescript()+ ".]
+		 The goo-girl has a curious expression on her youthful, shimmering face. Her body is slender and globs of slime regularly drip from her limbs, splattering into the goo puddle pooling beneath her hips. A small, heart-shaped nucleus pulses in her chest with a red glow. [if the player has a c-cup or larger chest: She has apparently made herself a bit more like you, as her chest appears to be a perfect copy of your " + biggestBreastSizeDescript(player)+ ".]
 		 */
 
 //[Goo attacks]
@@ -17,7 +17,7 @@
 		{
 			var damage:number = 0;
 			//return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 			if (findPerk(PerkLib.Acid) >= 0) outputText("Her body quivering from your flames, the goo-girl ", false);
 			else outputText("The slime holds its hands up and they morph into a replica of your " + player.weaponName + ".  Happily, she swings at you", false);
 			//Determine if dodged!
@@ -85,7 +85,7 @@
 		private  gooPlay():void
 		{
 			outputText("The goo-girl lunges, wrapping her slimy arms around your waist in a happy hug, hot muck quivering excitedly against you. She looks up, empty eyes confused by your lack of enthusiasm and forms her mouth into a petulant pout before letting go.  You shiver in the cold air, regretting the loss of her embrace.", false);
-			game.dynStats("lus", 3 + rand(3) + player.sens / 10);
+			dynStats("lus", 3 + rand(3) + player.sens / 10);
 			combatRoundOver();
 		}
 
@@ -95,7 +95,7 @@
 			outputText("The girl reaches into her torso, pulls a large clump of goo out, and chucks it at you like a child throwing mud. The slime splatters on your chest and creeps under your " + player.armorName + ", tickling your skin like fingers dancing across your body.", false);
 			var damage:number = 1;
 			player.takeDamage(damage);
-			game.dynStats("lus", 5 + rand(3) + player.sens / 10);
+			dynStats("lus", 5 + rand(3) + player.sens / 10);
 			combatRoundOver();
 		}
 
@@ -278,4 +278,3 @@
 			else return "clear body";
 		}
 	}
-

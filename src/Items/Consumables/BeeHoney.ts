@@ -39,7 +39,7 @@
         }
 		
 		 public  canUse():boolean {
-			if (value == SPECIAL_HONEY_VALUE && getGame().player.statusAffectv1(StatusAffects.Exgartuan) == 1) { //Exgartuan doesn't like the special honey
+			if (value == SPECIAL_HONEY_VALUE && game.player.statusAffectv1(StatusAffects.Exgartuan) == 1) { //Exgartuan doesn't like the special honey
 				outputText("You uncork the bottle only to hear Exgartuan suddenly speak up.  <i>“Hey kid, this beautiful cock here doesn’t need any of that special bee shit.  Cork that bottle up right now or I’m going to make it so that you can’t drink anything but me.”</i>  You give an exasperated sigh and put the cork back in the bottle.");
 				return false;
 			}
@@ -47,7 +47,7 @@
 		}
 		
 		 public  useItem():boolean {
-			var player:Player = getGame().player;
+			var player:Player = game.player;
 			var pure:boolean = (value == PURE_HONEY_VALUE);
 			var special:boolean = (value == SPECIAL_HONEY_VALUE);
 			var changes:number = 0;
@@ -67,16 +67,16 @@
 				outputText("Opening the crystal vial, you are greeted by a super-concentrated wave of sweet honey-scent.  It makes you feel lightheaded.  You giggle and lick the honey from your lips, having drank down the syrupy elixir without a thought.");
 			}
 			if ((pure || special) && player.pregnancyType == PregnancyStore.PREGNANCY_FAERIE) { //Pure or special honey can reduce the corruption of a phouka baby
-				if (getGame().flags[kFLAGS.PREGNANCY_CORRUPTION] > 1) { //Child is phouka, hates pure honey
+				if (game.flags[kFLAGS.PREGNANCY_CORRUPTION] > 1) { //Child is phouka, hates pure honey
 					outputText("\n\nYou feel queasy and want to throw up.  There's a pain in your belly and you realize the baby you're carrying didn't like that at all.  Then again, maybe pure honey is good for it.");
 				}
-				else if (getGame().flags[kFLAGS.PREGNANCY_CORRUPTION] < 1) { //Child is faerie, loves pure honey
+				else if (game.flags[kFLAGS.PREGNANCY_CORRUPTION] < 1) { //Child is faerie, loves pure honey
 					outputText("\n\nA warm sensation starts in your belly and runs all through your body.  It's almost as if you're feeling music and you guess your passenger enjoyed the meal.");
 				}
 				else { //Child is on the line, will become a faerie with this drink
 					outputText("\n\nAt first you feel your baby struggle against the honey, then it seems to grow content and enjoy it.");
 				}
-				getGame().flags[kFLAGS.PREGNANCY_CORRUPTION]--;
+				game.flags[kFLAGS.PREGNANCY_CORRUPTION]--;
 				if (pure) return(false); //No transformative effects for the player because the pure honey was absorbed by the baby - Special honey will keep on giving
 			}
 			//Corruption reduction
@@ -89,11 +89,11 @@
 				else if (player.cor > 20) outputText("A prickling pain spreads throughout your skull.  ");
 				else outputText("You feel a mildly unpleasant tingling inside your skull.  ");
 				if (player.cor > 0) outputText("It quickly passes, leaving you more clearheaded");
-				getGame().dynStats("cor", -(1 + (player.cor / 20)));
+				dynStats("cor", -(1 + (player.cor / 20)));
 				//Libido Reduction
 				if (player.cor > 0 && changes < changeLimit && Utils.rand(1.5) == 0 && player.lib > 40) {
 					outputText(" and settling your overcharged sex-drive a bit.");
-					getGame().dynStats("lib", -3, "lus", -20);
+					dynStats("lib", -3, "lus", -20);
 					changes++;
 				}
 				else if (player.cor > 0) outputText(".");
@@ -108,7 +108,7 @@
 			//(removes tentacle hair status, restarts hair growth if not prevented by reptile status)
 			//Intelligence Boost
 			if (changes < changeLimit && Utils.rand(2) == 0 && player.inte < 80) {
-				getGame().dynStats("int", 0.1 * (80 - player.inte));
+				dynStats("int", 0.1 * (80 - player.inte));
 				outputText("\n\nYou spend a few moments analyzing the taste and texture of the honey's residue, feeling awfully smart.");
 				changes++;
 			}
@@ -127,25 +127,25 @@
 			if (changes < changeLimit && player.hairLength < 25 && Utils.rand(3) == 0) {
 				outputText("\n\nFeeling a bit off-balance, you discover your hair has lengthened, ");
 				player.hairLength += Utils.rand(4) + 1;
-				outputText("becoming " + getGame().hairDescript() + ".");
+				outputText("becoming " + hairDescript() + ".");
 				changes++;
 			}
 			//-Remove extra breast rows
-			if (changes < changeLimit && player.bRows() > 2 && Utils.rand(3) == 0 && !getGame().flags[kFLAGS.HYPER_HAPPY]) {
+			if (changes < changeLimit && player.bRows() > 2 && Utils.rand(3) == 0 && !game.flags[kFLAGS.HYPER_HAPPY]) {
 				changes++;
-				outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + getGame().breastDescript(player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
+				outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
 				if (player.bRows() >= 3) outputText("abdomen");
 				else outputText("chest");
-				outputText(". The " + getGame().nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
+				outputText(". The " + nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
 				if (player.skinType == CoC.SKIN_TYPE_FUR) outputText(player.hairColor + " " + player.skinDesc);
 				else outputText(player.skinTone + " " + player.skinDesc);
 				outputText(" remains. <b>You've lost a row of breasts!</b>");
-				getGame().dynStats("sen", -5);
+				dynStats("sen", -5);
 				player.removeBreastRow(player.breastRows.length - 1, 1);
 			}
 			//Antennae
 			if (changes < changeLimit && player.antennae == CoC.ANTENNAE_NONE && player.horns == 0 && Utils.rand(3) == 0) {
-				outputText("\n\nYour head itches momentarily as two floppy antennae sprout from your " + getGame().hairDescript() + ".");
+				outputText("\n\nYour head itches momentarily as two floppy antennae sprout from your " + hairDescript() + ".");
 				player.antennae = CoC.ANTENNAE_BEE;
 				changes++;
 			}
@@ -164,7 +164,7 @@
 			}
 			//-Nipples reduction to 1 per tit.
 			if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && Utils.rand(4) == 0) {
-				outputText("\n\nA chill runs over your " + getGame().allBreastsDescript() + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ");
+				outputText("\n\nA chill runs over your " + allBreastsDescript() + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ");
 				if (player.biggestTitSize() < 1) outputText("'breast'.");
 				else outputText("breast.");
 				changes++;
@@ -182,8 +182,8 @@
 			}
 			//Bee butt - 66% lower chance if already has a tail
 			if (changes < changeLimit && player.tailType != CoC.TAIL_TYPE_BEE_ABDOMEN && (player.tailType == CoC.TAIL_TYPE_NONE || Utils.rand(1.5) == 0) && Utils.rand(4) == 0) {
-				if (player.tailType > CoC.TAIL_TYPE_NONE) outputText("\n\nPainful swelling just above your " + getGame().buttDescript() + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
-				else outputText("\n\nPainful swelling just above your " + getGame().buttDescript() + " doubles you over.  It gets worse and worse as the swollen lump begins to protrude from your backside, swelling and rounding with a series of pops until you have a bulbous abdomen hanging just above your butt.  The whole thing is covered in a hard chitinous material, and large enough to be impossible to hide.  You sigh as your stinger slides into place with a 'snick', finishing the transformation.  <b>You have a bee's abdomen.</b>");
+				if (player.tailType > CoC.TAIL_TYPE_NONE) outputText("\n\nPainful swelling just above your " + buttDescript() + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
+				else outputText("\n\nPainful swelling just above your " + buttDescript() + " doubles you over.  It gets worse and worse as the swollen lump begins to protrude from your backside, swelling and rounding with a series of pops until you have a bulbous abdomen hanging just above your butt.  The whole thing is covered in a hard chitinous material, and large enough to be impossible to hide.  You sigh as your stinger slides into place with a 'snick', finishing the transformation.  <b>You have a bee's abdomen.</b>");
 				player.tailType = CoC.TAIL_TYPE_BEE_ABDOMEN;
 				player.tailVenom = 10;
 				player.tailRecharge = 2;
@@ -234,7 +234,7 @@
 					player.createCock();
 					player.cocks[0].cockLength = Utils.rand(3) + 8;
 					player.cocks[0].cockThickness = 2;
-					getGame().dynStats("sen", 10);
+					dynStats("sen", 10);
 				}
 				else if (player.cocks.length > 1) {
 					var biggest:number = player.biggestCockIndex();
@@ -242,7 +242,7 @@
 					player.cocks[0].cockLength		+= 5 * Math.sqrt(0.2 * player.cocks[biggest].cArea());
 					player.cocks[0].cockThickness	+= Math.sqrt(0.2 * player.cocks[biggest].cArea());
 					player.removeCock(biggest, 1);
-					getGame().dynStats("sen", 5);
+					dynStats("sen", 5);
 				}
 				else if (player.cocks[0].cArea() < 100) {
 					outputText("\n\nYour " + player.cockDescript(0) + " suddenly becomes rock hard and incredibly sensitive to the touch.  You pull away your " + player.armorName + ", and start to masturbate furiously as it rapidly swells in size.  When the change finally finishes, you realize that your " + player.cockDescript(0) + " has both grown much longer and wider!  <b>");
@@ -254,7 +254,7 @@
 					outputText("</b>");
 					player.cocks[0].cockLength += Utils.rand(3) + 4; //4 to 6 inches in length
 					player.cocks[0].cockThickness += 0.1 * Utils.rand(5) + 0.5; //0.5 to 1 inches in thickness
-					getGame().dynStats("sen", 5);
+					dynStats("sen", 5);
 				}
 				else if (player.cocks[0].cockType != CockTypesEnum.BEE && player.race() == "bee-morph") {
 					outputText("\n\nYour huge member suddenly starts to hurt, especially the tip of the thing.  At the same time, you feel your length start to get incredibly sensitive and the base of your shaft starts to itch.  You tear off your " + player.armorName + " and watch in fascination as your " + player.cockDescript(0) + " starts to change.  The shaft turns black, while becoming hard and smooth to the touch, while the base develops a mane of four inch long yellow bee hair.  As the transformation continues, your member grows even larger than before.  However, it is the tip that keeps your attention the most, as a much finer layer of short yellow hairs grow around it.  Its appearance isn’t the thing that you care about right now, it is the pain that is filling it.\n\n");
@@ -263,22 +263,22 @@
 					player.cocks[0].cockType = CockTypesEnum.BEE;
 					player.cocks[0].cockLength += 5;
 					player.cocks[0].cockThickness += 1;
-					getGame().dynStats("sen", 15);
+					dynStats("sen", 15);
 				}
 				else {
 					outputText("\n\nThe effects of the honey don’t seem to focus on your groin this time, but you still feel your "  + player.cockDescript(0) + " grow slightly under your " + player.armorName + ".");
 					player.cocks[0].cockLength += 0.1 * Utils.rand(10) + 1;
 					player.cocks[0].cockThickness += 0.1 * Utils.rand(2) + 0.1;
-					getGame().dynStats("sen", 3);
+					dynStats("sen", 3);
 				}
 				if (player.cor >= 5) {
 					outputText("\n\nYour mind feels surprisingly clear of the twisted thoughts that have plagued it as of late, but you find yourself feeling more and more aroused than usual.");
 					var corLoss:number = Math.min(0.1 * player.cor + 5, player.cor);
-					getGame().dynStats("cor", -corLoss, "lib", corLoss); //Lose corruption and gains that much libido
+					dynStats("cor", -corLoss, "lib", corLoss); //Lose corruption and gains that much libido
 				}
 				else {
 					outputText("\n\nYou find your mind is drifting to the thought of using your member to fertilize hundreds and hundreds of eggs every day.  You shake your head, the bizarre fantasy catching you completely off guard.");
-					getGame().dynStats("cor=", 0, "lib", 5);
+					dynStats("cor=", 0, "lib", 5);
 				}
 				if (player.femininity >= 60 || player.femininity <= 40) {
 					outputText("\n\nYour face shifts in shape, becoming more androgynous.");
@@ -286,9 +286,8 @@
 						player.femininity -= 3;
 					else player.femininity += 3;
 				}
-				getGame().dynStats("lust", 0.2 * player.lib + 5);
+				dynStats("lust", 0.2 * player.lib + 5);
 			}
 			return(false);
 		}
     }
-

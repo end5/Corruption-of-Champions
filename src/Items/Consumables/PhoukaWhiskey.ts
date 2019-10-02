@@ -40,7 +40,7 @@
 			switch (phoukaWhiskeyDrink(game.player)) {
 				case 0: //Player isn't pregnant
 					outputText("You uncork the bottle and drink some whiskey, hoping it will let you relax for a while.\n\nIt's strong stuff and afterwards you worry a bit less about the future.  Surely things will right themselves in the end.");
-					game.dynStats("cor", Utils.rand(2) + 1, "lus", Utils.rand(8) + 1); //These gains are permanent
+					dynStats("cor", Utils.rand(2) + 1, "lus", Utils.rand(8) + 1); //These gains are permanent
 					break;
 				case 1: //Child is a phouka or satyr, loves alcohol
 					outputText("You uncork the bottle and drink some whiskey, hoping it will help with the gnawing hunger for alcohol you've had since this baby started growing inside you.\n\nYou down the booze in one shot and a wave of contentment washes over you.  It seems your passenger enjoyed the meal.");
@@ -106,12 +106,12 @@
 				player.addStatusValue(StatusAffects.PhoukaWhiskeyAffect, 3, 256 * libidoChange + sensChange);
 				player.addStatusValue(StatusAffects.PhoukaWhiskeyAffect, 4, 256 * speedChange + intChange);
 				outputText("\n\nOh, it tastes so good.  This stuff just slides down your throat.");
-				game.dynStats("lib", libidoChange, "sens", -sensChange, "spe", -speedChange, "int", -intChange);
+				dynStats("lib", libidoChange, "sens", -sensChange, "spe", -speedChange, "int", -intChange);
 			}
 			else { //First time
 				player.createStatusAffect(StatusAffects.PhoukaWhiskeyAffect, 8, 1, 256 * libidoChange + sensChange, 256 * speedChange + intChange);
 					//The four stats we’re affecting get paired together to save space. This way we don’t need a second StatusAffect to store more info.
-				game.dynStats("lib", libidoChange, "sens", -sensChange, "spe", -speedChange, "int", -intChange);
+				dynStats("lib", libidoChange, "sens", -sensChange, "spe", -speedChange, "int", -intChange);
 			}
 			game.statScreenRefresh();
         }
@@ -126,7 +126,7 @@
 			var libidoChange:number = (libidoSensCombined - sensChange) / 256;
 			var intChange:number = intSpeedCombined & 255;
 			var speedChange:number = (intSpeedCombined - intChange) / 256;
-			game.dynStats("lib", -libidoChange , "sens", sensChange, "spe", speedChange, "int", intChange); //Get back all the stats you lost
+			dynStats("lib", -libidoChange , "sens", sensChange, "spe", speedChange, "int", intChange); //Get back all the stats you lost
 			player.removeStatusAffect(StatusAffects.PhoukaWhiskeyAffect);
 			if (numDrunk > 3)
 				outputText("\n<b>The dizzy sensation dies away and is replaced by a throbbing pain that starts in your skull and then seems to run all through your body, seizing up your joints and making your stomach turn.  The world feels like it’s off kilter and you aren’t in any shape to face it.  You suppose you could down another whiskey, but right now that doesn’t seem like such a good idea.</b>\n");
@@ -137,4 +137,3 @@
 			game.statScreenRefresh();
 		}
     }
-

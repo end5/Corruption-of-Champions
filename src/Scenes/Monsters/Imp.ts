@@ -29,7 +29,7 @@
 		
 		protected  lustMagicAttack():void {
 			outputText("You see " + a + short + " make sudden arcane gestures at you!\n\n");
-			game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+			dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
 			if (player.lust < 30) outputText("You feel strangely warm.  ");
 			if (player.lust >= 30 && player.lust < 60) outputText("Blood rushes to your groin as a surge of arousal hits you, making your knees weak.  ");
 			if (player.lust >= 60) outputText("Images of yourself fellating and fucking the imp assault your mind, unnaturally arousing you.  ");
@@ -45,19 +45,19 @@
 			if (player.lust >= 60 && player.hasVagina()) {
 				switch (player.vaginas[0].vaginalWetness) {
 					case VAGINA_WETNESS_NORMAL:
-						outputText("Your " + game.allVaginaDescript() + " dampen" + (player.vaginas.length > 1 ? "" : "s") + " perceptibly.");
+						outputText("Your " + allVaginaDescript() + " dampen" + (player.vaginas.length > 1 ? "" : "s") + " perceptibly.");
 						break;
 					case VAGINA_WETNESS_WET:
 						outputText("Your crotch becomes sticky with girl-lust.");
 						break;
 					case VAGINA_WETNESS_SLICK:
-						outputText("Your " + game.allVaginaDescript() + " become" + (player.vaginas.length > 1 ? "" : "s") + " sloppy and wet.");
+						outputText("Your " + allVaginaDescript() + " become" + (player.vaginas.length > 1 ? "" : "s") + " sloppy and wet.");
 						break;
 					case VAGINA_WETNESS_DROOLING:
 						outputText("Thick runners of girl-lube stream down the insides of your thighs.");
 						break;
 					case VAGINA_WETNESS_SLAVERING:
-						outputText("Your " + game.allVaginaDescript() + " instantly soak" + (player.vaginas.length > 1 ? "" : "s") + " your groin.");
+						outputText("Your " + allVaginaDescript() + " instantly soak" + (player.vaginas.length > 1 ? "" : "s") + " your groin.");
 					default: //Dry vaginas are unaffected
 						
 				}
@@ -65,7 +65,7 @@
 			outputText("\n");
 			if (player.lust > 99)
 				doNext(game.endLustLoss);
-			else doNext(game.playerMenu);
+			else doNext(playerMenu);
 		}
 		
 		public  constructor(noInit:boolean=false)
@@ -108,4 +108,3 @@
 		}
 
 	}
-

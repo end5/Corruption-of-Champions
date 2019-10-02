@@ -5,10 +5,9 @@
 
 	 
 
-	export  class MiscItemLib extends BaseContent
+	export  class MiscItemLib
 	{
 		public  constructor()
 		{
 		}
 	}
-

@@ -33,7 +33,7 @@
 				var temp:number = 15 + rand(10);
 				temp = player.takeDamage(temp);
 				outputText("Both the hellhound's heads breathe in deeply before blasting a wave of dark fire at you. While the flames don't burn much, the unnatural heat fills your body with arousal. (" + temp + " damage)", false);
-				game.dynStats("lus", 20-(player.sens/10));
+				dynStats("lus", 20-(player.sens/10));
 				statScreenRefresh();
 				if(player.HP <= 0) {
 					doNext(game.endHpLoss);
@@ -44,7 +44,7 @@
 					return;
 				}		
 			}
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 		}
 		protected  hellhoundScent():void {
 			if(player.findStatusAffect(StatusAffects.NoFlee) >= 0) {
@@ -96,7 +96,7 @@
 				//Rape if not naga, turned on, and girl that can fit!
 				if (player.hasVagina() && player.lust >= 33 && !player.isNaga()) {
 					outputText("  You find yourself musing that you could probably take advantage of the poor 'doggy'.  Do you fuck it?", false);
-					game.simpleChoices("Fuck it", game.mountain.hellHoundScene.hellHoundPropahRape, "", null, "", null, "", null, "Leave", game.cleanupAfterCombat);
+					simpleChoices("Fuck it", game.mountain.hellHoundScene.hellHoundPropahRape, "", null, "", null, "", null, "Leave", game.cleanupAfterCombat);
 				} else {
 					game.cleanupAfterCombat();
 				}
@@ -111,7 +111,7 @@
 						temp2 = game.mountain.hellHoundScene.hellHoundPropahRape;
 					}
 					outputText(".  What do you do?", false);
-					game.simpleChoices("Lick", game.mountain.hellHoundScene.hellHoundGetsRaped, "Fuck", temp2, "", null, "", null, "Leave", game.cleanupAfterCombat);
+					simpleChoices("Lick", game.mountain.hellHoundScene.hellHoundGetsRaped, "Fuck", temp2, "", null, "", null, "Leave", game.cleanupAfterCombat);
 				}
 				else {
 					outputText("You turn away, not really turned on enough to be interested in such an offer.", false);
@@ -182,4 +182,3 @@
 		}
 
 	}
-

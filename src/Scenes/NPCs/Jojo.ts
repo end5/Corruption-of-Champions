@@ -52,7 +52,7 @@
 				outputText("The mouse's eyes constantly dart over your most sexual parts, betraying his lust.  ");
 			else if (lust > 50)
 				outputText("The mouse's skin remains flushed with the beginnings of arousal.  ");
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 		}
 		
 		public  constructor()
@@ -119,4 +119,3 @@
 		}
 
 	}
-

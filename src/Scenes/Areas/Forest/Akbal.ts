@@ -87,7 +87,7 @@
 			{
 				outputText("You hear whispering in your head. Akbal begins speaking to you as he circles you, telling all the ways he'll dominate you once he beats the fight out of you.", false);
 				//(Lust increase)
-				game.dynStats("lus", 7 + (100 - player.inte) / 10);
+				dynStats("lus", 7 + (100 - player.inte) / 10);
 				player.createStatusAffect(StatusAffects.Whispered,0,0,0,0);
 			}
 			//Continuous Lust Attack - 
@@ -95,7 +95,7 @@
 			{
 				outputText("The whispering in your head grows, many voices of undetermined sex telling you all the things the demon wishes to do to you. You can only blush.", false);
 				//(Lust increase)
-				game.dynStats("lus", 12 + (100 - player.inte) / 10);
+				dynStats("lus", 12 + (100 - player.inte) / 10);
 			}
 			game.combatRoundOver();
 		}
@@ -108,7 +108,7 @@
 				var speedChange:number = player.spe / 5 * -1;
 				outputText("Akbal's eyes fill with light, and a strange sense of fear begins to paralyze your limbs.", false);
 				//(Speed decrease)
-				game.dynStats("spe", speedChange);
+				dynStats("spe", speedChange);
 				if (player.findStatusAffect(StatusAffects.AkbalSpeed) >= 0)
 					player.addStatusValue(StatusAffects.AkbalSpeed, 1, speedChange);
 				else
@@ -215,4 +215,3 @@
 		}
 
 	}
-

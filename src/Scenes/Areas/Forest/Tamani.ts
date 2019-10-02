@@ -40,7 +40,7 @@
 					outputText("With effort you manage to wrench your eyes away from the inviting folds of Tamani's vagina.  ", false);
 					if(player.totalCocks() > 1) outputText("Each of y", false);
 					else outputText("Y", false);
-					outputText("our " + multiCockDescriptLight(), false);
+					outputText("our " + game.player.multiCockDescriptLight(), false);
 					if(player.lust > 80) outputText(" drips pre-cum", false);
 					else if(player.lust > 40) outputText(" grows harder", false);
 					else outputText(" hardens", false);
@@ -73,7 +73,7 @@
 					outputText("our " + player.multiCockDescriptLight() + " pulses and dribbles pre-cum, aching to do its duty and fire load after load into Tamani's perfect pussy.", false);
 				}
 			}
-			game.dynStats("lus", (rand(player.lib/5)+3+(flags[kFLAGS.TAMANI_TIMES_HYPNOTISED])));
+			dynStats("lus", (rand(player.lib/5)+3+(flags[kFLAGS.TAMANI_TIMES_HYPNOTISED])));
 			combatRoundOver();
 		}
 
@@ -93,7 +93,7 @@
 				if (!game.forest.tamaniScene.pregnancy.isPregnant && player.canOvipositSpider()) {
 					temp2 = game.forest.tamaniScene.tamaniBeaten;
 				}
-				game.simpleChoices("Fuck", game.forest.tamaniScene.tamaniSexWon, "Buttfuck", temp, "", null, "Lay Eggs", temp2, "Leave", game.cleanupAfterCombat);
+				simpleChoices("Fuck", game.forest.tamaniScene.tamaniSexWon, "Buttfuck", temp, "", null, "Lay Eggs", temp2, "Leave", game.cleanupAfterCombat);
 			}
 			else game.cleanupAfterCombat();
 		}
@@ -171,4 +171,3 @@
 		}
 		
 	}
-

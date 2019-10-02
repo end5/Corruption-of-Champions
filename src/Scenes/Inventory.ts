@@ -13,7 +13,7 @@
 
 	  ;
 
-	export class Inventory extends BaseContent {
+	export class Inventory {
 		private static  inventorySlotName:any[] = ["first", "second", "third", "fourth", "fifth"];
 		
 		private  itemStorage:any[];
@@ -43,7 +43,7 @@
 		public  inventoryMenu():void {
 			var x:number;
 			var foundItem:boolean = false;
-			if (getGame().inCombat) {
+			if (game.inCombat) {
 				callNext = inventoryCombatHandler; //Player will return to combat after item use
 			}
 			else {
@@ -68,22 +68,22 @@
 			if (player.weapon != WeaponLib.FISTS) {
 				addButton(5, "Unequip", unequipWeapon);
 			}
-			if (!getGame().inCombat && inDungeon == false && inRoomedDungeon == false) {
-				if (getGame().nieveHoliday() && flags[kFLAGS.NIEVE_STAGE] > 0 && flags[kFLAGS.NIEVE_STAGE] < 5) {
+			if (!game.inCombat && game.inDungeon == false && game.inRoomedDungeon == false) {
+				if (nieveHoliday() && flags[kFLAGS.NIEVE_STAGE] > 0 && flags[kFLAGS.NIEVE_STAGE] < 5) {
 					if (flags[kFLAGS.NIEVE_STAGE] == 1)
 						outputText("\nThere's some odd snow here that you could do something with...\n");
-					else outputText("\nYou have a snow" + getGame().nieveMF("man", "woman") + " here that seems like it could use a little something...\n");
-					addButton(6, "Snow", getGame().nieveBuilding);
+					else outputText("\nYou have a snow" + nieveMF("man", "woman") + " here that seems like it could use a little something...\n");
+					addButton(6, "Snow", nieveBuilding);
 					foundItem = true;
 				}
 				if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1) {
 					if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 4) outputText("\nHolli is in her tree at the edges of your camp.  You could go visit her if you want.\n");
-					addButton(7, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), getGame().holliScene.treeMenu);
+					addButton(7, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), holliScene.treeMenu);
 					foundItem = true;
 				}
 				if (player.hasKeyItem("Dragon Egg") >= 0) {
-					getGame().emberScene.emberCampDesc();
-					addButton(8, "Egg", getGame().emberScene.emberEggInteraction);
+					emberScene.emberCampDesc();
+					addButton(8, "Egg", emberScene.emberEggInteraction);
 					foundItem = true;
 				}
 			}
@@ -92,14 +92,14 @@
 				doNext(playerMenu);
 				return;
 			}
-			if (getGame().inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv1(StatusAffects.Sealed) == 3) {
+			if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv1(StatusAffects.Sealed) == 3) {
 				outputText("\nYou reach for your items, but you just can't get your pouches open.  <b>Your ability to use items was sealed, and now you've wasted a chance to attack!</b>\n\n");
-				getGame().enemyAI();
+				enemyAI();
 				return;
 			}
 			outputText("\nWhich item will you use?");
-			if (getGame().inCombat)
-				addButton(9, "Back", kGAMECLASS.combatMenu, false); //Player returns to the combat menu on cancel
+			if (game.inCombat)
+				addButton(9, "Back", combatMenu, false); //Player returns to the combat menu on cancel
 			else addButton(9, "Back", playerMenu);
 //Gone			menuLoc = 1;
 		}
@@ -113,8 +113,8 @@
 			spriteSelect(-1);
 			menu();
 			if (flags[kFLAGS.ANEMONE_KID] > 0) {
-				kGAMECLASS.anemoneScene.anemoneBarrelDescription();
-				if (model.time.hours >= 6) addButton(4, "Anemone", kGAMECLASS.anemoneScene.approachAnemoneBarrel);
+				anemoneScene.anemoneBarrelDescription();
+				if (game.time.hours >= 6) addButton(4, "Anemone", anemoneScene.approachAnemoneBarrel);
 			}
 			if (player.hasKeyItem("Camp - Chest") >= 0) {
 				outputText("You have a large wood and iron chest to help store excess items located near the portal entrance.\n\n");
@@ -172,7 +172,7 @@
 		}
 		
 		public  returnItemToInventory(item:Useable, showNext:boolean = true):void { //Used only by items that have a sub menu if the player cancels
-			if (!debug) {
+			if (!game.debug) {
 				if (currentItemSlot == null) {
 					takeItem(item, callNext, callNext, null); //Give player another chance to put item in inventory
 				}
@@ -183,7 +183,7 @@
 					currentItemSlot.setItemAndQty(item, 1);
 				}
 			}
-			if (getGame().inCombat) {
+			if (game.inCombat) {
 				enemyAI();
 				return;
 			}
@@ -212,7 +212,7 @@
 		public  giveHumanizer():void {
 			if(flags[kFLAGS.TIMES_CHEATED_COUNTER] > 0) {
 				outputText("<b>I was a cheater until I took an arrow to the knee...</b>", true);
-				getGame().gameOver();
+				gameOver();
 				return;
 			}
 			outputText("I AM NOT A CROOK.  BUT YOU ARE!  <b>CHEATER</b>!\n\n", true);
@@ -267,7 +267,7 @@
 			if (player.itemSlots[slotNum].itype instanceof Useable) {
 				var item:Useable = player.itemSlots[slotNum].itype as Useable;
 				if (item.canUse()) { //If an item cannot be used then canUse should provide a description of why the item cannot be used
-					if (!debug) player.itemSlots[slotNum].removeOneItem();
+					if (!game.debug) player.itemSlots[slotNum].removeOneItem();
 					useItem(item, player.itemSlots[slotNum]);
 					return;
 				}
@@ -511,4 +511,3 @@
 			player.itemSlots[slotNum].setItemAndQty(itype, qty);
 		}
 	}
-

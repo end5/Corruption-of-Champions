@@ -157,13 +157,13 @@ private  pureValaAndShouldraMacroMax():void {
 	outputText("\n\nSoon, your body is engulfed up to your lower [legs], mired in pussy and lubricant.  It's like taking a bath in slime, only the bathtub is giving you a whole-body embrace, slipping, sliding, and taking pleasure from every motion you make.");
 	if(player.gender > 0) {
 		outputText("  Inspired by this, your own body has long since responded");
-		if(player.hasCock()) outputText(", becoming firmly erect.  You happily piston your hips to grind your " + multiCockDescriptLight() + " along the pink-glossed walls, oozing your fluids in delight.");
+		if(player.hasCock()) outputText(", becoming firmly erect.  You happily piston your hips to grind your " + game.player.multiCockDescriptLight() + " along the pink-glossed walls, oozing your fluids in delight.");
 		else outputText(", growing wet, though in this slick fluid, your contribution is a mere drop in the ocean.");
 	}
 	outputText("  The warm fleshy dream is abruptly ended as Shouldra yanks you out by your [feet].  \"<i>I'm gonna put you the whole way in.  Do me a solid and get me off a few times, will ya?</i>\"");
 	
 	outputText("\n\nDripping with her lusty leavings, you vigorously nod and crane your head back up to the randy passage.  Your plus-sized poltergeist wastes no time in returning you to her box's moist embrace, stuffing you most of the way in with a simple motion.  A finger as big as your [legs] pushes your [feet] the rest of the way inside, stuffing you so high up you bump your head on the narrow entrance of her womb.  It's dark inside her, but you quickly get to work, sliding and squirming around, humping your ");
-	if(player.hasCock()) outputText(multiCockDescriptLight());
+	if(player.hasCock()) outputText(game.player.multiCockDescriptLight());
 	else if(player.hasVagina()) outputText(vaginaDescript());
 	else outputText("[butt]");
 	outputText(" against the slick walls.  You push your way towards the pinkish slit in the distance begin to slide your [legs] over the inner edges of her lips, pressing your arms up above you for stability.");
@@ -891,7 +891,7 @@ private  shouldraSexMenu():void {
 	spriteSelect(67);
 	outputText("Shouldra stirs from somewhere deep inside you, excitement evident in the swiftness of her reaction.  \"<i>Is it time for some fun, Champ?</i>\" she asks happily, her increased lust affecting you just a bit.  Do you oblige her?");
 	var vala:() => void = null;
-	if(flags[kFLAGS.FREED_VALA] != 0 && (model.time.hours >= 12 && model.time.hours <= 21)) {
+	if(flags[kFLAGS.FREED_VALA] != 0 && (game.time.hours >= 12 && game.time.hours <= 21)) {
 		outputText("\n\nVala might interest Shouldra.  You could go introduce them...");
 		vala = shouldraAndValaGetBigger;
 	}
@@ -1126,7 +1126,7 @@ private  shouldraMakesCocksDisappear():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
-	outputText("Your hands dart for your " + multiCockDescriptLight() + " as if to protect your poor masculinity.  \"<i>You're kidding, right?  You can't mean to rob me of my pride and joy!</i>\"  You remind Shouldra just whose dick she's talking about; the eidolon is getting a little too accustomed to your [if (cocks = 1) dick][if (cocks > 1) dicks].  \"<i>Please, Champ.  Not the dick...</i>\"  You slowly remove your hands from your crotch, asking the ghost to proceed.  She complies with a frustrated sigh and a rather perturbed incantation.");
+	outputText("Your hands dart for your " + game.player.multiCockDescriptLight() + " as if to protect your poor masculinity.  \"<i>You're kidding, right?  You can't mean to rob me of my pride and joy!</i>\"  You remind Shouldra just whose dick she's talking about; the eidolon is getting a little too accustomed to your [if (cocks = 1) dick][if (cocks > 1) dicks].  \"<i>Please, Champ.  Not the dick...</i>\"  You slowly remove your hands from your crotch, asking the ghost to proceed.  She complies with a frustrated sigh and a rather perturbed incantation.");
 	if(player.cocks.length == 1) {
 		outputText("\n\nYour penis vibrates slightly as the magic starts to take effect.  Your eyes just about bulge out of your skull when your rod starts to smoke and twitch violently.  The panic immediately subsides when it starts yelling.  \"<i>You ");
 		var choice:number = rand(10);
@@ -1435,7 +1435,7 @@ public  shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMakeThisFunc
 	//13 (is Naga)
 	if(player.isNaga()) choices[choices.length] = 13;
 	//14 (Amily is a follower)
-	if(kGAMECLASS.amilyScene.amilyFollower()) choices[choices.length] = 14;
+	if(amilyScene.amilyFollower()) choices[choices.length] = 14;
 	//15 (Pure Jojo is a follower)
 	if(player.findStatusAffect(StatusAffects.PureCampJojo) >= 0) choices[choices.length] = 15;
 	//16 (has any of Marae's gift perks)
@@ -1612,8 +1612,8 @@ private  shouldraAndWormsYoureGonnaHaveABadTime():void {
 	if(player.cocks[0].cockLength < 48) outputText(" and cuts right to the chase, ballooning your [cock] into a rigid, wide, four-foot tall slab of meat");
 	outputText(".  Unable to contain her delight, she hastily hugs your enormous dick firmly against your body and squeezes vigorously, rubbing your face against your [cockHead].  A warm stream of pre oozes out and onto your possessed face.");
 	outputText("\n\nA strange sensation in the pleasant liquid slowly lures the phantom from her shaft-obsessed trance, your eyes slowly opening to discover what's at fault.  One of your worms managed to fall free of your loins and right onto the tip of your nose... much to Shouldra's chagrin.  The spirit slowly identifies the parasite, your body shuddering as she smacks it clear off your face.  She peers up at your large cockslit to find two more of the suckers lounging about in their makeshift hot tub, enjoying the brisk ");
-	if(model.time.hours <= 12) outputText("morning ");
-	else if(model.time.hours <= 5) outputText("afternoon ");
+	if(game.time.hours <= 12) outputText("morning ");
+	else if(game.time.hours <= 5) outputText("afternoon ");
 	else outputText("evening ");
 	outputText("air.  Your hands clue the eidolon in to further activity, introducing her to your urethra all the way down to your [balls], every square wriggling inch chock-full of the little buggers, exploring their extended living quarters.");
 	outputText("\n\nWhat follows is an unearthly scream that may have killed any small nearby woodland creatures with its intensity.  It certainly does a number on your hearing, anyway.  Shouldra jumps to your [feet], wagging your monstrous meat every which way as your hands furiously pat away at your head.  A few worms slide free from your flailing penis, but not many.  Your body tenses up, trembling profusely as your pelvis is pushed as far ahead of you as possible.  The typically confident spectre now has you frozen in place, your entire body poised and jittering in fear as you're forced to watch for any more unwelcomed guests.");
@@ -1991,4 +1991,3 @@ private  resistBeingAFatass():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

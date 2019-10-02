@@ -136,7 +136,7 @@
 			outputText("Isabella pulls one of her breasts out of her low-cut shirt and begins to suckle at one of the many-tipped nipples. Her cheeks fill and hollow a few times while you watch with spellbound intensity.  She finishes and tucks the weighty orb away, blushing furiously.  The quick drink seems to have reinvigorated her, and watching it has definitely aroused you.", false);
 			HP += 100;
 			lust += 5;
-			game.dynStats("lus", (10+player.lib/20));
+			dynStats("lus", (10+player.lib/20));
 			combatRoundOver();
 		}
 
@@ -211,4 +211,3 @@
 		}
 		
 	}
-

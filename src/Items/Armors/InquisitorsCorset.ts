@@ -30,7 +30,7 @@
 
 			outputText("You feel sexy... and pious.\n\n(<b>Perk Gained - Blood Mage</b>: Spells consume HP (minimum 5) instead of fatigue!)\n\n");
 			//+lust
-			game.dynStats("lus", 5);
+			dynStats("lus", 5);
 		}
 		
 		 public  playerEquip():Armor {
@@ -67,7 +67,7 @@
 
 						outputText("You feel sexy... and pious.\n\n(<b>Perk Gained - Blood Mage</b>: Spells consume HP (minimum 5) instead of fatigue!)\n\n");
 						//+lust
-						game.dynStats("lus", 5);
+						dynStats("lus", 5);
 					}
 					if(player.findPerk(PerkLib.BloodMage) < 0) player.createPerk(PerkLib.BloodMage,0,0,0,0);
 					if(player.findPerk(PerkLib.SluttySeduction) < 0) player.createPerk(PerkLib.SluttySeduction,10,0,0,0);
@@ -81,4 +81,3 @@
 		}
 */
 	}
-

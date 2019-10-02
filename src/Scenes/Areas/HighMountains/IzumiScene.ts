@@ -10,7 +10,7 @@
 	 * @editor Gedan
 	 * @programmer Gedan
 	 */
-	export class IzumiScene extends BaseContent
+	export class IzumiScene
 	{
 		public  constructor() 
 		{
@@ -361,9 +361,9 @@
 			if (player.sens >= 100) player.sens = 100;
 			if (player.lib >= 100) player.lib = 100;
 			
-			showStatDown('spe');
-			showStatUp('sens');
-			showStatUp('lib');
+			mainView.statsView.showStatDown('spe');
+			mainView.statsView.showStatUp('sens');
+			mainView.statsView.showStatUp('lib');
 			
 			dynStats("lus", lustMod);
 		}
@@ -399,9 +399,9 @@
 				if (player.spe > 100) player.spe = 100;
 				if (player.lib <= 0) player.lib = 1;
 				
-				showStatUp('spe');
-				showStatDown('sens');
-				showStatDown('lib');
+				mainView.statsView.showStatUp('spe');
+				mainView.statsView.showStatDown('sens');
+				mainView.statsView.showStatDown('lib');
 				
 				outputText("\n<b>You groan softly as your thoughts begin to clear somewhat.  It looks like the effects of Izumi's pipe smoke have worn off.</b>\n");
 				
@@ -2068,4 +2068,3 @@
 			cleanupAfterCombat();
 		}
 	}
-

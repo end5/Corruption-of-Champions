@@ -10,7 +10,7 @@
 
 	  ;
 
-	export class Desert extends BaseContent
+	export class Desert
 	{
 		public  antsScene:AntsScene = new AntsScene();
 		public  nagaScene:NagaScene = new NagaScene();
@@ -26,23 +26,23 @@
 		{
 			player.exploredDesert++;
 			if (player.level >= 4 && player.exploredDesert % 15 == 0 && flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] == 0) {
-				kGAMECLASS.enterBoobsDungeon();
-//				kGAMECLASS.inDungeon = true;
-//				kGAMECLASS.dungeonLoc = 23;
+				enterBoobsDungeon();
+//				inDungeon = true;
+//				dungeonLoc = 23;
 //				eventParser(1);
 				return;
 			}
 			if (rand(40) == 0) {
-				kGAMECLASS.exgartuan.fountainEncounter();
+				exgartuan.fountainEncounter();
 				return;
 			}
 			//Helia monogamy fucks
-			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helScene.followerHel()) {
-				kGAMECLASS.helScene.helSexualAmbush();
+			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
+				helScene.helSexualAmbush();
 				return;
 			}
 			if ((player.exploredDesert == 20 && player.findStatusAffect(StatusAffects.TelAdre) < 0) || (rand(20) == 0 && player.statusAffectv1(StatusAffects.TelAdre) == 0)) {
-				kGAMECLASS.telAdre.discoverTelAdre();
+				telAdre.discoverTelAdre();
 				return;
 			}
 			if (sandWitchScene.pregnancy.event == 2 && rand(4) == 0) {
@@ -82,7 +82,7 @@
 			temp = 10 + (player.longestCockLength() - player.tallness) / 24 * 10;
 			if (temp > 30) temp = 30;
 			if (temp > rand(100) && player.longestCockLength() >= player.tallness && player.totalCockThickness() >= 12) {
-				kGAMECLASS.exploration.bigJunkDesertScene();
+				exploration.bigJunkDesertScene();
 				return;
 			}
 			var choices:any[] = [];
@@ -95,7 +95,7 @@
 				args[args.length] = -8008;
 			}
 			if (flags[kFLAGS.CUM_WITCHES_FIGHTABLE] > 0) {
-				choices[choices.length] = kGAMECLASS.fightCumWitch;
+				choices[choices.length] = fightCumWitch;
 				args[args.length] = -8008;
 			}
 			//Encounter Marcus
@@ -154,4 +154,3 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-

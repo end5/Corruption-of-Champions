@@ -110,37 +110,37 @@
 
             setStatText( "coreStatsText",
                 "<b><u>Name : {NAME}</u>\nCore Stats</b>"
-                    .replace( "{NAME}", model.player.short ) );
+                    .replace( "{NAME}", game.player.short ) );
 
-            setStatText( "strNum", model.player.str );
-            setStatText( "touNum", model.player.tou );
-            setStatText( "speNum", model.player.spe );
-            setStatText( "inteNum", model.player.inte );
-            setStatText( "libNum", model.player.lib );
-            setStatText( "senNum", model.player.sens );
-            setStatText( "corNum", model.player.cor );
-            setStatText( "fatigueNum", model.player.fatigue );
-            setStatText( "HPNum", model.player.HP );
-            setStatText( "lustNum", model.player.lust );
-            setStatText( "levelNum", model.player.level );
-            setStatText( "xpNum", model.player.XP );
+            setStatText( "strNum", game.player.str );
+            setStatText( "touNum", game.player.tou );
+            setStatText( "speNum", game.player.spe );
+            setStatText( "inteNum", game.player.inte );
+            setStatText( "libNum", game.player.lib );
+            setStatText( "senNum", game.player.sens );
+            setStatText( "corNum", game.player.cor );
+            setStatText( "fatigueNum", game.player.fatigue );
+            setStatText( "HPNum", game.player.HP );
+            setStatText( "lustNum", game.player.lust );
+            setStatText( "levelNum", game.player.level );
+            setStatText( "xpNum", game.player.XP );
 
             setStatText( "timeText",
                 "<b><u>Day #: {DAYS}</u></b>\n<b>Time : {HOURS}:00</b>"
-                    .replace( "{DAYS}", model.time.days )
-                    .replace( "{HOURS}", model.time.hours ) );
+                    .replace( "{DAYS}", game.time.days )
+                    .replace( "{HOURS}", game.time.hours ) );
 
-            setStatBar( "strBar", model.player.str/100 );
-            setStatBar( "touBar", model.player.tou/100 );
-            setStatBar( "speBar", model.player.spe/100 );
-            setStatBar( "inteBar", model.player.inte/100 );
-            setStatBar( "libBar", model.player.lib/100 );
-            setStatBar( "sensBar", model.player.sens/100 );
-            setStatBar( "corBar", model.player.cor/100 );
-            setStatBar( "fatigueBar", model.player.fatigue/100 );
-            setStatBar( "HPBar", model.player.HP/model.maxHP() );
-            setStatBar( "lustBar", model.player.lust/100 );
-            setStatText( "gemsNum", model.player.gems );
+            setStatBar( "strBar", game.player.str/100 );
+            setStatBar( "touBar", game.player.tou/100 );
+            setStatBar( "speBar", game.player.spe/100 );
+            setStatBar( "inteBar", game.player.inte/100 );
+            setStatBar( "libBar", game.player.lib/100 );
+            setStatBar( "sensBar", game.player.sens/100 );
+            setStatBar( "corBar", game.player.cor/100 );
+            setStatBar( "fatigueBar", game.player.fatigue/100 );
+            setStatBar( "HPBar", game.player.HP/model.maxHP() );
+            setStatBar( "lustBar", game.player.lust/100 );
+            setStatText( "gemsNum", game.player.gems );
         };
 
         // <- showStats
@@ -187,10 +187,10 @@
             for ( statName of allStats ) {
                 oldStatName = _oldStatNameFor( statName );
 
-                if( this.model.player[ statName ] > this.model.oldStats[ oldStatName ] ) {
+                if( game.player[ statName ] > this.model.oldStats[ oldStatName ] ) {
                     this.showStatUp( statName );
                 }
-                if( this.model.player[ statName ] < this.model.oldStats[ oldStatName ] ) {
+                if( game.player[ statName ] < this.model.oldStats[ oldStatName ] ) {
                     this.showStatDown( statName );
                 }
             }

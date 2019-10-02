@@ -7,7 +7,7 @@
 		private  kihaTimeWaster():void {
 			game.spriteSelect(72);
 			outputText("She supports the axe on a shoulder, cracking her neck and arching her back to stretch herself, giving you an unintended show.  ", false);
-			game.dynStats("lus", 5);
+			dynStats("lus", 5);
 			combatRoundOver();
 		}
 
@@ -124,7 +124,7 @@
 			var select:number = rand(5);
 			if (select <= 1) eAttack();
 			else if (select == 2) {
-				if (game.silly()) sillyModeKihaAttack();
+				if (silly()) sillyModeKihaAttack();
 				else kihaFirePunch();
 			}
 			else if (select == 3) kihaFireBreath();
@@ -202,4 +202,3 @@
 		}
 
 	}
-

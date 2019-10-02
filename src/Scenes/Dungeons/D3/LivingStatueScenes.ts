@@ -5,7 +5,7 @@
 	 * ...
 	 * @author Gedan
 	 */
-	export class LivingStatueScenes extends BaseContent
+	export class LivingStatueScenes
 	{
 		public  constructor() 
 		{
@@ -47,7 +47,7 @@
 			
 			player.createKeyItem("Stone Statue Lethicite", 0, 0, 0, 0);
 
-			cleanupAfterCombat(getGame().d3.resumeFromFight);
+			cleanupAfterCombat(d3.resumeFromFight);
 		}
 		
 		public  fuckinMarbleOP(hpVictory:boolean, pcCameWorms:boolean):void
@@ -55,7 +55,6 @@
 			clearOutput();
 			outputText("You slump to your knees, overwhelmed and unable to see the shadow of the falling hammer. Your last thoughts are of regret.");
 			
-			getGame().gameOver();
+			gameOver();
 		}
 	}
-

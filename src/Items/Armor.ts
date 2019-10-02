@@ -69,7 +69,7 @@
 					game.itemSwapping = true;
 					if (output && itype == this)
 						outputText("You have your old set of " + longName + " left over.  ");
-					game.inventory.takeItem(this, false);
+					inventory.takeItem(this, false);
 				}
 			}
 			player.setArmorHiddenField(ArmorLib.COMFORTABLE_UNDERCLOTHES);
@@ -78,4 +78,3 @@
 		}
 */
 	}
-

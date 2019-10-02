@@ -37,8 +37,7 @@
 				else outputText("Honestly, it amazes you that something as little as a kiss can make a man putty in your hands.");
 				outputText("  You finish and pucker your lips, feeling fairly sexy with your new makeup on.\n\n");
 			}
-			game.dynStats("lus", 1);
+			dynStats("lus", 1);
 			return(false);
 		}
 	}
-

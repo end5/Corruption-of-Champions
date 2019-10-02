@@ -313,7 +313,7 @@ private  rathazulPurifyIncubiDraft():void {
 		doNext(returnToRathazulMenu);
 		return;
 	}
-	if (!debug)
+	if (!game.debug)
 		player.destroyItems(consumables.INCUBID, 1);
 	inventory.takeItem(consumables.P_DRAFT, returnToRathazulMenu);
 	player.gems -= 20;
@@ -329,7 +329,7 @@ private  rathazulPurifySuccubiMilk():void {
 		doNext(returnToRathazulMenu);
 		return;
 	}
-	if (!debug)
+	if (!game.debug)
 		player.destroyItems(consumables.SUCMILK, 1);
 	inventory.takeItem(consumables.P_S_MLK, returnToRathazulMenu);
 	player.gems -= 20;
@@ -345,7 +345,7 @@ private  rathazulPurifySuccubiDelight():void {
 		doNext(returnToRathazulMenu);
 		return;
 	}
-	if (!debug)
+	if (!game.debug)
 		player.destroyItems(consumables.SDELITE, 1);
 	inventory.takeItem(consumables.PSDELIT, returnToRathazulMenu);
 	player.gems -= 20;
@@ -361,7 +361,7 @@ private  rathazulPurifyLaBova():void {
 		doNext(returnToRathazulMenu);
 		return;
 	}
-	if (!debug)
+	if (!game.debug)
 		player.destroyItems(consumables.LABOVA_, 1);
 	inventory.takeItem(consumables.P_LBOVA, returnToRathazulMenu);
 	player.gems -= 20;
@@ -592,11 +592,10 @@ public  craftCarapace():void {
 	if(player.gender >= 2) outputText(" with stockings and garters", false);
 	outputText(".  He still manages to look somewhat pleased with himself in spite of the blunder, even bragging a little bit, \"<i>Let me show you the different lengths of string I used.</i>\"\n\n", false);
 	if(player.cockTotal() > 0 && player.biggestCockArea() >= 40) outputText("The silken material does little to hide the bulge of your groin, if anything it looks a little lewd.  Rathazul mumbles and looks away, shaking his head.\n\n", false);
-	if(player.biggestTitSize() >= 8) outputText("Your " + biggestBreastSizeDescript() + " barely fit into the breastplate, leaving you displaying a large amount of jiggling cleavage.\n\n", false);
+	if(player.biggestTitSize() >= 8) outputText("Your " + biggestBreastSizeDescript(player) + " barely fit into the breastplate, leaving you displaying a large amount of jiggling cleavage.\n\n", false);
 	player.destroyItems(useables.B_CHITN, 5);
 	player.addStatusValue(StatusAffects.MetRathazul,2,1);
 	inventory.takeItem(armors.BEEARMR, returnToRathazulMenu);
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

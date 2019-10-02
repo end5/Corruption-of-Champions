@@ -7,13 +7,12 @@
 	 
 	 
 
-	export class BazaarAbstractContent extends BaseContent
+	export class BazaarAbstractContent
 	{
 		protected  get bazaar():Bazaar {
-			return kGAMECLASS.bazaar;
+			return bazaar;
 		}
 		public  constructor()
 		{
 		}
 	}
-

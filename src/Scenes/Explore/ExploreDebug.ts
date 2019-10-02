@@ -24,7 +24,7 @@
 	 
 	 
 
-	export class ExploreDebug extends BaseContent
+	export class ExploreDebug
 	{
 
 		public  doExploreDebug():void
@@ -143,22 +143,22 @@
 				var m:Monster = allMonsters[monsterIdx]();
 				m.onDefeated = function (hpVictory:boolean):void
 				{
-					getGame().inCombat = false;
-					getGame().clearStatuses(false);
+					game.inCombat = false;
+					clearStatuses(false);
 					statScreenRefresh();
 					exploreDebugMonsters(monsterIdx + 1);
 				};
 				m.onWon = function (hpVictory:boolean, pcCameWorms:boolean):void
 				{
-					getGame().inCombat = false;
-					getGame().clearStatuses(false);
+					game.inCombat = false;
+					clearStatuses(false);
 					statScreenRefresh();
 					exploreDebugMonsters(monsterIdx + 1);
 				};
 				m.onPcRunAttempt = function ():void
 				{
-					getGame().inCombat = false;
-					getGame().clearStatuses(false);
+					game.inCombat = false;
+					clearStatuses(false);
 					statScreenRefresh();
 					exploreDebugMonsters(monsterIdx + 1);
 				};
@@ -182,4 +182,3 @@
 		{
 		}
 	}
-

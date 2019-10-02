@@ -33,13 +33,13 @@
 		public  timeChange():boolean
 		{
 			pregnancy.pregnancyAdvance();
-			if (flags[kFLAGS.COTTON_KID_COUNT] > 0 && model.time.hours == 23) flags[kFLAGS.COTTON_OLDEST_KID_AGE]++;
-			trace("\nCotton time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			if (flags[kFLAGS.COTTON_KID_COUNT] > 0 && game.time.hours == 23) flags[kFLAGS.COTTON_OLDEST_KID_AGE]++;
+			trace("\nCotton time change: Time is " + game.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			return false;
 		}
 	
 		public  timeChangeLarge():boolean {
-			if (model.time.hours == 6 && flags[kFLAGS.COTTON_BREAKFAST_CLUB] == 1 && player.biggestLactation() >= 2) {
+			if (game.time.hours == 6 && flags[kFLAGS.COTTON_BREAKFAST_CLUB] == 1 && player.biggestLactation() >= 2) {
 				flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 0;
 				nomSomeTitMilkCereal();
 				return true;
@@ -93,7 +93,7 @@ private  cottonPregPCChance():void {
 //Been told of naga book quest?
 
 public  cottonsIntro():boolean {
-	if(model.time.hours >= 12 && model.time.hours <= 18) {
+	if(game.time.hours >= 12 && game.time.hours <= 18) {
 		//Gym intro scene (haven't met):
 		if(flags[kFLAGS.COTTON_MET_FUCKED] == 0) outputText("\n\nYou see a tall, busty horse-girl doing some stretches over on a nearby mat.  Even from this far away, you can tell from the bulge in her pants that she's no ordinary 'girl'.", false);
 		//Gym intro scene (met, haven't had sex):
@@ -280,7 +280,7 @@ private  acceptYoga():void {
 		outputText("\"<i>Good, good, you won't regret it. First things first, pet, let's get you out of that dreadful clothing.</i>\"  She leads you to the lockers and helps you strip out of your " + player.armorName + ".", false);
 		if(player.gender == 3) outputText("  She spies your crotch and smiles, \"<i>Oh, best of both worlds, are we? Well you're in good company then.</i>\"", false);
 		//(If PC is male:
-		else if(player.hasCock()) outputText("  She cradles your " + cockDescript(0) + " and smiles at you, \"<i>Well, we might find a use for that later.</i>\"", false);
+		else if(player.hasCock()) outputText("  She cradles your " + game.player.cockDescript(0) + " and smiles at you, \"<i>Well, we might find a use for that later.</i>\"", false);
 		//(If PC is female:
 		else if(player.hasVagina()) outputText("  She pats your groin and says, \"<i>Y'know, I know some good exercises that really work the vaginal muscles... perhaps we'll talk about that later.</i>\"", false);
 		outputText("\n\n", false);
@@ -354,7 +354,7 @@ private  cottonChat():void {
 	if(flags[kFLAGS.FREED_VALA] != 0)
 		chats[chats.length] = 3;
 	//(Jojo chat)
-	if(kGAMECLASS.monk > 0)
+	if(game.monk > 0)
 		chats[chats.length] = 4;
 	var choice:number = chats[rand(chats.length)];
 
@@ -363,7 +363,7 @@ private  cottonChat():void {
 		//(If you've rejected Urta's love or left her)
 		if(flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] < 0 || flags[kFLAGS.URTA_PC_LOVE_COUNTER] < 0) outputText("While you're doing your stretches, you find yourself chatting about the folks of Tel'Adre. \"<i>Urta?</i>\" Cotton says, \"<i>She's a good woman, but she's been pretty depressed lately.</i>\" Your yoga partner scowls at you, and presses you into an uncomfortable pose, \"<i>I hear you upset her. The poor girl has had an awfully cruel life.  I hope you didn't make it any worse for her.</i>\"\n\n", false);
 		//(If you've accepted Urta's love)
-		else if(kGAMECLASS.urta.urtaLove()) outputText("While you're doing your stretches, you find yourself chatting about the folks of Tel'Adre. \"<i>Urta?</i>\" Cotton says, \"<i>She's a good woman. I hear you two have been quite the couple lately.</i>\" You blush. \"<i>No need to be embarrassed, from what I hear you've been a good influence on her. She's not nearly as high-strung or stressed anymore. Whatever you're doing with her, keep it up, pet.</i>\"\n\n", false);
+		else if(urta.urtaLove()) outputText("While you're doing your stretches, you find yourself chatting about the folks of Tel'Adre. \"<i>Urta?</i>\" Cotton says, \"<i>She's a good woman. I hear you two have been quite the couple lately.</i>\" You blush. \"<i>No need to be embarrassed, from what I hear you've been a good influence on her. She's not nearly as high-strung or stressed anymore. Whatever you're doing with her, keep it up, pet.</i>\"\n\n", false);
 		//(If Urta's relationship with PC is low, so she's still uncomfortable with her body)
 		else outputText("While you're doing your stretches, you find yourself chatting about the folks of Tel'Adre. \"<i>Urta?</i>\" Cotton says, \"<i>She's a good woman. A bit high strung sometimes, but she's got a lot on her plate keeping us all safe here. I'd invite her 'round for some yoga, maybe to help her relax, but I don't think it's really her thing.</i>\"\n\n", false);
 	}
@@ -391,12 +391,12 @@ private  cottonChat():void {
 	//(Jojo chat)
 	else if(choice == 5) {
 		//(If Jojo hasn't been corrupted)
-		if(kGAMECLASS.monk == 1) {
+		if(game.monk == 1) {
 			outputText("While you're doing your stretches, you find yourself chatting about the folks of Tel'Adre and beyond. \"<i>Jojo?</i>\" Cotton says, \"<i>You know Jojo too? I met him a while back. He taught me the finer points of meditation, which I incorporate into my yoga. Here, let's try.</i>\" You spend the rest of the workout in meditative poses, and by the time you're done, you feel... lighter somehow.\n\n", false);
 			dynStats("cor", -1);
 		}
 		//(If Jojo has been corrupted)
-		else if(kGAMECLASS.monk > 1) outputText("While you're doing your stretches, you find yourself chatting about the folks of Tel'Adre. \"<i>Jojo?</i>\" Cotton says, \"<i>You know Jojo too? I met him a while back. He taught me the finer points of meditation. I haven't seen him much lately, though. I wonder where he's gone to.</i>\" You smile inwardly, knowing exactly where he's gone to.\n\n", false);
+		else if(game.monk > 1) outputText("While you're doing your stretches, you find yourself chatting about the folks of Tel'Adre. \"<i>Jojo?</i>\" Cotton says, \"<i>You know Jojo too? I met him a while back. He taught me the finer points of meditation. I haven't seen him much lately, though. I wonder where he's gone to.</i>\" You smile inwardly, knowing exactly where he's gone to.\n\n", false);
 	}
 }
 //(If Leave)
@@ -438,11 +438,11 @@ private  cottonFirstTimeFuckHer():void {
 
 	outputText("You push her shoulders down so that she's bent over, water rushing down her back, around her tail and down her crack. You kneel and press your face into the crevasse, taking in her musky equine scent before taking your first taste of her cunt. It tastes mildly of sweat, but it's a salty-sweet taste that most certainly agrees with your taste buds. You take another taste, then another, and before long your tongue is ravashing her pussy, dipping into and around its folds, exploring like an adventurer in search of gold. Cotton gasps and groans as you go, her arms resting against the wall, propping her up.\n\n", false);
 
-	outputText("Her pussy quivers and trembles around your tongue. You can tell she's so close to orgasm... but that's not what you want right now.  With a small amount of regret, you pull back from her delicious snatch, wipe the water and juices from your face and stand, stroking your " + cockDescript(x) + " to full attention and pressing it against her ready hole. Grasping her hips firmly, you whisper dirty words into your horse lover's ear before slowly thrusting in. Cotton gives an ever-so-slight whinny and a gasp, her body moving back into yours.\n\n", false);
+	outputText("Her pussy quivers and trembles around your tongue. You can tell she's so close to orgasm... but that's not what you want right now.  With a small amount of regret, you pull back from her delicious snatch, wipe the water and juices from your face and stand, stroking your " + game.player.cockDescript(x) + " to full attention and pressing it against her ready hole. Grasping her hips firmly, you whisper dirty words into your horse lover's ear before slowly thrusting in. Cotton gives an ever-so-slight whinny and a gasp, her body moving back into yours.\n\n", false);
 
 	outputText("The water pouring on you heats up, and you see Cotton's hand on the temperature controls. Steam billows around the two of you, and your already hot bodies run hotter. You thrust, she thrusts back. You lean down, groping her large tits while you fuck. Her legs tremble and quake threatening to give out any moment.\n\n", false);
 
-	outputText("After several minutes of this, you just can't take it anymore and your " + cockDescript(x) + " explodes within her, coating her insides with your seed, and as you do you feel Cotton's pussy clamp down on you tightly, working every last drop out of you. Her own cock explodes, coating the wall and floor beneath you in her musky scent. Nearly exhausted, you collapse on top of Cotton momentarily while you catch your breath. The two of you sink down to the shower floor, letting the hot water wash away the evidence of your love making.\n\n", false);
+	outputText("After several minutes of this, you just can't take it anymore and your " + game.player.cockDescript(x) + " explodes within her, coating her insides with your seed, and as you do you feel Cotton's pussy clamp down on you tightly, working every last drop out of you. Her own cock explodes, coating the wall and floor beneath you in her musky scent. Nearly exhausted, you collapse on top of Cotton momentarily while you catch your breath. The two of you sink down to the shower floor, letting the hot water wash away the evidence of your love making.\n\n", false);
 
 	outputText("After another minute, you pull your flaccid cock out of your horse lover's hole and take the moment to carefully wash the both of you up.\n\n", false);
 
@@ -517,7 +517,7 @@ private  cottonFucksYou():void {
 		player.cuntChange(72,true,true,false);
 		outputText("\n\n", false);
 
-		outputText("Before long you find yourself moaning beneath her, your cunt clenching and unclenching uncontrollably. \"<i>Ooh, my little pet likes it now, hmmm?</i>\" She whispers into your ear and nibbles on it ever-so-slightly. You can't help but give a breathless \"<i>Yes</i>\" in response. Cotton giggles and speeds up her thrusts. You find yourself pushing back into her, urging her to go deeper and deeper. Your " + clitDescript() + " twinges with pleasure after every thrust, and your own " + cockDescript(0) + " is completely limp in the presence of this godly cock, but still it tingles with pleasure and anticipation.\n\n", false);
+		outputText("Before long you find yourself moaning beneath her, your cunt clenching and unclenching uncontrollably. \"<i>Ooh, my little pet likes it now, hmmm?</i>\" She whispers into your ear and nibbles on it ever-so-slightly. You can't help but give a breathless \"<i>Yes</i>\" in response. Cotton giggles and speeds up her thrusts. You find yourself pushing back into her, urging her to go deeper and deeper. Your " + clitDescript() + " twinges with pleasure after every thrust, and your own " + game.player.cockDescript(0) + " is completely limp in the presence of this godly cock, but still it tingles with pleasure and anticipation.\n\n", false);
 
 		outputText("After a few minutes of this, neither of you can take much more. Both of you give a deep moan of orgasmic pleasure as your pussy clenches and you feel your equine lover's cock twitch and spasm within you, flooding your hole with her hot seed. You gasp and reflexively arch your back, moaning into the shower walls while your own limp member shudders with orgasm, but instead of spurting, it leaks a small torrent of cum right down onto the floor.\n\n", false);
 
@@ -587,14 +587,14 @@ private  fuckCottonInShowerRepeat():void {
 
 		//(If PC has one cock)
 		if(player.cockArea(x) >= 100) {
-			if(player.cockTotal() == 1) outputText("You feel your " + cockDescript(x) + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, yours strains for attention.", false);
+			if(player.cockTotal() == 1) outputText("You feel your " + game.player.cockDescript(x) + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, yours strains for attention.", false);
 			//(If PC has multiple cocks)
-			else if(player.cockTotal() > 1) outputText("You feel your " + multiCockDescriptLight() + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, your group of cocks strains for attention.", false);
+			else if(player.cockTotal() > 1) outputText("You feel your " + game.player.multiCockDescriptLight() + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, your group of cocks strains for attention.", false);
 		}
 		else {
-			if(player.cockTotal() == 1) outputText("You feel your " + cockDescript(x) + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while yours strains for attention.", false);
+			if(player.cockTotal() == 1) outputText("You feel your " + game.player.cockDescript(x) + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while yours strains for attention.", false);
 			//(If PC has multiple cocks)
-			else if(player.cockTotal() > 1) outputText("You feel your " + multiCockDescriptLight() + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while your group of cocks strains for attention.", false);
+			else if(player.cockTotal() > 1) outputText("You feel your " + game.player.multiCockDescriptLight() + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while your group of cocks strains for attention.", false);
 		}
 		//(If PC has a pussy, add the following)
 		if(player.hasVagina()) outputText("  Meanwhile, your " + vaginaDescript(0) + " behind you moistens both from the steam and from arousal, and your " + clitDescript() + " aches, craving attention.", false);
@@ -602,7 +602,7 @@ private  fuckCottonInShowerRepeat():void {
 
 		//(If PC has breasts)
 		if(player.biggestTitSize() >= 2) {
-			outputText("Cotton leans down, groping your " + biggestBreastSizeDescript() + ", taking one " + nippleDescript(0) + " into her mouth and sucking it greedily.", false);
+			outputText("Cotton leans down, groping your " + biggestBreastSizeDescript(player) + ", taking one " + nippleDescript(0) + " into her mouth and sucking it greedily.", false);
 			//(and if PC is lactating)
 			if(player.biggestLactation() >= 1) {
 				outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescript(0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, pet, I might have to taste you more often.</i>\"", false);
@@ -619,13 +619,13 @@ private  fuckCottonInShowerRepeat():void {
 		//(If the player has more cocks, add)
 		else if(player.cockTotal() > 2) outputText("  The rest of your cocks jiggle and bob, rubbing up against her thighs and butt wildly.", false);
 		//(If player is too big, add)
-		if(player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(x) + ". She shivers and quakes, and leans against the bench, gripping your forelegs for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
+		if(player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + game.player.cockDescript(x) + ". She shivers and quakes, and leans against the bench, gripping your forelegs for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
 		//(if player is too small (under 4</i>\")
 		else if(player.cocks[x].cockLength < 4) {
 			outputText("  Her approval wavers and you hear from below you, \"<i>Is it in yet?</i>\" Your face flushes red and you confirm it is, looking down with embarrassment. Cotton rubs one of your forelegs reassuringly and says, \"<i>");
 			if (pregnancy.event > 1) outputText("Don't worry pet, it's plenty adequate for me.  And you've got to admit,</i>\" she smirks, rubbing her round belly, \"<i>It gets the job done, doesn't it?");
 			else outputText("Don't worry pet, it's plenty adequate for me.");
-			outputText("</i>\" Letting a little smile cross your lips, you push your " + cockDescript(x) + " fully into her, not a big accomplishment for one of your size, but still enough to make you feel good.", false);
+			outputText("</i>\" Letting a little smile cross your lips, you push your " + game.player.cockDescript(x) + " fully into her, not a big accomplishment for one of your size, but still enough to make you feel good.", false);
 		}
 		//(if none of the above, add)
 		else outputText("  You piston back and forth, and though Cotton's cunt is sizable, it's able to grip you tightly. Your equine lover moans and grasps at your chest, eventually seizing your leg for support, though she leans backwards.", false);
@@ -636,14 +636,14 @@ private  fuckCottonInShowerRepeat():void {
 		else if (pregnancy.event > 1) outputText("Oblivious to you, her own cock twitches and spasms, letting loose a spray of cum across her swollen, pregnant belly, breasts and the bench as an orgasm rocks her body.");
 		else outputText("Oblivious to you, her own cock twitches and spasms, letting loose a spray of cum across her belly, breasts and the bench as an orgasm rocks her body.", false);
 		//(If player is too big, add)
-		if(player.cockArea(x) > 70) outputText("  Even with all the pounding you've been doing, you can't fit your entire girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. Were you able to see her toned stomach, you're sure you could see the outline of your " + cockDescript(x) + " in it. Her back arches under the shower, her red hair messily draped around her face and bench, and she bites her lip as another orgasm rocks her body.", false);
+		if(player.cockArea(x) > 70) outputText("  Even with all the pounding you've been doing, you can't fit your entire girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. Were you able to see her toned stomach, you're sure you could see the outline of your " + game.player.cockDescript(x) + " in it. Her back arches under the shower, her red hair messily draped around her face and bench, and she bites her lip as another orgasm rocks her body.", false);
 		outputText("\n\n", false);
 
 		outputText("Finally you just can't take any more. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
 		//(If PC has a pussy)
-		if(player.hasVagina()) outputText("  Your " + cockDescript(x) + " erupts inside Cotton's warm cunt which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
+		if(player.hasVagina()) outputText("  Your " + game.player.cockDescript(x) + " erupts inside Cotton's warm cunt which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
 		//(else)
-		else outputText("   Your " + cockDescript(x) + " erupts inside Cotton's warm cunt which clenches you tightly.", false);
+		else outputText("   Your " + game.player.cockDescript(x) + " erupts inside Cotton's warm cunt which clenches you tightly.", false);
 		//(regardless or above, add)
 		outputText("  You give a couple more token thrusts and pull out. As you do, ", false);
 		if(player.cumQ() < 200) outputText("cum begins to seep from her folds", false);
@@ -663,15 +663,15 @@ private  fuckCottonInShowerRepeat():void {
 
 		if(player.cockArea(x) >= 100) {
 			//(If PC has one cock)
-			if(player.cockTotal() == 1) outputText("  You feel your " + cockDescript(x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + player.cockHead(x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
+			if(player.cockTotal() == 1) outputText("  You feel your " + game.player.cockDescript(x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + player.cockHead(x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
 			//(If PC has multiple cocks)
-			else if(player.cockTotal() > 1) outputText("  You feel your " + multiCockDescriptLight() + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+			else if(player.cockTotal() > 1) outputText("  You feel your " + game.player.multiCockDescriptLight() + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
 		}
 		else {
 			//(If PC has one cock)
-			if(player.cockTotal() == 1) outputText("You feel your " + cockDescript(x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member.  The two rub together as you make out, sending ripples of pleasure up your spine.", false);
+			if(player.cockTotal() == 1) outputText("You feel your " + game.player.cockDescript(x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member.  The two rub together as you make out, sending ripples of pleasure up your spine.", false);
 			//(If PC has multiple cocks)
-			else if(player.cockTotal() > 1) outputText("You feel your " + multiCockDescriptLight() + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+			else if(player.cockTotal() > 1) outputText("You feel your " + game.player.multiCockDescriptLight() + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
 		}
 		//(If PC has a pussy, add the following)
 		if(player.hasVagina()) outputText("Your " + vaginaDescript(0) + " meanwhile moistens both from the water and from arousal, and your " + clitDescript() + " aches, craving attention.", false);
@@ -679,7 +679,7 @@ private  fuckCottonInShowerRepeat():void {
 
 		//(If PC has breasts)
 		if(player.biggestTitSize() >= 2) {
-			outputText("Cotton leans down, groping your " + biggestBreastSizeDescript() + ", taking one " + nippleDescript(0) + " into her mouth and sucking it greedily.", false);
+			outputText("Cotton leans down, groping your " + biggestBreastSizeDescript(player) + ", taking one " + nippleDescript(0) + " into her mouth and sucking it greedily.", false);
 			//(and if PC is lactating)
 			if(player.biggestLactation() >= 1) {
 				outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescript(0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, pet, I might have to taste you more often.</i>\"", false);
@@ -690,19 +690,19 @@ private  fuckCottonInShowerRepeat():void {
 			outputText("\n\n", false);
 		}
 
-		outputText("Suitably turned on now, you coil your body around Cotton's torso, with your tail spreading her legs apart while you place your " + cockDescript(x) + " at her pussy. You slowly push in, and Cotton bites her lip, looking at you in approval.", false);
+		outputText("Suitably turned on now, you coil your body around Cotton's torso, with your tail spreading her legs apart while you place your " + game.player.cockDescript(x) + " at her pussy. You slowly push in, and Cotton bites her lip, looking at you in approval.", false);
 		//(If player has two cocks, add)
 		if(player.cockTotal() == 2) outputText("  With a slight grin, you position your extra dick at Cotton's other hole. She quirks her eyebrow and a look of panic momentarily crosses her face, but you push forward anyway. Cotton's eyes roll up briefly and her lip quivers.", false);
 		//(If the player has more cocks, add)
 		else if(player.cockTotal() > 2) outputText("  The rest of your cocks strain, aching for holes to fill. With none available, they throb as they rub against Cotton's smooth skin.", false);
 		//(If player is too big, add)
-		if(player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
+		if(player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + game.player.cockDescript(x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
 		//(if player is too small (under 4</i>\") add)
 		else if(player.cocks[x].cockLength < 4) {
 			outputText("  Her approval wavers and she asks, \"<i>Is it in yet?</i>\" Your face flushes red and you confirm it is, looking down with embarrassment. Cotton lifts your chin and gives you a kiss, \"<i>");
 			if (pregnancy.event > 1) outputText("Don't worry pet, it's plenty adequate for me.  And you've got to admit,</i>\" she smirks, rubbing her round belly, \"<i>It gets the job done, doesn't it?");
 			else outputText("Don't worry pet, it's plenty adequate for me.");
-			outputText("</i>\" Giving her a little smile, you push your " + cockDescript(x) + " fully into her, not a big accomplishment for one of your size, but still enough to give you a little smile.", false);
+			outputText("</i>\" Giving her a little smile, you push your " + game.player.cockDescript(x) + " fully into her, not a big accomplishment for one of your size, but still enough to give you a little smile.", false);
 		}
 		//(otherwise add)
 		else outputText("  You piston back and forth, and though Cotton's cunt is sizeable, it's able to grip you tightly. Your equine lover moans and grasps at your chest, eventually seizing your shoulder for support, though she leans backwards.", false);
@@ -718,9 +718,9 @@ private  fuckCottonInShowerRepeat():void {
 
 		outputText("Finally you just can't take anymore. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
 		//(If PC has a pussy)
-		if(player.hasVagina()) outputText("  Your " + cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
+		if(player.hasVagina()) outputText("  Your " + game.player.cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
 		//(else)
-		else outputText("  Your " + cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly.", false);
+		else outputText("  Your " + game.player.cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly.", false);
 		//(regardless or above, add)
 		outputText("  You give a couple more token thrusts and pull out. As you do, ", false);
 		if(player.cumQ() < 200) outputText("cum begins to seep from her folds", false);
@@ -740,16 +740,16 @@ private  fuckCottonInShowerRepeat():void {
 
 		if(player.cockArea(x) >= 100) {
 			//(If PC has one cock)
-			if(player.cockTotal() == 1) outputText("  You feel your " + cockDescript(x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + player.cockHead(x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
+			if(player.cockTotal() == 1) outputText("  You feel your " + game.player.cockDescript(x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + player.cockHead(x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
 			//(If PC has multiple cocks)
-			else if(player.cockTotal() > 1) outputText("  You feel your " + multiCockDescriptLight() + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+			else if(player.cockTotal() > 1) outputText("  You feel your " + game.player.multiCockDescriptLight() + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
 			//(If PC has a pussy, add the following)
 		}
 		else {
 			//(If PC has one cock)
-			if(player.cockTotal() == 1) outputText("  You feel your " + cockDescript(x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The two rub together as you make out, sending ripples of pleasure up your spine.", false);
+			if(player.cockTotal() == 1) outputText("  You feel your " + game.player.cockDescript(x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The two rub together as you make out, sending ripples of pleasure up your spine.", false);
 			//(If PC has multiple cocks)
-			else if(player.cockTotal() > 1) outputText("  You feel your " + multiCockDescriptLight() + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+			else if(player.cockTotal() > 1) outputText("  You feel your " + game.player.multiCockDescriptLight() + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
 			//(If PC has a pussy, add the following)
 		}
 
@@ -758,7 +758,7 @@ private  fuckCottonInShowerRepeat():void {
 
 		//(If PC has breasts)
 		if(player.biggestTitSize() >= 2) {
-			outputText("Cotton leans down, groping your " + biggestBreastSizeDescript() + ", taking one " + nippleDescript(0) + " into her mouth and sucking it greedily.", false);
+			outputText("Cotton leans down, groping your " + biggestBreastSizeDescript(player) + ", taking one " + nippleDescript(0) + " into her mouth and sucking it greedily.", false);
 			//(and if PC is lactating)
 			if(player.biggestLactation() >= 1) {
 				outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescript(0) + ". Cotton's eyes turn up to your face in surprise but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, pet, I might have to taste you more often.</i>\"", false);
@@ -769,19 +769,19 @@ private  fuckCottonInShowerRepeat():void {
 			outputText("\n\n", false);
 		}
 
-		outputText("Suitably turned on now, you reach down and hook your arm under one of Cotton's legs, lifting it up while you position your " + cockDescript(x) + " at her pussy. You slowly push in, and Cotton bites her lip, looking at you in approval.", false);
+		outputText("Suitably turned on now, you reach down and hook your arm under one of Cotton's legs, lifting it up while you position your " + game.player.cockDescript(x) + " at her pussy. You slowly push in, and Cotton bites her lip, looking at you in approval.", false);
 		//(If player has two cocks, add)
 		if(player.cockTotal() == 2) outputText("  With a slight grin, you position your other dick at Cotton's other hole. She quirks her eyebrow and a look of panic momentarily crosses her face, but you push forward anyway. Cotton's eyes roll up briefly and her lip quivers.", false);
 		//(If the player has more cocks, add)
 		if(player.cockTotal() > 2) outputText("  The rest of your cocks strain, aching for holes to fill. With none available, they throb as they rub against Cotton's smooth skin.", false);
 		//(If player is too big, add)
-		if(player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
+		if(player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + game.player.cockDescript(x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
 		//(if player is too small (under 4</i>\") add)
 		else if(player.cocks[x].cockLength < 4) {
 			outputText("  Her approval wavers and she asks, \"<i>Is it in yet?</i>\" Your face flushes red and you confirm it is, looking down in embarrassment. Cotton lifts your chin and gives you a kiss, \"<i>");
 			if (pregnancy.event > 1) outputText("Don't worry pet, it's plenty adequate for me.  And you've got to admit,</i>\" she smirks, rubbing her round belly, \"<i>It gets the job done, doesn't it?");
 			else outputText("Don't worry pet, it's plenty adequate for me.");
-			outputText("</i>\" Giving her a little smile, you push your " + cockDescript(x) + " fully into her, not a big accomplishment for one of your size, but still enough to give you a little smile.", false);
+			outputText("</i>\" Giving her a little smile, you push your " + game.player.cockDescript(x) + " fully into her, not a big accomplishment for one of your size, but still enough to give you a little smile.", false);
 		}
 		//(otherwise add)
 		else outputText("You piston back and forth, and though Cotton's cunt is sizeable, it's able to grip you tightly. Your equine lover moans and grasps at your chest, eventually seizing your shoulder for support, though she leans backwards.", false);
@@ -797,9 +797,9 @@ private  fuckCottonInShowerRepeat():void {
 
 		outputText("Finally you just can't take any more. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
 		//(If PC has a pussy)
-		if(player.hasVagina()) outputText("  Your " + cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
+		if(player.hasVagina()) outputText("  Your " + game.player.cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
 		//(else)
-		else outputText("  Your " + cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly.", false);
+		else outputText("  Your " + game.player.cockDescript(x) + " erupts inside Cotton's warm cunt, which clenches you tightly.", false);
 		//(regardless or above, add)
 		outputText("  You give a couple more token thrusts and pull out. As you do, ", false);
 		if(player.cumQ() < 200) outputText("cum begins to seep from her folds", false);
@@ -856,9 +856,9 @@ private  cottonFucksYouInShowerRepeat():void {
 	if(player.isTaur()) {
 		outputText("You decide to take her up on her offer and she pulls you towards the showers, quickly disrobing you forcibly and then herself. She turns only one shower-head on and pulls you into an embrace underneath the rapidly heating water. She kisses up your neck and playfully bites you with a grin.", false);
 		//(If PC has a penis, no vagina)
-		if(player.gender == 1) outputText("  Your " + cockDescript(0) + " tingles betwixt your legs, but remains limp in the presence of Cotton's impressive member.", false);
+		if(player.gender == 1) outputText("  Your " + game.player.cockDescript(0) + " tingles betwixt your legs, but remains limp in the presence of Cotton's impressive member.", false);
 		//(If PC has a penis and vagina)
-		else if(player.gender == 3) outputText("  Your " + cockDescript(0) + " tingles betwixt your legs, but remains limp in the presence of Cotton's impressive member, while your " + vaginaDescript(0) + " moistens almost immediately from the steam and arousal.", false);
+		else if(player.gender == 3) outputText("  Your " + game.player.cockDescript(0) + " tingles betwixt your legs, but remains limp in the presence of Cotton's impressive member, while your " + vaginaDescript(0) + " moistens almost immediately from the steam and arousal.", false);
 		//(If PC has a vagina and no penis)
 		else if(player.gender == 2) outputText("  Your " + vaginaDescript(0) + " moistens almost immediately as you make out, both from the steam and your increasing arousal.", false);
 		//(If PC is genderless)
@@ -867,7 +867,7 @@ private  cottonFucksYouInShowerRepeat():void {
 
 		//(If PC has breasts)
 		if(player.biggestTitSize() >= 2) {
-			outputText("Cotton's kisses lead down to your " + biggestBreastSizeDescript() + ", where she takes one " + nippleDescript(0) + " into her mouth, sucking it greedily and teasing it masterfully.", false);
+			outputText("Cotton's kisses lead down to your " + biggestBreastSizeDescript(player) + ", where she takes one " + nippleDescript(0) + " into her mouth, sucking it greedily and teasing it masterfully.", false);
 			//(and if PC is lactating)
 			if(player.biggestLactation() >= 1) {
 				outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescript(0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as the draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, little pet.  I simply must have you for breakfast sometime.</i>\"", false);
@@ -915,9 +915,9 @@ private  cottonFucksYouInShowerRepeat():void {
 	else {
 		outputText("You decide to take her up on her offer, and she pulls you towards the showers, quickly disrobing you forcibly and then herself. She turns only one shower-head on and pulls you into an embrace underneath the rapidly heating water. She kisses up your neck and playfully bites you with a grin.", false);
 		//(If PC has a penis, no vagina)
-		if(player.gender == 1) outputText("  Your " + cockDescript(0) + " tingles beneath you, but remains limp in the presence of Cotton's impressive member.", false);
+		if(player.gender == 1) outputText("  Your " + game.player.cockDescript(0) + " tingles beneath you, but remains limp in the presence of Cotton's impressive member.", false);
 		//(If PC has a penis and vagina)
-		else if(player.gender == 3) outputText("  Your " + cockDescript(0) + " tingles beneath you, but remains limp in the presence of Cotton's impressive member while your " + vaginaDescript(0) + " moistens almost immediately from the steam and arousal.", false);
+		else if(player.gender == 3) outputText("  Your " + game.player.cockDescript(0) + " tingles beneath you, but remains limp in the presence of Cotton's impressive member while your " + vaginaDescript(0) + " moistens almost immediately from the steam and arousal.", false);
 		//(If PC has a vagina and no penis)
 		else if(player.gender == 2) outputText("  Your " + vaginaDescript(0) + " moistens almost immediately as you make out, both from the steam and your increasing arousal.", false);
 		//(If PC is genderless)
@@ -926,7 +926,7 @@ private  cottonFucksYouInShowerRepeat():void {
 
 		//(If PC has breasts)
 		if(player.biggestTitSize() >= 2) {
-			outputText("Cotton's kisses lead down to your " + biggestBreastSizeDescript() + ", where she takes one " + nippleDescript(0) + " into her mouth, sucking it greedily and teasing it masterfully.", false);
+			outputText("Cotton's kisses lead down to your " + biggestBreastSizeDescript(player) + ", where she takes one " + nippleDescript(0) + " into her mouth, sucking it greedily and teasing it masterfully.", false);
 			//(and if PC is lactating)
 			if(player.biggestLactation() >= 1) {
 				outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescript(0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, little pet.  I simply must have you for breakfast...</i>\"", false);
@@ -1034,7 +1034,7 @@ public  cottonTantricSex():void {
 	if(player.hasVagina()) player.cuntChange(72,true,true,false);
 	else player.buttChange(72,true,true,false);
 	//(If PC has a penis, add)
-	if(player.hasCock()) outputText("  Meanwhile, your own " + cockDescript(0) + " hangs limply in front of you, tingling with arousal, but unable to harden. Cotton gives it a pat and says, \"<i>Worry not, pet, there's only room for one cock right now, but I'll want it some other time.</i>\"", false);
+	if(player.hasCock()) outputText("  Meanwhile, your own " + game.player.cockDescript(0) + " hangs limply in front of you, tingling with arousal, but unable to harden. Cotton gives it a pat and says, \"<i>Worry not, pet, there's only room for one cock right now, but I'll want it some other time.</i>\"", false);
 	outputText("\n\n", false);
 
 	outputText("\"<i>Now let's move on to the Lotus,</i>\" Cotton says, and sits up.", false);
@@ -1069,7 +1069,7 @@ public  cottonTantricSex():void {
 
 	outputText("It doesn't take much longer for the sensations to consume you, feeling yourself both getting fucked and fucking at the same time. Lightning fires through every nerve in your body as an orgasm begins to overtake you. Cotton doesn't look far behind. As your body begins to tremble and arch, so too does hers.", false);
 	//(If PC has a penis)
-	if(player.hasCock()) outputText("  Your " + cockDescript(0) + " twitches and tingles, releasing its pent up seed in a dribbling torrent down your belly and chest, right into your face and pooling around your head.", false);
+	if(player.hasCock()) outputText("  Your " + game.player.cockDescript(0) + " twitches and tingles, releasing its pent up seed in a dribbling torrent down your belly and chest, right into your face and pooling around your head.", false);
 	//(If PC has a vagina)
 	if(player.hasVagina()) outputText("  Your " + vaginaDescript(0) + " shivers and clamps down hard on the invading cock, pulsing and milking it as it unloads directly into your womb.", false);
 	//(If PC doesn't have a vagina)
@@ -1113,7 +1113,7 @@ public  nomSomeTitMilkCereal():void {
 
 	outputText("You invite her over to your bedroll and sit down. She follows suit and removes her backpack, digging through it for a minute, retrieving a clay bowl and a large brown bag. She opens the bag and pours out a bowlful of grains and oats. \"<i>Normally I just eat my breakfast raw... but today I want to try something a little different.</i>\"", false);
 
-	outputText("Cotton sets the bowl down in your lap and pulls down the front of your " + player.armorName + ", exposing your " + chestDesc() + " to the cool morning breeze. A shiver runs down your spine and your nipples immediately begin to harden, as if knowing what this equine girl has in mind. Cotton leans down and wraps her lips around one " + nippleDescript(0) + ", sucking sensually and flicking the tip with her tongue.\n\n", false);
+	outputText("Cotton sets the bowl down in your lap and pulls down the front of your " + player.armorName + ", exposing your " + game.player.chestDesc() + " to the cool morning breeze. A shiver runs down your spine and your nipples immediately begin to harden, as if knowing what this equine girl has in mind. Cotton leans down and wraps her lips around one " + nippleDescript(0) + ", sucking sensually and flicking the tip with her tongue.\n\n", false);
 
 	outputText("You feel the familiar sensation of fluids being drawn from you, and soon Cotton is suckling from your milky tit. She relinquishes her hold on the teat, smacks her lips, and brings the bowl up to your breast. With the other hand, she grabs your " + nippleDescript(0) + " and breast firmly, pulling and squeezing it. Delicious white milk begins squirting from the ducts of your breast, dribbling and spraying into the bowl of grains. You can't help but moan, squirming in your seat as your tit is ruthlessly milked.\n\n", false);
 
@@ -1889,4 +1889,3 @@ private  letCottonFeedKids():void {
 }
 
 	}
-

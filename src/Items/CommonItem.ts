@@ -12,18 +12,11 @@
 
 	export class CommonItem extends ItemType{
 
-		public  get game():CoC{
-			return kGAMECLASS;
-		}
-		public  getGame():CoC{
-			return kGAMECLASS;
-		}
-
 		public  clearOutput():void{
-			kGAMECLASS.clearOutput();
+			clearOutput();
 		}
 		public  outputText(text:string):void{
-			kGAMECLASS.outputText(text);
+			outputText(text);
 		}
 
 		public  constructor(id:string, shortName:string=null, longName:string=null, value:number=0, description:string=null)
@@ -32,4 +25,3 @@
 
 		}
 	}
-

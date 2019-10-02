@@ -8,7 +8,7 @@
  * The lovely town of Tel Adre
  * @author:
  */
-	export class TelAdre extends BaseContent
+	export class TelAdre
 	{
 		public  auntNancy:AuntNancy = new AuntNancy();
 		public  bakeryScene:BakeryScene = new BakeryScene();
@@ -117,7 +117,7 @@ private  telAdreCrystal():void {
 		return;
 	}
 	//-50+ corruption or corrupted Jojo
-	else if(player.cor >= 50 || kGAMECLASS.monk >= 5) {
+	else if(player.cor >= 50 || game.monk >= 5) {
 		outputText("The crystal pendant shimmers, vibrating in place and glowing a purple hue.  Edryn steps back, watching you warily, \"<i>You've been deeply touched by corruption.  You balance on a razor's edge between falling completely and returning to sanity.  You may enter, but we will watch you closely.</i>\"\n\n", false);
 	}
 	//-25+ corruption or corrupted Marae
@@ -136,7 +136,7 @@ private  telAdreCrystal():void {
 private  telAdreTour():void {
 	player.changeStatusValue(StatusAffects.TelAdre,1,1);
 	outputText("", true);
-	kGAMECLASS.urta.urtaSprite();
+	urta.urtaSprite();
 	outputText("Urta leads you into the streets of Tel'Adre, giving you a brief run-down of her and her city, \"<i>You see, about two decades back, the demons were chewing their way through every settlement and civilization in Mareth.  The covenant, a group of powerful magic-users, realized direct confrontation was doomed to fail.  They hid us in the desert with their magic, and the demons can't corrupt what they can't find.  So we're safe, for now.</i>\"\n\n", false);
 	outputText("The two of you find yourselves in the center of a busy intersection.  Urta explains that this is the main square of the city, and that, although the city is large, a goodly portion of it remains empty.  Much of the population left to assist other settlements in resisting the demons and was lost.  She brushes a lock of stray hair from her eye and guides you down the road, making sure to point out her favorite pub - \"The Wet Bitch\".  You ", false);
 	if(player.cor < 25) outputText("blush", false);
@@ -150,15 +150,15 @@ private  telAdreTour():void {
 
 public  telAdreMenu():void {
 	if(flags[kFLAGS.VALENTINES_EVENT_YEAR] < date.fullYear && player.balls > 0 && player.hasCock() && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 4 && flags[kFLAGS.TIMES_MET_SCYLLA_IN_ADDICTION_GROUP] > 0 && isValentine()) {
-		kGAMECLASS.crazyVDayShenanigansByVenithil();
+		crazyVDayShenanigansByVenithil();
 		return;
 	}
-	if(!kGAMECLASS.urtaQuest.urtaBusy() && flags[kFLAGS.PC_SEEN_URTA_BADASS_FIGHT] == 0 && rand(15) == 0 && model.time.hours > 15) {
+	if(!urtaQuest.urtaBusy() && flags[kFLAGS.PC_SEEN_URTA_BADASS_FIGHT] == 0 && rand(15) == 0 && game.time.hours > 15) {
 		urtaIsABadass();
 		return;
 	}
-	if (!kGAMECLASS.urtaQuest.urtaBusy() && kGAMECLASS.urta.pregnancy.event > 5 && rand(30) == 0) {
-		kGAMECLASS.urtaPregs.urtaIsAPregnantCopScene();
+	if (!urtaQuest.urtaBusy() && urta.pregnancy.event > 5 && rand(30) == 0) {
+		urtaPregs.urtaIsAPregnantCopScene();
 	   return;
 	}
 	switch (flags[kFLAGS.KATHERINE_UNLOCKED]) {
@@ -180,13 +180,13 @@ public  telAdreMenu():void {
 				return;
 			}
 		default: //Has given you a spare key to her apartment
-			if (model.time.hours < 10 && rand(12) == 0) { //If employed or housed she can sometimes be encountered while on duty
+			if (game.time.hours < 10 && rand(12) == 0) { //If employed or housed she can sometimes be encountered while on duty
 				katherine.katherineOnDuty();
 				return;
 			}
 	}
 	if(flags[kFLAGS.ARIAN_PARK] == 0 && player.level >= 4 && rand(10) == 0 && flags[kFLAGS.NOT_HELPED_ARIAN_TODAY] == 0) {
-		kGAMECLASS.arianScene.meetArian();
+		arianScene.meetArian();
 		return;
 	}
 	//Display Tel'adre menu options//
@@ -195,8 +195,8 @@ public  telAdreMenu():void {
 	//Must have Urta's Key.
 	//Urta must be pregnant to trigger this scene.
 	//Play this scene upon entering Tel'Adre.
-	if (kGAMECLASS.urta.pregnancy.event > 2 && rand(4) == 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] == 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0) {
-		kGAMECLASS.urtaPregs.urtaSpecialDeliveries();
+	if (urta.pregnancy.event > 2 && rand(4) == 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] == 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0) {
+		urtaPregs.urtaSpecialDeliveries();
 		return;
 	}
 	if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] == -1) {
@@ -206,7 +206,7 @@ public  telAdreMenu():void {
 	spriteSelect( -1);
 	outputText("Tel'Adre is a massive city, though most of its inhabitants tend to hang around the front few city blocks.  It seems the fall of Mareth did not leave the city of Tel'Adre totally unscathed.  A massive tower rises up in the center of the city, shimmering oddly.  From what you overhear in the streets, the covenant's magic-users slave away in that tower, working to keep the city veiled from outside dangers.  There does not seem to be a way to get into the unused portions of the city, but you'll keep your eyes open.\n\n", true);
 	outputText("A sign depicting a hermaphroditic centaur covered in piercings hangs in front of one of the sandstone buildings, and bright pink lettering declares it to be the 'Piercing Studio'.  You glance over and see the wooden facade of Urta's favorite bar, 'The Wet Bitch'.  How strange that those would be what she talks about during a tour.  In any event you can also spot some kind of wolf-man banging away on an anvil in a blacksmith's stand, and a foppishly-dressed dog-man with large floppy ears seems to be running some kind of pawnshop in his stand.  Steam boils from the top of a dome-shaped structure near the far end of the street, and simple lettering painted on the dome proclaims it to be a bakery.  Perhaps those shops will be interesting as well.", false);
-	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && !kGAMECLASS.raphael.RaphaelLikes()) {
+	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && !raphael.RaphaelLikes()) {
 		outputText("\n\nYou remember Raphael's offer about the Orphanage, but you might want to see about shaping yourself more to his tastes first.  He is a picky fox, after all, and you doubt he would take well to seeing you in your current state.");
 	}
 	telAdreMenuShow();
@@ -214,13 +214,13 @@ public  telAdreMenu():void {
 
 public  telAdreMenuShow():void { //Just displays the normal Tel'Adre menu options, no special events, no description. Useful if a special event has already played
 	var homes:boolean = false;
-	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && kGAMECLASS.raphael.RaphaelLikes())
+	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && raphael.RaphaelLikes())
 		homes = true;
 	else if (player.hasKeyItem("Spare Key to Urta's House") >= 0)
 		homes = true;
 	else if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 5)
 		homes = true;
-	else if (flags[kFLAGS.ARIAN_PARK] >= 4 && !kGAMECLASS.arianScene.arianFollower())
+	else if (flags[kFLAGS.ARIAN_PARK] >= 4 && !arianScene.arianFollower())
 		homes = true;
 	menu();
 	addButton(0, "Shops", armorShops);
@@ -228,7 +228,7 @@ public  telAdreMenuShow():void { //Just displays the normal Tel'Adre menu option
 	addButton(2, "Bar", enterBarTelAdre);
 	addButton(3, "Gym", gymDesc);
 	if (homes) addButton(4, "Homes", houses);
-	if (flags[kFLAGS.ARIAN_PARK] > 0 && flags[kFLAGS.ARIAN_PARK] < 4) addButton(5, "Park", kGAMECLASS.arianScene.visitThePark);
+	if (flags[kFLAGS.ARIAN_PARK] > 0 && flags[kFLAGS.ARIAN_PARK] < 4) addButton(5, "Park", arianScene.visitThePark);
 	addButton(6, "Pawn", oswaldPawn);
 	addButton(7, "Tower", library.visitZeMagesTower);
 	addButton(8, "Weapons", weaponShop);
@@ -254,19 +254,19 @@ public  houses():void {
 	outputText("Whose home will you visit?");
 	var orphanage:() => void = null;
 	if(flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2) {
-		if(kGAMECLASS.raphael.RaphaelLikes())
+		if(raphael.RaphaelLikes())
 		{
-			orphanage = kGAMECLASS.raphael.orphanageIntro;
+			orphanage = raphael.orphanageIntro;
 		}
 		else {
 			outputText("\n\nYou remember Raphael's offer about the Orphanage, but you might want to see about shaping yourself more to his tastes first.  He is a picky fox, after all, and you doubt he would take well to seeing you in your current state.");
 		}
 	}
 	menu();
-	if(flags[kFLAGS.ARIAN_PARK] >= 4 && !kGAMECLASS.arianScene.arianFollower()) addButton(0,"Arian's",kGAMECLASS.arianScene.visitAriansHouse);
+	if(flags[kFLAGS.ARIAN_PARK] >= 4 && !arianScene.arianFollower()) addButton(0,"Arian's",arianScene.visitAriansHouse);
 	addButton(1,"Orphanage",orphanage);
-	if (kGAMECLASS.urtaPregs.urtaKids() > 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0)
-		addButton(2, "Urta's House", (katherine.isAt(Katherine.KLOC_URTAS_HOME) ? katherine.katherineAtUrtas : kGAMECLASS.urtaPregs.visitTheHouse));
+	if (urtaPregs.urtaKids() > 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0)
+		addButton(2, "Urta's House", (katherine.isAt(Katherine.KLOC_URTAS_HOME) ? katherine.katherineAtUrtas : urtaPregs.visitTheHouse));
 	if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 5) addButton(3, "Kath's Apt", katherine.visitAtHome);
 	addButton(9,"Back",telAdreMenu);
 }
@@ -1055,7 +1055,7 @@ private  anotherButton(button:number, nam:string, func:() => void, arg:any = -90
 	return button;
 }
 private  enterBarTelAdre():void {
-	if(isThanksgiving()) kGAMECLASS.pigSlutRoastingGreet();
+	if(isThanksgiving()) pigSlutRoastingGreet();
 	else barTelAdre();
 }
 
@@ -1082,10 +1082,10 @@ public  barTelAdre():void {
 	menu();
 	//AMILY!
 	if(flags[kFLAGS.AMILY_VISITING_URTA] == 1) {
-		button = anotherButton(button,"Ask4Amily",kGAMECLASS.followerInteractions.askAboutAmily);
+		button = anotherButton(button,"Ask4Amily",followerInteractions.askAboutAmily);
 	}
 	//DOMINIKA
-	if(model.time.hours > 17 && model.time.hours < 20 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] != -1) {
+	if(game.time.hours > 17 && game.time.hours < 20 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] != -1) {
 		button = anotherButton(button,"Dominika",dominika.fellatrixBarApproach);
 	}
 	//EDRYN!
@@ -1127,7 +1127,7 @@ public  barTelAdre():void {
 			katherine.barFirstEncounter();
 			return;
 		}
-		if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] == 31 && kGAMECLASS.urta.urtaAtBar() && !kGAMECLASS.urta.urtaDrunk() && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0) {
+		if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] == 31 && urta.urtaAtBar() && !urta.urtaDrunk() && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0) {
 			katherine.barKathUrtaLoveAnnounce();
 			return;
 		}
@@ -1137,7 +1137,7 @@ public  barTelAdre():void {
 	//trace("HEL FOLLOWER LEVEL: " + flags[kFLAGS.HEL_FOLLOWER_LEVEL] + " HEL FUCKBUDDY: " + flags[kFLAGS.HEL_FUCKBUDDY] + " HARPY QUEEN DEFEATED: " + flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]);
 	//trace("REDUCED ENCOUNTER RATE (DISPLINED): " + flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE]);
 	//HELIA
-//	if(player.gender > 0 && model.time.hours >= 14 && rand(2) == 0 && model.time.hours < 20 && (flags[kFLAGS.HEL_FUCKBUDDY] != 0 || kGAMECLASS.helFollower.followerHel()) && !(flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]== 0)) {
+//	if(player.gender > 0 && game.time.hours >= 14 && rand(2) == 0 && game.time.hours < 20 && (flags[kFLAGS.HEL_FUCKBUDDY] != 0 || helFollower.followerHel()) && !(flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]== 0)) {
 	if (edryn.edrynHeliaThreesomePossible()) {
 		edryn.helAppearance();
 		button = anotherButton(button,"Helia",edryn.approachHelAtZeBitch);
@@ -1151,20 +1151,20 @@ public  barTelAdre():void {
 	else outputText("\n\nIt doesn't look like there's a bartender working at the moment.", false);
 
 	//NIAMH
-	if (model.time.hours >= 8 && model.time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] == 0) {
+	if (game.time.hours >= 8 && game.time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] == 0) {
 		niamh.telAdreNiamh();
 		if (flags[kFLAGS.MET_NIAMH] == 0) button = anotherButton(button,"Beer Cat",niamh.approachNiamh);
 		else button = anotherButton(button,"Niamh",niamh.approachNiamh);
 	}
 	//ROGAR #1
 	if(flags[kFLAGS.ROGAR_PHASE] == 3 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-		button = anotherButton(button,"HoodedFig",kGAMECLASS.swamp.rogar.rogarThirdPhase);
+		button = anotherButton(button,"HoodedFig",swamp.rogar.rogarThirdPhase);
 		//Wet Bitch screen text when Ro'gar phase = 3:
 		outputText("\n\nYou notice a cloaked figure at the bar, though you're quite unable to discern anything else as its back is turned to you.", false);
 	}
 	//ROGAR #2
 	else if(flags[kFLAGS.ROGAR_PHASE] >= 4 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-		button = anotherButton(button,"Rogar",kGAMECLASS.swamp.rogar.rogarPhaseFour);
+		button = anotherButton(button,"Rogar",swamp.rogar.rogarPhaseFour);
 		//Wet Bitch bar text when Ro'gar phase = 4:
 		outputText("\n\nRo'gar is here with his back turned to the door, wearing his usual obscuring cloak.", false);
 	}
@@ -1203,7 +1203,7 @@ public  barTelAdre():void {
 		button = anotherButton(button,"ScyllaCats",katherine.katherineGreeting);
 	}
 	//URTA
-	if (kGAMECLASS.urta.urtaAtBar()) {
+	if (urta.urtaAtBar()) {
 		//Scylla & The Furries Foursome
 		if (scylla.action == Scylla.SCYLLA_ACTION_FURRY_FOURSOME)
 		{
@@ -1218,18 +1218,18 @@ public  barTelAdre():void {
 			else
 				outputText("\n\nUrta's usual place is vacant, though her table still holds a half-drank mug of something potent and alcoholic.  If it's anything like the last time this happened, she's snuck into a back room with Scylla to relieve some pressure.  It might not hurt to join in...");
 			flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 4;
-			button = anotherButton(button, "Back Room", kGAMECLASS.urta.scyllaAndUrtaSittingInATree);
+			button = anotherButton(button, "Back Room", urta.scyllaAndUrtaSittingInATree);
 		}
-		else if (kGAMECLASS.urta.urtaBarDescript()) {
-			if (auntNancy.auntNancy(false) && flags[kFLAGS.URTA_INCUBATION_CELEBRATION] == 0 && kGAMECLASS.urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
-				kGAMECLASS.urtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
+		else if (urta.urtaBarDescript()) {
+			if (auntNancy.auntNancy(false) && flags[kFLAGS.URTA_INCUBATION_CELEBRATION] == 0 && urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
+				urtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
 				return;
 			}
-			button = anotherButton(button,"Urta",kGAMECLASS.urta.urtaBarApproach);
+			button = anotherButton(button,"Urta",urta.urtaBarApproach);
 		}
 	}
 	//VALA
-	if(kGAMECLASS.purifiedFaerieBitchBar()) button = anotherButton(button,"Vala",kGAMECLASS.chooseValaInBar);
+	if(purifiedFaerieBitchBar()) button = anotherButton(button,"Vala",chooseValaInBar);
 
 	addButton(9,"Leave",telAdreMenu);
 }
@@ -1250,7 +1250,7 @@ private function oldbarTelAdre():void {
 	if(player.humanScore() <= 3) outputText("despite your altered appearance, ", false);
 	outputText("you hardly get any odd stares.  There are a number of rooms towards the back, as well as a stairway leading up to an upper level.", false);
 	//Hours of operation decrease after birth
-	if(!kGAMECLASS.urtaQuest.urtaBusy()) {
+	if(!urtaQuest.urtaBusy()) {
 		if(edryn.edrynBar()) {
 			//Edryn panic appearance!
 			if(flags[kFLAGS.EDRYN_PREGNAT_AND_NOT_TOLD_PC_YET] == 0 && flags[kFLAGS.EDRYN_PREGNANCY_INCUBATION] > 0 && flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] == 0) {
@@ -1284,7 +1284,7 @@ private function oldbarTelAdre():void {
 		}
 	}
 	//Nun cat stuff!
-	if((model.time.hours > 8 || model.time.hours < 18) && player.hasKeyItem("Silver Kitty-Bell") >= 0) {
+	if((game.time.hours > 8 || game.time.hours < 18) && player.hasKeyItem("Silver Kitty-Bell") >= 0) {
 		misc1Name = "ScyllaCats";
 		misc1 = katherine.katherineGreeting;
 		katherine.catMorphIntr();
@@ -1321,27 +1321,27 @@ private function oldbarTelAdre():void {
 				misc1 = scylla.Scylla6;
 			}
 			//Round 5 - repeatable!
-			else if(flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 4 && (model.time.hours == 18 || model.time.hours == 19)) {
+			else if(flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 4 && (game.time.hours == 18 || game.time.hours == 19)) {
 				outputText("\n\nYou see Scylla's white and black nun's habit poking above the heads of the other patrons. The tall woman seems unaware of her effect on those around her, but it's clear by the way people are crowding she's acquired a reputation by now. You're not sure what she's doing, but you could push your way through to find out.", false);
 				misc1Name = "Scylla";
 				misc1 = scylla.scyllaAdictsAnonV;
 			}
 			//Round 2.5 Repeatable
-			else if(flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 2 && flags[kFLAGS.FED_SCYLLA_TODAY] == 0 && model.time.hours >= 7 && model.time.hours <= 11) {
+			else if(flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 2 && flags[kFLAGS.FED_SCYLLA_TODAY] == 0 && game.time.hours >= 7 && game.time.hours <= 11) {
 				outputText("\n\nIt looks like Scylla is milling around here this morning, praying as she keeps an eye out for someone to 'help'.");
 				misc1Name = "Scylla";
 				misc1 = scylla.scyllasFlyingSolo;
 			}
 		}
 	}
-	if(model.time.hours >= 8 && model.time.hours <= 16 && (misc1 == null || (rand(2) == 0 && misc1 != scylla.Scylla6)) && flags[kFLAGS.NIAMH_STATUS] == 0) {
+	if(game.time.hours >= 8 && game.time.hours <= 16 && (misc1 == null || (rand(2) == 0 && misc1 != scylla.Scylla6)) && flags[kFLAGS.NIAMH_STATUS] == 0) {
 		niamh.telAdreNiamh();
 		if(flags[kFLAGS.MET_NIAMH] == 0) misc1Name = "Beer Cat";
 		else misc1Name = "Niamh";
 		misc1 = niamh.approachNiamh;
 	}
 	var hel:Function = null;
-	if(player.gender > 0 && model.time.hours >= 14 && rand(2) == 0 && model.time.hours < 20 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && (!kGAMECLASS.helFollower.followerHel() || flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 1)) {
+	if(player.gender > 0 && game.time.hours >= 14 && rand(2) == 0 && game.time.hours < 20 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && (!helFollower.followerHel() || flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 1)) {
 		edryn.helAppearance();
 		hel = edryn.approachHelAtZeBitch;
 	}
@@ -1350,11 +1350,11 @@ private function oldbarTelAdre():void {
 	//Backroom urta
 	var backroom:* = 0;
 	var backroomT:String = "Backrooms";
-	if(kGAMECLASS.purifiedFaerieBitchBar()) vala = 2621;
-	if(!kGAMECLASS.urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] != 1 && model.time.hours < 15) {
+	if(purifiedFaerieBitchBar()) vala = 2621;
+	if(!urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] != 1 && game.time.hours < 15) {
 		//Scylla + Urta sitting in a tree
 		// SOME COMFORT     FUCKED URTA      NOT PISSED      DRUNK TIME    SCYLLA TO LV4    RANDOM CHANCE  HAS THIS HAPPENED BEFORE? SCYLLA REQS ->
-		if(flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 2 && flags[kFLAGS.TIMES_FUCKED_URTA] > 0 && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] < 1 && (kGAMECLASS.urta.urtaDrunk() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && rand(3) == 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] == 0 || (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] > 0)) && ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0 && !kGAMECLASS.urta.urtaDrunk()) || player.balls > 0) && player.totalCocks() > 0 && misc1Name != "Scylla") {
+		if(flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 2 && flags[kFLAGS.TIMES_FUCKED_URTA] > 0 && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] < 1 && (urta.urtaDrunk() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && rand(3) == 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] == 0 || (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] > 0)) && ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0 && !urta.urtaDrunk()) || player.balls > 0) && player.totalCocks() > 0 && misc1Name != "Scylla") {
 			if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) {
 				outputText("\n\nUrta's usual place is vacant, though her table still holds a half-drank glass of water.  If it's anything like the last time this happened, she's snuck into a back room with Scylla to relieve some pressure.  It might not hurt to join in...", false);
 			}
@@ -1369,15 +1369,15 @@ private function oldbarTelAdre():void {
 			flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 4;
 			if(misc1Name == "Scylla") misc1 = null;
 			urta2 = null;
-			backroom = kGAMECLASS.urta.scyllaAndUrtaSittingInATree;
+			backroom = urta.scyllaAndUrtaSittingInATree;
 			flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 4;
 		}
-		else if(kGAMECLASS.urta.urtaBarDescript()) {
+		else if(urta.urtaBarDescript()) {
 			if(flags[kFLAGS.URTA_INCUBATION_CELEBRATION] == 0 && flags[kFLAGS.URTA_INCUBATION] > 0) {
-				kGAMECLASS.urtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
+				urtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
 				return;
 			}
-			urta2 = kGAMECLASS.urta.urtaBarApproach;
+			urta2 = urta.urtaBarApproach;
 		}
 		else urta2 = null;
 	}
@@ -1387,7 +1387,7 @@ private function oldbarTelAdre():void {
 		backroomT = "Ask4Amily";
 	}
 	var dominika2:Number = 0;
-	if(model.time.hours > 17 && model.time.hours < 20 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] != -1) {
+	if(game.time.hours > 17 && game.time.hours < 20 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] != -1) {
 		dominika2 = 2739;
 		dominika.fellatrixBarAppearance();
 	}
@@ -1404,12 +1404,12 @@ private function oldbarTelAdre():void {
 	var rogarB:Function = null;
 	var rogarT:String = "HoodedFig";
 	if(flags[kFLAGS.ROGAR_PHASE] == 3 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-		rogarB = kGAMECLASS.swamp.rogar.rogarThirdPhase;
+		rogarB = swamp.rogar.rogarThirdPhase;
 		//Wet Bitch screen text when Ro'gar phase = 3:
 		outputText("\n\nYou notice a cloaked figure at the bar, though you're quite unable to discern anything else as its back is turned to you.", false);
 	}
 	else if(flags[kFLAGS.ROGAR_PHASE] >= 4 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-		rogarB = kGAMECLASS.swamp.rogar.rogarPhaseFour;
+		rogarB = swamp.rogar.rogarPhaseFour;
 		rogarT = "Rogar";
 		//Wet Bitch bar text when Ro'gar phase = 4:
 		outputText("\n\nRo'gar is here with his back turned to the door, wearing his usual obscuring cloak.", false);
@@ -1492,7 +1492,7 @@ public  armorShop():void {
 		if(player.gems < 200) {
 			outputText("\n\nYou can't afford that!");
 		}
-		else egg = kGAMECLASS.emberScene.getSomeStuff;
+		else egg = emberScene.getSomeStuff;
 	}
 	choices(armors.CHBIKNI.shortName, createCallBackFunction(armorBuy, armors.CHBIKNI),
 			armors.FULLCHN.shortName, createCallBackFunction(armorBuy, armors.FULLCHN),
@@ -1574,7 +1574,7 @@ private  urtaIsABadass():void {
 //[Invetigate]
 private  watchUrtaBeABadass():void {
 	outputText("", true);
-	kGAMECLASS.urta.urtaSprite();
+	urta.urtaSprite();
 	outputText("You shoulder past the bulky centaurs, ignore the rough fur of the nearby wolves and hounds as it brushes against you, and press your way through to the center of the crowd.  Eventually the throng parts, revealing the embattled combatants.  A snarling wolf, nearly eight feet tall, towers over Urta.  The comparatively diminutive fox-woman is girded in light leather armor and dripping with sweat.  The larger wolf-man is staggering about, and his dark brown fur is matted with blood.\n\n", false);
 
 	outputText("The bigger canid charges, snarling, with his claws extended.  Urta sidesteps and pivots, her momentum carrying her foot around in a vicious kick.  Her foot hits the side of the beast's knee hard enough to buckle it, and the wolf goes down on his knees with an anguished cry.  Urta slips under his arm and twists, turning his slump into a fall.  A cloud of dust rises from the heavy thud of the beast's body as it slams into the cobblestone street.\n\n", false);
@@ -1623,7 +1623,7 @@ public  gymDesc():void {
 	if(flags[kFLAGS.LOPPE_MET] > 0 && flags[kFLAGS.LOPPE_DISABLED] == 0) {
 		outputText("\n\nYou spot Loppe the laquine wandering around, towel slung over her shoulder.  When she sees you, she smiles and waves to you and you wave back.");
 	}
-	if(model.time.hours > 9 && model.time.hours < 14) heckel.heckelAppearance();
+	if(game.time.hours > 9 && game.time.hours < 14) heckel.heckelAppearance();
 	gymMenu();
 }
 
@@ -1645,7 +1645,7 @@ private  gymMenu():void {
 		ifris2 = ifris.approachIfris;
 	if(flags[kFLAGS.MET_IFRIS] > 0)
 		ifrisB = "Ifris";
-	if(model.time.hours > 9 && model.time.hours <= 15) {
+	if(game.time.hours > 9 && game.time.hours <= 15) {
 		hyena = heckel.greetHeckel;
 		if(flags[kFLAGS.MET_HECKEL] > 0)
 			hyenaB = "Heckel";
@@ -1825,7 +1825,7 @@ private  yaraSex(girl:boolean = true):void {
 	outputText("", true);
 	outputText("Yara makes you comfortable and has you look away while she uses her piercing tools.  It hurts, but she's skilled. Before you know it, your piercing is done!  You move to rise, retaining a bit of modesty", false);
 	if(flags[kFLAGS.PC_FETISH] > 0) outputText(" despite the guilty thrill", false);
-	outputText(".  \"<i>Hold it,</i>\" Yara commands softly, pressing her hand against your " + chestDesc() + " and pushing you back in your chair.  \"<i>Do you think I'll let you get away without some... field testing?</i>\"\n\n", false);
+	outputText(".  \"<i>Hold it,</i>\" Yara commands softly, pressing her hand against your " + game.player.chestDesc() + " and pushing you back in your chair.  \"<i>Do you think I'll let you get away without some... field testing?</i>\"\n\n", false);
 
 	outputText("She seems intent on getting some loving - would you like to turn her down, or will you let nature run its course?", false);
 	//[not at all] [yeah baby]
@@ -1862,14 +1862,14 @@ private  letsDoYaraSex(girl:boolean = true):void {
 	outputText(", neatly silencing you with the lust-filled fires simmering in her eyes.  \"<i>Call it quality testing,</i>\" she purrs.  Her free hand runs up and down your inner thigh, the ticklish teasing nearly making your head spin.  Licking her lips in anticipation, Yara wiggles out of her clothes and clambers onto the chair, kneeling on the armrests.  Due to her awkward posture, you find your gaze drifting to her wide-spread legs.  Nestled there, twinkling with a radiant luster, is a golden ring, looped through her already-throbbing clit.  A blush darkens her cheeks as she notices your stare, but she seems almost empowered by it.\n\n", false);
 
 	outputText("Yara's free hand slides down her belly - past the stud in her navel - down to her box.  Using two fingers, she spreads her lips apart, giving you a great view of both her glistening button-piercing and the fleshy recesses past it.  She bites her bottom lip gently", false);
-	if(!girl && player.hasCock()) outputText(" as your " + cockDescript(x) + " rises to attention, her eyes fixed upon the stiffened tool.  You resist the urge to grab her thin-yet-girlish hips and power into her right then and there, curious enough to allow her teasing.", false);
+	if(!girl && player.hasCock()) outputText(" as your " + game.player.cockDescript(x) + " rises to attention, her eyes fixed upon the stiffened tool.  You resist the urge to grab her thin-yet-girlish hips and power into her right then and there, curious enough to allow her teasing.", false);
 	else outputText(" as a growing puddle of love stains the cushioned chair.  It takes most of your power to not drag her down and force her face into your box.", false);
 	outputText("\n\n", false);
 
 	outputText("She leans forward, planting you with a wet and lingering kiss.  She moves lower, kissing ", false);
 	if(player.biggestTitSize() < 1) outputText("your chest", false);
 	else outputText("your nipples, one at a time", false);
-	outputText(" and smooching your belly.  Even with her racially characteristic flexibility, however, she's not able to get any lower from that angle.  \"<i>Hold this, dear,</i>\" she says somewhat snarkily, pivoting around and resting her ass against your " + chestDesc() + ".  In this new posture, Yara can easily have her way with your junk, and by the way her wagging tail keeps bopping you in the face you can tell she's excited.\n\n", false);
+	outputText(" and smooching your belly.  Even with her racially characteristic flexibility, however, she's not able to get any lower from that angle.  \"<i>Hold this, dear,</i>\" she says somewhat snarkily, pivoting around and resting her ass against your " + game.player.chestDesc() + ".  In this new posture, Yara can easily have her way with your junk, and by the way her wagging tail keeps bopping you in the face you can tell she's excited.\n\n", false);
 
 	outputText("Not content with simple penetration, it seems, the cat girl gets to work.", false);
 	if(player.balls > 0) outputText("  Her dexterous fingertips brush against your " + ballsDescriptLight() + ", light and fluttery strokes that send shivers coursing through you.  The near-lack of contact is at least as titillating as the less-subtle Marethians you've come across.", false);
@@ -1877,9 +1877,9 @@ private  letsDoYaraSex(girl:boolean = true):void {
 
 	//male
 	if(!girl && player.hasCock()) {
-		outputText("Yara's pursed lips touch down upon your cockhead, her head tilting from side to side as she vexingly and repeatedly kisses your " + cockDescript(x) + ".  However, she abruptly pauses, glancing sidelong at you expectantly.  When you don't immediately respond, she huffs a sigh - onto your dick - and raises her hips level with your nose.  After momentarily getting lost in the bouncing of her tight-yet-jiggly cheeks, you get the message, leaning forward and giving her puffy sex a long and lingering lick.  You're rewarded with a low-pitched and very satisfied groan.  Though you go in for another taste, the shining ring looped through her joy-buzzer attracts your oral attention like a magnet.  Gently as a newborn kitten, your teeth close down on the clit-embedded trinket.  Yara goes absolutely stiff as you begin to softly tug the piercing around, neatly paralyzed by the sensitivity.  Indistinguishable mewling tumbles from her mouth as she attempts to attune herself to your yanking antics.  Her lithe frame spasms in ecstasy, forcing you to release your grip on her, lest something unfortunate happen to her undercarriage.\n\n", false);
+		outputText("Yara's pursed lips touch down upon your cockhead, her head tilting from side to side as she vexingly and repeatedly kisses your " + game.player.cockDescript(x) + ".  However, she abruptly pauses, glancing sidelong at you expectantly.  When you don't immediately respond, she huffs a sigh - onto your dick - and raises her hips level with your nose.  After momentarily getting lost in the bouncing of her tight-yet-jiggly cheeks, you get the message, leaning forward and giving her puffy sex a long and lingering lick.  You're rewarded with a low-pitched and very satisfied groan.  Though you go in for another taste, the shining ring looped through her joy-buzzer attracts your oral attention like a magnet.  Gently as a newborn kitten, your teeth close down on the clit-embedded trinket.  Yara goes absolutely stiff as you begin to softly tug the piercing around, neatly paralyzed by the sensitivity.  Indistinguishable mewling tumbles from her mouth as she attempts to attune herself to your yanking antics.  Her lithe frame spasms in ecstasy, forcing you to release your grip on her, lest something unfortunate happen to her undercarriage.\n\n", false);
 
-		outputText("As soon as you release her from the mind-numbing grasp, she whips her hips forward - spattering your " + player.armorName + " with her downpour of girlcum in the process - and leaning back, hastily lining herself up with your " + cockDescript(x) + ".  Only hesitating for a second to leak a bit of lubricant onto your eager shaft, she plummets downwards, not stopping until her ass slams against your pelvis.\n\n", false);
+		outputText("As soon as you release her from the mind-numbing grasp, she whips her hips forward - spattering your " + player.armorName + " with her downpour of girlcum in the process - and leaning back, hastily lining herself up with your " + game.player.cockDescript(x) + ".  Only hesitating for a second to leak a bit of lubricant onto your eager shaft, she plummets downwards, not stopping until her ass slams against your pelvis.\n\n", false);
 
 		outputText("Yara takes total control, her death-grip on the armrests giving her full coital maneuverability.  Despite the easy entry, you can't believe how well her sopping-wet folds squeeze against you.  For a long while the only sounds heard are the slapping of her cheeks and the studded-up cat girl's halting pants of pleasure.  \"<i>I wanna say... your new piercing... works like a charm,</i>\" she mutters between throaty groans.\n\n", false);
 
@@ -1893,7 +1893,7 @@ private  letsDoYaraSex(girl:boolean = true):void {
 		//heavy
 		else if(player.cumQ() <= 1500) outputText("Yara's belly visibly plumps with the quantity of cum you pour into her, the extra weight bending her over to rest heavily against your " + player.leg() + ".  She purrs happily, patting her distended gut even while the tremors of her own orgasm run through her.\n\nYara lifts herself off you, pressing a hand against her tummy as she somewhat ungracefully steps off the chair.", false);
 		//special (super-big)
-		else outputText("Her low-pitched ecstatic moans swiftly escalate to piercing shrieks as her taut belly quickly balloons to roughly beach ball-sized in moments.  With a huge effort, she manages to haul herself off your semen-pumping staff, falling back against you.  Sighing contentedly, Yara nestles herself into your " + chestDesc() + ", getting comfortable despite the seed drizzling from her overstuffed nethers.  You just sit there for a few minutes, waiting patiently as your ejaculatory rampage ceases.\n\nYara makes a noble attempt to rise that is ultimately thwarted by her huge fluid-filled belly.  Casting a sidelong sheepish grin at you, she giggles nervously.  \"<i>Mind helping me out here, friend?</i>\" she says after a moment's hesitation.  With your assistance, she rises and stands on wobbling feet.  She tries her best to compose herself with your cum still streaming down her thighs, the flow only intensifying as she impatiently presses against the bloated belly.", false);
+		else outputText("Her low-pitched ecstatic moans swiftly escalate to piercing shrieks as her taut belly quickly balloons to roughly beach ball-sized in moments.  With a huge effort, she manages to haul herself off your semen-pumping staff, falling back against you.  Sighing contentedly, Yara nestles herself into your " + game.player.chestDesc() + ", getting comfortable despite the seed drizzling from her overstuffed nethers.  You just sit there for a few minutes, waiting patiently as your ejaculatory rampage ceases.\n\nYara makes a noble attempt to rise that is ultimately thwarted by her huge fluid-filled belly.  Casting a sidelong sheepish grin at you, she giggles nervously.  \"<i>Mind helping me out here, friend?</i>\" she says after a moment's hesitation.  With your assistance, she rises and stands on wobbling feet.  She tries her best to compose herself with your cum still streaming down her thighs, the flow only intensifying as she impatiently presses against the bloated belly.", false);
 
 		outputText("\n\n\"<i>Works like a charm,</i>\" she concludes as you both redress", false);
 		if(player.cumQ() > 1500) outputText(", Yara trying her best to fit her clothes over the bump in her midsection", false);
@@ -2023,7 +2023,7 @@ private  flirtWithVictoria(itype:ItemType):void {
 		outputText("your chest.");
 	else
 		outputText("your face.");
-	outputText("  <i>\"Now then,  let's see what you've got!\"</i>  With practiced ease she works the bottom of your [armor] off, revealing [eachCock].  <i>\"Well, well. Looks like I was right about you from the start,\"</i> she says, licking her lips again.  <i>\"Just a taste first, I think...\"</i> Sticking her tongue out once more, she gives your rapidly stiffening dick a long, slow lick from the base up to the tip.  She closes her mouth just around your " + cockDescript(x) + ", giving it a few rapid licks before pulling off with a pop.");
+	outputText("  <i>\"Now then,  let's see what you've got!\"</i>  With practiced ease she works the bottom of your [armor] off, revealing [eachCock].  <i>\"Well, well. Looks like I was right about you from the start,\"</i> she says, licking her lips again.  <i>\"Just a taste first, I think...\"</i> Sticking her tongue out once more, she gives your rapidly stiffening dick a long, slow lick from the base up to the tip.  She closes her mouth just around your " + game.player.cockDescript(x) + ", giving it a few rapid licks before pulling off with a pop.");
 
 	outputText("\n\n<i>\"Oh yes,  I think you'll do rather nicely.  In fact, I think I'm going to give you a special treat.\"</i>  Smirking up at you, the busty dog-girl unbuttons her top just beneath her ample chest.  Before you can puzzle out what it is she's doing, she takes your [cock] and stuffs it into the hole and up through her cleavage");
 	if(player.cocks[x].cockLength >= 5)
@@ -2043,7 +2043,7 @@ private  flirtWithVictoria(itype:ItemType):void {
 
 	outputText("\n\nVicky continues her marshmallowy assault for what feels like hours, slowing down every time you give even the slightest indication that you're about to cum.  <i>\"You might hate me for this now, love, but trust me.  It'll feel so much better once you finally do cum.\"</i>  She may be right, but it's agony to get so close to orgasm only to back away, and then draw close once more.  She's practically driving you crazy with lust with her tantalizingly slow tit-fuck.  As you feel your cum nearly boiling away in your [balls], only to have her back away once again, something inside of you snaps.");
 
-	outputText("\n\nYou wrench your dick free of the confines of her pillowy mounds, and grab her around her plush middle.  She gives a surprised yelp as you nearly throw her against the counter and lift her butt up into the air.  <i>\"Ooooh, someone's excited!\"</i>  she nearly cheers, looking over her shoulder and wagging her plush rear up at you as her tail swishes back and forth, showing that she's nearly as consumed with lust as you are.  Flipping her long skirt up over her back, you violently pull her panties aside before you force your " + cockDescript(x) + " deep within her gushing folds.");
+	outputText("\n\nYou wrench your dick free of the confines of her pillowy mounds, and grab her around her plush middle.  She gives a surprised yelp as you nearly throw her against the counter and lift her butt up into the air.  <i>\"Ooooh, someone's excited!\"</i>  she nearly cheers, looking over her shoulder and wagging her plush rear up at you as her tail swishes back and forth, showing that she's nearly as consumed with lust as you are.  Flipping her long skirt up over her back, you violently pull her panties aside before you force your " + game.player.cockDescript(x) + " deep within her gushing folds.");
 
 	outputText("\n\nShe squeals in surprise and pleasure as she's penetrated, thrusting her ample hips back at you as you begin to pound into her.  Her ass jiggles violently with every thrust, sending ripples through her creamy flesh.  You grip her around her soft middle as you slam against her hips, barely noticing every squeak she makes as her thick thighs are pounded into the side of the counter.  <i>\"Ah!  Oh, Marae, that feels incredible!\"</i>  she nearly screams as her monocle finally loses its grip on her face and goes flying, thankfully landing safely on a pile of scrap cloth.  If you were more sound of mind, you'd probably have dreaded the cost of repairing the broken eyepiece.");
 
@@ -2062,4 +2062,3 @@ private  flirtWithVictoria(itype:ItemType):void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

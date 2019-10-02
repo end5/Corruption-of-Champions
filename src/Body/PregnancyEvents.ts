@@ -1176,12 +1176,12 @@ export function updatePregnancy():boolean {
 				outputText("<b>\nA honey-scented fluid drips from your rectum.</b>  At first it worries you, but as the smell fills the air around you, you realize anything with such a beautiful scent must be good.  ", false);
 				if(player.cockTotal() > 0) outputText("The aroma seems to permeate your very being, slowly congregating in your ", false);
 				if(player.cockTotal() == 1) {
-					outputText(cockDescript(0), false);
-					if(player.horseCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + cockDescript(0) + " is twitching and dripping, the flare swollen and purple.  ", false);
-					if(player.dogCocks() == 1) outputText(", each inhalation making it thicker, harder, and firmer.  You suck in huge lungfuls of air, desperate for more, until your " + cockDescript(0) + " is twitching and dripping, its knot swollen to the max.  ", false);
-					if(player.normalCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + cockDescript(0) + " is twitching and dripping, the head swollen and purple.  ", false);
+					outputText(game.player.cockDescript(0), false);
+					if(player.horseCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + game.player.cockDescript(0) + " is twitching and dripping, the flare swollen and purple.  ", false);
+					if(player.dogCocks() == 1) outputText(", each inhalation making it thicker, harder, and firmer.  You suck in huge lungfuls of air, desperate for more, until your " + game.player.cockDescript(0) + " is twitching and dripping, its knot swollen to the max.  ", false);
+					if(player.normalCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + game.player.cockDescript(0) + " is twitching and dripping, the head swollen and purple.  ", false);
 					//FAILSAFE FOR NEW COCKS
-					if(player.normalCocks() == 0 && player.dogCocks() == 0 && player.horseCocks() == 0) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air until your " + cockDescript(0) + " is twitching and dripping.  ", false);
+					if(player.normalCocks() == 0 && player.dogCocks() == 0 && player.horseCocks() == 0) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air until your " + game.player.cockDescript(0) + " is twitching and dripping.  ", false);
 				}
 				if(player.cockTotal() > 1) outputText("groin.  Your " + player.multiCockDescriptLight() + " fill and grow with every lungful of the stuff you breathe in.  You suck in great lungfuls of the tainted air, desperate for more, your cocks twitching and dripping with need.  ", false);
 				outputText("You smile knowing you couldn't stop from masturbating if you wanted to.\n", false);
@@ -1286,7 +1286,7 @@ export function updatePregnancy():boolean {
 		if(player.vaginas.length > 0) outputText("Your " + vaginaDescript(0) + " becomes engorged and sensitive.  ", false);
 		outputText("Your hand darts down to the amber, scooping up a handful of the sticky stuff.  You wonder what your hand is doing as it brings it up to your mouth, which instinctively opens.  You shudder in revulsion as you swallow the sweet-tasting stuff, your mind briefly wondering why it would do that.  The stuff seems to radiate warmth, quickly pushing those nagging thoughts away as you scoop up more.\n\n", false);
 		outputText("A sudden slip from below surprises you; a white sphere escapes from your anus along with another squirt of honey.  Your drugged brain tries to understand what's happening, but it gives up, your hands idly slathering honey over your loins.  The next orb pops out moments later, forcing a startled moan from your mouth.  That felt GOOD.  You begin masturbating to the thought of laying more eggs... yes, that's what those are.  You nearly cum as egg number three squeezes out.  ", false);
-		if(player.averageLactation() >= 1 && player.biggestTitSize() > 2) outputText("Seeking even greater sensation, your hands gather the honey and massage it into your " + breastDescript(0) + ", slowly working up to your nipples.  Milk immediately begins pouring out from the attention, flooding your chest with warmth.  ", false);
+		if(player.averageLactation() >= 1 && player.biggestTitSize() > 2) outputText("Seeking even greater sensation, your hands gather the honey and massage it into your " + game.player.breastDescript(0) + ", slowly working up to your nipples.  Milk immediately begins pouring out from the attention, flooding your chest with warmth.  ", false);
 		outputText("Each egg seems to come out closer on the heels of the one before, and each time your conscious mind loses more of its ability to do anything but masturbate and wallow in honey.\n\n", false);
 		outputText("Some time later, your mind begins to return, brought to wakefulness by an incredibly loud buzzing...  You sit up and see a pile of dozens of eggs resting in a puddle of sticky honey.  Most are empty, but a few have hundreds of honey-bees emptying from them, joining the massive swarms above you.  ", false);
 		if(player.cor < 35) outputText("You are disgusted, but glad you were not stung during the ordeal.  You stagger away and find a brook to wash out your mouth with.", false);
@@ -1369,7 +1369,7 @@ export function updatePregnancy():boolean {
 		plains.satyrScene.satyrBirth(false);
 	}
 	if (player.pregnancyType == PregnancyStore.PREGNANCY_BENOIT && player.pregnancyIncubation <= 2) {
-		if(model.time.hours != 5 && model.time.hours != 6) {
+		if(game.time.hours != 5 && game.time.hours != 6) {
 			player.knockUpForce(player.pregnancyType, 3); //Make sure eggs are only birthed early in the morning
 		}
 		else {
@@ -1399,9 +1399,9 @@ export function updatePregnancy():boolean {
 		outputText("You heave and push, instinctively driven to flex muscles you didn't even know you had to speed the super human labor you've entered into.  ", false);
 		if(player.vaginalCapacity() < 60) outputText("It hurts a little as your cervix starts to stretch wide", false);
 		else outputText("It actually feels kind of nice as your cervix is stretched wide", false);
-		outputText(", but somehow your body accommodates the forced dilation without too much discomfort.  It's soon forgotten as you feel your " + vaginaDescript(0) + " pushed into a large sphere, stretched around the inhuman form of your child as it squirms and writhes inside you on its path to freedom.  You grunt and flex, watching with disbelief as a tiny, rabbit-eared form slides from your slick canal into the grass, the process leaving your " + chestDesc() + " heaving with unexpected pleasure.\n\n", false);
+		outputText(", but somehow your body accommodates the forced dilation without too much discomfort.  It's soon forgotten as you feel your " + vaginaDescript(0) + " pushed into a large sphere, stretched around the inhuman form of your child as it squirms and writhes inside you on its path to freedom.  You grunt and flex, watching with disbelief as a tiny, rabbit-eared form slides from your slick canal into the grass, the process leaving your " + game.player.chestDesc() + " heaving with unexpected pleasure.\n\n", false);
 		
-		outputText("The whole process starts over again – there's another one!  By now your well-stretched pussy is oozing both the birthing fluids and your own lubricants, and the second bunny-child slides down to bump into its sibling with ease.  You shake and shudder, groaning and spasming as you nearly cum from the stimulation, but in the end you're left panting and horny.  The two bunnies look like miniature people except for their ears, tails, and fuzzy legs.  Your children lick themselves clean before hopping up onto your " + chestDesc() + " and suckling your nipples for a while", false);
+		outputText("The whole process starts over again – there's another one!  By now your well-stretched pussy is oozing both the birthing fluids and your own lubricants, and the second bunny-child slides down to bump into its sibling with ease.  You shake and shudder, groaning and spasming as you nearly cum from the stimulation, but in the end you're left panting and horny.  The two bunnies look like miniature people except for their ears, tails, and fuzzy legs.  Your children lick themselves clean before hopping up onto your " + game.player.chestDesc() + " and suckling your nipples for a while", false);
 		if(player.lactationQ() > 500) outputText(", growing fat from all the milk", false);
 		outputText(".  At last they finish, and with one last nuzzle, your strange bunny-children go hopping off, doubtless to find more of their own kind.\n\n", false);
 		

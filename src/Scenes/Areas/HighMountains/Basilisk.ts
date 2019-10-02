@@ -18,7 +18,7 @@
 			player.spe -= amount;
 			if(player.findStatusAffect(StatusAffects.BasiliskSlow) >= 0) player.addStatusValue(StatusAffects.BasiliskSlow,1,amount);
 			else player.createStatusAffect(StatusAffects.BasiliskSlow,amount,0,0,0);
-			showStatDown( 'spe' );
+			mainView.statsView.showStatDown( 'spe' );
 			// speUp.visible = false;
 			// speDown.visible = true;
 		}
@@ -31,7 +31,7 @@
 			//Success:
 			if(player.inte/5 + rand(20) < 24) {
 				outputText("You can't help yourself... you glimpse the reptile's grey, slit eyes. You look away quickly, but you can picture them in your mind's eye, staring in at your thoughts, making you feel sluggish and unable to coordinate. Something about the helplessness of it feels so good... you can't banish the feeling that really, you want to look in the basilisk's eyes forever, for it to have total control over you.", false);
-				game.dynStats("lus", 3);
+				dynStats("lus", 3);
 				//apply status here
 				basiliskSpeed(player,20);
 				player.createStatusAffect(StatusAffects.BasiliskCompulsion,0,0,0,0);
@@ -124,4 +124,3 @@
 		}
 		
 	}
-

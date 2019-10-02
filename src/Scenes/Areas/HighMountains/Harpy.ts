@@ -44,7 +44,7 @@
 		protected  harpyTease():void
 		{
 			outputText("The harpy charges at you carelessly, her body striking you with the full weight of her motherly hips.  The pair of you go crashing backwards onto the ground.  You grapple with her weighty ass, trying your best not to think dirty thoughts, but the way she's maniacally flapping and writhing her curvy body against you makes it impossible! After a brief, groping wrestle on the ground, she pushes you away and takes flight again.", false);
-			game.dynStats("lus", (12 + rand(player.sens / 5)));
+			dynStats("lus", (12 + rand(player.sens / 5)));
 			combatRoundOver();
 		}
 
@@ -135,4 +135,3 @@
 		}
 
 	}
-

@@ -182,13 +182,13 @@
 			{
 				outputText("You fall backwards and stagger away, already feeling a flush of warmth colouring your cheeks, trying to drag your mind back to the fight and away from... other things.");
 
-				game.dynStats("lus", 10 + player.lib / 10);
+				dynStats("lus", 10 + player.lib / 10);
 			}
 			else
 			{
 				outputText("You furrow a brow at the Oni's ineffectual attack, not entirely sure if she was intending to hurt you or turn you on.  Her thighs did look rather tantalizing though...");
 
-				game.dynStats("lus", 5 + player.lib / 20);
+				dynStats("lus", 5 + player.lib / 20);
 			}
 
 			combatRoundOver();
@@ -254,7 +254,7 @@
 			if (flags[kFLAGS.PC_FETISH] >= 2)
 			{
 				outputText(" and to be honest, the grip isn't an entirely unplesent experience, either.  If only Izumi would stop playing around and just <i>take you</i> already.");
-				game.dynStats("lus", 5);
+				dynStats("lus", 5);
 			}
 			else
 			{
@@ -324,7 +324,7 @@
 				
 				var spdReducedBy:number = int(player.spe * 0.25);
 				player.createStatusAffect(StatusAffects.Groundpound, 3, spdReducedBy, 0, 0);
-				game.dynStats("spe-", spdReducedBy);
+				dynStats("spe-", spdReducedBy);
 				
 				if (combatDebug) trace("Applying Groundslam slow");
 			}
@@ -360,7 +360,7 @@
 			outputText("first into Izumi - specifically, into her chest.  Shocked by suddenly having your face rammed into the pillowy soft expanse of Izumi’s bust, you rear back only to be slammed straight back into the mountainous expanse by Izumi’s arm.");
 			
 			player.createStatusAffect(StatusAffects.Titsmother, 0, 0, 0, 0);
-			game.dynStats("lus", (player.lib / 15) + 5 + rand(5));
+			dynStats("lus", (player.lib / 15) + 5 + rand(5));
 			combatRoundOver();
 		}
 		
@@ -424,7 +424,7 @@
 					}
 				}
 				
-				game.dynStats("lus", player.lib / 15 + 5 + rand(5));
+				dynStats("lus", player.lib / 15 + 5 + rand(5));
 				doAI();
 			}
 		}
@@ -468,12 +468,12 @@
 			
 			outputText("With your face crushed into the Oni's cleavage, you can't help but wonder; why bother resisting?  She's just so <i>strong</i>, and her breasts feel so lushious against your [face]...");
 			
-			game.dynStats("lus", player.lib / 10 + 5 + rand(5));
+			dynStats("lus", player.lib / 10 + 5 + rand(5));
 			
 			if (flags[kFLAGS.PC_FETISH] >= 2)
 			{
 				outputText(" and to be honest, her grip isn't an entirely unplesent experience, either.  If only Izumi would stop playing around and just <i>take you</i> already.");
-				game.dynStats("lus", 5);
+				dynStats("lus", 5);
 			}
 			else
 			{
@@ -482,4 +482,3 @@
 			doAI();
 		}
 	}
-

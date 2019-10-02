@@ -26,7 +26,7 @@
 				outputText("You reach back and throw her off, but her perverted taunts still leave you feeling a little hot under the collar.\n\n", false);
 			}
 			else outputText("A daughter lays down in front of you and starts jilling herself on the spot.  It's impossible to not glance down and see her or hear her pleasured moans.  You step away to remove the distraction but it definitely causes some discomfort in your " + player.armorName + ".\n\n", false);
-			game.dynStats("lus", 1 + player.lib/15+rand(player.cor/30));
+			dynStats("lus", 1 + player.lib/15+rand(player.cor/30));
 		}
 
 		private  tamaniShowsUp():void {
@@ -139,5 +139,3 @@
 		}
 
 	}
-
-

@@ -41,7 +41,7 @@ URTA_LATESTBORN_GENDER
 URTA_LATESTBORN_COCKTYPE
 */
 
-		private  get pregnancy():PregnancyStore { return kGAMECLASS.urta.pregnancy; }
+		private  get pregnancy():PregnancyStore { return urta.pregnancy; }
 
 //Urta Pregnancy Stages
 //Urta takes 2 days to progress from one pregnancy stage to the next
@@ -391,7 +391,7 @@ private  goVisitUrtaBirfs(withUrta:boolean = false):void {
 private  goAfterUrtaBirf():void {
 	clearOutput();
 	outputText("You apologize, but there are pressing matters you need to attend to today... but you'll make it up to her somehow, you promise.  Urta looks disappointed, but sighs sadly and nods her head.  \"<i>Of course.  You're still a busy adventurer and all that.  Well, don't worry; I'll make sure this little one gets home and settled in safely.</i>\"");
-	model.time.hours++;
+	game.time.hours++;
 	doNext(playerMenu);
 }
 
@@ -417,8 +417,8 @@ private  stayAfterUrtaBirf():void {
 //(PC spends the day with Urta, so fast forward to PC waking up by Urta's side.)
 private  wakeUpWithUrtaAfterStaying():void {
 	clearOutput();
-	model.time.days++;
-	model.time.hours = 6;
+	game.time.days++;
+	game.time.hours = 6;
 	statScreenRefresh();
 	player.orgasm();
 	camp.sleepRecovery(false);
@@ -668,8 +668,8 @@ private  acceptUrtaLevelSixPreggoHelps():void {
 	outputText("\n\nUrta smiles and throws her arms around you in a loving embrace.  \"<i>All right, [name], now let's get you back to your tent to lie down; you're getting too big to be up and about at all hours of the day now...</i>\"");
 	outputText("\n\nThere's no need for her to be so worried, you're feeling fine... but you go along with what she's planning anyway.  The day is quite a blissful one for you; you get to spend it doing nothing but lounging around and enjoying yourself while Urta waits on you hand and foot, cooks meals, does the laundry, and otherwise handles everything that needs to be done.  When night comes, she insistently parks her furry butt right in your bedroll alongside you and won't be budged, so you have little choice but to cuddle with her for the night.  The next morning, you wake to a cooked breakfast, with Urta hand-feeding you more than half of it before she kisses you, says her goodbyes, and heads off again.");
 	camp.sleepRecovery(false);
-	model.time.days++;
-	model.time.hours = 6;
+	game.time.days++;
+	game.time.hours = 6;
 	doNext(camp.returnToCampUseOneHour);
 }
 	
@@ -789,7 +789,7 @@ public  urtaIsHappyAboutPregnancyAtTheBar():void {
 public  urtaIsAPregnantCopScene():void {
 	clearOutput();
 	outputText("As you enter the main square and start looking around to decide where to go next, a commotion erupts across the square.  \"<i>Stop in the name of the law!</i>\"  Edryn's voice rings out as a young, raggedy-looking dog-morph erupts from the crowd, Edryn in hot pursuit.  Unfortunately for the centauress, the smaller biped is quicker, more nimble, and better suited for making his way through the crowd.");
-	if (kGAMECLASS.telAdre.edryn.pregnancy.isPregnant) outputText("  Edryn's pregnant belly isn't helping her, either.");
+	if (telAdre.edryn.pregnancy.isPregnant) outputText("  Edryn's pregnant belly isn't helping her, either.");
 	
 	outputText("\n\nAs you contemplate whether or not to get involved, you realize that the thief's path is taking him right to a certain pregnant fox-morph, who watches him approach with a cool expression.  The moment he gets close enough, she pounces - in a startlingly quick display of bone-crunching violence, she has him face down on the cobblestones and body pinned.  As you meander over, she speaks up.");
 	
@@ -810,11 +810,11 @@ public  urtaSpecialDeliveries():void {
 	clearOutput();
 	
 	outputText("As you enter through the gates, Edryn clops up to you, a small basket swinging from the crook of one arm");
-	if (kGAMECLASS.telAdre.edryn.pregnancy.isPregnant) outputText(" and her pregnant belly jiggling from the motions");
+	if (telAdre.edryn.pregnancy.isPregnant) outputText(" and her pregnant belly jiggling from the motions");
 	outputText(", a faint smile on her face.  \"<i>Hey there, [name]; can you do me a favor, please?  Urta's been getting deliveries to her place, but I got an unexpected call, so I'm too busy to take her groceries to her today - you're her " + player.mf("boyfriend","girlfriend") + "; can you please take this for me?</i>\"  The centauress asks.");
 	
 	outputText("\n\nReasoning that it shouldn't take you too long, and Urta's likely to appreciate the action, you agree to do so and she hands it over with a rather knowing smile.  She then gallops off, ");
-	if (kGAMECLASS.telAdre.edryn.pregnancy.isPregnant) outputText("as quickly as a pregnant mare can, anyway,");
+	if (telAdre.edryn.pregnancy.isPregnant) outputText("as quickly as a pregnant mare can, anyway,");
 	outputText(" leaving you to head on to Urta's house.");
 	
 	outputText("\n\nYou follow the familiar path to Urta's new house.  Along the way you wonder if she'll be there; usually she's out and only Lianna and the kids are in.  Once you arrive, you rap your knuckles on the door and wait.  Lianna opens the door.  \"<i>Hello [name], come in.</i>\"  She steps aside to let you in.");
@@ -1349,7 +1349,7 @@ private  urtaPregCravings():void {
 	outputText(".  You smile apologetically down at her and ask her if she's found out what she's been craving yet.  \"<i>What do you think?</i>\"  She mumbles sarcastically, a playful twinkle in her eye, then starts noisily slurping and sucking, tongue frenziedly lapping at your intruding dick and her eyes rolling shut in obvious enjoyment as she gulps down the precum she's eagerly coaxing from you.");
 	
 	outputText("\n\nYou moan and try your best not to just grab onto her head and face-fuck her.  ");
-	if(player.cockTotal() > 2) outputText("The rest of your " + multiCockDescriptLight() + " are as erect as your [cock biggest] dribbling pre along their lengths as they slap Urta during her frenzied bobs.  ");
+	if(player.cockTotal() > 2) outputText("The rest of your " + game.player.multiCockDescriptLight() + " are as erect as your [cock biggest] dribbling pre along their lengths as they slap Urta during her frenzied bobs.  ");
 	outputText("You tell Urta that you're getting close; if she keeps up with this you won't last much longer.");
 	
 	outputText("\n\nIf she hears you, Urta isn't put off - instead, she redoubles her efforts, gurgling and moaning as she deepthroats your cock as best she can");
@@ -1654,7 +1654,7 @@ private  acceptUrtaRimJobbies():void {
 		outputText("\n\nYou stand up and face your back to her, letting her look at your [ass].  With a grunt of effort, Urta hauls herself upright and then positions herself behind your horsey-ass, squeezing and kneading the muscles of your flanks with her skilled fingers. She inhales as if to calm herself, then gently slides one finger into the still-loose and stretched ring of your anal muscles.  You wince in pain at the sudden intrusion, shaking a bit.");
 	}
 	outputText("\n\n\"<i>Right...</i>\"  With that, she leans in and gently begins to run the tip of her warm, wet tongue around your back passage, gently applying saliva to the soreness.  It still hurts a bit, but the feel of Urta's wet tongue on your ass does help you get over the pain, though the kinkiness of the act does not go unnoticed.");
-	if(player.cockTotal() > 1) outputText("  Especially not if your " + multiCockDescriptLight() + " have anything to say about it, throbbing at the mere feeling of Urta's wet tongue.");
+	if(player.cockTotal() > 1) outputText("  Especially not if your " + game.player.multiCockDescriptLight() + " have anything to say about it, throbbing at the mere feeling of Urta's wet tongue.");
 	else if(player.cockTotal() == 1) outputText("  Especially not if your [cock] has anything to say about it, throbbing at the mere feeling of Urta's wet tongue.");
 	else if(player.hasVagina()) outputText("  Especially not if your [pussy] has any say in the matter, winking at Urta, hoping for a licking of its own.");
 	outputText("  She slowly begins deepening the pseudo-kiss, pressing more and more of her wet tongue against you until she is taking slow, languid licks up and down the lengths of the chasm, slathering your burning skin with her cooling goo.");
@@ -1743,7 +1743,7 @@ private  pickKidSceneHere():void {
 	}
 	//Only possible between 12-14 hours.
 	//Lianna can cook, its hard to make a mess when you have someone who knows what they're doing around. Then again Lianna is a mad scientist, so...
-	else if(model.time.hours >= 12 && model.time.hours <= 14) {
+	else if(game.time.hours >= 12 && game.time.hours <= 14) {
 		hugAttackScene();
 	}
 	//Take the kids for a walk - Special thanks to Belin
@@ -2763,7 +2763,7 @@ private  liannaHandjobbies():void {
 	//If more than one dick:
 	if(player.cockTotal() > 1) {
 		outputText("\n\n\"<i>I need to get something first.</i>\"  She ducks out into her closet once more, rummaging through it until she emerges with a box full of cock-rings.  Okay, this doesn't look so inviting...");
-		outputText("\n\nShe ducks close to you and analyses your " + multiCockDescriptLight() + ".  \"<i>I think this one should do.</i>\"  She says, caressing your [cock biggest].  You murmur appreciatively at the stimulus, but you don't forget what's coming next even as your traitorous flesh erects itself for her.  She fishes for a cock-ring and attaches it to your other dick");
+		outputText("\n\nShe ducks close to you and analyses your " + game.player.multiCockDescriptLight() + ".  \"<i>I think this one should do.</i>\"  She says, caressing your [cock biggest].  You murmur appreciatively at the stimulus, but you don't forget what's coming next even as your traitorous flesh erects itself for her.  She fishes for a cock-ring and attaches it to your other dick");
 		if(player.cockTotal() > 2) outputText("s");
 		outputText(", effectively binding them at their base.  You groan hollowly at this; though this certainly will mean less mess, you're not so sure you're going to enjoy the sensation of trying to cum through the " + num2Text(player.cockTotal()-1) + " cocks that have been blocked up.  Satisfied with her work, she looks at your [cock biggest].");
 	}
@@ -2814,4 +2814,3 @@ private  liannaHandjobbies():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

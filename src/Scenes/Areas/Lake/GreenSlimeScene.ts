@@ -62,13 +62,13 @@ private  serviceLowCorruptionHighLust():void
 	//Penises foreplay
 	if(player.cockTotal() > 0) {
 		//Multicock folk get in their own way
-		if (player.cockTotal() > 1) outputText("Your own erect " + multiCockDescriptLight() + " rub against the creature's as you work, getting in the way somewhat.  ", false);
+		if (player.cockTotal() > 1) outputText("Your own erect " + game.player.multiCockDescriptLight() + " rub against the creature's as you work, getting in the way somewhat.  ", false);
 		//Big single cocked folk get in their own way too!
-		else if(player.cocks[0].cockThickness >= 36) outputText("Your own erect " + cockDescript(0) + " rubs against the creature's as you work, getting in the way somewhat.  ", false);
+		else if(player.cocks[0].cockThickness >= 36) outputText("Your own erect " + game.player.cockDescript(0) + " rubs against the creature's as you work, getting in the way somewhat.  ", false);
 		//Single dick contemplation
-		if(player.cockTotal() == 1) outputText("You feel your " + cockDescript(0) + " begin to throb and entertain the idea of trying to penetrate it somehow.  You turn a bit and look around the creature for an orifice, but find nothing.  After a few frustrated moments of searching you give up and decide to handle things yourself.", false);
+		if(player.cockTotal() == 1) outputText("You feel your " + game.player.cockDescript(0) + " begin to throb and entertain the idea of trying to penetrate it somehow.  You turn a bit and look around the creature for an orifice, but find nothing.  After a few frustrated moments of searching you give up and decide to handle things yourself.", false);
 		//Multidick contemplation
-		else outputText("You feel your " + multiCockDescriptLight() + " begin to throb and entertain the idea of trying to penetrate it somehow.  You turn a bit and look around the creature for an orifice, but find nothing.  After a few frustrated moments of searching you give up and decide to handle things yourself.", false);
+		else outputText("You feel your " + game.player.multiCockDescriptLight() + " begin to throb and entertain the idea of trying to penetrate it somehow.  You turn a bit and look around the creature for an orifice, but find nothing.  After a few frustrated moments of searching you give up and decide to handle things yourself.", false);
 		outputText("\n\n", false);
 	}
 	//Next PG
@@ -86,7 +86,7 @@ private  serviceLowCorruptionHighLust():void
 			//multiCock - mutual masturbation + cum
 			if(player.cocks.length > 1) 
 			{
-				if(player.cocks.length > 0) outputText("Eventually your own arousal becomes unbearable and you reach down to work your one of your " + multiCockDescriptLight() + ", massaging the monster's swollen, throbbing head with your other hand.  You gasp slightly as soon as you wrap your hand around your " + cockDescript(1) + ", the creature's fluid making you exceptionally sensitive.  You moan in spite of yourself and start to thrust your hips a bit against your fist, feeling both yourself and the creature begin to throb harder and harder.  Before long you can hold out no longer, and feel your body racked by an orgasmic spasm, squeezing tightly with both hands as you blow your " + multiCockDescriptLight() + " cover the creature with cum.  ", false);
+				if(player.cocks.length > 0) outputText("Eventually your own arousal becomes unbearable and you reach down to work your one of your " + game.player.multiCockDescriptLight() + ", massaging the monster's swollen, throbbing head with your other hand.  You gasp slightly as soon as you wrap your hand around your " + game.player.cockDescript(1) + ", the creature's fluid making you exceptionally sensitive.  You moan in spite of yourself and start to thrust your hips a bit against your fist, feeling both yourself and the creature begin to throb harder and harder.  Before long you can hold out no longer, and feel your body racked by an orgasmic spasm, squeezing tightly with both hands as you blow your " + game.player.multiCockDescriptLight() + " cover the creature with cum.  ", false);
 				//Herms - vegemita vaga-cum.
 				if(player.vaginas.length > 0) outputText("Your " + vaginaDescript(0) + " quivers and shares in the sensation as you grind yourself against the slime.  ", false);
 				//Create cumz
@@ -98,7 +98,7 @@ private  serviceLowCorruptionHighLust():void
 				//'Small' cocks
 				if(player.cocks[0].cockLength <= 30)
 				{
-					outputText("Eventually your own arousal becomes unbearable and you reach down to work your own " + cockDescript(0) + " as well, massaging the monster's swollen, throbbing head with your other hand.  You gasp slightly as soon as you wrap your hand around your " + cockDescript(0) + ", the creature's fluid making you exceptionally sensitive.  You moan in spite of yourself and start to thrust your hips a bit against your fist, feeling both yourself and the creature begin to throb harder and harder.  Before long you can hold out no longer, and feel your body racked by an orgasmic spasm, squeezing tightly with both hands as you blow your load onto the creature.  ", false);
+					outputText("Eventually your own arousal becomes unbearable and you reach down to work your own " + game.player.cockDescript(0) + " as well, massaging the monster's swollen, throbbing head with your other hand.  You gasp slightly as soon as you wrap your hand around your " + game.player.cockDescript(0) + ", the creature's fluid making you exceptionally sensitive.  You moan in spite of yourself and start to thrust your hips a bit against your fist, feeling both yourself and the creature begin to throb harder and harder.  Before long you can hold out no longer, and feel your body racked by an orgasmic spasm, squeezing tightly with both hands as you blow your load onto the creature.  ", false);
 					//Herm orgasm text
 					if(player.vaginas.length > 0)
 					{
@@ -109,7 +109,7 @@ private  serviceLowCorruptionHighLust():void
 				//FUGGIN' 'UGE PRICKS!
 				else if(player.cocks[0].cockLength >=31)
 				{
-					outputText("Eventually your own arousal becomes unbearable and you reach down to grope at yourself as well, working the monster's swollen, throbbing head with one of your hands.  Unable to grip it properly you moan a little and hold yourself down against the creature's skin, moving your hips back and forth to get off.  You begin to moan louder as the same greenish secretion that coats your hands begins to cover your " + cockDescript(0) + " as well, making it throb even harder than before.  Before long you gasp and double over as you orgasm, hips shaking as you come all over the creature.  ", false);
+					outputText("Eventually your own arousal becomes unbearable and you reach down to grope at yourself as well, working the monster's swollen, throbbing head with one of your hands.  Unable to grip it properly you moan a little and hold yourself down against the creature's skin, moving your hips back and forth to get off.  You begin to moan louder as the same greenish secretion that coats your hands begins to cover your " + game.player.cockDescript(0) + " as well, making it throb even harder than before.  Before long you gasp and double over as you orgasm, hips shaking as you come all over the creature.  ", false);
 					//Herm orgasm text
 					if(player.vaginas.length > 0)
 					{
@@ -153,16 +153,16 @@ private  serviceLowCorruptionHighLust():void
 				//Multicock
 				if(player.cockTotal() > 1)
 				{
-					outputText("You feel your " + multiCockDescriptLight() + " surge to their full size as the slime works you over.  They quickly begin to throb and ache for release, a need made only more pressing by your desire to have it fondled.  ",false);
+					outputText("You feel your " + game.player.multiCockDescriptLight() + " surge to their full size as the slime works you over.  They quickly begin to throb and ache for release, a need made only more pressing by your desire to have it fondled.  ",false);
 					//of course, if the creature is working the player's crotch because they don't have breasts, they -can- jerk off!
 					if(player.biggestTitSize() == 0) outputText("You delicately grasp the head of one of your cocks, your hand slick with the fluids of yourself and of the creature.  The combination of the creature's movements and your own quickly overwhelms you.", false);
 				}
 				//Single prick
 				else
 				{
-					outputText("You feel your " + cockDescript(0) + " surge to full size as the slime works you over.  It begins to throb and ache for release, a need made only more pressing by your desire to have it fondled.  ",false);
+					outputText("You feel your " + game.player.cockDescript(0) + " surge to full size as the slime works you over.  It begins to throb and ache for release, a need made only more pressing by your desire to have it fondled.  ",false);
 					//Play with it if your boobs aren't being manhandled
-					if(player.biggestTitSize() == 0) outputText("You delicately grasp the head of your " + cockDescript(0) + ", your hand slick with the fluids of yourself and of the creature.  The combination of the creature's movements and your own quickly overwhelms you.", false);
+					if(player.biggestTitSize() == 0) outputText("You delicately grasp the head of your " + game.player.cockDescript(0) + ", your hand slick with the fluids of yourself and of the creature.  The combination of the creature's movements and your own quickly overwhelms you.", false);
 				}
 			}
 			//New paragraph for orgazms.
@@ -173,9 +173,9 @@ private  serviceLowCorruptionHighLust():void
 			if (player.cockTotal() > 0)
 			{
 				//Multidicked herms
-				if (player.cockTotal() > 1)	outputText("You let out a strangled gasp as your body, already straining from exertion, shudders again as your " + multiCockDescript() + " explodes into orgasm, showering both you and the creature in jizz.  ", false);
+				if (player.cockTotal() > 1)	outputText("You let out a strangled gasp as your body, already straining from exertion, shudders again as your " + game.player.multiCockDescript() + " explodes into orgasm, showering both you and the creature in jizz.  ", false);
 				//Single cocked herms
-				else outputText("You let out a strangled gasp as your body, already straining from exertion, shudders again as your " + cockDescript(0) + " explodes into orgasm, sending a jet of your warm jizz into the air.  ",false);
+				else outputText("You let out a strangled gasp as your body, already straining from exertion, shudders again as your " + game.player.cockDescript(0) + " explodes into orgasm, sending a jet of your warm jizz into the air.  ",false);
 			}
 			outputText("When you open your eyes you notice that the creature's erection has disappeared and the almost predatory calm it possessed when you first encountered it has returned, though different somehow.", false);
 			//New PG
@@ -194,13 +194,13 @@ private  serviceLowCorruptionHighLust():void
 		if(player.gender == 1 || (player.gender == 3 && rand(2) == 0))
 		{
 			//Multicock foreplay
-			if(player.cockTotal() > 1) outputText("Eventually your own arousal becomes unbearable and you reach down to work one of the shafts in your " + multiCockDescriptLight() + ", as well, continuing to run your other hand up and down the creature's length.  You gasp slightly as soon as you wrap your hand around your " + cockDescript(1) + ", the creature's fluid making you exceptionally sensitive.  You moan in spite of yourself and start to thrust your hips a bit against your fist, stroking yourself and the creature from crest to root.  The creature's erection gains definition as it starts pulsing harder and faster, turning into a distinctly human penis.  ", false);
+			if(player.cockTotal() > 1) outputText("Eventually your own arousal becomes unbearable and you reach down to work one of the shafts in your " + game.player.multiCockDescriptLight() + ", as well, continuing to run your other hand up and down the creature's length.  You gasp slightly as soon as you wrap your hand around your " + game.player.cockDescript(1) + ", the creature's fluid making you exceptionally sensitive.  You moan in spite of yourself and start to thrust your hips a bit against your fist, stroking yourself and the creature from crest to root.  The creature's erection gains definition as it starts pulsing harder and faster, turning into a distinctly human penis.  ", false);
 			//SingleCock
 			else
 			{
-				outputText("Eventually your own arousal becomes unbearable and you reach down to work your own " + cockDescript(0) + " as well, continuing to run your other hand up and down the creature's length.  You gasp slightly as soon as you wrap your hand around your " + cockDescript(0) + ", the creature's fluid making you exceptionally sensitive.  You moan softly in spite of yourself and begin to thrust your hips a bit against your fist, stroking yourself and the creature from crest to root.  The creature's erection gains definition as it starts pulsing harder and faster, turning into ", false);
+				outputText("Eventually your own arousal becomes unbearable and you reach down to work your own " + game.player.cockDescript(0) + " as well, continuing to run your other hand up and down the creature's length.  You gasp slightly as soon as you wrap your hand around your " + game.player.cockDescript(0) + ", the creature's fluid making you exceptionally sensitive.  You moan softly in spite of yourself and begin to thrust your hips a bit against your fist, stroking yourself and the creature from crest to root.  The creature's erection gains definition as it starts pulsing harder and faster, turning into ", false);
 				//Compare cocks
-				if(player.cocks[0].cockType == CockTypesEnum.HUMAN) outputText("a near exact replica of your own " + cockDescript(0) + "!  ", false);
+				if(player.cocks[0].cockType == CockTypesEnum.HUMAN) outputText("a near exact replica of your own " + game.player.cockDescript(0) + "!  ", false);
 				//Cocks are different so it's a 'human' penis
 				else outputText("a distinctly human penis.  ", false);
 			}
@@ -208,7 +208,7 @@ private  serviceLowCorruptionHighLust():void
 			if(player.vaginas.length > 0)
 			{
 				outputText("The intense sensations ripple through your entire body, and your " + vaginaDescript(0) + "grows wet with arousal.  You push against the creature and rhythmically slide back and forth, its soft, moist body conforming to your folds and creating a wonderfully arousing sensation.", false);
-				outputText("\n\nIt isn't long before you can no longer hold yourself back and with a groan, you explode, showering the creature with your seed as your " + multiCockDescript() + " and " + vaginaDescript(0) + " simultaneously explode into orgasm.  The ooze's penis also seems to swell and a torrent of the green fluid gushes from the tip, creating a large, slippery pool that coats your bottom half and forms a small pool on the ground around you before soaking into the earth.  As you catch your breath the creature's cock begins to lose definition and then recedes as the thing pulls itself back into a blob and slides out from under you, quietly escaping into the nearby water as you watch.  As you get up, you notice a still partly solid blob of green gel on the ground, and pick it up.", false);     
+				outputText("\n\nIt isn't long before you can no longer hold yourself back and with a groan, you explode, showering the creature with your seed as your " + game.player.multiCockDescript() + " and " + vaginaDescript(0) + " simultaneously explode into orgasm.  The ooze's penis also seems to swell and a torrent of the green fluid gushes from the tip, creating a large, slippery pool that coats your bottom half and forms a small pool on the ground around you before soaking into the earth.  As you catch your breath the creature's cock begins to lose definition and then recedes as the thing pulls itself back into a blob and slides out from under you, quietly escaping into the nearby water as you watch.  As you get up, you notice a still partly solid blob of green gel on the ground, and pick it up.", false);     
 			}
 			//Pure male orgasm
 			else outputText("\n\nIt isn't long before you can no longer hold yourself back and with a groan, you explode, showering the creature with your seed.  The ooze's penis also seems to swell and a torrent of the green fluid gushes from the tip, creating a large, slippery pool that coats your bottom half and forms a small pool on the ground around you before soaking into the earth.  As you catch your breath the creature's cock begins to lose definition and then recedes as the thing pulls itself back into a blob and slides out from under you, quietly escaping into the nearby water as you watch.", false);
@@ -238,7 +238,7 @@ private  serviceLowCorruptionHighLust():void
 				//since players without breasts are wholly surprised here, this needs to be acknowledged.
 				if(player.biggestTitSize() == 0 || player.breastRows.length == 0)
 				{
-					outputText("You begin to moan as the creature rubs the " + vaginaDescript(0) + " beneath your " + multiCockDescript() + ", working you with incredible skill, but sadly ignoring your needy ", false);
+					outputText("You begin to moan as the creature rubs the " + vaginaDescript(0) + " beneath your " + game.player.multiCockDescript() + ", working you with incredible skill, but sadly ignoring your needy ", false);
 					//multi!
 					if(player.cockTotal() > 1) outputText("penii ", false);
 					//Single
@@ -261,7 +261,7 @@ private  serviceLowCorruptionHighLust():void
 			outputText("\n\n", false);
 			//slime has orgasmed, time for the player.  again, split for cock-appropriateness.
 			//Herms
-			if(player.cockTotal() > 0) outputText("Even as it does so it continues to masterfully work your body, putting you on edge with its ministrations and keeping you there for several torturous, glorious minutes as you practically lose control over your body.  Eventually the creature seems to pull on everything at once, finally causing you to orgasm as you all but scream in pleasure.  Your " + multiCockDescript() + " explodes as well, sending thick ropes of your steaming ejaculate into the air as the monster finishes with you.  ", false);
+			if(player.cockTotal() > 0) outputText("Even as it does so it continues to masterfully work your body, putting you on edge with its ministrations and keeping you there for several torturous, glorious minutes as you practically lose control over your body.  Eventually the creature seems to pull on everything at once, finally causing you to orgasm as you all but scream in pleasure.  Your " + game.player.multiCockDescript() + " explodes as well, sending thick ropes of your steaming ejaculate into the air as the monster finishes with you.  ", false);
 			//Fems
 			else outputText("Even as it does so it continues to masterfully work your body, putting you on edge with its ministrations and keeping you there for several torturous, glorious minutes as you practically lose control over your body.  Eventually the creature seems to pull on everything at once, finally causing you to orgasm as you all but scream in pleasure.  ", false);
 			//Creature exits stage left!
@@ -281,9 +281,9 @@ private  maleRapesOoze():void {
 	{
 		//MULTICAWK
 		if(player.cockTotal() > 1) outputText("Shrugging, you decide to go with the closest thing available and walk towards its head.  You spend a moment deciding which of your organs to ravage the creature with, eventually settling on the largest,  ", false);
-		else outputText("Shrugging, you decide to go with the closest thing available and walk towards its head, pulling out your " + cockDescript(0) + " as you do so.  You kneel over the thing's head and stroke your penis lightly to ensure it is fully ready,  ", false);
+		else outputText("Shrugging, you decide to go with the closest thing available and walk towards its head, pulling out your " + game.player.cockDescript(0) + " as you do so.  You kneel over the thing's head and stroke your penis lightly to ensure it is fully ready,  ", false);
 		//Balls ftw
-		if(player.balls > 1) outputText("anointing the slime's face with your " + sackDescript() + " as you do.  ", false);
+		if(player.balls > 1) outputText("anointing the slime's face with your " + sackDescript(player) + " as you do.  ", false);
 		//Ball-less bitches
 		else outputText("probing at the 'mouth' of the creature with your free hand.  ", false);
 		//Continue the setup...
@@ -309,7 +309,7 @@ private  maleRapesOoze():void {
 				trace("ERROR: Penis type not supported, defaulting to tip.");
 				break;
 		}
-		outputText(" on the inside of its mouth and pushing.  You feel the material give and push harder, the membrane material that covers the slime's exterior stubbornly refusing to give.  Finally, after some frustration, you grab the creature by what would be its neck and try to pull it back to your pelvis, thrusting forward at the same time.  It finally gives, and you see your " + cockDescript(0) + " surge into its mouth", false);
+		outputText(" on the inside of its mouth and pushing.  You feel the material give and push harder, the membrane material that covers the slime's exterior stubbornly refusing to give.  Finally, after some frustration, you grab the creature by what would be its neck and try to pull it back to your pelvis, thrusting forward at the same time.  It finally gives, and you see your " + game.player.cockDescript(0) + " surge into its mouth", false);
 		//This series deliberately not else-if statements.
 		if(player.cocks[0].cockLength >= 12) outputText(", down its throat,", false);
 		if(player.cocks[0].cockLength >= 24) outputText(" into its torso,", false);
@@ -322,7 +322,7 @@ private  maleRapesOoze():void {
 		//New PG
 		outputText("\n\n", false);
 		//Start fucking in earnest
-		outputText("You start to thrust with more vigor, thrusting until your hips mash against the ooze's skin, feeling yourself build to orgasm even faster than usual as your " + cockDescript(0)+ " begins to feel warm and incredibly sensitive.  Oddly, as you pump the creature's mouth it seems to regain some of the definition it lost when it collapsed earlier, the protrusion between its legs shaping into a fully defined human dick", false);
+		outputText("You start to thrust with more vigor, thrusting until your hips mash against the ooze's skin, feeling yourself build to orgasm even faster than usual as your " + game.player.cockDescript(0)+ " begins to feel warm and incredibly sensitive.  Oddly, as you pump the creature's mouth it seems to regain some of the definition it lost when it collapsed earlier, the protrusion between its legs shaping into a fully defined human dick", false);
 		//Balls ftw
 		if(player.balls > 1) outputText(" as your " + ballsDescriptLight() + " slap against its face", false);
 		outputText(".  One of its arms reaches up to meekly rub at its own erection.  You grin as this fuels your own lust, and you start to thrust even harder.", false);
@@ -333,7 +333,7 @@ private  maleRapesOoze():void {
 		outputText("Before long you find yourself shouting as you pump your seed into the creature, watching as the semen is caught by unseen currents and dispersed into its body.", false);
 		//vaginal orgasm text
 		if(player.vaginas.length > 0) outputText("  This is quickly followed by a quivering between your nether-lips as your " + vaginaDescript(0) + " quivers in orgasm shortly afterwards.", false);
-		outputText("  You pull your " + cockDescript(0) + " out of the thing's face slowly, relishing the sensation, producing an audible *pop* when your tip finally exits the creature.  A satisfied smirk crosses your face as the defeated beast's erection shrinks back into itself before sliding off, back into the nearby water.", false);
+		outputText("  You pull your " + game.player.cockDescript(0) + " out of the thing's face slowly, relishing the sensation, producing an audible *pop* when your tip finally exits the creature.  A satisfied smirk crosses your face as the defeated beast's erection shrinks back into itself before sliding off, back into the nearby water.", false);
 	}
 	//anal rape text
 	else
@@ -344,24 +344,24 @@ private  maleRapesOoze():void {
 		   	outputText("You shrug at the lack of obvious orifices and decide to go for the most common one, choosing the ", false);
 			if(player.cockTotal() == 2) outputText("larger", false);
 			else outputText("largest", false);
-			outputText(" of your" + multiCockDescriptLight() + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.  ", false);
+			outputText(" of your" + game.player.multiCockDescriptLight() + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.  ", false);
 		}
 		//Single dicks
-		else outputText("You shrug at the lack of obvious orifices and decide to go for the most common one, pulling out your " + cockDescript(0) + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.  ", false);
+		else outputText("You shrug at the lack of obvious orifices and decide to go for the most common one, pulling out your " + game.player.cockDescript(0) + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.  ", false);
 		outputText("  You position your member around where you think the asshole would be and push, smiling as the membrane moves aside and you penetrate into a tight, deep hole.  ", false);
-		if(player.cocks[0].cockLength >= 24) outputText("By the time you finally bottom out, your " + cockDescript(0) + " is nearly halfway through its torso.", false);
-		else if(player.cocks[0].cockLength >= 48) outputText("By the time you finally bottom out, your " + cockDescript(0) + " reaches nearly into the slime's neck.", false);
-		else if(player.cocks[0].cockLength >= 60) outputText("Your penis keeps going deeper and deeper, through the chest, neck, and head, before finally stretching the slime as far as it needs to go to accommodate the full length of your " + cockDescript(0) + ".", false);
+		if(player.cocks[0].cockLength >= 24) outputText("By the time you finally bottom out, your " + game.player.cockDescript(0) + " is nearly halfway through its torso.", false);
+		else if(player.cocks[0].cockLength >= 48) outputText("By the time you finally bottom out, your " + game.player.cockDescript(0) + " reaches nearly into the slime's neck.", false);
+		else if(player.cocks[0].cockLength >= 60) outputText("Your penis keeps going deeper and deeper, through the chest, neck, and head, before finally stretching the slime as far as it needs to go to accommodate the full length of your " + game.player.cockDescript(0) + ".", false);
 		outputText("  With a satisfied smile you begin pumping, slowly at first before picking up speed.  The slime's anus feels better than anything you've ever had before, apparently coming with its own lubrication but still being tight, hugging your cock like a custom-fit fuck toy.  ", false);
 		//vaginal arousal text
 		if(player.vaginas.length > 0) outputText("Your " + vaginaDescript(0) + " grows wet as you work the thing's hole, every slap of your hips against the thing's ass sending a pang of pleasure through your nethers.  ", false);
 		outputText("After only a few minutes you realize that you can't hold out for much longer, as whatever is inside the creature seems to be making you extra sensitive.  Deciding to make the most of it, you double your speed and grit your teeth, enjoying the slime for all it's worth before ", false);
-		if(player.cockTotal() > 1) outputText("your " + multiCockDescriptLight() + " explodes into orgasm, your load filling the space inside the creature and spraying in thick streams across its back.", false);
+		if(player.cockTotal() > 1) outputText("your " + game.player.multiCockDescriptLight() + " explodes into orgasm, your load filling the space inside the creature and spraying in thick streams across its back.", false);
 		else outputText("exploding inside it, your load filling the space around your cock with a white, milky fluid.", false);
 		//vaginal orgasm text
 		if(player.vaginas.length > 0) outputText("  As you pump your jizz into the creature an almost electrical shock runs through your body, starting from your " + vaginaDescript(0) + " and radiating outwards.", false);
 
-		outputText("  The thing seems to clamp down on you even tighter as you pull out, and you relish the sensation.  Its tight ass leaves your " + cockDescript(0) + " almost perfectly clean afterward, a glob of white still stuck inside the creature as it changes back into its original, amorphous state.  The cloud disperses as the slime slinks off.", false);
+		outputText("  The thing seems to clamp down on you even tighter as you pull out, and you relish the sensation.  Its tight ass leaves your " + game.player.cockDescript(0) + " almost perfectly clean afterward, a glob of white still stuck inside the creature as it changes back into its original, amorphous state.  The cloud disperses as the slime slinks off.", false);
 	}
 	player.orgasm();
 	dynStats("sen", 3);
@@ -372,7 +372,7 @@ private  femaleRapesOoze():void {
 	outputText("You feel a stirring inside your feminine side as you eye the slime's throbbing erection, and decide to take advantage of its current state to satisfy your own urges.  You strip off your clothes and walk forward, straddling the creature's thighs and running a hand over its member.  You pull it in against your body and stroke the soft, velvety, and just slightly moist shaft,", false);
 	if(player.cocks.length > 0)
 	{
-		outputText(" your " + vaginaDescript(0) + " growing wet and your " + cockDescript(0) + " growing firm as you imagine it inside you.  ", false);
+		outputText(" your " + vaginaDescript(0) + " growing wet and your " + game.player.cockDescript(0) + " growing firm as you imagine it inside you.  ", false);
 	}
 	else
 	{
@@ -427,7 +427,7 @@ private  femaleRapesOoze():void {
 	{
 		if(player.cockTotal() == 1)
 		{
-			outputText("  Your " + cockDescript(0) + " grows hard as you are penetrated, and with the creature handling the movement you reach down to jack yourself off.", false);
+			outputText("  Your " + game.player.cockDescript(0) + " grows hard as you are penetrated, and with the creature handling the movement you reach down to jack yourself off.", false);
 		}
 		else
 		{
@@ -443,13 +443,13 @@ private  femaleRapesOoze():void {
 	{
 		if(player.cockTotal() > 1)
 		{
-			outputText("Your " + multiCockDescriptLight() + " explode into simultaneous orgasm, releasing ", false);
+			outputText("Your " + game.player.multiCockDescriptLight() + " explode into simultaneous orgasm, releasing ", false);
 			outputText(num2Text(player.cocks.length), false);
 			outputText(" thick streams of semen onto you and the creature, your mind blanking at the massive relief.  You vaguely notice your ejaculate sinking into the creature's body and getting absorbed as you give yourself to pleasure.  ", false);
 		}
 		else
 		{
-			outputText("Your " + cockDescript(0) + " explodes into orgasm and releases thick streams of semen onto both you and the creature, your mind blanking at the release.  You vaguely notice your ejaculate sinking into the creature's body and getting absorbed as you give yourself to pleasure.  ", false);
+			outputText("Your " + game.player.cockDescript(0) + " explodes into orgasm and releases thick streams of semen onto both you and the creature, your mind blanking at the release.  You vaguely notice your ejaculate sinking into the creature's body and getting absorbed as you give yourself to pleasure.  ", false);
 		}
 	}
 	outputText("You feel a rush of liquid flood your insides, ", false);
@@ -504,7 +504,7 @@ private  oozeButtRapesYou():void
 		//Single
 		if(player.cockTotal() == 1) outputText("You quickly grow erect under the creature's embrace as it pistons into your ass, and before long you stand at full attention.  You weakly rub yourself with one hand as it pumps you, and quickly approach orgasm.  ", false);
 		//Multi!
-		else outputText("Your " + multiCockDescript() + " quickly grows erect under the creature's embrace as it pistons into your ass, and before long you stand at full attention.  You weakly rub at a different cock with each hand as it pumps you, and quickly approach an orgasm.  ", false);
+		else outputText("Your " + game.player.multiCockDescript() + " quickly grows erect under the creature's embrace as it pistons into your ass, and before long you stand at full attention.  You weakly rub at a different cock with each hand as it pumps you, and quickly approach an orgasm.  ", false);
 	}
 	//Vaginas!
  	if(player.vaginas.length > 0) outputText("Your " + vaginaDescript(0) + " grows wet as the creature continues to assault you, and your cleft begins to ache for a soft touch.  As if sensing your thoughts the creature obligingly wraps a hand around and under you and begins alternating between sliding along your gash and stroking your " + clitDescript() + ".", false);
@@ -540,8 +540,8 @@ private  oozeRapesYouOrally():void
 		outputText("It pistons the head of its shaft back and forth in your mouth for a bit as you rock your head back and forth and suck on it.  A pleasant tingle starts in your mouth and the thing pushes itself to the back of your throat and holds it there, making you squirm in anticipation.  It pulls back slowly, then fiercely thrusts forward.  You feel the soft material of its member squeeze into your throat and contort to perfectly fill you, going deeper and deeper until the bulk of its body is just a few inches away from your face.\n", false);
 		if(player.cockTotal() > 0)
 		{
-			if(player.lust > 40) outputText("Your erect " + multiCockDescriptLight() + " throbs as you work the creature, a surge of even greater arousal flowing through your body.  You feel almost desperate for release and even thrust your hips impotently against the empty air, wishing for some form of release.  You try to reach for yourself to masturbate, but find yourself unable to reach around the slime's massive bulk.  ", false);
-			else outputText("You feel your " + multiCockDescriptLight() + " begin to harden just slightly as you work the creature, a surge of arousal flowing through your body.", false);
+			if(player.lust > 40) outputText("Your erect " + game.player.multiCockDescriptLight() + " throbs as you work the creature, a surge of even greater arousal flowing through your body.  You feel almost desperate for release and even thrust your hips impotently against the empty air, wishing for some form of release.  You try to reach for yourself to masturbate, but find yourself unable to reach around the slime's massive bulk.  ", false);
+			else outputText("You feel your " + game.player.multiCockDescriptLight() + " begin to harden just slightly as you work the creature, a surge of arousal flowing through your body.", false);
 		}
 		if(player.vaginas.length > 0) {
 			outputText("Your " + vaginaDescript(0) + " ", false)
@@ -607,12 +607,12 @@ private  oozeRapesYouVaginally():void
 			//Multi biiiiitches
 			if(player.cockTotal() > 1)
 			{
-				outputText("Your " + multiCockDescript() + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, ", false);
+				outputText("Your " + game.player.multiCockDescript() + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, ", false);
 				if(player.cockTotal() > 2) outputText("switching between cocks as you rapidly stroke yourself in time with the creature's movements.  ", false);
 				else outputText("rapidly stroking one cock with each hand, working yourself in time with the creature's movements.  ", false);
 			}
 			//Single dick
-			else outputText("Your " + cockDescript(0) + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, rapidly stroking your " + cockDescript(0) + " in time with the creature's movements.  ", false);
+			else outputText("Your " + game.player.cockDescript(0) + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, rapidly stroking your " + game.player.cockDescript(0) + " in time with the creature's movements.  ", false);
 		}
 		outputText("After a short time the creature penetrates you fully again and stops, and you realize that at some point you had begun moving your hips with it.  You gasp in surprise as the slime's cock begins churning inside of you, massaging you from the inside in a uniquely pleasurable fashion.\n\n", false);
 		outputText("It doesn't take much of this to bring you to orgasm.  Your entire body shudders and you arch your back as shocks of pleasure run through you.  The creature pulls you tightly against it and swells just slightly as its movement inside you slows and then stops, then swells at the tip for just a second before releasing a flood of thin, cool fluid inside of you.  It forces its way around the creature's cock and spills out of you.  ", false);
@@ -620,9 +620,9 @@ private  oozeRapesYouVaginally():void
 		if(player.cockTotal() > 0)
 		{
 			//Multi
-			if(player.cockTotal() > 1) outputText("Your " + multiCockDescript() + " climaxes as well, sending rope after rope of hot, thick cum onto your face and chest.", false);
+			if(player.cockTotal() > 1) outputText("Your " + game.player.multiCockDescript() + " climaxes as well, sending rope after rope of hot, thick cum onto your face and chest.", false);
 			//Single
-			else outputText("Your member climaxes as well, and you pull a hand to cover your eyes and face as your jism explodes onto yourself.  Your other hand slides to the base of your " + cockDescript(0) + " and squeezes as you coat your chest in semen.", false);
+			else outputText("Your member climaxes as well, and you pull a hand to cover your eyes and face as your jism explodes onto yourself.  Your other hand slides to the base of your " + game.player.cockDescript(0) + " and squeezes as you coat your chest in semen.", false);
 		}
 		player.orgasm();
 		dynStats("sen", 4);
@@ -659,13 +659,13 @@ private  oozeRapesYouVaginally():void
 			//Multi herms
 			if(player.cockTotal() > 1)
 			{
-				outputText("Your " + multiCockDescript() + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, ", false);
+				outputText("Your " + game.player.multiCockDescript() + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, ", false);
 				//Lotsa dicks
 				if(player.cockTotal() > 2) outputText("switching between cocks as you rapidly stroke yourself in time with the creature's movements.  ", false);
 				else outputText("rapidly stroking one cock with each hand, working yourself in time with the creature's movements.  ", false);
 			}
 			//Single herms
-			else outputText("Your " + cockDescript(0) + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, rapidly stroking your " + cockDescript(0) + " in time with the creature's movements.  ", false);
+			else outputText("Your " + game.player.cockDescript(0) + " rapidly grows erect under this assault and begins to throb.  Having now released yourself to instinct you reach to jerk off, rapidly stroking your " + game.player.cockDescript(0) + " in time with the creature's movements.  ", false);
 		}
 		//CUM
 		outputText("After a short time the creature penetrates you fully again and stops, and you continue to buck your hips against it for a few moments more until it grabs your thighs and holds you tightly and motionless against it.  You quiver against it and moan with desire, desperately wishing that it would continue fucking you.  You gasp in surprise as the slime's cock begins churning inside of you, massaging you from the inside in a uniquely pleasurable fashion.\n\n", false);
@@ -674,9 +674,9 @@ private  oozeRapesYouVaginally():void
 		if(player.cockTotal() > 0)
 		{
 			//multi
-			if(player.cockTotal() > 1) outputText("Your " + multiCockDescript() + " climaxes as well, and you open your mouth as you spray rope after rope of hot, thick jism onto your face and chest.  You relish its salty taste, continuing to stroke yourself even as you come.  ", false);
+			if(player.cockTotal() > 1) outputText("Your " + game.player.multiCockDescript() + " climaxes as well, and you open your mouth as you spray rope after rope of hot, thick jism onto your face and chest.  You relish its salty taste, continuing to stroke yourself even as you come.  ", false);
 			//single cock
-			else outputText("Your own member finally reaches its climax as well, and you open your mouth as jism explodes onto your face and chest.  Your hands slide to the base of your " + cockDescript(0) + " and squeeze as you release thick ropes of ejaculate onto yourself, coating your face and chest as you relish its salty taste.  ", false);
+			else outputText("Your own member finally reaches its climax as well, and you open your mouth as jism explodes onto your face and chest.  Your hands slide to the base of your " + game.player.cockDescript(0) + " and squeeze as you release thick ropes of ejaculate onto yourself, coating your face and chest as you relish its salty taste.  ", false);
 		}
 		outputText("You pant as the creature holds perfectly still for a minute, then slowly lets you down as its erection slides out of you.  When the last of its dick finally pops out, a rush of its green slime flows out of you and onto the ground.  The creature leaves you to recover your strength, retreating into the nearby water.", false);
 		player.orgasm();
@@ -688,12 +688,12 @@ private  oozeRapesYouVaginally():void
 
 public  rapeOozeWithMilk():void {
 	outputText("", true);
-	outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, removing the top of your " + player.armorName + " and pressing the mess of a monster to your " + breastDescript(0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + breastDescript(0) + " to the tip of your " + nippleDescript(0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + nippleDescript(0) + ", it slowly works its way down your body, almost lovingly ", false);
+	outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, removing the top of your " + player.armorName + " and pressing the mess of a monster to your " + game.player.breastDescript(0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + game.player.breastDescript(0) + " to the tip of your " + nippleDescript(0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + nippleDescript(0) + ", it slowly works its way down your body, almost lovingly ", false);
 
 	// [If male- 
 	if(player.gender == 1) 
 	{ 
-		outputText("caressing your " + multiCockDescriptLight(), false);
+		outputText("caressing your " + game.player.multiCockDescriptLight(), false);
 		if(player.balls > 0) 
 		{
 			outputText(", and slipping slightly further down to engulf your " + ballsDescriptLight() + " as well. ", false);
@@ -708,7 +708,7 @@ public  rapeOozeWithMilk():void {
 	//[If Herm- 
 	else if(player.gender == 3) 
 	{ 
-		outputText("caressing your " + multiCockDescriptLight(), false); 
+		outputText("caressing your " + game.player.multiCockDescriptLight(), false); 
 		if(player.balls > 0) 
 			outputText("and slipping slightly further down to engulf your " + ballsDescriptLight() + " as well. ", false);
 		else outputText("and almost dripping down to coat your " + clitDescript() + " to add to your pleasure. ", false); 
@@ -726,11 +726,11 @@ public  rapeOozeWithMilk():void {
 	//[if female or Herm- 
 	else outputText("Your hands fly to your " + vaginaDescript(0) + " and frantically plunge your fingers in and out of it.  You wish the slime would engulf it as well.  ", false);
 	
-	outputText("You cum many times into the mass, but that's not what truly matters to you. It's an extremely welcome, mind-shatteringly satisfying bonus, but not the main event. What does matter is the slow, meticulous draining of milk from both of your " + breastDescript(0) + " at once that the ooze is doing for you. Feeling that it's on the last of your milk, you urge the ooze on, trying to get it to crank up its work on your now-overly sensitive ", false);
+	outputText("You cum many times into the mass, but that's not what truly matters to you. It's an extremely welcome, mind-shatteringly satisfying bonus, but not the main event. What does matter is the slow, meticulous draining of milk from both of your " + game.player.breastDescript(0) + " at once that the ooze is doing for you. Feeling that it's on the last of your milk, you urge the ooze on, trying to get it to crank up its work on your now-overly sensitive ", false);
 
 	//[if male- 
 	if(player.gender == 1) {
-		outputText(multiCockDescriptLight(), false); 
+		outputText(game.player.multiCockDescriptLight(), false); 
 		if(player.balls > 0) outputText(" and " + ballsDescript(), false); 
 		outputText(" and ", false);
 	}
@@ -738,11 +738,11 @@ public  rapeOozeWithMilk():void {
 	else if(player.gender == 2) outputText(clitDescript() + " and ", false);
 	//[if Herm- 
 	else if (player.gender==3) {
-		outputText(multiCockDescriptLight(), false);
+		outputText(game.player.multiCockDescriptLight(), false);
 		if(player.balls > 0) outputText(", " + ballsDescriptLight() + "," , false);
 		outputText(" and " + clitDescript() + " and ", false);
 	}
-	outputText(breastDescript(0) + ".\n\n", false);
+	outputText(game.player.breastDescript(0) + ".\n\n", false);
 
 	outputText("Unfortunately, you seem to have done a little too much to it in your battle before. The ooze slides off, leaving you hanging on the edge of orgasm. Deciding you just won't stand for this, you scoop up most the mess left by the monster and use it as a masturbation aid, achieving sweet release by ", false);
 	if(player.gender == 1) outputText("feverishly jacking yourself off with it.  The cool feel of it contrasts enough to send you over the edge relatively quickly, and you release your cum into it.  You drop most of its bulk ", false);

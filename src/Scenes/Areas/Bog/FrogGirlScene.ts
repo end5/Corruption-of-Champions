@@ -2,7 +2,7 @@
 	 
 	 
 
-	export class FrogGirlScene extends BaseContent {
+	export class FrogGirlScene {
 
 	public  constructor()
 	{

@@ -469,7 +469,7 @@ inputManager.AddBindableControl(
 			{
 				if (player.str > 0 && mainView.getButtonText(0).indexOf("Game Over") == -1)
 				{
-					kGAMECLASS.inventory.giveHumanizer();
+					inventory.giveHumanizer();
 				}
 			}
 			else

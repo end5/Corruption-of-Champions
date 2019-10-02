@@ -123,12 +123,12 @@
 				return;
 			}
 
-			game.d3.lethice.defeated(hpVictory);
+			d3.lethice.defeated(hpVictory);
 		}
 		
 		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
-			game.d3.lethice.won(hpVictory, pcCameWorms);
+			d3.lethice.won(hpVictory, pcCameWorms);
 		}
 		
 		private  _roundCount:number = 0;
@@ -164,7 +164,7 @@
 			outputText("Lethice’s hands blur in a familiar set of arcane motions, similar to the magical gestures you’ve seen from the imps. Hers are a thousand times more intricate. Her slender fingers move with all the precision of a master artist’s brush, wreathed in sparks of black energy.");
 			var l:number = player.lib / 10 + player.cor / 10 + 25;
 			if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
-			game.dynStats("lus", l);
+			dynStats("lus", l);
 	
 			if (player.lust <= 30) outputText("\n\nYou feel strangely warm.");
 			else if (player.lust <= 60) outputText("\n\nBlood rushes to your groin as a surge of arousal hits you, making your knees weak.");
@@ -212,8 +212,8 @@
 			}
 			outputText(" spray forth a torrent of white flame, burning the shadowy constructs away in the light of your pure, focused fire. In the span of seconds, Lethice’s spell is gone.");
 
-			game.doNext(game.combatMenu);
-			game.fatigue(30,1);
+			doNext(game.combatMenu);
+			fatigue(30,1);
 			outputText("\n\n", false);
 			flags[kFLAGS.SPELLS_CAST]++;
 			game.spellPerkUnlock();
@@ -367,21 +367,21 @@
 				outputText("\n\nYou try your hardest to push back the lustful, submissive thoughts that begin to permeate your mind, but against so many concentrated wills... even you can't hold back. You moan as the first hints of arousal spread through you, burning in your loins. What you wouldn't give for a fuck about now!");
 				l = player.lib / 10 + player.cor / 10 + 10;
 				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
-				game.dynStats("lus", l);
+				dynStats("lus", l);
 			}
 			else if (player.lust <= 66)
 			{
 				outputText("\n\nAt first, you try to think of something else... but in your state, that just ends up being sex: hot, dirty, sweaty fucking surrounded by a sea of bodies. With a gasp, you realize you've left yourself open to the demons, and they're all too happy to flood your mind with images of submission and wanton debauchery, trying to trick you into letting them take you!");
 				l = player.lib / 10 + player.cor / 10 + 10;
 				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
-				game.dynStats("lus", l);
+				dynStats("lus", l);
 			}
 			else
 			{
 				outputText("\n\nYou don't even try to resist anymore -- your mind is already a cornucopia of lustful thoughts, mixed together with desire that burns in your veins and swells in your loins, all but crippling your ability to resist. The demons only add to it, fueling your wanton imagination with images of hedonistic submission, of all the wondrous things they could do to you if you only gave them the chance. It's damn hard not to.");
 				l = player.lib / 10 + player.cor / 10 + 10
 				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
-				game.dynStats("lus", l);
+				dynStats("lus", l);
 			}
 		}
 
@@ -399,7 +399,7 @@
 				else outputText("\n\nOh gods! The way their bodies undulate, caressing and cumming, moaning as they're fucked from behind and transfer all of that energy to you, makes your body burn with desire. It's almost too much to bear!");
 				var l:number = player.lib / 10 + player.cor / 10 + 10;
 				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
-				game.dynStats("lus", l);
+				dynStats("lus", l);
 			}
 		}
 
@@ -466,12 +466,12 @@
 			else if (combatEvade())
 			{
 				outputText(" You at least manage to close your eyes before the wave of spooge hits you, splattering all over your [armor].");
-				game.dynStats("lus", 5);
+				dynStats("lus", 5);
 			}
 			else
 			{
 				outputText(" You take a huge, fat, musky glob of spunk right to the eyes! You yelp in alarm, trying to wipe the salty, burning demonic cock-cream out, but it's simply too thick! Yuck!");
-				game.dynStats("lus", 5);
+				dynStats("lus", 5);
 				player.createStatusAffect(StatusAffects.Blind, 2 + rand(2), 0, 0, 0);
 			}
 		}
@@ -490,10 +490,10 @@
 
 			outputText("\n\nWhile the demons are down, and Lethice is still recovering from your first skirmish, you have a much-needed moment to relieve the tensions starting to grow within you. Or you could press the attack, and take the fight to the queen.");
 
-			game.menu();
-			if (player.hasCock() || player.hasVagina()) game.addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
-			if (player.findStatusAffect(StatusAffects.KnowsHeal) >= 0) game.addButton(1, "Heal", p2Heal);
-			game.addButton(2, "Next", p2Next);
+			menu();
+			if (player.hasCock() || player.hasVagina()) addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
+			if (player.findStatusAffect(StatusAffects.KnowsHeal) >= 0) addButton(1, "Heal", p2Heal);
+			addButton(2, "Next", p2Next);
 		}
 
 		private  p2DemonFuck(hpVictory:boolean):void
@@ -517,10 +517,10 @@
 			outputText("\n\nAround you, spurred on by your face-fucking the omnibus, the defeated demon court undulates in waves of orgiastic pleasure, gleefully sucking each other’s cocks, penetrating any hole they can find, or simply rolling on the floor locked in each other’s sensual embraces. Those that didn’t join the fight hoot and holler from the stands, encouraging you to fuck the omnibus like the eager slut she is. For her part, the horny demon just smirks up at you between long, loving licks across your sex.");
 
 			// [Oral Finish] [Fuck Demoncunt] [Ride Dogcock]
-			game.menu();
-			game.addButton(0, "OralFinish", oralFinish);
-			if (player.hasCock()) game.addButton(1, "FuckDemon", fuckDemon);
-			game.addButton(2, "RideCock", rideCock);
+			menu();
+			addButton(0, "OralFinish", oralFinish);
+			if (player.hasCock()) addButton(1, "FuckDemon", fuckDemon);
+			addButton(2, "RideCock", rideCock);
 		}
 
 		private  oralFinish():void
@@ -595,7 +595,7 @@
 			outputText("Drawing on your magic, you use the opportunity to mend your wounds. No foe dares challenge you during the brief lull in battle, enabling you to maintain perfect concentration. With your flesh freshly knit and ready for battle, you look to Lethice.");
 			var temp:number = int((player.inte / (2 + rand(3)) * game.spellMod()) * (player.maxHP() / 150));
 			if(player.armorName == "skimpy nurse's outfit") temp *= 1.2;
-			game.HPChange(temp,false);
+			HPChange(temp,false);
 
 			beginPhase3(true);
 		}
@@ -628,9 +628,9 @@
 			pronoun2 = "her";
 			pronoun3 = "her";
 			
-			game.menu();
+			menu();
 			
-			if (doLethNext) game.addButton(0, "Next", p2Next);
+			if (doLethNext) addButton(0, "Next", p2Next);
 			else combatRoundOver();
 		}
 
@@ -695,7 +695,7 @@
 			{
 				var l:number = player.lib / 10 + player.cor / 10 + 10
 				if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
-				game.dynStats("lus", l);
+				dynStats("lus", l);
 				
 				var damage:number = str + weaponAttack - rand(player.tou);
 				damage = player.takeDamage(damage);
@@ -838,7 +838,7 @@
 		{
 			outputText("<i>“Let’s see how you fight while you’re being groped, shall we? A shame Pigby isn’t around to see how I’ve improved his hands,”</i> Lethice murmurs. Cupping her hands into a parody of lecher’s grip, the corruptive Queen squeezes and chants. Immediately, you feel phantasmal hands all over your body, reaching through your armor to fondle your bare [skinFurScales]. Digits slip into your [butt]. Fingertips brush your [nipples]. Warm palms slide down your quivering belly toward your vulnerable loins.");
 			outputText("\n\nYou glare daggers at Lethice, but she merely laughs. <i>“A shame I never got to convince him that his hands were so much more effective when used like this.”</i>");
-			game.dynStats("lus", 5);
+			dynStats("lus", 5);
 			player.createStatusAffect(StatusAffects.PigbysHands, 0, 0, 0, 0);
 		}
 	}

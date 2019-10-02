@@ -67,7 +67,7 @@
 					if (output && itype == this)
 						outputText("You still have " + itype.longName + " left over.  ");
 					game.itemSwapping = true;
-					game.inventory.takeItem(this, false);
+					inventory.takeItem(this, false);
 				}
 			}
 			player.setWeaponHiddenField(WeaponLib.FISTS);
@@ -75,4 +75,3 @@
 		}
 */
 	}
-

@@ -9,15 +9,15 @@
 	 
 	 
 
-	export  class ConsumableLib extends BaseContent
+	export  class ConsumableLib
 	{
 		public static  DEFAULT_VALUE:number = 6;
 		public  AUBURND:SimpleConsumable = mk("AuburnD","AuburnD", "a vial of auburn hair dye", curry(m.hairDye, "auburn"),"This bottle of dye will allow you to change the color of your hair.  Of course if you don't have hair, using this would be a waste.");
 		public  B__BOOK:SimpleConsumable = mk("B. Book","B. Book", "a small book with a midnight-black cover", m.blackSpellbook, "This solid black book is totally unmarked, saved for a blood red clasp that holds the covers closed until you are ready to read it.  The pages are edged with gold, like some of the fancy books in the monastary back home.", 40);
 		public  B_GOSSR:SimpleConsumable = mk("B.Gossr","B.Gossr", "a bundle of black, gossamer webbing", curry(m.sweetGossamer, 1), "These strands of gooey black gossamer seem quite unlike the normal silk that driders produce.  It smells sweet and is clearly edible, but who knows what it might do to you?");
-		public  BC_BEER:SimpleConsumable = mk("BC Beer","BC Beer", "a mug of Black Cat Beer", function(player:Player):void{getGame().telAdre.niamh.blackCatBeerEffects(player)}, "A capped mug containing an alcoholic drink secreted from the breasts of Niamh.  It smells tasty.", 1);
+		public  BC_BEER:SimpleConsumable = mk("BC Beer","BC Beer", "a mug of Black Cat Beer", function(player:Player):void{telAdre.niamh.blackCatBeerEffects(player)}, "A capped mug containing an alcoholic drink secreted from the breasts of Niamh.  It smells tasty.", 1);
 		public  BEEHONY:Consumable			= new BeeHoney(false, false);
-		public  BIMBOCH:SimpleConsumable = mk("BimboCh","BimboCh", "a bottle of bimbo champagne", curry(function(player:Player):void{getGame().telAdre.niamh.bimboChampagne(player,true,true)}), null, 1);
+		public  BIMBOCH:SimpleConsumable = mk("BimboCh","BimboCh", "a bottle of bimbo champagne", curry(function(player:Player):void{telAdre.niamh.bimboChampagne(player,true,true)}), null, 1);
 		public  BIMBOLQ:BimboLiqueur		= new BimboLiqueur();
 		public  BLACK_D:SimpleConsumable = mk("Black D","Black D", "a vial of black hair dye", curry(m.hairDye, "black"),"This bottle of dye will allow you to change the color of your hair.  Of course if you don't have hair, using this would be a waste.");
 		public  BLACKEG:SimpleConsumable = mk("BlackEg","BlackEg", "a rubbery black egg", curry(m.blackRubberEgg, false), "This is an oblong egg, not much different from a chicken egg in appearance (save for the color).  Something tells you it's more than just food.");
@@ -87,7 +87,7 @@
 		public  P_PEARL:SimpleConsumable = mk("P.Pearl","P.Pearl", "a pure pearl", m.purePearl, null,1000);
 		public  P_S_MLK:SimpleConsumable = mk("P.S.Mlk","P.S.Mlk", "an untainted bottle of Succubi milk", curry(m.succubiMilk, false), "This milk-bottle is filled to the brim with a creamy white milk of dubious origin.  A pink label proudly labels it as \"<i>Succubi Milk</i>\".  In small text at the bottom of the label it reads: \"<i>To bring out the succubus in YOU!</i>\"  Purified by Rathazul to prevent corruption.", 20);
 		public  P_WHSKY:PhoukaWhiskey		= new PhoukaWhiskey();
-		public  PEPPWHT:SimpleConsumable = mk("PeppWht","PeppWht", "a vial of peppermint white", function(player:Player):void{getGame().peppermintWhite(player)}, "This tightly corked glass bottle gives off a pepperminty smell and reminds you of the winter holidays.  How odd.", 120);
+		public  PEPPWHT:SimpleConsumable = mk("PeppWht","PeppWht", "a vial of peppermint white", function(player:Player):void{peppermintWhite(player)}, "This tightly corked glass bottle gives off a pepperminty smell and reminds you of the winter holidays.  How odd.", 120);
 		public  PINKDYE:SimpleConsumable = mk("PinkDye","PinkDye", "a vial of bright pink hair dye", curry(m.hairDye, "neon pink"),"This bottle of dye will allow you to change the color of your hair.  Of course if you don't have hair, using this would be a waste.");
 		public  PINKEGG:SimpleConsumable = mk("PinkEgg","PinkEgg", "a pink and white mottled egg", curry(m.pinkEgg, false),"This is an oblong egg, not much different from a chicken egg in appearance (save for the color).  Something tells you it's more than just food.");
 		public  PRFRUIT:SimpleConsumable = mk("PrFruit","PrFruit", "a purple fruit", m.purpleFruitEssrayle, "This sweet-smelling produce looks like an eggplant, but feels almost squishy, and rubbery to the touch. Holding it to your ear, you think you can hear some fluid sloshing around inside.");
@@ -154,4 +154,3 @@
 		{
 		}
 	}
-

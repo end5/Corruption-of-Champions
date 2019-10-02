@@ -2,7 +2,7 @@
 	 
 	 
 
-	export class Lumi extends BaseContent{
+	export class Lumi{
 
 	public  constructor()
 	{
@@ -238,4 +238,3 @@ private  lumiEnhanceGo(itype:ItemType):void
 	inventory.takeItem(nextItem, lumiEnhance, lumiLabChoices);
 }
 }
-

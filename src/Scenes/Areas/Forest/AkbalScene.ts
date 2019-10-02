@@ -8,7 +8,7 @@
 	 
 	 
 
-	export class AkbalScene extends BaseContent
+	export class AkbalScene
 	{
 		public  constructor()
 		{
@@ -47,7 +47,7 @@
 						buttFuck = rapeAkbal;
 					outputText("\n\nDo you rape him?", false);
 					//Rape / Don't Rape
-					kGAMECLASS.simpleChoices("Butt-fuck", buttFuck, "Take Vaginally", vagoo, "Force Lick", vagooLick, "B.Titfuck", bikiniTits, "Leave", cleanupAfterCombat);
+					simpleChoices("Butt-fuck", buttFuck, "Take Vaginally", vagoo, "Force Lick", vagooLick, "B.Titfuck", bikiniTits, "Leave", cleanupAfterCombat);
 					return;
 				}
 			}
@@ -180,7 +180,7 @@
 					//(With Fertility/Lots of Jizz Perk)
 					if (player.cumQ() > 1000)
 					{
-						outputText("The crushing tightness of Akbal's quivering hole pushes you over the edge and with a titanic howl you begin hosing down his insides.  The jaguar demon erupts as well, his body convulsing in time with your still thrusting " + cockDescript(0) + ".\n\n", false);
+						outputText("The crushing tightness of Akbal's quivering hole pushes you over the edge and with a titanic howl you begin hosing down his insides.  The jaguar demon erupts as well, his body convulsing in time with your still thrusting " + game.player.cockDescript(0) + ".\n\n", false);
 
 						outputText("As your cock continues to pump massive tons of liquid into the jaguar demon you grind your still swelling sex organ inside him and beneath the two of you his belly begins to bulge as he is filled.  As your massive orgasm subsides you pull out, releasing a gargantuan deluge of your thick spunk that rolls down his legs and creates a large puddle in the forest floor.  Akbal heaves a relieved sighs, obviously happy you are done raping him.\n\n", false);
 					}
@@ -313,20 +313,20 @@
 				//[Small penis (7 inches or less)]
 				if (player.cockArea(0) < 13)
 				{
-					outputText("You first poke it with your finger, causing Akbal to flinch at the sensation.  Taking your " + cockDescript(0) + " in hand, you shove it in without hesitation or mercy.  The virgin-like hole clamps shut and Akbal hisses in pain as you force him open.  In no time at all you're sawing your " + cockDescript(0) + " in and out of the demon's tight hole, relishing in the way it quivers and squirms around your embedded " + cockDescript(0) + ".\n\n", false);
+					outputText("You first poke it with your finger, causing Akbal to flinch at the sensation.  Taking your " + game.player.cockDescript(0) + " in hand, you shove it in without hesitation or mercy.  The virgin-like hole clamps shut and Akbal hisses in pain as you force him open.  In no time at all you're sawing your " + game.player.cockDescript(0) + " in and out of the demon's tight hole, relishing in the way it quivers and squirms around your embedded " + game.player.cockDescript(0) + ".\n\n", false);
 				}
 				//[Medium penis (8-12 inches)]
 				else if (player.cockArea(0) < 25)
 				{
-					outputText("A light tap of your finger causes the tiny hole to constrict and Akbal's entire body flinches in fear.  You grab your " + cockDescript(0) + " with a cruel smile.  As you shove yourself into his tight pucker, you aren't surprised to find that your " + cockDescript(0) + " is barely able to breach the tightly sealed walls.  Grunting with effort you slowly inch forward, Akbal howling and squirming beneath you as he is taken without regard for his own pleasure.\n\n", false);
-					outputText("After a dozen achingly slow thrusts, Akbal's asshole begins to loosen and you start sawing your " + cockDescript(0) + " in and out of his pucker with force. The demon cat's howls fluctuate between yelps of pain and moans of pleasure.\n\n", false);
+					outputText("A light tap of your finger causes the tiny hole to constrict and Akbal's entire body flinches in fear.  You grab your " + game.player.cockDescript(0) + " with a cruel smile.  As you shove yourself into his tight pucker, you aren't surprised to find that your " + game.player.cockDescript(0) + " is barely able to breach the tightly sealed walls.  Grunting with effort you slowly inch forward, Akbal howling and squirming beneath you as he is taken without regard for his own pleasure.\n\n", false);
+					outputText("After a dozen achingly slow thrusts, Akbal's asshole begins to loosen and you start sawing your " + game.player.cockDescript(0) + " in and out of his pucker with force. The demon cat's howls fluctuate between yelps of pain and moans of pleasure.\n\n", false);
 				}
 				//[Large penis (13 inches and up)]
 				else
 				{
-					outputText("A single look tells you your " + cockDescript(0) + " won't fit... but since when has that stopped you from trying?  You slide a single finger against the virginally-tight hole and Akbal flinches. His already tight hole clamps shut in fear, as if doing so will somehow stop the inevitable intrusion.\n\n", false);
-					outputText("You twist Akbal's tail into your fist and laugh as a scared whimper escapes from the jaguar demon's throat.  You begin to push your " + cockDescript(0) + " in with one hand as you pull Akbal's tail with the other.  The demon whines and howls as you invade his clenching sphincter, forcibly stretching the tight pink hole to a dangerous degree.  You are halted all too soon, barely able to fit more than a foot of your " + cockDescript(0) + " into Akbal's virginally-tight hole.  Deciding that's good enough, you pull out before pushing forward again, meeting the same resistance as before.\n\n", false);
-					outputText("After what seems like hours of resistance and howling, Akbal's body shudders and his asshole relaxes from complete exhaustion.  Battling with your " + cockDescript(0) + " seems to have nearly made him pass out, and he no longer has the energy to resist you.  The jaguar demon's body flinches with your every thrust as you pound him raw – without lube, and without mercy.\n\n", false);
+					outputText("A single look tells you your " + game.player.cockDescript(0) + " won't fit... but since when has that stopped you from trying?  You slide a single finger against the virginally-tight hole and Akbal flinches. His already tight hole clamps shut in fear, as if doing so will somehow stop the inevitable intrusion.\n\n", false);
+					outputText("You twist Akbal's tail into your fist and laugh as a scared whimper escapes from the jaguar demon's throat.  You begin to push your " + game.player.cockDescript(0) + " in with one hand as you pull Akbal's tail with the other.  The demon whines and howls as you invade his clenching sphincter, forcibly stretching the tight pink hole to a dangerous degree.  You are halted all too soon, barely able to fit more than a foot of your " + game.player.cockDescript(0) + " into Akbal's virginally-tight hole.  Deciding that's good enough, you pull out before pushing forward again, meeting the same resistance as before.\n\n", false);
+					outputText("After what seems like hours of resistance and howling, Akbal's body shudders and his asshole relaxes from complete exhaustion.  Battling with your " + game.player.cockDescript(0) + " seems to have nearly made him pass out, and he no longer has the energy to resist you.  The jaguar demon's body flinches with your every thrust as you pound him raw – without lube, and without mercy.\n\n", false);
 				}
 				outputText("You rape the jaguar demon's tight hole with steadily mounting force, your " + hipDescript() + " smashing into his body with freight-train force, and causing him to cry out.  Despite this, his 15-inch swollen sex organ is pumping out pre beneath him, letting you know that his pain is mixed with plenty of unwilling pleasure.\n\n", false);
 				outputText("The crushing tightness of Akbal's quivering hole pushes you over the edge, and with a titanic howl you unleash your load inside him.  Akbal's suddenly clenching sphincter lets you know that he has reached his orgasm as well.\n\n", false);
@@ -334,7 +334,7 @@
 				//[With Fertility/Lots of Jizz Perk]
 				if (player.cumQ() > 1000)
 				{
-					outputText("You continue to slide your still-swollen " + cockDescript(0) + " inside his quivering hole as you pump massive tons of liquid into the false god's stomach and bowels.  Beneath the two of you, his belly begins to bulge as he is filled to a dangerous degree.\n\n", false);
+					outputText("You continue to slide your still-swollen " + game.player.cockDescript(0) + " inside his quivering hole as you pump massive tons of liquid into the false god's stomach and bowels.  Beneath the two of you, his belly begins to bulge as he is filled to a dangerous degree.\n\n", false);
 					outputText("Once your massive orgasm subsides you pull out, releasing a gargantuan deluge of your thick spunk that rolls down his legs, creating a large puddle in the forest floor.  Akbal heaves a relieved sigh, obviously glad that you are finally done raping him.\n\n", false);
 				}
 				//[Without Fertility/Lots of Jizz Perk]
@@ -378,7 +378,7 @@
 
 				outputText("Keeping the vines holding his arms up in hand, you slowly turn around and lift your tail, allowing your sopping mare cunt to wink at Akbal", false);
 				if (player.hasCock())
-					outputText(" " + sMultiCockDesc() + " hanging beneath, twitching in anticipation", false);
+					outputText(" " + game.player.sMultiCockDesc() + " hanging beneath, twitching in anticipation", false);
 				outputText(". With a smirk at the helpless Gods expense, you take a step back, lining up before pushing yourself against him roughly, shoving his barbed feline shaft deeply into you.", false);
 			}
 			//{If Pussy is <loose}
@@ -450,14 +450,14 @@
 		private  girlsRapeAkbalPart2():void
 		{
 			outputText("", true);
-			kGAMECLASS.hideUpDown();
+			hideUpDown();
 			//Centaur
 			outputText(images.showImage("akbal-deepwoods-female-taur-bindakbal"));
 			if (player.isTaur())
 			{
 				outputText("You moan deeply as the thick shaft spreads your lips wide, throbbing against your clit as the barbs shudder against your inner walls, pushing your rump firmly against his lower abdomen as you squirm, leaking over his waist", false);
 				if (player.hasCock())
-					outputText(", " + sMultiCockDesc() + " swinging back and forth, occasionally bumping into his bound legs", false);
+					outputText(", " + game.player.sMultiCockDesc() + " swinging back and forth, occasionally bumping into his bound legs", false);
 				outputText(". The demon groans, clenching his eyes shut as he refuses to like the treatment you're forcing on him, but his body betrays him as a liar as his felinehood thickens and lengthens, more than eager to stuff your box full. It's with no small shiver of delight when you drink in his moans of longing as you pull back to the very tip of his cock.\n\n", false);
 
 				//({If Corruption > 30}
@@ -465,7 +465,7 @@
 					outputText("If you weren't so eager on using him to get off, you might have considered teasing him like that then leaving him bound to the tree.  ", false);
 				outputText("Quickly, you settle into a rhythm of rocking back and forth, the tree creaking as you throw your weight against it with every plunge down, the cat behind you reduced to a mewling, begging kitten, trying in vain to thrust into your sopping cunt.\n\n", false);
 
-				outputText("You continue like this for the better part of an hour, his barbs raking your insides and sending constant shivers through your body, but you just can't seem to get off on your bounces alone. Without really thinking it through, you release the vines holding Akbal's arms up to grope your own " + chestDesc() + ", fondling yourself roughly.\n\n", false);
+				outputText("You continue like this for the better part of an hour, his barbs raking your insides and sending constant shivers through your body, but you just can't seem to get off on your bounces alone. Without really thinking it through, you release the vines holding Akbal's arms up to grope your own " + game.player.chestDesc() + ", fondling yourself roughly.\n\n", false);
 
 				outputText("Thankfully, Akbal is just as desperate to get off as you as he makes use of his new found freedom, one hand clutching the base of your tail, the other grabbing your flank with a clawed paw. Immediately he snarls, shoving his feline dong deep into you, a much better sensation then when you were merely rocking on him, your mare cunt squirting and clenching around him, trying to milk his seed", false);
 				if (player.hasCock())
@@ -482,7 +482,7 @@
 
 				outputText("In the end the jaguar finishes first, roaring his pleasure to the trees as he squirts his kitten-cream into your cunt, filling you up. If you were in any state to guess, you could probably imagine the cat filling up your womb as well judging by the swelling of your lower body, causing a flash of concern, wondering if the feline could possibly impregnate your womb. He's not finished however, as he continues to thrust through his release, pulling you higher and higher into orgasmic bliss as you finally release in tandem with his fifth orgasm. Your " + vaginaDescript() + " clenches tightly over him, coating his waist in fem juices as you milk him", false);
 				if (player.hasCock())
-					outputText(" as " + sMultiCockDesc() + " twitch and let loose, spraying the ground with your seed", false);
+					outputText(" as " + game.player.sMultiCockDesc() + " twitch and let loose, spraying the ground with your seed", false);
 				outputText(".\n\n", false);
 
 				outputText("Your body trembles as the demon sags down onto your lower back, clutching your equine hips lightly, as you want nothing more but to simply sag down with him, his weight oddly comfortable on your back. Shaking your head to clear it, you begin to turn round, careful not to dislodge Akbal from his obviously comfortable position as you feel him slowly start to shift back into his quadruped form, his dripping shaft slipping out of your pussy with an obscene slurping noise. Lowering your tail, you let the demon slip off, fumbling with the vines around his feet, releasing him as he sprawls on the ground in pure contentment. As you straighten up and start to head back to camp, you realize you feel the same way; perfectly content. Maybe it wouldn't be a bad idea to look out for the God in the future...", false);
@@ -513,19 +513,19 @@
 				outputText("Time seems to stretch as you stand there, pinning the god, once so proud and mighty, now just a mewling kitten devoted to your pleasure", false);
 				//({If Herm}
 				if (player.hasCock())
-					outputText(" while you stroke " + oMultiCockDesc() + " in time with his thrusts", false);
+					outputText(" while you stroke " + game.player.oMultiCockDesc() + " in time with his thrusts", false);
 				outputText(". His flexible tail pokes and strokes your deepest recesses as you keep him permanently on the edge with your teasing treatment while his sharp claws dig furrows into the earth as he strains up against you, too caught up in his pleasure to mentally voice his desires. Instead, he opens his maw to signal his lust as a savage beast would, full of yowls, snarls and purrs, creating an oddly pleasing cacophony to your ears, making you feel like the " + player.mf("Ruler of Beasts", "Queen of Beasts") + ", adding your own savage calls to his.\n\n", false);
 
 				outputText("The squirming of his tail becomes too much however, as a familiar pressure builds up down below. Increasing the pace upon which you please his shaft, you lower yourself, trying to push more of that skilled tail into you, ", false);
 				//({If Herm}
 				if (player.gender == 3)
-					outputText("stroking " + oMultiCockDesc() + " roughly, ", false);
+					outputText("stroking " + game.player.oMultiCockDesc() + " roughly, ", false);
 				outputText("moaning loudly as your pussy lips begin to clench and tighten, slick juices trickling down his fur. Sensing your closeness, Akbal redoubles his efforts, his writhing tail bristling, dragging his fur along your insides. Finally it becomes too much as you release, your thick fem juices pouring out of your stuffed pussy, falling down onto his straining shaft", false);
 				if (player.hasCock())
-					outputText(" as " + sMultiCockDesc() + " offers up its bounty, spasming and adding to the mess", false);
+					outputText(" as " + game.player.sMultiCockDesc() + " offers up its bounty, spasming and adding to the mess", false);
 				outputText(". The added heat and wetness of your orgasm sets him over the edge as he gives a roar loud enough to shake the trees, his thick, barbed shaft squirting hard, arcing his back as his seed splats onto the leaves of the tree above, falling down as a perverse rain over the pair of you.\n\n", false);
 
-				outputText("Your " + chestDesc() + " chest heaves as you struggle to gulp air, " + player.legs() + " quivering from the sheer power of the orgasm the cat's tail gave you.  ", false);
+				outputText("Your " + game.player.chestDesc() + " chest heaves as you struggle to gulp air, " + player.legs() + " quivering from the sheer power of the orgasm the cat's tail gave you.  ", false);
 				//({if cum volume > normal}
 				if (player.cumQ() > 500)
 					outputText("His entire waist is coated in your juices, the once proud cat sitting in a pool of your leavings, with a contented grin on his face, like the cat that caught the canary", false);
@@ -540,7 +540,7 @@
 			//Loose
 			else
 			{
-				outputText("You groan loudly as Akbal's impressive shaft stretches your pussy wide, instantly thankful that you had the idea to lube him up beforehand. Your less-than-willing partner adds his own groan to yours, the twitching of his meat signalling that he's not quite to opposed to the idea as he makes out. Maybe he's got a thing about dominance, from either angle. Nevertheless, you continue to push down until your hips reach his with a light bump. The sensation of his immense cock filling you up causes you to shudder, before leaning into the demon, pressing your " + chestDesc() + " against his, revealing in his silky fur stroking multiple parts of your body all at once. The yowling male takes off, ducking his head to lick and nip at your " + nippleDescript(0) + "s", false);
+				outputText("You groan loudly as Akbal's impressive shaft stretches your pussy wide, instantly thankful that you had the idea to lube him up beforehand. Your less-than-willing partner adds his own groan to yours, the twitching of his meat signalling that he's not quite to opposed to the idea as he makes out. Maybe he's got a thing about dominance, from either angle. Nevertheless, you continue to push down until your hips reach his with a light bump. The sensation of his immense cock filling you up causes you to shudder, before leaning into the demon, pressing your " + game.player.chestDesc() + " against his, revealing in his silky fur stroking multiple parts of your body all at once. The yowling male takes off, ducking his head to lick and nip at your " + nippleDescript(0) + "s", false);
 				//({If Lactating}
 				if (player.biggestLactation() >= 1)
 					outputText(", adding a purr of pleasant surprise as he locks his lips around one nipple, drawing out mouthfuls of your sweet milk before gulping it down.  The sheer taboo of feeding a demon your milk sends shivers down your spine", false);
@@ -571,7 +571,7 @@
 				outputText("You're not sure how long you sit there, bouncing roughly on the feline demon's cock, his eyes clenched tightly shut as he revels in the feeling of your warm damp pussy and your " + buttDescript() + " grinding against his swollen sack. Eventually, his combined efforts of mouth, shaft and tail force you over the edge, your hungry pussy lips clenching tightly over him, rhythmically squeezing as you attempt to milk his shaft", false);
 				//({if Herm}
 				if (player.hasCock())
-					outputText(" as " + sMultiCockDesc() + "  twitches and strains, ready to blow", false);
+					outputText(" as " + game.player.sMultiCockDesc() + "  twitches and strains, ready to blow", false);
 				outputText(", and he certainly doesn't disappoint. With a roar loud enough to shake the trees, he erupts violently within your passage, his hot, steaming, fertile seed pouring into your depths", false);
 				//({if Herm}
 				if (player.cockTotal() == 1)
@@ -893,7 +893,7 @@
 					outputText("  Akbal slurps his way down to your " + vaginaDescript(0) + " twisting his face and drilling his tongue into you, mercilessly attacking your " + clitDescript() + " as you scream, howl, and cringe in ecstasy.  He then uses his lips to gently suck your " + clitDescript() + " into his mouth and twirl his tongue on it, making your grind your swollen sex against his jaguar lips.", false);
 				//(If Player has balls)
 				if (player.balls > 0)
-					outputText("  Akbal slurps his way down to your " + sackDescript() + " where he slathers his thick, heated saliva over your orbs, making you groan as your sensitive " + ballsDescriptLight() + " are teased and gently juggled by Akbal's masterful tongue.  He sucks both orbs into his mouth.  The sensation sends your eyes to the back of your skull and makes your entire body shiver.", false);
+					outputText("  Akbal slurps his way down to your " + sackDescript(player) + " where he slathers his thick, heated saliva over your orbs, making you groan as your sensitive " + ballsDescriptLight() + " are teased and gently juggled by Akbal's masterful tongue.  He sucks both orbs into his mouth.  The sensation sends your eyes to the back of your skull and makes your entire body shiver.", false);
 				//(transition)
 				outputText("  Once his oral machinations are finished a sudden warmth heats your innards, making you shiver in ecstasy as the demon rises to mount you.\n\n", false);
 
@@ -963,7 +963,7 @@
 			//[Player has balls]
 			else if (player.balls > 0)
 			{
-				outputText("Akbal slurps his way down to your " + sackDescript() + ", slathering his heated saliva over your orbs and making you groan as your sensitive " + ballsDescriptLight() + " are teased and gently juggled by Akbal's masterful tongue.  Your body continually twitches with pleasure from the sensations.  ", false);
+				outputText("Akbal slurps his way down to your " + sackDescript(player) + ", slathering his heated saliva over your orbs and making you groan as your sensitive " + ballsDescriptLight() + " are teased and gently juggled by Akbal's masterful tongue.  Your body continually twitches with pleasure from the sensations.  ", false);
 			}
 
 			outputText("His oral ministrations end when a sudden warmth heats your innards, and you shiver in ecstasy as the demon rises to mount you.  A single paw-like hand shoves your lifted chest and face back into the dirt, causing cold earth to cling to your face as Akbal gets into position above you.\n\n", false);
@@ -1779,4 +1779,3 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-

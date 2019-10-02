@@ -24,12 +24,12 @@
 		
 		 public  defeated(hpVictory:boolean):void
 		{
-			game.d3.jeanClaude.beatDaFuckhugeBasilisk(hpVictory);
+			d3.jeanClaude.beatDaFuckhugeBasilisk(hpVictory);
 		}
 		
 		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
-			game.d3.jeanClaude.fuckhugeBasiliskFuckedYouUp(hpVictory);
+			d3.jeanClaude.fuckhugeBasiliskFuckedYouUp(hpVictory);
 		}
 		
 		public  handleTease(lustDelta:number, successful:boolean):void
@@ -64,7 +64,7 @@
 					}
 					
 					applyTease(lustDelta);
-					game.dynStats("lus+", 20);
+					dynStats("lus+", 20);
 				}
 			}
 			else
@@ -72,7 +72,7 @@
 				outputText("\n\n“<i>Even when made the fool, still you try it, still you think you can entice me with things I have seen a thousand times before,</i>” Jean-Claude sighs. “<i>Why not give up, interloper? You do these things because they arouse YOU, not because you hope they arouse me. Give up, and embrace the life you were born to lead.</i>” Despite these words his hungry eyes remain on your body. Perhaps he can’t help it. You can only hope...");
 				
 				if (successful) applyTease(lustDelta);
-				game.dynStats("lus+", 20);
+				dynStats("lus+", 20);
 			}
 		}
 		
@@ -121,4 +121,3 @@
 		}
 		
 	}
-

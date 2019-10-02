@@ -7,7 +7,7 @@
 	 
 	 
 	
-	export class LethiceScenes extends BaseContent
+	export class LethiceScenes
 	{
 		public static  GAME_END_REDEMPTION:uint = 1;
 		public static  GAME_END_CONSORT:uint = 2;
@@ -47,7 +47,7 @@
 			}
 			
 			// Found a free file, throw it at the base save code by abusing the fuck out of Slot
-			getGame().saves.saveGameObject(currFileName, false);
+			saves.saveGameObject(currFileName, false);
 			
 			// Now would be a good time to pray this shit works.
 			
@@ -841,7 +841,7 @@
 			
 			outputText("\n\nYou bark eagerly and lunge up into her lap, burying your face between your loving Mistress’s thighs as the doors slam closed behind you, sealing the Champion of Ingnam’s fate...");
 
-			getGame().gameOver();
+			gameOver();
 		}
 
 		private  theChoiceDunDunDun():void
@@ -935,7 +935,7 @@
 			// 9999 no idea what this is keyed off
 			// {, vivacious}
 			outputText(" warrior. With a seemingly infallable champion there to defend it");
-			if (getGame().camp.companionsCount() > 0) outputText(" to say nothing of "+ player.mf("his", "her") +" bizarre friends");
+			if (camp.companionsCount() > 0) outputText(" to say nothing of "+ player.mf("his", "her") +" bizarre friends");
 			outputText(", Ingnam prospered. The tiny village soon grew into a bustling town, and later a city.");
 			outputText("\n\nWhen age finally claimed the unexpected " + player.mf("hero", "heroine") +", a stone statue of immense proportions was erected so that future generations could forever live under the protection of their greatest hero.");
 			
@@ -987,7 +987,7 @@
 			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] != 1) levelOfFuckedness += 25;
 
 			//Jojo corrupt +10
-			if (getGame().camp.campCorruptJojo()) levelOfFuckedness += 10;
+			if (camp.campCorruptJojo()) levelOfFuckedness += 10;
 
 			//Added more cum witches? -10
 			if (flags[kFLAGS.MORE_CUM_WITCHES] == 1) levelOfFuckedness -= 10;
@@ -996,7 +996,7 @@
 			if (flags[kFLAGS.FREED_VALA] == 1) levelOfFuckedness -= 10;
 
 			//Ceraph tamed -5
-			if (getGame().camp.ceraphIsFollower()) levelOfFuckedness -= 5;
+			if (camp.ceraphIsFollower()) levelOfFuckedness -= 5;
 
 			//Owca saved -10
 			if (flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 1) levelOfFuckedness -= 10;
@@ -1042,7 +1042,7 @@
 			if (flags[kFLAGS.ANT_KIDS] != 0) levelOfFuckedness -= 20;
 
 			//Kiha followered -15
-			if (getGame().camp.followerKiha()) levelOfFuckedness -= 15;
+			if (camp.followerKiha()) levelOfFuckedness -= 15;
 
 			//Pure Jojo recruited -5
 			if (player.findStatusAffect(StatusAffects.PureCampJojo) >= 0) levelOfFuckedness -= 5;
@@ -1078,7 +1078,7 @@
 			if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 || flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 0) return true;
 			if (flags[kFLAGS.SOPHIE_EGGS_LAID] > 0) return true;
 			if (flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] > 0) return true;
-			if (getGame().urtaPregs.urtaKids() > 0) return true;
+			if (urtaPregs.urtaKids() > 0) return true;
 			return false;
 		}
 
@@ -1140,10 +1140,10 @@
 			if (player.cor <= 33)
 			{
 				outputText("You could definitely run this place better than Lethice, and though she had many corrupted lieutenants, surely their worst depredations could be reigned in by your steady hand. You");
-				if (getGame().camp.companionsCount() > 0)
+				if (camp.companionsCount() > 0)
 				{
 					outputText(" gather your follower");
-					if (getGame().camp.companionsCount() > 1) outputText("s");
+					if (camp.companionsCount() > 1) outputText("s");
 					outputText(" in the citadel itself and");
 				}
 				outputText(" familiarize yourself with the place. Rather than driving off the few remaining demons you find, you place them into your service, explaining that so long as they serve you loyally they may yet live.");
@@ -1167,7 +1167,7 @@
 				outputText("Lethice truly didn’t know what she was doing. She had one of the mightiest armies Mareth had ever seen at her beck and call. Her scientists and magicians worked never-before-seen wonders at her behest. The technology on display in one of her factories alone could advance the civilizations of the realm by decades. Yet she squandered it all on pointless armies and perverse devices with little practical use.");
 				outputText("\n\nSure, you can see the appeal of having a few fuck-addled sluts to tend to your baser needs, but there’s no need to transform the whole world into them. Surely there’s a middle ground. You set out to find it.");
 				outputText("\n\nThe first step is moving");
-				if (getGame().camp.companionsCount() > 0) outputText("your followers from");
+				if (camp.companionsCount() > 0) outputText("your followers from");
 				outputText(" your camp away from the old portal and into the fortress. With their organization broken, the demons will hardly be in any position to mount an organized invasion into your world, and once you cow them into submission, they’ll work for you. Luckily, a few hung around after the fight. Either they weren’t close enough to the throne to hear the commotion or they didn’t care.");
 				outputText("\n\nConvincing them to work for you isn’t easy as you hoped, but they cave all the same. They have friends too, or at least what passes for friends amongst the soulless abominations. Word gets out fast, and your horde swells. Those who disobey you are swiftly brought in line by your loyal troops, acknowledging your power in spite of your less-corrupted ways.");
 				outputText("\n\nOne of your first orders is to let loose the rains that have been suspended in the clouds around your mountain for so long. Torrential downpours scour the landscape in the wake of your order, washing the residual corruption from the air the ground. And with the factories shut down, everyone should breathe a little easier.");
@@ -1187,10 +1187,10 @@
 			{
 				outputText("For all her might, Lethice had no idea what she was doing. She subsumed herself in corruption to no effect, washing away her reason in order to consistently and constantly overindulge in pleasure.");
 				outputText("\n\nYou won’t make the same mistake. You scour the castle’s every hallway, rooting out those demons that remain. Those smart enough to surrender join you, while those who dare to oppose your rule fall. Next, you set a watch and return to camp, gathering your things");
-				if (getGame().camp.companionsCount() > 0)
+				if (camp.companionsCount() > 0)
 				{
 					outputText(" and follower");
-					if (getGame().camp.companionsCount() > 1) outputText("s");
+					if (camp.companionsCount() > 1) outputText("s");
 				}
 				outputText(". With Lethice’s rule broken, there’s no danger of a demonic invasion of your homeland, and you’ll have any surviving rogues in hand soon enough.");
 				outputText("\n\nThat night, you send word through the land of Lethice’s loss. Your demonic agents tell their fellows of your power and strength, gathering more to your cause. Those free peoples with an ounce of sense pledge their loyalty to you, and those with more pride than the fallen Queen unwittingly sign the orders for their own invasion.");

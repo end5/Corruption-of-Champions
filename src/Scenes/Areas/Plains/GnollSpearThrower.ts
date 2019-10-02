@@ -12,7 +12,7 @@
 		private  hyenaPhysicalAttack():void {
 			var damage:number = 0;
 			//return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
@@ -86,7 +86,7 @@
 					outputText("\nYou notice that some kind of unnatural heat is flowing into your body from the wound", false);
 					if(player.inte > 50) outputText(", was there some kind of aphrodisiac on the knife?", false);
 					else outputText(".", false);
-					game.dynStats("lus", (player.lib/20 + rand(4)+1));
+					dynStats("lus", (player.lib/20 + rand(4)+1));
 				}
 				if(lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
 					if(!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.", false);
@@ -141,7 +141,7 @@
 					slow--;
 					player.addStatusValue(StatusAffects.GnollSpear,1,1);
 					player.spe--;
-					showStatDown( 'spe' );
+					mainView.statsView.showStatDown( 'spe' );
 					// speDown.visible = true;
 					// speUp.visible = false;
 				}
@@ -163,7 +163,7 @@
 			}
 			//Determine if dodged!
 			else if(player.spe - spe > 0 && int(Math.random()*(((player.spe-spe)/4)+80)) > 80) {
-				outputText("The gnoll grins at you before striding forward and pivoting.  A spotted leg snaps up and out, flashing through the air towards your " + chestDesc() + ".  You step back just in time, robbing the blow of force.  The paw lightly strikes your torso before the female hyena springs back, glaring at you.", false);
+				outputText("The gnoll grins at you before striding forward and pivoting.  A spotted leg snaps up and out, flashing through the air towards your " + game.player.chestDesc() + ".  You step back just in time, robbing the blow of force.  The paw lightly strikes your torso before the female hyena springs back, glaring at you.", false);
 			}
 			//Determine if evaded
 			else if(player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
@@ -185,14 +185,14 @@
 				if(damage > 0) damage = player.takeDamage(damage);
 				//No damage
 				if(damage <= 0) {
-					outputText("The gnoll tries to catch your " + chestDesc() + " with a snap-kick, but you manage to block the vicious blow.", false);
+					outputText("The gnoll tries to catch your " + game.player.chestDesc() + " with a snap-kick, but you manage to block the vicious blow.", false);
 				}
 				//<Hyena Attack 3 – Snap Kick – Successful>
 				else {
-					outputText("A glint enters the dark eyes of the gnoll before she strides forward and pivots.  A long, spotted leg snaps up and out to slam against your " + chestDesc(), false);
+					outputText("A glint enters the dark eyes of the gnoll before she strides forward and pivots.  A long, spotted leg snaps up and out to slam against your " + game.player.chestDesc(), false);
 					if(player.biggestTitSize() >= 1) outputText(", sending a wave of pain through the sensitive flesh", false);
 					outputText(".  A small, traitorous part of you can't help but notice a flash of long, dark flesh beneath her loincloth even as you stagger back from the impact. (" + damage + ")", false);
-					game.dynStats("lus", 2);
+					dynStats("lus", 2);
 				}
 			}
 			combatRoundOver();
@@ -204,12 +204,12 @@
 			//<Hyena Attack 4 – Arousal Attack – Highly Successful>
 			if(player.cor + player.lib > chance + 50) {
 				outputText("A wry grin spreads across the gnoll's face before she sprints towards you.  Too fast to follow, she flies forward, and you desperately brace for an impact that doesn't come.  Instead of striking you, two spotted paws clamp behind your neck and pull your head down, planting your face against her leather loincloth.  A powerful, musky smell burns in your nose and the feel of firm flesh behind the flimsy leather leaves a tingling sensation along your face.  She holds you there, pressed against her groin for several moments, desire growing deep within your body, before you find the strength and will to pull away.  The amazon grins, letting you stumble back as you try to fight off the feel of her body.\n\n", false);
-				game.dynStats("lus", (25 + player.lib/20 + player.sens/5));
+				dynStats("lus", (25 + player.lib/20 + player.sens/5));
 			}
 			//<Hyena Attack 4 – Arousal Attack – Mildly Successful>
 			else if(20 + player.cor + player.lib > chance) {
 				outputText("A lazy grin spreads across the gnoll's face before she sprints towards you.  Too fast to follow, she flies forward, and you desperately brace for an impact that doesn't come.  Instead of striking you, two spotted paws clamp behind your neck and pull your head down, planting your face against her leather loincloth.  A powerful, musky smell burns in your nose and the feel of firm flesh behind the flimsy leather leaves a tingling sensation along your face.  Instinctively, you tear away from the hold, stumbling away from the sensations filling your mind, though some desire remains kindled within you.", false);
-				game.dynStats("lus", (15 + player.lib/20 + player.sens/5));
+				dynStats("lus", (15 + player.lib/20 + player.sens/5));
 			}
 			//<Hyena Attack 4 – Arousal Attack – Unsuccessful>
 			else {
@@ -222,7 +222,7 @@
 		{
 			var damage:number = 0;
 //return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 //Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
@@ -291,7 +291,7 @@
 					outputText("\nYou notice that some kind of unnatural heat is flowing into your body from the wound", false);
 					if (player.inte > 50) outputText(", was there some kind of aphrodisiac on the knife?", false);
 					else outputText(".", false);
-					game.dynStats("lus", (player.lib / 20 + rand(4) + 1));
+					dynStats("lus", (player.lib / 20 + rand(4) + 1));
 				}
 				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
 					if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.", false);
@@ -307,12 +307,12 @@
 		 public  defeated(hpVictory:boolean):void
 		{
 			if(short == "alpha gnoll") {
-				game.clearOutput();
+				clearOutput();
 				outputText("The gnoll alpha is defeated!  You could use her for a quick, willing fuck to sate your lusts before continuing on.  Hell, you could even dose her up with that succubi milk you took from the goblin first - it might make her even hotter.  Do you?");
-				game.menu();
-				game.addButton(0,"Fuck",	game.urtaQuest.winRapeHyenaPrincess);
-				game.addButton(1,"Succ Milk", game.urtaQuest.useSuccubiMilkOnGnollPrincesses);
-				game.addButton(4,"Leave",game.urtaQuest.urtaNightSleep);
+				menu();
+				addButton(0,"Fuck",	game.urtaQuest.winRapeHyenaPrincess);
+				addButton(1,"Succ Milk", game.urtaQuest.useSuccubiMilkOnGnollPrincesses);
+				addButton(4,"Leave",game.urtaQuest.urtaNightSleep);
 			} else {
 				game.plains.gnollSpearThrowerScene.hyenaVictory();
 			}

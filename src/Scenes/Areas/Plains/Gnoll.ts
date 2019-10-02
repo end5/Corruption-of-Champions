@@ -15,7 +15,7 @@
 			var damage:number = 0;
 			var attack:number = rand(6);
 			//return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
@@ -120,7 +120,7 @@
 				outputText("The gnoll dances forward, then back, her whole body alive with sensual movement.  She catches the way you watch her and smirks, throwing in a hip-shake just for you.", false);
 				bonus += 6;
 			}
-			game.dynStats("lus", (bonus + 10 + player.lib/20 + rand(player.cor/20)));
+			dynStats("lus", (bonus + 10 + player.lib/20 + rand(player.cor/20)));
 			outputText("\n", false);
 		}
 
@@ -129,7 +129,7 @@
 			var damage:number = 0;
 			var attack:number = rand(6);
 //return to combat menu when finished
-			doNext(game.playerMenu);
+			doNext(playerMenu);
 //Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
@@ -268,7 +268,7 @@
 				var damage:number = 0;
 				var attack:number = rand(6);
 //return to combat menu when finished
-				doNext(game.playerMenu);
+				doNext(playerMenu);
 //Blind dodge change
 				if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 					outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
@@ -412,4 +412,3 @@
 		}
 		
 	}
-

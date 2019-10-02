@@ -1,7 +1,5 @@
 export function appearance(e:MouseEvent = null):void 
 {
-	funcs = new Array();
-	args = new Array();
 	//Temp vars
 	var temp:number = 0;
 	var rando:number = 0;
@@ -1077,22 +1075,22 @@ export function appearance(e:MouseEvent = null):void
 		else if(player.cockTotal() == 0) 
 		{
 			if(player.skinType == SKIN_TYPE_PLAIN) 
-				outputText("A " + sackDescript() + " with " + ballsDescript() + " swings heavily under where a penis would normally grow.", false);
+				outputText("A " + sackDescript(player) + " with " + ballsDescript() + " swings heavily under where a penis would normally grow.", false);
 			if(player.skinType == SKIN_TYPE_FUR) 
-				outputText("A fuzzy " + sackDescript() + " filled with " + ballsDescript() + " swings low under where a penis would normally grow.", false);
+				outputText("A fuzzy " + sackDescript(player) + " filled with " + ballsDescript() + " swings low under where a penis would normally grow.", false);
 			if(player.skinType == SKIN_TYPE_SCALES) 
-				outputText("A scaley " + sackDescript() + " hugs your " + ballsDescript() + " tightly against your body.", false);
+				outputText("A scaley " + sackDescript(player) + " hugs your " + ballsDescript() + " tightly against your body.", false);
 			if(player.skinType == SKIN_TYPE_GOO) 
 				outputText("An oozing, semi-solid sack with " + ballsDescript() + " swings heavily under where a penis would normally grow.", false);
 		}
 		else 
 		{
 			if(player.skinType == SKIN_TYPE_PLAIN) 
-				outputText("A " + sackDescript() + " with " + ballsDescript() + " swings heavily beneath your " + player.multiCockDescriptLight() + ".", false);
+				outputText("A " + sackDescript(player) + " with " + ballsDescript() + " swings heavily beneath your " + player.multiCockDescriptLight() + ".", false);
 			if(player.skinType == SKIN_TYPE_FUR) 
-				outputText("A fuzzy " + sackDescript() + " filled with " + ballsDescript() + " swings low under your " + player.multiCockDescriptLight() + ".", false);
+				outputText("A fuzzy " + sackDescript(player) + " filled with " + ballsDescript() + " swings low under your " + player.multiCockDescriptLight() + ".", false);
 			if(player.skinType == SKIN_TYPE_SCALES) 
-				outputText("A scaley " + sackDescript() + " hugs your " + ballsDescript() + " tightly against your body.", false);
+				outputText("A scaley " + sackDescript(player) + " hugs your " + ballsDescript() + " tightly against your body.", false);
 			if(player.skinType == SKIN_TYPE_GOO) 
 				outputText("An oozing, semi-solid sack with " + ballsDescript() + " swings heavily beneath your " + player.multiCockDescriptLight() + ".", false);
 		}

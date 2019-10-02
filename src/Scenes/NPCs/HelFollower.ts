@@ -128,7 +128,7 @@ private  comeToCampHeliaIWantTailInButt():void {
 	outputText("\n\nFinally, she breaks the kiss long enough to say, <i>\"Oh, I am going to enjoy living with you...\"</i>");
 	menu();
 	//place holder
-	model.time.hours++;
+	game.time.hours++;
 	addButton(0,"Next",afterMoveInBoningAnalFireTail);
 }
 
@@ -503,9 +503,9 @@ public  heliaFollowerMenu(display:boolean = true):void {
 		addButton(1,"Sex",heliaRoughSex);
 		addButton(2,"Threesomes",heliaThreesomes);
 		addButton(4,"Talk",heliaOptions);
-		if (!kGAMECLASS.helScene.pregnancy.isPregnant) addButton(5,"Spar",sparWithHeliaFirebuttsAreHot);
+		if (!helScene.pregnancy.isPregnant) addButton(5,"Spar",sparWithHeliaFirebuttsAreHot);
 		else outputText("\n\n<b>Helia will not spar or box while pregnant.</b>");
-		if (!kGAMECLASS.helScene.pregnancy.isPregnant) addButton(6,"Box",boxWithInCampHel);
+		if (!helScene.pregnancy.isPregnant) addButton(6,"Box",boxWithInCampHel);
 		if (flags[kFLAGS.HEL_LOVE] == 1 || flags[kFLAGS.HEL_LOVE] == -1) {
 			if(player.hasCock() && player.cockThatFits(heliaCapacity()) >= 0 && player.lust >= 33 &&
 					!helPregnant() && flags[kFLAGS.HELSPAWN_AGE] == 0) addButton(7,"Have A Kid",helSpawnScene.haveAKid);
@@ -520,13 +520,13 @@ public  heliaFollowerMenu(display:boolean = true):void {
 			if(display) outputText("You approach Hel as she's pacing around camp.  She's clad in her normal field attire: a simple scale bikini top and leather thong which supports her scimitar's scabbard.  Her cloak is loosely thrown over her shoulders, giving her a slight measure of protection from the mountain's harsh environs.");
 			if(display) outputText("\n\n\"<i>Heya, [name]! Ready to hit the road?</i>\"");
 			//(Display Options: [Dungeon] [Not Yet])
-			simpleChoices("Dungeon", kGAMECLASS.goToHeliaDungeon, "", null, "", null, "", null, "Not Yet", kGAMECLASS.notYet);
+			simpleChoices("Dungeon", goToHeliaDungeon, "", null, "", null, "", null, "Not Yet", notYet);
 		}
 	}
 }
 
 private  heliaOptions():void {
-	if (kGAMECLASS.helScene.pregnancy.event >= 3 && flags[kFLAGS.HELIA_TALK_SEVEN] == 0) {
+	if (helScene.pregnancy.event >= 3 && flags[kFLAGS.HELIA_TALK_SEVEN] == 0) {
 		helSpawnScene.heliaTalkSeven();
 		return;
 	}
@@ -536,7 +536,7 @@ private  heliaOptions():void {
 	}
 	menu();
 	addButton(0,"Discuss",talkToHel);
-	if(model.time.hours >= 21) addButton(1,"Cuddle",hugASmokeyTail);
+	if(game.time.hours >= 21) addButton(1,"Cuddle",hugASmokeyTail);
 	else addButton(2,"Hug",hugASmokeyTail);
 	if(flags[kFLAGS.HELIA_ANAL_TRAINING_OFFERED] > 0 && flags[kFLAGS.HELIA_ANAL_TRAINING] < 2 && player.biggestCockArea() > heliaAnalCapacity() && player.hasItem(consumables.GOB_ALE,1)) addButton(3,"Anal Train",heliaGapeSceneChoices);
 	addButton(5,"Bathe",takeABath);
@@ -905,7 +905,7 @@ private  listenToHelTalkAboutGnolls():void {
 private  hugASmokeyTail():void {
 	clearOutput();
 	//Cuddle with Hel (Replaces Hug @ 21:00+)
-	if(model.time.hours >= 21) {
+	if(game.time.hours >= 21) {
 		outputText("As the sun sets over the camp, you see Helia standing over her hammock, stretching and yawning, ready to turn in for the night.  You approach her, sliding your arms around her supple waist and burying your face in her soft crimson locks, holding your lover close.  Hel giggles girlishly as you give her a long hug, nuzzling into the nape of her neck.");
 		outputText("\n\nWith a bit of effort, Hel turns around in your embrace and starts to fiddle with your [armor], slowly pulling it off, leaving your bare flesh pressed against her own.  You breathe in the woodsmoke scent of her hair; rub your " + player.skinFurScales() + " along her smooth flesh; gasp lightly as her long tail wraps lovingly around your [legs], drawing you even closer, letting your face rest against her yielding chest.");
 		outputText("\n\nKissing and nipping along your arm and neck, Hel gently pulls you into the hammock, leaving you resting atop the salamander, your limbs and tail");
@@ -1042,7 +1042,7 @@ private  heliaRoughSex(output:boolean = true):void {
 		}
 	}
 	if (player.lust < 33) outputText("\n\n<b>You aren't turned on enough for sex right now.</b>");
-	if (getGame().inCombat)
+	if (game.inCombat)
 		addButton(9, "Leave", cleanupAfterCombat);
 	else addButton(9, "Back", heliaFollowerMenu);
 }
@@ -1140,7 +1140,7 @@ private  possessIzma():void {
 	
 	player.orgasm();
 	dynStats("sen", -1);
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }
@@ -1159,7 +1159,7 @@ private  inCampHelNagaLuv():void {
 	
 	outputText("\n\nYou return her smile, enjoying her intense warmth as it suffuses through your reptilian lower body.  Better yet, you can also feel her hot juices leaking out around her leather thong, staining your scales; just the hug's gotten her wet, by the looks of things.  She blushes slightly as you ask her if she knows what a horny little slut she is.  \"<i>Come on, don't be a tease... You know I want it...</i>\"");
 
-	outputText("\n\nWell, alrighty then.  Popping [oneCock] out of your genital slit, you give it a little stroke; though it hardly needs any encouragement to get hard, with the femlube soaking into you and Hel's big tits resting atop your binding body.  You release her from your naga-hug, and Hel grunts as she flops onto her back, her legs spread perfectly for you.  In between her soaked thighs you slither, plopping your " + cockDescript(x) + " onto her twat and sliding yourself between her lips in a single, fluid motion.  Hel rolls her head back and moans as you enter her, digging the very tips of her claws into the " + player.skinFurScales() + " of your back.");
+	outputText("\n\nWell, alrighty then.  Popping [oneCock] out of your genital slit, you give it a little stroke; though it hardly needs any encouragement to get hard, with the femlube soaking into you and Hel's big tits resting atop your binding body.  You release her from your naga-hug, and Hel grunts as she flops onto her back, her legs spread perfectly for you.  In between her soaked thighs you slither, plopping your " + game.player.cockDescript(x) + " onto her twat and sliding yourself between her lips in a single, fluid motion.  Hel rolls her head back and moans as you enter her, digging the very tips of her claws into the " + player.skinFurScales() + " of your back.");
 	
 	outputText("\n\nYou only manage to give her a single thrust before Hel grabs your shoulders and throws you onto your back, hilting you as she suddenly straddles your lower body.  Left to gaze upon your salamander lover's efforts, you watch her grab the very tip of your tail and slips it into her mouth, suckling it like a teat before taking the now-sodden end of your body and, with a grunt, placing it between her buttcheeks.  Your eyes widen a bit as Hel impales herself on your tip, the sensitive nerve-endings firing off as her hot, tight passage contracts around your ever-enlarging invader.");
 	
@@ -1167,9 +1167,9 @@ private  inCampHelNagaLuv():void {
 	
 	outputText("\n\nYou reach up and grab your lover's shoulders, pulling her face down onto your [chest] before rolling over, constricting her legs in a layer of naga tail, binding her with your tip and cock buried inside her.  Hel gasps, but after a moment begins to help you, guiding your lengthy, serpentine body around and around your entwined bodies until the two of you are utterly bound together, locked in intimate embrace.  You lie back, using your tail as a warm, comfy bed; Hel cuddles up atop you, managing to squirm until her arms are wrapped tightly around you.  With a kiss, you slip your tongue into Hel's mouth as you begin to move your body, rolling your hips into hers and wriggling your tail, doubling Hel's pleasure.  She gasps and moans, starting to fully tongue-fuck you as you ream her holes.");
 	
-	outputText("\n\nUnable to move much in your serpentine embrace, Hel begins to rapidly contract her vaginal and anal muscles, squeezing and grinding against your " + cockDescript(x) + " and tip.  Content to close your eyes and bask in the pleasures of your lover, ready to lose yourself in pleasure.  You relax, leaning back on yourself as you buck your hips into your lover's sweet hot box, flick your tail inside her ass, and play your tongue around her mouth, tasting her warm saliva and the aftertaste of beer.");
+	outputText("\n\nUnable to move much in your serpentine embrace, Hel begins to rapidly contract her vaginal and anal muscles, squeezing and grinding against your " + game.player.cockDescript(x) + " and tip.  Content to close your eyes and bask in the pleasures of your lover, ready to lose yourself in pleasure.  You relax, leaning back on yourself as you buck your hips into your lover's sweet hot box, flick your tail inside her ass, and play your tongue around her mouth, tasting her warm saliva and the aftertaste of beer.");
 	
-	outputText("\n\nYou cum easily, only a small grunt escaping your lips as Hel's delicious cunt brings you over, pulling your " + cockDescript(x) + " deep into her and tightening your hold around her.  The sudden squeeze is the last hurrah as you empty your ");
+	outputText("\n\nYou cum easily, only a small grunt escaping your lips as Hel's delicious cunt brings you over, pulling your " + game.player.cockDescript(x) + " deep into her and tightening your hold around her.  The sudden squeeze is the last hurrah as you empty your ");
 	if(player.balls > 0) outputText("[balls]");
 	else outputText("load");
 	outputText(" well into her womb.  Your tail spasms as you cum, running wild inside Hel's rectum until she cums too, yelping into your open mouth as she climaxes a moment after you, girlcum squirting out of her twat until your [hips] are thoroughly soaked.");
@@ -1180,7 +1180,7 @@ private  inCampHelNagaLuv():void {
 	
 	player.orgasm();
 	dynStats("sen", -1);
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }	
@@ -1210,7 +1210,7 @@ private  nagaCoilForHelCampWithGirls():void {
 	
 	player.orgasm();
 	dynStats("sen", -1);
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }	
@@ -1223,15 +1223,15 @@ private  centaurMountsCampHel():void {
 	clearOutput();
 	outputText("You trot around your lover, your powerful centaur frame brushing lightly against her.  Hel grins, reaching out to pet your flanks and running her claws across your " + player.skinFurScales() + ".  \"<i>You've got a helluva body,</i>\" she smiles, and with an invitation from you, swings up onto your back, wrapping her arms tightly around your waist as you break out into a canter around camp.");
 	
-	outputText("\n\nShe nudges you toward her part of camp.  When you arrive, Hel leaps off and grabs some ropes from her pack.  You raise an eyebrow, but allow her to tie them around your equine half, creating a makeshift harness underneath you.  Once done, Hel lowers herself to her knees and, pushing aside your [armor], takes hold of your " + cockDescript(x) + ".  She gives it an experimental stroke, running her warm, leathery palm and scaled fingers across your length until you let out a little whinny and stamp your hooves.");
+	outputText("\n\nShe nudges you toward her part of camp.  When you arrive, Hel leaps off and grabs some ropes from her pack.  You raise an eyebrow, but allow her to tie them around your equine half, creating a makeshift harness underneath you.  Once done, Hel lowers herself to her knees and, pushing aside your [armor], takes hold of your " + game.player.cockDescript(x) + ".  She gives it an experimental stroke, running her warm, leathery palm and scaled fingers across your length until you let out a little whinny and stamp your hooves.");
 	
-	outputText("\n\nHel pats your flank with her free hand, but doesn't let up, instead adding her long, slender tongue to the mix.  She flicks it along the " + player.cockHead(x) + " of your " + cockDescript(x) + ", sending shivers of pleasure up your rigid shaft.  You ache to do something here, to add to your own pleasure or return it to your partner, ");
+	outputText("\n\nHel pats your flank with her free hand, but doesn't let up, instead adding her long, slender tongue to the mix.  She flicks it along the " + player.cockHead(x) + " of your " + game.player.cockDescript(x) + ", sending shivers of pleasure up your rigid shaft.  You ache to do something here, to add to your own pleasure or return it to your partner, ");
 	//if no boobs: 
 	if(player.biggestTitSize() < 3) outputText(" but your body is too big, and you must content yourself to endure Hel's ministrations");
 	else outputText(" but all you can do is take hold of your [chest] and tease and tweak your [nipples], getting what pleasure you can from your sensitive teats");
 	outputText(".");
 	
-	outputText("\n\nAfter a few mind-hazing minutes of salamander hand-job, Hel takes the " + player.cockHead(x) + " of your cock into her mouth, slurping up the tip of your " + cockDescript(x) + ".  Your breath catches in your throat as the first inches of your cockmeat are engulfed in the hot, wet embrace of Helia's mouth.  Her lizard-tongue wastes no time in flicking across your " + player.cockHead(x) + ", the forked tip playing across your urethra, drawing forth a thick dollop of pre that soon smears her cheeks with white.  She pumps your cock into her mouth, licking and sucking on your crown as her pistoning hands force thicker globs of sticky precum out of you, eagerly swallowing every drop - but only after savoring it, rolling each drop around in her mouth until her entire gob is a sticky mess, thick webs of seed coating her lips each time she swallows another appetizing taste.");
+	outputText("\n\nAfter a few mind-hazing minutes of salamander hand-job, Hel takes the " + player.cockHead(x) + " of your cock into her mouth, slurping up the tip of your " + game.player.cockDescript(x) + ".  Your breath catches in your throat as the first inches of your cockmeat are engulfed in the hot, wet embrace of Helia's mouth.  Her lizard-tongue wastes no time in flicking across your " + player.cockHead(x) + ", the forked tip playing across your urethra, drawing forth a thick dollop of pre that soon smears her cheeks with white.  She pumps your cock into her mouth, licking and sucking on your crown as her pistoning hands force thicker globs of sticky precum out of you, eagerly swallowing every drop - but only after savoring it, rolling each drop around in her mouth until her entire gob is a sticky mess, thick webs of seed coating her lips each time she swallows another appetizing taste.");
 	
 	outputText("\n\nThen as quickly as it began, Hel's blowjob comes to a halt.  The salamander pops your prick out of her maw and, giving it one last kiss on the " + player.cockHead(x) + ", lets it fall aside as she moves.  You lean around yourself awkwardly as your lover ducks beneath your horse-half, clambering into her harness.  Hel disappears from view, completely obscured by your own body; all you can feel of her is her weight pulling down on your back and her powerful scaled legs hooking around your thighs, spreading wide as she grabs your cock again.  You groan pleasurably as the tip brushes her lower lips, the heat of her inhuman pussy radiating out to set your nerves ablaze.");
 	
@@ -1242,17 +1242,17 @@ private  centaurMountsCampHel():void {
 	
 	outputText("\n\nTHWACK!");
 	
-	outputText("\n\nYou start forward as a rough tail-slap lands on your flank.  You reflexively step forward, your equine muscles acting on instinct...  which only serves to rock Hel off and down again on your " + cockDescript(x) + ", her impromptu harness moving her like a swing. You arch your back as the movement hammers Hel down on your cock like a free-swinging onahole, but the moment of pleasure lurches out of control when she gives you another hard tail-swat, and another; your insticts carry you forward until you reach a full canter. Shudders and twitches wrack your body as your own motions rock Hel on and off your [cock], slamming her back down on your shaft again and again.");
+	outputText("\n\nYou start forward as a rough tail-slap lands on your flank.  You reflexively step forward, your equine muscles acting on instinct...  which only serves to rock Hel off and down again on your " + game.player.cockDescript(x) + ", her impromptu harness moving her like a swing. You arch your back as the movement hammers Hel down on your cock like a free-swinging onahole, but the moment of pleasure lurches out of control when she gives you another hard tail-swat, and another; your insticts carry you forward until you reach a full canter. Shudders and twitches wrack your body as your own motions rock Hel on and off your [cock], slamming her back down on your shaft again and again.");
 	
 	outputText("\n\nYou grit your teeth and pick up the pace, accelerating to a trot as Hel writhes around on your cock, your movements taking her off your prick in faster intervals, and slamming her back down harder with every step, until she's worked into a furious speed even she couldn't match on her own. Beneath you, she lets out a sharp cry, and you can feel her muscles contracting around your shaft, starting the tell-tale milking as she orgasms on your fast-moving cock. Gleefully, you race forward, as fast as you can, pounding your prick into her until Hel is screaming, her voice carrying out across the wasteland as you circle around camp, fucking her raw with every step.");
 	
-	outputText("\n\nAs Hel lets out another high-pitched shriek of pleasure, you finally feel yourself hurtling over the edge of bliss. You rear yourself up as you cum, staggering on your hind legs as the first searing spurt of spooge squirts into the screaming salamander.  A huge spurt of cum jets out of your " + cockDescript(x) + ", smearing Hel's spasming walls white with your potent seed.  As your prick fires off again and again, you slowly bring yourself to a halt, your prick still twitching inside Hel's cum-soaked box.  When you've brought yourself to a complete stop, you feel a sudden lightness as Hel flops out of her harness, quickly surrounded by a small pool of jizz leaking out of her.");
+	outputText("\n\nAs Hel lets out another high-pitched shriek of pleasure, you finally feel yourself hurtling over the edge of bliss. You rear yourself up as you cum, staggering on your hind legs as the first searing spurt of spooge squirts into the screaming salamander.  A huge spurt of cum jets out of your " + game.player.cockDescript(x) + ", smearing Hel's spasming walls white with your potent seed.  As your prick fires off again and again, you slowly bring yourself to a halt, your prick still twitching inside Hel's cum-soaked box.  When you've brought yourself to a complete stop, you feel a sudden lightness as Hel flops out of her harness, quickly surrounded by a small pool of jizz leaking out of her.");
 	
 	outputText("\n\n\"<i>Holy shit,</i>\" she gasps, breathing hard, You look down from your loft position on centaur-back as Hel rolls over, idly fingering out thick globs of seed still leaking from her well-abused hole.  \"<i>Thanks for the ride, lover mine.</i>\"");
 	
 	player.orgasm();
 	dynStats("sen", -1);
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }	
@@ -1285,7 +1285,7 @@ private  femtaurPlusCampHel():void {
 	outputText("\n\nBreathing heavily, you pat her on the cheek and stumble off to get cleaned up.");
 	player.orgasm();
 	dynStats("sen", -1);
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }
@@ -1310,7 +1310,7 @@ private  heliaFollowerTentafuck():void {
 	outputText("\n\nYou roll your eyes and go to get cleaned up.");
 	player.orgasm();
 	dynStats("sen", -1);
-	if (getGame().inCombat)
+	if (game.inCombat)
 		cleanupAfterCombat();
 	else doNext(camp.returnToCampUseOneHour);
 }
@@ -1586,7 +1586,7 @@ private  heliaAndVapula():void {
 	
 	outputText("\n\nAnother slap reminds her of her place and shuts her right up. You tell her it doesn't matter where you get your fucks - the least she can do is be polite with your guest.");
 	
-	outputText("\n\nYou feel hands wandering across your body, Hel slowly, sensuously, pulling off your [armor].  Soon, the two of you are bare, clothes and weapons discarded all around the succubus.  You push Hel over, grinding your hard " + cockDescript(x) + " between her legs.  As you grope the salamander girl's body, you gesture at Vapula and tell her to come closer so that you can stroke her, too.  You begin caressing each other, spending a few moments in languid pleasure until your " + cockDescript(x) + " looks ready to explode.");
+	outputText("\n\nYou feel hands wandering across your body, Hel slowly, sensuously, pulling off your [armor].  Soon, the two of you are bare, clothes and weapons discarded all around the succubus.  You push Hel over, grinding your hard " + game.player.cockDescript(x) + " between her legs.  As you grope the salamander girl's body, you gesture at Vapula and tell her to come closer so that you can stroke her, too.  You begin caressing each other, spending a few moments in languid pleasure until your " + game.player.cockDescript(x) + " looks ready to explode.");
 	
 	//Combine, Body
 	outputText("\n\nYou whisper to your scaly girl: \"<i>That's a nice hard tail you've got there.  Do you know how to use it?</i>\" Hel nods eagerly, too turned on to form coherent words.  \"<i>Is the concept of tail-fucking foreign to you?  No, I guess you know it very well, you little slut.  Well, I want you to fuck my succubus pet senseless with your tail.  I want you to ream her ass over and over until she begs for mercy.  Don't be afraid to be rough, that's what she's here for.  I'll take care of your own fuck-holes myself.  Do you understand?</i>\"");
@@ -1597,20 +1597,20 @@ private  heliaAndVapula():void {
 	
 	outputText("\n\nAnd with a mighty thrust, you claim her pussy.");
 	
-	outputText("\n\nYou don't take any precautions as you brutally plow your salamander lover.  She's more than used to hard and torrid fucks, and her gushing cunt is doing an excellent job at swallowing your " + cockDescript(x) + " as it ferociously thrusts up and down.  You hug Hel close, holding her tight in your arms as you repeatedly impale her on your spear.  Every time your cock claps against her, she reflexively responds by pounding Vapula's ass with her own tail, making the succubus moan and grip you tighter.  The way your purple slut stimulates you only entices you to pound Hel harder and faster; the scaly girl screams in agonizing pleasure, her vagina contracting at a mad pace in order to squeeze your " + cockDescript(x) + " and milk you of everything you have; her arms are clamping you like a vise and her hands are scratching your back with a passionate, lust-induced fury.  You tighten your grip on Hel's shoulders, crushing her soft chest against yours and using her smooth shoulders as leverage to pump faster.  The internal fire that seems to boil within the reptile girl's body is making you feverishly mad with desire, leaving you oblivious of anything but your ferocious embrace.  The three of you undulate rhythmically against each other, entranced in a feverish sex dance.");
+	outputText("\n\nYou don't take any precautions as you brutally plow your salamander lover.  She's more than used to hard and torrid fucks, and her gushing cunt is doing an excellent job at swallowing your " + game.player.cockDescript(x) + " as it ferociously thrusts up and down.  You hug Hel close, holding her tight in your arms as you repeatedly impale her on your spear.  Every time your cock claps against her, she reflexively responds by pounding Vapula's ass with her own tail, making the succubus moan and grip you tighter.  The way your purple slut stimulates you only entices you to pound Hel harder and faster; the scaly girl screams in agonizing pleasure, her vagina contracting at a mad pace in order to squeeze your " + game.player.cockDescript(x) + " and milk you of everything you have; her arms are clamping you like a vise and her hands are scratching your back with a passionate, lust-induced fury.  You tighten your grip on Hel's shoulders, crushing her soft chest against yours and using her smooth shoulders as leverage to pump faster.  The internal fire that seems to boil within the reptile girl's body is making you feverishly mad with desire, leaving you oblivious of anything but your ferocious embrace.  The three of you undulate rhythmically against each other, entranced in a feverish sex dance.");
 
 	//[If Multicock 2+] 
-	if(y >= 0) outputText("\n\nYou feel a hand darting to your " + cockDescript(y) + ".  Completely thrilled by the scaly beast ramming her ass, Vapula has grabbed your second member and is now jerking it off furiously, occasionally leaning down to give it a lick when Hel's tail gives her freedom to do so.  You welcome your slut's efforts and force her to deepthroat you with one hand while the other still holds the salamander girl.  With two voluptuous cock-rings being wrapped around your genitals in such an exquisite way, it won't be long before you've given up your seed.");
+	if(y >= 0) outputText("\n\nYou feel a hand darting to your " + game.player.cockDescript(y) + ".  Completely thrilled by the scaly beast ramming her ass, Vapula has grabbed your second member and is now jerking it off furiously, occasionally leaning down to give it a lick when Hel's tail gives her freedom to do so.  You welcome your slut's efforts and force her to deepthroat you with one hand while the other still holds the salamander girl.  With two voluptuous cock-rings being wrapped around your genitals in such an exquisite way, it won't be long before you've given up your seed.");
 	//[/Multicock]
 	
 	outputText("\n\nYou are now so aroused that you can do nothing but pound harder.  Hel's tail twists and bucks wildly as you wreck her cunt while Vapula lets out a deep growl as her insides are brutally churned, though you don't care much as long as the succubus slut still tries to pleasure you.  With a groan, you pull Vapula even closer to you, grabbing her head and planting a deep kiss on her lips while groping Hel's lewd body, basking in the presence of your two cock-hungry sex-goddesses.");
 	
-	outputText("\n\nThis libertine orgy cannot last indefinitely, and even your girls are trembling convulsively, ready to reach their climax. You manage to slide your " + cockDescript(x) + " up the reptile girl's twat a few more times before blasting her with your spooge.  You fill Hel's interior, pouring cum like a torrent into her womb");
+	outputText("\n\nThis libertine orgy cannot last indefinitely, and even your girls are trembling convulsively, ready to reach their climax. You manage to slide your " + game.player.cockDescript(x) + " up the reptile girl's twat a few more times before blasting her with your spooge.  You fill Hel's interior, pouring cum like a torrent into her womb");
 	//[IF cum production massive: 
 	if(player.cumQ() >= 750) outputText(" until her belly swells and starts spurting ropes of jism back out of her love-tunnel");
 	outputText(".  Your junk palpitates and bulges as globs push their way out of your shaft before being absorbed by her needy pussy, and her skin and scales seem to literally boil with consumed lust.  At the peak of your orgasm, you stare at your girls' faces: Hel's is nothing but complete, insensate bliss, while Vapula is literally crying in ecstasy, tears of joy streaming down her cheeks.");
 	
-	outputText("\n\nSeeing how much pleasure you're giving them is quite touching, and you give each of them a long, ardent kiss, letting each girl know how the other tastes like.  At last, when your " + cockDescript(x) + " has unloaded its last rope of jism, you pull out and break the kiss.  Hel pants and sighs, utterly drained; you see her tail popping out of Vapula's ass, and the released succubus just falls on her back, cunt exposed and mouth open in blissful exhaustion.");
+	outputText("\n\nSeeing how much pleasure you're giving them is quite touching, and you give each of them a long, ardent kiss, letting each girl know how the other tastes like.  At last, when your " + game.player.cockDescript(x) + " has unloaded its last rope of jism, you pull out and break the kiss.  Hel pants and sighs, utterly drained; you see her tail popping out of Vapula's ass, and the released succubus just falls on her back, cunt exposed and mouth open in blissful exhaustion.");
 	
 	outputText("\n\nThe reptile girl starts complimenting you on your sexual prowess, but you cut her off to order her to turn around.");
 	
@@ -1622,16 +1622,16 @@ private  heliaAndVapula():void {
 	
 	outputText("\n\nThe stark smell of your cum instantly wakes Vapula up and before she can think of anything her tongue instinctively starts slurping the drops of baby-batter dripping from the salamander's snatch.");
 	
-	outputText("\n\nThe display of two horny girls eating out each other is quite arousing and your " + cockDescript(x) + " is already erect while your ");
+	outputText("\n\nThe display of two horny girls eating out each other is quite arousing and your " + game.player.cockDescript(x) + " is already erect while your ");
 	if(player.balls > 0) outputText("[balls] are");
 	else outputText("groin is");
-	outputText(" slowly filling back with more spunk for them.  You happily stride toward the couple of sluts, your junk ready for some more hole-filling.  Hel's tail is still lifted, the shining scales twisting hypnotically as the reptile girl gives and receives pleasure from both ends.  Her enticing butthole seems to be begging for a nice hard cock to be pierced with.  With a lust-filled grin, you grab her hot, bountiful buttocks for leverage and harshly jam her insides with your " + cockDescript(x) + ", knowing the fiery girl won't mind your rough ways. You utterly bury your " + cockDescript(x) + " inside her; her asshole obviously used to monstrous members as you have no difficulty sliding everything you can down her slippery colon.  Vapula trembles below her as you adamantly push the salamander girl back and forth with your enthusiastic dick-assaults to her backside.");
+	outputText(" slowly filling back with more spunk for them.  You happily stride toward the couple of sluts, your junk ready for some more hole-filling.  Hel's tail is still lifted, the shining scales twisting hypnotically as the reptile girl gives and receives pleasure from both ends.  Her enticing butthole seems to be begging for a nice hard cock to be pierced with.  With a lust-filled grin, you grab her hot, bountiful buttocks for leverage and harshly jam her insides with your " + game.player.cockDescript(x) + ", knowing the fiery girl won't mind your rough ways. You utterly bury your " + game.player.cockDescript(x) + " inside her; her asshole obviously used to monstrous members as you have no difficulty sliding everything you can down her slippery colon.  Vapula trembles below her as you adamantly push the salamander girl back and forth with your enthusiastic dick-assaults to her backside.");
 	
-	outputText("\n\nThe hell-girl and the reptile-girl grind against each other, completely giving to their own pleasure as you have your way with both.  Completely mad with burning lust, Hel raises her head and lets out a huge feminine roar, expressing all her joy and desire with this single, continuous cry of pleasure, and you can swear some sparkles are escaping out of her sweltering tail.  Always eager for more cock inside her, the buttslut wraps her scaly appendage around your back and clamps you against her ass, the blazing heat steaming out of her only serving to redouble your lust.  You pound Hel like there's no tomorrow, working her blistering ass like you were the last dick she'd ever take.  She clings to you desperately and impales her butt further on your " + cockDescript(x) + ", as if afraid you might pull out.  Though you'd never give up such a fantastic, near bone-melting ass!");
+	outputText("\n\nThe hell-girl and the reptile-girl grind against each other, completely giving to their own pleasure as you have your way with both.  Completely mad with burning lust, Hel raises her head and lets out a huge feminine roar, expressing all her joy and desire with this single, continuous cry of pleasure, and you can swear some sparkles are escaping out of her sweltering tail.  Always eager for more cock inside her, the buttslut wraps her scaly appendage around your back and clamps you against her ass, the blazing heat steaming out of her only serving to redouble your lust.  You pound Hel like there's no tomorrow, working her blistering ass like you were the last dick she'd ever take.  She clings to you desperately and impales her butt further on your " + game.player.cockDescript(x) + ", as if afraid you might pull out.  Though you'd never give up such a fantastic, near bone-melting ass!");
 	
-	outputText("\n\nYour hot anal embrace knows no bounds but that of your respective staminas, and with a raging groan of pleasure, you cum. The huge, sticky jet of hot spunk splatters against her colon, making her screech in delight.  Your " + cockDescript(x) + " twitches as it releases rope after rope of jism.  Your semen nearly vaporizes as it hits the reptile's interior; you can actually see steam escaping from her cock-filled anal ring.  Her ass clenches and wobbles insanely, desperate to receive everything you have; unfortunately, there is only so much baby-batter that can fit her backdoor, and the few spurts of cum that escape are quickly gulped by Vapula as they rain in sticky globs of goo down Hel's thighs.");
+	outputText("\n\nYour hot anal embrace knows no bounds but that of your respective staminas, and with a raging groan of pleasure, you cum. The huge, sticky jet of hot spunk splatters against her colon, making her screech in delight.  Your " + game.player.cockDescript(x) + " twitches as it releases rope after rope of jism.  Your semen nearly vaporizes as it hits the reptile's interior; you can actually see steam escaping from her cock-filled anal ring.  Her ass clenches and wobbles insanely, desperate to receive everything you have; unfortunately, there is only so much baby-batter that can fit her backdoor, and the few spurts of cum that escape are quickly gulped by Vapula as they rain in sticky globs of goo down Hel's thighs.");
 	
-	outputText("\n\nSince your salamander lover wants your cum so much, you keep your " + cockDescript(x) + " buried in her until it stops pulsing, her anal hotness accelerating and intensifying your orgasm.  At last, you pull out and plunge your cum-coated junk in Vapula's waiting mouth below.  The two girls had been squirting so often that the succubus' face is now sopping with juices.  In her current state of pleasure, Vapula doesn't protest and engulfs all your dickflesh at once, sucking the remaining bits of goo out of your urethra.  You let the demoness feed until she is sated and your " + cockDescript(x) + " is only covered with her saliva.");
+	outputText("\n\nSince your salamander lover wants your cum so much, you keep your " + game.player.cockDescript(x) + " buried in her until it stops pulsing, her anal hotness accelerating and intensifying your orgasm.  At last, you pull out and plunge your cum-coated junk in Vapula's waiting mouth below.  The two girls had been squirting so often that the succubus' face is now sopping with juices.  In her current state of pleasure, Vapula doesn't protest and engulfs all your dickflesh at once, sucking the remaining bits of goo out of your urethra.  You let the demoness feed until she is sated and your " + game.player.cockDescript(x) + " is only covered with her saliva.");
 	
 	outputText("\n\nSatisfied, you help your salamander lover to her feet.  She is still dazed from the two violent fucks and keeps chuckling softly as sexual juices are dribbling down every part of her body.");
 	if(!followerHel()) {
@@ -2375,4 +2375,3 @@ outputText("\n\nYour hand slides across Sophie’s stomach to squeeze one of her
 	doNext(camp.returnToCampUseOneHour);
 }
 	}
-

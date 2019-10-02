@@ -117,8 +117,8 @@
 				else outputText("have me inside you");
 				outputText(", forever...</i>\"");
 				//lust damage, fatigue damage, light HP damage
-				game.fatigue(10);
-				game.dynStats("lus", 25);
+				fatigue(10);
+				dynStats("lus", 25);
 				var damage:number = 20 + rand(10);
 				damage = player.takeDamage(damage);
 				outputText(" (" + damage + ")");
@@ -145,7 +145,7 @@
 				//sap rose shitposting
 				var damage:number = 10 + rand(5);
 				damage = player.takeDamage(damage);
-				game.dynStats("lus", 15);
+				dynStats("lus", 15);
 				player.createStatusAffect(StatusAffects.HolliConstrict, 0, 0, 0, 0);
 			}
 			combatRoundOver();
@@ -184,7 +184,7 @@
 			//lower monster lust by medium-lots and apply med sens-based lust damage
 			lust -= 20;
 			if (lust < 20) lust = 20;
-			game.dynStats("lus", 15 + player.sens / 5);
+			dynStats("lus", 15 + player.sens / 5);
 			combatRoundOver();
 		}
 
@@ -268,4 +268,3 @@
 		}
 		
 	}
-

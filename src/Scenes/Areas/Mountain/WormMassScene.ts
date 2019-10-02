@@ -188,7 +188,7 @@ export function wormsEntice():void {
 	}
 	//SUCCESS
 	if(player.lust < 50) {
-		outputText("The worm colony stands before you and begins secreting a significant amount of slime. Inexplicably, you find that your " + cockDescript(0) + " is already erect and is throbbing. The erection is quite meddlesome and you find yourself distracted by the unwanted arousal.\n", false);
+		outputText("The worm colony stands before you and begins secreting a significant amount of slime. Inexplicably, you find that your " + game.player.cockDescript(0) + " is already erect and is throbbing. The erection is quite meddlesome and you find yourself distracted by the unwanted arousal.\n", false);
 		dynStats("lus", 10+player.lib/20+player.cor/20);
 	}
 	else {
@@ -227,7 +227,7 @@ export function playerInfest():void {
 		flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230] = 0;
 		flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00233] = 1;
 		//clear status
-		inCombat = false;
+		game.inCombat = false;
 		clearStatuses(false);
 		doNext(camp.returnToCampUseOneHour);
 		return;
