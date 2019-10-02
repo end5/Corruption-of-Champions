@@ -1,0 +1,27 @@
+{
+    "name": "corruption-of-champions-web",
+    "version": "1.0.0",
+    "description": "Corruption-of-Champions",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/OXOIndustries/Corruption-of-Champions.git"
+    },
+    "author": "",
+    "license": "Check README",
+    "bugs": {
+        "url": "https://github.com/OXOIndustries/Corruption-of-Champions/issues"
+    },
+    "homepage": "https://github.com/OXOIndustries/Corruption-of-Champions#readme",
+    "devDependencies": {
+        "tslint": "^5.20.0",
+        "typescript": "^3.6.3"
+    },
+    "dependencies": {}
+}
