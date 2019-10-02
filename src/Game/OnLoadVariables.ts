@@ -5,7 +5,7 @@
 // import classes.creature;
 
 //Used when save/loading
-export var notes:string = "";
+export var notes: string = "";
 // nameBox.maxChars = 54;
 
 //Images for image pack!
@@ -13,7 +13,7 @@ export var notes:string = "";
 //var images = new Array();
 
 //System time
-export var date:Date = new Date();
+export var date: Date = new Date();
 
 //Used to set what each action buttons displays and does. I don't know why it is initialized here.
 //var args:Array = new Array();
@@ -21,21 +21,21 @@ export var date:Date = new Date();
 
 //Loeri stuff
 //import flash.system.*
- 
+
 //if ( ApplicationDomain.currentDomain.hasDefinition("Creature")) trace("Class exists");
 
 //dungeoneering variables
 //Setting dungeonLoc = 0 handles this:	public var inDungeon:Boolean = false;
-export var dungeonLoc:number = 0;
+export var dungeonLoc: number = 0;
 
 // To save shitting up a lot of code...
-export var inRoomedDungeon:boolean = false;
-export var inRoomedDungeonResume:() => void = null;
+export var inRoomedDungeon: boolean = false;
+export var inRoomedDungeonResume: () => void = null;
 
 //Used to restrict random drops from overlapping uniques
-export var plotFight:boolean = false;
-export var timeQ:number = 0;
-export var campQ:boolean = false;
+export var plotFight: boolean = false;
+export var timeQ: number = 0;
+export var campQ: boolean = false;
 
 //Possibly redundant, not used anywhere else.
 //Input vars

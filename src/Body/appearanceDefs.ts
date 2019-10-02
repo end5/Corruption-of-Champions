@@ -313,4 +313,3 @@ export  const BUTT_RATING_HUGE:number                                           
 export  const BUTT_RATING_INCONCEIVABLY_BIG:number                               =  20;
 
 // End Description constants
-
