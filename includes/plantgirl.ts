@@ -1,3 +1,4 @@
+/*
 //Encounter with the Plant Woman (Intro 1, requires having seen corrupted glade) 
 export function encounterPlantWoman():void {
 	if(rand(2) == 0) {
@@ -80,7 +81,7 @@ export function plantLadyLetsFuck(from:number = 1.1):void {
 	herm:  Pussy [L and S 1.7]     Get BJ     Anal (L 1.5, S 1.5]    Cunnilingus [L 1.3, S 1.3]   Suck dick [L 1.1, S 1.1]    Get anal [S 1.6 and L 1.6]     Dick in vag [L 1.8 and S 1.8]   Oral [L 1.4, S 1.4]      Leave
 	Genderless:   Cunnilingus [L 1.3, S 1.3]   Suck dick [L 1.1, S 1.1]     Get anal [S 1.6 and L 1.6]     Leave
 	*/
-	
+	/*
 	//[If Intro 1.1 is chosen: Step two of Let's Fuck!]
 	if(from == 1.1) {
 		outputText("\n\nWill you be dominant or submissive?");
@@ -290,8 +291,7 @@ export function fuckMyAssPlantLadyWhileImTrapped():void {
 	player.buttChange(25,true,true,false);
 	
 	//PC asshole is virgin/tight: 
-	if(player.analCapacity() < 20) outputText("  You moan again from the pain and clamp down, causing your captor to
-shudder from the sensation of your [asshole]'s tightness.  Once the floral creature regains her composure, she begins to pump in and out of your ass at a gradually faster pace.");
+	if(player.analCapacity() < 20) outputText("  You moan again from the pain and clamp down, causing your captor to shudder from the sensation of your [asshole]'s tightness.  Once the floral creature regains her composure, she begins to pump in and out of your ass at a gradually faster pace.");
 	//PC asshole is loose:  
 	else if(player.analCapacity() < 60) outputText("  Her bulbous cock works its way into your [asshole] with some difficulty, but as it continues you feel the walls of your anus fit snugly around her, causing her to shudder from the sensation.  The vibrations from her tembling can be felt in your ass, traveling through your pelvis and into the rest of your body...  Once the plant woman regains her composure, she begins to pump in and out of your ass at a gradually faster pace.");
 	//PC asshole is gaping: Her member slides in with no resistance whatsoever.  
@@ -1605,3 +1605,4 @@ You hold the contorted position you two are in for several  until you regain you
 (if genderless. Vc 1.7g: prods the crack of your ass as she parts your [butt], and licks your assholeDescript() with her energetic tongue; oddly enough, it resembles the texture of flower petals, and having that sensation against your hole causes you to quiver.)  Her moist tongue slaps against your hole, leaving it nice and wet as she prods and lathers your hole with her tongue. )
 Scene needs to be expanded, not good at writing anal licking scenes
 	
+*/
