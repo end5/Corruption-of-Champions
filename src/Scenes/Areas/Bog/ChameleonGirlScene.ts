@@ -8,9 +8,6 @@
 
 	export class ChameleonGirlScene
 	{
-		public  constructor()
-		{
-		}
 
 		/*You can ignore this stuff, just sets a random color to the chameleon girl at each encounter
 		 ENCOUNTER TEXT (Introduction; First Time) (Z edited)

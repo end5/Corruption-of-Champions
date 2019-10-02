@@ -9,9 +9,6 @@
 
 	export class GnollSpearThrowerScene
 	{
-		public  constructor()
-		{
-		}
 
 		/*Content Guide: Just to help me make sure I got everything and to explain the layout, colored font is going to be used to identify when text should be used.  This will often be used in regards to specific characteristics, instead of the overall gender.  For example, a reference to a cuntboy's chest would be in Orange but a reference to her hips or groin would be red.
 		 Black – Universal text

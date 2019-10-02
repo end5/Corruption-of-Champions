@@ -18,10 +18,6 @@
 		public  minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
 		public  izumiScenes:IzumiScene = new IzumiScene();
 		
-		public  constructor()
-		{
-		}
-		
 		//Explore High Mountain
 		public  exploreHighMountain():void
 		{

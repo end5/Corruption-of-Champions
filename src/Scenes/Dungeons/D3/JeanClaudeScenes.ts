@@ -12,11 +12,6 @@
 	export class JeanClaudeScenes
 	{
 		
-		public  constructor() 
-		{
-			
-		}
-		
 		public  gogoFuckTheseBasilisksNorth():void
 		{
 			clearOutput();

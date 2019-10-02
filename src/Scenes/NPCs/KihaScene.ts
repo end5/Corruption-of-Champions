@@ -5,10 +5,6 @@
 
 	export class KihaScene extends NPCAwareContent {
 
-	public  constructor()
-	{
-	}
-
 	/*FLAGS STUFF*/
 //1 = PC asked her about it, past that it counts the times paid
 //const KIHA_TOLL:int = 341;

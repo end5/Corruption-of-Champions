@@ -5,10 +5,6 @@
 
 	export class Library extends TelAdreAbstractContent{
 
-	public  constructor()
-	{
-	}
-
 //const TIMES_VISITED_MALI:int = 860
 //const TIMES_BEEN_TO_LIBRARY:int = 861;
 //const MALI_TAKEN_BLADE:int = 862;

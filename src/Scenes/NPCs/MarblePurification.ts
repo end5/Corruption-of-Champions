@@ -23,10 +23,6 @@ flags[kFLAGS.MARBLE_PURIFICATION_STAGE] : 5 = QUEST COMPLETE
 
 	export class MarblePurification extends NPCAwareContent{
 
-	public  constructor()
-	{
-	}
-
 
 	/*Purifying Marble
 	Quest starts a few days after recruiting Marble to camp if they’re not addicted to her.  She will approach the PC and tell them that not nursing her is a real burden for her, and ask them to help her purify herself.  This quest will not start if the PC’s corruption is over 50, or has any corrupt character in camp (corrupt Jojo, corrupt Amily, Vapula).

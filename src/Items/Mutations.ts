@@ -7,10 +7,6 @@
 	{
 		// include "../../../includes/appearanceDefs.as";
 
-		public  constructor()
-		{
-		}
-
 		 
 
 // import classes.ItemSlotClass;

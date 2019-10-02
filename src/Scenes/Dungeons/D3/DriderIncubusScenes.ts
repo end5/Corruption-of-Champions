@@ -10,10 +10,6 @@
 
 	export class DriderIncubusScenes
 	{
-		public  constructor()
-		{
-
-		}
 
 		public  encounterDriderIncbutt():void
 		{

@@ -8,10 +8,6 @@
 			return monster as SandTrap;
 		}
 
-		public  constructor()
-		{
-		}
-
 //const TIMES_ENCOUNTERED_SAND_TRAPS:int = 578;
 // const SANDTRAP_NAGA_3SOME:int = 579;
 //const SANDTRAP_LOSS_REPEATS:int = 812;

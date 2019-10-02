@@ -9,9 +9,6 @@
 
 	export class GooGirlScene extends AbstractLakeContent
 	{
-		public  constructor()
-		{
-		}
 
 //VARS
 //const GOOGIRL_BIRTHS:int = 384;

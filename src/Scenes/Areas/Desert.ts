@@ -18,9 +18,6 @@
 		public  sandTrapScene:SandTrapScene = new SandTrapScene();
 		public  sandWitchScene:SandWitchScene = new SandWitchScene();
 		public  wanderer:Wanderer = new Wanderer();
-		public  constructor()
-		{
-		}
 		//Explore desert
 		public  exploreDesert():void
 		{

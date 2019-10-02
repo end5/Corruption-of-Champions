@@ -53,10 +53,4 @@
 			return retStr;
 		}
 		
-		public  constructor()
-		{
-
-		}
-		
 	}
-

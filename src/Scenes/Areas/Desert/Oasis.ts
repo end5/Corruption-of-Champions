@@ -4,10 +4,6 @@
 
 	export class Oasis{
 
-		public  constructor()
-		{
-		}
-
 		public  oasisEncounter():void {
 	spriteSelect(46);
 	//Find oasis, sit there.

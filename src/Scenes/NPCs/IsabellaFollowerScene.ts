@@ -5,10 +5,6 @@
 	
 	export class IsabellaFollowerScene extends NPCAwareContent {
 
-	public  constructor()
-	{
-	}
-
 	/*===========================
 Izzy Affection stat.
 =============================

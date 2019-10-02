@@ -16,10 +16,6 @@
 	public static  SCYLLA_ACTION_FUCKING_URTA:number	= 8;
 	public static  SCYLLA_ACTION_FURRY_FOURSOME:number = 9;
 
-	public  constructor()
-	{
-	}
-
 	private  scyllaAction:number;
 	private  scyllaLastActionSelectionTime:number;
 	public  get action():number { return scyllaAction; }

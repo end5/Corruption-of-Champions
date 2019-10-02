@@ -11,10 +11,6 @@
 	export class UrtaQuest extends NPCAwareContent
 	{
 
-		public  constructor()
-		{
-		}
-
 
 
 	/**

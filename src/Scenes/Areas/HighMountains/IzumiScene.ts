@@ -12,9 +12,6 @@
 	 */
 	export class IzumiScene
 	{
-		public  constructor() 
-		{
-		}
 		
 		/**
 		 * Support Functions

@@ -8,11 +8,6 @@
 	export class TestContent
 	{
 		
-		public  constructor() 
-		{
-			
-		}
-		
 		public  cheatSheet():void
 		{
 			clearOutput();

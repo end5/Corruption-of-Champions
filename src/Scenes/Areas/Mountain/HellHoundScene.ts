@@ -8,9 +8,6 @@
 
 	export class HellHoundScene
 	{
-		public  constructor()
-		{
-		}
 
 		/*
 		 Attacks:

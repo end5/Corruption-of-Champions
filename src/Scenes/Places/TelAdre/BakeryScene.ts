@@ -4,10 +4,6 @@
 	 
 
 	export class BakeryScene extends TelAdreAbstractContent {
-
-	public  constructor()
-	{
-	}
 // LAST_EASTER_YEAR:int = 823;
 
 //[First time approach]

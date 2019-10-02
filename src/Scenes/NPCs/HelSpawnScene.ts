@@ -5,10 +5,6 @@
 
 	export class HelSpawnScene extends NPCAwareContent {
 
-	public  constructor()
-	{
-	}
-
 //Helia Expansion 4: The Edge of Paradise
 //A CoC Multi-Character Expansion
 //Savin

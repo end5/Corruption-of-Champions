@@ -13,9 +13,6 @@
 	{
 		public  sharkGirlScene:SharkGirlScene = new SharkGirlScene();
 		public  marae:Marae = new Marae();
-		public  constructor()
-		{
-		}
 		public  discoverBoat():void {
 			player.createStatusAffect(StatusAffects.BoatDiscovery,0,0,0,0);
 			outputText("You journey around the lake, seeking demons to fight", true);

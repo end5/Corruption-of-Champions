@@ -4,10 +4,6 @@
 
 	export class SharkGirlScene extends AbstractBoatContent{
 
-	public  constructor()
-	{
-	}
-
 	/*Codex: Shark girls and tiger shark girls
 
 Gender: Mostly female, though there are males and herms. Due to the nature of their conception, the vast majority of tiger sharks are herms.

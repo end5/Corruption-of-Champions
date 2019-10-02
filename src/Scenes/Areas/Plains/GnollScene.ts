@@ -7,9 +7,6 @@
 
 	export class GnollScene
 	{
-		public  constructor()
-		{
-		}
 
 //Gnoll Entrance
 		public  gnollEncounter():void

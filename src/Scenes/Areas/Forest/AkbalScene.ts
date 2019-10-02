@@ -10,9 +10,6 @@
 
 	export class AkbalScene
 	{
-		public  constructor()
-		{
-		}
 
 		public  akbalDefeated(hpVictory:boolean):void{
 			flags[kFLAGS.AKBAL_SUBMISSION_STATE] = 1;

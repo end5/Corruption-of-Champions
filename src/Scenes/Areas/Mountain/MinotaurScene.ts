@@ -5,10 +5,6 @@
 	 
 
 	export class MinotaurScene {
-
-		public  constructor()
-		{
-		}
  /*
 	private function minotaurAddicted():Boolean {
 	return player.minotaurAddicted();

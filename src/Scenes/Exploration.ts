@@ -15,10 +15,6 @@
 		public  exploreDebug:ExploreDebug = new ExploreDebug();
 		public  giacomo:Giacomo = new Giacomo();
 
-		public  constructor()
-		{
-		}
-
 		//const MET_OTTERGIRL:int = 777;
 		//const HAS_SEEN_MINO_AND_COWGIRL:int = 892;
 		//const EXPLORATION_PAGE:int = 1015;

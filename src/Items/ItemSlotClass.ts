@@ -2,10 +2,6 @@
 
 	export class ItemSlotClass extends Object
 	{
-		//constructor
-		public  constructor()
-		{
-		}
 		
 		//data
 		private  _quantity:number = 0;

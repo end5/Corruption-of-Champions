@@ -9,10 +9,6 @@
 
 	export class MinotaurKingScenes
 	{
-		public  constructor()
-		{
-
-		}
 
 		public  encounterMinotaurKing():void
 		{

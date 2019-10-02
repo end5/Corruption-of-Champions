@@ -6,10 +6,6 @@
 	
 	export class SophieFollowerScene extends NPCAwareContent {
 
-		public  constructor()
-		{
-		}
-
 		private  get pregnancy():PregnancyStore { return sophieScene.pregnancy; } //Quick way to access sophie's pregnancyStore
 
 //Make Sophie \"smart\" again: Doing the Deed

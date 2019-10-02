@@ -12,11 +12,6 @@
 	export class HermCentaurScenes
 	{
 		
-		public  constructor() 
-		{
-			
-		}
-		
 		public  encounterThePony():void
 		{
 			outputText("\n\nA gigantic, demonic centaur is here!  She grins down at your sudden arrival and gestures at the mammoth dong between her thighs as she taunts, \"<i>You are not prepared.</i>\"");

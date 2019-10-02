@@ -12,9 +12,6 @@
 
 	export class ImpScene
 	{
-		public  constructor()
-		{
-		}
 		
 		public  impVictory():void {
 			clearOutput();

@@ -6,10 +6,6 @@
 	export class LatexGirl extends NPCAwareContent
 	{
 
-		public  constructor()
-		{
-		}
-
 //const GOO_TFED_MEAN:int = 654;
 //const GOO_TFED_NICE:int = 655;
 //const GOO_NAME:int = 656;

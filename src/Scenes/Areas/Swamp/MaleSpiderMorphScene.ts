@@ -9,9 +9,6 @@
 
 	export class MaleSpiderMorphScene
 	{
-		public  constructor()
-		{
-		}
 
 		//Greeting
 		public  greetMaleSpiderMorph():void

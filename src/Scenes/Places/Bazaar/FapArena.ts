@@ -5,10 +5,6 @@
 
 	export class FapArena extends BazaarAbstractContent{
 
-	public  constructor()
-	{
-	}
-
 	public  fapAppearance(display:boolean = true):void {
 	if(display) {
 		//[Paragraph: Bazaar description, 1st time]

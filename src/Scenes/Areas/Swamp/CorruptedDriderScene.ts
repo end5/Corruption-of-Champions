@@ -12,9 +12,6 @@
 
 	export class CorruptedDriderScene
 	{
-		public  constructor()
-		{
-		}
 
 //VARS
 //9999 - times encountered

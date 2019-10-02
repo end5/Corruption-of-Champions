@@ -80,10 +80,6 @@
 			combatRoundOver();
 		}
 
-		public  constructor()
-		{
-		}
-
 		protected  kissAttack():void
 		{
 			//[Kiss of Death Text]

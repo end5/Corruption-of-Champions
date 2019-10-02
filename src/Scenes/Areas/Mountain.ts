@@ -18,9 +18,6 @@
 		public  infestedHellhoundScene:InfestedHellhoundScene = new InfestedHellhoundScene();
 		public  minotaurScene:MinotaurScene = new MinotaurScene();
 		public  salon:Salon = new Salon();
-		public  constructor()
-		{
-		}
 		//Explore Mountain
 		public  exploreMountain():void
 		{

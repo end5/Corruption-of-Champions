@@ -5,10 +5,6 @@
 
 	export class Gargoyle{
 
-	public  constructor()
-	{
-	}
-
 //const GAR_NAME:int = 825;
 //const GAR_CONFIDENCE:int = 826;
 //const RITUAL_INTRO:int = 827;

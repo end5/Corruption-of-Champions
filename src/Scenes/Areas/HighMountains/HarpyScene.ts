@@ -9,9 +9,6 @@
 
 	export class HarpyScene
 	{
-		public  constructor()
-		{
-		}
 
 //*If male/shemale, rape options are Pussy, Ass, Breasts*
 //*If female, rape options are Finger Her, Forced Cunnilingus, 69*

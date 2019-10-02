@@ -9,9 +9,6 @@
 
 	export class AbstractFarmContent
 	{
-		public  constructor()
-		{
-		}
 		protected  get farm():Farm {
 			return farm;
 		}

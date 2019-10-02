@@ -6,10 +6,6 @@
 	 */
 	export class room 
 	{
-		public  constructor() 
-		{
-			
-		}
 		
 		public  RoomName:string; // Index name
 		public  RoomDisplayName:string; // Header text

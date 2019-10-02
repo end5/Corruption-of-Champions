@@ -7,10 +7,6 @@
 	export class HelFollower extends NPCAwareContent
 	{
 
-		public  constructor()
-		{
-		}
-
 //const HELIA_FOLLOWER_DISABLED:int = 696
 //const HEL_INTROS_LEVEL:int = 697;
 //const MINO_SONS_HAVE_SOPHIE:int = 698;

@@ -2,10 +2,6 @@
 
 	export class KeyItemClass extends Object
 	{
-		//constructor
-		public  constructor()
-		{
-		}
 		
 		//data
 		public  keyName:string = "";

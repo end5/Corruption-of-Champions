@@ -5,10 +5,6 @@
 
 	export class SatyrScene{
 
-	public  constructor()
-	{
-	}
-
 //const SATYR_KIDS:int = 603;
 //Game Implementation (code from here)
 //Fight Encounter (Z)

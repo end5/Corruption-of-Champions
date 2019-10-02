@@ -3,10 +3,6 @@
 
 	export class Jasun extends TelAdreAbstractContent{
 
-	public  constructor()
-	{
-	}
-
 //Jasun, the Male Shark-Morph
 //It's important to provide some context for what I'm trying to achieve with this submission. My submission involves one character right now, the most important of the characters I'd like to write up if I had a bit more time. Additionally, given more time I'd probably write a scene for when Urta visits the gym, but given only a few days this is what I came up with. The character I have is met at the 'Changing Rooms', which would be an option to go to once you've paid to get in and such. This paves the way for encountering other people at the gym so you don't have to keep stuffing new characters into different hours at the bar (this is especially reasonable because not all of the characters would even make sense to encounter them at the bar).
 //If you insist on not having the changing room, which is totally your prerogative, and you like the character enough to have it win anything, I'd be more than happy to adjust the text to satisfy whatever implementation you desire.
@@ -235,4 +231,3 @@ private  jasunSecks():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-

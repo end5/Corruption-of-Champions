@@ -4,10 +4,6 @@
 
 	export class SexMachine extends TelAdreAbstractContent{
 
-	public  constructor()
-	{
-	}
-
 public  exploreShowers():void {
 	outputText("", true);
 	/*if(flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {

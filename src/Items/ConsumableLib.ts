@@ -150,7 +150,4 @@
 			}
 			return mutations;
 		}
-		public  constructor()
-		{
-		}
 	}

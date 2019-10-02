@@ -6,10 +6,6 @@
 	export class KihaFollower extends NPCAwareContent
 	{
 
-		public  constructor()
-		{
-		}
-
 //Requirements:
 //-PC has achieved \"<i>Fuckbuddy</i>\" status with Hel (because threesomes)
 //-PC has maxed out Kiha's three basic \"<i>Talk</i>\" options

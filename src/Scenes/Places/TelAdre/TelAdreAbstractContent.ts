@@ -14,7 +14,4 @@
 		protected  get telAdre():TelAdre {
 			return telAdre;
 		}
-		public  constructor()
-		{
-		}
 	}

@@ -25,9 +25,6 @@
 		public  tamaniScene:TamaniScene = new TamaniScene();
 		public  tentacleBeastScene:TentacleBeastScene = new TentacleBeastScene();
 		public  erlkingScene:ErlKingScene = new ErlKingScene();
-		public  constructor()
-		{
-		}
 		public  exploreDeepwoods():void
 		{
 			player.addStatusValue(StatusAffects.ExploredDeepwoods, 1, 1);

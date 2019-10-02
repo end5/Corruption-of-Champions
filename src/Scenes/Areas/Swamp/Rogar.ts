@@ -6,10 +6,6 @@
 
 	export class Rogar{
 
-	public  constructor()
-	{
-	}
-
 	private  get telAdre():TelAdre{
 		return telAdre;
 	}

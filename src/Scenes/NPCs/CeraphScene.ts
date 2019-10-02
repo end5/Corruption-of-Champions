@@ -9,9 +9,6 @@
 
 	export class CeraphScene extends NPCAwareContent
 	{
-		public  constructor()
-		{
-		}
 
 //VARS
 //  ZETSUKO_MET:int = 406;

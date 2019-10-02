@@ -9,9 +9,6 @@
 
 	export class BasiliskScene
 	{
-		public  constructor()
-		{
-		}
 		
 		//Vars
 		//276 - Times Encountered

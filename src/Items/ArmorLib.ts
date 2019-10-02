@@ -65,8 +65,4 @@
 					playerPerk,playerPerkV1,playerPerkV2,playerPerkV3,playerPerkV4);
 		}
 		*/
-		public  constructor()
-		{
-		}
 	}
-

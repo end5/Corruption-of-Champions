@@ -7,10 +7,6 @@
 
 	export class Owca{
 
-	public  constructor()
-	{
-	}
-
 	/* Written by Nonesuch and PKD, edited by Abraxas, Anzuaz, 05095coc and some helpful anons; ideas suggested by Abraxas, G3 and some helpful anons. */
 
 //const DECLINED_TO_VISIT_REBECCS_VILLAGE:int = 500;

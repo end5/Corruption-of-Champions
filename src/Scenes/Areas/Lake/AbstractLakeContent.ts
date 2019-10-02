@@ -12,7 +12,4 @@
 		protected  get lake():Lake{
 			return lake;
 		}
-		public  constructor()
-		{
-		}
 	}

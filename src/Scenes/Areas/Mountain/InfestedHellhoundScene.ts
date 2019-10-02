@@ -8,9 +8,6 @@
 
 	export class InfestedHellhoundScene
 	{
-		public  constructor()
-		{
-		}
 
 		//[INTRO – 50% chance split with regular hellhound if worms
 		//turned on and over level 2]

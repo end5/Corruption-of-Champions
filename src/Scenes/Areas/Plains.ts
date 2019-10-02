@@ -16,10 +16,6 @@
 		public  gnollScene:GnollScene = new GnollScene();
 		public  gnollSpearThrowerScene:GnollSpearThrowerScene = new GnollSpearThrowerScene();
 		public  satyrScene:SatyrScene = new SatyrScene();
-
-		public  constructor()
-		{
-		}
 		public  explorePlains():void
 		{
 			outputText("", true);

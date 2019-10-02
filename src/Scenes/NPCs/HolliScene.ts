@@ -4,10 +4,6 @@
 
 	export class HolliScene extends NPCAwareContent {
 
-	public  constructor()
-	{
-	}
-
 //VARS
 //const TIMES_FUCKED_FLOWER:int = 594;
 //const TIMES_RIDDEN_FLOWER:int = 595;

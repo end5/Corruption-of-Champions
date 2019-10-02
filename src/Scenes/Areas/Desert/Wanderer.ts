@@ -3,10 +3,6 @@
 
 	export class Wanderer{
 
-		public  constructor()
-		{
-		}
-
 		public  wandererRouter():void {
 	spriteSelect(42);
 	//First meeting...

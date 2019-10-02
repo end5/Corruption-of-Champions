@@ -33,11 +33,6 @@
 		public  sexMachine:SexMachine = new SexMachine();
 		public  umasShop:UmasShop = new UmasShop();
 
-		public  constructor()
-		{
-			
-		}
-
 //const YVONNE_FUCK_COUNTER:int = 437;
 
 /**

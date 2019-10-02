@@ -19,9 +19,6 @@
 		public  frogGirlScene:FrogGirlScene = new FrogGirlScene();
 		public  chameleonGirlScene:ChameleonGirlScene = new ChameleonGirlScene();
 		public  phoukaScene:PhoukaScene = new PhoukaScene();
-		public  constructor()
-		{
-		}
 		public  exploreBog():void
 		{
 			flags[kFLAGS.BOG_EXPLORED]++;

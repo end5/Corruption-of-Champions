@@ -12,11 +12,6 @@
 	export class DopplegangerScenes
 	{
 		
-		public  constructor() 
-		{
-			
-		}
-		
 		public  getDemGlasses():void
 		{
 			clearOutput();

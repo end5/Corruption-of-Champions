@@ -4,10 +4,6 @@
 
 	export class Lumi{
 
-	public  constructor()
-	{
-	}
-
 	public  lumiEncounter():void {
 	outputText("", true);
 	//1st time lumi meeting

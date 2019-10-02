@@ -12,7 +12,4 @@
 		protected  get boat():Boat {
 			return boat;
 		}
-		public  constructor()
-		{
-		}
 	}

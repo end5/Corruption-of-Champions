@@ -5,10 +5,6 @@
 
 	export class Kaiju extends AbstractLakeContent {
 
-	public  constructor()
-	{
-	}
-
 //const KAIJU_MEETINGS:int = 910;
 //const KAIJU_DISABLED:int = 911;
 //const KAIJU_TALK_CYCLE:int = 912;

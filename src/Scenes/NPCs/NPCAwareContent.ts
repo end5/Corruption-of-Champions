@@ -13,10 +13,6 @@
 	 */
 	export class NPCAwareContent
 	{
-		public  constructor()
-		{
-
-		}
 		// Common scenes
 		protected  get telAdre():TelAdre
 		{

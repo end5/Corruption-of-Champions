@@ -5,10 +5,6 @@
 
 	export class ShouldraFollower extends NPCAwareContent {
 
-	public  constructor()
-	{
-	}
-
 	/*Follower Shouldra tracks hours since her last fuck, similar to Exgartuan. Each sex scene involving her resets this counter and also puts her to "sleep" (length of sleep at least 16 hours). Shouldra will gradually fuck with the PC the longer they go without involving her in sex (length of time below)*/
 
 //const GENDERLESS_MASTURBATION_WITH_GHOST_COUNT:int = 511;

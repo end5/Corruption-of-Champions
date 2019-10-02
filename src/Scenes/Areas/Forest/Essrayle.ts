@@ -4,10 +4,6 @@
 
 	export class Essrayle{
 
-	public  constructor()
-	{
-	}
-
 //const MET_ESSY:int = 772;
 //const TURNED_DOWN_ESSY_FIRST_MEETING:int = 773;
 //const ACCEPTED_ESSY_FIRST_MEETING:int = 774;

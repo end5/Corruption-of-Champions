@@ -5,11 +5,6 @@
 
 	export class TentacleBeastScene{
 
-
-	public  constructor()
-	{
-	}
-
 //Tentacle Encounter - beware legalese!
 /*
  LICENSE 

@@ -57,11 +57,6 @@
 			addButton(0, "Game Over", function():void { } );
 		}
 
-		public  constructor()
-		{
-
-		}
-
 		public  encounterLethice():void
 		{
 			if (player.cor < 90)

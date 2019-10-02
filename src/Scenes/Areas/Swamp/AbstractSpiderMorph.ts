@@ -9,9 +9,6 @@
 
 	export class AbstractSpiderMorph extends Monster
 	{
-		public  constructor()
-		{
-		}
 
 		 protected  performCombatAction():void
 		{

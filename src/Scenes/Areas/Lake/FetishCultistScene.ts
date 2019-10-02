@@ -8,9 +8,6 @@
 
 	export class FetishCultistScene extends AbstractLakeContent
 	{
-		public  constructor()
-		{
-		}
 
 		/*
 		 (first draft)

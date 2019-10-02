@@ -20,11 +20,6 @@
 			farm.whitneySprite();
 		}
 		
-		public  constructor() 
-		{
-			
-		}
-		
 		public  corruptFollowers():number
 		{
 			var count:number = 0;

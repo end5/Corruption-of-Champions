@@ -8,9 +8,6 @@
 
 	export class BrigidScene
 	{
-		public  constructor()
-		{
-		}
 
 
 		//Brigid the Jailer -- PC Victorious

@@ -3,10 +3,6 @@
 	 
 
 	export class UrtaHeatRut extends NPCAwareContent {
-
-		public  constructor()
-		{
-		}
 private  urtaQuestDone():boolean {
 	return (flags[kFLAGS.URTA_QUEST_STATUS] == 1);
 }

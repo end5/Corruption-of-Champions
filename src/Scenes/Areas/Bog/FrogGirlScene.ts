@@ -4,10 +4,6 @@
 
 	export class FrogGirlScene {
 
-	public  constructor()
-	{
-	}
-
 //const TIMES_ENCOUNTERED_FROG:int = 1017;
 //Intro
 public  findTheFrogGirl():void {

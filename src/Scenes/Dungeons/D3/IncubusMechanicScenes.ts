@@ -15,11 +15,6 @@
 	export class IncubusMechanicScenes
 	{
 		
-		public  constructor() 
-		{
-			
-		}
-		
 		// There's nothing to track if you just enter the Incubus' room in D1 and didn't approach him.
 		// IF you approach him, then we can track that (either you fight, or you talk and give him an item)
 		private  metIncubusMechanicInD1():boolean

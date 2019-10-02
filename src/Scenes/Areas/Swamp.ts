@@ -16,9 +16,6 @@
 		public  femaleSpiderMorphScene:FemaleSpiderMorphScene = new FemaleSpiderMorphScene();
 		public  maleSpiderMorphScene:MaleSpiderMorphScene = new MaleSpiderMorphScene();
 		public  rogar:Rogar = new Rogar();
-		public  constructor()
-		{
-		}
 		public  exploreSwamp():void
 		{
 			//Discover 'Bog' at after 25 explores of swamp

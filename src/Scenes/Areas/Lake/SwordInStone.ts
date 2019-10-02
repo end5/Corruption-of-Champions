@@ -4,9 +4,6 @@
 
 	export class SwordInStone extends AbstractLakeContent
 	{
-		public  constructor()
-		{
-		}
 
 		public  findSwordInStone():void 
 		{

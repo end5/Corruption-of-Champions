@@ -12,11 +12,6 @@
 	export class SuccubusGardenerScenes
 	{
 		
-		public  constructor() 
-		{
-			
-		}
-		
 		private  GARDENER_LEFT:number = 1;
 		private  GARDENER_FUCKED:number = 2;
 		private  GARDENER_KILLED:number = 3;

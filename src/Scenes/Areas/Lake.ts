@@ -18,9 +18,6 @@
 		public  greenSlimeScene:GreenSlimeScene = new GreenSlimeScene();
 		public  kaiju:Kaiju = new Kaiju();
 		public  swordInStone:SwordInStone = new SwordInStone();
-		public  constructor()
-		{
-		}
 		//Explore Lake
 		public  exploreLake():void
 		{

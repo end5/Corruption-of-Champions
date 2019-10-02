@@ -4,10 +4,6 @@
 
 	export class AssClass
 	{
-		//constructor
-		public  constructor()
-		{
-		}
 		
 		//data
 		//butt wetness

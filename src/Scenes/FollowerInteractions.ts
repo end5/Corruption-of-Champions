@@ -7,10 +7,6 @@
 
 	export class FollowerInteractions extends NPCAwareContent {
 
-		public  constructor()
-		{
-		}
-
 //[Amily meets pure Jojo - ]
 public  amilyMeetsPureJojo():void {
 	//set flag for amily met pure jojo

@@ -7,10 +7,6 @@
 	 */
 	export class LivingStatueScenes
 	{
-		public  constructor() 
-		{
-			
-		}
 		
 		public  encounter():void
 		{

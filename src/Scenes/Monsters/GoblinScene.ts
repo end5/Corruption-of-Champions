@@ -8,9 +8,6 @@
 
 	export class GoblinScene
 	{
-		public  constructor()
-		{
-		}
 
 		/*Goblins
 		 Gender: Female

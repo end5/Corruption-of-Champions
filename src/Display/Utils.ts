@@ -9,10 +9,6 @@
 		private static  NUMBER_WORDS_NORMAL:any[]		= ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 		private static  NUMBER_WORDS_CAPITAL:any[]		= ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 		private static  NUMBER_WORDS_POSITIONAL:any[]	= ["zeroth", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
-
-		public  constructor()
-		{
-		}
 		
 		// curryFunction(f,args1)(args2)=f(args1.concat(args2))
 		// e.g. curryFunction(f,x,y)(z,w) = f(x,y,z,w)
@@ -137,4 +133,3 @@
 		}
 		*/
 	}
-

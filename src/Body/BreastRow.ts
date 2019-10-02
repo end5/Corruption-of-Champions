@@ -4,10 +4,6 @@
 
 	export class BreastRowClass
 	{
-		//constructor
-		public  constructor()
-		{
-		}
 		public  breasts:number = 2;
 		public  nipplesPerBreast:number = 1;
 		public  breastRating:number = 0;

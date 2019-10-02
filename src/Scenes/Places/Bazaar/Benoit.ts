@@ -21,10 +21,6 @@
 //(Shop open between 9:00 and 17:00)
 export class Benoit extends BazaarAbstractContent {
 
-	public  constructor()
-	{
-	}
-
 //Fen, you'll need a function to determine gendered pronouns and version of name for this character. I've formatted all the eligible places I found in the order of [male/female]. -Z
 public  benoitMF(stringM:string,stringF:string):string {
 	if (flags[kFLAGS.BENOIT_STATUS] == 1 || flags[kFLAGS.BENOIT_STATUS] == 2) return stringF;

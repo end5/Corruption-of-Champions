@@ -3,10 +3,6 @@
 	 
 
 	export class UrtaPregs extends NPCAwareContent {
-
-		public  constructor()
-		{
-		}
 //const URTA_INCUBATION:int = 789;
 //const URTA_TIMES_BIRTHED:int = 790;
 //const URTA_TIMES_PC_BIRTHED:int = 791;

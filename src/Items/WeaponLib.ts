@@ -38,8 +38,4 @@
 			return new Weapon(id,shortName,name,longName,verb,attack,value,description,perk);
 		}
 		*/
-		public  constructor()
-		{
-		}
 	}
-

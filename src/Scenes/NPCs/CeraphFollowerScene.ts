@@ -9,9 +9,6 @@
 
 	export class CeraphFollowerScene extends NPCAwareContent
 	{
-		public  constructor()
-		{
-		}
 
 // CERAPH_ROLEPLAY_AS_DOMINIKA_COUNT:int = 389;
 // CERAPH_HIDING_DICK:int = 288;

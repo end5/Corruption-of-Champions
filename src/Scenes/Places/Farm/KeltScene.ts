@@ -3,10 +3,6 @@
 
 	export class KeltScene extends AbstractFarmContent{
 
-	public  constructor()
-	{
-	}
-
 	/*Kelt the Centaur Archer
 A Corruption of Champions Event by Ourakun
 

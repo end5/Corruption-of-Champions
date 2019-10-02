@@ -6,10 +6,6 @@
 
 	export class SophieBimbo extends NPCAwareContent
 	{
-
-		public  constructor()
-		{
-		}
 		
 		private  get pregnancy():PregnancyStore { return sophieScene.pregnancy; } //Quick way to access sophie's pregnancyStore
 

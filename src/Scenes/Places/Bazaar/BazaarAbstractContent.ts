@@ -12,7 +12,4 @@
 		protected  get bazaar():Bazaar {
 			return bazaar;
 		}
-		public  constructor()
-		{
-		}
 	}

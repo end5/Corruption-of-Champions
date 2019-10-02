@@ -5,10 +5,6 @@
 
 	export class ErlKingScene
 	{
-		public  constructor()
-		{
-
-		}
 
 		public  encounterWildHunt():void
 		{

@@ -4,10 +4,6 @@
 
 	export class Lilium extends BazaarAbstractContent{
 
-	public  constructor()
-	{
-	}
-
 //I dunno about the term 'satanic streetwalker', and it
 //probably needs to increment your corruption if you're fucking
 //a proper demon. -Z

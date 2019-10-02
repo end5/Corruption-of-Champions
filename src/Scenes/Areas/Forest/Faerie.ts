@@ -3,10 +3,6 @@
 
 	export class Faerie{
 
-	public  constructor()
-	{
-	}
-
 //faerie Encounter
 public  encounterFaerie():void {
 	spriteSelect(17);

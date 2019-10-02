@@ -177,8 +177,4 @@
 			if (monsterIdx>1) addButton(6, "Go Back", exploreDebugMonsters, monsterIdx-1);
 			addButton(9, "Enough", playerMenu);
 		}
-
-		public  constructor()
-		{
-		}
 	}

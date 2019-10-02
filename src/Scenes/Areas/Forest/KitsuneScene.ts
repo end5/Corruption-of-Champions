@@ -10,9 +10,6 @@
 
 	export class KitsuneScene
 	{
-		public  constructor()
-		{
-		}
 
 //const MANSION_VISITED:int = 626;
 //const redheadIsFuta:int = 627;

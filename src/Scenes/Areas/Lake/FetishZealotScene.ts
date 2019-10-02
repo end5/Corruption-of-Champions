@@ -8,9 +8,6 @@
 
 	export class FetishZealotScene extends AbstractLakeContent
 	{
-		public  constructor()
-		{
-		}
 
 //Fetish Zealot
 //The Fetish zealot is the guard, escort, and de-facto 
