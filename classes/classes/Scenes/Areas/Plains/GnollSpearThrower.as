@@ -1,16 +1,16 @@
-package classes.Scenes.Areas.Plains
-{
-	import classes.*;
-	import classes.internals.*;
+ 
+
+	 
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class GnollSpearThrower extends Monster 
+	export class GnollSpearThrower extends Monster 
 	{
-		private function hyenaPhysicalAttack():void {
-			var damage:Number = 0;
+		private  hyenaPhysicalAttack():void {
+			var damage:number = 0;
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
@@ -100,9 +100,9 @@ package classes.Scenes.Areas.Plains
 		}
 		
 		//<Writers note: I recommend that the javelin have a chance to greatly decrease speed for the remaining battle.  I am writing the flavor text for this event if you choose to include it>
-		private function hyenaJavelinAttack():void {
-			var damage:Number = 0;
-			var slow:Number = 0;
+		private  hyenaJavelinAttack():void {
+			var damage:number = 0;
+			var slow:number = 0;
 			//<Hyena Attack 2 – Javelin – Unsuccessful – Dodged>
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
@@ -155,8 +155,8 @@ package classes.Scenes.Areas.Plains
 		}
 		
 		//<Writer's Note: With the third attack, I intend that the damage be increased based on the breast size of the player.  Thus, the text will vary if the player is flat-chested as indicated by colored text.>
-		private function hyenaSnapKicku():void {
-			var damage:Number = 0;
+		private  hyenaSnapKicku():void {
+			var damage:number = 0;
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText("The gnoll tries to catch you with a brutal snap-kick, but blind as she is, she completely misses.", false);
@@ -198,9 +198,9 @@ package classes.Scenes.Areas.Plains
 			combatRoundOver();
 		}
 		
-		private function hyenaArousalAttack():void {
+		private  hyenaArousalAttack():void {
 			//Success = cor+lib > rand(150)
-			var chance:Number = rand(150);
+			var chance:number = rand(150);
 			//<Hyena Attack 4 – Arousal Attack – Highly Successful>
 			if(player.cor + player.lib > chance + 50) {
 				outputText("A wry grin spreads across the gnoll's face before she sprints towards you.  Too fast to follow, she flies forward, and you desperately brace for an impact that doesn't come.  Instead of striking you, two spotted paws clamp behind your neck and pull your head down, planting your face against her leather loincloth.  A powerful, musky smell burns in your nose and the feel of firm flesh behind the flimsy leather leaves a tingling sensation along your face.  She holds you there, pressed against her groin for several moments, desire growing deep within your body, before you find the strength and will to pull away.  The amazon grins, letting you stumble back as you try to fight off the feel of her body.\n\n", false);
@@ -218,9 +218,9 @@ package classes.Scenes.Areas.Plains
 			combatRoundOver();
 		}
 
-		override public function eAttack():void
+		 public  eAttack():void
 		{
-			var damage:Number = 0;
+			var damage:number = 0;
 //return to combat menu when finished
 			doNext(game.playerMenu);
 //Blind dodge change
@@ -304,7 +304,7 @@ package classes.Scenes.Areas.Plains
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if(short == "alpha gnoll") {
 				game.clearOutput();
@@ -318,7 +318,7 @@ package classes.Scenes.Areas.Plains
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (short == "alpha gnoll"){
 				game.urtaQuest.loseToGnollPrincessAndGetGangBanged();
@@ -330,7 +330,7 @@ package classes.Scenes.Areas.Plains
 			}
 		}
 
-		public function GnollSpearThrower()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "gnoll spear-thrower";
@@ -372,4 +372,3 @@ package classes.Scenes.Areas.Plains
 			checkMonster();
 		}
 	}
-}

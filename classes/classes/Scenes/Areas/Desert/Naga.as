@@ -1,13 +1,13 @@
-﻿package classes.Scenes.Areas.Desert
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class Naga extends Monster
+	 
+	 
+
+	export class Naga extends Monster
 	{
 
 		//2a)  Ability -  Poison Bite - poisons player
-		protected function nagaPoisonBiteAttack():void {
+		protected  nagaPoisonBiteAttack():void {
 			//(Deals damage over 4-5 turns, invariably reducing 
 			//your speed. It wears off once combat is over.)
 			outputText("The naga strikes with the speed of a cobra, sinking her fangs into your flesh!  ", false);
@@ -45,7 +45,7 @@
 		
 		//2b)  Ability - Constrict - entangles player, raises lust 
 		//every turn until you break free
-		protected function nagaConstrict():void {
+		protected  nagaConstrict():void {
 			outputText("The naga draws close and suddenly wraps herself around you, binding you in place! You can't help but feel strangely aroused by the sensation of her scales rubbing against your body. All you can do is struggle as she begins to squeeze tighter!", false);
 			player.createStatusAffect(StatusAffects.NagaBind,0,0,0,0); 
 			player.takeDamage(2+rand(4));
@@ -54,7 +54,7 @@
 		
 		//2c) Abiliy - Tail Whip - minus ??? HP 
 		//(base it on toughness?)
-		protected function nagaTailWhip():void {
+		protected  nagaTailWhip():void {
 			outputText("The naga tenses and twists herself forcefully.  ", false);
 			//[if evaded]
 			if((player.findPerk(PerkLib.Evade) && rand(6) == 0)) {
@@ -68,7 +68,7 @@
 			}
 			else {
 				outputText("Before you can even think, you feel a sharp pain at your side as the naga's tail slams into you and shoves you into the sands. You pick yourself up, wincing at the pain in your side.", false);
-				var damage:Number = 10;
+				var damage:number = 10;
 				if(player.armorDef < 10) damage += 10 - player.armorDef;
 				damage += rand(3);
 				damage = player.takeDamage(damage);
@@ -77,12 +77,12 @@
 			combatRoundOver();
 		}
 		
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.desert.nagaScene.nagaRapeChoice();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nThe naga's eyes go wide and she turns to leave, no longer interested in you.", false);
@@ -93,7 +93,7 @@
 			}
 		}
 
-		public function Naga(noInit:Boolean = false)
+		public  constructor(noInit:boolean = false)
 		{
 			if (noInit) return;
 			trace("Naga Constructor!");
@@ -138,4 +138,3 @@
 
 	}
 
-}

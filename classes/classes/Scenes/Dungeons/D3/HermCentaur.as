@@ -1,19 +1,19 @@
-package classes.Scenes.Dungeons.D3 
-{
-	import classes.Monster;
-	import classes.Appearance;
-	import classes.StatusAffects;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.CockTypesEnum;
+  
+
+	 
+	 
+	 
+	 
+	 
 	
 	/**
 	 * ...
 	 * @author Gedan
 	 */
-	public class HermCentaur extends Monster
+	export class HermCentaur extends Monster
 	{
 		
-		public function HermCentaur() 
+		public  constructor() 
 		{
 			this.a = "the ";
 			this.short = "herm centaur";
@@ -54,12 +54,12 @@ package classes.Scenes.Dungeons.D3
 			this.checkMonster();
 		}
 		
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.d3.hermCentaur.beatThePony(hpVictory);
 		}
 		
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.d3.hermCentaur.inSovietCoCPonyRidesYou(hpVictory, pcCameWorms);
 		}
@@ -70,16 +70,16 @@ package classes.Scenes.Dungeons.D3
 		// we would normally use StatusAffects for, in instances where the only thing that will care 
 		// about those Affects are the user/consumer of them.
 		
-		private var _usedGottaCum:Boolean = false;
-		private var _usedHeal:Boolean = false;
+		private  _usedGottaCum:boolean = false;
+		private  _usedHeal:boolean = false;
 		
-		private var _chargingArouse:Boolean = false;
-		private var _lustAtChargeStart:Number = -1;
-		private var _arouseCooldown:int = 0;
+		private  _chargingArouse:boolean = false;
+		private  _lustAtChargeStart:number = -1;
+		private  _arouseCooldown:number = 0;
 		
-		private var _hypnoCockUses:int = 0;
+		private  _hypnoCockUses:number = 0;
 		
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			_arouseCooldown--;
 			
@@ -91,7 +91,7 @@ package classes.Scenes.Dungeons.D3
 			else
 			{	
 				// Selections
-				var opts:Array = [feminineMusk, aphrodisiacSquirt];
+				var opts:any[] = [feminineMusk, aphrodisiacSquirt];
 				if (!_chargingArouse && _arouseCooldown <= 0) opts.push(arouseSpellCharge);
 				
 				opts[rand(opts.length)]();
@@ -100,7 +100,7 @@ package classes.Scenes.Dungeons.D3
 			combatRoundOver();
 		}
 		
-		private function feminineMusk():void
+		private  feminineMusk():void
 		{
 			outputText("Turning about, the demonic centauress lifts her tail to reveal the slimy, lubricated lips of her puffy, black horse-cunt.  She arches her human body back to lie on her back, an incredible show of flexibility, allowing you to view the silhouette of her jutting nipples her tail lazily fans her corruption-enhanced pheromones in your direction.  The air temperature seems to spike by a few degrees as the fan of biological lust washes over you.  Fragrant female moisture seems to seep into your very pores, and in spite of your desire to win out, ");
 			
@@ -116,7 +116,7 @@ package classes.Scenes.Dungeons.D3
 			game.dynStats("lus+", 8 + (player.lib / 10) + (player.sens / 10));
 		}
 		
-		private function aphrodisiacSquirt():void
+		private  aphrodisiacSquirt():void
 		{
 			outputText("The centaur grabs her heavy tits and casually squeezes the prodding, hard nipples that cap them.  A trickle of rose moisture trickles out, dripping down the underside of her bust to glisten wetly in the light.  Spellbound for the moment, you look on in wonder at the display of demonic lactations.  A faint sweetness lingers in the air, and you lick your lips without meaning to.  Then, she squeezes down to spray a torrent of pink-tinged breastmilk directly at you, splitting into so many forks of fluid that you have no hope to dodge.");
 			
@@ -151,7 +151,7 @@ package classes.Scenes.Dungeons.D3
 			else outputText(" Sinking to your knees, you start trying to tear your way out of your [armor].  You don't care about winning anymore - fucking this woman... this beast... that's all that matters.  You don't care how she takes you, as long as you get to cum all over her!");
 		}
 		
-		private function arouseSpellCharge():void
+		private  arouseSpellCharge():void
 		{
 			// one turn charge-up, can be interrupted by tease
 			outputText("The centauress closes her eyes for a moment, then opens them.  Her eyes have gone completely, solidly black.  She's chanting low, though you see her dick bobbing beneath her in time with the mysterious utterances, leaking pre-cum.  You've got to stop her!");
@@ -162,7 +162,7 @@ package classes.Scenes.Dungeons.D3
 			_arouseCooldown = 7;
 		}
 		
-		private function arouseSpellCast():void
+		private  arouseSpellCast():void
 		{
 			_chargingArouse = false;
 			_lustAtChargeStart = -1;
@@ -181,7 +181,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function hypnoCock():void
+		private  hypnoCock():void
 		{
 			_hypnoCockUses++;
 			
@@ -230,7 +230,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function gottaCum():void
+		private  gottaCum():void
 		{
 			_usedGottaCum = true;
 			outputText("Sighing, the demoness gives you a lust glare and idly stomps at the ground with a hoof.  \"<i>Stop turning-unf-on you... you stupid... sexy...ungh, DAMNIT!</i>\" she protests, her rigid cock, slapping her belly while streamers of lady-jizz drip down the gleaming orbs that fill her black-skinned ballsack.  The centaur paws at her tits with unrepentant lust, tugging her large, hard nipples mercilessly while her hind legs stutter around, probably only moving in order to grind the thick, female lips together that much harder.");
@@ -245,7 +245,7 @@ package classes.Scenes.Dungeons.D3
 			game.dynStats("lus", 15);
 		}
 		
-		private function healUp():void
+		private  healUp():void
 		{
 			_usedHeal = true;
 			
@@ -256,4 +256,3 @@ package classes.Scenes.Dungeons.D3
 		
 	}
 
-}

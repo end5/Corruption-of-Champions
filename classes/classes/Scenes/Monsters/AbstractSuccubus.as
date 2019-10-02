@@ -1,13 +1,13 @@
 /**
  * Created by aimozg on 18.01.14.
  */
-package classes.Scenes.Monsters
-{
-	import classes.*;
+ 
 
-	public class AbstractSuccubus extends Monster
+	 
+
+	export class AbstractSuccubus extends Monster
 	{
-		protected function whipAttack():void
+		protected  whipAttack():void
 		{
 			if (findStatusAffect(StatusAffects.WhipReady) >= 0) {
 				//Blind dodge change
@@ -17,7 +17,7 @@ package classes.Scenes.Monsters
 					return;
 				}
 				outputText("Grinning deviously, the succubus cracks her whip with expert skill, landing a painful blow on your ", false);
-				var temp:int = rand(6);
+				var temp:number = rand(6);
 				//Whip yo ass!
 				if (temp == 0) {
 					outputText("ass (4)", false);
@@ -80,11 +80,11 @@ package classes.Scenes.Monsters
 			combatRoundOver();
 		}
 
-		public function AbstractSuccubus()
+		public  constructor()
 		{
 		}
 
-		protected function kissAttack():void
+		protected  kissAttack():void
 		{
 			//[Kiss of Death Text]
 			outputText("The succubus dances forwards, cocking her elbow back for a vicious strike.", false);
@@ -101,9 +101,9 @@ package classes.Scenes.Monsters
 			combatRoundOver();
 		}
 
-		protected function seduceAttack():void
+		protected  seduceAttack():void
 		{
-			var temp:int;
+			var temp:number;
 			//determine which method of teasing you use
 			temp = rand(3);
 			//Butt slap!
@@ -168,4 +168,4 @@ package classes.Scenes.Monsters
 			combatRoundOver();
 		}
 	}
-}
+

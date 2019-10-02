@@ -1,15 +1,15 @@
 /**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Items.Armors.LustyMaidensArmor;
+ 
 
-	public class CeraphScene extends NPCAwareContent
+	 
+	 
+	 
+
+	export class CeraphScene extends NPCAwareContent
 	{
-		public function CeraphScene()
+		public  constructor()
 		{
 		}
 
@@ -84,7 +84,7 @@ package classes.Scenes.NPCs
 
 //[Beat Ceraph And Rape Her]
 //Ceraph's fluids boost PC libido and sensitivity massively either way.
-		internal function maleFuckCeraphsPussy():void
+		public  maleFuckCeraphsPussy():void
 		{
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
 			spriteSelect(7);
@@ -199,7 +199,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Female] Ride 'Dat Cawk
-		internal function rideCeraphsCockLikeaBAWSSexclamation11eleven():void
+		public  rideCeraphsCockLikeaBAWSSexclamation11eleven():void
 		{
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
 			player.slimeFeed();
@@ -256,7 +256,7 @@ package classes.Scenes.NPCs
 		}
 
 //[OH SHIT SON YOU LOST GET EARS PIERCED]
-		private function loseToCeraphAndGetPiercingsInEarsOrSomethingSomehow():void
+		private  loseToCeraphAndGetPiercingsInEarsOrSomethingSomehow():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -285,7 +285,7 @@ package classes.Scenes.NPCs
 		}
 
 //[OH SHIT SON MOAR SHIT GETTING PIERCEDEDEDED] – NIPPLEZ GO
-		private function loseToCeraphAnGetPierced2():void
+		private  loseToCeraphAnGetPierced2():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -312,7 +312,7 @@ package classes.Scenes.NPCs
 		}
 
 //[OH SHIT!  WHY DOES FEN KEEP WIRTING THAT 3RD TIME – CROTCH GO]
-		private function getPiercedByCeraphLoss3():void
+		private  getPiercedByCeraphLoss3():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -366,7 +366,7 @@ package classes.Scenes.NPCs
 		}
 
 //[FINAL ENCOUNTER LEVEL]
-		private function finalEncounterLevelCeraphPiercingButtholeNipples():void
+		private  finalEncounterLevelCeraphPiercingButtholeNipples():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -377,7 +377,7 @@ package classes.Scenes.NPCs
 		}
 
 //[no]
-		private function finalCeraphEncounterChoiceNo():void
+		private  finalCeraphEncounterChoiceNo():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -388,7 +388,7 @@ package classes.Scenes.NPCs
 		}
 
 //[fight]
-		private function finalCeraphEncounterStartFight():void
+		private  finalCeraphEncounterStartFight():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -401,7 +401,7 @@ package classes.Scenes.NPCs
 
 //[Yes] TO BAD END
 //[Agree to become Ceraph's Fuckpet Bondage Toy bitch slut]
-		private function agreeToBecomeCeraphsFuckpetBondageToyBitchSlut():void
+		private  agreeToBecomeCeraphsFuckpetBondageToyBitchSlut():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -437,7 +437,7 @@ package classes.Scenes.NPCs
 		}
 
 //(EPILOGUE)
-		private function agreeToBeABitchPt2():void
+		private  agreeToBeABitchPt2():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -450,7 +450,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Initial Meeting Text]
-		private function ceraphFirstTime():void
+		private  ceraphFirstTime():void
 		{
 			outputText("", true);
 			spriteSelect(88);
@@ -463,7 +463,7 @@ package classes.Scenes.NPCs
 		}
 
 //[No]
-		private function ceraphFirstTimeDecline():void
+		private  ceraphFirstTimeDecline():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -477,7 +477,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Yes]
-		private function ceraphFirstTimeVolunteer():void
+		private  ceraphFirstTimeVolunteer():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -499,7 +499,7 @@ package classes.Scenes.NPCs
 		}
 
 //[PC 'BEAT OFF' Ceraph the first time...]
-		private function ceraphFirstTimeRepeat():void
+		private  ceraphFirstTimeRepeat():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -518,7 +518,7 @@ package classes.Scenes.NPCs
 		 As if summoned by your thoughts, you can hear her voice on the wind, taunting you again, \"<i>Enjoy your new bondage fetish pet!  One more piercing and you'll be ready.  Don't have too much fun being tied down and fucked ok?</i>\"
 		 */
 //[PC @ 2 piercings, Ceraph offers 3rd]
-		private function level3CeraphOffer():void
+		private  level3CeraphOffer():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -529,7 +529,7 @@ package classes.Scenes.NPCs
 		}
 
 //[No]
-		private function level3CeraphOfferNo():void
+		private  level3CeraphOfferNo():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -540,7 +540,7 @@ package classes.Scenes.NPCs
 		}
 
 //[YES OH YES]
-		private function yesOHGODYESPIERCELEVEL3():void
+		private  yesOHGODYESPIERCELEVEL3():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -595,7 +595,7 @@ package classes.Scenes.NPCs
 
 
 
-		public function encounterCeraph():void
+		public  encounterCeraph():void
 		{
 			//Just in case set up next button for 1 hr + camp
 			doNext(camp.returnToCampUseOneHour);
@@ -629,10 +629,10 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function winRapeChoices():void
+		public  winRapeChoices():void
 		{
 			//FOLLOWER CHANCE:
-			var leave:Function = cleanupAfterCombat;
+			var leave:() => void = cleanupAfterCombat;
 			if (!getGame().inCombat) {
 				//Load ceraph and set up win conditions
 				startCombat(new Ceraph());
@@ -655,17 +655,17 @@ package classes.Scenes.NPCs
 			if (player.lust >= 33 && player.gender > 0) {
 				outputText("  Do you have your way with her? (And if so, which of your body parts do you do it with?)", false);
 
-				var dicking:Function =null;
-				var buttsmexing:Function =null;
+				var dicking:() => void =null;
+				var buttsmexing:() => void =null;
 				//Dickings ahoyu!
 				if (player.hasCock()) {
 					dicking = maleFuckCeraphsPussy;
 					if (player.cockThatFits(monster.analCapacity()) != -1) buttsmexing = buttRapeCeraph;
 					else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
 				}
-				var cunting:Function =null;
+				var cunting:() => void =null;
 				if (player.hasVagina()) cunting = rideCeraphsCockLikeaBAWSSexclamation11eleven;
-				var bikiniTits:Function = null;
+				var bikiniTits:() => void = null;
 				if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri,player,monster);
 
 				simpleChoices("Fuck Her", dicking, "Ride Her", cunting, "FuckHerAss", buttsmexing, "B.Titfuck", bikiniTits, "Leave", leave);
@@ -682,7 +682,7 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function loseFUCKME():void
+		public  loseFUCKME():void
 		{
 			//Reset rape count if lost
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291] = 0;
@@ -695,7 +695,7 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function ceraphRapesYouBADDAWGYODIGGITY():void
+		public  ceraphRapesYouBADDAWGYODIGGITY():void
 		{
 			player.slimeFeed();
 			spriteSelect(7);
@@ -743,12 +743,12 @@ package classes.Scenes.NPCs
 		}
 
 //(REQ's – HUGE WANG, Exgartuan or Jojo corruption, and !centaur)
-		private function hugeCorruptionForceFuckCeraph():void
+		private  hugeCorruptionForceFuckCeraph():void
 		{
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291] += 2;
 			outputText("", true);
 			spriteSelect(7);
-			var x:Number = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 
 			outputText("You laugh at Ceraph's ", false);
 			if (monster.HP < 1) outputText("beaten, prone", false);
@@ -827,7 +827,7 @@ package classes.Scenes.NPCs
 			dynStats("lib", 3, "sen", 3, "cor", 1);
 		}
 
-		private function ceraphsNiceOffer():void
+		private  ceraphsNiceOffer():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -856,7 +856,7 @@ package classes.Scenes.NPCs
 		 (Chance of encountering 'Friendly' Ceraph even when PC is awaiting trapped armor.
 		 */
 
-		public function friendlyNeighborhoodSpiderManCeraph():void
+		public  friendlyNeighborhoodSpiderManCeraph():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -889,7 +889,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Fight] → Cue normal Ceraph fight
-		private function startAFightWithCeraph():void
+		private  startAFightWithCeraph():void
 		{
 			startCombat(new Ceraph());
 			spriteSelect(7);
@@ -897,7 +897,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Run] → 
-		private function runFromCeraphsNiceDeal():void
+		private  runFromCeraphsNiceDeal():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -910,13 +910,13 @@ package classes.Scenes.NPCs
 		}
 
 //[Trade] 
-		private function tradeCeraphSomething():void
+		private  tradeCeraphSomething():void
 		{
 			outputText("", true);
 			spriteSelect(7);
-			var liqueur:Function =null;
-			var endowment:Function =null;
-			var armor:Function =null;
+			var liqueur:() => void =null;
+			var endowment:() => void =null;
+			var armor:() => void =null;
 			outputText("Ceraph looks you up and down like an appraiser examining an antique, never stopping her languid masturbation.  You stand there, hands on your hips, waiting for her to finish while you try not to stare too long at her beading pre-cum or dripping twat-juice.\n\n", false);
 			//(BIMBO LIQUER) 
 			if (player.hasItem(consumables.BIMBOLQ)) {
@@ -951,7 +951,7 @@ package classes.Scenes.NPCs
 
 
 //[Take Armor]
-		private function getCeraphsArmor():void
+		private  getCeraphsArmor():void
 		{
 			clearOutput();
 			spriteSelect(7);
@@ -961,7 +961,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Trade Bimbo Liquer]
-		private function tradeCeraphBimboLiqueur():void
+		private  tradeCeraphBimboLiqueur():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -976,7 +976,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Trade Genitals]
-		private function tradeCeraphCrotchityBits():void
+		private  tradeCeraphCrotchityBits():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -989,9 +989,9 @@ package classes.Scenes.NPCs
 				return;
 			}
 			//Create array for choosing bits!
-			var choices:Array = [];
-			var choice:Number = 0;
-			var temp2:Number = 0;
+			var choices:any[] = [];
+			var choice:number = 0;
+			var temp2:number = 0;
 			//1 = wang, 2 = cunt, 3 = tits.
 			//Add dicks
 			temp = player.totalCocks();
@@ -1073,7 +1073,7 @@ package classes.Scenes.NPCs
 		}
 
 //[No]
-		private function bailBeforeCeraphYoinksYourNads():void
+		private  bailBeforeCeraphYoinksYourNads():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -1082,11 +1082,11 @@ package classes.Scenes.NPCs
 		}
 
 //[Yes]
-		private function giveUpYourBallsOrWhateverForLessFetishes():void
+		private  giveUpYourBallsOrWhateverForLessFetishes():void
 		{
 			outputText("", true);
 			spriteSelect(7);
-			var x:Number = 0;
+			var x:number = 0;
 			outputText("You hold still, dreading this moment but knowing all-too well that you'd have to give something up to get her touch out of your mind.  ", false);
 			//(Cock)
 			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] == 1) {
@@ -1195,13 +1195,13 @@ package classes.Scenes.NPCs
 //*Used as a fleshlight.
 //*Clit pump
 //*Orgy floor Drain
-		public function ceraphBodyPartDreams():void
+		public  ceraphBodyPartDreams():void
 		{
 			spriteSelect(7);
 			//Create array for choosing bits!
-			var choices:Array = [];
-			var choice:Number = 0;
-			var subChoice:Number = 0;
+			var choices:any[] = [];
+			var choice:number = 0;
+			var subChoice:number = 0;
 			//dicks
 			temp = flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218];
 			while (temp > 0) {
@@ -1395,11 +1395,11 @@ package classes.Scenes.NPCs
 			doNext(playerMenu);
 		}
 
-		internal function buttRapeCeraph():void
+		public  buttRapeCeraph():void
 		{
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
 			spriteSelect(7);
-			var x:Number = player.cockThatFits(monster.analCapacity());
+			var x:number = player.cockThatFits(monster.analCapacity());
 			if (x < 0) x = 0;
 			outputText("", true);
 			outputText("Completely defeated, the haughty demoness lies face down in the dirt, ", false);
@@ -1456,4 +1456,4 @@ package classes.Scenes.NPCs
 
 
 	}
-}
+

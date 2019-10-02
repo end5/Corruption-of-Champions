@@ -1,13 +1,13 @@
-﻿package classes.Scenes.Areas.Desert
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class SandWitch extends Monster
+	 
+	 
+
+	export class SandWitch extends Monster
 	{
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (player.findStatusAffect(StatusAffects.StoneLust))
 			{
@@ -21,7 +21,7 @@
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nThe witch blanches and backs away, leaving you to your fate.");
@@ -31,7 +31,7 @@
 			}
 		}
 		
-		private function lustMagicAttack():void {
+		private  lustMagicAttack():void {
 			outputText("The sand witch points at you, drawing a circle in the air and mouthing strange words.\n\n");
 			if (player.findStatusAffect(StatusAffects.StoneLust) >= 0) {
 				outputText("The orb inside you grows warm, almost hot, suffusing your body with heat and arousal.  ");
@@ -47,7 +47,7 @@
 			doNext(game.playerMenu);
 		}
 		
-		public function SandWitch()
+		public  constructor()
 		{
 			trace("SandWitch Constructor!");
 			this.a = "the ";
@@ -96,4 +96,3 @@
 
 	}
 
-}

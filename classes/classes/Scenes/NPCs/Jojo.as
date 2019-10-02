@@ -1,27 +1,27 @@
-﻿package classes.Scenes.NPCs
-{
-	import classes.*;
+ 
 
-	public class Jojo extends Monster
+	 
+
+	export class Jojo extends Monster
 	{
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.jojoScene.defeatedJojo(hpVictory);
 		}
 		
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.jojoScene.loseToJojo();
 		}
 		
-		override protected function performCombatAction():void {
+		 protected  performCombatAction():void {
 			if (game.monk > 1 && rand(2) == 0)
 				selfCorruption(); //Shouldn't do any self corruption at monk one. Otherwise a 50/50 chance
 			else eAttack();
 		}
 		
-		private function selfCorruption():void {
+		private  selfCorruption():void {
 			switch (game.monk) {
 				case 2:
 					outputText("Jojo looks lost in thought for a moment, and fails to attack.  ");
@@ -55,7 +55,7 @@
 			doNext(game.playerMenu);
 		}
 		
-		public function Jojo()
+		public  constructor()
 		{
 			trace("Jojo Constructor!");
 			this.a = "";
@@ -120,4 +120,3 @@
 
 	}
 
-}

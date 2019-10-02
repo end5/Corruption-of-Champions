@@ -1,9 +1,9 @@
-﻿package classes.Scenes.Places.TelAdre {
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+  
+	 
+	 
 
-	public class Heckel extends TelAdreAbstractContent {
-public function Heckel(){
+	export class Heckel extends TelAdreAbstractContent {
+public  constructor(){
 
 }
 //const TIMES_LOST_HECKEL_DOM_CHALLENGE:int = 650;
@@ -22,13 +22,13 @@ genderless, since most of it would make no sense.
 Requirements for anal: ass 'a little loose'
 */
 //Intro:
-public function heckelAppearance():void {
+public  heckelAppearance():void {
 	if(flags[kFLAGS.MET_HECKEL] == 0) outputText("\n\nYou can see a brown hyena running around an indoor track, her tongue lolling out of her mouth as she runs. She spares a glance towards you before returning to her workout, her legs a blur of motion beneath her.", false);
 	else outputText("\n\nYou can see Heckel is here, running laps on an indoor track again.", false);
 }
 
 //Greeting scene:
-public function greetHeckel():void {
+public  greetHeckel():void {
 	outputText("", true);
 	if(flags[kFLAGS.MET_HECKEL] == 0) {
 		outputText("As you approach the edge of the track, the hyena comes around the bend towards you.  Her fur is a light brown mottled with spots of dark brown and black, with a thicker and longer black mane passing for hair.  You get a good view of her B-cup breasts bouncing inside her shirt, black workout bra straps sticking out on her shoulders.  She has simple black shorts on that hug her firm ass, and you can't help but admire her toned legs as they move beneath her.  As she stops running and turns toward you, you see something else entirely bouncing around in her groin.  Her body reminds you of a coiled spring, too much power and tension in too small a frame.\n\n", false);
@@ -52,9 +52,9 @@ public function greetHeckel():void {
 }
 
 //First time Sex
-private function heckelTraining():void {
+private  heckelTraining():void {
 	clearOutput();
-	var dom:Function = null;
+	var dom:() => void = null;
 	//Rejection
 	//Tone not high enough or fat too high
 	if(player.tone < 60) {
@@ -118,7 +118,7 @@ private function heckelTraining():void {
 }
 
 //oral
-private function heckelOrallyFixated():void {
+private  heckelOrallyFixated():void {
 	outputText("", true);
 	if(flags[kFLAGS.TIMES_FUCKED_HECKEL_BLOWJOB] == 0) {
 		outputText("You walk over to Heckel and fall to your knees, already licking your lips. Heckel throws her head back in a barking laugh as she scoots forward, one paw coming around the back of your head. Without needing further encouragement, you grab the flaccid dog cock and give it an experimental pump.\n\n", false);
@@ -175,7 +175,7 @@ private function heckelOrallyFixated():void {
 	flags[kFLAGS.TIMES_FUCKED_HECKEL_BLOWJOB]++;
 }
 
-private function heckelOralFixationII():void {
+private  heckelOralFixationII():void {
 	outputText("", true);
 	outputText("You look up her body at her scowling face, wondering what you did wrong. \"<i>None of that, little meat. I'm top dog here, which means you don't go near there. But if you keep sucking this well, I might just let you keep that hand.</i>\" Heckel clearly isn't amused, but she hasn't pulled you away either. Whether from her threat or your lust, you aren't about to let this hard cock out of your mouth any time soon anyway. Your next bob is echoed by a thrust from Heckel, as is the next and the next after that. Her thrusts start coming faster than your head can keep up, and then her hands in your " + hairDescript() + " tighten their grip to hold your mouth in place. Before you know it she's fucking your throat more than you're giving her head. All you can do is watch her furry groin and stomach pumping towards you, and you have ample time to watch a knot start forming at the base of her dick. Your eyes begin to tear up as her cock pushes your throat open again and again, her thrusts getting faster and faster. It's all you can do to keep one hand stroking her shaft without gagging on her dick.\n\n", false);
 
@@ -189,7 +189,7 @@ private function heckelOralFixationII():void {
 }
 
 //anal
-private function heckelLovesDaAnal(loss:Boolean = false):void {
+private  heckelLovesDaAnal(loss:boolean = false):void {
 	outputText("", true);
 	//rejection - ass not loose enough
 	if(player.analCapacity() <= 20 && !loss) {
@@ -229,7 +229,7 @@ private function heckelLovesDaAnal(loss:Boolean = false):void {
 	flags[kFLAGS.TIMES_FUCKED_HECKEL_ANAL]++;
 }
 
-private function heckelLovesAnal2():void {
+private  heckelLovesAnal2():void {
 	outputText("", true);
 	outputText("Her legs bump against yours as she pulls herself up, the contact sending shivers through your sensitive body. \"<i>Even better than I thought,</i>\" she mumbles as you hear the sound of her stroking herself. Before the wetness around your ass can dry up, you feel something hard and slightly pointed poking the entrance of your " + assholeDescript() + ".\n\n", false);
 
@@ -286,7 +286,7 @@ private function heckelLovesAnal2():void {
 }
 
 
-public function dominateHeckel():void {
+public  dominateHeckel():void {
 	clearOutput();
 	outputText("Smirking, you fold your arms and tell her to bend over - ");
 	if(flags[kFLAGS.TIMES_DOMMED_HECKEL] == 0) outputText("there's a new top dog just waiting to claim the town bitch");
@@ -328,9 +328,9 @@ public function dominateHeckel():void {
 }
 	
 //[Fuck Heckel]
-private function dominateHeckelConclusion():void {
+private  dominateHeckelConclusion():void {
 	clearOutput();
-	var x:int = player.cockThatFits(70);
+	var x:number = player.cockThatFits(70);
 	if(x < 0) x = player.smallestCockIndex();
 	outputText("You casually rise and circle round the table.  Before she can react, you dexterously slip your hands down to Heckel's sculpted, furry backside and lift her high, easily flipping her up onto the wooden surface.  The muscle-herm grunts softly as she comes to rest upon the polished wood, her flopping dog-cock already starting to thicken with the telltale engorgement of oncoming arousal.  Smirking, you gently prod at the growing knot and tease her - she might be an avowed dom, but her dick seems excited by the prospect of sex on any terms.");
 	outputText("\n\nHeckel protests, \"<i>Please; just because my body is looking for a fuck doesn't mean I want to be your bottom bitch.</i>\"");
@@ -402,6 +402,5 @@ private function dominateHeckelConclusion():void {
 	player.orgasm();
 	dynStats("sen", -2);
 	doNext(camp.returnToCampUseOneHour);
-}
 }
 }

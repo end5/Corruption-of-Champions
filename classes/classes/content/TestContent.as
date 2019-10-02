@@ -1,19 +1,19 @@
-package classes.content 
-{
-	import classes.BaseContent;
+  
+
+	 
 	/**
 	 * ...
 	 * @author Gedan
 	 */
-	public class TestContent extends BaseContent
+	export class TestContent extends BaseContent
 	{
 		
-		public function TestContent() 
+		public  constructor() 
 		{
 			
 		}
 		
-		public function cheatSheet():void
+		public  cheatSheet():void
 		{
 			clearOutput();
 			
@@ -112,4 +112,3 @@ package classes.content
 		
 	}
 
-}

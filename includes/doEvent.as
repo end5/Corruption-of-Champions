@@ -1,4 +1,4 @@
-﻿//This file is no longer used or included
+//This file is no longer used or included
 //Event No's 2000 4999 use this function
 
 /*

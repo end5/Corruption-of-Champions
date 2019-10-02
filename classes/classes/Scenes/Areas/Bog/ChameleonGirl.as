@@ -1,11 +1,11 @@
-package classes.Scenes.Areas.Bog
-{
-	import classes.*;
+ 
 
-	public class ChameleonGirl extends Monster
+	 
+
+	export class ChameleonGirl extends Monster
 	{
 
-		public function chameleonTongueAttack():void
+		public  chameleonTongueAttack():void
 		{
 			this.weaponName = "tongue";
 			this.weaponVerb = "tongue-slap";
@@ -19,7 +19,7 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//Ignores armor
-		public function chameleonClaws():void
+		public  chameleonClaws():void
 		{
 			//Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
@@ -29,7 +29,7 @@ package classes.Scenes.Areas.Bog
 			else if (game.combatMiss() || game.combatEvade() || game.combatFlexibility() || game.combatMisdirect()) outputText("The chameleon girl's claws slash towards you, but you lean away from them and they fly by in a harmless blur.");
 			//Get hit
 			else {
-				var damage:Number = int((str + weaponAttack) - rand(player.tou));
+				var damage:number = int((str + weaponAttack) - rand(player.tou));
 				if (damage > 0) {
 					damage = player.takeDamage(damage);
 					outputText("The chameleon swings her arm at you, catching you with her claws.  You wince as they scratch your skin, leaving thin cuts in their wake. (" + damage + ")");
@@ -40,7 +40,7 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//Attack 3:
-		public function rollKickClawWhatTheFuckComboIsThisShit():void
+		public  rollKickClawWhatTheFuckComboIsThisShit():void
 		{
 			//Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
@@ -48,14 +48,14 @@ package classes.Scenes.Areas.Bog
 			}
 			//Evade:
 			else if (game.combatMiss() || game.combatEvade() || game.combatFlexibility() || game.combatMisdirect()) {
-				var damage2:Number = 1 + rand(10);
+				var damage2:number = 1 + rand(10);
 				damage2 = game.doDamage(damage2);
 				outputText("The chameleon girl leaps in your direction, rolls, and kicks at you.  You sidestep her flying charge and give her a push from below to ensure she lands face-first in the bog. (" + damage2 + ")");
 
 			}
 			//Get hit
 			else {
-				var damage:Number = int((str + weaponAttack) - rand(player.tou) - player.armorDef) + 25;
+				var damage:number = int((str + weaponAttack) - rand(player.tou) - player.armorDef) + 25;
 				if (damage > 0) {
 					damage = player.takeDamage(damage);
 					outputText("The chameleon leaps in your direction, rolls, and kicks you square in the shoulder as she ascends, sending you reeling.  You grunt in pain as a set of sharp claws rake across your chest. (" + damage + ")");
@@ -65,23 +65,23 @@ package classes.Scenes.Areas.Bog
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.spriteSelect(89);
-			var select:int = rand(3);
+			var select:number = rand(3);
 			if (select == 0) rollKickClawWhatTheFuckComboIsThisShit();
 			else if (select == 1) chameleonTongueAttack();
 			else chameleonClaws();
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.bog.chameleonGirlScene.defeatChameleonGirl();
 		}
 
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nThe chameleon girl recoils.  \"<i>Ew, gross!</i>\" she screetches as she runs away, leaving you to recover from your defeat alone.");
@@ -91,12 +91,12 @@ package classes.Scenes.Areas.Bog
 			}
 		}
 
-		override protected function outputPlayerDodged(dodge:int):void
+		 protected  outputPlayerDodged(dodge:number):void
 		{
 			outputText("The chameleon girl whips her head and sends her tongue flying at you, but you hop to the side and manage to avoid it.  The pink blur flies back into her mouth as quickly as it came at you, and she looks more than a bit angry that she didn't find her target.\n");
 		}
 
-		override public function outputAttack(damage:int):void
+		 public  outputAttack(damage:number):void
 		{
 			if (damage <= 0) {
 				outputText("The Chameleon Girl lashes out with her tongue, but you deflect the sticky projectile off your arm, successfully defending against it.  She doesn't look happy about it when she slurps the muscle back into her mouth.");
@@ -108,7 +108,7 @@ package classes.Scenes.Areas.Bog
 		/**
 		 * Pairs of skinTone/skinAdj
 		 */
-		private const SKIN_VARIATIONS:Array = [
+		private  SKIN_VARIATIONS:any[] = [
 			["red", "black"],
 			["green", "yellowish"],
 			["blue", "lighter blue"],
@@ -117,9 +117,9 @@ package classes.Scenes.Areas.Bog
 			["tan", "white"]
 		];
 
-		public function ChameleonGirl()
+		public  constructor()
 		{
-			var skinToneAdj:Array = randomChoice(SKIN_VARIATIONS);
+			var skinToneAdj:any[] = randomChoice(SKIN_VARIATIONS);
 			this.a = "the ";
 			this.short = "chameleon girl";
 			this.imageName = "chameleongirl";
@@ -157,4 +157,3 @@ package classes.Scenes.Areas.Bog
 
 	}
 
-}

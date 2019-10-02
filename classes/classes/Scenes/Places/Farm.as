@@ -1,31 +1,31 @@
-﻿package classes.Scenes.Places{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.NPCs.MarbleScene;
-	import classes.Scenes.Places.Farm.*;
+ 
+	 
+	 
+	 
+	 
+	 
 
-	use namespace kGAMECLASS;
+	  ;
 
-	public class Farm extends BaseContent{
-	public var keltScene:KeltScene = new KeltScene();
-	public var kelly:Kelly = new Kelly();
-	private function get marbleScene():MarbleScene {
+	export class Farm extends BaseContent{
+	public  keltScene:KeltScene = new KeltScene();
+	public  kelly:Kelly = new Kelly();
+	private  get marbleScene():MarbleScene {
 		return kGAMECLASS.marbleScene;
 	}
-	public var farmCorruption:FarmCorruption = new FarmCorruption();
+	public  farmCorruption:FarmCorruption = new FarmCorruption();
 
-	public function Farm(){
+	public  constructor(){
 
 	}
 //const FARM_DISABLED:int = 464;
 
-	public function whitneySprite():void
+	public  whitneySprite():void
 	{
 		spriteSelect(62);
 	}
 	
-public function farmExploreEncounter():void {
+public  farmExploreEncounter():void {
 outputText("Whitney marches up to you as soon as you approach the farm, a stoic expression plastered across her face.");
 	if (flags[kFLAGS.FARM_CORRUPTION_STARTED] > 0)
 	{
@@ -43,7 +43,7 @@ outputText("Whitney marches up to you as soon as you approach the farm, a stoic 
 		return;
 	}
 	
-	var temporary:Number = 0;
+	var temporary:number = 0;
 	//Farm not yet discovered
 	if(player.statusAffectv1(StatusAffects.MetWhitney) < 2) {
 		spriteSelect(62);
@@ -75,11 +75,11 @@ outputText("Whitney marches up to you as soon as you approach the farm, a stoic 
 		else if(flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 1) outputText("You aren't welcome on the farm proper, but you can see Kelly cantering about the fields, looking for you.", true);
 		else outputText("Whitney's farm is remarkably large for such a humble operation.  What do you want to do?", true);
 		menu();
-		var keltEvent:Number = 0;
-		var milkYou:Number = 0;
-		var milkJojo:Number = 0;
-		var cockMilk:Number = 0;
-		var marble:Number = 0;
+		var keltEvent:number = 0;
+		var milkYou:number = 0;
+		var milkJojo:number = 0;
+		var cockMilk:number = 0;
+		var marble:number = 0;
 		if(player.findStatusAffect(StatusAffects.Kelt) >= 0 && player.findStatusAffect(StatusAffects.KeltOff) < 0) {
 			if(flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(1,"Kelly",kelly.breakingKeltOptions);
 			else addButton(1,"Kelt",kelly.breakingKeltOptions);
@@ -109,7 +109,7 @@ outputText("Whitney marches up to you as soon as you approach the farm, a stoic 
 }
 
 //[YES]
-private function whitneyMilkerHookup(breast:Boolean = true):void {
+private  whitneyMilkerHookup(breast:boolean = true):void {
 	spriteSelect(62);
 	outputText("Whitney takes the gear back to her farm after promising to have it working within the hour.  She did leave you with a cryptic warning to \"<i>leave the milkings to the beasts, lest you become one</i>.</i>\"\n\nYou shrug and head back to check up on camp.", true);
 	if(breast) {
@@ -123,14 +123,14 @@ private function whitneyMilkerHookup(breast:Boolean = true):void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //[NO]
-private function whitneyMilkerRefusal():void {
+private  whitneyMilkerRefusal():void {
 	spriteSelect(62);
 	clearOutput();
 	outputText("Whitney shrugs and the two of you resume your conversation.  But like all good things, it has to come to an end.  The two of you go your separate ways.");
 	doNext(camp.returnToCampUseOneHour);
 }
 //TALK
-private function talkWhitney():void {
+private  talkWhitney():void {
 	spriteSelect(62);
 	//[FIND WHITNEY TXT]
 	outputText("", true);
@@ -324,7 +324,7 @@ private function talkWhitney():void {
 	//+3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
 }
 
-private function breastMilkerPurchase():void {
+private  breastMilkerPurchase():void {
 	outputText("Whitney takes the gems and leaves with the promise of having your gear set up within the hour.  She calls back over her shoulder with a cryptic warning, \"<i>Watch how much time you spend getting milked like an animal, lest you wind up like one.</i>\"", true);
 	doNext(camp.returnToCampUseOneHour);
 	player.createKeyItem("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
@@ -332,7 +332,7 @@ private function breastMilkerPurchase():void {
 	statScreenRefresh();
 }
 
-private function breastMilkerNoPurchase():void {
+private  breastMilkerNoPurchase():void {
 	doNext(camp.returnToCampUseOneHour);
 	outputText("Whitney shrugs and the two of you chat about other things, just passing the time and enjoying a relatively normal chat.", true);
 	//+3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
@@ -342,8 +342,8 @@ private function breastMilkerNoPurchase():void {
 	if (player.inte < 40) dynStats("int", .5);
 }
 
-public function workFarm():void {
-	var marbling:Number = 0;
+public  workFarm():void {
+	var marbling:number = 0;
 	outputText("", true);
 	//In withdrawl odds are higher.
 	if(player.findStatusAffect(StatusAffects.NoMoreMarble) < 0 && player.findStatusAffect(StatusAffects.MarbleWithdrawl) >= 0) {
@@ -423,7 +423,7 @@ public function workFarm():void {
 	outputText("You ask Whitney if she could use help with anything and she points towards the pepper fields, \"<i>Ya mind gathering up some peppers for an hour or two?  I'm gonna need a few for supper tonight.  I'll even let you keep the best one!</i>\"\n\n", false);
 	outputText("You nod and borrow a basket, and set off towards the fields.  The next two hours are a blur of sweat and hard work as you prowl between the rows of plants, picking as many ripe red peppers as you can find.  When you finish, you drop the basket by Whitney's door, but not before taking your pepper.\n", false);
 	//(75% chance normal pepper, 25% chance \"<i>rare</i>\" pepper)
-	var pepper:Number = rand(4);
+	var pepper:number = rand(4);
 	var itype:ItemType;
 	if(pepper <= 2) itype = consumables.CANINEP;
 	else {
@@ -443,8 +443,8 @@ public function workFarm():void {
 	inventory.takeItem(itype, camp.returnToCampUseTwoHours);
 }
 
-public function meetMarble():void {
-	var marbling:Number = 0;
+public  meetMarble():void {
+	var marbling:number = 0;
 	//Pre-addiction events(explore events take 1 hour, working ones take 3)
 	if(player.statusAffectv3(StatusAffects.Marble) == 0) {
 		//Meet Marble while exploring version 1 (can occur anytime before the player becomes addicted):
@@ -479,9 +479,9 @@ public function meetMarble():void {
 	}
 }
 
-public function exploreFarm():void {
-	var marbling:Number = 0;
-	var explore:Number = 0;
+public  exploreFarm():void {
+	var marbling:number = 0;
+	var explore:number = 0;
 	
 	//Marble after-rape
 	if(player.findStatusAffect(StatusAffects.MarbleRapeAttempted) >= 0 && player.findStatusAffect(StatusAffects.NoMoreMarble) < 0) {
@@ -593,7 +593,7 @@ public function exploreFarm():void {
 	}
 }
 
-public function getMilked():void {
+public  getMilked():void {
 	/*MILK YOU TIT-PUMPZ ONLY
 	(Milk production TOTAL= breastSize x 10 * lactationMultiplier * breast total * milking-endurance (1- default, maxes at 2.  Builds over time as milking as done)
 	(Small – 0.01 mLs – Size 1 + 1 Multi)
@@ -642,7 +642,7 @@ public function getMilked():void {
 	else {
 		outputText("You easily attach the harnesses and lift up into position, hearing the machinery activate automatically. ", false);
 	}
-	var application:Number = rand(3);
+	var application:number = rand(3);
 	//Super huge nips scene
 	if(player.nippleLength == 3 && rand(2) == 0) application = 3;
 	//Apply
@@ -674,7 +674,7 @@ public function getMilked():void {
 	//< 250 'good' output
 	//< 750 'high' output
 	//ELSE milk overload
-	var milksplosion:Number = rand(3);
+	var milksplosion:number = rand(3);
 	//Lightish (+15 lust)
 	if(player.lactationQ() < 50) {
 		dynStats("lus", 15);
@@ -762,9 +762,9 @@ public function getMilked():void {
 	}
 	//Aftermaths
 	//Set temp to liter amount produced.
-	var liters:Number = 0;
-	var payout:Number = 0;
-	var cap:Number = 500;
+	var liters:number = 0;
+	var payout:number = 0;
+	var cap:number = 500;
 	//Ez mode cap doubles
 	if(flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1) cap *= 2;
 	if(debug) {
@@ -839,8 +839,8 @@ public function getMilked():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 
-public function cockPumping():void {
-	var cumQ:Number = player.cumQ() * (rand(10) + 90) / 100;
+public  cockPumping():void {
+	var cumQ:number = player.cumQ() * (rand(10) + 90) / 100;
 	outputText("", true);
 	//First time barn entrance
 	if(player.findStatusAffect(StatusAffects.CockPumped) < 0) {
@@ -1053,8 +1053,8 @@ public function cockPumping():void {
 	outputText("trail of your cum along the floor where the hose dragged itself back into the wall, though the machinery has closed back up and is now chugging noisily, clearly doing something.  A loud 'ding' chimes and a panel displays ", false);
 
 	//Set temp to liter amount produced.
-	var payout:Number = 0;
-	var cap:Number = 500;
+	var payout:number = 0;
+	var cap:number = 500;
 	//Ez mode cap doubles
 	if(flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1) cap *= 2;
 	if(debug) {
@@ -1093,7 +1093,7 @@ public function cockPumping():void {
 	}
 	if (player.countCockSocks("gilded") > 0) {
 		
-		var gems:int = rand(2) + player.countCockSocks("gilded");
+		var gems:number = rand(2) + player.countCockSocks("gilded");
 		
 		if (player.cumQ() > 1000)
 			gems *= 1.5;
@@ -1118,14 +1118,14 @@ public function cockPumping():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 
-private function cowBadEnd1():void {
+private  cowBadEnd1():void {
 	outputText("You moo with delight, fondling your dripping " + allBreastsDescript() + " as you relax in your stall.   You know there was something uh, important or something that you were going to do - besides getting your udders milked!  Mmmmm, all your worries about that other thing just melt away when you're in your harness, spraying out milk...\n\n", true);
 	outputText("You stop, trying to put your remaining wits to work and remember what you were going to do.   Let's see, you were coming here because your tits were so full that they made you ache, and you got hooked up and pumped like a good cow.  Another soft moo escapes your lips.  Now you're turned on and masturbating your drippy udders.  So the next step would be...\n\n", false);
 	outputText("...finding someone to fuck you silly while you get something to eat.  It's so simple!  You crawl out of your stall, feeling your ponderous breasts jiggle as they drag on the ground.  A trail of white cream clearly marks your passage out into the fields, eventually passing beyond the edges of Whitney's farm and into the mountains.", false);
 	doNext(cowBadEnd2);
 }
 
-private function cowBadEnd2():void {
+private  cowBadEnd2():void {
 	outputText("", true);
 	outputText("A day later, you slosh back into the barn with your breasts painfully full and ready to be emptied.  Your cum-filled belly joins your tits in dragging on the floor while you daydream about your time in the minotaur caves last night.  The first one claimed your " + assholeDescript() + ", brutalizing it over and over while the beast emptied his vast reservoirs of seed into your rectum.  Before the beast's equine-like cock could be stuffed halfway inside you, a slightly smaller minotaur was in front of your face, smearing your lips with a thick coating of his tasty pre.  Like a good cow, you opened wide for the bull and gratefully accepted his thick loads, feeling the narcotic-like spunk shut down your ability to think about anything but sex.\n\n", false);
 	outputText("You moo happily, shivering at the intensity of the fond memories and in anticipation of tonight's activities.  But first you need to get your swollen nipples emptied!  The straps to the harness hang there in front of you – how do you work them again?  Your happy moos turn to moos of confusion and stress, but thankfully Whitney pads into the barn before you have a chance to panic.  She looks down and sighs, filling you with confusion.  You weren't a bad cow, were you?\n\n", false);
@@ -1133,8 +1133,8 @@ private function cowBadEnd2():void {
 	outputText("You nod happily, determined to find someone or something that can stuff you as full as your bulls did.  Whitney gives a resigned sigh as she turns the machine on, watching your determined stare melt into a dopey painting of relief...", false);
 	getGame().gameOver();
 }
-private function milkerBadEnd1():void {
-	var cumQ:Number = player.cumQ();
+private  milkerBadEnd1():void {
+	var cumQ:number = player.cumQ();
 	outputText("", true);
 	outputText("As you roll onto your back the machine delivers an encore performance on your swollen " + multiCockDescriptLight() + ", down to the very same orgasm denial.  Wracked by pleasure but now freed to move, you find yourself trying to thrust aganst the tubes, as best as your feeble grip and exhaustion will allow, in order to try to override the machine's will and achieve release.  Nevertheless, the suction expertly mainpulates your arousal and you can do little except endure it as another oversized batch of cum wells up", false);
 	//[(balls)
@@ -1157,7 +1157,7 @@ private function milkerBadEnd1():void {
 	if(cumQ > 100) outputText(" and another clatter of gems", false);
 	outputText(" reaches your ears as your second deposit is massed, but your attention is drawn to the new tube", false);
 	///(if vag/nipplecunts/lactation)
-	var tubes:Boolean = false;
+	var tubes:boolean = false;
 	if(player.hasVagina() || player.hasFuckableNipples() || player.biggestLactation() > 1) {
 		outputText("s", false);
 		tubes = true;
@@ -1252,7 +1252,7 @@ private function milkerBadEnd1():void {
 }
 
 //Introduction: Finding the Toys @ The Farm
-private function centaurToysHoooooo():void {
+private  centaurToysHoooooo():void {
 	spriteSelect(62);
 	outputText("", true);
 	//[Places] - [Farm] - [Talk] If PC = Centaur
@@ -1277,4 +1277,4 @@ private function centaurToysHoooooo():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-}
+

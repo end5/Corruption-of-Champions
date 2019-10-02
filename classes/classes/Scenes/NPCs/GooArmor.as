@@ -1,25 +1,25 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Scenes.Areas.Lake.GooGirl;
-	import classes.internals.*;
+ 
 
-	public class GooArmor extends GooGirl
+	 
+	 
+	 
+	 
+
+	export class GooArmor extends GooGirl
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.gooArmorAI();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (findStatusAffect(StatusAffects.Spar) >= 0) game.valeria.pcWinsValeriaSpar();
 			else game.beatUpGooArmor();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nThe armored goo sighs while you exhaust yourself...");
@@ -30,7 +30,7 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function GooArmor()
+		public  constructor()
 		{
 			super(true);
 			this.a = "a ";
@@ -70,4 +70,3 @@ package classes.Scenes.NPCs
 		
 	}
 
-}

@@ -1,9 +1,9 @@
-﻿package classes
-{
-	public class PerkClass
+ 
+
+	export class PerkClass
 	{
 		//constructor
-		public function PerkClass(perk:PerkType,value1:Number=0,value2:Number=0,value3:Number=0,value4:Number=0)
+		public  constructor(perk:PerkType,value1:number=0,value2:number=0,value3:number=0,value4:number=0)
 		{
 			_ptype = perk;
 			this.value1 = value1;
@@ -12,32 +12,31 @@
 			this.value4 = value4;
 		}
 		//data
-		private var _ptype:PerkType;
-		public var value1:Number;
-		public var value2:Number;
-		public var value3:Number;
-		public var value4:Number;
+		private  _ptype:PerkType;
+		public  value1:number;
+		public  value2:number;
+		public  value3:number;
+		public  value4:number;
 		//MEMBER FUNCTIONS
 
 
-		public function get ptype():PerkType
+		public  get ptype():PerkType
 		{
 			return _ptype;
 		}
 
-		public function get perkName():String
+		public  get perkName():string
 		{
 			return _ptype.name;
 		}
 
-		public function get perkDesc():String
+		public  get perkDesc():string
 		{
 			return _ptype.desc(this);
 		}
 
-		public function get perkLongDesc():String
+		public  get perkLongDesc():string
 		{
 			return _ptype.longDesc;
 		}
 	}
-}

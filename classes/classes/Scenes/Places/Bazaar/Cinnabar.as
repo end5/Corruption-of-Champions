@@ -1,5 +1,5 @@
-﻿package classes.Scenes.Places.Bazaar{
-	import classes.GlobalFlags.kFLAGS;
+ 
+	 
 
 //Cinnabar - Female rat-morph, size queen. Likes bizarre
 //stuff and extreme pen, VERY STRETCHY, & Hammerspace 
@@ -15,10 +15,10 @@
 //Lips - black
 //Fur – rust red/'ruddy'
 //Tail – Barely touches the ground, but is prehensile and capable of being lengthened at will.
-public class Cinnabar extends BazaarAbstractContent {
+export class Cinnabar extends BazaarAbstractContent {
 	
 //Appearnace
-public function cinnabarAppearance(output:Boolean = true):Function {
+public  cinnabarAppearance(output:boolean = true):() => void {
 	//Send back 0 for 'closed'.
 	if(model.time.hours < 15 || model.time.hours > 20) return null;
 	if(output) {
@@ -30,7 +30,7 @@ public function cinnabarAppearance(output:Boolean = true):Function {
 	return cinnabarGreeting;
 }
 //Approach 
-private function cinnabarGreeting():void {
+private  cinnabarGreeting():void {
 	outputText("", true);
 	spriteSelect(91);
 	//1st Time:
@@ -92,7 +92,7 @@ private function cinnabarGreeting():void {
 
 
 //[Buy an Hour]
-private function cinnabarNonHugeDickings():void {
+private  cinnabarNonHugeDickings():void {
 	flags[kFLAGS.CINNABAR_HOUSE_VISITED]++;
 	flags[kFLAGS.CINNABAR_NUMBER_TIMES_FUCKED]++;
 	flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
@@ -204,12 +204,12 @@ private function cinnabarNonHugeDickings():void {
 }
 	
 //[FUCK] – tracks if last fuck was huger + corrupteded version
-private function cinnabarGetsFUKKKKED():void {
+private  cinnabarGetsFUKKKKED():void {
 	flags[kFLAGS.CINNABAR_HOUSE_VISITED]++;
 	flags[kFLAGS.CINNABAR_NUMBER_TIMES_FUCKED]++;
 	flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
 	outputText("", true);
-	var x:Number = player.biggestCockIndex();
+	var x:number = player.biggestCockIndex();
 	spriteSelect(91);
 	
 	outputText("As soon as you give your assent, Cinnabar's hands are flying through your " + player.armorName + " to clutch and grab at your " + cockDescript(x) + ", squeezing the hefty member with her soft pads.  She coos happily, grinning wide enough to expose her teeth while your dick fills up in her palm, gradually spreading her fingers wide.  The turgid, burgeoning mass rubs against your " + player.armorName + " near-painfully before she stops, and Cinnabar licks her lips appreciatively, knowing you're not even the whole way hard.\n\n", false);
@@ -270,9 +270,9 @@ private function cinnabarGetsFUKKKKED():void {
 }
 	
 //(Huger and Corrupteder) (75+ corr)
-private function fuckCinnabarHugerAndCorruptedEr():void {
+private  fuckCinnabarHugerAndCorruptedEr():void {
 	flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 1;
-	var x:Number = player.biggestCockIndex();
+	var x:number = player.biggestCockIndex();
 
 	outputText("", true);
 	spriteSelect(91);
@@ -336,9 +336,9 @@ private function fuckCinnabarHugerAndCorruptedEr():void {
 }
 
 //(HUGER)
-private function cinnabarHuger():void {
+private  cinnabarHuger():void {
 	flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
-	var x:Number = player.biggestCockIndex();
+	var x:number = player.biggestCockIndex();
 
 	outputText("", true);
 	spriteSelect(91);
@@ -387,9 +387,9 @@ private function cinnabarHuger():void {
 }
 
 //(HUGE)
-private function cinnabarHuge():void {
+private  cinnabarHuge():void {
 	flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
-	var x:Number = player.biggestCockIndex();
+	var x:number = player.biggestCockIndex();
 
 	outputText("", true);
 	spriteSelect(91);
@@ -442,16 +442,16 @@ private function cinnabarHuge():void {
 //setting two mirrors on the bed before she sits on them and fellates one on the wall.
 //surprise – at the end she moves the portal when you pull back and makes you cum in her
 //and in your own ass.
-private function cinnabarMultiCockPortalFuckFest():void {
+private  cinnabarMultiCockPortalFuckFest():void {
 	flags[kFLAGS.CINNABAR_HOUSE_VISITED]++;
 	flags[kFLAGS.CINNABAR_NUMBER_TIMES_FUCKED]++;
 	flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
 	outputText("", true);
 	spriteSelect(91);
 	//x pussy, y butt, z face
-	var x:Number = player.biggestCockIndex();
-	var y:Number = player.biggestCockIndex2();
-	var z:Number = player.biggestCockIndex3();
+	var x:number = player.biggestCockIndex();
+	var y:number = player.biggestCockIndex2();
+	var z:number = player.biggestCockIndex3();
 	outputText("Cinnabar's hands fly through your " + player.armorName + ", diving through your undergarments to squeeze " + sMultiCockDesc() + ".  ", false);
 	if(player.lust >= 70) outputText("She groans when she feels the full, turgid masses in her fingers, shivering as her padded finger-tips become slippery with your dripping pre-cum.", false);
 	else outputText("She sighs blissfully when she feels the size and number of your half-hard members, squeezing them with gentle pressure until they start to expand, engulfing her hand.", false);
@@ -533,6 +533,5 @@ private function cinnabarMultiCockPortalFuckFest():void {
 	player.orgasm();
 	dynStats("sen", -6);
 	doNext(camp.returnToCampUseOneHour);
-}
 }
 }

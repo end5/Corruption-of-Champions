@@ -1,6 +1,6 @@
-﻿package classes.Scenes.Places.Bazaar {
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+  
+	 
+	 
 
 //  TIMES_IN_BENOITS:int = 562;
 //  BENOIT_AFFECTION:int = 563;
@@ -19,21 +19,21 @@
 //  BENOIT_TESTED_BASILISK_WOMB:int = 577;
 //  BENOIT_GENERIC_EGGS:int = 632;
 //(Shop open between 9:00 and 17:00)
-public class Benoit extends BazaarAbstractContent {
+export class Benoit extends BazaarAbstractContent {
 
-	public function Benoit()
+	public  constructor()
 	{
 	}
 
 //Fen, you'll need a function to determine gendered pronouns and version of name for this character. I've formatted all the eligible places I found in the order of [male/female]. -Z
-public function benoitMF(stringM:String,stringF:String):String {
+public  benoitMF(stringM:string,stringF:string):string {
 	if (flags[kFLAGS.BENOIT_STATUS] == 1 || flags[kFLAGS.BENOIT_STATUS] == 2) return stringF;
 	return stringM;
 }
-private function benoitLover():Boolean {
+private  benoitLover():boolean {
 	return flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] >= 2;
 }
-public function benoitAffection(changes:Number = 0):Number {
+public  benoitAffection(changes:number = 0):number {
 	if(changes != 0) {
 		flags[kFLAGS.BENOIT_AFFECTION] += changes;
 		if(flags[kFLAGS.BENOIT_AFFECTION] > 100) flags[kFLAGS.BENOIT_AFFECTION] = 100;
@@ -42,7 +42,7 @@ public function benoitAffection(changes:Number = 0):Number {
 	return flags[kFLAGS.BENOIT_AFFECTION];
 }
 
-private function benoitKnocksUpPCCheck():void {
+private  benoitKnocksUpPCCheck():void {
 	//Convert old basi's to real basi's!
 	if (player.pregnancyType == PregnancyStore.PREGNANCY_BASILISK && player.findPerk(PerkLib.BasiliskWomb) >= 0) player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, player.pregnancyIncubation);
 	//Knock up chances:
@@ -62,49 +62,49 @@ private function benoitKnocksUpPCCheck():void {
 /**
 	Return the "heaviness" of the pregnancy
 */
-public function benoitPreggers():Boolean
+public  benoitPreggers():boolean
 {
 	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] > 0) return true;
 	return false;
 }
 
-public function benoitRegularPreggers():Boolean
+public  benoitRegularPreggers():boolean
 {
 	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 1 && flags[kFLAGS.FEMOIT_EGGS] <= 4) return true;
 	return false;
 }
 
-public function benoitHeavyPreggers():Boolean
+public  benoitHeavyPreggers():boolean
 {
 	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 5 && flags[kFLAGS.FEMOIT_EGGS] <= 8) return true;
 	return false;
 }
 
-public function benoitVeryHeavyPreggers():Boolean
+public  benoitVeryHeavyPreggers():boolean
 {
 	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 9 && flags[kFLAGS.FEMOIT_EGGS] <= 12) return true;
 	return false;
 }
 
-public function benoitExtremePreggers():Boolean
+public  benoitExtremePreggers():boolean
 {
 	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 13) return true;
 	return false;
 }
 
-public function benoitInClutch():Boolean
+public  benoitInClutch():boolean
 {
 	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	
 	// Benoit enters "clutch" every 21 days, for 7 days
-	var startDay:int = flags[kFLAGS.FEMOIT_NEXTDAY_EVENT];
-	var currDay:int = this.getGame().model.time.days;
-	var diffDays:int = (currDay - startDay) % 28;
+	var startDay:number = flags[kFLAGS.FEMOIT_NEXTDAY_EVENT];
+	var currDay:number = this.getGame().model.time.days;
+	var diffDays:number = (currDay - startDay) % 28;
 
 	if (diffDays >= 21) return true;
 	return false;
@@ -124,25 +124,25 @@ Every 200mls of cum the PC produces above the first 200mls equals 1 extra egg fe
 9-12 Eggs equates to a Very Heavy Pregnancy.
 13-16 Eggs equates to an Extremely Heavy Pregnancy.
 */
-public function benoitKnockUp():Boolean
+public  benoitKnockUp():boolean
 {
 	if (benoitPreggers()) return false;
 	if (!benoitInClutch()) return false;
 
 	// Calc the number of eggs
-	var cumQ:int = player.cumQ();
+	var cumQ:number = player.cumQ();
 	
-	var bounty:Boolean = (player.findPerk(PerkLib.ElvenBounty) >= 0) ? true : false;
-	var stud:Boolean = (player.findPerk(PerkLib.MaraesGiftStud) >= 0) ? true : false;
-	var alpha:Boolean = (player.findPerk(PerkLib.FerasBoonAlpha) >= 0) ? true : false;
+	var bounty:boolean = (player.findPerk(PerkLib.ElvenBounty) >= 0) ? true : false;
+	var stud:boolean = (player.findPerk(PerkLib.MaraesGiftStud) >= 0) ? true : false;
+	var alpha:boolean = (player.findPerk(PerkLib.FerasBoonAlpha) >= 0) ? true : false;
 
-	var eggMod:int = 0;
+	var eggMod:number = 0;
 	if (bounty) eggMod += 1;
 	if (stud) eggMod += 2;
 	if (alpha) eggMod += 1;
 
-	var numEggs:int = cumQ / 200;
-	var minEggs:int = 1 + eggMod;
+	var numEggs:number = cumQ / 200;
+	var minEggs:number = 1 + eggMod;
 	if (numEggs > 12) numEggs = 12;
 	if (numEggs < minEggs) numEggs = minEggs;
 
@@ -154,7 +154,7 @@ public function benoitKnockUp():Boolean
 	return true;
 }
 
-public function clearBenoitPreggers():void
+public  clearBenoitPreggers():void
 {
 	if (flags[kFLAGS.FEMOIT_EGGS] != 0)
 	{
@@ -166,11 +166,11 @@ public function clearBenoitPreggers():void
 }
 
 //Introduction Scenes
-public function benoitIntro():void {
+public  benoitIntro():void {
 	clearOutput();
-	var suggestText:String = "";
-	var suggest:Function = null;
-	var womb:Function = null;
+	var suggestText:string = "";
+	var suggest:() => void = null;
+	var womb:() => void = null;
 	if(flags[kFLAGS.TIMES_IN_BENOITS] == 0) {
 		outputText("You cautiously approach the stall.  The shadow thrown by its large, overhanging canopy makes it quite difficult to see into its interior, and getting inside is made even more hazardous by the sheer volume of objects which clutter the area around it and hang out of the shelves arranged along its wooden walls.  Everything Mareth has ever created or distilled seems to be here - or at least, everything Mareth has ever thrown out.  Pots, pans, ugly crockery, shelves stuffed with clothing, a spice rack bulging with all manner of suspect-looking potions... you imagine you could probably find anything you'd ever want in here - or something closely resembling it - if you looked hard enough.");
 		outputText("\n\n\"<i>Allo?</i>\" says a raspy voice from further in the gloom.  \"<i>'Oo is zair?</i>\"  You can make out a counter constructed from crates, and a tall, thin shape behind it - a lizan, by the looks of his build and smooth scales.  Something about his shape makes you feel uneasy, though... you shift further in to take a closer look at the stall owner.  He's seated in the only area of his shop not taken up by junk, right next to a heap of rugs and robes, and has a fez perched on top of his blunt head.  It's when he turns his grey slit eyes to you that you realize what is putting you on edge - it's a basilisk!  Panic grips you as you try to wrench your eyes away... which you do, easily.  Curious despite yourself, you look back tentatively.  The creature's eyes seem oddly milky, and they seem to be staring beyond you.  Realisation takes hold when you see the white stick balanced carefully on the counter's side.");
@@ -286,7 +286,7 @@ public function benoitIntro():void {
 	
 	if(flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] == 1 && player.findPerk(PerkLib.BasiliskWomb) < 0 && flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] == 0 && flags[kFLAGS.BENOIT_STATUS] == 0) womb = tryToConvertToBassyWomb;
 
-	var fem:Function;
+	var fem:() => void;
 
 	if (flags[kFLAGS.FEMOIT_UNLOCKED] == 1 && flags[kFLAGS.BENOIT_STATUS] == 0)
 	{
@@ -301,16 +301,16 @@ public function benoitIntro():void {
 }
 
 //Buy or Sell First Time, only if prelover/prefem: You ask him what the deal is with his shop.
-private function buyOrSellExplanationFirstTime():void {
+private  buyOrSellExplanationFirstTime():void {
 	flags[kFLAGS.BENOIT_EXPLAINED_SHOP]++;
 	outputText("\"<i>If you can see something you want in Benoit's Spectacular Salvage Shop, and you can walk away with it, it's yours,</i>\" replies Benoit, theatrically sweeping his claw to take in the entirety of his stall but almost knocking over a birdcage.  \"<i>Assuming you can pay whatever I've decided it's worth, of course.  If you want to unload your garbage 'ere?  Zis is also fine.  I cannot pay what ze fat cats in Tel'Adre can, though.  Check back every day; ze Spectacular Salvage Shop always 'as new zings to sell.</i>\"");
 }
 
-public function benoitsBuyMenu():void {
+public  benoitsBuyMenu():void {
 	clearOutput();
 	if(flags[kFLAGS.BENOIT_1] == 0) updateBenoitInventory();
 	if (flags[kFLAGS.BENOIT_EXPLAINED_SHOP] == 0) buyOrSellExplanationFirstTime();
-	var buyMod:Number = 2;
+	var buyMod:number = 2;
 	
 	if (flags[kFLAGS.BENOIT_STATUS] == 1) 
 	{
@@ -331,18 +331,18 @@ public function benoitsBuyMenu():void {
 			"", null, "Back", benoitIntro);
 }
 
-private function benoitSellMenu():void {
+private  benoitSellMenu():void {
 	clearOutput();
 	if (flags[kFLAGS.BENOIT_EXPLAINED_SHOP] == 0)
 		buyOrSellExplanationFirstTime();
 	else
 		outputText("\"<i>Let us feel what you are trying to palm off upon me zis time, zen,</i>\" sighs Benoit" + benoitMF("", "e") + ", sitting down and opening " + benoitMF("his","her") + " hand to you.");
-	var sellMod:int = 3;
+	var sellMod:number = 3;
 	if (flags[kFLAGS.BENOIT_EGGS] > 0 || flags[kFLAGS.BENOIT_STATUS] != 0) sellMod = 2;
 	outputText("\n\n<b><u>Benoit" + benoitMF("", "e") + "'s Estimates</u></b>");
 	menu();
-	var totalItems:int = 0;
-	for (var slot:int = 0; slot < 5; slot++) {
+	var totalItems:number = 0;
+	for (const slot = 0; slot < 5; slot++) {
 		if (player.itemSlots[slot].quantity > 0 && int(player.itemSlots[slot].itype.value / sellMod) >= 1) {
 			outputText("\n" + int(player.itemSlots[slot].itype.value / sellMod) + " gems for " + player.itemSlots[slot].itype.longName + ".");
 			addButton(slot, (player.itemSlots[slot].itype.shortName + " x" + player.itemSlots[slot].quantity), createCallBackFunction2(benoitSellTransact, slot, sellMod));
@@ -353,10 +353,10 @@ private function benoitSellMenu():void {
 	addButton(9, "Back", benoitIntro);
 }
 
-private function benoitTransactBuy(slot:int = 1):void {
+private  benoitTransactBuy(slot:number = 1):void {
 	clearOutput();
 	var itype:ItemType;
-	var buyMod:Number = 2;
+	var buyMod:number = 2;
 	
 	if (flags[kFLAGS.BENOIT_STATUS] == 1) buyMod = 1.66;
 	
@@ -378,7 +378,7 @@ private function benoitTransactBuy(slot:int = 1):void {
 	inventory.takeItem(itype, benoitsBuyMenu);
 }
 
-private function benoitSellTransact(slot:int, sellMod:int):void {
+private  benoitSellTransact(slot:number, sellMod:number):void {
 	clearOutput();
 	if (benoitLover()) 
 		outputText("Benoit" + benoitMF("", "e") + " gives your object the briefest of goings-over with " + benoitMF("his", "her") + " fingers before stowing it away and handing over your gem reward with a trusting smile.");
@@ -391,10 +391,10 @@ private function benoitSellTransact(slot:int, sellMod:int):void {
 	doNext(benoitSellMenu);
 }
 
-private function benoitSellAllTransact(totalItems:int, sellMod:int):void {
+private  benoitSellAllTransact(totalItems:number, sellMod:number):void {
 	clearOutput();
-	var itemValue:int = 0;
-	for (var slot:int = 0; slot < 5; slot++) {
+	var itemValue:number = 0;
+	for (const slot = 0; slot < 5; slot++) {
 		if (player.itemSlots[slot].quantity > 0 && int(player.itemSlots[slot].itype.value / sellMod) >= 1) {
 			itemValue += player.itemSlots[slot].quantity * int(player.itemSlots[slot].itype.value / sellMod);
 			player.itemSlots[slot].quantity = 0;
@@ -411,7 +411,7 @@ private function benoitSellAllTransact(totalItems:int, sellMod:int):void {
 }
 
 //All slots are reset each day.  Benoit buys items at 66% the rate Oswald does.  
-public function updateBenoitInventory():void {
+public  updateBenoitInventory():void {
 	temp = rand(8);
 	//Slot 1 Any one of the following: Incubus Draft, Minotaur Blood, Minotaur Cum, Equinuum, Black Pepper, Vitalitea, Scholar's Tea, Double Pepper
 	if(temp == 0) flags[kFLAGS.BENOIT_1] = consumables.INCUBID.id;
@@ -468,7 +468,7 @@ public function updateBenoitInventory():void {
 
 
 //Talk
-private function talkToBenoit():void {
+private  talkToBenoit():void {
 	clearOutput();
 
 	//(+5 Affection per day if used)
@@ -535,10 +535,10 @@ private function talkToBenoit():void {
 	}
 	//Subsequent Talk
 	else {
-		var choice:int;
+		var choice:number;
 		
 		/* BUILD ZE CHOICES!*/
-		var choices:Array = [0,1,2,3,4,5,6,7,8];
+		var choices:any[] = [0,1,2,3,4,5,6,7,8];
 		//option 9 is non-lover non-fem only
 		if(!benoitLover() && benoitMF("he","she") == "he") choices[choices.length] = 9;
 		//Special male benoit fucker only talks
@@ -693,7 +693,7 @@ private function talkToBenoit():void {
 //Male Benoit x Female PC Interactions
 //First talk
 //Requires: PC has oviposition/ovi-elixered/in heat, Affection 35+
-private function benoitAndFemPCTalkAboutEggings():void {
+private  benoitAndFemPCTalkAboutEggings():void {
 	clearOutput();
 	flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] = 1;
 	outputText("Benoit seems very on edge today.  He paces up and down, returns your greeting with a stiff nod, and fiddles endlessly with the stock in reach of his counter as you search for a topic.  You ask if there's something wrong.");
@@ -704,7 +704,7 @@ private function benoitAndFemPCTalkAboutEggings():void {
 }
 
 //Suggest: 
-private function eggySuggest():void {
+private  eggySuggest():void {
 	clearOutput();
 	if(flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] == .5) {
 		suggestSexAfterBasiWombed(true);
@@ -836,7 +836,7 @@ private function eggySuggest():void {
 	
 }
 
-private function takeBenoitsContraceptives():void {
+private  takeBenoitsContraceptives():void {
 	clearOutput();
 	outputText("You gladly accept the herbal contraceptive and push it into your mouth, enjoying the pleasantly sharp, citrus flavour.");
 	//  \"<i>I can sell you ze stuff too,</i>\" he says, twiddling his claws.  \"<i>If you want.</i>\"
@@ -844,7 +844,7 @@ private function takeBenoitsContraceptives():void {
 }
 
 //No: 
-private function dontTakeEggtraceptives():void {
+private  dontTakeEggtraceptives():void {
 	clearOutput();
 	outputText("You smile and say you don't mind carrying and laying a few basilisk eggs. \"<i>You... you don't?</i>\" he says hesitantly.  He faces you and for a moment looks like he's going to say something else; but then he shakes his head and puts the bag back into the drawer.");
 	//\"<i>Well...if you are sure.  I can sell you ze stuff if you ever change your mind.</i>\"
@@ -857,7 +857,7 @@ private function dontTakeEggtraceptives():void {
 
 
 //Subsequent visit to the shop: 
-private function firstTimeAfterBoningEncounterBenoit():void {
+private  firstTimeAfterBoningEncounterBenoit():void {
 	clearOutput();
 	//Set a flag here to make sure it only happens once.
 	flags[kFLAGS.BENOIT_POST_FIRSTFUCK_TALK] = 1;
@@ -870,7 +870,7 @@ private function firstTimeAfterBoningEncounterBenoit():void {
 }
 
 //Let him(not for horses): 
-private function repeatSexWithBenoitLetHim():void {
+private  repeatSexWithBenoitLetHim():void {
 	clearOutput();
 	if(player.isTaur()) {
 		outputText("\n\nFor the moment you don't do anything; you simply stand back and let his hands slowly move across your frame.  One of his hands comes to rest upon your [nipples]; as he gently teases and kneads the soft, sensitive flesh his other hand drift downwards, across your belly, around your waist and down your velvety back.  Although he is familiar with your frame by now Benoit never seems to stop being enthralled by your body; there is an unconscious frown of concentration on his face as his smooth hands move across your warm skin, as if he were mapping you in his mind's eye.");
@@ -928,7 +928,7 @@ private function repeatSexWithBenoitLetHim():void {
 }
 
 //Take charge: 
-private function repeatBenoitFuckTakeCharge():void {
+private  repeatBenoitFuckTakeCharge():void {
 	clearOutput();
 	if(player.isTaur()) {
 		outputText("\n\nFor the moment you don't do anything; you simply stand back and let his hands slowly move across your frame.  One of his hands comes to rest upon your [nipple]; as he gently teases and kneads the soft, sensitive flesh his other hand drift downwards, across your belly, then slowly back along your vast equine frame.  Although he is familiar with your frame by now Benoit never seems to stop being enthralled by your body; there is an unconscious frown of concentration on his face as his smooth hands move across your warm skin, as if he were mapping you in his mind's eye.");
@@ -1012,7 +1012,7 @@ private function repeatBenoitFuckTakeCharge():void {
 }
 
 //Bas. Womb (not for horses)
-private function tryToConvertToBassyWomb():void {
+private  tryToConvertToBassyWomb():void {
 	clearOutput();
 	//[Ingredients not in inventory: ]
 	//A double dose of ovi-elixer, a bottle of reptilum, goblin ale and some basilisk blood would probably do...
@@ -1063,7 +1063,7 @@ private function tryToConvertToBassyWomb():void {
 }	
 
 
-private function suggestSexAfterBasiWombed(later:Boolean = true):void {
+private  suggestSexAfterBasiWombed(later:boolean = true):void {
 	clearOutput();
 	//Subsequent \"<i>Suggest</i>\" if initial sex option not taken: 
 	if(later) {
@@ -1129,7 +1129,7 @@ private function suggestSexAfterBasiWombed(later:Boolean = true):void {
 //PC laying
 //happens only at night, after all other night events
 //PC lays 2 eggs per 10 points of Fertility they have
-public function popOutBenoitEggs():void {
+public  popOutBenoitEggs():void {
 	if(player.vaginas.length == 0) {
 		outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n", false);
 		player.createVagina();
@@ -1184,7 +1184,7 @@ public function popOutBenoitEggs():void {
 
 //Opening Talk
 //Requires: Affection 40+, Have already talked to Benoit at least once, have not had sex with Benoit
-public function femoitInitialTalk():void
+public  femoitInitialTalk():void
 {
 	clearOutput();
 
@@ -1221,7 +1221,7 @@ public function femoitInitialTalk():void
 
 // Feminise
 
-public function benoitFeminise():void
+public  benoitFeminise():void
 {
 	clearOutput();
 
@@ -1261,7 +1261,7 @@ public function benoitFeminise():void
 	}
 }
 
-public function femoitNextDayEvent():void
+public  femoitNextDayEvent():void
 {
 	clearOutput();
 
@@ -1283,7 +1283,7 @@ public function femoitNextDayEvent():void
 
 //Benoite Interactions
 
-public function femoitFirstTimeNo():void
+public  femoitFirstTimeNo():void
 {
 	clearOutput();
 	outputText("You let her down as kindly as you can.");
@@ -1293,7 +1293,7 @@ public function femoitFirstTimeNo():void
 	doNext(camp.returnToCampUseOneHour);
 }
 
-public function femoitFirstTimeYes():void
+public  femoitFirstTimeYes():void
 {
 	flags[kFLAGS.TIMES_FUCKED_FEMOIT]++;
 
@@ -1349,7 +1349,7 @@ public function femoitFirstTimeYes():void
 
 // Subsequent Sex
 // Requires: Benoite not pregnant
-public function femoitSexIntro():void
+public  femoitSexIntro():void
 {
 	clearOutput();
 	outputText("Once again, you take Benoite's hand and lead her into the back room.  Your free hand roams underneath her apron as you carefully pick out a path through the junk and Benoite is swiftly in on the game too; her fingers slide downwards to pinch and fondle at her favorite parts of you.  By the time you make it into the storage space you are practically falling over each other, laughing as you fumble off each other's clothes.");
@@ -1483,7 +1483,7 @@ public function femoitSexIntro():void
 
 //Benoite Gives Birth
 
-public function femoitBirths():void
+public  femoitBirths():void
 {
 	clearOutput();
 	outputText("As you enter Benoite's stall, you hear the sounds of gasps of pain from the backroom, mingling with the sounds of stock being knocked around. You race through and find Benoite, completely naked, leaning against a table and groaning in anguish, her tail slashing wildly through the air behind her.  \"<i>[name]!  It.. it iz good zat you are here.  Ze eggs!  Zey come!</i>\"");
@@ -1574,5 +1574,5 @@ public function femoitBirths():void
 		doNext(camp.returnToCampUseOneHour);
 	}
 }
-}
+
 

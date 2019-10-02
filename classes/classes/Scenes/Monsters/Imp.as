@@ -1,11 +1,11 @@
-﻿package classes.Scenes.Monsters
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class Imp extends Monster
+	 
+	 
+
+	export class Imp extends Monster
 	{
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (findStatusAffect(StatusAffects.KitsuneFight) >= 0) {
 				game.forest.kitsuneScene.winKitsuneImpFight();
@@ -14,7 +14,7 @@
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (findStatusAffect(StatusAffects.KitsuneFight) >= 0) {
 				game.forest.kitsuneScene.loseKitsuneImpFight();
@@ -27,7 +27,7 @@
 			}
 		}
 		
-		protected function lustMagicAttack():void {
+		protected  lustMagicAttack():void {
 			outputText("You see " + a + short + " make sudden arcane gestures at you!\n\n");
 			game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
 			if (player.lust < 30) outputText("You feel strangely warm.  ");
@@ -68,7 +68,7 @@
 			else doNext(game.playerMenu);
 		}
 		
-		public function Imp(noInit:Boolean=false)
+		public  constructor(noInit:boolean=false)
 		{
 			if (noInit) return;
 			trace("Imp Constructor!");
@@ -109,4 +109,3 @@
 
 	}
 
-}

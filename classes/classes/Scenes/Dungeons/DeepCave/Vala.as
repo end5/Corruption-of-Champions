@@ -1,15 +1,15 @@
-package classes.Scenes.Dungeons.DeepCave
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class Vala extends Monster
+	 
+	 
+	 
+
+	export class Vala extends Monster
 	{
 		//Vala AI
 
 		//Blood magic?
-		public function valaSpecial1():void {
+		public  valaSpecial1():void {
 			outputText("Vala dabs at one of her wounds and swoons.  Is she actually getting off from the wounds?  Damn she's damaged!  Vala licks the blood from her fingers, winks, and blows pink mist from her mouth.", false);
 			//Lightly wounded.
 			if(HPRatio() > .7) {
@@ -27,7 +27,7 @@ package classes.Scenes.Dungeons.DeepCave
 			combatRoundOver();
 		}
 		//Milk magic
-		public function valaSpecial2():void {
+		public  valaSpecial2():void {
 			outputText("With a look of ecstasy on her face, Vala throws back her head and squeezes her pillowy chest with her hands, firing gouts of thick faerie milk from her over-sized bosom!  You try to dodge, but she's squirting so much it's impossible to dodge it all, and in no time you're drenched with a thick coating of Vala's milk.", false);
 			outputText("  She releases her breasts, shaking them back and forth for your benefit, and flutters her wings, blowing shiny, glitter-like flakes at you.  They stick to the milk on your skin, leaving you coated in milk and faerie-dust.", false);
 			outputText("\nVala says, \"<i>Now you can be sexy like Vala!</i>\"\n", false);
@@ -44,7 +44,7 @@ package classes.Scenes.Dungeons.DeepCave
 			combatRoundOver();
 		}
 		//Masturbation
-		public function valaMasturbate():void {
+		public  valaMasturbate():void {
 			outputText("The mind-fucked faerie spreads her alabaster thighs and dips a finger into the glistening slit between her legs, sliding in and out, only pausing to circle her clit.  She brazenly masturbates, putting on quite the show.  Vala slides another two fingers inside herself and finger-fucks herself hard, moaning and panting lewdly.  Then she pulls them out and asks, \"<i>Did you like that?  Will you fuck Vala now?</i>\"", false);
 			game.dynStats("lus", 4 + player.cor/10);
 			combatRoundOver();
@@ -52,7 +52,7 @@ package classes.Scenes.Dungeons.DeepCave
 
 
 		//[Fight dialog]
-		public function valaCombatDialogue():void {
+		public  valaCombatDialogue():void {
 			if(findStatusAffect(StatusAffects.Vala) < 0) {
 				outputText("\"<i>Sluts needs to service the masters!</i>\" the fairy wails, flying high. \"<i>If they are not pleased, Bitch doesn't get any cum!</i>\"", false);
 				createStatusAffect(StatusAffects.Vala,0,0,0,0);
@@ -68,7 +68,7 @@ package classes.Scenes.Dungeons.DeepCave
 			}
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			//VALA SPEAKS!
 			valaCombatDialogue();
@@ -82,12 +82,12 @@ package classes.Scenes.Dungeons.DeepCave
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.fightValaVictory();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nYour foe doesn't seem put off enough to leave...");
@@ -97,7 +97,7 @@ package classes.Scenes.Dungeons.DeepCave
 			}
 		}
 
-		public function Vala()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Vala";
@@ -121,10 +121,10 @@ package classes.Scenes.Dungeons.DeepCave
 			this.weaponName = "fists";
 			this.weaponVerb="caresses";
 			this.armorName = "skin";
-			var lustVuln:Number = .5;
+			var lustVuln:number = .5;
 			if(game.flags[kFLAGS.TIMES_PC_DEFEATED_VALA] > 0) lustVuln += .25;
 			if(game.flags[kFLAGS.TIMES_PC_DEFEATED_VALA] > 2) lustVuln += .5;
-			var lust:Number = 30 + game.flags[kFLAGS.TIMES_PC_DEFEATED_VALA] * 10;
+			var lust:number = 30 + game.flags[kFLAGS.TIMES_PC_DEFEATED_VALA] * 10;
 			if(lust > 80) lust = 80;
 			this.bonusHP = 350;
 			this.lust = lust;
@@ -138,7 +138,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.special1 = special1;
 			this.special2 = special2;
 			this.special3 = special3;
-			var wingDesc:String = "shimmering wings";
+			var wingDesc:string = "shimmering wings";
 			if(flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(consumables.NUMBROX);
 			else this.drop = NO_DROP;
 			this.wingType = WING_TYPE_BEE_LIKE_LARGE;
@@ -148,4 +148,3 @@ package classes.Scenes.Dungeons.DeepCave
 		
 	}
 
-}

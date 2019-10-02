@@ -1,13 +1,13 @@
-package classes.Scenes.Camp
-{
-	import classes.*;
+ 
 
-	public class ImpGang extends Monster
+	 
+
+	export class ImpGang extends Monster
 	{
-		override public function get capitalA():String {
+		 public  get capitalA():string {
 			return "gang of imps";
 		}
-		public function ImpGang()
+		public  constructor()
 		{
 			this.removeStatuses();
 			this.removePerks();
@@ -28,4 +28,3 @@ package classes.Scenes.Camp
 		
 	}
 
-}

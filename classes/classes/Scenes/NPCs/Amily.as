@@ -1,15 +1,15 @@
-﻿package classes.Scenes.NPCs
-{
-	import classes.*;
+ 
+
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class Amily extends Monster 
+	export class Amily extends Monster 
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if(findStatusAffect(StatusAffects.Concentration) < 0 && rand(4) == 0) amilyConcentration();
 			else if(rand(3) == 0) amilyDartGo();
@@ -19,9 +19,9 @@
 
 		//COMBAT AMILY STUFF
 		//(Has regular attack)
-		public function amilyAttack():void {
-			var dodged:Number = 0;
-			var damage:Number;
+		public  amilyAttack():void {
+			var dodged:number = 0;
+			var damage:number;
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
@@ -97,9 +97,9 @@
 
 		//(Special Attacks)
 		//-Double Attack: Same as a normal attack, but hits twice.
-		public function amilyDoubleAttack():void {
-			var dodged:Number = 0;
-			var damage:Number = 0;
+		public  amilyDoubleAttack():void {
+			var dodged:number = 0;
+			var damage:number = 0;
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
@@ -147,9 +147,9 @@
 		}
 
 		//-Poison Dart: Deals speed and str damage to the PC. (Not constant)
-		private function amilyDartGo():void
+		private  amilyDartGo():void
 		{
-			var dodged:Number = 0;
+			var dodged:number = 0;
 			//Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack from her dartgun!\n", false);
@@ -200,7 +200,7 @@
 				outputText("Amily dashes at you and swipes her knife at you, surprisingly slowly.  You easily dodge the attack; but it was a feint - her other hand tries to strike at you with a poisoned dart. However, she only manages to scratch you, only causing your muscles to grow slightly numb.", false);
 				//Set status
 				if (player.findStatusAffect(StatusAffects.AmilyVenom) < 0) player.createStatusAffect(StatusAffects.AmilyVenom, 0, 0, 0, 0);
-				var poison:Number = 2 + rand(5);
+				var poison:number = 2 + rand(5);
 				while (poison > 0) {
 					poison--;
 					if (player.str >= 2) {
@@ -228,7 +228,7 @@
 		}
 
 		//Concentrate: always avoids the next attack. Can be disrupted by tease/seduce.
-		private function amilyConcentration():void {
+		private  amilyConcentration():void {
 			outputText("Amily takes a deep breath and attempts to concentrate on your movements.", false);
 			createStatusAffect(StatusAffects.Concentration,0,0,0,0);
 			game.combatRoundOver();
@@ -236,7 +236,7 @@
 
 		//(if PC uses tease/seduce after this)
 		//Deals big lust increase, despite her resistance.
-		override public function teased(lustDelta:Number):void
+		 public  teased(lustDelta:number):void
 		{
 			if(findStatusAffect(StatusAffects.Concentration) >= 0) {
 				outputText("Amily flushes hotly; her concentration only makes her pay more attention to your parts!", false);
@@ -248,12 +248,12 @@
 			}
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.amilyScene.conquerThatMouseBitch();
 		}
 
-		public function Amily()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Amily";
@@ -291,4 +291,3 @@
 		
 	}
 
-}

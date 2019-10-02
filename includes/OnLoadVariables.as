@@ -5,7 +5,7 @@
 // import classes.creature;
 
 //Used when save/loading
-public var notes:String = "";
+export var notes:string = "";
 // nameBox.maxChars = 54;
 
 //Images for image pack!
@@ -13,7 +13,7 @@ public var notes:String = "";
 //var images = new Array();
 
 //System time
-public var date:Date = new Date();
+export var date:Date = new Date();
 
 //Used to set what each action buttons displays and does. I don't know why it is initialized here.
 //var args:Array = new Array();
@@ -26,16 +26,16 @@ public var date:Date = new Date();
 
 //dungeoneering variables
 //Setting dungeonLoc = 0 handles this:	public var inDungeon:Boolean = false;
-public var dungeonLoc:int = 0;
+export var dungeonLoc:number = 0;
 
 // To save shitting up a lot of code...
-public var inRoomedDungeon:Boolean = false;
-public var inRoomedDungeonResume:Function = null;
+export var inRoomedDungeon:boolean = false;
+export var inRoomedDungeonResume:() => void = null;
 
 //Used to restrict random drops from overlapping uniques
-public var plotFight:Boolean = false;
-public var timeQ:Number = 0;
-public var campQ:Boolean = false;
+export var plotFight:boolean = false;
+export var timeQ:number = 0;
+export var campQ:boolean = false;
 
 //Possibly redundant, not used anywhere else.
 //Input vars

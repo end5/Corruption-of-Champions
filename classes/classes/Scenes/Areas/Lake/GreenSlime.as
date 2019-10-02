@@ -1,13 +1,13 @@
-﻿package classes.Scenes.Areas.Lake
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class GreenSlime extends Monster
+	 
+	 
+
+	export class GreenSlime extends Monster
 	{
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.", true);
 			//Boobfeed.
@@ -31,7 +31,7 @@
 			else game.cleanupAfterCombat();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nThe slime doesn't even seem to notice.\n\n");
@@ -39,19 +39,19 @@
 			doNext(game.lake.greenSlimeScene.slimeLoss);
 		}
 		
-		private function lustAttack():void {
+		private  lustAttack():void {
 			outputText("The creature surges forward slowly with a swing that you easily manage to avoid.  You notice traces of green liquid spurt from the creature as it does, forming a thin mist that makes your skin tingle with excitement when you inhale it.");
 			game.dynStats("lus", player.lib / 10 + 8);
 			doNext(game.playerMenu);
 		}
 		
-		private function lustReduction():void {
+		private  lustReduction():void {
 			outputText("The creature collapses backwards as its cohesion begins to give out, and the faint outline of eyes and a mouth form on its face.  Its chest heaves as if it were gasping, and the bolt upright erection it sports visibly quivers and pulses before relaxing slightly.");
 			lust -= 13;
 			doNext(game.playerMenu);
 		}
 		
-		public function GreenSlime()
+		public  constructor()
 		{
 			trace("GreenSlime Constructor!");
 			this.a = "a ";
@@ -94,4 +94,3 @@
 
 	}
 
-}

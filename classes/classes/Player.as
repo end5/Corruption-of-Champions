@@ -1,22 +1,22 @@
-﻿package classes
-{
-import classes.GlobalFlags.kFLAGS;
-import classes.GlobalFlags.kGAMECLASS;
-import classes.Items.Armor;
-import classes.Items.ArmorLib;
-import classes.Items.Weapon;
-import classes.Items.WeaponLib;
-import classes.Scenes.Places.TelAdre.UmasShop;
+ 
 
-use namespace kGAMECLASS;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+  ;
 
 	/**
 	 * ...
 	 * @author Yoffy
 	 */
-	public class Player extends Character {
+	export class Player extends Character {
 		
-		public function Player() {
+		public  constructor() {
 			//Item things
 			itemSlot1 = new ItemSlotClass();
 			itemSlot2 = new ItemSlotClass();
@@ -26,113 +26,113 @@ use namespace kGAMECLASS;
 			itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5];
 		}
 		
-		protected final function outputText(text:String, clear:Boolean = false):void
+		protected   outputText(text:string, clear:boolean = false):void
 		{
 			game.outputText(text, clear);
 		}
 		
 		//Autosave
-		public var slotName:String = "VOID";
-		public var autoSave:Boolean = false;
+		public  slotName:string = "VOID";
+		public  autoSave:boolean = false;
 
 		//Lust vulnerability
 		//TODO: Kept for backwards compatibility reasons but should be phased out.
-		public var lustVuln:Number = 1;
+		public  lustVuln:number = 1;
 
 		//Teasing attributes
-		public var teaseLevel:Number = 0;
-		public var teaseXP:Number = 0;
+		public  teaseLevel:number = 0;
+		public  teaseXP:number = 0;
 
 		//Perks used to store 'queued' perk buys
-		public var perkPoints:Number = 0;
+		public  perkPoints:number = 0;
 
 		//Number of times explored for new areas
-		public var explored:Number = 0;
-		public var exploredForest:Number = 0;
-		public var exploredDesert:Number = 0;
-		public var exploredMountain:Number = 0;
-		public var exploredLake:Number = 0;
+		public  explored:number = 0;
+		public  exploredForest:number = 0;
+		public  exploredDesert:number = 0;
+		public  exploredMountain:number = 0;
+		public  exploredLake:number = 0;
 
 		//Player pregnancy variables and functions
-		override public function pregnancyUpdate():Boolean {
+		 public  pregnancyUpdate():boolean {
 			return game.updatePregnancy(); //Returns true if we need to make sure pregnancy texts aren't hidden
 		}
 
 		// Inventory
-		public var itemSlot1:ItemSlotClass;
-		public var itemSlot2:ItemSlotClass;
-		public var itemSlot3:ItemSlotClass;
-		public var itemSlot4:ItemSlotClass;
-		public var itemSlot5:ItemSlotClass;
-		public var itemSlots:Array;
+		public  itemSlot1:ItemSlotClass;
+		public  itemSlot2:ItemSlotClass;
+		public  itemSlot3:ItemSlotClass;
+		public  itemSlot4:ItemSlotClass;
+		public  itemSlot5:ItemSlotClass;
+		public  itemSlots:any[];
 
-		private var _armor:Armor = ArmorLib.COMFORTABLE_UNDERCLOTHES;
-		private var _modArmorName:String = "";
+		private  _armor:Armor = ArmorLib.COMFORTABLE_UNDERCLOTHES;
+		private  _modArmorName:string = "";
 
-		override public function set armorValue(value:Number):void
+		 public  set armorValue(value:number):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.armorValue.");
 		}
 
-		override public function set armorName(value:String):void
+		 public  set armorName(value:string):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.armorName.");
 		}
 
-		override public function set armorDef(value:Number):void
+		 public  set armorDef(value:number):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.armorDef.");
 		}
 
-		override public function set armorPerk(value:String):void
+		 public  set armorPerk(value:string):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.armorPerk.");
 		}
 
 
-		override public function set weaponName(value:String):void
+		 public  set weaponName(value:string):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.weaponName.");
 		}
 
-		override public function set weaponVerb(value:String):void
+		 public  set weaponVerb(value:string):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.weaponVerb.");
 		}
 
-		override public function set weaponAttack(value:Number):void
+		 public  set weaponAttack(value:number):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.weaponAttack.");
 		}
 
-		override public function set weaponPerk(value:String):void
+		 public  set weaponPerk(value:string):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.weaponPerk.");
 		}
 
-		override public function set weaponValue(value:Number):void
+		 public  set weaponValue(value:number):void
 		{
 			CoC_Settings.error("ERROR: attempt to directly set player.weaponValue.");
 		}
 
-		public function get modArmorName():String
+		public  get modArmorName():string
 		{
 			if (_modArmorName == null) _modArmorName = "";
 			return _modArmorName;
 		}
 
-		public function set modArmorName(value:String):void
+		public  set modArmorName(value:string):void
 		{
 			if (value == null) value = "";
 			_modArmorName = value;
 		}
 
-		override public function get armorName():String {
+		 public  get armorName():string {
 			if (_modArmorName.length > 0) return modArmorName;
 			return _armor.name;
 		}
-		override public function get armorDef():Number {
-			var armorDef:Number = _armor.def;
+		 public  get armorDef():number {
+			var armorDef:number = _armor.def;
 			//Blacksmith history!
 			if(armorDef > 0 && findPerk(PerkLib.HistorySmith) >= 0) {
 				armorDef = Math.round(armorDef * 1.1);
@@ -165,24 +165,24 @@ use namespace kGAMECLASS;
 			}
 			return armorDef;
 		}
-		public function get armorBaseDef():Number {
+		public  get armorBaseDef():number {
 			return _armor.def;
 		}
-		override public function get armorPerk():String {
+		 public  get armorPerk():string {
 			return _armor.perk;
 		}
-		override public function get armorValue():Number {
+		 public  get armorValue():number {
 			return _armor.value;
 		}
-		private var _weapon:Weapon = WeaponLib.FISTS;
-		override public function get weaponName():String {
+		private  _weapon:Weapon = WeaponLib.FISTS;
+		 public  get weaponName():string {
 			return _weapon.name;
 		}
-		override public function get weaponVerb():String {
+		 public  get weaponVerb():string {
 			return _weapon.verb;
 		}
-		override public function get weaponAttack():Number {
-			var attack:Number = _weapon.attack;
+		 public  get weaponAttack():number {
+			var attack:number = _weapon.attack;
 			if(findPerk(PerkLib.WeaponMastery) >= 0 && weaponPerk == "Large" && str > 60)
 				attack *= 2;
 			if(findPerk(PerkLib.LightningStrikes) >= 0 && spe >= 60 && weaponPerk != "Large") {
@@ -192,22 +192,22 @@ use namespace kGAMECLASS;
 			attack += statusAffectv1(StatusAffects.ChargeWeapon);
 			return attack;
 		}
-		public function get weaponBaseAttack():Number {
+		public  get weaponBaseAttack():number {
 			return _weapon.attack;
 		}
-		override public function get weaponPerk():String {
+		 public  get weaponPerk():string {
 			return _weapon.perk || "";
 		}
-		override public function get weaponValue():Number {
+		 public  get weaponValue():number {
 			return _weapon.value;
 		}
 
-		public function get armor():Armor
+		public  get armor():Armor
 		{
 			return _armor;
 		}
 		
-		public function setArmor(newArmor:Armor):Armor {
+		public  setArmor(newArmor:Armor):Armor {
 			//Returns the old armor, allowing the caller to discard it, store it or try to place it in the player's inventory
 			//Can return null, in which case caller should discard.
 			var oldArmor:Armor = _armor.playerRemove(); //The armor is responsible for removing any bonuses, perks, etc.
@@ -231,17 +231,17 @@ use namespace kGAMECLASS;
 		*/
 
 		// in case you don't want to call the value.equip
-		public function setArmorHiddenField(value:Armor):void
+		public  setArmorHiddenField(value:Armor):void
 		{
 			this._armor = value;
 		}
 
-		public function get weapon():Weapon
+		public  get weapon():Weapon
 		{
 			return _weapon;
 		}
 
-		public function setWeapon(newWeapon:Weapon):Weapon {
+		public  setWeapon(newWeapon:Weapon):Weapon {
 			//Returns the old weapon, allowing the caller to discard it, store it or try to place it in the player's inventory
 			//Can return null, in which case caller should discard.
 			var oldWeapon:Weapon = _weapon.playerRemove(); //The weapon is responsible for removing any bonuses, perks, etc.
@@ -265,12 +265,12 @@ use namespace kGAMECLASS;
 		*/
 
 		// in case you don't want to call the value.equip
-		public function setWeaponHiddenField(value:Weapon):void
+		public  setWeaponHiddenField(value:Weapon):void
 		{
 			this._weapon = value;
 		}
 
-		public function reduceDamage(damage:Number):Number{
+		public  reduceDamage(damage:number):number{
 			damage = int(damage - rand(tou) - armorDef);
 			//EZ MOAD half damage
 			if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1) damage /= 2;
@@ -295,7 +295,7 @@ use namespace kGAMECLASS;
 			}
 
 			// Uma's Massage bonuses
-			var statIndex:int = findStatusAffect(StatusAffects.UmasMassage);
+			var statIndex:number = findStatusAffect(StatusAffects.UmasMassage);
 			if (statIndex >= 0) {
 				if (statusAffect(statIndex).value1 == UmasShop.MASSAGE_RELAXATION) {
 					damage = Math.round(damage * statusAffect(statIndex).value2);
@@ -303,7 +303,7 @@ use namespace kGAMECLASS;
 			}
 
 			// Uma's Accupuncture Bonuses
-			var modArmorDef:Number = 0;
+			var modArmorDef:number = 0;
 			if (findPerk(PerkLib.ChiReflowDefense) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_DEFENSE_DEFENSE_MULTI) - armorDef);
 			if (findPerk(PerkLib.ChiReflowAttack) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_ATTACK_DEFENSE_MULTI) - armorDef);
 			damage -= modArmorDef;
@@ -311,11 +311,11 @@ use namespace kGAMECLASS;
 			return damage;
 		}
 
-		public function takeDamage(damage:Number):Number{
+		public  takeDamage(damage:number):number{
 			//Round
 			damage = Math.round(damage);
 			// we return "1 damage received" if it is in (0..1) but deduce no HP
-			var returnDamage:int = (damage>0 && damage<1)?1:damage;
+			var returnDamage:number = (damage>0 && damage<1)?1:damage;
 			if (damage>0){
 				HP -= damage;
 				game.mainView.statsView.showStatDown('hp');
@@ -335,9 +335,9 @@ use namespace kGAMECLASS;
 		 * @return 0: did not avoid; 1-3: avoid with varying difference between
 		 * speeds (1: narrowly avoid, 3: deftly avoid)
 		 */
-		public function speedDodge(monster:Monster):int{
-			var diff:Number = spe - monster.spe;
-			var rnd:int = int(Math.random() * ((diff / 4) + 80));
+		public  speedDodge(monster:Monster):number{
+			var diff:number = spe - monster.spe;
+			var rnd:number = int(Math.random() * ((diff / 4) + 80));
 			if (rnd<=80) return 0;
 			else if (diff<8) return 1;
 			else if (diff<20) return 2;
@@ -345,9 +345,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Body Type
-		public function bodyType():String
+		public  bodyType():string
 		{
-			var desc:String = "";
+			var desc:string = "";
 			//OLD STUFF
 			//SUPAH THIN
 			if (thickness < 10)
@@ -467,10 +467,10 @@ use namespace kGAMECLASS;
 			return desc;
 		}
 
-		public function race():String
+		public  race():string
 		{
 			//Determine race type:
-			var race:String = "human";
+			var race:string = "human";
 			if (lowerBody == 4)
 				race = "centaur";
 			if (lowerBody == 11)
@@ -590,9 +590,9 @@ use namespace kGAMECLASS;
 		}
 
 		//determine demon rating
-		public function demonScore():Number
+		public  demonScore():number
 		{
-			var demonCounter:Number = 0;
+			var demonCounter:number = 0;
 			if (hornType == 1 && horns > 0)
 				demonCounter++;
 			if (hornType == 1 && horns > 4)
@@ -613,9 +613,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine Human Rating
-		public function humanScore():Number
+		public  humanScore():number
 		{
-			var humanCounter:Number = 0;
+			var humanCounter:number = 0;
 			if (faceType == 0)
 				humanCounter++;
 			if (skinType == 0)
@@ -636,9 +636,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine minotaur rating
-		public function minoScore():Number
+		public  minoScore():number
 		{
-			var minoCounter:Number = 0;
+			var minoCounter:number = 0;
 			if (faceType == 3)
 				minoCounter++;
 			if (earType == 3)
@@ -661,15 +661,15 @@ use namespace kGAMECLASS;
 			return minoCounter;
 		}
 
-		public function get minotaurScore():Number
+		public  get minotaurScore():number
 		{
 			return this.minoScore();
 		}
 
 		//Determine cow rating
-		public function cowScore():Number
+		public  cowScore():number
 		{
-			var minoCounter:Number = 0;
+			var minoCounter:number = 0;
 			if (faceType == 0)
 				minoCounter++;
 			if (faceType == 3)
@@ -693,9 +693,9 @@ use namespace kGAMECLASS;
 			return minoCounter;
 		}
 
-		public function sandTrapScore():int
+		public  sandTrapScore():number
 		{
-			var counter:int = 0;
+			var counter:number = 0;
 			if (findStatusAffect(StatusAffects.BlackNipples) >= 0)
 				counter++;
 			if (hasVagina() && vaginaType() == 5)
@@ -710,9 +710,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine Bee Rating
-		public function beeScore():Number
+		public  beeScore():number
 		{
-			var beeCounter:Number = 0;
+			var beeCounter:number = 0;
 			if (hairColor == "shiny black")
 				beeCounter++;
 			if (hairColor == "black and yellow")
@@ -738,9 +738,9 @@ use namespace kGAMECLASS;
 			return beeCounter;
 		}
 		//Determine Ferret Rating!
-		public function ferretScore():Number
+		public  ferretScore():number
 		{
-			var counter:int = 0;
+			var counter:number = 0;
 			if (faceType == FACE_FERRET_MASK) counter++;
 			if (faceType == FACE_FERRET) counter+=2;
 			if (earType == EARS_FERRET) counter++;
@@ -750,9 +750,9 @@ use namespace kGAMECLASS;
 			return counter;
 		}
 		//Determine Dog Rating
-		public override function dogScore():Number
+		public   dogScore():number
 		{
-			var dogCounter:Number = 0;
+			var dogCounter:number = 0;
 			if (faceType == 2)
 				dogCounter++;
 			if (earType == 2)
@@ -775,9 +775,9 @@ use namespace kGAMECLASS;
 			return dogCounter;
 		}
 
-		public function mouseScore():Number
+		public  mouseScore():number
 		{
-			var coonCounter:Number = 0;
+			var coonCounter:number = 0;
 			if (earType == 12)
 				coonCounter++;
 			if (tailType == 16)
@@ -798,9 +798,9 @@ use namespace kGAMECLASS;
 			return coonCounter;
 		}
 
-		public function raccoonScore():Number
+		public  raccoonScore():number
 		{
-			var coonCounter:Number = 0;
+			var coonCounter:number = 0;
 			if (faceType == 13)
 				coonCounter++;
 			if (faceType == 14)
@@ -820,9 +820,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine Fox Rating
-		public override function foxScore():Number
+		public   foxScore():number
 		{
-			var foxCounter:Number = 0;
+			var foxCounter:number = 0;
 			if (faceType == 11)
 				foxCounter++;
 			if (earType == 9)
@@ -846,9 +846,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine cat Rating
-		public function catScore():Number
+		public  catScore():number
 		{
-			var catCounter:Number = 0;
+			var catCounter:number = 0;
 			if (faceType == 6)
 				catCounter++;
 			if (earType == 5)
@@ -872,9 +872,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine lizard rating
-		public function lizardScore():Number
+		public  lizardScore():number
 		{
-			var lizardCounter:Number = 0;
+			var lizardCounter:number = 0;
 			if (faceType == 7)
 				lizardCounter++;
 			if (earType == 6)
@@ -892,9 +892,9 @@ use namespace kGAMECLASS;
 			return lizardCounter;
 		}
 
-		public function spiderScore():Number
+		public  spiderScore():number
 		{
-			var score:Number = 0;
+			var score:number = 0;
 			if (eyeType == 1)
 				score += 2;
 			if (faceType == 10)
@@ -913,9 +913,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine Horse Rating
-		public function horseScore():Number
+		public  horseScore():number
 		{
-			var horseCounter:Number = 0;
+			var horseCounter:number = 0;
 			if (faceType == 1)
 				horseCounter++;
 			if (earType == 1)
@@ -933,9 +933,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine kitsune Rating
-		public function kitsuneScore():Number
+		public  kitsuneScore():number
 		{
-			var kitsuneCounter:int = 0;
+			var kitsuneCounter:number = 0;
 			//If the character has fox ears, +1
 			if (earType == 9)
 				kitsuneCounter++;
@@ -984,9 +984,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine Horse Rating
-		public function dragonScore():Number
+		public  dragonScore():number
 		{
-			var dragonCounter:Number = 0;
+			var dragonCounter:number = 0;
 			if (faceType == 12)
 				dragonCounter++;
 			if (earType == 10)
@@ -1011,9 +1011,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Goblinscore
-		public function goblinScore():Number
+		public  goblinScore():number
 		{
-			var horseCounter:Number = 0;
+			var horseCounter:number = 0;
 			if (earType == 4)
 				horseCounter++;
 			if (skinTone == "pale yellow" || skinTone == "grayish-blue" || skinTone == "green" || skinTone == "dark green")
@@ -1033,9 +1033,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Gooscore
-		public function gooScore():Number
+		public  gooScore():number
 		{
-			var gooCounter:Number = 0;
+			var gooCounter:number = 0;
 			if (hairType == 3)
 				gooCounter++;
 			if (skinAdj == "slimy")
@@ -1050,9 +1050,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Nagascore
-		public function nagaScore():Number
+		public  nagaScore():number
 		{
-			var nagaCounter:Number = 0;
+			var nagaCounter:number = 0;
 			if (faceType == 5)
 				nagaCounter++;
 			if (tongueType == 1)
@@ -1065,9 +1065,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Bunnyscore
-		public function bunnyScore():Number
+		public  bunnyScore():number
 		{
-			var bunnyCounter:Number = 0;
+			var bunnyCounter:number = 0;
 			if (faceType == 8)
 				bunnyCounter++;
 			if (tailType == 10)
@@ -1091,9 +1091,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Harpyscore
-		public function harpyScore():Number
+		public  harpyScore():number
 		{
-			var harpy:Number = 0;
+			var harpy:number = 0;
 			if (armType == 1)
 				harpy++;
 			if (hairType == 1)
@@ -1112,9 +1112,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Kangascore
-		public function kangaScore():Number
+		public  kangaScore():number
 		{
-			var kanga:Number = 0;
+			var kanga:number = 0;
 			if (kangaCocks() > 0)
 				kanga++;
 			if (earType == 8)
@@ -1131,9 +1131,9 @@ use namespace kGAMECLASS;
 		}
 
 		//sharkscore
-		public function sharkScore():Number
+		public  sharkScore():number
 		{
-			var sharkCounter:Number = 0;
+			var sharkCounter:number = 0;
 			if (faceType == 4)
 				sharkCounter++;
 			if (wingType == 8)
@@ -1144,9 +1144,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine Mutant Rating
-		public function mutantScore():Number
+		public  mutantScore():number
 		{
-			var mutantCounter:Number = 0;
+			var mutantCounter:number = 0;
 			if (faceType > 0)
 				mutantCounter++;
 			if (skinType > 0)
@@ -1178,7 +1178,7 @@ use namespace kGAMECLASS;
 			return mutantCounter--;
 		}
 
-		public function lactationQ():Number
+		public  lactationQ():number
 		{
 			if (biggestLactation() < 1)
 				return 0;
@@ -1186,7 +1186,7 @@ use namespace kGAMECLASS;
 			//(Small – 0.01 mLs – Size 1 + 1 Multi)
 			//(Large – 0.8 - Size 10 + 4 Multi)
 			//(HUGE – 2.4 - Size 12 + 5 Multi + 4 tits)
-			var total:Number;
+			var total:number;
 			if (findStatusAffect(StatusAffects.LactationEndurance) < 0)
 				createStatusAffect(StatusAffects.LactationEndurance, 1, 0, 0, 0);
 			total = biggestTitSize() * 10 * averageLactation() * statusAffectv1(StatusAffects.LactationEndurance) * totalBreasts();
@@ -1195,17 +1195,17 @@ use namespace kGAMECLASS;
 			return total;
 		}
 		
-		public function isLactating():Boolean
+		public  isLactating():boolean
 		{
 			if (lactationQ() > 0) return true;
 			return false;
 		}
 
-		public function cuntChange(cArea:Number, display:Boolean, spacingsF:Boolean = false, spacingsB:Boolean = true):Boolean {
+		public  cuntChange(cArea:number, display:boolean, spacingsF:boolean = false, spacingsB:boolean = true):boolean {
 			if (vaginas.length==0) return false;
-			var wasVirgin:Boolean = vaginas[0].virgin;
-			var stretched:Boolean = cuntChangeNoDisplay(cArea);
-			var devirgined:Boolean = wasVirgin && !vaginas[0].virgin;
+			var wasVirgin:boolean = vaginas[0].virgin;
+			var stretched:boolean = cuntChangeNoDisplay(cArea);
+			var devirgined:boolean = wasVirgin && !vaginas[0].virgin;
 			if (devirgined){
 				if(spacingsF) outputText("  ");
 				outputText("<b>Your hymen is torn, robbing you of your virginity.</b>", false);
@@ -1231,9 +1231,9 @@ use namespace kGAMECLASS;
 			return stretched;
 		}
 
-		public function buttChange(cArea:Number, display:Boolean, spacingsF:Boolean = true, spacingsB:Boolean = true):Boolean
+		public  buttChange(cArea:number, display:boolean, spacingsF:boolean = true, spacingsB:boolean = true):boolean
 		{
-			var stretched:Boolean = buttChangeNoDisplay(cArea);
+			var stretched:boolean = buttChangeNoDisplay(cArea);
 			//STRETCH SUCCESSFUL - begin flavor text if outputting it!
 			if(stretched && display) {
 				if (spacingsF) outputText("  ");
@@ -1243,7 +1243,7 @@ use namespace kGAMECLASS;
 			return stretched;
 		}
 
-		public function buttChangeDisplay():void
+		public  buttChangeDisplay():void
 		{	//Allows the test for stretching and the text output to be separated
 			if (ass.analLooseness == 5) outputText("<b>Your " + Appearance.assholeDescript(this) + " is stretched even wider, capable of taking even the largest of demons and beasts.</b>");
 			if (ass.analLooseness == 4) outputText("<b>Your " + Appearance.assholeDescript(this) + " becomes so stretched that it gapes continually.</b>", false);
@@ -1252,7 +1252,7 @@ use namespace kGAMECLASS;
 			if (ass.analLooseness == 1) outputText("<b>You have lost your anal virginity.</b>", false);
 		}
 
-		public function slimeFeed():void{
+		public  slimeFeed():void{
 			if(findStatusAffect(StatusAffects.SlimeCraving) >= 0) {
 				//Reset craving value
 				changeStatusValue(StatusAffects.SlimeCraving,1,0);
@@ -1268,7 +1268,7 @@ use namespace kGAMECLASS;
 
 		}
 
-		public function minoCumAddiction(raw:Number = 10):void {
+		public  minoCumAddiction(raw:number = 10):void {
 			//Increment minotaur cum intake count
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00340]++;
 			//Fix if variables go out of range.
@@ -1298,25 +1298,25 @@ use namespace kGAMECLASS;
 
 		}
 
-		public function hasSpells():Boolean
+		public  hasSpells():boolean
 		{
 			return spellCount()>0;
 		}
 
-		public function spellCount():Number
+		public  spellCount():number
 		{
 			return [StatusAffects.KnowsArouse,StatusAffects.KnowsHeal,StatusAffects.KnowsMight,StatusAffects.KnowsCharge,StatusAffects.KnowsBlind,StatusAffects.KnowsWhitefire]
-					.filter(function(item:StatusAffectType,index:int,array:Array):Boolean{
+					.filter(function(item:StatusAffectType,index:number,array:any[]):boolean{
 						return this.findStatusAffect(item)>=0;},this)
 					.length;
 		}
 
-		public function hairDescript():String
+		public  hairDescript():string
 		{
 			return Appearance.hairDescription(this);
 		}
 
-		public function shrinkTits(ignore_hyper_happy:Boolean=false):void
+		public  shrinkTits(ignore_hyper_happy:boolean=false):void
 		{
 			if (flags[kFLAGS.HYPER_HAPPY] && !ignore_hyper_happy)
 			{
@@ -1325,7 +1325,7 @@ use namespace kGAMECLASS;
 			if(breastRows.length == 1) {
 				if(breastRows[0].breastRating > 0) {
 					//Shrink if bigger than N/A cups
-					var temp:Number;
+					var temp:number;
 					temp = 1;
 					breastRows[0].breastRating--;
 					//Shrink again 50% chance
@@ -1344,8 +1344,8 @@ use namespace kGAMECLASS;
 				outputText("\n", false);
 				//temp2 = amount changed
 				//temp3 = counter
-				var temp2:Number = 0;
-				var temp3:Number = breastRows.length;
+				var temp2:number = 0;
+				var temp3:number = breastRows.length;
 				while(temp3 > 0) {
 					temp3--;
 					if(breastRows[temp3].breastRating > 0) {
@@ -1365,19 +1365,19 @@ use namespace kGAMECLASS;
 			}
 		}
 
-		public function growTits(amount:Number, rowsGrown:Number, display:Boolean, growthType:Number):void
+		public  growTits(amount:number, rowsGrown:number, display:boolean, growthType:number):void
 		{
 			if(breastRows.length == 0) return;
 			//GrowthType 1 = smallest grows
 			//GrowthType 2 = Top Row working downward
 			//GrowthType 3 = Only top row
-			var temp2:Number = 0;
-			var temp3:Number = 0;
+			var temp2:number = 0;
+			var temp3:number = 0;
 			//Chance for "big tits" perked characters to grow larger!
 			if(findPerk(PerkLib.BigTits) >= 0 && rand(3) == 0 && amount < 1) amount=1;
 
 			// Needs to be a number, since uint will round down to 0 prevent growth beyond a certain point
-			var temp:Number = breastRows.length;
+			var temp:number = breastRows.length;
 			if(growthType == 1) {
 				//Select smallest breast, grow it, move on
 				while(rowsGrown > 0) {
@@ -1551,9 +1551,9 @@ use namespace kGAMECLASS;
 		}
 
 		//Determine minimum lust
-		public function minLust():Number
+		public  minLust():number
 		{
-			var min:Number = 0;
+			var min:number = 0;
 			//Bimbo body boosts minimum lust by 40
 			if(findStatusAffect(StatusAffects.BimboChampagne) >= 0 || findPerk(PerkLib.BimboBody) >= 0 || findPerk(PerkLib.BroBody) >= 0 || findPerk(PerkLib.FutaForm) >= 0) {
 				if(min > 40) min += 10;
@@ -1608,14 +1608,14 @@ use namespace kGAMECLASS;
 			return min;
 		}
 
-		public function minotaurAddicted():Boolean {
+		public  minotaurAddicted():boolean {
 			return findPerk(PerkLib.MinotaurCumAddict) >= 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1;
 		}
-		public function minotaurNeed():Boolean {
+		public  minotaurNeed():boolean {
 			return flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1;
 		}
 
-		public function clearStatuses(visibility:Boolean):void
+		public  clearStatuses(visibility:boolean):void
 		{
 			if (findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0)
 			{
@@ -1797,7 +1797,7 @@ use namespace kGAMECLASS;
 			if (findStatusAffect(StatusAffects.PigbysHands) >= 0) removeStatusAffect(StatusAffects.PigbysHands);
 		}
 
-		public function consumeItem(itype:ItemType, amount:int = 1):Boolean {
+		public  consumeItem(itype:ItemType, amount:number = 1):boolean {
 			if (!hasItem(itype, amount)) {
 				CoC_Settings.error("ERROR: consumeItem attempting to find " + amount + " item" + (amount > 1 ? "s" : "") + " to remove when the player has " + itemCount(itype) + ".");
 				return false;
@@ -1844,10 +1844,10 @@ use namespace kGAMECLASS;
 */
 		}
 
-		public function getLowestSlot(itype:ItemType):ItemSlotClass
+		public  getLowestSlot(itype:ItemType):ItemSlotClass
 		{
 			var minslot:ItemSlotClass = null;
-			for each (var slot:ItemSlotClass in itemSlots) {
+			for  (const slot of itemSlots) {
 				if (slot.itype == itype) {
 					if (minslot == null || slot.quantity < minslot.quantity) {
 						minslot = slot;
@@ -1857,44 +1857,44 @@ use namespace kGAMECLASS;
 			return minslot;
 		}
 		
-		public function hasItem(itype:ItemType, minQuantity:int = 1):Boolean {
+		public  hasItem(itype:ItemType, minQuantity:number = 1):boolean {
 			return itemCount(itype) >= minQuantity;
 		}
 		
-		public function itemCount(itype:ItemType):int {
-			var count:int = 0;
-			for each (var itemSlot:ItemSlotClass in itemSlots){
+		public  itemCount(itype:ItemType):number {
+			var count:number = 0;
+			for  (const itemSlot of itemSlots){
 				if (itemSlot.itype == itype) count += itemSlot.quantity;
 			}
 			return count;
 		}
 
 		// 0..5 or -1 if no
-		public function roomInExistingStack(itype:ItemType):Number {
-			for (var i:int = 0; i<itemSlots.length; i++){
+		public  roomInExistingStack(itype:ItemType):number {
+			for (const i = 0; i<itemSlots.length; i++){
 				if(itemSlot(i).itype == itype && itemSlot(i).quantity != 0 && itemSlot(i).quantity < 5)
 					return i;
 			}
 			return -1;
 		}
 
-		public function itemSlot(idx:int):ItemSlotClass
+		public  itemSlot(idx:number):ItemSlotClass
 		{
 			return itemSlots[idx];
 		}
 
 		// 0..5 or -1 if no
-		public function emptySlot():Number {
-		    for (var i:int = 0; i<itemSlots.length;i++){
+		public  emptySlot():number {
+		    for (const i = 0; i<itemSlots.length;i++){
 				if (itemSlot(i).isEmpty() && itemSlot(i).unlocked) return i;
 			}
 			return -1;
 		}
 
 
-		public function destroyItems(itype:ItemType, numOfItemToRemove:Number):Boolean
+		public  destroyItems(itype:ItemType, numOfItemToRemove:number):boolean
 		{
-			for (var slotNum:int = 0; slotNum < itemSlots.length; slotNum += 1)
+			for (const slotNum = 0; slotNum < itemSlots.length; slotNum += 1)
 			{
 				if(itemSlot(slotNum).itype == itype)
 				{
@@ -1908,7 +1908,7 @@ use namespace kGAMECLASS;
 			return numOfItemToRemove <= 0;
 		}
 
-		public function lengthChange(temp2:Number, ncocks:Number):void {
+		public  lengthChange(temp2:number, ncocks:number):void {
 
 			if (temp2 < 0 && flags[kFLAGS.HYPER_HAPPY])  // Early return for hyper-happy cheat if the call was *supposed* to shrink a cock.
 			{
@@ -2004,13 +2004,13 @@ use namespace kGAMECLASS;
 			}
 		}
 
-		public function killCocks(deadCock:Number):void
+		public  killCocks(deadCock:number):void
 		{
 			//Count removal for text bits
-			var removed:Number = 0;
-			var temp:Number;
+			var removed:number = 0;
+			var temp:number;
 			//Holds cock index
-			var storedCock:Number = 0;
+			var storedCock:number = 0;
 			//Less than 0 = PURGE ALL
 			if (deadCock < 0) {
 				deadCock = cocks.length;
@@ -2065,7 +2065,7 @@ use namespace kGAMECLASS;
 				ballSize = 1;
 			}
 		}
-		public function modCumMultiplier(delta:Number):Number
+		public  modCumMultiplier(delta:number):number
 		{
 			trace("modCumMultiplier called with: " + delta);
 		
@@ -2093,9 +2093,9 @@ use namespace kGAMECLASS;
 			return delta;
 		}
 
-		public function increaseCock(cockNum:Number, lengthDelta:Number):Number
+		public  increaseCock(cockNum:number, lengthDelta:number):number
 		{
-			var bigCock:Boolean = false;
+			var bigCock:boolean = false;
 	
 			if (findPerk(PerkLib.BigCock) >= 0)
 				bigCock = true;
@@ -2103,11 +2103,11 @@ use namespace kGAMECLASS;
 			return cocks[cockNum].growCock(lengthDelta, bigCock);
 		}
 		
-		public function increaseEachCock(lengthDelta:Number):Number
+		public  increaseEachCock(lengthDelta:number):number
 		{
-			var totalGrowth:Number = 0;
+			var totalGrowth:number = 0;
 			
-			for (var i:Number = 0; i < cocks.length; i++) {
+			for (const i = 0; i < cocks.length; i++) {
 				trace( "increaseEachCock at: " + i);
 				totalGrowth += increaseCock(i as Number, lengthDelta);
 			}
@@ -2122,7 +2122,7 @@ use namespace kGAMECLASS;
 		// First parameter: boolean indicating if function should output standard text.
 		// Second parameter: intensity, an integer multiplier that can increase the 
 		// duration and intensity. Defaults to 1.
-		public function goIntoHeat(output:Boolean, intensity:int = 1):Boolean {
+		public  goIntoHeat(output:boolean, intensity:number = 1):boolean {
 			if(!hasVagina() || pregnancyIncubation != 0) {
 				// No vagina or already pregnant, can't go into heat.
 				return false;
@@ -2133,7 +2133,7 @@ use namespace kGAMECLASS;
 				if(output) {
 					outputText("\n\nYour mind clouds as your " + vaginaDescript(0) + " moistens.  Despite already being in heat, the desire to copulate constantly grows even larger.", false);
 				}
-				var temp:Number = findStatusAffect(StatusAffects.Heat);
+				var temp:number = findStatusAffect(StatusAffects.Heat);
 				statusAffect(temp).value1 += 5 * intensity;
 				statusAffect(temp).value2 += 5 * intensity;
 				statusAffect(temp).value3 += 48 * intensity;
@@ -2157,7 +2157,7 @@ use namespace kGAMECLASS;
 		// First parameter: boolean indicating if function should output standard text.
 		// Second parameter: intensity, an integer multiplier that can increase the 
 		// duration and intensity. Defaults to 1.
-		public function goIntoRut(output:Boolean, intensity:int = 1):Boolean {
+		public  goIntoRut(output:boolean, intensity:number = 1):boolean {
 			if (!hasCock()) {
 				// No cocks, can't go into rut.
 				return false;
@@ -2189,4 +2189,4 @@ use namespace kGAMECLASS;
 			return true;
 		}
 	}
-}
+

@@ -1,12 +1,12 @@
-﻿package classes.Scenes.Areas.Desert
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class SandTrap extends Monster
+	 
+	 
+
+	export class SandTrap extends Monster
 	{
 		//Wait:
-		public function sandTrapWait():void {
+		public  sandTrapWait():void {
 			clearOutput();
 			game.spriteSelect(97);
 			if(findStatusAffect(StatusAffects.Climbed) < 0) createStatusAffect(StatusAffects.Climbed,0,0,0,0);
@@ -31,7 +31,7 @@
 			//combatRoundOver();
 		}
 
-		public function trapLevel(adjustment:Number = 0):Number {
+		public  trapLevel(adjustment:number = 0):number {
 			if(findStatusAffect(StatusAffects.Level) < 0) createStatusAffect(StatusAffects.Level,4,0,0,0);
 			if(adjustment != 0) {
 				addStatusValue(StatusAffects.Level,1,adjustment);
@@ -44,14 +44,14 @@
 
 
 		//sandtrap pheromone attack:
-		private function sandTrapPheremones():void {
+		private  sandTrapPheremones():void {
 			game.spriteSelect(97);
 			outputText("The sandtrap puckers its lips.  For one crazed moment you think it's going to blow you a kiss... but instead it spits clear fluid at you!   You desperately try to avoid it, even as your lower half is mired in sand.");
 			if(player.spe/10 + rand(20) > 10 || combatEvade() || combatFlexibility()) {
 				outputText("  Moving artfully with the flow rather than against it, you are able to avoid the trap's fluids, which splash harmlessly into the dune.");
 			}
 			else {
-				var damage:Number = (10 + player.lib/10);
+				var damage:number = (10 + player.lib/10);
 				outputText("  Despite ducking away from the jet of fluid as best you can, you cannot avoid some of the stuff splashing upon your arms and face.  The substance feels oddly warm and oily, and though you quickly try to wipe it off it sticks resolutely to your skin and the smell hits your nose.  Your heart begins to beat faster as warmth radiates out from it; you feel languid, light-headed and sensual, eager to be touched and led by the hand to a sandy bed...  Shaking your head, you try to stifle what the foreign pheromones are making you feel.");
 				game.dynStats("lus", damage);
 				damage = Math.round(damage * game.lustPercent()/10)/10;
@@ -60,7 +60,7 @@
 		}
 
 		//sandtrap quicksand attack:
-		private function nestleQuikSandAttack():void {
+		private  nestleQuikSandAttack():void {
 			game.spriteSelect(97);
 			outputText("The sandtrap smiles at you winningly as it thrusts its hands into the sifting granules.  The sand beneath you suddenly seems to lose even more of its density; you're sinking up to your thighs!");
 			//Quicksand attack fail:
@@ -76,7 +76,7 @@
 			}
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if (findStatusAffect(StatusAffects.Level) >= 0) {
 				if (trapLevel() == 4 && findStatusAffect(StatusAffects.Climbed) < 0) nestleQuikSandAttack();
@@ -91,12 +91,12 @@
 			} else super.performCombatAction();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.desert.sandTrapScene.pcBeatsATrap();
 		}
 
-		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nThe sand trap seems bemused by the insects your body houses...");
@@ -106,7 +106,7 @@
 			}
 		}
 
-		public function SandTrap()
+		public  constructor()
 		{
 			//1/3 have fertilized eggs!
 			if(rand(3) == 0) this.createStatusAffect(StatusAffects.Fertilized,0,0,0,0);
@@ -153,4 +153,3 @@
 		
 	}
 
-}

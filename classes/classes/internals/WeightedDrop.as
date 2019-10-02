@@ -1,47 +1,47 @@
 /**
  * Created by aimozg on 11.01.14.
  */
-package classes.internals
-{
-	public class WeightedDrop implements RandomDrop
+ 
+
+	export class WeightedDrop implements RandomDrop
 	{
-		private var items:Array = [];
-		private var sum:Number = 0;
-		public function WeightedDrop(first:*=null,firstWeight:Number=0)
+		private  items:any[] = [];
+		private  sum:number = 0;
+		public  constructor(first:*=null,firstWeight:number=0)
 		{
 			if (first != null){
 				items.push([first,firstWeight]);
 				sum += firstWeight;
 			}
 		}
-		public function add(item:*,weight:Number=1):WeightedDrop
+		public  add(item:any,weight:number=1):WeightedDrop
 		{
 			items.push([item,weight]);
 			sum += weight;
 			return this;
 		}
-		public function addMany(weight:Number,..._items):WeightedDrop
+		public  addMany(weight:number,..._items):WeightedDrop
 		{
-			for each (var item:* in _items){
+			for  (const item* in _items){
 				items.push([item,weight]);
 				sum += weight;
 			}
 			return this;
 		}
 		// you can pass your own random value from 0 to 1 (so you can use your own RNG)
-		public function roll():*
+		public  roll():any
 		{
-			var random:Number = Math.random()*sum;
-			var item:* = null;
+			var random:number = Math.random()*sum;
+			var item:any = null;
 			while (random > 0 && items.length > 0) {
-				var pair:Array = items.shift();
+				var pair:any[] = items.shift();
 				item = pair[0];
 				random -= pair[1];
 			}
 			return item;
 		}
 
-		public function clone():WeightedDrop
+		public  clone():WeightedDrop
 		{
 			var other:WeightedDrop = new WeightedDrop();
 			other.items = items.slice();
@@ -49,4 +49,3 @@ package classes.internals
 			return other;
 		}
 	}
-}

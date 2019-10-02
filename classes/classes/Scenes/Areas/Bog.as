@@ -1,28 +1,28 @@
 /**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Areas
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.ConsumableLib;
-	import classes.Items.Consumables.BeeHoney;
-	import classes.Items.Consumables.PhoukaWhiskey;
-	import classes.Items.Consumables.RizzaRoot;
-	import classes.Scenes.Areas.Bog.*;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
-	public class Bog extends BaseContent
+	  ;
+
+	export class Bog extends BaseContent
 	{
-		public var frogGirlScene:FrogGirlScene = new FrogGirlScene();
-		public var chameleonGirlScene:ChameleonGirlScene = new ChameleonGirlScene();
-		public var phoukaScene:PhoukaScene = new PhoukaScene();
-		public function Bog()
+		public  frogGirlScene:FrogGirlScene = new FrogGirlScene();
+		public  chameleonGirlScene:ChameleonGirlScene = new ChameleonGirlScene();
+		public  phoukaScene:PhoukaScene = new PhoukaScene();
+		public  constructor()
 		{
 		}
-		public function exploreBog():void
+		public  exploreBog():void
 		{
 			flags[kFLAGS.BOG_EXPLORED]++;
 			//Helia monogamy fucks
@@ -44,4 +44,4 @@ package classes.Scenes.Areas
 			}
 		}
 	}
-}
+

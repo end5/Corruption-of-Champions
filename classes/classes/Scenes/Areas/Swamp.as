@@ -1,25 +1,25 @@
 /**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Areas
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.Swamp.*;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
 
-	public class Swamp extends BaseContent
+	  ;
+
+	export class Swamp extends BaseContent
 	{
-		public var corruptedDriderScene:CorruptedDriderScene = new CorruptedDriderScene();
-		public var femaleSpiderMorphScene:FemaleSpiderMorphScene = new FemaleSpiderMorphScene();
-		public var maleSpiderMorphScene:MaleSpiderMorphScene = new MaleSpiderMorphScene();
-		public var rogar:Rogar = new Rogar();
-		public function Swamp()
+		public  corruptedDriderScene:CorruptedDriderScene = new CorruptedDriderScene();
+		public  femaleSpiderMorphScene:FemaleSpiderMorphScene = new FemaleSpiderMorphScene();
+		public  maleSpiderMorphScene:MaleSpiderMorphScene = new MaleSpiderMorphScene();
+		public  rogar:Rogar = new Rogar();
+		public  constructor()
 		{
 		}
-		public function exploreSwamp():void
+		public  exploreSwamp():void
 		{
 			//Discover 'Bog' at after 25 explores of swamp
 			if ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] >= 25) && flags[kFLAGS.BOG_EXPLORED] == 0) {
@@ -45,7 +45,7 @@ package classes.Scenes.Areas
 				return;
 			}
 			/*  STANDARD SCENE SELECTION  */
-			var choices:Array = [];
+			var choices:any[] = [];
 			//Build the choice array
 			//M & F spidermorphs
 			choices[choices.length] = 0;
@@ -59,7 +59,7 @@ package classes.Scenes.Areas
 			choices[choices.length] = 4;
 
 			//Pick from the choices and pull the encounter.
-			var choice:Number = choices[rand(choices.length)];
+			var choice:number = choices[rand(choices.length)];
 			switch (choice) {
 				case 0:
 					femaleSpiderMorphScene.fSpiderMorphGreeting();
@@ -85,4 +85,4 @@ package classes.Scenes.Areas
 			}
 		}
 	}
-}
+

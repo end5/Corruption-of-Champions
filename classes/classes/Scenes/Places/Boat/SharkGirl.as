@@ -1,12 +1,12 @@
-﻿package classes.Scenes.Places.Boat
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class SharkGirl extends Monster
+	 
+	 
+
+	export class SharkGirl extends Monster
 	{
 		//Lust-based attacks:
-		private function sharkTease():void {
+		private  sharkTease():void {
 			game.spriteSelect(70);
 			if(rand(2) == 0) {
 				outputText("You charge at the shark girl, prepared to strike again, but stop dead in your tracks when she bends over and wiggles her toned ass towards you. It distracts you long enough for her tail to swing out and smack you to the ground. She coos, \"<i>Aw... You really do like me!</i>\"", false);
@@ -22,12 +22,12 @@
 			}
 			combatRoundOver();
 		}
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.boat.sharkGirlScene.sharkWinChoices();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nYour foe doesn't seem disgusted enough to leave...");
@@ -37,7 +37,7 @@
 			}
 		}
 
-		public function SharkGirl()
+		public  constructor()
 		{
 			trace("SharkGirl Constructor!");
 			this.a = "the ";
@@ -82,4 +82,3 @@
 
 	}
 
-}

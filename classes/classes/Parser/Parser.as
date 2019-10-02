@@ -1,27 +1,27 @@
-﻿
-package classes.Parser
-{
+
+ 
+
 	// import classes.CoC;
 
-	public class Parser
+	export class Parser
 	{
-		import showdown.Showdown;
+		 
 
-		private var _ownerClass:*;			// main game class. Variables are looked-up in this class.
-		private var _settingsClass:*;		// global static class used for shoving conf vars around
+		private  _ownerClass:any;			// main game class. Variables are looked-up in this class.
+		private  _settingsClass:any;		// global static class used for shoving conf vars around
 
-		public var sceneParserDebug:Boolean = false;
+		public  sceneParserDebug:boolean = false;
 
-		public var mainParserDebug:Boolean = false;
-		public var lookupParserDebug:Boolean = false;
-		public var conditionalDebug:Boolean = false;
-		public var printCcntentDebug:Boolean = false;
-		public var printConditionalEvalDebug:Boolean = false;
-		public var printIntermediateParseStateDebug:Boolean = false;
-		public var logErrors:Boolean = true;
+		public  mainParserDebug:boolean = false;
+		public  lookupParserDebug:boolean = false;
+		public  conditionalDebug:boolean = false;
+		public  printCcntentDebug:boolean = false;
+		public  printConditionalEvalDebug:boolean = false;
+		public  printIntermediateParseStateDebug:boolean = false;
+		public  logErrors:boolean = true;
 
 
-		public function Parser(ownerClass:*, settingsClass:*)
+		public  constructor(ownerClass:any, settingsClass:any)
 		{
 			this._ownerClass = ownerClass;
 			this._settingsClass = settingsClass;
@@ -71,10 +71,10 @@ package classes.Parser
 		// it is cleared every time recursiveParser is called, and then any scene tags are added
 		// as parserState["sceneName"] = "scene content"
 
-		public var parserState:Object = new Object();
+		public  parserState:Record<string, any> = new Object();
 
 		// provides singleArgConverters
-		include "./singleArgLookups.as";
+		// include "./singleArgLookups.as";
 
 		// Does lookup of single argument tags ("[cock]", "[armor]", etc...) in singleArgConverters
 		// Supported variables are the options listed in the above
@@ -83,12 +83,12 @@ package classes.Parser
 		// If the arg is not present in the singleArgConverters object, an error message is
 		// returned.
 		// ALWAYS returns a string
-		private function convertSingleArg(arg:String):String
+		private  convertSingleArg(arg:string):string
 		{
-			var argResult:String = null;
-			var capitalize:Boolean = isUpperCase(arg.charAt(0));
+			var argResult:string = null;
+			var capitalize:boolean = isUpperCase(arg.charAt(0));
 
-			var argLower:String;
+			var argLower:string;
 			argLower = arg.toLowerCase()
 			if (argLower in singleArgConverters)
 			{
@@ -110,7 +110,7 @@ package classes.Parser
 				// UGLY hack to patch legacy functionality in TiTS
 				// This needs to go eventually
 
-				var descriptorArray:Array = arg.split(".");
+				var descriptorArray:any[] = arg.split(".");
 
 				obj = this.getObjectFromString(this._ownerClass, descriptorArray[0]);
 				if (obj == null)		// Completely bad tag
@@ -127,11 +127,11 @@ package classes.Parser
 
 
 				if (lookupParserDebug) trace("WARNING: Lookup Arg = ", arg);
-				var obj:*;
+				var obj:any;
 				obj = this.getObjectFromString(this._ownerClass, arg);
 				if (obj != null)
 				{
-					if (obj is Function)
+					if (obj instanceof Function)
 					{
 						if (lookupParserDebug) trace("WARNING: Found corresponding function in owner class");
 						return obj();
@@ -154,31 +154,31 @@ package classes.Parser
 
 		// provides twoWordNumericTagsLookup and twoWordTagsLookup, which use
 		// cockLookups/cockHeadLookups, and rubiLookups/arianLookups respectively
-		include "./doubleArgLookups.as";
+		// include "./doubleArgLookups.as";
 
 
 
-		private function convertDoubleArg(inputArg:String):String
+		private  convertDoubleArg(inputArg:string):string
 		{
-			var argResult:String = null;
+			var argResult:string = null;
 
-			var thing:*;
+			var thing:any;
 
-			var argTemp:Array = inputArg.split(" ");
+			var argTemp:any[] = inputArg.split(" ");
 			if (argTemp.length != 2)
 			{
 				if (logErrors) trace("WARNING: Not actually a two word tag! " + inputArg);
 				return "<b>!Not actually a two-word tag!\"" + inputArg + "\"!</b>"
 			}
-			var subject:String = argTemp[0];
-			var aspect:* = argTemp[1];
-			var subjectLower:String = argTemp[0].toLowerCase();
-			var aspectLower:* = argTemp[1].toLowerCase();
+			var subject:string = argTemp[0];
+			var aspect:any = argTemp[1];
+			var subjectLower:string = argTemp[0].toLowerCase();
+			var aspectLower:any = argTemp[1].toLowerCase();
 
 			if (lookupParserDebug) trace("WARNING: Doing lookup for subject", subject, " aspect ", aspect);
 
 			// Figure out if we need to capitalize the resulting text
-			var capitalize:Boolean = isUpperCase(aspect.charAt(0));
+			var capitalize:boolean = isUpperCase(aspect.charAt(0));
 
 
 			// Only perform lookup in twoWordNumericTagsLookup if aspect can be cast to a valid number
@@ -225,7 +225,7 @@ package classes.Parser
 			// UGLY hack to patch legacy functionality in TiTS
 			// This needs to go eventually
 
-			var descriptorArray:Array = subject.split(".");
+			var descriptorArray:any[] = subject.split(".");
 
 			thing = this.getObjectFromString(this._ownerClass, descriptorArray[0]);
 			if (thing == null)		// Completely bad tag
@@ -245,18 +245,18 @@ package classes.Parser
 			// end hack
 			// ---------------------------------------------------------------------------------
 
-			var aspectLookup:* = this.getObjectFromString(this._ownerClass, aspect);
+			var aspectLookup:any = this.getObjectFromString(this._ownerClass, aspect);
 
 			if (thing != null)
 			{
-				if (thing is Function)
+				if (thing instanceof Function)
 				{
 					if (lookupParserDebug) trace("WARNING: Found corresponding function in owner class");
 					return thing(aspect);
 				}
-				else if (thing is Array)
+				else if (thing instanceof Array)
 				{
-					var indice:Number = Number(aspectLower);
+					var indice:number = Number(aspectLower);
 					if (isNaN(indice))
 					{
 						if (logErrors) trace("WARNING: Cannot use non-number as indice to Array. Arg " + inputArg + " Subject: " + subject + " Aspect: " + aspect); 
@@ -265,7 +265,7 @@ package classes.Parser
 					else
 						return thing[indice]
 				}
-				else if (thing is Object)
+				else if (thing instanceof Object)
 				{
 
 					if (thing.hasOwnProperty(aspectLookup))
@@ -303,18 +303,18 @@ package classes.Parser
 
 
 		// Provides the conditionalOptions object
-		include "./conditionalConverters.as";
+		// include "./conditionalConverters.as";
 
 		// converts a single argument to a conditional to
 		// the relevant value, either by simply converting to a Number, or
 		// through lookup in the above conditionalOptions oject, and then calling the
 		// relevant function
 		// Realistally, should only return either boolean or numbers.
-		private function convertConditionalArgumentFromStr(arg:String):*
+		private  convertConditionalArgumentFromStr(arg:string):any
 		{
 			// convert the string contents of a conditional argument into a meaningful variable.
-			var argLower:* = arg.toLowerCase()
-			var argResult:* = -1;
+			var argLower:any = arg.toLowerCase()
+			var argResult:any = -1;
 
 			// Note: Case options MUST be ENTIRELY lower case. The comparaison string is converted to
 			// lower case before the switch:case section
@@ -334,14 +334,14 @@ package classes.Parser
 			}
 
 
-			var obj:* = this.getObjectFromString(this._ownerClass, arg);
+			var obj:any = this.getObjectFromString(this._ownerClass, arg);
 
 			if (printConditionalEvalDebug) trace("WARNING: Looked up ", arg, " in ", this._ownerClass, "Result was:", obj);
 			if (obj != null)
 			{
 				if (printConditionalEvalDebug) trace("WARNING: Found corresponding function for conditional argument lookup.");
 
-				if (obj is Function)
+				if (obj instanceof Function)
 				{
 					if (printConditionalEvalDebug) trace("WARNING: Found corresponding function in owner class");
 					argResult = Number(obj());
@@ -369,7 +369,7 @@ package classes.Parser
 		// Evaluates the conditional section of an if-statement.
 		// Does the proper parsing and look-up of any of the special nouns
 		// which can be present in the conditional
-		private function evalConditionalStatementStr(textCond:String):Boolean
+		private  evalConditionalStatementStr(textCond:string):boolean
 		{
 			// Evaluates a conditional statement:
 			// (varArg1 [conditional] varArg2)
@@ -389,10 +389,10 @@ package classes.Parser
 
 
 			var isExp:RegExp = /([\w\.]+)\s?(==|=|!=|<|>|<=|>=)\s?([\w\.]+)/;
-			var expressionResult:Object = isExp.exec(textCond);
+			var expressionResult:Record<string, any> = isExp.exec(textCond);
 			if (!expressionResult)
 			{
-				var condArg:* = convertConditionalArgumentFromStr(textCond);
+				var condArg:any = convertConditionalArgumentFromStr(textCond);
 				if (condArg != null)
 				{
 					if (printConditionalEvalDebug) trace("WARNING: Conditional \"", textCond, "\" Evalueated to: \"", condArg, "\"")
@@ -407,14 +407,14 @@ package classes.Parser
 			}
 			if (printConditionalEvalDebug) trace("WARNING: Expression = ", textCond, "Expression result = [", expressionResult, "], length of = ", expressionResult.length);
 
-			var condArgStr1:String    = expressionResult[1];
-			var operator:String       = expressionResult[2];
-			var condArgStr2:String    = expressionResult[3];
+			var condArgStr1:string    = expressionResult[1];
+			var operator:string       = expressionResult[2];
+			var condArgStr2:string    = expressionResult[3];
 
-			var retVal:Boolean = false;
+			var retVal:boolean = false;
 
-			var condArg1:* = convertConditionalArgumentFromStr(condArgStr1);
-			var condArg2:* = convertConditionalArgumentFromStr(condArgStr2);
+			var condArg1:any = convertConditionalArgumentFromStr(condArgStr1);
+			var condArg2:any = convertConditionalArgumentFromStr(condArgStr2);
 
 			//Perform check
 			if(operator == "=")
@@ -443,7 +443,7 @@ package classes.Parser
 		// Splits the result from an if-statement.
 		// ALWAYS returns an array with two strings.
 		// if there is no else, the second string is empty.
-		private function splitConditionalResult(textCtnt:String): Array
+		private  splitConditionalResult(textCtnt:string): any[]
 		{
 			// Splits the conditional section of an if-statemnt in to two results:
 			// [if (condition) OUTPUT_IF_TRUE]
@@ -456,14 +456,14 @@ package classes.Parser
 			if (conditionalDebug) trace("WARNING: ------------------4444444444444444444444444444444444444444444444444444444444-----------------------")
 
 
-			var ret:Array = new Array("", "");
+			var ret:any[] = new Array("", "");
 
 
-			var i:int;
+			var i:number;
 
-			var sectionStart:int = 0;
-			var section:int = 0;
-			var nestLevel:int = 0;
+			var sectionStart:number = 0;
+			var section:number = 0;
+			var nestLevel:number = 0;
 
 			for (i = 0; i < textCtnt.length; i += 1)
 			{
@@ -515,7 +515,7 @@ package classes.Parser
 		// Called to evaluate a if statment string, and return the evaluated result.
 		// Returns an empty string ("") if the conditional rvaluates to false, and there is no else
 		// option.
-		private function parseConditional(textCtnt:String, depth:int):String
+		private  parseConditional(textCtnt:string, depth:number):string
 		{
 			// NOTE: enclosing brackets are *not* included in the actual textCtnt string passed into this function
 			// they're shown in the below examples simply for clarity's sake.
@@ -548,16 +548,16 @@ package classes.Parser
 			if (conditionalDebug) trace("WARNING: ------------------2222222222222222222222222222222222222222222222222222222222-----------------------")
 
 
-			var ret:Array = new Array("", "", "");	// first string is conditional, second string is the output
+			var ret:any[] = new Array("", "", "");	// first string is conditional, second string is the output
 
-			var i:Number = 0;
-			var parenthesisCount:Number = 0;
+			var i:number = 0;
+			var parenthesisCount:number = 0;
 
 			//var ifText;
-			var conditional:*;
-			var output:*;
+			var conditional:any;
+			var output:any;
 
-			var condStart:Number = textCtnt.indexOf("(");
+			var condStart:number = textCtnt.indexOf("(");
 
 			if (condStart != -1)		// If we have any open parenthesis
 			{
@@ -618,7 +618,7 @@ package classes.Parser
 		// Properly handles nested classes/objects, e.g. localThis.herp.derp
 		// is returned by getFuncFromString(localThis, "herp.derp");
 		// returns the relevant function if it exists, null if it does not.
-		private function getObjectFromString(localThis:Object, inStr:String):*
+		private  getObjectFromString(localThis:Record<string, any>, inStr:string):any
 		{
 			if (inStr in localThis)
 			{
@@ -628,8 +628,8 @@ package classes.Parser
 
 			if (inStr.indexOf('.') > 0) // *should* be > -1, but if the string starts with a dot, it can't be a valid reference to a nested class anyways.
 			{
-				var localReference:String;
-				var itemName:String;
+				var localReference:string;
+				var itemName:string;
 				localReference = inStr.substr(0, inStr.indexOf('.'));
 				itemName = inStr.substr(inStr.indexOf('.')+1);
 
@@ -662,19 +662,19 @@ package classes.Parser
 
 
 
-		private function getSceneSectionToInsert(inputArg:String):String
+		private  getSceneSectionToInsert(inputArg:string):string
 		{
-			var argResult:String = null;
+			var argResult:string = null;
 
 
-			var argTemp:Array = inputArg.split(" ");
+			var argTemp:any[] = inputArg.split(" ");
 			if (argTemp.length != 2)
 			{
 				return "<b>!Not actually a valid insertSection tag:!\"" + inputArg + "\"!</b>";
 			}
-			var callName:String = argTemp[0];
-			var sceneName:* = argTemp[1];
-			var callNameLower:String = argTemp[0].toLowerCase();
+			var callName:string = argTemp[0];
+			var sceneName:any = argTemp[1];
+			var callNameLower:string = argTemp[0].toLowerCase();
 
 			if (sceneParserDebug) trace("WARNING: Doing lookup for sceneSection tag:", callName, " scene name: ", sceneName);
 
@@ -691,9 +691,9 @@ package classes.Parser
 				buttonNum = 0;		// Clear the button number, so we start adding buttons from button 0
 
 				// Split up into multiple variables for debugging (it was crashing at one point. Separating the calls let me delineate what was crashing)
-				var tmp1:String = this.parserState[sceneName];
-				var tmp2:String = recParser(tmp1, 0);			// we have to actually parse the scene now
-				var tmp3:String = Showdown.makeHtml(tmp2)
+				var tmp1:string = this.parserState[sceneName];
+				var tmp2:string = recParser(tmp1, 0);			// we have to actually parse the scene now
+				var tmp3:string = Showdown.makeHtml(tmp2)
 
 
 
@@ -712,7 +712,7 @@ package classes.Parser
 
 
 
-		private var buttonNum:Number;
+		private  buttonNum:number;
 
 
 		// TODO: Make failed scene button lookups fail in a debuggable manner!
@@ -728,7 +728,7 @@ package classes.Parser
 		// if the function name is not found in either context, an error *should* be thrown, but at the moment,
 		// it just returns to the debugPane
 		//
-		public function enterParserScene(sceneName:String):String
+		public  enterParserScene(sceneName:string):string
 		{
 
 			/*
@@ -738,7 +738,7 @@ package classes.Parser
 				if (sceneParserDebug) trace("WARNING: this.parserState."+prop+" = "+this.parserState[prop]);
 			}
 			*/
-			var ret:String = "";
+			var ret:string = "";
 
 			if (sceneParserDebug) trace("WARNING: Entering parser scene: \""+sceneName+"\"");
 			if (sceneParserDebug) trace("WARNING: Do we have the scene name? ", sceneName in this.parserState)
@@ -760,8 +760,8 @@ package classes.Parser
 
 				buttonNum = 0;		// Clear the button number, so we start adding buttons from button 0
 
-				var tmp1:String = this.parserState[sceneName];
-				var tmp2:String = recParser(tmp1, 0);		// we have to actually parse the scene now
+				var tmp1:string = this.parserState[sceneName];
+				var tmp2:string = recParser(tmp1, 0);		// we have to actually parse the scene now
 				ret             = Showdown.makeHtml(tmp2)
 
 
@@ -795,10 +795,10 @@ package classes.Parser
 		// This gets placed in this.parserState so this.parserState["sceneName"] == "scene contents blaugh"
 		//
 		// Note that parsing of the actual scene contents is deferred untill it's actually called for display.
-		private function parseSceneTag(textCtnt:String):void
+		private  parseSceneTag(textCtnt:string):void
 		{
-			var sceneName:String;
-			var sceneCont:String;
+			var sceneName:string;
+			var sceneCont:string;
 
 			sceneName = textCtnt.substring(textCtnt.indexOf(' ') ,textCtnt.indexOf('|'));
 			sceneCont = textCtnt.substr(textCtnt.indexOf('|')+1);
@@ -823,19 +823,19 @@ package classes.Parser
 		// and "Button Name" is the text that will be shown on the button.
 		// Note that the function name cannot contain spaces (actionscript requires this), and is case-sensitive
 		// "Button name" can contain arbitrary spaces or characters, excepting "]", "[" and "|"
-		private function parseButtonTag(textCtnt:String):void
+		private  parseButtonTag(textCtnt:string):void
 		{
 			// TODO: Allow button positioning!
 
-			var arr:Array = textCtnt.split("|")
+			var arr:any[] = textCtnt.split("|")
 			if (arr.len > 2)
 			{
 				if (this._settingsClass.haltOnErrors) throw new Error("");
 				throw new Error("Too many items in button")
 			}
 
-			var buttonName:String = stripStr(arr[1]);
-			var buttonFunc:String = stripStr(arr[0].substring(arr[0].indexOf(' ')));
+			var buttonName:string = stripStr(arr[1]);
+			var buttonFunc:string = stripStr(arr[0].substring(arr[0].indexOf(' ')));
 			//trace("WARNING: adding a button with name\"" + buttonName + "\" and function \"" + buttonFunc + "\"");
 			_ownerClass.addButton(buttonNum, buttonName, this.enterParserScene, buttonFunc);
 			buttonNum += 1;
@@ -844,7 +844,7 @@ package classes.Parser
 		// pushes the contents of the passed string into the scene list object if it's a scene, or instantiates the named button if it's a button
 		// command and returns an empty string.
 		// if the contents are not a button or scene contents, returns the contents.
-		private function evalForSceneControls(textCtnt:String):String
+		private  evalForSceneControls(textCtnt:string):string
 		{
 
 
@@ -865,7 +865,7 @@ package classes.Parser
 		}
 
 
-		private function isIfStatement(textCtnt:String):Boolean
+		private  isIfStatement(textCtnt:string):boolean
 		{
 			if (textCtnt.toLowerCase().indexOf("if") == 0)
 				return true;
@@ -876,10 +876,10 @@ package classes.Parser
 		// Called to determine if the contents of a bracket are a parseable statement or not
 		// If the contents *are* a parseable, it calls the relevant function to evaluate it
 		// if not, it simply returns the contents as passed
-		private function parseNonIfStatement(textCtnt:String, depth:int):String
+		private  parseNonIfStatement(textCtnt:string, depth:number):string
 		{
 
-			var retStr:String = "";
+			var retStr:string = "";
 			if (printCcntentDebug) trace("WARNING: Parsing content string: ", textCtnt);
 
 
@@ -914,13 +914,13 @@ package classes.Parser
 			return retStr;
 		}
 
-		import flash.utils.getQualifiedClassName;
+		 
 
 
 		// Actual internal parser function.
 		// textCtnt is the text you want parsed, depth is a number that reflects the current recursion depth
 		// You pass in the string you want parsed, and the parsed result is returned as a string.
-		private function recParser(textCtnt:String, depth:Number):String
+		private  recParser(textCtnt:string, depth:number):string
 		{
 			if (mainParserDebug) trace("WARNING: Recursion call", depth, "---------------------------------------------+++++++++++++++++++++")
 			if (printIntermediateParseStateDebug) trace("WARNING: Parsing contents = ", textCtnt)
@@ -933,13 +933,13 @@ package classes.Parser
 			if (textCtnt.length == 0)	// Short circuit if we've been passed an empty string
 				return "";
 
-			var i:Number = 0;
+			var i:number = 0;
 
-			var bracketCnt:Number = 0;
+			var bracketCnt:number = 0;
 
-			var lastBracket:Number = -1;
+			var lastBracket:number = -1;
 
-			var retStr:String = "";
+			var retStr:string = "";
 
 			do
 			{
@@ -979,7 +979,7 @@ package classes.Parser
 					}
 					if (bracketCnt == 0)	// We've found the matching closing bracket for the opening bracket at textCtnt[lastBracket]
 					{
-						var prefixTmp:String, postfixTmp:String;
+						var prefixTmp:string, postfixTmp:string;
 
 						// Only prepend the prefix if it actually has content.
 						prefixTmp = textCtnt.substring(0, lastBracket);
@@ -990,7 +990,7 @@ package classes.Parser
 						// therefore, we just add it to the returned string
 
 
-						var tmpStr:String = textCtnt.substring(lastBracket+1, i);
+						var tmpStr:string = textCtnt.substring(lastBracket+1, i);
 						tmpStr = evalForSceneControls(tmpStr);
 						// evalForSceneControls swallows scene controls, so they won't get parsed further now.
 						// therefore, you could *theoretically* have nested scene pages, though I don't know WHY you'd ever want that.
@@ -1060,7 +1060,7 @@ package classes.Parser
 		// textCtnt is the text you want parsed, depth is a number, which should be 0
 		// or not passed at all.
 		// You pass in the string you want parsed, and the parsed result is returned as a string.
-		public function recursiveParser(contents:String, parseAsMarkdown:Boolean = false, prettyQuotes:Boolean=true):String
+		public  recursiveParser(contents:string, parseAsMarkdown:boolean = false, prettyQuotes:boolean=true):string
 		{
 			if (mainParserDebug) trace("WARNING: ------------------ Parser called on string -----------------------");
 			// Eventually, when this goes properly class-based, we'll add a period, and have this.parserState.
@@ -1071,7 +1071,7 @@ package classes.Parser
 
 
 
-			var ret:String = "";
+			var ret:string = "";
 			// Run through the parser
 			contents = contents.replace(/\\n/g, "\n")
 			ret = recParser(contents, 0);
@@ -1139,7 +1139,7 @@ package classes.Parser
 
 		// Make shit look nice
 
-		private function makeQuotesPrettah(inStr:String):String
+		private  makeQuotesPrettah(inStr:string):string
 		{
 
 			inStr = inStr.replace(/(\w)'(\w)/g,										"$1\u2019$2")	// Apostrophes
@@ -1156,18 +1156,18 @@ package classes.Parser
 
 		// Stupid string utility functions, because actionscript doesn't have them (WTF?)
 
-		public function stripStr(str:String):String
+		public  stripStr(str:string):string
 		{
 			return trimStrBack(trimStrFront(str, " "), " ");
 			return trimStrBack(trimStrFront(str, "	"), "	");
 		}
 
-		public function trimStr(str:String, char:String = " "):String
+		public  trimStr(str:string, char:string = " "):string
 		{
 			return trimStrBack(trimStrFront(str, char), char);
 		}
 
-		public function trimStrFront(str:String, char:String = " "):String
+		public  trimStrFront(str:string, char:string = " "):string
 		{
 			char = stringToCharacter(char);
 			if (str.charAt(0) == char) {
@@ -1176,7 +1176,7 @@ package classes.Parser
 			return str;
 		}
 
-		public function trimStrBack(str:String, char:String = " "):String
+		public  trimStrBack(str:string, char:string = " "):string
 		{
 			char = stringToCharacter(char);
 			if (str.charAt(str.length - 1) == char) {
@@ -1184,7 +1184,7 @@ package classes.Parser
 			}
 			return str;
 		}
-		public function stringToCharacter(str:String):String
+		public  stringToCharacter(str:string):string
 		{
 			if (str.length == 1)
 			{
@@ -1194,7 +1194,7 @@ package classes.Parser
 		}
 
 
-		public function isUpperCase(char:String):Boolean
+		public  isUpperCase(char:string):boolean
 		{
 			if (!isNaN(Number(char)))
 			{
@@ -1207,7 +1207,7 @@ package classes.Parser
 			return false;
 		}
 
-		public function capitalizeFirstWord(str:String):String
+		public  capitalizeFirstWord(str:string):string
 		{
 
 			str = str.charAt(0).toUpperCase()+str.slice(1);
@@ -1215,4 +1215,3 @@ package classes.Parser
 		}
 
 	}
-}

@@ -1,14 +1,14 @@
-package classes.Scenes.Areas.Forest
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Scenes.Monsters.Goblin;
-	import classes.internals.*;
+ 
 
-	public class Tamani extends Goblin
+	 
+	 
+	 
+	 
+
+	export class Tamani extends Goblin
 	{
 
-		override protected function goblinTeaseAttack():void
+		 protected  goblinTeaseAttack():void
 		{
 			if(flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] > 0) {
 				tamaniHypnoTease();
@@ -18,8 +18,8 @@ package classes.Scenes.Areas.Forest
 		}
 
 //New Tease option:
-		public function tamaniHypnoTease():void {
-			var selector:Number = rand(3);
+		public  tamaniHypnoTease():void {
+			var selector:number = rand(3);
 			//Choose 1 of 3 variations
 			if(selector == 0) outputText("Tamani smiles and shifts her leather straps, pulling one into the puffy gash that is her vagina.  She groans out loud, sliding the studded leather band into her outer lips and sawing it along her clit.  Her whole body blushes as she pulls it free, running a fingertip up the now wet strip of leather, \"<i>Mmm, can't you see how much my pussy needs a man inside it?  Be a good husband and fuck Tamani full!  You know you want to.</i>\"\n\n", false);
 			if(selector == 1) outputText("Tamani saunters up to you, sliding her fingers down to each side of her pussy and spreading them.  Your eyes are drawn to her honeyed tunnel, unable to look away she gets closer.  She whispers, \"<i>Your cock knows what it needs.  Just be a good husband and obey your dick, it KNOWS how badly you need mistress's pussy.</i>\"\n\n", false);
@@ -77,7 +77,7 @@ package classes.Scenes.Areas.Forest
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (hpVictory) {
 				outputText("Tamani is defeated!", true);
@@ -86,8 +86,8 @@ package classes.Scenes.Areas.Forest
 			}
 			if(player.lust >= 33 && player.totalCocks() > 0) {
 				outputText("  You could fuck her, but if that's the case why did you bother fighting her?\n\nWhat do you do to her?", false);
-				var temp:Function = null;
-				var temp2:Function = null;
+				var temp:() => void = null;
+				var temp2:() => void = null;
 				if(player.hasCock() && player.cockThatFits(analCapacity()) >= 0) temp = game.forest.tamaniScene.tamaniAnalShits;
 				//NOT PREGGERS
 				if (!game.forest.tamaniScene.pregnancy.isPregnant && player.canOvipositSpider()) {
@@ -98,7 +98,7 @@ package classes.Scenes.Areas.Forest
 			else game.cleanupAfterCombat();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (hpVictory){
 				if(player.totalCocks() > 0) {
@@ -123,7 +123,7 @@ package classes.Scenes.Areas.Forest
 			}
 		}
 
-		public function Tamani()
+		public  constructor()
 		{
 			super(false);
 			this.a = "";
@@ -172,4 +172,3 @@ package classes.Scenes.Areas.Forest
 		
 	}
 
-}

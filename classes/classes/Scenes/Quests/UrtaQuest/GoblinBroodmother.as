@@ -1,15 +1,15 @@
 /**
  * Created by aimozg on 18.01.14.
  */
-package classes.Scenes.Quests.UrtaQuest
-{
-	import classes.*;
-	import classes.Scenes.Monsters.Goblin;
-	import classes.internals.*;
+ 
 
-	public class GoblinBroodmother extends Goblin
+	 
+	 
+	 
+
+	export class GoblinBroodmother extends Goblin
 	{
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.clearOutput();
 			outputText("The goblin broodmother is defeated!  You find a bottle of succubi milk on her.  That stuff is banned in Tel'Adre - and for good reason, but it might come in handy.  You pocket the foul fluid for now.");
@@ -19,12 +19,12 @@ package classes.Scenes.Quests.UrtaQuest
 			game.addButton(4,"Leave",game.urtaQuest.nagaPleaseNagaStoleMyDick);
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.urtaQuest.urtaLosesToGoblin();
 		}
 
-		public function GoblinBroodmother()
+		public  constructor()
 		{
 			super(true);
 			this.a = "the ";
@@ -68,4 +68,4 @@ package classes.Scenes.Quests.UrtaQuest
 			checkMonster();
 		}
 	}
-}
+

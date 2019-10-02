@@ -1,16 +1,16 @@
-﻿/**
+/**
  * Created by K.Quesom 11.06.14
  */
-package classes.Scenes.Areas.Bog
-{
-	import classes.*;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class Phouka extends Monster
+	 
+	 
+
+	export class Phouka extends Monster
 	{
-		protected function phoukaFightAttack():void
+		protected  phoukaFightAttack():void
 		{ 
-			var damage:int;
+			var damage:number;
 			//Only the bunny, goat and horse forms make physical attacks
 			if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
 				outputText(capitalA + short + " completely misses you due to his blindness!\n", false);
@@ -52,7 +52,7 @@ package classes.Scenes.Areas.Bog
 			combatRoundOver();
 		}
 
-		protected function phoukaFightLustAttack():void
+		protected  phoukaFightLustAttack():void
 		{ //Only the faerie, bunny and horse forms make lust attacks
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE)
 				outputText("The " + this.short + " uses his wings to climb high up in the air above you.  Then he starts jerking his cock at you with one hand while fondling his balls with the other.  ");
@@ -76,7 +76,7 @@ package classes.Scenes.Areas.Bog
 			combatRoundOver();
 		}
 
-		protected function phoukaFightSilence():void
+		protected  phoukaFightSilence():void
 		{ //Reuses the statusAffect Web-Silence from the spiders
 			outputText(this.capitalA + this.short + " scoops up some muck from the ground and rams it down over his cock.  After a few strokes he forms the lump of mud and precum into a ball and whips it at your face.  ");
 			if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2)
@@ -96,15 +96,15 @@ package classes.Scenes.Areas.Bog
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var blinded:Boolean = findStatusAffect(StatusAffects.Blind) >= 0;
+			var blinded:boolean = findStatusAffect(StatusAffects.Blind) >= 0;
 			if ((!blinded) && player.findStatusAffect(StatusAffects.WebSilence) < 0 && rand(4) == 0) {
 				phoukaTransformToPhouka(); //Change to faerie form so that it can lob the ball of muck at you
 				phoukaFightSilence();
 			}
 			else {
-				var transformChance:int = rand(9); //2 in 3 chance of staying in current form
+				var transformChance:number = rand(9); //2 in 3 chance of staying in current form
 				if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE) {
 					if (blinded) transformChance = rand(3); //100% chance of change from blind phouka if not doing silence attack
 					else transformChance = rand(4); //75% chance of change from phouka if not doing silence attack
@@ -125,7 +125,7 @@ package classes.Scenes.Areas.Bog
 			}
 		}
 
-		override public function teased(lustDelta:Number):void
+		 public  teased(lustDelta:number):void
 		{
 			if (lustDelta >= 10)
 				outputText("\n\nThe " + this.short + " breaks off its attack in the face of your teasing.  Its drooling member leaves a trail of precum along the ground and you get the feeling it needs to end this fight quickly.");
@@ -136,12 +136,12 @@ package classes.Scenes.Areas.Bog
 			applyTease(lustDelta);
 		}
         
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.bog.phoukaScene.phoukaPlayerWins(hpVictory);
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nThe " + this.short + " looks on, amused. <i>“Kinky! But those wee things can't handle whiskey, so I’m safe from ‘em. Now be a good ");
@@ -160,7 +160,7 @@ package classes.Scenes.Areas.Bog
 			}
 		}
 
-		protected function phoukaTransformToBunny():void
+		protected  phoukaTransformToBunny():void
 		{
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_BUNNY) return; //Already a bunny, so no change
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE) {
@@ -178,7 +178,7 @@ package classes.Scenes.Areas.Bog
 			PhoukaScene.phoukaForm = PhoukaScene.PHOUKA_FORM_BUNNY;
 		}
 
-		protected function phoukaTransformToGoat():void
+		protected  phoukaTransformToGoat():void
 		{
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_GOAT) return; //Already a goat, so no change
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE) {
@@ -196,7 +196,7 @@ package classes.Scenes.Areas.Bog
 			PhoukaScene.phoukaForm = PhoukaScene.PHOUKA_FORM_GOAT;
 		}
 
-		protected function phoukaTransformToHorse():void
+		protected  phoukaTransformToHorse():void
 		{
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_HORSE) return; //Already a horse, so no change
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE) {
@@ -214,7 +214,7 @@ package classes.Scenes.Areas.Bog
 			PhoukaScene.phoukaForm = PhoukaScene.PHOUKA_FORM_HORSE;
 		}
 		
-		protected function phoukaTransformToPhouka():void
+		protected  phoukaTransformToPhouka():void
 		{
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE) return; //Already a faerie, so no change
 			if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_BUNNY) {
@@ -232,7 +232,7 @@ package classes.Scenes.Areas.Bog
 			PhoukaScene.phoukaForm = PhoukaScene.PHOUKA_FORM_FAERIE;
 		}
 
-		override public function handleAwardItemText(itype:ItemType):void
+		 public  handleAwardItemText(itype:ItemType):void
 		{
 			outputText("  You are just about to leave when you remember that glint from the hollow of that nearby tree.");
 			if (itype == null)
@@ -240,12 +240,12 @@ package classes.Scenes.Areas.Bog
 			else outputText("\n\nYou look inside the hollow and are pleased to find " + itype.longName + ".  You also gain " + this.XP + " XP from your victory, since you learned a bit more about fighting these little pests.\n\n");
 		}
 
-		override public function handleAwardText():void
+		 public  handleAwardText():void
 		{
 			//Talk about gems and XP when the player looks in the hollow of the tree instead of here
 		}
 		
-		override public function handleCombatLossText(inDungeon:Boolean, gemsLost:int):int
+		 public  handleCombatLossText(inDungeon:boolean, gemsLost:number):number
 		{
 			if (player.gems > 1)
 				outputText("  Once free you check your gem pouch and realize the " + this.short + " took " + gemsLost + " of your gems.");
@@ -254,7 +254,7 @@ package classes.Scenes.Areas.Bog
 			return 1; //Only use up one hour after combat loss
 		}
 		
-		public function Phouka(phoukaName:String)
+		public  constructor(phoukaName:string)
 		{
 			super();
 
@@ -313,4 +313,4 @@ package classes.Scenes.Areas.Bog
 
 	}
 
-}
+

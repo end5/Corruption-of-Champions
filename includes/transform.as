@@ -1,5 +1,5 @@
-﻿//Updates the player's gender
-public function genderCheck():void {
+//Updates the player's gender
+export function genderCheck():void {
 	if(player.cocks.length > 0) {
 		if(player.vaginas.length > 0) player.gender = 3;
 		else player.gender = 1;

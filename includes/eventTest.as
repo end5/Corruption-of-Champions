@@ -1,10 +1,10 @@
 
 
-public function eventTestingPane():void
+export function eventTestingPane():void
 {
 
 
-	outputText(<![CDATA[
+	outputText(`<![CDATA[
 
 
 
@@ -87,7 +87,7 @@ consequatur aut perferendis doloribus asperiores repellat.
 
 
 
-	]]>, true, true);
+	]]>`, true, true);
 
 	//trace("Maintext content @ eventTestingPane = ", mainText.htmlText.length)
 	//menu();
@@ -102,10 +102,10 @@ consequatur aut perferendis doloribus asperiores repellat.
 
 */
 
-public function eventTester():void {
+export function eventTester():void {
 	outputText("", true);
 	mainView.showTestInputPanel();
-	mainView.eventTestInput.text = <![CDATA[
+	mainView.eventTestInput.text = `<![CDATA[
 [screen startup |
 
 "Paste test event text here."
@@ -117,17 +117,17 @@ public function eventTester():void {
 [button exit | Exit ]
 ]
 
-]]>;
+]]>`;
 
 	;
 	simpleChoices("Proceed",eventTesterGo,"",null,"",null,"",null,"Back",eventTesterExit);
 }
 
-public function eventTesterGo():void
+export function eventTesterGo():void
 {
 	mainView.hideTestInputPanel();
 
-	var temp:String = mainView.eventTestInput.text
+	var temp:string = mainView.eventTestInput.text
 
 	trace("Temp = ", temp);
 
@@ -140,7 +140,7 @@ public function eventTesterGo():void
 	return;
 }
 
-public function eventTesterExit():void
+export function eventTesterExit():void
 {
 	mainView.hideTestInputPanel();
 	debugPane();

@@ -1,19 +1,19 @@
-package classes.Scenes.Areas.Plains
-{
-	import classes.*;
-	import classes.internals.*;
+ 
+
+	 
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class Gnoll extends Monster 
+	export class Gnoll extends Monster 
 	{
 
 		//Gnoll Description
-		private function gnollAttackText():void {
-			var damage:Number = 0;
-			var attack:Number = rand(6);
+		private  gnollAttackText():void {
+			var damage:number = 0;
+			var attack:number = rand(6);
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
@@ -90,9 +90,9 @@ package classes.Scenes.Areas.Plains
 			}
 		}
 		
-		private function gnollTease():void {
-			var tease:Number = rand(6);
-			var bonus:Number = 0;
+		private  gnollTease():void {
+			var tease:number = rand(6);
+			var bonus:number = 0;
 			//Gnoll Tease #1
 			if(tease == 0) {
 				outputText("The gnoll takes a moment to stretch her sleek, athletic body.  Her free hand runs up her side and she leers knowingly at you.", false);
@@ -124,10 +124,10 @@ package classes.Scenes.Areas.Plains
 			outputText("\n", false);
 		}
 
-		override public function eAttack():void
+		 public  eAttack():void
 		{
-			var damage:Number = 0;
-			var attack:Number = rand(6);
+			var damage:number = 0;
+			var attack:number = rand(6);
 //return to combat menu when finished
 			doNext(game.playerMenu);
 //Blind dodge change
@@ -203,7 +203,7 @@ package classes.Scenes.Areas.Plains
 			}
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if (findStatusAffect(StatusAffects.Stunned) >= 0) {
 				if (plural) outputText("Your foes are too dazed from your last hit to strike back!", false);
@@ -229,8 +229,8 @@ package classes.Scenes.Areas.Plains
 				}
 				combatRoundOver();
 			}
-			var select:Number = 1;
-			var rando:Number = 1;
+			var select:number = 1;
+			var rando:number = 1;
 //Exgartuan gets to do stuff!
 			if (player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
 				game.exgartuan.exgartuanCombatUpdate();
@@ -265,8 +265,8 @@ package classes.Scenes.Areas.Plains
 */
 			if (rand(2) == 0) gnollTease();
 			else {
-				var damage:Number = 0;
-				var attack:Number = rand(6);
+				var damage:number = 0;
+				var attack:number = rand(6);
 //return to combat menu when finished
 				doNext(game.playerMenu);
 //Blind dodge change
@@ -346,7 +346,7 @@ package classes.Scenes.Areas.Plains
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
 				removeStatusAffect(StatusAffects.PhyllaFight);
@@ -356,7 +356,7 @@ package classes.Scenes.Areas.Plains
 			game.plains.gnollScene.defeatHyena();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
 				removeStatusAffect(StatusAffects.PhyllaFight);
@@ -369,7 +369,7 @@ package classes.Scenes.Areas.Plains
 			}
 		}
 
-		public function Gnoll()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "gnoll";
@@ -413,4 +413,3 @@ package classes.Scenes.Areas.Plains
 		
 	}
 
-}

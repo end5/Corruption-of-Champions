@@ -1,15 +1,15 @@
-﻿package classes.Scenes.Places.Bazaar{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
+	 
+	 
+	 
 
-	public class FapArena extends BazaarAbstractContent{
+	export class FapArena extends BazaarAbstractContent{
 
-	public function FapArena()
+	public  constructor()
 	{
 	}
 
-	public function fapAppearance(display:Boolean = true):void {
+	public  fapAppearance(display:boolean = true):void {
 	if(display) {
 		//[Paragraph: Bazaar description, 1st time]
 		if(flags[kFLAGS.FAP_ARENA_RULES_EXPLAINED] == 0) outputText("\n\nThere is a gigantic tent standing in the clearing, with a large crowd gathering around it.   Perhaps you could investigate and see what is going on inside.", false);
@@ -19,10 +19,10 @@
 	}
 }
 //Option labeled "Arena» is available.
-public function fapArenaGOOOO():void {
+public  fapArenaGOOOO():void {
 	outputText("", true);
 	//(set X = longest cock)
-	var x:Number = player.longestCock();
+	var x:number = player.longestCock();
 	//[1st time]
 	if(flags[kFLAGS.FAP_ARENA_RULES_EXPLAINED] == 0) outputText("As you approach the tent, you notice these people are actually waiting in line, pleasantly chatting with each other.  All varieties of species are there, from cute little goblins and mouse-faced people with rodent-like teeth, to towering centaurs and minotaurs, the latter easily noticed with their strong scent.   You spot the occasional sharp-toothed dog-morph or shark breeder, some traditional incubi and a few tentacled mutants, victims of consuming corrupted vegetation.  There are even a few humans, nonchalantly standing in the waiting line and making conversation, as if some of the others weren't monstrosities.  What strikes you is everyone's perfect civility.  Obviously everyone is used to the place.\n\n", false);
 
@@ -88,11 +88,11 @@ public function fapArenaGOOOO():void {
 	//end of condition about PC's first time, display the following
 }
 	
-private function fapArenaPageII():void {
+private  fapArenaPageII():void {
 	//Increment 'times fap-arena'ed
 	flags[kFLAGS.FAP_ARENA_SESSIONS]++;
 	outputText("", true);
-	var x:Number = player.longestCock();
+	var x:number = player.longestCock();
 	
 	outputText("\"<i>READY!</i>\"\n\n", false);
 	if(player.cor > 66) outputText("You eagerly seize the rod on your right side; squeezing it a bit in impatience.  A  little tingle alerts you to your left neighbor grabbing " + oMultiCockDesc() + " with an expert hand.  Everyone around you quickly grabs hold of the nearest cock on their right side.  Some of them are trembling because of the induced stress and arousal.\n\n", false);
@@ -113,26 +113,26 @@ private function fapArenaPageII():void {
 	if(player.hasVagina()) outputText("other ", false);
 	outputText("dick-girls in that room: cute face, jiggling breasts, curvy body, squeezable hips; they would almost look like normal females if it weren't for that huge pre-cum-spilling, protruding cock.  They seem as deep in concentration as the others, the only difference being their feminine fluids spilling freely from their wet cunts and the occasional girlish moans that escape their lips.  The warm, musky smell of male genitalia starts impregnating the whole room as the temperature rises higher and higher and you find yourself all the more aroused.  You close your eyes in order to stop torturing yourself with the sight of hot, horny, naked bodies. You don't know if you will be able to hold on much longer.\n\n", false);
 	
-	var winner:Boolean = true;
+	var winner:boolean = true;
 	if(rand(100) <= 4) winner = false;
 	//[how the game rolls:
 	//5% chance of losing no matter what.
 	//If that check fails,
 	//Let S be the PC's sensitivity
-	var s:Number = player.sens;
+	var s:number = player.sens;
 	//D the number of hours since he last came 
-	var d:Number = player.hoursSinceCum;
-	var c:Number = 0;
+	var d:number = player.hoursSinceCum;
+	var c:number = 0;
 	if(player.cocks[x].cockType == CockTypesEnum.DEMON) c = 10;
 	else if(player.cocks[x].cockType == CockTypesEnum.TENTACLE) c = 5;
 	else if(player.cocks[x].cockType == CockTypesEnum.LIZARD) c = 3;
 	else if(player.cocks[x].cockType == CockTypesEnum.HORSE) c = 2;
 	//R the player's lust resistance (0<R<1)
-	var r:Number = kGAMECLASS.lustPercent()/100;
+	var r:number = kGAMECLASS.lustPercent()/100;
 	//The game does a roll between 0 and 100, call it N.
-	var n:Number = rand(100);
+	var n:number = rand(100);
 	//We define the PC's stamina as ST = (N-S*R-4*D)/(D+1) + C
-	var st:Number = c + (n-s*r-4*d)/(1.2+(d/10));
+	var st:number = c + (n-s*r-4*d)/(1.2+(d/10));
 	//outputText("<B>CHEAT: " + st + "</b> N: " + n + " c: " + c + " s: " + s + " r: " + r + " D: " + d + "\n", false);
 	//If ST is 0 or less, the PC loses.
 	//If ST > 30, the PC wins.
@@ -145,11 +145,11 @@ private function fapArenaPageII():void {
 	else doNext(createCallBackFunction(fapResults,1));
 }
 
-private function fapResults(place:Number = 3):void {
+private  fapResults(place:number = 3):void {
 	outputText("", true);
-	var x:Number = player.longestCock();
-	var num:Number = rand(50) + 5;
-	var tent:Boolean = false;
+	var x:number = player.longestCock();
+	var num:number = rand(50) + 5;
+	var tent:boolean = false;
 	//Loses
 	if(place == 3) {
 		outputText("You try to focus as much as possible on your right arm and the cum-tube it's holding, but the raw sensations are starting to prove too much for your needy " + cockDescript(x) + ", and your arm is starting to tire.  You helplessly feel your " + cockDescript(x) + " twitching on its own as pressure builds down your urethra.  You try to count to ten in order to clarify your mind but the hand holding your " + cockDescript(x) + " doesn't allow you such leisure.  Every time you try to hold a coherent thought, the hand twists your " + cockDescript(x) + " in a rough way, sending jolts of pleasure and pain across your whole body.  Gods, it's too much.  Your rod is... you won't be able to... that's it, you can feel it.  It's too late. The flow of semen is gathering in your balls, slowly at first, but you know you don't have time.  In a desperate attempt not to lose, you ferociously rub the shaft in your own hand, faster and faster as you feel your seed starting its way up your urethra. No! This can't be! You rub the pecker wolfishly, paying special attention to the tip and pumping as much pre-cum outside as physically possible.  For a moment, you think you're going to win, for the dick's owner lets out a very loud moan and starts shuddering, victim of your eager ministrations.  You almost feel the liquid seed flowing through the cock veins; then, in a supreme effort of constriction, your right partner manages to hold off that flow.  He won't orgasm this time.  You have lost.\n\n", false);
@@ -426,9 +426,9 @@ private function fapResults(place:Number = 3):void {
 }
 
 //[SPECIAL: if player has an extra tentacle dick more than 40 inches long OR if the player has lost and has a unique tentacle dick, add this paragraph before the PC cums]
-private function tentacleFapSpecial(place:Number):void {
+private  tentacleFapSpecial(place:number):void {
 	temp = player.cocks.length;
-	var x:Number = player.longestCock();
+	var x:number = player.longestCock();
 	while(temp > 0) {
 		temp--;
 		if(player.cocks[x].cockLength >= 40 && player.cocks[x].cockType == CockTypesEnum.TENTACLE)
@@ -454,9 +454,9 @@ private function tentacleFapSpecial(place:Number):void {
 	}
 }
 //[in both cases, special paragraph for cumming with tentacle dick]
-private function tentacleFapCum():Boolean {
+private  tentacleFapCum():boolean {
 	temp = player.cocks.length;
-	var x:Number = player.longestCock();
+	var x:number = player.longestCock();
 	while(temp > 0) {
 		temp--;
 		if(player.cocks[x].cockLength >= 40 && player.cocks[x].cockType == CockTypesEnum.TENTACLE)
@@ -469,4 +469,4 @@ private function tentacleFapCum():Boolean {
 	return false;
 }
 }
-}
+

@@ -1,16 +1,16 @@
-﻿private static const DUNGEON_FACTORY_FOYER:int				= 9;
-private static const DUNGEON_FACTORY_PUMP_ROOM:int			= 1;
-private static const DUNGEON_FACTORY_BREAK_ROOM:int			= 2;
-private static const DUNGEON_FACTORY_FURNACE_ROOM:int		= 3;
-private static const DUNGEON_FACTORY_REPAIR_CLOSET:int		= 4;
-private static const DUNGEON_FACTORY_MAIN_CHAMBER:int		= 5;
-private static const DUNGEON_FACTORY_FOREMANS_OFFICE:int	= 6;
-private static const DUNGEON_FACTORY_PUMP_CONTROL:int		= 7;
-private static const DUNGEON_FACTORY_STORE_ROOM:int			= 8;
+  const DUNGEON_FACTORY_FOYER:number				= 9;
+  const DUNGEON_FACTORY_PUMP_ROOM:number			= 1;
+  const DUNGEON_FACTORY_BREAK_ROOM:number			= 2;
+  const DUNGEON_FACTORY_FURNACE_ROOM:number		= 3;
+  const DUNGEON_FACTORY_REPAIR_CLOSET:number		= 4;
+  const DUNGEON_FACTORY_MAIN_CHAMBER:number		= 5;
+  const DUNGEON_FACTORY_FOREMANS_OFFICE:number	= 6;
+  const DUNGEON_FACTORY_PUMP_CONTROL:number		= 7;
+  const DUNGEON_FACTORY_STORE_ROOM:number			= 8;
 
-public function get inDungeon():Boolean { return dungeonLoc != 0; }
+export function get inDungeon():boolean { return dungeonLoc != 0; }
 
-private function dungeonMenu():void {
+ function dungeonMenu():void {
 /*	//Dungeon Choices!
 	var choice1:* = 0;
 	var text1:String = "";
@@ -957,7 +957,7 @@ private function dungeonMenu():void {
 		outputText("<b><u>Eastern Warrens East Portion North Side (Bath Room)</u></b>\n");
 		outputText("As soon as you step in, you can smell a sweet, dairy-like scent in the air, but as your eyes adjust to the dimmer lighting, you realize you've stumbled into the sand witches' bathroom!  Fluffy towels hang from the wall, ready for use.  There's one giant tub in the center of the room, recessed deep into the floor.  It has a number of seats carved into the side with a small, open hole in the bottom.  Hanging from the ceiling, a long chain dangles down, topped with a plug.");
 		flags[kFLAGS.MET_MILK_SLAVE] = 1;
-		if(flags[kFLAGS.MILK_NAME] is Number) {
+		if(flags[kFLAGS.MILK_NAME] instanceof Number) {
 			outputText("  There are no faucets or water sources that you can see, but your unasked questions are answered when a heavy, liquid sloshing sound emanates from the corner.  The source of the noise reveals itself to be a tit-encumbered, black-skinned human girl.  She drags her milk-swollen mammaries up to the edge of the tub and asks in a breathy, excited voice, \"<i>Bath time?</i>\"  Whoever she was, the witches seem to have broken her utterly - she's interested in nothing but being milked or lounging in her corner.  The way out lies west.");
 //			text3 = "Bath Time";
 //			choice3 = milkBathsAhoy;
@@ -1067,7 +1067,7 @@ private function dungeonMenu():void {
 //	choices(text1,choice1,text2,choice2,text3,choice3,text4,choice4,text5,choice5,text6,choice6,text7,choice7,text8,choice8,"Items",itemMenu,"Masturbate",masturbateMenu);
 }
 
-public function enterFactory():void {
+export function enterFactory():void {
 	clearOutput();
 	if (player.findStatusAffect(StatusAffects.FactoryOverload) >= 0) {
 		outputText("Rounding a bend in the mountainous foothills, you stumble upon a large, rusted and eerily silent iron structure with a number of tall gray smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside toward a jagged hole in its face.  Most of these are cracked open along their seams and both the pipes and mountainside are glazed with pink tinted runoff.\n\nThere are no windows to the hellish factory, with only a single iron door adorning the front wall.\n\nDo you enter the factory or leave?");
@@ -1085,18 +1085,18 @@ public function enterFactory():void {
 	simpleChoices("Enter", actuallyEnterFactory, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
 }
 
-private function dungeonEnterRoom(room:int):void {
+ function dungeonEnterRoom(room:number):void {
 	dungeonLoc = room;
 	playerMenu();
 }
 
-private function actuallyEnterFactory():void {
+ function actuallyEnterFactory():void {
 //	inDungeon = true;
 	dungeonLoc = DUNGEON_FACTORY_FOYER;
 	playerMenu();
 }
 
-public function leaveFactory():void {
+export function leaveFactory():void {
 //	inDungeon = false;
 	dungeonLoc = 0;
 	clearOutput();
@@ -1104,14 +1104,14 @@ public function leaveFactory():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 
-public function factoryShutdown():void {
+export function factoryShutdown():void {
 	clearOutput();
 	outputText("You resolve to shut down the factory, then destroy the controls.  You spend a few moments making sure you aren't about to do something disastrous.  A few deep breaths calm your nerves, letting you focus on pressing the correct buttons.  The constant thrumming of the machinery slowly dies down, closely followed by a chorus of disappointed moans.  You step over to the window and watch as the captives come out of their drug induced sex-comas.  A great deal of them gather up and leave, though you are unsure what their destination is.  A few seem to be gathering back around the equipment, and puzzling out how to operate it.  Maybe they liked being here..."); 
 	doNext(playerMenu);
 	player.createStatusAffect(StatusAffects.DungeonShutDown, 0, 0, 0, 0);
 }
 
-public function factoryOverload():void {
+export function factoryOverload():void {
 	clearOutput();
 	outputText("You resolve to shut down the factory by overloading the storage tanks, rendering much of the equipment inoperable and difficult to repair.  With a quick twist of a knob, you override the pressure vents for the storage tanks.  Within minutes, you hear the sounds of popping rivets and straining pumps.  You look out over the factory floor and watch as many of the pipes fracture, dripping seed over the moaning captives.  Smoke rises from pumps as they short out and overheat.  The entire building shudders as a massive blast echoes from somewhere to the west.  A high pitched whine fills the building as the last motors shriek and die.  The captives slowly start to come to as the flood of drugs and artificial pleasure come to a stop.  Many break down and cry, others begin unhooking themselves and exploring their surroundings.  You watch with interest as many of them rally together and make for an exit.   The remaining survivors begin scavenging parts from the machinery and puzzling out how to use it.  Perhaps they liked it here.");
 	doNext(playerMenu);
@@ -1119,7 +1119,7 @@ public function factoryOverload():void {
 	player.createStatusAffect(StatusAffects.FactoryOverload, 0, 0, 0, 0);
 }
 
-private function relieveTension():void {
+ function relieveTension():void {
 	clearOutput();
 	//First time...
 	if (player.findStatusAffect(StatusAffects.TensionReleased) < 0) {
@@ -1214,7 +1214,7 @@ private function relieveTension():void {
 	doNext(playerMenu);
 }
 
-public function factoryFinisher():void {
+export function factoryFinisher():void {
 	clearOutput();
 	outputText("You crack your sleep-fuzzed eyes, blinking at the sudden light as you try to get your bearings and remember where you are.  A nearby voice is moaning like a bitch in heat, or a drunk slut.  You giggle a bit at the thought as you work at focusing your eyes.  You feel warm and happy, particularly in your chest and groin.  The cobwebs of sleep clear from your mind with agonizing slowness, but you find it hard to worry about with how warm and wonderful you feel.  It's almost like hot wet mouths are latched onto your crotch and breasts, licking and sucking in perfect rhythm.  ", false);
 	if(player.cocks.length == 0 || player.biggestTitSize() <= 1) {
@@ -1249,7 +1249,7 @@ public function factoryFinisher():void {
 	gameOver();
 }
 
-private function succubusTalkOne():void {
+ function succubusTalkOne():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("\"<i>I suppose I really should thank you for coming down all by your lonesome.  The boss is gonna be sooo happy we found you.  Just think, in an hour or two we can get you strapped in and working with the others,</i>\"  says the secretarial succubus as she saunters over, still sipping her coffee, \"<i>You're so cute!  I tell you what, if you agree to come with me, I'll, like, make sure the experience is pleasurable.</i>\"\n\n");
@@ -1257,27 +1257,27 @@ private function succubusTalkOne():void {
 	simpleChoices("For what?", succubusTalkTwo, "Yes", succubusBadEnd, "No", succubusRefuseOffer, "", null, "", null);
 }
 
-private function succubusTalkTwo():void {
+ function succubusTalkTwo():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("The succubus looks at you with a bemused expression, \"<i>You haven't figured it out yet?  Really?  What do you think we make at this factory, bubble-gum?</i>\" she asks with a cruel smile, \"<i>We take human and once-human champions like you, pump you full of aphrodisiacs, body-altering drugs, and corrupting agents, and then milk you of your tainted fluids continually for the rest of your life!  And don't even start to ask why, I'll tell you – there are still pockets of purity out there that repel cute demons like me.  So the best way to deal with those is just to release a river of drug-filled sex-juice at them.  By the time the area dries off, the locals welcome us with open arms... and spread legs.</i>\"");
 	simpleChoices("Sick!", succubusRefuseOffer, "Sounds Fun", succubusBadEnd, "", null, "", null, "", null);
 }
 
-private function succubusCombatStart():void {
+ function succubusCombatStart():void {
 	spriteSelect(55);
 	player.createStatusAffect(StatusAffects.FactorySuccubusDefeated, 0, 0, 0, 0);
 	startCombat(new SecretarialSuccubus(), true); //Won't matter if you lose
 }
 
-private function succubusRefuseOffer():void {
+ function succubusRefuseOffer():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("She frowns, \"<i>I was secretly hoping you would say that... I'm going to make you beg me to hook you into the machines.  Just wait.</i>\"");
 	doNext(succubusCombatStart);
 }
 
-public function secretarialSuccubusInsult():void {
+export function secretarialSuccubusInsult():void {
 	clearOutput();
 	outputText("You laugh mockingly at the stupid demon, roaring, \"<i>I'm the bloody champion you vapid cunt!</i>\"\n\nShe whirls, her beautiful face marred by rage.  It looks like you have a fight on your hands...");
 	//(START FIGHT – Succubus Defense -10)
@@ -1285,7 +1285,7 @@ public function secretarialSuccubusInsult():void {
 	monster.armorDef -= 10;
 }
 
-private function succubusBadEnd():void {
+ function succubusBadEnd():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("The blue skinned seductress steps forward and wraps her arms around you, pulling your head down and crushing it into her heavenly breasts as she speaks, \"<i>My my, aren't you the kinky little play-toy.  Let's get you hooked up.</i>\"\n\n");
@@ -1294,7 +1294,7 @@ private function succubusBadEnd():void {
 	doNext(succubusBadEndPartTwo);
 }
 
-private function succubusBadEndPartTwo():void {
+ function succubusBadEndPartTwo():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("In no time flat your blood begins to burn hot with the fires of unnatural lust.  "); //Arousal
@@ -1356,7 +1356,7 @@ private function succubusBadEndPartTwo():void {
 	doNext(succubusBadEndPartThree);
 }
 
-private function succubusBadEndPartThree():void {
+ function succubusBadEndPartThree():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("The beautiful seductress that bound you giggles and says, \"<i>Oh it only gets better baby,</i>\" as she pushes another button.  You see a number of needles lower from the equipment above.  Two pause at chest height.  Faded parchment labels on the tubes mark them as \"Gro+\".  You spot the same markings on at least some of the hoses gathering around your groin.  A few are marked with different labels, but you cannot make out the demonic script.  As one, the hoses rear back, then plunge forward, burying themselves into your supple flesh and injecting their drugged payload into your body.  It hurts at first, but the drugs fog your mind, blocking the pain with pulsing waves of desire.   You begin cumming as your body erupts with artificial pleasure.\n\n"); 
@@ -1391,7 +1391,7 @@ private function succubusBadEndPartThree():void {
 	gameOver();
 }
 
-public function succubusLossRape():void {
+export function succubusLossRape():void {
 	spriteSelect(55);
 	clearOutput();
 	if(player.cocks.length > 0) {
@@ -1455,7 +1455,7 @@ public function succubusLossRape():void {
 	}
 }
 
-public function succubusVictoryRape():void {
+export function succubusVictoryRape():void {
 	spriteSelect(55);
 	clearOutput();
 	player.slimeFeed();
@@ -1535,7 +1535,7 @@ public function succubusVictoryRape():void {
 	}
 }
 
-public function dungeonSuccubusForceScissor():void {
+export function dungeonSuccubusForceScissor():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("You shiver with anticipation as you hook your leg under her thick thighs, lining up your " + vaginaDescript(0) + " as you press forwards.  The anticipation builds as your matched honeypots grow ever closer.  Making contact, your folds part as her purplish-red clit slips betwixt your nether-lips, vibrating slightly in tune with the succubus' heartbeats.  You gasp, feeling your own " + clitDescript() + " erecting and rubbing against her smooth mound.\n\n", false);
@@ -1547,7 +1547,7 @@ public function dungeonSuccubusForceScissor():void {
 	cleanupAfterCombat();
 }
 
-public function dungeonSuccubusForceFeed():void {
+export function dungeonSuccubusForceFeed():void {
 	spriteSelect(55);
 	clearOutput();
 	outputText("You chuckle as you decide to release some of the pent up pressure in your " + allBreastsDescript() + ".  Laying down over your conquest, you grasp her wrists and pin them to the floor as you shove your tits in her face", false);
@@ -1597,7 +1597,7 @@ public function dungeonSuccubusForceFeed():void {
 	cleanupAfterCombat();
 }
 
-private function drinkCoffee():void {
+ function drinkCoffee():void {
 	spriteSelect(96);
 	clearOutput();
 	outputText("You take a sip of the rich creamy coffee and suddenly feel refreshed. As you replace the coffeepot, the busty coffee-maker comes to life, grabbing her thick dusky nipples and squeezing out a trickle of scaldingly hot liquid. You can see her eyes roll up into her head from what you assume to be pleasure as she automatically refills the missing coffee, mouth open with ecstasy.  Her movements gradually slow as she quivers almost imperceptibly. A contented smile graces her features as immobility overtakes her, freezing her back in place.  You wonder if 'Mrs. Coffee' was created, or is a victim of this place's dark master.");
@@ -1606,14 +1606,14 @@ private function drinkCoffee():void {
 	doNext(playerMenu);
 }
 
-private function takeIronKey():void {
+ function takeIronKey():void {
 	clearOutput();
 	outputText("You take the <b>Iron Key</b> to keep with your other important items.");
 	player.createKeyItem("Iron Key", 0, 0, 0, 0);
 	doNext(playerMenu);
 }
 
-private function openFactoryDoor():void {
+ function openFactoryDoor():void {
 	if (player.hasKeyItem("Iron Key") < 0) {
 		clearOutput();
 		outputText("The door is locked with a key that is not in your possession.");
@@ -1622,7 +1622,7 @@ private function openFactoryDoor():void {
 	dungeonEnterRoom(dungeonLoc);
 }
 
-private function takeCockMilker():void {
+ function takeCockMilker():void {
 	clearOutput();
 	outputText("You puzzle out how to build a fully functional cock-milker from the spare parts here and assemble it.\n\nYou gained a <b>Cock Milker</b>!");
 	outputText("\n\nYou'll need a little help to use it though.");
@@ -1631,7 +1631,7 @@ private function takeCockMilker():void {
 	doNext(playerMenu);
 }
 
-private function takeBreastMilker():void {
+ function takeBreastMilker():void {
 	clearOutput();
 	outputText("You puzzle out how to build a fully functional breast-milker from the spare parts here and assemble it.\n\nYou gained a <b>Breast Milker</b>!");
 	outputText("\n\nYou'll need a little help to use it though.");
@@ -1640,7 +1640,7 @@ private function takeBreastMilker():void {
 	doNext(playerMenu);
 }
 
-private function talkToIncubus():void {
+ function talkToIncubus():void {
 	spriteSelect(30);
 	clearOutput();
 	if (player.hasKeyItem("Hentai Comic") >= 0) {
@@ -1653,13 +1653,13 @@ simpleChoices("Fight", startIncubusFight, "Trade", tradeComic, "Submit", submitT
 	}
 }
 
-private function startIncubusFight():void {
+ function startIncubusFight():void {
 	spriteSelect(30);
 	player.createStatusAffect(StatusAffects.FactoryIncubusDefeated, 0, 0, 0, 0); //Won't matter if you lose
 	startCombat(new IncubusMechanic(), true);
 }
 
-private function submitToIncubus():void {
+ function submitToIncubus():void {
 	spriteSelect(30);
 	outputText("\"<i>It is good to see the insect accept its fate as the spider closes in,</i>\" intones the strange demonic mechanic as he takes you by the arm and leads you deeper into the facility.  ");
 	if(player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) {
@@ -1672,7 +1672,7 @@ private function submitToIncubus():void {
 	doNext(factoryFinisher);
 }
 
-private function tradeComic():void {
+ function tradeComic():void {
 	spriteSelect(30);
 	clearOutput();
 	outputText("You hand over the Hentai Comic tentatively to the male sex demon.  As soon as he has it in his grubby mitts he sits down and starts thumbing through the pages, toying with his half-hard member the entire time.  He must really like porn.");
@@ -1681,7 +1681,7 @@ private function tradeComic():void {
 	doNext(playerMenu);
 }
 		
-public function incubusLossRape():void {
+export function incubusLossRape():void {
 	player.slimeFeed();
 	outputText("", true);
 	//Nipplefuck city
@@ -1785,7 +1785,7 @@ public function incubusLossRape():void {
 	}
 }
 
-public function incubusVictoryRapeBackdoor():void {
+export function incubusVictoryRapeBackdoor():void {
 	outputText("Every day you've spent in this corrupted landscape has made you stronger and hornier, the evidence of which now kneels at your feet.\n\n", true);
 	outputText("The fight over, your eyes begin to wander. You find you cannot resist staring at the huge swinging cock exposed by the incubus' crotchless overalls. The sight ignites desire that has been building within you ever since you arrived in this corrupted land. With an unnatural hunger, you knock the defeated incubus onto his back. He closes his eyes and groans, lost in his own world of lust and pain and unable to resist as you wantonly straddle him. His tool is hot in your hand as you tease it and his cock begins to grow slick with pre-cum. You lick your lips at the sight of his now glistening member, but not for hunger of food or drink. It is another kind of hunger that longs for satisfaction, a hole that needs to be filled. Eagerly, you position his swollen glans against your " + assholeDescript() + " and begin to ease yourself down over the massive tool. You start slowly, but the pleasure it's giving feels so good you ram the rest of the incubus' cock deep into your " + assholeDescript() + ".  ", false);
 	outputText("His eyes flash open as if you'd just sent a jolt of electricity through him and he regains his senses, becoming hyper-aware of what you're doing. The incubus instinctively moves to control your " + hipDescript() + " and " + buttDescript() + " as they grind against him, guiding his cock towards pleasurable areas up your " + assholeDescript() + " that you would never have guessed were there a short while ago.\n\n", false);
@@ -1798,7 +1798,7 @@ public function incubusVictoryRapeBackdoor():void {
 	cleanupAfterCombat();
 }
 
-public function incubusVictoryRapeSex():void {
+export function incubusVictoryRapeSex():void {
 	outputText("", true);
 	//RAPE THE DEMON -
 	//(BUTTRAPE - Requires Penis)
@@ -1868,7 +1868,7 @@ public function incubusVictoryRapeSex():void {
 }
 
 //Service the incubus after winning (WHY DO THIS?  BECAUSE ITS HOT!)
-public function incubusVictoryService():void {
+export function incubusVictoryService():void {
 	player.slimeFeed();
 	outputText("", true);
 	outputText("You lick your lips, moistening them as you decide that the demon will provide your next 'snack'.  Touching the defeated incubus' soft skin, you grab him by the wrists and yank him to his clawed feet. Leaning him back against the wall as he sways unsteadily, you tenderly slide down his body and take the measure of his monstrous meat with your hands. The smooth skin and tiny bumps slide between each finger as his manhood firms and twitches in response.  You glance up and grab his baseball size nuts, caressing the smooth hairless sack that contains them, watching the demon-man sigh and relax with equal parts desire and relief.\n\n", false);
@@ -1882,7 +1882,7 @@ public function incubusVictoryService():void {
 	return;
 }
 
-private function omnibusStartCombat():void {
+ function omnibusStartCombat():void {
 	spriteSelect(16);
 	clearOutput();
 	outputText("You strike a combat pose and prepare your " + player.weaponName + ".  She smiles and saunters around the desk, letting something bulbous and fleshy drop free from between her nether-lips.  You watch in shock as it hardens into a dick, growing right from where her clit should be.\n\nShe taunts, \"<i>Like what you see cow?  I'll be sure to visit you in the pens.</i>'\"");
@@ -1890,14 +1890,14 @@ private function omnibusStartCombat():void {
 	startCombat(new OmnibusOverseer(), true);
 }
 
-private function omnibusAcceptOffer():void {
+ function omnibusAcceptOffer():void {
 	spriteSelect(16);
 	clearOutput();
 	outputText("She smiles, sauntering closer.  Your eyes widen in shock as her vulva are spread apart by something inside her.   A slick and growing cock emerges, sprouting from where her clit should be located.  She's a hermaphrodite.  You don't have time to contemplate the implications, as the demoness used your temporary distraction to sink a needle into your neck.  You sigh and black out almost instantaneously, letting her catch you with her strong arms and soft bosom.");
 	doNext(factoryFinisher);
 }
 
-public function omnibusVictoryEvent():void {
+export function omnibusVictoryEvent():void {
 	clearOutput();
 	if (monster.lust > 99) {
 		outputText("The omnibus trembles where she stands, her proud demonic dick twitching and pulsating as her desires totally overwhelm her.  The tainted nodules covering the purplish hermaphrodite's member ripple and swell from the base towards the tip, culminating with an explosive eruption of sticky, white demon-seed.  She moans with shame and pleasure, pumping larger and larger volumes of cum onto her office's floor.  She drops to her knees, too exhausted and ashamed by her premature orgasm to continue fighting.\n\n");
@@ -1919,7 +1919,7 @@ public function omnibusVictoryEvent():void {
 	addButton(9, "No (Kill Her)", omnibusVictoryKillHer);
 }
 
-private function omnibusVictoryGrowBreasts():void {
+ function omnibusVictoryGrowBreasts():void {
 	spriteSelect(16);
 	clearOutput();
 	//Grow if none
@@ -1963,7 +1963,7 @@ private function omnibusVictoryGrowBreasts():void {
 	omnibusVictoryPostBoon();
 }
 
-private function omnibusVictoryGrowDick():void {
+ function omnibusVictoryGrowDick():void {
 	spriteSelect(16);
 	clearOutput();
 	//No dick?  Grow one!
@@ -1997,7 +1997,7 @@ private function omnibusVictoryGrowDick():void {
 		}
 	}
 	if (player.cocks.length > 1) {
-		var temp:int = player.cocks.length;
+		var temp:number = player.cocks.length;
 		//Already has demoncocks
 		if (player.demonCocks() == player.cockTotal()) {
 			outputText("Your " + player.multiCockDescriptLight() + " leap forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + player.multiCockDescriptLight() + " get longer and thicker.  They pulsate, as if promising dark pleasure as they settle into their new enhanced size.");
@@ -2028,10 +2028,10 @@ private function omnibusVictoryGrowDick():void {
 	omnibusVictoryPostBoon();
 }
 
-private function omnibusVictoryNormalFace():void {
+ function omnibusVictoryNormalFace():void {
 	spriteSelect(16);
 	clearOutput();
-	var changed:Boolean = false;
+	var changed:boolean = false;
 	if (player.horns > 0 || player.antennae > ANTENNAE_NONE) {
 		outputText("Your forehead itches intensely.  You cannot help but stratch madly at it.  ");
 		if (player.horns > 0) {
@@ -2062,10 +2062,10 @@ private function omnibusVictoryNormalFace():void {
 	omnibusVictoryPostBoon();
 }
 
-private function omnibusVictoryNormalChest():void {
+ function omnibusVictoryNormalChest():void {
 	spriteSelect(16);
 	clearOutput();
-	var changed:Boolean = false;
+	var changed:boolean = false;
 	if (player.breastRows.length > 1) {
 		player.removeBreastRow(1, player.breastRows.length - 1);
 		outputText("Your chest tingles and begins to feel lighter.  You hastily pull open your " + player.armorName + " and realize you only have " + allBreastsDescript() + " now!  ");
@@ -2101,10 +2101,10 @@ private function omnibusVictoryNormalChest():void {
 	omnibusVictoryPostBoon();
 }
 
-private function omnibusVictoryNormalGroin():void {
+ function omnibusVictoryNormalGroin():void {
 	spriteSelect(16);
 	//Temp used to track changes
-	var changed:Boolean = false;
+	var changed:boolean = false;
 	clearOutput();
 	outputText("You feel a strange shivering sensation pass through you.  ");
 	//Remove multiple.
@@ -2159,7 +2159,7 @@ private function omnibusVictoryNormalGroin():void {
 	omnibusVictoryPostBoon();
 }
 
-private function omnibusVictoryNormalLegs():void {
+ function omnibusVictoryNormalLegs():void {
 	spriteSelect(16);
 	clearOutput();
 	if (player.lowerBody == LOWER_BODY_TYPE_HUMAN)
@@ -2175,7 +2175,7 @@ private function omnibusVictoryNormalLegs():void {
 	omnibusVictoryPostBoon();
 }
 
-private function omnibusVictoryPostBoon():void {
+ function omnibusVictoryPostBoon():void {
 	outputText("\n\nThe omnibus disappeared while you were examining the changes.  You guess you did get what you wanted.  You blush and smile, still feeling very horny.  You decide to use the privacy of the office to relieve the tension you've been building up since you arrived.\n\nYou masturbate quickly and efficiently, eager to calm down and resume your exploration.  In no time at all an orgasm crashes through your body.  Stretching and standing up, you find yourself still aroused.\n\nYou slap your forehead as realization washes over you - <b>the demoness' magic is keeping you from ever being totally satisfied!</b>\n(Perk Gained - Omnibus' Gift - Minimum lust has been increased!)");
 	player.createPerk(PerkLib.OmnibusGift, 0, 0, 0, 0);
 	player.orgasm();
@@ -2183,14 +2183,14 @@ private function omnibusVictoryPostBoon():void {
 	cleanupAfterCombat();
 }
 
-private function omnibusVictoryLetGo():void {
+ function omnibusVictoryLetGo():void {
 	spriteSelect(16);
 	clearOutput();
 	outputText("You refuse to fall for her ploy, and decide not to take her up on her offer.  However, being that she is so thoroughly defeated, you allow her to escape, promising her far worse should she ever oppose you in the future.\n\n\"<i>Thank you, merciful hero!</i>\" she says and she sprints out the door.  Wings unfurl from her back and she takes flight, disappearing out a skylight above the main factory floor.");
 	cleanupAfterCombat();
 }
 
-private function omnibusVictoryKillHer():void {
+ function omnibusVictoryKillHer():void {
 	spriteSelect(16);
 	clearOutput();
 	outputText("You step forwards and grab her by the head.  With an abrupt twist you snap her neck, ending at least one small part of the demonic threat.");
@@ -2198,7 +2198,7 @@ private function omnibusVictoryKillHer():void {
 	cleanupAfterCombat();
 }
 
-public function omnibusLossRape():void {
+export function omnibusLossRape():void {
 	spriteSelect(16);
 	clearOutput();
 	if(player.HP < 1) outputText("You stagger into the desk, clutching tightly just to stay upright.  ", false);
@@ -2213,7 +2213,7 @@ public function omnibusLossRape():void {
 	doNext(omnibusLossRape2);
 }
 
-public function omnibusLossRape2():void {
+export function omnibusLossRape2():void {
 	spriteSelect(16);
 	clearOutput();
 	//(Multi dicks)
@@ -2353,7 +2353,7 @@ public function omnibusLossRape2():void {
 	}
 }
 //[Turn Demon]
-public function demonBadEnd():void {
+export function demonBadEnd():void {
 	outputText("", true);
 	outputText("Advancing slowly, the succubus gives you a hungry look.  She extends a hand, allowing her fingers to lengthen into razor-sharp claws.  With a single expert slash, she cuts away everything holding together your " + player.armorName + ".  They fall into a discarded pile, already forgotten as your ", false);
 	//[genderless]
@@ -2482,7 +2482,7 @@ public function demonBadEnd():void {
 	doNext(demonBadEnd2);
 }
 //epilogues
-public function demonBadEnd2():void {
+export function demonBadEnd2():void {
 	outputText("", true);
 	if(player.gender == 1) outputText("As a demon, you rapidly moved up the ranks, eventually taking command of the factory and its inhabitants.  The previous commander was reduced to a willing cock-sleeve, ever-eager to obey your slightest order.  By the time the next year has come around, you've managed to earn the coveted honor of collecting the next champion.", false);
 	else if(player.gender == 2) outputText("Now a full-fledged demon, you leave the factory, setting off on your own.  Over the next year you capture many foolish mortals, and even convince more than a few of them to give up their souls.  With your rapid gain in power, it's easy to rise in the demonic ranks, and in no time flat your power far exceeds that of the succubus that 'turned' you.  You live in luxury, surrounded by a harem of slaves, waiting in your camp for the next victim to step through...", false);
@@ -2490,14 +2490,14 @@ public function demonBadEnd2():void {
 	gameOver();
 }
 
-public function takeSupervisorsKey():void {
+export function takeSupervisorsKey():void {
 	clearOutput();
 	outputText("You search the desk and find a silver key labelled 'Supervisor'.\n\n(Supervisor's Key acquired!)");
 	player.createKeyItem("Supervisor's Key", 0, 0, 0, 0);
 	doNext(playerMenu);
 }
 
-public function openPumpRoom():void {
+export function openPumpRoom():void {
 	if (player.hasKeyItem("Supervisor's Key") < 0) {
 		clearOutput();
 		outputText("The door is locked with a key that is not in your possession.");
@@ -2506,14 +2506,14 @@ public function openPumpRoom():void {
 	dungeonEnterRoom(dungeonLoc);
 }
 
-public function storageTakeLactaid():void {
+export function storageTakeLactaid():void {
 	if (player.findStatusAffect(StatusAffects.TakenLactaid) >= 0)
 		player.addStatusValue(StatusAffects.TakenLactaid, 1, -1);
 	else player.createStatusAffect(StatusAffects.TakenLactaid, 4, 0, 0, 0);
 	inventory.takeItem(consumables.LACTAID, playerMenu);
 }
 
-public function storageTakeGroPlus():void {
+export function storageTakeGroPlus():void {
 	if (player.findStatusAffect(StatusAffects.TakenGroPlus) >= 0)
 		player.addStatusValue(StatusAffects.TakenGroPlus, 1, -1);
 	else player.createStatusAffect(StatusAffects.TakenGroPlus, 4, 0, 0, 0);

@@ -1,40 +1,40 @@
-﻿/**
+/**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Areas
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.Forest.*;
-	import classes.Scenes.Monsters.Goblin;
-	import classes.Scenes.Monsters.Imp;
-	import classes.Scenes.NPCs.Jojo;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
-	public class Forest extends BaseContent
+	  ;
+
+	export class Forest extends BaseContent
 	{
-		public var akbalScene:AkbalScene = new AkbalScene();
-		public var beeGirlScene:BeeGirlScene = new BeeGirlScene();
-		public var corruptedGlade:CorruptedGlade = new CorruptedGlade();
-		public var essrayle:Essrayle = new Essrayle();
-		public var faerie:Faerie = new Faerie();
-		public var kitsuneScene:KitsuneScene = new KitsuneScene();
-		public var tamaniDaughtersScene:TamainsDaughtersScene = new TamainsDaughtersScene();
-		public var tamaniScene:TamaniScene = new TamaniScene();
-		public var tentacleBeastScene:TentacleBeastScene = new TentacleBeastScene();
-		public var erlkingScene:ErlKingScene = new ErlKingScene();
-		public function Forest()
+		public  akbalScene:AkbalScene = new AkbalScene();
+		public  beeGirlScene:BeeGirlScene = new BeeGirlScene();
+		public  corruptedGlade:CorruptedGlade = new CorruptedGlade();
+		public  essrayle:Essrayle = new Essrayle();
+		public  faerie:Faerie = new Faerie();
+		public  kitsuneScene:KitsuneScene = new KitsuneScene();
+		public  tamaniDaughtersScene:TamainsDaughtersScene = new TamainsDaughtersScene();
+		public  tamaniScene:TamaniScene = new TamaniScene();
+		public  tentacleBeastScene:TentacleBeastScene = new TentacleBeastScene();
+		public  erlkingScene:ErlKingScene = new ErlKingScene();
+		public  constructor()
 		{
 		}
-		public function exploreDeepwoods():void
+		public  exploreDeepwoods():void
 		{
 			player.addStatusValue(StatusAffects.ExploredDeepwoods, 1, 1);
 			
-			var chooser:Number = rand(5);
+			var chooser:number = rand(5);
 			
-			var temp2:Number = 0;
+			var temp2:number = 0;
 			//Every tenth exploration finds a pumpkin if eligible!
 			if (player.statusAffectv1(StatusAffects.ExploredDeepwoods) % 10 == 0 && isHalloween()) {
 				//If Fera isn't free yet...
@@ -127,13 +127,13 @@ package classes.Scenes.Areas
 		}
 
 		//Explore forest
-		public function exploreForest():void
+		public  exploreForest():void
 		{
 			player.exploredForest++;
 
 			trace("FOREST EVENT CALLED");
-			var chooser:Number = rand(4);
-			var temp2:Number = 0;
+			var chooser:number = rand(4);
+			var temp2:number = 0;
 			//Cut bee encounter rate 50%
 			if (chooser == 3 && rand(2)) chooser = rand(3);
 			//Quick changes:
@@ -191,7 +191,7 @@ package classes.Scenes.Areas
 			if (chooser == 0) {
 				//Determines likelyhood of imp/goblins
 				//Below - goblin, Equal and up - imp
-				var impGob:Number = 5;
+				var impGob:number = 5;
 				trace("IMP/Gobb");
 
 				//Dicks + lots of cum boosts goblin probability
@@ -376,10 +376,10 @@ package classes.Scenes.Areas
 		}
 		//[FOREST]
 //[RANDOM SCENE IF CHARACTER HAS AT LEAST ONE COCK LARGER THAN THEIR HEIGHT, AND THE TOTAL COMBINED WIDTH OF ALL THEIR COCKS IS TWELVE INCHES OR GREATER]
-		internal function bigJunkForestScene(lake:Boolean = false):void
+		public  bigJunkForestScene(lake:boolean = false):void
 		{
 			outputText("", true);
-			var x:Number = player.longestCock();
+			var x:number = player.longestCock();
 
 			//PARAGRAPH 1
 			outputText("Walking along the ", false);
@@ -480,7 +480,7 @@ package classes.Scenes.Areas
 		//Catch a Satyr using the corrupt glade and either leave or have your way with him.
 		//Suggested to Fen as the MaleXMale submission.
 		//Will be standalone
-		private function trappedSatyr():void {
+		private  trappedSatyr():void {
 			outputText("", true);
 			spriteSelect(99);
 			outputText("As you wander through the woods, you find yourself straying into yet another corrupt glade.  However, this time the perverse grove isn't unoccupied; loud bleatings and brayings of pleasure split the air, and as you push past a bush covered in dripping, glans-shaped berries, you spot the source.\n\n", false);
@@ -502,7 +502,7 @@ package classes.Scenes.Areas
 		}
 
 		//[=No=]
-		private function ignoreSatyr():void {
+		private  ignoreSatyr():void {
 			outputText("", true);
 			spriteSelect(99);
 			outputText("You shake your head, ", false);
@@ -513,10 +513,10 @@ package classes.Scenes.Areas
 			doNext(camp.returnToCampUseOneHour);
 		}
 		//Player returns to camp
-		private function rapeSatyr():void {
+		private  rapeSatyr():void {
 			outputText("", true);
 			spriteSelect(99);
-			var x:Number = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 
 			//(Low Corruption)
 			if(player.cor < 33) outputText("For a moment you hesitate... taking someone from behind without their consent seems wrong... but then again you doubt a satyr would pass on the opportunity if you were in his position.", false);
@@ -568,15 +568,15 @@ package classes.Scenes.Areas
 		}
 
 		//[=Leave=]
-		private function dontRepeatFuckSatyr():void {
+		private  dontRepeatFuckSatyr():void {
 			outputText("", true);
 			spriteSelect(99);
 			outputText("You've had your fun, and you don't really want to fool around in the forest all day, so you grab your " + player.armorName + " and leave the rutting satyr behind.\n\n", false);
 			doNext(camp.returnToCampUseOneHour);
 		}
 		//[=Again=]
-		private function secondSatyrFuck():void {
-			var x:int = player.cockThatFits(monster.analCapacity());
+		private  secondSatyrFuck():void {
+			var x:number = player.cockThatFits(monster.analCapacity());
 			if(x < 0) x = player.smallestCockIndex();
 			outputText("", true);
 			outputText("There's no harm in using the helpless goat once more... This time though, you decide you'll use his mouth.  With a yank on his horns, you forcefully dislodge him from the breast-plant and force him to his knees, turning his head towards you; he doesn't put up much resistance and when you present your erect shaft to him, he licks his lips in excitement and latches onto your " + cockDescript(x) + ".\n\n", false);
@@ -593,4 +593,4 @@ package classes.Scenes.Areas
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-}
+

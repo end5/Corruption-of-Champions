@@ -1,24 +1,24 @@
-package classes.Scenes.Dungeons.DeepCave
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class Zetaz extends Monster
+	 
+	 
+
+	export class Zetaz extends Monster
 	{
 
 
-		override public function doAI():void
+		 public  doAI():void
 		{
 			game.zetazAI();
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.defeatZetaz();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nYour foe doesn't seem put off enough to care...");
@@ -28,7 +28,7 @@ package classes.Scenes.Dungeons.DeepCave
 			}
 		}
 
-		public function Zetaz()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Zetaz";
@@ -69,4 +69,3 @@ package classes.Scenes.Dungeons.DeepCave
 		
 	}
 
-}

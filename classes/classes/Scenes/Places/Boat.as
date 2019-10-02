@@ -1,22 +1,22 @@
 /**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Places
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.Lake.*;
-	import classes.Scenes.Places.Boat.*;
+ 
 
-	public class Boat extends AbstractLakeContent
+	 
+	 
+	 
+	 
+	 
+
+	export class Boat extends AbstractLakeContent
 	{
-		public var sharkGirlScene:SharkGirlScene = new SharkGirlScene();
-		public var marae:Marae = new Marae();
-		public function Boat()
+		public  sharkGirlScene:SharkGirlScene = new SharkGirlScene();
+		public  marae:Marae = new Marae();
+		public  constructor()
 		{
 		}
-		public function discoverBoat():void {
+		public  discoverBoat():void {
 			player.createStatusAffect(StatusAffects.BoatDiscovery,0,0,0,0);
 			outputText("You journey around the lake, seeking demons to fight", true);
 			if(player.cor > 60) outputText(" or fuck", false);
@@ -24,7 +24,7 @@ package classes.Scenes.Places
 			outputText("<b>You have discovered the lake boat!</b>\n(You may return and use the boat to explore the lake's interior by using the 'places' menu.)", false);
 			doNext(camp.returnToCampUseOneHour);
 		}
-		public function boatExplore():void
+		public  boatExplore():void
 		{
 			//Helia monogamy fucks
 			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helScene.followerHel()) {
@@ -53,12 +53,12 @@ package classes.Scenes.Places
 				return;
 			}
 			//BUILD LIST OF CHOICES
-			var choice:Array = [0, 1, 2, 3];
+			var choice:any[] = [0, 1, 2, 3];
 			if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0 && player.level > 2)
 				choice[choice.length] = 4;
 			choice[choice.length] = 5;
 			//MAKE YOUR CHOICE
-			var selector:Number = choice[rand(choice.length)];
+			var selector:number = choice[rand(choice.length)];
 			//RUN CHOSEN EVENT
 			switch (selector) {
 				case 0:
@@ -85,4 +85,4 @@ package classes.Scenes.Places
 
 		}
 	}
-}
+

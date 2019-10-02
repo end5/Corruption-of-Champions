@@ -1,19 +1,19 @@
 /**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.Areas.Swamp
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Items.WeaponLib;
+ 
 
-	public class AbstractSpiderMorph extends Monster
+	 
+	 
+	 
+
+	export class AbstractSpiderMorph extends Monster
 	{
-		public function AbstractSpiderMorph()
+		public  constructor()
 		{
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if(player.spe >= 2 && rand(2) == 0) {
 				spiderMorphWebAttack();
@@ -31,7 +31,7 @@ package classes.Scenes.Areas.Swamp
 		/**
 		 * -Web - lowers speed by 25 each application and disables
 		 * flight once hit.*/
-		public function spiderMorphWebAttack():void
+		public  spiderMorphWebAttack():void
 		{
 			outputText("Turning to the side, " + a + short + " raises " + mf("his", "her") + " abdomen and unleashes a spray of webbing in your direction!  ", false);
 			//Blind dodge change
@@ -66,7 +66,7 @@ package classes.Scenes.Areas.Swamp
 					outputText("The silky strands hit you, weighing you down and restricting your movement even further.\n", false);
 				}
 				//Only apply as much speed slow as necessary.
-				var amount:Number = 25;
+				var amount:number = 25;
 				if (player.spe - amount < 1) {
 					amount = player.spe - 1;
 				}
@@ -82,7 +82,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 		/**-Bite - Raises arousal by 30*/
-		public function getBitten():void
+		public  getBitten():void
 		{
 			//-Languid Bite - Inflicted on PC's who have been reduced to 1 speed by webbing, raises arousal by 60.
 			if (player.spe < 2 && player.findStatusAffect(StatusAffects.Web) >= 0) {
@@ -141,7 +141,7 @@ package classes.Scenes.Areas.Swamp
 
 		/**-Disarm - hits the PC's weapon with web and sticks it to a
 		 nearby tree, reducing PC's attack to 0 for the rest of the fight.*/
-		public function spiderDisarm():void
+		public  spiderDisarm():void
 		{
 			outputText(capitalA + short + " shifts and sprays webbing, aiming a tight strand of it at your " + player.weaponName + ".  ", false);
 			//Blind dodge change
@@ -181,7 +181,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 		/**-Silence - sprays webs on the PC's mouth, silencing them for 1 to 3 turns.*/
-		public function spiderSilence():void
+		public  spiderSilence():void
 		{
 			outputText(capitalA + short + " squirts a concentrated spray of " + mf("his", "her") + " webs directly at your face!  ", false);
 			//Blind dodge change
@@ -211,4 +211,4 @@ package classes.Scenes.Areas.Swamp
 			combatRoundOver();
 		}
 	}
-}
+

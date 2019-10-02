@@ -1,8 +1,8 @@
-﻿package classes.Scenes.NPCs{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
+	 
+	 
 
-	public class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
+	export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
 
 //EXGARTUAN STATUS
 //v1 - Location - 1 = dick, 2 = tits
@@ -53,15 +53,15 @@
 --Random lust increases when time passes, combined with more growth.
 */
 
-		public function Exgartuan() {
+		public  constructor() {
 			CoC.timeAwareClassAdd(this);
 		}
 		
-		private var checkedExgartuan:int;
+		private  checkedExgartuan:number;
 		
 		//Implementation of TimeAwareInterface
-		public function timeChange():Boolean {
-			var needNext:Boolean = false;
+		public  timeChange():boolean {
+			var needNext:boolean = false;
 			checkedExgartuan = 0; //Make sure we test just once in timeChangeLarge
 			if (player.findStatusAffect(StatusAffects.Exgartuan) >= 0) { //Update Exgartuan stuff
 				trace("EXGARTUAN V1: " + player.statusAffectv1(StatusAffects.Exgartuan) + " V2: " + player.statusAffectv2(StatusAffects.Exgartuan));
@@ -155,7 +155,7 @@
 			return needNext;
 		}
 		
-		public function timeChangeLarge():Boolean {
+		public  timeChangeLarge():boolean {
 			if (checkedExgartuan++ == 0 && player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0 && model.time.hours == 4) {
 				//Exgartuan must be present, must be awake and it must be night time
 				if (player.hasCock() && player.statusAffectv1(StatusAffects.Exgartuan) == 1 && rand(3) == 0 && player.hoursSinceCum >= 24) { //Exgartuan night time surprise!
@@ -173,7 +173,7 @@
 		}
 		//End of Interface Implementation
 
-public function fountainEncounter():void {
+public  fountainEncounter():void {
 	outputText("", true);
 	outputText("While roaming the shifting sands of the desert, you begin to feel a change in the air.  The bone-dry atmosphere shifts, becoming more and more humid as you press on.  At last you crest a dune and discover the source of the moisture – a huge onyx fountain, spraying crystal clear water into the air.  The center of the fountain is a magnificent sculpture of two entwined demonic forms, nude and over-proportioned to the extreme.  The water is spraying out from some rather... unconventional places.  You blush, feeling a bit parched, but wary of the fountain's nature.\n\n", false);
 	outputText("You come closer and discover a placard.  It reads, \"Fountain of Endowment\".  Well, clearly it's supposed to enhance something, but at what cost?\n\n", false);
@@ -182,9 +182,9 @@ public function fountainEncounter():void {
 	doYesNo(drinkFountainEndowment,camp.returnToCampUseOneHour);
 }
 
-private function drinkFountainEndowment():void {
+private  drinkFountainEndowment():void {
 	outputText("", true);
-	var changed:Boolean = false;
+	var changed:boolean = false;
 	player.slimeFeed();
 	outputText("You cup your hands and bring the clear water to your lips, taking a long drink.  It's cool and refreshing, going down quite easily.  Weird.  You thought it would make you feel different somehow.", false);
 	//+300 xp):
@@ -194,7 +194,7 @@ private function drinkFountainEndowment():void {
 		changed = true;
 	}
 	if(player.findStatusAffect(StatusAffects.Exgartuan) < 0 && !changed && rand(2) == 0) {
-		var choices:Number = 0;
+		var choices:number = 0;
 		if(player.cockTotal() > 0) {
 			if(player.cockArea(0) >= 100) choices++;
 		}
@@ -249,7 +249,7 @@ private function drinkFountainEndowment():void {
 	}
 	doNext(camp.returnToCampUseOneHour);
 }
-private function exgartuanInfestDick():void {
+private  exgartuanInfestDick():void {
 	spriteSelect(15);
 	//(+Demon dick possession – not demoncocked)
 	if(player.cocks[0].cockType != CockTypesEnum.DEMON) {
@@ -277,7 +277,7 @@ private function exgartuanInfestDick():void {
 	}
 	player.createStatusAffect(StatusAffects.Exgartuan,1,0,0,0);
 }
-private function exgartuanInfestTits():void {
+private  exgartuanInfestTits():void {
 	outputText("\n\nYour " + allBreastsDescript() + " jiggle as they grow MUCH larger, turning into obscene mounds that shake with every motion of your body.  All your " + nippleDescript(0) + "s puff up with them, gaining volume to match their new, larger homes.  They feel hot and ache to be touched.", false);
 	temp = player.breastRows.length;
 	while(temp > 0) {
@@ -297,7 +297,7 @@ private function exgartuanInfestTits():void {
 
 
 //[Masturbate while he's awake in dick]
-public function exgartuanMasturbation():void {
+public  exgartuanMasturbation():void {
 	outputText("", true);
 	if(player.statusAffectv1(StatusAffects.Exgartuan) == 1) {
 		spriteSelect(15);
@@ -398,8 +398,8 @@ public function exgartuanMasturbation():void {
 
 
 //(NOT PLAYED WITH RECENTLY: +LUST MESSAGE)
-public function exgartuanBored():void {
-	var select:Number = 0;
+public  exgartuanBored():void {
+	var select:number = 0;
 	if(player.statusAffectv1(StatusAffects.Exgartuan) == 1 && player.cockArea(0) >= 100) {
 		select = rand(9);
 		if(select == 0) {
@@ -469,11 +469,11 @@ public function exgartuanBored():void {
 }
 
 
-public function exgartuanCombatUpdate():Boolean {
+public  exgartuanCombatUpdate():boolean {
 	//Monsters not effected by Exgartuan's stuff
 	if(monster.short == "tentacle beast" || monster.short == "worms" || monster.short == "demons") return false;
 	//VARS
-	var select:Number = 0;
+	var select:number = 0;
 	if(player.statusAffectv1(StatusAffects.Exgartuan) == 1) {
 		//[USE MAGIC TO MAKE GOBLINS COOCHIES STRETCHIER!]
 		if(monster.short == "goblin" && rand(3) == 0) {
@@ -631,8 +631,8 @@ public function exgartuanCombatUpdate():Boolean {
 }
 
 //(ARMOR CHANGE)
-public function exgartuanArmorShift():void {
-	var changed:Boolean = false;
+public  exgartuanArmorShift():void {
+	var changed:boolean = false;
 	if(player.armor == armors.BEEARMR) {
 		outputText("The silken loin-cloth of your chitin armor cinches up, tightening against your groin until it displays the prominent bulge of your demon-possessed dick clearly.", false);
 		player.modArmorName = "crotch-hugging sexy black chitin armor-plating";
@@ -723,7 +723,7 @@ public function exgartuanArmorShift():void {
 }
 
 //(FORCE OUT ANY WORM INFECTION)
-public function exgartuanWormCure():void {
+public  exgartuanWormCure():void {
 	outputText("Your ", false);
 	if(player.balls > 0) outputText(ballsDescriptLight(), false);
 	else outputText("groin", false);
@@ -732,8 +732,8 @@ public function exgartuanWormCure():void {
 	player.removeStatusAffect(StatusAffects.Infested);
 }
 
-public function exgartuanLactationAdjustment():void {
-	var boobs:Number = 0;
+public  exgartuanLactationAdjustment():void {
+	var boobs:number = 0;
 	//(Lactating Already)
 	if(player.biggestLactation() > 1) {
 		//(Increase)
@@ -777,7 +777,7 @@ public function exgartuanLactationAdjustment():void {
 
 
 //[BEEGIRL RAEP]
-public function exgartuanBeeRape():void {
+public  exgartuanBeeRape():void {
 	spriteSelect(6);
 	outputText("", true);
 	outputText("You grin and embrace the demon's idea as if it were your own.  Maybe it's time the bee-girl had her own lesson in fluid insemination...\n\n", false);
@@ -797,7 +797,7 @@ public function exgartuanBeeRape():void {
 }
 
 //[Free Her] (negates some corruption gain)
-private function freeBeePostRape():void {
+private  freeBeePostRape():void {
 	outputText("", true);
 	outputText("You take pity on the slut and untie her.  Hopefully she'll recover before something worse finds her.  You'd hate to let a tentacle-beast get your sloppy seconds.", false);
 	doNext(camp.returnToCampUseOneHour);
@@ -805,14 +805,14 @@ private function freeBeePostRape():void {
 }
 
 //[Leave Her]
-private function leaveBeePostRape():void {
+private  leaveBeePostRape():void {
 	outputText("", true);
 	outputText("You smile cruelly and give her glittering vulva a gentle smack before you walk away, leaving her tied up there.  Maybe some lonely imps will find a use for her...", false);
 	doNext(camp.returnToCampUseOneHour);
 	dynStats("cor", .5);
 }
 
-private function exgartuanSleepSurprise():void {
+private  exgartuanSleepSurprise():void {
 	spriteSelect(15);
 	//Low corruption
 	if(player.cor <= 20 && player.findPerk(PerkLib.BulgeArmor) >= 0) {
@@ -961,7 +961,7 @@ private function exgartuanSleepSurprise():void {
 	player.changeStatusValue(StatusAffects.Exgartuan,2,25);
 	doNext(playerMenu);
 }
-private function exgartuanBulgeTortureII():void {
+private  exgartuanBulgeTortureII():void {
 	outputText("", true);
 	outputText("After what feels like only a few minutes, you begin to feel as if you were sizzling beneath your sheets.  After a few half-hearted tosses and turns, inhibited by your bulging lower half, you surrender and throw off your covers.  At this point, you are almost wide awake, too focused on your increased breathing and uncomfortable temperature.  A few more moments slip by before you realize what's going on, alerted by your involuntary reach for your cock to find any sort of relief: you're getting horny.  As to how it's happening, you aren't entirely clear yet.  But it certainly isn't new to you nor is it strange for this to be happening in a place as strange as Mareth.  For all you know, this could be some natural occurrence brought in by the weather or a nearby tree or something.  Like pollen... except you want to have sex instead of suffer from congestion.\n\n", false);
 	
@@ -995,7 +995,7 @@ private function exgartuanBulgeTortureII():void {
 	dynStats("lus=", 1000);
 	doNext(exgartuanBulgeTortureIII);
 }
-private function exgartuanBulgeTortureIII():void {
+private  exgartuanBulgeTortureIII():void {
 	outputText("", true);
 	outputText("Fueled by pure spite and just a hint of loathing, you begin to regain some sort of composure through controlled breathing and what little concentration you can manage.  A few minutes of counting stitches in the top of your tent is all you accomplish, however; your once dormant limp " + cockDescript(0) + " is showing a sign of life. Your eyes widen as you feel your possessed pole stiffen up, pressing hard against your " + player.armorName + " as it grows out along with your dick, still impossibly clinging to its every facet.  It stops after only gaining a few inches, but not before driving the fight right back out of you.  Thread-counting is the last thing in your head as you quickly sit right back up, instinctually grasping for your cock.  But the situation refuses to change; your " + player.armorName + " is just as exceedingly resilient as it was before.\n\n", false);
 	
@@ -1065,7 +1065,7 @@ private function exgartuanBulgeTortureIII():void {
 	doNext(exgartuanBulgeTortureIV);
 }
 
-private function exgartuanBulgeTortureIV():void {
+private  exgartuanBulgeTortureIV():void {
 	outputText("", true);
 	outputText("You wake the next morning, nestled inside your bedroll.  Realizing where you are, a relaxing feeling of easiness washes over you.  You throw off your cover to greet the day, only becoming confused as it peels off your sticky skin.  You glance down at your waist, still wearing ", false);
 	//[if armorname IS NOT EQUAL TO \"<i>crotch-hugging slutty swimwear</i>\" OR \"<i>crotch-hugging revealing chainmail bikini</i>\"]
@@ -1090,7 +1090,7 @@ private function exgartuanBulgeTortureIV():void {
 //Player going to sleep, duh
 //3:00AM
 
-private function boobGartuanSURPRISE():void {
+private  boobGartuanSURPRISE():void {
 	spriteSelect(15);
 	//[if occurrence ==0]
 	if(flags[kFLAGS.BOOBGARTUAN_SURPRISE_COUNT] == 0) {
@@ -1132,7 +1132,7 @@ private function boobGartuanSURPRISE():void {
 	doNext(boobgartuanSurprise2);
 }
 
-private function boobgartuanSurprise2():void {
+private  boobgartuanSurprise2():void {
 	spriteSelect(15);
 	outputText("", true);
 	if(flags[kFLAGS.BOOBGARTUAN_SURPRISE_COUNT] == 0) {
@@ -1181,7 +1181,7 @@ private function boobgartuanSurprise2():void {
 	doNext(boobgartuanSurprise3);
 }
 //[new page.  occurrence ≥1 starts here]
-private function boobgartuanSurprise3():void {
+private  boobgartuanSurprise3():void {
 	outputText("", true);
 	//[if occurrence ==0]
 	if(flags[kFLAGS.BOOBGARTUAN_SURPRISE_COUNT] == 0) {
@@ -1333,7 +1333,7 @@ private function boobgartuanSurprise3():void {
 //Exgartuan in cock
 //Naga lower half
 //~50%(maybe less?) to replace normal Exgartuan masturbation scene
-public function exgartuanNagaStoleMyMasturbation():void {
+public  exgartuanNagaStoleMyMasturbation():void {
 	spriteSelect(15);
 	outputText("", true);
 	//[if corruption <15]
@@ -1430,4 +1430,4 @@ public function exgartuanNagaStoleMyMasturbation():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-}
+

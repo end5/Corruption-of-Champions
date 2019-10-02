@@ -1,21 +1,21 @@
-﻿package classes.Scenes.Areas.Lake
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class FetishZealot extends Monster
+	 
+	 
+
+	export class FetishZealot extends Monster
 	{
 
-		private static const RELIGIOUS_CLOTHES:String = "religious clothes";
-		private static const PIRATE_CLOTHES:String = "pirate clothes";
-		private static const MILITARY_CLOTHES:String = "military clothes";
-		private static const LEATHER_CLOTHES:String = "leather clothes";
-		private static const STUDENTS_CLOTHES:String = "student's clothes";
+		private static  RELIGIOUS_CLOTHES:string = "religious clothes";
+		private static  PIRATE_CLOTHES:string = "pirate clothes";
+		private static  MILITARY_CLOTHES:string = "military clothes";
+		private static  LEATHER_CLOTHES:string = "leather clothes";
+		private static  STUDENTS_CLOTHES:string = "student's clothes";
 
-		override public function combatRoundUpdate():void
+		 public  combatRoundUpdate():void
 		{
 			super.combatRoundUpdate();
-			var changed:Boolean = false;
+			var changed:boolean = false;
 			//Fetish Zealot Update!
 			switch (rand(5)) {
 				case 0:
@@ -67,7 +67,7 @@
 
 //Special1: Tease
 	//See Costumes section for text
-	private function zealotSpecial1():void {
+	private  zealotSpecial1():void {
 		//Costumes
 		//This foe periodically switches between outfits; this determines what text is displayed when they use tease.
 		
@@ -106,14 +106,14 @@
 	//Special2: Lust transfer spell, it becomes more and 
 	//more likely that he will use this power as his lust gets 
 	//higher, but he can use it at any time (like the cultist).
-	private function zealotSpecial2():void {
+	private  zealotSpecial2():void {
 		outputText("The zealot suddenly cries out and extends his arms towards you; your mind is suddenly overwhelmed with a massive wave of arousal as images of every kind of fetish you can imagine wash over you, all blended together.  After a moment you are able to recover, but you notice that the Zealot doesn't seem to be as aroused as before.", false);
 		game.dynStats("lus", lust/2);
 		lust /= 2;
 		combatRoundOver();
 	}
 
-		override protected function postAttack(damage:int):void
+		 protected  postAttack(damage:number):void
 		{
 			if (damage > 0){
 				outputText("\nYou notice that some kind of unnatural heat is flowing into your body from the wound", false);
@@ -124,12 +124,12 @@
 			super.postAttack(damage);
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.lake.fetishZealotScene.zealotDefeated();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nThe fetish cultist ignores the perverse display and continues on as if nothing had happened...", false);
@@ -140,7 +140,7 @@
 			}
 		}
 
-		public function FetishZealot()
+		public  constructor()
 		{
 			trace("FetishZealot Constructor!");
 		
@@ -183,4 +183,3 @@
 
 	}
 
-}

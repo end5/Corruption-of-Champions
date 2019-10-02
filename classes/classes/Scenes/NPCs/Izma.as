@@ -1,16 +1,16 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
+ 
+
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class Izma extends Monster 
+	export class Izma extends Monster 
 	{
 
 		//[Special Attacks]
-		private function IzmaSpecials1():void {
+		private  IzmaSpecials1():void {
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText("Izma attempts to close the distance with you, but misses completely because of her blindness.\n", false);
@@ -41,7 +41,7 @@ package classes.Scenes.NPCs
 			game.fatigue(20+rand(20));
 		}
 
-		private function IzmaSpecials2():void {
+		private  IzmaSpecials2():void {
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText("Izma blindly tries to clinch you, but misses completely.\n", false);
@@ -67,7 +67,7 @@ package classes.Scenes.NPCs
 				outputText("Izma tries to lock you in a clinch, but your cat-like flexibility makes it easy to twist away from her grab.\n", false);
 				return;
 			}
-			var damage:Number = 0;
+			var damage:number = 0;
 			damage = Math.round(130 - rand(player.tou+player.armorDef));
 			if(damage < 0) damage = 0;
 			outputText("Izma ducks and jinks, working to close quarters, and clinches you. Unable to get your weapon into play, you can only ", false);
@@ -80,14 +80,14 @@ package classes.Scenes.NPCs
 			else outputText("laugh as her blades scape uselessly at your armor-clad back", false);
 			outputText(" before breaking her embrace and leaping away. (" + damage + ")", false);
 		}
-		private function IzmaSpecials3():void {
+		private  IzmaSpecials3():void {
 			outputText("Rather than move to attack you, Izma grins at you and grabs her breasts, massaging them as she caresses her long penis with one knee. Her tail thrashes and thumps the sand heavily behind her as she simulates an orgasm, moaning loudly into the air. The whole display leaves you more aroused than before.", false);
 			//(lust gain)
 			game.dynStats("lus", (20 + player.lib/5));
 		}
 
-		private function IzmaAI():void {
-			var choice:Number = rand(5);
+		private  IzmaAI():void {
+			var choice:number = rand(5);
 			if(choice <= 1) eAttack();
 			if(choice == 2) {
 				if(player.fatigue >= 80) choice = 3;
@@ -101,15 +101,15 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		override public function eAttack():void
+		 public  eAttack():void
 		{
 			outputText("Izma slides up to you, throws a feint, and then launches a rain of jabs at you!\n", false);
 			super.eAttack();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var choice:Number = rand(5);
+			var choice:number = rand(5);
 			if (choice <= 1) eAttack();
 			if (choice == 2) {
 				if (player.fatigue >= 80) choice = 3;
@@ -123,12 +123,12 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.izmaScene.defeatIzma();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\n\"<i>Gross!</i>\" Izma cries as she backs away, leaving you to recover alone.");
@@ -138,7 +138,7 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function Izma()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Izma";
@@ -179,4 +179,4 @@ package classes.Scenes.NPCs
 		
 	}
 
-}
+

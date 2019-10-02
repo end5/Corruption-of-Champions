@@ -1,17 +1,17 @@
-package classes.Scenes.Dungeons.Factory
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class OmnibusOverseer extends Monster
+	 
+	 
+
+	export class OmnibusOverseer extends Monster
 	{
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.omnibusVictoryEvent();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nYour foe doesn't seem to care...");
@@ -21,7 +21,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 		}
 		
-		private function lustAura():void {
+		private  lustAura():void {
 			outputText("The demoness blinks her eyes closed and knits her eyebrows in concentration.  The red orbs open wide and she smiles, licking her lips.   The air around her grows warmer, and muskier, as if her presence has saturated it with lust.");
 			if (findStatusAffect(StatusAffects.LustAura) >= 0) {
 				outputText("  Your eyes cross with unexpected feelings as the taste of desire in the air worms its way into you.  The intense aura quickly subsides, but it's already done its job.");
@@ -33,7 +33,7 @@ package classes.Scenes.Dungeons.Factory
 			game.combatRoundOver();
 		}
 		
-		private function milkAttack():void {
+		private  milkAttack():void {
 			if (rand(2) == 0)
 				outputText("The demoness grips her sizable breasts and squeezes, spraying milk at you.\n");
 			else outputText("Your foe curls up to pinch her nipples, tugging hard and squirting milk towards you.\n");
@@ -62,7 +62,7 @@ package classes.Scenes.Dungeons.Factory
 			game.combatRoundOver();
 		}
 		
-		public function OmnibusOverseer()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "Omnibus Overseer";
@@ -111,4 +111,3 @@ package classes.Scenes.Dungeons.Factory
 		
 	}
 
-}

@@ -1,15 +1,15 @@
-﻿package classes 
-{
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.*;
-	import classes.Scenes.Camp;
-	import classes.Scenes.Dungeons.D3.D3;
-	import classes.Scenes.Inventory;
-	import classes.internals.Utils;
+  
 
-	import coc.model.GameModel;
-	import coc.model.TimeModel;
-	import coc.view.MainView;
+	 
+	 
+	 
+	 
+	 
+	 
+
+	 
+	 
+	 
 	/**
 	 * Quick hacky method to wrap new content in a class-based structure
 	 * BaseContent acts as an access wrapper around CoC, enabling children of BaseContent to interact with
@@ -18,68 +18,68 @@
 	 * Also this means we might start being able to get IDE autocomplete shit working again! Huzzah!
 	 * @author Gedan
 	 */
-	public class BaseContent extends Utils
+	export class BaseContent extends Utils
 	{
 		// TODO remove when we have proper enums for this
-		include "../../includes/appearanceDefs.as";
+		// include "../../includes/appearanceDefs.as";
 
-		public function BaseContent()
+		public  constructor()
 		{
 			
 		}
-		protected function getGame():CoC
+		protected  getGame():CoC
 		{
 			return kGAMECLASS;
 		}
 
-		protected function cheatTime(time:Number):void
+		protected  cheatTime(time:number):void
 		{
 			kGAMECLASS.cheatTime(time);
 		}
-		protected function get timeQ():Number
+		protected  get timeQ():number
 		{
 			return kGAMECLASS.timeQ;
 		}
 
-		protected function get camp():Camp {
+		protected  get camp():Camp {
 			return kGAMECLASS.camp;
 		}
 		
-		protected function get d3():D3 {
+		protected  get d3():D3 {
 			return kGAMECLASS.d3;
 		}
 
-		public function goNext(time:Number,defNext:Boolean):Boolean
+		public  goNext(time:number,defNext:boolean):boolean
 		{
 			return kGAMECLASS.goNext(time,defNext);
 		}
 
-		protected function isHalloween():Boolean
+		protected  isHalloween():boolean
 		{
 			return kGAMECLASS.isHalloween();
 		}
 
-		protected function isValentine():Boolean
+		protected  isValentine():boolean
 		{
 			return kGAMECLASS.isValentine();
 		}
 
-		protected function isHolidays():Boolean
+		protected  isHolidays():boolean
 		{
 			return kGAMECLASS.isHolidays();
 		}
 
-		public function isEaster():Boolean
+		public  isEaster():boolean
 		{
 			return kGAMECLASS.isEaster();
 		}
 
-		protected function isThanksgiving():Boolean
+		protected  isThanksgiving():boolean
 		{
 			return kGAMECLASS.isThanksgiving();
 		}
 
-		protected function get date():Date
+		protected  get date():Date
 		{
 			return kGAMECLASS.date;
 		}
@@ -91,7 +91,7 @@
 		}
 */
 
-		protected function get inDungeon():Boolean
+		protected  get inDungeon():boolean
 		{
 			return kGAMECLASS.inDungeon;
 		}
@@ -102,20 +102,20 @@
 		}
 */
 		
-		protected function get inRoomedDungeon():Boolean
+		protected  get inRoomedDungeon():boolean
 		{
 			return kGAMECLASS.inRoomedDungeon;
 		}
-		protected function set inRoomedDungeon(v:Boolean):void
+		protected  set inRoomedDungeon(v:boolean):void
 		{
 			kGAMECLASS.inRoomedDungeon = v;
 		}
 		
-		protected function get inRoomedDungeonResume():Function
+		protected  get inRoomedDungeonResume():() => void
 		{
 			return kGAMECLASS.inRoomedDungeonResume;
 		}
-		protected function set inRoomedDungeonResume(v:Function):void
+		protected  set inRoomedDungeonResume(v:() => void):void
 		{
 			kGAMECLASS.inRoomedDungeonResume = v;
 		}
@@ -131,41 +131,41 @@
 		}
 */
 		
-		protected function showStats():void
+		protected  showStats():void
 		{
 			kGAMECLASS.showStats();
 		}
 
-		protected function statScreenRefresh():void
+		protected  statScreenRefresh():void
 		{
 			kGAMECLASS.statScreenRefresh();
 		}
 
-		protected function cleanupAfterCombat(nextFunc:Function = null):void
+		protected  cleanupAfterCombat(nextFunc:() => void = null):void
 		{
 			kGAMECLASS.cleanupAfterCombat(nextFunc);
 		}
 
-		protected function combatRoundOver():void
+		protected  combatRoundOver():void
 		{
 			kGAMECLASS.combatRoundOver();
 		}
 
-		protected function enemyAI():void
+		protected  enemyAI():void
 		{
 			kGAMECLASS.enemyAI();
 		}
 
-		protected function spriteSelect(choice:Number = 0):void
+		protected  spriteSelect(choice:number = 0):void
 		{
 			kGAMECLASS.spriteSelect(choice);
 		}
 
-		protected function hideStats():void
+		protected  hideStats():void
 		{
 			kGAMECLASS.hideStats();
 		}
-		protected function hideUpDown():void
+		protected  hideUpDown():void
 		{
 			kGAMECLASS.hideUpDown();
 		}
@@ -192,66 +192,66 @@
 		}
 		*/
 
-		protected function createCallBackFunction(func:Function, arg:*):Function
+		protected  createCallBackFunction(func:() => void, arg:any):() => void
 		{
 			return kGAMECLASS.createCallBackFunction(func,arg);
 		}
 
-		protected function createCallBackFunction2(func:Function, ...args):Function
+		protected  createCallBackFunction2(func:() => void, ...args):() => void
 		{
 			return kGAMECLASS.createCallBackFunction2.apply(null,[func].concat(args));
 		}
 
-		protected function startCombat(monster_:Monster,plotFight_:Boolean=false):void{
+		protected  startCombat(monster_:Monster,plotFight_:boolean=false):void{
 			kGAMECLASS.startCombat(monster_,plotFight_);
 		}
-		protected function startCombatImmediate(monster:Monster, _plotFight:Boolean = false):void
+		protected  startCombatImmediate(monster:Monster, _plotFight:boolean = false):void
 		{
 			kGAMECLASS.startCombatImmediate(monster, _plotFight);
 		}
 
 		// Needed in a few rare cases for dumping text coming from a source that can't properly escape it's brackets
 		// (Mostly traceback printing, etc...)
-		protected function rawOutputText(output:String, purgeText:Boolean = false):void
+		protected  rawOutputText(output:string, purgeText:boolean = false):void
 		{
 			kGAMECLASS.rawOutputText(output, purgeText);
 		}
 
-		protected function outputText(output:String, purgeText:Boolean = false, parseAsMarkdown:Boolean = false):void
+		protected  outputText(output:string, purgeText:boolean = false, parseAsMarkdown:boolean = false):void
 		{
 			kGAMECLASS.outputText(output, purgeText, parseAsMarkdown);
 		}
 		
-		protected function clearOutput():void
+		protected  clearOutput():void
 		{
 			kGAMECLASS.currentText = "";
 			kGAMECLASS.mainView.clearOutputText();
 		}
 		
-		protected function doNext(eventNo:Function):void //Now typesafe
+		protected  doNext(eventNo:() => void):void //Now typesafe
 		{
 			kGAMECLASS.doNext(eventNo);
 		}
 		
-		protected function menu():void
+		protected  menu():void
 		{
 			kGAMECLASS.menu();
 		}
 
-		protected function hideMenus():void
+		protected  hideMenus():void
 		{
 			kGAMECLASS.hideMenus();
 		}
-		protected function choices(text1:String, butt1:Function,
-								text2:String, butt2:Function,
-								text3:String, butt3:Function,
-								text4:String, butt4:Function,
-								text5:String, butt5:Function,
-								text6:String, butt6:Function,
-								text7:String, butt7:Function,
-								text8:String, butt8:Function,
-								text9:String, butt9:Function,
-								text0:String, butt0:Function):void { //Now typesafe
+		protected  choices(text1:string, butt1:() => void,
+								text2:string, butt2:() => void,
+								text3:string, butt3:() => void,
+								text4:string, butt4:() => void,
+								text5:string, butt5:() => void,
+								text6:string, butt6:() => void,
+								text7:string, butt7:() => void,
+								text8:string, butt8:() => void,
+								text9:string, butt9:() => void,
+								text0:string, butt0:() => void):void { //Now typesafe
 			kGAMECLASS.choices(
 					text1, butt1,
 					text2, butt2,
@@ -266,11 +266,11 @@
 			);
 		}
 
-		protected function simpleChoices(text1:String, butt1:Function,
-								text2:String, butt2:Function,
-								text3:String, butt3:Function,
-								text4:String, butt4:Function,
-								text5:String, butt5:Function):void { //Now typesafe
+		protected  simpleChoices(text1:string, butt1:() => void,
+								text2:string, butt2:() => void,
+								text3:string, butt3:() => void,
+								text4:string, butt4:() => void,
+								text5:string, butt5:() => void):void { //Now typesafe
 			kGAMECLASS.simpleChoices(text1, butt1,
 					text2, butt2,
 					text3, butt3,
@@ -278,16 +278,16 @@
 					text5, butt5);
 		}
 
-		protected function doYesNo(eventYes:Function, eventNo:Function):void { //Now typesafe
+		protected  doYesNo(eventYes:() => void, eventNo:() => void):void { //Now typesafe
 			kGAMECLASS.doYesNo(eventYes, eventNo);
 		}
 
-		protected function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000):void
+		protected  addButton(pos:number, text:string = "", func1:() => void = null, arg1:any = -9000):void
 		{
 			kGAMECLASS.addButton(pos, text, func1, arg1);
 		}
 
-		protected function hasButton(arg:*):Boolean
+		protected  hasButton(arg:any):boolean
 		{
 			return kGAMECLASS.hasButton(arg);
 		}
@@ -306,12 +306,12 @@
 		}
 */
 		
-		protected function sackDescript():String
+		protected  sackDescript():string
 		{
 			return Appearance.sackDescript(player);
 		}
 		
-		protected function cockClit(value:int = 0):String
+		protected  cockClit(value:number = 0):string
 		{
 			return kGAMECLASS.cockClit(value);
 		}
@@ -323,57 +323,57 @@
 		}
 */
 		
-		protected function sheathDesc():String
+		protected  sheathDesc():string
 		{
 			return kGAMECLASS.player.sheathDescription();
 		}
 		
-		protected function chestDesc():String
+		protected  chestDesc():string
 		{
 			return player.chestDesc();
 			//return Appearance.chestDesc(player);
 		}
 		
-		protected function allChestDesc():String
+		protected  allChestDesc():string
 		{
 			return player.allChestDesc();
 		}
 		
-		protected function allBreastsDescript():String
+		protected  allBreastsDescript():string
 		{
 			return kGAMECLASS.allBreastsDescript();
 		}
 		
-		protected function sMultiCockDesc():String
+		protected  sMultiCockDesc():string
 		{
 			return kGAMECLASS.player.sMultiCockDesc();
 		}
 		
-		protected function SMultiCockDesc():String
+		protected  SMultiCockDesc():string
 		{
 			return kGAMECLASS.player.SMultiCockDesc();
 		}
 		
-		protected function oMultiCockDesc():String
+		protected  oMultiCockDesc():string
 		{
 			return kGAMECLASS.player.oMultiCockDesc();
 		}
 		
-		protected function OMultiCockDesc():String
+		protected  OMultiCockDesc():string
 		{
 			return kGAMECLASS.player.OMultiCockDesc();
 		}
 		
-		protected function tongueDescript():String
+		protected  tongueDescript():string
 		{
 			return kGAMECLASS.tongueDescript();
 		}
 		
-		protected function ballsDescriptLight(forcedSize:Boolean = true):String {
+		protected  ballsDescriptLight(forcedSize:boolean = true):string {
 			return kGAMECLASS.ballsDescriptLight(forcedSize);
 		}
 
-		protected function ballDescript():String {
+		protected  ballDescript():string {
 			return kGAMECLASS.ballDescript();
 		}
 
@@ -389,35 +389,35 @@
 		}
 		*/
 
-		protected function ballsDescript():String {
+		protected  ballsDescript():string {
 			return kGAMECLASS.ballsDescript();
 		}
 		
-		protected function simpleBallsDescript():String {
+		protected  simpleBallsDescript():string {
 			return kGAMECLASS.simpleBallsDescript();
 		}
 
-		protected function assholeDescript():String {
+		protected  assholeDescript():string {
 			return kGAMECLASS.assholeDescript();
 		}
 		
-		protected function eAssholeDescript():String {
+		protected  eAssholeDescript():string {
 			return Appearance.assholeDescript(monster);
 		}
 				
-		protected function hipDescript():String {
+		protected  hipDescript():string {
 			return kGAMECLASS.hipDescript();
 		}
 		
-		protected function assDescript():String {
+		protected  assDescript():string {
 			return kGAMECLASS.assDescript();
 		}
 		
-		protected  function buttDescript():String {
+		protected   buttDescript():string {
 			return kGAMECLASS.buttDescript();
 		}
 
-		protected function assholeOrPussy():String {
+		protected  assholeOrPussy():string {
 			return Appearance.assholeOrPussy(player);
 		}
 
@@ -451,12 +451,12 @@
 		}
 */
 		
-		protected function nippleDescript(rowNum:Number):String
+		protected  nippleDescript(rowNum:number):string
 		{
 			return kGAMECLASS.nippleDescript(rowNum);
 		}
 		
-		protected function cockDescript(cockNum:int = 0):String
+		protected  cockDescript(cockNum:number = 0):string
 		{
 			return kGAMECLASS.player.cockDescript(cockNum);
 		}
@@ -468,12 +468,12 @@
 		}
 */
 		
-		protected function multiCockDescript():String
+		protected  multiCockDescript():string
 		{
 			return kGAMECLASS.player.multiCockDescript();
 		}
 		
-		protected function multiCockDescriptLight():String
+		protected  multiCockDescriptLight():string
 		{
 			return kGAMECLASS.player.multiCockDescriptLight();
 		}
@@ -495,7 +495,7 @@
 		}
 */
 		
-		protected function breastDescript(rowNum:Number):String
+		protected  breastDescript(rowNum:number):string
 		{
 			return player.breastDescript(rowNum);
 		}
@@ -507,37 +507,37 @@
 		}
 */
 		
-		protected function breastSize(val:Number):String
+		protected  breastSize(val:number):string
 		{
 			return Appearance.breastSize(val);
 		}
 		
-		protected function biggestBreastSizeDescript():String
+		protected  biggestBreastSizeDescript():string
 		{
 			return Appearance.biggestBreastSizeDescript(player);
 		}
 		
-		protected function hairDescript():String
+		protected  hairDescript():string
 		{
 			return kGAMECLASS.hairDescript();
 		}
 		
-		protected function hairOrFur():String
+		protected  hairOrFur():string
 		{
 			return kGAMECLASS.hairOrFur();
 		}
 		
-		protected function clitDescript():String
+		protected  clitDescript():string
 		{
 			return kGAMECLASS.clitDescript();
 		}
 		
-		protected function vaginaDescript(vaginaNum:Number = 0):String
+		protected  vaginaDescript(vaginaNum:number = 0):string
 		{
 			return kGAMECLASS.vaginaDescript(vaginaNum);
 		}
 		
-		protected function allVaginaDescript():String
+		protected  allVaginaDescript():string
 		{
 			return kGAMECLASS.allVaginaDescript();
 		}
@@ -571,23 +571,23 @@
 		 * 
 		 * @param	... args
 		 */
-		protected function dynStats(... args):void
+		protected  dynStats(... args):void
 		{
 			// Bullshit to unroll the incoming array
 			kGAMECLASS.dynStats.apply(null, args);
 		}
 
-		protected function silly():Boolean
+		protected  silly():boolean
 		{
 			return kGAMECLASS.silly();
 		}
 
-		protected function HPChange(changeNum:Number,display:Boolean):void
+		protected  HPChange(changeNum:number,display:boolean):void
 		{
 			kGAMECLASS.HPChange(changeNum,display);
 		}
 
-		protected function fatigue(mod:Number,type:Number=0):void
+		protected  fatigue(mod:number,type:number=0):void
 		{
 			kGAMECLASS.fatigue(mod,type);
 		}
@@ -600,81 +600,81 @@
 		}
 */
 		
-		protected function playerMenu():void { kGAMECLASS.playerMenu(); }
+		protected  playerMenu():void { kGAMECLASS.playerMenu(); }
 		
-		protected function get player():Player
+		protected  get player():Player
 		{
 			return kGAMECLASS.player;
 		}
 		
-		protected function set player(val:Player):void
+		protected  set player(val:Player):void
 		{
 			kGAMECLASS.player = val;
 		}
 		
-		protected function get player2():Player
+		protected  get player2():Player
 		{
 			return kGAMECLASS.player2;
 		}
 		
-		protected function set player2(val:Player):void
+		protected  set player2(val:Player):void
 		{
 			kGAMECLASS.player2 = val;
 		}
 		
-		protected function get debug():Boolean
+		protected  get debug():boolean
 		{
 			return kGAMECLASS.debug;
 		}
 		
-		protected function set debug(val:Boolean):void
+		protected  set debug(val:boolean):void
 		{
 			kGAMECLASS.debug = val;
 		}
 		
-		protected function get ver():String
+		protected  get ver():string
 		{
 			return kGAMECLASS.ver;
 		}
 		
-		protected function set ver(val:String):void
+		protected  set ver(val:string):void
 		{
 			kGAMECLASS.ver = val;
 		}
 		
-		protected function get images():ImageManager
+		protected  get images():ImageManager
 		{
 			return kGAMECLASS.images;
 		}
 		
-		protected function set images(val:ImageManager):void
+		protected  set images(val:ImageManager):void
 		{
 			kGAMECLASS.images = val;
 		}
 		
-		protected function get monster():Monster
+		protected  get monster():Monster
 		{
 			return kGAMECLASS.monster;
 		}
 		
-		protected function set monster(val:Monster):void
+		protected  set monster(val:Monster):void
 		{
 			kGAMECLASS.monster = val;
 		}
 
-		protected function get consumables():ConsumableLib{
+		protected  get consumables():ConsumableLib{
 			return kGAMECLASS.consumables;
 		}
-		protected function get useables():UseableLib{
+		protected  get useables():UseableLib{
 			return kGAMECLASS.useables;
 		}
-		protected function get weapons():WeaponLib{
+		protected  get weapons():WeaponLib{
 			return kGAMECLASS.weapons;
 		}
-		protected function get armors():ArmorLib{
+		protected  get armors():ArmorLib{
 			return kGAMECLASS.armors;
 		}
-		protected function get inventory():Inventory{
+		protected  get inventory():Inventory{
 			return kGAMECLASS.inventory;
 		}
 
@@ -690,12 +690,12 @@
 		}
 */
 		
-		protected function get time():TimeModel
+		protected  get time():TimeModel
 		{
 			return kGAMECLASS.time;
 		}
 		
-		protected function set time(val:TimeModel):void
+		protected  set time(val:TimeModel):void
 		{
 			kGAMECLASS.time = val;
 		}
@@ -753,72 +753,72 @@
 		}
 */
 		
-		protected function get temp():int
+		protected  get temp():number
 		{
 			return kGAMECLASS.temp;
 		}
 		
-		protected function set temp(val:int):void
+		protected  set temp(val:number):void
 		{
 			kGAMECLASS.temp = val;
 		}
 		
-		protected function get args():Array
+		protected  get args():any[]
 		{
 			return kGAMECLASS.args;
 		}
 		
-		protected function set args(val:Array):void
+		protected  set args(val:any[]):void
 		{
 			kGAMECLASS.args = val;
 		}
 		
-		protected function get funcs():Array
+		protected  get funcs():any[]
 		{
 			return kGAMECLASS.funcs;
 		}
 		
-		protected function set funcs(val:Array):void
+		protected  set funcs(val:any[]):void
 		{
 			kGAMECLASS.funcs = val;
 		}
 		
-		protected function get mainView():MainView
+		protected  get mainView():MainView
 		{
 			return kGAMECLASS.mainView;
 		}
 		
-		protected function set mainView(val:MainView):void
+		protected  set mainView(val:MainView):void
 		{
 			kGAMECLASS.mainView = val;
 		}
 		
-		protected function get model():GameModel
+		protected  get model():GameModel
 		{
 			return kGAMECLASS.model;
 		}
 		
-		protected function set model(val:GameModel):void
+		protected  set model(val:GameModel):void
 		{
 			kGAMECLASS.model = val;
 		}
 		
-		protected function get flags():DefaultDict
+		protected  get flags():DefaultDict
 		{
 			return kGAMECLASS.flags;
 		}
 		
-		protected function set flags(val:DefaultDict):void
+		protected  set flags(val:DefaultDict):void
 		{
 			kGAMECLASS.flags = val;
 		}
 		
-		protected function showStatDown(arg:String):void
+		protected  showStatDown(arg:string):void
 		{
 			kGAMECLASS.mainView.statsView.showStatDown(arg);
 		}
 		
-		protected function showStatUp(arg:String):void
+		protected  showStatUp(arg:string):void
 		{
 			kGAMECLASS.mainView.statsView.showStatUp(arg);
 		}
@@ -848,4 +848,3 @@
 
 	}
 
-}

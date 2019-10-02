@@ -1,14 +1,14 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.internals.*;
+ 
 
-	public class Hel extends Monster
+	 
+	 
+	 
+
+	export class Hel extends Monster
 	{
 
-		private function helAttack():void {
-			var damage:Number;
+		private  helAttack():void {
+			var damage:number;
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
@@ -60,8 +60,8 @@ package classes.Scenes.NPCs
 
 		//Attack 2 – Tail Slap (Hit)
 		//low dodge chance, lower damage
-		private function helAttack2():void {
-			var damage:Number;
+		private  helAttack2():void {
+			var damage:number;
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
@@ -112,7 +112,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		private function helCleavage():void {
+		private  helCleavage():void {
 			//FAIL
 			if((player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) || (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) || (player.spe - spe > 0 && int(Math.random()*(((player.spe-spe)/4)+80)) > 80)) {
 				outputText("To your surprise, the salamander suddenly pulls up her top, letting her hefty breasts hang free in the air; her small, bright pink nipples quickly harden from either arousal or temperature.  Before you can take your eyes off her impressive rack, she jumps at you.  One of her scaled arms reaches around your waist, and the other toward your head, but you roll away from her grip and push her bodily away.  She staggers a moment, but then quickly yanks the jangling bikini top back down with a glare.\n", false);
@@ -120,7 +120,7 @@ package classes.Scenes.NPCs
 			//Attack 3 – Lust – Cleavage (Failure)
 			else {
 				outputText("To your surprise, the salamander suddenly yanks up her top, letting her hefty breasts hang free in the air; her small, bright pink nipples quickly harden from either arousal or temperature.  Before you can take your eyes off her impressive rack, she jumps at you.  One of her scaled arms encircles your waist, and the other forcefully shoves your face into her cleavage.  She jiggles her tits around your face for a moment before you're able to break free, though you can feel a distinct heat rising in your loins.  As quickly as they were revealed, the breasts are concealed again and your opponent is ready for more combat!", false);
-				var lust:Number = 20 + rand(10) + player.sens/10 + rand(player.lib/20);
+				var lust:number = 20 + rand(10) + player.sens/10 + rand(player.lib/20);
 				game.dynStats("lus", lust);
 				//Apply resistance
 				lust *= game.lustPercent()/100;
@@ -130,10 +130,10 @@ package classes.Scenes.NPCs
 			}
 			combatRoundOver();
 		}
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			trace("Hel Perform Combat Action Called");
-			var select:Number = rand(3);
+			var select:number = rand(3);
 			trace("Selected: " + select);
 			switch(select) {
 				case 0:
@@ -148,13 +148,13 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.Sparring) >= 0) game.helFollower.PCBeatsUpSalamanderSparring();
 			else game.helScene.beatUpHel();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nHelia waits it out in stoic silence...");
@@ -165,7 +165,7 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function Hel()
+		public  constructor()
 		{
 			if (game.flags[kFLAGS.HEL_TALKED_ABOUT_HER] == 1) {
 				this.a = "";
@@ -214,4 +214,3 @@ package classes.Scenes.NPCs
 		
 	}
 
-}

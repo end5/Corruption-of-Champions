@@ -1,4 +1,4 @@
-﻿
+
 /*
 
 Debug pane and related functions
@@ -6,9 +6,9 @@ Debug pane and related functions
 Author: Fake-Name
 
 */
-public function monkeyStartConfirm():void
+export function monkeyStartConfirm():void
 {
-	outputText(<![CDATA[
+	outputText(`<![CDATA[
 
 Chaos Monkah!
 
@@ -23,7 +23,7 @@ probably do not intend.
 
 **CAUTION. THE ONLY WAY TO STOP THE CHAOS MONKEY IS TO CLOSE THE GAME**
 (Yeah, I want to fix that)
-	]]>, true, true);
+	]]>`, true, true);
 
 	this.monkey.throwOnSyntaxError = false;
 	this.monkey.excludeMenuKeys = false;
@@ -35,40 +35,40 @@ probably do not intend.
 }
 
 
-public function syntaxMonkey():void
+export function syntaxMonkey():void
 {
 	this.monkey.throwOnSyntaxError = true;
 	this.monkey.excludeMenuKeys = true;			// Syntax checking monkey should ignore the menu keys (they're irrelevant to it's functions)
 	monkeyStartReallyConfirm()
 }
 
-public function noSaveMonkey():void
+export function noSaveMonkey():void
 {
 	this.monkey.excludeMenuKeys = true;
 	monkeyStartReallyConfirm()
 }
 
 
-public function monkeyStartReallyConfirm():void
+export function monkeyStartReallyConfirm():void
 {
-	outputText(<![CDATA[
+	outputText(`<![CDATA[
 
 **NO REALLY, THIS WILL PROBABLY OVERWRITE YOUR SAVES.**
 
 **ARE YOU REALLY, *REALLY* SURE?**
 
-	]]>, true, true);
+	]]>`, true, true);
 
 	doYesNo(initiateTheMonkey, debugPane)
 }
 
 
-public function initiateTheMonkey():void
+export function initiateTheMonkey():void
 {
 	// I swear, half the fun of this is just the function names I can write.
-	outputText(<![CDATA[
+	outputText(`<![CDATA[
 INITIATING MONKEY
-	]]>, true, true);
+	]]>`, true, true);
 
 	this.monkey.createChaos();
 
@@ -80,7 +80,7 @@ INITIATING MONKEY
 
 
 
-public function debugPane():void
+export function debugPane():void
 {
 	outputText("<b>Debug information!</b>\n", true);
 
@@ -121,7 +121,7 @@ public function debugPane():void
 	addButton(9, "Back", mainMenu);
 }
 
-public function toggleHaltSettings():void
+export function toggleHaltSettings():void
 {
 	//toggle debug
 	if(CoC_Settings.haltOnErrors)
@@ -135,17 +135,17 @@ public function toggleHaltSettings():void
 
 
 
-import flash.system.SecurityDomain;
-import flash.system.Security;
+ 
+ 
 
-public function doThatTestingThang():void
+export function doThatTestingThang():void
 {
 
 	// Excercise the parser. This should catch parser regressions, I think.
 	//
 	//
 
-	outputText(<![CDATA[
+	outputText(`<![CDATA[
 
 **Parser Tests!**
 
@@ -373,7 +373,7 @@ convert "
 "derp a herp"
 
 
-	]]>, true, true);
+	]]>`, true, true);
 
 
 	menu();

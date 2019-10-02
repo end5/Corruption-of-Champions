@@ -1,7 +1,7 @@
-﻿package classes.Scenes.Areas.Lake{
-	import classes.*;
+ 
+	 
 
-	public class GreenSlimeScene extends AbstractLakeContent{
+	export class GreenSlimeScene extends AbstractLakeContent{
 //serviceLowCorruption();
 //servuceLowCorruptionHighLust();
 //maleRapesOoze();
@@ -10,7 +10,7 @@
 //oozeRapesYouOrally();
 //oozeRapesYouVaginally();
 
-private function serviceLowCorruption():void
+private  serviceLowCorruption():void
 {
 	outputText("You seem unable to pull your eyes away from the creature, clearly helpless and distressed in its current state.  Carefully, you step forward, the slime barely registering your presence any longer.  It momentarily grimaces as if in agony, and you decide that you can't simply leave it like this.", true);
 	outputText("You sit next to the blob and gently touch its throbbing member.  The surface membrane is moist and almost velvety in texture, not entirely smooth but not truly rough either.  You slowly run a hand along its length, glancing at the creature's face as you do so.  It seems calmer somehow, more in control of its breathing.\n\n", false);
@@ -38,7 +38,7 @@ private function serviceLowCorruption():void
 	player.slimeFeed();
 	dynStats("sen", 2);
 }
-private function serviceLowCorruptionHighLust():void
+private  serviceLowCorruptionHighLust():void
 {
 	player.slimeFeed();
 	outputText("You find yourself unable to tear your eyes away from the creature as it undulates almost hypnotically in front of you, the heat in your crotch rising.  The rigid protrusion at its middle visibly pulses and throbs, and with a small grin you step closer to the ooze and strip off your clothing.\n\n", true);
@@ -272,7 +272,7 @@ private function serviceLowCorruptionHighLust():void
 	dynStats("sen", 3);
 }
 
-private function maleRapesOoze():void {
+private  maleRapesOoze():void {
 	outputText("Noting your own erectness, you decide that the unusual nature of the thing in front of you is of, at best, minor concern, and resolve to fuck it to satisfy your own desires.\n\n", true);
 	outputText("You approach the creature and examine it, finding no real orifices to speak of.  ", false);
 	// Random check here for oral or anal
@@ -367,7 +367,7 @@ private function maleRapesOoze():void {
 	dynStats("sen", 3);
 }
 
-private function femaleRapesOoze():void {
+private  femaleRapesOoze():void {
 	player.slimeFeed();
 	outputText("You feel a stirring inside your feminine side as you eye the slime's throbbing erection, and decide to take advantage of its current state to satisfy your own urges.  You strip off your clothes and walk forward, straddling the creature's thighs and running a hand over its member.  You pull it in against your body and stroke the soft, velvety, and just slightly moist shaft,", false);
 	if(player.cocks.length > 0)
@@ -464,7 +464,7 @@ private function femaleRapesOoze():void {
 	dynStats("sen", 3);
 }
 
-private function oozeButtRapesYou():void 
+private  oozeButtRapesYou():void 
 {
 	player.slimeFeed();
 	outputText("You collapse under the beating from the slime's soft but heavy fists, dazed and disoriented.  You weakly try to resist as the slime rolls you onto your stomach and lifts your " + buttDescript() + " into the air as it takes up a position behind you.  It holds your head against the ground with one hand and strips off your clothes with the other, pressing its trunk up against you.  Its skin is soft, velvety, and firm, but it is also easily pliable.  You feel something grow out of its body and almost instantly realize what's going on.  The slime rubs its moist cock between your cheeks for a moment, before pulling back.  You realize with a tiny bit of fear that the creature's tool must be massive – over a foot, at least, and several inches wide!  It runs its tip over your ", false);
@@ -526,7 +526,7 @@ private function oozeButtRapesYou():void
 	dynStats("sen", 4);
 }
 
-private function oozeRapesYouOrally():void
+private  oozeRapesYouOrally():void
 {
 	player.slimeFeed();
 	outputText("You collapse under the beating from the slime's soft but heavy fists, dazed and disoriented.  The creature surges forward, covering you and forcing you to the ground as it rests on your gut, putting just enough of its apparently enormous weight onto you to keep you pinned.  It leans forward, its massive upper body easily shadowing you, and ", false);
@@ -581,7 +581,7 @@ private function oozeRapesYouOrally():void
 	dynStats("lib", 2, "sen", 2, "lus", 10);
 }
 
-private function oozeRapesYouVaginally():void
+private  oozeRapesYouVaginally():void
 {
 	player.slimeFeed();
 	outputText("You collapse under the beating from the slime's soft but heavy fists, dazed and disoriented.  The creature lunges at you with surprising speed, grabbing you by the ankles and pulling you towards it.  You try to pull away as it pulls you up against its trunk, momentarily fearful that it's going to try and absorb you.  ", false);
@@ -686,7 +686,7 @@ private function oozeRapesYouVaginally():void
 }
 
 
-internal function rapeOozeWithMilk():void {
+public  rapeOozeWithMilk():void {
 	outputText("", true);
 	outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, removing the top of your " + player.armorName + " and pressing the mess of a monster to your " + breastDescript(0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + breastDescript(0) + " to the tip of your " + nippleDescript(0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + nippleDescript(0) + ", it slowly works its way down your body, almost lovingly ", false);
 
@@ -766,7 +766,7 @@ internal function rapeOozeWithMilk():void {
 	cleanupAfterCombat();
 }
 
-		public function slimeVictoryRape():void
+		public  slimeVictoryRape():void
 		{
 			//Service for lower corruption
 			if (player.cor <= 33) {
@@ -786,7 +786,7 @@ internal function rapeOozeWithMilk():void {
 			return;
 		}
 
-		public function slimeLoss():void
+		public  slimeLoss():void
 		{
 			outputText("", true);
 			doNext(playerMenu);
@@ -806,4 +806,3 @@ internal function rapeOozeWithMilk():void {
 			return;
 		}
 	}
-}

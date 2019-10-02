@@ -1,14 +1,14 @@
 /**
  * Created by aimozg on 26.12.13.
  */
-package classes.Scenes.Places.Owca
-{
-	import classes.*;
+ 
 
-	public class LustyDemons extends Monster
+	 
+
+	export class LustyDemons extends Monster
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			str = 40;
 			this.weaponAttack = 10;
@@ -20,12 +20,12 @@ package classes.Scenes.Places.Owca
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.owca.defeetVapulasHorde();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nThe demons smile to one at another as they watch your display, then close in...");
@@ -35,7 +35,7 @@ package classes.Scenes.Places.Owca
 			}
 		}
 
-		override public function teased(lustDelta:Number):void
+		 public  teased(lustDelta:number):void
 		{
 			if(lustDelta > 0 && lustDelta < 5) outputText("  The demons lessen somewhat in the intensity of their attack, and some even eye up your assets as they strike at you. Vapula has trouble giving her orders.");
 			if(lustDelta >= 5 && lustDelta < 10) outputText("  The demons are obviously avoiding damaging anything you might use to fuck and they're starting to leave their hands on you just a little longer after each blow.  Some are copping quick feels and you can smell the demonic lust on the air.  Vapula is starting to get frustrated as her minions are more and more reluctant to attack you, preferring to caress each other instead.");
@@ -43,7 +43,7 @@ package classes.Scenes.Places.Owca
 			applyTease(lustDelta);
 		}
 
-		public function LustyDemons()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "lusty demons";
@@ -91,4 +91,4 @@ package classes.Scenes.Places.Owca
 			checkMonster();
 		}
 	}
-}
+

@@ -1,26 +1,26 @@
 /**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Areas
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.Plains.*;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
 
-	public class Plains extends BaseContent
+	  ;
+
+	export class Plains extends BaseContent
 	{
-		public var bunnyGirl:BunnyGirl = new BunnyGirl();
-		public var gnollScene:GnollScene = new GnollScene();
-		public var gnollSpearThrowerScene:GnollSpearThrowerScene = new GnollSpearThrowerScene();
-		public var satyrScene:SatyrScene = new SatyrScene();
+		public  bunnyGirl:BunnyGirl = new BunnyGirl();
+		public  gnollScene:GnollScene = new GnollScene();
+		public  gnollSpearThrowerScene:GnollSpearThrowerScene = new GnollSpearThrowerScene();
+		public  satyrScene:SatyrScene = new SatyrScene();
 
-		public function Plains()
+		public  constructor()
 		{
 		}
-		public function explorePlains():void
+		public  explorePlains():void
 		{
 			outputText("", true);
 			flags[kFLAGS.TIMES_EXPLORED_PLAINS]++;
@@ -73,7 +73,7 @@ package classes.Scenes.Areas
 				}
 			}
 
-			var choices:Array = [plainsLoot, plainsLoot,
+			var choices:any[] = [plainsLoot, plainsLoot,
 				gnollSpearThrowerScene.gnoll2Encounter,
 				gnollScene.gnollEncounter,
 				bunnyGirl.bunnbunbunMeet, bunnyGirl.bunnbunbunMeet];
@@ -96,7 +96,7 @@ package classes.Scenes.Areas
 			choices[rand(choices.length)]();
 		}
 		
-		private function plainsLoot():void {
+		private  plainsLoot():void {
 			if (rand(2) == 0) { //OVI
 				outputText("While exploring the plains you nearly trip over a discarded, hexagonal bottle.  ");
 				inventory.takeItem(consumables.OVIELIX, camp.returnToCampUseOneHour);
@@ -107,4 +107,4 @@ package classes.Scenes.Areas
 			}
 		}
 	}
-}
+

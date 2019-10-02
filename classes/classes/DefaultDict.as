@@ -1,25 +1,25 @@
 
 
 
-package classes
-{
-	import flash.utils.Proxy;
-	import flash.utils.flash_proxy;
-	import flash.utils.Dictionary
+ 
+
+	 
+	 
+	 
 	
 
 	// This is a special class that immitates a array/dictionary, and 
 	// yet has some special behaviour to make it look & act like any arbitrary aray value 
 	// is pre-initialized to 0. 
-	public dynamic class DefaultDict extends Proxy 
+	export  class DefaultDict extends Proxy 
 	{
 		// Actual key<->value pairs are stored in _dict
-		private var _dict:Object;
+		private  _dict:Record<string, any>;
 
 		// Set to true to print any access to defaultDict members
-		private var debugPrintDict:Boolean = false;		
+		private  debugPrintDict:boolean = false;		
 
-		public function DefaultDict()		// Constructor
+		public  constructor()		// Constructor
 		{
 			_dict = new Object();
 			if (debugPrintDict) trace("Instantiating default dict class");
@@ -27,7 +27,7 @@ package classes
 
 		// used to determine status of the query 'name in defaultDict'. 
 		// Since we want to *look* like have any arbitrary key, we always return true.
-		override flash_proxy function hasProperty(name:*):Boolean
+		 flash_proxy function hasProperty(name:any):boolean
 		{
 			if (debugPrintDict) trace("hasProperty", name);
 			return true;
@@ -38,7 +38,7 @@ package classes
 		// that is used for determining how many flags the save/load mechanism iterates over.
 		// I'm going to update that to properly iterating over each item in the save eventually
 		// but this makes it work as a stop-gap measure
-		override flash_proxy function getProperty(name:*):*
+		 flash_proxy function getProperty(name:any):any
 		{
 			if (debugPrintDict) trace("getProperty Called");
 			if (name == "length")
@@ -62,7 +62,7 @@ package classes
 
 		// Overrides any attempt to set a class member or indice (defaultDict[name] = x or defaultDict.name = x)
 		// If x == 0, it removes {name} from _dict if it's present, otherwise does nothing. Else, it sets _dict[name] = x
-		override flash_proxy function setProperty(name:*, value:*):void 
+		 flash_proxy function setProperty(name:any, value:any):void 
 		{
 			if (value != 0)
 			{
@@ -83,7 +83,7 @@ package classes
 		// e.g. defaultDict.push(), etc...
 		// Since we don't have an array length, per se, we just swallow instances of push.
 		// otherwise, we just apply the called function name to _dict.
-		override flash_proxy function callProperty(methodName:*, ... args):* 
+		 flash_proxy function callProperty(methodName:any, ... args):any 
 		{
 			if (debugPrintDict) trace("call Property ", methodName);
 			if (String(methodName) == "push")
@@ -92,7 +92,7 @@ package classes
 			}
 			else
 			{
-				var res:*;
+				var res:any;
 				res = _dict[methodName].apply(_dict, args);
 				return res;
 			}
@@ -110,26 +110,26 @@ package classes
 		//
 		//}
 
-		override flash_proxy function deleteProperty(name:*):Boolean 
+		 flash_proxy function deleteProperty(name:any):boolean 
 		{
 			if (debugPrintDict) trace("deleteProperty", name);
 			return delete _dict[name];
 		}
 
 
-		override flash_proxy function nextName(index:int):String 
+		 flash_proxy function nextName(index:number):string 
 		{
 			if (debugPrintDict) trace("nextName", index);
 			return String(index - 1);
 		}
 
-		override flash_proxy function nextValue(index:int):* 
+		 flash_proxy function nextValue(index:number):any 
 		{
 			if (debugPrintDict) trace("nextValue", index);
 			return _dict[index - 1];
 		}
 
-		override flash_proxy function nextNameIndex(index:int):int 
+		 flash_proxy function nextNameIndex(index:number):number 
 		{
 
 			if (debugPrintDict) trace("nextNameIndex ", index);
@@ -143,4 +143,3 @@ package classes
 
 
 	}
-}

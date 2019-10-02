@@ -1,14 +1,14 @@
 /**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.Areas.Bog
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class ChameleonGirlScene extends BaseContent
+	 
+	 
+
+	export class ChameleonGirlScene extends BaseContent
 	{
-		public function ChameleonGirlScene()
+		public  constructor()
 		{
 		}
 
@@ -36,7 +36,7 @@ package classes.Scenes.Areas.Bog
 
 // TIMES_MET_CHAMELEON:int = 561;
 
-		public function encounterChameleon():void
+		public  encounterChameleon():void
 		{
 			clearOutput();
 			startCombat(new ChameleonGirl());
@@ -62,7 +62,7 @@ package classes.Scenes.Areas.Bog
 			flags[kFLAGS.TIMES_MET_CHAMELEON]++;
 			doNext(playerMenu);
 		}//LOSS SCENES (Intro) (Z edited)
-		public function loseToChameleonGirl():void
+		public  loseToChameleonGirl():void
 		{
 			clearOutput();
 			spriteSelect(89);
@@ -87,9 +87,9 @@ package classes.Scenes.Areas.Bog
 
 
 		//Herm Loss (Z edited)
-		private function loseToChameleonWithCockAnBallsAnCunt():void
+		private  loseToChameleonWithCockAnBallsAnCunt():void
 		{
-			var x:int = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			spriteSelect(89);
 			outputText("\n\n\"<i>Hah! You didn't think you could beat me in </i>my<i> bog, did you?</i>\" the haughty chameleon laughs. She stalks towards you, swaying her wide hips in an exaggerated imitation of a dominatrix, shedding her spare clothing as she approaches.  She stops and stands before you, trying her best to look intimidating.  Wondering what exactly she has planned for you, you await your fate.  From the worried look in her eyes, you can tell she has no idea what she's doing.");
 
@@ -119,9 +119,9 @@ package classes.Scenes.Areas.Bog
 
 
 		//-Male Loss (Z edited)
-		private function dudesLoseToChamChams():void
+		private  dudesLoseToChamChams():void
 		{
-			var x:int = rand(player.totalCocks());
+			var x:number = rand(player.totalCocks());
 			spriteSelect(89);
 			outputText("\n\nRecognizing that you're no danger, her skin shifts back into its natural " + monster.skinTone + " coloration as she walks towards you.  She swings her hips seductively as she splashes slowly through the water and licks her lips with a loud smack of her tongue, then reaches out and forcefully pulls your " + player.armorName + " above your waist before you can even try to resist her advances, and pushes you back against a tree.  With a few quick pulls of fabric she's stripped her own clothes, and she tosses her thong over a low-hanging branch.  The other band of silk she uses to quickly bind your wrists.  Were you in any shape to fight back you could pull free, but you're too ");
 			if (player.lust > 99) outputText("overwhelmed by lust");
@@ -152,7 +152,7 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//-Female Loss (Z edited)
-		private function loseToChamChamWithPCCunt():void
+		private  loseToChamChamWithPCCunt():void
 		{
 			spriteSelect(89);
 			outputText("\n\n\"<i>Hah! You didn't think you could beat me in </i>my<i> bog, did you?</i>\"  She stalks toward you, swaying her wide hips in an exaggerated imitation of a dominatrix, shedding her clothes as she approaches.   Positioning her glistening sex right in front of your face, she looks down and makes the cruellest smile she can manage.  Too busy stifling laughter at the awkward display, you make no move to pleasure her.  Looking bewildered that you aren't following along, the chameleon girl opens and closes her mouth, trying to find words.  She finally stammers out, \"<i>W-well?  Get... to it?</i>\"  You resist the urge to ask her for a detailed explanation of what she wants and resolve yourself to play along.  You'd be too exhausted to resist if she really tried to force you, and this may lessen the severity of the experience.");
@@ -172,7 +172,7 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//VICTORY SCENES INTRO(Z edited)
-		public function defeatChameleonGirl():void
+		public  defeatChameleonGirl():void
 		{
 			clearOutput();
 			spriteSelect(89);
@@ -191,10 +191,10 @@ package classes.Scenes.Areas.Bog
 				return;
 			}
 			//(Display Options: [Fuck Her Face] [Pussy Rub] [Herm Style Pussyrub] [Incubi Draft] [Succubi Milk] [Lust&Sens Drafts])
-			var dick:Function =null;
-			var pussy:Function =null;
-			var herm:Function =null;
-			var item:Function =null;
+			var dick:() => void =null;
+			var pussy:() => void =null;
+			var herm:() => void =null;
+			var item:() => void =null;
 			if (player.hasCock()) dick = manFucksChameleonWithBiggishWang;
 			if (player.hasVagina()) pussy = femaleHasWinSexWithChamCham;
 			if (player.gender == 3) herm = fuckDatChameleonAsACoolGuyGirlHerm;
@@ -205,11 +205,11 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//-Herm Victory (Z edited)
-		private function fuckDatChameleonAsACoolGuyGirlHerm():void
+		private  fuckDatChameleonAsACoolGuyGirlHerm():void
 		{
 			clearOutput();
 			spriteSelect(89);
-			var x:Number = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = player.smallestCockIndex();
 			outputText("You shed your " + player.armorName + " and approach the fallen chameleon girl.  She stares at you in fascination as she spots your multiple endowments: " + sMultiCockDesc() + " and " + vaginaDescript(0) + ".  You look her up and down, following the smooth curves of her thin body with your eyes.  Squatting down beside her, you take her by the shoulders in one arm and trail your fingertips lightly up her torso with the other, feeling the soft skin of her belly.  Her eyes widen, and she looks from her hand to your face and back again.  When your hand reaches the silk cloth covering her chest, you pull it off with a light tug and cast it off to the side.  You cup her small breast in your palm, and as you squeeze it her skin tone changes perceptibly, flashing to a much brighter shade of the colors it was.");
 
@@ -232,11 +232,11 @@ package classes.Scenes.Areas.Bog
 
 		//-Male (Z edited)
 		//(Savin's note: This only makes a lot of sense for biggus dickus characters; consider an alternative for traps/weany dick characters. We don't all have even footlongs) (yuh)
-		private function manFucksChameleonWithBiggishWang():void
+		private  manFucksChameleonWithBiggishWang():void
 		{
 			clearOutput();
 			spriteSelect(89);
-			var x:int = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			outputText("You approach the fallen girl, and she looks up at you, a pleading expression in her eyes.  You might feel worse for her if she hadn't tried to assault you in a bog.  Reaching down behind her, you find the knot of the cloth covering her breasts, and with a quick pull you yank it off and toss it aside, then drop your [armorName], revealing your erect prick.  Her eyes widen when she sees it and her mouth parts slightly, letting a bit of her tongue slip out to lick her lips.  Quietly disdainful of the slutty girl's open arousal, you decide that if she wants to taste it so badly, she may.  But when you put your hand on the back of her head to push her onto your stiff cock, she manages to work up the strength to grab your arm with a free hand and resist its impulse.  Looking her over, you can see that her sudden burst of energy is due to ");
 			if (monster.lust > 99) outputText("her masturbating even more furiously than before at the thought of having your cock.");
 			//[if lost by HP:
@@ -260,7 +260,7 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//-Female (for herms without dicks) (Z edited)
-		private function femaleHasWinSexWithChamCham():void
+		private  femaleHasWinSexWithChamCham():void
 		{
 			clearOutput();
 			spriteSelect(89);
@@ -287,7 +287,7 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//Item Use Scenes Intro (Victory) (Z edited)
-		private function useAnItemOnTheChamcham():void
+		private  useAnItemOnTheChamcham():void
 		{
 			clearOutput();
 			spriteSelect(89);
@@ -297,8 +297,8 @@ package classes.Scenes.Areas.Bog
 			//also incubi draft and succubi milk should probably have something of a corruption requirement
 			//(Display Options: [Incubus Draft] [Succubi Milk](PC must have cock) [Lust&SensDrafts]
 			//optionz go herez
-			var milk:Function =null;
-			var drafts:Function =null;
+			var milk:() => void =null;
+			var drafts:() => void =null;
 			if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.hasCock()) milk = giveTheChameleonASuccubiMilk;
 			if (player.hasItem(consumables.SENSDRF) && (player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT))) drafts = doseDatChameleonWithLustAndSensitivityDrafts;
 
@@ -307,7 +307,7 @@ package classes.Scenes.Areas.Bog
 
 		//-P. Succubi Milk or Succubi Milk (Z edited)
 		//Prerequisite: at least one dick
-		private function giveTheChameleonASuccubiMilk():void
+		private  giveTheChameleonASuccubiMilk():void
 		{
 			clearOutput();
 			spriteSelect(89);
@@ -317,7 +317,7 @@ package classes.Scenes.Areas.Bog
 
 			outputText("\n\nFor a moment, nothing happens, and she sits there paralyzed, waiting for the drug to take effect.  Her tits begin to plump up, slowly but surely growing as the milk has its way with her body; a smile parts your lips at the sight.  Her eyes widen as her once-meager tits fill out to DD-cups, pushing against and eventually tearing the thin silk covering from within.  They finally stop growing, and the chameleon girl sits there trembling, unsure what to think about her new disproportionate bust.  Completely pleased with her new appearance and harboring no such reservations, you start to shed your " + player.armorName + ".");
 
-			var x:int = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			outputText("\n\nShe looks back up from her rack to see you standing naked in front of her, cock erect after watching her sudden growth.  Her eyes water, and she flushes red with anger.  \"<i>You... why would you...</i>\"  You cut her off with a push, taking her off her knees and onto her back, and then jump on top of her, pinning her to the peat");
 			if (player.hasLongTail() > 0) outputText(" with your tail,");
 			else outputText(" by straddling her,");
@@ -338,7 +338,7 @@ package classes.Scenes.Areas.Bog
 		}
 
 		//-Lust and Sens Draft (you you you you you need to find more ways to start sentences without using pronouns, she?) (Z edited)
-		private function doseDatChameleonWithLustAndSensitivityDrafts():void
+		private  doseDatChameleonWithLustAndSensitivityDrafts():void
 		{
 			clearOutput();
 			spriteSelect(89);
@@ -362,7 +362,7 @@ package classes.Scenes.Areas.Bog
 			}
 			//(else if at least one cock of appropriate size)
 			else {
-				var x:int = player.cockThatFits(monster.vaginalCapacity());
+				var x:number = player.cockThatFits(monster.vaginalCapacity());
 				if (x < 0) {
 					outputText("COCK ERROR");
 					cleanupAfterCombat();
@@ -382,4 +382,4 @@ package classes.Scenes.Areas.Bog
 			cleanupAfterCombat();
 		}
 	}
-}
+

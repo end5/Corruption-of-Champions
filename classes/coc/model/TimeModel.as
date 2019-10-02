@@ -1,32 +1,31 @@
-package coc.model 
-{
-	public class TimeModel 
-	{
-		private var _days:Number;
-		private var _hours:Number;
+  
 
-		public function get days():Number
+	export class TimeModel 
+	{
+		private  _days:number;
+		private  _hours:number;
+
+		public  get days():number
 		{
 			return _days;
 		}
 		
-		public function set days(value:Number):void
+		public  set days(value:number):void
 		{
 			_days = value;
 		}
 		
-		public function get hours():Number
+		public  get hours():number
 		{
 			return _hours;
 		}
 		
-		public function set hours(value:Number):void
+		public  set hours(value:number):void
 		{
 			_hours = value;
 		}		
-		public function get totalTime():Number
+		public  get totalTime():number
 		{
 			return (this._days * 24 + this._hours);
 		}
 	}
-}

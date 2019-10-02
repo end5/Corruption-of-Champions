@@ -1,8 +1,8 @@
-﻿package classes.Scenes.Places.TelAdre
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
+
+	 
+	 
+	 
 
 	/**
 	 * Whee!
@@ -22,11 +22,11 @@
 	 * I'm also VERY tempted to say the bonuses from massages and acpuncture sessions should be dropped, and they should be turned into like a HP recovery/fatigue recovery deal.
 	 * Massage recovers 50% of missing health in an hour, Acpuncture recovers 30% of current fatigue in an hour?
 	 */
-	public class UmasShop extends TelAdreAbstractContent
+	export class UmasShop extends TelAdreAbstractContent
 	{
-		private var _loppeTalks:Array;
+		private  _loppeTalks:any[];
 
-		public function UmasShop() 
+		public  constructor() 
 		{
 			initLoppeTalks();
 		}
@@ -34,7 +34,7 @@
 		/**
 		 * Builds an array of the sub-scenes for Loppe conversations. No point continually building the shit every time, right?
 		 */
-		private function initLoppeTalks():void
+		private  initLoppeTalks():void
 		{
 			_loppeTalks = [];
 			_loppeTalks.push(talkLoppeAttitudes);
@@ -48,7 +48,7 @@
 		 * First time scene entering le shoppe
 		 * Edit Status: 100%
 		 */
-		public function firstVisitPart1():void
+		public  firstVisitPart1():void
 		{
 			clearOutput();
 			
@@ -100,7 +100,7 @@
 		 * Page 2 of introduction scene
 		 * Edit Status: 95%
 		 */
-		public function firstVisitPart2():void
+		public  firstVisitPart2():void
 		{
 			clearOutput();
 			
@@ -130,7 +130,7 @@
 		 * Page 3 of introduction scene
 		 * Edit Status: 95%
 		 */
-		public function firstVisitPart3():void
+		public  firstVisitPart3():void
 		{
 			clearOutput();
 			
@@ -158,7 +158,7 @@
 		 * Edit Status: 90%
 		 * @param returnedTo	Indicates the "entrance" mode. false = came here from an external menu, true = backed out from one of Uma's options
 		 */
-		public function enterClinic(returnedTo:Boolean = false):void
+		public  enterClinic(returnedTo:boolean = false):void
 		{
 			clearOutput();
 			
@@ -194,7 +194,7 @@
 		 * Build the primary interface menu to interact with Uma.
 		 * @param	noSex	Indicates if the Sex button should be hidden from display.
 		 */
-		private function buildCoreMenu(noSex:Boolean = false):void
+		private  buildCoreMenu(noSex:boolean = false):void
 		{
 			if (noSex)
 			{
@@ -224,7 +224,7 @@
 		 * Primary massage intro & selection menu
 		 * Edit Status: 95%
 		 */
- 		public function massageMenu():void
+ 		public  massageMenu():void
 		{
 			clearOutput();
 			
@@ -251,7 +251,7 @@
 		 * Player changed mind about MASSAGEU TIEMU
 		 * Edit Status: 100%
 		 */
-		public function massageNope():void
+		public  massageNope():void
 		{
 			clearOutput();
 			
@@ -267,10 +267,10 @@
 		 * Adds a 10% reduction to lust gain while active.
 		 * Edit Status: 100%
 		 */
-		public static const MASSAGE_RELIEF:int = 0;
-		public static const MASSAGE_RELIEF_BONUS:Number = 0.9;	// Multiplicative bonus to Lust gains
-		private static const MASSAGE_RELIEF_BONUS_TEXT:String = "<b>(10% Reduction to all Lust gains whilst active!)</b>";
-		public function massageRelief():void
+		public static  MASSAGE_RELIEF:number = 0;
+		public static  MASSAGE_RELIEF_BONUS:number = 0.9;	// Multiplicative bonus to Lust gains
+		private static  MASSAGE_RELIEF_BONUS_TEXT:string = "<b>(10% Reduction to all Lust gains whilst active!)</b>";
+		public  massageRelief():void
 		{
 			clearOutput();
 			
@@ -287,10 +287,10 @@
 		 * Adds a 10% increase to lust gain while active.
 		 * Edit Status: 95%
 		 */
-		public static const MASSAGE_LUST:int = 1;
-		public static const MASSAGE_LUST_BONUS:Number = 1.1;	// Multiplicative bonus to Lust gains
-		private static const MASSAGE_LUST_BONUS_TEXT:String = "<b>(10% Increase to all Lust gains whilst active!)</b>";
-		public function massageLust():void
+		public static  MASSAGE_LUST:number = 1;
+		public static  MASSAGE_LUST_BONUS:number = 1.1;	// Multiplicative bonus to Lust gains
+		private static  MASSAGE_LUST_BONUS_TEXT:string = "<b>(10% Increase to all Lust gains whilst active!)</b>";
+		public  massageLust():void
 		{
 			clearOutput();
 			
@@ -307,10 +307,10 @@
 		 * Adds a +10 bonus to femininity?
 		 * Edit Status: 90%
 		 */
-		public static const MASSAGE_MODELLING:int = 2;
-		public static const MASSAGE_MODELLING_BONUS:int = 10;	// Flat bonus applied to femininity stat
-		private static const MASSAGE_MODELLING_BONUS_TEXT:String = "<b>(+10 Bonus Femininity whilst active!)</b>";
-		public function massageModelling():void
+		public static  MASSAGE_MODELLING:number = 2;
+		public static  MASSAGE_MODELLING_BONUS:number = 10;	// Flat bonus applied to femininity stat
+		private static  MASSAGE_MODELLING_BONUS_TEXT:string = "<b>(+10 Bonus Femininity whilst active!)</b>";
+		public  massageModelling():void
 		{
 			clearOutput();
 			
@@ -336,10 +336,10 @@
 		 * Add a 10% reduction in damage taken?
 		 * Edit Status: 95%
 		 */
-		public static const MASSAGE_RELAXATION:int = 3;
-		public static const MASSAGE_RELAXATION_BONUS:Number = 0.9;	// Multiplicative bonus to damage taken -- these seem a little op with current values
-		private static const MASSAGE_RELAXATION_BONUS_TEXT:String = "<b>(10% Reduction to all Damage taken whilst active!)</b>";
-		public function massageRelaxation(): void
+		public static  MASSAGE_RELAXATION:number = 3;
+		public static  MASSAGE_RELAXATION_BONUS:number = 0.9;	// Multiplicative bonus to damage taken -- these seem a little op with current values
+		private static  MASSAGE_RELAXATION_BONUS_TEXT:string = "<b>(10% Reduction to all Damage taken whilst active!)</b>";
+		public  massageRelaxation(): void
 		{
 			clearOutput();
 			
@@ -356,10 +356,10 @@
 		 * Add a 10% increase to damage inflicted?
 		 * Edit Status: 95%
 		 */
-		public static const MASSAGE_POWER:int = 4;
-		public static const MASSAGE_POWER_BONUS:Number = 1.1;	// Multiplicative bonus to damage done -- these seem a little op with current values
-		private static const MASSAGE_POWER_BONUS_TEXT:String = "<b>(10% Increase to all Damage inflicted whilst active!)</b>";
-		public function massagePower():void 
+		public static  MASSAGE_POWER:number = 4;
+		public static  MASSAGE_POWER_BONUS:number = 1.1;	// Multiplicative bonus to damage done -- these seem a little op with current values
+		private static  MASSAGE_POWER_BONUS_TEXT:string = "<b>(10% Increase to all Damage inflicted whilst active!)</b>";
+		public  massagePower():void 
 		{
 			clearOutput();
 			
@@ -378,7 +378,7 @@
 		 * @param	selectedMassage		int key of the massage type, for later application of benefits.
 		 * Edit Status: 95%
 		 */
-		public function massageMain(selectedMassage:int):void
+		public  massageMain(selectedMassage:number):void
 		{
 			clearOutput();
 			
@@ -423,7 +423,7 @@
 		 * @param	selectedMassage		Massage bonus ID to apply
 		 * Edit Status: 95%
 		 */
-		public function massageCommence(selectedMassage:int):void 
+		public  massageCommence(selectedMassage:number):void 
 		{
 			clearOutput();
 			
@@ -465,13 +465,13 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-	public static const MAX_MASSAGE_BONUS_DURATION:int = 24;			// Duration of the bonus
+	public static  MAX_MASSAGE_BONUS_DURATION:number = 24;			// Duration of the bonus
 		/**
 		 * Apply massage bonus. Bonuses are replaced when a new effect is placed on the player.
 		 * StatusAffects.UmasMassage for all bonuses
 		 * @param	selectedMassage
 		 */
-		public function applyMassageBonus(selectedMassage:int):void
+		public  applyMassageBonus(selectedMassage:number):void
 		{
 			if (selectedMassage < 0 || selectedMassage > 4)
 			{
@@ -479,8 +479,8 @@
 			}
 			else
 			{
-				var statIndex:int = player.findStatusAffect(StatusAffects.UmasMassage);
-				var bonusValue:Number;
+				var statIndex:number = player.findStatusAffect(StatusAffects.UmasMassage);
+				var bonusValue:number;
 				
 				// Remove the old massage bonus if present
 				if (statIndex >= 0)
@@ -526,9 +526,9 @@
 		 * Handle reducing the remaining time that the bonus is active for.
 		 * When expired, remove and include a message to the effect.
 		 */
-		public function updateBonusDuration(hours:int):void
+		public  updateBonusDuration(hours:number):void
 		{
-			var statIndex:int = player.findStatusAffect(StatusAffects.UmasMassage);
+			var statIndex:number = player.findStatusAffect(StatusAffects.UmasMassage);
 			
 			if (statIndex >= 0)
 			{
@@ -544,7 +544,7 @@
 		/**
 		 * Spam a message about the bonus being removed.
 		 */
-		public function bonusExpired():void
+		public  bonusExpired():void
 		{
 			outputText("\n<b>You groan softly as a feeling of increased tension washes over you, no longer as loose as you were before.  It looks like the effects of Uma's massage have worn off.</b>\n");
 			
@@ -560,47 +560,47 @@
 		 * All of the associated bonuses for the Acupuncture perks are listed here, and reference throughout the codebase. If Fenoxo wants to tweak the values,
 		 * you can do so easily here without having to go fishing through other files to find where they are referenced.
 		 */
-		public static const NEEDLEWORK_UNDO:int = -1;
-		public static const NEEDLEWORK_SPEED:int = 0;
-		public static const NEEDLEWORK_LUST:int = 1;
-		public static const NEEDLEWORK_DEFENSE:int = 2;
-		public static const NEEDLEWORK_MAGIC:int = 3;
-		public static const NEEDLEWORK_ATTACK:int = 4;
+		public static  NEEDLEWORK_UNDO:number = -1;
+		public static  NEEDLEWORK_SPEED:number = 0;
+		public static  NEEDLEWORK_LUST:number = 1;
+		public static  NEEDLEWORK_DEFENSE:number = 2;
+		public static  NEEDLEWORK_MAGIC:number = 3;
+		public static  NEEDLEWORK_ATTACK:number = 4;
 
-		public const NEEDLEWORK_SPEED_PERK:PerkType = PerkLib.ChiReflowSpeed;
-		public static const NEEDLEWORK_SPEED_PERK_DESC:String = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Speed' perk. As a result your strength is capped but speed reductions are halved.";
-		public static const NEEDLEWORK_SPEED_STRENGTH_CAP:int = 60;
-		public static const NEEDLEWORK_SPEED_SPEED_MULTI:Number = 0.5;
+		public  NEEDLEWORK_SPEED_PERK:PerkType = PerkLib.ChiReflowSpeed;
+		public static  NEEDLEWORK_SPEED_PERK_DESC:string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Speed' perk. As a result your strength is capped but speed reductions are halved.";
+		public static  NEEDLEWORK_SPEED_STRENGTH_CAP:number = 60;
+		public static  NEEDLEWORK_SPEED_SPEED_MULTI:number = 0.5;
 		
-		public const NEEDLEWORK_LUST_PERK:PerkType = PerkLib.ChiReflowLust;
-		public static const NEEDLEWORK_LUST_PERK_DESC:String = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Lust' perk. As a result your Lust resistance and Tease attack are enhanced, but Libido and Sensitivity gains are increased.";
-		public static const NEEDLEWORK_LUST_LUST_RESIST:int = 10;
-		public static const NEEDLEWORK_LUST_TEASE_MULTI:Number = 10;
-		public static const NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI:Number = 1.1;
-		public static const NEEDLEWORK_LUST_LIBSENSE_MULTI:Number = 1.1;
+		public  NEEDLEWORK_LUST_PERK:PerkType = PerkLib.ChiReflowLust;
+		public static  NEEDLEWORK_LUST_PERK_DESC:string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Lust' perk. As a result your Lust resistance and Tease attack are enhanced, but Libido and Sensitivity gains are increased.";
+		public static  NEEDLEWORK_LUST_LUST_RESIST:number = 10;
+		public static  NEEDLEWORK_LUST_TEASE_MULTI:number = 10;
+		public static  NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI:number = 1.1;
+		public static  NEEDLEWORK_LUST_LIBSENSE_MULTI:number = 1.1;
 		
-		public const NEEDLEWORK_DEFENSE_PERK:PerkType = PerkLib.ChiReflowDefense;
-		public static const NEEDLEWORK_DEFENSE_PERK_DESC:String = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Defense' perk. As a result your body has gained passive damage resistance and extra health, but speed is capped.";
-		public static const NEEDLEWORK_DEFENSE_DEFENSE_MULTI:Number = 1.1;
-		public static const NEEDLEWORK_DEFENSE_EXTRA_HP:int = 50;
-		public static const NEEDLEWORK_DEFENSE_SPEED_CAP:int = 60;
+		public  NEEDLEWORK_DEFENSE_PERK:PerkType = PerkLib.ChiReflowDefense;
+		public static  NEEDLEWORK_DEFENSE_PERK_DESC:string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Defense' perk. As a result your body has gained passive damage resistance and extra health, but speed is capped.";
+		public static  NEEDLEWORK_DEFENSE_DEFENSE_MULTI:number = 1.1;
+		public static  NEEDLEWORK_DEFENSE_EXTRA_HP:number = 50;
+		public static  NEEDLEWORK_DEFENSE_SPEED_CAP:number = 60;
 		
-		public const NEEDLEWORK_MAGIC_PERK:PerkType = PerkLib.ChiReflowMagic;
-		public static const NEEDLEWORK_MAGIC_PERK_DESC:String = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Magic' perk. As a result your spells are now more powerful, but regular attacks are weaker.";
-		public static const NEEDLEWORK_MAGIC_SPELL_MULTI:Number = 0.25; // Additive bonus to the other magic damage bonuses
-		public static const NEEDLEWORK_MAGIC_REGULAR_MULTI:Number = 0.75; // Multiplier tagged onto the end of damage calculations for the player.
+		public  NEEDLEWORK_MAGIC_PERK:PerkType = PerkLib.ChiReflowMagic;
+		public static  NEEDLEWORK_MAGIC_PERK_DESC:string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Magic' perk. As a result your spells are now more powerful, but regular attacks are weaker.";
+		public static  NEEDLEWORK_MAGIC_SPELL_MULTI:number = 0.25; // Additive bonus to the other magic damage bonuses
+		public static  NEEDLEWORK_MAGIC_REGULAR_MULTI:number = 0.75; // Multiplier tagged onto the end of damage calculations for the player.
 		
-		public const NEEDLEWORK_ATTACK_PERK:PerkType = PerkLib.ChiReflowAttack;
-		public static const NEEDLEWORK_ATTACK_PERK_DESC:String = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Attack' perk. As a result your regular attacks are more powerful, but your damage reduction is decreased.";
-		public static const NEEDLEWORK_ATTACK_REGULAR_MULTI:Number = 1.1;
-		public static const NEEDLEWORK_ATTACK_DEFENSE_MULTI:Number = 0.9;
+		public  NEEDLEWORK_ATTACK_PERK:PerkType = PerkLib.ChiReflowAttack;
+		public static  NEEDLEWORK_ATTACK_PERK_DESC:string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Attack' perk. As a result your regular attacks are more powerful, but your damage reduction is decreased.";
+		public static  NEEDLEWORK_ATTACK_REGULAR_MULTI:number = 1.1;
+		public static  NEEDLEWORK_ATTACK_DEFENSE_MULTI:number = 0.9;
 		
 		/**
 		 * Return a short string representation of the selected bonus index
 		 * @param	needleworkType		Static index value of the selected bonus scene
 		 * @return						String representation of the selected bonus scene
 		 */
-		public function needleworkString(needleworkType:int):String
+		public  needleworkString(needleworkType:number):string
 		{
 			if (needleworkType == NEEDLEWORK_SPEED)
 			{
@@ -632,7 +632,7 @@
 		 * @param	perkName	PerkName currently being searched for
 		 * @return				Description of what the perk does.
 		 */
-		public function listPerkDescription(perkName:String):String
+		public  listPerkDescription(perkName:string):string
 		{
 			switch(perkName)
 			{
@@ -661,9 +661,9 @@
 		 * Calculate the current undo cost of the players needlework
 		 * @return	calculated cost
 		 */
-		public function needleworkUndoCost():int
+		public  needleworkUndoCost():number
 		{
-			var baseCost:int = 125;
+			var baseCost:number = 125;
 			
 			if (flags[kFLAGS.UMA_TIMES_ACUPUNCTURE_UNDO] != 0)
 			{
@@ -678,7 +678,7 @@
 		 * Figure out if the player currently has ANY needlework perk so we can modify scenes accordingly
 		 * @return	true if player has a needlework perk
 		 */
-		public function hasNeedleworkPerk():Boolean
+		public  hasNeedleworkPerk():boolean
 		{
 			var pType:PerkType = this.getNeedleworkPerk();
 			if (pType != null)
@@ -695,9 +695,9 @@
 		 * Figure out exactly WHICH needlework perk the player has
 		 * @return	Perk name that the player currently has
 		 */
-		public function getNeedleworkPerk():PerkType
+		public  getNeedleworkPerk():PerkType
 		{
-			for each(var perk:PerkType in [
+			for (const perk of [
 					PerkLib.ChiReflowAttack,
 					PerkLib.ChiReflowDefense,
 					PerkLib.ChiReflowLust,
@@ -718,7 +718,7 @@
 		 * ie. it makes future balancing of the perks more of a chore. Rather, other code can just reference the static vars we have here using UmasShop.NEEDLEWORK_MAGIC_blah. It's still bad, but its an shader of bad lighter so fuck it!
 		 * @param	selectedSession		Static bonus index to apply to the player
 		 */
-		public function applyNeedlework(selectedSession:int):void
+		public  applyNeedlework(selectedSession:number):void
 		{
 			if (selectedSession == NEEDLEWORK_UNDO)
 			{
@@ -757,13 +757,13 @@
 		 * Edit Status: 85%
 		 * 				Some of the session descriptions might be a little... off. I've touched up one or two.
 		 */
-		public function acupunctureMenu():void
+		public  acupunctureMenu():void
 		{
 			clearOutput();
 			
 			outputText("You tell her that you want to try one of those acupuncture sessions of hers.\n\n");
 			
-			var sessionCost:int = 125;
+			var sessionCost:number = 125;
 			
 			if (hasNeedleworkPerk())
 			{
@@ -828,7 +828,7 @@
 		 * Player changes mind about going through with Accupuncture session.
 		 * Edit Status: 100%
 		 */
-		public function needleworkTurnDown():void
+		public  needleworkTurnDown():void
 		{
 			clearOutput();
 			
@@ -845,7 +845,7 @@
 		 * Edit Status: 100%
 		 * @param	selectedSession		Static var indicating the desired outcome based on player selection. See NEEDLEWORK_ vars.
 		 */
-		public function needleworkSession(selectedSession:int):void
+		public  needleworkSession(selectedSession:number):void
 		{
 			clearOutput();
 			
@@ -875,7 +875,7 @@
 		 * Edit Status: 90%
 		 * @param	selectedSession		Static var indicating the desired outcome based on player selection. See NEEDLEWORK_ vars.
 		 */
-		public function doNeedleworkSession(selectedSession:int):void
+		public  doNeedleworkSession(selectedSession:number):void
 		{
 			clearOutput();
 			
@@ -912,7 +912,7 @@
 		 * Most of these will need breaking into multiple pages methinks.
 		 * Edit Status: 100%
 		 */
-		public function talkMenu():void
+		public  talkMenu():void
 		{
 			clearOutput();
 			
@@ -932,7 +932,7 @@
 		 * Talk Job
 		 * Edit Status: 95%
 		 */
-		public function talkJob():void
+		public  talkJob():void
 		{
 			clearOutput();
 			
@@ -959,7 +959,7 @@
 		 * Talk Sexuality
 		 * Edit Status: 90%
 		 */
-		public function talkSexuality():void
+		public  talkSexuality():void
 		{
 			clearOutput();
 			
@@ -987,7 +987,7 @@
 		 * Talk about Loppe. Randomly selects a specific scene after selection.
 		 * Edit Status: 100%
 		 */
-		public function talkLoppe():void
+		public  talkLoppe():void
 		{
 			clearOutput();
 			
@@ -998,12 +998,12 @@
 			_loppeTalks[rand(_loppeTalks.length)]();
 		}
 
-		private var _sceneNum:int = 0;
+		private  _sceneNum:number = 0;
 		
 		/**
 		 * Centralise the end-of-talk loppe stuffs
 		 */
-		public function talkLoppeJoiner():void
+		public  talkLoppeJoiner():void
 		{
 			menu();
 			doNext(camp.returnToCampUseOneHour);
@@ -1014,7 +1014,7 @@
 		 * Random talk scene about Loppe's Attitudes.
 		 * Edit Status: 90%
 		 */
-		public function talkLoppeAttitudes():void
+		public  talkLoppeAttitudes():void
 		{
 			outputText("\"<i>What do you think of Loppe?  How she acts?  Looks?  Behaves?</i>\"  Uma asks with a smile.\n\n");
 			outputText("You're not quite sure what Uma's getting at and tell her as much, but finally declare that you'd probably call her girly.  A little on the tomboyish side, but, given she's a herm that only seems reasonable; it's hard to say what gender traits would be best for a person who is functionally both male and female.\n\n");
@@ -1044,7 +1044,7 @@
 		 * Loppe Talk - The Carrot Incident
 		 * Edit Status: 90%
 		 */
-		public function talkLoppeCarrotIncident():void
+		public  talkLoppeCarrotIncident():void
 		{
 			outputText("\"<i>Tell me, [name].  Did you know rabbits love carrots?</i>\"  Uma asks with a smirk.\n\n");
 			outputText("You tell her that's what people say, back in the village you come from.  But, then again, you smirk, they also say that horses love carrots too, and you verbally recount an incident in which a mare broke out of her pen and ate so many carrots from one of the village fields she was heartily sick.  You ask jokingly if Uma shares any favorite dishes with her daughter?\n\n");
@@ -1072,7 +1072,7 @@
 		 * Loppe Talk - Loppe Puberty
 		 * Edit Status: 80%
 		 */
-		public function talkLoppePuberty():void
+		public  talkLoppePuberty():void
 		{
 			outputText("\"<i>By now, you must know about Loppe's stamina, right?  And that her cum production is also... quite elevated too, no?</i>\"  Uma asks, smiling.\n\n");
 			outputText("You can't resist a wry grin as you comment that you might be familiar with what Uma is talking about, yes.\n\n");
@@ -1133,7 +1133,7 @@
 		 * 				Calling it 75%. I've been through all of it and some of the tensing seems off in places, but I've cleaned up a bunch of shit. I don't even know if this should stay;
 		 * 				It's good, but it's doesn't exactly fit with the style of anything else in CoC outside of Urta's Quest in a way, so...
 		 */
-		public function talkLoppesFirstGirl():void
+		public  talkLoppesFirstGirl():void
 		{
 			outputText("\"<i>Oh, I know what would be a great story...</i>\"  Uma smirks at you.  \"<i>How would you like to hear about my little laquine's first time with a girl?</i>\"\n\n");
 			outputText("You give it a moments thought, and tell the mare that would be nice; you're curious about just what Loppe's dating life was like before you met her.  Oh, she talks a bold game, but you're not entirely certain she's being honest with you...\n\n");
@@ -1150,7 +1150,7 @@
 			addButton(0, "Next", talkLoppesFirstGirlPart2);
 		}
 		
-		public function talkLoppesFirstGirlPart2():void
+		public  talkLoppesFirstGirlPart2():void
 		{
 			clearOutput();
 			
@@ -1173,7 +1173,7 @@
 			addButton(0, "Next", talkLoppesFirstGirlPart3);
 		}
 		
-		public function talkLoppesFirstGirlPart3():void
+		public  talkLoppesFirstGirlPart3():void
 		{
 			clearOutput();
 			
@@ -1205,7 +1205,7 @@
 			addButton(0, "Next", talkLoppesFirstGirlPart4);
 		}
 		
-		public function talkLoppesFirstGirlPart4():void
+		public  talkLoppesFirstGirlPart4():void
 		{
 			clearOutput();
 			
@@ -1243,7 +1243,7 @@
 			addButton(0, "Next", talkLoppesFirstGirlPart5);
 		}
 		
-		public function talkLoppesFirstGirlPart5():void
+		public  talkLoppesFirstGirlPart5():void
 		{
 			clearOutput();
 			
@@ -1259,7 +1259,7 @@
 			addButton(0, "Next", talkLoppesFirstGirlPart6);
 		}
 		
-		public function talkLoppesFirstGirlPart6():void
+		public  talkLoppesFirstGirlPart6():void
 		{
 			clearOutput();
 			
@@ -1291,7 +1291,7 @@
 		 * Talk Loppe - Loppe's First Boyfriend
 		 * Edit Status: 75% Some akwardness, and its fukken long. I did what I could without stomping all over everything.
 		 */
-		public function talkLoppesFirstBoyfriend():void
+		public  talkLoppesFirstBoyfriend():void
 		{
 			outputText("\"<i>How about I tell you about Loppe's first boyfriend?</i>\"  Uma suggests.\n\n");
 			outputText("You tell Uma that it sounds like an interesting story, and you kindly ask her to proceed.\n\n");
@@ -1325,7 +1325,7 @@
 			addButton(0, "Next", talkLoppesFirstBoyfriendPart2);
 		}
 		
-		public function talkLoppesFirstBoyfriendPart2():void
+		public  talkLoppesFirstBoyfriendPart2():void
 		{
 			clearOutput();
 			
@@ -1355,7 +1355,7 @@
 			addButton(0, "Next", talkLoppesFirstBoyfriendPart3)
 		}
 		
-		public function talkLoppesFirstBoyfriendPart3():void
+		public  talkLoppesFirstBoyfriendPart3():void
 		{
 			clearOutput();
 			
@@ -1388,7 +1388,7 @@
 			addButton(0, "Next", talkLoppesFirstBoyfriendPart4);
 		}
 		
-		public function talkLoppesFirstBoyfriendPart4():void
+		public  talkLoppesFirstBoyfriendPart4():void
 		{
 			clearOutput();
 			
@@ -1425,7 +1425,7 @@
 			addButton(0, "Next", talkLoppesFirstBoyfriendPart5);
 		}
 
-		public function talkLoppesFirstBoyfriendPart5():void
+		public  talkLoppesFirstBoyfriendPart5():void
 		{
 			clearOutput();
 
@@ -1455,7 +1455,7 @@
 		 * Talk Loppe - Loppe's Dad
 		 * Edit Status: FUCK ALL
 		 */
-		public function talkLoppesDad():void
+		public  talkLoppesDad():void
 		{
 			clearOutput();
 
@@ -1485,14 +1485,14 @@
 		/**
 		 * SEXY TIMES
 		 */
-		private static const UMA_CONSIDER_PC_FEM:int = 70; // Femininity value that Uma considers "girly"
-		private static const UMA_CONSIDER_PC_AND:int = 50; // Femininity value that Uma considers "androgynous"
+		private static  UMA_CONSIDER_PC_FEM:number = 70; // Femininity value that Uma considers "girly"
+		private static  UMA_CONSIDER_PC_AND:number = 50; // Femininity value that Uma considers "androgynous"
 
 		/**
 		 * Main sex menu
 		 * Edit Status: FUCK ALL
 		 */
-		public function sexMenu():void
+		public  sexMenu():void
 		{
 			clearOutput();
 
@@ -1564,7 +1564,7 @@
 			buildSexMenu();
 		}
 
-		private function buildSexMenu():void
+		private  buildSexMenu():void
 		{
 			menu();
 
@@ -1588,7 +1588,7 @@
 		* Erotic Massage
 		* Edit Status: FUCK ALL
 		*/
-		private function sexEroticMassage():void
+		private  sexEroticMassage():void
 		{
 			clearOutput();
 
@@ -1650,7 +1650,7 @@
 
 			// DONT CARE HAD SEX
 			// Scene says we've only cum a little so err I guess store the players hoursSinceCum, do statmod, then reset it to a smaller value?
-			var hoursSinceCum:int = player.hoursSinceCum;
+			var hoursSinceCum:number = player.hoursSinceCum;
 			dynStats("lust=", 0);
 			player.hoursSinceCum = Math.ceil(hoursSinceCum * 0.75);
 
@@ -1658,7 +1658,7 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		public function sexGetFingered():void
+		public  sexGetFingered():void
 		{
 			clearOutput();
 
@@ -1768,7 +1768,7 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		private function sexHandjob():void
+		private  sexHandjob():void
 		{
 			clearOutput();
 
@@ -1847,10 +1847,10 @@
 			doNext(camp.returnToCampUseOneHour);
 		}
 		//Needs Cock.
-		private function sexGetABJFromDisMilfyLesboSlut():void
+		private  sexGetABJFromDisMilfyLesboSlut():void
 		{
 			//Aim for something right around the biggest she can take, otherwise just take smallest.
-			var x:int = player.cockThatFits(25);
+			var x:number = player.cockThatFits(25);
 			if(x < 0) x = player.smallestCockIndex();
 			clearOutput();
 			outputText("Fidgeting in place, very much aware of the cum-filled cock");
@@ -2024,7 +2024,7 @@
 			menu();
 			doNext(camp.returnToCampUseOneHour);
 		}
-		private function sexEatHerOut():void
+		private  sexEatHerOut():void
 		{
 			clearOutput();
 
@@ -2088,4 +2088,4 @@ You think the matter over, and ask what if you volunteered to help Loppe with he
 [Should we move this to its own doc? Give the rest over to Fen to implement?]
 		}*/
 	}
-}
+

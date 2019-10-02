@@ -1,14 +1,14 @@
-package classes.Scenes.Areas.HighMountains 
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+  
 
-	public class Izumi extends Monster
+	 
+	 
+
+	export class Izumi extends Monster
 	{
 		// Set trace outout for this classes' content.
-		private var combatDebug:Boolean = true;
+		private  combatDebug:boolean = true;
 		
-		public function Izumi() 
+		public  constructor() 
 		{
 			this.a = "";
 			this.short = "Izumi";
@@ -42,14 +42,14 @@ package classes.Scenes.Areas.HighMountains
 		}
 
 		// Override won/lost calls
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			this.cleanup();
 			game.highMountains.izumiScenes.touchThatFluffyHorn();
 		}
 		
 		// Monster won, not player, gg for descriptive method names
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			flags[kFLAGS.IZUMI_TIMES_LOST_FIGHT]++;
 			if (player.findStatusAffect(StatusAffects.Titsmother) >= 0)
@@ -67,7 +67,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Override combat AI
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			// Handle chokeslam mechanics
 			if (player.findStatusAffect(StatusAffects.Chokeslam) >= 0)
@@ -122,7 +122,7 @@ package classes.Scenes.Areas.HighMountains
 			}
 			else
 			{
-				var actions:Array = [straightJab, straightJab, straightJab, roundhouseKick, roundhouseKick, roundhouseKick, chokeSlam]; 
+				var actions:any[] = [straightJab, straightJab, straightJab, roundhouseKick, roundhouseKick, roundhouseKick, chokeSlam]; 
 				
 				if (player.findStatusAffect(StatusAffects.Groundpound) <= -1)
 				{
@@ -135,7 +135,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Remove any lingering effects from the player once combat is over
-		public function cleanup():void
+		public  cleanup():void
 		{
 			if (combatDebug) trace("Cleaning up lingering effects...");
 			
@@ -146,11 +146,11 @@ package classes.Scenes.Areas.HighMountains
 		
 		// Quick punch at the player
 		// Light damage
-		public function straightJab():void
+		public  straightJab():void
 		{
 			outputText("Quick as a flash, Izumi lashes out with her free hand, aiming for your head.");
 
-			var damage:int = int((str + 175) - rand(player.tou) - player.armorDef);
+			var damage:number = int((str + 175) - rand(player.tou) - player.armorDef);
 			if (combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect())
 			{
 				outputText("  You deftly dodge under the lightning-quick punch.");
@@ -174,7 +174,7 @@ package classes.Scenes.Areas.HighMountains
 
 		// Roundhouse Kick
 		// Milkd lust increase
-		public function roundhouseKick():void
+		public  roundhouseKick():void
 		{
 			outputText("Izumi leaps backwards onto one foot, spinning around and unleashing a thundering roundhouse kick.  Luckily, you manage to duck just in time, avoiding what surely would have been a monstrously powerful blow.  Unfortunately, as Izumi’s leg scythes through the air over your head, you find your gaze naturally following the line of her thigh muscles until you’re staring directly up the fluttering folds of Izumi’s increasingly impractical kimono.\n\n");
 
@@ -196,7 +196,7 @@ package classes.Scenes.Areas.HighMountains
 		
 		// Bind player for 3 turns. If the player doesn't break out in time, they take huge damage.
 		// On escape, Izumi takes some damage
-		public function chokeSlam():void
+		public  chokeSlam():void
 		{
 			if (combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect())
 			{
@@ -213,11 +213,11 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Struggle against izumi's chokeslam
-		public function chokeSlamStruggle():void
+		public  chokeSlamStruggle():void
 		{	
 			clearOutput();
 			
-			var brokeFree:Boolean;
+			var brokeFree:boolean;
 			
 			if (rand(player.str) > this.str / 2)
 			{
@@ -244,7 +244,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// OH HEY ITS A THING
-		public function chokeSlamWait():void
+		public  chokeSlamWait():void
 		{
 			clearOutput();
 			
@@ -264,13 +264,13 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Player fails to escape from the chokeslam, and after 3 rounds gets nailed to the fuckin floor
-		public function chokeSlamDamage():void
+		public  chokeSlamDamage():void
 		{
 			outputText("With a grunt of effort, Izumi hauls you through the air, her iron-like grip around your throat providing the perfect anchor to propel you towards the ground.  Before you have a chance to react, the Oni drives you into the unforgiving stone lining the floor of the cave.\n\n");
 
 			outputText("The hit is extreme enough to leave you dazed for a moment, splayed out across the floor.  When you rouse yourself back to full consciousness a few seconds later, the cave is still echoing with the sound of the impact, a testament to the strength of the Oni - and your resilience.");
 			
-			var damage:int = int ((str + 225) - rand(player.tou) - player.armorDef);
+			var damage:number = int ((str + 225) - rand(player.tou) - player.armorDef);
 			player.takeDamage(damage);
 			
 			outputText("(" + damage + ")");
@@ -279,7 +279,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Player escapes from the chokeslam attack
-		public function chokeSlamEscape():void
+		public  chokeSlamEscape():void
 		{
 			if (combatDebug) trace("Escaping from Chokeslam!");
 			
@@ -299,7 +299,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Remove the effect post-combat
-		public function cleanupChokeslam():void
+		public  cleanupChokeslam():void
 		{
 			if (player.findStatusAffect(StatusAffects.Chokeslam) >= 0)
 			{
@@ -310,7 +310,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Groundslam, does damage and slows the player if they don't dodge the hit
-		public function groundPound():void
+		public  groundPound():void
 		{
 			outputText("Izumi raises one mighty foot and slams it to the ground with a victorious yell.  The ground itself actually shakes below your feet, threatening to knock you off balance.\n\n");
 			
@@ -322,7 +322,7 @@ package classes.Scenes.Areas.HighMountains
 			{
 				outputText("The rumbling actually knocks you off your feet, sprawling on the ground and banging your head.  As the shaking subsides, you pull yourself upright, but you feel a little unsteady on your [feet] after the disorienting impact.");
 				
-				var spdReducedBy:int = int(player.spe * 0.25);
+				var spdReducedBy:number = int(player.spe * 0.25);
 				player.createStatusAffect(StatusAffects.Groundpound, 3, spdReducedBy, 0, 0);
 				game.dynStats("spe-", spdReducedBy);
 				
@@ -333,7 +333,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Remove the effect post-combat, fixup stats
-		public function cleanupGroundpound():void
+		public  cleanupGroundpound():void
 		{
 			if (player.findStatusAffect(StatusAffects.Groundpound) >= 0)
 			{
@@ -349,7 +349,7 @@ package classes.Scenes.Areas.HighMountains
 		
 		// Binding attack, mild lust increase per turn until the player breaks out. Not TOO hard to break out, though.
 		// Attack will be used ONCE, when Izumi reaches ~25% hp.
-		public function titSmother():void
+		public  titSmother():void
 		{
 			if (combatDebug) trace("Titsmother attack!");
 			
@@ -365,7 +365,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Remove the effect post-combat
-		public function cleanupTitsmother():void
+		public  cleanupTitsmother():void
 		{
 			if (player.findStatusAffect(StatusAffects.Titsmother) >= 0)
 			{
@@ -375,11 +375,11 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Struggle handler for titsmother attack
-		public function titSmotherStruggle():void
+		public  titSmotherStruggle():void
 		{
 			if (combatDebug) trace("Titsmother Struggle");
 			
-			var brokeFree:Boolean;
+			var brokeFree:boolean;
 			
 			if (rand(player.str) > this.str / 4)
 			{
@@ -430,7 +430,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Player breaks free of tiSmother and applies damage to Izumi
-		public function titSmotherEscape():void
+		public  titSmotherEscape():void
 		{
 			if (combatDebug) trace("Escaping TitSmother!");
 			clearOutput();
@@ -460,7 +460,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		// Wait handler for titsmother attack
-		public function titSmotherWait():void
+		public  titSmotherWait():void
 		{
 			clearOutput();
 			
@@ -483,4 +483,3 @@ package classes.Scenes.Areas.HighMountains
 		}
 	}
 
-}

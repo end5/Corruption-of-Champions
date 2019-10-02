@@ -1,11 +1,11 @@
-﻿package classes
-{
-	import classes.internals.Utils;
+ 
 
-	public class VaginaClass
+	 
+
+	export class VaginaClass
 	{
 		//constructor
-		public function VaginaClass(vaginalWetness:Number = 1, vaginalLooseness:Number = 0, virgin:Boolean = false)
+		public  constructor(vaginalWetness:number = 1, vaginalLooseness:number = 0, virgin:boolean = false)
 		{
 			this.virgin=virgin;
 			this.vaginalWetness=vaginalWetness;
@@ -13,7 +13,7 @@
 		}
 		//data
 		//Vag wetness
-		public var vaginalWetness:Number = 1;
+		public  vaginalWetness:number = 1;
 		/*Vag looseness
 		0 - virgin
 		1 - normal
@@ -21,24 +21,24 @@
 		3 - very loose
 		4 - gaping
 		5 - monstrous*/
-		public var vaginalLooseness:Number = 0;
+		public  vaginalLooseness:number = 0;
 		//Type
 		//0 - Normal
 		//5 - Black bugvag
-		public var type:int = 0;
-		public var virgin:Boolean = true;
+		public  type:number = 0;
+		public  virgin:boolean = true;
 		//Used during sex to determine how full it currently is.  For multi-dick sex.
-		public var fullness:Number = 0;
-		public var labiaPierced:Number = 0;
-		public var labiaPShort:String = "";
-		public var labiaPLong:String = "";		
-		public var clitPierced:Number = 0;
-		public var clitPShort:String = "";
-		public var clitPLong:String = "";
+		public  fullness:number = 0;
+		public  labiaPierced:number = 0;
+		public  labiaPShort:string = "";
+		public  labiaPLong:string = "";		
+		public  clitPierced:number = 0;
+		public  clitPShort:string = "";
+		public  clitPLong:string = "";
 
-		public function validate():String
+		public  validate():string
 		{
-			var error:String = "";
+			var error:string = "";
 			error += Utils.validateNonNegativeNumberFields(this, "VaginaClass.validate", [
 				"vaginalWetness", "vaginalLooseness", "type",
 				"fullness", "labiaPierced", "clitPierced"
@@ -60,7 +60,7 @@
 			return error;
 		}
 		
-		public function wetnessFactor():Number {
+		public  wetnessFactor():number {
 			if(vaginalWetness == 0) return 1.25;
 			if(vaginalWetness == 1) return 1;
 			if(vaginalWetness == 2) return 0.8;
@@ -69,7 +69,7 @@
 			if(vaginalWetness == 5) return 0.5;
 			return .5;
 		}
-		public function capacity():Number {
+		public  capacity():number {
 			if(vaginalLooseness == 0) return 8;
 			if(vaginalLooseness == 1) return 16;
 			if(vaginalLooseness == 2) return 24;
@@ -79,4 +79,3 @@
 			return 10000;
 		}
 	}
-}

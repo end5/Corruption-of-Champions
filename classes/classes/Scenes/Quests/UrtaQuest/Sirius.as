@@ -1,26 +1,26 @@
-package classes.Scenes.Quests.UrtaQuest
-{
-	import classes.*;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.Desert.Naga;
-	import classes.internals.*;
+ 
 
-	public class Sirius extends Naga
+	 
+	 
+	 
+	 
+
+	export class Sirius extends Naga
 	{
 
-		override public function eAttack():void
+		 public  eAttack():void
 		{
 			outputText("Sirius readies his hands, undulating his body erratically with quick motions in order to catch you off-guard and strike at you.\n");
 			super.eAttack();
 		}
 
 
-		override protected function outputPlayerDodged(dodge:int):void
+		 protected  outputPlayerDodged(dodge:number):void
 		{
 			outputText("With your trained eyes, you see through his feints and effectively block his first swipe, then quickly twist your body to kick him away.  He clutches his belly where you kicked him, but recovers quickly, eyes fixated on yours.\n");
 		}
 
-		override public function outputAttack(damage:int):void
+		 public  outputAttack(damage:number):void
 		{
 			if (damage<=0) {
 				super.outputAttack(damage);
@@ -29,9 +29,9 @@ package classes.Scenes.Quests.UrtaQuest
 			}
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var attack:int = rand(4);
+			var attack:number = rand(4);
 			if (player.findStatusAffect(StatusAffects.Blind) >= 0) attack = rand(3);
 			if (attack == 0) eAttack();
 			if (attack == 1) poisonBite();
@@ -39,7 +39,7 @@ package classes.Scenes.Quests.UrtaQuest
 			if (attack == 3) nagaSpitAttack();
 		}
 
-		private function manNagaTease():void
+		private  manNagaTease():void
 		{
 			outputText("The snake-man stares deeply into your eyes, seemingly looking past them, and for a moment your body goes numb.");
 //Miss:
@@ -60,7 +60,7 @@ package classes.Scenes.Quests.UrtaQuest
 			combatRoundOver();
 		}
 
-		private function nagaSpitAttack():void
+		private  nagaSpitAttack():void
 		{
 			outputText("Hissing loudly, Sirius suddenly curls his lips and spits at your eyes!  ");
 //{Hit:
@@ -73,7 +73,7 @@ package classes.Scenes.Quests.UrtaQuest
 			combatRoundOver();
 		}
 
-		private function poisonBite():void
+		private  poisonBite():void
 		{
 			outputText("With a loud and vicious hiss, Sirius suddenly lunges at you, mouth distended impossibly wide and revealing four needle-like fangs dripping with venom!  ");
 //Miss:
@@ -83,23 +83,23 @@ package classes.Scenes.Quests.UrtaQuest
 			}
 //Hit:
 			outputText("The snake-man moves too quickly for you to evade and he sinks long fangs into your flesh, leaving a wound that burns with horrific pain.");
-			var damage:Number = 40 + rand(20);
+			var damage:number = 40 + rand(20);
 			damage = player.takeDamage(damage);
 			outputText(" (" + damage + ")");
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.urtaQuest.urtaBeatsUpSiriusRadio();
 		}
 
-		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			game.urtaQuest.urtaLosesToSirriusSnakeRadio();
 		}
 
-		public function Sirius()
+		public  constructor()
 		{
 			super(true);
 			this.a = "";
@@ -140,4 +140,3 @@ package classes.Scenes.Quests.UrtaQuest
 
 	}
 
-}

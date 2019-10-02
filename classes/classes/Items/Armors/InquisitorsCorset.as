@@ -1,19 +1,19 @@
 /**
  * Created by aimozg on 15.01.14.
  */
-package classes.Items.Armors
-{
-	import classes.Items.Armor;
-	import classes.PerkLib;
-	import classes.Player;
+ 
 
-	public final class InquisitorsCorset extends Armor {
+	 
+	 
+	 
+
+	export  class InquisitorsCorset extends Armor {
 		
-		public function InquisitorsCorset() {
+		public  constructor() {
 			super("I.Corst", "I.Corst", "inquisitor's corset", "an inquisitor's corset", 4, 2000, "This sexualized and feminine red and gold ensemble carries with it the hopes of a shamed sorcerer.  Wearing it will cause spells to tax your health instead of exhausting you.", "Light");
 		}
 		
-		override public function useText():void {
+		 public  useText():void {
 			outputText("You remove the clothing you received from the underground chamber in the swamp.  The sexual nature of the clothing excites you a bit, as does the knowledge that it will be functional in combat.  You quickly disrobe, eager to try it on.\n\n");
 
 			outputText("Checking to see whether the posture collar can be detached from the sleeves, you find a complete lack of any way to do so.  Shrugging, you slide your arms into the sleeves, sticking your middle fingers through the extended ends.  Golden embroidery down their length contains some of the most ornate and stylized pictures of dicks you have ever seen, culminating in an excessive amount of gold thread splayed in your palm, symbolizing the ejaculate.  You lift your chin to fit the posture collar in place, completely hiding your neck from view as you lace it from behind.  The dark red works nicely with your " + game.player.skinTone + " " + game.player.skinDesc + ".   A small amount of delight fills you as you realize the collar is not as unforgiving as a true posture collar, allowing you a comfortable amount of movement - though you do briefly wonder what a fight would be like if it didn't.\n\n");
@@ -33,7 +33,7 @@ package classes.Items.Armors
 			game.dynStats("lus", 5);
 		}
 		
-		override public function playerEquip():Armor {
+		 public  playerEquip():Armor {
 			while (game.player.findPerk(PerkLib.BloodMage) >= 0) game.player.removePerk(PerkLib.BloodMage);
 			while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
 			game.player.createPerk(PerkLib.BloodMage,0,0,0,0);
@@ -41,7 +41,7 @@ package classes.Items.Armors
 			return super.playerEquip();
 		}
 		
-		override public function playerRemove():Armor {
+		 public  playerRemove():Armor {
 			while (game.player.findPerk(PerkLib.BloodMage) >= 0) game.player.removePerk(PerkLib.BloodMage);
 			while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
 			return super.playerRemove();
@@ -81,4 +81,4 @@ package classes.Items.Armors
 		}
 */
 	}
-}
+

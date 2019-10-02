@@ -1,15 +1,15 @@
-﻿/**
+/**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.Areas.Plains
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
 
-	public class GnollSpearThrowerScene extends BaseContent
+	 
+	 
+	 
+
+	export class GnollSpearThrowerScene extends BaseContent
 	{
-		public function GnollSpearThrowerScene()
+		public  constructor()
 		{
 		}
 
@@ -26,7 +26,7 @@ package classes.Scenes.Areas.Plains
 		 */
 
 //Female Gnoll.  First Page.
-		public function gnoll2Encounter():void
+		public  gnoll2Encounter():void
 		{
 			spriteSelect(54);
 			outputText("", true);
@@ -62,7 +62,7 @@ package classes.Scenes.Areas.Plains
 
 
 //<Hyena Victorious – Anal> 
-		public function hyenaSpearLossAnal():void
+		public  hyenaSpearLossAnal():void
 		{
 			spriteSelect(54);
 			//Oh shit get anal raped.
@@ -153,7 +153,7 @@ package classes.Scenes.Areas.Plains
 			cleanupAfterCombat();
 		}
 
-		public function hyenaVictory():void
+		public  hyenaVictory():void
 		{
 			spriteSelect(54);
 			outputText("", true);
@@ -161,9 +161,9 @@ package classes.Scenes.Areas.Plains
 			if (monster.HP <= 0) outputText(" dazed");
 			else outputText(" aroused");
 			outputText(" to fight further.  One spotted paw holds tight to the shaft while the tawny warrior slowly falls to her knees, the will to fight completely gone.  Her head bows to you in submission as you slowly approach the defeated hyena.", false);
-			var vagoo:Function =null;
+			var vagoo:() => void =null;
 			if (player.hasVagina()) vagoo = victoryRapeHyenaCunnilingus;
-			var penor:Function =null;
+			var penor:() => void =null;
 			if (player.hasCock()) penor = hyenaVictoryRapeFellatio;
 			if (player.lust >= 33 && player.gender > 0) {
 				outputText("\n\nUsing the hyena to get off would be easy.  What do you do?", false);
@@ -173,12 +173,12 @@ package classes.Scenes.Areas.Plains
 		}
 
 //<Hyena Defeat - Fellatio>
-		private function hyenaVictoryRapeFellatio():void
+		private  hyenaVictoryRapeFellatio():void
 		{
 			spriteSelect(54);
-			var x:Number = player.cockThatFits(40);
+			var x:number = player.cockThatFits(40);
 			if (x < 0) x = 0;
-			var y:Number = player.cockThatFits2(40);
+			var y:number = player.cockThatFits2(40);
 			if (player.cockTotal() > 1 && (y < 0 || y == x)) {
 				y = 0;
 				if (y == x) y = 1;
@@ -243,7 +243,7 @@ package classes.Scenes.Areas.Plains
 		}
 
 //<Hyena Defeat – Cunnilingus>
-		private function victoryRapeHyenaCunnilingus():void
+		private  victoryRapeHyenaCunnilingus():void
 		{
 			spriteSelect(54);
 			outputText("", true);
@@ -274,4 +274,4 @@ package classes.Scenes.Areas.Plains
 			cleanupAfterCombat();
 		}
 	}
-}
+

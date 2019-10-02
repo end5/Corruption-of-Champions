@@ -1,11 +1,11 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class Ember extends Monster
+	 
+	 
+
+	export class Ember extends Monster
 	{
-		private function emberMF(male:String,female:String):String{
+		private  emberMF(male:string,female:string):string{
 			return game.emberScene.emberMF(male,female);
 		}
 		//The Actual Ember Fight (Z)
@@ -13,7 +13,7 @@ package classes.Scenes.NPCs
 		//It doesn't make sense to affect Ember's lust due to the nature of the combat, however it IS possible and encouraged to use lust moves when fighting Bimbo or Corrupt Ember.
 
 		//PC shouldn't lose their turn for doing this, unless you want to penalize them Fen.
-		private function emberReactsToLustiness():void {
+		private  emberReactsToLustiness():void {
 			//(if PC uses any attack designed to increase Ember's lust)
 			outputText("The dragon moans, weaving softly from side to side, eyes glazed and tongue lolling at the intimate prospect of sex... but then, to your surprise, " + emberMF("he","she") + " visibly shakes it off and recomposes " + emberMF("him","her") + "self, frowning at you.");
 			outputText("\n\n\"<i>W-what do you think you're doing!?  I'm not some ordinary monster!  Don't think you can seduce me out of a battle!</i>\"");
@@ -25,7 +25,7 @@ package classes.Scenes.NPCs
 			game.cleanupAfterCombat();
 		}
 		//Ember Attacks:
-		private function emberAttack():void {
+		private  emberAttack():void {
 			//Basic attack, average damage, average accuracy
 			outputText("With a growl, the dragon lashes out in a ferocious splay-fingered slash, "+ emberMF("his","her") + " claws poised to rip into your flesh.  ");
 			//Blind dodge change
@@ -35,7 +35,7 @@ package classes.Scenes.NPCs
 			//Miss/dodge
 			else if(combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) outputText("You dodge aside at the last second and Ember's claws whistle past you.");
 			else {
-				var damage:int = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
+				var damage:number = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
 				if(damage <= 0) outputText("Ember's claws scrape noisily but harmlessly off your [armor].");
 				else {
 					damage = player.takeDamage(damage);
@@ -47,7 +47,7 @@ package classes.Scenes.NPCs
 		}
 		
 		//Dragon Breath: Very rare attack, very high damage
-		private function embersSupahSpecialDragonBreath():void {
+		private  embersSupahSpecialDragonBreath():void {
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) {
 				//Blind Ember: 
 				outputText("The blinded dragon tracks you with difficulty as you sprint around the landscape; seeing an opportunity, you strafe around " + emberMF("his","her") + " side, planting yourself behind a large flat boulder near " + emberMF("him","her") + " and pelting " + emberMF("him","her") + " with a small rock.  The scream as the dragon turns the magical conflagration toward you, only to have it hit the rock and blow up in " + emberMF("his","her") + " face, is quite satisfying.");
@@ -59,7 +59,7 @@ package classes.Scenes.NPCs
 				if(combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) outputText("  It's a narrow thing, but you manage to throw yourself aside at the last moment.  Fortunately, the energy whirling around and tearing up the soil blinds Ember to your escape until you have recovered and are ready to keep fighting.");
 				else {
 					outputText("  The pain as the deadly combination washes over you is indescribable.  It's a miracle that you endure it, and even Ember looks amazed to see you still standing.");
-					var damage:Number = 100 + rand(100);
+					var damage:number = 100 + rand(100);
 					damage = player.takeDamage(damage);
 					outputText(" (" + damage + ")");
 				}
@@ -68,7 +68,7 @@ package classes.Scenes.NPCs
 		}
 		
 		//Tailslap: Rare attack, high damage, low accuracy
-		private function emberTailSlap():void {
+		private  emberTailSlap():void {
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0) {
 				outputText(capitalA + short + " completely misses you with a blind tail-slap!", false);
@@ -83,7 +83,7 @@ package classes.Scenes.NPCs
 				outputText(" the tail at the last moment, causing Ember to lose control of "+ emberMF("his","her") + " own momentum and stumble.");
 			}
 			else {
-				var damage:int = int((str + weaponAttack + 100) - rand(player.tou) - player.armorDef);
+				var damage:number = int((str + weaponAttack + 100) - rand(player.tou) - player.armorDef);
 				outputText("  The tail slams into you with bone-cracking force, knocking you heavily to the ground even as the spines jab you wickedly.  You gasp for breath in pain and shock, but manage to struggle to your feet again.");
 				damage = player.takeDamage(damage);
 				outputText(" (" + damage + ")");
@@ -92,7 +92,7 @@ package classes.Scenes.NPCs
 		}
 				
 		//Dragon Force: Tainted Ember only
-		private function dragonFarce():void {
+		private  dragonFarce():void {
 			//Effect: Stuns the PC for one turn and deals some damage, not much though. (Note: PC's version of this does something different and Ember has no cooldown to use this again. Obviously do not spam or peeps will rage.)
 			//Description:
 			outputText("Ember bares "+ emberMF("his","her") + " teeth and releases a deafening roar; a concussive blast of force heads straight for you!");
@@ -103,13 +103,13 @@ package classes.Scenes.NPCs
 				player.createStatusAffect(StatusAffects.Stunned,0,0,0,0);
 			}
 			createStatusAffect(StatusAffects.StunCooldown,4,0,0,0);
-			var damage:Number = 10 + rand(10);
+			var damage:number = 10 + rand(10);
 			damage = player.takeDamage(damage);
 			outputText(" (" + damage + ")");
 			combatRoundOver();
 		}
 		
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if (lust >= 40) {
 				emberReactsToLustiness();
@@ -128,7 +128,7 @@ package classes.Scenes.NPCs
 			else emberAttack();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			//Hackers gonna hate. Tested and working as intended.
 			if (hpVictory) game.emberScene.beatEmberSpar();
@@ -136,19 +136,19 @@ package classes.Scenes.NPCs
 		}
 
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.emberScene.loseToEmberSpar();
 		}
 
-		public function Ember()
+		public  constructor()
 		{
 			this.a = " ";
 			this.short = "Ember";
 			this.imageName = "ember";
 			this.long = "You are currently 'battling' Ember, the dragon, in a playfight.  At least, that was the intention.  The way " + emberMF("he", "she") + " lashes " + emberMF("his", "her") + " tail along the ground, with claws spread and teeth bared ferociously, makes you wonder.";
 			// this.plural = false;
-			var gender:int = game.flags[kFLAGS.EMBER_GENDER];
+			var gender:number = game.flags[kFLAGS.EMBER_GENDER];
 			if (gender==0){
 				this.pronoun1 = "she";
 				this.pronoun2 = "her";
@@ -197,4 +197,4 @@ package classes.Scenes.NPCs
 		
 	}
 
-}
+

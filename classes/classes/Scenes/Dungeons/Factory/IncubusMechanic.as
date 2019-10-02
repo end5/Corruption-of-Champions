@@ -1,13 +1,13 @@
-package classes.Scenes.Dungeons.Factory
-{
-	import classes.*;
-	import classes.Items.Armors.LustyMaidensArmor;
-	import classes.internals.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class IncubusMechanic extends Monster {
+	 
+	 
+	 
+	 
+
+	export class IncubusMechanic extends Monster {
 		
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (flags[kFLAGS.D3_DISCOVERED] == 0)
 			{
@@ -19,7 +19,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 		}
 		
-		private function defeatedInDungeon1(hpVictory:Boolean):void {
+		private  defeatedInDungeon1(hpVictory:boolean):void {
 			clearOutput();
 			if (hpVictory)
 				outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.");
@@ -36,7 +36,7 @@ package classes.Scenes.Dungeons.Factory
 				}
 				else {
 					outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
-					var titfuck:Function = null;
+					var titfuck:() => void = null;
 					if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
 						titfuck = game.createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
 					}
@@ -45,12 +45,12 @@ package classes.Scenes.Dungeons.Factory
 			}
 		}
 		
-		private function defeatedInDungeon3(hpVictory:Boolean):void
+		private  defeatedInDungeon3(hpVictory:boolean):void
 		{
 			game.d3.incubusMechanic.beatDaMechanic(hpVictory);
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (flags[kFLAGS.D3_DISCOVERED] == 0)
 			{
@@ -62,7 +62,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 		}
 		
-		private function wonInDungeon1(hpVictory:Boolean, pcCameWorms:Boolean):void
+		private  wonInDungeon1(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nYour foe doesn't seem to care...");
@@ -72,12 +72,12 @@ package classes.Scenes.Dungeons.Factory
 			}
 		}
 		
-		private function wonInDungeon3(hpVictory:Boolean, pcCameWorms:Boolean):void
+		private  wonInDungeon3(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.d3.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
 		}
 		
-		private function cockTripAttack():void {
+		private  cockTripAttack():void {
 			if (findStatusAffect(StatusAffects.Blind) >= 0) { //Blind dodge change
 				outputText(capitalA + short + " suddenly grows it's dick to obscene lengths and tries to trip you with it.  Thankfully he's so blind he wasn't aiming anywhere near you!");
 				game.combatRoundOver();
@@ -107,7 +107,7 @@ package classes.Scenes.Dungeons.Factory
 			game.combatRoundOver();
 		}
 		
-		private function spoogeAttack():void {
+		private  spoogeAttack():void {
 			if (findStatusAffect(StatusAffects.Blind) >= 0) { //Blind dodge change
 				outputText(capitalA + short + " pumps and thrusts his hips lewdly before cumming with intense force in your direction!  Thankfully his aim was off due to the blindness currently affect him.");
 				game.combatRoundOver();
@@ -151,7 +151,7 @@ package classes.Scenes.Dungeons.Factory
 			if (lust < 0) lust = 10;
 		}
 		
-		public function IncubusMechanic() {
+		public  constructor() {
 			this.a = "the ";
 			this.short = "incubus mechanic";
 			this.imageName = "incubusmechanic";
@@ -196,4 +196,3 @@ package classes.Scenes.Dungeons.Factory
 			checkMonster();
 		}
 	}
-}

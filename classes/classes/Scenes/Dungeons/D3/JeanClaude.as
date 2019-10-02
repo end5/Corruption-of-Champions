@@ -1,15 +1,15 @@
-package classes.Scenes.Dungeons.D3 
-{
-	import classes.*;
-	import classes.internals.*;
+  
+
+	 
+	 
 	
 	/**
 	 * ...
 	 * @author Gedan
 	 */
-	public class JeanClaude extends Monster
+	export class JeanClaude extends Monster
 	{
-		private function doubleAttack():void
+		private  doubleAttack():void
 		{
 			outputText("The monstrous basilisk suddenly lunges forward, snarling wordlessly as he swings his cutlass at you twice, the blows of a savage yet expert swordsman.\n\n");
 			createStatusAffect(StatusAffects.Attacks, 2, 0, 0, 0);
@@ -17,22 +17,22 @@ package classes.Scenes.Dungeons.D3
 			combatRoundOver();
 		}
 		
-		override public function doAI():void
+		 public  doAI():void
 		{
 			doubleAttack();
 		}
 		
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.d3.jeanClaude.beatDaFuckhugeBasilisk(hpVictory);
 		}
 		
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.d3.jeanClaude.fuckhugeBasiliskFuckedYouUp(hpVictory);
 		}
 		
-		public function handleTease(lustDelta:Number, successful:Boolean):void
+		public  handleTease(lustDelta:number, successful:boolean):void
 		{
 			if (player.findStatusAffect(StatusAffects.RemovedArmor) < 0)
 			{
@@ -76,7 +76,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		public function JeanClaude() 
+		public  constructor() 
 		{
 			this.a = "";
 			this.short = "Jean-Claude";
@@ -122,4 +122,3 @@ package classes.Scenes.Dungeons.D3
 		
 	}
 
-}

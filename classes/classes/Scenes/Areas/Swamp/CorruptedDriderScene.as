@@ -1,18 +1,18 @@
 /**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.Areas.Swamp
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.Armors.LustyMaidensArmor;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
 
-	public class CorruptedDriderScene extends BaseContent
+	  ;
+
+	export class CorruptedDriderScene extends BaseContent
 	{
-		public function CorruptedDriderScene()
+		public  constructor()
 		{
 		}
 
@@ -23,7 +23,7 @@ package classes.Scenes.Areas.Swamp
 //nipplesPierced > 0 indicates pierced!
 
 //*Encounter Intro (done)
-		public function driderEncounter():void
+		public  driderEncounter():void
 		{
 			spriteSelect(77);
 			outputText("", true);
@@ -59,7 +59,7 @@ package classes.Scenes.Areas.Swamp
 
 
 		//*Victory Intro: (done)
-		public function defeatDriderIntro():void
+		public  defeatDriderIntro():void
 		{
 			spriteSelect(77);
 			outputText("", true);
@@ -68,11 +68,11 @@ package classes.Scenes.Areas.Swamp
 			else outputText("to masturbate her swollen pussy-lips and the thick, juicy demon-cock that's sprouted in place of her clit.  She's so focused on getting off that she utterly gives up on the idea of fighting back, let alone dominating you as she seemed to plan originally.", false);
 			outputText("  The spider-herm lies in a miserable, defeated heap.", false);
 
-			var buttFuckBUTTFUCKBUTTTFUCKBUTTFUCK:Function =null;
+			var buttFuckBUTTFUCKBUTTTFUCKBUTTFUCK:() => void =null;
 			if (player.cockThatFits(monster.analCapacity()) >= 0) buttFuckBUTTFUCKBUTTTFUCKBUTTFUCK = buttFuckADriderOhBaby;
-			var vagFuck:Function =null;
-			var fuckSpinner:Function =null;
-			var careful:Function =null;
+			var vagFuck:() => void =null;
+			var fuckSpinner:() => void =null;
+			var careful:() => void =null;
 			if (player.hasCock() && player.lust >= 33) {
 				if (player.cockThatFits(monster.vaginalCapacity()) >= 0) {
 					outputText("\nYou could fuck her pussy, though you'd be within easy reach of her lips.  If she gets any crazy ideas, it'd be hard to stop her.", false);
@@ -89,16 +89,16 @@ package classes.Scenes.Areas.Swamp
 				}
 				else outputText("\n<b>You briefly consider shoving it in a spinneret, but there's no way you could fit inside the tight opening.</b>", false);
 			}
-			var rideCock:Function =null;
-			var rideOvi:Function =null;
-			var bikiniTits:Function =null;
-			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor is LustyMaidensArmor) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
+			var rideCock:() => void =null;
+			var rideOvi:() => void =null;
+			var bikiniTits:() => void =null;
+			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
 			if (player.hasVagina() && player.lust >= 33) {
 				rideCock = winVSDriderTakeItsCockInCunt;
 				rideOvi = victoryVSDriderRideOviVaginal;
 				outputText("\nYou could ride the drider's retractible demon-cock or her ovipositor.", false);
 			}
-			var rideOviAss:Function =null;
+			var rideOviAss:() => void =null;
 			if (player.lust >= 33) {
 				outputText("\nYou could always ride her ovipositor anally...", false);
 				rideOviAss = victoryVSDriderRideOviAnal;
@@ -114,18 +114,18 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //Lose to drider
-		public function loseToDrider():void
+		public  loseToDrider():void
 		{
 			spriteSelect(77);
 			//Build array of choices
-			var select:Array = [];
+			var select:any[] = [];
 			if (player.hasCock()) select[select.length] = 0;
 			if (player.hasVagina()) select[select.length] = 1;
 			//Genderless scene has low chance for gendered folks
 			if (player.gender == 0 || (player.gender > 0 && rand(3) == 0)) select[select.length] = 2;
 
 			//SELECT SCENE HERE
-			var choice:Number = select[rand(select.length)];
+			var choice:number = select[rand(select.length)];
 			//*Loss Ride Ovi Anal unsexed - gats (done)
 			if (choice == 2) loseVSDriderGetAnalledOvi();
 			//*Loss Vaginal Impregnation and forced BJ - Symphonie (done)
@@ -136,9 +136,9 @@ package classes.Scenes.Areas.Swamp
 
 
 //*Victory Rape: PC Penis goes in Vagina (done)
-		private function winDriderPCDickInSpiderCunt():void
+		private  winDriderPCDickInSpiderCunt():void
 		{
-			var x:int = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			spriteSelect(77);
 			outputText("", true);
 			//*Summary: Fuck her cunt with a wang that fits it, lose control of the 
@@ -276,9 +276,9 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //Part 2 of the above
-		private function winDriderPCDickInSpiderCunt2():void
+		private  winDriderPCDickInSpiderCunt2():void
 		{
-			var x:int = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			spriteSelect(77);
 			outputText("", true);
 			outputText("<b>Sometime Later...</b>\n", false);
@@ -305,7 +305,7 @@ package classes.Scenes.Areas.Swamp
 
 
 //*Victory Rape: Ride Spider-Cawk in Vagoo (done)
-		private function winVSDriderTakeItsCockInCunt():void
+		private  winVSDriderTakeItsCockInCunt():void
 		{
 			spriteSelect(77);
 			outputText("", true);
@@ -341,7 +341,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //*Victory Rape: Ride Ovi Vaginal (done)
-		private function victoryVSDriderRideOviVaginal():void
+		private  victoryVSDriderRideOviVaginal():void
 		{
 			spriteSelect(77);
 			outputText("", true);
@@ -413,7 +413,7 @@ package classes.Scenes.Areas.Swamp
 
 
 //*Victory Rape: Ride Ovi Anal sex-insenitive (done)
-		private function victoryVSDriderRideOviAnal():void
+		private  victoryVSDriderRideOviAnal():void
 		{
 			spriteSelect(77);
 			//*Summary: Force the drider onto her back and then fish out her ovipositor, jerk it off, then climb on top for some egg-based buttlovin'
@@ -516,11 +516,11 @@ package classes.Scenes.Areas.Swamp
 
 //*Victory Spinneret Penetration - written by Sham (done)
 //(please view the spinneret as a spider-horsecock because for all intents and purposes that is really what it is) - shambadibs (1.5-inch width max because i'm racist against buur-bous american penis) (also probably a corruption minimum this is a pretty dick move) (I GET IT)
-		private function victoryVSDriderStickDickInSpinneret():void
+		private  victoryVSDriderStickDickInSpinneret():void
 		{
 			spriteSelect(77);
 			outputText("", true);
-			var x:Number = player.smallestCockIndex();
+			var x:number = player.smallestCockIndex();
 			outputText("Quickly shedding your " + player.armorName + ", you eye up the incapacitated drider, wondering how best to take advantage of your successes.  A remarkably nasty thought strikes you, and your lips nearly curl into a devious grin then and there.  You stride toward your trophy, taking pleasure in the simmering hatred in her eyes as she glares up at you.  A sudden bout of mocking laughter stops your progress; the drider seems to have noticed ", false);
 			if (player.cockTotal() == 1) outputText("your", false);
 			else outputText("one of your", false);
@@ -568,7 +568,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //*Loss Ride Ovi Anal unsexed - gats (done)
-		private function loseVSDriderGetAnalledOvi():void
+		private  loseVSDriderGetAnalledOvi():void
 		{
 			spriteSelect(77);
 			outputText("", true);
@@ -625,7 +625,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //*Loss Vaginal Impregnation and forced BJ - Symphonie (done)
-		private function loseVSDriderAndVaginallyImpreggleOvi():void
+		private  loseVSDriderAndVaginallyImpreggleOvi():void
 		{
 			spriteSelect(77);
 			outputText("", true);
@@ -719,9 +719,9 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //*Loss Ride & Impregnate Butt (done)
-		private function loseVSDriderAndGetFuckedANDAnalImpreggegity():void
+		private  loseVSDriderAndGetFuckedANDAnalImpreggegity():void
 		{
-			var x:int = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			spriteSelect(77);
 			//Poor males.  All the buttsexes. (yo this is an actual paragraph of the game text right)
 			outputText("", true);
@@ -774,7 +774,7 @@ package classes.Scenes.Areas.Swamp
 
 //*Asspreg egg 'birth': (done)
 //Summary: what goes up must come down
-		public function birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY():void
+		public  birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY():void
 		{
 			spriteSelect(77);
 			outputText("\nYour gut rumbles dangerously.  As if by instinct, you drop down and bend over, supporting half your weight on your hands while you lower your " + buttDescript() + " to just above ground level.  You grunt suddenly, your pregnant asshole dilating wide as a heavy weight seems to settle atop it, just inside you.  Clenching and tingling, your pucker slowly opens, releasing a torrent of green goop, along with a spherical white egg.  It drops into the messy puddle, cushioned from the fall by the heavy slime still leaking from your slightly agape anus.\n\n", false);
@@ -801,7 +801,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 
-		public function driderPregVagBirth():void
+		public  driderPregVagBirth():void
 		{
 			spriteSelect(77);
 			outputText("\nYou shudder violently, your stomach growling fiercely at you.  It feels as if something is moving around in your womb, and you bend over on all fours, raising your ass into the air as if it is the most natural thing in the world.  A slimy green fluid starts leaking out of your cunt, making a small puddle on the ground.  The sensation is extremely pleasurable as you feel it running down your thighs.  Groaning, you start to push out a small, smooth green ball, and the action makes your pussy so much wetter.  Groaning, you push out another, and another, each ball rubbing against your inner walls before dropping into the slimy pool of goo.  After the sixth, you orgasm, spraying your cum all over the ground underneath you, each egg squeezing out and prolonging the intense feeling.", false);
@@ -841,9 +841,9 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //Win Drider Male Anal (OH BABY)
-		private function buttFuckADriderOhBaby():void
+		private  buttFuckADriderOhBaby():void
 		{
-			var x:int = player.cockThatFits(monster.analCapacity());
+			var x:number = player.cockThatFits(monster.analCapacity());
 			spriteSelect(77);
 			outputText("", true);
 			outputText("As soon as the drider-girl goes down, you leap into action.  Before she has a chance to recover, you run over and leap onto her back, balancing shakily as the drider stumbles back up onto her many legs, trying to shake you off.  You grab onto the drider's hair for support, pulling tight each time you're nearly displaced.  Yelping in agony, she soon learns her lesson and settles down, submitting to your dominance.\n\n", false);
@@ -876,16 +876,16 @@ package classes.Scenes.Areas.Swamp
 		}
 
 
-		private function driderVagSmartFuck():void
+		private  driderVagSmartFuck():void
 		{
 			spriteSelect(77);
 			clearOutput();
 			//Drider Non-reverse Rape
 			//Requires a cock that fits and either a spider/drider abdomen or a bundle of tough spider silk
 			//Radar (completely correctly) said it was too rapey, so I tried to tone it down.  Let me know if it's still over the top.
-			var x:Number = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = player.smallestCockIndex();
-			var y:Number = x + 1;
+			var y:number = x + 1;
 
 			outputText("You keep your distance from the downed spidermorph, still wary of her dripping, toxin-coated lips despite her weakened state and your own rising desire to breed her.  Trailing your eyes over her sweaty, splayed body you feel a familiar rush below the belt, your hardening [cock " + y + "] pressing against the inside of your [armor] as her breasts rise and fall seductively with each panting breath.  Desire threatens to overpower your caution as your gaze lingers on the vulnerable woman before you, her netherlips ");
 			if (monster.HP < 1) outputText("parted slightly and glistening with beads of sweat from the adrenaline of battle.");
@@ -908,7 +908,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 //[No] 
-		private function dontSilkRapeDrider():void
+		private  dontSilkRapeDrider():void
 		{
 			spriteSelect(77);
 			clearOutput();
@@ -917,12 +917,12 @@ package classes.Scenes.Areas.Swamp
 			doNext(defeatDriderIntro);
 		}
 
-		private function driderTiedUpPartTwo(useItem:Boolean):void
+		private  driderTiedUpPartTwo(useItem:boolean):void
 		{
 			spriteSelect(77);
-			var x:Number = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = player.smallestCockIndex();
-			var y:Number = x + 1;
+			var y:number = x + 1;
 			if (useItem) {
 				clearOutput();
 				player.consumeItem(useables.T_SSILK);
@@ -955,12 +955,12 @@ package classes.Scenes.Areas.Swamp
 			doNext(driderTiedUpPartThree);
 		}
 
-		private function driderTiedUpPartThree():void
+		private  driderTiedUpPartThree():void
 		{
 			spriteSelect(77);
-			var x:Number = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = player.smallestCockIndex();
-			var y:Number = x + 1;
+			var y:number = x + 1;
 			clearOutput();
 			outputText("The drider seems to be completely oblivious, apparently too focused on ignoring your hand still roaming over her chest to realize your intentions.  You start to prepare the ball of silk with one hand, keeping the other on her chest to distract her from your actions.  You notice that the silk is starting to glisten slightly as the juices on your hand begin to stain the material and the sight gives you a devious idea.  Wrapping the strands around your hand, you dip it down in between your bodies, trying to absorb as much pre-cum as possible.  You run it over your slick stomach, as well as the small of the spider-taur's back, making her squeak slightly at the strange, wet sensation.  As you brush the dampening sheet over your still-leaking length, you have to choke back a moan as the soft, slick, sticky silk sticks slightly to your [cock " + y + "].");
 
@@ -1006,12 +1006,12 @@ package classes.Scenes.Areas.Swamp
 			doNext(driderTiedUpPartFour);
 		}
 
-		private function driderTiedUpPartFour():void
+		private  driderTiedUpPartFour():void
 		{
 			spriteSelect(77);
-			var x:Number = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = player.smallestCockIndex();
-			var y:Number = x + 1;
+			var y:number = x + 1;
 			clearOutput();
 			outputText("Grabbing the drider by her shoulders, you find the girl surprisingly light despite your weakened state.  Swiftly dragging her through the shallow water to a patch of firmer ground, you prop her up against a web-covered tree before recovering your gear.  She mumbles slightly whilst you redress yourself; it looks like she's going to be out of it for a while.  ");
 			//[if (corruption >= 70)
@@ -1036,4 +1036,4 @@ package classes.Scenes.Areas.Swamp
 			cleanupAfterCombat();
 		}
 	}
-}
+

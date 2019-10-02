@@ -1,14 +1,14 @@
-package classes.Scenes.Areas.Forest
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Scenes.Monsters.Goblin;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class TamanisDaughters extends Goblin
+	 
+	 
+	 
+	 
+
+	export class TamanisDaughters extends Goblin
 	{
-		private function midRoundMadness():void {
-			var selector:Number = rand(4);
+		private  midRoundMadness():void {
+			var selector:number = rand(4);
 			if(selector == 0) {
 				outputText("A slender hand reaches inside your " + player.armorName + " and gives your ", false);
 				if(player.balls > 0) {
@@ -29,7 +29,7 @@ package classes.Scenes.Areas.Forest
 			game.dynStats("lus", 1 + player.lib/15+rand(player.cor/30));
 		}
 
-		private function tamaniShowsUp():void {
+		private  tamaniShowsUp():void {
 			if (TamainsDaughtersScene.tamaniPresent) {
 				if (rand(4) == 0) goblinDrugAttack(); //Tamani already there - chance of potion
 			}
@@ -49,9 +49,9 @@ package classes.Scenes.Areas.Forest
 			}
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var select:int = 1;
+			var select:number = 1;
 			//mid-round madness!
 			midRoundMadness();
 			tamaniShowsUp();
@@ -77,12 +77,12 @@ package classes.Scenes.Areas.Forest
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.forest.tamaniDaughtersScene.combatWinAgainstDaughters();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nYour foes seem visibly disgusted and leave, telling you to, \"<i>quit being so fucking gross...</i>\"");
@@ -92,7 +92,7 @@ package classes.Scenes.Areas.Forest
 			}
 		}
 
-		public function TamanisDaughters()
+		public  constructor()
 		{
 			super(true);
 			this.a = "the group of ";
@@ -140,4 +140,4 @@ package classes.Scenes.Areas.Forest
 
 	}
 
-}
+

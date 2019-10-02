@@ -1,8 +1,8 @@
-﻿//const GOTTEN_INQUISITOR_ARMOR:int = 415;
+//const GOTTEN_INQUISITOR_ARMOR:int = 415;
 //const DOMINIKAS_SWORD_GIVEN:int = 416;
 
 //[INTRO]
-public function inquisitorRobesDiscovery():void {
+export function inquisitorRobesDiscovery():void {
 	outputText("", true);
 	outputText("Cutting your way through the swamps in the hopes of finding something that isn't a spider, you are pleasantly surprised when you actually succeed.  You discover what seems to be a mossy stone door in a low hillside, adorned with some sort of complex puzzle lock composed of multiple stone circles decorated with animal symbols.  You don't know what lurks beyond the door, but if adventuring has taught you nothing else it is that something cool is always behind a puzzle.\n\n", false);
 
@@ -56,7 +56,7 @@ public function inquisitorRobesDiscovery():void {
 }
 
 //[No]
-public function noThankYouSirIDontWantAwesomeArmors():void {
+export function noThankYouSirIDontWantAwesomeArmors():void {
 	outputText("", true);
 	outputText("Uninterested in the proffered reward, you turn and leave the way you came.  At the entrance, you replace the moss, doing your best to conceal the portal in the event you wish to return, or at least to keep any items of power inside from the hands of hostile swamp denizens.  You may as well not have spent the effort, for as you're walking away, you hear the stones grinding and shifting behind you.  Sure enough, an inspection affirms that the door has sealed itself again.\n\n", false);
 	//allows player to find again later, like the B.Sword
@@ -64,7 +64,7 @@ public function noThankYouSirIDontWantAwesomeArmors():void {
 }
 
 //[Retribution]
-public function retributionArmorIsCoolShit():void {
+export function retributionArmorIsCoolShit():void {
 	outputText("", true);
 	outputText("With your word, the chest clicks.  Moving to lift the lid, you start when it does so of its own will.  Gleaming, brilliant light floods the room.  You had expected there to be a bit of showiness from the magic, yes, but having the robes actually rise up out of the chest seems excessive.  Dark red fabric stretches up as though on a mannequin - or a ghost.  Golden trim runs along its edges.  The back of the gloves feature clearly embroidered sigils that you do not recognize, but which you suspect meant something to a culture long forgotten.  It seems to be constructed primarily of two main portions - a sleeveless high-collared undershirt and skirt, and a hooded overcoat and mantle.  You gather the robes and place them in your pack to inspect further at camp.\n\n", false);
 
@@ -77,7 +77,7 @@ public function retributionArmorIsCoolShit():void {
 }
 
 //[Carnality]
-public function carnalityArmorIsCoolShitToo():void {
+export function carnalityArmorIsCoolShitToo():void {
 	outputText("", true);
 	outputText("With your word, the chest clicks.  Moving to lift the lid, you start when it does so of its own will.  Gleaming, brilliant light floods the room.  You had expected there to be a bit of showiness from the magic, yes, but having the robes actually rise up out of the chest seems excessive.  A dark red posture collar attached to sleeves floats above it as though on a mannequin - or a ghost.  The corset that rises beneath it looks perfectly fitted to you", false);
 	if(player.biggestTitSize() < 1) outputText(", which strikes you as unusual given your flat chest", false);
@@ -97,7 +97,7 @@ public function carnalityArmorIsCoolShitToo():void {
 //Mouseover description: Forged not by a swordsmith but a sorceress, this arcane-infused blade amplifies your magic.  Unlike the wizard staves it is based on, this weapon also has a sharp edge, a technological innovation which has proven historically useful in battle.
 
 //[Approach Dominika post-D2 in bar, requires having used her at least once before?]
-public function dominikaSpellblade():void {
+export function dominikaSpellblade():void {
 	outputText("", true);
 	//[Approach Dominika post-D2 in bar, on Dominika's \"<i>I'm a racist bitch</i>\" list]
 	if((player.minoScore() >= 3 && player.faceType == FACE_COW_MINOTAUR && player.gender == 1) || !player.isBiped()) {

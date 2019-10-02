@@ -1,10 +1,10 @@
-﻿package classes.Scenes.Places.Boat{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
+	 
+	 
 
-	public class SharkGirlScene extends AbstractBoatContent{
+	export class SharkGirlScene extends AbstractBoatContent{
 
-	public function SharkGirlScene()
+	public  constructor()
 	{
 	}
 
@@ -39,7 +39,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
 ----------------------------------
 */
 //[Explore Lake]
-public function sharkGirlEncounter(exploreLoc:Number = 0):void {
+public  sharkGirlEncounter(exploreLoc:number = 0):void {
 	//Set 'PC met Sharkgirls' for Izma stuff
 	if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230] == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230] = 1;
 	if(player.findStatusAffect(StatusAffects.SharkGirl) < 0) player.createStatusAffect(StatusAffects.SharkGirl,0,0,0,0);
@@ -69,7 +69,7 @@ public function sharkGirlEncounter(exploreLoc:Number = 0):void {
 
 
 //Victory Sex. Herms should get a choice between the two scenes:
-internal function sharkWinChoices():void {
+public  sharkWinChoices():void {
 	spriteSelect(70);
 	//HP Win
 	if(monster.HP < 1) {
@@ -82,7 +82,7 @@ internal function sharkWinChoices():void {
 	}
 	if(player.lust >= 33 && player.gender > 0) {
 		outputText("  Do you have your way with her or leave?", false);
-		var dildo:Function = (player.hasKeyItem("Deluxe Dildo") >= 0 ? getGame().sharkGirlGetsDildoed : null);
+		var dildo:() => void = (player.hasKeyItem("Deluxe Dildo") >= 0 ? getGame().sharkGirlGetsDildoed : null);
 		if (player.gender == 1)
 			simpleChoices("Use Dick", sharkgirlDickFuck, "Pussy w/69", null, "Dildo Rape", dildo, "", null, "Leave", cleanupAfterCombat);
 		else if (player.gender == 2) {
@@ -98,13 +98,13 @@ internal function sharkWinChoices():void {
 }
 
 //Male and Herm: 
-private function sharkgirlDickFuck():void {
+private  sharkgirlDickFuck():void {
 	player.addStatusValue(StatusAffects.SharkGirl,1,1);
 	outputText("", true);
 	spriteSelect(70);
 	//Naga get a different version of this scene.
 	if(player.isNaga()) {
-		var x:Number = player.cockThatFits(monster.analCapacity());
+		var x:number = player.cockThatFits(monster.analCapacity());
 		if(x < 0) x = player.smallestCockIndex();
 		//[if(monster.lust > 99)
 		if(monster.lust > 99) outputText("You slither towards the furiously masturbating shark-girl. She lies on her back, desperately trying to relieve herself of her lust. She eyes you for a second, but her focus quickly returns to your own sex, moaning and sighing loudly. You admire the scene for a moment, but decide that she must be punished for her attempt to rape you.\n\n", false);
@@ -134,7 +134,7 @@ private function sharkgirlDickFuck():void {
 	if(player.cor < 33) dynStats("cor", 1);
 }
 
-private function sharkgirlSixtyNine():void {
+private  sharkgirlSixtyNine():void {
 	outputText("", true);
 	spriteSelect(70);
 	//Nagas don't actually get to 69!
@@ -174,7 +174,7 @@ private function sharkgirlSixtyNine():void {
 //Shark girl Bad End.
 //Requirements: Have vaginal sex with 7 Shark girls in one day (Loss rape for males also counts toward this)
 //Scene triggers automatically after the seventh Shark girl
-private function sharkBadEnd():void {
+private  sharkBadEnd():void {
 	outputText("", true);
 	spriteSelect(70);
 	outputText("Several weeks pass by and you once again find yourself at the lake, your loins aching for another shark girl to swim by. Just thinking of their incredible sexual organs and the sense of domination you get from them makes you feel aroused. Sadly though, there's no sign of one, so you instead decide to take a nap.\n\n", false);
@@ -186,7 +186,7 @@ private function sharkBadEnd():void {
 }
 
 //[Next]
-private function sharkBadEnd2():void {
+private  sharkBadEnd2():void {
 	outputText("", true);
 	spriteSelect(70);
 	outputText("Several months and mutations later...\n\n", false);
@@ -253,7 +253,7 @@ Putting it on: (Lust increases)
 [If dick is 7+ inches OR balls are apple-sized] You do your best to put the thong on, and while the material is very stretchy, it's simply far too uncomfortable to even try. Maybe if you shrunk your male parts down a little... [/]  
 -------------------------------*/
 //Loss Rape scenes:
-internal function sharkLossRape():void {
+public  sharkLossRape():void {
 	outputText("", true);
 	spriteSelect(70);
 	//Genderless:
@@ -313,4 +313,4 @@ internal function sharkLossRape():void {
 	doNext(playerMenu);
 }
 }
-}
+

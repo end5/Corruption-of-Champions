@@ -1,14 +1,14 @@
-package classes.Scenes.Dungeons.Factory
-{
-	import classes.*;
-	import classes.Scenes.Monsters.AbstractSuccubus;
-	import classes.internals.*;
+ 
 
-	public class SecretarialSuccubus extends AbstractSuccubus {
-		override public function defeated(hpVictory:Boolean):void
+	 
+	 
+	 
+
+	export class SecretarialSuccubus extends AbstractSuccubus {
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (player.gender > 0) {
-				var dildo:Function = (player.hasKeyItem("Deluxe Dildo") >= 0 ? game.succubusGetsDildoed : null);
+				var dildo:() => void = (player.hasKeyItem("Deluxe Dildo") >= 0 ? game.succubusGetsDildoed : null);
 				
 				if (hpVictory) {
 					outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.  Now would be the perfect opportunity to taste the fruits of her sex-ready form...\n\nDo you rape her?", true);
@@ -26,7 +26,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nYour foe doesn't seem to care...");
@@ -36,7 +36,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 		}
 
-		public function SecretarialSuccubus() {
+		public  constructor() {
 			this.a = "the ";
 			this.short = "secretarial succubus";
 			this.imageName = "secretarialsuccubus";
@@ -81,4 +81,3 @@ package classes.Scenes.Dungeons.Factory
 
 	}
 
-}

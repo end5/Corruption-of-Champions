@@ -1,21 +1,21 @@
 /**
  * Created by aimozg on 09.01.14.
  */
-package classes.Items.Weapons
-{
-	import classes.ItemType;
-	import classes.Items.Weapon;
-	import classes.Player;
+ 
 
-	public class Fists extends Weapon {
+	 
+	 
+	 
+
+	export class Fists extends Weapon {
 		
-		public function Fists() {
+		public  constructor() {
 			super("Fists  ", "Fists", "fists", "fists", "punch", 0);
 		}
 		
-		override public function useText():void {} //No text for equipping fists
+		 public  useText():void {} //No text for equipping fists
 
-		override public function playerRemove():Weapon {
+		 public  playerRemove():Weapon {
 			return null;
 		}
 		
@@ -30,4 +30,4 @@ package classes.Items.Weapons
 		}
 */
 	}
-}
+

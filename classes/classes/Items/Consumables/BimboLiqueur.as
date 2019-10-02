@@ -1,27 +1,27 @@
 /**
  * Created by aimozg on 18.01.14.
  */
-package classes.Items.Consumables
-{
-	import classes.Appearance;
-	import classes.PerkLib;
-	import classes.Player;
-	import classes.internals.Utils;
-	import classes.Items.Consumable;
+ 
 
-	public class BimboLiqueur extends Consumable {
+	 
+	 
+	 
+	 
+	 
+
+	export class BimboLiqueur extends Consumable {
 		
-		public function BimboLiqueur() {
+		public  constructor() {
 			super("BimboLq", "BimboLq", "a potent bottle of 'Bimbo Liqueur'", 1000, "This small bottle of liqueur is labelled 'Bimbo Liqueur'.  There's a HUGE warning label about the effects being strong and usually permanent, so you should handle this with care.");
 		}
 		
-		override public function canUse():Boolean {
+		 public  canUse():boolean {
 			if (game.player.findPerk(PerkLib.FutaForm) < 0) return true;
 			outputText("Ugh.  This stuff is so, like... last year.  Maybe you can find someone else to feed it to?\n\n");
 			return false;
 		}
 
-		override public function useItem():Boolean {
+		 public  useItem():boolean {
 			if (game.player.findPerk(PerkLib.BroBody) >= 0) {
 				outputText("You wince as the stuff hits your stomach, already feeling the insidious effects beginning to take hold.  A lengthy belch escapes your lips as your stomach gurgles, and you giggle abashedly to yourself.");
 				if (game.player.tallness < 77) {
@@ -191,4 +191,4 @@ package classes.Items.Consumables
 			return(false);
 		}
 	}
-}
+

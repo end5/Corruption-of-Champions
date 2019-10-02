@@ -1,8 +1,8 @@
-﻿package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.Scenes.Areas.HighMountains.Harpy;
-	import classes.internals.*;
+ 
+
+	 
+	 
+	 
 
 	/**
 	 * ...
@@ -10,7 +10,7 @@
 	 */
 
 
-	public class Sophie extends Harpy
+	export class Sophie extends Harpy
 	{
 		//Combat Attacks
 		//ON DICK'ED PCz
@@ -18,7 +18,7 @@
 		//per round of increasing lust by 20.  Repeat kisses add
 		//+20 lust.  Each kiss adds 2 hours to length of status
 		//affect.
-		private function sophieKissAttack():void {
+		private  sophieKissAttack():void {
 			game.sophieBimbo.sophieSprite();
 			outputText("Sophie bobs and weaves as she closes the distance between you in an instant.  ", false);
 			//Blind dodge change
@@ -77,7 +77,7 @@
 		//around PC's torso and smothering the PC with breasts 
 		//for a few moments.
 		//Easily dodged with evade or flexibility.
-		private function sophieHarpyBoatsPC():void {
+		private  sophieHarpyBoatsPC():void {
 			game.sophieBimbo.sophieSprite();
 			outputText(capitalA + short + " flaps her wings and launches herself forwards with her talons up.  ", false);
 			//Blind dodge change
@@ -113,7 +113,7 @@
 		}
 		
 		//Compulsion (Male Only)
-		private function sophieCompulsionAttack():void {
+		private  sophieCompulsionAttack():void {
 			game.sophieBimbo.sophieSprite();
 			outputText("Sophie spreads her thick thighs and slips four fingers into her slippery sex.  She commands, \"<i>Touch yourself for me.  Be a good pet and masturbate for me.</i>\"  ", false);
 			//Autosucceeds if player inte < 40
@@ -133,10 +133,10 @@
 		//ON FEMALE PCz
 		//Talons (Female Only)
 		//High damage attack easily avoided by evade/flexibility.
-		private function talonsSophie():void {
+		private  talonsSophie():void {
 			game.sophieBimbo.sophieSprite();
 			outputText("Sophie pulls her leg up, cocking her thigh dangerously.  Look out!  ", false);
-			var damage:Number = 0;
+			var damage:number = 0;
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
 				outputText(capitalA + short + "'s talons are easy to avoid thanks to her blindness!\n", false);
@@ -173,9 +173,9 @@
 		}
 		//Batter (Female Only)
 		//Batters PC with wings – 4x attack impossible to dodge.*/
-		private function batterAttackSophie():void {
+		private  batterAttackSophie():void {
 			game.sophieBimbo.sophieSprite();
-			var damage:Number = 0;
+			var damage:number = 0;
 			outputText("Sophie comes at you in a flurry of beating wings!  There's no way to dodge the flurry of strikes!\n", false);
 			
 			//Determine damage - str modified by enemy toughness!
@@ -200,12 +200,12 @@
 			outputText("Her right wing slams into the other side of your head! (" + damage + ")\n", false);
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			//Sophie has special AI in harpySophie.as
 			game.sophieBimbo.sophieSprite();
-			var select:Number = 1;
-			var rando:Number = 1;
+			var select:number = 1;
+			var rando:number = 1;
 //Update attacks for girls/neuters
 			if (!player.hasCock() || findStatusAffect(StatusAffects.BimboBrawl) >= 0) {
 				//Talons
@@ -232,7 +232,7 @@
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.BimboBrawl) >= 0)
 				game.sophieFollowerScene.beatUpDebimboSophie();
@@ -240,7 +240,7 @@
 				game.sophieScene.sophieLostCombat();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.BimboBrawl) >= 0)
 				game.sophieFollowerScene.debimboSophieBeatsYouUp();
@@ -252,7 +252,7 @@
 			}
 		}
 
-		public function Sophie()
+		public  constructor()
 		{
 			super(true);
 			trace("Sophie Constructor!");
@@ -300,4 +300,3 @@
 
 	}
 
-}

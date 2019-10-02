@@ -1,28 +1,28 @@
 /**
  * Created by K.Quesom 11.06.14
  */
-package classes.Items.Consumables
-{
-	import classes.GlobalFlags.*;
-	import classes.internals.Utils;
-	import classes.Items.Consumable;
-	import classes.CoC;
-	import classes.CockTypesEnum;
-	import classes.PerkLib;
-	import classes.Player;
-	import classes.PregnancyStore;
-	import classes.StatusAffects;
+ 
 
-    public class BeeHoney extends Consumable
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+    export class BeeHoney extends Consumable
     {
-        private const PURE_HONEY_VALUE:int = 40;
-        private const SPECIAL_HONEY_VALUE:int = 20;
+        private  PURE_HONEY_VALUE:number = 40;
+        private  SPECIAL_HONEY_VALUE:number = 20;
 		
-        public function BeeHoney(pure:Boolean, special:Boolean) {
-			var honeyName:String;
-			var honeyLong:String;
-			var honeyDesc:String;
-			var honeyValue:int;
+        public  constructor(pure:boolean, special:boolean) {
+			var honeyName:string;
+			var honeyLong:string;
+			var honeyDesc:string;
+			var honeyValue:number;
 			if (special) {
 				honeyName = "SpHoney";
 				honeyLong = "a bottle of special bee honey";
@@ -38,7 +38,7 @@ package classes.Items.Consumables
 			super(honeyName, honeyName, honeyLong, honeyValue, honeyDesc);
         }
 		
-		override public function canUse():Boolean {
+		 public  canUse():boolean {
 			if (value == SPECIAL_HONEY_VALUE && getGame().player.statusAffectv1(StatusAffects.Exgartuan) == 1) { //Exgartuan doesn't like the special honey
 				outputText("You uncork the bottle only to hear Exgartuan suddenly speak up.  <i>“Hey kid, this beautiful cock here doesn’t need any of that special bee shit.  Cork that bottle up right now or I’m going to make it so that you can’t drink anything but me.”</i>  You give an exasperated sigh and put the cork back in the bottle.");
 				return false;
@@ -46,12 +46,12 @@ package classes.Items.Consumables
 			return true;
 		}
 		
-		override public function useItem():Boolean {
+		 public  useItem():boolean {
 			var player:Player = getGame().player;
-			var pure:Boolean = (value == PURE_HONEY_VALUE);
-			var special:Boolean = (value == SPECIAL_HONEY_VALUE);
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var pure:boolean = (value == PURE_HONEY_VALUE);
+			var special:boolean = (value == SPECIAL_HONEY_VALUE);
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			clearOutput();
 			player.slimeFeed();
 			//Chances of boosting the change limit.
@@ -169,7 +169,7 @@ package classes.Items.Consumables
 				else outputText("breast.");
 				changes++;
 				//Loop through and reset nipples
-				for (var temp:int = 0; temp < player.breastRows.length; temp++) {
+				for (const temp = 0; temp < player.breastRows.length; temp++) {
 					player.breastRows[temp].nipplesPerBreast = 1;
 				}
 			}
@@ -237,7 +237,7 @@ package classes.Items.Consumables
 					getGame().dynStats("sen", 10);
 				}
 				else if (player.cocks.length > 1) {
-					var biggest:int = player.biggestCockIndex();
+					var biggest:number = player.biggestCockIndex();
 					outputText("\n\nThe effects of the honey move towards your groin, and into your " + player.multiCockDescriptLight() + ", causing them to stand at attention.  They quiver for a moment, and feel rather itchy.  Suddenly you are overwhelmed with pleasure as <b>your " + player.cockDescript(biggest) + " is absorbed into your " + player.cockDescript(0) + "!</b>  You grab onto the merging cock and pump it with your hands as it increases in size and you cum in pleasure.  Your " + player.cockDescript(0) + " seems a lot more sensative now...");
 					player.cocks[0].cockLength		+= 5 * Math.sqrt(0.2 * player.cocks[biggest].cArea());
 					player.cocks[0].cockThickness	+= Math.sqrt(0.2 * player.cocks[biggest].cArea());
@@ -273,7 +273,7 @@ package classes.Items.Consumables
 				}
 				if (player.cor >= 5) {
 					outputText("\n\nYour mind feels surprisingly clear of the twisted thoughts that have plagued it as of late, but you find yourself feeling more and more aroused than usual.");
-					var corLoss:int = Math.min(0.1 * player.cor + 5, player.cor);
+					var corLoss:number = Math.min(0.1 * player.cor + 5, player.cor);
 					getGame().dynStats("cor", -corLoss, "lib", corLoss); //Lose corruption and gains that much libido
 				}
 				else {
@@ -291,4 +291,4 @@ package classes.Items.Consumables
 			return(false);
 		}
     }
-}
+

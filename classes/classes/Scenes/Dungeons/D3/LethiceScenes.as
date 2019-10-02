@@ -1,30 +1,30 @@
-package classes.Scenes.Dungeons.D3
-{
-	import classes.BaseContent;
-	import classes.Monster;
-	import classes.StatusAffects;
-	import classes.Items.WeaponLib;
-	import classes.GlobalFlags.kFLAGS;
-	import flash.net.SharedObject;
-	
-	public class LethiceScenes extends BaseContent
-	{
-		public static const GAME_END_REDEMPTION:uint = 1;
-		public static const GAME_END_CONSORT:uint = 2;
-		public static const GAME_END_PURGE_0_50:uint = 3;
-		public static const GAME_END_PURGE_50_100:uint = 4;
-		public static const GAME_END_PURGE_100:uint = 5;
-		public static const GAME_END_CONQUER_LOW:uint = 6;
-		public static const GAME_END_CONQUER_MED:uint = 7;
-		public static const GAME_END_CONQUER_HIGH:uint = 8;
+ 
 
-		private function saveExport():void
+	 
+	 
+	 
+	 
+	 
+	 
+	
+	export class LethiceScenes extends BaseContent
+	{
+		public static  GAME_END_REDEMPTION:uint = 1;
+		public static  GAME_END_CONSORT:uint = 2;
+		public static  GAME_END_PURGE_0_50:uint = 3;
+		public static  GAME_END_PURGE_50_100:uint = 4;
+		public static  GAME_END_PURGE_100:uint = 5;
+		public static  GAME_END_CONQUER_LOW:uint = 6;
+		public static  GAME_END_CONQUER_MED:uint = 7;
+		public static  GAME_END_CONQUER_HIGH:uint = 8;
+
+		private  saveExport():void
 		{
 			menu();
 			addButton(0, "Export", exportSaveData);
 		}
 		
-		private function exportSaveData():void
+		private  exportSaveData():void
 		{
 			// This is turbo wankle style shit, but it'll work well enough for now.
 			
@@ -32,10 +32,10 @@ package classes.Scenes.Dungeons.D3
 			// 2. But I could throw down a shitty little converter SWF as an interim step.
 			// 3. It also avoids having to rewrite all the fuckin save code all over again to get the shit out in a better format *right now*
 			
-			var foundFreeFile:Boolean = false;
-			var baseFileName:String = "CoC_EndExport_";
-			var currFileName:String;
-			var attemptNum:int = 1;
+			var foundFreeFile:boolean = false;
+			var baseFileName:string = "CoC_EndExport_";
+			var currFileName:string;
+			var attemptNum:number = 1;
 			
 			while (!foundFreeFile)
 			{
@@ -57,12 +57,12 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Game Over", function():void { } );
 		}
 
-		public function LethiceScenes()
+		public  constructor()
 		{
 
 		}
 
-		public function encounterLethice():void
+		public  encounterLethice():void
 		{
 			if (player.cor < 90)
 			{
@@ -76,7 +76,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		private function goFight():void
+		private  goFight():void
 		{
 			outputText("<i>“So be it.”</i> Lethice rises from her throne, pacing pensively back and forth. Wings unfurl from behind her back, casting you into the darkness of her demonic shadow. <i>“You seek a fight with the Queen of Mareth, and you shall have one.”</i> With feline grace, she launches herself dozens of feet into the air, flips forward, and snaps her wings out to catch her midair. <i>“My pets! My lovelies! Watch what this mortal’s foolishness earns "+ player.mf("him", "her") +"!”</i>");
 			outputText("\n\nScattered applause breaks out as Lethice wings around to engage you.");
@@ -96,7 +96,7 @@ package classes.Scenes.Dungeons.D3
 			startCombat(m);
 		}
 
-		public function defeated(hpVictory:Boolean):void
+		public  defeated(hpVictory:boolean):void
 		{
 			clearOutput();
 
@@ -116,14 +116,14 @@ package classes.Scenes.Dungeons.D3
 			if (player.hasVagina()) addButton(1, "Queen Her", queenHer);
 			addButton(2, "Boob Play", boobPlay, hpVictory);
 
-			var hasLethicite:Boolean = (player.hasKeyItem("Sheila's Lethicite") > 0) || (player.hasKeyItem("Stone Statue Lethicite") > 0);
+			var hasLethicite:boolean = (player.hasKeyItem("Sheila's Lethicite") > 0) || (player.hasKeyItem("Stone Statue Lethicite") > 0);
 			if (hasLethicite && player.findStatusAffect(StatusAffects.MetMarae) >= 0 && player.findStatusAffect(StatusAffects.FactoryOverload) < 0)
 			{
 				addButton(5, "Redemption", redemption, hpVictory);
 			}
 		}
 
-		private function plowHer():void
+		private  plowHer():void
 		{
 			clearOutput();
 
@@ -165,7 +165,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		private function plowHerPussy():void
+		private  plowHerPussy():void
 		{
 			clearOutput();
 
@@ -196,7 +196,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", theChoiceDunDunDun);
 		}
 
-		private function plowHerButt():void
+		private  plowHerButt():void
 		{
 			clearOutput();
 
@@ -230,7 +230,7 @@ package classes.Scenes.Dungeons.D3
 			theChoiceDunDunDun();
 		}
 
-		private function plowHerDouble():void
+		private  plowHerDouble():void
 		{
 			clearOutput();
 
@@ -260,7 +260,7 @@ package classes.Scenes.Dungeons.D3
 			theChoiceDunDunDun();
 		}
 
-		private function queenHer():void
+		private  queenHer():void
 		{
 			clearOutput();
 
@@ -309,7 +309,7 @@ package classes.Scenes.Dungeons.D3
 			theChoiceDunDunDun();
 		}
 
-		private function boobPlay(hpVictory:Boolean):void
+		private  boobPlay(hpVictory:boolean):void
 		{
 			clearOutput();
 
@@ -417,7 +417,7 @@ package classes.Scenes.Dungeons.D3
 			theChoiceDunDunDun();
 		}
 
-		private function redemption(hpVictory:Boolean):void
+		private  redemption(hpVictory:boolean):void
 		{
 			clearOutput();
 
@@ -440,7 +440,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", redemptionII);
 		}
 
-		private function redemptionII():void
+		private  redemptionII():void
 		{
 			clearOutput();
 
@@ -506,7 +506,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", redemptionIII);
 		}
 
-		private function redemptionIII():void
+		private  redemptionIII():void
 		{
 			clearOutput();
 
@@ -521,7 +521,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", redemptionIIIGoName);
 		}
 
-		private function redemptionIIIGoName():void
+		private  redemptionIIIGoName():void
 		{
 			if(mainView.nameBox.text == "") 
 			{
@@ -558,7 +558,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", redemptionIV);
 		}
 
-		private function redemptionIV():void
+		private  redemptionIV():void
 		{
 			clearOutput();
 
@@ -586,7 +586,7 @@ package classes.Scenes.Dungeons.D3
 			saveExport();
 		}
 
-		private function joinHer():void
+		private  joinHer():void
 		{
 			clearOutput();
 
@@ -647,7 +647,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", joinHerII);
 		}
 
-		private function joinHerII():void
+		private  joinHerII():void
 		{
 			clearOutput();
 
@@ -700,7 +700,7 @@ package classes.Scenes.Dungeons.D3
 			saveExport();
 		}
 
-		public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			clearOutput();
 
@@ -734,7 +734,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", woofwoof);
 		}
 
-		private function woofwoof():void
+		private  woofwoof():void
 		{
 			clearOutput();
 
@@ -783,7 +783,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", woofwoofII);
 		}
 
-		private function woofwoofII():void
+		private  woofwoofII():void
 		{
 			clearOutput();
 
@@ -844,14 +844,14 @@ package classes.Scenes.Dungeons.D3
 			getGame().gameOver();
 		}
 
-		private function theChoiceDunDunDun():void
+		private  theChoiceDunDunDun():void
 		{
 			menu();
 			addButton(0, "Kill Her", killHer);
 			addButton(1, "Leave Her", leaveHer);
 		}
 
-		private function killHer():void
+		private  killHer():void
 		{
 			clearOutput();
 
@@ -862,7 +862,7 @@ package classes.Scenes.Dungeons.D3
 			postTheChoice();
 		}
 
-		private function leaveHer():void
+		private  leaveHer():void
 		{
 			clearOutput();
 
@@ -874,7 +874,7 @@ package classes.Scenes.Dungeons.D3
 			postTheChoice();
 		}
 
-		private function postTheChoice():void
+		private  postTheChoice():void
 		{
 			outputText("\n\nNow that you’re alone in an empty citadel, the world’s is seemingly your oyster. Doubtless the demons had experiments into interdimensional travel. You could search the place for a way home, or claim it as your own. For all this land’s harshness, it is a place of magic and love too. Surely staying here would not be too great a burden?");
 
@@ -883,7 +883,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "ClaimFort", claimFortress);
 		}
 
-		private function goHome():void
+		private  goHome():void
 		{
 			clearOutput();
 			outputText("This place is huge. You had no idea there were so many wings with so many different occupants. More than a few demons missed their chance to escape in the initial confusion and slither out of your way at the sight of you, leaving their possessions and experiments unguarded. Priceless artifacts, forgotten slaves, and endless walls of advanced machinery. It’s all yours for the taking, and yet none of it is what you came here to seek.");
@@ -896,7 +896,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", goHomeII);
 		}
 
-		private function goHomeII():void
+		private  goHomeII():void
 		{
 			clearOutput();
 			outputText("<b>Weeks later...</b>\nThey had it. The damned bastards had it. Syrena, the head researcher had figured out how to open a stable portal months ago, but for whatever reason, she kept it from Lethice. There’s a shortage of evidence about what she was actually scheming, but you’d guess she was planning to take a cadre of loyal demons to an untainted plane and set herself up as a queen.");
@@ -908,7 +908,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "Justice", goHomeJustice);
 		}
 
-		private function goHomeVeng():void
+		private  goHomeVeng():void
 		{
 			clearOutput();
 
@@ -921,7 +921,7 @@ package classes.Scenes.Dungeons.D3
 			saveExport();
 		}
 
-		private function goHomeJustice():void
+		private  goHomeJustice():void
 		{
 			clearOutput();
 			outputText("<b>Later...</b>\nTales of the Champions arrival spread far and wide. None expected "+ player.mf("his", "her") +" return, and yet "+ player.mf("he", "she") +" arrived all the same, weapon in hand before the council chambers, demanding the corrupt old men who once lead to face justice for their betrayal. At "+ player.mf("his", "her") +" feet were strange creatures, beings the Champion faced and defeated, brought to Ingnam’s world to testify to just how rotten the village’s core had become. Once they said their piece, "+ player.mf("he", "she"));
@@ -942,7 +942,7 @@ package classes.Scenes.Dungeons.D3
 			saveExport();
 		}
 
-		private function claimFortress():void
+		private  claimFortress():void
 		{
 			clearOutput();
 			outputText("This fortress would be a fitting seat to your power. But the question remains, what would you do from such a fortress? You could gather the pure forces of the land together into one army, and from here purge the demon’s corrupted taint from the land, or you could set yourself up in Lethice’s place. Many demons could be turned to serve you, now that you think about it. Surely you could rule better than she!");
@@ -952,9 +952,9 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "Conquer", conquer)
 		}
 
-		private function HowFuckedIsThePlayerOMeter():Number
+		private  HowFuckedIsThePlayerOMeter():number
 		{
-			var levelOfFuckedness:Number = 0;
+			var levelOfFuckedness:number = 0;
 
 			//Marae corrupt +50
 			if (player.findStatusAffect(StatusAffects.FactoryOverload) >= 0) levelOfFuckedness += 50;
@@ -1056,7 +1056,7 @@ package classes.Scenes.Dungeons.D3
 			return levelOfFuckedness;
 		}
 
-		private function hasChildren():Boolean
+		private  hasChildren():boolean
 		{
 			if (player.statusAffectv1(StatusAffects.Birthed) > 0) return true;
 			if (flags[kFLAGS.AMILY_BIRTH_TOTAL] > 0 || flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS] > 0) return true;
@@ -1082,7 +1082,7 @@ package classes.Scenes.Dungeons.D3
 			return false;
 		}
 
-		private function purgeShit():void
+		private  purgeShit():void
 		{
 			clearOutput();
 	
@@ -1090,7 +1090,7 @@ package classes.Scenes.Dungeons.D3
 			if (hasChildren()) outputText(", offspring");
 			outputText(", and the last pure forces in the land. Even those of questionable purity are gathered into the fold. With Lethice deposed, the remaining free peoples of Mareth flock to your leadership. The enchantment binding the pure waters of the world into cloud are broken, and the world has its first real rainfall in years, clearing the air of residual corruption and washing the taint from the soil into recessed cesspits.");
 
-			var levelOfFuckedness:Number = HowFuckedIsThePlayerOMeter();
+			var levelOfFuckedness:number = HowFuckedIsThePlayerOMeter();
 
 			if (levelOfFuckedness <= 50)
 			{
@@ -1133,7 +1133,7 @@ package classes.Scenes.Dungeons.D3
 			saveExport();
 		}
 
-		private function conquer():void
+		private  conquer():void
 		{
 			clearOutput();
 
@@ -1204,4 +1204,3 @@ package classes.Scenes.Dungeons.D3
 			saveExport();
 		}
 	}
-}

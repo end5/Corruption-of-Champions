@@ -1,26 +1,26 @@
-package classes.Scenes.Dungeons.HelDungeon
-{
-	import classes.*;
+ 
 
-	public class HarpyMob extends Monster
+	 
+
+	export class HarpyMob extends Monster
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.harpyHordeAI();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.pcDefeatsHarpyHorde();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.pcLosesToHarpyHorde();
 		}
 
-		public function HarpyMob()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "harpy horde";
@@ -64,4 +64,3 @@ package classes.Scenes.Dungeons.HelDungeon
 		
 	}
 
-}

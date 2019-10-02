@@ -1,39 +1,39 @@
 /**
  * Created by aimozg on 11.01.14.
  */
-package classes.Items.Consumables
-{
-	import classes.Items.Consumable;
-	import classes.Items.ConsumableLib;
-	import classes.PerkLib;
-	import classes.Player;
-	import classes.internals.Utils;
+ 
 
-	public final class GroPlus extends Consumable {
+	 
+	 
+	 
+	 
+	 
+
+	export  class GroPlus extends Consumable {
 		
-		public function GroPlus() {
+		public  constructor() {
 			super("GroPlus", "GroPlus", "a needle filled with Gro+", 50, "This is a small needle with a reservoir full of blue liquid.  A faded label marks it as 'GroPlus'.  Its purpose seems obvious.");
 		}
 
-		override public function canUse():Boolean {
+		 public  canUse():boolean {
 			return true;
 		}
 		
 //		override public function hasSubMenu():Boolean { return true; } //Only GroPlus and Reducto use this.
 		
-		override public function useItem():Boolean {
-			var gpBalls:Function	= (game.player.balls > 0 ? growPlusBalls : null);
-			var gpBreasts:Function	= (game.player.breastRows.length > 0 ? growPlusBreasts : null);
-			var gpClit:Function		= (game.player.vaginas.length > 0 ? growPlusClit : null);
-			var gpCock:Function		= (game.player.cockTotal() > 0 ? growPlusCock : null);
-			var gpNipples:Function	= (game.player.totalNipples() > 0 ? growPlusNipples : null);
+		 public  useItem():boolean {
+			var gpBalls:() => void	= (game.player.balls > 0 ? growPlusBalls : null);
+			var gpBreasts:() => void	= (game.player.breastRows.length > 0 ? growPlusBreasts : null);
+			var gpClit:() => void		= (game.player.vaginas.length > 0 ? growPlusClit : null);
+			var gpCock:() => void		= (game.player.cockTotal() > 0 ? growPlusCock : null);
+			var gpNipples:() => void	= (game.player.totalNipples() > 0 ? growPlusNipples : null);
 			clearOutput();
 			outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?  ");
 			game.choices("Balls", gpBalls, "Breasts", gpBreasts, "Clit", gpClit, "Cock", gpCock, "Nipples", gpNipples, "", null, "", null, "", null, "", null, "Nevermind", growPlusCancel);
 			return(true);
 		}
 		
-		private function growPlusBalls():void {
+		private  growPlusBalls():void {
 			clearOutput();
 			game.player.slimeFeed();
 			outputText("You sink the needle deep into your " + game.player.sackDescript() + ".  It hurts like hell, but you push down the plunger and the pain vanishes as the needles contents flow into you.\n\n");
@@ -52,7 +52,7 @@ package classes.Items.Consumables
 			game.inventory.itemGoNext();
 		}
 
-		private function growPlusBreasts():void {
+		private  growPlusBreasts():void {
 			clearOutput();
 			game.player.slimeFeed();
 			outputText("You sink the needle into the flesh of your " + game.player.allBreastsDescript() + " injecting each with a portion of the needle.\n\n");
@@ -64,7 +64,7 @@ package classes.Items.Consumables
 			game.inventory.itemGoNext();
 		}
 
-		private function growPlusClit():void {
+		private  growPlusClit():void {
 			clearOutput();
 			game.player.slimeFeed();
 			outputText("You sink the needle into your clit, nearly crying with how much it hurts.  You push down the plunger and the pain vanishes as your clit starts to grow.\n\n");
@@ -74,7 +74,7 @@ package classes.Items.Consumables
 			game.inventory.itemGoNext();
 		}
 
-		private function growPlusCock():void {
+		private  growPlusCock():void {
 			clearOutput();
 			game.player.slimeFeed();
 			outputText("You sink the needle into the base of your " + game.player.multiCockDescriptLight() + ".  It hurts like hell, but as you depress the plunger, the pain vanishes, replaced by a tingling pleasure as the chemicals take effect.\n\n");
@@ -87,7 +87,7 @@ package classes.Items.Consumables
 			//MULTI
 			else {
 				outputText("Your " + game.player.multiCockDescriptLight() + " twitch and thicken, each member pouring out more than an inch of new length from your ");
-				for (var i:int = 0; i < game.player.cocks.length; i++) {
+				for (const i = 0; i < game.player.cocks.length; i++) {
 					game.player.increaseCock(i, 2);
 					game.player.cocks[i].cockLength += 1;
 					game.player.cocks[i].cockThickness += 0.5;
@@ -100,7 +100,7 @@ package classes.Items.Consumables
 			game.inventory.itemGoNext();
 		}
 
-		private function growPlusNipples():void {
+		private  growPlusNipples():void {
 			clearOutput();
 			game.player.slimeFeed();
 			outputText("You sink the needle into each of your " + game.player.nippleDescript(0) + "s in turn, dividing the fluid evenly between them.  Though each injection hurts, the pain is quickly washed away by the potent chemical cocktail.\n\n");
@@ -110,8 +110,8 @@ package classes.Items.Consumables
 			game.dynStats("lus", 15);
 			//NIPPLECUNTZZZ
 			if (!game.player.hasFuckableNipples() && Utils.rand(4) == 0) {
-				var nowFuckable:Boolean = false;
-				for (var x:int = 0; x < game.player.breastRows.length; x++) {
+				var nowFuckable:boolean = false;
+				for (const x = 0; x < game.player.breastRows.length; x++) {
 					if (!game.player.breastRows[x].fuckable && game.player.nippleLength >= 2) {
 						game.player.breastRows[x].fuckable = true;
 						nowFuckable = true;
@@ -123,10 +123,10 @@ package classes.Items.Consumables
 			game.inventory.itemGoNext();
 		}
 
-		private function growPlusCancel():void {
+		private  growPlusCancel():void {
 			clearOutput();
 			outputText("You put the vial away.\n\n");
 			game.inventory.returnItemToInventory(this);
 		}
 	}
-}
+

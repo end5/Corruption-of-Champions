@@ -1,13 +1,13 @@
-﻿//17 == EMBER
+//17 == EMBER
 //18 == PROPER BASILISKS (BENOIT ONLY)
 //19 == SATYR
 //20 == COTTON
 //21 == URTA
 //22 == SAND WITCH
 //23 == FROG BUTT EGG
-public function updatePregnancy():Boolean {
-	var displayedUpdate:Boolean = false;
-	var pregText:String = "";
+export function updatePregnancy():boolean {
+	var displayedUpdate:boolean = false;
+	var pregText:string = "";
 	if((player.pregnancyIncubation <= 0 && player.buttPregnancyIncubation <= 0) ||
 		(player.pregnancyType == 0 && player.buttPregnancyType == 0)) {
 		return false;
@@ -1889,8 +1889,8 @@ public function updatePregnancy():Boolean {
 	return displayedUpdate;
 }
 
-public function eggDescript(plural:Boolean = true):String {
-	var descript:String = "";
+export function eggDescript(plural:boolean = true):string {
+	var descript:string = "";
 	if(player.findStatusAffect(StatusAffects.Eggs) >= 0) {
 		descript += num2Text(player.statusAffectv3(StatusAffects.Eggs)) + " ";
 		//size descriptor

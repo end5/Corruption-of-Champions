@@ -1,15 +1,15 @@
-﻿package classes.Scenes.Areas.Forest
-{
-	import classes.*;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class Akbal extends Monster
+	 
+	 
+
+	export class Akbal extends Monster
 	{
 
-		override public function eAttack():void
+		 public  eAttack():void
 		{
 			//Chances to miss:
-			var damage:Number = 0;
+			var damage:number = 0;
 			//Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0) {
 				outputText(capitalA + short + " seems to have no problem guiding his attacks towards you, despite his blindness.\n", false);
@@ -69,18 +69,18 @@
 			game.combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.forest.akbalScene.akbalDefeated(hpVictory);
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.forest.akbalScene.akbalWon(hpVictory,pcCameWorms);
 			game.cleanupAfterCombat();
 		}
 		
-		public function akbalLustAttack():void
+		public  akbalLustAttack():void
 		{
 			//*Lust Attack - 
 			if (player.findStatusAffect(StatusAffects.Whispered) < 0)
@@ -100,12 +100,12 @@
 			game.combatRoundOver();
 		}
 		
-		public function akbalSpecial():void
+		public  akbalSpecial():void
 		{
 			//*Special Attack A - 
 			if (rand(2) == 0 && player.spe > 20)
 			{
-				var speedChange:Number = player.spe / 5 * -1;
+				var speedChange:number = player.spe / 5 * -1;
 				outputText("Akbal's eyes fill with light, and a strange sense of fear begins to paralyze your limbs.", false);
 				//(Speed decrease)
 				game.dynStats("spe", speedChange);
@@ -152,7 +152,7 @@
 		}
 		
 		//*Support ability - 
-		public function akbalHeal():void
+		public  akbalHeal():void
 		{
 			if (HPRatio() >= 1)
 				outputText("Akbal licks himself, ignoring you for now.", false);
@@ -163,7 +163,7 @@
 			game.combatRoundOver();
 		}
 
-		public function Akbal()
+		public  constructor()
 		{
 			trace("Akbal Constructor!");
 			this.a = "";
@@ -216,4 +216,3 @@
 
 	}
 
-}

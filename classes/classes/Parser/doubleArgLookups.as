@@ -1,42 +1,42 @@
-﻿
+
 		// provides rubiLookups and arianLookups
 		// note that these are only used in doubleArgLookups, not in Parser.as itself
 		//
 		// =!= NOTE: MUST BE IMPORTED BEFORE "./doubleArgLookups.as" =!=
 		// 
 		//Calls are now made through kGAMECLASS rather than thisPtr. This allows the compiler to detect if/when a function is inaccessible.
-		import classes.GlobalFlags.kGAMECLASS;
-		include "./npcLookups.as";
+		 
+		// include "./npcLookups.as";
 
 
 		// PC ASCII Aspect lookups
 
-		public var cockLookups:Object = // For subject: "cock"
+		export var cockLookups:Record<string, any> = // For subject: "cock"
 		{
-			"all"		: function(thisPtr:*):*{ return kGAMECLASS.player.multiCockDescriptLight(); },
-			"each"		: function(thisPtr:*):*{ return kGAMECLASS.player.sMultiCockDesc(); },
-			"one"		: function(thisPtr:*):*{ return kGAMECLASS.player.oMultiCockDesc(); },
-			"largest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex()); },
-			"biggest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex()); },
-			"biggest2"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex2()); },
-			"biggest3"  : function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex3()); },
-			"smallest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.smallestCockIndex()); },
-			"smallest2" : function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.smallestCockIndex2()); },
-			"longest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.longestCock()); },
-			"shortest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.shortestCockIndex()); }
+			"all"		: function(thisPtr:any):any{ return kGAMECLASS.player.multiCockDescriptLight(); },
+			"each"		: function(thisPtr:any):any{ return kGAMECLASS.player.sMultiCockDesc(); },
+			"one"		: function(thisPtr:any):any{ return kGAMECLASS.player.oMultiCockDesc(); },
+			"largest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex()); },
+			"biggest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex()); },
+			"biggest2"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex2()); },
+			"biggest3"  : function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.biggestCockIndex3()); },
+			"smallest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.smallestCockIndex()); },
+			"smallest2" : function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.smallestCockIndex2()); },
+			"longest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.longestCock()); },
+			"shortest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockDescript(kGAMECLASS.player.shortestCockIndex()); }
 		}
 
 
-		public var cockHeadLookups:Object = // For subject: "cockHead"
+		export var cockHeadLookups:Record<string, any> = // For subject: "cockHead"
 		{
-			"biggest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex()); },
-			"biggest2"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex2()); },
-			"biggest3"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex3()); },
-			"largest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex()); },
-			"smallest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.smallestCockIndex()); },
-			"smallest2"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.smallestCockIndex2()); },
-			"longest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.longestCock()); },			// the *head* of a cock has a length? Wut?
-			"shortest"	: function(thisPtr:*):*{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.shortestCockIndex()); }
+			"biggest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex()); },
+			"biggest2"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex2()); },
+			"biggest3"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex3()); },
+			"largest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.biggestCockIndex()); },
+			"smallest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.smallestCockIndex()); },
+			"smallest2"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.smallestCockIndex2()); },
+			"longest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.longestCock()); },			// the *head* of a cock has a length? Wut?
+			"shortest"	: function(thisPtr:any):any{ return kGAMECLASS.player.cockHead(kGAMECLASS.player.shortestCockIndex()); }
 		}
 
 
@@ -47,10 +47,10 @@
 		// like so: twoWordNumericTagsLookup["object"](Number("NUMERIC-attribute"))
 		//
 		// if attribute cannot be case to a number, the parser looks for "object" in twoWordTagsLookup.
-		public var twoWordNumericTagsLookup:Object =
+		export var twoWordNumericTagsLookup:Record<string, any> =
 		{
 				"cockfit":
-					function(thisPtr:*, aspect:*):*
+					function(thisPtr:any, aspect:any):any
 					{
 						if(!kGAMECLASS.player.hasCock()) return "<b>(Attempt to parse cock when none present.)</b>";
 						else
@@ -60,7 +60,7 @@
 						}
 					},
 				"cockfit2":
-					function(thisPtr:*, aspect:*):*
+					function(thisPtr:any, aspect:any):any
 					{
 						if(!kGAMECLASS.player.hasCock()) return "<b>(Attempt to parse cock when none present.)</b>";
 						else {
@@ -69,7 +69,7 @@
 						}
 					},
 				"cockheadfit":
-					function(thisPtr:*, aspect:*):*
+					function(thisPtr:any, aspect:any):any
 					{
 						if (!kGAMECLASS.player.hasCock())
 						{
@@ -81,7 +81,7 @@
 						}
 					},
 				"cockheadfit2":
-					function(thisPtr:*, aspect:*):*
+					function(thisPtr:any, aspect:any):any
 					{
 						if(!kGAMECLASS.player.hasCock()) return "<b>(Attempt to parse cockhead when none present.)</b>";
 						else {
@@ -90,7 +90,7 @@
 						}
 					},
 				"cock":
-					function(thisPtr:*, aspect:*):*
+					function(thisPtr:any, aspect:any):any
 					{
 						if(!kGAMECLASS.player.hasCock()) return "<b>(Attempt to parse cock when none present.)</b>";
 						else
@@ -100,12 +100,12 @@
 						}
 					},
 				"cockhead":
-					function(thisPtr:*, aspect:*):*
+					function(thisPtr:any, aspect:any):any
 					{
 						if(!kGAMECLASS.player.hasCock()) return "<b>(Attempt to parse cockHead when none present.)</b>";
 						else
 						{
-							var intAspect:int = int(aspect - 1);
+							var intAspect:number = int(aspect - 1);
 							if (intAspect >= 0 && intAspect < kGAMECLASS.player.cockTotal()) return kGAMECLASS.player.cockHead(intAspect);
 							else return "<b>(Attempt To Parse CockHeadDescript for Invalid Cock)</b>";
 						}
@@ -118,7 +118,7 @@
 		// if attribute cannot be cast to a number, the parser looks for "object" in twoWordTagsLookup,
 		// and then uses the corresponding object to determine the value of "attribute", by looking for
 		// "attribute" twoWordTagsLookup["object"]["attribute"]
-		public var twoWordTagsLookup:Object =
+		export var twoWordTagsLookup:Record<string, any> =
 		{
 			// NPCs:
 			"rubi"		: rubiLookups,

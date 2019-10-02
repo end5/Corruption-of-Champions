@@ -1,23 +1,23 @@
-﻿package classes.Scenes.Dungeons.DeepCave
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class ImpHorde extends Monster
+	 
+	 
+
+	export class ImpHorde extends Monster
 	{
 
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.impGangAI();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.impGangVICTORY();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nYour foes don't seem put off enough to leave...");
@@ -27,7 +27,7 @@
 			}
 		}
 
-		public function ImpHorde()
+		public  constructor()
 		{
 			trace("ImpHorde Constructor!");
 			this.a = "the ";
@@ -70,4 +70,3 @@
 
 	}
 
-}

@@ -1,14 +1,14 @@
-﻿package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.internals.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class Marble extends Monster
+	 
+	 
+	 
+
+	export class Marble extends Monster
 	{
-		private function marbleSpecialAttackOne():void {
+		private  marbleSpecialAttackOne():void {
 			//Special1: Heavy overhead swing, high chance of being avoided with evasion, does heavy damage if it hits.
-			var damage:Number = 0;
+			var damage:number = 0;
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0) {
 				outputText("Marble unwisely tries to make a massive swing while blinded, which you are easily able to avoid.", false);
@@ -39,9 +39,9 @@
 			statScreenRefresh();
 			combatRoundOver();
 		}
-		private function marbleSpecialAttackTwo():void {
+		private  marbleSpecialAttackTwo():void {
 			//Special2: Wide sweep; very high hit chance, does low damage.
-			var damage:Number = 0;
+			var damage:number = 0;
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0) {
 				outputText("Marble makes a wide sweeping attack with her hammer, which is difficult to avoid even from a blinded opponent.\n", false);
@@ -66,17 +66,17 @@
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.marbleScene.marbleFightWin();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.marbleScene.marbleFightLose();
 		}
 
-		public function Marble()
+		public  constructor()
 		{
 			trace("Marble Constructor!");
 			this.a = "";
@@ -114,4 +114,4 @@
 
 	}
 
-}
+

@@ -1,14 +1,14 @@
 /**
  * Created by aimozg on 04.01.14.
  */
-package classes.Scenes.Areas.Lake
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class FetishCultistScene extends AbstractLakeContent
+	 
+	 
+
+	export class FetishCultistScene extends AbstractLakeContent
 	{
-		public function FetishCultistScene()
+		public  constructor()
 		{
 		}
 
@@ -22,7 +22,7 @@ package classes.Scenes.Areas.Lake
 		 Loot: Could drop a random set of clothing or a costume on death.
 		 */
 
-		public function fetishCultistEncounter():void
+		public  fetishCultistEncounter():void
 		{
 			outputText("You see a largely human-looking young woman in the distance in a strange, whorish outfit, seemingly lost in prayers that sound like nonsense to you.  Finally noticing your presence, she confronts you with a lewd smile on her face.\n\nShe has clearly lost her grasp on sanity, and filled the void with pure perversion.", true);
 			startCombat(new FetishCultist());
@@ -30,14 +30,14 @@ package classes.Scenes.Areas.Lake
 			doNext(playerMenu);
 		}
 
-		public function cultistRapesYou():void
+		public  cultistRapesYou():void
 		{
 			monster.lust = 1;
 			monster.HP = 10;
-			var changed:Boolean = false;
-			var changedCock:Boolean = false;
-			var changedBoobs:Boolean = false;
-			var sexed:Boolean = false;
+			var changed:boolean = false;
+			var changedCock:boolean = false;
+			var changedBoobs:boolean = false;
+			var sexed:boolean = false;
 			outputText("The thoughts of fetishes have become so strong that they override everything else.  You see the cultist moving towards you, but you can't possibly fight any more.  She reaches out and touches you, and you fall to the ground as the multitudes of thoughts cascade into one.\n\n", false);
 			//ZOOKEEPER RAEPS.  WEIRDOZ
 			if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR || player.lowerBody == LOWER_BODY_TYPE_NAGA) {
@@ -383,7 +383,7 @@ package classes.Scenes.Areas.Lake
 			}
 		}
 
-		public function playerRapesCultist():void
+		public  playerRapesCultist():void
 		{
 			clearOutput();
 			//(nun worship version, this one looks like it will be a little shorter than the other one was, only two variations again)
@@ -463,8 +463,8 @@ package classes.Scenes.Areas.Lake
 				//increase PC's lust thanks to foreplay
 				dynStats("lus", 30);
 				//player chooses between; penetrate vagina, vibrator vagina, nevermind.  Options as appropriate.
-				var vibe:Function =null;
-				var fuckVag:Function =null;
+				var vibe:() => void =null;
+				var fuckVag:() => void =null;
 				if (player.hasVagina()) vibe = swimsuitVibrators;
 				if (player.hasCock()) fuckVag = plugSwimsuitVag;
 				simpleChoices("FuckHerVag", fuckVag, "Vibrator", vibe, "", null, "", null, "Leave", cleanupAfterCombat);
@@ -500,9 +500,9 @@ package classes.Scenes.Areas.Lake
 		}
 
 		//PC goes for the vagina
-		private function plugSwimsuitVag():void
+		private  plugSwimsuitVag():void
 		{
-			var x:Number = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			outputText("", true);
 			if (player.hasVagina()) outputText("You decline the vibrators; you'd much rather take her incredibly wet pussy.  ", false);
 			else outputText("You tell her you're gonna fuck her.  ", false);
@@ -534,7 +534,7 @@ package classes.Scenes.Areas.Lake
 		}
 
 		//PC goes for the vagina vibrators
-		private function swimsuitVibrators():void
+		private  swimsuitVibrators():void
 		{
 			outputText("", true);
 			outputText("You suggest that you're interested in trying the vaginal vibrators she offered.  The cultist nods, and turns to face you holding two surprisingly large toys in her hands.  They're shaped like a long tube, with a small arm on the side near the handle that points towards the end.  You aren't sure where they came from, but you'd guess she used the same magic that she uses to shift her clothing to get them.\n\n", false);
@@ -594,7 +594,7 @@ package classes.Scenes.Areas.Lake
 			}
 		}
 
-		private function cultistBadEnd():void
+		private  cultistBadEnd():void
 		{
 			//This ending is caused from having too low of inte when losing to the cultist (say under 15) or it could be after losing too many times to them.  You chose which you would prefer.
 			//(after being raped, do not show regular recovery message, skip here)
@@ -602,9 +602,9 @@ package classes.Scenes.Areas.Lake
 			doNext(cultistBadEnd2);
 		}
 
-		internal function cultistBadEnd2():void
+		public  cultistBadEnd2():void
 		{
-			var genderTag:String = "";
+			var genderTag:string = "";
 			outputText("On a hill sits a large cathedral overlooking a river that feeds into a massive lake.  It is a surprisingly grand structure in a land almost devoid of any signs of civilization in any direction.  The design is quite clear; its entrance lined with statues of lewd naked figures and its windows are made of stain glass depicting acts of sexuality.  Even without hearing the sounds of ecstasy that usually emanate from inside, it is quite clear this is a place of debauchery.\n\n", true);
 			outputText("Within, a ", false);
 			if (player.gender == 1) genderTag = "man";
@@ -618,7 +618,7 @@ package classes.Scenes.Areas.Lake
 			getGame().gameOver();
 		}
 
-		public function fetishCultistHasAMilkFetish():void
+		public  fetishCultistHasAMilkFetish():void
 		{
 			outputText("", true);
 			outputText("You remove your " + player.armorName + ", standing naked in front of the beaten fetish-girl with your lactating " + breastDescript(0) + " dripping milk. You pick the cultist up and sit down on the ground with her resting on your lap, her soft warm ass up against your thighs. You hold the nipple up to her mouth; she suckles on it without the slightest sign of rebellion.\n\n", false);
@@ -680,4 +680,4 @@ package classes.Scenes.Areas.Lake
 			cleanupAfterCombat();
 		}
 	}
-}
+

@@ -1,21 +1,21 @@
-package classes {
+  
 	
-	import classes.*;
-	import classes.GlobalFlags.*;
+	 
+	 
 	
-	public class PlayerEvents extends BaseContent implements TimeAwareInterface {
+	export class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		//Handles all timeChange events for the player. Needed because player is not unique.
 		
-		public function PlayerEvents():void {
+		public  constructor():void {
 			CoC.timeAwareClassAdd(this);
 		}
 		
-		private var checkedTurkey:int; //Make sure we test each of these events just once in timeChangeLarge
-		private var checkedDream:int;
+		private  checkedTurkey:number; //Make sure we test each of these events just once in timeChangeLarge
+		private  checkedDream:number;
 		
 		//Implementation of TimeAwareInterface
-		public function timeChange():Boolean {
-			var needNext:Boolean = false;
+		public  timeChange():boolean {
+			var needNext:boolean = false;
 			checkedTurkey = 0;
 			checkedDream = 0;
 			if (player.cumMultiplier > 19999) player.cumMultiplier = 19999;
@@ -129,7 +129,7 @@ package classes {
 				needNext = true;
 			}		
 			if (player.findPerk(PerkLib.Androgyny) < 0) { //Fix femininity ratings if out of whack!
-				var textHolder:String = player.fixFemininity();
+				var textHolder:string = player.fixFemininity();
 				if (textHolder != "") {
 					outputText(textHolder, false);
 					needNext = true;
@@ -196,7 +196,7 @@ package classes {
 					needNext = true;
 				}
 				else { //Update stuff!
-					var prevEggs:int = player.eggs();
+					var prevEggs:number = player.eggs();
 					if (prevEggs < 10) {
 						player.addEggs(2);
 					}
@@ -740,7 +740,7 @@ package classes {
 			return needNext;
 		}
 		
-		public function timeChangeLarge():Boolean {
+		public  timeChangeLarge():boolean {
 			if (rand(4) == 0 && getGame().isHolidays() && player.gender > 0 && getGame().model.time.hours == 6 && flags[kFLAGS.XMAS_CHICKEN_YEAR] < getGame().date.fullYear) {
 				getGame().getAChristmasChicken();
 				return true;
@@ -800,7 +800,7 @@ package classes {
 					//Hey whoever, maybe you write them? -Z
 					return true;
 				}
-				var ceraph:int; //Ceraph's dreams - overlaps normal night-time dreams.
+				var ceraph:number; //Ceraph's dreams - overlaps normal night-time dreams.
 				switch (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00219] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00220]) {
 					case  0: ceraph =  0; break; //If you've given her no body parts then Ceraph will not cause any dreams
 					case  1: ceraph = 10; break; //Once every 10 days if 1, once every 7 days if 2, once every 5 days if 3
@@ -844,4 +844,4 @@ package classes {
 		}
 		//End of Interface Implementation
 	}
-}
+

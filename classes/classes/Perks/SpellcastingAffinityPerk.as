@@ -1,22 +1,22 @@
 /**
  * Created by aimozg on 27.01.14.
  */
-package classes.Perks
-{
-	import classes.PerkClass;
-	import classes.PerkType;
+ 
 
-	public class SpellcastingAffinityPerk extends PerkType
+	 
+	 
+
+	export class SpellcastingAffinityPerk extends PerkType
 	{
 
-		override public function desc(params:PerkClass = null):String
+		 public  desc(params:PerkClass = null):string
 		{
 			return "Reduces spell costs by " + params.value1 + "%.";
 		}
 
-		public function SpellcastingAffinityPerk()
+		public  constructor()
 		{
 			super("Spellcasting Affinity","Spellcasting Affinity", "Reduces spell costs.");
 		}
 	}
-}
+

@@ -1,20 +1,20 @@
 /**
  * Created by aimozg on 10.01.14.
  */
-package classes.Items
-{
-	import classes.ItemType;
-	import classes.PerkLib;
-	import classes.Player;
+ 
 
-	public class Armor extends Useable //Equipable
+	 
+	 
+	 
+
+	export class Armor extends Useable //Equipable
 	{
-		private var _def:Number;
-		private var _perk:String;
-		private var _name:String;
-		private var _supportsBulge:Boolean;
+		private  _def:number;
+		private  _perk:string;
+		private  _name:string;
+		private  _supportsBulge:boolean;
 		
-		public function Armor(id:String, shortName:String, name:String, longName:String, def:Number, value:Number = 0, description:String = null, perk:String = "", supportsBulge:Boolean = false) {
+		public  constructor(id:string, shortName:string, name:string, longName:string, def:number, value:number = 0, description:string = null, perk:string = "", supportsBulge:boolean = false) {
 			super(id, shortName, longName, value, description);
 			this._name = name;
 			this._def = def;
@@ -22,30 +22,30 @@ package classes.Items
 			_supportsBulge = supportsBulge;
 		}
 		
-		public function get def():Number { return _def; }
+		public  get def():number { return _def; }
 		
-		public function get perk():String { return _perk; }
+		public  get perk():string { return _perk; }
 		
-		public function get name():String { return _name; }
+		public  get name():string { return _name; }
 		
-		public function get supportsBulge():Boolean { return _supportsBulge && game.player.modArmorName == ""; }
+		public  get supportsBulge():boolean { return _supportsBulge && game.player.modArmorName == ""; }
 			//For most clothes if the modArmorName is set then it's Exgartuan's doing. The comfortable clothes are the exception, they override this function.
 		
-		override public function useText():void {
+		 public  useText():void {
 			outputText("You equip " + longName + ".  ");
 		}
 		
-		public function playerEquip():Armor { //This item is being equipped by the player. Add any perks, etc. - This function should only handle mechanics, not text output
+		public  playerEquip():Armor { //This item is being equipped by the player. Add any perks, etc. - This function should only handle mechanics, not text output
 			return this;
 		}
 		
-		public function playerRemove():Armor { //This item is being removed by the player. Remove any perks, etc. - This function should only handle mechanics, not text output
+		public  playerRemove():Armor { //This item is being removed by the player. Remove any perks, etc. - This function should only handle mechanics, not text output
 			while (game.player.findPerk(PerkLib.BulgeArmor) >= 0) game.player.removePerk(PerkLib.BulgeArmor); //TODO remove this Exgartuan hack
 			if (game.player.modArmorName.length > 0) game.player.modArmorName = "";
 			return this;
 		}
 		
-		public function removeText():void {} //Produces any text seen when removing the armor normally
+		public  removeText():void {} //Produces any text seen when removing the armor normally
 		
 /*
 		override protected function equip(player:Player, returnOldItem:Boolean,output:Boolean):void
@@ -78,4 +78,4 @@ package classes.Items
 		}
 */
 	}
-}
+

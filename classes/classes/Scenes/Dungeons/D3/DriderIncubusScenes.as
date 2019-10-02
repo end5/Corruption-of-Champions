@@ -1,21 +1,21 @@
-package classes.Scenes.Dungeons.D3
-{
-	import classes.BaseContent;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Appearance;
-	import classes.Items.WeaponLib;
-	import classes.StatusAffects;
-	import classes.PerkLib;
-	import classes.PregnancyStore;
+ 
 
-	public class DriderIncubusScenes extends BaseContent
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	export class DriderIncubusScenes extends BaseContent
 	{
-		public function DriderIncubusScenes()
+		public  constructor()
 		{
 
 		}
 
-		public function encounterDriderIncbutt():void
+		public  encounterDriderIncbutt():void
 		{
 			clearOutput();
 			outputText("The door swings freely from the slightest touch, allowing you to push the well-worked portal open with ease. The view is astonishing. An open chamber big enough to house your entire village stretches away, filled with cavorting, glistening slaves of all shapes and races, locked in displays of unending, licentious delights. Lethice’s throne rises above it all, located at the back end of the room - the peak of this plane’s perversion. The corrupt queen hasn’t noticed you yet, but an eight-legged spider-man has, turning from a captive bee-girl with cruel pleasure in his eyes.");
@@ -26,7 +26,7 @@ package classes.Scenes.Dungeons.D3
 			startCombat(new DriderIncubus());
 		}
 
-		public function spooderbuttGetsANewCockSleeve(hpVictory:Boolean, pcCameWorms:Boolean):void
+		public  spooderbuttGetsANewCockSleeve(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			clearOutput();
 			
@@ -66,7 +66,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", spooderbuttGetsANewCockSleeveII);
 		}
 
-		public function spooderbuttGetsANewCockSleeveII():void
+		public  spooderbuttGetsANewCockSleeveII():void
 		{
 			clearOutput();
 
@@ -82,7 +82,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", spooderbuttGetsANewCockSleeveIII);
 		}
 
-		public function spooderbuttGetsANewCockSleeveIII():void
+		public  spooderbuttGetsANewCockSleeveIII():void
 		{
 			clearOutput();
 
@@ -113,7 +113,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", spooderbuttGetsANewCockSleeveIV);
 		}
 
-		public function spooderbuttGetsANewCockSleeveIV():void
+		public  spooderbuttGetsANewCockSleeveIV():void
 		{
 			clearOutput();
 
@@ -172,7 +172,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", spooderbuttGetsANewCockSleeveV);
 		}
 
-		public function spooderbuttGetsANewCockSleeveV():void
+		public  spooderbuttGetsANewCockSleeveV():void
 		{
 			clearOutput();
 
@@ -183,7 +183,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", spooderbuttGetsANewCockSleeveVI);
 		}
 
-		public function spooderbuttGetsANewCockSleeveVI():void
+		public  spooderbuttGetsANewCockSleeveVI():void
 		{
 			clearOutput();
 
@@ -195,7 +195,7 @@ package classes.Scenes.Dungeons.D3
 			getGame().gameOver();
 		}
 
-		public function beatTheSpooderbutt(hpVictory:Boolean):void
+		public  beatTheSpooderbutt(hpVictory:boolean):void
 		{
 			flags[kFLAGS.DRIDERINCUBUS_DEFEATED] = 1;
 
@@ -243,10 +243,10 @@ package classes.Scenes.Dungeons.D3
 			driderDefeatMenu();
 		}
 
-		public function driderDefeatMenu():void
+		public  driderDefeatMenu():void
 		{
-			var doneDriderbus:Boolean = false;
-			var doneGoblin:Boolean = false;
+			var doneDriderbus:boolean = false;
+			var doneGoblin:boolean = false;
 			
 			menu();
 			if (flags[kFLAGS.DRIDERINCUBUS_KILLED] != 1 && flags[kFLAGS.DRIDERINCUBUS_FUCKED] != 1)
@@ -286,13 +286,13 @@ package classes.Scenes.Dungeons.D3
 			if (doneDriderbus && doneGoblin) afterDriderbuttFight();
 		}
 
-		public function afterDriderbuttFight():void
+		public  afterDriderbuttFight():void
 		{
 			
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 
-		public function killDrider():void
+		public  killDrider():void
 		{
 			clearOutput();
 			outputText("You laugh at Lethice and the goblin. <i>“This is all the reward I need.”</i> You press your");
@@ -305,7 +305,7 @@ package classes.Scenes.Dungeons.D3
 			driderDefeatMenu();
 		}
 
-		public function fuckMitzi():void
+		public  fuckMitzi():void
 		{
 			flags[kFLAGS.MITZI_FUCKED] = 1;
 			clearOutput();
@@ -389,7 +389,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "Next", driderDefeatMenu);
 		}
 
-		public function recruitMitzi():void
+		public  recruitMitzi():void
 		{
 			clearOutput();
 			outputText("You give Mitzi a friendly pat once she’s ready to go and tell her to wait for you outside.");
@@ -402,7 +402,7 @@ package classes.Scenes.Dungeons.D3
 			driderDefeatMenu();
 		}
 
-		public function mitziEatsPussy():void
+		public  mitziEatsPussy():void
 		{
 			clearOutput();
 
@@ -436,7 +436,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", mitziEatsPussyII);
 		}
 
-		public function mitziEatsPussyII():void
+		public  mitziEatsPussyII():void
 		{
 			clearOutput();
 			outputText("When your vision clears, Mitzi is sitting on your lap and gently massaging your [chest]. Only a few seconds have passed, but the nearby demons seem closer than you remember. You push the slut off and rise up onto your [feet], well and truly sated.");
@@ -448,7 +448,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "Next", driderDefeatMenu);
 		}
 
-		public function titfuckMitzi():void
+		public  titfuckMitzi():void
 		{
 			clearOutput();
 
@@ -464,7 +464,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "Slow", titfuckMitziSlow);
 		}
 
-		public function titfuckMitziSlow():void
+		public  titfuckMitziSlow():void
 		{
 			clearOutput();
 
@@ -555,7 +555,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", titfuckMitziSlowII);
 		}
 
-		public function titfuckMitziSlowII():void
+		public  titfuckMitziSlowII():void
 		{
 			clearOutput();
 
@@ -568,7 +568,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "Next", driderDefeatMenu);
 		}
 
-		public function titfuckMitziQuick():void
+		public  titfuckMitziQuick():void
 		{
 			clearOutput();
 
@@ -617,7 +617,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(1, "Next", driderDefeatMenu);
 		}
 
-		public function rideDrider():void
+		public  rideDrider():void
 		{
 			clearOutput();
 
@@ -638,7 +638,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(2, "Nevermind", driderDefeatMenu);
 		}
 
-		public function rideDriderToGoblin():void
+		public  rideDriderToGoblin():void
 		{
 			clearOutput();
 
@@ -655,7 +655,7 @@ package classes.Scenes.Dungeons.D3
 			if (player.vaginas.length > 0) addButton(7, "Mitzi Licks", mitziEatsPussy);
 		}
 
-		public function actuallyRideDriderDick():void
+		public  actuallyRideDriderDick():void
 		{
 			clearOutput();
 
@@ -749,7 +749,7 @@ package classes.Scenes.Dungeons.D3
 			driderDefeatMenu();
 		}
 	
-		public function buttfuckDrider():void
+		public  buttfuckDrider():void
 		{
 			clearOutput();
 			flags[kFLAGS.DRIDERINCUBUS_FUCKED] = 1;
@@ -817,4 +817,3 @@ package classes.Scenes.Dungeons.D3
 			driderDefeatMenu();
 		}
 	}
-}

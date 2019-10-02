@@ -1,21 +1,21 @@
-﻿/**
+/**
  * Created by aimozg on 05.01.14.
  */
-package classes.Scenes
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Explore.ExploreDebug;
-	import classes.Scenes.Explore.Giacomo;
-	import classes.Scenes.Monsters.*;
+ 
 
-	public class Exploration extends BaseContent
+	 
+	 
+	 
+	 
+	 
+	 
+
+	export class Exploration extends BaseContent
 	{
-		public var exploreDebug:ExploreDebug = new ExploreDebug();
-		public var giacomo:Giacomo = new Giacomo();
+		public  exploreDebug:ExploreDebug = new ExploreDebug();
+		public  giacomo:Giacomo = new Giacomo();
 
-		public function Exploration()
+		public  constructor()
 		{
 		}
 
@@ -23,7 +23,7 @@ package classes.Scenes
 		//const HAS_SEEN_MINO_AND_COWGIRL:int = 892;
 		//const EXPLORATION_PAGE:int = 1015;
 		//const BOG_EXPLORED:int = 1016;
-		public function doExplore():void
+		public  doExplore():void
 		{
 			if (player.explored == 0) {
 				outputText("You tentatively step away from your campsite, alert and scanning the ground and sky for danger.  You walk for the better part of an hour, marking the rocks you pass for a return trip to your camp.  It worries you that the portal has an opening on this side, and it was totally unguarded...\n\n...Wait a second, why is your campsite in front of you? The portal's glow is clearly visible from inside the tall rock formation.   Looking carefully you see your footprints leaving the opposite side of your camp, then disappearing.  You look back the way you came and see your markings vanish before your eyes.  The implications boggle your mind as you do your best to mull over them.  Distance, direction, and geography seem to have little meaning here, yet your campsite remains exactly as you left it.  A few things click into place as you realize you found your way back just as you were mentally picturing the portal!  Perhaps memory influences travel here, just like time, distance, and speed would in the real world!\n\nThis won't help at all with finding new places, but at least you can get back to camp quickly.  You are determined to stay focused the next time you explore and learn how to traverse this gods-forsaken realm.", true);
@@ -53,7 +53,7 @@ package classes.Scenes
 			addButton(9, "Back", playerMenu);
 		}
 
-		private function explorePageII():void
+		private  explorePageII():void
 		{
 			flags[kFLAGS.EXPLORATION_PAGE] = 2;
 			menu();
@@ -64,7 +64,7 @@ package classes.Scenes
 			addButton(9, "Back", playerMenu);
 		}
 
-		private function goBackToPageI():void
+		private  goBackToPageI():void
 		{
 			flags[kFLAGS.EXPLORATION_PAGE] = 1;
 			doExplore();
@@ -72,7 +72,7 @@ package classes.Scenes
 
 
 		//Try to find a new location - called from doExplore once the first location is found
-		public function tryDiscover():void
+		public  tryDiscover():void
 		{
 
 			// kGAMECLASS.goblinAssassinScene.goblinAssassinEncounter();
@@ -128,7 +128,7 @@ package classes.Scenes
 					return;
 				}
 				//Used for chosing 'repeat' encounters.
-				var choosey:Number = rand(6);
+				var choosey:number = rand(6);
 				//2 (gargoyle) is never chosen once cathedral is discovered.
 				if(choosey == 2 && flags[kFLAGS.FOUND_CATHEDRAL] == 1)
 				{
@@ -155,7 +155,7 @@ package classes.Scenes
 				//Monster - 50/50 imp/gob split.
 				else {
 					player.explored++;
-					var impGob:Number = 5;
+					var impGob:number = 5;
 					//Imptacular Encounter
 					if (rand(10) < impGob) {
 						if (player.level >= 8 && rand(2) == 0) {
@@ -201,7 +201,7 @@ package classes.Scenes
 		}
 
 
-		public function debugOptions():void
+		public  debugOptions():void
 		{
 			inventory.takeItem(consumables.W_FRUIT, playerMenu);
 		}
@@ -210,10 +210,10 @@ package classes.Scenes
 //[DESERT]
 //[RANDOM SCENE IF CHARACTER HAS AT LEAST ONE COCK LARGER THAN THEIR HEIGHT,
 //AND THE TOTAL COMBINED WIDTH OF ALL THEIR COCKS IS TWELVE INCHES OR GREATER]
-		public function bigJunkDesertScene():void
+		public  bigJunkDesertScene():void
 		{
 			outputText("", true);
-			var x:Number = player.longestCock();
+			var x:number = player.longestCock();
 			//PARAGRAPH 1
 			outputText("Walking along the sandy dunes of the desert you find yourself increasingly impeded by the bulk of your " + cockDescript(x) + " dragging along the sandscape behind you.  The incredibly hot surface of the desert causes your loins to sweat heavily and fills them with relentless heat.", false);
 
@@ -273,4 +273,4 @@ package classes.Scenes
 
 
 	}
-}
+

@@ -1,25 +1,25 @@
-﻿package classes 
-{
+  
+
 	/**
 	 * ...
 	 * @author Fake-Name
 	 */
-	public class CoC_Settings
+	export class CoC_Settings
 	{
 
 
-		public static var debugBuild:Boolean = true;
+		public static  debugBuild:boolean = true;
 		
 		// Horrible static abuse FTW
-		public static var haltOnErrors:Boolean = false;
-		public static var buttonEvents:Array = [];
-		private static const bufferSize:int = 50;
+		public static  haltOnErrors:boolean = false;
+		public static  buttonEvents:any[] = [];
+		private static  bufferSize:number = 50;
 
 		/**
 		 * trace("ERROR "+description);
 		 * If haltOnErrors=true, throws Error
 		 */
-		public static function error(description:String=""):void {
+		public static  error(description:string=""):void {
 			trace("ERROR "+description);
 			if (haltOnErrors) throw Error(description);
 		}
@@ -28,11 +28,11 @@
 		 * trace("ERROR Abstract method call: "+clazz+"."+method+"(). "+description);
 		 * If haltOnErrors=true, throws Error
 		 */
-		public static function errorAMC(clazz:String,method:String,description:String=""):void{
+		public static  errorAMC(clazz:string,method:string,description:string=""):void{
 			error("Abstract method call: "+clazz+"."+method+"(). "+description);
 		}
 		
-		public static function appendButtonEvent(inString:String):void
+		public static  appendButtonEvent(inString:string):void
 		{
 			
 			CoC_Settings.buttonEvents.unshift(inString);  // Push the new item onto the head of the array
@@ -42,10 +42,10 @@
 				CoC_Settings.buttonEvents.pop();
 			}
 		}
-		public static function getButtonEvents():String
+		public static  getButtonEvents():string
 		{
-			var retStr:String = "";
-			for (var x:String in CoC_Settings.buttonEvents)
+			var retStr:string = "";
+			for (const x in CoC_Settings.buttonEvents)
 			{
 				retStr += CoC_Settings.buttonEvents[x] + "\n";
 				trace("x = ", x, "Array Val = ", CoC_Settings.buttonEvents[x]);
@@ -53,11 +53,10 @@
 			return retStr;
 		}
 		
-		public function CoC_Settings()
+		public  constructor()
 		{
 
 		}
 		
 	}
 
-}

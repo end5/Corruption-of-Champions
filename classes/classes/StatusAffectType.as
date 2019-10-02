@@ -1,34 +1,34 @@
 /**
  * Created by aimozg on 31.01.14.
  */
-package classes
-{
-	import flash.utils.Dictionary;
+ 
 
-	public class StatusAffectType
+	 
+
+	export class StatusAffectType
 	{
-			private static var STATUSAFFECT_LIBRARY:Dictionary = new Dictionary();
+			private static  STATUSAFFECT_LIBRARY:Dictionary = new Dictionary();
 
-			public static function lookupStatusAffect(id:String):StatusAffectType{
+			public static  lookupStatusAffect(id:string):StatusAffectType{
 				return STATUSAFFECT_LIBRARY[id];
 			}
 
-			public static function getStatusAffectLibrary():Dictionary
+			public static  getStatusAffectLibrary():Dictionary
 			{
 				return STATUSAFFECT_LIBRARY;
 			}
 
-			private var _id:String;
+			private  _id:string;
 
 			/**
 			 * Unique perk id, should be kept in future game versions
 			 */
-			public function get id():String
+			public  get id():string
 			{
 				return _id;
 			}
 
-			public function StatusAffectType(id:String)
+			public  constructor(id:string)
 			{
 				this._id = id;
 				if (STATUSAFFECT_LIBRARY[id] != null) {
@@ -38,9 +38,9 @@ package classes
 			}
 
 
-			public function toString():String
+			public  toString():string
 			{
 				return "\""+_id+"\"";
 			}
 		}
-}
+

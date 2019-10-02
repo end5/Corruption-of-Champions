@@ -1,26 +1,26 @@
 /**
  * Created by aimozg on 10.01.14.
  */
-package classes.Items.Consumables
-{
-	import classes.Items.Consumable;
-	import classes.Player;
+ 
 
-	public class SimpleConsumable extends Consumable {
-		private var effect:Function;
+	 
+	 
+
+	export class SimpleConsumable extends Consumable {
+		private  effect:() => void;
 		
 		/**
 		 * @param effect Function(player:Player)
 		 */
-		public function SimpleConsumable(id:String, shortName:String, longName:String, effect:Function, value:Number = 0, description:String = null) {
+		public  constructor(id:string, shortName:string, longName:string, effect:() => void, value:number = 0, description:string = null) {
 			super(id, shortName, longName, value, description);
 			this.effect = effect;
 		}
 		
-		override public function useItem():Boolean {
+		 public  useItem():boolean {
 			clearOutput();
 			effect(game.player);
 			return(false); //Any normal consumable does not have a sub-menu. Return false so that the inventory runs the itemDoNext function after useItem.
 		}
 	}
-}
+

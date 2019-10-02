@@ -1,18 +1,18 @@
-package classes.Scenes.Dungeons.D3
-{
-	import classes.Monster;
-	import classes.Appearance;
-	import classes.StatusAffects;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.CockTypesEnum;
-	import classes.PerkLib;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.internals.ChainedDrop;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class MinotaurKing extends Monster
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	export class MinotaurKing extends Monster
 	{
-		public function MinotaurKing()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "minotaur king";
@@ -58,7 +58,7 @@ package classes.Scenes.Dungeons.D3
 			_lastSpellCastCount = flags[kFLAGS.SPELLS_CAST];
 		}
 
-		override public function get long():String
+		 public  get long():string
 		{
 			if (!_orgasms == 0)
 			{
@@ -66,7 +66,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				var str:String = "Still standing between you and the Demon Queen, the Minotaur King is breathing heavily. His cock is slathered with the residue of his own potent orgasm. His immense, 14 foot tall form hunches slightly as he stares at you, one hand still clutching to his axe. Driving him back to his peak would undoubtedly push him even beyond his considerable endurance. The only problem is that alluring <i>aroma</i> that surrounds him, suffusing the air with the scent of sweaty bedroom romps and sizzling pleasure. You better finish him quick.";
+				var str:string = "Still standing between you and the Demon Queen, the Minotaur King is breathing heavily. His cock is slathered with the residue of his own potent orgasm. His immense, 14 foot tall form hunches slightly as he stares at you, one hand still clutching to his axe. Driving him back to his peak would undoubtedly push him even beyond his considerable endurance. The only problem is that alluring <i>aroma</i> that surrounds him, suffusing the air with the scent of sweaty bedroom romps and sizzling pleasure. You better finish him quick.";
 				
 				// I have no idea what this variation is keyed from 9999
 				if (lust < 40)
@@ -93,7 +93,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (_orgasms == 0 && !hpVictory)
 			{
@@ -112,18 +112,18 @@ package classes.Scenes.Dungeons.D3
 			game.d3.minotaurKing.theKingIsDeadLongLiveTheKing(hpVictory);
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.d3.minotaurKing.hailToTheKingBaby(hpVictory, pcCameWorms);
 		}
 
-		private var _milkDrinks:int = 0;
-		private var _orgasms:int = 0;
-		public function get orgasms():int { return _orgasms; }
-		private var _lastRoundStun:Boolean = false;
-		private var _lastSpellCastCount:int;
+		private  _milkDrinks:number = 0;
+		private  _orgasms:number = 0;
+		public  get orgasms():number { return _orgasms; }
+		private  _lastRoundStun:boolean = false;
+		private  _lastSpellCastCount:number;
 		
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			// Attempt dickslap if the player was stunned in the last round
 			if (_lastRoundStun)
@@ -144,18 +144,18 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				var atks:Array = [backhand, battleaxe, minoPheromones];
+				var atks:any[] = [backhand, battleaxe, minoPheromones];
 				atks[rand(atks.length)]();
 			}
 
 			combatRoundOver();
 		}
 
-		private function backhand():void
+		private  backhand():void
 		{
 			outputText("Feinting with his axe, the Minotaur King flings a powerful backhand in your direction.");
 
-			var damage:Number = (str + weaponAttack) - rand(player.tou);
+			var damage:number = (str + weaponAttack) - rand(player.tou);
 			
 			if (damage <= 0 || combatMiss() || combatFlexibility())
 			{
@@ -176,11 +176,11 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function headbutt():void
+		private  headbutt():void
 		{
 			outputText("<i>“Settle down,”</i> the brute growls, moments before attempting to slam his forehead into your own.");
 
-			var damage:Number = ((str + weaponAttack) / 2) - rand(player.tou);
+			var damage:number = ((str + weaponAttack) / 2) - rand(player.tou);
 
 			if (damage <= 0 || combatMiss() || combatFlexibility())
 			{
@@ -208,7 +208,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		private function dickslap():void
+		private  dickslap():void
 		{
 			//Used after stunning PC.
 			outputText("Before you can completely regain your wits, the brute is on you, easily holding your hand in one hand while he none-too-gently smacks his cock into your face, dragging his musky member back and forth across your cheeks before finally breaking contact.");
@@ -223,10 +223,10 @@ package classes.Scenes.Dungeons.D3
 			game.dynStats("lus", 15 + player.lib/20);
 		}
 
-		private function battleaxe():void
+		private  battleaxe():void
 		{
 			outputText("The Minotaur King carries his axe as if it weighed no more than a feather, brandishing it back and forth with such casual movements that you barely register his swing");
-			var damage:Number = (str + weaponAttack) - rand(player.tou);
+			var damage:number = (str + weaponAttack) - rand(player.tou);
 			if (damage <= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect())
 			{
 				outputText(" in time to avoid it.");
@@ -238,7 +238,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		private function hpRestore():void
+		private  hpRestore():void
 		{
 			HP = eMaxHP();
 			lustVuln += 0.15;
@@ -250,7 +250,7 @@ package classes.Scenes.Dungeons.D3
 		}
 		
 		// copypasta I dun even give a fuck ¯\_(ツ)_/¯
-		private function minoPheromones():void 
+		private  minoPheromones():void 
 		{
 			outputText("The minotaur smiles at you and lifts his loincloth, flicking it at you.  Thick ropes of pre-cum fly through the air, ", false);
 			//sometimes get hit with the pre for stronger effect!
@@ -275,7 +275,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		public function lustDump():void
+		public  lustDump():void
 		{
 			_orgasms++;
 
@@ -288,11 +288,11 @@ package classes.Scenes.Dungeons.D3
 			lust = 0;
 		}
 
-		private function cowslutTeaseCocks():void
+		private  cowslutTeaseCocks():void
 		{
 			if (player.hasCock())
 			{
-				var sel:int = rand(3);
+				var sel:number = rand(3);
 				if (sel == 0)
 				{
 					outputText("Excellia crawls over to you while you’re distracted with her lord and wraps her arms around your waist, crushing her milk-swollen tits against your crotch. You can feel their warmth through your [armor], promising nothing but bliss in their embrace. When you push her away, you become aware of the rivers of milk she poured down your");
@@ -313,10 +313,9 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		override protected function handleStun():Boolean
+		 protected  handleStun():boolean
 		{
 			outputText("It only takes the muscled monarch a moment to recover from the stun. It looks like he’s too much of a juggernaught to be stopped by those kinds of hits.");
 			return true;
 		}
 	}
-}

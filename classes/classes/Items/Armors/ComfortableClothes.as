@@ -1,19 +1,19 @@
 /**
  * Created by aimozg on 18.01.14.
  */
-package classes.Items.Armors
-{
-	import classes.ItemType;
-	import classes.Items.Armor;
-	import classes.Player;
+ 
 
-	public class ComfortableClothes extends Armor {
+	 
+	 
+	 
+
+	export class ComfortableClothes extends Armor {
 		
-		public function ComfortableClothes() {
+		public  constructor() {
 			super("C.Cloth", "C.Cloth", "comfortable clothes", "a set of comfortable clothes", 0, 0, "These loose fitting and comfortable clothes allow you to move freely while protecting you from the elements.  (DEF: +0) (Cost: 0)", "Light", true);
 		}
 		
-		override public function get supportsBulge():Boolean { return game.player.modArmorName != "crotch-hugging clothes"; }
+		 public  get supportsBulge():boolean { return game.player.modArmorName != "crotch-hugging clothes"; }
 			//Comfortable clothes can't be changed by Exgartuan if he's already changed them
 		
 /*
@@ -26,4 +26,4 @@ package classes.Items.Armors
 		}
 */
 	}
-}
+

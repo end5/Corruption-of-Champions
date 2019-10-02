@@ -1,18 +1,18 @@
-package classes.Scenes.Areas.Swamp
-{
-	import classes.*;
-	import classes.internals.*;
+ 
+
+	 
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class CorruptedDrider extends AbstractSpiderMorph
+	export class CorruptedDrider extends AbstractSpiderMorph
 	{
 
 		//Drider kiss!
-		public function driderKiss():void {
-			var temp:int;
+		public  driderKiss():void {
+			var temp:number;
 			outputText("The corrupted drider closes in on your web-bound form, cooing happily at you while you struggle with the sticky fibers.\n\n", false);
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
@@ -95,7 +95,7 @@ package classes.Scenes.Areas.Swamp
 			combatRoundOver();
 		}
 		
-		public function driderMasturbate():void {
+		public  driderMasturbate():void {
 			//-Masturbate - (Lowers lust by 50, raises PC lust)
 			lust -= 30;
 			game.dynStats("lus", (10+player.lib/20));
@@ -108,7 +108,7 @@ package classes.Scenes.Areas.Swamp
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.spriteSelect(77);
 			if (lust > 70 && rand(4) == 0) driderMasturbate();
@@ -128,12 +128,12 @@ package classes.Scenes.Areas.Swamp
 			else driderKiss();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.swamp.corruptedDriderScene.defeatDriderIntro();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nThe drider licks her lips in anticipation...");
@@ -143,13 +143,13 @@ package classes.Scenes.Areas.Swamp
 			}
 		}
 
-		public function CorruptedDrider()
+		public  constructor()
 		{
 
-			var hairColor:String = randomChoice("red", "orange", "green");
-			var skinTone:String = randomChoice("yellow", "purple", "red", "turquoise");
+			var hairColor:string = randomChoice("red", "orange", "green");
+			var skinTone:string = randomChoice("yellow", "purple", "red", "turquoise");
 
-			var pierced:Boolean = rand(2)==0;
+			var pierced:boolean = rand(2)==0;
 			this.a = "the ";
 			this.short = "corrupted drider";
 			this.imageName = "corrupteddrider";
@@ -204,4 +204,3 @@ package classes.Scenes.Areas.Swamp
 
 	}
 
-}

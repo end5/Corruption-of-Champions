@@ -1,21 +1,21 @@
-package classes.Scenes.Dungeons.DesertCave
-{
-	import classes.*;
+ 
 
-	public class SandMother extends Monster
+	 
+
+	export class SandMother extends Monster
 	{
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.defeatTheSandMother();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.loseToTheSandMother();
 		}
 
-		public function SandMother()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "Sand Mother";
@@ -58,4 +58,3 @@ package classes.Scenes.Dungeons.DesertCave
 		
 	}
 
-}

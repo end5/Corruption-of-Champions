@@ -1,19 +1,19 @@
-﻿package classes
-{
-	public class ItemSlotClass extends Object
+ 
+
+	export class ItemSlotClass extends Object
 	{
 		//constructor
-		public function ItemSlotClass()
+		public  constructor()
 		{
 		}
 		
 		//data
-		private var _quantity:Number = 0;
-		private var _itype:ItemType = ItemType.NOTHING;
-		private var _unlocked:Boolean = false;
+		private  _quantity:number = 0;
+		private  _itype:ItemType = ItemType.NOTHING;
+		private  _unlocked:boolean = false;
 
 		
-		public function setItemAndQty(itype:ItemType, quant:Number):void
+		public  setItemAndQty(itype:ItemType, quant:number):void
 		{
 			if (itype == null) itype = ItemType.NOTHING;
 			if (quant == 0 && itype == ItemType.NOTHING) {
@@ -30,13 +30,13 @@
 		}
 		
 
-		public function emptySlot():void
+		public  emptySlot():void
 		{
 			this._quantity = 0;
 			this._itype = ItemType.NOTHING;
 		}
 
-		public function removeOneItem():void
+		public  removeOneItem():void
 		{
 			if (this._quantity == 0)
 				CoC_Settings.error("Tried to remove item from empty slot!");
@@ -47,29 +47,29 @@
 				this._itype = ItemType.NOTHING;
 		}
 
-		public function get quantity():Number
+		public  get quantity():number
 		{
 			return _quantity;
 		}
 
-		public function set quantity(value:Number):void
+		public  set quantity(value:number):void
 		{
 			if (value > 0 && _itype == null) CoC_Settings.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
 			if (value == 0) _itype = ItemType.NOTHING;
 			_quantity = value;
 		}
 
-		public function get itype():ItemType
+		public  get itype():ItemType
 		{
 			return _itype;
 		}
 
-		public function get unlocked():Boolean
+		public  get unlocked():boolean
 		{
 			return _unlocked;
 		}
 
-		public function set unlocked(value:Boolean):void
+		public  set unlocked(value:boolean):void
 		{
 			if (_unlocked != value){
 				emptySlot();
@@ -77,9 +77,8 @@
 			_unlocked = value;
 		}
 
-		public function isEmpty():Boolean
+		public  isEmpty():boolean
 		{
 			return _quantity<=0;
 		}
 	}
-}

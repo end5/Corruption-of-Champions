@@ -1,33 +1,33 @@
 /**
  * Created by aimozg on 20.02.14.
  */
-package classes.Scenes.Explore
-{
-	import classes.BaseContent;
-	import classes.Monster;
-	import classes.Scenes.Areas.Bog.*;
-	import classes.Scenes.Areas.Desert.*;
-	import classes.Scenes.Areas.Forest.*;
-	import classes.Scenes.Areas.HighMountains.*;
-	import classes.Scenes.Areas.Lake.*;
-	import classes.Scenes.Areas.Mountain.*;
-	import classes.Scenes.Areas.Plains.*;
-	import classes.Scenes.Areas.Swamp.*;
-	import classes.Scenes.Dungeons.DeepCave.*;
-	import classes.Scenes.Dungeons.DesertCave.*;
-	import classes.Scenes.Dungeons.Factory.*;
-	import classes.Scenes.Dungeons.HelDungeon.*;
-	import classes.Scenes.Monsters.*;
-	import classes.Scenes.NPCs.*;
-	import classes.Scenes.Places.Boat.*;
-	import classes.Scenes.Places.Farm.*;
-	import classes.Scenes.Places.Owca.*;
-	import classes.Scenes.Quests.UrtaQuest.*;
+ 
 
-	public class ExploreDebug extends BaseContent
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	export class ExploreDebug extends BaseContent
 	{
 
-		public function doExploreDebug():void
+		public  doExploreDebug():void
 		{
 			clearOutput();
 			menu();
@@ -42,7 +42,7 @@ package classes.Scenes.Explore
 		// but still fightable without special initialization
 		// 3) finally very special monsters, which rely on some kind of game state initialization (such as Ember)
 		// and may crash or break something very heavily on attempt to fight
-		private var allMonsters:Array = [
+		private  allMonsters:any[] = [
 			// Generic monsters first...
 			function ():Monster {return new Anemone();},
 			function ():Monster {return new Basilisk();},
@@ -124,7 +124,7 @@ package classes.Scenes.Explore
 			function ():Monster {return new Ember();}
 		];
 
-		private function exploreDebugMonsters(monsterIdx:int = 0):void
+		private  exploreDebugMonsters(monsterIdx:number = 0):void
 		{
 			clearOutput();
 			menu();
@@ -141,14 +141,14 @@ package classes.Scenes.Explore
 				outputText("You have fought every monster.");
 			} else {
 				var m:Monster = allMonsters[monsterIdx]();
-				m.onDefeated = function (hpVictory:Boolean):void
+				m.onDefeated = function (hpVictory:boolean):void
 				{
 					getGame().inCombat = false;
 					getGame().clearStatuses(false);
 					statScreenRefresh();
 					exploreDebugMonsters(monsterIdx + 1);
 				};
-				m.onWon = function (hpVictory:Boolean, pcCameWorms:Boolean):void
+				m.onWon = function (hpVictory:boolean, pcCameWorms:boolean):void
 				{
 					getGame().inCombat = false;
 					getGame().clearStatuses(false);
@@ -178,8 +178,8 @@ package classes.Scenes.Explore
 			addButton(9, "Enough", playerMenu);
 		}
 
-		public function ExploreDebug()
+		public  constructor()
 		{
 		}
 	}
-}
+

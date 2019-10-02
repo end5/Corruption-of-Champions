@@ -1,14 +1,14 @@
-﻿package classes.Scenes.Areas.Lake
-{
-	import classes.*;
+ 
 
-	public class SwordInStone extends AbstractLakeContent
+	 
+
+	export class SwordInStone extends AbstractLakeContent
 	{
-		public function SwordInStone()
+		public  constructor()
 		{
 		}
 
-		public function findSwordInStone():void 
+		public  findSwordInStone():void 
 		{
 			if (player.findStatusAffect(StatusAffects.FactoryOverload) < 0)
 			{
@@ -32,7 +32,7 @@
 			}
 		}
 
-		private function tryToTakeSwordInStone():void 
+		private  tryToTakeSwordInStone():void 
 		{
 			outputText("", true);
 			//if corrupted...
@@ -66,4 +66,3 @@
 			}
 		}
 	}
-}

@@ -1,26 +1,26 @@
-package classes.Scenes.Dungeons.HelDungeon
-{
-	import classes.*;
+ 
 
-	public class PhoenixPlatoon extends Monster
+	 
+
+	export class PhoenixPlatoon extends Monster
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.phoenixPlatoonAI();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.phoenixPlatoonLosesToPC();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.phoenixPlatoonMurdersPC();
 		}
 
-		public function PhoenixPlatoon()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "phoenix platoon";
@@ -69,4 +69,3 @@ package classes.Scenes.Dungeons.HelDungeon
 		
 	}
 
-}

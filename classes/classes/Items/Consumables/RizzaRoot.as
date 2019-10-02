@@ -1,21 +1,21 @@
 /**
  * Created by K.Quesom 11.06.14
  */
-package classes.Items.Consumables
-{
-    import classes.PerkLib;
-    import classes.Player;
-    import classes.internals.Utils;
+ 
 
-    public class RizzaRoot extends SimpleConsumable
+     
+     
+     
+
+    export class RizzaRoot extends SimpleConsumable
     {
 
-        private function rizzaRootEffect(player:Player):void
+        private  rizzaRootEffect(player:Player):void
         {
             clearOutput();
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
-			var counter:Number = 0;
+			var changes:number = 0;
+			var changeLimit:number = 1;
+			var counter:number = 0;
 			if (Utils.rand(2) == 0) changeLimit++;
 			if (Utils.rand(3) == 0) changeLimit++;
 			if (Utils.rand(4) == 0) changeLimit++;
@@ -47,11 +47,11 @@ package classes.Items.Consumables
 			}
         }
                 
-        public function RizzaRoot()
+        public  constructor()
         {
             super("RizzaRt", "Rizza Root", "a tube of rizza root strands", rizzaRootEffect, 10, "A small ceramic tube full of fine red root strands.  They smell something like citrus fruit.");
         }
 
     }
 
-}
+

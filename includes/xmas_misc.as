@@ -1,4 +1,4 @@
-﻿//CONSTS
+//CONSTS
 //const CANDY_CANE_YEAR_MET:int = 637;
 //const XMAS_CHICKEN_YEAR:int = 642;
 //const KAMI_ENCOUNTER:int = 643;
@@ -16,7 +16,7 @@
 
 //1. Kirbster's Bunny Trap
 //if(isHolidays() && flags[kFLAGS.CANDY_CANE_YEAR_MET] < date.fullYear)
-public function candyCaneTrapDiscovery():void {
+export function candyCaneTrapDiscovery():void {
 	clearOutput();
 	outputText("Shortly after embarking into the plains, your thoughts drift back to your life and home in your village.  The slight chill in the air today reminds you of a time of cheer celebrated by your former friends and family.  As days grew shorter and colder, people exchanged humble trinkets, and great feasts were prepared.  ");
 	if(player.cor < 50) outputText("The memory brings a nostalgic smile to your [face].");
@@ -35,7 +35,7 @@ public function candyCaneTrapDiscovery():void {
 }
 
 //LEAVE
-public function leaveBeforeMeetingCandyCaneBun():void {
+export function leaveBeforeMeetingCandyCaneBun():void {
 	clearOutput();
 	outputText("You're not willing to run the risk of getting a foreign cock stuffed up your [butt].");
 	//(If corruption or libido>50) 
@@ -44,7 +44,7 @@ public function leaveBeforeMeetingCandyCaneBun():void {
 }
 
 //INVESTIGATE
-public function investigateCandyCaneBun():void {
+export function investigateCandyCaneBun():void {
 	clearOutput();
 	outputText("You make the decision to find out just what's going on.  You cautiously follow the small pools of goo, slightly on edge.  You approach a wall of low hanging vine which you quickly pull aside.  Sitting in the largest pudddle of semen you've seen yet, a trembling bunny-like figure kneels on its knees.");
 	//(If corruption and libido<50) 
@@ -77,14 +77,14 @@ public function investigateCandyCaneBun():void {
 }
 
 //NO
-public function declineCandyCaneCawks():void {
+export function declineCandyCaneCawks():void {
 	clearOutput();
 	outputText("Turning around a tad awkwardly, you stumble out of the glade.  Tempting as he is, you don't have time to help the random bunny orgasm.");
 	doNext(camp.returnToCampUseOneHour);
 }
 
 //YES
-public function helpWithTheCandyCane():void {
+export function helpWithTheCandyCane():void {
 	clearOutput();
 	outputText("You lower your eyes seductively as you begin to sashay your [hips], approaching the lusty rabbit.  He trembles slightly as you lift his hands away from his dick, but he doesn't protest.  Up close, you can see his cock is adorned with red stripes similar to the ones in his hair. You push your [face] up against it, letting the pheromone laced tool drag across your face.  The rigid rod even leaves a few streaks of pre cum in your [hair].  After a minute of teasing the whimpering bunny, you pull his cock down, dragging it past your lips.  Your mouth lights up with a chilling sensation the moment his cock's head touches your tongue.  It fills you with an indescribable happiness, as if the boy inside your mouth is radiating pure joy.  You begin to moan around his tonsil-tickler while ");
 	//(if male)
@@ -112,7 +112,7 @@ public function helpWithTheCandyCane():void {
 
 //2. Abraxas's Christmas Chicken
 //[Wake up, whatever morning]
-public function getAChristmasChicken():void {
+export function getAChristmasChicken():void {
 	flags[kFLAGS.XMAS_CHICKEN_YEAR] = date.fullYear;
 	outputText("\nThe grating sound of squawking rouses you in the morning.  You groggily roll over, hoping to go back to sleep for a while, but the annoying noise persists unrelenting.  Realizing that it probably isn't going away any time soon, you reluctantly force your eyes open and push yourself up.  The sight around you causes you to blink a few times to shake away the disbelief: a layer of brilliant white snow frosts the ground, a rare sight at your camp thus far.  You hadn't really noticed it getting that much colder, but the chill this morning is biting through your [armor].  A shiver wracks your body, and your thoughts on the odd snowfall are interrupted by another loud call.");
 	outputText("\n\nDetermined to shut whatever is making such a racket up, you trudge off through the cold, crisp blanket towards where you think the sound is coming from.  You crest a small hill and are greeted with another peculiar image.  Faintly visible against the snow, what appears to be a very pale harpy woman lays on her back, beating her pure-white wings against the ground and sweeping her legs back and forth against the freshly-fallen powder.  She caws and shrieks happily, apparently too caught up in... whatever it is she's doing to notice you.");
@@ -122,14 +122,14 @@ public function getAChristmasChicken():void {
 }
 
 //[Leave]
-public function leaveXmasChicken():void {
+export function leaveXmasChicken():void {
 	clearOutput();
 	outputText("Too exasperated by the plain absurdity of the situation to deal with it, you bury your face in your hands and decide to leave her to it.  Maybe some imps will shut her up for you.  You head back to camp with her piercing cries following you all the way, and prepare for the day ahead.  Her cries fade a while later; the snow thaws and the air warms soon after.");
 	doNext(camp.returnToCampUseOneHour);
 }
 
 //[Talk]
-public function talkToXmasChicken():void {
+export function talkToXmasChicken():void {
 	clearOutput();
 	outputText("Figuring you should at least try asking her to pipe down, you continue your approach.  She finally takes notice of your footsteps crunching the snow beside her and goes still and silent for a moment as she looks up at you.  Now that you're closer, you can make out some more of her features against the snowy ground.  She wears a light dress, almost as pale as her skin and the snow around her, thin enough that you can just see her perky nipples through its white fabric.  A shiver of your own makes you wonder why she's wearing something like that on a day like this.  The thick, fluffy-looking feathers of her wings even manage to stand out as somehow even whiter than the frosty backdrop of the snow.  A faint, silvery glow seems to radiate from her, but it's probably just a trick of the light against the snowfall.");
 	outputText("\n\nYou watch her lie there quietly for a moment before she goes back to happily cooing as loudly as ever and flapping about on the ground.  Fed up, you finally ask her what she thinks she's doing out here.  She looks up quizzically for a moment and tells you matter-of-factly that she's making shapes in the snow, and returns to her task dutifully and noisily.  You bury your face in your hands, unsure how to deal with this.  You ask her why exactly she's doing that.");
@@ -151,14 +151,14 @@ public function talkToXmasChicken():void {
 }
 
 //[Decline]
-public function declineChickenBlowjobs():void {
+export function declineChickenBlowjobs():void {
 	clearOutput();
 	outputText("The harpy squints at you suspiciously.  \"<i>What do you mean, 'no thanks?'  Nobody says that around here!</i>\"  She rolls her eyes and sighs in an obviously exaggerated manner, then turns tail and flaps off into the distance.  You head back to camp, quite looking forward to the silence.  The air warms and the snow thaws soon after you return, leaving no trace of its presence but a few spots of slushy mud.");
 	doNext(playerMenu);
 }
 
 //[Accept]
-public function acceptChristmasBJs():void {
+export function acceptChristmasBJs():void {
 	//(male)
 	if(player.gender == 1) {
 		acceptChristmasManBJ()
@@ -175,9 +175,9 @@ public function acceptChristmasBJs():void {
 	}
 }
 	
-public function acceptChristmasManBJ():void {
+export function acceptChristmasManBJ():void {
 	clearOutput();
-	var x:int = player.cockThatFits(80);
+	var x:number = player.cockThatFits(80);
 	if(x < 0) x = player.biggestCockIndex();
 	//(if cock >= ridonkulous)
 	if(player.cockArea(x) >= 80) {
@@ -218,7 +218,7 @@ public function acceptChristmasManBJ():void {
 	doNext(playerMenu);
 }
 
-public function acceptChristmasWomanBJ():void {
+export function acceptChristmasWomanBJ():void {
 	clearOutput();
 	outputText("You nod, signaling your acceptance of her offer.  The pale harpy squeals happily, bringing her hands to her chin and practically bouncing with joy.  You open your [armor] and in a flash she's kneeling with her head between your thighs.  Her hot breath against your soft flesh feels wonderful against the chill of the air.  The eager girl wastes no time in getting to work, rubbing your [clit] with two of the fingers on one hand and gently stroking your labia with the others.  Her pressure increases with the warm, comfortable feelings of arousal that her touches bring you.");
 	outputText("\n\nIt's not long before she has you dripping and tingling down there with a need for more involved attention.  Apparently satisfied with your wetness, she grabs your thighs and pulls her face in against your crotch.  Her smooth, thick tongue runs over your lower lips, pushing you just a little further each time.  Its sudden flick into your sex is enough to elicit a sharp gasp, and you palm the back of her head almost by instinct as a shudder wracks your body.  Your gentle coos and sighs of pleasure blend into moans as she eats your [vagina] more and more fervently, her tongue probing you for the softest, most sensitive spots of your inner walls.  Your mind seems to float now, carried by waves of sexual need.  You need to cum, you need her to give you more.  Pressing her more forcefully against you now, any thoughts of her comfort vanish from your head as you run your fingers through her thick blond hair.");
@@ -244,7 +244,7 @@ public function acceptChristmasWomanBJ():void {
 //The player enters the bakery and encounters a Kangaroo herm who hands them a 'present'. Inside there's a note offering the player sex. The player can choose to take her up on the offer and except her 'xmas present' or not. Also please note that the player is free to enter the bakery and interact with Kami again after smexing her the first time or try again after being an ass and denying her during the initial encounter. Turns out she's actually the chick responsible for making the Xmas pud (because she's so damn good at it.)
 
 //[Player enters bakery, Date must be at least 15 Dec and KamiEnc must be 0]
-public function encounterKamiTheChristmasRoo():void {
+export function encounterKamiTheChristmasRoo():void {
 	if(flags[kFLAGS.KAMI_ENCOUNTER] == 0) {
 		outputText("You enter the Tel Adre bakery with the intention of sampling some of the local confectionaries.  This time around, you're surprised to find that the place is adorned with wintery, festive decor of all shapes and sizes - even a pine tree hangs around, with gifts delicately placed underneath.   The place is packed, and you allow a curvaceous kangaroo-morph waitress to escort you to your table.  You don't remember seeing her here before, and you're certain you'd never forget a chest like hers.  The girl's heaving, E-cups press against her dainty red and white waitress uniform as she sorts your table.  She manages to catch you off-guard, realizing the objects of your interest and blushing profusely. The waitress scurries off before you have chance to apologize, her hips wiggling almost exaggeratedly as she goes.\n\n");
 		//[Player must select an action, out of eating cakes etc, Rubi or the kangaroo waitress. Description provided below.]
@@ -256,7 +256,7 @@ public function encounterKamiTheChristmasRoo():void {
 }
 
 //[Player chooses Kangaroo girl]
-public function approachKamiTheChristmasRoo():void {
+export function approachKamiTheChristmasRoo():void {
 	clearOutput();
 	if(flags[kFLAGS.KAMI_ENCOUNTER] == 1) {
 		//[Player chooses 'Kami']
@@ -293,7 +293,7 @@ public function approachKamiTheChristmasRoo():void {
 }
 
 //[Player chooses 'Leave']
-public function skipOutAfterOpeningKamisBox():void {
+export function skipOutAfterOpeningKamisBox():void {
 	clearOutput();
 	outputText("You politely decline Kami's sexual advances, apologizing before making a turn for the door. You begin to wonder why you didn't buy anything at the bakery.");
 	//[Return to Tel Adre, KamiEnc = 1]
@@ -302,7 +302,7 @@ public function skipOutAfterOpeningKamisBox():void {
 }
 
 //[Player chooses 'Let's go!']
-public function chooseLetsGoKami():void {
+export function chooseLetsGoKami():void {
 	clearOutput();
 	outputText("You decide to give Kami exactly what she wants - 'tis the season for giving, after all!  You grin approvingly before heading out into the back alley, taking your time to stare at her wobbling ass.");
 	outputText("\n\nOnce outside, Kami confirms your suspicions by immediately ripping down her tight skirt, sighing softly as her impressive member flops free from her lacy black thong. You wonder how she managed to hide it so effectively with the virtually non-existent piece of lingerie.");
@@ -325,9 +325,9 @@ public function chooseLetsGoKami():void {
 
 
 //[Player chooses 'Give Anal']
-public function giveKamiTheChristmasRooAnal():void {
+export function giveKamiTheChristmasRooAnal():void {
 	clearOutput();
-	var x:int = player.cockThatFits(70);
+	var x:number = player.cockThatFits(70);
 	outputText("You head briskly towards the voluptuous waitress, rearing her around by the wrists and pressing her against the wall.  \"<i>H-Hey, wait!</i>\" Kami yelps, but you sense excitement in her delicate plea.");
 	
 	outputText("\n\nIntent on being the dominant partner, you spit on one of your fingers and slide it into her tight asshole at once, prepping it for your oncoming invasion.  Freeing just enough room in your garments for your own member to breathe, you waste no time at all in aligning your fuck-stick underneath her thick kangaroo tail and right between her rosy asscheeks. Kami invites you into her ass as seductively as she can, swaying her ample thighs and massaging her pucker against your cock-head aggressively.  \"<i>Be at least a bit gentle, doll,</i>\"  she coos seductively in your ear, giving you the green light for a full-on pounding as your cock sinks into her heart-shaped butt and unleashes hell.");
@@ -354,7 +354,7 @@ public function giveKamiTheChristmasRooAnal():void {
 }
 
 //[Player selects 'Receive Anal']
-public function takeItRooButtStyle():void {
+export function takeItRooButtStyle():void {
 	clearOutput();
 	outputText("You wink at the stacked waitress, turning around and planting your [chest] against the alley wall submissively.  Quickly removing your [armor], you turn to give your advancing lover a smile - but you're quickly caught off guard by the kangaroo girl's phallus plunging towards and into your [butt] at full speed.");
 	player.buttChange(24,true,true,false);
@@ -391,7 +391,7 @@ public function takeItRooButtStyle():void {
 }
 
 //[Player selects 'Blow Job']
-public function KamiBlowJob():void {
+export function KamiBlowJob():void {
 	clearOutput();
 	//[If player is none-Naga]
 	if(!player.isNaga()) outputText("You get down on your knees");
@@ -410,10 +410,10 @@ public function KamiBlowJob():void {
 }
 
 
-public function KamiDoubleDickFuck():void {
+export function KamiDoubleDickFuck():void {
 	//[Player selects 'Double-Dick Fuck']
-	var x:int = player.cockThatFits(70);
-	var y:int = player.cockThatFits2(70);
+	var x:number = player.cockThatFits(70);
+	var y:number = player.cockThatFits2(70);
 	clearOutput();
 	outputText("You chuckle heartily - of course you're going to ravish her!  How ridiculous to assume otherwise.  In a split second, you've already grabbed her by her arms, forcing her back against the wall.  Kami passionately yelps, but her eagerness to grind against your growing package reveals her true intentions.");
 	outputText("\n\nTaking the initiative, you hold the waitress by the throat whilst you free room in your [armor] for your succulent snatch-hungry sausages.  Wasting no time at all, you align your rock-hard rods underneath her huge phallus and directly at her needy orifices, moving your hands underneath her legs and lifting her slightly to add leverage for yourself.  Kami pants in anticipation, gently pressing herself against your cockheads in an attempt to entice you.  Ever the tease, you notice the waitress gasp between her delectable lips.  \"<i>Are you gonna put those fine-ass rods to use, or do I have to do it myself?</i>\"  Not about to disappoint, you push into her, penetrating the soft confines of her pussy before reaching into her tight little ass, slowly but steadily plunging further and further inside until your needy tools can't reach any further.  \"<i>F-Fuck!  Drill me hard!</i>\" she cries desperately.");
@@ -432,7 +432,7 @@ public function KamiDoubleDickFuck():void {
 
 
 //[Player can choose 'Winter Pudding']
-public function getWinterPudding():void {
+export function getWinterPudding():void {
 	clearOutput();
 	if(player.gems < 35) {
 		outputText("Sadly, the pudding isn't free, and it looks like you don't have the 35 gems you'd need to try a bite!");
@@ -475,7 +475,7 @@ public function getWinterPudding():void {
 
 //4. Donto's Polar Pete
 //Random Holiday plains encounter
-public function polarPete():void {
+export function polarPete():void {
 	clearOutput();
 	outputText("As you travel through the plains, something seems to be off the further you continue to walk.  Soon your breath mists in front of your mouth, and you hug yourself as the temperature seems to drop.  As you look up, flakes of pure white fall from above.  The ground at your feet is littered with frost and dusted with snow, and you feel a chill run up your spine as you adjust to the colder weather. Something unnatural seems to be affecting the area.");
 	outputText("\n\nWith a crunch of snow, you turn your head to see a large figure in the distance.  The flurry of snowfall blurs your vision, though it seem to be getting closer.  Once it's close enough, you can make out what it is.");
@@ -490,7 +490,7 @@ public function polarPete():void {
 	addButton(4,"Leave",leaveDisFukkinPolarBear);
 }
 //Unwrap
-public function unwrapPolarPete():void {
+export function unwrapPolarPete():void {
 	clearOutput();
 	outputText("The temptation too strong, you walk closer to Pete.  Sinking down to your knees before him as he adjusts his hips to your level.  Your hands on his crimson pants, pulling them down with bated breath.  His dark ebony length flops free, long and swollen with heat before your nose. Your hand rubs along it's smooth black surface coaxing a pleased groan from Pete.");
 	
@@ -548,7 +548,7 @@ public function unwrapPolarPete():void {
 }
 
 //Leave
-public function leaveDisFukkinPolarBear():void {
+export function leaveDisFukkinPolarBear():void {
 	clearOutput();
 	outputText("You've decided not to trust the stranger, with a nod of your head you walk away from the man.  \"<i>Wait!  Before you go...</i>\" he speaks as he moves his massive sack in front of himself with a huff.  He leans forward, his upper body rummaging through the sack before reappearing.  He hands you a brightly wrapped gift.");
 	
@@ -560,7 +560,7 @@ public function leaveDisFukkinPolarBear():void {
 //Sell \"<i>Peppermint White</i>\" for 50 gems or Drink it
 
 //Drink \"<i>Peppermint White</i>\"
-public function peppermintWhite(player:Player):void {
+export function peppermintWhite(player:Player):void {
 	clearOutput();
 	outputText("You pull the cork off the gift from the mysterious stranger.  The scent of alluring mint fills your nose once again.  You bring the head of the bottle to your lips and tip it back, the creamy white fluid hits your tongue and slips down your throat.  The liquid is surprisingly refreshing, the creamy mint flavor clings to your tongue and mouth, and makes your breath feel cool as you exhale over your lips.  You can feel the liquid drip down to your stomach and fill you with a pleasant warmth and holiday cheer.\n\n");
 	//Recovers health and fatigue, adds five to max health, and one to libido.*/
@@ -571,12 +571,12 @@ public function peppermintWhite(player:Player):void {
 //5. Third's Nieve
 //Winter Snowfall
 //Accessible after sleeping as long as it's Winter (December - February)
-public function nieveHoliday():Boolean {
+export function nieveHoliday():boolean {
 	return date.month == 11 || date.month == 0;
 }
 
 
-public function snowLadyActive():void {
+export function snowLadyActive():void {
 	clearOutput();
 	hideMenus();
 	outputText("A chill pervades the air as you awaken, making you shiver.  You open your eyes blearily, looking around the camp, until your gaze falls onto a solid white patch of earth. Its bright, glittering white actually hurts your eyes for a second, as you're so used to the dark, hellish red that surrounds you.");
@@ -600,7 +600,7 @@ public function snowLadyActive():void {
 
 //Creation!
 //Accessed from \"<i>Snow</i>\" at the Lover or Stash menu.
-public function nieveBuilding():void {
+export function nieveBuilding():void {
 	clearOutput();
 	//First Step: The Body
 	if(flags[kFLAGS.NIEVE_STAGE] == 1) {
@@ -650,7 +650,7 @@ public function nieveBuilding():void {
 }
 //Coal
 //Add to previous text if possible?
-public function nieveCoalEyes():void {
+export function nieveCoalEyes():void {
 	clearOutput();
 	player.consumeItem(consumables.COAL___);
 	outputText("Luckily, you happen to have two lumps of coal.");
@@ -661,7 +661,7 @@ public function nieveCoalEyes():void {
 }
 //Gems
 //Add to previous text if possible?
-public function nieveGemEyes():void {
+export function nieveGemEyes():void {
 	clearOutput();
 	if(player.gems >= 9) {
 		outputText("Taking a handful of gems out of your pouch, you spread them evenly around the Snowman's face, giving it a nice, vacant smile.  It still needs a nose, however, and for that, you'll need a carrot.  Perhaps there's a farm nearby?");
@@ -678,7 +678,7 @@ public function nieveGemEyes():void {
 }
 
 //Snowwoman
-public function nieveSnowWoman():void {
+export function nieveSnowWoman():void {
 	clearOutput();
 	//Add to existing text if possible, rather than a new window?
 	outputText("You grin mischievously to yourself and set about making two more balls of powdery snow.  It takes less time than any of the others, and before you know it you've attached two icy-breasts to the snowman.  They aren't terribly big, any heavier and you're sure they'd fall off, but they get the point across.");
@@ -689,7 +689,7 @@ public function nieveSnowWoman():void {
 }
 //Snowman
 //Add to existing text if possible, rather than a new window?
-public function nieveSnowMan():void {
+export function nieveSnowMan():void {
 	clearOutput();
 	outputText("You decide to leave it as is. Not everything has to have breasts, of course, even in Mareth.");
 	outputText("\n\nYour snowman still needs a face, of course, but you'll leave that until later.  For now, you head back into the main part of camp.");
@@ -701,7 +701,7 @@ public function nieveSnowMan():void {
 //Third Step: Carrots!
 //Available at Whitney's Farm.
 //Reqs NIEVE_STAGE == 3
-public function findACarrot():void {
+export function findACarrot():void {
 	clearOutput();
 	outputText("As you explore the farm, you come across several rows of green plants.  Getting closer, you recognize them... carrots!  You pull one of them from the ground.  It's expectedly dirty, but bright orange, and straight enough to be the perfect nose for your snowman.");
 	outputText("\n\nWhitney passes by, and you ask if you can take the carrot.  She just shrugs, \"<i>Sure, hun.  I need to clear out that crop to make room for more peppers anyhow.</i>\"");
@@ -711,13 +711,13 @@ public function findACarrot():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 
-public function nieveMF(Man:String = "",Woman:String = ""):String {
+export function nieveMF(Man:string = "",Woman:string = ""):string {
 	if(flags[kFLAGS.NIEVE_GENDER] == 1) return Man;
 	else return Woman;
 }
 
 //IT'S ALIVE!
-public function nieveComesToLife():void {
+export function nieveComesToLife():void {
 	clearOutput();
 	flags[kFLAGS.NIEVE_STAGE] = 5;
 	outputText("You awaken with a shiver.  A chill is in the air again, and in the distance you can make out a jolly laugh and jingling bells.  You bolt upright, looking in the direction of the snow pile, expecting a new flurry.  Sadly, there doesn't seem to be any new snow, nor is any coming down.  Frowning, you stand and approach the snow drift.");
@@ -754,7 +754,7 @@ public function nieveComesToLife():void {
 }
 
 //Yes of course, what do you look like, an idiot?
-public function yesKeepNieve():void {
+export function yesKeepNieve():void {
 	clearOutput();
 	outputText("You actually laugh at the question.  Of course you want " + nieveMF("him","her") + " to stay!");
 	//[Silly mode: 
@@ -766,7 +766,7 @@ public function yesKeepNieve():void {
 }
 
 //No, because I'm an idiot.
-public function noNoKeepNieve():void {
+export function noNoKeepNieve():void {
 	clearOutput();
 	outputText("You shake your head.  Of course not!  While " + nieveMF("he","she") + " certainly seems like a nice person on the surface, you can't help but think that's just the tip of the iceberg.  For all you know, " + nieveMF("he","she") + "'s a frigid bitch underneath, a trap set by the demons to lure you into a false sense of security.  Clever bastards, you conclude.  They certainly know the best way to serve revenge, but you won't have any of it.");
 	outputText("\n\nNieve looks disappointed, but nods understandably.  \"<i>I was told not everyone accepts us.  Perhaps I'll find someone more hospitable next year.</i>\"  You shrug, giving " + nieveMF("him","her") + " the cold shoulder.");
@@ -779,7 +779,7 @@ public function noNoKeepNieve():void {
 
 //Followers Menu
 //Camp Description
-public function nieveCampDescs():void {
+export function nieveCampDescs():void {
 	//6:00
 	if(model.time.hours == 6) outputText("Nieve is sitting cross-legged in the snowdrift, munching on what looks to be icicles.  As you watch, " + nieveMF("he","she") + " reaches down into the glittering powder surrounding " + nieveMF("him","her") + " and produces another one.");
 	//7:00
@@ -815,7 +815,7 @@ public function nieveCampDescs():void {
 }
 
 //Appearance Screen
-public function approachNieve():void {
+export function approachNieve():void {
 	clearOutput();
 	outputText("You wave at Nieve, getting " + nieveMF("his","her") + " attention and calling for " + nieveMF("him","her") + ".  The icy spirit-" + nieveMF("man","woman") + " happily walks over, smiling.  " + nieveMF("He","She") + " takes " + nieveMF("his","her") + " time, allowing you to take in " + nieveMF("his","her") + " naked body.");
 	
@@ -833,7 +833,7 @@ public function approachNieve():void {
 }
 
 //Sex Menu
-public function nieveSexMenu():void {
+export function nieveSexMenu():void {
 	clearOutput();
 	outputText("What will you do with your oh-so-cool lover?");
 	if(player.lust < 33) outputText("  You aren't quite turned on enough for normal fucking.");
@@ -857,7 +857,7 @@ public function nieveSexMenu():void {
 
 //Lick Her
 //Obviously for Female Nieve.
-public function lickNieve():void {
+export function lickNieve():void {
 	clearOutput();
 	outputText("You explain your intentions and how you'd like to be the one to give her pleasure.  She looks rather surprised at first, but then she smiles.  \"<i>You want to go down... on me?</i>\"  You nod and she giggles, \"<i>That would be wonderful!</i>\"");
 	outputText("\n\nYou grab Nieve around the waist, pulling her close for a kiss.  Your tongue explodes into her mouth, as she offers very little resistance.  It feels rather like you're kissing an icecube than a mouth, albeit a soft, fleshy icecube.  Your lips tingle from the cold as you break the kiss.");
@@ -909,7 +909,7 @@ public function lickNieve():void {
 //Suck Him by Kinathis
 //For male Nieve
 //Any gender
-public function suckNieveOff():void {
+export function suckNieveOff():void {
 	clearOutput();
 	outputText("Looking your chilly companion up and down, you inspect " + nieveMF("his","her") + " snowy features.  The ice spirit's chiseled body and well defined features look like they were cut by a master sculptor.  The wintery spirit notices your critical gaze, shifting to stand tall and look his best for you. Smirking at his actions you can't help but notice his body react to your intimate stare; the dark blue flesh between his legs rising as if it sensed your sexual intent.  Chuckling, you step forward, your hand reaching down to cup the cold swelling cock in your warm hand.  The sheer heat of your touch on Nieve's sensitive, shivery manhood pulls a gasp from him, the spirit now realising just what you're after.");
 	outputText("\n\nLeaning in you give him a squeeze as you whisper to him, telling the glacial being that you're going to 'thaw his icicle'.  Your words draw a purple blush from his blue cheeks but you can clearly tell he is happy to get such attention from you.  \"<i>You want to pleasure me?  I... I'm honored you want to give me pleasure like this [master], thank you, so much,</i>\" he says as his cold hands slip around you.  Squeezing down, you start to stroke the chilly cock slowly, gently massaging Nieve until his body is ready for you.  Under your soothing, heated touch he soon rises to full attention, the thick shaft achingly hard in your hand as you keep stroking.  Being made of snow and ice, it seems your friend is more than a little sensitive to the heat of your body.  If he likes your hands this much, you're sure he will love your hot, wet mouth.");
@@ -934,9 +934,9 @@ public function suckNieveOff():void {
 //Must have a penis or at least a 3.5 inch clit
 //Nieve's capacity is about 130.
 //Note for fen/gats: In the interest of fairness, I just wanna say that this scene was unfinished at the time the contest closed.
-public function fuckNieve():void {
+export function fuckNieve():void {
 	clearOutput();
-	var x:int = -1;
+	var x:number = -1;
 	if(player.hasCock()) {
 		x = player.cockThatFits(130);
 		if(x <= 0 && player.hasVagina() && player.clitLength >= 3.5 && rand(2) == 0) x = -1;
@@ -1079,7 +1079,7 @@ public function fuckNieve():void {
 //Male Nieve
 //Any Gender
 //Nieve's cock is 9x1.5
-public function nieveFucksYou():void {
+export function nieveFucksYou():void {
 	clearOutput();
 	outputText("Your arrival to Nieve's part of the camp elicits a friendly smile from the ice man.  He notices the longing in your eyes with a grin, and speaks in a gentle, yet low tone, \"<i>[Master], you seem to need help from me...</i>\"");
 	outputText("\n\nTo which you nod, ");
@@ -1101,7 +1101,7 @@ public function nieveFucksYou():void {
 	if(player.hasVagina()) addButton(1,"Vaginal",takeNieveVaginal);
 }
 //Anal
-public function takeNieveAnal():void {
+export function takeNieveAnal():void {
 	clearOutput();
 	outputText("You let you wintery lover know just where you want his blue member, turning around and setting yourself up on all fours as you grab your [butt] on both sides with your hands, spreading your cheeks to expose your [asshole] quite vulgarly. He needs no further invitation as he moves to match his face to your dirty hole.  You feel the pristine chill of his breath cover your nethers, making you tremble.  Already hot and horny from his foreplay earlier, you wait anxiously for what seems like minutes until he probes your hole with his tongue, lathering your [butthole] with his cool lubing saliva, the temperature making you quaver even more as you enjoy the ice play his tongue is giving you.");
 	outputText("\n\nAfter a few exciting minutes, he pulls away as you look at him from over your shoulder.  You take a little time to admire your creation and how perfectly sculpted his body is when his nine-inch member thrusts into your anus in one quick thrust, causing an enraptured squeal to come from your mouth.  Thoughtfully, Nieve waits a few moments to allow your hole to get familiar with his sizable member before ever-so slowly thrusting into you.  You enjoy the ride for what it's worth, since even though almost every penis you've encountered in this land has been bigger, there's something unique about his frozen phallus that you can't get enough of.  You finish the thought, only to be wakened from your internal monologue to the increasing rhythm of the polar penetration he's giving you.");
@@ -1140,7 +1140,7 @@ public function takeNieveAnal():void {
 }
 
 //Vaginal
-public function takeNieveVaginal():void {
+export function takeNieveVaginal():void {
 	clearOutput();
 	outputText("You're already wet from the foreplay, and it shows.  Moreso, Nieve notices, with a grin similar to the one he gave you earlier.  The look on his face suggests he knows what you want, he's just merely waiting for his [master] to give the word.");
 	
@@ -1171,7 +1171,7 @@ public function takeNieveVaginal():void {
 }
 
 //Goodbye (Outline by PyroJenkins)
-public function nieveIsOver():void {
+export function nieveIsOver():void {
 	clearOutput();
 	hideMenus();
 	//Nieve Not Completed
@@ -1207,7 +1207,7 @@ public function nieveIsOver():void {
 	doNext(playerMenu);
 }
 
-private function fixNieve():void {
+ function fixNieve():void {
 	if(flags[kFLAGS.NIEVE_GENDER] == 0) {
 		clearOutput();
 		outputText("(There was an error with stat tracking that cleared Nieve's stats out at the end of last year's event. <b>What gender do you want Nieve to be?</b>)");
@@ -1225,11 +1225,11 @@ private function fixNieve():void {
 	else nieveReturnsPartII();
 }
 
-private function fixNieveGender(arg:int = 1):void {
+ function fixNieveGender(arg:number = 1):void {
 	flags[kFLAGS.NIEVE_GENDER] = arg;
 	fixNieve();
 }
-private function fixNieveMouth(arg:int = 1):void {
+ function fixNieveMouth(arg:number = 1):void {
 	if(arg == 0) flags[kFLAGS.NIEVE_MOUTH] = "gems";
 	else flags[kFLAGS.NIEVE_MOUTH] = "coal";
 	fixNieve();
@@ -1237,7 +1237,7 @@ private function fixNieveMouth(arg:int = 1):void {
 
 //The Return of Nieve
 //Occurs during winter if the PC has Nieve's tear.
-public function returnOfNieve():void {
+export function returnOfNieve():void {
 	clearOutput();
 	outputText("As you awake in the morning you find yourself shivering slightly.  A cool breeze sweeps over your camp, while in the distance jingling bells can be heard.  How odd.  You haven't heard bells like that since...");
 	outputText("\n\nYour heart skips a beat.");
@@ -1251,7 +1251,7 @@ public function returnOfNieve():void {
 	addButton(0,"Next",fixNieve);
 }
 
-private function nieveReturnsPartII():void {
+ function nieveReturnsPartII():void {
 	clearOutput();
 	outputText("You sigh, resigning yourself to your companion's fate.  However, as you rise from the snow to return to camp, you hear a soft, muffled voice.  Perplexed, you crawl forward in the snow, frantically seeking out the source.");
 	outputText("\n\nThat's when you see it, a small mound of snow, practically invisible among the white mass surrounding it.  You plunge your hands into the freezing cold stuff and find something solid.  Something large.  Something about the size of a person.  You move to pull the person up and forward, but it doesn't take much.");

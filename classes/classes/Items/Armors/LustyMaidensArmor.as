@@ -1,29 +1,29 @@
 /**
  * Created by aimozg on 11.01.14.
  */
-package classes.Items.Armors
-{
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Items.Armor;
-	import classes.CoC;
-	import classes.Monster;
-	import classes.PerkLib;
-	import classes.Player;
-	import classes.Scenes.Areas.HighMountains.MinotaurMob;
-	import classes.Scenes.Areas.Mountain.Minotaur;
+ 
 
-	public final class LustyMaidensArmor extends Armor {
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	export  class LustyMaidensArmor extends Armor {
 		
-		public function LustyMaidensArmor() {
+		public  constructor() {
 			super("LMArmor", "LMArmor", "lusty maiden's armor", "a bikini-like set of armor that could only belong to a lusty maiden", 6, 400, "This skimpy chain bikini barely qualifies as armor.  Indeed, the chain is made from links much finer and lighter than normal, so fine that it feels almost silken under your fingertips.  A simple seal in the g-string-like undergarment states, \"Virgins only.\"", "Light");
 		}
 		
-		override public function get def():Number {
+		 public  get def():number {
 			if (game.player.hasVirginVagina()) return 9 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
 			return 6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
 		}
 		
-		override public function canUse():Boolean {
+		 public  canUse():boolean {
 			if (game.player.biggestTitSize() < CoC.BREAST_CUP_A) { //{No titties}
 				outputText("You slide the bikini top over your chest and buckle it into place, but the material hangs almost comically across your flat chest.  The cold chain dangles away from you, swaying around ridiculously before smacking, cold and hard into your [nipples].  This simply won't do - it doesn't fit you, and you switch back to your old armor.\n\n");
 				return false;
@@ -63,7 +63,7 @@ package classes.Items.Armors
 			return true;
 		}
 		
-		override public function playerEquip():Armor {
+		 public  playerEquip():Armor {
 			while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
 			if (game.player.hasVirginVagina()) {
 				game.player.createPerk(PerkLib.SluttySeduction, 10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
@@ -74,13 +74,13 @@ package classes.Items.Armors
 			return super.playerEquip();
 		}
 		
-		override public function playerRemove():Armor {
+		 public  playerRemove():Armor {
 			while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
 			return super.playerRemove();
 		}
 		
 		//"Chaste" Paizuri - works for most foes with penises.
-		public function lustyMaidenPaizuri(player:Player = null, monster:Monster = null):void {
+		public  lustyMaidenPaizuri(player:Player = null, monster:Monster = null):void {
 			if (player == null) player = game.player;
 			if (monster == null) monster = game.monster;
 			clearOutput();
@@ -130,7 +130,7 @@ package classes.Items.Armors
 			game.dynStats("sen", 2);
 			if(player.hasVirginVagina()) game.dynStats("cor", -1);
 			//If minotaur, increase addiction slightly.
-			if(monster is Minotaur || monster is MinotaurMob) player.minoCumAddiction(3);
+			if(monster instanceof Minotaur || monster instanceof MinotaurMob) player.minoCumAddiction(3);
 			if(monster.short == "Ceraph") game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
 			//Usable on: Imps, Minotaurs, Satyrs, Incubus Mechanic, Anemones, Spider Guys, Akbal, Drider, Fetish Zealot, Sand Trap, Very Corrupt Jojo (Maybe slight decorruption to him), Ceraph, Red Kitsune if cock out.
 			if (game.inCombat)
@@ -167,4 +167,4 @@ package classes.Items.Armors
 		}
 */
 	}
-}
+

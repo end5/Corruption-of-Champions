@@ -1,5 +1,5 @@
-package classes
-{
+ 
+
 	//Call CoC.saveAwareClassAdd if you want a class that implements this interface to receive updates when the game is loaded or saved
 	public interface SaveAwareInterface
 	{
@@ -12,4 +12,3 @@ package classes
 		function updateBeforeSave(game:CoC):void;
 		
 	}
-}

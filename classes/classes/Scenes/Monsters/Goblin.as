@@ -1,15 +1,15 @@
-﻿package classes.Scenes.Monsters
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class Goblin extends Monster
+	 
+	 
+
+	export class Goblin extends Monster
 	{
-		protected function goblinDrugAttack():void {
-			var temp2:Number = rand(2);
+		protected  goblinDrugAttack():void {
+			var temp2:number = rand(2);
 			if(short == "Tamani") temp2 = rand(5);
 			if(short == "Tamani's daughters") temp2 = rand(5);
-			var color:String = "";
+			var color:string = "";
 			if(temp2 == 0) color = "red";
 			if(temp2 == 1) color = "green";
 			if(temp2 == 2) color = "blue";
@@ -73,8 +73,8 @@
 			if (!plural) combatRoundOver();
 			else outputText("\n", false);
 		}
-		protected function goblinTeaseAttack():void {
-			var det:Number = rand(3);
+		protected  goblinTeaseAttack():void {
+			var det:number = rand(3);
 			if(det == 0) outputText(capitalA + short + " runs her hands along her leather-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.", false);
 			if(det == 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She caresses her snatch and gives you a come hither look.", false);
 			if(det == 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.", false);
@@ -83,12 +83,12 @@
 			combatRoundOver();
 		}
 		
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.goblinScene.gobboRapeIntro();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (player.gender == 0) {
 				outputText("You collapse in front of the goblin, too wounded to fight.  She giggles and takes out a tube of lipstick smearing it whorishly on your face.  You pass into unconsciousness immediately.  It must have been drugged.", false);
@@ -102,7 +102,7 @@
 			}
 		}
 
-		public function Goblin(noInit:Boolean=false)
+		public  constructor(noInit:boolean=false)
 		{
 			if (noInit) return;
 			this.a = "the ";
@@ -144,4 +144,4 @@
 
 	}
 
-}
+

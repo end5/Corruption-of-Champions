@@ -1,12 +1,12 @@
-package classes.Scenes.Areas.Plains
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class Satyr extends Monster
+	 
+	 
+
+	export class Satyr extends Monster
 	{
 		//Attacks (Z)
-		private function satyrAttack():void {
+		private  satyrAttack():void {
 			outputText("The satyr swings at you with one knuckled fist.  ");
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
@@ -17,7 +17,7 @@ package classes.Scenes.Areas.Plains
 				outputText("He snarls as you duck his blow and it swishes harmlessly through the air.");
 			}
 			else {
-				var damage:Number = int((str + weaponAttack) - rand(player.tou));
+				var damage:number = int((str + weaponAttack) - rand(player.tou));
 				if(damage > 0) {
 					damage = player.takeDamage(damage);
 					outputText("It feels like you just got hit with a wooden club! (" + damage + ")");
@@ -27,7 +27,7 @@ package classes.Scenes.Areas.Plains
 			combatRoundOver();
 		}
 				
-		private function satyrBate():void {
+		private  satyrBate():void {
 			outputText("He glares at you, panting while his tongue hangs out and begins to masturbate.  You can nearly see his lewd thoughts reflected in his eyes, as beads of pre form on his massive cock and begin sliding down the erect shaft.");
 			//(small Libido based Lust increase, and increase lust)
 			game.dynStats("lus", (player.lib/5)+4);
@@ -35,7 +35,7 @@ package classes.Scenes.Areas.Plains
 			combatRoundOver();
 		}
 		
-		internal function satyrCharge():void {
+		public  satyrCharge():void {
 			outputText("Lowering his horns, the satyr digs his hooves on the ground and begins snorting; he's obviously up to something.  ");
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
 				outputText(capitalA + short + " completely misses you due to blindness!\n", false);
@@ -57,7 +57,7 @@ package classes.Scenes.Areas.Plains
 				HP -= 5;
 			}
 			else {
-				var damage:Number = int((str + weaponAttack) - rand(player.tou));
+				var damage:number = int((str + weaponAttack) - rand(player.tou));
 				if(damage > 0) {
 					damage = player.takeDamage(damage);
 					outputText("He charges at you with a loud bleat, catching you off-guard and sending you flying into the ground.");
@@ -73,7 +73,7 @@ package classes.Scenes.Areas.Plains
 			combatRoundOver();
 		}
 			
-		private function bottleChug():void {
+		private  bottleChug():void {
 			outputText("He whips a bottle of wine seemingly from nowhere and begins chugging it down, then lets out a bellowing belch towards you.  The smell is so horrible you cover your nose in disgust, yet you feel hot as you inhale some of the fetid scent.");
 			//(damage PC lust very slightly and raise the satyr's lust.)
 			game.dynStats("lus", (player.lib/5));
@@ -82,7 +82,7 @@ package classes.Scenes.Areas.Plains
 		}
 		
 		//5:(Only executed at high lust) 
-		private function highLustChugRape():void {
+		private  highLustChugRape():void {
 			outputText("Panting with barely-contained lust, the Satyr charges at you and tries to ram you into the ground.  ");
 			if(findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
 				outputText(capitalA + short + " completely misses you due to blindness!\n", false);
@@ -99,7 +99,7 @@ package classes.Scenes.Areas.Plains
 			combatRoundOver();
 		}
 		
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if(lust >= 75 && rand(2) == 0) highLustChugRape();
 			else if(lust < 75 && rand(2) == 0) {
@@ -113,13 +113,13 @@ package classes.Scenes.Areas.Plains
 			}
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.plains.satyrScene.defeatASatyr();
 		}
 
 
-		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nThe satyr laughs heartily at your eagerness...");
@@ -129,7 +129,7 @@ package classes.Scenes.Areas.Plains
 			}
 		}
 
-		public function Satyr()
+		public  constructor()
 		{
 			this.a = "a ";
 			this.short = "satyr";
@@ -171,4 +171,3 @@ package classes.Scenes.Areas.Plains
 		
 	}
 
-}

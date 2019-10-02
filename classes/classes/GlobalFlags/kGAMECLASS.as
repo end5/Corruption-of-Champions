@@ -1,6 +1,5 @@
-package classes.GlobalFlags 
-{
-	import classes.CoC;
+  
+
+	 
 	
-	public var kGAMECLASS:CoC;
-}
+	export var kGAMECLASS:CoC;

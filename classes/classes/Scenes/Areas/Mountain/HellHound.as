@@ -1,11 +1,11 @@
-﻿package classes.Scenes.Areas.Mountain
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class HellHound extends Monster
+	 
+	 
+
+	export class HellHound extends Monster
 	{
-		protected function hellhoundFire():void {
+		protected  hellhoundFire():void {
 			//Blind dodge change
 			if(findStatusAffect(StatusAffects.Blind) >= 0) {
 				outputText(capitalA + short + " completely misses you with a wave of dark fire! Thank the gods it's blind!", false);
@@ -30,7 +30,7 @@
 			}
 			else {
 				//Determine the damage to be taken
-				var temp:Number = 15 + rand(10);
+				var temp:number = 15 + rand(10);
 				temp = player.takeDamage(temp);
 				outputText("Both the hellhound's heads breathe in deeply before blasting a wave of dark fire at you. While the flames don't burn much, the unnatural heat fills your body with arousal. (" + temp + " damage)", false);
 				game.dynStats("lus", 20-(player.sens/10));
@@ -46,7 +46,7 @@
 			}
 			doNext(game.playerMenu);
 		}
-		protected function hellhoundScent():void {
+		protected  hellhoundScent():void {
 			if(player.findStatusAffect(StatusAffects.NoFlee) >= 0) {
 				if(spe == 100) {
 					hellhoundFire();
@@ -89,7 +89,7 @@
 		}
 		
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (hpVictory) {
 				outputText("The hellhound's flames dim and the heads let out a whine before the creature slumps down, defeated and nearly unconscious.", true);
@@ -102,7 +102,7 @@
 				}
 			} else {
 				outputText("Unable to bear hurting you anymore, the hellhound's flames dim as he stops his attack. The two heads look at you, whining plaintively.  The hellhound slowly pads over to you and nudges its noses at your crotch.  It seems he wishes to pleasure you.\n\n", true);
-				var temp2:Function =null;
+				var temp2:() => void =null;
 				if (player.gender > 0 && player.lust >= 33) {
 					outputText("You realize your desires aren't quite sated.  You could let it please you", false);
 					//Rape if not naga, turned on, and girl that can fit!
@@ -120,7 +120,7 @@
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nThe hellhound snorts and leaves you to your fate.", false);
@@ -130,7 +130,7 @@
 			}
 		}
 
-		public function HellHound(noInit:Boolean=false)
+		public  constructor(noInit:boolean=false)
 		{
 			if (noInit) return;
 			trace("HellHound Constructor!");
@@ -183,4 +183,3 @@
 
 	}
 
-}

@@ -1,22 +1,22 @@
-package coc.view {
-    import flash.display.MovieClip;
-    import flash.display.Sprite;
-    import flash.display.DisplayObject;
+  
+     
+     
+     
 
-    import flash.text.TextField;
+     
 
-    import coc.model.GameModel;
+     
 
     // Remove dynamic once you've added all the DOs as instance properties.
-    public dynamic class StatsView extends Sprite {
+    export  class StatsView extends Sprite {
         // add things from main view here?
         // yes because we'll need to update all the TFs and progress bars.
-        public var upDownsContainer :Sprite;
-        public var levelUp :Sprite;
+        public  upDownsContainer :Sprite;
+        public  levelUp :Sprite;
 
-        protected var model :GameModel;
+        protected  model :GameModel;
 
-        public function StatsView( mainView :MovieClip, model :* ) {
+        public  constructor( mainView :MovieClip, model :any ) {
             super();
 
             if( ! mainView ) {
@@ -25,7 +25,7 @@ package coc.view {
 
             this.model = model;
 
-            var statsThingsNames :Array = [
+            var statsThingsNames :any[] = [
                     "strBar",     "strText",     "strNum",      // "strUp",      "strDown",
                     "touBar",     "touText",     "touNum",      // "touUp",      "touDown",
                     "speBar",     "speText",     "speNum",      // "speUp",      "speDown",
@@ -47,7 +47,7 @@ package coc.view {
                     "sideBarBG"
                 ];
 
-            var statsUpDownsNames :Array = [
+            var statsUpDownsNames :any[] = [
                     "strUp",      "strDown",
                     "touUp",      "touDown",
                     "speUp",      "speDown",
@@ -62,7 +62,7 @@ package coc.view {
                     "xpUp",       "xpDown"
                 ];
 
-            for each( var statsDOName :* in statsThingsNames ) {
+            for ( const statsDOName * in statsThingsNames ) {
                 // adding at 0 because BG is at the end.
                 this.addChildAt( mainView.getChildByName( statsDOName ), 0 );
             }
@@ -70,7 +70,7 @@ package coc.view {
             this.upDownsContainer = new Sprite();
             this.addChild( this.upDownsContainer );
 
-            for each( var statsUpDownDOName :* in statsUpDownsNames ) {
+            for ( const statsUpDownDOName * in statsUpDownsNames ) {
                 this.upDownsContainer.addChild( mainView.getChildByName( statsUpDownDOName ) );
             }
 
@@ -78,11 +78,11 @@ package coc.view {
             this.addChild( this.levelUp );
         };
 
-        protected function setStatText( name :String, value :* ) {
+        protected  setStatText( name :string, value :any ) {
             if ( /Num$/.test( name ) )
 			{
-				var fVal:* = Math.floor( value );
-				var dispText:String;
+				var fVal:any = Math.floor( value );
+				var dispText:string;
 				
 				if (fVal >= 10000)
 				{
@@ -99,12 +99,12 @@ package coc.view {
                 (this.getChildByName( name ) as TextField).htmlText = value;
         };
 
-        protected function setStatBar( name :String, progress :Number ) {
+        protected  setStatBar( name :string, progress :number ) {
             this.getChildByName( name ).width = Math.round( progress * 115 );
         };
 
         // <- statsScreenRefresh
-        public function refresh() :void {
+        public  refresh() :void {
             // this.show();
             // this.visible = true;
 
@@ -144,20 +144,20 @@ package coc.view {
         };
 
         // <- showStats
-        public function show() {
+        public  show() {
             // make all the stats DOs visible.
             this.refresh();
             this.visible = true;
         };
 
         // <- hideStats
-        public function hide() {
+        public  hide() {
             // body...
             this.visible = false;
         };
 
         // <- hideUpDown
-        public function hideUpDown() {
+        public  hideUpDown() {
             var ci,
                 cc = this.upDownsContainer.numChildren;
 
@@ -171,20 +171,20 @@ package coc.view {
             this.hideLevelUp();
         };
 
-        public function showUpDown() {
-            function _oldStatNameFor( statName :String ) {
+        public  showUpDown() {
+            function _oldStatNameFor( statName :string ) {
                 return 'old' + statName.charAt( 0 ).toUpperCase() + statName.substr( 1 );
             }
 
-            var statName :String,
-                oldStatName :String,
-                allStats :Array;
+            var statName :string,
+                oldStatName :string,
+                allStats :any[];
 
             this.upDownsContainer.visible = true;
 
             allStats = [ "str", "tou", "spe", "inte", "lib", "sens", "cor", "lust" ];
 
-            for each( statName in allStats ) {
+            for ( statName of allStats ) {
                 oldStatName = _oldStatNameFor( statName );
 
                 if( this.model.player[ statName ] > this.model.oldStats[ oldStatName ] ) {
@@ -196,15 +196,15 @@ package coc.view {
             }
         };
 
-        public function showLevelUp() :void {
+        public  showLevelUp() :void {
             this.levelUp.visible = true;
         };
 
-        public function hideLevelUp() :void {
+        public  hideLevelUp() :void {
             this.levelUp.visible = false;
         };
 
-        public function showStatUp( statName :String ) :void {
+        public  showStatUp( statName :string ) :void {
             var statUp :DisplayObject,
                 statDown :DisplayObject;
 
@@ -215,7 +215,7 @@ package coc.view {
             statDown.visible = false;
         };
 
-        public function showStatDown( statName :String ) :void {
+        public  showStatDown( statName :string ) :void {
             var statUp :DisplayObject,
                 statDown :DisplayObject;
 
@@ -226,4 +226,3 @@ package coc.view {
             statDown.visible = true;
         };
     }
-}

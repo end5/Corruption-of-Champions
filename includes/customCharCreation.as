@@ -1,4 +1,4 @@
-﻿//Moved to CharCreation so all character creation functions are in one file and are not inside the game engine itself
+//Moved to CharCreation so all character creation functions are in one file and are not inside the game engine itself
 /*
 //Set custom stats and display a blurb about them.  No need to set up buttons, handled outside in 10045
 public function customPCSetup():void {

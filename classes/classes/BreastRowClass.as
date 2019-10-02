@@ -1,26 +1,26 @@
-﻿package classes
-{
-	import classes.internals.Utils;
+ 
 
-	public class BreastRowClass
+	 
+
+	export class BreastRowClass
 	{
 		//constructor
-		public function BreastRowClass()
+		public  constructor()
 		{
 		}
-		public var breasts:Number = 2;
-		public var nipplesPerBreast:Number = 1;
-		public var breastRating:Number = 0;
-		public var lactationMultiplier:Number = 0;
+		public  breasts:number = 2;
+		public  nipplesPerBreast:number = 1;
+		public  breastRating:number = 0;
+		public  lactationMultiplier:number = 0;
 		//Fullness used for lactation....if 75 or greater warning bells start going off!
 		//If it reaches 100 it reduces lactation multiplier.
-		public var milkFullness:Number = 0;
-		public var fullness:Number = 0;
-		public var fuckable:Boolean = false;
+		public  milkFullness:number = 0;
+		public  fullness:number = 0;
+		public  fuckable:boolean = false;
 
-		public function validate():String
+		public  validate():string
 		{
-			var error:String = "";
+			var error:string = "";
 			error += Utils.validateNonNegativeNumberFields(this, "BreastRowClass.validate", [
 					"breasts", "nipplesPerBreast", "breastRating", "lactationMultiplier",
 					"milkFullness", "fullness"
@@ -44,4 +44,3 @@
 		13 - beachball sized
 		14 - ???*/
 	}
-}

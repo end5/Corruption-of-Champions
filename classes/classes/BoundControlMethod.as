@@ -1,5 +1,5 @@
-package classes 
-{
+  
+
 	/**
 	 * Defines a container to wrap a closure around a game function, associating the callable object
 	 * with a string name representation of the action undertaken, a description, and the associated
@@ -9,16 +9,16 @@ package classes
 	 * for incoming key code -> do action is internal to the InputManager instance.
 	 * @author Gedan
 	 */
-	public class BoundControlMethod
+	export class BoundControlMethod
 	{
-		private var _funcToCall:Function;
-		private var _shortName:String;
-		private var _descript:String;
+		private  _funcToCall:() => void;
+		private  _shortName:string;
+		private  _descript:string;
 		
-		private var _primaryKey:int;
-		private var _secondaryKey:int;
+		private  _primaryKey:number;
+		private  _secondaryKey:number;
 		
-		private var _index:int;
+		private  _index:number;
 		
 		/**
 		 * Define a new bindable control method with "Unbound" keys.
@@ -29,7 +29,7 @@ package classes
 		 * @param 	primaryKey		The primary bound key code
 		 * @param	secondarykey 	The secondary bound key code
 		 */
-		public function BoundControlMethod(func:Function, name:String, desc:String, index:int, primaryKey:int = -1, secondaryKey:int = -1) 
+		public  constructor(func:() => void, name:string, desc:string, index:number, primaryKey:number = -1, secondaryKey:number = -1) 
 		{
 			_funcToCall = func;
 			_shortName = name;
@@ -45,50 +45,49 @@ package classes
 		 * can be passed to the wrapped function.
 		 * @param	... args	Args to pass to the wrapped function.
 		 */
-		public function ExecFunc(... args):void
+		public  ExecFunc(... args):void
 		{
 			_funcToCall.apply(null, args);
 		}
 		
-		public function get Name():String
+		public  get Name():string
 		{
 			return _shortName;
 		}
 		
-		public function get Description():String
+		public  get Description():string
 		{
 			return _descript;
 		}
 		
-		public function get Func():Function
+		public  get Func():() => void
 		{
 			return _funcToCall;
 		}
 		
-		public function get PrimaryKey():int
+		public  get PrimaryKey():number
 		{
 			return _primaryKey;
 		}
 		
-		public function set PrimaryKey(keyCode:int):void
+		public  set PrimaryKey(keyCode:number):void
 		{
 			_primaryKey = keyCode;
 		}
 		
-		public function get SecondaryKey():int
+		public  get SecondaryKey():number
 		{
 			return _secondaryKey;
 		}
 		
-		public function set SecondaryKey(keyCode:int):void
+		public  set SecondaryKey(keyCode:number):void
 		{
 			_secondaryKey = keyCode;
 		}
 		
-		public function get Index():int
+		public  get Index():number
 		{
 			return _index;
 		}
 	}
 
-}

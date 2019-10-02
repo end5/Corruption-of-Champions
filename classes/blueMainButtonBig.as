@@ -1,9 +1,9 @@
-﻿package  {
-	import buttonClass;
-	public class blueMainButtonBig extends buttonClass {
+  
+	 
+	export class blueMainButtonBig extends buttonClass {
 
-		public function blueMainButtonBig() {
+		public  constructor() {
 			// constructor code
 		}
 	}
-}
+

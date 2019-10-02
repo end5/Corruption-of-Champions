@@ -1,34 +1,34 @@
-﻿import classes.Monster;
-import classes.Player;
-import classes.Scenes.Areas.HighMountains.Izumi;
-import classes.Scenes.Areas.Mountain.Minotaur;
-import classes.Scenes.Dungeons.D3.Doppleganger;
-import classes.Scenes.Dungeons.D3.DriderIncubus;
-import classes.Scenes.Dungeons.D3.JeanClaude;
-import classes.Scenes.Dungeons.D3.Lethice;
-import classes.Scenes.Dungeons.D3.LethiceScenes;
-import classes.Scenes.Dungeons.D3.LivingStatue;
-import classes.Scenes.Dungeons.D3.LivingStatueScenes;
-import classes.Scenes.Dungeons.D3.SuccubusGardener;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
-import coc.view.MainView;
+ 
 
-public function endHpVictory():void
+export function endHpVictory():void
 {
 	monster.defeated_(true);
 }
 
-public function endLustVictory():void
+export function endLustVictory():void
 {
 	monster.defeated_(false);
 }
 
-public function endHpLoss():void
+export function endHpLoss():void
 {
 	monster.won_(true,false);
 }
 
-public function endLustLoss():void
+export function endLustLoss():void
 {
 	if (player.findStatusAffect(StatusAffects.Infested) >= 0 && flags[kFLAGS.CAME_WORMS_AFTER_COMBAT] == 0) {
 		flags[kFLAGS.CAME_WORMS_AFTER_COMBAT] = 1;
@@ -40,7 +40,7 @@ public function endLustLoss():void
 }
 
 //combat is over. Clear shit out and go to main
-public function cleanupAfterCombat(nextFunc:Function = null):void {
+export function cleanupAfterCombat(nextFunc:() => void = null):void {
 	if (nextFunc == null) nextFunc = camp.returnToCampUseOneHour;
 	if (inCombat) {
 		//clear status
@@ -79,7 +79,7 @@ public function cleanupAfterCombat(nextFunc:Function = null):void {
 			temp = rand(10) + 1 + Math.round(monster.level / 2);
 			if (inDungeon) temp += 20 + monster.level*2;
 			if (temp > player.gems) temp = player.gems;
-			var timePasses:int = monster.handleCombatLossText(inDungeon, temp); //Allows monsters to customize the loss text and the amount of time lost
+			var timePasses:number = monster.handleCombatLossText(inDungeon, temp); //Allows monsters to customize the loss text and the amount of time lost
 			player.gems -= temp;
 			inCombat = false;
 			//BUNUS XPZ
@@ -100,7 +100,7 @@ public function cleanupAfterCombat(nextFunc:Function = null):void {
 	else doNext(nextFunc);
 }
 
-public function approachAfterKnockback():void
+export function approachAfterKnockback():void
 {
 	clearOutput();
 	outputText("You close the distance between you and " + monster.a + monster.short + " as quickly as possible.\n\n");
@@ -109,14 +109,14 @@ public function approachAfterKnockback():void
 	return;
 }
 
-private function canUseMagic():Boolean {
+ function canUseMagic():boolean {
 	if (player.findStatusAffect(StatusAffects.ThroatPunch) >= 0) return false;
 	if (player.findStatusAffect(StatusAffects.WebSilence) >= 0) return false;
 	if (player.findStatusAffect(StatusAffects.GooArmorSilence) >= 0) return false;
 	return true;
 }
 
-public function combatMenu(newRound:Boolean = true):void { //If returning from a sub menu set newRound to false
+export function combatMenu(newRound:boolean = true):void { //If returning from a sub menu set newRound to false
 	clearOutput();
 	flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] = 0;
 	mainView.hideMenuButton(MainView.MENU_DATA);
@@ -129,9 +129,9 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 //This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 	if (combatRoundOver()) return;
 	menu();
-	var attacks:Function = normalAttack;
-	var magic:Function = (canUseMagic() ? magicMenu : null);
-	var pSpecials:Function = physicalSpecials;
+	var attacks:() => void = normalAttack;
+	var magic:() => void = (canUseMagic() ? magicMenu : null);
+	var pSpecials:() => void = physicalSpecials;
 	
 	if (player.findStatusAffect(StatusAffects.WhipSilence) >= 0)
 	{
@@ -140,7 +140,7 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 	
 	if (monster.findStatusAffect(StatusAffects.AttackDisabled) >= 0) 
 	{
-		if (monster is Lethice)
+		if (monster instanceof Lethice)
 		{
 			outputText("\n<b>With Lethice up in the air, you've got no way to reach her with your attacks!</b>");
 		}
@@ -165,7 +165,7 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		addButton(6, "M. Specials", magicalSpecials);
 		addButton(7, (monster.findStatusAffect(StatusAffects.Level) >= 0 ? "Climb" : "Wait"), wait);
 		addButton(8, "Fantasize", fantasize);
-		if (monster is DriderIncubus)
+		if (monster instanceof DriderIncubus)
 		{
 			var mdi:DriderIncubus = monster as DriderIncubus;
 			if (!mdi.goblinFree) addButton(9, "Free Goblin", mdi.freeGoblin);
@@ -235,10 +235,10 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		addButton(0, "Struggle", (monster as Lethice).grappleStruggle);
 		addButton(5, "Wait", (monster as Lethice).grappleWait);
 		
-		var whitefireLustCap:int = 75;
+		var whitefireLustCap:number = 75;
 		if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) whitefireLustCap += 10;
 		
-		var gotEnergy:Boolean = player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
+		var gotEnergy:boolean = player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
 		
 		if (player.lust < whitefireLustCap && player.findStatusAffect(StatusAffects.KnowsWhitefire) >= 0 && gotEnergy)
 		{
@@ -256,12 +256,12 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 		addButton(7, (monster.findStatusAffect(StatusAffects.Level) >= 0 ? "Climb" : "Wait"), wait);
 		addButton(8, "Fantasize", fantasize);
 		//if (CoC_Settings.debugBuild && !debug) addButton(9, "Inspect", debugInspect);
-		if (monster is DriderIncubus)
+		if (monster instanceof DriderIncubus)
 		{
 			mdi = monster as DriderIncubus;
 			if (!mdi.goblinFree) addButton(9, "Goblin", mdi.freeGoblin);
 		}
-		else if (monster is Lethice)
+		else if (monster instanceof Lethice)
 		{
 			var ml:Lethice = monster as Lethice;
 			whitefireLustCap = 75;
@@ -280,7 +280,7 @@ public function combatMenu(newRound:Boolean = true):void { //If returning from a
 	}
 }
 
-private function teaseAttack():void {
+ function teaseAttack():void {
 	if (monster.lustVuln == 0) {
 		clearOutput();
 		outputText("You try to tease " + monster.a + monster.short + " with your body, but it doesn't have any effect on " + monster.pronoun2 + ".\n\n");
@@ -298,12 +298,12 @@ private function teaseAttack():void {
 	}
 }
 
-private function normalAttack():void {
+ function normalAttack():void {
 	clearOutput();
 	attack();
 }
 
-public function packAttack():void {
+export function packAttack():void {
 	//Determine if dodged!
 	if (player.spe - monster.spe > 0 && int(Math.random() * (((player.spe - monster.spe) / 4) + 80)) > 80) {
 		outputText("You duck, weave, and dodge.  Despite their best efforts, the throng of demons only hit the air and each other.");
@@ -344,7 +344,7 @@ public function packAttack():void {
 	combatRoundOver();
 }
 
-public function lustAttack():void {
+export function lustAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	if (player.lust < 35) {
 		outputText("The " + monster.short + " press in close against you and although they fail to hit you with an attack, the sensation of their skin rubbing against yours feels highly erotic.");
@@ -367,7 +367,7 @@ public function lustAttack():void {
 	combatRoundOver();
 }
 
-private function wait():void {
+ function wait():void {
 	//Gain fatigue if not fighting sand tarps
 	if (monster.findStatusAffect(StatusAffects.Level) < 0) fatigue(-5);
 	flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] = 1;
@@ -456,7 +456,7 @@ private function wait():void {
 		player.removeStatusAffect(StatusAffects.Confusion);
 		enemyAI();
 	}
-	else if (monster is Doppleganger) {
+	else if (monster instanceof Doppleganger) {
 		clearOutput();
 		outputText("You decide not to take any action this round.\n\n");
 		(monster as Doppleganger).handlePlayerWait();
@@ -469,7 +469,7 @@ private function wait():void {
 	}
 }
 
-private function struggle():void {
+ function struggle():void {
 	if (monster.findStatusAffect(StatusAffects.MinotaurEntangled) >= 0) {
 		clearOutput();
 		if (player.str / 9 + rand(20) + 1 >= 15) {
@@ -558,7 +558,7 @@ private function struggle():void {
 	}
 }
 
-private function fireBow():void {
+ function fireBow():void {
 	clearOutput();
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 1;
 	if (player.fatigue + physicalCost(25) > 100) {
@@ -640,14 +640,14 @@ private function fireBow():void {
 		enemyAI();
 		return;
 	}
-	if (monster is Lethice && monster.findStatusAffect(StatusAffects.Shell) >= 0)
+	if (monster instanceof Lethice && monster.findStatusAffect(StatusAffects.Shell) >= 0)
 	{
 		outputText("Your arrow pings of the side of the shield and spins end over end into the air. Useless.\n\n");
 		enemyAI();
 		return;
 	}
 	//Hit!  Damage calc! 20 +
-	var damage:Number = 0;
+	var damage:number = 0;
 	damage = int((20 + player.str / 3 + player.statusAffectv1(StatusAffects.Kelt) / 1.2) + player.spe / 3 - rand(monster.tou) - monster.armorDef);
 	if (damage < 0) damage = 0;
 	if (damage == 0) {
@@ -676,7 +676,7 @@ private function fireBow():void {
 		return;
 	}
 	else outputText(".  It's clearly very painful. (" + String(damage) + ")\n\n");
-	if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+	if (monster instanceof Lethice && (monster as Lethice).fightPhase == 3)
 	{
 		outputText("\n\n<i>“Ouch. Such a cowardly weapon,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your pathetic arrows?”</i>\n\n");
 		monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
@@ -684,21 +684,21 @@ private function fireBow():void {
 	enemyAI();
 }
 
-private function fireBreathMenu():void {
+ function fireBreathMenu():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	outputText("Which of your special fire-breath attacks would you like to use?");
 	simpleChoices("Akbal's", fireballuuuuu, "Hellfire", hellFire, "Dragonfire", dragonBreath, "", null, "Back", playerMenu);
 }
 
-private function debugInspect():void {
+ function debugInspect():void {
 	outputText(monster.generateDebugDescription());
 	doNext(playerMenu);
 }
 
 //Fantasize
-public function fantasize():void {
-	var temp2:Number = 0;
+export function fantasize():void {
+	var temp2:number = 0;
 	doNext(combatMenu);
 	outputText("", true);
 	if(player.armorName == "goo armor") {
@@ -743,7 +743,7 @@ public function fantasize():void {
 }
 //Mouf Attack
 // (Similar to the bow attack, high damage but it raises your fatigue).
-public function bite():void {
+export function bite():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	if(player.fatigue + physicalCost(25) > 100) {
 		outputText("You're too fatigued to use your shark-like jaws!", true);
@@ -767,7 +767,7 @@ public function bite():void {
 	}
 	outputText("You open your mouth wide, your shark teeth extending out. Snarling with hunger, you lunge at your opponent, set to bite right into them!  ", true);
 	if(player.findStatusAffect(StatusAffects.Blind) >= 0) outputText("In hindsight, trying to bite someone while blind was probably a bad idea... ", false);
-	var damage:Number = 0;
+	var damage:number = 0;
 	//Determine if dodged!
 	if((player.findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) != 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
 		if(monster.spe - player.spe < 8) outputText(monster.capitalA + monster.short + " narrowly avoids your attack!", false);
@@ -813,13 +813,13 @@ public function bite():void {
 	}
 }
 
-public function fatigueRecovery():void {
+export function fatigueRecovery():void {
 	fatigue(-1);
 	if(player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) fatigue(-(1+rand(3)));
 }
 
 //ATTACK
-public function attack():void {
+export function attack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	if(player.findStatusAffect(StatusAffects.FirstAttack) < 0) {
 		outputText("", true);
@@ -869,7 +869,7 @@ public function attack():void {
 	if(player.findStatusAffect(StatusAffects.Blind) >= 0) {
 		outputText("You attempt to attack, but as blinded as you are right now, you doubt you'll have much luck!  ", false);
 	}
-	if(monster is Basilisk) {
+	if(monster instanceof Basilisk) {
 		//basilisk counter attack (block attack, significant speed loss): 
 		if(player.inte/5 + rand(20) < 25) {
 			outputText("Holding the basilisk in your peripheral vision, you charge forward to strike it.  Before the moment of impact, the reptile shifts its posture, dodging and flowing backward skillfully with your movements, trying to make eye contact with you. You find yourself staring directly into the basilisk's face!  Quickly you snap your eyes shut and recoil backwards, swinging madly at the lizard to force it back, but the damage has been done; you can see the terrible grey eyes behind your closed lids, and you feel a great weight settle on your bones as it becomes harder to move.", false);
@@ -908,7 +908,7 @@ public function attack():void {
 		return;
 	}
 	
-	var damage:Number = 0;
+	var damage:number = 0;
 	//Determine if dodged!
 	if((player.findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
 		//Akbal dodges special education
@@ -962,13 +962,13 @@ public function attack():void {
 	//Bonus sand trap damage!
 	if(monster.findStatusAffect(StatusAffects.Level) >= 0) damage = Math.round(damage * 1.75);
 	//Determine if critical hit!
-	var crit:Boolean = false;
+	var crit:boolean = false;
 	if(rand(100) <= 4 || (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50)/5 > rand(100))) {
 		crit = true;
 		damage *= 1.75;
 	}
 	//Start figuring enemy damage resistance
-	var reduction:Number = rand(monster.tou);
+	var reduction:number = rand(monster.tou);
 	//Add in enemy armor if needed
 	if(player.weaponName != "jeweled rapier" && player.weaponName != "deadly spear") {
 		reduction += monster.armorDef;
@@ -1024,7 +1024,7 @@ public function attack():void {
 	}
 
 	// Have to put it before doDamage, because doDamage applies the change, as well as status effects and shit.
-	if (monster is Doppleganger)
+	if (monster instanceof Doppleganger)
 	{
 		if (monster.findStatusAffect(StatusAffects.Stunned) < 0)
 		{
@@ -1096,7 +1096,7 @@ public function attack():void {
 			//50% Bleed chance
 			if (player.weaponName == "hooked gauntlets" && rand(2) == 0 && monster.armorDef < 10 && monster.findStatusAffect(StatusAffects.IzmaBleed) < 0) 
 			{
-				if (monster is LivingStatue)
+				if (monster instanceof LivingStatue)
 				{
 					outputText("Despite the rents you've torn in its stony exterior, the statue does not bleed.");
 				}
@@ -1111,7 +1111,7 @@ public function attack():void {
 		
 	}
 	
-	if (monster is JeanClaude && player.findStatusAffect(StatusAffects.FirstAttack) < 0)
+	if (monster instanceof JeanClaude && player.findStatusAffect(StatusAffects.FirstAttack) < 0)
 	{
 		if (monster.HP < 1 || monster.lust > 99)
 		{
@@ -1157,7 +1157,7 @@ public function attack():void {
 	}
 }
 //Gore Attack - uses 15 fatigue!
-public function goreAttack():void {
+export function goreAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	clearOutput();
 //This is now automatic - newRound arg defaults to true:	menuLoc = 0;
@@ -1173,7 +1173,7 @@ public function goreAttack():void {
 		return;
 	}
 	fatigue(15,2);
-	var damage:Number = 0;
+	var damage:number = 0;
 	//Amily!
 	if(monster.findStatusAffect(StatusAffects.Concentration) >= 0) {
 		outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
@@ -1203,7 +1203,7 @@ public function goreAttack():void {
 	temp += player.spe/2;
 	//Hit & calculation
 	if(temp >= rand(100)) {
-		var horns:Number = player.horns;
+		var horns:number = player.horns;
 		if(player.horns > 40) player.horns = 40;
 		//normal
 		if(rand(4) > 0) {
@@ -1257,7 +1257,7 @@ public function goreAttack():void {
 	}
 }
 //Player sting attack
-public function playerStinger():void {
+export function playerStinger():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	clearOutput();
 	//Keep logic sane if this attack brings victory
@@ -1298,7 +1298,7 @@ public function playerStinger():void {
 	if(monster.plural) outputText("You watch as " + monster.pronoun1 + " stagger back a step and nearly trip, flushing hotly.");
 	else outputText("You watch as " + monster.pronoun1 + " staggers back a step and nearly trips, flushing hotly.");
 	//Tabulate damage!
-	var damage:Number = 35 + rand(player.lib/10);
+	var damage:number = 35 + rand(player.lib/10);
 	//Level adds more damage up to a point (level 20)
 	if(player.level < 10) damage += player.level * 3;
 	else if(player.level < 20) damage += 30 + (player.level-10) * 2;
@@ -1327,24 +1327,24 @@ public function playerStinger():void {
 	else doNext(endLustVictory);
 }
 
-public function combatMiss():Boolean {
+export function combatMiss():boolean {
 	return player.spe - monster.spe > 0 && int(Math.random() * (((player.spe - monster.spe) / 4) + 80)) > 80;
 
 }
-public function combatEvade():Boolean {
+export function combatEvade():boolean {
 	return monster.short != "Kiha" && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10;
 
 }
-public function combatFlexibility():Boolean {
+export function combatFlexibility():boolean {
 	return player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6;
 
 }
-public function combatMisdirect():Boolean {
+export function combatMisdirect():boolean {
 	return player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit";
 }
 
 //DEAL DAMAGE
-public function doDamage(damage:Number, apply:Boolean = true):Number {
+export function doDamage(damage:number, apply:boolean = true):number {
 	if(player.findPerk(PerkLib.Sadist) >= 0) {
 		damage *= 1.2;
 		dynStats("lus", 3);
@@ -1358,7 +1358,7 @@ public function doDamage(damage:Number, apply:Boolean = true):Number {
 	}
 	
 	// Uma's Massage Bonuses
-	var statIndex:int = player.findStatusAffect(StatusAffects.UmasMassage);
+	var statIndex:number = player.findStatusAffect(StatusAffects.UmasMassage);
 	if (statIndex >= 0)
 	{
 		if (player.statusAffect(statIndex).value1 == UmasShop.MASSAGE_POWER)
@@ -1384,16 +1384,16 @@ public function doDamage(damage:Number, apply:Boolean = true):Number {
 	return damage;
 }
 
-public function takeDamage(damage:Number):Number {
+export function takeDamage(damage:number):number {
 	return player.takeDamage(damage);
 }
 //ENEMYAI!
-public function enemyAI():void {
+export function enemyAI():void {
 	monster.doAI();
 }
-public function finishCombat():void
+export function finishCombat():void
 {
-	var hpVictory:Boolean = monster.HP < 1;
+	var hpVictory:boolean = monster.HP < 1;
 	if (hpVictory) {
 		outputText("You defeat " + monster.a + monster.short + ".\n", true);
 	} else {
@@ -1401,7 +1401,7 @@ public function finishCombat():void
 	}
 	awardPlayer();
 }
-public function dropItem(monster:Monster):void {
+export function dropItem(monster:Monster):void {
 	if(monster.findStatusAffect(StatusAffects.NoLoot) >= 0) {
 		return;
 	}
@@ -1409,7 +1409,7 @@ public function dropItem(monster:Monster):void {
 	if(monster.short == "tit-fucked Minotaur") {
 		itype = consumables.MINOCUM;
 	}
-	if(monster is Minotaur) {
+	if(monster instanceof Minotaur) {
 		if(monster.weaponName == "axe") {
 			if(rand(2) == 0) {
 				//50% breakage!
@@ -1428,7 +1428,7 @@ public function dropItem(monster:Monster):void {
 			else itype = consumables.MINOBLO;
 		}
 	}
-	if(monster is BeeGirl) {
+	if(monster instanceof BeeGirl) {
 		//force honey drop if milked
 		if(flags[kFLAGS.FORCE_BEE_TO_PRODUCE_HONEY] == 1) {
 			if(rand(2) == 0) itype = consumables.BEEHONY;
@@ -1436,20 +1436,20 @@ public function dropItem(monster:Monster):void {
 			flags[kFLAGS.FORCE_BEE_TO_PRODUCE_HONEY] = 0;
 		}
 	}
-	if(monster is Jojo && monk > 4) {
+	if(monster instanceof Jojo && monk > 4) {
 		if(rand(2) == 0) itype = consumables.INCUBID;
 		else {
 			if(rand(2) == 0) itype = consumables.B__BOOK;
 			else itype = consumables.SUCMILK;
 		}
 	}
-	if(monster is Harpy || monster is Sophie) {
+	if(monster instanceof Harpy || monster instanceof Sophie) {
 		if(rand(10) == 0) itype = armors.W_ROBES;
 		else if(rand(3) == 0 && player.findPerk(PerkLib.LuststickAdapted) >= 0) itype = consumables.LUSTSTK;
 		else itype = consumables.GLDSEED;
 	}
 	//Chance of armor if at level 1 pierce fetish
-	if(!plotFight && !(monster is Ember) && !(monster is Kiha) && !(monster is Hel) && !(monster is Isabella)
+	if(!plotFight && !(monster instanceof Ember) && !(monster instanceof Kiha) && !(monster instanceof Hel) && !(monster instanceof Isabella)
 			&& flags[kFLAGS.PC_FETISH] == 1 && rand(10) == 0 && !player.hasItem(armors.SEDUCTA, 1) && !ceraphFollowerScene.ceraphIsFollower()) {
 		itype = armors.SEDUCTA;
 	}
@@ -1484,12 +1484,12 @@ public function dropItem(monster:Monster):void {
 		else inventory.takeItem(itype, camp.returnToCampUseOneHour);
 	}
 }
-public function awardPlayer():void
+export function awardPlayer():void
 {
 	if (player.countCockSocks("gilded") > 0) {
 		//trace( "awardPlayer found MidasCock. Gems bumped from: " + monster.gems );
 		
-		var bonusGems:int = monster.gems * 0.15 + 5 * player.countCockSocks("gilded"); // int so AS rounds to whole numbers
+		var bonusGems:number = monster.gems * 0.15 + 5 * player.countCockSocks("gilded"); // int so AS rounds to whole numbers
 		monster.gems += bonusGems;
 		//trace( "to: " + monster.gems )
 	}
@@ -1504,14 +1504,14 @@ public function awardPlayer():void
 }
 
 //Clear statuses
-public function clearStatuses(visibility:Boolean):void {
+export function clearStatuses(visibility:boolean):void {
 	player.clearStatuses(visibility);
 }
 //Update combat status effects
-private function combatStatusesUpdate():void {
+ function combatStatusesUpdate():void {
 	//old outfit used for fetish cultists
-	var oldOutfit:String = "";
-	var changed:Boolean = false;
+	var oldOutfit:string = "";
+	var changed:boolean = false;
 	//Reset menuloc
 	//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 	hideUpDown();
@@ -1578,7 +1578,7 @@ private function combatStatusesUpdate():void {
 		{
 			player.addStatusValue(StatusAffects.LethicesRapeTentacles, 2, 1);
 			
-			var tentaround:Number = player.statusAffectv2(StatusAffects.LethicesRapeTentacles);
+			var tentaround:number = player.statusAffectv2(StatusAffects.LethicesRapeTentacles);
 			
 			if (tentaround == 1)
 			{
@@ -1724,7 +1724,7 @@ private function combatStatusesUpdate():void {
 				//Alert PC that blind is gone if no more stacks are there.
 				if (player.findStatusAffect(StatusAffects.Blind) < 0) 
 				{
-					if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+					if (monster instanceof Lethice && (monster as Lethice).fightPhase == 2)
 					{
 						outputText("<b>You finally blink away the last of the demonic spooge from your eyes!</b>\n\n", false);
 					}
@@ -1755,14 +1755,14 @@ private function combatStatusesUpdate():void {
 		}
 		//Bleed effect:
 		else {
-			var bleed:Number = (2 + rand(4))/100;
+			var bleed:number = (2 + rand(4))/100;
 			bleed *= player.HP;
 			bleed = takeDamage(bleed);
 			outputText("<b>You gasp and wince in pain, feeling fresh blood pump from your wounds. (" + bleed + ")</b>\n\n", false);
 		}
 	}
 	if(player.findStatusAffect(StatusAffects.AcidSlap) >= 0) {
-		var slap:Number = 3 + (maxHP() * 0.02);
+		var slap:number = 3 + (maxHP() * 0.02);
 		outputText("<b>Your muscles twitch in agony as the acid keeps burning you. (" + slap + ")</b>\n\n", false);
 	}
 	if(player.findPerk(PerkLib.ArousingAura) >= 0 && monster.lustVuln > 0 && player.cor >= 70) {
@@ -1963,7 +1963,7 @@ private function combatStatusesUpdate():void {
 	
 	if (monster.findStatusAffect(StatusAffects.OnFire) >= 0)
 	{
-		var damage:Number = 20 + rand(5);
+		var damage:number = 20 + rand(5);
 		monster.HP -= damage;
 		monster.addStatusValue(StatusAffects.OnFire, 1, -1);
 		if (monster.statusAffectv1(StatusAffects.OnFire) <= 0)
@@ -1983,8 +1983,8 @@ private function combatStatusesUpdate():void {
 	if(player.HP <= 0) doNext(endHpLoss);
 }
 
-public function regeneration(combat:Boolean = true):void {
-	var healingPercent:int = 0;
+export function regeneration(combat:boolean = true):void {
+	var healingPercent:number = 0;
 	if(combat) {
 		//Regeneration
 		healingPercent = 0;
@@ -2008,7 +2008,7 @@ public function regeneration(combat:Boolean = true):void {
 		HPChange(Math.round(maxHP() * healingPercent / 100), false);
 	}
 }
-public function startCombat(monster_:Monster,plotFight_:Boolean=false):void {
+export function startCombat(monster_:Monster,plotFight_:boolean=false):void {
 	plotFight = plotFight_;
 	mainView.hideMenuButton( MainView.MENU_DATA );
 	mainView.hideMenuButton( MainView.MENU_APPEARANCE );
@@ -2029,7 +2029,7 @@ public function startCombat(monster_:Monster,plotFight_:Boolean=false):void {
 	}
 	doNext(playerMenu);
 }
-public function startCombatImmediate(monster_:Monster, _plotFight:Boolean):void
+export function startCombatImmediate(monster_:Monster, _plotFight:boolean):void
 {
 	plotFight = _plotFight;
 	mainView.hideMenuButton( MainView.MENU_DATA );
@@ -2051,7 +2051,7 @@ public function startCombatImmediate(monster_:Monster, _plotFight:Boolean):void
 	}
 	playerMenu();
 }
-public function display():void {
+export function display():void {
 	if (!monster.checkCalled){
 		outputText("<B>/!\\BUG! Monster.checkMonster() is not called! Calling it now...</B>\n");
 		monster.checkMonster();
@@ -2060,14 +2060,14 @@ public function display():void {
 		outputText("<B>/!\\BUG! Monster is not correctly initialized! <u>"+
 				monster.checkError+"</u></b>\n");
 	}
-	var percent:String = "";
-	var math:Number = monster.HPRatio();
+	var percent:string = "";
+	var math:number = monster.HPRatio();
 	percent = "(<b>" + String(int(math * 1000) / 10) + "% HP</b>)";
 
 	//trace("trying to show monster image!");
 	if (monster.imageName != "")
 	{
-		var monsterName:String = "monster-" + monster.imageName;
+		var monsterName:string = "monster-" + monster.imageName;
 		//trace("Monster name = ", monsterName);
 		outputText(images.showImage(monsterName), false,false);
 	}
@@ -2180,7 +2180,7 @@ public function display():void {
 		outputText(monster.generateDebugDescription(),false);
 	}
 }
-public function showMonsterLust():void {
+export function showMonsterLust():void {
 	//Entrapped
 	if(monster.findStatusAffect(StatusAffects.Constricted) >= 0) {
 		outputText(monster.capitalA + monster.short + " is currently wrapped up in your tail-coils!  ", false);
@@ -2218,7 +2218,7 @@ public function showMonsterLust():void {
 		//(Enemy dangerously aroused) 
 		if(monster.lust >= 90) outputText("You can see her thighs coated with clear fluids, the feathers matted and sticky as she struggles to contain her lust.", false);
 	}
-	else if(monster is Clara)
+	else if(monster instanceof Clara)
 	{
 		//Clara is becoming aroused
 		if(monster.lust <= 40)	 {}
@@ -2330,14 +2330,14 @@ public function showMonsterLust():void {
 }
 
 // This is a bullshit work around to get the parser to do what I want without having to fuck around in it's code.
-public function teaseText():String
+export function teaseText():string
 {
 	tease(true);
 	return "";
 }
 
 // Just text should force the function to purely emit the test text to the output display, and not have any other side effects
-public function tease(justText:Boolean = false):void {
+export function tease(justText:boolean = false):void {
 	if (!justText) outputText("", true);
 	//You cant tease a blind guy!
 	if(monster.findStatusAffect(StatusAffects.Blind) >= 0) {
@@ -2353,22 +2353,22 @@ public function tease(justText:Boolean = false):void {
 		return;
 	}
 	fatigueRecovery();
-	var damage:Number;
-	var chance:Number;
-	var bimbo:Boolean = false;
-	var bro:Boolean = false;
-	var futa:Boolean = false;
-	var choices:Array = [];
-	var select:Number;
+	var damage:number;
+	var chance:number;
+	var bimbo:boolean = false;
+	var bro:boolean = false;
+	var futa:boolean = false;
+	var choices:any[] = [];
+	var select:number;
 	//Tags used for bonus damage and chance later on
-	var breasts:Boolean = false;
-	var penis:Boolean = false;
-	var balls:Boolean = false;
-	var vagina:Boolean = false;
-	var anus:Boolean = false;
-	var ass:Boolean = false;
+	var breasts:boolean = false;
+	var penis:boolean = false;
+	var balls:boolean = false;
+	var vagina:boolean = false;
+	var anus:boolean = false;
+	var ass:boolean = false;
 	//If auto = true, set up bonuses using above flags
-	var auto:Boolean = true;
+	var auto:boolean = true;
 	//==============================
 	//Determine basic success chance.
 	//==============================
@@ -3308,7 +3308,7 @@ public function tease(justText:Boolean = false):void {
 			}
 			break;
 		case 43:
-			var cows:int = rand(7);
+			var cows:number = rand(7);
 			if(cows == 0) {
 				outputText("You tuck your hands under your chin and use your arms to squeeze your massive, heavy breasts together.  Milk squirts from your erect nipples, filling the air with a rich, sweet scent.");
 				breasts = true;
@@ -3360,7 +3360,7 @@ public function tease(justText:Boolean = false):void {
 			break;
 		//lusty maiden's armor teases
 		case 44:
-			var maiden:int = rand(5);
+			var maiden:number = rand(5);
 			damage += 5;
 			chance += 3;
 			if(maiden == 0) {
@@ -3394,8 +3394,8 @@ public function tease(justText:Boolean = false):void {
 	//===========================
 	//BUILD BONUSES IF APPLICABLE
 	//===========================	
-	var bonusChance:Number = 0;
-	var bonusDamage:Number = 0;
+	var bonusChance:number = 0;
+	var bonusDamage:number = 0;
 	if(auto) {
 		//TIT BONUSES
 		if(breasts) {
@@ -3657,8 +3657,8 @@ public function tease(justText:Boolean = false):void {
 		if(monster.plural) damage *= 1.3;
 		damage = (damage + rand(bonusDamage)) * monster.lustVuln;
 		
-		if (monster is JeanClaude) (monster as JeanClaude).handleTease(damage, true);
-		else if (monster is Doppleganger && monster.findStatusAffect(StatusAffects.Stunned) < 0) (monster as Doppleganger).mirrorTease(damage, true);
+		if (monster instanceof JeanClaude) (monster as JeanClaude).handleTease(damage, true);
+		else if (monster instanceof Doppleganger && monster.findStatusAffect(StatusAffects.Stunned) < 0) (monster as Doppleganger).mirrorTease(damage, true);
 		else if (!justText) monster.teased(damage);
 		
 		if (flags[kFLAGS.PC_FETISH] >= 1 && !urtaQuest.isUrta()) 
@@ -3675,14 +3675,14 @@ public function tease(justText:Boolean = false):void {
 	else {
 		if (!justText && !urtaQuest.isUrta()) teaseXP(5);
 		
-		if (monster is JeanClaude) (monster as JeanClaude).handleTease(0, false);
-		else if (monster is Doppleganger) (monster as Doppleganger).mirrorTease(0, false);
+		if (monster instanceof JeanClaude) (monster as JeanClaude).handleTease(0, false);
+		else if (monster instanceof Doppleganger) (monster as Doppleganger).mirrorTease(0, false);
 		else if (!justText) outputText("\n" + monster.capitalA + monster.short + " seems unimpressed.", false);
 	}
 	outputText("\n\n", false);
 }
 
-public function teaseXP(XP:Number = 0):void {
+export function teaseXP(XP:number = 0):void {
 	while(XP > 0) {
 		XP--;
 		player.teaseXP++;
@@ -3696,7 +3696,7 @@ public function teaseXP(XP:Number = 0):void {
 }
 
 //VICTORY OR DEATH?
-public function combatRoundOver():Boolean { //Called after the monster's action
+export function combatRoundOver():boolean { //Called after the monster's action
 	statScreenRefresh();
 	if (!inCombat) return false;
 	if(monster.HP < 1) {
@@ -3729,14 +3729,14 @@ public function combatRoundOver():Boolean { //Called after the monster's action
 	return false;
 }
 
-public function hasSpells():Boolean {
+export function hasSpells():boolean {
 	return player.hasSpells();
 }
-public function spellCount():Number {
+export function spellCount():number {
 	return player.spellCount();
 }
 
-public function magicMenu():void {
+export function magicMenu():void {
 //Pass false to combatMenu instead:	menuLoc = 3;
 	if (inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 2) {
 		clearOutput();
@@ -3748,7 +3748,7 @@ public function magicMenu():void {
 	clearOutput();
 	outputText("What spell will you use?\n\n");
 	//WHITE SHITZ
-	var whiteLustCap:int = 75;
+	var whiteLustCap:number = 75;
 	if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) whiteLustCap += 10;
 	
 	if (player.lust >= whiteLustCap)
@@ -3785,8 +3785,8 @@ public function magicMenu():void {
 	addButton(9, "Back", combatMenu, false);
 }
 
-public function spellMod():Number {
-	var mod:Number = 1;
+export function spellMod():number {
+	var mod:number = 1;
 	if(player.findPerk(PerkLib.Archmage) >= 0 && player.inte >= 75) mod += .5;
 	if(player.findPerk(PerkLib.Channeling) >= 0 && player.inte >= 60) mod += .5;
 	if(player.findPerk(PerkLib.Mage) >= 0 && player.inte >= 50) mod += .5;
@@ -3797,7 +3797,7 @@ public function spellMod():Number {
 	if (player.findPerk(PerkLib.ChiReflowMagic) >= 0) mod += UmasShop.NEEDLEWORK_MAGIC_SPELL_MULTI;
 	return mod;
 }
-public function spellArouse():void {
+export function spellArouse():void {
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(15) > 100) {
 		outputText("You are too tired to cast this spell.", true);
 		doNext(magicMenu);
@@ -3873,7 +3873,7 @@ public function spellArouse():void {
 	else enemyAI();
 	return;	
 }
-public function spellHeal():void {
+export function spellHeal():void {
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
 		outputText("You are too tired to cast this spell.", true);
 		doNext(magicMenu);
@@ -3913,7 +3913,7 @@ public function spellHeal():void {
 //(25) Might – increases strength/toughness by 5 * spellMod, up to a 
 //maximum of 15, allows it to exceed the maximum.  Chance of backfiring 
 //and increasing lust by 15.
-public function spellMight():void {
+export function spellMight():void {
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(25) > 100) {
 		outputText("You are too tired to cast this spell.", true);
 		doNext(magicMenu);
@@ -3922,8 +3922,8 @@ public function spellMight():void {
 	doNext(combatMenu);
 //This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 	fatigue(25,1);
-	var tempStr:Number = 0;
-	var tempTou:Number = 0;
+	var tempStr:number = 0;
+	var tempTou:number = 0;
 	outputText("You flush, drawing on your body's desires to empower your muscles and toughen you up.\n\n", true);
 	//25% backfire!
 	if(rand(4) == 0) {
@@ -3968,7 +3968,7 @@ public function spellMight():void {
 }
 
 //(15) Charge Weapon – boosts your weapon attack value by 10 * SpellMod till the end of combat.
-public function spellChargeWeapon():void {
+export function spellChargeWeapon():void {
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(15) > 100) {
 		outputText("You are too tired to cast this spell.", true);
 		doNext(magicMenu);
@@ -3985,7 +3985,7 @@ public function spellChargeWeapon():void {
 	enemyAI();
 }
 //(20) Blind – reduces your opponent's accuracy, giving an additional 50% miss chance to physical attacks.
-public function spellBlind():void {
+export function spellBlind():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
@@ -4003,7 +4003,7 @@ public function spellBlind():void {
 		enemyAI();
 		return;
 	}
-	if (monster is JeanClaude)
+	if (monster instanceof JeanClaude)
 	{
 		outputText("Jean-Claude howls, reeling backwards before turning back to you, rage clenching his dragon-like face and enflaming his eyes. Your spell seemed to cause him physical pain, but did nothing to blind his lidless sight.");
 
@@ -4032,7 +4032,7 @@ public function spellBlind():void {
 		else enemyAI();
 		return;
 	}
-	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	else if (monster instanceof Lethice && (monster as Lethice).fightPhase == 2)
 	{
 		outputText("You hold your [weapon] aloft and thrust your will forward, causing it to erupt in a blinding flash of light. The demons of the court scream and recoil from the radiant burst, clutching at their eyes and trampling over each other to get back.");
 
@@ -4047,7 +4047,7 @@ public function spellBlind():void {
 		return;
 	}
 	outputText("You glare at " + monster.a + monster.short + " and point at " + monster.pronoun2 + ".  A bright flash erupts before " + monster.pronoun2 + "!\n", true);
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		// noop
 	}
@@ -4073,7 +4073,7 @@ public function spellBlind():void {
 	enemyAI();
 }
 //(30) Whitefire – burns the enemy for 10 + int/3 + rand(int/2) * spellMod.
-public function spellWhitefire():void {
+export function spellWhitefire():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100) {
@@ -4091,14 +4091,14 @@ public function spellWhitefire():void {
 		enemyAI();
 		return;
 	}
-	if (monster is Doppleganger)
+	if (monster instanceof Doppleganger)
 	{
 		(monster as Doppleganger).handleSpellResistance("whitefire");
 		flags[kFLAGS.SPELLS_CAST]++;
 		spellPerkUnlock();
 		return;
 	}
-	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	else if (monster instanceof Lethice && (monster as Lethice).fightPhase == 2)
 	{
 		//Attack gains burn DoT for 2-3 turns.
 		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!");
@@ -4132,7 +4132,7 @@ public function spellWhitefire():void {
 	}
 	else
 	{
-		if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+		if (monster instanceof Lethice && (monster as Lethice).fightPhase == 3)
 		{
 			outputText("\n\n<i>“Ouch. Such arcane skills for one so uncouth,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your magics?”</i>\n\n");
 			monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
@@ -4141,7 +4141,7 @@ public function spellWhitefire():void {
 	}
 }
 
-public function spellCleansingPalm():void
+export function spellCleansingPalm():void
 {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
@@ -4174,7 +4174,7 @@ public function spellCleansingPalm():void
 		}
 	}
 	
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		outputText("You thrust your palm forward, causing a blast of pure energy to slam against the giant stone statue- to no effect!");
 		flags[kFLAGS.SPELLS_CAST]++;
@@ -4183,7 +4183,7 @@ public function spellCleansingPalm():void
 		return;
 	}
 		
-	var corruptionMulti:Number = (monster.cor - 20) / 25;
+	var corruptionMulti:number = (monster.cor - 20) / 25;
 	if (corruptionMulti > 1.5) corruptionMulti = 1.5;
 	
 	temp = int((player.inte / 4 + rand(player.inte / 3)) * (spellMod() * corruptionMulti));
@@ -4211,7 +4211,7 @@ public function spellCleansingPalm():void
 	else enemyAI();
 }
 
-public function spellPerkUnlock():void {
+export function spellPerkUnlock():void {
 	if(flags[kFLAGS.SPELLS_CAST] >= 5 && player.findPerk(PerkLib.SpellcastingAffinity) < 0) {
 		outputText("<b>You've become more comfortable with your spells, unlocking the Spellcasting Affinity perk and reducing fatigue cost of spells by 20%!</b>\n\n");
 		player.createPerk(PerkLib.SpellcastingAffinity,20,0,0,0);
@@ -4229,8 +4229,8 @@ public function spellPerkUnlock():void {
 //player gains hellfire perk.  
 //Hellfire deals physical damage to completely pure foes, 
 //lust damage to completely corrupt foes, and a mix for those in between.  Its power is based on the PC's corruption and level.  Appearance is slightly changed to mention that the PC's eyes and mouth occasionally show flicks of fire from within them, text could possibly vary based on corruption.
-public function hellFire():void {
-	var damage:Number = 0;
+export function hellFire():void {
+	var damage:number = 0;
 	if (monster.cor < 50) flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	else flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	outputText("", true);
@@ -4247,13 +4247,13 @@ public function hellFire():void {
 		enemyAI();
 		return;
 	}
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		outputText("The fire courses over the stone behemoths skin harmlessly. It does leave the surface of the statue glossier in its wake.");
 		enemyAI();
 		return;
 	}
-	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	else if (monster instanceof Lethice && (monster as Lethice).fightPhase == 2)
 	{
 		//Attack gains burn DoT for 2-3 turns.
 		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!");
@@ -4332,7 +4332,7 @@ public function hellFire():void {
 	}
 	else
 	{
-		if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+		if (monster instanceof Lethice && (monster as Lethice).fightPhase == 3)
 		{
 			outputText("\n\n<i>“Ouch. Such arcane skills for one so uncouth,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your magics?”</i>\n\n");
 			monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
@@ -4341,7 +4341,7 @@ public function hellFire():void {
 	}
 }
 
-public function kick():void {
+export function kick():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	if(player.fatigue + physicalCost(15) > 100) {
@@ -4400,7 +4400,7 @@ public function kick():void {
 		enemyAI();
 		return;
 	}
-	var damage:Number;
+	var damage:number;
 	//Determine if dodged!
 	if((player.findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
 		//Akbal dodges special education
@@ -4424,7 +4424,7 @@ public function kick():void {
 	else if(player.lowerBody == LOWER_BODY_TYPE_BUNNY) damage += 20;
 	else if(player.lowerBody == LOWER_BODY_TYPE_KANGAROO) damage += 35;
 	//Start figuring enemy damage resistance
-	var reduction:Number = rand(monster.tou);
+	var reduction:number = rand(monster.tou);
 	//Add in enemy armor if needed
 	reduction += monster.armorDef;
 	//Apply AND DONE!
@@ -4461,7 +4461,7 @@ public function kick():void {
 	else enemyAI();
 }
 
-public function PCWebAttack():void {
+export function PCWebAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//Keep logic sane if this attack brings victory
@@ -4506,7 +4506,7 @@ public function PCWebAttack():void {
 	if(monster.HP < 1 || monster.lust > 99) combatRoundOver();
 	else enemyAI();
 }
-public function nagaBiteAttack():void {
+export function nagaBiteAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//FATIIIIGUE
@@ -4525,7 +4525,7 @@ public function nagaBiteAttack():void {
 		enemyAI();
 		return;
 	}
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		outputText("Your fangs can't even penetrate the giant's flesh.");
 		enemyAI();
@@ -4555,7 +4555,7 @@ public function nagaBiteAttack():void {
 	if(monster.HP < 1 || monster.lust > 99) combatRoundOver();
 	else enemyAI();
 }
-public function spiderBiteAttack():void {
+export function spiderBiteAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//FATIIIIGUE
@@ -4574,7 +4574,7 @@ public function spiderBiteAttack():void {
 		enemyAI();
 		return;
 	}
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		outputText("Your fangs can't even penetrate the giant's flesh.");
 		enemyAI();
@@ -4609,7 +4609,7 @@ public function spiderBiteAttack():void {
 //New Abilities and Items
 //[Abilities]
 //Whisper 
-public function superWhisperAttack():void {
+export function superWhisperAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(10) > 100)
@@ -4629,7 +4629,7 @@ public function superWhisperAttack():void {
 		enemyAI();
 		return;
 	}
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		outputText("There is nothing inside the golem to whisper to.");
 		changeFatigue(1);
@@ -4671,7 +4671,7 @@ public function superWhisperAttack():void {
 //This attack has a cooldown and is more dramatic when used by the PC, it should be some sort of last ditch attack for emergencies. Don't count on using this whenever you want.
 	//once a day or something
 	//Effect of attack: Damages and stuns the enemy for the turn you used this attack on, plus 2 more turns. High chance of success.
-public function dragonBreath():void {
+export function dragonBreath():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100)
@@ -4689,7 +4689,7 @@ public function dragonBreath():void {
 //This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 	fatigue(20, 1);
 	player.createStatusAffect(StatusAffects.DragonBreathCooldown,0,0,0,0);
-	var damage:Number = int(player.level * 8 + 25 + rand(10));
+	var damage:number = int(player.level * 8 + 25 + rand(10));
 	if(player.findStatusAffect(StatusAffects.DragonBreathBoost) >= 0) {
 		player.removeStatusAffect(StatusAffects.DragonBreathBoost);
 		damage *= 1.5;
@@ -4706,13 +4706,13 @@ public function dragonBreath():void {
 		enemyAI();
 		return;
 	}
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		outputText("The fire courses by the stone skin harmlessly. It does leave the surface of the statue glossier in its wake.");
 		enemyAI();
 		return;
 	}
-	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	else if (monster instanceof Lethice && (monster as Lethice).fightPhase == 2)
 	{
 		//Attack gains burn DoT for 2-3 turns.
 		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!\n\n");
@@ -4777,7 +4777,7 @@ public function dragonBreath():void {
 	}
 	outputText("\n\n");
 	if (monster.short == "Holli" && monster.findStatusAffect(StatusAffects.HolliBurning) < 0) (monster as Holli).lightHolliOnFireMagically();
-	if (monster is Lethice && (monster as Lethice).fightPhase == 3)
+	if (monster instanceof Lethice && (monster as Lethice).fightPhase == 3)
 	{
 		outputText("\n\n<i>“Ouch. Such arcane skills for one so uncouth,”</i> Lethice growls. With a snap of her fingers, a pearlescent dome surrounds her. <i>“How will you beat me without your magics?”</i>\n\n");
 		monster.createStatusAffect(StatusAffects.Shell, 2, 0, 0, 0);
@@ -4787,7 +4787,7 @@ public function dragonBreath():void {
 }
 
 //* Terrestrial Fire
-public function fireballuuuuu():void {
+export function fireballuuuuu():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	outputText("", true);
 	if(player.fatigue + 20 > 100) {
@@ -4808,13 +4808,13 @@ public function fireballuuuuu():void {
 		enemyAI();
 		return;
 	}
-	if (monster is LivingStatue)
+	if (monster instanceof LivingStatue)
 	{
 		outputText("The fire courses by the stone skin harmlessly. It does leave the surface of the statue glossier in its wake.");
 		enemyAI();
 		return;
 	}
-	else if (monster is Lethice && (monster as Lethice).fightPhase == 2)
+	else if (monster instanceof Lethice && (monster as Lethice).fightPhase == 2)
 	{
 		//Attack gains burn DoT for 2-3 turns.
 		outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!\n\n");
@@ -4843,14 +4843,14 @@ public function fireballuuuuu():void {
 		enemyAI();
 		return;
 	}
-	if (monster is Doppleganger)
+	if (monster instanceof Doppleganger)
 	{
 		(monster as Doppleganger).handleSpellResistance("fireball");
 		flags[kFLAGS.SPELLS_CAST]++;
 		spellPerkUnlock();
 		return;
 	}
-	var damage:Number;
+	var damage:number;
 	damage = int(player.level * 10 + 45 + rand(10));
 	if(player.findStatusAffect(StatusAffects.GooArmorSilence) >= 0) {
 		outputText("<b>A growl rumbles from deep within as you charge the terrestrial fire, and you force it from your chest and into the slime.  The goop bubbles and steams as it evaporates, drawing a curious look from your foe, who pauses in her onslaught to lean in and watch.  While the tension around your mouth lessens and your opponent forgets herself more and more, you bide your time.  When you can finally work your jaw enough to open your mouth, you expel the lion's - or jaguar's? share of the flame, inflating an enormous bubble of fire and evaporated slime that thins and finally pops to release a superheated cloud.  The armored girl screams and recoils as she's enveloped, flailing her arms.</b> ", false);
@@ -4901,7 +4901,7 @@ public function fireballuuuuu():void {
 	else enemyAI();
 }
 
-public function kissAttack():void {
+export function kissAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	if(player.findStatusAffect(StatusAffects.Blind) >= 0) {
 		outputText("There's no way you'd be able to find their lips while you're blind!", true);
@@ -4910,7 +4910,7 @@ public function kissAttack():void {
 		return;
 	}
 	outputText("", true);
-	var attack:Number = rand(6);
+	var attack:number = rand(6);
 	switch(attack) {
 		case 1:
 			//Attack text 1:
@@ -4967,7 +4967,7 @@ public function kissAttack():void {
 		return;
 	}
 	attack = rand(4);
-	var damage:Number = 0;
+	var damage:number = 0;
 	switch(attack) {
 		//Success 1:
 		case 1:
@@ -5002,13 +5002,13 @@ public function kissAttack():void {
 	//Sets up for end of combat, and if not, goes to AI.
 	if(!combatRoundOver()) enemyAI();
 }
-public function possess():void {
+export function possess():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 	outputText("", true);
 	if(monster.short == "plain girl" || monster.findPerk(PerkLib.Incorporeality) >= 0) {
 		outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself toward the opponent's frame.  Sadly, it was doomed to fail, as you bounce right off your foe's ghostly form.", false);
 	}
-	else if (monster is LivingStatue)
+	else if (monster instanceof LivingStatue)
 	{
 		outputText("There is nothing to possess inside the golem.");
 	}
@@ -5021,7 +5021,7 @@ public function possess():void {
 	//Success!
 	else if(player.inte >= (monster.inte - 10) + rand(21)) {
 		outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself into your opponent's frame. Before they can regain the initiative, you take control of one of their arms, vigorously masturbating for several seconds before you're finally thrown out. Recorporealizing, you notice your enemy's blush, and know your efforts were somewhat successful.\n\n", false);
-		var damage:Number = Math.round(player.inte/5) + rand(player.level) + player.level;
+		var damage:number = Math.round(player.inte/5) + rand(player.level) + player.level;
 		monster.lust += monster.lustVuln * damage;
 	}
 	//Fail
@@ -5031,7 +5031,7 @@ public function possess():void {
 	if(!combatRoundOver()) enemyAI();
 }
 
-public function runAway(callHook:Boolean = true):void {
+export function runAway(callHook:boolean = true):void {
 	if (callHook && monster.onPcRunAttempt != null){
 		monster.onPcRunAttempt();
 		return;
@@ -5128,7 +5128,7 @@ public function runAway(callHook:Boolean = true):void {
 	}
 		
 	//Calculations
-	var escapeMod:Number = 20 + monster.level * 3;
+	var escapeMod:number = 20 + monster.level * 3;
 	if(debug) escapeMod -= 300;
 	if(player.canFly()) escapeMod -= 20;
 	if(player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
@@ -5284,7 +5284,7 @@ public function runAway(callHook:Boolean = true):void {
 	enemyAI();
 }
 
-public function anemoneSting():void {
+export function anemoneSting():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	outputText("", true);
 	//-sting with hair (combines both bee-sting effects, but weaker than either one separately):
@@ -5292,7 +5292,7 @@ public function anemoneSting():void {
 	//25% base fail chance
 	//Increased by 1% for every point over PC's speed
 	//Decreased by 1% for every inch of hair the PC has
-	var prob:Number = 70;
+	var prob:number = 70;
 	if(monster.spe > player.spe) prob -= monster.spe - player.spe;
 	prob += player.hairLength;
 	if(prob <= rand(101)) {
@@ -5309,7 +5309,7 @@ public function anemoneSting():void {
 		//(decrease speed/str, increase lust)
 		//-venom capacity determined by hair length, 2-3 stings per level of length
 		//Each sting does 5-10 lust damage and 2.5-5 speed damage
-		var damage:Number = 0;
+		var damage:number = 0;
 		temp = 1 + rand(2);
 		if(player.hairLength >= 12) temp += 1 + rand(2);
 		if(player.hairLength >= 24) temp += 1 + rand(2);
@@ -5332,7 +5332,7 @@ public function anemoneSting():void {
 	if(!combatRoundOver()) enemyAI();
 }
 
-public function magicalSpecials():void {
+export function magicalSpecials():void {
 	if (inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 6) {
 		clearOutput();
 		outputText("You try to ready a special ability, but wind up stumbling dizzily instead.  <b>Your ability to use magical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
@@ -5375,7 +5375,7 @@ public function magicalSpecials():void {
 	addButton(9, "Back", combatMenu, false);
 }
 
-public function physicalSpecials():void {
+export function physicalSpecials():void {
 	if(urtaQuest.isUrta()) {
 		urtaQuest.urtaSpecials();
 		return;
@@ -5443,7 +5443,7 @@ public function physicalSpecials():void {
 	addButton(9, "Back", combatMenu, false);
 }
 
-public function berzerk():void {
+export function berzerk():void {
 	clearOutput();
 	if(player.findStatusAffect(StatusAffects.Berzerking) >= 0) {
 		outputText("You're already pretty goddamn mad!", true);
@@ -5457,7 +5457,7 @@ public function berzerk():void {
 }
 
 //Corrupted Fox Fire
-public function corruptedFoxFire():void {
+export function corruptedFoxFire():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
@@ -5475,7 +5475,7 @@ public function corruptedFoxFire():void {
 	//Deals direct damage and lust regardless of enemy defenses.  Especially effective against non-corrupted targets.
 	outputText("Holding out your palm, you conjure corrupted purple flame that dances across your fingertips.  You launch it at " + monster.a + monster.short + " with a ferocious throw, and it bursts on impact, showering dazzling lavender sparks everywhere.");
 
-	var dmg:int = int(10+(player.inte/3 + rand(player.inte/2)) * spellMod());
+	var dmg:number = int(10+(player.inte/3 + rand(player.inte/2)) * spellMod());
 	if(monster.cor >= 66) dmg = Math.round(dmg * .66);
 	else if(monster.cor >= 50) dmg = Math.round(dmg * .8);
 	//High damage to goes.
@@ -5492,7 +5492,7 @@ public function corruptedFoxFire():void {
 	else enemyAI();
 }
 //Fox Fire
-public function foxFire():void {
+export function foxFire():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
@@ -5514,7 +5514,7 @@ public function foxFire():void {
 	}
 	//Deals direct damage and lust regardless of enemy defenses.  Especially effective against corrupted targets.
 	outputText("Holding out your palm, you conjure an ethereal blue flame that dances across your fingertips.  You launch it at " + monster.a + monster.short + " with a ferocious throw, and it bursts on impact, showering dazzling azure sparks everywhere.");
-	var dmg:int = int(10+(player.inte/3 + rand(player.inte/2)) * spellMod());
+	var dmg:number = int(10+(player.inte/3 + rand(player.inte/2)) * spellMod());
 	if(monster.cor < 33) dmg = Math.round(dmg * .66);
 	else if(monster.cor < 50) dmg = Math.round(dmg * .8);
 	//High damage to goes.
@@ -5532,7 +5532,7 @@ public function foxFire():void {
 }
 
 //Terror
-public function kitsuneTerror():void {
+export function kitsuneTerror():void {
 	clearOutput();
 	//Fatigue Cost: 25
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
@@ -5572,7 +5572,7 @@ public function kitsuneTerror():void {
 }
 
 //Illusion
-public function kitsuneIllusion():void {
+export function kitsuneIllusion():void {
 	clearOutput();
 	//Fatigue Cost: 25
 	if(player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(25) > 100) {
@@ -5614,7 +5614,7 @@ public function kitsuneIllusion():void {
 //special attack: tail whip? could unlock button for use by dagrons too
 //tiny damage and lower monster armor by ~75% for one turn
 //hit
-public function tailWhipAttack():void {
+export function tailWhipAttack():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 	clearOutput();
 	//miss
@@ -5640,11 +5640,11 @@ public function tailWhipAttack():void {
 
 //Arian's stuff
 //Using the Talisman in combat
-public function immolationSpell():void {
+export function immolationSpell():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
 	outputText("You gather energy in your Talisman and unleash the spell contained within.  A wave of burning flames gathers around " + monster.a + monster.short + ", slowly burning " + monster.pronoun2 + ".");
-	var temp:int = int(75+(player.inte/3 + rand(player.inte/2)) * spellMod());
+	var temp:number = int(75+(player.inte/3 + rand(player.inte/2)) * spellMod());
 	temp = doDamage(temp);
 	outputText(" (" + temp + ")\n\n");
 	player.removeStatusAffect(StatusAffects.ImmolationSpell);
@@ -5652,7 +5652,7 @@ public function immolationSpell():void {
 	enemyAI();
 }
 
-public function shieldingSpell():void {
+export function shieldingSpell():void {
 	clearOutput();
 	outputText("You gather energy in your Talisman and unleash the spell contained within.  A barrier of light engulfs you, before turning completely transparent.  Your defense has been increased.\n\n");
 	player.createStatusAffect(StatusAffects.Shielding,0,0,0,0);

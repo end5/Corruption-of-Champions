@@ -1,9 +1,9 @@
-﻿public function isHolidays():Boolean {
+export function isHolidays():boolean {
 	if(date.date >= 25 && date.month == 11) return true;
 	return false;
 }
 
-public function xmasBitchEncounter():void
+export function xmasBitchEncounter():void
 {
 	outputText("", true);
 	spriteSelect(9);
@@ -56,7 +56,7 @@ public function xmasBitchEncounter():void
 }
 
 //[Decline]
-public function declineXmasPresent():void {
+export function declineXmasPresent():void {
 	spriteSelect(9);
 	outputText("", true);
 	outputText("You shake your head 'no', and inform the elf that you'll have nothing to do with her 'gifts' or 'surprises'.  She looks on the verge of tears as she whines, \"<i>I'm going to get reamed for this!</i>\"\n\n", false);
@@ -66,7 +66,7 @@ public function declineXmasPresent():void {
 	doNext(playerMenu);
 }
 //[Open Present]
-public function openXmasPresent():void {
+export function openXmasPresent():void {
 	spriteSelect(9);
 	outputText("", true);
 	outputText("You easily rip through the ribbons holding the box together and pull off the top.   You gasp in ", false);
@@ -102,7 +102,7 @@ public function openXmasPresent():void {
 }
 
 //[Unwrap the elf]
-public function unwrapElfyPresent():void {
+export function unwrapElfyPresent():void {
 	spriteSelect(9);
 	outputText("", true);
 	outputText("The elf tosses the present to the side and saunters up to you, her hips swaying sensually.  She ", false);
@@ -124,17 +124,17 @@ public function unwrapElfyPresent():void {
 		addButton(1,"Female",futaVagXmasElfClr);
 	}
 }
-public function futaDickXmasElfClr():void {
+export function futaDickXmasElfClr():void {
 	clearOutput();
 	dickXmasElfGo();
 }
-public function futaVagXmasElfClr():void {
+export function futaVagXmasElfClr():void {
 	clearOutput();
 	vagFuckXmasElf();
 }
 
 
-public function dickXmasElfGo():void {
+export function dickXmasElfGo():void {
 	//(Dickfuck)
 	if(player.cockArea(0) < 80) {
 		outputText("She pushes you down onto your bedroll and whispers, \"<i>Time to enjoy your present.</i>\"\n\n", false);
@@ -199,7 +199,7 @@ public function dickXmasElfGo():void {
 }
 
 //[FEMALE SCENE]	
-public function vagFuckXmasElf():void {
+export function vagFuckXmasElf():void {
 	outputText("She pushes you down onto your bedroll and whispers, \"<i>Time to enjoy your present.</i>\"\n\n", false);
 	outputText("The elf winks and spreads her legs, revealing her obviously aroused sex to you.  She winks and you see her muscles clench.  The moist lips of her vagina slowly spread apart, and a blunt white object begins to squeeze out.  Is she laying an egg?  Wait- no, more of the object slides out and you can see now that it's tubular in shape, like some sort of sex-toy, and it's covered in a spiraling red pattern.  The object continues its slow journey downwards, roughly six inches hanging free as the elf grunts and moans, her face flushed.   She grips it with both hands and pulls it slowly.  It reminds you the soldiers in training back home the first time they tried to draw a sword – a mix of awkwardness and excitement.\n\n", false);
 	
@@ -229,7 +229,7 @@ public function vagFuckXmasElf():void {
 }
 	
 //MANTASTIC FOLLOWUP:
-public function xmasFuckFollowup():void {
+export function xmasFuckFollowup():void {
 	hideUpDown();
 	outputText("", true);
 	outputText("You awaken in the morning, sore and exhausted, but more satisfied than you've ever felt before.  Your body feels INCREDIBLY sensitive from head to toe, but particularly on your well-used " + cockDescript(0) + ".  In spite of the traumatic lovemaking, you feel remarkably clear-headed.\n\n", false);
@@ -247,7 +247,7 @@ public function xmasFuckFollowup():void {
 	flags[kFLAGS.PC_ENCOUNTERED_CHRISTMAS_ELF_BEFORE] = date.fullYear;
 }
 //FEMTASTIC FOLLOWUP:
-public function xmasFuckFollowupFems():void {
+export function xmasFuckFollowupFems():void {
 	hideUpDown();
 	outputText("", true);
 	outputText("You awaken in the morning, sore and exhausted, but more satisfied than you've ever felt before.  Your body feels INCREDIBLY sensitive from head to toe, but particularly in your well-used " + vaginaDescript(0) + ".  In spite of the traumatic lovemaking, you feel remarkably clear-headed.  The dildo appears to have completely dissolved inside you, leaving behind a pinkish fluid that drips from your lips.\n\n", false);
@@ -266,7 +266,7 @@ public function xmasFuckFollowupFems():void {
 	flags[kFLAGS.PC_ENCOUNTERED_CHRISTMAS_ELF_BEFORE] = date.fullYear;
 }
 
-public function xmasPerkM():void {
+export function xmasPerkM():void {
 	if(player.findPerk(PerkLib.ElvenBounty) < 0) {
 		if(temp == 1001) player.createPerk(PerkLib.ElvenBounty,250,0,0,0);
 		else player.createPerk(PerkLib.ElvenBounty,0,15,0,0);
@@ -287,7 +287,7 @@ public function xmasPerkM():void {
 	}
 	doNext(playerMenu);
 }
-public function xmasSmart():void {
+export function xmasSmart():void {
 	hideUpDown();
 	outputText("You nod to yourself, feeling pretty smart about your decision.", true);
 	doNext(playerMenu);

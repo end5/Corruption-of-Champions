@@ -1,32 +1,32 @@
 /**
  * Created by aimozg on 26.01.14.
  */
-package classes
-{
-	import flash.utils.Dictionary;
+ 
 
-	public class PerkType
+	 
+
+	export class PerkType
 	{
-		private static var PERK_LIBRARY:Dictionary = new Dictionary();
+		private static  PERK_LIBRARY:Dictionary = new Dictionary();
 
-		public static function lookupPerk(id:String):PerkType{
+		public static  lookupPerk(id:string):PerkType{
 			return PERK_LIBRARY[id];
 		}
 
-		public static function getPerkLibrary():Dictionary
+		public static  getPerkLibrary():Dictionary
 		{
 			return PERK_LIBRARY;
 		}
 
-		private var _id:String;
-		private var _name:String;
-		private var _desc:String;
-		private var _longDesc:String;
+		private  _id:string;
+		private  _name:string;
+		private  _desc:string;
+		private  _longDesc:string;
 
 		/**
 		 * Unique perk id, should be kept in future game versions
 		 */
-		public function get id():String
+		public  get id():string
 		{
 			return _id;
 		}
@@ -34,7 +34,7 @@ package classes
 		/**
 		 * Perk short name, could be changed in future game versions
 		 */
-		public function get name():String
+		public  get name():string
 		{
 			return _name;
 		}
@@ -42,7 +42,7 @@ package classes
 		/**
 		 * Short description used in perk listing
 		 */
-		public function desc(params:PerkClass=null):String
+		public  desc(params:PerkClass=null):string
 		{
 			return _desc;
 		}
@@ -50,12 +50,12 @@ package classes
 		/**
 		 * Long description used when offering perk at levelup
 		 */
-		public function get longDesc():String
+		public  get longDesc():string
 		{
 			return _longDesc;
 		}
 
-		public function PerkType(id:String,name:String,desc:String,longDesc:String = null)
+		public  constructor(id:string,name:string,desc:string,longDesc:string = null)
 		{
 			this._id = id;
 			this._name = name;
@@ -68,9 +68,9 @@ package classes
 		}
 
 
-		public function toString():String
+		public  toString():string
 		{
 			return "\""+_id+"\"";
 		}
 	}
-}
+

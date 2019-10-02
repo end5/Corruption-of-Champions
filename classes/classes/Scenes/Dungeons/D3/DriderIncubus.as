@@ -1,17 +1,17 @@
-package classes.Scenes.Dungeons.D3
-{
-	import classes.Monster;
-	import classes.Appearance;
-	import classes.Scenes.Areas.Swamp.AbstractSpiderMorph;
-	import classes.StatusAffects;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.CockTypesEnum;
-	import classes.StatusAffects;
-	import classes.PerkLib;
+ 
 
-	public class DriderIncubus extends AbstractSpiderMorph
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	export class DriderIncubus extends AbstractSpiderMorph
 	{
-		public function DriderIncubus()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "drider incubus";
@@ -52,19 +52,19 @@ package classes.Scenes.Dungeons.D3
 			this.checkMonster();
 		}
 		
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.d3.driderIncubus.beatTheSpooderbutt(hpVictory);
 		}
 		
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.d3.driderIncubus.spooderbuttGetsANewCockSleeve(hpVictory, pcCameWorms);
 		}
 		
-		private var _goblinFree:Boolean = false;
-		public function get goblinFree():Boolean { return _goblinFree; }
-		public function set goblinFree(v:Boolean):void
+		private  _goblinFree:boolean = false;
+		public  get goblinFree():boolean { return _goblinFree; }
+		public  set goblinFree(v:boolean):void
 		{
 			if (v != _goblinFree)
 			{
@@ -81,9 +81,9 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private var _combatRound:int = 0;
+		private  _combatRound:number = 0;
 		
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			// Because fuck having arguments with status affects :^)
 			_combatRound++;
@@ -117,38 +117,38 @@ package classes.Scenes.Dungeons.D3
 			combatRoundOver();
 		}
 		
-		private function performPhysicalAttack():void
+		private  performPhysicalAttack():void
 		{
 			if (_combatRound >= 3 && (_combatRound % 6 == 0 || _combatRound == 3)) stunningSpear();
 			else
 			{
-				var opts:Array = [bite, spiderMorphWebAttack, kick, kick, doubleStrike, doubleStrike];
+				var opts:any[] = [bite, spiderMorphWebAttack, kick, kick, doubleStrike, doubleStrike];
 				opts[rand(opts.length)]();
 			}
 		}
 		
-		private function performLustAttack():void
+		private  performLustAttack():void
 		{
 			if (_combatRound >= 3 && (_combatRound % 6 == 0 || _combatRound == 3)) constrictingThoughts();
 			else
 			{
-				var opts:Array = [arouseSpell, arouseSpell];
+				var opts:any[] = [arouseSpell, arouseSpell];
 				if (player.findStatusAffect(StatusAffects.TaintedMind) < 0 && !_seenResolute) opts.push(taintedMind);
 				if (!_seenResolute) opts.push(purpleHaze);
 				opts[rand(opts.length)]();
 			}
 		}
 		
-		private function goblinAI():void
+		private  goblinAI():void
 		{
-			var opts:Array = [goblinHandjob, goblinTongueGrapple, bootyTwerking, webNipplechain];
+			var opts:any[] = [goblinHandjob, goblinTongueGrapple, bootyTwerking, webNipplechain];
 			if (!_goblinOiled) opts.push(babyOilMeUp);
 			
 			opts[rand(opts.length)]();
 		}
 		
-		private var _hpGains:int = 0;
-		private function gainHpAndLust():void
+		private  _hpGains:number = 0;
+		private  gainHpAndLust():void
 		{
 			//Heals 10% of HP but raises lust by 8.
 			
@@ -173,7 +173,7 @@ package classes.Scenes.Dungeons.D3
 			outputText("\n\n");
 		}
 		
-		private function dropHpAndLust():void
+		private  dropHpAndLust():void
 		{
 			//-8% of max HP, -10 lust.
 			
@@ -183,13 +183,13 @@ package classes.Scenes.Dungeons.D3
 			outputText("The demon snarls and draws his spear back, placing it blade down against his arm. Grinning malevolently, he slides the razor-sharp edge along his skin, leaving a trail of glittering ruby on his wounded flesh. <i>“Pain brings clarity of mind - something you couldn’t understand.”</i> He grins wider, mastering his baser emotions. <i>“Let me teach you.”</i>\n\n");
 		}
 		
-		private function spearStrike():void
+		private  spearStrike():void
 		{
 			//Always does this once plus another physical attack when physically attacking
 			//Drider’s spear ignores armor and toughness completely.
 			outputText("The drider rears back, lancing out with his spear.");
 			
-			var damage:Number = (str + weaponAttack) * 0.40;
+			var damage:number = (str + weaponAttack) * 0.40;
 			
 			if (damage <= 0 || (combatMiss() || combatFlexibility()))
 			{
@@ -210,9 +210,9 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function bite():void
+		private  bite():void
 		{
-			var amount:Number;
+			var amount:number;
 			
 			//Inflicts venom that reduces strength.
 			if (player.findStatusAffect(StatusAffects.Stunned) >= 0 || (player.spe <= 1 && player.findStatusAffect(StatusAffects.Web) >= 2))
@@ -285,7 +285,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function kick():void
+		private  kick():void
 		{
 			outputText("While you’re busy with his spear, he nonchalantly snaps a kick in your direction!");
 			
@@ -299,7 +299,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				var damage:Number = (str + weaponAttack + 25) - rand(player.tou);
+				var damage:number = (str + weaponAttack + 25) - rand(player.tou);
 				
 				if (damage > 0)
 				{
@@ -314,7 +314,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function stunningSpear():void
+		private  stunningSpear():void
 		{
 			//Used every six rounds, starting on the third (if he’s still in physical mode, of course)
 			outputText("Twirling his weapon until it appears a blurred disc, the drider pivots, bringing the haft around at your head!");
@@ -334,7 +334,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				var damage:Number = (str + weaponAttack - 25) - rand(player.tou);
+				var damage:number = (str + weaponAttack - 25) - rand(player.tou);
 				
 				if (damage > 0)
 				{
@@ -362,13 +362,13 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function doubleStrike():void
+		private  doubleStrike():void
 		{
 			//Uses another strike like his normal one with a different intro
 			outputText("He skitters forward and presses his attack, stabbing out with his spear once more.");
 			
 			//Use hit/dodge messages from above.
-			var damage:Number = str + weaponAttack + 10 - rand(player.tou);
+			var damage:number = str + weaponAttack + 10 - rand(player.tou);
 			
 			if (damage <= 0 || (combatMiss() || combatFlexibility()))
 			{
@@ -389,7 +389,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function arouseSpell():void
+		private  arouseSpell():void
 		{
 			//Like the imp one!
 			
@@ -412,7 +412,7 @@ package classes.Scenes.Dungeons.D3
 			else outputText(".");
 		}
 		
-		private function taintedMind():void
+		private  taintedMind():void
 		{
 			//Prevents use of attack, bow, other physical type stuff
 			//Lasts 4 rounds? Iunno. Tune to adjust difficulty.
@@ -424,14 +424,14 @@ package classes.Scenes.Dungeons.D3
 			player.createStatusAffect(StatusAffects.TaintedMind, 4, 0, 0, 0);
 		}
 		
-		public function taintedMindAttackAttempt():void
+		public  taintedMindAttackAttempt():void
 		{
 			outputText("You ready an attack, but find your hands groping your own body instead. Somehow the demon’s magic has made it impossible to strike at him, crossing wires that weren’t meant to be crossed. Frowning, you look down at your more aroused form, determined not to fall for this a second time.");
 			game.dynStats("lus", 15);
 		}
 		
 		//On same round timer as physical stun
-		private function constrictingThoughts():void
+		private  constrictingThoughts():void
 		{
 			outputText("<i>“Try this on for size!”</i> the corrupted arachnid shouts, waving his hand in your direction.");
 			outputText("\n\nDisjointed, erotic thoughts claw at your mind’s defenses, worming their way in through what cracks they find, plunging sensuous fantasies of every shape and size in place of your own imaginings.");
@@ -451,9 +451,9 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private var _seenResolute:Boolean = false;
+		private  _seenResolute:boolean = false;
 		
-		private function purpleHaze():void
+		private  purpleHaze():void
 		{
 			//Blinds 2-3 turns
 			outputText("<i>“Try this on for size!”</i> The drider gestures in your direction, gathering his will into a palpable force. It presses on your mind like a coiled snake, crushing down on you from all sides.");
@@ -475,13 +475,13 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function goblinHandjob():void
+		private  goblinHandjob():void
 		{
 			outputText("Somehow, the goblin manages to get both her mitts on the drider’s ever erect member. A gleeful expression occupies her face as she begins pumping, worshipfully tugging on her master’s rod again and again, her mouth open excitedly as if he could bust a nut at any moment.");
 			outputText("\n\nUnfortunately for her, the demonic arachnid’s motions carry him away from her greedy fingers. He slips out of her grip with a wet pop, and she can do naught but pout and chase after him once more.");
 		}
 		
-		private function goblinTongueGrapple():void
+		private  goblinTongueGrapple():void
 		{
 			outputText("The determined goblin love-slave opens wide, launching a tongue that must be at least three feet long toward her master’s member with pinpoint accuracy. It makes contact with a wet ‘snap’ and wraps round the oozing, demonic length before either you or the drider can react. His motions slow from the attention, and he nearly stumbles, giving the goblin time to close to the distance, mummifying his member under layers of hot pink pleasure.");
 			lust += 5;
@@ -498,14 +498,14 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function bootyTwerking():void
+		private  bootyTwerking():void
 		{
 			outputText("The goblin gives up on her futile chase for the moment. Instead of trying to lay her hands on her treasured scepter, she spins around, raising her cushy-looking ass into the air. She twists and gyrates, making her voluminous asscheeks bounce independantly. Sometimes they audibly clap together. A few assembled demonic slaves applaud her performance, and the drider can’t help but spare her a few hungry glances.");
 			lust += 5;
 		}
 		
-		private var _goblinWebChain:Boolean = false;
-		private function webNipplechain():void
+		private  _goblinWebChain:boolean = false;
+		private  webNipplechain():void
 		{
 			outputText("Every time she makes a grab for the demonic drider’s tool, he skitters aside, the ebb and flow of your fight keeping her from her objective. In a huff, she grabs hold of a hanging strand of web and affixes the sticky end to one of her nipples. Then, she gives the source spinnaret a squeeze, but not before pressing her other jiggling tit against it.");
 			
@@ -523,9 +523,9 @@ package classes.Scenes.Dungeons.D3
 			lust += 5;
 		}
 		
-		private var _goblinOiled:Boolean = false;
-		public function get goblinOiled():Boolean { return _goblinOiled; }
-		private function babyOilMeUp():void
+		private  _goblinOiled:boolean = false;
+		public  get goblinOiled():boolean { return _goblinOiled; }
+		private  babyOilMeUp():void
 		{
 			//1x only.
 			outputText("Darting into the crowd, the goblin comes back with a bottle of unusual shape and design. She pops the cork and upends it across her petite but all-too-stacked form, smearing it across her more-than-ample tits with one hand, making them shine in the flickering candlelight. Her eyes are bright and mischievous while she spreads it over the rest of her form, leaving the whole of her body slick and ready for love.");
@@ -536,7 +536,7 @@ package classes.Scenes.Dungeons.D3
 			game.dynStats("lus", 7);
 		}
 		
-		public function freeGoblin():void
+		public  freeGoblin():void
 		{
 			clearOutput();
 			_goblinFree = true;
@@ -547,4 +547,3 @@ package classes.Scenes.Dungeons.D3
 			kGAMECLASS.enemyAI();
 		}
 	}
-}

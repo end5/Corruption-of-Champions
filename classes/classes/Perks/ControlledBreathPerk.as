@@ -1,21 +1,20 @@
-package classes.Perks
-{
-	import classes.PerkClass;
-	import classes.PerkType;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
 
-	public class ControlledBreathPerk extends PerkType
+	 
+	 
+	 
+
+	export class ControlledBreathPerk extends PerkType
 	{
 
-		override public function desc(params:PerkClass = null):String
+		 public  desc(params:PerkClass = null):string
 		{
 			if (kGAMECLASS.player.cor >= 30) return "<b>DISABLED</b> - Corruption too high!";
 			else return super.desc(params);
 		}
 
-		public function ControlledBreathPerk()
+		public  constructor()
 		{
 			super("Controlled Breath", "Controlled Breath", "Jojo’s training allows you to recover more quickly. Increases rate of fatigue regeneration by 10%");
 		}
 	}
-}

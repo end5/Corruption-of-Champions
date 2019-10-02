@@ -1,11 +1,11 @@
-package classes.Scenes.Areas.Forest {
-	import classes.*;
+  
+	 
 
-	public class CorruptedGlade extends BaseContent {
+	export class CorruptedGlade extends BaseContent {
 		
-		public function CorruptedGlade() {}
+		public  constructor() {}
 		
-		public function intro():void {
+		public  intro():void {
 			spriteSelect(92);
 			outputText("Walking through the woods, you find a damp patch overgrown with corrupted plant-life.  Every flower seems warped into a colorful imitation of a female's genitals, each vine appears throbbing and veiny, and every knot on the nearby trees is capped with a nipple-like protrusion, leaking dark sap.");
 			if (player.cor <= 33) { //disgusted reaction
@@ -42,7 +42,7 @@ package classes.Scenes.Areas.Forest {
 			//Wallow in decadence reaction - UNFINISHED
 		}
 		
-		private function flowerFun():void {
+		private  flowerFun():void {
 			clearOutput();
 			spriteSelect(92);
 			if (player.hasCock()) { //Sex scenes for those with cawks
@@ -79,7 +79,7 @@ package classes.Scenes.Areas.Forest {
 				//Stat changes!
 				player.orgasm();
 				dynStats("sen", 2);
-				var booster:int = 1;
+				var booster:number = 1;
 				if (player.balls == 0)
 					booster += 3;
 				else if (player.ballSize < 6)
@@ -102,13 +102,13 @@ package classes.Scenes.Areas.Forest {
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
-		private function tentacleFun():void {
+		private  tentacleFun():void {
 			clearOutput();
 			spriteSelect(92);
 			if (player.vaginas.length > 0 && rand(2) == 0) { //Vaginal Variant 50% of the time
 				outputText("You saunter over to a dangling group of perverted looking vines, discarding your " + player.armorName + " along the way. Running your fingertips along the bulbous-tipped tentacle-like vines, you find one that looks ");
-				var tentacle:int = rand(3); //Big, medium or small size tentacle
-				var tentacleSize:int = 0;
+				var tentacle:number = rand(3); //Big, medium or small size tentacle
+				var tentacleSize:number = 0;
 				if (tentacle == 0) { //Small
 					outputText("a little small for your ");
 					switch (player.vaginas[0].vaginalLooseness) {
@@ -212,7 +212,7 @@ package classes.Scenes.Areas.Forest {
 						}
 						if (player.cockTotal() > 1) { //multi
 							outputText("Your feel your " + multiCockDescriptLight() + " bending and flexing of their own volition... looking down, you watch them morph into flexible vine-like shapes.  <b>You now have green tentacle cocks!</b>  ");
-							for (var x:int = 0; x < player.cocks.length; x++) player.cocks[x].cockType = CockTypesEnum.TENTACLE;
+							for (const x = 0; x < player.cocks.length; x++) player.cocks[x].cockType = CockTypesEnum.TENTACLE;
 						}
 					}
 				}
@@ -221,7 +221,7 @@ package classes.Scenes.Areas.Forest {
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
-		private function treeBoobFun():void {
+		private  treeBoobFun():void {
 			clearOutput();
 			spriteSelect(92);
 			outputText("Stepping carefully around the other hazards of the glade, you close on the strange trees with equal parts curiosity and desire.  Up close, it's easy to see the strange growths that sprout from the bark – dozens of full ripe-looking breasts, each capped with a swollen and leaking nipple.  You touch one, marveling at the smooth texture of its chocolate-colored skin.   In response a runner of sap oozes free of the nipple and slides down the curved surface.\n\n");
@@ -255,4 +255,3 @@ package classes.Scenes.Areas.Forest {
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-}

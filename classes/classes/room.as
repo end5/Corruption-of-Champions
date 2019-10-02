@@ -1,31 +1,30 @@
-package classes 
-{
+  
+
 	/**
 	 * ...
 	 * @author Gedan
 	 */
-	public class room 
+	export class room 
 	{
-		public function room() 
+		public  constructor() 
 		{
 			
 		}
 		
-		public var RoomName:String; // Index name
-		public var RoomDisplayName:String; // Header text
+		public  RoomName:string; // Index name
+		public  RoomDisplayName:string; // Header text
 		
-		public var NorthExit:String;
-		public var NorthExitCondition:Function;
+		public  NorthExit:string;
+		public  NorthExitCondition:() => void;
 		
-		public var EastExit:String;
-		public var EastExitCondition:Function;
+		public  EastExit:string;
+		public  EastExitCondition:() => void;
 		
-		public var SouthExit:String;
-		public var SouthExitCondition:Function;
+		public  SouthExit:string;
+		public  SouthExitCondition:() => void;
 		
-		public var WestExit:String;
-		public var WestExitCondition:Function;
+		public  WestExit:string;
+		public  WestExitCondition:() => void;
 		
-		public var RoomFunction:Function;
+		public  RoomFunction:() => void;
 	}
-}

@@ -1,9 +1,9 @@
-﻿package classes
-{
-	public class StatusAffectClass
+ 
+
+	export class StatusAffectClass
 	{
 		//constructor
-		public function StatusAffectClass(stype:StatusAffectType,value1:Number=0,value2:Number=0,value3:Number=0,value4:Number=0)
+		public  constructor(stype:StatusAffectType,value1:number=0,value2:number=0,value3:number=0,value4:number=0)
 		{
 			this._stype = stype;
 			this.value1 = value1;
@@ -12,20 +12,19 @@
 			this.value4 = value4;
 		}
 		//data
-		private var _stype:StatusAffectType;
-		public var value1:Number;
-		public var value2:Number;
-		public var value3:Number;
-		public var value4:Number;
+		private  _stype:StatusAffectType;
+		public  value1:number;
+		public  value2:number;
+		public  value3:number;
+		public  value4:number;
 		//MEMBER FUNCTIONS
-		public function get stype():StatusAffectType
+		public  get stype():StatusAffectType
 		{
 			return _stype;
 		}
 
-		public function toString():String
+		public  toString():string
 		{
 			return "["+_stype+","+value1+","+value2+","+value3+","+value4+"]";
 		}
 	}
-}

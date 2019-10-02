@@ -1,39 +1,39 @@
-package classes.display 
-{
-	import classes.BoundControlMethod;
-	import classes.InputManager;
-	import fl.containers.ScrollPane;
-	import flash.display.DisplayObject;
-	import flash.display.MovieClip;
-	import flash.display.Stage;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
-	import flash.utils.Dictionary;
-	import flash.ui.Keyboard;
-	import flash.utils.describeType;
-	import classes.display.BindDisplay;
-	import flash.text.TextFieldAutoSize;
+  
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	
 	/**
 	 * Defines a new UI element, providing a scrollable container to be used for display of bound
 	 * keyboard controls.
 	 * @author Gedan
 	 */
-	public class BindingPane extends ScrollPane
+	export class BindingPane extends ScrollPane
 	{	
-		private var _inputManager:InputManager;
-		private var _stage:Stage;
+		private  _inputManager:InputManager;
+		private  _stage:Stage;
 		
 		// A lookup for integer keyCodes -> string representations
-		private var _keyDict:Dictionary;
+		private  _keyDict:Dictionary;
 		
-		private var _functions:Array;
-		private var _newFuncs:Array;
+		private  _functions:any[];
+		private  _newFuncs:any[];
 		
-		private var _content:MovieClip;
-		private var _contentChildren:int;
+		private  _content:MovieClip;
+		private  _contentChildren:number;
 		
 		/**
 		 * Initiate the BindingPane, setting the stage positioning and reference back to the input manager
@@ -45,7 +45,7 @@ package classes.display
 		 * @param	width			Fixed width of the containing ScrollPane
 		 * @param	height			Fixed height of the containing ScrollPane
 		 */
-		public function BindingPane(inputManager:InputManager, xPos:int, yPos:int, width:int, height:int, uiscrollwidth:int) 
+		public  constructor(inputManager:InputManager, xPos:number, yPos:number, width:number, height:number, uiscrollwidth:number) 
 		{
 			_inputManager = inputManager;
 			
@@ -81,7 +81,7 @@ package classes.display
 		 * Cleanly get us a reference to the stage to add/remove other event listeners
 		 * @param	e
 		 */
-		private function AddedToStage(e:Event):void
+		private  AddedToStage(e:Event):void
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, AddedToStage);
 			this.addEventListener(Event.REMOVED_FROM_STAGE, RemovedFromStage);
@@ -91,7 +91,7 @@ package classes.display
 			_stage.addEventListener(MouseEvent.MOUSE_WHEEL, MouseScrollEvent);
 		}
 		
-		private function RemovedFromStage(e:Event):void
+		private  RemovedFromStage(e:Event):void
 		{
 			this.removeEventListener(Event.REMOVED_FROM_STAGE, RemovedFromStage);
 			this.addEventListener(Event.ADDED_TO_STAGE, AddedToStage);
@@ -99,12 +99,12 @@ package classes.display
 			_stage.removeEventListener(MouseEvent.MOUSE_WHEEL, MouseScrollEvent);
 		}
 		
-		private function MouseScrollEvent(e:MouseEvent):void
+		private  MouseScrollEvent(e:MouseEvent):void
 		{
 			this.verticalScrollPosition += -( e.delta * 8 );
 		}
 		
-		public function ListBindingOptions():void
+		public  ListBindingOptions():void
 		{
 			if (_contentChildren == 0)
 			{
@@ -126,7 +126,7 @@ package classes.display
 		 * to.
 		 * TODO: Shoot self in face.
 		 */
-		private function InitContentObjects():void
+		private  InitContentObjects():void
 		{
 			// Add a nice little instructional field at the top of the display.
 			var _textFormatLabel:TextFormat = new TextFormat();
@@ -152,7 +152,7 @@ package classes.display
 			_contentChildren++;
 			_content.addChild(helpLabel);
 			
-			for (var i:int = 0; i < _functions.length; i++)
+			for (const i = 0; i < _functions.length; i++)
 			{
 				_contentChildren++;
 				
@@ -165,7 +165,7 @@ package classes.display
 				newLabel.button2Text = _keyDict[_functions[i].SecondaryKey];
 				
 				// This is going to look crazy...
-				var genPrimaryCallback:Function = function(funcName:String, inMan:InputManager):Function
+				var genPrimaryCallback:() => void = function(funcName:string, inMan:InputManager):() => void
 				{
 					return function():void 
 					{
@@ -174,7 +174,7 @@ package classes.display
 					}
 				}
 				
-				var genSecondaryCallback:Function = function(funcName:String, inMan:InputManager):Function
+				var genSecondaryCallback:() => void = function(funcName:string, inMan:InputManager):() => void
 				{
 					return function():void
 					{
@@ -196,9 +196,9 @@ package classes.display
 		 * ie we will never see new controls in the incoming function list versus what it contained
 		 * when we initially created the display objects in the _content container.
 		 */
-		private function UpdateContentObjects():void
+		private  UpdateContentObjects():void
 		{
-			for (var i:int = 0; i < _functions.length; i++)
+			for (const i = 0; i < _functions.length; i++)
 			{
 				var currLabel:BindDisplay = _content.getChildByName(_functions[i].Name) as BindDisplay;
 				
@@ -213,7 +213,7 @@ package classes.display
 		 * character.
 		 * TODO: Probably work out a good way of shortening some possibly long key names.
 		 */
-		private function PopulateKeyboardDict():void
+		private  PopulateKeyboardDict():void
 		{
 		
 			var keyDescriptions:XML = describeType(Keyboard);
@@ -221,7 +221,7 @@ package classes.display
 			
 			_keyDict = new Dictionary();
 			
-			for (var i:int = 0; i < keyNames.length(); i++)
+			for (const i = 0; i < keyNames.length(); i++)
 			{
 				_keyDict[Keyboard[keyNames[i]]] = keyNames[i];
 			}
@@ -229,14 +229,14 @@ package classes.display
 			_keyDict[ -1] = "Unbound";
 		}
 		
-		public function set functions(funcs:Array):void
+		public  set functions(funcs:any[]):void
 		{
 			_functions = funcs;
 		}
 		
-		public function get functions():Array
+		public  get functions():any[]
 		{
 			return _functions;
 		}
 	}
-}
+

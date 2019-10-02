@@ -1,4 +1,4 @@
-﻿import flash.text.TextFormat;
+ 
 // // import flash.events.MouseEvent;
 // 
 // //const DOUBLE_ATTACK_STYLE:int = 867;
@@ -26,11 +26,11 @@
 // 
 // model.maxHP = maxHP;
 
-public function maxHP():Number {
+export function maxHP():number {
 	return player.maxHP();
 }
 
-public function silly():Boolean {
+export function silly():boolean {
 	return flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == 1;
 
 }
@@ -62,7 +62,7 @@ public function outputList():String {
 }
 */
 
-public function HPChange(changeNum:Number, display:Boolean):void
+export function HPChange(changeNum:number, display:boolean):void
 {
 	if(changeNum == 0) return;
 	if(changeNum > 0) {
@@ -99,7 +99,7 @@ public function HPChange(changeNum:Number, display:Boolean):void
 	statScreenRefresh();
 }
 		
-public function clone(source:Object):* {
+export function clone(source:Record<string, any>):any {
 	var copier:ByteArray = new ByteArray();
 	copier.writeObject(source);
 	copier.position = 0;
@@ -114,7 +114,7 @@ public function speech(output:String, speaker:String):void {
 }
 */
 	
-public function clearOutput():void {
+export function clearOutput():void {
 	forceUpdate();
 	currentText = "";
 	mainView.clearOutputText();
@@ -125,7 +125,7 @@ public function clearOutput():void {
 	mainView.hideMenuButton( MainView.MENU_STATS );
 }
 
-public function rawOutputText(output:String, purgeText:Boolean = false):void
+export function rawOutputText(output:string, purgeText:boolean = false):void
 {
 	
 	//OUTPUT!
@@ -149,9 +149,9 @@ public function rawOutputText(output:String, purgeText:Boolean = false):void
 
 }
 
-public function outputText(output:String, 
-						purgeText:Boolean = false, 
-						parseAsMarkdown:Boolean = false):void
+export function outputText(output:string, 
+						purgeText:boolean = false, 
+						parseAsMarkdown:boolean = false):void
 {
 	// we have to purge the output text BEFORE calling parseText, because if there are scene commands in 
 	// the parsed text, parseText() will write directly to the output
@@ -184,7 +184,7 @@ public function outputText(output:String,
 
 }
 
-public function flushOutputTextToGUI():void
+export function flushOutputTextToGUI():void
 {
 	var fmt:TextFormat;
 	if (flags[kFLAGS.CUSTOM_FONT_SIZE] != 0)
@@ -201,8 +201,8 @@ public function flushOutputTextToGUI():void
 	}
 }
 
-public function displayPerks(e:MouseEvent = null):void {
-	var temp:int = 0;
+export function displayPerks(e:MouseEvent = null):void {
+	var temp:number = 0;
 	outputText("", true);
 	while(temp < player.perks.length) {
 		outputText("<b>" + player.perk(temp).perkName + "</b> - " + player.perk(temp).perkDesc + "\n", false);
@@ -222,7 +222,7 @@ public function displayPerks(e:MouseEvent = null):void {
 	addButton(0, "Next", playerMenu);
 }
 
-public function doubleAttackOptions():void {
+export function doubleAttackOptions():void {
 	clearOutput();
 	menu();
 	if(flags[kFLAGS.DOUBLE_ATTACK_STYLE] == 0) {
@@ -250,20 +250,20 @@ public function doubleAttackOptions():void {
 	addButton(4, "Back", displayPerks);
 }
 
-public function doubleAttackForce():void {
+export function doubleAttackForce():void {
 	flags[kFLAGS.DOUBLE_ATTACK_STYLE] = 0;
 	doubleAttackOptions();
 }
-public function doubleAttackDynamic():void {
+export function doubleAttackDynamic():void {
 	flags[kFLAGS.DOUBLE_ATTACK_STYLE] = 1;
 	doubleAttackOptions();
 }
-public function doubleAttackOff():void {
+export function doubleAttackOff():void {
 	flags[kFLAGS.DOUBLE_ATTACK_STYLE] = 2;
 	doubleAttackOptions();
 }
 
-public function levelUpGo(e:MouseEvent = null):void {
+export function levelUpGo(e:MouseEvent = null):void {
 	clearOutput();
 	hideMenus();
 	mainView.hideMenuButton( MainView.MENU_NEW_MAIN );
@@ -289,14 +289,14 @@ public function levelUpGo(e:MouseEvent = null):void {
 	}
 }
 
-private function levelUpStatStrength():void {
+ function levelUpStatStrength():void {
 	dynStats("str", 5); //Gain +5 Str due to level
 	clearOutput();
 	outputText("Your muscles feel significantly stronger from your time adventuring.");
 	doNext(perkBuyMenu);
 }
 
-private function levelUpStatToughness():void {
+ function levelUpStatToughness():void {
 	dynStats("tou", 5); //Gain +5 Toughness due to level
 	trace("HP: " + player.HP + " MAX HP: " + maxHP());
 	statScreenRefresh();
@@ -305,23 +305,23 @@ private function levelUpStatToughness():void {
 	doNext(perkBuyMenu);
 }
 
-private function levelUpStatSpeed():void {
+ function levelUpStatSpeed():void {
 	dynStats("spe", 5); //Gain +5 speed due to level
 	clearOutput();
 	outputText("Your time in combat has driven you to move faster.");
 	doNext(perkBuyMenu);
 }
 
-private function levelUpStatIntelligence():void {
+ function levelUpStatIntelligence():void {
 	dynStats("int", 5); //Gain +5 Intelligence due to level
 	clearOutput();
 	outputText("Your time spent fighting the creatures of this realm has sharpened your wit.");
 	doNext(perkBuyMenu);
 }
 
-private function perkBuyMenu():void {
+ function perkBuyMenu():void {
 	clearOutput();
-	var perkList:Array = buildPerkList();
+	var perkList:any[] = buildPerkList();
 	
 	if (perkList.length == 0) {
 		outputText("<b>You do not qualify for any perks at present.  </b>In case you qualify for any in the future, you will keep your " + num2Text(player.perkPoints) + " perk point");
@@ -350,7 +350,7 @@ private function perkBuyMenu():void {
 	}
 }
 
-private function perkSelect(selected:PerkClass):void {
+ function perkSelect(selected:PerkClass):void {
 	stage.focus = null;
 	if (mainView.aCb.parent != null) {
 		mainView.removeChild(mainView.aCb);
@@ -358,7 +358,7 @@ private function perkSelect(selected:PerkClass):void {
 	}
 }
 
-private function perkSkip():void {
+ function perkSkip():void {
 	stage.focus = null;
 	if (mainView.aCb.parent != null) {
 		mainView.removeChild(mainView.aCb);
@@ -366,7 +366,7 @@ private function perkSkip():void {
 	}
 }
 
-private function changeHandler(event:Event):void {
+ function changeHandler(event:Event):void {
  	//Store perk name for later addition
 	clearOutput();
  	var selected:PerkClass = ComboBox(event.target).selectedItem.perk;
@@ -378,8 +378,8 @@ private function changeHandler(event:Event):void {
 	addButton(1, "Skip", perkSkip);
 }
 
-public function buildPerkList():Array {
-	var perkList:Array = [];
+export function buildPerkList():any[] {
+	var perkList:any[] = [];
 	function _add(p:PerkClass):void{
 		perkList.push({label: p.perkName,perk:p});
 	}
@@ -551,14 +551,14 @@ public function buildPerkList():Array {
 	}
 	// FILTER PERKS
 	perkList = perkList.filter(
-			function(perk:*,idx:int,array:Array):Boolean{
+			function(perk:any,idx:number,array:any[]):boolean{
 				return player.findPerk(perk.perk.ptype) < 0;
 			});
 	mainView.aCb.dataProvider = new DataProvider(perkList);
 	return perkList;
 }
 
-public function applyPerk(perk:PerkClass):void {
+export function applyPerk(perk:PerkClass):void {
 	clearOutput();
 	player.perkPoints--;
 	//Apply perk here.
@@ -573,11 +573,11 @@ public function applyPerk(perk:PerkClass):void {
 	doNext(playerMenu);
 }
 
-public function buttonText(buttonName:String):String {
-	var matches :*,
-		buttonIndex :int;
+export function buttonText(buttonName:string):string {
+	var matches :any,
+		buttonIndex :number;
 
-	if( buttonName is String ) {
+	if( buttonName instanceof String ) {
 		if( /^buttons\[[0-9]\]/.test( buttonName ) ) {
 			matches = /^buttons\[([0-9])\]/.exec( buttonName );
 			buttonIndex = parseInt( matches[ 1 ], 10 );
@@ -595,9 +595,9 @@ public function buttonText(buttonName:String):String {
 
 
 // Returns a string or undefined.
-public function getButtonToolTipText( buttonText :String ) :String
+export function getButtonToolTipText( buttonText :string ) :string
 {
-	var toolTipText :String;
+	var toolTipText :string;
 
 	buttonText = buttonText || '';
 
@@ -828,20 +828,20 @@ public function getButtonToolTipText( buttonText :String ) :String
 
 
 // Hah, finally a place where a dictionary is actually required!
-import flash.utils.Dictionary;
-private var funcLookups:Dictionary = null;
+ 
+ var funcLookups:Dictionary = null;
 
 
-private function buildFuncLookupDict(object:*=null,prefix:String=""):void
+ function buildFuncLookupDict(object:*=null,prefix:string=""):void
 {
-	import flash.utils.*;
+	 
 	trace("Building function <-> function name mapping table for "+((object==null)?"CoC.":prefix));
 	// get all methods contained
 	if (object == null) object = this;
 	var typeDesc:XML = describeType(object);
 	//trace("TypeDesc - ", typeDesc)
 
-	for each (var node:XML in typeDesc..method) 
+	for  (const node of typeDesc..method) 
 	{
 		// return the method name if the thisObject of f (t) 
 		// has a property by that name 
@@ -851,7 +851,7 @@ private function buildFuncLookupDict(object:*=null,prefix:String=""):void
 		if (object[node.@name] != null)
 			this.funcLookups[object[node.@name]] = prefix+node.@name;
 	}
-	for each (node in typeDesc..variable)
+	for  (node of typeDesc..variable)
 	{
 		if (node.@type.toString().indexOf("classes.Scenes.") == 0 ||
 				node.metadata.@name.contains("Scene")){
@@ -862,7 +862,7 @@ private function buildFuncLookupDict(object:*=null,prefix:String=""):void
 	}
 }
 
-public function getFunctionName(f:Function):String
+export function getFunctionName(f:() => void):string
 {
 	// trace("Getting function name")
 	// get the object that contains the function (this of f)
@@ -884,10 +884,10 @@ public function getFunctionName(f:Function):String
 }
 
 
-private function logFunctionInfo(func:Function, arg:* = null):void
+ function logFunctionInfo(func:() => void, arg:any = null):void
 {
-	var logStr:String = "";
-	if (arg is Function)
+	var logStr:string = "";
+	if (arg instanceof Function)
 	{
 		logStr += "Calling = " + getFunctionName(func) + " Param = " +  getFunctionName(arg);
 	}
@@ -901,7 +901,7 @@ private function logFunctionInfo(func:Function, arg:* = null):void
 
 
 // returns a function that takes no arguments, and executes function `func` with argument `arg`
-public function createCallBackFunction(func:Function, arg:*):Function
+export function createCallBackFunction(func:() => void, arg:any):() => void
 {
 	if (func == null) {
 		CoC_Settings.error("createCallBackFunction(null," + arg + ")");
@@ -911,7 +911,7 @@ public function createCallBackFunction(func:Function, arg:*):Function
 /*		if (func == eventParser){
 			CoC_Settings.error("createCallBackFunction(eventParser,"+arg+")");
 		} */
-		return function ():*
+		return function ():any
 		{ 
 			if (CoC_Settings.haltOnErrors) 
 				logFunctionInfo(func, arg);
@@ -920,7 +920,7 @@ public function createCallBackFunction(func:Function, arg:*):Function
 	}
 	else
 	{
-		return function ():*
+		return function ():any
 		{ 
 			if (CoC_Settings.haltOnErrors) 
 				logFunctionInfo(func, arg);
@@ -928,12 +928,12 @@ public function createCallBackFunction(func:Function, arg:*):Function
 		};
 	}
 }
-public function createCallBackFunction2(func:Function,...args):Function
+export function createCallBackFunction2(func:() => void,...args):() => void
 {
 	if (func == null){
 		CoC_Settings.error("createCallBackFunction(null,"+args+")");
 	}
-	return function():*
+	return function():any
 	{
 		if (CoC_Settings.haltOnErrors) logFunctionInfo(func,args);
 		return func.apply(null,args);
@@ -941,10 +941,10 @@ public function createCallBackFunction2(func:Function,...args):Function
 }
 
 
-public function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000):void {
+export function addButton(pos:number, text:string = "", func1:() => void = null, arg1:any = -9000):void {
 	if (func1 == null) return;
-	var callback: Function;
-	var toolTipText: String;
+	var callback: () => void;
+	var toolTipText: string;
 /* Let the mainView decide if index is valid
 	if(pos > 9) {
 		trace("INVALID BUTTON");
@@ -960,25 +960,25 @@ public function addButton(pos:int, text:String = "", func1:Function = null, arg1
 	flushOutputTextToGUI();
 }
 
-public function hasButton(arg:*):Boolean {
-	if( arg is String )
+export function hasButton(arg:any):boolean {
+	if( arg instanceof String )
 		return mainView.hasButton( arg as String );
 	else
 		return false;
 }
 
-public function removeButton(arg:*):void {
-	function _removeButtonAction( index :int ):void	// Uh... should this function be empty?
+export function removeButton(arg:any):void {
+	function _removeButtonAction( index :number ):void	// Uh... should this function be empty?
 	{
 		// funcs[ index ] = null;
 		// args[ index ] = -9000;
 	}
 
-	var buttonToRemove:int = 0;
-	if(arg is String) {
+	var buttonToRemove:number = 0;
+	if(arg instanceof String) {
 		buttonToRemove = mainView.indexOfButtonWithLabel( arg as String );
 	}
-	if(arg is Number) {
+	if(arg instanceof Number) {
 		if(arg < 0 || arg > 9) return;
 		buttonToRemove = Math.round(arg);
 	}
@@ -987,7 +987,7 @@ public function removeButton(arg:*):void {
 	mainView.hideBottomButton( buttonToRemove );
 }
 
-public function menu():void { //The newer, simpler menu - blanks all buttons so addButton can be used
+export function menu():void { //The newer, simpler menu - blanks all buttons so addButton can be used
 	mainView.hideBottomButton(0);
 	mainView.hideBottomButton(1);
 	mainView.hideBottomButton(2);
@@ -1062,16 +1062,16 @@ public function menu(text1:String = "", func1:Function = null, arg1:Number = -90
 }
 */
 
-public function choices(text1:String, butt1:Function,
-						text2:String, butt2:Function,
-						text3:String, butt3:Function,
-						text4:String, butt4:Function,
-						text5:String, butt5:Function,
-						text6:String, butt6:Function,
-						text7:String, butt7:Function,
-						text8:String, butt8:Function,
-						text9:String, butt9:Function,
-						text0:String, butt0:Function):void { //New typesafe version
+export function choices(text1:string, butt1:() => void,
+						text2:string, butt2:() => void,
+						text3:string, butt3:() => void,
+						text4:string, butt4:() => void,
+						text5:string, butt5:() => void,
+						text6:string, butt6:() => void,
+						text7:string, butt7:() => void,
+						text8:string, butt8:() => void,
+						text9:string, butt9:() => void,
+						text0:string, butt0:() => void):void { //New typesafe version
 							
 	menu();	
 	addButton(0, text1, butt1);
@@ -1194,21 +1194,21 @@ public function choices(text1:String, butt1:Function,
 			[ "Margle", gurgleFluidsInMouthEvent ] // no comma on last item.
 		]);
 ****/
-public function multipageChoices( cancelFunction :*, menuItems :Array ) :void {
-	const itemsPerPage :int = 8;
+export function multipageChoices( cancelFunction :any, menuItems :any[] ) :void {
+	const itemsPerPage :number = 8;
 
-	var currentPageIndex :int;
-	var pageCount :int;
+	var currentPageIndex :number;
+	var pageCount :number;
 
-	function getPageOfItems( pageIndex :int ) :Array {
-		var startItemIndex:int = pageIndex * itemsPerPage;
+	function getPageOfItems( pageIndex :number ) :any[] {
+		var startItemIndex:number = pageIndex * itemsPerPage;
 
 		return menuItems.slice( startItemIndex, startItemIndex + itemsPerPage );
 	}
 
-	function flatten( pageItems :Array ) :Array {
-		var i:int, l:int;
-		var flattenedItems:Array = [];
+	function flatten( pageItems :any[] ) :any[] {
+		var i:number, l:number;
+		var flattenedItems:any[] = [];
 
 		for( i = 0, l = pageItems.length; i < l; ++i ) {
 			flattenedItems = flattenedItems.concat( pageItems[ i ] );
@@ -1221,8 +1221,8 @@ public function multipageChoices( cancelFunction :*, menuItems :Array ) :void {
 		showPage( (currentPageIndex + 1) % pageCount );
 	}
 
-	function showPage( pageIndex :int ) :void {
-		var currentPageItems :Array; // holds the current page of items.
+	function showPage( pageIndex :number ) :void {
+		var currentPageItems :any[]; // holds the current page of items.
 
 		if( pageIndex < 0 )
 			pageIndex = 0;
@@ -1268,11 +1268,11 @@ public function multipageChoices( cancelFunction :*, menuItems :Array ) :void {
 }
 
 // simpleChoices and doYesNo are convenience functions. They shouldn't re-implement code from choices()
-public function simpleChoices(text1:String, butt1:Function, 
-						text2:String, butt2:Function, 
-						text3:String, butt3:Function, 
-						text4:String, butt4:Function, 
-						text5:String, butt5:Function):void { //New typesafe version
+export function simpleChoices(text1:string, butt1:() => void, 
+						text2:string, butt2:() => void, 
+						text3:string, butt3:() => void, 
+						text4:string, butt4:() => void, 
+						text5:string, butt5:() => void):void { //New typesafe version
 
 	//trace("SimpleChoices");
 /*	choices(text1,butt1,
@@ -1293,7 +1293,7 @@ public function simpleChoices(text1:String, butt1:Function,
 	addButton(4, text5, butt5);
 }
 
-public function doYesNo(eventYes:Function, eventNo:Function):void { //New typesafe version
+export function doYesNo(eventYes:() => void, eventNo:() => void):void { //New typesafe version
 	menu();
 	addButton(0, "Yes", eventYes);
 	addButton(1, "No", eventNo);
@@ -1316,7 +1316,7 @@ public function doYesNo(eventYes:Function, eventNo:Function):void { //New typesa
 */
 }
 
-public function doNext(event:Function):void { //Now typesafe
+export function doNext(event:() => void):void { //Now typesafe
 	//Prevent new events in combat from automatically overwriting a game over. 
 	if (mainView.getButtonText(0).indexOf("Game Over") != -1) {
 		trace("Do next setup cancelled by game over");
@@ -1339,29 +1339,29 @@ public function doNextClear(eventNo:*):void
 }
 */
 
-public function invertGo():void{ 
+export function invertGo():void{ 
 	mainView.invert();
 }
 
 //Used to update the display of statistics
-public function statScreenRefresh():void {
+export function statScreenRefresh():void {
 	mainView.statsView.show(); // show() method refreshes.
 }
 
-public function showStats():void {
+export function showStats():void {
 	mainView.statsView.show();
 }
 
-public function hideStats():void {
+export function hideStats():void {
 	mainView.statsView.hide();
 }
 
-public function hideMenus():void {
+export function hideMenus():void {
 	mainView.hideAllMenuButtons();
 }
 
 //Hide the up/down indicators
-public function hideUpDown():void {
+export function hideUpDown():void {
 	mainView.statsView.hideUpDown();
 
 	//Clear storage values so up/down arrows can be properly displayed
@@ -1375,16 +1375,16 @@ public function hideUpDown():void {
 	oldStats.oldCor = 0;        
 }
 
-public function physicalCost(mod:Number):Number {
-	var costPercent:Number = 100;
+export function physicalCost(mod:number):number {
+	var costPercent:number = 100;
 	if(player.findPerk(PerkLib.IronMan) >= 0) costPercent -= 50;
 	mod *= costPercent/100;
 	return mod;
 }
 
-public function spellCost(mod:Number):Number {
+export function spellCost(mod:number):number {
 	//Addiditive mods
-	var costPercent:Number = 100;
+	var costPercent:number = 100;
 	if(player.findPerk(PerkLib.SpellcastingAffinity) >= 0) costPercent -= player.perkv1(PerkLib.SpellcastingAffinity);
 	if(player.findPerk(PerkLib.WizardsEndurance) >= 0) costPercent -= player.perkv1(PerkLib.WizardsEndurance);
 	
@@ -1407,7 +1407,7 @@ public function spellCost(mod:Number):Number {
 //types:
 //        0 - normal
 //        1 - magic
-public function fatigue(mod:Number,type:Number  = 0):void {
+export function fatigue(mod:number,type:number  = 0):void {
 	//Spell reductions
 	if(type == 1) {
 		mod = spellCost(mod);
@@ -1427,7 +1427,7 @@ public function fatigue(mod:Number,type:Number  = 0):void {
 	if(player.fatigue <= 0 && mod < 0) return;
 	//Fatigue restoration buffs!
 	if (mod < 0) {
-		var multi:Number = 1;
+		var multi:number = 1;
 		
 		if (player.findPerk(PerkLib.HistorySlacker) >= 0) multi += 0.2;
 		if (player.findPerk(PerkLib.ControlledBreath) >= 0 && player.cor < 30) multi += 0.1;
@@ -1450,20 +1450,20 @@ public function fatigue(mod:Number,type:Number  = 0):void {
 	statScreenRefresh();
 }
 //function changeFatigue
-public function changeFatigue(changeF:Number):void {
+export function changeFatigue(changeF:number):void {
 	fatigue(changeF);
 }
-public function minLust():Number {
+export function minLust():number {
 	return player.minLust();
 }
 
-public function displayStats(e:MouseEvent = null):void
+export function displayStats(e:MouseEvent = null):void
 {
 	spriteSelect(-1);
 	outputText("", true);
 	
 	// Begin Combat Stats
-	var combatStats:String = "";
+	var combatStats:string = "";
 	if (player.hasKeyItem("Bow") >= 0)
 		combatStats += "<b>Bow Skill:</b> " + Math.round(player.statusAffectv1(StatusAffects.Kelt)) + "\n";
 		
@@ -1483,7 +1483,7 @@ public function displayStats(e:MouseEvent = null):void
 	// End Combat Stats
 	
 	// Begin Children Stats
-	var childStats:String = "";
+	var childStats:string = "";
 	
 	if (player.statusAffectv1(StatusAffects.Birthed) > 0)
 		childStats += "<b>Times Given Birth:</b> " + player.statusAffectv1(StatusAffects.Birthed) + "\n";
@@ -1543,7 +1543,7 @@ public function displayStats(e:MouseEvent = null):void
 	if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 || flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 0) 
 	{
 		childStats += "<b>Children With Sophie:</b> ";
-		var sophie:int = 0;
+		var sophie:number = 0;
 		if (flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 0) sophie++;
 		sophie += flags[kFLAGS.SOPHIE_ADULT_KID_COUNT];
 		if (flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] > 0) sophie++;
@@ -1568,7 +1568,7 @@ public function displayStats(e:MouseEvent = null):void
 	// End Children Stats
 
 	// Begin Body Stats
-	var bodyStats:String = "";
+	var bodyStats:string = "";
 	
 	bodyStats += "<b>Anal Capacity:</b> " + Math.round(player.analCapacity()) + "\n";
 	bodyStats += "<b>Anal Looseness:</b> " + Math.round(player.ass.analLooseness) + "\n";
@@ -1590,7 +1590,7 @@ public function displayStats(e:MouseEvent = null):void
 	}
 	
 	bodyStats += "<b>Pregnancy Speed Multiplier:</b> ";
-	var preg:Number = 1;
+	var preg:number = 1;
 	if (player.findPerk(PerkLib.Diapause) >= 0)
 		bodyStats += "? (Variable due to Diapause)\n";
 	else {
@@ -1605,10 +1605,10 @@ public function displayStats(e:MouseEvent = null):void
 	if (player.cocks.length > 0) {
 		bodyStats += "<b>Total Cocks:</b> " + player.cocks.length + "\n";
 
-		var totalCockLength:Number = 0;
-		var totalCockGirth:Number = 0;
+		var totalCockLength:number = 0;
+		var totalCockGirth:number = 0;
 		
-		for (var i:Number = 0; i < player.cocks.length; i++) {
+		for (const i = 0; i < player.cocks.length; i++) {
 				totalCockLength += player.cocks[i].cockLength;
 				totalCockGirth += player.cocks[i].cockThickness
 		}
@@ -1640,7 +1640,7 @@ public function displayStats(e:MouseEvent = null):void
 	// End Body Stats
 
 	// Begin Misc Stats
-	var miscStats:String = "";
+	var miscStats:string = "";
 
 	if (flags[kFLAGS.EGGS_BOUGHT] > 0)
 		miscStats += "<b>Eggs Traded For:</b> " + flags[kFLAGS.EGGS_BOUGHT] + "\n";
@@ -1659,7 +1659,7 @@ public function displayStats(e:MouseEvent = null):void
 	// End Misc Stats
 	
 	// Begin Addition Stats
-	var addictStats:String = "";
+	var addictStats:string = "";
 	//Marble Milk Addition
 	if (player.statusAffectv3(StatusAffects.Marble) > 0) {
 		addictStats += "<b>Marble Milk:</b> ";
@@ -1684,7 +1684,7 @@ public function displayStats(e:MouseEvent = null):void
 	// End Addition Stats
 	
 	// Begin Interpersonal Stats
-	var interpersonStats:String = "";
+	var interpersonStats:string = "";
 	
 	if (flags[kFLAGS.ARIAN_PARK] > 0)
 		interpersonStats += "<b>Arian's Health:</b> " + Math.round(arianScene.arianHealth()) + "\n";
@@ -1774,7 +1774,7 @@ public function displayStats(e:MouseEvent = null):void
 	// End Interpersonal Stats
 	
 	// Begin Ongoing Stat Effects
-	var statEffects:String = "";
+	var statEffects:string = "";
 	
 	if (player.inHeat)
 		statEffects += "Heat - " + Math.round(player.statusAffectv3(StatusAffects.Heat)) + " hours remaining\n";
@@ -1795,8 +1795,8 @@ public function displayStats(e:MouseEvent = null):void
 	doNext(playerMenu);
 }
 
-public function lustPercent():Number {
-	var lust:Number = 100;
+export function lustPercent():number {
+	var lust:number = 100;
 	//2.5% lust resistance per level - max 75.
 	if(player.level < 21) lust -= (player.level - 1) * 3;
 	else lust = 40;
@@ -1840,7 +1840,7 @@ public function lustPercent():Number {
 	
 	// Lust mods from Uma's content -- Given the short duration and the gem cost, I think them being multiplicative is justified.
 	// Changing them to an additive bonus should be pretty simple (check the static values in UmasShop.as)
-	var statIndex:int = player.findStatusAffect(StatusAffects.UmasMassage);
+	var statIndex:number = player.findStatusAffect(StatusAffects.UmasMassage);
 	if (statIndex >= 0)
 	{
 		if (player.statusAffect(statIndex).value1 == UmasShop.MASSAGE_RELIEF || player.statusAffect(statIndex).value1 == UmasShop.MASSAGE_LUST)
@@ -1854,7 +1854,7 @@ public function lustPercent():Number {
 }
 
 // returns OLD OP VAL
-public function applyOperator(old:Number, op:String, val:Number):Number {
+export function applyOperator(old:number, op:string, val:number):number {
 	switch(op) {
 		case "=":
 			return val;
@@ -1872,7 +1872,7 @@ public function applyOperator(old:Number, op:String, val:Number):Number {
 	}
 }
 
-public function testDynStatsEvent():void {
+export function testDynStatsEvent():void {
 	outputText("Old: "+player.str+" "+player.tou+" "+player.spe+" "+player.inte+" "+player.lib+" "+player.sens+" "+player.lust+"\n",true);
 	dynStats("tou", 1, "spe+", 2, "int-", 3, "lib*", 2, "sen=", 25,"lust/",2);
 	outputText("Mod: 0 1 +2 -3 *2 =25 /2\n");
@@ -1888,7 +1888,7 @@ public function testDynStatsEvent():void {
  * valid operators are "=" (set), "+", "-", "*", "/", add is default.<br/>
  * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names; also "resisted"/"res" (apply lust resistance, default true) and "noBimbo"/"bim" (do not apply bimbo int gain reduction, default false)
  */
-public function dynStats(... args):void
+export function dynStats(... args):void
 {
 	// Check num of args, we should have a multiple of 2
 	if ((args.length % 2) != 0)
@@ -1897,12 +1897,12 @@ public function dynStats(... args):void
 		return;
 	}
 	
-	var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "resisted", "noBimbo"]; // In case somebody uses full arg names etc
-	var argNamesShort:Array = 	["str", 	"tou", 	"spe", 	"int", 	"lib", 	"sen", 	"lus", 	"cor", 	"res", 	"bim"]; // Arg names
-	var argVals:Array = 		[0, 		0,	 	0, 		0, 		0, 		0, 		0, 		0, 		true, 	false]; // Default arg values
-	var argOps:Array = 			["+",	"+",    "+",    "+",    "+",    "+",    "+",    "+",    "=",    "="];   // Default operators
+	var argNamesFull:any[] 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "resisted", "noBimbo"]; // In case somebody uses full arg names etc
+	var argNamesShort:any[] = 	["str", 	"tou", 	"spe", 	"int", 	"lib", 	"sen", 	"lus", 	"cor", 	"res", 	"bim"]; // Arg names
+	var argVals:any[] = 		[0, 		0,	 	0, 		0, 		0, 		0, 		0, 		0, 		true, 	false]; // Default arg values
+	var argOps:any[] = 			["+",	"+",    "+",    "+",    "+",    "+",    "+",    "+",    "=",    "="];   // Default operators
 	
-	for (var i:int = 0; i < args.length; i += 2)
+	for (const i = 0; i < args.length; i += 2)
 	{
 		if (typeof(args[i]) == "string")
 		{
@@ -1913,10 +1913,10 @@ public function dynStats(... args):void
 				continue;
 			}
 			
-			var argIndex:int = -1;
+			var argIndex:number = -1;
 			
 			// Figure out which array to search
-			var argsi:String = (args[i] as String);
+			var argsi:string = (args[i] as String);
 			if (argsi == "lust") argsi = "lus";
 			if (argsi == "sens") argsi = "sen";
 			if (argsi.length <= 4) // Short
@@ -1951,14 +1951,14 @@ public function dynStats(... args):void
 		}
 	}
 	// Got this far, we have values to statsify
-	var newStr:Number = applyOperator(player.str, argOps[0], argVals[0]);
-	var newTou:Number = applyOperator(player.tou, argOps[1], argVals[1]);
-	var newSpe:Number = applyOperator(player.spe, argOps[2], argVals[2]);
-	var newInte:Number = applyOperator(player.inte, argOps[3], argVals[3]);
-	var newLib:Number = applyOperator(player.lib, argOps[4], argVals[4]);
-	var newSens:Number = applyOperator(player.sens, argOps[5], argVals[5]);
-	var newLust:Number = applyOperator(player.lust, argOps[6], argVals[6]);
-	var newCor:Number = applyOperator(player.cor, argOps[7], argVals[7]);
+	var newStr:number = applyOperator(player.str, argOps[0], argVals[0]);
+	var newTou:number = applyOperator(player.tou, argOps[1], argVals[1]);
+	var newSpe:number = applyOperator(player.spe, argOps[2], argVals[2]);
+	var newInte:number = applyOperator(player.inte, argOps[3], argVals[3]);
+	var newLib:number = applyOperator(player.lib, argOps[4], argVals[4]);
+	var newSens:number = applyOperator(player.sens, argOps[5], argVals[5]);
+	var newLust:number = applyOperator(player.lust, argOps[6], argVals[6]);
+	var newCor:number = applyOperator(player.cor, argOps[7], argVals[7]);
 	// Because lots of checks and mods are made in the stats(), calculate deltas and pass them. However, this means that the '=' operator could be resisted
 	// In future (as I believe) stats() should be replaced with dynStats(), and checks and mods should be made here
 	stats(newStr - player.str,
@@ -1973,7 +1973,7 @@ public function dynStats(... args):void
 	
 }
 
-public function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:Number, sens:Number, lust2:Number, corr:Number, resisted:Boolean = true, noBimbo:Boolean = false):void
+export function stats(stre:number, toug:number, spee:number, intel:number, libi:number, sens:number, lust2:number, corr:number, resisted:boolean = true, noBimbo:boolean = false):void
 {
 	//Easy mode cuts lust gains!
 	if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 && lust2 > 0 && resisted) lust2 /= 2;
@@ -2104,15 +2104,15 @@ public function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:
 	mainView.statsView.showUpDown();
 	statScreenRefresh();
 }
-public function range(min:Number, max:Number, round:Boolean = false):Number 
+export function range(min:number, max:number, round:boolean = false):number 
 {
-	var num:Number = (min + Math.random() * (max - min));
+	var num:number = (min + Math.random() * (max - min));
 
 	if (round) return Math.round(num);
 	return num;
 }
 
-public function cuntChangeOld(cIndex:Number, vIndex:Number, display:Boolean):void {
+export function cuntChangeOld(cIndex:number, vIndex:number, display:boolean):void {
 	//Virginity check
 	if(player.vaginas[vIndex].virgin) {
 		if(display) outputText("\nYour " + vaginaDescript(vIndex) + " loses its virginity!", false);
@@ -2148,7 +2148,7 @@ public function cuntChangeOld(cIndex:Number, vIndex:Number, display:Boolean):voi
 	}
 }
 
-public function spriteSelect(choice:Number = 0):void {
+export function spriteSelect(choice:number = 0):void {
 	if (flags[kFLAGS.SHOW_SPRITES_FLAG] == 0)
 	{
 		mainView.selectSprite( choice );

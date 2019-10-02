@@ -1,29 +1,29 @@
-﻿package classes
-{
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Player;
-	import classes.Monster;
-	import classes.CoC_Settings;
-	import classes.internals.Utils;
+ 
+
+	 
+	 
+	 
+	 
+	 
 
 
-	public class Appearance extends Utils
+	export class Appearance extends Utils
 	{
 		// Eventually, this should contain the entire char appearance.
 		// At the moment, it's pretty piecemeal.
 		// TODO remove when we have proper enums for this
-		include "../../includes/appearanceDefs.as";
+		// include "../../includes/appearanceDefs.as";
 
-		public static function inverseMap(x:Object):Object
+		public static  inverseMap(x:Record<string, any>):Record<string, any>
 		{
-			var result:Object = {};
-			for (var i:String in x) {
+			var result:Record<string, any> = {};
+			for (const i in x) {
 				result[String(x[i])] = i;
 			}
 			return result;
 		}
 
-		public static function hairOrFur(i_creature:Creature):String
+		public static  hairOrFur(i_creature:Creature):string
 		{
 			if (i_creature.skinType == 1)
 				return "fur";
@@ -31,10 +31,10 @@
 				return "hair";
 		}
 
-		public static function hairDescription(i_creature:Creature):String
+		public static  hairDescription(i_creature:Creature):string
 		{
-			var description:String = "";
-			var options:Array;
+			var description:string = "";
+			var options:any[];
 			//
 			// LENGTH ADJECTIVE!
 			//
@@ -107,7 +107,7 @@
 		 * @param    i_character Either Player or NonPlayer
 		 * @return    A beautiful description of a tongue.
 		 */
-		public static function tongueDescription(i_character:Character):String
+		public static  tongueDescription(i_character:Character):string
 		{
 			if (i_character.tongueType == 1) return "serpentine tongue";
 			else if (i_character.tongueType == 2) return "demonic tongue";
@@ -115,7 +115,7 @@
 			else return "tongue";
 		}
 
-		public static function nippleDescription(i_creature:Creature, i_rowNum:Number):String
+		public static  nippleDescription(i_creature:Creature, i_rowNum:number):string
 		{
 			//DEBUG SHIT!
 			if (i_rowNum > (i_creature.breastRows.length - 1)) {
@@ -126,10 +126,10 @@
 				CoC_Settings.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
 				return "<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>";
 			}
-			var haveDescription:Boolean = false;
-			var description:String = "";
-			var options:Array;
-			var rando:Number = 0;
+			var haveDescription:boolean = false;
+			var description:string = "";
+			var options:any[];
+			var rando:number = 0;
 			//Size descriptors 33% chance
 			if (rand(4) == 0) {
 				//TINAHHHH
@@ -271,7 +271,7 @@
 			}
 
 			//Nounsssssssss*BOOM*
-			var choice:int = 0;
+			var choice:number = 0;
 			choice = rand(5);
 			if (choice == 0) description += "nipple";
 			if (choice == 1) {
@@ -321,10 +321,10 @@
 			 */
 		}
 
-		public static function hipDescription(i_character:Character):String
+		public static  hipDescription(i_character:Character):string
 		{
-			var description:String = "";
-			var options:Array;
+			var description:string = "";
+			var options:any[];
 			if (i_character.hipRating <= 1) {
 				options = ["tiny ",
 					"narrow ",
@@ -471,7 +471,7 @@
 		}
 */
 
-		public static function cockDescript(creature:Creature, cockIndex:Number = 0):String
+		public static  cockDescript(creature:Creature, cockIndex:number = 0):string
 		{
 			if (creature.cocks.length == 0) return "<b>ERROR: CockDescript Called But No Cock Present</b>";
 			var cockType:CockTypesEnum = CockTypesEnum.HUMAN;
@@ -479,15 +479,15 @@
 				if (creature.cocks.length <= cockIndex) return "<b>ERROR: CockDescript called with index of " + cockIndex + " - out of BOUNDS</b>";
 				cockType = creature.cocks[cockIndex].cockType;
 			}
-			var isPierced:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
-			var hasSock:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].sock != "");
-			var isGooey:Boolean = (creature.skinType == CoC.SKIN_TYPE_GOO);
+			var isPierced:boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
+			var hasSock:boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].sock != "");
+			var isGooey:boolean = (creature.skinType == CoC.SKIN_TYPE_GOO);
 			return cockDescription(cockType, creature.cocks[cockIndex].cockLength, creature.cocks[cockIndex].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 		}
 
 		//This function takes all the variables independently so that a creature object is not required for a cockDescription.
 		//This allows a single cockDescription function to produce output for both cockDescript and the old NPCCockDescript.
-		public static function cockDescription(cockType:CockTypesEnum, length:Number, girth:Number, lust:int = 50, cumQ:Number = 10, isPierced:Boolean = false, hasSock:Boolean = false, isGooey:Boolean = false): String {
+		public static  cockDescription(cockType:CockTypesEnum, length:number, girth:number, lust:number = 50, cumQ:number = 10, isPierced:boolean = false, hasSock:boolean = false, isGooey:boolean = false): string {
 			if (rand(2) == 0) {
 				if(cockType == CockTypesEnum.HUMAN) return cockAdjective(cockType, length, girth, lust, cumQ, isPierced, hasSock, isGooey) + " " + cockNoun(cockType);
 				else return cockAdjective(cockType, length, girth, lust, cumQ, isPierced, hasSock, isGooey) + ", " + cockNoun(cockType);
@@ -495,7 +495,7 @@
 			return cockNoun(cockType);
 		}
 
-		public static function cockNoun(cockType:CockTypesEnum):String
+		public static  cockNoun(cockType:CockTypesEnum):string
 		{
 			/*
 			if (cockType is int) {
@@ -677,7 +677,7 @@
 
 		//New cock adjectives.  The old one sucked dicks
 		//This function handles all cockAdjectives. Previously there were separate functions for the player, monsters and NPCs.
-		public static function cockAdjective(cockType:CockTypesEnum, length:Number, girth:Number, lust:int = 50, cumQ:Number = 10, isPierced:Boolean = false, hasSock:Boolean = false, isGooey:Boolean = false):String {
+		public static  cockAdjective(cockType:CockTypesEnum, length:number, girth:number, lust:number = 50, cumQ:number = 10, isPierced:boolean = false, hasSock:boolean = false, isGooey:boolean = false):string {
 			//First, the three possible special cases
 			if (isPierced && rand(5) == 0) return "pierced";
 			if (hasSock && rand(5) == 0) return randomChoice("sock-sheathed", "garment-wrapped", "smartly dressed", "cloth-shrouded", "fabric swaddled", "covered");
@@ -866,11 +866,11 @@
 */
 
 		//Cock adjectives for single cock
-		private static function cockAdjectives(i_cockLength:Number, i_cockThickness:Number, i_cockType:CockTypesEnum, i_creature:Creature):String
+		private static  cockAdjectives(i_cockLength:number, i_cockThickness:number, i_cockType:CockTypesEnum, i_creature:Creature):string
 		{
-			var description:String = "";
-			var rando:Number = 0;
-			var descripts:Number = 0;
+			var description:string = "";
+			var rando:number = 0;
+			var descripts:number = 0;
 			//length or thickness, usually length.
 			if (rand(4) == 0) {
 				if (i_cockLength < 3) {
@@ -990,7 +990,7 @@
 			return description;
 		}
 
-		public static function cockMultiNoun(cockType:CockTypesEnum):String
+		public static  cockMultiNoun(cockType:CockTypesEnum):string
 		{
 			/*
 			if (cockType is int) {
@@ -999,8 +999,8 @@
 				cockType = CockTypesEnum.ParseConstantByIndex(cockType);
 			}
 			*/
-			var options:Array;
-			var description:String = "";
+			var options:any[];
+			var description:string = "";
 			if (cockType == CockTypesEnum.HUMAN) {
 				options = ["cock",
 					"cock",
@@ -1178,14 +1178,14 @@
 		 * @param    i_withArticle    Show description with article in front
 		 * @return    Full description of balls
 		 */
-		public static function ballsDescription(i_forcedSize:Boolean, i_plural:Boolean, i_creature:Creature, i_withArticle:Boolean = false):String
+		public static  ballsDescription(i_forcedSize:boolean, i_plural:boolean, i_creature:Creature, i_withArticle:boolean = false):string
 		{
 			if (i_creature.balls == 0) return "prostate";
 
-			var haveDescription:Boolean = false;
-			var rando:Number = 0;
-			var description:String = "";
-			var options:Array;
+			var haveDescription:boolean = false;
+			var rando:number = 0;
+			var description:string = "";
+			var options:any[];
 
 			if (i_plural && (i_creature.findStatusAffect(StatusAffects.Uniball) < 0)) {
 				if (i_creature.balls == 1) {
@@ -1340,12 +1340,12 @@
 		}
 
 		//Returns random description of scrotum
-		public static function sackDescript(i_creature:Creature):String
+		public static  sackDescript(i_creature:Creature):string
 		{
 			if (i_creature.balls == 0) return "prostate";
 
-			var options:Array;
-			var description:String = "";
+			var options:any[];
+			var description:string = "";
 
 			options = ["scrotum",
 				"sack",
@@ -1367,7 +1367,7 @@
 		}
 */
 
-		public static function vaginaDescript(i_creature:Creature, i_vaginaIndex:Number = 0):String
+		public static  vaginaDescript(i_creature:Creature, i_vaginaIndex:number = 0):string
 		{
 			if (i_vaginaIndex > (i_creature.vaginas.length - 1)) {
 				CoC_Settings.error("<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
@@ -1382,10 +1382,10 @@
 				return "ERROR: Called vaginaDescription with no vaginas";
 			}
 
-			var description:String = "";
-			var weighting:Number = 0;
-			var haveDescription:Boolean = false;
-			var options:Array;
+			var description:string = "";
+			var weighting:number = 0;
+			var haveDescription:boolean = false;
+			var options:any[];
 
 			//Very confusing way to display values.
 			if (i_creature.vaginas[i_vaginaIndex].vaginalLooseness == 0) weighting = 61;
@@ -1465,11 +1465,11 @@
 			return description;
 		}
 
-		public static function clitDescription(i_creature:Creature):String
+		public static  clitDescription(i_creature:Creature):string
 		{
-			var description:String = "";
-			var options:Array;
-			var haveDescription:Boolean = false;
+			var description:string = "";
+			var options:any[];
+			var haveDescription:boolean = false;
 			//Length Adjective - 50% chance
 			if (rand(2) == 0) {
 				//small clits!
@@ -1568,10 +1568,10 @@
 		 * @param    i_character
 		 * @return    A full description of a Character's butt.
 		 */
-		public static function buttDescription(i_character:Character):String
+		public static  buttDescription(i_character:Character):string
 		{
-			var description:String = "";
-			var options:Array;
+			var description:string = "";
+			var options:any[];
 			if (i_character.buttRating <= 1) {
 				if (i_character.tone >= 60)
 					description += "incredibly tight, perky ";
@@ -1878,10 +1878,10 @@
 		 * @param    creature
 		 * @return Short description of a butt.
 		 */
-		public static function buttDescriptionShort(i_creature:Creature):String
+		public static  buttDescriptionShort(i_creature:Creature):string
 		{
-			var description:String = "";
-			var options:Array;
+			var description:string = "";
+			var options:any[];
 			if (i_creature.buttRating <= 1) {
 				options = ["insignificant ",
 					"very small "];
@@ -1941,9 +1941,9 @@
 			return description;
 		}
 
-		public static function assholeDescript(i_creature:Creature):String
+		public static  assholeDescript(i_creature:Creature):string
 		{
-			var description:String = "";
+			var description:string = "";
 			
 			// The way this was setup didn't work. Trying to inline-define object key-values wasn't looking up the variable *VALUES* it was using the string representation
 			// of the variable name as the key.
@@ -1951,7 +1951,7 @@
 			// This is just fucking awful but I'm just making things work in the face of bugs I'm running into.
 			
 			// 66% Wetness Descript
-			var ANAL_WETNESS_DESCRIPTORS:Object = new Object(); 
+			var ANAL_WETNESS_DESCRIPTORS:Record<string, any> = new Object(); 
 			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_DRY] = "";
 			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_NORMAL] = "";
 			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_MOIST] = "moist ";
@@ -1964,7 +1964,7 @@
 				description += ANAL_WETNESS_DESCRIPTORS[i_creature.ass.analWetness];
 			}
 			
-			var ANAL_TIGHTNESS_DESCRIPTORS:Object = new Object();
+			var ANAL_TIGHTNESS_DESCRIPTORS:Record<string, any> = new Object();
 			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_VIRGIN] = "virgin ";
 			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_TIGHT] = "tight ";
 			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_NORMAL] = "loose ";
@@ -1989,7 +1989,7 @@
 			return description;
 		}
 		
-		public static function wingsDescript(i_creature:Creature):String
+		public static  wingsDescript(i_creature:Creature):string
 		{
 			return DEFAULT_WING_NAMES[i_creature.wingType] + " wings";
 		}
@@ -2095,7 +2095,7 @@
 		}
 */
 
-		public static const BREAST_CUP_NAMES:Array = [
+		public static  BREAST_CUP_NAMES:any[] = [
 			"flat",//0
 			//				1			2			3			4			5				6			7		8			9
 			"A-cup", "B-cup", "C-cup", "D-cup", "DD-cup", "big DD-cup", "E-cup", "big E-cup", "EE-cup",// 1-9
@@ -2110,7 +2110,7 @@
 			"Y-cup", "large Y-cup", "YY-cup", "large YY-cup", "Z-cup", "large Z-cup", "ZZ-cup", "large ZZ-cup", "ZZZ-cup", "large ZZZ-cup"//90-99
 		];
 
-		public static function breastCup(size:Number):String
+		public static  breastCup(size:number):string
 		{
 			return BREAST_CUP_NAMES[Math.min(Math.floor(size), BREAST_CUP_NAMES.length - 1)];
 		}
@@ -2119,27 +2119,27 @@
 		 * Returns breast size from cup name.
 		 * Acceptable input: "flat","A","B","C","D","DD","DD+",... "ZZZ","ZZZ+" or exact match from BREAST_CUP_NAMES array
 		 */
-		public static function breastCupInverse(name:String, defaultValue:Number = 0):Number
+		public static  breastCupInverse(name:string, defaultValue:number = 0):number
 		{
 			if (name.length == 0) return defaultValue;
 			if (name == "flat") return 0;
-			var big:Boolean = name.charAt(name.length - 1) == "+";
+			var big:boolean = name.charAt(name.length - 1) == "+";
 			if (big) name = name.substr(0, name.length - 1);
-			for (var i:int = 0; i < BREAST_CUP_NAMES.length; i++) {
+			for (const i = 0; i < BREAST_CUP_NAMES.length; i++) {
 				if (name == BREAST_CUP_NAMES[i]) return i;
 				if (BREAST_CUP_NAMES[i].indexOf(name) == 0) return i + (big ? 1 : 0);
 			}
 			return defaultValue;
 		}
 
-		public static function createMapFromPairs(src:Array):Object
+		public static  createMapFromPairs(src:any[]):Record<string, any>
 		{
-			var result:Object = {};
-			for (var i:int = 0; i < src.length; i++) result[src[i][0]] = src[i][1];
+			var result:Record<string, any> = {};
+			for (const i = 0; i < src.length; i++) result[src[i][0]] = src[i][1];
 			return result;
 		}
 
-		public static const DEFAULT_GENDER_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_GENDER_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[GENDER_NONE, "genderless"],
 					[GENDER_MALE, "male"],
@@ -2147,7 +2147,7 @@
 					[GENDER_HERM, "hermaphrodite"]
 				]
 		);
-		public static const DEFAULT_SKIN_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_SKIN_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[SKIN_TYPE_PLAIN, "skin"],
 					[SKIN_TYPE_FUR, "fur"],
@@ -2156,7 +2156,7 @@
 					[SKIN_TYPE_UNDEFINED, "undefined flesh"]
 				]
 		);
-		public static const DEFAULT_SKIN_DESCS:Object = createMapFromPairs(
+		public static  DEFAULT_SKIN_DESCS:Record<string, any> = createMapFromPairs(
 				[
 					[SKIN_TYPE_PLAIN, "skin"],
 					[SKIN_TYPE_FUR, "fur"],
@@ -2165,7 +2165,7 @@
 					[SKIN_TYPE_UNDEFINED, "skin"]
 				]
 		);
-		public static const DEFAULT_HAIR_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_HAIR_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[HAIR_NORMAL, "normal"],
 					[HAIR_FEATHER, "feather"],
@@ -2174,7 +2174,7 @@
 					[HAIR_ANEMONE, "tentacle"]
 				]
 		);
-		public static const DEFAULT_FACE_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_FACE_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[FACE_HUMAN, "human"],
 					[FACE_HORSE, "horse"],
@@ -2195,7 +2195,7 @@
 					[FACE_MOUSE, "mouse"]
 				]
 		);
-		public static const DEFAULT_TONGUE_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_TONGUE_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[TONUGE_HUMAN, "human"],
 					[TONUGE_SNAKE, "snake"],
@@ -2203,14 +2203,14 @@
 					[TONUGE_DRACONIC, "draconic"]
 				]
 		);
-		public static const DEFAULT_EYES_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_EYES_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[EYES_HUMAN, "human"],
 					[EYES_FOUR_SPIDER_EYES, "4 spider"],
 					[EYES_BLACK_EYES_SAND_TRAP, "sandtrap black"]
 				]
 		);
-		public static const DEFAULT_EARS_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_EARS_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[EARS_HUMAN, "human"],
 					[EARS_HORSE, "horse"],
@@ -2227,7 +2227,7 @@
 					[EARS_MOUSE, "mouse"]
 				]
 		);
-		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_HORNS_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[HORNS_NONE, "non-existant"],
 					[HORNS_DEMON, "demon"],
@@ -2237,20 +2237,20 @@
 					[HORNS_ANTLERS, "deer"]
 				]
 		);
-		public static const DEFAULT_ANTENNAE_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_ANTENNAE_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[ANTENNAE_NONE, "non-existant"],
 					[ANTENNAE_BEE, "bee"]
 				]
 		);
-		public static const DEFAULT_ARM_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_ARM_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[ARM_TYPE_HUMAN, "human"],
 					[ARM_TYPE_HARPY, "harpy"],
 					[ARM_TYPE_SPIDER, "spider"]
 				]
 		);
-		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_TAIL_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[TAIL_TYPE_NONE, "non-existant"],
 					[TAIL_TYPE_HORSE, "horse"],
@@ -2271,7 +2271,7 @@
 					[TAIL_TYPE_MOUSE, "mouse"]
 				]
 		);
-		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_WING_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[WING_TYPE_NONE, "non-existant"],
 					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
@@ -2287,7 +2287,7 @@
 					[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
 				]
 		);
-		public static const DEFAULT_WING_DESCS:Object = createMapFromPairs(
+		public static  DEFAULT_WING_DESCS:Record<string, any> = createMapFromPairs(
 				[
 					[WING_TYPE_NONE, "non-existant"],
 					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
@@ -2303,7 +2303,7 @@
 					[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
 				]
 		);
-		public static const DEFAULT_LOWER_BODY_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_LOWER_BODY_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[LOWER_BODY_TYPE_HUMAN, "human"],
 					[LOWER_BODY_TYPE_HOOFED, "hoofed"],
@@ -2327,7 +2327,7 @@
 					[LOWER_BODY_TYPE_RACCOON, "raccoon"]
 				]
 		);
-		public static const DEFAULT_PIERCING_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_PIERCING_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[PIERCING_TYPE_NONE, "none"],
 					[PIERCING_TYPE_STUD, "stud"],
@@ -2337,13 +2337,13 @@
 					[PIERCING_TYPE_CHAIN, "chain"]
 				]
 		);
-		public static const DEFAULT_VAGINA_TYPE_NAMES:Object = createMapFromPairs(
+		public static  DEFAULT_VAGINA_TYPE_NAMES:Record<string, any> = createMapFromPairs(
 				[
 					[VAGINA_TYPE_HUMAN, "human"],
 					[VAGINA_TYPE_BLACK_SAND_TRAP, "black sandtrap"]
 				]
 		);
-		public static const DEFAULT_VAGINA_WETNESS_SCALES:Array = [
+		public static  DEFAULT_VAGINA_WETNESS_SCALES:any[] = [
 			[VAGINA_WETNESS_DRY, "dry"],
 			[VAGINA_WETNESS_NORMAL, "normal"],
 			[VAGINA_WETNESS_WET, "wet"],
@@ -2351,7 +2351,7 @@
 			[VAGINA_WETNESS_DROOLING, "drooling"],
 			[VAGINA_WETNESS_SLAVERING, "slavering"],
 		];
-		public static const DEFAULT_VAGINA_LOOSENESS_SCALES:Array = [
+		public static  DEFAULT_VAGINA_LOOSENESS_SCALES:any[] = [
 			[VAGINA_LOOSENESS_TIGHT, "tight"],
 			[VAGINA_LOOSENESS_NORMAL, "normal"],
 			[VAGINA_LOOSENESS_LOOSE, "loose"],
@@ -2359,7 +2359,7 @@
 			[VAGINA_LOOSENESS_GAPING_WIDE, "gaping wide"],
 			[VAGINA_LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"]
 		];
-		public static const DEFAULT_ANAL_WETNESS_SCALES:Array = [
+		public static  DEFAULT_ANAL_WETNESS_SCALES:any[] = [
 			[ANAL_WETNESS_DRY, "dry"],
 			[ANAL_WETNESS_NORMAL, "normal"],
 			[ANAL_WETNESS_MOIST, "moist"],
@@ -2367,7 +2367,7 @@
 			[ANAL_WETNESS_DROOLING, "drooling"],
 			[ANAL_WETNESS_SLIME_DROOLING, "slime-drooling"],
 		];
-		public static const DEFAULT_ANAL_LOOSENESS_SCALES:Array = [
+		public static  DEFAULT_ANAL_LOOSENESS_SCALES:any[] = [
 			[ANAL_LOOSENESS_VIRGIN, "virgin"],
 			[ANAL_LOOSENESS_TIGHT, "tight"],
 			[ANAL_LOOSENESS_NORMAL, "normal"],
@@ -2375,7 +2375,7 @@
 			[ANAL_LOOSENESS_STRETCHED, "stretched"],
 			[ANAL_LOOSENESS_GAPING, "gaping"]
 		];
-		public static const DEFAULT_HIP_RATING_SCALES:Array = [
+		public static  DEFAULT_HIP_RATING_SCALES:any[] = [
 			[HIP_RATING_BOYISH, "boyish"],
 			[HIP_RATING_SLENDER, "slender"],
 			[HIP_RATING_AVERAGE, "average"],
@@ -2384,7 +2384,7 @@
 			[HIP_RATING_FERTILE, "fertile"],
 			[HIP_RATING_INHUMANLY_WIDE, "inhumanly wide"]
 		];
-		public static const DEFAULT_BUTT_RATING_SCALES:Array = [
+		public static  DEFAULT_BUTT_RATING_SCALES:any[] = [
 			[BUTT_RATING_BUTTLESS, "buttless"],
 			[BUTT_RATING_TIGHT, "tight"],
 			[BUTT_RATING_AVERAGE, "average"],
@@ -2406,13 +2406,13 @@
 		 *      value = 10  ->   "big"
 		 *      value > 10  ->   "more than big"
 		 */
-		public static function describeByScale(value:Number, scale:Array, lessThan:String = "less than", moreThan:String = "more than"):String
+		public static  describeByScale(value:number, scale:any[], lessThan:string = "less than", moreThan:string = "more than"):string
 		{
 			if (scale.length == 0) return "undescribeale";
 			if (scale.length == 1) return "about " + scale[0][1];
 			if (value < scale[0][0]) return lessThan + " " + scale[0][1];
 			if (value == scale[0][0]) return scale[0][1];
-			for (var i:int = 1; i < scale.length; i++) {
+			for (const i = 1; i < scale.length; i++) {
 				if (value < scale[i][0]) return "between " + scale[i - 1][1] + " and " + scale[i][1];
 				if (value == scale[i][0]) return scale[i][1];
 			}
@@ -2425,7 +2425,7 @@
 		 * numberOfThings(2,"tail") = "2 tails"
 		 * numberOfThings(3,"hoof","hooves") = "3 hooves"
 		 */
-		public static function numberOfThings(n:int, name:String, pluralForm:String = null):String
+		public static  numberOfThings(n:number, name:string, pluralForm:string = null):string
 		{
 			pluralForm = pluralForm || (name + "s");
 			if (n == 0) return "no " + pluralForm;
@@ -2438,10 +2438,10 @@
 		 * 5.5 -> 5.5"
 		 * Positive only!
 		 */
-		public static function feetsAndInches(n:Number):String
+		public static  feetsAndInches(n:number):string
 		{
-			var feet:int = Math.floor(n / 12);
-			var inches:Number = n - feet * 12;
+			var feet:number = Math.floor(n / 12);
+			var inches:number = n - feet * 12;
 			if (feet > 0) return feet + "'" + inches + "\"";
 			else return inches + "\"";
 		}
@@ -2449,15 +2449,15 @@
 		/**
 		 * 13 -> 13" (2'1")
 		 */
-		public static function inchesAndFeetsAndInches(n:Number):String
+		public static  inchesAndFeetsAndInches(n:number):string
 		{
 			if (n < 12) return n + "\"";
 			return n + "\" (" + feetsAndInches(n) + ")";
 		}
 
-		public static function allBreastsDescript(creature:Creature):String
+		public static  allBreastsDescript(creature:Creature):string
 		{
-			var storage:String = "";
+			var storage:string = "";
 			if (creature.breastRows.length == 0) return "unremarkable chest muscles ";
 			if (creature.breastRows.length == 2) {
 				//if(creature.totalBreasts() == 4) storage += "quartet of ";
@@ -2480,7 +2480,7 @@
 
 		}
 		
-		public static function tailDescript(i_creature:Creature):String
+		public static  tailDescript(i_creature:Creature):string
 		{
 			if (i_creature.tailType == TAIL_TYPE_NONE)
 			{
@@ -2488,7 +2488,7 @@
 				return "<b>!Creature has no tails to describe!</b>";
 			}
 			
-			var descript:String = "";
+			var descript:string = "";
 			
 			if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1)
 			{
@@ -2514,7 +2514,7 @@
 			return descript;
 		}
 		
-		public static function oneTailDescript(i_creature:Creature):String
+		public static  oneTailDescript(i_creature:Creature):string
 		{
 			if (i_creature.tailType == TAIL_TYPE_NONE)
 			{
@@ -2522,7 +2522,7 @@
 				return "<b>!Creature has no tails to describe!</b>";
 			}
 			
-			var descript:String = "";
+			var descript:string = "";
 			
 			if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1)
 			{
@@ -2543,11 +2543,11 @@
 			return descript;
 		}
 
-		public static function biggestBreastSizeDescript(creature:Creature):String
+		public static  biggestBreastSizeDescript(creature:Creature):string
 		{
-			var temp14:int = Math.random() * 3;
-			var descript:String = "";
-			var temp142:int = creature.biggestTitRow();
+			var temp14:number = Math.random() * 3;
+			var descript:string = "";
+			var temp142:number = creature.biggestTitRow();
 			//ERROR PREVENTION
 			if (creature.breastRows.length - 1 < temp142) {
 				CoC_Settings.error("");
@@ -2595,9 +2595,9 @@
 			return descript;
 		}
 
-		public static function breastSize(val:Number):String
+		public static  breastSize(val:number):string
 		{
-			var descript:String = "";
+			var descript:string = "";
 			//Catch all for dudes.
 			if (val < 1) return "manly ";
 			//Small - A->B
@@ -2639,14 +2639,14 @@
 		}
 */
 
-		public static function assholeOrPussy(creature:Creature):String
+		public static  assholeOrPussy(creature:Creature):string
 		{
 			if (creature.hasVagina()) return vaginaDescript(creature, 0);
 			return assholeDescript(creature);
 		}
 
 
-		public static function multiCockDescriptLight(creature:Creature):String
+		public static  multiCockDescriptLight(creature:Creature):string
 		{
 			if (creature.cocks.length < 1) {
 
@@ -2655,21 +2655,21 @@
 
 			}
 			//Get cock counts
-			var descript:String = "";
-			var currCock:Number = 0;
-			var totCock:Number = creature.cocks.length;
-			var dogCocks:Number = 0;
-			var horseCocks:Number = 0;
-			var normalCocks:Number = 0;
-			var normalCockKey:Number = 0;
-			var dogCockKey:Number = 0;
-			var horseCockKey:Number = 0;
-			var averageLength:Number = 0;
-			var averageThickness:Number = 0;
-			var same:Boolean = true;
+			var descript:string = "";
+			var currCock:number = 0;
+			var totCock:number = creature.cocks.length;
+			var dogCocks:number = 0;
+			var horseCocks:number = 0;
+			var normalCocks:number = 0;
+			var normalCockKey:number = 0;
+			var dogCockKey:number = 0;
+			var horseCockKey:number = 0;
+			var averageLength:number = 0;
+			var averageThickness:number = 0;
+			var same:boolean = true;
 			//For temp14 random values
-			var rando:Number = 0;
-			var descripted:Boolean = false;
+			var rando:number = 0;
+			var descripted:boolean = false;
 			//If one, return normal cock descript
 			if (totCock == 1) return creature.cockDescript(0);
 			//Count cocks & Prep average totals
@@ -2775,28 +2775,28 @@
 			return descript;
 		}
 
-		public static function multiCockDescript(creature:Creature):String
+		public static  multiCockDescript(creature:Creature):string
 		{
 			if (creature.cocks.length < 1) {
 				CoC_Settings.error("");
 				return "<B>Error: multiCockDescript() called with no penises present.</B>";
 			}
 			//Get cock counts
-			var descript:String = "";
-			var currCock:Number = 0;
-			var totCock:Number = creature.cocks.length;
-			var dogCocks:Number = 0;
-			var horseCocks:Number = 0;
-			var normalCocks:Number = 0;
-			var normalCockKey:Number = 0;
-			var dogCockKey:Number = 0;
-			var horseCockKey:Number = 0;
-			var averageLength:Number = 0;
-			var averageThickness:Number = 0;
-			var same:Boolean = true;
+			var descript:string = "";
+			var currCock:number = 0;
+			var totCock:number = creature.cocks.length;
+			var dogCocks:number = 0;
+			var horseCocks:number = 0;
+			var normalCocks:number = 0;
+			var normalCockKey:number = 0;
+			var dogCockKey:number = 0;
+			var horseCockKey:number = 0;
+			var averageLength:number = 0;
+			var averageThickness:number = 0;
+			var same:boolean = true;
 			//For temp14 random values
-			var rando:Number = 0;
-			var descripted:Boolean = false;
+			var rando:number = 0;
+			var descripted:boolean = false;
 			//Count cocks & Prep average totals
 			while (currCock <= totCock - 1) {
 				//trace("Counting cocks!");
@@ -2908,4 +2908,3 @@
 			return descript;
 		}
 	}
-}

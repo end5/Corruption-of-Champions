@@ -1,39 +1,39 @@
 /**
  * Created by aimozg on 09.01.14.
  */
-package classes
-{
-	import flash.utils.Dictionary;
+ 
 
-	public class ItemType
+	 
+
+	export class ItemType
 	{
-		private static var ITEM_LIBRARY:Dictionary = new Dictionary();
-		private static var ITEM_SHORT_LIBRARY:Dictionary = new Dictionary();
-		public static const NOTHING:ItemType = new ItemType("NOTHING!");
+		private static  ITEM_LIBRARY:Dictionary = new Dictionary();
+		private static  ITEM_SHORT_LIBRARY:Dictionary = new Dictionary();
+		public static  NOTHING:ItemType = new ItemType("NOTHING!");
 
-		public static function lookupItem(id:String):ItemType{
+		public static  lookupItem(id:string):ItemType{
 			return ITEM_LIBRARY[id];
 		}
 
-		public static function lookupItemByShort(shortName:String):ItemType{
+		public static  lookupItemByShort(shortName:string):ItemType{
 			return ITEM_SHORT_LIBRARY[shortName];
 		}
 
-		public static function getItemLibrary():Dictionary
+		public static  getItemLibrary():Dictionary
 		{
 			return ITEM_LIBRARY;
 		}
 
-		private var _id:String;
-		protected var _shortName:String;
-		protected var _longName:String;
-		protected var _description:String;
-		protected var _value:Number;
+		private  _id:string;
+		protected  _shortName:string;
+		protected  _longName:string;
+		protected  _description:string;
+		protected  _value:number;
 
 		/**
 		 * Short name to be displayed on buttons
 		 */
-		public function get shortName():String
+		public  get shortName():string
 		{
 			return _shortName;
 		}
@@ -41,7 +41,7 @@ package classes
 		/**
 		 * A full name of the item, to be described in text
 		 */
-		public function get longName():String
+		public  get longName():string
 		{
 			return _longName;
 		}
@@ -49,7 +49,7 @@ package classes
 		/**
 		 * Item base price
 		 */
-		public function get value():Number
+		public  get value():number
 		{
 			return _value;
 		}
@@ -57,7 +57,7 @@ package classes
 		/**
 		 * Detailed description to use on tooltips
 		 */
-		public function get description():String
+		public  get description():string
 		{
 			return _description;
 		}
@@ -65,12 +65,12 @@ package classes
 		/**
 		 * 7-character unique (across all the versions) string, representing that item type.
 		 */
-		public function get id():String
+		public  get id():string
 		{
 			return _id;
 		}
 
-		public function ItemType(_id:String,_shortName:String=null,_longName:String=null,_value:Number=0,_description:String=null)
+		public  constructor(_id:string,_shortName:string=null,_longName:string=null,_value:number=0,_description:string=null)
 		{
 
 			this._id = _id;
@@ -89,9 +89,9 @@ package classes
 		}
 
 
-		public function toString():String
+		public  toString():string
 		{
 			return "\""+_id+"\"";
 		}
 	}
-}
+

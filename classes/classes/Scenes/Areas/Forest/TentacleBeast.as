@@ -1,13 +1,13 @@
-﻿package classes.Scenes.Areas.Forest
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class TentacleBeast extends Monster
+	 
+	 
+
+	export class TentacleBeast extends Monster
 	{
-		private function tentaclePhysicalAttack():void {
+		private  tentaclePhysicalAttack():void {
 			outputText("The shambling horror throws its tentacles at you with a murderous force.\n", false);
-			var temp:int = int((str + weaponAttack) - Math.random()*(player.tou) - player.armorDef);
+			var temp:number = int((str + weaponAttack) - Math.random()*(player.tou) - player.armorDef);
 			if(temp < 0) temp = 0;
 			//Miss
 			if(temp == 0 || (player.spe - spe > 0 && int(Math.random()*(((player.spe-spe)/4)+80)) > 80)) {
@@ -20,7 +20,7 @@
 			}
 			combatRoundOver();
 		}
-		private function tentacleEntwine():void {
+		private  tentacleEntwine():void {
 			outputText("The beast lunges its tentacles at you from all directions in an attempt to immobilize you.\n", false);
 			//Not Trapped yet
 			if(player.findStatusAffect(StatusAffects.TentacleBind) < 0) {
@@ -44,7 +44,7 @@
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (hpVictory) {
 				outputText("The creature lets out an ear-piercing screech as it collapses upon itself. Its green coloring quickly fades to brown as the life drains from it, leaving you victorious.", true);
@@ -65,7 +65,7 @@
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (hpVictory) {
 				outputText("Overcome by your wounds, you turn to make a last desperate attempt to run...\n\n");
@@ -86,7 +86,7 @@
 			}
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			//tentacle beasts have special AI
 			if (rand(2) == 0 || findStatusAffect(StatusAffects.TentacleCoolDown) >= 0)
@@ -94,7 +94,7 @@
 			else special2();
 		}
 
-		public function TentacleBeast()
+		public  constructor()
 		{
 			trace("TentacleBeast Constructor!");
 			this.a = "the ";
@@ -147,4 +147,3 @@
 
 	}
 
-}

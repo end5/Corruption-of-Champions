@@ -1,12 +1,12 @@
-﻿import coc.view.CoCButton;
-import coc.view.MainView;
-import flash.text.TextField;
-import flash.text.TextFormat;
+ 
+ 
+ 
+ 
 
 
 
 //MainMenu - kicks player out to the main menu
-public function mainMenu(e:MouseEvent = undefined):void 
+export function mainMenu(e:MouseEvent = undefined):void 
 {
 	stage.focus = (mainView as MainView).mainText;
 	
@@ -47,7 +47,7 @@ public function mainMenu(e:MouseEvent = undefined):void
 
 	startupScreenBody();
 
-	var resume:Function = null;
+	var resume:() => void = null;
 	if (player.str > 0)  //we're in a game, allow resume.
 		resume = playerMenu;
 
@@ -76,13 +76,13 @@ public function mainMenu(e:MouseEvent = undefined):void
 	}
 }
 
-public function startupScreenBody():void
+export function startupScreenBody():void
 {
 
 	// NO FUCKING DECENT MULTI-LINE STRING LITERALS BECAUSE FUCKING STUPID
 	// WTF ACTIONSCRIPT YOUR DEV'S ARE ON CRACK
 
-	outputText(<![CDATA[
+	outputText(`<![CDATA[
 <br>(Formerly Unnamed Text Game)  
 <u>Created by: Fenoxo</u>
 
@@ -107,7 +107,7 @@ For more information see Fenoxo's Blog at <b><u><a href='http://www.fenoxo.com/'
 
 Also go play <u><a href='http://www.furaffinity.net/view/9830293/'>Nimin</a></u> by Xadera on furaffinity.
 
-	]]>, false, true);
+	]]>`, false, true);
 
 	if(debug)
 		outputText("\n\n<b>DEBUG MODE ENABLED:  ITEMS WILL NOT BE CONSUMED BY USE.</b>");
@@ -127,7 +127,7 @@ Also go play <u><a href='http://www.furaffinity.net/view/9830293/'>Nimin</a></u>
 
 }
 
-public function settingsScreen():void
+export function settingsScreen():void
 {
 	mainView.showMenuButton( MainView.MENU_NEW_MAIN );
 	mainView.showMenuButton( MainView.MENU_DATA );
@@ -196,7 +196,7 @@ public function settingsScreen():void
 			"Back", mainMenu);
 }
 
-public function incFontSize():void
+export function incFontSize():void
 {
 	var fmt:TextFormat = mainView.mainText.getTextFormat();
 	
@@ -211,7 +211,7 @@ public function incFontSize():void
 	flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
 }
 
-public function decFontSize():void
+export function decFontSize():void
 {
 	var fmt:TextFormat = mainView.mainText.getTextFormat();
 	
@@ -226,7 +226,7 @@ public function decFontSize():void
 	flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
 }
 
-public function toggleStandards():void
+export function toggleStandards():void
 {
 	//toggle debug
 	if(flags[kFLAGS.LOW_STANDARDS_FOR_ALL])
@@ -237,7 +237,7 @@ public function toggleStandards():void
 	return;
 }
 
-public function toggleHyperHappy():void
+export function toggleHyperHappy():void
 {
 	//toggle debug
 	if(flags[kFLAGS.HYPER_HAPPY])
@@ -248,7 +248,7 @@ public function toggleHyperHappy():void
 	return;
 }
 
-public function toggleDebug():void
+export function toggleDebug():void
 {
 	//toggle debug
 	if(debug)
@@ -261,7 +261,7 @@ public function toggleDebug():void
 	return;
 }
 
-public function toggleEasyModeFlag():void
+export function toggleEasyModeFlag():void
 {
 	if(flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 0)
 		flags[kFLAGS.EASY_MODE_ENABLE_FLAG] = 1;
@@ -273,7 +273,7 @@ public function toggleEasyModeFlag():void
 	return;
 }
 
-public function toggleSpritesFlag():void
+export function toggleSpritesFlag():void
 {
 	if(flags[kFLAGS.SHOW_SPRITES_FLAG])
 		flags[kFLAGS.SHOW_SPRITES_FLAG] = false;
@@ -283,7 +283,7 @@ public function toggleSpritesFlag():void
 	return;
 }
 
-public function toggleSillyFlag():void
+export function toggleSillyFlag():void
 {
 
 	if(flags[kFLAGS.SILLY_MODE_ENABLE_FLAG])
@@ -296,7 +296,7 @@ public function toggleSillyFlag():void
 }
 
 
-public function creditsScreen():void {
+export function creditsScreen():void {
 	outputText("<b>Coding and Main Events:</b>\n", true);
 	outputText("<ul>");
 	outputText("<li> Fenoxo</li>\n");
@@ -427,12 +427,12 @@ public function creditsScreen():void {
 	doNext(mainMenu);
 }
 
-public function imageCreditsScreen():void
+export function imageCreditsScreen():void
 {
 
 	if (images.getLoadedImageCount() > 0)
 	{
-		outputText(<![CDATA[
+		outputText(`<![CDATA[
 
 **Bundled Image Credits:**
 
@@ -443,7 +443,7 @@ public function imageCreditsScreen():void
 * Ceraph Monster Image
 * Sand-Witch (and sandwich)
 
-		]]>, true, true);
+		]]>`, true, true);
 	}
 	else
 	{
@@ -452,7 +452,7 @@ public function imageCreditsScreen():void
 	doNext(mainMenu);
 }
 
-public function howToPlay():void {
+export function howToPlay():void {
 	outputText("", true);
 	outputText("<b><u>How To Play:</u></b>\nClick the buttons corresponding to the actions you want to take.  Your 'goal' is to obviously put an end to the demonic corruption around you, but do whatever the hell you want.  There is a story but sometimes it's fun to ignore it.\n\n", false);
 	outputText("<b>Exploration:</b>\nThe lake is a safe zone when you start the game.  It's a good place to explore, and Whitney's farm can offer some nice stat boosts to help get you on your feet. Once you feel comfortable, the forest is probably the next safest area, but beware of tentacle monsters.  The desert is the next toughest area, and the mountains offer further challenges.  There are more areas beyond that, but that's a good way to get started.  You'll uncover plenty of new 'places' exploring, which can be accessed from the <b>Places</b> menu.  You'll also find some interesting characters when you try to discover new explorable locations by choosing <b>Explore</b> twice.\n\n", false);

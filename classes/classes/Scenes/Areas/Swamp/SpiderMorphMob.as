@@ -1,13 +1,13 @@
-package classes.Scenes.Areas.Swamp
-{
-	import classes.*;
+ 
 
-	public class SpiderMorphMob extends Monster
+	 
+
+	export class SpiderMorphMob extends Monster
 	{
 		//==============================
 		// SPOIDAH HORDE COMBAT SHIZZLE HERE!
 		//==============================
-		private function spiderStandardAttack():void {
+		private  spiderStandardAttack():void {
 			//SPIDER HORDE ATTACK - Miss (guaranteed if turns 1-3 and PC lost to Kiha)
 			if(findStatusAffect(StatusAffects.MissFirstRound) >= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
 				removeStatusAffect(StatusAffects.MissFirstRound);
@@ -17,7 +17,7 @@ package classes.Scenes.Areas.Swamp
 			else {
 				outputText("A number of spiders rush at you, trying to claw and bite you.  You manage to knock most of them away, but a few nasty hits manage to punch through your [armorName].  ", false);
 				//Determine damage - str modified by enemy toughness!
-				var damage:int = int((str + weaponAttack) - rand(player.tou) - player.armorDef) + 20;
+				var damage:number = int((str + weaponAttack) - rand(player.tou) - player.armorDef) + 20;
 				if(damage > 0) damage = player.takeDamage(damage);
 				if(damage <= 0) {
 					damage = 0;
@@ -44,7 +44,7 @@ package classes.Scenes.Areas.Swamp
 		}
 
 		//SPIDER HORDE WEB - Hit
-		private function spoidahHordeWebLaunchahs():void {
+		private  spoidahHordeWebLaunchahs():void {
 			//SPIDER HORDE WEB - Miss (guaranteed if turns 1-3 and PC lost to Kiha)
 			if(findStatusAffect(StatusAffects.MissFirstRound) >= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
 				outputText("One of the driders launches a huge glob of webbing right at you!  Luckily, Kiha manages to burn it out of the air with a well-timed gout of flame!", false);
@@ -59,7 +59,7 @@ package classes.Scenes.Areas.Swamp
 			}
 		}
 
-		private function kihaSPOIDAHAI():void {
+		private  kihaSPOIDAHAI():void {
 			outputText("[pg]", false);
 			game.spriteSelect(72);
 			outputText("While they're tangled up with you, however, Kiha takes the opportunity to get in a few shallow swings with her axe, to the accompaniment of crunching chitin.", false);
@@ -68,7 +68,7 @@ package classes.Scenes.Areas.Swamp
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.spriteSelect(72);
 			if(rand(2) == 0 || player.findStatusAffect(StatusAffects.UBERWEB) >= 0) spiderStandardAttack();
@@ -76,12 +76,12 @@ package classes.Scenes.Areas.Swamp
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.kihaFollower.beatSpiderMob();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nThe spiders smile to one at another as they watch your display, then close in...");
@@ -91,7 +91,7 @@ package classes.Scenes.Areas.Swamp
 			}
 		}
 
-		public function SpiderMorphMob()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "mob of spiders-morphs";
@@ -135,4 +135,3 @@ package classes.Scenes.Areas.Swamp
 		
 	}
 
-}

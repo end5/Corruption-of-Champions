@@ -1,34 +1,34 @@
-package classes
-{
-	import classes.CockTypesEnum;
-	import classes.internals.Utils;
+ 
 
-	public class Cock
+	 
+	 
+
+	export class Cock
 	{		
-		private var _cockLength:Number;
-		private var _cockThickness:Number;		
-		private var _cockType:CockTypesEnum;	//See CockTypesEnum.as for all cock types
+		private  _cockLength:number;
+		private  _cockThickness:number;		
+		private  _cockType:CockTypesEnum;	//See CockTypesEnum.as for all cock types
 		
 		//Used to determine thickness of knot relative to normal thickness
-		private var _knotMultiplier:Number;
+		private  _knotMultiplier:number;
 		
 		//Piercing info
-		private var _isPierced:Boolean;
-		private var _pierced:Number;
+		private  _isPierced:boolean;
+		private  _pierced:number;
 		//Not yet, sweet prince. PiercedType current has no uses. But it will, one day.
 		// private var _pierceType:PiercingTypesEnum;
-		private var _pShortDesc:String;
-		private var _pLongDesc:String;
+		private  _pShortDesc:string;
+		private  _pLongDesc:string;
 		
 		//Sock
-		private var _sock:String;
+		private  _sock:string;
 
 
 		/**
 		 * @return string description of errors
 		 */
-		public function validate():String {
-			var error:String = "";
+		public  validate():string {
+			var error:string = "";
 			error += Utils.validateNonNegativeNumberFields(this,"Cock.validate",["cockLength","cockThickness","knotMultiplier","pierced"]);
 			if (!_isPierced){
 				if (_pShortDesc.length>0) error += "Not pierced but _pShortDesc = "+_pShortDesc+". ";
@@ -41,7 +41,7 @@ package classes
 		}
 		
 		//constructor. Default type is HUMAN
-		public function Cock(i_cockLength:Number = 5.5, i_cockThickness:Number = 1, i_cockType:CockTypesEnum=null)
+		public  constructor(i_cockLength:number = 5.5, i_cockThickness:number = 1, i_cockType:CockTypesEnum=null)
 		{
 			if (i_cockType == null) i_cockType = CockTypesEnum.HUMAN;
 			_cockLength = i_cockLength;
@@ -57,12 +57,12 @@ package classes
 		}
 		
 		//MEMBER FUNCTIONS
-		public function cArea():Number
+		public  cArea():number
 		{
 			return cockThickness * cockLength;
 		}
 		
-		public function growCock(lengthDelta:Number, bigCock:Boolean):Number
+		public  growCock(lengthDelta:number, bigCock:boolean):number
 		{
 			
 			if (lengthDelta == 0) {
@@ -70,7 +70,7 @@ package classes
 				return lengthDelta;
 			}
 			
-			var threshhold:int = 0;
+			var threshhold:number = 0;
 			
 			trace("growcock starting at:" +lengthDelta);
 
@@ -144,10 +144,10 @@ package classes
 			return lengthDelta;
 		}
 		
-		public function thickenCock(increase:Number):Number
+		public  thickenCock(increase:number):number
 		{
-			var amountGrown:Number = 0;
-			var temp:Number = 0;
+			var amountGrown:number = 0;
+			var temp:number = 0;
 			if (increase > 0)
 			{
 				while (increase > 0)
@@ -220,52 +220,52 @@ package classes
 			return amountGrown;
 		}	
 		
-		public function get cockLength():Number 
+		public  get cockLength():number 
 		{
 			return _cockLength;
 		}
 		
-		public function set cockLength(value:Number):void 
+		public  set cockLength(value:number):void 
 		{
 			_cockLength = value;
 		}
 		
-		public function get cockThickness():Number 
+		public  get cockThickness():number 
 		{
 			return _cockThickness;
 		}
 		
-		public function set cockThickness(value:Number):void 
+		public  set cockThickness(value:number):void 
 		{
 			_cockThickness = value;
 		}
 		
-		public function get cockType():CockTypesEnum 
+		public  get cockType():CockTypesEnum 
 		{
 			return _cockType;
 		}
 		
-		public function set cockType(value:CockTypesEnum):void 
+		public  set cockType(value:CockTypesEnum):void 
 		{
 			_cockType = value;
 		}
 		
-		public function get knotMultiplier():Number 
+		public  get knotMultiplier():number 
 		{
 			return _knotMultiplier;
 		}
 		
-		public function set knotMultiplier(value:Number):void 
+		public  set knotMultiplier(value:number):void 
 		{
 			_knotMultiplier = value;
 		}
 		
-		public function get isPierced():Boolean 
+		public  get isPierced():boolean 
 		{
 			return _isPierced;
 		}
 		
-		public function set isPierced(value:Boolean):void 
+		public  set isPierced(value:boolean):void 
 		{
 			_isPierced = value;
 		}
@@ -283,46 +283,45 @@ package classes
 		*/
 
 		//{ region Getter/Setters
-		public function get pShortDesc():String 
+		public  get pShortDesc():string 
 		{
 			return _pShortDesc;
 		}
 		
-		public function set pShortDesc(value:String):void 
+		public  set pShortDesc(value:string):void 
 		{
 			_pShortDesc = value;
 		}
 		
-		public function get pLongDesc():String 
+		public  get pLongDesc():string 
 		{
 			return _pLongDesc;
 		}
 		
-		public function set pLongDesc(value:String):void 
+		public  set pLongDesc(value:string):void 
 		{
 			_pLongDesc = value;
 		}
 		
-		public function get sock():String 
+		public  get sock():string 
 		{
 			return _sock;
 		}
 		
-		public function set sock(value:String):void 
+		public  set sock(value:string):void 
 		{
 			_sock = value;
 		}
 		
-		public function get pierced():Number 
+		public  get pierced():number 
 		{
 			return _pierced;
 		}
 		
-		public function set pierced(value:Number):void 
+		public  set pierced(value:number):void 
 		{
 			_pierced = value;
 		}
 		//} endregion
 
 	}
-}

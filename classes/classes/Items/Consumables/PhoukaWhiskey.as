@@ -1,22 +1,22 @@
 /**
  * Created by K.Quesom 11.06.14
  */
-package classes.Items.Consumables
-{
-	import classes.GlobalFlags.kFLAGS;
-    import classes.Player;
-	import classes.PregnancyStore;
-	import classes.StatusAffects;
-    import classes.internals.Utils;
-	import classes.Items.Consumable;
+ 
 
-	public class PhoukaWhiskey extends Consumable {
+	 
+     
+	 
+	 
+     
+	 
+
+	export class PhoukaWhiskey extends Consumable {
 		
-		public function PhoukaWhiskey() {
+		public  constructor() {
 			super("P_Whsky", "Ph. Whiskey", "a small bottle of whiskey", 20, "A small, corked glass bottle with a dark amber liquid inside.  The whiskey smells strongly of peat.");
 		}
 		
-        override public function canUse():Boolean {
+         public  canUse():boolean {
 			switch (phoukaWhiskeyAcceptable(game.player)) {
 				case -4:
 					outputText("You stare at the bottle for a moment, but decide not to risk harming one of the children growing inside you.\n\n");
@@ -35,7 +35,7 @@ package classes.Items.Consumables
             return true; //Zero and up will return true
         }
 		
-		override public function useItem():Boolean {
+		 public  useItem():boolean {
 			game.player.slimeFeed();
 			switch (phoukaWhiskeyDrink(game.player)) {
 				case 0: //Player isn't pregnant
@@ -56,7 +56,7 @@ package classes.Items.Consumables
 			return(false);
         }
         
-		public function phoukaWhiskeyAcceptable(player:Player):int
+		public  phoukaWhiskeyAcceptable(player:Player):number
 		{ //This function provides a single common test that can be used both by this class and the PhoukaScene class
 			//Returns:	0 = canUse (not pregnant), 1 = canUse (single pregnancy, womb), 2 = canUse (single pregnancy, colon), 3 = canUse (double pregnancy, both OK),
 			//			-1 = No (single pregnancy, womb), -2 = No (single pregnancy, colon), -3 = No (double pregnancy, both not OK), -4 = No (double pregnancy, one OK, one not)
@@ -71,14 +71,14 @@ package classes.Items.Consumables
 				return -1;
 			}
 			//Double pregnancy
-			var wombBabyLikesAlcohol:Boolean = (player.pregnancyType == PregnancyStore.PREGNANCY_SATYR) || (player.pregnancyType == PregnancyStore.PREGNANCY_FAERIE);
-			var colonBabyLikesAlcohol:Boolean = (player.buttPregnancyType == PregnancyStore.PREGNANCY_SATYR);
+			var wombBabyLikesAlcohol:boolean = (player.pregnancyType == PregnancyStore.PREGNANCY_SATYR) || (player.pregnancyType == PregnancyStore.PREGNANCY_FAERIE);
+			var colonBabyLikesAlcohol:boolean = (player.buttPregnancyType == PregnancyStore.PREGNANCY_SATYR);
 			if (wombBabyLikesAlcohol && colonBabyLikesAlcohol) return 3;
 			if (!wombBabyLikesAlcohol && !colonBabyLikesAlcohol) return -3;
 			return -4;
 		}
 		
-		public function phoukaWhiskeyDrink(player:Player):int
+		public  phoukaWhiskeyDrink(player:Player):number
 		{ //This function provides a single common test that can be used both by this class and the PhoukaScene class
 			//Returns:	0 = Player is not pregnant, 1 = Player is pregnant with a satyr or phouka, 2 = Player is pregnant with a faerie that will become a phouka with this drink,
 			//			3 = Player is pregnant with a faerie that will remain a faerie after this drink
@@ -90,14 +90,14 @@ package classes.Items.Consumables
 			return 1; //Pregnancy has to be either a satyr or a phouka
 		}
         
-        public function phoukaWhiskeyAddStatus(player:Player):void
+        public  phoukaWhiskeyAddStatus(player:Player):void
         {
-			var libidoChange:int = (player.lib + 25 > 100 ? 100 - player.lib : 25);
-			var sensChange:int = (player.sens < 10 ? player.sens : 10);
-			var speedChange:int = (player.spe < 20 ? player.spe : 20);
-			var intChange:int = (player.inte < 20 ? player.inte : 20);
+			var libidoChange:number = (player.lib + 25 > 100 ? 100 - player.lib : 25);
+			var sensChange:number = (player.sens < 10 ? player.sens : 10);
+			var speedChange:number = (player.spe < 20 ? player.spe : 20);
+			var intChange:number = (player.inte < 20 ? player.inte : 20);
 			if (player.findStatusAffect(StatusAffects.PhoukaWhiskeyAffect) >= 0) {
-				var drinksSoFar:int = player.statusAffectv2(StatusAffects.PhoukaWhiskeyAffect);
+				var drinksSoFar:number = player.statusAffectv2(StatusAffects.PhoukaWhiskeyAffect);
 				if (drinksSoFar < 4)
 					player.addStatusValue(StatusAffects.PhoukaWhiskeyAffect, 1, 8 - (2 * drinksSoFar));
 				else
@@ -116,16 +116,16 @@ package classes.Items.Consumables
 			game.statScreenRefresh();
         }
 		
-		public function phoukaWhiskeyExpires(player:Player):void
+		public  phoukaWhiskeyExpires(player:Player):void
 		{
-			var numDrunk:int = player.statusAffectv2(StatusAffects.PhoukaWhiskeyAffect);
-			var libidoSensCombined:int = player.statusAffectv3(StatusAffects.PhoukaWhiskeyAffect);
-			var intSpeedCombined:int = player.statusAffectv4(StatusAffects.PhoukaWhiskeyAffect);
+			var numDrunk:number = player.statusAffectv2(StatusAffects.PhoukaWhiskeyAffect);
+			var libidoSensCombined:number = player.statusAffectv3(StatusAffects.PhoukaWhiskeyAffect);
+			var intSpeedCombined:number = player.statusAffectv4(StatusAffects.PhoukaWhiskeyAffect);
 			
-			var sensChange:int = libidoSensCombined & 255;
-			var libidoChange:int = (libidoSensCombined - sensChange) / 256;
-			var intChange:int = intSpeedCombined & 255;
-			var speedChange:int = (intSpeedCombined - intChange) / 256;
+			var sensChange:number = libidoSensCombined & 255;
+			var libidoChange:number = (libidoSensCombined - sensChange) / 256;
+			var intChange:number = intSpeedCombined & 255;
+			var speedChange:number = (intSpeedCombined - intChange) / 256;
 			game.dynStats("lib", -libidoChange , "sens", sensChange, "spe", speedChange, "int", intChange); //Get back all the stats you lost
 			player.removeStatusAffect(StatusAffects.PhoukaWhiskeyAffect);
 			if (numDrunk > 3)
@@ -137,4 +137,4 @@ package classes.Items.Consumables
 			game.statScreenRefresh();
 		}
     }
-}
+

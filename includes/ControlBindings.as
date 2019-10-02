@@ -1,6 +1,6 @@
-import classes.GlobalFlags.kGAMECLASS;
+ 
 
-use namespace kGAMECLASS;
+  ;
 
 inputManager.AddBindableControl(
 	"Show Stats",
@@ -93,7 +93,7 @@ inputManager.AddBindableControl(
 	function():void {
 		if (mainView.menuButtonIsVisible(MainView.MENU_DATA))
 		{
-			var saveFile:* = SharedObject.getLocal("CoC_1", "/");
+			var saveFile:any = SharedObject.getLocal("CoC_1", "/");
 			if (saveFile.data.exists)
 			{
 				if (saves.loadGame("CoC_1"))
@@ -113,7 +113,7 @@ inputManager.AddBindableControl(
 	function():void {
 		if (mainView.menuButtonIsVisible(MainView.MENU_DATA))
 		{
-			var saveFile:* = SharedObject.getLocal("CoC_2", "/");
+			var saveFile:any = SharedObject.getLocal("CoC_2", "/");
 			if (saveFile.data.exists)
 			{
 				if (saves.loadGame("CoC_2"))
@@ -133,7 +133,7 @@ inputManager.AddBindableControl(
 	function():void {
 		if (mainView.menuButtonIsVisible(MainView.MENU_DATA))
 		{
-			var saveFile:* = SharedObject.getLocal("CoC_3", "/");
+			var saveFile:any = SharedObject.getLocal("CoC_3", "/");
 			if (saveFile.data.exists)
 			{
 				if (saves.loadGame("CoC_3"))
@@ -153,7 +153,7 @@ inputManager.AddBindableControl(
 	function():void {
 		if (mainView.menuButtonIsVisible(MainView.MENU_DATA))
 		{
-			var saveFile:* = SharedObject.getLocal("CoC_4", "/");
+			var saveFile:any = SharedObject.getLocal("CoC_4", "/");
 			if (saveFile.data.exists)
 			{
 				if (saves.loadGame("CoC_4"))
@@ -173,7 +173,7 @@ inputManager.AddBindableControl(
 	function():void {
 		if (mainView.menuButtonIsVisible(MainView.MENU_DATA))
 		{
-			var saveFile:* = SharedObject.getLocal("CoC_5", "/");
+			var saveFile:any = SharedObject.getLocal("CoC_5", "/");
 			if (saveFile.data.exists)
 			{
 				if (saves.loadGame("CoC_5"))
@@ -429,7 +429,7 @@ inputManager.AddBindableControl(
 inputManager.AddBindableControl(
 	"Cheat! Give Hummus",
 	"Cheat code to get free hummus",
-	function(keyCode:int):void {
+	function(keyCode:number):void {
 		if (flags[kFLAGS.CHEAT_ENTERING_COUNTER] == 0)
 		{
 			if (keyCode == 38)

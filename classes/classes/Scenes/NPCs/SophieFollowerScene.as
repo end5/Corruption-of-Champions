@@ -1,16 +1,16 @@
-﻿package classes.Scenes.NPCs{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.*;
+ 
+	 
+	 
+	 
+	 
 	
-	public class SophieFollowerScene extends NPCAwareContent {
+	export class SophieFollowerScene extends NPCAwareContent {
 
-		public function SophieFollowerScene()
+		public  constructor()
 		{
 		}
 
-		private function get pregnancy():PregnancyStore { return kGAMECLASS.sophieScene.pregnancy; } //Quick way to access sophie's pregnancyStore
+		private  get pregnancy():PregnancyStore { return kGAMECLASS.sophieScene.pregnancy; } //Quick way to access sophie's pregnancyStore
 
 //Make Sophie \"smart\" again: Doing the Deed
 //Visit Rathazul and he bitches.
@@ -30,7 +30,7 @@
 
 
 
-override public function sophieFollower():Boolean {
+ public  sophieFollower():boolean {
 	if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0) return false;
 	if(sophieBimbo.bimboSophie()) return false;
 	if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 && flags[kFLAGS.SOPHIE_DEBIMBOED] > 0) return true;
@@ -38,13 +38,13 @@ override public function sophieFollower():Boolean {
 	return false;
 }
 
-public function sophieSprite():void
+public  sophieSprite():void
 {
 	kGAMECLASS.sophieBimbo.sophieSprite();
 }
 
 //Un-Bimbo*
-internal function unbimboSophie():void {
+public  unbimboSophie():void {
 	clearOutput();
 	outputText("Taking the potent mixture out of your pouch, you consider giving it to the bimbo harpy fluttering about in front of you.  She'd probably be pretty mad about the whole affair, but if you want to repair the damage you've inflicted, this is probably your best bet.  Do you un-bimbo Sophie?");
 	//[Yes] [No]☼
@@ -54,7 +54,7 @@ internal function unbimboSophie():void {
 }
 
 //No (You Monster)*
-private function noDontDebimbo():void {
+private  noDontDebimbo():void {
 	clearOutput();
 	outputText("You shrug and put the potion back in your pack.  Maybe later...  A mad Sophie isn't something you particularly want to deal with right now.");
 	//(Return to Sophie menu.  You monster)
@@ -63,7 +63,7 @@ private function noDontDebimbo():void {
 }
 
 //Yes (God dammit what the fuck did I just say)*
-private function yesDebimboSophie():void {
+private  yesDebimboSophie():void {
 	clearOutput();
 	player.consumeItem(consumables.DEBIMBO);
 	
@@ -90,7 +90,7 @@ private function yesDebimboSophie():void {
 }
 
 //Bimbo Again! (You monster)
-private function bimboSophieAgain():void {
+private  bimboSophieAgain():void {
 	clearOutput();
 	
 	outputText("Oh no, fuck this!  You lunge forward, seizing the recovering harpy while removing another Bimbo Liqueur from your belt.  \"<i>Wha- No!</i>\" she cries, but too late!  You pop the cork, and dump the braincell-killing booze down her gullet, keeping her mouth muffled and nose pinched shut until she swallows it allllllll down like the good little slut she truly is; the spent bottle rolling around on the floor as the sound of wet gulping fills the air.  The deed done, she slumps to the ground, her eyes crossing with familiar confusion as the liqueur does its job, frying her brain back into oblivion.");
@@ -106,7 +106,7 @@ private function bimboSophieAgain():void {
 }
 
 //Beat Her (You Monster)*
-private function beatSophieAroundYouMonster():void {
+private  beatSophieAroundYouMonster():void {
 	clearOutput();
 	outputText("Oh no, fuck this!  You ready your [weapon] to knock some sense into the harpy slut.  Seeing your hostile movements, Sophie draws a sharp breath, preparing to defend herself.");
 	
@@ -118,7 +118,7 @@ private function beatSophieAroundYouMonster():void {
 }
 
 //Successful Beat the Shit Out of Sophie (You Monster)
-internal function beatUpDebimboSophie():void {
+public  beatUpDebimboSophie():void {
 	clearOutput();
 	outputText("Sophie stumbles back, unable to withstand your furious assault.  You grab the harpy before she collapses, asking if she's ready to fucking listen now.  Defiantly, she looks away from you, though otherwise too weakened to resist you.");
 	//[Apologize] [Why I Did It] [Let Her Go] [Bimbo again!(if PC has Bimbo Liqueur)]
@@ -132,7 +132,7 @@ internal function beatUpDebimboSophie():void {
 	
 }
 //Get the Shit Beaten Out of You by a God-damn Bimbo (You (weakling) Monster)
-internal function debimboSophieBeatsYouUp():void {
+public  debimboSophieBeatsYouUp():void {
 	clearOutput();
 	outputText("You fall backwards, right onto your [butt], unable to resist the harpy's attacks.  She looms over you, glowering, her face flushed red with intense loathing.  \"<i>What the fuck is WRONG with you!?  How... WHY would you do something like THIS - to a poor old woman?  You... you turned me into a freak!  I-I'm an abomination!</i>\"");
 	
@@ -145,7 +145,7 @@ internal function debimboSophieBeatsYouUp():void {
 }
 
 //Let Her Go*
-private function letDebimboSophieGo():void {
+private  letDebimboSophieGo():void {
 	clearOutput();
 	outputText("You decide it's probably best to let Sophie go.  She remains still for a long moment, before finally looking at you with her big, blue eyes, a strange mixture of loathing and wonder in them.  Without further hesitation, she turns and rushes off, back toward the High Mountains you'd imagine.");
 	
@@ -184,7 +184,7 @@ private function letDebimboSophieGo():void {
 }
 
 //Why I Did It (I'm a Monster, you see)*
-private function whyIDidItToDebimboSophie():void {
+private  whyIDidItToDebimboSophie():void {
 	clearOutput();
 	outputText("Gently, you decide to try and explain yourself, telling Sophie about how you came across the Bimbo Liqueur... how you decided to use it on her, and why.  She listens silently, averting her eyes from you as you talk.  You note, though, as you speak, that her hands slowly drift down, feeling along the new body she's been given as if discovering her enhanced 'assets' for the first time.  The platinum-blonde harpy shudders as her hands drift across her huge F-cups, fingertips gently caressing her prominent nipples, which stiffen instantly at her touch, ready to be played with or suckled on.");
 	
@@ -206,7 +206,7 @@ private function whyIDidItToDebimboSophie():void {
 }
 
 //Apologize (Sorry I'm a Monster)*
-private function apologizeToDebimboSophie():void {
+private  apologizeToDebimboSophie():void {
 	clearOutput();
 	outputText("You decide to apologize to Sophie, saying you didn't mean for things to get so out of hand... you didn't know she'd change quite so much!  You only thought the potion would enhance her physique, maybe make her a little more receptive to your advances.");
 	
@@ -232,7 +232,7 @@ private function apologizeToDebimboSophie():void {
 
 
 //Catch Sophie Teaching Her Daughters Not To Talk Like Idiots*
-public function sophieDaughterDebimboUpdate():void {
+public  sophieDaughterDebimboUpdate():void {
 	if(flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] == 1) {
 		outputText("\nPerhaps the most impressive change that happens around your camp is Sophie taking charge of the daughter she had BEFORE you gave her the cure.  She's right next to her mom, preening her feathers and checking her make-up against a shiny piece of metal.  Sophie get her attention, and immediately sets to making some changes - leading her in choruses of vocalization training.  She seems utterly intent on eradicating the 'accent' that her daughter picked up from her, and the younger harpy takes to it with surprising swiftness.  You guess you won't be hearing too many 'like's or 'totally's in the days to come.\n");
 	}
@@ -247,7 +247,7 @@ public function sophieDaughterDebimboUpdate():void {
 
 
 //BimboBody Sophie Follower, Main Screen
-public function followerSophieMainScreen():void {
+public  followerSophieMainScreen():void {
 	clearOutput();
 	sophieBimbo.sophieSprite();
 	//Sophie is in season
@@ -321,7 +321,7 @@ public function followerSophieMainScreen():void {
 	
 }
 
-private function sendToFarm():void
+private  sendToFarm():void
 {
 	clearOutput();
 	sophieSprite();
@@ -337,7 +337,7 @@ private function sendToFarm():void
 	doNext(camp.returnToCampUseOneHour);
 }
 
-private function backToCamp():void
+private  backToCamp():void
 {
 	clearOutput();
 	sophieSprite();
@@ -351,7 +351,7 @@ private function backToCamp():void
 	doNext(kGAMECLASS.farm.farmCorruption.rootScene);
 }
 
-private function harvestEggs():void
+private  harvestEggs():void
 {
 	clearOutput();
 	sophieSprite();
@@ -363,7 +363,7 @@ private function harvestEggs():void
 	eggSelector();
 }
 
-public var eggColors:Array = [
+public  eggColors:any[] = [
 "Black",
 "Blue",
 "Brown",
@@ -372,9 +372,9 @@ public var eggColors:Array = [
 "White",
 ]
 
-private var _eggTypes:Array
+private  _eggTypes:any[]
 
-public function get eggTypes():Array
+public  get eggTypes():any[]
 {
 	if (_eggTypes == null)
 	{
@@ -390,15 +390,15 @@ public function get eggTypes():Array
 	return _eggTypes;
 }
 
-private function eggSelector():void
+private  eggSelector():void
 {
-	for (var i:int = 0; i < eggColors.length; i++)
+	for (const i = 0; i < eggColors.length; i++)
 	{
 		addButton(i, eggColors[i], postEggSelector, eggColors[i]);
 	}
 }
 
-private function postEggSelector(selected:String):void
+private  postEggSelector(selected:string):void
 {
 	clearOutput();
 	sophieSprite();
@@ -416,7 +416,7 @@ private function postEggSelector(selected:String):void
 	doNext(kGAMECLASS.farm.farmCorruption.rootScene);
 }
 
-private function stopHarvest():void
+private  stopHarvest():void
 {
 	clearOutput();
 	sophieSprite();
@@ -432,7 +432,7 @@ private function stopHarvest():void
 	doNext(kGAMECLASS.farm.farmCorruption.rootScene);
 }
 
-private function changeEggs():void
+private  changeEggs():void
 {
 	clearOutput();
 	sophieSprite();
@@ -445,7 +445,7 @@ private function changeEggs():void
 }
 
 //[Sex]
-private function sexWithFollowerSophie():void {
+private  sexWithFollowerSophie():void {
 	clearOutput();
 	menu();
 	outputText("\"<i>Oh, really? I was kind of hoping you'd want a taste of me soon.</i>\"  Sophie somewhat perks up at the mention of having sex with you.  \"<i>So, what'd you like? The usual, or should Momma do something special for you this time around?</i>\"  She licks her lips at the suggestion.");
@@ -461,7 +461,7 @@ private function sexWithFollowerSophie():void {
 }
 
 //Appearance:
-private function sophieAppearance():void {
+private  sophieAppearance():void {
 	clearOutput();
 	outputText("Sophie is a big, buxom harpy, no two ways about her.  She has ");
 	if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0) outputText("very ");
@@ -505,7 +505,7 @@ private function sophieAppearance():void {
 
 
 //Sleep With:*
-private function sleepWithSophieToggle():void {
+private  sleepWithSophieToggle():void {
 	clearOutput();
 	if(flags[kFLAGS.SLEEP_WITH] != "Sophie") {
 		outputText("You ask Sophie if she'd like to start sleeping with you at night.  Sophie cocks an eyebrow up at the suggestion.");
@@ -546,10 +546,10 @@ private function sleepWithSophieToggle():void {
 
 //vaginal Fuck*
 //Needs some mods for when she's in season!
-private function fuckFollowerSophie():void {
-	var x:int = player.cockThatFits(sophieBimbo.sophieCapacity());
+private  fuckFollowerSophie():void {
+	var x:number = player.cockThatFits(sophieBimbo.sophieCapacity());
 	if(x < 0) x = player.smallestCockIndex();
-	var y:int = player.cockThatFits2(sophieBimbo.sophieCapacity());
+	var y:number = player.cockThatFits2(sophieBimbo.sophieCapacity());
 	clearOutput();
 	//In season intro
 	if(sophieBimbo.sophieIsInSeason()) {
@@ -626,11 +626,11 @@ private function fuckFollowerSophie():void {
 }
 	
 //[Next]
-private function sophieVagFollowerFollowup():void {
+private  sophieVagFollowerFollowup():void {
 	clearOutput();
-	var x:int = player.cockThatFits(sophieBimbo.sophieCapacity());
+	var x:number = player.cockThatFits(sophieBimbo.sophieCapacity());
 	if(x < 0) x = player.smallestCockIndex();
-	var y:int = player.cockThatFits2(sophieBimbo.sophieCapacity());
+	var y:number = player.cockThatFits2(sophieBimbo.sophieCapacity());
 
 	outputText("You're roused a few moments later by a smiling Sophie, the proof of your union dripping between her thighs.  She quips, \"<i>");
 	if(sophieBimbo.sophieIsInSeason()) outputText("If that didn't take, I don't know what will!");
@@ -643,9 +643,9 @@ private function sophieVagFollowerFollowup():void {
 
 //Blowjob*
 //Sucking dicks.
-private function sophieFollowerGivesBlowjobs():void {
+private  sophieFollowerGivesBlowjobs():void {
 	clearOutput();
-	var x:int = player.cockThatFits(sophieBimbo.sophieCapacity());
+	var x:number = player.cockThatFits(sophieBimbo.sophieCapacity());
 	if(x < 0) x = player.smallestCockIndex();
 	
 	outputText("Sophie cocks her head to the side and chuckles, \"<i>You wanna feel Momma Sophie's lips around that ");
@@ -665,8 +665,8 @@ private function sophieFollowerGivesBlowjobs():void {
 }
 
 //Blow Sixtynine*
-private function sophieBlowsSixtyNine():void {
-	var x:int = player.cockThatFits(sophieBimbo.sophieCapacity());
+private  sophieBlowsSixtyNine():void {
+	var x:number = player.cockThatFits(sophieBimbo.sophieCapacity());
 	if(x < 0) x = player.smallestCockIndex();
 	clearOutput();
 	outputText("You nod eagerly, something that gets the busty harpy smiling as her whole body flushes.  She rushes at you, leaping and flapping, speeding towards you faster as old feathers kick up in a wake behind her.  You spread your arms and let her slam into you, the impact cushioned by her weighty breasts and large, soft thighs.  Both of you roll end over end through the dirt, eventually coming to rest with her straddling your [chest] and rubbing a finger through her slippery folds.  She adds another finger to spread them wide, the pink interior pulsing wetly and dripping with female moisture.");
@@ -732,8 +732,8 @@ private function sophieBlowsSixtyNine():void {
 }
 
 //Forceful Blowjob*
-private function forceSophieBlowjob():void {
-	var x:int = player.cockThatFits(sophieBimbo.sophieCapacity());
+private  forceSophieBlowjob():void {
+	var x:number = player.cockThatFits(sophieBimbo.sophieCapacity());
 	if(x < 0) x = player.smallestCockIndex();
 	clearOutput();
 	//Increments a displeasure counter - doing enough of these causes her to leave in the night if it gets too high.
@@ -791,7 +791,7 @@ private function forceSophieBlowjob():void {
 
 //SixtyNine (* Temp until someone writes dis shit)
 //Get that vajajay in yo face.
-private function sophieSixtyNine():void {
+private  sophieSixtyNine():void {
 	clearOutput();
 	outputText("Sophie cocks an eyebrow and asks, \"<i>A little sapphic delight for the horny champion?</i>\"  She snorts and rolls her eyes, \"<i>No thanks.  I'm not really that into girls.</i>\"  It doesn't seem like she's up for it.");
 	menu();
@@ -800,8 +800,8 @@ private function sophieSixtyNine():void {
 
 //Sophie Teases Small Dicks In The Morning*
 //No toggles.  If you have a small penis you deserve the small penis femdom.
-public function sophieSmallDongTeases():void {
-	var x:int = player.smallestCockIndex();
+public  sophieSmallDongTeases():void {
+	var x:number = player.smallestCockIndex();
 	outputText("\n<b><u>As you're waking up that morning...</u></b>");
 	outputText("\nTingly warmth envelops your [oneCock] with supple, soft sensation, wrapping it up tight in pulsing warmth.  A slippery protrusion slithers around your girth, tickling at your [sheath]");
 	if(player.balls > 0) outputText(" and [balls]");
@@ -885,26 +885,26 @@ public function sophieSmallDongTeases():void {
 
 //Alert Message For Going Into Season☼
 //Similar to bimbo sophie
-public function sophieFollowerGoesIntoSeas():void {
+public  sophieFollowerGoesIntoSeas():void {
 	outputText("\nWhenever you look towards Sophie, she seems to be trying to grab your attention.  She gives you small touches whenever you're close to her, apparently without any excuse for it, always trying to get a touch of your bulge and your [cock biggest] when you're close enough.  She smells like smoked lust, too, and when you're too far from her to touch, she looks to you with a gleam in her eyes, spreading her lower lips, puffier and more enlarged than usual.  When she notices you looking in her direction when behind her, she instinctively bends, accentuating the curves of her jiggly ass and showing off her pussy.");
 	outputText("\n\nThere's no mistaking it - Sophie wants to breed.\n");
 }
 
 //Sophie Fertility Done (Expired or PC lost cock):*
-public function sophieFertilityExpired():void {
+public  sophieFertilityExpired():void {
 	outputText("\nSophie seems to have lost most of her unusual interest in you, and although she's sensual and provoking as usual, she no longer seems so hyper-focused on getting a cock in her pussy.  It appears her season, heat, or whatever, is gone for now.\n");
 }
 
 //Sophie Fertility Knocked Up*
-public function sophieFertilityKnockedUpExpired():void {
+public  sophieFertilityKnockedUpExpired():void {
 	outputText("\nSophie rubs her abdomen periodically and smirks or smiles, especially when looking at you while doing it.  She's a bit messy after the helping she got from you, but seems to care less about her looks and more about the results of your 'intervention', her eyes a bit dreamy as a finger reaches her mound, seeking your fluids.\n");
 }
 
 //{I'll write the special thingy this evening (a couple of hours from now on), it's basically Sophie femdomming again, starting with a blowjob and a premature ejaculation once she inserts the PCs cock. Of course, she continues after that. - Ven }
 //[special]
-private function sophieSpecial():void {
+private  sophieSpecial():void {
 	clearOutput();
-	var x:int = player.cockThatFits(sophieBimbo.sophieCapacity());
+	var x:number = player.cockThatFits(sophieBimbo.sophieCapacity());
 	if(x < 0) player.smallestCockIndex();
 	outputText("\"<i>Ahhh, so you do want a bit of Momma Sophie's special treatment... such a brave " + player.mf("boy","girl") + ", aren't you?</i>\" She leans in closer as she starts to get rid of your [armor].  \"<i>Very brave... we might have to put you back into place.  Momma Sophie will milk this " + cockDescript(x) + " until the only thing that even allows you to cum anytime in the future will be the fact I drugged you with my lipstick.</i>\"");
 	
@@ -995,7 +995,7 @@ private function sophieSpecial():void {
 //Regular Sophie Follower
 //Requirements: Fuck Sophie five times without pissing her off
 //Initial Intro
-public function sophieFollowerIntro():void {
+public  sophieFollowerIntro():void {
 	outputText("\n<b><u>Something unusual happens this morning...</u></b>");
 	outputText("\nYou're drifting along a wonderfully warm river, hand firmly grasping your crotch as you think about all the sexual encounters you had with that wonderfully sexual Sophie.  Her haughty, mature attitude seems to tickle you in just the right way, and if it were up to yourself you'd have the Milfy matron bouncing on your dick every hour of the day.  Speaking of which, your journey down the river seems to be getting rockier the more you think about your sophisticated sexual partner.  Rocking harder and harder, you suddenly realize that you have no idea as to why you're floating down a river in the first place...");
 	outputText("\n\n\"<i>Fuck me hard, darling!</i>\"");
@@ -1011,7 +1011,7 @@ public function sophieFollowerIntro():void {
 }
 
 //Get Out
-private function getOutSophieRecruitment():void {
+private  getOutSophieRecruitment():void {
 	clearOutput();
 	outputText("Invading your camp is one thing, but Sophie's overstepping her boundaries by thinking she can get sex from you whenever she wants.  You push her off of your body, standing up to announce that you'll get sex when you need it, not when she desires.  The poor bird nods feverishly, completely embarrassed by the entire ordeal.");
 	outputText("\n\n\"<i>Absolutely dear, let's never speak of this again.  I'll be off now.</i>\"");
@@ -1022,7 +1022,7 @@ private function getOutSophieRecruitment():void {
 }
 
 //Kiss Her
-private function kissSophieRecruitment():void {
+private  kissSophieRecruitment():void {
 	clearOutput();
 	outputText("You shut her up the best way you know how - planting your lips upon her own, knowing full-well of the effects of her lustful lipstick.  Sophie returns the gesture, locking her tongue around yours while she tastes you, grinding her other set of lips against your attentive member.");
 	
@@ -1043,7 +1043,7 @@ private function kissSophieRecruitment():void {
 }
 	
 //If Sure
-private function sophieRecruitmentFinale():void {
+private  sophieRecruitmentFinale():void {
 	clearOutput();
 	outputText("Sophie gives you a peck on the cheek, removing herself from your body to prepare for flight.");
 	outputText("\n\n\"<i>I'm so glad.  I haven't felt this young in quite a while - I'll move in before you know it!</i>\"");
@@ -1069,14 +1069,14 @@ daughter 4: Body as curvy and voluptuous as sophie, very soft wings.
 all purpose vaginal and anal sex scene, with modifiers for each daughters body type
 
 intro for all scenes*/
-internal function sophieIncestInHerCooterOrSomethingIDunno():void {
+public  sophieIncestInHerCooterOrSomethingIDunno():void {
 	clearOutput();
 	outputText("Approaching the harpy nest you call out for one of your daughters.  ");
 	if(flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 1) outputText("The prospect of their " + player.mf("father","mother") + "'s attention causes a small scuffle to break out between your feathery daughters. Thankfully, the small fight is soon ended and one of your daughters flies down and stands before you.  ");
 	else outputText("Your daughter, hearing your call, is more than happy to come to you.  ");
 	outputText("The curvy girl smiles at you, her eyes bright and attentive, positively sparkling with the taboo affection she holds for her beloved daddy.  Smirking to her you give her an appraising look, your eyes wandering up and down her beautiful womanly body.");
 	
-	var daughterCap:int = flags[kFLAGS.SOPHIE_ADULT_KID_COUNT];
+	var daughterCap:number = flags[kFLAGS.SOPHIE_ADULT_KID_COUNT];
 	if(daughterCap > 4) daughterCap = 4;
 	daughterCap = rand(daughterCap);
 	
@@ -1138,9 +1138,9 @@ internal function sophieIncestInHerCooterOrSomethingIDunno():void {
 	addButton(0,"Next",phaseTwoOfIncest,daughterCap);
 }
 
-private function phaseTwoOfIncest(daughter:int):void {
+private  phaseTwoOfIncest(daughter:number):void {
 	clearOutput();
-	var x:int = player.cockThatFits(sophieBimbo.sophieCapacity());
+	var x:number = player.cockThatFits(sophieBimbo.sophieCapacity());
 	if(x < 0) x = player.smallestCockIndex();
 	daughter++;
 	outputText("Tightening your hold on your curvaceous daughter, you shove her down onto the ground.  Growling with an almost primal edge, you lean down and inspect your prize, hands running over her ");
@@ -1165,7 +1165,7 @@ private function phaseTwoOfIncest(daughter:int):void {
 	
 	if(flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0)
 	
-	var bimbo:Boolean = (((daughter == 4 && flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0) || (daughter == 3 && flags[kFLAGS.DAUGHTER_THREE_BIMBO] > 0) || (daughter == 2 && flags[kFLAGS.DAUGHTER_TWO_BIMBO] > 0) || (daughter == 1 && flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0)) && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0);
+	var bimbo:boolean = (((daughter == 4 && flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0) || (daughter == 3 && flags[kFLAGS.DAUGHTER_THREE_BIMBO] > 0) || (daughter == 2 && flags[kFLAGS.DAUGHTER_TWO_BIMBO] > 0) || (daughter == 1 && flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0)) && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0);
 	
 	if(bimbo) outputText("\n\n\"<i>Yessss!  Please, " + player.mf("Daddy","Mommy") + "!  Give it to me!  Like, fuck my brains out till I can't think of anything but your, like, totally amazing cock!</i>\"");
 	else outputText("\n\n\"<i>Yesssss! Please, " + player.mf("Daddy","Mommy") + ", I've been wanting this so badly!  Give it to me, fuck me like the stud you are and fuck my cunt full of spunk!</i>\"");
@@ -1206,6 +1206,6 @@ private function phaseTwoOfIncest(daughter:int):void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-}
+
 
 

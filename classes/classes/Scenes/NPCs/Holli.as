@@ -1,8 +1,8 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
+ 
 
-	public class Holli extends Monster
+	 
+
+	export class Holli extends Monster
 	{
 		/*Fight -Z
 		 Marae's offshoot, [monster] stands rooted in front of you.  Solid black eyes with golden pupils stare out at you.  Her normally-nude body is concealed inside her tree, though occasionally she will flash you the devilish grin of a sadistic temptress and the bark will split to reveal a pale, jiggling bit of flesh.  A pair of gnarled oak horns sprout from her forehead; leaves and flowers alternately bloom and wither on them as her face contorts with emotion.
@@ -22,14 +22,14 @@ package classes.Scenes.NPCs
 
 //attack noun: lash
 //Failing to Escape -Z
-		public function escapeFailWithHolli():void
+		public  escapeFailWithHolli():void
 		{
 			clearOutput();
 			outputText("You ");
 			if (player.canFly()) outputText("beat your wings and ");
 			outputText("try to escape, but " + short + " wraps one of her writhing roots around your [leg], slamming you to the ground and tying you up with several more!  \"<i>And just where do you think you're going, my little meat?</i>\" she hisses.  Her bark splits open, exposing her body, and a green shaft snakes out of her crotch, sprouting thorns and blooming into a rose at the tip.  She holds the drooling blossom over your [face] as she forces your mouth open with her roots!");
 			//hp loss, begin lust constrict next round
-			var damage:int = 15;
+			var damage:number = 15;
 			damage = player.takeDamage(damage);
 			outputText(" (" + damage + ")\n\n");
 			player.createStatusAffect(StatusAffects.HolliConstrict, 0, 0, 0, 0);
@@ -37,7 +37,7 @@ package classes.Scenes.NPCs
 		}
 
 //End of Round, if no Jojo Fire -Z
-		public function holliBonusHealing():void
+		public  holliBonusHealing():void
 		{
 			//(monster hp < 100%)
 			if (findStatusAffect(StatusAffects.HolliBurning) < 0) {
@@ -89,7 +89,7 @@ package classes.Scenes.NPCs
 		}
 
 //if player uses whitefire/firebreath successfully, suppress these, go to 'Fire Lit' EOR events, and output additional line after the attack:
-		public function lightHolliOnFireMagically():void
+		public  lightHolliOnFireMagically():void
 		{
 			if (findStatusAffect(StatusAffects.JojoIsAssisting) >= 0) {
 				if (findStatusAffect(StatusAffects.HolliBurning) < 0) {
@@ -101,7 +101,7 @@ package classes.Scenes.NPCs
 
 //Monster Specials -Z
 //fuckin' Jumanji flower darts -Z
-		private function fuckinJamanjiFlowerDarts():void
+		private  fuckinJamanjiFlowerDarts():void
 		{
 			outputText("A blossom opens up on a high branch of the tree, revealing an evil-looking eye surrounded by vicious spines.  With a gesture, " + short + " fires several at you!");
 
@@ -119,7 +119,7 @@ package classes.Scenes.NPCs
 				//lust damage, fatigue damage, light HP damage
 				game.fatigue(10);
 				game.dynStats("lus", 25);
-				var damage:Number = 20 + rand(10);
+				var damage:number = 20 + rand(10);
 				damage = player.takeDamage(damage);
 				outputText(" (" + damage + ")");
 			}
@@ -127,7 +127,7 @@ package classes.Scenes.NPCs
 		}
 
 //constrict -Z
-		private function holliConstrictAttack():void
+		private  holliConstrictAttack():void
 		{
 			outputText("A forest of thick roots bursts from the ground and several lash toward your [legs], trying to ensnare you!");
 			//Blinded - hit penalty, but not 100%
@@ -143,7 +143,7 @@ package classes.Scenes.NPCs
 				outputText("  She latches onto you with a painful smack and several more root tentacles join the first; as she pulls you close, her bark opens and a long, phallic stalk extends from her crotch, wrapped in thorns and flowering with a rose!  It caresses your face, then dangles the blossom above your mouth, dripping her sap.  Several of the roots pry your jaws apart, forcing you to drink the tainted fluids from her pseudo-cock!  \"<i>What do you think of my little sap rose?</i>\"");
 				//plus med HP damage on turn one, plus med-heavy lust damage every turn while constricted
 				//sap rose shitposting
-				var damage:int = 10 + rand(5);
+				var damage:number = 10 + rand(5);
 				damage = player.takeDamage(damage);
 				game.dynStats("lus", 15);
 				player.createStatusAffect(StatusAffects.HolliConstrict, 0, 0, 0, 0);
@@ -151,7 +151,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		public function struggleOutOfHolli():void
+		public  struggleOutOfHolli():void
 		{
 			clearOutput();
 			//Boost odds of success. Round 3 guaranteed.
@@ -177,7 +177,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		public function waitForHolliConstrict(newScreen:Boolean = true):void
+		public  waitForHolliConstrict(newScreen:boolean = true):void
 		{
 			if (newScreen) clearOutput();
 			outputText("The ominous roseate shaft hovers over you, and its owner strokes the base lewdly, moaning.  \"<i>Oooh, gonna... cum!</i>\" she shrieks.  As a low moan escapes her, the stalk bloats and begins to spill milky-white sap into your mouth!  Held rigid, you're eventually forced to swallow just to breathe; the sap slides into your stomach and warmth radiates to your midsection and groin, making you feel flushed and hot.  Holli sighs in satisfaction, evidently more relaxed after her climax.");
@@ -190,7 +190,7 @@ package classes.Scenes.NPCs
 
 //heal -Z
 //used if monster HP < some level
-		private function healHolli():void
+		private  healHolli():void
 		{
 			clearOutput();
 			outputText("The bark splits part way and the woman's mouth suddenly explodes with color, her lips folding out into a rather yonic-looking orchid.  Copious white-tinted sap oozes from the bloom, coating her bark and healing the lesions.  Petals rustle as she speaks wetly through it.  \"<i>Your efforts are nothing!  Throw yourself on my mercy; be my slave and do my bidding!</i>\"");
@@ -199,7 +199,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if (HP < 50 && rand(2) == 0) healHolli();
 			else if (rand(4) == 0 && player.findStatusAffect(StatusAffects.HolliConstrict) < 0) holliConstrictAttack();
@@ -208,18 +208,18 @@ package classes.Scenes.NPCs
 			holliBonusHealing();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.holliScene.defeatHolli();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.holliScene.enjoyYourBadEndBIYAAAATCH();
 		}
 
 
-		override public function teased(lustDelta:Number):void
+		 public  teased(lustDelta:number):void
 		{
 			if (findStatusAffect(StatusAffects.HolliBurning) >= 0) {
 				outputText("Holli doesn't even seem to notice, so concerned is she with defeating you before the mounting bonfire causes her any more pain.");
@@ -228,7 +228,7 @@ package classes.Scenes.NPCs
 			applyTease(lustDelta);
 		}
 
-		public function Holli()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Holli";
@@ -269,4 +269,3 @@ package classes.Scenes.NPCs
 		
 	}
 
-}

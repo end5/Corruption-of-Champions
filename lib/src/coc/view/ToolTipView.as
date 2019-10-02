@@ -1,20 +1,20 @@
-package coc.view {
-	import flash.display.MovieClip;
-	import flash.display.Sprite;
-	import flash.display.DisplayObject;
-	import flash.text.TextField;
-	import flash.text.TextFieldType;
+  
+	 
+	 
+	 
+	 
+	 
 
-	import coc.model.GameModel;
+	 
 
-	public class ToolTipView extends Sprite {
-		public var
+	export class ToolTipView extends Sprite {
+		public 
 			bg :Sprite,
 			tf :TextField;
 
-		protected var model :GameModel;
+		protected  model :GameModel;
 
-		public function ToolTipView( mainView :MovieClip, model :GameModel ) :void {
+		public  constructor( mainView :MovieClip, model :GameModel ) :void {
 			this.model = model;
 
 			this.bg = mainView.getChildByName( "popUpBG" ) as Sprite;
@@ -32,7 +32,7 @@ package coc.view {
 			this.addChild( this.tf );
 		};
 
-		public function showForButton( button :DisplayObject ) {
+		public  showForButton( button :DisplayObject ) {
 			var bx = button.x,
 				by = button.y;
 
@@ -51,16 +51,15 @@ package coc.view {
 			this.visible = true;
 		};
 
-		public function hide() {
+		public  hide() {
 			this.visible = false;
 		};
 
-		public function set text( newText :String ) :void {
+		public  set text( newText :string ) :void {
 			this.tf.htmlText = newText || '';
 		};
 
-		public function get text() :String {
+		public  get text() :string {
 			return this.tf.htmlText;
 		};
 	}
-}

@@ -1,19 +1,19 @@
 /**
  * Created by aimozg on 09.01.14.
  */
-package classes.Items
-{
-	import classes.ItemType;
-	import classes.Player;
+ 
 
-	public class Weapon extends Useable //Equipable
+	 
+	 
+
+	export class Weapon extends Useable //Equipable
 	{
-		private var _verb:String;
-		private var _attack:Number;
-		private var _perk:String;
-		private var _name:String;
+		private  _verb:string;
+		private  _attack:number;
+		private  _perk:string;
+		private  _name:string;
 		
-		public function Weapon(id:String, shortName:String, name:String,longName:String, verb:String, attack:Number, value:Number = 0, description:String = null, perk:String = "") {
+		public  constructor(id:string, shortName:string, name:string,longName:string, verb:string, attack:number, value:number = 0, description:string = null, perk:string = "") {
 			super(id, shortName, longName, value, description);
 			this._name = name;
 			this._verb = verb;
@@ -21,27 +21,27 @@ package classes.Items
 			this._perk = perk;
 		}
 		
-		public function get verb():String { return _verb; }
+		public  get verb():string { return _verb; }
 		
-		public function get attack():Number { return _attack; }
+		public  get attack():number { return _attack; }
 		
-		public function get perk():String { return _perk; }
+		public  get perk():string { return _perk; }
 		
-		public function get name():String { return _name; }
+		public  get name():string { return _name; }
 		
-		override public function useText():void {
+		 public  useText():void {
 			outputText("You equip " + longName + ".  ");
 		}
 		
-		public function playerEquip():Weapon { //This item is being equipped by the player. Add any perks, etc. - This function should only handle mechanics, not text output
+		public  playerEquip():Weapon { //This item is being equipped by the player. Add any perks, etc. - This function should only handle mechanics, not text output
 			return this;
 		}
 		
-		public function playerRemove():Weapon { //This item is being removed by the player. Remove any perks, etc. - This function should only handle mechanics, not text output
+		public  playerRemove():Weapon { //This item is being removed by the player. Remove any perks, etc. - This function should only handle mechanics, not text output
 			return this;
 		}
 		
-		public function removeText():void {} //Produces any text seen when removing the armor normally
+		public  removeText():void {} //Produces any text seen when removing the armor normally
 		
 /*
 		override protected function equip(player:Player, returnOldItem:Boolean, output:Boolean):void
@@ -75,4 +75,4 @@ package classes.Items
 		}
 */
 	}
-}
+

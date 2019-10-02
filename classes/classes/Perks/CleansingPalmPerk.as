@@ -1,21 +1,20 @@
-package classes.Perks
-{
-	import classes.PerkClass;
-	import classes.PerkType;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
 
-	public class CleansingPalmPerk extends PerkType
+	 
+	 
+	 
+
+	export class CleansingPalmPerk extends PerkType
 	{
 
-		override public function desc(params:PerkClass = null):String
+		 public  desc(params:PerkClass = null):string
 		{
 			if (kGAMECLASS.player.cor >= 10) return "<b>DISABLED</b> - Corruption too high!";
 			else return super.desc(params);
 		}
 
-		public function CleansingPalmPerk()
+		public  constructor()
 		{
 			super("Cleansing Palm", "Cleansing Palm", "A ranged fighting technique of Jojo’s order, allows you to blast your enemies with waves of pure spiritual energy, weakening them and hurting the corrupt.");
 		}
 	}
-}

@@ -1,4 +1,4 @@
-package coc.view {
+  
 
 	/****
 		coc.view.CoCButton
@@ -11,26 +11,26 @@ package coc.view {
 		keyboard events.
 	****/
 
-	import flash.display.MovieClip;
-	import flash.text.TextField;
+	 
+	 
 
-	import flash.events.MouseEvent;
+	 
 
-	public class CoCButton extends MovieClip {
-		public static const
+	export class CoCButton extends MovieClip {
+		public static 
 			// How far down from the top of our registration point the TF is.
-			LABEL_FIELD_Y_OFFSET :Number = 9,
-			LABEL_FIELD_HEIGHT :Number = 25;
+			LABEL_FIELD_Y_OFFSET :number = 9,
+			LABEL_FIELD_HEIGHT :number = 25;
 
-		protected var
+		protected 
 			_labelField :TextField,
 			_backgroundGraphic :MovieClip,
-			_callback :Function;
+			_callback :() => void;
 
-		public var
-			toolTipText :String;
+		public 
+			toolTipText :string;
 
-		public function CoCButton( labelField :TextField = null, backgroundGraphic :MovieClip = null ) :void {
+		public  constructor( labelField :TextField = null, backgroundGraphic :MovieClip = null ) :void {
 			if( backgroundGraphic ) {
 				this.x = backgroundGraphic.x;
 				this.y = backgroundGraphic.y;
@@ -50,17 +50,17 @@ package coc.view {
 
 		//////// Mouse Events... ////////
 
-		public function hover( event: MouseEvent = null ) :void {
+		public  hover( event: MouseEvent = null ) :void {
 			if( this.backgroundGraphic )
 				this.backgroundGraphic.alpha = 0.5;
 		};
 
-		public function dim( event :MouseEvent = null ) :void {
+		public  dim( event :MouseEvent = null ) :void {
 			if( this.backgroundGraphic )
 				this.backgroundGraphic.alpha = 1;
 		};
 
-		public function click( event :MouseEvent = null ) :void {
+		public  click( event :MouseEvent = null ) :void {
 			if( this._callback )
 				this._callback();
 		};
@@ -69,11 +69,11 @@ package coc.view {
 
 		//////// Getters and Setters ////////
 
-		public function get labelField() :TextField {
+		public  get labelField() :TextField {
 			return this._labelField;
 		};
 
-		public function set labelField( value :TextField ) :void {
+		public  set labelField( value :TextField ) :void {
 			// TODO: Remove previous labelField?
 
 			this._labelField = value;
@@ -90,11 +90,11 @@ package coc.view {
 			this._labelField.height = LABEL_FIELD_HEIGHT;
 		};
 
-		public function get backgroundGraphic() :MovieClip {
+		public  get backgroundGraphic() :MovieClip {
 			return this._backgroundGraphic;
 		};
 
-		public function set backgroundGraphic( value :MovieClip ) :void {
+		public  set backgroundGraphic( value :MovieClip ) :void {
 			// TODO: Remove previous background graphic?
 
 			this._backgroundGraphic = value;
@@ -111,28 +111,28 @@ package coc.view {
 			this.width = this._backgroundGraphic.width;
 		};
 
-		public function get labelText() :String {
+		public  get labelText() :string {
 			return this.labelField.text;
 		};
 
-		public function set labelText( value :String ) :void {
+		public  set labelText( value :string ) :void {
 			this.labelField.text = value;
 		};
 
-		public function get callback() :Function {
+		public  get callback() :() => void {
 			return this._callback;
 		};
 
-		public function set callback( value :Function ) :void {
+		public  set callback( value :() => void ) :void {
 			this._callback = value;
 		};
 
 		//// Overrides. ////
-		override public function get width() :Number {
+		 public  get width() :number {
 			return this.backgroundGraphic ? this.backgroundGraphic.width : 0;
 		};
 
-		override public function set width( value :Number ) :void {
+		 public  set width( value :number ) :void {
 			if( this.backgroundGraphic )
 				this.backgroundGraphic.width = value;
 
@@ -140,14 +140,13 @@ package coc.view {
 				this.labelField.width = value;
 		};
 
-		override public function get height() :Number {
+		 public  get height() :number {
 			return this.backgroundGraphic ? this.backgroundGraphic.height : 0;
 		};
 
-		override public function set height( value :Number ) :void {
+		 public  set height( value :number ) :void {
 			if( this.backgroundGraphic )
 				this.backgroundGraphic.height = value;
 			// TODO: Do anything to the text field?
 		};
 	}
-}

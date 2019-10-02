@@ -1,14 +1,14 @@
-﻿package classes.Scenes.Explore{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
+	 
+	 
 
-	public class Lumi extends BaseContent{
+	export class Lumi extends BaseContent{
 
-	public function Lumi()
+	public  constructor()
 	{
 	}
 
-	public function lumiEncounter():void {
+	public  lumiEncounter():void {
 	outputText("", true);
 	//1st time lumi meeting
 	if(flags[kFLAGS.LUMI_MET] == 0) {
@@ -25,7 +25,7 @@
 //end of placeholder text
 }
 
-public function lumiLabChoices():void {
+public  lumiLabChoices():void {
 	spriteSelect(37);
 	outputText("", true);
 	//First time meeting
@@ -44,13 +44,13 @@ public function lumiLabChoices():void {
 	else {
 		outputText("Once more, you step into Lumi's lab.  She's still working on her experiments. Before you even have a chance to call out to her, she has already pivoted to watch you.  In a flash her apron hits the floor and she is standing on her desk, asking, \"<i>Stho, what can Lumi the Aochomist Extwaordinaire do fo you today?</i>\"", false);
 	}
-	var enhance:Function =null;
+	var enhance:() => void =null;
 	if(lumiEnhance(true)) 
 		enhance = lumiEnhance;
 	simpleChoices("Shop", lumiShop, "Enhance", enhance, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
 }
 
-public function lumiShop():void {
+public  lumiShop():void {
 	spriteSelect(37);
 	//Set item handling to lumi shop
 	clearOutput();
@@ -65,7 +65,7 @@ public function lumiShop():void {
 }
 
 //Lust Draft
-private function lumiLustDraftPitch():void {
+private  lumiLustDraftPitch():void {
 	spriteSelect(37);
 	clearOutput();
 	outputText("You point at the bottle filled with bubble-gum pink fluid.\n\n\"<i>De lust dwaft? Always a favowite, with it you nevar have to worwy about not bein weady for sexy time; one of my fiwst creations. 15 gems each.</i>\"\n\n", false);
@@ -73,7 +73,7 @@ private function lumiLustDraftPitch():void {
 	doYesNo(curry(lumiPurchase,consumables.L_DRAFT),lumiShop);
 }
 //Goblin Ale
-private function lumiPitchGobboAle():void {
+private  lumiPitchGobboAle():void {
 	spriteSelect(37);
 	clearOutput();
 	outputText("You point at the flagon. \"<i>Oh? Oh thats Lumi's... actually no, dat tispsy stuff for 20 gems. You'll like if you want to be like Lumi. Do you like it?</i>\"\n\n", false);
@@ -81,7 +81,7 @@ private function lumiPitchGobboAle():void {
 	doYesNo(curry(lumiPurchase,consumables.GOB_ALE),lumiShop);
 }
 //Ovi Elixir
-private function lumiPitchOviElixer():void {
+private  lumiPitchOviElixer():void {
 	spriteSelect(37);
 	clearOutput();
 	outputText("You point at the curious hexagonal bottle. \"<i>De Oviposar Elixir? Made baithsed on da giant bee's special stuff dey give deir queen. It will help make de burfing go faster, an if you dwink it while you awen pweggy, iw will give you some eggs to burf later. More dwinks, eqwals more and biggar eggs. Lumi charges 45 gems for each dose.</i>\"\n\n", false);
@@ -90,11 +90,11 @@ private function lumiPitchOviElixer():void {
 }
 
 
-private function lumiPurchase(itype:ItemType):void {
+private  lumiPurchase(itype:ItemType):void {
 	spriteSelect(37);
 	clearOutput();
 	//After choosing, and PC has enough gems
-	var cost:Number = 0;
+	var cost:number = 0;
 	if(itype == consumables.OVIELIX)
 		cost = 45;
 	if(itype == consumables.GOB_ALE)
@@ -115,30 +115,30 @@ private function lumiPurchase(itype:ItemType):void {
 	}
 }
 
-public function lumiEnhance(justCheck:Boolean = false):Boolean {
+public  lumiEnhance(justCheck:boolean = false):boolean {
 	spriteSelect(37);
-	var fox:Function =null;
+	var fox:() => void =null;
 	if(player.hasItem(consumables.FOXBERY))
 		fox = lumiEnhanceFox;
-	var laBova:Function =null;
+	var laBova:() => void =null;
 	if(player.hasItem(consumables.LABOVA_))
 		laBova = lumiEnhanceLaBova;
-	var succuDelight:Function =null;
+	var succuDelight:() => void =null;
 	if(player.hasItem(consumables.SDELITE))
 		succuDelight = lumiEnhanceSDelight;
-	var oviElix:Function =null;
+	var oviElix:() => void =null;
 	//if(player.hasItem(consumables.OVIELIX))
 	//	oviElix = lumiEnhanceOviElix;
-	var lustDraft:Function =null;
+	var lustDraft:() => void =null;
 	if(player.hasItem(consumables.L_DRAFT))
 		lustDraft = lumiEnhanceDraft;
-	var seed:Function =null;
+	var seed:() => void =null;
 	if(player.hasItem(consumables.GLDSEED))
 		seed = lumiEnhanceGoldenSeed;
-	var kanga:Function =null;
+	var kanga:() => void =null;
 	if(player.hasItem(consumables.KANGAFT))
 		kanga = lumiEnhanceKanga;
-	var kitsune:Function =null;
+	var kitsune:() => void =null;
 	if(player.hasItem(consumables.FOXJEWL))
 		kitsune = lumiEnhanceFoxJewel;
 	if(justCheck) {
@@ -168,32 +168,32 @@ public function lumiEnhance(justCheck:Boolean = false):Boolean {
 		return true;
 	}
 }
-private function lumiEnhanceLaBova():void {
+private  lumiEnhanceLaBova():void {
 	lumiEnhanceGo(consumables.LABOVA_);
 }
-private function lumiEnhanceSDelight():void {
+private  lumiEnhanceSDelight():void {
 	lumiEnhanceGo(consumables.SDELITE);
 }
-private function lumiEnhanceOviElix():void {
+private  lumiEnhanceOviElix():void {
 	lumiEnhanceGo(consumables.OVIELIX);
 }
-private function lumiEnhanceDraft():void {
+private  lumiEnhanceDraft():void {
 	lumiEnhanceGo(consumables.L_DRAFT);
 }
-private function lumiEnhanceGoldenSeed():void {
+private  lumiEnhanceGoldenSeed():void {
 	lumiEnhanceGo(consumables.GLDSEED);
 }
-private function lumiEnhanceKanga():void {
+private  lumiEnhanceKanga():void {
 	lumiEnhanceGo(consumables.KANGAFT);
 }
-private function lumiEnhanceFox():void {
+private  lumiEnhanceFox():void {
 	lumiEnhanceGo(consumables.FOXBERY);
 }
-private function lumiEnhanceFoxJewel():void {
+private  lumiEnhanceFoxJewel():void {
 	lumiEnhanceGo(consumables.FOXJEWL);
 }
 
-private function lumiEnhanceGo(itype:ItemType):void
+private  lumiEnhanceGo(itype:ItemType):void
 {
 	spriteSelect(37);
 	trace("LUMI ENHANCE");
@@ -238,4 +238,4 @@ private function lumiEnhanceGo(itype:ItemType):void
 	inventory.takeItem(nextItem, lumiEnhance, lumiLabChoices);
 }
 }
-}
+

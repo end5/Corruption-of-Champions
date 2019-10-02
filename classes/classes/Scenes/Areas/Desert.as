@@ -1,28 +1,28 @@
 /**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Areas
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.Desert.*;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
 
-	public class Desert extends BaseContent
+	  ;
+
+	export class Desert extends BaseContent
 	{
-		public var antsScene:AntsScene = new AntsScene();
-		public var nagaScene:NagaScene = new NagaScene();
-		public var oasis:Oasis = new Oasis();
-		public var sandTrapScene:SandTrapScene = new SandTrapScene();
-		public var sandWitchScene:SandWitchScene = new SandWitchScene();
-		public var wanderer:Wanderer = new Wanderer();
-		public function Desert()
+		public  antsScene:AntsScene = new AntsScene();
+		public  nagaScene:NagaScene = new NagaScene();
+		public  oasis:Oasis = new Oasis();
+		public  sandTrapScene:SandTrapScene = new SandTrapScene();
+		public  sandWitchScene:SandWitchScene = new SandWitchScene();
+		public  wanderer:Wanderer = new Wanderer();
+		public  constructor()
 		{
 		}
 		//Explore desert
-		public function exploreDesert():void
+		public  exploreDesert():void
 		{
 			player.exploredDesert++;
 			if (player.level >= 4 && player.exploredDesert % 15 == 0 && flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] == 0) {
@@ -85,9 +85,9 @@ package classes.Scenes.Areas
 				kGAMECLASS.exploration.bigJunkDesertScene();
 				return;
 			}
-			var choices:Array = [];
+			var choices:any[] = [];
 			//-8008 is cheating for "no arg"
-			var args:Array = [];
+			var args:any[] = [];
 
 			//Encounter Sandwitch
 			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] == 0) {
@@ -119,14 +119,14 @@ package classes.Scenes.Areas
 				choices[choices.length] = sandTrapScene.encounterASandTarp;
 				args[args.length] = -8008;
 			}
-			var select:int = rand(choices.length);
+			var select:number = rand(choices.length);
 			if (args[select] == -8008) {
 				choices[select]();
 			}
 			else choices[select](args[select]);
 		}
 
-		private function mirageDesert():void
+		private  mirageDesert():void
 		{
 			clearOutput();
 			outputText("While exploring the desert, you see a shimmering tower in the distance.  As you rush towards it, it vanishes completely.  It was a mirage!   You sigh, depressed at wasting your time.", true);
@@ -134,7 +134,7 @@ package classes.Scenes.Areas
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		private function walkingDesertStatBoost():void
+		private  walkingDesertStatBoost():void
 		{
 			clearOutput();
 			outputText("You walk through the shifting sands for an hour, finding nothing.\n\n", true);
@@ -154,4 +154,4 @@ package classes.Scenes.Areas
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-}
+

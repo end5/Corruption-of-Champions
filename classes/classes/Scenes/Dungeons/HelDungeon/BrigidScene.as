@@ -1,20 +1,20 @@
 /**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.Dungeons.HelDungeon
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class BrigidScene extends BaseContent
+	 
+	 
+
+	export class BrigidScene extends BaseContent
 	{
-		public function BrigidScene()
+		public  constructor()
 		{
 		}
 
 
 		//Brigid the Jailer -- PC Victorious
-		public function pcDefeatsBrigid():void {
+		public  pcDefeatsBrigid():void {
 			clearOutput();
 			outputText("The harpy jailer collapses, ");
 			if(monster.lust > 99) outputText("too turned on");
@@ -27,7 +27,7 @@ package classes.Scenes.Dungeons.HelDungeon
 		}
 
 		//Brigid the Jailer -- PC Defeated
-		public function pcDefeatedByBrigid():void {
+		public  pcDefeatedByBrigid():void {
 			clearOutput();
 			if(flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) {
 				outputText("\"<i>Tsk tsk tsk,</i>\" the harpy jailer croons, looming over you as you slump to the ground. \"<i>You shouldn't have messed with me, bitch!</i>\" she snaps, giving you a rough kick to the side. \"<i>Now, let's see what Mother has to say about this...</i>\"");
@@ -51,7 +51,7 @@ package classes.Scenes.Dungeons.HelDungeon
 		}
 
 		//--Next--
-		private function brigitPostQueenDeathBadEndII():void {
+		private  brigitPostQueenDeathBadEndII():void {
 			clearOutput();
 			//[(if M, U, or visibly pregnant F/H)
 			if(player.gender <= 1 || player.pregnancyIncubation > 0) {
@@ -119,4 +119,4 @@ package classes.Scenes.Dungeons.HelDungeon
 		}
 
 	}
-}
+

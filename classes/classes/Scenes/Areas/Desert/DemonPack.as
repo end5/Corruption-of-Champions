@@ -1,13 +1,13 @@
-﻿package classes.Scenes.Areas.Desert
-{
-	import classes.*;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class DemonPack extends Monster
+	 
+	 
+
+	export class DemonPack extends Monster
 	{
 
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			//Demon pack has different AI
 			if (rand(2) == 0)
@@ -15,7 +15,7 @@
 			else special2();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if (hpVictory) {
 				outputText("You strike out and the last of the demons tumbles to the ground with a thud. You stand there for a second surrounded by dead or unconscious demons feeling like a god of battle. Then you realize that if a god of battle does exist he lives on a demonic plane like this, so to avoid insulting him you take your hands off your hips and your " + player.legs() + " off the head of the demon leader before you start to search the bodies.", true);
@@ -33,12 +33,12 @@
 			}
 		}
 
-		private function rapeDemons():void{
+		private  rapeDemons():void{
 			outputText("You open your arms and step into the throng of eager demons. They jump eagerly to touch you, becoming more and more lust-frenzied every second. You take the nearest demon and throw it to the ground and without a moment's thought the rest of the group leap to join you in a thoughtless madness of lust...", true);
 			doNext(game.desert.oasis.oasisSexing);
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (player.gender == 0){
 				if (hpVictory) {
@@ -71,7 +71,7 @@
 		}
 
 
-		override public function teased(lustDelta:Number):void
+		 public  teased(lustDelta:number):void
 		{
 			outputText("\n", false);
 			if(lustDelta == 0) outputText("\n" + capitalA + short + " seems unimpressed.");
@@ -81,7 +81,7 @@
 			applyTease(lustDelta);
 		}
 
-		public function DemonPack()
+		public  constructor()
 		{
 			trace("DemonPack Constructor!");
 			this.a = "the ";
@@ -133,4 +133,3 @@
 
 	}
 
-}

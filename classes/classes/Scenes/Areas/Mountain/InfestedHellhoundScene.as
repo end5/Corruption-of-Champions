@@ -1,20 +1,20 @@
 /**
  * Created by aimozg on 04.01.14.
  */
-package classes.Scenes.Areas.Mountain
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class InfestedHellhoundScene extends BaseContent
+	 
+	 
+
+	export class InfestedHellhoundScene extends BaseContent
 	{
-		public function InfestedHellhoundScene()
+		public  constructor()
 		{
 		}
 
 		//[INTRO – 50% chance split with regular hellhound if worms
 		//turned on and over level 2]
-		public function infestedHellhoundEncounter():void
+		public  infestedHellhoundEncounter():void
 		{
 			outputText("", true);
 			outputText("A low snarl vibrates through your body, ", false);
@@ -27,7 +27,7 @@ package classes.Scenes.Areas.Mountain
 		}
 
 
-		public function infestedHellhoundLossRape():void
+		public  infestedHellhoundLossRape():void
 		{
 			outputText("", true);
 			//[BOTH INFESTED]
@@ -185,4 +185,4 @@ package classes.Scenes.Areas.Mountain
 			}
 		}
 	}
-}
+

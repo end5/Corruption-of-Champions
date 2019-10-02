@@ -1,31 +1,31 @@
 /**
  * Created by aimozg on 09.01.14.
  */
-package classes.Items
-{
-	import classes.CoC_Settings;
-	import classes.Player;
+ 
+
+	 
+	 
 
 	/**
 	 * Represent item that can be used but does not necessarily disappears on use. Direct subclasses should overrride
 	 * "useItem" method.
 	 */
-	public class Useable extends CommonItem {
+	export class Useable extends CommonItem {
 		
-		public function Useable(id:String, shortName:String = null, longName:String = null, value:Number = 0, description:String = null) {
+		public  constructor(id:string, shortName:string = null, longName:string = null, value:number = 0, description:string = null) {
 			super(id, shortName, longName, value, description);
 		}
 		
-		public function canUse():Boolean { return true; } //If an item cannot be used it should provide some description of why not
+		public  canUse():boolean { return true; } //If an item cannot be used it should provide some description of why not
 		
 //		public function hasSubMenu():Boolean { return false; } //Only GroPlus and Reducto use this. //Replaced with a return
 		
-		public function useItem():Boolean {
+		public  useItem():boolean {
 			CoC_Settings.errorAMC("Useable", "useItem", id);
 			return(false);
 		}
 		
-		public function useText():void {} //Produces any text seen when using or equipping the item normally
+		public  useText():void {} //Produces any text seen when using or equipping the item normally
 
         /**
          * @param player user
@@ -39,4 +39,4 @@ package classes.Items
 		}
 */
 	}
-}
+

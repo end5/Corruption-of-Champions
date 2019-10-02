@@ -1,21 +1,21 @@
-﻿//CoC Creature.as
-package classes
-{
-	import classes.GlobalFlags.kGAMECLASS;
-import classes.PerkType;
-	import classes.StatusAffectType;
-	import classes.internals.Utils;
-	import flash.display.InteractiveObject;
+//CoC Creature.as
+ 
 
-	public class Creature extends Utils
+	 
+ 
+	 
+	 
+	 
+
+	export class Creature extends Utils
 	{
 
-		include "../../includes/appearanceDefs.as";
+		// include "../../includes/appearanceDefs.as";
 
-		public function get game():CoC {
+		public  get game():CoC {
 			return kGAMECLASS;
 		}
-		public function get flags():DefaultDict {
+		public  get flags():DefaultDict {
 			return game.flags;
 		}
 
@@ -23,73 +23,73 @@ import classes.PerkType;
 		
 		//Short refers to player name and monster name. BEST VARIABLE NAME EVA!
 		//"a" refers to how the article "a" should appear in text. 
-		private var _short:String = "You";
-		private var _a:String = "a ";
-		public function get short():String { return _short; }
-		public function set short(value:String):void { _short = value; }
-		public function get a():String { return _a; }
-		public function set a(value:String):void { _a = value; }
-		public function get capitalA():String {
+		private  _short:string = "You";
+		private  _a:string = "a ";
+		public  get short():string { return _short; }
+		public  set short(value:string):void { _short = value; }
+		public  get a():string { return _a; }
+		public  set a(value:string):void { _a = value; }
+		public  get capitalA():string {
 			if (_a.length == 0) return "";
 			return _a.charAt(0).toUpperCase() + _a.substr(1);
 		}
 
 		//Weapon
-		private var _weaponName:String = "";
-		private var _weaponVerb:String = "";
-		private var _weaponAttack:Number = 0;
-		private var _weaponPerk:String = "";
-		private var _weaponValue:Number = 0;
-		public function get weaponName():String { return _weaponName; }
-		public function get weaponVerb():String { return _weaponVerb; }
-		public function get weaponAttack():Number { return _weaponAttack; }
-		public function get weaponPerk():String { return _weaponPerk; }
-		public function get weaponValue():Number { return _weaponValue; }
-		public function set weaponName(value:String):void { _weaponName = value; }
-		public function set weaponVerb(value:String):void { _weaponVerb = value; }
-		public function set weaponAttack(value:Number):void { _weaponAttack = value; }
-		public function set weaponPerk(value:String):void { _weaponPerk = value; }
-		public function set weaponValue(value:Number):void { _weaponValue = value; }
+		private  _weaponName:string = "";
+		private  _weaponVerb:string = "";
+		private  _weaponAttack:number = 0;
+		private  _weaponPerk:string = "";
+		private  _weaponValue:number = 0;
+		public  get weaponName():string { return _weaponName; }
+		public  get weaponVerb():string { return _weaponVerb; }
+		public  get weaponAttack():number { return _weaponAttack; }
+		public  get weaponPerk():string { return _weaponPerk; }
+		public  get weaponValue():number { return _weaponValue; }
+		public  set weaponName(value:string):void { _weaponName = value; }
+		public  set weaponVerb(value:string):void { _weaponVerb = value; }
+		public  set weaponAttack(value:number):void { _weaponAttack = value; }
+		public  set weaponPerk(value:string):void { _weaponPerk = value; }
+		public  set weaponValue(value:number):void { _weaponValue = value; }
 		//Clothing/Armor
-		private var _armorName:String = "";
-		private var _armorDef:Number = 0;
-		private var _armorPerk:String = "";
-		private var _armorValue:Number = 0;
-		public function get armorName():String { return _armorName; }
-		public function get armorDef():Number { return _armorDef; }
-		public function get armorPerk():String { return _armorPerk; }
-		public function get armorValue():Number { return _armorValue; }
-		public function set armorValue(value:Number):void { _armorValue = value; }
-		public function set armorName(value:String):void { _armorName = value; }
-		public function set armorDef(value:Number):void { _armorDef = value; }
-		public function set armorPerk(value:String):void { _armorPerk = value; }
+		private  _armorName:string = "";
+		private  _armorDef:number = 0;
+		private  _armorPerk:string = "";
+		private  _armorValue:number = 0;
+		public  get armorName():string { return _armorName; }
+		public  get armorDef():number { return _armorDef; }
+		public  get armorPerk():string { return _armorPerk; }
+		public  get armorValue():number { return _armorValue; }
+		public  set armorValue(value:number):void { _armorValue = value; }
+		public  set armorName(value:string):void { _armorName = value; }
+		public  set armorDef(value:number):void { _armorDef = value; }
+		public  set armorPerk(value:string):void { _armorPerk = value; }
 
 		//Primary stats
-		public var str:Number = 0;
-		public var tou:Number = 0;
-		public var spe:Number = 0;
-		public var inte:Number = 0;
-		public var lib:Number = 0;
-		public var sens:Number = 0;
-		public var cor:Number = 0;
-		public var fatigue:Number = 0;
+		public  str:number = 0;
+		public  tou:number = 0;
+		public  spe:number = 0;
+		public  inte:number = 0;
+		public  lib:number = 0;
+		public  sens:number = 0;
+		public  cor:number = 0;
+		public  fatigue:number = 0;
 		
 		//Combat Stats
-		public var HP:Number = 0;
-		public var lust:Number = 0;		
+		public  HP:number = 0;
+		public  lust:number = 0;		
 		
 		//Level Stats
-		public var XP:Number = 0;
-		public var level:Number = 0;
-		public var gems:Number = 0;
-		public var additionalXP:Number = 0;
+		public  XP:number = 0;
+		public  level:number = 0;
+		public  gems:number = 0;
+		public  additionalXP:number = 0;
 				
 		//Appearance Variables
 		//Gender 1M, 2F, 3H
-		public var gender:int = GENDER_NONE;
-		private var _tallness:Number = 0;
-		public function get tallness():Number { return _tallness; }
-		public function set tallness(value:Number):void { _tallness = value; }
+		public  gender:number = GENDER_NONE;
+		private  _tallness:number = 0;
+		public  get tallness():number { return _tallness; }
+		public  set tallness(value:number):void { _tallness = value; }
 
 		/*Hairtype
 		0- normal
@@ -97,23 +97,23 @@ import classes.PerkType;
 		2- ghost
 		3- goo!
 		4- anemononeoenoeneo!*/
-		public var hairType:Number = HAIR_NORMAL;
-		public var hairColor:String = "no";
-		public var hairLength:Number = 0;
+		public  hairType:number = HAIR_NORMAL;
+		public  hairColor:string = "no";
+		public  hairLength:number = 0;
 		
 		/*Skintype
 		0 - skin
 		1 - furry
 		2 - scaley
 		3 - goopey*/
-		private var _skinType:Number = SKIN_TYPE_PLAIN;
-		public function get skinType():Number { return _skinType; }
-		public function set skinType(value:Number):void { _skinType = value; }
-		private var _skinTone:String = "albino";
-		public function get skinTone():String { return _skinTone; }
-		public function set skinTone(value:String):void { _skinTone = value; }
-		public var skinDesc:String = "skin";
-		public var skinAdj:String = "";
+		private  _skinType:number = SKIN_TYPE_PLAIN;
+		public  get skinType():number { return _skinType; }
+		public  set skinType(value:number):void { _skinType = value; }
+		private  _skinTone:string = "albino";
+		public  get skinTone():string { return _skinTone; }
+		public  set skinTone(value:string):void { _skinTone = value; }
+		public  skinDesc:string = "skin";
+		public  skinAdj:string = "";
 		
 /*		Facetype:
 		0 - human
@@ -133,7 +133,7 @@ import classes.PerkType;
 		14 - fullcoon
 		15 - halfmouse
 		16 - fullmouse*/
-		public var faceType:Number = FACE_HUMAN;
+		public  faceType:number = FACE_HUMAN;
 
 		/*EarType
 		-1 - none!
@@ -150,8 +150,8 @@ import classes.PerkType;
 		10 - dragon
 		11 - coon
 		12 - mouse*/
-		public var earType:Number = EARS_HUMAN;
-		public var earValue:Number = 0;
+		public  earType:number = EARS_HUMAN;
+		public  earValue:number = 0;
 		
 		/*Horntype
 		1 - demonic
@@ -159,8 +159,8 @@ import classes.PerkType;
 		3 - Draconic/Lizard
 		4 - Double draconic
 		5 - Antlers*/
-		public var hornType:Number = HORNS_NONE;
-		public var horns:Number = 0;
+		public  hornType:number = HORNS_NONE;
+		public  horns:number = 0;
 
 		/*Wingtype
 		0 - none
@@ -176,10 +176,10 @@ import classes.PerkType;
 		10 - small dagron
 		11 - trogdor wings
 		12 - sandtrap wings*/
-		private var _wingType:Number = WING_TYPE_NONE;
-		public var wingDesc:String = "non-existant";
-		public function get wingType():Number { return _wingType; }
-		public function set wingType(value:Number):void { _wingType = value; }
+		private  _wingType:number = WING_TYPE_NONE;
+		public  wingDesc:string = "non-existant";
+		public  get wingType():number { return _wingType; }
+		public  set wingType(value:number):void { _wingType = value; }
 
 		/* lowerBody:
 		0 - normal
@@ -202,7 +202,7 @@ import classes.PerkType;
 		17 - foxpaws
 		18 - dragonfeet
 		19 - raccoonfeet*/
-		public var lowerBody:Number = LOWER_BODY_TYPE_HUMAN;
+		public  lowerBody:number = LOWER_BODY_TYPE_HUMAN;
 
 		/*tailType:
 		0 - none
@@ -222,12 +222,12 @@ import classes.PerkType;
 		14 - dagron tail
 		15 - raccoon tail
 		16 - mousetail*/
-		public var tailType:Number = TAIL_TYPE_NONE;
+		public  tailType:number = TAIL_TYPE_NONE;
 		
 		//Tail venom is a 0-100 slider used for tail attacks. Recharges per hour.
-		public var tailVenom:Number = 0;
+		public  tailVenom:number = 0;
 		//Tail recharge determines how fast venom/webs comes back per hour.
-		public var tailRecharge:Number = 5;
+		public  tailRecharge:number = 5;
 		
 		/*hipRating
 		0 - boyish
@@ -237,7 +237,7 @@ import classes.PerkType;
 		10 - curvy//flaring
 		15 - child-bearing/fertile
 		20 - inhumanly wide*/
-		public var hipRating:Number = HIP_RATING_BOYISH;
+		public  hipRating:number = HIP_RATING_BOYISH;
 		
 		/*buttRating
 		0 - buttless
@@ -249,57 +249,57 @@ import classes.PerkType;
 		13 - expansive
 		16 - huge
 		20 - inconceivably large/big/huge etc*/
-		public var buttRating:Number = BUTT_RATING_BUTTLESS;
+		public  buttRating:number = BUTT_RATING_BUTTLESS;
 		
 		//Piercings
 		//TODO: Pull this out into it's own class and enum.
-		public var nipplesPierced:Number = 0;
-		public var nipplesPShort:String = "";
-		public var nipplesPLong:String = "";
-		public var lipPierced:Number = 0;
-		public var lipPShort:String = "";
-		public var lipPLong:String = "";
-		public var tonguePierced:Number = 0;
-		public var tonguePShort:String = "";
-		public var tonguePLong:String = "";
-		public var eyebrowPierced:Number = 0;
-		public var eyebrowPShort:String = "";
-		public var eyebrowPLong:String = "";
-		public var earsPierced:Number = 0;
-		public var earsPShort:String = "";
-		public var earsPLong:String = "";
-		public var nosePierced:Number = 0;
-		public var nosePShort:String = "";
-		public var nosePLong:String = "";
+		public  nipplesPierced:number = 0;
+		public  nipplesPShort:string = "";
+		public  nipplesPLong:string = "";
+		public  lipPierced:number = 0;
+		public  lipPShort:string = "";
+		public  lipPLong:string = "";
+		public  tonguePierced:number = 0;
+		public  tonguePShort:string = "";
+		public  tonguePLong:string = "";
+		public  eyebrowPierced:number = 0;
+		public  eyebrowPShort:string = "";
+		public  eyebrowPLong:string = "";
+		public  earsPierced:number = 0;
+		public  earsPShort:string = "";
+		public  earsPLong:string = "";
+		public  nosePierced:number = 0;
+		public  nosePShort:string = "";
+		public  nosePLong:string = "";
 
 		//Head ornaments. Definitely need to convert away from hard coded types.
-		public var antennae:Number = ANTENNAE_NONE;
+		public  antennae:number = ANTENNAE_NONE;
 
 		//Eyetype
-		public var eyeType:Number = EYES_HUMAN;
+		public  eyeType:number = EYES_HUMAN;
 
 		//TongueType
-		public var tongueType:Number = TONUGE_HUMAN;
+		public  tongueType:number = TONUGE_HUMAN;
 
 		//ArmType
-		public var armType:Number = ARM_TYPE_HUMAN;
+		public  armType:number = ARM_TYPE_HUMAN;
 
 		//Gills
-		public var gills:Boolean = false;
+		public  gills:boolean = false;
 
 		//Sexual Stuff		
 		//MALE STUFF
 		//public var cocks:Array;
 		//TODO: Tuck away into Male genital class?
-		public var cocks:Array;
+		public  cocks:any[];
 		//balls
-		public var balls:Number = 0;
-		public var cumMultiplier:Number = 1;
-		public var ballSize:Number = 0;
+		public  balls:number = 0;
+		public  cumMultiplier:number = 1;
+		public  ballSize:number = 0;
 		
-		private var _hoursSinceCum:Number = 0;
-		public function get hoursSinceCum():Number { return _hoursSinceCum; }
-		public function set hoursSinceCum(v:Number):void {
+		private  _hoursSinceCum:number = 0;
+		public  get hoursSinceCum():number { return _hoursSinceCum; }
+		public  set hoursSinceCum(v:number):void {
 			/*if (v == 0)
 			{
 				trace("noop");
@@ -309,17 +309,17 @@ import classes.PerkType;
 		
 		//FEMALE STUFF
 		//TODO: Box into Female genital class?
-		public var vaginas:Array;
+		public  vaginas:any[];
 		//Fertility is a % out of 100. 
-		public var fertility:Number = 10;
-		public var clitLength:Number = .5;
-		public var nippleLength:Number = .25;
-		public var breastRows:Array;
-		public var ass:AssClass = new AssClass();
+		public  fertility:number = 10;
+		public  clitLength:number = .5;
+		public  nippleLength:number = .25;
+		public  breastRows:any[];
+		public  ass:AssClass = new AssClass();
 
-		public function validate():String
+		public  validate():string
 		{
-			var error:String = "";
+			var error:string = "";
 			// 2. Value boundaries etc
 			// 2.1. non-negative Number fields
 			error += Utils.validateNonNegativeNumberFields(this,"Monster.validate",[
@@ -343,13 +343,13 @@ import classes.PerkType;
 				"weaponName", "weaponVerb", "armorName"
 			]);
 			// 3. validate members
-			for each (var cock:Cock in cocks) {
+			for  (const cock of cocks) {
 				error += cock.validate();
 			}
-			for each (var vagina:VaginaClass in vaginas) {
+			for  (const vagina of vaginas) {
 				error += vagina.validate();
 			}
-			for each (var row:BreastRowClass in breastRows) {
+			for  (const row of breastRows) {
 				error += row.validate();
 			}
 			error += ass.validate();
@@ -380,23 +380,23 @@ import classes.PerkType;
 		
 		//Monsters have few perks, which I think should be a status effect for clarity's sake.
 		//TODO: Move perks into monster status effects.
-		private var _perks:Array;
-		public function perk(i:int):PerkClass{
+		private  _perks:any[];
+		public  perk(i:number):PerkClass{
 			return _perks[i];
 		}
-		public function get perks():Array {
+		public  get perks():any[] {
 			return _perks;
 		}
-		public function get numPerks():int {
+		public  get numPerks():number {
 			return _perks.length;
 		}
 		//Current status effects. This has got very muddy between perks and status effects. Will have to look into it.
 		//Someone call the grammar police!
 		//TODO: Move monster status effects into perks. Needs investigation though.
-		public var statusAffects:Array;
+		public  statusAffects:any[];
 
 		//Constructor
-		public function Creature()
+		public  constructor()
 		{
 			//cocks = new Array();
 			//The world isn't ready for typed Arrays just yet.
@@ -410,29 +410,29 @@ import classes.PerkType;
 		}
 
 		//Functions			
-		public function orgasm():void
+		public  orgasm():void
 		{
 			game.dynStats("lus=",0,"res",false);
 			hoursSinceCum = 0;
 			
 			if (countCockSocks("gilded") > 0) {
 			
-				var randomCock:int = rand( cocks.length );
-				var bonusGems:int = rand( cocks[randomCock].cockThickness ) + countCockSocks("gilded"); // int so AS rounds to whole numbers
+				var randomCock:number = rand( cocks.length );
+				var bonusGems:number = rand( cocks[randomCock].cockThickness ) + countCockSocks("gilded"); // int so AS rounds to whole numbers
 				game.outputText("\n\nFeeling some minor discomfort in your " + cockDescript(randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n" );
 				gems += bonusGems;
 	}
 		}
 
 		//Create a perk
-		public function createPerk(ptype:PerkType, value1:Number, value2:Number, value3:Number, value4:Number):void
+		public  createPerk(ptype:PerkType, value1:number, value2:number, value3:number, value4:number):void
 		{
 			var newKeyItem:PerkClass = new PerkClass(ptype);
 			//used to denote that the array has already had its new spot pushed on.
-			var arrayed:Boolean = false;
+			var arrayed:boolean = false;
 			//used to store where the array goes
-			var keySlot:Number = 0;
-			var counter:Number = 0;
+			var keySlot:number = 0;
+			var counter:number = 0;
 			//Start the array if its the first bit
 			if (perks.length == 0)
 			{
@@ -510,9 +510,9 @@ import classes.PerkType;
 		/**
 		 * Remove perk. Return true if there was such perk
 		 */
-		public function removePerk(ptype:PerkType):Boolean
+		public  removePerk(ptype:PerkType):boolean
 		{
-			var counter:Number = perks.length;
+			var counter:number = perks.length;
 			//Various Errors preventing action
 			if (perks.length <= 0)
 			{
@@ -532,11 +532,11 @@ import classes.PerkType;
 		}
 		
 		//has perk?
-		public function findPerk(ptype:PerkType):Number
+		public  findPerk(ptype:PerkType):number
 		{
 			if (perks.length <= 0)
 				return -2;
-			for (var counter:int = 0; counter<perks.length; counter++)
+			for (const counter = 0; counter<perks.length; counter++)
 			{
 				if (perk(counter).ptype == ptype)
 					return counter;
@@ -546,12 +546,12 @@ import classes.PerkType;
 		
 		//Duplicate perk
 		//Deprecated?
-		public function perkDuplicated(ptype:PerkType):Boolean
+		public  perkDuplicated(ptype:PerkType):boolean
 		{
-			var timesFound:int = 0;
+			var timesFound:number = 0;
 			if (perks.length <= 0)
 				return false;
-			for (var counter:int = 0; counter<perks.length; counter++)
+			for (const counter = 0; counter<perks.length; counter++)
 			{
 				if (perk(counter).ptype == ptype)
 					timesFound++;
@@ -560,14 +560,14 @@ import classes.PerkType;
 		}
 		
 		//remove all perks
-		public function removePerks():void
+		public  removePerks():void
 		{
 			_perks = [];
 		}
 		
-		public function addPerkValue(ptype:PerkType, valueIdx:Number = 1, bonus:Number = 0): void
+		public  addPerkValue(ptype:PerkType, valueIdx:number = 1, bonus:number = 0): void
 		{
-			var counter:int = findPerk(ptype);
+			var counter:number = findPerk(ptype);
 			if (counter < 0) {
 				trace("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
 				return;
@@ -586,9 +586,9 @@ import classes.PerkType;
 				perk(counter).value4 += bonus;
 		}
 		
-		public function setPerkValue(ptype:PerkType, valueIdx:Number = 1, newNum:Number = 0): void
+		public  setPerkValue(ptype:PerkType, valueIdx:number = 1, newNum:number = 0): void
 		{
-			var counter:Number = findPerk(ptype);
+			var counter:number = findPerk(ptype);
 			//Various Errors preventing action
 			if (counter < 0) {
 				trace("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
@@ -609,9 +609,9 @@ import classes.PerkType;
 				perk(counter).value4 = newNum;
 		}
 		
-		public function perkv1(ptype:PerkType):Number
+		public  perkv1(ptype:PerkType):number
 		{
-			var counter:Number = findPerk(ptype);
+			var counter:number = findPerk(ptype);
 			if (counter < 0)
 			{
 				// trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
@@ -620,9 +620,9 @@ import classes.PerkType;
 			return perk(counter).value1;
 		}
 		
-	public function perkv2(ptype:PerkType):Number
+	public  perkv2(ptype:PerkType):number
 	{
-		var counter:Number = findPerk(ptype);
+		var counter:number = findPerk(ptype);
 		if (counter < 0)
 		{
 			// trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
@@ -631,9 +631,9 @@ import classes.PerkType;
 		return perk(counter).value2;
 	}
 		
-	public function perkv3(ptype:PerkType):Number
+	public  perkv3(ptype:PerkType):number
 	{
-		var counter:Number = findPerk(ptype);
+		var counter:number = findPerk(ptype);
 		if (counter < 0)
 		{
 			trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
@@ -642,9 +642,9 @@ import classes.PerkType;
 		return perk(counter).value3;
 	}
 		
-	public function perkv4(ptype:PerkType):Number
+	public  perkv4(ptype:PerkType):number
 	{
-		var counter:Number = findPerk(ptype);
+		var counter:number = findPerk(ptype);
 		if (counter < 0)
 		{
 			trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
@@ -655,7 +655,7 @@ import classes.PerkType;
 		
 		//{region StatusEffects
 		//Create a status
-		public function createStatusAffect(stype:StatusAffectType, value1:Number, value2:Number, value3:Number, value4:Number):void
+		public  createStatusAffect(stype:StatusAffectType, value1:number, value2:number, value3:number, value4:number):void
 		{
 			var newStatusAffect:StatusAffectClass = new StatusAffectClass(stype,value1,value2,value3,value4);
 			statusAffects.push(newStatusAffect);
@@ -664,17 +664,17 @@ import classes.PerkType;
 		}
 		
 		//Remove a status
-		public function removeStatusAffect(stype:StatusAffectType):void
+		public  removeStatusAffect(stype:StatusAffectType):void
 		{
-			var counter:Number = findStatusAffect(stype);
+			var counter:number = findStatusAffect(stype);
 			if (counter < 0) return;
 			statusAffects.splice(counter, 1);
 			//trace("removeStatusAffect -> "+statusAffects.join(","));
 		}
 		
-		public function findStatusAffect(stype:StatusAffectType):Number
+		public  findStatusAffect(stype:StatusAffectType):number
 		{
-			for (var counter:int = 0; counter < statusAffects.length; counter++)
+			for (const counter = 0; counter < statusAffects.length; counter++)
 			{
 				if (statusAffect(counter).stype == stype)
 					return counter;
@@ -684,9 +684,9 @@ import classes.PerkType;
 		//}endregion
 		
 		
-		public function changeStatusValue(stype:StatusAffectType, statusValueNum:Number = 1, newNum:Number = 0):void
+		public  changeStatusValue(stype:StatusAffectType, statusValueNum:number = 1, newNum:number = 0):void
 		{
-			var counter:Number = findStatusAffect(stype);
+			var counter:number = findStatusAffect(stype);
 			//Various Errors preventing action
 			if (counter < 0)return;
 			if (statusValueNum < 1 || statusValueNum > 4)
@@ -704,9 +704,9 @@ import classes.PerkType;
 				statusAffect(counter).value4 = newNum;
 		}
 		
-		public function addStatusValue(stype:StatusAffectType, statusValueNum:Number = 1, bonus:Number = 0):void
+		public  addStatusValue(stype:StatusAffectType, statusValueNum:number = 1, bonus:number = 0):void
 		{
-			var counter:Number = findStatusAffect(stype);
+			var counter:number = findStatusAffect(stype);
 			//Various Errors preventing action
 			if (counter < 0)
 			{
@@ -727,38 +727,38 @@ import classes.PerkType;
 				statusAffect(counter).value4 += bonus;
 		}
 		
-		public function statusAffect(idx:int):StatusAffectClass
+		public  statusAffect(idx:number):StatusAffectClass
 		{
 			return statusAffects [idx];
 		}
 		
-		public function statusAffectv1(stype:StatusAffectType):Number
+		public  statusAffectv1(stype:StatusAffectType):number
 		{
-			var counter:Number = findStatusAffect(stype);
+			var counter:number = findStatusAffect(stype);
 			return (counter<0)?0:statusAffect(counter).value1;
 		}
 		
-		public function statusAffectv2(stype:StatusAffectType):Number
+		public  statusAffectv2(stype:StatusAffectType):number
 		{
-			var counter:Number = findStatusAffect(stype);
+			var counter:number = findStatusAffect(stype);
 			return (counter<0)?0:statusAffect(counter).value2;
 		}
 
-		public function statusAffectv3(stype:StatusAffectType):Number
+		public  statusAffectv3(stype:StatusAffectType):number
 		{
-			var counter:Number = findStatusAffect(stype);
+			var counter:number = findStatusAffect(stype);
 			return (counter<0)?0:statusAffect(counter).value3;
 		}
 
-		public function statusAffectv4(stype:StatusAffectType):Number
+		public  statusAffectv4(stype:StatusAffectType):number
 		{
-			var counter:Number = findStatusAffect(stype);
+			var counter:number = findStatusAffect(stype);
 			return (counter<0)?0:statusAffect(counter).value4;
 		}
 
-		public function removeStatuses():void
+		public  removeStatuses():void
 		{
-			var counter:Number = statusAffects.length;
+			var counter:number = statusAffects.length;
 			while (counter > 0)
 			{
 				counter--;
@@ -766,12 +766,12 @@ import classes.PerkType;
 			}
 		}		
 		
-		public function biggestTitSize():Number
+		public  biggestTitSize():number
 		{
 			if (breastRows.length == 0)
 				return -1;
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -781,26 +781,26 @@ import classes.PerkType;
 			return breastRows[index].breastRating;
 		}
 		
-		public function cockArea(i_cockIndex:Number):Number
+		public  cockArea(i_cockIndex:number):number
 		{
 			if (i_cockIndex >= cocks.length || i_cockIndex < 0)
 				return 0;
 			return (cocks[i_cockIndex].cockThickness * cocks[i_cockIndex].cockLength);
 		}
 		
-		public function biggestCockLength():Number
+		public  biggestCockLength():number
 		{
 			if (cocks.length == 0)
 				return 0;
 			return cocks[biggestCockIndex()].cockLength;
 		}
 		
-		public function biggestCockArea():Number
+		public  biggestCockArea():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -811,13 +811,13 @@ import classes.PerkType;
 		}
 		
 		//Find the second biggest dick and it's area.
-		public function biggestCockArea2():Number
+		public  biggestCockArea2():number
 		{
 			if (cocks.length <= 1)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
-			var index2:Number = -1;
+			var counter:number = cocks.length;
+			var index:number = 0;
+			var index2:number = -1;
 			//Find the biggest
 			while (counter > 0)
 			{
@@ -849,12 +849,12 @@ import classes.PerkType;
 			return cockArea(index2);
 		}
 		
-		public function longestCock():Number
+		public  longestCock():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -864,12 +864,12 @@ import classes.PerkType;
 			return index;
 		}
 		
-		public function longestCockLength():Number
+		public  longestCockLength():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -879,12 +879,12 @@ import classes.PerkType;
 			return cocks[index].cockLength;
 		}
 		
-		public function longestHorseCockLength():Number
+		public  longestHorseCockLength():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -894,7 +894,7 @@ import classes.PerkType;
 			return cocks[index].cockLength;
 		}
 		
-		public function twoDickRadarSpecial(width:int):Boolean
+		public  twoDickRadarSpecial(width:number):boolean
 		{
 			//No two dicks?  FUCK OFF
 			if (cockTotal() < 2)
@@ -902,10 +902,10 @@ import classes.PerkType;
 			
 			//Set up vars
 			//Get thinnest, work done already
-			var thinnest:int = thinnestCockIndex();
-			var thinnest2:int = 0;
+			var thinnest:number = thinnestCockIndex();
+			var thinnest2:number = 0;
 			//For ze loop
-			var temp:int = 0;
+			var temp:number = 0;
 			//Make sure they arent the same at initialization
 			if (thinnest2 == thinnest)
 				thinnest2 = 1;
@@ -920,10 +920,10 @@ import classes.PerkType;
 			return cocks[thinnest].cockThickness + cocks[thinnest2].cockThickness < width;
 		}
 		
-		public function totalCockThickness():Number
+		public  totalCockThickness():number
 		{
-			var thick:Number = 0;
-			var counter:Number = cocks.length;
+			var thick:number = 0;
+			var counter:number = cocks.length;
 			while (counter > 0)
 			{
 				counter--;
@@ -932,12 +932,12 @@ import classes.PerkType;
 			return thick;
 		}
 		
-		public function thickestCock():Number
+		public  thickestCock():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -947,12 +947,12 @@ import classes.PerkType;
 			return index;
 		}
 		
-		public function thickestCockThickness():Number
+		public  thickestCockThickness():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -962,12 +962,12 @@ import classes.PerkType;
 			return cocks[index].cockThickness;
 		}
 		
-		public function thinnestCockIndex():Number
+		public  thinnestCockIndex():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -977,12 +977,12 @@ import classes.PerkType;
 			return index;
 		}
 		
-		public function smallestCockIndex():Number
+		public  smallestCockIndex():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -994,19 +994,19 @@ import classes.PerkType;
 			return index;
 		}
 		
-		public function smallestCockLength():Number
+		public  smallestCockLength():number
 		{
 			if (cocks.length == 0)
 				return 0;
 			return cocks[smallestCockIndex()].cockLength;
 		}
 		
-		public function shortestCockIndex():Number
+		public  shortestCockIndex():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -1016,12 +1016,12 @@ import classes.PerkType;
 			return index;
 		}
 		
-		public function shortestCockLength():Number
+		public  shortestCockLength():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -1032,13 +1032,13 @@ import classes.PerkType;
 		}
 		
 		//Find the biggest cock that fits inside a given value
-		public function cockThatFits(i_fits:Number = 0, type:String = "area"):Number
+		public  cockThatFits(i_fits:number = 0, type:string = "area"):number
 		{
 			if (cocks.length <= 0)
 				return -1;
-			var cockIdxPtr:int = cocks.length;
+			var cockIdxPtr:number = cocks.length;
 			//Current largest fitter
-			var cockIndex:int = -1;
+			var cockIndex:number = -1;
 			while (cockIdxPtr > 0)
 			{
 				cockIdxPtr--;
@@ -1079,14 +1079,14 @@ import classes.PerkType;
 		}
 		
 		//Find the 2nd biggest cock that fits inside a given value
-		public function cockThatFits2(fits:Number = 0):Number
+		public  cockThatFits2(fits:number = 0):number
 		{
 			if (cockTotal() == 1)
 				return -1;
-			var counter:Number = cocks.length;
+			var counter:number = cocks.length;
 			//Current largest fitter
-			var index:Number = -1;
-			var index2:Number = -1;
+			var index:number = -1;
+			var index2:number = -1;
 			while (counter > 0)
 			{
 				counter--;
@@ -1123,24 +1123,24 @@ import classes.PerkType;
 			return index2;
 		}
 		
-		public function smallestCockArea():Number
+		public  smallestCockArea():number
 		{
 			if (cockTotal() == 0)
 				return -1;
 			return cockArea(smallestCockIndex());
 		}
 		
-		public function smallestCock():Number
+		public  smallestCock():number
 		{
 			return cockArea(smallestCockIndex());
 		}
 		
-		public function biggestCockIndex():Number
+		public  biggestCockIndex():number
 		{
 			if (cocks.length == 0)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -1151,13 +1151,13 @@ import classes.PerkType;
 		}
 		
 		//Find the second biggest dick's index.
-		public function biggestCockIndex2():Number
+		public  biggestCockIndex2():number
 		{
 			if (cocks.length <= 1)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
-			var index2:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
+			var index2:number = 0;
 			//Find the biggest
 			while (counter > 0)
 			{
@@ -1190,13 +1190,13 @@ import classes.PerkType;
 			return index2;
 		}
 		
-		public function smallestCockIndex2():Number
+		public  smallestCockIndex2():number
 		{
 			if (cocks.length <= 1)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
-			var index2:Number = 0;
+			var counter:number = cocks.length;
+			var index:number = 0;
+			var index2:number = 0;
 			//Find the smallest
 			while (counter > 0)
 			{
@@ -1230,14 +1230,14 @@ import classes.PerkType;
 		}
 		
 		//Find the third biggest dick index.
-		public function biggestCockIndex3():Number
+		public  biggestCockIndex3():number
 		{
 			if (cocks.length <= 2)
 				return 0;
-			var counter:Number = cocks.length;
-			var index:Number = 0;
-			var index2:Number = -1;
-			var index3:Number = -1;
+			var counter:number = cocks.length;
+			var index:number = 0;
+			var index2:number = -1;
+			var index3:number = -1;
 			//Find the biggest
 			while (counter > 0)
 			{
@@ -1291,20 +1291,20 @@ import classes.PerkType;
 		}
 
 		
-		public function cockDescript(cockIndex:int = 0):String
+		public  cockDescript(cockIndex:number = 0):string
 		{
 			return Appearance.cockDescript(this, cockIndex);
 		}
 		
-		public function cockAdjective(index:Number = -1):String {
+		public  cockAdjective(index:number = -1):string {
 			if (index < 0) index = biggestCockIndex();
-			var isPierced:Boolean = (cocks.length == 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
-			var hasSock:Boolean = (cocks.length == 1) && (cocks[index].sock != "");
-			var isGooey:Boolean = (skinType == CoC.SKIN_TYPE_GOO);
+			var isPierced:boolean = (cocks.length == 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
+			var hasSock:boolean = (cocks.length == 1) && (cocks[index].sock != "");
+			var isGooey:boolean = (skinType == CoC.SKIN_TYPE_GOO);
 			return Appearance.cockAdjective(cocks[index].cockType, cocks[index].cockLength, cocks[index].cockThickness, lust, cumQ(), isPierced, hasSock, isGooey);
 		}
 		
-		public function wetness():Number
+		public  wetness():number
 		{
 			if (vaginas.length == 0)
 				return 0;
@@ -1312,7 +1312,7 @@ import classes.PerkType;
 				return vaginas[0].vaginalWetness;
 		}
 		
-		public function vaginaType(newType:int = -1):int
+		public  vaginaType(newType:number = -1):number
 		{
 			if (!hasVagina())
 				return -1;
@@ -1323,7 +1323,7 @@ import classes.PerkType;
 			return vaginas[0].type;
 		}
 		
-		public function looseness(vag:Boolean = true):Number
+		public  looseness(vag:boolean = true):number
 		{
 			if (vag)
 			{
@@ -1338,13 +1338,13 @@ import classes.PerkType;
 			}
 		}
 		
-		public function vaginalCapacity():Number
+		public  vaginalCapacity():number
 		{
 			//If the player has no vaginas
 			if (vaginas.length == 0)
 				return 0;
-			var total:Number;
-			var bonus:Number = 0;
+			var total:number;
+			var bonus:number = 0;
 			//Centaurs = +50 capacity
 			if (lowerBody == 4)
 				bonus = 50;
@@ -1368,9 +1368,9 @@ import classes.PerkType;
 			return total;
 		}
 		
-		public function analCapacity():Number
+		public  analCapacity():number
 		{
-			var bonus:Number = 0;
+			var bonus:number = 0;
 			//Centaurs = +30 capacity
 			if (lowerBody == 4)
 				bonus = 30;
@@ -1385,9 +1385,9 @@ import classes.PerkType;
 			return ((bonus + statusAffectv1(StatusAffects.BonusACapacity) + 6 * ass.analLooseness * ass.analLooseness) * (1 + ass.analWetness / 10));
 		}
 		
-		public function hasFuckableNipples():Boolean
+		public  hasFuckableNipples():boolean
 		{
-			var counter:Number = breastRows.length;
+			var counter:number = breastRows.length;
 			while (counter > 0)
 			{
 				counter--;
@@ -1397,7 +1397,7 @@ import classes.PerkType;
 			return false;
 		}
 		
-		public function hasBreasts():Boolean
+		public  hasBreasts():boolean
 		{
 			if (breastRows.length > 0)
 			{
@@ -1407,9 +1407,9 @@ import classes.PerkType;
 			return false;
 		}
 		
-		public function hasNipples():Boolean
+		public  hasNipples():boolean
 		{
-			var counter:Number = breastRows.length;
+			var counter:number = breastRows.length;
 			while (counter > 0)
 			{
 				counter--;
@@ -1419,7 +1419,7 @@ import classes.PerkType;
 			return false;
 		}
 		
-		public function lactationSpeed():Number
+		public  lactationSpeed():number
 		{
 			//Lactation * breastSize x 10 (milkPerBreast) determines scene
 			return biggestLactation() * biggestTitSize() * 10;
@@ -1427,22 +1427,22 @@ import classes.PerkType;
 		
 		//Hacky code till I can figure out how to move appearance code out.
 		//TODO: Get rid of this 
-		public virtual function dogScore():Number {
+		public   dogScore():number {
 			throw new Error("Not implemented. BAD");
 		}
 		
 		//Hacky code till I can figure out how to move appearance code out.
 		//TODO: Get rid of this
-		public virtual function foxScore():Number {
+		public   foxScore():number {
 			throw new Error("Not implemented. BAD");
 		}
 		
-		public function biggestLactation():Number
+		public  biggestLactation():number
 		{
 			if (breastRows.length == 0)
 				return 0;
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -1451,7 +1451,7 @@ import classes.PerkType;
 			}
 			return breastRows[index].lactationMultiplier;
 		}
-		public function milked():void
+		public  milked():void
 		{
 			if (findStatusAffect(StatusAffects.LactationReduction) >= 0)
 				changeStatusValue(StatusAffects.LactationReduction, 1, 0);
@@ -1470,14 +1470,14 @@ import classes.PerkType;
 				changeStatusValue(StatusAffects.Feeder, 2, 0);
 			}
 		}
-		public function boostLactation(todo:Number):Number
+		public  boostLactation(todo:number):number
 		{
 			if (breastRows.length == 0)
 				return 0;
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
-			var changes:Number = 0;
-			var temp2:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
+			var changes:number = 0;
+			var temp2:number = 0;
 			//Prevent lactation decrease if lactating.
 			if (todo >= 0)
 			{
@@ -1555,12 +1555,12 @@ import classes.PerkType;
 			return changes;
 		}
 		
-		public function averageLactation():Number
+		public  averageLactation():number
 		{
 			if (breastRows.length == 0)
 				return 0;
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0)
 			{
 				counter--;
@@ -1571,11 +1571,11 @@ import classes.PerkType;
 		
 		//Calculate bonus virility rating!
 		//anywhere from 5% to 100% of normal cum effectiveness thru herbs!
-		public function virilityQ():Number
+		public  virilityQ():number
 		{
 			if (!hasCock())
 				return 0;
-			var percent:Number = 0.01;
+			var percent:number = 0.01;
 			if (cumQ() >= 250)
 				percent += 0.01;
 			if (cumQ() >= 800)
@@ -1607,16 +1607,16 @@ import classes.PerkType;
 		}
 		
 		//Calculate cum return
-		public function cumQ():Number
+		public  cumQ():number
 		{
 			if (!hasCock())
 				return 0;
-			var quantity:Number = 0;
+			var quantity:number = 0;
 			//Base value is ballsize*ballQ*cumefficiency by a factor of 2.
 			//Other things that affect it: 
 			//lust - 50% = normal output.  0 = half output. 100 = +50% output.
 			//trace("CUM ESTIMATE: " + int(1.25*2*cumMultiplier*2*(lust + 50)/10 * (hoursSinceCum+10)/24)/10 + "(no balls), " + int(ballSize*balls*cumMultiplier*2*(lust + 50)/10 * (hoursSinceCum+10)/24)/10 + "(withballs)");
-			var lustCoefficient:Number = (lust + 50) / 10;
+			var lustCoefficient:number = (lust + 50) / 10;
 			//Pilgrim's bounty maxxes lust coefficient
 			if (findPerk(PerkLib.PilgrimsBounty) >= 0)
 				lustCoefficient = 150 / 10;
@@ -1653,74 +1653,74 @@ import classes.PerkType;
 			return quantity;
 		}
 		
-		public function countCocksOfType(type:CockTypesEnum):int {
+		public  countCocksOfType(type:CockTypesEnum):number {
 			if (cocks.length == 0) return 0;
-			var counter:int = 0;
-			for (var x:int = 0; x < cocks.length; x++) {
+			var counter:number = 0;
+			for (const x = 0; x < cocks.length; x++) {
 				if (cocks[x].cockType == type) counter++;
 			}
 			return counter;
 		}
 		
-		public function anemoneCocks():int { //How many anemonecocks?
+		public  anemoneCocks():number { //How many anemonecocks?
 			return countCocksOfType(CockTypesEnum.ANEMONE);
 		}
 		
-		public function catCocks():int { //How many catcocks?
+		public  catCocks():number { //How many catcocks?
 			return countCocksOfType(CockTypesEnum.CAT);
 		}
 		
-		public function demonCocks():int { //How many demoncocks?
+		public  demonCocks():number { //How many demoncocks?
 			return countCocksOfType(CockTypesEnum.DEMON);
 		}
 		
-		public function displacerCocks():int { //How many displacerCocks?
+		public  displacerCocks():number { //How many displacerCocks?
 			return countCocksOfType(CockTypesEnum.DISPLACER);
 		}
 		
 		// Note: DogCocks/FoxCocks are functionally identical. They actually change back and forth depending on some
 		// of the PC's attributes, and this is recaluculated every hour spent at camp.
 		// As such, delineating between the two is kind of silly.
-		public function dogCocks():int { //How many dogCocks
+		public  dogCocks():number { //How many dogCocks
 			if (cocks.length == 0) return 0;
-			var counter:int = 0;
-			for (var x:int = 0; x < cocks.length; x++) {
+			var counter:number = 0;
+			for (const x = 0; x < cocks.length; x++) {
 				if (cocks[x].cockType == CockTypesEnum.DOG || cocks[x].cockType == CockTypesEnum.FOX) counter++;
 			}
 			return counter;
 		}
 		
-		public function dragonCocks():int { //How many dragonCocks?
+		public  dragonCocks():number { //How many dragonCocks?
 			return countCocksOfType(CockTypesEnum.DRAGON);
 		}
 		
-		public function foxCocks():int { //How many foxCocks
+		public  foxCocks():number { //How many foxCocks
 			return dogCocks();
 		}
 		
-		public function horseCocks():int { //How many horsecocks?
+		public  horseCocks():number { //How many horsecocks?
 			return countCocksOfType(CockTypesEnum.HORSE);
 		}
 		
-		public function kangaCocks():int { //How many kangawangs?
+		public  kangaCocks():number { //How many kangawangs?
 			return countCocksOfType(CockTypesEnum.KANGAROO);
 		}
 		
-		public function lizardCocks():int { //How many lizard/snake-cocks?
+		public  lizardCocks():number { //How many lizard/snake-cocks?
 			return countCocksOfType(CockTypesEnum.LIZARD);
 		}
 		
-		public function normalCocks():int { //How many normalCocks?
+		public  normalCocks():number { //How many normalCocks?
 			return countCocksOfType(CockTypesEnum.HUMAN);
 		}
 		
-		public function tentacleCocks():int { //How many tentaclecocks?
+		public  tentacleCocks():number { //How many tentaclecocks?
 			return countCocksOfType(CockTypesEnum.TENTACLE);
 		}
 		
-		public function findFirstCockType(ctype:CockTypesEnum):Number
+		public  findFirstCockType(ctype:CockTypesEnum):number
 		{
-			var index:Number = 0;
+			var index:number = 0;
 			if (cocks[index].cockType == ctype)
 				return index;
 			while (index < cocks.length)
@@ -1750,9 +1750,9 @@ import classes.PerkType;
 		
 		//Change first normal cock to horsecock!
 		//Return number of affected cock, otherwise -1
-		public function addHorseCock():Number
+		public  addHorseCock():number
 		{
-			var counter:Number = cocks.length;
+			var counter:number = cocks.length;
 			while (counter > 0)
 			{
 				counter--;
@@ -1792,27 +1792,27 @@ import classes.PerkType;
 		
 		//TODO Seriously wtf. 1500+ calls to cockTotal, 340+ call to totalCocks. I'm scared to touch either.
 		//How many cocks?
-		public function cockTotal():Number
+		public  cockTotal():number
 		{
 			return (cocks.length);
 		}
 		
 		//Alternate
-		public function totalCocks():Number
+		public  totalCocks():number
 		{
 			return (cocks.length);
 		}
 		
 		//BOolean alternate
-		public function hasCock():Boolean
+		public  hasCock():boolean
 		{
 			return cocks.length >= 1;
 
 		}
 		
-		public function hasSockRoom():Boolean
+		public  hasSockRoom():boolean
 		{
-			var index:int = cocks.length;
+			var index:number = cocks.length;
 			while (index > 0)
 			{
 				index--;
@@ -1823,9 +1823,9 @@ import classes.PerkType;
 		}
 		
 		// Deprecated
-		public function hasSock(arg:String = ""):Boolean
+		public  hasSock(arg:string = ""):boolean
 		{
-			var index:int = cocks.length;
+			var index:number = cocks.length;
 			
 			while (index > 0)
 			{
@@ -1838,11 +1838,11 @@ import classes.PerkType;
 			}
 			return false
 		}
-		public function countCockSocks(type:String):int
+		public  countCockSocks(type:string):number
 		{
-			var count:int = 0;
+			var count:number = 0;
 			
-			for (var i:Number = 0; i < cocks.length; i++) {
+			for (const i = 0; i < cocks.length; i++) {
 				if (cocks[i].sock == type) {
 					count++
 				}
@@ -1851,7 +1851,7 @@ import classes.PerkType;
 			return count;
 		}
 		
-		public function canAutoFellate():Boolean
+		public  canAutoFellate():boolean
 		{
 			if (!hasCock())
 				return false;
@@ -1859,7 +1859,7 @@ import classes.PerkType;
 		}
 		
 		//PC can fly?
-		public function canFly():Boolean
+		public  canFly():boolean
 		{
 			//web also makes false!
 			if (findStatusAffect(StatusAffects.Web) >= 0)
@@ -1869,20 +1869,20 @@ import classes.PerkType;
 		}
 		
 		//check for vagoo
-		public function hasVagina():Boolean
+		public  hasVagina():boolean
 		{
 			return vaginas.length > 0;
 
 		}
 		
-		public function hasVirginVagina():Boolean
+		public  hasVirginVagina():boolean
 		{
 			if (vaginas.length > 0)
 				return vaginas[0].virgin;
 			return false;
 		}
 
-		public function genderText(male:String = "man", female:String = "woman", futa:String = "herm", eunuch:String = "eunuch"):String
+		public  genderText(male:string = "man", female:string = "woman", futa:string = "herm", eunuch:string = "eunuch"):string
 		{
 			if (vaginas.length > 0) {
 				if (cocks.length > 0) return futa;
@@ -1894,7 +1894,7 @@ import classes.PerkType;
 			return eunuch;
 		}
 
-		public function manWoman(caps:Boolean = false):String
+		public  manWoman(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -1933,7 +1933,7 @@ import classes.PerkType;
 			}
 		}
 		
-		public function guyGirl(caps:Boolean = false):String
+		public  guyGirl(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -1979,7 +1979,7 @@ import classes.PerkType;
 			}
 		}
 		
-		public function mfn(male:String, female:String, neuter:String):String
+		public  mfn(male:string, female:string, neuter:string):string
 		{
 			if (gender == 0)
 				return neuter;
@@ -1987,7 +1987,7 @@ import classes.PerkType;
 				return mf(male, female);
 		}
 		
-		public function mf(male:String, female:String):String
+		public  mf(male:string, female:string):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -2011,7 +2011,7 @@ import classes.PerkType;
 			}
 		}
 		
-		public function boyGirl(caps:Boolean = false):String
+		public  boyGirl(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -2057,7 +2057,7 @@ import classes.PerkType;
 			}
 		}
 		
-		public function heShe(caps:Boolean = false):String
+		public  heShe(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -2103,7 +2103,7 @@ import classes.PerkType;
 			}
 		}
 		
-		public function himHer(caps:Boolean = false):String
+		public  himHer(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -2149,7 +2149,7 @@ import classes.PerkType;
 			}
 		}
 		
-		public function maleFemale(caps:Boolean = false):String
+		public  maleFemale(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -2195,7 +2195,7 @@ import classes.PerkType;
 			}
 		}
 		
-		public function hisHer(caps:Boolean = false):String
+		public  hisHer(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -2242,7 +2242,7 @@ import classes.PerkType;
 		}
 		
 		//sir/madam
-		public function sirMadam(caps:Boolean = false):String
+		public  sirMadam(caps:boolean = false):string
 		{
 			//Dicks?
 			if (totalCocks() > 0)
@@ -2310,7 +2310,7 @@ import classes.PerkType;
 		}
 		
 		//Create a cock. Default type is HUMAN
-		public function createCock(clength:Number = 5.5, cthickness:Number = 1,ctype:CockTypesEnum=null):Boolean
+		public  createCock(clength:number = 5.5, cthickness:number = 1,ctype:CockTypesEnum=null):boolean
 		{
 			if (ctype == null) ctype = CockTypesEnum.HUMAN;
 			if (cocks.length >= 10)
@@ -2324,7 +2324,7 @@ import classes.PerkType;
 		}
 		
 		//create vagoo
-		public function createVagina(virgin:Boolean = true, vaginalWetness:Number = 1, vaginalLooseness:Number = 0):Boolean
+		public  createVagina(virgin:boolean = true, vaginalWetness:number = 1, vaginalLooseness:number = 0):boolean
 		{
 			if (vaginas.length >= 2)
 				return false;
@@ -2334,7 +2334,7 @@ import classes.PerkType;
 		}
 		
 		//create a row of breasts
-		public function createBreastRow(size:Number=0,nipplesPerBreast:Number=1):Boolean
+		public  createBreastRow(size:number=0,nipplesPerBreast:number=1):boolean
 		{
 			if (breastRows.length >= 10)
 				return false;
@@ -2345,7 +2345,7 @@ import classes.PerkType;
 			return true;
 		}
 		
-		public function genderCheck():void
+		public  genderCheck():void
 		{
 			if (hasCock() && hasVagina())
 				gender = GENDER_HERM;
@@ -2358,7 +2358,7 @@ import classes.PerkType;
 		}
 		
 		//Remove cocks
-		public function removeCock(arraySpot:int, totalRemoved:int):void
+		public  removeCock(arraySpot:number, totalRemoved:number):void
 		{
 			//Various Errors preventing action
 			if (arraySpot < 0 || totalRemoved <= 0)
@@ -2387,8 +2387,8 @@ import classes.PerkType;
 						}
 						else if (cock.sock == "cockring")
 						{
-							var numRings:int = 0;
-							for (var i:int = 0; i < cocks.length; i++)
+							var numRings:number = 0;
+							for (const i = 0; i < cocks.length; i++)
 							{
 								if (cocks[i].sock == "cockring") numRings++;
 							}
@@ -2409,7 +2409,7 @@ import classes.PerkType;
 		}
 		
 		//REmove vaginas
-		public function removeVagina(arraySpot:int = 0, totalRemoved:int = 1):void
+		public  removeVagina(arraySpot:number = 0, totalRemoved:number = 1):void
 		{
 			//Various Errors preventing action
 			if (arraySpot < -1 || totalRemoved <= 0)
@@ -2437,7 +2437,7 @@ import classes.PerkType;
 		}
 		
 		//Remove a breast row
-		public function removeBreastRow(arraySpot:int, totalRemoved:int):void
+		public  removeBreastRow(arraySpot:number, totalRemoved:number):void
 		{
 			//Various Errors preventing action
 			if (arraySpot < -1 || totalRemoved <= 0)
@@ -2470,19 +2470,19 @@ import classes.PerkType;
 		// This is placeholder shit whilst I work out a good way of BURNING ENUM TO THE FUCKING GROUND
 		// and replacing it with something that will slot in and work with minimal changes and not be
 		// A FUCKING SHITSTAIN when it comes to intelligent de/serialization.
-		public function fixFuckingCockTypesEnum():void
+		public  fixFuckingCockTypesEnum():void
 		{
 			if (this.cocks.length > 0)
 			{
-				for (var i:int = 0; i < this.cocks.length; i++)
+				for (const i = 0; i < this.cocks.length; i++)
 				{
 					this.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(this.cocks[i].cockType.Index);
 				}
 			}
 		}
 
-		public function buttChangeNoDisplay(cArea:Number):Boolean {
-			var stretched:Boolean = false;
+		public  buttChangeNoDisplay(cArea:number):boolean {
+			var stretched:boolean = false;
 			//cArea > capacity = autostreeeeetch half the time.
 			if(cArea >= analCapacity() && rand(2) == 0) {
 				if(ass.analLooseness >= 5) {}
@@ -2519,9 +2519,9 @@ import classes.PerkType;
 			return stretched;
 		}
 
-		public function cuntChangeNoDisplay(cArea:Number):Boolean{
+		public  cuntChangeNoDisplay(cArea:number):boolean{
 			if(vaginas.length == 0) return false;
-			var stretched:Boolean = false;
+			var stretched:boolean = false;
 			if(findPerk(PerkLib.FerasBoonMilkingTwat) < 0 || vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_NORMAL) {
 			//cArea > capacity = autostreeeeetch.
 			if(cArea >= vaginalCapacity()) {
@@ -2557,17 +2557,17 @@ import classes.PerkType;
 			return stretched;
 		}
 		
-		public function get inHeat():Boolean {
+		public  get inHeat():boolean {
 			return findStatusAffect(StatusAffects.Heat) >= 0;
 		}
 		
-		public function get inRut():Boolean {
+		public  get inRut():boolean {
 			return findStatusAffect(StatusAffects.Rut) >= 0;
 		}
 
-		public function bonusFertility():Number
+		public  bonusFertility():number
 		{
-			var counter:Number = 0;
+			var counter:number = 0;
 			if (inHeat)
 				counter += statusAffectv1(StatusAffects.Heat);
 			if (findPerk(PerkLib.FertilityPlus) >= 0)
@@ -2583,12 +2583,12 @@ import classes.PerkType;
 			return counter;
 		}
 
-		public function totalFertility():Number
+		public  totalFertility():number
 		{
 			return (bonusFertility() + fertility);
 		}
 
-		public function isBiped():Boolean
+		public  isBiped():boolean
 		{
 			//Naga/Centaur
 			if (lowerBody == LOWER_BODY_TYPE_NAGA || lowerBody == LOWER_BODY_TYPE_CENTAUR)
@@ -2598,35 +2598,35 @@ import classes.PerkType;
 			return true;
 		}
 
-		public function isNaga():Boolean
+		public  isNaga():boolean
 		{
 			if (lowerBody == LOWER_BODY_TYPE_NAGA)
 				return true;
 			return false;
 		}
 
-		public function isTaur():Boolean
+		public  isTaur():boolean
 		{
 			if (lowerBody == LOWER_BODY_TYPE_CENTAUR || lowerBody == LOWER_BODY_TYPE_PONY)
 				return true;
 			return false;
 		}
 
-		public function isDrider():Boolean
+		public  isDrider():boolean
 		{
 			return (lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY);
 		}
 
-		public function isGoo():Boolean
+		public  isGoo():boolean
 		{
 			if (lowerBody == LOWER_BODY_TYPE_GOO)
 				return true;
 			return false;
 		}
 
-		public function legs():String
+		public  legs():string
 		{
-			var select:Number = 0;
+			var select:number = 0;
 			//lowerBody:
 			//0 - normal
 			if (lowerBody == 0)
@@ -2692,9 +2692,9 @@ import classes.PerkType;
 			return "legs";
 		}
 
-		public function skinFurScales():String
+		public  skinFurScales():string
 		{
-			var skinzilla:String = "";
+			var skinzilla:string = "";
 			//Adjectives first!
 			if (skinAdj != "")
 				skinzilla += skinAdj + ", ";
@@ -2708,9 +2708,9 @@ import classes.PerkType;
 			return skinzilla;
 		}
 
-		public function leg():String
+		public  leg():string
 		{
-			var select:Number = 0;
+			var select:number = 0;
 			//lowerBody:
 			//0 - normal
 			if (lowerBody == 0)
@@ -2775,9 +2775,9 @@ import classes.PerkType;
 			return "leg";
 		}
 
-		public function feet():String
+		public  feet():string
 		{
-			var select:Number = 0;
+			var select:number = 0;
 			//lowerBody:
 			//0 - normal
 			if (lowerBody == 0)
@@ -2851,9 +2851,9 @@ import classes.PerkType;
 			return "feet";
 		}
 
-		public function foot():String
+		public  foot():string
 		{
-			var select:Number = 0;
+			var select:number = 0;
 			//lowerBody:
 			//0 - normal
 			if (lowerBody == 0)
@@ -2922,28 +2922,28 @@ import classes.PerkType;
 			return "foot";
 		}
 
-		public function canOvipositSpider():Boolean
+		public  canOvipositSpider():boolean
 		{
 			if (eggs() >= 10 && findPerk(PerkLib.SpiderOvipositor) >= 0 && isDrider() && tailType == 5)
 				return true;
 			return false;
 		}
 
-		public function canOvipositBee():Boolean
+		public  canOvipositBee():boolean
 		{
 			if (eggs() >= 10 && findPerk(PerkLib.BeeOvipositor) >= 0 && tailType == 6)
 				return true;
 			return false;
 		}
 
-		public function canOviposit():Boolean
+		public  canOviposit():boolean
 		{
 			if (canOvipositSpider() || canOvipositBee())
 				return true;
 			return false;
 		}
 
-		public function eggs():int
+		public  eggs():number
 		{
 			if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
 				return -1;
@@ -2953,7 +2953,7 @@ import classes.PerkType;
 				return perkv1(PerkLib.BeeOvipositor);
 		}
 
-		public function addEggs(arg:int = 0):int
+		public  addEggs(arg:number = 0):number
 		{
 			if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
 				return -1;
@@ -2973,7 +2973,7 @@ import classes.PerkType;
 			}
 		}
 
-		public function dumpEggs():void
+		public  dumpEggs():void
 		{
 			if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
 				return;
@@ -2982,7 +2982,7 @@ import classes.PerkType;
 			fertilizeEggs();
 		}
 
-		public function setEggs(arg:int = 0):int
+		public  setEggs(arg:number = 0):number
 		{
 			if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
 				return -1;
@@ -3002,7 +3002,7 @@ import classes.PerkType;
 			}
 		}
 
-		public function fertilizedEggs():int
+		public  fertilizedEggs():number
 		{
 			if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
 				return -1;
@@ -3012,7 +3012,7 @@ import classes.PerkType;
 				return perkv2(PerkLib.BeeOvipositor);
 		}
 
-		public function fertilizeEggs():int
+		public  fertilizeEggs():number
 		{
 			if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
 				return -1;
@@ -3023,7 +3023,7 @@ import classes.PerkType;
 			return fertilizedEggs();
 		}
 
-		public function breastCup(rowNum:Number):String
+		public  breastCup(rowNum:number):string
 		{
 			return Appearance.breastCup(breastRows[rowNum].breastRating);
 //Should change this to make use of Appearance			return BreastStore.cupSize(breastRows[rowNum].breastRating);
@@ -3250,15 +3250,15 @@ import classes.PerkType;
 			*/
 		}
 
-		public function bRows():Number
+		public  bRows():number
 		{
 			return breastRows.length;
 		}
 
-		public function totalBreasts():Number
+		public  totalBreasts():number
 		{
-			var counter:Number = breastRows.length;
-			var total:Number = 0;
+			var counter:number = breastRows.length;
+			var total:number = 0;
 			while (counter > 0) {
 				counter--;
 				total += breastRows[counter].breasts;
@@ -3266,10 +3266,10 @@ import classes.PerkType;
 			return total;
 		}
 
-		public function totalNipples():Number
+		public  totalNipples():number
 		{
-			var counter:Number = breastRows.length;
-			var total:Number = 0;
+			var counter:number = breastRows.length;
+			var total:number = 0;
 			while (counter > 0) {
 				counter--;
 				total += breastRows[counter].nipplesPerBreast * breastRows[counter].breasts;
@@ -3277,12 +3277,12 @@ import classes.PerkType;
 			return total;
 		}
 
-		public function smallestTitSize():Number
+		public  smallestTitSize():number
 		{
 			if (breastRows.length == 0)
 				return -1;
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0) {
 				counter--;
 				if (breastRows[index].breastRating > breastRows[counter].breastRating)
@@ -3291,12 +3291,12 @@ import classes.PerkType;
 			return breastRows[index].breastRating;
 		}
 
-		public function smallestTitRow():Number
+		public  smallestTitRow():number
 		{
 			if (breastRows.length == 0)
 				return -1;
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0) {
 				counter--;
 				if (breastRows[index].breastRating > breastRows[counter].breastRating)
@@ -3305,10 +3305,10 @@ import classes.PerkType;
 			return index;
 		}
 
-		public function biggestTitRow():Number
+		public  biggestTitRow():number
 		{
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0) {
 				counter--;
 				if (breastRows[index].breastRating < breastRows[counter].breastRating)
@@ -3317,10 +3317,10 @@ import classes.PerkType;
 			return index;
 		}
 
-		public function averageBreastSize():Number
+		public  averageBreastSize():number
 		{
-			var counter:Number = breastRows.length;
-			var average:Number = 0;
+			var counter:number = breastRows.length;
+			var average:number = 0;
 			while (counter > 0) {
 				counter--;
 				average += breastRows[counter].breastRating;
@@ -3330,10 +3330,10 @@ import classes.PerkType;
 			return (average / breastRows.length);
 		}
 
-		public function averageCockThickness():Number
+		public  averageCockThickness():number
 		{
-			var counter:Number = cocks.length;
-			var average:Number = 0;
+			var counter:number = cocks.length;
+			var average:number = 0;
 			while (counter > 0) {
 				counter--;
 				average += cocks[counter].cockThickness;
@@ -3343,10 +3343,10 @@ import classes.PerkType;
 			return (average / cocks.length);
 		}
 
-		public function averageNippleLength():Number
+		public  averageNippleLength():number
 		{
-			var counter:Number = breastRows.length;
-			var average:Number = 0;
+			var counter:number = breastRows.length;
+			var average:number = 0;
 			while (counter > 0) {
 				counter--;
 				average += (breastRows[counter].breastRating / 10 + .2);
@@ -3354,10 +3354,10 @@ import classes.PerkType;
 			return (average / breastRows.length);
 		}
 
-		public function averageVaginalLooseness():Number
+		public  averageVaginalLooseness():number
 		{
-			var counter:Number = vaginas.length;
-			var average:Number = 0;
+			var counter:number = vaginas.length;
+			var average:number = 0;
 			//If the player has no vaginas
 			if (vaginas.length == 0)
 				return 2;
@@ -3368,13 +3368,13 @@ import classes.PerkType;
 			return (average / vaginas.length);
 		}
 
-		public function averageVaginalWetness():Number
+		public  averageVaginalWetness():number
 		{
 			//If the player has no vaginas
 			if (vaginas.length == 0)
 				return 2;
-			var counter:Number = vaginas.length;
-			var average:Number = 0;
+			var counter:number = vaginas.length;
+			var average:number = 0;
 			while (counter > 0) {
 				counter--;
 				average += vaginas[counter].vaginalWetness;
@@ -3382,10 +3382,10 @@ import classes.PerkType;
 			return (average / vaginas.length);
 		}
 
-		public function averageCockLength():Number
+		public  averageCockLength():number
 		{
-			var counter:Number = cocks.length;
-			var average:Number = 0;
+			var counter:number = cocks.length;
+			var average:number = 0;
 			while (counter > 0) {
 				counter--;
 				average += cocks[counter].cockLength;
@@ -3395,12 +3395,12 @@ import classes.PerkType;
 			return (average / cocks.length);
 		}
 
-		public function canTitFuck():Boolean
+		public  canTitFuck():boolean
 		{
 			if (breastRows.length == 0) return false;
 			
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0) {
 				counter--;
 				if (breastRows[index].breasts < breastRows[counter].breasts && breastRows[counter].breastRating > 3)
@@ -3411,12 +3411,12 @@ import classes.PerkType;
 			return false;
 		}
 
-		public function mostBreastsPerRow():Number
+		public  mostBreastsPerRow():number
 		{
 			if (breastRows.length == 0) return 2;
 			
-			var counter:Number = breastRows.length;
-			var index:Number = 0;
+			var counter:number = breastRows.length;
+			var index:number = 0;
 			while (counter > 0) {
 				counter--;
 				if (breastRows[index].breasts < breastRows[counter].breasts)
@@ -3425,11 +3425,11 @@ import classes.PerkType;
 			return breastRows[index].breasts;
 		}
 
-		public function averageNipplesPerBreast():Number
+		public  averageNipplesPerBreast():number
 		{
-			var counter:Number = breastRows.length;
-			var breasts:Number = 0;
-			var nipples:Number = 0;
+			var counter:number = breastRows.length;
+			var breasts:number = 0;
+			var nipples:number = 0;
 			while (counter > 0) {
 				counter--;
 				breasts += breastRows[counter].breasts;
@@ -3440,29 +3440,29 @@ import classes.PerkType;
 			return Math.floor(nipples / breasts);
 		}
 
-		public function allBreastsDescript():String
+		public  allBreastsDescript():string
 		{
 			return Appearance.allBreastsDescript(this);
 		}
 
 		//Simplified these cock descriptors and brought them into the creature class
-		public function sMultiCockDesc():String {
+		public  sMultiCockDesc():string {
 			return (cocks.length > 1 ? "one of your " : "your ") + cockMultiLDescriptionShort();
 		}
 		
-		public function SMultiCockDesc():String {
+		public  SMultiCockDesc():string {
 			return (cocks.length > 1 ? "One of your " : "Your ") + cockMultiLDescriptionShort();
 		}
 		
-		public function oMultiCockDesc():String {
+		public  oMultiCockDesc():string {
 			return (cocks.length > 1 ? "each of your " : "your ") + cockMultiLDescriptionShort();
 		}
 		
-		public function OMultiCockDesc():String {
+		public  OMultiCockDesc():string {
 			return (cocks.length > 1 ? "Each of your " : "Your ") + cockMultiLDescriptionShort();
 		}
 		
-		private function cockMultiLDescriptionShort():String {
+		private  cockMultiLDescriptionShort():string {
 			if (cocks.length < 1) {
 				CoC_Settings.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
 				return "<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>";
@@ -3490,9 +3490,9 @@ import classes.PerkType;
 			return Appearance.cockNoun(CockTypesEnum.HUMAN) + "s";
 		}
 		
-		public function hasSheath():Boolean {
+		public  hasSheath():boolean {
 			if (cocks.length == 0) return false;
-			for (var x:int = 0; x < cocks.length; x++) {
+			for (const x = 0; x < cocks.length; x++) {
 				switch (cocks[x].cockType) {
 					case CockTypesEnum.CAT:
 					case CockTypesEnum.DISPLACER:
@@ -3507,38 +3507,38 @@ import classes.PerkType;
 			return false;
 		}
 		
-		public function sheathDescription():String {
+		public  sheathDescription():string {
 			if (hasSheath()) return "sheath";
 			return "base";
 		}
 		
-		public function vaginaDescript(idx:int = 0):String
+		public  vaginaDescript(idx:number = 0):string
 		{
 			return Appearance.vaginaDescript(this, 0);
 		}
 
-		public function nippleDescript(rowIdx:int):String
+		public  nippleDescript(rowIdx:number):string
 		{
 			return Appearance.nippleDescription(this, rowIdx);
 		}
 
-		public function chestDesc():String
+		public  chestDesc():string
 		{
 			if (biggestTitSize() < 1) return "chest";
 			return Appearance.biggestBreastSizeDescript(this);
 //			return Appearance.chestDesc(this);
 		}
 
-		public function allChestDesc():String {
+		public  allChestDesc():string {
 			if (biggestTitSize() < 1) return "chest";
 			return allBreastsDescript();
 		}
 
-		public function clitDescript():String {
+		public  clitDescript():string {
 			return Appearance.clitDescription(this);
 		}
 
-		public function cockHead(cockNum:int = 0):String {
+		public  cockHead(cockNum:number = 0):string {
 			if (cockNum < 0 || cockNum > cocks.length - 1) {
 				CoC_Settings.error("");
 				return "ERROR";
@@ -3582,14 +3582,14 @@ import classes.PerkType;
 		}
 
 		//Short cock description. Describes length or girth. Supports multiple cocks.
-		public function cockDescriptShort(i_cockIndex:int = 0):String
+		public  cockDescriptShort(i_cockIndex:number = 0):string
 		{
 			// catch calls where we're outside of combat, and eCockDescript could be called.
 			if (cocks.length == 0)
 				return "<B>ERROR. INVALID CREATURE SPECIFIED to cockDescriptShort</B>";
 
-			var description:String = "";
-			var descripted:Boolean = false;
+			var description:string = "";
+			var descripted:boolean = false;
 			//Discuss length one in 3 times
 			if (rand(3) == 0) {
 				if (cocks[i_cockIndex].cockLength >= 30)
@@ -3623,32 +3623,32 @@ import classes.PerkType;
 			return description;
 		}
 
-		public function assholeOrPussy():String
+		public  assholeOrPussy():string
 		{
 			return Appearance.assholeOrPussy(this);
 		}
 
-		public function multiCockDescriptLight():String
+		public  multiCockDescriptLight():string
 		{
 			return Appearance.multiCockDescriptLight(this);
 		}
 
-		public function multiCockDescript():String
+		public  multiCockDescript():string
 		{
 			return Appearance.multiCockDescript(this);
 		}
 
-		public function ballsDescriptLight(forcedSize:Boolean = true):String
+		public  ballsDescriptLight(forcedSize:boolean = true):string
 		{
 			return Appearance.ballsDescription(forcedSize, true, this);
 		}
 
-		public function sackDescript():String
+		public  sackDescript():string
 		{
 			return Appearance.sackDescript(this);
 		}
 
-		public function breastDescript(rowNum:int):String {
+		public  breastDescript(rowNum:number):string {
 			//ERROR PREVENTION
 			if (breastRows.length - 1 < rowNum) {
 				CoC_Settings.error("");
@@ -3661,11 +3661,11 @@ import classes.PerkType;
 			return BreastStore.breastDescript(breastRows[rowNum].breastRating, breastRows[rowNum].lactationMultiplier);
 		}
 
-		private function breastSize(val:Number):String
+		private  breastSize(val:number):string
 		{
 			return Appearance.breastSize(val);
 		}
 	}
-}
+
 
 

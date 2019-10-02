@@ -1,8 +1,8 @@
-﻿package classes.Scenes.Areas.Mountain
-{
+ 
 
-	import classes.*;
-	import classes.internals.*;
+
+	 
+	 
 
 	/**
 	 * ...
@@ -10,12 +10,12 @@
 	 */
 
 
-	public class Minotaur extends Monster
+	export class Minotaur extends Monster
 	{
-		public var hasAxe:Boolean;
+		public  hasAxe:boolean;
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
 				removeStatusAffect(StatusAffects.PhyllaFight);
@@ -26,7 +26,7 @@
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
 				removeStatusAffect(StatusAffects.PhyllaFight);
@@ -38,18 +38,18 @@
 				game.mountain.minotaurScene.getRapedByMinotaur();
 		}
 
-		override public function get long():String
+		 public  get long():string
 		{
 			return "An angry-looking minotaur looms over you.  Covered in shaggy " + hairColor + " fur, the beast is an imposing sight.  Wearing little but an obviously distended loincloth, he is clearly already plotting his method of punishment.  Like most minotaurs he has hooves, a cow-like tail and face, prominent horns, and impressive musculature. "+
 					(ballSize > 4?("  Barely visible below the tattered shreds of loincloth are " + Appearance.ballsDescription(true, true, this) + ", swollen with the minotaur's long pent-up need."):"")+
 					(hasAxe?"<b>This minotaur seems to have found a deadly looking axe somewhere!</b>":"");
 		}
 
-		public function Minotaur(axe:Boolean=false)
+		public  constructor(axe:boolean=false)
 		{
 			//Most times they dont have an axe
 			hasAxe = axe || rand(3)==0;
-			var furColor:String = randomChoice("black","brown");
+			var furColor:string = randomChoice("black","brown");
 
 			trace("Minotaur Constructor!");
 			trace(game.flags);
@@ -102,4 +102,3 @@
 
 	}
 
-}

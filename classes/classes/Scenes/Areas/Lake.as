@@ -1,28 +1,28 @@
 /**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Areas
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.Lake.*;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
 
-	public class Lake extends BaseContent
+	  ;
+
+	export class Lake extends BaseContent
 	{
-		public var fetishCultistScene:FetishCultistScene = new FetishCultistScene();
-		public var fetishZealotScene:FetishZealotScene = new FetishZealotScene();
-		public var gooGirlScene:GooGirlScene = new GooGirlScene();
-		public var greenSlimeScene:GreenSlimeScene = new GreenSlimeScene();
-		public var kaiju:Kaiju = new Kaiju();
-		public var swordInStone:SwordInStone = new SwordInStone();
-		public function Lake()
+		public  fetishCultistScene:FetishCultistScene = new FetishCultistScene();
+		public  fetishZealotScene:FetishZealotScene = new FetishZealotScene();
+		public  gooGirlScene:GooGirlScene = new GooGirlScene();
+		public  greenSlimeScene:GreenSlimeScene = new GreenSlimeScene();
+		public  kaiju:Kaiju = new Kaiju();
+		public  swordInStone:SwordInStone = new SwordInStone();
+		public  constructor()
 		{
 		}
 		//Explore Lake
-		public function exploreLake():void
+		public  exploreLake():void
 		{
 			//Increment exploration count
 			player.exploredLake++;
@@ -52,9 +52,9 @@ package classes.Scenes.Areas
 				return;
 			}
 			//Did it already output something?
-			var displayed:Boolean = false;
-			var choice:Array = [];
-			var select:int;
+			var displayed:boolean = false;
+			var choice:any[] = [];
+			var select:number;
 
 			//Build choice list.
 			//==================================================
@@ -136,7 +136,7 @@ package classes.Scenes.Areas
 					gooGirlScene.spyOnGooAndOozeSex();
 					return;
 				}
-				var girlOdds:Number = 50;
+				var girlOdds:number = 50;
 				//50% odds of slime-girl, 75% if shutdown factory
 				if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0 && player.findStatusAffect(StatusAffects.FactoryOverload) < 0)
 					girlOdds += 25;
@@ -255,7 +255,7 @@ package classes.Scenes.Areas
 			}
 		}
 		
-		private function findLakeLoot():void {
+		private  findLakeLoot():void {
 			clearOutput();
 			if (rand(2) == 0) {
 				outputText("You find a long and oddly flared vial half-buried in the sand.  Written across the middle band of the vial is a single word: 'Equinum'.\n");
@@ -267,7 +267,7 @@ package classes.Scenes.Areas
 			}
 		}
 		
-		private function eggChoose(eggType:int):void {
+		private  eggChoose(eggType:number):void {
 			clearOutput();
 			outputText("You reach out and touch the ");
 			switch (eggType) {
@@ -283,14 +283,14 @@ package classes.Scenes.Areas
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
-		private function eggChooseEscape():void {
+		private  eggChooseEscape():void {
 			clearOutput();
 			outputText("You throw yourself into a roll and take off, leaving the ring of lights hovering in the distance behind you.");
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
 		//Just want to do a quick Ottergirl event submission after you mentioned it!
-		private function ottahGirl():void
+		private  ottahGirl():void
 		{
 			clearOutput();
 			flags[kFLAGS.MET_OTTERGIRL]++;
@@ -347,7 +347,7 @@ package classes.Scenes.Areas
 		}
 
 		//For Dicks
-		private function ottergirlLikesDongs():void
+		private  ottergirlLikesDongs():void
 		{
 			clearOutput();
 			outputText("The moment you agree, a sly smile spreads across her face.  She jams the end of her fishing pole into the sand like a post, to prevent it from going anywhere, and stands up.  There's no tease, no ceremony as she strips out of her bikini bottoms and tosses them aside.  Her newly revealed mound has only the barest tuft of pubic hair, a little wisp of blonde hair amongst the sparse brown fur.");
@@ -355,8 +355,8 @@ package classes.Scenes.Areas
 			outputText("\n\nYou move forward, intent on groping Callu's little breasts still hidden beneath the bikini top, but she holds up a hand and says, \"<i>Whoa there darlin', that ain't how a fish'n'fuck works.  You just lay down, and I'll take care of everything. And make sure you're as naked as a newborn babe.</i>\"");
 
 			outputText("\n\nStrange, but you oblige, stripping off your [armor] and gear and tossing them aside. Callu instructs you to lay down on the beach next to her fishing pole, which you likewise oblige.  The otter-girl straddles your stomach, facing away from you, though her thick, heavy tail is thankfully kept away from your face.");
-			var x:int;
-			var y:int = -1;
+			var x:number;
+			var y:number = -1;
 			temp = 0;
 			while (temp < player.cockTotal()) {
 				if (player.cocks[temp].cockLength < 48) {
@@ -457,7 +457,7 @@ package classes.Scenes.Areas
 		}
 
 		//For Chicks
-		private function ottersForGals():void
+		private  ottersForGals():void
 		{
 			clearOutput();
 			outputText("The moment you agree, a sly smile spreads across her face.  She jams the end of her fishing pole into the sand like a post, to prevent it from going anywhere, and stands up.  There's no tease, no ceremony as she strips out of her bikini bottoms and tosses them aside.  Her newly revealed mound has only the barest tuft of pubic hair, a little wisp of blonde hair amongst the sparse brown fur.");
@@ -516,7 +516,7 @@ package classes.Scenes.Areas
 		}
 
 		//For Pansies
-		private function avoidZeOtterPussy():void
+		private  avoidZeOtterPussy():void
 		{
 			clearOutput();
 			outputText("You shake your head and explain you can't.  She simply shrugs, \"<i>Ain't no skin off my back.</i>\"");
@@ -526,7 +526,7 @@ package classes.Scenes.Areas
 		}
 
 		//For Fatties
-		private function getSomeFishYaFatty():void
+		private  getSomeFishYaFatty():void
 		{
 			clearOutput();
 			outputText("You tell Callu you're a little more interested in the fish than the fuck, at least for today.  She shrugs once before jamming the end of her fishing pole into the sand like a post and turning towards her pack.");
@@ -539,4 +539,4 @@ package classes.Scenes.Areas
 			inventory.takeItem(consumables.FISHFIL, camp.returnToCampUseOneHour);
 		}
 	}
-}
+

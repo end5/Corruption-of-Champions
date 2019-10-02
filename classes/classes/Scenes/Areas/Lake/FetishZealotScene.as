@@ -1,14 +1,14 @@
 /**
  * Created by aimozg on 04.01.14.
  */
-package classes.Scenes.Areas.Lake
-{
-	import classes.*;
-	import classes.Items.Armors.LustyMaidensArmor;
+ 
 
-	public class FetishZealotScene extends AbstractLakeContent
+	 
+	 
+
+	export class FetishZealotScene extends AbstractLakeContent
 	{
-		public function FetishZealotScene()
+		public  constructor()
 		{
 		}
 
@@ -47,7 +47,7 @@ package classes.Scenes.Areas.Lake
 //Scenes
 //Boat encounter
 //After the cultists arrive at the Lake, a zealot will be found guarding the player's boat.  Once defeated, there is a 50% chance he will be guarding it the next time the PC goes to the boat, until the swamp is added.  When that happens, repeat encounters will not occur anymore.
-		public function zealotBoat():void
+		public  zealotBoat():void
 		{
 			if (player.statusAffectv1(StatusAffects.FetishOn) == 1) {
 				zealotRepeat();
@@ -63,7 +63,7 @@ package classes.Scenes.Areas.Lake
 
 //Regular encounter
 //This is the regular pre combat text for wandering zealots (they'll be a regular mob at the swamp)
-		private function zealotRepeat():void
+		private  zealotRepeat():void
 		{
 			outputText("", true);
 			outputText("While exploring, you hear someone cry out behind you \"<i>This is sacred land!  You WILL be punished for trespassing!</i>\"  It seems you've managed to stumble upon whatever land this zealot has been tasked to guard, and now you must fight him.", false);
@@ -72,10 +72,10 @@ package classes.Scenes.Areas.Lake
 		}
 
 //Raping the player
-		public function zealotLossRape():void
+		public  zealotLossRape():void
 		{
 			outputText("", true);
-			var broseph:String = player.mf("dude", "chick");
+			var broseph:string = player.mf("dude", "chick");
 			//Pre Rape Scene - lose by hp
 			if (player.HP < 1)
 				outputText("You collapse from the pain of the zealot's attacks.  You feel your head swimming from the aphrodisiac; it seems to be having a stronger and stronger effect on you.  Soon your head is swimming with images of fetish scenes of all kinds.  The zealot walks up to you and puts his hand on your forehead.  Suddenly, all the images cascade into one.\n\n", false);
@@ -241,7 +241,7 @@ package classes.Scenes.Areas.Lake
 			cleanupAfterCombat();
 		}
 
-		public function zealotDefeated():void
+		public  zealotDefeated():void
 		{
 			//Defeated by health
 			if (monster.HP < 1) outputText("The zealot collapses from his wounds, too hurt to continue controlling his powers.", false);
@@ -249,7 +249,7 @@ package classes.Scenes.Areas.Lake
 			else outputText("The zealot quivers for a moment before collapsing, his desires becoming too great for even him to control.", false);
 			if (player.lust >= 33 && player.gender > 0) {
 				outputText("\n\nDo you want to take advantage of his vulnerable state to sate your lusts?", false);
-				var bikiniTits:Function = null;
+				var bikiniTits:() => void = null;
 				if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri,player,monster);
 				simpleChoices("Yes", zealotWinRape, "", null, "", null, "B.Titfuck", bikiniTits, "Leave", cleanupAfterCombat);
 			}
@@ -258,7 +258,7 @@ package classes.Scenes.Areas.Lake
 
 
 //Raped by the player
-		private function zealotWinRape():void
+		private  zealotWinRape():void
 		{
 			outputText("", true);
 			//Religious Costume Rape
@@ -289,4 +289,4 @@ package classes.Scenes.Areas.Lake
 			cleanupAfterCombat();
 		}
 	}
-}
+

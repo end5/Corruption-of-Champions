@@ -1,18 +1,18 @@
-package classes.Scenes.Areas.HighMountains
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
+
+	 
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class MinotaurMob extends Monster 
+	export class MinotaurMob extends Monster 
 	{
-		private function precumTease():void {
-			var teased:Boolean = false;
-			var damage:Number = 0;
-			var oldLust:Number = player.lust;
+		private  precumTease():void {
+			var teased:boolean = false;
+			var damage:number = 0;
+			var oldLust:number = player.lust;
 			game.spriteSelect(94);
 			//(Big taur pre-cum tease)
 			if(rand(2) == 0) {
@@ -93,7 +93,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 
 		//Grope
-		private function minotaurGangGropeAttack():void {
+		private  minotaurGangGropeAttack():void {
 			game.spriteSelect(94);
 			outputText("Strong hands come from behind and slide under your equipment to squeeze your " + chestDesc() + ".  The brutish fingers immediately locate and pinch at your " + nippleDescript(0) + "s, the sensitive flesh on your chest lighting up with pain and pleasure.  You arch your back in surprise, utterly stunned by the violation of your body.  After a moment you regain your senses and twist away, but the damage is already done.  You're breathing a bit quicker now", false);
 			if(player.lust >= 80) outputText(", and your pussy is absolutely soaking wet", false);
@@ -102,25 +102,25 @@ package classes.Scenes.Areas.HighMountains
 			combatRoundOver();
 		}
 		//Gang Grope
-		private function minotaurGangGangGropeAttack():void {
+		private  minotaurGangGangGropeAttack():void {
 			game.spriteSelect(94);
 			outputText("Before you can react, hands reach out from multiple angles and latch onto your body.  One pair squeezes at your " + game.buttDescript() + ", the strong grip massaging your cheeks with loving touches.  Another set of hands are sliding along your tummy, reaching down for, but not quite touching, the juicy delta below.  Palms encircle your " + player.chestDesc() + " and caress them, gently squeezing in spite of the brutish hands holding you.  You wriggle and squirm in the collective grip of the many minotaurs for a few moments, growing more and more turned on by the treatment.  At last, you shake out of their hold and stand free, panting hard from exertion and desire.", false);
 			game.dynStats("lus", (15 + player.sens/10));
 			combatRoundOver();
 		}
 		//Waste  a turn
-		private function minotaurGangWaste():void {
+		private  minotaurGangWaste():void {
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00329] = 1;
 			game.spriteSelect(94);
 			outputText("\"<i>Oh man I can't wait to go hilt-deep in that pussy... I'm going to wreck her,</i>\" promises one bull to his brother.  The other laughs and snorts, telling him how he'll have to do the deed during sloppy seconds.  It quickly escalates, and soon, every single one of the beast-men is taunting the others, bickering over how and when they'll get to have you.  While they're wasting their time, it's your chance to act!", false);
 			combatRoundOver();
 		}
 
-		override public function doAI():void
+		 public  doAI():void
 		{
 			game.spriteSelect(94);
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00329] = 0;
-			var select:Number = rand(7);
+			var select:number = rand(7);
 			if(select <= 2) precumTease();
 			else if(select <= 4) minotaurGangGropeAttack();
 			else if(select == 5) minotaurGangGangGropeAttack();
@@ -128,12 +128,12 @@ package classes.Scenes.Areas.HighMountains
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.highMountains.minotaurMobScene.victoryMinotaurGang();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nThe minutaurs share a laugh while you cum, but their throbbing erections don't subside in the slightest.");
@@ -143,7 +143,7 @@ package classes.Scenes.Areas.HighMountains
 			}
 		}
 
-		public function MinotaurMob()
+		public  constructor()
 		{
 			this.a = "the ";
 			if (game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] < 20)
@@ -180,15 +180,15 @@ package classes.Scenes.Areas.HighMountains
 			this.weaponName = "fists";
 			this.weaponVerb="punches";
 			this.armorName = "thick fur";
-			var bonusHP:Number = 340 + 50 * (game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] - 3);
-			var lustVuln:Number = 0.45;
+			var bonusHP:number = 340 + 50 * (game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] - 3);
+			var lustVuln:number = 0.45;
 			if((game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] - 3) * 2 > 13) lustVuln = .3;
 			else lustVuln -= (game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] - 3) * 0.02;
 			this.bonusHP = bonusHP;
 			this.lust = 30;
 			this.lustVuln = lustVuln;
 			this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
-			var level:int = 11 + Math.round((game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] - 3)/2);
+			var level:number = 11 + Math.round((game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] - 3)/2);
 			if(level > 14) level = 14;
 			this.level = level;
 			this.gems = rand(15) + 45;
@@ -199,4 +199,3 @@ package classes.Scenes.Areas.HighMountains
 		}
 	}
 
-}

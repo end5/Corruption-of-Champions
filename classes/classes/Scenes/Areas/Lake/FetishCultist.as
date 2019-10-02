@@ -1,21 +1,21 @@
-﻿package classes.Scenes.Areas.Lake
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class FetishCultist extends Monster
+	 
+	 
+
+	export class FetishCultist extends Monster
 	{
 
-		private static const NAUGHTY_NURSES_UNIFORM:String = "naughty nurse's uniform";
-		private static const TEACHERS_OUTFIT:String = "teacher's outfit";
-		private static const SWIMSUIT:String = "swimsuit";
-		private static const NOBLES_CLOTHING:String = "noble's clothing";
-		private static const PERVY_NUNS_CLOTHING:String = "pervy nun's clothing";
+		private static  NAUGHTY_NURSES_UNIFORM:string = "naughty nurse's uniform";
+		private static  TEACHERS_OUTFIT:string = "teacher's outfit";
+		private static  SWIMSUIT:string = "swimsuit";
+		private static  NOBLES_CLOTHING:string = "noble's clothing";
+		private static  PERVY_NUNS_CLOTHING:string = "pervy nun's clothing";
 
-		override public function combatRoundUpdate():void
+		 public  combatRoundUpdate():void
 		{
 			super.combatRoundUpdate();
-			var changed:Boolean = false;
+			var changed:boolean = false;
 			//Fetish Cultist Update
 			switch (rand(5)) {
 				case 0:
@@ -64,9 +64,9 @@
 			lust += lustVuln * 3;
 		}
 
-		private static const FETISHY_OUTFIT:String = "fetishy outfit";
+		private static  FETISHY_OUTFIT:string = "fetishy outfit";
 
-		private function cultistRaisePlayerLust():void {
+		private  cultistRaisePlayerLust():void {
 			//Two text variants!
 			if(rand(2) == 0) {
 				if(armorName == PERVY_NUNS_CLOTHING) outputText("She suddenly stops chanting and spreads her legs, opening her loose pussy wide with one hand while moaning like a whore.  She toys with her breasts and fondles one of her nipples with her other hand.\n\nDespite yourself,  you can't help but be aroused by the scene.", false);
@@ -84,7 +84,7 @@
 				doNext(game.endLustLoss);
 			else doNext(game.combatMenu);
 		}
-		private function cultistLustTransfer():void {
+		private  cultistLustTransfer():void {
 			if(lust <= 30 || rand(2) == 0) {
 				outputText("Her eyes glaze over, ", false);
 				if(player.cor < 40) outputText("and you're almost afraid to know ", false);
@@ -112,9 +112,9 @@
 		}
 		
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
-			var temp2:Function =null;
+			var temp2:() => void =null;
 			if(player.findStatusAffect(StatusAffects.Feeder) >= 0) temp2 = game.lake.fetishCultistScene.fetishCultistHasAMilkFetish;
 			if (hpVictory) {
 				outputText("Hurt too much to continue controlling her powers, the cultist collapses helplessly.", true);
@@ -134,7 +134,7 @@
 			}
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (hpVictory){
 				super.won(hpVictory,pcCameWorms);
@@ -146,12 +146,12 @@
 			}
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			randomChoice(special1, special2)();
 		}
 
-		public function FetishCultist()
+		public  constructor()
 		{
 			trace("FetishCultist Constructor!");
 			this.a = "the ";
@@ -189,4 +189,3 @@
 
 	}
 
-}

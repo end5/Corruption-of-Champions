@@ -1,48 +1,48 @@
-﻿package classes
-{
-	import fl.controls.UIScrollBar;
-	import flash.display.Loader;
-	import flash.display.Stage;
-	import flash.display.MovieClip;
-	import flash.errors.IOError;
-	import flash.net.*;
-	import flash.events.*;
-	import classes.Image;
+ 
 
-	import flash.system.Security;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	 
+	 
+	 
 
 	/**
 	 * ...
 	 * @author Yoffy, Fake-Name
 	 */
-	public final class ImageManager
+	export  class ImageManager
 	{
 		//Hashmap of all images
-		private static var _imageTable:Object = new Object();
+		private static  _imageTable:Record<string, any> = new Object();
 
 		// map of all the potential image paths from the xml file
-		private static var _allImagePaths:Object = new Object();
+		private static  _allImagePaths:Record<string, any> = new Object();
 		// Used to map fully-qualified paths to relative paths so we can lookup the information used to load them.
-		private static var _fqPathMap:Object = new Object();
+		private static  _fqPathMap:Record<string, any> = new Object();
 
-		private var mStage:Stage;
+		private  mStage:Stage;
 
 		//Maximum image box size
-		private const MAXSIZE:int = 400;
+		private  MAXSIZE:number = 400;
 
-		public var xmlLoadError:Boolean = false;
-		private var logErrors:Boolean = false;
+		public  xmlLoadError:boolean = false;
+		private  logErrors:boolean = false;
 
 		//The magic embedding sauce. Skips around sandbox issue by embedding the
 		//xml into the swf. Makes it possible to load images even from a browser.
 		[Embed(source="../../img/images.xml",mimeType="application/octet-stream")]
 
-		private static const XML_IMAGES:Class;
-		private var _imgListXML:XML;
+		private static  XML_IMAGES:Class;
+		private  _imgListXML:XML;
 
-		public function ImageManager(stage:Stage)
+		public  constructor(stage:Stage)
 		{
 
 			mStage = stage;
@@ -54,23 +54,23 @@
 			}
 		}
 
-		public function loadImageList():void
+		public  loadImageList():void
 		{
 
 
 
-			for (var i:int = 0; i < _imgListXML.ImageList.ImageSet.length(); i++)
+			for (const i = 0; i < _imgListXML.ImageList.ImageSet.length(); i++)
 			{
-				for (var j:int = 0; j <  _imgListXML.ImageList.ImageSet[i].ImageFile.length(); j++)
+				for (const j = 0; j <  _imgListXML.ImageList.ImageSet[i].ImageFile.length(); j++)
 				{
-					for (var k:int = 0; k < _imgListXML.ExtensionList.ExtensionType.length(); k++)
+					for (const k = 0; k < _imgListXML.ExtensionList.ExtensionType.length(); k++)
 					{
 						// Programmatic extension concatenation! Woot.
 						_allImagePaths[_imgListXML.ImageList.ImageSet[i].ImageFile[j]+"."+_imgListXML.ExtensionList.ExtensionType[k]] = _imgListXML.ImageList.ImageSet[i].@id;
 					}
 				}
 			}
-			for (var imgPath:String in _allImagePaths)
+			for (const imgPath in _allImagePaths)
 			{
 				// trace(_allImagePaths[imgPath], " : ", imgPath)
 				this.loadImageAtPath(imgPath);
@@ -79,11 +79,11 @@
 			//trace("Loading imagelist", imgLoader, req, _imgListXML)
 		}
 
-		private function loadImageAtPath(imPath:String):void
+		private  loadImageAtPath(imPath:string):void
 		{
 			var imgLoader:Loader = new Loader();
 
-			var f:Function = function(key:String):Function
+			var f:() => void = function(key:string):() => void
 			{
 
 				return function(e:Event):void
@@ -98,7 +98,7 @@
 			imgLoader.load(req);
 		}
 
-		private function fileLoaded(e:Event, imPath:String):void
+		private  fileLoaded(e:Event, imPath:string):void
 		{
 
 			if (_allImagePaths.hasOwnProperty(imPath))
@@ -107,7 +107,7 @@
 				// split the image name out from the image path.
 
 				// trace("ImageFile - ", _allImagePaths[imPath], imPath);
-				var imId:String = _allImagePaths[imPath]
+				var imId:string = _allImagePaths[imPath]
 				extImage = new Image(imId, imPath, e.target.width, e.target.height);
 
 				// Store the fully-qualified<->image mapping for later use.
@@ -125,20 +125,20 @@
 
 				// If there is a underscore in the image path, the image is intended to be one of a set for the imageID
 				// Therefore, we split the index integer off, increment it by one, and try to load that path
-				var underscorePt:int = imPath.lastIndexOf("_");
+				var underscorePt:number = imPath.lastIndexOf("_");
 				if (underscorePt != -1)
 				{
-					var decimalPt:int = imPath.lastIndexOf(".");
-					var prefix:String = imPath.slice(0, underscorePt+1);
-					var num:String = imPath.slice(underscorePt+1, decimalPt);
+					var decimalPt:number = imPath.lastIndexOf(".");
+					var prefix:string = imPath.slice(0, underscorePt+1);
+					var num:string = imPath.slice(underscorePt+1, decimalPt);
 					num = String(int(num)+1);
 
 
 					// Try all possible extensions.
-					for (var k:int = 0; k < _imgListXML.ExtensionList.ExtensionType.length(); k++)
+					for (const k = 0; k < _imgListXML.ExtensionList.ExtensionType.length(); k++)
 					{
 						// Programmatic extension concatenation! Woot.
-						var newPath:String = prefix+num+"."+_imgListXML.ExtensionList.ExtensionType[k];
+						var newPath:string = prefix+num+"."+_imgListXML.ExtensionList.ExtensionType[k];
 						trace("Trying to load sequential image at URL =", newPath, "Previous base URL = ", imPath);
 						_allImagePaths[newPath] = imId;
 						loadImageAtPath(newPath);
@@ -156,20 +156,20 @@
 			//trace("Loaded file", e)
 		}
 
-		private function fileNotFound(e:IOErrorEvent):void
+		private  fileNotFound(e:IOErrorEvent):void
 		{
 			//trace("File not Found: " + e);
 		}
 
-		public function getLoadedImageCount():int
+		public  getLoadedImageCount():number
 		{
-			var cnt:int=0;
-			for (var s:String in _imageTable) cnt++;
+			var cnt:number=0;
+			for (const s in _imageTable) cnt++;
 			return cnt;
 		}
 
 		// Find the image data for the given image URL and return the displayed height
-		public function getImageHeight(imageURL:String):int
+		public  getImageHeight(imageURL:string):number
 		{
 			// Slice off the leading directories and extension to get the image name
 
@@ -183,7 +183,7 @@
 			}
 			else
 			{
-				var ratio:Number = imageTarget.width / imageTarget.height;
+				var ratio:number = imageTarget.width / imageTarget.height;
 
 				// Image resized vertically
 				if (ratio >= 1)
@@ -198,12 +198,12 @@
 			}
 		}
 
-		public function showImage(imageID:String, align:String = "left"):String
+		public  showImage(imageID:string, align:string = "left"):string
 		{
-			var imageString:String = "";
+			var imageString:string = "";
 
 			if (logErrors) trace("showing imageID - ", imageID);
-			var imageIndex:int = 0;
+			var imageIndex:number = 0;
 			var image:Image = null;
 			if (_imageTable[imageID] != undefined)
 			{
@@ -221,8 +221,8 @@
 				if (align == "left" || align == "right")
 				{
 					//Scale images down to fit the box
-					var ratio:Number = image.width / image.height;
-					var scaler:Number;
+					var ratio:number = image.width / image.height;
+					var scaler:number;
 
 					if (ratio >= 1)
 					{
@@ -242,17 +242,17 @@
 		}
 
 		// Begin our image fixing code
-		private function fixupImage():void
+		private  fixupImage():void
 		{
 			mStage.addEventListener(Event.ADDED, fixupListener);
 		}
 
 		// Event listener hooks into the stage to find objects added to the display list at any point in the heirarchy
-		private function fixupListener(e:Event):void
+		private  fixupListener(e:Event):void
 		{
 			// We're looking for Loader objects -- there /could/ be other types of loaders in future, but right now,
 			// the only thing that will create loaders is the mainText field when it parses an <img> tag
-			if (e.target is Loader)
+			if (e.target instanceof Loader)
 			{
 				mStage.removeEventListener(Event.ADDED, fixupListener);
 				var loader:Loader = e.target as Loader;
@@ -285,7 +285,7 @@
 		 * In summary. ADOBE DURR. This kind of stupid, half-implemented interaction between base UI components is systematic.
 		 * @param	e
 		 */
-		private function doFixup(e:Event):void
+		private  doFixup(e:Event):void
 		{
 			// Remove the Completion event listener
 			e.target.removeEventListener(Event.COMPLETE, doFixup);
@@ -293,10 +293,10 @@
 			var mainText:TextField = (mStage.getChildByName("mainView") as MovieClip).mainText as TextField;
 			var scrollBar:UIScrollBar = (mStage.getChildByName("mainView") as MovieClip).scrollBar as UIScrollBar;
 
-			var imgRefTopY:int = imgRef.getBounds(mainText).y; 							// 272
-			var imgHeight:int = getImageHeight(imgRef.contentLoaderInfo.url); 			// 400
-			var imgRefBottomY:int = imgRefTopY + imgHeight;
-			var totalTextHeight:int = mainText.textHeight; 								// 264 -- Total displayed pixel height of text
+			var imgRefTopY:number = imgRef.getBounds(mainText).y; 							// 272
+			var imgHeight:number = getImageHeight(imgRef.contentLoaderInfo.url); 			// 400
+			var imgRefBottomY:number = imgRefTopY + imgHeight;
+			var totalTextHeight:number = mainText.textHeight; 								// 264 -- Total displayed pixel height of text
 
 			if (totalTextHeight > imgRefBottomY)
 			{
@@ -306,14 +306,14 @@
 
 			// Here comes the bullshit... get ready
 			var txFormat:TextFormat = mainText.defaultTextFormat;
-			var lineHeight:int = txFormat.size as int;
+			var lineHeight:number = txFormat.size as int;
 			lineHeight += 4;
-			var padLines:int = Math.ceil((imgRefBottomY - totalTextHeight) / lineHeight);
+			var padLines:number = Math.ceil((imgRefBottomY - totalTextHeight) / lineHeight);
 
 
 			// Generate the paddings
-			var padding:String = "";
-			for (var i:int = 0; i < padLines; i++)
+			var padding:string = "";
+			for (const i = 0; i < padLines; i++)
 			{
 				padding += "\n";
 			}
@@ -321,4 +321,4 @@
 			scrollBar.update();
 		}
 	}
-}
+

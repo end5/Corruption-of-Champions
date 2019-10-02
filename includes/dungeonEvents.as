@@ -1,4 +1,4 @@
-﻿//Dungeon events from 11000+
+//Dungeon events from 11000+
 /* Now called directly or replaced by dungeonEnterRoom in dungeonCore.as
 public function doDungeon(eventNo:Number):void {
 	if(eventNo == 11000) dungeonLoc = 0;

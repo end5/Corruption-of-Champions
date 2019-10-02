@@ -1,4 +1,4 @@
-﻿// SANURA_DISABLED:int = 833;
+// SANURA_DISABLED:int = 833;
 // MET_SANURA:int = 834;
 // BEATEN_SANURA_COUNT:int = 835;
 // SANDWITCH_MOB_DEFEATED:int = 836;
@@ -23,31 +23,31 @@
 // BEEN_BLESSED_BY_CUM_WITCH:int = 855;
 // DISCOVERED_WITCH_DUNGEON:int = 856;
 
-private static const DUNGEON_WITCH_ENTRANCE_GATEWAY:int		= 23;
-private static const DUNGEON_WITCH_CAVERNOUS_COMMONS:int	= 24;
-private static const DUNGEON_WITCH_WEST_WARRENS_MAIN:int	= 25;
-private static const DUNGEON_WITCH_CHILDRENS_PLAYROOM:int	= 26;
-private static const DUNGEON_WITCH_PREGNANT_LUST_ROOM:int	= 27;
-private static const DUNGEON_WITCH_WEST_WARRENS_WEST:int	= 28;
-private static const DUNGEON_WITCH_NURSERY:int				= 29;
-private static const DUNGEON_WITCH_PHARMACY:int				= 30;
-private static const DUNGEON_WITCH_EAST_WARRENS_MAIN:int	= 31;
-private static const DUNGEON_WITCH_SLEEPING_CHAMBER:int		= 32;
-private static const DUNGEON_WITCH_BATH_ROOM:int			= 33;
-private static const DUNGEON_WITCH_EAST_WARRENS_EAST:int	= 34;
-private static const DUNGEON_WITCH_CUM_WITCH_BEDROOM:int	= 35;
-private static const DUNGEON_WITCH_CUM_WITCH_OFFICE:int		= 36;
-private static const DUNGEON_WITCH_SACRIFICIAL_ALTAR:int	= 37;
-private static const DUNGEON_WITCH_THRONE_ROOM:int			= 38;
+  const DUNGEON_WITCH_ENTRANCE_GATEWAY:number		= 23;
+  const DUNGEON_WITCH_CAVERNOUS_COMMONS:number	= 24;
+  const DUNGEON_WITCH_WEST_WARRENS_MAIN:number	= 25;
+  const DUNGEON_WITCH_CHILDRENS_PLAYROOM:number	= 26;
+  const DUNGEON_WITCH_PREGNANT_LUST_ROOM:number	= 27;
+  const DUNGEON_WITCH_WEST_WARRENS_WEST:number	= 28;
+  const DUNGEON_WITCH_NURSERY:number				= 29;
+  const DUNGEON_WITCH_PHARMACY:number				= 30;
+  const DUNGEON_WITCH_EAST_WARRENS_MAIN:number	= 31;
+  const DUNGEON_WITCH_SLEEPING_CHAMBER:number		= 32;
+  const DUNGEON_WITCH_BATH_ROOM:number			= 33;
+  const DUNGEON_WITCH_EAST_WARRENS_EAST:number	= 34;
+  const DUNGEON_WITCH_CUM_WITCH_BEDROOM:number	= 35;
+  const DUNGEON_WITCH_CUM_WITCH_OFFICE:number		= 36;
+  const DUNGEON_WITCH_SACRIFICIAL_ALTAR:number	= 37;
+  const DUNGEON_WITCH_THRONE_ROOM:number			= 38;
 
-public function enterBoobsDungeon():void {
+export function enterBoobsDungeon():void {
 //	inDungeon = true;
 	dungeonEnterRoom(DUNGEON_WITCH_ENTRANCE_GATEWAY);
 //	dungeonLoc = 23;
 //	eventParser(1);
 }
 
-public function leaveBoobsDungeon():void {
+export function leaveBoobsDungeon():void {
 //	inDungeon = false;
 	dungeonLoc = 0;
 	clearOutput();
@@ -55,13 +55,13 @@ public function leaveBoobsDungeon():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 
-public function fightCumWitch():void {
+export function fightCumWitch():void {
 	clearOutput();
 	outputText("A robed witch crests one of the dunes, her sable skin glistening with moisture in the unforgiving desert sun.  She spies you, and her dusky lips curl up in a smile while a white staff materializes in her hands.  Playfully, the woman calls, \"<i>I'm going to cast a spell on you...</i>\"");
 	startCombat(new CumWitch());
 }
 
-public function openZeDoorToParadize():void {
+export function openZeDoorToParadize():void {
 	clearOutput();
 	//Touch Sphere to Open: 
 	if(flags[kFLAGS.ENTERED_SANDWITCH_DUNGEON] == 0) {
@@ -91,7 +91,7 @@ Very high hit points, not much stronger than a regular sand witch
 //*Females & Small-DIcked Males Lose:
 //https://docs.google.com/document/d/1UnXTFRvGS7TJF8KqMo2XSRo9qSpG8JM2aHc9c5RwPP8/edit#
 //PC Loses
-public function loseToSammitchMob():void {
+export function loseToSammitchMob():void {
 	if(player.hasCock() && player.biggestCockArea() >= 6) {
 		memeberedFolksFindTrueWuv();
 		return;
@@ -114,7 +114,7 @@ public function loseToSammitchMob():void {
 //Loss Orgies
 //Male
 //-Small cock, they all mock your size and each takes a turn making the PC cum
-public function getMockedForSmallDongBySammitchMob():void {
+export function getMockedForSmallDongBySammitchMob():void {
 	outputText("\n\nOne witch yells out \"<i>Look how small " + player.mf("his","her") + " cock is!</i>\"  All their eyes are directed to your crotch and grins of mockery crack their faces.  \"<i>It could fit in the palm of my hand.</i>\" \"<i>My nipples are bigger than that!</i>\" \"<i>Do we have a magnifying glass, I can't see it.</i>\"  They keep on this teasing of you until one kneels down and squeezes your [cock smallest] between her middle and index finger.  \"<i>Let's see if this tiny dick can even cum at all...</i>\"");
 	
 	outputText("\n\nShe starts massaging your cock, not really a stroke, more like flicking her wrist so her fingers can go down your small shaft.  All the other sand-witches look on, amused as your tiny hardness tries to look big and intimidating.  They even make cute kissy faces at your itsy-bitsy [cock smallest], the kind of expression you give to small animals.");
@@ -182,7 +182,7 @@ public function getMockedForSmallDongBySammitchMob():void {
 
 //Female
 //Lesbian gang-bang
-public function femaleGirlsLoseToSammitches():void {
+export function femaleGirlsLoseToSammitches():void {
 	//Lesbian gang-bang, some leave and come back with sex toys.
 	outputText("\n\nTwo witches spread your [legs] and hold them apart.  You're about to yell out in protest, but one witch plants her two cunts over your face and begins riding your [face], quickly muffling you before you can make a peep.");
 	if(player.hasMuzzle()) outputText("  She fucks your muzzle like a cock as it goes into one cunt while she plays with the other one.");
@@ -252,7 +252,7 @@ public function femaleGirlsLoseToSammitches():void {
 }
 
 //[if for fun]
-public function sandWitchMobNotBadEnd():void {
+export function sandWitchMobNotBadEnd():void {
 	clearOutput();
 	outputText("You wake up hours later outside the dungeon with all your belongings, surprisingly not missing any gems.");
 	dungeonLoc = 0; //Replaces	inDungeon = false;
@@ -262,7 +262,7 @@ public function sandWitchMobNotBadEnd():void {
 }
 
 //[Sand-witch mob Bad end for Females]
-public function sandWitchMobBadEnd():void {
+export function sandWitchMobBadEnd():void {
 	clearOutput();
 	outputText("When your mind finally starts straightening things out, you wake up on a bed with your ass, cunt, and more sore than you can remember.  You rub the achy bits as you notice a cloaked figured with a wide-brimmed pointy hat sitting by your bedside, reading a white book.  When the figure sees you've awaken from your slumber, she places a bookmark in the volume and sets it on the nearby nightstand.");
 	outputText("\n\n\"<i>Good morning sister, did you have a nice nap?</i>\"");
@@ -286,7 +286,7 @@ public function sandWitchMobBadEnd():void {
 }
 
 //*Membered Folks Get Milked
-public function memeberedFolksFindTrueWuv():void {
+export function memeberedFolksFindTrueWuv():void {
 	clearOutput();
 	//HP
 	if(player.HP < 1) {
@@ -361,7 +361,7 @@ public function memeberedFolksFindTrueWuv():void {
 	menu();
 	addButton(0,"Next",memeberedFolksFindTrueWuv2);
 }
-public function memeberedFolksFindTrueWuv2():void {
+export function memeberedFolksFindTrueWuv2():void {
 	clearOutput();
 	outputText("<b><u>One week later...</u></b>\n");
 	outputText("The door cracks open, shedding light on the sordid, coiled scene that you've spend the past few days languishing in.  At some point, you learned that your companion had been named Ophelia by the sisters, and as your cum-spurting, pussy-licking, cock-milking orgy continued, you were drawn closer and closer to her.  Sure, the first night you slept alone (or as alone as you can be with a bundle of tentacles ");
@@ -380,7 +380,7 @@ public function memeberedFolksFindTrueWuv2():void {
 	addButton(0,"Next",memeberedFolksFindTrueWuv3);	
 }
 
-public function memeberedFolksFindTrueWuv3():void {
+export function memeberedFolksFindTrueWuv3():void {
 	clearOutput();
 	outputText("You wake from your stupor in a room full of sex toys, some of them being used by the busty witches.  It doesn't take long for one of them to see your state, offer you food and a drink, and present her sopping cunts to you.  You note that these women are both pregnant, but their libidos have obviously gone through the roof.  Thrusting inside her immediately, you gorge yourself on the proffered nourishment and do your duty as a captive love-slave, pleasing their holes again and again until they're so full of your cum that it slops from their lips in lewd waves with every virile ejaculation.");
 	outputText("\n\nSometimes, when you seem unhappy, they let you spend the night with Ophelia.  She's as attentive and caring as when you first met, even if she has grown larger and more powerful.  Her sweet personality shines through despite her inhuman appearance, and she'll tenderly milk you all night long while the two of you share stories of your lives.");
@@ -391,7 +391,7 @@ public function memeberedFolksFindTrueWuv3():void {
 }
 
 //PC Wins
-public function yoYouBeatUpSomeSandWitchesYOUMONSTER():void {
+export function yoYouBeatUpSomeSandWitchesYOUMONSTER():void {
 	clearOutput();
 	flags[kFLAGS.SANDWITCH_MOB_DEFEATED] = 1;
 	outputText("The sand witches all collapse to the floor in a vast puddle of milk and pussy juice, ");
@@ -410,7 +410,7 @@ public function yoYouBeatUpSomeSandWitchesYOUMONSTER():void {
 }
 
 //Dicked Win Sex
-public function dicksHaveSexWithAWitch():void {
+export function dicksHaveSexWithAWitch():void {
 	clearOutput();
 	outputText("Looking over the ");
 	if(monster.HP < 1) outputText("painfully ");
@@ -436,8 +436,8 @@ public function dicksHaveSexWithAWitch():void {
 	
 	//DAT SHIT FITS
 	if(player.smallestCockArea() <= monster.vaginalCapacity()) {
-		var x:int = player.cockThatFits(monster.vaginalCapacity());
-		var y:int = player.cockThatFits2(monster.vaginalCapacity());
+		var x:number = player.cockThatFits(monster.vaginalCapacity());
+		var y:number = player.cockThatFits2(monster.vaginalCapacity());
 		outputText("\n\nPutting her down on all fours, you admire the curve of her bouncy bottom and the glossy moisture that's beading on her numerous, plump cunt-lips.  The witch's pussy is tinged red with her feverish lust and totally engorged.  You can see her twin clits peeking out of her their hoods, just begging to be touched.  Who are you to deny them?  Reaching around her hip, you start to circle a finger around one of the lucky buzzers while you get your " + cockDescript(x) + " lined up with one of her cunts");
 		if(y >= 0) outputText(" and your " + cockDescript(y) + " aimed at her other one");
 		outputText(".  Her knees buckle, but you're ready for it, and she slides straight onto your supporting shaft");
@@ -494,7 +494,7 @@ public function dicksHaveSexWithAWitch():void {
 	
 //*Sapphic Win Sex
 //Forced cunnlingus, rimjob, and clit-and-nipple sucking.
-public function forceCunnilingusRimjobClitAndNipple():void {
+export function forceCunnilingusRimjobClitAndNipple():void {
 	clearOutput();
 	outputText("You eye the defeated mob");
 	if(player.HP < 1) outputText(" through their torn-up robes, noting many large, dripping breasts and more than a few pairs of supple cunt-lips");
@@ -554,7 +554,7 @@ public function forceCunnilingusRimjobClitAndNipple():void {
 //Sand Witch Mob Attacks:
 //Swarm
 //-Mob gangrushes the PC; multiple hits, light damage
-public function gangrush():void {
+export function gangrush():void {
 	outputText("The witches close ranks and advance with raised fists, intent on beating you into submission!\n");
 	//3-5 attacks.at half strength
 	monster.str -= 10;
@@ -567,9 +567,9 @@ public function gangrush():void {
 //Headbutt
 //Single, high damage attack
 //High hit chance
-public function headbuttABitch():void {
+export function headbuttABitch():void {
 	outputText("The crowd parts, and a stockier, sturdier sorceress ambles out, fists up and head cocked back.  She makes to punch at you before pulling her fist at the last second, snapping her head forward in a powerful headbutt!  You barely have time to react!");
-	var damage:int = Math.round((monster.str + monster.weaponAttack + 10) - rand(player.tou) - player.armorDef);
+	var damage:number = Math.round((monster.str + monster.weaponAttack + 10) - rand(player.tou) - player.armorDef);
 	//Dodge
 	if(combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
 		outputText("\nThrowing yourself out of the way, you manage to avoid the hit.  Your foe doesn't seem nearly as pleased while she fades back in between her sisters.");
@@ -593,10 +593,10 @@ public function headbuttABitch():void {
 //-Goo bodies will gain 30 Lust by default, not accounting lust resistance.
 //-Stones will randomly vibrate throughout the battle if they get the PC.
 
-public function sandstonesAreCool():void {
+export function sandstonesAreCool():void {
 	outputText("The sandstorm whirling around the room suddenly ceases, and all the tiny sand particles gather together into balls, growing into several smooth stones.  Then, all the sand stones fall to the ground and slither towards you.");
 	
-	var bonus:int = 0;
+	var bonus:number = 0;
 	//[If they attack lands]
 	if(!combatMiss() && !combatEvade() && !combatFlexibility() && !combatMisdirect()) {
 		//[IF PC has solid body]
@@ -654,7 +654,7 @@ public function sandstonesAreCool():void {
 
 //Milk is Good
 //-Mob's members start sucking on each other's tits. Arouses PC and restores health to mob, decreases (increases?) mob's lust.
-public function drankSomeMialk():void {
+export function drankSomeMialk():void {
 	outputText("One of the blonde beauties turns to another and asks, \"<i>A drink, sister?  Fighting this intruder has given me a powerful thirst.</i>\"  The other woman wordlessly opens her robe, baring her breasts, exposing four heaving, milk-fueled mounds to the air before the other woman claims a nipple for herself.  Three others crowd in on the exposed teats, their rumps shaking contentedly as they grab a quick snack.");
 	outputText("\n\nAfter wiping the excess from their lips, they close their robes and resume a fighting stance, seeming healthier than before.");
 	dynStats("lus", 4 + player.lib/10);
@@ -665,7 +665,7 @@ public function drankSomeMialk():void {
 
 //*Sandstorm
 //Creates a sandstorm that blinds the PC one out of every 3 rounds.  Used first turn. Deals light HP damage every turn.  Reduces breath attacks damage by 80%.  Makes bow miss 50% of the time.
-public function sandStormAttack():void {
+export function sandStormAttack():void {
 	if(monster.short == "sand witches") {
 		outputText("The witches link their hands together and begin to chant together, lifting their voices high as loose sand trickles in from every corner, every doorway, even the ceiling.  \"<i>Enevretni llahs tresed eht!</i>\"  Swirling around the chamber, a cloud of biting, stinging sand clouds your vision and bites into your skin.  It's going to keep blinding you and hurting you every round!");
 	}
@@ -676,21 +676,21 @@ public function sandStormAttack():void {
 	combatRoundOver();
 }
 
-public function sandWitchMobAI():void {
+export function sandWitchMobAI():void {
 	if(monster.findStatusAffect(StatusAffects.Sandstorm) < 0) sandStormAttack();
 	else if(monster.HPRatio() < .5) drankSomeMialk();
 	else if(monster.findStatusAffect(StatusAffects.Sandstorm) >= 0 && rand(2) == 0 && player.findStatusAffect(StatusAffects.LustStones) < 0) sandstonesAreCool();
 	else if(rand(3) == 0) headbuttABitch();
 	else gangrush();
 }
-public function cumWitchAI():void {
+export function cumWitchAI():void {
 	//Hurt!
 	if(monster.HPRatio() < .6) {
 		sandWitchCuntHeals();
 		return;
 	}
 	
-	var choices:Array = [];
+	var choices:any[] = [];
 	
 	//Dicks only
 	if(player.hasCock()) choices[choices.length] = cumMagicAttack;
@@ -710,12 +710,12 @@ public function cumWitchAI():void {
 
 
 //*Attack: Bukkake
-public function bukkakeAttack():void {
+export function bukkakeAttack():void {
 	//*Cum Witch hikes up her dress and bukkake's at PC.  Large # of chance for 'hits' for low individual damage.  Small reduction to sand witch lust.  Used more at high lust.
 	outputText("The Cum Witch moans and daintily peels her robes away from her swollen cock-flesh.  A bubble of precum pops wetly from her urethra to splatter on the floor as her balls suddenly swell.  You look back up in time to see the telltale glow of magic surrounding her staff, but then she's thrusting her hips at you, lewdly humping the air as she unleashes rope after thick rope of potent jism in your direction!\n");
-	var hits:int = 5 + rand(8);
-	var bonus:int = 0;
-	var damage:int = 0;
+	var hits:number = 5 + rand(8);
+	var bonus:number = 0;
+	var damage:number = 0;
 	while(hits > 0) {
 		if(combatMiss() || combatMisdirect()) {
 			//Miss1
@@ -750,7 +750,7 @@ public function bukkakeAttack():void {
 }
 
 //*Attack: Cum Magic
-public function cumMagicAttack():void {
+export function cumMagicAttack():void {
 	//*Used on males only, casts spell that causes balls to temporarily swell and increase lust by a moderate amount.  Unavoidable.
 	outputText("Gesticulating with her free hand, the Cum Witch utters impossible to pronounce words before closing her fingers tightly into a fist.  That same instant, you feel an onset of warmth in your [balls], a spreading heat that makes you tremble with growing lust.  A second later, [eachCock] is throbbing, and a runner of cum trickles from the [cockHead], a hint of your temporarily-enhanced virility.");
 	//(15-30 lust, based on libido)
@@ -760,7 +760,7 @@ public function cumMagicAttack():void {
 }
 //*Attack: Cum Hunger
 //*Used on vagoozles, spell that causes womb to literally thirst for sperm.  Unavoidable moderate lust gain.  Pregnant character's are immune.
-public function cumHungerAttack():void {
+export function cumHungerAttack():void {
 	outputText("Moaning luridly, the Cum Witch swivels her staff and opens her hand to spread her fingers wide.  At the same time, you feel her magic slam into your midsection, burrowing into your womb.  ");
 	if(player.pregnancyIncubation > 0) {
 		outputText("Yet, whatever she tries to do fails, as her otherworldly conjuration falls apart as soon as soon as it reaches you.");
@@ -773,7 +773,7 @@ public function cumHungerAttack():void {
 }
 
 //*Attack: Gender Confusion
-public function genderConfusionAttack():void {
+export function genderConfusionAttack():void {
 	//*Used on genderless and hermaphrodite characters.  Mental attack that draws on disharmony with standard gender types to stun for one round.  3 turn cooldown
 	outputText("Touching her alabaster staff to her brow, just under the brim of her hat, the Cum Witch makes a brief incantation and fixes you with her gaze.  Her eyes flash blindingly white, and then you feel her inside you, rifling through your memories, digging up memories of your childhood, your past, and throwing them against you.  ");
 	if(player.inte/5 + rand(20) + player.level/2 < 18) {
@@ -786,7 +786,7 @@ public function genderConfusionAttack():void {
 	combatRoundOver();
 }
 //*Attack: Shell
-public function shellDefense():void {
+export function shellDefense():void {
 	//*Grants immunity to all magic-based attacks for the next two turns.
 	outputText("The Cum Witch holds her staff in both hands and rotates it in a circle, chanting all the while.  Her voice rises in pitch and intensity until she's screaming out unwords of power.  With one final cry, she slams her staff down into the ground hard enough to kick up a puff of sandy dust.  It quickly settles, but the Cum Witch has some kind of glittering, reflective shield around herself now!");
 	monster.createStatusAffect(StatusAffects.Shell,3,0,0,0);
@@ -795,7 +795,7 @@ public function shellDefense():void {
 
 //*Attack: Cocknosis
 //*Intelligence dependant attack with possibility of very high lust gain.
-public function cocknosisAttack():void {
+export function cocknosisAttack():void {
 	outputText("Lifting her robes enticingly, the Cum Witch reveals her ");
 	if(monster.lust < 50) outputText("half-hard");
 	else if(monster.lust < 70) outputText("hard");
@@ -821,7 +821,7 @@ public function cocknosisAttack():void {
 
 //*Attack: Heal
 //*Restores one third of her HP.
-public function sandWitchCuntHeals():void {
+export function sandWitchCuntHeals():void {
 	outputText("The Witch smirks at you and holds her free hand under her robes.  When she pulls it out, you realize she's gathered a handful of her cum.  She holds it up and exhales over it, the air making a slight whistle as it blows through her parted lips.  The ebony sorceress then smears the goop over her wounds, which seem to drink in the cum and vanish before your eyes.  She scolds, \"<i>Physical damage?  How artless.</i>\"");
 	monster.addHP(monster.eMaxHP()*0.33);
 	monster.fatigue
@@ -830,7 +830,7 @@ public function sandWitchCuntHeals():void {
 
 
 //*PC Loss - Female - Become Sand Witch
-public function turnIntoASammitch():void {
+export function turnIntoASammitch():void {
 	clearOutput();
 	outputText("Helplessly, you ");
 	if(player.lust > 99) {
@@ -911,7 +911,7 @@ public function turnIntoASammitch():void {
 	addButton(0,"Next",chicksLoseToSandWitchesBadEndFinale);
 }
 
-public function chicksLoseToSandWitchesBadEndFinale():void {
+export function chicksLoseToSandWitchesBadEndFinale():void {
 	clearOutput();
 	outputText("<b>Some time later...</b>");
 	
@@ -924,7 +924,7 @@ public function chicksLoseToSandWitchesBadEndFinale():void {
 	gameOver();
 }
 //*Male Loss - Turned Into Cum Pump
-public function cumWitchCumPumpBadEnd():void {
+export function cumWitchCumPumpBadEnd():void {
 	clearOutput();
 	outputText("Laid low by ");
 	if(player.HP < 1) outputText("your wounds");
@@ -975,7 +975,7 @@ public function cumWitchCumPumpBadEnd():void {
 	dynStats("lib", 100, "sen", 100);
 }
 
-public function beACumPumpPartII():void {
+export function beACumPumpPartII():void {
 	clearOutput();
 	outputText("<b>*SNAP*</b>  You yawn and begin to blink the sleep from your eyes, shielding your gaze from the room's ambient light with your hand.  Your head is muzzy, like you stayed up too late or overindulged in milk again.  A soft hand is massaging your balls, caressing the orbs with the tenderness of a lover. They feel warm... and full.  ");
 	if(player.balls == 0) outputText("Wait a moment, you don't - didn't - have balls! Turning your accusing stare towards the busty witch, you watch in wonder as the newly grown sack slowly turns taut, stretched by the burgeoning size of your cum-stuffed spunk-factories.  She pats your newly-stuffed nutsack and remarks, \"<i>I had to make sure you were suitably virile...  Besides, I needed to make sure you'd only sire daughters for us.  We don't need that many like you, my loyal " + player.mf("stud","cum donor") + ".</i>\"");
@@ -1037,7 +1037,7 @@ public function beACumPumpPartII():void {
 	addButton(0,"Next",cumPumpVolumeThree);
 }
 
-public function cumPumpVolumeThree():void {
+export function cumPumpVolumeThree():void {
 	clearOutput();
 	outputText("With the champion brainwashed into a little more than a loyal cum-pump for the sand witches, they grow in number and strength with alarming speed.  In the space of eight years, the desert is transformed into a verdant forest.  For better or for worse, the witches finally rival the demons in power.  They spread their influence wider, eventually ");
 	if(player.findStatusAffect(StatusAffects.FactoryOverload) >= 0) outputText("destroying");
@@ -1046,7 +1046,7 @@ public function cumPumpVolumeThree():void {
 	gameOver();
 }
 //*Repeat Desert Loss Male
-public function repeatLoseToCumWitchForDudes():void {
+export function repeatLoseToCumWitchForDudes():void {
 	clearOutput();
 	//HP:
 	if(player.HP < 1) {
@@ -1157,7 +1157,7 @@ public function repeatLoseToCumWitchForDudes():void {
 }
 
 //Take The Too Big Loss Facial
-public function tooBigCumWitchLossFacial():void {
+export function tooBigCumWitchLossFacial():void {
 	clearOutput();
 	outputText("Ruefully, you tell her that you don't mind a little cum in exchange for having your own abilities enhanced.  The knowing grin that spreads across her face makes it seem like she knew the result was a foregone conclusion.");
 	if(player.cor < 33) outputText("  You shudder at the knowledge of what's going to happen to you.  Just why did you agree to this?");
@@ -1192,7 +1192,7 @@ public function tooBigCumWitchLossFacial():void {
 }
 
 //Avoid The Too Big Loss Facial
-public function tooBigCumWitchLossNoFacial():void {
+export function tooBigCumWitchLossNoFacial():void {
 	clearOutput();
 	outputText("You tell her you'd rather not get a face full of her spunk.  Judging by the sour look on her face, she seems to be honestly surprised by your choice, like she never expected that anyone would choose not to get a faceful of her spunk.  This bitch clearly has spent too much time with her nymphomaniac sisters.");
 	
@@ -1212,9 +1212,9 @@ public function tooBigCumWitchLossNoFacial():void {
 }
 //TDM's generic loss to cum witch scene
 //requires that the PC have a dick that can fit inside the cum witch's vagina.  The scene can be used with herms.
-public function TDMsLoseToCumWitchScene():void {
+export function TDMsLoseToCumWitchScene():void {
 	clearOutput();
-	var x:int = player.cockThatFits(monster.vaginalCapacity());
+	var x:number = player.cockThatFits(monster.vaginalCapacity());
 	if(x < 0) x = player.smallestCockIndex();
 	outputText("Robes already lay discarded nearby and the cum witch stands triumphantly over your body.  A bobbing cock brushes up next to your face, quite erect and eager for service.  The hermaphrodite doesn't bother with conversation and roughly forces you onto your back.  She snaps her fingers; curving bands of stone snap out of the ground, curling over your limbs and binding you securely to the ground.  It's clear that you're about to get fucked, whether you like it or not.  Looking up, a cryptic smile plays across the black woman's visage as she deftly removes your [armor].  In an instant, your " + cockDescript(x) + " has been mounted.");
 	
@@ -1278,7 +1278,7 @@ public function TDMsLoseToCumWitchScene():void {
 }
 
 
-public function defeatedByCumWitch():void {
+export function defeatedByCumWitch():void {
 	if(inDungeon) {
 		//Dudally-diddly.
 		if(player.hasCock() && (player.gender == 1 || rand(2) == 0)) cumWitchCumPumpBadEnd();
@@ -1298,7 +1298,7 @@ public function defeatedByCumWitch():void {
 }
 
 //*Victory Intro
-public function cumWitchDefeated():void {
+export function cumWitchDefeated():void {
 	clearOutput();
 	//(HP)
 	if(monster.HP < 1) outputText("The chocolate-skinned witch collapses down onto her hands and knees with the tattered remnants of her robes swirling about her.  With her clothing destroyed, you're treated to the perfect view of her semi-erect cock and swollen testes swaying enticingly beneath her, paired with the glimmering wetness of her juicy cunny - also on display.  Her udder-like melons sway and jiggle in sympathy to her uncoordinated swaying.  She grumbles, \"<i>You've beaten me, interloper...</i>\"");
@@ -1325,7 +1325,7 @@ public function cumWitchDefeated():void {
 }
 
 //*Decline Sex
-public function declineSandWitch():void {
+export function declineSandWitch():void {
 	clearOutput();
 	outputText("Dusting yourself off, you lower your [weapon] and leave the cum witch to recover from the humiliation of losing to you.  The haunted, hungry look in her eyes leaves little doubt that she'll challenge you again or that she still wants to fuck you.  For now, she slips down into her own puddled cum, idly touching herself.");
 	if (inCombat)
@@ -1334,10 +1334,10 @@ public function declineSandWitch():void {
 }
 
 //*Male Victory Sex
-public function menFuckUpSomeCumWitch():void {
+export function menFuckUpSomeCumWitch():void {
 	clearOutput();
-	var x:int = player.cockThatFits(monster.vaginalCapacity());
-	var y:int = player.cockThatFits2(monster.vaginalCapacity());
+	var x:number = player.cockThatFits(monster.vaginalCapacity());
+	var y:number = player.cockThatFits2(monster.vaginalCapacity());
 	outputText("You shuck out of your [armor] in eager anticipation, [eachCock] aleady ");
 	if(player.lust < 50) outputText("half-hard");
 	else outputText("rock-hard");
@@ -1433,9 +1433,9 @@ public function menFuckUpSomeCumWitch():void {
 	}
 }
 //*Male "Too Big" Victory Sex
-public function maleTooBigVictorySex():void {
+export function maleTooBigVictorySex():void {
 	clearOutput();
-	var x:int = player.biggestCockIndex();
+	var x:number = player.biggestCockIndex();
 	outputText("You slip out of your [armor] with deliberate slowness, the tight, constraining pressure on your massive tool shifting in the most delicious way.  The uncomfortable yet tantalizing weight lessens gradually, and at the first hint of freedom, your " + cockDescript(x) + " flops free to taste the freedom of the open air, nearly doubling in size as your blood surges through it.  The witch's eyes look up in confusion at your prodigious proportions and widen in shock.");
 	
 	outputText("\n\n\"<i>Y-you're bigger than me...</i>\" she drawls, her mouth hanging open in shock at the declaration.  She covers the hanging orifice with her palm, lamely trying to conceal her shock at your gargantuan boner.");
@@ -1479,7 +1479,7 @@ public function maleTooBigVictorySex():void {
 }
 
 //Female Victory Sex
-public function ladyVictorySex():void {
+export function ladyVictorySex():void {
 	clearOutput();
 	outputText("You disrobe, casting aside the garments with a feminine sigh.  As soon as you expose yourself, the witch's eyes twinkle happily.  She caresses her stiff tool and tweaks one of her nipples as she watches you.  \"<i>If you wanted to get fucked by little old me, all you had to do was bend over, honey.</i>\"");
 	
@@ -1521,7 +1521,7 @@ public function ladyVictorySex():void {
 	
 //Tentacle Victory Gangbang
 //3+ Tentas
-public function tentacleVictoryGangbangCumWitch():void {
+export function tentacleVictoryGangbangCumWitch():void {
 	clearOutput();
 	outputText("The defeated sorceress eyes you questioningly as you step closer, and her surprise only deepens when you part your [armor] to expose your " + player.multiCockDescriptLight() + ".   You gleefully twist your multiple members around each other into a many-layered helix, oily, pre-dripping plant-cocks squirming together in a bundle of barely-restrained, bubbling lust.  The pliant flesh pulsates happily at its freedom and immediately takes a twist towards the horny witch, pausing above her as if considering the tightness of her slick folds or the softness of her erect cock's skin.");
 	
@@ -1562,7 +1562,7 @@ public function tentacleVictoryGangbangCumWitch():void {
 }
 
 //Repeat Desert Loss Female & Herm
-public function savinMakesAwesomeFemdom():void {
+export function savinMakesAwesomeFemdom():void {
 	clearOutput();
 	//(HP)
 	if(player.HP < 1) outputText("Unable to further withstand the witch's magical assault, you topple over into the soft, warm sands. Before you can recover, the witch is on top of you, her powerful legs straddling your [hips]. Her long, dainty fingers lock through your [armor], pulling your face out of the sand and rolling you over to look up at her.");
@@ -1609,7 +1609,7 @@ public function savinMakesAwesomeFemdom():void {
 }
 
 //Resist
-public function resistSavinStuff():void {
+export function resistSavinStuff():void {
 	clearOutput();
 	outputText("It takes nothing more than a gentle push to put the witch on her back.  She gasps as you straddle her, [legs] spread around her wide, birthing hips, her cock buried to the hilt inside you.  To your surprise, she reaches up from her now-submissive position, stroking your cheek and purring like a pleasured cat.  You lean down, kissing her lips for once, rather than her teats, leaving a pearly milk stain on the full black lines.  With a smile, you plant your hands on her chest to steady yourself as you begin to rise and fall on her cock, dragging the massive thing nearly out of you before sliding back down with tantalizing slowness, reveling in the sensation of being filled to the brim once again.  Again and again you buck your hips and bounce on her cock, picking up the pace to a fury of lusty fucking, a symphony of moans and primal grunts echoing out across the desert as you breed the witch, coaxing the cum you need so desperately out of her thick, throbbing pole.");
 	
@@ -1627,7 +1627,7 @@ public function resistSavinStuff():void {
 	player.knockUp(PregnancyStore.PREGNANCY_SAND_WITCH, PregnancyStore.INCUBATION_SAND_WITCH, 90);
 }
 //Do Nothing
-public function doNotResistSavin():void {
+export function doNotResistSavin():void {
 	clearOutput();
 	outputText("You need her inside you, to be filled with her seed... her children.  To be dominated, to be bred.  You sink into the witch's embrace, letting her slowly, lovingly pump her thick hips into you, taking more and more of her pre-cum and milk into you until you feel bloated, heavy-laden with white witchseed and the food you'll soon be making for your shared offspring.  The cum witch is incredibly gentle, her motions always tender, taking the best of care of you -- loving, in their way -- as she fills you with her cock again and again.  You bask in the fullness of it, going limp from pleasure, content to let her fuck you full of little witches, to be the mother of the dunes as you deserve.");
 	
@@ -1646,7 +1646,7 @@ public function doNotResistSavin():void {
 }
 
 	
-public function lionpaws(skipped:Boolean = false):void {
+export function lionpaws(skipped:boolean = false):void {
 	clearOutput();
 	//[skip riddles, just request from menu (requires some event occurrence > 1)]
 	if(skipped) {
@@ -1753,7 +1753,7 @@ public function lionpaws(skipped:Boolean = false):void {
 
 //SPHINX RIDDLES for the Gentleman Gamer
 //Accept the Riddle Challenge
-public function riddleGameGo():void {
+export function riddleGameGo():void {
 	clearOutput();
 	flags[kFLAGS.RIDDLE_ONE] = 0;
 	flags[kFLAGS.RIDDLE_TWO] = 0;
@@ -1764,8 +1764,8 @@ public function riddleGameGo():void {
 	addButton(0,"Next",riddlePicker);
 }
 
-public function riddlePicker():void {
-	var choices:Array = [];
+export function riddlePicker():void {
+	var choices:any[] = [];
 	if(flags[kFLAGS.RIDDLE_ONE] != riddleOne && flags[kFLAGS.RIDDLE_TWO] != riddleOne) choices[choices.length] = riddleOne;
 	if(flags[kFLAGS.RIDDLE_ONE] != riddleTwo && flags[kFLAGS.RIDDLE_TWO] != riddleTwo) choices[choices.length] = riddleTwo;
 	if(flags[kFLAGS.RIDDLE_ONE] != riddleThree && flags[kFLAGS.RIDDLE_TWO] != riddleThree) choices[choices.length] = riddleThree;
@@ -1794,7 +1794,7 @@ public function riddlePicker():void {
 
 
 //RIDDLE 1
-public function riddleOne():void {
+export function riddleOne():void {
 	clearOutput();
 	outputText("\"<i>Hmm, here's an old one, but a good one, I think.  One of my favorites, but stop me if you know the answer already: 'I walk on four legs in the morning, two in the afternoon, and three in the evening.  What am I?'</i>\"");
 	menu();
@@ -1807,7 +1807,7 @@ public function riddleOne():void {
 }
 
 //Special Occurrence: Pick [A Sphinx]
-public function riddleOneSphinx():void {
+export function riddleOneSphinx():void {
 	clearOutput();
 	outputText("The sphinx narrows her eyes at you, crossing her arms over her chest.  \"<i>You don't say?  Come on, step it up, [name].  Sorry, but that's wrong.  Let's try again.</i>\"");
 	menu();
@@ -1818,7 +1818,7 @@ public function riddleOneSphinx():void {
 }
 
 //RIDDLE 2
-public function riddleTwo():void {
+export function riddleTwo():void {
 	clearOutput();
 	outputText("\"<i>Mmm, I've always been fond of this one.  Delightfully simple, really - don't overthink it, dear.  'I always run, yet never walk; I murmur often, yet never talk; and I've a bed, yet never sleep.  What am I?'</i>\"");
 	//[A River] [A Whisper] (if PC int < 50 add this: [A Nail]) (if PC int < 35 add this: [A Bunny Girl]) [Fuck it, Attack]
@@ -1831,7 +1831,7 @@ public function riddleTwo():void {
 }
 
 //RIDDLE 3
-public function riddleThree():void {
+export function riddleThree():void {
 	clearOutput();
 	outputText("\"<i>Ooh, this is a morbid one: 'Whoever makes me, sells me.  He who buys me, never uses me. And he who uses me, well, they'll never know it.  What am I?'</i>\"");
 	menu();
@@ -1844,7 +1844,7 @@ public function riddleThree():void {
 }
 
 //RIDDLE 4
-public function riddleFour():void {
+export function riddleFour():void {
 	clearOutput();
 	outputText("\"<i>Here's a classic for you: 'I'm always hungry, and must be fed always, lest I flicker away.  Yet I will always bite the hand that feeds me, if it touches me.  What am I?'</i>\"");
 	menu();
@@ -1857,7 +1857,7 @@ public function riddleFour():void {
 }
 
 //RIDDLE 5
-public function riddleFive():void {
+export function riddleFive():void {
 	clearOutput();
 	outputText("\"<i>A favorite of my dear Goblin friends: 'When young, I am sweet in the sun; in middle age, I make you gay; but when I'm old, I'm more valuable than gold.  What am I?'</i>\"");
 	menu();
@@ -1869,7 +1869,7 @@ public function riddleFive():void {
 	addButton(4,"Uh, ATTACK!",fuckItAttack);
 }
 //RIDDLE 6
-public function riddleSix():void {
+export function riddleSix():void {
 	clearOutput();
 	outputText("\"<i>This riddle always makes me a bit sad, but... 'My life lasts but hours, and in service I'm devoured.  Thin, I am quick, fat I am slow, and wind is ever my foe.  What am I?'</i>\"");
 	
@@ -1883,7 +1883,7 @@ public function riddleSix():void {
 }
 
 //RIDDLE 7
-public function riddleSeven():void {
+export function riddleSeven():void {
 	clearOutput();
 	outputText("\"<i>In service to the Sand Witches, I can sympathize with this riddle's speaker: 'Each morning I appear to lie at your feet; all day I'll follow you no matter how fast you run, yet I'll nearly perish in the midday sun.  What am I?'</i>\"");
 	
@@ -1897,7 +1897,7 @@ public function riddleSeven():void {
 }
 
 //RIDDLE 8
-public function riddleEight():void {
+export function riddleEight():void {
 	clearOutput();
 	outputText("\"<i>Tsk, a sad tale this, fleeting as a melody on the breeze: 'You've heard me before, and will again, till fast I die - then you'll but summon me again.  What am I?'</i>\"");
 	//(if PC int < 35 add this: [A Demon]) (if PC int < 50 add this: [Religion]) [An Idea] [An Echo] [Fuck it, Attack]
@@ -1910,7 +1910,7 @@ public function riddleEight():void {
 }
 
 //RIDDLE 9
-public function riddleNine():void {
+export function riddleNine():void {
 	clearOutput();
 	outputText("\"<i>Like a cat comes this riddle of many lives: 'Three lives have I, gentle enough to sooth the skin, light enough to caress the sky, or hard enough to shatter stone.  What am I?'</i>\"");
 	
@@ -1924,7 +1924,7 @@ public function riddleNine():void {
 }
 
 //RIDDLE 10
-public function riddleTen():void {
+export function riddleTen():void {
 	clearOutput();
 	outputText("\"<i>Devious, this: 'Whoever makes me, tells it not; he who takes me, knows it not; and he who knows me, takes me not.  What am I?'</i>\"");
 	
@@ -1938,7 +1938,7 @@ public function riddleTen():void {
 }
 
 //RIDDLE 11
-public function riddleEleven():void {
+export function riddleEleven():void {
 	clearOutput();
 	outputText("\"<i>The lovely Naga that roams this desert knows my speaker well: 'A box without hinges, lock or key, yet I've golden treasure within me.  What am I?'</i>\"");
 	
@@ -1952,7 +1952,7 @@ public function riddleEleven():void {
 }
 
 //RIDDLE 12
-public function riddleTwelve():void {
+export function riddleTwelve():void {
 	clearOutput();
 	outputText("\"<i>Here we've one that speaks to the stars and the earth at once: 'One by one we fall from the heavens, down into the depths of the past; our world is ever upturned, so that yet some time will last.  What are we?'</i>\"");
 	
@@ -1967,7 +1967,7 @@ public function riddleTwelve():void {
 
 
 //ANSWER A RIDDLE RIGHT (Like a Boss)
-public function answerCorrect():void {
+export function answerCorrect():void {
 	clearOutput();
 	if(flags[kFLAGS.RIDDLE_THREE] == 0) {
 		outputText("The sphinx-girl sighs, \"<i>That's... correct.  Not bad, I suppose.  Well, we're not done yet... I've still got some tricks up my sleeves.  Er, so to speak.</i>\"");
@@ -1997,7 +1997,7 @@ public function answerCorrect():void {
 
 
 //THE SPHINX BEAT YOU AT HER OWN -- WAIT A SECOND
-public function answerWrong():void {
+export function answerWrong():void {
 	clearOutput();
 	outputText("\"<i>That's... wrong, I'm afraid,</i>\" she says, a proud smile playing across her lips.  \"<i>Wrong, wrong, wrong.  Well, perhaps </i>I<i> was wrong about </i>you<i> after all...  Here I thought you'd be some fun.  Still, though, at least your body will serve me well, I think.  Yes, you'll do nicely.  Go on then, love, strip out of your [armor] for me.  A deal's a deal, after all...</i>\"");
 	//(Display Options: [Submit] [Fuck it, Attack])
@@ -2009,7 +2009,7 @@ public function answerWrong():void {
 }
 
 //FUCK IT, ATTACK (First Time)
-public function fuckItAttack():void {
+export function fuckItAttack():void {
 	clearOutput();
 	outputText("To hell with this. You ready your [weapon] to beat your way through the damned sphinx, but as soon as you make a threatening move, the half-lion makes a shrill \"<i>EEEP</i>\" and throws her hands up in surrender. \"<i>Please, th-there's no need for violence! I've no loyalty to these witches, they </i>force<i> me to guard the door. I've no desire to fight you; I'll not stop you if you wish to enter the lair.</i>\"");
 	//[Options: Enter, Leave. Either way, Sanura won't be encountered again]
@@ -2020,7 +2020,7 @@ public function fuckItAttack():void {
 }
 
 //Fuck Her
-public function fuckDatSphinx():void {
+export function fuckDatSphinx():void {
 	clearOutput();
 	outputText("Grinning lustily at the pretty leonine girl, you tell her it's time to have some fun. With an easy grace, she slips the sky blue shift from her shoulders, exposing her pert, palmable breasts.  \"<i>Well, you did win my game, after all... I'm yours to do with as you wish, my brilliant " + player.mf("handsome","beautiful") + " friend.</i>\"");
 	//Male Options: [Get Blown] [Pawjob]
@@ -2037,7 +2037,7 @@ public function fuckDatSphinx():void {
 }
 
 //Get Blown (Males & Herms)
-public function getBlown(submit:Boolean = false):void {
+export function getBlown(submit:boolean = false):void {
 	clearOutput();
 	outputText("You shed your armor, unleashing your " + player.multiCockDescriptLight() + " into the dry heat of the desert.  Sanura licks her lips hungrily as you beckon her over, leaning back against the stone pillar to give her a good look at your fuckmeat.  The sphinx approaches, a sashay in her animalistic hips; soon she's running her small, delicate hands across your " + player.skinFurScales() + ", brushing against all the right places.  Fingertips trace along your [chest], circling your [nipples] with slow, teasing strokes before descending, tracing along your belly and down to your [hips]");
 	if(player.balls > 0) outputText(", one hand slipping down to cup your [balls], rolling them in her palm until a white trickle escapes your [cockHead biggest]");
@@ -2101,7 +2101,7 @@ public function getBlown(submit:Boolean = false):void {
 }
 
 //Force Dildos (CuntCommanders & Genderless)
-public function forceDildos():void {
+export function forceDildos():void {
 	clearOutput();
 	outputText("You start to peel out of your [armor], but a twirled finger from Sanura has you turn to face the stone pillar and brace yourself.  With silent grace, the half-cat slinks up to you, wandering hands moving to explore your body, her slender fingers tracing along the supple curves of your [butt] and [hips], slowly moving toward your [chest] with slow, teasing motions, her every shift sending shivers up your spine.  Your breath catches as her fingers brush your [nipples], gently squeezing them");
 	//if MilkyTits:
@@ -2142,7 +2142,7 @@ public function forceDildos():void {
 
 //Fuck Dat Lionpussy
 //Written by Third. Available to those who BEAT Sanura's riddle challenge.
-public function fuckDatLionPussah():void {
+export function fuckDatLionPussah():void {
 	clearOutput();
 	outputText("You disrobe, tossing your [armor] aside into a small pile.  You stretch your muscles in the dry desert air and exult in the warm rays beating down on your " + player.skinFurScales() + " and " + player.multiCockDescriptLight() + ".  Sanura pads around you, taking in your appearance with her chestnut-colored eyes before clicking her tongue approvingly.  Her leonine tail swishes across the top of your [cock biggest], stroking it with the silky soft tuft of fur at its tip.  You shiver at the contact, unsure of what to think.  Your penis, on the other hand, has no such conflictions, and immediately begins to rise.");
 	
@@ -2211,7 +2211,7 @@ public function fuckDatLionPussah():void {
 }
 
 //Submission Options
-public function sphinxSubmissionOptions():void {
+export function sphinxSubmissionOptions():void {
 	clearOutput();
 	flags[kFLAGS.TIMES_SUBMITTED_TO_SANURA]++;
 	outputText("Having lost the Riddle Game, you do as the sphinx-girl commands: you pull off your [armor], leaving yourself bare under the desert sun. \"<i>Now then, my dull little pet, what shall I do with you...</i>\"");
@@ -2226,7 +2226,7 @@ public function sphinxSubmissionOptions():void {
 }
 
 //Horsecock Symphony
-public function fenPutsHisShittyFetishInYoSphinx():void {
+export function fenPutsHisShittyFetishInYoSphinx():void {
 	clearOutput();
 	outputText("Starting to disrobe, ");
 	if(player.hasCock()) {
@@ -2319,7 +2319,7 @@ public function fenPutsHisShittyFetishInYoSphinx():void {
 //Uses a scepter as a weapon
 //*Encounter:
 
-public function sandWitchMotherFriendlyMenu():void {
+export function sandWitchMotherFriendlyMenu():void {
 	if(monster.short != "Sand Mother") {
 		startCombat(new SandMother(),true);
 		inCombat = false;
@@ -2336,21 +2336,21 @@ public function sandWitchMotherFriendlyMenu():void {
 		addButton(5,"Get LaBova",getLaBova);
 		addButton(6,"Get Lactaid",getLactaidFromWitches);
 	}
-	if((flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) || (flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] is Number))
+	if((flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) || (flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] instanceof Number))
 		addButton(7,"Free Slaves",slavesDiscussion);
 	if(player.lust >= 33) addButton(8,"Sex",sexWithFriendlySandMother);
 	
 	addButton(9, "Leave", playerMenu);
 }
 
-public function slavesDiscussion():void {
+export function slavesDiscussion():void {
 	menu();
 	if(flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) addButton(0,"Essrayle",forest.essrayle.askMotherToReleaseEssy);
-	if(flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] is Number) addButton(1,"Milk-Slave",freeSlaves);
+	if(flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] instanceof Number) addButton(1,"Milk-Slave",freeSlaves);
 }
 //Getting a Milk Slut, Purity Style
 //{Having beat the Sammiches, and made Momma Witch your friend, add a button labeled [Free Slaves] to Momma's menu. Needs to have met Milk Slut.}
-private function freeSlaves():void {
+ function freeSlaves():void {
 	clearOutput();
 	outputText("Thinking back to the poor, mind-broken tittymonster of a bath girl you met here in the witches' coven, you tell the Sand Mother it's about time to free her and any other slaves she's got hidden away.");
 
@@ -2381,7 +2381,7 @@ private function freeSlaves():void {
 }
 
 //Yes (No Change)
-private function yesDemandMilkRelease():void {
+ function yesDemandMilkRelease():void {
 	clearOutput();
 	outputText("You tell the Sand Mother that everyone deserves freedom, even if they're addle-minded, or useful.  She can't just <i>keep people</i> because she feels like they're better off in her care.");
 	outputText("\n\nShe sighs, shaking her head sadly as she starts back toward the throne room.  \"<i>You're a bleeding heart idealist, [name].  You'd condemn the girl to torment for the sake of your petty morality.  There's no room for sentimentality these days.  Every soul I keep from becoming a demon, even if I keep them in chains, is on my conscious.  Yet I bear that weight gladly, [name].  Perhaps one day, when you're ready to take on that same responsibility, you'll understand.</i>\"");
@@ -2392,14 +2392,14 @@ private function yesDemandMilkRelease():void {
 }
 
 //No (No Change)
-private function noDemandMilkRelease():void {
+ function noDemandMilkRelease():void {
 	clearOutput();
 	outputText("You suppose not, when she puts it that way.  The poor girl's probably better off here than in the clutches of the demons.  Seeing you relent, the Sand Mother smiles and pats your shoulder.  \"<i>I'm glad you can see things my way, [name].  There is wisdom in you.  Come, let us speak of other things,</i>\" she says, leading you back to her throne room.");
 	doNext(playerMenu);
 }
 
 //Gimme her (Gimme dat delicious milk slut)
-private function gimmeDatDeliciousMilkWaifuINeedMoreWaifusCauseTheTwoCowslutsWerentEnoughForMyInsatiableLacticLustandDesire():void {
+ function gimmeDatDeliciousMilkWaifuINeedMoreWaifusCauseTheTwoCowslutsWerentEnoughForMyInsatiableLacticLustandDesire():void {
 	clearOutput();
 	outputText("You have a better idea: give the girl to you.  You can care for and protect her in your camp, but also give her at least as much freedom as is safe in these dire times.");
 
@@ -2414,7 +2414,7 @@ private function gimmeDatDeliciousMilkWaifuINeedMoreWaifusCauseTheTwoCowslutsWer
 	if(player.gems >= 2000) addButton(1,"Buy Her",BuyHer);
 }
 
-private function TwoExpensive4Me():void {
+ function TwoExpensive4Me():void {
 	clearOutput();
 	outputText("You explain that you can't afford that much.");
 	outputText("\n\nThe Sand Mother shrugs and says, \"<i>Then ask after her when you do.</i>\"  She doesn't stick around long enough for you to reply, leaving you standing there with the milk girl.");
@@ -2424,7 +2424,7 @@ private function TwoExpensive4Me():void {
 //	doNext(camp.campMenu);
 }
 
-private function BuyHer():void {
+ function BuyHer():void {
 	clearOutput();
 	player.gems -= 2000;
 	outputText("You hand over two thousand of your hard-earned gems.");
@@ -2451,7 +2451,7 @@ private function BuyHer():void {
 	addButton(0, "Next", milkWaifu.arriveWithLacticWaifuAtCamp);
 }
 
-public function sexWithFriendlySandMother():void {
+export function sexWithFriendlySandMother():void {
 	menu();
 	//friendly cunt fuck:
 	if(player.hasVagina() && player.lust >= 33) addButton(0,"GetMilkFill",lesboMilkFilling);
@@ -2463,7 +2463,7 @@ public function sexWithFriendlySandMother():void {
 }
 
 
-public function sandMotherPOMenu():void {
+export function sandMotherPOMenu():void {
 	if(monster.short != "Sand Mother") {
 		startCombat(new SandMother(),true);
 		inCombat = false;
@@ -2490,7 +2490,7 @@ public function sandMotherPOMenu():void {
 
 
 
-public function sandMotherStuffGOA():void {
+export function sandMotherStuffGOA():void {
 	clearOutput();
 	//*Encounter Repeat: Friendly:
 	if(flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0) {
@@ -2529,7 +2529,7 @@ public function sandMotherStuffGOA():void {
 }
 
 //*Explain to Sand Mother
-public function explainYourSelfToZeSandBitch():void {
+export function explainYourSelfToZeSandBitch():void {
 	clearOutput();
 	outputText("You explain that you came here through a portal from a place called Ingnam, sent as a champion to defend your land from the demons.  Recounting your travels and experiences here, you confidently explain your discovery of this coven, and your misconceptions about the sand witches.  They seemed as lust crazed as the rest of the lands, and you had assumed them to be in league with the demons you found so frequently.");
 	
@@ -2561,21 +2561,21 @@ public function explainYourSelfToZeSandBitch():void {
 }
 
 //*Fight
-public function fightTheSandWitch():void {
+export function fightTheSandWitch():void {
 	clearOutput();
 	outputText("You brandish your [weapon] and advance threateningly.  The Sand Witch Queen slowly rises, pulling a scepter from beneath her robes with a resolute look in her eyes.  \"<i>You shall regret this action for a time, until we've corrected your diseased way of thinking.  Now, taste the power of a Sand Mother!</i>\"");
 	startCombat(new SandMother(),true);
 }
 
 //Earthshield
-public function earthShield():void {
+export function earthShield():void {
 	//Surrounds the witch a vortex of stones, raising her defense greatly and conferring 25% block to standard attacks.
 	outputText("Lowering her scepter towards the ground, the eight-foot tall sorceress suddenly grunts, lifting it as if carrying great weight.  As the small staff passes her chest, bits of stone and rock begin to lift out of the ground, accelerating into a vortex of earth that spins around her.  <b>It's going to be harder to hit her with physical attacks now!</b>");
 	monster.createStatusAffect(StatusAffects.Earthshield,0,0,0,0);
 	combatRoundOver();
 }
 //*GigaFire
-public function gigaFire():void {
+export function gigaFire():void {
 	//Begins focusing into her staff, which floats in front of her.  PC disrupt attack by attacking.  Attack hits at half strength if disrupted.
 	outputText("Releasing the scepter, the Sand Mother spreads her hands, each glowing with eldritch, white flames.  Her heels slowly float up off the ground as she closes her eyes in concentration.  You can sense the power and heat rolling off her in waves, and if you don't do something to disrupt her, you'll likely be burned to a crisp.");
 	if(player.inte > 40) outputText("  She's not even looking at you and seems steeled against lusty interruptions.  Perhaps you can hit her hard enough to shatter her concentration.");
@@ -2583,8 +2583,8 @@ public function gigaFire():void {
 	combatRoundOver();
 }
 
-public function gigaFire2():void {
-	var damage:int = 40 + rand(11);
+export function gigaFire2():void {
+	var damage:number = 40 + rand(11);
 	//Not interrupted:
 	if(monster.statusAffectv1(StatusAffects.Gigafire) < 10) {
 		outputText("The Sand Mother grabs her scepter in both hands, combining the flames that wreath them into an immense, blinding conflagration.  She points at you, and the fire washes out in a wave like a serpent, twisting at you as you try to avoid it, doubling back on itself whenever it misses.  It's unavoidable!  You're enveloped in the consuming fire!");
@@ -2602,11 +2602,11 @@ public function gigaFire2():void {
 	
 //*Telekinesis
 //Throws the PC against the wall.  Does more damage to shorter, thinner PCs.
-public function sandMotherTelekinesis():void {
+export function sandMotherTelekinesis():void {
 	outputText("She narrows her eyes at you, and an immense, magical pressure reaches out, taking hold of you.  It spins you in the air before slamming you into the walls!");
 	
-	var sizeMod:Number = 100;
-	var thickMod:Number = player.thickness / 100 + 0.5;
+	var sizeMod:number = 100;
+	var thickMod:number = player.thickness / 100 + 0.5;
 	sizeMod += player.tallness * thickMod;
 	if(sizeMod < 140) outputText("  You immediately wish you weren't so small, as you're sure she couldn't have flung a heavier champion nearly as easily.");
 	else if(sizeMod >= 200) outputText("  You're glad for your size, as she couldn't seem to accelerate you into the stone as fast as she'd like.  Sometimes eating plenty pays off.");
@@ -2616,8 +2616,8 @@ public function sandMotherTelekinesis():void {
 	//100 thickness, 6' tall: 208
 	//0 thickness, 8' tall: 148
 	//100 thickness, 8' tall: 244
-	var multiplier:Number = sizeMod / 170;
-	var damage:Number = 20;
+	var multiplier:number = sizeMod / 170;
+	var damage:number = 20;
 	damage = multiplier * damage;
 	damage = takeDamage(damage);
 	outputText(" (" + damage + ")");
@@ -2626,17 +2626,17 @@ public function sandMotherTelekinesis():void {
 
 //*Lightning Bolt
 //Unavoidable magic damage.
-public function eatALightningBolt():void {
+export function eatALightningBolt():void {
 
 	outputText("Holding her staff back, she lifts her free hand with her fingers outstretched in a fan.  Sparks dance between her slender digits, coiling around them like snakes.  In a flash, they rush to her palm and erupt in a lightning bolt, striking you instantly and unavoidably!");
-	var damage:int = 30 + rand(10);
+	var damage:number = 30 + rand(10);
 	damage = takeDamage(damage);
 	outputText(" (" + damage + ")");
 	combatRoundOver();
 }
 //*Whisper:
 //As ackbal, stuns the PC 1 round.  Cannot be resisted.
-public function getWhispered():void {
+export function getWhispered():void {
 	outputText("Mouthing, \"<i>Can you hear me?</i>\" the witch's voice intrudes into your mind, matching her mouth word for word.  She floods your psyche with words and thoughts, all of your defeat or submission, each more degrading and more humiliating than the last.  Perhaps the worst are the ones where she turns you over to Lethice after you're broken...  The tumultous thoughts and emotions both stun and arouse you, preventing you from attacking while you try to clear your beleaguered consciousness.");
 	player.createStatusAffect(StatusAffects.Whispered,0,0,0,0);
 	dynStats("lus", 15);
@@ -2645,7 +2645,7 @@ public function getWhispered():void {
 //Notes:
 //Starts combat with sandstorm.  GigaFire's every fifth round.
 //Whispers every fourth.
-public function sandWitchMotherAI():void {
+export function sandWitchMotherAI():void {
 	if(monster.findStatusAffect(StatusAffects.Sandstorm) < 0) {
 		sandStormAttack();
 		return;
@@ -2654,7 +2654,7 @@ public function sandWitchMotherAI():void {
 		gigaFire2();
 		return;
 	}
-	var choices:Array = [];
+	var choices:any[] = [];
 	if(player.findStatusAffect(StatusAffects.Whispered) < 0) choices[choices.length] = getWhispered;
 	choices[choices.length] = eatALightningBolt;
 	choices[choices.length] = sandMotherTelekinesis;
@@ -2665,7 +2665,7 @@ public function sandWitchMotherAI():void {
 
 
 //*Defeat the Sand Mother
-public function defeatTheSandMother():void {
+export function defeatTheSandMother():void {
 	clearOutput();
 	flags[kFLAGS.SAND_MOTHER_DEFEATED] = 1;
 	outputText("Panting ");
@@ -2679,7 +2679,7 @@ public function defeatTheSandMother():void {
 	if(player.hasCock() && player.cockThatFits(monster.vaginalCapacity()) >= 0) addButton(2,"Fuck Her",fuckTheSandMothersCunt);
 	if(player.tentacleCocks() >= 5) addButton(3,"TentacleFuck",tentacleGangBang);
 }
-public function loseToTheSandMother():void {
+export function loseToTheSandMother():void {
 	clearOutput();
 	//DUDALICIOUS
 	if(player.hasCock()) loseToSandMotherBadEnd();
@@ -2689,7 +2689,7 @@ public function loseToTheSandMother():void {
 
 
 //Talk Her Down
-public function talkDownTheMother():void {
+export function talkDownTheMother():void {
 	clearOutput();
 	outputText("Calmly, you approach the Sand Mother's throne, saying, \"<i>I am no demon, witch.  I am [name], and I am ");
 	if(player.cor < 33) outputText("a champion");
@@ -2710,7 +2710,7 @@ public function talkDownTheMother():void {
 	sandWitchMotherFriendlyMenu();
 }
 //*Tentacle Gangbang
-public function tentacleGangBang():void {
+export function tentacleGangBang():void {
 	clearOutput();
 	//>Requires 5+ tentacles.  Every hole is plowed.
 	outputText("Grinning, you discard your [armor] with glee, releasing your wriggling bunch of genital appendages to wave in the air, slithering over each other's spongy, sweat and pre slicked skin.  They wave in the air menacingly, an orgy of glistening green cocks just waiting to be let loose upon the formidable female flesh before you.  Fearfully, the Sand Mother pushes herself against the wall, stammering, \"<i>No... ");
@@ -2771,15 +2771,15 @@ public function tentacleGangBang():void {
 }
 //*Fuck Her Cunt
 //>Sets to resisting with options for repeat rapes.
-public function fuckTheSandMothersCunt():void {
+export function fuckTheSandMothersCunt():void {
 	clearOutput();
 	if (!inCombat) {
 		startCombat(new SandMother(),true);
 		inCombat = false;
 		monster.HP = 0;
 	}
-	var x:int = player.cockThatFits(monster.vaginalCapacity());
-	var y:int = player.cockThatFits2(monster.vaginalCapacity());
+	var x:number = player.cockThatFits(monster.vaginalCapacity());
+	var y:number = player.cockThatFits2(monster.vaginalCapacity());
 	outputText("You admire your prize for a moment, reveling triumphantly in your victory as you hastily disrobe.  The Sand Mother, defeated and weak, declares, \"<i>Fine then, do as you will.  You won't break me.</i>\"  The venom in her voice takes you off-guard - she still thinks you're a demonic agent!  You shrug and roll her over, pulling her up onto her hands and knees.  She can think what she wants, but you're going to tap her super-curvy body regardless.  You smack the weakened Queen through her sheer robes and admire the ripple that moves from one side of her well-endowed tush to the other.");
 	if(silly()) outputText("  Dat booty be poppin', yo!");
 	outputText("  Another slap, this time from the other side, sends waves of motion back across, and you cannot help but give the supple cheeks a tight squeeze immediately after.");
@@ -2850,7 +2850,7 @@ public function fuckTheSandMothersCunt():void {
 }
 
 //*ScissorAnDrink
-public function scissorAndDrink():void {
+export function scissorAndDrink():void {
 	clearOutput();
 	//>Sets to resisting with options for repeat rapes.
 	outputText("Looking at the Sand Mother, you can't help but feel a flutter of heat swim through your nethers, and as you close in, you can feel the moisture gathering on your mons in anticipation.  The ultra-curvy witch's teats have turned her robe into a set of four soaked tents, and you can tell from the scent she's giving off that she's as ready for a little womanly love as you are.  You squeeze one of her breasts until the exceedingly well-endowed woman is moaning, squirting milk through her silken robes to dribble down the curvature of her bust's underside.  You collect some on a fingertip before roughly thrusting it into her protesting lips to silence the insipid complaints she's started voicing.");
@@ -2902,7 +2902,7 @@ public function scissorAndDrink():void {
 	
 //*Lose Male Loss
 //>Get turned into breeder or sumthin.
-public function loseToSandMotherBadEnd():void {
+export function loseToSandMotherBadEnd():void {
 	clearOutput();
 	outputText("Stumbling back into a wall, you try to hold your ");
 	if(player.HP < 1) outputText("battered body aloft, but your wounds are too great, robbing you of strength.");
@@ -2981,7 +2981,7 @@ public function loseToSandMotherBadEnd():void {
 	addButton(0,"Next",menLoseToQueenMotherVolI);
 }
 //Epilogue:
-public function menLoseToQueenMotherVolI():void {
+export function menLoseToQueenMotherVolI():void {
 	clearOutput();
 	outputText("The champion woke to a body changed.  " + player.mf("He","She") + " now looked every bit the mirror image of the Cum Witch - a thick, girthy cock, two swollen balls, a pair of pendulous breasts, and skin as dark as the blackest night.  She had become one of them, a futanari witch with an insatiable libido.  As best as she could remember, she had been born a scant ten years earlier, and aged to maturity in five.  She volunteered to be a cum witch when the call went out and beat out over two dozen of her lusty sisters for the vaunted position.  Now, the elder Cum Witch was her best friend, and the two gleefully spent their days dick-deep in double-cunts, knocking up their sisters with reckless abandon.  In their free time, they studied spells and practiced stuffing each other with increasingly large seminal deposits.");
 	
@@ -2997,7 +2997,7 @@ public function menLoseToQueenMotherVolI():void {
 //*Lose Female Loss
 //>Get turned into sand witch.
 //Additional Sand Witch Entry (BY XODIN)
-public function loseToSandMother():void {
+export function loseToSandMother():void {
 	clearOutput();
 	outputText("The world grows dizzy as your ");
 	if(player.HP < 1) outputText("heavily punished and aching body is filled with too much agony to continue.");
@@ -3080,7 +3080,7 @@ public function loseToSandMother():void {
 }
 
 //Epilogue:
-public function sandMotherBadEndsLadiesEpilogue():void {
+export function sandMotherBadEndsLadiesEpilogue():void {
 	clearOutput();
 	outputText("The Champion awoke to a body changed. " + player.mf("His","Her") + " body had been transformed in to that of a Sand Witch's.");
 	//if player had six breasts
@@ -3109,12 +3109,12 @@ public function sandMotherBadEndsLadiesEpilogue():void {
 //(Alt(More complex options above): The Sand Mother sits atop her throne, smiling benevolently at you as you approach.  It appears you've made an ally.
 //*Friendly Fuck (Optional?)
 //>Fuck her friendly style.
-public function friendlySandMotherFuck():void {
+export function friendlySandMotherFuck():void {
 	clearOutput();
 	startCombat(new SandMother(),true);
 	inCombat = false;
-	var x:int = player.cockThatFits(monster.vaginalCapacity());
-	var y:int = player.cockThatFits2(monster.vaginalCapacity());
+	var x:number = player.cockThatFits(monster.vaginalCapacity());
+	var y:number = player.cockThatFits2(monster.vaginalCapacity());
 	//First Time:
 	if(flags[kFLAGS.TIMES_FRIENDLY_FUCKED_SAND_MOTHER] == 0) {
 		outputText("Casting your gaze around to ensure privacy, you lower your brows conspiringly and inquire into the Sand Mother's love life.");
@@ -3258,7 +3258,7 @@ public function friendlySandMotherFuck():void {
 
 //*Friendly Milk-Ride (Optional?)
 //>Lesbo milk-filling
-public function lesboMilkFilling():void {
+export function lesboMilkFilling():void {
 	clearOutput();
 	
 	flags[kFLAGS.TIMES_FRIENDLY_FUCKED_SAND_MOTHER]++;
@@ -3331,7 +3331,7 @@ public function lesboMilkFilling():void {
 	
 //*History
 //>Learn about the origin of the sand witches.
-public function sandWitchHistory():void {
+export function sandWitchHistory():void {
 	clearOutput();
 	outputText("You inquire about the history of the sand witches, and how they came to be.  The Sand Mother gives you a benign smile and offers, \"<i>With pleasure.  It is so rare that I get to recount the story to one not of our order.</i>\"  She utters a few spidery words that seem to ring in your ears, and a luminous, floating illusion appears before her, all floating shapeless colors.  As she begins to talk, the blobs shift into the actors in her tale, allowing you to view the story as it happens.");
 	
@@ -3356,7 +3356,7 @@ public function sandWitchHistory():void {
 
 //*Current State
 //>Learn about the current state of the sand witches and their plans
-public function currentStateOfInterwebs():void {
+export function currentStateOfInterwebs():void {
 	clearOutput();
 	outputText("You inquire as to the current state of the sand witches, and this coven in particular. The Queen Witch's brow creases in thought as she considers your request, tapping her chin and gazing into the intricate, swirling lights above.");
 	
@@ -3383,7 +3383,7 @@ public function currentStateOfInterwebs():void {
 //*Cum Witches
 //(Requires met cum witch or had history chat)
 //>Ask about the role of cum witches in the covens.
-public function discussCumWitches():void {
+export function discussCumWitches():void {
 	clearOutput();
 	outputText("You inquire as to why they have cum witches.");
 	outputText("\n\n\"<i>Oh, the Cum Witches?  Well, that order arose out of need rather than desire.  We needed to procreate, and just any old male would not suffice.  The Great Mother needed something beyond the ability of a normal human male - a body that knows what it is to be a woman combined with almost limitless virility and carefully engineered seed that would swell our numbers with exactly what we need.  She had learned how to shape bodies to her whims, so forming a phallus and specialized, high output gonads was something easily done.</i>\"");
@@ -3420,27 +3420,27 @@ public function discussCumWitches():void {
 }
 
 //Send them out:
-public function sendOutCumWitch():void {
+export function sendOutCumWitch():void {
 	clearOutput();
 	outputText("You request she put the cum witches' boundless virility and desire to work for the coven, letting some of them out to venture the sands in search of new recruits.  (<b>From now on, there's a chance you'll encounter cum witches in the desert.</b>)");
 	flags[kFLAGS.CUM_WITCHES_FIGHTABLE] = 1;
 	sendOutOrKeepInEnding();
 }
 //Keep Them In:
-public function keepCumWitchesIn():void {
+export function keepCumWitchesIn():void {
 	clearOutput();
 	outputText("You request she put a hold on sending out the cum witches.  Their aggressive, sexual recruitment methods are getting in your way, and for now, it would be best if they were out of your way.");
 	flags[kFLAGS.CUM_WITCHES_FIGHTABLE] = 0;
 	sendOutOrKeepInEnding();
 }
 
-public function sendOutOrKeepInEnding():void {
+export function sendOutOrKeepInEnding():void {
 	outputText("\n\nThe Sand Mother nods and graciously answers, \"<i>Very well.  I will honor your request, for now.  I cannot speak for the other covens, but you are unlikely to stray into their territory.  When our time of ascendance comes, do not expect me to honor your requests so freely.  We will stop the Demon Queen however we must, regardless of your wishes.</i>\"");
 	doNext(playerMenu);
 }
 
 //Bolster Numbers:
-public function moreCumWitchesPlease():void {
+export function moreCumWitchesPlease():void {
 	clearOutput();
 	//Bimbo version:
 	if(player.findPerk(PerkLib.BimboBrains) >= 0 || player.findPerk(PerkLib.FutaFaculties) >= 0) {
@@ -3472,7 +3472,7 @@ public function moreCumWitchesPlease():void {
 	
 //*Pick Mothers
 //>Ask about how Sand Mothers are chosen.
-public function askHowSandMothersAreChosen():void {
+export function askHowSandMothersAreChosen():void {
 	clearOutput();
 	outputText("You ask the Sand Mother how her people choose who will be a Sand Mother of a new coven.");
 	
@@ -3492,7 +3492,7 @@ public function askHowSandMothersAreChosen():void {
 }
 //*Leave Alone/Send Lackeys
 //>Request sand witches stop or start attacking you.
-public function leaveAloneSendLackeysToggle():void {
+export function leaveAloneSendLackeysToggle():void {
 	clearOutput();
 	//Leave Alone
 	if(flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] == 0) {
@@ -3517,7 +3517,7 @@ public function leaveAloneSendLackeysToggle():void {
 }
 //*Lactaid
 //>Get lactaid
-public function getLactaidFromWitches():void {
+export function getLactaidFromWitches():void {
 	clearOutput();
 	outputText("You ");
 	if(player.cor < 33) outputText("politely request");
@@ -3534,7 +3534,7 @@ public function getLactaidFromWitches():void {
 }
 //*Labova
 //>Get Labova
-public function getLaBova():void {
+export function getLaBova():void {
 	clearOutput();
 	outputText("You ask for some La Bova");
 	if(player.cor < 33) outputText(" with a blush");
@@ -3552,7 +3552,7 @@ public function getLaBova():void {
 }
 	
 //TURN EM OFF!
-public function unfriendlyWitchToggle():void {
+export function unfriendlyWitchToggle():void {
 	clearOutput();
 	if(flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE]  == 0) {
 		outputText("Imperiously, you fold your arms and tell the queen of the milky slatterns to cease her coven's constant, badgering attacks out on the sands.  Her face registers an incredulous expression at the decree, and she matches your confrontation pose, her forearms pressing deep into the recesses of her prodigious bust.  You await her response, and for a moment, you think you're going to have to fight her again.  Then, her stern gaze wavers as she sags into her throne, defeated before she could even start to resist.");
@@ -3576,7 +3576,7 @@ public function unfriendlyWitchToggle():void {
 //addButton(5,"Get LaBova",takeLaBovaOrLactaid, false);
 //addButton(6,"Get Lactaid",takeLaBovaOrLactaid);
 //*Raid LaBova/Lactaid
-public function takeLaBovaOrLactaid(lactaid:Boolean = true):void {
+export function takeLaBovaOrLactaid(lactaid:boolean = true):void {
 	clearOutput();
 	outputText("Smirking, you circle around the Sand Mother's throne towards the secure chests behind her.  She stiffens when you come close but doesn't make a move.  The poor little witch is afraid of you, and with good reason.  You gather the item you came for, condescending patting the sorceress's platinum tresses on your way back in front of her throne.  She glares at you.\n\n");
 	//New lines and take appropriate item.
@@ -3589,7 +3589,7 @@ public function takeLaBovaOrLactaid(lactaid:Boolean = true):void {
 
 }
 
-public function pullLever():void {
+export function pullLever():void {
 	clearOutput();
 	outputText("There is a loud rumbling from the direction of the cavernous commons...");
 	flags[kFLAGS.SANDWITCH_THRONE_UNLOCKED] = 1;
@@ -3597,7 +3597,7 @@ public function pullLever():void {
 }
 
 //*Take Fertile Pills ✓Kirbu
-public function takeFertilePills():void {
+export function takeFertilePills():void {
 	clearOutput();
 	if(player.findStatusAffect(StatusAffects.Contraceptives) < 0) outputText("You aren't under the effects of a contraceptive, so taking a pink pill would do nothing.");
 	//{Contraceptives}
@@ -3610,7 +3610,7 @@ public function takeFertilePills():void {
 	doNext(playerMenu);
 }
 //*Take Barren Pills✓Kirbu
-public function takeBarrenPills():void {
+export function takeBarrenPills():void {
 	clearOutput();
 	//{Already contraceptive'ed} 
 	if(player.findStatusAffect(StatusAffects.Contraceptives) >= 0) outputText("You're already under the effects of contraceptives.  Taking one of the brown pills wouldn't do anything.");
@@ -3626,7 +3626,7 @@ public function takeBarrenPills():void {
 }
 //*Friendly Cum Witch Blessing
 //✓Kirbu
-public function friendlyCumWitchBlessing():void {
+export function friendlyCumWitchBlessing():void {
 	clearOutput();
 	outputText("You ask the Cum Witch if she could use her magic to gift you with some kind of blessing since she has such an affinity for sexualized magics and fertility.  ");
 	if(player.cor < 33) outputText("Blushing, ");
@@ -3649,7 +3649,7 @@ public function friendlyCumWitchBlessing():void {
 	addButton(4,"Nevermind",changeMindAboutBlessings);
 }
 //*Nevermind ✓Kirbu
-public function changeMindAboutBlessings():void {
+export function changeMindAboutBlessings():void {
 	clearOutput();
 	outputText("Thinking better of it, you grab your [armor] and get dressed, telling the jizz-obsessed enchantress that you don't need her gifts for now.");
 	outputText("\n\n\"<i>Awww, and I thought we were going to have some fun,</i>\" the sable seductress purrs.  \"<i>Perhaps you'll see the error of your ways and come back for a proper blessing soon.</i>\"  She pumps her fat cock until thick dribbles of sperm-tinted pre-cum slobbers out of her drooling dick-tip once more.  \"<i>Don't be a stranger.</i>\"");
@@ -3657,7 +3657,7 @@ public function changeMindAboutBlessings():void {
 }
 
 //*Virility/Fertility
-public function cumWitchBlessed(virility:Boolean = true):void {
+export function cumWitchBlessed(virility:boolean = true):void {
 	clearOutput();
 	outputText("Your choice made, you lower yourself until you are seated on your [legs], your face aligned at the perfect height to fellate her drippy, onyx dong.  You can still smell the scent of freshly-fucked pussy hanging around her shaft like some kind of sexual haze.  She saunters up, wide ebony hips swaying hypnotically as her male-half sways pendulously, closer and closer.  Her hands come to rest on your head and run through your " + hairDescript() + " with slow strokes as she nudges her crown against your upper lip, letting it smear her juices under your nose and across your cheek.  The eleven inches throb pleasantly against the side of your face, the veins standing out in stark relief as you glance down to her orange-sized cum-factories, held in a tight, smooth pouch just below.");
 	outputText("\n\nUnthinkingly, you reach out to fondle the heavy package, your fingers curling around the woman's soft sack and rolling the swollen testes back and forth.  The black beauty grabs her shaft and lays it across your nose, up between your eyes, and onto your forehead, forcing you to go cross-eyed as you admire it.  An electric tingle runs through her fingers and into your scalp, short-circuiting your thoughts for a second.");
@@ -3704,7 +3704,7 @@ public function cumWitchBlessed(virility:Boolean = true):void {
 }
 
 //*Impregnating Pregnant Sand Witches by Xodin (NEEDS EDIT)
-public function knockUpSomeDoubleStuffedSandWitches():void {
+export function knockUpSomeDoubleStuffedSandWitches():void {
 	clearOutput();
 	outputText("Figuring these horny, pregnant sluts should be more than receptive to a little sex, you shed your [armor].\n\n");
 	outputText("The heavily pregnant sand witches all stare at your [cock biggest] with rapt attention before they begin crawling towards you.  \"<i>Please!</i>\" each of them cry out.  \"<i>Too horny!  Too many hormones!</i>\"  Some of them crawl on their hands and knees with their quadruple breasts and pregnant bellies dragging along the ground.  \"<i>We need more!</i>\"  One cries out.  \"<i>More cock!</i>\" cries another.  \"<i>More children!</i>\" begs a third rubbing her belly.  \"<i>Fill us!</i>\" chants one before the others chime in.  \"<i>Yes; Fill us! Fill us!  Fill us!</i>\"  They paw at your genitals with sexual hunger burning in their eyes.  The smell of wet pussies permeates the air, encouraging your body's own arousal.");
@@ -3723,9 +3723,9 @@ public function knockUpSomeDoubleStuffedSandWitches():void {
 }
 
 //~ FUCK ONE
-public function fuckOneSandWitch():void {
+export function fuckOneSandWitch():void {
 	clearOutput();
-	var x:int = player.cockThatFits(50);
+	var x:number = player.cockThatFits(50);
 	if(x < 0) x = player.smallestCockIndex();
 	//{if player does not have a tentacle cock} 
 	if(player.tentacleCocks() == 0) outputText("You grab the tanned shoulders of the closest pregnant witch and flip her over on to her back, trapping her beneath the weight of her belly and breasts while you grab both of her ankles.  Her dirty blonde, sweat-soaked hair lies in waves around her head on the floor as she pants heavily in sexual desperation.");
@@ -3736,7 +3736,7 @@ public function fuckOneSandWitch():void {
 	else outputText("  You reach forward with a hand to grab her other ankle and with your cock and arm you spread her tanned legs wide to reveal her large double pussy, bloated from her pregnancy.");
 	
 	outputText("\n\nHer dual set of labia are a darker shade than the rest of her tan flesh and enthusiastically drip with her juices.  One set is gaping wide, clearly under pressure from her womb within.  The other set are swollen but eager to be filled with true cock flesh capable of sowing her second womb full of seed.  \"<i>P-please!</i>\" she begs as if she was a wounded animal.  Her multiple breasts and belly jiggle and sway over the rest of her as she tries to angle her pelvis towards you.  The knob of her belly button traces circles in the air as her hips gyrate.");
-	var multi:Boolean = false;
+	var multi:boolean = false;
 	//{if player has two tentacle cocks and at least one other cock that will fit her pussy}
 	if(player.tentacleCocks() >= 2 && player.cockTotal() >= 3 && player.cocks[x].cockType != CockTypesEnum.TENTACLE) {
 		outputText("\n\nYour tentacle cocks release the pregnant witch's ankles and wrap around her thighs instead. You align a third cock at the base of her second pussy with the head gently sliding between her nether's sopping wet lips. With a strong tug your tentacle cocks pull on the girl's tanned thighs and impale her sex upon your manhood.");
@@ -3826,10 +3826,10 @@ public function fuckOneSandWitch():void {
 }
 
 // FUCK TWO AT ONCE
-public function fuckTwoPregWitches():void {
+export function fuckTwoPregWitches():void {
 	clearOutput();
-	var x:int = player.cockThatFits(50);
-	var y:int = player.cockThatFits2(50);
+	var x:number = player.cockThatFits(50);
+	var y:number = player.cockThatFits2(50);
 	outputText("These hormonally overwrought witches are each little more than five huge fleshy orbs of tits and bellies, desperately crawling towards you on hands and knees as their stares fixate on your " + cockDescript(y) + ".  ");
 	//{if player has two long tentacle cocks} 
 	if(player.tentacleCocks() >= 2) outputText("Almost of their own accord your tentacle cocks lash out, wrapping around the arms of the two closest girls, lifting them to their knees only to roll them backwards and on to their sides with their backs to each other.  ");
@@ -3907,14 +3907,14 @@ public function fuckTwoPregWitches():void {
 }
 
 //~ FUCK EM ALL
-public function fuckAllThePregWitches():void {
+export function fuckAllThePregWitches():void {
 	clearOutput();
-	var x:int = player.cockThatFits(50);
+	var x:number = player.cockThatFits(50);
 	outputText("The witches crawl forwards with their bellies and double rows of milk filled tits impeding their movements. Despite their glistening tanned bodies and highly toned legs they still amount to little more than lewd piles of fleshy orbs, each one with double pairs of cunts including ones insatiably starving for cum to fill their empty second wombs. Each of their light brown and sweaty bodies looks equally appetizing, and as [eachCock] slowly engorges it becomes clear that if you're going to fuck any of them then you're going have to fuck all of them.  Anything less than knocking up all of the witches simply won't do.  By the time you're done with them, half of the next generation of sand witches will call you 'father'.");
 	
 	outputText("\n\nAs [eachCock] starts rising in to the air, it isn't difficult to make your way behind the slow moving witches and encourage them to raise their dual pussies in to the air.  Each of their torsos are heavily weighted down to the ground, but this aids in their tilting their pelvises to ensure their dripping pussies are properly displayed between their toned thighs.  Two pairs of dark and swollen labia present themselves to you on each witch, and you can easily see how one pair of nether lips are gaping wide from the pressure built up in the womb it leads to.  The other pair is just as swollen but seems to be dripping pussy juices with greater desire as it thirsts to fill its empty womb with seed.  The rivers of pussy juice keep the thighs and undersides of the pregnant bellies on each of these whores incredibly wet and slick.");
 	
-	var multi:Boolean = false;
+	var multi:boolean = false;
 	
 	//{if player has a single cock} 
 	if(player.cockTotal() == 1 || player.cockThatFits2(50) < 0) {
@@ -4075,7 +4075,7 @@ public function fuckAllThePregWitches():void {
 }
 
 //*Sand Witch Milk Bath -McGirt
-public function milkBathsAhoy():void {
+export function milkBathsAhoy():void {
 	clearOutput();
 	outputText("Well, you can probably squeeze in a quick bath.  You've already dealt with the bulk of their number, and this area seems devoid of any more of them.  Your [armor] easily slides into a pile alongside of rounded, stone tub while the dusky titty-monster looks on with anticipation.  Once nude, you hop down inside and say, \"<i>Bath Time.</i>\"");
 	
@@ -4102,7 +4102,7 @@ public function milkBathsAhoy():void {
 }
 
 //[Next] (Relax)
-public function finishMilkBath():void {
+export function finishMilkBath():void {
 	clearOutput();
 	outputText("You sit in the tub for a while, letting the fragrant fluids soak into your " + player.skinFurScales() + ".  Yet, you have work to do, and eventually, you tire of relaxing in the sand witches' endless white bounty.  You pull out the tub's plug and climb out, finding a towel on the wall.  Thankfully, the milk doesn't seem to leave behind any residue, and you feel clean and refreshed, if a bit horny.");
 	//(+Lust, -Fatigue)
@@ -4112,7 +4112,7 @@ public function finishMilkBath():void {
 }
 
 //[Milk Girl]
-public function grabTheMilkGirl():void {
+export function grabTheMilkGirl():void {
 	clearOutput();
 	outputText("You call out to the milk slave before she can slink away, and wade over to the side of the tub, leaving your face a few scant inches from her massive, milk-laden jugs. She cocks her head to the side, obviously unused to the attention, and quietly whispers, \"<i>" + player.mf("M-master?","M-mistress?") + "</i>\"");
 	outputText("\n\nYou flash her a mischievous grin before grabbing a handful of her giant tits and pulling, yanking her into the tub with you. The milk-maid lets out a sharp cry of surprise as she tumbles in, a huge splash of cream spraying over the rim of the tub, painting the walls white. Gasping, her head pops back over the surface of her own milk, long ebony hair dripping onto the tops of her seemingly-buoyant teats, which bob over the milky waves with a strangely serene, regal grace.  \"<i>" + player.mf("M-master?","M-mistress?") + "</i>\" the slave girl repeats, her lower lip quivering with fright as she wades through her own lactation, slowly retreating to the edge of the tub. Smiling, you reach out and stroke her cheek, telling her it's all right, that you thought she might like a bath, too. She starts to reply in her broken dialect, but you cut her off with a playful stroke of her massive mounds, urging her over toward you. Though still nervous, she does as you ask, sliding up under your arm and onto your lap. Once seated, she looks ups to you with saucer-like brown eyes until you cup her cheek and give her a short, tender kiss, pressing your lips to her dusky mounds. To your delight, she seems to melt at your touch, relaxing in an instant as you hold her as close as you can, seperated only by her prodigious chest");
@@ -4153,7 +4153,7 @@ public function grabTheMilkGirl():void {
 }
 
 //[Don't]
-public function dontFuckMilkBathBabe():void {
+export function dontFuckMilkBathBabe():void {
 	clearOutput();
 	outputText("You allow the girl to continue for a long, long while until your entire body feels deeply refreshed, her milk having soaked into your body and making you feel fresh and revitalized. You start to thank the milk girl for the pleasurable company, but when you open your mouth, she slips into your arms and presses her lips to yours.  Chuckling to yourself, you hold the girl as tight against yourself as her udders will allow, turning her to the side to let her nuzzle her cheek into your [chest], kissing the top of her head before the two of you climb from the pool.  You have to help her out, her massive extra weight nearly dragging her back in except for your quick reflexes.  You gather your [armor] and ruffle the milk slave's hair before turning back to the task at hand.");
 	//[+Lust, +HP, -Fatigue]
@@ -4163,9 +4163,9 @@ public function dontFuckMilkBathBabe():void {
 }
 
 //[Fuck Her] (PC has a Dick)
-public function fuckMilkbabeWithPenor():void {
+export function fuckMilkbabeWithPenor():void {
 	clearOutput();
-	var x:int = player.cockThatFits(50);
+	var x:number = player.cockThatFits(50);
 	if(x < 0) {
 		x = player.smallestCockIndex();
 	}
@@ -4190,7 +4190,7 @@ public function fuckMilkbabeWithPenor():void {
 }
 
 //[Fuck Her] (PC has Cooch & C+cups)
-public function ladyFucks():void {
+export function ladyFucks():void {
 	clearOutput();
 	outputText("You turn around in the milky pool, pulling the cute little slave tight against you.  She gasps with surprise, but settles as soon as you press your lips to hers, your hands wandering across her huge teats and supple, milky body.  She nuzzles up against you, her head resting on your [chest] as you hold her against yourself, stroking her dark hair.  After a few moments of such a simple pleasure, the little slave girl shifts her cheek along your breast, wrapping her full, dusky lips around your [nipple].  You let out a long moan as she suckles gently");
 	if(player.lactationQ() >= 200) outputText(", drawing out a trickle of milk from your motherly reserves.  She gulps deeply, smiling up at you as a trickle of your milk runs down her chin, dripping into the pool of her own");
@@ -4213,7 +4213,7 @@ public function ladyFucks():void {
 }
 	
 //[Drink & Masturbate]
-public function drinkNFap():void {
+export function drinkNFap():void {
 	clearOutput();
 	outputText("\"<i>Wait,</i>\" you call out to the ebony woman, letting the milk obscure your hands as you begin to masturbate, \"<i>I want a drink.</i>\"  Sheepishly, the milk slave obliging shifts to drag her tits back into place.");
 	outputText("\n\nShe begs, \"<i>Forgiveness please, [Master].  Bath slut would love to give you more milk.</i>\"  She rolls her shoulders, sending an enticing jiggle through the milk-weighted fluid-factories on the edge of the tub, the sable flesh of her nipples blotted by fresh drops of white.  The milky morsels roll down the undercurve of the black slut's tits before dripping into the tub and sending tiny waves of cream through the tub.  Her well-used teat looks almost over-engorged by this point, puffy, swollen, and a little red, even through her coal-dark skin.  Thick streams of her alabaster nectar start to run from each of her nipple-tips as you lean closer, the anticipation already too much for the ever-full milk-machine of a woman.");
@@ -4268,7 +4268,7 @@ public function drinkNFap():void {
 120 == impossible to conceal
 72 == painfully distended
 48 == bulges with unclean spawn..blahblahblah*/
-public function sandPregUpdate():Boolean {
+export function sandPregUpdate():boolean {
 	//1: 
 	if(player.pregnancyIncubation == 336) {
 		outputText("\nYour breasts have felt unusually heavy recently, and a strange pulsing sensation occasionally emanates from them.  Your appetite is a little off; you could really go for some milk...\n");
@@ -4341,7 +4341,7 @@ public function sandPregUpdate():Boolean {
 }
 
 //*Witch Birth Scene:
-public function birthAWitch():void {
+export function birthAWitch():void {
 	outputText("\n<b><u>Something amazing happens...</u></b>\n");
 	if(player.vaginas.length == 0) {
 		outputText("You feel a terrible pressure in your groin... then an incredible discomfort accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);

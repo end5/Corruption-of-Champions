@@ -1,83 +1,83 @@
-﻿package classes
-{
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.ArmorLib;
-	import classes.Items.ConsumableLib;
-	import classes.Items.UseableLib;
-	import classes.Items.WeaponLib;
-	import classes.Scenes.Dungeons.Factory.SecretarialSuccubus;
-	import classes.Scenes.NPCs.Kiha;
-	import classes.Scenes.Quests.UrtaQuest.MilkySuccubus;
-	import classes.internals.ChainedDrop;
-	import classes.internals.RandomDrop;
-	import classes.internals.Utils;
-	import classes.internals.WeightedDrop;
+ 
 
-	import flash.utils.getQualifiedClassName;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	 
 
 	/**
 	 * ...
 	 * @author Yoffy, Fake-Name, aimozg
 	 */
-	public class Monster extends Creature
+	export class Monster extends Creature
 	{
 
-		protected final function get player():Player
+		protected   get player():Player
 		{
 			return game.player;
 		}
-		protected final function outputText(text:String,clear:Boolean=false):void{
+		protected   outputText(text:string,clear:boolean=false):void{
 			game.outputText(text,clear);
 		}
-		protected final function combatRoundOver():void{
+		protected   combatRoundOver():void{
 			game.combatRoundOver();
 		}
-		protected final function cleanupAfterCombat():void
+		protected   cleanupAfterCombat():void
 		{
 			game.cleanupAfterCombat();
 		}
-		protected static function showStatDown(a:String):void{
+		protected static  showStatDown(a:string):void{
 			kGAMECLASS.mainView.statsView.showStatDown(a);
 		}
-		protected final function statScreenRefresh():void {
+		protected   statScreenRefresh():void {
 			game.statScreenRefresh();
 		}
-		protected final function doNext(eventNo:Function):void { //Now typesafe
+		protected   doNext(eventNo:() => void):void { //Now typesafe
 			game.doNext(eventNo);
 		}
-		protected final function combatMiss():Boolean {
+		protected   combatMiss():boolean {
 			return game.combatMiss();
 		}
-		protected final function combatEvade():Boolean {
+		protected   combatEvade():boolean {
 			return game.combatEvade();
 		}
-		protected final function combatFlexibility():Boolean {
+		protected   combatFlexibility():boolean {
 			return game.combatFlexibility();
 		}
-		protected final function combatMisdirect():Boolean {
+		protected   combatMisdirect():boolean {
 			return game.combatMisdirect();
 		}
-		protected function get consumables():ConsumableLib{
+		protected  get consumables():ConsumableLib{
 			return game.consumables;
 		}
-		protected function get useables():UseableLib{
+		protected  get useables():UseableLib{
 			return game.useables;
 		}
-		protected function get weapons():WeaponLib{
+		protected  get weapons():WeaponLib{
 			return game.weapons;
 		}
-		protected function get armors():ArmorLib{
+		protected  get armors():ArmorLib{
 			return game.armors;
 		}
 		//For enemies
-		public var bonusHP:Number = 0;
-		private var _long:String = "<b>You have encountered an unitialized  Please report this as a bug</b>.";
-		public function get long():String
+		public  bonusHP:number = 0;
+		private  _long:string = "<b>You have encountered an unitialized  Please report this as a bug</b>.";
+		public  get long():string
 		{
 			return _long;
 		}
-		public function set long(value:String):void
+		public  set long(value:string):void
 		{
 			initsCalled.long = true;
 			_long = value;
@@ -85,16 +85,16 @@
 
 
 		//Is a creature a 'plural' encounter - mob, etc.
-		public var plural:Boolean = false;
-		public var imageName:String = "";
+		public  plural:boolean = false;
+		public  imageName:string = "";
 
 		//Lust vulnerability
-		public var lustVuln:Number = 1;
+		public  lustVuln:number = 1;
 
-		public static const TEMPERMENT_AVOID_GRAPPLES:int = 0;
-		public static const TEMPERMENT_LUSTY_GRAPPLES:int = 1;
-		public static const TEMPERMENT_RANDOM_GRAPPLES:int = 2;
-		public static const TEMPERMENT_LOVE_GRAPPLES:int = 3;
+		public static  TEMPERMENT_AVOID_GRAPPLES:number = 0;
+		public static  TEMPERMENT_LUSTY_GRAPPLES:number = 1;
+		public static  TEMPERMENT_RANDOM_GRAPPLES:number = 2;
+		public static  TEMPERMENT_LOVE_GRAPPLES:number = 3;
 		/**
 		 * temperment - used for determining grapple behaviors
 		 * 0 - avoid grapples/break grapple
@@ -102,46 +102,46 @@
 		 * 2 - random
 		 * 3 - love grapples
 		*/
-		public var temperment:Number = TEMPERMENT_AVOID_GRAPPLES;
+		public  temperment:number = TEMPERMENT_AVOID_GRAPPLES;
 
 		//Used for special attacks.
-		public var special1:Function = null;
-		public var special2:Function = null;
-		public var special3:Function = null;
+		public  special1:() => void = null;
+		public  special2:() => void = null;
+		public  special3:() => void = null;
 
 		//he
-		public var pronoun1:String = "";
-		public function get Pronoun1():String{
+		public  pronoun1:string = "";
+		public  get Pronoun1():string{
 			if (pronoun1=="") return "";
 			return pronoun1.substr(0,1).toUpperCase()+pronoun1.substr(1);
 		}
 		//him
-		public var pronoun2:String = "";
-		public function get Pronoun2():String{
+		public  pronoun2:string = "";
+		public  get Pronoun2():string{
 			if (pronoun2=="") return "";
 			return pronoun2.substr(0,1).toUpperCase()+pronoun2.substr(1);
 		}
 		//3: Possessive his
-		public var pronoun3:String = "";
-		public function get Pronoun3():String{
+		public  pronoun3:string = "";
+		public  get Pronoun3():string{
 			if (pronoun3=="") return "";
 			return pronoun3.substr(0,1).toUpperCase()+pronoun3.substr(1);
 		}
 
-		private var _drop:RandomDrop = new ChainedDrop();
-		public function get drop():RandomDrop { return _drop; }
-		public function set drop(value:RandomDrop):void
+		private  _drop:RandomDrop = new ChainedDrop();
+		public  get drop():RandomDrop { return _drop; }
+		public  set drop(value:RandomDrop):void
 		{
 			_drop = value;
 			initedDrop = true;
 		}
 
-		public function eMaxHP():Number
+		public  eMaxHP():number
 		{
 			return this.tou * 2 + 50 + this.bonusHP;
 		}
 
-		public function addHP(hp:Number):void{
+		public  addHP(hp:number):void{
 			this.HP += hp;
 			if (this.HP<0) this.HP = 0;
 			else if (this.HP>eMaxHP()) this.HP = eMaxHP();
@@ -150,32 +150,32 @@
 		/**
 		 * @return HP/eMaxHP()
 		 */
-		public function HPRatio():Number{
+		public  HPRatio():number{
 			return HP/eMaxHP();
 		}
 
 		/**
 		 * @return damage not reduced by player stats
 		 */
-		public function eBaseDamage():Number {
+		public  eBaseDamage():number {
 			return str + weaponAttack;
 		}
 
 		/**
 		 * @return randomized damage reduced by player stats
 		 */
-		public function calcDamage():int{
+		public  calcDamage():number{
 			return player.reduceDamage(eBaseDamage());
 		}
 
-		protected function totalXP(playerLevel:Number=-1):Number
+		protected  totalXP(playerLevel:number=-1):number
 		{
 			if (playerLevel == -1) playerLevel = game.player.level;
 			//
 			// 1) Nerf xp gains by 20% per level after first two level difference
 			// 2) No bonuses for underlevel!
 			// 3) Super high level folks (over 10 levels) only get 1 xp!
-			var difference:Number = playerLevel - this.level;
+			var difference:number = playerLevel - this.level;
 			if(difference <= 2) difference = 0;
 			else difference -= 2;
 			if(difference > 4) difference = 4;
@@ -183,20 +183,20 @@
 			if(playerLevel - this.level > 10) return 1;
 			return Math.round(this.additionalXP + (this.baseXP() + this.bonusXP()) * difference);
 		}
-		protected function baseXP():Number
+		protected  baseXP():number
 		{
 			return[200, 10, 20, 30, 40, 50, 55, 60, 66, 75,//0-9
 				83, 85, 92, 100, 107, 115, 118, 121, 128, 135,//10-19
 				145][Math.round(level)] || 200;
 		}
-		protected function bonusXP():Number
+		protected  bonusXP():number
 		{
 			return rand([200,10,20,30,40,50,55,58,66,75,
 					83,85,85,86,92,94,96,98,99,101,
 					107][Math.round(this.level)] || 130);
 		}
 
-		public function Monster()
+		public  constructor()
 		{
 			// trace("Generic Monster Constructor!");
 			this.gender = GENDER_NONE;
@@ -375,10 +375,10 @@
 			//checkMonster();
 		}
 
-		private var _checkCalled:Boolean = false;
-		public function get checkCalled():Boolean { return _checkCalled; }
-		public var checkError:String = "";
-		public var initsCalled:Object = {
+		private  _checkCalled:boolean = false;
+		public  get checkCalled():boolean { return _checkCalled; }
+		public  checkError:string = "";
+		public  initsCalled:Record<string, any> = {
 			a:false,
 			short:false,
 			long:false,
@@ -390,33 +390,33 @@
 			drop:false
 		};
 		// MONSTER INITIALIZATION HELPER FUNCTIONS
-		protected function set initedGenitals(value:Boolean):void{
+		protected  set initedGenitals(value:boolean):void{
 			initsCalled.genitals = value;
 		}
-		protected function set initedBreasts(value:Boolean):void{
+		protected  set initedBreasts(value:boolean):void{
 			initsCalled.breasts = value;
 		}
-		protected function set initedDrop(value:Boolean):void{
+		protected  set initedDrop(value:boolean):void{
 			initsCalled.drop = value;
 		}
-		protected function set initedStrTouSpeInte(value:Boolean):void{
+		protected  set initedStrTouSpeInte(value:boolean):void{
 			initsCalled.str_tou_spe_inte = value;
 		}
-		protected function set initedLibSensCor(value:Boolean):void{
+		protected  set initedLibSensCor(value:boolean):void{
 			initsCalled.lib_sens_cor = value;
 		}
-		protected const NO_DROP:WeightedDrop = new WeightedDrop();
+		protected  NO_DROP:WeightedDrop = new WeightedDrop();
 
-		public function isFullyInit():Boolean {
-			for each (var phase:Object in initsCalled) {
-				if (phase is Boolean && phase == false) return false;
+		public  isFullyInit():boolean {
+			for  (const phase of initsCalled) {
+				if (phase instanceof Boolean && phase == false) return false;
 			}
 			return true;
 		}
-		public function missingInits():String{
-			var result:String = "";
-			for (var phase:String in initsCalled){
-				if (initsCalled[phase] is Boolean && initsCalled[phase] == false){
+		public  missingInits():string{
+			var result:string = "";
+			for (const phase in initsCalled){
+				if (initsCalled[phase] instanceof Boolean && initsCalled[phase] == false){
 					if (result == "") result = phase;
 					else result+=", "+phase;
 				}
@@ -424,17 +424,17 @@
 			return result;
 		}
 
-		override public function set a(value:String):void {
+		 public  set a(value:string):void {
 			initsCalled.a = true;
 			super.a = value;
 		}
 
-		override public function set short(value:String):void {
+		 public  set short(value:string):void {
 			initsCalled.short = true;
 			super.short = value;
 		}
 
-		override public function createCock(clength:Number = 5.5, cthickness:Number = 1, ctype:CockTypesEnum = null):Boolean
+		 public  createCock(clength:number = 5.5, cthickness:number = 1, ctype:CockTypesEnum = null):boolean
 		{
 			initedGenitals = true;
 			if (!_checkCalled) {
@@ -448,12 +448,12 @@
 					this.pronoun3 = "his";
 				}
 			}
-			var result:Boolean = super.createCock(clength, cthickness, ctype);
+			var result:boolean = super.createCock(clength, cthickness, ctype);
 			this.genderCheck();
 			return result;
 		}
 
-		override public function createVagina(virgin:Boolean = true, vaginalWetness:Number = 1, vaginalLooseness:Number = 0):Boolean
+		 public  createVagina(virgin:boolean = true, vaginalWetness:number = 1, vaginalLooseness:number = 0):boolean
 		{
 			initedGenitals = true;
 			if (!_checkCalled) {
@@ -467,12 +467,12 @@
 					this.pronoun3 = "her";
 				}
 			}
-			var result:Boolean = super.createVagina(virgin, vaginalWetness, vaginalLooseness);
+			var result:boolean = super.createVagina(virgin, vaginalWetness, vaginalLooseness);
 			this.genderCheck();
 			return result;
 		}
 
-		protected function initGenderless():void
+		protected  initGenderless():void
 		{
 			this.cocks = [];
 			this.vaginas = [];
@@ -489,25 +489,25 @@
 			this.genderCheck();
 		}
 
-		override public function createBreastRow(size:Number = 0, nipplesPerBreast:Number = 1):Boolean
+		 public  createBreastRow(size:number = 0, nipplesPerBreast:number = 1):boolean
 		{
 			initedBreasts = true;
 			return super.createBreastRow(size, nipplesPerBreast);
 		}
 
-		override public function set tallness(value:Number):void
+		 public  set tallness(value:number):void
 		{
 			initsCalled.tallness = true;
 			super.tallness = value;
 		}
 
-		override public function set skinType(value:Number):void
+		 public  set skinType(value:number):void
 		{
 			if (!_checkCalled) { this.skinDesc = Appearance.DEFAULT_SKIN_DESCS[value];}
 			super.skinType = value;
 		}
 
-		protected function initStrTouSpeInte(str:Number, tou:Number, spe:Number, inte:Number):void
+		protected  initStrTouSpeInte(str:number, tou:number, spe:number, inte:number):void
 		{
 			this.str = str;
 			this.tou = tou;
@@ -516,7 +516,7 @@
 			initedStrTouSpeInte = true;
 		}
 
-		protected function initLibSensCor(lib:Number, sens:Number, cor:Number):void
+		protected  initLibSensCor(lib:number, sens:number, cor:number):void
 		{
 			this.lib = lib;
 			this.sens = sens;
@@ -525,15 +525,15 @@
 		}
 
 
-		override public function set wingType(value:Number):void
+		 public  set wingType(value:number):void
 		{
 			if (!_checkCalled) this.wingDesc = Appearance.DEFAULT_WING_DESCS[value];
 			super.wingType = value;
 		}
 
-		override public function validate():String
+		 public  validate():string
 		{
-			var error:String = "";
+			var error:string = "";
 			// 1. Required fields must be set
 			if (!isFullyInit()) {
 				error += "Missing phases: "+missingInits()+". ";
@@ -547,7 +547,7 @@
 			return error;
 		}
 
-		public function checkMonster():Boolean
+		public  checkMonster():boolean
 		{
 			_checkCalled = true;
 			checkError = validate();
@@ -559,10 +559,10 @@
 		 * try to hit, apply damage
 		 * @return damage
 		 */
-		public function eOneAttack():int
+		public  eOneAttack():number
 		{
 			//Determine damage - str modified by enemy toughness!
-			var damage:int = calcDamage();
+			var damage:number = calcDamage();
 			if (damage > 0) damage = player.takeDamage(damage);
 			return damage;
 		}
@@ -570,9 +570,9 @@
 		/**
 		 * return true if we land a hit
 		 */
-		protected function attackSucceeded():Boolean
+		protected  attackSucceeded():boolean
 		{
-			var attack:Boolean = true;
+			var attack:boolean = true;
 			//Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0) {
 				attack &&= handleBlind();
@@ -581,12 +581,12 @@
 			return attack;
 		}
 
-		public function eAttack():void {
-			var attacks:int = statusAffectv1(StatusAffects.Attacks);
+		public  eAttack():void {
+			var attacks:number = statusAffectv1(StatusAffects.Attacks);
 			if (attacks == 0) attacks = 1;
 			while (attacks>0){
 				if (attackSucceeded()){
-				    var damage:int = eOneAttack();
+				    var damage:number = eOneAttack();
 					outputAttack(damage);
 					postAttack(damage);
 					game.statScreenRefresh();
@@ -606,7 +606,7 @@
 		 * Called no matter of success of the attack
 		 * @param damage damage received by player
 		 */
-		protected function postAttack(damage:int):void
+		protected  postAttack(damage:number):void
 		{
 			if (damage > 0) {
 				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
@@ -617,7 +617,7 @@
 			}
 		}
 
-		public function outputAttack(damage:int):void
+		public  outputAttack(damage:number):void
 		{
 			if (damage <= 0) {
 				//Due to toughness or amor...
@@ -648,7 +648,7 @@
 		/**
 		 * @return true if continue with attack
 		 */
-		protected function handleBlind():Boolean
+		protected  handleBlind():boolean
 		{
 			if (rand(3) < 2) {
 				if (weaponVerb == "tongue-slap") outputText(capitalA + short + " completely misses you with a thrust from "+pronoun3+" tongue!\n", false);
@@ -661,7 +661,7 @@
 		/**
 		 * print something about how we miss the player
 		 */
-		protected function outputPlayerDodged(dodge:int):void
+		protected  outputPlayerDodged(dodge:number):void
 		{
 			if (dodge==1) outputText("You narrowly avoid " + a + short + "'s " + weaponVerb + "!\n", false);
 			else if (dodge==2) outputText("You dodge " + a + short + "'s " + weaponVerb + " with superior quickness!\n", false);
@@ -673,16 +673,16 @@
 			}
 		}
 
-		private function playerDodged():Boolean
+		private  playerDodged():boolean
 		{
 			//Determine if dodged!
-			var dodge:int = player.speedDodge(this);
+			var dodge:number = player.speedDodge(this);
 			if (dodge>0) {
 				outputPlayerDodged(dodge);
 				return true;
 			}
 			//Determine if evaded
-			if (!(this is Kiha) && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+			if (!(this instanceof Kiha) && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'");
 				if (!plural) outputText("s");
 				outputText(" attack.\n", false);
@@ -703,7 +703,7 @@
 			return false;
 		}
 
-		public function doAI():void
+		public  doAI():void
 		{
 			if (findStatusAffect(StatusAffects.Stunned) >= 0) {
 				if (!handleStun()) return;
@@ -743,7 +743,7 @@
 		/**
 		 * Called if monster is constricted. Should return true if constriction is ignored and need to proceed with ai
 		 */
-		protected function handleConstricted():Boolean
+		protected  handleConstricted():boolean
 		{
 			//Enemy struggles -
 			game.outputText("Your prey pushes at your tail, twisting and writhing in an effort to escape from your tail's tight bonds.", false);
@@ -759,7 +759,7 @@
 		/**
 		 * Called if monster is under fear. Should return true if fear ignored and need to proceed with ai
 		 */
-		protected function handleFear():Boolean
+		protected  handleFear():boolean
 		{
 			if (statusAffectv1(StatusAffects.Fear) == 0) {
 				if (plural) {
@@ -783,7 +783,7 @@
 		/**
 		 * Called if monster is stunned. Should return true if stun is ignored and need to proceed with ai.
 		 */
-		protected function handleStun():Boolean
+		protected  handleStun():boolean
 		{
 			if (plural) game.outputText("Your foes are too dazed from your last hit to strike back!", false);
 			else game.outputText("Your foe is too dazed from your last hit to strike back!", false);
@@ -797,15 +797,15 @@
 		 * This method is called after all stun/fear/constricted checks.
 		 * Default: Equal chance to do physical or special (if any) attack
 		 */
-		protected function performCombatAction():void
+		protected  performCombatAction():void
 		{
-			var actions:Array = [eAttack,special1,special2,special3].filter(
-					function(special:Function, idx:int, array:Array):Boolean {
+			var actions:any[] = [eAttack,special1,special2,special3].filter(
+					function(special:() => void, idx:number, array:any[]):boolean {
 						return special != null;
 					}
 			);
-			var rando:int = int(Math.random() * (actions.length));
-			var action:Function = actions[rando];
+			var rando:number = int(Math.random() * (actions.length));
+			var action:() => void = actions[rando];
 			action();
 		}
 
@@ -814,7 +814,7 @@
          * 'cleanupAfterCombat', 'awardPlayer' or 'finishCombat'. The latter also displays
 		 * default message like "you defeat %s" or "%s falls and starts masturbating"
 		 */
-		public function defeated(hpVictory:Boolean):void
+		public  defeated(hpVictory:boolean):void
 		{
 			game.finishCombat();
 		}
@@ -823,7 +823,7 @@
 		 * All branches of this method and all subsequent scenes should end with
          * 'cleanupAfterCombat'.
 		 */
-		public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
+		public  won(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			if (hpVictory){
 				player.HP = 1;
@@ -834,7 +834,7 @@
 			}
 			game.inCombat = false;
 			game.clearStatuses(false);
-			var temp:Number = rand(10) + 1;
+			var temp:number = rand(10) + 1;
 			if(temp > player.gems) temp = player.gems;
 			outputText("\n\nYou'll probably wake up in eight hours or so, missing " + temp + " gems.", false);
 			player.gems -= temp;
@@ -844,20 +844,20 @@
 		/**
 		 * Function(hpVictory) to call INSTEAD of default defeated(). Call it or finishCombat() manually
 		 */
-		public var onDefeated:Function = null;
+		public  onDefeated:() => void = null;
 		/**
 		 * Function(hpVictory,pcCameWorms) to call INSTEAD of default won(). Call it or finishCombat() manually
 		 */
-		public var onWon:Function = null;
+		public  onWon:() => void = null;
 		/**
 		 * Function() to call INSTEAD of common run attempt. Call runAway(false) to perform default run attempt
 		 */
-		public var onPcRunAttempt:Function = null;
+		public  onPcRunAttempt:() => void = null;
 
 		/**
 		 * Final method to handle hooks before calling overriden method
 		 */
-		public final function defeated_(hpVictory:Boolean):void
+		public   defeated_(hpVictory:boolean):void
 		{
 			if (onDefeated != null) onDefeated(hpVictory);
 			else defeated(hpVictory);
@@ -866,7 +866,7 @@
 		/**
 		 * Final method to handle hooks before calling overriden method
 		 */
-		public final function won_(hpVictory:Boolean,pcCameWorms:Boolean):void
+		public   won_(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			if (onWon != null) onWon(hpVictory,pcCameWorms);
 			else won(hpVictory,pcCameWorms);
@@ -876,7 +876,7 @@
 		 * Display tease reaction message. Then call applyTease() to increase lust.
 		 * @param lustDelta value to be added to lust (already modified by lustVuln etc)
 		 */
-		public function teased(lustDelta:Number):void
+		public  teased(lustDelta:number):void
 		{
 			outputDefaultTeaseReaction(lustDelta);
 			if(lustDelta > 0) {
@@ -893,7 +893,7 @@
 			applyTease(lustDelta);
 		}
 
-		protected function outputDefaultTeaseReaction(lustDelta:Number):void
+		protected  outputDefaultTeaseReaction(lustDelta:number):void
 		{
 			if (plural) {
 				if (lustDelta == 0) outputText("\n\n" + capitalA + short + " seem unimpressed.", false);
@@ -925,18 +925,18 @@
 			}
 		}
 
-		protected function applyTease(lustDelta:Number):void{
+		protected  applyTease(lustDelta:number):void{
 			lust += lustDelta;
 			lustDelta = Math.round(lustDelta * 10)/10;
 			outputText(" (" + lustDelta + ")", false);
 		}
 
-		public function generateDebugDescription():String{
-			var result:String;
-			var be:String =plural?"are":"is";
-			var have:String = plural ? "have" : "has";
-			var Heis:String = Pronoun1+" "+be+" ";
-			var Hehas:String = Pronoun1 + " " + have + " ";
+		public  generateDebugDescription():string{
+			var result:string;
+			var be:string =plural?"are":"is";
+			var have:string = plural ? "have" : "has";
+			var Heis:string = Pronoun1+" "+be+" ";
+			var Hehas:string = Pronoun1 + " " + have + " ";
 			result = "You are inspecting "+a+short+" (imageName='"+imageName+"', class='"+getQualifiedClassName(this)+"'). You are fighting "+pronoun2+".\n\n";
 			result += Heis+(Appearance.DEFAULT_GENDER_NAMES[gender]||("gender#"+gender))+
 					" with "+Appearance.numberOfThings(cocks.length,"cock") +
@@ -971,7 +971,7 @@
 			else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae]||("antennaeType#"+antennae))+" antennae.\n\n";
 
 			// GENITALS AND BREASTS
-			for (var i:int = 0; i<cocks.length; i++){
+			for (const i = 0; i<cocks.length; i++){
 				var cock:Cock = (cocks[i] as Cock);
 				result += Pronoun3+(i>0?(" #"+(i+1)):"")+" "+cock.cockType.toString().toLowerCase()+" cock is ";
 				result += Appearance.inchesAndFeetsAndInches(cock.cockLength)+" long and "+cock.cockThickness+"\" thick";
@@ -995,7 +995,7 @@
 				result+=".\n";
 			}
 			if (breastRows.length>0){
-				var nipple:String = nippleLength+"\" ";
+				var nipple:string = nippleLength+"\" ";
 				if (nipplesPierced) nipple+="pierced by "+nipplesPLong;
 				for (i = 0; i < breastRows.length; i++) {
 					var row:BreastRowClass = (breastRows[i] as BreastRowClass);
@@ -1017,7 +1017,7 @@
 			result += Hehas + HP + "/" + eMaxHP() + " HP, " + lust + "/100 lust, " + fatigue+"/100 fatigue. " + Pronoun3 + " bonus HP=" + bonusHP + ", and lust vulnerability=" + lustVuln + ".\n";
 			result += Heis + "level " + level + " and " + have+" " + gems + " gems. You will be awarded " + XP + " XP.\n";
 			
-			var numSpec:int = (special1 != null ? 1 : 0) + (special2 != null ? 1 : 0) + (special3 != null ? 1 : 0);
+			var numSpec:number = (special1 != null ? 1 : 0) + (special2 != null ? 1 : 0) + (special3 != null ? 1 : 0);
 			if (numSpec > 0) {
 				result += Hehas + numSpec + " special attack" + (numSpec > 1 ? "s" : "") + ".\n";
 			}
@@ -1028,17 +1028,17 @@
 			return result;
 		}
 
-		protected function clearOutput():void
+		protected  clearOutput():void
 		{
 			game.clearOutput();
 		}
 
-		public function dropLoot():ItemType
+		public  dropLoot():ItemType
 		{
 			return _drop.roll() as ItemType;
 		}
 
-		public function combatRoundUpdate():void
+		public  combatRoundUpdate():void
 		{
 			if(findStatusAffect(StatusAffects.MilkyUrta) >= 0) {
 				game.urtaQuest.milkyUrtaTic();
@@ -1088,7 +1088,7 @@
 					}
 					else {
 						outputText("<b>The grainy mess cuts at any exposed flesh and gets into every crack and crevice of your armor.");
-						var temp:Number = player.takeDamage(1 + rand(2));
+						var temp:number = player.takeDamage(1 + rand(2));
 						outputText(" (" + temp + ")");
 						outputText("</b>\n\n");
 					}
@@ -1118,7 +1118,7 @@
 				}
 				//Deal damage if still wounded.
 				else {
-					var store:Number = eMaxHP() * (3 + rand(4))/100;
+					var store:number = eMaxHP() * (3 + rand(4))/100;
 					store = game.doDamage(store);
 					if(plural) outputText(capitalA + short + " bleed profusely from the jagged wounds your weapon left behind. (" + store + ")\n\n", false);
 					else outputText(capitalA + short + " bleeds profusely from the jagged wounds your weapon left behind. (" + store + ")\n\n", false);
@@ -1173,7 +1173,7 @@
 				outputText("You're utterly restrained by the Harpy Queen's magical ropes!\n\n");
 				if(flags[kFLAGS.PC_FETISH] >= 2) game.dynStats("lus", 3);
 			}
-			if(this is SecretarialSuccubus || this is MilkySuccubus) {
+			if(this instanceof SecretarialSuccubus || this instanceof MilkySuccubus) {
 				if(player.lust < 45) outputText("There is something in the air around your opponent that makes you feel warm.\n\n", false);
 				if(player.lust >= 45 && player.lust < 70) outputText("You aren't sure why but you have difficulty keeping your eyes off your opponent's lewd form.\n\n", false);
 				if(player.lust >= 70 && player.lust < 90) outputText("You blush when you catch yourself staring at your foe's rack, watching it wobble with every step she takes.\n\n", false);
@@ -1196,12 +1196,12 @@
 			}
 		}
 		
-		public function handleAwardItemText(itype:ItemType):void
+		public  handleAwardItemText(itype:ItemType):void
 		{ //New Function, override this function in child classes if you want a monster to output special item drop text
 			if (itype != null) outputText("\nThere is " + itype.longName + " on your defeated opponent.  ");
 		}
 
-		public function handleAwardText():void
+		public  handleAwardText():void
 		{ //New Function, override this function in child classes if you want a monster to output special gem and XP text
 			//This function doesn’t add the gems or XP to the player, it just provides the output text
 			if (this.gems == 1) outputText("\n\nYou snag a single gem and " + this.XP + " XP as you walk away from your victory.");
@@ -1209,7 +1209,7 @@
 			else if (this.gems == 0) outputText("\n\nYou gain " + this.XP + " XP from the battle.");
 		}
 		
-		public function handleCombatLossText(inDungeon:Boolean, gemsLost:int):int
+		public  handleCombatLossText(inDungeon:boolean, gemsLost:number):number
 		{ //New Function, override this function in child classes if you want a monster to output special text after the player loses in combat
 			//This function doesn’t take the gems away from the player, it just provides the output text
 			if (!inDungeon) {
@@ -1232,4 +1232,3 @@
 		}
 
 	}
-}

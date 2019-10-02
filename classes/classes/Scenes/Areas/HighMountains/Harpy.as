@@ -1,10 +1,10 @@
-﻿package classes.Scenes.Areas.HighMountains
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.internals.*;
+ 
 
-	public class Harpy extends Monster
+	 
+	 
+	 
+
+	export class Harpy extends Monster
 	{
 
 //*Note, special attack one is an idea based on Ceraph.
@@ -15,7 +15,7 @@
 //dump it out altogether. It'd cause severe damage, 
 //in the 150 region if you don't wise up.*
 
-		protected function harpyUberCharge():void
+		protected  harpyUberCharge():void
 		{
 			//(Harpy special attack 1, part one)
 			if (findStatusAffect(StatusAffects.Uber) < 0) {
@@ -25,7 +25,7 @@
 			//(Harpy special attack 1, part two if PC does anything but "Wait")
 			else {
 				if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 0) {
-					var damage:Number = 160 + rand(20);
+					var damage:number = 160 + rand(20);
 					damage = player.takeDamage(damage);
 					outputText("The harpy lets out a terrible cry and drops, reaching an almost impossible speed as she dives down at you.  Her eyes are narrowed like a true bird of prey.  You were too busy with your own attack to avoid it!  Her claws surge down and pierce your " + player.armorName + " like paper, driving hard into the flesh beneath and making you cry out in pain.  The harpy dumps you onto the ground, your wounds bleeding profusely. (" + damage + ")", false);
 					removeStatusAffect(StatusAffects.Uber);
@@ -41,7 +41,7 @@
 		}
 
 		//(Harpy special attack 2, lust increase)
-		protected function harpyTease():void
+		protected  harpyTease():void
 		{
 			outputText("The harpy charges at you carelessly, her body striking you with the full weight of her motherly hips.  The pair of you go crashing backwards onto the ground.  You grapple with her weighty ass, trying your best not to think dirty thoughts, but the way she's maniacally flapping and writhing her curvy body against you makes it impossible! After a brief, groping wrestle on the ground, she pushes you away and takes flight again.", false);
 			game.dynStats("lus", (12 + rand(player.sens / 5)));
@@ -49,9 +49,9 @@
 		}
 
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var select:Number = 1;
+			var select:number = 1;
 			if (findStatusAffect(StatusAffects.Uber) >= 0) {
 				harpyUberCharge();
 				return;
@@ -59,13 +59,13 @@
 			super.performCombatAction();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.highMountains.harpyScene.harpyVictoryuuuuu();
 		}
 
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nYour foe doesn't seem disgusted enough to leave...");
@@ -75,12 +75,12 @@
 			}
 		}
 
-		override protected function outputPlayerDodged(dodge:int):void
+		 protected  outputPlayerDodged(dodge:number):void
 		{
 			outputText("With another deranged cry the harpy dives at you, swinging her razor-sharp talons through the air with the grace of a ballerina. Your quick reflexes allow you to dodge every vicious slash she makes at you.\n", false);
 		}
 
-		override public function outputAttack(damage:int):void
+		 public  outputAttack(damage:number):void
 		{
 			if (damage <= 0) {
 				outputText("The harpy dives at you with her foot-talons, but you deflect the attack, grasp onto her leg, and swing her through the air, tossing her away from you before she has a chance to right herself.", false);
@@ -89,7 +89,7 @@
 			}
 		}
 
-		public function Harpy(noInit:Boolean=false)
+		public  constructor(noInit:boolean=false)
 		{
 			if (noInit) return;
 			trace("Harpy Constructor!");
@@ -136,4 +136,3 @@
 
 	}
 
-}

@@ -1,14 +1,14 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
+ 
 
-	public class Isabella extends Monster
+	 
+
+	export class Isabella extends Monster
 	{
 
 		//IZZY AI:
 
 		//Isabella Combat texttttttsss
-		public function isabellaAttack():void {
+		public  isabellaAttack():void {
 			//[Standard attack]
 			outputText("Isabella snorts and lowers a shield a moment before she begins to charge towards you. Her hooves tear huge divots out of the ground as she closes the distance with surprising speed!  ", false);
 
@@ -33,7 +33,7 @@ package classes.Scenes.NPCs
 				outputText("You throw yourself out of the way with cat-like agility at the last moment, avoiding her attack.\n", false);
 			}
 			else {
-				var damage:Number;
+				var damage:number;
 				damage = Math.round((weaponAttack + str + 20) - rand(player.tou+player.armorDef));
 				if(damage < 0) {
 					outputText("You brace yourself and catch her shield in both hands, dragging through the dirt as you slow her charge to a stop.  She gapes down, completely awestruck by the show of power.", false);
@@ -46,7 +46,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		public function isabellaStun():void {
+		public  isabellaStun():void {
 			//[Stunning Impact]
 			outputText("Isabella spins her shield back at you in a potent, steel-assisted backhand.  ", false);
 
@@ -71,7 +71,7 @@ package classes.Scenes.NPCs
 				outputText("You bend backward with cat-like agility to avoid her attack.\n", false);
 			}
 			else {
-				var damage:Number = 0;
+				var damage:number = 0;
 				damage = Math.round((weaponAttack + str) - rand(player.tou+player.armorDef));
 				if(damage < 0) {
 					outputText("You deflect her blow away, taking no damage.\n", false);
@@ -90,7 +90,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		public function isabellaThroatPunch():void {
+		public  isabellaThroatPunch():void {
 			outputText("Isabella punches out from behind her shield in a punch aimed right at your throat!  ", false);
 
 			//Blind dodge change
@@ -114,7 +114,7 @@ package classes.Scenes.NPCs
 				outputText("You bend backward with cat-like agility to avoid her attack.\n", false);
 			}
 			else {
-				var damage:Number;
+				var damage:number;
 				damage = Math.round(str - rand(player.tou+player.armorDef));
 				if(damage <= 0) {
 					outputText("You manage to block her with your own fists.\n", false);
@@ -132,7 +132,7 @@ package classes.Scenes.NPCs
 		}
 
 		//[Milk Self-Heal]
-		public function drankMalkYaCunt():void {
+		public  drankMalkYaCunt():void {
 			outputText("Isabella pulls one of her breasts out of her low-cut shirt and begins to suckle at one of the many-tipped nipples. Her cheeks fill and hollow a few times while you watch with spellbound intensity.  She finishes and tucks the weighty orb away, blushing furiously.  The quick drink seems to have reinvigorated her, and watching it has definitely aroused you.", false);
 			HP += 100;
 			lust += 5;
@@ -140,7 +140,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			//-If below 70% HP, 50% chance of milk drinking
 			if (HPRatio() < .7 && rand(3) == 0) drankMalkYaCunt();
@@ -155,12 +155,12 @@ package classes.Scenes.NPCs
 			else isabellaAttack();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.isabellaScene.defeatIsabella();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\n\"<i>Ick,</i>\" Isabella tuts as she turns to leave...");
@@ -170,7 +170,7 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function Isabella()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Isabella";
@@ -212,4 +212,3 @@ package classes.Scenes.NPCs
 		
 	}
 
-}

@@ -1,14 +1,14 @@
-﻿package classes.Scenes.Places.TelAdre{
-	import classes.GlobalFlags.kFLAGS;
-	import classes.*;
+ 
+	 
+	 
 
-	public class SexMachine extends TelAdreAbstractContent{
+	export class SexMachine extends TelAdreAbstractContent{
 
-	public function SexMachine()
+	public  constructor()
 	{
 	}
 
-public function exploreShowers():void {
+public  exploreShowers():void {
 	outputText("", true);
 	/*if(flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {
 		outputText("You toss ten gems to centaur and head towards the back.\n\n", false);
@@ -36,13 +36,13 @@ public function exploreShowers():void {
 }
 
 //[If you decide to leave.]
-private function leaveShowers():void {
+private  leaveShowers():void {
 	outputText("", true);
 	outputText("You shake your head.  You've had enough of a workout for the day, and you remember you're in a land where curiosity almost certainly kills (well, more thoroughly rapes) the cat.  You leave the room and continue to search for the showers, eventually finding them and heading back to camp.", false);
 	doNext(camp.returnToCampUseOneHour);
 }
 
-private function useTheSexMachine():void {
+private  useTheSexMachine():void {
 	outputText("", true);
 	flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00182] = 2;
 	//[If you decide to mess with the machine: Male]
@@ -260,4 +260,4 @@ private function useTheSexMachine():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 	}
-}
+

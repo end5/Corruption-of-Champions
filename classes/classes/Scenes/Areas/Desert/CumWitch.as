@@ -1,27 +1,27 @@
-package classes.Scenes.Areas.Desert
-{
-	import classes.*;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class CumWitch extends Monster
+	 
+	 
+
+	export class CumWitch extends Monster
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.cumWitchAI();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.cumWitchDefeated();
 		}
 
-		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			game.defeatedByCumWitch();
 		}
 
-		public function CumWitch()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "Cum Witch";
@@ -68,4 +68,3 @@ package classes.Scenes.Areas.Desert
 		
 	}
 
-}

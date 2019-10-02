@@ -1,15 +1,15 @@
 /**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
 
-	public class CeraphFollowerScene extends NPCAwareContent
+	 
+	 
+	 
+
+	export class CeraphFollowerScene extends NPCAwareContent
 	{
-		public function CeraphFollowerScene()
+		public  constructor()
 		{
 		}
 
@@ -19,12 +19,12 @@ package classes.Scenes.NPCs
 //Capacity = 115;
 
 //Is Ceraph a follower?
-		override public function ceraphIsFollower():Boolean
+		 public  ceraphIsFollower():boolean
 		{
 			return flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00286] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00287] > 0;
 		}
 		
-		public function ceraphFollowerEncounter(forceCeraph:Boolean = false):void
+		public  ceraphFollowerEncounter(forceCeraph:boolean = false):void
 		{
 			if (forceCeraph)
 			{
@@ -42,13 +42,13 @@ package classes.Scenes.NPCs
 				ceraphFollowerAppearance();
 		}
 
-		public function ceraphSprite():void
+		public  ceraphSprite():void
 		{
 			spriteSelect(87);
 		}
 		
 //[Actually Ceraph] - 
-		public function ceraphFollowerAppearance(output:Boolean = true):void
+		public  ceraphFollowerAppearance(output:boolean = true):void
 		{
 			if (output) outputText("", true);
 			spriteSelect(87);
@@ -63,16 +63,16 @@ package classes.Scenes.NPCs
 
 				outputText("<b>What will you do with your slave?</b>  ", false);
 			}
-			var dickToggle:String = "";
+			var dickToggle:string = "";
 			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) dickToggle = "Go Female";
 			else dickToggle = "Go Herm";
-			var gainFetish:Function =null;
-			var loseFetish:Function =null;
+			var gainFetish:() => void =null;
+			var loseFetish:() => void =null;
 			if (flags[kFLAGS.PC_FETISH] < 3) gainFetish = CeraphHandsOutNewFetishesLikePervCandy;
 			if (flags[kFLAGS.PC_FETISH] > 0) loseFetish = unfetishifyYourselfWithFollowerCeraph;
-			var rp:Function =null;
+			var rp:() => void =null;
 			if (player.lust >= 33) rp = followerCeraphRoleplay;
-			var sexMenu:Function =null;
+			var sexMenu:() => void =null;
 			if (player.lust < 33) {
 				if (output) outputText("\n\n<b>You aren't turned on enough for sex.</b>", false);
 			}
@@ -83,7 +83,7 @@ package classes.Scenes.NPCs
 			if (flags[kFLAGS.FOLLOWER_AT_FARM_CERAPH] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(1, "Farm Work", helpWithFarm);
 		}
 		
-		private function helpWithFarm():void
+		private  helpWithFarm():void
 		{
 			clearOutput();
 			ceraphSprite();
@@ -97,7 +97,7 @@ package classes.Scenes.NPCs
 			addButton(1, "Later", noFarmShitYet);
 		}
 		
-		private function doFarmShit():void
+		private  doFarmShit():void
 		{
 			clearOutput();
 			ceraphSprite();
@@ -110,7 +110,7 @@ package classes.Scenes.NPCs
 			ceraphFollowerAppearance(false);
 		}
 		
-		private function noFarmShitYet():void
+		private  noFarmShitYet():void
 		{
 			clearOutput();
 			ceraphSprite();
@@ -120,15 +120,15 @@ package classes.Scenes.NPCs
 			ceraphFollowerAppearance(false);
 		}
 
-		private function ceraphSexMenu():void
+		private  ceraphSexMenu():void
 		{
 			clearOutput();
-			var maleFuck:Function =null;
-			var femaleFuck:Function =null;
-			var hermFuck:Function =null;
-			var nipFuck:Function =null;
-			var portalFuck:Function =null;
-			var eggs:Function =null;
+			var maleFuck:() => void =null;
+			var femaleFuck:() => void =null;
+			var hermFuck:() => void =null;
+			var nipFuck:() => void =null;
+			var portalFuck:() => void =null;
+			var eggs:() => void =null;
 			if (player.canOviposit()) eggs = layEggsInSlaveCeraph;
 			if (player.hasCock() && player.lust >= 33) {
 				outputText("You could fuck her pussy.  ", false);
@@ -156,14 +156,14 @@ package classes.Scenes.NPCs
 		}
 
 
-		private function followerCeraphRoleplay():void
+		private  followerCeraphRoleplay():void
 		{
 			outputText("", true);
 			outputText("You tell Ceraph you'd like to do a little roleplaying.  Her nipples turn hard under their latex bindings as she asks, \"<i>What will it be, " + player.mf("Master", "Mistress") + "?  Shall I pretend you've just teased me into sexual submission, or would you like to switch things up and have your bottom play at being top again?  Or maybe... you'd like me to shapeshift into some other girl, and do all the dirty, depraved things she never would?</i>\"", false);
 			outputText("\n\nShe makes a gesture, and the surroundings take on a mountainous look.  Of course, she can probably change that on a whim.  What do you have Ceraph roleplay?", false);
-			var urta:Function =null;
-			var marbles:Function =null;
-			var dominika:Function =null;
+			var urta:() => void =null;
+			var marbles:() => void =null;
+			var dominika:() => void =null;
 			if (flags[kFLAGS.TIMES_FUCKED_URTA] > 0 && (player.hasCock() || player.hasVagina()) && player.lust >= 33) urta = ceraphUrtaRoleplay;
 			if (player.hasCock() && player.cockThatFits(70) >= 0 && player.findStatusAffect(StatusAffects.Marble) >= 0 && player.lust >= 33) marbles = sweetieNOOOO;
 			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] > 0 && player.lust >= 33 && player.hasCock()) dominika = cerminika;
@@ -180,7 +180,7 @@ package classes.Scenes.NPCs
 		}
 
 //*Ceraph is Defeated #4 - Offers Funtimes (Zeddited)
-		public function submissiveCeraphOffer():void
+		public  submissiveCeraphOffer():void
 		{
 			spriteSelect(7);
 			outputText("", true);
@@ -204,15 +204,15 @@ package classes.Scenes.NPCs
 			if (player.gender > 0) {
 				outputText("Do you fuck her? (And if so, which of your body parts do you do it with?)", false);
 
-				var dicking:Function =null;
-				var buttsmexing:Function =null;
+				var dicking:() => void =null;
+				var buttsmexing:() => void =null;
 				//Dickings ahoyu!
 				if (player.hasCock()) {
 					dicking = ceraphScene.maleFuckCeraphsPussy;
 					if (player.cockThatFits(monster.analCapacity()) != -1) buttsmexing = ceraphScene.buttRapeCeraph;
 					else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
 				}
-				var cunting:Function =null;
+				var cunting:() => void =null;
 				if (player.hasVagina()) cunting = ceraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
 
 
@@ -222,7 +222,7 @@ package classes.Scenes.NPCs
 		}
 
 //Collar Ceraph After 4th Defeat + Rape: (Zeddited)
-		private function collarCeraph():void
+		private  collarCeraph():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -251,7 +251,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Carry]
-		private function carryCarephsToken():void
+		private  carryCarephsToken():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -266,15 +266,15 @@ package classes.Scenes.NPCs
 			if (player.gender > 0) {
 				outputText("Do you fuck her as a disobedient demon, one last time? (And if so, which of your body parts do you do it with?)", false);
 
-				var dicking:Function =null;
-				var buttsmexing:Function =null;
+				var dicking:() => void =null;
+				var buttsmexing:() => void =null;
 				//Dickings ahoyu!
 				if (player.hasCock()) {
 					dicking = ceraphScene.maleFuckCeraphsPussy;
 					if (player.cockThatFits(monster.analCapacity()) != -1) buttsmexing = ceraphScene.buttRapeCeraph;
 					else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
 				}
-				var cunting:Function =null;
+				var cunting:() => void =null;
 				if (player.hasVagina()) cunting = ceraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
 				simpleChoices("Fuck Her", dicking, "Ride Her", cunting, "FuckHerAss", buttsmexing, "", null, "Leave", cleanupAfterCombat);
 			}
@@ -285,7 +285,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Pierce] 
-		private function getCeraphFollowerPiercing():void
+		private  getCeraphFollowerPiercing():void
 		{
 			outputText("", true);
 			spriteSelect(7);
@@ -303,15 +303,15 @@ package classes.Scenes.NPCs
 			if (player.gender > 0) {
 				outputText("\n\nDo you fuck her as a disobedient demon, one last time? (And if so, which of your body parts do you do it with?)", false);
 
-				var dicking:Function =null;
-				var buttsmexing:Function =null;
+				var dicking:() => void =null;
+				var buttsmexing:() => void =null;
 				//Dickings ahoyu!
 				if (player.hasCock()) {
 					dicking = ceraphScene.maleFuckCeraphsPussy;
 					if (player.cockThatFits(monster.analCapacity()) != -1) buttsmexing = ceraphScene.buttRapeCeraph;
 					else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
 				}
-				var cunting:Function =null;
+				var cunting:() => void =null;
 				if (player.hasVagina()) cunting = ceraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
 				simpleChoices("Fuck Her", dicking, "Ride Her", cunting, "FuckHerAss", buttsmexing, "", null, "Leave", cleanupAfterCombat);
 			}
@@ -322,7 +322,7 @@ package classes.Scenes.NPCs
 		}
 
 //*Decision to Display Demonic Dick or Demur (pretty sure Fen mentioned wanting this -Z)
-		private function cawkTawgle():void
+		private  cawkTawgle():void
 		{
 			outputText("", true);
 			spriteSelect(87);
@@ -347,7 +347,7 @@ package classes.Scenes.NPCs
 		}
 
 //Volunteer for new fetishes!
-		private function CeraphHandsOutNewFetishesLikePervCandy():void
+		private  CeraphHandsOutNewFetishesLikePervCandy():void
 		{
 			outputText("", true);
 			spriteSelect(87);
@@ -460,7 +460,7 @@ package classes.Scenes.NPCs
 		}
 
 //*Request Ceraph Remove a Fetish. (Zeddited)
-		private function unfetishifyYourselfWithFollowerCeraph():void
+		private  unfetishifyYourselfWithFollowerCeraph():void
 		{
 			outputText("", true);
 			spriteSelect(87);
@@ -474,7 +474,7 @@ package classes.Scenes.NPCs
 		}
 
 //*Ceraph Actually Removes The Fetish (Zeddited)
-		private function goThroughWithCeraphUnfetishification():void
+		private  goThroughWithCeraphUnfetishification():void
 		{
 			outputText("", true);
 			spriteSelect(87);
@@ -494,11 +494,11 @@ package classes.Scenes.NPCs
 		}
 
 //*Fuck Ceraph's Pussy (Zeddited)
-		private function fuckFollowerCeraphsVagoo():void
+		private  fuckFollowerCeraphsVagoo():void
 		{
-			var x:Number = player.cockThatFits(115);
+			var x:number = player.cockThatFits(115);
 			if (x < 0) x = 0;
-			var y:Number = player.cockThatFits2(115);
+			var y:number = player.cockThatFits2(115);
 			outputText("", true);
 			spriteSelect(87);
 			//*Summary: Bind Ceraph's arms behind her back and make her lie facedown in the dirt, then grab her ankles and wheelbarrow fuck her, with her face as the wheel.
@@ -583,7 +583,7 @@ package classes.Scenes.NPCs
 		}
 
 //*Ceraph TongueFucks The PC (Zeddited)
-		private function followerCeraphTongueFucking():void
+		private  followerCeraphTongueFucking():void
 		{
 			outputText("", true);
 			spriteSelect(87);
@@ -634,7 +634,7 @@ package classes.Scenes.NPCs
 		}
 
 //*Ceraph goes full tentacle and double penetrates herms (+ standard dick BJ if ceraph dick toggle is on) (Zeddited)
-		private function ceraphTentacleGrape():void
+		private  ceraphTentacleGrape():void
 		{
 			outputText("", true);
 			spriteSelect(87);
@@ -694,7 +694,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Punish Her]
-		private function punishCeraphForSurpriseThroatFuck():void
+		private  punishCeraphForSurpriseThroatFuck():void
 		{
 			spriteSelect(87);
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00290] = 1;
@@ -705,7 +705,7 @@ package classes.Scenes.NPCs
 		}
 
 //Siamese Catgirl Twins - TDM (Zeddited, nya)
-		public function catgirlEncounter():void
+		public  catgirlEncounter():void
 		{
 			outputText("", true);
 			//requires that the PC have a cock, just to keep it simple, no centaurs and probably not slimes
@@ -724,7 +724,7 @@ package classes.Scenes.NPCs
 		}
 
 //No sex
-		private function declineCeraphsCatgirls():void
+		private  declineCeraphsCatgirls():void
 		{
 			outputText("", true);
 			outputText("You shake your head at the kitty sisters and tell them that you aren't interested in fucking cats; you wanted the sexy demoness you were promised.  The two mewl meekly before slumping away.", false);
@@ -733,10 +733,10 @@ package classes.Scenes.NPCs
 		}
 
 //SEX!
-		private function fuckCeraphsCatgirls():void
+		private  fuckCeraphsCatgirls():void
 		{
 			outputText("", true);
-			var x:Number = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			outputText("You smile at them and say that you'd be happy to have them for your pleasure; their horns suggest that they'll be quite a trip.  The two purr happily and instruct you to lie on your back to start the fun.  You relax as directed and the cat slaves unfasten your " + player.armorName + " from your body.  As they work, they make sure to gently stroke every inch of your newly exposed flesh with their soft furry hands as it's revealed; all the while moving closer and closer to your most personal parts.  When " + oMultiCockDesc() + " finally tastes the air, it gets even more attention.\n\n", false);
 
 			//purrfect tit fuck
@@ -775,7 +775,7 @@ package classes.Scenes.NPCs
 		}
 
 
-		private function ceraphUrtaRoleplay():void
+		private  ceraphUrtaRoleplay():void
 		{
 			kGAMECLASS.urta.urtaSprite();
 			outputText("", true);
@@ -788,16 +788,16 @@ package classes.Scenes.NPCs
 			outputText("\"<i>Oh! " + player.short + "! I, um, didn't expect to find you here! This... this isn't what it looks like,</i>\" she apologizes, flushing deeply, nervous shame sending humiliated shivers through her shoulders. She longingly eyes the bottle in her hand and, without lifting her head, raises her eyes to yours, silently asking what she should do.", false);
 
 			//[Drink][Sober]
-			var sober:Function =null;
+			var sober:() => void =null;
 			if (player.hasCock()) sober = ceraphUrtaRoleplaySober;
-			var drunk:Function =null;
+			var drunk:() => void =null;
 			if (player.hasVagina()) drunk = ceraphUrtaRoleplayDrunk;
 			simpleChoices("Sober", sober, "Drunk", drunk, "", null, "", null, "", null);
 		}
 
 //DRANK AS FCUK
 //[Drunk] (female/herm only. No centaurs)
-		private function ceraphUrtaRoleplayDrunk():void
+		private  ceraphUrtaRoleplayDrunk():void
 		{
 			outputText("", true);
 			kGAMECLASS.urta.urtaSprite();
@@ -813,7 +813,7 @@ package classes.Scenes.NPCs
 			doNext(ceraphUrtaRoleplayDrunk2);
 		}
 
-		private function ceraphUrtaRoleplayDrunk2():void
+		private  ceraphUrtaRoleplayDrunk2():void
 		{
 			outputText("", true);
 			kGAMECLASS.urta.urtaSprite();
@@ -846,7 +846,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Sober]
-		private function ceraphUrtaRoleplaySober():void
+		private  ceraphUrtaRoleplaySober():void
 		{
 			kGAMECLASS.urta.urtaSprite();
 			outputText("", true);
@@ -863,7 +863,7 @@ package classes.Scenes.NPCs
 			doNext(ceraphUrtaRoleplaySober2);
 		}
 
-		private function ceraphUrtaRoleplaySober2():void
+		private  ceraphUrtaRoleplaySober2():void
 		{
 			hideUpDown();
 			kGAMECLASS.urta.urtaSprite();
@@ -891,7 +891,7 @@ package classes.Scenes.NPCs
 
 //NOTE: This will probably need an alternate version for centaurs. Goo and Nagas should be fine.
 //NOTE2: Fen you might want to store the variable for the PC's cock type and cock size.
-		public function carephCorruptionSlaves():void
+		public  carephCorruptionSlaves():void
 		{
 			outputText("", true);
 			outputText("You call on Ceraph, but rather than the familiar sight of the purple omnibus, you see a human girl being brought into the camp by a gang of imps.  They approach you and pull the girl's collar down, forcing her to kneel before you.\n\n", false);
@@ -914,7 +914,7 @@ package classes.Scenes.NPCs
 		}
 
 //[=No=]
-		private function makeCarephsLackeysLeave():void
+		private  makeCarephsLackeysLeave():void
 		{
 			outputText("", true);
 			outputText("You wave the imps away and tell them that you're not interested.  One of the imps protests, \"<i>But, " + player.mf("Master", "Mistress") + "-</i>\"  You cut him off before he has a chance to finish, saying that you wanted Ceraph, not some human girl!  Then, you toss the potion away and tell them to take the girl away.\n\n", false);
@@ -924,7 +924,7 @@ package classes.Scenes.NPCs
 		}
 
 //[=Yes=]
-		private function ceraphLackeyCorruption():void
+		private  ceraphLackeyCorruption():void
 		{
 			outputText("", true);
 			outputText("You grin and tell the imps that you will accept Ceraph's offering.  Then you circle the girl, appraising her.\n\n", false);
@@ -945,8 +945,8 @@ package classes.Scenes.NPCs
 				else outputText("a small bump forms on your mons", false);
 				outputText(", then develops into a huge 16-inch long, 3-inch thick erection!  The tip practically explodes from the foreskin vainly trying to contain it.  ", false);
 			}
-			var x:Number = 0;
-			var demon:Boolean = false;
+			var x:number = 0;
+			var demon:boolean = false;
 			x = player.biggestCockIndex();
 			if (player.hasCock()) {
 				if (player.cocks[x].cockType == CockTypesEnum.DEMON) demon = true;
@@ -1008,7 +1008,7 @@ package classes.Scenes.NPCs
 		}
 
 //[=Never Again - Fuck this nerd shit=]
-		private function iQuitCeraphCorruptionDemons():void
+		private  iQuitCeraphCorruptionDemons():void
 		{
 			outputText("", true);
 			outputText("You tell her, loudly and in no uncertain terms, that you have no interest in playing make-believe with her, and that next time Ceraph can come herself or have an ACTUAL innocent brought for you to corrupt.\n\n", false);
@@ -1020,7 +1020,7 @@ package classes.Scenes.NPCs
 		}
 
 //[=No=]
-		private function declineCeraphFauxCorruption():void
+		private  declineCeraphFauxCorruption():void
 		{
 			outputText("", true);
 			outputText("You tell her you have no interest in granting release to lowly imps.  If they want pleasure, then they should earn it themselves.\n\n", false);
@@ -1030,7 +1030,7 @@ package classes.Scenes.NPCs
 		}
 
 //[=Yes=]
-		private function acceptMoreCeraphFauxCorruption():void
+		private  acceptMoreCeraphFauxCorruption():void
 		{
 			outputText("", true);
 			outputText("You smirk, seeing that this might be interesting... so you order her to pleasure the imps, all of them at the same time.\n\n", false);
@@ -1050,7 +1050,7 @@ package classes.Scenes.NPCs
 
 //(not optimized in any way for centaur)
 //(should probably add a cock-limit of like, whatever you want, cuz you're fucking her butt)
-		private function sweetieNOOOO():void
+		private  sweetieNOOOO():void
 		{
 			spriteSelect(41);
 			outputText("", true);
@@ -1089,7 +1089,7 @@ package classes.Scenes.NPCs
 		}
 
 //[in a pig's eye, pal]  
-		private function noUdderPlz(perm:Boolean = false):void
+		private  noUdderPlz(perm:boolean = false):void
 		{
 			outputText("", true);
 			spriteSelect(41);
@@ -1100,7 +1100,7 @@ package classes.Scenes.NPCs
 		}
 
 //[of course honey-buns] 
-		private function yesUdderPWEASE():void
+		private  yesUdderPWEASE():void
 		{
 			outputText("", true);
 			spriteSelect(41);
@@ -1109,7 +1109,7 @@ package classes.Scenes.NPCs
 			postUdderChoice();
 		}
 
-		private function postUdderChoice(newl:Boolean = false):void
+		private  postUdderChoice(newl:boolean = false):void
 		{
 			spriteSelect(41);
 			if (newl) outputText("", true);
@@ -1135,7 +1135,7 @@ package classes.Scenes.NPCs
 			if (player.balls > 0) outputText("your " + ballsDescriptLight() + " tightening", false);
 			else outputText("a readiness in your body", false);
 			outputText(", and you wind up for one last thrust into her depths.  ", false);
-			var cum:Number = player.cumQ();
+			var cum:number = player.cumQ();
 			if (cum < 50) outputText("Her ass has no problem in taking your ejaculatory package, lapping it up like it was nothing.", false);
 			else if (cum < 250) outputText("She groans a bit from the amount of seed you pump into her butt, but she doesn't seem overly concerned by it.", false);
 			else if (cum < 750) outputText("Her belly actually bulges out a bit more as you shoot your sperm into her perfect butthole, but her only response is an approving grunt.", false);
@@ -1173,7 +1173,7 @@ package classes.Scenes.NPCs
 //NOTES:
 //Ceraph roleplay. [Dominika] option. There is text for the first time you do it, then transformation text that is intended to play at the front of every scene.
 //After that is a scene tailored more specifically for the PC. Intention is to give nagas and centaurs and all that their own scene. Currently only scene is for PCs with a dick - should be naga-compatible.
-		private function cerminika():void
+		private  cerminika():void
 		{
 			spriteSelect(58);
 			outputText("", true);
@@ -1296,13 +1296,13 @@ package classes.Scenes.NPCs
 		 [Introduction]*/
 
 //(First Time):
-		public function encounterZetsuko():void
+		public  encounterZetsuko():void
 		{
 			outputText("", true);
 			flags[kFLAGS.ZETSUKO_MET]++;
-			var banana:Function =null;
-			var vag:Function =null;
-			var dick:Function =null;
+			var banana:() => void =null;
+			var vag:() => void =null;
+			var dick:() => void =null;
 			//First time
 			if (flags[kFLAGS.ZETSUKO_MET] == 1) {
 				outputText("You call on Ceraph, but rather than the purple-skinned demoness you were expecting, you are surprised to see a fox-eared girl appear in a wash of corrupted violet flames.  She steps out of the portal and shakes off the flames as if they are water, and you take a moment to look her over.  The first thing you notice is that her arms are bound in a white straitjacket that is open at the chest, allowing her F-cup breasts to swing freely.  Four large fox tails twist erratically in the air behind her, and you can see a pair of small horns poking up from her hair in front of her large triangular ears.  Her body and face are covered in tribal tattoos, and her somewhat maniacal amber eyes are framed nicely by a head of messy auburn hair with black highlights.  Like many of Ceraph's harem members, she is adorned with numerous piercings and studs — almost too many to count them all — as well as a large studded collar.  Once you have had time to take it all in, she speaks.\n\n", false);
@@ -1350,10 +1350,10 @@ package classes.Scenes.NPCs
 		}
 
 //▶[FuckVagina] requires penis
-		private function fuckZetsukosTonguepussy():void
+		private  fuckZetsukosTonguepussy():void
 		{
 			outputText("", true);
-			var x:Number = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			outputText("Your lust and curiosity get the best of you as the sight of that licentious tongue wriggling around between her legs sends a heat to your groin, blood rushing into your " + multiCockDescriptLight() + ".  Zetsuko lays flat on her back, grinning up at you as her pussy licks itself in anticipation, and as you lower yourself down, her tongue snakes out even more, beginning to wrap itself around " + oMultiCockDesc() + " and slathering it with her saliva-like juices.  Your sensitive member can feel that the surface of her tongue is covered in hundreds of tiny bumps and nubs that massage your shaft, and the multiple studs that line it rub you sensually as the bizarre organ coils around your " + cockDescript(x) + " like a snake, the very tip gently stimulating around the edges of your urethra.\n\n", false);
 
 			outputText("You marvel at the incredible degree of control she seems to have over her tongue, watching as it begins to stroke and squeeze along your shaft, coating you in slick saliva from base to tip.  Its grip around you tightens up a bit, and you can feel it tugging you down gently, drawing your " + cockDescript(x) + " ever closer to her entrance.  Her vagina lips spread open as you approach, gaping wide like a hungry mouth, and as it does so, you can see that the inner surface of her pussy has a number of soft bumpy nodules lining it in a downward spiral pattern.\n\n", false);
@@ -1394,10 +1394,10 @@ package classes.Scenes.NPCs
 		}
 
 //▶[GetTongued] requires vagina
-		private function getTonguedByZetsuko():void
+		private  getTonguedByZetsuko():void
 		{
 			outputText("", true);
-			var x:Number = -1;
+			var x:number = -1;
 			if (player.hasCock()) x = player.biggestCockIndex();
 			outputText("Heat rushes to your groin as you stare at the outlandish appendage wriggling between Zetsuko's legs, feeling yourself becoming wet with anticipation.  Seeking to entice you further, she rolls herself back, placing most of her weight on her shoulders as she curls her lower body up into the air, her tongue slithering back and forth along her thighs.\n\n", false);
 
@@ -1449,7 +1449,7 @@ package classes.Scenes.NPCs
 		}
 
 //▶[Banana?] silly mode
-		private function zetsukoBanana():void
+		private  zetsukoBanana():void
 		{
 			outputText("", true);
 			outputText("Banana? What the flying fuck is a banana?\n\n", false);
@@ -1475,7 +1475,7 @@ package classes.Scenes.NPCs
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		private function noZetsukoLoveToday():void
+		private  noZetsukoLoveToday():void
 		{
 			outputText("", true);
 			outputText("You tell her to be gone; you wanted Ceraph, not some lowly slave that can't even be bothered to show you proper respect.  You order her to tell Ceraph not to waste your time with undisciplined servants that she's too inept to properly break.\n\n", false);
@@ -1484,7 +1484,7 @@ package classes.Scenes.NPCs
 			doNext(camp.campSlavesMenu);
 		}
 
-		private function giveFollowerBodyBits():void
+		private  giveFollowerBodyBits():void
 		{
 			spriteSelect(87);
 			clearOutput();
@@ -1499,12 +1499,12 @@ package classes.Scenes.NPCs
 			if (player.gender > 0 || player.biggestTitSize() > 0) {
 				outputText("\n\nYou scratch your head as she prattles on, growing more animated and a touch aroused. \"<i>Then, I can fly back to the harem and add them to my collection.  My pets do so love when I give them an exotic endowment and then spend all night teasing it.  Could you imagine it?  Going to bed at night and dreaming of all the debauched things my slaves and I are doing, over and over?</i>\"");
 				outputText("\n\nWell, that's quite the pitch she's put together.  Do you want to give her something?\n");
-				var wang:Function =null;
-				var smallestWang:Function =null;
-				var vag:Function =null;
-				var breasts:Function =null;
-				var breasts2:Function =null;
-				var breasts3:Function =null;
+				var wang:() => void =null;
+				var smallestWang:() => void =null;
+				var vag:() => void =null;
+				var breasts:() => void =null;
+				var breasts2:() => void =null;
+				var breasts3:() => void =null;
 				if (player.hasCock()) {
 					outputText("\nYou can give her your [if (cocks == 1) penis|biggest penis or smallest penis].");
 					wang = ceraphFollowerCockTaking;
@@ -1527,13 +1527,13 @@ package classes.Scenes.NPCs
 			else doNext(ceraphFollowerAppearance);
 		}
 
-		private function ceraphFollowerCockTaking(smallest:Boolean = false):void
+		private  ceraphFollowerCockTaking(smallest:boolean = false):void
 		{
 			spriteSelect(87);
 			clearOutput();
-			var x:int = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			if (smallest) x = player.smallestCockIndex();
-			var y:int = x + 1;
+			var y:number = x + 1;
 			outputText("You sigh and undress enough to point at your [cock " + y + "], indicating that Ceraph is welcome to have it.  Ceraph titters, \"<i>With pleasure, my [Master].</i>\"");
 			outputText("\n\nCeraph's fingers feel unexpectedly hot as they brush your " + cockDescript(x) + ", as if she had just come out of a heated tub.  You don't have long to ponder that little detail as they pinch into a tight ring", false);
 			if (player.cocks[x].cockThickness >= 4) outputText(", compressing your massive girth into the rigid shaft", false);
@@ -1556,7 +1556,7 @@ package classes.Scenes.NPCs
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		private function ceraphFollowerCuntTaking():void
+		private  ceraphFollowerCuntTaking():void
 		{
 			spriteSelect(87);
 			clearOutput();
@@ -1574,11 +1574,11 @@ package classes.Scenes.NPCs
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		private function ceraphFollowerTitTaking(rowNum:int = 0):void
+		private  ceraphFollowerTitTaking(rowNum:number = 0):void
 		{
 			spriteSelect(87);
 			clearOutput();
-			var x:Number = rowNum;
+			var x:number = rowNum;
 			//Store nipplecuntz or milks
 			if (player.breastRows[x].fuckable) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] = 4;
 			else if (player.lactationQ() >= 100) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] = 5;
@@ -1628,7 +1628,7 @@ package classes.Scenes.NPCs
 		}
 
 //NippleCunt Stuffing (Ceraph grows dick-nipples to plow your lusty twats!)
-		private function stuffSomeNippleCunts():void
+		private  stuffSomeNippleCunts():void
 		{
 			spriteSelect(87);
 			clearOutput();
@@ -1670,12 +1670,12 @@ package classes.Scenes.NPCs
 		}
 
 //Portal Fuck (AKA Ceraph Hung Out With Cinnabar, Req's PC dick)
-		private function portalFuckWithFollowerCeraph():void
+		private  portalFuckWithFollowerCeraph():void
 		{
 			spriteSelect(87);
 			clearOutput();
-			var x:int = player.cockThatFits(100);
-			var y:int = x + 1;
+			var x:number = player.cockThatFits(100);
+			var y:number = x + 1;
 			//FIRST TIME:
 			if (flags[kFLAGS.TIMES_CERAPH_PORTAL_FUCKED] == 0) {
 				outputText("You undress and ask Ceraph if she has any ideas to mix things up.  Your demon smiles and answers, \"<i>Oh, I think I have just the thing: a pair of trinkets I picked up at the bazaar.  There's a... gifted prostitute there who I would love to have in my harem, but alas, if I am to have access to that cursed place, I must abide by their rules.</i>\"  A shadow clouds the greedy demoness's expression at that admission, but she continues on, \"<i>I was able to get her to produce for me two magical cock-rings.  They're powerfully enchanted with white AND black magic.</i>\"");
@@ -1710,7 +1710,7 @@ package classes.Scenes.NPCs
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		private function layEggsInSlaveCeraph():void
+		private  layEggsInSlaveCeraph():void
 		{
 			clearOutput();
 			//Either Type on Ceraph Follower: Finished (Posthuman) (Zedit)
@@ -1762,7 +1762,7 @@ package classes.Scenes.NPCs
 
 //Ceraph Pegging + Bonus Petplay!
 //Adds "Submission" option to the roleplay menu.
-		private function sumissivenessToCeraphFollower():void
+		private  sumissivenessToCeraphFollower():void
 		{
 			clearOutput();
 			spriteSelect(87);
@@ -1812,7 +1812,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Apple]
-		private function sayAppleToCeraph():void
+		private  sayAppleToCeraph():void
 		{
 			clearOutput();
 			spriteSelect(87);
@@ -1824,7 +1824,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Either Once]
-		private function barkToCeraphOnce(dog:Boolean = true):void
+		private  barkToCeraphOnce(dog:boolean = true):void
 		{
 			clearOutput();
 			spriteSelect(87);
@@ -1959,7 +1959,7 @@ package classes.Scenes.NPCs
 		}
 
 //[Either Twice]
-		private function barkOrMeowTwiceToCeraph(dog:Boolean = true):void
+		private  barkOrMeowTwiceToCeraph(dog:boolean = true):void
 		{
 			clearOutput();
 			spriteSelect(87);
@@ -1976,7 +1976,7 @@ package classes.Scenes.NPCs
 			else outputText("mewling");
 			outputText(" like a needy animal.");
 
-			var choices:Array = [];
+			var choices:any[] = [];
 			//Choose one of the following at random
 			if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0)
 				choices[choices.length] = 0;
@@ -1986,7 +1986,7 @@ package classes.Scenes.NPCs
 				choices[choices.length] = 1;
 			choices[choices.length] = 2;
 
-			var select:int = choices[rand(choices.length)];
+			var select:number = choices[rand(choices.length)];
 
 			//HOLLI
 			if (select == 0) {
@@ -2039,7 +2039,7 @@ package classes.Scenes.NPCs
 					outputText("\n\n\"<i>[Master] is Ceraph's pet?  Then... then, we're her pets too...</i>\" Amily says as the spokeswoman for the group.  They both proceed to drop down on all fours and crawl up alongside you.  Ceraph nonchalantly tears off strips of Amily's clothing and fixes them into a pair of improvised collars, connected to her whip with simple knots.  The four of you then continue the walk together, though you're scolded again and again when you let the mice rub up against you sensually.  Having sister and brother pets is somewhat comforting, but being constantly exposed to their sexual scent is more than distracting.  Ceraph squirts the two of you with water a half-dozen times to keep you from fucking, and each time the shame is greater.  You really are a pet, one that can't even keep " + player.mf("his", "her") + " most basic needs in check.");
 				}
 				else {
-					var jojo:Boolean = campCorruptJojo();
+					var jojo:boolean = campCorruptJojo();
 					outputText("Before long, your corrupt, mouse-like slave sees you awkwardly clambering after the purple-hued dominatrix.  ");
 					if (jojo) outputText("He");
 					else outputText("She");
@@ -2162,4 +2162,4 @@ package classes.Scenes.NPCs
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-}
+

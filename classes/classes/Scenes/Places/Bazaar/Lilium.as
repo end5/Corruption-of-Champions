@@ -1,10 +1,10 @@
-﻿package classes.Scenes.Places.Bazaar{
-	import classes.GlobalFlags.kFLAGS;
-	import classes.PregnancyStore;
+ 
+	 
+	 
 
-	public class Lilium extends BazaarAbstractContent{
+	export class Lilium extends BazaarAbstractContent{
 
-	public function Lilium()
+	public  constructor()
 	{
 	}
 
@@ -21,7 +21,7 @@
 //267 Times Bought Smexin'
 
 //#########AREA TEXT#########
-public function LiliumText(output:Boolean = false):Function {
+public  LiliumText(output:boolean = false):() => void {
 	if(output) {
 		//Before paying:
 		if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00267] == 0) outputText("\n\nYou can see a pale, scantily clad demon woman leaning casually against the wall of a building.", false);
@@ -32,10 +32,10 @@ public function LiliumText(output:Boolean = false):Function {
 	return null;
 }
 
-private function approachLilium():void {
+private  approachLilium():void {
 	outputText("", true);
 	spriteSelect(93);
-	var pay:Function = null;
+	var pay:() => void = null;
 	//#########FIRST TIME INTRODUCTION#########
 	if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00267] == 0) {
 		outputText("As you approach the demon woman, her gaze shifts to you, and she runs her eyes down your body, scrutinizing you.  You respond in kind, taking in her form.  Two nearly foot-long horns grow up and out of her forehead, one of which is adorned with a shiny, silver band.  Her dark hair spills across her bare shoulders in loose coils and her black lipstick and heavy eyeshadow contrast with the paleness of her skin.  A black underbust corset wraps around her waist, leaving her breasts exposed, and long black gloves adorn her arms up to the shoulder.  She also wears a crinoline skirt with an opening at the front which reveals her smooth bare legs, a tail which wraps around her thigh like a garter, and her crotch, which sports an average cock curiously clad in a lacy sock in spite of her otherwise brazen exposure.\n\n", false);
@@ -58,7 +58,7 @@ private function approachLilium():void {
 }
 
 
-private function payForLilium():void {
+private  payForLilium():void {
 	outputText("", true);
 	spriteSelect(93);
 	//#########GENDERLESS SCENE######### REQUIRES unsexed (hah)
@@ -91,9 +91,9 @@ private function payForLilium():void {
 	player.gems -= 200;
 	statScreenRefresh();
 	//Sex Menu here
-	var buttFuck:Function = null;
-	var nippleFuck:Function = null;
-	var rideHer:Function = null;
+	var buttFuck:() => void = null;
+	var nippleFuck:() => void = null;
+	var rideHer:() => void = null;
 	if(player.hasCock() && player.tongueType >= TONUGE_DEMONIC) buttFuck = buttFuckTongueJeorb;
 	if(player.hasCock()) nippleFuck = liliumNippleFuck;
 	if(player.hasVagina()) rideHer = liliumDickRidah;
@@ -101,7 +101,7 @@ private function payForLilium():void {
 }
 
 //- Leave:
-private function leaveLilium():void {
+private  leaveLilium():void {
 	outputText("", true);
 	spriteSelect(93);
 	if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00267] == 0) outputText("\"<i>I'm deathly allergic to fun, unfortunately,</i>\" you reply before moving on to examine more of the bazaar.", false);
@@ -110,10 +110,10 @@ private function leaveLilium():void {
 }
 
 //#########BUTTFUCK + TONGUEJOB SCENE######### REQUIRES PENIS AND LONG DEMONIC TONGUE
-private function buttFuckTongueJeorb():void {
+private  buttFuckTongueJeorb():void {
 	outputText("", true);
 	spriteSelect(93);
-	var x:Number = player.cockThatFits(40);
+	var x:number = player.cockThatFits(40);
 	if(x < 0) x = 0;
 	outputText("The two of you find a secluded alley between two buildings.  Lilium removes her corset and skirt before moving to help you remove your " + player.armorName + ".\n\n", false);
 	
@@ -152,7 +152,7 @@ private function buttFuckTongueJeorb():void {
 }
 
 //#########DICK RIDE SCENE######### REQUIRES VAGINA
-private function liliumDickRidah():void {
+private  liliumDickRidah():void {
 	outputText("", true);
 	spriteSelect(93);
 	outputText("Lilium takes you to a secluded spot away from the Bazaar.  She removes her corset and skirt and slips the lacy cock sock off her cock and you eagerly remove your own " + player.armorName + ".\n\n", false);
@@ -208,8 +208,8 @@ private function liliumDickRidah():void {
 }
 
 //#########NIPPLE FUCK SCENE######### REQUIRES PENIS
-private function liliumNippleFuck():void {
-	var x:Number = player.cockThatFits(40);
+private  liliumNippleFuck():void {
+	var x:number = player.cockThatFits(40);
 	if(x < 0) x = 0;
 	
 	outputText("", true);
@@ -226,7 +226,7 @@ private function liliumNippleFuck():void {
 
 	outputText("Not content with just the teasing Lilium continues to give your " + cockDescript(x) + ", you grab her shoulders and push her back against the wall, the shock of which causes her finger to come free of her nipple.  With one hand you line the head of your " + cockDescript(x) + " up with the now dripping entrance to her breast and drive forward.  There is a slight resistance at first, but then Lilium coos as you overcome it and her breast envelops you.  Her boobs are sadly not large enough to take you to the hilt, but pumping part of your shaft in and out of her chest is pleasurable all the same. The soft flesh mound distorts as you fuck it, stretching out as you draw back and squishing together as you thrust in.  Lilium's eyes unfocus and she begins to pant louder and louder as you fuck her breast.\n\n", false);
 
-	var doubleNipFuck:Boolean = false;
+	var doubleNipFuck:boolean = false;
 	//(if multicock)
 	if(player.cockTotal() >= 2) {
 		doubleNipFuck = true;
@@ -265,4 +265,4 @@ private function liliumNippleFuck():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-}
+

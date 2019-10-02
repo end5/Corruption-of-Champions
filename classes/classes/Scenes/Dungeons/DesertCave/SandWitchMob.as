@@ -1,26 +1,26 @@
-package classes.Scenes.Dungeons.DesertCave
-{
-	import classes.*;
+ 
 
-	public class SandWitchMob extends Monster
+	 
+
+	export class SandWitchMob extends Monster
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.sandWitchMobAI();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.yoYouBeatUpSomeSandWitchesYOUMONSTER();
 		}
 
-		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			game.loseToSammitchMob();
 		}
 
-		public function SandWitchMob()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "sand witches";
@@ -65,4 +65,3 @@ package classes.Scenes.Dungeons.DesertCave
 		
 	}
 
-}

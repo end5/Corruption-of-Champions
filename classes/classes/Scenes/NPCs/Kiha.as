@@ -1,10 +1,10 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
+ 
 
-	public class Kiha extends Monster
+	 
+
+	export class Kiha extends Monster
 	{
-		private function kihaTimeWaster():void {
+		private  kihaTimeWaster():void {
 			game.spriteSelect(72);
 			outputText("She supports the axe on a shoulder, cracking her neck and arching her back to stretch herself, giving you an unintended show.  ", false);
 			game.dynStats("lus", 5);
@@ -12,7 +12,7 @@ package classes.Scenes.NPCs
 		}
 
 		//This could be silly mode worthy! Should Expand? oh ok
-		private function sillyModeKihaAttack():void {
+		private  sillyModeKihaAttack():void {
 			game.spriteSelect(72);
 			outputText("Before you can stop to think, the dragon-woman steps back - throwing her axe into the air before she starts sprinting towards you. In seconds she's reached a hair's distance between her lithe form and your own, her fist recoiling and time seemingly stopping to allow you to note the powerful energy seeping from her arms.  ", false);
 			//Miss:
@@ -23,7 +23,7 @@ package classes.Scenes.NPCs
 			}
 			else {
 				//Determine damage - str modified by enemy toughness!
-				var damage:int = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
+				var damage:number = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
 				damage += 5;
 				damage = player.takeDamage(damage);
 				outputText("A torrent of heat bursts from between her fingertips as she thrusts her clenched fist forward, the ball of intense flame writhing and burning with a fury unknown to mankind. With one fell swoop, the combined power of her love, anger, and sorrow pushes you backward, launching you out of the swamp and into Marble's pillowy chest. \"<i>Ara ara,</i>\" she begins, but you've already pushed yourself away from the milky hell-prison as you run back towards ");
@@ -35,7 +35,7 @@ package classes.Scenes.NPCs
 			combatRoundOver();
 		}
 
-		private function kihaFirePunch():void {
+		private  kihaFirePunch():void {
 			game.spriteSelect(72);
 			outputText("The draconic girl throws her trusty weapon into the sodden ground, using the distraction to build up balls of flame around her fists.  She runs towards you, launching herself in your direction with a flurry of punches.\n", false);
 
@@ -57,7 +57,7 @@ package classes.Scenes.NPCs
 			}
 			//HIT!
 			else {
-				var damage:int = int((str) - (player.armorDef));
+				var damage:number = int((str) - (player.armorDef));
 				damage = player.takeDamage(damage);
 				outputText("Before you can react, you're struck by the power of her blows, feeling an intense pain in your chest as each fist makes contact.  With a final thrust, you're pushed backwards onto the ground; the dragoness smiles as she pulls her axe out of the ground, her hands still steaming from the fingertips. (" + damage + ")\n", false);
 			}
@@ -66,7 +66,7 @@ package classes.Scenes.NPCs
 
 
 		//Fire breath
-		private function kihaFireBreath():void {
+		private  kihaFireBreath():void {
 			game.spriteSelect(72);
 			outputText("Kiha throws her arms back and roars, exhaling a swirling tornado of fire directly at you!\n", false);
 			//Miss:
@@ -83,7 +83,7 @@ package classes.Scenes.NPCs
 				outputText("Using your cat-like flexibility, you manage to sidestep the flames in the nick of time; much to the dragoness' displeasure.", false);
 			}
 			else {
-				var damage:Number = Math.round(90 + rand(10));
+				var damage:number = Math.round(90 + rand(10));
 				damage = player.takeDamage(damage);
 				outputText("You try to avoid the flames, but you're too slow!  The inferno slams into you, setting you alight!  You drop and roll on the ground, putting out the fires as fast as you can.  As soon as the flames are out, you climb back up, smelling of smoke and soot. (" + damage + ")\n", false);
 			}
@@ -98,30 +98,30 @@ package classes.Scenes.NPCs
 		Hit: Like a runaway boulder, the dragoness slams into you, brutally propelling you to the ground, jarring bone and leaving you dazed. //Stun effect applies for 2 rounds//
 		Miss: You nimbly turn aside and roll her off your shoulder at the last moment, leaving her ploughing on uncontrollably until she (catches her foot in a sinkhole and twists her ankle painfully, faceplanting in the bog)/(slams headfirst into a half-rotten tree with a shower of mouldering splinters). She quickly rights herself and turns to face you, but it clearly took its toll on her. //Kiha takes damage//
 		*/
-		override protected function handleFear():Boolean
+		 protected  handleFear():boolean
 		{
 			removeStatusAffect(StatusAffects.Fear);
 			outputText("Kiha shudders for a moment, then looks your way with a clear head.  \"<i>Fear was the first thing the demons taught us to overcome.  Do you think it would stay my blade?</i>\"\n", false);
 			return true;
 		}
 
-		override protected function handleBlind():Boolean
+		 protected  handleBlind():boolean
 		{
 			return true;
 		}
 
 
-		override protected function postAttack(damage:int):void
+		 protected  postAttack(damage:number):void
 		{
 			super.postAttack(damage);
-			var flame:int = 15 + rand(6);
+			var flame:number = 15 + rand(6);
 			flame = player.takeDamage(flame);
 			outputText("\nAn afterwash of flames trails behind her blow, immolating you! (" + flame + ")", false);
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var select:Number = rand(5);
+			var select:number = rand(5);
 			if (select <= 1) eAttack();
 			else if (select == 2) {
 				if (game.silly()) sillyModeKihaAttack();
@@ -131,7 +131,7 @@ package classes.Scenes.NPCs
 			else kihaTimeWaster();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.spiderfight) >= 0)
 				game.kihaFollower.playerBeatsUpKihaPreSpiderFight();
@@ -143,7 +143,7 @@ package classes.Scenes.NPCs
 		}
 
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(findStatusAffect(StatusAffects.spiderfight) >= 0)
 				game.kihaFollower.loseKihaPreSpiderFight();
@@ -159,7 +159,7 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		public function Kiha()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Kiha";
@@ -203,4 +203,3 @@ package classes.Scenes.NPCs
 
 	}
 
-}

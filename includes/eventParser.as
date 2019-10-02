@@ -1,14 +1,14 @@
-﻿import classes.GlobalFlags.kFLAGS;
-import classes.ItemType;
-import classes.Player;
-import classes.Items.Consumable;
-import classes.Scenes.Areas.Lake;
+ 
+ 
+ 
+ 
+ 
 
 //Used to jump the fuck out of pregnancy scenarios for menus.
 //const EVENT_PARSER_ESCAPE:int = 800;
 //const PHYLLA_GEMS_HUNTED_TODAY:int = 893;
 
-public function playerMenu():void {
+export function playerMenu():void {
 	if (!inCombat) spriteSelect(-1);
 	mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", charCreation.newGameGo);
 	mainView.nameBox.visible = false;
@@ -86,7 +86,7 @@ public function eventParser(eventNo:Function):void {
 }
 */
 
-public function gameOver(clear:Boolean = false):void { //Leaves text on screen unless clear is set to true
+export function gameOver(clear:boolean = false):void { //Leaves text on screen unless clear is set to true
 	if (testingBlockExiting) {
 		doNext(camp.returnToCampUseOneHour); //Prevent ChaosMonkah instances from getting stuck
 	}
@@ -104,7 +104,7 @@ public function gameOver(clear:Boolean = false):void { //Leaves text on screen u
 	dungeonLoc = 0; //Replaces inDungeon = false;
 }
 
-private function gameOverMenuOverride():void { //Game over event; override whatever the fuck has been done to the UI up to this point to force display of the data and new game buttons
+ function gameOverMenuOverride():void { //Game over event; override whatever the fuck has been done to the UI up to this point to force display of the data and new game buttons
 	mainView.showMenuButton(MainView.MENU_NEW_MAIN);
 	mainView.showMenuButton(MainView.MENU_DATA);
 	mainView.hideMenuButton(MainView.MENU_APPEARANCE);
@@ -447,21 +447,21 @@ public function doSystem(eventNo:Number):void {
 }
 */
 
-public function getCurrentStackTrace():String		// Fuck, stack-traces only work in the debug player.
+export function getCurrentStackTrace():string		// Fuck, stack-traces only work in the debug player.
 {
 	var tempError:Error = new Error();
-	var stackTrace:String = tempError.getStackTrace();
+	var stackTrace:string = tempError.getStackTrace();
 	return stackTrace;
 }
 
-public function errorPrint(details:* = null):void
+export function errorPrint(details:any = null):void
 {
 	rawOutputText("<b>Congratulations, you've found a bug!</b>", true);
 	rawOutputText("\nError: Unknown event!");
 	rawOutputText("\n\nPlease report that you had an issue with code: \"" + details + "\" ");
 	rawOutputText("\nGame version: \"" + ver + "\" (<b>THIS IS IMPORTANT! Please be sure you include it!</b>) ");
 
-	var sTrace:String = getCurrentStackTrace();
+	var sTrace:string = getCurrentStackTrace();
 
 	if (sTrace)	// Fuck, stack-traces only work in the debug player.
 		rawOutputText("and stack-trace: \n <pre>" + sTrace + "</pre>\n"); 	
@@ -478,7 +478,7 @@ public function errorPrint(details:* = null):void
 
 //Argument is time passed.  Pass to event parser if nothing happens.
 // The time argument is never actually used atm, everything is done with timeQ instead...
-public function goNext(time:Number, needNext:Boolean):Boolean  {
+export function goNext(time:number, needNext:boolean):boolean  {
 	//Update system time
 	//date = new Date();
 	//trace ("MONTH: " + date.month + " DATE: " + date.date + " MINUTES: " + date.minutes);
@@ -495,7 +495,7 @@ public function goNext(time:Number, needNext:Boolean):Boolean  {
 		genderCheck();
 		regeneration(false);
 		//Inform all time aware classes that a new hour has arrived
-		for (var tac:int = 0; tac < _timeAwareClassList.length; tac++) if (_timeAwareClassList[tac].timeChange()) needNext = true;
+		for (const tac = 0; tac < _timeAwareClassList.length; tac++) if (_timeAwareClassList[tac].timeChange()) needNext = true;
 		if (model.time.hours > 23) {
 			model.time.hours = 0;
 			model.time.days++;
@@ -681,7 +681,7 @@ public function goNext(time:Number, needNext:Boolean):Boolean  {
 			trace("EGG LOOT HAS");
 			//default
 			
-			var itypes:Array = [
+			var itypes:any[] = [
 				[
 					consumables.BROWNEG,
 					consumables.PURPLEG,
@@ -704,11 +704,11 @@ public function goNext(time:Number, needNext:Boolean):Boolean  {
 			
 			if (player.findStatusAffect(StatusAffects.Eggs) >= 0)
 			{
-				var size:int = player.statusAffectv2(StatusAffects.Eggs);
+				var size:number = player.statusAffectv2(StatusAffects.Eggs);
 				
 				if (size < 0 || size > 1) size = rand(2);
 				
-				var col:int = player.statusAffectv1(StatusAffects.Eggs);
+				var col:number = player.statusAffectv1(StatusAffects.Eggs);
 				
 				if (col < 0 || col > 5) col = rand(6);
 				
@@ -798,7 +798,7 @@ public function goNext(time:Number, needNext:Boolean):Boolean  {
 	// Previously used to be computed directly in cockNoun, but refactoring prevents access to the Player class when in cockNoun now.
 	if (player.totalCocks() != 0)
 	{
-		var counter:Number = player.totalCocks() - 1;
+		var counter:number = player.totalCocks() - 1;
 		while (counter >= 0)
 		{
 			if (player.cocks[counter].cockType == CockTypesEnum.DOG || player.cocks[counter].cockType == CockTypesEnum.FOX)
@@ -822,7 +822,7 @@ public function goNext(time:Number, needNext:Boolean):Boolean  {
 	return false;
 }
 
-public function cheatTime(time:Number):void {
+export function cheatTime(time:number):void {
 	while(time > 0) {
 		time--;
 		model.time.hours++;
@@ -834,7 +834,7 @@ public function cheatTime(time:Number):void {
 	statScreenRefresh();
 }
 
-public function growHair(amount:Number = .1):Boolean {
+export function growHair(amount:number = .1):boolean {
 	//Grow hair!
 	temp = player.hairLength;
 	player.hairLength += amount;

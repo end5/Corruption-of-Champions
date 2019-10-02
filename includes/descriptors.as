@@ -1,86 +1,86 @@
-﻿import classes.Appearance;
-import classes.CockTypesEnum;
-import classes.internals.Utils;
+ 
+ 
+ 
 
-public function sackDescript():String
+export function sackDescript():string
 {
 	return Appearance.sackDescript(player);
 }
 
-public function cockClit(number:int = 0):String {
+export function cockClit(number:number = 0):string {
 	if(player.hasCock() && number >= 0 && number < player.cockTotal()) return player.cockDescript(number);
 	else return clitDescript();
 }
 
-public function chestDesc():String {
+export function chestDesc():string {
 	return player.chestDesc();
 }
 
-public function tongueDescript():String {
+export function tongueDescript():string {
 	return Appearance.tongueDescription(player);
 }
-public function wingsDescript():String {
+export function wingsDescript():string {
 	return Appearance.wingsDescript(player);
 }
-public function tailDescript():String {
+export function tailDescript():string {
 	return Appearance.tailDescript(player);
 }
-public function oneTailDescript():String {
+export function oneTailDescript():string {
 	return Appearance.oneTailDescript(player);
 }
 
-public function ballsDescriptLight(forcedSize:Boolean = true):String {
+export function ballsDescriptLight(forcedSize:boolean = true):string {
 	return Appearance.ballsDescription(forcedSize, true, player);
 }
 
-public function ballDescript():String {
+export function ballDescript():string {
 	return Appearance.ballsDescription(false, false, player);
 }
 
-public function ballsDescript():String {
+export function ballsDescript():string {
 	return Appearance.ballsDescription(false, true, player, true);
 }
-public function simpleBallsDescript():String {
+export function simpleBallsDescript():string {
 	return Appearance.ballsDescription(false, true, player);
 }
 
-public function assholeDescript():String {
+export function assholeDescript():string {
 	return Appearance.assholeDescript(player);
 }
 		
-public function hipDescript():String {
+export function hipDescript():string {
 	return Appearance.hipDescription(player);
 }
-public function assDescript():String {
+export function assDescript():string {
 	return buttDescript();
 }
-public function buttDescript():String {
+export function buttDescript():string {
 	return Appearance.buttDescription(player);
 }
 
-public function nippleDescript(rowNum:Number):String {
+export function nippleDescript(rowNum:number):string {
 	return Appearance.nippleDescription(player, rowNum);
 }
 
-public function hairDescript():String {
+export function hairDescript():string {
 	return Appearance.hairDescription(player);
 }
 
-public function hairOrFur():String {
+export function hairOrFur():string {
 	return Appearance.hairOrFur(player);
 }
 
-public function clitDescript():String {
+export function clitDescript():string {
 	return Appearance.clitDescription(player);
 }
 
 //Vaginas + Descript
-public function vaginaDescript(vaginaNum:Number = 0):String {
+export function vaginaDescript(vaginaNum:number = 0):string {
 	return Appearance.vaginaDescript(player, vaginaNum);
 }
 
 //Allvagina descript
-public function allVaginaDescript():String {
+export function allVaginaDescript():string {
 	if (player.vaginas.length == 1) return vaginaDescript(rand(player.vaginas.length - 1));
 	if (player.vaginas.length > 1) return (vaginaDescript(rand(player.vaginas.length - 1)) + "s");
 	
@@ -88,28 +88,28 @@ public function allVaginaDescript():String {
 	return "ERROR: allVaginaDescript called with no vaginas.";
 }
 
-public function cockDescript(cockNum:int = 0):String 
+export function cockDescript(cockNum:number = 0):string 
 {
 	return player.cockDescript(cockNum);
 }
 
-public function allBreastsDescript():String {
+export function allBreastsDescript():string {
 	return Appearance.allBreastsDescript(player);
 }
 	
-public function breastDescript(rowNum:Number):String
+export function breastDescript(rowNum:number):string
 {
 	return player.breastDescript(rowNum);
 }
 
-public function num2Text(number:int):String {
+export function num2Text(number:number):string {
 	return Utils.num2Text(number);
 }
 
-public function num2Text2(number:int):String {
+export function num2Text2(number:number):string {
 	return Utils.num2Text2(number);
 }
 
-public function Num2Text(number:int):String {
+export function Num2Text(number:number):string {
 	return Utils.Num2Text(number);
 }

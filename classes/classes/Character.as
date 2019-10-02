@@ -1,23 +1,23 @@
-﻿package classes 
-{
-import classes.Scenes.Places.TelAdre.UmasShop;
+  
+
+ 
 
 /**
 	 * Character class for player and NPCs. Has subclasses Player and NonPlayer.
 	 * @author Yoffy
 	 */
-	public class Character extends Creature
+	export class Character extends Creature
 	{
-		private var _femininity:Number = 50;
+		private  _femininity:number = 50;
 
 		// This is the easiest way I could think of to apply "flat" bonuses to certain stats without having to write a whole shitload of crazyshit
 		// I think a better long-term solution may be to hang function references off the end of the statusAffect class and move all of the value
 		// calculation into methods of ContentClasses, so rather than having walls of logic, we just call the method reference with a value, and get back the modified value.
 		// It's still shitty, but it would possibly be an improvement.
-		public function get femininity():Number
+		public  get femininity():number
 		{
-			var fem:Number = _femininity;
-			var statIndex:int = this.findStatusAffect(StatusAffects.UmasMassage);
+			var fem:number = _femininity;
+			var statIndex:number = this.findStatusAffect(StatusAffects.UmasMassage);
 
 			if (statIndex >= 0)
 			{
@@ -35,7 +35,7 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return fem;
 		}
 		
-		public function set femininity(value:Number):void
+		public  set femininity(value:number):void
 		{
 			if (value > 100)
 			{
@@ -50,33 +50,33 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 		}
 
 		//BEARDS! Not used anywhere right now but WHO WANTS A BEARD?
-		public var beardLength:Number = 0;
-		public var beardStyle:Number = 0;
+		public  beardLength:number = 0;
+		public  beardStyle:number = 0;
 		
 		//Used for hip ratings
-		public var thickness:Number = 0;
+		public  thickness:number = 0;
 		
 		//Body tone i.e. Lithe, stocky, etc
-		public var tone:Number = 0;
+		public  tone:number = 0;
 		
-		private var _pregnancyType:int = 0;
-		public function get pregnancyType():int { return _pregnancyType; }
+		private  _pregnancyType:number = 0;
+		public  get pregnancyType():number { return _pregnancyType; }
 
-		private var _pregnancyIncubation:int = 0;
-		public function get pregnancyIncubation():int { return _pregnancyIncubation; }
+		private  _pregnancyIncubation:number = 0;
+		public  get pregnancyIncubation():number { return _pregnancyIncubation; }
 
-		private var _buttPregnancyType:int = 0;
-		public function get buttPregnancyType():int { return _buttPregnancyType; }
+		private  _buttPregnancyType:number = 0;
+		public  get buttPregnancyType():number { return _buttPregnancyType; }
 
-		private var _buttPregnancyIncubation:int = 0;
-		public function get buttPregnancyIncubation():int { return _buttPregnancyIncubation; }
+		private  _buttPregnancyIncubation:number = 0;
+		public  get buttPregnancyIncubation():number { return _buttPregnancyIncubation; }
 
 
 		
 		//Key items
-		public var keyItems:Array;
+		public  keyItems:any[];
 		
-		public function Character()
+		public  constructor()
 		{
 			keyItems = [];
 		}
@@ -85,9 +85,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 
 		//return total fertility
 
-		public function faceDesc():String
+		public  faceDesc():string
 		{
-			var faceo:String = "";
+			var faceo:string = "";
 			//0-10
 			if (femininity < 10)
 			{
@@ -136,12 +136,12 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 		}
 		
 		//Modify femininity!
-		public function modFem(goal:Number, strength:Number = 1):String
+		public  modFem(goal:number, strength:number = 1):string
 		{
-			var output:String = "";
-			var old:String = faceDesc();
-			var oldN:Number = femininity;
-			var Changed:Boolean = false;
+			var output:string = "";
+			var old:string = faceDesc();
+			var oldN:number = femininity;
+			var Changed:boolean = false;
 			//If already perfect!
 			if (goal == femininity)
 				return "";
@@ -189,7 +189,7 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return output;
 		}
 		
-		public function modThickness(goal:Number, strength:Number = 1):String
+		public  modThickness(goal:number, strength:number = 1):string
 		{
 			if (goal == thickness)
 				return "";
@@ -219,7 +219,7 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return "";
 		}
 		
-		public function modTone(goal:Number, strength:Number = 1):String
+		public  modTone(goal:number, strength:number = 1):string
 		{
 			if (goal == tone)
 				return "";
@@ -255,9 +255,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 		}
 		
 		//Run this every hour to 'fix' femininity.
-		public function fixFemininity():String
+		public  fixFemininity():string
 		{
-			var output:String = "";
+			var output:string = "";
 			//Genderless/herms share the same bounds
 			if (gender == 0 || gender == 3)
 			{
@@ -319,12 +319,12 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return output;
 		}
 		
-		public function hasBeard():Boolean
+		public  hasBeard():boolean
 		{
 			return beardLength > 0;
 		}
 		
-		public function beard():String
+		public  beard():string
 		{
 			if (hasBeard())
 				return "beard";
@@ -335,9 +335,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			}
 		}
 		
-		public function skin(noAdj:Boolean = false, noTone:Boolean = false):String
+		public  skin(noAdj:boolean = false, noTone:boolean = false):string
 		{
-			var skinzilla:String = "";
+			var skinzilla:string = "";
 			//Only show stuff other than skinDesc if justSkin is false
 			if (!noAdj)
 			{
@@ -362,16 +362,16 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return skinzilla;
 		}
 		
-		public function hasMuzzle():Boolean
+		public  hasMuzzle():boolean
 		{
 			if (faceType == 1 || faceType == 2 || faceType == 6 || faceType == 7 || faceType == 9 || faceType == 11 || faceType == 12)
 				return true;
 			return false;
 		}
 		
-		public function face():String
+		public  face():string
 		{
-			var stringo:String = "";
+			var stringo:string = "";
 			//0 - human
 			//5 - Human w/Naga fangz
 			//8 - bunnah faceahhh bunbun
@@ -422,7 +422,7 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return "face";
 		}
 		
-		public function hasLongTail():Boolean
+		public  hasLongTail():boolean
 		{
 			//7 - shark tail!
 			//8 - catTAIIIIIL
@@ -439,19 +439,19 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return false;
 		}
 
-		public function isPregnant():Boolean { return _pregnancyType != 0; }
+		public  isPregnant():boolean { return _pregnancyType != 0; }
 
-		public function isButtPregnant():Boolean { return _buttPregnancyType != 0; }
+		public  isButtPregnant():boolean { return _buttPregnancyType != 0; }
 	
 		//fertility must be >= random(0-beat)
 		//If arg == 1 then override any contraceptives and guarantee fertilization
-		public function knockUp(type:int = 0, incubation:int = 0, beat:int = 100, arg:int = 0):void
+		public  knockUp(type:number = 0, incubation:number = 0, beat:number = 100, arg:number = 0):void
 		{
 			//Contraceptives cancel!
 			if (findStatusAffect(StatusAffects.Contraceptives) >= 0 && arg < 1)
 				return;
 //			if (findStatusAffect(StatusAffects.GooStuffed) >= 0) return; //No longer needed thanks to PREGNANCY_GOO_STUFFED being used as a blocking value
-			var bonus:int = 0;
+			var bonus:number = 0;
 			//If arg = 1 (always pregnant), bonus = 9000
 			if (arg >= 1)
 				bonus = 9000;
@@ -478,19 +478,19 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 
 		//The more complex knockUp function used by the player is defined above
 		//The player doesn't need to be told of the last event triggered, so the code here is quite a bit simpler than that in PregnancyStore
-		public function knockUpForce(type:int = 0, incubation:int = 0):void
+		public  knockUpForce(type:number = 0, incubation:number = 0):void
 		{
 			_pregnancyType = type;
 			_pregnancyIncubation = (type == 0 ? 0 : incubation); //Won't allow incubation time without pregnancy type
 		}
 	
 		//fertility must be >= random(0-beat)
-		public function buttKnockUp(type:int = 0, incubation:int = 0, beat:int = 100, arg:int = 0):void
+		public  buttKnockUp(type:number = 0, incubation:number = 0, beat:number = 100, arg:number = 0):void
 		{
 			//Contraceptives cancel!
 			if (findStatusAffect(StatusAffects.Contraceptives) >= 0 && arg < 1)
 				return;
-			var bonus:int = 0;
+			var bonus:number = 0;
 			//If arg = 1 (always pregnant), bonus = 9000
 			if (arg >= 1)
 				bonus = 9000;
@@ -505,13 +505,13 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 		}
 
 		//The more complex buttKnockUp function used by the player is defined in Character.as
-		public function buttKnockUpForce(type:int = 0, incubation:int = 0):void
+		public  buttKnockUpForce(type:number = 0, incubation:number = 0):void
 		{
 			_buttPregnancyType = type;
 			_buttPregnancyIncubation = (type == 0 ? 0 : incubation); //Won't allow incubation time without pregnancy type
 		}
 
-		public function pregnancyAdvance():Boolean {
+		public  pregnancyAdvance():boolean {
 			if (_pregnancyIncubation > 0) _pregnancyIncubation--;
 			if (_pregnancyIncubation < 0) _pregnancyIncubation = 0;
 			if (_buttPregnancyIncubation > 0) _buttPregnancyIncubation--;
@@ -519,17 +519,17 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return pregnancyUpdate();
 		}
 
-		public function pregnancyUpdate():Boolean { return false; }
+		public  pregnancyUpdate():boolean { return false; }
 
 		//Create a keyItem
-		public function createKeyItem(keyName:String, value1:Number, value2:Number, value3:Number, value4:Number):void
+		public  createKeyItem(keyName:string, value1:number, value2:number, value3:number, value4:number):void
 		{
 			var newKeyItem:KeyItemClass = new KeyItemClass();
 			//used to denote that the array has already had its new spot pushed on.
-			var arrayed:Boolean = false;
+			var arrayed:boolean = false;
 			//used to store where the array goes
-			var keySlot:Number = 0;
-			var counter:Number = 0;
+			var keySlot:number = 0;
+			var counter:number = 0;
 			//Start the array if its the first bit
 			if (keyItems.length == 0)
 			{
@@ -607,9 +607,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 		}
 		
 		//Remove a key item
-		public function removeKeyItem(itemName:String):void
+		public  removeKeyItem(itemName:string):void
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			//Various Errors preventing action
 			if (keyItems.length <= 0)
 			{
@@ -628,9 +628,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			}
 		}
 		
-		public function addKeyValue(statusName:String, statusValueNum:Number = 1, newNum:Number = 0):void
+		public  addKeyValue(statusName:string, statusValueNum:number = 1, newNum:number = 0):void
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			//Various Errors preventing action
 			if (keyItems.length <= 0)
 			{
@@ -662,9 +662,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			//trace("ERROR: Looking for keyitem '" + statusName + "' to change value " + statusValueNum + ", and player does not have the key item.");
 		}
 		
-		public function keyItemv1(statusName:String):Number
+		public  keyItemv1(statusName:string):number
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			//Various Errors preventing action
 			if (keyItems.length <= 0)
 			{
@@ -681,9 +681,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return 0;
 		}
 		
-		public function keyItemv2(statusName:String):Number
+		public  keyItemv2(statusName:string):number
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			//Various Errors preventing action
 			if (keyItems.length <= 0)
 			{
@@ -700,9 +700,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return 0;
 		}
 		
-		public function keyItemv3(statusName:String):Number
+		public  keyItemv3(statusName:string):number
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			//Various Errors preventing action
 			if (keyItems.length <= 0)
 			{
@@ -719,9 +719,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return 0;
 		}
 		
-		public function keyItemv4(statusName:String):Number
+		public  keyItemv4(statusName:string):number
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			//Various Errors preventing action
 			if (keyItems.length <= 0)
 			{
@@ -738,9 +738,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return 0;
 		}
 		
-		public function removeKeyItems():void
+		public  removeKeyItems():void
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			while (counter > 0)
 			{
 				counter--;
@@ -748,9 +748,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			}
 		}
 		
-		public function hasKeyItem(keyName:String):Number
+		public  hasKeyItem(keyName:string):number
 		{
-			var counter:Number = keyItems.length;
+			var counter:number = keyItems.length;
 			//Various Errors preventing action
 			if (keyItems.length <= 0)
 				return -2;
@@ -784,9 +784,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 		   else if(breastRows[rowNum].breastRating < 13) return "HHH";
 		   return "massive custom-made";
 		 }*/
-		public function viridianChange():Boolean
+		public  viridianChange():boolean
 		{
-			var count:int = cockTotal();
+			var count:number = cockTotal();
 			if (count == 0)
 				return false;
 			while (count > 0)
@@ -798,7 +798,7 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return false;
 		}
 		
-		public function hasKnot(arg:int = 0):Boolean
+		public  hasKnot(arg:number = 0):boolean
 		{
 			if (arg > cockTotal() - 1 || arg < 0)
 				return false;
@@ -806,9 +806,9 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 		}
 
 
-		public function maxHP():Number
+		public  maxHP():number
 		{
-			var max:Number = 0;
+			var max:number = 0;
 			max += int(tou * 2 + 50);
 			if (findPerk(PerkLib.Tank) >= 0) max += 50;
 			if (findPerk(PerkLib.Tank2) >= 0) max += Math.round(tou);
@@ -820,7 +820,7 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 			return max;
 		}
 
-		public function buttDescript():String
+		public  buttDescript():string
 		{
 			return Appearance.buttDescription(this);
 		}
@@ -828,4 +828,3 @@ import classes.Scenes.Places.TelAdre.UmasShop;
 
 	}
 
-}

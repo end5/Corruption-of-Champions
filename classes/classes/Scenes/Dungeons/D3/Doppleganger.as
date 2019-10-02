@@ -1,20 +1,20 @@
-package classes.Scenes.Dungeons.D3 
-{
-	import classes.BreastRowClass;
-	import classes.Cock;
-	import classes.Monster;
-	import classes.VaginaClass;
-	import classes.StatusAffects;
+  
+
+	 
+	 
+	 
+	 
+	 
 	
 	/**
 	 * ...
 	 * @author Gedan
 	 */
-	public class Doppleganger extends Monster
+	export class Doppleganger extends Monster
 	{
-		private var _roundCount:int = 0;
+		private  _roundCount:number = 0;
 		
-		public function mirrorAttack(damage:Number):void
+		public  mirrorAttack(damage:number):void
 		{
 			this.createStatusAffect(StatusAffects.MirroredAttack, 0, 0, 0, 0);
 			
@@ -40,7 +40,7 @@ package classes.Scenes.Dungeons.D3
 			addTalkShit();
 		}
 		
-		public function mirrorTease(damage:Number, successful:Boolean):void
+		public  mirrorTease(damage:number, successful:boolean):void
 		{
 			clearOutput();
 			outputText("You move your hands seductively over your body, and - you stop. The doppelganger stops too, staring at you with wicked coyness, " + player.mf("his", "her") +" hands frozen on " + player.mf("his", "her") +" form exactly where yours are. Glaring back, you begin your slow, lustful motions again, as your reflection does the exact same thing. It’s a lust off!");
@@ -64,7 +64,7 @@ package classes.Scenes.Dungeons.D3
 			addTalkShit();
 		}
 		
-		private function addTalkShit():void
+		private  addTalkShit():void
 		{
 			statScreenRefresh();
 			
@@ -141,17 +141,17 @@ package classes.Scenes.Dungeons.D3
 			combatRoundOver();
 		}
 		
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.d3.doppleganger.punchYourselfInTheBalls();
 		}
 		
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.d3.doppleganger.inSovietCoCSelfFucksYou();
 		}
 		
-		public function handleSpellResistance(spell:String):void
+		public  handleSpellResistance(spell:string):void
 		{
 			outputText("The mirror demon barely even flinches as your fierce, puissant fire washes over [him].");
 
@@ -169,19 +169,19 @@ package classes.Scenes.Dungeons.D3
 			addTalkShit();
 		}
 		
-		public function handlePlayerWait():void
+		public  handlePlayerWait():void
 		{
 			outputText("Your doppleganger similarly opts to take a momentary break from the ebb and flow of combat.");
 			addTalkShit();
 		}
 		
-		override public function doAI():void
+		 public  doAI():void
 		{
 			outputText("Your duplicate chuckles in the face of your attacks.");
 			addTalkShit();
 		}
 		
-		public function Doppleganger() 
+		public  constructor() 
 		{
 			this.a = "the ";
 			this.short = "doppleganger";
@@ -229,7 +229,7 @@ package classes.Scenes.Dungeons.D3
 			
 			if (player.cocks.length > 0)
 			{
-				for (var i:int = 0; i < player.cocks.length; i++)
+				for (const i = 0; i < player.cocks.length; i++)
 				{
 					this.createCock((player.cocks[i] as Cock).cockLength, (player.cocks[i] as Cock).cockThickness, (player.cocks[i] as Cock).cockType);
 				}
@@ -271,9 +271,9 @@ package classes.Scenes.Dungeons.D3
 			checkMonster();
 		}
 		
-		override public function get long():String
+		 public  get long():string
 		{
-			var str:String = "";
+			var str:string = "";
 			
 			str += "You are fighting the doppelganger. " + player.mf("He", "She") +" is a ";
 			str += String(Math.floor(player.tallness / 12) + " foot " + player.tallness % 12 + " inch tall ");
@@ -335,4 +335,4 @@ package classes.Scenes.Dungeons.D3
 		
 	}
 
-}
+

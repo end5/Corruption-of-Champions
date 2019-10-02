@@ -1,63 +1,63 @@
-﻿package classes
-{
+ 
 
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Inventory;
-	import classes.Scenes.Places.TelAdre.Katherine;
+
+	 
+	 
+	 
 
 	CONFIG::AIR 
 	{
-		import flash.filesystem.File;
-		import flash.filesystem.FileMode;
-		import flash.filesystem.FileStream;
+		 
+		 
+		 
 	}
 	
-	import flash.net.FileFilter;
-	import flash.net.FileReference;
-	import flash.events.Event;
-	import flash.net.URLRequest;
-	import flash.utils.ByteArray;
-	import flash.net.URLLoader;
-	import flash.net.SharedObject;
-	import flash.events.MouseEvent;
-	import flash.events.IOErrorEvent;
-	import classes.Items.*;
-	import classes.GlobalFlags.kFLAGS;
-	import flash.net.URLLoaderDataFormat;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
 
-public class Saves extends BaseContent {
+export class Saves extends BaseContent {
 
-	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
+	private static  SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:number		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
 	
-	private var gameStateGet:Function;
-	private var gameStateSet:Function;
-	private var itemStorageGet:Function;
-	private var gearStorageGet:Function;
+	private  gameStateGet:() => void;
+	private  gameStateSet:() => void;
+	private  itemStorageGet:() => void;
+	private  gearStorageGet:() => void;
 	
-	public function Saves(gameStateDirectGet:Function, gameStateDirectSet:Function) {
+	public  constructor(gameStateDirectGet:() => void, gameStateDirectSet:() => void) {
 		gameStateGet = gameStateDirectGet; //This is so that the save game functions (and nothing else) get direct access to the gameState variable
 		gameStateSet = gameStateDirectSet;
 	}
 
-	public function linkToInventory(itemStorageDirectGet:Function, gearStorageDirectGet:Function):void {
+	public  linkToInventory(itemStorageDirectGet:() => void, gearStorageDirectGet:() => void):void {
 		itemStorageGet = itemStorageDirectGet;
 		gearStorageGet = gearStorageDirectGet;
 	}
 
 CONFIG::AIR {
-public var airFile:File;
+public  airFile:File;
 }
-public var file:FileReference;
-public var loader:URLLoader;
+public  file:FileReference;
+public  loader:URLLoader;
 
-public var saveFileNames:Array = ["CoC_1", "CoC_2", "CoC_3", "CoC_4", "CoC_5", "CoC_6", "CoC_7", "CoC_8", "CoC_9"];
-public var versionProperties:Object = { "legacy" : 100, "0.8.3f7" : 124, "0.8.3f8" : 125, "0.8.4.3":119, "latest" : 119 };
-public var savedGameDir:String = "data/com.fenoxo.coc";
+public  saveFileNames:any[] = ["CoC_1", "CoC_2", "CoC_3", "CoC_4", "CoC_5", "CoC_6", "CoC_7", "CoC_8", "CoC_9"];
+public  versionProperties:Record<string, any> = { "legacy" : 100, "0.8.3f7" : 124, "0.8.3f8" : 125, "0.8.4.3":119, "latest" : 119 };
+public  savedGameDir:string = "data/com.fenoxo.coc";
 
-public function cloneObj(obj:Object):Object
+public  cloneObj(obj:Record<string, any>):Record<string, any>
 {
 	var temp:ByteArray = new ByteArray();
 	temp.writeObject(obj);
@@ -65,16 +65,16 @@ public function cloneObj(obj:Object):Object
 	return temp.readObject();
 }
 
-public function getClass(obj:Object):Class
+public  getClass(obj:Record<string, any>):Class
 {
 	return Class(flash.utils.getDefinitionByName(flash.utils.getQualifiedClassName(obj)));
 }
 
 //ASSetPropFlags(Object.prototype, ["clone"], 1);
 
-public function loadSaveDisplay(saveFile:Object, slotName:String):String
+public  loadSaveDisplay(saveFile:Record<string, any>, slotName:string):string
 {
-	var holding:String = "";
+	var holding:string = "";
 	if (saveFile.data.exists && saveFile.data.flags[2066] == undefined)
 	{
 		if (saveFile.data.notes == undefined)
@@ -110,13 +110,13 @@ public function loadSaveDisplay(saveFile:Object, slotName:String):String
 CONFIG::AIR
 {
 
-public function loadScreenAIR():void
+public  loadScreenAIR():void
 {
 	var airSaveDir:File = File.documentsDirectory.resolvePath(savedGameDir);
-	var fileList:Array = new Array();
-	var maxSlots:int = saveFileNames.length;
-	var slots:Array = new Array(maxSlots);
-	var gameObjects:Array = new Array(maxSlots);
+	var fileList:any[] = new Array();
+	var maxSlots:number = saveFileNames.length;
+	var slots:any[] = new Array(maxSlots);
+	var gameObjects:any[] = new Array(maxSlots);
 
 	try
 	{
@@ -131,7 +131,7 @@ public function loadScreenAIR():void
 	outputText("<b><u>Slot: Sex,  Game Days Played</u></b>\r", true);
 	
 	var i:uint = 0;
-	for (var fileCount:uint = 0; fileCount < fileList.length; fileCount++)
+	for (const fileCount = 0; fileCount < fileList.length; fileCount++)
 	{
 		// We can only handle maxSlots at this time
 		if (i >= maxSlots)
@@ -148,7 +148,7 @@ public function loadScreenAIR():void
 		if (gameObjects[i].data.exists)
 		{
 			//trace("Creating function with indice = ", i);
-			(function(i:int):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+			(function(i:number):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
 			{
 				slots[i] = function() : void 		// Anonymous functions FTW
 				{
@@ -180,7 +180,7 @@ public function loadScreenAIR():void
 	"Back", returnToSaveMenu);
 }
 
-public function getGameObjectFromFile(aFile:File):Object
+public  getGameObjectFromFile(aFile:File):Record<string, any>
 {
 	var stream:FileStream = new FileStream();
 	var bytes:ByteArray = new ByteArray();
@@ -200,20 +200,20 @@ public function getGameObjectFromFile(aFile:File):Object
 
 }
 
-public function loadScreen():void
+public  loadScreen():void
 {
-	var slots:Array = new Array(saveFileNames.length);
+	var slots:any[] = new Array(saveFileNames.length);
 		
 	outputText("<b><u>Slot: Sex,  Game Days Played</u></b>\r", true);
 	
-	for (var i:int = 0; i < saveFileNames.length; i += 1)
+	for (const i = 0; i < saveFileNames.length; i += 1)
 	{
-		var test:Object = SharedObject.getLocal(saveFileNames[i], "/");
+		var test:Record<string, any> = SharedObject.getLocal(saveFileNames[i], "/");
 		outputText(loadSaveDisplay(test, String(i + 1)), false);
 		if (test.data.exists && test.data.flags[2066] == undefined)
 		{
 			//trace("Creating function with indice = ", i);
-			(function(i:int):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+			(function(i:number):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
 			{
 				slots[i] = function() : void 		// Anonymous functions FTW
 				{
@@ -246,7 +246,7 @@ public function loadScreen():void
 	"Back", returnToSaveMenu);
 }
 
-public function saveScreen():void
+public  saveScreen():void
 {
 	mainView.nameBox.x = 210;
 	mainView.nameBox.y = 620;
@@ -261,15 +261,15 @@ public function saveScreen():void
 		outputText("<b>Last saved or loaded from: " + player.slotName + "</b>\r\r", false);
 	outputText("<b><u>Slot: Sex,  Game Days Played</u></b>\r", false);
 	
-	var saveFuncs:Array = [];
+	var saveFuncs:any[] = [];
 	
 	
-	for (var i:int = 0; i < saveFileNames.length; i += 1)
+	for (const i = 0; i < saveFileNames.length; i += 1)
 	{
-		var test:Object = SharedObject.getLocal(saveFileNames[i], "/");
+		var test:Record<string, any> = SharedObject.getLocal(saveFileNames[i], "/");
 		outputText(loadSaveDisplay(test, String(i + 1)), false);
 		trace("Creating function with indice = ", i);
-		(function(i:int) : void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+		(function(i:number) : void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
 		{
 			saveFuncs[i] = function() : void 		// Anonymous functions FTW
 			{
@@ -297,7 +297,7 @@ public function saveScreen():void
 	"Back", returnToSaveMenu);
 }
 
-public function saveLoad(e:MouseEvent = null):void
+public  saveLoad(e:MouseEvent = null):void
 {
 	mainView.eventTestInput.x = -10207.5;
 	mainView.eventTestInput.y = -1055.1;
@@ -377,39 +377,39 @@ public function saveLoad(e:MouseEvent = null):void
 	}
 }
 
-private function saveToFile():void {
+private  saveToFile():void {
 	saveGameObject(null, true);
 }
 
-private function loadFromFile():void {
+private  loadFromFile():void {
 	openSave();
 	showStats();
 	statScreenRefresh();
 }
 
-private function autosaveToggle():void {
+private  autosaveToggle():void {
 	player.autoSave = !player.autoSave;
 	saveLoad();
 }
 
-public function deleteScreen():void
+public  deleteScreen():void
 {
 	outputText("Slot,  Race,  Sex,  Game Days Played\n", true);
 	
 
-	var delFuncs:Array = [];
+	var delFuncs:any[] = [];
 	
 	
-	for (var i:int = 0; i < saveFileNames.length; i += 1)
+	for (const i = 0; i < saveFileNames.length; i += 1)
 	{
-		var test:Object = SharedObject.getLocal(saveFileNames[i], "/");
+		var test:Record<string, any> = SharedObject.getLocal(saveFileNames[i], "/");
 		outputText(loadSaveDisplay(test, String(i + 1)), false);
 		if (test.data.exists)
 		{
 			//slots[i] = loadFuncs[i];
 
 			trace("Creating function with indice = ", i);
-			(function(i:int):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+			(function(i:number):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
 			{
 				delFuncs[i] = function() : void 		// Anonymous functions FTW
 				{
@@ -435,43 +435,43 @@ public function deleteScreen():void
 			"Back", returnToSaveMenu);
 }
 
-public function confirmDelete():void
+public  confirmDelete():void
 {
 	outputText("You are about to delete the following save: <b>" + flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] + "</b>\n\nAre you sure you want to delete it?", true);
 	simpleChoices("No", deleteScreen, "Yes", purgeTheMutant, "", null, "", null, "", null);
 }
 
-public function purgeTheMutant():void
+public  purgeTheMutant():void
 {
-	var test:* = SharedObject.getLocal(flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION], "/");
+	var test:any = SharedObject.getLocal(flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION], "/");
 	trace("DELETING SLOT: " + flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION]);
-	var blah:Array = ["been virus bombed", "been purged", "been vaped", "been nuked from orbit", "taken an arrow to the knee", "fallen on its sword", "lost its reality matrix cohesion", "been cleansed", "suffered the following error: (404) Porn Not Found"];
+	var blah:any[] = ["been virus bombed", "been purged", "been vaped", "been nuked from orbit", "taken an arrow to the knee", "fallen on its sword", "lost its reality matrix cohesion", "been cleansed", "suffered the following error: (404) Porn Not Found"];
 	
 	trace(blah.length + " array slots");
-	var select:Number = rand(blah.length);
+	var select:number = rand(blah.length);
 	outputText(flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] + " has " + blah[select] + ".", true);
 	test.clear();
 	doNext(deleteScreen);
 }
 
-public function saveGame(slot:String):void
+public  saveGame(slot:string):void
 {
 	player.slotName = slot;
 	saveGameObject(slot, false);
 }
 
-public function loadGame(slot:String):void
+public  loadGame(slot:string):void
 {
-	var saveFile:* = SharedObject.getLocal(slot, "/");
+	var saveFile:any = SharedObject.getLocal(slot, "/");
 	
 	// Check the property count of the file
-	var numProps:int = 0;
-	for (var prop:String in saveFile.data)
+	var numProps:number = 0;
+	for (const prop in saveFile.data)
 	{
 		numProps++;
 	}
 	
-	var sfVer:*;
+	var sfVer:any;
 	if (saveFile.data.version == undefined)
 	{
 		sfVer = versionProperties["legacy"];
@@ -481,7 +481,7 @@ public function loadGame(slot:String):void
 		sfVer = versionProperties[saveFile.data.version];
 	}
 	
-	if (!(sfVer is Number))
+	if (!(sfVer instanceof Number))
 	{
 		sfVer = versionProperties["latest"];
 	} else {
@@ -539,18 +539,18 @@ OH GOD SOMEONE FIX THIS DISASTER!!!!111one1ONE!
 
 */
 //FURNITURE'S JUNK
-public function saveGameObject(slot:String, isFile:Boolean):void
+public  saveGameObject(slot:string, isFile:boolean):void
 {
 	//Autosave stuff
 	if (player.slotName != "VOID")
 		player.slotName = slot;
 		
-	var backupAborted:Boolean = false;
+	var backupAborted:boolean = false;
 	
 	CoC.saveAllAwareClasses(getGame()); //Informs each saveAwareClass that it must save its values in the flags array
-	var counter:Number = player.cocks.length;
+	var counter:number = player.cocks.length;
 	//Initialize the save file
-	var saveFile:*;
+	var saveFile:any;
 	var backup:SharedObject;
 	if (isFile)
 	{
@@ -586,14 +586,14 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.notes = getGame().notes;
 	mainView.nameBox.visible = false;
 	
-	var processingError:Boolean = false;
+	var processingError:boolean = false;
 	var dataError:Error;
 	
 	try
 	{
 		//flags
 		saveFile.data.flags = [];
-		for (var i:int = 0; i < flags.length; i++)
+		for (const i = 0; i < flags.length; i++)
 		{
 			// Don't save unset/default flags
 			if (flags[i] != 0)
@@ -966,10 +966,10 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		// Reload it
 		saveFile = SharedObject.getLocal(slot, "/");
 		backup = SharedObject.getLocal(slot + "_backup", "/");
-		var numProps:int = 0;
+		var numProps:number = 0;
 		
 		// Copy the properties over to a new file object
-		for (var prop:String in saveFile.data)
+		for (const prop in saveFile.data)
 		{
 			numProps++;
 			backup.data[prop] = saveFile.data[prop];
@@ -1014,14 +1014,14 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	
 }
 
-public function restore(slotName:String):void
+public  restore(slotName:string):void
 {
 	clearOutput();
 	// copy slot_backup.sol over slot.sol
 	var backupFile:SharedObject = SharedObject.getLocal(slotName + "_backup", "/");
 	var overwriteFile:SharedObject = SharedObject.getLocal(slotName, "/");
 	
-	for (var prop:String in backupFile.data)
+	for (const prop in backupFile.data)
 	{
 		overwriteFile.data[prop] = backupFile.data[prop];
 	}
@@ -1033,7 +1033,7 @@ public function restore(slotName:String):void
 	doNext(playerMenu);
 }
 
-public function openSave():void
+public  openSave():void
 {
 
 	// Block when running the chaos monkey
@@ -1056,7 +1056,7 @@ public function openSave():void
 }
 
 
-public function onFileSelected(evt:Event):void
+public  onFileSelected(evt:Event):void
 {
 	CONFIG::AIR
 	{
@@ -1072,7 +1072,7 @@ public function onFileSelected(evt:Event):void
 	}
 }
 
-public function onFileLoaded(evt:Event):void
+public  onFileLoaded(evt:Event):void
 {
 	var tempFileRef:FileReference = FileReference(evt.target);
 	trace("File target = ", evt.target);
@@ -1082,7 +1082,7 @@ public function onFileLoaded(evt:Event):void
 	loader.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
 	try
 	{
-		var req:* = new URLRequest(tempFileRef.name);
+		var req:any = new URLRequest(tempFileRef.name);
 		loader.load(req);
 	}
 	catch (error:Error)
@@ -1091,18 +1091,18 @@ public function onFileLoaded(evt:Event):void
 	}
 }
 
-public function ioErrorHandler(e:IOErrorEvent):void
+public  ioErrorHandler(e:IOErrorEvent):void
 {
 	outputText("<b>!</b> Save file not found, check that it is in the same directory as the CoC_" + ver + ".swf file.\r\rLoad from file is not available when playing directly from a website like furaffinity or fenoxo.com.", true);
 	doNext(returnToSaveMenu);
 }
 
-private function returnToSaveMenu():void {
+private  returnToSaveMenu():void {
 	var f:MouseEvent;
 	saveLoad(f);
 }
 
-public function onDataLoaded(evt:Event):void
+public  onDataLoaded(evt:Event):void
 {
 	//var fileObj = readObjectFromStringBytes(loader.data);
 	try
@@ -1111,7 +1111,7 @@ public function onDataLoaded(evt:Event):void
 		// Therefore, we clear the display *before* calling loadGameObject
 		outputText("Loading save...", true);
 		trace("OnDataLoaded! - Reading data", loader, loader.data.readObject);
-		var tmpObj:Object = loader.data.readObject();
+		var tmpObj:Record<string, any> = loader.data.readObject();
 		trace("Read in object = ", tmpObj);
 		
 		CONFIG::debug 
@@ -1140,7 +1140,7 @@ public function onDataLoaded(evt:Event):void
 	//eventParser(1);
 }
 
-public function loadGameObject(saveData:Object, slot:String = "VOID"):void
+public  loadGameObject(saveData:Record<string, any>, slot:string = "VOID"):void
 {
 	var game:CoC = getGame();
 	game.dungeonLoc = 0;
@@ -1151,11 +1151,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	//Autosave stuff
 	player.slotName = slot;
 
-	var counter:Number = player.cocks.length;
+	var counter:number = player.cocks.length;
 	trace("Loading save!")
 	//Initialize the save file
 	//var saveFile:Object = loader.data.readObject();
-	var saveFile:* = saveData;
+	var saveFile:any = saveData;
 	if (saveFile.data.exists)
 	{
 
@@ -1174,7 +1174,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		
 		//flags
 		
-		for (var i:int = 0; i < flags.length; i++)
+		for (const i = 0; i < flags.length; i++)
 		{
 			if (saveFile.data.flags[i] != undefined)
 				flags[i] = saveFile.data.flags[i];
@@ -1213,14 +1213,14 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.fatigue = saveFile.data.fatigue;
 
 		//CLOTHING/ARMOR
-		var found:Boolean = false;
+		var found:boolean = false;
 		if (saveFile.data.weaponId){
 			player.setWeaponHiddenField((ItemType.lookupItem(saveFile.data.weaponId) as Weapon) || WeaponLib.FISTS);
 		} else {
 			player.setWeapon(WeaponLib.FISTS);
 			//player.weapon = WeaponLib.FISTS;
-			for each (var itype:ItemType in ItemType.getItemLibrary()) {
-				if (itype is Weapon && (itype as Weapon).name == saveFile.data.weaponName){
+			for  (const itype of ItemType.getItemLibrary()) {
+				if (itype instanceof Weapon && (itype as Weapon).name == saveFile.data.weaponName){
 					player.setWeaponHiddenField(itype as Weapon || WeaponLib.FISTS);
 					found = true;
 					break;
@@ -1234,16 +1234,16 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			found = false;
 			player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES);
 			//player.armor = ArmorLib.COMFORTABLE_UNDERCLOTHES;
-			for each (itype in ItemType.getItemLibrary()) {
-				if (itype is Armor && (itype as Armor).name == saveFile.data.armorName){
+			for  (itype of ItemType.getItemLibrary()) {
+				if (itype instanceof Armor && (itype as Armor).name == saveFile.data.armorName){
 					player.setArmorHiddenField(itype as Armor || ArmorLib.COMFORTABLE_UNDERCLOTHES);
 					found = true;
 					break;
 				}
 			}
 			if (!found){
-				for each (itype in ItemType.getItemLibrary()){
-					if (itype is Armor){
+				for  (itype of ItemType.getItemLibrary()){
+					if (itype instanceof Armor){
 						var a:Armor = itype as Armor;
 						if (a.value == saveFile.data.armorValue &&
 								a.def == saveFile.data.armorDef &&
@@ -1436,7 +1436,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 		
-		var hasViridianCockSock:Boolean = false;
+		var hasViridianCockSock:boolean = false;
 
 		//ARRAYS HERE!
 		//Set Cock array
@@ -1545,18 +1545,18 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		// Force the creation of the default breast row onto the player if it's no longer present
 		if (player.breastRows.length == 0) player.createBreastRow();
 		
-		var hasHistoryPerk:Boolean = false;
-		var hasLustyRegenPerk:Boolean = false;
-		var addedSensualLover:Boolean = false;
+		var hasHistoryPerk:boolean = false;
+		var hasLustyRegenPerk:boolean = false;
+		var addedSensualLover:boolean = false;
 		
 		//Populate Perk Array
 		for (i = 0; i < saveFile.data.perks.length; i++)
 		{
-			var id:String = saveFile.data.perks[i].id || saveFile.data.perks[i].perkName;
-			var value1:Number = saveFile.data.perks[i].value1;
-			var value2:Number = saveFile.data.perks[i].value2;
-			var value3:Number = saveFile.data.perks[i].value3;
-			var value4:Number = saveFile.data.perks[i].value4;
+			var id:string = saveFile.data.perks[i].id || saveFile.data.perks[i].perkName;
+			var value1:number = saveFile.data.perks[i].value1;
+			var value2:number = saveFile.data.perks[i].value2;
+			var value3:number = saveFile.data.perks[i].value3;
+			var value4:number = saveFile.data.perks[i].value4;
 			
 			// Fix saves where the Whore perk might have been malformed.
 			if (id == "History: Whote") id = "History: Whore";
@@ -1632,33 +1632,33 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		if (flags[kFLAGS.TATTOO_SAVEFIX_APPLIED] == 0)
 		{
 			// Fix some tatto texts that could be broken
-			if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] is String && (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] as String).indexOf("lower back.lower back") != -1)
+			if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] instanceof String && (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] as String).indexOf("lower back.lower back") != -1)
 			{
 				flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] = (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] as String).split(".")[0] + ".";
 			}
 			
 			
-			var refunds:int = 0;
+			var refunds:number = 0;
 			
-			if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] is String)
+			if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] instanceof String)
 			{
 				refunds++;
 				flags[kFLAGS.JOJO_TATTOO_LOWERBACK] = 0;
 			}
 			
-			if (flags[kFLAGS.JOJO_TATTOO_BUTT] is String)
+			if (flags[kFLAGS.JOJO_TATTOO_BUTT] instanceof String)
 			{
 				refunds++;
 				flags[kFLAGS.JOJO_TATTOO_BUTT] = 0;
 			}
 			
-			if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] is String)
+			if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] instanceof String)
 			{
 				refunds++;
 				flags[kFLAGS.JOJO_TATTOO_COLLARBONE] = 0;
 			}
 			
-			if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] is String)
+			if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] instanceof String)
 			{
 				refunds++;
 				flags[kFLAGS.JOJO_TATTOO_SHOULDERS] = 0;
@@ -1722,7 +1722,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				//trace("Populating a storage slot save with data");
 				inventory.createStorage();
 				var storage:ItemSlotClass = itemStorageGet()[i];
-				var savedIS:* = saveFile.data.itemStorage[i];
+				var savedIS:any = saveFile.data.itemStorage[i];
 				if (savedIS.shortName)
 				{
 					if (savedIS.shortName.indexOf("Gro+") != -1)
@@ -1872,7 +1872,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	}
 }
 
-public function unFuckSave():void
+public  unFuckSave():void
 {
 	//Fixing shit!
 
@@ -1912,7 +1912,7 @@ public function unFuckSave():void
 
 
 
-	if (!(flags[kFLAGS.RUBI_COCK_TYPE] is CockTypesEnum || flags[kFLAGS.RUBI_COCK_TYPE] is Number))	
+	if (!(flags[kFLAGS.RUBI_COCK_TYPE] instanceof CockTypesEnum || flags[kFLAGS.RUBI_COCK_TYPE] instanceof Number))	
 	{ // Valid contents of flags[kFLAGS.RUBI_COCK_TYPE] are either a CockTypesEnum or a number
 
 		trace("Fixing save (goo girl)");
@@ -1921,7 +1921,7 @@ public function unFuckSave():void
 	}
 
 
-	if (!(flags[kFLAGS.GOO_DICK_TYPE] is CockTypesEnum || flags[kFLAGS.GOO_DICK_TYPE] is Number))	
+	if (!(flags[kFLAGS.GOO_DICK_TYPE] instanceof CockTypesEnum || flags[kFLAGS.GOO_DICK_TYPE] instanceof Number))	
 	{ // Valid contents of flags[kFLAGS.GOO_DICK_TYPE] are either a CockTypesEnum or a number
 
 		trace("Fixing save (goo girl)");
@@ -1929,7 +1929,7 @@ public function unFuckSave():void
 		flags[kFLAGS.GOO_DICK_TYPE] = 0;
 	}
 
-	var flagData:Array = String(flags[kFLAGS.KATHERINE_BREAST_SIZE]).split("^");
+	var flagData:any[] = String(flags[kFLAGS.KATHERINE_BREAST_SIZE]).split("^");
 	if (flagData.length < 7 && flags[kFLAGS.KATHERINE_BREAST_SIZE] > 0) { //Older format only stored breast size or zero if not yet initialized
 		getGame().telAdre.katherine.breasts.cupSize			= flags[kFLAGS.KATHERINE_BREAST_SIZE];
 		getGame().telAdre.katherine.breasts.lactationLevel	= BreastStore.LACTATION_DISABLED;
@@ -2096,18 +2096,18 @@ public function unFuckSave():void
 //using the file saving code, else it uses slot saving.
 
 //Arrays for converting a byte array into a string
-public static const encodeChars:Array = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'];
-public static const decodeChars:Array = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1];
+public static  encodeChars:any[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'];
+public static  decodeChars:any[] = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1];
 
 //ByteArray > String
-public function b64e(data:ByteArray):String
+public  b64e(data:ByteArray):string
 {
-	var out:Array = [];
-	var i:int = 0;
-	var j:int = 0;
-	var r:int = data.length % 3;
-	var len:int = data.length - r;
-	var c:int;
+	var out:any[] = [];
+	var i:number = 0;
+	var j:number = 0;
+	var r:number = data.length % 3;
+	var len:number = data.length - r;
+	var c:number;
 	while (i < len)
 	{
 		c = data[i++] << 16 | data[i++] << 8 | data[i++];
@@ -2127,14 +2127,14 @@ public function b64e(data:ByteArray):String
 }
 
 //String > ByteArray
-public function b64d(str:String):ByteArray
+public  b64d(str:string):ByteArray
 {
-	var c1:int;
-	var c2:int;
-	var c3:int;
-	var c4:int;
-	var i:int;
-	var len:int;
+	var c1:number;
+	var c2:number;
+	var c3:number;
+	var c4:number;
+	var i:number;
+	var len:number;
 	var out:ByteArray;
 	len = str.length;
 	i = 0;
@@ -2199,7 +2199,7 @@ public function b64d(str:String):ByteArray
 }
 
 //This loads the game from the string
-public function loadText(saveText:String):void
+public  loadText(saveText:string):void
 {
 	//Get the byte array from the string
 	var rawSave:ByteArray = b64d(saveText);
@@ -2208,7 +2208,7 @@ public function loadText(saveText:String):void
 	rawSave.inflate();
 	
 	//Read the object
-	var obj:Object = rawSave.readObject();
+	var obj:Record<string, any> = rawSave.readObject();
 	
 	//Load the object
 	loadGameObject(obj);
@@ -2241,5 +2241,4 @@ public function loadText(saveText:String):void
    var saveString:String = b64e(rawSave);
  */
 //*******
-}
 }

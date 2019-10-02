@@ -1,18 +1,18 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.internals.*;
+ 
+
+	 
+	 
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class Shouldra extends Monster 
+	export class Shouldra extends Monster 
 	{
 
-		private function shouldrattack():void {
-			var damage:Number = 0;
+		private  shouldrattack():void {
+			var damage:number = 0;
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Determine if dodged!
@@ -41,7 +41,7 @@ package classes.Scenes.NPCs
 			}
 			//everyone else
 			else {
-				var choice:Number = rand(3);
+				var choice:number = rand(3);
 				//(regular attack 1)
 				if(choice == 0) outputText("Ducking in close, the girl thunders a punch against your midsection, leaving a painful sting.", false);
 				//(regular attack 2)
@@ -62,38 +62,38 @@ package classes.Scenes.NPCs
 		}
 
 		//(lust attack 1)
-		private function shouldraLustAttack():void {
+		private  shouldraLustAttack():void {
 			if(rand(2) == 0) outputText("The girl spins away from one of your swings, her tunic flaring around her hips. The motion gives you a good view of her firm and moderately large butt. She notices your glance and gives you a little wink.\n", false);
 			else outputText("The girl's feet get tangled on each other and she tumbles to the ground. Before you can capitalize on her slip, she rolls with the impact and comes up smoothly. As she rises, however, you reel back and raise an eyebrow in confusion; are her breasts FILLING the normally-loose tunic? She notices your gaze and smiles, performing a small pirouette on her heel before squaring up to you again. Your confusion only heightens when her torso comes back into view, her breasts back to their normal proportions. A trick of the light, perhaps? You shake your head and try to fall into the rhythm of the fight.\n", false);
 			game.dynStats("lus", (8+player.lib/10));
 			combatRoundOver();
 		}
 		//(magic attack)
-		private function shouldraMagicLazers():void {
-			var damage:Number = player.takeDamage(20 + rand(10));
+		private  shouldraMagicLazers():void {
+			var damage:number = player.takeDamage(20 + rand(10));
 			outputText("Falling back a step, the girl raises a hand and casts a small spell. From her fingertips shoot four magic missiles that slam against your skin and cause a surprising amount of discomfort. (" + damage + ")\n", false);
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var attack:Number = rand(3);
+			var attack:number = rand(3);
 			if(attack == 0) shouldrattack();
 			else if(attack == 1) shouldraLustAttack();
 			else shouldraMagicLazers();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.shouldraScene.defeatDannyPhantom();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.shouldraScene.loseToShouldra();
 		}
 
-		public function Shouldra()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "plain girl";
@@ -128,4 +128,3 @@ package classes.Scenes.NPCs
 		
 	}
 
-}

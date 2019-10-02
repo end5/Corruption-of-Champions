@@ -1,35 +1,35 @@
 /**
  * Created by aimozg on 09.01.14.
  */
-package classes.Items
-{
-	import classes.CoC;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.ItemType;
-	import classes.Player;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
 
-	public class CommonItem extends ItemType{
+	  ;
 
-		public function get game():CoC{
+	export class CommonItem extends ItemType{
+
+		public  get game():CoC{
 			return kGAMECLASS;
 		}
-		public function getGame():CoC{
+		public  getGame():CoC{
 			return kGAMECLASS;
 		}
 
-		public function clearOutput():void{
+		public  clearOutput():void{
 			kGAMECLASS.clearOutput();
 		}
-		public function outputText(text:String):void{
+		public  outputText(text:string):void{
 			kGAMECLASS.outputText(text);
 		}
 
-		public function CommonItem(id:String, shortName:String=null, longName:String=null, value:Number=0, description:String=null)
+		public  constructor(id:string, shortName:string=null, longName:string=null, value:number=0, description:string=null)
 		{
 			super(id, shortName, longName, value, description);
 
 		}
 	}
-}
+

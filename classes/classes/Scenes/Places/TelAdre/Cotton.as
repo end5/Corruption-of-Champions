@@ -1,9 +1,9 @@
-﻿package classes.Scenes.Places.TelAdre {
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+  
+	 
+	 
+	 
 
-	public class Cotton extends TelAdreAbstractContent implements TimeAwareInterface {
+	export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface {
 
 //176 TIMES HAD YOGA
 //177 MET/FUCKED - 0 = never met.  1 = met but not fucked. 2 = fucked
@@ -19,9 +19,9 @@
 // COTTON_CONTRACEPTION_TALK:int = 680;
 // COTTON_KNOCKED_UP_PC_AND_TALK_HAPPENED:int = 681;
 
-		public var pregnancy:PregnancyStore;
+		public  pregnancy:PregnancyStore;
 
-		public function Cotton()
+		public  constructor()
 		{
 			pregnancy = new PregnancyStore(kFLAGS.COTTON_PREGNANCY_TYPE, kFLAGS.COTTON_PREGNANCY_INCUBATION, 0, 0);
 			pregnancy.addPregnancyEventSet(PregnancyStore.PREGNANCY_PLAYER, 300, 200, 100, 40);
@@ -30,7 +30,7 @@
 		}
 
 		//Implementation of TimeAwareInterface
-		public function timeChange():Boolean
+		public  timeChange():boolean
 		{
 			pregnancy.pregnancyAdvance();
 			if (flags[kFLAGS.COTTON_KID_COUNT] > 0 && model.time.hours == 23) flags[kFLAGS.COTTON_OLDEST_KID_AGE]++;
@@ -38,7 +38,7 @@
 			return false;
 		}
 	
-		public function timeChangeLarge():Boolean {
+		public  timeChangeLarge():boolean {
 			if (model.time.hours == 6 && flags[kFLAGS.COTTON_BREAKFAST_CLUB] == 1 && player.biggestLactation() >= 2) {
 				flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 0;
 				nomSomeTitMilkCereal();
@@ -48,7 +48,7 @@
 		}
 		//End of Interface Implementation
 
-private function pregCottonChance(bonusMult:Number = 1):void {
+private  pregCottonChance(bonusMult:number = 1):void {
 	//No preg if already preg!
 	if (pregnancy.isPregnant) return;
 
@@ -73,7 +73,7 @@ private function pregCottonChance(bonusMult:Number = 1):void {
 		}
 	}
 }
-private function cottonPregPCChance():void {
+private  cottonPregPCChance():void {
 	//No kids yet - lucky!
 	if(flags[kFLAGS.COTTON_KID_COUNT] == 0 && flags[kFLAGS.COTTON_HERBS_OFF] == 0) {
 		player.knockUp(PregnancyStore.PREGNANCY_COTTON, PregnancyStore.INCUBATION_COTTON, 600);
@@ -92,7 +92,7 @@ private function cottonPregPCChance():void {
 
 //Been told of naga book quest?
 
-public function cottonsIntro():Boolean {
+public  cottonsIntro():boolean {
 	if(model.time.hours >= 12 && model.time.hours <= 18) {
 		//Gym intro scene (haven't met):
 		if(flags[kFLAGS.COTTON_MET_FUCKED] == 0) outputText("\n\nYou see a tall, busty horse-girl doing some stretches over on a nearby mat.  Even from this far away, you can tell from the bulge in her pants that she's no ordinary 'girl'.", false);
@@ -107,7 +107,7 @@ public function cottonsIntro():Boolean {
 	return false;
 }
 
-public function cottonGreeting():void {
+public  cottonGreeting():void {
 	spriteSelect(12);
 	outputText("", true);
 	outputText(images.showImage("cotton-greeting"));
@@ -154,7 +154,7 @@ public function cottonGreeting():void {
 	}
 }
 
-private function cottonGreetingCommonEnd():void {
+private  cottonGreetingCommonEnd():void {
 	if (player.pregnancyIncubation <= 225 && player.pregnancyType == PregnancyStore.PREGNANCY_COTTON)
 	{
 		//Lamaze Class*
@@ -184,7 +184,7 @@ private function cottonGreetingCommonEnd():void {
 	cottonMenu();
 }
 
-private function cottonMenu():void {
+private  cottonMenu():void {
 	menu();
 	addButton(0,"Yoga",acceptYoga);
 	if (flags[kFLAGS.COTTON_KID_COUNT] > 0) addButton(1,"Visit Kids",visitCottonKids);
@@ -193,7 +193,7 @@ private function cottonMenu():void {
 }
 
 
-private function centaurNagaBodyBookStuff():void {
+private  centaurNagaBodyBookStuff():void {
 	spriteSelect(12);
 	//Havent been told about the book yet?
 	if(flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] == 0) {
@@ -227,7 +227,7 @@ private function centaurNagaBodyBookStuff():void {
 
 
 //(If No)
-private function turnDownYogaWifCottonFirstTime():void {
+private  turnDownYogaWifCottonFirstTime():void {
 	spriteSelect(12);
 	outputText("", true);
 	outputText("\"<i>That's all right, to each their own.  I'll be here if you ever change your mind.</i>\"  With that, Cotton returns to her mat and continues stretching in various poses.\n\n", false);
@@ -235,14 +235,14 @@ private function turnDownYogaWifCottonFirstTime():void {
 }
 
 //(If Yes. Improves muscle tone up to 50, speed and feminine features.)
-private function acceptYoga():void {
+private  acceptYoga():void {
 	spriteSelect(12);
 	outputText("", true);
 	outputText(images.showImage("cotton-yoga"));
-	var fuckHer:Function =null;
-	var getFucked:Function =null;
-	var option3:Function =null;
-	var option4:Function =null;
+	var fuckHer:() => void =null;
+	var getFucked:() => void =null;
+	var option3:() => void =null;
+	var option4:() => void =null;
 	if(player.fatigue > 80) {
 		outputText("You're way too tired to do any yoga right now.", false);
 		doNext(telAdre.telAdreMenu);
@@ -338,9 +338,9 @@ private function acceptYoga():void {
 	dynStats("spe", 1, "lus", (5+player.lib/20+player.sens/20));
 }
 
-private function cottonChat():void {
+private  cottonChat():void {
 	spriteSelect(12);
-	var chats:Array = [];
+	var chats:any[] = [];
 	//Urta chance
 	if(flags[kFLAGS.TIMES_FUCKED_URTA] > 0)
 		chats[chats.length] = 1;
@@ -356,7 +356,7 @@ private function cottonChat():void {
 	//(Jojo chat)
 	if(kGAMECLASS.monk > 0)
 		chats[chats.length] = 4;
-	var choice:Number = chats[rand(chats.length)];
+	var choice:number = chats[rand(chats.length)];
 
 	//(Urta Chat)
 	if(choice == 1) {
@@ -400,7 +400,7 @@ private function cottonChat():void {
 	}
 }
 //(If Leave)
-private function leaveAfterYoga():void {
+private  leaveAfterYoga():void {
 	spriteSelect(12);
 	outputText("", true);
 	outputText("\"<i>Suit yourself. You can run around all stinky, meanwhile I'm going to go wash. Feel free to drop by later for some more yoga if you'd like.</i>\"  With that, Cotton heads off to the showers and you leave the gym.\n\n", false);
@@ -408,10 +408,10 @@ private function leaveAfterYoga():void {
 }
 
 //(If Shower)
-private function cottonShowerFunTimes():void {
+private  cottonShowerFunTimes():void {
 	spriteSelect(12);
-	var option1:Function =null;
-	var option2:Function =null;
+	var option1:() => void =null;
+	var option2:() => void =null;
 	outputText("", true);
 	outputText("\"<i>Perfect! Let's go,</i>\" she takes you by the arm and leads you back into the lockers, and then into the nearby showers, which are apparently unisex. You both strip down and turn on a shower head. After a few moments of scrubbing up, you give your shower buddy a surreptitious glance.\n\n", false);
 
@@ -427,12 +427,12 @@ private function cottonShowerFunTimes():void {
 }
 
 //(Fuck Her)
-private function cottonFirstTimeFuckHer():void {
+private  cottonFirstTimeFuckHer():void {
 	spriteSelect(12);
 	flags[kFLAGS.COTTON_MET_FUCKED] = 2;
 	outputText("", true);
 	outputText(images.showImage("cotton-first-fuck"));
-	var x:Number = player.cockThatFits(100);
+	var x:number = player.cockThatFits(100);
 	if(x < 0) x = 0;
 	outputText("Needing no encouragement, you step behind the large horse herm and push her under the stream of water. \"<i>Oh, taking the lead are we?</i>\" She laughs, \"<i>Please, by all means, my little pet.</i>\"\n\n", false);
 
@@ -453,7 +453,7 @@ private function cottonFirstTimeFuckHer():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //(Get fucked, as Male)
-private function cottonFucksYou():void {
+private  cottonFucksYou():void {
 	spriteSelect(12);
 	flags[kFLAGS.COTTON_MET_FUCKED] = 2;
 	outputText("", true);
@@ -531,7 +531,7 @@ private function cottonFucksYou():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //(Service her, any gender)
-private function serviceFirstTimeCotton():void {
+private  serviceFirstTimeCotton():void {
 	spriteSelect(12);
 	flags[kFLAGS.COTTON_MET_FUCKED] = 2;
 	player.slimeFeed();
@@ -554,7 +554,7 @@ private function serviceFirstTimeCotton():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //(If Refuse)
-private function refuseFirstTimeCotton():void {
+private  refuseFirstTimeCotton():void {
 	spriteSelect(12);
 	outputText("", true);
 	outputText("She looks at you a little sad, \"<i>You certain pet? Well, all right. But you don't know what you're missing.</i>\" The two of you continue your shower with no funny business, then redress and leave the gym. Cotton stops you before you go too far and says, \"<i>Hey, if you want to stop by the gym later for some more yoga, I'd be happy to help.</i>\" Then she heads off down the street, and you head back to camp.", false);
@@ -562,12 +562,12 @@ private function refuseFirstTimeCotton():void {
 }
 
 //(Shower Sex, Fuck Her)
-private function fuckCottonInShowerRepeat():void {
+private  fuckCottonInShowerRepeat():void {
 	flags[kFLAGS.COTTON_MET_FUCKED] = 2;
 	spriteSelect(12);
 	outputText("", true);
 	outputText(images.showImage("cotton-shower-fuck-repeat"));
-	var x:Number = player.cockThatFits(60);
+	var x:number = player.cockThatFits(60);
 	if(x < 0) x = 0;
 
 	/*OLD ORIGINAL REPEAT SHOWER SEX
@@ -818,7 +818,7 @@ private function fuckCottonInShowerRepeat():void {
 }
 
 //(Shower Sex, Get Fucked as Male or Herm)
-private function cottonFucksYouInShowerRepeat():void {
+private  cottonFucksYouInShowerRepeat():void {
 	spriteSelect(12);
 	player.slimeFeed();
 	flags[kFLAGS.COTTON_MET_FUCKED] = 2;
@@ -988,7 +988,7 @@ private function cottonFucksYouInShowerRepeat():void {
 }
 
 //(Tantric Sex)
-public function cottonTantricSex():void {
+public  cottonTantricSex():void {
 	spriteSelect(12);
 	outputText("", true);
 	outputText(images.showImage("cotton-tantric-sex"));
@@ -1088,7 +1088,7 @@ public function cottonTantricSex():void {
 }
 
 //(Leave)
-private function leaveCotton():void {
+private  leaveCotton():void {
 	spriteSelect(12);
 	outputText("", true);
 	outputText("You thank Cotton for her time, shower and head back to camp.", false);
@@ -1100,7 +1100,7 @@ private function leaveCotton():void {
 //(Cotton appears in camp event, triggered by having Cotton
 //drink from a lactating character. Character must still be
 //lactating.)
-public function nomSomeTitMilkCereal():void {
+public  nomSomeTitMilkCereal():void {
 	spriteSelect(12);
 	outputText(images.showImage("cotton-visits-you-at-camp-drinks-all-your-milk-the-asshole"));
 	//(Add to Sleep screen under the sunrise line.)
@@ -1148,7 +1148,7 @@ Eldest Child Age: Interactions with your children depend on the age of your elde
 
 //Champion, I'm PREGGERS!
 //Like the Edryn scene, when you enter the Gym after knocking Cotton up, she will immediately approach you about it.
-public function cottonPregnantAlert():void {
+public  cottonPregnantAlert():void {
 	clearOutput();
 	outputText("As you enter the gym, keen to work out (in one way or another), you spot Cotton in her usual area.  She's pacing around, and a worried look is plastered across her face. When she sees you, she smiles a little and approaches you. Whatever it is, it clearly can't wait.");
 	//-Next-
@@ -1156,7 +1156,7 @@ public function cottonPregnantAlert():void {
 	addButton(0,"Next",cottonPregnantAlertII);
 }
 
-private function cottonPregnantAlertII():void {
+private  cottonPregnantAlertII():void {
 	clearOutput();
 	outputText(images.showImage("cotton-you-got-her-preggo"));
 	outputText("\"<i>Hello, pet,</i>\" she says, and you notice worry in her voice.  There are slight bags under her eyes, and her crimson ponytail is a little unkempt, with hair jutting out at odd angles.  Something clearly has her frazzled.");
@@ -1173,7 +1173,7 @@ private function cottonPregnantAlertII():void {
 	addButton(1,"Leave Her",beABadCottonDad);
 }
 //(Leave Her)*
-private function beABadCottonDad():void {
+private  beABadCottonDad():void {
 	clearOutput();
 	outputText("You shake your head.  You certainly can't deal with a kid.  You tell her point blank that you want nothing to do with the child.  Tears well up in her eyes, and her mouth opens and closes several times, without a single sound coming out.");
 	outputText("\n\nAfter a moment, she squares her jaw, and a determined look comes over her face.  The confident woman you first met seems to reappear.  She wipes the tears from each eye, and states, \"<i>Fine then.  I can do this on my own.</i>\"");
@@ -1189,7 +1189,7 @@ private function beABadCottonDad():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //(Stay)*
-private function beAGoodCottonDad():void {
+private  beAGoodCottonDad():void {
 	clearOutput();
 	outputText("You take her by the shoulders and nod.  You confirm that of course you'll be there for her, whatever she needs.");
 	outputText("\n\nA smile spreads across her face and she hugs you, squeezing tightly, \"<i>Oh thank Marae.  I don't expect you to just pack up and move in, I'm totally fine with our current arrangement, but just having you around for emotional support would be wonderful.</i>\"");
@@ -1201,8 +1201,8 @@ private function beAGoodCottonDad():void {
 //(New scenes to show off Cotton's pregnancy)
 //ORIGINAL:
 //Cotton First-Time Birth*
-private function cottonPopsOutAKid():void {
-	var kid:int = 0;
+private  cottonPopsOutAKid():void {
+	var kid:number = 0;
 	//(Replaces Yoga session)
 	clearOutput();
 	outputText(images.showImage("cotton-giving-birth"));
@@ -1348,7 +1348,7 @@ private function cottonPopsOutAKid():void {
 //First Time
 //Play this scene the first time Contraception is toggled
 //Cotton must be pregnant or have CottonKids =>1 to activate this option
-private function cottonContraceptionToggle():void {
+private  cottonContraceptionToggle():void {
 	clearOutput();
 	//REPEATS
 	if(flags[kFLAGS.COTTON_CONTRACEPTION_TALK] > 0) {
@@ -1378,7 +1378,7 @@ private function cottonContraceptionToggle():void {
 }
 
 //[=Stop Taking=]
-private function tellCottonStopEatingHorsePills():void {
+private  tellCottonStopEatingHorsePills():void {
 	clearOutput();
 	outputText("You tell Cotton that, if they're going to be that useless to her, and she doesn't mind the idea of potentially having more kids, she has your permission to stop taking them.");
 	outputText("\n\nShe nods and says, \"<i>Starting tomorrow I'll go ahead and stop, then.</i>\"");
@@ -1391,7 +1391,7 @@ private function tellCottonStopEatingHorsePills():void {
 }
 
 //[=Keep Taking=]
-private function tellCottonToKeepFiringBlanksAsshole():void {
+private  tellCottonToKeepFiringBlanksAsshole():void {
 	clearOutput();
 	outputText("You tell Cotton you'd rather not force her to have any more kids, so she should keep taking the herbs; in your opinion, imperfect protection is better than no protection.");
 
@@ -1408,7 +1408,7 @@ private function tellCottonToKeepFiringBlanksAsshole():void {
 }
 
 //Turn On
-private function repeatContraceptionToggleCotton():void {
+private  repeatContraceptionToggleCotton():void {
 	clearOutput();
 	//Play this scene if Contraception chosen when Cotton Contraception is turned off
 	if(flags[kFLAGS.COTTON_HERBS_OFF] == 1) {
@@ -1436,7 +1436,7 @@ private function repeatContraceptionToggleCotton():void {
 //PC Pregnancy*
 //Telling Cotton*
 //This scene plays automatically the first time the PC reaches stage 2 of Cotton Pregnancy.
-public function goTellCottonShesAMomDad():void {
+public  goTellCottonShesAMomDad():void {
 	clearOutput();
 	outputText("Convinced that Cotton is the father of the child in your womb, at daybreak, you pack your usual things and head off to Tel'Adre.  Stopping in at the gym, you ask for directions to Cotton's place, and then make your way there.");
 	outputText("\n\nIt turns out that Cotton lives in a small apartment, away from the main section of town, sandwiched between a somewhat shabby-looking tailor shop and a small, but very well-kept deli.  You muster your courage and then knock insistently at the door.  \"<i>Coming, coming! -Yawn- Who is it at this time of morning?</i>\" Cotton calls from inside, pulling open the door with a disgruntled look on her sleepy features.  She blinks in surprise to see you standing there, while you apologize for disturbing her so early.  Still, you have something important to discuss with her, you explain, and then ask her if you can come in.");
@@ -1458,7 +1458,7 @@ public function goTellCottonShesAMomDad():void {
 
 
 //Birthing*
-public function birthingCottonsKids():void {
+public  birthingCottonsKids():void {
 	outputText("\nYou wake up suddenly to strong pains and pressures in your gut.  As your eyes shoot wide open, you look down to see your belly absurdly full and distended.  ");
 	if(player.vaginas.length == 0) {
 		outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
@@ -1469,7 +1469,7 @@ public function birthingCottonsKids():void {
 	outputText("\n\nOddly, there's no pain as you sit up and spread your [legs] in a birthing stance.  A wave of peace and tranquility descends over you, reminding you of your yoga sessions with Cotton.  You take a deep breath and push as hard as you can, pausing only to take small gasps for air.  You feel a sudden pressure against your cervix as your child begins to push its way through little by little.");
 	outputText("\n\nYou aren't left waiting long, as you see its head emerging from inside you.  Little equine ears top its head, and its face has only the barest hint of a snout.  The torso comes next, more uncomfortable than the head, but still there is no pain.  Finally, with one last push, your child's lower body slips from you in a gush of afterbirth.");
 	outputText("\n\nThe child struggles on the ground for a moment before you pick it up and bring it to your teat.  It quickly latches on, suckling like there's no tomorrow.  You take this opportunity to sit back and examine the fruit of your loins.  Congratulations, it's a ");
-	var kid:int = rand(3)+1;
+	var kid:number = rand(3)+1;
 	if(kid == 1) outputText("boy");
 	else if(kid == 2) outputText("girl");
 	else outputText("hermaphrodite");
@@ -1597,7 +1597,7 @@ public function birthingCottonsKids():void {
 //Visit Kids Option
 //Present amongst ordinary Cotton options before Yoga
 //Requires PC has at least one CottonKid
-private function visitCottonKids():void {
+private  visitCottonKids():void {
 	clearOutput();
 	outputText("You tell Cotton that, if it's okay with her, you'd like to skip exercising today; you were hoping that you could visit your ");
 	if(flags[kFLAGS.COTTON_KID_COUNT] == 1) outputText("kid");
@@ -1615,7 +1615,7 @@ private function visitCottonKids():void {
 	else outputText("children are");
 	outputText(" doing.");
 
-	var scene:int = rand(4);
+	var scene:number = rand(4);
 	//Play randomly chosen scene from list below
 	//Peek-a-boo
 	if(scene == 0) {
@@ -1782,7 +1782,7 @@ private function visitCottonKids():void {
 }
 
 //Feed
-private function feedYourCottonKids():void {
+private  feedYourCottonKids():void {
 	clearOutput();
 	outputText("You interrupt Cotton by pointing out that you have breasts full of milk; you'd be happy to nurse the little ");
 	if(flags[kFLAGS.COTTON_OLDEST_KID_GENDER] >= 2) outputText("filly ");
@@ -1859,7 +1859,7 @@ private function feedYourCottonKids():void {
 }
 
 //Stay Quiet
-private function letCottonFeedKids():void {
+private  letCottonFeedKids():void {
 	clearOutput();
 	outputText("You quietly watch on as Cotton removes her top, exposing her dark-skinned breasts topped by chocolatey nipples.  Your child coos and giggles, knowing it's feeding time, its little underdeveloped hands reaching for the breast hungrily.  She smiles and brings the foal up to the breast, where it latches on and begins suckling hungrily.");
 
@@ -1889,4 +1889,4 @@ private function letCottonFeedKids():void {
 }
 
 	}
-}
+

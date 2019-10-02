@@ -1,20 +1,20 @@
 /**
  * Created by aimozg on 01.01.14.
  */
-package classes.Scenes.Areas.Forest
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.Armors.LustyMaidensArmor;
+ 
 
-	public class AkbalScene extends BaseContent
+	 
+	 
+	 
+	 
+
+	export class AkbalScene extends BaseContent
 	{
-		public function AkbalScene()
+		public  constructor()
 		{
 		}
 
-		public function akbalDefeated(hpVictory:Boolean):void{
+		public  akbalDefeated(hpVictory:boolean):void{
 			flags[kFLAGS.AKBAL_SUBMISSION_STATE] = 1;
 			if (hpVictory) //[General Victory]
 			{
@@ -32,16 +32,16 @@ package classes.Scenes.Areas.Forest
 				if (player.lust >= 33 && player.gender > 0)
 				{
 					outputText("You walk around Akbal's beaten and lust crazed form with a smile on your face. The demon's growl continues as he awaits your judgment.", false);
-					var vagoo:Function =null;
-					var vagooLick:Function =null;
-					var buttFuck:Function =null;
-					var bikiniTits:Function =null;
+					var vagoo:() => void =null;
+					var vagooLick:() => void =null;
+					var buttFuck:() => void =null;
+					var bikiniTits:() => void =null;
 					if (player.hasVagina())
 					{
 						vagoo = girlsRapeAkbal;
 						vagooLick = rapeAkbalForcedFemaleOral;
 					}
-					if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor is LustyMaidensArmor)
+					if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor)
 						bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
 					if (player.hasCock())
 						buttFuck = rapeAkbal;
@@ -54,7 +54,7 @@ package classes.Scenes.Areas.Forest
 			cleanupAfterCombat();
 		}
 
-		public function akbalWon(hpVictory:Boolean,pcCameWorms:Boolean):void{
+		public  akbalWon(hpVictory:boolean,pcCameWorms:boolean):void{
 			flags[kFLAGS.AKBAL_SUBMISSION_STATE] = -1;
 			flags[kFLAGS.AKBAL_BITCH_Q] = 0;
 			outputText("", true);
@@ -69,7 +69,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//Victory/Defeat Scenes
-		private function rapeAkbalForcedFemaleOral():void
+		private  rapeAkbalForcedFemaleOral():void
 		{
 			flags[kFLAGS.AKBAL_BITCH_Q]++;
 			outputText("", true);
@@ -133,10 +133,10 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//Standard rapes - buttfucks and oral
-		private function rapeAkbal():void
+		private  rapeAkbal():void
 		{
 			flags[kFLAGS.AKBAL_BITCH_Q]++;
-			var primary:Number = player.cockThatFits(50);
+			var primary:number = player.cockThatFits(50);
 			if (primary < 0)
 				primary = 0;
 			outputText("", true);
@@ -361,7 +361,7 @@ package classes.Scenes.Areas.Forest
 			cleanupAfterCombat();
 		}
 
-		private function girlsRapeAkbal():void
+		private  girlsRapeAkbal():void
 		{
 			flags[kFLAGS.AKBAL_BITCH_Q]++;
 			outputText("", true);
@@ -447,7 +447,7 @@ package classes.Scenes.Areas.Forest
 			doNext(girlsRapeAkbalPart2);
 		}
 
-		private function girlsRapeAkbalPart2():void
+		private  girlsRapeAkbalPart2():void
 		{
 			outputText("", true);
 			kGAMECLASS.hideUpDown();
@@ -590,7 +590,7 @@ package classes.Scenes.Areas.Forest
 			cleanupAfterCombat();
 		}
 
-		private function loseToAckballllllz():void
+		private  loseToAckballllllz():void
 		{
 			//[Defeat via Lust]
 			if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR)
@@ -677,7 +677,7 @@ package classes.Scenes.Areas.Forest
 		//2. AKBAL'S MY BITCH
 
 		//[First Encounter]
-		public function supahAkabalEdition():void
+		public  supahAkabalEdition():void
 		{
 			spriteSelect(2);
 			//Make sure that the buttchange is set correctly
@@ -723,7 +723,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//[Talk]
-		private function superAkbalioTalk():void
+		private  superAkbalioTalk():void
 		{
 			spriteSelect(2);
 			outputText("", true);
@@ -734,7 +734,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//[Encounter if previously submitted]
-		private function repeatAkbalPostSubmission():void
+		private  repeatAkbalPostSubmission():void
 		{
 			spriteSelect(2);
 			outputText("", true);
@@ -745,7 +745,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//[Deny]
-		private function akbalDeny():void
+		private  akbalDeny():void
 		{
 			spriteSelect(2);
 			outputText("", true);
@@ -755,7 +755,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//[Encounter if previously fought and won/raped him]
-		private function ackbalRepeatAfterWin():void
+		private  ackbalRepeatAfterWin():void
 		{
 			spriteSelect(2);
 			outputText("", true);
@@ -769,7 +769,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//[Encounter if previously fought and lost]
-		private function ackbalRepeatAfterLoss():void
+		private  ackbalRepeatAfterLoss():void
 		{
 			spriteSelect(2);
 			outputText("", true);
@@ -780,7 +780,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//[Fight]
-		private function startuAkabalFightomon():void
+		private  startuAkabalFightomon():void
 		{
 			spriteSelect(2);
 			outputText("", true);
@@ -791,7 +791,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//[Submit]
-		private function akbalSubmit():void
+		private  akbalSubmit():void
 		{
 			spriteSelect(2);
 			player.slimeFeed();
@@ -1028,7 +1028,7 @@ package classes.Scenes.Areas.Forest
 		//[General End]
 		//Set flag after submitting, then clear it and run
 		//this before going to camp?
-		public function akbalSubmissionFollowup():void
+		public  akbalSubmissionFollowup():void
 		{
 			spriteSelect(2);
 			outputText("", true);
@@ -1085,7 +1085,7 @@ package classes.Scenes.Areas.Forest
 		   Evasion+5
 		 */
 
-		private function akbalBigButtSubmit():void
+		private  akbalBigButtSubmit():void
 		{
 			clearOutput();
 			outputText(images.showImage("akbal-deepwoods-bigbuttanaled"));
@@ -1168,7 +1168,7 @@ package classes.Scenes.Areas.Forest
 		//By Foxxling
 		//Akbal’s My Bitch Expansion
 		//Auto Rape Intro Scene
-		private function akbitchEncounter():void
+		private  akbitchEncounter():void
 		{
 			clearOutput();
 			outputText("As you explore the deep woods you begin to hear a soft slurping sound. In this world you know that any strange sound, especially the wet ones, most likely means something dangerous is up ahead... or something dangerous is fucking something a little less dangerous.  As you cautiously advance you spy the pelt of the jaguar demon, Akbal.  The demon jaguar sits in the middle of the clearing with one leg extended as he repeatedly swipes his wide tongue against his hole, probably cleaning up imp spunk thanks to you.  He is so utterly focused on the task that he doesn’t notice your approach.");
@@ -1186,7 +1186,7 @@ package classes.Scenes.Areas.Forest
 			}
 		}
 
-		private function akbitchNoThnx(clear:Boolean = true):void
+		private  akbitchNoThnx(clear:boolean = true):void
 		{
 			if (clear)
 				clearOutput();
@@ -1199,7 +1199,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//{Choose Rape}
-		public function takeAdvantageOfAkbitch():void
+		public  takeAdvantageOfAkbitch():void
 		{
 			clearOutput();
 			outputText("You creep behind the many woods trees surrounding Akbal’s clearing until your eyes chance upon a vine.  It’s spongy, long, and hard to rip apart - in other words: perfect.");
@@ -1255,7 +1255,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//Basic AMB Scene (no +70 stats)
-		private function basicAkbitchScene():void
+		private  basicAkbitchScene():void
 		{
 			clearOutput();
 			outputText("With a grin, you tug on Akbal’s collar, and he lets out a barely suppressed purr.  ");
@@ -1273,7 +1273,7 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//Butt Fuck - Vaginal - Anal
-		private function buttFuckbuttFuckbuttFuckAkbal():void
+		private  buttFuckbuttFuckbuttFuckAkbal():void
 		{
 			clearOutput();
 			outputText(images.showImage("akbal-deepwoods-male-buttfuck"));
@@ -1284,7 +1284,7 @@ package classes.Scenes.Areas.Forest
 				outputText("  You widen your stance and look down, choosing the biggest among [eachCock].");
 			outputText("  You lift your [cock biggest] into position, and with a grin, you begin to push into the demon’s moist depths.");
 
-			var x:int = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 
 			//{if penis < 7 inches}
 			if (player.cocks[x].cockLength < 7)
@@ -1301,10 +1301,10 @@ package classes.Scenes.Areas.Forest
 		}
 
 		//- page turn -
-		private function fuckAkbitchsButt():void
+		private  fuckAkbitchsButt():void
 		{
 			clearOutput();
-			var x:int = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			outputText(images.showImage("akbal-deepwoods-male-buttfuck2"));
 			outputText("Without warning, Akbal’s insides become vacuum tight.  Convulsions rocket through his body and you realize he has reached his climax without any attention to his barbed dick.  ");
 			if (player.cor < 90)
@@ -1337,7 +1337,7 @@ package classes.Scenes.Areas.Forest
 			doNext(camp.returnToCampUseOneHour);
 		}
 
-		private function topAkbitchFromDaBottom():void
+		private  topAkbitchFromDaBottom():void
 		{
 			clearOutput();
 			outputText(images.showImage("akbal-deepwoods-male-akbalonback"));
@@ -1360,7 +1360,7 @@ package classes.Scenes.Areas.Forest
 			addButton(0, "Next", topAkbitchFromBottomDuex);
 		}
 
-		private function topAkbitchFromBottomDuex():void
+		private  topAkbitchFromBottomDuex():void
 		{
 			clearOutput();
 			outputText(images.showImage("akbal-deepwoods-male-akbalonback2"));
@@ -1406,7 +1406,7 @@ package classes.Scenes.Areas.Forest
 
 		//AMB Strength Scene
 		//70+
-		private function akbitchHighStrengthVariant():void
+		private  akbitchHighStrengthVariant():void
 		{
 			clearOutput();
 			outputText("With a wicked grin, you rip off your [armor] and grab the bound demon by the scruff on his neck.  He does this sexy little wiggle as you hoist him until he reaches eye level, easily manipulating his light weight as you inspect his slim, toned body.  His chest heaves, his nipples stand at attention, and his erect demon-cat dick drools a heavy river of thick cream, darkening the fur on his sack and inner thighs.  This is going to be fun.");
@@ -1415,7 +1415,7 @@ package classes.Scenes.Areas.Forest
 				outputText(images.showImage("akbal-deepwoods-male-highstrength"));
 				//if (hasCock = true)
 				outputText("\n\nAkbal licks your [face], quite obviously lost in lust.  You can’t help but chuckle because this self proclaimed god has turned into your submissive little bitch.  You pin him to a nearby tree and slide your hands down his lust crazed body to his slim waist.  You then grab your [cock] and push it up into the demon’s soft cleft.");
-				var x:int = player.biggestCockIndex();
+				var x:number = player.biggestCockIndex();
 				//{If CockLength < 7}
 				if (player.cocks[x].cockLength < 7)
 					outputText("\n\nAkbal purrs as you shove your [cockHead biggest] into his hot, dripping hole.  The all-natural lube oozing from his anal walls helps you smoothly glide through the tight ring.  In a show of strength, you pull the demon away from the tree, supporting his full weight as you begin to lift him up and down the full length of your [cock biggest].  Akbal purrs as you slam his entire body into your thrusting [cock biggest] with reckless abandon.  His pleasure is made more obvious by the gigantic barbed dick sliding against your [fullChest] as the tightness of his hot, wet tailhole makes you groan.");
@@ -1530,13 +1530,13 @@ package classes.Scenes.Areas.Forest
 
 		//AMB Speed Scene
 		//70
-		private function akbalBitchSpeed():void
+		private  akbalBitchSpeed():void
 		{
 			clearOutput();
 			outputText("Akbal groans as he lies face first in the dirt.  His body has already morphed into a more humanoid form.  You smile as you watch him hump the grass, two hollows forming in his ass cheeks as they clench and unclench.  The sight of him futilely trying to stimulate himself gets you so hot you practically rip off your [armor] and grab the tied up demon with a grin.");
 			outputText("\n\n\"<i>[Master],</i>\" Akbal’s chorus of voices croons in your mind.");
 
-			var x:int = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 
 			//[if (hasCock = true)]
 			if (player.hasCock())
@@ -1629,7 +1629,7 @@ package classes.Scenes.Areas.Forest
 
 		//AMB Toughness Scene
 		//70
-		private function akbitchToughness():void
+		private  akbitchToughness():void
 		{
 			clearOutput();
 			//[if (toughness > 70)]
@@ -1661,7 +1661,7 @@ package classes.Scenes.Areas.Forest
 			{
 				outputText(images.showImage("akbal-deepwoods-male-hightoughness"));
 				outputText("\n\nYou tell the demon to put his ass up. When he does, you aid him by shoving his chest into the ground, making sure he arches his back properly.  His furry ass naturally parts, revealing his little dripping pink rosebud.  You begin to shed your [armor], and his hole flexes a few times, causing a creamy lube to drip down his scrotum.  [EachCock] is rigid as you expose yourself to the air.  Akbal wiggles his ass at you and you realize how badly he wants you inside him.  It appears this demon has decided to be a good little bitch.  You grab your [cock biggest] and grin as you lower yourself to mount him.");
-				var x:int = player.biggestCockIndex();
+				var x:number = player.biggestCockIndex();
 
 				//{cocklength < 7}
 				if (player.cocks[x].cockLength < 7)
@@ -1779,4 +1779,4 @@ package classes.Scenes.Areas.Forest
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-}
+

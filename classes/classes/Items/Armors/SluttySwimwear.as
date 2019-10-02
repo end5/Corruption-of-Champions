@@ -1,20 +1,20 @@
 /**
  * Created by aimozg on 18.01.14.
  */
-package classes.Items.Armors
-{
-	import classes.Items.Armor;
-	import classes.Items.ArmorLib;
-	import classes.PerkLib;
-	import classes.Player;
+ 
 
-	public class SluttySwimwear extends ArmorWithPerk {
+	 
+	 
+	 
+	 
+
+	export class SluttySwimwear extends ArmorWithPerk {
 		
-		public function SluttySwimwear() {
+		public  constructor() {
 			super("S.Swmwr", "S.Swmwr", "slutty swimwear", "a skimpy black bikini", 0, 6, "An impossibly skimpy black bikini. You feel dirty just looking at it... and a little aroused, actually.", "Light", PerkLib.SluttySeduction, 6, 0, 0, 0, "", true);
 		}
 		
-		override public function useText():void { //Produces any text seen when equipping the armor normally
+		 public  useText():void { //Produces any text seen when equipping the armor normally
 			game.dynStats("lus", 5);
 			if (game.player.biggestTitSize() < 1) 
 				outputText("You feel rather stupid putting the top part on like this, but you're willing to bear with it. It could certainly be good for distracting.  ");
@@ -83,4 +83,4 @@ package classes.Items.Armors
 		}
 */
 	}
-}
+

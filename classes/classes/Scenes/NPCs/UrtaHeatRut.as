@@ -1,18 +1,18 @@
-﻿package classes.Scenes.NPCs{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
+	 
+	 
 
-	public class UrtaHeatRut extends NPCAwareContent {
+	export class UrtaHeatRut extends NPCAwareContent {
 
-		public function UrtaHeatRut()
+		public  constructor()
 		{
 		}
-private function urtaQuestDone():Boolean {
+private  urtaQuestDone():boolean {
 	return (flags[kFLAGS.URTA_QUEST_STATUS] == 1);
 }
 
 //[Approach Sober Urta]
-internal function approachSoberUrtaHeatRutProc():void {
+public  approachSoberUrtaHeatRutProc():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("As you walk over to the table where your foxy herm-lover sits, you think you see eyes following you, your presence attracting an unusual amount of attention. ");
@@ -105,7 +105,7 @@ internal function approachSoberUrtaHeatRutProc():void {
 
 
 //[Approach Drunken Urta]
-internal function approachDrunkenUrta():void {
+public  approachDrunkenUrta():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("As you walk over to the table where your foxy herm-lover sits, you think you see eyes following you, your presence attracting an unusual amount of attention.");
@@ -130,7 +130,7 @@ internal function approachDrunkenUrta():void {
 
 
 //[=Not interested=]
-private function notInterestedInUburDrunkUrtaRuts():void {
+private  notInterestedInUburDrunkUrtaRuts():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You say it's her who seems to be different today, and gently push her away, before apologizing and making your leave.  ");
@@ -152,7 +152,7 @@ private function notInterestedInUburDrunkUrtaRuts():void {
 }
 
 //[=Interested=]
-private function interestedInUburDrunkurtaRuts():void {
+private  interestedInUburDrunkurtaRuts():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You raise an eyebrow and ask Urta if she minds telling you the reason for such attention and what exactly it is that you smell like.");
@@ -185,7 +185,7 @@ private function interestedInUburDrunkurtaRuts():void {
 	}
 }
 //(If in heat OR rut, or did not pick Watch)
-private function drunkUrtaIntroPartDuex(chosenSex:int = 1, newl:Boolean = true):void {
+private  drunkUrtaIntroPartDuex(chosenSex:number = 1, newl:boolean = true):void {
 	if(newl) clearOutput();
 	else outputText("\n\n");
 	urta.urtaSprite();
@@ -234,7 +234,7 @@ private function drunkUrtaIntroPartDuex(chosenSex:int = 1, newl:Boolean = true):
 
 //[If player is in Heat AND Rut and chooses "Watch"]
 //[Watch Drunken Urta Jerk Off]
-private function watchDrunkRuturtaJerkoff():void {
+private  watchDrunkRuturtaJerkoff():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You decide that you want to see the proud captain of Tel'adre's Watch reduced to a horny mess in the middle of the public, and so just take a few steps back and watch.");
@@ -257,7 +257,7 @@ private function watchDrunkRuturtaJerkoff():void {
 }
 
 //[=Stop Teasing=]
-private function stopTeasingDatHornyFox():void {
+private  stopTeasingDatHornyFox():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You decide there's no point taking things too far - besides, Urta seems just about ready to pop now, especially with how she's frantically suckling at her own cockhead.");
@@ -270,7 +270,7 @@ private function stopTeasingDatHornyFox():void {
 }
 
 //[=Keep Teasing=]
-private function keepTeasingDatHornyFawkes():void {
+private  keepTeasingDatHornyFawkes():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You smirk; things are just starting to get fun around here, why would you stop now?  You start to amp up your routine even more, flaunting your scents and your goods for all the bar's occupants, not just the drunken fox-herm feverishly jerking herself off in front of you.  You can't recall if you've ever danced before coming to Mareth, but you don't think you do too bad as you perform an amateur strip-dance for the audience around you, slowly peeling off your [armor] and sensuously discarding them, bending over to let Urta and any other cock-bearing character present in the bar get a good look at your [vagina], ");
@@ -298,7 +298,7 @@ private function keepTeasingDatHornyFawkes():void {
 
 //Sober Urta Variants 
 //Sober Urta has a 45% chance to end rut/heat, depending on which one she's sating, and a 5% chance to intensify it with no modifications to the PCs attributes.
-private function soberUrtaSatingPCHeat():void {
+private  soberUrtaSatingPCHeat():void {
 	//If she's Lover Urta, her vaginal capacity increases to cock area 66 (or at least it's what we planned).
 	//Quote:[Sate Heat with Sober Urta]
 	clearOutput();
@@ -436,10 +436,10 @@ private function soberUrtaSatingPCHeat():void {
 }
 
 //Quote:[=Sate Rut with Sober Urta: Cock Too Big=]
-private function sateRutWithSoberUrtaButHuegDicked():void {
+private  sateRutWithSoberUrtaButHuegDicked():void {
 	clearOutput();
 	urta.urtaSprite();
-	var x:int = player.biggestCockIndex();
+	var x:number = player.biggestCockIndex();
 	outputText("Urta observes your approaching " + cockDescript(x) + " with a hungry, eager expression. Without taking her eyes off of it, she flips up her ");
 	if(!urtaLove()) outputText("skirt");
 	else outputText("dress");
@@ -482,8 +482,8 @@ private function sateRutWithSoberUrtaButHuegDicked():void {
 }
 
 //Quote:[=Sate Rut with Sober Urta=]
-private function sateRutWithSoberUrta():void {
-	var x:int = player.biggestCockIndex();
+private  sateRutWithSoberUrta():void {
+	var x:number = player.biggestCockIndex();
 	clearOutput();
 	urta.urtaSprite();
 	outputText("Urta observes your approaching package with a hungry, eager expression. Without taking her eyes off of it, she flips up her skirt, her huge horse-cock whipping up to slap between her breasts, pre already dribbling down the tip.");
@@ -552,7 +552,7 @@ private function sateRutWithSoberUrta():void {
 
 //Quote:[Drunken Urta Fucks Vagina]
 //This scene only plays if the character is in heat, or is in both heat and rut and chose "Pussy"
-private function drunkenUrtaFucksPCInHeat():void {
+private  drunkenUrtaFucksPCInHeat():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You simply smile at her, inhaling deeply through your nose; you can swear you can smell her herm-musk, wafting off of her as strongly as your own pheromones must be wafting off of you.  That wonderful, earthy, primordial scent, the odor of a healthy breeder ready and willing to mate... there's nothing like it.");
@@ -630,7 +630,7 @@ private function drunkenUrtaFucksPCInHeat():void {
 }
 
 //[Sate Rut with Drunken Urta â Cock too big]
-private function sateRutWithDrunkUrtaWithHugeDick():void {
+private  sateRutWithDrunkUrtaWithHugeDick():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("Urta climbs on top of you, pressing her wet slit against the head of your cock.  She does attempt to get it inside, but the pain of being stretched quickly makes her realize that even if she managed to, the fuck would be less than enjoyable and more than a little painful.  She groans and growls in frustration, pulling herself off you and pressing her apple-sized balls ");
@@ -679,9 +679,9 @@ private function sateRutWithDrunkUrtaWithHugeDick():void {
 }
 
 //Quote:[Drunken Urta Fucks Cock]
-private function drunkUrtaRidesARutPCsCock():void {
+private  drunkUrtaRidesARutPCsCock():void {
 	clearOutput();
-	var x:int = player.biggestCockIndex();
+	var x:number = player.biggestCockIndex();
 	urta.urtaSprite();
 	outputText("You decide not to fight the situation; truthfully, the promises given by the sight of the hot hermaphrodite vixen climbing on top of you ignite your lusts and sing to your rut in ways you don't think you'd be able to safely ignore.");
 
@@ -902,4 +902,4 @@ Intensify: As you walk away, you groan as you realize that you feel hornier than
 //Quote:Drunken Urta always affects heat/rut when penetration is involved (meaning she doesn't in her frottage scene and watch-her-masturbate scene), and has a 50% chance to either extinguish it or intensify it.
 //When penetration is involved, sex with Drunken Urta while in Heat/Rut increases both Toughness and Libido by 2 points and lowers Sensitivity by 4 points. Player often loses more than 1 hour and has to return to camp, rather than stay in TelâAdre. When getting penetrated, Urta's vaginal capacity is bumped up to 72.
 }
-}
+

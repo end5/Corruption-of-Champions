@@ -1,12 +1,12 @@
-﻿public function appearance(e:MouseEvent = null):void 
+export function appearance(e:MouseEvent = null):void 
 {
 	funcs = new Array();
 	args = new Array();
 	//Temp vars
-	var temp:Number = 0;
-	var rando:Number = 0;
+	var temp:number = 0;
+	var rando:number = 0;
 	//Determine race type:
-	var race:String = "human";
+	var race:string = "human";
 	/*if(player.lowerBody == LOWER_BODY_TYPE_CENTAUR) race = "centaur";
 	if(player.lowerBody == LOWER_BODY_TYPE_PONY) race = "pony-kin";
 	//determine sheath
@@ -1249,7 +1249,7 @@
 	flushOutputTextToGUI();
 }
 
-public function sockDescript(index:int):void 
+export function sockDescript(index:number):void 
 {
 	outputText("  ");
 	if(player.cocks[index].sock == "wool") 

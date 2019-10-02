@@ -1,15 +1,15 @@
-﻿package classes.Scenes.Places.Boat{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
+	 
+	 
 
-	public class Marae extends AbstractBoatContent implements TimeAwareInterface {
+	export class Marae extends AbstractBoatContent implements TimeAwareInterface {
 
-		public function Marae() {
+		public  constructor() {
 			CoC.timeAwareClassAdd(this);
 		}
 
 		//Implementation of TimeAwareInterface
-		public function timeChange():Boolean
+		public  timeChange():boolean
 		{
 			if (model.time.hours > 23) {
 				if (flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] > 0) { //Marae met 2nd time?
@@ -24,12 +24,12 @@
 			return false;
 		}
 		
-		public function timeChangeLarge():Boolean {
+		public  timeChangeLarge():boolean {
 			return false;
 		}
 		//End of Interface Implementation
 		
-public function encounterMarae():void {
+public  encounterMarae():void {
 	spriteSelect(40);
 	outputText(images.showImage("marae-first-encounter"));
 	outputText("Like a hidden emerald jewel, a small island appears in the distance.  You wager that you're somewhere near the center of this lake.  How coincidental.   You row closer, eager to get out of the boat and stretch your " + player.legs() + ".  The rowboat grounds itself in the moist earth of the island, coming to a dead stop.   You climb out, noting that this island is little more than a raised mound of earth and grass, with a small tree perched atop its apex.  ", false);
@@ -136,20 +136,20 @@ public function encounterMarae():void {
 	}
 }
 
-private function grabHerBoob():void {
+private  grabHerBoob():void {
 	clearOutput();
 	outputText("You reach forward to cop a feel.  The goddess' eyes go wide with fury as a massive branch swings down, catching you in the sternum.  It hits you hard enough that you land in your boat and float back a few feet into the water.  Nothing to do but leave and hope for another chance at her breasts...");
 	player.takeDamage(player.HP - 1);
 	doNext(camp.returnToCampUseOneHour);
 }
 
-private function runFromPervertedGoddess():void {
+private  runFromPervertedGoddess():void {
 	clearOutput();
 	outputText("You turn and run for the boat, leaving the corrupt goddess behind.  High pitched laugher seems to chase you as you row away from the island.");
 	doNext(camp.returnToCampUseOneHour);
 }
 
-private function maraeBadEnd():void {
+private  maraeBadEnd():void {
 	spriteSelect(40);
 	outputText("", true);
 	outputText(images.showImage("marae-bad-end"));
@@ -199,7 +199,7 @@ private function maraeBadEnd():void {
 	getGame().gameOver();
 }
 
-private function maraeStealLethicite():void {
+private  maraeStealLethicite():void {
 	spriteSelect(40);
 	outputText("", true);
 	//(SUCCESS)
@@ -261,7 +261,7 @@ private function maraeStealLethicite():void {
 	}
 }
 
-public function level2MaraeEncounter():void {
+public  level2MaraeEncounter():void {
 	spriteSelect(40);
 	flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] = 1;
 	outputText("", true);
@@ -314,7 +314,7 @@ public function level2MaraeEncounter():void {
 	}
 }
 
-private function MaraeIIStageII():void {
+private  MaraeIIStageII():void {
 	spriteSelect(40);
 	outputText("", true);
 	outputText(images.showImage("marae-second-encounter-pt-two"));
@@ -456,7 +456,7 @@ private function MaraeIIStageII():void {
 	doNext(MaraePt2RoundIIIPrizes);
 }
 
-private function MaraePt2RoundIIIPrizes():void {
+private  MaraePt2RoundIIIPrizes():void {
 	spriteSelect(40);
 	outputText("", true);
 	//[EPILOGUE]
@@ -557,11 +557,11 @@ private function MaraePt2RoundIIIPrizes():void {
 	doNext(camp.returnToCampUseTwoHours);
 }
 
-private function MaraeIIFlyAway():void {
+private  MaraeIIFlyAway():void {
 	spriteSelect(40);
 	outputText("", true);
 	outputText("You launch into the air and beat your wings, taking to the skies.  The tentacle-tree lashes at you, but comes up short.  You've escaped!  Something large whooshes by, and you glance up to see your boat sailing past you.  She must have hurled it at you!  It lands with a splash near the mooring, somehow surviving the impact.  You dive down and drag it back to the dock before you return to camp.  That was close!", false);
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-}
+

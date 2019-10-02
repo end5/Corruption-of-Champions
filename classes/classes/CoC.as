@@ -1,74 +1,74 @@
-﻿package classes
-{
+ 
+
 	// BREAKING ALL THE RULES.
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Dungeons.D3.D3;
+	 
+	 
+	 
 
-	import classes.CoC_Settings;
+	 
 
-	import classes.AssClass;
-	import classes.BreastRowClass;
-	import classes.Items.*;
-	import classes.PerkLib;
+	 
+	 
+	 
+	 
 
-	import classes.Player;
-	import classes.Cock;
-	import classes.Creature;
-	import classes.ItemSlotClass;
-	import classes.PerkClass;
-	import classes.StatusAffectClass;
-	import classes.VaginaClass;
-	import classes.ImageManager;
-	import classes.internals.Utils;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
 
 	// This line not necessary, but added because I'm pedantic like that.
-	import classes.InputManager;
+	 
 
-	import classes.Parser.Parser;
+	 
 
-	import classes.Scenes.*;
-	import classes.Scenes.Areas.*;
-	import classes.Scenes.Areas.Desert.*
-	import classes.Scenes.Areas.Forest.*
-	import classes.Scenes.Areas.HighMountains.*
-	import classes.Scenes.Areas.Mountain.*
-	import classes.Scenes.Areas.Swamp.*
-	import classes.Scenes.Dungeons.DeepCave.*;
-	import classes.Scenes.Dungeons.DesertCave.*;
-	import classes.Scenes.Dungeons.Factory.*;
-	import classes.Scenes.Dungeons.HelDungeon.*;
-	import classes.Scenes.Explore.*;
-	import classes.Scenes.Monsters.*;
-	import classes.Scenes.NPCs.*;
-	import classes.Scenes.Places.*;
-	import classes.Scenes.Places.TelAdre.*;
-	import classes.Scenes.Quests.*;
-	import coc.view.MainView;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
-	import coc.model.GameModel;
-	import coc.model.TimeModel;
+	 
+	 
 
 	// Class based content? In my CoC?! It's more likely than you think!
-	import classes.content.*;
-	import fl.controls.ComboBox;
-	import fl.data.DataProvider;
-	import flash.display.Loader;
-	import flash.display.MovieClip;
-	import flash.events.*
-	import flash.net.FileReference;
-	import flash.net.navigateToURL;
-	import flash.net.registerClassAlias;
-	import flash.net.SharedObject;
-	import flash.net.SharedObjectFlushStatus;
-	import flash.net.URLLoader;
-	import flash.net.URLLoaderDataFormat;
-	import flash.net.URLRequest;
-	import flash.text.*;
-	import flash.utils.ByteArray;
-	import flash.system.Capabilities;
-	import flash.display.Sprite;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
 	/****
 		classes.CoC: The Document class of Corruption of the Champions.
@@ -76,167 +76,167 @@
 		
 	[SWF( width="1000", height="800", pageTitle="Corruption of Champions" )]
 
-	public class CoC extends MovieClip
+	export class CoC extends MovieClip
 	{
 
 		// Include the functions. ALL THE FUNCTIONS
 //No longer needed. Added into CharCreation.as:		include "../../includes/customCharCreation.as";
 		
-		include "../../includes/descriptors.as";
-		include "../../includes/appearance.as";
+		// include "../../includes/descriptors.as";
+		// include "../../includes/appearance.as";
 
 //No longer needed:		include "../../includes/InitialiseUI.as";
-		include "../../includes/input.as";
-		include "../../includes/OnLoadVariables.as";
-		include "../../includes/startUp.as";
-		include "../../includes/debug.as";
+		// include "../../includes/input.as";
+		// include "../../includes/OnLoadVariables.as";
+		// include "../../includes/startUp.as";
+		// include "../../includes/debug.as";
 		
-		include "../../includes/combat.as";
+		// include "../../includes/combat.as";
 //No longer needed. This file has been chopped up and spread throughout the codebase:		include "../../includes/doEvent.as";
-		include "../../includes/eventParser.as";
+		// include "../../includes/eventParser.as";
 		
 
-		include "../../includes/eventTest.as";
+		// include "../../includes/eventTest.as";
 		
 		
-		include "../../includes/transform.as";
+		// include "../../includes/transform.as";
 		
-		include "../../includes/engineCore.as";
+		// include "../../includes/engineCore.as";
 
 		// Lots of constants
 		//include "../../includes/flagDefs.as";
-		include "../../includes/appearanceDefs.as";
+		// include "../../includes/appearanceDefs.as";
 
 		//Any classes that need to be made aware when the game is saved or loaded can add themselves to this array using saveAwareAdd.
 		//	Once in the array they will be notified by Saves.as whenever the game needs them to write or read their data to the flags array.
-		private static var _saveAwareClassList:Vector.<SaveAwareInterface> = new Vector.<SaveAwareInterface>();
+		private static  _saveAwareClassList:Vector.<SaveAwareInterface> = new Vector.<SaveAwareInterface>();
 	
 		//Called by the saveGameObject function in Saves
-		public static function saveAllAwareClasses(game:CoC):void { for (var sac:int = 0; sac < _saveAwareClassList.length ; sac++) _saveAwareClassList[sac].updateBeforeSave(game); }
+		public static  saveAllAwareClasses(game:CoC):void { for (const sac = 0; sac < _saveAwareClassList.length ; sac++) _saveAwareClassList[sac].updateBeforeSave(game); }
 
 		//Called by the loadGameObject function in Saves
-		public static function loadAllAwareClasses(game:CoC):void { for (var sac:int = 0; sac < _saveAwareClassList.length ; sac++) _saveAwareClassList[sac].updateAfterLoad(game); }
+		public static  loadAllAwareClasses(game:CoC):void { for (const sac = 0; sac < _saveAwareClassList.length ; sac++) _saveAwareClassList[sac].updateAfterLoad(game); }
 
-		public static function saveAwareClassAdd(newEntry:SaveAwareInterface):void { _saveAwareClassList.push(newEntry); }
+		public static  saveAwareClassAdd(newEntry:SaveAwareInterface):void { _saveAwareClassList.push(newEntry); }
 	
 		//Any classes that need to be aware of the passage of time can add themselves to this array using timeAwareAdd.
 		//	Once in the array they will be notified as each hour passes, allowing them to update actions, lactation, pregnancy, etc.
-		private static var _timeAwareClassList:Vector.<TimeAwareInterface> = new Vector.<TimeAwareInterface>(); //Accessed by goNext function in eventParser
-		private static var timeAwareLargeLastEntry:int = -1; //Used by the eventParser in calling timeAwareLarge
-		private var playerEvent:PlayerEvents;
+		private static  _timeAwareClassList:Vector.<TimeAwareInterface> = new Vector.<TimeAwareInterface>(); //Accessed by goNext function in eventParser
+		private static  timeAwareLargeLastEntry:number = -1; //Used by the eventParser in calling timeAwareLarge
+		private  playerEvent:PlayerEvents;
 		
-		public static function timeAwareClassAdd(newEntry:TimeAwareInterface):void { _timeAwareClassList.push(newEntry); }
+		public static  timeAwareClassAdd(newEntry:TimeAwareInterface):void { _timeAwareClassList.push(newEntry); }
 		
-		private static var doCamp:Function; //Set by campInitialize, should only be called by playerMenu
-		private static function campInitialize(passDoCamp:Function):void { doCamp = passDoCamp; }
+		private static  doCamp:() => void; //Set by campInitialize, should only be called by playerMenu
+		private static  campInitialize(passDoCamp:() => void):void { doCamp = passDoCamp; }
 		
 		// /
-		private var _perkLib:PerkLib = new PerkLib();// to init the static
-		private var _statusAffects:StatusAffects = new StatusAffects();// to init the static
-		public var charCreation:CharCreation = new CharCreation();
-		public var saves:Saves = new Saves(gameStateDirectGet, gameStateDirectSet);
+		private  _perkLib:PerkLib = new PerkLib();// to init the static
+		private  _statusAffects:StatusAffects = new StatusAffects();// to init the static
+		public  charCreation:CharCreation = new CharCreation();
+		public  saves:Saves = new Saves(gameStateDirectGet, gameStateDirectSet);
 		// Items/
-		public var mutations:Mutations = new Mutations();
-		public var consumables:ConsumableLib = new ConsumableLib();
-		public var useables:UseableLib;
-		public var weapons:WeaponLib = new WeaponLib();
-		public var armors:ArmorLib = new ArmorLib();
-		public var miscItems:MiscItemLib = new MiscItemLib();
+		public  mutations:Mutations = new Mutations();
+		public  consumables:ConsumableLib = new ConsumableLib();
+		public  useables:UseableLib;
+		public  weapons:WeaponLib = new WeaponLib();
+		public  armors:ArmorLib = new ArmorLib();
+		public  miscItems:MiscItemLib = new MiscItemLib();
 		// Scenes/
-		public var camp:Camp = new Camp(campInitialize);
-		public var exploration:Exploration = new Exploration();
-		public var followerInteractions:FollowerInteractions = new FollowerInteractions();
-		public var inventory:Inventory = new Inventory(saves);
-		public var masturbation:Masturbation = new Masturbation();
+		public  camp:Camp = new Camp(campInitialize);
+		public  exploration:Exploration = new Exploration();
+		public  followerInteractions:FollowerInteractions = new FollowerInteractions();
+		public  inventory:Inventory = new Inventory(saves);
+		public  masturbation:Masturbation = new Masturbation();
 		// Scenes/Areas/
-		public var bog:Bog = new Bog();
-		public var desert:Desert = new Desert();
-		public var forest:Forest = new Forest();
-		public var highMountains:HighMountains = new HighMountains();
-		public var lake:Lake = new Lake();
-		public var mountain:Mountain = new Mountain();
-		public var plains:Plains = new Plains();
-		public var swamp:Swamp = new Swamp();
+		public  bog:Bog = new Bog();
+		public  desert:Desert = new Desert();
+		public  forest:Forest = new Forest();
+		public  highMountains:HighMountains = new HighMountains();
+		public  lake:Lake = new Lake();
+		public  mountain:Mountain = new Mountain();
+		public  plains:Plains = new Plains();
+		public  swamp:Swamp = new Swamp();
 		// Scenes/Dungeons
-		public var brigidScene:BrigidScene = new BrigidScene();
-		public var d3:D3 = new D3();
+		public  brigidScene:BrigidScene = new BrigidScene();
+		public  d3:D3 = new D3();
 		// Scenes/Explore/
-		public var gargoyle:Gargoyle = new Gargoyle();
-		public var lumi:Lumi = new Lumi();
+		public  gargoyle:Gargoyle = new Gargoyle();
+		public  lumi:Lumi = new Lumi();
 		// Scenes/Monsters/
-		public var goblinScene:GoblinScene = new GoblinScene();
-		public var impScene:ImpScene = new ImpScene();
-		public var goblinAssassinScene:GoblinAssassinScene = new GoblinAssassinScene();
+		public  goblinScene:GoblinScene = new GoblinScene();
+		public  impScene:ImpScene = new ImpScene();
+		public  goblinAssassinScene:GoblinAssassinScene = new GoblinAssassinScene();
 		// Scenes/NPC/
-		public var amilyScene:AmilyScene = new AmilyScene();
-		public var anemoneScene:AnemoneScene = new AnemoneScene();
-		public var arianScene:ArianScene = new ArianScene();
-		public var ceraphScene:CeraphScene = new CeraphScene();
-		public var ceraphFollowerScene:CeraphFollowerScene = new CeraphFollowerScene();
-		public var emberScene:EmberScene = new EmberScene();
-		public var exgartuan:Exgartuan = new Exgartuan();
-		public var helFollower:HelFollower = new HelFollower();
-		public var helScene:HelScene = new HelScene();
-		public var helSpawnScene:HelSpawnScene = new HelSpawnScene();
-		public var holliScene:HolliScene = new HolliScene();
-		public var isabellaScene:IsabellaScene = new IsabellaScene();
-		public var isabellaFollowerScene:IsabellaFollowerScene = new IsabellaFollowerScene();
-		public var izmaScene:IzmaScene = new IzmaScene();
-		public var jojoScene:JojoScene = new JojoScene();
-		public var kihaFollower:KihaFollower = new KihaFollower();
-		public var kihaScene:KihaScene = new KihaScene();
-		public var latexGirl:LatexGirl = new LatexGirl();
-		public var marbleScene:MarbleScene = new MarbleScene();
-		public var marblePurification:MarblePurification = new MarblePurification();
-		public var milkWaifu:MilkWaifu = new MilkWaifu();
-		public var raphael:Raphael = new Raphael();
-		public var rathazul:Rathazul = new Rathazul();
-		public var sheilaScene:SheilaScene = new SheilaScene();
-		public var shouldraFollower:ShouldraFollower = new ShouldraFollower();
-		public var shouldraScene:ShouldraScene = new ShouldraScene();
-		public var sophieBimbo:SophieBimbo = new SophieBimbo();
-		public var sophieFollowerScene:SophieFollowerScene = new SophieFollowerScene();
-		public var sophieScene:SophieScene = new SophieScene();
-		public var urta:Urta = new Urta();
-		public var urtaHeatRut:UrtaHeatRut = new UrtaHeatRut();
-		public var urtaPregs:UrtaPregs = new UrtaPregs();
-		public var valeria:Valeria = new Valeria();
-		public var vapula:Vapula = new Vapula();
+		public  amilyScene:AmilyScene = new AmilyScene();
+		public  anemoneScene:AnemoneScene = new AnemoneScene();
+		public  arianScene:ArianScene = new ArianScene();
+		public  ceraphScene:CeraphScene = new CeraphScene();
+		public  ceraphFollowerScene:CeraphFollowerScene = new CeraphFollowerScene();
+		public  emberScene:EmberScene = new EmberScene();
+		public  exgartuan:Exgartuan = new Exgartuan();
+		public  helFollower:HelFollower = new HelFollower();
+		public  helScene:HelScene = new HelScene();
+		public  helSpawnScene:HelSpawnScene = new HelSpawnScene();
+		public  holliScene:HolliScene = new HolliScene();
+		public  isabellaScene:IsabellaScene = new IsabellaScene();
+		public  isabellaFollowerScene:IsabellaFollowerScene = new IsabellaFollowerScene();
+		public  izmaScene:IzmaScene = new IzmaScene();
+		public  jojoScene:JojoScene = new JojoScene();
+		public  kihaFollower:KihaFollower = new KihaFollower();
+		public  kihaScene:KihaScene = new KihaScene();
+		public  latexGirl:LatexGirl = new LatexGirl();
+		public  marbleScene:MarbleScene = new MarbleScene();
+		public  marblePurification:MarblePurification = new MarblePurification();
+		public  milkWaifu:MilkWaifu = new MilkWaifu();
+		public  raphael:Raphael = new Raphael();
+		public  rathazul:Rathazul = new Rathazul();
+		public  sheilaScene:SheilaScene = new SheilaScene();
+		public  shouldraFollower:ShouldraFollower = new ShouldraFollower();
+		public  shouldraScene:ShouldraScene = new ShouldraScene();
+		public  sophieBimbo:SophieBimbo = new SophieBimbo();
+		public  sophieFollowerScene:SophieFollowerScene = new SophieFollowerScene();
+		public  sophieScene:SophieScene = new SophieScene();
+		public  urta:Urta = new Urta();
+		public  urtaHeatRut:UrtaHeatRut = new UrtaHeatRut();
+		public  urtaPregs:UrtaPregs = new UrtaPregs();
+		public  valeria:Valeria = new Valeria();
+		public  vapula:Vapula = new Vapula();
 		// Scenes/Places/
-		public var bazaar:Bazaar = new Bazaar();
-		public var boat:Boat = new Boat();
-		public var farm:Farm = new Farm();
-		public var owca:Owca = new Owca();
-		public var telAdre:TelAdre = new TelAdre();
+		public  bazaar:Bazaar = new Bazaar();
+		public  boat:Boat = new Boat();
+		public  farm:Farm = new Farm();
+		public  owca:Owca = new Owca();
+		public  telAdre:TelAdre = new TelAdre();
 		// Scenes/Quests/
-		public var urtaQuest:UrtaQuest = new UrtaQuest();
+		public  urtaQuest:UrtaQuest = new UrtaQuest();
 
 		// Force updates in Pepper Flash ahuehue
-		private var _updateHack:Sprite = new Sprite();
+		private  _updateHack:Sprite = new Sprite();
 
 		// Other scenes
 
-		include "../../includes/april_fools.as";
+		// include "../../includes/april_fools.as";
 
-		include "../../includes/dreams.as";
-		include "../../includes/dungeon2Supplimental.as";
-		include "../../includes/dungeonCore.as";
+		// include "../../includes/dreams.as";
+		// include "../../includes/dungeon2Supplimental.as";
+		// include "../../includes/dungeonCore.as";
 //No longer needed. This file has been chopped up and spread throughout the codebase:		include "../../includes/dungeonEvents.as";
-		include "../../includes/dungeonHelSupplimental.as";
-		include "../../includes/dungeonSandwitch.as";
-		include "../../includes/fera.as";
+		// include "../../includes/dungeonHelSupplimental.as";
+		// include "../../includes/dungeonSandwitch.as";
+		// include "../../includes/fera.as";
 //Moved to Scenes/Masturbation.as		include "../../includes/masturbation.as";
-		include "../../includes/pregnancy.as";
-		include "../../includes/runa.as";
-		include "../../includes/symGear.as";
-		include "../../includes/tamaniDildo.as";
-		include "../../includes/thanksgiving.as";
-		include "../../includes/valentines.as";
-		include "../../includes/worms.as";
-		include "../../includes/xmas_bitch.as";
-		include "../../includes/xmas_gats_not_an_angel.as";
-		include "../../includes/xmas_jack_frost.as";
-		include "../../includes/xmas_misc.as";
+		// include "../../includes/pregnancy.as";
+		// include "../../includes/runa.as";
+		// include "../../includes/symGear.as";
+		// include "../../includes/tamaniDildo.as";
+		// include "../../includes/thanksgiving.as";
+		// include "../../includes/valentines.as";
+		// include "../../includes/worms.as";
+		// include "../../includes/xmas_bitch.as";
+		// include "../../includes/xmas_gats_not_an_angel.as";
+		// include "../../includes/xmas_jack_frost.as";
+		// include "../../includes/xmas_misc.as";
 	
 		
 		/****
@@ -248,76 +248,76 @@
 		****/
 //Looks like this dangerous little var is no longer used anywhere, huzzah.		public var semiglobalReferencer :* = {};
 
-		public var mainView :MainView;
+		public  mainView :MainView;
 
-		public var model :GameModel;
+		public  model :GameModel;
 
-		public var parser:Parser;
+		public  parser:Parser;
 
 		// ALL THE VARIABLES:
 		// Declare the various global variables as class variables.
 		// Note that they're set up in the constructor, not here.
-		public var debug:Boolean;
-		public var ver:String;
-		public var version:String;
-		public var mobile:Boolean;
-		public var images:ImageManager;
-		public var player:Player;
-		public var player2:Player;
+		public  debug:boolean;
+		public  ver:string;
+		public  version:string;
+		public  mobile:boolean;
+		public  images:ImageManager;
+		public  player:Player;
+		public  player2:Player;
 //No longer used:		public var tempPerk:PerkClass;
-		public var monster:Monster;
+		public  monster:Monster;
 //No longer used:		public var itemSwapping:Boolean;
-		public var flags:DefaultDict;
-		private var gameState:int;
+		public  flags:DefaultDict;
+		private  gameState:number;
 //Gone, last use replaced by newRound arg for combatMenu:		public var menuLoc:Number;
 //No longer used:		public var itemSubMenu:Boolean;
 //No longer used:		public var supressGoNext:Boolean = false;
-		public var time :TimeModel;
-		public var currentText:String;
+		public  time :TimeModel;
+		public  currentText:string;
 
-		public var explored:Boolean;
-		public var foundForest:Boolean;
-		public var foundDesert:Boolean;
-		public var foundMountain:Boolean;
-		public var foundLake:Boolean;
-		public var whitney:Number;
-		public var monk:Number;
-		public var sand:Number;
-		public var giacomo:int;
+		public  explored:boolean;
+		public  foundForest:boolean;
+		public  foundDesert:boolean;
+		public  foundMountain:boolean;
+		public  foundLake:boolean;
+		public  whitney:number;
+		public  monk:number;
+		public  sand:number;
+		public  giacomo:number;
 //Replaced by flag		public var beeProgress:Number;
 //Now in Inventory.as		public var itemStorage:Array;
 //Now in Inventory.as		public var gearStorage:Array;
-		public var temp:int;
-		public var args:Array;
-		public var funcs:Array;
-		public var oldStats:*; // I *think* this is a generic object
-		public var inputManager:InputManager;
+		public  temp:number;
+		public  args:any[];
+		public  funcs:any[];
+		public  oldStats:any; // I *think* this is a generic object
+		public  inputManager:InputManager;
 
-		public var monkey:ChaosMonkey;
-		public var testingBlockExiting:Boolean;
+		public  monkey:ChaosMonkey;
+		public  testingBlockExiting:boolean;
 
-		public var kFLAGS_REF:*;
+		public  kFLAGS_REF:any;
 		
-		public function get inCombat():Boolean { return gameState == 1; }
+		public  get inCombat():boolean { return gameState == 1; }
 		
-		public function set inCombat(value:Boolean):void { gameState = (value ? 1 : 0); }
+		public  set inCombat(value:boolean):void { gameState = (value ? 1 : 0); }
 		
-		private function gameStateDirectGet():int { return gameState; }
+		private  gameStateDirectGet():number { return gameState; }
 		
-		private function gameStateDirectSet(value:int):void { gameState = value; }
+		private  gameStateDirectSet(value:number):void { gameState = value; }
 		
-		public function rand(max:int):int
+		public  rand(max:number):number
 		{
 			return Utils.rand(max);
 		}
 
 		// holidayz
-		public function isEaster():Boolean
+		public  isEaster():boolean
 		{
 			return plains.bunnyGirl.isItEaster();
 		}
 
-		public function CoC()
+		public  constructor()
 		{
 			// Cheatmode.
 			kGAMECLASS = this;
@@ -382,7 +382,7 @@
 
 			this.images = new ImageManager(stage);
 			this.inputManager = new InputManager(stage, false);
-			include "../../includes/ControlBindings.as";
+			// include "../../includes/ControlBindings.as";
 
 			this.monkey = new ChaosMonkey(this);
 
@@ -576,7 +576,7 @@
 			this.addFrameScript( 0, this.run );
 		}
 
-		public function run():void
+		public  run():void
 		{
 			mainMenu();
 			this.stop();
@@ -591,13 +591,13 @@
 			_updateHack.y = 799;
 		}
 
-		public function forceUpdate():void
+		public  forceUpdate():void
 		{
 			_updateHack.x = 999;
 			_updateHack.addEventListener(Event.ENTER_FRAME, moveHackUpdate);
 		}
 
-		public function moveHackUpdate(e:Event):void
+		public  moveHackUpdate(e:Event):void
 		{
 			_updateHack.x -= 84;
 			
@@ -608,4 +608,4 @@
 			}
 		}
 	}
-}
+

@@ -1,20 +1,20 @@
 /**
  * Created by aimozg on 18.01.14.
  */
-package classes.Items.Armors
-{
-	import classes.Items.Armor;
-	import classes.PerkType;
-	import classes.Player;
+ 
 
-	public class ArmorWithPerk extends Armor {
-		private var playerPerk:PerkType;
-		private var playerPerkV1:Number;
-		private var playerPerkV2:Number;
-		private var playerPerkV3:Number;
-		private var playerPerkV4:Number;
+	 
+	 
+	 
+
+	export class ArmorWithPerk extends Armor {
+		private  playerPerk:PerkType;
+		private  playerPerkV1:number;
+		private  playerPerkV2:number;
+		private  playerPerkV3:number;
+		private  playerPerkV4:number;
 		
-		public function ArmorWithPerk(id:String, shortName:String,name:String, longName:String, def:Number, value:Number, description:String, perk:String, playerPerk:PerkType, playerPerkV1:Number, playerPerkV2:Number, playerPerkV3:Number, playerPerkV4:Number, playerPerkDesc:String = "", supportsBulge:Boolean = false) {
+		public  constructor(id:string, shortName:string,name:string, longName:string, def:number, value:number, description:string, perk:string, playerPerk:PerkType, playerPerkV1:number, playerPerkV2:number, playerPerkV3:number, playerPerkV4:number, playerPerkDesc:string = "", supportsBulge:boolean = false) {
 			super(id, shortName, name,longName, def, value, description, perk, supportsBulge);
 			this.playerPerk = playerPerk;
 			this.playerPerkV1 = playerPerkV1;
@@ -23,13 +23,13 @@ package classes.Items.Armors
 			this.playerPerkV4 = playerPerkV4;
 		}
 		
-		override public function playerEquip():Armor { //This item is being equipped by the player. Add any perks, etc.
+		 public  playerEquip():Armor { //This item is being equipped by the player. Add any perks, etc.
 			while (game.player.findPerk(playerPerk) >= 0) game.player.removePerk(playerPerk);
 			game.player.createPerk(playerPerk, playerPerkV1, playerPerkV2, playerPerkV3, playerPerkV4);
 			return super.playerEquip();
 		}
 		
-		override public function playerRemove():Armor { //This item is being removed by the player. Remove any perks, etc.
+		 public  playerRemove():Armor { //This item is being removed by the player. Remove any perks, etc.
 			while (game.player.findPerk(playerPerk) >= 0) game.player.removePerk(playerPerk);
 			return super.playerRemove();
 		}
@@ -47,4 +47,4 @@ package classes.Items.Armors
 		}
 */
 	}
-}
+

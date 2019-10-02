@@ -1,17 +1,17 @@
-﻿package classes.Items
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public final class Mutations extends BaseContent
+	 
+	 
+
+	export  class Mutations extends BaseContent
 	{
-		include "../../../includes/appearanceDefs.as";
+		// include "../../../includes/appearanceDefs.as";
 
-		public function Mutations()
+		public  constructor()
 		{
 		}
 
-		import classes.GlobalFlags.kGAMECLASS;
+		 
 
 // import classes.ItemSlotClass;
 
@@ -21,7 +21,7 @@
 //const BIKINI_ARMOR_BONUS:int = 769;
 
 //Cerulean P.
-		public function ceruleanPotion(player:Player):void
+		public  ceruleanPotion(player:Player):void
 		{
 			player.slimeFeed();
 			//Repeat genderless encounters
@@ -46,7 +46,7 @@
 		}
 
 //Vitality Tincture
-		public function vitalityTincture(player:Player):void
+		public  vitalityTincture(player:Player):void
 		{
 			player.slimeFeed();
 			outputText("You down the contents of the bottle. The liquid is thick and tastes remarkably like cherries. Within moments, you feel much more fit and healthy.", true);
@@ -67,7 +67,7 @@
 		}
 
 //Scholar's Tea
-		public function scholarsTea(player:Player):void
+		public  scholarsTea(player:Player):void
 		{
 			player.slimeFeed();
 			outputText("Following the merchant's instructions, you steep and drink the tea. Its sharp taste fires up your palate and in moments, you find yourself more alert and insightful. As your mind wanders, a creative, if somewhat sordid, story comes to mind. It is a shame that you do not have writing implements as you feel you could make a coin or two off what you have conceived. The strange seller was not lying about the power of the tea.", true);
@@ -76,12 +76,12 @@
 		}
 
 		/* ITEMZZZZZ FUNCTIONS GO HERE */
-		public function incubiDraft(tainted:Boolean,player:Player):void
+		public  incubiDraft(tainted:boolean,player:Player):void
 		{
 			player.slimeFeed();
-			var temp2:Number = 0;
-			var temp3:Number = 0;
-			var rando:Number = rand(100);
+			var temp2:number = 0;
+			var temp3:number = 0;
+			var rando:number = rand(100);
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) rando += 10;
 			outputText("The draft is slick and sticky, ", true);
 			if (player.cor <= 33) outputText("just swallowing it makes you feel unclean.", false);
@@ -243,7 +243,7 @@
 			if (rand(4) == 0 && tainted) outputText(player.modThickness(30, 2), false);
 		}
 
-		public function growDemonCock(growCocks:Number):void
+		public  growDemonCock(growCocks:number):void
 		{
 			temp = 0;
 			while (growCocks > 0) {
@@ -266,7 +266,7 @@
 			player.orgasm();
 		}
 
-		public function tatteredScroll(player:Player):void
+		public  tatteredScroll(player:Player):void
 		{
 			outputText("Your wobbly " + player.legs() + " give out underneath you as your body's willpower seems to evaporate, your mouth reading the words on the scroll with a backwards sounding sing-song voice.\n\n", true);
 			if (player.hairColor == "sandy blonde") {
@@ -332,7 +332,7 @@
 			}
 		}
 
-		public function minotaurCum(player:Player):void
+		public  minotaurCum(player:Player):void
 		{
 			player.slimeFeed();
 			//Minotaur cum addiction
@@ -384,22 +384,22 @@
 			}
 		}
 
-		public function minotaurBlood(player:Player):void
+		public  minotaurBlood(player:Player):void
 		{
 			player.slimeFeed();
 			//Changes done
-			var changes:Number = 0;
+			var changes:number = 0;
 			//Change limit
-			var changeLimit:Number = 1;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (changeLimit == 1) changeLimit = 2;
 			//Temporary storage
-			var temp:Number = 0;
-			var temp2:Number = 0;
-			var temp3:Number = 0;
+			var temp:number = 0;
+			var temp2:number = 0;
+			var temp3:number = 0;
 			//Set up output
 			outputText("You drink the bubbling red fluid, tasting the tangy iron after-taste.", true);
 			//STATS
@@ -594,8 +594,8 @@
 			}
 			//Boosts cock size up to 36"x5".
 			if (changes < changeLimit && rand(2) == 0 && player.cocks.length > 0) {
-				var selectedCock:int = -1;
-				for (var i:int = 0; i < player.cocks.length; i++)
+				var selectedCock:number = -1;
+				for (const i = 0; i < player.cocks.length; i++)
 				{
 					if (player.cocks[i].cockType == CockTypesEnum.HORSE && (player.cocks[i].cockLength < 36 || player.cocks[i].cockThickness < 5))
 					{
@@ -632,8 +632,8 @@
 			}
 			//Morph dick to horsediiiiick
 			if (player.cocks.length > 0 && rand(2) == 0 && changes < changeLimit) {
-				var selectedCockValue:int = -1; //Changed as selectedCock and i caused duplicate var warnings
-				for (var indexI:int = 0; indexI < player.cocks.length; indexI++)
+				var selectedCockValue:number = -1; //Changed as selectedCock and i caused duplicate var warnings
+				for (const indexI = 0; indexI < player.cocks.length; indexI++)
 				{
 					if (player.cocks[indexI].cockType != CockTypesEnum.HORSE)
 					{
@@ -803,19 +803,19 @@
 
 		}
 
-		public function equinum(player:Player):void
+		public  equinum(player:Player):void
 		{
 			player.slimeFeed();
 			//Changes done
-			var changes:Number = 0;
+			var changes:number = 0;
 			//Change limit
-			var changeLimit:Number = 1;
+			var changeLimit:number = 1;
 			//Temporary storage
-			var temp:Number = 0;
-			var temp2:Number = 0;
-			var temp3:Number = 0;
+			var temp:number = 0;
+			var temp2:number = 0;
+			var temp3:number = 0;
 			//Store location of cock to be changed
-			var old:Number = 0;
+			var old:number = 0;
 			//Chancee to raise limit
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
@@ -1303,12 +1303,12 @@
 
 		}
 
-		public function succubiMilk(tainted:Boolean,player:Player):void
+		public  succubiMilk(tainted:boolean,player:Player):void
 		{
 			player.slimeFeed();
-			var temp2:Number = 0;
-			var temp3:Number = 0;
-			var rando:Number = Math.random() * 100;
+			var temp2:number = 0;
+			var temp3:number = 0;
+			var rando:number = Math.random() * 100;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) rando += 10;
 			if (rando >= 90 && !tainted) rando -= 10;
 			if (player.cor < 35) outputText("You wonder why in the gods' names you would drink such a thing, but you have to admit, it is the best thing you have ever tasted.", true);
@@ -1514,14 +1514,14 @@
 //3-Black Pepper (Dark Fur, +corruption/libido)
 //4-Knotty Pepper (+Knot + Cum Multiplier)
 //5-Bulbous Pepper (+ball size or fresh balls)
-		public function caninePepper(type:Number,player:Player):void
+		public  caninePepper(type:number,player:Player):void
 		{
-			var temp2:Number = 0;
-			var temp3:Number = 0;
-			var crit:Number = 1;
+			var temp2:number = 0;
+			var temp3:number = 0;
+			var crit:number = 1;
 			//Set up changes and changeLimit
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -1969,7 +1969,7 @@
 						//Check for size mismatches, and move closer to spec!
 						temp = player.breastRows.length;
 						temp2 = 0;
-						var evened:Boolean = false;
+						var evened:boolean = false;
 						//Check each row, and if the row above or below it is
 						while (temp > 1 && temp2 == 0) {
 							temp--;
@@ -2193,7 +2193,7 @@
 
 		}
 
-		public function impFood(player:Player):void
+		public  impFood(player:Player):void
 		{
 			outputText("", true);
 			if (player.cocks.length > 0) {
@@ -2244,14 +2244,14 @@
 		
 		//pureHoney moved to BeeHoney.as
 		
-		public function succubisDelight(tainted:Boolean,player:Player):void
+		public  succubisDelight(tainted:boolean,player:Player):void
 		{
 			player.slimeFeed();
-			var changes:Number = 0;
-			var crit:Number = 1;
+			var changes:number = 0;
+			var crit:number = 1;
 			//Determine crit multiplier (x2 or x3)
 			if (rand(4) == 0) crit += rand(2) + 1;
-			var changeLimit:Number = 1;
+			var changeLimit:number = 1;
 			//Chances to up the max number of changes
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
@@ -2318,14 +2318,14 @@
 			}
 		}
 
-		public function succubisDream(player:Player):void
+		public  succubisDream(player:Player):void
 		{
 			player.slimeFeed();
-			var changes:Number = 0;
-			var crit:Number = 1;
+			var changes:number = 0;
+			var crit:number = 1;
 			//Determine crit multiplier (x2 or x3)
 			crit += rand(2) + 1;
-			var changeLimit:Number = 1;
+			var changeLimit:number = 1;
 			//Chances to up the max number of changes
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
@@ -2475,7 +2475,7 @@
 */
 
 //butt expansion
-		public function brownEgg(large:Boolean,player:Player):void
+		public  brownEgg(large:boolean,player:Player):void
 		{
 			outputText("You devour the egg, momentarily sating your hunger.\n\n", true);
 			if (!large) {
@@ -2493,7 +2493,7 @@
 		}
 
 //hip expansion
-		public function purpleEgg(large:Boolean,player:Player):void
+		public  purpleEgg(large:boolean,player:Player):void
 		{
 			outputText("You devour the egg, momentarily sating your hunger.\n\n", true);
 			if (!large || player.hipRating > 20) {
@@ -2511,7 +2511,7 @@
 		}
 
 //Femminess
-		public function pinkEgg(large:Boolean,player:Player):void
+		public  pinkEgg(large:boolean,player:Player):void
 		{
 			outputText("You devour the egg, momentarily sating your hunger.\n\n", true);
 			if (!large) {
@@ -2565,10 +2565,10 @@
 		}
 
 //Maleness
-		public function blueEgg(large:Boolean,player:Player):void
+		public  blueEgg(large:boolean,player:Player):void
 		{
-			var temp2:Number = 0;
-			var temp3:Number = 0;
+			var temp2:number = 0;
+			var temp3:number = 0;
 			outputText("You devour the egg, momentarily sating your hunger.", true);
 			if (!large) {
 				//Kill pussies!
@@ -2720,9 +2720,9 @@
 		}
 
 //Nipplezzzzz
-		public function whiteEgg(large:Boolean,player:Player):void
+		public  whiteEgg(large:boolean,player:Player):void
 		{
-			var temp2:Number = 0;
+			var temp2:number = 0;
 			outputText("You devour the egg, momentarily sating your hunger.", true);
 			if (!large) {
 				//Grow nipples
@@ -2756,7 +2756,7 @@
 			}
 		}
 
-		public function blackRubberEgg(large:Boolean,player:Player):void
+		public  blackRubberEgg(large:boolean,player:Player):void
 		{
 			outputText("You devour the egg, momentarily sating your hunger.", true);
 			//Small
@@ -2847,7 +2847,7 @@
 			}
 		}
 
-		public function hairDye(color:String,player:Player):void
+		public  hairDye(color:string,player:Player):void
 		{
 			if (player.hairColor.indexOf("rubbery") != -1 || player.hairColor.indexOf("latex-textured") != -1) {
 				outputText("You massage the dye into your " + hairDescript() + " but the dye cannot penetrate the impermeable material your hair is composed of.", true);
@@ -2867,7 +2867,7 @@
 		}
 
 
-		public function purePearl(player:Player):void
+		public  purePearl(player:Player):void
 		{
 			outputText("You cram the pearl in your mouth and swallow it like a giant pill with some difficulty.  Surprisingly there is no discomfort, only a cool calming sensation that springs up from your core.", true);
 			dynStats("lib", -5, "lus", -25, "cor", -10);
@@ -3169,10 +3169,10 @@
 		}
 */
 		
-		public function lactaid(player:Player):void
+		public  lactaid(player:Player):void
 		{
 			player.slimeFeed();
-			var i:Number = 0;
+			var i:number = 0;
 			outputText("You gulp down the bottle of lactaid, easily swallowing the creamy liquid.", true);
 			//Bump up size!
 			if (player.averageBreastSize() < 8) {
@@ -3202,7 +3202,7 @@
 			}
 		}
 
-		public function useMarbleMilk(player:Player):void
+		public  useMarbleMilk(player:Player):void
 		{
 			player.slimeFeed();
 			//Bottle of Marble's milk - item
@@ -3261,22 +3261,22 @@
 		 If the player's nipples are larger than 1 inch in length, this item is guaranteed to give them quad nipples.  This applies to all their breasts; seems like it ould be a good compromise on whether or not cowgirls should have 4 breasts.
 		 Very small chance to increase fertility (normally this increase would only happen when the player forces a creature to drink their milk).
 		 */
-		public function laBova(tainted:Boolean,enhanced:Boolean,player:Player):void
+		public  laBova(tainted:boolean,enhanced:boolean,player:Player):void
 		{
 			player.slimeFeed();
 			//Changes done
-			var changes:Number = 0;
+			var changes:number = 0;
 			//Change limit
-			var changeLimit:Number = 1;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (enhanced) changeLimit += 2;
 			//Temporary storage
-			var temp:Number = 0;
-			var temp2:Number = 0;
-			var temp3:Number = 0;
+			var temp:number = 0;
+			var temp2:number = 0;
+			var temp3:number = 0;
 			//LaBova:
 			//ItemDesc: "A bottle containing a misty fluid with a grainy texture, it has a long neck and a ball-like base.  The label has a stylized picture of a well endowed cowgirl nursing two guys while they jerk themselves off.  "
 			//ItemUseText:
@@ -3375,7 +3375,7 @@
 				}
 			}
 			//Sex bits - girly
-			var boobsGrew:Boolean = false;
+			var boobsGrew:boolean = false;
 			//Increase player's breast size, if they are HH or bigger
 			//do not increase size, but do the other actions:
 			if (((tainted && player.biggestTitSize() <= 11) || (!tainted && player.biggestTitSize() <= 5)) && changes < changeLimit && (rand(3) == 0 || enhanced)) {
@@ -3669,7 +3669,7 @@
 		}
 
 
-		public function blackSpellbook(player:Player):void
+		public  blackSpellbook(player:Player):void
 		{
 			outputText("You open the small black book, and discover it to be an instructional book on the use of black magic.  Most of it is filled with generic information about black magic - how it is drawn from emotions (typically lust), and how it has the power to affect bodies and emotions.  It also warns against using it on oneself, as it is difficult to draw on your emotions while meddling with your own body.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.", true);
 			if (player.inte < 30) {
@@ -3707,7 +3707,7 @@
 			}
 		}
 
-		public function whiteSpellbook(player:Player):void
+		public  whiteSpellbook(player:Player):void
 		{
 			outputText("You open the white tome, and discover it to be an instructional book on the use of white magic.  Most of it is filled with generic information about white magic - how it is drawn for mental focus, is difficult to use when tired or aroused, and can be used to create and control energy.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.", true);
 			if (player.inte < 30) {
@@ -3745,7 +3745,7 @@
 			}
 		}
 
-		public function lustDraft(fuck:Boolean,player:Player):void
+		public  lustDraft(fuck:boolean,player:Player):void
 		{
 			player.slimeFeed();
 			outputText("You drink the ", true);
@@ -3783,11 +3783,11 @@
 			outputText("\n\n", false);
 		}
 
-		public function goblinAle(player:Player):void
+		public  goblinAle(player:Player):void
 		{
 			player.slimeFeed();
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (rand(4) == 0) changeLimit++;
@@ -3864,7 +3864,7 @@
 			else if (player.cocks.length == 1 && rand(2) == 0 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
 				if (player.cocks[0].cockLength > 12) {
 					changes++;
-					var temp3:Number = 0;
+					var temp3:number = 0;
 					outputText("\n\n", false);
 					//Shrink said cock
 					if (player.cocks[0].cockLength < 6 && player.cocks[0].cockLength >= 2.9) {
@@ -3981,7 +3981,7 @@
 			}
 		}
 
-		public function gooGasmic(player:Player):void
+		public  gooGasmic(player:Player):void
 		{
 			outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skinDesc + " slowly.", true);
 			//Stat changes
@@ -4034,7 +4034,7 @@
 				}
 				if (player.hairColor != "green" && player.hairColor != "purple" && player.hairColor != "blue" && player.hairColor != "cerulean" && player.hairColor != "emerald") {
 					outputText("  Stranger still, the hue of your semi-liquid hair changes to ");
-					var blah:int = rand(10);
+					var blah:number = rand(10);
 					if (blah <= 2) player.hairColor = "green";
 					else if (blah <= 4) player.hairColor = "purple";
 					else if (blah <= 6) player.hairColor = "blue";
@@ -4056,7 +4056,7 @@
 				player.skinAdj = "slimy";
 				if (player.skinTone != "green" && player.skinTone != "purple" && player.skinTone != "blue" && player.skinTone != "cerulean" && player.skinTone != "emerald") {
 					outputText("  Stranger still, your skintone changes to ");
-					var blaht:int = rand(10);
+					var blaht:number = rand(10);
 					if (blaht <= 2) player.skinTone = "green";
 					else if (blaht <= 4) player.skinTone = "purple";
 					else if (blaht <= 6) player.skinTone = "blue";
@@ -4119,10 +4119,10 @@
 		}
 
 
-		public function sharkTooth(type:Number,player:Player):void
+		public  sharkTooth(type:number,player:Player):void
 		{
-			var changes:Number = 0;
-			var changeLimit:Number = 2;
+			var changes:number = 0;
+			var changeLimit:number = 2;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -4299,12 +4299,12 @@
 		 "A vial the size of your fist made of dark brown glass. It contains what appears to be an oily, yellowish liquid. The odor is abominable."
 		 */
 
-		public function snakeOil(player:Player):void
+		public  snakeOil(player:Player):void
 		{
 			player.slimeFeed();
 			outputText("", true);
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -4419,7 +4419,7 @@
 		}
 */
 		
-		public function Hummus(player:Player):void
+		public  Hummus(player:Player):void
 		{
 			outputText("", true);
 			if (debug) {
@@ -4464,7 +4464,7 @@
 			player.eyeType = EYES_HUMAN;
 			if (player.fertility > 15) player.fertility = 15;
 			if (player.cumMultiplier > 50) player.cumMultiplier = 50;
-			var virgin:Boolean = false;
+			var virgin:boolean = false;
 			//Clear cocks
 			while (player.cocks.length > 0) {
 				player.removeCock(0, 1);
@@ -4517,9 +4517,9 @@
 		}
 
 
-		public function coal(player:Player):void
+		public  coal(player:Player):void
 		{
-			var changes:Number = 0;
+			var changes:number = 0;
 			outputText("", true);
 			outputText("You handle the coal rocks experimentally and they crumble to dust in your hands!  You cough as you breathe in the cloud, sputtering and wheezing.  After a minute of terrible coughing, you recover and realize there's no remaining trace of the rocks, not even a sooty stain on your hands!", false);
 			//Try to go into intense heat
@@ -4544,12 +4544,12 @@
 			}
 		}
 
-		public function catTransformation(player:Player):void
+		public  catTransformation(player:Player):void
 		{
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
-			var temp2:Number = 0;
-			var temp3:Number = 0;
+			var changes:number = 0;
+			var changeLimit:number = 1;
+			var temp2:number = 0;
+			var temp3:number = 0;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
@@ -4641,7 +4641,7 @@
 			//Heat
 			if (rand(4) == 0 && changes < changeLimit) 
 			{
-				var intensified:Boolean = player.inHeat;
+				var intensified:boolean = player.inHeat;
         
 				if (player.goIntoHeat(false)) 
 				{
@@ -4675,7 +4675,7 @@
 				if (temp2 > 0) {
 					//temp3 stores how many rows are changed
 					temp3 = 0;
-					for (var k:Number = 0; k < player.breastRows.length; k++) {
+					for (const k = 0; k < player.breastRows.length; k++) {
 						//If this row is over threshhold
 						if (player.breastRows[k].breastRating > temp2) {
 							//Big change
@@ -4702,7 +4702,7 @@
 			if (player.cockTotal() > 0 && player.catCocks() < player.cockTotal() &&
 					changes < changeLimit && rand(4) == 0) {
 				//loop through and find a non-cat wang.
-				for (var i:Number = 0; i < (player.cockTotal()) && player.cocks[i].cockType == CockTypesEnum.CAT; i++) { }
+				for (const i = 0; i < (player.cockTotal()) && player.cocks[i].cockType == CockTypesEnum.CAT; i++) { }
 				outputText("\n\nYour " + cockDescript(i) + " swells up with near-painful arousal and begins to transform.  It turns pink and begins to narrow until the tip is barely wide enough to accommodate your urethra.  Barbs begin to sprout from its flesh, if you can call the small, fleshy nubs barbs. They start out thick around the base of your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and shrink towards the tip. The smallest are barely visible. <b>Your new feline dong throbs powerfully</b> and spurts a few droplets of cum.  ", false);
 				if (!player.hasSheath()) {
 					outputText("Then, it begins to shrink and sucks itself inside your body.  Within a few moments, a fleshy sheath is formed.", false);
@@ -4717,7 +4717,7 @@
 			if (player.catCocks() > 0 && rand(3) == 0 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
 				//loop through and find a cat wang.
 				temp = 0;
-				for (var j:Number = 0; j < (player.cockTotal()); j++) {
+				for (const j = 0; j < (player.cockTotal()); j++) {
 					if (player.cocks[j].cockType == CockTypesEnum.CAT && player.cocks[j].cockLength > 6) {
 						temp = 1;
 						break;
@@ -4847,13 +4847,13 @@
 			}
 		}
 
-		public function reptilum(player:Player):void
+		public  reptilum(player:Player):void
 		{
 			player.slimeFeed();
 			//init variables
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
-			var temp2:Number = 0;
+			var changes:number = 0;
+			var changeLimit:number = 1;
+			var temp2:number = 0;
 			//Randomly choose affects limit
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
@@ -5241,10 +5241,10 @@
 		}
 */
 
-		public function neonPinkEgg(pregnantChange:Boolean,player:Player):void
+		public  neonPinkEgg(pregnantChange:boolean,player:Player):void
 		{
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -5372,7 +5372,7 @@
 			}
 			//Makes girls very girl(90), guys somewhat girly (61).
 			if (changes < changeLimit && rand(2) == 0) {
-				var buffer:String = "";
+				var buffer:string = "";
 				if (player.gender < 2) buffer += player.modFem(61, 4);
 				else buffer += player.modFem(90, 4);
 				if (buffer != "") {
@@ -5577,13 +5577,13 @@
 			}
 		}
 
-		public function goldenSeed(type:Number,player:Player):void
+		public  goldenSeed(type:number,player:Player):void
 		{
 			//'type' refers to the variety of seed.
 			//0 == standard.
 			//1 == enhanced - increase change limit and no pre-reqs for TF
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (type == 1) changeLimit += 2;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
@@ -5919,19 +5919,19 @@
 		 -Roo footsies
 		 -Fur
 		 -Roo face*/
-		public function kangaFruit(type:Number,player:Player):void
+		public  kangaFruit(type:number,player:Player):void
 		{
 			outputText("", true);
 			outputText("You squeeze the pod around the middle, forcing the end open.  Scooping out a handful of the yeasty-smelling seeds, you shovel them in your mouth.  Blech!  Tastes like soggy burnt bread... and yet, you find yourself going for another handful...", false);
 			//Used to track changes and the max
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (type == 1) changeLimit += 2;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			//Used as a holding variable for biggest dicks and the like
-			var biggestCock:Number;
+			var biggestCock:number;
 			//****************
 			//General Effects:
 			//****************
@@ -6044,7 +6044,7 @@
 					if (player.hasSheath()) outputText("your sheath", false);
 					else outputText("a sheath that forms at the base of it", false);
 					outputText(".  <b>You now have a kangaroo-penis!</b>", false);
-					var cockIdx:int = 0;
+					var cockIdx:number = 0;
 					//Find first non-roocock!
 					while (cockIdx < player.cockTotal()) {
 						if (player.cocks[cockIdx].cockType != CockTypesEnum.KANGAROO) {
@@ -6138,7 +6138,7 @@
 		}
 
 //[Giant Chocolate Cupcake] – 500 gems
-		public function giantChocolateCupcake(player:Player):void
+		public  giantChocolateCupcake(player:Player):void
 		{
 			outputText("", true);
 			outputText("You look down at the massive chocolate cupcake and wonder just how you can possibly eat it all.  It fills the over-sized wrapper and bulges out over the top, somehow looking obscene even though it's merely a baked treat.  There is a single candle positioned atop its summit, and it bursts into flame as if by magic.  Eight red gumdrops ring the outer edge of the cupcake, illuminated by the flame.\n\n", false);
@@ -6149,11 +6149,11 @@
 			outputText(player.modThickness(100, 100), false);
 		}
 
-		public function sweetGossamer(type:Number,player:Player):void
+		public  sweetGossamer(type:number,player:Player):void
 		{
 			outputText("", true);
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -6249,7 +6249,7 @@
 					if (player.cockTotal() == 1) outputText("It's", false);
 					else outputText("They're", false);
 					outputText(" definitely thicker.", false);
-					var counter:Number;
+					var counter:number;
 					changes++;
 				}
 			}
@@ -6434,7 +6434,7 @@
 		}
 */
 
-		public function broBrew(player:Player):void
+		public  broBrew(player:Player):void
 		{
 			outputText("", true);
 			//no drink for bimbos!
@@ -6600,12 +6600,12 @@
 //Mouseover script: \"The green-tinted, hardly corporeal substance flows like a liquid inside its container. It makes you feel...uncomfortable, as you observe it.\"
 
 //Bottle of Ectoplasm Text
-		public function ectoplasm(player:Player):void
+		public  ectoplasm(player:Player):void
 		{
 			outputText("", true);
 			outputText("You grimace and uncork the bottle, doing your best to ignore the unearthly smell drifting up to your nostrils. Steeling yourself, you raise the container to your lips and chug the contents, shivering at the feel of the stuff sliding down your throat.  Its taste, at least, is unexpectedly pleasant.  Almost tastes like oranges.", false);
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -6685,7 +6685,7 @@
 			//Failure:  With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself into the opponent's frame. Unfortunately, it seems they were more mentally prepared than you hoped, and you're summarily thrown out of their body before you're even able to have fun with them. Darn, you muse. Gotta get smarter.
 		}
 
-		public function isabellaMilk(player:Player):void
+		public  isabellaMilk(player:Player):void
 		{
 			outputText("", true);
 			outputText("You swallow down the bottle of Isabella's milk.", false);
@@ -6696,12 +6696,12 @@
 
 //TF item - Shriveled Tentacle
 //tooltip:
-		public function shriveledTentacle(player:Player):void
+		public  shriveledTentacle(player:Player):void
 		{
 			outputText("", true);
 			outputText("You chew on the rubbery tentacle; its texture and taste are somewhat comparable to squid, but the half-dormant nematocysts cause your mouth to tingle sensitively.", false);
-			var changes:Number = 0;
-			var changeLimit:Number = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -6783,7 +6783,7 @@
 //ITEMS START
 
 //Numb Rocks
-		public function numbRocks(player:Player):void
+		public  numbRocks(player:Player):void
 		{
 			outputText("", true);
 			//Numb rocks lower lust significantly but have a chance of inducing the masturbation preventing effect from minotaur.
@@ -6831,7 +6831,7 @@
 		}
 
 //2. Sensitivity Draft
-		public function sensitivityDraft(player:Player):void
+		public  sensitivityDraft(player:Player):void
 		{
 			outputText("", true);
 			outputText("You pop the cork on this small vial and drink down the clear liquid.  It makes your lips and tongue tingle strangely, letting you feel each globule of spit in your mouth and each breath of air as it slides past your lips.", false);
@@ -6856,18 +6856,18 @@
 			dynStats("sen", 10, "lus", 5);
 		}
 
-		public function foxTF(enhanced:Boolean,player:Player):void
+		public  foxTF(enhanced:boolean,player:Player):void
 		{
 			clearOutput();
 			if (!enhanced) outputText("You examine the berry a bit, rolling the orangish-red fruit in your hand for a moment before you decide to take the plunge and chow down.  It's tart and sweet at the same time, and the flavors seem to burst across your tongue with potent strength.  Juice runs from the corners of your lips as you finish the tasty snack.");
 			else outputText("You pop the cap on the enhanced \"Vixen's Vigor\" and decide to take a swig of it.  Perhaps it will make you as cunning as the crude fox Lumi drew on the front?");
-			var changes:int = 0;
-			var changeLimit:int = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (enhanced) changeLimit += 2;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(2) == 0) changeLimit++;
 			//Used for dick and boob TFs
-			var counter:int = 0;
+			var counter:number = 0;
 
 			if (player.faceType == FACE_FOX && player.tailType == TAIL_TYPE_FOX && player.earType == EARS_FOX && player.lowerBody == LOWER_BODY_TYPE_FOX && player.skinType == SKIN_TYPE_FUR && rand(3) == 0) {
 				if (flags[kFLAGS.FOX_BAD_END_WARNING] == 0) {
@@ -6919,7 +6919,7 @@
 
 			//[Change Hair Color: Golden-blonde or Reddish-orange]
 			if (player.hairColor != "golden-blonde" && player.hairColor != "reddish-orange" && player.hairColor != "silver" && player.hairColor != "white" && player.hairColor != "red" && player.hairColor != "black" && changes < changeLimit && rand(4) == 0) {
-				var hairTemp:int = rand(10);
+				var hairTemp:number = rand(10);
 				if (hairTemp < 5) player.hairColor = "reddish-orange";
 				else if (hairTemp < 7) player.hairColor = "red";
 				else if (hairTemp < 8) player.hairColor = "golden-blonde";
@@ -6973,7 +6973,7 @@
 
 			//dog cocks!
 			if (changes < changeLimit && rand(3) == 0 && player.dogCocks() < player.cocks.length) {
-				var choices:Array = [];
+				var choices:any[] = [];
 				counter = player.cockTotal();
 				while (counter > 0) {
 					counter--;
@@ -6981,7 +6981,7 @@
 					if (player.cocks[counter].cockType != CockTypesEnum.DOG) choices[choices.length] = counter;
 				}
 				if (choices.length != 0) {
-					var select:int = choices[rand(choices.length)];
+					var select:number = choices[rand(choices.length)];
 					if (player.cocks[select].cockType == CockTypesEnum.HUMAN) {
 						outputText("\n\nYour " + cockDescript(select) + " clenches painfully, becoming achingly, throbbingly erect.  A tightness seems to squeeze around the base, and you wince as you see your skin and flesh shifting forwards into a canine-looking sheath.  You shudder as the crown of your " + cockDescript(select) + " reshapes into a point, the sensations nearly too much for you.  You throw back your head as the transformation completes, your " + Appearance.cockNoun(CockTypesEnum.DOG) + " much thicker than it ever was before.  <b>You now have a dog-cock.</b>", false);
 						player.cocks[select].cockThickness += .3;
@@ -7059,7 +7059,7 @@
 				changes++;
 			}
 			//Find out if tits are eligible for evening
-			var tits:Boolean = false;
+			var tits:boolean = false;
 			counter = player.bRows();
 			while (counter > 1) {
 				counter--;
@@ -7067,7 +7067,7 @@
 				if (player.breastRows[counter].breastRating <= (player.breastRows[counter - 1].breastRating - 1) && changes < changeLimit && rand(2) == 0) {
 					if (tits) outputText("\n\nThey aren't the only pair to go through a change!  Another row of growing bosom goes through the process with its sisters, getting larger.");
 					else {
-						var select2:Number = rand(3);
+						var select2:number = rand(3);
 						if (select2 == 1) outputText("\n\nA faint warmth buzzes to the surface of your " + breastDescript(counter) + ", the fluttering tingles seeming to vibrate faster and faster just underneath your " + player.skin() + ".  Soon, the heat becomes uncomfortable, and that row of chest-flesh begins to feel tight, almost thrumming like a newly-stretched drum.  You " + nippleDescript(counter) + "s go rock hard, and though the discomforting feeling of being stretched fades, the pleasant, warm buzz remains.  It isn't until you cup your tingly tits that you realize they've grown larger, almost in envy of the pair above.");
 						else if (select2 == 2) outputText("\n\nA faintly muffled gurgle emanates from your " + breastDescript(counter) + " for a split-second, just before your flesh shudders and shakes, stretching your " + player.skinFurScales() + " outward with newly grown breast.  Idly, you cup your hands to your swelling bosom, and though it stops soon, you realize that your breasts have grown closer in size to the pair above.");
 						else {
@@ -7185,7 +7185,7 @@
 			}
 		}
 
-		public function godMead(player:Player):void
+		public  godMead(player:Player):void
 		{
 			clearOutput();
 			outputText("You take a hearty swig of mead, savoring the honeyed taste on your tongue.  Emboldened by the first drink, you chug the remainder of the horn's contents in no time flat.  You wipe your lips, satisfied, and let off a small belch as you toss the empty horn aside.");
@@ -7211,7 +7211,7 @@
 			//Grow hair: Your scalp is beset by pins and needles as your hair grows out, stopping after it reaches [medium/long] length.}
 		}
 		
-		public function proMead(player:Player):void
+		public  proMead(player:Player):void
 		{
 			clearOutput();
 			outputText("You take a hearty swig of mead, savoring the honeyed taste on your tongue.  Emboldened by the first drink, you chug the remainder of the horn's contents in no time flat.  You wipe your lips, satisfied, and let off a small belch as you toss the empty horn aside.");
@@ -7238,7 +7238,7 @@
 			//Grow hair: Your scalp is beset by pins and needles as your hair grows out, stopping after it reaches [medium/long] length.}
 		}
 
-		public function sheepMilk(player:Player):void
+		public  sheepMilk(player:Player):void
 		{
 			outputText("You gulp the bottle's contents, and its sweet taste immediately invigorates you, making you feel calm and concentrated", true);
 			//-30 fatigue, -2 libido, -10 lust]
@@ -7249,7 +7249,7 @@
 //Item: Dragon Egg (Z) (FEN CODED TO HERE - OR AT LEAST COPIED INTO THE CODE FOR FUTURE CODING)
 //Itemdescription - "A large, solid egg, easily the size of your clenched fist.  Its shell color is reddish-white, with blue splotches."
 
-		public function eatEmberEgg(player:Player):void
+		public  eatEmberEgg(player:Player):void
 		{
 			clearOutput();
 			//Effect:
@@ -7272,11 +7272,11 @@
 //Fox Jewel (Magatama)
 
 //Consume:
-		public function foxJewel(mystic:Boolean,player:Player):void
+		public  foxJewel(mystic:boolean,player:Player):void
 		{
 			clearOutput();
-			var changes:int = 0;
-			var changeLimit:int = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (mystic) changeLimit += 2;
@@ -7450,7 +7450,7 @@
 			}
 			//[Change Hair Color: Golden-blonde, SIlver Blonde, White, Black, Red]
 			if (((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && changes < changeLimit && player.hairColor != "golden blonde" && player.hairColor != "silver blonde" && player.hairColor != "white" && player.hairColor != "black" && player.hairColor != "red") {
-				var hairTemp:int = rand(10);
+				var hairTemp:number = rand(10);
 				if (hairTemp == 0) player.hairColor = "golden blonde";
 				else if (hairTemp == 1) player.hairColor = "silver blonde";
 				else if (hairTemp <= 3) player.hairColor = "white";
@@ -7469,13 +7469,13 @@
 				player.skinAdj = "";
 				player.skinDesc = "skin";
 				if (!mystic && player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "light") {
-					var skinTemp:int = rand(3);
+					var skinTemp:number = rand(3);
 					if (skinTemp == 0) player.skinTone = "tan";
 					else if (skinTemp == 1) player.skinTone = "olive";
 					else player.skinTone = "light";
 				}
 				else if (mystic && player.skinTone != "dark" && player.skinTone != "ebony" && player.skinTone != "ashen" && player.skinTone != "sable" && player.skinTone != "milky white") {
-					var skinT:int = rand(5);
+					var skinT:number = rand(5);
 					if (skinT == 0) player.skinTone = "dark";
 					else if (skinT == 1) player.skinTone = "ebony";
 					else if (skinT == 2) player.skinTone = "ashen";
@@ -7489,7 +7489,7 @@
 			//Change skin tone if not changed you!
 			else if (mystic && player.skinTone != "dark" && player.skinTone != "ebony" && player.skinTone != "ashen" && player.skinTone != "sable" && player.skinTone != "milky white" && changes < changeLimit && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0))) {
 				outputText("\n\nYou feel a crawling sensation on the surface of your skin, starting at the small of your back and spreading to your extremities, ultimately reaching your face.  Holding an arm up to your face, you discover that <b>you now have ");
-				var mtoneTemp:int = rand(5);
+				var mtoneTemp:number = rand(5);
 				if (mtoneTemp == 0) player.skinTone = "dark";
 				else if (mtoneTemp == 1) player.skinTone = "ebony";
 				else if (mtoneTemp == 2) player.skinTone = "ashen";
@@ -7501,7 +7501,7 @@
 			//Change skin tone if not changed you!
 			else if (!mystic && player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "light" && changes < changeLimit && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0))) {
 				outputText("\n\nYou feel a crawling sensation on the surface of your skin, starting at the small of your back and spreading to your extremities, ultimately reaching your face.  Holding an arm up to your face, you discover that <b>you now have ");
-				var toneTemp:int = rand(3);
+				var toneTemp:number = rand(3);
 				if (toneTemp == 0) player.skinTone = "tan";
 				else if (toneTemp == 1) player.skinTone = "olive";
 				else player.skinTone = "light";
@@ -7729,7 +7729,7 @@
 		}
 */
 //Fish Fillet
-		public function fishFillet(player:Player):void
+		public  fishFillet(player:Player):void
 		{
 			clearOutput();
 			if (!getGame().inCombat) outputText("You sit down and unwrap your fish fillet. It's perfectly flaky, allowing you to break it off in bite-sized chunks.  The salty meal disappears quickly, and your stomach gives an appreciative gurgle.");
@@ -7746,11 +7746,11 @@
 
 //Trap Oil
 //Flavour Description: A round, opaque glass vial filled with a clear, viscous fluid.  It has a symbol inscribed on it, a circle with a cross and arrow pointing out of it in opposite directions.  It looks and smells entirely innocuous.
-		public function trapOil(player:Player):void
+		public  trapOil(player:Player):void
 		{
 			clearOutput();
-			var changes:int = 0;
-			var changeLimit:int = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
@@ -8016,7 +8016,7 @@
 
 //PurPeac
 //Purity Peach - Inventory
-		public function purityPeach(player:Player):void
+		public  purityPeach(player:Player):void
 		{
 			clearOutput();
 			outputText("You bite into the sweet, juicy peach, feeling a sensation of energy sweeping through your limbs and your mind.  You feel revitalized, refreshed, and somehow cleansed.");
@@ -8028,7 +8028,7 @@
 //This sweet-smelling produce looks like an eggplant but feels almost squishy, and rubbery to the touch. Holding it to your ear, you think you can hear some fluid sloshing around inside.
 
 //>When Used
-		public function purpleFruitEssrayle(player:Player):void
+		public  purpleFruitEssrayle(player:Player):void
 		{
 			clearOutput();
 			outputText("You bite into the fruit Essrayle gave you with little hesitation.  It's amazingly sweet, with a texture that's rather gummy.  The juice is a candied grape syrup that fills your cheeks and flows down your throat with far more fluid than the size of the plant should allow.  You hastily devour the entire thing, unable to stop yourself once you've started.");
@@ -8052,14 +8052,14 @@
 //tooltip:
 //A dried fig with two lobes and thin dark rings just below its stem.  The skin is wrinkly and it looks vaguely like a bulging scrotum.
 
-		public function ringtailFig(player:Player):void
+		public  ringtailFig(player:Player):void
 		{
 			clearOutput();
 			//eat it:
 			outputText("You split the fruit and scoop out the pulp, eating it greedily.  It's sweet and slightly gritty with seeds, and you quickly finish both halves.");
 
-			var changes:int = 0;
-			var changeLimit:int = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
@@ -8224,12 +8224,12 @@
 
 
 //Mouse Cocoa/MousCoco (you can change the name if you're saddlesore I guess but I'll make fun of you for having no plausible source of chocolate for your bakery if you do)
-		public function mouseCocoa(player:Player):void
+		public  mouseCocoa(player:Player):void
 		{
 			clearOutput();
 
-			var changes:int = 0;
-			var changeLimit:int = 1;
+			var changes:number = 0;
+			var changeLimit:number = 1;
 			if (rand(2) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
 			if (rand(3) == 0) changeLimit++;
@@ -8292,7 +8292,7 @@
 			//fem fertility up and heat (suppress if pregnant)
 			//not already in heat (add heat and lust)
 			if (player.statusAffectv2(StatusAffects.Heat) < 30 && rand(2) == 0 && changes < changeLimit) {
-        var intensified:Boolean = player.inHeat;
+        var intensified:boolean = player.inHeat;
         if(player.goIntoHeat(false)) {
           if(intensified) {
   					outputText("\n\nYour womb feels achingly empty, and your temperature shoots up.  Try as you might, you can't stop fantasizing about being filled with semen, drenched inside and out with it, enough to make a baker's dozen offspring.  ");
@@ -8411,7 +8411,7 @@
 //perk - fuck if i know
 //maybe some pregnancy-accelerating thing
 
-		private function demonChanges(player:Player):void
+		private  demonChanges(player:Player):void
 		{
 			//Change tail if already horned.
 			if (player.tailType != TAIL_TYPE_DEMONIC && player.horns > 0) {
@@ -8534,7 +8534,7 @@
 			}
 		}
 		
-		public function herbalContraceptive(player:Player):void
+		public  herbalContraceptive(player:Player):void
 		{
 			clearOutput();
 			
@@ -8544,7 +8544,7 @@
 			player.createStatusAffect(StatusAffects.Contraceptives, 1, 48, 0, 0);
 		}
 		
-		public function princessPucker(player:Player):void
+		public  princessPucker(player:Player):void
 		{
 			clearOutput();
 			
@@ -8574,7 +8574,7 @@
 		}
 		
 		//Ferret Fruit
-		public function ferretTF(player:Player):void {
+		public  ferretTF(player:Player):void {
 			//CoC Ferret TF (Ferret Fruit)
 			//Finding Ferret Fruit
 			//- Ferret Fruit may be randomly found while exploring the plains.
@@ -8609,10 +8609,10 @@
 				flags[kFLAGS.FERRET_BAD_END_WARNING] = 0;
 			}
 
-			var changes:int = 0;
-			var changeLimit:int = 1;
-			var temp:int = 0;
-			var x:int = 0;
+			var changes:number = 0;
+			var changeLimit:number = 1;
+			var temp:number = 0;
+			var x:number = 0;
 			if(rand(2) == 0) changeLimit++;
 			if(rand(2) == 0) changeLimit++;
 			if(rand(3) == 0) changeLimit++;
@@ -8855,4 +8855,4 @@
 			}
 		}
 	}
-}
+

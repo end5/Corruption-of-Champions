@@ -1,16 +1,16 @@
-package classes.Scenes.Quests.UrtaQuest
-{
-	import classes.*;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Monsters.AbstractSuccubus;
-	import classes.internals.*;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
+
+	  ;
 	
-	public class MilkySuccubus extends AbstractSuccubus
+	export class MilkySuccubus extends AbstractSuccubus
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if (findStatusAffect(StatusAffects.MilkyUrta) < 0 && rand(3) == 0) cowCubiMilkSprayAttack();
 			else if (HP < 400) drinkMinoCum();
@@ -20,7 +20,7 @@ package classes.Scenes.Quests.UrtaQuest
 			else eAttack();
 		}
 
-		private function cowCubiMilkSprayAttack():void
+		private  cowCubiMilkSprayAttack():void
 		{
 			//Lasts a couple turns like the goblin lust poison?
 			outputText("\"<i>How about a taste?</i>\"  The succubus asks, pressing her tits together.  Before you can reply, a veritable jet of milk sprays in your direction!\n");
@@ -39,7 +39,7 @@ package classes.Scenes.Quests.UrtaQuest
 			combatRoundOver();
 		}
 
-		private function drinkMinoCum():void
+		private  drinkMinoCum():void
 		{
 			outputText("Smiling wryly and licking her lips, the succubus-cow procures a bottle of her pet's cum with her probing tail.");
 //Success:
@@ -57,7 +57,7 @@ package classes.Scenes.Quests.UrtaQuest
 			combatRoundOver();
 		}
 
-		private function succubusTease():void
+		private  succubusTease():void
 		{
 			if (rand(4) == 0) outputText("Turning around, the succubus begins to bounce her rather round derriere in your direction, the cheeks lewdly clapping together with each change in direction, exposing her dark anal star and juicy snatch, literally gushing forth a stream of lubricants.  Her eyes glow with faint, purple light as she whispers, \"<i>Don't you just want to... slide on in?</i>\"");
 			else if (rand(3) == 0) outputText("The succubus squeezes her spotted, sweat-oiled breasts together, squirting out trickles of fresh, creamy, succubi milk.  Bending down, she laps at her own bounty, taking to meet your eyes, her own glowing violet.  You can feel her next words as much as hear them, reaching into your brain and stirring a familiar heat in your loins.  \"<i>Giving in would mean pleasure unending, my dear vixen.</i>\"");
@@ -67,18 +67,18 @@ package classes.Scenes.Quests.UrtaQuest
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.urtaQuest.urtaBeatsUpCowcubi();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.urtaQuest.urtaLosesToCowCubi();
 		}
 
 
-		override public function teased(lustDelta:Number):void
+		 public  teased(lustDelta:number):void
 		{
 			outputText(capitalA + short + " smiles, rubbing her hands across herself as she watches your display.  She does not seem greatly affected by your show - at least in the sense of increasing arousal.  She does seem oddly more... vital, as if she drew strength from the very display you put on.");
 			str += 5;
@@ -86,7 +86,7 @@ package classes.Scenes.Quests.UrtaQuest
 			applyTease(lustDelta);
 		}
 
-		public function MilkySuccubus()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "milky succubus";
@@ -136,4 +136,3 @@ package classes.Scenes.Quests.UrtaQuest
 
 	}
 
-}

@@ -1,12 +1,12 @@
-﻿package classes.Scenes.Areas.Mountain
-{
-	import classes.*;
+ 
 
-	public class WormMass extends Monster
+	 
+
+	export class WormMass extends Monster
 	{
 
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			//Worms have different AI
 			if (rand(2) == 0)
@@ -15,18 +15,18 @@
 		}
 
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			outputText("Overcome by your "+(hpVictory?"wounds":"lust")+", you sink to your knees as the colony of worms swarms all over your body...\n\n", true);
 			game.infest1();
 		}
 
-		override public function eMaxHP():Number
+		 public  eMaxHP():number
 		{
 			return 40;
 		}
 
-		public function WormMass()
+		public  constructor()
 		{
 			trace("WormMass Constructor!");
 			this.a = "the ";
@@ -63,4 +63,3 @@
 
 	}
 
-}

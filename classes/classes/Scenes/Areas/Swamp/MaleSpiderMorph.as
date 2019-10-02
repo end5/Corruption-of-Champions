@@ -1,18 +1,18 @@
-package classes.Scenes.Areas.Swamp
-{
-	import classes.*;
-	import classes.internals.*;
+ 
 
-	public class MaleSpiderMorph extends AbstractSpiderMorph
+	 
+	 
+
+	export class MaleSpiderMorph extends AbstractSpiderMorph
 	{
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.swamp.maleSpiderMorphScene.defeatSpiderBoy();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nThe spider flashes a predatory grin while she waits it out...");
@@ -22,7 +22,7 @@ package classes.Scenes.Areas.Swamp
 			}
 		}
 
-		public function MaleSpiderMorph()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "male spider-morph";
@@ -68,4 +68,3 @@ package classes.Scenes.Areas.Swamp
 		
 	}
 
-}

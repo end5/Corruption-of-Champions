@@ -1,16 +1,16 @@
-package classes.Items.Consumables
-{
-	import classes.Items.Consumable;
-	import classes.Items.ConsumableLib;
-	import classes.internals.Utils;
+ 
+
+	 
+	 
+	 
 	
-	public final class KitsuneGift extends Consumable {
+	export  class KitsuneGift extends Consumable {
 		
-		public function KitsuneGift() {
+		public  constructor() {
 			super("KitGift", "KitGift", "a kitsune's gift", 0, "A small square package given to you by a forest kitsune.  It is wrapped up in plain white paper and tied with a string.  Who knows what's inside?");
 		}
 		
-		override public function useItem():Boolean {
+		 public  useItem():boolean {
 			clearOutput();
 			outputText("Curiosity gets the best of you, and you decide to open the package.  After all, what's the worst that could happen?\n\n");
 			//Opening the gift randomly results in one of the following:
@@ -33,7 +33,7 @@ package classes.Items.Consumables
 			//[Gems]
 				case 2:
 				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it is filled to the brim with shining gems!");
-				var gems:int = 2 + Utils.rand(20);
+				var gems:number = 2 + Utils.rand(20);
 				outputText("\n\n<b>You've received " + Utils.num2Text(gems) + " shining gems from the kitsune's gift!  How generous!</b>");
 				game.player.gems += gems;
 				//add X gems to inventory
@@ -124,4 +124,4 @@ package classes.Items.Consumables
 			return(false); //Any other case does not have a sub-menu.
 		}
 	}
-}
+

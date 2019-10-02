@@ -1,11 +1,11 @@
-﻿package classes.Scenes.NPCs{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
+	 
+	 
+	 
 
-	public class ShouldraFollower extends NPCAwareContent {
+	export class ShouldraFollower extends NPCAwareContent {
 
-	public function ShouldraFollower()
+	public  constructor()
 	{
 	}
 
@@ -24,10 +24,10 @@
 //const SHOULDRA_BAKERY_TIMES:int = 521;
 //const SHOULDRA_MET_VALA:int = 766;
 
-override public function followerShouldra():Boolean {
+ public  followerShouldra():boolean {
 	return flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] == 1;
 }
-private function shouldraSleeping(changes:int = 0, reset:Boolean = false):Boolean {
+private  shouldraSleeping(changes:number = 0, reset:boolean = false):boolean {
 	//Adjust sleep timer
 	if(reset) {
 		flags[kFLAGS.SHOULDRA_SLEEP_TIMER] = changes;
@@ -42,7 +42,7 @@ private function shouldraSleeping(changes:int = 0, reset:Boolean = false):Boolea
 
 
 //Initial Question
-internal function initialShouldersRecruitment():void {
+public  initialShouldersRecruitment():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("The ghost girl shows up far earlier than normal, this time around; you usually have to wait for her to make an appearance, but this time, it's as if she's seeking you.  You wait for her to say something, cast a spell, punch you in the face, anything.  She just keeps hesitating and glancing at you.  \"<i>Say,</i>\" she begins nervously, \"<i>...what would you say to us... hanging out some more?  Like, I mean... you know, me going with you.  Doing stuff and things.  That might be... nice...</i>\"");
@@ -50,7 +50,7 @@ internal function initialShouldersRecruitment():void {
 	doYesNo(recruitShouldraForCampSexyTimes,noFollowerShoulders);
 }
 //NO OF COURSE NOT THAT SHIT'S 2SCARY4ME
-private function noFollowerShoulders():void {
+private  noFollowerShoulders():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("Somewhat bluntly, you inform her of your lack of interest regarding having a ghostly tagalong.  Though she looks a bit disappointed, she nods, scuffing her shoes against the ground and huffing a little sigh.  \"<i>At least I'll see you later, hey?</i>\"");
@@ -60,7 +60,7 @@ private function noFollowerShoulders():void {
 }
 
 //YEAH BRO I AM ALL INTO THAT
-private function recruitShouldraForCampSexyTimes():void {
+private  recruitShouldraForCampSexyTimes():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("After what you've been through, you'd be glad to let her come adventuring with you.  You let her know your thoughts, and her face brightens instantly.  \"<i>Awesome!</i>\" she exclaims, clapping her hands happily... then launching herself forward.  You brace for impact, but you needn't worry; she simply phases into you, quickly settling into the now-familiar frame.  For a moment, your eyes flash ghostly yellow, but the glow recedes to your natural eye color as she allows you full control.  \"<i>All set!</i>\" she says happily[if (hasCock = true) , already vying to stroke your wang through your [armor] despite her relinquished hold on your body].");
@@ -72,7 +72,7 @@ private function recruitShouldraForCampSexyTimes():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 
-public function morningShouldraAlert():void {
+public  morningShouldraAlert():void {
 	spriteSelect(67);
 	outputText("\n\"<i>Yo, Champ!</i>\" a voice calls, stirring you from your sleep.  You grumble and sit up, rubbing the sleep from your eyes.  Shouldra's standing a few feet away from you, hands on hips and staring at you expectantly.  As soon as you slink out of bed, she slides up and wraps you in a big hug, gradually allowing herself to grow transparent and slide into you.  A few moments of adjustments later, you stretch, feeling the otherworldly presence gliding around your body.  \"<i>Alright, Champ,</i>\" Shouldra exclaims, \"<i>Let's paint this land white.</i>\"");
 	outputText("\n\nTime to set out, you figure.");
@@ -85,7 +85,7 @@ public function morningShouldraAlert():void {
 //PC x Shouldra x Vala Threesome: Female Scene
 //Add-on to the normal scene; Shouldra learns Vala's breastmilk makes things bigger, decides to return the favor. Obviously too drunk to know when to stop, Vala gets room-sized.
 //Non-Corrupt Vala:
-private function shouldraAndValaGetBigger():void {
+private  shouldraAndValaGetBigger():void {
 	clearOutput();
 	spriteSelect(67);
 	if(flags[kFLAGS.SHOULDRA_MET_VALA] < 1) flags[kFLAGS.SHOULDRA_MET_VALA] = 1;
@@ -110,7 +110,7 @@ private function shouldraAndValaGetBigger():void {
 	addButton(1,"Be A Toy",pureValaAndShouldraMacroMax);
 }
 
-private function pureMacroValaCont():void {
+private  pureMacroValaCont():void {
 	clearOutput();
 	spriteSelect(67);
 	//Male:
@@ -146,7 +146,7 @@ private function pureMacroValaCont():void {
 //New option "Be A Toy" at end of "Non-Corrupt Vala" scene.
 //Pass out and wake up back at camp for maximum awesome.
 //Obviously the PC is carried in Vala's new pocket.
-private function pureValaAndShouldraMacroMax():void {
+private  pureValaAndShouldraMacroMax():void {
 	spriteSelect(67);
 	clearOutput();
 	player.slimeFeed();
@@ -193,7 +193,7 @@ private function pureValaAndShouldraMacroMax():void {
 
 
 //corrupt vala
-public function shouldraMeetsCorruptVala():void {
+public  shouldraMeetsCorruptVala():void {
 	spriteSelect(67);
 	clearOutput();
 	outputText("An idea strikes you as you gaze down at the chained-up fae creature.  You call to Shouldra, pointing her toward her newest toy.  You hear a delighted coo in your mind, and you feel the ghost inside of you take control.  The specter saunters up to Vala's helpless form, appraising the prisoner like a show dog. The bound creature gives little reaction as Shouldra fondles her unusually large breasts, and only gives a slight moan when the ghost parts her legs.  \"<i>Such an interesting little oddity!  Say what you want about those imps, but they sure can get awful creative when it comes to fucking.</i>\"");
@@ -226,7 +226,7 @@ public function shouldraMeetsCorruptVala():void {
 //PC x Shouldra x Sand Witch
 //Male Scene
 //Shouldra assumes direct control of sand witch.  Jokes about witches, ghosts, and needing a skeleton to complete the image are made.  Breast-related foreplay? Commence quad-terror titty fuck, complete with swelling PC dick.  Eventually envelopes player completely in the expected out of control moment.  Potential use for lust stones or save them for female scene.  Undecided.
-public function sandWitchGetsGhostly():void {
+public  sandWitchGetsGhostly():void {
 	spriteSelect(67);
 	clearOutput();
 	if(player.hasCock() && (!player.hasVagina() || rand(2) == 0)) {
@@ -278,7 +278,7 @@ public function sandWitchGetsGhostly():void {
 //Shouldra Masturbation Menu Text
 //slap at the end of current menu text
 //Genderless Masturbation
-private function shouldraFappinTimes():void {
+private  shouldraFappinTimes():void {
 	spriteSelect(67);
 	if(player.hasCock() && player.findStatusAffect(StatusAffects.Infested) >= 0) {
 		shouldraAndWormsYoureGonnaHaveABadTime();
@@ -300,7 +300,7 @@ private function shouldraFappinTimes():void {
 //Uses [foot] fully aware that it will be awkward with hooves.  FUCK THOSE MONSTERS.
 //Rework into anal option for all players?
 
-private function genderlessShouldraMasturbation():void {
+private  genderlessShouldraMasturbation():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("Shouldra runs your fingers along your ");
@@ -389,7 +389,7 @@ private function genderlessShouldraMasturbation():void {
 //Assumes follower Shouldra resides inside player during preceding choice
 //Uses [foot] fully aware that it will be awkward with hooves.  FUCK THOSE MONSTERS.
 //Variant not available to genderless PC
-private function nongenderlessAnalShouldraMasturbation():void {
+private  nongenderlessAnalShouldraMasturbation():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("Shouldra runs your fingers along your ");
@@ -466,7 +466,7 @@ private function nongenderlessAnalShouldraMasturbation():void {
 
 //Male Masturbation
 //Shouldra leads PC out of camp, finds few flowers, magicks them into huge dick-suckin' not!Corrupt Glade flowers. Also, massive cum production, because.
-private function maleMasturbationProper():void {
+private  maleMasturbationProper():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You are nearly overwhelmed by Shouldra's delight when you allow her to focus on your [cock].  She instantly takes the lead, steering you behind a good-sized boulder and flinging your [armor] piece-by-piece as you go.");
@@ -499,7 +499,7 @@ private function maleMasturbationProper():void {
 }
 
 //Female Masturbation
-private function girlyMasturbationWithGhosts():void {
+private  girlyMasturbationWithGhosts():void {
 	clearOutput();
 	spriteSelect(67);
 	//vibrating fingers near-mindbreak (by smidgeums)
@@ -519,7 +519,7 @@ private function girlyMasturbationWithGhosts():void {
 }
 
 //tongue-lickin' (by abraxas)
-private function shouldraTongueLicksPCs():void {
+private  shouldraTongueLicksPCs():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("The ghost girl promptly discards your [armor] before hurrying your naked body along into the wilderness away from camp.");
@@ -614,7 +614,7 @@ private function shouldraTongueLicksPCs():void {
 //SHOULDRA DREAM/TALK SHIT
 //General structure: dreams trigger roughly a week after one another, each unlocking a corresponding talk scene until eventually leading to the 'climax'. Each dream is the PC reliving a memory of Shouldra's from her pov.
 //Dream 1 - First Possession
-public function shouldraDream1():void {
+public  shouldraDream1():void {
 	outputText("\n");
 	spriteSelect(67);
 	//triggers one week after obtaining follower Shouldra
@@ -744,7 +744,7 @@ public function shouldraDream1():void {
 }
 	
 //Talk 1 - First Possession Discussion
-private function shouldraYappin():void {
+private  shouldraYappin():void {
 	clearOutput();
 	//Plot dreams!
 	if(flags[kFLAGS.SHOULDRA_TALK_NEEDED] == 1) {
@@ -871,7 +871,7 @@ private function shouldraYappin():void {
 
 //Follower Shouldra - Interact / Talk Menu
 //Follower Screen Quick Text
-public function shouldraFollowerScreen():void {
+public  shouldraFollowerScreen():void {
 	spriteSelect(67);
 	clearOutput();
 	if(!shouldraSleeping()) outputText("You pulse a desire for interaction with Shouldra, summoning her head to form from your shoulder. \"<i>What's on your mind, Champ? I could've found out on my own, but I was... preoccupied.</i>\"");
@@ -881,21 +881,21 @@ public function shouldraFollowerScreen():void {
 		doNext(playerMenu);
 		return;
 	}
-	var sex:Function = null;
+	var sex:() => void = null;
 	if(player.lust >= 33) sex = shouldraSexMenu;
 	simpleChoices("Talk", shouldraTalkMenu, "Sex", sex, "", null, "Go Away", kickFollowerShouldraOut, "Back", camp.campFollowers);
 }
 
-private function shouldraSexMenu():void {
+private  shouldraSexMenu():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("Shouldra stirs from somewhere deep inside you, excitement evident in the swiftness of her reaction.  \"<i>Is it time for some fun, Champ?</i>\" she asks happily, her increased lust affecting you just a bit.  Do you oblige her?");
-	var vala:Function = null;
+	var vala:() => void = null;
 	if(flags[kFLAGS.FREED_VALA] != 0 && (model.time.hours >= 12 && model.time.hours <= 21)) {
 		outputText("\n\nVala might interest Shouldra.  You could go introduce them...");
 		vala = shouldraAndValaGetBigger;
 	}
-	var anal:Function = null;
+	var anal:() => void = null;
 	if(player.gender > 0 && player.lust >= 33) {
 		anal = nongenderlessAnalShouldraMasturbation;
 		outputText("\n\nShouldra could also let you have a little anal fun, if you'd like.");
@@ -904,7 +904,7 @@ private function shouldraSexMenu():void {
 }
 
 //Talk Options
-private function shouldraTalkMenu():void {
+private  shouldraTalkMenu():void {
 	spriteSelect(67);
 	//Go directly to appropriate talk if necessary
 	if(flags[kFLAGS.SHOULDRA_TALK_NEEDED] == 1) {
@@ -912,8 +912,8 @@ private function shouldraTalkMenu():void {
 		return;
 	}
 	//Allow for the expansion of bodyparts via spooky magic
-	var blowShitUp:Function = null;
-	var shrinkShit:Function = null;
+	var blowShitUp:() => void = null;
+	var shrinkShit:() => void = null;
 	if(flags[kFLAGS.SHOULDRA_PLOT_LEVEL] >= 2 && flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] <= 0) {
 		blowShitUp = shouldraGroPlus;
 		shrinkShit = shouldraReductoMenu;
@@ -928,17 +928,17 @@ private function shouldraTalkMenu():void {
 //works same as Gro+ with additional Butt option
 //3 day / 72 hour cooldown between uses. Does not appear while on cooldown. 
 //Selecting Grow Bodypart
-private function shouldraGroPlus():void {
+private  shouldraGroPlus():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You decide to take up Shouldra's offer on natural body enhancement.  Before you tell her as much, the eager spectre quickly assumes control of your body.  \"<i>Alright, Champ, now we're in business.  So, what did you have in mind?</i>\"");
 	//Balls     Breast     Clit     Cock     Nipples     Butt     Nevermind
-	var balls:Function = null;
-	var breast:Function = shouldraGrowsYoTits;
-	var clit:Function = null;
-	var cock:Function = null;
-	var butt:Function = shouldrasButtBigginator;
-	var nipples:Function = shouldraGivesYaSomeFukkinTeats;
+	var balls:() => void = null;
+	var breast:() => void = shouldraGrowsYoTits;
+	var clit:() => void = null;
+	var cock:() => void = null;
+	var butt:() => void = shouldrasButtBigginator;
+	var nipples:() => void = shouldraGivesYaSomeFukkinTeats;
 	if(player.balls > 0) balls = groBallsBiggaGHOSTYSTYLE;
 	if(player.hasCock()) cock = shouldraCockBloating101;
 	if(player.hasVagina()) clit = shouldraGrowsYoClit;
@@ -946,7 +946,7 @@ private function shouldraGroPlus():void {
 }
 		
 //Balls
-private function groBallsBiggaGHOSTYSTYLE():void {
+private  groBallsBiggaGHOSTYSTYLE():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -968,7 +968,7 @@ private function groBallsBiggaGHOSTYSTYLE():void {
 }
 
 //Breast
-private function shouldraGrowsYoTits():void {
+private  shouldraGrowsYoTits():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -980,7 +980,7 @@ private function shouldraGrowsYoTits():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //Clit
-private function shouldraGrowsYoClit():void {
+private  shouldraGrowsYoClit():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -992,7 +992,7 @@ private function shouldraGrowsYoClit():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //Cock
-private function shouldraCockBloating101():void {
+private  shouldraCockBloating101():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1010,7 +1010,7 @@ private function shouldraCockBloating101():void {
 	//MULTI
 	else {
 		outputText("Your bouquet of cocks twitches and thickens, each gaining more than an inch of new vibrance.  Shouldra wastes no time in grouping them together, your hands stroking them vigorously.  Knowing your inaction will strand you for the rest of the day, you're able to pry your haunted hands away from your crotch.");
-		for(var i:Number =0;i<player.cocks.length;i++) {
+		for(const i =0;i<player.cocks.length;i++) {
 			player.increaseCock(i, 2);
 			player.cocks[i].cockLength += 1;
 			player.cocks[i].cockThickness += .25;
@@ -1021,7 +1021,7 @@ private function shouldraCockBloating101():void {
 }
 
 //Nipples
-private function shouldraGivesYaSomeFukkinTeats():void {
+private  shouldraGivesYaSomeFukkinTeats():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1030,7 +1030,7 @@ private function shouldraGivesYaSomeFukkinTeats():void {
 	//same increase and potential for fuckable nipples as Gro+
 	player.nippleLength += (rand(2) + 3)/10;
 	dynStats("lus", 15);
-	var temp2:Number = 0;
+	var temp2:number = 0;
 	//NIPPLECUNTZZZ
 	if(!player.hasFuckableNipples() && rand(4) == 0) {
 		temp = player.breastRows.length;
@@ -1050,7 +1050,7 @@ private function shouldraGivesYaSomeFukkinTeats():void {
 }
 
 //Butt
-private function shouldrasButtBigginator():void {
+private  shouldrasButtBigginator():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1066,17 +1066,17 @@ private function shouldrasButtBigginator():void {
 //works same as Reducto
 //3 day / 72 hour cooldown between uses. Does not appear while on cooldown.
 //Selecting Shrink Bodypart
-private function shouldraReductoMenu():void {
+private  shouldraReductoMenu():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("Shouldra's offer to shrink aspects of your body sounds right up your alley, and you pulse as much to your ghostly compatriot.  There's no response.  You remind her that it was HER suggestion in the first place.  \"<i>Come ooooon, Champ.  It was just a slip of the ol' spiritual tongue.</i>\"  You cross your arms and look up and off to the side, the best way you can figure to glare at something that isn't there. \"<i>Ugh, fine.  Let's just get this over with,</i>\" Shouldra concedes, removing your [armor].");
 	//Balls     Breast     Clit     Cock     Nipples     Butt     Nevermind
-	var balls:Function = null;
-	var breasts:Function = null;
-	var clit:Function = null;
-	var cock:Function = null;
-	var butt:Function = null;
-	var nipples:Function = null;
+	var balls:() => void = null;
+	var breasts:() => void = null;
+	var clit:() => void = null;
+	var cock:() => void = null;
+	var butt:() => void = null;
+	var nipples:() => void = null;
 	if(player.nippleLength > .25) nipples = shrinkDemNipplzForYoGhost;
 	if(player.biggestTitSize() >= 1) breasts = shouldraReductosYourTits;
 	if(player.buttRating >= 2) butt = shrinkDatBootyForYoGhost;
@@ -1086,7 +1086,7 @@ private function shouldraReductoMenu():void {
 	choices("Balls", balls, "Breasts", breasts, "Clit", clit, "Cock", cock, "Nipples", nipples, "Butt", butt, "", null, "", null, "", null, "Back", shouldraTalkMenu);
 }
 //Balls
-private function shouldraReductosYourBallsUpInsideYa():void {
+private  shouldraReductosYourBallsUpInsideYa():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1099,7 +1099,7 @@ private function shouldraReductosYourBallsUpInsideYa():void {
 }
 
 //Breast
-private function shouldraReductosYourTits():void {
+private  shouldraReductosYourTits():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1109,7 +1109,7 @@ private function shouldraReductosYourTits():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //Clit
-private function clittyVanishingActShouldra():void {
+private  clittyVanishingActShouldra():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1122,14 +1122,14 @@ private function clittyVanishingActShouldra():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //Cock
-private function shouldraMakesCocksDisappear():void {
+private  shouldraMakesCocksDisappear():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
 	outputText("Your hands dart for your " + multiCockDescriptLight() + " as if to protect your poor masculinity.  \"<i>You're kidding, right?  You can't mean to rob me of my pride and joy!</i>\"  You remind Shouldra just whose dick she's talking about; the eidolon is getting a little too accustomed to your [if (cocks = 1) dick][if (cocks > 1) dicks].  \"<i>Please, Champ.  Not the dick...</i>\"  You slowly remove your hands from your crotch, asking the ghost to proceed.  She complies with a frustrated sigh and a rather perturbed incantation.");
 	if(player.cocks.length == 1) {
 		outputText("\n\nYour penis vibrates slightly as the magic starts to take effect.  Your eyes just about bulge out of your skull when your rod starts to smoke and twitch violently.  The panic immediately subsides when it starts yelling.  \"<i>You ");
-		var choice:Number = rand(10);
+		var choice:number = rand(10);
 		if(choice == 0) outputText("murderer");
 		else if(choice == 1) outputText("bastard");
 		else if(choice == 2) outputText("jerk");
@@ -1154,7 +1154,7 @@ private function shouldraMakesCocksDisappear():void {
 		if(player.cockTotal() > 5) outputText("\n\n\"<i>Are we a nuisance?  Please, [Master], there must be another way!</i>\" yet another one of your many cocks pleads.");
 		if(player.cockTotal() > 6) outputText("\n\nThe remainder of your plentiful penises are a sad mixture of crying and begging.");
 		outputText("\n\nThe cacophony of voices finally subside, your crotch finally settling down with each of your cocks at roughly two/thirds their original size.  A single tear rolls down your cheek; you suspect the melodramatic spirit is at fault here.");
-		for(var ii:Number =0;ii<player.cocks.length;ii++) {
+		for(const ii =0;ii<player.cocks.length;ii++) {
 			player.cocks[ii].cockLength  *= 2/3;
 			player.cocks[ii].cockThickness  *= 2/3;
 		}
@@ -1163,7 +1163,7 @@ private function shouldraMakesCocksDisappear():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //Nipples
-private function shrinkDemNipplzForYoGhost():void {
+private  shrinkDemNipplzForYoGhost():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1182,7 +1182,7 @@ private function shrinkDemNipplzForYoGhost():void {
 }
 
 //Butt
-private function shrinkDatBootyForYoGhost():void {
+private  shrinkDatBootyForYoGhost():void {
 	flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] = 72;
 	clearOutput();
 	spriteSelect(67);
@@ -1206,7 +1206,7 @@ private function shrinkDatBootyForYoGhost():void {
 
 
 //Want You (That Being Shouldra) Gone
-private function kickFollowerShouldraOut():void {
+private  kickFollowerShouldraOut():void {
 	clearOutput();
 	spriteSelect(67);
 	//PC says Shouldra's being a drag and they don't want to deal with her. She takes it well, as wanton spirits are want to do, unless you've already passed the fourth dream/talk with her. Then she's gonna FREAK. THE FUCK. OUT.
@@ -1227,7 +1227,7 @@ private function kickFollowerShouldraOut():void {
 }
 
 //if yes
-private function definitelyKickOutCrazyGhosts():void {
+private  definitelyKickOutCrazyGhosts():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("\"<i>What.</i>\"");
@@ -1239,7 +1239,7 @@ private function definitelyKickOutCrazyGhosts():void {
 }
 
 //Follower Shouldra - Ignoring Her
-public function shouldersWarnings():Boolean {
+public  shouldersWarnings():boolean {
 	//Requires hour counter to count time since last Shouldra scenes
 	//Warnings appear during scene transitions.
 	//Warning One
@@ -1286,7 +1286,7 @@ public function shouldersWarnings():Boolean {
 }
 
 //Ignored Shouldra goes to town on the PC
-public function nightTimeShouldraRapesThePC():void {
+public  nightTimeShouldraRapesThePC():void {
 	//does not trigger for genderless PCs, leaving them at +50 minimum lust until performing a scene with Shouldra (e.g. anal masturbation) or gaining a dick/pussy
 	//when PC goes to sleep after warning three without satisfying Shouldra
 	//resets Shouldra's sex hour counter, erases minimum lust bonuses
@@ -1351,7 +1351,7 @@ public function nightTimeShouldraRapesThePC():void {
 	doNext(edwardShouldraDickHandsPartII);
 }
 
-private function edwardShouldraDickHandsPartII():void {
+private  edwardShouldraDickHandsPartII():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You gasp awake, drenched in a cold sweat.  It... it is sweat, you confirm.  Shouldra rushes into your tent looking concerned, \"<i>What's wrong!</i>\"  Not bothering to question why the spirit was out milling about on her own, you hold up your right hand.  It's just a normal hand.  The concerned spirit kneels down and holds your hand, \"<i>Something wrong with your hand?</i>\"  You decide to keep your dream to yourself, not wanting to give Shouldra any-");
@@ -1369,11 +1369,11 @@ private function edwardShouldraDickHandsPartII():void {
 //1-2 days before the next message
 
 
-public function shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMakeThisFunctionNameQuestionMark():void {
+public  shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMakeThisFunctionNameQuestionMark():void {
 	outputText("\n");
 	spriteSelect(67);
-	var choices:Array = [];
-	var select:int;
+	var choices:any[] = [];
+	var select:number;
 	
 	//1 PC with cock - 1
 	if(player.hasCock() && player.biggestCockArea() < 200) {
@@ -1454,7 +1454,7 @@ public function shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMake
 	if(isHalloween()) choices[choices.length] = 22;
 	
 	select = choices[rand(choices.length)];
-	var subSelect:int = 0;
+	var subSelect:number = 0;
 	
 	switch(select) {
 		//PC with cock
@@ -1605,7 +1605,7 @@ public function shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMake
 //PC chooses between keeping worms or Shouldra
 //trigger works same as Exgartuan's worm cure
 //resets Shouldra hour timer if player keeps her
-private function shouldraAndWormsYoureGonnaHaveABadTime():void {
+private  shouldraAndWormsYoureGonnaHaveABadTime():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("Your eyes glow yellow, signaling Shouldra's desire to stretch around a little.  You grant her mastery over your hands as you continue about your business.  The eager phantom decides to push things a little, however, systematically removing your [armor].  A break isn't that big a deal you figure, and you relinquish full control to the giddy ghost.  She directs you out of plain view");
@@ -1624,7 +1624,7 @@ private function shouldraAndWormsYoureGonnaHaveABadTime():void {
 	simpleChoices("Keep Shouldra", kickOutWormiesForYourGhostPalPAL, "Keep Worms", kickOutShouldra4YoWormyBuddies, "", null, "", null, "", null);
 }
 //Keep Worms
-private function kickOutShouldra4YoWormyBuddies():void {
+private  kickOutShouldra4YoWormyBuddies():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("Shouldra is clear that there is no ally to be had in your crotch-dwelling creepies, shutting down any further attempts for negotiations.  Be it that you have taken a shining to the little invertebrates or that you've had enough of your judgemental companion, you decide that the worms will be staying, with or without Shouldra.");
@@ -1636,7 +1636,7 @@ private function kickOutShouldra4YoWormyBuddies():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 //Keep Shouldra
-private function kickOutWormiesForYourGhostPalPAL():void {
+private  kickOutWormiesForYourGhostPalPAL():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You concede to the paranormal plaintiff and agree to part with your parasitic companions, but under one condition: that she be the one to rid you of them.  Shouldra's happy to have won you over, but the prospect of having to deal with this issue doesn't sit well with her.  Your body trembles again as she focuses her attention back on your besieged dick.  A duo of worms are poking out from - they're quickly expelled with another violent shake.");
@@ -1656,7 +1656,7 @@ private function kickOutWormiesForYourGhostPalPAL():void {
 //Scenes unlock in succession, only occurs once
 //Keeping both spirit and demon unlock flavor text above.
 //Argue 1 - When going to bed
-public function shouldraAndExgartumonFightGottaCatchEmAll():void {
+public  shouldraAndExgartumonFightGottaCatchEmAll():void {
 	//40% chance to occur when player has both Shouldra and Cock Exgartuan and is going to sleep
 	//Unlocks Argue 2
 	spriteSelect(67);
@@ -1676,7 +1676,7 @@ public function shouldraAndExgartumonFightGottaCatchEmAll():void {
 }
 
 //Argue 2 - When out exploring
-public function exgartumonAndShouldraFightPartII():void {
+public  exgartumonAndShouldraFightPartII():void {
 	//unlocks after Argue 1
 	spriteSelect(67);
 	//40% chance to occur during scene transition
@@ -1686,7 +1686,7 @@ public function exgartumonAndShouldraFightPartII():void {
 	flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] = 2;
 }
 //Argue 3 - When out exploring again
-public function exgartumonAndShouldraFightPartIII():void {
+public  exgartumonAndShouldraFightPartIII():void {
 	//unlocks after Argue 2
 	spriteSelect(67);
 	//50% chance to occur during scene transition
@@ -1700,7 +1700,7 @@ public function exgartumonAndShouldraFightPartIII():void {
 }
 
 //Argue 4 - At bed, morning, time to decide
-public function exgartuMonAndShouldraShowdown():void {
+public  exgartuMonAndShouldraShowdown():void {
 	//unlocks after Argue 3
 	//75% chance to occur during sleep
 	//Time is 5:00
@@ -1722,7 +1722,7 @@ public function exgartuMonAndShouldraShowdown():void {
 	simpleChoices("Keep Exgartuan", keepExgartuanInsteadOfShouldra, "Keep Shouldra", keepShouldraAndKickOutExgartuan, "Keep Both", keepAllTheGhosts, "", null, "", null);
 }
 //Keep Exgartuan
-private function keepExgartuanInsteadOfShouldra():void {
+private  keepExgartuanInsteadOfShouldra():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("In no uncertain terms, you announce to your former paranormal partner that you're siding with the demon on this one.  [if (corruption > 75) \"He's just a better teammate to have when it comes to hot dickings.  \"]You place your hand around your [cock] as Exgartuan as he rubs up against you, approving of your decision.  Shouldra looks on in just complete disgust and confusion.");
@@ -1741,7 +1741,7 @@ private function keepExgartuanInsteadOfShouldra():void {
 	doNext(playerMenu);
 }
 //Keep Shouldra
-private function keepShouldraAndKickOutExgartuan():void {
+private  keepShouldraAndKickOutExgartuan():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You decide to jump to Shouldra's side on this one, explaining to your demonic cock your desire to go your separate ways.  Exgartuan heartily laughs at you, your [cock] wiggling in the air with each mighty heave.");
@@ -1772,7 +1772,7 @@ private function keepShouldraAndKickOutExgartuan():void {
 	doNext(playerMenu);
 }
 //Keeping Shouldra 2 - Exgartuan's back from the dead!
-public function keepShouldraPartIIExgartumonsUndeatH():void {
+public  keepShouldraPartIIExgartumonsUndeatH():void {
 	clearOutput();
 	spriteSelect(67);
 	//unlocks after previous scene.
@@ -1786,7 +1786,7 @@ public function keepShouldraPartIIExgartumonsUndeatH():void {
 	//[next page]
 	doNext(keepShouldraPartIIIExgartumonsUndeatH);
 }
-private function keepShouldraPartIIIExgartumonsUndeatH():void {
+private  keepShouldraPartIIIExgartumonsUndeatH():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("\"<i>Boo!</i>\"");
@@ -1797,7 +1797,7 @@ private function keepShouldraPartIIIExgartumonsUndeatH():void {
 }
 //Keep Both!"
 //earth elemental
-private function keepAllTheGhosts():void {
+private  keepAllTheGhosts():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("It blows your mind that these two can't get along.  You have no qualms with sharing your [cock] with all involved parties if they would just get along.  With everyone's attention finally in your possession, you explain to Exgartuan how useful Shouldra's magic could be to him.  Hopefully the demon will listen to reason so your loins will no longer be a contested battleground.");
@@ -1837,7 +1837,7 @@ private function keepAllTheGhosts():void {
 }
 
 //Intro
-public function shouldraBakeryIntro():void {
+public  shouldraBakeryIntro():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You set off towards the bakery, and it's not long before the smell of freshly-baked pastries and sugary candies wafts through the air.  Something stirs in your mind as a familiar ghostly presence makes herself known; seems you're not the only one who noticed the scent of cinnamon.");
@@ -1850,7 +1850,7 @@ public function shouldraBakeryIntro():void {
 }
 
 //Bail out (you pussy)
-private function bailOut():void {
+private  bailOut():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You quickly turn around and head back the way you came.  There's a moan of disappointment from Shouldra, before she settles down and goes back to doing whatever she usually does.  You try not to think about it as you leave the city and return to camp.");
@@ -1858,7 +1858,7 @@ private function bailOut():void {
 }
 
 //nter
-private function feedShouldraACake():void {
+private  feedShouldraACake():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You decide that there's no use getting cold feet now; you wanted to go the bakery anyway, no harm in letting Shouldra have some fun while you're there.  ");
@@ -1871,7 +1871,7 @@ private function feedShouldraACake():void {
 	simpleChoices("Maddie", shouldraAndMaddieSittingInATree, "", null, "", null, "", null, "", null);
 }
 
-private function shouldraAndMaddieSittingInATree():void {
+private  shouldraAndMaddieSittingInATree():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You soon reach the front of the queue and scour the menu.  Maddie is doing her best not to notice you, and is staring very intently at the ground.  You cough, causing her to jump.  \"<i>O-oh!  [name]!</i>\" She squeals, that weird cherry-red blush returning to her doughy face, \"<i>I, like, wasn't expecting you to come back after...  I mean, er...</i>\" The eclair girl stammers, pauses, then relaxes, her blush fading.  \"<i>Er, welcome to the Tel'Adre bakery, can I take your order?</i>\" Seems she's still embarrassed about last time.  You order something light to snack on, but the words have barely left your lips when a violent surge of spectral energy hits your mind.  Your face smirks in triumph as Shouldra takes control of your body, leaving you to watch helplessly.");
@@ -1886,7 +1886,7 @@ private function shouldraAndMaddieSittingInATree():void {
 	simpleChoices("Go Along", goAlongWIthShouldrasEatingSpree, "Resist", resistBeingAFatass, "", null, "", null, "", null);
 }
 //Go along with it
-private function goAlongWIthShouldrasEatingSpree():void {
+private  goAlongWIthShouldrasEatingSpree():void {
 	clearOutput();
 	spriteSelect(67);
 	//if repeat scene: 
@@ -1963,7 +1963,7 @@ private function goAlongWIthShouldrasEatingSpree():void {
 
 
 //Resist
-private function resistBeingAFatass():void {
+private  resistBeingAFatass():void {
 	clearOutput();
 	spriteSelect(67);
 	outputText("You quickly warn Shouldra that if you so much as feel a pound heavier, there'll be hell to pay.  The hand stops, then falls to the table in defeat.  \"<i>Okay, okay,</i>\" the spook mutters.  \"<i>But you know, there's still all of this food here...  Say,</i>\" she says, an impish grin spreading across your features, \"<i>You wanna keep your figure?  That's fine.</i>\" Your eyes scour the crowded tables, settling on a lonely girl in the corner, who is busy staring at her cookie and looking mournful.  \"<i>So let's let someone else suffer the consequences!</i>\" She cackles mentally as your mouth moves with ritual intonations.");
@@ -1991,4 +1991,4 @@ private function resistBeingAFatass():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 }
-}
+

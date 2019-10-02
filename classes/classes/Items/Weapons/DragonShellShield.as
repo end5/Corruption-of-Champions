@@ -1,20 +1,20 @@
 /**
  * Created by aimozg on 10.01.14.
  */
-package classes.Items.Weapons
-{
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.Weapon;
-	import classes.Player;
+ 
 
-	public class DragonShellShield extends Weapon {
+	 
+	 
+	 
+	 
+
+	export class DragonShellShield extends Weapon {
 		
-		public function DragonShellShield() {
+		public  constructor() {
 			super("DrgnShl", "DrgnShl", "dragon-shell shield", "a dragon-shell shield", "smack", 0, 1500, "A durable shield that has been forged from the remains of the dragon egg you found in the swamp.  Absorbs any fluid attacks you can catch, rendering them useless.", "Large");
 		}
 		
-		override public function useText():void { //Produces any text seen when equipping the armor normally
+		 public  useText():void { //Produces any text seen when equipping the armor normally
 			if (game.flags[kFLAGS.TIMES_EQUIPPED_EMBER_SHIELD] == 0) {
 				clearOutput();
 				outputText("Turning the sturdy shield over in inspection, you satisfy yourself as to its craftsmanship and adjust the straps to fit your arm snugly.  You try a few practice swings, but find yourself overbalancing at each one due to the deceptive lightness of the material.  Eventually, though, you pick up the knack of putting enough weight behind it to speed it through the air while thrusting a leg forward to stabilize yourself, and try bashing a nearby rock with it.  You smile with glee as ");
@@ -43,4 +43,4 @@ package classes.Items.Weapons
 		}
 */
 	}
-}
+

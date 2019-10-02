@@ -1,17 +1,17 @@
-package classes 
-{
+  
+
 	/**
 	 * ...
 	 * @author Yoffy
 	 */
-	public class Image 
+	export class Image 
 	{
-		private var _id:String;
-		private var _url:String
-		private var _width:int;
-		private var _height:int;		
+		private  _id:string;
+		private  _url:string
+		private  _width:number;
+		private  _height:number;		
 		
-		public function Image(id:String, url:String, w:int, h:int) 
+		public  constructor(id:string, url:string, w:number, h:number) 
 		{
 			_id = id;
 			_url = url;
@@ -19,26 +19,25 @@ package classes
 			_height = h;
 		}
 		
-		public function get id():String 
+		public  get id():string 
 		{
 			return _id;
 		}
 		
-		public function get url():String 
+		public  get url():string 
 		{
 			return _url;
 		}
 		
-		public function get width():int 
+		public  get width():number 
 		{
 			return _width;
 		}
 		
-		public function get height():int 
+		public  get height():number 
 		{
 			return _height;
 		}
 		
 	}
 
-}

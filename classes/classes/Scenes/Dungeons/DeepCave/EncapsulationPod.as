@@ -1,7 +1,7 @@
-﻿package classes.Scenes.Dungeons.DeepCave
-{
-	import classes.*;
-	import classes.internals.*;
+ 
+
+	 
+	 
 
 	/**
 	 * ...
@@ -12,22 +12,22 @@
 	// of the game leads the compiler to not know if setDescriptionForPlantPot() is available, therefore resulting in an error
 
 
-	public class EncapsulationPod extends Monster
+	export class EncapsulationPod extends Monster
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			game.encapsulationPodAI();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.encapsulationVictory();
 		}
 
-		override public function get long():String {
+		 public  get long():string {
 			//[Round 1 Description]
-			var _long:String;
+			var _long:string;
 			if(findStatusAffect(StatusAffects.Round) < 0) _long = "You're totally trapped inside a pod!  The walls are slimy and oozing moisture that makes the air sickeningly sweet.  It makes you feel a little dizzy.  Tentacles are climbing up your " + game.player.legs() + " towards your crotch, doing their best to get under you " + game.player.armorName + ".  There's too many to try to pull away.  Your only chance of escape is to create a way out!";
 			//[Round 2 Description]
 			else if(statusAffectv1(StatusAffects.Round) == 2) {
@@ -74,7 +74,7 @@
 			return _long;
 		}
 
-		public function EncapsulationPod()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "pod";
@@ -112,4 +112,3 @@
 
 	}
 
-}

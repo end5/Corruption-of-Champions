@@ -1,30 +1,30 @@
-package classes.Scenes.Dungeons.D3 
-{
-	import classes.Items.WeaponLib;
-	import classes.Monster;
-	import classes.StatusAffects;
-	import classes.PerkLib;
-	import classes.GlobalFlags.kFLAGS;
+  
+
+	 
+	 
+	 
+	 
+	 
 	
 	
 	/**
 	 * ...
 	 * @author Gedan
 	 */
-	public class LivingStatue extends Monster
+	export class LivingStatue extends Monster
 	{
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			flags[kFLAGS.D3_STATUE_DEFEATED] = 1;
 			game.d3.livingStatue.beatUpDaStatue(hpVictory);
 		}
 		
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.d3.livingStatue.fuckinMarbleOP(hpVictory, pcCameWorms);
 		}
 		
-		public function LivingStatue() 
+		public  constructor() 
 		{
 			this.a = "the ";
 			this.short = "living statue";
@@ -55,30 +55,30 @@ package classes.Scenes.Dungeons.D3
 			checkMonster();
 		}
 		
-		override protected function handleStun():Boolean
+		 protected  handleStun():boolean
 		{
 			game.outputText("The stone giant's unforgiving flesh seems incapable of being stunned.");
 			return true;
 		}
 		
-		override protected function handleFear():Boolean
+		 protected  handleFear():boolean
 		{
 			game.outputText("The stone giant cares little for your attempted intimidation.");
 			return true;
 		}
 		
-		override protected function handleBlind():Boolean
+		 protected  handleBlind():boolean
 		{
 			return true;
 		}
 		
-		private function concussiveBlow():void
+		private  concussiveBlow():void
 		{
 			//Maybe replace this with passive stun? TERRIBLE IDEA
 			outputText("The giant raises his hammer for an obvious downward strike. His marble muscles flex as he swings it downward. You're able to hop out of the way of the clearly telegraphed attack, but nothing could prepare you for the shockwave it emits as it craters the ground.");
 
 			//Light magic-type damage!
-			var damage:Number = (100 * ((inte/player.inte) / 4));
+			var damage:number = (100 * ((inte/player.inte) / 4));
 			damage = player.takeDamage(damage);
 			
 			//Stun success
@@ -96,7 +96,7 @@ package classes.Scenes.Dungeons.D3
 			outputText(" (" + damage + ")");
 		}
 		
-		private function dirtKick():void
+		private  dirtKick():void
 		{
 			outputText("The animated sculpture brings its right foot around, dragging it through the gardens at a high enough speed to tear a half score of bushes out by the root. A cloud of shrubbery and dirt washes over you!");
 			
@@ -113,12 +113,12 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function backhand():void
+		private  backhand():void
 		{
 			//Knocks you away and forces you to spend a turn running back to do melee attacks.
 			outputText("The marble golem's visage twists into a grimace of irritation, and it swings its hand at you in a vicious backhand.");
 	
-			var damage:Number = int ((str + weaponAttack) - rand(player.tou) - player.armorDef);
+			var damage:number = int ((str + weaponAttack) - rand(player.tou) - player.armorDef);
 			//Dodge
 			if (damage <= 0 || (combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect())) outputText(" You slide underneath the surprise swing!");
 			else
@@ -134,12 +134,12 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function overhandSmash():void
+		private  overhandSmash():void
 		{
 			//High damage, lowish accuracy.
 			outputText("Raising its hammer high overhead, the giant swiftly brings its hammer down in a punishing strike!");
 			
-			var damage:Number = 175 + int((str + weaponAttack) - rand(player.tou) - player.armorDef);
+			var damage:number = 175 + int((str + weaponAttack) - rand(player.tou) - player.armorDef);
 			if (damage <= 0 || rand(100) < 25 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) outputText(" You're able to sidestep it just in time.");
 			else
 			{
@@ -150,7 +150,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function disarm():void
+		private  disarm():void
 		{
 			outputText("The animated statue spins its hammer around, striking at your [weapon] with its haft.");
 	
@@ -169,12 +169,12 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		private function cycloneStrike():void
+		private  cycloneStrike():void
 		{
 			//Difficult to avoid, moderate damage.
 			outputText("Twisting back, the giant abruptly launches into a circular spin. Its hammer stays low enough to the ground that its circular path is tearing a swath of destruction through the once pristine garden, and it's coming in your direction!");
 
-			var damage:Number = (175 + int((str + weaponAttack) - rand(player.tou) - player.armorDef)) / (rand(3) + 2);
+			var damage:number = (175 + int((str + weaponAttack) - rand(player.tou) - player.armorDef)) / (rand(3) + 2);
 			//Avoid
 			if (damage <= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) outputText(" By the grace of the gods, you somehow avoid the spinning hammer.");
 			else
@@ -186,7 +186,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 		
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if (this.HPRatio() < 0.7 && this.findStatusAffect(StatusAffects.KnockedBack) < 0)
 			{
@@ -198,7 +198,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			else
 			{
-				var opts:Array = [];
+				var opts:any[] = [];
 				
 				if (player.findStatusAffect(StatusAffects.Blind) < 0 && player.findStatusAffect(StatusAffects.Stunned) < 0) opts.push(dirtKick);
 				if (player.findStatusAffect(StatusAffects.Blind) < 0 && player.findStatusAffect(StatusAffects.Stunned) < 0) opts.push(concussiveBlow);
@@ -214,4 +214,3 @@ package classes.Scenes.Dungeons.D3
 		
 	}
 
-}

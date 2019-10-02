@@ -1,12 +1,12 @@
-package classes.Scenes.Places.Farm
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
+ 
 
-	public class Kelt extends Monster
+	 
+	 
+
+	export class Kelt extends Monster
 	{
 		//Trample - once every five turns
-		private function keltTramplesJoo():void {
+		private  keltTramplesJoo():void {
 			outputText("Before you know what's what, Kelt is galloping toward you, kicking up a cloud of dust in his wake.  He's trying to trample you!  ");
 			//Miss:
 			if(combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
@@ -16,7 +16,7 @@ package classes.Scenes.Places.Farm
 			}
 
 			//Determine damage - str modified by enemy toughness!
-			var damage:int = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
+			var damage:number = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
 			if(damage > 0) damage = player.takeDamage(damage);
 
 			//Block:
@@ -32,7 +32,7 @@ package classes.Scenes.Places.Farm
 		}
 
 		//Arrow Attack
-		private function keltShootBow():void {
+		private  keltShootBow():void {
 			createStatusAffect(StatusAffects.BowCooldown,3,0,0,0);
 			outputText("Kelt knocks and fires an arrow almost faster than you can track.  He's lost none of his talent with a bow, even after everything you've put him through.  ");
 
@@ -43,7 +43,7 @@ package classes.Scenes.Places.Farm
 				return;
 			}
 
-			var damage:Number = 0;
+			var damage:number = 0;
 			damage = int((20 + str/3 + 100) + spe/3 - rand(player.tou) - player.armorDef);
 			if(damage < 0) damage = 0;
 			if(damage == 0) {
@@ -58,8 +58,8 @@ package classes.Scenes.Places.Farm
 		}
 
 		//Aura Arouse
-		private function KellyuraAttack():void {
-			var select:int = rand(3);
+		private  KellyuraAttack():void {
+			var select:number = rand(3);
 			//(1)
 			if(select == 0) outputText("Kelt flashes his cockiest smile and gestures downward.  \"<i>Did you forget why you're here, slut?  Taking me by surprise once doesn't make you any less of a whore.</i>\"");
 			//(2)
@@ -76,7 +76,7 @@ package classes.Scenes.Places.Farm
 
 		//Attacks as normal + daydream "attack"
 		//DayDream "Attack"
-		private function dayDreamKelly():void {
+		private  dayDreamKelly():void {
 			if(rand(2) == 0) outputText("Kelt pauses mid-draw, looking you up and down.  He licks his lips for a few moments before shaking his head to rouse himself from his lusty stupor.  He must miss the taste of your sperm.");
 			else outputText("Flaring 'his' nostrils, Kelt inhales deeply, his eyelids fluttering closed as he gives a rather lady-like moan.   His hands roam over his stiff nipples, tweaking them slightly before he recovers.");
 			lust += 5;
@@ -85,7 +85,7 @@ package classes.Scenes.Places.Farm
 
 
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if (statusAffectv1(StatusAffects.BowCooldown) > 0) {
 				addStatusValue(StatusAffects.BowCooldown, 1, -1);
@@ -95,19 +95,19 @@ package classes.Scenes.Places.Farm
 				if (rand(2) == 0 && flags[kFLAGS.KELT_BREAK_LEVEL] >= 2) dayDreamKelly();
 				else keltShootBow();
 			}
-			var select:int = rand(5);
+			var select:number = rand(5);
 			if (select <= 1) eAttack();
 			else if (select <= 3) KellyuraAttack();
 			else keltTramplesJoo();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			if(game.flags[kFLAGS.KELT_BREAK_LEVEL] == 1) game.farm.kelly.defeatKellyNDBREAKHIM();
 			else game.farm.kelly.breakingKeltNumeroThree();
 		}
 
-		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean,pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nKelt recoils for a moment before assuming a look of superiority...");
@@ -117,9 +117,9 @@ package classes.Scenes.Places.Farm
 			}
 		}
 
-		public function Kelt()
+		public  constructor()
 		{
-			var breakLevel2:Boolean = game.flags[kFLAGS.KELT_BREAK_LEVEL] == 2;
+			var breakLevel2:boolean = game.flags[kFLAGS.KELT_BREAK_LEVEL] == 2;
 			this.a = "";
 			this.short = "Kelt";
 			this.imageName = "kelt";
@@ -161,4 +161,3 @@ package classes.Scenes.Places.Farm
 		
 	}
 
-}

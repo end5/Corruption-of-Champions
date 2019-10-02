@@ -1,18 +1,18 @@
 /**
  * Created by aimozg on 09.01.14.
  */
-package classes.Items
-{
-	import classes.CoC_Settings;
-	import classes.Player;
+ 
+
+	 
+	 
 
 /**
 	 * An item, that is consumed by player, and disappears after use. Direct subclasses should override "doEffect" method
 	 * and NOT "useItem" method.
 	 */
-	public class Consumable extends Useable {
+	export class Consumable extends Useable {
 		
-		public function Consumable(id:String, shortName:String = null, longName:String = null, value:Number = 0, description:String = null) {
+		public  constructor(id:string, shortName:string = null, longName:string = null, value:number = 0, description:string = null) {
 			super(id, shortName, longName, value, description);
 		}
 		
@@ -46,4 +46,4 @@ package classes.Items
 		}
 */
 	}
-}
+

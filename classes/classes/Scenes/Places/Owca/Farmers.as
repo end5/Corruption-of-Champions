@@ -1,28 +1,28 @@
-package classes.Scenes.Places.Owca
-{
-	import classes.*;
+ 
 
-	public class Farmers extends Monster
+	 
+
+	export class Farmers extends Monster
 	{
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			createStatusAffect(StatusAffects.Attacks,4,0,0,0);
 			eAttack();
 			combatRoundOver();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.owca.beatUpOwca();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.owca.loseToOwca();
 		}
 
-		public function Farmers()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "farmers";
@@ -66,4 +66,3 @@ package classes.Scenes.Places.Owca
 		
 	}
 
-}

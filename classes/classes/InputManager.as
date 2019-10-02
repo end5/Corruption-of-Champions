@@ -1,21 +1,21 @@
-﻿package classes 
-{
-	import classes.display.BindingPane;
-	import coc.view.MainView;
-	import fl.controls.UIScrollBar;
-	import fl.containers.ScrollPane;
-	import flash.display.Stage;
-	import flash.events.Event;
-	import flash.events.KeyboardEvent;
-	import flash.text.TextField;
-	import flash.utils.ByteArray;
-	import flash.utils.Dictionary;
-	import flash.display.MovieClip;
-	import flash.utils.describeType;
-	import flash.ui.Keyboard;
-	import flash.utils.describeType;
-	import flash.utils.getDefinitionByName;
-	import flash.utils.getQualifiedClassName;
+  
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	
 	/**
 	 * Generic input manager
@@ -24,53 +24,53 @@
 	 * the game is currently in.
 	 * @author Gedan
 	 */
-	public class InputManager 
+	export class InputManager 
 	{
 		// Declaring some consts for clarity when using some of the InputManager methods
-		public static const PRIMARYKEY:Boolean = true;
-		public static const SECONDARYKEY:Boolean = false;
-		public static const NORMALCONTROL:Boolean = false;
-		public static const CHEATCONTROL:Boolean = true;
-		public static const UNBOUNDKEY:int = -1;
+		public static  PRIMARYKEY:boolean = true;
+		public static  SECONDARYKEY:boolean = false;
+		public static  NORMALCONTROL:boolean = false;
+		public static  CHEATCONTROL:boolean = true;
+		public static  UNBOUNDKEY:number = -1;
 		
-		private var _stage:Stage;
-		private var _debug:Boolean;
+		private  _stage:Stage;
+		private  _debug:boolean;
 
-		private var _defaultControlMethods:Object = new Object();
-		private var _defaultAvailableControlMethods:int = 0;
-		private var _defaultKeysToControlMethods:Object = new Object();
+		private  _defaultControlMethods:Record<string, any> = new Object();
+		private  _defaultAvailableControlMethods:number = 0;
+		private  _defaultKeysToControlMethods:Record<string, any> = new Object();
 		
 		// Basically, an associative list of Names -> Control Methods
-		private var _controlMethods:Object = new Object();
-		private var _availableControlMethods:int = 0;
+		private  _controlMethods:Record<string, any> = new Object();
+		private  _availableControlMethods:number = 0;
 
 		// A list of cheat control methods that we can throw incoming keycodes against at will
-		private var _cheatControlMethods:Array = new Array();
-		private var _availableCheatControlMethods:int = 0;
+		private  _cheatControlMethods:any[] = new Array();
+		private  _availableCheatControlMethods:number = 0;
 		
 		// The primary lookup method for finding what method an incoming keycode should belong too
 		// Sparse array of keyCode -> BoundControlMethod.Name, used to look into _controlMethods
-		private var _keysToControlMethods:Object = new Object();
+		private  _keysToControlMethods:Record<string, any> = new Object();
 		
 		// Visual shit
-		private var _mainView:MainView;
-		private var _mainText:TextField;
-		private var _mainTextScollBar:UIScrollBar;
+		private  _mainView:MainView;
+		private  _mainText:TextField;
+		private  _mainTextScollBar:UIScrollBar;
 		
 		// A new UI element that we can embed buttons into to facilitate key rebinding
-		private var _bindingPane:BindingPane;
+		private  _bindingPane:BindingPane;
 		
 		// A flag to determine if we're listening for keyCodes to execute, or keyCodes to bind a method against
-		private var _bindingMode:Boolean;
-		private var _bindingFunc:String;
-		private var _bindingSlot:Boolean;
+		private  _bindingMode:boolean;
+		private  _bindingFunc:string;
+		private  _bindingSlot:boolean;
 		
 		/**
 		 * Init the InputManager. Attach the keyboard event listener to the stage and prepare the subobjects for usage.
 		 * @param	stage	Reference to core stage on which to add display objects
 		 * @param	debug	Emit debugging trace statements
 		 */
-		public function InputManager(stage:Stage, debug:Boolean = true)
+		public  constructor(stage:Stage, debug:boolean = true)
 		{
 			_bindingMode = false;
 			_debug = debug;
@@ -97,11 +97,11 @@
 		 * 						callback function generated in BindingPane
 		 * @param	isPrimary	Specifies if the incoming bind will replace/set the primary or secondary bind for a control.
 		 */
-		public function ListenForNewBind(funcName:String, isPrimary:Boolean = true):void
+		public  ListenForNewBind(funcName:string, isPrimary:boolean = true):void
 		{
 			if (_debug)
 			{
-				var slot:String = "";
+				var slot:string = "";
 				
 				if (isPrimary)
 				{
@@ -130,7 +130,7 @@
 		/**
 		 * Mode toggle - return to normal keyboard event listening mechanics. Shows the binding display again.
 		 */
-		public function StopListenForNewBind():void
+		public  StopListenForNewBind():void
 		{
 			_bindingMode = false;
 			_mainView.showCurrentBottomButtons();
@@ -149,7 +149,7 @@
 		 * @param	func		A function object that defines the BoundControlMethods action
 		 * @param	isCheat		Differentiates between a cheat method (not displayed in the UI) and normal controls.
 		 */
-		public function AddBindableControl(name:String, desc:String, func:Function, isCheat:Boolean = false):void
+		public  AddBindableControl(name:string, desc:string, func:() => void, isCheat:boolean = false):void
 		{
 			if (isCheat)
 			{
@@ -167,9 +167,9 @@
 		 * @param	funcName	The name of the associated BoundControlMethod
 		 * @param	isPrimary	Specifies the primary or secondary binding slot
 		 */
-		public function BindKeyToControl(keyCode:int, funcName:String, isPrimary:Boolean = true):void
+		public  BindKeyToControl(keyCode:number, funcName:string, isPrimary:boolean = true):void
 		{
-			for (var key:String in _controlMethods)
+			for (const key in _controlMethods)
 			{
 				// Find the method we want to bind the incoming key to
 				if (funcName == key)
@@ -215,7 +215,7 @@
 		 * Remove an existing key from a BoundControlMethod, if present, and shuffle the remaining key as appropriate
 		 * @param	keyCode		The keycode to remove.
 		 */
-		public function RemoveExistingKeyBind(keyCode:int):void
+		public  RemoveExistingKeyBind(keyCode:number):void
 		{
 			// If the key is already bound to a method, remove it from that method
 			if (_keysToControlMethods[keyCode] != null)
@@ -236,7 +236,7 @@
 		 * The core event handler we attach to the stage to capture incoming keyboard events.
 		 * @param	e		KeyboardEvent data
 		 */
-		public function KeyHandler(e:KeyboardEvent):void
+		public  KeyHandler(e:KeyboardEvent):void
 		{
 			if (_debug) trace("Got key input " + e.keyCode);
 			
@@ -269,7 +269,7 @@
 		 * Execute the BoundControlMethod's wrapped function associated with the given KeyCode
 		 * @param	keyCode		The KeyCode for which we wish to execute the BoundControlMethod for.
 		 */
-		private function ExecuteKeyCode(keyCode:int):void
+		private  ExecuteKeyCode(keyCode:number):void
 		{
 			if (_keysToControlMethods[keyCode] != null)
 			{
@@ -278,7 +278,7 @@
 				_controlMethods[_keysToControlMethods[keyCode]].ExecFunc();
 			}
 			
-			for (var i:int = 0; i < _cheatControlMethods.length; i++)
+			for (const i = 0; i < _cheatControlMethods.length; i++)
 			{
 				_cheatControlMethods[i].ExecFunc(keyCode);
 			}
@@ -288,7 +288,7 @@
 		 * Hide the mainText object and scrollbar, ensure the binding ScrollPane is up to date with the latest
 		 * data and then show the binding scrollpane.
 		 */
-		public function DisplayBindingPane():void
+		public  DisplayBindingPane():void
 		{
 			_mainText.visible = false;
 			_mainTextScollBar.visible = false;
@@ -302,7 +302,7 @@
 		/**
 		 * Hide the binding ScrollPane, and re-display the mainText object + Scrollbar.
 		 */
-		public function HideBindingPane():void
+		public  HideBindingPane():void
 		{
 			_mainText.visible = true;
 			_mainTextScollBar.visible = true;
@@ -313,9 +313,9 @@
 		 * Register the current methods, and their associated bindings, as the defaults.
 		 * TODO: Finish this shit off
 		 */
-		public function RegisterDefaults():void
+		public  RegisterDefaults():void
 		{
-			for (var key:String in _controlMethods)
+			for (const key in _controlMethods)
 			{
 				_defaultControlMethods[key] = new BoundControlMethod(
 					_controlMethods[key].Func,
@@ -327,7 +327,7 @@
 			}
 			
 			// Elbullshito mode -- 126 is the maximum keycode in as3 we're likely to see
-			for (var i:int = 0; i <= 126; i++)
+			for (const i = 0; i <= 126; i++)
 			{
 				if (_keysToControlMethods[i] != undefined)
 				{
@@ -339,9 +339,9 @@
 		/**
 		 * Reset the bound keys to the defaults previously registered.
 		 */
-		public function ResetToDefaults():void
+		public  ResetToDefaults():void
 		{
-			for (var key:String in _controlMethods)
+			for (const key in _controlMethods)
 			{
 				_controlMethods[key] = new BoundControlMethod(
 					_defaultControlMethods[key].Func,
@@ -353,7 +353,7 @@
 			}
 			
 			// Elbullshito mode -- 126 is the maximum keycode in as3 we're likely to see
-			for (var i:int = 0; i <= 126; i++)
+			for (const i = 0; i <= 126; i++)
 			{
 				if (_defaultKeysToControlMethods[i] != undefined)
 				{
@@ -366,11 +366,11 @@
 		 * Get an array of the available functions.
 		 * @return	Array of available BoundControlMethods.
 		 */
-		public function GetAvailableFunctions():Array
+		public  GetAvailableFunctions():any[]
 		{
-			var funcs:Array = new Array();
+			var funcs:any[] = new Array();
 			
-			for (var key:String in _controlMethods)
+			for (const key in _controlMethods)
 			{
 				if (_debug) trace(key);
 				funcs.push(_controlMethods[key]);
@@ -385,10 +385,10 @@
 		 * Get an array of the currently active keyCodes.
 		 * @return	Array of active keycodes.
 		 */
-		public function GetControlMethods():Array
+		public  GetControlMethods():any[]
 		{
-			var buttons:Array = new Array();
-			for (var key:* in _keysToControlMethods)
+			var buttons:any[] = new Array();
+			for (const key* in _keysToControlMethods)
 			{
 				buttons.push(key);
 			}
@@ -399,9 +399,9 @@
 		/**
 		 * Clear all currently bound keys.
 		 */
-		public function ClearAllBinds():void
+		public  ClearAllBinds():void
 		{
-			for (var key:String in _controlMethods)
+			for (const key in _controlMethods)
 			{
 				_controlMethods[key].PrimaryKey = InputManager.UNBOUNDKEY;
 				_controlMethods[key].SecondaryKey = InputManager.UNBOUNDKEY;
@@ -414,14 +414,14 @@
 		 * Load bindings from a source "Object" retrieved from a game save file.
 		 * @param	source	Source object to enumerate for binding data.
 		 */
-		public function LoadBindsFromObj(source:Object):void
+		public  LoadBindsFromObj(source:Record<string, any>):void
 		{
 			this.ClearAllBinds();
 			
-			for (var key:String in source)
+			for (const key in source)
 			{
-				var pKeyCode:int = source[key].PrimaryKey;
-				var sKeyCode:int = source[key].SecondaryKey;
+				var pKeyCode:number = source[key].PrimaryKey;
+				var sKeyCode:number = source[key].SecondaryKey;
 				
 				if (pKeyCode != InputManager.UNBOUNDKEY)
 				{
@@ -439,14 +439,14 @@
 		 * Create an associative object that can serialise the bindings to the users save file.
 		 * @return	Dynamic object of control bindings.
 		 */
-		public function SaveBindsToObj():Object
+		public  SaveBindsToObj():Record<string, any>
 		{
-			var controls:Object = new Object();
+			var controls:Record<string, any> = new Object();
 			
-			for (var key:String in _controlMethods)
+			for (const key in _controlMethods)
 			{
 				if (_debug) trace(key);
-				var ctrlObj:* = new Object();
+				var ctrlObj:any = new Object();
 				ctrlObj.PrimaryKey = _controlMethods[key].PrimaryKey;
 				ctrlObj.SecondaryKey = _controlMethods[key].SecondaryKey;
 				
@@ -509,4 +509,3 @@
 	 * 
 	 * 68	-- ???				-- ??? Unknown, theres a conditional check for the button, but no code is ever executed
 	 */
-}

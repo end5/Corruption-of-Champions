@@ -1,26 +1,26 @@
-package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class Anemone extends Monster
+	 
+	 
+
+	export class Anemone extends Monster
 	{
 
 
-		override public function eAttack():void
+		 public  eAttack():void
 		{
 			outputText("Giggling playfully, the anemone launches several tentacles at you.  Most are aimed for your crotch, but a few attempt to caress your chest and face.\n", false);
 			super.eAttack();
 		}
 
-		override public function eOneAttack():int
+		 public  eOneAttack():number
 		{
 			applyVenom(rand(4 + player.sens / 20) + 1);
 			return 1;
 		}
 
 		//Apply the effects of AnemoneVenom()
-		public function applyVenom(str:Number = 1):void
+		public  applyVenom(str:number = 1):void
 		{
 			//First application
 			if (player.findStatusAffect(StatusAffects.AnemoneVenom) < 0) player.createStatusAffect(StatusAffects.AnemoneVenom, 0, 0, 0, 0);
@@ -55,12 +55,12 @@ package classes.Scenes.NPCs
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.anemoneScene.defeatAnemone();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nYour foe doesn't seem to mind at all...");
@@ -70,12 +70,12 @@ package classes.Scenes.NPCs
 			}
 		}
 
-		override public function outputAttack(damage:int):void
+		 public  outputAttack(damage:number):void
 		{
 			outputText("You jink and dodge valiantly but the tentacles are too numerous and coming from too many directions.  A few get past your guard and caress your skin, leaving a tingling, warm sensation that arouses you further.", false);
 		}
 
-		public function Anemone()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "anemone";
@@ -114,4 +114,3 @@ package classes.Scenes.NPCs
 		
 	}
 
-}

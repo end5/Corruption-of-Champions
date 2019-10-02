@@ -1,14 +1,14 @@
 /**
  * Created by aimozg on 03.01.14.
  */
-package classes.Scenes.Monsters
-{
-	import classes.*;
-	import classes.GlobalFlags.kGAMECLASS;
+ 
 
-	public class GoblinScene extends BaseContent
+	 
+	 
+
+	export class GoblinScene extends BaseContent
 	{
-		public function GoblinScene()
+		public  constructor()
 		{
 		}
 
@@ -41,7 +41,7 @@ package classes.Scenes.Monsters
 		 Dressed in leather straps that support her chest (in a lewd way) while leaving her pierced nipples exposed and slightly parting her ass to expose her pucker & femmy funbits.  Pierced pointed ears.
 		 */
 //RAEP TEXT 1
-		public function goblinRapesPlayer():void
+		public  goblinRapesPlayer():void
 		{
 			spriteSelect(24);
 			outputText("", true);
@@ -194,7 +194,7 @@ package classes.Scenes.Monsters
 		}
 
 //[WIN RAEPZ]
-		public function gobboRapeIntro():void
+		public  gobboRapeIntro():void
 		{
 			spriteSelect(24);
 			outputText("", true);
@@ -210,15 +210,15 @@ package classes.Scenes.Monsters
 				cleanupAfterCombat();
 				return;
 			}
-			var buttseks:Function =null;
-			var feeder:Function =null;
-			var fitsFuck:Function =null;
-			var tooBig:Function =null;
-			var corruptTooBig:Function =null;
-			var cuntFuck:Function =null;
-			var spiderCondom:Function =null;
-			var jog:Function =null;
-			var eggs:Function =null;
+			var buttseks:() => void =null;
+			var feeder:() => void =null;
+			var fitsFuck:() => void =null;
+			var tooBig:() => void =null;
+			var corruptTooBig:() => void =null;
+			var cuntFuck:() => void =null;
+			var spiderCondom:() => void =null;
+			var jog:() => void =null;
+			var eggs:() => void =null;
 			if (player.canOvipositSpider()) {
 				eggs = laySomeDriderEggsInGobboTwat;
 			}
@@ -261,7 +261,7 @@ package classes.Scenes.Monsters
 			}
 			else cleanupAfterCombat();
 		}
-		private function giveGoblinAMilkMustache():void {
+		private  giveGoblinAMilkMustache():void {
 			outputText("", true);
 			outputText("You slowly walk up to the downed goblin, gently telling her that everything will be all right now. She looks at you a bit incredulously and spreads her legs, obviously hoping that you will satisfy the urges that she has. You shake your head at her and instead cup your hands under your " + biggestBreastSizeDescript() + " and tell her that it's feeding time. The goblin looks at you annoyed and says, \"<i>I don't want your breasts! I want your naughty bits!</i>\" You laugh at her and grab her arms, pulling them behind her head.\n\n", false);
 
@@ -275,10 +275,10 @@ package classes.Scenes.Monsters
 			player.changeStatusValue(StatusAffects.Feeder,2,0);
 			cleanupAfterCombat();
 		}
-		private function gobboButtSecks():void
+		private  gobboButtSecks():void
 		{
 			spriteSelect(24);
-			var x:Number = player.cockThatFits(monster.analCapacity());
+			var x:number = player.cockThatFits(monster.analCapacity());
 			if (x < 0) x = 0;
 			outputText("", true);
 			outputText(images.showImage("goblin-win-male-buttsex"));
@@ -302,7 +302,7 @@ package classes.Scenes.Monsters
 		}
 
 //[FEMSAUCE]
-		private function gobboGetsRapedFem():void
+		private  gobboGetsRapedFem():void
 		{
 			spriteSelect(24);
 			outputText("", true);
@@ -411,9 +411,9 @@ package classes.Scenes.Monsters
 		}
 
 //Corrupt too big fuck
-		private function rapeAGoblinCorruptTooBig():void
+		private  rapeAGoblinCorruptTooBig():void
 		{
-			var x:Number = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			outputText("", true);
 			spriteSelect(24);
 			outputText(images.showImage("goblin-win-male-corruptedfuck"));
@@ -490,11 +490,11 @@ package classes.Scenes.Monsters
 		}
 
 //(TOO BIG – pin the bitch to the ground with your cock, coat it in her potions, and make her lick it clean, then blow your load in her mouth, possible cum inflation.)
-		private function manRapesGoblinTooBig():void
+		private  manRapesGoblinTooBig():void
 		{
 			outputText("", true);
 			outputText(images.showImage("goblin-win-male-corruptedbj"));
-			var x:Number = player.biggestCockIndex();
+			var x:number = player.biggestCockIndex();
 			spriteSelect(24);
 			outputText("You whip out your stiffening maleness, revealing its ", false);
 			if (player.cockArea(x) < 80) outputText("nearly ", false);
@@ -527,10 +527,10 @@ package classes.Scenes.Monsters
 		}
 
 //[DUDEGASM]
-		private function gobboGetsRapedMaleFits():void
+		private  gobboGetsRapedMaleFits():void
 		{
 			spriteSelect(24);
-			var x:Number = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			if (x < 0) x = player.biggestCockIndex();
 			outputText("", true);
 			outputText(images.showImage("goblin-win-male-getridden"));
@@ -608,10 +608,10 @@ package classes.Scenes.Monsters
 
 
 //Spider goblin condom
-		private function goblinCondomed():void
+		private  goblinCondomed():void
 		{
 			spriteSelect(24);
-			var x:Number = player.cockThatFits(monster.vaginalCapacity());
+			var x:number = player.cockThatFits(monster.vaginalCapacity());
 			outputText("", true);
 			outputText(images.showImage("goblin-win-male-goblincondomed"));
 			outputText("Defeated, the goblin girl's knees give out and she sinks backward, lying on her back with her emerald ankles suspended above her head. \"Use me,\" she begs, \"humiliate, degrade, and debase me! Just, whatever you do, fill me!\" As you strip off your " + player.armorName + ", she spreads her legs as wide as she can, the wanton girl presenting her drooling pussy to you, puffy green lips already dripping with beads of anxious sweat and eager lubrication. She wiggles in the dirt, gripping her plump rear with both hands and lifting her ass into the air for you, hopefully. You can practically feel the heat pouring off the small slut's cum-hungry cunt, her breeding-fever leaving her eyes glassy and unfocused. Standing over her, it's clear that the only things she's even aware of are the pulsing pussy between her legs and your burgeoning erection.\n\n", false);
@@ -636,10 +636,10 @@ package classes.Scenes.Monsters
 		}
 
 //REQUIRES: AT LEAST ONE DICK AND A COPY OF ATLAS SHRUGGED - MUST NOT BE MONSTROUSLY HUGE
-		private function gatsGoblinBoners():void
+		private  gatsGoblinBoners():void
 		{
 			outputText("", true);
-			var x:Number = player.cockThatFits(monster.analCapacity());
+			var x:number = player.cockThatFits(monster.analCapacity());
 			if (x < 0) x = player.smallestCockIndex();
 			outputText(images.showImage("goblin-win-male-goblinboners"));
 			outputText("The goblin lies strewn across the ground upon her stomach, exhausted from the battle. Her plump legs are unintentionally spread open while her ass pokes up into the air, giving you a clear view of her wet pussy as she tries to get herself off.  It seems as if the green-skinned slut has already forgotten about you - too many fruitless encounters might've caused her to give up hope on finding a virile specimen to pump her full of cum.\n\n", false);
@@ -678,7 +678,7 @@ package classes.Scenes.Monsters
 			cleanupAfterCombat();
 		}
 
-		private function laySomeDriderEggsInGobboTwat():void
+		private  laySomeDriderEggsInGobboTwat():void
 		{
 			clearOutput();
 			outputText(images.showImage("goblin-win-drider-egged"));
@@ -725,4 +725,4 @@ package classes.Scenes.Monsters
 			cleanupAfterCombat();
 		}
 	}
-}
+

@@ -1,12 +1,12 @@
-﻿package classes.Scenes.Areas.Forest
-{
-	import classes.*;
-	import classes.GlobalFlags.*;
-	import classes.internals.WeightedDrop;
+ 
 
-	public class BeeGirl extends Monster {
+	 
+	 
+	 
 
-		override public function defeated(hpVictory:Boolean):void {
+	export class BeeGirl extends Monster {
+
+		 public  defeated(hpVictory:boolean):void {
 			clearOutput();
 			if (player.gender > 0) {
 				if (hpVictory) {
@@ -17,8 +17,8 @@
 				}
 				player.lust = 98;
 				game.dynStats("lus", 1);
-				var dildoRape:Function = (player.hasKeyItem("Deluxe Dildo") >= 0 ? game.forest.beeGirlScene.beeGirlsGetsDildoed : null);
-				var milkAndHoney:Function = (player.findStatusAffect(StatusAffects.Feeder) >= 0 ? game.forest.beeGirlScene.milkAndHoneyAreKindaFunny : null);
+				var dildoRape:() => void = (player.hasKeyItem("Deluxe Dildo") >= 0 ? game.forest.beeGirlScene.beeGirlsGetsDildoed : null);
+				var milkAndHoney:() => void = (player.findStatusAffect(StatusAffects.Feeder) >= 0 ? game.forest.beeGirlScene.milkAndHoneyAreKindaFunny : null);
 				game.simpleChoices("Rape", game.forest.beeGirlScene.rapeTheBeeGirl, "Dildo Rape", dildoRape, "", null, "B. Feed", milkAndHoney, "Leave", leaveAfterDefeating);
 			}
 			else if (player.findStatusAffect(StatusAffects.Feeder) >= 0) { //Genderless can still breastfeed
@@ -35,7 +35,7 @@
             }
 		}
 		
-		private function leaveAfterDefeating():void {
+		private  leaveAfterDefeating():void {
 			if (HP < 1) {
 				flags[kFLAGS.BEE_GIRL_COMBAT_WINS_WITHOUT_RAPE]++; //This only happens if you beat her up and then don't rape her
 			}
@@ -45,7 +45,7 @@
 			game.cleanupAfterCombat();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms) {
 				outputText("\n\nThe bee-girl goes white and backs away with a disgusted look on her face.\n\n");
@@ -56,7 +56,7 @@
 			}
 		}
 		
-		private function beeStingAttack():void {
+		private  beeStingAttack():void {
 			//Blind dodge change
 			if (findStatusAffect(StatusAffects.Blind) >= 0) {
 				outputText(capitalA + short + " completely misses you with a blind sting!!");
@@ -98,7 +98,7 @@
 			//Paralise the other 50%!
 			else {
 				outputText("Searing pain lances through you as " + a + short + " manages to sting you!  You stagger back a step and nearly trip, finding it hard to move yourself.");
-				var paralyzeIndex:int = player.findStatusAffect(StatusAffects.ParalyzeVenom);
+				var paralyzeIndex:number = player.findStatusAffect(StatusAffects.ParalyzeVenom);
 				if (paralyzeIndex >= 0) {
 					player.statusAffect(paralyzeIndex).value1 += 2.9; //v1 - strenght penalty, v2 speed penalty
 					player.statusAffect(paralyzeIndex).value2 += 2.9;
@@ -116,7 +116,7 @@
 			else doNext(game.playerMenu);
 		}
 
-		public function BeeGirl()
+		public  constructor()
 		{
 			super();
 			this.a = "a ";
@@ -156,4 +156,4 @@
 
 	}
 
-}
+

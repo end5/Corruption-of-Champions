@@ -1,16 +1,16 @@
-package classes.Scenes.Areas.HighMountains
-{
-	import classes.*;
-	import classes.internals.ChainedDrop;
+ 
+
+	 
+	 
 
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class Basilisk extends Monster 
+	export class Basilisk extends Monster 
 	{
 
-		public static function basiliskSpeed(player:Player,amount:Number = 0):void {
+		public static  basiliskSpeed(player:Player,amount:number = 0):void {
 			if(player.spe - amount < 1) {
 				amount = player.spe - 1;
 				if(amount < 0) amount = 0;
@@ -26,7 +26,7 @@ package classes.Scenes.Areas.HighMountains
 		//special 1: basilisk mental compulsion attack
 		//(Check vs. Intelligence/Sensitivity, loss = recurrent speed loss each
 		//round, one time lust increase):
-		private function compulsion():void {
+		private  compulsion():void {
 			outputText("The basilisk opens its mouth and, staring at you, utters words in its strange, dry, sibilant tongue.  The sounds bore into your mind, working and buzzing at the edges of your resolve, suggesting, compelling, then demanding you look into the basilisk's eyes.  ", false);
 			//Success:
 			if(player.inte/5 + rand(20) < 24) {
@@ -46,8 +46,8 @@ package classes.Scenes.Areas.HighMountains
 
 
 		//Special 3: basilisk tail swipe (Small physical damage):
-		private function basiliskTailSwipe():void {
-			var damage:Number = int((str + 20) - Math.random()*(player.tou+player.armorDef));
+		private  basiliskTailSwipe():void {
+			var damage:number = int((str + 20) - Math.random()*(player.tou+player.armorDef));
 			damage = player.takeDamage(damage);
 			outputText("The basilisk suddenly whips its tail at you, swiping your " + player.feet() + " from under you!  You quickly stagger upright, being sure to hold the creature's feet in your vision. (" + damage + ")", false);
 			if(damage == 0) outputText("  The fall didn't harm you at all.", false);
@@ -57,19 +57,19 @@ package classes.Scenes.Areas.HighMountains
 		//basilisk physical attack: With lightning speed, the basilisk slashes you with its index claws!
 		//Noun: claw
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if(player.findStatusAffect(StatusAffects.BasiliskCompulsion) < 0 && rand(3) == 0 && findStatusAffect(StatusAffects.Blind) < 0) compulsion();
 			else if(rand(3) == 0) basiliskTailSwipe();
 			else eAttack();
 		}
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.highMountains.basiliskScene.defeatBasilisk();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if (pcCameWorms){
 				outputText("\n\nThe basilisk smirks, but waits for you to finish...");
@@ -79,7 +79,7 @@ package classes.Scenes.Areas.HighMountains
 			}
 		}
 
-		public function Basilisk()
+		public  constructor()
 		{
 			this.a = "the ";
 			this.short = "basilisk";
@@ -125,4 +125,3 @@ package classes.Scenes.Areas.HighMountains
 		
 	}
 
-}

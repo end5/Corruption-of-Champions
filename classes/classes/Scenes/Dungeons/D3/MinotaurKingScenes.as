@@ -1,20 +1,20 @@
-package classes.Scenes.Dungeons.D3
-{
-	import classes.BaseContent;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Appearance;
-	import classes.StatusAffects;
-	import classes.PerkLib;
-	import classes.Items.WeaponLib;
+ 
 
-	public class MinotaurKingScenes extends BaseContent
+	 
+	 
+	 
+	 
+	 
+	 
+
+	export class MinotaurKingScenes extends BaseContent
 	{
-		public function MinotaurKingScenes()
+		public  constructor()
 		{
 
 		}
 
-		public function encounterMinotaurKing():void
+		public  encounterMinotaurKing():void
 		{
 			clearOutput();
 
@@ -35,7 +35,7 @@ package classes.Scenes.Dungeons.D3
 			startCombat(new MinotaurKing());
 		}
 
-		public function theKingIsDeadLongLiveTheKing(hpVictory:Boolean):void
+		public  theKingIsDeadLongLiveTheKing(hpVictory:boolean):void
 		{
 			flags[kFLAGS.MINOTAURKING_DEFEATED] = 1;
 			
@@ -49,8 +49,8 @@ package classes.Scenes.Dungeons.D3
 			menu();
 			addButton(0, "Kill Them", murderhobo);
 
-			var smallCockIdx:int = -1;
-			for (var i:int = 0; i < player.cocks.length; i++)
+			var smallCockIdx:number = -1;
+			for (const i = 0; i < player.cocks.length; i++)
 			{
 				if (player.cocks[i].cockLength <= 12)
 				{
@@ -70,7 +70,7 @@ package classes.Scenes.Dungeons.D3
 			if (player.hasVagina()) addButton(5, "Ride Him", mechanicalbullhue);
 		}
 	
-		private function murderhobo():void
+		private  murderhobo():void
 		{
 			flags[kFLAGS.MINOTAURKING_KILLED] = 1;
 			clearOutput();
@@ -78,7 +78,7 @@ package classes.Scenes.Dungeons.D3
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 
-		private function dockucocku(cockIdx:int):void
+		private  dockucocku(cockIdx:number):void
 		{
 			flags[kFLAGS.MINOTAURKING_FUCKED] = 1;
 			
@@ -127,7 +127,7 @@ package classes.Scenes.Dungeons.D3
 			}
 		}
 
-		private function dockucockuknotu(cockIdx:int):void
+		private  dockucockuknotu(cockIdx:number):void
 		{
 			clearOutput();
 
@@ -141,7 +141,7 @@ package classes.Scenes.Dungeons.D3
 			getGame().gameOver();
 		}
 	
-		private function buttufucku():void
+		private  buttufucku():void
 		{
 			flags[kFLAGS.MINOTAURKING_FUCKED] = 1;
 			clearOutput();
@@ -199,7 +199,7 @@ package classes.Scenes.Dungeons.D3
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 
-		private function mechanicalbullhue():void
+		private  mechanicalbullhue():void
 		{
 			flags[kFLAGS.MINOTAURKING_FUCKED] = 1;
 			
@@ -294,7 +294,7 @@ package classes.Scenes.Dungeons.D3
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 
-		private function titfuckCowslut():void
+		private  titfuckCowslut():void
 		{
 			flags[kFLAGS.MINOTAURKINGSSLUT_FUCKED] = 1;
 			
@@ -327,13 +327,13 @@ package classes.Scenes.Dungeons.D3
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 
-		private function sloppySeconds():void
+		private  sloppySeconds():void
 		{
 			flags[kFLAGS.MINOTAURKINGSSLUT_FUCKED] = 1;
 			
 			clearOutput();
 
-			var x:int = player.biggestCockIndex() + 1;
+			var x:number = player.biggestCockIndex() + 1;
 
 			outputText("Why resort to making use of the brutal minotaur when there’s a puddle of wet trollop so close at hand? It’s a good thing that all the spunk leaking from between her legs actually smells");
 			if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0) outputText(" wonderful");
@@ -381,7 +381,7 @@ package classes.Scenes.Dungeons.D3
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 		
-		public function hailToTheKingBaby(hpVictory:Boolean, pcCameWorms:Boolean):void
+		public  hailToTheKingBaby(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			clearOutput();
 
@@ -432,7 +432,7 @@ package classes.Scenes.Dungeons.D3
 			addButton(0, "Next", gurglegurgle);
 		}
 
-		private function gurglegurgle():void
+		private  gurglegurgle():void
 		{
 			clearOutput();
 
@@ -444,7 +444,7 @@ package classes.Scenes.Dungeons.D3
 			getGame().gameOver();
 		}
 
-		private function leavethem():void
+		private  leavethem():void
 		{
 			flags[kFLAGS.MINOTAURKING_ALIVE] = 1;
 			clearOutput();
@@ -462,4 +462,3 @@ package classes.Scenes.Dungeons.D3
 			cleanupAfterCombat(getGame().d3.resumeFromFight);
 		}
 	}
-}

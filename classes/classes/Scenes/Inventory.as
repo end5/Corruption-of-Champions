@@ -1,48 +1,48 @@
-﻿/**
+/**
  * Created by aimozg on 12.01.14.
  */
-package classes.Scenes
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.Armor;
-	import classes.Items.Useable;
-	import classes.Items.Weapon;
-	import classes.Items.WeaponLib;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
-	public class Inventory extends BaseContent {
-		private static const inventorySlotName:Array = ["first", "second", "third", "fourth", "fifth"];
+	  ;
+
+	export class Inventory extends BaseContent {
+		private static  inventorySlotName:any[] = ["first", "second", "third", "fourth", "fifth"];
 		
-		private var itemStorage:Array;
-		private var gearStorage:Array;
-		private var callNext:Function;		//These are used so that we know what has to happen once the player finishes with an item
-		private var callOnAbandon:Function;	//They simplify dealing with items that have a sub menu. Set in inventoryMenu and in takeItem
-		private var currentItemSlot:ItemSlotClass;	//The slot previously occupied by the current item - only needed for stashes and items with a sub menu.
+		private  itemStorage:any[];
+		private  gearStorage:any[];
+		private  callNext:() => void;		//These are used so that we know what has to happen once the player finishes with an item
+		private  callOnAbandon:() => void;	//They simplify dealing with items that have a sub menu. Set in inventoryMenu and in takeItem
+		private  currentItemSlot:ItemSlotClass;	//The slot previously occupied by the current item - only needed for stashes and items with a sub menu.
 		
-		public function Inventory(saveSystem:Saves) {
+		public  constructor(saveSystem:Saves) {
 			itemStorage = [];
 			gearStorage = [];
 			saveSystem.linkToInventory(itemStorageDirectGet, gearStorageDirectGet);
 		}
 		
-		public function showStash():Boolean {
+		public  showStash():boolean {
 			return flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] > 0 || itemStorage.length > 0 || flags[kFLAGS.ANEMONE_KID] > 0;
 		}
 		
-		private function itemStorageDirectGet():Array { return itemStorage; }
+		private  itemStorageDirectGet():any[] { return itemStorage; }
 		
-		private function gearStorageDirectGet():Array { return gearStorage; }
+		private  gearStorageDirectGet():any[] { return gearStorage; }
 		
 //		public function currentCallNext():Function { return callNext; }
 		
-		public function itemGoNext():void { if (callNext != null) doNext(callNext); }
+		public  itemGoNext():void { if (callNext != null) doNext(callNext); }
 		
-		public function inventoryMenu():void {
-			var x:int;
-			var foundItem:Boolean = false;
+		public  inventoryMenu():void {
+			var x:number;
+			var foundItem:boolean = false;
 			if (getGame().inCombat) {
 				callNext = inventoryCombatHandler; //Player will return to combat after item use
 			}
@@ -104,7 +104,7 @@ package classes.Scenes
 //Gone			menuLoc = 1;
 		}
 		
-		public function stash():void {
+		public  stash():void {
 			/*Hacked in cheat to enable shit
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] = 1;
 			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] = 1;*/
@@ -138,7 +138,7 @@ package classes.Scenes
 			addButton(9, "Back", playerMenu);
 		}
 			
-		public function takeItem(itype:ItemType, nextAction:Function, overrideAbandon:Function = null, source:ItemSlotClass = null):void {
+		public  takeItem(itype:ItemType, nextAction:() => void, overrideAbandon:() => void = null, source:ItemSlotClass = null):void {
 			if (itype == null) {
 				CoC_Settings.error("takeItem(null)");
 				return;
@@ -148,7 +148,7 @@ package classes.Scenes
 				callNext = nextAction;
 			else callNext = playerMenu;
 			//Check for an existing stack with room in the inventory and return the value for it.
-			var temp:int = player.roomInExistingStack(itype);
+			var temp:number = player.roomInExistingStack(itype);
 			if (temp >= 0) { //First slot go!
 				player.itemSlots[temp].quantity++;
 				outputText("You place " + itype.longName + " in your " + inventorySlotName[temp] + " pouch, giving you " + player.itemSlots[temp].quantity + " of them.");
@@ -171,7 +171,7 @@ package classes.Scenes
 			takeItemFull(itype, true, source);
 		}
 		
-		public function returnItemToInventory(item:Useable, showNext:Boolean = true):void { //Used only by items that have a sub menu if the player cancels
+		public  returnItemToInventory(item:Useable, showNext:boolean = true):void { //Used only by items that have a sub menu if the player cancels
 			if (!debug) {
 				if (currentItemSlot == null) {
 					takeItem(item, callNext, callNext, null); //Give player another chance to put item in inventory
@@ -193,11 +193,11 @@ package classes.Scenes
 		}
 		
 		//Check to see if anything is stored
-		public function hasItemsInStorage():Boolean { return itemAnyInStorage(itemStorage, 0, itemStorage.length); }
+		public  hasItemsInStorage():boolean { return itemAnyInStorage(itemStorage, 0, itemStorage.length); }
 		
-		public function hasItemInStorage(itype:ItemType):Boolean { return itemTypeInStorage(itemStorage, 0, itemStorage.length, itype); }
+		public  hasItemInStorage(itype:ItemType):boolean { return itemTypeInStorage(itemStorage, 0, itemStorage.length, itype); }
 		
-		public function consumeItemInStorage(itype:ItemType):Boolean {
+		public  consumeItemInStorage(itype:ItemType):boolean {
 			temp = itemStorage.length;
 			while(temp > 0) {
 				temp--;
@@ -209,7 +209,7 @@ package classes.Scenes
 			return false;
 		}
 		
-		public function giveHumanizer():void {
+		public  giveHumanizer():void {
 			if(flags[kFLAGS.TIMES_CHEATED_COUNTER] > 0) {
 				outputText("<b>I was a cheater until I took an arrow to the knee...</b>", true);
 				getGame().gameOver();
@@ -221,7 +221,7 @@ package classes.Scenes
 		}
 		
 		//Create a storage slot
-		public function createStorage():Boolean {
+		public  createStorage():boolean {
 			if (itemStorage.length >= 16) return false;
 			var newSlot:ItemSlotClass = new ItemSlotClass();
 			itemStorage.push(newSlot);
@@ -229,7 +229,7 @@ package classes.Scenes
 		}
 		
 		//Clear storage slots
-		public function clearStorage():void {
+		public  clearStorage():void {
 			//Various Errors preventing action
 			if (itemStorage == null) trace("ERROR: Cannot clear storage because storage does not exist.");
 			else {
@@ -238,7 +238,7 @@ package classes.Scenes
 			}
 		}
 		
-		public function clearGearStorage():void {
+		public  clearGearStorage():void {
 			//Various Errors preventing action
 			if (gearStorage == null) trace("ERROR: Cannot clear storage because storage does not exist.");
 			else {
@@ -247,7 +247,7 @@ package classes.Scenes
 			}
 		}
 		
-		public function initializeGearStorage():void {
+		public  initializeGearStorage():void {
 			//Completely empty storage array
 			if (gearStorage == null) trace("ERROR: Cannot clear gearStorage because storage does not exist.");
 			else {
@@ -262,9 +262,9 @@ package classes.Scenes
 			}
 		}
 		
-		private function useItemInInventory(slotNum:int):void {
+		private  useItemInInventory(slotNum:number):void {
 			clearOutput();
-			if (player.itemSlots[slotNum].itype is Useable) {
+			if (player.itemSlots[slotNum].itype instanceof Useable) {
 				var item:Useable = player.itemSlots[slotNum].itype as Useable;
 				if (item.canUse()) { //If an item cannot be used then canUse should provide a description of why the item cannot be used
 					if (!debug) player.itemSlots[slotNum].removeOneItem();
@@ -287,23 +287,23 @@ package classes.Scenes
 */
 		}
 		
-		private function inventoryCombatHandler():void {
+		private  inventoryCombatHandler():void {
 			if (!combatRoundOver()) { //Check if the battle is over. If not then go to the enemy's action.
 				outputText("\n\n");
 				enemyAI();
 			}
 		}
 		
-		private function useItem(item:Useable, fromSlot:ItemSlotClass):void {
+		private  useItem(item:Useable, fromSlot:ItemSlotClass):void {
 			item.useText();
-			if (item is Armor) {
+			if (item instanceof Armor) {
 				player.armor.removeText();
 				item = player.setArmor(item as Armor); //Item is now the player's old armor
 				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext);
 			}
-			else if (item is Weapon) {
+			else if (item instanceof Weapon) {
 				player.weapon.removeText();
 				item = player.setWeapon(item as Weapon); //Item is now the player's old weapon
 				if (item == null)
@@ -319,10 +319,10 @@ package classes.Scenes
 			}
 		}
 		
-		private function takeItemFull(itype:ItemType, showUseNow:Boolean, source:ItemSlotClass):void {
+		private  takeItemFull(itype:ItemType, showUseNow:boolean, source:ItemSlotClass):void {
 			outputText("There is no room for " + itype.longName + " in your inventory.  You may replace the contents of a pouch with " + itype.longName + " or abandon it.");
 			menu();
-			for (var x:int = 0; x < 5; x++) {
+			for (const x = 0; x < 5; x++) {
 				if (player.itemSlots[x].unlocked)
 					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), createCallBackFunction2(replaceItem, itype, x));
 			}
@@ -330,11 +330,11 @@ package classes.Scenes
 				currentItemSlot = source;
 				addButton(7, "Put Back", createCallBackFunction2(returnItemToInventory, itype, false));
 			}
-			if (showUseNow && itype is Useable) addButton(8, "Use Now", createCallBackFunction2(useItemNow, itype as Useable, source));
+			if (showUseNow && itype instanceof Useable) addButton(8, "Use Now", createCallBackFunction2(useItemNow, itype as Useable, source));
 			addButton(9, "Abandon", callOnAbandon); //Does not doNext - immediately executes the callOnAbandon function
 		}
 		
-		private function useItemNow(item:Useable, source:ItemSlotClass):void {
+		private  useItemNow(item:Useable, source:ItemSlotClass):void {
 			clearOutput();
 			if (item.canUse()) { //If an item cannot be used then canUse should provide a description of why the item cannot be used
 				useItem(item, source);
@@ -344,7 +344,7 @@ package classes.Scenes
 			}
 		}
 		
-		private function replaceItem(itype:ItemType, slotNum:int):void {
+		private  replaceItem(itype:ItemType, slotNum:number):void {
 			clearOutput();
 			if (player.itemSlots[slotNum].itype == itype) //If it is the same as what's in the slot...just throw away the new item
 				outputText("You discard " + itype.longName + " from the stack to make room for the new one.");
@@ -356,7 +356,7 @@ package classes.Scenes
 			itemGoNext();
 		}
 		
-		private function unequipWeapon():void {
+		private  unequipWeapon():void {
 			clearOutput();
 			takeItem(player.setWeapon(WeaponLib.FISTS), inventoryMenu);
 		}
@@ -368,10 +368,10 @@ package classes.Scenes
 		}
 */
 		
-		private function armorRackDescription():Boolean {
+		private  armorRackDescription():boolean {
 			if (itemAnyInStorage(gearStorage, 9, 18)) {
-				var itemList:Array = [];
-				for (var x:int = 9; x < 18; x++)
+				var itemList:any[] = [];
+				for (const x = 9; x < 18; x++)
 					if (gearStorage[x].quantity > 0) itemList[itemList.length] = gearStorage[x].itype.longName;
 				outputText("  It currently holds " + formatStringArray(itemList) + ".");
 				return true;
@@ -379,10 +379,10 @@ package classes.Scenes
 			return false;
 		}
 		
-		private function weaponRackDescription():Boolean {
+		private  weaponRackDescription():boolean {
 			if (itemAnyInStorage(gearStorage, 0, 9)) {
-				var itemList:Array = [];
-				for (var x:int = 0; x < 9; x++)
+				var itemList:any[] = [];
+				for (const x = 0; x < 9; x++)
 					if (gearStorage[x].quantity > 0) itemList[itemList.length] = gearStorage[x].itype.longName;
 				outputText("  It currently holds " + formatStringArray(itemList) + ".");
 				return true;
@@ -390,32 +390,32 @@ package classes.Scenes
 			return false;
 		}
 		
-		private function itemAnyInStorage(storage:Array, startSlot:int, endSlot:int):Boolean {
-			for (var x:int = startSlot; x < endSlot; x++) if (storage[x].quantity > 0) return true;
+		private  itemAnyInStorage(storage:any[], startSlot:number, endSlot:number):boolean {
+			for (const x = startSlot; x < endSlot; x++) if (storage[x].quantity > 0) return true;
 			return false;
 		}
 		
-		private function itemTypeInStorage(storage:Array, startSlot:int, endSlot:int, itype:ItemType):Boolean {
-			for (var x:int = startSlot; x < endSlot; x++) if (storage[x].quantity > 0 && storage[x].itype == itype) return true;
+		private  itemTypeInStorage(storage:any[], startSlot:number, endSlot:number, itype:ItemType):boolean {
+			for (const x = startSlot; x < endSlot; x++) if (storage[x].quantity > 0 && storage[x].itype == itype) return true;
 			return false;
 		}
 		
-		private function pickItemToTakeFromCampStorage():void {
+		private  pickItemToTakeFromCampStorage():void {
 			callNext = pickItemToTakeFromCampStorage;
 			pickItemToTakeFromStorage(itemStorage, 0, itemStorage.length, "storage");
 		}
 		
-		private function pickItemToTakeFromArmorRack():void {
+		private  pickItemToTakeFromArmorRack():void {
 			callNext = pickItemToTakeFromArmorRack;
 			pickItemToTakeFromStorage(gearStorage, 9, 18, "rack");
 		}
 		
-		private function pickItemToTakeFromWeaponRack():void {
+		private  pickItemToTakeFromWeaponRack():void {
 			callNext = pickItemToTakeFromWeaponRack;
 			pickItemToTakeFromStorage(gearStorage, 0, 9, "rack");
 		}
 		
-		private function pickItemToTakeFromStorage(storage:Array, startSlot:int, endSlot:int, text:String):void {
+		private  pickItemToTakeFromStorage(storage:any[], startSlot:number, endSlot:number, text:string):void {
 			clearOutput(); //Selects an item from a gear slot. Rewritten so that it no longer needs to use numbered events
 			hideUpDown();
 			if (!itemAnyInStorage(storage, startSlot, endSlot)) { //If no items are left then return to the camp menu. Can only happen if the player removes the last item.
@@ -423,40 +423,40 @@ package classes.Scenes
 				return;
 			}
 			outputText("What " + text + " slot do you wish to take an item from?");
-			var button:int = 0;
+			var button:number = 0;
 			menu();
-			for (var x:int = startSlot; x < endSlot; x++, button++) {
+			for (const x = startSlot; x < endSlot; x++, button++) {
 				if (storage[x].quantity > 0) addButton(button, (storage[x].itype.shortName + " x" + storage[x].quantity), createCallBackFunction2(pickFrom, storage, x));
 			}
 			addButton(9, "Back", stash);
 		}
 		
-		private function pickFrom(storage:Array, slotNum:int):void {
+		private  pickFrom(storage:any[], slotNum:number):void {
 			clearOutput();
 			var itype:ItemType = storage[slotNum].itype;
 			storage[slotNum].quantity--;
 			inventory.takeItem(itype, callNext, callNext, storage[slotNum]);
 		}
 		
-		private function pickItemToPlaceInCampStorage():void { pickItemToPlaceInStorage(placeInCampStorage, allAcceptable, "storage containers", false); }
+		private  pickItemToPlaceInCampStorage():void { pickItemToPlaceInStorage(placeInCampStorage, allAcceptable, "storage containers", false); }
 		
-		private function pickItemToPlaceInArmorRack():void { pickItemToPlaceInStorage(placeInArmorRack, armorAcceptable, "armor rack", true); }
+		private  pickItemToPlaceInArmorRack():void { pickItemToPlaceInStorage(placeInArmorRack, armorAcceptable, "armor rack", true); }
 		
-		private function pickItemToPlaceInWeaponRack():void { pickItemToPlaceInStorage(placeInWeaponRack, weaponAcceptable, "weapon rack", true); }
+		private  pickItemToPlaceInWeaponRack():void { pickItemToPlaceInStorage(placeInWeaponRack, weaponAcceptable, "weapon rack", true); }
 		
-		private function allAcceptable(itype:ItemType):Boolean { return true; }
+		private  allAcceptable(itype:ItemType):boolean { return true; }
 		
-		private function armorAcceptable(itype:ItemType):Boolean { return itype is Armor; }
+		private  armorAcceptable(itype:ItemType):boolean { return itype instanceof Armor; }
 		
-		private function weaponAcceptable(itype:ItemType):Boolean { return itype is Weapon; }
+		private  weaponAcceptable(itype:ItemType):boolean { return itype instanceof Weapon; }
 		
-		private function pickItemToPlaceInStorage(placeInStorageFunction:Function, typeAcceptableFunction:Function, text:String, showEmptyWarning:Boolean):void {
+		private  pickItemToPlaceInStorage(placeInStorageFunction:() => void, typeAcceptableFunction:() => void, text:string, showEmptyWarning:boolean):void {
 			clearOutput(); //Selects an item to place in a gear slot. Rewritten so that it no longer needs to use numbered events
 			hideUpDown();
 			outputText("What item slot do you wish to empty into your " + text + "?");
 			menu();
-			var foundItem:Boolean = false;
-			for (var x:int = 0; x < 5; x++) {
+			var foundItem:boolean = false;
+			for (const x = 0; x < 5; x++) {
 				if (player.itemSlots[x].unlocked && player.itemSlots[x].quantity > 0 && typeAcceptableFunction(player.itemSlots[x].itype)) {
 					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), placeInStorageFunction, x);
 					foundItem = true;
@@ -466,28 +466,28 @@ package classes.Scenes
 			addButton(9, "Back", stash);
 		}
 		
-		private function placeInCampStorage(slotNum:int):void {
+		private  placeInCampStorage(slotNum:number):void {
 			placeIn(itemStorage, 0, itemStorage.length, slotNum);
 			doNext(pickItemToPlaceInCampStorage);
 		}
 		
-		private function placeInArmorRack(slotNum:int):void {
+		private  placeInArmorRack(slotNum:number):void {
 			placeIn(gearStorage, 9, 18, slotNum);
 			doNext(pickItemToPlaceInArmorRack);
 		}
 		
-		private function placeInWeaponRack(slotNum:int):void {
+		private  placeInWeaponRack(slotNum:number):void {
 			placeIn(gearStorage, 0, 9, slotNum);
 			doNext(pickItemToPlaceInWeaponRack);
 		}
 		
-		private function placeIn(storage:Array, startSlot:int, endSlot:int, slotNum:int):void {
+		private  placeIn(storage:any[], startSlot:number, endSlot:number, slotNum:number):void {
 			clearOutput();
-			var x:int;
-			var temp:int;
+			var x:number;
+			var temp:number;
 			var itype:ItemType = player.itemSlots[slotNum].itype;
-			var qty:int = player.itemSlots[slotNum].quantity;
-			var orig:int = qty;
+			var qty:number = player.itemSlots[slotNum].quantity;
+			var orig:number = qty;
 			player.itemSlots[slotNum].emptySlot();
 			for (x = startSlot; x < endSlot && qty > 0; x++) { //Find any slots which already hold the item that is being stored
 				if (storage[x].itype == itype && storage[x].quantity < 5) {
@@ -511,4 +511,4 @@ package classes.Scenes
 			player.itemSlots[slotNum].setItemAndQty(itype, qty);
 		}
 	}
-}
+

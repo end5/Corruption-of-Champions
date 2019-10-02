@@ -1,15 +1,15 @@
-﻿package classes.Scenes.NPCs
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.internals.*;
+ 
 
-	public class Ceraph extends Monster
+	 
+	 
+	 
+
+	export class Ceraph extends Monster
 	{
 
 //[IN COMBAT SPECIALS]
 //[SPECIAL 1] – Ubercharge!
-		private function ceraphSpecial1():void
+		private  ceraphSpecial1():void
 		{
 			game.spriteSelect(7);
 			if (findStatusAffect(StatusAffects.Uber) < 0) {
@@ -49,7 +49,7 @@
 			combatRoundOver();
 		}
 //[SPECIAL] – Whip Binding
-		private function ceraphSpecial2():void
+		private  ceraphSpecial2():void
 		{
 			if (player.findStatusAffect(StatusAffects.Bound) < 0) {
 				outputText("Ceraph snaps her whip at you, lightning fast.  Unable to avoid the blinding speed of her attack, you find yourself wrapped from head to toe in the strong leather of her whip.  Remarkably, the fire dies out everywhere the whip touches you, leaving you bound but unharmed.", false);
@@ -80,7 +80,7 @@
 		}
 
 		//(Struggle)
-		public function ceraphBindingStruggle():void
+		public  ceraphBindingStruggle():void
 		{
 			outputText("", true);
 			outputText("You wriggle in the tight binding, trying your best to escape.  ", false);
@@ -111,7 +111,7 @@
 		}
 
 //(Wait)
-		public function ceraphBoundWait():void
+		public  ceraphBoundWait():void
 		{
 			outputText("", true);
 			outputText("Why bother resisting?  The feeling of the leather wrapped tightly around you, digging into your " + player.skinDesc + ", is intoxicating.", false);
@@ -126,7 +126,7 @@
 
 
 //[Double-Attack]
-		private function ceraphSpecial3():void
+		private  ceraphSpecial3():void
 		{
 			//[Mini-cum] – takes place of double-attack if very horny
 			if (lust >= 75) {
@@ -144,7 +144,7 @@
 				combatRoundOver();
 				return;
 			}
-			var damage:Number = 0;
+			var damage:number = 0;
 			outputText("The demoness weaves her whip in the air until you can practically hear it slithering like a snake, cutting the air as it weaves back and forth, still magically alight with flames.  In a blink she lashes out twice in quick succession!\n", false);
 			//First hit!
 			doNext(game.playerMenu);
@@ -241,9 +241,9 @@
 			combatRoundOver();
 		}
 
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
-			var choice:Number = rand(4);
+			var choice:number = rand(4);
 			if (player.findStatusAffect(StatusAffects.Bound) >= 0) {
 				ceraphSpecial2();
 				return;
@@ -269,12 +269,12 @@
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.ceraphScene.winRapeChoices();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			if(pcCameWorms){
 				outputText("\n\nYour foe doesn't seem disgusted enough to leave...");
@@ -284,7 +284,7 @@
 			}
 		}
 
-		public function Ceraph()
+		public  constructor()
 		{
 			trace("Ceraph Constructor!");
 			this.a = "";
@@ -327,4 +327,3 @@
 
 	}
 
-}

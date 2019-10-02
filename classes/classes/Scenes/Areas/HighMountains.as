@@ -1,29 +1,29 @@
 /**
  * Created by aimozg on 06.01.14.
  */
-package classes.Scenes.Areas
-{
-	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Scenes.Areas.HighMountains.*;
+ 
 
-	use namespace kGAMECLASS;
+	 
+	 
+	 
+	 
 
-	public class HighMountains extends BaseContent
+	  ;
+
+	export class HighMountains extends BaseContent
 	{
-		public var basiliskScene:BasiliskScene = new BasiliskScene();
-		public var harpyScene:HarpyScene = new HarpyScene();
-		public var minervaScene:MinervaScene = new MinervaScene();
-		public var minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
-		public var izumiScenes:IzumiScene = new IzumiScene();
+		public  basiliskScene:BasiliskScene = new BasiliskScene();
+		public  harpyScene:HarpyScene = new HarpyScene();
+		public  minervaScene:MinervaScene = new MinervaScene();
+		public  minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
+		public  izumiScenes:IzumiScene = new IzumiScene();
 		
-		public function HighMountains()
+		public  constructor()
 		{
 		}
 		
 		//Explore High Mountain
-		public function exploreHighMountain():void
+		public  exploreHighMountain():void
 		{
 			flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
 			doNext(playerMenu);
@@ -33,7 +33,7 @@ package classes.Scenes.Areas
 				return;
 			}
 			
-			var chooser:Number = rand(4);
+			var chooser:number = rand(4);
 			//Boosts mino and hellhound rates!
 			if (player.findPerk(PerkLib.PiercedFurrite) >= 0 && rand(3) == 0) {
 				chooser = 1;
@@ -121,7 +121,7 @@ package classes.Scenes.Areas
 		}
 		//\"<i>Chicken Harpy</i>\" by Jay Gatsby and not Savin he didn't do ANYTHING
 		//Initial Intro
-		public function chickenHarpy():void
+		public  chickenHarpy():void
 		{
 			clearOutput();
 			spriteSelect(90);
@@ -153,7 +153,7 @@ package classes.Scenes.Areas
 		}
 
 		//If Give Two
-		public function giveTwoOviElix():void
+		public  giveTwoOviElix():void
 		{
 			clearOutput();
 			spriteSelect(90);
@@ -171,7 +171,7 @@ package classes.Scenes.Areas
 		}
 
 		//If Give Three
-		public function giveThreeOviElix():void
+		public  giveThreeOviElix():void
 		{
 			clearOutput();
 			spriteSelect(90);
@@ -188,7 +188,7 @@ package classes.Scenes.Areas
 		}
 
 		//All Text
-		public function getHarpyEgg(itype:ItemType):void
+		public  getHarpyEgg(itype:ItemType):void
 		{
 			clearOutput();
 			spriteSelect(90);
@@ -198,7 +198,7 @@ package classes.Scenes.Areas
 		}
 
 		//If No
-		public function leaveChickenx():void
+		public  leaveChickenx():void
 		{
 			clearOutput();
 			spriteSelect(90);
@@ -207,4 +207,4 @@ package classes.Scenes.Areas
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-}
+

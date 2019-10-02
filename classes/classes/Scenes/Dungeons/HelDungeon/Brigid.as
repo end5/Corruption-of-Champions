@@ -1,15 +1,15 @@
-package classes.Scenes.Dungeons.HelDungeon
-{
-	import classes.*;
+ 
 
-	public class Brigid extends Monster
+	 
+
+	export class Brigid extends Monster
 	{
 
 		//Attack One: Hot Poker, Right Up Your Ass!
-		private function brigidPoke():void {
+		private  brigidPoke():void {
 			outputText("Brigid stalks forward with confidence, her shield absorbing your defensive blows until she's right on top of you. She bats your [weapon] aside and thrashes you with her hot poker, scalding your " + player.skin() + " and sending you reeling.");
 			//(Effect: Heavy Damage)
-			var damage:Number = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
+			var damage:number = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
 			if(damage < 30) damage = 30;
 			damage = player.takeDamage(damage);
 			outputText(" (" + damage + ")");
@@ -17,10 +17,10 @@ package classes.Scenes.Dungeons.HelDungeon
 		}
 
 		//Attack Two: SHIELD BOP! OOM BOP!
-		private function brigidBop():void {
+		private  brigidBop():void {
 			outputText("The harpy feints at you with her poker; you dodge the blow, but you leave yourself vulnerable as she spins around and slams her heavy shield into you, knocking you off balance.");
 			//(Effect: Stagger/Stun)
-			var damage:Number = 5;
+			var damage:number = 5;
 			damage = player.takeDamage(5);
 			outputText(" (" + damage + ")");
 			if(player.findPerk(PerkLib.Resolute) >= 0) outputText("  Of course, your resolute posture prevents her from accomplishing much.");
@@ -29,12 +29,12 @@ package classes.Scenes.Dungeons.HelDungeon
 		}
 
 		//Attack Three: Harpy Ass Grind GO!
-		private function BrigidAssGrind():void {
+		private  BrigidAssGrind():void {
 			outputText("Brigid grins as she approaches you.  She handily deflects a few defensive blows and grabs you by the shoulders.  She forces you onto your knees and before you can blink, has turned around and smashed your face into her ass!  \"<i>Mmm, you like that, don'tcha?</i>\" she growls, grinding her huge, soft ass across your face, giving you an up-close and personal feel of her egg-laying hips.");
 			game.dynStats("lus", 30);
 			game.combatRoundOver();
 		}
-		override protected function performCombatAction():void
+		 protected  performCombatAction():void
 		{
 			if(player.findStatusAffect(StatusAffects.Stunned) >= 0) {
 				player.removeStatusAffect(StatusAffects.Stunned);
@@ -48,17 +48,17 @@ package classes.Scenes.Dungeons.HelDungeon
 		}
 
 
-		override public function defeated(hpVictory:Boolean):void
+		 public  defeated(hpVictory:boolean):void
 		{
 			game.brigidScene.pcDefeatsBrigid();
 		}
 
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		 public  won(hpVictory:boolean, pcCameWorms:boolean):void
 		{
 			game.brigidScene.pcDefeatedByBrigid();
 		}
 
-		public function Brigid()
+		public  constructor()
 		{
 			this.a = "";
 			this.short = "Brigid the Jailer";
@@ -102,4 +102,3 @@ package classes.Scenes.Dungeons.HelDungeon
 		
 	}
 
-}
