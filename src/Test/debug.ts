@@ -6,9 +6,8 @@ Debug pane and related functions
 Author: Fake-Name
 
 */
-export function monkeyStartConfirm():void
-{
-	outputText(`<![CDATA[
+export function monkeyStartConfirm(): void {
+    outputText(`<![CDATA[
 
 Chaos Monkah!
 
@@ -25,33 +24,28 @@ probably do not intend.
 (Yeah, I want to fix that)
 	]]>`, true, true);
 
-	this.monkey.throwOnSyntaxError = false;
-	this.monkey.excludeMenuKeys = false;
-	menu();
-	addButton(0, "ChaosMonkey",   monkeyStartReallyConfirm);
-	addButton(1, "NoMenuMonkey",   noSaveMonkey);
-	addButton(5, "SyntaxMonkey",   syntaxMonkey);
-	addButton(9, "No",            debugPane)
+    this.monkey.throwOnSyntaxError = false;
+    this.monkey.excludeMenuKeys = false;
+    menu();
+    addButton(0, "ChaosMonkey", monkeyStartReallyConfirm);
+    addButton(1, "NoMenuMonkey", noSaveMonkey);
+    addButton(5, "SyntaxMonkey", syntaxMonkey);
+    addButton(9, "No", debugPane);
 }
 
-
-export function syntaxMonkey():void
-{
-	this.monkey.throwOnSyntaxError = true;
-	this.monkey.excludeMenuKeys = true;			// Syntax checking monkey should ignore the menu keys (they're irrelevant to it's functions)
-	monkeyStartReallyConfirm()
+export function syntaxMonkey(): void {
+    this.monkey.throwOnSyntaxError = true;
+    this.monkey.excludeMenuKeys = true;			// Syntax checking monkey should ignore the menu keys (they're irrelevant to it's functions)
+    monkeyStartReallyConfirm();
 }
 
-export function noSaveMonkey():void
-{
-	this.monkey.excludeMenuKeys = true;
-	monkeyStartReallyConfirm()
+export function noSaveMonkey(): void {
+    this.monkey.excludeMenuKeys = true;
+    monkeyStartReallyConfirm();
 }
 
-
-export function monkeyStartReallyConfirm():void
-{
-	outputText(`<![CDATA[
+export function monkeyStartReallyConfirm(): void {
+    outputText(`<![CDATA[
 
 **NO REALLY, THIS WILL PROBABLY OVERWRITE YOUR SAVES.**
 
@@ -59,93 +53,77 @@ export function monkeyStartReallyConfirm():void
 
 	]]>`, true, true);
 
-	doYesNo(initiateTheMonkey, debugPane)
+    doYesNo(initiateTheMonkey, debugPane);
 }
 
-
-export function initiateTheMonkey():void
-{
-	// I swear, half the fun of this is just the function names I can write.
-	outputText(`<![CDATA[
+export function initiateTheMonkey(): void {
+    // I swear, half the fun of this is just the function names I can write.
+    outputText(`<![CDATA[
 INITIATING MONKEY
 	]]>`, true, true);
 
-	this.monkey.createChaos();
+    this.monkey.createChaos();
 
-	if (this.player.str) // we're in a game
-		doNext(camp.returnToCampUseOneHour);      // so dump out to the camp scene
-	else
-		doNext(charCreation.newGameGo);   // not in a game, create a char randomly
+    if (this.player.str) // we're in a game
+        doNext(camp.returnToCampUseOneHour);      // so dump out to the camp scene
+    else
+        doNext(charCreation.newGameGo);   // not in a game, create a char randomly
 }
 
+export function debugPane(): void {
+    outputText("<b>Debug information!</b>\n", true);
 
+    outputText("\nPossible flash sandboxing contexts:");
+    outputText("<ul>");
+    outputText("<li><b>\"localWithNetwork\"</b> means images <b><u>will not work</u></b>!</li>");
+    outputText("<li><b>\"localWithFile\"</b> means images can work.</li>");
+    outputText("<li><b>\"localTrusted\"</b> means images can work, and you've somehow managed to install this swf into a flash trusted directory. How did you manage that?</li>");
+    outputText("</ul>");
+    outputText("\nNote that you still need the proper folder structure to have functional images.");
 
-export function debugPane():void
-{
-	outputText("<b>Debug information!</b>\n", true);
+    outputText("\n\nCurrent Sandbox mode: <b>" + Security.sandboxType + "</b>");
+    outputText("\n<hr /> --------"); // HR Tag! WHY U NO WORK?
 
-	outputText("\nPossible flash sandboxing contexts:");
-	outputText("<ul>");
-	outputText("<li><b>\"localWithNetwork\"</b> means images <b><u>will not work</u></b>!</li>");
-	outputText("<li><b>\"localWithFile\"</b> means images can work.</li>");
-	outputText("<li><b>\"localTrusted\"</b> means images can work, and you've somehow managed to install this swf into a flash trusted directory. How did you manage that?</li>");
-	outputText("</ul>");
-	outputText("\nNote that you still need the proper folder structure to have functional images.");
+    outputText("\nCurrently have " + images.getLoadedImageCount() + " images loaded into cache.");
 
-	outputText("\n\nCurrent Sandbox mode: <b>" + Security.sandboxType + "</b>");
-	outputText("\n<hr /> --------"); // HR Tag! WHY U NO WORK?
+    if (CoC_Settings.haltOnErrors)  // Using a static class so I can grab it from anywhere.
+        outputText("\nCurrently set to halt on all errors.");
+    else
+        outputText("\nParsing or description errors only generate warning message");
 
-	outputText("\nCurrently have " + images.getLoadedImageCount() + " images loaded into cache.");
+    outputText("\n<hr /> --------"); // HR Tag! WHY U NO WORK?
 
+    outputText("\n\n<b>FUNCTIONALITY ON THIS PAGE IS IN ALPHA-RELEASE STATUS</b>\n");
+    outputText("<b>IF YOU DON'T KNOW WHAT YOU ARE DOING AND/OR HAVE UNSAVED GAME PROGRESS, DO NOT CLICK ANY BUTTON EXCEPT \"BACK\"</b>\n");
 
+    outputText(images.showImage("monster-ceraph"));
 
-	if (CoC_Settings.haltOnErrors)  // Using a static class so I can grab it from anywhere.
-		outputText("\nCurrently set to halt on all errors.");
-	else
-		outputText("\nParsing or description errors only generate warning message");
-
-	outputText("\n<hr /> --------"); // HR Tag! WHY U NO WORK?
-
-	outputText("\n\n<b>FUNCTIONALITY ON THIS PAGE IS IN ALPHA-RELEASE STATUS</b>\n");
-	outputText("<b>IF YOU DON'T KNOW WHAT YOU ARE DOING AND/OR HAVE UNSAVED GAME PROGRESS, DO NOT CLICK ANY BUTTON EXCEPT \"BACK\"</b>\n");
-
-
-	outputText(images.showImage("monster-ceraph"));
-
-	menu();
-	addButton(0, "Event Tester", eventTestingPane);
-	addButton(1, "Test Input", eventTester);
-	addButton(5, "Parser Tests", doThatTestingThang);
-	addButton(6, "Halt on Errors", toggleHaltSettings);
-	addButton(3, "ChaosMonkey", monkeyStartConfirm)
-	addButton(9, "Back", mainMenu);
+    menu();
+    addButton(0, "Event Tester", eventTestingPane);
+    addButton(1, "Test Input", eventTester);
+    addButton(5, "Parser Tests", doThatTestingThang);
+    addButton(6, "Halt on Errors", toggleHaltSettings);
+    addButton(3, "ChaosMonkey", monkeyStartConfirm);
+    addButton(9, "Back", mainMenu);
 }
 
-export function toggleHaltSettings():void
-{
-	//toggle debug
-	if(CoC_Settings.haltOnErrors)
-		CoC_Settings.haltOnErrors = false;
-	else
-		CoC_Settings.haltOnErrors = true;
-	debugPane();
-	return;
+export function toggleHaltSettings(): void {
+    // toggle debug
+    if (CoC_Settings.haltOnErrors)
+        CoC_Settings.haltOnErrors = false;
+    else
+        CoC_Settings.haltOnErrors = true;
+    debugPane();
+    return;
 }
 
+export function doThatTestingThang(): void {
 
+    // Excercise the parser. This should catch parser regressions, I think.
+    //
+    //
 
-
- 
- 
-
-export function doThatTestingThang():void
-{
-
-	// Excercise the parser. This should catch parser regressions, I think.
-	//
-	//
-
-	outputText(`<![CDATA[
+    outputText(`<![CDATA[
 
 **Parser Tests!**
 
@@ -375,9 +353,7 @@ convert "
 
 	]]>`, true, true);
 
-
-	menu();
-	addButton(4, "Back", debugPane)
+    menu();
+    addButton(4, "Back", debugPane);
 
 }
-

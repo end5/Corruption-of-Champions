@@ -1,10 +1,7 @@
 
+export function eventTestingPane(): void {
 
-export function eventTestingPane():void
-{
-
-
-	outputText(`<![CDATA[
+    outputText(`<![CDATA[
 
 
 
@@ -89,23 +86,19 @@ consequatur aut perferendis doloribus asperiores repellat.
 
 	]]>`, true, true);
 
-	//trace("Maintext content @ eventTestingPane = ", mainText.htmlText.length)
-	//menu();
-	//addButton(9, "Back", debugPane)
+    // trace("Maintext content @ eventTestingPane = ", mainText.htmlText.length)
+    // menu();
+    // addButton(9, "Back", debugPane)
 }
 
 /*
 
-
-
-
-
 */
 
-export function eventTester():void {
-	outputText("", true);
-	mainView.showTestInputPanel();
-	mainView.eventTestInput.text = `<![CDATA[
+export function eventTester(): void {
+    outputText("", true);
+    mainView.showTestInputPanel();
+    mainView.eventTestInput.text = `<![CDATA[
 [screen startup |
 
 "Paste test event text here."
@@ -119,31 +112,29 @@ export function eventTester():void {
 
 ]]>`;
 
-	;
-	simpleChoices("Proceed",eventTesterGo,"",null,"",null,"",null,"Back",eventTesterExit);
+    
+    simpleChoices("Proceed", eventTesterGo, "", null, "", null, "", null, "Back", eventTesterExit);
 }
 
-export function eventTesterGo():void
-{
-	mainView.hideTestInputPanel();
+export function eventTesterGo(): void {
+    mainView.hideTestInputPanel();
 
-	var temp:string = mainView.eventTestInput.text
+    let temp: string = mainView.eventTestInput.text;
 
-	trace("Temp = ", temp);
+    trace("Temp = ", temp);
 
-	menu();
-	outputText(temp, true, true);
+    menu();
+    outputText(temp, true, true);
 
-	addButton(9, "Back", eventTester)
-	flushOutputTextToGUI();
-	// simpleChoices("Change Text",eventTester,"",0,"",0,"",0,"Exit",eventTesterExit);
-	return;
+    addButton(9, "Back", eventTester);
+    flushOutputTextToGUI();
+    // simpleChoices("Change Text",eventTester,"",0,"",0,"",0,"Exit",eventTesterExit);
+    return;
 }
 
-export function eventTesterExit():void
-{
-	mainView.hideTestInputPanel();
-	debugPane();
+export function eventTesterExit(): void {
+    mainView.hideTestInputPanel();
+    debugPane();
 
-	return;
+    return;
 }

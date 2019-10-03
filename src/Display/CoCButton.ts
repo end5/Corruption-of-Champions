@@ -1,151 +1,140 @@
-  
 
-	/****
-		coc.view.CoCButton
+/****
+    coc.view.CoCButton
 
-		note that although this stores its current tool tip text,
-		it does not display the text.  That is taken care of
-		by whoever owns this.
+    note that although this stores its current tool tip text,
+    it does not display the text.  That is taken care of
+    by whoever owns this.
 
-		The mouse event handlers are public to facilitate reaction to
-		keyboard events.
-	****/
+    The mouse event handlers are public to facilitate reaction to
+    keyboard events.
+****/
 
-	 
-	 
+export class CoCButton extends MovieClip {
 
-	 
+    // How far down from the top of our registration point the TF is.
+    public static LABEL_FIELD_Y_OFFSET: number = 9; ,
+    public static LABEL_FIELD_HEIGHT: number = 25;
 
-	export class CoCButton extends MovieClip {
-		 
-			// How far down from the top of our registration point the TF is.
-        public static LABEL_FIELD_Y_OFFSET :number = 9,
-        public static LABEL_FIELD_HEIGHT :number = 25;
+    protected _labelField: TextField; ,
+    protected _backgroundGraphic: MovieClip; ,
+    protected _callback: () => void;
 
-		protected	_labelField :TextField,
-		protected	_backgroundGraphic :MovieClip,
-		protected	_callback :() => void;
+    public toolTipText: string;
 
-		 
-		public toolTipText :string;
+    public constructor(labelField: TextField = null, backgroundGraphic: MovieClip = null): void {
+        if (backgroundGraphic) {
+            this.x = backgroundGraphic.x;
+            this.y = backgroundGraphic.y;
+        }
 
-		public  constructor( labelField :TextField = null, backgroundGraphic :MovieClip = null ) :void {
-			if( backgroundGraphic ) {
-				this.x = backgroundGraphic.x;
-				this.y = backgroundGraphic.y;
-			}
+        this.labelField = labelField;
+        this.backgroundGraphic = backgroundGraphic;
 
-			this.labelField = labelField;
-			this.backgroundGraphic = backgroundGraphic;
+        this.mouseChildren = false;
 
-			this.mouseChildren = false;
+        this.addEventListener(MouseEvent.ROLL_OVER, this.hover);
+        this.addEventListener(MouseEvent.ROLL_OUT, this.dim);
+        this.addEventListener(MouseEvent.CLICK, this.click);
+    }
 
-			this.addEventListener( MouseEvent.ROLL_OVER, this.hover );
-			this.addEventListener( MouseEvent.ROLL_OUT, this.dim );
-			this.addEventListener( MouseEvent.CLICK, this.click );
-		};
+    //////// Mouse Events... ////////
 
+    public hover(event: MouseEvent = null): void {
+        if (this.backgroundGraphic)
+            this.backgroundGraphic.alpha = 0.5;
+    }
 
+    public dim(event: MouseEvent = null): void {
+        if (this.backgroundGraphic)
+            this.backgroundGraphic.alpha = 1;
+    }
 
-		//////// Mouse Events... ////////
+    public click(event: MouseEvent = null): void {
+        if (this._callback)
+            this._callback();
+    }
 
-		public  hover( event: MouseEvent = null ) :void {
-			if( this.backgroundGraphic )
-				this.backgroundGraphic.alpha = 0.5;
-		};
+    //////// Getters and Setters ////////
 
-		public  dim( event :MouseEvent = null ) :void {
-			if( this.backgroundGraphic )
-				this.backgroundGraphic.alpha = 1;
-		};
+    public get labelField(): TextField {
+        return this._labelField;
+    }
 
-		public  click( event :MouseEvent = null ) :void {
-			if( this._callback )
-				this._callback();
-		};
+    public set labelField(value: TextField): void {
+        // TODO: Remove previous labelField?
 
+        this._labelField = value;
 
+        if (!this._labelField) return;
 
-		//////// Getters and Setters ////////
+        this.addChild(this._labelField);
 
-		public  get labelField() :TextField {
-			return this._labelField;
-		};
+        this._labelField.mouseEnabled = false;
 
-		public  set labelField( value :TextField ) :void {
-			// TODO: Remove previous labelField?
+        this._labelField.x = 0;
+        this._labelField.y = LABEL_FIELD_Y_OFFSET;
+        this._labelField.width = this.width;
+        this._labelField.height = LABEL_FIELD_HEIGHT;
+    }
 
-			this._labelField = value;
+    public get backgroundGraphic(): MovieClip {
+        return this._backgroundGraphic;
+    }
 
-			if( ! this._labelField ) return;
+    public set backgroundGraphic(value: MovieClip): void {
+        // TODO: Remove previous background graphic?
 
-			this.addChild( this._labelField );
+        this._backgroundGraphic = value;
 
-			this._labelField.mouseEnabled = false;
+        if (!this._backgroundGraphic) return;
 
-			this._labelField.x = 0;
-			this._labelField.y = LABEL_FIELD_Y_OFFSET;
-			this._labelField.width = this.width;
-			this._labelField.height = LABEL_FIELD_HEIGHT;
-		};
+        this.addChildAt(this._backgroundGraphic, 0);
 
-		public  get backgroundGraphic() :MovieClip {
-			return this._backgroundGraphic;
-		};
+        this._backgroundGraphic.mouseEnabled = true;
 
-		public  set backgroundGraphic( value :MovieClip ) :void {
-			// TODO: Remove previous background graphic?
+        this._backgroundGraphic.x = 0;
+        this._backgroundGraphic.y = 0;
 
-			this._backgroundGraphic = value;
+        this.width = this._backgroundGraphic.width;
+    }
 
-			if( ! this._backgroundGraphic ) return;
+    public get labelText(): string {
+        return this.labelField.text;
+    }
 
-			this.addChildAt( this._backgroundGraphic, 0 );
+    public set labelText(value: string): void {
+        this.labelField.text = value;
+    }
 
-			this._backgroundGraphic.mouseEnabled = true;
+    public get callback(): () => void {
+        return this._callback;
+    }
 
-			this._backgroundGraphic.x = 0;
-			this._backgroundGraphic.y = 0;
+    public set callback(value: () => void): void {
+        this._callback = value;
+    }
 
-			this.width = this._backgroundGraphic.width;
-		};
+    //// Overrides. ////
+    public get width(): number {
+        return this.backgroundGraphic ? this.backgroundGraphic.width : 0;
+    }
 
-		public  get labelText() :string {
-			return this.labelField.text;
-		};
+    public set width(value: number): void {
+        if (this.backgroundGraphic)
+            this.backgroundGraphic.width = value;
 
-		public  set labelText( value :string ) :void {
-			this.labelField.text = value;
-		};
+        if (this.labelField)
+            this.labelField.width = value;
+    }
 
-		public  get callback() :() => void {
-			return this._callback;
-		};
+    public get height(): number {
+        return this.backgroundGraphic ? this.backgroundGraphic.height : 0;
+    }
 
-		public  set callback( value :() => void ) :void {
-			this._callback = value;
-		};
-
-		//// Overrides. ////
-		 public  get width() :number {
-			return this.backgroundGraphic ? this.backgroundGraphic.width : 0;
-		};
-
-		 public  set width( value :number ) :void {
-			if( this.backgroundGraphic )
-				this.backgroundGraphic.width = value;
-
-			if( this.labelField )
-				this.labelField.width = value;
-		};
-
-		 public  get height() :number {
-			return this.backgroundGraphic ? this.backgroundGraphic.height : 0;
-		};
-
-		 public  set height( value :number ) :void {
-			if( this.backgroundGraphic )
-				this.backgroundGraphic.height = value;
-			// TODO: Do anything to the text field?
-		};
-	}
+    public set height(value: number): void {
+        if (this.backgroundGraphic)
+            this.backgroundGraphic.height = value;
+        // TODO: Do anything to the text field?
+    }
+}

@@ -1,80 +1,67 @@
- 
 
-	export class ItemSlotClass extends Object
-	{
-		
-		//data
-		private  _quantity:number = 0;
-		private  _itype:ItemType = ItemType.NOTHING;
-		private  _unlocked:boolean = false;
+export class ItemSlotClass extends Object {
 
-		
-		public  setItemAndQty(itype:ItemType, quant:number):void
-		{
-			if (itype == null) itype = ItemType.NOTHING;
-			if (quant == 0 && itype == ItemType.NOTHING) {
-				emptySlot();
-				return;
-			}
-			if (quant<0 || quant == 0 && itype != ItemType.NOTHING || quant>0 && itype == ItemType.NOTHING){
-				CoC_Settings.error("Inconsistent setItemAndQty call: "+quant+" "+itype);
-				quant = 0;
-				itype = ItemType.NOTHING;
-			}
-			this._quantity = quant;
-			this._itype = itype;
-		}
-		
+    // data
+    private _quantity: number = 0;
+    private _itype: ItemType = ItemType.NOTHING;
+    private _unlocked: boolean = false;
 
-		public  emptySlot():void
-		{
-			this._quantity = 0;
-			this._itype = ItemType.NOTHING;
-		}
+    public setItemAndQty(itype: ItemType, quant: number): void {
+        if (itype == null) itype = ItemType.NOTHING;
+        if (quant == 0 && itype == ItemType.NOTHING) {
+            emptySlot();
+            return;
+        }
+        if (quant < 0 || quant == 0 && itype != ItemType.NOTHING || quant > 0 && itype == ItemType.NOTHING) {
+            CoC_Settings.error("Inconsistent setItemAndQty call: " + quant + " " + itype);
+            quant = 0;
+            itype = ItemType.NOTHING;
+        }
+        this._quantity = quant;
+        this._itype = itype;
+    }
 
-		public  removeOneItem():void
-		{
-			if (this._quantity == 0)
-				CoC_Settings.error("Tried to remove item from empty slot!");
-			if (this._quantity > 0)
-				this._quantity -= 1;
+    public emptySlot(): void {
+        this._quantity = 0;
+        this._itype = ItemType.NOTHING;
+    }
 
-			if (this._quantity == 0)
-				this._itype = ItemType.NOTHING;
-		}
+    public removeOneItem(): void {
+        if (this._quantity == 0)
+            CoC_Settings.error("Tried to remove item from empty slot!");
+        if (this._quantity > 0)
+            this._quantity -= 1;
 
-		public  get quantity():number
-		{
-			return _quantity;
-		}
+        if (this._quantity == 0)
+            this._itype = ItemType.NOTHING;
+    }
 
-		public  set quantity(value:number):void
-		{
-			if (value > 0 && _itype == null) CoC_Settings.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
-			if (value == 0) _itype = ItemType.NOTHING;
-			_quantity = value;
-		}
+    public get quantity(): number {
+        return _quantity;
+    }
 
-		public  get itype():ItemType
-		{
-			return _itype;
-		}
+    public set quantity(value: number): void {
+        if (value > 0 && _itype == null) CoC_Settings.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
+        if (value == 0) _itype = ItemType.NOTHING;
+        _quantity = value;
+    }
 
-		public  get unlocked():boolean
-		{
-			return _unlocked;
-		}
+    public get itype(): ItemType {
+        return _itype;
+    }
 
-		public  set unlocked(value:boolean):void
-		{
-			if (_unlocked != value){
-				emptySlot();
-			}
-			_unlocked = value;
-		}
+    public get unlocked(): boolean {
+        return _unlocked;
+    }
 
-		public  isEmpty():boolean
-		{
-			return _quantity<=0;
-		}
-	}
+    public set unlocked(value: boolean): void {
+        if (_unlocked != value) {
+            emptySlot();
+        }
+        _unlocked = value;
+    }
+
+    public isEmpty(): boolean {
+        return _quantity <= 0;
+    }
+}

@@ -1,5 +1,2 @@
-  
 
-	 
-	
-	export var kGAMECLASS:CoC;
+export let kGAMECLASS: CoC;

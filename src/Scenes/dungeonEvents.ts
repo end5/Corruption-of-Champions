@@ -1,4 +1,4 @@
-//Dungeon events from 11000+
+// Dungeon events from 11000+
 /* Now called directly or replaced by dungeonEnterRoom in dungeonCore.as
 public function doDungeon(eventNo:Number):void {
 	if(eventNo == 11000) dungeonLoc = 0;
@@ -100,7 +100,7 @@ public function doDungeon(eventNo:Number):void {
 		//Tits – lactating
 		if(player.biggestLactation() >= 1 && player.biggestLactation() < 3) outputText("Your " + nippleDescript(0) + "s get painfully hard as you feel milk begin backing up inside your " + allBreastsDescript() + ".   The succubus glances down mischieviously as her hands begin to grope you through your " + player.armorName + ", squeezing out a few drops of milk.  ", false);
 		//Tits – megalactating
-		if(player.biggestLactation() >= 3) outputText("Your " + nippleDescript(0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false); 
+		if(player.biggestLactation() >= 3) outputText("Your " + nippleDescript(0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false);
 		//Cock – single
 		if(player.cocks.length == 1) {
 			if(player.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + game.player.cockDescript(0) + " to full hardness in seconds.  ", false);
@@ -120,7 +120,7 @@ public function doDungeon(eventNo:Number):void {
 			//slick
 			if(player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("Squishing wetly, your bottoms become soggy with the flood of fluids leaking from your " + vaginaDescript(0) + ".   Your legs spread apart on their own, begging for any kind of intrusion.  ", false);
 			//normal
-			else outputText("Groaning softly, you feel yourself getting wetter and wetter with arousal.  You wish your sticky bottoms were off so you could let something into your " + vaginaDescript(0) + ".  ", false); 
+			else outputText("Groaning softly, you feel yourself getting wetter and wetter with arousal.  You wish your sticky bottoms were off so you could let something into your " + vaginaDescript(0) + ".  ", false);
 		}
 		outputText("\n\n", false);
 		//New PG
@@ -147,13 +147,13 @@ public function doDungeon(eventNo:Number):void {
 		doNext(11019);
 		return;
 	}
-	//Succubus voluntary bad end round 3. 
+	//Succubus voluntary bad end round 3.
 	if(eventNo == 11019) {
 		spriteSelect(55);
-		outputText("The beautiful seductress that bound you giggles and says, \"<i>Oh it only gets better baby,</i>\" as she pushes another button.  You see a number of needles lower from the equipment above.  Two pause at chest height.  Faded parchment labels on the tubes mark them as \"Gro+\".  You spot the same markings on at least some of the hoses gathering around your groin.  A few are marked with different labels, but you cannot make out the demonic script.  As one, the hoses rear back, then plunge forward, burying themselves into your supple flesh and injecting their drugged payload into your body.  It hurts at first, but the drugs fog your mind, blocking the pain with pulsing waves of desire.   You begin cumming as your body erupts with artificial pleasure.\n\n", true); 
+		outputText("The beautiful seductress that bound you giggles and says, \"<i>Oh it only gets better baby,</i>\" as she pushes another button.  You see a number of needles lower from the equipment above.  Two pause at chest height.  Faded parchment labels on the tubes mark them as \"Gro+\".  You spot the same markings on at least some of the hoses gathering around your groin.  A few are marked with different labels, but you cannot make out the demonic script.  As one, the hoses rear back, then plunge forward, burying themselves into your supple flesh and injecting their drugged payload into your body.  It hurts at first, but the drugs fog your mind, blocking the pain with pulsing waves of desire.   You begin cumming as your body erupts with artificial pleasure.\n\n", true);
 		//Nipples
 		outputText("The suction pulls squirt after squirt of milk from your breasts as your " + allBreastsDescript() + " start to grow, swelling heavier as they enlarge to produce more milk.  You squeal with delight as your nipples turn black, tainted by corruptive chemicals that are slowly dripped into you.  ", false);
-		//Dick  
+		//Dick
 		if(player.cocks.length > 0) {
 			outputText("The vacuum-pump on your cock noisily sucks down all your spoo, ", false);
 			//High cum variant
@@ -175,7 +175,7 @@ public function doDungeon(eventNo:Number):void {
 			outputText("You are given a brief moment of clarity as you see Marble standing in front of you.  ", false);
 			outputText("She seems to be in a state of bliss. Looking down, you see that she is wearing some kind of pair of pink panties.  Marble gasps and the surface of the panties ripples; it's a living thing!\n\nYou look around and realize you aren't alone.  ", false);
 		}
-		else outputText("Later on, in a moment of clarity, you look around and realize you aren't alone.  ", false);		
+		else outputText("Later on, in a moment of clarity, you look around and realize you aren't alone.  ", false);
 		outputText("In rows alongside you are a large number of other captives, every single one endowed with freakishly sized breasts, and nearly all gifted with throbbing demonic dicks.  Some small analytical part of you notes that the farther down the line they are, the older and larger they have become.   You look down and see your own massive tits, shiny tainted nipples still pumping out streams of milk.  The huge throbbing demon-cock between your legs begins to get hard as the machines crank back up, filling you full of happy horniness.", false);
 		if(player.statusAffectv3(StatusAffects.Marble) == 1 || player.findStatusAffect(StatusAffects.CampMarble) >= 0) outputText("  With Marble here too, you'll be around for a long time.", false);
 		gameOver();
@@ -303,7 +303,7 @@ public function doDungeon(eventNo:Number):void {
 				if(player.lust >= 50 || player.cor >= 50) {
 					outputText("  Blushing at the scent and feel of cum on your " + player.legs() + ", you twist and pull free.  You find yourself wondering what this demon's dick would taste like.", false);
 					dynStats("lus", 8 + player.cor/20);
-					
+
 				}
 				else {
 					outputText("  Disgusted, you pull away from the purplish monstrosity, the act made easier by your well-slimed " + player.legs() + ".", false);
@@ -364,7 +364,7 @@ public function doDungeon(eventNo:Number):void {
 	}
 	//UNUSED
 	if(eventNo == 11037) {
-		
+
 	}
 	//Incubus Loss Rape
 	if(eventNo == 11038) {
@@ -394,7 +394,7 @@ public function doDungeon(eventNo:Number):void {
 		}
 		//Second/third times...
 		else {
-			//[[2nd time]] 
+			//[[2nd time]]
 			if(player.statusAffectv1(StatusAffects.TensionReleased) == 0) {
 				outputText("You eagerly put on the modified harness and let them inject you with more of those body-altering chemicals.  As they fill you with artificial lust and desire, you cry out and beg for more.  They oblige you and give you a larger dose than the first time.  ", false);
 				//Grow dick!
@@ -470,7 +470,7 @@ public function doDungeon(eventNo:Number):void {
 				gameOver();
 				return;
 			}
-			
+
 		}
 		doNext(camp.campMenu);
 		return;
@@ -559,7 +559,7 @@ public function doDungeon(eventNo:Number):void {
 			outputText("<b>Your chest swells out, forming rounded C-cup globes, capped with tiny erect nipples!</b>", true);
 			player.createBreastRow();
 			player.breastRows[0].breastRating = 3;
-			player.nippleLength = .25;			
+			player.nippleLength = .25;
 		}
 		//Singular row - cup size + 3.  Nipple size to 1" if smaller.
 		else if(player.breastRows.length <= 1) {
@@ -624,7 +624,7 @@ public function doDungeon(eventNo:Number):void {
 			else {
 				outputText("Your " + game.player.cockDescript(0) + " leaps forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + game.player.cockDescript(0) + " gets longer and thicker.  It pulsates, as if promising dark pleasure as it settles into its new enhanced size.", false);
 				player.cocks[0].cockLength += 6 + rand(10);
-				player.cocks[0].thickenCock(3);				
+				player.cocks[0].thickenCock(3);
 			}
 		}
 		if(player.cocks.length > 1) {
@@ -635,14 +635,14 @@ public function doDungeon(eventNo:Number):void {
 				while(temp > 0) {
 					temp--;
 					player.cocks[temp].cockLength += 6 + rand(10);
-					player.cocks[temp].thickenCock(3);	
+					player.cocks[temp].thickenCock(3);
 				}
 			}
 			//Not yet full of demoncocks...
 			else {
 				outputText("You smile, watching your " + player.multiCockDescriptLight() + " grow longer.  Inches of newfound dick-flesh erupt from your crotch in response to omnibus' dark magics.  Before you can play with your transformed pleasure tools, a wave of burning desire passes through you.  You watch", false);
 				if(player.cor < 80) outputText(" in horror", false);
-				else outputText(" curiously", false);			
+				else outputText(" curiously", false);
 				outputText(" as the skin of your " + player.multiCockDescriptLight() + " turns shiny and purplish-black.  Corrupt nodules begin to spring up over the entire length of each dick.  ", false);
 				temp = player.cocks.length;
 				while(temp > 0) {
@@ -787,7 +787,7 @@ public function doDungeon(eventNo:Number):void {
 				outputText("The constant fluids leaking from your " + vaginaDescript(0) + " slow down, then stop.  ", false);
 				player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
 				temp++;
-			}		
+			}
 		}
 		//Nothing changed
 		if(temp == 0) {
@@ -843,13 +843,13 @@ public function doDungeon(eventNo:Number):void {
 			player.createStatusAffect(StatusAffects.FoundFactory,0,0,0,0);
 		}
 		outputText("Rounding a bend in the mountainous foothills, you stumble upon a large and rusted iron structure belching cloying pink smoke from its tall smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside and disappearing into a hole in its face.  It must be some kind of demonic factory, though you've no idea what they could be pumping out.  High atop the roof, you spy a huge water tower fed by smaller pipes that run down the building's side and off in the direction of the lake.\n\nThere are no windows to the hellish factory, with only a single iron door adorning the front wall.  If you go inside there will undoubtedly be many demons to fight and little chance to escape. Death or worse awaits should you fall into their hands.\n\nDo you enter the factory or leave?", true);
-		
+
 		simpleChoices("Enter",11012,"",0,"",0,"",0,"Leave",camp.returnToCampUseOneHour);
 		return;
 	}
 	//Shut down factory!
 	if(eventNo == 11058) {
-		outputText("You resolve to shut down the factory, then destroy the controls.  You spend a few moments making sure you aren't about to do something disastrous.  A few deep breaths calm your nerves, letting you focus on pressing the correct buttons.  The constant thrumming of the machinery slowly dies down, closely followed by a chorus of disappointed moans.  You step over to the window and watch as the captives come out of their drug induced sex-comas.  A great deal of them gather up and leave, though you are unsure what their destination is.  A few seem to be gathering back around the equipment, and puzzling out how to operate it.  Maybe they liked being here...", true); 
+		outputText("You resolve to shut down the factory, then destroy the controls.  You spend a few moments making sure you aren't about to do something disastrous.  A few deep breaths calm your nerves, letting you focus on pressing the correct buttons.  The constant thrumming of the machinery slowly dies down, closely followed by a chorus of disappointed moans.  You step over to the window and watch as the captives come out of their drug induced sex-comas.  A great deal of them gather up and leave, though you are unsure what their destination is.  A few seem to be gathering back around the equipment, and puzzling out how to operate it.  Maybe they liked being here...", true);
 		doNext(camp.campMenu);
 		player.createStatusAffect(StatusAffects.DungeonShutDown,0,0,0,0);
 		return;
@@ -1218,4 +1218,4 @@ public function doDungeon(eventNo:Number):void {
 }
 */
 
-//BLAH!
+// BLAH!

@@ -1,19 +1,12 @@
-  
 
-	 
-	 
+/**
+ * ...
+ * @author Yoffy
+ */
+export class NonPlayer extends Character {
 
-	/**
-	 * ...
-	 * @author Yoffy
-	 */
-	export class NonPlayer extends Character
-	{
-		
-		public  constructor(game:CoC)
-		{
-			super(game);
-		}
-		
-	}
+    public constructor(game: CoC) {
+        super(game);
+    }
 
+}

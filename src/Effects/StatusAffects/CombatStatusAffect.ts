@@ -1,16 +1,10 @@
 /**
  * Created by aimozg on 31.01.14.
  */
- 
 
-	 
+export class CombatStatusAffect extends StatusAffectType {
 
-	export class CombatStatusAffect extends StatusAffectType
-	{
-
-		public  constructor(id:string)
-		{
-			super(id);
-		}
-	}
-
+    public constructor(id: string) {
+        super(id);
+    }
+}
