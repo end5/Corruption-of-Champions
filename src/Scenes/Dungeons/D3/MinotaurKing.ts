@@ -39,11 +39,11 @@
 			this.armorName = "rags";
 			this.armorDef = 60;
 			
-			CONFIG::release
-			{
+			// CONFIG::release
+			// {
 				this.bonusHP = 850;
 				this.lustVuln = 0.05;
-			}
+			// }
 			
 			this.gems = 75 + rand(50);
 			this.level = 22;

@@ -10,14 +10,14 @@ export function mainMenu(e:MouseEvent = undefined):void
 {
 	stage.focus = (mainView as MainView).mainText;
 	
-	if(CONFIG::debug)
-	{
-		CoC_Settings.debugBuild = true;
-	}
-	else
-	{
+	// if(CONFIG::debug)
+	// {
+	// 	CoC_Settings.debugBuild = true;
+	// }
+	// else
+	// {
 		CoC_Settings.debugBuild = false;
-	}
+	// }
 
 	if (mainView.aCb.parent != null)
 	{

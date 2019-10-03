@@ -74,7 +74,7 @@
 		classes.CoC: The Document class of Corruption of the Champions.
 	****/
 		
-	[SWF( width="1000", height="800", pageTitle="Corruption of Champions" )]
+	// [SWF( width="1000", height="800", pageTitle="Corruption of Champions" )]
 
 	export class CoC extends MovieClip
 	{

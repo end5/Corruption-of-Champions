@@ -4,7 +4,7 @@
 	
 	export class CockTypesEnum extends Enum
 	{
-		{initEnum(CockTypesEnum);}
+		// {initEnum(CockTypesEnum);}
 		
 		/* Cock types
 		 * 0 - human
@@ -44,7 +44,7 @@
 		public static  BEE:CockTypesEnum = new CockTypesEnum("insect");
 		public static  UNDEFINED:CockTypesEnum = new CockTypesEnum("");
 		
-		function CockTypesEnum(i_group:string = "") { _group = i_group; }
+		// function CockTypesEnum(i_group:string = "") { _group = i_group; }
 		private  _group:string;
 		
 		public  get Group():string 

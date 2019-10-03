@@ -37,7 +37,7 @@
 
 		//The magic embedding sauce. Skips around sandbox issue by embedding the
 		//xml into the swf. Makes it possible to load images even from a browser.
-		[Embed(source="../../img/images.xml",mimeType="application/octet-stream")]
+		// [Embed(source="../../img/images.xml",mimeType="application/octet-stream")]
 
 		private static  XML_IMAGES:Class;
 		private  _imgListXML:XML;
@@ -66,7 +66,7 @@
 					for (const k = 0; k < _imgListXML.ExtensionList.ExtensionType.length(); k++)
 					{
 						// Programmatic extension concatenation! Woot.
-						_allImagePaths[_imgListXML.ImageList.ImageSet[i].ImageFile[j]+"."+_imgListXML.ExtensionList.ExtensionType[k]] = _imgListXML.ImageList.ImageSet[i].@id;
+						_allImagePaths[_imgListXML.ImageList.ImageSet[i].ImageFile[j]+"."+_imgListXML.ExtensionList.ExtensionType[k]] = _imgListXML.ImageList.ImageSet[i].id;
 					}
 				}
 			}
@@ -321,4 +321,3 @@
 			scrollBar.update();
 		}
 	}
-

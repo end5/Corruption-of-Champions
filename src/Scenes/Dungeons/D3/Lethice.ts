@@ -38,11 +38,11 @@
 			this.armorName = "wraps";
 			this.armorDef = 15;
 			
-			CONFIG::release
-			{
+			// CONFIG::release
+			// {
 				this.bonusHP = 650;
 				this.lustVuln = 0.15;
-			}
+			// }
 			
 			this.gems = 75 + rand(50);
 			this.level = 25;

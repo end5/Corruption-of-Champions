@@ -5,12 +5,12 @@
 	 
 	 
 
-	CONFIG::AIR 
-	{
+	// CONFIG::AIR 
+	// {
 		 
 		 
 		 
-	}
+	// }
 	
 	 
 	 
@@ -47,9 +47,9 @@ export class Saves {
 		gearStorageGet = gearStorageDirectGet;
 	}
 
-CONFIG::AIR {
-public  airFile:File;
-}
+// CONFIG::AIR {
+// public  airFile:File;
+// }
 public  file:FileReference;
 public  loader:URLLoader;
 
@@ -107,98 +107,98 @@ public  loadSaveDisplay(saveFile:Record<string, any>, slotName:string):string
 	}
 }
 
-CONFIG::AIR
-{
+// CONFIG::AIR
+// {
 
-public  loadScreenAIR():void
-{
-	var airSaveDir:File = File.documentsDirectory.resolvePath(savedGameDir);
-	var fileList:any[] = new Array();
-	var maxSlots:number = saveFileNames.length;
-	var slots:any[] = new Array(maxSlots);
-	var gameObjects:any[] = new Array(maxSlots);
+// public  loadScreenAIR():void
+// {
+// 	var airSaveDir:File = File.documentsDirectory.resolvePath(savedGameDir);
+// 	var fileList:any[] = new Array();
+// 	var maxSlots:number = saveFileNames.length;
+// 	var slots:any[] = new Array(maxSlots);
+// 	var gameObjects:any[] = new Array(maxSlots);
 
-	try
-	{
-		airSaveDir.createDirectory();
-		fileList = airSaveDir.getDirectoryListing();
-	}
-	catch (error:Error)
-	{
-		outputText("Error reading save directory: " + airSaveDir.url + " (" + error.message + ")", true);
-		return;		
-	}
-	outputText("<b><u>Slot: Sex,  Game Days Played</u></b>\r", true);
+// 	try
+// 	{
+// 		airSaveDir.createDirectory();
+// 		fileList = airSaveDir.getDirectoryListing();
+// 	}
+// 	catch (error:Error)
+// 	{
+// 		outputText("Error reading save directory: " + airSaveDir.url + " (" + error.message + ")", true);
+// 		return;		
+// 	}
+// 	outputText("<b><u>Slot: Sex,  Game Days Played</u></b>\r", true);
 	
-	var i:uint = 0;
-	for (const fileCount = 0; fileCount < fileList.length; fileCount++)
-	{
-		// We can only handle maxSlots at this time
-		if (i >= maxSlots)
-			break;
+// 	var i:uint = 0;
+// 	for (const fileCount = 0; fileCount < fileList.length; fileCount++)
+// 	{
+// 		// We can only handle maxSlots at this time
+// 		if (i >= maxSlots)
+// 			break;
 
-		// Only check files expected to be save files
-		var pattern:RegExp = /\.coc$/i;
-		if (!pattern.test(fileList[fileCount].url))
-			continue;
+// 		// Only check files expected to be save files
+// 		var pattern:RegExp = /\.coc$/i;
+// 		if (!pattern.test(fileList[fileCount].url))
+// 			continue;
 
-		gameObjects[i] = getGameObjectFromFile(fileList[fileCount]);
-		outputText(loadSaveDisplay(gameObjects[i], String(i+1)), false);
+// 		gameObjects[i] = getGameObjectFromFile(fileList[fileCount]);
+// 		outputText(loadSaveDisplay(gameObjects[i], String(i+1)), false);
 				
-		if (gameObjects[i].data.exists)
-		{
-			//trace("Creating function with indice = ", i);
-			(function(i:number):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
-			{
-				slots[i] = function() : void 		// Anonymous functions FTW
-				{
-					trace("Loading save with name ", fileList[fileCount].url, " at index ", i);
-					outputText("", true);
-					loadGameObject(gameObjects[i]);
-					outputText("Slot " + String(i+1) + " Loaded!");
-					statScreenRefresh();
-					doNext(playerMenu);
-				}
-			})(i);
-		}
-		else
-		{
-			slots[i] = null;		// You have to set the parameter to 0 to disable the button
-		}
-		i++;
-	}
+// 		if (gameObjects[i].data.exists)
+// 		{
+// 			//trace("Creating function with indice = ", i);
+// 			(function(i:number):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+// 			{
+// 				slots[i] = function() : void 		// Anonymous functions FTW
+// 				{
+// 					trace("Loading save with name ", fileList[fileCount].url, " at index ", i);
+// 					outputText("", true);
+// 					loadGameObject(gameObjects[i]);
+// 					outputText("Slot " + String(i+1) + " Loaded!");
+// 					statScreenRefresh();
+// 					doNext(playerMenu);
+// 				}
+// 			})(i);
+// 		}
+// 		else
+// 		{
+// 			slots[i] = null;		// You have to set the parameter to 0 to disable the button
+// 		}
+// 		i++;
+// 	}
 	
-	choices("Slot 1", slots[0], 
-	"Slot 2", slots[1], 
-	"Slot 3", slots[2], 
-	"Slot 4", slots[3], 
-	"Slot 5", slots[4], 
-	"Slot 6", slots[5], 
-	"Slot 7", slots[6],
-	"Slot 8", slots[7], 
-	"Slot 9", slots[8], 
-	"Back", returnToSaveMenu);
-}
+// 	choices("Slot 1", slots[0], 
+// 	"Slot 2", slots[1], 
+// 	"Slot 3", slots[2], 
+// 	"Slot 4", slots[3], 
+// 	"Slot 5", slots[4], 
+// 	"Slot 6", slots[5], 
+// 	"Slot 7", slots[6],
+// 	"Slot 8", slots[7], 
+// 	"Slot 9", slots[8], 
+// 	"Back", returnToSaveMenu);
+// }
 
-public  getGameObjectFromFile(aFile:File):Record<string, any>
-{
-	var stream:FileStream = new FileStream();
-	var bytes:ByteArray = new ByteArray();
-	try
-	{
-		stream.open(aFile, FileMode.READ);
-		stream.readBytes(bytes);
-		stream.close();
-		return bytes.readObject();
-	}
-	catch (error:Error)
-	{
-		outputText("Failed to read save file, " + aFile.url + " (" + error.message + ")", true);
-	}
-	return null;
- }
+// public  getGameObjectFromFile(aFile:File):Record<string, any>
+// {
+// 	var stream:FileStream = new FileStream();
+// 	var bytes:ByteArray = new ByteArray();
+// 	try
+// 	{
+// 		stream.open(aFile, FileMode.READ);
+// 		stream.readBytes(bytes);
+// 		stream.close();
+// 		return bytes.readObject();
+// 	}
+// 	catch (error:Error)
+// 	{
+// 		outputText("Failed to read save file, " + aFile.url + " (" + error.message + ")", true);
+// 	}
+// 	return null;
+//  }
 
-}
+// }
 
 public  loadScreen():void
 {
@@ -928,34 +928,34 @@ public  saveGameObject(slot:string, isFile:boolean):void
 			//outputText(serializeToString(saveFile.data), true);
 			var bytes:ByteArray = new ByteArray();
 			bytes.writeObject(saveFile);
-			CONFIG::AIR
-			{
-				// saved filename: "name of character".coc
-				var airSaveDir:File = File.documentsDirectory.resolvePath(savedGameDir);
-				var airFile:File = airSaveDir.resolvePath(player.short + ".coc");
-				var stream:FileStream = new FileStream();
-				try
-				{
-					airSaveDir.createDirectory();
-					stream.open(airFile, FileMode.WRITE);
-					stream.writeBytes(bytes);
-					stream.close();
-					outputText("Saved to file: " + airFile.url, true);
-					doNext(playerMenu);
-				}
-				catch (error:Error)
-				{
-					backupAborted = true;
-					outputText("Failed to write to file: " + airFile.url + " (" + error.message + ")", true);
-					doNext(playerMenu);
-				}
-			}
-			CONFIG::STANDALONE
-			{
+			// CONFIG::AIR
+			// {
+			// 	// saved filename: "name of character".coc
+			// 	var airSaveDir:File = File.documentsDirectory.resolvePath(savedGameDir);
+			// 	var airFile:File = airSaveDir.resolvePath(player.short + ".coc");
+			// 	var stream:FileStream = new FileStream();
+			// 	try
+			// 	{
+			// 		airSaveDir.createDirectory();
+			// 		stream.open(airFile, FileMode.WRITE);
+			// 		stream.writeBytes(bytes);
+			// 		stream.close();
+			// 		outputText("Saved to file: " + airFile.url, true);
+			// 		doNext(playerMenu);
+			// 	}
+			// 	catch (error:Error)
+			// 	{
+			// 		backupAborted = true;
+			// 		outputText("Failed to write to file: " + airFile.url + " (" + error.message + ")", true);
+			// 		doNext(playerMenu);
+			// 	}
+			// }
+			// CONFIG::STANDALONE
+			// {
 				file = new FileReference();
 				file.save(bytes, null);
 				outputText("Attempted to save to file.", true);
-			}
+			// }
 		}
 	}
 	else if (!processingError)
@@ -1039,17 +1039,17 @@ public  openSave():void
 	// Block when running the chaos monkey
 	if (!(game.monkey.run))
 	{
-		CONFIG::AIR
-		{
-			loadScreenAIR();
-		}
-		CONFIG::STANDALONE
-		{
+		// CONFIG::AIR
+		// {
+		// 	loadScreenAIR();
+		// }
+		// CONFIG::STANDALONE
+		// {
 			file = new FileReference();
 			file.addEventListener(Event.SELECT, onFileSelected);
 			file.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
 			file.browse();
-		}
+		// }
 		//var fileObj : Object = readObjectFromStringBytes("");
 		//loadGameFile(fileObj);
 	}
@@ -1058,18 +1058,18 @@ public  openSave():void
 
 public  onFileSelected(evt:Event):void
 {
-	CONFIG::AIR
-	{
-		airFile.addEventListener(Event.COMPLETE, onFileLoaded);
-		airFile.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
-		airFile.load();
-	}
-	CONFIG::STANDALONE
-	{
+	// CONFIG::AIR
+	// {
+	// 	airFile.addEventListener(Event.COMPLETE, onFileLoaded);
+	// 	airFile.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+	// 	airFile.load();
+	// }
+	// CONFIG::STANDALONE
+	// {
 		file.addEventListener(Event.COMPLETE, onFileLoaded);
 		file.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
 		file.load();
-	}
+	// }
 }
 
 public  onFileLoaded(evt:Event):void
@@ -1114,13 +1114,13 @@ public  onDataLoaded(evt:Event):void
 		var tmpObj:Record<string, any> = loader.data.readObject();
 		trace("Read in object = ", tmpObj);
 		
-		CONFIG::debug 
-		{
-			if (tmpObj == null)
-			{
-				throw new Error("Bad Save load?"); // Re throw error in debug mode.
-			}
-		}
+		// CONFIG::debug 
+		// {
+		// 	if (tmpObj == null)
+		// 	{
+		// 		throw new Error("Bad Save load?"); // Re throw error in debug mode.
+		// 	}
+		// }
 		loadGameObject(tmpObj);
 		outputText("Loaded Save");
 	}

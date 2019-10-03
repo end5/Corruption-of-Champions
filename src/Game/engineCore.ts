@@ -826,20 +826,20 @@ function buildFuncLookupDict(object: *=null, prefix: string = ""): void {
 	var typeDesc: XML = describeType(object);
 	//trace("TypeDesc - ", typeDesc)
 
-	for (const node of typeDesc..method) {
+	for (const node of typeDesc.method) {
 		// return the method name if the thisObject of f (t) 
 		// has a property by that name 
 		// that is not null (null = doesn't exist) and 
 		// is strictly equal to the function we search the name of
-		//trace("this[node.@name] = ", this[node.@name], " node.@name = ", node.@name)
-		if (object[node.@name] != null)
-		this.funcLookups[object[node.@name]] = prefix + node.@name;
+		//trace("this[node.name] = ", this[node.name], " node.name = ", node.name)
+		if (object[node.name] != null)
+		this.funcLookups[object[node.name]] = prefix + node.name;
 	}
-	for (node of typeDesc..variable) {
-		if (node.@type.toString().indexOf("classes.Scenes.") == 0 ||
-			node.metadata.@name.contains("Scene")) {
-			if (object[node.@name]!= null) {
-				buildFuncLookupDict(object[node.@name], node.@name+".");
+	for (node of typeDesc.variable) {
+		if (node.type.toString().indexOf("classes.Scenes.") == 0 ||
+			node.metadata.name.contains("Scene")) {
+			if (object[node.name]!= null) {
+				buildFuncLookupDict(object[node.name], node.name+".");
 			}
 		}
 	}

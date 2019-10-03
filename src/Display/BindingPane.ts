@@ -217,7 +217,7 @@
 		{
 		
 			var keyDescriptions:XML = describeType(Keyboard);
-			var keyNames:XMLList = keyDescriptions..constant.@name;
+			var keyNames:XMLList = keyDescriptions.constant.name;
 			
 			_keyDict = new Dictionary();
 			
@@ -239,4 +239,3 @@
 			return _functions;
 		}
 	}
-

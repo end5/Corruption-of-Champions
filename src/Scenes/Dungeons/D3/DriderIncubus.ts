@@ -38,11 +38,11 @@
 			this.armorName = "chitin";
 			this.armorDef = 40;
 			
-			CONFIG::release
-			{
+			// CONFIG::release
+			// {
 				this.bonusHP = 500;
 				this.lustVuln = 0.45;
-			}
+			// }
 			
 			this.gems = 75 + rand(50);
 			this.level = 22;

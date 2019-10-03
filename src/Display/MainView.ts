@@ -83,13 +83,13 @@
 
 		protected  model :GameModel;
 
-		public 
-			newGameBG :MovieClip, 
-			dataBG :MovieClip, 
-			statsBG :MovieClip, 
-			levelBG :MovieClip, 
-			perksBG :MovieClip, 
-			appearanceBG :MovieClip;
+		 
+		public	newGameBG :MovieClip, 
+		public	dataBG :MovieClip, 
+		public	statsBG :MovieClip, 
+		public	levelBG :MovieClip, 
+		public	perksBG :MovieClip, 
+		public	appearanceBG :MovieClip;
 
 		public  constructor( model :GameModel = null, options :Record<string, any> = null ) :void {
 			// Note: Currently we can't touch this on construction

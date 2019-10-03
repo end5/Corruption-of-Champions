@@ -8,9 +8,9 @@
 	 
 
 	export class ToolTipView extends Sprite {
-		public 
-			bg :Sprite,
-			tf :TextField;
+		 
+		public	bg :Sprite,
+		public	tf :TextField;
 
 		protected  model :GameModel;
 

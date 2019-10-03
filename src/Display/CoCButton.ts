@@ -17,18 +17,17 @@
 	 
 
 	export class CoCButton extends MovieClip {
-		public static 
+		 
 			// How far down from the top of our registration point the TF is.
-			LABEL_FIELD_Y_OFFSET :number = 9,
-			LABEL_FIELD_HEIGHT :number = 25;
+        public static LABEL_FIELD_Y_OFFSET :number = 9,
+        public static LABEL_FIELD_HEIGHT :number = 25;
 
-		protected 
-			_labelField :TextField,
-			_backgroundGraphic :MovieClip,
-			_callback :() => void;
+		protected	_labelField :TextField,
+		protected	_backgroundGraphic :MovieClip,
+		protected	_callback :() => void;
 
-		public 
-			toolTipText :string;
+		 
+		public toolTipText :string;
 
 		public  constructor( labelField :TextField = null, backgroundGraphic :MovieClip = null ) :void {
 			if( backgroundGraphic ) {
