@@ -18,7 +18,7 @@ export class LustStick extends Consumable {
 
     public useItem(): boolean {
         if (game.player.findStatusAffect(StatusAffects.LustStickApplied) >= 0) {
-            game.player.addStatusValue(StatusAffects.LustStickApplied, 1, Utils.rand(12) + 12);
+            game.player.addStatusValue(StatusAffects.LustStickApplied, 1, rand(12) + 12);
             outputText("You carefully open the sweet-smelling tube and smear the lipstick over the coat you already have on your lips.  <b>No doubt another layer will make it last even longer!</b>  ");
             outputText("You finish and pucker your lips, feeling fairly sexy with your new, thicker makeup on.\n\n");
         }

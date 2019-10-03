@@ -1,5 +1,5 @@
 
-export class Appearance extends Utils {
+export class Appearance  {
     // Eventually, this should contain the entire char appearance.
     // At the moment, it's pretty piecemeal.
     // TODO remove when we have proper enums for this

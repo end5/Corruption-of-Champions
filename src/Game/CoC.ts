@@ -238,7 +238,7 @@ export class CoC extends MovieClip {
     private gameStateDirectSet(value: number): void { gameState = value; }
 
     public rand(max: number): number {
-        return Utils.rand(max);
+        return rand(max);
     }
 
     // holidayz

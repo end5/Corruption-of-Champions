@@ -32,7 +32,7 @@ export class PhoukaWhiskey extends Consumable {
         switch (phoukaWhiskeyDrink(game.player)) {
             case 0: // Player isn't pregnant
                 outputText("You uncork the bottle and drink some whiskey, hoping it will let you relax for a while.\n\nIt's strong stuff and afterwards you worry a bit less about the future.  Surely things will right themselves in the end.");
-                dynStats("cor", Utils.rand(2) + 1, "lus", Utils.rand(8) + 1); // These gains are permanent
+                dynStats("cor", rand(2) + 1, "lus", rand(8) + 1); // These gains are permanent
                 break;
             case 1: // Child is a phouka or satyr, loves alcohol
                 outputText("You uncork the bottle and drink some whiskey, hoping it will help with the gnawing hunger for alcohol you've had since this baby started growing inside you.\n\nYou down the booze in one shot and a wave of contentment washes over you.  It seems your passenger enjoyed the meal.");

@@ -23,7 +23,7 @@ export class Cock {
      */
     public validate(): string {
         let error: string = "";
-        error += Utils.validateNonNegativeNumberFields(this, "Cock.validate", ["cockLength", "cockThickness", "knotMultiplier", "pierced"]);
+        error += validateNonNegativeNumberFields(this, "Cock.validate", ["cockLength", "cockThickness", "knotMultiplier", "pierced"]);
         if (!_isPierced) {
             if (_pShortDesc.length > 0) error += "Not pierced but _pShortDesc = " + _pShortDesc + ". ";
             if (_pLongDesc.length > 0) error += "Not pierced but pLong = " + _pLongDesc + ". ";

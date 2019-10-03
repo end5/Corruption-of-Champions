@@ -2269,7 +2269,7 @@ function incubusBuy(itype: ItemType): void {
         doNext(incubusShop);
         return;
     }
-    doYesNo(Utils.curry(incubusTransact, itype), incubusShop);
+    doYesNo(curry(incubusTransact, itype), incubusShop);
 }
 
 function incubusTransact(itype: ItemType): void {

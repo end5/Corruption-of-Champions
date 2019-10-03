@@ -1,6 +1,6 @@
 // CoC Creature.as
 
-export class Creature extends Utils {
+export class Creature  {
 
     // include "../../includes/appearanceDefs.as";
 
@@ -313,7 +313,7 @@ export class Creature extends Utils {
         let error: string = "";
         // 2. Value boundaries etc
         // 2.1. non-negative Number fields
-        error += Utils.validateNonNegativeNumberFields(this, "Monster.validate", [
+        error += validateNonNegativeNumberFields(this, "Monster.validate", [
             "balls", "ballSize", "cumMultiplier", "hoursSinceCum",
             "tallness", "hipRating", "buttRating", "lowerBody", "armType",
             "skinType", "hairLength", "hairType",
@@ -328,7 +328,7 @@ export class Creature extends Utils {
             "HP", "XP"
         ]);
         // 2.2. non-empty String fields
-        error += Utils.validateNonEmptyStringFields(this, "Monster.validate", [
+        error += validateNonEmptyStringFields(this, "Monster.validate", [
             "short",
             "skinDesc",
             "weaponName", "weaponVerb", "armorName"

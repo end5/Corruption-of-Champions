@@ -41,7 +41,7 @@ export class OvipositionElixir extends Consumable {
         if (game.player.pregnancyIncubation == 0) { // If the player is not pregnant, get preggers with eggs!
             outputText("\n\nThe elixir has an immediate effect on your belly, causing it to swell out slightly as if pregnant.  You guess you'll be laying eggs sometime soon!");
             game.player.knockUp(PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, PregnancyStore.INCUBATION_OVIELIXIR_EGGS, 1, 1);
-            game.player.createStatusAffect(StatusAffects.Eggs, Utils.rand(6), 0, Utils.rand(3) + 5, 0);
+            game.player.createStatusAffect(StatusAffects.Eggs, rand(6), 0, rand(3) + 5, 0);
             return (false);
         }
         let changeOccurred: boolean = false;
@@ -50,16 +50,16 @@ export class OvipositionElixir extends Consumable {
                 // If eggs are small, chance of increase!
                 if (game.player.statusAffectv2(StatusAffects.Eggs) == 0) {
                     // 1 in 2 chance!
-                    if (Utils.rand(3) == 0) {
+                    if (rand(3) == 0) {
                         game.player.addStatusValue(StatusAffects.Eggs, 2, 1);
                         outputText("\n\nYour pregnant belly suddenly feels heavier and more bloated than before.  You wonder what the elixir just did.");
                         changeOccurred = true;
                     }
                 }
                 // Chance of quantity increase!
-                if (Utils.rand(2) == 0) {
+                if (rand(2) == 0) {
                     outputText("\n\nA rumble radiates from your uterus as it shifts uncomfortably and your belly gets a bit larger.");
-                    game.player.addStatusValue(StatusAffects.Eggs, 3, Utils.rand(4) + 1);
+                    game.player.addStatusValue(StatusAffects.Eggs, 3, rand(4) + 1);
                     changeOccurred = true;
                 }
             }

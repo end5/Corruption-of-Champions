@@ -116,11 +116,11 @@ export class BimboLiqueur extends Consumable {
 
             outputText("You sigh and run one hand over your " + game.player.nippleDescript(0) + "s");
             if (game.player.breastRows[0].breastRating < 10) {
-                game.player.breastRows[0].breastRating += 5 + Utils.rand(5);
+                game.player.breastRows[0].breastRating += 5 + rand(5);
                 outputText(", surprised at how large and rounded your expanding breasts have become while fresh tit-flesh continues to spill out around your needy fingers.  They feel so supple and soft, but when you let them go, they still sit fairly high and firm on your chest.  The newer, more generous, " + game.player.breastCup(0) + " cleavage has you moaning with how sensitive it is, pinching a nipple with one hand ");
             }
             else {
-                game.player.breastRows[0].breastRating += 5 + Utils.rand(5);
+                game.player.breastRows[0].breastRating += 5 + rand(5);
                 outputText(", admiring how sensitive they're getting.  The big breasts start getting bigger and bigger, soft chest-flesh practically oozing out between your fingers as the squishy mammaries sprout like weeds, expanding well beyond any hand's ability to contain them.  The supple, " + game.player.breastCup(0) + " boobs still manage to sit high on your chest, almost gravity defying in their ability to generate cleavage.  You pinch a nipple with one hand ");
             }
             dynStats("sen", 20);

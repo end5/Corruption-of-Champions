@@ -32,7 +32,7 @@ export class Reducto extends Consumable {
     private reductoBalls(): void {
         clearOutput();
         outputText("You smear the foul-smelling paste onto your " + game.player.sackDescript() + ".  It feels cool at first but rapidly warms to an uncomfortable level of heat.\n\n");
-        game.player.ballSize -= Utils.rand(4) + 2;
+        game.player.ballSize -= rand(4) + 2;
         if (game.player.ballSize < 1) game.player.ballSize = 1;
         outputText("You feel your scrotum shift, shrinking down along with your " + game.player.ballsDescriptLight() + ".  Within a few seconds the paste has been totally absorbed and the shrinking stops.");
         dynStats("lib", -2, "lus", -10);
@@ -43,7 +43,7 @@ export class Reducto extends Consumable {
         clearOutput();
         outputText("You smear the foul-smelling ointment all over your " + game.player.allBreastsDescript() + ", covering them entirely as the paste begins to get absorbed into your " + game.player.skinDesc + ".\n");
         game.player.shrinkTits(true);
-        if (Utils.rand(2) == 0 && game.player.biggestTitSize() >= 1) {
+        if (rand(2) == 0 && game.player.biggestTitSize() >= 1) {
             outputText("\nThe effects of the paste continue to manifest themselves, and your body begins to change again...");
             game.player.shrinkTits(true);
         }
@@ -64,7 +64,7 @@ export class Reducto extends Consumable {
             outputText("You feel much lighter as your " + game.player.buttDescript() + " jiggles slightly, adjusting to its smaller size.");
         }
         else {
-            game.player.buttRating -= Utils.rand(3) + 1;
+            game.player.buttRating -= rand(3) + 1;
             if (game.player.buttRating < 1) game.player.buttRating = 1;
             outputText("After a few seconds your " + game.player.buttDescript() + " has shrunk to a much smaller size!");
         }
@@ -120,7 +120,7 @@ export class Reducto extends Consumable {
             outputText("You feel much lighter as your [hips] shift slightly, adjusting to their smaller size.");
         }
         else {
-            game.player.hipRating -= Utils.rand(3) + 1;
+            game.player.hipRating -= rand(3) + 1;
             if (game.player.hipRating < 1) game.player.hipRating = 1;
             outputText("After a few seconds your [hips] have shrunk to a much smaller size!");
         }

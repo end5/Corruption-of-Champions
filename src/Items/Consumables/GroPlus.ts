@@ -31,13 +31,13 @@ export class GroPlus extends Consumable {
         game.player.slimeFeed();
         outputText("You sink the needle deep into your " + game.player.sackDescript() + ".  It hurts like hell, but you push down the plunger and the pain vanishes as the needles contents flow into you.\n\n");
         // 1 in 4 BIG growth.
-        if (Utils.rand(4) == 0) {
+        if (rand(4) == 0) {
             outputText("You feel a trembling in your " + game.player.ballsDescriptLight() + " as the chemicals start to go to work.  You can tell they're going to be VERY effective.\n");
-            game.player.ballSize += Utils.rand(4) + 2;
+            game.player.ballSize += rand(4) + 2;
             outputText("They shift, stretching your " + game.player.sackDescript() + " tight as they gain inches of size.  You step to steady yourself as your center of balance shifts due to your newly enlarged " + game.player.ballsDescriptLight() + ".  ");
         }
         else {
-            game.player.ballSize += Utils.rand(2) + 1;
+            game.player.ballSize += rand(2) + 1;
             outputText("You feel your testicles shift, pulling the skin of your " + game.player.sackDescript() + " a little bit as they grow to " + game.player.ballsDescriptLight() + ".  ");
         }
         if (game.player.ballSize > 10) outputText("Walking gets even tougher with the swollen masses between your legs.  Maybe this was a bad idea.");
@@ -50,9 +50,9 @@ export class GroPlus extends Consumable {
         game.player.slimeFeed();
         outputText("You sink the needle into the flesh of your " + game.player.allBreastsDescript() + " injecting each with a portion of the needle.\n\n");
         if (game.player.breastRows.length == 1)
-            game.player.growTits(Utils.rand(5) + 1, 1, true, 1);
+            game.player.growTits(rand(5) + 1, 1, true, 1);
         else
-            game.player.growTits(Utils.rand(2) + 1, game.player.breastRows.length, true, 1);
+            game.player.growTits(rand(2) + 1, game.player.breastRows.length, true, 1);
         dynStats("lus", 10);
         inventory.itemGoNext();
     }
@@ -99,10 +99,10 @@ export class GroPlus extends Consumable {
         outputText("You sink the needle into each of your " + game.player.nippleDescript(0) + "s in turn, dividing the fluid evenly between them.  Though each injection hurts, the pain is quickly washed away by the potent chemical cocktail.\n\n");
         // Grow nipples
         outputText("Your nipples engorge, prodding hard against the inside of your " + game.player.armorName + ".  Abruptly you realize they've grown more than an additional quarter-inch.\n\n");
-        game.player.nippleLength += (Utils.rand(2) + 3) / 10;
+        game.player.nippleLength += (rand(2) + 3) / 10;
         dynStats("lus", 15);
         // NIPPLECUNTZZZ
-        if (!game.player.hasFuckableNipples() && Utils.rand(4) == 0) {
+        if (!game.player.hasFuckableNipples() && rand(4) == 0) {
             let nowFuckable: boolean = false;
             for (const x = 0; x < game.player.breastRows.length; x++) {
                 if (!game.player.breastRows[x].fuckable && game.player.nippleLength >= 2) {

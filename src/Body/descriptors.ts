@@ -97,13 +97,13 @@ export function breastDescript(rowNum: number): string {
 }
 
 export function num2Text(number: number): string {
-    return Utils.num2Text(number);
+    return num2Text(number);
 }
 
 export function num2Text2(number: number): string {
-    return Utils.num2Text2(number);
+    return num2Text2(number);
 }
 
 export function Num2Text(number: number): string {
-    return Utils.Num2Text(number);
+    return Num2Text(number);
 }

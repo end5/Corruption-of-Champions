@@ -9,12 +9,12 @@ export class RizzaRoot extends SimpleConsumable {
         let changes: number = 0;
         let changeLimit: number = 1;
         const counter: number = 0;
-        if (Utils.rand(2) == 0) changeLimit++;
-        if (Utils.rand(3) == 0) changeLimit++;
-        if (Utils.rand(4) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        if (rand(3) == 0) changeLimit++;
+        if (rand(4) == 0) changeLimit++;
         if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         outputText("You chew on the thin red roots.  They have a rubbery texture and the taste is something like lemons and oranges mixed together.  The roots dry out your mouth as you chew them but at the same time they cause a cooling and numbing sensation that’s rather pleasant.");
-        if ((changes < changeLimit) && (player.skinType != 0) && (Utils.rand(6) == 0)) {
+        if ((changes < changeLimit) && (player.skinType != 0) && (rand(6) == 0)) {
             if (player.skinType == 1)
                 outputText("\n\nYour fur itches incessantly, so you start scratching it.  It starts coming off in big clumps before the whole mess begins sloughing off your body.  In seconds, your skin is hairless, or nearly so. <b>You've lost your fur!</b>");
             else if (player.skinType == 2)
@@ -25,13 +25,13 @@ export class RizzaRoot extends SimpleConsumable {
             player.skinType = 0;
             changes += 2;
         }
-        if ((changes < changeLimit) && (player.earType != 4) && (Utils.rand(4) == 0)) {
+        if ((changes < changeLimit) && (player.earType != 4) && (rand(4) == 0)) {
             player.earType = 4;
             changes++;
             outputText("\n\nA weird tingling runs through your scalp as your " + player.hairDescript() + " shifts slightly.  You reach up and your hand bumps against <b>your new pointed elfin ears</b>.  You bet they look cute!");
         }
         if ((changes < changeLimit) && (player.tallness < 108)) {
-            player.tallness += changeLimit - changes + Utils.rand(2); // Add remaining changes as additional height
+            player.tallness += changeLimit - changes + rand(2); // Add remaining changes as additional height
             if (player.tallness > 108) player.tallness = 108;
             outputText("\n\nA shiver runs down your spine.  You realize that it, along with the rest of your frame, is now a bit taller.");
         }

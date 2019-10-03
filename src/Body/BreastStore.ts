@@ -1,5 +1,5 @@
 
-export class BreastStore extends Utils implements SaveAwareInterface {
+export class BreastStore  implements SaveAwareInterface {
     private static MAX_FLAG_VALUE: number = 2999;
     private static BREAST_STORE_VERSION_1: string = "1";
     private static LACTATION_BOOST: any[] = [0, 0, 2, 3, 6, 9, 17]; // Disabled, None, Light, Moderate, Strong, Heavy, Epic

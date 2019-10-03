@@ -35,7 +35,7 @@ export function silly(): boolean {
 
 }
 
-/* Replaced by Utils.formatStringArray, which does almost the same thing in one function
+/* Replaced by formatStringArray, which does almost the same thing in one function
 public function clearList():void {
 	list = [];
 }

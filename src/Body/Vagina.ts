@@ -33,7 +33,7 @@ export class VaginaClass {
 
     public validate(): string {
         let error: string = "";
-        error += Utils.validateNonNegativeNumberFields(this, "VaginaClass.validate", [
+        error += validateNonNegativeNumberFields(this, "VaginaClass.validate", [
             "vaginalWetness", "vaginalLooseness", "type",
             "fullness", "labiaPierced", "clitPierced"
         ]);

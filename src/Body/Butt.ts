@@ -18,7 +18,7 @@ export class AssClass {
 
     public validate(): string {
         let error: string = "";
-        error += Utils.validateNonNegativeNumberFields(this, "AssClass.validate", [
+        error += validateNonNegativeNumberFields(this, "AssClass.validate", [
             "analWetness", "analLooseness", "fullness"
         ]);
         return error;

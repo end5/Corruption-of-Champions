@@ -9,7 +9,7 @@ export class KitsuneGift extends Consumable {
         clearOutput();
         outputText("Curiosity gets the best of you, and you decide to open the package.  After all, what's the worst that could happen?\n\n");
         // Opening the gift randomly results in one of the following:
-        switch (Utils.rand(12)) {
+        switch (rand(12)) {
             // [Fox Jewel]
             case 0:
                 outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, sitting in the center is a small teardrop-shaped jewel!");
@@ -28,8 +28,8 @@ export class KitsuneGift extends Consumable {
             // [Gems]
             case 2:
                 outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it is filled to the brim with shining gems!");
-                const gems: number = 2 + Utils.rand(20);
-                outputText("\n\n<b>You've received " + Utils.num2Text(gems) + " shining gems from the kitsune's gift!  How generous!</b>");
+                const gems: number = 2 + rand(20);
+                outputText("\n\n<b>You've received " + num2Text(gems) + " shining gems from the kitsune's gift!  How generous!</b>");
                 game.player.gems += gems;
                 // add X gems to inventory
                 game.statScreenRefresh();
@@ -51,7 +51,7 @@ export class KitsuneGift extends Consumable {
                     consumables.BLOND_D,
                     consumables.BLACK_D,
                     consumables.WHITEDY
-                ][Utils.rand(4)];
+                ][rand(4)];
 
                 outputText("\n\n<b>You've received " + itype.longName + " from the kitsune's gift!  How generous!</b>  ");
                 // add <color> Dye to inventory
@@ -73,7 +73,7 @@ export class KitsuneGift extends Consumable {
 
                 outputText("\n\n<b>The kitsune's familiar has stolen your gems!</b>");
                 // Lose X gems as though losing in battle to a kitsune
-                game.player.gems -= 2 + Utils.rand(15);
+                game.player.gems -= 2 + rand(15);
                 game.statScreenRefresh();
                 break;
 

@@ -501,7 +501,7 @@ export class Monster extends Creature {
         this.HP = eMaxHP();
         this.XP = totalXP();
         error += super.validate();
-        error += Utils.validateNonNegativeNumberFields(this, "Monster.validate", [
+        error += validateNonNegativeNumberFields(this, "Monster.validate", [
             "lustVuln", "temperment"
         ]);
         return error;
