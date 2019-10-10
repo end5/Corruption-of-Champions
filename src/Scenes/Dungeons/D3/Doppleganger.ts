@@ -243,7 +243,7 @@ export class Doppleganger extends Monster {
         str += String(Math.floor(player.tallness / 12) + " foot " + player.tallness % 12 + " inch tall ");
         str += player.race() + ", with " + player.bodyType() + ". ";
 
-        str += player.mf("His", "Her") + " face is " + player.faceDesc() + ".";
+        str += player.mf("His", "Her") + " face is " + faceDesc(player) + ".";
 
         str += " " + player.mf("His", "Her") + " " + player.hairDescript() + " is parted by";
 

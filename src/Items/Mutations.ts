@@ -4151,7 +4151,7 @@ export class Mutations {
         // Mouth TF
         if (player.faceType != FACE_SHARK_TEETH && rand(3) == 0 && changes < changeLimit) {
             outputText("\n\n", false);
-            if (player.faceType > FACE_HUMAN && player.faceType < FACE_SHARK_TEETH) outputText("Your " + player.face() + " explodes with agony, reshaping into a more human-like visage.  ", false);
+            if (player.faceType > FACE_HUMAN && player.faceType < FACE_SHARK_TEETH) outputText("Your " + face(player) + " explodes with agony, reshaping into a more human-like visage.  ", false);
             player.faceType = FACE_SHARK_TEETH;
             outputText("You firmly grasp your mouth, an intense pain racking your oral cavity. Your gums shift around and the bones in your jaw reset. You blink a few times wondering what just happened. You move over to a puddle to catch sight of your reflection, and you are thoroughly surprised by what you see. A set of retractable shark fangs have grown in front of your normal teeth, and your face has elongated slightly to accommodate them!  They even scare you a little.\n(Gain: 'Bite' special attack)", false);
             changes++;
@@ -4284,7 +4284,7 @@ export class Mutations {
         if (changes == 0 && player.tongueType == TONUGE_SNAKE && player.faceType != FACE_SNAKE_FANGS && rand(3) == 0 && changes < changeLimit) {
             outputText("\n\nWithout warning, you feel your canine teeth jump almost an inch in size, clashing on your gums, cutting yourself quite badly. As you attempt to find a new way to close your mouth without dislocating your jaw, you notice that they are dripping with a bitter, khaki liquid.  Watch out, and <b>try not to bite your tongue with your poisonous fangs!</b>", false);
             if (player.faceType != FACE_HUMAN && player.faceType != FACE_SHARK_TEETH && player.faceType != FACE_BUNNY && player.faceType != FACE_SPIDER_FANGS) {
-                outputText("  As the change progresses, your " + player.face() + " reshapes.  The sensation is far more pleasant than teeth cutting into gums, and as the tingling transformation completes, <b>you've gained with a normal-looking, human visage.</b>");
+                outputText("  As the change progresses, your " + face(player) + " reshapes.  The sensation is far more pleasant than teeth cutting into gums, and as the tingling transformation completes, <b>you've gained with a normal-looking, human visage.</b>");
             }
             player.faceType = FACE_SNAKE_FANGS;
             changes++;
@@ -4534,7 +4534,7 @@ export class Mutations {
         // Intelliloss
         if (rand(4) == 0 && changes < changeLimit) {
             // low intelligence
-            if (player.inte < 15) outputText("\n\nYou feel like something is slipping away from you but can't figure out exactly what's happening.  You scrunch up your " + player.face() + ", trying to understand the situation.  Before you can reach any kind of conclusion, something glitters in the distance, distracting your feeble mind long enough for you to forget the problem entirely.", false);
+            if (player.inte < 15) outputText("\n\nYou feel like something is slipping away from you but can't figure out exactly what's happening.  You scrunch up your " + face(player) + ", trying to understand the situation.  Before you can reach any kind of conclusion, something glitters in the distance, distracting your feeble mind long enough for you to forget the problem entirely.", false);
             // medium intelligence
             else if (player.inte < 50) {
                 outputText("\n\nYour mind feels somewhat sluggish, and you wonder if you should just lie down ", false);
@@ -5136,7 +5136,7 @@ export class Mutations {
         }
         // -Lizard-like face.
         if (player.faceType != FACE_LIZARD && player.skinType == SKIN_TYPE_SCALES && player.earType == EARS_LIZARD && player.tailType == TAIL_TYPE_LIZARD && player.lowerBody == LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(5) == 0) {
-            outputText("\n\nTerrible agony wracks your " + player.face() + " as bones crack and shift.  Your jawbone rearranges while your cranium shortens.  The changes seem to last forever; once they've finished, no time seems to have passed.  Your fingers brush against your toothy snout as you get used to your new face.  It seems <b>you have a toothy, reptilian visage now.</b>", false);
+            outputText("\n\nTerrible agony wracks your " + face(player) + " as bones crack and shift.  Your jawbone rearranges while your cranium shortens.  The changes seem to last forever; once they've finished, no time seems to have passed.  Your fingers brush against your toothy snout as you get used to your new face.  It seems <b>you have a toothy, reptilian visage now.</b>", false);
             player.faceType = FACE_LIZARD;
         }
         if (rand(4) == 0 && player.gills && changes < changeLimit) {
@@ -5426,7 +5426,7 @@ export class Mutations {
             // Human(ish) face
             if (player.faceType == FACE_HUMAN || player.faceType == FACE_SHARK_TEETH) outputText("You catch your nose twitching on its own at the bottom of your vision, but as soon as you focus on it, it stops.  A moment later, some of your teeth tingle and brush past your lips, exposing a white pair of buckteeth!  <b>Your face has taken on some rabbit-like characteristics!</b>", false);
             // Crazy furry TF shit
-            else outputText("You grunt as your " + player.face() + " twists and reforms.  Even your teeth ache as their positions are rearranged to match some new, undetermined order.  When the process finishes, <b>you're left with a perfectly human looking face, save for your constantly twitching nose and prominent buck-teeth.</b>", false);
+            else outputText("You grunt as your " + face(player) + " twists and reforms.  Even your teeth ache as their positions are rearranged to match some new, undetermined order.  When the process finishes, <b>you're left with a perfectly human looking face, save for your constantly twitching nose and prominent buck-teeth.</b>", false);
             player.faceType = FACE_BUNNY;
         }
         // DAH BUNBUN EARZ - requires poofbutt!
@@ -5564,7 +5564,7 @@ export class Mutations {
             if (player.lib < 90) dynStats("lib", 1);
             // (sub 40 lib)
             if (player.lib < 40) {
-                outputText("\n\nA passing flush colors your " + player.face() + " for a second as you daydream about sex. You blink it away, realizing the item seems to have affected your libido.", false);
+                outputText("\n\nA passing flush colors your " + face(player) + " for a second as you daydream about sex. You blink it away, realizing the item seems to have affected your libido.", false);
                 if (player.hasVagina()) outputText(" The moistness of your " + vaginaDescript() + " seems to agree.", false);
                 else if (player.hasCock()) outputText(" The hardness of " + game.player.sMultiCockDesc() + " seems to agree.", false);
                 dynStats("lus", 5);
@@ -5781,7 +5781,7 @@ export class Mutations {
         }
         // -Human face
         if (player.faceType != FACE_HUMAN && changes < changeLimit && (type == 1 || (player.earType == EARS_HUMAN || player.earType == EARS_ELFIN)) && rand(4) == 0) {
-            outputText("\n\nSudden agony sweeps over your " + player.face() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.", false);
+            outputText("\n\nSudden agony sweeps over your " + face(player) + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.", false);
             player.faceType = FACE_HUMAN;
             changes++;
         }
@@ -6983,10 +6983,10 @@ export class Mutations {
                 if (tits) outputText("\n\nThey aren't the only pair to go through a change!  Another row of growing bosom goes through the process with its sisters, getting larger.");
                 else {
                     const select2: number = rand(3);
-                    if (select2 == 1) outputText("\n\nA faint warmth buzzes to the surface of your " + breastDescript(counter) + ", the fluttering tingles seeming to vibrate faster and faster just underneath your " + player.skin() + ".  Soon, the heat becomes uncomfortable, and that row of chest-flesh begins to feel tight, almost thrumming like a newly-stretched drum.  You " + nippleDescript(counter) + "s go rock hard, and though the discomforting feeling of being stretched fades, the pleasant, warm buzz remains.  It isn't until you cup your tingly tits that you realize they've grown larger, almost in envy of the pair above.");
+                    if (select2 == 1) outputText("\n\nA faint warmth buzzes to the surface of your " + breastDescript(counter) + ", the fluttering tingles seeming to vibrate faster and faster just underneath your " + skin(player) + ".  Soon, the heat becomes uncomfortable, and that row of chest-flesh begins to feel tight, almost thrumming like a newly-stretched drum.  You " + nippleDescript(counter) + "s go rock hard, and though the discomforting feeling of being stretched fades, the pleasant, warm buzz remains.  It isn't until you cup your tingly tits that you realize they've grown larger, almost in envy of the pair above.");
                     else if (select2 == 2) outputText("\n\nA faintly muffled gurgle emanates from your " + breastDescript(counter) + " for a split-second, just before your flesh shudders and shakes, stretching your " + player.skinFurScales() + " outward with newly grown breast.  Idly, you cup your hands to your swelling bosom, and though it stops soon, you realize that your breasts have grown closer in size to the pair above.");
                     else {
-                        outputText("\n\nAn uncomfortable stretching sensation spreads its way across the curves of your " + breastDescript(counter) + ", threads of heat tingling through your flesh.  It feels as though your heartbeat has been magnified tenfold within the expanding mounds, your " + player.skin() + " growing flushed with arousal and your " + nippleDescript(counter) + " filling with warmth.  As the tingling heat gradually fades, a few more inches worth of jiggling breast spill forth.  Cupping them experimentally, you confirm that they have indeed grown to be a bit more in line with the size of the pair above.");
+                        outputText("\n\nAn uncomfortable stretching sensation spreads its way across the curves of your " + breastDescript(counter) + ", threads of heat tingling through your flesh.  It feels as though your heartbeat has been magnified tenfold within the expanding mounds, your " + skin(player) + " growing flushed with arousal and your " + nippleDescript(counter) + " filling with warmth.  As the tingling heat gradually fades, a few more inches worth of jiggling breast spill forth.  Cupping them experimentally, you confirm that they have indeed grown to be a bit more in line with the size of the pair above.");
                     }
                 }
                 // Bigger change!
@@ -7368,7 +7368,7 @@ export class Mutations {
         }
         // [Change Skin Type: remove fur or scales, change skin to Tan, Olive, or Light]
         if (player.skinType == SKIN_TYPE_FUR || player.skinType == SKIN_TYPE_SCALES && ((mystic) || (!mystic && rand(2) == 0))) {
-            outputText("\n\nYou begin to tingle all over your " + player.skin() + ", starting as a cool, pleasant sensation but gradually worsening until you are furiously itching all over.");
+            outputText("\n\nYou begin to tingle all over your " + skin(player) + ", starting as a cool, pleasant sensation but gradually worsening until you are furiously itching all over.");
             if (player.skinType == SKIN_TYPE_FUR) outputText("  You stare in horror as you pull your fingers away holding a handful of " + player.hairColor + " fur!  Your fur sloughs off your body in thick clumps, falling away to reveal patches of bare, " + player.skinTone + " skin.");
             else if (player.skinType == SKIN_TYPE_SCALES) outputText("  You stare in horror as you pull your fingers away holding a handful of dried up scales!  Your scales continue to flake and peel off your skin in thick patches, revealing the tender " + player.skinTone + " skin underneath.");
             outputText("  Your skin slowly turns raw and red under your severe scratching, the tingling sensations raising goosebumps across your whole body.  Over time, the itching fades, and your flushed skin resolves into a natural-looking ");
@@ -7390,7 +7390,7 @@ export class Mutations {
                 else player.skinTone = "milky white";
             }
             outputText(player.skinTone + " complexion.");
-            outputText("  <b>You now have " + player.skin() + "!</b>");
+            outputText("  <b>You now have " + skin(player) + "!</b>");
             changes++;
         }
         // Change skin tone if not changed you!
@@ -7402,7 +7402,7 @@ export class Mutations {
             else if (mtoneTemp == 2) player.skinTone = "ashen";
             else if (mtoneTemp == 3) player.skinTone = "sable";
             else player.skinTone = "milky white";
-            outputText(player.skin() + "!</b>");
+            outputText(skin(player) + "!</b>");
             changes++;
         }
         // Change skin tone if not changed you!
@@ -7412,13 +7412,13 @@ export class Mutations {
             if (toneTemp == 0) player.skinTone = "tan";
             else if (toneTemp == 1) player.skinTone = "olive";
             else player.skinTone = "light";
-            outputText(player.skin() + "!</b>");
+            outputText(skin(player) + "!</b>");
             changes++;
         }
         // [Change Skin Color: add "Tattoos"]
         // From Tan, Olive, or Light skin tones
         else if ((mystic && 9999 == 0 && (player.skinTone == "dark" || player.skinTone == "ebony" || player.skinTone == "ashen" || player.skinTone == "sable" || player.skinTone == "milky white")) || (!mystic && 9999 == 0 && (player.skinTone == "tan" || player.skinTone == "olive" || player.skinTone || "light")) && changes < changeLimit) {
-            outputText("You feel a crawling sensation on the surface of your skin, starting at the small of your back and spreading to your extremities, ultimately reaching your face.  You are caught by surprise when you are suddenly assaulted by a blinding flash issuing from areas of your skin, and when the spots finally clear from your vision, an assortment of glowing tribal tattoos adorns your " + player.skin() + ".  The glow gradually fades, but the distinctive ");
+            outputText("You feel a crawling sensation on the surface of your skin, starting at the small of your back and spreading to your extremities, ultimately reaching your face.  You are caught by surprise when you are suddenly assaulted by a blinding flash issuing from areas of your skin, and when the spots finally clear from your vision, an assortment of glowing tribal tattoos adorns your " + skin(player) + ".  The glow gradually fades, but the distinctive ");
             if (mystic) outputText("angular");
             else outputText("curved");
             outputText(" markings remain, as if etched into your skin.");

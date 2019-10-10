@@ -57,11 +57,11 @@ export function appearance(e: MouseEvent = null): void {
     // Face
     if (player.faceType == FACE_HUMAN || player.faceType == FACE_SHARK_TEETH || player.faceType == FACE_BUNNY || player.faceType == FACE_SPIDER_FANGS || player.faceType == FACE_FERRET_MASK) {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
-            outputText("  Your face is human in shape and structure, with " + player.skin() + ".", false);
+            outputText("  Your face is human in shape and structure, with " + skin(player) + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  Under your " + player.skinFurScales() + " you have a human-shaped head with " + player.skin(true, false) + ".", false);
+            outputText("  Under your " + player.skinFurScales() + " you have a human-shaped head with " + skin(player, true, false) + ".", false);
         if (player.skinType == SKIN_TYPE_SCALES)
-            outputText("  Your face is fairly human in shape, but is covered in " + player.skin() + ".", false);
+            outputText("  Your face is fairly human in shape, but is covered in " + skin(player) + ".", false);
         if (player.faceType == FACE_SHARK_TEETH)
             outputText("  A set of razor-sharp, retractable shark-teeth fill your mouth and gives your visage a slightly angular appearance.", false);
         else if (player.faceType == FACE_BUNNY)
@@ -78,7 +78,7 @@ export function appearance(e: MouseEvent = null): void {
     else if (player.faceType == FACE_RACCOON_MASK) {
         // appearance for skinheads
         if (player.skinType != SKIN_TYPE_FUR && player.skinType != SKIN_TYPE_SCALES) {
-            outputText("  Your face is human in shape and structure, with " + player.skin());
+            outputText("  Your face is human in shape and structure, with " + skin(player));
             if ((player.skinTone == "ebony" || player.skinTone == "black") && (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO))
                 outputText(", though with your dusky hue, the black raccoon mask you sport isn't properly visible.");
             else outputText(", though it is decorated with a sly-looking raccoon mask over your eyes.");
@@ -89,7 +89,7 @@ export function appearance(e: MouseEvent = null): void {
             if (((player.hairColor == "black" || player.hairColor == "midnight") && (player.skinType == SKIN_TYPE_FUR || player.skinType == SKIN_TYPE_SCALES)))
                 outputText("  Under your " + player.skinFurScales() + " hides a black raccoon mask, barely visible due to your inky hue, and");
             else outputText("  Your " + player.skinFurScales() + " are decorated with a sly-looking raccoon mask, and under them");
-            outputText(" you have a human-shaped head with " + player.skin(true, false) + ".");
+            outputText(" you have a human-shaped head with " + skin(player, true, false) + ".");
         }
     }
     else if (player.faceType == FACE_RACCOON) {
@@ -111,7 +111,7 @@ export function appearance(e: MouseEvent = null): void {
     }
     else if (player.faceType == FACE_BUCKTEETH) {
         // appearance
-        outputText("  Your face is generally human in shape and structure, with " + player.skin());
+        outputText("  Your face is generally human in shape and structure, with " + skin(player));
         if (player.skinType == SKIN_TYPE_FUR || player.skinType == SKIN_TYPE_SCALES)
             outputText(" under your " + player.skinFurScales());
         outputText(" and mousey buckteeth.");
@@ -120,16 +120,16 @@ export function appearance(e: MouseEvent = null): void {
         // appearance
         outputText("  You have a snubby, tapered mouse's face, with whiskers, a little pink nose, and ");
         if (player.skinType != SKIN_TYPE_FUR && player.skinType != SKIN_TYPE_SCALES)
-            outputText(player.skin());
-        else outputText(player.skin() + " under your " + player.skinFurScales());
+            outputText(skin(player));
+        else outputText(skin(player) + " under your " + player.skinFurScales());
         outputText(".  Two large incisors complete it.");
     }
     // Naga
     if (player.faceType == FACE_SNAKE_FANGS) {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
-            outputText("  You have a fairly normal face, with " + player.skin() + ".  The only oddity is your pair of dripping fangs which often hang over your lower lip.", false);
+            outputText("  You have a fairly normal face, with " + skin(player) + ".  The only oddity is your pair of dripping fangs which often hang over your lower lip.", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  Under your " + player.skinFurScales() + " you have a human-shaped head with " + player.skin(true, false) + ".  In addition, a pair of fangs hang over your lower lip, dripping with venom.", false);
+            outputText("  Under your " + player.skinFurScales() + " you have a human-shaped head with " + skin(player, true, false) + ".  In addition, a pair of fangs hang over your lower lip, dripping with venom.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
             outputText("  Your face is fairly human in shape, but is covered in " + player.skinFurScales() + ".  In addition, a pair of fangs hang over your lower lip, dripping with venom.", false);
     }
@@ -138,7 +138,7 @@ export function appearance(e: MouseEvent = null): void {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
             outputText("  Your face is equine in shape and structure.  The odd visage is hairless and covered with " + player.skinFurScales() + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  Your face is almost entirely equine in appearance, even having " + player.skinFurScales() + ".  Underneath the fur, you believe you have " + player.skin(true, false) + ".", false);
+            outputText("  Your face is almost entirely equine in appearance, even having " + player.skinFurScales() + ".  Underneath the fur, you believe you have " + skin(player, true, false) + ".", false);
         if (player.skinType == SKIN_TYPE_SCALES)
             outputText("  You have the face and head structure of a horse, overlaid with glittering " + player.skinFurScales() + ".", false);
     }
@@ -147,16 +147,16 @@ export function appearance(e: MouseEvent = null): void {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
             outputText("  You have a dog-like face, complete with a wet nose.  The odd visage is hairless and covered with " + player.skinFurScales() + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  You have a dog's face, complete with wet nose and panting tongue.  You've got " + player.skinFurScales() + ", hiding your " + player.skin(true, false) + " underneath your furry visage.", false);
+            outputText("  You have a dog's face, complete with wet nose and panting tongue.  You've got " + player.skinFurScales() + ", hiding your " + skin(player, true, false) + " underneath your furry visage.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
             outputText("  You have the facial structure of a dog, wet nose and all, but overlaid with glittering " + player.skinFurScales() + ".", false);
     }
     // cat-face
     if (player.faceType == FACE_CAT) {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
-            outputText("  You have a cat-like face, complete with a cute, moist nose and whiskers.  The " + player.skin() + " that is revealed by your lack of fur looks quite unusual on so feline a face.", false);
+            outputText("  You have a cat-like face, complete with a cute, moist nose and whiskers.  The " + skin(player) + " that is revealed by your lack of fur looks quite unusual on so feline a face.", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  You have a cat-like face, complete with moist nose and whiskers.  Your " + player.skinDesc + " is " + player.hairColor + ", hiding your " + player.skin(true, false) + " underneath.", false);
+            outputText("  You have a cat-like face, complete with moist nose and whiskers.  Your " + player.skinDesc + " is " + player.hairColor + ", hiding your " + skin(player, true, false) + " underneath.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
             outputText("  Your facial structure blends humanoid features with those of a cat.  A moist nose and whiskers are included, but overlaid with glittering " + player.skinFurScales() + ".", false);
         if (player.eyeType != EYES_BLACK_EYES_SAND_TRAP)
@@ -174,7 +174,7 @@ export function appearance(e: MouseEvent = null): void {
     // Lizard-face
     if (player.faceType == FACE_LIZARD) {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
-            outputText("  You have a face resembling that of a lizard, and with your toothy maw, you have quite a fearsome visage.  The reptilian visage does look a little odd with just " + player.skin() + ".", false);
+            outputText("  You have a face resembling that of a lizard, and with your toothy maw, you have quite a fearsome visage.  The reptilian visage does look a little odd with just " + skin(player) + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
             outputText("  You have a face resembling that of a lizard.  Between the toothy maw, pointed snout, and the layer of " + player.skinFurScales() + " covering your face, you have quite the fearsome visage.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
@@ -191,7 +191,7 @@ export function appearance(e: MouseEvent = null): void {
         outputText(" and shaped like that of a kangaroo, somewhat rabbit-like except for the extreme length of your odd visage.", false);
     }
     // M/F stuff!
-    outputText("  It has " + player.faceDesc() + ".", false);
+    outputText("  It has " + faceDesc(player) + ".", false);
     // Eyes
     if (player.eyeType == EYES_FOUR_SPIDER_EYES)
         outputText("  In addition to your primary two eyes, you have a second, smaller pair on your forehead.", false);

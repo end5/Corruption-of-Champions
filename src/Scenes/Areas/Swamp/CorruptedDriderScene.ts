@@ -178,7 +178,7 @@ export class CorruptedDriderScene {
         if (player.cumQ() > 1000) outputText("  Amazingly, you actually manage to cum enough to fill her massive womb, and after the first few squirts, the cum slowly bubbles out around your shaft with each fresh deposit of jism.", false);
         outputText("\n\n", false);
 
-        outputText("While you're distracted by the repeated contrast of tension and relief emanating from " + game.player.sMultiCockDesc() + ", the drider leans up and kisses your neck, humming against your throat as you squirt the last of your orgasmic goop into her vagina.  You slump into her arms, spent by the effort of fucking her so fast and cumming so hard.  As you lie there, her lips sucking hard enough to leave hickeys on your neck with every crushing, passionate kiss, you feel the patterns of glossy fluid tingling on your " + player.skin() + ".  A jolt of fear runs up your spine, and you try to push away from her envenomed affections.  It doesn't work!  You can barely lift your arms, let alone pull out of the amorous arachnid's embrace!\n\n", false);
+        outputText("While you're distracted by the repeated contrast of tension and relief emanating from " + game.player.sMultiCockDesc() + ", the drider leans up and kisses your neck, humming against your throat as you squirt the last of your orgasmic goop into her vagina.  You slump into her arms, spent by the effort of fucking her so fast and cumming so hard.  As you lie there, her lips sucking hard enough to leave hickeys on your neck with every crushing, passionate kiss, you feel the patterns of glossy fluid tingling on your " + skin(player) + ".  A jolt of fear runs up your spine, and you try to push away from her envenomed affections.  It doesn't work!  You can barely lift your arms, let alone pull out of the amorous arachnid's embrace!\n\n", false);
 
         outputText("\"<i>Mmmmm,</i>\" hums the drider into your collarbone, smearing more of her toxic lip-gloss onto you as she goes.  \"<i>Such a good " + player.mf("master", "mistress") + "!  You punished me so well!  Now just relax... I've been dripping out a special venom that'll help you teach me the rest of my lesson, and I need to make sure that every... single... drop... slips inside that sexy bloodstream of yours.</i>\"\n\n", false);
 
@@ -583,7 +583,7 @@ export class CorruptedDriderScene {
         if (player.tallness < 66) outputText("in front of you", false);
         else outputText("on your face", false);
         outputText(", her pussy juices squirting alongside them.  As she calms down, the herm-drider's spunk lessens in force, instead drooling out of her softening cock and landing onto your ", false);
-        if (player.tallness < 66) outputText(player.face() + ", sliding down across your cheeks and along your lips", false);
+        if (player.tallness < 66) outputText(face(player) + ", sliding down across your cheeks and along your lips", false);
         else outputText("chest, trickling between your " + nippleDescript(0) + "s", false);
         outputText(".  She pulls out her ovipositor slowly, though the bulge in your stomach remains as evidence of her work.", false);
         player.buttChange(50, true, true, false);

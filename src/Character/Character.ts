@@ -71,57 +71,10 @@ export class Character extends Creature {
 
     // return total fertility
 
-    public faceDesc(): string {
-        let faceo: string = "";
-        // 0-10
-        if (femininity < 10) {
-            faceo = "a square chin";
-            if (!hasBeard())
-                faceo += " and chiseled jawline";
-            else
-                faceo += ", chiseled jawline, and " + beard();
-        }
-        // 10+ -20
-        else if (femininity < 20) {
-            faceo = "a rugged looking " + face() + " ";
-            if (hasBeard())
-                faceo += "and " + beard();
-            faceo += "that's surely handsome";
-        }
-        // 21-28
-        else if (femininity < 28)
-            faceo = "a well-defined jawline and a fairly masculine profile";
-        // 28+-35
-        else if (femininity < 35)
-            faceo = "a somewhat masculine, angular jawline";
-        // 35-45
-        else if (femininity < 45)
-            faceo = "the barest hint of masculinity on its features";
-        // 45-55
-        else if (femininity <= 55)
-            faceo = "an androgynous set of features that would look normal on a male or female";
-        // 55+-65
-        else if (femininity <= 65)
-            faceo = "a tiny touch of femininity to it, with gentle curves";
-        // 65+-72
-        else if (femininity <= 72)
-            faceo = "a nice set of cheekbones and lips that have the barest hint of pout";
-        // 72+-80
-        else if (femininity <= 80)
-            faceo = "a beautiful, feminine shapeliness that's sure to draw the attention of males";
-        // 81-90
-        else if (femininity <= 90)
-            faceo = "a gorgeous profile with full lips, a button nose, and noticeable eyelashes";
-        // 91-100
-        else
-            faceo = "a jaw-droppingly feminine shape with full, pouting lips, an adorable nose, and long, beautiful eyelashes";
-        return faceo;
-    }
-
     // Modify femininity!
     public modFem(goal: number, strength: number = 1): string {
         let output: string = "";
-        const old: string = faceDesc();
+        const old: string = faceDesc(this);
         const oldN: number = femininity;
         let Changed: boolean = false;
         // If already perfect!
@@ -150,7 +103,7 @@ export class Character extends Creature {
         if (!Changed)
             return "";
         // See if a change happened!
-        if (old != faceDesc()) {
+        if (old != faceDesc(this)) {
             // Gain fem?
             if (goal > oldN)
                 output = "\n\n<b>Your facial features soften as your body becomes more feminine. (+" + strength + ")</b>";
@@ -232,7 +185,7 @@ export class Character extends Creature {
             if (femininity < 20) {
                 output += "\n<b>Your incredibly masculine, chiseled features become a little bit softer from your body's changing hormones.";
                 if (hasBeard()) {
-                    output += "  As if that wasn't bad enough, your " + beard() + " falls out too!";
+                    output += "  As if that wasn't bad enough, your " + beard(this) + " falls out too!";
                     beardLength = 0;
                     beardStyle = 0;
                 }
@@ -249,7 +202,7 @@ export class Character extends Creature {
             if (femininity < 30) {
                 output += "\n<b>Your incredibly masculine, chiseled features become a little bit softer from your body's changing hormones.";
                 if (hasBeard()) {
-                    output += "  As if that wasn't bad enough, your " + beard() + " falls out too!";
+                    output += "  As if that wasn't bad enough, your " + beard(this) + " falls out too!";
                     beardLength = 0;
                     beardStyle = 0;
                 }
@@ -264,13 +217,13 @@ export class Character extends Creature {
                 femininity = 70;
             }
             if (femininity > 40 && hasBeard()) {
-                output += "\n<b>Your beard falls out, leaving you with " + faceDesc() + ".</b>\n";
+                output += "\n<b>Your beard falls out, leaving you with " + faceDesc(this) + ".</b>\n";
                 beardLength = 0;
                 beardStyle = 0;
             }
         }
         if (gender != 1 && hasBeard()) {
-            output += "\n<b>Your beard falls out, leaving you with " + faceDesc() + ".</b>\n";
+            output += "\n<b>Your beard falls out, leaving you with " + faceDesc(this) + ".</b>\n";
             beardLength = 0;
             beardStyle = 0;
         }
@@ -281,91 +234,10 @@ export class Character extends Creature {
         return beardLength > 0;
     }
 
-    public beard(): string {
-        if (hasBeard())
-            return "beard";
-        else {
-            // CoC_Settings.error("");
-            return "ERROR: NO BEARD! <b>YOU ARE NOT A VIKING AND SHOULD TELL FEN IMMEDIATELY.</b>";
-        }
-    }
-
-    public skin(noAdj: boolean = false, noTone: boolean = false): string {
-        let skinzilla: string = "";
-        // Only show stuff other than skinDesc if justSkin is false
-        if (!noAdj) {
-            // Adjectives first!
-            if (skinAdj != "" && !noTone && skinTone != "rough gray") {
-                skinzilla += skinAdj;
-                if (noTone)
-                    skinzilla += " ";
-                else
-                    skinzilla += ", ";
-            }
-        }
-        if (!noTone)
-            skinzilla += skinTone + " ";
-        // Fur handled a little differently since it uses
-        // haircolor
-        if (skinType == 1)
-            skinzilla += "skin";
-        else
-            skinzilla += skinDesc;
-        return skinzilla;
-    }
-
     public hasMuzzle(): boolean {
         if (faceType == 1 || faceType == 2 || faceType == 6 || faceType == 7 || faceType == 9 || faceType == 11 || faceType == 12)
             return true;
         return false;
-    }
-
-    public face(): string {
-        let stringo: string = "";
-        // 0 - human
-        // 5 - Human w/Naga fangz
-        // 8 - bunnah faceahhh bunbun
-        // 10 - spidah-face (humanish)
-        if (faceType == 0)
-            return "face";
-        // 1 - horse
-        // 2 - dogface
-        // 6 - kittah face
-        // 9 - kangaface
-        if (faceType == 9 || faceType == 6 || faceType == 2 || faceType == 1 || faceType == 11) {
-            if (int(Math.random() * 2) == 0)
-                return "muzzle";
-            if (int(Math.random() * 3) == 0 && faceType == 1)
-                stringo = "long ";
-            if (int(Math.random() * 3) == 0 && faceType == 6)
-                stringo = "feline ";
-            return stringo + "face";
-        }
-        // 3 - cowface
-        if (faceType == 3) {
-            if (Math.floor(Math.random() * 4) == 0)
-                stringo = "bovine ";
-            if (int(Math.random() * 2) == 0)
-                return "muzzle";
-            return stringo + "face";
-        }
-        // 4 - sharkface-teeth
-        if (faceType == 4) {
-            if (Math.floor(Math.random() * 4) == 0)
-                stringo = "angular ";
-            return stringo + "face";
-        }
-        // 7 - lizard face (durned argonians!)
-        if (faceType == 7 || faceType == 12) {
-            if (Math.floor(Math.random() * 4) == 0)
-                stringo = "reptilian ";
-            if (Math.floor(Math.random() * 4) == 0)
-                return stringo + "muzzle";
-            if (Math.floor(Math.random() * 4) == 0)
-                return stringo + "snout";
-            return stringo + "face";
-        }
-        return "face";
     }
 
     public hasLongTail(): boolean {
@@ -712,10 +584,6 @@ export class Character extends Creature {
         max = Math.round(max);
         if (max > 999) max = 999;
         return max;
-    }
-
-    public buttDescript(): string {
-        return Appearance.buttDescription(this);
     }
 
 }

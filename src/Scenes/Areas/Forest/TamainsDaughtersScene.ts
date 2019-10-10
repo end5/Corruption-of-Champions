@@ -221,7 +221,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
             if (player.cor < 33) outputText("You were supposed to save the village from corruption, not breed tiny sluts to overrun it... y", false);
             else if (player.cor < 66) outputText("You came here to make things better for everyone... well, at least you're helping these girls. Y", false);
             else outputText("You came here to make things better, but you know you'll keep knocking up Tamani every chance you get.  It's too much fun to resist adding to the sea of green girls. Y", false);
-            outputText("ou moan as a drooling green cunt is pressed into your " + player.face() + ", smothering away any protests you might have offered.  Your tongue laps away, servicing another one of your many goblin offspring as best it can.  It plunges deep to harvest her nectar, making her soak you with juice, performing oral as if it were possessed.  Your eyes cross and you feel your release building, cresting in a wave as it prepares to dump into your ");
+            outputText("ou moan as a drooling green cunt is pressed into your " + face(player) + ", smothering away any protests you might have offered.  Your tongue laps away, servicing another one of your many goblin offspring as best it can.  It plunges deep to harvest her nectar, making her soak you with juice, performing oral as if it were possessed.  Your eyes cross and you feel your release building, cresting in a wave as it prepares to dump into your ");
             if (!tamaniPresent) outputText("daughter");
             else outputText("favorite goblin MILF");
             outputText(".\n\n", false);
@@ -239,7 +239,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 outputText("\n\n", false);
 
                 if (tamaniPresent) {
-                    outputText("Tamani pushes the slut on your face off and plants herself there, smearing your " + player.face() + " with a mixture of cum and vaginal wetness.  ", false);
+                    outputText("Tamani pushes the slut on your face off and plants herself there, smearing your " + face(player) + " with a mixture of cum and vaginal wetness.  ", false);
                     if (forest.tamaniScene.pregnancy.isPregnant) {
                         outputText("She rubs her pregnancy swollen belly", false);
                     }
@@ -248,7 +248,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 }
                 // Else:
                 else {
-                    outputText("The first daughter to take your seed climbs onto your face and plants herself there, smearing your " + player.face() + " with a mixture of cum and vaginal wetness.  She pinches her budding chest and grinds on top of you, asking, \"<i>You realize I'm going to be pregnant don't you?  I can already feel your little swimmers tickling all my eggs.  Can you imagine what I'll look like in a few days?  With bigger tits leaking milk and my belly stuffed with offspring?  Just let your dick do the thinking and keep cumming until we're all stuffed, ok?  Don't hold back now, we're just aching for more!</i>\"\n\n", false);
+                    outputText("The first daughter to take your seed climbs onto your face and plants herself there, smearing your " + face(player) + " with a mixture of cum and vaginal wetness.  She pinches her budding chest and grinds on top of you, asking, \"<i>You realize I'm going to be pregnant don't you?  I can already feel your little swimmers tickling all my eggs.  Can you imagine what I'll look like in a few days?  With bigger tits leaking milk and my belly stuffed with offspring?  Just let your dick do the thinking and keep cumming until we're all stuffed, ok?  Don't hold back now, we're just aching for more!</i>\"\n\n", false);
                 }
 
                 outputText("The perverse thoughts get to you, worming their way inside you until they reach your " + cockDescript(primary) + ".  It clenches and explodes, packing the slut's womb with cream.  She's lifted off by her sisters, and your next blast fires into the air, splattering over the assembled goblins with a wet plop.  Many gather it up, licking and slurping it, or shoveling it directly into their waiting cunts.  Another pussy is placed on you, and the sensation of new flesh taking you makes the contraction feel even longer.  She staggers off a few moments later, looking pregnant already.  The cycle repeats until", false);
@@ -365,7 +365,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         if (cocks > 1) outputText("one of ", false);
         outputText(" your " + game.player.multiCockDescriptLight() + ", teasing you as it near-instantly rises, \"<i>Mommy never told me you were such an easy " + player.mf("man-", "") + "slut.</i>\"\n\n", false);
 
-        outputText("A slippery gash mounts your " + player.face() + ", blocking your view of anything but a cute navel as pungent pussy slobbers over your lips.  With a resigned sigh, you open your mouth and bury your tongue into one of your many daughters' snatches.  It's tangy and sweet, and juicier than fresh fruit.   The girlish moans you hear let you know how successful your tongue is, and you work harder than ever to kiss and lick her slippery lips, pausing only to suck the tiny bud of her clit into your mouth.\n\n", false);
+        outputText("A slippery gash mounts your " + face(player) + ", blocking your view of anything but a cute navel as pungent pussy slobbers over your lips.  With a resigned sigh, you open your mouth and bury your tongue into one of your many daughters' snatches.  It's tangy and sweet, and juicier than fresh fruit.   The girlish moans you hear let you know how successful your tongue is, and you work harder than ever to kiss and lick her slippery lips, pausing only to suck the tiny bud of her clit into your mouth.\n\n", false);
 
         outputText("Through it all the other girls stay busy, Tamani's eldest daughter gets most of your attention while she continues  to stroke you off.  She squeezes and caresses it until your member is trembling in her hand, ready to explode.\n\n", false);
         // (FORK BETWEEN TOO BIG AND FITS)
@@ -377,7 +377,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
             else outputText("You stiffen as a tongue suddenly presses against your " + assholeOrPussy(player) + " sliding inside and intensifying the feelings radiating down your fuck-pole until you're unable to hold on.", false);
             outputText("\n\n", false);
 
-            outputText("A sudden flow of fluids soaks your " + player.face() + " and dribbles from your chin.  The face-riding goblin bucks like a bronco, nearly breaking your nose before the strength drains from her body and she slides off into the dirt, panting weakly.   Confronted with the sight of ", false);
+            outputText("A sudden flow of fluids soaks your " + face(player) + " and dribbles from your chin.  The face-riding goblin bucks like a bronco, nearly breaking your nose before the strength drains from her body and she slides off into the dirt, panting weakly.   Confronted with the sight of ", false);
             if (cocks > 2) outputText("so many girls impaled on your flesh", false);
             else if (cocks == 2) outputText("your daughters' whorish expressions of pleasure", false);
             else outputText("the sultry gaze of Tamani's oldest daughter as she rides your " + cockDescript(primary), false);
@@ -497,9 +497,9 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
             if (!tamaniPresent) {
                 outputText("Effortlessly, Tamani's daughter launches herself onto you, straddling your body as she tries to work your " + game.player.cockDescript(0) + " into her tight gash.  No matter how hard she tries, she just can't get it in.  She looks up at you in confusion and asks, \"<i>How in Marae's cunt can my Mom take this beast?</i>\"\n\n", false);
 
-                outputText("Frowning in consternation, she presses it down onto your belly and sits on top, spreading her cunt as wide as she can around the bulge your urethra makes on the underside of your " + game.player.cockDescript(0) + ".  Though you can't see her, the feeling of her starting to slide along your length is wonderfully pleasurable.  After a few moments you can feel her getting into it, leaning over and pressing her taut body and heavy breasts against you as well.  Incredibly turned on by the mental picture you're forced to form, you attack the cunt riding your " + player.face() + ", licking it with feverish intensity.\n\n", false);
+                outputText("Frowning in consternation, she presses it down onto your belly and sits on top, spreading her cunt as wide as she can around the bulge your urethra makes on the underside of your " + game.player.cockDescript(0) + ".  Though you can't see her, the feeling of her starting to slide along your length is wonderfully pleasurable.  After a few moments you can feel her getting into it, leaning over and pressing her taut body and heavy breasts against you as well.  Incredibly turned on by the mental picture you're forced to form, you attack the cunt riding your " + face(player) + ", licking it with feverish intensity.\n\n", false);
 
-                outputText("A sudden flow of fluids soaks your " + player.face() + " and dribbles from your chin.  The face-riding goblin bucks like a bronco, nearly breaking your nose before the strength drains from her body and she slides off into the dirt, panting weakly.  Now freed from your juicy prison, you can see the oldest daughter as she's squeezing on your " + game.player.cockDescript(0) + ", sliding her gash and ", false);
+                outputText("A sudden flow of fluids soaks your " + face(player) + " and dribbles from your chin.  The face-riding goblin bucks like a bronco, nearly breaking your nose before the strength drains from her body and she slides off into the dirt, panting weakly.  Now freed from your juicy prison, you can see the oldest daughter as she's squeezing on your " + game.player.cockDescript(0) + ", sliding her gash and ", false);
                 if (daughters < 20) outputText("pert ", false);
                 else if (daughters > 40) outputText("heavy ", false);
                 outputText("breasts over every part of it.", false);
@@ -929,7 +929,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         else outputText("It has a familiar taste that you can't quite place", false);
         outputText(" and nearly makes you gag, but Tamani makes sure you drink down every drop.  An immediate numbness spreads through your body, starting at your fingertips.  It slowly crawls up your arms and then starts at your " + player.feet() + " as well.  In no time it's hard to move, and it becomes hard to think.  Your mind feels almost like its full of cotton-candy, with fuzzy pink stuff constantly getting in the way of your thoughts.\n\n", false);
 
-        outputText("Tamani rubs your temples soothingly as your " + player.face() + " creases with worry and reassures you, \"<i>Don't worry, this will wear off soon.  This drug just shuts down your mind so it'll be nice and open to suggestion.  You can feel how hard it is to think, can't you?  Every time you muster up a thought it gets caught up in the little pink clouds and whisked away.  Don't bother, just relax and listen to Tamani's voice.</i>\"\n\n", false);
+        outputText("Tamani rubs your temples soothingly as your " + face(player) + " creases with worry and reassures you, \"<i>Don't worry, this will wear off soon.  This drug just shuts down your mind so it'll be nice and open to suggestion.  You can feel how hard it is to think, can't you?  Every time you muster up a thought it gets caught up in the little pink clouds and whisked away.  Don't bother, just relax and listen to Tamani's voice.</i>\"\n\n", false);
 
         outputText("She reaches into your " + player.armorName + " to rub ", false);
         if (player.totalCocks() > 1) outputText("one of ", false);

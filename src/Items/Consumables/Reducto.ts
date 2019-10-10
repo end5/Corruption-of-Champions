@@ -54,19 +54,19 @@ export class Reducto extends Consumable {
 
     private reductoButt(): void {
         clearOutput();
-        outputText("You smear the foul-smelling paste onto your " + game.player.buttDescript() + ".  It feels cool at first but rapidly warms to an uncomfortable level of heat.\n\n");
+        outputText("You smear the foul-smelling paste onto your " + buttDescription(game.player) + ".  It feels cool at first but rapidly warms to an uncomfortable level of heat.\n\n");
         if (game.player.buttRating >= 15) {
             game.player.buttRating -= (3 + int(game.player.buttRating / 3));
             outputText("Within seconds you feel noticeably lighter, and a quick glance shows your ass is significantly smaller.");
         }
         else if (game.player.buttRating >= 10) {
             game.player.buttRating -= 3;
-            outputText("You feel much lighter as your " + game.player.buttDescript() + " jiggles slightly, adjusting to its smaller size.");
+            outputText("You feel much lighter as your " + buttDescription(game.player) + " jiggles slightly, adjusting to its smaller size.");
         }
         else {
             game.player.buttRating -= rand(3) + 1;
             if (game.player.buttRating < 1) game.player.buttRating = 1;
-            outputText("After a few seconds your " + game.player.buttDescript() + " has shrunk to a much smaller size!");
+            outputText("After a few seconds your " + buttDescription(game.player) + " has shrunk to a much smaller size!");
         }
         dynStats("lib", -2, "lus", -10);
         inventory.itemGoNext();

@@ -4456,7 +4456,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("  Spent, you slump on top of Amily.", false);
         // [(if PC has a pussy)
         if (player.hasVagina()) outputText("  Despite being neglected during the act, your " + vaginaDescript() + " leaks fluids to join Amily's on the floor.", false);
-        outputText("  Amily pants loudly and sighs in satisfaction. Hesitantly, one hand dares to reach out and stroke your " + player.face() + ". \"<i>Mmm... You are the light of my world, " + player.mf("master", "mistress") + ".", false);
+        outputText("  Amily pants loudly and sighs in satisfaction. Hesitantly, one hand dares to reach out and stroke your " + face(player) + ". \"<i>Mmm... You are the light of my world, " + player.mf("master", "mistress") + ".", false);
         // (if not pregnant:
         if (!pregnancy.isPregnant) outputText("  I can only hope you've knocked me up, so I can do what I was made for,", false);
         else outputText("  I almost wish I wasn't pregnant, just so I could have the pleasure of knowing you've knocked me up,", false);
