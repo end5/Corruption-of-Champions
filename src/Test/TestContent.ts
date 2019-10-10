@@ -15,12 +15,12 @@ export class TestContent {
         outputText("\ncockClit " + cockClit);
         // 			outputText("\nballs " + balls(0, 0));
         outputText("\nsheathDesc " + player.sheathDesc());
-        outputText("\nchestDesc " + game.player.chestDesc());
-        outputText("\nallChestDesc " + game.player.allChestDesc());
-        outputText("\nsMultiCockDesc " + player.sMultiCockDesc());
-        outputText("\nSMultiCockDesc " + player.SMultiCockDesc());
-        outputText("\noMultiCockDesc " + player.oMultiCockDesc());
-        outputText("\nOMultiCockDesc " + player.OMultiCockDesc());
+        outputText("\nchestDesc " + chestDesc(game.player));
+        outputText("\nallChestDesc " + allChestDesc(game.player));
+        outputText("\nsMultiCockDesc " + sMultiCockDesc(player));
+        outputText("\nSMultiCockDesc " + SMultiCockDesc(player));
+        outputText("\noMultiCockDesc " + oMultiCockDesc(player));
+        outputText("\nOMultiCockDesc " + OMultiCockDesc(player));
         outputText("\ntongueDescript " + tongueDescript());
         outputText("\nballsDescriptLight false " + ballsDescriptLight(false));
         outputText("\nballsDescriptLight true " + ballsDescriptLight(true));
@@ -37,13 +37,13 @@ export class TestContent {
         outputText("\nclitDescript " + clitDescript());
         outputText("\nvaginaDescript " + vaginaDescript());
         outputText("\nallVaginaDescript " + allVaginaDescript());
-        outputText("\nmultiCockDescriptLight " + game.player.multiCockDescriptLight());
-        outputText("\ncockAdjective " + player.cockAdjective());
-        outputText("\ncockDescript " + game.player.cockDescript(0));
+        outputText("\nmultiCockDescriptLight " + multiCockDescriptLight(game.player));
+        outputText("\ncockAdjective " + cockAdjective(player));
+        outputText("\ncockDescript " + cockDescript(game.player, 0));
         outputText("\nbiggestBreastSizeDescript " + biggestBreastSizeDescript(player));
         outputText("\nbreaseSize 5" + breastSize(5));
-        outputText("\nbreastDescript " + game.player.breastDescript(0));
-        outputText("\ncockHead " + player.cockHead());
+        outputText("\nbreastDescript " + breastDescript(game.player, 0));
+        outputText("\ncockHead " + cockHead(player));
         outputText("\nbreastCup 5 " + breastCup(5));
 
         outputText("\n\nParser Tags (Single)L\n");

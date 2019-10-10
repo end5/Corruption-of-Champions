@@ -14,7 +14,7 @@ export class InfestedHellhound extends HellHound {
             dynStats("lus", 5 + player.lib / 20);
             outputText("Taken off-guard by the unexpected sexual display, you fail to move out of the way, and the wormy jism splatters you from the chest down.", false);
             if (player.findStatusAffect(StatusAffects.Infested) >= 0 && player.totalCocks() > 0) {
-                outputText("  The worms inside you begin moving and squirming. A few of your cum-soaked parasites crawl out from your shivering " + game.player.multiCockDescriptLight() + " as if attempting to meet the new arrivals.  You desperately want to brush them away, but the pleasure in your crotch is too good to fight, and you find yourself staying your hand as each and every one of the new worms makes it way into your " + game.player.multiCockDescriptLight() + ".", false);
+                outputText("  The worms inside you begin moving and squirming. A few of your cum-soaked parasites crawl out from your shivering " + multiCockDescriptLight(game.player) + " as if attempting to meet the new arrivals.  You desperately want to brush them away, but the pleasure in your crotch is too good to fight, and you find yourself staying your hand as each and every one of the new worms makes it way into your " + multiCockDescriptLight(game.player) + ".", false);
                 if (player.balls > 0) outputText("  Your " + ballsDescriptLight() + " grow weightier as the worms settle into their new home, arousing you beyond measure.", false);
                 else outputText("  You can feel them shifting around inside you as they adjust to their new home, arousing you beyond measure.", false);
                 dynStats("lus", 10);
@@ -33,7 +33,7 @@ export class InfestedHellhound extends HellHound {
                 if (player.hasCock()) {
                     outputText("  Despite avoiding the torrent of infected seed, your own wormy ", false);
                     if (player.balls > 0) outputText(ballsDescriptLight(), false);
-                    else outputText(game.player.multiCockDescriptLight(), false);
+                    else outputText(multiCockDescriptLight(game.player), false);
                     outputText(" wriggle", false);
                     if (player.balls == 0 && player.cockTotal() == 1) outputText("s", false);
                     outputText(" hotly, expelling a few of your own worms in response along with a dribble of thick pre-cum.   You wonder what it would feel like to let his worms crawl inside you...", false);

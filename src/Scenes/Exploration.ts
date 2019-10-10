@@ -159,7 +159,7 @@ export class Exploration {
                         return;
                     }
                     if (player.gender > 0) {
-                        outputText("A goblin saunters out of the bushes with a dangerous glint in her eyes.\n\nShe says, \"<i>Time to get fucked, " + player.mf("stud", "slut"), true);
+                        outputText("A goblin saunters out of the bushes with a dangerous glint in her eyes.\n\nShe says, \"<i>Time to get fucked, " + mf(player, "stud", "slut"), true);
                         outputText(".</i>\"", false);
                         startCombat(new Goblin());
                         spriteSelect(24);
@@ -193,22 +193,22 @@ export class Exploration {
         outputText("", true);
         const x: number = player.longestCock();
         // PARAGRAPH 1
-        outputText("Walking along the sandy dunes of the desert you find yourself increasingly impeded by the bulk of your " + game.player.cockDescript(x) + " dragging along the sandscape behind you.  The incredibly hot surface of the desert causes your loins to sweat heavily and fills them with relentless heat.", false);
+        outputText("Walking along the sandy dunes of the desert you find yourself increasingly impeded by the bulk of your " + cockDescript(game.player, x) + " dragging along the sandscape behind you.  The incredibly hot surface of the desert causes your loins to sweat heavily and fills them with relentless heat.", false);
 
         if (player.cocks.length == 1) outputText("  As it drags along the dunes, the sensation forces you to imagine the rough textured tongue of a monstrous animal sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ".", false);
-        else if (player.cocks.length >= 2) outputText("  With all of your " + game.player.multiCockDescriptLight() + " dragging through the sands they begin feeling as if the rough textured tongues of " + num2Text(player.cockTotal()) + " different monstrous animals were slobbering over each one.", false);
+        else if (player.cocks.length >= 2) outputText("  With all of your " + multiCockDescriptLight(game.player) + " dragging through the sands they begin feeling as if the rough textured tongues of " + num2Text(player.cockTotal()) + " different monstrous animals were slobbering over each one.", false);
         outputText("\n\n", false);
 
         // PARAGRAPH 2
 
         // FOR NON-CENTAURS]
         if (!player.isTaur()) {
-            outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + game.player.multiCockDescriptLight() + ", which forces your torso to the ground.  Normally your erection would merely raise itself skyward but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead you feel your body forcibly pivoting at the hips until your torso is compelled to rest face down on top of your obscene " + game.player.multiCockDescriptLight() + ".", false);
+            outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces your torso to the ground.  Normally your erection would merely raise itself skyward but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead you feel your body forcibly pivoting at the hips until your torso is compelled to rest face down on top of your obscene " + multiCockDescriptLight(game.player) + ".", false);
 
             // IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
             if (player.biggestTitSize() >= 35) outputText("  Your " + allBreastsDescript() + " hang lewdly off your torso to rest on the desert sands, seeming to bury the dunes on either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  The burning heat of the desert teases your " + nippleDescript(0) + "s mercilessly as they grind in the sand.", false);
             // IF CHARACTER HAS A BALLS ADD SENTENCE
-            if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  The fiery warmth of the desert caresses it, causing your " + ballsDescriptLight() + " to pulse with the need to release their sperm through your " + game.player.multiCockDescriptLight() + ".", false);
+            if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  The fiery warmth of the desert caresses it, causing your " + ballsDescriptLight() + " to pulse with the need to release their sperm through your " + multiCockDescriptLight(game.player) + ".", false);
             // IF CHARACTER HAS A VAGINA ADD SENTENCE
             if (player.vaginas.length >= 1) {
                 outputText("  Your " + vaginaDescript() + " and " + clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescript() + " above.", false);
@@ -218,11 +218,11 @@ export class Exploration {
         }
         // FOR CENTAURS
         else {
-            outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + game.player.multiCockDescriptLight() + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hindquarters until you rest atop your " + game.player.multiCockDescriptLight() + ".", false);
+            outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hindquarters until you rest atop your " + multiCockDescriptLight(game.player) + ".", false);
             // IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
             if (player.biggestTitSize() >= 35) outputText("  Your " + allBreastsDescript() + " pull your human torso forward until it also is forced to rest facedown, just like your horse half.  Your tits rest, pinned on the desert sand to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  The burning heat of the desert teases your " + nippleDescript(0) + "s incessantly.", false);
             // IF CHARACTER HAS A BALLS ADD SENTENCE
-            if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  The airy warmth of the desert teases it, causing your " + ballsDescriptLight() + " pulse with the need to release their sperm through your " + game.player.multiCockDescriptLight() + ".", false);
+            if (player.balls > 0) outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  The airy warmth of the desert teases it, causing your " + ballsDescriptLight() + " pulse with the need to release their sperm through your " + multiCockDescriptLight(game.player) + ".", false);
             // IF CHARACTER HAS A VAGINA ADD SENTENCE
             if (player.vaginas.length >= 1) {
                 outputText("  Your " + vaginaDescript() + " and " + clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescript() + " above.", false);
@@ -241,9 +241,9 @@ export class Exploration {
         // SCENE END = IF CHARACTER HAS FULL WINGS ADD SENTENCE
         if (player.canFly()) outputText("  You extend your wings and flap as hard as you can, until at last you manage to lighten the bulk of your body somewhat - enough to allow yourself to drag your genitals across the hot sands and back to camp.  The ordeal takes nearly an hour.", false);
         // SCENE END IF CHARACTER HAS CENTAUR BODY
-        else if (player.isTaur()) outputText("  You struggle and work your equine legs against the surface of the dune you are trapped on.  Your " + player.feet() + " have consistent trouble finding footing, the soft sand failing to provide enough leverage to lift your bulk.  You breath in deeply and lean from side to side, trying to find some easier vertical leverage.  Eventually, with a crude crawl, your legs manage to push the bulk of your body onto more solid ground.  With great difficulty, you spend the next hour shuffling your genitals across the sandscape and back to camp.", false);
+        else if (player.isTaur()) outputText("  You struggle and work your equine legs against the surface of the dune you are trapped on.  Your " + feet(player) + " have consistent trouble finding footing, the soft sand failing to provide enough leverage to lift your bulk.  You breath in deeply and lean from side to side, trying to find some easier vertical leverage.  Eventually, with a crude crawl, your legs manage to push the bulk of your body onto more solid ground.  With great difficulty, you spend the next hour shuffling your genitals across the sandscape and back to camp.", false);
         // SCENE END = FOR ALL OTHER CHARACTERS
-        else outputText("  You struggle and push with your " + player.legs() + " as hard as you can, but it's no use.  You do the only thing you can and begin stroking your " + game.player.multiCockDescriptLight() + " with as much vigor as you can muster.  Eventually your body tenses and a light load of jizz erupts from your body, but the orgasm is truly mild compared to what you need.  You're simply too weary from struggling to give yourself the masturbation you truly need, but you continue to try.  Nearly an hour later " + game.player.sMultiCockDesc() + " softens enough to allow you to stand again, and you make your way back to camp, still dragging your genitals across the warm sand.", false);
+        else outputText("  You struggle and push with your " + legs(player) + " as hard as you can, but it's no use.  You do the only thing you can and begin stroking your " + multiCockDescriptLight(game.player) + " with as much vigor as you can muster.  Eventually your body tenses and a light load of jizz erupts from your body, but the orgasm is truly mild compared to what you need.  You're simply too weary from struggling to give yourself the masturbation you truly need, but you continue to try.  Nearly an hour later " + sMultiCockDesc(game.player) + " softens enough to allow you to stand again, and you make your way back to camp, still dragging your genitals across the warm sand.", false);
         dynStats("lus", 25 + rand(player.cor / 5), "resisted", false);
         fatigue(5);
         doNext(camp.returnToCampUseOneHour);

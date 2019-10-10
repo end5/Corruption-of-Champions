@@ -164,7 +164,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\nLoppe shrugs and smiles.  \"<i>I love sweets, and dancing works up an appetite.</i>\"  Then she gives you a seductive glance.  \"<i>You aren't going to deny a dainty-looking bunny-girl her pleasure, are you... sugar?</i>\"  She lets the last word roll off her tongue in a provocative manner.");
 
-        outputText("\n\nYou tell her that you aren't, you just didn't expect her to have such an appetite.  With a playful smile, you ask what other not-so-dainty secrets she's hiding; does she burp loudly to show she enjoyed her meal?  Loppe smiles mischievously, \"<i>Oh, my sweet " + player.mf("boy", "girl") + "...  When I get my hands on something I like, I eat it up whole...</i>\"  Slowly, you feel a foot gently glide across your [legs].");
+        outputText("\n\nYou tell her that you aren't, you just didn't expect her to have such an appetite.  With a playful smile, you ask what other not-so-dainty secrets she's hiding; does she burp loudly to show she enjoyed her meal?  Loppe smiles mischievously, \"<i>Oh, my sweet " + mf(player, "boy", "girl") + "...  When I get my hands on something I like, I eat it up whole...</i>\"  Slowly, you feel a foot gently glide across your [legs].");
 
         // (Low Libido)
         if (player.lib < 33) outputText("\n\nWell, now.  This is a different kind of world, indeed, but this feels a little too quick.  You're not sure you're all that comfortable with the bunny-girl feeling you up under the table, cute as she may be.  An awkward silence falls over the both of you as you try to think of a polite way to stop or slow her advances without telling her off... thankfully, the waitress arrives to take your orders.");
@@ -221,7 +221,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\n\"<i>Haha, I have no problems with my sex.  It's just coincidence that this kimono is really good at hiding it.</i>\"  Loppe grins at you, then gives you a sultry look.");
 
-        outputText("\n\n\"<i>Hey, [name],</i>\" she says quietly, \"<i>you're really " + player.mf("handsome", "beautiful") + ", y'know?  And kind... how about a quick stop at my place, before we say goodbye?</i>\"");
+        outputText("\n\n\"<i>Hey, [name],</i>\" she says quietly, \"<i>you're really " + mf(player, "handsome", "beautiful") + ", y'know?  And kind... how about a quick stop at my place, before we say goodbye?</i>\"");
 
         // [Yes][No]
         menu();
@@ -444,7 +444,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\nLoppe smiles at you.  \"<i>I'm sure you will.  Maybe, if the time is right, I might be willing to help you build you a nice, big family... just maybe.</i>\"  Loppe shoots you a sultry stare.");
         outputText("\n\nHmm... is that a suggestion?");
-        outputText("\n\nLoppe grins at you.  \"<i>Oh... I don't know.  I'm sure a " + player.mf("handsome", "beautiful") + " person like you has already drawn quite a few stares,</i>\" Loppe teases, batting her eyes at you.  \"<i>But, if the time is right, and you ask nicely... I'm pretty sure there's a certain bunny-girl around here who wouldn't mind...</i>\"");
+        outputText("\n\nLoppe grins at you.  \"<i>Oh... I don't know.  I'm sure a " + mf(player, "handsome", "beautiful") + " person like you has already drawn quite a few stares,</i>\" Loppe teases, batting her eyes at you.  \"<i>But, if the time is right, and you ask nicely... I'm pretty sure there's a certain bunny-girl around here who wouldn't mind...</i>\"");
 
         outputText("\n\nWell, you'll keep that in mind.  Realizing how much time has gone past, you politely excuse yourself.");
 
@@ -703,7 +703,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         if (flags[kFLAGS.LOPPE_PC_MET_UMA] == 0) {
             outputText("\n\nSo, if she's so confident that her mom wouldn't disapprove of her daughter's sexual awakening... what about your relationship?\n\n");
-            outputText("Loppe looks you over, thoughtful.  \"<i>To be honest... I don't think she would mind.  Want me to introduce you to her?  To become my 'official' " + player.mf("boy", "girl") + "friend?  I know I certainly wouldn't mind having a 'serious' relationship with a cutie like you.</i>\"  The dancer winks at you. \"<i>How about it Sugar, do you wanna go visit my mom?</i>\"");
+            outputText("Loppe looks you over, thoughtful.  \"<i>To be honest... I don't think she would mind.  Want me to introduce you to her?  To become my 'official' " + mf(player, "boy", "girl") + "friend?  I know I certainly wouldn't mind having a 'serious' relationship with a cutie like you.</i>\"  The dancer winks at you. \"<i>How about it Sugar, do you wanna go visit my mom?</i>\"");
         }
 
         menu();
@@ -887,7 +887,7 @@ export class Loppe extends TelAdreAbstractContent {
         else outputText("cumbersomely on the floor, rolling over and spreading your hindlegs to expose yourself");
         outputText(".  Quietly, you ask Loppe how she would feel about indulging her feminine half.");
 
-        outputText("\n\n\"<i>I would love to, sugar!</i>\"  Loppe gazes at your " + game.player.multiCockDescriptLight() + ".");
+        outputText("\n\n\"<i>I would love to, sugar!</i>\"  Loppe gazes at your " + multiCockDescriptLight(game.player) + ".");
         // [(2 fit cocks)
         const x: number = player.cockThatFits(loppeCapacity());
         const y: number = player.cockThatFits2(loppeCapacity());
@@ -911,7 +911,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText(" own, shivering from the sensation of your sensitive " + skin(player) + " against her proud horseflesh, already drooling even though you can plainly feel that it's only half-erect.");
         if (player.balls > 0) outputText("  Your [balls] gently brush and rub against her own swollen cum-factories, and you can't wait to empty your overfilled sac into her waiting womb.");
 
-        outputText("\n\n\"<i>Okay, that's enough foreplay!</i>\" Loppe announces suddenly, eyeing your " + game.player.cockDescript(x) + " with a hunger that you never expected to see on her face.  Loppe quickly straddles you, aligning it with her pussy");
+        outputText("\n\n\"<i>Okay, that's enough foreplay!</i>\" Loppe announces suddenly, eyeing your " + cockDescript(game.player, x) + " with a hunger that you never expected to see on her face.  Loppe quickly straddles you, aligning it with her pussy");
         if (y >= 0) outputText("; its neighbor is aimed for her tight rosebud");
         outputText(".  \"<i>Itadakimasu!</i>\" Loppe says, licking her lips as she finally slides you home.");
 
@@ -980,8 +980,8 @@ export class Loppe extends TelAdreAbstractContent {
         outputText("You keep your ");
         if (player.isDrider()) outputText("legs");
         else outputText("arms");
-        outputText(" wrapped around your lover, welcoming what's approaching as her horse-prick throbs and her flared tip inflates.  With a rapturous howl the laquine's cumslit opens like a floodgate, spurting jet after jet of cum onto your [chest], [face] and even the wall behind you; her own pillowy breasts and face are splashed with the force of her orgasm.  Her tight pussy contracts, milking your " + game.player.cockDescript(x) + " for all its worth");
-        if (y >= 0) outputText(", while her anal ring constricts your " + game.player.cockDescript(y) + " tightly, intent on holding you in place");
+        outputText(" wrapped around your lover, welcoming what's approaching as her horse-prick throbs and her flared tip inflates.  With a rapturous howl the laquine's cumslit opens like a floodgate, spurting jet after jet of cum onto your [chest], [face] and even the wall behind you; her own pillowy breasts and face are splashed with the force of her orgasm.  Her tight pussy contracts, milking your " + cockDescript(game.player, x) + " for all its worth");
+        if (y >= 0) outputText(", while her anal ring constricts your " + cockDescript(game.player, y) + " tightly, intent on holding you in place");
         outputText(".");
 
         outputText("\n\nThe smell of her juices fills the air and floods your nostrils, the copious cum painting itself over both your bodies in great smears that make things deliciously slick and slippery.  The combination of this stimulus with the expert milking of her wonderfully tight nethers and your own hyper-aroused state renders you unable to hold out any more.  With a great shout of your own, you unleash your orgasm into her waiting depths.");
@@ -1004,10 +1004,10 @@ export class Loppe extends TelAdreAbstractContent {
         const y: number = player.cockThatFits2(loppeCapacity());
 
         outputText(images.showImage("loppe-rides-your-cock"));
-        outputText("\n\nYour " + game.player.cockDescript(x) + " gushes fluids into her hungry womb");
+        outputText("\n\nYour " + cockDescript(game.player, x) + " gushes fluids into her hungry womb");
         if (y >= 0 || player.hasVagina()) {
             outputText(", while ");
-            if (y >= 0) outputText("your second " + game.player.cockDescript(y) + " just as easily pumps her perverted ass full of baby juice");
+            if (y >= 0) outputText("your second " + cockDescript(game.player, y) + " just as easily pumps her perverted ass full of baby juice");
             if (y >= 0 && player.hasVagina()) outputText(" and ");
             if (player.hasVagina()) {
                 outputText("your [vagina] ");
@@ -1037,12 +1037,12 @@ export class Loppe extends TelAdreAbstractContent {
         }
 
         outputText("\n\nLoppe quietly disentangles herself from your half-staff ");
-        outputText(game.player.multiCockDescriptLight() + " and slides down your body, pressing her soft, cum-slickened breasts against you.  You moan as the smooth curves of her chest press against [eachCock]; the cum-slick ");
+        outputText(multiCockDescriptLight(game.player) + " and slides down your body, pressing her soft, cum-slickened breasts against you.  You moan as the smooth curves of her chest press against [eachCock]; the cum-slick ");
         if (flags[kFLAGS.LOPPE_FURRY] == 0) outputText("skin");
         else outputText("fur");
         outputText(" give you the impression of being wrapped in the moist folds of a woman's sex.  As Loppe slides further down you feel her teasingly licking at the tip");
         if (y >= 0) outputText("s");
-        outputText(" of your " + game.player.multiCockDescriptLight() + ".");
+        outputText(" of your " + multiCockDescriptLight(game.player) + ".");
 
         outputText("\n\nThe skillful dance of her warm, wet tongue on the sensitive skin of your post-orgasmic member");
         if (y >= 0) outputText("s");
@@ -1207,7 +1207,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText(" that I intend to fill up with my laquine love.</i>\"  She wastes no time and pounces on the bed, ready to bury her face between your [legs], licking her lips while taking deep breaths to inhale as much of your pheromones as she can.  You blink at the speed with which she moves, but smile, repositioning yourself to give her better access");
         // [(herm non-horse)
         if (player.gender == 3 && !player.isTaur()) {
-            outputText(", though she needs to move aside " + game.player.sMultiCockDesc() + " ");
+            outputText(", though she needs to move aside " + sMultiCockDesc(game.player) + " ");
             if (player.balls > 0) outputText("and [balls] ");
             outputText("to really get at your cunt");
         }
@@ -1218,7 +1218,7 @@ export class Loppe extends TelAdreAbstractContent {
         if (!player.isTaur() && player.gender == 3) {
             outputText(", under your ");
             if (player.balls > 0) outputText("[sack]");
-            else outputText(game.player.multiCockDescriptLight());
+            else outputText(multiCockDescriptLight(game.player));
             outputText(",");
         }
         outputText(" to lick and kiss your sensitive labia.  You arch your back and thrust your crotch at her, letting the laquine have your precious pussy to taste and suckle and ravage... she's pretty good with that tongue of hers.  Loppe lifts her head and wipes her face with her arm.  \"<i>I'm even better with this,</i>\" she says, mirroring your thoughts and holding her painfully erect equine-shaft.  You watch as it throbs, every vein bulging visibly, balls engorged as they churn up a load of cum to deposit in your waiting womb.  She ducks to take another lick, tasting you like one tastes a fine wine.");
@@ -1260,7 +1260,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText("\n\nLoppe's technique is exquisite; she gyrates her hips with each thrust, making sure to press her flare against that special spot inside you that makes you scream in pleasure, once she sees your reaction, she deliberately drags her tip across it with each pass, depositing huge amounts of pre.");
 
         outputText("\n\nYou hiss and shudder, writhing across the bedsheets as your lover works her magic on you, filling you with pleasure.  Juices flow wet and thick from your pussy");
-        if (player.hasCock()) outputText(", precum begins to drool from your " + game.player.multiCockDescriptLight());
+        if (player.hasCock()) outputText(", precum begins to drool from your " + multiCockDescriptLight(game.player));
         outputText(".");
 
         // Not Centaur:
@@ -1613,7 +1613,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\nYou would say something if you weren't so tired after the multiple orgasms.  You feel completely battered... also, satisfied.  Quite tired too.  Your whole body feels bloated with laquine seed and for a moment you wonder how you'll be able to fit out the door again.  But right now, sleep is more important.  You set down on the floor and close your eyes, intent on getting some rest.");
 
-        outputText("\n\n\"<i>[name]?  [name], are you... oh.</i>\"  Loppe smiles as she sees you've dozed off.  Quietly she slips away to the bed and pulls off her blanket, moving around to carefully seat herself against your bloated stomach, draping her blanket over the both of you and gently resting her head on your distended horse-gut.  \"<i>Sweet dreams, lover-" + player.mf("boy", "girl") + ",</i>\" she stage-whispers to you, then closes her eyes, just as eager for some rest, listening to the gurgling of your flooded stomach as she drifts off.");
+        outputText("\n\n\"<i>[name]?  [name], are you... oh.</i>\"  Loppe smiles as she sees you've dozed off.  Quietly she slips away to the bed and pulls off her blanket, moving around to carefully seat herself against your bloated stomach, draping her blanket over the both of you and gently resting her head on your distended horse-gut.  \"<i>Sweet dreams, lover-" + mf(player, "boy", "girl") + ",</i>\" she stage-whispers to you, then closes her eyes, just as eager for some rest, listening to the gurgling of your flooded stomach as she drifts off.");
 
         outputText("\n\n<b>Two hours later...</b>");
 
@@ -1894,7 +1894,7 @@ export class Loppe extends TelAdreAbstractContent {
 
             outputText("\n\n\"<i>Hey, sugar?  Mind cuddling with me?  Just a bit?</i>\" she asks, still soaking in her puddle of cum.  She's all slimy and sticky, and your reaction must be apparent in your face.  \"<i>Aww.... come on?  It's not like you're in a better state yourself...</i>\"");
 
-            outputText("\n\nLooking at your own " + player.skinFurScales() + ", now off-white from the glazing she's given you inadvertently, you concede the point to yourself.  Still...");
+            outputText("\n\nLooking at your own " + skinFurScales(player) + ", now off-white from the glazing she's given you inadvertently, you concede the point to yourself.  Still...");
 
             outputText("\n\n\"<i>Pleaaase?</i>\" she asks, giving you her best doe eyes.");
 

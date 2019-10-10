@@ -499,7 +499,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         // [(intelligence check; <15, 15-40, 41+)
         if (player.inte < 15) outputText("Eventually you find Marble stopped, looking towards you with her hands in the air saying, \"<i>You caught me!  Come here.</i>\"  She beckons you towards her chest, and you don't make her wait.");
         else if (player.inte < 40) outputText("Eventually you find Marble stopped and waiting for you.  She puts her hands in the air and says, \"<i>You caught me!</i>\"  It's fairly clear she's given herself up, but when she folds her hands in front of her chest and presses her breasts together, then tells you to come over, you aren't complaining.");
-        else outputText("It isn't too hard to figure out that Marble isn't really trying, and you easily catch her off guard on one of her double backs.  She doesn't even notice you until you peek out from between the stalks next to her, reaching out and getting a handful of her backside.  \"<i>Clever " + player.mf("boy", "girl") + "...</i>\" she says.");
+        else outputText("It isn't too hard to figure out that Marble isn't really trying, and you easily catch her off guard on one of her double backs.  She doesn't even notice you until you peek out from between the stalks next to her, reaching out and getting a handful of her backside.  \"<i>Clever " + mf(player, "boy", "girl") + "...</i>\" she says.");
         outputText("\n\nMarble pulls you to the ground, and you fall onto the lovely lady's lap.  Before you can say anything, Marble shushes you with a finger to your lips.  She pulls up her top, stopping for a moment and winking at you when she reveals underboob, then lets her nipples slip out.");
         outputText("\n\n\"<i>Care to have some of my bountiful breasts, you sweet thing?</i>\" she says, smiling eagerly and presenting you with one of her half-inch long reddish nipples.  You notice that each nipple has a sore-looking swollen ring around it, probably the source of Marble's discomfort.");
         outputText("\n\nYou knew she was going to get around to this, so you figure you might as well get it over with.  It's not like they're not really nice breasts, after all...  You lower your [face] to her nipple, and gently wrap your lips around it.  Marble sighs contentedly as you do so, and starts to groan slightly in pleasure as the first of the milk leaks from her teats.  You certainly can't argue with the taste, sweet and creamy, and start to down the delicious fluid with relish.  Marble doesn't seem to mind at all; in fact, the sounds of her pleasure only increase.");
@@ -581,14 +581,14 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("tries to slap you.  You easily duck under her hand and start twisting her nipples.  She squeals and begins to go limp under your painful ministrations.  You move her around and force her to kneel, pushing her face down into her bed.  Keeping one of your hands on her nipple, you pull down her skirt and expose her beautiful womanhood and asshole.\n\n", false);
         // dicked players
         if (player.cocks.length > 0) {
-            outputText("Chuckling to yourself, you free your " + game.player.multiCockDescriptLight() + " from your " + player.armorName + ".  You spend a moment to ask the helpless cow-girl if she is ready, her only response being a whimper, before ", false);
+            outputText("Chuckling to yourself, you free your " + multiCockDescriptLight(game.player) + " from your " + player.armorName + ".  You spend a moment to ask the helpless cow-girl if she is ready, her only response being a whimper, before ", false);
             // If player's main dick is less than 3 inches wide, ie would fit inside Marble
             if (player.cocks[0].cockThickness < 3) {
                 // how far in does the player go?
                 if (player.cocks[0].cockLength <= 8) {
-                    outputText("forcing your " + game.player.cockDescript(0) + " in as far as it will go.  ", false);
+                    outputText("forcing your " + cockDescript(game.player, 0) + " in as far as it will go.  ", false);
                 } else {
-                    outputText("forcing your " + game.player.cockDescript(0) + " in to the hilt.  ", false);
+                    outputText("forcing your " + cockDescript(game.player, 0) + " in to the hilt.  ", false);
                 }
                 // the raping proper
                 outputText("With a grunt of pleasure, you start to push in and out while simultaneously manhandling her sensitive breasts.  Her pained cries and squeals only make you hornier and the experience all the more enjoyable for you.  You laugh from the pleasure you're getting at the expense of her pain.  Slapping her ass and marvelling at how it jiggles, you quicken the pace of your thrusts inside her.  Marble gasps at the increased rate, alternating between tones of pleasure and pain.\n\n", false);
@@ -601,7 +601,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             }
             // now if the player doesn't fit
             else {
-                outputText("attempting to push your " + game.player.cockDescript(0) + " inside her.  Of course, the girth of your " + game.player.cockDescript(0) + " makes this a rather difficult operation, and it becomes clear after a few moments that it just isn't going to fit.  Instead, you contend yourself by rubbing yourself between her ample ass cheeks, occasionally stroking your " + game.player.multiCockDescriptLight() + " in pride.\n\n", false);
+                outputText("attempting to push your " + cockDescript(game.player, 0) + " inside her.  Of course, the girth of your " + cockDescript(game.player, 0) + " makes this a rather difficult operation, and it becomes clear after a few moments that it just isn't going to fit.  Instead, you contend yourself by rubbing yourself between her ample ass cheeks, occasionally stroking your " + multiCockDescriptLight(game.player) + " in pride.\n\n", false);
                 // is the player corrupt enough to get the fantasy?
                 if (player.cor >= 33)
                     marbleRapeCorruptFantasy();
@@ -1620,7 +1620,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("You smirk at her and demonstrate just how easy it is to get at your genitals while wearing this outfit.  But you decide to not disappoint her, making a show of removing your " + player.armorName + " and pretending to have some modestly when you show off your ", false);
                 // [player has at least one dick]
                 if (player.totalCocks() > 0) {
-                    outputText(game.player.multiCockDescriptLight(), false);
+                    outputText(multiCockDescriptLight(game.player), false);
                     // player has at least one dick and a vagina]
                     if (player.vaginas.length > 0) outputText(" and your ", false);
                 }
@@ -1637,7 +1637,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 else outputText("running one of your hands over them before continuing on.", false);
                 outputText("  You slip open the lower half of your clothes, revealing your ", false);
                 if (player.totalCocks() > 0) {
-                    outputText(game.player.multiCockDescriptLight(), false);
+                    outputText(multiCockDescriptLight(game.player), false);
                     // player has at least one dick and a vagina]
                     if (player.vaginas.length > 0) outputText(" and your ", false);
                 }
@@ -1670,7 +1670,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // (player is male)
         if (genders == 1) {
-            outputText("Marble leans back and invites you to come.  With a coy grin, you slowly crawl towards her, each movement bringing the two of you closer until you are on top of her body. She puts her hands around you and lies back completely.  You carefully line up your " + game.player.cockDescript(0) + " and thrust into her warm snatch.  ", false);
+            outputText("Marble leans back and invites you to come.  With a coy grin, you slowly crawl towards her, each movement bringing the two of you closer until you are on top of her body. She puts her hands around you and lies back completely.  You carefully line up your " + cockDescript(game.player, 0) + " and thrust into her warm snatch.  ", false);
             // [player is less than 8 inches in length]
             if (player.cocks[0].cockLength < 8) outputText("You easily slide all the way into her depths before beginning your hungry thrusts.  ", false);
             // [player is more than 8 inches in length]
@@ -1683,7 +1683,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("Her tight grip does nothing to slow your thrusts, only helping to bring the both of you closer and closer to sweet release.  Finally, you push into her as far as you can", false);
             // [player has a knot and is not more than 8 inches long]
             if (player.cocks[0].cockLength < 8 && player.hasKnot(0)) outputText(", and with a pop, your knot slips inside of her", false);
-            outputText(".  Deep within her, your " + game.player.cockDescript(0) + " explodes.  Within moments, Marble feels her orgasm too, her grip intensifying immensely.  You hear her give a sigh that sounds almost like a moo and her grip relents.  The two of you lay there panting, your " + game.player.cockDescript(0) + " still inside her.\n\n", false);
+            outputText(".  Deep within her, your " + cockDescript(game.player, 0) + " explodes.  Within moments, Marble feels her orgasm too, her grip intensifying immensely.  You hear her give a sigh that sounds almost like a moo and her grip relents.  The two of you lay there panting, your " + cockDescript(game.player, 0) + " still inside her.\n\n", false);
         }
         // (player is female, I hope I did this right, I'm not familiar with the exact mechanics of female/female toys)
         else {
@@ -1694,7 +1694,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             else outputText("pulls you securely against her.  ", false);
             outputText("Marble shudders with pleasure and redoubles her efforts at moving the dildo, quickly pushing you over the edge as well", false);
             // [player has at least one dick]
-            if (player.totalCocks() > 0) outputText(".  Your " + game.player.multiCockDescriptLight() + " erupts while clamped between your bodies", false);
+            if (player.totalCocks() > 0) outputText(".  Your " + multiCockDescriptLight(game.player) + " erupts while clamped between your bodies", false);
             outputText(".  Her grip soon relents and the two of you lay there panting, the dildo still connecting you.  You can hear Marble say under her breath \"<i>That was way better than on my own...</i>\"\n\n", false);
             // (remove vaginal virginity?  "Your hymen is torn...")
             player.cuntChange(8, true);
@@ -1739,7 +1739,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.cockTotal() > 0) {
             // [player has only human or animal dicks]
             if (player.cockTotal() == player.horseCocks() + player.dogCocks() + player.normalCocks()) {
-                outputText("Marble seems pleased at the sight of your " + game.player.multiCockDescriptLight() + " and she pushes you back onto her bed.  She removes her own skirt and stops for a moment at her tail.  Giggling slightly, she uses her ribbon-tied tail to brush at your " + game.player.multiCockDescriptLight() + " before climbing on top of you and slipping her legs to your sides.\n\n", false);
+                outputText("Marble seems pleased at the sight of your " + multiCockDescriptLight(game.player) + " and she pushes you back onto her bed.  She removes her own skirt and stops for a moment at her tail.  Giggling slightly, she uses her ribbon-tied tail to brush at your " + multiCockDescriptLight(game.player) + " before climbing on top of you and slipping her legs to your sides.\n\n", false);
             }
             // [player has at least one of a different kind of dick]
             else {
@@ -1756,10 +1756,10 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             }
             // [after either]
             // [player has more than one dick]
-            if (player.cockTotal() > 1) outputText("\"<i>So, which one is your favorite?</i>\"  Marble asks you while taking measure of your " + game.player.multiCockDescriptLight() + ".  Before you have a chance to answer, Marble grabs a hold of your central " + game.player.cockDescript(0) + " and says \"<i>I'll bet it's this one.</i>\"  ", false);
-            outputText("Without much hesitation, Marble lifts herself up, and impales her moist lips upon your " + game.player.cockDescript(0) + ".  The two of you gasp as you sink into her interior.  You feel each inch slowly flow inside her until ", false);
+            if (player.cockTotal() > 1) outputText("\"<i>So, which one is your favorite?</i>\"  Marble asks you while taking measure of your " + multiCockDescriptLight(game.player) + ".  Before you have a chance to answer, Marble grabs a hold of your central " + cockDescript(game.player, 0) + " and says \"<i>I'll bet it's this one.</i>\"  ", false);
+            outputText("Without much hesitation, Marble lifts herself up, and impales her moist lips upon your " + cockDescript(game.player, 0) + ".  The two of you gasp as you sink into her interior.  You feel each inch slowly flow inside her until ", false);
             // [dick(0) is less than 8 inches long]
-            if (player.cocks[0].cockLength < 8) outputText("every bit of your " + game.player.cockDescript(0) + " is deep inside.  ", false);
+            if (player.cocks[0].cockLength < 8) outputText("every bit of your " + cockDescript(game.player, 0) + " is deep inside.  ", false);
             // //[dick(0) is more than 8 inches long]
             else outputText("Marble bottoms out at eight inches and you can go no further.  ", false);
             outputText("With a delighted shiver, Marble starts to push herself up and down on you, her movements growing more and more frantic over time.  You try to slow her down but she seems to be beyond the capability of listening to you now, giving only louder and more frantic moans of pleasure.  Sooner than you would have preferred, you explode inside her. At that moment, Marble gives a final moan that sounds almost exactly like a moo.  She slows down, seeming to have already reached her peak.\n\n", false);
@@ -1782,7 +1782,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("After finishing up", false);
             // [if player has more than two breasts]
             if (player.totalBreasts() > 2) outputText(" with each of your " + allBreastsDescript(), false);
-            else outputText(" with each of your " + game.player.breastDescript(0), false);
+            else outputText(" with each of your " + breastDescript(game.player, 0), false);
             outputText(", Marble looks up at you and sticks her tongue out again.  \"<i>Now it's time for the main course!</i>\" she whispers before lowering her head down to one of your " + nippleDescript(0) + "s and closing her mouth around it. She soon begins to suckle your nipple.\n\n", false);
             // [if player has nipplecunts]
             if (player.hasFuckableNipples()) {
@@ -1824,10 +1824,10 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         else outputText("Marble grabs a hold of your head and pulls your mouth to hers for a passionate kiss.  You are only too eager to comply and join in.  Even without her vice grip on your head, it feels like you couldn't possibly leave her wonderful mouth. But you eventually push back and look into her eyes intensely.\n\n", false);
         // [player has at least one dick]
         if (player.totalCocks() > 0) {
-            outputText("The feeling of need is almost palpable within the two of you, and when the time comes, neither of you hesitate. You and Marble push yourselves together, forcing your " + game.player.cockDescript(0) + " deep into the soft folds of Marble's sex.  The two of you shudder and bask for a moment in the wonderful feeling of being connected, before gently starting to rock against one another.  Little else matters to you right now other than the warm, loving body that your arms are wrapped tightly around", false);
+            outputText("The feeling of need is almost palpable within the two of you, and when the time comes, neither of you hesitate. You and Marble push yourselves together, forcing your " + cockDescript(game.player, 0) + " deep into the soft folds of Marble's sex.  The two of you shudder and bask for a moment in the wonderful feeling of being connected, before gently starting to rock against one another.  Little else matters to you right now other than the warm, loving body that your arms are wrapped tightly around", false);
             // [player height is between 4 feet and 5 feet]
             if (player.tallness >= 48 && player.tallness <= 60) outputText(", the breasts your head is clamped between,", false);
-            outputText(" and the warm folds where your " + game.player.cockDescript(0) + " is embedded.  You can't help but think about how wonderful a person Marble is, and you bet that Marble feels the same way about you.  \"<i>I love you sweetie.</i>\" Marble says to you gently.  You assure her that you feel the same, and at the moment, nothing else matters.\n\n", false);
+            outputText(" and the warm folds where your " + cockDescript(game.player, 0) + " is embedded.  You can't help but think about how wonderful a person Marble is, and you bet that Marble feels the same way about you.  \"<i>I love you sweetie.</i>\" Marble says to you gently.  You assure her that you feel the same, and at the moment, nothing else matters.\n\n", false);
         }
         // [player only has a vagina]
         else if (player.vaginas.length > 0) {
@@ -2037,11 +2037,11 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         // requires exactly 1 kid  (just put it on the RNG; players get knocked up so much and lots of people have 10+ Marble kids already -Z)
         if (select == 1) {
             if (flags[kFLAGS.MARBLE_KIDS] == 1 && flags[kFLAGS.MARBLE_BOYS] == 1) {
-                outputText("Your son immediately clops up to you and jumps into your arms.  \"<i>" + player.mf("Daddy, daddy", "Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the boy in your arms, so young and yet full of energy.  He proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine saviour that carries out this grand quest.");
+                outputText("Your son immediately clops up to you and jumps into your arms.  \"<i>" + mf(player, "Daddy, daddy", "Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the boy in your arms, so young and yet full of energy.  He proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine saviour that carries out this grand quest.");
                 outputText("\n\nThe game finally ends with the bovine saviour victorious over the horde of ravenous monsters  - somewhere along the line it was decided that hostages were no fun and single combat wasn't impressive enough, and you exhausted your theatrical skills to provide a bevy of satisfyingly scary faces and growls - and the people of the land (you) rejoicing.  You're left a bit tired afterwards, but you certainly don't regret having played with your child.");
             }
             else {
-                outputText("Your daughter immediately clops up to you and jumps into your arms.  \"<i>" + player.mf("Daddy, daddy", "Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the girl in your arms, so young and yet full of energy.  She proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine saviour that carries out this grand quest.");
+                outputText("Your daughter immediately clops up to you and jumps into your arms.  \"<i>" + mf(player, "Daddy, daddy", "Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the girl in your arms, so young and yet full of energy.  She proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine saviour that carries out this grand quest.");
                 outputText("\n\nThe game finally ends with the bovine saviour victorious over the horde of ravenous monsters  - somewhere along the line it was decided that hostages were no fun and single combat wasn't impressive enough, and you exhausted your theatrical skills to provide a bevy of satisfyingly scary faces and growls - and the people of the land (you) rejoicing.  You're left a bit tired afterwards, but you certainly don't regret having played with your child.");
             }
             // increase fatigue by 10, decrease lust by 5, and decrease libido by 1, advance time by 1 hour
@@ -2050,7 +2050,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         // Tales of adventure (Z)
         // requires at least 2 kids
         if (select == 2) {
-            outputText("When you approach the nursery, the faces of your kids immediately light up and as one they cry out, \"<i>" + player.mf("Dad", "Mom") + "!  Tell us a story!</i>\"  They crowd around you, excited at the prospect of hearing of your adventures.  It would seem that, once again, the kids will be the ones that decide what will be happening in your time with them.");
+            outputText("When you approach the nursery, the faces of your kids immediately light up and as one they cry out, \"<i>" + mf(player, "Dad", "Mom") + "!  Tell us a story!</i>\"  They crowd around you, excited at the prospect of hearing of your adventures.  It would seem that, once again, the kids will be the ones that decide what will be happening in your time with them.");
             outputText("\n\nYou launch into another tale of your exploits (that may or may not have actually happened to you) much to the enjoyment of your little ones.  They listen with rapt attention and smiles on their faces as you talk of your successes, worried looks when you sound like you might be in danger, and great cheers when you do make it out all right.");
             // ([corruption check, <=40]
             if (player.cor < 66) outputText("  You do make sure to skip over the items of a more explicit nature throughout.");
@@ -2089,14 +2089,14 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nYou silence her and kindly explain that the kids are your own as well as hers, and therefore you also share some of the responsibility for them; moreover, you can't bear to watch her tired all the time from their sheer numbers.  She smiles again.");
             outputText("\n\n\"<i>Thank you.  You really are amazing.  Well, I certainly could use a rest...  And we still have to get some stuff done for dinner, so if you could take them and gather some herbs as spice, it would both give them something to do and be greatly helpful.</i>\"");
             outputText("\n\nWith a nod, you call your brood and announce that all of you will be gathering some important plants for Mommy Marble.  The kids swarm around you and just the walk to the edge of the forest is enough for you to notice how tiring it can be dealing with all of them.");
-            outputText("\n\n\"<i>" + player.mf("Daddy", "Mommy") + "!  Is this it?  Is this it?</i>\"");
+            outputText("\n\n\"<i>" + mf(player, "Daddy", "Mommy") + "!  Is this it?  Is this it?</i>\"");
             outputText("\n\nThey're certainly very energetic but have a tendency to simply grab things and ask you if they're the good ones rather than simply gathering what you instruct them to gather.  You swear one has picked out something that looks almost like a poisonous toadstool from your home, and yet another brought you a Whisker Fruit.  You gently collect them and send the kids back out, then quietly dispose of all the hazardous items.  This continues for a while, but eventually your basket is full.");
             // no new PG
             // [Int <30]
             if (player.inte < 30) outputText("\n\nHaving gathered the things that looked like they were what Marble might need, you return to camp.");
             else if (player.inte < 70) outputText("\n\nYou're well aware of which herbs Marble usually uses as spices and mostly keep to it, through you also gather others you think are safe, wondering if she'd be able to make something of them.");
             else outputText("\n\nYou know Marble's \"<i>spices</i>\" by heart and are well aware of what here can also be used as these.  Gathering them all with your children, you return to camp well-stuffed with them.");
-            outputText("\n\nYour kids are just a little bit tired from all the work and it doesn't seem they'll pester Marble much more today.  One of them even grabs you, complaining, \"<i>" + player.mf("Daddy", "Mommy") + ", I'm sleepy!</i>\"  You pat her head and smile, telling her that you'll be home soon enough.");
+            outputText("\n\nYour kids are just a little bit tired from all the work and it doesn't seem they'll pester Marble much more today.  One of them even grabs you, complaining, \"<i>" + mf(player, "Daddy", "Mommy") + ", I'm sleepy!</i>\"  You pat her head and smile, telling her that you'll be home soon enough.");
             outputText("\n\nApproaching the camp, Marble is already waiting for you and seems a lot more relaxed and rested.  Taking the baskets with the herbs from you, she beams you a beautiful smile, then ");
             // [Height below 5 feet]
             if (player.tallness < 60) outputText("grabs you and immediately lifts you up to her chest, giving you a big hug.");
@@ -2381,7 +2381,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
     private marbleCampSexNew(): void {
         spriteSelect(41);
         if (player.findStatusAffect(StatusAffects.Infested) >= 0) {
-            outputText("  You call Marble over and ask her if she can give you some release.  She smiles at you and gently grips your " + game.player.cockDescript(0) + " in one of her hands before recoiling in horror.  \"<i>Uh, why don't you take care of that problem of yours in your cock first, sweetie?  Then I'll help you get release.</i>\"  It looks like Marble isn't willing to help you get release while you have worms infecting your cock.");
+            outputText("  You call Marble over and ask her if she can give you some release.  She smiles at you and gently grips your " + cockDescript(game.player, 0) + " in one of her hands before recoiling in horror.  \"<i>Uh, why don't you take care of that problem of yours in your cock first, sweetie?  Then I'll help you get release.</i>\"  It looks like Marble isn't willing to help you get release while you have worms infecting your cock.");
             return;
         }
         // Marble isn't willing to pleasure the PC if her lust is lower than 0
@@ -2415,7 +2415,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\nTaking the teat into your mouth, you start to suck on it.  It doesn't take long for Marble's milk to start flowing, and when it does she moves her hand lower.");
                 // ( [Male/Herm]
                 if (player.hasCock()) {
-                    outputText("She chuckles as her hand reaches your " + game.player.multiCockDescriptLight() + ".  \"<i>You seem quite ready and eager for something, sweetie.</i>\"");
+                    outputText("She chuckles as her hand reaches your " + multiCockDescriptLight(game.player) + ".  \"<i>You seem quite ready and eager for something, sweetie.</i>\"");
                 }
                 else {
                     outputText("She chuckles as her hand reaches your " + vaginaDescript(0) + ".  ");
@@ -2432,18 +2432,18 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
 
                 // [Male/herm]
                 if (player.hasCock()) {
-                    outputText("\n\nHer hand continues stroking your " + game.player.cockDescript(0) + ", very gently at first, but once you intensify your suckling, she gasps slightly and gives your member an appreciative squeeze, increasing the intensity.  You buck your hips slightly but she just strokes your " + hairDescript() + " as if to calm you down.");
+                    outputText("\n\nHer hand continues stroking your " + cockDescript(game.player, 0) + ", very gently at first, but once you intensify your suckling, she gasps slightly and gives your member an appreciative squeeze, increasing the intensity.  You buck your hips slightly but she just strokes your " + hairDescript() + " as if to calm you down.");
                     outputText("\n\n\"<i>It doesn't hurt, right?  I want to make you feel good, sweetie...  If you keep sucking me, I'll make you feel very, very good.</i>\"");
 
-                    outputText("\n\nYou gently moan into her breast in response, causing her to giggle as she plays with the tip of your " + game.player.cockDescript(0) + ".  She returns to the pumping motion and increases the pace just as you decide you need something to grab onto - and the most pleasant things at hand are her breasts.  Marble gasps in surprise and moans as you rub her breasts while suckling, and starts jerking you off even faster in response.");
+                    outputText("\n\nYou gently moan into her breast in response, causing her to giggle as she plays with the tip of your " + cockDescript(game.player, 0) + ".  She returns to the pumping motion and increases the pace just as you decide you need something to grab onto - and the most pleasant things at hand are her breasts.  Marble gasps in surprise and moans as you rub her breasts while suckling, and starts jerking you off even faster in response.");
                     // ( [Female Marble]
                     if (flags[kFLAGS.MARBLE_DICK_LENGTH] == 0) outputText("  Her thighs seem to be rubbing together, and the place you're lying on feels a tiny bit wet, so you assume it isn't only you who's getting more and more excited by this.");
                     else outputText("  Her thighs are gently rubbing beneath you, and you feel something hard poking you in the back.  You smile around the nipple you have in your mouth.");
                     // [If balls] : A
                     if (player.balls > 0) outputText("  As her hand reaches the base of your cock, she stops stroking it to take a moment and gently roll your " + ballsDescriptLight() + " with her fingers.  \"<i>Are these ready to shoot out for me soon, sweetie?</i>\"");
                     // ([If pussy] :
-                    if (player.hasVagina()) outputText("  From the base of your cock, her hand moves even lower, gently rubbing your " + clitDescript() + ".  \"<i>This seems to also require some attention...  Maybe later, sweetie, if you do a good job nursing from me.  But right now, I want to see you shoot off,</i>\" she says, as her hand moves back to your " + game.player.multiCockDescriptLight() + ".");
-                    outputText("\n\nShe starts tugging at and stroking your " + game.player.cockDescript(0) + ", eager to make you cum now.  You buck your hips again and she responds more agressively this time, pushing you back down with her breasts as her touch starts to become unbearable.  \"<i>You're close, aren't you, sweetie?  It's okay, I want to see you cum.</i>\"");
+                    if (player.hasVagina()) outputText("  From the base of your cock, her hand moves even lower, gently rubbing your " + clitDescript() + ".  \"<i>This seems to also require some attention...  Maybe later, sweetie, if you do a good job nursing from me.  But right now, I want to see you shoot off,</i>\" she says, as her hand moves back to your " + multiCockDescriptLight(game.player) + ".");
+                    outputText("\n\nShe starts tugging at and stroking your " + cockDescript(game.player, 0) + ", eager to make you cum now.  You buck your hips again and she responds more agressively this time, pushing you back down with her breasts as her touch starts to become unbearable.  \"<i>You're close, aren't you, sweetie?  It's okay, I want to see you cum.</i>\"");
                     outputText("\n\nWith that said, her stroking becomes unrelenting and you decide to simply give in to the pleasure.  The repeated feeling of her hand moving up and down your shaft, teasing the head and stimulating all along the length, has you shivering, and soon you feel a tingling at the base of your spine.  Her milk flows richly into your mouth, and the comforting taste relaxes you completely and makes it impossible not to give in to the pleasure.");
                     outputText("\n\nMoments later, Marble's rapid strokes cause you to ejaculate.  \"<i>There you go!  You've done great, sweetie!</i>\"  Your bottom shakes, causing your member to bob in her grasp as she squeezes out more and more of your cum onto her slimy hand.  You grab her breasts harder from the sudden sensations, causing her to yelp and moan.");
                     if (player.cumQ() < 500) outputText("  You cover her hand as she keeps jerking you off, squeezing out tiny little droplets once you're done ejaculating.");
@@ -2515,9 +2515,9 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText(" you.  Your hips thrust back and forth, enjoying the fluid motion of her tongue working over your wet, saliva-slathered genitals.");
                 // [if cock]
                 if (player.hasCock()) {
-                    outputText("  Her lips tightly enclose your " + game.player.cockDescript(0));
+                    outputText("  Her lips tightly enclose your " + cockDescript(game.player, 0));
                     if (player.cockTotal() > 1) outputText(" while she strokes another");
-                    outputText(", acting as an organic cock-ring.  She looks up to you as you watch her lips undulating under the repeated pulsations of your spooge-pumping " + game.player.cockDescript(0) + ".  These cocksuckers are teasing you in the most infuriating way, and you savagely shove more of your prick down her throat, stretching her jaw and making her moan in delight, although her cries of pleasure are muffled by the pecker stuffing her mouth.");
+                    outputText(", acting as an organic cock-ring.  She looks up to you as you watch her lips undulating under the repeated pulsations of your spooge-pumping " + cockDescript(game.player, 0) + ".  These cocksuckers are teasing you in the most infuriating way, and you savagely shove more of your prick down her throat, stretching her jaw and making her moan in delight, although her cries of pleasure are muffled by the pecker stuffing her mouth.");
                 }
                 // [if vagina]
                 else outputText("  Her flexible, yet firm tongue really feels like a dong and it keeps provoking you with its prolonged digging. With a mighty thrust, you shove her against your " + vaginaDescript() + ", forcing the entirety of her oral muscle inside.");
@@ -2531,7 +2531,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                     else outputText("used to");
                     outputText(" suckle her tits.");
                     // [if high cum production]
-                    if (player.cumQ() >= 500) outputText("  Your " + game.player.cockDescript(0) + " keeps spouting more seed inside her, efficiently distending her belly");
+                    if (player.cumQ() >= 500) outputText("  Your " + cockDescript(game.player, 0) + " keeps spouting more seed inside her, efficiently distending her belly");
                     // [if cum production is massive]until she looks ready to give birth.[/]
                     if (player.cumQ() > 1500) outputText(" until she looks ready to give birth.");
                     outputText("  Her lips cling to your cum-tube as if her life depended on it; she sucks viciously, milking your junk of every drop of its baby-batter.");
@@ -2567,10 +2567,10 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 }
                 // If Player has at least one dick, Marble titfucks that
                 if (player.cocks.length > 0) {
-                    outputText("\n\nShe moves down to your crotch and slips your " + game.player.cockDescript(0) + " between her breasts.  She smiles at you and says, \"<i>This is what you were hoping for, right?</i>\" before squeezing them together tightly and pushing your " + game.player.cockDescript(0) + " in and out.  You sigh in pleasure and smile down at Marble as she pumps you between her breasts.  But it seems Marble is unsatisfied with only that; she quickens her pace and starts moving each of her breasts up and down opposite each other.", false);
+                    outputText("\n\nShe moves down to your crotch and slips your " + cockDescript(game.player, 0) + " between her breasts.  She smiles at you and says, \"<i>This is what you were hoping for, right?</i>\" before squeezing them together tightly and pushing your " + cockDescript(game.player, 0) + " in and out.  You sigh in pleasure and smile down at Marble as she pumps you between her breasts.  But it seems Marble is unsatisfied with only that; she quickens her pace and starts moving each of her breasts up and down opposite each other.", false);
                     // Multiple dick side note
                     if (player.cocks.length > 1) {
-                        outputText("  Yet still unsatisfied, Marble engulfs and rub the rest of your " + game.player.multiCockDescriptLight() + " within her ample mounds.  ", false);
+                        outputText("  Yet still unsatisfied, Marble engulfs and rub the rest of your " + multiCockDescriptLight(game.player) + " within her ample mounds.  ", false);
                     }
                 }
                 // If Player has a vagina, Marble titfucks that
@@ -2623,13 +2623,13 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\n\"<i>Now sweetie, how about a nice tail massage?</i>\" she says, putting her hands on the exposed underside of your tail and starting to rub the soft scales.  You sigh softly as she gently moves up your length, massaging your tail with shallow downward strokes.  \"<i>Enjoying yourself?  Let me make this even better for you,</i>\" she gently intones as she gets close to your groin.  She removes her top, and lowers her large breasts to your serpentine length.  Marble grins at you, then turns around and, pushing her breasts down on your tail, starts to slither herself back down your length, giving you an enticing view of her rump.  All the while, her fingers continue to play with the sensitive underside of your tail just ahead of her soft body.");
             if (player.lib >= 50) outputText("  Quietly, you reach down and hook your fingers into the hem of her clothing, allowing her to pull it half off with her next shift and expose her pussy");
             if (flags[kFLAGS.MARBLE_DICK_LENGTH] > 0) outputText(" and " + marbleCock());
-            outputText(".  \"<i>Why, you shameless " + player.mf("pervert", "hussy") + "!</i>\" the cow-girl says in mock-offense, winking at you.");
+            outputText(".  \"<i>Why, you shameless " + mf(player, "pervert", "hussy") + "!</i>\" the cow-girl says in mock-offense, winking at you.");
 
             outputText("\n\nWhen she gets back to your tail, she turns around once more, and crawls back towards your upper body, while walking her fingers up your tail again.");
             if (player.gender > 0) {
                 outputText("\n\nBy the time she reaches your genital slit, you're panting with pleasure, and exposing your ready ");
                 if (player.hasCock()) {
-                    outputText(game.player.multiCockDescriptLight());
+                    outputText(multiCockDescriptLight(game.player));
                     if (player.hasVagina()) outputText(" and ");
                 }
                 if (player.hasVagina()) outputText(vaginaDescript());
@@ -2716,14 +2716,14 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         if (raped) {
             // dicked players
             if (player.cocks.length > 0) {
-                outputText("Chuckling to yourself, you free your " + game.player.multiCockDescriptLight() + " from your " + player.armorName + ".  You spend a moment to ask the helpless cow-girl if she is ready, her only response being a whimper, before ", false);
+                outputText("Chuckling to yourself, you free your " + multiCockDescriptLight(game.player) + " from your " + player.armorName + ".  You spend a moment to ask the helpless cow-girl if she is ready, her only response being a whimper, before ", false);
                 // If player's main dick is less than 3 inches wide, ie would fit inside Marble
                 if (player.cocks[0].cockThickness < 3) {
                     // how far in does the player go?
                     if (player.cocks[0].cockLength <= 8) {
-                        outputText("forcing your " + game.player.cockDescript(0) + " in as far as it will go.  ", false);
+                        outputText("forcing your " + cockDescript(game.player, 0) + " in as far as it will go.  ", false);
                     } else {
-                        outputText("forcing your " + game.player.cockDescript(0) + " in to the hilt.  ", false);
+                        outputText("forcing your " + cockDescript(game.player, 0) + " in to the hilt.  ", false);
                     }
                     // the raping proper
                     outputText("With a grunt of pleasure, you start to push in and out while simultaneously manhandling her sensitive breasts.  Her pained cries and squeals only make you hornier and the experience all the more enjoyable for you.  You laugh from the pleasure you're getting at the expense of her pain.  Slapping her ass and marvelling at how it jiggles, you quicken the pace of your thrusts inside her.  Marble gasps at the increased rate, alternating between tones of pleasure and pain.\n\n", false);
@@ -2736,7 +2736,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 }
                 // now if the player doesn't fit
                 else {
-                    outputText("attempting to push your " + game.player.cockDescript(0) + " inside her.  Of course, the girth of your " + game.player.cockDescript(0) + " makes this a rather difficult operation, and it becomes clear after a few moments that it just isn't going to fit.  Instead, you contend yourself by rubbing yourself between her ample ass cheeks, occasionally stroking your " + game.player.multiCockDescriptLight() + " in pride.\n\n", false);
+                    outputText("attempting to push your " + cockDescript(game.player, 0) + " inside her.  Of course, the girth of your " + cockDescript(game.player, 0) + " makes this a rather difficult operation, and it becomes clear after a few moments that it just isn't going to fit.  Instead, you contend yourself by rubbing yourself between her ample ass cheeks, occasionally stroking your " + multiCockDescriptLight(game.player) + " in pride.\n\n", false);
                     // is the player corrupt enough to get the fantasy?
                     if (player.cor >= 33)
                         marbleRapeCorruptFantasy();
@@ -2874,12 +2874,12 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             // does that person have a noteworthy stature?
             if (approxHeight != "average height")
                 outputText(approxHeight + " ", false);
-            outputText(player.maleFemale() + " human leaning against one of the barn doors in a farm hand outfit.  It looks like " + player.heShe() + "'s taking a break from something.  With a big smile on his face, the young champion strides up to " + player.himHer() + " and says, \"<i>Hello there, it's rare to see a human in this world.</i>\"  The other looks up at him for a few moments before smiling in recognition and saying \"<i>So they picked you to go after me, huh?</i>\"  The young champion stared at the " + player.manWoman() + " for a few moments, unable to answer, this was better than he could have ever hoped for!  He was looking at last year's champion, " + player.short + "!\n\n", false);
+            outputText(maleFemale(player) + " human leaning against one of the barn doors in a farm hand outfit.  It looks like " + heShe(player) + "'s taking a break from something.  With a big smile on his face, the young champion strides up to " + himHer(player) + " and says, \"<i>Hello there, it's rare to see a human in this world.</i>\"  The other looks up at him for a few moments before smiling in recognition and saying \"<i>So they picked you to go after me, huh?</i>\"  The young champion stared at the " + manWoman(player) + " for a few moments, unable to answer, this was better than he could have ever hoped for!  He was looking at last year's champion, " + player.short + "!\n\n", false);
             outputText("\"<i>I'm so glad to have found a friend like you in this world, " + player.short + ". ", false);
         }
         // that's no human!
         else {
-            outputText("However, he is rather surprised to see a " + player.maleFemale() + " " + morph + " leaning against the barn wall next to the entrance.  The young champion approaches the " + morph + " with a little trepidation and calls out to them <i>\"Hello there, uh, Whitney said I might know you.</i>\"  The " + morph + " looks up at him for a few moments before smiling in recognition and saying \"<i>So they picked you next, huh?</i>\"  The young champion starts at this declaration.  \"<i>How do you know who I am?</i>\" he demands indignantly, \"<i>What do you know about my home?</i>\" the other chuckles and says, \"<i>I'm " + player.short + ", despite my form, I'm still the same person.  Being able to change is one of the joys of this messed up world.</i>\"  The young champion looks uncertainly at them for a few moments before realizing that the " + morph + " is telling the truth!\n\n", false);
+            outputText("However, he is rather surprised to see a " + maleFemale(player) + " " + morph + " leaning against the barn wall next to the entrance.  The young champion approaches the " + morph + " with a little trepidation and calls out to them <i>\"Hello there, uh, Whitney said I might know you.</i>\"  The " + morph + " looks up at him for a few moments before smiling in recognition and saying \"<i>So they picked you next, huh?</i>\"  The young champion starts at this declaration.  \"<i>How do you know who I am?</i>\" he demands indignantly, \"<i>What do you know about my home?</i>\" the other chuckles and says, \"<i>I'm " + player.short + ", despite my form, I'm still the same person.  Being able to change is one of the joys of this messed up world.</i>\"  The young champion looks uncertainly at them for a few moments before realizing that the " + morph + " is telling the truth!\n\n", false);
             outputText("\"<i>You really are " + player.short + "!  I can't believe you left your humanity behind, but I'm glad to have found a friend in this world.  ", false);
         }
         // does he comment on the player's height?
@@ -2889,7 +2889,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         else if (approxHeight == "tall" || approxHeight == "very tall") {
             outputText("You've gotten bigger since I saw you last.  ", false);
         }
-        outputText("Could you join me at my camp?  </i>\" the younger champion asks, \"<i>Your experience would help me out a great deal, and I'd be glad to have another fighter on my side.</i>\"  The older champion shakes " + player.hisHer() + " head and replies, \"<i>I'm sorry, but I abandoned my quest some time ago.  There is simply something here that is more important to me than that.</i>\"  The younger champion looks at " + player.himHer() + " in alarm and asks \"<i>What could be more important than our mission?</i>\"\n\n", false);
+        outputText("Could you join me at my camp?  </i>\" the younger champion asks, \"<i>Your experience would help me out a great deal, and I'd be glad to have another fighter on my side.</i>\"  The older champion shakes " + hisHer(player) + " head and replies, \"<i>I'm sorry, but I abandoned my quest some time ago.  There is simply something here that is more important to me than that.</i>\"  The younger champion looks at " + himHer(player) + " in alarm and asks \"<i>What could be more important than our mission?</i>\"\n\n", false);
         outputText("At that moment, an earthly female voice calls out from inside the barn.  \"<i>Sweetie, is that someone you know?</i>\"  The older champion smiles and replies to the voice, \"<i>Yes Marble, it is.  You should come out and meet him.</i>\"  <i>\"Alright,</i>\" the voice calls back.  ", false);
         // could the player get Marble pregnant?
         if (player.gender == 1 || player.gender == 3) {
@@ -2897,7 +2897,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("<i>\"Marble,</i>\" the older champion says to her, \"<i>this is a friend, he's actually from my village.  This is Marble, she is the reason I left my mission.  I care about her too much, and she is carrying my child.</i>\"  ", false);
             // mysterious baby?
             if (player.gender == 3 && player.biggestTitSize() >= 2 && player.biggestCockArea() < 15) {
-                outputText("\"<i>Wait, your child?!  How?</i>\" the younger champion stammers. The older one grins at him and says, \"<i>So I'm the first you've met?  Well then...</i>\" before dropping her pants and revealing her " + game.player.multiCockDescriptLight() + " and her " + vaginaDescript(0) + " to him.  The younger champion's jaw drops and he simply stares at her for a time, during which she giggles at him and says, \"<i>They're fully functional too.  Would you like to see them in action?</i>\"  The younger champion finds he is only able to stammer out an incoherent answer to this.  \"<i>I think I'll take that as a 'yes'. Don't worry, it'll be fun.</i>\" the older champion says, leading the young one along with Marble back inside the barn.  \"<i>Afterwards, maybe I can give you some advice on dealing with this world.</i>\"  ", false);
+                outputText("\"<i>Wait, your child?!  How?</i>\" the younger champion stammers. The older one grins at him and says, \"<i>So I'm the first you've met?  Well then...</i>\" before dropping her pants and revealing her " + multiCockDescriptLight(game.player) + " and her " + vaginaDescript(0) + " to him.  The younger champion's jaw drops and he simply stares at her for a time, during which she giggles at him and says, \"<i>They're fully functional too.  Would you like to see them in action?</i>\"  The younger champion finds he is only able to stammer out an incoherent answer to this.  \"<i>I think I'll take that as a 'yes'. Don't worry, it'll be fun.</i>\" the older champion says, leading the young one along with Marble back inside the barn.  \"<i>Afterwards, maybe I can give you some advice on dealing with this world.</i>\"  ", false);
             }
             // if this isn't a herm, then met the family
             else {
@@ -2907,7 +2907,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         }
         else {
             outputText("A tall female cow-girl then steps out of the barn entrance.  The young champion notes just how pretty she is, if a bit imposing.\n\n", false);
-            outputText("<i>\"Marble,</i.>\" the older champion says to her, \"<i>this is the new champion, he's actually from my village.  This is Marble, she is the reason I left my mission.  I care about her too much.</i>\"  The younger champion looks at the other in confusion.  \"<i>What do you mean by that?<i>\" he asks " + player.himHer() + ".  Marble giggles, and invites the older champion to suckle her nipples, which they eagerly begin doing.  \"<i>I- what?  Huh?!</i>\" the younger champion stammers at the sight, unable to believe his eyes.  \"<i>Like my sweetie here said, we have a special relationship,</i>\" she tells him smiling, easily recognizing the tell-tale signs of arousal at what he was seeing.  \"<i>Does your relationship extend to, um, other things?</i>\" he asks a little nervously.  The older champion turns away from Marble's breast and walks over to the younger one, putting " + player.hisHer() + " arm around the young champion's shoulders.  With a little milk still dripping from " + player.hisHer() + " mouth, the older champion leads the younger one inside the barn with Marble, saying \"<i>Yes, would you care to join us?</i>\"  ", false);
+            outputText("<i>\"Marble,</i.>\" the older champion says to her, \"<i>this is the new champion, he's actually from my village.  This is Marble, she is the reason I left my mission.  I care about her too much.</i>\"  The younger champion looks at the other in confusion.  \"<i>What do you mean by that?<i>\" he asks " + himHer(player) + ".  Marble giggles, and invites the older champion to suckle her nipples, which they eagerly begin doing.  \"<i>I- what?  Huh?!</i>\" the younger champion stammers at the sight, unable to believe his eyes.  \"<i>Like my sweetie here said, we have a special relationship,</i>\" she tells him smiling, easily recognizing the tell-tale signs of arousal at what he was seeing.  \"<i>Does your relationship extend to, um, other things?</i>\" he asks a little nervously.  The older champion turns away from Marble's breast and walks over to the younger one, putting " + hisHer(player) + " arm around the young champion's shoulders.  With a little milk still dripping from " + hisHer(player) + " mouth, the older champion leads the younger one inside the barn with Marble, saying \"<i>Yes, would you care to join us?</i>\"  ", false);
         }
         // If Marble is a pusher, she starts to tempt this champion
         if (player.statusAffectv3(StatusAffects.Marble) == 1) {
@@ -3079,7 +3079,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         // PC has worms kills everything.
         if (player.findStatusAffect(StatusAffects.Infested) >= 0) {
             if (flags[kFLAGS.MARBLE_GROSSED_OUT_BECAUSE_WORM_INFESTATION] != 1) {
-                outputText("As you go to lie down for the night, you find that Marble has gotten there before you.  You lie down next to her, but you can't help wishing that the two of you could have sex.  Suddenly, you feel Marble's hand grab ahold of your " + game.player.cockDescript(0) + ".  She gives a bit of a squeal as one of the worms starts to move around inside the shaft.  She pulls open the blankets and looks closely at your dick for a few moments before picking up her bedroll and moving to a different part of the camp saying, \"<i>" + player.short + ", you get rid of those or I'm not going to sleep next to you or with you.</i>\"\n\n", false);
+                outputText("As you go to lie down for the night, you find that Marble has gotten there before you.  You lie down next to her, but you can't help wishing that the two of you could have sex.  Suddenly, you feel Marble's hand grab ahold of your " + cockDescript(game.player, 0) + ".  She gives a bit of a squeal as one of the worms starts to move around inside the shaft.  She pulls open the blankets and looks closely at your dick for a few moments before picking up her bedroll and moving to a different part of the camp saying, \"<i>" + player.short + ", you get rid of those or I'm not going to sleep next to you or with you.</i>\"\n\n", false);
                 flags[kFLAGS.MARBLE_GROSSED_OUT_BECAUSE_WORM_INFESTATION] = 1;
             }
             return false;
@@ -3207,7 +3207,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         if (x < 0) x = 0;
         // No sex if dude and too big!
         else if (player.gender == 1 && player.cockArea(x) > marbleCuntCapacity()) {
-            outputText("You lie down next to her, but you can't help wishing that the two of you could have sex.  Suddenly, you feel Marble's hand grab a hold of your " + game.player.cockDescript(x) + ".  She sighs and says, \"<i>Sweetie, I'm afraid that you won't fit inside me.  Do you think you could get a little smaller, just for me?</i>\"  After a moment of getting comfortable, the two of you go to sleep.", false);
+            outputText("You lie down next to her, but you can't help wishing that the two of you could have sex.  Suddenly, you feel Marble's hand grab a hold of your " + cockDescript(game.player, x) + ".  She sighs and says, \"<i>Sweetie, I'm afraid that you won't fit inside me.  Do you think you could get a little smaller, just for me?</i>\"  After a moment of getting comfortable, the two of you go to sleep.", false);
             doNext(playerMenu);
         }
         // Ok lets light this fire!
@@ -3218,7 +3218,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("Your head rests comfortably between Marble's breasts the entire time, her warm breath blowing softly on your hair.  You feel almost completely relaxed, yet incredibly turned on at the same time.  For some reason, it just feels right to lay there and breathe in her scent, enjoying the wonderful love pillows she is forcing you to relax between.  She runs her hand down your " + biggestBreastSizeDescript(player) + ", gently cooing to you.  Her hand slips down to your ", false);
             // If (PC has dick) {
             if (player.cockTotal() > 0) {
-                outputText(game.player.multiCockDescriptLight(), false);
+                outputText(multiCockDescriptLight(game.player), false);
                 // If (PC both dick and vag)
                 if (player.hasVagina()) outputText(" and your ", false);
             }
@@ -3231,7 +3231,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("She reaches over and puts her hand onto your waist, gently slipping her hand inside your undergarments to touch your ", false);
             // If (PC has dick) {
             if (player.cockTotal() > 0) {
-                outputText(game.player.multiCockDescriptLight(), false);
+                outputText(multiCockDescriptLight(game.player), false);
                 // If (PC both dick and vag)
                 if (player.hasVagina()) outputText(" and your ", false);
             }
@@ -3252,7 +3252,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 simpleChoices("Dick", marbleNightSexDudes, "Vagina", marbleNightSexChicks, "", null, "", null, "", null);
             }
             else {
-                outputText("Marble says, \"<i>Well sweetie, since that " + game.player.cockDescript(x) + " of yours is too big to fit inside me, let's put that " + vaginaDescript(0) + " to use.</i>\"\n\n", false);
+                outputText("Marble says, \"<i>Well sweetie, since that " + cockDescript(game.player, x) + " of yours is too big to fit inside me, let's put that " + vaginaDescript(0) + " to use.</i>\"\n\n", false);
                 // GIRL SECKS GOES HERE
                 doNext(marbleNightSexChicks);
             }
@@ -3273,11 +3273,11 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         if (x < 0) x = 0;
         flags[kFLAGS.MARBLE_LUST] = 0;
         outputText("", true);
-        outputText("You gently lift yourself up and slide the tip of your " + game.player.cockDescript(x) + " into her waiting hole.  Ever so slowly, you push yourself further and further in.  Each inch gained brings gentle moans and coos from Marble, encouraging you onward.  ", false);
+        outputText("You gently lift yourself up and slide the tip of your " + cockDescript(game.player, x) + " into her waiting hole.  Ever so slowly, you push yourself further and further in.  Each inch gained brings gentle moans and coos from Marble, encouraging you onward.  ", false);
         // Can the PC's main cock go all the way?
         // If (cock 0 is longer than 8 inches)
         if (player.cocks[x].cockLength > 8) {
-            outputText("There is only one thing that will stop your advance: when you reach the end of the line.  \"<i>Keep going sweetie, there is room left.  Make sure you fill me all the way.</i>\"  With a groan, your " + game.player.cockDescript(x) + " hits the furthest part of Marble's confines and you can go no further.\n\n", false);
+            outputText("There is only one thing that will stop your advance: when you reach the end of the line.  \"<i>Keep going sweetie, there is room left.  Make sure you fill me all the way.</i>\"  With a groan, your " + cockDescript(game.player, x) + " hits the furthest part of Marble's confines and you can go no further.\n\n", false);
         }
         // otherwise, Marble doesn't mind, she'll hold all of them instead
         else {
@@ -3308,16 +3308,16 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // nope the PC is the one
         else {
-            outputText("It isn't enough to hold you back for more than a moment, though, and soon you're thrusting deep inside her at a comfortable rhythm for the two of you.  You smile at her and she smiles back as you start fondling and playing with Marble's lovely pillows.  She starts to run her fingers onto her love button, crying out in pleasure as you continue to thrust your " + game.player.cockDescript(x) + " inside her.\n\n", false);
+            outputText("It isn't enough to hold you back for more than a moment, though, and soon you're thrusting deep inside her at a comfortable rhythm for the two of you.  You smile at her and she smiles back as you start fondling and playing with Marble's lovely pillows.  She starts to run her fingers onto her love button, crying out in pleasure as you continue to thrust your " + cockDescript(game.player, x) + " inside her.\n\n", false);
             // If (PC's breasts are B cups or bigger)
-            if (player.biggestTitSize() >= 2) outputText("You pull your hands back up and begin to run them over your " + biggestBreastSizeDescript(player) + ", toying and teasing your nipples as your " + game.player.cockDescript(x) + " continues to pound away at Marble's confines.  Marble soon has her hands on the breasts you vacated, clearly enjoying teasing herself just as much as you are.  The two of you cry out in pleasure from the stimulation; you can feel your orgasm fast approaching.\n\n", false);
-            else outputText("The sensations are quickly becoming too much for you, and you're unable to do anything but focus on the feeling of your " + game.player.cockDescript(x) + " inside her wonderful confines.  Marble grins at your difficulties and teases, \"<i>Am I just too much for you, sweetie?  Ah!</i>\" She gasps; it seems that you're becoming too much for her too.\n\n", false);
+            if (player.biggestTitSize() >= 2) outputText("You pull your hands back up and begin to run them over your " + biggestBreastSizeDescript(player) + ", toying and teasing your nipples as your " + cockDescript(game.player, x) + " continues to pound away at Marble's confines.  Marble soon has her hands on the breasts you vacated, clearly enjoying teasing herself just as much as you are.  The two of you cry out in pleasure from the stimulation; you can feel your orgasm fast approaching.\n\n", false);
+            else outputText("The sensations are quickly becoming too much for you, and you're unable to do anything but focus on the feeling of your " + cockDescript(game.player, x) + " inside her wonderful confines.  Marble grins at your difficulties and teases, \"<i>Am I just too much for you, sweetie?  Ah!</i>\" She gasps; it seems that you're becoming too much for her too.\n\n", false);
         }
         // ORGASMO
         outputText("You gasp as you feel your insides churning and the walls of Marble's sex collapsing tightly down on you.  Once again, you've brought each other to the point of blissful orgasm around the same time.  ", false);
         // let's talk about the PC's cum production
         if (player.cumQ() < 250) {
-            outputText("Marble cries out in joy as your " + game.player.cockDescript(x) + " unleashes its load within her insides.  ", false);
+            outputText("Marble cries out in joy as your " + cockDescript(game.player, x) + " unleashes its load within her insides.  ", false);
         }
         else {
             outputText("Marble gasps in both pleasure and pain as you fill up her insides to almost bursting, and large amounts of your jizz spill out around her slit.  ", false);
@@ -3326,7 +3326,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.totalCocks() > 1) {
             outputText("Of course, ", false);
             if (player.totalCocks() > 2) {
-                outputText("the rest of your " + game.player.multiCockDescriptLight(), false);
+                outputText("the rest of your " + multiCockDescriptLight(game.player), false);
             }
             else {
                 outputText("your other tool", false);
@@ -3381,7 +3381,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             // Does this PC have a cock too?
             // If (PC has at least 1 cock)
             if (player.totalCocks() > 0) {
-                outputText("At the same time, your " + game.player.multiCockDescriptLight() + " sprays its own load onto Marble's chest and stomach.  ", false);
+                outputText("At the same time, your " + multiCockDescriptLight(game.player) + " sprays its own load onto Marble's chest and stomach.  ", false);
             }
             outputText("The two of you give one more shudder from the wonderful stimulation, before collapsing on top of one another.  ", false);
         }
@@ -3430,7 +3430,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.totalCocks() > 0) {
                 outputText("At the same time, ", false);
                 if (player.totalCocks() > 1) outputText("each of ", false);
-                outputText("your " + game.player.multiCockDescriptLight() + " sprays its own load onto Marble's chest and stomach.  ", false);
+                outputText("your " + multiCockDescriptLight(game.player) + " sprays its own load onto Marble's chest and stomach.  ", false);
             }
             outputText("The two of you give one more shudder from the wonderful stimulation, before collapsing on top of one another.  ", false);
             // Pregnancy chance for PC, ¼ their fertility
@@ -3874,7 +3874,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("[pg]\"<i>Hmm, well, your offer is tempting, but I'm going to have to see what's available before I make a final decision.</i>\"");
 
-        outputText("[pg]With a flourish, you remove your [armor] and do a little sweep over your " + game.player.cockDescript(x) + ", asking her if everything is to her needs.");
+        outputText("[pg]With a flourish, you remove your [armor] and do a little sweep over your " + cockDescript(game.player, x) + ", asking her if everything is to her needs.");
 
         if ((player.findPerk(PerkLib.BulgeArmor) >= 0 || player.modArmorName == "backless female teacher's clothes" || player.modArmorName == "bridle bit and saddle set" || player.modArmorName == "headdress, necklaces, and many body-chains" || player.modArmorName == "bondage patient clothes" || player.modArmorName == "crotch-revealing clothes" || player.modArmorName == "cute servant's clothes" || player.modArmorName == "maid's clothes" || player.modArmorName == "servant's clothes") && player.hasCock()) {
             outputText("[pg]\"<i>I appreciate the little show, but I could already see you just fine.  Come closer so I can get a better idea.</i>\"");
@@ -3888,7 +3888,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("[pg]She stands back up and looks at you with a serious expression on her face.  \"<i>Your penis has met my expectations, and I do believe that I will be taking it into my vagina.  Please lay down on the bench over there and we can begi-hahahahaha!</i>\"  Her face finally cracks and she bursts out laughing over the little game the two of you have been playing.");
 
         if (player.tallness < 68) {
-            outputText("[pg]\"<i>Oh sweetie.</i>\"  She pulls you into a deep hug against her chest.  \"<i>It's too much!  Hah, hahahahaha!  No more joking around.  I need you inside me now.</i>\"  She carefully carries you over to the bench and lays you down on your back, then straddles the bench above your " + game.player.cockDescript(x) + ".  \"<i>Are you ready for me?</i>\" she calls out in a deep husky voice, breasts heaving, tail swishing, and all the while the milker machine continues to hum above her.");
+            outputText("[pg]\"<i>Oh sweetie.</i>\"  She pulls you into a deep hug against her chest.  \"<i>It's too much!  Hah, hahahahaha!  No more joking around.  I need you inside me now.</i>\"  She carefully carries you over to the bench and lays you down on your back, then straddles the bench above your " + cockDescript(game.player, x) + ".  \"<i>Are you ready for me?</i>\" she calls out in a deep husky voice, breasts heaving, tail swishing, and all the while the milker machine continues to hum above her.");
         }
         else {
             outputText("[pg]You pull her into a deep hug as she continues to her hysterics and gently caress her hair.  You assure her that if the games are too much, you can skip straight to the action.");
@@ -3902,7 +3902,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("[pg]With a grin, you tell her you're always ready for her.");
 
-        outputText("[pg]The words have barely left your mouth before Marble drops her waist and engulfs your " + game.player.cockDescript(x) + ", swallowing it up to the base in a single motion.  \"<i>Ohhhhhh, yes!</i>\"  Marble happily rubs her belly with one hand, while another cubs her breast.  She shakes her hips from side to side a couple times, savoring the feeling of your cock rubbing back and forth across her insides.");
+        outputText("[pg]The words have barely left your mouth before Marble drops her waist and engulfs your " + cockDescript(game.player, x) + ", swallowing it up to the base in a single motion.  \"<i>Ohhhhhh, yes!</i>\"  Marble happily rubs her belly with one hand, while another cubs her breast.  She shakes her hips from side to side a couple times, savoring the feeling of your cock rubbing back and forth across her insides.");
 
         outputText("[pg]Then both hands come down and push down on your stomach, and she begins a rapid forward and backward rocking motion on your member, keeping every bit of your length deep inside her, putting it into a spinning trip around her passage while she starts giving low happy moans of pleasure.  You look up at your lover and get a good view of the expression of bliss upon her face, but also get a chance to see the milk draining from her chest.");
 
@@ -3935,7 +3935,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("[pg]After rubbing against you for a bit, the stimulation on your length just isn't enough for you anymore, and try to start thrusting up into your lover's passage.  Marble seems to be in agreement in what she wants, and her motions switch from a gentle rocking into meeting each of your thrusts with a pumping of her own, trying to drain your manhood while you try to drain her breasts.");
 
-            outputText("[pg]Finally the two of you cry out together in orgasmic pleasure, and you spray out your seed into her passage, mixing with a rush of her own fluids into a slurry of sex juices sloshing around your " + game.player.cockDescript(x) + ".  The two of you settle down, with Marble laying down on you contentedly for a moment.");
+            outputText("[pg]Finally the two of you cry out together in orgasmic pleasure, and you spray out your seed into her passage, mixing with a rush of her own fluids into a slurry of sex juices sloshing around your " + cockDescript(game.player, x) + ".  The two of you settle down, with Marble laying down on you contentedly for a moment.");
 
             outputText("[pg]Suddenly a voice with a southern drawl call out from above you, \"<i>You kids havin a lots of fun down there?</i>\"");
 
@@ -4062,7 +4062,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("[pg]She gives a low chuckle, \"<i>Why don't you wait and find out?</i>\"");
 
         if (x >= 0) {
-            outputText("[pg]Her ribbon adorned, bovine appendage slowly unwraps from your wrist and instead searches around your crotch for something else.  Eventually the tuff comes into contact with your " + game.player.cockDescript(x) + ", and runs its fur across your length lovingly for a few times, then curls around your base and pulls you in towards Marble's waiting womanhood.");
+            outputText("[pg]Her ribbon adorned, bovine appendage slowly unwraps from your wrist and instead searches around your crotch for something else.  Eventually the tuff comes into contact with your " + cockDescript(game.player, x) + ", and runs its fur across your length lovingly for a few times, then curls around your base and pulls you in towards Marble's waiting womanhood.");
 
             outputText("[pg]\"<i>Mhehehe, found it!</i>\"");
 
@@ -4071,11 +4071,11 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("[pg]\"<i>Oh I know sweetie, but it's always so much fun looking.</i>\"");
 
             outputText("[pg]Sliding into her interior is a slow but enjoyable process.  Each inch you pass in makes you want to just slam yourself home in an instant, but you wait to let Marble's tail guide the way.  Finally you're fully inside her, and she lets out a long soft moan of pleasure, followed by shaking her hips side to side a few times.");
-            if (y >= 0) outputText("  You find your " + game.player.cockDescript(y) + " slides up comfortably in between her cheeks, and squeeze them together a bit to give it a nice tight valley of soft flesh to run through.");
+            if (y >= 0) outputText("  You find your " + cockDescript(game.player, y) + " slides up comfortably in between her cheeks, and squeeze them together a bit to give it a nice tight valley of soft flesh to run through.");
 
             outputText("[pg]Your guide string tightens up a bit in time with the end of your lover's cry of pleasure.  \"<i>Hmmm, mine, all mine.</i>\" You barely catch Marble whisper under her breath, then her tail relaxes a bit and pushes back against your waist.  Understanding the direction, you pull your cock back out of its \"owner's\" home.  Though you haven't gone far before she tightens on you once more, and you realize that you were suppose to switch directions again. You focus your attention once more on the fluff that's showing you the way.");
 
-            outputText("[pg]Everything centers onto three things: the feel of aroused cunt surrounding your shaft, rippling and squelching with each slow plunge and retreat from its depths, the soft springy ass and hip curves under your hands that runs oh so pleasantly under your hands, and of course, Marble's tail curled around the base of your " + game.player.cockDescript(x) + ".  The sensation of her thin appendage, soaked and sweat yet still soft with fur, constantly quivering and twitching in time with the movements of your two bodies, draws your entire focus.");
+            outputText("[pg]Everything centers onto three things: the feel of aroused cunt surrounding your shaft, rippling and squelching with each slow plunge and retreat from its depths, the soft springy ass and hip curves under your hands that runs oh so pleasantly under your hands, and of course, Marble's tail curled around the base of your " + cockDescript(game.player, x) + ".  The sensation of her thin appendage, soaked and sweat yet still soft with fur, constantly quivering and twitching in time with the movements of your two bodies, draws your entire focus.");
         }
         else {
             outputText("[pg]Her ribbon adorned bovine appendage slowly pulls your hand out of her wet slit and directs you up the side of her rump until you find something hiding out in her pocket.  Her tail rubs against the long hard shape a few times, and then you grasp and pull out a long black rubery object from your lover's skirt: her double dildo.");
@@ -4169,7 +4169,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("[pg]\"<i>Ow!  What the hell sweetie?!</i>\"");
 
-        outputText("[pg]You ignore her protests and smack her ass once, then roughly penetrate her with your " + game.player.cockDescript(x) + " while yelling at her to take it.");
+        outputText("[pg]You ignore her protests and smack her ass once, then roughly penetrate her with your " + cockDescript(game.player, x) + " while yelling at her to take it.");
 
         outputText("[pg]There is a loud clop as Marble stomps her hoof on the ground angrily.  With a huff, she lifts herself up on the bar and kicks back with both her legs, sending you flying onto your back and knocking the wind from your lungs.  You gasp for breath a few times, then look up to see Marble looming over you with a wicked smile on her face.");
 
@@ -4221,13 +4221,13 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("[pg]She repositions herself overtop of your waist and eyes your male member.  \"<i>Obviously this thing here is in need of some treatment, since you were so eager to try and take charge with it before.</i>\"  She drops down and brings the flaps of her womanhood into contact with the front of your shaft and runs them over it a couple of times.  \"<i>Look how hard you are.  You really want me to take you inside me, don't you?  You want so much to give complete control of your long, hard, dick, to me to use as I see fit.</i>\"");
 
-        outputText("[pg]She doesn't let you respond.  She's already decided what is going to happen, and that's for you to go inside her and be used by her as she sees fit.  She strokes your " + game.player.cockDescript(x) + " with one finger, then pushes it into her waiting cunt.  You slip easily into her very well lubricated passage and groan as it clamps down on you.  Every part of your shaft is being tightly wrapped in the ring of her vaginal muscles, and you can't help but groan in pleasure.");
+        outputText("[pg]She doesn't let you respond.  She's already decided what is going to happen, and that's for you to go inside her and be used by her as she sees fit.  She strokes your " + cockDescript(game.player, x) + " with one finger, then pushes it into her waiting cunt.  You slip easily into her very well lubricated passage and groan as it clamps down on you.  Every part of your shaft is being tightly wrapped in the ring of her vaginal muscles, and you can't help but groan in pleasure.");
 
         outputText("[pg]She shakes her hips side to side a few times, spinning your shaft around her interior, then stops and considers you.  \"<i>You know, I was thinking that maybe I'm giving you too much of a reward, or maybe not enough of one?</i>\"  The same wicked look when she first knocked you over crosses her eyes once more.  \"<i>Let's try something new...</i>\"  She turns away from you and puts her hand somewhere behind her, outside of your view.");
 
         outputText("[pg]After a moment, you suddenly feel something pushing up against the entrance to your [vagOrAss]!  You try to ask what Marble has planned, but the pressure forces something bushy into your hole.  She just stuck her tail into your [vagOrAss]!");
 
-        outputText("[pg]\"<i>Well sweetie, what do you think?</i>\"  It quivers a few times as Marble resumes the rocking of her wide womanly hips.  \"<i>Never mind, if you don't like it, well you can just try and end this as soon as possible.  If you do like it, then I guess...</i>\"  She leans forward as she switches from a swinging movement to a bounce on your " + game.player.cockDescript(x) + ", and her furry tufft of a backend appendage starts to push its way in deeper sliding easily thanks to your saliva on it.  \"<i>You'll just have to bear it as long as you can!</i>\"");
+        outputText("[pg]\"<i>Well sweetie, what do you think?</i>\"  It quivers a few times as Marble resumes the rocking of her wide womanly hips.  \"<i>Never mind, if you don't like it, well you can just try and end this as soon as possible.  If you do like it, then I guess...</i>\"  She leans forward as she switches from a swinging movement to a bounce on your " + cockDescript(game.player, x) + ", and her furry tufft of a backend appendage starts to push its way in deeper sliding easily thanks to your saliva on it.  \"<i>You'll just have to bear it as long as you can!</i>\"");
 
         outputText("[pg]You've never seen Marble this aggressive before, but the cause is rather obvious: the whirring milking machine that's currently attached to her breasts.  Obviously giving milk is triggering some kind of dominance instinct, and it's incredibly sexy!");
 

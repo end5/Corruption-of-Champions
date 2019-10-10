@@ -77,8 +77,8 @@ export class BimboLiqueur extends Consumable {
                 game.player.createVagina();
                 game.player.clitLength = 0.25;
                 game.player.vaginas[0].vaginalWetness = Appearance.VAGINA_WETNESS_SLICK;
-                if (game.player.isTaur()) outputText("Wait!? Wet? You wish you could touch yourself between the " + game.player.legs() + ", but you can tell from the fluid running down your hind-legs just how soaked your new vagina is.");
-                else outputText("Wait!?  Wet?  You touch yourself between the " + game.player.legs() + " and groan when your fingers sink into a sloppy, wet cunt.");
+                if (game.player.isTaur()) outputText("Wait!? Wet? You wish you could touch yourself between the " + legs(game.player) + ", but you can tell from the fluid running down your hind-legs just how soaked your new vagina is.");
+                else outputText("Wait!?  Wet?  You touch yourself between the " + legs(game.player) + " and groan when your fingers sink into a sloppy, wet cunt.");
             }
             else {
                 if (game.player.isTaur()) {
@@ -114,20 +114,20 @@ export class BimboLiqueur extends Consumable {
 
             outputText("Another bubbly giggle bursts from your lips, which you then lick hungrily.  You, like, totally want some dick to suck!  Wow, that came out of left field.  You shake your head and try to clear the unexpected, like, words from your head but it's getting kind of hard.  Omigosh, you feel kind of like a dumb bimbo after, like, drinking that weird booze.  Oh, well, it doesn't matter anyhow – you can, like, still stop the demons and stuff.  You'll just have to show off your sexy bod until they're offering to serve you.\n\n");
 
-            outputText("You sigh and run one hand over your " + game.player.nippleDescript(0) + "s");
+            outputText("You sigh and run one hand over your " + nippleDescription(game.player, 0) + "s");
             if (game.player.breastRows[0].breastRating < 10) {
                 game.player.breastRows[0].breastRating += 5 + rand(5);
-                outputText(", surprised at how large and rounded your expanding breasts have become while fresh tit-flesh continues to spill out around your needy fingers.  They feel so supple and soft, but when you let them go, they still sit fairly high and firm on your chest.  The newer, more generous, " + game.player.breastCup(0) + " cleavage has you moaning with how sensitive it is, pinching a nipple with one hand ");
+                outputText(", surprised at how large and rounded your expanding breasts have become while fresh tit-flesh continues to spill out around your needy fingers.  They feel so supple and soft, but when you let them go, they still sit fairly high and firm on your chest.  The newer, more generous, " + breastCup(game.player, 0) + " cleavage has you moaning with how sensitive it is, pinching a nipple with one hand ");
             }
             else {
                 game.player.breastRows[0].breastRating += 5 + rand(5);
-                outputText(", admiring how sensitive they're getting.  The big breasts start getting bigger and bigger, soft chest-flesh practically oozing out between your fingers as the squishy mammaries sprout like weeds, expanding well beyond any hand's ability to contain them.  The supple, " + game.player.breastCup(0) + " boobs still manage to sit high on your chest, almost gravity defying in their ability to generate cleavage.  You pinch a nipple with one hand ");
+                outputText(", admiring how sensitive they're getting.  The big breasts start getting bigger and bigger, soft chest-flesh practically oozing out between your fingers as the squishy mammaries sprout like weeds, expanding well beyond any hand's ability to contain them.  The supple, " + breastCup(game.player, 0) + " boobs still manage to sit high on your chest, almost gravity defying in their ability to generate cleavage.  You pinch a nipple with one hand ");
             }
             dynStats("sen", 20);
-            outputText("while the other toys with the juicy entrance of your folds.  Mmmm, it, like, feels too good not to touch yourself, and after being worried about getting all dumb and stuff, you need to relax.  Thinking is hard, but sex is so easy and, like, natural!  You lean back and start grunting as you plunge four fingers inside yourself, plowing your " + game.player.vaginaDescript(0) + " like no tomorrow.  By now, your " + game.player.clitDescript() + " is throbbing, and you give it an experimental ");
+            outputText("while the other toys with the juicy entrance of your folds.  Mmmm, it, like, feels too good not to touch yourself, and after being worried about getting all dumb and stuff, you need to relax.  Thinking is hard, but sex is so easy and, like, natural!  You lean back and start grunting as you plunge four fingers inside yourself, plowing your " + vaginaDescript(game.player, 0) + " like no tomorrow.  By now, your " + clitDescription(game.player) + " is throbbing, and you give it an experimental ");
             if (game.player.clitLength >= 3) outputText("jerk ");
             else outputText("caress ");
-            outputText("that makes your " + game.player.legs() + " give out as you cum, splattering female fluids as you convulse nervelessly on the ground.\n\n");
+            outputText("that makes your " + legs(game.player) + " give out as you cum, splattering female fluids as you convulse nervelessly on the ground.\n\n");
 
             outputText("Though the orgasm is intense, you recover a few moments later feeling refreshed, but still hot and horny.  Maybe you could find a partner to fuck?  After all, sex is, like, better with a partner or two.  Or that number after two.  You brush a lengthy, platinum blonde strand of hair out of your eyes and lick your lips - you're ready to have some fun!\n\n");
 

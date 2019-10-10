@@ -28,11 +28,11 @@ export class Imp extends Monster {
         if (player.lust >= 60) outputText("Images of yourself fellating and fucking the imp assault your mind, unnaturally arousing you.  ");
         if (player.cocks.length > 0) {
             if (player.lust >= 60)
-                outputText("You feel your " + player.multiCockDescriptLight() + " dribble pre-cum.");
+                outputText("You feel your " + multiCockDescriptLight(player) + " dribble pre-cum.");
             else if (player.lust >= 30 && player.cocks.length == 1)
-                outputText("Your " + player.cockDescript(0) + " hardens, distracting you further.");
+                outputText("Your " + cockDescript(player, 0) + " hardens, distracting you further.");
             else if (player.lust >= 30 && player.cocks.length > 1)
-                outputText("Your " + player.multiCockDescriptLight() + " harden uncomfortably.");
+                outputText("Your " + multiCockDescriptLight(player) + " harden uncomfortably.");
             if (player.hasVagina()) outputText("  ");
         }
         if (player.lust >= 60 && player.hasVagina()) {

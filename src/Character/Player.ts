@@ -1377,16 +1377,16 @@ export class Player extends Character {
         if (display) {
             if (growthType < 3) {
                 if (amount <= 2) {
-                    if (breastRows.length > 1) outputText("Your rows of " + game.player.breastDescript(0) + " jiggle with added weight, growing a bit larger.", false);
-                    if (breastRows.length == 1) outputText("Your " + game.player.breastDescript(0) + " jiggle with added weight as they expand, growing a bit larger.", false);
+                    if (breastRows.length > 1) outputText("Your rows of " + breastDescript(game.player, 0) + " jiggle with added weight, growing a bit larger.", false);
+                    if (breastRows.length == 1) outputText("Your " + breastDescript(game.player, 0) + " jiggle with added weight as they expand, growing a bit larger.", false);
                 }
                 else if (amount <= 4) {
-                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your rows of " + game.player.breastDescript(0) + " expand significantly.", false);
-                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + game.player.breastDescript(0) + " expand significantly.", false);
+                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your rows of " + breastDescript(game.player, 0) + " expand significantly.", false);
+                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(game.player, 0) + " expand significantly.", false);
                 }
                 else {
-                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + game.player.breastDescript(0) + " tingle strongly, growing disturbingly large.", false);
-                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + game.player.breastDescript(0) + " intensifies as they continue to grow at an obscene rate.", false);
+                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + breastDescript(game.player, 0) + " tingle strongly, growing disturbingly large.", false);
+                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + breastDescript(game.player, 0) + " intensifies as they continue to grow at an obscene rate.", false);
                 }
                 if (biggestTitSize() >= 8.5 && nippleLength < 2) {
                     outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
@@ -1407,16 +1407,16 @@ export class Player extends Character {
             }
             else {
                 if (amount <= 2) {
-                    if (breastRows.length > 1) outputText("Your top row of " + game.player.breastDescript(0) + " jiggles with added weight as it expands, growing a bit larger.", false);
-                    if (breastRows.length == 1) outputText("Your row of " + game.player.breastDescript(0) + " jiggles with added weight as it expands, growing a bit larger.", false);
+                    if (breastRows.length > 1) outputText("Your top row of " + breastDescript(game.player, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
+                    if (breastRows.length == 1) outputText("Your row of " + breastDescript(game.player, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
                 }
                 if (amount > 2 && amount <= 4) {
-                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your top row of " + game.player.breastDescript(0) + " expand significantly.", false);
-                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + game.player.breastDescript(0) + " expand significantly.", false);
+                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your top row of " + breastDescript(game.player, 0) + " expand significantly.", false);
+                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(game.player, 0) + " expand significantly.", false);
                 }
                 if (amount > 4) {
-                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + game.player.breastDescript(0) + " tingle strongly, growing disturbingly large.", false);
-                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + game.player.breastDescript(0) + " intensifies as they continue to grow at an obscene rate.", false);
+                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + breastDescript(game.player, 0) + " tingle strongly, growing disturbingly large.", false);
+                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + breastDescript(game.player, 0) + " intensifies as they continue to grow at an obscene rate.", false);
                 }
                 if (biggestTitSize() >= 8.5 && nippleLength < 2) {
                     outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
@@ -1791,90 +1791,90 @@ export class Player extends Character {
         }
         // DIsplay the degree of length change.
         if (temp2 <= 1 && temp2 > 0) {
-            if (cocks.length == 1) outputText("Your " + game.player.cockDescript(0) + " has grown slightly longer.", false);
+            if (cocks.length == 1) outputText("Your " + cockDescript(game.player, 0) + " has grown slightly longer.", false);
             if (cocks.length > 1) {
-                if (ncocks == 1) outputText("One of your " + game.player.multiCockDescriptLight() + " grows slightly longer.", false);
-                if (ncocks > 1 && ncocks < cocks.length) outputText("Some of your " + game.player.multiCockDescriptLight() + " grow slightly longer.", false);
-                if (ncocks == cocks.length) outputText("Your " + game.player.multiCockDescriptLight() + " seem to fill up... growing a little bit larger.", false);
+                if (ncocks == 1) outputText("One of your " + multiCockDescriptLight(game.player) + " grows slightly longer.", false);
+                if (ncocks > 1 && ncocks < cocks.length) outputText("Some of your " + multiCockDescriptLight(game.player) + " grow slightly longer.", false);
+                if (ncocks == cocks.length) outputText("Your " + multiCockDescriptLight(game.player) + " seem to fill up... growing a little bit larger.", false);
             }
         }
         if (temp2 > 1 && temp2 < 3) {
-            if (cocks.length == 1) outputText("A very pleasurable feeling spreads from your groin as your " + game.player.cockDescript(0) + " grows permanently longer - at least an inch - and leaks pre-cum from the pleasure of the change.", false);
+            if (cocks.length == 1) outputText("A very pleasurable feeling spreads from your groin as your " + cockDescript(game.player, 0) + " grows permanently longer - at least an inch - and leaks pre-cum from the pleasure of the change.", false);
             if (cocks.length > 1) {
-                if (ncocks == cocks.length) outputText("A very pleasurable feeling spreads from your groin as your " + game.player.multiCockDescriptLight() + " grow permanently longer - at least an inch - and leak plenty of pre-cum from the pleasure of the change.", false);
-                if (ncocks == 1) outputText("A very pleasurable feeling spreads from your groin as one of your " + game.player.multiCockDescriptLight() + " grows permanently longer, by at least an inch, and leaks plenty of pre-cum from the pleasure of the change.", false);
-                if (ncocks > 1 && ncocks < cocks.length) outputText("A very pleasurable feeling spreads from your groin as " + num2Text(ncocks) + " of your " + game.player.multiCockDescriptLight() + " grow permanently longer, by at least an inch, and leak plenty of pre-cum from the pleasure of the change.", false);
+                if (ncocks == cocks.length) outputText("A very pleasurable feeling spreads from your groin as your " + multiCockDescriptLight(game.player) + " grow permanently longer - at least an inch - and leak plenty of pre-cum from the pleasure of the change.", false);
+                if (ncocks == 1) outputText("A very pleasurable feeling spreads from your groin as one of your " + multiCockDescriptLight(game.player) + " grows permanently longer, by at least an inch, and leaks plenty of pre-cum from the pleasure of the change.", false);
+                if (ncocks > 1 && ncocks < cocks.length) outputText("A very pleasurable feeling spreads from your groin as " + num2Text(ncocks) + " of your " + multiCockDescriptLight(game.player) + " grow permanently longer, by at least an inch, and leak plenty of pre-cum from the pleasure of the change.", false);
             }
         }
         if (temp2 >= 3) {
-            if (cocks.length == 1) outputText("Your " + game.player.cockDescript(0) + " feels incredibly tight as a few more inches of length seem to pour out from your crotch.", false);
+            if (cocks.length == 1) outputText("Your " + cockDescript(game.player, 0) + " feels incredibly tight as a few more inches of length seem to pour out from your crotch.", false);
             if (cocks.length > 1) {
-                if (ncocks == 1) outputText("Your " + game.player.multiCockDescriptLight() + " feel incredibly tight as one of their number begins to grow inch after inch of length.", false);
-                if (ncocks > 1 && ncocks < cocks.length) outputText("Your " + game.player.multiCockDescriptLight() + " feel incredibly number as " + num2Text(ncocks) + " of them begin to grow inch after inch of added length.", false);
-                if (ncocks == cocks.length) outputText("Your " + game.player.multiCockDescriptLight() + " feel incredibly tight as inch after inch of length pour out from your groin.", false);
+                if (ncocks == 1) outputText("Your " + multiCockDescriptLight(game.player) + " feel incredibly tight as one of their number begins to grow inch after inch of length.", false);
+                if (ncocks > 1 && ncocks < cocks.length) outputText("Your " + multiCockDescriptLight(game.player) + " feel incredibly number as " + num2Text(ncocks) + " of them begin to grow inch after inch of added length.", false);
+                if (ncocks == cocks.length) outputText("Your " + multiCockDescriptLight(game.player) + " feel incredibly tight as inch after inch of length pour out from your groin.", false);
             }
         }
         // Display LengthChange
         if (temp2 > 0) {
             if (cocks[0].cockLength >= 8 && cocks[0].cockLength - temp2 < 8) {
                 if (cocks.length == 1) outputText("  <b>Most men would be overly proud to have a tool as long as yours.</b>", false);
-                if (cocks.length > 1) outputText("  <b>Most men would be overly proud to have one cock as long as yours, let alone " + game.player.multiCockDescript() + ".</b>", false);
+                if (cocks.length > 1) outputText("  <b>Most men would be overly proud to have one cock as long as yours, let alone " + multiCockDescript(game.player) + ".</b>", false);
             }
             if (cocks[0].cockLength >= 12 && cocks[0].cockLength - temp2 < 12) {
-                if (cocks.length == 1) outputText("  <b>Your " + game.player.cockDescript(0) + " is so long it nearly swings to your knee at its full length.</b>", false);
-                if (cocks.length > 1) outputText("  <b>Your " + game.player.multiCockDescriptLight() + " are so long they nearly reach your knees when at full length.</b>", false);
+                if (cocks.length == 1) outputText("  <b>Your " + cockDescript(game.player, 0) + " is so long it nearly swings to your knee at its full length.</b>", false);
+                if (cocks.length > 1) outputText("  <b>Your " + multiCockDescriptLight(game.player) + " are so long they nearly reach your knees when at full length.</b>", false);
             }
             if (cocks[0].cockLength >= 16 && cocks[0].cockLength - temp2 < 16) {
-                if (cocks.length == 1) outputText("  <b>Your " + game.player.cockDescript(0) + " would look more at home on a large horse than you.</b>", false);
-                if (cocks.length > 1) outputText("  <b>Your " + game.player.multiCockDescriptLight() + " would look more at home on a large horse than on your body.</b>", false);
+                if (cocks.length == 1) outputText("  <b>Your " + cockDescript(game.player, 0) + " would look more at home on a large horse than you.</b>", false);
+                if (cocks.length > 1) outputText("  <b>Your " + multiCockDescriptLight(game.player) + " would look more at home on a large horse than on your body.</b>", false);
                 if (biggestTitSize() >= BREAST_CUP_C) {
-                    if (cocks.length == 1) outputText("  You could easily stuff your " + game.player.cockDescript(0) + " between your breasts and give yourself the titty-fuck of a lifetime.", false);
+                    if (cocks.length == 1) outputText("  You could easily stuff your " + cockDescript(game.player, 0) + " between your breasts and give yourself the titty-fuck of a lifetime.", false);
                     if (cocks.length > 1) outputText("  They reach so far up your chest it would be easy to stuff a few cocks between your breasts and give yourself the titty-fuck of a lifetime.", false);
                 }
                 else {
-                    if (cocks.length == 1) outputText("  Your " + game.player.cockDescript(0) + " is so long it easily reaches your chest.  The possibility of autofellatio is now a foregone conclusion.", false);
-                    if (cocks.length > 1) outputText("  Your " + game.player.multiCockDescriptLight() + " are so long they easily reach your chest.  Autofellatio would be about as hard as looking down.", false);
+                    if (cocks.length == 1) outputText("  Your " + cockDescript(game.player, 0) + " is so long it easily reaches your chest.  The possibility of autofellatio is now a foregone conclusion.", false);
+                    if (cocks.length > 1) outputText("  Your " + multiCockDescriptLight(game.player) + " are so long they easily reach your chest.  Autofellatio would be about as hard as looking down.", false);
                 }
             }
             if (cocks[0].cockLength >= 20 && cocks[0].cockLength - temp2 < 20) {
-                if (cocks.length == 1) outputText("  <b>As if the pulsing heat of your " + game.player.cockDescript(0) + " wasn't enough, the tip of your " + game.player.cockDescript(0) + " keeps poking its way into your view every time you get hard.</b>", false);
-                if (cocks.length > 1) outputText("  <b>As if the pulsing heat of your " + game.player.multiCockDescriptLight() + " wasn't bad enough, every time you get hard, the tips of your " + game.player.multiCockDescriptLight() + " wave before you, obscuring the lower portions of your vision.</b>", false);
+                if (cocks.length == 1) outputText("  <b>As if the pulsing heat of your " + cockDescript(game.player, 0) + " wasn't enough, the tip of your " + cockDescript(game.player, 0) + " keeps poking its way into your view every time you get hard.</b>", false);
+                if (cocks.length > 1) outputText("  <b>As if the pulsing heat of your " + multiCockDescriptLight(game.player) + " wasn't bad enough, every time you get hard, the tips of your " + multiCockDescriptLight(game.player) + " wave before you, obscuring the lower portions of your vision.</b>", false);
                 if (cor > 40 && cor <= 60) {
-                    if (cocks.length > 1) outputText("  You wonder if there is a demon or beast out there that could take the full length of one of your " + game.player.multiCockDescriptLight() + "?", false);
+                    if (cocks.length > 1) outputText("  You wonder if there is a demon or beast out there that could take the full length of one of your " + multiCockDescriptLight(game.player) + "?", false);
                     if (cocks.length == 1) outputText("  You wonder if there is a demon or beast out there that could handle your full length.", false);
                 }
                 if (cor > 60 && cor <= 80) {
-                    if (cocks.length > 1) outputText("  You daydream about being attacked by a massive tentacle beast, its tentacles engulfing your " + game.player.multiCockDescriptLight() + " to their hilts, milking you dry.\n\nYou smile at the pleasant thought.", false);
-                    if (cocks.length == 1) outputText("  You daydream about being attacked by a massive tentacle beast, its tentacles engulfing your " + game.player.cockDescript(0) + " to the hilt, milking it of all your cum.\n\nYou smile at the pleasant thought.", false);
+                    if (cocks.length > 1) outputText("  You daydream about being attacked by a massive tentacle beast, its tentacles engulfing your " + multiCockDescriptLight(game.player) + " to their hilts, milking you dry.\n\nYou smile at the pleasant thought.", false);
+                    if (cocks.length == 1) outputText("  You daydream about being attacked by a massive tentacle beast, its tentacles engulfing your " + cockDescript(game.player, 0) + " to the hilt, milking it of all your cum.\n\nYou smile at the pleasant thought.", false);
                 }
                 if (cor > 80) {
-                    if (cocks.length > 1) outputText("  You find yourself fantasizing about impaling nubile young champions on your " + game.player.multiCockDescriptLight() + " in a year's time.", false);
+                    if (cocks.length > 1) outputText("  You find yourself fantasizing about impaling nubile young champions on your " + multiCockDescriptLight(game.player) + " in a year's time.", false);
                 }
             }
         }
         // Display the degree of length loss.
         if (temp2 < 0 && temp2 >= -1) {
-            if (cocks.length == 1) outputText("Your " + game.player.multiCockDescriptLight() + " has shrunk to a slightly shorter length.", false);
+            if (cocks.length == 1) outputText("Your " + multiCockDescriptLight(game.player) + " has shrunk to a slightly shorter length.", false);
             if (cocks.length > 1) {
-                if (ncocks == cocks.length) outputText("Your " + game.player.multiCockDescriptLight() + " have shrunk to a slightly shorter length.", false);
-                if (ncocks > 1 && ncocks < cocks.length) outputText("You feel " + num2Text(ncocks) + " of your " + game.player.multiCockDescriptLight() + " have shrunk to a slightly shorter length.", false);
-                if (ncocks == 1) outputText("You feel " + num2Text(ncocks) + " of your " + game.player.multiCockDescriptLight() + " has shrunk to a slightly shorter length.", false);
+                if (ncocks == cocks.length) outputText("Your " + multiCockDescriptLight(game.player) + " have shrunk to a slightly shorter length.", false);
+                if (ncocks > 1 && ncocks < cocks.length) outputText("You feel " + num2Text(ncocks) + " of your " + multiCockDescriptLight(game.player) + " have shrunk to a slightly shorter length.", false);
+                if (ncocks == 1) outputText("You feel " + num2Text(ncocks) + " of your " + multiCockDescriptLight(game.player) + " has shrunk to a slightly shorter length.", false);
             }
         }
         if (temp2 < -1 && temp2 > -3) {
-            if (cocks.length == 1) outputText("Your " + game.player.multiCockDescriptLight() + " shrinks smaller, flesh vanishing into your groin.", false);
+            if (cocks.length == 1) outputText("Your " + multiCockDescriptLight(game.player) + " shrinks smaller, flesh vanishing into your groin.", false);
             if (cocks.length > 1) {
-                if (ncocks == cocks.length) outputText("Your " + game.player.multiCockDescriptLight() + " shrink smaller, the flesh vanishing into your groin.", false);
-                if (ncocks == 1) outputText("You feel " + num2Text(ncocks) + " of your " + game.player.multiCockDescriptLight() + " shrink smaller, the flesh vanishing into your groin.", false);
-                if (ncocks > 1 && ncocks < cocks.length) outputText("You feel " + num2Text(ncocks) + " of your " + game.player.multiCockDescriptLight() + " shrink smaller, the flesh vanishing into your groin.", false);
+                if (ncocks == cocks.length) outputText("Your " + multiCockDescriptLight(game.player) + " shrink smaller, the flesh vanishing into your groin.", false);
+                if (ncocks == 1) outputText("You feel " + num2Text(ncocks) + " of your " + multiCockDescriptLight(game.player) + " shrink smaller, the flesh vanishing into your groin.", false);
+                if (ncocks > 1 && ncocks < cocks.length) outputText("You feel " + num2Text(ncocks) + " of your " + multiCockDescriptLight(game.player) + " shrink smaller, the flesh vanishing into your groin.", false);
             }
         }
         if (temp2 <= -3) {
-            if (cocks.length == 1) outputText("A large portion of your " + game.player.multiCockDescriptLight() + "'s length shrinks and vanishes.", false);
+            if (cocks.length == 1) outputText("A large portion of your " + multiCockDescriptLight(game.player) + "'s length shrinks and vanishes.", false);
             if (cocks.length > 1) {
-                if (ncocks == cocks.length) outputText("A large portion of your " + game.player.multiCockDescriptLight() + " receeds towards your groin, receding rapidly in length.", false);
-                if (ncocks == 1) outputText("A single member of your " + game.player.multiCockDescriptLight() + " vanishes into your groin, receding rapidly in length.", false);
-                if (ncocks > 1 && cocks.length > ncocks) outputText("Your " + game.player.multiCockDescriptLight() + " tingles as " + num2Text(ncocks) + " of your members vanish into your groin, receding rapidly in length.", false);
+                if (ncocks == cocks.length) outputText("A large portion of your " + multiCockDescriptLight(game.player) + " receeds towards your groin, receding rapidly in length.", false);
+                if (ncocks == 1) outputText("A single member of your " + multiCockDescriptLight(game.player) + " vanishes into your groin, receding rapidly in length.", false);
+                if (ncocks > 1 && cocks.length > ncocks) outputText("Your " + multiCockDescriptLight(game.player) + " tingles as " + num2Text(ncocks) + " of your members vanish into your groin, receding rapidly in length.", false);
             }
         }
     }
@@ -1913,10 +1913,10 @@ export class Player extends Character {
                 if (findStatusAffect(StatusAffects.Infested) >= 0) outputText("  Like rats fleeing a sinking ship, a stream of worms squirts free from your withering member, slithering away.", false);
             }
             if (cocks.length == 1) {
-                outputText("<b>Your smallest penis disappears, shrinking into your body and leaving you with just one " + game.player.cockDescript(0) + ".</b>", false);
+                outputText("<b>Your smallest penis disappears, shrinking into your body and leaving you with just one " + cockDescript(game.player, 0) + ".</b>", false);
             }
             if (cocks.length > 1) {
-                outputText("<b>Your smallest penis disappears forever, leaving you with just your " + game.player.multiCockDescriptLight() + ".</b>", false);
+                outputText("<b>Your smallest penis disappears forever, leaving you with just your " + multiCockDescriptLight(game.player) + ".</b>", false);
             }
         }
         if (removed > 1) {
@@ -1925,10 +1925,10 @@ export class Player extends Character {
                 if (findStatusAffect(StatusAffects.Infested) >= 0) outputText("  Like rats fleeing a sinking ship, a stream of worms squirts free from your withering member, slithering away.", false);
             }
             if (cocks.length == 1) {
-                outputText("<b>You feel " + num2Text(removed) + " cocks disappear into your groin, leaving you with just your " + game.player.cockDescript(0) + ".", false);
+                outputText("<b>You feel " + num2Text(removed) + " cocks disappear into your groin, leaving you with just your " + cockDescript(game.player, 0) + ".", false);
             }
             if (cocks.length > 1) {
-                outputText("<b>You feel " + num2Text(removed) + " cocks disappear into your groin, leaving you with " + game.player.multiCockDescriptLight() + ".", false);
+                outputText("<b>You feel " + num2Text(removed) + " cocks disappear into your groin, leaving you with " + multiCockDescriptLight(game.player) + ".", false);
             }
         }
         // remove infestation if cockless
@@ -2037,7 +2037,7 @@ export class Player extends Character {
         // Has rut, intensify it!
         if (inRut) {
             if (output) {
-                outputText("\n\nYour " + game.player.cockDescript(0) + " throbs and dribbles as your desire to mate intensifies.  You know that <b>you've sunken deeper into rut</b>, but all that really matters is unloading into a cum-hungry cunt.", false);
+                outputText("\n\nYour " + cockDescript(game.player, 0) + " throbs and dribbles as your desire to mate intensifies.  You know that <b>you've sunken deeper into rut</b>, but all that really matters is unloading into a cum-hungry cunt.", false);
             }
 
             addStatusValue(StatusAffects.Rut, 1, 100 * intensity);

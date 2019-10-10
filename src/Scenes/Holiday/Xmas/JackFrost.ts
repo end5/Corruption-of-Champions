@@ -213,7 +213,7 @@ export function processJackFrostEvent(): void {
 
             outputText("\n\nYou laugh and hug her back, telling Amily to take it easy.  With all the friction the two of you are making, hugging together and nuzzling, you might just end up melting all the snow.  The mouse looks into your eyes. \"<i>Oooh, you little tempter, you,</i>\" she trills, tail looping around your wrist.  \"<i>Maybe I wouldn't mind that...?</i>\" she suggests mischievously.");
             outputText("\n\nYou grin at her then envelop her lips into a kiss... sounds like a plan, you're feeling a bit cold and this would be a nice way to warm you right up...");
-            outputText("\n\nIt's not really possible to smirk and kiss at the same time, but your murine lover does her level best to try.  Breaking the kiss with a smile, she tugs you gently towards your tent.  \"<i>Come on then, lover-" + player.mf("boy", "girl") + ", let's go and get warmed up...</i>\" She coos.  Her hands start to remove your clothes, \"<i>So, what do you have in mind, exactly...?</i>\"");
+            outputText("\n\nIt's not really possible to smirk and kiss at the same time, but your murine lover does her level best to try.  Breaking the kiss with a smile, she tugs you gently towards your tent.  \"<i>Come on then, lover-" + mf(player, "boy", "girl") + ", let's go and get warmed up...</i>\" She coos.  Her hands start to remove your clothes, \"<i>So, what do you have in mind, exactly...?</i>\"");
             // [Penetrate Her] [Make out]
             menu();
             if (player.hasCock()) addButton(0, "Penetrate", penetradePureMouseWaifu);
@@ -235,7 +235,7 @@ export function processJackFrostEvent(): void {
 
                 // (if PC has a dick)
                 if (player.hasCock()) {
-                    outputText("\n\nYou strip off your lower garments, exposing your " + player.multiCockDescriptLight() + " to the hungry eyes of your cumslut.  You tell her you would like her to give you a \"<i>hand</i>\", with the extraction process...");
+                    outputText("\n\nYou strip off your lower garments, exposing your " + multiCockDescriptLight(player) + " to the hungry eyes of your cumslut.  You tell her you would like her to give you a \"<i>hand</i>\", with the extraction process...");
                     outputText("\n\nAmily bows respectfully.  \"<i>Right away, [master].</i>\"");
                     outputText("\n\nShe promptly takes hold of your [cock] with awe-filled respect, her long, dextrous fingers quickly falling into the familiar rhythym of dancing along your cock to fill you with the most wonderous sensations.  Her spaded tail wiggles idly for several moments, then slithers through the air to brush its feather-like tip against the tip and underside of your shaft");
                     if (player.balls > 0) outputText(", even tickling your [balls]");
@@ -406,7 +406,7 @@ export function processJackFrostEvent(): void {
         // (Speed check)
         if (player.spe / 20 + rand(20) > 11) {
             outputText("\n\nYou're surprised by the sudden lunge, but thankfully your well trained reflexes means you quickly duck under the pouncing salamander and watch as she falls face-first into the snow behind you with an audible \"<i>Oof!</i>\"");
-            outputText("\n\nShe laughs as she surfaces amidst a spray of slush, whipping her long hair around.  \"<i>That's the way to do it, lover-" + player.mf("boy", "girl") + "!</i>\" she crows.");
+            outputText("\n\nShe laughs as she surfaces amidst a spray of slush, whipping her long hair around.  \"<i>That's the way to do it, lover-" + mf(player, "boy", "girl") + "!</i>\" she crows.");
         }
         else {
             outputText("\n\nYou yelp in surprise as the salamander comes crashing down on you, pinning you to the floor and holding your shoulders.");
@@ -417,7 +417,7 @@ export function processJackFrostEvent(): void {
         outputText("\n\nYou wipe some moisture from your brow, nodding agreement.  Yeah, that was pretty fun... you didn't think wrestling could be this fun, nor this sexy, you point out");
         if (player.gender > 0) {
             outputText(", as evidenced by ");
-            if (player.hasCock()) outputText("your erect " + player.multiCockDescriptLight());
+            if (player.hasCock()) outputText("your erect " + multiCockDescriptLight(player));
             if (player.gender == 3) outputText(" and ");
             else if (player.hasVagina()) outputText("your ");
             if (player.hasVagina()) outputText("dripping [vagina]");
@@ -545,12 +545,12 @@ export function kihaXmasFuck(): void {
     clearOutput();
     let x: number = player.cockThatFits(67);
     if (x < 0) x = player.smallestCockIndex();
-    outputText("Stripping off your [armor], you tell the dragon-girl that a good workout is all she needs to get nice and warm.  She snorts in dismissal, but the way she's looking at you is a pretty good indication she's willing to try it.  \"<i>So, what do you have in mind?</i>\" she blusters.  You stroke your quickly erecting " + player.multiCockDescriptLight() + " and, smirking, ask her if your intentions aren't obvious?");
+    outputText("Stripping off your [armor], you tell the dragon-girl that a good workout is all she needs to get nice and warm.  She snorts in dismissal, but the way she's looking at you is a pretty good indication she's willing to try it.  \"<i>So, what do you have in mind?</i>\" she blusters.  You stroke your quickly erecting " + multiCockDescriptLight(player) + " and, smirking, ask her if your intentions aren't obvious?");
     outputText("\n\nShe stalks over, tail swaying sensually behind her, and takes you by the shoulders.  Then, with a mischievous grin, she pushes you into the snow.  \"<i>All right, but you're on the bottom - you can have the cold back this time!</i>\" she smirks, straddling your waist.");
-    outputText("\n\nYou laugh and tell her you're fine with that, but she better hurry up, the cold is starting to catch up to you.   The mock-dragon blows a fine trickle of smoke from her nose, reaching down to stroke your shaft.  \"<i>Such a pervert, aren't you?  Here I am all freezing and wet, and all you can think about is fucking me, is that it?  You just want to shove this cock into my wet cunny and ride me until you burst, isn't that right?</i>\"  She growls lustfully, her fingers nimbly caressing and stroking your " + game.player.cockDescript(x) + " as she speaks.");
+    outputText("\n\nYou laugh and tell her you're fine with that, but she better hurry up, the cold is starting to catch up to you.   The mock-dragon blows a fine trickle of smoke from her nose, reaching down to stroke your shaft.  \"<i>Such a pervert, aren't you?  Here I am all freezing and wet, and all you can think about is fucking me, is that it?  You just want to shove this cock into my wet cunny and ride me until you burst, isn't that right?</i>\"  She growls lustfully, her fingers nimbly caressing and stroking your " + cockDescript(game.player, x) + " as she speaks.");
     outputText("\n\nWith a wry smile you ask her if she's got a problem with that.  You wouldn't be thinking about her wet pussy all the time if she ever bothered to throw some clothes on... so who's the real perv now?  You or her?");
     outputText("\n\n\"<i>You are, of course... so, I'll just have to punish you for being such a corrupted, demonic pervert...</i>\"  Kiha declares in a teasing voice.  She lifts herself up and positions herself over your cock, gently grinding her damp netherlips against the head but deliberately refusing to sink any further.  \"<i>How do you like that, cunt-hungry demon?  Do you want Kiha to take it all the way?  Do you?</i>\" she croons in a sweet voice.");
-    outputText("\n\nImpatient, and starting to feel the cold snow creeping on your back, you ask her if she intends to get started with it, or if you'll have to go up there and get her yourself.  Your hands are already sliding along her thighs to grasp her hips.  \"<i>Oh, love, if you must</i>\" Kiha declares in mock protest, rolling her eyes before suddenly impaling herself to the hilt on your shaft, an action that makes her scream in shocked delight, fiercely clamping her netherlips down around your cock.  You hiss in pleasure as your " + game.player.cockDescript(x) + " is suddenly wrapped in the warm folds of the dragon-girl.");
+    outputText("\n\nImpatient, and starting to feel the cold snow creeping on your back, you ask her if she intends to get started with it, or if you'll have to go up there and get her yourself.  Your hands are already sliding along her thighs to grasp her hips.  \"<i>Oh, love, if you must</i>\" Kiha declares in mock protest, rolling her eyes before suddenly impaling herself to the hilt on your shaft, an action that makes her scream in shocked delight, fiercely clamping her netherlips down around your cock.  You hiss in pleasure as your " + cockDescript(game.player, x) + " is suddenly wrapped in the warm folds of the dragon-girl.");
     outputText("\n\nNot interested in delaying the act any longer, you grab a firm hold of her hips and begin pistoning in and out of her as well as you can in your current position.  Her moist honeypot feels absolutely wonderful on your shaft, and you can already feel yourself forgetting about the snow on your back.  Moaning, the mock-dragon starts to piston herself up and down, leaning on your chest for support as her hips rise and fall with increasing speed, wings half-flared and tail swishing in delight.");
     outputText("\n\nYou smile at the dragon-girl standing above you, careful to maintain your rhythm in fucking that wonderful pussy of hers.  Kiha smiles back at you, even as she continues to ride you for all she's worth.  You glide your hands over her sides to grasp her shoulders and pull her closer.  The mock-dragon eagerly allows you to pull her into your embrace, mashing her breasts against your [chest] and kissing you passionately.  You return the lip-lock with equal intensity, feeling the familiar pressure of a oncoming orgasm.");
     outputText("\n\n\"<i>I... oh, [name], I'm close!</i>\" Kiha gasps.  You try to reply and tell her so are you, but words fail you.  Instead you moan at her and thrust yourself as far into her as you can, painting her walls white with your seed as you spew rope upon rope towards her ready womb.  The dragoness manages to throw you a lustful smirk.  \"<i>Cumming already, lo-oh oh OH!</i>\"  She screams, arching her back and spewing flames out into the snowy sky above as she cums violently, flooding your crotch with all the lubricants and orgasm-fluids she can produce.");
@@ -580,14 +580,14 @@ export function kihaXmasFingering(): void {
 // Needs PC with cock that fits.
 export function penetradePureMouseWaifu(): void {
     clearOutput();
-    outputText("Stripping down your [armor] and indicating Amily should do the same... you tell her that you were hoping for some good old-fashioned sex between a horny " + player.mf("man", "herm") + " and " + player.mf("his", "her") + " lovely mousette.  You playfully ask Amily if she has any objections?");
-    outputText("\n\n\"<i>Well, it's a little counterproductive to take your clothes off if you want to get warm,</i>\" Amily notes.  Despite her words, she's stripping off without the slightest hesitation.  You reply that just the sight of her getting nude is already making you a little warmer... thrusting your hips so she can see your erect " + player.multiCockDescriptLight() + ".  \"<i>Flattering flirt; you always think with your dick, don't you?</i>\" the mouse laughs.  That's rich; you can see her pussy dripping from here");
+    outputText("Stripping down your [armor] and indicating Amily should do the same... you tell her that you were hoping for some good old-fashioned sex between a horny " + mf(player, "man", "herm") + " and " + mf(player, "his", "her") + " lovely mousette.  You playfully ask Amily if she has any objections?");
+    outputText("\n\n\"<i>Well, it's a little counterproductive to take your clothes off if you want to get warm,</i>\" Amily notes.  Despite her words, she's stripping off without the slightest hesitation.  You reply that just the sight of her getting nude is already making you a little warmer... thrusting your hips so she can see your erect " + multiCockDescriptLight(player) + ".  \"<i>Flattering flirt; you always think with your dick, don't you?</i>\" the mouse laughs.  That's rich; you can see her pussy dripping from here");
     if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText(", not to mention her dick's pretty hard, too");
     outputText(".");
 
     outputText("\n\nSitting down on your bedroll, you open your arms, inviting Amily over.  The mouse promptly approaches");
     if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText(", her own " + amilyScene.amilyCock() + " jutting out in anticipation");
-    outputText(", wriggling into your arms and angling her pussy over your " + game.player.cockDescript(x) + ".  With the ease of long practice, she slides smoothly down its length, her warm, wet depths greedily inhaling your masculinity.  \"<i>Ah, nothing like a nice hard cock in your cunt to make you feel warmer,</i>\" she coos.");
+    outputText(", wriggling into your arms and angling her pussy over your " + cockDescript(game.player, x) + ".  With the ease of long practice, she slides smoothly down its length, her warm, wet depths greedily inhaling your masculinity.  \"<i>Ah, nothing like a nice hard cock in your cunt to make you feel warmer,</i>\" she coos.");
 
     outputText("\n\nYou simply grin and begin bucking your hips against her, suppressing your moans by kissing her, hugging her tightly against you, holding your bodies flush together.  The mouse hugs you as tightly as she can, smothering you with kisses as her hands roam nimbly across your back, slinking down to squeeze your ass with an obvious hunger to molest you.");
 
@@ -609,7 +609,7 @@ export function penetradePureMouseWaifu(): void {
 // For any gender.
 export function makeOutWithPureMouseWaifu(): void {
     clearOutput();
-    outputText("You strip down your [armor] and suggest Amily should do the same.  \"<i>Well, it's a little counterproductive to take your clothes off if you want to get warm,</i>\" Amily notes.  Despite her words, she's stripping off without the slightest hesitation.  \"<i>So, what's on your mind, lover-" + player.mf("boy", "girl") + "?</i>\" she asks.");
+    outputText("You strip down your [armor] and suggest Amily should do the same.  \"<i>Well, it's a little counterproductive to take your clothes off if you want to get warm,</i>\" Amily notes.  Despite her words, she's stripping off without the slightest hesitation.  \"<i>So, what's on your mind, lover-" + mf(player, "boy", "girl") + "?</i>\" she asks.");
 
     outputText("\n\nYou say that with all that's been going on lately, the two of you just haven't been able catch a break... so today, you'd like to just forget about everything and spend some quality time with her... not by having sex... though you don't mind doing it either, but... you'd just like to sit back and enjoy your pretty mousette, mother of your children, properly.  You ask if she's getting what you're saying?");
 

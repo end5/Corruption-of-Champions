@@ -775,7 +775,7 @@ export class Rubi extends TelAdreAbstractContent {
         outputText("\n\nRunning your hands along Rubi's body, you pull and tear at the clothes keeping you apart.  Garments fly as you ravish each other, and it isn't long before you're both naked, with Rubi straddling your waist.  " + rubiMF("He giggles and reaches between his legs", "She giggles and reaches between her legs") + ", wrapping slender fingers around your ");
         if (player.hasCock()) {
             // trace("Rubi - PlayerHasCock");
-            outputText(game.player.cockDescript(x), false);
+            outputText(cockDescript(game.player, x), false);
         }
         else
             outputText(clitDescript(), false);
@@ -809,7 +809,7 @@ export class Rubi extends TelAdreAbstractContent {
         if (player.hasCock()) outputText("cock");
         else outputText("clit");
         outputText(", Rubi slips off your lap and kneels on the floor.  [rubi Ey] pauses a moment, taking in your ");
-        if (player.hasCock()) outputText(game.player.cockDescript(x));
+        if (player.hasCock()) outputText(cockDescript(game.player, x));
         else outputText("[clit]");
         outputText(" with [rubi eir] eyes before leaning in and giving it a tentative lick, which sends a shiver up your spine.  Seeing that, [rubi ey] gives a little smile and licks again, running [rubi eir] smooth tongue all along the length of your ");
         if (player.hasCock()) outputText("swollen member");
@@ -825,7 +825,7 @@ export class Rubi extends TelAdreAbstractContent {
         if (size < 2) {
             // (Normal/Incubus Rubi)
             outputText("\n\nFiguring [rubi ey]'s had enough time in charge, you stand and get behind Rubi, pushing [rubi em] so that [rubi eir] chest and head are resting on the edge of the bed.  You lift [rubi eir] tail and place your ");
-            if (player.hasCock()) outputText(game.player.cockDescript(x));
+            if (player.hasCock()) outputText(cockDescript(game.player, x));
             else outputText("[clit]");
             outputText(" at [rubi eir] tight ");
             if (flags[kFLAGS.RUBI_NO_CUNT] > 0) outputText("tailhole");
@@ -838,7 +838,7 @@ export class Rubi extends TelAdreAbstractContent {
         // (These two paragraphs for cocks over 24 area)
         else {
             outputText("\n\nFiguring [rubi ey]'s had enough time in charge, you stand and get behind Rubi, pushing [rubi em] so that [rubi eir] chest and head are resting on the edge of the bed.  You lift [rubi eir] tail, press [rubi eir] legs together, and place your ");
-            if (player.hasCock()) outputText(game.player.cockDescript(x));
+            if (player.hasCock()) outputText(cockDescript(game.player, x));
             else outputText("[clit]");
             outputText(" at the space just below [rubi eir] ");
             if (flags[kFLAGS.RUBI_NO_CUNT] > 0) outputText("balls");
@@ -848,7 +848,7 @@ export class Rubi extends TelAdreAbstractContent {
             if (rubiBimbo()) outputText(", not that [rubi ey] needs the extra lubrication, as she's practically dripping like a faucet, which dribbles down [rubi eir] legs suitably enough");
             outputText(".");
             outputText("\n\nYou press forward, your enormous ");
-            if (player.hasCock()) outputText(game.player.cockDescript(x));
+            if (player.hasCock()) outputText(cockDescript(game.player, x));
             else outputText("[clit]");
             outputText(" slipping between Rubi's thighs, which grip you tightly.  You feel [rubi eir] ");
             if (flags[kFLAGS.RUBI_COCK_SIZE] > 0) outputText("hard cock");
@@ -869,7 +869,7 @@ export class Rubi extends TelAdreAbstractContent {
         outputText("\n\nYou keep this up for as long as you can, steeling yourself until you just can't take any more.  With a final, deep thrust, you groan and let your mind blank as the orgasm overtakes you.  ");
         // (Player has cock under 24 area?)
         if (player.hasCock() && player.cockArea(x) <= rubiCapacity()) {
-            outputText("Your " + game.player.cockDescript(x) + " engorges for a second before erupting deep inside your demonic little fucktoy.  ");
+            outputText("Your " + cockDescript(game.player, x) + " engorges for a second before erupting deep inside your demonic little fucktoy.  ");
             if (player.cumQ() < 250) outputText("Cum dribbles out from [rubi eir] hole as you give a couple extra thrusts.");
             else if (player.cumQ() < 1000) outputText("A generous amount of cum trickles from [rubi eir] depths as you give a couple extra thrusts.");
             else if (player.cumQ() < 2000) {
@@ -880,7 +880,7 @@ export class Rubi extends TelAdreAbstractContent {
             }
         }
         else if (player.hasCock()) {
-            outputText("Your " + game.player.cockDescript(x) + " engorges for a second before erupting beneath Rubi, splattering [rubi em] and the blankets ");
+            outputText("Your " + cockDescript(game.player, x) + " engorges for a second before erupting beneath Rubi, splattering [rubi em] and the blankets ");
             if (player.cumQ() < 250) outputText("with a fair amount of your seed.");
             else if (player.cumQ() < 1000) outputText("with a generous amount of your spunk.");
             else outputText("with a veritable torrent of potent pearlescent spooge.");
@@ -951,7 +951,7 @@ export class Rubi extends TelAdreAbstractContent {
 
         outputText("\n\nYour body shudders as the warmth grows warmer.  Your body feels so hot, like it's on fire and the only way to quench that fire is orgasm.  Rubi is clutching at pillows, rocking [rubi emself] on the fake pink dong, which only adds fuel to your fire.");
         // (Orgasm Denial on?)
-        if (flags[kFLAGS.RUBI_ORGASM_DENIAL] > 0) outputText("\n\nIn a sudden moment of clarity, you raise your head and look straight at Rubi, shouting that [rubi ey]'d better not cum during all this, or else you'll be quite upset.  [rubi Eir] eyes go wide, \"<i>W—What?  I need to cum, " + player.mf("sir", "miss") + "!  My body, it's so hot!</i>\"  You growl that it's expressly forbidden, and that [rubi ey]'d better learn to control [rubi em]self, or else.");
+        if (flags[kFLAGS.RUBI_ORGASM_DENIAL] > 0) outputText("\n\nIn a sudden moment of clarity, you raise your head and look straight at Rubi, shouting that [rubi ey]'d better not cum during all this, or else you'll be quite upset.  [rubi Eir] eyes go wide, \"<i>W—What?  I need to cum, " + mf(player, "sir", "miss") + "!  My body, it's so hot!</i>\"  You growl that it's expressly forbidden, and that [rubi ey]'d better learn to control [rubi em]self, or else.");
         // (Normal/Incubus Rubi, Orgasm Denial off)
         else if (flags[kFLAGS.RUBI_COCK_SIZE] > 0) {
             outputText("\n\n[rubi Eir] body shudders and convulses, and [rubi eir] ");
@@ -1034,13 +1034,13 @@ export class Rubi extends TelAdreAbstractContent {
             outputText("\n\nGrasping [rubi eir] panties firmly you shimmy them down until they're at [rubi eir] ankles.  [rubi Ey] steps out of them, and, a moment after the thought crosses your mind, you immediately shove them into Rubi's mouth.  [rubi Ey] mumbles [rubi eir] objections, but doesn't remove them.");
 
             outputText("\n\nWith Rubi's bare ass laid out in front of you, it takes all your willpower not to just bury your face in it.  But you stand fast, and take care to remember your plans.  Instead, you wrap your fingers carefully around [rubi eir] stiffening manhood.  You grip it tight, feeling [rubi eir] pulse run through it.  With slow, steady movements you begin to stroke.");
-            outputText("\n\n\"<i>Nnng,</i>\" Rubi grunts, gripping the couch cushions.  You make sure to remind [rubi em] [rubi ey] can't cum under any circumstances.  [rubi Ey] nods, and says, \"<i>Y—Yes " + player.mf("sir", "miss") + ".</i>\"");
+            outputText("\n\n\"<i>Nnng,</i>\" Rubi grunts, gripping the couch cushions.  You make sure to remind [rubi em] [rubi ey] can't cum under any circumstances.  [rubi Ey] nods, and says, \"<i>Y—Yes " + mf(player, "sir", "miss") + ".</i>\"");
 
             outputText("\n\nSlightly quickening the pace of your strokes, you also lean in, resting your nose right against Rubi's tail, with your lips against [rubi eir] tight butthole.  You let your tongue out, letting it run circles around [rubi eir] ring.  You pull away, marveling at how the saliva makes [rubi eir] puckering hole look like a jewel in the rough.");
 
             outputText("\n\nAllowing a devious smile to cross your face, you extend two fingers and place them at Rubi's now wet entrance and slide them in.  A look of surprise briefly flashes over [rubi eir] face, but it's replaced by a satisfied smile.  You curve your fingers down, searching for [rubi eir] prostate.  [rubi Ey] suddenly jerks and his dick stiffens even more in your hand, and you know you've found it.  Your fingers rub little circles in it, Rubi squirming with every loop.");
 
-            outputText("\n\n\"<i>Aah, " + player.mf("sir", "miss") + ", I can't take much more of this,</i>\" [rubi ey] says, half way between a whisper and a moan.");
+            outputText("\n\n\"<i>Aah, " + mf(player, "sir", "miss") + ", I can't take much more of this,</i>\" [rubi ey] says, half way between a whisper and a moan.");
 
             outputText("\n\nYou give [rubi eir] cock a squeeze and remind [rubi em] that if [rubi ey] cums, [rubi ey]'s in for a punishment.  [rubi Ey] gulps and nods, closing [rubi eir] eyes.  [rubi Eir] whole body seems to stiffen.  [rubi Ey]'s right, [rubi ey] really can't take much more of this.  You take this cue to pull your fingers out and relinquish your hold on Rubi's penis.  [rubi Ey] sighs and almost collapses onto the couch.");
             outputText("\n\nYou lick your fingers clean of [rubi eir] pre-cum and kiss [rubi em], letting [rubi em] taste [rubi eir] own juices.  Then you tell [rubi em] that [rubi ey]'s not to masturbate in any way until you allow [rubi em] [rubi eir] release.");
@@ -1339,9 +1339,9 @@ export class Rubi extends TelAdreAbstractContent {
         else outputText("huge, stretched");
         outputText(" scrotum while allowing [rubi eir] delicate, aroused maleness to hang out freely, bouncing up in excitement as soon as you lay eyes on it.  Clinging to [rubi eir] svelte torso, a lacy corset compresses [rubi eir] middle slightly and amplifies [rubi eir] next-to-nonexistent chest, giving [rubi em] an even greater appearance of femininity than before.");
 
-        outputText("\n\n" + player.mf("Giggling", "Smiling") + " appreciatively, you lick some half-melted chocolate from your upper lip.  You flick your gaze back to [rubi eir] dong in time to see a pearl of clear pre-cum bead on [rubi eir] cute cock's crown.  Rubi clenches [rubi eir] knees together, a little embarrassed, but [rubi ey] musters [rubi eir] courage and climbs into bed with you, [rubi eir] pert bottom coming to rest on your own.  Chastity is maintained, of course, by the fluffy, white towel between your (mostly) nude bodies.  [rubi Eir] weight is noticeable but not uncomfortable, and [rubi ey] begins to work on your shoulders almost immediately, squeezing the right one while [rubi eir] left pops the cap on a bottle of oil.");
+        outputText("\n\n" + mf(player, "Giggling", "Smiling") + " appreciatively, you lick some half-melted chocolate from your upper lip.  You flick your gaze back to [rubi eir] dong in time to see a pearl of clear pre-cum bead on [rubi eir] cute cock's crown.  Rubi clenches [rubi eir] knees together, a little embarrassed, but [rubi ey] musters [rubi eir] courage and climbs into bed with you, [rubi eir] pert bottom coming to rest on your own.  Chastity is maintained, of course, by the fluffy, white towel between your (mostly) nude bodies.  [rubi Eir] weight is noticeable but not uncomfortable, and [rubi ey] begins to work on your shoulders almost immediately, squeezing the right one while [rubi eir] left pops the cap on a bottle of oil.");
 
-        outputText("\n\nOhhhh, that's cold!  The slippery glaze rubs down your spine as [rubi ey] pours it out all over your back, and you shiver from the difference between [rubi eir] hands and the slick fluid.  [rubi Ey] sets the bottle aside after your top half has a generous coating and apologizes, \"<i>Sorry, I'll get you warmed up in a second, babe.</i>\"  It's clear from [rubi eir] tone that [rubi ey] seems genuinely penitent for the slip-up, but when [rubi eir] fingers begin to knead your " + player.skinFurScales() + ", all is immediately forgiven.  You moan while Rubi puts [rubi eir] girlish palms to work on your muscles.  [rubi Eir] touches are electric, and each contact releases tension that you didn't even know you had.  Lubricating the whole process, the oil is enhancing the touches, warming nicely from the heat of two bodies so close together.");
+        outputText("\n\nOhhhh, that's cold!  The slippery glaze rubs down your spine as [rubi ey] pours it out all over your back, and you shiver from the difference between [rubi eir] hands and the slick fluid.  [rubi Ey] sets the bottle aside after your top half has a generous coating and apologizes, \"<i>Sorry, I'll get you warmed up in a second, babe.</i>\"  It's clear from [rubi eir] tone that [rubi ey] seems genuinely penitent for the slip-up, but when [rubi eir] fingers begin to knead your " + skinFurScales(player) + ", all is immediately forgiven.  You moan while Rubi puts [rubi eir] girlish palms to work on your muscles.  [rubi Eir] touches are electric, and each contact releases tension that you didn't even know you had.  Lubricating the whole process, the oil is enhancing the touches, warming nicely from the heat of two bodies so close together.");
 
         outputText("\n\nGrunting as [rubi ey] exerts [rubi em]self for your pleasure, the girlish brunette leans down to tend to a particularly stubborn knot, inadvertently pressing [rubi eir] tumescent organ into your crack along with the intervening fabric.  You both groan out loud at the same time - [rubi em] from the pressure on [rubi eir] most sensitive, erotic spot, and you from the relief [rubi eir] hands are doling out.  You slowly drag another strawberry to your lips and begin to lick and suck on the tip, slowly melting the layers of chocolate until the red tip is revealed, pushing in and out of your lips teasingly.  Rubi is barely able to handle the display.  [rubi Ey]'s breathing heavily and barely stopping [rubi em]self from humping you through the towel.");
         outputText("\n\nRubi whimpers, \"<i>I-uh... ummm, [name], I'm getting c-c-close,</i>\" without stopping.  [rubi Eir] tail is slowly rubbing on your [leg] as [rubi ey] tries to keep [rubi eir] rebellious hips in place, but they jerk and stutter again and again, pressing [rubi eir] hot little tool into the towel.  You're totally and completely relaxed, and [rubi ey]'s wound tighter than a spring.");
@@ -2414,7 +2414,7 @@ export class Rubi extends TelAdreAbstractContent {
         if (!player.hasVagina()) outputText("asshole");
         else outputText("cunt");
         outputText(" of yours all ready for me.</i>\"  Rubi's head descends between your legs");
-        if (player.hasCock()) outputText(", ignoring your " + game.player.multiCockDescriptLight() + " completely,");
+        if (player.hasCock()) outputText(", ignoring your " + multiCockDescriptLight(game.player) + " completely,");
         outputText(" and presses [rubi eir] face into your [vagOrAss], inhaling deeply.  [rubi Eir] lips pucker as [rubi ey] plants a kiss directly onto your ");
         if (!player.hasVagina()) outputText("ass");
         else outputText("moistening pussy");

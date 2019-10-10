@@ -374,7 +374,7 @@ export class PhoukaScene implements TimeAwareInterface {
     }
 
     protected phoukaHalloweenLeave(): void {
-        outputText("\n\nFeeling you're better off not finding out you excuse yourself, telling them they can enjoy the treacle amongst themselves.  As you walk away you just catch the boss telling the others <i>“Watch out fer that one, " + player.mf("He", "She") + "'s a smart one.”</i>");
+        outputText("\n\nFeeling you're better off not finding out you excuse yourself, telling them they can enjoy the treacle amongst themselves.  As you walk away you just catch the boss telling the others <i>“Watch out fer that one, " + mf(player, "He", "She") + "'s a smart one.”</i>");
         doNext(camp.returnToCampUseOneHour);  // Return to camp, 1 hour used
     }
 

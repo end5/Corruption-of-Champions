@@ -4,12 +4,12 @@ export function sackDescript(): string {
 }
 
 export function cockClit(number: number = 0): string {
-    if (player.hasCock() && number >= 0 && number < player.cockTotal()) return player.cockDescript(number);
+    if (player.hasCock() && number >= 0 && number < player.cockTotal()) return cockDescript(player, number);
     else return clitDescript();
 }
 
 export function chestDesc(): string {
-    return player.chestDesc();
+    return chestDesc(player);
 }
 
 export function tongueDescript(): string {
@@ -85,7 +85,7 @@ export function allVaginaDescript(): string {
 }
 
 export function cockDescript(cockNum: number = 0): string {
-    return player.cockDescript(cockNum);
+    return cockDescript(player, cockNum);
 }
 
 export function allBreastsDescript(): string {
@@ -93,7 +93,7 @@ export function allBreastsDescript(): string {
 }
 
 export function breastDescript(rowNum: number): string {
-    return player.breastDescript(rowNum);
+    return breastDescript(player, rowNum);
 }
 
 export function num2Text(number: number): string {

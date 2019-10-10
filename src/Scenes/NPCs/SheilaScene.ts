@@ -416,7 +416,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
     // [XP-1 - Apologize]
     private apologySheilaApology(): void {
         clearOutput();
-        outputText("You scratch your " + player.skinFurScales() + " absently behind an ear, not sure how to broach the topic of reconciliation when you feel like she was the aggressor, but mumble something about being sorry things started off on the wrong foot.");
+        outputText("You scratch your " + skinFurScales(player) + " absently behind an ear, not sure how to broach the topic of reconciliation when you feel like she was the aggressor, but mumble something about being sorry things started off on the wrong foot.");
 
         outputText("\n\nSheila quirks an eyebrow at your apology.  \"<i>Alright,</i>\" she says simply, passing over your reluctance to assign blame for the situation.  \"<i>I guess I can't fault you for being gobsmacked that someone in this land didn't immediately smother you in kisses and spend the day boffing you like a newlywed at your first meeting, but don't take so much for granted.  You can't stay free from the demons by trusting strangers.</i>\"");
 
@@ -437,7 +437,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nBefore she can do more than flinch, you bring your hand up from your side and across her face, sending the sharp crack of a slap rolling across the dry, open landscape.  Several spur-of-the-moment comments about xenophobia and bigotry find their way out in the pause before she recovers the presence of mind to speak.");
 
-        outputText("\n\n\"<i>Fuck you, arsehole!</i>\" she counters, breaking in.  \"<i>I'm not about to stand here and take a bollocking from some mullet who rolls up and expects everyone " + player.mf("he", "she") + " meets to fall over " + player.mf("his", "her") + " charming self like " + player.mf("he", "she") + "'s the storybook hero" + player.mf("", "ine") + "!  If you want a girl who'll be your soulmate at the word 'hello' you can go look for sloppy seconds from one of those goblin slags!</i>\"");
+        outputText("\n\n\"<i>Fuck you, arsehole!</i>\" she counters, breaking in.  \"<i>I'm not about to stand here and take a bollocking from some mullet who rolls up and expects everyone " + mf(player, "he", "she") + " meets to fall over " + mf(player, "his", "her") + " charming self like " + mf(player, "he", "she") + "'s the storybook hero" + mf(player, "", "ine") + "!  If you want a girl who'll be your soulmate at the word 'hello' you can go look for sloppy seconds from one of those goblin slags!</i>\"");
 
         outputText("\n\nShe raises a fist and takes a swing at you again, but without the element of surprise this time; you lean inside the hook and catch her upper arm harmlessly on the side of your face, then shove her away roughly before she can kick you.  She stumbles backwards, nearly falling over.");
 
@@ -737,7 +737,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         clearOutput();
         outputText("You decide to hold your tongue and simply mimic her pose as best you can, relaxing on the grass.  The sun is hot but its angle not insistent here, thanks to the shelter from a broad tree nearby.  Its soft rays almost reduce you to sleep over the next forty-five minutes before your companion speaks, rousing you.");
 
-        outputText("\n\n\"<i>Didn't take ya for a quiet " + player.mf("bloke", "sheila") + " when we met, [name]... but I find you peaceful company.</i>\"");
+        outputText("\n\n\"<i>Didn't take ya for a quiet " + mf(player, "bloke", "sheila") + " when we met, [name]... but I find you peaceful company.</i>\"");
         outputText("\n\nYou raise your head to look, and see Sheila already on her feet, adjusting her catch to sit across her shoulders for easy carrying.");
 
         outputText("\n\n\"<i>You off, then?</i>\" you ask, trying not to sound too obviously like someone just awakened.");
@@ -965,9 +965,9 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             outputText(" in her soft hair - but her hips keep pumping, incredibly.  ");
             // (pc corr >= 90 or > sheila corruption)
             if (player.cor >= 90 || player.cor > flags[kFLAGS.SHEILA_CORRUPTION]) {
-                outputText("  The tight, rippling muscles of her pussy clamp down on you, nearly holding your cock in place as she tries to ride you still but only manages to jerk your dick up and down and squeeze pre-cum from it.  \"<i>S-so full,</i>\" Sheila groans, \"<i>did you just get bigger in me?</i>\"  Her lungs inflate as she sucks in her breath, and her hard nipples push into your " + player.skinFurScales() + ".");
+                outputText("  The tight, rippling muscles of her pussy clamp down on you, nearly holding your cock in place as she tries to ride you still but only manages to jerk your dick up and down and squeeze pre-cum from it.  \"<i>S-so full,</i>\" Sheila groans, \"<i>did you just get bigger in me?</i>\"  Her lungs inflate as she sucks in her breath, and her hard nipples push into your " + skinFurScales(player) + ".");
             }
-            else if (player.cor < flags[kFLAGS.SHEILA_CORRUPTION]) outputText("  Her pussy clamps down around you, the rippling muscles so tight that she wouldn't even be able to pump if it weren't for the hot river of juice you feel around your tool.  \"<i>A-ah,</i>\" Sheila groans, \"<i>you thrust too!  Rail me silly!</i>\"  She tries to push against you with her hands, to return herself to an upright position, but can barely pull her chest apart from you - her nipples just narrowly recede from the surface of your " + player.skinFurScales() + " as her efforts peak.");
+            else if (player.cor < flags[kFLAGS.SHEILA_CORRUPTION]) outputText("  Her pussy clamps down around you, the rippling muscles so tight that she wouldn't even be able to pump if it weren't for the hot river of juice you feel around your tool.  \"<i>A-ah,</i>\" Sheila groans, \"<i>you thrust too!  Rail me silly!</i>\"  She tries to push against you with her hands, to return herself to an upright position, but can barely pull her chest apart from you - her nipples just narrowly recede from the surface of your " + skinFurScales(player) + " as her efforts peak.");
             // (else if magically equal but < 90)
             else outputText("  Her pussy squirts and sucks alternately, trying to find purchase on your cock even as her pumping hips deny it; the sensation drives you wild.  \"<i>[name], your old fella is amazing...</i>\"");
             outputText("  Your dick twitches and swells, as if to fulfill her words, and your pelvis rocks into Sheila's as you begin to ejaculate.  \"<i>No... pull out, or you'll get me pregnant,</i>\" she cries, when ");
@@ -1014,7 +1014,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // (if no cockFit 32 and yes vag)
         else if (player.hasVagina()) {
-            outputText("Her hand slips to your groin and, overcoming its trepidation, slides two fingers into your [vagina], stimulating you and forcing hardness back into your [clit].  \"<i>I don't know what's the matter with me,</i>\" Sheila says, nervously.  \"<i>I'm not usually aroused by " + player.mf("hermaphrodites unless they have a donger that'll fit", "girls") + ", but you're different.  I wonder what this feeling is...</i>\"");
+            outputText("Her hand slips to your groin and, overcoming its trepidation, slides two fingers into your [vagina], stimulating you and forcing hardness back into your [clit].  \"<i>I don't know what's the matter with me,</i>\" Sheila says, nervously.  \"<i>I'm not usually aroused by " + mf(player, "hermaphrodites unless they have a donger that'll fit", "girls") + ", but you're different.  I wonder what this feeling is...</i>\"");
 
             outputText("\n\n\"<i>Love, of course,</i>\" you answer, smiling smugly despite the pleasure tightening your body.");
 
@@ -1420,7 +1420,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         clearOutput();
         outputText("\"<i>[name], I don't want to talk about that,</i>\" Sheila says, \"<i>it leaves a bad taste in my mouth.</i>\"");
 
-        outputText("\n\nYou offer to tell her about your own history, as an enticement, but she shakes her head.  \"<i>I don't want to talk about that either!  Look, no matter how cosmopolitan, nobody really wants to hear about the dicks " + player.mf("his", "her") + " girl's had growing out of her face.  I mean, how many is the right answer?</i>\"");
+        outputText("\n\nYou offer to tell her about your own history, as an enticement, but she shakes her head.  \"<i>I don't want to talk about that either!  Look, no matter how cosmopolitan, nobody really wants to hear about the dicks " + mf(player, "his", "her") + " girl's had growing out of her face.  I mean, how many is the right answer?</i>\"");
 
         outputText("\n\nChanging tack, you point out that Sheila would have inherited some personality from them, thanks to her... situational empathy... so it's only fair if you know a little bit, right?");
 
@@ -1438,7 +1438,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("\n\nLike that... what does 'bonzer' even mean?");
 
-            outputText("\n\nThe woman colors a bit and looks down.  \"<i>Er...</i>\" she mumbles, \"<i>it means you're great, [name].  Top shelf.  My favorite " + player.mf("bloke", "sheila") + ".</i>\"");
+            outputText("\n\nThe woman colors a bit and looks down.  \"<i>Er...</i>\" she mumbles, \"<i>it means you're great, [name].  Top shelf.  My favorite " + mf(player, "bloke", "sheila") + ".</i>\"");
 
             outputText("\n\n\"<i>Oh.  Is that so?</i>\" you ask, facetiously.");
 
@@ -1571,13 +1571,13 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\n\"<i>Well,</i>\" Sheila says, \"<i>I dunno about yours, but two years or so is enough for purebred kids to be up and helping around the colony - they're about three or four feet then.  Just basic stuff, like carrying small bags of food home from the storage for their mum or dad.  Two more years and they're basically adults... not as wise as one, of course, but they start perving and pairing off around then, no matter how much their oldies urge them not to.  Magic of hormones, world's your oyster, and all that.</i>\"");
 
             outputText("\n\nThe implications come to you in a hurry.  \"<i>So... how old are you?  Five?  Ten?</i>\"");
-            outputText("\n\nSheila laughs.  \"<i>No, mate; much older than that.  I'm not going to tell you how much, though.</i>\"  Her eyes narrow in mock suspicion, and she smiles broadly.  \"<i>A " + player.mf("gentleman", "lady") + " doesn't ask a");
+            outputText("\n\nSheila laughs.  \"<i>No, mate; much older than that.  I'm not going to tell you how much, though.</i>\"  Her eyes narrow in mock suspicion, and she smiles broadly.  \"<i>A " + mf(player, "gentleman", "lady") + " doesn't ask a");
             if (player.gender >= 3) outputText("nother");
             outputText(" lady's age, after all.</i>\"");
 
             // [(lib >=50)
             if (player.lib >= 50) {
-                outputText("\n\n\"<i>But I'm no " + player.mf("gentleman", "lady") + ",</i>\" you retort, leaning in to tickle her ear with your words.  \"<i>Though, I was only asking because your skin is so smooth and your nipples so perky...</i>\"  You nip at her lobe.  \"<i>And your pussy still squeezes like it's your first time.</i>\"");
+                outputText("\n\n\"<i>But I'm no " + mf(player, "gentleman", "lady") + ",</i>\" you retort, leaning in to tickle her ear with your words.  \"<i>Though, I was only asking because your skin is so smooth and your nipples so perky...</i>\"  You nip at her lobe.  \"<i>And your pussy still squeezes like it's your first time.</i>\"");
 
                 outputText("\n\n\"<i>[name]!</i>\" Sheila shrieks, pulling back and slapping you across the face.  \"<i>You nasty root rat!</i>\"");
 
@@ -1701,7 +1701,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             }
             else {
                 // (all big cox > 32)
-                outputText("\n\nIncreasingly wide eyes offset her thin, pressed lips as you reveal " + game.player.sMultiCockDesc() + ", the voluminous flesh swaying softly to the breeze.");
+                outputText("\n\nIncreasingly wide eyes offset her thin, pressed lips as you reveal " + sMultiCockDesc(game.player) + ", the voluminous flesh swaying softly to the breeze.");
                 outputText("\n\n\"<i>[name]... you really do take it too far.  There's no way I can... I mean, the size of it!</i>\"  Even despite a point-blank refusal, Sheila's eyes don't leave your crotch, drinking in the sight of your dick");
                 if (player.cockTotal() > 1) outputText("s");
                 outputText(" as she rubs her small, smooth labia vigorously.  \"<i>What do you expect me to do with one of those?</i>\"");
@@ -1818,7 +1818,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         // [(if cock-focus)]
         if (cock) {
-            outputText("\n\nStroke after stroke of semen passes down " + game.player.sMultiCockDesc() + ", ");
+            outputText("\n\nStroke after stroke of semen passes down " + sMultiCockDesc(game.player) + ", ");
             // [(cock fits)
             if (player.cockThatFits(32) >= 0) {
                 outputText("pouring out into your lover's waiting throat.  She gags and you can feel the gooey seed oozing back against your [cockHeadFit 32]");
@@ -1953,10 +1953,10 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         else outputText("plunging two fingers into");
         outputText(" your own " + nippleDescript(0) + "s.  You shiver as she paws at the sensitive nubs on your chest, but don't let up your assault, moving your mouth down to tickle one of hers with your teeth and tongue.  Soon she's quaking and twitching beneath your ministrations; rubbing at her crotch with one hand as she half-heartedly tries to tease you back with the other.");
 
-        outputText("\n\n\"<i>Please... I can't take any more,</i>\" she whines.  \"<i>Stop pashing on my nips and put it in, mate.</i>\"  The hand at her crotch begins trying to unfasten her belt while the other grabs and fondles her breast; you smirk and complete your own undressing quickly with both hands.  As " + game.player.sMultiCockDesc() + " emerges, engorged with blood, from your clothing, she switches from undressing back to rubbing, breathing heavily and stroking herself through the fabric as she stares at your ");
+        outputText("\n\n\"<i>Please... I can't take any more,</i>\" she whines.  \"<i>Stop pashing on my nips and put it in, mate.</i>\"  The hand at her crotch begins trying to unfasten her belt while the other grabs and fondles her breast; you smirk and complete your own undressing quickly with both hands.  As " + sMultiCockDesc(game.player) + " emerges, engorged with blood, from your clothing, she switches from undressing back to rubbing, breathing heavily and stroking herself through the fabric as she stares at your ");
         // [(if wangaroo)
         if (player.cocks[player.cockThatFits(32)].cockType == CockTypesEnum.KANGAROO) outputText("tapered, fleshy penis.  \"<i>Wow... you never see those.</i>\"");
-        else outputText(game.player.multiCockDescriptLight() + ".");
+        else outputText(multiCockDescriptLight(game.player) + ".");
 
         outputText("\n\n\"<i>What's wrong?</i>\" you tease.  \"<i>I thought you wanted it in, but your pants are still in the way?</i>\"");
 
@@ -1966,15 +1966,15 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nYou grin.  ");
         // [(no centaur)
-        if (!player.isTaur()) outputText("Taking hold of your " + game.player.cockDescript(x));
+        if (!player.isTaur()) outputText("Taking hold of your " + cockDescript(game.player, x));
         // (centard)
-        else outputText("Attempting to maneuver your " + game.player.cockDescript(x) + " into position");
+        else outputText("Attempting to maneuver your " + cockDescript(game.player, x) + " into position");
         outputText(", you rub the head along her dripping snatch, smearing her fluid over it.  ");
         // [(non-cent)
         if (!player.isTaur()) outputText("Gripping her fuzzy thighs next, you lift her bottom and line");
         // (hoers)
         else outputText("She lifts her bottom and lines");
-        outputText(" her slippery passage up with your cock.  \"<i>Here it comes!</i>\" you cry.  With that announcement, you thrust into her, parting her lips with your swollen " + player.cockHead(x) + ".  She moans in relief as you finally enter her, but said relief is short-lived as you begin pumping at her slick vagina.  Gasping weakly, she lies back on the ground; ");
+        outputText(" her slippery passage up with your cock.  \"<i>Here it comes!</i>\" you cry.  With that announcement, you thrust into her, parting her lips with your swollen " + cockHead(player, x) + ".  She moans in relief as you finally enter her, but said relief is short-lived as you begin pumping at her slick vagina.  Gasping weakly, she lies back on the ground; ");
         if (sheilaCorruption() <= 30) outputText("her perky breasts rock back and forth");
         else outputText("her jiggling breasts flatten into perfect domes and undulate on her chest");
         outputText(" as you draw in and out of her warm, moist pussy.");
@@ -2018,11 +2018,11 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("your resistance is condemned to die in failure as Sheila lets out a quavering scream of pleasure and wraps her arms and legs around you, pinning you inside.  Her vagina convulses around your cock powerfully; you could swear you feel yourself stretching longer and longer as her rippling pussy pulls you deeper in.  Just when you think that your dick must be a mile long, her whole body tenses up and her fingernails dig into your back.  Wearing a madwoman's expression, Sheila stares open-mouthed at you as her muscles lock and her pussy quivers out its fitful orgasm; even her ");
             if (sheilaCorruption() < 30) outputText("perky");
             else outputText("pillowy");
-            outputText(" breasts seem to be held taut, compressed and motionless.  Suddenly she rams her hips into yours violently and throws her head back, and before you can issue a word of protest, her cunt wrings your " + game.player.cockDescript(x) + " one last time with almost supernatural heat; your mind clouds over and a wracking orgasm shoots to the base of your spine, echoing back with the first wave of your ejaculation.");
+            outputText(" breasts seem to be held taut, compressed and motionless.  Suddenly she rams her hips into yours violently and throws her head back, and before you can issue a word of protest, her cunt wrings your " + cockDescript(game.player, x) + " one last time with almost supernatural heat; your mind clouds over and a wracking orgasm shoots to the base of your spine, echoing back with the first wave of your ejaculation.");
         }
         // (else if equal but below 90)
         else {
-            outputText("your orgasm quickly supersedes your control as she wrings you and rubs her nipples against your [chest].  " + game.player.SMultiCockDesc() + " begins to twitch as it unloads its first squirt of semen into her spasming pussy");
+            outputText("your orgasm quickly supersedes your control as she wrings you and rubs her nipples against your [chest].  " + SMultiCockDesc(game.player) + " begins to twitch as it unloads its first squirt of semen into her spasming pussy");
             if (player.cockTotal() > 1) outputText(" or onto her thighs and belly");
             outputText(".");
         }
@@ -2035,7 +2035,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.cumQ() > 500) outputText(", breasts, and face");
             outputText(".");
             // [(Huge skeet)
-            if (player.cumQ() >= 1500) outputText("  More and more globs of semen shoot from the end of " + game.player.sMultiCockDesc() + ", pasting Sheila to the dry grass as you paint her body white.");
+            if (player.cumQ() >= 1500) outputText("  More and more globs of semen shoot from the end of " + sMultiCockDesc(game.player) + ", pasting Sheila to the dry grass as you paint her body white.");
         }
         // (dog cock)
         else {
@@ -2123,7 +2123,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         else {
             outputText("\n\nYou lie in the sun for some time ");
             // [(norm skeet)
-            if (player.cumQ() < 500) outputText("as she strokes the " + player.skinFurScales() + " of your chest");
+            if (player.cumQ() < 500) outputText("as she strokes the " + skinFurScales(player) + " of your chest");
             else outputText("as she wipes off as much jizz as she can");
             outputText(", then get up and collect your gear.  \"<i>Um... see you later, ok?</i>\" she says.");
             doNext(camp.returnToCampUseOneHour);
@@ -2245,7 +2245,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // (nipcunts)
         else if (target == "nipplecunt") {
-            outputText("nipple constricts around your fingers in climax, oozing lubrication onto your partner.  As the drops from your " + game.player.breastDescript(0) + " hit her own, Sheila's back arches again and her own orgasm begins.");
+            outputText("nipple constricts around your fingers in climax, oozing lubrication onto your partner.  As the drops from your " + breastDescript(game.player, 0) + " hit her own, Sheila's back arches again and her own orgasm begins.");
         }
         // (jack shit)
         else outputText("fingers are pulled into her vagina by her muscles as her orgasm begins.");
@@ -2441,23 +2441,23 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         if (monster.HP < 1) outputText("sliding it between her labia and producing a damp spot, then ");
         outputText("dragging the wet fabric around her vulva.");
 
-        outputText("\n\nSatisfying yourself as to her readiness, you unfasten your [armor] to extract your [cockFit 48]; the " + player.cockHead(x) + " drips with pre-cum as you pull it loose, and you lay it on her crotch, letting the goo soak the white fabric until you can see her light-brown skin through it.  She squirms under it, bringing up another droplet with her motion, and you place the tip at the entrance to her pussy, pressing eagerly against the fabric.  \"<i>Please...</i>\" she whimpers, \"<i>I'm begging you; don't.</i>\"");
+        outputText("\n\nSatisfying yourself as to her readiness, you unfasten your [armor] to extract your [cockFit 48]; the " + cockHead(player, x) + " drips with pre-cum as you pull it loose, and you lay it on her crotch, letting the goo soak the white fabric until you can see her light-brown skin through it.  She squirms under it, bringing up another droplet with her motion, and you place the tip at the entrance to her pussy, pressing eagerly against the fabric.  \"<i>Please...</i>\" she whimpers, \"<i>I'm begging you; don't.</i>\"");
 
         // fuck-fork
         // [(corruption < 50)
         if (player.cor < 50) {
-            outputText("\n\nYou frown at the girl.  She still wants to escape, even though her body is eager for this?  You can feel her wet pussy twitching at your " + player.cockHead(x) + ".  Dragging the oozing tip along her soaked panties provokes a shiver and another bloom of fluid from the girl, but she bites her lip and refuses to meet your eye.");
+            outputText("\n\nYou frown at the girl.  She still wants to escape, even though her body is eager for this?  You can feel her wet pussy twitching at your " + cockHead(player, x) + ".  Dragging the oozing tip along her soaked panties provokes a shiver and another bloom of fluid from the girl, but she bites her lip and refuses to meet your eye.");
             outputText("\n\n\"<i>Are you serious?</i>\" you ask, thrusting gently to part her labia and push the sodden cloth into her.  You can already see every outline of her pussy though it.");
 
             outputText("\n\n\"<i>Y-yes...</i>\" she moans, \"<i>please don't touch my skin.  Through the fabric is fine, if you must, but please... don't put it inside!</i>\"  What a strange thing to ask... you narrow your eyes at her, but she actually meets your gaze now that you've heard her out.  Honest desperation is all over her flushed face; she's really serious about this!");
 
-            outputText("\n\nMan, whatever.  Experimentally, you push in again, testing how far her panties will let you go, and her labia accept you smoothly, rubbing the fabric against your " + player.cockHead(x) + ".  With lips spread open, even her small clitoris can be felt through the cloth, and you take the opportunity to rub at it");
+            outputText("\n\nMan, whatever.  Experimentally, you push in again, testing how far her panties will let you go, and her labia accept you smoothly, rubbing the fabric against your " + cockHead(player, x) + ".  With lips spread open, even her small clitoris can be felt through the cloth, and you take the opportunity to rub at it");
             if (player.isTaur()) outputText(" with your belly");
             outputText(", to be answered with a shy gasp from the girl and the soft, welcoming feeling of her vagina coating your tip with a new layer of moisture.  Covered in warm, slick fluids, the panties feel pretty good against your dick... you could actually get off like this.  \"<i>Move your hips,</i>\" you command hesitantly, \"<i>make this fun for me.</i>\"  Her uncertain eyes light up when she understands that you're accepting her conditions, and she parts her thighs wide to gyrate against you, using the end of your prick to caress her small genitalia through the nearly-transparent panties.");
 
             outputText("\n\n\"<i>Is this... okay?</i>\" Sheila asks, grinding the cloth-covered hole of her vagina against your slit and smearing the drop of pre-cum that issues from it.  You want to say no, to pretend like it's not enough, but the way her tight, clothed vulva is rubbing at the nerve-laden end of your prick is robbing you of your words.  Heat is transmitting to you through the soaked fabric as her body temperature rises; the lewd girl actually begins to grab at her tits and caress herself now that you've granted her a reprieve from whatever it is she was worried about.  Her skin reddens as her body heats up, and she begins to let out soft moans as she pushes harder against your shaft, nearly - but not completely - taking the head inside her pussy.  \"<i>Ah...!  N-no... gonna come!</i>\"  As her labia squeeze your cock hungrily, you feel the same way.");
 
-            outputText("\n\nHer knees clasp around you until she remembers her injunction against skin contact and forces them apart again; her hands, which she had reached out to you briefly, are pulled back as her arms fold tightly against her chest, pressing her breasts together.  \"<i>S-sorry!</i>\" she cries, and you feel her drooling through the panties as she spasms.  At your limit as well, you slide your " + player.cockHead(x) + " down to the entrance to her vagina and push it partway in, rubbing the tip against the fabric to work the nerves and cross the last step to your own orgasm.");
+            outputText("\n\nHer knees clasp around you until she remembers her injunction against skin contact and forces them apart again; her hands, which she had reached out to you briefly, are pulled back as her arms fold tightly against her chest, pressing her breasts together.  \"<i>S-sorry!</i>\" she cries, and you feel her drooling through the panties as she spasms.  At your limit as well, you slide your " + cockHead(player, x) + " down to the entrance to her vagina and push it partway in, rubbing the tip against the fabric to work the nerves and cross the last step to your own orgasm.");
 
             outputText("\n\n\"<i>Take it out!</i>\" the girl wails, still shaking with climax.  \"<i>D-don't come in me!</i>\"");
 
@@ -2598,7 +2598,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nStill smiling, you unfasten your [armor] and reveal your crotch.  ");
         // [(cock.length > 0)
-        if (dick) outputText(game.player.SMultiCockDesc() + " flops free, half-erect and swelling steadily with blood as you appraise the woman's body.");
+        if (dick) outputText(SMultiCockDesc(game.player) + " flops free, half-erect and swelling steadily with blood as you appraise the woman's body.");
         // (vag present)
         else outputText("Your [vagina] drools slightly, labia parting and [clit] poking up; you imagine what you want to do with it.");
         outputText("  Sheila watches your face as you slip into a fantasy, half-playing with her nipples - but just when you start to get into your daydream, she turns and tries to scramble to her feet!");
@@ -2783,7 +2783,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nYou lean forward until your face is level with her ear, and whisper, \"<i>From anal alone?  You really are a slut!</i>\"  Sheila doesn't even seem to care, pumped with goblin drugs; she raises one hand and places it alongside your face, leaning in to kiss your cheek as she sinks herself on the dildo one last time.");
 
-        outputText("\n\n\"<i>Nnnnn,</i>\" she moans, humming into your " + player.skinFurScales() + ".  ");
+        outputText("\n\n\"<i>Nnnnn,</i>\" she moans, humming into your " + skinFurScales(player) + ".  ");
         // [(PC corr >= 90 and sheila corr >= 90)
         if (player.cor >= 90 || player.cor > sheilaCorruption()) {
             outputText("Your face heats as she kisses you sloppily, and not all of the temperature is from her mouth.  It feels like she's pulling energy right out of you, and you can swear that her breasts are growing.");
@@ -2882,10 +2882,10 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nEager to see anything but your curious face, Sheila pushes your hands away from her breasts and turns to your crotch.  She ");
         if (player.isTaur()) outputText("pulls your legs apart");
         else outputText("unfastens and strips off your [armor]");
-        outputText(", revealing your " + game.player.multiCockDescriptLight() + "; ");
+        outputText(", revealing your " + multiCockDescriptLight(game.player) + "; ");
         // [(if no cock fit 32)
         if (player.cockThatFits(32) < 0) {
-            outputText("her eyes widen as " + game.player.sMultiCockDesc() + " bobs free, half-erect monster meat that fills her with frustration.");
+            outputText("her eyes widen as " + sMultiCockDesc(game.player) + " bobs free, half-erect monster meat that fills her with frustration.");
 
             outputText("\n\n\"<i>Dammit!</i>\" she cries, punching the dirt.  \"<i>Another wanker with more dick than brain... how do you expect to ever love a woman?</i>\"");
 
@@ -2927,7 +2927,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
             // [(sens >=50)
             if (player.sens >= 50) {
-                outputText("\n\nThe warm, smooth, wetness of her thighs is enough to bring out your own climax, and " + game.player.sMultiCockDesc() + " unburdens itself, forcing globs of semen into the air to rain down on your entwined bodies.  Sheila laughs as you coat her midriff with your mess, and playfully strokes your sensitized [cock] with one hand, sending shivers through you as she helps force your cum up your shaft.");
+                outputText("\n\nThe warm, smooth, wetness of her thighs is enough to bring out your own climax, and " + sMultiCockDesc(game.player) + " unburdens itself, forcing globs of semen into the air to rain down on your entwined bodies.  Sheila laughs as you coat her midriff with your mess, and playfully strokes your sensitized [cock] with one hand, sending shivers through you as she helps force your cum up your shaft.");
                 // [(mega skeet)
                 if (player.cumQ() >= 2000) outputText("  The giggles and the strokes stop long before your orgasm, though; eventually Sheila just lies there, dumbfounded, as you deposit layer after layer of white lattice on her skin.  \"<i>Bloody hell,</i>\" she mumbles vaguely, either stone-sober or drunk from the sight of it.");
                 outputText("  Once the rain of semen peters out, she pulls apart from you, slimy and dripping.");
@@ -3211,7 +3211,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("\n\nYou slide a finger into her belt and ask if that was an invitation.");
 
-            outputText("\n\n\"<i>Randy " + player.mf("bloke", "sheila") + ",</i>\" she answers, \"<i>as much fun as that would be, I'm feeling clucky and I need to go check on your baby.  I don't want to be one of those mums that leave their nippers with the help and never see them.</i>\"  She kisses you, and then stands up to walk away - though when she glances over her shoulder at you, it's obvious by the fond look in her eyes she's eager for the next meeting.");
+            outputText("\n\n\"<i>Randy " + mf(player, "bloke", "sheila") + ",</i>\" she answers, \"<i>as much fun as that would be, I'm feeling clucky and I need to go check on your baby.  I don't want to be one of those mums that leave their nippers with the help and never see them.</i>\"  She kisses you, and then stands up to walk away - though when she glances over her shoulder at you, it's obvious by the fond look in her eyes she's eager for the next meeting.");
         }
         if (flags[kFLAGS.SHEILA_XP] < 4) flags[kFLAGS.SHEILA_XP] = 4;
         flags[kFLAGS.SHEILA_JOEYS]++;
@@ -3782,7 +3782,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
     // [ Demon Sheila - Talk - Her Colony]
     private askDemonSheilaAboutHerColony(): void {
         clearOutput();
-        outputText("\"<i>That place?  Do you wanna go there?</i>\"  Sheila smiles duplicitously, then lifts your chin and steals a kiss before you can pull away.  \"<i>Got no qualms about showing you the way to that nest of prudes, but...</i>\"  Her eyes darken.  \"<i>There's nothing left now.  A shame you didn't insist earlier, they could have stood to learn what a ripper " + player.mf("man", "woman") + " is.</i>\"");
+        outputText("\"<i>That place?  Do you wanna go there?</i>\"  Sheila smiles duplicitously, then lifts your chin and steals a kiss before you can pull away.  \"<i>Got no qualms about showing you the way to that nest of prudes, but...</i>\"  Her eyes darken.  \"<i>There's nothing left now.  A shame you didn't insist earlier, they could have stood to learn what a ripper " + mf(player, "man", "woman") + " is.</i>\"");
 
         outputText("\n\nShe giggles.  \"<i>The first thing I did when I got my new gift was to go home and share it with my loved ones, of course.  It felt incredible, [name]!  When we climaxed and they drank of me, it pulled away all my lust and longing and left me full of happiness and complete oneness.  And every time one drained me dry, I would fill back up again, to pour myself into another.  Thanks to you opening the door, I was able to express my feelings for them like I never could.</i>\"  The girl leans her head against you and closes her eyes.  \"<i>Especially to the captain.</i>\"");
 
@@ -3829,12 +3829,12 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         // (lib>=30)
         if (player.lib >= 30) outputText("\n\nYour eyebrows rise.  \"<i>Got your attention, did I?  But,</i>\"");
         else outputText("\n\nYour mouth hardens.  \"<i>You're right,</i>\"");
-        outputText(" Sheila says, \"<i>I'm going to save that one for our honeymoon, instead.</i>\"  Her eyes twinkle with infatuation.  \"<i>I could even pull the taint of this land out of your body and use it to make mine more lewd for you, my " + player.mf("knight-champion", "great lady") + "...</i>\"");
+        outputText(" Sheila says, \"<i>I'm going to save that one for our honeymoon, instead.</i>\"  Her eyes twinkle with infatuation.  \"<i>I could even pull the taint of this land out of your body and use it to make mine more lewd for you, my " + mf(player, "knight-champion", "great lady") + "...</i>\"");
 
         outputText("\n\nShe raises her hand and takes your chin, bringing your gaze over to meet hers.  As the seconds stretch into minutes, it's unclear whether she's trying to be romantic or if she's taking your measure somehow.  Finally, she speaks.  ");
         // (corr<50)
         if (player.cor < 50) {
-            outputText("\"<i>I don't think I will, though, my sooky mate... I'd rather stain you in my colors, even if it costs my body to do it.  Or, would you like me more if my proportions were modest?  You, my confident, courtly " + player.mf("lord", "dame") + ", and I, your worshipful, tomboyish " + player.mf("squire", "lady-in-waiting") + ", secretly in love with you and game to follow you anywhere and do anything for you to make you acknowledge me and accept ");
+            outputText("\"<i>I don't think I will, though, my sooky mate... I'd rather stain you in my colors, even if it costs my body to do it.  Or, would you like me more if my proportions were modest?  You, my confident, courtly " + mf(player, "lord", "dame") + ", and I, your worshipful, tomboyish " + mf(player, "squire", "lady-in-waiting") + ", secretly in love with you and game to follow you anywhere and do anything for you to make you acknowledge me and accept ");
             if (player.hasCock()) outputText("my pussy");
             else outputText("the dick I grow for you");
             outputText("?  </i>Anything?<i>");
@@ -3920,7 +3920,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\n\"<i>Guess what?  I had your baby!  He was the most darling little thing.</i>\"");
 
-        outputText("\n\nShe takes your look of surprise as permission to elaborate.  \"<i>Mmm, why the wide eyes, mate?  Our people always pushed them out fast.  Except instead of tucking him into a snuggly against my tits, I tucked him into somewhere a bit... lower.</i>\"  She hugs your arm closer, fairly rubbing her pussy on the back of your hand and leaving a trail of her lube as she slides her own fingers into your [armor].  \"<i>He has his " + player.mf("daddy", "other mommy") + "'s cock.");
+        outputText("\n\nShe takes your look of surprise as permission to elaborate.  \"<i>Mmm, why the wide eyes, mate?  Our people always pushed them out fast.  Except instead of tucking him into a snuggly against my tits, I tucked him into somewhere a bit... lower.</i>\"  She hugs your arm closer, fairly rubbing her pussy on the back of your hand and leaving a trail of her lube as she slides her own fingers into your [armor].  \"<i>He has his " + mf(player, "daddy", "other mommy") + "'s cock.");
         // (if no cock)
         if (!player.hasCock()) outputText("  Or, had...</i>\" she finishes with a frown as she reaches your bare groin.  \"<i>Where'd you leave that magnificent old fella?  I was lookin' forward to another go.</i>\"  She pulls her hand out, then leans toward you with a pout.  \"<i>I'm so horny, too...</i>\"");
         // (if cock)
@@ -4037,7 +4037,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nThe woman nerves herself and her expression hardens as she re-rails her train of thought.  \"<i>No; nevermind that.  If you're going to get into blues all the time, I won't wait for you to ask for my help.  I'll take you with me whether you want it or not.  You're mine, and I can't bear the thought of you trying to tussle with some standover goon and carking it.  Get up.</i>\"");
 
-        outputText("\n\nStill shaken, you stand and let Sheila do the same.  She narrows her eyes at you before speaking again.  \"<i>Be more careful, mate.  The idea of my " + player.mf("boy", "girl") + " being fucked by trash makes me ill.</i>\"  Saying nothing more, the woman turns and leaves you to walk back to your camp.");
+        outputText("\n\nStill shaken, you stand and let Sheila do the same.  She narrows her eyes at you before speaking again.  \"<i>Be more careful, mate.  The idea of my " + mf(player, "boy", "girl") + " being fucked by trash makes me ill.</i>\"  Saying nothing more, the woman turns and leaves you to walk back to your camp.");
         // suppress the "you'll probably come to in eight hours blah blah" message, subtract gems and add 8 hours, go to camp
         player.orgasm();
         player.HP = player.maxHP();
@@ -4052,7 +4052,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("Sheila pushes you onto the ground");
         if (player.isTaur()) outputText(" and you're forced to put your forelegs down for support as you come to rest on your haunches");
         else outputText(", spreading your legs.  The demon unfastens your [armor] and strips it from your bottoms easily");
-        outputText(", exposing your " + game.player.multiCockDescriptLight() + ".");
+        outputText(", exposing your " + multiCockDescriptLight(game.player) + ".");
 
         outputText("\n\n");
         // [(multi)
@@ -4064,12 +4064,12 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         outputText(" presses her " + sheilaCup() + " breasts");
         if (sheilaCorruption() < 100) outputText(" against you, dragging her nipples against yours.  ");
         else outputText(" against you so forcefully that they part around your chest.  ");
-        outputText("\"<i>Such a " + player.mf("handsome bloke", "pretty sheila") + ", with such a nice dong,</i>\" she whispers, \"<i>I'm going to have to take you for a ride.  Try not to come as soon as you get in!</i>\"");
+        outputText("\"<i>Such a " + mf(player, "handsome bloke", "pretty sheila") + ", with such a nice dong,</i>\" she whispers, \"<i>I'm going to have to take you for a ride.  Try not to come as soon as you get in!</i>\"");
 
         outputText("\n\nSheila grins viciously and sinks down on your [cockFit 56], sliding it into her pussy at a painstaking pace");
         // [(multi)
         if (player.hasCock()) outputText(" and slipping the unused remainder of your manhood between her thighs");
-        outputText("; you can feel every new inch of heat as she lowers her body.  The woman moans, gyrating her hips, and " + game.player.sMultiCockDesc() + " twitches in painful erectness.");
+        outputText("; you can feel every new inch of heat as she lowers her body.  The woman moans, gyrating her hips, and " + sMultiCockDesc(game.player) + " twitches in painful erectness.");
 
         // balls fork
         if (player.balls > 0) {
@@ -4134,7 +4134,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             // corr fork
             // [(corr < 70)]
             if (player.cor < 70) {
-                outputText("\n\nYou stiffen in embarrassment.  Sheila smiles and plants a kiss on your " + player.skinFurScales() + ", then looks at you innocently.  \"<i>Don't be mad, mate.  I just wanted our time together to last.</i>\"");
+                outputText("\n\nYou stiffen in embarrassment.  Sheila smiles and plants a kiss on your " + skinFurScales(player) + ", then looks at you innocently.  \"<i>Don't be mad, mate.  I just wanted our time together to last.</i>\"");
                 outputText("\n\n\"<i>Is that so?</i>\" you reply, beginning to fuck the demon harder to make up the arousal she frittered away.  Sheila moans as you work your [cockFit 56] into her hole vigorously, dragging it against the entrance and smearing your intermingled fluids on her groin.");
 
                 outputText("\n\n\"<i>Yesss...</i>\" she hisses, passing air through her teeth as you hit a sweet spot.  \"<i>You're my one and only.</i>\"");
@@ -4443,7 +4443,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         if (sheilaCorruption() >= 40) outputText("and her soft breasts jiggle ");
         outputText("as a twinge of sensation from your thrust provokes a gasp and forces her to reposition herself, to better find it again.  \"<i>That's the spot!  Your dick is the <b>best!</b>  Pound me, you fucking cum-hose!</i>\"");
 
-        outputText("\n\nRestraint evaporates as she reaches up and kisses your chest, dancing her lips across your " + player.skinFurScales() + " and leaving a trail of tingling nerves behind.  Your ");
+        outputText("\n\nRestraint evaporates as she reaches up and kisses your chest, dancing her lips across your " + skinFurScales(player) + " and leaving a trail of tingling nerves behind.  Your ");
         if (!player.isTaur()) outputText("arms");
         else outputText("forelegs");
         outputText(" wobble and it takes all your focus not to collapse onto the woman and melt into a boneless puddle; there's little left to prevent your twitching hips from granting her request, and you slam your pelvis into hers repeatedly, provoking delighted cries from your shameless partner.  \"<i>Ohh, yes!  Fill me with your baby batter, asshole!</i>\"  Sheila wraps her arms and legs around your back");
@@ -4483,7 +4483,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nDid this bitch just...  Sheila breaks into a wide grin as your eyes pop out.  \"<i>Kidding, mate!  Stay cool!  ");
         // [(RNG decides if scene ends here, bias toward short scene)
         if (rand(10) <= 6) {
-            outputText("I used a bit of power to help you finish.  Don't hate me for it; your orgasm face is just so cute when you're giving up your seed to me.</i>\"  The woman places her hand on her stomach, below her navel.  \"<i>Thank you for this.  I hope it takes, so I can raise a big strong imp to be just as " + player.mf("productive as his father", "sexy as his mother") + ".</i>\"  She kisses you softly again, and you roll off with a groan.  \"<i>Your sperm are the best,</i>\" Sheila whispers, \"<i>so come see me again soon.  I'll be wantin' more.</i>\"  Your demon stands up and winks at you, then walks off, tails swishing happily as a trickle of white runs down the brown skin of her naked thigh.");
+            outputText("I used a bit of power to help you finish.  Don't hate me for it; your orgasm face is just so cute when you're giving up your seed to me.</i>\"  The woman places her hand on her stomach, below her navel.  \"<i>Thank you for this.  I hope it takes, so I can raise a big strong imp to be just as " + mf(player, "productive as his father", "sexy as his mother") + ".</i>\"  She kisses you softly again, and you roll off with a groan.  \"<i>Your sperm are the best,</i>\" Sheila whispers, \"<i>so come see me again soon.  I'll be wantin' more.</i>\"  Your demon stands up and winks at you, then walks off, tails swishing happily as a trickle of white runs down the brown skin of her naked thigh.");
             // (end scene)
             player.orgasm();
             dynStats("lib", -1);
@@ -4504,7 +4504,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             else outputText("Flushing hotly");
             outputText(", you look away and break the connection, but Sheila's smile only widens.");
 
-            outputText("\n\n\"<i>Did you see it?  Our future together?</i>\"  The demon reaches up and plays with your hair.  \"<i>Our wonderful family... our children... so full of seed to give, just like their " + player.mf("father", "mother") + ".  I can feel you getting hard again inside me - am I exciting you?</i>\"  Her hand drifts down to your mouth, and she brushes your lips gently with her thumb.  \"<i>Why don't you go ahead and do me again?  Show me how you feel, mate; I won't do anything except touch you, so you can take your time.  I'm your obedient, loving wife, here to make you happy.</i>\"  She caresses your cheek one last time and lowers her hand to your chest, tracing a meaningless pattern as she turns expectant eyes on you.");
+            outputText("\n\n\"<i>Did you see it?  Our future together?</i>\"  The demon reaches up and plays with your hair.  \"<i>Our wonderful family... our children... so full of seed to give, just like their " + mf(player, "father", "mother") + ".  I can feel you getting hard again inside me - am I exciting you?</i>\"  Her hand drifts down to your mouth, and she brushes your lips gently with her thumb.  \"<i>Why don't you go ahead and do me again?  Show me how you feel, mate; I won't do anything except touch you, so you can take your time.  I'm your obedient, loving wife, here to make you happy.</i>\"  She caresses your cheek one last time and lowers her hand to your chest, tracing a meaningless pattern as she turns expectant eyes on you.");
 
             outputText("\n\nIt's too much.  ");
             if (!player.isTaur()) outputText("You kiss Sheila on the lips, pushing your tongue through to play with hers, as your arms push your spent body into position to thrust again.");
@@ -4570,7 +4570,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         clearOutput();
         outputText("Your [cockFit 56] gets hard in your [armor] as you watch her diddle her pussy, but you set your jaw to resist giving her what she wants - a better idea is taking shape in your head.  \"<i>Turn around,</i>\" you demand.");
 
-        outputText("\n\nSheila bites her lip and blushes, then turns her back to you, pressing her chest into the ground and waving her ass in the air, twin tails bobbing over her round cheeks and drooling, eager cunt.  \"<i>Heehee, I'm ready for you, mate... look how wet I am!</i>\"  You strip, releasing your " + game.player.multiCockDescriptLight() + ", and approach.  She hums in anticipation as you rub against her smooth labia, smearing her moisture onto your [cockHeadFit 56].  \"<i>Come on; time to put it in already!  Don't tease me!</i>\"");
+        outputText("\n\nSheila bites her lip and blushes, then turns her back to you, pressing her chest into the ground and waving her ass in the air, twin tails bobbing over her round cheeks and drooling, eager cunt.  \"<i>Heehee, I'm ready for you, mate... look how wet I am!</i>\"  You strip, releasing your " + multiCockDescriptLight(game.player) + ", and approach.  She hums in anticipation as you rub against her smooth labia, smearing her moisture onto your [cockHeadFit 56].  \"<i>Come on; time to put it in already!  Don't tease me!</i>\"");
 
         outputText("\n\nYour smile widens, unseen, as you silently agree.  ");
         if (!player.isTaur()) outputText("Slipping one hand around your [cockFit 32]");
@@ -4662,7 +4662,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nThe demon rolls over slowly and sits up, then looks up at you, head cocked slightly to the side and mouth trying to shape words.  \"<i>W-wuuu...</i>\"  She reaches down and picks up a handful of the wriggling, jizz-soaked worms oozing from her pussy, examines them, and then holds them out to you as an offering.  You shake your head and she drops them negligently, then zeroes in on your drooling, stretched dickhole.  Sheila leans in so close that she's staring into it, then begins to slip a finger down your urethra.  You flinch at the sensation and pull away, and she pouts and reaches for it again.  The proffered worms, meanwhile, actually slither back toward her, smearing jizz and slime on her thighs, migrating to her crotch and then wandering around aimlessly on the bare skin, as if confused by her lack of a penis.  Her leaking spade stretches out to them absently, and some of the wandering worms curiously slip inside, producing another shiver.");
 
-        outputText("\n\n\"<i>Mmm...</i>\" she hums, reaching eagerly for your [cockHeadFit 56] with her finger as if getting it inside were the only thing that mattered.  You back up again, and she crawls over and onto you, rubbing her slimy cunt against your [legs].  Her strokes trigger a small orgasm in her, and as her pussy sprays a load of worms onto your " + player.skinFurScales() + " she kisses you affectionately, looking right into your eyes; you're flooded with nebulous mental images of fucking a slender, sickly pale Sheila as both of you are covered and hidden from the sunlight by a massive colony, of her riding you with her slithering, wormy pussy until the semen spitting from your [cockFit 56] leads the parasites within right to your slit, and, most disturbingly, of Sheila stretching your slick urethra wide open and climbing into your penis herself!  Shaking it off, you quickly break contact, pick up your stuff, and depart, leaving the infested woman behind... but the visions don't go away.");
+        outputText("\n\n\"<i>Mmm...</i>\" she hums, reaching eagerly for your [cockHeadFit 56] with her finger as if getting it inside were the only thing that mattered.  You back up again, and she crawls over and onto you, rubbing her slimy cunt against your [legs].  Her strokes trigger a small orgasm in her, and as her pussy sprays a load of worms onto your " + skinFurScales(player) + " she kisses you affectionately, looking right into your eyes; you're flooded with nebulous mental images of fucking a slender, sickly pale Sheila as both of you are covered and hidden from the sunlight by a massive colony, of her riding you with her slithering, wormy pussy until the semen spitting from your [cockFit 56] leads the parasites within right to your slit, and, most disturbingly, of Sheila stretching your slick urethra wide open and climbing into your penis herself!  Shaking it off, you quickly break contact, pick up your stuff, and depart, leaving the infested woman behind... but the visions don't go away.");
 
         // reduce lust to min and then take 20 libido-based lust damage, lower PC corruption by 10, remove dickworm infestation, set sheilapreg = -2 (yes, -2; in case I want to use Worm Sheila later)
         player.removeStatusAffect(StatusAffects.Infested);
@@ -4794,13 +4794,13 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("As Sheila diddles herself, you ");
         // [(not horse)
         if (!player.isTaur()) {
-            outputText("doff your [armor]; the demon's eyebrows climb as you haul out " + game.player.sMultiCockDesc());
+            outputText("doff your [armor]; the demon's eyebrows climb as you haul out " + sMultiCockDesc(game.player));
             if (player.cockTotal() > 2) outputText(" one at a time, practically stacking them atop each other");
             outputText(".");
         }
         // (horse)
         else {
-            outputText("slowly draw nearer to her, your " + game.player.multiCockDescriptLight() + " bobbing with each step.");
+            outputText("slowly draw nearer to her, your " + multiCockDescriptLight(game.player) + " bobbing with each step.");
         }
         outputText("\n\n\"<i>Oh no...</i>\" she says, blushing.  \"<i>[name], you're massive... are you really going to try to put something like that in my poor little pussy?</i>\"");
 
@@ -4820,7 +4820,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
                 else outputText("  All");
                 outputText(" of them... slide them here, love,</i>\" the demon insists.  You line the remainder of your manhood up and force it between her thighs as well.");
             }
-            outputText("  She takes the tip of your [cock biggest] in her hand and pulls gently, coaxing your forward; you close the distance until " + game.player.sMultiCockDesc() + " is peeking through her legs and your crotch is pressed against hers.");
+            outputText("  She takes the tip of your [cock biggest] in her hand and pulls gently, coaxing your forward; you close the distance until " + sMultiCockDesc(game.player) + " is peeking through her legs and your crotch is pressed against hers.");
 
             outputText("\n\n\"<i>I'm going to borrow a bit of your sensation...</i>\" Sheila announces quietly.  ");
             // [(not horse and not < 5"0)
@@ -4832,7 +4832,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.isTaur()) outputText(", unseen");
             outputText(".");
 
-            outputText("\n\n\"<i>We'll see who finishes first.</i>\"  Resting herself against your " + game.player.multiCockDescriptLight() + " for support, she brings her other hand up and touches you; almost the full sensation is there this time, and you sign in happiness.  Sheila begins stroking with the new hand as well as the old, grabbing ");
+            outputText("\n\n\"<i>We'll see who finishes first.</i>\"  Resting herself against your " + multiCockDescriptLight(game.player) + " for support, she brings her other hand up and touches you; almost the full sensation is there this time, and you sign in happiness.  Sheila begins stroking with the new hand as well as the old, grabbing ");
             if (player.cockTotal() == 1) outputText("your dick with both");
             else outputText("a prick in each");
             outputText(" and angling upward so the precum drools downward and lubes her fingers.");
@@ -4858,7 +4858,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             else outputText("\n\n");
             outputText("Sheila scoots backward, choking up on monster cock until her ass is pressed against your crotch, and then wraps her hands around and begins to masturbate you, using your drooling fluid and her own wetness for lubrication.");
 
-            outputText("\n\nShe seems to get off on it as much as you do; as she strokes, her tongue hangs out slightly and she begins rubbing your " + game.player.multiCockDescriptLight() + " between her " + sheilaCup() + " breasts, smearing your secretions down her entire torso.  Her skin is hot and feels good, but not as vivid as you'd expect.  The demon's pussy contracts wildly again, despite being at rest against your shaft, and you come to a realization: she's actually siphoning the pleasure from you!");
+            outputText("\n\nShe seems to get off on it as much as you do; as she strokes, her tongue hangs out slightly and she begins rubbing your " + multiCockDescriptLight(game.player) + " between her " + sheilaCup() + " breasts, smearing your secretions down her entire torso.  Her skin is hot and feels good, but not as vivid as you'd expect.  The demon's pussy contracts wildly again, despite being at rest against your shaft, and you come to a realization: she's actually siphoning the pleasure from you!");
         }
         // end corr split
         outputText("\n\nThe woman quickly becomes lost in her own little world, searching out the nerves on your prick");
@@ -4868,7 +4868,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.cockTotal() == 2) outputText("relinquish your other prick and ");
         outputText("focus on squeezing more drops out of you.  She fairly coats her lips with it, rubbing your hole against them before popping the whole [cockHead biggest] back into her mouth.  A moan escapes you just as another one returns from Sheila's throat, transmitted through your [cock biggest].");
 
-        outputText("\n\nAs her attentions refocus on your [cockHead biggest], a pang of loss arises from the middle of your " + game.player.multiCockDescriptLight() + " - and is quickly smothered with her chest.");
+        outputText("\n\nAs her attentions refocus on your [cockHead biggest], a pang of loss arises from the middle of your " + multiCockDescriptLight(game.player) + " - and is quickly smothered with her chest.");
         // [(sheila corruption < 50)
         if (sheilaCorruption() < 50) outputText("  Though her modest breasts can't even begin to encompass your girth, Sheila rubs her cleavage along your skin with gusto while she works your tip with her tongue.");
         else if (sheilaCorruption() < 150) outputText("  Her large " + sheilaCup() + " breasts encompass your girth easily, and she pushes the soft, flushed skin together as she slides it up and down your cock.");
@@ -4895,7 +4895,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.cockTotal() > 1) outputText("topmost ");
         outputText("dick.  With an enormous, final thrust, you mash your crotch up against hers and begin to ejaculate.  ");
         if (player.cor < 50) outputText("The sensation seems to reawaken Sheila; she angles her body up to press her pussy close and your embezzled sensation floods back into you - along with an unexpected gift.  You can feel your... no, <i>her</i> demonic pussy convulsing repeatedly, trying to suck up sperm in vain as her own orgasm comes off, and she looks at you with sly eyes.  \"<i>A little reciprocity for my love,</i>\" the woman coos, \"<i>to show you how much I care.</i>\"");
-        else outputText("\"<i>Oh god!</i>\" Sheila shrieks.  \"<i>I'm coming!  Jizz is going everywhere!</i>\"  Indeed, as your body releases streams of cum, Sheila directs them by aiming " + game.player.sMultiCockDesc() + ", covering herself and moaning as her hands press out as much as possible.");
+        else outputText("\"<i>Oh god!</i>\" Sheila shrieks.  \"<i>I'm coming!  Jizz is going everywhere!</i>\"  Indeed, as your body releases streams of cum, Sheila directs them by aiming " + sMultiCockDesc(game.player) + ", covering herself and moaning as her hands press out as much as possible.");
 
         outputText("\n\nFinished, you pull your sensitive, soaked shaft");
         if (player.cockTotal() > 1) outputText("s");

@@ -125,7 +125,7 @@ export class Mountain {
                     return;
                 }
                 if (player.gender > 0) {
-                    outputText("A goblin saunters out of the bushes with a dangerous glint in her eyes.\n\nShe says, \"<i>Time to get fucked, " + player.mf("stud", "slut"), true);
+                    outputText("A goblin saunters out of the bushes with a dangerous glint in her eyes.\n\nShe says, \"<i>Time to get fucked, " + mf(player, "stud", "slut"), true);
                     outputText(".</i>\"", false);
                     startCombat(new Goblin());
                     spriteSelect(24);

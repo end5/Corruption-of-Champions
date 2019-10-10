@@ -76,12 +76,12 @@ export class AbstractSpiderMorph extends Monster {
         if (player.spe < 2 && player.findStatusAffect(StatusAffects.Web) >= 0) {
             outputText("The arachnid aggressor slowly saunters forward while you struggle under the heaps of webbing, gently placing " + mf("his", "her") + " arms around your back in a tender hug.  " + mf("His", "Her") + " fangs slide into your neck with agonizing slowness, immediately setting off a burning heat inside you that makes you dizzy and weak.  ", false);
             if (player.hasCock()) {
-                outputText(player.SMultiCockDesc() + " turns rock hard and squirts weakly, suddenly so aroused that it starts soaking your " + player.armorName, false);
-                if (player.hasVagina()) outputText(" along with your " + player.vaginaDescript(), false);
+                outputText(SMultiCockDesc(player) + " turns rock hard and squirts weakly, suddenly so aroused that it starts soaking your " + player.armorName, false);
+                if (player.hasVagina()) outputText(" along with your " + vaginaDescript(player), false);
                 outputText(".  ", false);
             }
-            else if (player.hasVagina()) outputText("Your " + player.vaginaDescript() + " grows wet as hell and so sensitive that every step and movement reminds you of the powerful need for something between your sopping nether-lips.  ", false);
-            outputText("While " + mf("his", "her") + " venom pours into you, the spider-" + mf("boy", "girl") + " reaches into your gear to play with your " + player.nippleDescript(0) + ", and you moan like a whore from the dual stimulation of " + mf("his", "her") + " venom and nipple-play.\n\n", false);
+            else if (player.hasVagina()) outputText("Your " + vaginaDescript(player) + " grows wet as hell and so sensitive that every step and movement reminds you of the powerful need for something between your sopping nether-lips.  ", false);
+            outputText("While " + mf("his", "her") + " venom pours into you, the spider-" + mf("boy", "girl") + " reaches into your gear to play with your " + nippleDescription(player, 0) + ", and you moan like a whore from the dual stimulation of " + mf("his", "her") + " venom and nipple-play.\n\n", false);
             if (hasVagina()) outputText("The saucy dominatrix exhausts her supply of aphrodisiac toxin for the moment and finally steps back, admiring her work and giving you a lewd wink.  You ", false);
             else outputText("The confident male exhausts his supply of aphrodisiac toxin for the moment and finally steps back, admiring his work and giving you a lewd wink.  You ", false);
             dynStats("lus", 60);

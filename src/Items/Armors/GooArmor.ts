@@ -14,7 +14,7 @@ export class GooArmor extends Armor {
         outputText("\n\nEventually, the two of you get situated. The goo-girl slips around your body inside the heavy armor, maneuvering so that your face is unobstructed and your joints, not protected by the armor, are soundly clad in squishy goo.  She even forms a gooey beaver on your new helm, allowing you to open and close her like a visor in battle.  Eventually, her goo settles around your ");
         if (game.player.hasVagina()) outputText("[vagina]");
         if (game.player.hasVagina() && game.player.hasCock()) outputText(" and ");
-        if (game.player.hasCock()) outputText(game.player.multiCockDescriptLight());
+        if (game.player.hasCock()) outputText(multiCockDescriptLight(game.player));
         if (game.player.gender == 0) outputText("groin");
         outputText(", encasing your loins in case you need a little mid-battle release, she says.");
         outputText("\n\nAfter a few minutes, you and your armor-friend are settled and ready to go.");
@@ -49,7 +49,7 @@ export class GooArmor extends Armor {
                     outputText("\n\nEventually, the two of you get situated. The goo-girl slips around your body inside the heavy armor, maneuvering so that your face is unobstructed and your joints, not protected by the armor, are soundly clad in squishy goo.  She even forms a gooey beaver on your new helm, allowing you to open and close her like a visor in battle.  Eventually, her goo settles around your ");
                     if(player.hasVagina()) outputText("[vagina]");
                     if(player.hasVagina() && player.hasCock()) outputText(" and ");
-                    if(player.hasCock()) outputText(player.multiCockDescriptLight());
+                    if(player.hasCock()) outputText(multiCockDescriptLight(player));
                     if(player.gender == 0) outputText("groin");
                     outputText(", encasing your loins in case you need a little mid-battle release, she says.");
                     outputText("\n\nAfter a few minutes, you and your armor-friend are settled and ready to go.");

@@ -162,12 +162,12 @@ export class JeanClaudeScenes {
         }
 
         outputText("\n\nThere’s an echoing silence as the ranks of basilisks stare at their dead king. Then, with a shifting sound that spreads out like a tidal wave through the huge room, they drop one by one to a knee, their eyes closed and spiked heads pointed towards you. Elation inflates in your breast and fills out to the very tips of your digits as you take in the reptile horde bowing before you, the significance of it dawning brilliantly.");
-        if (player.mf("m", "f") == "f" && silly()) outputText("  You raise your fists in glee and crow “<i>I AM THE LIZARD QUEEN!</i>” at the ceiling.");
+        if (mf(player, "m", "f") == "f" && silly()) outputText("  You raise your fists in glee and crow “<i>I AM THE LIZARD QUEEN!</i>” at the ceiling.");
 
         outputText("\n\nThere’s a bit of scuffling and shoving at the front, and finally a smaller-than-average basilisk is pushed out towards you. He almost trips over the flagstones in his attempts to keep his eyes squeezed shut and head bowed in deference to you.");
 
         // What are your orders, my king/my queen (assuming bost basilisks don't speak english)
-        outputText("\n\n“<i>Que- quels sont vos ordres, " + player.mf("mon roi", "ma reine") + "?</i>” he whispers.");
+        outputText("\n\n“<i>Que- quels sont vos ordres, " + mf(player, "mon roi", "ma reine") + "?</i>” he whispers.");
 
         // Fight for me!/Go away
         menu();

@@ -82,7 +82,7 @@ export class AuntNancy extends TelAdreAbstractContent {
 
         // [(If Toughness is >= 30)]
         if (player.tou >= 30) {
-            outputText("It was good, but it seems to have gone straight to your head with surprising speed, giving you a pleasant buzz after only one glass. It might be a prudent idea to walk it off before you get another.  You thank Aunt Nancy for the drink, before climbing to your " + player.feet() + " and leaving.  She eyes you respectfully as you go.", false);
+            outputText("It was good, but it seems to have gone straight to your head with surprising speed, giving you a pleasant buzz after only one glass. It might be a prudent idea to walk it off before you get another.  You thank Aunt Nancy for the drink, before climbing to your " + feet(player) + " and leaving.  She eyes you respectfully as you go.", false);
             // [+10 Relationship with Aunt Nancy]
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00264] += 10;
         }
@@ -179,7 +179,7 @@ export class AuntNancy extends TelAdreAbstractContent {
         outputText("You look the still-beautiful spider-lady in the eye, and, half-mesmerized, nod in agreement.  She smiles broadly (and, you can't help but notice, quite lewdly) and puts one of her lower arms through one of yours, while putting the upper one on your shoulder.  \"<i>Well then,</i>\" Aunt Nancy says, \"<i>I suppose we should be off.</i>\"\n\n", false);
 
         outputText("She leads you through the streets of Tel'Adre, weaving through crowds and back alleys, before you finally end up just outside a modest little adobe building tucked away in a side street.  Slowly, she wraps all four of her arms around you, giving you a gentle hug", false);
-        if (player.biggestTitSize() >= 1) outputText(" and taking the opportunity to grope your " + player.allBreastsDescript() + " right through your " + player.armorName, false);
+        if (player.biggestTitSize() >= 1) outputText(" and taking the opportunity to grope your " + allBreastsDescript(player) + " right through your " + player.armorName, false);
         outputText(".\n\n", false);
 
         outputText("\"<i>Come into my parlor,</i>\" she whispers into your ear, licking it gently before sticking the tip of her long tongue into the hole before pressing her soft lips against the lobe of it.\n\n", false);
@@ -199,8 +199,8 @@ export class AuntNancy extends TelAdreAbstractContent {
         outputText("With her other three hands, the spider-lady lights a match and ignites a little lantern, which she raises to hang from the wall.  In the little area it illuminates, you can see that Aunt Nancy has removed her neck-less black dress, letting her impressive bosom bounce modestly as she works, and catch a glimpse of her unusual genitals before she turns to face you again.\n\n", false);
 
         // [If PillowTalk = 0]
-        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00266] == 0) outputText("\"<i>It's... been a long, long time,</i>\" murmurs Aunt Nancy, her throaty voice washing over you, as two of her hands rest on your " + game.player.chestDesc() + " and the other two wrap carefully around your shoulders and neck, gently rubbing you in the promised massage.  She's crawling along the web, her many feet easily avoiding the sticky parts, and her face is mere inches from yours.  You can smell her sweet, slightly alcohol-scented breath as her many eyes look down at you.  \"<i>I haven't... been with anyone since I lost my husband, and... well... I... I need this.  Will you please be with me, if only for a little while?</i>\"\n\n", false);
-        else outputText("\"<i>Are you ready for me, friend?</i>\" murmurs Aunt Nancy, her throaty voice washing over you, as two of her hands rest on your " + game.player.chestDesc() + " and the other two wrap carefully around your neck and shoulders, gently rubbing you in the promised massage. She's crawling along the web, her many feet easily avoiding the sticky parts, and her face is mere inches from yours. You can smell her sweet, slightly alcohol-scented breath as her many eyes look down at you.  \"<i>I certainly am, little fly.</i>\"\n\n", false);
+        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00266] == 0) outputText("\"<i>It's... been a long, long time,</i>\" murmurs Aunt Nancy, her throaty voice washing over you, as two of her hands rest on your " + chestDesc(game.player) + " and the other two wrap carefully around your shoulders and neck, gently rubbing you in the promised massage.  She's crawling along the web, her many feet easily avoiding the sticky parts, and her face is mere inches from yours.  You can smell her sweet, slightly alcohol-scented breath as her many eyes look down at you.  \"<i>I haven't... been with anyone since I lost my husband, and... well... I... I need this.  Will you please be with me, if only for a little while?</i>\"\n\n", false);
+        else outputText("\"<i>Are you ready for me, friend?</i>\" murmurs Aunt Nancy, her throaty voice washing over you, as two of her hands rest on your " + chestDesc(game.player) + " and the other two wrap carefully around your neck and shoulders, gently rubbing you in the promised massage. She's crawling along the web, her many feet easily avoiding the sticky parts, and her face is mere inches from yours. You can smell her sweet, slightly alcohol-scented breath as her many eyes look down at you.  \"<i>I certainly am, little fly.</i>\"\n\n", false);
 
         outputText("Quietly, mesmerized by her needy red eyes, you nod.  Aunt Nancy smiles demurely.  \"<i>Good,</i>\" she purrs, and lowers her lips to yours.  You weren't quite sure what to expect, but her lips are soft and gentle as she presses them on you.  Her tongue gently snakes into your mouth, wrapping around yours with ease, and her sweet-tasting saliva is soon sliding down your throat.  Instantly, you feel your body loosening up, and ", false);
         // [Intelligence > 40]
@@ -210,7 +210,7 @@ export class AuntNancy extends TelAdreAbstractContent {
 
         outputText("As you unwind at her touch, her many arms are working to strip away your " + player.armorName + ", gently peeling them away with care until you are naked and needy in the spider-lady's web.\n\n", false);
 
-        outputText("You are soon hanging in utter relaxation, idly wondering whether the ongoing massage Aunt Nancy's many hands are still performing all over your " + game.player.chestDesc() + ", " + buttDescript() + ", back, and neck, or the loving, strange kiss of her lips and long, curling tongue is more responsible.  Ultimately, however, she pulls her white-haired head away from yours, and removes her many hands from your trunk.  Smiling at your sudden unhappy look, Aunt Nancy begins to kiss her way down your body, first along the curve of your neck, sliding her long, moist tongue against your chest as you shiver in pleasure at the sensation and pressing her soft lips against your " + nippleDescript(0) + "s and nibbling gently on them to enjoy your moans of delight, before moving her head down your belly", false);
+        outputText("You are soon hanging in utter relaxation, idly wondering whether the ongoing massage Aunt Nancy's many hands are still performing all over your " + chestDesc(game.player) + ", " + buttDescript() + ", back, and neck, or the loving, strange kiss of her lips and long, curling tongue is more responsible.  Ultimately, however, she pulls her white-haired head away from yours, and removes her many hands from your trunk.  Smiling at your sudden unhappy look, Aunt Nancy begins to kiss her way down your body, first along the curve of your neck, sliding her long, moist tongue against your chest as you shiver in pleasure at the sensation and pressing her soft lips against your " + nippleDescript(0) + "s and nibbling gently on them to enjoy your moans of delight, before moving her head down your belly", false);
         if (player.tailType > TAIL_TYPE_NONE) outputText(" to the top of your tail", false);
         outputText(".\n\n", false);
 
@@ -241,7 +241,7 @@ export class AuntNancy extends TelAdreAbstractContent {
         }
         // [If you have a penis:]
         if (player.hasCock()) {
-            outputText("Aunt Nancy gently caresses your " + game.player.multiCockDescriptLight() + " with her smooth black hands, enjoying your moans of delight, before lowering her head to kiss the head of your " + game.player.cockDescript(0) + ".  Her tongue snakes around it, and the spider-lady sucks a little, drinking up the little stream of pre-cum now leaking out, before raising her head up to look at you, a gentle smile on her face as her many hands continue to rub and explore your " + game.player.multiCockDescriptLight() + ".  \"<i>Not as good as my husband's,</i>\" she whispers, \"<i>but quite a piece, certainly.</i>\"\n\n", false);
+            outputText("Aunt Nancy gently caresses your " + multiCockDescriptLight(game.player) + " with her smooth black hands, enjoying your moans of delight, before lowering her head to kiss the head of your " + cockDescript(game.player, 0) + ".  Her tongue snakes around it, and the spider-lady sucks a little, drinking up the little stream of pre-cum now leaking out, before raising her head up to look at you, a gentle smile on her face as her many hands continue to rub and explore your " + multiCockDescriptLight(game.player) + ".  \"<i>Not as good as my husband's,</i>\" she whispers, \"<i>but quite a piece, certainly.</i>\"\n\n", false);
         }
         // [If you have no genitals at all:]
         if (player.gender == 0) outputText("\"<i>Well, well, well,</i>\" murmurs Aunt Nancy, intrigued by what she sees.  \"<i>Very unorthodox, but we'll see what we can do.</i>\"  She pauses to lick the fleshy expanse where your genitals used to be.\n\n", false);
@@ -253,7 +253,7 @@ export class AuntNancy extends TelAdreAbstractContent {
         // [If you have at least one dick, she always takes the smallest so as to avoid missing out on another scene later:]
         const x: number = player.shortestCockIndex();
         if (player.hasCock()) {
-            outputText("Gently, she picks " + game.player.oMultiCockDesc() + ", and brings it up to her pussy. You see its entrance, two parted shell-plates dripping wet fluid, and would almost panic at the unfamiliar sight if you weren't so very relaxed.  With loving guidance, Aunt Nancy slides the full length of your " + game.player.cockDescript(x) + " deep inside of her.  Both of you moan in delight as your dick rubs and stimulates her in a way she's clearly been missing for a long, long while; her exotic insides, smooth and silky and deep, squeeze and caress your " + game.player.cockDescript(x) + " like a velvet glove.  Little feelers inside of her begin to massage your cock, and the wet, dripping fluids inside of her are just as relaxing as her saliva.\n\n", false);
+            outputText("Gently, she picks " + oMultiCockDesc(game.player) + ", and brings it up to her pussy. You see its entrance, two parted shell-plates dripping wet fluid, and would almost panic at the unfamiliar sight if you weren't so very relaxed.  With loving guidance, Aunt Nancy slides the full length of your " + cockDescript(game.player, x) + " deep inside of her.  Both of you moan in delight as your dick rubs and stimulates her in a way she's clearly been missing for a long, long while; her exotic insides, smooth and silky and deep, squeeze and caress your " + cockDescript(game.player, x) + " like a velvet glove.  Little feelers inside of her begin to massage your cock, and the wet, dripping fluids inside of her are just as relaxing as her saliva.\n\n", false);
 
             outputText("\"<i>Oooooh,</i>\" she sighs dreamily, her eyes temporarily distant and unfocused.  \"<i>Marae on earth, that hits the spot.</i>\"\n\n", false);
             let titFucked: boolean = false;
@@ -269,12 +269,12 @@ export class AuntNancy extends TelAdreAbstractContent {
                     else outputText("cocks ", false);
                     outputText("up to her heaving bosom, and slips it between her soft, lovely breasts.  \"<i>Want something else nice?</i>\" asks the spider-lady, eyes twinkling.\n\n", false);
 
-                    outputText("Still rising and falling atop your body as she rides you, Aunt Nancy grips her breasts with two of her black-shelled hands and begins to slide them up and down on either side of your tall, dripping " + game.player.cockDescript(y) + ", ", false);
+                    outputText("Still rising and falling atop your body as she rides you, Aunt Nancy grips her breasts with two of her black-shelled hands and begins to slide them up and down on either side of your tall, dripping " + cockDescript(game.player, y) + ", ", false);
                     if (player.cocks[y].cockLength >= 30) outputText("letting its head slip into her mouth, where she sucks and licks at it hungrily, ", false);
                     else outputText("letting her long, dexterous tongue dangle down from her mouth to wrap around the head of her dick, occasionally licking at her own impressive bosom as well, ", false);
                     outputText("all the while staring down into your eyes.\n\n", false);
 
-                    outputText("The sensation, both of her soft, pillowy bosom wrapped around your " + game.player.cockDescript(y) + " and of her skillful tongue", false);
+                    outputText("The sensation, both of her soft, pillowy bosom wrapped around your " + cockDescript(game.player, y) + " and of her skillful tongue", false);
                     // [If CockDescript (Longest Cock) is long enough for auto-fellatio]
                     if (player.cocks[y].cockLength >= 30) outputText(" and mouth", false);
                     outputText(", is incredible.  Aunt Nancy coos happily, clearly enjoying the taste.\n\n", false);
@@ -295,7 +295,7 @@ export class AuntNancy extends TelAdreAbstractContent {
 
             // [If PC is lactating, and there are no dicks of autotitfucking size available:]
             if (!titFucked && player.biggestLactation() >= 1) {
-                outputText("As milk leaks slowly from your " + nippleDescript(0) + "s, the spider-lady notices.  She lowers her head and wraps her soft, lovely lips around the tip of one of your " + player.allBreastsDescript() + ", sucking gently and frantically flicking her tongue against your " + nippleDescript(0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
+                outputText("As milk leaks slowly from your " + nippleDescript(0) + "s, the spider-lady notices.  She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescript(0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
             }
             // [If no cocks are of titfucking size and # Cocks <= 4 or if there are cocks of titfucking size and # Cocks <= 3 (If Nancy still has free hands)]
             if (!titFucked || (titFucked && player.cockTotal() <= 2)) {
@@ -304,7 +304,7 @@ export class AuntNancy extends TelAdreAbstractContent {
                 if (player.balls > 0) outputText("gently kneading and caressing your " + ballsDescriptLight() + " as the cum inside churns and boils and ", false);
                 // [If the player has a vagina]
                 else if (player.hasVagina()) outputText("exploring the folds and creases of your " + vaginaDescript(0) + " and ", false);
-                outputText("massaging your " + game.player.chestDesc() + ".  Occasionally, they stroke through your " + hairDescript() + ".\n\n", false);
+                outputText("massaging your " + chestDesc(game.player) + ".  Occasionally, they stroke through your " + hairDescript() + ".\n\n", false);
             }
         }
         // [If player has vagina but no dicks: (Nancy prefers dicks and will always choose them over lesbian sex)]
@@ -315,17 +315,17 @@ export class AuntNancy extends TelAdreAbstractContent {
 
             outputText("Such thoughts are interrupted when you suddenly feel Aunt Nancy's fingers on the lower half of your body again, caressing your ", false);
             if (player.tailType > TAIL_TYPE_NONE) outputText("tail before rising to your ", false);
-            outputText(vaginaDescript(0) + " and " + buttDescript() + ".  Aunt Nancy turns your head to face hers, and rises up onto her legs again as her fingers begin to sink deep into your " + vaginaDescript(0) + " and your " + assholeDescript() + ".  You moan, loudly and long at the sensation, and Aunt Nancy smiles lewdly, her other hands still exploring and squeezing your " + game.player.chestDesc() + ", rubbing and kneading them softly and occasionally pinching and pulling at your " + nippleDescript(0) + "s.\n\n", false);
+            outputText(vaginaDescript(0) + " and " + buttDescript() + ".  Aunt Nancy turns your head to face hers, and rises up onto her legs again as her fingers begin to sink deep into your " + vaginaDescript(0) + " and your " + assholeDescript() + ".  You moan, loudly and long at the sensation, and Aunt Nancy smiles lewdly, her other hands still exploring and squeezing your " + chestDesc(game.player) + ", rubbing and kneading them softly and occasionally pinching and pulling at your " + nippleDescript(0) + "s.\n\n", false);
 
-            outputText("Suddenly, you realize that your left hand is now free, courtesy of one of Aunt Nancy's smooth, gentle arms.  She whispers, quietly, \"<i>A little for me too, please.</i>\"  Realizing exactly what she means, you press the " + player.skinFurScales() + " of your hand against her pussy.  Its entrance, two parted shell-plates dripping wet fluid, would almost be scary if you weren't so very relaxed.  Gently, your press your fingers into her body, and hear her moan, loudly, feel her own hands scrabbling inside of your " + vaginaDescript(0) + " and " + assholeDescript() + ", pawing your chest and " + buttDescript() + ", trailing through your " + hairDescript() + ".\n\n", false);
+            outputText("Suddenly, you realize that your left hand is now free, courtesy of one of Aunt Nancy's smooth, gentle arms.  She whispers, quietly, \"<i>A little for me too, please.</i>\"  Realizing exactly what she means, you press the " + skinFurScales(player) + " of your hand against her pussy.  Its entrance, two parted shell-plates dripping wet fluid, would almost be scary if you weren't so very relaxed.  Gently, your press your fingers into her body, and hear her moan, loudly, feel her own hands scrabbling inside of your " + vaginaDescript(0) + " and " + assholeDescript() + ", pawing your chest and " + buttDescript() + ", trailing through your " + hairDescript() + ".\n\n", false);
 
             outputText("It feels wonderful.  You lie back and moan, enjoying the smooth, silky insides of her pussy, feeling tiny feelers occasionally caress and pull at your fingers inside of her.\n\n", false);
             // [If PC is lactating:]
-            if (player.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescript(0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + player.allBreastsDescript() + ", sucking gently and frantically flicking her tongue against your " + nippleDescript(0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
+            if (player.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescript(0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescript(0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
         }
         // [If the PC has no genitals at all:]
         else {
-            outputText("Gently, Aunt Nancy leans down to stroke your face as two of her other hands reach out and begin stroking your " + game.player.chestDesc() + " while a fourth explores the smooth, fleshless expanse where your genitals once were.  \"<i>Such a pretty little fly,</i>\" the spider-lady whispers as she stares at your face, her bright red eyes full of longing.  She presses her face against the side of your head, and you gently turn it to allow her access to your ear, which she quickly slips her tongue into again, enjoying the feeling as you quiver and yelp beneath her.\n\n", false);
+            outputText("Gently, Aunt Nancy leans down to stroke your face as two of her other hands reach out and begin stroking your " + chestDesc(game.player) + " while a fourth explores the smooth, fleshless expanse where your genitals once were.  \"<i>Such a pretty little fly,</i>\" the spider-lady whispers as she stares at your face, her bright red eyes full of longing.  She presses her face against the side of your head, and you gently turn it to allow her access to your ear, which she quickly slips her tongue into again, enjoying the feeling as you quiver and yelp beneath her.\n\n", false);
 
             outputText("With your face turned, you suddenly spot a once-well-made dildo lying on the floor beneath the web.  You see that it has been worn down as smooth as an apple rind and probably much thinner than it was before, and you suddenly wonder just how pent up the widow's sexual desires really are.\n\n", false);
 
@@ -335,12 +335,12 @@ export class AuntNancy extends TelAdreAbstractContent {
 
             outputText("Aunt Nancy climbs back atop you as you moan at the welcome new sensation, licking at your chest as she does.  \"<i>Bet you didn't think I could do it,</i>\" she purrs to you, as you enjoy the many, many sensations working at you.\n\n", false);
 
-            outputText("Suddenly, you realize that your left hand is now free, courtesy of one of Aunt Nancy's smooth, gentle arm.  She whispers, quietly, \"<i>A little for me too, please.</i>\"  Realizing exactly what she means, you press the " + player.skinFurScales() + " of your hand against her pussy.  Its entrance, two parted shell-plates dripping wet fluid, would almost be scary if you weren't so very relaxed.  Gently, your press your ingers into her body, and hear her moan, loudly, feel her own hands scrabbling inside of your " + assholeDescript() + ", pawing your chest and " + buttDescript() + ", trailing through your " + hairDescript() + ".\n\n", false);
+            outputText("Suddenly, you realize that your left hand is now free, courtesy of one of Aunt Nancy's smooth, gentle arm.  She whispers, quietly, \"<i>A little for me too, please.</i>\"  Realizing exactly what she means, you press the " + skinFurScales(player) + " of your hand against her pussy.  Its entrance, two parted shell-plates dripping wet fluid, would almost be scary if you weren't so very relaxed.  Gently, your press your ingers into her body, and hear her moan, loudly, feel her own hands scrabbling inside of your " + assholeDescript() + ", pawing your chest and " + buttDescript() + ", trailing through your " + hairDescript() + ".\n\n", false);
 
             outputText("It feels wonderful.  You lie back and moan, enjoying the smooth, silky insides of her pussy, feeling tiny feelers occasionally caress and pull at your fingers inside of her.\n\n", false);
 
             // [If PC is lactating:]
-            if (player.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescript(0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + player.allBreastsDescript() + ", sucking gently and frantically flicking her tongue against your " + nippleDescript(0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
+            if (player.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescript(0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescript(0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
         }
         doNext(auntNancyPoonPartIII);
     }
@@ -351,21 +351,21 @@ export class AuntNancy extends TelAdreAbstractContent {
         if (player.hasCock()) {
             const x: number = player.shortestCockIndex();
             const y: number = player.longestCock();
-            outputText("You can feel it when the spider-lady's pussy begins to quiver in delight. Aunt Nancy soon moans, then cries out in incredible pleasure.  The lower half of her eyes all close, while the others all roll up into her head in ecstasy.  \"<i>Yes!  YEEEEESSSSSSS!</i>\" she hisses with throaty, feminine indulgence.  The tiny feelers in her otherwise silky-smooth vagina suddenly begin to squeeze and pull at your " + game.player.cockDescript(x) + ", and you let out a bellow of pleasure of your own as you feel your ", false);
+            outputText("You can feel it when the spider-lady's pussy begins to quiver in delight. Aunt Nancy soon moans, then cries out in incredible pleasure.  The lower half of her eyes all close, while the others all roll up into her head in ecstasy.  \"<i>Yes!  YEEEEESSSSSSS!</i>\" she hisses with throaty, feminine indulgence.  The tiny feelers in her otherwise silky-smooth vagina suddenly begin to squeeze and pull at your " + cockDescript(game.player, x) + ", and you let out a bellow of pleasure of your own as you feel your ", false);
             // [If PC has balls]
             if (player.balls > 0) outputText(ballsDescriptLight() + " tense, churning and tightening.", false);
             // Else:]
             else outputText("body tensing in preparation for letting out your seed.", false);
             outputText("\n\n", false);
 
-            outputText("You cum, and cum hard.  Thick wet jets of sticky semen pour into Aunt Nancy's seemingly-bottomless pussy, whose feelers and soft, smooth interior continue to rub at and stroke your " + game.player.cockDescript(x) + " even as it vents the immense pressure in your " + ballsDescriptLight() + ". If anything, the constant powerful surges seem to be extending and intensifying the spider-lady's orgasm.", false);
+            outputText("You cum, and cum hard.  Thick wet jets of sticky semen pour into Aunt Nancy's seemingly-bottomless pussy, whose feelers and soft, smooth interior continue to rub at and stroke your " + cockDescript(game.player, x) + " even as it vents the immense pressure in your " + ballsDescriptLight() + ". If anything, the constant powerful surges seem to be extending and intensifying the spider-lady's orgasm.", false);
             // [If PC has cum multiplier of at least 2]
             if (player.cumQ() >= 750) outputText("  Sooner or later though, even her marvelous body can simply contain no more of your jizz, and she slips her swollen cunt up off of your organ, letting it continue squirting your thick, plentiful cum all over her as it swings free.", false);
             outputText("\n\n", false);
 
             // [If PC has another dick of at least auto-titfucking size:]
             if (player.cocks[y].cockLength >= 22 && player.cockTotal() > 1) {
-                outputText("Aunt Nancy unwraps her tongue from your " + game.player.cockDescript(y) + " to cry out in delight, even as her hands let go of her lovely breasts to grab at your trunk.  Nonetheless, her big, pillowy boobs are more than firm enough to keep the shaft of your " + game.player.cockDescript(y) + " snugly inside as she bucks and shrieks atop you, and they more than contribute to your own sexual pleasure.\n\n", false);
+                outputText("Aunt Nancy unwraps her tongue from your " + cockDescript(game.player, y) + " to cry out in delight, even as her hands let go of her lovely breasts to grab at your trunk.  Nonetheless, her big, pillowy boobs are more than firm enough to keep the shaft of your " + cockDescript(game.player, y) + " snugly inside as she bucks and shrieks atop you, and they more than contribute to your own sexual pleasure.\n\n", false);
 
                 outputText("It too spasms, spitting gooey ropes of cum all over both of you", false);
                 // [If PC has cum multiplier of at least 2]
@@ -380,7 +380,7 @@ export class AuntNancy extends TelAdreAbstractContent {
                         outputText("Your other dick fires off too, her smooth, shell-covered hands still wrapped around it, and it makes even more of a mess, splattering over both of you.\n\n", false);
                     // [Else]
                     else if ((player.cocks[y].cockLength < 22 && player.cockTotal() > 2) || (player.cocks[y].cockLength >= 22 && player.cockTotal() > 2))
-                        outputText("The rest of your " + game.player.multiCockDescriptLight() + " fire off too, her smooth, shell-covered hands still wrapped around them, and they make even more of a mess, splattering over both of you.\n\n", false);
+                        outputText("The rest of your " + multiCockDescriptLight(game.player) + " fire off too, her smooth, shell-covered hands still wrapped around them, and they make even more of a mess, splattering over both of you.\n\n", false);
                 }
             }
             // [If you also have a vagina:]
@@ -389,7 +389,7 @@ export class AuntNancy extends TelAdreAbstractContent {
                 if (player.balls == 0 && (player.cocks[y].cockLength < 22 || (player.cocks[y].cockLength >= 22 && player.cockTotal() <= 2)))
                     outputText("squeezing the fingers on Aunt Nancy's hand still tickling your insides", false);
                 else outputText("making you long for something inside of it", false);
-                outputText(", as " + game.player.sMultiCockDesc() + " spasms in ecstacy.\n\n", false);
+                outputText(", as " + sMultiCockDesc(game.player) + " spasms in ecstacy.\n\n", false);
             }
             // [All w/ penis:]
             outputText("Eventually, both your orgasms end.  You feel worn out, like you just ran a long mile, even though Aunt Nancy was doing most of the work.  However, she seems fine, smiling down at you with a big, happy grin.", false);
@@ -416,7 +416,7 @@ export class AuntNancy extends TelAdreAbstractContent {
             if (player.hasVagina()) outputText(vaginaDescript(0) + " and ", false);
             outputText(assholeDescript() + ".\n\n", false);
 
-            outputText("You howl in pleasure, feeling the orgasm coursing through you like hot metal up and down your spine.  You let out a exclamation of pleasure of your own, as you feel her hands tighten on your " + game.player.chestDesc() + ", and soon you too are luxuriating in the feeling of her body against yours, inside of you, pressing all your most vulnerable places.", false);
+            outputText("You howl in pleasure, feeling the orgasm coursing through you like hot metal up and down your spine.  You let out a exclamation of pleasure of your own, as you feel her hands tighten on your " + chestDesc(game.player) + ", and soon you too are luxuriating in the feeling of her body against yours, inside of you, pressing all your most vulnerable places.", false);
             // [If PC has a vagina and is a squirter and/or is lactating:]
             if (player.wetness() >= 5 || player.biggestLactation() >= 1)
                 outputText("  Her hands are soon drenched in your body's wonderful secretions, just as your", false);

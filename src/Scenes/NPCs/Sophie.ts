@@ -44,14 +44,14 @@ export class Sophie extends Harpy {
 
         // Already affected by it
         if (player.findStatusAffect(StatusAffects.Luststick) >= 0) {
-            outputText("  Blood rushes to " + player.sMultiCockDesc() + " as you grow so hard so fast that it hurts.  ", false);
+            outputText("  Blood rushes to " + sMultiCockDesc(player) + " as you grow so hard so fast that it hurts.  ", false);
             game.sophieScene.luststickApplication(2);
             dynStats("lus", (12 + player.lib / 10));
             if (player.lust < 70) outputText("The drugged lip-gloss is starting to get to you!\n", false);
             else if (player.lust < 80) outputText("Her curvy thighs look so inviting.  You barely stop yourself before you climb in between them!\n", false);
-            else if (player.lust < 90) outputText("A trickle of pre-cum leaks from " + player.sMultiCockDesc() + ".  Sophie coos, \"<i>Why don't you give in and let mommy Sophie drain out all that juicy cum?</i>\"\n", false);
-            else if (player.lust < 100) outputText(player.SMultiCockDesc() + " twitches and bounces in time with your heartbeat, practically pulling you towards Sophie's gaping, pink-linked snatch.\n", false);
-            else outputText("So horny.  You need to copulate - no, fuck - right NOW.  Your hand touches your " + player.cockDescript(0) + " and you swoon, pumping your hips lewdly as you submit.\n", false);
+            else if (player.lust < 90) outputText("A trickle of pre-cum leaks from " + sMultiCockDesc(player) + ".  Sophie coos, \"<i>Why don't you give in and let mommy Sophie drain out all that juicy cum?</i>\"\n", false);
+            else if (player.lust < 100) outputText(SMultiCockDesc(player) + " twitches and bounces in time with your heartbeat, practically pulling you towards Sophie's gaping, pink-linked snatch.\n", false);
+            else outputText("So horny.  You need to copulate - no, fuck - right NOW.  Your hand touches your " + cockDescript(player, 0) + " and you swoon, pumping your hips lewdly as you submit.\n", false);
         }
         else {
             outputText("  Your whole body blushes as your lips tingle with some unnatural sensation.  Her lips were drugged!  Your whole body flushes as arousal begins to course through your veins.  ", false);
@@ -59,9 +59,9 @@ export class Sophie extends Harpy {
             dynStats("lus", 8 + player.lib / 10);
             if (player.lust < 70) outputText("The drugged lip-gloss is starting to get to you!\n", false);
             else if (player.lust < 80) outputText("Her curvy thighs look so inviting.  You barely stop yourself before you climb in between them!\n", false);
-            else if (player.lust < 90) outputText("A trickle of pre-cum leaks from " + player.sMultiCockDesc() + ".  Sophie coos, \"<i>Why don't you give in and let mommy Sophie drain out all that juicy cum?</i>\"\n", false);
-            else if (player.lust < 100) outputText(player.SMultiCockDesc() + " twitches and bounces in time with your heartbeat, practically pulling you towards Sophie's gaping, pink-linked snatch.\n", false);
-            else outputText("So horny.  You need to copulate - no, fuck - right NOW.  Your hand touches your " + player.cockDescript(0) + " and you swoon, pumping your hips lewdly as you submit.\n", false);
+            else if (player.lust < 90) outputText("A trickle of pre-cum leaks from " + sMultiCockDesc(player) + ".  Sophie coos, \"<i>Why don't you give in and let mommy Sophie drain out all that juicy cum?</i>\"\n", false);
+            else if (player.lust < 100) outputText(SMultiCockDesc(player) + " twitches and bounces in time with your heartbeat, practically pulling you towards Sophie's gaping, pink-linked snatch.\n", false);
+            else outputText("So horny.  You need to copulate - no, fuck - right NOW.  Your hand touches your " + cockDescript(player, 0) + " and you swoon, pumping your hips lewdly as you submit.\n", false);
         }
     }
 
@@ -113,7 +113,7 @@ export class Sophie extends Harpy {
         // autofails if player inte > 80
         // Player fails:
         if (player.inte < 40 || (player.inte < 80 && rand(40) > (player.inte - 40))) {
-            outputText("You moan out loud as your arms move of their own volition.  They reach inside your " + player.armorName + " and stroke " + player.sMultiCockDesc() + ", caress the tip, and continue to fondle you a few moments.", false);
+            outputText("You moan out loud as your arms move of their own volition.  They reach inside your " + player.armorName + " and stroke " + sMultiCockDesc(player) + ", caress the tip, and continue to fondle you a few moments.", false);
             outputText("Even after regaining control of your limbs, you're left far more turned on by the ordeal.", false);
             dynStats("lus", (15 + player.cor / 20 + player.lib / 20));
         }

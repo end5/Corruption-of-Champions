@@ -5,14 +5,14 @@ export class TamanisDaughters extends Goblin {
         if (selector == 0) {
             outputText("A slender hand reaches inside your " + player.armorName + " and gives your ", false);
             if (player.balls > 0) {
-                if (rand(2) == 0) outputText(player.multiCockDescriptLight(), false);
-                else outputText(player.ballsDescriptLight(), false);
+                if (rand(2) == 0) outputText(multiCockDescriptLight(player), false);
+                else outputText(ballsDescriptLight(player), false);
             }
-            else outputText(player.multiCockDescriptLight(), false);
+            else outputText(multiCockDescriptLight(player), false);
             outputText(" a gentle squeeze.  You twist away but your breathing gets a little heavier.\n\n", false);
         }
         else if (selector == 1) {
-            outputText("A girl latches onto your " + player.legs() + " and begins caressing your body lovingly, humming happily.  You quickly shake her loose but the attention makes you blush a little more.\n\n", false);
+            outputText("A girl latches onto your " + legs(player) + " and begins caressing your body lovingly, humming happily.  You quickly shake her loose but the attention makes you blush a little more.\n\n", false);
         }
         else if (selector == 2) {
             outputText("One of your daughters launches onto your back and presses her hard, pierced nipples against your neck.  She whispers in your ear, \"<i>Twist my nipples dad!</i>\"\n\n", false);

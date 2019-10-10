@@ -770,7 +770,7 @@ export class Benoit extends BazaarAbstractContent {
             if (player.hasCock()) {
                 if (!player.isTaur()) outputText("  Stuck between your two burning bodies, y");
                 else outputText("Y");
-                outputText("our " + game.player.cockDescript(0) + " spurts in sympathy to your female high, soaking ");
+                outputText("our " + cockDescript(game.player, 0) + " spurts in sympathy to your female high, soaking ");
                 if (!player.isTaur()) outputText("both of you");
                 else outputText("the dry dirt");
                 outputText(" with white.");
@@ -949,7 +949,7 @@ export class Benoit extends BazaarAbstractContent {
                 // [(not horse)
                 if (!player.isTaur()) outputText("  Stuck between your two burning bodies, y");
                 else outputText("Y");
-                outputText("our " + game.player.cockDescript(0) + " spurts in sympathy to your female high, soaking ");
+                outputText("our " + cockDescript(game.player, 0) + " spurts in sympathy to your female high, soaking ");
                 if (!player.isTaur()) outputText("both of you");
                 else outputText("the dry dirt");
                 outputText(" with white.");
@@ -1223,7 +1223,7 @@ export class Benoit extends BazaarAbstractContent {
 
         outputText("\n\nShe leans across the counter, her smile fading.  \"<i> Seriously, [name], you 'ave done my people a service I cannot repay.  I can lay eggs, zere can be more female basilisks, away from Lethice and 'er thugs.  All zis time I 'ave been trading potions, I could 'ave done it myself, and I never did.  Per'aps I sought I was too much a man or somesing.  Pah!  I was a coward, a cringing coward.  You forced me to decide, and because of zat, my people 'ave a chance.  Sank you. </i>\"");
 
-        outputText("\n\nShe sounds slightly choked, and stops for a moment. \"<i> It is very, very little, but for you I buy and sell sings at zeir true value.  If zere is anysing I can do for you, ever, please just say. </i >\"  You are slightly embarrassed by her effusiveness and mumble something along the lines of it being all her doing.  Perhaps aware of this, Benoite sits back down, hatches her fingers and smiles at you primly.  \"<i> Now... is " + player.mf("sir", "madam") + " buying or selling? </i>\" ");
+        outputText("\n\nShe sounds slightly choked, and stops for a moment. \"<i> It is very, very little, but for you I buy and sell sings at zeir true value.  If zere is anysing I can do for you, ever, please just say. </i >\"  You are slightly embarrassed by her effusiveness and mumble something along the lines of it being all her doing.  Perhaps aware of this, Benoite sits back down, hatches her fingers and smiles at you primly.  \"<i> Now... is " + mf(player, "sir", "madam") + " buying or selling? </i>\" ");
 
         // [Benoite buys at same rate Oswald does and sells at a 33% discount]
     }
@@ -1334,7 +1334,7 @@ export class Benoit extends BazaarAbstractContent {
 
             outputText("\n\n\"<i>Enough foreplay; I sought zat we were going to fuck?</i>\" she playfully reprimands, and you smirk and nod your head, knowing guiltily that she can't see it.  Nimbly you skip around behind her, catching her tail and rubbing it affectionately against your cheek, then tell her to find something sturdy to support her; you want her to kneel down against it.");
 
-            outputText("\n\n\"<i>So, zat is what you 'ave in mind?  Kinky " + player.mf("boy", "girl") + "...</i>\" Benoite replies.  Her long tongue flickers out to dart across your other cheek, and then she carefully lowers herself to the ground, making herself comfortable and groaning softly with relief. \"<i>I must say, zat is much more better on my poor feet... all zese eggs are 'eavy, you know?</i>\"");
+            outputText("\n\n\"<i>So, zat is what you 'ave in mind?  Kinky " + mf(player, "boy", "girl") + "...</i>\" Benoite replies.  Her long tongue flickers out to dart across your other cheek, and then she carefully lowers herself to the ground, making herself comfortable and groaning softly with relief. \"<i>I must say, zat is much more better on my poor feet... all zese eggs are 'eavy, you know?</i>\"");
 
             outputText("\n\nYou cup her buttocks, squeezing the delightfully full, feminine globes, and promise her that she'll forget all about the weight of her eggs soon enough.");
 
@@ -1355,7 +1355,7 @@ export class Benoit extends BazaarAbstractContent {
 
             outputText("\n\nNow it is your turn to slump down in a spent state, though you retain enough control to avoid adding any more weight to your already heavy lover.  The two of you remain there in the backgroom, gathering up your strength, letting the musk of your carnal pleasure roll over your still forms.");
 
-            outputText("\n\nBenoite stirs first.  \"<i>Mmm... I guess being so pregnant is not such a bad sing if it means we can have sex like zis...</i>\" she murmurs, though it's quite obvious she intends for you to hear her. With a groan of effort, she heaves herself back upright.  \"<i>Come back and see me any time, lover-" + player.mf("boy", "girl") + ",</i>\" she tells you.  \"<i>But don't sink zat you need me to be pregnant to give me a good time, okay?</i>\"  Benoite smirks, striding across the floor and giving you a hand up before delicately flicking her tongue across your lips in a reptilian kiss.");
+            outputText("\n\nBenoite stirs first.  \"<i>Mmm... I guess being so pregnant is not such a bad sing if it means we can have sex like zis...</i>\" she murmurs, though it's quite obvious she intends for you to hear her. With a groan of effort, she heaves herself back upright.  \"<i>Come back and see me any time, lover-" + mf(player, "boy", "girl") + ",</i>\" she tells you.  \"<i>But don't sink zat you need me to be pregnant to give me a good time, okay?</i>\"  Benoite smirks, striding across the floor and giving you a hand up before delicately flicking her tongue across your lips in a reptilian kiss.");
 
             outputText("\n\nYou redress yourself, give the trader a hand getting back to the front of the shop without knocking anything over - she may be familiar with her shop, but her distended belly still gives her problems - and then head back to camp.");
             player.orgasm();

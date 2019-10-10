@@ -42,7 +42,7 @@ export class Basilisk extends Monster {
     private basiliskTailSwipe(): void {
         let damage: number = int((str + 20) - Math.random() * (player.tou + player.armorDef));
         damage = player.takeDamage(damage);
-        outputText("The basilisk suddenly whips its tail at you, swiping your " + player.feet() + " from under you!  You quickly stagger upright, being sure to hold the creature's feet in your vision. (" + damage + ")", false);
+        outputText("The basilisk suddenly whips its tail at you, swiping your " + feet(player) + " from under you!  You quickly stagger upright, being sure to hold the creature's feet in your vision. (" + damage + ")", false);
         if (damage == 0) outputText("  The fall didn't harm you at all.", false);
         combatRoundOver();
     }

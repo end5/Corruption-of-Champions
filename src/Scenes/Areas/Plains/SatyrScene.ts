@@ -90,7 +90,7 @@ export class SatyrScene {
 
         outputText("\n\nThe satyr eats and drinks right alongside you, exhorting you to just enjoy yourself.  Eventually, though, he stops eating and instead pulls out his pan pipes, starting to play a soft, gentle tune that almost reminds you of a lullaby.");
 
-        outputText("\n\nYou can't resist the soft melody and begin to feel sleepy; you stop your drinking and eating to yawn... now that you've stopped, you feel awfully hot.  You strip off your [armor] without a second thought, not even bothering to protect your modesty.  Once you feel the cool air against your " + player.skinFurScales() + " you sigh and lay to relax for a nap.");
+        outputText("\n\nYou can't resist the soft melody and begin to feel sleepy; you stop your drinking and eating to yawn... now that you've stopped, you feel awfully hot.  You strip off your [armor] without a second thought, not even bothering to protect your modesty.  Once you feel the cool air against your " + skinFurScales(player) + " you sigh and lay to relax for a nap.");
         outputText("\n\nThe satyr keeps playing, smiling.  The last thing you see before unconsciousness takes you is an eager light in strangely goat-like eyes...");
         // [hymen check]
         if (player.hasVagina()) player.cuntChange(25, true, true, false);
@@ -245,7 +245,7 @@ export class SatyrScene {
         if (player.hasCock()) {
             outputText(", even going as far as to deliver a tongue-stroke or two to ");
             if (player.balls > 0) outputText("your [sack]");
-            else outputText("the base of your " + game.player.multiCockDescriptLight());
+            else outputText("the base of your " + multiCockDescriptLight(game.player));
         }
         outputText("; despite your earlier hint about how disobedience might be dealt with, the satyr bucks and thrusts against your hands, hoping to achieve release by any means available.  You scowl and grab hold of his shaft, slimy with pre-cum already, and squeeze it tightly to warn him to stay still and focus on licking you, gripping his head with your thighs in an effort to hold him in place.");
 
@@ -281,7 +281,7 @@ export class SatyrScene {
 
         outputText("\n\nYou ignore his efforts and do your best to brutally pin him to the ground, reaching around to take hold of his girthy prick... hah!  The monster's cock is already oozing pre-cum, no matter how much he struggles.  You roughly pump your hand up and down the satyr's shaft, gathering a great handful of his pre and then smearing it onto your own cock as makeshift lube.  Not very effective, but you guess it will suffice.  You take a second handful, and then a third, which you instead massage into the satyr's black rosebud - the ease with which two, then three of your fingers slide inside him confirms he's not a virgin when it comes to this particular act.");
 
-        outputText("\n\nThe moment your fingers slide inside the helpless satyr he bleats, not in horror, but in delight.  His insistent struggles to get away from you make a complete U-turn, and instead he struggles to get more of your hand inside his gripping hole; his cock throbs and grows even harder, spurting pre on the ground below, as his balls churn and slosh eager for the prostate massage you'll be giving him with your own " + game.player.cockDescript(x) + ".  You can't help but laugh at the satyr's change of heart; what a slut.");
+        outputText("\n\nThe moment your fingers slide inside the helpless satyr he bleats, not in horror, but in delight.  His insistent struggles to get away from you make a complete U-turn, and instead he struggles to get more of your hand inside his gripping hole; his cock throbs and grows even harder, spurting pre on the ground below, as his balls churn and slosh eager for the prostate massage you'll be giving him with your own " + cockDescript(game.player, x) + ".  You can't help but laugh at the satyr's change of heart; what a slut.");
 
         outputText("\n\nWell, you know what to do with buttsluts who are in the mood, now don't you?  You whisper as much to the satyr, who lets out a soft bleat of anticipation, then take hold of his horns for extra leverage and, without further ado, shove your cock as far as you can into him.  The satyr emits a screaming bleat of pleasure and immediately begins to push his ass against you, humping you with a ferociousness you could only attribute to a wild animal.  His hands stop supporting his upper body, and immediately travel to his rock hard erection, milking it.");
 
@@ -316,7 +316,7 @@ export class SatyrScene {
         if (player.hasVagina()) outputText("[vagina], spreading your labia wide to see the interior of your rapidly moistening walls.");
         else outputText("[ass], spreading your cheeks apart to gaze at your winking rosebud.");
 
-        outputText("\"<i>Wonderful!  With a [vagOrAss] like this I'm sure you'll make a great " + player.mf("father", "mother") + " for our children,</i>\" he says, leaning closer to sniff at your ");
+        outputText("\"<i>Wonderful!  With a [vagOrAss] like this I'm sure you'll make a great " + mf(player, "father", "mother") + " for our children,</i>\" he says, leaning closer to sniff at your ");
         if (player.hasVagina()) outputText("[vagina], licking all over your netherlips and tasting your juices.");
         else outputText("[butt], licking all around your hole to prepare it for what's coming.");
 

@@ -97,7 +97,7 @@ function wormsRun(): void {
         doNext(camp.returnToCampUseOneHour);
     }
     else {
-        outputText("You turn to run, but before your " + player.feet() + " can get you away, the worms are upon you!  You turn to face them, lest they launch onto your unprotected back.");
+        outputText("You turn to run, but before your " + feet(player) + " can get you away, the worms are upon you!  You turn to face them, lest they launch onto your unprotected back.");
         startCombat(new WormMass());
     }
 }
@@ -188,7 +188,7 @@ export function wormsEntice(): void {
     }
     // SUCCESS
     if (player.lust < 50) {
-        outputText("The worm colony stands before you and begins secreting a significant amount of slime. Inexplicably, you find that your " + game.player.cockDescript(0) + " is already erect and is throbbing. The erection is quite meddlesome and you find yourself distracted by the unwanted arousal.\n", false);
+        outputText("The worm colony stands before you and begins secreting a significant amount of slime. Inexplicably, you find that your " + cockDescript(game.player, 0) + " is already erect and is throbbing. The erection is quite meddlesome and you find yourself distracted by the unwanted arousal.\n", false);
         dynStats("lus", 10 + player.lib / 20 + player.cor / 20);
     }
     else {
@@ -244,7 +244,7 @@ export function playerInfest(): void {
     // Viable target?
     if (monster.short == "minotaur" || monster.short == "imp") {
         if (monster.lust > 70) {
-            outputText("Your load washes over the " + monster.short + " and " + monster.pronoun1 + " stops dead in " + monster.pronoun3 + " tracks as " + monster.pronoun1 + " chokes and sputters to clear the cum from " + monster.pronoun3 + " face and nose to breathe. The " + monster.short + " stumbles, attempting to stand in your fresh cum puddle and quickly busts its ass on the ground. The worms quickly take over and swarm around the " + monster.short + "' s " + monster.cockDescriptShort(0) + ". With wild hunger, the worms easily push into the " + monster.short + "'s urethra and begin venturing into your victim's body. The " + monster.short + " begins to convulse wildly as " + monster.pronoun3 + " body begins to react to the squirming invaders. The " + monster.short + " quickly peaks and cum flies in all directions, along with some worms. You laugh hysterically as the " + monster.short + " must now endure the endless orgasms your new pets provide. You choose to unload one last batch on your fallen foe to ensure a good infestation and walk away to leave the " + monster.short + " in the hell of endless pleasure.\n", false);
+            outputText("Your load washes over the " + monster.short + " and " + monster.pronoun1 + " stops dead in " + monster.pronoun3 + " tracks as " + monster.pronoun1 + " chokes and sputters to clear the cum from " + monster.pronoun3 + " face and nose to breathe. The " + monster.short + " stumbles, attempting to stand in your fresh cum puddle and quickly busts its ass on the ground. The worms quickly take over and swarm around the " + monster.short + "' s " + cockDescriptShort(monster, 0) + ". With wild hunger, the worms easily push into the " + monster.short + "'s urethra and begin venturing into your victim's body. The " + monster.short + " begins to convulse wildly as " + monster.pronoun3 + " body begins to react to the squirming invaders. The " + monster.short + " quickly peaks and cum flies in all directions, along with some worms. You laugh hysterically as the " + monster.short + " must now endure the endless orgasms your new pets provide. You choose to unload one last batch on your fallen foe to ensure a good infestation and walk away to leave the " + monster.short + " in the hell of endless pleasure.\n", false);
             monster.lust = 100;
             cleanupAfterCombat();
             return;

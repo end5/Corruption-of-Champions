@@ -105,9 +105,9 @@ export class MinotaurMobScene implements TimeAwareInterface {
                 // [Non Addicted Repeat]
                 if (!player.minotaurAddicted()) {
                     outputText("It doesn't take long for your exploration into the mountains to bring you face-to-face with your minotaur offspring once again.  There're " + num2Text(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326]) + " of them here, arranged around you in a loose semicircle.  You can smell their familiar and arousing odor in the air; while it brings a tingle to your nethers, you're determined to resist it.  ", false);
-                    if (player.wetness() <= 2) outputText("A trickle of wetness runs down your " + player.leg() + " almost immediately.", false);
-                    else if (player.wetness() <= 4) outputText("A steady flow of your juices soaks your " + player.legs() + " almost immediately, just from the scent invading your nostrils.", false);
-                    else outputText("A flood of wetness soaks your " + player.armorName + " and " + player.legs() + " with feminine drool almost immediately as your body reflects the obscene lust coursing through your veins.", false);
+                    if (player.wetness() <= 2) outputText("A trickle of wetness runs down your " + leg(player) + " almost immediately.", false);
+                    else if (player.wetness() <= 4) outputText("A steady flow of your juices soaks your " + legs(player) + " almost immediately, just from the scent invading your nostrils.", false);
+                    else outputText("A flood of wetness soaks your " + player.armorName + " and " + legs(player) + " with feminine drool almost immediately as your body reflects the obscene lust coursing through your veins.", false);
                     outputText("\n\n", false);
                     outputText("This could be a bit difficult.\n\nThe largest folds his arms across his broad, well-defined chest and smirks before grunting, \"<i>", false);
                     if (player.pregnancyIncubation > 0 && player.pregnancyIncubation <= 216 && player.pregnancyType == PregnancyStore.PREGNANCY_MINOTAUR) outputText("Pregnant with another brother for us, and already you come back for more?", false);
@@ -126,9 +126,9 @@ export class MinotaurMobScene implements TimeAwareInterface {
                 // [Addicted Repeat]
                 else {
                     outputText("It doesn't take too long for your exploration into the mountains to bring you face-to-face with your minotaur offspring once again.  There're " + num2Text(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326]) + " of them here, arranged around you in a loose semicircle.  You can smell their familiar, arousing odor drifting around you, and though you want to be strong, there's nothing you want more than to bury your face beneath those loincloths and start slurping your reward for having such wonderful children.  ", false);
-                    if (player.wetness() <= 2) outputText("A trickle of wetness runs down your " + player.leg() + " almost immediately.", false);
-                    else if (player.wetness() <= 4) outputText("A steady flow of your juices soaks your " + player.legs() + " almost immediately, just from the scent invading your nostrils.", false);
-                    else outputText("A flood of wetness soaks your " + player.armorName + " and " + player.legs() + " with feminine drool almost immediately as your body reflects the obscene lust coursing through your veins.", false);
+                    if (player.wetness() <= 2) outputText("A trickle of wetness runs down your " + leg(player) + " almost immediately.", false);
+                    else if (player.wetness() <= 4) outputText("A steady flow of your juices soaks your " + legs(player) + " almost immediately, just from the scent invading your nostrils.", false);
+                    else outputText("A flood of wetness soaks your " + player.armorName + " and " + legs(player) + " with feminine drool almost immediately as your body reflects the obscene lust coursing through your veins.", false);
                     outputText("  You absentmindedly tweak your nipple and lick your lips in anticipation.\n\n", false);
 
                     outputText("The largest folds his arms across his broad, well-defined chest and smirks before grunting, \"<i>", false);
@@ -235,12 +235,12 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText(".  ", false);
         // ESCAPE!
         if ((player.canFly() && player.spe > rand(40)) || (!player.canFly() && player.spe > rand(60))) {
-            outputText("A furry arm nearly catches your " + player.leg() + ", but you slip free and quickly escape your lusty brood.", false);
+            outputText("A furry arm nearly catches your " + leg(player) + ", but you slip free and quickly escape your lusty brood.", false);
             doNext(camp.returnToCampUseOneHour);
         }
         // FAIL:
         else {
-            outputText("A furry arm catches hold of your " + player.leg() + " and yanks on it hard enough to slam you into the cliff face.  Disoriented and bleeding, you wobble free, dazed.  It's a fight!", false);
+            outputText("A furry arm catches hold of your " + leg(player) + " and yanks on it hard enough to slam you into the cliff face.  Disoriented and bleeding, you wobble free, dazed.  It's a fight!", false);
             // go to combat
             fightOTaurs();
         }
@@ -268,7 +268,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             return;
         }
         // (HP)
-        if (player.HP < 1) outputText("You've been completely defeated.  Bruised and battered, your overtaxed body is barely able to move, and you slump down on the ground.  The minotaurs stomp closer, smiling in anticipation of what's to come.  Mouth agape, you stare while they discard their tiny, pre-cum soaked loincloths and reveal the massive, distinctive cocks that make their breed so famous.  One of the rags lands squarely on your face, by chance or cruel intent, and you gasp in surprise.  Like a lightning bolt shooting down your spine, arousal slams into you with thunderous force, rocking you back as you shake the sticky cloth from your face.  All thoughts of resistance are completely washed away by the tide of your aching need, and you spread your " + player.legs() + " to make yourself an easier target.   Lent strength by the arousal coursing through your veins, you tear off your " + player.armorName + " and wait anxiously for whatever the beast-men have planned.\n\n", false);
+        if (player.HP < 1) outputText("You've been completely defeated.  Bruised and battered, your overtaxed body is barely able to move, and you slump down on the ground.  The minotaurs stomp closer, smiling in anticipation of what's to come.  Mouth agape, you stare while they discard their tiny, pre-cum soaked loincloths and reveal the massive, distinctive cocks that make their breed so famous.  One of the rags lands squarely on your face, by chance or cruel intent, and you gasp in surprise.  Like a lightning bolt shooting down your spine, arousal slams into you with thunderous force, rocking you back as you shake the sticky cloth from your face.  All thoughts of resistance are completely washed away by the tide of your aching need, and you spread your " + legs(player) + " to make yourself an easier target.   Lent strength by the arousal coursing through your veins, you tear off your " + player.armorName + " and wait anxiously for whatever the beast-men have planned.\n\n", false);
         // (Lust)
         else {
             outputText("You're too turned on to fight, too aroused to think, and trembling too much to stand upright.  Slumping in the dirt, you pull away your " + player.armorName + " and toss it aside; it would just get in the way.  Ass in the air, you wiggle it back and forth enticingly as your need ", false);
@@ -276,7 +276,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             else if (player.wetness() <= 4) outputText("leaks from your ", false);
             else outputText("rolls out in a wave from your ", false);
             outputText(vaginaDescript(0) + ".", false);
-            if (player.hasCock()) outputText("  " + game.player.SMultiCockDesc() + " hardens and dangles above the ground, leaking in sympathy with your hungry quim.  Of course it will likely be ignored - rutting minotaurs have little use for someone else's dick.", false);
+            if (player.hasCock()) outputText("  " + SMultiCockDesc(game.player) + " hardens and dangles above the ground, leaking in sympathy with your hungry quim.  Of course it will likely be ignored - rutting minotaurs have little use for someone else's dick.", false);
             outputText("The beast-men remove their terribly-tended loincloths and discard them, though one smears his over your face before he tosses it aside, the musky aroma sending your body into overdrive.\n\n", false);
         }
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] >= 25 && player.minotaurNeed()) minotaurGangBadEnd();
@@ -358,7 +358,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         player.cuntChange(60, true, false, true);
         outputText("The head flares wide as it squirts into your womb; warmth blooms from the uterine cum-deposit, turning your muscles slack, and setting off an orgasm of your own.  Your pussy ripples and squeezes at the invader, matched in its orgasmic contractions by your cock-stuffed asshole.  The minitaur behind you whines and hilts himself as hard as his relatively lithe body will allow, slapping his balls into his brother's slowly emptying cum-sacks.", false);
         if (player.hasCock()) {
-            outputText("  " + game.player.SMultiCockDesc() + " explodes against the minotaur's belly, weakly spurting ", false);
+            outputText("  " + SMultiCockDesc(game.player) + " explodes against the minotaur's belly, weakly spurting ", false);
             if (player.cumQ() < 25) outputText("a few spots of cum into his sweat-matted fur.", false);
             else if (player.cumQ() < 50) outputText("a steady trickle of cum into his fur.", false);
             else if (player.cumQ() < 100) outputText("a steady stream of cum into his matted fur.", false);
@@ -411,10 +411,10 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("One of them smears his flare across your forehead to leave a trail of musky goo behind.  It clearly marks you as his, even if he ", false);
         if (player.pregnancyType != PregnancyStore.PREGNANCY_MINOTAUR) outputText("isn't", false);
         else outputText("may not be", false);
-        outputText(" the father of the child in your womb.  You shiver at the smell, the heavenly fluid drying on your " + player.skinFurScales() + " while that slippery tip is moved down to your lips.  Opening your jaw wider, you let the musky prick pop into your mouth.  It tastes like salty sweat, skin, and the heavenly taste of pre-cum all mixed together. The cock pushes deeper, all three rings of prepuce bumping through your lips while the head begins to burrow into your esophagus.  Thankfully the constantly-dripping pre-cum it spouts shuts down your gag reflex, and your only worry becomes wondering just how long you'll have to hold your breath.\n\n", false);
+        outputText(" the father of the child in your womb.  You shiver at the smell, the heavenly fluid drying on your " + skinFurScales(player) + " while that slippery tip is moved down to your lips.  Opening your jaw wider, you let the musky prick pop into your mouth.  It tastes like salty sweat, skin, and the heavenly taste of pre-cum all mixed together. The cock pushes deeper, all three rings of prepuce bumping through your lips while the head begins to burrow into your esophagus.  Thankfully the constantly-dripping pre-cum it spouts shuts down your gag reflex, and your only worry becomes wondering just how long you'll have to hold your breath.\n\n", false);
 
-        outputText("Fuzz-covered balls brush your chin, their slowly-churning mass resting heavily on your " + face(player) + ".  You hesitantly lick them, lapping up the sweat from their fur.  The pungent pheromones tickle at your nose, even as you're kept from breathing by the cock obstructing your tightly-stretched throat.  All this fellatio has made your " + vaginaDescript() + " so sopping wet that you hear it squish and slosh with every twitch and movement of your " + player.legs() + ".  It hungers for penetration, but pregnant and swollen as your womb is, you know your sons won't touch it.", false);
-        if (player.hasCock()) outputText("  The pre-cum leaking from your " + game.player.multiCockDescriptLight() + " reminds you of your poor, ignored maleness, but you'll have to settle for servicing your sons' delectable organs.\n\n", false);
+        outputText("Fuzz-covered balls brush your chin, their slowly-churning mass resting heavily on your " + face(player) + ".  You hesitantly lick them, lapping up the sweat from their fur.  The pungent pheromones tickle at your nose, even as you're kept from breathing by the cock obstructing your tightly-stretched throat.  All this fellatio has made your " + vaginaDescript() + " so sopping wet that you hear it squish and slosh with every twitch and movement of your " + legs(player) + ".  It hungers for penetration, but pregnant and swollen as your womb is, you know your sons won't touch it.", false);
+        if (player.hasCock()) outputText("  The pre-cum leaking from your " + multiCockDescriptLight(game.player) + " reminds you of your poor, ignored maleness, but you'll have to settle for servicing your sons' delectable organs.\n\n", false);
 
         outputText("Pain radiates through your " + buttDescript() + " as a strong impact rocks your body.  You'd glance back, but the penis in your mouth holds your head stationary while it begins to slide in and out of your throat.  Another cheek-reddening slap hits your ass, and this time you definitely feel the large, furred shape of a minotaur's hand as the source of your discomfort.  The cock in your mouth draws back, not far enough to empty your mouth, yet far enough for you to breathe in sweet, sweet air through your nose. It plunges back in, just in time for another butt-reddening smack to push you the last few inches back towards those sweaty balls.\n\n", false);
 
@@ -430,7 +430,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
         outputText("The domineering second-in-line smirks down as he slaps your cheek with his turgid wang.  \"<i>Come on, stop sucking up the leftover spooge and get the fresh stuff.</i>\"\n\n", false);
 
-        outputText("You finish swallowing your mouthful and sigh happily, panting like a puppy at the thought of getting a second helping.  Even your " + player.legs() + " are wet with your leaking lubricants.  With the intoxication burning through your inhibitions, you plunge forward and engulf the next cock in your hungry mouth, tonguing the dribbling cum-slit in your effort to get more.  You cross your eyes to watch the pillar of dick-flesh as it slides into your maw, eventually disappearing entirely.  The flare, bumps, and difficulty of deep-throating such a sizable shaft barely register by this point, and you can only imagine how you must look - slurping and fellating like a whore while the leftovers from a massive facial hang in strings from your soaked face.\n\n", false);
+        outputText("You finish swallowing your mouthful and sigh happily, panting like a puppy at the thought of getting a second helping.  Even your " + legs(player) + " are wet with your leaking lubricants.  With the intoxication burning through your inhibitions, you plunge forward and engulf the next cock in your hungry mouth, tonguing the dribbling cum-slit in your effort to get more.  You cross your eyes to watch the pillar of dick-flesh as it slides into your maw, eventually disappearing entirely.  The flare, bumps, and difficulty of deep-throating such a sizable shaft barely register by this point, and you can only imagine how you must look - slurping and fellating like a whore while the leftovers from a massive facial hang in strings from your soaked face.\n\n", false);
 
         outputText("\"<i>Gods and Demons Mom, you're such a slut.  Look at you, knocked up and pregnant, nipples ready to spew milk, and you're covered in one of your sons' cum while you suck off the next.  You greedy fuck-slut.  ", false);
         if (player.pregnancyType == PregnancyStore.PREGNANCY_MINOTAUR) outputText("That baby is probably mine too.  You let your son father his brother.", false);
@@ -443,7 +443,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText(" and pulls you back, your tongue dragging over the underside of his shaft.  Then, with an abrupt shift, he plunges back in.  Once he bottoms out, he once more reverses direction - never stopping, never slowing.  He face-fucks you hard and fast while your ass is repeatedly smacked.", false);
         outputText("\n\n", false);
 
-        outputText("The frantic face-humping comes to a final, explosive end with an eruption of stringy seed falling into your already-full belly.  This beast-man withdraws coolly.  He pulls out quickly enough that the bulk of his cum is added to your frosted face and " + hairDescript() + ".  Much of it falls down to soak your " + game.player.chestDesc() + " and huge, pregnant belly.  You look more like a creme-covered doughnut than a person at this point, and you nearly climax from the mental picture of your huge, pregnant form lying in a puddle of minotaur goo while the beast-men use your face as a cum-receptacle.\n\n", false);
+        outputText("The frantic face-humping comes to a final, explosive end with an eruption of stringy seed falling into your already-full belly.  This beast-man withdraws coolly.  He pulls out quickly enough that the bulk of his cum is added to your frosted face and " + hairDescript() + ".  Much of it falls down to soak your " + chestDesc(game.player) + " and huge, pregnant belly.  You look more like a creme-covered doughnut than a person at this point, and you nearly climax from the mental picture of your huge, pregnant form lying in a puddle of minotaur goo while the beast-men use your face as a cum-receptacle.\n\n", false);
 
         outputText("\"<i>You've got a nice tight throat, Mom... for a whore,</i>\" says the minotaur as he steps back.  You beam in happiness from the tone of praise in his voice, too high to register the insult for what it really is.  A moment later you forget even that, as the next dick is pressed between your lips.  ", false);
         // (short)
@@ -471,7 +471,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
             outputText("A moment later, the huge testes visibly quiver, and you know the moment you've anticipated has already arrived.  Between the tightness of your throat, the constant humming, and the squeezing of his balls, the poor beast couldn't hold back for more than a minute.  He bellows out a 'moo-OOOO' that echoes off the mountain, and cums HARD.  His first eruption of cum actually pushes his cock partway out of your cream-packed throat.  The second wave has similar effects, though this time it slides up far enough for some of the jism to escape through your nose.  He keeps cumming, each time sliding a bit further back, until he pulls free at last, leaving you to cough the spunk from your mouth and nostrils so you can breathe.\n\n", false);
 
-            outputText("The well-endowed minotaur showers you with the rest of his seed, pumping on his cock with fast, relentless strokes to spooge-soak you from your head all the way to the growing puddle underneath you.  You giggle drunkenly and fall to your side, your taut belly splattering up a wave from the puddle you land in.  Laughing uproariously, you let your hands roam over your cum - and offspring - filled form, paying special attention to your " + game.player.chestDesc() + " and drum-tight abdomen.\n\n", false);
+            outputText("The well-endowed minotaur showers you with the rest of his seed, pumping on his cock with fast, relentless strokes to spooge-soak you from your head all the way to the growing puddle underneath you.  You giggle drunkenly and fall to your side, your taut belly splattering up a wave from the puddle you land in.  Laughing uproariously, you let your hands roam over your cum - and offspring - filled form, paying special attention to your " + chestDesc(game.player) + " and drum-tight abdomen.\n\n", false);
 
             outputText("As the next beast-man approaches, the narcotics pumping through your body start to overwhelm you, and your eyes flutter closed.  That doesn't seem to matter to your sons.  A fresh dick is jammed into your slippery throat.  The last thing you remember hearing is one of the boys speaking up, \"<i>Be careful with her, boys - she's pregnant and ", false);
             if (player.pregnancyType == PregnancyStore.PREGNANCY_MINOTAUR) outputText("we wouldn't want the next member of our tribe injured.", false);
@@ -519,7 +519,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("\"<i>Sure thing bro,</i>\" answers the deep-voiced giant from behind you.  Two massive hands squeeze around your " + hipDescript() + " raise your ", false);
         if (player.isTaur()) outputText("haunches", false);
         else outputText(assDescript(), false);
-        outputText(" skyward, your back bowing from the sudden strain.  A wide, drippy tip butts up against your back-door, and though you had heard them talk about fucking your ass through your lusty daze, nothing could prepare you for the feeling of a hot, male member pushing at your pucker.  You relax your " + player.legs() + " and feel your " + assholeDescript() + " loosen, slowly dilating to let the beast's slippery pre-cum inside your rectum.  Yet, even in the face of your complete submission, he holds back, letting you hang there in the air, panting around a cock and aching for greater levels of penetration.", false);
+        outputText(" skyward, your back bowing from the sudden strain.  A wide, drippy tip butts up against your back-door, and though you had heard them talk about fucking your ass through your lusty daze, nothing could prepare you for the feeling of a hot, male member pushing at your pucker.  You relax your " + legs(player) + " and feel your " + assholeDescript() + " loosen, slowly dilating to let the beast's slippery pre-cum inside your rectum.  Yet, even in the face of your complete submission, he holds back, letting you hang there in the air, panting around a cock and aching for greater levels of penetration.", false);
         player.buttChange(60, true, true, false);
         outputText("\n\n", false);
 
@@ -566,12 +566,12 @@ export class MinotaurMobScene implements TimeAwareInterface {
             outputText("Wet lips clasp around a " + nippleDescript(0) + " and gently suck at it, making it hard and puffy inside the warm, questing mouth.  ", false);
             if (player.totalBreasts() == 2) outputText("Your ", false);
             else outputText("An", false);
-            outputText("other lonely breast is grabbed by a softer, more feminine hand, and it's then that you realize your nipples are being pleasured by the runt of your litter, the minitaur.  He caresses your " + game.player.chestDesc() + " lovingly, running his fingers over your " + player.skinFurScales() + ".  Meanwhile, his big brothers start to saw their hips back and forth, rocking back and forth like a pair of lumberjacks back home, trying to cut down a tree with the two person-blades. The smallest son sucks and licks tenderly, not wanting to hurt you, even though his bigger kin seem intent on destroying two of your body's orifices.\n\n", false);
+            outputText("other lonely breast is grabbed by a softer, more feminine hand, and it's then that you realize your nipples are being pleasured by the runt of your litter, the minitaur.  He caresses your " + chestDesc(game.player) + " lovingly, running his fingers over your " + skinFurScales(player) + ".  Meanwhile, his big brothers start to saw their hips back and forth, rocking back and forth like a pair of lumberjacks back home, trying to cut down a tree with the two person-blades. The smallest son sucks and licks tenderly, not wanting to hurt you, even though his bigger kin seem intent on destroying two of your body's orifices.\n\n", false);
         }
         outputText("You're bounced to and fro, utterly and completely fucked", false);
         if (player.biggestTitSize() >= 3 && player.biggestLactation() >= 1) outputText(", your pregnant, milky tits swaying underneath you while they're suckled", false);
         else outputText(", your hard, aching nipples sucked and licked as they sway beneath you", false);
-        outputText(".  More and more potent pre-cum is dribbling inside of you, and you start to feel like you're going numb.  From your head to your " + player.feet() + ", you're awash in sensations of all kinds, yet denied the womanly fuck you so desire.  Your " + vaginaDescript() + " is clenching and juicing, the folds aching to be touched, licked and penetrated, yet you know there's no such release coming.  Confused, you try to wrap your dimming intellect around the situation, and you realize that even though you're being used like a sex-toy, you're getting special treatment due to your pregnancy.  You feel like some domestic breeding animal, restrained and unable to properly fuck, forced to gain enjoyment from every available source.  \"<i>Here it comes; swallow it all, you pregnant sow!</i>\" exclaims the bull in your mouth.  His cock thickens, seeming to double in size to your confused, oxygen-starved consciousness.  The flare stretches your esophagus painfully wide, and the whole trembling column pulses, dumping a thick glob of beast-jizz directly into your belly.  That tiny burst is nothing compared to the torrent that follows, filling your stomach with the drug-laced, aphrodisiac seed.  You get so horny from the spunky load that your pussy seems to drip and squirt and equal amount of lady-spunk from its sloppy folds", false);
+        outputText(".  More and more potent pre-cum is dribbling inside of you, and you start to feel like you're going numb.  From your head to your " + feet(player) + ", you're awash in sensations of all kinds, yet denied the womanly fuck you so desire.  Your " + vaginaDescript() + " is clenching and juicing, the folds aching to be touched, licked and penetrated, yet you know there's no such release coming.  Confused, you try to wrap your dimming intellect around the situation, and you realize that even though you're being used like a sex-toy, you're getting special treatment due to your pregnancy.  You feel like some domestic breeding animal, restrained and unable to properly fuck, forced to gain enjoyment from every available source.  \"<i>Here it comes; swallow it all, you pregnant sow!</i>\" exclaims the bull in your mouth.  His cock thickens, seeming to double in size to your confused, oxygen-starved consciousness.  The flare stretches your esophagus painfully wide, and the whole trembling column pulses, dumping a thick glob of beast-jizz directly into your belly.  That tiny burst is nothing compared to the torrent that follows, filling your stomach with the drug-laced, aphrodisiac seed.  You get so horny from the spunky load that your pussy seems to drip and squirt and equal amount of lady-spunk from its sloppy folds", false);
         if (player.wetness() <= 3) outputText(", even though you're not usually that wet", false);
         outputText(".  It feels so good that you start to shake and spasm, cumming and clenching from the spunky injection.\n\n", false);
 
@@ -641,7 +641,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
         outputText("They patiently hold still, knowing you've defeated them and truly could punish them if you wanted to.  You reward their obedience with a slow, circling lick around the closest cock's tip.  It spurts a heavy wad of thick pre on your tongue, and instead of devouring the heavenly fluid, you spit it back onto the glistening shafts. The mixture adds to the lubricant already dripping from the underswells of your chest. Their balls move and shift within their sacks, and you can see the swollen orbs roiling around as they prepare to disgorge.  These guys get so pent up without being able to masturbate; it must be hell for them.\n\n", false);
 
-        outputText("You press your hands into the sides of your " + biggestBreastSizeDescript(player) + " to mash the flesh tightly about the two lucky penises.  The minotaurs moo in delight, immediately slicking your " + player.skinFurScales() + " with another huge wave of pre-cum, and before they can adjust to the tightness of your chest, you begin to drag your weighty love-cushions up... and finally down.  You stroke their completely-enveloped cocks languidly, enjoying the complete control and dominance it's giving you over your herd.  Trembling mightily, they fight their bodies to be still for you.  Such good boys.\n\n", false);
+        outputText("You press your hands into the sides of your " + biggestBreastSizeDescript(player) + " to mash the flesh tightly about the two lucky penises.  The minotaurs moo in delight, immediately slicking your " + skinFurScales(player) + " with another huge wave of pre-cum, and before they can adjust to the tightness of your chest, you begin to drag your weighty love-cushions up... and finally down.  You stroke their completely-enveloped cocks languidly, enjoying the complete control and dominance it's giving you over your herd.  Trembling mightily, they fight their bodies to be still for you.  Such good boys.\n\n", false);
 
         outputText("You reward the patient studs by increasing the tempo.  Up and down go the cock-swallowing tits, squelching noisily from constantly-dripping pre-cum that's raining onto the ground.  The trapped pricks pulse and bounce against each other while the perfect prison around them caresses and strokes their whole length at once.  They puff up slightly, thickening and pressing back at your tits, and you realize they're about to blow.\n\n", false);
 
@@ -671,7 +671,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
             outputText("You nod dumbly and fall onto your side, giggling nonsensically at the bottle full of cum. How silly!  There's still so many dicks to drain, but you've forgotten how to stand up!  Big strong hands help you up and put another dick in your tits.  Yum!  The cock fucks them hard and fast until you get to have another mouthful of creamy semen.  You black out after that, though you're sure your tits and throat got stuffed and fucked at least once by each of the beast-men.  Even the minitaur got a second turn with your tits.\n\n", false);
 
-            outputText("You awaken in camp, still a little woozy and naked as the day you were born.  Your " + player.armorName + " lies a few feet away.  Judging by how dizzy you are, it hasn't been long since your mountain tryst.  You wash the dried cum from your " + player.skinFurScales() + " and gear before you get dressed.  Wow... that was nice.", false);
+            outputText("You awaken in camp, still a little woozy and naked as the day you were born.  Your " + player.armorName + " lies a few feet away.  Judging by how dizzy you are, it hasn't been long since your mountain tryst.  You wash the dried cum from your " + skinFurScales(player) + " and gear before you get dressed.  Wow... that was nice.", false);
         }
         // (SMALL)
         else {
@@ -778,7 +778,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             else outputText("They lick their fingers clean, and a moment later, cocks are spearing your nipples, disappearing deep into the tingling passages concealed within your chest.\n\n", false);
         }
         // Dicks)
-        if (player.hasCock()) outputText(game.player.SMultiCockDesc() + " hangs limply on one of your boys' bellies, dribbling weakly at your need, but there's not any way for it to get involved in the crowd of orgiastic bodies.\n\n", false);
+        if (player.hasCock()) outputText(SMultiCockDesc(game.player) + " hangs limply on one of your boys' bellies, dribbling weakly at your need, but there's not any way for it to get involved in the crowd of orgiastic bodies.\n\n", false);
 
         outputText("That's more like it - now that you're completely impaled in every way, the real fun can start!  You increase the speed of your body's movements, reveling in the absolute dominance and control you hold over your drug-dispensing offspring.  They leak and dribble as you fuck them hard and fast, occasionally reaching out to slap or spank one of them when they start to move.  You ride them like a set of living dildos, squelching noisily from every hole as you leak lube, spit, and pre-cum in equal measure. It's so hot and nasty", false);
         if (player.cor < 33) outputText(" that you cringe a little when you realize you're having an incestuous orgy, but the rising tide of minotaur-drug in your bloodstream washes the errant thought away.", false);
@@ -824,11 +824,11 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("", true);
         spriteSelect(94);
         outputText("You hastily remove the lower portions of your " + player.armorName + " to expose your " + vaginaDescript(), false);
-        if (player.hasCock()) outputText(" and " + game.player.multiCockDescriptLight(), false);
+        if (player.hasCock()) outputText(" and " + multiCockDescriptLight(game.player), false);
         outputText(" to the air.  The defeated ", false);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] < 20) outputText("mob", false);
         else outputText("tribe", false);
-        outputText(" of minotaurs perk up at the sight, but you laugh at their hopeful expressions.  \"<i>I hope you don't expect to be getting any of this.  Get the fuck out of here, and don't let me catch you trying to ambush me again!</i>\"  Wearied, they drag themselves to their feet, giving your womanhood long, leering looks as they go.  You pin the minitaur's tail under your " + player.foot() + ", though.  He's got a surprisingly cute mouth, and you intend to put it to use.\n\n", false);
+        outputText(" of minotaurs perk up at the sight, but you laugh at their hopeful expressions.  \"<i>I hope you don't expect to be getting any of this.  Get the fuck out of here, and don't let me catch you trying to ambush me again!</i>\"  Wearied, they drag themselves to their feet, giving your womanhood long, leering looks as they go.  You pin the minitaur's tail under your " + foot(player) + ", though.  He's got a surprisingly cute mouth, and you intend to put it to use.\n\n", false);
 
         outputText("The tiny, feminine beast-man looks up at you hopefully.  You crush his hopes by telling him to crawl to you.  If he wanted your pussy, he could have done better by asking.  Running around with that band of brutes didn't score him any points in your book, and you make a point of telling him so.  He whines, \"<i>I-I don't have a choice Mom!  They bully me and make me suck them off all the time.  And if we can't find someone to fuck, I end up having to t-take it in my butt.  It hurt at first... but now I get antsy when they don't let me suck them off every few hours.</i>\"\n\n", false);
 
@@ -873,29 +873,29 @@ export class MinotaurMobScene implements TimeAwareInterface {
             else if (player.wetness() >= 2) outputText("  Some of the fluids escape his mouth to run down his shaggy chin.", false);
             else outputText("  All of your moistness is collected on his tongue and sucked into his mouth.", false);
             outputText("  Your quivering cunt tries to milk the poor boy's tongue like a cock, actually pulling him harder against your fem-cum-slicked nether-lips while you climax.", false);
-            if (player.hasCock()) outputText("  Salty cum dribbles down his back from your spurting " + game.player.multiCockDescriptLight() + ", the male part of you orgasming along in a perverse symphony with your girl-parts.\n\n", false);
+            if (player.hasCock()) outputText("  Salty cum dribbles down his back from your spurting " + multiCockDescriptLight(game.player) + ", the male part of you orgasming along in a perverse symphony with your girl-parts.\n\n", false);
         }
         // (PENISCOCKSUCKERFUCK)
         else {
             outputText("start sucking Mommy's hard cock.</i>\"  To emphasize your point, you ", false);
-            if (player.isTaur()) outputText("flex your " + game.player.multiCockDescriptLight() + " to slap against your belly.", false);
-            else outputText("stroke your " + game.player.multiCockDescriptLight() + " with one hand.", false);
-            outputText("  " + game.player.SMultiCockDesc() + " ", false);
+            if (player.isTaur()) outputText("flex your " + multiCockDescriptLight(game.player) + " to slap against your belly.", false);
+            else outputText("stroke your " + multiCockDescriptLight(game.player) + " with one hand.", false);
+            outputText("  " + SMultiCockDesc(game.player) + " ", false);
             if (player.lust < 50) outputText("grows hard", false);
             else outputText("gets even harder", false);
             outputText(" before his eyes, and the minotaur licks his lips reflexively, clearly enjoying the thought of fellating you.\n\n", false);
 
             outputText("The girly 'monster' crawls forward, ", false);
             if (player.isTaur()) outputText("disappearing under your hind-legs as he attends to his newly commanded duty.", false);
-            else outputText("looking up at you longingly as he leans in towards " + game.player.oMultiCockDesc() + ".", false);
-            outputText("  His big brown eyes meet yours as he opens his muzzle and lets the full length of his tongue flop free.  It's roughly a foot and a half long fully extended, and " + game.player.sMultiCockDesc() + " twitches as you imagine what it must feel like.  Thankfully, he does not keep you waiting long.\n\n", false);
+            else outputText("looking up at you longingly as he leans in towards " + oMultiCockDesc(game.player) + ".", false);
+            outputText("  His big brown eyes meet yours as he opens his muzzle and lets the full length of his tongue flop free.  It's roughly a foot and a half long fully extended, and " + sMultiCockDesc(game.player) + " twitches as you imagine what it must feel like.  Thankfully, he does not keep you waiting long.\n\n", false);
 
             outputText("The serpent-like tongue snakes ", false);
             if (player.balls > 0) outputText("around your " + sackDescript(player) + " before curling ", false);
-            outputText("around the base of your " + game.player.multiCockDescriptLight() + ".  It circles up ", false);
+            outputText("around the base of your " + multiCockDescriptLight(game.player) + ".  It circles up ", false);
             if (player.cockTotal() > 1) outputText("a", false);
             else outputText("the", false);
-            outputText(" shaft before stopping at the frenulum.  The wet heat of his tongue seems to seep into your dick-flesh until you feels as if you could melt, but the minitaur is just getting started.  He opens wide and takes your " + player.cockHead() + " into his mouth; it rubs sensually over the remainder of flat tongue still inside, and he sucks expertly at it until you're drooling pre-cum on his tongue.  He shivers at that, but it doesn't make him ", false);
+            outputText(" shaft before stopping at the frenulum.  The wet heat of his tongue seems to seep into your dick-flesh until you feels as if you could melt, but the minitaur is just getting started.  He opens wide and takes your " + cockHead(player) + " into his mouth; it rubs sensually over the remainder of flat tongue still inside, and he sucks expertly at it until you're drooling pre-cum on his tongue.  He shivers at that, but it doesn't make him ", false);
             if (!player.isTaur()) outputText("break eye-contact or ", false);
             outputText("slow down in the slightest.\n\n", false);
 
@@ -922,7 +922,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
             if (player.hasVagina()) {
                 if (player.wetness() >= 5) outputText("  Your cunny squirts onto his chest throughout the ordeal.", false);
-                else if (player.wetness() >= 3) outputText("  Your cunny drips everywhere, making a mess of your " + player.legs() + ".", false);
+                else if (player.wetness() >= 3) outputText("  Your cunny drips everywhere, making a mess of your " + legs(player) + ".", false);
             }
             outputText("  The minitaur actually looks kind of cute with spooge puddled on his nose.\n\n", false);
         }
@@ -939,7 +939,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
     private victoryBJNippleFuckMinotaurGang(): void {
         outputText("", true);
         spriteSelect(94);
-        outputText("You pull down the top portion of your " + player.armorName + " and shake your " + game.player.chestDesc() + " back and forth.  \"<i>Would two of you strapping young lads like to play with your Mom's nipples?</i>\" you tease.  The minotaurs stir from their defeated poses with lust burning in their eyes as they rise and advance.  Giggling, you circle your areolae with your fingertip and moan lewdly, teasing the poor beasts until you tire of the stimulation and work a fingertip into ", false);
+        outputText("You pull down the top portion of your " + player.armorName + " and shake your " + chestDesc(game.player) + " back and forth.  \"<i>Would two of you strapping young lads like to play with your Mom's nipples?</i>\" you tease.  The minotaurs stir from their defeated poses with lust burning in their eyes as they rise and advance.  Giggling, you circle your areolae with your fingertip and moan lewdly, teasing the poor beasts until you tire of the stimulation and work a fingertip into ", false);
         if (player.totalNipples() == 2) outputText("each", false);
         else outputText("two", false);
         outputText(" of the leaky nipple-cunts.\n\n", false);
@@ -973,7 +973,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
         outputText("Your girlish minitaur son dives right in to your inviting maw.  His cock slides through your lips, over your tongue, and into the recesses of your throat with ease, leaving a trail of tingling pre-cum coating everything in its wake.  Even though the sudden appearance of your smallest child has forced your bigger offspring to shift, all it's done is pulled your shaking, violated breasts out to the sides in a lewd display of breast penetration.  The three pound away at you violently, humping to their own rhythms and making it impossible to focus on anything but the violent penetration.", false);
         if (player.hasCock()) {
-            outputText("  " + game.player.SMultiCockDesc(), false);
+            outputText("  " + SMultiCockDesc(game.player), false);
             if (player.hasVagina()) outputText(" and " + vaginaDescript() + " drool", false);
             else outputText(" drools", false);
             outputText(" lamely inside your clothing, nearly forgotten in the sensory overload coming from your upper body.", false);
@@ -985,7 +985,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         else if (player.biggestLactation() >= 1.5) outputText(" while you dribble milk around the twin rods", false);
         outputText(".\n\n", false);
 
-        outputText("The two cumming studs pull out of the tight holes as your convulsing fingertips milk their balls, squeezing the heavy sacks uncontrollably.  Ropes of potent, drug-laced spooge spatter across your " + game.player.chestDesc() + ", shoulders, and face, just in time for the cock plugging your mouth to explode in orgasm with the force of a bursting dam.  You're utterly soaked in seed, both inside and out - an incestuous whore through and through.  The two largest minotaurs finally exhaust their reserves and step back, high-fiving as they go.  Your smaller, girlish boy takes longer to finish, but by the time he does you feel positively stuffed.  It will be quite some time before you're hungry for a", false);
+        outputText("The two cumming studs pull out of the tight holes as your convulsing fingertips milk their balls, squeezing the heavy sacks uncontrollably.  Ropes of potent, drug-laced spooge spatter across your " + chestDesc(game.player) + ", shoulders, and face, just in time for the cock plugging your mouth to explode in orgasm with the force of a bursting dam.  You're utterly soaked in seed, both inside and out - an incestuous whore through and through.  The two largest minotaurs finally exhaust their reserves and step back, high-fiving as they go.  Your smaller, girlish boy takes longer to finish, but by the time he does you feel positively stuffed.  It will be quite some time before you're hungry for a", false);
         if (!player.minotaurAddicted()) outputText(" 'meal'", false);
         else outputText("nother fix", false);
         outputText(".\n\n", false);
@@ -993,7 +993,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("You stand up straight and stretch, cum pouring from your nipples.  The assembled minotaurs ", false);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] < 5) outputText("relax and fan themselves while giving you lusty looks", false);
         else outputText("stare gloomily at the lucky three before turning to regard your form again with unrepentant lust", false);
-        outputText(".  You re-dress sensually, giving them as much of a show as you dare, not even bothering to wipe the cum-coating from your " + player.skinFurScales() + " before you finish slipping into your " + player.armorName + " and depart.", false);
+        outputText(".  You re-dress sensually, giving them as much of a show as you dare, not even bothering to wipe the cum-coating from your " + skinFurScales(player) + " before you finish slipping into your " + player.armorName + " and depart.", false);
         player.orgasm();
         dynStats("spe", -.5, "int", -.5, "sen", -1, "cor", 1);
         player.minoCumAddiction(10);
@@ -1008,7 +1008,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
     private minotaurGangBadEnd(): void {
         outputText("", true);
         spriteSelect(94);
-        outputText("Slumping down to your knees, you look up at the crowd surrounding you.  There're dozens of horny, bestial figures, all of their bovine faces twisted into leering smiles at your state.   You can smell the thick musk in the air, hanging so heavily that it seems to fog your view.  Sniffing in great lungfuls of it, you slump back and let your " + player.legs() + " spread out of their own accord, utterly revealing the folds of your " + vaginaDescript() + " to the horny beast-men.  They cluster around you, their loincloths disappearing in a hurry in their rush to fuck their incestuous mother.  Images of all the other times you've been in a similar situation run through your head, the thoughts blurring together into a vision of one long, drug-fueled fuck.\n\n", false);
+        outputText("Slumping down to your knees, you look up at the crowd surrounding you.  There're dozens of horny, bestial figures, all of their bovine faces twisted into leering smiles at your state.   You can smell the thick musk in the air, hanging so heavily that it seems to fog your view.  Sniffing in great lungfuls of it, you slump back and let your " + legs(player) + " spread out of their own accord, utterly revealing the folds of your " + vaginaDescript() + " to the horny beast-men.  They cluster around you, their loincloths disappearing in a hurry in their rush to fuck their incestuous mother.  Images of all the other times you've been in a similar situation run through your head, the thoughts blurring together into a vision of one long, drug-fueled fuck.\n\n", false);
 
         outputText("Giggling, you realize a scene much like that is about to happen to you all over again.  A dribble of fem-slime leaks out from your " + vaginaDescript() + " into the dry mountain dirt, showing your boys just how excited you are to be on the receiving end of their dripping horse-cocks.  \"<i>Come to Momma,</i>\" you coo, already slipping into a haze of musky cum-lust.\n\n", false);
 
@@ -1022,7 +1022,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
         outputText("You giggle.  Lazing around all day and getting to suck the cum from dozens of minotaurs all the time?  This is heaven.  Sure, you were supposed to be out there fighting the demons, but you kept letting the big, hairy beasts force themselves on you over and over, until you weren't even sure why you were resisting.  Now?  There's a dick with a drizzle of pre-cum leaking from the tip, just asking for you to slurp the cum out of it.  You'll stay anywhere if it means you get to suck it down and feel it exploding in your soaked nethers.\n\n", false);
 
-        outputText("Nodding, you give the poor boy a lick, gripping his swollen shaft in your hand as you reach down to undo your " + player.armorName + ".  You jump when the only thing your fingers bump into is your own " + player.skinFurScales() + ".  It seems that during the journey here all your gear was removed from your body.  You're as naked as any of the other sluts in here!  At least your nudity will make it even easier for you to get the poor guy off.  Clothing yourself seems a wasted effort at this point.\n\n", false);
+        outputText("Nodding, you give the poor boy a lick, gripping his swollen shaft in your hand as you reach down to undo your " + player.armorName + ".  You jump when the only thing your fingers bump into is your own " + skinFurScales(player) + ".  It seems that during the journey here all your gear was removed from your body.  You're as naked as any of the other sluts in here!  At least your nudity will make it even easier for you to get the poor guy off.  Clothing yourself seems a wasted effort at this point.\n\n", false);
 
         outputText("Cupping the heavy, shuddering ball-sack in your hand, you stroke the small minotaur's trembling shaft, setting off shivers of pleasure each time your fingers rub over the sensitive skin of his dick's three medial ridges.  Teasingly, you circle your tongue around his flare a few times, catching the fresh drops of pre that roll from his urethral opening to funnel back into your mouth.  He gasps, clearly loving your touches and wanting to blow, but unable from a few licks and a handjob alone.  Sensing his need, you ram the flat, wide-spread tip of his dick through your lips and suck hard, fully engorging his flare while your spit soaks into his bestial skin.\n\n", false);
 
@@ -1035,7 +1035,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
         outputText("Already experiencing a pleasant buzz and tingle, you grab his hips and throw yourself against him, bouncing the both of you in the pillowy room, grunts and moans of passion teasing the other girls as you're fucked with wild abandon by one they crave.  Your " + vaginaDescript() + " is like a furnace of lust, the fires of need inside only growing hotter with every stroke of wonderful minotaur-cock.  Panting, the smallest of your beast-men does his best to fuck you, and though his member is nowhere near as large as his brother's swollen shafts, the thick, pent-up drugs he's dripping into your uterus are keeping you so close the edge.\n\n", false);
 
-        outputText("You feel like you're floating, cushioned in a bed of clouds with every nerve firing off nothing but pleasure and happiness.  There's a wet, slap-slap-slap nagging at you, but you close your eyes and forget it, letting your fingers play across your " + game.player.chestDesc() + " to ", false);
+        outputText("You feel like you're floating, cushioned in a bed of clouds with every nerve firing off nothing but pleasure and happiness.  There's a wet, slap-slap-slap nagging at you, but you close your eyes and forget it, letting your fingers play across your " + chestDesc(game.player) + " to ", false);
         if (player.hasFuckableNipples()) outputText("slide inside your nipple-cunts and finger your chest pussies in a small approximation of what's happening below.", false);
         else if (player.biggestLactation() >= 1) outputText("tug and pull at your drippy nipples, releasing thick flows of creamy milk.", false);
         else outputText("tug at your achy nipples.", false);
@@ -1044,7 +1044,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("The rhythmic contractions around his rod set off the minitaur.  His heavy balls bounce against your body as they churn and jiggle, pumping an obscene amount of cum through the thick cock lodged in your twat.  You can feel his flare straining at your cervix, the urethra pumping a torrent of spooge ", false);
         if (player.pregnancyIncubation == 0) outputText("inside your empty womb", false);
         else outputText("against the plugged entrance of your pregnant womb", false);
-        outputText(", releasing so much that a squirt of it escapes to run down your " + player.leg() + ".  That was just the first spurt!  The second burst of semen fills every nook and cranny of your " + vaginaDescript() + ", your entrance turning to a frothy mess of white goo and slippery lady-spunk.  The pent-up pecker keeps flexing in orgasm, firing jet after jet of narcotic cream into your semen-spurting box, the pillows under you quickly soaking up the excess, addictive jizz.\n\n", false);
+        outputText(", releasing so much that a squirt of it escapes to run down your " + leg(player) + ".  That was just the first spurt!  The second burst of semen fills every nook and cranny of your " + vaginaDescript() + ", your entrance turning to a frothy mess of white goo and slippery lady-spunk.  The pent-up pecker keeps flexing in orgasm, firing jet after jet of narcotic cream into your semen-spurting box, the pillows under you quickly soaking up the excess, addictive jizz.\n\n", false);
 
         outputText("Your son sighs and slumps down, his cock slowly slipping from your abused vulva, escaping with a wet 'pop'.  A river of white rolls out of your body to further stain the room's furnishings.  You shudder from the sensation as a it triggers a series of tiny, miniature climaxes.  While you're lost to the pleasure, the minitaur departs with noticeably less bulge in his loincloth.  At the same time, the other girls crowd around you, scooping up what they can save of your boy's liquid love and shoveling it into their greedy, whorish maws.  The cow-girl industriously sets to work, using her massive tongue on your " + vaginaDescript() + " to scoop out every drop she can get.  You cum on her face, splattering her with spooge and your feminine moisture.  She smiles and kisses your still-sensitive clit, throwing you into a black-out inducing orgasm.", false);
         player.orgasm();
@@ -1068,7 +1068,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
         outputText("As usual, the biggest, most potent members of the tribe are crowding around you, jockeying for the first go at one of your holes.  You try to say, \"<i>Be gentle boys, I'll take care of all of you.</i>\"  A cock silences you after the second syllable and turns your articulate speech into a slutty hum of satisfaction.  You lap the sweat from the underside of the shaft and relax your throat to let it enter deeper.  The cock twitches from your mouth's tightness, and you suck down hard, happy to pull a dollop of cream into your throat.  Musky fur tickles at your nose, and you realize you're already deepthroating his entire cock.  You can feel it stretching your throat, dilating your oral passage wider than it was ever meant to be.  It fills you in the most fantastic way, but at the same time, another of your orifices aches for something... anything... to push inside it.\n\n", false);
 
-        outputText("There's bickering behind you for a moment, accompanied by the sounds of fists striking flesh.  Thankfully, it dies down after a moment, the sounds of violence fading and swiftly being drowned out by the wet slurps of pussies devouring thick rods.  Your " + vaginaDescript() + " joins the chorus of liquid slurps with a messy squelch of its own.  Rivulets of pussy-juice slick down your " + player.legs() + " and turn the dirt to mud below you.  With every pregnancy, your honey-pot has only gotten wetter.  ", false);
+        outputText("There's bickering behind you for a moment, accompanied by the sounds of fists striking flesh.  Thankfully, it dies down after a moment, the sounds of violence fading and swiftly being drowned out by the wet slurps of pussies devouring thick rods.  Your " + vaginaDescript() + " joins the chorus of liquid slurps with a messy squelch of its own.  Rivulets of pussy-juice slick down your " + legs(player) + " and turn the dirt to mud below you.  With every pregnancy, your honey-pot has only gotten wetter.  ", false);
         if (player.wetness() >= 5) outputText("Sure, you were a squirter before, but now, you'll squirt a half-dozen times even before you orgasm.", false);
         else outputText("Sure, you could get plenty wet before, but now, you'll be squirting and drizzling before you even orgasm.", false);
         outputText("  The quim-soaked cock pulls out long enough to leave you wanting, then slides back home, setting a nice, fast pace for your fuck.\n\n", false);
@@ -1077,7 +1077,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
         outputText("Chemicals wick into your bloodstream, starting a chain reaction that makes your sopping, stuffed cunt squirt around its owner's cock and your head grow dizzy.  The swollen shaft in your mouth softens and withdraws, giving you the chance to scream, \"<i>Fuck, yes, fuck me boys!  Fuck Momma hard!</i>\"\n\n", false);
 
-        outputText("You're cut back off by an even bigger member just as the cunt-ravaging horse-cock stuffing your box explodes.  There's an immediate and familiar rush of euphoria, arousal, and fuzzy-headedness sweeping through you, making you giggle into the lip-stretching dick now gaping your mouth.  Your womb floods, your " + vaginaDescript() + " squirts, and your " + player.legs() + " flop about lamely, as your body tries to cope with the onslaught of narcotic, orgasmic pleasure.  Pregnancy seems certain from that single stud's deposit.\n\n", false);
+        outputText("You're cut back off by an even bigger member just as the cunt-ravaging horse-cock stuffing your box explodes.  There's an immediate and familiar rush of euphoria, arousal, and fuzzy-headedness sweeping through you, making you giggle into the lip-stretching dick now gaping your mouth.  Your womb floods, your " + vaginaDescript() + " squirts, and your " + legs(player) + " flop about lamely, as your body tries to cope with the onslaught of narcotic, orgasmic pleasure.  Pregnancy seems certain from that single stud's deposit.\n\n", false);
 
         outputText("He's pulled back and replaced, and you wonder which of your boys is getting sloppy seconds.  Who cares, as long as you get to feel him cum in you until you go dizzy!", false);
         player.orgasm();

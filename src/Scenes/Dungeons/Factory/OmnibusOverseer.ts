@@ -41,7 +41,7 @@ export class OmnibusOverseer extends Monster {
             else {
                 outputText("The milk splashes into your " + player.armorName + ", soaking you effectively.  ");
                 if (player.cocks.length > 0) {
-                    outputText("Your " + game.player.cockDescript(0) + " gets hard as the milk lubricates and stimulates it.  ");
+                    outputText("Your " + cockDescript(game.player, 0) + " gets hard as the milk lubricates and stimulates it.  ");
                     dynStats("lus", 5);
                 }
                 if (player.vaginas.length > 0) {

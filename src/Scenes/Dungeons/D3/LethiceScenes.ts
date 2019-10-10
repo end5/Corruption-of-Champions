@@ -57,7 +57,7 @@ export class LethiceScenes {
     }
 
     private goFight(): void {
-        outputText("<i>“So be it.”</i> Lethice rises from her throne, pacing pensively back and forth. Wings unfurl from behind her back, casting you into the darkness of her demonic shadow. <i>“You seek a fight with the Queen of Mareth, and you shall have one.”</i> With feline grace, she launches herself dozens of feet into the air, flips forward, and snaps her wings out to catch her midair. <i>“My pets! My lovelies! Watch what this mortal’s foolishness earns " + player.mf("him", "her") + "!”</i>");
+        outputText("<i>“So be it.”</i> Lethice rises from her throne, pacing pensively back and forth. Wings unfurl from behind her back, casting you into the darkness of her demonic shadow. <i>“You seek a fight with the Queen of Mareth, and you shall have one.”</i> With feline grace, she launches herself dozens of feet into the air, flips forward, and snaps her wings out to catch her midair. <i>“My pets! My lovelies! Watch what this mortal’s foolishness earns " + mf(player, "him", "her") + "!”</i>");
         outputText("\n\nScattered applause breaks out as Lethice wings around to engage you.");
         if (!player.canFly()) outputText(" Good thing she’s not the only one that can fly!");
         outputText("\n\n<b>It’s a fight!</b>");
@@ -326,7 +326,7 @@ export class LethiceScenes {
         else {
             outputText("\n\nOf course, she doesn’t have much to offer you right now. So plain, so... human. Were it not for the wings and horns, she might be just any other girl. But she <i>is</i> a demon - a shapeshifter, a being that exists as consummate pleasure incarnate. She can be anything you want her to be: and you want a whole new way to play with those growing tits of hers. You latch your hands around her nipples and give both swollen pink peaks a rough yank, making the queen croon in pleasure.");
 
-            outputText("\n\n<i>“Ah! You’re positively <b>obsessed</b>, aren’t you, Champion?”</i> Lethice moans, chewing her lower lip seductively. <i>“You’ve come all this way, just to play with my tits. Why, if that’s all you wanted, you could have just asked. I’d have been more than happy to let a big, strong " + player.mf("man", "woman") + " like you crawl into my lap and play with me until you came your soul right out for me.”</i>");
+            outputText("\n\n<i>“Ah! You’re positively <b>obsessed</b>, aren’t you, Champion?”</i> Lethice moans, chewing her lower lip seductively. <i>“You’ve come all this way, just to play with my tits. Why, if that’s all you wanted, you could have just asked. I’d have been more than happy to let a big, strong " + mf(player, "man", "woman") + " like you crawl into my lap and play with me until you came your soul right out for me.”</i>");
 
             outputText("\n\nYou give the Demon Queen a rueful grin. No way she’s getting your soul - not while she’s on her back, completely at your mercy. To the victor go the spoils...");
 
@@ -586,7 +586,7 @@ export class LethiceScenes {
 
         outputText("\n\nYou approach the throne and slink down to your knees, placing your hands firmly on the Demon Queen’s creamy thighs. She smiles regally, hungrily, down upon you while you explore the gulf between her legs, moving ever closer to her alluring hole. Eventually, your lips close with hers, gently teasing your way until the you taste the first sweet droplets of corrupted, feminine excitement.");
 
-        outputText("\n\nAn explosion of sensation erupts through your [tongue], spreading as a tingling warmth all through your mouth, throat, and beyond. You’ve barely gotten your tongue out of your mouth before the alien feeling has spread through your entire body, infusing you with renewed lust above and beyond anything you’ve felt for the statuesque demoness. Like a " + player.mf("man", "woman") + " starving, you dig in with desperate abandon, munching that demonic rug with everything you have.");
+        outputText("\n\nAn explosion of sensation erupts through your [tongue], spreading as a tingling warmth all through your mouth, throat, and beyond. You’ve barely gotten your tongue out of your mouth before the alien feeling has spread through your entire body, infusing you with renewed lust above and beyond anything you’ve felt for the statuesque demoness. Like a " + mf(player, "man", "woman") + " starving, you dig in with desperate abandon, munching that demonic rug with everything you have.");
 
         outputText("\n\n<i>“Mmm, intent on making a sterling first impression, aren’t you?”</i> Lethice murmurs, wrapping her thighs around your [face]. Turning her gaze upwards to the demons in the stands, she shouts, <i>“Do you see, my dears? Another would-be Champion reduced to nothing more than a fuck-hungry animal like us, even without the help of the factory. Our plans are quite on track! Humans, beast-morphs, even the so-called gods of this realm all end just as this one has: on their knees, worshipping my twat like the perverse altar of our wonderful Demon Realm.”</i>");
 
@@ -725,7 +725,7 @@ export class LethiceScenes {
             outputText("How did you escape from the factory, I wonder? And so clean and pure, too... you’re belly’s not yet swollen with imps, and your breasts are so small. Did you slip through");
             if (flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] == 0) outputText(" Zetaz");
             else outputText(" the new Warden");
-            outputText("}’s fingers, I wonder? Tsk, more punishments to deal out, I suppose. Isn’t that right, " + player.mf("boy", "girl") + "?”</i>");
+            outputText("}’s fingers, I wonder? Tsk, more punishments to deal out, I suppose. Isn’t that right, " + mf(player, "boy", "girl") + "?”</i>");
         }
 
         menu();
@@ -739,7 +739,7 @@ export class LethiceScenes {
 
         outputText("\n\n<i>“No... [name]? [name] is that you?”</i> she gasps, staring wide-eyed. <i>“Oh, gods, no...”</i>");
 
-        outputText("\n\nYou cock your head aside, confused. That’s not your name. You’re Champ. You’re Mistress’s favorite puppy-" + player.mf("stud", "slut") + ".");
+        outputText("\n\nYou cock your head aside, confused. That’s not your name. You’re Champ. You’re Mistress’s favorite puppy-" + mf(player, "stud", "slut") + ".");
 
         outputText("\n\n<i>“Aw, don’t confuse the poor thing,”</i> Mistress chides, patting your head. <i>“This is Champ. Champ, say hello.”</i>");
 
@@ -757,7 +757,7 @@ export class LethiceScenes {
 
         outputText("\n\nWhy is she still talking to you!? Your head is starting to hurt with all her blabbering. You’re not a human, you’re a dog! A good, obedient dog. Mistress’s favorite dog.");
 
-        outputText("\n\nMistress gives your leash a gentle tug, drawing your attention back. <i>“Poor thing. My precious Champ’s starting to get confused. I think we need to shut this pretty little bitch up, don’t we " + player.mf("boy", "girl") + "? Or better yet, make her scream.”</i>");
+        outputText("\n\nMistress gives your leash a gentle tug, drawing your attention back. <i>“Poor thing. My precious Champ’s starting to get confused. I think we need to shut this pretty little bitch up, don’t we " + mf(player, "boy", "girl") + "? Or better yet, make her scream.”</i>");
 
         outputText("\n\nYou bark, feeling yourself harden at your Mistress’s words. Making bitches scream is what she and her friends made you for. There’s nobody in the world better at it than you, and everyone in Mistress’s palace knows it now.");
 
@@ -775,13 +775,13 @@ export class LethiceScenes {
 
         outputText("\n\nPlease fuck her harder? Please fill her womb with virile seed until she’s bloated with your pups? You grin ear to floppy ear and piston your hips, hammering into the juicy honeypot between the would-be champion’s legs with renewed vigor. Her voice breaks, no longer able to form words - she descends into incoherent cries and moans, squirming helplessly beneath you.");
 
-        outputText("\n\n<i>“Good " + player.mf("boy", "girl") + ", Champ,”</i> your Mistress murmurs, and as you give a glance over your shoulder, you’re deeply, deeply pleased to see that one of her hands has slipped beneath her priestly garb to pleasure herself. She approves!");
+        outputText("\n\n<i>“Good " + mf(player, "boy", "girl") + ", Champ,”</i> your Mistress murmurs, and as you give a glance over your shoulder, you’re deeply, deeply pleased to see that one of her hands has slipped beneath her priestly garb to pleasure herself. She approves!");
 
         outputText("\n\nSeeing your beloved Mistress enjoying your vigorous domination of her prisoner drives you to finish for her. Your swollen canid knot presses hard against the girl’s cunny, stretching her open around the bulbous bitch-breaker. As strong as you are now, it doesn’t take long before you do break her, forcing her slutty sex to open wide and accept your masculine rod in its entirely. Her body convulses, orgasming in ways you imagine she’s never done before. Then she goes limp, her body surrendering to you utterly and completely. Sweet-smelling feminine slime drools down her thighs and ass, pooling on the floor between your legs. The second your knot submerges into the sultry-wet embrace of her quivering sex, locking the two of you together in primal sexual bliss. There’s nothing left but animal lust, the bestial drive to breed the pathetic, broken vixen.");
 
         outputText("\n\nYou cum like a fire hose, loosing yourself inside her. No matter how many times you cum in a day, Mistress’s magics have made sure you’re always so swollen with seed that you leave your bitches’ bellies bloated, drooling sticky whiteness from their twats. And that’s just what you leave this hapless whore doing, spraying your own corrupted seed into her virginal womb until you can feel the rising tide of you cum sloshing against your buried knot. Panting like the dog you are, you flop down overtop the broken <i>“champion,”</i> pinning her to the ground and bottling your seed inside her, making sure it takes.");
 
-        outputText("\n\n<i>“That’s what I like to see, Champ,”</i> your mistress smiles, standing. You feel the leash around your neck tighten, gently encouraging you to get off of the ravaged woman. It takes a few minutes for your knot to deflate enough to let you slip out, letting loose a deluge of spunk that splatters down her rounded ass and onto the flagstone. You trot happily back to Mistress’s side, wagging your tail as your well-used doggy-dong starts to soften back into its sheath. <i>“Good " + player.mf("boy", "girl") + ". Very good... so good, in fact, I think I’ll keep this would-be heroine. Perhaps I’ll give her to your trainer first. All you poor Ingnam sluts should stick together after all... perhaps I’ll breed myself a whole little village of humans. Well, of </i>dogs<i>, more like.”</i>");
+        outputText("\n\n<i>“That’s what I like to see, Champ,”</i> your mistress smiles, standing. You feel the leash around your neck tighten, gently encouraging you to get off of the ravaged woman. It takes a few minutes for your knot to deflate enough to let you slip out, letting loose a deluge of spunk that splatters down her rounded ass and onto the flagstone. You trot happily back to Mistress’s side, wagging your tail as your well-used doggy-dong starts to soften back into its sheath. <i>“Good " + mf(player, "boy", "girl") + ". Very good... so good, in fact, I think I’ll keep this would-be heroine. Perhaps I’ll give her to your trainer first. All you poor Ingnam sluts should stick together after all... perhaps I’ll breed myself a whole little village of humans. Well, of </i>dogs<i>, more like.”</i>");
 
         outputText("\n\nMistress smiles and strokes your hair, watching as her draconic guardswomen return and cart your bred bitch away for her first training session, still leaking cum as she goes.");
 
@@ -853,31 +853,31 @@ export class LethiceScenes {
     private goHomeVeng(): void {
         clearOutput();
 
-        outputText("<b>Later...\n</b>Tales of the Champion’s return are rarely told, not in the open anyway. " + player.mf("He", "She") + " blew into town with all the subtlety of a cyclone, laying waste to the village’s elders and all who dared defend them. Every villager remembers that night, the night that their leadership was put to the torch - literally. Each of them was left to die inside his own burning mans, bathed in the scorching heat until naught remained but ashes and memories.");
-        outputText("\n\nAfter that night, there wasn’t a rebellious soul left alive to oppose to the Champion’s rule. " + player.mf("He", "She") + " became the defacto " + player.mf("King", "Queen") + " of the village, the breaker of the old ways and forger of the new.");
-        if (player.cor <= 33) outputText(" Despite the fear and terror of " + player.mf("his", "her") + " arrival, " + player.mf("he", "she") + " proved a fair and wise monarch. The village soon became a town, and that town a city. Prosperity came to those who lived in the valley, guided by the strength of its unshakable ruler.");
-        else if (player.cor <= 66) outputText(" Despite the fear and terror of " + player.mf("his", "her") + " arrival, " + player.mf("he", "she") + " proved a competent, if harsh monarch. The village’s prosperity was marred only by its limited liberties. Still, it was soon a town, and later a city. Most folk were willing to sacrifice their freedoms for the safety " + player.mf("he", "she") + " provided.");
-        else outputText(" Despite the fear and terror of " + player.mf("his", "her") + " arrival, " + player.mf("he", "she") + " proved a capable monarch in spite of " + player.mf("his", "her") + " rapacious tastes. The villagers dared not protest when their once-Champion treated their sons and daughters as little more than slaves. They feared to question where the fruits " + player.mf("he", "she") + " provided came from, and why they felt so strange after eating them. Of course, these concerns did not stop them from breeding. Soon, nothing could. As the population of the valley swelled, the Champion amassed an army, one large enough to rival the nearby countries that had ignored it for so long.");
+        outputText("<b>Later...\n</b>Tales of the Champion’s return are rarely told, not in the open anyway. " + mf(player, "He", "She") + " blew into town with all the subtlety of a cyclone, laying waste to the village’s elders and all who dared defend them. Every villager remembers that night, the night that their leadership was put to the torch - literally. Each of them was left to die inside his own burning mans, bathed in the scorching heat until naught remained but ashes and memories.");
+        outputText("\n\nAfter that night, there wasn’t a rebellious soul left alive to oppose to the Champion’s rule. " + mf(player, "He", "She") + " became the defacto " + mf(player, "King", "Queen") + " of the village, the breaker of the old ways and forger of the new.");
+        if (player.cor <= 33) outputText(" Despite the fear and terror of " + mf(player, "his", "her") + " arrival, " + mf(player, "he", "she") + " proved a fair and wise monarch. The village soon became a town, and that town a city. Prosperity came to those who lived in the valley, guided by the strength of its unshakable ruler.");
+        else if (player.cor <= 66) outputText(" Despite the fear and terror of " + mf(player, "his", "her") + " arrival, " + mf(player, "he", "she") + " proved a competent, if harsh monarch. The village’s prosperity was marred only by its limited liberties. Still, it was soon a town, and later a city. Most folk were willing to sacrifice their freedoms for the safety " + mf(player, "he", "she") + " provided.");
+        else outputText(" Despite the fear and terror of " + mf(player, "his", "her") + " arrival, " + mf(player, "he", "she") + " proved a capable monarch in spite of " + mf(player, "his", "her") + " rapacious tastes. The villagers dared not protest when their once-Champion treated their sons and daughters as little more than slaves. They feared to question where the fruits " + mf(player, "he", "she") + " provided came from, and why they felt so strange after eating them. Of course, these concerns did not stop them from breeding. Soon, nothing could. As the population of the valley swelled, the Champion amassed an army, one large enough to rival the nearby countries that had ignored it for so long.");
 
         saveExport();
     }
 
     private goHomeJustice(): void {
         clearOutput();
-        outputText("<b>Later...</b>\nTales of the Champions arrival spread far and wide. None expected " + player.mf("his", "her") + " return, and yet " + player.mf("he", "she") + " arrived all the same, weapon in hand before the council chambers, demanding the corrupt old men who once lead to face justice for their betrayal. At " + player.mf("his", "her") + " feet were strange creatures, beings the Champion faced and defeated, brought to Ingnam’s world to testify to just how rotten the village’s core had become. Once they said their piece, " + player.mf("he", "she"));
+        outputText("<b>Later...</b>\nTales of the Champions arrival spread far and wide. None expected " + mf(player, "his", "her") + " return, and yet " + mf(player, "he", "she") + " arrived all the same, weapon in hand before the council chambers, demanding the corrupt old men who once lead to face justice for their betrayal. At " + mf(player, "his", "her") + " feet were strange creatures, beings the Champion faced and defeated, brought to Ingnam’s world to testify to just how rotten the village’s core had become. Once they said their piece, " + mf(player, "he", "she"));
         // 9999 check dis
         if (player.cor >= 50) outputText(" put an end to their rank existence right there.");
-        else outputText(" sent them through a glowing portal of " + player.mf("his", "her") + " own creation, never to be seen again.");
+        else outputText(" sent them through a glowing portal of " + mf(player, "his", "her") + " own creation, never to be seen again.");
         outputText("\n\nElder Nomur protested hardest, but his treachery had been laid bare. Not even the most silver-tongued liar could stand against the living proof that the Champion offered.");
-        if (player.cor < 50) outputText(" In " + player.mf("his", "her") + " wisdom, " + player.mf("he", "she") + " stopped the townsfolk from lynching their traitorous leaders right there. Instead, they were banished, forever expelled from the lands of Ingnam on pain of death.");
-        else outputText(" The townsfolk lynched their traitorous leaders right there and then under the watchful eyes of the Champion. " + player.mf("He", "She") + " nodded approvingly when they gave their last twitches, seemingly happy to let small-town justice run its course.");
-        outputText("\n\nLife continued on. A new council was chosen, but it was Champion [name] that most people followed. " + player.mf("He", "She") + " had left on the cusp of adulthood and returned a grizzled");
+        if (player.cor < 50) outputText(" In " + mf(player, "his", "her") + " wisdom, " + mf(player, "he", "she") + " stopped the townsfolk from lynching their traitorous leaders right there. Instead, they were banished, forever expelled from the lands of Ingnam on pain of death.");
+        else outputText(" The townsfolk lynched their traitorous leaders right there and then under the watchful eyes of the Champion. " + mf(player, "He", "She") + " nodded approvingly when they gave their last twitches, seemingly happy to let small-town justice run its course.");
+        outputText("\n\nLife continued on. A new council was chosen, but it was Champion [name] that most people followed. " + mf(player, "He", "She") + " had left on the cusp of adulthood and returned a grizzled");
         // 9999 no idea what this is keyed off
         // {, vivacious}
         outputText(" warrior. With a seemingly infallable champion there to defend it");
-        if (camp.companionsCount() > 0) outputText(" to say nothing of " + player.mf("his", "her") + " bizarre friends");
+        if (camp.companionsCount() > 0) outputText(" to say nothing of " + mf(player, "his", "her") + " bizarre friends");
         outputText(", Ingnam prospered. The tiny village soon grew into a bustling town, and later a city.");
-        outputText("\n\nWhen age finally claimed the unexpected " + player.mf("hero", "heroine") + ", a stone statue of immense proportions was erected so that future generations could forever live under the protection of their greatest hero.");
+        outputText("\n\nWhen age finally claimed the unexpected " + mf(player, "hero", "heroine") + ", a stone statue of immense proportions was erected so that future generations could forever live under the protection of their greatest hero.");
 
         saveExport();
     }
@@ -1077,7 +1077,7 @@ export class LethiceScenes {
                 outputText(" in the citadel itself and");
             }
             outputText(" familiarize yourself with the place. Rather than driving off the few remaining demons you find, you place them into your service, explaining that so long as they serve you loyally they may yet live.");
-            outputText("\n\nWord gets out over the coming days about the new " + player.mf("King", "Queen") + " of the demons, and little by little, the masterless hordes find their way back.");
+            outputText("\n\nWord gets out over the coming days about the new " + mf(player, "King", "Queen") + " of the demons, and little by little, the masterless hordes find their way back.");
             if (flags[kFLAGS.LETHICE_KILLED] == 0) outputText(" Lethice herself is even brought back, though this time securely leashed and empty-eyed.");
             outputText(" You order the worst of their factories shut down and put an end to attempts to locate Tel’Adre. No more will the demons be all-consuming force.");
             outputText("\n\nUnder your heel, they’ll loose the rains they’ve kept magically bound in the clouds for so long. Ruined places will be rebuilt to their former glories. Demonic scientists will work to tame the base urges they’ve engendered in the goblins, harpies, and minotaurs. It’ll be like a utopia, the kind of utopia that Lethice could have created if she had used her power properly instead of selfishly hoarding it.");
@@ -1123,7 +1123,7 @@ export class LethiceScenes {
             outputText("\n\nThat night, you send word through the land of Lethice’s loss. Your demonic agents tell their fellows of your power and strength, gathering more to your cause. Those free peoples with an ounce of sense pledge their loyalty to you, and those with more pride than the fallen Queen unwittingly sign the orders for their own invasion.");
             outputText("\n\nThe only way to keep the world from falling into ruin once more is to have one kingdom under absolute rule. You make full use of the Lethice’s facilities to enforce your laws. Her submission tanks break malcontents into willing, eager servants. Her factories provide fluids unending to taint those who dare to hide from you. The magic that trapped the rain in the clouds about the citadel is yours to command, allowing your farmers to easily grow crops while your enemies’ wilt in the sun.");
             outputText("\n\nIn the short span of a few years, you achieve control over nearly all the peoples of Mareth. Tel’Adre, the sand witches, the giant bees of the forest: they all answer to you. Even the demons are bound to your yoke, though you have to make an example of them from time to time in order to maintain order. They try to tempt you, of course. Their sensuous lures and slow-burning corruption are a waste of effort, of course. You were already corrupted when you defeated Lethice. If you were going to fall into debauchery, you would have already.");
-            outputText("\n\nAge is your only problem, but your servants devise draughts to keep you young, treatments to keep your flesh as firm and vigorous as the day you stepped through the portal. <b>You rule Mareth as its ageless " + player.mf("King", "Queen") + ", a harsh monarch whose word is law and whose whims are made manifest.</b>");
+            outputText("\n\nAge is your only problem, but your servants devise draughts to keep you young, treatments to keep your flesh as firm and vigorous as the day you stepped through the portal. <b>You rule Mareth as its ageless " + mf(player, "King", "Queen") + ", a harsh monarch whose word is law and whose whims are made manifest.</b>");
             outputText("\n\nGAME OVER!");
 
             flags[kFLAGS.GAME_END] = GAME_END_CONQUER_HIGH;

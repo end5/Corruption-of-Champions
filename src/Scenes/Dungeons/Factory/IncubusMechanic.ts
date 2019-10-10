@@ -68,22 +68,22 @@ export class IncubusMechanic extends Monster {
             combatRoundOver();
             return;
         }
-        outputText("The incubus lunges forward in a clumsy attack that you start to side-step, only to feel something grip behind your " + game.buttDescript() + " and pull your " + player.legs() + " out from under you.");
+        outputText("The incubus lunges forward in a clumsy attack that you start to side-step, only to feel something grip behind your " + game.buttDescript() + " and pull your " + legs(player) + " out from under you.");
         if ((player.spe - 30) > rand(60)) {
-            outputText("  You spin as you fall, twisting your " + player.legs() + " free and springing back to your " + player.feet() + " unharmed.");
+            outputText("  You spin as you fall, twisting your " + legs(player) + " free and springing back to your " + feet(player) + " unharmed.");
         }
         else { // Fall down go boom
-            outputText("  You land hard on your ass, momentarily stunned as the demonic cock-tentacle curls around your " + player.legs() + ", smearing them with oozing demonic fluids.");
+            outputText("  You land hard on your ass, momentarily stunned as the demonic cock-tentacle curls around your " + legs(player) + ", smearing them with oozing demonic fluids.");
             if (player.lust >= 80 || player.cor >= 80) {
-                outputText("  Moaning with desire, you lick your lips as you slide your well-lubricated " + player.legs() + " free.  You gather a dollop of cum and lick it seductively, winking at the incubus and hoping to make him cave into his desire.");
+                outputText("  Moaning with desire, you lick your lips as you slide your well-lubricated " + legs(player) + " free.  You gather a dollop of cum and lick it seductively, winking at the incubus and hoping to make him cave into his desire.");
                 dynStats("lus", 13, "cor", 1);
             }
             else if (player.lust >= 50 || player.cor >= 50) {
-                outputText("  Blushing at the scent and feel of cum on your " + player.legs() + ", you twist and pull free.  You find yourself wondering what this demon's dick would taste like.");
+                outputText("  Blushing at the scent and feel of cum on your " + legs(player) + ", you twist and pull free.  You find yourself wondering what this demon's dick would taste like.");
                 dynStats("lus", 8 + player.cor / 20);
             }
             else {
-                outputText("  Disgusted, you pull away from the purplish monstrosity, the act made easier by your well-slimed " + player.legs() + ".");
+                outputText("  Disgusted, you pull away from the purplish monstrosity, the act made easier by your well-slimed " + legs(player) + ".");
                 dynStats("lus", 5 + player.cor / 20);
             }
             game.takeDamage(5);

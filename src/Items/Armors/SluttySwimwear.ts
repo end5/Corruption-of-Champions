@@ -19,21 +19,21 @@ export class SluttySwimwear extends ArmorWithPerk {
         if (game.player.totalCocks() == 0) {
             outputText("The thong moves over your smooth groin, clinging onto your buttocks nicely.  ");
             if (game.player.balls > 0) {
-                if (game.player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + game.player.ballsDescriptLight() + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
+                if (game.player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + ballsDescriptLight(game.player) + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
                 else outputText("However, your testicles do serve as an area of discomfort, stretching the material and bulging out the sides slightly.  ");
             }
         }
         else {
             if (game.player.totalCocks() == 1) {
-                outputText("You grunt in discomfort, your " + game.player.cockDescript(0) + " flopping free from the thong's confines. The tight material rubbing against your dick does manage to turn you on slightly.  ");
+                outputText("You grunt in discomfort, your " + cockDescript(game.player, 0) + " flopping free from the thong's confines. The tight material rubbing against your dick does manage to turn you on slightly.  ");
             }
             else {
-                outputText("You grunt in discomfort, your " + game.player.multiCockDescriptLight() + " flopping free from the thong's confines. The tight material rubbing against your dicks does manage to turn you on slightly.  ");
+                outputText("You grunt in discomfort, your " + multiCockDescriptLight(game.player) + " flopping free from the thong's confines. The tight material rubbing against your dicks does manage to turn you on slightly.  ");
             }
             dynStats("lus", 5);
-            if (game.player.biggestCockArea() >= 20) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + game.player.cockDescript(game.player.biggestCockIndex()) + " has popped out of the top, completely exposed.  Maybe if you shrunk your male parts down a little...");
+            if (game.player.biggestCockArea() >= 20) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + cockDescript(game.player, game.player.biggestCockIndex()) + " has popped out of the top, completely exposed.  Maybe if you shrunk your male parts down a little...");
             // [If dick is 7+ inches OR balls are apple-sized]
-            else if (game.player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + game.player.ballsDescriptLight() + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
+            else if (game.player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + ballsDescriptLight(game.player) + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
         }
         outputText("\n\n");
     }
@@ -55,22 +55,22 @@ export class SluttySwimwear extends ArmorWithPerk {
                     if(player.totalCocks() == 0) {
                         outputText("The thong moves over your smooth groin, clinging onto your buttocks nicely.  ");
                         if(player.balls > 0) {
-                            if(player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + player.ballsDescriptLight() + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
+                            if(player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + ballsDescriptLight(player) + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
                             else outputText("However, your testicles do serve as an area of discomfort, stretching the material and bulging out the sides slightly.  ");
                         }
                     }
                     //[dick]
                     else {
                         if(player.totalCocks() == 1) {
-                            outputText("You grunt in discomfort, your " + player.cockDescript(0) + " flopping free from the thong's confines. The tight material rubbing against your dick does manage to turn you on slightly.  ");
+                            outputText("You grunt in discomfort, your " + cockDescript(player, 0) + " flopping free from the thong's confines. The tight material rubbing against your dick does manage to turn you on slightly.  ");
                         }
                         else {
-                            outputText("You grunt in discomfort, your " + player.multiCockDescriptLight() + " flopping free from the thong's confines. The tight material rubbing against your dicks does manage to turn you on slightly.  ");
+                            outputText("You grunt in discomfort, your " + multiCockDescriptLight(player) + " flopping free from the thong's confines. The tight material rubbing against your dicks does manage to turn you on slightly.  ");
                         }
                         dynStats("lus", 5);
-                        if(player.biggestCockArea() >= 20) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + player.cockDescript(player.biggestCockIndex()) + " has popped out of the top, completely exposed.  Maybe if you shrunk your male parts down a little...");
+                        if(player.biggestCockArea() >= 20) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + cockDescript(player, player.biggestCockIndex()) + " has popped out of the top, completely exposed.  Maybe if you shrunk your male parts down a little...");
                         //[If dick is 7+ inches OR balls are apple-sized]
-                        else if(player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + player.ballsDescriptLight() + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
+                        else if(player.ballSize > 5) outputText("You do your best to put the thong on, and while the material is very stretchy, it simply can't even begin to cover everything, and your " + ballsDescriptLight(player) + " hang on the sides, exposed.  Maybe if you shrunk your male parts down a little...");
                     }
                     outputText("\n\n");
                 }

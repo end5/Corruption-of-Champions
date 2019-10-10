@@ -66,9 +66,9 @@ export class CorruptedDrider extends AbstractSpiderMorph {
             if (player.statusAffectv1(StatusAffects.DriderKiss) == 1) {
                 // (HIT? + 15 lust)
                 dynStats("lus", 15);
-                outputText("Again, the drider ties your mouth up in her syrupy lip-lock, seeming to bind your mouth as effectively as her webs bind your body.  Her sweet venom bubbles and froths at the corners of the oral embrace, dripping over her many-breasted bosom and your " + player.chestDesc() + ".", false);
-                if (player.hasCock()) outputText("  " + game.player.SMultiCockDesc() + " spews a rope of pre-cum into your " + player.armorName + ", desperate to get out and fuck.", false);
-                if (player.hasVagina()) outputText("  Fem-cum dribbles down your " + player.legs() + " while your " + player.clitDescript() + " gets so hard you think it'll explode.", false);
+                outputText("Again, the drider ties your mouth up in her syrupy lip-lock, seeming to bind your mouth as effectively as her webs bind your body.  Her sweet venom bubbles and froths at the corners of the oral embrace, dripping over her many-breasted bosom and your " + chestDesc(player) + ".", false);
+                if (player.hasCock()) outputText("  " + SMultiCockDesc(game.player) + " spews a rope of pre-cum into your " + player.armorName + ", desperate to get out and fuck.", false);
+                if (player.hasVagina()) outputText("  Fem-cum dribbles down your " + legs(player) + " while your " + clitDescription(player) + " gets so hard you think it'll explode.", false);
                 outputText("  This time, the drider is the one to break the kiss.  She asks, \"<i>Are you ready, my horny little morsel?</i>\"\n", false);
                 if (player.lust <= 99) outputText("You shake your head 'no' and stand your ground!\n", false);
             }

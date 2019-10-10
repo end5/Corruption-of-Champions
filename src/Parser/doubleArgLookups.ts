@@ -12,29 +12,29 @@
 
 export let cockLookups: Record<string, any> = // For subject: "cock"
 {
-    all(thisPtr: any): any { return game.player.multiCockDescriptLight(); },
-    each(thisPtr: any): any { return game.player.sMultiCockDesc(); },
-    one(thisPtr: any): any { return game.player.oMultiCockDesc(); },
-    largest(thisPtr: any): any { return game.player.cockDescript(game.player.biggestCockIndex()); },
-    biggest(thisPtr: any): any { return game.player.cockDescript(game.player.biggestCockIndex()); },
-    biggest2(thisPtr: any): any { return game.player.cockDescript(game.player.biggestCockIndex2()); },
-    biggest3(thisPtr: any): any { return game.player.cockDescript(game.player.biggestCockIndex3()); },
-    smallest(thisPtr: any): any { return game.player.cockDescript(game.player.smallestCockIndex()); },
-    smallest2(thisPtr: any): any { return game.player.cockDescript(game.player.smallestCockIndex2()); },
-    longest(thisPtr: any): any { return game.player.cockDescript(game.player.longestCock()); },
-    shortest(thisPtr: any): any { return game.player.cockDescript(game.player.shortestCockIndex()); }
+    all(thisPtr: any): any { return multiCockDescriptLight(game.player); },
+    each(thisPtr: any): any { return sMultiCockDesc(game.player); },
+    one(thisPtr: any): any { return oMultiCockDesc(game.player); },
+    largest(thisPtr: any): any { return cockDescript(game.player, game.player.biggestCockIndex()); },
+    biggest(thisPtr: any): any { return cockDescript(game.player, game.player.biggestCockIndex()); },
+    biggest2(thisPtr: any): any { return cockDescript(game.player, game.player.biggestCockIndex2()); },
+    biggest3(thisPtr: any): any { return cockDescript(game.player, game.player.biggestCockIndex3()); },
+    smallest(thisPtr: any): any { return cockDescript(game.player, game.player.smallestCockIndex()); },
+    smallest2(thisPtr: any): any { return cockDescript(game.player, game.player.smallestCockIndex2()); },
+    longest(thisPtr: any): any { return cockDescript(game.player, game.player.longestCock()); },
+    shortest(thisPtr: any): any { return cockDescript(game.player, game.player.shortestCockIndex()); }
 };
 
 export let cockHeadLookups: Record<string, any> = // For subject: "cockHead"
 {
-    biggest(thisPtr: any): any { return game.player.cockHead(game.player.biggestCockIndex()); },
-    biggest2(thisPtr: any): any { return game.player.cockHead(game.player.biggestCockIndex2()); },
-    biggest3(thisPtr: any): any { return game.player.cockHead(game.player.biggestCockIndex3()); },
-    largest(thisPtr: any): any { return game.player.cockHead(game.player.biggestCockIndex()); },
-    smallest(thisPtr: any): any { return game.player.cockHead(game.player.smallestCockIndex()); },
-    smallest2(thisPtr: any): any { return game.player.cockHead(game.player.smallestCockIndex2()); },
-    longest(thisPtr: any): any { return game.player.cockHead(game.player.longestCock()); },			// the *head* of a cock has a length? Wut?
-    shortest(thisPtr: any): any { return game.player.cockHead(game.player.shortestCockIndex()); }
+    biggest(thisPtr: any): any { return cockHead(game.player, game.player.biggestCockIndex()); },
+    biggest2(thisPtr: any): any { return cockHead(game.player, game.player.biggestCockIndex2()); },
+    biggest3(thisPtr: any): any { return cockHead(game.player, game.player.biggestCockIndex3()); },
+    largest(thisPtr: any): any { return cockHead(game.player, game.player.biggestCockIndex()); },
+    smallest(thisPtr: any): any { return cockHead(game.player, game.player.smallestCockIndex()); },
+    smallest2(thisPtr: any): any { return cockHead(game.player, game.player.smallestCockIndex2()); },
+    longest(thisPtr: any): any { return cockHead(game.player, game.player.longestCock()); },			// the *head* of a cock has a length? Wut?
+    shortest(thisPtr: any): any { return cockHead(game.player, game.player.shortestCockIndex()); }
 };
 
 // These tags take a two-word tag with a **numberic** attribute for lookup.
@@ -49,15 +49,15 @@ export let twoWordNumericTagsLookup: Record<string, any> =
     cockfit(thisPtr: any, aspect: any): any {
             if (!game.player.hasCock()) return "<b>(Attempt to parse cock when none present.)</b>";
             else {
-                if (game.player.cockThatFits(aspect) >= 0) return game.player.cockDescript(game.player.cockThatFits(aspect));
-                else return game.player.cockDescript(game.player.smallestCockIndex());
+                if (game.player.cockThatFits(aspect) >= 0) return cockDescript(game.player, game.player.cockThatFits(aspect));
+                else return cockDescript(game.player, game.player.smallestCockIndex());
             }
         },
     cockfit2(thisPtr: any, aspect: any): any {
             if (!game.player.hasCock()) return "<b>(Attempt to parse cock when none present.)</b>";
             else {
-                if (game.player.cockThatFits2(aspect) >= 0) return game.player.cockDescript(game.player.cockThatFits2(aspect));
-                else return game.player.cockDescript(game.player.smallestCockIndex());
+                if (game.player.cockThatFits2(aspect) >= 0) return cockDescript(game.player, game.player.cockThatFits2(aspect));
+                else return cockDescript(game.player, game.player.smallestCockIndex());
             }
         },
     cockheadfit(thisPtr: any, aspect: any): any {
@@ -65,21 +65,21 @@ export let twoWordNumericTagsLookup: Record<string, any> =
                 return "<b>(Attempt to parse cockhead when none present.)</b>";
             }
             else {
-                if (game.player.cockThatFits(aspect) >= 0) return game.player.cockHead(game.player.cockThatFits(aspect));
-                else return game.player.cockHead(game.player.smallestCockIndex());
+                if (game.player.cockThatFits(aspect) >= 0) return cockHead(game.player, game.player.cockThatFits(aspect));
+                else return cockHead(game.player, game.player.smallestCockIndex());
             }
         },
     cockheadfit2(thisPtr: any, aspect: any): any {
             if (!game.player.hasCock()) return "<b>(Attempt to parse cockhead when none present.)</b>";
             else {
-                if (game.player.cockThatFits2(aspect) >= 0) return game.player.cockHead(game.player.cockThatFits2(aspect));
-                else return game.player.cockHead(game.player.smallestCockIndex());
+                if (game.player.cockThatFits2(aspect) >= 0) return cockHead(game.player, game.player.cockThatFits2(aspect));
+                else return cockHead(game.player, game.player.smallestCockIndex());
             }
         },
     cock(thisPtr: any, aspect: any): any {
             if (!game.player.hasCock()) return "<b>(Attempt to parse cock when none present.)</b>";
             else {
-                if (aspect - 1 >= 0 && aspect - 1 < game.player.cockTotal()) return game.player.cockDescript(aspect - 1);
+                if (aspect - 1 >= 0 && aspect - 1 < game.player.cockTotal()) return cockDescript(game.player, aspect - 1);
                 else return "<b>(Attempt To Parse CockDescript for Invalid Cock)</b>";
             }
         },
@@ -87,7 +87,7 @@ export let twoWordNumericTagsLookup: Record<string, any> =
             if (!game.player.hasCock()) return "<b>(Attempt to parse cockHead when none present.)</b>";
             else {
                 const intAspect: number = int(aspect - 1);
-                if (intAspect >= 0 && intAspect < game.player.cockTotal()) return game.player.cockHead(intAspect);
+                if (intAspect >= 0 && intAspect < game.player.cockTotal()) return cockHead(game.player, intAspect);
                 else return "<b>(Attempt To Parse CockHeadDescript for Invalid Cock)</b>";
             }
         }

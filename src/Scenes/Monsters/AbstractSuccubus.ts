@@ -21,7 +21,7 @@ export class AbstractSuccubus extends Monster {
             }
             // Whip yo tits!
             if (temp == 1) {
-                if (player.breastRows.length > 0 && player.biggestTitSize() > 0) outputText(player.allBreastsDescript() + " (9)", false);
+                if (player.breastRows.length > 0 && player.biggestTitSize() > 0) outputText(allBreastsDescript(player) + " (9)", false);
                 else outputText("chest (9)", false);
                 player.takeDamage(9);
                 dynStats("lus", 4 + int(player.sens / 15));
@@ -33,7 +33,7 @@ export class AbstractSuccubus extends Monster {
                     player.takeDamage(5);
                 }
                 if (player.gender == 1) {
-                    outputText("groin, dealing painful damage to your " + player.multiCockDescriptLight() + ", doubling you over in agony (" + int((player.tou * 2 + 50) / 4) + ")", false);
+                    outputText("groin, dealing painful damage to your " + multiCockDescriptLight(player) + ", doubling you over in agony (" + int((player.tou * 2 + 50) / 4) + ")", false);
                     dynStats("lus", -15);
                     player.takeDamage(int((player.maxHP()) / 4));
                 }
@@ -43,7 +43,7 @@ export class AbstractSuccubus extends Monster {
                     dynStats("lus", -8);
                 }
                 if (player.gender == 3) {
-                    outputText("groin, dealing painful damage to your " + player.multiCockDescriptLight() + " and " + player.vaginaDescript(0) + ", doubling you over in agony (" + int((player.tou * 2 + 50) / 3) + ")", false);
+                    outputText("groin, dealing painful damage to your " + multiCockDescriptLight(player) + " and " + vaginaDescript(player, 0) + ", doubling you over in agony (" + int((player.tou * 2 + 50) / 3) + ")", false);
                     dynStats("lus", -20);
                     player.takeDamage(int((player.maxHP()) / 3));
                 }

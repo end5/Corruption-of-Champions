@@ -179,7 +179,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // PC is affected by Black Cat Beer item effects
         blackCatBeerEffects(player, false, true);
         // both output
-        if (game.time.hours <= 15) outputText("\n\n\"<i>Thanks for the business, " + player.mfn("laddie", "lassie", "customer") + "!  Remember, Niamh sells her Black Cat Beer every day from 8 until 4.</i>\"  You nod your head in thanks and step away from the table.");
+        if (game.time.hours <= 15) outputText("\n\n\"<i>Thanks for the business, " + mfn(player, "laddie", "lassie", "customer") + "!  Remember, Niamh sells her Black Cat Beer every day from 8 until 4.</i>\"  You nod your head in thanks and step away from the table.");
         // 16:00 ending
         else {
             outputText("\n\nThanks to your efforts, ");
@@ -198,7 +198,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         player.gems -= 2;
         statScreenRefresh();
         // both output
-        if (game.time.hours <= 15) outputText("\n\n\"<i>Thanks for the business, " + player.mfn("laddie", "lassie", "customer") + "!  Remember, Niamh sells her Black Cat Beer every day from 8 until 4.</i>\"  You nod your head in thanks and step away from the table.");
+        if (game.time.hours <= 15) outputText("\n\n\"<i>Thanks for the business, " + mfn(player, "laddie", "lassie", "customer") + "!  Remember, Niamh sells her Black Cat Beer every day from 8 until 4.</i>\"  You nod your head in thanks and step away from the table.");
         // 16:00 ending
         else {
             outputText("\n\nThanks to your efforts, ");
@@ -340,7 +340,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         else {
             player.consumeItem(consumables.BIMBOLQ);
             outputText("\n\nYou pop the seal of your bottle of Bimbo Liqueur, recoiling at the cloying, spiced scent that paints visions of a slutty slave-girl's slightly spread folds.  With a grimace, you pour the potent stuff evenly into the glasses.  Hefting the mugs, you rise and start towards Niamh.");
-            outputText("\n\nHer expression brightens when she notices your approach, and she giggles when she regards the quarter-full mugs of liqueur.  \"<i>What, that's it?</i>\" she quips curiously.  \"<i>This stuff had better pack some punch, " + player.mf("lad", "lass") + ".</i>\"  You assure her that it will knock her socks off.");
+            outputText("\n\nHer expression brightens when she notices your approach, and she giggles when she regards the quarter-full mugs of liqueur.  \"<i>What, that's it?</i>\" she quips curiously.  \"<i>This stuff had better pack some punch, " + mf(player, "lad", "lass") + ".</i>\"  You assure her that it will knock her socks off.");
             outputText("\n\nNiamh reaches for a mug, but you draw it away from her questing hand, instead sinking it into her considerable expanse of cleavage.  A devious grin flits across your features as she subsequently shivers from the cold glass between her fluid-filled bosom.  \"<i>Wh-why you...</i>\" she gasps, quickly snatching the drink and rubbing warmth back into her goosebumped flesh.  \"<i>You scoundrel...</i>\"");
             outputText("\n\nYou respond by raising your glass in toast, and she grudgingly complies.  Your mugs clink together, and she wastes no time in downing the cloudy liqueur.  You raise your own drink to your lips and pretend to sip, not wanting anything to do with what's about to happen.  \"<i>Burned pretty good,</i>\" she comments, licking her lips.  \"<i>Say, there...mind if I have a swig o' yours, too?</i>\"  You readily hand the flagon over, marveling at how fast she chugs it.  Niamh gives a happy little burp, and you scoot back a bit in anticipation.");
         }
@@ -378,7 +378,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("hourglass-shaped");
         outputText(" Niamh, and it's obvious she's completely hammered.  ");
         if (flags[kFLAGS.NIAMH_STATUS] == 1)
-            outputText("\"<i>W'hey there " + player.mf("boyo", "big girl") + ", wanna...g'forrra goooo-gfh...time?</i>\"");
+            outputText("\"<i>W'hey there " + mf(player, "boyo", "big girl") + ", wanna...g'forrra goooo-gfh...time?</i>\"");
         else
             outputText("\"<i>W'heeeey, honey!  I never thought I'd see yaaaagain!</i>\"");
         outputText(" she slurs, struggling to stay upright between her impaired motor skills and her absolutely overfilled chest.  \"<i>Aaah've been drinkin' me 'shtash',</i>\" she explains, noticing your gaze.  \"<i>Canno' leddit go'tuh waste!</i>\" You nod your agreement, sneaking a glance behind her to observe the twin trails of ");
@@ -429,7 +429,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("\n\nFalling?");
             outputText("\n\nYou wake with a start, swiftly rolling to your feet and trying to shake the lingering cobwebs out of your head.  You quickly spot Niamh, still kneeling and fixing you with a wry smirk.  \"<i>I got a bit overzealous with the nursing, I suppose,</i>\" she mutters, as close to an apology that you'll probably get from her.  \"<i>After ya went under, ya kept clawing at my tits for a bit, so I had to hop off.  Kept myself busy while you were asleep, at least.</i>\"");
             outputText("\n\nGlancing around, you can't help but agree, judging by the lake of ale surrounding you both.  Luckily, her self-entertainment seems to have shrunk her normally-gigantic tits to a more manageable size, and with your assistance, she's soon back on her feet.  \"<i>I heard there was a form of refuge for... well, differently-blessed lassies like meself,</i>\" she says, somewhat drily, patting the top of her huge azure bosom for emphasis.  \"<i>I'm heading there.  Maybe I'll find you there eventually, hey?</i>\"");
-            outputText("\n\nShe gives you a little punch in the shoulder, shooting you a wink and walking away.  \"<i>Don't think I forgot about how I got like this,  " + player.mf("boy", "gal") + ", ,</i>\" she yells over her shoulder, stopping you in your tracks as you turn to leave.  Several moments pass before she finally turns around and resumes her departure.");
+            outputText("\n\nShe gives you a little punch in the shoulder, shooting you a wink and walking away.  \"<i>Don't think I forgot about how I got like this,  " + mf(player, "boy", "gal") + ", ,</i>\" she yells over her shoulder, stopping you in your tracks as you turn to leave.  Several moments pass before she finally turns around and resumes her departure.");
             outputText("\n\nJust before you move out of earshot, a last word from Niamh floats to your ears.  You can't be sure, but... did she say... \"<i>Thanks?</i>\"");
             blackCatBeerEffects(player, false, true);
             // [end encounter]*/
@@ -687,7 +687,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("\n\nNiamh notices your condition, as does several other patrons in the bar.  ");
             if (player.hasVagina()) outputText("You can feel your labia dripping with need.  ");
             if (player.hasCock()) {
-                outputText("pre-cum drizzles down your " + game.player.multiCockDescriptLight() + " as the need to fuck a pussy grows stronger.  A few wandering hands reveals some apparent interest amongst the folks in the bar in seeing your genitals as active as your nipples.");
+                outputText("pre-cum drizzles down your " + multiCockDescriptLight(game.player) + " as the need to fuck a pussy grows stronger.  A few wandering hands reveals some apparent interest amongst the folks in the bar in seeing your genitals as active as your nipples.");
             }
             // [FUCK THE BAR] [LEAVE]
             simpleChoices("Fuck Bar", barBeerOrgyTits, "", null, "", null, "", null, "Leave", leaveWithBeerTits);
@@ -795,7 +795,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             // IF [player has a single cock]
             if (player.cockTotal() == 1) outputText("  Edryn moans out loud in ecstasy as your [cock] fills her up.");
             // If [player has multiple cocks]
-            else if (player.cockTotal() > 1) outputText("  The heads of your cocks press in between Edryn's labia causing her to cry out, \"<i>Oh gawd!  How many dicks are y-you f-f-fucking meeee with???</i>\"  Edryn's orgasm cuts her voice off and every muscle in her cunt contracts around your " + game.player.multiCockDescriptLight() + ".");
+            else if (player.cockTotal() > 1) outputText("  The heads of your cocks press in between Edryn's labia causing her to cry out, \"<i>Oh gawd!  How many dicks are y-you f-f-fucking meeee with???</i>\"  Edryn's orgasm cuts her voice off and every muscle in her cunt contracts around your " + multiCockDescriptLight(game.player) + ".");
             outputText("\n\nAs Edryn's cunt literally sucks you in deeper you feel Urta move up behind you.  As her horse-cock pokes against your pussy lips you realize just before the first thrust what is about to happen.  Tel'Adre's finest guard rams her massive member inside you, making you the center of a fuck sandwich.");
             // IF[player is pregnant]
             if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 200) outputText("  Your pregnant belly presses up against Edryn's ass as both Urta's cock and Edryn's pussy keeps you pinned in place between them.");

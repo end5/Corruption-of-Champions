@@ -158,7 +158,7 @@ export class GnollSpearThrower extends Monster {
         }
         // Determine if dodged!
         else if (player.spe - spe > 0 && int(Math.random() * (((player.spe - spe) / 4) + 80)) > 80) {
-            outputText("The gnoll grins at you before striding forward and pivoting.  A spotted leg snaps up and out, flashing through the air towards your " + game.player.chestDesc() + ".  You step back just in time, robbing the blow of force.  The paw lightly strikes your torso before the female hyena springs back, glaring at you.", false);
+            outputText("The gnoll grins at you before striding forward and pivoting.  A spotted leg snaps up and out, flashing through the air towards your " + chestDesc(game.player) + ".  You step back just in time, robbing the blow of force.  The paw lightly strikes your torso before the female hyena springs back, glaring at you.", false);
         }
         // Determine if evaded
         else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
@@ -180,11 +180,11 @@ export class GnollSpearThrower extends Monster {
             if (damage > 0) damage = player.takeDamage(damage);
             // No damage
             if (damage <= 0) {
-                outputText("The gnoll tries to catch your " + game.player.chestDesc() + " with a snap-kick, but you manage to block the vicious blow.", false);
+                outputText("The gnoll tries to catch your " + chestDesc(game.player) + " with a snap-kick, but you manage to block the vicious blow.", false);
             }
             // <Hyena Attack 3 – Snap Kick – Successful>
             else {
-                outputText("A glint enters the dark eyes of the gnoll before she strides forward and pivots.  A long, spotted leg snaps up and out to slam against your " + game.player.chestDesc(), false);
+                outputText("A glint enters the dark eyes of the gnoll before she strides forward and pivots.  A long, spotted leg snaps up and out to slam against your " + chestDesc(game.player), false);
                 if (player.biggestTitSize() >= 1) outputText(", sending a wave of pain through the sensitive flesh", false);
                 outputText(".  A small, traitorous part of you can't help but notice a flash of long, dark flesh beneath her loincloth even as you stagger back from the impact. (" + damage + ")", false);
                 dynStats("lus", 2);

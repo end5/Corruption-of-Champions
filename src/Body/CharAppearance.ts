@@ -8,7 +8,7 @@ export function appearance(e: MouseEvent = null): void {
 	if(player.lowerBody == LOWER_BODY_TYPE_PONY) race = "pony-kin";
 	//determine sheath
 	var sheath:Boolean = false;
-	if(player.catScore() >= 4) race = "cat-" + player.mf("boy","girl");
+	if(player.catScore() >= 4) race = "cat-" + mf(player, "boy","girl");
 	if(player.lizardScore() >= 4)
 	{
 		if(player.gender == 0) race = "lizan";
@@ -37,7 +37,7 @@ export function appearance(e: MouseEvent = null): void {
 	if(player.lowerBody == LOWER_BODY_TYPE_NAGA) race = "naga";
 	if(player.lowerBody == LOWER_BODY_TYPE_CENTAUR) race = "centaur";
 	if(player.sharkScore() >= 3) race = "shark-morph";
-	if(player.bunnyScore() >= 4) race = "bunny-" + player.mf("boy","girl");
+	if(player.bunnyScore() >= 4) race = "bunny-" + mf(player, "boy","girl");
 	if(player.gooScore() >= 3)
 	{
 		race = "goo-";
@@ -59,7 +59,7 @@ export function appearance(e: MouseEvent = null): void {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
             outputText("  Your face is human in shape and structure, with " + skin(player) + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  Under your " + player.skinFurScales() + " you have a human-shaped head with " + skin(player, true, false) + ".", false);
+            outputText("  Under your " + skinFurScales(player) + " you have a human-shaped head with " + skin(player, true, false) + ".", false);
         if (player.skinType == SKIN_TYPE_SCALES)
             outputText("  Your face is fairly human in shape, but is covered in " + skin(player) + ".", false);
         if (player.faceType == FACE_SHARK_TEETH)
@@ -87,13 +87,13 @@ export function appearance(e: MouseEvent = null): void {
         else {
             // (black/midnight furscales)
             if (((player.hairColor == "black" || player.hairColor == "midnight") && (player.skinType == SKIN_TYPE_FUR || player.skinType == SKIN_TYPE_SCALES)))
-                outputText("  Under your " + player.skinFurScales() + " hides a black raccoon mask, barely visible due to your inky hue, and");
-            else outputText("  Your " + player.skinFurScales() + " are decorated with a sly-looking raccoon mask, and under them");
+                outputText("  Under your " + skinFurScales(player) + " hides a black raccoon mask, barely visible due to your inky hue, and");
+            else outputText("  Your " + skinFurScales(player) + " are decorated with a sly-looking raccoon mask, and under them");
             outputText(" you have a human-shaped head with " + skin(player, true, false) + ".");
         }
     }
     else if (player.faceType == FACE_RACCOON) {
-        outputText("  You have a triangular raccoon face, replete with sensitive whiskers and a little black nose; a mask shades the space around your eyes, set apart from your " + player.skinFurScales() + " by a band of white.");
+        outputText("  You have a triangular raccoon face, replete with sensitive whiskers and a little black nose; a mask shades the space around your eyes, set apart from your " + skinFurScales(player) + " by a band of white.");
         // (if skin)
         if (player.skinType == SKIN_TYPE_PLAIN)
             outputText("  It looks a bit strange with only the skin and no fur.");
@@ -103,17 +103,17 @@ export function appearance(e: MouseEvent = null): void {
     else if (player.faceType == FACE_FOX) {
         outputText("  You have a tapered, shrewd-looking vulpine face with a speckling of downward-curved whiskers just behind the nose.");
         if (player.skinType == SKIN_TYPE_PLAIN)
-            outputText("  Oddly enough, there's no fur on your animalistic muzzle, just " + player.skinFurScales() + ".");
+            outputText("  Oddly enough, there's no fur on your animalistic muzzle, just " + skinFurScales(player) + ".");
         else if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  A coat of " + player.skinFurScales() + " decorates your muzzle.");
+            outputText("  A coat of " + skinFurScales(player) + " decorates your muzzle.");
         else if (player.skinType == SKIN_TYPE_SCALES)
-            outputText("  Strangely, " + player.skinFurScales() + " adorn every inch of your animalistic visage.");
+            outputText("  Strangely, " + skinFurScales(player) + " adorn every inch of your animalistic visage.");
     }
     else if (player.faceType == FACE_BUCKTEETH) {
         // appearance
         outputText("  Your face is generally human in shape and structure, with " + skin(player));
         if (player.skinType == SKIN_TYPE_FUR || player.skinType == SKIN_TYPE_SCALES)
-            outputText(" under your " + player.skinFurScales());
+            outputText(" under your " + skinFurScales(player));
         outputText(" and mousey buckteeth.");
     }
     else if (player.faceType == FACE_MOUSE) {
@@ -121,7 +121,7 @@ export function appearance(e: MouseEvent = null): void {
         outputText("  You have a snubby, tapered mouse's face, with whiskers, a little pink nose, and ");
         if (player.skinType != SKIN_TYPE_FUR && player.skinType != SKIN_TYPE_SCALES)
             outputText(skin(player));
-        else outputText(skin(player) + " under your " + player.skinFurScales());
+        else outputText(skin(player) + " under your " + skinFurScales(player));
         outputText(".  Two large incisors complete it.");
     }
     // Naga
@@ -129,27 +129,27 @@ export function appearance(e: MouseEvent = null): void {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
             outputText("  You have a fairly normal face, with " + skin(player) + ".  The only oddity is your pair of dripping fangs which often hang over your lower lip.", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  Under your " + player.skinFurScales() + " you have a human-shaped head with " + skin(player, true, false) + ".  In addition, a pair of fangs hang over your lower lip, dripping with venom.", false);
+            outputText("  Under your " + skinFurScales(player) + " you have a human-shaped head with " + skin(player, true, false) + ".  In addition, a pair of fangs hang over your lower lip, dripping with venom.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
-            outputText("  Your face is fairly human in shape, but is covered in " + player.skinFurScales() + ".  In addition, a pair of fangs hang over your lower lip, dripping with venom.", false);
+            outputText("  Your face is fairly human in shape, but is covered in " + skinFurScales(player) + ".  In addition, a pair of fangs hang over your lower lip, dripping with venom.", false);
     }
     // horse-face
     if (player.faceType == FACE_HORSE) {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
-            outputText("  Your face is equine in shape and structure.  The odd visage is hairless and covered with " + player.skinFurScales() + ".", false);
+            outputText("  Your face is equine in shape and structure.  The odd visage is hairless and covered with " + skinFurScales(player) + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  Your face is almost entirely equine in appearance, even having " + player.skinFurScales() + ".  Underneath the fur, you believe you have " + skin(player, true, false) + ".", false);
+            outputText("  Your face is almost entirely equine in appearance, even having " + skinFurScales(player) + ".  Underneath the fur, you believe you have " + skin(player, true, false) + ".", false);
         if (player.skinType == SKIN_TYPE_SCALES)
-            outputText("  You have the face and head structure of a horse, overlaid with glittering " + player.skinFurScales() + ".", false);
+            outputText("  You have the face and head structure of a horse, overlaid with glittering " + skinFurScales(player) + ".", false);
     }
     // dog-face
     if (player.faceType == FACE_DOG) {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
-            outputText("  You have a dog-like face, complete with a wet nose.  The odd visage is hairless and covered with " + player.skinFurScales() + ".", false);
+            outputText("  You have a dog-like face, complete with a wet nose.  The odd visage is hairless and covered with " + skinFurScales(player) + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  You have a dog's face, complete with wet nose and panting tongue.  You've got " + player.skinFurScales() + ", hiding your " + skin(player, true, false) + " underneath your furry visage.", false);
+            outputText("  You have a dog's face, complete with wet nose and panting tongue.  You've got " + skinFurScales(player) + ", hiding your " + skin(player, true, false) + " underneath your furry visage.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
-            outputText("  You have the facial structure of a dog, wet nose and all, but overlaid with glittering " + player.skinFurScales() + ".", false);
+            outputText("  You have the facial structure of a dog, wet nose and all, but overlaid with glittering " + skinFurScales(player) + ".", false);
     }
     // cat-face
     if (player.faceType == FACE_CAT) {
@@ -158,7 +158,7 @@ export function appearance(e: MouseEvent = null): void {
         if (player.skinType == SKIN_TYPE_FUR)
             outputText("  You have a cat-like face, complete with moist nose and whiskers.  Your " + player.skinDesc + " is " + player.hairColor + ", hiding your " + skin(player, true, false) + " underneath.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
-            outputText("  Your facial structure blends humanoid features with those of a cat.  A moist nose and whiskers are included, but overlaid with glittering " + player.skinFurScales() + ".", false);
+            outputText("  Your facial structure blends humanoid features with those of a cat.  A moist nose and whiskers are included, but overlaid with glittering " + skinFurScales(player) + ".", false);
         if (player.eyeType != EYES_BLACK_EYES_SAND_TRAP)
             outputText("  Of course, no feline face would be complete without vertically slit eyes.");
     }
@@ -167,7 +167,7 @@ export function appearance(e: MouseEvent = null): void {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
             outputText("  You have a face resembling that of a minotaur, with cow-like features, particularly a squared off wet nose.  Despite your lack of fur elsewhere, your visage does have a short layer of " + player.hairColor + " fuzz.", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  You have a face resembling that of a minotaur, with cow-like features, particularly a squared off wet nose.  Your " + player.skinFurScales() + " thickens noticably on your head, looking shaggy and more than a little monstrous once laid over your visage.", false);
+            outputText("  You have a face resembling that of a minotaur, with cow-like features, particularly a squared off wet nose.  Your " + skinFurScales(player) + " thickens noticably on your head, looking shaggy and more than a little monstrous once laid over your visage.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
             outputText("  Your face resembles a minotaur's, though strangely it is covered in shimmering scales, right up to the flat cow-like nose that protrudes from your face.", false);
     }
@@ -176,18 +176,18 @@ export function appearance(e: MouseEvent = null): void {
         if (player.skinType == SKIN_TYPE_PLAIN || player.skinType == SKIN_TYPE_GOO)
             outputText("  You have a face resembling that of a lizard, and with your toothy maw, you have quite a fearsome visage.  The reptilian visage does look a little odd with just " + skin(player) + ".", false);
         if (player.skinType == SKIN_TYPE_FUR)
-            outputText("  You have a face resembling that of a lizard.  Between the toothy maw, pointed snout, and the layer of " + player.skinFurScales() + " covering your face, you have quite the fearsome visage.", false);
+            outputText("  You have a face resembling that of a lizard.  Between the toothy maw, pointed snout, and the layer of " + skinFurScales(player) + " covering your face, you have quite the fearsome visage.", false);
         if (player.skinType == SKIN_TYPE_SCALES)
-            outputText("  Your face is that of a lizard, complete with a toothy maw and pointed snout.  Reflective " + player.skinFurScales() + " complete the look, making you look quite fearsome.", false);
+            outputText("  Your face is that of a lizard, complete with a toothy maw and pointed snout.  Reflective " + skinFurScales(player) + " complete the look, making you look quite fearsome.", false);
     }
     if (player.faceType == FACE_DRAGON) {
-        outputText("  Your face is a narrow, reptilian muzzle.  It looks like a predatory lizard's, at first glance, but with an unusual array of spikes along the under-jaw.  It gives you a regal but fierce visage.  Opening your mouth reveals several rows of dagger-like sharp teeth.  The fearsome visage is decorated by " + player.skinFurScales() + ".");
+        outputText("  Your face is a narrow, reptilian muzzle.  It looks like a predatory lizard's, at first glance, but with an unusual array of spikes along the under-jaw.  It gives you a regal but fierce visage.  Opening your mouth reveals several rows of dagger-like sharp teeth.  The fearsome visage is decorated by " + skinFurScales(player) + ".");
     }
     if (player.faceType == FACE_KANGAROO) {
         outputText("  Your face is ", false);
         if (player.skinType == SKIN_TYPE_PLAIN)
             outputText("bald", false);
-        else outputText("covered with " + player.skinFurScales(), false);
+        else outputText("covered with " + skinFurScales(player), false);
         outputText(" and shaped like that of a kangaroo, somewhat rabbit-like except for the extreme length of your odd visage.", false);
     }
     // M/F stuff!
@@ -403,7 +403,7 @@ export function appearance(e: MouseEvent = null): void {
                     if (player.balls > 0)
                         outputText("balls plenty of room to breathe", false);
                     else if (player.hasCock())
-                        outputText(player.multiCockDescript() + " plenty of room to swing", false);
+                        outputText(multiCockDescript(player) + " plenty of room to swing", false);
                     else if (player.hasVagina())
                         outputText(vaginaDescript() + " a nice, wide berth", false);
                     else outputText("vacant groin plenty of room", false);
@@ -491,7 +491,7 @@ export function appearance(e: MouseEvent = null): void {
     if (player.tailType == TAIL_TYPE_DOG)
         outputText("  A fuzzy " + player.hairColor + " dogtail sprouts just above your " + buttDescript() + ", wagging to and fro whenever you are happy.", false);
     if (player.tailType == TAIL_TYPE_DEMONIC)
-        outputText("  A narrow tail ending in a spaded tip curls down from your " + buttDescript() + ", wrapping around your " + player.leg() + " sensually at every opportunity.", false);
+        outputText("  A narrow tail ending in a spaded tip curls down from your " + buttDescript() + ", wrapping around your " + leg(player) + " sensually at every opportunity.", false);
     if (player.tailType == TAIL_TYPE_COW)
         outputText("  A long cowtail with a puffy tip swishes back and forth as if swatting at flies.", false);
     if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN) {
@@ -588,7 +588,7 @@ export function appearance(e: MouseEvent = null): void {
     else if (player.lowerBody == LOWER_BODY_TYPE_RACCOON)
         outputText("  Your legs, though covered in fur, are humanlike.  Long feet on the ends bear equally long toes, and the pads on the bottoms are quite sensitive to the touch.");
     if (player.findPerk(PerkLib.Incorporeality) >= 0)
-        outputText("  Of course, your " + player.legs() + " are partially transparent due to their ghostly nature.", false);
+        outputText("  Of course, your " + legs(player) + " are partially transparent due to their ghostly nature.", false);
 
     outputText("\n", false);
     if (player.findStatusAffect(StatusAffects.GooStuffed) >= 0) {
@@ -718,7 +718,7 @@ export function appearance(e: MouseEvent = null): void {
         if (player.breastRows[0].milkFullness > 75)
             outputText("  Your " + breastDescript(temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
         if (player.breastRows[0].breastRating >= 1)
-            outputText("  You could easily fill a " + player.breastCup(temp) + " bra.", false);
+            outputText("  You could easily fill a " + breastCup(player, temp) + " bra.", false);
         // Done with tits.  Move on.
         outputText("\n", false);
     }
@@ -741,7 +741,7 @@ export function appearance(e: MouseEvent = null): void {
                 outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescript(temp) + " each.", false);
             else outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescript(temp) + "s each.", false);
             if (player.breastRows[temp].breastRating >= 1)
-                outputText("  They could easily fill a " + player.breastCup(temp) + " bra.", false);
+                outputText("  They could easily fill a " + breastCup(player, temp) + " bra.", false);
             if (player.breastRows[temp].milkFullness > 75)
                 outputText("  Your " + breastDescript(temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
             temp++;
@@ -762,7 +762,7 @@ export function appearance(e: MouseEvent = null): void {
     if (player.cocks.length == 1) {
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR)
             outputText("\nEver since becoming a centaur, your equipment has shifted to lie between your rear legs, like a horse.", false);
-        outputText("\nYour " + player.cockDescript(temp) + " is " + int(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
+        outputText("\nYour " + cockDescript(player, temp) + " is " + int(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
         if (Math.round(10 * player.cocks[temp].cockThickness) / 10 < 2) {
             if (Math.round(10 * player.cocks[temp].cockThickness) / 10 == 1)
                 outputText(int(10 * player.cocks[temp].cockThickness) / 10 + " inch thick.", false);
@@ -776,11 +776,11 @@ export function appearance(e: MouseEvent = null): void {
         // dog cock flavor
         if (((player.cocks[temp].cockType == CockTypesEnum.DOG) || (player.cocks[temp].cockType == CockTypesEnum.FOX)) || (player.cocks[temp].cockType == CockTypesEnum.FOX)) {
             if (player.cocks[temp].knotMultiplier >= 1.8)
-                outputText("  The obscenely swollen lump of flesh near the base of your " + player.cockDescript(temp) + " looks almost too big for your cock.", false);
+                outputText("  The obscenely swollen lump of flesh near the base of your " + cockDescript(player, temp) + " looks almost too big for your cock.", false);
             else if (player.cocks[temp].knotMultiplier >= 1.4)
-                outputText("  A large bulge of flesh nestles just above the bottom of your " + player.cockDescript(temp) + ", to ensure it stays where it belongs during mating.", false);
+                outputText("  A large bulge of flesh nestles just above the bottom of your " + cockDescript(player, temp) + ", to ensure it stays where it belongs during mating.", false);
             else if (player.cocks[temp].knotMultiplier > 1)
-                outputText("  A small knot of thicker flesh is near the base of your " + player.cockDescript(temp) + ", ready to expand to help you lodge it inside a female.", false);
+                outputText("  A small knot of thicker flesh is near the base of your " + cockDescript(player, temp) + ", ready to expand to help you lodge it inside a female.", false);
             // List thickness
             outputText("  The knot is " + Math.round(player.cocks[temp].cockThickness * player.cocks[temp].knotMultiplier * 10) / 10 + " inches wide when at full size.", false);
         }
@@ -817,7 +817,7 @@ export function appearance(e: MouseEvent = null): void {
         }
         // Worm flavor
         if (player.findStatusAffect(StatusAffects.Infested) >= 0)
-            outputText("  Every now and again a slimy worm coated in spunk slips partway out of your " + player.cockDescript(0) + ", tasting the air like a snake's tongue.", false);
+            outputText("  Every now and again a slimy worm coated in spunk slips partway out of your " + cockDescript(player, 0) + ", tasting the air like a snake's tongue.", false);
         if (player.cocks[temp].sock)
             sockDescript(temp);
         // DONE WITH COCKS, moving on!
@@ -827,15 +827,15 @@ export function appearance(e: MouseEvent = null): void {
         temp = 0;
         rando = rand(4);
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR)
-            outputText("\nWhere a horse's penis would usually be located, you have instead grown " + player.multiCockDescript() + "!\n", false);
-        else outputText("\nWhere a penis would normally be located, you have instead grown " + player.multiCockDescript() + "!\n", false);
+            outputText("\nWhere a horse's penis would usually be located, you have instead grown " + multiCockDescript(player) + "!\n", false);
+        else outputText("\nWhere a penis would normally be located, you have instead grown " + multiCockDescript(player) + "!\n", false);
         while (temp < player.cocks.length) {
 
             // middle cock description
             if (rando == 0) {
                 if (temp == 0) outputText("--Your first ", false);
                 else outputText("--Your next ", false);
-                outputText(player.cockDescript(temp), false);
+                outputText(cockDescript(player, temp), false);
                 outputText(" is ", false);
                 outputText(int(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
                 if (Math.floor(player.cocks[temp].cockThickness) >= 2)
@@ -848,7 +848,7 @@ export function appearance(e: MouseEvent = null): void {
             }
             if (rando == 1) {
                 outputText("--One of your ", false);
-                outputText(player.cockDescript(temp) + "s is " + Math.round(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
+                outputText(cockDescript(player, temp) + "s is " + Math.round(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
                 if (Math.floor(player.cocks[temp].cockThickness) >= 2)
                     outputText(num2Text(Math.round(player.cocks[temp].cockThickness * 10) / 10) + " inches thick.", false);
                 else {
@@ -861,7 +861,7 @@ export function appearance(e: MouseEvent = null): void {
                 if (temp > 0)
                     outputText("--Another of your ", false);
                 else outputText("--One of your ", false);
-                outputText(player.cockDescript(temp) + "s is " + Math.round(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
+                outputText(cockDescript(player, temp) + "s is " + Math.round(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
                 if (Math.floor(player.cocks[temp].cockThickness) >= 2)
                     outputText(num2Text(Math.round(player.cocks[temp].cockThickness * 10) / 10) + " inches thick.", false);
                 else {
@@ -874,7 +874,7 @@ export function appearance(e: MouseEvent = null): void {
                 if (temp > 0)
                     outputText("--Your next ", false);
                 else outputText("--Your first ", false);
-                outputText(player.cockDescript(temp) + " is " + Math.round(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
+                outputText(cockDescript(player, temp) + " is " + Math.round(10 * player.cocks[temp].cockLength) / 10 + " inches long and ", false);
                 if (Math.floor(player.cocks[temp].cockThickness) >= 2)
                     outputText(num2Text(Math.round(player.cocks[temp].cockThickness * 10) / 10) + " inches in diameter.", false);
                 else {
@@ -885,7 +885,7 @@ export function appearance(e: MouseEvent = null): void {
             }
             // horse cock flavor
             if (player.cocks[temp].cockType == CockTypesEnum.HORSE) {
-                outputText("  It's mottled black and brown in a very animalistic pattern.  The 'head' of your " + player.cockDescript(temp) + " flares proudly, just like a horse's.", false);
+                outputText("  It's mottled black and brown in a very animalistic pattern.  The 'head' of your " + cockDescript(player, temp) + " flares proudly, just like a horse's.", false);
             }
             // dog cock flavor
             if ((player.cocks[temp].cockType == CockTypesEnum.DOG) || (player.cocks[temp].cockType == CockTypesEnum.FOX)) {
@@ -896,11 +896,11 @@ export function appearance(e: MouseEvent = null): void {
                     outputText("fox's cock.");
 
                 if (player.cocks[temp].knotMultiplier >= 1.8)
-                    outputText("  The obscenely swollen lump of flesh near the base of your " + player.cockDescript(temp) + " looks almost comically mismatched for your " + player.cockDescript(temp) + ".", false);
+                    outputText("  The obscenely swollen lump of flesh near the base of your " + cockDescript(player, temp) + " looks almost comically mismatched for your " + cockDescript(player, temp) + ".", false);
                 else if (player.cocks[temp].knotMultiplier >= 1.4)
-                    outputText("  A large bulge of flesh nestles just above the bottom of your " + player.cockDescript(temp) + ", to ensure it stays where it belongs during mating.", false);
+                    outputText("  A large bulge of flesh nestles just above the bottom of your " + cockDescript(player, temp) + ", to ensure it stays where it belongs during mating.", false);
                 else if (player.cocks[temp].knotMultiplier > 1)
-                    outputText("  A small knot of thicker flesh is near the base of your " + player.cockDescript(temp) + ", ready to expand to help you lodge your " + player.cockDescript(temp) + " inside a female.", false);
+                    outputText("  A small knot of thicker flesh is near the base of your " + cockDescript(player, temp) + ", ready to expand to help you lodge your " + cockDescript(player, temp) + " inside a female.", false);
                 // List knot thickness
                 outputText("  The knot is " + Math.floor(player.cocks[temp].cockThickness * player.cocks[temp].knotMultiplier * 10) / 10 + " inches thick when at full size.", false);
             }
@@ -944,7 +944,7 @@ export function appearance(e: MouseEvent = null): void {
         }
         // Worm flavor
         if (player.findStatusAffect(StatusAffects.Infested) >= 0)
-            outputText("Every now and again slimy worms coated in spunk slip partway out of your " + player.multiCockDescriptLight() + ", tasting the air like tongues of snakes.\n", false);
+            outputText("Every now and again slimy worms coated in spunk slip partway out of your " + multiCockDescriptLight(player) + ", tasting the air like tongues of snakes.\n", false);
         // DONE WITH COCKS, moving on!
     }
     // Of Balls and Sacks!
@@ -967,13 +967,13 @@ export function appearance(e: MouseEvent = null): void {
         }
         else {
             if (player.skinType == SKIN_TYPE_PLAIN)
-                outputText("A " + sackDescript(player) + " with " + ballsDescript() + " swings heavily beneath your " + player.multiCockDescriptLight() + ".", false);
+                outputText("A " + sackDescript(player) + " with " + ballsDescript() + " swings heavily beneath your " + multiCockDescriptLight(player) + ".", false);
             if (player.skinType == SKIN_TYPE_FUR)
-                outputText("A fuzzy " + sackDescript(player) + " filled with " + ballsDescript() + " swings low under your " + player.multiCockDescriptLight() + ".", false);
+                outputText("A fuzzy " + sackDescript(player) + " filled with " + ballsDescript() + " swings low under your " + multiCockDescriptLight(player) + ".", false);
             if (player.skinType == SKIN_TYPE_SCALES)
                 outputText("A scaley " + sackDescript(player) + " hugs your " + ballsDescript() + " tightly against your body.", false);
             if (player.skinType == SKIN_TYPE_GOO)
-                outputText("An oozing, semi-solid sack with " + ballsDescript() + " swings heavily beneath your " + player.multiCockDescriptLight() + ".", false);
+                outputText("An oozing, semi-solid sack with " + ballsDescript() + " swings heavily beneath your " + multiCockDescriptLight(player) + ".", false);
         }
         outputText("  You estimate each of them to be about " + num2Text(Math.round(player.ballSize)) + " ", false);
         if (Math.round(player.ballSize) == 1)
@@ -1088,7 +1088,7 @@ export function appearance(e: MouseEvent = null): void {
         outputText("\nYour " + nippleDescript(0) + "s are pierced with " + player.nipplesPShort + ".", false);
     if (player.totalCocks() > 0) {
         if (player.cocks[0].pierced > 0) {
-            outputText("\nLooking positively perverse, a " + player.cocks[0].pShortDesc + " adorns your " + player.cockDescript(0) + ".", false);
+            outputText("\nLooking positively perverse, a " + player.cocks[0].pShortDesc + " adorns your " + cockDescript(player, 0) + ".", false);
         }
     }
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00286] == 1)
