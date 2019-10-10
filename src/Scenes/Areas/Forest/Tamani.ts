@@ -84,9 +84,9 @@ export class Tamani extends Goblin {
             if (!game.forest.tamaniScene.pregnancy.isPregnant && player.canOvipositSpider()) {
                 temp2 = game.forest.tamaniScene.tamaniBeaten;
             }
-            simpleChoices("Fuck", game.forest.tamaniScene.tamaniSexWon, "Buttfuck", temp, "", null, "Lay Eggs", temp2, "Leave", game.cleanupAfterCombat);
+            simpleChoices("Fuck", game.forest.tamaniScene.tamaniSexWon, "Buttfuck", temp, "", null, "Lay Eggs", temp2, "Leave", cleanupAfterCombat);
         }
-        else game.cleanupAfterCombat();
+        else cleanupAfterCombat();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -96,7 +96,7 @@ export class Tamani extends Goblin {
                 else game.forest.tamaniScene.tamaniSexLetHer();
             } else {
                 outputText("Tamani sighs as you begin to lose conscious, \"<i>You dummy, why'd you get rid of the fun parts?</i>\"", true);
-                game.cleanupAfterCombat();
+                cleanupAfterCombat();
             }
         } else {
             if (player.totalCocks() > 0) {
@@ -108,7 +108,7 @@ export class Tamani extends Goblin {
             } else {
                 outputText("You give into your lusts and masturbate, but Tamani doesn't seem to care.  She kicks and punches you over and over, screaming, \"<i>You dummy, why'd you get rid of the fun parts?</i>\"", true);
                 game.takeDamage(10000);
-                game.cleanupAfterCombat();
+                cleanupAfterCombat();
             }
         }
     }

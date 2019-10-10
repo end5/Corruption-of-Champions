@@ -32,7 +32,7 @@ export class KitsuneGift extends Consumable {
                 outputText("\n\n<b>You've received " + num2Text(gems) + " shining gems from the kitsune's gift!  How generous!</b>");
                 game.player.gems += gems;
                 // add X gems to inventory
-                game.statScreenRefresh();
+                statScreenRefresh();
                 break;
 
             // [Kitsune Tea/Scholar's Tea] //Just use Scholar's Tea and drop the "trick" effect if you don't want to throw in another new item.
@@ -74,7 +74,7 @@ export class KitsuneGift extends Consumable {
                 outputText("\n\n<b>The kitsune's familiar has stolen your gems!</b>");
                 // Lose X gems as though losing in battle to a kitsune
                 game.player.gems -= 2 + rand(15);
-                game.statScreenRefresh();
+                statScreenRefresh();
                 break;
 
             // [Prank]

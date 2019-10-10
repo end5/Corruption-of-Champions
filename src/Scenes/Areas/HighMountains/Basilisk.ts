@@ -35,7 +35,7 @@ export class Basilisk extends Monster {
         else {
             outputText("You concentrate, focus your mind and resist the basilisk's psychic compulsion.", false);
         }
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // Special 3: basilisk tail swipe (Small physical damage):
@@ -44,7 +44,7 @@ export class Basilisk extends Monster {
         damage = player.takeDamage(damage);
         outputText("The basilisk suddenly whips its tail at you, swiping your " + player.feet() + " from under you!  You quickly stagger upright, being sure to hold the creature's feet in your vision. (" + damage + ")", false);
         if (damage == 0) outputText("  The fall didn't harm you at all.", false);
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // basilisk physical attack: With lightning speed, the basilisk slashes you with its index claws!

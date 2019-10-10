@@ -22,7 +22,7 @@ export class Amily extends Monster {
         // Blind dodge change
         if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
-            game.combatRoundOver();
+            combatRoundOver();
             return;
         }
         // Determine if dodged!
@@ -85,9 +85,9 @@ export class Amily extends Monster {
                 lust += 10 * lustVuln;
             }
         }
-        game.statScreenRefresh();
+        statScreenRefresh();
         outputText("\n", false);
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // (Special Attacks)
@@ -138,7 +138,7 @@ export class Amily extends Monster {
         // Dodge all!
         else outputText("Amily dashes at you and quickly slashes you twice, but you quickly sidestep her first blow and jump back to avoid any follow-ups.", false);
 
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // -Poison Dart: Deals speed and str damage to the PC. (Not constant)
@@ -147,7 +147,7 @@ export class Amily extends Monster {
         // Blind dodge change
         if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack from her dartgun!\n", false);
-            game.combatRoundOver();
+            combatRoundOver();
             return;
         }
         // Determine if dodged!
@@ -218,14 +218,14 @@ export class Amily extends Monster {
                 player.takeDamage(8999);
             }
         }
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // Concentrate: always avoids the next attack. Can be disrupted by tease/seduce.
     private amilyConcentration(): void {
         outputText("Amily takes a deep breath and attempts to concentrate on your movements.", false);
         createStatusAffect(StatusAffects.Concentration, 0, 0, 0, 0);
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // (if PC uses tease/seduce after this)

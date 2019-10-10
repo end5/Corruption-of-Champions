@@ -18,10 +18,10 @@ export class DemonPack extends Monster {
         if (findStatusAffect(StatusAffects.phyllafight) >= 0) {
             doNext(game.desert.antsScene.consolePhylla);
         } else if (hpVictory) {
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             outputText("  Do you rape them?", true);
-            doYesNo(rapeDemons, game.cleanupAfterCombat);
+            doYesNo(rapeDemons, cleanupAfterCombat);
         }
     }
 
@@ -37,7 +37,7 @@ export class DemonPack extends Monster {
             } else {
                 outputText("You offer yourself to the demons, who promptly begin laughing at your lack of endowments.  They fall on you as one, beating you into unconsciousness.", true);
             }
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else if (hpVictory) {
             outputText("The demons finally beat you down and you collapse onto the sand of the oasis. Almost immediately you feel demonic hands pressing and probing your prone form. You hear the leader of the group say something in a strange tongue but you have a feeling you know what it means. The demons dive onto your inert body with intent and begin to press themselves against you...", true);
             doNext(game.desert.oasis.oasisSexing);

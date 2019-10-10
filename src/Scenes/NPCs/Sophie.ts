@@ -236,7 +236,7 @@ export class Sophie extends Harpy {
             game.sophieFollowerScene.debimboSophieBeatsYouUp();
         else if (pcCameWorms) {
             outputText("\n\nYour foe seems disgusted by the display and leaves you to recover alone...");
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             game.sophieScene.sophieWonCombat();
         }

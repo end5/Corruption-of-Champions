@@ -178,7 +178,7 @@ export class Ceraph extends Monster {
                 outputText(capitalA + short + " <b>mutilates</b> you with " + pronoun3 + " powerful " + weaponVerb + "! (" + damage + ")", false);
             }
         }
-        game.statScreenRefresh();
+        statScreenRefresh();
         outputText("\n", false);
         // SECOND ATTACK HERE------
         // Blind dodge change
@@ -224,7 +224,7 @@ export class Ceraph extends Monster {
             }
 
         }
-        game.statScreenRefresh();
+        statScreenRefresh();
         outputText("\n", false);
         combatRoundOver();
     }

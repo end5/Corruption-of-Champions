@@ -9,7 +9,7 @@ export class Brigid extends Monster {
         if (damage < 30) damage = 30;
         damage = player.takeDamage(damage);
         outputText(" (" + damage + ")");
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // Attack Two: SHIELD BOP! OOM BOP!
@@ -21,14 +21,14 @@ export class Brigid extends Monster {
         outputText(" (" + damage + ")");
         if (player.findPerk(PerkLib.Resolute) >= 0) outputText("  Of course, your resolute posture prevents her from accomplishing much.");
         else player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     // Attack Three: Harpy Ass Grind GO!
     private BrigidAssGrind(): void {
         outputText("Brigid grins as she approaches you.  She handily deflects a few defensive blows and grabs you by the shoulders.  She forces you onto your knees and before you can blink, has turned around and smashed your face into her ass!  \"<i>Mmm, you like that, don'tcha?</i>\" she growls, grinding her huge, soft ass across your face, giving you an up-close and personal feel of her egg-laying hips.");
         dynStats("lus", 30);
-        game.combatRoundOver();
+        combatRoundOver();
     }
     protected performCombatAction(): void {
         if (player.findStatusAffect(StatusAffects.Stunned) >= 0) {

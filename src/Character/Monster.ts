@@ -5,51 +5,6 @@
  */
 export class Monster extends Creature {
 
-    protected get player(): Player {
-        return game.player;
-    }
-    protected outputText(text: string, clear: boolean = false): void {
-        outputText(text, clear);
-    }
-    protected combatRoundOver(): void {
-        game.combatRoundOver();
-    }
-    protected cleanupAfterCombat(): void {
-        game.cleanupAfterCombat();
-    }
-    protected static showStatDown(a: string): void {
-        mainView.statsView.showStatDown(a);
-    }
-    protected statScreenRefresh(): void {
-        game.statScreenRefresh();
-    }
-    protected doNext(eventNo: () => void): void { // Now typesafe
-        doNext(eventNo);
-    }
-    protected combatMiss(): boolean {
-        return game.combatMiss();
-    }
-    protected combatEvade(): boolean {
-        return game.combatEvade();
-    }
-    protected combatFlexibility(): boolean {
-        return game.combatFlexibility();
-    }
-    protected combatMisdirect(): boolean {
-        return game.combatMisdirect();
-    }
-    protected get consumables(): ConsumableLib {
-        return game.consumables;
-    }
-    protected get useables(): UseableLib {
-        return game.useables;
-    }
-    protected get weapons(): WeaponLib {
-        return game.weapons;
-    }
-    protected get armors(): ArmorLib {
-        return game.armors;
-    }
     // For enemies
     public bonusHP: number = 0;
     private _long: string = "<b>You have encountered an unitialized  Please report this as a bug</b>.";
@@ -546,7 +501,7 @@ export class Monster extends Creature {
                 const damage: number = eOneAttack();
                 outputAttack(damage);
                 postAttack(damage);
-                game.statScreenRefresh();
+                statScreenRefresh();
                 outputText("\n", false);
             }
             if (statusAffectv1(StatusAffects.Attacks) >= 0) {
@@ -555,8 +510,8 @@ export class Monster extends Creature {
             attacks--;
         }
         removeStatusAffect(StatusAffects.Attacks);
-        // 			if (!game.combatRoundOver()) doNext(1);
-        game.combatRoundOver(); // The doNext here was not required
+        // 			if (!combatRoundOver()) doNext(1);
+        combatRoundOver(); // The doNext here was not required
     }
 
     /**
@@ -702,7 +657,7 @@ export class Monster extends Creature {
             removeStatusAffect(StatusAffects.Constricted);
         }
         addStatusValue(StatusAffects.Constricted, 1, -1);
-        game.combatRoundOver();
+        combatRoundOver();
         return false;
     }
 
@@ -725,7 +680,7 @@ export class Monster extends Creature {
             if (plural) outputText(capitalA + short + " are too busy shivering with fear to fight.", false);
             else outputText(capitalA + short + " is too busy shivering with fear to fight.", false);
         }
-        game.combatRoundOver();
+        combatRoundOver();
         return false;
     }
 
@@ -737,7 +692,7 @@ export class Monster extends Creature {
         else outputText("Your foe is too dazed from your last hit to strike back!", false);
         if (statusAffectv1(StatusAffects.Stunned) <= 0) removeStatusAffect(StatusAffects.Stunned);
         else addStatusValue(StatusAffects.Stunned, 1, -1);
-        game.combatRoundOver();
+        combatRoundOver();
         return false;
     }
 

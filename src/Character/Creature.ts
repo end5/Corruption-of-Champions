@@ -1,16 +1,4 @@
-// CoC Creature.as
-
-export class Creature  {
-
-    // include "../../includes/appearanceDefs.as";
-
-    public get game(): CoC {
-        return kGAMECLASS;
-    }
-    public get flags(): DefaultDict {
-        return game.flags;
-    }
-
+export class Creature {
     // Variables
 
     // Short refers to player name and monster name. BEST VARIABLE NAME EVA!

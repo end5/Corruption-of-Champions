@@ -52,9 +52,9 @@ export class TentacleBeast extends Monster {
         else {
             if (!hpVictory && player.gender > 0) {
                 outputText("  Perhaps you could use it to sate yourself?", true);
-                doYesNo(game.forest.tentacleBeastScene.tentacleVictoryRape, game.cleanupAfterCombat);
+                doYesNo(game.forest.tentacleBeastScene.tentacleVictoryRape, cleanupAfterCombat);
             } else {
-                game.cleanupAfterCombat();
+                cleanupAfterCombat();
             }
         }
     }

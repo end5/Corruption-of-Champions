@@ -161,7 +161,7 @@ export class Kitsune extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\nThe kitsune recoils before running off, no longer interested in you...");
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             game.forest.kitsuneScene.loseToKitsunes();
         }

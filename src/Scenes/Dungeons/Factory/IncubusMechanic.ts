@@ -17,13 +17,13 @@ export class IncubusMechanic extends Monster {
         else outputText("You smile in satisfaction as the " + short + " collapses, masturbating happily.");
         if (player.gender == 0) {
             outputText("  Now would be the perfect opportunity to test his demonic tool...\n\nHow do you want to handle him?");
-            simpleChoices("Anally", game.incubusVictoryRapeBackdoor, "Orally", game.incubusVictoryService, "", null, "", null, "Leave", game.cleanupAfterCombat);
+            simpleChoices("Anally", game.incubusVictoryRapeBackdoor, "Orally", game.incubusVictoryService, "", null, "", null, "Leave", cleanupAfterCombat);
         }
         else {
             dynStats("lus", 1);
             if (hpVictory) {
                 outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do, rape him, service him, or let him take you anally?");
-                simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "", null, "Nothing", game.cleanupAfterCombat);
+                simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "", null, "Nothing", cleanupAfterCombat);
             }
             else {
                 outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
@@ -31,7 +31,7 @@ export class IncubusMechanic extends Monster {
                 if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
                     titfuck = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
                 }
-                simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "B.Titfuck", titfuck, "Nothing", game.cleanupAfterCombat);
+                simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "B.Titfuck", titfuck, "Nothing", cleanupAfterCombat);
             }
         }
     }
@@ -65,7 +65,7 @@ export class IncubusMechanic extends Monster {
     private cockTripAttack(): void {
         if (findStatusAffect(StatusAffects.Blind) >= 0) { // Blind dodge change
             outputText(capitalA + short + " suddenly grows it's dick to obscene lengths and tries to trip you with it.  Thankfully he's so blind he wasn't aiming anywhere near you!");
-            game.combatRoundOver();
+            combatRoundOver();
             return;
         }
         outputText("The incubus lunges forward in a clumsy attack that you start to side-step, only to feel something grip behind your " + game.buttDescript() + " and pull your " + player.legs() + " out from under you.");
@@ -89,13 +89,13 @@ export class IncubusMechanic extends Monster {
             game.takeDamage(5);
         }
         outputText("\nThe incubus gives an overconfident smile as his cock retracts away from you, returning to its normal size.");
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     private spoogeAttack(): void {
         if (findStatusAffect(StatusAffects.Blind) >= 0) { // Blind dodge change
             outputText(capitalA + short + " pumps and thrusts his hips lewdly before cumming with intense force in your direction!  Thankfully his aim was off due to the blindness currently affect him.");
-            game.combatRoundOver();
+            combatRoundOver();
             return;
         }
         outputText("Your demonic foe places his hands behind his head and lewdly pumps and thrusts his hips at you.  Your eyes open wide as a globule of cum erupts from the demon-prick and flies right at you.  ");
@@ -131,7 +131,7 @@ export class IncubusMechanic extends Monster {
                 }
                 else outputText("crotch.  Thankfully, it doesn't seem to have much effect.");
         }
-        game.combatRoundOver();
+        combatRoundOver();
         lust -= 10;
         if (lust < 0) lust = 10;
     }

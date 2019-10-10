@@ -16,7 +16,7 @@ export class SandWitch extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\nThe witch blanches and backs away, leaving you to your fate.");
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             game.desert.sandWitchScene.sandwitchRape();
         }

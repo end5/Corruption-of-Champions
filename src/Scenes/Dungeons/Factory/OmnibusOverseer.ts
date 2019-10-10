@@ -23,7 +23,7 @@ export class OmnibusOverseer extends Monster {
         else {
             createStatusAffect(StatusAffects.LustAura, 0, 0, 0, 0);
         }
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     private milkAttack(): void {
@@ -52,7 +52,7 @@ export class OmnibusOverseer extends Monster {
             dynStats("lus", 7 + player.sens / 20);
             if (player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript() + " in sympathy.");
         }
-        game.combatRoundOver();
+        combatRoundOver();
     }
 
     public constructor() {

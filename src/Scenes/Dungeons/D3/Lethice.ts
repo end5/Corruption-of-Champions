@@ -178,7 +178,7 @@ export class Lethice extends Monster {
         outputText("\n\n", false);
         flags[kFLAGS.SPELLS_CAST]++;
         game.spellPerkUnlock();
-        game.statScreenRefresh();
+        statScreenRefresh();
         game.enemyAI();
     }
 
@@ -698,7 +698,7 @@ export class Lethice extends Monster {
                 const damage: number = eOneAttack();
                 outputAttack(damage);
                 postAttack(damage);
-                game.statScreenRefresh();
+                statScreenRefresh();
                 outputText("\n");
             }
             else {

@@ -89,9 +89,9 @@ export class HellHound extends Monster {
             // Rape if not naga, turned on, and girl that can fit!
             if (player.hasVagina() && player.lust >= 33 && !player.isNaga()) {
                 outputText("  You find yourself musing that you could probably take advantage of the poor 'doggy'.  Do you fuck it?", false);
-                simpleChoices("Fuck it", game.mountain.hellHoundScene.hellHoundPropahRape, "", null, "", null, "", null, "Leave", game.cleanupAfterCombat);
+                simpleChoices("Fuck it", game.mountain.hellHoundScene.hellHoundPropahRape, "", null, "", null, "", null, "Leave", cleanupAfterCombat);
             } else {
-                game.cleanupAfterCombat();
+                cleanupAfterCombat();
             }
         } else {
             outputText("Unable to bear hurting you anymore, the hellhound's flames dim as he stops his attack. The two heads look at you, whining plaintively.  The hellhound slowly pads over to you and nudges its noses at your crotch.  It seems he wishes to pleasure you.\n\n", true);
@@ -104,11 +104,11 @@ export class HellHound extends Monster {
                     temp2 = game.mountain.hellHoundScene.hellHoundPropahRape;
                 }
                 outputText(".  What do you do?", false);
-                simpleChoices("Lick", game.mountain.hellHoundScene.hellHoundGetsRaped, "Fuck", temp2, "", null, "", null, "Leave", game.cleanupAfterCombat);
+                simpleChoices("Lick", game.mountain.hellHoundScene.hellHoundGetsRaped, "Fuck", temp2, "", null, "", null, "Leave", cleanupAfterCombat);
             }
             else {
                 outputText("You turn away, not really turned on enough to be interested in such an offer.", false);
-                game.cleanupAfterCombat();
+                cleanupAfterCombat();
             }
         }
     }
@@ -116,7 +116,7 @@ export class HellHound extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\nThe hellhound snorts and leaves you to your fate.", false);
-            doNext(game.cleanupAfterCombat);
+            doNext(cleanupAfterCombat);
         } else {
             game.mountain.hellHoundScene.hellhoundRapesPlayer();
         }

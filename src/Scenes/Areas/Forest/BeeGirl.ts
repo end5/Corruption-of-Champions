@@ -37,13 +37,13 @@ export class BeeGirl extends Monster {
         else {
             flags[kFLAGS.BEE_GIRL_COMBAT_WINS_WITH_RAPE]++; // All wins by lust count towards the desire option, even when you leave
         }
-        game.cleanupAfterCombat();
+        cleanupAfterCombat();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\nThe bee-girl goes white and backs away with a disgusted look on her face.\n\n");
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         }
         else {
             game.forest.beeGirlScene.beeRapesYou();

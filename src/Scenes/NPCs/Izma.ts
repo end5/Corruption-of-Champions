@@ -124,7 +124,7 @@ export class Izma extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\n\"<i>Gross!</i>\" Izma cries as she backs away, leaving you to recover alone.");
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             game.izmaScene.IzmaWins();
         }

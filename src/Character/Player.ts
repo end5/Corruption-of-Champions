@@ -15,10 +15,6 @@ export class Player extends Character {
         itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5];
     }
 
-    protected outputText(text: string, clear: boolean = false): void {
-        outputText(text, clear);
-    }
-
     // Autosave
     public slotName: string = "VOID";
     public autoSave: boolean = false;

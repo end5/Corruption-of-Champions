@@ -115,14 +115,14 @@ export class FetishCultist extends Monster {
         }
         if (player.lust >= 33 && player.gender > 0) {
             outputText("  You realize she'd make a perfect receptacle for your lusts.  Do you have your way with her?", false);
-            simpleChoices("Sex", game.lake.fetishCultistScene.playerRapesCultist, "", null, "", null, "B. Feed", temp2, "Leave", game.cleanupAfterCombat);
+            simpleChoices("Sex", game.lake.fetishCultistScene.playerRapesCultist, "", null, "", null, "B. Feed", temp2, "Leave", cleanupAfterCombat);
         }
         else {
             if (temp2 != null) {
                 outputText("  She looks like she might take some of your milk if you offered it to her.  What do you do?", false);
-                simpleChoices("B. Feed", temp2, "", null, "", null, "", null, "Leave", game.cleanupAfterCombat);
+                simpleChoices("B. Feed", temp2, "", null, "", null, "", null, "Leave", cleanupAfterCombat);
             }
-            else game.cleanupAfterCombat();
+            else cleanupAfterCombat();
         }
     }
 

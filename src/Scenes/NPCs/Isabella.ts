@@ -157,7 +157,7 @@ export class Isabella extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\n\"<i>Ick,</i>\" Isabella tuts as she turns to leave...");
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             game.isabellaScene.isabellaDefeats();
         }

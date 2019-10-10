@@ -81,7 +81,7 @@ export class Gnoll extends Monster {
                 outputText(" (" + damage + ")\n", false);
 
             }
-            game.statScreenRefresh();
+            statScreenRefresh();
         }
     }
 
@@ -193,7 +193,7 @@ export class Gnoll extends Monster {
                 damage = player.takeDamage(damage);
                 outputText(" (" + damage + ")\n", false);
             }
-            game.statScreenRefresh();
+            statScreenRefresh();
         }
     }
 
@@ -331,7 +331,7 @@ export class Gnoll extends Monster {
                     damage = player.takeDamage(damage);
                     outputText(" (" + damage + ")\n", false);
                 }
-                game.statScreenRefresh();
+                statScreenRefresh();
             }
             gnollAttackText();
         }

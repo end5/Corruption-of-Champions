@@ -17,7 +17,7 @@ export class Ember extends Monster {
         gems = 0;
         XP = 0;
         HP = 0;
-        game.cleanupAfterCombat();
+        cleanupAfterCombat();
     }
     // Ember Attacks:
     private emberAttack(): void {

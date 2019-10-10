@@ -42,7 +42,7 @@ export class Anemone extends Monster {
                 player.addStatusValue(StatusAffects.AnemoneVenom, 2, 1);
             }
         }
-        game.statScreenRefresh();
+        statScreenRefresh();
     }
 
     public defeated(hpVictory: boolean): void {

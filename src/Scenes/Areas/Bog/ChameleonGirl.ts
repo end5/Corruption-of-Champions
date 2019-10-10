@@ -20,7 +20,7 @@ export class ChameleonGirl extends Monster {
             outputText(capitalA + short + " completely misses you with a blind claw-attack!\n", false);
         }
         // Evade:
-        else if (game.combatMiss() || game.combatEvade() || game.combatFlexibility() || game.combatMisdirect()) outputText("The chameleon girl's claws slash towards you, but you lean away from them and they fly by in a harmless blur.");
+        else if (combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) outputText("The chameleon girl's claws slash towards you, but you lean away from them and they fly by in a harmless blur.");
         // Get hit
         else {
             let damage: number = int((str + weaponAttack) - rand(player.tou));
@@ -40,7 +40,7 @@ export class ChameleonGirl extends Monster {
             outputText(capitalA + short + " completely misses you with a blind roll-kick!\n", false);
         }
         // Evade:
-        else if (game.combatMiss() || game.combatEvade() || game.combatFlexibility() || game.combatMisdirect()) {
+        else if (combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
             let damage2: number = 1 + rand(10);
             damage2 = game.doDamage(damage2);
             outputText("The chameleon girl leaps in your direction, rolls, and kicks at you.  You sidestep her flying charge and give her a push from below to ensure she lands face-first in the bog. (" + damage2 + ")");
@@ -73,7 +73,7 @@ export class ChameleonGirl extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\nThe chameleon girl recoils.  \"<i>Ew, gross!</i>\" she screetches as she runs away, leaving you to recover from your defeat alone.");
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             game.bog.chameleonGirlScene.loseToChameleonGirl();
         }

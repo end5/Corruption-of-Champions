@@ -58,16 +58,16 @@ export class InfestedHellhound extends HellHound {
     public defeated(hpVictory: boolean): void {
         if (hpVictory) {
             outputText("The hellhound's flames dim and the heads let out a whine before the creature slumps down, defeated, unconscious, and yet still drooling worms.", true);
-            game.cleanupAfterCombat();
+            cleanupAfterCombat();
         } else {
             outputText("Unable to bear its unnatural arousal, the infested hellhound's flames dim as he stops his attack. The two heads look at you, whining plaintively.  The hellhound slowly pads over to you and nudges its noses at your crotch.  It seems he wishes to pleasure you.\n\n", true);
             if (player.gender > 0 && player.lust >= 33) {
                 outputText("You realize your desires aren't quite sated.  You could let it please you.  Do you?", false);
-                simpleChoices("Fuck it", game.mountain.hellHoundScene.hellHoundGetsRaped, "", null, "", null, "", null, "Leave", game.cleanupAfterCombat);
+                simpleChoices("Fuck it", game.mountain.hellHoundScene.hellHoundGetsRaped, "", null, "", null, "", null, "Leave", cleanupAfterCombat);
             }
             else {
                 outputText("You turn away, not really turned on enough to be interested in such an offer from such a beast.", false);
-                game.cleanupAfterCombat();
+                cleanupAfterCombat();
             }
         }
     }
