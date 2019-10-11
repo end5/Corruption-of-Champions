@@ -4,7 +4,7 @@ export class GreenSlime extends Monster {
     public defeated(hpVictory: boolean): void {
         outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.", true);
         // Boobfeed.
-        if (player.findStatusAffect(StatusAffects.Feeder) >= 0) {
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) {
             // Eligable to rape
             if (player.lust >= 33 && player.gender > 0) {
                 outputText("\n\nYou're horny enough to try and rape it, though you'd rather see how much milk you can squirt into it.  What do you do?", false);

@@ -8,8 +8,8 @@ export class Minotaur extends Monster {
     public hasAxe: boolean;
 
     public defeated(hpVictory: boolean): void {
-        if (findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
-            removeStatusAffect(StatusAffects.PhyllaFight);
+        if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
+            this.effects.remove(StatusAffects.PhyllaFight);
             outputText("You defeat a minotaur!  ", true);
             game.desert.antsScene.phyllaBeatAMino();
         } else {
@@ -18,8 +18,8 @@ export class Minotaur extends Monster {
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
-            removeStatusAffect(StatusAffects.PhyllaFight);
+        if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
+            this.effects.remove(StatusAffects.PhyllaFight);
             game.desert.antsScene.phyllaPCLostToMino();
         } else if (pcCameWorms) {
             outputText("\n\nThe minotaur picks you up and forcibly tosses you from his cave, grunting in displeasure.", false);
@@ -54,7 +54,7 @@ export class Minotaur extends Monster {
         createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 30, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);
         this.tallness = rand(37) + 84;
         this.hipRating = HIP_RATING_AVERAGE;
         this.buttRating = BUTT_RATING_AVERAGE;

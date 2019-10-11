@@ -14,7 +14,7 @@ export class Anemone extends Monster {
     // Apply the effects of AnemoneVenom()
     public applyVenom(str: number = 1): void {
         // First application
-        if (player.findStatusAffect(StatusAffects.AnemoneVenom) < 0) player.createStatusAffect(StatusAffects.AnemoneVenom, 0, 0, 0, 0);
+        if (player.effects.findByType(StatusAffects.AnemoneVenom) < 0) player.effects.create(StatusAffects.AnemoneVenom, 0, 0, 0, 0);
         // Gain some lust
         dynStats("lus", (2 * str));
 
@@ -29,7 +29,7 @@ export class Anemone extends Monster {
                 // strDown.visible = true;
                 // strUp.visible = false;
                 player.str--;
-                player.addStatusValue(StatusAffects.AnemoneVenom, 1, 1);
+                player.effects.addValue(StatusAffects.AnemoneVenom, 1, 1);
             }
             // Spe bottomed out, convert to lust
             if (player.spe < 2) dynStats("lus", 2);
@@ -39,7 +39,7 @@ export class Anemone extends Monster {
                 // speDown.visible = true;
                 // speUp.visible = false;
                 player.spe--;
-                player.addStatusValue(StatusAffects.AnemoneVenom, 2, 1);
+                player.effects.addValue(StatusAffects.AnemoneVenom, 2, 1);
             }
         }
         statScreenRefresh();
@@ -70,11 +70,11 @@ export class Anemone extends Monster {
         // this.plural = false;
         this.createCock(7, 1, CockTypesEnum.ANEMONE);
         this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
-        this.createStatusAffect(StatusAffects.BonusVCapacity, 5, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusVCapacity, 5, 0, 0, 0);
         createBreastRow(Appearance.breastCupInverse("B"));
         this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 10, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);
         this.tallness = 5 * 12 + 5;
         this.hipRating = HIP_RATING_CURVY;
         this.buttRating = BUTT_RATING_NOTICEABLE;

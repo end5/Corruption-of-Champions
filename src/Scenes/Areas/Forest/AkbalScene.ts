@@ -790,7 +790,7 @@ export class AkbalScene {
                 outputText("\n\nIn your sleep, your ass plumps up slightly, growing to accomodate the demon's wishes...", false);
                 player.buttRating++;
             }
-            player.createStatusAffect(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
             doNext(camp.returnToCampUseEightHours);
             return;
         }
@@ -863,7 +863,7 @@ export class AkbalScene {
                 outputText("\n\nIn your sleep, your ass plumps up slightly, growing to accomodate the demon's wishes...", false);
                 player.buttRating++;
             }
-            player.createStatusAffect(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
             doNext(camp.returnToCampUseEightHours);
             return;
         }
@@ -937,7 +937,7 @@ export class AkbalScene {
             outputText("\n\nIn your sleep, your ass plumps up slightly, growing to accomodate the demon's wishes...", false);
             player.buttRating++;
         }
-        player.createStatusAffect(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
         doNext(camp.returnToCampUseEightHours);
     }
 
@@ -1062,7 +1062,7 @@ export class AkbalScene {
         player.orgasm();
         dynStats("cor", 5);
         player.slimeFeed();
-        player.createStatusAffect(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
         doNext(camp.returnToCampUseEightHours);
     }
 

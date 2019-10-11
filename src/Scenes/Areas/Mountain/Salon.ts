@@ -30,11 +30,11 @@ export class Salon implements TimeAwareInterface {
         doYesNo(salonGreeting, camp.returnToCampUseOneHour);
     }
     public salonGreeting(): void {
-        if (player.findStatusAffect(StatusAffects.HairdresserMeeting) >= 0) {
+        if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) {
             hairDresserRepeatGreeting();
         }
         else {
-            player.createStatusAffect(StatusAffects.HairdresserMeeting, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.HairdresserMeeting, 0, 0, 0, 0);
             hairDresserGreeting();
         }
     }

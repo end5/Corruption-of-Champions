@@ -2,8 +2,8 @@
 export class SandWitch extends Monster {
 
     public defeated(hpVictory: boolean): void {
-        if (player.findStatusAffect(StatusAffects.StoneLust)) {
-            player.removeStatusAffect(StatusAffects.StoneLust);
+        if (player.effects.findByType(StatusAffects.StoneLust)) {
+            player.effects.remove(StatusAffects.StoneLust);
         }
 
         if (player.lust >= 33) {
@@ -24,7 +24,7 @@ export class SandWitch extends Monster {
 
     private lustMagicAttack(): void {
         outputText("The sand witch points at you, drawing a circle in the air and mouthing strange words.\n\n");
-        if (player.findStatusAffect(StatusAffects.StoneLust) >= 0) {
+        if (player.effects.findByType(StatusAffects.StoneLust) >= 0) {
             outputText("The orb inside you grows warm, almost hot, suffusing your body with heat and arousal.  ");
             dynStats("lus", 8 + int(player.sens) / 10);
         }
@@ -32,7 +32,7 @@ export class SandWitch extends Monster {
             outputText("You feel the sands shift by your " + feet(player) + ", and look down to see something slip out of the sands and into your clothes!  It feels incredibly smooth and circular as it glides upward along your " + leg(player) + ", its progress unaffected by your frantic effort to dislodge it.  ");
             if (player.vaginas.length > 0) outputText("It glides up your thighs to the entrance of your sex, and its intentions dawn on you!\n\nToo late! You reach to stop it, but it pushes against your lips and slips inside your " + vaginaDescript(player, 0) + " in an instant.  You groan in frustration as it begins pulsing and vibrating, sometimes even seeming to change size.");
             else outputText("It glides up your thighs, curving around your buttocks, and its intentions dawn on you.\n\nYou desperately grab for it, but are too late!  It pushes firmly against your rectum and slips inside instantaneously.  You groan in frustration as it begins pulsing and vibrating, sometimes even seeming to change size.");
-            player.createStatusAffect(StatusAffects.StoneLust, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.StoneLust, 0, 0, 0, 0);
             dynStats("lus", 4 + int(player.sens) / 10);
         }
         doNext(playerMenu);

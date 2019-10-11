@@ -249,7 +249,7 @@ export class Appearance  {
                 "slippery "];
             description += randomChoice(options);
         }
-        if (!haveDescription && i_creature.findStatusAffect(StatusAffects.BlackNipples) >= 0) {
+        if (!haveDescription && i_creature.effects.findByType(StatusAffects.BlackNipples) >= 0) {
             options = ["black ",
                 "ebony ",
                 "sable "];
@@ -1167,7 +1167,7 @@ export class Appearance  {
         let description: string = "";
         let options: any[];
 
-        if (i_plural && (i_creature.findStatusAffect(StatusAffects.Uniball) < 0)) {
+        if (i_plural && (i_creature.effects.findByType(StatusAffects.Uniball) < 0)) {
             if (i_creature.balls == 1) {
                 if (i_withArticle) {
                     options = ["a single",
@@ -1249,7 +1249,7 @@ export class Appearance  {
 
         }
         // UNIBALL
-        if (i_creature.findStatusAffect(StatusAffects.Uniball) >= 0) {
+        if (i_creature.effects.findByType(StatusAffects.Uniball) >= 0) {
             if (description) description += " ";
             options = ["tightly-compressed",
                 "snug",
@@ -1308,7 +1308,7 @@ export class Appearance  {
         description += randomChoice(options);
         if (i_plural) description += "s";
 
-        if (i_creature.findStatusAffect(StatusAffects.Uniball) >= 0 && rand(2) == 0) {
+        if (i_creature.effects.findByType(StatusAffects.Uniball) >= 0 && rand(2) == 0) {
             if (rand(3) == 0)
                 description += " merged into a cute, spherical package";
             else if (rand(2) == 0)

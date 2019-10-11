@@ -81,7 +81,7 @@ export class Inventory {
             doNext(playerMenu);
             return;
         }
-        if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv1(StatusAffects.Sealed) == 3) {
+        if (game.inCombat && player.effects.findByType(StatusAffects.Sealed) >= 0 && player.effects.getValue1Of(StatusAffects.Sealed) == 3) {
             outputText("\nYou reach for your items, but you just can't get your pouches open.  <b>Your ability to use items was sealed, and now you've wasted a chance to attack!</b>\n\n");
             enemyAI();
             return;

@@ -7,7 +7,7 @@ export class Doppleganger extends Monster {
     private _roundCount: number = 0;
 
     public mirrorAttack(damage: number): void {
-        this.createStatusAffect(StatusAffects.MirroredAttack, 0, 0, 0, 0);
+        this.effects.create(StatusAffects.MirroredAttack, 0, 0, 0, 0);
 
         outputText("As you swing your [weapon] at the doppleganger, " + mf(player, "he", "she") + " smiles mockingly, and mirrors your move exactly, lunging forward with " + mf(player, "his", "her") + " duplicate " + weaponName + ".");
 

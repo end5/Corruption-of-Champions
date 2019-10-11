@@ -66,9 +66,9 @@ export class LivingStatue extends Monster {
         damage = player.takeDamage(damage);
 
         // Stun success
-        if (rand(2) == 0 && player.findStatusAffect(StatusAffects.Stunned) < 0) {
+        if (rand(2) == 0 && player.effects.findByType(StatusAffects.Stunned) < 0) {
             outputText(" <b>The vibrations leave you rattled and stunned. It'll take you a moment to recover!</b>");
-            player.createStatusAffect(StatusAffects.Stunned, 2, 0, 0, 0);
+            player.effects.create(StatusAffects.Stunned, 2, 0, 0, 0);
         }
         else
         // Fail
@@ -83,8 +83,8 @@ export class LivingStatue extends Monster {
         outputText("The animated sculpture brings its right foot around, dragging it through the gardens at a high enough speed to tear a half score of bushes out by the root. A cloud of shrubbery and dirt washes over you!");
 
         // blind
-        if (rand(2) == 0 && player.findStatusAffect(StatusAffects.Blind) < 0) {
-            player.createStatusAffect(StatusAffects.Blind, 2, 0, 0, 0);
+        if (rand(2) == 0 && player.effects.findByType(StatusAffects.Blind) < 0) {
+            player.effects.create(StatusAffects.Blind, 2, 0, 0, 0);
             outputText(" <b>You are blinded!</b>");
         }
         else {
@@ -104,8 +104,8 @@ export class LivingStatue extends Monster {
             // Get hit
             outputText(" It chits you square in the chest. The momentum sends you flying through the air. You land with a crunch against a wall. <b>You'll have to run back to the giant to engage it in melee once more.</b>");
 
-            player.createStatusAffect(StatusAffects.KnockedBack, 0, 0, 0, 0);
-            this.createStatusAffect(StatusAffects.KnockedBack, 0, 0, 0, 0); // Applying to mob as a "used ability" marker
+            player.effects.create(StatusAffects.KnockedBack, 0, 0, 0, 0);
+            this.effects.create(StatusAffects.KnockedBack, 0, 0, 0, 0); // Applying to mob as a "used ability" marker
             damage = player.takeDamage(damage);
 
             outputText(" (" + damage + ")");
@@ -134,8 +134,8 @@ export class LivingStatue extends Monster {
         // Oh noes!
         else {
             outputText(" Your equipment flies off into the bushes! You'll have to fight another way. (" + player.takeDamage(str + weaponAttack) + ")");
-            player.createStatusAffect(StatusAffects.Disarmed, 0, 0, 0, 0);
-            this.createStatusAffect(StatusAffects.Disarmed, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.Disarmed, 0, 0, 0, 0);
+            this.effects.create(StatusAffects.Disarmed, 0, 0, 0, 0);
             flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID] = player.weapon.id;
             flags[kFLAGS.PLAYER_DISARMED_WEAPON_ATTACK] = player.weaponAttack;
             player.setWeapon(WeaponLib.FISTS);
@@ -159,17 +159,17 @@ export class LivingStatue extends Monster {
     }
 
     protected performCombatAction(): void {
-        if (this.HPRatio() < 0.7 && this.findStatusAffect(StatusAffects.KnockedBack) < 0) {
+        if (this.HPRatio() < 0.7 && this.effects.findByType(StatusAffects.KnockedBack) < 0) {
             this.backhand();
         }
-        else if (this.HPRatio() < 0.4 && this.findStatusAffect(StatusAffects.Disarmed) < 0 && player.weaponName != "fists") {
+        else if (this.HPRatio() < 0.4 && this.effects.findByType(StatusAffects.Disarmed) < 0 && player.weaponName != "fists") {
             this.disarm();
         }
         else {
             const opts: any[] = [];
 
-            if (player.findStatusAffect(StatusAffects.Blind) < 0 && player.findStatusAffect(StatusAffects.Stunned) < 0) opts.push(dirtKick);
-            if (player.findStatusAffect(StatusAffects.Blind) < 0 && player.findStatusAffect(StatusAffects.Stunned) < 0) opts.push(concussiveBlow);
+            if (player.effects.findByType(StatusAffects.Blind) < 0 && player.effects.findByType(StatusAffects.Stunned) < 0) opts.push(dirtKick);
+            if (player.effects.findByType(StatusAffects.Blind) < 0 && player.effects.findByType(StatusAffects.Stunned) < 0) opts.push(concussiveBlow);
             opts.push(cycloneStrike);
             opts.push(cycloneStrike);
             opts.push(overhandSmash);

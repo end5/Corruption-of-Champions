@@ -54,13 +54,13 @@ export function dreamSelect(): boolean {
         choices[choices.length] = 7;
     }
     // Exgartuboobs
-    if (player.statusAffectv1(StatusAffects.Exgartuan) == 2) {
+    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2) {
         choices[choices.length] = 8;
         choices[choices.length] = 8;
         choices[choices.length] = 8;
     }
     // Exgartucock
-    if (player.statusAffectv1(StatusAffects.Exgartuan) == 1 && player.hasCock()) {
+    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.hasCock()) {
         choices[choices.length] = 9;
         choices[choices.length] = 9;
         choices[choices.length] = 9;

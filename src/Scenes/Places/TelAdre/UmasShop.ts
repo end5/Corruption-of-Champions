@@ -430,12 +430,12 @@ export class UmasShop extends TelAdreAbstractContent {
             outputText("<b>Invalid massage bonus ID! Welp!</b>");
         }
         else {
-            let statIndex: number = player.findStatusAffect(StatusAffects.UmasMassage);
+            let statIndex: number = player.effects.findByType(StatusAffects.UmasMassage);
             let bonusValue: number;
 
             // Remove the old massage bonus if present
             if (statIndex >= 0) {
-                player.removeStatusAffect(StatusAffects.UmasMassage);
+                player.effects.remove(StatusAffects.UmasMassage);
             }
 
             if (selectedMassage == MASSAGE_RELIEF) {
@@ -460,7 +460,7 @@ export class UmasShop extends TelAdreAbstractContent {
             }
 
             if (bonusValue != 0) {
-                player.createStatusAffect(StatusAffects.UmasMassage, selectedMassage, bonusValue, MAX_MASSAGE_BONUS_DURATION, 0);
+                player.effects.create(StatusAffects.UmasMassage, selectedMassage, bonusValue, MAX_MASSAGE_BONUS_DURATION, 0);
                 flags[kFLAGS.UMA_TIMES_MASSAGED]++;
             }
         }
@@ -471,12 +471,12 @@ export class UmasShop extends TelAdreAbstractContent {
      * When expired, remove and include a message to the effect.
      */
     public updateBonusDuration(hours: number): void {
-        let statIndex: number = player.findStatusAffect(StatusAffects.UmasMassage);
+        let statIndex: number = player.effects.findByType(StatusAffects.UmasMassage);
 
         if (statIndex >= 0) {
-            player.statusAffect(statIndex).value3 -= hours;
+            player.effects[statIndex].value3 -= hours;
 
-            if (player.statusAffect(statIndex).value3 <= 0) {
+            if (player.effects[statIndex].value3 <= 0) {
                 bonusExpired();
             }
         }
@@ -488,7 +488,7 @@ export class UmasShop extends TelAdreAbstractContent {
     public bonusExpired(): void {
         outputText("\n<b>You groan softly as a feeling of increased tension washes over you, no longer as loose as you were before.  It looks like the effects of Uma's massage have worn off.</b>\n");
 
-        player.removeStatusAffect(StatusAffects.UmasMassage);
+        player.effects.remove(StatusAffects.UmasMassage);
     }
 
     /**

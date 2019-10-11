@@ -28,7 +28,7 @@ export class Desert {
             helScene.helSexualAmbush();
             return;
         }
-        if ((player.exploredDesert == 20 && player.findStatusAffect(StatusAffects.TelAdre) < 0) || (rand(20) == 0 && player.statusAffectv1(StatusAffects.TelAdre) == 0)) {
+        if ((player.exploredDesert == 20 && player.effects.findByType(StatusAffects.TelAdre) < 0) || (rand(20) == 0 && player.effects.getValue1Of(StatusAffects.TelAdre) == 0)) {
             telAdre.discoverTelAdre();
             return;
         }

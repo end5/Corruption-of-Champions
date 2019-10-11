@@ -36,7 +36,7 @@ export class IzumiScene {
     public actsLikeACow(): boolean {
         if (player.inHeat) return true;
         if (player.inRut) return true;
-        if (player.findStatusAffect(StatusAffects.Dysfunction)) return true;
+        if (player.effects.findByType(StatusAffects.Dysfunction)) return true;
         return false;
     }
 
@@ -306,7 +306,7 @@ export class IzumiScene {
             lustMod *= 2;
         }
 
-        player.createStatusAffect(StatusAffects.IzumisPipeSmoke, SMOKE_DURATION, deltaSpd, deltaSns, deltaLib);
+        player.effects.create(StatusAffects.IzumisPipeSmoke, SMOKE_DURATION, deltaSpd, deltaSns, deltaLib);
 
         // Can't use dynStats for this, because stats() has a chained modifier to incoming sens changes that could turn this value into 8x what we expected it to be
         player.spe += deltaSpd;
@@ -326,12 +326,12 @@ export class IzumiScene {
 
     // Update the duration of the pipe smoke effect
     public updateSmokeDuration(hours: number): void {
-        const affectIndex: number = player.findStatusAffect(StatusAffects.IzumisPipeSmoke);
+        const affectIndex: number = player.effects.findByType(StatusAffects.IzumisPipeSmoke);
 
         if (affectIndex >= 0) {
-            player.statusAffect(affectIndex).value1 -= hours;
+            player.effects[affectIndex].value1 -= hours;
 
-            if (player.statusAffect(affectIndex).value1 <= 0) {
+            if (player.effects[affectIndex].value1 <= 0) {
                 this.smokeEffectWearsOff();
             }
         }
@@ -339,12 +339,12 @@ export class IzumiScene {
 
     // Method to contain removal mechanics + scene text to spit out
     protected smokeEffectWearsOff(): void {
-        const affectIndex: number = player.findStatusAffect(StatusAffects.IzumisPipeSmoke);
+        const affectIndex: number = player.effects.findByType(StatusAffects.IzumisPipeSmoke);
 
         if (affectIndex >= 0) {
-            player.spe += Math.abs(player.statusAffect(affectIndex).value2);
-            player.sens -= player.statusAffect(affectIndex).value3;
-            player.lib -= player.statusAffect(affectIndex).value4;
+            player.spe += Math.abs(player.effects[affectIndex].value2);
+            player.sens -= player.effects[affectIndex].value3;
+            player.lib -= player.effects[affectIndex].value4;
 
             if (player.sens > 100) player.sens = 100;
             if (player.spe > 100) player.spe = 100;
@@ -356,7 +356,7 @@ export class IzumiScene {
 
             outputText("\n<b>You groan softly as your thoughts begin to clear somewhat.  It looks like the effects of Izumi's pipe smoke have worn off.</b>\n");
 
-            player.removeStatusAffect(StatusAffects.IzumisPipeSmoke);
+            player.effects.remove(StatusAffects.IzumisPipeSmoke);
         }
     }
 
@@ -945,7 +945,7 @@ export class IzumiScene {
 
             if (player.lactationQ() > 0) outputText("You let out a moan of pleasure as a sudden jet of milk spurts from your heavy breasts, splattering across the rocky ground.  Izumi doesn’t let up though, instead working your nipple even harder, almost feverishly pinching and squeezing away, forcing more and more of the warm liquid to be coaxed free of your bust.\n\n");
 
-            if ((player.findStatusAffect(StatusAffects.BreastsMilked) > 0) && (player.lactationQ() > 750)) {
+            if ((player.effects.findByType(StatusAffects.BreastsMilked) > 0) && (player.lactationQ() > 750)) {
                 outputText("You instinctively relax and lean back into the cushioned softness of Izumi’s breasts as the familiar sensation of being milked washes over you.  Your breasts respond readily to the repeated stimulation, great jets of milk answering the insistent urging of Izumi’s fingers.  Her other hand detaches itself from your groin temporarily to begin cupping and squeezing at your bust as well, much to your enjoyment.  You lay there in her arms, gazing down at your [chest] as you are being milked, and you can’t help but think to yourself");
 
                 if (player.cor < 40) outputText(" ‘How did this happen?‘  How did you get into this bizarre state, this weird situation?  It seems so strange, and yet, you can’t seem to summon up the energy to object or resist at all.  Perhaps, you wonder briefly, it has something to do with that damned smoke.  Izumi <i>was</i> smoking something, after all, and if it’s strong enough to affect a person as huge as her....\n\n");

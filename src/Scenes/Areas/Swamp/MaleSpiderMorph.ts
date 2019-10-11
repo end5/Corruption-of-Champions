@@ -26,7 +26,7 @@ export class MaleSpiderMorph extends AbstractSpiderMorph {
         createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 40, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);
         this.tallness = 7 * 12 + 6;
         this.hipRating = HIP_RATING_CURVY + 2;
         this.buttRating = BUTT_RATING_LARGE + 1;

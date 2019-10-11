@@ -9,7 +9,7 @@ export class Isabella extends Monster {
         outputText("Isabella snorts and lowers a shield a moment before she begins to charge towards you. Her hooves tear huge divots out of the ground as she closes the distance with surprising speed!  ", false);
 
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("Isabella blindly tries to charge at you, but misses completely.\n", false);
         }
         // Determine if dodged!
@@ -47,7 +47,7 @@ export class Isabella extends Monster {
         outputText("Isabella spins her shield back at you in a potent, steel-assisted backhand.  ", false);
 
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("Isabella blindly tries to charge at you, but misses completely.\n", false);
         }
         // Determine if dodged!
@@ -80,7 +80,7 @@ export class Isabella extends Monster {
             else {
                 damage = player.takeDamage(damage);
                 outputText("You try to avoid it, but her steely attack connects, rocking you back.  You stagger about while trying to get your bearings, but it's all you can do to stay on your feet.  <b>Isabella has stunned you!</b> (" + damage + ")\n", false);
-                player.createStatusAffect(StatusAffects.IsabellaStunned, 0, 0, 0, 0);
+                player.effects.create(StatusAffects.IsabellaStunned, 0, 0, 0, 0);
             }
         }
         combatRoundOver();
@@ -90,7 +90,7 @@ export class Isabella extends Monster {
         outputText("Isabella punches out from behind her shield in a punch aimed right at your throat!  ", false);
 
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("Isabella blindly tries to charge at you, but misses completely.\n", false);
         }
         // Determine if dodged!
@@ -121,7 +121,7 @@ export class Isabella extends Monster {
             else {
                 damage = player.takeDamage(damage);
                 outputText("You try your best to stop the onrushing fist, but it hits you square in the throat, nearly collapsing your windpipe entirely.  Gasping and sputtering, you try to breathe, and while it's difficult, you manage enough to prevent suffocation. <b>It will be impossible to focus to cast a spell in this state!</b> (" + damage + ")\n", false);
-                player.createStatusAffect(StatusAffects.ThroatPunch, 2, 0, 0, 0);
+                player.effects.create(StatusAffects.ThroatPunch, 2, 0, 0, 0);
             }
         }
         combatRoundOver();
@@ -140,11 +140,11 @@ export class Isabella extends Monster {
         // -If below 70% HP, 50% chance of milk drinking
         if (HPRatio() < .7 && rand(3) == 0) drankMalkYaCunt();
         // if PC has spells and isn't silenced, 1/3 chance of silence.
-        else if (player.hasSpells() && player.findStatusAffect(StatusAffects.ThroatPunch) < 0 && rand(3) == 0) {
+        else if (player.hasSpells() && player.effects.findByType(StatusAffects.ThroatPunch) < 0 && rand(3) == 0) {
             isabellaThroatPunch();
         }
         // if PC isn't stunned, 1/4 chance of stun
-        else if (player.findStatusAffect(StatusAffects.IsabellaStunned) < 0 && rand(4) == 0) {
+        else if (player.effects.findByType(StatusAffects.IsabellaStunned) < 0 && rand(4) == 0) {
             isabellaStun();
         }
         else isabellaAttack();
@@ -170,11 +170,11 @@ export class Isabella extends Monster {
         this.long = "Isabella is a seven foot tall, red-headed tower of angry cow-girl.  She's snarling at you from behind her massive shield, stamping her hooves in irritation as she prepares to lay into you.  Her skin is dusky, nearly chocolate except for a few white spots spattered over her body.  She wears a tight silk shirt and a corset that barely supports her bountiful breasts, but it's hard to get a good look at them behind her giant shield.";
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
-        this.createStatusAffect(StatusAffects.BonusVCapacity, 45, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusVCapacity, 45, 0, 0, 0);
         createBreastRow(Appearance.breastCupInverse("EE+"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 38, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 38, 0, 0, 0);
         this.tallness = 7 * 12 + 6;
         this.hipRating = HIP_RATING_CURVY + 2;
         this.buttRating = BUTT_RATING_LARGE + 1;

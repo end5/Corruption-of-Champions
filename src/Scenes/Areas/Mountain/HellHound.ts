@@ -2,7 +2,7 @@
 export class HellHound extends Monster {
     protected hellhoundFire(): void {
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText(capitalA + short + " completely misses you with a wave of dark fire! Thank the gods it's blind!", false);
             combatRoundOver();
             return;
@@ -42,7 +42,7 @@ export class HellHound extends Monster {
         doNext(playerMenu);
     }
     protected hellhoundScent(): void {
-        if (player.findStatusAffect(StatusAffects.NoFlee) >= 0) {
+        if (player.effects.findByType(StatusAffects.NoFlee) >= 0) {
             if (spe == 100) {
                 hellhoundFire();
                 return;
@@ -55,7 +55,7 @@ export class HellHound extends Monster {
         else {
             spe += 40;
             outputText("The hellhound keeps his four eyes on you as he sniffs the ground where you were moments ago. He raises his heads back up and gives you a fiery grin - he seems to have acquired your scent!  It'll be hard to get away now...", false);
-            player.createStatusAffect(StatusAffects.NoFlee, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.NoFlee, 0, 0, 0, 0);
         }
         combatRoundOver();
         /*if(spe >= 80) {

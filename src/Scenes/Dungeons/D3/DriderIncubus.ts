@@ -105,7 +105,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
         if (_combatRound >= 3 && (_combatRound % 6 == 0 || _combatRound == 3)) constrictingThoughts();
         else {
             const opts: any[] = [arouseSpell, arouseSpell];
-            if (player.findStatusAffect(StatusAffects.TaintedMind) < 0 && !_seenResolute) opts.push(taintedMind);
+            if (player.effects.findByType(StatusAffects.TaintedMind) < 0 && !_seenResolute) opts.push(taintedMind);
             if (!_seenResolute) opts.push(purpleHaze);
             opts[rand(opts.length)]();
         }
@@ -177,12 +177,12 @@ export class DriderIncubus extends AbstractSpiderMorph {
         let amount: number;
 
         // Inflicts venom that reduces strength.
-        if (player.findStatusAffect(StatusAffects.Stunned) >= 0 || (player.spe <= 1 && player.findStatusAffect(StatusAffects.Web) >= 2)) {
-            if (player.findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0) {
-                player.changeStatusValue(StatusAffects.DriderIncubusVenom, 1, 5);
+        if (player.effects.findByType(StatusAffects.Stunned) >= 0 || (player.spe <= 1 && player.effects.findByType(StatusAffects.Web) >= 2)) {
+            if (player.effects.findByType(StatusAffects.DriderIncubusVenom) >= 0) {
+                player.effects.setValue(StatusAffects.DriderIncubusVenom, 1, 5);
             }
             else {
-                player.createStatusAffect(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
+                player.effects.create(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
             }
 
             amount = 30;
@@ -193,7 +193,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
 
             player.str -= amount;
             mainView.statsView.showStatDown('str');
-            player.addStatusValue(StatusAffects.DriderIncubusVenom, 2, amount);
+            player.effects.addValue(StatusAffects.DriderIncubusVenom, 2, amount);
 
             // Alternate if PC cannot move
             outputText("Taking his time, the arachnid demon bares his fangs, easily biting deeply into you. His tongue slides sensually around the wounds as he pumps you full of venom, tasting your fear and desperation. You wince while the venom robs you of your strength.");
@@ -218,11 +218,11 @@ export class DriderIncubus extends AbstractSpiderMorph {
 
                 outputText("<i>“I do love watching you struggle.”</i> He flashes a crooked smile.");
 
-                if (player.findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0) {
-                    player.changeStatusValue(StatusAffects.DriderIncubusVenom, 1, 5);
+                if (player.effects.findByType(StatusAffects.DriderIncubusVenom) >= 0) {
+                    player.effects.setValue(StatusAffects.DriderIncubusVenom, 1, 5);
                 }
                 else {
-                    player.createStatusAffect(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
+                    player.effects.create(StatusAffects.DriderIncubusVenom, 5, 0, 0, 0);
                 }
 
                 amount = 30;
@@ -233,7 +233,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
 
                 player.str -= amount;
                 mainView.statsView.showStatDown('str');
-                player.addStatusValue(StatusAffects.DriderIncubusVenom, 2, amount);
+                player.effects.addValue(StatusAffects.DriderIncubusVenom, 2, amount);
             }
         }
     }
@@ -289,7 +289,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
 
                 if (player.perks.findByType(PerkLib.Resolute) < 0) {
                     outputText(" <b>You’re left stunned by the blow!</b> It’ll be a moment before you can regain your wits.");
-                    player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
+                    player.effects.create(StatusAffects.Stunned, 0, 0, 0, 0);
                 }
 
                 outputText(" (" + damage + ")");
@@ -353,7 +353,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
         // 9999
         if (player.cor <= 33) outputText(" What did he mean about fighting like a demon?");
 
-        player.createStatusAffect(StatusAffects.TaintedMind, 4, 0, 0, 0);
+        player.effects.create(StatusAffects.TaintedMind, 4, 0, 0, 0);
     }
 
     public taintedMindAttackAttempt(): void {
@@ -375,7 +375,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
         else {
             outputText(" The intensity overwhelms your ability to act, arousing and stunning you.");
             dynStats("lus", (player.lib / 15 + player.cor / 15) + 15);
-            player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.Stunned, 0, 0, 0, 0);
         }
     }
 
@@ -395,8 +395,8 @@ export class DriderIncubus extends AbstractSpiderMorph {
             // Fail
             outputText(" You concentrate to try and throw it off, but he overwhelms your mental defenses. Clouds of swirling pink filled with unsubtle erotic silhouettes fill your vision, effectively blinding you!");
             dynStats("lus", 25);
-            player.createStatusAffect(StatusAffects.PurpleHaze, 2 + rand(2), 0, 0, 0);
-            player.createStatusAffect(StatusAffects.Blind, player.statusAffectv1(StatusAffects.PurpleHaze), 0, 0, 0);
+            player.effects.create(StatusAffects.PurpleHaze, 2 + rand(2), 0, 0, 0);
+            player.effects.create(StatusAffects.Blind, player.effects.getValue1Of(StatusAffects.PurpleHaze), 0, 0, 0);
         }
     }
 

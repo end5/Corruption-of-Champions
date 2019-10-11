@@ -5,7 +5,7 @@ export class ChameleonGirl extends Monster {
         this.weaponName = "tongue";
         this.weaponVerb = "tongue-slap";
         this.weaponAttack = 10;
-        createStatusAffect(StatusAffects.Attacks, 1, 0, 0, 0);
+        this.effects.create(StatusAffects.Attacks, 1, 0, 0, 0);
         eAttack();
         this.weaponAttack = 30;
         this.weaponName = "claws";
@@ -16,7 +16,7 @@ export class ChameleonGirl extends Monster {
     // Ignores armor
     public chameleonClaws(): void {
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 1) {
             outputText(capitalA + short + " completely misses you with a blind claw-attack!\n", false);
         }
         // Evade:
@@ -36,7 +36,7 @@ export class ChameleonGirl extends Monster {
     // Attack 3:
     public rollKickClawWhatTheFuckComboIsThisShit(): void {
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 1) {
             outputText(capitalA + short + " completely misses you with a blind roll-kick!\n", false);
         }
         // Evade:

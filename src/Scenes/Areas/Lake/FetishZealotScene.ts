@@ -39,11 +39,11 @@ export class FetishZealotScene extends AbstractLakeContent {
     // Boat encounter
     // After the cultists arrive at the Lake, a zealot will be found guarding the player's boat.  Once defeated, there is a 50% chance he will be guarding it the next time the PC goes to the boat, until the swamp is added.  When that happens, repeat encounters will not occur anymore.
     public zealotBoat(): void {
-        if (player.statusAffectv1(StatusAffects.FetishOn) == 1) {
+        if (player.effects.getValue1Of(StatusAffects.FetishOn) == 1) {
             zealotRepeat();
             return;
         }
-        player.changeStatusValue(StatusAffects.FetishOn, 1, 1);
+        player.effects.setValue(StatusAffects.FetishOn, 1, 1);
         outputText("", true);
         outputText("As you get close to your boat, you are surprised to find someone standing at the end of the dock.  As you get closer, you see that it's a man wearing some kind of bizarre religious outfit.  He turns to face you as you approach and says \"<i>This has been claimed by the Followers of the Fetish for security reasons, leave at once.</i>\"\n\n\"<i>What?  This is my boat!</i>\" you cry out in surprise.  The zealot seems to take this as an aggressive action on your part and moves to attack you.", false);
         // next button, go to zealot fight

@@ -2,7 +2,7 @@
 export class Farmers extends Monster {
 
     protected performCombatAction(): void {
-        createStatusAffect(StatusAffects.Attacks, 4, 0, 0, 0);
+        this.effects.create(StatusAffects.Attacks, 4, 0, 0, 0);
         eAttack();
         combatRoundOver();
     }

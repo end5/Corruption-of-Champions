@@ -53,7 +53,7 @@ export class TamanisDaughters extends Goblin {
         if (special3 != null) select++;
         switch (rand(select)) {
             case 0:
-                createStatusAffect(StatusAffects.Attacks, int(flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 20), 0, 0, 0); // Tamani's Daughters get multiattacks!
+                this.effects.create(StatusAffects.Attacks, int(flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 20), 0, 0, 0); // Tamani's Daughters get multiattacks!
                 eAttack();
                 break;
             case 1:
@@ -93,11 +93,11 @@ export class TamanisDaughters extends Goblin {
         this.pronoun2 = "them";
         this.pronoun3 = "their";
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_TIGHT);
-        this.createStatusAffect(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
         createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 25, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 25, 0, 0, 0);
         this.tallness = 40;
         this.hipRating = HIP_RATING_AMPLE + 1;
         this.buttRating = BUTT_RATING_NOTICEABLE + 1;

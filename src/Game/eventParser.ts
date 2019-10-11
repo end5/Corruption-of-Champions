@@ -480,7 +480,7 @@ export function goNext(time: number, needNext: boolean): boolean {
 
         // IMP GANGBAAAAANGA
         // The more imps you create, the more often you get gangraped.
-        temp = player.statusAffectv1(StatusAffects.BirthedImps) * 2;
+        temp = player.effects.getValue1Of(StatusAffects.BirthedImps) * 2;
         if (temp > 7) temp = 7;
         if (player.perks.findByType(PerkLib.PiercedLethite) >= 0) temp += 4;
         if (player.inHeat) temp += 2;
@@ -490,8 +490,8 @@ export function goNext(time: number, needNext: boolean): boolean {
                 anemoneScene.goblinNightAnemone();
                 needNext = true;
             }
-            else if (temp > rand(100) && player.findStatusAffect(StatusAffects.DefenseCanopy) < 0) {
-                if (player.gender > 0 && (player.findStatusAffect(StatusAffects.JojoNightWatch) < 0 || player.findStatusAffect(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !kihaFollower.followerKiha())) {
+            else if (temp > rand(100) && player.effects.findByType(StatusAffects.DefenseCanopy) < 0) {
+                if (player.gender > 0 && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !kihaFollower.followerKiha())) {
                     impScene.impGangabangaEXPLOSIONS();
                     doNext(playerMenu);
                     return true;
@@ -504,7 +504,7 @@ export function goNext(time: number, needNext: boolean): boolean {
                     outputText("\n<b>Helia informs you over a mug of beer that she whupped some major imp asshole last night.  She wiggles her tail for emphasis.</b>\n");
                     needNext = true;
                 }
-                else if (player.gender > 0 && player.findStatusAffect(StatusAffects.JojoNightWatch) >= 0 && player.findStatusAffect(StatusAffects.PureCampJojo) >= 0) {
+                else if (player.gender > 0 && player.effects.findByType(StatusAffects.JojoNightWatch) >= 0 && player.effects.findByType(StatusAffects.PureCampJojo) >= 0) {
                     outputText("\n<b>Jojo informs you that he dispatched a crowd of imps as they tried to sneak into camp in the night.</b>\n");
                     needNext = true;
                 }
@@ -518,8 +518,8 @@ export function goNext(time: number, needNext: boolean): boolean {
                 }
             }
             // wormgasms
-            else if (flags[kFLAGS.EVER_INFESTED] == 1 && rand(100) <= 4 && player.hasCock() && player.findStatusAffect(StatusAffects.Infested) < 0) {
-                if (player.hasCock() && (player.findStatusAffect(StatusAffects.JojoNightWatch) < 0 || player.findStatusAffect(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0) {
+            else if (flags[kFLAGS.EVER_INFESTED] == 1 && rand(100) <= 4 && player.hasCock() && player.effects.findByType(StatusAffects.Infested) < 0) {
+                if (player.hasCock() && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0) {
                     nightTimeInfestation();
                     return true;
                 }
@@ -527,7 +527,7 @@ export function goNext(time: number, needNext: boolean): boolean {
                     outputText("\n<b>Helia informs you over a mug of beer that she stomped a horde of gross worms into paste.  She shudders after at the memory.</b>\n");
                     needNext = true;
                 }
-                else if (player.gender > 0 && player.findStatusAffect(StatusAffects.JojoNightWatch) >= 0 && player.findStatusAffect(StatusAffects.PureCampJojo) >= 0) {
+                else if (player.gender > 0 && player.effects.findByType(StatusAffects.JojoNightWatch) >= 0 && player.effects.findByType(StatusAffects.PureCampJojo) >= 0) {
                     outputText("\n<b>Jojo informs you that he dispatched a horde of tiny, white worms as they tried to sneak into camp in the night.</b>\n");
                     needNext = true;
                 }
@@ -634,7 +634,7 @@ export function goNext(time: number, needNext: boolean): boolean {
             }
         }
         // Egg loot!
-        if (player.findStatusAffect(StatusAffects.LootEgg) >= 0) {
+        if (player.effects.findByType(StatusAffects.LootEgg) >= 0) {
             trace("EGG LOOT HAS");
             // default
 
@@ -659,12 +659,12 @@ export function goNext(time: number, needNext: boolean): boolean {
 
             let sEgg: ItemType = null;
 
-            if (player.findStatusAffect(StatusAffects.Eggs) >= 0) {
-                let size: number = player.statusAffectv2(StatusAffects.Eggs);
+            if (player.effects.findByType(StatusAffects.Eggs) >= 0) {
+                let size: number = player.effects.getValue2Of(StatusAffects.Eggs);
 
                 if (size < 0 || size > 1) size = rand(2);
 
-                let col: number = player.statusAffectv1(StatusAffects.Eggs);
+                let col: number = player.effects.getValue1Of(StatusAffects.Eggs);
 
                 if (col < 0 || col > 5) col = rand(6);
 
@@ -674,8 +674,8 @@ export function goNext(time: number, needNext: boolean): boolean {
                 sEgg = consumables.BROWNEG;
             }
 
-            player.removeStatusAffect(StatusAffects.LootEgg);
-            player.removeStatusAffect(StatusAffects.Eggs);
+            player.effects.remove(StatusAffects.LootEgg);
+            player.effects.remove(StatusAffects.Eggs);
             trace("TAKEY NAU");
             inventory.takeItem(sEgg, playerMenu);
             return true;
@@ -686,13 +686,13 @@ export function goNext(time: number, needNext: boolean): boolean {
 
     // Hanging the Uma massage update here, I think it should work...
     telAdre.umasShop.updateBonusDuration(time);
-    if (player.findStatusAffect(StatusAffects.UmasMassage) >= 0) {
-        trace("Uma's massage bonus time remaining: " + player.statusAffectv3(StatusAffects.UmasMassage));
+    if (player.effects.findByType(StatusAffects.UmasMassage) >= 0) {
+        trace("Uma's massage bonus time remaining: " + player.effects.getValue3Of(StatusAffects.UmasMassage));
     }
 
     highMountains.izumiScenes.updateSmokeDuration(time);
-    if (player.findStatusAffect(StatusAffects.IzumisPipeSmoke) >= 0) {
-        trace("Izumis pipe smoke time remaining: " + player.statusAffectv1(StatusAffects.IzumisPipeSmoke));
+    if (player.effects.findByType(StatusAffects.IzumisPipeSmoke) >= 0) {
+        trace("Izumis pipe smoke time remaining: " + player.effects.getValue1Of(StatusAffects.IzumisPipeSmoke));
     }
 
     // Drop axe if too short!

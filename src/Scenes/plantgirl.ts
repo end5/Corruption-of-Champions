@@ -2,13 +2,13 @@
 //Encounter with the Plant Woman (Intro 1, requires having seen corrupted glade)
 export function encounterPlantWoman():void {
 	if(rand(2) == 0) {
-		monster.createStatusAffect(StatusAffects.happy,0,0,0,0);
+		monster.effects.create(StatusAffects.happy,0,0,0,0);
 	}
 	else if(rand(2) == 0) {
-		monster.createStatusAffect(StatusAffects.horny,0,0,0,0);
+		monster.effects.create(StatusAffects.horny,0,0,0,0);
 	}
 	else {
-		monster.createStatusAffect(StatusAffects.grouchy,0,0,0,0);
+		monster.effects.create(StatusAffects.grouchy,0,0,0,0);
 	}
 	clearOutput();
 	if(flags[kFLAGS.TIMES_MET_PLANTGIRL] == 0) {
@@ -163,7 +163,7 @@ outputText("As she returns to teasing you again with a pseudo-kiss, you pull bac
 //(Decline 1.1; considerate:
 if(monster.hasStatusAffect(StatusAffects.happy) >= 0) {
     outputText("\n\nHer vines relax further and uncoil around you, slumping to the ground as she withdraws into the bush.  The display from the creature tugs at you a bit, but you shake it off and decide to return to camp before she changes her mind.");
-    monster.removeStatusAffect(StatusAffects.happy);
+    monster.effects.remove(StatusAffects.happy);
     doNext(camp.returnToCampUseOneHour);
     return;
 }

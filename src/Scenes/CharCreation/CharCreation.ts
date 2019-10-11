@@ -199,8 +199,8 @@ export class CharCreation {
         player.breastRows = [];
 
         // Clear Statuses
-        while (player.statusAffects.length > 0) {
-            player.removeStatuses();
+        while (player.effects.length > 0) {
+            player.effects.clear();
         }
         // Clear old camp slots
         inventory.clearStorage();
@@ -998,12 +998,12 @@ export class CharCreation {
         player.perks.create(PerkLib.Mage, 0, 0, 0, 0);
         player.perks.create(PerkLib.HistoryHealer, 0, 0, 0, 0);
         player.perks.create(PerkLib.Tank, 0, 0, 0, 0);
-        player.createStatusAffect(StatusAffects.KnowsArouse, 0, 0, 0, 0);
-        player.createStatusAffect(StatusAffects.KnowsHeal, 0, 0, 0, 0);
-        player.createStatusAffect(StatusAffects.KnowsMight, 0, 0, 0, 0);
-        player.createStatusAffect(StatusAffects.KnowsCharge, 0, 0, 0, 0);
-        player.createStatusAffect(StatusAffects.KnowsBlind, 0, 0, 0, 0);
-        player.createStatusAffect(StatusAffects.KnowsWhitefire, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.KnowsArouse, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.KnowsHeal, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.KnowsMight, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.KnowsCharge, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.KnowsBlind, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.KnowsWhitefire, 0, 0, 0, 0);
         // magic, 50 Int, 50 tough, Speed 15, Str 10, 30 corruption, 30 libido, 10 sensitivity.
         player.inte = 50;
         player.tou = 50;
@@ -1111,7 +1111,7 @@ export class CharCreation {
         // Bow
         player.keyItems.create("Bow", 0, 0, 0, 0);
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
-        player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
+        player.effects.create(StatusAffects.Kelt, 100, 0, 0, 0);
         // Is it possible to get extra starting perks added? If so, I'd like History: Religious added to whatever is selected on creation. If not, please ignore this line.
         // Freckled skinAdj
         player.skinAdj = "freckled";
@@ -1176,7 +1176,7 @@ export class CharCreation {
         player.tallness = 64;
 
         // Perks: Feeder, Strong Back, Strong Back 2
-        player.createStatusAffect(StatusAffects.Feeder, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.Feeder, 0, 0, 0, 0);
         player.perks.create(PerkLib.Feeder, 0, 0, 0, 0);
 
         player.perks.create(PerkLib.StrongBack, 0, 0, 0, 0);
@@ -1389,7 +1389,7 @@ export class CharCreation {
         player.breastRows[0].breastRating = 4;
         player.skinTone = "light";
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
-        player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
+        player.effects.create(StatusAffects.Kelt, 100, 0, 0, 0);
         player.keyItems.create("Bow", 0, 0, 0, 0);
     }
 
@@ -1646,7 +1646,7 @@ export class CharCreation {
         // Muscle Tone- A bit above average enough to trigger a mention of it in the desc.
         player.tone = 55;
         // Nipples-  As above on size but the black sand trap nipples.
-        player.createStatusAffect(StatusAffects.BlackNipples, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.BlackNipples, 0, 0, 0, 0);
         // Hair Length- Long
         player.hairLength = 16;
         // Hair Color- Black
@@ -1760,7 +1760,7 @@ export class CharCreation {
         // for wetness a squirter, looseness a 2 and capacity at 140.
         if (!player.hasVagina()) player.createVagina();
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
-        player.createStatusAffect(StatusAffects.BonusVCapacity, 132, 0, 0, 0);
+        player.effects.create(StatusAffects.BonusVCapacity, 132, 0, 0, 0);
         // Virgin, high fertility like in the email I sent before.  dragon wings, nine fox tails,  dragon legs, eight DD breasts with four fuckable nipples each, dragon tongue, waist length hair, large dragon wings.
         player.wingType = WING_TYPE_DRACONIC_LARGE;
         player.wingDesc = "large, draconic";
@@ -2036,8 +2036,8 @@ export class CharCreation {
         player.tailType = TAIL_TYPE_FOX;
         player.tailVenom = 2;
         player.inte = 30;
-        if (player.findStatusAffect(StatusAffects.BonusVCapacity) < 0) player.createStatusAffect(StatusAffects.BonusVCapacity, 0, 0, 0, 0);
-        else player.addStatusValue(StatusAffects.BonusVCapacity, 1, 5 + rand(10));
+        if (player.effects.findByType(StatusAffects.BonusVCapacity) < 0) player.effects.create(StatusAffects.BonusVCapacity, 0, 0, 0, 0);
+        else player.effects.addValue(StatusAffects.BonusVCapacity, 1, 5 + rand(10));
         outputText("As a Kitsune, you always got weird looks, but none could doubt your affinity for magic...");
     }
 
@@ -2099,7 +2099,7 @@ export class CharCreation {
         player.hairLength = 69.2;
         player.hairType = 4;
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
-        player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
+        player.effects.create(StatusAffects.Kelt, 100, 0, 0, 0);
         player.keyItems.create("Bow", 0, 0, 0, 0);
 
         player.keyItems.create("Zetaz's Map", 0, 0, 0, 0);
@@ -2117,7 +2117,7 @@ export class CharCreation {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] = 1;
         flags[kFLAGS.D3_DISCOVERED] = 1;
 
-        player.createStatusAffect(StatusAffects.KnowsWhitefire, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.KnowsWhitefire, 0, 0, 0, 0);
 
         player.perks.create(PerkLib.HistoryFighter, 0, 0, 0, 0);
         player.perks.create(PerkLib.Acclimation, 0, 0, 0, 0);
@@ -2155,8 +2155,8 @@ export class CharCreation {
         player.itemSlot3.setItemAndQty(consumables.OVIELIX, 1);
         player.itemSlot4.setItemAndQty(consumables.REPTLUM, 1);
 
-        player.createStatusAffect(StatusAffects.TelAdre, 1, 0, 0, 0);
-        // player.createStatusAffect(StatusAffects.MetWhitney, 2, 0, 0, 0);
+        player.effects.create(StatusAffects.TelAdre, 1, 0, 0, 0);
+        // player.effects.create(StatusAffects.MetWhitney, 2, 0, 0, 0);
 
         // Izma
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] = 1;
@@ -2334,7 +2334,7 @@ export class CharCreation {
         player.setWeapon(weapons.B_SWORD);
         player.setArmor(armors.SSARMOR);
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
-        player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
+        player.effects.create(StatusAffects.Kelt, 100, 0, 0, 0);
         player.keyItems.create("Bow", 0, 0, 0, 0);
         inventory.createStorage();
         inventory.createStorage();

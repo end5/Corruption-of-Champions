@@ -591,7 +591,7 @@ export function appearance(e: MouseEvent = null): void {
         outputText("  Of course, your " + legs(player) + " are partially transparent due to their ghostly nature.", false);
 
     outputText("\n", false);
-    if (player.findStatusAffect(StatusAffects.GooStuffed) >= 0) {
+    if (player.effects.findByType(StatusAffects.GooStuffed) >= 0) {
         outputText("\n<b>Your gravid-looking belly is absolutely stuffed full of goo. There's no way you can get pregnant like this, but at the same time, you look like some fat-bellied breeder.</b>\n");
     }
     // Pregnancy Shiiiiiitz
@@ -599,7 +599,7 @@ export function appearance(e: MouseEvent = null): void {
         if (player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS) {
             outputText("<b>", false);
             // Compute size
-            temp = player.statusAffectv3(StatusAffects.Eggs) + player.statusAffectv2(StatusAffects.Eggs) * 10;
+            temp = player.effects.getValue3Of(StatusAffects.Eggs) + player.effects.getValue2Of(StatusAffects.Eggs) * 10;
             if (player.pregnancyIncubation <= 50 && player.pregnancyIncubation > 20) {
                 outputText("Your swollen pregnant belly is as large as a ", false);
                 if (temp < 10)
@@ -816,7 +816,7 @@ export function appearance(e: MouseEvent = null): void {
             outputText("  It's a long, smooth black shaft that's rigid to the touch.  Its base is ringed with a layer of four inch long soft bee hair.  The tip has a much finer layer of short yellow hairs.  The tip is very sensitive, and it hurts constantly if you don’t have bee honey on it.");
         }
         // Worm flavor
-        if (player.findStatusAffect(StatusAffects.Infested) >= 0)
+        if (player.effects.findByType(StatusAffects.Infested) >= 0)
             outputText("  Every now and again a slimy worm coated in spunk slips partway out of your " + cockDescript(player, 0) + ", tasting the air like a snake's tongue.", false);
         if (player.cocks[temp].sock)
             sockDescript(temp);
@@ -943,13 +943,13 @@ export function appearance(e: MouseEvent = null): void {
             if (rando > 3) rando = 0;
         }
         // Worm flavor
-        if (player.findStatusAffect(StatusAffects.Infested) >= 0)
+        if (player.effects.findByType(StatusAffects.Infested) >= 0)
             outputText("Every now and again slimy worms coated in spunk slip partway out of your " + multiCockDescriptLight(player) + ", tasting the air like tongues of snakes.\n", false);
         // DONE WITH COCKS, moving on!
     }
     // Of Balls and Sacks!
     if (player.balls > 0) {
-        if (player.findStatusAffect(StatusAffects.Uniball) >= 0) {
+        if (player.effects.findByType(StatusAffects.Uniball) >= 0) {
             if (player.skinType != SKIN_TYPE_GOO)
                 outputText("Your [sack] clings tightly to your groin, holding " + ballsDescript(player) + " snugly against you.");
             else if (player.skinType == SKIN_TYPE_GOO)

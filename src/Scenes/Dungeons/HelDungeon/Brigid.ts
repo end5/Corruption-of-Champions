@@ -20,7 +20,7 @@ export class Brigid extends Monster {
         damage = player.takeDamage(5);
         outputText(" (" + damage + ")");
         if (player.perks.findByType(PerkLib.Resolute) >= 0) outputText("  Of course, your resolute posture prevents her from accomplishing much.");
-        else player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
+        else player.effects.create(StatusAffects.Stunned, 0, 0, 0, 0);
         combatRoundOver();
     }
 
@@ -31,8 +31,8 @@ export class Brigid extends Monster {
         combatRoundOver();
     }
     protected performCombatAction(): void {
-        if (player.findStatusAffect(StatusAffects.Stunned) >= 0) {
-            player.removeStatusAffect(StatusAffects.Stunned);
+        if (player.effects.findByType(StatusAffects.Stunned) >= 0) {
+            player.effects.remove(StatusAffects.Stunned);
             if (rand(2) == 0) BrigidAssGrind();
             else brigidPoke();
             return;
@@ -58,7 +58,7 @@ export class Brigid extends Monster {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
         if (LOWER_BODY_TYPE_HARPY > 0) {
-            this.createStatusAffect(StatusAffects.BonusVCapacity, LOWER_BODY_TYPE_HARPY, 0, 0, 0);
+            this.effects.create(StatusAffects.BonusVCapacity, LOWER_BODY_TYPE_HARPY, 0, 0, 0);
         }
         createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;

@@ -78,7 +78,7 @@ export class KihaFollower extends NPCAwareContent {
         outputText("You're fighting Kiha!", false);
         startCombat(new Kiha());
         // Flag this status to differentiate what happens on defeat or loss!
-        monster.createStatusAffect(StatusAffects.spiderfight, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.spiderfight, 0, 0, 0, 0);
     }
     // (Play normal Kiha combat scenario, but instead of the normal results at the end...)
 
@@ -134,7 +134,7 @@ export class KihaFollower extends NPCAwareContent {
         startCombat(new SpiderMorphMob());
         // (Proceed to Spider Horde Combat)
         // Set first round cover
-        monster.createStatusAffect(StatusAffects.MissFirstRound, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.MissFirstRound, 0, 0, 0, 0);
         HPChange(100, false);
         fatigue(-30);
         dynStats("lus", -40);
@@ -300,7 +300,7 @@ export class KihaFollower extends NPCAwareContent {
         // (Use the normal Kiha combat scenario, with the following changes upon Win/Lose, and no \"<i>Run</i>\" option available)
         startCombat(new Kiha());
         spriteSelect(72);
-        monster.createStatusAffect(StatusAffects.Spar, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.Spar, 0, 0, 0, 0);
     }
     // Spar with Friendly Kiha - Player Wins (Z)
     public winSparWithKiha(): void {
@@ -1195,7 +1195,7 @@ export class KihaFollower extends NPCAwareContent {
             if (player.lib < 80 && player.minLust() < 50) outputText("Was it the lust draft?  Or");
             else outputText("Was it");
             outputText(" something Kiha's body - or yours - did?  You shake your head and hope she won't hold the incident against you.");
-            if (player.statusAffectv1(StatusAffects.Exgartuan) == 1) outputText("  Exgartuan suggests, \"<i>She probably loved it if she had as much fun as I did.</i>\"");
+            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) outputText("  Exgartuan suggests, \"<i>She probably loved it if she had as much fun as I did.</i>\"");
             flags[kFLAGS.KIHA_NEEDS_TO_REACT_TO_HORSECOCKING] = 1;
         }
         // (REPEAT:
@@ -1283,7 +1283,7 @@ export class KihaFollower extends NPCAwareContent {
             else outputText("  You wonder what would happen if she got jumped by your tiger-shark children.");
         }
         outputText("[pg]Wiping up as best you can, you don your [armor] and walk back");
-        if (monk >= 5 && player.findStatusAffect(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
+        if (monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
             if (!jojoScene.tentacleJojo()) outputText(", ignoring the sounds of Jojo feverishly masturbating in the woods");
             else outputText(", ignoring the sound of Jojo vigorously fucking himself with all his tentacles in the trees");
         }
@@ -1684,7 +1684,7 @@ export class KihaFollower extends NPCAwareContent {
         outputText("[pg]\"<i>I wouldn't have it any other way, [name],</i>\" she says as she grins, raising her axe into a more combat-ready stance.  It's time to prove your worth!");
         // [Leads to a fight]
         startCombat(new Kiha());
-        monster.createStatusAffect(StatusAffects.DomFight, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.DomFight, 0, 0, 0, 0);
     }
 
     // [PC loses the fight]

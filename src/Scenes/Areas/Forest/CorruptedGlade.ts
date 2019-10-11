@@ -227,10 +227,10 @@ export class CorruptedGlade {
         outputText("In time you realize the breast has long since been emptied by your hungry mouth, and you pull free with a pop, letting your tongue run over your now over-sensitive lips.  It seems your entire mouth has been affected by the tree's sap, and is now as sensitive and receptive as a maiden's box.  You don't think you could drink any more sap with how full you feel, and you make ready to depart this perverted place.");
         dynStats("sen", 1, "lus", 15, "cor", .5);
         player.slimeFeed();
-        if (player.findStatusAffect(StatusAffects.LustyTongue) < 0) {
+        if (player.effects.findByType(StatusAffects.LustyTongue) < 0) {
             if (rand(4) == 0) { // 25% Chance of sensitive mouth status – increased lust gain/hour due to licking your lips :3
                 outputText("  The feeling doesn't seem to fade, only becoming more and more intense over the coming hour.  It will be hard to keep from getting turned on any time you lick your lips or eat some food.");
-                player.createStatusAffect(StatusAffects.LustyTongue, 24, 0, 0, 0);
+                player.effects.create(StatusAffects.LustyTongue, 24, 0, 0, 0);
             }
             else outputText("  Thankfully, the feeling goes away after a few minutes, leaving you feeling just a bit more sensitive.");
         }

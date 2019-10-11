@@ -13,10 +13,10 @@ export class BeeGirl extends Monster {
             player.lust = 98;
             dynStats("lus", 1);
             const dildoRape: () => void = (player.keyItems.has("Deluxe Dildo") >= 0 ? game.forest.beeGirlScene.beeGirlsGetsDildoed : null);
-            const milkAndHoney: () => void = (player.findStatusAffect(StatusAffects.Feeder) >= 0 ? game.forest.beeGirlScene.milkAndHoneyAreKindaFunny : null);
+            const milkAndHoney: () => void = (player.effects.findByType(StatusAffects.Feeder) >= 0 ? game.forest.beeGirlScene.milkAndHoneyAreKindaFunny : null);
             simpleChoices("Rape", game.forest.beeGirlScene.rapeTheBeeGirl, "Dildo Rape", dildoRape, "", null, "B. Feed", milkAndHoney, "Leave", leaveAfterDefeating);
         }
-        else if (player.findStatusAffect(StatusAffects.Feeder) >= 0) { // Genderless can still breastfeed
+        else if (player.effects.findByType(StatusAffects.Feeder) >= 0) { // Genderless can still breastfeed
             if (hpVictory) {
                 outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.  The sweet scent oozing from between her legs is too much to bear, arousing you painfully.\n\nWhat do you do?");
             }
@@ -52,7 +52,7 @@ export class BeeGirl extends Monster {
 
     private beeStingAttack(): void {
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText(capitalA + short + " completely misses you with a blind sting!!");
             combatRoundOver();
             return;
@@ -87,20 +87,20 @@ export class BeeGirl extends Monster {
                 if (player.sens > 50) outputText("  The sensitive nubs of your nipples rub tightly under your " + player.armorName + ".");
             }
             else outputText(" You shake your head and clear the thoughts from your head, focusing on the task at hand.");
-            if (player.findStatusAffect(StatusAffects.lustvenom) < 0) player.createStatusAffect(StatusAffects.lustvenom, 0, 0, 0, 0);
+            if (player.effects.findByType(StatusAffects.lustvenom) < 0) player.effects.create(StatusAffects.lustvenom, 0, 0, 0, 0);
         }
         // Paralise the other 50%!
         else {
             outputText("Searing pain lances through you as " + a + short + " manages to sting you!  You stagger back a step and nearly trip, finding it hard to move yourself.");
-            const paralyzeIndex: number = player.findStatusAffect(StatusAffects.ParalyzeVenom);
+            const paralyzeIndex: number = player.effects.findByType(StatusAffects.ParalyzeVenom);
             if (paralyzeIndex >= 0) {
-                player.statusAffect(paralyzeIndex).value1 += 2.9; // v1 - strenght penalty, v2 speed penalty
-                player.statusAffect(paralyzeIndex).value2 += 2.9;
+                player.effects[paralyzeIndex].value1 += 2.9; // v1 - strenght penalty, v2 speed penalty
+                player.effects[paralyzeIndex].value2 += 2.9;
                 dynStats("str", -3, "spe", -3);
                 outputText("  It's getting much harder to move, you're not sure how many more stings like that you can take!");
             }
             else {
-                player.createStatusAffect(StatusAffects.ParalyzeVenom, 2, 2, 0, 0);
+                player.effects.create(StatusAffects.ParalyzeVenom, 2, 2, 0, 0);
                 dynStats("str", -2, "spe", -2);
                 outputText("  You've fallen prey to paralyzation venom!  Better end this quick!");
             }

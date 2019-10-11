@@ -24,7 +24,7 @@ export class GooGirlScene extends AbstractLakeContent {
         outputText("", true);
         spriteSelect(69);
         outputText("As you walk around the lake, you notice a pale red light pulsing in the ", false);
-        if (player.findStatusAffect(StatusAffects.FactoryOverload) < 0) outputText("sapphire ", false);
+        if (player.effects.findByType(StatusAffects.FactoryOverload) < 0) outputText("sapphire ", false);
         else outputText("murky ", false);
         outputText("waters. You pause, trying to figure out what the shape might be. Just under the surface of the water, there appears to be a fist-sized heart shedding a crimson glow. Leaning closer, you gaze down into your reflection only to find your face rising up with pursed lips, trying to kiss you! You jerk backwards and the pseudo-head quivers, resolving its face into a gooey-looking girl, her ", false);
         startCombat(new GooGirl());
@@ -34,7 +34,7 @@ export class GooGirlScene extends AbstractLakeContent {
 
     // New Perk – Slime Core (requires goo player, random drop rate?)
     private coreDropChance(): void {
-        if (rand(4) == 0 && player.findStatusAffect(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4) {
+        if (rand(4) == 0 && player.effects.findByType(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4) {
             outputText("\n\nAs the goo-girl slithers away, into the lake's placid waves, you notice she seems to have left behind a small blob. Upon investigation, it appears to be a tiny, ruby heart, encased in a slimy " + gooColor8() + " membrane. As you reach to pick it up, the jelly ball quivers and pulses with a warm, cheerful light. Your fingers close on it and the nucleus slides through your palm, into your body!\n\n", false);
 
             outputText("There is a momentary pressure in your chest and a few memories that are not your own flicker before your eyes. The dizzying sight passes and the slime core settles within your body, imprinted with your personality and experiences. There is a comforting calmness from your new nucleus and you feel as though, with your new memories, you will be better able to manage your body's fluid requirements.\n\n", false);
@@ -436,8 +436,8 @@ export class GooGirlScene extends AbstractLakeContent {
         coreDropChance();
         player.orgasm();
         // You've now been milked, reset the timer for that
-        player.addStatusValue(StatusAffects.Feeder, 1, 1);
-        player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+        player.effects.addValue(StatusAffects.Feeder, 1, 1);
+        player.effects.setValue(StatusAffects.Feeder, 2, 0);
         cleanupAfterCombat();
     }
 

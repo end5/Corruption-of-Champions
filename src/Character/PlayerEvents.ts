@@ -67,8 +67,8 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == TAIL_TYPE_HARPY && player.perks.findByType(PerkLib.HarpyWomb) >= 0) { // Make eggs big if harpied!
-            if (player.findStatusAffect(StatusAffects.Eggs) >= 0 && player.statusAffectv2(StatusAffects.Eggs) == 0) {
-                player.changeStatusValue(StatusAffects.Eggs, 2, 1);
+            if (player.effects.findByType(StatusAffects.Eggs) >= 0 && player.effects.getValue2Of(StatusAffects.Eggs) == 0) {
+                player.effects.setValue(StatusAffects.Eggs, 2, 1);
                 outputText("\n<b>A familiar, motherly rumble lets you know that your harpy-like womb is growing your eggs nice and large.</b>\n");
                 needNext = true;
             }
@@ -119,9 +119,9 @@ export class PlayerEvents implements TimeAwareInterface {
         if (player.pregnancyIncubation <= 0 && player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS) { // Fixing Egg Preg Preglocked Glitch
             player.knockUpForce(); // Clear Pregnancy
         }
-        if (player.findStatusAffect(StatusAffects.Uniball) >= 0 && player.ballSize > 1 && player.balls > 0) { // Testicles Normalise:
+        if (player.effects.findByType(StatusAffects.Uniball) >= 0 && player.ballSize > 1 && player.balls > 0) { // Testicles Normalise:
             outputText("\nYou feel a deep sensation of release around your genitals.  You sigh with relief and contentment as your testicles drop downwards and bloom outwards, heat throbbing within them as they split and form a proper ballsack.\n");
-            player.removeStatusAffect(StatusAffects.Uniball);
+            player.effects.remove(StatusAffects.Uniball);
             needNext = true;
         }
         if (player.perks.findByType(PerkLib.Androgyny) < 0) { // Fix femininity ratings if out of whack!
@@ -131,15 +131,15 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
         }
-        if (player.findStatusAffect(StatusAffects.LustStickApplied) >= 0) { // Lust stick!
-            player.addStatusValue(StatusAffects.LustStickApplied, 1, -1); // Decrement!
-            if (player.statusAffectv1(StatusAffects.LustStickApplied) <= 0) {
-                player.removeStatusAffect(StatusAffects.LustStickApplied);
+        if (player.effects.findByType(StatusAffects.LustStickApplied) >= 0) { // Lust stick!
+            player.effects.addValue(StatusAffects.LustStickApplied, 1, -1); // Decrement!
+            if (player.effects.getValue1Of(StatusAffects.LustStickApplied) <= 0) {
+                player.effects.remove(StatusAffects.LustStickApplied);
                 outputText("<b>\nYour drugged lipstick fades away, leaving only the faintest residue on your lips.  You'll have to put on more if you want to be able to kiss your foes into submission!</b>\n");
             }
         }
-        if (player.findStatusAffect(StatusAffects.Luststick) >= 0) { // Luststic countdown
-            player.addStatusValue(StatusAffects.Luststick, 1, -1);
+        if (player.effects.findByType(StatusAffects.Luststick) >= 0) { // Luststic countdown
+            player.effects.addValue(StatusAffects.Luststick, 1, -1);
             if (rand(2) == 0 && player.hasCock()) { // 50% chance to lust spike
                 // Display if haven't displayed
                 if (player.flags[kFLAGS.PC_CURRENTLY_LUSTSTICK_AFFECTED] == 0) {
@@ -151,15 +151,15 @@ export class PlayerEvents implements TimeAwareInterface {
                 player.lust += 20;
                 if (player.lust > 100) player.lust = 100;
             }
-            if (player.statusAffectv1(StatusAffects.Luststick) <= 0) {
-                player.removeStatusAffect(StatusAffects.Luststick);
+            if (player.effects.getValue1Of(StatusAffects.Luststick) <= 0) {
+                player.effects.remove(StatusAffects.Luststick);
                 outputText("\n<b>The lust-increasing effects of harpy lipstick have worn off!\n</b>");
                 needNext = true;
             }
         }
         if (player.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00285] >= 50 && player.perks.findByType(PerkLib.LuststickAdapted) < 0) { // Luststick resistance unlock
             sophieBimbo.unlockResistance();
-            if (player.findStatusAffect(StatusAffects.Luststick) >= 0) player.removeStatusAffect(StatusAffects.Luststick);
+            if (player.effects.findByType(StatusAffects.Luststick) >= 0) player.effects.remove(StatusAffects.Luststick);
             needNext = true;
         }
         if (flags[kFLAGS.DICK_EGG_INCUBATION] > 0) {
@@ -170,13 +170,13 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
         }
-        if (player.findStatusAffect(StatusAffects.Eggchest) >= 0) { // Eggs in tits!
-            player.addStatusValue(StatusAffects.Eggchest, 1, -1);
-            if (player.statusAffectv1(StatusAffects.Eggchest) <= 0) {
+        if (player.effects.findByType(StatusAffects.Eggchest) >= 0) { // Eggs in tits!
+            player.effects.addValue(StatusAffects.Eggchest, 1, -1);
+            if (player.effects.getValue1Of(StatusAffects.Eggchest) <= 0) {
                 outputText("\n<b>You feel the rounded eggs within your [fullChest] vanishing, absorbed into your body.  </b>");
-                player.growTits(player.statusAffectv2(StatusAffects.Eggchest), player.bRows(), true, 2);
+                player.growTits(player.effects.getValue2Of(StatusAffects.Eggchest), player.bRows(), true, 2);
                 outputText("\n");
-                player.removeStatusAffect(StatusAffects.Eggchest);
+                player.effects.remove(StatusAffects.Eggchest);
                 needNext = true;
             }
         }
@@ -251,37 +251,37 @@ export class PlayerEvents implements TimeAwareInterface {
                 if ((player.totalFertility() > 50 && game.time.days % 15 == 0) || game.time.days % 30 == 0) { // every 15 days if high fertility get egg preg
                     outputText("\n<b>Somehow you know that eggs have begun to form inside you.  You wonder how long it will be before they start to show?</b>\n");
                     player.knockUp(PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, PregnancyStore.INCUBATION_OVIELIXIR_EGGS, 1, 1);
-                    player.createStatusAffect(StatusAffects.Eggs, rand(6), rand(2), (5 + rand(3)), 0); // v1 is type, v2 is size (1 == large) and v3 is quantity
+                    player.effects.create(StatusAffects.Eggs, rand(6), rand(2), (5 + rand(3)), 0); // v1 is type, v2 is size (1 == large) and v3 is quantity
                     player.perks.addValue(PerkLib.Oviposition, 1, 1); // Count times eggpregged this way in perk.
                     needNext = true;
                 }
             }
         }
         if (player.inHeat) { // Heats v1 is bonus fertility, v2 is bonus libido, v3 is hours till it's gone
-            if (player.statusAffectv3(StatusAffects.Heat) <= 1 || player.vaginas.length == 0) { // Remove bonus libido from heat
-                dynStats("lib", -player.statusAffect(player.findStatusAffect(StatusAffects.Heat)).value2, "resisted", false, "noBimbo", true);
-                player.removeStatusAffect(StatusAffects.Heat); // remove heat
+            if (player.effects.getValue3Of(StatusAffects.Heat) <= 1 || player.vaginas.length == 0) { // Remove bonus libido from heat
+                dynStats("lib", -player.effects[player.effects.findByType(StatusAffects.Heat)].value2, "resisted", false, "noBimbo", true);
+                player.effects.remove(StatusAffects.Heat); // remove heat
                 if (player.lib < 1) player.lib = 1;
                 statScreenRefresh();
                 outputText("\n<b>Your body calms down, at last getting over your heat.</b>\n");
                 needNext = true;
             }
-            else player.addStatusValue(StatusAffects.Heat, 3, -1);
+            else player.effects.addValue(StatusAffects.Heat, 3, -1);
         }
 
         if (player.inRut) { // Rut v1 is bonus cum, v2 is bonus libido, v3 is hours till it's gone
-            trace("RUT:" + player.statusAffectv3(StatusAffects.Rut));
-            if (player.statusAffectv3(StatusAffects.Rut) <= 1 || player.totalCocks() == 0) { // Remove bonus libido from rut
-                dynStats("lib", -player.statusAffectv2(StatusAffects.Rut), "resisted", false, "noBimbo", true);
-                player.removeStatusAffect(StatusAffects.Rut); // remove heat
+            trace("RUT:" + player.effects.getValue3Of(StatusAffects.Rut));
+            if (player.effects.getValue3Of(StatusAffects.Rut) <= 1 || player.totalCocks() == 0) { // Remove bonus libido from rut
+                dynStats("lib", -player.effects.getValue2Of(StatusAffects.Rut), "resisted", false, "noBimbo", true);
+                player.effects.remove(StatusAffects.Rut); // remove heat
                 if (player.lib < 10) player.lib = 10;
                 statScreenRefresh();
                 outputText("\n<b>Your body calms down, at last getting over your rut.</b>\n");
                 needNext = true;
             }
-            else player.addStatusValue(StatusAffects.Rut, 3, -1);
+            else player.effects.addValue(StatusAffects.Rut, 3, -1);
         }
-        if (player.findStatusAffect(StatusAffects.LustyTongue) >= 0) { // Lusty Tongue Check!
+        if (player.effects.findByType(StatusAffects.LustyTongue) >= 0) { // Lusty Tongue Check!
             if (rand(5) == 0) {
                 outputText("\nYou keep licking your lips, blushing with the sexual pleasure it brings you.");
                 dynStats("lus", 2 + rand(15));
@@ -289,20 +289,20 @@ export class PlayerEvents implements TimeAwareInterface {
                     outputText("  Your knees lock from the pleasure, and you fall back in pleasure, twisting and moaning like a whore as you somehow orgasm from your mouth.  When it finishes, you realize your mouth feels even more sensitive than before.");
                     player.orgasm();
                     dynStats("sen", 2);
-                    player.changeStatusValue(StatusAffects.LustyTongue, 1, player.statusAffectv1(StatusAffects.LustyTongue) + 10); // Tongue orgasming makes it last longer.
+                    player.effects.setValue(StatusAffects.LustyTongue, 1, player.effects.getValue1Of(StatusAffects.LustyTongue) + 10); // Tongue orgasming makes it last longer.
 
                 }
                 outputText("\n");
                 needNext = true;
             }
-            player.changeStatusValue(StatusAffects.LustyTongue, 1, player.statusAffectv1(StatusAffects.LustyTongue) - 1); // Decrement
-            if (player.statusAffectv1(StatusAffects.LustyTongue) <= 0) {
-                player.removeStatusAffect(StatusAffects.LustyTongue);
+            player.effects.setValue(StatusAffects.LustyTongue, 1, player.effects.getValue1Of(StatusAffects.LustyTongue) - 1); // Decrement
+            if (player.effects.getValue1Of(StatusAffects.LustyTongue) <= 0) {
+                player.effects.remove(StatusAffects.LustyTongue);
                 outputText("\nYour mouth and tongue return to normal.\n");
                 needNext = true;
             }
         }
-        if (player.statusAffectv2(StatusAffects.Kelt) > 0) player.addStatusValue(StatusAffects.Kelt, 2, -0.15); // Reduce kelt submissiveness by 1 every 5 hours
+        if (player.effects.getValue2Of(StatusAffects.Kelt) > 0) player.effects.addValue(StatusAffects.Kelt, 2, -0.15); // Reduce kelt submissiveness by 1 every 5 hours
         // Mino cum update.
         if (mountain.minotaurScene.minoCumUpdate()) {
             needNext = true;
@@ -361,10 +361,10 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
         }
-        if (player.perks.findByType(PerkLib.BimboBody) >= 0 || player.findStatusAffect(StatusAffects.BimboChampagne) >= 0) { // Bimbo checks
+        if (player.perks.findByType(PerkLib.BimboBody) >= 0 || player.effects.findByType(StatusAffects.BimboChampagne) >= 0) { // Bimbo checks
             if (player.breastRows[0].breastRating < 5) { // Tits!
                 player.breastRows[0].breastRating = 5;
-                if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.findStatusAffect(StatusAffects.BimboChampagne) >= 0)
+                if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.effects.findByType(StatusAffects.BimboChampagne) >= 0)
                     outputText("\n<b>Your boobies like, get all big an' wobbly again!  You'll have lots of fun now that your tits are back to being big, yummy knockers!</b>\n");
                 else outputText("\n<b>Your " + breastDescript(game.player, 0) + " have regained their former bimbo-like size.  It looks like you'll be stuck with large, sensitive breasts forever, but at least it'll help you tease your enemies into submission!</b>\n");
                 dynStats("int", -1, "lus", 15);
@@ -372,7 +372,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
             if (!player.hasVagina()) { // Vagoo
                 player.createVagina();
-                if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.findStatusAffect(StatusAffects.BimboChampagne) >= 0)
+                if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.effects.findByType(StatusAffects.BimboChampagne) >= 0)
                     outputText("\n<b>Your crotch is like, all itchy an' stuff.  Omigawsh!  There's a wet little slit opening up, and it's all tingly!  It feels so good, maybe like, someone could put something inside there!</b>\n");
                 else outputText("\n<b>Your crotch tingles for a second, and when you reach down to feel, your " + legs(player) + " fold underneath you, limp.  You've got a vagina - the damned thing won't go away and it feels twice as sensitive this time.  Fucking bimbo liquer.</b>\n");
                 needNext = true;
@@ -395,7 +395,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.perks.findByType(PerkLib.BroBody) >= 0) { // Bro checks
-            player.removeStatusAffect(StatusAffects.Feeder);
+            player.effects.remove(StatusAffects.Feeder);
             player.perks.remove(PerkLib.Feeder);
             if (!player.hasCock()) { // (Dick regrowth)
                 player.createCock();
@@ -425,10 +425,10 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
         }
-        if (player.findStatusAffect(StatusAffects.Feeder) >= 0) { // Feeder checks
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) { // Feeder checks
             if (player.cor <= 20) { // Go away if pure
                 outputText("\nThe desire to breastfeed fades into the background.  It must have been associated with the corruption inside you.\n\n(<b>You have lost the 'Feeder' perk.</b>)\n");
-                player.removeStatusAffect(StatusAffects.Feeder);
+                player.effects.remove(StatusAffects.Feeder);
                 player.perks.remove(PerkLib.Feeder);
                 needNext = true;
             }
@@ -438,145 +438,145 @@ export class PlayerEvents implements TimeAwareInterface {
                     player.breastRows[0].breastRating = 5;
                     needNext = true;
                 }
-                player.addStatusValue(StatusAffects.Feeder, 2, 1); // Increase 'time since breastfed'
-                // trace("Feeder status: " + player.statusAffectv2(StatusAffects.Feeder) + " (modded " + ((player.statusAffectv2(StatusAffects.Feeder)) - 70) + ")");
+                player.effects.addValue(StatusAffects.Feeder, 2, 1); // Increase 'time since breastfed'
+                // trace("Feeder status: " + player.effects.getValue2Of(StatusAffects.Feeder) + " (modded " + ((player.effects.getValue2Of(StatusAffects.Feeder)) - 70) + ")");
                 // After 3 days without feeding someone sensitivity jumps.
-                if (player.statusAffectv2(StatusAffects.Feeder) >= 72 && game.time.hours == 14) {
+                if (player.effects.getValue2Of(StatusAffects.Feeder) >= 72 && game.time.hours == 14) {
                     outputText("\n<b>After having gone so long without feeding your milk to someone, you're starting to feel strange.  Every inch of your skin practically thrums with sensitivity, particularly your sore, dripping nipples.</b>\n");
-                    dynStats("sen", 2 + (((player.statusAffectv2(StatusAffects.Feeder)) - 70) / 20));
+                    dynStats("sen", 2 + (((player.effects.getValue2Of(StatusAffects.Feeder)) - 70) / 20));
                     needNext = true;
                 }
             }
         }
-        if (player.findStatusAffect(StatusAffects.WormPlugged) >= 0 && flags[kFLAGS.PLAYER_PREGGO_WITH_WORMS] == 0) { // Update worm drippy-cooch
+        if (player.effects.findByType(StatusAffects.WormPlugged) >= 0 && flags[kFLAGS.PLAYER_PREGGO_WITH_WORMS] == 0) { // Update worm drippy-cooch
             if (player.hasVagina()) {
                 if (rand(5) == 0) {
                     flags[kFLAGS.PLAYER_PREGGO_WITH_WORMS] = 1;
                     outputText("\nA sudden gush of semen-coated worms noisily slurps out of your womb.  It runs down your legs as the worms do their damnedest to escape.  The feeling of so many squiggling forms squirting through your cunt-lips turns you on more than you'd like to admit.  You wonder why they stayed as long as they did, and some part of you worries that their stay may have reduced your capacity to bear children, though in a place like this that might be a blessing.\n");
                     dynStats("lus", 2 + player.sens / 10);
                     if (player.fertility > 5) player.fertility -= (1 + Math.round(player.fertility / 4));
-                    player.addStatusValue(StatusAffects.WormPlugged, 1, -1); // Lower chances
-                    if (player.statusAffectv1(StatusAffects.WormPlugged) <= 0) { // Remove if too low
-                        player.removeStatusAffect(StatusAffects.WormPlugged);
+                    player.effects.addValue(StatusAffects.WormPlugged, 1, -1); // Lower chances
+                    if (player.effects.getValue1Of(StatusAffects.WormPlugged) <= 0) { // Remove if too low
+                        player.effects.remove(StatusAffects.WormPlugged);
                         player.knockUpForce(); // Clear worm 'pregnancy'
                     }
                     needNext = true;
                 }
             }
             else { // Non cunts lose worm plugged
-                player.removeStatusAffect(StatusAffects.WormPlugged);
+                player.effects.remove(StatusAffects.WormPlugged);
                 player.knockUpForce(); // Clear worm 'pregnancy'
             }
         }
-        if (player.findStatusAffect(StatusAffects.Milked) >= 0) { // "Milked"
-            player.addStatusValue(StatusAffects.Milked, 1, -1);
-            if (player.statusAffectv1(StatusAffects.Milked) <= 0) {
+        if (player.effects.findByType(StatusAffects.Milked) >= 0) { // "Milked"
+            player.effects.addValue(StatusAffects.Milked, 1, -1);
+            if (player.effects.getValue1Of(StatusAffects.Milked) <= 0) {
                 outputText("\n<b>Your " + nippleDescription(player, 0) + "s are no longer sore from the milking.</b>\n");
-                player.removeStatusAffect(StatusAffects.Milked);
+                player.effects.remove(StatusAffects.Milked);
                 needNext = true;
             }
         }
-        if (player.findStatusAffect(StatusAffects.Jizzpants) >= 0) {
+        if (player.effects.findByType(StatusAffects.Jizzpants) >= 0) {
             outputText("\nYour " + player.armorName + " squishes wetly with all the semen you unloaded into them, arousing you more and more with every movement.\n");
             dynStats("lus", 10 + player.sens / 5);
-            player.removeStatusAffect(StatusAffects.Jizzpants);
+            player.effects.remove(StatusAffects.Jizzpants);
             needNext = true;
         }
-        if (player.findStatusAffect(StatusAffects.Dysfunction) >= 0) {
-            if (player.statusAffectv1(StatusAffects.Dysfunction) <= 1) {
-                player.removeStatusAffect(StatusAffects.Dysfunction);
+        if (player.effects.findByType(StatusAffects.Dysfunction) >= 0) {
+            if (player.effects.getValue1Of(StatusAffects.Dysfunction) <= 1) {
+                player.effects.remove(StatusAffects.Dysfunction);
                 outputText("\nYou feel a tingling in your nethers... at last full sensation has returned to your groin.  <b>You can masturbate again!</b>\n");
                 needNext = true;
             }
-            else player.addStatusValue(StatusAffects.Dysfunction, 1, -1);
+            else player.effects.addValue(StatusAffects.Dysfunction, 1, -1);
         }
-        if (player.findStatusAffect(StatusAffects.LactationReduction) < 0) { // Lactation reduction
-            if (player.biggestLactation() > 0) player.createStatusAffect(StatusAffects.LactationReduction, 0, 0, 0, 0);
+        if (player.effects.findByType(StatusAffects.LactationReduction) < 0) { // Lactation reduction
+            if (player.biggestLactation() > 0) player.effects.create(StatusAffects.LactationReduction, 0, 0, 0, 0);
         }
-        else if (player.biggestLactation() > 0 && player.findStatusAffect(StatusAffects.Feeder) < 0 && player.pregnancyIncubation == 0) {
-            player.addStatusValue(StatusAffects.LactationReduction, 1, 1);
-            if (player.statusAffectv1(StatusAffects.LactationReduction) >= 48) {
-                if (player.findStatusAffect(StatusAffects.LactationReduc0) < 0) {
-                    player.createStatusAffect(StatusAffects.LactationReduc0, 0, 0, 0, 0);
+        else if (player.biggestLactation() > 0 && player.effects.findByType(StatusAffects.Feeder) < 0 && player.pregnancyIncubation == 0) {
+            player.effects.addValue(StatusAffects.LactationReduction, 1, 1);
+            if (player.effects.getValue1Of(StatusAffects.LactationReduction) >= 48) {
+                if (player.effects.findByType(StatusAffects.LactationReduc0) < 0) {
+                    player.effects.create(StatusAffects.LactationReduc0, 0, 0, 0, 0);
                     if (player.biggestLactation() >= 1) outputText("\n<b>Your " + nippleDescription(player, 0) + "s feel swollen and bloated, needing to be milked.</b>\n");
-                    if (player.biggestLactation() <= 2) player.createStatusAffect(StatusAffects.LactationReduc1, 0, 0, 0, 0);
-                    if (player.biggestLactation() <= 1) player.createStatusAffect(StatusAffects.LactationReduc2, 0, 0, 0, 0);
+                    if (player.biggestLactation() <= 2) player.effects.create(StatusAffects.LactationReduc1, 0, 0, 0, 0);
+                    if (player.biggestLactation() <= 1) player.effects.create(StatusAffects.LactationReduc2, 0, 0, 0, 0);
                     needNext = true;
                 }
                 player.boostLactation(-0.5 * player.breastRows.length / 24);
-                if (player.biggestLactation() <= 2.5 && player.findStatusAffect(StatusAffects.LactationReduc1) < 0) {
+                if (player.biggestLactation() <= 2.5 && player.effects.findByType(StatusAffects.LactationReduc1) < 0) {
                     outputText("\n<b>Your breasts feel lighter as your body's milk production winds down.</b>\n");
-                    player.createStatusAffect(StatusAffects.LactationReduc1, 0, 0, 0, 0);
+                    player.effects.create(StatusAffects.LactationReduc1, 0, 0, 0, 0);
                     needNext = true;
                 }
-                else if (player.biggestLactation() <= 1.5 && player.findStatusAffect(StatusAffects.LactationReduc2) < 0) {
+                else if (player.biggestLactation() <= 1.5 && player.effects.findByType(StatusAffects.LactationReduc2) < 0) {
                     outputText("\n<b>Your body's milk output drops down to what would be considered 'normal' for a pregnant woman.</b>\n");
-                    player.createStatusAffect(StatusAffects.LactationReduc2, 0, 0, 0, 0);
+                    player.effects.create(StatusAffects.LactationReduc2, 0, 0, 0, 0);
                     needNext = true;
                 }
-                if (player.biggestLactation() < 1 && player.findStatusAffect(StatusAffects.LactationReduc3) < 0) {
-                    player.createStatusAffect(StatusAffects.LactationReduc3, 0, 0, 0, 0);
+                if (player.biggestLactation() < 1 && player.effects.findByType(StatusAffects.LactationReduc3) < 0) {
+                    player.effects.create(StatusAffects.LactationReduc3, 0, 0, 0, 0);
                     outputText("\n<b>Your body no longer produces any milk.</b>\n");
-                    player.removeStatusAffect(StatusAffects.LactationReduction);
+                    player.effects.remove(StatusAffects.LactationReduction);
                     needNext = true;
                 }
             }
         }
-        if (player.findStatusAffect(StatusAffects.CuntStretched) >= 0) { // Cunt stretching stuff
-            player.addStatusValue(StatusAffects.CuntStretched, 1, 1);
+        if (player.effects.findByType(StatusAffects.CuntStretched) >= 0) { // Cunt stretching stuff
+            player.effects.addValue(StatusAffects.CuntStretched, 1, 1);
             if (player.vaginas.length > 0) {
                 if (player.perks.findByType(PerkLib.FerasBoonWideOpen) < 0) {
-                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LOOSE && player.statusAffectv1(StatusAffects.CuntStretched) >= 200) {
+                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LOOSE && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 200) {
                         outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals, tightening up a bit.\n");
                         player.vaginas[0].vaginalLooseness--;
-                        player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
+                        player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
-                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING && player.statusAffectv1(StatusAffects.CuntStretched) >= 100) {
+                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 100) {
                         outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals, tightening up a bit.\n");
                         player.vaginas[0].vaginalLooseness--;
-                        player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
+                        player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
-                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING_WIDE && player.statusAffectv1(StatusAffects.CuntStretched) >= 70) {
+                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING_WIDE && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 70) {
                         outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals and becomes tighter.\n");
                         player.vaginas[0].vaginalLooseness--;
-                        player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
+                        player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
                 }
-                if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LEVEL_CLOWN_CAR && player.statusAffectv1(StatusAffects.CuntStretched) >= 50) {
+                if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LEVEL_CLOWN_CAR && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 50) {
                     outputText("\nYour " + vaginaDescript(player, 0) + " recovers from the brutal stretching it has received and tightens up a little bit, but not much.\n");
                     player.vaginas[0].vaginalLooseness--;
-                    player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
+                    player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
                     needNext = true;
                 }
             }
         }
-        if (player.findStatusAffect(StatusAffects.ButtStretched) >= 0) { // Butt stretching stuff
-            player.addStatusValue(StatusAffects.ButtStretched, 1, 1);
-            if (player.ass.analLooseness == 2 && player.statusAffectv1(StatusAffects.ButtStretched) >= 72) {
+        if (player.effects.findByType(StatusAffects.ButtStretched) >= 0) { // Butt stretching stuff
+            player.effects.addValue(StatusAffects.ButtStretched, 1, 1);
+            if (player.ass.analLooseness == 2 && player.effects.getValue1Of(StatusAffects.ButtStretched) >= 72) {
                 outputText("\n<b>Your " + assholeDescript(player) + " recovers from your ordeals, tightening up a bit.</b>\n");
                 player.ass.analLooseness--;
-                player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
+                player.effects.setValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
             }
-            if (player.ass.analLooseness == 3 && player.statusAffectv1(StatusAffects.ButtStretched) >= 48) {
+            if (player.ass.analLooseness == 3 && player.effects.getValue1Of(StatusAffects.ButtStretched) >= 48) {
                 outputText("\n<b>Your " + assholeDescript(player) + " recovers from your ordeals, tightening up a bit.</b>\n");
                 player.ass.analLooseness--;
-                player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
+                player.effects.setValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
             }
-            if (player.ass.analLooseness == 4 && player.statusAffectv1(StatusAffects.ButtStretched) >= 24) {
+            if (player.ass.analLooseness == 4 && player.effects.getValue1Of(StatusAffects.ButtStretched) >= 24) {
                 outputText("\n<b>Your " + assholeDescript(player) + " recovers from your ordeals and becomes tighter.</b>\n");
                 player.ass.analLooseness--;
-                player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
+                player.effects.setValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
             }
-            if (player.ass.analLooseness == 5 && player.statusAffectv1(StatusAffects.ButtStretched) >= 12) {
+            if (player.ass.analLooseness == 5 && player.effects.getValue1Of(StatusAffects.ButtStretched) >= 12) {
                 outputText("\n<b>Your " + assholeDescript(player) + " recovers from the brutal stretching it has received and tightens up.</b>\n");
                 player.ass.analLooseness--;
-                player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
+                player.effects.setValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
             }
         }
@@ -591,7 +591,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.keyItems.has("Ruby Heart") >= 0) { // Regain slime core
-            if (player.findStatusAffect(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4 && player.vaginalCapacity() >= 9000 && player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody == LOWER_BODY_TYPE_GOO) {
+            if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4 && player.vaginalCapacity() >= 9000 && player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody == LOWER_BODY_TYPE_GOO) {
                 outputText("\nAs you adjust to your new, goo-like body, you remember the ruby heart you expelled so long ago.  As you reach to pick it up, it quivers and pulses with a warm, cheerful light.  Your fingers close on it and the nucleus slides through your palm, into your body!\n\n");
 
                 outputText("There is a momentary pressure in your chest and a few memories that are not your own flicker before your eyes.  The dizzying sight passes and the slime core settles within your body, imprinted with your personality and experiences.  There is a comforting calmness from your new nucleus and you feel as though, with your new memories, you will be better able to manage your body's fluid requirements.\n");
@@ -602,34 +602,34 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
         }
-        if (player.findStatusAffect(StatusAffects.SlimeCraving) >= 0) { // Slime craving stuff
+        if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0) { // Slime craving stuff
             if (player.vaginalCapacity() < 9000 || player.skinAdj != "slimy" || player.skinDesc != "skin" || player.lowerBody != LOWER_BODY_TYPE_GOO) {
                 outputText("\n<b>You realize you no longer crave fluids like you once did.</b>\n");
-                player.removeStatusAffect(StatusAffects.SlimeCraving);
-                player.removeStatusAffect(StatusAffects.SlimeCravingFeed);
+                player.effects.remove(StatusAffects.SlimeCraving);
+                player.effects.remove(StatusAffects.SlimeCravingFeed);
                 needNext = true;
             }
             else { // Slime core reduces fluid need rate
                 if (player.perks.findByType(PerkLib.SlimeCore) >= 0)
-                    player.addStatusValue(StatusAffects.SlimeCraving, 1, 0.5);
-                else player.addStatusValue(StatusAffects.SlimeCraving, 1, 1);
-                if (player.statusAffectv1(StatusAffects.SlimeCraving) >= 18) {
-                    if (player.findStatusAffect(StatusAffects.SlimeCravingOutput) < 0) { // Protects against this warning appearing multiple times in the output
-                        player.createStatusAffect(StatusAffects.SlimeCravingOutput, 0, 0, 0, 0);
+                    player.effects.addValue(StatusAffects.SlimeCraving, 1, 0.5);
+                else player.effects.addValue(StatusAffects.SlimeCraving, 1, 1);
+                if (player.effects.getValue1Of(StatusAffects.SlimeCraving) >= 18) {
+                    if (player.effects.findByType(StatusAffects.SlimeCravingOutput) < 0) { // Protects against this warning appearing multiple times in the output
+                        player.effects.create(StatusAffects.SlimeCravingOutput, 0, 0, 0, 0);
                         outputText("\n<b>Your craving for the 'fluids' of others grows strong, and you feel yourself getting weaker and slower with every passing hour.</b>\n");
                         needNext = true;
                     }
-                    if (player.spe > 1) player.addStatusValue(StatusAffects.SlimeCraving, 3, 0.1); // Keep track of how much has been taken from speed
+                    if (player.spe > 1) player.effects.addValue(StatusAffects.SlimeCraving, 3, 0.1); // Keep track of how much has been taken from speed
                     dynStats("str", -0.1, "spe", -0.1, "lus", 2);
-                    player.addStatusValue(StatusAffects.SlimeCraving, 2, 0.1); // Keep track of how much has been taken from strength
+                    player.effects.addValue(StatusAffects.SlimeCraving, 2, 0.1); // Keep track of how much has been taken from strength
                 }
             }
         }
-        if (player.findStatusAffect(StatusAffects.SlimeCravingFeed) >= 0) { // Slime feeding stuff
+        if (player.effects.findByType(StatusAffects.SlimeCravingFeed) >= 0) { // Slime feeding stuff
             outputText("\n<b>You feel revitalized from your recent intake, but soon you'll need more...</b>\n");
-            dynStats("str", player.statusAffectv2(StatusAffects.SlimeCraving) * 0.5, "spe", player.statusAffectv3(StatusAffects.SlimeCraving)); // Boost speed and restore half the player's lost strength
-            player.removeStatusAffect(StatusAffects.SlimeCravingFeed); // Remove feed succuss status so it can be reset
-            player.changeStatusValue(StatusAffects.SlimeCraving, 2, 0); // Reset stored hp/toughness values
+            dynStats("str", player.effects.getValue2Of(StatusAffects.SlimeCraving) * 0.5, "spe", player.effects.getValue3Of(StatusAffects.SlimeCraving)); // Boost speed and restore half the player's lost strength
+            player.effects.remove(StatusAffects.SlimeCravingFeed); // Remove feed succuss status so it can be reset
+            player.effects.setValue(StatusAffects.SlimeCraving, 2, 0); // Reset stored hp/toughness values
             needNext = true;
         }
         if (game.time.hours == 6 && player.armorName == "bimbo skirt" && rand(10) == 0) {
@@ -687,13 +687,13 @@ export class PlayerEvents implements TimeAwareInterface {
                 if (latexGirl.gooHappiness() >= 90) latexGirl.gooObedience(1, false);
             }
             farm.farmCorruption.updateFarmCorruption(); // Farm Corruption updating
-            if (player.findStatusAffect(StatusAffects.Contraceptives) >= 0) { // Herbal contraceptives countdown
-                if (player.statusAffectv1(StatusAffects.Contraceptives) == 1) {
-                    player.addStatusValue(StatusAffects.Contraceptives, 2, -1);
-                    if (player.statusAffectv1(StatusAffects.Contraceptives) < 0) player.removeStatusAffect(StatusAffects.Contraceptives);
+            if (player.effects.findByType(StatusAffects.Contraceptives) >= 0) { // Herbal contraceptives countdown
+                if (player.effects.getValue1Of(StatusAffects.Contraceptives) == 1) {
+                    player.effects.addValue(StatusAffects.Contraceptives, 2, -1);
+                    if (player.effects.getValue1Of(StatusAffects.Contraceptives) < 0) player.effects.remove(StatusAffects.Contraceptives);
                 }
             }
-            if (player.statusAffectv1(StatusAffects.SharkGirl) > 0) player.addStatusValue(StatusAffects.SharkGirl, 1, -1); // Lower shark girl counter
+            if (player.effects.getValue1Of(StatusAffects.SharkGirl) > 0) player.effects.addValue(StatusAffects.SharkGirl, 1, -1); // Lower shark girl counter
             if (flags[kFLAGS.INCREASED_HAIR_GROWTH_TIME_REMAINING] > 0) {
                 switch (flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED]) {
                     case 1:
@@ -731,7 +731,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 else growHair(0.1);
             }
             // Clear dragon breath cooldown!
-            if (player.findStatusAffect(StatusAffects.DragonBreathCooldown) >= 0) player.removeStatusAffect(StatusAffects.DragonBreathCooldown);
+            if (player.effects.findByType(StatusAffects.DragonBreathCooldown) >= 0) player.effects.remove(StatusAffects.DragonBreathCooldown);
         }
         return needNext;
     }
@@ -827,7 +827,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 if (dreamSelect()) return true;
             }
         }
-        if (player.statusAffectv1(StatusAffects.SlimeCraving) >= 18 && player.str <= 1) { // Bad end!
+        if (player.effects.getValue1Of(StatusAffects.SlimeCraving) >= 18 && player.str <= 1) { // Bad end!
             lake.gooGirlScene.slimeBadEnd();
             return true;
         }

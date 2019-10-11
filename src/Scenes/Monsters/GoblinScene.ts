@@ -196,7 +196,7 @@ export class GoblinScene {
             dynStats("lus", 20);
         }
         // If cant rape or breastfeed
-        if (player.lust < 30 && player.findStatusAffect(StatusAffects.Feeder) < 0) {
+        if (player.lust < 30 && player.effects.findByType(StatusAffects.Feeder) < 0) {
             cleanupAfterCombat();
             return;
         }
@@ -234,7 +234,7 @@ export class GoblinScene {
                 spiderCondom = goblinCondomed;
         }
         // Breastfeed adds an option
-        if (player.findStatusAffect(StatusAffects.Feeder) >= 0) {
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) {
             feeder = giveGoblinAMilkMustache;
         }
         if (player.lust >= 33 && player.gender > 0 && (fitsFuck != null || cuntFuck != null || tooBig != null ||
@@ -261,8 +261,8 @@ export class GoblinScene {
         // set lust to 0, increase sensitivity slightly
         dynStats("lib", .2, "lus", -50);
         // You've now been milked, reset the timer for that
-        player.addStatusValue(StatusAffects.Feeder, 1, 1);
-        player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+        player.effects.addValue(StatusAffects.Feeder, 1, 1);
+        player.effects.setValue(StatusAffects.Feeder, 2, 0);
         cleanupAfterCombat();
     }
     private gobboButtSecks(): void {

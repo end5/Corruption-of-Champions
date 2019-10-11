@@ -8,10 +8,10 @@ export class AbstractSpiderMorph extends Monster {
         if (player.spe >= 2 && rand(2) == 0) {
             spiderMorphWebAttack();
         }
-        else if (player.findStatusAffect(StatusAffects.WebSilence) < 0 && rand(3) == 0) {
+        else if (player.effects.findByType(StatusAffects.WebSilence) < 0 && rand(3) == 0) {
             spiderSilence();
         }
-        else if (player.findStatusAffect(StatusAffects.Disarmed) < 0 && player.weaponName != "fists" && rand(3) == 0) {
+        else if (player.effects.findByType(StatusAffects.Disarmed) < 0 && player.weaponName != "fists" && rand(3) == 0) {
             spiderDisarm();
         }
         else if (rand(2) == 0 || player.spe < 2) getBitten();
@@ -24,7 +24,7 @@ export class AbstractSpiderMorph extends Monster {
     public spiderMorphWebAttack(): void {
         outputText("Turning to the side, " + a + short + " raises " + mf("his", "her") + " abdomen and unleashes a spray of webbing in your direction!  ", false);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " misses completely due to their blindness.", false);
         }
         // Determine if dodged!
@@ -45,11 +45,11 @@ export class AbstractSpiderMorph extends Monster {
         }
         // Got hit
         else {
-            if (player.findStatusAffect(StatusAffects.Web) < 0) {
+            if (player.effects.findByType(StatusAffects.Web) < 0) {
                 outputText("The silky strands hit you, webbing around you and making it hard to move with any degree of speed.", false);
                 if (player.canFly()) outputText("  Your wings struggle uselessly in the bindings, no longer able to flap fast enough to aid you.", false);
                 outputText("\n", false);
-                player.createStatusAffect(StatusAffects.Web, 0, 0, 0, 0);
+                player.effects.create(StatusAffects.Web, 0, 0, 0, 0);
             }
             else {
                 outputText("The silky strands hit you, weighing you down and restricting your movement even further.\n", false);
@@ -64,7 +64,7 @@ export class AbstractSpiderMorph extends Monster {
             mainView.statsView.showStatDown('spe');
             // speUp.visible = false;
             // speDown.visible = true;
-            player.addStatusValue(StatusAffects.Web, 1, amount);
+            player.effects.addValue(StatusAffects.Web, 1, amount);
 
         }
         combatRoundOver();
@@ -73,7 +73,7 @@ export class AbstractSpiderMorph extends Monster {
     /**-Bite - Raises arousal by 30*/
     public getBitten(): void {
         // -Languid Bite - Inflicted on PC's who have been reduced to 1 speed by webbing, raises arousal by 60.
-        if (player.spe < 2 && player.findStatusAffect(StatusAffects.Web) >= 0) {
+        if (player.spe < 2 && player.effects.findByType(StatusAffects.Web) >= 0) {
             outputText("The arachnid aggressor slowly saunters forward while you struggle under the heaps of webbing, gently placing " + mf("his", "her") + " arms around your back in a tender hug.  " + mf("His", "Her") + " fangs slide into your neck with agonizing slowness, immediately setting off a burning heat inside you that makes you dizzy and weak.  ", false);
             if (player.hasCock()) {
                 outputText(SMultiCockDesc(player) + " turns rock hard and squirts weakly, suddenly so aroused that it starts soaking your " + player.armorName, false);
@@ -93,7 +93,7 @@ export class AbstractSpiderMorph extends Monster {
         }
         outputText("The spider-" + mf("boy", "girl") + " lunges forward with " + mf("his", "her") + " mouth open, " + mf("his", "her") + " two needle-like fangs closing rapidly.  ", false);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " misses completely due to their blindness.", false);
         }
         // Determine if dodged!
@@ -132,7 +132,7 @@ export class AbstractSpiderMorph extends Monster {
     public spiderDisarm(): void {
         outputText(capitalA + short + " shifts and sprays webbing, aiming a tight strand of it at your " + player.weaponName + ".  ", false);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("The blind web-shot goes horribly wide, missing you entirely.", false);
         }
         // Determine if dodged!
@@ -162,7 +162,7 @@ export class AbstractSpiderMorph extends Monster {
             player.setWeapon(WeaponLib.FISTS);
             // No longer appears to be used				flags[kFLAGS.PLAYER_DISARMED_WEAPON_ATTACK] = player.weaponAttack;
             // 				player.weapon.unequip(player,false,true);
-            player.createStatusAffect(StatusAffects.Disarmed, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.Disarmed, 0, 0, 0, 0);
         }
         combatRoundOver();
     }
@@ -171,7 +171,7 @@ export class AbstractSpiderMorph extends Monster {
     public spiderSilence(): void {
         outputText(capitalA + short + " squirts a concentrated spray of " + mf("his", "her") + " webs directly at your face!  ", false);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("The blind web-shot goes horribly wide, missing you entirely.", false);
         }
         // Determine if dodged!
@@ -192,7 +192,7 @@ export class AbstractSpiderMorph extends Monster {
         }
         else {
             outputText("They hit you before you can move, covering most of your nose and mouth and making it hard to breathe.  You'll be unable to use your magic while you're constantly struggling just to draw air!\n", false);
-            player.createStatusAffect(StatusAffects.WebSilence, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.WebSilence, 0, 0, 0, 0);
         }
         combatRoundOver();
     }

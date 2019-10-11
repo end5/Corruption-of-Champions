@@ -331,7 +331,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         if (flags[kFLAGS.TIMES_FUCKED_URTA] > 0)
             chats[chats.length] = 1;
         // Edryn chance
-        if (player.findStatusAffect(StatusAffects.Edryn) >= 0)
+        if (player.effects.findByType(StatusAffects.Edryn) >= 0)
             chats[chats.length] = 2;
         // (Scylla chat)
         if (flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] > 0)
@@ -1116,9 +1116,9 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         dynStats("lib", -0.5, "sen", -.5, "lus", -5);
         player.boostLactation(0.05);
         // You've now been milked, reset the timer for that
-        if (player.findStatusAffect(StatusAffects.Feeder) >= 0) {
-            player.addStatusValue(StatusAffects.Feeder, 1, 1);
-            player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) {
+            player.effects.addValue(StatusAffects.Feeder, 1, 1);
+            player.effects.setValue(StatusAffects.Feeder, 2, 0);
         }
         doNext(playerMenu);
     }
@@ -1830,9 +1830,9 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("\n\nYou kiss your equine lover, ruffle the sleeping child's hair, and quietly head back to camp, leaving Cotton to take care of things.");
         dynStats("lus", -10);
         // You've now been milked, reset the timer for that
-        if (player.findStatusAffect(StatusAffects.Feeder) >= 0) {
-            player.addStatusValue(StatusAffects.Feeder, 1, 1);
-            player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) {
+            player.effects.addValue(StatusAffects.Feeder, 1, 1);
+            player.effects.setValue(StatusAffects.Feeder, 2, 0);
         }
         player.boostLactation(0.5);
 

@@ -4,7 +4,7 @@ export class SandTrap extends Monster {
     public sandTrapWait(): void {
         clearOutput();
         game.spriteSelect(97);
-        if (findStatusAffect(StatusAffects.Climbed) < 0) createStatusAffect(StatusAffects.Climbed, 0, 0, 0, 0);
+        if (this.effects.findByType(StatusAffects.Climbed) < 0) this.effects.create(StatusAffects.Climbed, 0, 0, 0, 0);
         outputText("Instead of attacking, you turn away from the monster and doggedly attempt to climb back up the pit, digging all of your limbs into the soft powder as you climb against the sandslide.");
         if (trapLevel() == 4) {
             outputText("\n\nYou eye the ground above you.  The edge of the pit is too sheer, the ground too unstable... although it looks like you can fight against the currents carrying you further down, it seems impossible to gain freedom with the sand under the monster's spell.");
@@ -27,14 +27,14 @@ export class SandTrap extends Monster {
     }
 
     public trapLevel(adjustment: number = 0): number {
-        if (findStatusAffect(StatusAffects.Level) < 0) createStatusAffect(StatusAffects.Level, 4, 0, 0, 0);
+        if (this.effects.findByType(StatusAffects.Level) < 0) this.effects.create(StatusAffects.Level, 4, 0, 0, 0);
         if (adjustment != 0) {
-            addStatusValue(StatusAffects.Level, 1, adjustment);
+            this.effects.addValue(StatusAffects.Level, 1, adjustment);
             // Keep in bounds ya lummox
-            if (statusAffectv1(StatusAffects.Level) < 1) changeStatusValue(StatusAffects.Level, 1, 1);
-            if (statusAffectv1(StatusAffects.Level) > 4) changeStatusValue(StatusAffects.Level, 1, 4);
+            if (this.effects.getValue1Of(StatusAffects.Level) < 1) this.effects.setValue(StatusAffects.Level, 1, 1);
+            if (this.effects.getValue1Of(StatusAffects.Level) > 4) this.effects.setValue(StatusAffects.Level, 1, 4);
         }
-        return statusAffectv1(StatusAffects.Level);
+        return this.effects.getValue1Of(StatusAffects.Level);
     }
 
     // sandtrap pheromone attack:
@@ -66,20 +66,20 @@ export class SandTrap extends Monster {
             outputText("  You can't get free in time and in a panic you realize you are now practically wading in sand.  Attempting to climb free now is going to be very difficult.");
             if (player.canFly()) outputText("  You try to wrench yourself free by flapping your wings, but it is hopeless.  You are well and truly snared.");
             trapLevel(-1);
-            if (findStatusAffect(StatusAffects.Climbed) < 0) createStatusAffect(StatusAffects.Climbed, 0, 0, 0, 0);
+            if (this.effects.findByType(StatusAffects.Climbed) < 0) this.effects.create(StatusAffects.Climbed, 0, 0, 0, 0);
         }
     }
 
     protected performCombatAction(): void {
-        if (findStatusAffect(StatusAffects.Level) >= 0) {
-            if (trapLevel() == 4 && findStatusAffect(StatusAffects.Climbed) < 0) nestleQuikSandAttack();
+        if (this.effects.findByType(StatusAffects.Level) >= 0) {
+            if (trapLevel() == 4 && this.effects.findByType(StatusAffects.Climbed) < 0) nestleQuikSandAttack();
             else sandTrapPheremones();
             // PC sinks a level (end of any turn in which player didn't successfully \"<i>Wait</i>\"):
-            if (findStatusAffect(StatusAffects.Climbed) < 0) {
+            if (this.effects.findByType(StatusAffects.Climbed) < 0) {
                 outputText("\n\nRivulets of sand run past you as you continue to sink deeper into both the pit and the sand itself.");
                 trapLevel(-1);
             }
-            else removeStatusAffect(StatusAffects.Climbed);
+            else this.effects.remove(StatusAffects.Climbed);
             combatRoundOver();
         } else super.performCombatAction();
     }
@@ -99,7 +99,7 @@ export class SandTrap extends Monster {
 
     public constructor() {
         // 1/3 have fertilized eggs!
-        if (rand(3) == 0) this.createStatusAffect(StatusAffects.Fertilized, 0, 0, 0, 0);
+        if (rand(3) == 0) this.effects.create(StatusAffects.Fertilized, 0, 0, 0, 0);
         this.a = "the ";
         if (silly())
             this.short = "sand tarp";
@@ -137,7 +137,7 @@ export class SandTrap extends Monster {
         this.gems = 2 + rand(5);
         this.drop = new ChainedDrop(consumables.TRAPOIL).add(consumables.OVIELIX, 1 / 3);
         this.tailType = TAIL_TYPE_DEMONIC;
-        createStatusAffect(StatusAffects.Level, 4, 0, 0, 0);
+        this.effects.create(StatusAffects.Level, 4, 0, 0, 0);
         checkMonster();
     }
 

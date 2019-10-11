@@ -4,7 +4,7 @@ export class ImpGang extends Monster {
         return "gang of imps";
     }
     public constructor() {
-        this.removeStatuses();
+        this.effects.clear();
         this.perks.removes();
         this.removeCock(0, this.cocks.length);
         this.removeVagina(0, this.vaginas.length);

@@ -1355,7 +1355,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         let loverSet: number = 0;
         if (flags[kFLAGS.AMILY_FOLLOWER] == 1) loverSet |= KBIT_LOVER_AMILY; // Not > 0; probably don’t want to admit having corrupt Amily follower to Katherine
         if (flags[kFLAGS.COTTON_MET_FUCKED] >= 2) loverSet |= KBIT_LOVER_COTTON;
-        if ((flags[kFLAGS.EDRYN_NEVER_SEE_AGAIN] == 0) && (player.statusAffectv1(StatusAffects.Edryn) > 3)) loverSet |= KBIT_LOVER_EDRYN;
+        if ((flags[kFLAGS.EDRYN_NEVER_SEE_AGAIN] == 0) && (player.effects.getValue1Of(StatusAffects.Edryn) > 3)) loverSet |= KBIT_LOVER_EDRYN;
         if ((flags[kFLAGS.HELIA_FOLLOWER_DISABLED] != 1) && helScene.followerHel()) loverSet |= KBIT_LOVER_HELIA;
         if (urta.urtaFuckbuddy()) loverSet |= KBIT_LOVER_URTA;
         if (flags[kFLAGS.VALA_TIMES_CONSENSUAL_SEX] > 0) loverSet |= KBIT_LOVER_VALA;

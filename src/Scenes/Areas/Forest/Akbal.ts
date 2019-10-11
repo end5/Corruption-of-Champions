@@ -5,7 +5,7 @@ export class Akbal extends Monster {
         // Chances to miss:
         let damage: number = 0;
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText(capitalA + short + " seems to have no problem guiding his attacks towards you, despite his blindness.\n", false);
         }
         // Determine if dodged!
@@ -74,11 +74,11 @@ export class Akbal extends Monster {
 
     public akbalLustAttack(): void {
         // *Lust Attack -
-        if (player.findStatusAffect(StatusAffects.Whispered) < 0) {
+        if (player.effects.findByType(StatusAffects.Whispered) < 0) {
             outputText("You hear whispering in your head. Akbal begins speaking to you as he circles you, telling all the ways he'll dominate you once he beats the fight out of you.", false);
             // (Lust increase)
             dynStats("lus", 7 + (100 - player.inte) / 10);
-            player.createStatusAffect(StatusAffects.Whispered, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.Whispered, 0, 0, 0, 0);
         }
         // Continuous Lust Attack -
         else {
@@ -96,10 +96,10 @@ export class Akbal extends Monster {
             outputText("Akbal's eyes fill with light, and a strange sense of fear begins to paralyze your limbs.", false);
             // (Speed decrease)
             dynStats("spe", speedChange);
-            if (player.findStatusAffect(StatusAffects.AkbalSpeed) >= 0)
-                player.addStatusValue(StatusAffects.AkbalSpeed, 1, speedChange);
+            if (player.effects.findByType(StatusAffects.AkbalSpeed) >= 0)
+                player.effects.addValue(StatusAffects.AkbalSpeed, 1, speedChange);
             else
-                player.createStatusAffect(StatusAffects.AkbalSpeed, speedChange, 0, 0, 0);
+                player.effects.create(StatusAffects.AkbalSpeed, speedChange, 0, 0, 0);
         }
         // *Special Attack B -
         else {

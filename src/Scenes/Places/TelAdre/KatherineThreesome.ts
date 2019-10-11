@@ -406,7 +406,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
                 else
                     outputText("think about the baby inside your belly and wish there was some way she could have fathered it.");
             }
-            else if (player.findStatusAffect(StatusAffects.Contraceptives) >= 0)
+            else if (player.effects.findByType(StatusAffects.Contraceptives) >= 0)
                 outputText("think about your empty womb.  Wouldn’t it feel good if Urta’s cum could impregnate you as nature intended?");
             else if (flags[kFLAGS.URTA_FERTILE] > 0)
                 outputText("start to fantasize.  The masses of cum Urta produces stand a good chance of seeding you.");

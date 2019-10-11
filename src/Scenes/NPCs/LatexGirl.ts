@@ -1631,8 +1631,8 @@ export class LatexGirl extends NPCAwareContent {
         outputText("\n\n\"<i>Delicious!</i>\" she says with a smile, plating a long kiss on your lips.  You return her grin and pull her close, nesting her face into your now-lighter bosom for a few short, restful minutes.");
         if (player.perks.findByType(PerkLib.Feeder) >= 0) {
             // You've now been milked, reset the timer for that
-            player.addStatusValue(StatusAffects.Feeder, 1, 1);
-            player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+            player.effects.addValue(StatusAffects.Feeder, 1, 1);
+            player.effects.setValue(StatusAffects.Feeder, 2, 0);
         }
         player.boostLactation(.5);
         gooHappiness(5);

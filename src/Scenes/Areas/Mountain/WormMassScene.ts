@@ -28,12 +28,12 @@ For further information and license requests, Dxasmodeus may be contacted throug
 export function wormEncounter(): void {
     spriteSelect(76);
     clearOutput();
-    if (player.findStatusAffect(StatusAffects.MetWorms) < 0) { // First encounter
+    if (player.effects.findByType(StatusAffects.MetWorms) < 0) { // First encounter
         outputText("As you are exploring, a rather pungent, peaty smell assails your nostrils. You hear a strange rustling and an off-kilter squishing noise in the distance. As you explore the area you come upon a most grotesque sight. Before you is a cohesive mass of writhing, wriggling worms! While normally solitary creatures, these appear to have coalesced into a monstrous living colony!\n\n");
         outputText("You have never before seen such a bizarre freak of nature. You see the mass of annelids creep about across your path. It stops and spreads slightly in your direction before halting. The stench of the mass is indescribable and a thick, viscous slime covers each of the countless worms forming the collective.\n\n");
         outputText("You stop dead in your tracks, wondering what this swarm will do. After a few tense moments, the mass crawls away in a direction opposite of both you and your current path. You breathe a sigh of relief as you are confident that no good could have come from confronting such a zoological travesty.");
         dynStats("lus", -10);
-        player.createStatusAffect(StatusAffects.MetWorms, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.MetWorms, 0, 0, 0, 0);
         doNext(camp.returnToCampUseOneHour);
     }
     else if (player.hasCock()) {
@@ -57,22 +57,22 @@ export function wormToggle(): void {
 function wormsOn(): void {
     clearOutput();
     outputText("You actually think it's kind of a hot idea, and wonder if such creatures actually exist in this land as you make your way back to camp.");
-    player.createStatusAffect(StatusAffects.WormsOn, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.WormsOn, 0, 0, 0, 0);
     doNext(camp.returnToCampUseOneHour);
 }
 
 function wormsPartiallyOn(): void {
     clearOutput();
     outputText("You shrug and keep walking, not sure how you feel about the strange sign.");
-    player.createStatusAffect(StatusAffects.WormsOn, 0, 0, 0, 0);
-    player.createStatusAffect(StatusAffects.WormsHalf, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.WormsOn, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.WormsHalf, 0, 0, 0, 0);
     doNext(camp.returnToCampUseOneHour);
 }
 
 function wormsOff(): void {
     clearOutput();
     outputText("You shudder in revulsion and figure the sign to be the result of someone's perverted fantasy.");
-    player.createStatusAffect(StatusAffects.WormsOff, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.WormsOff, 0, 0, 0, 0);
     doNext(camp.returnToCampUseOneHour);
 }
 
@@ -112,10 +112,10 @@ export function infest1(): void {
         player.cor = 25;
     }
     trace("GET INFESTED HERE");
-    if (player.findStatusAffect(StatusAffects.Infested) >= 0) { trace("BWUH?"); }
+    if (player.effects.findByType(StatusAffects.Infested) >= 0) { trace("BWUH?"); }
     else {
         if (flags[kFLAGS.EVER_INFESTED] == 0) flags[kFLAGS.EVER_INFESTED] = 1;
-        player.createStatusAffect(StatusAffects.Infested, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.Infested, 0, 0, 0, 0);
         dynStats("cor", 0);
     }
     cleanupAfterCombat();
@@ -127,13 +127,13 @@ export function infestOrgasm(): void {
     outputText("The ceaseless squirming of your uninvited guests send your body into paroxysms. Collapsing to your knees, you immediately begin pushing gouts of dick milk out of your body. You feel tremendous pressure in your pelvis and in your cock as you realize that you are pushing worms out with each torrent of cum! Stream upon stream of cum breaks free from the prison of your body, carrying some of the worms inside you with it. Once the orgasm passes, you collapse to the ground, totally spent. Before you pass out, you feel the unfortunate presence of the fat worm still in your body.", true);
     player.orgasm();
     // Check infestation and update it
-    if (player.findStatusAffect(StatusAffects.Infested) >= 0) {
+    if (player.effects.findByType(StatusAffects.Infested) >= 0) {
         // Increment infestation number
-        if (player.statusAffectv1(StatusAffects.Infested) < 5) {
-            player.addStatusValue(StatusAffects.Infested, 1, 1);
+        if (player.effects.getValue1Of(StatusAffects.Infested) < 5) {
+            player.effects.addValue(StatusAffects.Infested, 1, 1);
             player.cumMultiplier += 0.5;
             // fifth time is the charm!
-            if (player.statusAffectv1(StatusAffects.Infested) == 5) {
+            if (player.effects.getValue1Of(StatusAffects.Infested) == 5) {
                 // Futaz
                 if (player.balls == 0) {
                     outputText("\n\nAfter you empty yourself, you feel your body shift. The presence of the large worm is no longer discomforting. It is as if your seminal bladder has enlarged to accommodate the new thing inside you. Likewise, your ejaculations have become truly monstrous and the amount of worms you expel has also increased. You realize that the large worm has become a part of you and you can now <b>infest</b> your enemies much in the same manner as you have been infested, yourself. All you need now is some poor fool to overwhelm with your new 'pets'.", false);
@@ -194,7 +194,7 @@ export function wormsEntice(): void {
     else {
         outputText("The worm colony shambles over to you and attempts to grapple you. Attempting to dodge, you fail to get away fast enough and fall to the ground engulfed by the mass. You are completely covered in the slimy worms!!! Incapable of avoiding any of their movements, you feel their slime coat every inch of your body and you feel the struggle and strain of each individual worm as they crawl all over you. You immediately begin flailing wildly as you cannot even breathe!", false);
         // Chance of insta-loss if infested twice
-        if (player.findStatusAffect(StatusAffects.InfestAttempted) >= 0) {
+        if (player.effects.findByType(StatusAffects.InfestAttempted) >= 0) {
             outputText("  Struggle as you might, the creatures overwhelm your body and prevent you from any conceivable opportunity to get them off you, Your head quickly becomes visible, allowing you to breathe as you stare helplessly at the cocoon of worms trapping you.\n\n", false);
             infest1();
             return;
@@ -202,7 +202,7 @@ export function wormsEntice(): void {
         // Escaped!
         else {
             outputText("\n\nYou struggle wildly as you fight the worm colony for both air and to get the things off you. The sticky slime secreted by the individual worms greatly increases your task. After freeing one of your arms, you uncover your face, allowing you to breathe, and begin sweeping the beasts from your body. Stunned by your renewed vigor, the mass loses its cohesion, allowing your to quickly clear the worms from your body. The disbanded colony retreats a distance from you and begins reforming itself as you purge your body of the annelids.", false);
-            player.createStatusAffect(StatusAffects.InfestAttempted, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.InfestAttempted, 0, 0, 0, 0);
         }
     }
     combatRoundOver();
@@ -232,7 +232,7 @@ export function playerInfest(): void {
         doNext(camp.returnToCampUseOneHour);
         return;
     }
-    if (monster.findStatusAffect(StatusAffects.TwuWuv) >= 0) {
+    if (monster.effects.findByType(StatusAffects.TwuWuv) >= 0) {
         outputText("You expose yourself and attempt to focus on expelling your squirming pets toward Sheila but as you picture launching a flood of parasites from [eachCock], the fantasy she sent returns to you, breaking your concentration!  Your hand darts automatically to your crotch, stroking [oneCock] as you imagine unloading into her cunt... only with effort do you pull it away!\n\n");
         outputText("\"<i>Oh, my,</i>\" the demon teases.  \"<i>You don't have to masturbate yourself, [name]... I'll be happy to do it for you.</i>\"\n\n");
         dynStats("lus", 5 + player.sens / 10, "resisted", false);
@@ -314,9 +314,9 @@ export function nightTimeInfestation(): void {
     outputText("\n\nYou relax in the afterglow, pondering just how you'll handle living with the constant desire, barely noticing the colony slinking off, freshly lubricated by your sexual fluids.  You drink into a lusty slumber, absently fingering [oneCock].");
     outputText("\n\n<b>You are infested, again!</b>");
     // Reinfest
-    if (player.findStatusAffect(StatusAffects.Infested) >= 0) { trace("BWUH?"); }
+    if (player.effects.findByType(StatusAffects.Infested) >= 0) { trace("BWUH?"); }
     else {
-        player.createStatusAffect(StatusAffects.Infested, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.Infested, 0, 0, 0, 0);
         dynStats("cor", 0);
     }
     if (player.cor < 25) {

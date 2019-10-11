@@ -18,7 +18,7 @@ export class TentacleBeast extends Monster {
     private tentacleEntwine(): void {
         outputText("The beast lunges its tentacles at you from all directions in an attempt to immobilize you.\n", false);
         // Not Trapped yet
-        if (player.findStatusAffect(StatusAffects.TentacleBind) < 0) {
+        if (player.effects.findByType(StatusAffects.TentacleBind) < 0) {
             // Success
             if (int(Math.random() * (((player.spe) / 2))) > 15 || (player.perks.findByType(PerkLib.Evade) >= 0 && int(Math.random() * (((player.spe) / 2))) > 15)) {
                 outputText("In an impressive display of gymnastics, you dodge, duck, dip, dive, and roll away from the shower of grab-happy arms trying to hold you. Your instincts tell you that this was a GOOD thing.\n", false);
@@ -33,7 +33,7 @@ export class TentacleBeast extends Monster {
                 // Genderless
                 else outputText("The creature quickly positions a long tentacle against your " + game.assholeDescript(player) + ". It circles your pucker with slow, delicate strokes that bring unexpected warmth to your body.\n", false);
                 dynStats("lus", (8 + player.sens / 20));
-                player.createStatusAffect(StatusAffects.TentacleBind, 0, 0, 0, 0);
+                player.effects.create(StatusAffects.TentacleBind, 0, 0, 0, 0);
             }
         }
         combatRoundOver();
@@ -45,8 +45,8 @@ export class TentacleBeast extends Monster {
         } else {
             outputText("The tentacle beast's mass begins quivering and sighing, the tentacles wrapping around each other and feverishly caressing each other.  It seems the beast has given up on fighting.", false);
         }
-        if (findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
-            removeStatusAffect(StatusAffects.PhyllaFight);
+        if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
+            this.effects.remove(StatusAffects.PhyllaFight);
             game.desert.antsScene.phyllaTentacleDefeat();
         }
         else {
@@ -62,16 +62,16 @@ export class TentacleBeast extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (hpVictory) {
             outputText("Overcome by your wounds, you turn to make a last desperate attempt to run...\n\n");
-            if (findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
-                removeStatusAffect(StatusAffects.PhyllaFight);
+            if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
+                this.effects.remove(StatusAffects.PhyllaFight);
                 outputText("...and make it into the nearby tunnel.  ");
                 game.desert.antsScene.phyllaTentaclePCLoss();
             } else
                 game.forest.tentacleBeastScene.tentacleLossRape();
         } else {
             outputText("You give up on fighting, too aroused to resist any longer.  Shrugging, you walk into the writhing mass...\n\n");
-            if (findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
-                removeStatusAffect(StatusAffects.PhyllaFight);
+            if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
+                this.effects.remove(StatusAffects.PhyllaFight);
                 outputText("...but an insistent voice rouses you from your stupor.  You manage to run into a nearby tunnel.  ");
                 game.desert.antsScene.phyllaTentaclePCLoss();
             } else
@@ -81,7 +81,7 @@ export class TentacleBeast extends Monster {
 
     protected performCombatAction(): void {
         // tentacle beasts have special AI
-        if (rand(2) == 0 || findStatusAffect(StatusAffects.TentacleCoolDown) >= 0)
+        if (rand(2) == 0 || this.effects.findByType(StatusAffects.TentacleCoolDown) >= 0)
             special1();
         else special2();
     }

@@ -6,7 +6,7 @@
 export class JeanClaude extends Monster {
     private doubleAttack(): void {
         outputText("The monstrous basilisk suddenly lunges forward, snarling wordlessly as he swings his cutlass at you twice, the blows of a savage yet expert swordsman.\n\n");
-        createStatusAffect(StatusAffects.Attacks, 2, 0, 0, 0);
+        this.effects.create(StatusAffects.Attacks, 2, 0, 0, 0);
         eAttack();
         combatRoundOver();
     }
@@ -24,7 +24,7 @@ export class JeanClaude extends Monster {
     }
 
     public handleTease(lustDelta: number, successful: boolean): void {
-        if (player.findStatusAffect(StatusAffects.RemovedArmor) < 0) {
+        if (player.effects.findByType(StatusAffects.RemovedArmor) < 0) {
             outputText("\n\nJean-Claude stops circling you, looking mildly surprised as you attempt to entice him with your body.");
 
             outputText("\n\n“<i>This is the legendary Champion of Ignam?</i>” he husks. “<i>Flaunting themselves like the most amateur of Lethice’s strippers?</i>” His eyes glow orange. “<i>If that was your intent all along, interloper, you should not do it so half-assedly. You should take off all your clothes, embrace what you truly are, show me what you are really made of.</i>” The hypnotic compulsion presses upon you, commanding you to raise your hands to your [armor]’s clasps...");
@@ -38,14 +38,14 @@ export class JeanClaude extends Monster {
                 outputText("\n\n“<i>Very nice, interloper,</i>” Jean-Claude breathes. His wide smile turns ugly. “<i>Look forward to seeing that every night. I hope it is not too chilly in here for you.</i>” The basilisks which surround you snigger and you blink, the scales falling from your eyes as you realize what you have just done. There is no time to claw your clothes back on: Jean-Claude is upon you, forcing you to fall back, and you will have to fight the rest of this battle in the buff!");
 
                 // (JC arousal up one level, PC’s armor removed for rest of battle)
-                player.createStatusAffect(StatusAffects.RemovedArmor, 0, 0, 0, 0);
+                player.effects.create(StatusAffects.RemovedArmor, 0, 0, 0, 0);
 
-                if (this.findStatusAffect(StatusAffects.JCLustLevel) < 0) {
-                    this.createStatusAffect(StatusAffects.JCLustLevel, 1, 0, 0, 0);
+                if (this.effects.findByType(StatusAffects.JCLustLevel) < 0) {
+                    this.effects.create(StatusAffects.JCLustLevel, 1, 0, 0, 0);
                     lustVuln += 0.1;
                 }
                 else {
-                    this.addStatusValue(StatusAffects.JCLustLevel, 1, 1);
+                    this.effects.addValue(StatusAffects.JCLustLevel, 1, 1);
                 }
 
                 applyTease(lustDelta);

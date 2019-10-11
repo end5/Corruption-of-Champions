@@ -46,10 +46,10 @@ export class Lethice extends Monster {
         }
         else if (_fightPhase == 2) {
             str += "You're completely surrounded by demons! The members of Lethice's corrupted court have flooded the throne hall like a sea of tainted flesh, crushing in on you with the sheer weight of bodies being thrown against you. Incubi, succubi, and forms between and combining them all grasp and thrust at you, trying to overwhelm you with desire for their inhuman bodies and the unspeakable pleasures only demons command.";
-            if (findStatusAffect(StatusAffects.Blind) >= 0) {
+            if (this.effects.findByType(StatusAffects.Blind) >= 0) {
                 str += " The demons have relented somewhat, clutching at their eyes and screaming in frustration and panic thanks to your potent spell!";
             }
-            else if (findStatusAffect(StatusAffects.OnFire) >= 0) {
+            else if (this.effects.findByType(StatusAffects.OnFire) >= 0) {
                 str += " More than a few of the court are screaming in terror, rolling on the ground and trying desperately to put out the flames you've bathed them in! Turns out Marethian demons aren't all that immune to fire!";
             }
         }
@@ -64,10 +64,10 @@ export class Lethice extends Monster {
             }
         }
 
-        if (player.findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0) {
+        if (player.effects.findByType(StatusAffects.LethicesRapeTentacles) >= 0) {
             str += "\n\n<b>A forest of black tentacles sprout from the floor, snaring any demons unlucky enough to venture close - or any champions unlucky enough to be in the center of it all.";
-            if (player.statusAffectv3(StatusAffects.LethicesRapeTentacles) != 0) outputText(" Unfortunately, they’ve grabbed you. You need to break free to do anything!");
-            if (player.findStatusAffect(StatusAffects.KnowsWhitefire) >= 0) {
+            if (player.effects.getValue3Of(StatusAffects.LethicesRapeTentacles) != 0) outputText(" Unfortunately, they’ve grabbed you. You need to break free to do anything!");
+            if (player.effects.findByType(StatusAffects.KnowsWhitefire) >= 0) {
                 str += " A blast of white-fire could probably dispel them, or you could rely on your";
                 if (player.canFly()) str += " flight";
                 else str += " quickness";
@@ -75,11 +75,11 @@ export class Lethice extends Monster {
             }
         }
 
-        if (game.monster.findStatusAffect(StatusAffects.Shell) >= 0) {
+        if (game.monster.effects.findByType(StatusAffects.Shell) >= 0) {
             str += "\n\n<b>Lethice is surrounded by a shimmering dome of magical energy. Spells and ranged attacks will be ineffective!</b>";
         }
 
-        if (player.findStatusAffect(StatusAffects.PigbysHands) >= 0) {
+        if (player.effects.findByType(StatusAffects.PigbysHands) >= 0) {
             str += "\n\nInvisible hands roam over your body, stroking you in ways that no one but a lover ever should. They won’t stop, and they won’t slow. You’ll have to try to ignore their arousing caresses.";
         }
 
@@ -124,14 +124,14 @@ export class Lethice extends Monster {
     private phase1(): void {
         const atks: any[] = [demonicArouse, demonfire];
         if (_roundCount % 10 == 3) atks.push(rapetacles);
-        if (player.findStatusAffect(StatusAffects.Blind) < 0) atks.push(wingbuffet);
+        if (player.effects.findByType(StatusAffects.Blind) < 0) atks.push(wingbuffet);
         atks[rand(atks.length)]();
     }
 
     private demonicArouse(): void {
         outputText("Lethice’s hands blur in a familiar set of arcane motions, similar to the magical gestures you’ve seen from the imps. Hers are a thousand times more intricate. Her slender fingers move with all the precision of a master artist’s brush, wreathed in sparks of black energy.");
         let l: number = player.lib / 10 + player.cor / 10 + 25;
-        if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+        if (player.effects.findByType(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
         dynStats("lus", l);
 
         if (player.lust <= 30) outputText("\n\nYou feel strangely warm.");
@@ -151,21 +151,21 @@ export class Lethice extends Monster {
         // v3 - grappled
         if (player.canFly()) {
             outputText("\n\nYou laugh as you fly out of their reach, immune to their touches.");
-            player.createStatusAffect(StatusAffects.LethicesRapeTentacles, 4 + rand(2), 0, 0, 0);
+            player.effects.create(StatusAffects.LethicesRapeTentacles, 4 + rand(2), 0, 0, 0);
         }
         else if (combatMiss() || combatFlexibility() || combatEvade()) {
             outputText("\n\nYou manage to sidestep the grasping tentacles with ease.");
-            player.createStatusAffect(StatusAffects.LethicesRapeTentacles, 4 + rand(2), 0, 0, 0);
+            player.effects.create(StatusAffects.LethicesRapeTentacles, 4 + rand(2), 0, 0, 0);
         }
         else {
             outputText("\n\nYou aren’t fast enough to avoid them. They yank your arms and [legs] taut. Some burrow under your [armor], crawling toward your most sensitive, forbidden places.");
-            player.createStatusAffect(StatusAffects.LethicesRapeTentacles, 4 + rand(2), 0, 1, 0);
+            player.effects.create(StatusAffects.LethicesRapeTentacles, 4 + rand(2), 0, 1, 0);
         }
     }
 
     public dispellRapetacles(): void {
         clearOutput();
-        if (player.statusAffectv3(StatusAffects.LethicesRapeTentacles) == 0) {
+        if (player.effects.getValue3Of(StatusAffects.LethicesRapeTentacles) == 0) {
             outputText("You raise your arm and");
         }
         else {
@@ -200,7 +200,7 @@ export class Lethice extends Monster {
         }
         else {
             outputText(" The cloying smoke gets in your eyes and your mouth, making you cough and sputter. Worst of all, you can’t see anything!");
-            player.createStatusAffect(StatusAffects.Blind, 2, 0, 0, 0);
+            player.effects.create(StatusAffects.Blind, 2, 0, 0, 0);
             player.takeDamage(1);
             outputText(" (1)");
         }
@@ -279,15 +279,15 @@ export class Lethice extends Monster {
         pronoun2 = "them";
         pronoun3 = "their";
 
-        if (findStatusAffect(StatusAffects.PhysicalDisabled) >= 0) removeStatusAffect(StatusAffects.PhysicalDisabled);
-        if (findStatusAffect(StatusAffects.AttackDisabled) >= 0) removeStatusAffect(StatusAffects.AttackDisabled);
+        if (this.effects.findByType(StatusAffects.PhysicalDisabled) >= 0) this.effects.remove(StatusAffects.PhysicalDisabled);
+        if (this.effects.findByType(StatusAffects.AttackDisabled) >= 0) this.effects.remove(StatusAffects.AttackDisabled);
 
         combatRoundOver();
     }
 
     private phase2(): void {
         const atks: any[] = [demonLustMagic, dirtyDancing, hornyPoke, crushingBodies];
-        if (rand(10) == 0 && player.findStatusAffect(StatusAffects.Blind) < 0) atks.push(bukkakeTime);
+        if (rand(10) == 0 && player.effects.findByType(StatusAffects.Blind) < 0) atks.push(bukkakeTime);
 
         atks[rand(atks.length)]();
         combatRoundOver();
@@ -303,19 +303,19 @@ export class Lethice extends Monster {
         else if (player.lust <= 33) {
             outputText("\n\nYou try your hardest to push back the lustful, submissive thoughts that begin to permeate your mind, but against so many concentrated wills... even you can't hold back. You moan as the first hints of arousal spread through you, burning in your loins. What you wouldn't give for a fuck about now!");
             l = player.lib / 10 + player.cor / 10 + 10;
-            if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+            if (player.effects.findByType(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
             dynStats("lus", l);
         }
         else if (player.lust <= 66) {
             outputText("\n\nAt first, you try to think of something else... but in your state, that just ends up being sex: hot, dirty, sweaty fucking surrounded by a sea of bodies. With a gasp, you realize you've left yourself open to the demons, and they're all too happy to flood your mind with images of submission and wanton debauchery, trying to trick you into letting them take you!");
             l = player.lib / 10 + player.cor / 10 + 10;
-            if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+            if (player.effects.findByType(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
             dynStats("lus", l);
         }
         else {
             outputText("\n\nYou don't even try to resist anymore -- your mind is already a cornucopia of lustful thoughts, mixed together with desire that burns in your veins and swells in your loins, all but crippling your ability to resist. The demons only add to it, fueling your wanton imagination with images of hedonistic submission, of all the wondrous things they could do to you if you only gave them the chance. It's damn hard not to.");
             l = player.lib / 10 + player.cor / 10 + 10;
-            if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+            if (player.effects.findByType(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
             dynStats("lus", l);
         }
     }
@@ -330,7 +330,7 @@ export class Lethice extends Monster {
             else if (player.lust <= 66) outputText("\n\nTry as you might to resist, the demons are having an effect on you! Your whole body is flushed with unbidden arousal, burning with lust for the demonic sluts pressing against you. The temptresses are almost enough to want to make you lay down your arms and bend one of them double for a good, hard fuck!");
             else outputText("\n\nOh gods! The way their bodies undulate, caressing and cumming, moaning as they're fucked from behind and transfer all of that energy to you, makes your body burn with desire. It's almost too much to bear!");
             let l: number = player.lib / 10 + player.cor / 10 + 10;
-            if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+            if (player.effects.findByType(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
             dynStats("lus", l);
         }
     }
@@ -389,7 +389,7 @@ export class Lethice extends Monster {
         else {
             outputText(" You take a huge, fat, musky glob of spunk right to the eyes! You yelp in alarm, trying to wipe the salty, burning demonic cock-cream out, but it's simply too thick! Yuck!");
             dynStats("lus", 5);
-            player.createStatusAffect(StatusAffects.Blind, 2 + rand(2), 0, 0, 0);
+            player.effects.create(StatusAffects.Blind, 2 + rand(2), 0, 0, 0);
         }
     }
 
@@ -406,7 +406,7 @@ export class Lethice extends Monster {
 
         menu();
         if (player.hasCock() || player.hasVagina()) addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
-        if (player.findStatusAffect(StatusAffects.KnowsHeal) >= 0) addButton(1, "Heal", p2Heal);
+        if (player.effects.findByType(StatusAffects.KnowsHeal) >= 0) addButton(1, "Heal", p2Heal);
         addButton(2, "Next", p2Next);
     }
 
@@ -566,7 +566,7 @@ export class Lethice extends Monster {
         if (_roundCount == 5) gropehands();
         else {
             const atks: any[] = [parasiteThrowingStars, whiptrip, sonicwhip];
-            if (player.findStatusAffect(StatusAffects.WhipSilence) < 0) atks.push(whipchoke);
+            if (player.effects.findByType(StatusAffects.WhipSilence) < 0) atks.push(whipchoke);
 
             atks[rand(atks.length)]();
         }
@@ -589,7 +589,7 @@ export class Lethice extends Monster {
         }
         else {
             let l: number = player.lib / 10 + player.cor / 10 + 10;
-            if (player.findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
+            if (player.effects.findByType(StatusAffects.MinotaurKingsTouch) >= 0) l *= 1.25;
             dynStats("lus", l);
 
             let damage: number = str + weaponAttack - rand(player.tou);
@@ -633,7 +633,7 @@ export class Lethice extends Monster {
 
             if (player.perks.findByType(PerkLib.Resolute) < 0 && rand(player.tou) <= 25) {
                 outputText(" The ground rushes up at you awful fast. Lethice has tripped you, <b>stunning you!</b>");
-                player.createStatusAffect(StatusAffects.Stunned, 1, 0, 0, 0);
+                player.effects.create(StatusAffects.Stunned, 1, 0, 0, 0);
             }
             else {
                 outputText(" Lethice is going to need to pull a lot harder if she wants to trip you.");
@@ -683,7 +683,7 @@ export class Lethice extends Monster {
             let damage: number = weaponAttack + 25 - rand(player.tou);
             damage = player.takeDamage(damage);
 
-            player.createStatusAffect(StatusAffects.WhipSilence, 3, 0, 0, 0);
+            player.effects.create(StatusAffects.WhipSilence, 3, 0, 0, 0);
 
             outputText(" (" + damage + ")");
         }
@@ -711,6 +711,6 @@ export class Lethice extends Monster {
         outputText("<i>“Let’s see how you fight while you’re being groped, shall we? A shame Pigby isn’t around to see how I’ve improved his hands,”</i> Lethice murmurs. Cupping her hands into a parody of lecher’s grip, the corruptive Queen squeezes and chants. Immediately, you feel phantasmal hands all over your body, reaching through your armor to fondle your bare [skinFurScales]. Digits slip into your [butt]. Fingertips brush your [nipples]. Warm palms slide down your quivering belly toward your vulnerable loins.");
         outputText("\n\nYou glare daggers at Lethice, but she merely laughs. <i>“A shame I never got to convince him that his hands were so much more effective when used like this.”</i>");
         dynStats("lus", 5);
-        player.createStatusAffect(StatusAffects.PigbysHands, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.PigbysHands, 0, 0, 0, 0);
     }
 }

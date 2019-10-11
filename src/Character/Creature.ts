@@ -364,7 +364,7 @@ export class Creature {
     // Current status effects. This has got very muddy between perks and status effects. Will have to look into it.
     // Someone call the grammar police!
     // TODO: Move monster status effects into perks. Needs investigation though.
-    public statusAffects: any[];
+    public effects = new EffectArray();
 
     // Constructor
     public constructor() {
@@ -374,7 +374,6 @@ export class Creature {
         vaginas = [];
         // vaginas: Vector.<Vagina> = new Vector.<Vagina>();
         breastRows = [];
-        statusAffects = [];
         // keyItems = new Array();
     }
 
@@ -389,102 +388,6 @@ export class Creature {
             const bonusGems: number = rand(cocks[randomCock].cockThickness) + countCockSocks("gilded"); // int so AS rounds to whole numbers
             outputText("\n\nFeeling some minor discomfort in your " + cockDescript(this, randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n");
             gems += bonusGems;
-        }
-    }
-
-    // {region StatusEffects
-    // Create a status
-    public createStatusAffect(stype: StatusAffectType, value1: number, value2: number, value3: number, value4: number): void {
-        const newStatusAffect: StatusAffectClass = new StatusAffectClass(stype, value1, value2, value3, value4);
-        statusAffects.push(newStatusAffect);
-        // trace("createStatusAffect -> "+statusAffects.join(","));
-        // trace("NEW STATUS APPLIED TO PLAYER!: " + statusName);
-    }
-
-    // Remove a status
-    public removeStatusAffect(stype: StatusAffectType): void {
-        const counter: number = findStatusAffect(stype);
-        if (counter < 0) return;
-        statusAffects.splice(counter, 1);
-        // trace("removeStatusAffect -> "+statusAffects.join(","));
-    }
-
-    public findStatusAffect(stype: StatusAffectType): number {
-        for (const counter = 0; counter < statusAffects.length; counter++) {
-            if (statusAffect(counter).stype == stype)
-                return counter;
-        }
-        return -1;
-    }
-    // }endregion
-
-    public changeStatusValue(stype: StatusAffectType, statusValueNum: number = 1, newNum: number = 0): void {
-        const counter: number = findStatusAffect(stype);
-        // Various Errors preventing action
-        if (counter < 0) return;
-        if (statusValueNum < 1 || statusValueNum > 4) {
-            CoC_Settings.error("ChangeStatusValue called with invalid status value number.");
-            return;
-        }
-        if (statusValueNum == 1)
-            statusAffect(counter).value1 = newNum;
-        if (statusValueNum == 2)
-            statusAffect(counter).value2 = newNum;
-        if (statusValueNum == 3)
-            statusAffect(counter).value3 = newNum;
-        if (statusValueNum == 4)
-            statusAffect(counter).value4 = newNum;
-    }
-
-    public addStatusValue(stype: StatusAffectType, statusValueNum: number = 1, bonus: number = 0): void {
-        const counter: number = findStatusAffect(stype);
-        // Various Errors preventing action
-        if (counter < 0) {
-            return;
-        }
-        if (statusValueNum < 1 || statusValueNum > 4) {
-            CoC_Settings.error("ChangeStatusValue called with invalid status value number.");
-            return;
-        }
-        if (statusValueNum == 1)
-            statusAffect(counter).value1 += bonus;
-        if (statusValueNum == 2)
-            statusAffect(counter).value2 += bonus;
-        if (statusValueNum == 3)
-            statusAffect(counter).value3 += bonus;
-        if (statusValueNum == 4)
-            statusAffect(counter).value4 += bonus;
-    }
-
-    public statusAffect(idx: number): StatusAffectClass {
-        return statusAffects[idx];
-    }
-
-    public statusAffectv1(stype: StatusAffectType): number {
-        const counter: number = findStatusAffect(stype);
-        return (counter < 0) ? 0 : statusAffect(counter).value1;
-    }
-
-    public statusAffectv2(stype: StatusAffectType): number {
-        const counter: number = findStatusAffect(stype);
-        return (counter < 0) ? 0 : statusAffect(counter).value2;
-    }
-
-    public statusAffectv3(stype: StatusAffectType): number {
-        const counter: number = findStatusAffect(stype);
-        return (counter < 0) ? 0 : statusAffect(counter).value3;
-    }
-
-    public statusAffectv4(stype: StatusAffectType): number {
-        const counter: number = findStatusAffect(stype);
-        return (counter < 0) ? 0 : statusAffect(counter).value4;
-    }
-
-    public removeStatuses(): void {
-        let counter: number = statusAffects.length;
-        while (counter > 0) {
-            counter--;
-            statusAffects.splice(counter, 1);
         }
     }
 
@@ -995,7 +898,7 @@ export class Creature {
             bonus += 25;
         if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) >= 0)
             bonus += 40;
-        total = (bonus + statusAffectv1(StatusAffects.BonusVCapacity) + 8 * vaginas[0].vaginalLooseness * vaginas[0].vaginalLooseness) * (1 + vaginas[0].vaginalWetness / 10);
+        total = (bonus + this.effects.getValue1Of(StatusAffects.BonusVCapacity) + 8 * vaginas[0].vaginalLooseness * vaginas[0].vaginalLooseness) * (1 + vaginas[0].vaginalWetness / 10);
         return total;
     }
 
@@ -1012,7 +915,7 @@ export class Creature {
             bonus += 10;
         if (ass.analWetness > 0)
             bonus += 15;
-        return ((bonus + statusAffectv1(StatusAffects.BonusACapacity) + 6 * ass.analLooseness * ass.analLooseness) * (1 + ass.analWetness / 10));
+        return ((bonus + this.effects.getValue1Of(StatusAffects.BonusACapacity) + 6 * ass.analLooseness * ass.analLooseness) * (1 + ass.analWetness / 10));
     }
 
     public hasFuckableNipples(): boolean {
@@ -1073,20 +976,20 @@ export class Creature {
         return breastRows[index].lactationMultiplier;
     }
     public milked(): void {
-        if (findStatusAffect(StatusAffects.LactationReduction) >= 0)
-            changeStatusValue(StatusAffects.LactationReduction, 1, 0);
-        if (findStatusAffect(StatusAffects.LactationReduc0) >= 0)
-            removeStatusAffect(StatusAffects.LactationReduc0);
-        if (findStatusAffect(StatusAffects.LactationReduc1) >= 0)
-            removeStatusAffect(StatusAffects.LactationReduc1);
-        if (findStatusAffect(StatusAffects.LactationReduc2) >= 0)
-            removeStatusAffect(StatusAffects.LactationReduc2);
-        if (findStatusAffect(StatusAffects.LactationReduc3) >= 0)
-            removeStatusAffect(StatusAffects.LactationReduc3);
+        if (this.effects.findByType(StatusAffects.LactationReduction) >= 0)
+            this.effects.setValue(StatusAffects.LactationReduction, 1, 0);
+        if (this.effects.findByType(StatusAffects.LactationReduc0) >= 0)
+            this.effects.remove(StatusAffects.LactationReduc0);
+        if (this.effects.findByType(StatusAffects.LactationReduc1) >= 0)
+            this.effects.remove(StatusAffects.LactationReduc1);
+        if (this.effects.findByType(StatusAffects.LactationReduc2) >= 0)
+            this.effects.remove(StatusAffects.LactationReduc2);
+        if (this.effects.findByType(StatusAffects.LactationReduc3) >= 0)
+            this.effects.remove(StatusAffects.LactationReduc3);
         if (this.perks.findByType(PerkLib.Feeder) >= 0) {
             // You've now been milked, reset the timer for that
-            addStatusValue(StatusAffects.Feeder, 1, 1);
-            changeStatusValue(StatusAffects.Feeder, 2, 0);
+            this.effects.addValue(StatusAffects.Feeder, 1, 1);
+            this.effects.setValue(StatusAffects.Feeder, 2, 0);
         }
     }
     public boostLactation(todo: number): number {
@@ -1098,16 +1001,16 @@ export class Creature {
         let temp2: number = 0;
         // Prevent lactation decrease if lactating.
         if (todo >= 0) {
-            if (findStatusAffect(StatusAffects.LactationReduction) >= 0)
-                changeStatusValue(StatusAffects.LactationReduction, 1, 0);
-            if (findStatusAffect(StatusAffects.LactationReduc0) >= 0)
-                removeStatusAffect(StatusAffects.LactationReduc0);
-            if (findStatusAffect(StatusAffects.LactationReduc1) >= 0)
-                removeStatusAffect(StatusAffects.LactationReduc1);
-            if (findStatusAffect(StatusAffects.LactationReduc2) >= 0)
-                removeStatusAffect(StatusAffects.LactationReduc2);
-            if (findStatusAffect(StatusAffects.LactationReduc3) >= 0)
-                removeStatusAffect(StatusAffects.LactationReduc3);
+            if (this.effects.findByType(StatusAffects.LactationReduction) >= 0)
+                this.effects.setValue(StatusAffects.LactationReduction, 1, 0);
+            if (this.effects.findByType(StatusAffects.LactationReduc0) >= 0)
+                this.effects.remove(StatusAffects.LactationReduc0);
+            if (this.effects.findByType(StatusAffects.LactationReduc1) >= 0)
+                this.effects.remove(StatusAffects.LactationReduc1);
+            if (this.effects.findByType(StatusAffects.LactationReduc2) >= 0)
+                this.effects.remove(StatusAffects.LactationReduc2);
+            if (this.effects.findByType(StatusAffects.LactationReduc3) >= 0)
+                this.effects.remove(StatusAffects.LactationReduc3);
         }
         if (todo > 0) {
             while (todo > 0) {
@@ -1248,7 +1151,7 @@ export class Creature {
         quantity += this.perks.getValue1Of(PerkLib.ElvenBounty);
         if (this.perks.findByType(PerkLib.BroBody) >= 0)
             quantity += 200;
-        quantity += statusAffectv1(StatusAffects.Rut);
+        quantity += this.effects.getValue1Of(StatusAffects.Rut);
         quantity *= (1 + (2 * this.perks.getValue1Of(PerkLib.PiercedFertite)) / 100);
         // trace("Final Cum Volume: " + int(quantity) + "mLs.");
         // if (quantity < 0) trace("SOMETHING HORRIBLY WRONG WITH CUM CALCULATIONS");
@@ -1446,7 +1349,7 @@ export class Creature {
     // PC can fly?
     public canFly(): boolean {
         // web also makes false!
-        if (findStatusAffect(StatusAffects.Web) >= 0)
+        if (this.effects.findByType(StatusAffects.Web) >= 0)
             return false;
         return _wingType == 2 || _wingType == 7 || _wingType == 9 || _wingType == 11 || _wingType == 12;
 
@@ -1613,7 +1516,7 @@ export class Creature {
             else ass.analLooseness++;
             stretched = true;
             // Reset butt stretchin recovery time
-            if (findStatusAffect(StatusAffects.ButtStretched) >= 0) changeStatusValue(StatusAffects.ButtStretched, 1, 0);
+            if (this.effects.findByType(StatusAffects.ButtStretched) >= 0) this.effects.setValue(StatusAffects.ButtStretched, 1, 0);
         }
         // If within top 10% of capacity, 25% stretch
         if (cArea < analCapacity() && cArea >= .9 * analCapacity() && rand(4) == 0) {
@@ -1633,9 +1536,9 @@ export class Creature {
         // Delay un-stretching
         if (cArea >= .5 * analCapacity()) {
             // Butt Stretched used to determine how long since last enlargement
-            if (findStatusAffect(StatusAffects.ButtStretched) < 0) createStatusAffect(StatusAffects.ButtStretched, 0, 0, 0, 0);
+            if (this.effects.findByType(StatusAffects.ButtStretched) < 0) this.effects.create(StatusAffects.ButtStretched, 0, 0, 0, 0);
             // Reset the timer on it to 0 when restretched.
-            else changeStatusValue(StatusAffects.ButtStretched, 1, 0);
+            else this.effects.setValue(StatusAffects.ButtStretched, 1, 0);
         }
         if (stretched) {
             trace("BUTT STRETCHED TO " + (ass.analLooseness) + ".");
@@ -1671,9 +1574,9 @@ export class Creature {
         // Delay anti-stretching
         if (cArea >= .5 * vaginalCapacity()) {
             // Cunt Stretched used to determine how long since last enlargement
-            if (findStatusAffect(StatusAffects.CuntStretched) < 0) createStatusAffect(StatusAffects.CuntStretched, 0, 0, 0, 0);
+            if (this.effects.findByType(StatusAffects.CuntStretched) < 0) this.effects.create(StatusAffects.CuntStretched, 0, 0, 0, 0);
             // Reset the timer on it to 0 when restretched.
-            else changeStatusValue(StatusAffects.CuntStretched, 1, 0);
+            else this.effects.setValue(StatusAffects.CuntStretched, 1, 0);
         }
         if (stretched) {
             trace("CUNT STRETCHED TO " + (vaginas[0].vaginalLooseness) + ".");
@@ -1682,17 +1585,17 @@ export class Creature {
     }
 
     public get inHeat(): boolean {
-        return findStatusAffect(StatusAffects.Heat) >= 0;
+        return this.effects.findByType(StatusAffects.Heat) >= 0;
     }
 
     public get inRut(): boolean {
-        return findStatusAffect(StatusAffects.Rut) >= 0;
+        return this.effects.findByType(StatusAffects.Rut) >= 0;
     }
 
     public bonusFertility(): number {
         let counter: number = 0;
         if (inHeat)
-            counter += statusAffectv1(StatusAffects.Heat);
+            counter += this.effects.getValue1Of(StatusAffects.Heat);
         if (this.perks.findByType(PerkLib.FertilityPlus) >= 0)
             counter += 15;
         if (this.perks.findByType(PerkLib.MaraesGiftFertility) >= 0)

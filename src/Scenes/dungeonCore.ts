@@ -60,7 +60,7 @@ function dungeonMenu(): void {
     }
     // Pump Room
     if (game.dungeonLoc == DUNGEON_FACTORY_PUMP_ROOM) {
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
             outputText("<u><b>Pump Room</b></u>\nAs you step through the iron door, a cacophony of thrumming mechanical noise assaults your ears.  Coppery pipes arch overhead, riveted into spiked iron brackets that hang from the ceiling in twisted pairs.  The constant thrum-thrum-thrum of concealed pumps and mechanisms makes it difficult to hear anything, but you swear you can make out the faint sounds of sexual pleasure emanating from the northwest side of the room.  Investigating further, you spot a door along the west wall of the room that appears to be the source of the licentious sounds.  The vibrations of all the machinery are strongest along the east walls, indicating the possible site of this hellish place's power-plant. There is a door on the east wall and a door on the north.  To the south is a solid iron door that leads back to the lobby.", true);
         }
         else outputText("<u><b>Pump Room</b></u>\nAs you step through the iron door, silence is the only noise you hear.  Coppery pipes arch overhead, riveted into spiked iron brackets that hang from the ceiling in twisted pairs.  The near-complete silence of the place unnerves you, but allows you to make out the faint sounds of sexual pleasure emanating from northwest side of the room.  Investigating further, you spot a door along the west wall of the room that appears to be the source of the licentious sounds.  There are two other doors, one along the east wall and one on the north.  To the south is a solid iron door that leads back to the lobby.", true);
@@ -83,7 +83,7 @@ function dungeonMenu(): void {
         outputText("Stepping through the dark red doorway, you wander into an expansive break room. Tables surrounded by crude wooden chairs fill most of the floor space. Along the far eastern wall sits a small counter, complete with a strange ebony sculpture of a busty woman with 'Mrs. Coffee' printed on the side. Below the sculpture is a pot of steaming hot coffee, giving off an invigoratingly rich smell.", true);
         // Hooks for succubi encounter
         // (if succubus gone/defeated)
-        if (player.findStatusAffect(StatusAffects.FactorySuccubusDefeated) >= 0) {
+        if (player.effects.findByType(StatusAffects.FactorySuccubusDefeated) >= 0) {
             // 			choice7 = 0;
             // 			text6 = "West";
             if (player.keyItems.has("Iron Key") < 0) {
@@ -167,7 +167,7 @@ function dungeonMenu(): void {
     }
     // Furnace Room
     if (game.dungeonLoc == DUNGEON_FACTORY_FURNACE_ROOM) {
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
             outputText("<b><u>Furnace Room</u></b>\nThe air inside this room is hot enough to coat your " + player.skinTone + " " + player.skinDesc + " in a fine sheen of sweat.  The eastern side of the chamber is more machine than wall, a solid mass of iron piping covered in small metal blast-doors through which fuel is to be fed.  A small transparent plate is riveted into the wall, allowing you to see some kind of pink crystalline fuel being burned by purple-white fire.  The few visible controls and gauges don't seem to be linked into anything important, and the machinery looks far too durable to damage with what you have.  The only exit is a heavy iron door on the west wall.  ", true);
         }
         else {
@@ -175,7 +175,7 @@ function dungeonMenu(): void {
         }
 
         // If the players found D3, hide him entirely to avoid two-places-at-once syndrome.
-        if (player.findStatusAffect(StatusAffects.FactoryIncubusDefeated) >= 0 || flags[kFLAGS.D3_DISCOVERED] == 1) {
+        if (player.effects.findByType(StatusAffects.FactoryIncubusDefeated) >= 0 || flags[kFLAGS.D3_DISCOVERED] == 1) {
             // 			text6 = "West";
             // 			choice6 = 11001;
             addButton(5, "West", openFactoryDoor);
@@ -183,7 +183,7 @@ function dungeonMenu(): void {
         // Incubus is ALLLLIVE
         else {
             spriteSelect(30);
-            if (player.findStatusAffect(StatusAffects.IncubusBribed) >= 0) {
+            if (player.effects.findByType(StatusAffects.IncubusBribed) >= 0) {
                 outputText("\n\nThe incubus mechanic is here, thumbing through a hentai comic and laughing to himself at the absurdity of it.  That doesn't stop him from stroking his half-hard member the whole time...", false);
                 // 				choice2 = startIncubusFight;
                 // 				text2 = "Fight";
@@ -206,7 +206,7 @@ function dungeonMenu(): void {
     // Repair Closet
     if (game.dungeonLoc == DUNGEON_FACTORY_REPAIR_CLOSET) {
         outputText("<b><u>Repair Closet</u></b>\nAs you carefully slip inside the room, you note with some relief that it seems to be an empty storage closet. The room is tiny, barely 6' by 8' and almost entirely empty.  The one piece of furniture inside the closet is a simple wooden cabinet, placed against the far wall.  ", true);
-        if (player.findStatusAffect(StatusAffects.BuiltMilker) >= 0)
+        if (player.effects.findByType(StatusAffects.BuiltMilker) >= 0)
             outputText("The shelves are empty.  ", false);
         else {
             outputText("The shelves of the cabinet hold various pieces of pump machinery, probably used to repair complete machines further into the factory.  ", false);
@@ -236,7 +236,7 @@ function dungeonMenu(): void {
     // Main Chamber
     if (game.dungeonLoc == DUNGEON_FACTORY_MAIN_CHAMBER) {
         // Dungeon still operational
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
             outputText("<b><u>Main Chamber</u></b>\nThis cavernous chamber is filled with a cacophony of sexual moans.  Rows of harnesses are spaced evenly throughout this room, nearly all of them filled with delirious-looking humans.  Each is over-endowed with huge breasts and a penis of elephantine proportions.  The source of their delirium hangs down from the ceiling - groups of hoses that end with needles buried deep into the poor 'girls' flesh, pumping them full of demonic chemicals.  Constant sucking and slurping noises emanate from nipple and cock pumps as they keep the victims in a state of near-constant orgasm.  ", true);
             if (player.cor < 50) outputText("You wish you could free them, but it would take the better part of a day to get them all free.  It'd be better to find the control room and shut down the infernal machinery.  ", false);
             else outputText("You wish you had some machinery like this for yourself.  It looks so fun!  Still, you suppose you should find the control panel to shut this down and free these people.  ", false);
@@ -260,7 +260,7 @@ function dungeonMenu(): void {
     // Foreman's Office
     if (game.dungeonLoc == DUNGEON_FACTORY_FOREMANS_OFFICE) {
         outputText("<b><u>Foreman's Office</u></b>\nThis office provides an excellent view of the 'factory floor' through a glass wall along the north side.  Towards the south side of the room is a simple desk with an even simpler chair behind it.  The desk's surface is clear of any paperwork, and only has a small inkwell and quill on top of it.  There are a few statues of women and men posted at the corners of the room.  All are nude and appear to be trapped in mid-orgasm.  You wonder if they're statues or perhaps some kind of perverted petrified art.  The north has a glass door leading back to the factory.  There are two other doors, both made of very solid looking metal.  One is on the east wall and another is on the south, behind the desk.  The one behind the desk is marked 'Premium Storage' (though it appears to be locked).", true);
-        if (player.findStatusAffect(StatusAffects.FactoryOmnibusDefeated) < 0) {
+        if (player.effects.findByType(StatusAffects.FactoryOmnibusDefeated) < 0) {
             spriteSelect(16);
             outputText("\n\nA nearly nude demonic woman is standing behind the desk, appraising you.  She is gorgeous in the classical sense, with a curvy hourglass figure that radiates pure sexuality untamed by any desire for proper appearance.  Shiny black lip-gloss encapsulates her bubbly lips, while dark eyeshadow highlights her bright red eyes.  The closest thing she has to clothing is a narrow band of fabric that wraps around her significant chest, doing little to hide the pointed nubs of her erect nipples.  Her crotch is totally uncovered, revealing the hairless lips of her glistening womanhood.\n\n", false);
             outputText("She paces around the edge of the desk, licking her lips and speaking, \"<i>So you've made it all the way here have you, 'champion'?  Too bad you've wasted your time.  Have you figured it out yet?  Have you discovered why you were sent here with no weapons or blessed items?  Have you found out why there are more humans here than anywhere else in this realm?  I'll tell you why.  You weren't a champion.  You were a sacrificial cow, meant to be added to our herd.  You just got lucky enough to get free.</i>\"\n\n", false);
@@ -294,7 +294,7 @@ function dungeonMenu(): void {
     if (game.dungeonLoc == DUNGEON_FACTORY_PUMP_CONTROL) {
         // PUMP CONTROL ROOM
         outputText("<b><u>Pump Control Room</u></b>\n", true);
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
             outputText("This room is little more than a closet in reality.  There is a simple set of mechanical controls on a finely crafted terminal against the far wall.  You spend a moment looking over them, and realize you have three options to deal with this place.\n\n", true);
             outputText("-You could close the storage vent valves and overload the fluid storage systems.  The storage tanks along the back portion of the building would rupture, releasing thousands of gallons of tainted fluids into the surrounding area, but the facility's systems would suffer catastrophic failures and shut down forever.\n", false);
             // (Consequences - lake goddess becomes tainted!)
@@ -322,9 +322,9 @@ function dungeonMenu(): void {
         // 		text1 = "North";
         // 		choice1 = 11006;
         addButton(0, "North", dungeonEnterRoom, DUNGEON_FACTORY_FOREMANS_OFFICE);
-        if (player.findStatusAffect(StatusAffects.TakenLactaid) >= 0) {
-            if (player.statusAffectv1(StatusAffects.TakenLactaid) > 0) {
-                outputText("There is a crate with " + num2Text(player.statusAffectv1(StatusAffects.TakenLactaid)) + " bottles of something called 'Lactaid' inside.\n\n", false);
+        if (player.effects.findByType(StatusAffects.TakenLactaid) >= 0) {
+            if (player.effects.getValue1Of(StatusAffects.TakenLactaid) > 0) {
+                outputText("There is a crate with " + num2Text(player.effects.getValue1Of(StatusAffects.TakenLactaid)) + " bottles of something called 'Lactaid' inside.\n\n", false);
                 // 				text3 = "Lactaid";
                 // 				choice3 = storageTakeLactaid;
                 addButton(2, "Lactaid", storageTakeLactaid);
@@ -336,9 +336,9 @@ function dungeonMenu(): void {
             // 			choice3 = storageTakeLactaid;
             addButton(2, "Lactaid", storageTakeLactaid);
         }
-        if (player.findStatusAffect(StatusAffects.TakenGroPlus) >= 0) {
-            if (player.statusAffectv1(StatusAffects.TakenGroPlus) > 0) {
-                outputText("There is a crate with " + num2Text(player.statusAffectv1(StatusAffects.TakenGroPlus)) + " bottles of something called 'Gro+' inside.\n\n", false);
+        if (player.effects.findByType(StatusAffects.TakenGroPlus) >= 0) {
+            if (player.effects.getValue1Of(StatusAffects.TakenGroPlus) > 0) {
+                outputText("There is a crate with " + num2Text(player.effects.getValue1Of(StatusAffects.TakenGroPlus)) + " bottles of something called 'Gro+' inside.\n\n", false);
                 // 				text4 = "GroPlus";
                 // 				choice4 = storageTakeGroPlus;
                 addButton(3, "GroPlus", storageTakeGroPlus);
@@ -1069,17 +1069,17 @@ function dungeonMenu(): void {
 
 export function enterFactory(): void {
     clearOutput();
-    if (player.findStatusAffect(StatusAffects.FactoryOverload) >= 0) {
+    if (player.effects.findByType(StatusAffects.FactoryOverload) >= 0) {
         outputText("Rounding a bend in the mountainous foothills, you stumble upon a large, rusted and eerily silent iron structure with a number of tall gray smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside toward a jagged hole in its face.  Most of these are cracked open along their seams and both the pipes and mountainside are glazed with pink tinted runoff.\n\nThere are no windows to the hellish factory, with only a single iron door adorning the front wall.\n\nDo you enter the factory or leave?");
     }
-    else if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) {
+    else if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) {
         outputText("Rounding a bend in the mountainous foothills, you stumble upon a large, rusted and eerily silent iron structure with a number of tall gray smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside and disappearing into a hole in its face.\n\nThere are no windows to the hellish factory, with only a single iron door adorning the front wall.\n\nDo you enter the factory or leave?");
     }
     else {
         outputText("Rounding a bend in the mountainous foothills, you stumble upon a large and rusted iron structure belching cloying pink smoke from its tall smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside and disappearing into a hole in its face.  It must be some kind of demonic factory, though you've no idea what they could be pumping out.  High atop the roof, you spy a huge water tower fed by smaller pipes that run down the building's side and off in the direction of the lake.\n\nThere are no windows to the hellish factory, with only a single iron door adorning the front wall.  If you go inside there will undoubtedly be many demons to fight and little chance to escape. Death or worse awaits should you fall into their hands.\n\nDo you enter the factory or leave?");
-        if (player.findStatusAffect(StatusAffects.FoundFactory) < 0) {
+        if (player.effects.findByType(StatusAffects.FoundFactory) < 0) {
             outputText("\n\n<b>The factory is now accessable from the 'Dungeons' submenu inside 'Places' menu.</b>");
-            player.createStatusAffect(StatusAffects.FoundFactory, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.FoundFactory, 0, 0, 0, 0);
         }
     }
     simpleChoices("Enter", actuallyEnterFactory, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
@@ -1108,21 +1108,21 @@ export function factoryShutdown(): void {
     clearOutput();
     outputText("You resolve to shut down the factory, then destroy the controls.  You spend a few moments making sure you aren't about to do something disastrous.  A few deep breaths calm your nerves, letting you focus on pressing the correct buttons.  The constant thrumming of the machinery slowly dies down, closely followed by a chorus of disappointed moans.  You step over to the window and watch as the captives come out of their drug induced sex-comas.  A great deal of them gather up and leave, though you are unsure what their destination is.  A few seem to be gathering back around the equipment, and puzzling out how to operate it.  Maybe they liked being here...");
     doNext(playerMenu);
-    player.createStatusAffect(StatusAffects.DungeonShutDown, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.DungeonShutDown, 0, 0, 0, 0);
 }
 
 export function factoryOverload(): void {
     clearOutput();
     outputText("You resolve to shut down the factory by overloading the storage tanks, rendering much of the equipment inoperable and difficult to repair.  With a quick twist of a knob, you override the pressure vents for the storage tanks.  Within minutes, you hear the sounds of popping rivets and straining pumps.  You look out over the factory floor and watch as many of the pipes fracture, dripping seed over the moaning captives.  Smoke rises from pumps as they short out and overheat.  The entire building shudders as a massive blast echoes from somewhere to the west.  A high pitched whine fills the building as the last motors shriek and die.  The captives slowly start to come to as the flood of drugs and artificial pleasure come to a stop.  Many break down and cry, others begin unhooking themselves and exploring their surroundings.  You watch with interest as many of them rally together and make for an exit.   The remaining survivors begin scavenging parts from the machinery and puzzling out how to use it.  Perhaps they liked it here.");
     doNext(playerMenu);
-    player.createStatusAffect(StatusAffects.DungeonShutDown, 0, 0, 0, 0);
-    player.createStatusAffect(StatusAffects.FactoryOverload, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.DungeonShutDown, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.FactoryOverload, 0, 0, 0, 0);
 }
 
 function relieveTension(): void {
     clearOutput();
     // First time...
-    if (player.findStatusAffect(StatusAffects.TensionReleased) < 0) {
+    if (player.effects.findByType(StatusAffects.TensionReleased) < 0) {
         outputText("You nod and step forwards, allowing her to hook up a modified harness and inject you with the demonic concoction.  In no time heat boils through your veins, pooling on your chest and crotch.  ");
         if (player.biggestTitSize() < 10) {
             player.growTits(1, (2 + rand(3)), true, 1);
@@ -1132,12 +1132,12 @@ function relieveTension(): void {
         player.orgasm();
         dynStats("int", -2, "lib", 4, "cor", 4);
         player.slimeFeed();
-        player.createStatusAffect(StatusAffects.TensionReleased, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.TensionReleased, 0, 0, 0, 0);
     }
     // Second/third times...
     else {
         // [[2nd time]]
-        if (player.statusAffectv1(StatusAffects.TensionReleased) == 0) {
+        if (player.effects.getValue1Of(StatusAffects.TensionReleased) == 0) {
             outputText("You eagerly put on the modified harness and let them inject you with more of those body-altering chemicals.  As they fill you with artificial lust and desire, you cry out and beg for more.  They oblige you and give you a larger dose than the first time.  ");
             // Grow dick!
             if (player.cocks.length > 0) {
@@ -1182,8 +1182,8 @@ function relieveTension(): void {
             outputText("The next eight hours are lost to your desires as you cum over and over, feeling mind-shattering pleasure.  You recover a while on the floor, soaked with a mixture of milk, cum, and pussy-juice.  Getting dressed is a bit troublesome with the recent changes, but you manage to squeeze back into your " + player.armorName + ".  You walk away while still feeling horny, and the moaning of the girls behind you doesn't help.  Maybe you could stay for another round...");
             player.orgasm();
             dynStats("int", -2, "lib", 4, "cor", 4);
-            player.createStatusAffect(StatusAffects.TensionReleased, 0, 0, 0, 0);
-            player.addStatusValue(StatusAffects.TensionReleased, 1, 1);
+            player.effects.create(StatusAffects.TensionReleased, 0, 0, 0, 0);
+            player.effects.addValue(StatusAffects.TensionReleased, 1, 1);
             player.slimeFeed();
         }
         // Third time
@@ -1238,7 +1238,7 @@ export function factoryFinisher(): void {
     outputText("A snap echoes through the pumping room, nearly drowned out by the moans of the other milk-sluts around you.  You look around as you realize the band to restrain your head has been unlatched.  You take advantage of your newfound freedom and look around.  Rows and rows of other girls are there, just like you.  Almost all of them have bigger tits and fuller milk-tubes.  In addition, they all have enormous members that would drag on the floor were it not for the gigantic tubes encapsulating each and every one.  ", false);
     outputText("The girl next to you squirms and cums, wriggling inside her harness as waves of sticky goop are pumped down her cock-tube into a floor-socket.  She just keeps going and going, making you wonder how she can make so much of the stuff.  As the sight excites you, the pleasure in your own crotch redoubles.  Looking down thanks to your newfound freedom, you see your own giant encapsulated member; though not as large as your neighbor's, it still looks and feels wonderful.\n\n", false);
     outputText("The lining of the tube squeezes and massages your trapped prick expertly, even as those hands continue to work on your mind.  Some part of you suspects that your thoughts are being manipulated, but the carnal pleasure you are experiencing is so amazing that you have no intention of resisting. If being a cumslut for your sexy demonic masters is what it takes, so be it. Cramming a massive demon-cock in your throat, getting a few others up your holes to keep you pregnant all the time, and being their busty hermaphrodite breeding tool would be your joy and privilege.  ", false);
-    if (player.findStatusAffect(StatusAffects.CampMarble) >= 0) {
+    if (player.effects.findByType(StatusAffects.CampMarble) >= 0) {
         outputText("As if reading your thoughts, the hands stop massaging, and their owner snaps their fingers. You see Marble step in front of you, wearing an odd set of pink panties with a dick-like protrusion sticking out the front of them.  At the command of the figure behind you, she presents the panty-cock to you.  Happy to be of service, you spread your jaws and engulf as much of the great penis-like thing as you can, while the figure behind you moves around and takes Marble in the ass.  You continue to suck on the pink flesh until you feel it pour some kind of unholy load into your stomach.  Gurgling in pleasure, you start cumming yourself, all the while appeasing your demonic masters by servicing your once lover.\n\n", false);
     }
     else outputText("As if reading your thoughts, the hands stop massaging, and their owner comes in front of you, presenting you with a meaty, throbbing cock.  Happy to be of service, you spread your jaws and engulf as much of the great penis as you can, until you feel it pouring his unholy load into your stomach.  Gurgling in pleasure, you start cumming yourself, all the while attending to one or more of your demonic masters.\n\n", false);
@@ -1265,7 +1265,7 @@ function succubusTalkTwo(): void {
 
 function succubusCombatStart(): void {
     spriteSelect(55);
-    player.createStatusAffect(StatusAffects.FactorySuccubusDefeated, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.FactorySuccubusDefeated, 0, 0, 0, 0);
     startCombat(new SecretarialSuccubus(), true); // Won't matter if you lose
 }
 
@@ -1376,17 +1376,17 @@ function succubusBadEndPartThree(): void {
     if (player.vaginas.length > 0) outputText("Clenching tightly, your " + vaginaDescript(player, 0) + " squeezes tightly on its intruder as its repeatedly violated by the machines.  ");
     // End
     outputText("\n\nThe world around you disappears, leaving you alone with the drug-enhanced sensations assaulting your body.  In truth, you don't want it to end.  You find yourself wishing it would never end, and no doubt the equipment you're hooked in to will see to that.\n\n");
-    if (player.statusAffectv3(StatusAffects.Marble) == 1) {
+    if (player.effects.getValue3Of(StatusAffects.Marble) == 1) {
         outputText("Later on, you are briefly pulled out of your reverie by a familiar warm fluid flowing down your throat.  You come to your senses and see Marble looking down at you with an odd expression on her face.  ");
         outputText("She seems to be in a state of bliss. Looking down, you see that she is wearing some kind of pair of pink panties.  Marble gasps and the surface of the panties ripples; it's a living thing!\n\nYou look around and realize you aren't alone.  ");
     }
-    else if (player.findStatusAffect(StatusAffects.CampMarble) >= 0) {
+    else if (player.effects.findByType(StatusAffects.CampMarble) >= 0) {
         outputText("You are given a brief moment of clarity as you see Marble standing in front of you.  ");
         outputText("She seems to be in a state of bliss. Looking down, you see that she is wearing some kind of pair of pink panties.  Marble gasps and the surface of the panties ripples; it's a living thing!\n\nYou look around and realize you aren't alone.  ");
     }
     else outputText("Later on, in a moment of clarity, you look around and realize you aren't alone.  ");
     outputText("In rows alongside you are a large number of other captives, every single one endowed with freakishly sized breasts, and nearly all gifted with throbbing demonic dicks.  Some small analytical part of you notes that the farther down the line they are, the older and larger they have become.   You look down and see your own massive tits, shiny tainted nipples still pumping out streams of milk.  The huge throbbing demon-cock between your legs begins to get hard as the machines crank back up, filling you full of happy horniness.");
-    if (player.statusAffectv3(StatusAffects.Marble) == 1 || player.findStatusAffect(StatusAffects.CampMarble) >= 0) outputText("  With Marble here too, you'll be around for a long time.");
+    if (player.effects.getValue3Of(StatusAffects.Marble) == 1 || player.effects.findByType(StatusAffects.CampMarble) >= 0) outputText("  With Marble here too, you'll be around for a long time.");
     gameOver();
 }
 
@@ -1626,7 +1626,7 @@ function takeCockMilker(): void {
     outputText("You puzzle out how to build a fully functional cock-milker from the spare parts here and assemble it.\n\nYou gained a <b>Cock Milker</b>!");
     outputText("\n\nYou'll need a little help to use it though.");
     player.keyItems.create("Cock Milker", 0, 0, 0, 0);
-    player.createStatusAffect(StatusAffects.BuiltMilker, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.BuiltMilker, 0, 0, 0, 0);
     doNext(playerMenu);
 }
 
@@ -1635,7 +1635,7 @@ function takeBreastMilker(): void {
     outputText("You puzzle out how to build a fully functional breast-milker from the spare parts here and assemble it.\n\nYou gained a <b>Breast Milker</b>!");
     outputText("\n\nYou'll need a little help to use it though.");
     player.keyItems.create("Breast Milker", 0, 0, 0, 0);
-    player.createStatusAffect(StatusAffects.BuiltMilker, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.BuiltMilker, 0, 0, 0, 0);
     doNext(playerMenu);
 }
 
@@ -1654,14 +1654,14 @@ function talkToIncubus(): void {
 
 function startIncubusFight(): void {
     spriteSelect(30);
-    player.createStatusAffect(StatusAffects.FactoryIncubusDefeated, 0, 0, 0, 0); // Won't matter if you lose
+    player.effects.create(StatusAffects.FactoryIncubusDefeated, 0, 0, 0, 0); // Won't matter if you lose
     startCombat(new IncubusMechanic(), true);
 }
 
 function submitToIncubus(): void {
     spriteSelect(30);
     outputText("\"<i>It is good to see the insect accept its fate as the spider closes in,</i>\" intones the strange demonic mechanic as he takes you by the arm and leads you deeper into the facility.  ");
-    if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) {
+    if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) {
         outputText("\n\nYou enter the main milking chamber, and the incubus gives a start when he realizes what has happened.  With a grunt of rage he throws you through the doorways back into his chamber.  The demon stalks after you, taking up a fighting stance.");
         doNext(startIncubusFight);
         return;
@@ -1676,7 +1676,7 @@ function tradeComic(): void {
     clearOutput();
     outputText("You hand over the Hentai Comic tentatively to the male sex demon.  As soon as he has it in his grubby mitts he sits down and starts thumbing through the pages, toying with his half-hard member the entire time.  He must really like porn.");
     player.keyItems.remove("Hentai Comic");
-    player.createStatusAffect(StatusAffects.IncubusBribed, 0, 0, 0, 0);
+    player.effects.create(StatusAffects.IncubusBribed, 0, 0, 0, 0);
     doNext(playerMenu);
 }
 
@@ -1696,7 +1696,7 @@ export function incubusLossRape(): void {
         outputText("The demon tenses, pulling your head forwards and burying your nose against his belly.  The dick in your mouth slides down your throat, hanging just above your belly as it begins to fill your gut with bursts of demonic warmth.  Black cum erupts from your nipples as his orgasm overwhelms their meager storage capacity, soaking your tits in his corruptive essence as the pleasure finally breaks your mind.  Your eyes roll back into your head as you begin cumming... and cumming... and cumming. The orgasm drags on and on as more and more cum pours into your body.  Like a passenger in a car you see what's happening but have no control.  Your body is used and abused for hours before you finally drift off to sleep.", false);
         player.orgasm();
         dynStats("cor", 20);
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0)
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0)
             doNext(factoryFinisher);
         else cleanupAfterCombat();
         return;
@@ -1744,7 +1744,7 @@ export function incubusLossRape(): void {
             player.orgasm();
             dynStats("cor", 25);
             player.buttChange(monster.cockArea(0), true);
-            if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0)
+            if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0)
                 doNext(factoryFinisher);
             else cleanupAfterCombat();
             return;
@@ -1777,7 +1777,7 @@ export function incubusLossRape(): void {
             player.buttChange(monster.cockArea(0), true);
             player.orgasm();
             dynStats("cor", 25);
-            if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0)
+            if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0)
                 doNext(factoryFinisher);
             else cleanupAfterCombat();
         }
@@ -1885,7 +1885,7 @@ function omnibusStartCombat(): void {
     spriteSelect(16);
     clearOutput();
     outputText("You strike a combat pose and prepare your " + player.weaponName + ".  She smiles and saunters around the desk, letting something bulbous and fleshy drop free from between her nether-lips.  You watch in shock as it hardens into a dick, growing right from where her clit should be.\n\nShe taunts, \"<i>Like what you see cow?  I'll be sure to visit you in the pens.</i>'\"");
-    player.createStatusAffect(StatusAffects.FactoryOmnibusDefeated, 0, 0, 0, 0); // This won't matter if you lose to her
+    player.effects.create(StatusAffects.FactoryOmnibusDefeated, 0, 0, 0, 0); // This won't matter if you lose to her
     startCombat(new OmnibusOverseer(), true);
 }
 
@@ -2256,7 +2256,7 @@ export function omnibusLossRape2(): void {
         outputText("Your mistress' OTHER pet wraps around your neck, forming a choker comprised of shifting green colors.  You smile as you realize it is done - you've become one of her pet cattle.  Your body is wrapped in an emerald sea of shifting pleasure, just like your mistress wanted.  If it weren't for the obvious bulges of your " + multiCockDescriptLight(player) + ", you'd look to be wearing an extraordinarily revealing one piece swim-suit.  The constant teasing at your crotch continues, and you stay rock-hard, even though you just came.  The idea of being milked to feed your new clothing just turns you on so much that you bet you're leaking constant streams of pre-cum for your new green master.\n\n", false);
         outputText("The flashing subsides, and your new thoughts rush into the void.  You immediately begin masturbating your encapsulated members as you seek to obey.  To orgasm is to obey.  To obey is to orgasm.  You discover that you can feel every touch through the skin of your 'clothing'.  You increase the tempo, knowing that your orgasm will be feeding the creature that now lives on you, fulfilling your deepest darkest desires.  You cum again, just as hard as before, inflating " + num2Text(player.cocks.length) + " shiny green balloons with the proof of your obedience.\n\n", false);
 
-        if (player.findStatusAffect(StatusAffects.CampMarble) >= 0) {
+        if (player.effects.findByType(StatusAffects.CampMarble) >= 0) {
             outputText("Suddenly, a loud scream is heard down on the factory floor. You and your mistress turn to see Marble dashing up the stairs to the foremen's office.  Your mistress looks over at her and says with some amusement, \"<i>Oh ho!  So another cow has come to join in the fun.</i>\"\n\n\"<i>Sweetie! What has she done to you?</i>\" Marble exclaims, \"<i>What has she put on you?!</i>\"\n\n\"<i>Oh, so you knew this girl?</i>\" your mistress asks you, \"<i>It's a Lacta Bovine from the looks of it, so it seems this time I'll be adding a real cow to the pens.</i>\"  Marble turns to your mistress and brandishes her hammer, but the horror from the thought of your mistress being hurt causes you to spring forward and grab Marble.  The brief distraction gives your mistress a chance to sink a syringe into Marble's shoulder, and within moments she slumps onto the ground unconscious.\"\n\n", false);
             outputText("Your mistress turns back to you and smiles.\n\n\"<i>Well, she should make a fine replacement for you in the pens,</i>\" she says before tapping her chin thoughtfully and looking back at you, \"<i>Really is convenient that I don't have to worry about my new pet dying on me now, hun.</i>\"  Then she pushes you back into the chair and says \"<i>But first...\"\n\n", false);
 
@@ -2295,7 +2295,7 @@ export function omnibusLossRape2(): void {
         outputText("Your mistress pats your obscene purple panties tenderly and whispers in your ear, \"<i>Be a good toy and cum for mistress.</i>\"  You smile broadly as your hips piston in the air, as if fucking an imaginary twat.  Cum boils out from your ", false);
         if (player.balls > 0) outputText(ballsDescriptLight(player) + " and ", false);
         outputText(" over-sized prostate, filling the chamber around your cock with thick blasts of seed.  You smile happily as the tentacle-chamber distorts to hold your load, bulging out into a more spherical appearance.  You slump down as your orgasm finishes and you begin to feel even more 'reward' fill your now greedy-hole.\n\n", false);
-        if (player.findStatusAffect(StatusAffects.CampMarble) >= 0) {
+        if (player.effects.findByType(StatusAffects.CampMarble) >= 0) {
             outputText("Suddenly, a loud scream is heard down on the factory floor. You and your mistress turn to see Marble dashing up the stairs to the foremen's office.  Your mistress looks over at her and says with some amusement, \"<i>Oh ho!  So another cow has come to join in the fun.</i>\"\n\n\"<i>Sweetie! What has she done to you?</i>\" Marble exclaims, \"<i>What has she put on you?!</i>\"\n\n\"<i>Oh, so you knew this girl?</i>\" your mistress asks you, \"<i>It's a Lacta Bovine from the looks of it, so it seems this time I'll be adding a real cow to the pens.</i>\"  Marble turns to your mistress and brandishes her hammer, but the horror from the thought of your mistress being hurt causes you to spring forward and grab Marble.  The brief distraction gives your mistress a chance to sink a syringe into Marble's shoulder, and within moments she slumps onto the ground unconscious.\"\n\n", false);
             outputText("Your mistress turns back to you and smiles.\n\n\"<i>Well, she should make a fine replacement for you in the pens,</i>\" she says before tapping her chin thoughtfully and looking back at you, \"<i>Really is convenient that I don't have to worry about my new pet dying on me now, hun.</i>\"  Then she pushes you back into the chair and says \"<i>But first...</i>\"\n\n", false);
         }
@@ -2324,7 +2324,7 @@ export function omnibusLossRape2(): void {
         outputText("You blink away the tears and nod frantically; you're so close!  But every time you feel an orgasm start to build the creature eases up just enough to keep you away from your orgasm.\n\n", false);
         outputText("\"<i>You see, these panties are attuned to our kind.  I've worked hard to breed a pair that could be taught to only provide release when a demon cums in or on them.  Fortunately for you, the nodules will actually open to allow a demon's dick in either passage.  And just for our succubi friends, they can grow a protrusion from the front, and transmit the sensations to you,</i>\" she says as she demonstrates by bringing her throbbing purplish prick close to your pink-enclosed groin.  The surface of the panties splits with a line down the front, reshaping to reveal your pink-covered camel-toe.\n\n", false);
         outputText("She asks, \"<i>I won't be a rapist my dear.  This cock will only enter you if you desire the pleasure it can bring you.  You could say no and just enjoy being on the edge until your will finally crumbles.</i>\"\n\n", false);
-        if (player.findStatusAffect(StatusAffects.CampMarble) >= 0) {
+        if (player.effects.findByType(StatusAffects.CampMarble) >= 0) {
             outputText("Suddenly, a loud scream is heard down on the factory floor. You and your mistress turn to see Marble dashing up the stairs to the foremen's office.  Your mistress looks over at her and says with some amusement, \"<i>Oh ho!  So another cow has come to join in the fun.</i>\"\n\n\"<i>Sweetie! What has she done to you?</i>\" Marble exclaims, \"<i>What has she put on you?!</i>\"\n\n\"<i>Oh, so you knew this girl?</i>\" your mistress asks you, \"<i>It's a Lacta Bovine from the looks of it, so it seems this time I'll be adding a real cow to the pens.</i>\"  Marble turns to your mistress and brandishes her hammer, but the horror from the thought of your mistress being hurt causes you to spring forward and grab Marble.  The brief distraction gives your mistress a chance to sink a syringe into Marble's shoulder, and within moments she slumps onto the ground unconscious.\"\n\n", false);
             outputText("Your mistress turns back to you and smiles.\n\n\"<i>Well, she should make a fine replacement for you in the pens,</i>\" she says before tapping her chin thoughtfully and looking back at you, \"<i>Really is convenient that I don't have to worry about my new pet dying on me now, hun.</i>\"  Then she pushes you back into the chair and says \"<i>But first, didn't you want something from me?</i>\"\n\n", false);
 
@@ -2397,7 +2397,7 @@ export function demonBadEnd(): void {
             outputText("The slutty succubus stands up, her puffy vulva coated in a shining pink fluid.  Did that just come out of you?  She grunts, her eyes glowing for a moment as the pink goop disappears into her skin, vanishing entirely.\n\n", false);
             outputText("\"<i>Ahhhhh,</i>\" she sighs, \"<i>nothing like fresh Lethicite.  Mmmm, yours was potent!</i>\"\n\n", false);
             outputText("You stand up, dissatisfied at the sudden lack of sensation you're forced to endure.  The gloating demoness looks rather pleased with herself, and brimming with newfound power.  You resolve to ", false);
-            if (player.findStatusAffect(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
+            if (player.effects.findByType(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
             else outputText("devour Marae's as soon as you get a chance.", false);
             outputText("You greedily gather up the lethicite splattered on your body and devour it, turning it into raw demonic power.  You really do need to get more of this... but first you know a certain demoness you intend to wrap around your ", false);
             if (player.demonCocks() > 0) outputText("growing", false);
@@ -2422,7 +2422,7 @@ export function demonBadEnd(): void {
             outputText("The slutty succubus stands up, her puffy vulva coated in a shining pink fluid.  Did that just come out of you?  She grunts, her eyes glowing for a moment as the pink goop disappears into her skin, vanishing entirely.\n\n", false);
             outputText("\"<i>Ahhhhh,</i>\" she sighs, \"<i>nothing like fresh Lethicite.  Mmmm your's was potent!</i>\"\n\n", false);
             outputText("You stand up, dissatisfied at the sudden lack of sensation you're forced to endure.  The gloating demoness looks rather pleased with herself, and brimming with newfound power.  You resolve to ", false);
-            if (player.findStatusAffect(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
+            if (player.effects.findByType(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
             else outputText("devour Marae's as soon as you get a chance.", false);
             outputText("  But first you know a certain demoness you intend to wrap around your ", false);
             if (player.demonCocks() > 0) outputText("growing", false);
@@ -2468,7 +2468,7 @@ export function demonBadEnd(): void {
         outputText("The slutty succubus stands up, her puffy vulva coated in a shining pink fluid.  Did that just come out of you?  She grunts, her eyes glowing for a moment as the pink goop disappears into her skin, vanishing entirely.\n\n", false);
         outputText("\"<i>Ahhhhh,</i>\" she sighs, \"<i>nothing like fresh Lethicite.  Mmmm, your's was soooo potent!</i>\"\n\n", false);
         outputText("You stand up, dissatisfied at the sudden lack of sensation you're forced to endure.  The gloating demoness looks rather pleased with herself, and brimming with her new-found power.  You resolve to ", false);
-        if (player.findStatusAffect(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
+        if (player.effects.findByType(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
         else outputText("devour Marae's as soon as you get a chance.", false);
         outputText("  But first you know a certain demoness you intend to wrap around your ", false);
         if (player.demonCocks() > 0) outputText("growing", false);
@@ -2506,15 +2506,15 @@ export function openPumpRoom(): void {
 }
 
 export function storageTakeLactaid(): void {
-    if (player.findStatusAffect(StatusAffects.TakenLactaid) >= 0)
-        player.addStatusValue(StatusAffects.TakenLactaid, 1, -1);
-    else player.createStatusAffect(StatusAffects.TakenLactaid, 4, 0, 0, 0);
+    if (player.effects.findByType(StatusAffects.TakenLactaid) >= 0)
+        player.effects.addValue(StatusAffects.TakenLactaid, 1, -1);
+    else player.effects.create(StatusAffects.TakenLactaid, 4, 0, 0, 0);
     inventory.takeItem(consumables.LACTAID, playerMenu);
 }
 
 export function storageTakeGroPlus(): void {
-    if (player.findStatusAffect(StatusAffects.TakenGroPlus) >= 0)
-        player.addStatusValue(StatusAffects.TakenGroPlus, 1, -1);
-    else player.createStatusAffect(StatusAffects.TakenGroPlus, 4, 0, 0, 0);
+    if (player.effects.findByType(StatusAffects.TakenGroPlus) >= 0)
+        player.effects.addValue(StatusAffects.TakenGroPlus, 1, -1);
+    else player.effects.create(StatusAffects.TakenGroPlus, 4, 0, 0, 0);
     inventory.takeItem(consumables.GROPLUS, playerMenu);
 }

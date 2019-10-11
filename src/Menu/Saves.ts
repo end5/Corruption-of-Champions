@@ -643,7 +643,7 @@ export class Saves {
             saveFile.data.vaginas = [];
             saveFile.data.breastRows = [];
             saveFile.data.perks = [];
-            saveFile.data.statusAffects = [];
+            saveFile.data.effects = [];
             saveFile.data.ass = [];
             saveFile.data.keyItems = [];
             saveFile.data.itemStorage = [];
@@ -715,18 +715,18 @@ export class Saves {
             }
 
             // Set Status Array
-            for (i = 0; i < player.statusAffects.length; i++) {
-                saveFile.data.statusAffects.push([]);
-                // trace("Saveone statusAffects");
+            for (i = 0; i < player.effects.length; i++) {
+                saveFile.data.effects.push([]);
+                // trace("Saveone effects");
             }
             // Populate Status Array
-            for (i = 0; i < player.statusAffects.length; i++) {
-                // trace("Populate One statusAffects");
-                saveFile.data.statusAffects[i].statusAffectName = player.statusAffect(i).stype.id;
-                saveFile.data.statusAffects[i].value1 = player.statusAffect(i).value1;
-                saveFile.data.statusAffects[i].value2 = player.statusAffect(i).value2;
-                saveFile.data.statusAffects[i].value3 = player.statusAffect(i).value3;
-                saveFile.data.statusAffects[i].value4 = player.statusAffect(i).value4;
+            for (i = 0; i < player.effects.length; i++) {
+                // trace("Populate One effects");
+                saveFile.data.effects[i].statusAffectName = player.effects[i].stype.id;
+                saveFile.data.effects[i].value1 = player.effects[i].value1;
+                saveFile.data.effects[i].value2 = player.effects[i].value2;
+                saveFile.data.effects[i].value3 = player.effects[i].value3;
+                saveFile.data.effects[i].value4 = player.effects[i].value4;
             }
             // Set keyItem Array
             for (i = 0; i < player.keyItems.length; i++) {
@@ -1525,19 +1525,19 @@ export class Saves {
             }
 
             // Set Status Array
-            for (i = 0; i < saveFile.data.statusAffects.length; i++) {
-                if (saveFile.data.statusAffects[i].statusAffectName == "Lactation EnNumbere") continue; // ugh...
-                const stype: StatusAffectType = StatusAffectType.lookupStatusAffect(saveFile.data.statusAffects[i].statusAffectName);
+            for (i = 0; i < saveFile.data.effects.length; i++) {
+                if (saveFile.data.effects[i].statusAffectName == "Lactation EnNumbere") continue; // ugh...
+                const stype: StatusAffectType = StatusAffectType.lookupStatusAffect(saveFile.data.effects[i].statusAffectName);
                 if (stype == null) {
-                    CoC_Settings.error("Cannot find status affect '" + saveFile.data.statusAffects[i].statusAffectName + "'");
+                    CoC_Settings.error("Cannot find status affect '" + saveFile.data.effects[i].statusAffectName + "'");
                     continue;
                 }
-                player.createStatusAffect(stype,
-                    saveFile.data.statusAffects[i].value1,
-                    saveFile.data.statusAffects[i].value2,
-                    saveFile.data.statusAffects[i].value3,
-                    saveFile.data.statusAffects[i].value4);
-                // trace("StatusAffect " + player.statusAffect(i).stype.id + " loaded.");
+                player.effects.create(stype,
+                    saveFile.data.effects[i].value1,
+                    saveFile.data.effects[i].value2,
+                    saveFile.data.effects[i].value3,
+                    saveFile.data.effects[i].value4);
+                // trace("StatusAffect " + player.effects[i].stype.id + " loaded.");
             }
             // Make sure keyitems exist!
             if (saveFile.data.keyItems != undefined) {
@@ -1717,17 +1717,17 @@ export class Saves {
             }
         }
 
-        if (player.findStatusAffect(StatusAffects.KnockedBack) >= 0) {
-            player.removeStatusAffect(StatusAffects.KnockedBack);
+        if (player.effects.findByType(StatusAffects.KnockedBack) >= 0) {
+            player.effects.remove(StatusAffects.KnockedBack);
         }
 
-        if (player.findStatusAffect(StatusAffects.Tentagrappled) >= 0) {
-            player.removeStatusAffect(StatusAffects.Tentagrappled);
+        if (player.effects.findByType(StatusAffects.Tentagrappled) >= 0) {
+            player.effects.remove(StatusAffects.Tentagrappled);
         }
 
-        if (player.findStatusAffect(StatusAffects.SlimeCraving) >= 0 && player.statusAffectv4(StatusAffects.SlimeCraving) == 1) {
-            player.changeStatusValue(StatusAffects.SlimeCraving, 3, player.statusAffectv2(StatusAffects.SlimeCraving)); // Duplicate old combined strength/speed value
-            player.changeStatusValue(StatusAffects.SlimeCraving, 4, 1); // Value four indicates this tracks strength and speed separately
+        if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0 && player.effects.getValue4Of(StatusAffects.SlimeCraving) == 1) {
+            player.effects.setValue(StatusAffects.SlimeCraving, 3, player.effects.getValue2Of(StatusAffects.SlimeCraving)); // Duplicate old combined strength/speed value
+            player.effects.setValue(StatusAffects.SlimeCraving, 4, 1); // Value four indicates this tracks strength and speed separately
         }
 
         // Fix issues with corrupt cockTypes caused by a error in the serialization code.
@@ -1836,22 +1836,22 @@ export class Saves {
             if (flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] > 0) {
                 flags[kFLAGS.TAMANI_DAUGHTERS_PREGNANCY_TYPE] = PregnancyStore.PREGNANCY_PLAYER;
                 flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] *= 24; // Convert pregnancy to days
-                flags[kFLAGS.TAMANI_DAUGHTERS_PREGNANCY_COUNT] = player.statusAffectv3(StatusAffects.Tamani);
+                flags[kFLAGS.TAMANI_DAUGHTERS_PREGNANCY_COUNT] = player.effects.getValue3Of(StatusAffects.Tamani);
             }
 
             if (flags[kFLAGS.TAMANI_PREGNANCY_TYPE] != 0) return; // Must be a new format save
-            if (player.findStatusAffect(StatusAffects.TamaniFemaleEncounter) >= 0) player.removeStatusAffect(StatusAffects.TamaniFemaleEncounter); // Wasn't used in previous code
-            if (player.findStatusAffect(StatusAffects.Tamani) >= 0) {
-                if (player.statusAffectv1(StatusAffects.Tamani) == -500) { // This used to indicate that a player had met Tamani as a male
+            if (player.effects.findByType(StatusAffects.TamaniFemaleEncounter) >= 0) player.effects.remove(StatusAffects.TamaniFemaleEncounter); // Wasn't used in previous code
+            if (player.effects.findByType(StatusAffects.Tamani) >= 0) {
+                if (player.effects.getValue1Of(StatusAffects.Tamani) == -500) { // This used to indicate that a player had met Tamani as a male
                     flags[kFLAGS.TAMANI_PREGNANCY_INCUBATION] = 0;
                     flags[kFLAGS.TAMANI_MET] = 1; // This now indicates the same thing
                 }
-                else flags[kFLAGS.TAMANI_PREGNANCY_INCUBATION] = player.statusAffectv1(StatusAffects.Tamani) * 24; // Convert pregnancy to days
-                flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] = player.statusAffectv2(StatusAffects.Tamani);
-                flags[kFLAGS.TAMANI_PREGNANCY_COUNT] = player.statusAffectv3(StatusAffects.Tamani);
-                flags[kFLAGS.TAMANI_TIMES_IMPREGNATED] = player.statusAffectv4(StatusAffects.Tamani);
+                else flags[kFLAGS.TAMANI_PREGNANCY_INCUBATION] = player.effects.getValue1Of(StatusAffects.Tamani) * 24; // Convert pregnancy to days
+                flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] = player.effects.getValue2Of(StatusAffects.Tamani);
+                flags[kFLAGS.TAMANI_PREGNANCY_COUNT] = player.effects.getValue3Of(StatusAffects.Tamani);
+                flags[kFLAGS.TAMANI_TIMES_IMPREGNATED] = player.effects.getValue4Of(StatusAffects.Tamani);
                 if (flags[kFLAGS.TAMANI_PREGNANCY_INCUBATION] > 0) flags[kFLAGS.TAMANI_PREGNANCY_TYPE] = PregnancyStore.PREGNANCY_PLAYER;
-                player.removeStatusAffect(StatusAffects.Tamani);
+                player.effects.remove(StatusAffects.Tamani);
             }
 
             if (flags[kFLAGS.EGG_WITCH_TYPE] == PregnancyStore.PREGNANCY_BEE_EGGS || flags[kFLAGS.EGG_WITCH_TYPE] == PregnancyStore.PREGNANCY_DRIDER_EGGS) return; // Must be a new format save

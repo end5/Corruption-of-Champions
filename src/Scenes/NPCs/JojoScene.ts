@@ -13,13 +13,13 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         pregnancy.pregnancyAdvance();
         trace("\nJojo time change: Time is " + game.time.hours + ", butt incubation: " + pregnancy.buttIncubation);
         if (flags[kFLAGS.JOJO_COCK_MILKING_COOLDOWN] > 0) flags[kFLAGS.JOJO_COCK_MILKING_COOLDOWN]--;
-        if (player.findStatusAffect(StatusAffects.NoJojo) >= 0) player.removeStatusAffect(StatusAffects.NoJojo);
-        if (game.time.hours > 23 && player.statusAffectv1(StatusAffects.Meditated) > 0) {
-            player.removeStatusAffect(StatusAffects.Meditated);
+        if (player.effects.findByType(StatusAffects.NoJojo) >= 0) player.effects.remove(StatusAffects.NoJojo);
+        if (game.time.hours > 23 && player.effects.getValue1Of(StatusAffects.Meditated) > 0) {
+            player.effects.remove(StatusAffects.Meditated);
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00102] == 0) {
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00102]++;
-                while (player.findStatusAffect(StatusAffects.Meditated) >= 0) {
-                    player.removeStatusAffect(StatusAffects.Meditated);
+                while (player.effects.findByType(StatusAffects.Meditated) >= 0) {
+                    player.effects.remove(StatusAffects.Meditated);
                 }
             }
         }
@@ -70,11 +70,11 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         return "face";
     }
     public tentacleJojo(): boolean {
-        return player.findStatusAffect(StatusAffects.TentacleJojo) >= 0;
+        return player.effects.findByType(StatusAffects.TentacleJojo) >= 0;
 
     }
     public campCorruptJojo(): boolean {
-        return monk >= 5 && player.findStatusAffect(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
+        return monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
     }
 
     private jojoMutationOffer(): void {
@@ -103,19 +103,19 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 return;
             }
             // Oh shit goes down! (Wiv Tentacles)
-            if (amilyScene.amilyFollower && flags[kFLAGS.AMILY_DISCOVERED_TENTATLE_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.findStatusAffect(StatusAffects.TentacleJojo) >= 0) {
+            if (amilyScene.amilyFollower && flags[kFLAGS.AMILY_DISCOVERED_TENTATLE_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.effects.findByType(StatusAffects.TentacleJojo) >= 0) {
                 finter.amilyDiscoversJojoWithTentaclesAndShitOhBoy();
                 return;
             }
             // Oh shit goes down! (No tentacles)
-            else if (flags[kFLAGS.AMILY_PISSED_PC_CORRUPED_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower() && player.findStatusAffect(StatusAffects.TentacleJojo) < 0) {
+            else if (flags[kFLAGS.AMILY_PISSED_PC_CORRUPED_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower() && player.effects.findByType(StatusAffects.TentacleJojo) < 0) {
                 finter.amilyIsPissedAtYouForRuiningJojo();
                 return;
             }
             // Offer lethicite jojo tf if the player is ready
-            if (player.findStatusAffect(StatusAffects.JojoTFOffer) < 0 && player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3 && player.cor >= 75) {
+            if (player.effects.findByType(StatusAffects.JojoTFOffer) < 0 && player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3 && player.cor >= 75) {
                 jojoMutationOffer();
-                player.createStatusAffect(StatusAffects.JojoTFOffer, 0, 0, 0, 0);
+                player.effects.create(StatusAffects.JojoTFOffer, 0, 0, 0, 0);
                 return;
             }
             outputText("Before you call for your corrupted pet, how do you want to use him?", true);
@@ -175,7 +175,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         let hairCare: () => void = null;
         let sex: () => void = null;
         if (player.gender > 0 && player.lust >= 33) sex = corruptJojoSexMenu;
-        if (player.findStatusAffect(StatusAffects.HairdresserMeeting) >= 0) hairCare = jojoPaysForPerms;
+        if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) hairCare = jojoPaysForPerms;
         choices("Sex", sex, "TentacleSex", tent, "Milk Him", milkHim, "TentacleMilk", tentaMilk, "HairCare", hairCare, "Lay Eggs", eggs, "", null, "", null, "", null, "Back", camp.campSlavesMenu);
 
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) addButton(6, "Farm Work", sendToFarm);
@@ -317,8 +317,8 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("You turn back to your tent, turned on beyond all measure, and needing to masturbate NOW.  You wonder what Jojo's new additions will feel like on your body when he wakes up, but for now you'll have to get off another way.", false);
         dynStats("lus", 300, "cor", 10);
         // (LIMITED MASTURBATE MENU – No Jojo)
-        player.createStatusAffect(StatusAffects.NoJojo, 0, 0, 0, 0);
-        player.createStatusAffect(StatusAffects.TentacleJojo, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.NoJojo, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.TentacleJojo, 0, 0, 0, 0);
         doNext(playerMenu);
     }
 
@@ -995,7 +995,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
     public jojoFollowerMeditate(): void {
         jojoSprite();
-        if (player.statusAffectv1(StatusAffects.Meditated) > 0) {
+        if (player.effects.getValue1Of(StatusAffects.Meditated) > 0) {
             outputText("Jojo smiles and meditates with you.  The experience is calming, but it's so soon after your last session that you don't get much benefit from it.", doClear);
             if (player.lust > 40) dynStats("lus", -10);
         }
@@ -1016,7 +1016,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.spe < 75) dynStats("spe", 1); // Speed boost to 75
             if (player.inte < 80) dynStats("int", 1); // Int boost to 80
             if (player.lib > 15) dynStats("lib", -1); // Libido lower to 15
-            player.createStatusAffect(StatusAffects.Meditated, 1, 0, 0, 0);
+            player.effects.create(StatusAffects.Meditated, 1, 0, 0, 0);
         }
         doNext(camp.returnToCampUseOneHour);
     }
@@ -1024,12 +1024,12 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     public jojoDefenseToggle(): void {
         jojoSprite();
         clearOutput();
-        if (player.findStatusAffect(StatusAffects.JojoNightWatch) >= 0) {
-            player.removeStatusAffect(StatusAffects.JojoNightWatch);
+        if (player.effects.findByType(StatusAffects.JojoNightWatch) >= 0) {
+            player.effects.remove(StatusAffects.JojoNightWatch);
             outputText("You tell Jojo that you no longer need him to watch the camp at night.  He nods, then speaks.  \"<i>Alright.  Please let me know if you require my help again.</i>\"");
         }
         else {
-            player.createStatusAffect(StatusAffects.JojoNightWatch, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.JojoNightWatch, 0, 0, 0, 0);
             outputText("You ask the monk if he could guard the camp for you at night.  He smiles politely.  \"<i>Certainly, [name].</i>\"");
         }
         doNext(jojoCamp);
@@ -1040,8 +1040,8 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
     public jojoAtCampRape(): void {
         jojoSprite();
-        player.removeStatusAffect(StatusAffects.JojoNightWatch);
-        player.removeStatusAffect(StatusAffects.PureCampJojo);
+        player.effects.remove(StatusAffects.JojoNightWatch);
+        player.effects.remove(StatusAffects.PureCampJojo);
         clearOutput();
         outputText("You ask Jojo if he'd like to go on a hunt through the woods to clear out some of the corrupted creatures, and the mouse readily agrees.  He asks if you've been getting a bit stir-crazy from having your camp in one place as the two of you walk into the woods...");
         menu();
@@ -1076,9 +1076,9 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         jojoSprite();
         player.slimeFeed();
         // Track Jojo rapeage
-        if (player.findStatusAffect(StatusAffects.EverRapedJojo) < 0)
-            player.createStatusAffect(StatusAffects.EverRapedJojo, 1, 0, 0, 0);
-        else player.addStatusValue(StatusAffects.EverRapedJojo, 1, 1);
+        if (player.effects.findByType(StatusAffects.EverRapedJojo) < 0)
+            player.effects.create(StatusAffects.EverRapedJojo, 1, 0, 0, 0);
+        else player.effects.addValue(StatusAffects.EverRapedJojo, 1, 1);
         switch (monk) {
             case 1:
                 jojosFirstRape();
@@ -2252,14 +2252,14 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
         dynStats("str", .5, "tou", .5, "int", .5, "lib", -1, "lus", -5, "cor", (-1 - player.countCockSocks("alabaster")));
 
-        if (player.findStatusAffect(StatusAffects.JojoMeditationCount) < 0)
-            player.createStatusAffect(StatusAffects.JojoMeditationCount, 1, 0, 0, 0);
-        else player.addStatusValue(StatusAffects.JojoMeditationCount, 1, 1);
+        if (player.effects.findByType(StatusAffects.JojoMeditationCount) < 0)
+            player.effects.create(StatusAffects.JojoMeditationCount, 1, 0, 0, 0);
+        else player.effects.addValue(StatusAffects.JojoMeditationCount, 1, 1);
 
-        if (player.statusAffectv1(StatusAffects.JojoMeditationCount) >= 5) {
+        if (player.effects.getValue1Of(StatusAffects.JojoMeditationCount) >= 5) {
             outputText("\n\nJojo nods respectfully at you when the meditation session is over and smiles.  ");
             // Forest Jojo Eligible for Invite After Meditation but There's Trash in Camp -Z
-            if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && player.statusAffectv1(StatusAffects.JojoMeditationCount) % 5 == 0) {
+            if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && player.effects.getValue1Of(StatusAffects.JojoMeditationCount) % 5 == 0) {
                 // replaces 'Jojo nods respectfully at you [...] "It seems you have quite a talent for this. [...]"' invite paragraphs while Treefingers is getting slut all over your campsite
                 // gives Small Talisman if PC never had follower Jojo or used it and ran from the fight
                 if (player.keyItems.has("Jojo's Talisman") >= 0) { // [(if PC has Small Talisman)
@@ -2279,7 +2279,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             else
                 outputText("\"<i>It seems you have quite a talent for this.  We should meditate together more often.</i>\"", false);
         }
-        if (player.statusAffectv1(StatusAffects.JojoMeditationCount) % 5 == 0) {
+        if (player.effects.getValue1Of(StatusAffects.JojoMeditationCount) % 5 == 0) {
             outputText("\n\nYou ponder and get an idea - the mouse could stay at your camp.  There's safety in numbers, and it would be easier for the two of you to get together for meditation sessions.  Do you want Jojo's company at camp?", false);
             doYesNo(jojoScene.acceptJojoIntoYourCamp, camp.returnToCampUseTwoHours);
             return;
@@ -2294,13 +2294,13 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
     public acceptJojoIntoYourCamp(): void {
         jojoSprite();
-        if (player.findStatusAffect(StatusAffects.EverRapedJojo) >= 0 || flags[kFLAGS.JOJO_MOVE_IN_DISABLED] == 1) {
+        if (player.effects.findByType(StatusAffects.EverRapedJojo) >= 0 || flags[kFLAGS.JOJO_MOVE_IN_DISABLED] == 1) {
             outputText("You offer Jojo the chance to stay at your camp, but before you can finish your sentence he shakes his head 'no' and stalks off into the woods, remembering.");
         }
         else {
             clearOutput();
             outputText("You offer Jojo the chance to stay at your camp.  He cocks his head to the side and thinks, stroking his mousey whiskers.\n\n\"<i>Yes, it would be wise.   We would be safer together, and if you like I could keep watch at night to keep some of the creatures away.  I'll gather my things and be right there!</i>\"\n\nJojo scurries into the bushes, disappearing in a flash.  Knowing him, he'll be at camp before you!");
-            player.createStatusAffect(StatusAffects.PureCampJojo, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.PureCampJojo, 0, 0, 0, 0);
         }
         doNext(camp.returnToCampUseOneHour);
     }
@@ -2338,7 +2338,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             followerInteractions.catchRathazulNapping();
             return;
         }
-        if (player.findStatusAffect(StatusAffects.Infested) >= 0) { // Worms overrides everything else
+        if (player.effects.findByType(StatusAffects.Infested) >= 0) { // Worms overrides everything else
             outputText("As you approach the serene monk, you see his nose twitch.\n\n");
             outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body,</i>\" Jojo says flatly, \"<i>This is a most unfortunate development.  There is no reason to despair as there are always ways to fight the corruption.  However, great effort will be needed to combat this form of corruption and may have a lasting impact upon you.  If you are ready, we can purge your being of the rogue creatures of lust.</i>\"\n\n");
             jojoCampMenu();
@@ -2370,7 +2370,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         // Normal Follower Choices
         // [Appearance] [Talk] [Train] [Meditate] [Night Watch toggle]
         let jojoDefense: string = "N.Watch:";
-        if (player.findStatusAffect(StatusAffects.JojoNightWatch) >= 0) {
+        if (player.effects.findByType(StatusAffects.JojoNightWatch) >= 0) {
             outputText("(Jojo is currently watching for enemies at night.)\n\n");
             jojoDefense += "On";
         }
@@ -2381,7 +2381,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.UNLOCKED_JOJO_TRAINING] == 1) addButton(2, "Train", apparantlyJojoDOESlift);
         addButton(3, "Meditate", jojoFollowerMeditate);
         addButton(4, jojoDefense, jojoDefenseToggle);
-        if (player.findStatusAffect(StatusAffects.Infested) >= 0) addButton(5, "Purge", wormRemoval);
+        if (player.effects.findByType(StatusAffects.Infested) >= 0) addButton(5, "Purge", wormRemoval);
         addButton(8, "Rape", (player.cor > 10 && player.lust >= 33 && player.gender > 0 ? jojoAtCampRape : null));
         addButton(9, "Leave", camp.campFollowers);
     }
@@ -2409,7 +2409,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         addButton(2, "MonksFall", jojoTalkFallOfTheMonks);
         addButton(3, "Forest", jojoTalkForestConvo);
         if (flags[kFLAGS.TIMES_TALKED_WITH_JOJO] >= 4) addButton(4, "You", jojoTalkYourOrigin);
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) addButton(5, "Factory", jojoTalkFactory);
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) addButton(5, "Factory", jojoTalkFactory);
         if (flags[kFLAGS.SAND_WITCHES_COWED] == 1 || flags[kFLAGS.SAND_WITCHES_FRIENDLY] == 1 || flags[kFLAGS.SAND_MOTHER_DEFEATED] == 1) addButton(6, "SandCave", jojoTalkSandCave);
         if (flags[kFLAGS.UNLOCKED_JOJO_TRAINING] == 0 && flags[kFLAGS.TIMES_TALKED_WITH_JOJO] >= 4) addButton(7, "Training", apparantlyJojoDOESlift);
         addButton(9, "Back", jojoCamp);
@@ -2578,7 +2578,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     }
 
     // Dungeon Convo: Factory
-    // Requirements: Completed Demon Factory -- player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0
+    // Requirements: Completed Demon Factory -- player.effects.findByType(StatusAffects.DungeonShutDown) >= 0
     public jojoTalkFactory(): void {
         clearOutput();
         jojoSprite();
@@ -2586,7 +2586,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("You tell Jojo about your having successfully found and stopped the demonic factory.  You tell him how you found out the factory was there and how you defeated the demons inside. He seems impressed.\n\n");
 
-        if (player.findStatusAffect(StatusAffects.FactoryOverload) >= 0) {
+        if (player.effects.findByType(StatusAffects.FactoryOverload) >= 0) {
             outputText("His ears perk at the news as you continue, telling him that you destroyed the factory controls, which permanently shut down the factory - but released an enormous quantity of corrupted fluids into the environment.\n\n");
 
             outputText("Jojo cocks his head to the side as he considers his words carefully before speaking, “<i>I guess it seems like the right move.  Permanently disabling the factory would not only deal a heavy blow to the demons, but also give the rest of us time to reclaim the forest... but I don’t know.  If the release of fluids was as much as you say it was then there’s a chance that it’ll do more harm than good.  I’ve seen what corruption does to this world and that much corrupted fluid flooding out all at once could really hurt our cause. I’m not saying it was the wrong thing to do, or lessening your accomplishment, but you have to be careful.  The demons aren’t just powerful, they’re deceptive.</i>”\n\n");
@@ -2813,10 +2813,10 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             enlightenedBlurbs.push("You can hear Jojo’s feet move through the campsite as he heads toward his rock, seeking rest after your training session.");
 
             // Lookit all these different ways followers are tracked! fml.
-            if (player.findStatusAffect(StatusAffects.CampMarble) >= 0) enlightenedBlurbs.push("You can hear Marble humming a song to herself you can’t place.");
+            if (player.effects.findByType(StatusAffects.CampMarble) >= 0) enlightenedBlurbs.push("You can hear Marble humming a song to herself you can’t place.");
             if (flags[kFLAGS.AMILY_FOLLOWER] > 0) enlightenedBlurbs.push("You can hear Amily changing the bedding to her nest.");
             if (emberScene.followerEmber()) enlightenedBlurbs.push("You can hear Ember cleaning" + emberScene.emberMF("his", "her") + "scales.");
-            if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0) enlightenedBlurbs.push("You can hear Rathazul experimenting with surprisingly nimble fingers.");
+            if (player.effects.findByType(StatusAffects.CampRathazul) >= 0) enlightenedBlurbs.push("You can hear Rathazul experimenting with surprisingly nimble fingers.");
             if (sophieFollower()) enlightenedBlurbs.push("You can hear Sophie breathing as she sleeps.");
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] > 0) enlightenedBlurbs.push("You can hear Izma flipping through the pages of a book."); // TODO: (if Izmael gets put in) you can hear Izmael doing push ups to stay fit.
             if (helScene.followerHel()) enlightenedBlurbs.push("You can hear Helia throwing her fists at nothing.");
@@ -2841,7 +2841,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         // Infestation purged. Hit Points reduced to 10% of MAX. Corruption -20.
         if (player.HP > int(player.maxHP() * .5)) player.HP = int(player.maxHP() * .5);
         player.sens = 11;
-        player.removeStatusAffect(StatusAffects.Infested);
+        player.effects.remove(StatusAffects.Infested);
         dynStats("sen", -1, "lus", -99, "cor", -15);
         doNext(camp.returnToCampUseOneHour);
     }

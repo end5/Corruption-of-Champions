@@ -27,7 +27,7 @@ export class BeeHoney extends Consumable {
     }
 
     public canUse(): boolean {
-        if (value == SPECIAL_HONEY_VALUE && game.player.statusAffectv1(StatusAffects.Exgartuan) == 1) { // Exgartuan doesn't like the special honey
+        if (value == SPECIAL_HONEY_VALUE && game.player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) { // Exgartuan doesn't like the special honey
             outputText("You uncork the bottle only to hear Exgartuan suddenly speak up.  <i>“Hey kid, this beautiful cock here doesn’t need any of that special bee shit.  Cork that bottle up right now or I’m going to make it so that you can’t drink anything but me.”</i>  You give an exasperated sigh and put the cork back in the bottle.");
             return false;
         }

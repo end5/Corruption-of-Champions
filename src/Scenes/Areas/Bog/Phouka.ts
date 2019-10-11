@@ -6,7 +6,7 @@ export class Phouka extends Monster {
     protected phoukaFightAttack(): void {
         let damage: number;
         // Only the bunny, goat and horse forms make physical attacks
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 1) {
             outputText(capitalA + short + " completely misses you due to his blindness!\n", false);
         }
         else if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_BUNNY) {
@@ -71,7 +71,7 @@ export class Phouka extends Monster {
 
     protected phoukaFightSilence(): void { // Reuses the statusAffect Web-Silence from the spiders
         outputText(this.capitalA + this.short + " scoops up some muck from the ground and rams it down over his cock.  After a few strokes he forms the lump of mud and precum into a ball and whips it at your face.  ");
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2)
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2)
             outputText("Since he's blind the shot goes horribly wide, missing you entirely.");
         else if (combatMiss())
             outputText("You lean back and let the muck ball whip pass to one side, avoiding the attack.");
@@ -83,14 +83,14 @@ export class Phouka extends Monster {
             outputText("As the ball leaves his fingers you throw yourself back, your spine bending in an inhuman way.  You feel the ball sail past, inches above your chest.");
         else {
             outputText("The ball smacks into your face like a wet snowball.  It covers most of your nose and mouth with a layer of sticky, salty mud which makes it hard to breathe.  You'll be unable to use your magic while you're struggling for breath!\n");
-            player.createStatusAffect(StatusAffects.WebSilence, 0, 0, 0, 0); // Probably safe to reuse the same status affect as for the spider morphs
+            player.effects.create(StatusAffects.WebSilence, 0, 0, 0, 0); // Probably safe to reuse the same status affect as for the spider morphs
         }
         combatRoundOver();
     }
 
     protected performCombatAction(): void {
-        const blinded: boolean = findStatusAffect(StatusAffects.Blind) >= 0;
-        if ((!blinded) && player.findStatusAffect(StatusAffects.WebSilence) < 0 && rand(4) == 0) {
+        const blinded: boolean = this.effects.findByType(StatusAffects.Blind) >= 0;
+        if ((!blinded) && player.effects.findByType(StatusAffects.WebSilence) < 0 && rand(4) == 0) {
             phoukaTransformToPhouka(); // Change to faerie form so that it can lob the ball of muck at you
             phoukaFightSilence();
         }

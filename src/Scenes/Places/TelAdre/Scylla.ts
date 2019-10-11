@@ -31,11 +31,11 @@ export class Scylla extends TelAdreAbstractContent {
         if (game.time.totalTime == scyllaLastActionSelectionTime) return; // Only choose action once per visit to the bar
         scyllaLastActionSelectionTime = game.time.totalTime;
         scyllaAction = SCYLLA_NOT_PRESENT;
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0 && (!player.hasCock() || player.longestCockLength() < 12) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] == 0) {
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0 && (!player.hasCock() || player.longestCockLength() < 12) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] == 0) {
             scyllaAction = SCYLLA_ACTION_FIRST_TALK;
             return;
         }
-        if (player.cocks.length > 0 && player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) {
+        if (player.cocks.length > 0 && player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) {
             if (player.longestCockLength() >= 12) {
                 if (flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] == 0) {
                     scyllaAction = SCYLLA_ACTION_FIRST_TALK;
@@ -112,7 +112,7 @@ export class Scylla extends TelAdreAbstractContent {
         }
 
         // PC DID BLOW FACTORY UP
-        if (player.findStatusAffect(StatusAffects.FactoryOverload) >= 0) outputText("\"<i>I was once a holy woman, sworn to relieve pain from any who suffer, but one night I experienced a dream. It told me that I must go on a pilgrimage to the distant mountains and save one who suffered greatly at an unjust hand. I travelled by day and fasted by night, but when I reached the mountains, I found that my vision had been a trick. Demons seized me and taunted me by saying that I was the one who suffered, for I had never known the touch of a lover. They dragged me to their terrible factory, where I beheld their sinful works and bound me to one of their devices. They promised that I would love my new life and to be sure that my 'suffering' lasted not a moment longer, they hooked a vial of alabaster liquid to my mouth. It was some blasphemous concentration of semen, sweat, and blood and the very smell of it nearly suffocated my mind. But just as the first drop touched my tongue, there was a terrible explosion, and the factory's machines detonated, as if struck down by the hands of the gods. I was saved and helped as many as I could from that den of inequity,</i>\" finishes Scylla.\n\n", false);
+        if (player.effects.findByType(StatusAffects.FactoryOverload) >= 0) outputText("\"<i>I was once a holy woman, sworn to relieve pain from any who suffer, but one night I experienced a dream. It told me that I must go on a pilgrimage to the distant mountains and save one who suffered greatly at an unjust hand. I travelled by day and fasted by night, but when I reached the mountains, I found that my vision had been a trick. Demons seized me and taunted me by saying that I was the one who suffered, for I had never known the touch of a lover. They dragged me to their terrible factory, where I beheld their sinful works and bound me to one of their devices. They promised that I would love my new life and to be sure that my 'suffering' lasted not a moment longer, they hooked a vial of alabaster liquid to my mouth. It was some blasphemous concentration of semen, sweat, and blood and the very smell of it nearly suffocated my mind. But just as the first drop touched my tongue, there was a terrible explosion, and the factory's machines detonated, as if struck down by the hands of the gods. I was saved and helped as many as I could from that den of inequity,</i>\" finishes Scylla.\n\n", false);
         // PC DIDNT
         else outputText("\"<i>I was once a holy woman, sworn to relieve pain from any who suffer, but one night, I experienced a dream. It told me that I must go on a pilgrimage to the distant mountains and save one who suffered greatly at an unjust hand. I travelled by day and fasted by night, but when I reached the mountains, I found that my vision had been a trick. Demons seized me and taunted me by saying that I was the one who suffered, for I had never known the touch of a lover. They dragged me to their terrible factory, where I beheld their sinful works and bound me to one of their devices. They promised that I would love my new life and to be sure that my 'suffering' lasted not a moment longer, they hooked a vial of alabaster liquid to my mouth. It was some blasphemous concentration of semen, sweat, and blood and the very smell of it nearly suffocated my mind. Laughing, they left me to my fate, but just as the first drop touched my tongue, the machines ground to a halt, frozen in their wicked works. One of my fellow captives unhooked me from the device and we fled that den of inequity,</i>\" finishes Scylla.\n\n", false);
 
@@ -601,7 +601,7 @@ export class Scylla extends TelAdreAbstractContent {
     // [Take Advantage]	(First time and Repeat)
     private scyllaPtVTakeAdvantage(): void {
         scyllaSprite();
-        if (player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0) {
+        if (player.effects.findByType(StatusAffects.Exgartuan) >= 0 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0) {
             flags[kFLAGS.TIMES_MET_SCYLLA_IN_ADDICTION_GROUP]++;
             flags[kFLAGS.TIMES_SCYLLA_ADDICT_GROUP_EXPLOITED]++;
             scyllaVTakeAdvantageWithExgartuan();
@@ -716,7 +716,7 @@ export class Scylla extends TelAdreAbstractContent {
         outputText("  You try to gather your strength and wince in pain as you rise to your feet. The girls are strewn around the room, thoroughly sated. The goblin absently licks at the cum puddle she's lying in, her ass still wiggling and raised in the air, her sphincter clenching and opening like a babbling mouth. The nun's head barely pokes over her massive tits and belly, her clothes torn to shreds by her distended body, black stocking-clad legs barely poking out under her cum-inflated girth. Pastie is trapped in a sticky shell of your sperm, rubbing her belly and head with equal satisfaction and regret, black-out drunk on booze, jizz, and lust. \"<i>Good fuckin' job,</i>\" Exgartuan compliments, his voice slowly fading with satisfaction. \"<i>There's hope for you yet.</i>\" You leave before anybody can suggest you chip in for the cleaning bill.", false);
         dynStats("cor", 1);
         player.cumMultiplier += 2;
-        player.changeStatusValue(StatusAffects.Exgartuan, 2, 24);
+        player.effects.setValue(StatusAffects.Exgartuan, 2, 24);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -744,7 +744,7 @@ export class Scylla extends TelAdreAbstractContent {
         outputText("What addiction would you like to discuss?", false);
         // Set choices
         let milk: () => void = null;
-        if ((player.perks.findByType(PerkLib.MarblesMilk) >= 0 || player.statusAffectv3(StatusAffects.Marble) > 0) && player.perks.findByType(PerkLib.MarbleResistant) < 0)
+        if ((player.perks.findByType(PerkLib.MarblesMilk) >= 0 || player.effects.getValue3Of(StatusAffects.Marble) > 0) && player.perks.findByType(PerkLib.MarbleResistant) < 0)
             milk = scyllaPtVMilk;
         let cum: () => void = null;
         if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 50 || player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) cum = scyllaPtVCum;

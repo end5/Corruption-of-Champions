@@ -63,7 +63,7 @@ export class IncubusMechanic extends Monster {
     }
 
     private cockTripAttack(): void {
-        if (findStatusAffect(StatusAffects.Blind) >= 0) { // Blind dodge change
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) { // Blind dodge change
             outputText(capitalA + short + " suddenly grows it's dick to obscene lengths and tries to trip you with it.  Thankfully he's so blind he wasn't aiming anywhere near you!");
             combatRoundOver();
             return;
@@ -93,7 +93,7 @@ export class IncubusMechanic extends Monster {
     }
 
     private spoogeAttack(): void {
-        if (findStatusAffect(StatusAffects.Blind) >= 0) { // Blind dodge change
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) { // Blind dodge change
             outputText(capitalA + short + " pumps and thrusts his hips lewdly before cumming with intense force in your direction!  Thankfully his aim was off due to the blindness currently affect him.");
             combatRoundOver();
             return;
@@ -104,18 +104,18 @@ export class IncubusMechanic extends Monster {
             case 0: // Face
                 outputText("face.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your mouth and nose!  You can feel it moving around inside you, doing its best to prepare you for its master.");
                 dynStats("lus", 3);
-                if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
-                    player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);
-                else player.addStatusValue(StatusAffects.DemonSeed, 1, 7);
+                if (player.effects.findByType(StatusAffects.DemonSeed) < 0)
+                    player.effects.create(StatusAffects.DemonSeed, 5, 0, 0, 0);
+                else player.effects.addValue(StatusAffects.DemonSeed, 1, 7);
                 player.slimeFeed();
                 break;
             case 1: // Chest
                 if (player.hasFuckableNipples()) {
                     outputText(allBreastsDescript(player) + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.");
                     dynStats("lus", 3);
-                    if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
-                        player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);
-                    else player.addStatusValue(StatusAffects.DemonSeed, 1, 8);
+                    if (player.effects.findByType(StatusAffects.DemonSeed) < 0)
+                        player.effects.create(StatusAffects.DemonSeed, 5, 0, 0, 0);
+                    else player.effects.addValue(StatusAffects.DemonSeed, 1, 8);
                     player.slimeFeed();
                 }
                 else outputText(allBreastsDescript(player) + ".  Thankfully it doesn't seem to have much effect.");
@@ -124,9 +124,9 @@ export class IncubusMechanic extends Monster {
                 if (player.vaginas.length > 0) {
                     outputText("crotch.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way past your " + player.armorName + " and into your " + vaginaDescript(player, 0) + ".  You can feel it moving around inside you, doing its best to prepare you for its master.");
                     dynStats("lus", 3);
-                    if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
-                        player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);
-                    else player.addStatusValue(StatusAffects.DemonSeed, 1, 8);
+                    if (player.effects.findByType(StatusAffects.DemonSeed) < 0)
+                        player.effects.create(StatusAffects.DemonSeed, 5, 0, 0, 0);
+                    else player.effects.addValue(StatusAffects.DemonSeed, 1, 8);
                     player.slimeFeed();
                 }
                 else outputText("crotch.  Thankfully, it doesn't seem to have much effect.");

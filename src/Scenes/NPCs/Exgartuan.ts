@@ -59,22 +59,22 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
     public timeChange(): boolean {
         let needNext: boolean = false;
         checkedExgartuan = 0; // Make sure we test just once in timeChangeLarge
-        if (player.findStatusAffect(StatusAffects.Exgartuan) >= 0) { // Update Exgartuan stuff
-            trace("EXGARTUAN V1: " + player.statusAffectv1(StatusAffects.Exgartuan) + " V2: " + player.statusAffectv2(StatusAffects.Exgartuan));
-            if (player.statusAffectv1(StatusAffects.Exgartuan) == 1 && (!player.hasCock() || player.cockArea(0) < 100)) { // If too small dick, remove him
+        if (player.effects.findByType(StatusAffects.Exgartuan) >= 0) { // Update Exgartuan stuff
+            trace("EXGARTUAN V1: " + player.effects.getValue1Of(StatusAffects.Exgartuan) + " V2: " + player.effects.getValue2Of(StatusAffects.Exgartuan));
+            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (!player.hasCock() || player.cockArea(0) < 100)) { // If too small dick, remove him
                 outputText("\n<b>You suddenly feel the urge to urinate, and stop over by some bushes.  It takes wayyyy longer than normal, and once you've finished, you realize you're alone with yourself for the first time in a long time.  Perhaps you got too small for Exgartuan to handle?</b>\n");
-                player.removeStatusAffect(StatusAffects.Exgartuan);
+                player.effects.remove(StatusAffects.Exgartuan);
                 needNext = true;
             }
-            else if (player.statusAffectv1(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() < 12) { // Tit removal
+            else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() < 12) { // Tit removal
                 outputText("\n<b>Black milk dribbles from your " + nippleDescription(player, 0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>");
-                player.removeStatusAffect(StatusAffects.Exgartuan);
+                player.effects.remove(StatusAffects.Exgartuan);
                 needNext = true;
             }
             else {
-                if (player.statusAffectv2(StatusAffects.Exgartuan) > 0) { // if sleeping, decrement sleep timer.
-                    player.addStatusValue(StatusAffects.Exgartuan, 2, -1);
-                    if (player.statusAffectv2(StatusAffects.Exgartuan) == 0) { // The demon awakens!
+                if (player.effects.getValue2Of(StatusAffects.Exgartuan) > 0) { // if sleeping, decrement sleep timer.
+                    player.effects.addValue(StatusAffects.Exgartuan, 2, -1);
+                    if (player.effects.getValue2Of(StatusAffects.Exgartuan) == 0) { // The demon awakens!
                         outputText("\n<b>");
                         exgartuanBored();
                         outputText("</b>\n");
@@ -82,8 +82,8 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                     }
                 }
                 else { // If not sleeping, stuff happens!
-                    if (player.statusAffectv1(StatusAffects.Exgartuan) == 1) { // Dude stuff
-                        if (player.findStatusAffect(StatusAffects.Infested) >= 0) {
+                    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) { // Dude stuff
+                        if (player.effects.findByType(StatusAffects.Infested) >= 0) {
                             outputText("\n<b>");
                             exgartuanWormCure();
                             outputText("</b>\n");
@@ -121,7 +121,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                         }
                         else dynStats("lus", 1 + rand(2));
                     }
-                    if (player.statusAffectv1(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() >= 12) { // Chick stuff
+                    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() >= 12) { // Chick stuff
                         if (game.time.hours % 9 == 0) { // Only once every 9 hours or so.
                             if (rand(3) == 0) { // lactation messing with!
                                 outputText("\n<b>");
@@ -152,14 +152,14 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
     }
 
     public timeChangeLarge(): boolean {
-        if (checkedExgartuan++ == 0 && player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0 && game.time.hours == 4) {
+        if (checkedExgartuan++ == 0 && player.effects.findByType(StatusAffects.Exgartuan) >= 0 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0 && game.time.hours == 4) {
             // Exgartuan must be present, must be awake and it must be night time
-            if (player.hasCock() && player.statusAffectv1(StatusAffects.Exgartuan) == 1 && rand(3) == 0 && player.hoursSinceCum >= 24) { // Exgartuan night time surprise!
+            if (player.hasCock() && player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && rand(3) == 0 && player.hoursSinceCum >= 24) { // Exgartuan night time surprise!
                 outputText("\n");
                 exgartuanSleepSurprise();
                 return true;
             }
-            if (player.statusAffectv1(StatusAffects.Exgartuan) == 2 && rand(3) == 0) { // Boobgartuan night time surprise!
+            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && rand(3) == 0) { // Boobgartuan night time surprise!
                 outputText("\n");
                 boobGartuanSURPRISE();
                 return true;
@@ -189,7 +189,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             player.XP += 200;
             changed = true;
         }
-        if (player.findStatusAffect(StatusAffects.Exgartuan) < 0 && !changed && rand(2) == 0) {
+        if (player.effects.findByType(StatusAffects.Exgartuan) < 0 && !changed && rand(2) == 0) {
             let choices: number = 0;
             if (player.cockTotal() > 0) {
                 if (player.cockArea(0) >= 100) choices++;
@@ -270,7 +270,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             player.cocks[0].cockLength += 1;
             player.cocks[0].cockThickness += .5;
         }
-        player.createStatusAffect(StatusAffects.Exgartuan, 1, 0, 0, 0);
+        player.effects.create(StatusAffects.Exgartuan, 1, 0, 0, 0);
     }
     private exgartuanInfestTits(): void {
         outputText("\n\nYour " + allBreastsDescript(player) + " jiggle as they grow MUCH larger, turning into obscene mounds that shake with every motion of your body.  All your " + nippleDescription(player, 0) + "s puff up with them, gaining volume to match their new, larger homes.  They feel hot and ache to be touched.", false);
@@ -285,13 +285,13 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nThe ground hits your " + buttDescription(player) + " hard as you fall backwards, too surprised to maintain your footing.  Are your breasts really talking to you?", false);
         outputText("\n\n\"<i>Yes I am,</i>\" mutters Exgartuan, spurting a trickle of milk from your " + nippleDescription(player, 0) + "s for emphasis, \"<i>and you had better take me back to that lovely camp I can see in your memories and give me a nice long massage.</i>\"", false);
         outputText("\n\nWell now... this was certainly unexpected.  Perhaps there's a way to be rid of this thing?", false);
-        player.createStatusAffect(StatusAffects.Exgartuan, 2, 0, 0, 0);
+        player.effects.create(StatusAffects.Exgartuan, 2, 0, 0, 0);
     }
 
     // [Masturbate while he's awake in dick]
     public exgartuanMasturbation(): void {
         outputText("", true);
-        if (player.statusAffectv1(StatusAffects.Exgartuan) == 1) {
+        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) {
             spriteSelect(15);
             // Early prep
             if (player.cor < 15) outputText("You sheepishly find some rocks to hide in, where you remove your clothes.  Exgartuan loudly grumbles, \"<i>Quit fucking around and hiding.  I WANT someone to walk in on this!</i>\"\n\nDisgusting...\n\n", false);
@@ -352,7 +352,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             dynStats("lib", .25, "cor", 1);
         }
         // TITURBATION
-        else if (player.statusAffectv1(StatusAffects.Exgartuan) == 2) {
+        else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2) {
             if (player.cor < 50) {
                 outputText("You shrug off your top, preparing to give into the demon's demands.  'At least I'll get to enjoy it too,' you muse, as you finish stripping the offending material from your torso.  You look down over your " + allBreastsDescript(player) + ", and they don't look particularly evil.  Yet you know that within those wonderful mounds of breast-flesh lurks a great force of corruption, and worse yet, you know you're giving it exactly what it wants.\n\n", false);
             }
@@ -384,14 +384,14 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             if (player.biggestLactation() > 1) outputText("As you calm down you realize your " + nippleDescription(player, 0) + "s are dribbling streams of milk, and judging from the pools of whiteness in the soil, you turned into quite the little milk-sprinkler.  ", false);
             outputText("You blush and redress, noting that Exgartuan seems to be silent and sleeping...  maybe you'll get a little peace now?", false);
         }
-        player.changeStatusValue(StatusAffects.Exgartuan, 2, (12 + rand(7)));
+        player.effects.setValue(StatusAffects.Exgartuan, 2, (12 + rand(7)));
         doNext(camp.returnToCampUseOneHour);
     }
 
     // (NOT PLAYED WITH RECENTLY: +LUST MESSAGE)
     public exgartuanBored(): void {
         let select: number = 0;
-        if (player.statusAffectv1(StatusAffects.Exgartuan) == 1 && player.cockArea(0) >= 100) {
+        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.cockArea(0) >= 100) {
             select = rand(9);
             if (select == 0) {
                 outputText("A muffled voice pipes up, \"<i>Hey!  You forgetting about me?  Fucking champions think they're so good, but you're ignoring your best body part!  Can't you feel all that cum boiling ", false);
@@ -428,7 +428,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 outputText("  Find me somewhere to deliver it or I'll be shoving it down your throat, champion!</i>\"", false);
             }
         }
-        else if (player.statusAffectv1(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() >= 12) {
+        else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() >= 12) {
             select = rand(8);
             switch (select) {
                 case 0:
@@ -464,12 +464,12 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         if (monster.short == "tentacle beast" || monster.short == "worms" || monster.short == "demons") return false;
         // VARS
         let select: number = 0;
-        if (player.statusAffectv1(StatusAffects.Exgartuan) == 1) {
+        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) {
             // [USE MAGIC TO MAKE GOBLINS COOCHIES STRETCHIER!]
             if (monster.short == "goblin" && rand(3) == 0) {
                 outputText("A strangely harmonic voice chants gibberish, rising in volume and pitch.  It's coming from your groin!  The goblin girl giggles and squeals, \"<i>Stop that!  It's using magic on my coo-chiieeeeeee!!!</i>\"", false);
                 // (+20 or 10% of cocksize, whichever is greater to vag capacity
-                monster.addStatusValue(StatusAffects.BonusVCapacity, 1, player.cockArea(0) * .1);
+                monster.effects.addValue(StatusAffects.BonusVCapacity, 1, player.cockArea(0) * .1);
                 monster.lust += 10;
                 return true;
             }
@@ -565,7 +565,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             }
         }
         // Exgartuan in tittays!
-        else if (player.statusAffectv1(StatusAffects.Exgartuan) == 2) {
+        else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2) {
             if (monster.totalCocks() > 0) {
                 select = rand(8);
                 switch (select) {
@@ -719,7 +719,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         else outputText("groin", false);
         outputText(" begins to grow warm... no, hot.  You feel it moving and squirming with discomfort as the worms inside you wriggle about, agitated by something.  The heat intensifies and you watch in a mixture of shock and horror as they start crawling out your urethra, sliding down to the ground on a river of thick seminal fluid.  You double over in pain as something stretches you wide, and you feel the main worm pushing itself through your " + cockDescript(game.player, 0) + ", desperate to escape.  It crests the tip, wiggling and stuck for a moment as it struggles to pull free.  At last it pops out and drops to the ground, crawling away.  Exgartuan roars, \"<i>AND STAY OUT!</i>\"", false);
         outputText("\n\nYou guess there was only enough room for one or the other...", false);
-        player.removeStatusAffect(StatusAffects.Infested);
+        player.effects.remove(StatusAffects.Infested);
     }
 
     public exgartuanLactationAdjustment(): void {
@@ -727,7 +727,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         // (Lactating Already)
         if (player.biggestLactation() > 1) {
             // (Increase)
-            if (rand(2) == 0 || player.findStatusAffect(StatusAffects.Feeder) >= 0) {
+            if (rand(2) == 0 || player.effects.findByType(StatusAffects.Feeder) >= 0) {
                 outputText("Your nipples grow warm and sensitive, then start dripping milk into your " + player.armorName + ".  Exgartuan appears to be having some fun with you again...", false);
                 player.boostLactation(player.breastRows.length);
             }
@@ -906,7 +906,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             outputText("  Liquid-hot pressure slides over the underside of your " + cockDescript(game.player, 0) + ", licking wetly at the pulsating, need-filled demon-prick.  Your rogue tongue's attentions have the desired effect, and the cries of your pleasure are muffled by your own thick flesh and its rapidly distending urethra.\n\n", false);
 
             outputText("If someone were watching", false);
-            if (monk >= 5 && player.findStatusAffect(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) outputText(", and judging by Jojo's high pitched whines, he certainly is,", false);
+            if (monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) outputText(", and judging by Jojo's high pitched whines, he certainly is,", false);
             outputText(" they'd see dick-flesh bulging with a heavy load as it's pumped into your lips.  The fully-inflated cum-tube distends your mouth, stretching your jaw painfully, and dumps its creamy cargo into its willing receptacle.  Your belly burbles as it adjusts to the ", false);
             temp = player.cumQ();
             if (temp < 50) outputText("surprisingly light", false);
@@ -929,7 +929,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             }
             outputText("\n\n", false);
 
-            if (monk >= 5 && player.findStatusAffect(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
+            if (monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
                 outputText("The splatter of mouse-cum erupting in the wood reaches your ears, bringing a wistful smile to your face.  That slutty mouse is such a peeping tom!  ", false);
             }
             outputText("Your eyes slowly roll back down while Exgartuan deflates, leaving a trail of pleased, white submission ", false);
@@ -946,7 +946,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             flags[kFLAGS.TIMES_AUTOFELLATIOED_EXGARTUAN]++;
             player.slimeFeed();
         }
-        player.changeStatusValue(StatusAffects.Exgartuan, 2, 25);
+        player.effects.setValue(StatusAffects.Exgartuan, 2, 25);
         doNext(playerMenu);
     }
     private exgartuanBulgeTortureII(): void {
@@ -1068,7 +1068,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         else outputText("  You glance around at your tent, searching for anything that may clue you in on what transpired last night.  After a few moments, however, you decide it better to just move on with your day.", false);
         outputText("  You pay one more glance to Exgartuan, the " + cockDescript(game.player, 0) + " comfortably resting away in your outfit.\n\n", false);
         outputText("Damn demons.", false);
-        player.changeStatusValue(StatusAffects.Exgartuan, 2, 25);
+        player.effects.setValue(StatusAffects.Exgartuan, 2, 25);
         doNext(playerMenu);
     }
 
@@ -1313,7 +1313,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         // [corruption +2, lust +5]
         dynStats("lus", 5, "cor", 2);
         flags[kFLAGS.BOOBGARTUAN_SURPRISE_COUNT]++;
-        player.changeStatusValue(StatusAffects.Exgartuan, 2, 25);
+        player.effects.setValue(StatusAffects.Exgartuan, 2, 25);
         doNext(playerMenu);
     }
 
@@ -1412,7 +1412,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         outputText(" load working its way up your " + cockDescript(game.player, 0) + "... and stop.  You sit up in an involuntary attempt to release the pressure, only to be met by your coiled-up shaft bending to greet your face, its urethra spread wide open...\n\n", false);
 
         outputText("Having coated your face and upper torso in a demonic jism assault, Exgartuan returns to your serpent's slit.  His grasp on your tail lifts, leaving you to undo the tangled mess he left behind.  But you're too busy laying back decompressing.  No thoughts, no musings, no questions, no doubts... nothing is going on in your cum-soaked head.  What is there to say?", false);
-        player.changeStatusValue(StatusAffects.Exgartuan, 2, (16 + rand(7)));
+        player.effects.setValue(StatusAffects.Exgartuan, 2, (16 + rand(7)));
         player.orgasm();
         dynStats("lib", .25);
         doNext(camp.returnToCampUseOneHour);

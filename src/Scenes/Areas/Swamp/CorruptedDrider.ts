@@ -10,7 +10,7 @@ export class CorruptedDrider extends AbstractSpiderMorph {
         let temp: number;
         outputText("The corrupted drider closes in on your web-bound form, cooing happily at you while you struggle with the sticky fibers.\n\n", false);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("She's too blind to get anywhere near you.\n", false);
         }
         // Dodge
@@ -50,7 +50,7 @@ export class CorruptedDrider extends AbstractSpiderMorph {
             else outputText("Just look at my glossy, dripping lips.  Imagine how great it would feel to have them locked against you.  Why resist?</i>\"\n", false);
         }
 
-        else if (player.findStatusAffect(StatusAffects.DriderKiss) < 0) {
+        else if (player.effects.findByType(StatusAffects.DriderKiss) < 0) {
             // (HIT? + 10 lust)
             dynStats("lus", 10);
             outputText("Before you can move, she's right on top of you, leaning ", false);
@@ -58,12 +58,12 @@ export class CorruptedDrider extends AbstractSpiderMorph {
             else outputText("over", false);
             outputText(" to plant a sloppy, wet kiss upon your lips.  Her glossy lip-venom oozes everywhere, dribbling down your collective chins and sliding into your mouth.  You shudder, trying to resist, but your tongue betrays you.  It slides between her moist, puffy entrance, lapping at her venom and making love to her tongue.", false);
             if (player.lust <= 99) outputText("  Somehow, you work up the willpower to back away, but your body slowly begins to burn hotter and harder, afflicted with a slowly-building lust.", false);
-            player.createStatusAffect(StatusAffects.DriderKiss, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.DriderKiss, 0, 0, 0, 0);
         }
         // Get hit 2nd time)
         else {
-            player.addStatusValue(StatusAffects.DriderKiss, 1, 1);
-            if (player.statusAffectv1(StatusAffects.DriderKiss) == 1) {
+            player.effects.addValue(StatusAffects.DriderKiss, 1, 1);
+            if (player.effects.getValue1Of(StatusAffects.DriderKiss) == 1) {
                 // (HIT? + 15 lust)
                 dynStats("lus", 15);
                 outputText("Again, the drider ties your mouth up in her syrupy lip-lock, seeming to bind your mouth as effectively as her webs bind your body.  Her sweet venom bubbles and froths at the corners of the oral embrace, dripping over her many-breasted bosom and your " + chestDesc(player) + ".", false);
@@ -107,15 +107,15 @@ export class CorruptedDrider extends AbstractSpiderMorph {
         game.spriteSelect(77);
         if (lust > 70 && rand(4) == 0) driderMasturbate();
         // 1/4 chance of silence if pc knows spells
-        else if (game.hasSpells() && player.findStatusAffect(StatusAffects.WebSilence) < 0 && rand(4) == 0) {
+        else if (game.hasSpells() && player.effects.findByType(StatusAffects.WebSilence) < 0 && rand(4) == 0) {
             spiderSilence();
         }
         // 1/4 chance of disarm
-        else if (player.findStatusAffect(StatusAffects.Disarmed) < 0 && player.weaponName != "fists" && rand(4) == 0) {
+        else if (player.effects.findByType(StatusAffects.Disarmed) < 0 && player.weaponName != "fists" && rand(4) == 0) {
             spiderDisarm();
         }
         // Always web unless already webbed
-        else if (player.spe >= 2 && (player.findStatusAffect(StatusAffects.Web) < 0 || rand(2) == 0)) {
+        else if (player.spe >= 2 && (player.effects.findByType(StatusAffects.Web) < 0 || rand(2) == 0)) {
             spiderMorphWebAttack();
         }
         // Kiss!
@@ -148,11 +148,11 @@ export class CorruptedDrider extends AbstractSpiderMorph {
         // this.plural = false;
         this.createCock(9, 2, CockTypesEnum.DEMON);
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
-        this.createStatusAffect(StatusAffects.BonusVCapacity, 70, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusVCapacity, 70, 0, 0, 0);
         createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 70, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 70, 0, 0, 0);
         this.tallness = 10 * 12;
         this.hipRating = HIP_RATING_CURVY + 2;
         this.buttRating = BUTT_RATING_LARGE + 1;

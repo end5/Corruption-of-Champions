@@ -11,11 +11,11 @@ export class Character extends Creature {
     // It's still shitty, but it would possibly be an improvement.
     public get femininity(): number {
         let fem: number = _femininity;
-        const statIndex: number = this.findStatusAffect(StatusAffects.UmasMassage);
+        const statIndex: number = this.effects.findByType(StatusAffects.UmasMassage);
 
         if (statIndex >= 0) {
-            if (this.statusAffect(statIndex).value1 == UmasShop.MASSAGE_MODELLING_BONUS) {
-                fem += this.statusAffect(statIndex).value2;
+            if (this.effects[statIndex].value1 == UmasShop.MASSAGE_MODELLING_BONUS) {
+                fem += this.effects[statIndex].value2;
             }
         }
 
@@ -100,9 +100,9 @@ export class Character extends Creature {
     // If arg == 1 then override any contraceptives and guarantee fertilization
     public knockUp(type: number = 0, incubation: number = 0, beat: number = 100, arg: number = 0): void {
         // Contraceptives cancel!
-        if (findStatusAffect(StatusAffects.Contraceptives) >= 0 && arg < 1)
+        if (this.effects.findByType(StatusAffects.Contraceptives) >= 0 && arg < 1)
             return;
-        // 			if (findStatusAffect(StatusAffects.GooStuffed) >= 0) return; //No longer needed thanks to PREGNANCY_GOO_STUFFED being used as a blocking value
+        // 			if (this.effects.findByType(StatusAffects.GooStuffed) >= 0) return; //No longer needed thanks to PREGNANCY_GOO_STUFFED being used as a blocking value
         let bonus: number = 0;
         // If arg = 1 (always pregnant), bonus = 9000
         if (arg >= 1)
@@ -134,7 +134,7 @@ export class Character extends Creature {
     // fertility must be >= random(0-beat)
     public buttKnockUp(type: number = 0, incubation: number = 0, beat: number = 100, arg: number = 0): void {
         // Contraceptives cancel!
-        if (findStatusAffect(StatusAffects.Contraceptives) >= 0 && arg < 1)
+        if (this.effects.findByType(StatusAffects.Contraceptives) >= 0 && arg < 1)
             return;
         let bonus: number = 0;
         // If arg = 1 (always pregnant), bonus = 9000

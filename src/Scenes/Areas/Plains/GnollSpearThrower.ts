@@ -9,13 +9,13 @@ export class GnollSpearThrower extends Monster {
         // return to combat menu when finished
         doNext(playerMenu);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
             return;
@@ -29,10 +29,10 @@ export class GnollSpearThrower extends Monster {
         if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
             return;
@@ -41,10 +41,10 @@ export class GnollSpearThrower extends Monster {
         if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
             return;
@@ -55,10 +55,10 @@ export class GnollSpearThrower extends Monster {
             if (plural) outputText("' attacks.\n", false);
             else outputText("'s attack.\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
             return;
@@ -100,7 +100,7 @@ export class GnollSpearThrower extends Monster {
         let slow: number = 0;
         // <Hyena Attack 2 – Javelin – Unsuccessful – Dodged>
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("The gnoll pulls a javelin from behind her and throws it at you, but blind as she is, it goes wide.", false);
         }
         // Determine if dodged!
@@ -130,11 +130,11 @@ export class GnollSpearThrower extends Monster {
         else if (rand(3) >= 1) {
             damage = player.takeDamage(25 + rand(20));
             outputText("The gnoll pulls a long, black javelin from over her shoulder.  Her spotted arm strikes forward, launching the missile through the air.  You attempt to dive to the side, but are too late.  The powerful shaft slams, hard, into your back.  Pain radiates from the powerful impact.  Instead of piercing you, however, the tip seems to explode into a sticky goo that instantly bonds with your " + player.armorName + ".  The four foot, heavy shaft pulls down on you awkwardly, catching at things and throwing your balance off.  You try to tug the javelin off of you but find that it has glued itself to you.  It will take time and effort to remove; making it impossible to do while a dominant hyena stalks you. (" + damage + ")", false);
-            if (player.findStatusAffect(StatusAffects.GnollSpear) < 0) player.createStatusAffect(StatusAffects.GnollSpear, 0, 0, 0, 0);
+            if (player.effects.findByType(StatusAffects.GnollSpear) < 0) player.effects.create(StatusAffects.GnollSpear, 0, 0, 0, 0);
             slow = 15;
             while (slow > 0 && player.spe > 2) {
                 slow--;
-                player.addStatusValue(StatusAffects.GnollSpear, 1, 1);
+                player.effects.addValue(StatusAffects.GnollSpear, 1, 1);
                 player.spe--;
                 mainView.statsView.showStatDown('spe');
                 // speDown.visible = true;
@@ -153,7 +153,7 @@ export class GnollSpearThrower extends Monster {
     private hyenaSnapKicku(): void {
         let damage: number = 0;
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText("The gnoll tries to catch you with a brutal snap-kick, but blind as she is, she completely misses.", false);
         }
         // Determine if dodged!
@@ -218,13 +218,13 @@ export class GnollSpearThrower extends Monster {
         // return to combat menu when finished
         doNext(playerMenu);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
         }
@@ -236,10 +236,10 @@ export class GnollSpearThrower extends Monster {
         if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
         }
@@ -247,10 +247,10 @@ export class GnollSpearThrower extends Monster {
         if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
         }
@@ -260,10 +260,10 @@ export class GnollSpearThrower extends Monster {
             if (plural) outputText("' attacks.\n", false);
             else outputText("'s attack.\n", false);
             // See below, removes the attack count once it hits rock bottom.
-            if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) == 0) this.effects.remove(StatusAffects.Attacks);
             // Count down 1 attack then recursively call the function, chipping away at it.
-            if (statusAffectv1(StatusAffects.Attacks) - 1 >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) - 1 >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
                 eAttack();
             }
         }
@@ -332,7 +332,7 @@ export class GnollSpearThrower extends Monster {
         createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 25, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 25, 0, 0, 0);
         this.tallness = 72;
         this.hipRating = HIP_RATING_AMPLE;
         this.buttRating = BUTT_RATING_TIGHT;

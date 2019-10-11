@@ -26,7 +26,7 @@ export class Helspawn extends Monster {
         // if Bowmander
         if (flags[kFLAGS.HELSPAWN_WEAPON] == "bow") outputText(flags[kFLAGS.HELSPAWN_NAME] + " leaps back out of your reach and nocks a pair of blunted arrows, drawing them back together and loosing them at once!\n");
         else outputText(flags[kFLAGS.HELSPAWN_NAME] + " lunges at you, scimitar cleaving through the air toward your throat!\n");
-        createStatusAffect(StatusAffects.Attacks, 0, 0, 0, 0);
+        this.effects.create(StatusAffects.Attacks, 0, 0, 0, 0);
         eAttack();
     }
 
@@ -40,10 +40,10 @@ export class Helspawn extends Monster {
         else {
             outputText("\nOne of her arrows smacks right into your [leg], nearly bowling you over.  God DAMN that hurt! You're going to be limping for a while!");
             let affect: number = 20 + rand(5);
-            if (player.findStatusAffect(StatusAffects.CalledShot) >= 0) {
+            if (player.effects.findByType(StatusAffects.CalledShot) >= 0) {
                 while (affect > 0 && player.spe >= 2) {
                     affect--;
-                    player.addStatusValue(StatusAffects.CalledShot, 1, 1);
+                    player.effects.addValue(StatusAffects.CalledShot, 1, 1);
                     player.spe--;
                     mainView.statsView.showStatDown('spe');
                     // speDown.visible = true;
@@ -51,10 +51,10 @@ export class Helspawn extends Monster {
                 }
             }
             else {
-                player.createStatusAffect(StatusAffects.CalledShot, 0, 0, 0, 0);
+                player.effects.create(StatusAffects.CalledShot, 0, 0, 0, 0);
                 while (affect > 0 && player.spe >= 2) {
                     affect--;
-                    player.addStatusValue(StatusAffects.CalledShot, 1, 1);
+                    player.effects.addValue(StatusAffects.CalledShot, 1, 1);
                     player.spe--;
                     mainView.statsView.showStatDown('spe');
                     // speDown.visible = true;
@@ -85,8 +85,8 @@ export class Helspawn extends Monster {
         else {
             outputText("\nHer shield catches you right in the face, sending you tumbling to the ground and leaving you open to attack!");
             damage = player.takeDamage(damage);
-            if (rand(2) == 0 && player.findStatusAffect(StatusAffects.Stunned) < 0) {
-                player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
+            if (rand(2) == 0 && player.effects.findByType(StatusAffects.Stunned) < 0) {
+                player.effects.create(StatusAffects.Stunned, 0, 0, 0, 0);
                 outputText(" <b>The hit stuns you.</b>");
             }
             outputText(" (" + damage + ")");
@@ -160,11 +160,11 @@ export class Helspawn extends Monster {
             ".  Pacing around you, the well-built young warrior intently studies her mentor's defenses, readying for your next attack.";
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
-        this.createStatusAffect(StatusAffects.BonusVCapacity, 85, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusVCapacity, 85, 0, 0, 0);
         createBreastRow(Appearance.breastCupInverse("E+"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 85, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 85, 0, 0, 0);
         this.tallness = 90;
         this.hipRating = HIP_RATING_CURVY + 2;
         this.buttRating = BUTT_RATING_LARGE + 1;
@@ -192,7 +192,7 @@ export class Helspawn extends Monster {
         this.gems = 10 + rand(5);
         this.tailType = TAIL_TYPE_LIZARD;
         this.tailRecharge = 0;
-        this.createStatusAffect(StatusAffects.Keen, 0, 0, 0, 0);
+        this.effects.create(StatusAffects.Keen, 0, 0, 0, 0);
         this.drop = NO_DROP;
         checkMonster();
     }

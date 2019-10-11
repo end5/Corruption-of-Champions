@@ -47,18 +47,18 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         // Reset if she finds someone to take it (random at high values)
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225] >= 300 && game.time.hours == 1 && rand(5) == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225] = 1;
         // hangover status stuff
-        if (player.findStatusAffect(StatusAffects.Hangover) >= 0) {
+        if (player.effects.findByType(StatusAffects.Hangover) >= 0) {
             // Countdown
-            if (player.statusAffectv1(StatusAffects.Hangover) > 0) player.addStatusValue(StatusAffects.Hangover, 1, -1);
+            if (player.effects.getValue1Of(StatusAffects.Hangover) > 0) player.effects.addValue(StatusAffects.Hangover, 1, -1);
             else {
                 outputText("\n<b>Your head finally clears as your hangover wears off.  Drinking with the shemale lizard was definitely a bad idea.</b>\n", false);
                 // Restore stats
-                player.str += player.statusAffectv2(StatusAffects.Hangover);
-                player.spe += player.statusAffectv3(StatusAffects.Hangover);
-                player.inte += player.statusAffectv4(StatusAffects.Hangover);
+                player.str += player.effects.getValue2Of(StatusAffects.Hangover);
+                player.spe += player.effects.getValue3Of(StatusAffects.Hangover);
+                player.inte += player.effects.getValue4Of(StatusAffects.Hangover);
                 dynStats("cor", 0);
                 // Clear status
-                player.removeStatusAffect(StatusAffects.Hangover);
+                player.effects.remove(StatusAffects.Hangover);
                 return true;
             }
         }
@@ -550,10 +550,10 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         // v4 = intelligence
 
         // Already hungover?  Reset duration.
-        if (player.findStatusAffect(StatusAffects.Hangover) >= 0) player.changeStatusValue(StatusAffects.Hangover, 1, 8);
+        if (player.effects.findByType(StatusAffects.Hangover) >= 0) player.effects.setValue(StatusAffects.Hangover, 1, 8);
         // No hangover yet?  Create and yoink stats
         else {
-            player.createStatusAffect(StatusAffects.Hangover, 8, 0, 0, 0);
+            player.effects.create(StatusAffects.Hangover, 8, 0, 0, 0);
             // Strength minus 5
             temp = 5;
             while (temp > 0) {
@@ -564,7 +564,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
                     // strDown.visible = true;
                     // strUp.visible = false;
                     player.str--;
-                    player.addStatusValue(StatusAffects.Hangover, 2, 1);
+                    player.effects.addValue(StatusAffects.Hangover, 2, 1);
                 }
             }
             // speed minus 10
@@ -577,7 +577,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
                     // speDown.visible = true;
                     // speUp.visible = false;
                     player.spe--;
-                    player.addStatusValue(StatusAffects.Hangover, 3, 1);
+                    player.effects.addValue(StatusAffects.Hangover, 3, 1);
                 }
             }
             // int minus 15
@@ -590,7 +590,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
                     // inteDown.visible = true;
                     // inteUp.visible = false;
                     player.inte--;
-                    player.addStatusValue(StatusAffects.Hangover, 4, 1);
+                    player.effects.addValue(StatusAffects.Hangover, 4, 1);
                 }
             }
         }

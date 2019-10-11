@@ -913,7 +913,7 @@ Optional Morning Oral for small-membered males*/
         outputText("Isabella lifts her shield and raps her knuckles against the solid steel, making a loud, gong-like sound that carries for some distance.  You raise your " + player.weaponName + " and prepare to fight.  It's on!", false);
         if (type == 1) outputText("  The knowledge that you're playing for keeps makes your heart beat faster.", false);
         startCombat(new Isabella());
-        monster.createStatusAffect(StatusAffects.Sparring, type, 0, 0, 0);
+        monster.effects.create(StatusAffects.Sparring, type, 0, 0, 0);
         // No gems.
         monster.gems = 0;
         // Nerf XP if light mode
@@ -1101,7 +1101,7 @@ Optional Morning Oral for small-membered males*/
             }
             // 'sorry for burping in your face bro'
             outputText("For a while the busty woman simply shuffles from hoof to hoof, kicking the ground and fiddling with her hair.  \"<i>... I suppose an apology is in order,</i>\" she finally mumbles between pursed and pouty lips.  She approaches slowly, but in lieu of any actual begs of forgiveness, she slips a hand around your head and brings you in for a lingering smooch.  Her eyes twinkle with undeniable lust as she slowly draws back, tongue licking up the small bridge of drool between your lips.  \"<i>Do you accept my apology?</i>\" she asks wryly.\n\n", false);
-            if (changed) player.createStatusAffect(StatusAffects.BurpChanged, 0, 0, 0, 0);
+            if (changed) player.effects.create(StatusAffects.BurpChanged, 0, 0, 0, 0);
         }
         else {
             // let's go Izzy I can dig it
@@ -1131,9 +1131,9 @@ Optional Morning Oral for small-membered males*/
         spriteSelect(31);
         if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 1) {
             outputText("As strange as the situation is, you're too weirded out to reassure Isabella, at least for now, and you relay that to her.  Though crestfallen, she takes the news well, apologizing - sincerely and soberly - once more before moving back to her designated camping spot.  ", false);
-            if (player.findStatusAffect(StatusAffects.BurpChanged) >= 0) {
+            if (player.effects.findByType(StatusAffects.BurpChanged) >= 0) {
                 outputText("  Happily, after about an hour, you go back to your old form, leaving the belch-borne bovine bounty behind.", false);
-                player.removeStatusAffect(StatusAffects.BurpChanged);
+                player.effects.remove(StatusAffects.BurpChanged);
             }
         }
         // no
@@ -1148,8 +1148,8 @@ Optional Morning Oral for small-membered males*/
         outputText("", true);
         spriteSelect(31);
         // Clear burps!
-        if (player.findStatusAffect(StatusAffects.BurpChanged) >= 0)
-            player.removeStatusAffect(StatusAffects.BurpChanged);
+        if (player.effects.findByType(StatusAffects.BurpChanged) >= 0)
+            player.effects.remove(StatusAffects.BurpChanged);
         player.orgasm();
         dynStats("sen", -1);
         // FIRST TIME

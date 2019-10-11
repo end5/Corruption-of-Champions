@@ -154,7 +154,7 @@ export class Monster extends Creature {
         /// *OPTIONAL*/ //this.hoursSinceCum = ; // default 0
         //// 2.2. Female
         /// *REQUIRED*/ this.createVagina(virgin=true|false,VAGINA_WETNESS_,VAGINA_LOOSENESS_); // default true,normal,tight
-        /// *OPTIONAL*/ //this.createStatusAffect(StatusAffects.BonusVCapacity, bonus, 0, 0, 0);
+        /// *OPTIONAL*/ //this.effects.create(StatusAffects.BonusVCapacity, bonus, 0, 0, 0);
         //// 2.3. Hermaphrodite
         //// Just create cocks and vaginas. Last call determines pronouns.
         //// 2.4. Genderless
@@ -182,7 +182,7 @@ export class Monster extends Creature {
         //// 4. Ass
         /// *OPTIONAL*/ //this.ass.analLooseness = ANAL_LOOSENESS_; // default TIGHT
         /// *OPTIONAL*/ //this.ass.analWetness = ANAL_WETNESS_; // default DRY
-        /// *OPTIONAL*/ //this.createStatusAffect(StatusAffects.BonusACapacity, bonus, 0, 0, 0);
+        /// *OPTIONAL*/ //this.effects.create(StatusAffects.BonusACapacity, bonus, 0, 0, 0);
         //// 5. Body
         /// *REQUIRED*/ this.tallness = ;
         /// *OPTIONAL*/ //this.hipRating = HIP_RATING_; // default boyish
@@ -486,7 +486,7 @@ export class Monster extends Creature {
     protected attackSucceeded(): boolean {
         const attack: boolean = true;
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
             attack && ; = handleBlind();
         }
         attack && ; = !playerDodged();
@@ -494,7 +494,7 @@ export class Monster extends Creature {
     }
 
     public eAttack(): void {
-        let attacks: number = statusAffectv1(StatusAffects.Attacks);
+        let attacks: number = this.effects.getValue1Of(StatusAffects.Attacks);
         if (attacks == 0) attacks = 1;
         while (attacks > 0) {
             if (attackSucceeded()) {
@@ -504,12 +504,12 @@ export class Monster extends Creature {
                 statScreenRefresh();
                 outputText("\n", false);
             }
-            if (statusAffectv1(StatusAffects.Attacks) >= 0) {
-                addStatusValue(StatusAffects.Attacks, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Attacks) >= 0) {
+                this.effects.addValue(StatusAffects.Attacks, 1, -1);
             }
             attacks--;
         }
-        removeStatusAffect(StatusAffects.Attacks);
+        this.effects.remove(StatusAffects.Attacks);
         // 			if (!combatRoundOver()) doNext(1);
         combatRoundOver(); // The doNext here was not required
     }
@@ -611,17 +611,17 @@ export class Monster extends Creature {
     }
 
     public doAI(): void {
-        if (findStatusAffect(StatusAffects.Stunned) >= 0) {
+        if (this.effects.findByType(StatusAffects.Stunned) >= 0) {
             if (!handleStun()) return;
         }
-        if (findStatusAffect(StatusAffects.Fear) >= 0) {
+        if (this.effects.findByType(StatusAffects.Fear) >= 0) {
             if (!handleFear()) return;
         }
         // Exgartuan gets to do stuff!
-        if (game.player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && game.player.statusAffectv2(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
+        if (game.player.effects.findByType(StatusAffects.Exgartuan) >= 0 && game.player.effects.getValue2Of(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
             if (game.exgartuan.exgartuanCombatUpdate()) outputText("\n\n", false);
         }
-        if (findStatusAffect(StatusAffects.Constricted) >= 0) {
+        if (this.effects.findByType(StatusAffects.Constricted) >= 0) {
             if (!handleConstricted()) return;
         }
         // If grappling... TODO implement grappling
@@ -652,11 +652,11 @@ export class Monster extends Creature {
     protected handleConstricted(): boolean {
         // Enemy struggles -
         outputText("Your prey pushes at your tail, twisting and writhing in an effort to escape from your tail's tight bonds.", false);
-        if (statusAffectv1(StatusAffects.Constricted) <= 0) {
+        if (this.effects.getValue1Of(StatusAffects.Constricted) <= 0) {
             outputText("  " + capitalA + short + " proves to be too much for your tail to handle, breaking free of your tightly bound coils.", false);
-            removeStatusAffect(StatusAffects.Constricted);
+            this.effects.remove(StatusAffects.Constricted);
         }
-        addStatusValue(StatusAffects.Constricted, 1, -1);
+        this.effects.addValue(StatusAffects.Constricted, 1, -1);
         combatRoundOver();
         return false;
     }
@@ -665,18 +665,18 @@ export class Monster extends Creature {
      * Called if monster is under fear. Should return true if fear ignored and need to proceed with ai
      */
     protected handleFear(): boolean {
-        if (statusAffectv1(StatusAffects.Fear) == 0) {
+        if (this.effects.getValue1Of(StatusAffects.Fear) == 0) {
             if (plural) {
-                removeStatusAffect(StatusAffects.Fear);
+                this.effects.remove(StatusAffects.Fear);
                 outputText("Your foes shake free of their fear and ready themselves for battle.", false);
             }
             else {
-                removeStatusAffect(StatusAffects.Fear);
+                this.effects.remove(StatusAffects.Fear);
                 outputText("Your foe shakes free of its fear and readies itself for battle.", false);
             }
         }
         else {
-            addStatusValue(StatusAffects.Fear, 1, -1);
+            this.effects.addValue(StatusAffects.Fear, 1, -1);
             if (plural) outputText(capitalA + short + " are too busy shivering with fear to fight.", false);
             else outputText(capitalA + short + " is too busy shivering with fear to fight.", false);
         }
@@ -690,8 +690,8 @@ export class Monster extends Creature {
     protected handleStun(): boolean {
         if (plural) outputText("Your foes are too dazed from your last hit to strike back!", false);
         else outputText("Your foe is too dazed from your last hit to strike back!", false);
-        if (statusAffectv1(StatusAffects.Stunned) <= 0) removeStatusAffect(StatusAffects.Stunned);
-        else addStatusValue(StatusAffects.Stunned, 1, -1);
+        if (this.effects.getValue1Of(StatusAffects.Stunned) <= 0) this.effects.remove(StatusAffects.Stunned);
+        else this.effects.addValue(StatusAffects.Stunned, 1, -1);
         combatRoundOver();
         return false;
     }
@@ -778,13 +778,13 @@ export class Monster extends Creature {
         outputDefaultTeaseReaction(lustDelta);
         if (lustDelta > 0) {
             // Imp mob uber interrupt!
-            if (findStatusAffect(StatusAffects.ImpUber) >= 0) { // TODO move to proper class
+            if (this.effects.findByType(StatusAffects.ImpUber) >= 0) { // TODO move to proper class
                 outputText("\nThe imps in the back stumble over their spell, their loincloths tenting obviously as your display interrupts their casting.  One of them spontaneously orgasms, having managed to have his spell backfire.  He falls over, weakly twitching as a growing puddle of whiteness surrounds his defeated form.", false);
                 // (-5% of max enemy HP)
                 HP -= bonusHP * .05;
                 lust -= 15;
-                removeStatusAffect(StatusAffects.ImpUber);
-                createStatusAffect(StatusAffects.ImpSkip, 0, 0, 0, 0);
+                this.effects.remove(StatusAffects.ImpUber);
+                this.effects.create(StatusAffects.ImpSkip, 0, 0, 0, 0);
             }
         }
         applyTease(lustDelta);
@@ -885,8 +885,8 @@ export class Monster extends Creature {
             result += ", " + Appearance.describeByScale(vagina.vaginalWetness, Appearance.DEFAULT_VAGINA_WETNESS_SCALES, "drier than", "wetter than");
             if (vagina.labiaPierced) result += ". Labia are pierced with " + vagina.labiaPLong;
             if (vagina.clitPierced) result += ". Clit is pierced with " + vagina.clitPLong;
-            if (statusAffectv1(StatusAffects.BonusVCapacity) > 0) {
-                result += "; vaginal capacity is increased by " + statusAffectv1(StatusAffects.BonusVCapacity);
+            if (this.effects.getValue1Of(StatusAffects.BonusVCapacity) > 0) {
+                result += "; vaginal capacity is increased by " + this.effects.getValue1Of(StatusAffects.BonusVCapacity);
             }
             result += ".\n";
         }
@@ -901,8 +901,8 @@ export class Monster extends Creature {
             }
         }
         result += Pronoun3 + " ass is " + Appearance.describeByScale(ass.analLooseness, Appearance.DEFAULT_ANAL_LOOSENESS_SCALES, "tighter than", "looser than") + ", " + Appearance.describeByScale(ass.analWetness, Appearance.DEFAULT_ANAL_WETNESS_SCALES, "drier than", "wetter than");
-        if (statusAffectv1(StatusAffects.BonusACapacity) > 0) {
-            result += "; anal capacity is increased by " + statusAffectv1(StatusAffects.BonusACapacity);
+        if (this.effects.getValue1Of(StatusAffects.BonusACapacity) > 0) {
+            result += "; anal capacity is increased by " + this.effects.getValue1Of(StatusAffects.BonusACapacity);
         }
         result += ".\n\n";
 
@@ -933,50 +933,50 @@ export class Monster extends Creature {
     }
 
     public combatRoundUpdate(): void {
-        if (findStatusAffect(StatusAffects.MilkyUrta) >= 0) {
+        if (this.effects.findByType(StatusAffects.MilkyUrta) >= 0) {
             game.urtaQuest.milkyUrtaTic();
         }
         // Countdown
-        if (findStatusAffect(StatusAffects.TentacleCoolDown) >= 0) {
-            addStatusValue(StatusAffects.TentacleCoolDown, 1, -1);
-            if (statusAffect(findStatusAffect(StatusAffects.TentacleCoolDown)).value1 == 0) {
-                removeStatusAffect(StatusAffects.TentacleCoolDown);
+        if (this.effects.findByType(StatusAffects.TentacleCoolDown) >= 0) {
+            this.effects.addValue(StatusAffects.TentacleCoolDown, 1, -1);
+            if (this.effects[this.effects.findByType(StatusAffects.TentacleCoolDown)].value1 == 0) {
+                this.effects.remove(StatusAffects.TentacleCoolDown);
             }
         }
-        if (findStatusAffect(StatusAffects.CoonWhip) >= 0) {
-            if (statusAffectv2(StatusAffects.CoonWhip) <= 0) {
-                armorDef += statusAffectv1(StatusAffects.CoonWhip);
+        if (this.effects.findByType(StatusAffects.CoonWhip) >= 0) {
+            if (this.effects.getValue2Of(StatusAffects.CoonWhip) <= 0) {
+                armorDef += this.effects.getValue1Of(StatusAffects.CoonWhip);
                 outputText("<b>Tail whip wears off!</b>\n\n");
-                removeStatusAffect(StatusAffects.CoonWhip);
+                this.effects.remove(StatusAffects.CoonWhip);
             }
             else {
-                addStatusValue(StatusAffects.CoonWhip, 2, -1);
+                this.effects.addValue(StatusAffects.CoonWhip, 2, -1);
                 outputText("<b>Tail whip is currently reducing your foe");
                 if (plural) outputText("s'");
                 else outputText("'s");
-                outputText(" armor by " + statusAffectv1(StatusAffects.CoonWhip) + ".</b>\n\n");
+                outputText(" armor by " + this.effects.getValue1Of(StatusAffects.CoonWhip) + ".</b>\n\n");
             }
         }
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
-            addStatusValue(StatusAffects.Blind, 1, -1);
-            if (statusAffectv1(StatusAffects.Blind) <= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
+            this.effects.addValue(StatusAffects.Blind, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.Blind) <= 0) {
                 outputText("<b>" + capitalA + short + (plural ? " are" : " is") + " no longer blind!</b>\n\n", false);
-                removeStatusAffect(StatusAffects.Blind);
+                this.effects.remove(StatusAffects.Blind);
             }
             else outputText("<b>" + capitalA + short + (plural ? " are" : " is") + " currently blind!</b>\n\n", false);
         }
-        if (findStatusAffect(StatusAffects.Earthshield) >= 0) {
+        if (this.effects.findByType(StatusAffects.Earthshield) >= 0) {
             outputText("<b>" + capitalA + short + " is protected by a shield of rocks!</b>\n\n");
         }
-        if (findStatusAffect(StatusAffects.Sandstorm) >= 0) {
+        if (this.effects.findByType(StatusAffects.Sandstorm) >= 0) {
             // Blinded:
-            if (player.findStatusAffect(StatusAffects.Blind) >= 0) {
+            if (player.effects.findByType(StatusAffects.Blind) >= 0) {
                 outputText("<b>You blink the sand from your eyes, but you're sure that more will get you if you don't end it soon!</b>\n\n");
-                player.removeStatusAffect(StatusAffects.Blind);
+                player.effects.remove(StatusAffects.Blind);
             }
             else {
-                if (statusAffectv1(StatusAffects.Sandstorm) == 0 || statusAffectv1(StatusAffects.Sandstorm) % 4 == 0) {
-                    player.createStatusAffect(StatusAffects.Blind, 0, 0, 0, 0);
+                if (this.effects.getValue1Of(StatusAffects.Sandstorm) == 0 || this.effects.getValue1Of(StatusAffects.Sandstorm) % 4 == 0) {
+                    player.effects.create(StatusAffects.Blind, 0, 0, 0, 0);
                     outputText("<b>The sand is in your eyes!  You're blinded this turn!</b>\n\n");
                 }
                 else {
@@ -986,28 +986,28 @@ export class Monster extends Creature {
                     outputText("</b>\n\n");
                 }
             }
-            addStatusValue(StatusAffects.Sandstorm, 1, 1);
+            this.effects.addValue(StatusAffects.Sandstorm, 1, 1);
         }
-        if (findStatusAffect(StatusAffects.Stunned) >= 0) {
+        if (this.effects.findByType(StatusAffects.Stunned) >= 0) {
             outputText("<b>" + capitalA + short + " is still stunned!</b>\n\n", false);
         }
-        if (findStatusAffect(StatusAffects.Shell) >= 0) {
-            if (statusAffectv1(StatusAffects.Shell) >= 0) {
+        if (this.effects.findByType(StatusAffects.Shell) >= 0) {
+            if (this.effects.getValue1Of(StatusAffects.Shell) >= 0) {
                 outputText("<b>A wall of many hues shimmers around " + a + short + ".</b>\n\n");
-                addStatusValue(StatusAffects.Shell, 1, -1);
+                this.effects.addValue(StatusAffects.Shell, 1, -1);
             }
             else {
                 outputText("<b>The magical barrier " + a + short + " erected fades away to nothing at last.</b>\n\n");
-                removeStatusAffect(StatusAffects.Shell);
+                this.effects.remove(StatusAffects.Shell);
             }
         }
-        if (findStatusAffect(StatusAffects.IzmaBleed) >= 0) {
+        if (this.effects.findByType(StatusAffects.IzmaBleed) >= 0) {
             // Countdown to heal
-            addStatusValue(StatusAffects.IzmaBleed, 1, -1);
+            this.effects.addValue(StatusAffects.IzmaBleed, 1, -1);
             // Heal wounds
-            if (statusAffectv1(StatusAffects.IzmaBleed) <= 0) {
+            if (this.effects.getValue1Of(StatusAffects.IzmaBleed) <= 0) {
                 outputText("The wounds you left on " + a + short + " stop bleeding so profusely.\n\n", false);
-                removeStatusAffect(StatusAffects.IzmaBleed);
+                this.effects.remove(StatusAffects.IzmaBleed);
             }
             // Deal damage if still wounded.
             else {
@@ -1017,14 +1017,14 @@ export class Monster extends Creature {
                 else outputText(capitalA + short + " bleeds profusely from the jagged wounds your weapon left behind. (" + store + ")\n\n", false);
             }
         }
-        if (findStatusAffect(StatusAffects.Timer) >= 0) {
-            if (statusAffectv1(StatusAffects.Timer) <= 0)
-                removeStatusAffect(StatusAffects.Timer);
-            addStatusValue(StatusAffects.Timer, 1, -1);
+        if (this.effects.findByType(StatusAffects.Timer) >= 0) {
+            if (this.effects.getValue1Of(StatusAffects.Timer) <= 0)
+                this.effects.remove(StatusAffects.Timer);
+            this.effects.addValue(StatusAffects.Timer, 1, -1);
         }
-        if (findStatusAffect(StatusAffects.LustStick) >= 0) {
+        if (this.effects.findByType(StatusAffects.LustStick) >= 0) {
             // LoT Effect Messages:
-            switch (statusAffectv1(StatusAffects.LustStick)) {
+            switch (this.effects.getValue1Of(StatusAffects.LustStick)) {
                 // First:
                 case 1:
                     if (plural) outputText("One of " + a + short + " pants and crosses " + mf("his", "her") + " eyes for a moment.  " + mf("His", "Her") + " dick flexes and bulges, twitching as " + mf("he", "she") + " loses himself in a lipstick-fueled fantasy.  When " + mf("he", "she") + " recovers, you lick your lips and watch " + mf("his", "her") + " blush spread.\n\n", false);
@@ -1051,18 +1051,18 @@ export class Monster extends Creature {
                     else outputText("Drops of pre-cum roll steadily out of " + a + short + "'s dick.  It's a marvel " + pronoun1 + " hasn't given in to " + pronoun3 + " lust yet.\n\n", false);
                     break;
             }
-            addStatusValue(StatusAffects.LustStick, 1, 1);
+            this.effects.addValue(StatusAffects.LustStick, 1, 1);
             // Damage = 5 + bonus score minus
             // Reduced by lust vuln of course
-            lust += Math.round(lustVuln * (5 + statusAffectv2(StatusAffects.LustStick)));
+            lust += Math.round(lustVuln * (5 + this.effects.getValue2Of(StatusAffects.LustStick)));
         }
-        if (findStatusAffect(StatusAffects.PCTailTangle) >= 0) {
+        if (this.effects.findByType(StatusAffects.PCTailTangle) >= 0) {
             // when Entwined
             outputText("You are bound tightly in the kitsune's tails.  <b>The only thing you can do is try to struggle free!</b>\n\n");
             outputText("Stimulated by the coils of fur, you find yourself growing more and more aroused...\n\n");
             dynStats("lus", 5 + player.sens / 10);
         }
-        if (findStatusAffect(StatusAffects.QueenBind) >= 0) {
+        if (this.effects.findByType(StatusAffects.QueenBind) >= 0) {
             outputText("You're utterly restrained by the Harpy Queen's magical ropes!\n\n");
             if (flags[kFLAGS.PC_FETISH] >= 2) dynStats("lus", 3);
         }
@@ -1074,7 +1074,7 @@ export class Monster extends Creature {
             dynStats("lus", 1 + rand(8));
         }
         // [LUST GAINED PER ROUND] - Omnibus
-        if (findStatusAffect(StatusAffects.LustAura) >= 0) {
+        if (this.effects.findByType(StatusAffects.LustAura) >= 0) {
             if (player.lust < 33) outputText("Your groin tingles warmly.  The demon's aura is starting to get to you.\n\n", false);
             if (player.lust >= 33 && player.lust < 66) outputText("You blush as the demon's aura seeps into you, arousing you more and more.\n\n", false);
             if (player.lust >= 66) {

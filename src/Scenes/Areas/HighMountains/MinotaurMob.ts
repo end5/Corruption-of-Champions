@@ -154,7 +154,7 @@ export class MinotaurMob extends Monster {
         createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 30, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);
         this.tallness = rand(37) + 84;
         this.hipRating = HIP_RATING_AVERAGE;
         this.buttRating = BUTT_RATING_AVERAGE + 1;

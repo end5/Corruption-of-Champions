@@ -94,7 +94,7 @@ export class Kiha extends Monster {
     Miss: You nimbly turn aside and roll her off your shoulder at the last moment, leaving her ploughing on uncontrollably until she (catches her foot in a sinkhole and twists her ankle painfully, faceplanting in the bog)/(slams headfirst into a half-rotten tree with a shower of mouldering splinters). She quickly rights herself and turns to face you, but it clearly took its toll on her. //Kiha takes damage//
     */
     protected handleFear(): boolean {
-        removeStatusAffect(StatusAffects.Fear);
+        this.effects.remove(StatusAffects.Fear);
         outputText("Kiha shudders for a moment, then looks your way with a clear head.  \"<i>Fear was the first thing the demons taught us to overcome.  Do you think it would stay my blade?</i>\"\n", false);
         return true;
     }
@@ -122,21 +122,21 @@ export class Kiha extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        if (findStatusAffect(StatusAffects.spiderfight) >= 0)
+        if (this.effects.findByType(StatusAffects.spiderfight) >= 0)
             game.kihaFollower.playerBeatsUpKihaPreSpiderFight();
-        else if (findStatusAffect(StatusAffects.DomFight) >= 0)
+        else if (this.effects.findByType(StatusAffects.DomFight) >= 0)
             game.kihaFollower.pcWinsDomFight();
-        else if (findStatusAffect(StatusAffects.Spar) >= 0)
+        else if (this.effects.findByType(StatusAffects.Spar) >= 0)
             game.kihaFollower.winSparWithKiha();
         else game.kihaScene.kihaVictoryIntroduction();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (findStatusAffect(StatusAffects.spiderfight) >= 0)
+        if (this.effects.findByType(StatusAffects.spiderfight) >= 0)
             game.kihaFollower.loseKihaPreSpiderFight();
-        else if (findStatusAffect(StatusAffects.DomFight) >= 0)
+        else if (this.effects.findByType(StatusAffects.DomFight) >= 0)
             game.kihaFollower.pcLosesDomFight();
-        else if (findStatusAffect(StatusAffects.Spar) >= 0)
+        else if (this.effects.findByType(StatusAffects.Spar) >= 0)
             game.kihaFollower.sparWithFriendlyKihaLose();
         else if (pcCameWorms) {
             outputText("\n\nKiha seems visibly disturbed by your infection, enough that she turns to leave.");
@@ -153,11 +153,11 @@ export class Kiha extends Monster {
         this.long = "Kiha is standing across from you, holding a double-bladed axe that's nearly as big as she is.  She's six feet tall, and her leathery wings span nearly twelve feet extended.  Her eyes are pure crimson, save for a black slit in the center, and a pair of thick draconic horns sprout from her forehead, arcing over her ruby-colored hair to point behind her.  Dim red scales cover her arms, legs, back, and strong-looking tail, providing what protection they might to large areas of her body.  The few glimpses of exposed skin are dark, almost chocolate in color, broken only by a few stray scales on the underside of her bosom and on her cheekbones.  Her vagina constantly glistens with moisture, regardless of her state of arousal.  Despite her nudity, Kiha stands with the confidence and poise of a trained fighter.";
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
-        this.createStatusAffect(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
         createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_LOOSE;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 40, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);
         this.tallness = 6 * 12 + 1;
         this.hipRating = HIP_RATING_AMPLE;
         this.buttRating = BUTT_RATING_AVERAGE + 1;

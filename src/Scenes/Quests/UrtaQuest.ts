@@ -225,7 +225,7 @@ export class UrtaQuest extends NPCAwareContent {
         player.hipRating = 12;
         player.buttRating = 12;
         player.ass.analLooseness = 2;
-        player.createStatusAffect(StatusAffects.BonusVCapacity, 58, 0, 0, 0);
+        player.effects.create(StatusAffects.BonusVCapacity, 58, 0, 0, 0);
         player.createVagina();
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
         player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_NORMAL;
@@ -510,7 +510,7 @@ export class UrtaQuest extends NPCAwareContent {
         clearOutput();
         outputText("You set out for " + player2.short + "'s camp, known to you thanks to the amazing efforts of your scouts.  Behind you, the tower slowly shrinks, less imposing now that you've finished that step on your journey.   Ahead lies uncertainty and struggle.  You know you'll likely wind up fighting the corrupted denizens of the lost regions of Mareth in your travels, and it's likely at least a demon or two will get in your way.  Still, as you exit the city gates, you give your home a forlorn gaze.  At least there's one bright patch ahead - your lover's camp.");
         outputText("\n\nThe sun has set by the time you get there, but the darkness conceals your movements thanks to your natural fur color.  ");
-        if (player.findStatusAffect(StatusAffects.JojoNightWatch) >= 0 && player.findStatusAffect(StatusAffects.PureCampJojo) >= 0)
+        if (player.effects.findByType(StatusAffects.JojoNightWatch) >= 0 && player.effects.findByType(StatusAffects.PureCampJojo) >= 0)
             outputText("You easily sneak past a mouse monk.  He's looking towards the sky mostly, perhaps watching for imps.  ");
         if (flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.ANEMONE_KID] > 0)
             outputText("A confused-looking anemone with a " + ItemType.lookupItem(flags[kFLAGS.ANEMONE_WEAPON_ID]).longName + " nearly sees you, but you duck around a rock and escape her notice.  ");
@@ -519,7 +519,7 @@ export class UrtaQuest extends NPCAwareContent {
         if (camp.companionsCount() > 2) outputText("There are a number of people in the camp, but you avoid them as you head towards " + player2.short + "'s bunk.  ");
         outputText("The camp looks pretty nice actually.  Living out here must have given " + player2.mf("him", "her") + " plenty of time to improve it.");
         outputText("\n\n" + player2.short + " is slumbering fitfully on " + player2.mf("his", "her") + " blanket.  " + player2.mf("He", "She") + " looks so cute, sleeping like this.  It's amazing how " + player2.mf("he", "she") + " has the courage to stay out here, day after day, month after month, guarding this portal to keep " + player2.mf("his", "her") + " village safe");
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) outputText(", no matter why " + player2.mf("he", "she") + " was sent here");
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) outputText(", no matter why " + player2.mf("he", "she") + " was sent here");
         outputText(".  You gently press on " + player2.mf("his", "her") + " shoulder and shake " + player2.mf("him", "her") + " awake, holding your index finger across " + player2.mf("his", "her") + " lips to shush " + player2.mf("him", "her") + " to silence.  " + player2.mf("His", "Her") + " eyes snap open, worried until " + player2.mf("he", "she") + " recognizes you.  \"<i>What are you doing here?</i>\" " + player2.mf("he", "she") + " asks in a whisper.");
 
         // {TELL HIM ZE TRUFF}
@@ -1113,7 +1113,7 @@ export class UrtaQuest extends NPCAwareContent {
 
     public urtaSpecials(): void {
         // Gone	menuLoc = 3;
-        if (game.inCombat && player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 5) {
+        if (game.inCombat && player.effects.findByType(StatusAffects.Sealed) >= 0 && player.effects.getValue2Of(StatusAffects.Sealed) == 5) {
             clearOutput();
             outputText("You try to ready a special attack, but wind up stumbling dizzily instead.  <b>Your ability to use physical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
             enemyAI();
@@ -1139,7 +1139,7 @@ export class UrtaQuest extends NPCAwareContent {
 
     private urtaSecondWind(): void {
         clearOutput();
-        if (monster.findStatusAffect(StatusAffects.UrtaSecondWinded) >= 0) {
+        if (monster.effects.findByType(StatusAffects.UrtaSecondWinded) >= 0) {
             outputText("You've already pushed yourself as hard as you can!");
             // Gone		menuLoc = 3;
             // 		doNext(combatMenu);
@@ -1147,7 +1147,7 @@ export class UrtaQuest extends NPCAwareContent {
             addButton(0, "Next", combatMenu, false);
             return;
         }
-        monster.createStatusAffect(StatusAffects.UrtaSecondWinded, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.UrtaSecondWinded, 0, 0, 0, 0);
         HPChange(Math.round(player.maxHP() / 2), false);
         fatigue(-50);
         dynStats("lus", -50);
@@ -1157,7 +1157,7 @@ export class UrtaQuest extends NPCAwareContent {
 
     // Combo: 3x attack, higher miss chance, guaranteed hit vs blind
     private urtaComboAttack(): void {
-        if (player.findStatusAffect(StatusAffects.Attacks) < 0) {
+        if (player.effects.findByType(StatusAffects.Attacks) < 0) {
             clearOutput();
             if (player.fatigue + 25 > 100) {
                 outputText("You are too fatigued to use that attack!");
@@ -1169,28 +1169,28 @@ export class UrtaQuest extends NPCAwareContent {
             }
             fatigue(25);
         }
-        if (player.findStatusAffect(StatusAffects.Attacks) < 0)
-            player.createStatusAffect(StatusAffects.Attacks, 3, 0, 0, 0);
+        if (player.effects.findByType(StatusAffects.Attacks) < 0)
+            player.effects.create(StatusAffects.Attacks, 3, 0, 0, 0);
         else {
-            player.addStatusValue(StatusAffects.Attacks, 1, -1);
+            player.effects.addValue(StatusAffects.Attacks, 1, -1);
             trace("DECREMENDED ATTACKS");
-            if (player.statusAffectv1(StatusAffects.Attacks) <= 1) {
+            if (player.effects.getValue1Of(StatusAffects.Attacks) <= 1) {
                 trace("REMOVED ATTACKS");
-                player.removeStatusAffect(StatusAffects.Attacks);
+                player.effects.remove(StatusAffects.Attacks);
             }
         }
         // Blind
-        if (player.findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (player.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText("You attempt to attack, but as blinded as you are right now, you doubt you'll have much luck!  ", false);
         }
         let damage: number;
         // Determine if dodged!
-        if (monster.findStatusAffect(StatusAffects.Blind) < 0 && (rand(3) == 0 || (player.findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80))) {
+        if (monster.effects.findByType(StatusAffects.Blind) < 0 && (rand(3) == 0 || (player.effects.findByType(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80))) {
             if (monster.spe - player.spe < 8) outputText(monster.capitalA + monster.short + " narrowly avoids your attack!", false);
             if (monster.spe - player.spe >= 8 && monster.spe - player.spe < 20) outputText(monster.capitalA + monster.short + " dodges your attack with superior quickness!", false);
             if (monster.spe - player.spe >= 20) outputText(monster.capitalA + monster.short + " deftly avoids your slow attack.", false);
             outputText("\n", false);
-            if (player.findStatusAffect(StatusAffects.Attacks) >= 0) {
+            if (player.effects.findByType(StatusAffects.Attacks) >= 0) {
                 urtaComboAttack();
                 return;
             }
@@ -1263,7 +1263,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n", false);
         // Kick back to main if no damage occured!
         if (monster.HP >= 1 && monster.lust <= 99) {
-            if (player.findStatusAffect(StatusAffects.Attacks) >= 0) {
+            if (player.effects.findByType(StatusAffects.Attacks) >= 0) {
                 trace("MORE ATTACK");
                 urtaComboAttack();
                 return;
@@ -1291,7 +1291,7 @@ export class UrtaQuest extends NPCAwareContent {
         }
         fatigue(5);
         // Blind
-        if (player.findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (player.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText("You attempt to dirt kick, but as blinded as you are right now, you doubt you'll have much luck!  ", false);
         }
         else outputText("Spinning about, you drag your footpaw through the dirt, kicking a wave of debris towards " + monster.a + monster.short + "!  ");
@@ -1301,12 +1301,12 @@ export class UrtaQuest extends NPCAwareContent {
             enemyAI();
             return;
         }
-        else if (monster.findStatusAffect(StatusAffects.Blind) >= 0) {
+        else if (monster.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText(mf(monster, "He", "She") + "'s already blinded.  What a waste.\n\n");
         }
         else {
             outputText(mf(monster, "He", "She") + "'s blinded!\n\n");
-            monster.createStatusAffect(StatusAffects.Blind, 2 + rand(3), 0, 0, 0);
+            monster.effects.create(StatusAffects.Blind, 2 + rand(3), 0, 0, 0);
         }
         enemyAI();
     }
@@ -1324,13 +1324,13 @@ export class UrtaQuest extends NPCAwareContent {
         }
         fatigue(10);
         // Blind
-        if (player.findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (player.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText("You attempt to hit with a vicious blow to the side, but as blinded as you are right now, you doubt you'll have much luck!  ", false);
         }
         else outputText("You make a wide swing to the side, hoping to stun your foe!  ");
         let damage: number;
         // Determine if dodged!
-        if ((player.findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80)) {
+        if ((player.effects.findByType(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80)) {
             if (monster.spe - player.spe < 8) outputText(monster.capitalA + monster.short + " narrowly avoids your attack!", false);
             if (monster.spe - player.spe >= 8 && monster.spe - player.spe < 20) outputText(monster.capitalA + monster.short + " dodges your attack with superior quickness!", false);
             if (monster.spe - player.spe >= 20) outputText(monster.capitalA + monster.short + " deftly avoids your slow attack.", false);
@@ -1400,10 +1400,10 @@ export class UrtaQuest extends NPCAwareContent {
             if (monster.armorDef - 10 > 0) monster.armorDef -= 10;
             else monster.armorDef = 0;
         }
-        if (monster.findStatusAffect(StatusAffects.Stunned) < 0 && monster.perks.findByType(PerkLib.Resolute) < 0 && damage > 0) {
+        if (monster.effects.findByType(StatusAffects.Stunned) < 0 && monster.perks.findByType(PerkLib.Resolute) < 0 && damage > 0) {
             if (monster.tou / 10 + rand(20) + 1 < 20) {
                 outputText("\n<b>" + monster.capitalA + monster.short + " is stunned!</b>");
-                monster.createStatusAffect(StatusAffects.Stunned, 1, 0, 0, 0);
+                monster.effects.create(StatusAffects.Stunned, 1, 0, 0, 0);
             }
         }
         else if (monster.perks.findByType(PerkLib.Resolute) >= 0) {
@@ -1412,7 +1412,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n", false);
         // Kick back to main if no damage occured!
         if (monster.HP >= 1 && monster.lust <= 99) {
-            if (player.findStatusAffect(StatusAffects.FirstAttack) >= 0) {
+            if (player.effects.findByType(StatusAffects.FirstAttack) >= 0) {
                 attack();
                 return;
             }
@@ -1437,24 +1437,24 @@ export class UrtaQuest extends NPCAwareContent {
             return;
         }
         fatigue(20);
-        if (player.findStatusAffect(StatusAffects.Sealed) >= 0 && player.statusAffectv2(StatusAffects.Sealed) == 0) {
+        if (player.effects.findByType(StatusAffects.Sealed) >= 0 && player.effects.getValue2Of(StatusAffects.Sealed) == 0) {
             outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  The seals have made normal attack impossible!  Maybe you could try something else?\n\n", false);
             enemyAI();
             return;
         }
         // Blind
-        if (player.findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (player.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText("You attempt to make a high, vaulting attack, but as blinded as you are right now, you doubt you'll have much luck!  ", false);
         }
         else outputText("You leap into the air, intent on slamming your " + player.weaponName + " into your foe!  ");
         let damage: number;
         // Determine if dodged!
-        if ((player.findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80)) {
+        if ((player.effects.findByType(StatusAffects.Blind) >= 0 && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80)) {
             if (monster.spe - player.spe < 8) outputText(monster.capitalA + monster.short + " narrowly avoids your attack!", false);
             if (monster.spe - player.spe >= 8 && monster.spe - player.spe < 20) outputText(monster.capitalA + monster.short + " dodges your attack with superior quickness!", false);
             if (monster.spe - player.spe >= 20) outputText(monster.capitalA + monster.short + " deftly avoids your slow attack.", false);
             outputText("\n", false);
-            if (player.findStatusAffect(StatusAffects.FirstAttack) >= 0) {
+            if (player.effects.findByType(StatusAffects.FirstAttack) >= 0) {
                 attack();
                 return;
             }
@@ -1478,7 +1478,7 @@ export class UrtaQuest extends NPCAwareContent {
         damage *= 1.25;
         // Determine if critical hit!
         let crit: boolean = false;
-        if (monster.findStatusAffect(StatusAffects.Stunned) >= 0 || rand(100) <= 4 || (player.perks.findByType(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
+        if (monster.effects.findByType(StatusAffects.Stunned) >= 0 || rand(100) <= 4 || (player.perks.findByType(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
             crit = true;
             damage *= 2;
         }
@@ -1527,7 +1527,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n", false);
         // Kick back to main if no damage occured!
         if (monster.HP >= 1 && monster.lust <= 99) {
-            if (player.findStatusAffect(StatusAffects.FirstAttack) >= 0) {
+            if (player.effects.findByType(StatusAffects.FirstAttack) >= 0) {
                 attack();
                 return;
             }
@@ -2242,7 +2242,7 @@ export class UrtaQuest extends NPCAwareContent {
     public urtaSubmitsToMinotaurBadEnd(): void {
         clearOutput();
         outputText("You mouth opens, drooling with hunger that you know only the sexy beast across from you can sate.");
-        if (monster.findStatusAffect(StatusAffects.MinotaurEntangled) >= 0) outputText("   Seeing the fire in your eyes change from a determined glare to a lusty look, the minotaur pulls you over, carefully unwinding the chain from around you, so as not to damage you.");
+        if (monster.effects.findByType(StatusAffects.MinotaurEntangled) >= 0) outputText("   Seeing the fire in your eyes change from a determined glare to a lusty look, the minotaur pulls you over, carefully unwinding the chain from around you, so as not to damage you.");
         outputText("  Your once foe removes his loincloth to fully expose the mammoth between his legs, three feet long and nearly twice as girthy as your own.  You're so dazed by his imposing manhood, that you totally miss him flinging his loincloth at you.  It smacks wetly into your face, smothering you in his syrupy spooge.");
         outputText("\n\nFlopping down on your ass, tail swishing happily, you lap at the moist interior of the minotaur lord's only garment.  His constantly drooling cock has utterly soaked the fabric with his pre-cum.  It tastes and smells so strong, and you just can't get enough, humming happily as your tongue draws dollop after dollop into your greedy maw.  Your body shudders with each swallow, and your cock pulses below, rigid and fitfully flaring reflexively.");
 
@@ -2500,8 +2500,8 @@ export class UrtaQuest extends NPCAwareContent {
         else if (player.lust < 75) outputText("You don't know how much longer you'll be able to withstand the effects of the milk.");
         else outputText("Those orbs full of milky goodness are starting to look more attractive by the minute... if you don't finish this quickly you might end up giving up!");
         outputText("\n\n");
-        player.addStatusValue(StatusAffects.MilkyUrta, 1, -1);
-        if (player.statusAffectv1(StatusAffects.MilkyUrta) <= 0) player.removeStatusAffect(StatusAffects.MilkyUrta);
+        player.effects.addValue(StatusAffects.MilkyUrta, 1, -1);
+        if (player.effects.getValue1Of(StatusAffects.MilkyUrta) <= 0) player.effects.remove(StatusAffects.MilkyUrta);
         dynStats("lus", 10);
     }
 
@@ -2803,7 +2803,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nThankfully, Urta spares you the trouble, waking up with a moan.  \"<i>Oh... I feel so full,</i>\" she grumbles, struggling to get up under the weight of her belly.  When she realizes what's holding her down, she stops, staring at it in dumbfounded awe.  \"<i>" + player.short + ", is this really...?</i>\"  When you nod, she shakes her head in disbelief.   \"<i>Incredible... it really is real.  Oh, " + player.short + ", I just... I just don't have the words to tell you how I feel about this.</i>\"");
         outputText("\n\nYou ask her what she's going to do now.  Urta looks thoughtful.  \"<i>Well... the Covenant would want me to stay with them and give birth to Taoth amongst them.  So, I guess, from here, I'll be going to them.</i>\"  She looks at her belly quietly, and you have a feeling she'd be looking at her feet instead if she could still see them.  \"<i>..." + player.short + "?  I don't suppose you would come with me?   Please?  I know you're dedicated to guarding this portal, but it would really mean a lot to me if I could have you at my side for however long this pregnancy is going to last.</i>\"");
         outputText("\n\nYou give the matter some thought, and decide that the risk is worth it");
-        if (player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) outputText(" - besides, given you know that you're nothing but a sacrifice the demons are too lazy to collect, it's not like they'll really send an invasion through");
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) outputText(" - besides, given you know that you're nothing but a sacrifice the demons are too lazy to collect, it's not like they'll really send an invasion through");
         outputText(".  Urta's joyous expression makes it quite clear that you chose the right choice.  The two of you gather your things, dress Urta in her clothes as best you can (adding a blanket for extra protection and modesty), ");
         if (camp.followersCount() >= 2) outputText("leave instructions to your fellow camp-dwellers to look after the place, ");
         outputText("and set off into the wasteland in the direction of Tel'Adre.  Urta needs to stop and rest on several occasions, weighed down by her sudden and highly advanced pregnancy, but she soldiers on without complaint, taking whatever support you give to her.  You can feel the strange god-child kicking incessantly inside her belly as you walk together.");

@@ -6,7 +6,7 @@
 export class Amily extends Monster {
 
     protected performCombatAction(): void {
-        if (findStatusAffect(StatusAffects.Concentration) < 0 && rand(4) == 0) amilyConcentration();
+        if (this.effects.findByType(StatusAffects.Concentration) < 0 && rand(4) == 0) amilyConcentration();
         else if (rand(3) == 0) amilyDartGo();
         else if (rand(2) == 0) amilyDoubleAttack();
         else amilyAttack();
@@ -20,7 +20,7 @@ export class Amily extends Monster {
         // return to combat menu when finished
         doNext(playerMenu);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
             combatRoundOver();
             return;
@@ -98,7 +98,7 @@ export class Amily extends Monster {
         // return to combat menu when finished
         doNext(playerMenu);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             dodged++;
         }
         // Determine if dodged!
@@ -145,7 +145,7 @@ export class Amily extends Monster {
     private amilyDartGo(): void {
         let dodged: number = 0;
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack from her dartgun!\n", false);
             combatRoundOver();
             return;
@@ -193,7 +193,7 @@ export class Amily extends Monster {
         else {
             outputText("Amily dashes at you and swipes her knife at you, surprisingly slowly.  You easily dodge the attack; but it was a feint - her other hand tries to strike at you with a poisoned dart. However, she only manages to scratch you, only causing your muscles to grow slightly numb.", false);
             // Set status
-            if (player.findStatusAffect(StatusAffects.AmilyVenom) < 0) player.createStatusAffect(StatusAffects.AmilyVenom, 0, 0, 0, 0);
+            if (player.effects.findByType(StatusAffects.AmilyVenom) < 0) player.effects.create(StatusAffects.AmilyVenom, 0, 0, 0, 0);
             let poison: number = 2 + rand(5);
             while (poison > 0) {
                 poison--;
@@ -202,14 +202,14 @@ export class Amily extends Monster {
                     mainView.statsView.showStatDown("str");
                     // strDown.visible = true;
                     // strUp.visible = false;
-                    player.addStatusValue(StatusAffects.AmilyVenom, 1, 1);
+                    player.effects.addValue(StatusAffects.AmilyVenom, 1, 1);
                 }
                 if (player.spe >= 2) {
                     player.spe--;
                     mainView.statsView.showStatDown("spe");
                     // speDown.visible = true;
                     // speUp.visible = false;
-                    player.addStatusValue(StatusAffects.AmilyVenom, 2, 1);
+                    player.effects.addValue(StatusAffects.AmilyVenom, 2, 1);
                 }
             }
             // If PC is reduced to 0 Speed and Strength, normal defeat by HP plays.
@@ -224,17 +224,17 @@ export class Amily extends Monster {
     // Concentrate: always avoids the next attack. Can be disrupted by tease/seduce.
     private amilyConcentration(): void {
         outputText("Amily takes a deep breath and attempts to concentrate on your movements.", false);
-        createStatusAffect(StatusAffects.Concentration, 0, 0, 0, 0);
+        this.effects.create(StatusAffects.Concentration, 0, 0, 0, 0);
         combatRoundOver();
     }
 
     // (if PC uses tease/seduce after this)
     // Deals big lust increase, despite her resistance.
     public teased(lustDelta: number): void {
-        if (findStatusAffect(StatusAffects.Concentration) >= 0) {
+        if (this.effects.findByType(StatusAffects.Concentration) >= 0) {
             outputText("Amily flushes hotly; her concentration only makes her pay more attention to your parts!", false);
             lustDelta += 25 + lustDelta;
-            removeStatusAffect(StatusAffects.Concentration);
+            this.effects.remove(StatusAffects.Concentration);
             applyTease(lustDelta);
         } else {
             super.teased(lustDelta);
@@ -252,7 +252,7 @@ export class Amily extends Monster {
         this.long = "You are currently fighting Amily. The mouse-morph is dressed in rags and glares at you in rage, knife in hand. She keeps herself close to the ground, ensuring she can quickly close the distance between you two or run away.";
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
-        this.createStatusAffect(StatusAffects.BonusVCapacity, 48, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusVCapacity, 48, 0, 0, 0);
         createBreastRow(Appearance.breastCupInverse("C"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
         this.ass.analWetness = ANAL_WETNESS_DRY;

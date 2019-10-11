@@ -579,9 +579,9 @@ export class SophieScene implements TimeAwareInterface {
             cleanupAfterCombat();
         else doNext(camp.returnToCampUseOneHour);
         // You've now been milked, reset the timer for that
-        if (player.findStatusAffect(StatusAffects.Feeder) >= 0) {
-            player.addStatusValue(StatusAffects.Feeder, 1, 1);
-            player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) {
+            player.effects.addValue(StatusAffects.Feeder, 1, 1);
+            player.effects.setValue(StatusAffects.Feeder, 2, 0);
         }
     }
 
@@ -741,7 +741,7 @@ export class SophieScene implements TimeAwareInterface {
         if (player.cor > 50) outputText("nearly give her a good-bye kiss, but catch yourself at the last moment.  She quips, \"<i>Too bad, it was nice.</i>\"\n\n", false);
         else outputText("give her a kiss on the cheek, knowing all-too-well the dangers of her lips.  She quips, \"<i>Ohh, too bad.  I wanted to stroke you to sleep.</i>\"\n\n", false);
         // Remove luststick
-        player.removeStatusAffect(StatusAffects.Luststick);
+        player.effects.remove(StatusAffects.Luststick);
         // (+sensitivity, +libido
         dynStats("lib", 1, "sen", 1);
 
@@ -876,21 +876,21 @@ export class SophieScene implements TimeAwareInterface {
         // Max of 20.
         if (hours > 20) hours = 20;
         // Add duration if under effects
-        if (player.findStatusAffect(StatusAffects.Luststick) >= 0) {
+        if (player.effects.findByType(StatusAffects.Luststick) >= 0) {
             // Max?
-            if (player.statusAffectv1(StatusAffects.Luststick) >= 20) { }
+            if (player.effects.getValue1Of(StatusAffects.Luststick) >= 20) { }
             // Not maxed - increase duration
             else {
                 // lower hours if it pushes it too high.
-                if (player.statusAffectv1(StatusAffects.Luststick) + hours > 20) {
-                    hours = 20 - player.statusAffectv1(StatusAffects.Luststick);
+                if (player.effects.getValue1Of(StatusAffects.Luststick) + hours > 20) {
+                    hours = 20 - player.effects.getValue1Of(StatusAffects.Luststick);
                 }
                 // increase!
-                player.addStatusValue(StatusAffects.Luststick, 1, hours);
+                player.effects.addValue(StatusAffects.Luststick, 1, hours);
             }
         }
         // Apply a little of doctor L (thats Dr Lipstick you tard!)
-        else player.createStatusAffect(StatusAffects.Luststick, hours, 0, 0, 0);
+        else player.effects.create(StatusAffects.Luststick, hours, 0, 0, 0);
     }
 
     public sophieLostCombat(): void {

@@ -32,7 +32,7 @@ export class SandWitchScene implements TimeAwareInterface {
         spriteSelect(50);
         clearOutput();
         outputText("A strange woman seems to appear from the dunes themselves.  She identifies herself as a sand witch, and politely asks if she can cast a spell on you.");
-        if (player.statusAffectv1(StatusAffects.Exgartuan) == 1 && player.cockArea(0) > 100 && player.statusAffectv2(StatusAffects.Exgartuan) == 0) {
+        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.cockArea(0) > 100 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0) {
             outputText("\n\nThe " + player.armorName + " covering your lower half hits the ground, as if yanked down by magic.  Your " + cockDescript(game.player, 0) + " pulsates darkly, growing rigid in seconds as the demon within you takes over.  It barks, \"<i>Fuck, how about I cast my spell on you baby?</i>\"\n\n");
             outputText("The sandwitch ");
             if (player.cor < 50)

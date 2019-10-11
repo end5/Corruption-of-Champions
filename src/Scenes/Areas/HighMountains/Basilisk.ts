@@ -11,8 +11,8 @@ export class Basilisk extends Monster {
             if (amount < 0) amount = 0;
         }
         player.spe -= amount;
-        if (player.findStatusAffect(StatusAffects.BasiliskSlow) >= 0) player.addStatusValue(StatusAffects.BasiliskSlow, 1, amount);
-        else player.createStatusAffect(StatusAffects.BasiliskSlow, amount, 0, 0, 0);
+        if (player.effects.findByType(StatusAffects.BasiliskSlow) >= 0) player.effects.addValue(StatusAffects.BasiliskSlow, 1, amount);
+        else player.effects.create(StatusAffects.BasiliskSlow, amount, 0, 0, 0);
         mainView.statsView.showStatDown('spe');
         // speUp.visible = false;
         // speDown.visible = true;
@@ -29,7 +29,7 @@ export class Basilisk extends Monster {
             dynStats("lus", 3);
             // apply status here
             basiliskSpeed(player, 20);
-            player.createStatusAffect(StatusAffects.BasiliskCompulsion, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.BasiliskCompulsion, 0, 0, 0, 0);
         }
         // Failure:
         else {
@@ -51,7 +51,7 @@ export class Basilisk extends Monster {
     // Noun: claw
 
     protected performCombatAction(): void {
-        if (player.findStatusAffect(StatusAffects.BasiliskCompulsion) < 0 && rand(3) == 0 && findStatusAffect(StatusAffects.Blind) < 0) compulsion();
+        if (player.effects.findByType(StatusAffects.BasiliskCompulsion) < 0 && rand(3) == 0 && this.effects.findByType(StatusAffects.Blind) < 0) compulsion();
         else if (rand(3) == 0) basiliskTailSwipe();
         else eAttack();
     }
@@ -81,7 +81,7 @@ export class Basilisk extends Monster {
         createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 30, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);
         this.tallness = 6 * 12 + 2;
         this.hipRating = HIP_RATING_SLENDER + 1;
         this.buttRating = BUTT_RATING_AVERAGE;

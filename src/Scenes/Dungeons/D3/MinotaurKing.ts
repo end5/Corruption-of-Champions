@@ -104,7 +104,7 @@ export class MinotaurKing extends Monster {
         if (_lastRoundStun) {
             _lastRoundStun = false;
             // If the player is still stunned, use dickslap ohterwise fall through to regular AI.
-            if (player.findStatusAffect(StatusAffects.Stunned) >= 0) {
+            if (player.effects.findByType(StatusAffects.Stunned) >= 0) {
                 dickslap();
                 return;
             }
@@ -163,7 +163,7 @@ export class MinotaurKing extends Monster {
             // {Stun for one turn, minor HP damage}
             if (player.perks.findByType(PerkLib.Resolute) < 0) {
                 outputText(" <b>You're left stunned by the force of the blow!</b>");
-                player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
+                player.effects.create(StatusAffects.Stunned, 0, 0, 0, 0);
             }
         }
     }

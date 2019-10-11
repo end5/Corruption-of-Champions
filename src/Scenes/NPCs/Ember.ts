@@ -24,7 +24,7 @@ export class Ember extends Monster {
         // Basic attack, average damage, average accuracy
         outputText("With a growl, the dragon lashes out in a ferocious splay-fingered slash, " + emberMF("his", "her") + " claws poised to rip into your flesh.  ");
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(2) == 0) {
             outputText(capitalA + short + " completely misses you with a blind attack!", false);
         }
         // Miss/dodge
@@ -43,7 +43,7 @@ export class Ember extends Monster {
 
     // Dragon Breath: Very rare attack, very high damage
     private embersSupahSpecialDragonBreath(): void {
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(2) == 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(2) == 0) {
             // Blind Ember:
             outputText("The blinded dragon tracks you with difficulty as you sprint around the landscape; seeing an opportunity, you strafe around " + emberMF("his", "her") + " side, planting yourself behind a large flat boulder near " + emberMF("him", "her") + " and pelting " + emberMF("him", "her") + " with a small rock.  The scream as the dragon turns the magical conflagration toward you, only to have it hit the rock and blow up in " + emberMF("his", "her") + " face, is quite satisfying.");
             // (Ember HP damage)
@@ -65,7 +65,7 @@ export class Ember extends Monster {
     // Tailslap: Rare attack, high damage, low accuracy
     private emberTailSlap(): void {
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText(capitalA + short + " completely misses you with a blind tail-slap!", false);
             combatRoundOver();
             return;
@@ -95,9 +95,9 @@ export class Ember extends Monster {
         if (player.perks.findByType(PerkLib.Resolute) < 0) {
             outputText("  Your head swims - it'll take a moment before you can regain your balance.");
             // Miss: You quickly manage to jump out of the way and watch in awe as the blast gouges into the ground you were standing on mere moments ago.
-            player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.Stunned, 0, 0, 0, 0);
         }
-        createStatusAffect(StatusAffects.StunCooldown, 4, 0, 0, 0);
+        this.effects.create(StatusAffects.StunCooldown, 4, 0, 0, 0);
         let damage: number = 10 + rand(10);
         damage = player.takeDamage(damage);
         outputText(" (" + damage + ")");
@@ -109,9 +109,9 @@ export class Ember extends Monster {
             emberReactsToLustiness();
             return;
         }
-        if (findStatusAffect(StatusAffects.StunCooldown) >= 0) {
-            addStatusValue(StatusAffects.StunCooldown, 1, -1);
-            if (statusAffectv1(StatusAffects.StunCooldown) <= 0) removeStatusAffect(StatusAffects.StunCooldown);
+        if (this.effects.findByType(StatusAffects.StunCooldown) >= 0) {
+            this.effects.addValue(StatusAffects.StunCooldown, 1, -1);
+            if (this.effects.getValue1Of(StatusAffects.StunCooldown) <= 0) this.effects.remove(StatusAffects.StunCooldown);
         }
         else if (rand(3) == 0) {
             dragonFarce();

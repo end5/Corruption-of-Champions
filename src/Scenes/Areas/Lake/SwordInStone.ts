@@ -2,7 +2,7 @@
 export class SwordInStone extends AbstractLakeContent {
 
     public findSwordInStone(): void {
-        if (player.findStatusAffect(StatusAffects.FactoryOverload) < 0) {
+        if (player.effects.findByType(StatusAffects.FactoryOverload) < 0) {
             // Encounter it!
             outputText("While walking along the lake, the glint of metal catches your eye.  You drop into a combat stance, readying your " + player.weaponName + " for another fight.   Your eyes dart about, searching for the source of the light. You feel rather foolish when you locate the source of the reflection.  It came from a sword lodged hilt-deep in the trunk of a tree.  You relax a bit, approaching the odd sight to get a better look.\n\n", true);
 
@@ -18,7 +18,7 @@ export class SwordInStone extends AbstractLakeContent {
 
             doNext(camp.returnToCampUseOneHour);
 
-            player.createStatusAffect(StatusAffects.BSwordBroken, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.BSwordBroken, 0, 0, 0, 0);
         }
     }
 
@@ -49,7 +49,7 @@ export class SwordInStone extends AbstractLakeContent {
             outputText("The blade itself is three and a half feet of the purest, shining steel you have ever seen.  It truly is a beautiful blade.\n\n", false);
             dynStats("lib", -(player.lib / 3), "lus", -15);
             inventory.takeItem(weapons.B_SWORD, camp.returnToCampUseOneHour);
-            player.createStatusAffect(StatusAffects.TookBlessedSword, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.TookBlessedSword, 0, 0, 0, 0);
         }
     }
 }

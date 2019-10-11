@@ -100,8 +100,8 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("\n\n\"<i>I'm gonna make you pay for this!</i>\"");
         // (Go to normal Sophie Combat screen)
         startCombat(new Sophie());
-        monster.createStatusAffect(StatusAffects.BimboBrawl, 0, 0, 0, 0);
-        monster.createStatusAffect(StatusAffects.GenericRunDisabled, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.BimboBrawl, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.GenericRunDisabled, 0, 0, 0, 0);
     }
 
     // Successful Beat the Shit Out of Sophie (You Monster)

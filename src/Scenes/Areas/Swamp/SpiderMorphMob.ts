@@ -5,8 +5,8 @@ export class SpiderMorphMob extends Monster {
     // ==============================
     private spiderStandardAttack(): void {
         // SPIDER HORDE ATTACK - Miss (guaranteed if turns 1-3 and PC lost to Kiha)
-        if (findStatusAffect(StatusAffects.MissFirstRound) >= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
-            removeStatusAffect(StatusAffects.MissFirstRound);
+        if (this.effects.findByType(StatusAffects.MissFirstRound) >= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
+            this.effects.remove(StatusAffects.MissFirstRound);
             outputText("A number of spiders rush at you, trying to claw and bite you.  You manage to beat them all back, though, with some literal covering fire from Kiha.", false);
         }
         // SPIDER HORDE ATTACK - Hit
@@ -42,14 +42,14 @@ export class SpiderMorphMob extends Monster {
     // SPIDER HORDE WEB - Hit
     private spoidahHordeWebLaunchahs(): void {
         // SPIDER HORDE WEB - Miss (guaranteed if turns 1-3 and PC lost to Kiha)
-        if (findStatusAffect(StatusAffects.MissFirstRound) >= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
+        if (this.effects.findByType(StatusAffects.MissFirstRound) >= 0 || combatMiss() || combatEvade() || combatFlexibility() || combatMisdirect()) {
             outputText("One of the driders launches a huge glob of webbing right at you!  Luckily, Kiha manages to burn it out of the air with a well-timed gout of flame!", false);
             combatRoundOver();
         }
         else {
             outputText("Some of the spiders and driders launch huge globs of wet webbing right at you, hitting you in the torso!  You try to wiggle out, but it's no use; you're stuck like this for now.  Though comfortingly, the driders' open stance and self-satisfaction allow Kiha to blast them in the side with a huge conflagration!", false);
             // (PC cannot attack or use spells for one turn; can use Magical Special and Possess)
-            player.createStatusAffect(StatusAffects.UBERWEB, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.UBERWEB, 0, 0, 0, 0);
             HP -= 250;
             combatRoundOver();
         }
@@ -66,7 +66,7 @@ export class SpiderMorphMob extends Monster {
 
     protected performCombatAction(): void {
         game.spriteSelect(72);
-        if (rand(2) == 0 || player.findStatusAffect(StatusAffects.UBERWEB) >= 0) spiderStandardAttack();
+        if (rand(2) == 0 || player.effects.findByType(StatusAffects.UBERWEB) >= 0) spiderStandardAttack();
         else spoidahHordeWebLaunchahs();
     }
 

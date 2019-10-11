@@ -4,9 +4,9 @@
 
 export class AbstractSuccubus extends Monster {
     protected whipAttack(): void {
-        if (findStatusAffect(StatusAffects.WhipReady) >= 0) {
+        if (this.effects.findByType(StatusAffects.WhipReady) >= 0) {
             // Blind dodge change
-            if (findStatusAffect(StatusAffects.Blind) >= 0) {
+            if (this.effects.findByType(StatusAffects.Blind) >= 0) {
                 outputText(capitalA + short + " swings her whip at you wildly, totally missing due to her blindness!!", false);
                 combatRoundOver();
                 return;
@@ -67,7 +67,7 @@ export class AbstractSuccubus extends Monster {
         }
         else {
             outputText("The succubus flicks her wrist, allowing a whip-like cord to slither out from the palm of her clawed hand.  She cracks the whip experimentally, cackling with glee.", false);
-            createStatusAffect(StatusAffects.WhipReady, 0, 0, 0, 0);
+            this.effects.create(StatusAffects.WhipReady, 0, 0, 0, 0);
             str += 20;
             this.weaponName = "whip";
             this.weaponVerb = "brutal whip-crack";
@@ -86,7 +86,7 @@ export class AbstractSuccubus extends Monster {
         // get hit
         else {
             outputText("  You start to dodge to the side, but she shifts direction expertly and plants a wet kiss on your lips.  She spins and dodges away with a ballet dancer's grace, leaving you to wonder what just happened.  ", false);
-            if (player.findStatusAffect(StatusAffects.KissOfDeath) < 0) player.createStatusAffect(StatusAffects.KissOfDeath, 0, 0, 0, 0);
+            if (player.effects.findByType(StatusAffects.KissOfDeath) < 0) player.effects.create(StatusAffects.KissOfDeath, 0, 0, 0, 0);
         }
         combatRoundOver();
     }

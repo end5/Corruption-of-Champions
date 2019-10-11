@@ -34,7 +34,7 @@ export class Exploration {
         addButton(4, "Next", explorePageII);
         if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(5, "Plains", plains.explorePlains);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] > 0) addButton(6, "Swamp", swamp.exploreSwamp);
-        if (player.findStatusAffect(StatusAffects.ExploredDeepwoods) >= 0) addButton(7, "Deepwoods", forest.exploreDeepwoods);
+        if (player.effects.findByType(StatusAffects.ExploredDeepwoods) >= 0) addButton(7, "Deepwoods", forest.exploreDeepwoods);
         if (player.exploredMountain > 0) addButton(8, "Mountain", mountain.exploreMountain);
         addButton(9, "Back", playerMenu);
     }

@@ -12,7 +12,7 @@ export class Gnoll extends Monster {
         // return to combat menu when finished
         doNext(playerMenu);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
         }
         // Determine if dodged!
@@ -125,7 +125,7 @@ export class Gnoll extends Monster {
         // return to combat menu when finished
         doNext(playerMenu);
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
             outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
         }
         // Determine if dodged!
@@ -198,25 +198,25 @@ export class Gnoll extends Monster {
     }
 
     protected performCombatAction(): void {
-        if (findStatusAffect(StatusAffects.Stunned) >= 0) {
+        if (this.effects.findByType(StatusAffects.Stunned) >= 0) {
             if (plural) outputText("Your foes are too dazed from your last hit to strike back!", false);
             else outputText("Your foe is too dazed from your last hit to strike back!", false);
-            removeStatusAffect(StatusAffects.Stunned);
+            this.effects.remove(StatusAffects.Stunned);
             combatRoundOver();
         }
-        if (findStatusAffect(StatusAffects.Fear) >= 0) {
-            if (statusAffectv1(StatusAffects.Fear) == 0) {
+        if (this.effects.findByType(StatusAffects.Fear) >= 0) {
+            if (this.effects.getValue1Of(StatusAffects.Fear) == 0) {
                 if (plural) {
-                    removeStatusAffect(StatusAffects.Fear);
+                    this.effects.remove(StatusAffects.Fear);
                     outputText("Your foes shake free of their fear and ready themselves for battle.", false);
                 }
                 else {
-                    removeStatusAffect(StatusAffects.Fear);
+                    this.effects.remove(StatusAffects.Fear);
                     outputText("Your foe shakes free of its fear and readies itself for battle.", false);
                 }
             }
             else {
-                addStatusValue(StatusAffects.Fear, 1, -1);
+                this.effects.addValue(StatusAffects.Fear, 1, -1);
                 if (plural) outputText(capitalA + short + " are too busy shivering with fear to fight.", false);
                 else outputText(capitalA + short + " is too busy shivering with fear to fight.", false);
             }
@@ -225,18 +225,18 @@ export class Gnoll extends Monster {
         const select: number = 1;
         const rando: number = 1;
         // Exgartuan gets to do stuff!
-        if (player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
+        if (player.effects.findByType(StatusAffects.Exgartuan) >= 0 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
             game.exgartuan.exgartuanCombatUpdate();
             outputText("\n\n", false);
         }
-        if (findStatusAffect(StatusAffects.Constricted) >= 0) {
+        if (this.effects.findByType(StatusAffects.Constricted) >= 0) {
             // Enemy struggles -
             outputText("Your prey pushes at your tail, twisting and writhing in an effort to escape from your tail's tight bonds.", false);
-            if (statusAffectv1(StatusAffects.Constricted) <= 0) {
+            if (this.effects.getValue1Of(StatusAffects.Constricted) <= 0) {
                 outputText("  " + capitalA + short + " proves to be too much for your tail to handle, breaking free of your tightly bound coils.", false);
-                removeStatusAffect(StatusAffects.Constricted);
+                this.effects.remove(StatusAffects.Constricted);
             }
-            addStatusValue(StatusAffects.Constricted, 1, -1);
+            this.effects.addValue(StatusAffects.Constricted, 1, -1);
             combatRoundOver();
         }
         // If grappling...
@@ -263,7 +263,7 @@ export class Gnoll extends Monster {
             // return to combat menu when finished
             doNext(playerMenu);
             // Blind dodge change
-            if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 2) {
+            if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
                 outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
             }
             // Determine if dodged!
@@ -339,8 +339,8 @@ export class Gnoll extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        if (findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
-            removeStatusAffect(StatusAffects.PhyllaFight);
+        if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
+            this.effects.remove(StatusAffects.PhyllaFight);
             game.desert.antsScene.phyllaPCBeatsGnoll();
             return;
         }
@@ -348,8 +348,8 @@ export class Gnoll extends Monster {
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (findStatusAffect(StatusAffects.PhyllaFight) >= 0) {
-            removeStatusAffect(StatusAffects.PhyllaFight);
+        if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
+            this.effects.remove(StatusAffects.PhyllaFight);
             game.desert.antsScene.phyllaGnollBeatsPC();
         } else if (pcCameWorms) {
             outputText("\n\nYour foe doesn't seem put off enough to leave...");
@@ -369,7 +369,7 @@ export class Gnoll extends Monster {
         createBreastRow(Appearance.breastCupInverse("C"));
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 25, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 25, 0, 0, 0);
         this.tallness = 6 * 12;
         this.hipRating = HIP_RATING_AMPLE;
         this.buttRating = BUTT_RATING_TIGHT;

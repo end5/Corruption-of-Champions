@@ -128,11 +128,11 @@ export class Player extends Character {
             else if (armorPerk == "Medium") armorDef += Math.round(spe / 13);
         }
         // Berzerking removes armor
-        if (findStatusAffect(StatusAffects.Berzerking) >= 0) {
+        if (this.effects.findByType(StatusAffects.Berzerking) >= 0) {
             armorDef = 0;
         }
-        if (game.monster.findStatusAffect(StatusAffects.TailWhip) >= 0) {
-            armorDef -= game.monster.statusAffectv1(StatusAffects.TailWhip);
+        if (game.monster.effects.findByType(StatusAffects.TailWhip) >= 0) {
+            armorDef -= game.monster.effects.getValue1Of(StatusAffects.TailWhip);
             if (armorDef < 0) armorDef = 0;
         }
         return armorDef;
@@ -160,8 +160,8 @@ export class Player extends Character {
         if (this.perks.findByType(PerkLib.LightningStrikes) >= 0 && spe >= 60 && weaponPerk != "Large") {
             attack += Math.round((spe - 50) / 3);
         }
-        if (findStatusAffect(StatusAffects.Berzerking) >= 0) attack += 30;
-        attack += statusAffectv1(StatusAffects.ChargeWeapon);
+        if (this.effects.findByType(StatusAffects.Berzerking) >= 0) attack += 30;
+        attack += this.effects.getValue1Of(StatusAffects.ChargeWeapon);
         return attack;
     }
     public get weaponBaseAttack(): number {
@@ -242,12 +242,12 @@ export class Player extends Character {
         damage = int(damage - rand(tou) - armorDef);
         // EZ MOAD half damage
         if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1) damage /= 2;
-        if (findStatusAffect(StatusAffects.Shielding) >= 0) {
+        if (this.effects.findByType(StatusAffects.Shielding) >= 0) {
             damage -= 30;
             if (damage < 1) damage = 1;
         }
         // Black cat beer = 25% reduction!
-        if (statusAffectv1(StatusAffects.BlackCatBeer) > 0)
+        if (this.effects.getValue1Of(StatusAffects.BlackCatBeer) > 0)
             damage = Math.round(damage * .75);
 
         // Take damage you masochist!
@@ -263,10 +263,10 @@ export class Player extends Character {
         }
 
         // Uma's Massage bonuses
-        const statIndex: number = findStatusAffect(StatusAffects.UmasMassage);
+        const statIndex: number = this.effects.findByType(StatusAffects.UmasMassage);
         if (statIndex >= 0) {
-            if (statusAffect(statIndex).value1 == UmasShop.MASSAGE_RELAXATION) {
-                damage = Math.round(damage * statusAffect(statIndex).value2);
+            if (this.effects[statIndex].value1 == UmasShop.MASSAGE_RELAXATION) {
+                damage = Math.round(damage * this.effects[statIndex].value2);
             }
         }
 
@@ -632,7 +632,7 @@ export class Player extends Character {
 
     public sandTrapScore(): number {
         let counter: number = 0;
-        if (findStatusAffect(StatusAffects.BlackNipples) >= 0)
+        if (this.effects.findByType(StatusAffects.BlackNipples) >= 0)
             counter++;
         if (hasVagina() && vaginaType() == 5)
             counter++;
@@ -640,7 +640,7 @@ export class Player extends Character {
             counter++;
         if (wingType == 12)
             counter++;
-        if (findStatusAffect(StatusAffects.Uniball) >= 0)
+        if (this.effects.findByType(StatusAffects.Uniball) >= 0)
             counter++;
         return counter;
     }
@@ -963,7 +963,7 @@ export class Player extends Character {
             gooCounter++;
         if (vaginalCapacity() > 9000)
             gooCounter++;
-        if (findStatusAffect(StatusAffects.SlimeCraving) >= 0)
+        if (this.effects.findByType(StatusAffects.SlimeCraving) >= 0)
             gooCounter++;
         return gooCounter;
     }
@@ -1097,10 +1097,10 @@ export class Player extends Character {
         // (Large – 0.8 - Size 10 + 4 Multi)
         // (HUGE – 2.4 - Size 12 + 5 Multi + 4 tits)
         let total: number;
-        if (findStatusAffect(StatusAffects.LactationEndurance) < 0)
-            createStatusAffect(StatusAffects.LactationEndurance, 1, 0, 0, 0);
-        total = biggestTitSize() * 10 * averageLactation() * statusAffectv1(StatusAffects.LactationEndurance) * totalBreasts();
-        if (statusAffectv1(StatusAffects.LactationReduction) >= 48)
+        if (this.effects.findByType(StatusAffects.LactationEndurance) < 0)
+            this.effects.create(StatusAffects.LactationEndurance, 1, 0, 0, 0);
+        total = biggestTitSize() * 10 * averageLactation() * this.effects.getValue1Of(StatusAffects.LactationEndurance) * totalBreasts();
+        if (this.effects.getValue1Of(StatusAffects.LactationReduction) >= 48)
             total = total * 1.5;
         return total;
     }
@@ -1160,12 +1160,12 @@ export class Player extends Character {
     }
 
     public slimeFeed(): void {
-        if (findStatusAffect(StatusAffects.SlimeCraving) >= 0) {
+        if (this.effects.findByType(StatusAffects.SlimeCraving) >= 0) {
             // Reset craving value
-            changeStatusValue(StatusAffects.SlimeCraving, 1, 0);
+            this.effects.setValue(StatusAffects.SlimeCraving, 1, 0);
             // Flag to display feed update and restore stats in event parser
-            if (findStatusAffect(StatusAffects.SlimeCravingFeed) < 0) {
-                createStatusAffect(StatusAffects.SlimeCravingFeed, 0, 0, 0, 0);
+            if (this.effects.findByType(StatusAffects.SlimeCravingFeed) < 0) {
+                this.effects.create(StatusAffects.SlimeCravingFeed, 0, 0, 0, 0);
             }
         }
         if (this.perks.findByType(PerkLib.Diapause) >= 0) {
@@ -1212,7 +1212,7 @@ export class Player extends Character {
     public spellCount(): number {
         return [StatusAffects.KnowsArouse, StatusAffects.KnowsHeal, StatusAffects.KnowsMight, StatusAffects.KnowsCharge, StatusAffects.KnowsBlind, StatusAffects.KnowsWhitefire]
             .filter(function(item: StatusAffectType, index: number, array: any[]): boolean {
-                return this.findStatusAffect(item) >= 0;
+                return this.effects.findByType(item) >= 0;
             }, this)
             .length;
     }
@@ -1442,7 +1442,7 @@ export class Player extends Character {
     public minLust(): number {
         let min: number = 0;
         // Bimbo body boosts minimum lust by 40
-        if (findStatusAffect(StatusAffects.BimboChampagne) >= 0 || this.perks.findByType(PerkLib.BimboBody) >= 0 || this.perks.findByType(PerkLib.BroBody) >= 0 || this.perks.findByType(PerkLib.FutaForm) >= 0) {
+        if (this.effects.findByType(StatusAffects.BimboChampagne) >= 0 || this.perks.findByType(PerkLib.BimboBody) >= 0 || this.perks.findByType(PerkLib.BroBody) >= 0 || this.perks.findByType(PerkLib.FutaForm) >= 0) {
             if (min > 40) min += 10;
             else if (min >= 20) min += 20;
             else min += 40;
@@ -1460,7 +1460,7 @@ export class Player extends Character {
             else min += 30;
         }
         // Oh noes anemone!
-        if (findStatusAffect(StatusAffects.AnemoneArousal) >= 0) {
+        if (this.effects.findByType(StatusAffects.AnemoneArousal) >= 0) {
             if (min >= 40) min += 10;
             else if (min >= 20) min += 20;
             else min += 30;
@@ -1478,7 +1478,7 @@ export class Player extends Character {
         min += this.perks.getValue1Of(PerkLib.PiercedCrimstone);
         min += this.perks.getValue1Of(PerkLib.PentUp);
         // Harpy Lipstick status forces minimum lust to be at least 50.
-        if (min < 50 && findStatusAffect(StatusAffects.Luststick) >= 0) min = 50;
+        if (min < 50 && this.effects.findByType(StatusAffects.Luststick) >= 0) min = 50;
         // SHOULDRA BOOSTS
         // +20
         if (flags[kFLAGS.SHOULDRA_SLEEP_TIMER] <= -168) {
@@ -1503,110 +1503,110 @@ export class Player extends Character {
     }
 
     public clearStatuses(visibility: boolean): void {
-        if (findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0) {
-            str += statusAffectv2(StatusAffects.DriderIncubusVenom);
-            removeStatusAffect(StatusAffects.DriderIncubusVenom);
+        if (this.effects.findByType(StatusAffects.DriderIncubusVenom) >= 0) {
+            str += this.effects.getValue2Of(StatusAffects.DriderIncubusVenom);
+            this.effects.remove(StatusAffects.DriderIncubusVenom);
             mainView.statsView.showStatUp('str');
         }
-        while (findStatusAffect(StatusAffects.Web) >= 0) {
-            spe += statusAffectv1(StatusAffects.Web);
+        while (this.effects.findByType(StatusAffects.Web) >= 0) {
+            spe += this.effects.getValue1Of(StatusAffects.Web);
             mainView.statsView.showStatUp('spe');
             // speUp.visible = true;
             // speDown.visible = false;
-            removeStatusAffect(StatusAffects.Web);
+            this.effects.remove(StatusAffects.Web);
         }
-        if (findStatusAffect(StatusAffects.Shielding) >= 0) removeStatusAffect(StatusAffects.Shielding);
-        if (findStatusAffect(StatusAffects.HolliConstrict) >= 0) removeStatusAffect(StatusAffects.HolliConstrict);
-        if (findStatusAffect(StatusAffects.LustStones) >= 0) removeStatusAffect(StatusAffects.LustStones);
-        if (game.monster.findStatusAffect(StatusAffects.Sandstorm) >= 0) game.monster.removeStatusAffect(StatusAffects.Sandstorm);
-        if (findStatusAffect(StatusAffects.Sealed) >= 0) {
-            removeStatusAffect(StatusAffects.Sealed);
+        if (this.effects.findByType(StatusAffects.Shielding) >= 0) this.effects.remove(StatusAffects.Shielding);
+        if (this.effects.findByType(StatusAffects.HolliConstrict) >= 0) this.effects.remove(StatusAffects.HolliConstrict);
+        if (this.effects.findByType(StatusAffects.LustStones) >= 0) this.effects.remove(StatusAffects.LustStones);
+        if (game.monster.effects.findByType(StatusAffects.Sandstorm) >= 0) game.monster.effects.remove(StatusAffects.Sandstorm);
+        if (this.effects.findByType(StatusAffects.Sealed) >= 0) {
+            this.effects.remove(StatusAffects.Sealed);
         }
-        if (findStatusAffect(StatusAffects.Berzerking) >= 0) {
-            removeStatusAffect(StatusAffects.Berzerking);
+        if (this.effects.findByType(StatusAffects.Berzerking) >= 0) {
+            this.effects.remove(StatusAffects.Berzerking);
         }
-        if (game.monster.findStatusAffect(StatusAffects.TailWhip) >= 0) {
-            game.monster.removeStatusAffect(StatusAffects.TailWhip);
+        if (game.monster.effects.findByType(StatusAffects.TailWhip) >= 0) {
+            game.monster.effects.remove(StatusAffects.TailWhip);
         }
-        if (findStatusAffect(StatusAffects.UBERWEB) >= 0) removeStatusAffect(StatusAffects.UBERWEB);
-        if (findStatusAffect(StatusAffects.DriderKiss) >= 0) removeStatusAffect(StatusAffects.DriderKiss);
-        if (findStatusAffect(StatusAffects.WebSilence) >= 0) removeStatusAffect(StatusAffects.WebSilence);
-        if (findStatusAffect(StatusAffects.GooArmorSilence) >= 0) removeStatusAffect(StatusAffects.GooArmorSilence);
-        if (findStatusAffect(StatusAffects.Bound) >= 0) removeStatusAffect(StatusAffects.Bound);
-        if (findStatusAffect(StatusAffects.GooArmorBind) >= 0) removeStatusAffect(StatusAffects.GooArmorBind);
-        if (findStatusAffect(StatusAffects.Whispered) >= 0) removeStatusAffect(StatusAffects.Whispered);
-        if (findStatusAffect(StatusAffects.AkbalSpeed) >= 0) {
-            dynStats("spe", statusAffectv1(StatusAffects.AkbalSpeed) * -1);
-            removeStatusAffect(StatusAffects.AkbalSpeed);
+        if (this.effects.findByType(StatusAffects.UBERWEB) >= 0) this.effects.remove(StatusAffects.UBERWEB);
+        if (this.effects.findByType(StatusAffects.DriderKiss) >= 0) this.effects.remove(StatusAffects.DriderKiss);
+        if (this.effects.findByType(StatusAffects.WebSilence) >= 0) this.effects.remove(StatusAffects.WebSilence);
+        if (this.effects.findByType(StatusAffects.GooArmorSilence) >= 0) this.effects.remove(StatusAffects.GooArmorSilence);
+        if (this.effects.findByType(StatusAffects.Bound) >= 0) this.effects.remove(StatusAffects.Bound);
+        if (this.effects.findByType(StatusAffects.GooArmorBind) >= 0) this.effects.remove(StatusAffects.GooArmorBind);
+        if (this.effects.findByType(StatusAffects.Whispered) >= 0) this.effects.remove(StatusAffects.Whispered);
+        if (this.effects.findByType(StatusAffects.AkbalSpeed) >= 0) {
+            dynStats("spe", this.effects.getValue1Of(StatusAffects.AkbalSpeed) * -1);
+            this.effects.remove(StatusAffects.AkbalSpeed);
         }
-        if (findStatusAffect(StatusAffects.AmilyVenom) >= 0) {
-            dynStats("str", statusAffectv1(StatusAffects.AmilyVenom), "spe", statusAffectv2(StatusAffects.AmilyVenom));
-            removeStatusAffect(StatusAffects.AmilyVenom);
+        if (this.effects.findByType(StatusAffects.AmilyVenom) >= 0) {
+            dynStats("str", this.effects.getValue1Of(StatusAffects.AmilyVenom), "spe", this.effects.getValue2Of(StatusAffects.AmilyVenom));
+            this.effects.remove(StatusAffects.AmilyVenom);
         }
-        while (findStatusAffect(StatusAffects.Blind) >= 0) {
-            removeStatusAffect(StatusAffects.Blind);
+        while (this.effects.findByType(StatusAffects.Blind) >= 0) {
+            this.effects.remove(StatusAffects.Blind);
         }
-        if (findStatusAffect(StatusAffects.SheilaOil) >= 0) {
-            removeStatusAffect(StatusAffects.SheilaOil);
+        if (this.effects.findByType(StatusAffects.SheilaOil) >= 0) {
+            this.effects.remove(StatusAffects.SheilaOil);
         }
-        if (game.monster.findStatusAffect(StatusAffects.TwuWuv) >= 0) {
-            inte += game.monster.statusAffectv1(StatusAffects.TwuWuv);
+        if (game.monster.effects.findByType(StatusAffects.TwuWuv) >= 0) {
+            inte += game.monster.effects.getValue1Of(StatusAffects.TwuWuv);
             statScreenRefresh();
             mainView.statsView.showStatUp('inte');
         }
-        if (findStatusAffect(StatusAffects.NagaVenom) >= 0) {
-            spe += statusAffectv1(StatusAffects.NagaVenom);
+        if (this.effects.findByType(StatusAffects.NagaVenom) >= 0) {
+            spe += this.effects.getValue1Of(StatusAffects.NagaVenom);
             mainView.statsView.showStatUp('spe');
-            // stats(0,0,statusAffectv1(StatusAffects.NagaVenom),0,0,0,0,0);
-            removeStatusAffect(StatusAffects.NagaVenom);
+            // stats(0,0,this.effects.getValue1Of(StatusAffects.NagaVenom),0,0,0,0,0);
+            this.effects.remove(StatusAffects.NagaVenom);
         }
-        if (findStatusAffect(StatusAffects.TentacleBind) >= 0) removeStatusAffect(StatusAffects.TentacleBind);
-        if (findStatusAffect(StatusAffects.NagaBind) >= 0) removeStatusAffect(StatusAffects.NagaBind);
-        if (findStatusAffect(StatusAffects.StoneLust) >= 0) {
-            removeStatusAffect(StatusAffects.StoneLust);
+        if (this.effects.findByType(StatusAffects.TentacleBind) >= 0) this.effects.remove(StatusAffects.TentacleBind);
+        if (this.effects.findByType(StatusAffects.NagaBind) >= 0) this.effects.remove(StatusAffects.NagaBind);
+        if (this.effects.findByType(StatusAffects.StoneLust) >= 0) {
+            this.effects.remove(StatusAffects.StoneLust);
         }
-        removeStatusAffect(StatusAffects.FirstAttack);
-        if (findStatusAffect(StatusAffects.TemporaryHeat) >= 0) removeStatusAffect(StatusAffects.TemporaryHeat);
-        if (findStatusAffect(StatusAffects.NoFlee) >= 0) removeStatusAffect(StatusAffects.NoFlee);
-        if (findStatusAffect(StatusAffects.Poison) >= 0) removeStatusAffect(StatusAffects.Poison);
-        if (findStatusAffect(StatusAffects.IsabellaStunned) >= 0) removeStatusAffect(StatusAffects.IsabellaStunned);
-        if (findStatusAffect(StatusAffects.Stunned) >= 0) removeStatusAffect(StatusAffects.Stunned);
-        if (findStatusAffect(StatusAffects.Confusion) >= 0) removeStatusAffect(StatusAffects.Confusion);
-        if (findStatusAffect(StatusAffects.ThroatPunch) >= 0) removeStatusAffect(StatusAffects.ThroatPunch);
-        if (findStatusAffect(StatusAffects.KissOfDeath) >= 0) removeStatusAffect(StatusAffects.KissOfDeath);
-        if (findStatusAffect(StatusAffects.AcidSlap) >= 0) removeStatusAffect(StatusAffects.AcidSlap);
-        if (findStatusAffect(StatusAffects.GooBind) >= 0) removeStatusAffect(StatusAffects.GooBind);
-        if (findStatusAffect(StatusAffects.HarpyBind) >= 0) removeStatusAffect(StatusAffects.HarpyBind);
-        if (findStatusAffect(StatusAffects.CalledShot) >= 0) {
-            spe += statusAffectv1(StatusAffects.CalledShot);
+        this.effects.remove(StatusAffects.FirstAttack);
+        if (this.effects.findByType(StatusAffects.TemporaryHeat) >= 0) this.effects.remove(StatusAffects.TemporaryHeat);
+        if (this.effects.findByType(StatusAffects.NoFlee) >= 0) this.effects.remove(StatusAffects.NoFlee);
+        if (this.effects.findByType(StatusAffects.Poison) >= 0) this.effects.remove(StatusAffects.Poison);
+        if (this.effects.findByType(StatusAffects.IsabellaStunned) >= 0) this.effects.remove(StatusAffects.IsabellaStunned);
+        if (this.effects.findByType(StatusAffects.Stunned) >= 0) this.effects.remove(StatusAffects.Stunned);
+        if (this.effects.findByType(StatusAffects.Confusion) >= 0) this.effects.remove(StatusAffects.Confusion);
+        if (this.effects.findByType(StatusAffects.ThroatPunch) >= 0) this.effects.remove(StatusAffects.ThroatPunch);
+        if (this.effects.findByType(StatusAffects.KissOfDeath) >= 0) this.effects.remove(StatusAffects.KissOfDeath);
+        if (this.effects.findByType(StatusAffects.AcidSlap) >= 0) this.effects.remove(StatusAffects.AcidSlap);
+        if (this.effects.findByType(StatusAffects.GooBind) >= 0) this.effects.remove(StatusAffects.GooBind);
+        if (this.effects.findByType(StatusAffects.HarpyBind) >= 0) this.effects.remove(StatusAffects.HarpyBind);
+        if (this.effects.findByType(StatusAffects.CalledShot) >= 0) {
+            spe += this.effects.getValue1Of(StatusAffects.CalledShot);
             mainView.statsView.showStatUp('spe');
             // speDown.visible = false;
             // speUp.visible = true;
-            removeStatusAffect(StatusAffects.CalledShot);
+            this.effects.remove(StatusAffects.CalledShot);
         }
-        if (findStatusAffect(StatusAffects.DemonSeed) >= 0) {
-            removeStatusAffect(StatusAffects.DemonSeed);
+        if (this.effects.findByType(StatusAffects.DemonSeed) >= 0) {
+            this.effects.remove(StatusAffects.DemonSeed);
         }
-        if (findStatusAffect(StatusAffects.ParalyzeVenom) >= 0) {
-            str += statusAffect(findStatusAffect(StatusAffects.ParalyzeVenom)).value1;
-            spe += statusAffect(findStatusAffect(StatusAffects.ParalyzeVenom)).value2;
-            removeStatusAffect(StatusAffects.ParalyzeVenom);
+        if (this.effects.findByType(StatusAffects.ParalyzeVenom) >= 0) {
+            str += this.effects[this.effects.findByType(StatusAffects.ParalyzeVenom)].value1;
+            spe += this.effects[this.effects.findByType(StatusAffects.ParalyzeVenom)].value2;
+            this.effects.remove(StatusAffects.ParalyzeVenom);
         }
-        if (findStatusAffect(StatusAffects.lustvenom) >= 0) {
-            removeStatusAffect(StatusAffects.lustvenom);
+        if (this.effects.findByType(StatusAffects.lustvenom) >= 0) {
+            this.effects.remove(StatusAffects.lustvenom);
         }
-        if (findStatusAffect(StatusAffects.InfestAttempted) >= 0) {
-            removeStatusAffect(StatusAffects.InfestAttempted);
+        if (this.effects.findByType(StatusAffects.InfestAttempted) >= 0) {
+            this.effects.remove(StatusAffects.InfestAttempted);
         }
-        if (findStatusAffect(StatusAffects.Might) >= 0) {
-            dynStats("str", -statusAffectv1(StatusAffects.Might), "tou", -statusAffectv2(StatusAffects.Might));
-            removeStatusAffect(StatusAffects.Might);
+        if (this.effects.findByType(StatusAffects.Might) >= 0) {
+            dynStats("str", -this.effects.getValue1Of(StatusAffects.Might), "tou", -this.effects.getValue2Of(StatusAffects.Might));
+            this.effects.remove(StatusAffects.Might);
         }
-        if (findStatusAffect(StatusAffects.ChargeWeapon) >= 0) {
-            removeStatusAffect(StatusAffects.ChargeWeapon);
+        if (this.effects.findByType(StatusAffects.ChargeWeapon) >= 0) {
+            this.effects.remove(StatusAffects.ChargeWeapon);
         }
-        if (findStatusAffect(StatusAffects.Disarmed) >= 0) {
-            removeStatusAffect(StatusAffects.Disarmed);
+        if (this.effects.findByType(StatusAffects.Disarmed) >= 0) {
+            this.effects.remove(StatusAffects.Disarmed);
             if (weapon == WeaponLib.FISTS) {
                 // 					weapon = ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID]) as Weapon;
                 // 					(ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID]) as Weapon).doEffect(this, false);
@@ -1616,9 +1616,9 @@ export class Player extends Character {
                 flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID];
             }
         }
-        if (findStatusAffect(StatusAffects.AnemoneVenom) >= 0) {
-            str += statusAffectv1(StatusAffects.AnemoneVenom);
-            spe += statusAffectv2(StatusAffects.AnemoneVenom);
+        if (this.effects.findByType(StatusAffects.AnemoneVenom) >= 0) {
+            str += this.effects.getValue1Of(StatusAffects.AnemoneVenom);
+            spe += this.effects.getValue2Of(StatusAffects.AnemoneVenom);
             // Make sure nothing got out of bounds
             dynStats("cor", 0);
 
@@ -1626,57 +1626,57 @@ export class Player extends Character {
             mainView.statsView.showStatUp('str');
             // speUp.visible = true;
             // strUp.visible = true;
-            removeStatusAffect(StatusAffects.AnemoneVenom);
+            this.effects.remove(StatusAffects.AnemoneVenom);
         }
-        if (findStatusAffect(StatusAffects.GnollSpear) >= 0) {
-            spe += statusAffectv1(StatusAffects.GnollSpear);
+        if (this.effects.findByType(StatusAffects.GnollSpear) >= 0) {
+            spe += this.effects.getValue1Of(StatusAffects.GnollSpear);
             // Make sure nothing got out of bounds
             dynStats("cor", 0);
             mainView.statsView.showStatUp('spe');
             // speUp.visible = true;
             // speDown.visible = false;
-            removeStatusAffect(StatusAffects.GnollSpear);
+            this.effects.remove(StatusAffects.GnollSpear);
         }
-        if (findStatusAffect(StatusAffects.BasiliskCompulsion) >= 0) removeStatusAffect(StatusAffects.BasiliskCompulsion);
-        if (findStatusAffect(StatusAffects.BasiliskSlow) >= 0) {
-            spe += statusAffectv1(StatusAffects.BasiliskSlow);
+        if (this.effects.findByType(StatusAffects.BasiliskCompulsion) >= 0) this.effects.remove(StatusAffects.BasiliskCompulsion);
+        if (this.effects.findByType(StatusAffects.BasiliskSlow) >= 0) {
+            spe += this.effects.getValue1Of(StatusAffects.BasiliskSlow);
             mainView.statsView.showStatUp('spe');
             // speUp.visible = true;
             // speDown.visible = false;
-            removeStatusAffect(StatusAffects.BasiliskSlow);
+            this.effects.remove(StatusAffects.BasiliskSlow);
         }
-        while (findStatusAffect(StatusAffects.IzmaBleed) >= 0) removeStatusAffect(StatusAffects.IzmaBleed);
-        if (findStatusAffect(StatusAffects.GardenerSapSpeed) >= 0) {
-            spe += statusAffectv1(StatusAffects.GardenerSapSpeed);
+        while (this.effects.findByType(StatusAffects.IzmaBleed) >= 0) this.effects.remove(StatusAffects.IzmaBleed);
+        if (this.effects.findByType(StatusAffects.GardenerSapSpeed) >= 0) {
+            spe += this.effects.getValue1Of(StatusAffects.GardenerSapSpeed);
             mainView.statsView.showStatUp('spe');
-            removeStatusAffect(StatusAffects.GardenerSapSpeed);
+            this.effects.remove(StatusAffects.GardenerSapSpeed);
         }
-        if (findStatusAffect(StatusAffects.KnockedBack) >= 0) removeStatusAffect(StatusAffects.KnockedBack);
-        if (findStatusAffect(StatusAffects.RemovedArmor) >= 0) removeStatusAffect(StatusAffects.KnockedBack);
-        if (findStatusAffect(StatusAffects.JCLustLevel) >= 0) removeStatusAffect(StatusAffects.JCLustLevel);
-        if (findStatusAffect(StatusAffects.MirroredAttack) >= 0) removeStatusAffect(StatusAffects.MirroredAttack);
-        if (findStatusAffect(StatusAffects.Tentagrappled) >= 0) removeStatusAffect(StatusAffects.Tentagrappled);
-        if (findStatusAffect(StatusAffects.TentagrappleCooldown) >= 0) removeStatusAffect(StatusAffects.TentagrappleCooldown);
-        if (findStatusAffect(StatusAffects.ShowerDotEffect) >= 0) removeStatusAffect(StatusAffects.ShowerDotEffect);
-        if (findStatusAffect(StatusAffects.GardenerSapSpeed) >= 0) {
-            spe += statusAffectv1(StatusAffects.GardenerSapSpeed);
+        if (this.effects.findByType(StatusAffects.KnockedBack) >= 0) this.effects.remove(StatusAffects.KnockedBack);
+        if (this.effects.findByType(StatusAffects.RemovedArmor) >= 0) this.effects.remove(StatusAffects.KnockedBack);
+        if (this.effects.findByType(StatusAffects.JCLustLevel) >= 0) this.effects.remove(StatusAffects.JCLustLevel);
+        if (this.effects.findByType(StatusAffects.MirroredAttack) >= 0) this.effects.remove(StatusAffects.MirroredAttack);
+        if (this.effects.findByType(StatusAffects.Tentagrappled) >= 0) this.effects.remove(StatusAffects.Tentagrappled);
+        if (this.effects.findByType(StatusAffects.TentagrappleCooldown) >= 0) this.effects.remove(StatusAffects.TentagrappleCooldown);
+        if (this.effects.findByType(StatusAffects.ShowerDotEffect) >= 0) this.effects.remove(StatusAffects.ShowerDotEffect);
+        if (this.effects.findByType(StatusAffects.GardenerSapSpeed) >= 0) {
+            spe += this.effects.getValue1Of(StatusAffects.GardenerSapSpeed);
             mainView.statsView.showStatUp('spe');
-            removeStatusAffect(StatusAffects.GardenerSapSpeed);
+            this.effects.remove(StatusAffects.GardenerSapSpeed);
         }
-        if (findStatusAffect(StatusAffects.VineHealUsed) >= 0) removeStatusAffect(StatusAffects.VineHealUsed);
-        if (findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0) {
-            str += statusAffectv2(StatusAffects.DriderIncubusVenom);
-            removeStatusAffect(StatusAffects.DriderIncubusVenom);
+        if (this.effects.findByType(StatusAffects.VineHealUsed) >= 0) this.effects.remove(StatusAffects.VineHealUsed);
+        if (this.effects.findByType(StatusAffects.DriderIncubusVenom) >= 0) {
+            str += this.effects.getValue2Of(StatusAffects.DriderIncubusVenom);
+            this.effects.remove(StatusAffects.DriderIncubusVenom);
         }
-        if (findStatusAffect(StatusAffects.TaintedMind) >= 0) removeStatusAffect(StatusAffects.TaintedMind);
-        if (findStatusAffect(StatusAffects.PurpleHaze) >= 0) removeStatusAffect(StatusAffects.PurpleHaze);
-        if (findStatusAffect(StatusAffects.MinotaurKingMusk) >= 0) removeStatusAffect(StatusAffects.MinotaurKingMusk);
-        if (findStatusAffect(StatusAffects.MinotaurKingsTouch) >= 0) removeStatusAffect(StatusAffects.MinotaurKingsTouch);
-        if (findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0) removeStatusAffect(StatusAffects.LethicesRapeTentacles);
-        if (findStatusAffect(StatusAffects.OnFire) >= 0) removeStatusAffect(StatusAffects.OnFire);
-        if (findStatusAffect(StatusAffects.LethicesShell) >= 0) removeStatusAffect(StatusAffects.LethicesShell);
-        if (findStatusAffect(StatusAffects.WhipSilence) >= 0) removeStatusAffect(StatusAffects.WhipSilence);
-        if (findStatusAffect(StatusAffects.PigbysHands) >= 0) removeStatusAffect(StatusAffects.PigbysHands);
+        if (this.effects.findByType(StatusAffects.TaintedMind) >= 0) this.effects.remove(StatusAffects.TaintedMind);
+        if (this.effects.findByType(StatusAffects.PurpleHaze) >= 0) this.effects.remove(StatusAffects.PurpleHaze);
+        if (this.effects.findByType(StatusAffects.MinotaurKingMusk) >= 0) this.effects.remove(StatusAffects.MinotaurKingMusk);
+        if (this.effects.findByType(StatusAffects.MinotaurKingsTouch) >= 0) this.effects.remove(StatusAffects.MinotaurKingsTouch);
+        if (this.effects.findByType(StatusAffects.LethicesRapeTentacles) >= 0) this.effects.remove(StatusAffects.LethicesRapeTentacles);
+        if (this.effects.findByType(StatusAffects.OnFire) >= 0) this.effects.remove(StatusAffects.OnFire);
+        if (this.effects.findByType(StatusAffects.LethicesShell) >= 0) this.effects.remove(StatusAffects.LethicesShell);
+        if (this.effects.findByType(StatusAffects.WhipSilence) >= 0) this.effects.remove(StatusAffects.WhipSilence);
+        if (this.effects.findByType(StatusAffects.PigbysHands) >= 0) this.effects.remove(StatusAffects.PigbysHands);
     }
 
     public consumeItem(itype: ItemType, amount: number = 1): boolean {
@@ -1910,7 +1910,7 @@ export class Player extends Character {
         if (removed == 1) {
             if (cocks.length == 0) {
                 outputText("<b>Your manhood shrinks into your body, disappearing completely.</b>", false);
-                if (findStatusAffect(StatusAffects.Infested) >= 0) outputText("  Like rats fleeing a sinking ship, a stream of worms squirts free from your withering member, slithering away.", false);
+                if (this.effects.findByType(StatusAffects.Infested) >= 0) outputText("  Like rats fleeing a sinking ship, a stream of worms squirts free from your withering member, slithering away.", false);
             }
             if (cocks.length == 1) {
                 outputText("<b>Your smallest penis disappears, shrinking into your body and leaving you with just one " + cockDescript(game.player, 0) + ".</b>", false);
@@ -1922,7 +1922,7 @@ export class Player extends Character {
         if (removed > 1) {
             if (cocks.length == 0) {
                 outputText("<b>All your male endowments shrink smaller and smaller, disappearing one at a time.</b>", false);
-                if (findStatusAffect(StatusAffects.Infested) >= 0) outputText("  Like rats fleeing a sinking ship, a stream of worms squirts free from your withering member, slithering away.", false);
+                if (this.effects.findByType(StatusAffects.Infested) >= 0) outputText("  Like rats fleeing a sinking ship, a stream of worms squirts free from your withering member, slithering away.", false);
             }
             if (cocks.length == 1) {
                 outputText("<b>You feel " + num2Text(removed) + " cocks disappear into your groin, leaving you with just your " + cockDescript(game.player, 0) + ".", false);
@@ -1932,7 +1932,7 @@ export class Player extends Character {
             }
         }
         // remove infestation if cockless
-        if (cocks.length == 0) removeStatusAffect(StatusAffects.Infested);
+        if (cocks.length == 0) this.effects.remove(StatusAffects.Infested);
         if (cocks.length == 0 && balls > 0) {
             outputText("  <b>Your " + sackDescript(player) + " and " + ballsDescriptLight(player) + " shrink and disappear, vanishing into your groin.</b>", false);
             balls = 0;
@@ -2004,10 +2004,10 @@ export class Player extends Character {
             if (output) {
                 outputText("\n\nYour mind clouds as your " + vaginaDescript(player, 0) + " moistens.  Despite already being in heat, the desire to copulate constantly grows even larger.", false);
             }
-            const temp: number = findStatusAffect(StatusAffects.Heat);
-            statusAffect(temp).value1 += 5 * intensity;
-            statusAffect(temp).value2 += 5 * intensity;
-            statusAffect(temp).value3 += 48 * intensity;
+            const temp: number = this.effects.findByType(StatusAffects.Heat);
+            this.effects[temp].value1 += 5 * intensity;
+            this.effects[temp].value2 += 5 * intensity;
+            this.effects[temp].value3 += 48 * intensity;
             dynStats("lib", 5 * intensity, "resisted", false, "noBimbo", true);
         }
         // Go into heat.  Heats v1 is bonus fertility, v2 is bonus libido, v3 is hours till it's gone
@@ -2015,7 +2015,7 @@ export class Player extends Character {
             if (output) {
                 outputText("\n\nYour mind clouds as your " + vaginaDescript(player, 0) + " moistens.  Your hands begin stroking your body from top to bottom, your sensitive skin burning with desire.  Fantasies about bending over and presenting your needy pussy to a male overwhelm you as <b>you realize you have gone into heat!</b>", false);
             }
-            createStatusAffect(StatusAffects.Heat, 10 * intensity, 15 * intensity, 48 * intensity, 0);
+            this.effects.create(StatusAffects.Heat, 10 * intensity, 15 * intensity, 48 * intensity, 0);
             dynStats("lib", 15 * intensity, "resisted", false, "noBimbo", true);
         }
         return true;
@@ -2040,9 +2040,9 @@ export class Player extends Character {
                 outputText("\n\nYour " + cockDescript(game.player, 0) + " throbs and dribbles as your desire to mate intensifies.  You know that <b>you've sunken deeper into rut</b>, but all that really matters is unloading into a cum-hungry cunt.", false);
             }
 
-            addStatusValue(StatusAffects.Rut, 1, 100 * intensity);
-            addStatusValue(StatusAffects.Rut, 2, 5 * intensity);
-            addStatusValue(StatusAffects.Rut, 3, 48 * intensity);
+            this.effects.addValue(StatusAffects.Rut, 1, 100 * intensity);
+            this.effects.addValue(StatusAffects.Rut, 2, 5 * intensity);
+            this.effects.addValue(StatusAffects.Rut, 3, 48 * intensity);
             dynStats("lib", 5 * intensity, "resisted", false, "noBimbo", true);
         }
         else {
@@ -2053,7 +2053,7 @@ export class Player extends Character {
             // v1 - bonus cum production
             // v2 - bonus libido
             // v3 - time remaining!
-            createStatusAffect(StatusAffects.Rut, 150 * intensity, 5 * intensity, 100 * intensity, 0);
+            this.effects.create(StatusAffects.Rut, 150 * intensity, 5 * intensity, 100 * intensity, 0);
             dynStats("lib", 5 * intensity, "resisted", false, "noBimbo", true);
         }
 

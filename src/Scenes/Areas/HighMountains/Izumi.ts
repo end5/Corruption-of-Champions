@@ -44,7 +44,7 @@ export class Izumi extends Monster {
     // Monster won, not player, gg for descriptive method names
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         flags[kFLAGS.IZUMI_TIMES_LOST_FIGHT]++;
-        if (player.findStatusAffect(StatusAffects.Titsmother) >= 0) {
+        if (player.effects.findByType(StatusAffects.Titsmother) >= 0) {
             this.cleanup();
             game.highMountains.izumiScenes.deathBySnuSnuIMeanGiantOniTits();
             return;
@@ -59,12 +59,12 @@ export class Izumi extends Monster {
     // Override combat AI
     protected performCombatAction(): void {
         // Handle chokeslam mechanics
-        if (player.findStatusAffect(StatusAffects.Chokeslam) >= 0) {
-            if (combatDebug) trace("ChokeSlam Rounds to Damage: " + player.statusAffectv1(StatusAffects.Chokeslam));
+        if (player.effects.findByType(StatusAffects.Chokeslam) >= 0) {
+            if (combatDebug) trace("ChokeSlam Rounds to Damage: " + player.effects.getValue1Of(StatusAffects.Chokeslam));
 
-            player.addStatusValue(StatusAffects.Chokeslam, 1, -1);
+            player.effects.addValue(StatusAffects.Chokeslam, 1, -1);
 
-            if (player.statusAffectv1(StatusAffects.Chokeslam) <= 0) {
+            if (player.effects.getValue1Of(StatusAffects.Chokeslam) <= 0) {
                 chokeSlamDamage();
                 cleanupChokeslam();
             }
@@ -74,37 +74,37 @@ export class Izumi extends Monster {
         }
 
         // Handle groundpound
-        if (player.findStatusAffect(StatusAffects.Groundpound) >= 0) {
-            player.addStatusValue(StatusAffects.Groundpound, 1, -1);
+        if (player.effects.findByType(StatusAffects.Groundpound) >= 0) {
+            player.effects.addValue(StatusAffects.Groundpound, 1, -1);
 
-            if (player.statusAffectv1(StatusAffects.Groundpound) <= 0) {
+            if (player.effects.getValue1Of(StatusAffects.Groundpound) <= 0) {
                 cleanupGroundpound();
             }
         }
 
         // Handle titsmother
-        if (player.findStatusAffect(StatusAffects.Titsmother) >= 0) {
+        if (player.effects.findByType(StatusAffects.Titsmother) >= 0) {
             combatRoundOver();
             return;
         }
 
         // Titsmother toggle; gonna need to play with this, it should only be used once per fight
         if (this.HPRatio() <= 0.25) {
-            if (this.findStatusAffect(StatusAffects.UsedTitsmother) <= -1) {
+            if (this.effects.findByType(StatusAffects.UsedTitsmother) <= -1) {
                 trace("Could use titsmother...");
             }
         }
 
-        if ((this.HPRatio() <= 0.25) && (this.findStatusAffect(StatusAffects.UsedTitsmother) <= -1)) {
+        if ((this.HPRatio() <= 0.25) && (this.effects.findByType(StatusAffects.UsedTitsmother) <= -1)) {
             if (combatDebug) trace("Using Titsmother!");
             titSmother();
-            this.createStatusAffect(StatusAffects.UsedTitsmother, 0, 0, 0, 0);
+            this.effects.create(StatusAffects.UsedTitsmother, 0, 0, 0, 0);
             return;
         }
         else {
             const actions: any[] = [straightJab, straightJab, straightJab, roundhouseKick, roundhouseKick, roundhouseKick, chokeSlam];
 
-            if (player.findStatusAffect(StatusAffects.Groundpound) <= -1) {
+            if (player.effects.findByType(StatusAffects.Groundpound) <= -1) {
                 actions.push(groundPound);
                 actions.push(groundPound);
             }
@@ -173,7 +173,7 @@ export class Izumi extends Monster {
         }
         else {
             outputText("Izumi surges towards you, smashing aside your guard and seizing you by the throat in the blink of an eye.  Lifting you above her head, you can only struggle to breathe as the enormous Oni grins at you like some sort of prize.");
-            player.createStatusAffect(StatusAffects.Chokeslam, 3, 0, 0, 0);
+            player.effects.create(StatusAffects.Chokeslam, 3, 0, 0, 0);
 
             if (combatDebug) trace("Applied Chokeslam effect");
         }
@@ -259,10 +259,10 @@ export class Izumi extends Monster {
 
     // Remove the effect post-combat
     public cleanupChokeslam(): void {
-        if (player.findStatusAffect(StatusAffects.Chokeslam) >= 0) {
+        if (player.effects.findByType(StatusAffects.Chokeslam) >= 0) {
             trace("Removing chokeslam");
 
-            player.removeStatusAffect(StatusAffects.Chokeslam);
+            player.effects.remove(StatusAffects.Chokeslam);
         }
     }
 
@@ -278,7 +278,7 @@ export class Izumi extends Monster {
             outputText("The rumbling actually knocks you off your feet, sprawling on the ground and banging your head.  As the shaking subsides, you pull yourself upright, but you feel a little unsteady on your [feet] after the disorienting impact.");
 
             const spdReducedBy: number = int(player.spe * 0.25);
-            player.createStatusAffect(StatusAffects.Groundpound, 3, spdReducedBy, 0, 0);
+            player.effects.create(StatusAffects.Groundpound, 3, spdReducedBy, 0, 0);
             dynStats("spe-", spdReducedBy);
 
             if (combatDebug) trace("Applying Groundslam slow");
@@ -289,12 +289,12 @@ export class Izumi extends Monster {
 
     // Remove the effect post-combat, fixup stats
     public cleanupGroundpound(): void {
-        if (player.findStatusAffect(StatusAffects.Groundpound) >= 0) {
+        if (player.effects.findByType(StatusAffects.Groundpound) >= 0) {
             // Can't use dynStats to achieve this, as it can give back more speed than we originally took away due to perks
-            player.spe += player.statusAffectv2(StatusAffects.Groundpound);
+            player.spe += player.effects.getValue2Of(StatusAffects.Groundpound);
             if (player.spe > 100) player.spe = 100;
 
-            player.removeStatusAffect(StatusAffects.Groundpound);
+            player.effects.remove(StatusAffects.Groundpound);
 
             trace("Removing Groundpound slow effect");
         }
@@ -311,15 +311,15 @@ export class Izumi extends Monster {
         else outputText(" face-");
         outputText("first into Izumi - specifically, into her chest.  Shocked by suddenly having your face rammed into the pillowy soft expanse of Izumi’s bust, you rear back only to be slammed straight back into the mountainous expanse by Izumi’s arm.");
 
-        player.createStatusAffect(StatusAffects.Titsmother, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.Titsmother, 0, 0, 0, 0);
         dynStats("lus", (player.lib / 15) + 5 + rand(5));
         combatRoundOver();
     }
 
     // Remove the effect post-combat
     public cleanupTitsmother(): void {
-        if (player.findStatusAffect(StatusAffects.Titsmother) >= 0) {
-            player.removeStatusAffect(StatusAffects.Titsmother);
+        if (player.effects.findByType(StatusAffects.Titsmother) >= 0) {
+            player.effects.remove(StatusAffects.Titsmother);
             if (combatDebug) trace("Removing Titsmother");
         }
     }

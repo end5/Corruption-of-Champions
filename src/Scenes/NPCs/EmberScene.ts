@@ -74,16 +74,16 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             }
         }
         // Ember fuck cooldown
-        if (player.statusAffectv1(StatusAffects.EmberFuckCooldown) > 0) {
-            player.addStatusValue(StatusAffects.EmberFuckCooldown, 1, -1);
-            if (player.statusAffectv1(StatusAffects.EmberFuckCooldown) < 1) player.removeStatusAffect(StatusAffects.EmberFuckCooldown);
+        if (player.effects.getValue1Of(StatusAffects.EmberFuckCooldown) > 0) {
+            player.effects.addValue(StatusAffects.EmberFuckCooldown, 1, -1);
+            if (player.effects.getValue1Of(StatusAffects.EmberFuckCooldown) < 1) player.effects.remove(StatusAffects.EmberFuckCooldown);
         }
         // Ember napping
-        if (player.findStatusAffect(StatusAffects.EmberNapping) >= 0) {
-            player.addStatusValue(StatusAffects.EmberNapping, 1, -1);
-            if (player.statusAffectv1(StatusAffects.EmberNapping) <= 0) player.removeStatusAffect(StatusAffects.EmberNapping);
+        if (player.effects.findByType(StatusAffects.EmberNapping) >= 0) {
+            player.effects.addValue(StatusAffects.EmberNapping, 1, -1);
+            if (player.effects.getValue1Of(StatusAffects.EmberNapping) <= 0) player.effects.remove(StatusAffects.EmberNapping);
         }
-        if (followerEmber() && player.findStatusAffect(StatusAffects.EmberNapping) < 0) {
+        if (followerEmber() && player.effects.findByType(StatusAffects.EmberNapping) < 0) {
             // Mino cum freakout - PC partly addicted!
             if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 1 && player.perks.findByType(PerkLib.MinotaurCumAddict) < 0 && flags[kFLAGS.EMBER_CURRENTLY_FREAKING_ABOUT_MINOCUM] == 0) {
                 minotaurJizzFreakout();
@@ -113,7 +113,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
     }
 
     public timeChangeLarge(): boolean {
-        if (player.findStatusAffect(StatusAffects.EmberNapping) < 0 && followerEmber() && player.findStatusAffect(StatusAffects.EmberFuckCooldown) < 0) {
+        if (player.effects.findByType(StatusAffects.EmberNapping) < 0 && followerEmber() && player.effects.findByType(StatusAffects.EmberFuckCooldown) < 0) {
             // Ember get's a whiff of fuckscent and knocks up PC!
             if (player.hasVagina() && player.inHeat && player.pregnancyIncubation == 0 && rand(10) == 0 && (flags[kFLAGS.EMBER_GENDER] == 1 || flags[kFLAGS.EMBER_GENDER] == 3)) {
                 emberRapesYourHeatness();
@@ -1082,7 +1082,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             else if (subChoice == 2) outputText("a pair of muscle-bound bull-men beating on each other with their bare fists. They spent over an hour smashing each other into a bloody pulp, and then the winner promptly started fucking the loser up the ass.  I had seen more than enough by that point, so I left.");
             else if (subChoice == 3) outputText("this... creature... that looked kind of like a human woman, but with a big dick where her clit should be.  She was walking around stark naked, 'cept for a bunch of piercings, and leading this bull-man along like a pet by a chain attached to a ring anchored into his cockhead.");
             else if (subChoice == 4) outputText("a couple of goblins sharpening scissors on some rocks outside of a cave with a door on it. Weird. Wonder what they could be doing in there?");
-            else if (player.findStatusAffect(StatusAffects.WormsOff) < 0 && rand(2) == 0) outputText("a horrible swarm of slimy white worms, clumped together into a mockery of a human form and squelching along.  It managed to latch onto this two-headed dog-creature and... ugh!  The worms started forcing their way into both of its cocks!  I've never seen anything so disgusting!");
+            else if (player.effects.findByType(StatusAffects.WormsOff) < 0 && rand(2) == 0) outputText("a horrible swarm of slimy white worms, clumped together into a mockery of a human form and squelching along.  It managed to latch onto this two-headed dog-creature and... ugh!  The worms started forcing their way into both of its cocks!  I've never seen anything so disgusting!");
             else if (subChoice == 5) outputText("this two-headed dog-morph loping around; it spotted an imp, dropped to all fours, then gave chase. Managed to catch the ugly little demon, whereupon it ass-raped it, then ate it.");
         }
         else if (choice == 1) {
@@ -1099,7 +1099,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             // (If player has not yet impregnated Tamani)
             else if (subChoice == 3 && !forest.tamaniScene.pregnancy.isPregnant) outputText("one goblin being teased by a bunch of pregnant goblins for not being pregnant yet.  She just spat back that she wanted a 'better catch' to be her baby-maker than a mere imp and wandered off.");
             // (If Jojo isn't in the camp & not corrupt)
-            else if (rand(2) == 0 && monk <= 1 && player.findStatusAffect(StatusAffects.PureCampJojo) < 0) outputText("this mouse-morph monk, sitting in a glade and meditating. A goblin tried to proposition him; he just gave her a lecture and sent her running away in tears.  When an imp tried to attack him, he crushed its skull with a staff he had.  Not bad moves for such a weedy little thing...");
+            else if (rand(2) == 0 && monk <= 1 && player.effects.findByType(StatusAffects.PureCampJojo) < 0) outputText("this mouse-morph monk, sitting in a glade and meditating. A goblin tried to proposition him; he just gave her a lecture and sent her running away in tears.  When an imp tried to attack him, he crushed its skull with a staff he had.  Not bad moves for such a weedy little thing...");
             else outputText("one glade I touched down in to catch myself a nice brace of plump coneys, when all of a sudden this... this thing made out of flailing vines and fruit attacks me.  It went up in a puff of smoke once I torched it, of course.");
         }
         else if (choice == 2) {
@@ -1112,12 +1112,12 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             }
             else {
                 // (If Whitney's Farm is not yet in the Places menu)
-                if (rand(3) == 0 && player.statusAffectv1(StatusAffects.MetWhitney) <= 1) outputText(" a big farm on the shoreline.  I saw some sort of cow-woman tending to fields of peppers, and a dog-woman herding cattle. They looked pretty fat and tasty, too... What?  I meant the cattle, stupid!  And I wouldn't have taken them - it's no fun snatching up livestock.  I prefer to chase down a deer or a wild auroch or something like that.");
+                if (rand(3) == 0 && player.effects.getValue1Of(StatusAffects.MetWhitney) <= 1) outputText(" a big farm on the shoreline.  I saw some sort of cow-woman tending to fields of peppers, and a dog-woman herding cattle. They looked pretty fat and tasty, too... What?  I meant the cattle, stupid!  And I wouldn't have taken them - it's no fun snatching up livestock.  I prefer to chase down a deer or a wild auroch or something like that.");
                 // (if Fetish Cult is encounterable)
-                else if (rand(3) == 0 && player.findStatusAffect(StatusAffects.FetishOn) >= 0) outputText("a pair of humans, arguing about sex.  They both wanted it, but the guy said he wanted to do the 'naughty schoolboy and female teacher' routine, while the girl wanted to do the 'noblewoman and love-servant' routine.  Weird; their clothes kept changing back and forth as they argued.");
+                else if (rand(3) == 0 && player.effects.findByType(StatusAffects.FetishOn) >= 0) outputText("a pair of humans, arguing about sex.  They both wanted it, but the guy said he wanted to do the 'naughty schoolboy and female teacher' routine, while the girl wanted to do the 'noblewoman and love-servant' routine.  Weird; their clothes kept changing back and forth as they argued.");
                 // (If Beautiful Sword has not been acquired)
-                else if (rand(3) == 0 && player.findStatusAffect(StatusAffects.TookBlessedSword) < 0 && player.findStatusAffect(StatusAffects.BSwordBroken) < 0) outputText("a sword jammed into a tree.  Weird; what kind of idiot would stick a weapon there like that?  And what kind of weakling wouldn't be able to take it out?");
-                else if (rand(3) == 0 && player.findStatusAffect(StatusAffects.CampRathazul) < 0) outputText("a smelly rat-man moping around while some weird equipment bubbled and boiled.  I think maybe he was an alchemist.");
+                else if (rand(3) == 0 && player.effects.findByType(StatusAffects.TookBlessedSword) < 0 && player.effects.findByType(StatusAffects.BSwordBroken) < 0) outputText("a sword jammed into a tree.  Weird; what kind of idiot would stick a weapon there like that?  And what kind of weakling wouldn't be able to take it out?");
+                else if (rand(3) == 0 && player.effects.findByType(StatusAffects.CampRathazul) < 0) outputText("a smelly rat-man moping around while some weird equipment bubbled and boiled.  I think maybe he was an alchemist.");
                 else outputText("a great blob of green goo, sliding along and minding its own business.  I could swear it looked up at me once, and grew a penis... that can't be right, though.");
             }
         }
@@ -1127,7 +1127,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             if (subChoice == 0) outputText("a woman with four big breasts, squeezing milk out of her tits and into the sand.  I didn't know breasts could hold that much milk!");
             else if (subChoice == 1) outputText("a whole tribe of demons, lounging around an oasis.  Would have been too much bother to kick the crap out of them, so I left them alone - well, alright, I did buzz them to make them scatter like scared sheep for fun.");
             // (if player hasn't solved Marcus & Lucia's argument)
-            else if (rand(2) == 0 && player.findStatusAffect(StatusAffects.WandererDemon) < 0 && player.findStatusAffect(StatusAffects.WandererHuman) < 0) outputText("a human with balls so big he had to carry them in a wheelbarrow, trundling through the wasteland with a succubus.  They were arguing about whether or not he should become an incubus.");
+            else if (rand(2) == 0 && player.effects.findByType(StatusAffects.WandererDemon) < 0 && player.effects.findByType(StatusAffects.WandererHuman) < 0) outputText("a human with balls so big he had to carry them in a wheelbarrow, trundling through the wasteland with a succubus.  They were arguing about whether or not he should become an incubus.");
             else {
                 outputText("this strange creature, like a woman with a snake's tail for legs, slithering through the sand.  ");
                 if (player.isNaga()) outputText("She looked a lot like you.");
@@ -1901,8 +1901,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nEmber flushes with embarrassment.  \"<i>I-I... That's it!  No more milk for you!</i>\" " + emberMF("he", "she") + " declares, hauling you upright and shooing you out of her den.");
             outputText("\n\nYou shake your head with good temper.  Still, you got your fill of her milk, and you feel refreshed and renewed, new vitality flowing through your veins.");
             // (PC's D.Breath timer = not ready: Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!)
-            if (player.findStatusAffect(StatusAffects.DragonBreathCooldown) >= 0) {
-                player.removeStatusAffect(StatusAffects.DragonBreathCooldown);
+            if (player.effects.findByType(StatusAffects.DragonBreathCooldown) >= 0) {
+                player.effects.remove(StatusAffects.DragonBreathCooldown);
                 outputText("  Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!");
             }
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
@@ -1959,8 +1959,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nEmber can't hide the faintest of smiles that graces " + emberMF("his", "her") + " scaly face.  You yelp softly as you feel a sharp prick against your belly; when you feel it again, you jump out of Ember's lap to reveal the clawed finger prodding you.  \"<i>Payback for teasing me earlier.  And don't think I'll be feeding you my milk everytime you ask,</i>\" " + emberMF("he", "she") + " finishes, with a small puff of smoke.");
             outputText("\n\nYou can't resist pointing out that " + emberMF("he", "she") + " certainly seemed eager to let you drink your fill, and you didn't hear any complaining over " + emberMF("his", "her") + " purring.  Before " + emberMF("he", "she") + " can rebut that, you turn and leave the dragon in " + emberMF("his", "her") + " den.");
             outputText("\n\nThe drink you got did you plenty of good; you feel refreshed and renewed, new vitality flowing through your veins.");
-            if (player.findStatusAffect(StatusAffects.DragonBreathCooldown) >= 0) {
-                player.removeStatusAffect(StatusAffects.DragonBreathCooldown);
+            if (player.effects.findByType(StatusAffects.DragonBreathCooldown) >= 0) {
+                player.effects.remove(StatusAffects.DragonBreathCooldown);
                 outputText("  Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!");
             }
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
@@ -2032,8 +2032,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nThe soft purrs that accompany each suckle and the soft caresses on your body, bringing you ever closer to these two motherlodes of Ember-flavoured treasure, only serve to enhance the whole experience.");
 
             outputText("\n\nEventually, your swallows of the rich, freely-flowing, creamy dragon-milk cease as your stomach fills up.");
-            if (player.findStatusAffect(StatusAffects.DragonBreathCooldown) >= 0) {
-                player.removeStatusAffect(StatusAffects.DragonBreathCooldown);
+            if (player.effects.findByType(StatusAffects.DragonBreathCooldown) >= 0) {
+                player.effects.remove(StatusAffects.DragonBreathCooldown);
                 outputText("  Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!");
             }
             outputText("  You tell your dragon that you're finished.  You're up and turning to leave when a looping tail around your waist stops you.");
@@ -3251,7 +3251,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText(".  No doubt " + emberMF("he", "she") + "'s off to take care of " + emberMF("his", "her") + " needs by " + emberMF("him", "her") + "self.  You doubt " + emberMF("he", "she") + "'s going to be happy once " + emberMF("his", "her") + " head is clear... still, " + emberMF("he", "she") + "'ll get over it.");
         emberAffection(-10);
         // Set some cooldown so this doesn't proc all the goddamn time!
-        player.createStatusAffect(StatusAffects.EmberFuckCooldown, 12, 0, 0, 0);
+        player.effects.create(StatusAffects.EmberFuckCooldown, 12, 0, 0, 0);
         doNext(playerMenu);
     }
 
@@ -3377,7 +3377,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         dynStats("sen", -2);
         // Preg shit goez hurdur
         player.knockUp(PregnancyStore.PREGNANCY_EMBER, PregnancyStore.INCUBATION_EMBER, 0); // Will always impregnate unless contraceptives are in use
-        player.createStatusAffect(StatusAffects.EmberFuckCooldown, 36, 0, 0, 0);
+        player.effects.create(StatusAffects.EmberFuckCooldown, 36, 0, 0, 0);
         doNext(createCallBackFunction(emberBreedingAfterMathWatchOutForRadioactiveFallout, false));
     }
 
@@ -3479,8 +3479,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
         // knock dat phat bitch up.
         pregnancy.knockUp(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_EMBER);
-        player.createStatusAffect(StatusAffects.EmberFuckCooldown, 36, 0, 0, 0);
-        player.removeStatusAffect(StatusAffects.Rut);
+        player.effects.create(StatusAffects.EmberFuckCooldown, 36, 0, 0, 0);
+        player.effects.remove(StatusAffects.Rut);
         player.orgasm();
         dynStats("sen", -2);
         doNext(createCallBackFunction(emberBreedingAfterMathWatchOutForRadioactiveFallout, true));
@@ -3718,7 +3718,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nYou wake up a short while later.  Ember's breasts are completely drained of their milk, and your belly is bulging a bit from the amount you've drank.  Ember sleeps softly under you.  Gently you extract yourself from Ember's embrace - a difficult task, considering Ember's tail is intent on holding you like a boa constrictor.  Eventually though, you manage to withdraw yourself from its insistent grip and slowly sneak out of the den.\n");
             flags[kFLAGS.EMBER_EGGS]++;
         }
-        player.createStatusAffect(StatusAffects.EmberNapping, 12, 0, 0, 0);
+        player.effects.create(StatusAffects.EmberNapping, 12, 0, 0, 0);
     }
 
     public giveBirthToEmberKids(): void {
@@ -3866,7 +3866,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("scurries away, even as you pull yourself upright and get ready to go about your business.\n");
             flags[kFLAGS.EMBER_EGGS]++;
         }
-        player.createStatusAffect(StatusAffects.EmberNapping, 5, 0, 0, 0);
+        player.effects.create(StatusAffects.EmberNapping, 5, 0, 0, 0);
         player.genderCheck();
     }
 

@@ -4,7 +4,7 @@ export class Satyr extends Monster {
     private satyrAttack(): void {
         outputText("The satyr swings at you with one knuckled fist.  ");
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 1) {
             outputText(capitalA + short + " completely misses you with a blind punch!\n", false);
         }
         // Evade:
@@ -32,7 +32,7 @@ export class Satyr extends Monster {
 
     public satyrCharge(): void {
         outputText("Lowering his horns, the satyr digs his hooves on the ground and begins snorting; he's obviously up to something.  ");
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 1) {
             outputText(capitalA + short + " completely misses you due to blindness!\n", false);
         }
         else if (combatMiss()) {
@@ -58,7 +58,7 @@ export class Satyr extends Monster {
                 outputText("He charges at you with a loud bleat, catching you off-guard and sending you flying into the ground.");
                 if (player.perks.findByType(PerkLib.Resolute) < 0) {
                     outputText("  The pain of the impact is so big you feel completely dazed, almost seeing stars.");
-                    player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
+                    player.effects.create(StatusAffects.Stunned, 0, 0, 0, 0);
                 }
                 // stun PC + hp damage if hit, hp damage dependent on str if miss
                 outputText(" (" + damage + ")");
@@ -79,7 +79,7 @@ export class Satyr extends Monster {
     // 5:(Only executed at high lust)
     private highLustChugRape(): void {
         outputText("Panting with barely-contained lust, the Satyr charges at you and tries to ram you into the ground.  ");
-        if (findStatusAffect(StatusAffects.Blind) >= 0 && rand(3) < 1) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 1) {
             outputText(capitalA + short + " completely misses you due to blindness!\n", false);
         }
         else if (combatMiss() || combatFlexibility() || combatMisdirect() || combatEvade()) {
@@ -100,10 +100,10 @@ export class Satyr extends Monster {
             if (rand(2) == 0) satyrBate();
             else bottleChug();
         }
-        else if (findStatusAffect(StatusAffects.Charged) < 0) satyrCharge();
+        else if (this.effects.findByType(StatusAffects.Charged) < 0) satyrCharge();
         else {
             satyrAttack();
-            removeStatusAffect(StatusAffects.Charged);
+            this.effects.remove(StatusAffects.Charged);
         }
     }
 
@@ -134,7 +134,7 @@ export class Satyr extends Monster {
         createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 20, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);
         this.tallness = rand(37) + 64;
         this.hipRating = HIP_RATING_AVERAGE;
         this.buttRating = BUTT_RATING_AVERAGE + 1;

@@ -4,7 +4,7 @@ export class Marble extends Monster {
         // Special1: Heavy overhead swing, high chance of being avoided with evasion, does heavy damage if it hits.
         let damage: number = 0;
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText("Marble unwisely tries to make a massive swing while blinded, which you are easily able to avoid.", false);
             combatRoundOver();
             return;
@@ -37,7 +37,7 @@ export class Marble extends Monster {
         // Special2: Wide sweep; very high hit chance, does low damage.
         let damage: number = 0;
         // Blind dodge change
-        if (findStatusAffect(StatusAffects.Blind) >= 0) {
+        if (this.effects.findByType(StatusAffects.Blind) >= 0) {
             outputText("Marble makes a wide sweeping attack with her hammer, which is difficult to avoid even from a blinded opponent.\n", false);
         }
         // Determine if evaded

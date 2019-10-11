@@ -107,7 +107,7 @@ export class FetishCultist extends Monster {
 
     public defeated(hpVictory: boolean): void {
         let temp2: () => void = null;
-        if (player.findStatusAffect(StatusAffects.Feeder) >= 0) temp2 = game.lake.fetishCultistScene.fetishCultistHasAMilkFetish;
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) temp2 = game.lake.fetishCultistScene.fetishCultistHasAMilkFetish;
         if (hpVictory) {
             outputText("Hurt too much to continue controlling her powers, the cultist collapses helplessly.", true);
         } else {

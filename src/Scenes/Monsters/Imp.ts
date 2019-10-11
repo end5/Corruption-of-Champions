@@ -1,7 +1,7 @@
 
 export class Imp extends Monster {
     public defeated(hpVictory: boolean): void {
-        if (findStatusAffect(StatusAffects.KitsuneFight) >= 0) {
+        if (this.effects.findByType(StatusAffects.KitsuneFight) >= 0) {
             game.forest.kitsuneScene.winKitsuneImpFight();
         } else {
             game.impScene.impVictory();
@@ -9,7 +9,7 @@ export class Imp extends Monster {
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (findStatusAffect(StatusAffects.KitsuneFight) >= 0) {
+        if (this.effects.findByType(StatusAffects.KitsuneFight) >= 0) {
             game.forest.kitsuneScene.loseKitsuneImpFight();
         } else if (pcCameWorms) {
             outputText("\n\nThe imp grins at your already corrupted state...", false);

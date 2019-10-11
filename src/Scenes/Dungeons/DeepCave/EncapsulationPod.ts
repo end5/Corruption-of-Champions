@@ -20,16 +20,16 @@ export class EncapsulationPod extends Monster {
     public get long(): string {
         // [Round 1 Description]
         let _long: string;
-        if (findStatusAffect(StatusAffects.Round) < 0) _long = "You're totally trapped inside a pod!  The walls are slimy and oozing moisture that makes the air sickeningly sweet.  It makes you feel a little dizzy.  Tentacles are climbing up your " + legs(game.player) + " towards your crotch, doing their best to get under you " + game.player.armorName + ".  There's too many to try to pull away.  Your only chance of escape is to create a way out!";
+        if (this.effects.findByType(StatusAffects.Round) < 0) _long = "You're totally trapped inside a pod!  The walls are slimy and oozing moisture that makes the air sickeningly sweet.  It makes you feel a little dizzy.  Tentacles are climbing up your " + legs(game.player) + " towards your crotch, doing their best to get under you " + game.player.armorName + ".  There's too many to try to pull away.  Your only chance of escape is to create a way out!";
         // [Round 2 Description]
-        else if (statusAffectv1(StatusAffects.Round) == 2) {
+        else if (this.effects.getValue1Of(StatusAffects.Round) == 2) {
             _long = "You're still trapped inside the pod!  By now the walls are totally soaked with some kind of viscous slime.  The smell of it is unbearably sweet and you have to put a hand against the wall to steady yourself.  Warm tentacles are curling and twisting underneath your armor, caressing every ";
             if (player.skinType == SKIN_TYPE_FUR) _long += "furry ";
             if (player.skinType == SKIN_TYPE_SCALES) _long += "scaley ";
             _long += "inch of your " + legs(player) + ", crotch, and " + game.buttDescription(player) + ".";
         }
         // [Round 3 Description]
-        else if (statusAffectv1(StatusAffects.Round) == 3) {
+        else if (this.effects.getValue1Of(StatusAffects.Round) == 3) {
             _long = "You're trapped inside the pod and being raped by its many tentacles!   The pooling slime is constantly rising, and in a few moments it will have reached your groin.  The viscous sludge makes it hard to move and the smell of it is making it even harder to think or stand up.  The tentacles assaulting your groin don't stop moving for an instant, and in spite of yourself, some part of you wants them to make you cum quite badly.";
         }
         // [Round 4 Description]

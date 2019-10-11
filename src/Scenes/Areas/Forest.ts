@@ -14,13 +14,13 @@ export class Forest {
     public tentacleBeastScene: TentacleBeastScene = new TentacleBeastScene();
     public erlkingScene: ErlKingScene = new ErlKingScene();
     public exploreDeepwoods(): void {
-        player.addStatusValue(StatusAffects.ExploredDeepwoods, 1, 1);
+        player.effects.addValue(StatusAffects.ExploredDeepwoods, 1, 1);
 
         const chooser: number = rand(5);
 
         const temp2: number = 0;
         // Every tenth exploration finds a pumpkin if eligible!
-        if (player.statusAffectv1(StatusAffects.ExploredDeepwoods) % 10 == 0 && isHalloween()) {
+        if (player.effects.getValue1Of(StatusAffects.ExploredDeepwoods) % 10 == 0 && isHalloween()) {
             // If Fera isn't free yet...
             if (player.perks.findByType(PerkLib.FerasBoonBreedingBitch) < 0 && player.perks.findByType(PerkLib.FerasBoonAlpha) < 0) {
                 if (date.fullYear > flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE]) {
@@ -44,7 +44,7 @@ export class Forest {
             return;
         }
         // Every 5th exploration encounters d2 if hasnt been met yet and factory done
-        if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] == 0 && player.statusAffectv1(StatusAffects.ExploredDeepwoods) % 5 == 0 && player.findStatusAffect(StatusAffects.DungeonShutDown) >= 0) {
+        if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] == 0 && player.effects.getValue1Of(StatusAffects.ExploredDeepwoods) % 5 == 0 && player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) {
             outputText("While you explore the deepwoods, you do your best to forge into new, unexplored locations.  While you're pushing away vegetation and slapping at plant-life, you spot a half-overgrown orifice buried in the side of a ravine.  There's a large number of imp-tracks around the cavern's darkened entryway.  Perhaps this is where the imp, Zetaz, makes his lair?  In any event, it's past time you checked back on the portal.  You make a mental note of the cave's location so that you can return when you're ready.", true);
             outputText("\n\n<b>You've discovered the location of Zetaz's lair!</b>", false);
             simpleChoices("Enter", enterZetazsLair, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
@@ -135,13 +135,13 @@ export class Forest {
             chooser = 1;
         }
         // If Jojo lives in camp, never encounter him
-        if (player.findStatusAffect(StatusAffects.PureCampJojo) >= 0 || flags[kFLAGS.JOJO_DEAD_OR_GONE] == 1) {
+        if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0 || flags[kFLAGS.JOJO_DEAD_OR_GONE] == 1) {
             chooser = rand(3);
             if (chooser >= 1) chooser++;
         }
         // Chance to discover deepwoods
-        if ((player.exploredForest >= 20) && player.findStatusAffect(StatusAffects.ExploredDeepwoods) < 0) {
-            player.createStatusAffect(StatusAffects.ExploredDeepwoods, 0, 0, 0, 0);
+        if ((player.exploredForest >= 20) && player.effects.findByType(StatusAffects.ExploredDeepwoods) < 0) {
+            player.effects.create(StatusAffects.ExploredDeepwoods, 0, 0, 0, 0);
             outputText("After exploring the forest so many times, you decide to really push it, and plunge deeper and deeper into the woods.  The further you go the darker it gets, but you courageously press on.  The plant-life changes too, and you spot more and more lichens and fungi, many of which are luminescent.  Finally, a wall of tree-trunks as wide as houses blocks your progress.  There is a knot-hole like opening in the center, and a small sign marking it as the entrance to the 'Deepwoods'.  You don't press on for now, but you could easily find your way back to explore the Deepwoods.\n\n<b>Deepwoods exploration unlocked!</b>", true);
             doNext(camp.returnToCampUseOneHour);
             return;
@@ -159,7 +159,7 @@ export class Forest {
             return;
         }
         // Marble randomness
-        if (player.exploredForest % 50 == 0 && player.exploredForest > 0 && player.findStatusAffect(StatusAffects.MarbleRapeAttempted) < 0 && player.findStatusAffect(StatusAffects.NoMoreMarble) < 0 && player.findStatusAffect(StatusAffects.Marble) >= 0 && flags[kFLAGS.MARBLE_WARNING] == 0) {
+        if (player.exploredForest % 50 == 0 && player.exploredForest > 0 && player.effects.findByType(StatusAffects.MarbleRapeAttempted) < 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0 && player.effects.findByType(StatusAffects.Marble) >= 0 && flags[kFLAGS.MARBLE_WARNING] == 0) {
             // can be triggered one time after Marble has been met, but before the addiction quest starts.
             clearOutput();
             outputText("While you're moving through the trees, you suddenly hear yelling ahead, followed by a crash and a scream as an imp comes flying at high speed through the foliage and impacts a nearby tree.  The small demon slowly slides down the tree before landing at the base, still.  A moment later, a familiar-looking cow-girl steps through the bushes brandishing a huge two-handed hammer with an angry look on her face.");
@@ -265,7 +265,7 @@ export class Forest {
                 return;
             }
             if (game.monk == 1) {
-                if (player.findStatusAffect(StatusAffects.Infested) >= 0) {
+                if (player.effects.findByType(StatusAffects.Infested) >= 0) {
                     jojoScene.jojoSprite();
                     outputText("As you approach the serene monk, you see his nose twitch, disturbing his meditation.\n\n", true);
                     outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body.</i>\", Jojo says flatly. \"<i>This is a most unfortunate development. There is no reason to despair as there are always ways to fight the corruption. However, great effort will be needed to combat this form of corruption and may leave lasting impressions upon you. If you are ready, we can purge your being of the rogue creatures of lust.</i>\"\n\n", false);

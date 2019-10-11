@@ -7,7 +7,7 @@ export class LustyDemons extends Monster {
     protected performCombatAction(): void {
         str = 40;
         this.weaponAttack = 10;
-        createStatusAffect(StatusAffects.Attacks, 4, 0, 0, 0);
+        this.effects.create(StatusAffects.Attacks, 4, 0, 0, 0);
         eAttack();
         str = 80;
         this.weaponAttack = 40;
@@ -78,7 +78,7 @@ export class LustyDemons extends Monster {
         this.hornType = HORNS_DEMON;
         this.horns = 2;
         this.drop = NO_DROP;
-        createStatusAffect(StatusAffects.Vapula, 0, 0, 0, 0);
+        this.effects.create(StatusAffects.Vapula, 0, 0, 0, 0);
         checkMonster();
     }
 }

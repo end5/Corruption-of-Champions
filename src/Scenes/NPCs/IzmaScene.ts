@@ -92,7 +92,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\"<i>Tigershark?</i>\" you ask.\n\n", false);
 
             outputText("\"<i>It's a mutation among shark-people.  We're stronger, tougher, faster... and we have some other... err, 'qualities' our sisters lack,</i>\" she explains, with a glance to subtly discourage you from probing the matter further.  Instead, you follow up by asking her where she got her books.  \"<i>These?  Scavenged from around the place.  It's so hard to find recorded knowledge around here, and even some of this stuff isn't in great condition... you know?</i>\"  You agree; that meager pile of books in the chest is still the biggest library you've seen ", false);
-            if (player.statusAffectv1(StatusAffects.TelAdre) >= 1) outputText("outside the safety of Tel'Adre", false);
+            if (player.effects.getValue1Of(StatusAffects.TelAdre) >= 1) outputText("outside the safety of Tel'Adre", false);
             else outputText("since you arrived", false);
             outputText(".  Perhaps imagining you a kindred spirit, she presses the topic.  \"<i>I could let you borrow some... for a small usage fee. And you'd stay in sight, of course.</i>\"  You contrive to look hurt.  \"<i>Nothing personal, but I'd like to expand my collection, not reduce it,</i>\" she adds.  Still... an appealing offer.  You could do with as much knowledge as you can get.\n\n", false);
 
@@ -314,12 +314,12 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00232] == 0) {
             outputText("You sit down on the rocks beside Izma, and the two of you exchange bits of gossip and information. Izma then tells you a strange tale of a mysterious island she's seen on the horizon of the lake, along with a strange smoke-belching shape she's seen on the nearby mountain in the past.  ", false);
             // (If player hasn't done the Demon Factory quest)
-            if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) outputText("You scratch your chin in thought, feeling that this matter warrants further investigation.", false);
+            if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) outputText("You scratch your chin in thought, feeling that this matter warrants further investigation.", false);
             // (If the player has done the Demon Factory)
             else outputText("You smile, and detail just what that factory is and what you went on to do in this factory.", false);
         }
         // (repeat: factory not cleared)
-        else if (player.findStatusAffect(StatusAffects.DungeonShutDown) < 0) {
+        else if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
             outputText("You sit with Izma and chat a bit more; naturally enough your conversation turns toward the billowy pink smoke from the mountain.  According to her, the smoke's been increasing suspiciously in volume the past few days.  She bemoans her inability to explore it further because of her aquatic nature; you commiserate as best you're able before taking your leave.", false);
         }
         // (repeat: factory cleared)
@@ -397,7 +397,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
     public IzmaWins(): void {
         outputText("", true);
         // (if Worms)
-        if (player.findStatusAffect(StatusAffects.Infested) >= 0) {
+        if (player.effects.findByType(StatusAffects.Infested) >= 0) {
             infestOrgasm();
             outputText("\n\nIzma looks on in horror as you push out the load of wormy cargo onto the sand at her feet, only snapping out of her daze as several of the parasites begin climbing her ankle with an eye toward her cock.  She shrieks and jumps back, then drags her foot in the sand, dislodging or pulverizing the squirming vermin.  \"<i>" + player.short + ", that's nasty!  Get away!  Get away and don't talk to me again!  Ugh!</i>\"  She takes off, grabbing her chest of books and kicking sand up in her flight down the beach.", false);
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00233] = 1;
@@ -1104,7 +1104,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
             // Flag that amily bitchfit has happened.
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00236] = -1;
         }
-        else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00237] == 0 && player.findStatusAffect(StatusAffects.CampMarble) >= 0) {
+        else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00237] == 0 && player.effects.findByType(StatusAffects.CampMarble) >= 0) {
             // [Marble is at camp when Izma arrives]
             outputText("You smile warmly and place your hands on her shoulders, before pulling her in and kissing her deeply.  Practically melting at your touch and moaning into your mouth, she wraps her arms and tail around your waist.\n\n", false);
 
@@ -2990,7 +2990,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         clearOutput();
         outputText("Concentrating on moving your mass forward, you manage to envelop Izma's entire back side.  Slowly but surely, you are able to harden your goo around Izma's rock hard cock, and begin to pump her penile member with gusto. Now that she's been jerked off, and the fact that she's ");
         radarIzmaSpanking(false);
-        player.createStatusAffect(StatusAffects.Goojob, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.Goojob, 0, 0, 0, 0);
     }
     // [Spanking and orgasm]
     private radarIzmaSpanking(newSentence: boolean = true): void {
@@ -3010,8 +3010,8 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         // (Cum production High:
         else outputText("unleashing a cascade of steamy jizz into Izma's well fucked hole.  Your volume is so large that it causes a back draft of semen to rush out of her within mere seconds.");
         // (If PC gave Izma a "goo job":
-        if (player.findStatusAffect(StatusAffects.Goojob) >= 0) {
-            player.removeStatusAffect(StatusAffects.Goojob);
+        if (player.effects.findByType(StatusAffects.Goojob) >= 0) {
+            player.effects.remove(StatusAffects.Goojob);
             outputText("  The sensation of being injected with her lover's seed is all the encouragement Izma's cock needs to finally erupt, shooting thick streams of steamy cum into your central mass; something your gooey form appreciates as it unconsciously works her load into your see through gut.");
         }
         outputText("\n\nYour exhausted partner swoons as she cradles her ");
@@ -3186,18 +3186,18 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         // Just dick
         if (choice == 0) {
             outputText("To answer the question her peepers pose to you, you slide another pre-cum drenched tentacle cock down her tail and onto her pelvis, coiling around her engorged member tightly until your huge, perverted dick runs out of length... which suits you just fine as you grind your cock against the head of her own, ferociously crossing swords with her as she wails in overwhelmed joy at the bizarre but perverted felicity of your efforts.");
-            player.createStatusAffect(StatusAffects.JerkingIzma, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.JerkingIzma, 0, 0, 0, 0);
         }
         // [(Just) Blowjob]:
         else if (choice == 1) {
             outputText("To answer the question her peepers pose to you, you project another one of your tentacle cocks down her tail and up her moist back, briskly gliding past her cheeks and against her lips as it slams into her kisser like a battering ram against a wooden castle door.  Recoiling at the sudden forceful impact, Izma arcs her head back and hastily drops her jaw, sticking her tongue out readily to cradle your member.  With another vigorous thrust, you dart into her mouth and slide along her wet, humid tongue; Izma's lips crash down on your shaft in a desperate effort to keep your wonderful cock in her mouth, apathetic to any discomfort on her part as you batter her mouth with your vine like prick.");
-            player.createStatusAffect(StatusAffects.IzmaBlowing, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.IzmaBlowing, 0, 0, 0, 0);
         }
         // [Both]
         else {
             outputText("You ponder for a moment where you can put one of your dicks, and then slam your palm into your forehead; ONE?  What's wrong with me?  I've got more than one that needs release, you think to yourself. Grinning, you slide another pre-cum drenched tentacle cock down her tail and onto her pelvis, coiling around her engorged member tightly until your huge, perverted dick runs out of length... which suits you just fine as you grind your cock against the head of her own, ferociously crossing swords with her as she wails in overwhelmed joy at the bizarre but perverted felicity of your efforts.");
-            player.createStatusAffect(StatusAffects.IzmaBlowing, 0, 0, 0, 0);
-            player.createStatusAffect(StatusAffects.JerkingIzma, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.IzmaBlowing, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.JerkingIzma, 0, 0, 0, 0);
             outputText("\n\nReadying another one of your obscenely long cocks, you project another one of your tentacle cocks down her tail and up her moist back, briskly gliding past her cheeks and against her lips as it slams into her kisser like a battering ram against a wooden castle door.  Recoiling at the sudden forceful impact, Izma arcs her head back and hastily drops her jaw, sticking her tongue out readily to cradle your member.  With another vigorous thrust, you dart into her mouth and slide along her wet, humid tongue; Izma's lips crash down on your shaft in a desperate effort to keep your wonderful cock in her mouth, apathetic to any discomfort on her part as you batter her mouth with your vine like prick.");
         }
         // (Continues to [anal fuck sexing], if PC has only 4-5 dicks or does not met INT requirements for subsequent scenes)

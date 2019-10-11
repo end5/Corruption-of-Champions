@@ -26,7 +26,7 @@ export class Clara extends Monster {
             // Temporary heat
             if (color == "red") {
                 outputText("\nThe red fluids hit you and instantly soak into your skin, disappearing.  Your skin flushes and you feel warm.  Oh no...\n", false);
-                if (player.findStatusAffect(StatusAffects.TemporaryHeat) < 0) player.createStatusAffect(StatusAffects.TemporaryHeat, 0, 0, 0, 0);
+                if (player.effects.findByType(StatusAffects.TemporaryHeat) < 0) player.effects.create(StatusAffects.TemporaryHeat, 0, 0, 0, 0);
             }
             // Increase fatigue
             if (color == "black") {
@@ -54,7 +54,7 @@ export class Clara extends Monster {
         // Successful:
         if (player.inte / 5 + rand(20) + 1 < 14) {
             outputText("\nA bright flash of light erupts in your face, blinding you!  You desperately blink and rub your eyes while Clara cackles with glee.");
-            player.createStatusAffect(StatusAffects.Blind, 1, 0, 0, 0);
+            player.effects.create(StatusAffects.Blind, 1, 0, 0, 0);
         }
         else outputText("\nYou manage to close your eyes just in time to avoid being blinded by the bright flash of light that erupts in your face!  Clara curses when she see's you're unaffected by her magic.");
         combatRoundOver();
@@ -76,14 +76,14 @@ export class Clara extends Monster {
         combatRoundOver();
     }
     protected performCombatAction(): void {
-        if (player.findStatusAffect(StatusAffects.ClaraFoughtInCamp) >= 0 && player.statusAffectv1(StatusAffects.ClaraCombatRounds) >= 10) {
+        if (player.effects.findByType(StatusAffects.ClaraFoughtInCamp) >= 0 && player.effects.getValue1Of(StatusAffects.ClaraCombatRounds) >= 10) {
             HP = 0;
             combatRoundOver();
         }
         if (HP < 50 && rand(2) == 0) {
             notMurbleEnjoysTheLacticAcid();
         }
-        else if (player.findStatusAffect(StatusAffects.Blind) >= 0) {
+        else if (player.effects.findByType(StatusAffects.Blind) >= 0) {
             claraGropesBlindPCs();
         }
         else {
@@ -92,15 +92,15 @@ export class Clara extends Monster {
             trace("ACTION SELECTED: " + action);
             actions[action]();
         }
-        if (player.findStatusAffect(StatusAffects.ClaraCombatRounds) < 0) player.createStatusAffect(StatusAffects.ClaraCombatRounds, 1, 0, 0, 0);
-        else player.addStatusValue(StatusAffects.ClaraCombatRounds, 1, 1);
+        if (player.effects.findByType(StatusAffects.ClaraCombatRounds) < 0) player.effects.create(StatusAffects.ClaraCombatRounds, 1, 0, 0, 0);
+        else player.effects.addValue(StatusAffects.ClaraCombatRounds, 1, 1);
 
         // Bonus damage if not in camp
-        if (HP > 0 && lust < 100 && player.findStatusAffect(StatusAffects.ClaraFoughtInCamp) < 0) claraBonusBaseLustDamage();
+        if (HP > 0 && lust < 100 && player.effects.findByType(StatusAffects.ClaraFoughtInCamp) < 0) claraBonusBaseLustDamage();
     }
     public defeated(hpVictory: boolean): void {
         // PC wins via turn count
-        if (player.findStatusAffect(StatusAffects.ClaraFoughtInCamp) >= 0 && player.statusAffectv1(StatusAffects.ClaraCombatRounds) >= 10) { }
+        if (player.effects.findByType(StatusAffects.ClaraFoughtInCamp) >= 0 && player.effects.getValue1Of(StatusAffects.ClaraCombatRounds) >= 10) { }
         else {
             clearOutput();
             // PC wins via health

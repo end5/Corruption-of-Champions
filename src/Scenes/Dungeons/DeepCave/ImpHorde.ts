@@ -34,7 +34,7 @@ export class ImpHorde extends Monster {
         createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
-        this.createStatusAffect(StatusAffects.BonusACapacity, 10, 0, 0, 0);
+        this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);
         this.tallness = 36;
         this.hipRating = HIP_RATING_SLENDER;
         this.buttRating = BUTT_RATING_TIGHT;

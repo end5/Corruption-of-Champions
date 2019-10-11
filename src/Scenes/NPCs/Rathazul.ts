@@ -30,7 +30,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
     // End of Interface Implementation
 
     public returnToRathazulMenu(): void {
-        if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0)
+        if (player.effects.findByType(StatusAffects.CampRathazul) >= 0)
             campRathazul();
         else encounterRathazul();
     }
@@ -38,7 +38,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
     public encounterRathazul(): void {
         spriteSelect(49);
 
-        if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.findStatusAffect(StatusAffects.MetRathazul) >= 0) {
+        if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.effects.findByType(StatusAffects.MetRathazul) >= 0) {
             marblePurification.visitRathazulToPurifyMarbleAfterLaBovaStopsWorkin();
             return;
         }
@@ -46,22 +46,22 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         // Rat is definitely not sexy!
         if (player.lust > 30) dynStats("lus", -10);
         // Introduction
-        if (player.findStatusAffect(StatusAffects.MetRathazul) >= 0) {
-            if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0)
+        if (player.effects.findByType(StatusAffects.MetRathazul) >= 0) {
+            if (player.effects.findByType(StatusAffects.CampRathazul) >= 0)
                 outputText("You walk over to Rathazul's corner of the camp.  He seems as busy as usual, with his nose buried deep in some tome or alchemical creation, but he turns to face you as soon as you walk within a few paces of him.\n\n", true);
             else
                 outputText("You spy the familiar sight of the alchemist Rathazul's camp along the lake.  The elderly rat seems to be oblivious to your presence as he scurries between his equipment, but you know him well enough to bet that he is entirely aware of your presence.\n\n", true);
         }
         else {
             outputText("You encounter a hunched figure working as you come around a large bush.  Clothed in tattered robes that obscure most his figure, you can nontheless see a rat-like muzzle protruding from the shadowy hood that conceals most of his form.  A simple glance behind him confirms your suspicions - this is some kind of rat-person.  He seems oblivious to your presence as he stirs a cauldron of viscous fluid with one hand; a neat stack of beakers and phials sit in the dirt to his left.  You see a smile break across his aged visage, and he says, \"<i>Come closer child.  I will not bite.</i>\"\n\nApprehensive of the dangers of this unknown land, you cautiously approach.\n\n\"<i>I am Rathazul the Alchemist.  Once I was famed for my miracle cures.  Now I idle by this lake, helpless to do anything but measure the increasing amounts of corruption that taint its waters,</i>\" he says as he pulls back his hood, revealing the entirety of his very bald and wrinkled head.\n\n", true);
-            player.createStatusAffect(StatusAffects.MetRathazul, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.MetRathazul, 0, 0, 0, 0);
         }
         // Camp offer!
-        if (player.statusAffectv2(StatusAffects.MetRathazul) >= 3 && player.statusAffectv3(StatusAffects.MetRathazul) != 1 && player.cor < 75) {
+        if (player.effects.getValue2Of(StatusAffects.MetRathazul) >= 3 && player.effects.getValue3Of(StatusAffects.MetRathazul) != 1 && player.cor < 75) {
             outputText("\"<i>You know, I think I might be able to do this worn-out world a lot more good from your camp than by wandering around this lake.  What do you say?</i>\" asks the rat.\n\n(Move Rathazul into your camp?)", false);
             doYesNo(rathazulMoveToCamp, rathazulMoveDecline);
             // Set rathazul flag that he has offered to move in (1 time offer)
-            player.changeStatusValue(StatusAffects.MetRathazul, 3, 1);
+            player.effects.setValue(StatusAffects.MetRathazul, 3, 1);
             return;
         }
         offered = rathazulWorkOffer();
@@ -74,7 +74,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
     private rathazulMoveToCamp(): void {
         clearOutput();
         outputText("Rathazul smiles happily back at you and begins packing up his equipment.  He mutters over his shoulder, \"<i>It will take me a while to get my equipment moved over, but you head on back and I'll see you within the hour.  Oh my, yes.</i>\"\n\nHe has the look of someone experiencing hope for the first time in a long time.");
-        player.createStatusAffect(StatusAffects.CampRathazul, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.CampRathazul, 0, 0, 0, 0);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -86,7 +86,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
 
     public campRathazul(): void {
         spriteSelect(49);
-        if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.findStatusAffect(StatusAffects.MetRathazul) >= 0) {
+        if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.effects.findByType(StatusAffects.MetRathazul) >= 0) {
             marblePurification.visitRathazulToPurifyMarbleAfterLaBovaStopsWorkin();
             return;
         }
@@ -98,7 +98,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         if (rand(6) == 0 && flags[kFLAGS.RATHAZUL_CAMP_INTERACTION_COUNTDOWN] == 0) {
             flags[kFLAGS.RATHAZUL_CAMP_INTERACTION_COUNTDOWN] = 3;
             // Pure jojo
-            if (flags[kFLAGS.JOJO_RATHAZUL_INTERACTION_COUNTER] == 0 && player.findStatusAffect(StatusAffects.PureCampJojo) >= 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
+            if (flags[kFLAGS.JOJO_RATHAZUL_INTERACTION_COUNTER] == 0 && player.effects.findByType(StatusAffects.PureCampJojo) >= 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
                 finter.jojoOffersRathazulMeditation();
                 return;
             }
@@ -123,11 +123,11 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         if (player.lust > 90) dynStats("lus", -5);
         // Introduction
         outputText("Rathazul looks up from his equipment and gives you an uncertain smile.\n\n\"<i>Oh, don't mind me,</i>\" he says, \"<i>I'm just running some tests here.  Was there something you needed, " + player.short + "?</i>\"\n\n", true);
-        // player.createStatusAffect(StatusAffects.metRathazul,0,0,0,0);
+        // player.effects.create(StatusAffects.metRathazul,0,0,0,0);
         offered = rathazulWorkOffer();
         if (!offered) {
             outputText("He sighs dejectedly, \"<i>I don't think there is.  Why don't you leave me be for a time, and I will see if I can find something to aid you.</i>\"", false);
-            if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0)
+            if (player.effects.findByType(StatusAffects.CampRathazul) >= 0)
                 doNext(camp.campFollowers);
             else doNext(playerMenu);
         }
@@ -151,7 +151,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         }
         // Item crafting offer
         if (player.hasItem(useables.GREENGL, 2)) {
-            if (player.findStatusAffect(StatusAffects.RathazulArmor) < 0) outputText("He pipes up with a bit of hope in his voice, \"<i>I can smell the essence of the tainted lake-slimes you've defeated, and if you'd let me, I could turn it into something a bit more useful to you.  You see, the slimes are filled with the tainted essence of the world-mother herself, and once the taint is burned away, the remaining substance remains very flexible but becomes nearly impossible to cut through.  With the gel of five defeated slimes I could craft you a durable suit of armor.</i>\"\n\n", false);
+            if (player.effects.findByType(StatusAffects.RathazulArmor) < 0) outputText("He pipes up with a bit of hope in his voice, \"<i>I can smell the essence of the tainted lake-slimes you've defeated, and if you'd let me, I could turn it into something a bit more useful to you.  You see, the slimes are filled with the tainted essence of the world-mother herself, and once the taint is burned away, the remaining substance remains very flexible but becomes nearly impossible to cut through.  With the gel of five defeated slimes I could craft you a durable suit of armor.</i>\"\n\n", false);
             else outputText("He pipes up with a bit of excitement in his voice, \"<i>With just five pieces of slime-gel I could make another suit of armor...</i>\"\n\n", false);
             spoken = true;
             if (player.hasItem(useables.GREENGL, 5)) {
@@ -215,7 +215,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
             dyes = buyDyes;
         }
         // Reducto
-        if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0 && player.statusAffectv2(StatusAffects.MetRathazul) >= 4) {
+        if (player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.effects.getValue2Of(StatusAffects.MetRathazul) >= 4) {
             outputText("The rat hurries over to his supplies and produces a container of paste, looking rather proud of himself, \"<i>Good news everyone!  I've developed a paste you could use to shrink down any, ah, oversized body parts.  The materials are expensive though, so I'll need ");
             if (flags[kFLAGS.AMILY_MET_RATHAZUL] >= 2) outputText("50");
             else outputText("100");
@@ -225,20 +225,20 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
             reductos = buyReducto;
         }
         // SPOIDAH
-        if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0 && player.hasItem(useables.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
+        if (player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.hasItem(useables.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
             showArmorMenu = true;
             spoken = true;
             totalOffers++;
             outputText("\"<i>Oooh, is that some webbing from a giant spider or spider-morph?  Most excellent!  With a little bit of alchemical treatment, it is possible I could loosen the fibers enough to weave them into something truly magnificent - armor, or even a marvelous robe,</i>\" offers Rathazul.\n\n", false);
         }
         // Vines
-        if (player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3 && player.findStatusAffect(StatusAffects.DefenseCanopy) < 0 && player.findStatusAffect(StatusAffects.CampRathazul) >= 0) {
+        if (player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3 && player.effects.findByType(StatusAffects.DefenseCanopy) < 0 && player.effects.findByType(StatusAffects.CampRathazul) >= 0) {
             outputText("His eyes widen in something approaching shock when he sees the Lethicite crystal you took from Marae.  Rathazul stammers, \"<i>By the goddess... that's the largest piece of lethicite I've ever seen.  I don't know how you got it, but there is immense power in those crystals.  If you like, I know a way we could use its power to grow a canopy of thorny vines that would hide the camp and keep away imps.  Growing such a defense would use a third of that lethicite's power.</i>\"\n\n");
             totalOffers++;
             spoken = true;
             lethiciteDefense = growLethiciteDefense;
         }
-        if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0) {
+        if (player.effects.findByType(StatusAffects.CampRathazul) >= 0) {
             if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] == 0 && (sophieBimbo.bimboSophie() || player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0)) {
                 rathazulDebimboOffer();
                 return true;
@@ -268,7 +268,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
             if (lethiciteDefense != null) addButton(3, "Lethicite", lethiciteDefense);
             addButton(4, "Purify", purify);
             if (reductos != null) addButton(8, "Reducto", reductos);
-            if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0)
+            if (player.effects.findByType(StatusAffects.CampRathazul) >= 0)
                 addButton(9, "Leave", camp.campFollowers);
             else
                 addButton(9, "Leave", camp.returnToCampUseOneHour);
@@ -310,7 +310,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         inventory.takeItem(consumables.P_DRAFT, returnToRathazulMenu);
         player.gems -= 20;
         statScreenRefresh();
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
     private rathazulPurifySuccubiMilk(): void {
@@ -325,7 +325,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         inventory.takeItem(consumables.P_S_MLK, returnToRathazulMenu);
         player.gems -= 20;
         statScreenRefresh();
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
     private rathazulPurifySuccubiDelight(): void {
@@ -340,7 +340,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         inventory.takeItem(consumables.PSDELIT, returnToRathazulMenu);
         player.gems -= 20;
         statScreenRefresh();
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
     private rathazulPurifyLaBova(): void {
@@ -355,7 +355,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         inventory.takeItem(consumables.P_LBOVA, returnToRathazulMenu);
         player.gems -= 20;
         statScreenRefresh();
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
     private rathazulDebimboOffer(): void {
@@ -392,7 +392,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         player.gems -= 250;
         player.consumeItem(consumables.SMART_T, 5);
         statScreenRefresh();
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
         inventory.takeItem(consumables.DEBIMBO, returnToRathazulMenu);
     }
 
@@ -403,7 +403,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         const gelArmor: () => void = (player.hasItem(useables.GREENGL, 5) ? craftOozeArmor : null);
         let silk: () => void = null;
         outputText("Which armor project would you like to pursue with Rathazul?");
-        if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0 && player.hasItem(useables.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
+        if (player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.hasItem(useables.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
             silk = craftSilkArmor;
         }
         simpleChoices("BeeArmor", beeArmor, "GelArmor", gelArmor, "SpiderSilk", silk, "", null, "Back", returnToRathazulMenu);
@@ -493,9 +493,9 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         spriteSelect(49);
         player.destroyItems(useables.GREENGL, 5);
         outputText("Rathazul takes the green gel from you and drops it into an empty cauldron.  With speed well beyond what you'd expect from such an elderly creature, he nimbly unstops a number of vials and pours them into the cauldron.  He lets the mixture come to a boil, readying a simple humanoid-shaped mold from what you had thought was piles of junk material.  In no time at all, he has cast the boiling liquid into the mold, and after a few more minutes he cracks it open, revealing a suit of glistening armor.\n\n", true);
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
         inventory.takeItem(armors.GELARMR, returnToRathazulMenu);
-        if (player.findStatusAffect(StatusAffects.RathazulArmor) < 0) player.createStatusAffect(StatusAffects.RathazulArmor, 0, 0, 0, 0);
+        if (player.effects.findByType(StatusAffects.RathazulArmor) < 0) player.effects.create(StatusAffects.RathazulArmor, 0, 0, 0, 0);
     }
 
     private buyDyes(): void {
@@ -521,7 +521,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         clearOutput();
         inventory.takeItem(dye, returnToRathazulMenu);
         statScreenRefresh();
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
     private buyDyeNevermind(): void {
@@ -542,7 +542,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
             player.gems -= cost;
             inventory.takeItem(consumables.REDUCTO, returnToRathazulMenu);
             statScreenRefresh();
-            player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+            player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
         }
         else {
             outputText("\"<i>I'm sorry, but you lack the gems I need to make the trade,</i>\" apologizes Rathazul.");
@@ -561,8 +561,8 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         spriteSelect(49);
         clearOutput();
         outputText("Rathazul nods and produces a mallet and chisel from his robes.  With surprisingly steady hands for one so old, he holds the chisel against the crystal and taps it, easily cracking off a large shard.  Rathazul gathers it into his hands before slamming it down into the dirt, until only the smallest tip of the crystal is visible.  He produces vials of various substances from his robe, as if by magic, and begins pouring them over the crystal.  In a few seconds, he finishes, and runs back towards his equipment.\n\n\"<i>You may want to take a step back,</i>\" he warns, but before you have a chance to do anything, a thick trunk covered in thorny vines erupts from the ground.  Thousands of vine-like branches split off the main trunk as it reaches thirty feet in the air, radiating away from the trunk and intertwining with their neighbors as they curve back towards the ground.  In the span of a few minutes, your camp gained a thorn tree and a thick mesh of barbed vines preventing access from above.");
-        player.createStatusAffect(StatusAffects.DefenseCanopy, 0, 0, 0, 0);
-        player.addStatusValue(StatusAffects.MaraesLethicite, 2, 1);
+        player.effects.create(StatusAffects.DefenseCanopy, 0, 0, 0, 0);
+        player.effects.addValue(StatusAffects.MaraesLethicite, 2, 1);
         doNext(playerMenu);
     }
 
@@ -582,7 +582,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         if (player.cockTotal() > 0 && player.biggestCockArea() >= 40) outputText("The silken material does little to hide the bulge of your groin, if anything it looks a little lewd.  Rathazul mumbles and looks away, shaking his head.\n\n", false);
         if (player.biggestTitSize() >= 8) outputText("Your " + biggestBreastSizeDescript(player) + " barely fit into the breastplate, leaving you displaying a large amount of jiggling cleavage.\n\n", false);
         player.destroyItems(useables.B_CHITN, 5);
-        player.addStatusValue(StatusAffects.MetRathazul, 2, 1);
+        player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
         inventory.takeItem(armors.BEEARMR, returnToRathazulMenu);
         doNext(camp.returnToCampUseOneHour);
     }

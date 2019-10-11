@@ -29,7 +29,7 @@ export class KitsuneScene {
         outputText("You are about to question her, but are interrupted as an imp flies out of the thicket, growling and clawing at you menacingly.  At least...  clearly it's <i>trying</i> to be menacing.  The melodramatic display comes off as more hilarious than anything, but the woman cowering behind you obviously feels threatened, so you might as well deal with the pest.");
         // -> Standard Imp Battle
         startCombat(new Imp());
-        monster.createStatusAffect(StatusAffects.KitsuneFight, 0, 0, 0, 0);
+        monster.effects.create(StatusAffects.KitsuneFight, 0, 0, 0, 0);
         doNext(playerMenu);
         flags[kFLAGS.MET_KITSUNES]++;
     }
@@ -897,8 +897,8 @@ export class KitsuneScene {
         dynStats("lib", 1, "sen", 1);
         player.boostLactation(1.5);
         if (player.perks.findByType(PerkLib.Feeder) >= 0) {
-            player.addStatusValue(StatusAffects.Feeder, 1, 1);
-            player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+            player.effects.addValue(StatusAffects.Feeder, 1, 1);
+            player.effects.setValue(StatusAffects.Feeder, 2, 0);
         }
         cleanupAfterCombat();
     }
@@ -1746,8 +1746,8 @@ export class KitsuneScene {
         outputText("You carefully lay her on the ground, standing and donning your " + player.armorName + " once again.  The kitsune remains rooted in the spot, weighed down by her oversized tummy.  Something tells you she won't be moving from that spot for some time.");
         // Advance time 1hr and return to camp. +Sensitivity
         // You've now been milked, reset the timer for that
-        player.addStatusValue(StatusAffects.Feeder, 1, 1);
-        player.changeStatusValue(StatusAffects.Feeder, 2, 0);
+        player.effects.addValue(StatusAffects.Feeder, 1, 1);
+        player.effects.setValue(StatusAffects.Feeder, 2, 0);
         player.orgasm();
         dynStats("sen", 3);
         cleanupAfterCombat();

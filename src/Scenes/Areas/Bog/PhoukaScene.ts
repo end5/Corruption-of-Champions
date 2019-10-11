@@ -16,9 +16,9 @@ export class PhoukaScene implements TimeAwareInterface {
 
     // Implementation of TimeAwareInterface
     public timeChange(): boolean {
-        if (player.statusAffectv1(StatusAffects.PhoukaWhiskeyAffect) > 0) {
-            player.addStatusValue(StatusAffects.PhoukaWhiskeyAffect, 1, -1); // Count down hours until player is not drunk
-            if (player.statusAffectv1(StatusAffects.PhoukaWhiskeyAffect) <= 0) {
+        if (player.effects.getValue1Of(StatusAffects.PhoukaWhiskeyAffect) > 0) {
+            player.effects.addValue(StatusAffects.PhoukaWhiskeyAffect, 1, -1); // Count down hours until player is not drunk
+            if (player.effects.getValue1Of(StatusAffects.PhoukaWhiskeyAffect) <= 0) {
                 consumables.P_WHSKY.phoukaWhiskeyExpires(player);
                 return true;
             }
@@ -125,7 +125,7 @@ export class PhoukaScene implements TimeAwareInterface {
 
     protected phoukaStartFightSilenced(): void {
         startCombat(new Phouka(phoukaName()));
-        player.createStatusAffect(StatusAffects.WebSilence, 0, 0, 0, 0);
+        player.effects.create(StatusAffects.WebSilence, 0, 0, 0, 0);
     }
 
     protected phoukaTalk(): void {
@@ -145,7 +145,7 @@ export class PhoukaScene implements TimeAwareInterface {
             else outputText("fuckable little " + phoukaName());
             outputText(" but he must not feel like listening.  He launches a ball of black mud at your face, sealing your mouth with sticky and [if (corruption <= 50)ewww -][if (corruption > 50)mmmm -] salty muck.");
             startCombat(new Phouka(phoukaName()));
-            player.createStatusAffect(StatusAffects.WebSilence, 0, 0, 0, 0);
+            player.effects.create(StatusAffects.WebSilence, 0, 0, 0, 0);
         }
         else { // The phouka would rather talk
             outputText("\n\nThe " + phoukaName());
