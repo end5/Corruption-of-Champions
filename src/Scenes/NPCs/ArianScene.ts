@@ -560,7 +560,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             addButton(0, "Talk", talkToArianChoices);
             if (flags[kFLAGS.ARIAN_S_DIALOGUE] >= 2) addButton(1, "Sex", arianSexMenu);
             if (flags[kFLAGS.ARIAN_S_DIALOGUE] >= 1) addButton(3, "Give Item", giveArianAnItem);
-            if (player.hasKeyItem("Arian's Talisman") >= 0 || player.hasKeyItem("Arian's Charged Talisman") >= 0)
+            if (player.keyItems.has("Arian's Talisman") >= 0 || player.keyItems.has("Arian's Charged Talisman") >= 0)
                 addButton(2, "Talisman", imbueTalisman);
             if (flags[kFLAGS.ARIAN_S_DIALOGUE] >= 5) addButton(4, "Treat Corr.", treatCorruption);
             if (game.time.hours >= 17 && arianFollower()) addButton(8, "Sleep With", sleepWithArian, true);
@@ -917,7 +917,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nArian swallows audibly.  \"<i>I... I... I want you!</i>\" Arian blurts out, averting [Arian eir] gaze in embarrassment, fidgeting even more in what you've come to recognize as a sign [Arian ey] is aroused.");
 
         outputText("\n\nDo you have sex with Arian?");
-        player.createKeyItem("Arian's Talisman", 0, 0, 0, 0);
+        player.keyItems.create("Arian's Talisman", 0, 0, 0, 0);
         // ArianSDialogue++;
         flags[kFLAGS.ARIAN_S_DIALOGUE]++;
         // [Yes] [No]
@@ -1406,7 +1406,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             // Get Penetrated:
             // Arian must have a cock.
             if (flags[kFLAGS.ARIAN_COCK_SIZE] > 0) addButton(5, "Get Fucked", getPenetratedByArianAndHisHitlerMustache);
-            if (flags[kFLAGS.ARIAN_VAGINA] > 0 && (player.hasKeyItem("Dildo") >= 0 || player.hasKeyItem("Deluxe Dildo") >= 0)) {
+            if (flags[kFLAGS.ARIAN_VAGINA] > 0 && (player.keyItems.has("Dildo") >= 0 || player.keyItems.has("Deluxe Dildo") >= 0)) {
                 addButton(6, "Dildo Fun", arianDildoFun);
             }
         }
@@ -3337,7 +3337,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
     private imbueTalisman(): void {
         clearOutput();
         outputText("You tell Arian that, if it's not too much trouble, you'd like [Arian em] to ");
-        if (player.hasKeyItem("Arian's Talisman") >= 0) outputText("place a spell in the enchanted talisman [Arian ey] created for you");
+        if (player.keyItems.has("Arian's Talisman") >= 0) outputText("place a spell in the enchanted talisman [Arian ey] created for you");
         else outputText("change the spell in the talisman [Arian ey] created for you");
 
         outputText(".\n\n\"<i>Of course.</i>\"  Arian goes to [Arian eir] work desk to fetch a small parchment and present it to you.  \"<i>Here's all the spells I can Imbue your talisman with and the materials needed.</i>\"");
@@ -3391,9 +3391,9 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             player.consumeItem(consumables.S_GOSSR);
         }
         // If charged, stay chargggggeeed
-        if (player.hasKeyItem("Arian's Talisman") >= 0) {
-            player.removeKeyItem("Arian's Talisman");
-            player.createKeyItem("Arian's Charged Talisman", 0, 0, 0, 0);
+        if (player.keyItems.has("Arian's Talisman") >= 0) {
+            player.keyItems.remove("Arian's Talisman");
+            player.keyItems.create("Arian's Charged Talisman", 0, 0, 0, 0);
         }
         doNext(camp.returnToCampUseOneHour);
     }
@@ -3402,8 +3402,8 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.findStatusAffect(StatusAffects.ImmolationSpell) >= 0) player.removeStatusAffect(StatusAffects.ImmolationSpell);
     }
     public clearTalisman(): void {
-        player.removeKeyItem("Arian's Charged Talisman");
-        player.createKeyItem("Arian's Talisman", 0, 0, 0, 0);
+        player.keyItems.remove("Arian's Charged Talisman");
+        player.keyItems.create("Arian's Talisman", 0, 0, 0, 0);
     }
 
     // Follower Stuff:
@@ -3945,7 +3945,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             }
             else outputText(",");
             outputText(" to her dripping wet pussy, clearly yearning for some action.  Reflecting that your own love-lips feel the same way, you decide to try something fun and present to Arian the dildo that you ");
-            if (player.hasKeyItem("Dildo") >= 0) outputText("bought from Giacomo");
+            if (player.keyItems.has("Dildo") >= 0) outputText("bought from Giacomo");
             else outputText("got from Tamani");
             outputText(", asking if she's willing to give this a try.");
 

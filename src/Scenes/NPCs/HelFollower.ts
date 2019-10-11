@@ -985,7 +985,7 @@ export class HelFollower extends NPCAwareContent {
                     buttons++;
                 }
             }
-            if (player.hasKeyItem("Centaur Pole") >= 0 && player.hasVagina() && buttons < 9) {
+            if (player.keyItems.has("Centaur Pole") >= 0 && player.hasVagina() && buttons < 9) {
                 addButton(buttons, "CentaurToy", femtaurPlusCampHel);
                 buttons++;
             }

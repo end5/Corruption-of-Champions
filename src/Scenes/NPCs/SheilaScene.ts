@@ -3240,7 +3240,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         if (sheilaCorruption() > 80) flags[kFLAGS.SHEILA_CORRUPTION] = 80;
         menu();
         // [Help(requires >80 speed, centaur >= 5', naga, or big wings and archery)][Walk With Her][Let Her Go]
-        if ((player.spe > 80 && player.findPerk(PerkLib.Runner) >= 0) || (player.isTaur()) || player.isNaga() || (player.canFly && player.hasKeyItem("Bow") >= 0))
+        if ((player.spe > 80 && player.findPerk(PerkLib.Runner) >= 0) || (player.isTaur()) || player.isNaga() || (player.canFly && player.keyItems.has("Bow") >= 0))
             addButton(0, "Help", normalSheilaPregNotifREPEATEDEDHelpABitchOut);
         addButton(1, "WalkWithHer", normalSheilaPregNotifREPEATEDEDWalkWithHer);
         addButton(2, "Let Her Go", normalSheilaPregNotifREPEATEDEDLetHerGo);
@@ -3334,7 +3334,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // (else wings and archery skill)
         // less QQ, more pew pew
-        else if (player.canFly() && player.hasKeyItem("Bow") >= 0) {
+        else if (player.canFly() && player.keyItems.has("Bow") >= 0) {
             outputText("\n\n\"<i>Just wander around and flush game; point out animals you see.</i>\"");
 
             outputText("\n\nSheila looks a little confused, but glumly nods.  \"<i>Alright, [name]; we'll do it your way.</i>\"  She begins to walk, then turns back when you don't follow.  \"<i>Are you com-</i>\"");
@@ -3669,7 +3669,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         // reduce lust and lib, raise corr slightly, gain key item Sheila's Lethicite, set sheilacite = 1
         player.orgasm();
         dynStats("lib", -1, "cor", 3);
-        player.createKeyItem("Sheila's Lethicite", 0, 0, 0, 0);
+        player.keyItems.create("Sheila's Lethicite", 0, 0, 0, 0);
         flags[kFLAGS.SHEILA_CITE] = 1;
         flags[kFLAGS.SHEILA_DEMON] = 1;
         // good place to cut off content if you don't have time to code it all in one go

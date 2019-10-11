@@ -221,7 +221,7 @@ export class D3 {
     // Entrance/Exit
 
     public discoverD3(): boolean {
-        if (flags[kFLAGS.D3_DISCOVERED] == 0 && player.hasKeyItem("Zetaz's Map") >= 0 && player.level >= 10 && rand(5) == 0) {
+        if (flags[kFLAGS.D3_DISCOVERED] == 0 && player.keyItems.has("Zetaz's Map") >= 0 && player.level >= 10 && rand(5) == 0) {
             flags[kFLAGS.D3_DISCOVERED] = 1;
 
             clearOutput();
@@ -337,7 +337,7 @@ export class D3 {
         if (flags[kFLAGS.D3_MIRRORS_SHATTERED] == 1) outputText(" now shattered,");
         outputText(" ornate standing mirror dominates the center of the room, and a number of broken, jagged specimens are stacked near the back. They reflect the dull trappings of this place back at you emptily. You guess as self-centred a race as the demons probably has quite a large use for these.");
 
-        if (player.hasKeyItem("Laybans") >= 0) {
+        if (player.keyItems.has("Laybans") >= 0) {
             outputText("\n\nThe place feels hollow and creepy, even after the ad hoc exorcism you performed here. There is no reason to linger.");
         }
         else {
@@ -364,11 +364,11 @@ export class D3 {
                 outputText("\n\nYour heartbeat quickens as you consider. There is a grid gantry running from where you are right around the room to the other side, where you can see a matching observation booth, presumably containing another exit. But it’s quite a distance, there are stairs leading down to the ground level, and outside the protective glass you would surely be spotted and apprehended");
                 if (player.canFly()) outputText(", even if you tried to fly it");
                 outputText(". Wouldn’t you? You can’t outrun the gaze of a thousand basilisks... could you?");
-                if (player.hasKeyItem("Laybans") >= 0) outputText("  You take the Laybans out of your pouch and hold them up against the glass. It’s exactly as you hoped - they are made of the same material, and are almost certainly what the demons wear when they themselves interact with the basilisks. They would surely help you get across the hall, if you were crazy enough to try.");
+                if (player.keyItems.has("Laybans") >= 0) outputText("  You take the Laybans out of your pouch and hold them up against the glass. It’s exactly as you hoped - they are made of the same material, and are almost certainly what the demons wear when they themselves interact with the basilisks. They would surely help you get across the hall, if you were crazy enough to try.");
             }
             else {
                 outputText("Again you creep up to the tinted glass, again you take in the vast hall with the army of basilisks below hard at work, and again you stare out at the metal gantry, with the exit tantalizingly visible on the other side.");
-                if (player.hasKeyItem("Laybans") < 0) outputText("  Are you going to try this?");
+                if (player.keyItems.has("Laybans") < 0) outputText("  Are you going to try this?");
                 else outputText("  You take the Laybans out of your pocket, turning them around in your hands as you consider. Are you going to try this?");
             }
 
@@ -451,7 +451,7 @@ export class D3 {
     private fallbackFromMagpieHallS(): void {
         clearOutput();
         outputText("No, there has to be a better way.");
-        if (player.hasKeyItem("Laybans") < 0 && player.inte >= 50) outputText("  Surely the demons themselves are not immune to the basilisks’ glares - the darkened screen is proof of that. How do they interact with the creatures, then? Maybe if you keep poking around, you might find an answer.");
+        if (player.keyItems.has("Laybans") < 0 && player.inte >= 50) outputText("  Surely the demons themselves are not immune to the basilisks’ glares - the darkened screen is proof of that. How do they interact with the creatures, then? Maybe if you keep poking around, you might find an answer.");
         outputText("\n\nYou head back through the archway into the gloomy antechamber.");
 
         menu();

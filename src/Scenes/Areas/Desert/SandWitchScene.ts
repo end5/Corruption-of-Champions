@@ -604,7 +604,7 @@ export class SandWitchScene implements TimeAwareInterface {
         let temp2: () => void = null;
         let temp3: () => void = null;
         if (silly()) temp3 = missingoSex;
-        if (player.hasKeyItem("Deluxe Dildo") >= 0) temp2 = sandwitchGetsDildoed;
+        if (player.keyItems.has("Deluxe Dildo") >= 0) temp2 = sandwitchGetsDildoed;
         let shouldra: () => void = null;
         if (shouldraFollower.followerShouldra() && player.gender > 0) shouldra = shouldraFollower.sandWitchGetsGhostly;
         // doYesNo(sandwitchRaped, cleanupAfterCombat);

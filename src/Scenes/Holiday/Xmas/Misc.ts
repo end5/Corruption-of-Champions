@@ -625,11 +625,11 @@ export function nieveBuilding(): void {
     else if (flags[kFLAGS.NIEVE_STAGE] == 3) {
         outputText("You approach your nearly finished snowman. To others, it might be a perfectly acceptable creation, but not to you. It needs a carrot to finish it off.");
         // (If PC has the carrot)
-        if (player.hasKeyItem("Carrot") >= 0) {
+        if (player.keyItems.has("Carrot") >= 0) {
             outputText("\n\nLuckily, you've got the perfect one, courtesy of Whitney's farm.  You quickly wash it up and snip the tail end of it off before sticking it right into the center of the snowman's face.  Nostalgia flows over you as you stand back to admire your handiwork.  You feel as if you've brought a little of Ingnam into this strange land, a little bit of cheer into this desolate landscape.");
             outputText("\n\nYou enjoy the presence of your new snowman creation for a while, and then return to your camp with a little smile laid out on your face.");
             flags[kFLAGS.NIEVE_STAGE] = 4;
-            player.removeKeyItem("Carrot");
+            player.keyItems.remove("Carrot");
             outputText("\n\n(Removed Key Item: Carrot)");
         }
         // (Else)
@@ -702,7 +702,7 @@ export function findACarrot(): void {
     outputText("\n\nWhitney passes by, and you ask if you can take the carrot.  She just shrugs, \"<i>Sure, hun.  I need to clear out that crop to make room for more peppers anyhow.</i>\"");
     outputText("\n\nYou stash the carrot away with a smile.  You've got a nose for your snowman!");
     outputText("\n\n(Gained Key Item: Carrot)");
-    player.createKeyItem("Carrot", 0, 0, 0, 0);
+    player.keyItems.create("Carrot", 0, 0, 0, 0);
     doNext(camp.returnToCampUseOneHour);
 }
 
@@ -1193,9 +1193,9 @@ export function nieveIsOver(): void {
 
         outputText("\n\nThe tear of Nieve.");
         if (player.cor < 50) outputText("\n\nThe tear of a friend.");
-        if (player.hasKeyItem("Nieve's Tear") < 0) {
+        if (player.keyItems.has("Nieve's Tear") < 0) {
             outputText("\n\n(<b>Gained Key Item: Nieve's Tear</b>)");
-            player.createKeyItem("Nieve's Tear", 1, 0, 0, 0);
+            player.keyItems.create("Nieve's Tear", 1, 0, 0, 0);
         }
         flags[kFLAGS.NIEVE_STAGE] = 0;
     }

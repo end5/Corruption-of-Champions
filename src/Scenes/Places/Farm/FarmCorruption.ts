@@ -113,15 +113,15 @@ export class FarmCorruption extends AbstractFarmContent {
         // Process queued farm upgrades
 
         // Breastmilkers
-        if (flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] != 0 && player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0) {
+        if (flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] != 0 && player.keyItems.has("Breast Milker - Installed At Whitney's Farm") < 0) {
             flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] = 0;
-            player.createKeyItem("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
+            player.keyItems.create("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
         }
 
         // Cockmilkers
-        if (flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] != 0 && player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0) {
+        if (flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] != 0 && player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0) {
             flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] = 0;
-            player.createKeyItem("Cock Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
+            player.keyItems.create("Cock Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
         }
 
         // Contraceptives
@@ -735,7 +735,7 @@ export class FarmCorruption extends AbstractFarmContent {
             else addButton(2, "Kelt", farm.kelly.breakingKeltOptions);
         }
 
-        if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") >= 0) {
+        if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) {
             if (player.findStatusAffect(StatusAffects.Milked) >= 0) {
                 outputText("\n\n<b>Your " + nippleDescription(player, 0) + "s are currently too sore to be milked.  You'll have to wait a while.</b>", false);
             }
@@ -743,7 +743,7 @@ export class FarmCorruption extends AbstractFarmContent {
             addButton(3, "Get Milked", farm.getMilked);
         }
 
-        if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cockTotal() > 0) {
+        if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cockTotal() > 0) {
             addButton(4, "Milk Cock", farm.cockPumping);
         }
 
@@ -1055,8 +1055,8 @@ export class FarmCorruption extends AbstractFarmContent {
     }
 
     public availableInvestments(): boolean {
-        if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) return true;
-        if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) return true;
+        if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) return true;
+        if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) return true;
         if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] == 0) return true;
         if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] == 0) return true;
         if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) return true;
@@ -1132,8 +1132,8 @@ export class FarmCorruption extends AbstractFarmContent {
 
     private investmentMenu(): void {
         menu();
-        if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) addButton(0, "Breast Milker", investmentBreastMilker);
-        if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) addButton(1, "Cock Milker", investmentCockMilker);
+        if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) addButton(0, "Breast Milker", investmentBreastMilker);
+        if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) addButton(1, "Cock Milker", investmentCockMilker);
         if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] == 0) addButton(2, "Refinery", investmentRefinery);
         if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] == 0) addButton(3, "Contraceptive", investmentContraceptive);
         if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) addButton(4, "MilkTank", investmentMilktank);

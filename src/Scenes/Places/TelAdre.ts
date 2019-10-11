@@ -184,7 +184,7 @@ export class TelAdre {
         // Must have Urta's Key.
         // Urta must be pregnant to trigger this scene.
         // Play this scene upon entering Tel'Adre.
-        if (urta.pregnancy.event > 2 && rand(4) == 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] == 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0) {
+        if (urta.pregnancy.event > 2 && rand(4) == 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] == 0 && player.keyItems.has("Spare Key to Urta's House") >= 0) {
             urtaPregs.urtaSpecialDeliveries();
             return;
         }
@@ -205,7 +205,7 @@ export class TelAdre {
         let homes: boolean = false;
         if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && raphael.RaphaelLikes())
             homes = true;
-        else if (player.hasKeyItem("Spare Key to Urta's House") >= 0)
+        else if (player.keyItems.has("Spare Key to Urta's House") >= 0)
             homes = true;
         else if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 5)
             homes = true;
@@ -252,7 +252,7 @@ export class TelAdre {
         menu();
         if (flags[kFLAGS.ARIAN_PARK] >= 4 && !arianScene.arianFollower()) addButton(0, "Arian's", arianScene.visitAriansHouse);
         addButton(1, "Orphanage", orphanage);
-        if (urtaPregs.urtaKids() > 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0)
+        if (urtaPregs.urtaKids() > 0 && player.keyItems.has("Spare Key to Urta's House") >= 0)
             addButton(2, "Urta's House", (katherine.isAt(Katherine.KLOC_URTAS_HOME) ? katherine.katherineAtUrtas : urtaPregs.visitTheHouse));
         if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 5) addButton(3, "Kath's Apt", katherine.visitAtHome);
         addButton(9, "Back", telAdreMenu);
@@ -951,7 +951,7 @@ export class TelAdre {
             outputText("You see Oswald fiddling with a top hat as you approach his stand again.  He looks up and smiles, padding up to you and rubbing his furry hands together.  He asks, \"<i>Have any merchandise for me " + mf(player, "sir", "dear") + "?</i>\"\n\n", false);
             outputText("(You can sell an item here, but Oswald will not let you buy them back, so be sure of your sales.)", false);
         }
-        if (player.hasKeyItem("Carrot") < 0 && flags[kFLAGS.NIEVE_STAGE] == 3) {
+        if (player.keyItems.has("Carrot") < 0 && flags[kFLAGS.NIEVE_STAGE] == 3) {
             outputText("\n\nIn passing, you mention that you're looking for a carrot.\n\nOswald's tophat tips precariously as his ears perk up, and he gladly announces, \"<i>I happen to have come across one recently - something of a rarity in these dark times, you see.  I could let it go for 500 gems, if you're interested.</i>\"");
             if (player.gems < 500) {
                 outputText("\n\n<b>You can't afford that!</b>");
@@ -969,7 +969,7 @@ export class TelAdre {
     private buyCarrotFromOswald(): void {
         player.gems -= 500;
         statScreenRefresh();
-        player.createKeyItem("Carrot", 0, 0, 0, 0);
+        player.keyItems.create("Carrot", 0, 0, 0, 0);
         clearOutput();
         outputText("Gems change hands in a flash, and you're now the proud owner of a bright orange carrot!\n\n(<b>Acquired Key Item: Carrot</b>)");
         menu();
@@ -1263,7 +1263,7 @@ export class TelAdre {
             }
         }
         //Nun cat stuff!
-        if((game.time.hours > 8 || game.time.hours < 18) && player.hasKeyItem("Silver Kitty-Bell") >= 0) {
+        if((game.time.hours > 8 || game.time.hours < 18) && player.keyItems.has("Silver Kitty-Bell") >= 0) {
             misc1Name = "ScyllaCats";
             misc1 = katherine.katherineGreeting;
             katherine.catMorphIntr();
@@ -1465,7 +1465,7 @@ export class TelAdre {
         outputText("\"<i>What can I make for you?  Platemail?  Or something that breathes a little easier?</i>\" Yvonne asks, fanning herself.");
 
         let egg: () => void = null;
-        if (player.hasKeyItem("Dragon Eggshell") >= 0) {
+        if (player.keyItems.has("Dragon Eggshell") >= 0) {
             outputText("\n\nThough the pieces on display have their arguable attractions, none of them really interest you.  Yvonne taps her foot impatiently.  \"<i>Well, I could make you something to order... if you have any decent materials, cutie.  200 gems.</i>\"");
             if (player.gems < 200) {
                 outputText("\n\nYou can't afford that!");

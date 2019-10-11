@@ -18,7 +18,7 @@ export class JeanClaudeScenes {
         clearOutput();
 
         outputText("You breathe deep, steel yourself");
-        if (player.hasKeyItem("Laybans") >= 0) outputText(", put your shades on");
+        if (player.keyItems.has("Laybans") >= 0) outputText(", put your shades on");
         outputText(" and stride out onto the gantry. The plan is simple. You’ll keep your eyes up and march across as if you belong there, as if you are on official business.");
         if (player.demonScore() > 4) outputText("  You can’t be mistaken for anything but a demon, after all.");
         outputText("  If or when the lizards realize who you are, you’ll make a break for it, and hopefully by then you’ll be in reach of the exit. It’s straight-forward, it’s elegant, it will work, whatever your hammering pulse has to say on the matter.");
@@ -35,7 +35,7 @@ export class JeanClaudeScenes {
         // Get him!
         outputText("\n\n<i>“Attrapez-le!”</i>");
 
-        if (player.hasKeyItem("Laybans") < 0) {
+        if (player.keyItems.has("Laybans") < 0) {
             outputText("\n\nImmediately you break into a run, pelting for the other side, as below you there’s a general rush for the stairs. Your heart feels like it’s going to burst out of your chest as the gantry bounces to your frantic motion, and to the beat of many feet climbing it. The booth is in reach... a sickle claw catches you in the thigh, and you stagger. Growling, you frantically right yourself- only to find yourself staring directly into the face of a basilisk. You punch that one in the nose, wildly tearing your eyes away... to another. And another. They surround you as horrible leaden weights settle on your bones, your body turning into rapidly solidifying cement. You reach for your [weapon], but it’s as if it were a continent away, and the basilisks press into you, grabbing your hands and [hips], forcing you to stare deeper and deeper into the ocean of depthless grey which surrounds you on all sides, and encompasses you, and where you were and what you were doing no longer matters, because the grey permeates your body and soul, and you are just an atom in a sky of peaceful, dove coloured submission, and whether you’re up or down or sideways or down doesn’t matter....");
 
             // [go to Captured]

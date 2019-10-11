@@ -65,12 +65,12 @@ export class PhoukaScene implements TimeAwareInterface {
         }
         else { // Special text for the first encounter
             outputText("It seems to be moving around in one of the dense parts of the bog, where the canopy of dead trees and creeping vines create shadows as deep as twilight even at noon.\n\nYou can't make out a figure holding the light, but you decide to follow.  Spurred on by the thought that it may be someone else like yourself, or perhaps some agent of the demons, you keep trying to catch up with the light up ahead.  This trip into the bog is about to pay off.");
-            if (player.hasKeyItem("Traveler's Guide") >= 0) {
+            if (player.keyItems.has("Traveler's Guide") >= 0) {
                 outputText("\n\nSuddenly a warning from that Traveler's Guide pops into your head.  Flickering lights in the swamps and bogs are just swamp gas, it said, unless they're something much worse.  Well meaning travelers who follow them are lucky to escape unharmed.\n\nPerhaps it would be best to leave this faerie fire alone.");
             }
         }
         menu();
-        if (flags[kFLAGS.PHOUKA_ENCOUNTER_STATUS] != 0 || player.hasKeyItem("Traveler's Guide") >= 0) addButton(4, "Leave", phoukaFaerieFireLeave);
+        if (flags[kFLAGS.PHOUKA_ENCOUNTER_STATUS] != 0 || player.keyItems.has("Traveler's Guide") >= 0) addButton(4, "Leave", phoukaFaerieFireLeave);
         addButton(0, "Follow", phoukaStuck);
     }
 

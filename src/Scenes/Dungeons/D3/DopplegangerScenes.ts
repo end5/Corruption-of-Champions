@@ -28,7 +28,7 @@ export class DopplegangerScenes {
 
     public punchYourselfInTheBalls(): void {
         flags[kFLAGS.D3_DOPPLEGANGER_DEFEATED] = 1;
-        player.createKeyItem("Laybans", 0, 0, 0, 0);
+        player.keyItems.create("Laybans", 0, 0, 0, 0);
 
         clearOutput();
         outputText("The doppelganger falls to the floor, sobbing and broken. For one long moment you feel the nagging pull to exactly replicate [his] actions... and then it’s gone. The world comes back sharply into focus. You have won.");

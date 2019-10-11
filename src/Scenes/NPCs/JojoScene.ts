@@ -113,7 +113,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 return;
             }
             // Offer lethicite jojo tf if the player is ready
-            if (player.findStatusAffect(StatusAffects.JojoTFOffer) < 0 && player.hasKeyItem("Marae's Lethicite") >= 0 && player.keyItemv2("Marae's Lethicite") < 3 && player.cor >= 75) {
+            if (player.findStatusAffect(StatusAffects.JojoTFOffer) < 0 && player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3 && player.cor >= 75) {
                 jojoMutationOffer();
                 player.createStatusAffect(StatusAffects.JojoTFOffer, 0, 0, 0, 0);
                 return;
@@ -164,7 +164,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         let tentaMilk: () => void = null;
         let eggs: () => void = null;
         if (player.canOvipositBee()) eggs = beeEggsInCorruptJojo;
-        if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") >= 0) {
+        if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") >= 0) {
             if (flags[kFLAGS.JOJO_COCK_MILKING_COOLDOWN] > 0) outputText("\n\n<b>Jojo is still drained from his last visit to the milkers - you should wait a few hours before taking him back.</b>", false);
             // First time:
             else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00331] != 0) {
@@ -250,7 +250,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
     private jojoMutationOfferYes(): void {
         jojoSprite();
-        player.addKeyValue("Marae's Lethicite", 2, 1);
+        player.keyItems.addValue("Marae's Lethicite", 2, 1);
         outputText("There's no question about it, this is a great idea.  It might be coming from the corruption in your blood, but why bother to fight it?  You take Marae's lethicite and grab one of the larger crystalline protrusions.  With a hard yank, you break it off from the main cluster, sending tiny crystalline shards over the campsite.  They vanish into the ground before you have a chance to gather them.\n\n", true);
         outputText("Whether by luck or some unconscious demonic magic, the smaller piece of lethicite is rather phallic. If it weren't for the sharp corners and hard edges, it would look like a large dildo with a pair of balls at the base.  You put away the larger piece, focusing this tool and your plans for your pet.\n\n", false);
         outputText("You lick the sharp crystalline dildo, slathering it with spit.  You aren't sure, but you seem unable to stop.  It's as if some demonic force guides you.  It's difficult to focus on much beyond your own arousal and the tingling feeling that spreads through your body as you taste this piece of a goddess' essence.  Your mind drifts off into a perverted fantasy, unable to cope with total loss of control and oral debauchery.\n==========================================\n<i>", false);
@@ -2262,7 +2262,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && player.statusAffectv1(StatusAffects.JojoMeditationCount) % 5 == 0) {
                 // replaces 'Jojo nods respectfully at you [...] "It seems you have quite a talent for this. [...]"' invite paragraphs while Treefingers is getting slut all over your campsite
                 // gives Small Talisman if PC never had follower Jojo or used it and ran from the fight
-                if (player.hasKeyItem("Jojo's Talisman") >= 0) { // [(if PC has Small Talisman)
+                if (player.keyItems.has("Jojo's Talisman") >= 0) { // [(if PC has Small Talisman)
                     outputText("Jojo smiles at you.  \"<i>[name], well done.  Your talent at focusing is undiminished.  Regarding the other issue... you still have the item I gave you?</i>\"");
                     outputText("\n\nYou hold up the talisman, and he nods.  \"<i>Good.  Stay safe and signal me with it if you need help.</i>\"");
                 }
@@ -2271,7 +2271,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                     outputText("\n\nAs much as you'd like to, you can't stay in the forest, and you can't invite him back with you right now.  Reluctantly, you mention the stubborn, demonic godseed's presence on the borders of your camp.  Jojo's eyebrows furrow in concentration.");
                     outputText("\n\n\"<i>Yes, that's a problem.  Oh, that we did not have to resist the very spirit of the land!  [name], take this.  Use it to call me if the demon gives you trouble; I will come and render what aid I can.</i>\"  The monk fishes in his robe and places a small talisman into your hand.\n\n(Gained Key Item: Jojo's Talisman)");
                     // get a small talisman if not have one
-                    player.createKeyItem("Jojo's Talisman", 0, 0, 0, 0);
+                    player.keyItems.create("Jojo's Talisman", 0, 0, 0, 0);
                 }
                 doNext(camp.returnToCampUseTwoHours);
                 return;

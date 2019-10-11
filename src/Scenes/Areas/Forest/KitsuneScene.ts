@@ -109,7 +109,7 @@ export class KitsuneScene {
         outputText("Catching a glimpse of motion out of the corner of your eye, you whip around to face it, but are surprised to see that the only thing there is a small, pale blue flame, flitting about idly.  It dances around hypnotically, and as you stare into its ghostly light, you find your conscious mind growing hazy.  Your concerns suddenly seem trivial, and you find yourself relaxing gradually as the ethereal wisp glides along your arms, leaving behind a cool tingle where it touches you.\n\n");
         outputText("It seems to be beckoning you to follow it.");
         // If player has Traveler's Guide
-        if (player.hasKeyItem("Traveler's Guide") >= 0) {
+        if (player.keyItems.has("Traveler's Guide") >= 0) {
             outputText("\n\nYour mind is jogged out of its haze when you remember a note from the Traveler's Guide.  It warned about mysterious flames in the forest that lead hapless adventurers astray.  You hesitate now, wondering what to do.");
             // [Turn Back] [Follow] //automatically follow without traveler's guide.
             simpleChoices("Turn Back", turnBackFromWillOWisp, "Follow", followTheWillOWisp, "", null, "", null, "", null);

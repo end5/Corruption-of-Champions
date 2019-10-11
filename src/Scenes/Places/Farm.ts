@@ -72,14 +72,14 @@ export class Farm {
                 if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(1, "Kelly", kelly.breakingKeltOptions);
                 else addButton(1, "Kelt", kelly.breakingKeltOptions);
             }
-            if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") >= 0) {
+            if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) {
                 if (player.findStatusAffect(StatusAffects.Milked) >= 0) {
                     outputText("\n\n<b>Your " + nippleDescription(player, 0) + "s are currently too sore to be milked.  You'll have to wait a while.</b>", false);
                 }
                 else if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(2, "Get Milked", getMilked);
 
             }
-            if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cockTotal() > 0) {
+            if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cockTotal() > 0) {
 
                 if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(5, "Milk Cock", cockPumping);
             }
@@ -100,12 +100,12 @@ export class Farm {
         spriteSelect(62);
         outputText("Whitney takes the gear back to her farm after promising to have it working within the hour.  She did leave you with a cryptic warning to \"<i>leave the milkings to the beasts, lest you become one</i>.</i>\"\n\nYou shrug and head back to check up on camp.", true);
         if (breast) {
-            player.createKeyItem("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
-            player.removeKeyItem("Breast Milker");
+            player.keyItems.create("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
+            player.keyItems.remove("Breast Milker");
         }
         else {
-            player.createKeyItem("Cock Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
-            player.removeKeyItem("Cock Milker");
+            player.keyItems.create("Cock Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
+            player.keyItems.remove("Cock Milker");
         }
         doNext(camp.returnToCampUseOneHour);
     }
@@ -122,7 +122,7 @@ export class Farm {
         // [FIND WHITNEY TXT]
         outputText("", true);
         // Centaur Hookups!
-        if (player.hasKeyItem("Fake Mare") < 0 && player.isTaur()) {
+        if (player.keyItems.has("Fake Mare") < 0 && player.isTaur()) {
             centaurToysHoooooo();
             return;
         }
@@ -244,8 +244,8 @@ export class Farm {
         if (temp == 4) outputText("She's rounding up a small herd of normal-looking cows.  Amazingly she has chosen to do so on foot, but is quick enough to keep up and corral her beasts.  Thankfully she's in the process of closing the gate to their pen when you finally catch up to her.  Whitney gives you a friendly smile as you come up to her and the two of you begin chatting immediately.\n\n", false);
         if (temp == 5) outputText("She's leaning back against a thick tree with a wide-brimmed hat drooped low over her eyes.   You call out to her, thinking the dog-woman has fallen asleep, but her head snaps up and her alert eyes lock on to you immediately.  Maybe she wasn't dozing.  She calls out, \"<i>Come on over and 'ave a sit, I'm starved fer company!</i>\"  You settle in for a chat.\n\n", false);
         // [HAVE MILKER THAT ISN'T PLUGGED IN]
-        if (rand(4) == 0 && player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0) {
-            if (player.hasKeyItem("Breast Milker") >= 0) {
+        if (rand(4) == 0 && player.keyItems.has("Breast Milker - Installed At Whitney's Farm") < 0) {
+            if (player.keyItems.has("Breast Milker") >= 0) {
                 outputText("Before you can say much of anything, Whitney exclaims, \"<i>My stars! Is that one of them demon's milking machines?</i>\"\n\n", false);
                 outputText("You nod and tell her how you liberated it from the demonic factory and explain that even though it should be fully functional, it'll need to connect to some other machinery to work, and it's way more than any one person could handle.\n\n", false);
                 outputText("\"<i>Well of course, it needs hooked into a pump system, collection reservoir, and a power source.  It just happens I've got all that equipment set up for my cows in the barn, and I reckon it'd be easier to plug into than a girl sniffing minotaur musk,</i>\" Whitney explains, \"<i>If you like I could get it all set up for ya, hell, I might even toss you a few gems if you can produce enough milk.</i>\"\n\n", false);
@@ -275,7 +275,7 @@ export class Farm {
             }
         }
         // [HAVE COCK MILKER THAT ISN'T PLUGGED IN]
-        if (rand(4) == 0 && player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0 && player.hasKeyItem("Cock Milker") >= 0) {
+        if (rand(4) == 0 && player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0 && player.keyItems.has("Cock Milker") >= 0) {
             outputText("Before you can say much of anything, Whitney exclaims, \"<i>My stars! Is that one of them demon's milking machines?</i>\"\n\n", false);
             outputText("You nod and tell her how you got it and explain that even though it should be fully functional, it'll need to connect to some other machinery to work, and it's way more than any one person could handle.\n\n", false);
             outputText("\"<i>Well of course, it needs hooked into a pump system, collection reservoir, and a power source.  It just happens I've got all that equipment set up for my cows in the barn, and I reckon it'd be easier to plug into than a girl sniffing minotaur musk.</i>\" Whitney explains, \"<i>If you like I could get it all set up for ya, hell, if you manage to gather large enough quantities with it, I might be able to find a way to inseminate my cattle with it and pay ya for it.  Don't you worry none, I know ways to make this kind of thing work.</i>\"\n\n", false);
@@ -303,7 +303,7 @@ export class Farm {
     private breastMilkerPurchase(): void {
         outputText("Whitney takes the gems and leaves with the promise of having your gear set up within the hour.  She calls back over her shoulder with a cryptic warning, \"<i>Watch how much time you spend getting milked like an animal, lest you wind up like one.</i>\"", true);
         doNext(camp.returnToCampUseOneHour);
-        player.createKeyItem("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
+        player.keyItems.create("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
         player.gems -= 250;
         statScreenRefresh();
     }
@@ -466,7 +466,7 @@ export class Farm {
             return;
         }
         // FIND CARROT!
-        if (nieveHoliday() && flags[kFLAGS.NIEVE_STAGE] == 3 && player.hasKeyItem("Carrot") < 0) {
+        if (nieveHoliday() && flags[kFLAGS.NIEVE_STAGE] == 3 && player.keyItems.has("Carrot") < 0) {
             findACarrot();
             return;
         }
@@ -912,7 +912,7 @@ export class Farm {
             outputText("You moan with lust, pushed beyond the limits of sensation to a mixture of heaven and hell.   Thankfully the harness holds your body still as you writhe inside the straps, utterly restrained but instinctively trying to thrust into the source of your good feelings.  The milking devices suck and stroke with feverish intensity, making you bigger and harder than you've ever been before.  You can practically feel the pre-cum dripping from your urethras, and you can definitely hear it being sucked down the tubes.  You feel release building, but the machinery somehow senses it, and backs off, keeping you on the edge of orgasm for as long as possible.\n\n", false);
         }
         // (OPTIONAL ANAL PROBE)
-        if (player.hasKeyItem("Cock Milker: Anal Attachment") >= 0) {
+        if (player.keyItems.has("Cock Milker: Anal Attachment") >= 0) {
             if (player.cockTotal() == 1) outputText("A sudden splash of wetness hits your backside, instantly soaking your " + player.skinDesc + " with slippery lubricants.  You feel something narrow touch against your " + assholeDescript(player) + ", workings its way past the clenching muscles and into your body.  The violation would bother you more if it didn't seem to amplify the feelings radiating down your shaft, but then it starts to change.  You feel it swelling up inside, somehow inflating.  It stretches you wide, pressing against the knot of your prostate, milking out a thick flow of cum.   It pushes tighter and tighter, making you drip and drizzle in a steady flow before deflating, allowing your abused body to relax.  You sigh, but are kept rock hard by the feverish milking of your dick.\n\nEventually the probe inflates again, squeezing out another drizzle of thick spooge, the hose on your " + cockDescript(game.player, 0) + " noisily sucking it down.  You're kept like that for quite a while – never feeling a true orgasm, but forced to expel cum over and over by always increasing waves of pressure in your ass.  You babble incoherently, pleasure-drunk, not even noticing a green light on the far side of the wall come on.  One thing you do notice is that the cock-tube isn't slowing down its ministrations.  You're finally allowed to cum!\n\n", false);
             else outputText("A sudden splash of wetness hits your backside, instantly soaking your " + player.skinDesc + " with slippery lubricants.  You feel something narrow touch against your " + assholeDescript(player) + ", workings its way past the clenching muscles and into your body.  The violation would bother you more if it didn't seem to amplify the feelings radiating down your shafts, but then it starts to change.  You feel it swelling up inside, somehow inflating.  It stretches you wide, pressing against the knot of your prostate, milking out a thick flow of cum.   It pushes tighter and tighter, making you drip and drizzle in a steady flow before deflating, allowing your abused body to relax.  You sigh, but are kept rock hard by the feverish milking of your dicks.\n\nEventually the probe inflates again, squeezing out another drizzle of thick spooge, the hoses on your " + multiCockDescriptLight(game.player) + " noisily sucking it down.  You're kept like that for quite a while – never feeling a true orgasm, but forced to expel cum over and over by always increasing waves of pressure in your ass.  You babble incoherently, pleasure-drunk, not even noticing a green light on the far side of the wall come on.  One thing you do notice is that the cock-tubes are no longer slowing down their ministrations.  You're finally allowed to cum!\n\n", false);
         }
@@ -1247,8 +1247,8 @@ export class Farm {
         outputText("You tell her sure, and spend the next few minutes loading them onto the back of your horse-body.  Even if you don't end up using them yourself, you've got plenty of room in camp for them, unlike Whitney.  Loaded up with centaur-friendly sex toys, you make your way back to camp.\n\n", false);
 
         outputText("(<b>Key Items Gained: Fake Mare and Centaur Pole</b>)", false);
-        player.createKeyItem("Fake Mare", 0, 0, 0, 0);
-        player.createKeyItem("Centaur Pole", 0, 0, 0, 0);
+        player.keyItems.create("Fake Mare", 0, 0, 0, 0);
+        player.keyItems.create("Centaur Pole", 0, 0, 0, 0);
         doNext(camp.returnToCampUseOneHour);
     }
 }

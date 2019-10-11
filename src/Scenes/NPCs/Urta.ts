@@ -263,7 +263,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         // showImage(0);
         let temp: () => void = null;
         let spank: () => void = null;
-        if ((player.hasCock() && player.cockThatFits(urtaCapacity()) >= 0) || player.hasKeyItem("Deluxe Dildo") >= 0) spank = spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs;
+        if ((player.hasCock() && player.cockThatFits(urtaCapacity()) >= 0) || player.keyItems.has("Deluxe Dildo") >= 0) spank = spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs;
         clearOutput();
         // Raphael Reward
         if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -1 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00148] == 0) {
@@ -2737,7 +2737,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         addButton(2, "The Watch", urtaDiscussesTheWatch);
         if (!urtaJustFriends()) addButton(3, "Alcoholism", urtaDiscussesAlcholism);
         if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 4) addButton(5, "Katherine", urtaDiscussessKatherine);
-        if (urtaPregs.urtaKids() > 0 && player.hasKeyItem("Spare Key to Urta's House") < 0)
+        if (urtaPregs.urtaKids() > 0 && player.keyItems.has("Spare Key to Urta's House") < 0)
             addButton(4, "Visit Kids", urtaPregs.visitKidsFirstTime);
         else
             if (flags[kFLAGS.FIRST_TIME_AT_URTA_HOUSE] > 0) addButton(4, "Her House", urtaPregs.talkToUrtaAboutHerHouse);

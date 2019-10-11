@@ -288,7 +288,7 @@ export class ShouldraScene extends NPCAwareContent implements TimeAwareInterface
 
         outputText("You set your jaw and go at your work with fervor, caressing, groping, and licking every inch of her that you can reach, taking note of the increased frequency of her gasps and groans. As if to reward your efforts, the girl reaches down and lines up her pinky with your own neglected snatch, and before you know it, you're suddenly being stretched", false);
         // [if dildo in possession]
-        if (player.hasKeyItem("Deluxe Dildo") >= 0) outputText(" by the biggest object you've experienced since Tamani's deluxe dildo", false);
+        if (player.keyItems.has("Deluxe Dildo") >= 0) outputText(" by the biggest object you've experienced since Tamani's deluxe dildo", false);
         outputText(", and your eyes almost cross by the sheer scale of the insertion. Within a minute an orgasm rocks your body, the ensuing spasm pushing the ghost girl over the edge with a final, urgent scream resounding with equal parts ghost and shark girl. With as much concentration as you can muster while your stomach is stretched as large as it is, you desperately wriggle out of the gigantic shark-pussy a moment before her climax. Not able to completely escape, you receive a face-full of female lovejuice for your trouble, bowling you over ", false);
         // [if breasts present]
         if (player.biggestTitSize() >= 1) outputText("and caking your cleavage with the excess lubrication", false);

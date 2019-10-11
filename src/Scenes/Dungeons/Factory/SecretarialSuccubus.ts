@@ -2,7 +2,7 @@
 export class SecretarialSuccubus extends AbstractSuccubus {
     public defeated(hpVictory: boolean): void {
         if (player.gender > 0) {
-            const dildo: () => void = (player.hasKeyItem("Deluxe Dildo") >= 0 ? game.succubusGetsDildoed : null);
+            const dildo: () => void = (player.keyItems.has("Deluxe Dildo") >= 0 ? game.succubusGetsDildoed : null);
 
             if (hpVictory) {
                 outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.  Now would be the perfect opportunity to taste the fruits of her sex-ready form...\n\nDo you rape her?", true);

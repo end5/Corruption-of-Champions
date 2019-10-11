@@ -86,7 +86,7 @@ function dungeonMenu(): void {
         if (player.findStatusAffect(StatusAffects.FactorySuccubusDefeated) >= 0) {
             // 			choice7 = 0;
             // 			text6 = "West";
-            if (player.hasKeyItem("Iron Key") < 0) {
+            if (player.keyItems.has("Iron Key") < 0) {
                 outputText("  It seems your opponent dropped a small iron key as she fled.", false);
                 // 				choice3 = takeIronKey;
                 // 				text3 = "Iron Key";
@@ -212,14 +212,14 @@ function dungeonMenu(): void {
             outputText("The shelves of the cabinet hold various pieces of pump machinery, probably used to repair complete machines further into the factory.  ", false);
             if (player.inte >= 40) {
                 outputText("You realize there are enough pieces here to put together a breast-milking pump or a cock-milker.  ", false);
-                if (player.hasKeyItem("Cock Milker") >= 0)
+                if (player.keyItems.has("Cock Milker") >= 0)
                     outputText("\nYou already have a cock milker.\n", false);
                 else {
                     // 					choice4 = takeCockMilker;
                     // 					text4 = "C. Milker";
                     addButton(3, "C. Milker", takeCockMilker);
                 }
-                if (player.hasKeyItem("Breast Milker") >= 0)
+                if (player.keyItems.has("Breast Milker") >= 0)
                     outputText("\nYou already have a breast milker.\n", false);
                 else {
                     // 					choice3 = takeBreastMilker;
@@ -283,7 +283,7 @@ function dungeonMenu(): void {
             addButton(1, "East", dungeonEnterRoom, DUNGEON_FACTORY_PUMP_CONTROL);
             addButton(5, "North(Down)", dungeonEnterRoom, DUNGEON_FACTORY_MAIN_CHAMBER);
             addButton(6, "South", openPumpRoom);
-            if (player.hasKeyItem("Supervisor's Key") < 0) {
+            if (player.keyItems.has("Supervisor's Key") < 0) {
                 // 				choice3 = takeSupervisorsKey;
                 // 				text3 = "Desk";
                 addButton(2, "Desk", takeSupervisorsKey);
@@ -651,7 +651,7 @@ function dungeonMenu(): void {
                 addButton(3, "Hakon", helDungeonPrisonerTalk);
             }
             outputText(".");
-            if (player.hasKeyItem("Harpy Key A") >= 0 && player.hasKeyItem("Harpy Key B") >= 0) outputText("\n\n<b>You have the keys to release the prisoner, but you may want to make sure you have everything from this place that you want before you make your escape.  You doubt you'll be able to return in the future.</b>");
+            if (player.keyItems.has("Harpy Key A") >= 0 && player.keyItems.has("Harpy Key B") >= 0) outputText("\n\n<b>You have the keys to release the prisoner, but you may want to make sure you have everything from this place that you want before you make your escape.  You doubt you'll be able to return in the future.</b>");
             // (Display Options: [Go Upstairs](Back to Stairwell & Kiri) [Prisoner] [Torture Gear]
             // 			text3 = "Upstairs";
             // 			choice3 = 11086;
@@ -1608,12 +1608,12 @@ function drinkCoffee(): void {
 function takeIronKey(): void {
     clearOutput();
     outputText("You take the <b>Iron Key</b> to keep with your other important items.");
-    player.createKeyItem("Iron Key", 0, 0, 0, 0);
+    player.keyItems.create("Iron Key", 0, 0, 0, 0);
     doNext(playerMenu);
 }
 
 function openFactoryDoor(): void {
-    if (player.hasKeyItem("Iron Key") < 0) {
+    if (player.keyItems.has("Iron Key") < 0) {
         clearOutput();
         outputText("The door is locked with a key that is not in your possession.");
     }
@@ -1625,7 +1625,7 @@ function takeCockMilker(): void {
     clearOutput();
     outputText("You puzzle out how to build a fully functional cock-milker from the spare parts here and assemble it.\n\nYou gained a <b>Cock Milker</b>!");
     outputText("\n\nYou'll need a little help to use it though.");
-    player.createKeyItem("Cock Milker", 0, 0, 0, 0);
+    player.keyItems.create("Cock Milker", 0, 0, 0, 0);
     player.createStatusAffect(StatusAffects.BuiltMilker, 0, 0, 0, 0);
     doNext(playerMenu);
 }
@@ -1634,7 +1634,7 @@ function takeBreastMilker(): void {
     clearOutput();
     outputText("You puzzle out how to build a fully functional breast-milker from the spare parts here and assemble it.\n\nYou gained a <b>Breast Milker</b>!");
     outputText("\n\nYou'll need a little help to use it though.");
-    player.createKeyItem("Breast Milker", 0, 0, 0, 0);
+    player.keyItems.create("Breast Milker", 0, 0, 0, 0);
     player.createStatusAffect(StatusAffects.BuiltMilker, 0, 0, 0, 0);
     doNext(playerMenu);
 }
@@ -1642,7 +1642,7 @@ function takeBreastMilker(): void {
 function talkToIncubus(): void {
     spriteSelect(30);
     clearOutput();
-    if (player.hasKeyItem("Hentai Comic") >= 0) {
+    if (player.keyItems.has("Hentai Comic") >= 0) {
         outputText("The incubus speaks to you with a calm, deep voice, \"<i>And so the insect, heedless of its path, stumbled directly into the spider's web.  Tiny insect... wait, what is that book you're carrying?  Is that hentai?  It IS!  Let me offer you a deal – I'm not really hungry or interested in fighting. So if you hand over the comic, I'll happily ignore your presence here. Though, I guess you could also just submit. Then I could put you to work and still get the comic.</i>\"");
         simpleChoices("Fight", startIncubusFight, "Trade", tradeComic, "Submit", submitToIncubus, "", null, "", null);
     }
@@ -1675,7 +1675,7 @@ function tradeComic(): void {
     spriteSelect(30);
     clearOutput();
     outputText("You hand over the Hentai Comic tentatively to the male sex demon.  As soon as he has it in his grubby mitts he sits down and starts thumbing through the pages, toying with his half-hard member the entire time.  He must really like porn.");
-    player.removeKeyItem("Hentai Comic");
+    player.keyItems.remove("Hentai Comic");
     player.createStatusAffect(StatusAffects.IncubusBribed, 0, 0, 0, 0);
     doNext(playerMenu);
 }
@@ -2492,12 +2492,12 @@ export function demonBadEnd2(): void {
 export function takeSupervisorsKey(): void {
     clearOutput();
     outputText("You search the desk and find a silver key labelled 'Supervisor'.\n\n(Supervisor's Key acquired!)");
-    player.createKeyItem("Supervisor's Key", 0, 0, 0, 0);
+    player.keyItems.create("Supervisor's Key", 0, 0, 0, 0);
     doNext(playerMenu);
 }
 
 export function openPumpRoom(): void {
-    if (player.hasKeyItem("Supervisor's Key") < 0) {
+    if (player.keyItems.has("Supervisor's Key") < 0) {
         clearOutput();
         outputText("The door is locked with a key that is not in your possession.");
     }

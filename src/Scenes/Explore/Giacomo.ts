@@ -204,7 +204,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchDangerousPlantsBook(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Dangerous Plants") >= 0) {
+        if (player.keyItems.has("Dangerous Plants") >= 0) {
             outputText("<b>You already own the book 'Dangerous Plants'.</b>");
             doNext(bookMenu);
             return;
@@ -224,7 +224,7 @@ export class Giacomo implements TimeAwareInterface {
             outputText("\n\nYou consider yourself fortunate to be quite literate in this day and age.  It certainly comes in handy with this book.  Obviously written by well-informed, but women-starved men, the narrative drearily states the various types of poisonous and carnivorous plants in the world.  One entry that really grabs you is the chapter on 'Violation Plants'.  The chapter drones on about an entire classification of specially bred plants whose purpose is to torture or feed off a human being without permanently injuring and killing them.  Most of these plants attempt to try breeding with humans and are insensitive to the intricacies of human reproduction to be of any value, save giving the person no end of hell.  These plants range from massive shambling horrors to small plant-animal hybrids that attach themselves to people.  As you finish the book, you cannot help but shiver at the many unnatural types of plants out there and wonder what sick bastard created such monstrosities. ");
             doNext(bookMenu);
             player.gems -= 10;
-            player.createKeyItem("Dangerous Plants", 0, 0, 0, 0);
+            player.keyItems.create("Dangerous Plants", 0, 0, 0, 0);
             statScreenRefresh();
         }
     }
@@ -232,7 +232,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchTravellersGuide(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Traveler's Guide") >= 0) {
+        if (player.keyItems.has("Traveler's Guide") >= 0) {
             outputText("<b>You already own the book 'Traveler's Guide'.</b>");
             doNext(bookMenu);
             return;
@@ -252,7 +252,7 @@ export class Giacomo implements TimeAwareInterface {
             outputText("The crazy merchant said you might not need this and he was right.  Written at a simple level, this was obviously intended for a city-dweller who never left the confines of their walls.  Littered with childish illustrations and silly phrases, the book is informative in the sense that it does tell a person what they need and what to do, but naively downplays the dangers of the forest and from bandits.  Were it not so cheap, you would be pissed at the merchant.  However, he is right in the fact that giving this to some idiot ignorant of the dangers of the road saves time from having to answer a bunch of stupid questions.");
             doNext(bookMenu);
             player.gems -= 1;
-            player.createKeyItem("Traveler's Guide", 0, 0, 0, 0);
+            player.keyItems.create("Traveler's Guide", 0, 0, 0, 0);
             statScreenRefresh();
         }
     }
@@ -260,7 +260,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchHentaiComic(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Hentai Comic") >= 0) {
+        if (player.keyItems.has("Hentai Comic") >= 0) {
             outputText("<b>You already own a Hentai Comic!</b>");
             doNext(bookMenu);
             return;
@@ -280,7 +280,7 @@ export class Giacomo implements TimeAwareInterface {
             outputText("You peruse the erotic book.  The story is one of a group of sisters who are all impossibly heavy-chested and equally horny getting into constant misadventures trying to satisfy their lust.  While the comic was entertaining and erotic to the highest degree, you cannot help but laugh at how over-the-top the story and all of the characters are.  Were the world as it was in the book, nothing would get done as humanity would be fucking like jackrabbits in heat for the rest of their lives.  While certainly a tempting proposition, everyone gets worn out sometime.  You place the book in your sack, well entertained and with a head filled with wilder perversions than what you woke up with this morning.");
             doNext(bookMenu);
             player.gems -= 10;
-            player.createKeyItem("Hentai Comic", 0, 0, 0, 0);
+            player.keyItems.create("Hentai Comic", 0, 0, 0, 0);
             statScreenRefresh();
         }
     }
@@ -294,7 +294,7 @@ export class Giacomo implements TimeAwareInterface {
 
     private buyYogaGuide(): void {
         clearOutput();
-        if (player.hasKeyItem("Yoga Guide") >= 0) {
+        if (player.keyItems.has("Yoga Guide") >= 0) {
             outputText("<b>You already own a yoga guide!</b>");
         }
         else if (player.gems < 100) {
@@ -302,7 +302,7 @@ export class Giacomo implements TimeAwareInterface {
         }
         else {
             outputText("You exchange 100 gems for the tome.  Now you can finally enjoy a workout with Cotton!");
-            player.createKeyItem("Yoga Guide", 0, 0, 0, 0);
+            player.keyItems.create("Yoga Guide", 0, 0, 0, 0);
             player.gems -= 100;
             statScreenRefresh();
         }
@@ -312,7 +312,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchDildo(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Dildo") >= 0) {
+        if (player.keyItems.has("Dildo") >= 0) {
             outputText("<b>You already own a Dildo!</b>");
             doNext(eroticaMenu);
             return;
@@ -332,7 +332,7 @@ export class Giacomo implements TimeAwareInterface {
             outputText("After making the payment, Giacomo hands you the Dildo");
             doNext(eroticaMenu);
             player.gems -= 20;
-            player.createKeyItem("Dildo", 0, 0, 0, 0);
+            player.keyItems.create("Dildo", 0, 0, 0, 0);
             statScreenRefresh();
         }
     }
@@ -340,7 +340,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchSelfStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Self-Stimulation Belt") >= 0) {
+        if (player.keyItems.has("Self-Stimulation Belt") >= 0) {
             outputText("<b>You already own a Self-Stimulation Belt!</b>");
             doNext(eroticaMenu);
             return;
@@ -358,7 +358,7 @@ export class Giacomo implements TimeAwareInterface {
             return;
         }
         outputText("After making the payment, Giacomo hands you the Self-Stimulation Belt");
-        player.createKeyItem("Self-Stimulation Belt", 0, 0, 0, 0);
+        player.keyItems.create("Self-Stimulation Belt", 0, 0, 0, 0);
         doNext(eroticaMenu);
         player.gems -= 30;
         statScreenRefresh();
@@ -367,14 +367,14 @@ export class Giacomo implements TimeAwareInterface {
     private pitchAllNaturalSelfStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("All-Natural Self-Stimulation Belt") >= 0) {
+        if (player.keyItems.has("All-Natural Self-Stimulation Belt") >= 0) {
             outputText("<b>You already own an All-Natural Self-Stimulation Belt!</b>");
             doNext(eroticaMenu);
             return;
         }
         outputText("The merchant places his bag on the ground.  He reaches into one of his purses and pulls out a pair of gloves.  After putting them on, he reaches into his bag and pulls out what appears to be a chastity belt.  The device has a clearly organic look to it.  In the center of the front cover is a nodule.  You have heard of similar devices.  They normally have a dildo attached to them to pleasure women.  ");
         outputText("\"<i>This device is quite intriguing,</i>\" Giacomo begins, \"<i>This pleasure engine is NOT for the faint-of-heart.  Being constructed of materials from the workshops of biomechanical artificers, this device outperforms its mechanical cousin in every way.  Guaranteed to last longer than you do, this machine will give you as many mind-shattering orgasms as you can handle.  Unlike the mechanical belt, you do not need to wind it up.  It soaks up the power of the sun itself in an amazing feat of engineering.  Four hours a day is all it needs!  Keep in mind that if there is no sun for a couple of days, it will not work without a full day's sunshine.  You may wonder why I am wearing gloves.  Well, that is because of the pads on the belt.</i>\"  Giacomo points to a couple of small, amber pads on the belt.  \"<i>They are sensitive to human touch and activate the belt.  This is all yours for 40 gems and you get the gloves for free!  Again, this device offers ultimate pleasure.  If you can't handle it, I will not be offended if you turn it down.</i>\"");
-        if (player.hasKeyItem("Dangerous Plants") >= 0 && player.inte > 39) {
+        if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte > 39) {
             outputText("\n\nThe nodule and the base of the stimulator look vaguely like some of the things you have seen in the Dangerous Plant book.  You wonder if there is not something devious about this item.  Giacomo is also sweating.  It is too cool for that, this time of year.");
         }
         else {
@@ -395,7 +395,7 @@ export class Giacomo implements TimeAwareInterface {
             return;
         }
         outputText("After making the payment, Giacomo hands you the All-Natural Self-Stimulation Belt");
-        player.createKeyItem("All-Natural Self-Stimulation Belt", 0, 0, 0, 0);
+        player.keyItems.create("All-Natural Self-Stimulation Belt", 0, 0, 0, 0);
         doNext(eroticaMenu);
         player.gems -= 40;
         statScreenRefresh();
@@ -404,7 +404,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchOnahole(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Plain Onahole") >= 0) {
+        if (player.keyItems.has("Plain Onahole") >= 0) {
             outputText("<b>You already own a Plain Onahole!</b>");
             doNext(eroticaMenu);
             return;
@@ -422,7 +422,7 @@ export class Giacomo implements TimeAwareInterface {
             return;
         }
         outputText("After making the payment, Giacomo hands you the Plain Onahole");
-        player.createKeyItem("Plain Onahole", 0, 0, 0, 0);
+        player.keyItems.create("Plain Onahole", 0, 0, 0, 0);
         doNext(eroticaMenu);
         player.gems -= 20;
         statScreenRefresh();
@@ -431,7 +431,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchDeluxeOnahole(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Deluxe Onahole") >= 0) {
+        if (player.keyItems.has("Deluxe Onahole") >= 0) {
             outputText("<b>You already own a Deluxe Onahole!</b>");
             doNext(eroticaMenu);
             return;
@@ -449,7 +449,7 @@ export class Giacomo implements TimeAwareInterface {
             return;
         }
         outputText("After making the payment, Giacomo hands you the Deluxe Onahole");
-        player.createKeyItem("Deluxe Onahole", 0, 0, 0, 0);
+        player.keyItems.create("Deluxe Onahole", 0, 0, 0, 0);
         doNext(eroticaMenu);
         player.gems -= 50;
         statScreenRefresh();
@@ -458,14 +458,14 @@ export class Giacomo implements TimeAwareInterface {
     private pitchAllNaturalOnahole(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("All-Natural Onahole") >= 0) {
+        if (player.keyItems.has("All-Natural Onahole") >= 0) {
             outputText("<b>You already own an All-Natural Onahole!</b>");
             doNext(eroticaMenu);
             return;
         }
         outputText("Giacomo reaches into his bag and pulls out what looks like an oblong coconut.  It is roughly seven inches in diameter.  There is a distinctive opening in one end that is just large enough for an erect penis.  Inside the opening you see what looks like two pink cushions.  There are multiple symmetrical depressions surrounding the outside hole of the thing.  Giacomo's smile fades and he takes on a much more serious attitude befitting his aquiline face.  \"<i>Miss,</i>\" Giacomo states, \"<i>without sounding too bold, it is no secret that members of the third gender are capable of sexual feats that force the other two genders into jealous fits.  Having bigger cocks than men, cumming more than an elephant and a pussy with the strength and coordination of a human hand, regular toys do not last long for you folk.  Hence, this little beasty.  I will tell you straightaway, only the third sex ");
         outputText("can handle this toy.  The other two genders simply do not have the stamina for it.  This thing is all-natural, meaning that it powers itself and is made with the Artificers' organic methods.  It will cease functioning if it is not used or you fail to give the opening a few drops of this fluid once every three days.</i>\"  Giacomo pauses to hold up a small bottle.  He places the bottle down and continues his sales pitch, \"<i>If you plan on not using this thing regularly, do not buy it.  These items are very rare and this one will probably be the only one you'll ever see.  Normally I pitch my products like crazy.  However, with this I do not need to.  This thing DOES work too well, and you WILL cum, period.  It will work you until you do not want it to work anymore.  It will not stop until IT decides to stop.  However, for the extreme needs of a lovely example of the dual-sex, it may be the very thing you need.  Again, this is for the ultimate hardcore pleasure seeker amongst the ultimate hardcore.  It costs a humble 150 gems, but for superhuman thrills, who can put a price tag on that?</i>");
-        if (player.hasKeyItem("Dangerous Plants") >= 0 && player.inte > 35) {
+        if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte > 35) {
             outputText("\n\nWhile skillfully avoiding Giacomo's suspicion, you correctly surmise that the toy is not a toy at all.  It is the outer shell for a hybrid animal-plant.  The creature is very much alive.  While the technical name for this beast is in the usual unpronounceable scholastic gibberish, the common nickname for this is the \"All-Day Sucker\".  It gets its name due to the fact that its diet consists of high nutrient fluids, especially semen.  It was used both as a torture device and as a pleasure pet of the snobbish elite because it would clamp down upon the member of a person and not release until it has stimulated the person enough to ejaculate sufficiently to feed.  However, the All-Day Sucker swells up like fleas and ticks do, thus requiring hours of stimulation to have its fill.  There was something else about these things, but you cannot remember exactly what it was.");
             if (player.inte > 65) {
                 outputText("After a moment, you remember what it was you read.  Unlike many simple beasts, this creature has a male and a female gender.  The creature itself is similar to a tubeworm.  While the males are considered reasonably \"safe\", the females have a nasty habit of injecting its young inside the sex organs of the person using the thing, leaving the hapless person to convulse in endless, painful orgasms as the beasties wriggle around their insides until they are ready for birth.  The process takes about a week and recorded victims normally make full recoveries after a period of blindingly painful orgasms as they shoot out the young.  It is not a surprise to have people's hearts give out at the endless stimulation from the young.  The recovery time is quite long due to the stress on the body such overwhelming stimulus would generate.  Some ultra-extreme pleasure seekers actively look for these things just for this experience.\n\nHowever, the problem is there is NO WAY to tell if this is male or female by looking at it.");
@@ -483,7 +483,7 @@ export class Giacomo implements TimeAwareInterface {
             return;
         }
         outputText("After making the payment, Giacomo hands you the All-Natural Onahole");
-        player.createKeyItem("All-Natural Onahole", 0, 0, 0, 0);
+        player.keyItems.create("All-Natural Onahole", 0, 0, 0, 0);
         doNext(eroticaMenu);
         player.gems -= 150;
         statScreenRefresh();
@@ -492,7 +492,7 @@ export class Giacomo implements TimeAwareInterface {
     private pitchDualStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
-        if (player.hasKeyItem("Dual Belt") >= 0) {
+        if (player.keyItems.has("Dual Belt") >= 0) {
             outputText("<b>You already own a dual belt!</b>");
             doNext(eroticaMenu);
             return;
@@ -509,7 +509,7 @@ export class Giacomo implements TimeAwareInterface {
         }
         else {
             outputText("You are a bit dubious at the pleasure it could offer you, but it would be better than being raped by the creatures constantly... maybe to even work out some excess lusts... hesitantly, you reach into your bag and grab 50 gems, handing it to him.  He greedily snatches it from your palm and hands you with the belt with a smile.  \"<i>I promise you won't be disappointed.</i>\"  He counts the gems and waves goodbye.\n\n(<b>Dual Belt acquired!</b>)");
-            player.createKeyItem("Dual Belt", 0, 0, 0, 0);
+            player.keyItems.create("Dual Belt", 0, 0, 0, 0);
             player.gems -= 50;
             statScreenRefresh();
         }

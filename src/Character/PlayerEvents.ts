@@ -585,12 +585,12 @@ export class PlayerEvents implements TimeAwareInterface {
                 outputText("\nYour form ripples, as if uncertain at the changes your body is undergoing.  The goo of your flesh cools, its sensitive, responsive membrane thickening into " + skin(player) + " while bones and muscles knit themselves into a cohesive torso, chest and hips gaining definition.  Translucent ooze clouds and the gushing puddle at your feet melts together, splitting into solid trunks as you regain your legs.  Before long, you can no longer see through your own body and, with an unsteady shiver, you pat yourself down, readjusting to solidity.  A lurching heat in your chest suddenly reminds you of the slime core that used to float inside you.  Gingerly touching your " + chestDesc(game.player) + ", you can feel a small, second heartbeat under your ribs that gradually seems to be sinking, past your belly. A lurching wave of warmth sparks through you, knocking you off your fresh legs and onto your " + buttDescription(player) + ".  A delicious pressure pulses in your abdomen and you loosen your " + player.armorName + " as sweat beads down your neck.  You clench your eyes, tongue lolling in your mouth, and the pressure builds and builds until, in ecstatic release, your body arches in an orgasmic release.\n\n");
 
                 outputText("\nPanting, you open your eyes and see that, for once, the source of your climax wasn't your loins.  Feeling a warm, wetness on your abs, you investigate and find the small, heart-shaped nucleus that used to be inside your body has somehow managed to pass through your belly button. Exposed to the open air, the crimson organ slowly crystallizes, shrinking and hardening into a tiny ruby.  Rubbing the stone with your thumb, you're surprised to find that you can still feel a pulse within its glittering facets.  You stow the ruby heart, in case you need it again.\n");
-                player.createKeyItem("Ruby Heart", 0, 0, 0, 0); // [Add 'Ruby Heart' to key items. Player regains slime core if returning to goo body]
+                player.keyItems.create("Ruby Heart", 0, 0, 0, 0); // [Add 'Ruby Heart' to key items. Player regains slime core if returning to goo body]
                 player.removePerk(PerkLib.SlimeCore);
                 needNext = true;
             }
         }
-        if (player.hasKeyItem("Ruby Heart") >= 0) { // Regain slime core
+        if (player.keyItems.has("Ruby Heart") >= 0) { // Regain slime core
             if (player.findStatusAffect(StatusAffects.SlimeCraving) >= 0 && player.findPerk(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4 && player.vaginalCapacity() >= 9000 && player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody == LOWER_BODY_TYPE_GOO) {
                 outputText("\nAs you adjust to your new, goo-like body, you remember the ruby heart you expelled so long ago.  As you reach to pick it up, it quivers and pulses with a warm, cheerful light.  Your fingers close on it and the nucleus slides through your palm, into your body!\n\n");
 
@@ -598,7 +598,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 // (Reduces Fluid Addiction to a 24 hour intake requirement).
                 outputText("(<b>Gained New Perk: Slime Core - Moisture craving builds at a greatly reduced rate.</b>\n)");
                 player.createPerk(PerkLib.SlimeCore, 0, 0, 0, 0);
-                player.removeKeyItem("Ruby Heart");
+                player.keyItems.remove("Ruby Heart");
                 needNext = true;
             }
         }

@@ -192,7 +192,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             doNext(camp.returnToCampUseOneHour);
         }
         // Come back wtih book first time
-        else if (flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] == 1 && player.hasKeyItem("Yoga Guide") >= 0) {
+        else if (flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] == 1 && player.keyItems.has("Yoga Guide") >= 0) {
             outputText("\"<i>Have you retrieved the book I mentioned?</i>\" You nod and hand the leather-bound book over to her. She grins and flicks through the pages. \"<i>Oooh, yes I thought as much... Mm-hm... Oh my, nagas can stretch like that?</i>\" Suddenly remembering you're here, she says, \"<i>I'll study this quickly. Come back later and I'll be able to give you a great workout.</i>\"", false);
             flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER]++;
             doNext(camp.returnToCampUseOneHour);

@@ -682,7 +682,7 @@ export class Rubi extends TelAdreAbstractContent {
         menu();
         if (player.lust >= 33) {
             if (player.hasCock() || (player.hasVagina() && player.clitLength >= 4)) addButton(0, "Fuck", fuckRubi);
-            if (player.hasKeyItem("Deluxe Dildo") >= 0) addButton(1, "Dildo Fuck", dildoFuckRubi);
+            if (player.keyItems.has("Deluxe Dildo") >= 0) addButton(1, "Dildo Fuck", dildoFuckRubi);
         }
         addButton(2, "Tease", teaseRubi);
         if (flags[kFLAGS.RUBI_BLU_BALLS] > 0 && flags[kFLAGS.RUBI_ORGASM_DENIAL] > 0 && !rubiBimbo() && flags[kFLAGS.RUBI_COCK_SIZE] > 0) addButton(3, "Release", releaseRubi);

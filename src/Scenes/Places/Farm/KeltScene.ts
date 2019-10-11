@@ -445,10 +445,10 @@ STATUSES:
         // Used for randomization
         const temporary: number = 0;
         // (No bow equipped)
-        if (player.hasKeyItem("Bow") < 0) {
+        if (player.keyItems.has("Bow") < 0) {
             outputText("\"<i>Here,</i>\" Kelt says, tossing you a spare bow.  \"<i>You can use this, for right now.  We train colts on it... you know, before their balls drop.  Should be just about right for your level.  Keep it if you want.</i>\"\r\r", false);
             outputText("Despite his mocking description, the bow he gives you really is a decent weapon.  You take it up and start towards the practice field, Kelt following behind.\r\r", false);
-            if (player.hasKeyItem("Bow") < 0) player.createKeyItem("Bow", 0, 0, 0, 0);
+            if (player.keyItems.has("Bow") < 0) player.keyItems.create("Bow", 0, 0, 0, 0);
         }
         // (Bow equipped)
         else {

@@ -314,7 +314,7 @@ export function turkeyGirlTwoTheTurkeningBySavinWhatADickInAButt(): void {
     // [Shoo Off] [Let her Come] [Hello again!]
     menu();
     if (player.hasCock()) {
-        if (player.hasKeyItem("Deluxe Dildo") >= 0 || player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT)) {
+        if (player.keyItems.has("Deluxe Dildo") >= 0 || player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT)) {
             outputText("\n\n<b>You could let her come, like last year, or great her in a whole new way (by clicking 'Hello Again')</b>");
             addButton(2, "Hello Again", helloAgain);
             flags[kFLAGS.MORE_TURKEY] = 0;
@@ -393,7 +393,7 @@ export function seasonHerDatTurkeyBitch(): void {
     outputText("\n\n\"<i>GOBBLE!</i>\" she cries as your digits brush her sensitive point, arching her back and squirting gravy onto your crotch, lactating from pleasure alone.  You shudder as the warm, creamy gravy slathers onto your " + multiCockDescriptLight(player) + " pinned between her tits, her pleasured motions getting her boobs bouncing like a regular titfucking.  At your touch, her quivering quim lets loose a torrent of excited fem-slime, smearing your face in turkey-tasting juices faster than your hard-working tongue can lap it up.  She's a fine tasting turkey if ever you saw one, her sweet juices practically compelling you to eat her out, pushing your tongue as deep into her juicy slit as you can to harvest her delicious bounty.");
 
     outputText("\n\nBut what's a turkey without a little seasoning, hmm? Sweet as she is, and as eager to gobble your cock as can be, things could still turn up a notch.  Still servicing her box, you reach an arm out to your discarded pack, searching through it until you feel the familiar shape of ");
-    if (player.hasKeyItem("Deluxe Dildo") >= 0) outputText("Tamani's dildo");
+    if (player.keyItems.has("Deluxe Dildo") >= 0) outputText("Tamani's dildo");
     else if (player.hasItem(consumables.L_DRAFT)) outputText("a bottle of Lust draft");
     else if (player.hasItem(consumables.F_DRAFT)) outputText("a bottle of Fuck draft");
     else outputText("A FUCKIN ERROR");

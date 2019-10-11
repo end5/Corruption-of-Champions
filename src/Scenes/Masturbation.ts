@@ -60,43 +60,43 @@ export class Masturbation {
         let button: number = 0; // Will be greater than zero by the end if the player owns any fapping items
         const canReachCock: boolean = player.cocks.length > 0 && (!player.isTaur() || player.cocks[player.longestCock()].cockLength >= player.tallness * (5 / 6));
 
-        if (player.hasKeyItem("Deluxe Dildo") >= 0 && player.hasVagina() && !player.isTaur()) {
+        if (player.keyItems.has("Deluxe Dildo") >= 0 && player.hasVagina() && !player.isTaur()) {
             if (menus) addButton(button, "D. Dildo", deluxeDildo);
             button++;
         }
-        if (player.hasKeyItem("All-Natural Onahole") >= 0 && canReachCock) {
+        if (player.keyItems.has("All-Natural Onahole") >= 0 && canReachCock) {
             if (menus) addButton(button, "AN Onahole", allNaturalOnaholeUse);
             button++;
         }
-        if (player.hasKeyItem("Deluxe Onahole") >= 0 && canReachCock) {
+        if (player.keyItems.has("Deluxe Onahole") >= 0 && canReachCock) {
             if (menus) addButton(button, "D Onahole", deluxeOnaholeUse);
             button++;
         }
-        if (player.hasKeyItem("Plain Onahole") >= 0 && canReachCock) {
+        if (player.keyItems.has("Plain Onahole") >= 0 && canReachCock) {
             if (menus) addButton(button, "Onahole", onaholeUse);
             button++;
         }
-        if (player.hasKeyItem("Self-Stimulation Belt") >= 0 && player.vaginas.length > 0 && !player.isTaur()) {
+        if (player.keyItems.has("Self-Stimulation Belt") >= 0 && player.vaginas.length > 0 && !player.isTaur()) {
             if (menus) addButton(button, "Stim-Belt", stimBeltUse);
             button++;
         }
-        if (player.hasKeyItem("All-Natural Self-Stimulation Belt") >= 0 && player.vaginas.length > 0 && !player.isTaur()) {
+        if (player.keyItems.has("All-Natural Self-Stimulation Belt") >= 0 && player.vaginas.length > 0 && !player.isTaur()) {
             if (menus) addButton(button, "AN Stim-Belt", allNaturalStimBeltUse);
             button++;
         }
-        if (player.hasKeyItem("Dual Belt") >= 0 && player.gender == 3 && !player.isTaur()) {
+        if (player.keyItems.has("Dual Belt") >= 0 && player.gender == 3 && !player.isTaur()) {
             if (menus) addButton(button, "Dual Belt", dualBeltMasturbation);
             button++;
         }
-        if (player.hasKeyItem("Fake Mare") >= 0 && player.hasCock() && player.isTaur()) {
+        if (player.keyItems.has("Fake Mare") >= 0 && player.hasCock() && player.isTaur()) {
             if (menus) addButton(button, "Fake Mare", centaurDudesGetHorseAids);
             button++;
         }
-        if (player.hasKeyItem("Centaur Pole") >= 0 && player.hasVagina() && player.isTaur()) {
+        if (player.keyItems.has("Centaur Pole") >= 0 && player.hasVagina() && player.isTaur()) {
             if (menus) addButton(button, "C. Pole", centaurGirlsGetHorseAids);
             button++;
         }
-        if (player.hasKeyItem("Dildo") >= 0) {
+        if (player.keyItems.has("Dildo") >= 0) {
             if (menus) addButton(button, "Anal Dildo", dildoButts);
             button++;
             if (player.hasVagina()) addButton(button, "Dildo", stickADildoInYourVagooSlut);
@@ -1951,7 +1951,7 @@ export class Masturbation {
     private stimBeltUse(): void {
         clearOutput();
         // FIRST TIME USAGE
-        if ((player.hasKeyItem("Self-Stimulation Belt") >= 0)) {
+        if ((player.keyItems.has("Self-Stimulation Belt") >= 0)) {
             // First use! Flag after first use!
             if (player.findStatusAffect(StatusAffects.used_self_dash_stim) < 0) {
                 player.createStatusAffect(StatusAffects.used_self_dash_stim, 0, 0, 0, 0);
@@ -1978,7 +1978,7 @@ export class Masturbation {
 
     private allNaturalStimBeltUse(): void {
         clearOutput();
-        if (player.hasKeyItem("All-Natural Self-Stimulation Belt") >= 0) {
+        if (player.keyItems.has("All-Natural Self-Stimulation Belt") >= 0) {
             // First time!
             if (player.findStatusAffect(StatusAffects.UsedNaturalSelfStim) < 0) {
                 // Flag as used!
@@ -2481,7 +2481,7 @@ export class Masturbation {
             outputText("You still can't reach around to masturbate yourself.  Being half-horse sure is inconvenient!\n\n");
         }
         // (If Milker)
-        if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cocks.length > 0)
+        if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cocks.length > 0)
             outputText("Perhaps you could visit the cock-milker you have set up at Whitney's farm and drain off the arousal?  Or maybe you'll just have to find a willing partner somewhere.");
         else outputText("It looks like you'll have to find a partner to relieve your pent up need, but in your current state you'll probably be on the receiving end of whatever you can get!");
     }
@@ -2490,7 +2490,7 @@ export class Masturbation {
     private centaurDudesGetHorseAids(): void {
         const x: number = player.biggestCockIndex();
         clearOutput();
-        if (player.keyItemv1("Fake Mare") == 0) {
+        if (player.keyItems.getValue1Of("Fake Mare") == 0) {
             if (player.cor < 50)
                 outputText("Deciding to give the mare-like cocksleeve you got from Whitney a try, you spend a few awkward minutes dragging the lump of metal off to someplace secluded and setting it up.  When you're done, you stand behind a wood-and-iron replica of a mare, adjusted to the perfect height for you.  Looking \"<i>her</i>\" over, your eyes are drawn to the slick black lips of the Onahole between her legs, craftily shaped like a horsecunt, and what looks like a second, smaller one above it simulating an anus.\n\n");
             // [If Med-High Corruption:]
@@ -2543,13 +2543,13 @@ export class Masturbation {
         player.orgasm();
         dynStats("sen", -2);
         doNext(camp.returnToCampUseOneHour);
-        player.addKeyValue("Fake Mare", 1, 1);
+        player.keyItems.addValue("Fake Mare", 1, 1);
     }
 
     // [Masturbate] -- [CentaurPole] -- [Fem/Herm Centaurs]
     private centaurGirlsGetHorseAids(): void {
         clearOutput();
-        if (player.keyItemv1("Centaur Pole") == 0) {
+        if (player.keyItems.getValue1Of("Centaur Pole") == 0) {
             // [If low Corruption:]
             if (player.cor < 50)
                 outputText("Feeling a bit antsy, you decide to give Whitney's so-called \"<i>Centaur Pole</i>\" a try.  You dig it out of your stash and spend a few awkward minutes dragging it off someplace secluded and setting it up.\n\n");
@@ -2574,8 +2574,8 @@ export class Masturbation {
         player.orgasm();
         dynStats("sen", -2);
         doNext(camp.returnToCampUseOneHour);
-        player.addKeyValue("Centaur Pole", 1, 1);
-        trace("Times Ridden Pole" + player.keyItemv1("Centaur Pole"));
+        player.keyItems.addValue("Centaur Pole", 1, 1);
+        trace("Times Ridden Pole" + player.keyItems.getValue1Of("Centaur Pole"));
     }
 
     // Self/Exgartuan

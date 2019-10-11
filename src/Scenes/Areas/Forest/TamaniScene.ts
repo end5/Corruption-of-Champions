@@ -107,7 +107,7 @@ export class TamaniScene implements TimeAwareInterface {
         else outputText("Getting cock-slapped would've been kind of hot...\n\n", false);
         outputText("The goblin leaves you with a warning, \"<i>Be careful, it likes to leak aphrodisiacs like crazy.  Believe me, those are FUN to get addicted to.  Oh, and remember – Tamani owns all the cocks around here, so if you ever grow one, come pay your dues!</i>\"\n\n", false);
         outputText("(<b>Deluxe Dildo acquired!</b>)", false);
-        player.createKeyItem("Deluxe Dildo", 0, 0, 0, 0);
+        player.keyItems.create("Deluxe Dildo", 0, 0, 0, 0);
         doNext(camp.returnToCampUseOneHour);
     }
     // [No]

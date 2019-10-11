@@ -40,7 +40,7 @@ export class BeeGirlScene {
         // Intro text...
         outputText("As you approach the edge of the forest, a sweet scent wafts into your nose. Tantalizing, teasing, alluring. As you sniff the air, you find yourself following it, as if an invisible hand is pulling you toward its origin.  Little do you know, that is essentially what's happening. The further and further you go, the more heavy the scent grows, as well as a sound. A sound of a buzz, but not in a maddening tone, as if someone is humming. It's a lovely tune, one that would stick in the back of the mind, but not in a bad way.\n\n");
         // Chance to avoid the bee or not if smart enough...
-        if (player.hasKeyItem("Traveler's Guide") >= 0 && player.inte / 2 > rand(40)) {
+        if (player.keyItems.has("Traveler's Guide") >= 0 && player.inte / 2 > rand(40)) {
             outputText("You suddenly remember a passage from the Traveler's Guide about monstrous bees that lay eggs in unmentionable places.  Of course, a brave champion would face any danger.\n\n<b>Do you proceed?</b>");
             // Yes goes to beeEncounterLevel2(), no goes to camp
             simpleChoices("Yes", beeEncounterSelect, "", null, "", null, "", null, "Back", camp.returnToCampUseOneHour);

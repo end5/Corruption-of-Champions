@@ -1543,7 +1543,7 @@ export class Saves {
             if (saveFile.data.keyItems != undefined) {
                 // Set keyItems Array
                 for (i = 0; i < saveFile.data.keyItems.length; i++) {
-                    player.createKeyItem("TEMP", 0, 0, 0, 0);
+                    player.keyItems.create("TEMP", 0, 0, 0, 0);
                 }
                 // Populate keyItems Array
                 for (i = 0; i < saveFile.data.keyItems.length; i++) {

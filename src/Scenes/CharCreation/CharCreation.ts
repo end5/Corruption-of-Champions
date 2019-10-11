@@ -1109,7 +1109,7 @@ export class CharCreation {
         player.tou = 25;
         player.spe = 25;
         // Bow
-        player.createKeyItem("Bow", 0, 0, 0, 0);
+        player.keyItems.create("Bow", 0, 0, 0, 0);
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
         player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
         // Is it possible to get extra starting perks added? If so, I'd like History: Religious added to whatever is selected on creation. If not, please ignore this line.
@@ -1390,7 +1390,7 @@ export class CharCreation {
         player.skinTone = "light";
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
         player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
-        player.createKeyItem("Bow", 0, 0, 0, 0);
+        player.keyItems.create("Bow", 0, 0, 0, 0);
     }
 
     private customLukaz(): void {
@@ -1981,7 +1981,7 @@ export class CharCreation {
         player.setWeapon(weapons.KATANA);
         player.setArmor(armors.URTALTA);
         // Key Item: Deluxe Dildo
-        player.createKeyItem("Deluxe Dildo", 0, 0, 0, 0);
+        player.keyItems.create("Deluxe Dildo", 0, 0, 0, 0);
     }
 
     private customSiveen(): void {
@@ -2100,9 +2100,9 @@ export class CharCreation {
         player.hairType = 4;
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
         player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
-        player.createKeyItem("Bow", 0, 0, 0, 0);
+        player.keyItems.create("Bow", 0, 0, 0, 0);
 
-        player.createKeyItem("Zetaz's Map", 0, 0, 0, 0);
+        player.keyItems.create("Zetaz's Map", 0, 0, 0, 0);
 
         inventory.createStorage();
         inventory.createStorage();
@@ -2110,10 +2110,10 @@ export class CharCreation {
         inventory.createStorage();
         inventory.createStorage();
         inventory.createStorage();
-        player.createKeyItem("Camp - Chest", 0, 0, 0, 0);
-        player.createKeyItem("Equipment Rack - Weapons", 0, 0, 0, 0);
+        player.keyItems.create("Camp - Chest", 0, 0, 0, 0);
+        player.keyItems.create("Equipment Rack - Weapons", 0, 0, 0, 0);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] = 1;
-        player.createKeyItem("Equipment Rack - Armor", 0, 0, 0, 0);
+        player.keyItems.create("Equipment Rack - Armor", 0, 0, 0, 0);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] = 1;
         flags[kFLAGS.D3_DISCOVERED] = 1;
 
@@ -2335,17 +2335,17 @@ export class CharCreation {
         player.setArmor(armors.SSARMOR);
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
         player.createStatusAffect(StatusAffects.Kelt, 100, 0, 0, 0);
-        player.createKeyItem("Bow", 0, 0, 0, 0);
+        player.keyItems.create("Bow", 0, 0, 0, 0);
         inventory.createStorage();
         inventory.createStorage();
         inventory.createStorage();
         inventory.createStorage();
         inventory.createStorage();
         inventory.createStorage();
-        player.createKeyItem("Camp - Chest", 0, 0, 0, 0);
-        player.createKeyItem("Equipment Rack - Weapons", 0, 0, 0, 0);
+        player.keyItems.create("Camp - Chest", 0, 0, 0, 0);
+        player.keyItems.create("Equipment Rack - Weapons", 0, 0, 0, 0);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] = 1;
-        player.createKeyItem("Equipment Rack - Armor", 0, 0, 0, 0);
+        player.keyItems.create("Equipment Rack - Armor", 0, 0, 0, 0);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] = 1;
         // (Flexibility), (Incorporeality), History: Religious, Dragonfire, Brood Mother, Magical Fertility, Wet Pussy, Tough, Strong, Fast, Smart, History: Scholar, History: Slacker, Strong Back, Strong Back 2: Stronger Harder
         player.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);

@@ -25,7 +25,7 @@ export class Mountain {
         }
         if (isHolidays()) {
             // Gats xmas adventure!
-            if (rand(5) == 0 && player.gender > 0 && isHolidays() && flags[kFLAGS.GATS_ANGEL_DISABLED] == 0 && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] == 0 && (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] > 0 && player.hasKeyItem("North Star Key") < 0)) {
+            if (rand(5) == 0 && player.gender > 0 && isHolidays() && flags[kFLAGS.GATS_ANGEL_DISABLED] == 0 && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] == 0 && (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] > 0 && player.keyItems.has("North Star Key") < 0)) {
                 gatsSpectacularRouter();
                 return;
             }
@@ -46,7 +46,7 @@ export class Mountain {
                         return;
                     }
                     // Level 2 requires lethecite
-                    else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] == 1 && player.hasKeyItem("Marae's Lethicite") >= 0 && player.keyItemv2("Marae's Lethicite") < 3) {
+                    else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] == 1 && player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3) {
                         hellHoundScene.HellHoundMasterEncounter();
                         return;
                     }

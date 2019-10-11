@@ -213,11 +213,11 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
             else outputText("weapons", false);
             outputText(".  You check it over and spot an easy way to fold it up for transport.  This would be a fine addition to your camp, so you pack it up and haul it back.", false);
             if (rack == 1) {
-                player.createKeyItem("Equipment Rack - Weapons", 0, 0, 0, 0);
+                player.keyItems.create("Equipment Rack - Weapons", 0, 0, 0, 0);
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] = 1;
             }
             else {
-                player.createKeyItem("Equipment Rack - Armor", 0, 0, 0, 0);
+                player.keyItems.create("Equipment Rack - Armor", 0, 0, 0, 0);
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] = 1;
             }
             doNext(camp.returnToCampUseOneHour);
@@ -250,7 +250,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         // CORRUPTIONZ
         if (flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] > 0 && player.cor > 25) {
             // Cook amily a snack if player doesnt have key item for it.
-            if (player.hasKeyItem("Potent Mixture") < 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00170] < 3) {
+            if (player.keyItems.has("Potent Mixture") < 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00170] < 3) {
                 cookAmilyASnack();
                 return;
             }
@@ -5476,7 +5476,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                 if (player.hasItem(consumables.L_DRAFT)) player.consumeItem(consumables.L_DRAFT);
                 else player.consumeItem(consumables.F_DRAFT);
                 player.consumeItem(consumables.GOB_ALE);
-                player.createKeyItem("Potent Mixture", 0, 0, 0, 0);
+                player.keyItems.create("Potent Mixture", 0, 0, 0, 0);
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00169]++;
             }
         }
@@ -5528,7 +5528,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                 if (player.hasItem(consumables.L_DRAFT)) player.consumeItem(consumables.L_DRAFT);
                 else player.consumeItem(consumables.F_DRAFT);
                 player.consumeItem(consumables.GOB_ALE);
-                player.createKeyItem("Potent Mixture", 0, 0, 0, 0);
+                player.keyItems.create("Potent Mixture", 0, 0, 0, 0);
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00169]++;
             }
         }
@@ -5985,7 +5985,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         amilySprite();
         let x: number = player.cockThatFits(61);
         if (x < 0) x = 0;
-        player.removeKeyItem("Potent Mixture");
+        player.keyItems.remove("Potent Mixture");
         outputText("", true);
         outputText("You smile and say, \"<i>Fine, but you're gonna have to work for it.</i>\" Amily's answer is to open her mouth wide. The invitation clear, you scoot closer to her mouth, and her lips touch the tip of your " + cockDescript(game.player, x) + "; Amily suddenly lifts her head and starts swallowing your dick", false);
         // [(if PC is huge)
@@ -6006,7 +6006,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
     private rapeCorruptAmily1Female(): void {
         amilySprite();
         outputText("", true);
-        player.removeKeyItem("Potent Mixture");
+        player.keyItems.remove("Potent Mixture");
         outputText("You smile and say, \"<i>Fine, but you're gonna have to work for it.</i>\" Amily's answer is to open her mouth wide. The invitation clear, you advance and lower your " + vaginaDescript(player) + " towards her open mouth.\n\n", false);
 
         outputText("Amily suddenly lifts her head and begins licking and slurping your pussy like her life depended on it", false);
@@ -6599,7 +6599,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("Glad to see she meant you no harm, you decide it's time to reward her for her openness. \"<i>Now open wide once more, Amily. It's time for your reward.</i>\" you tell her.\n\n", false);
 
             outputText("\"<i>Yes! Please I need it!</i>\" she says eagerly, closing her eyes and opening her mouth.", false);
-            player.removeKeyItem("Potent Mixture");
+            player.keyItems.remove("Potent Mixture");
             // RAPE 2 GO
             chooseYourAmilyRape();
         }
@@ -6632,7 +6632,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\"<i>Don't you want more of your medicine?</i>\" you ask, showing her the bottle with the mixture.\n\n", false);
 
         outputText("She takes the bottle from your hand and throws it away. \"<i>No. All I need is your cum... Please let me drink more. I-I'll do anything you want, just let me have a taste. Please?</i>\" She begs.\n\n", false);
-        player.removeKeyItem("Potent Mixture");
+        player.keyItems.remove("Potent Mixture");
         outputText("Surprised at her forwardness, you realize something. She must be addicted to you, or more specifically... Your cum. You barely supress the urge to laugh, this is priceless! The prudish mouse has been reduced to a needy addict. This is almost too perfect, you were just imagining previously how good it'd be if she turned into a cumslut.\n\n", false);
 
         outputText("\"<i>You'll do anything, you say? I want you to grovel at my feet and beg me!</i>\" you order.\n\n", false);

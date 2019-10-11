@@ -23,7 +23,7 @@ export class Dominika extends TelAdreAbstractContent {
         outputText(images.showImage("dominika-first-meeting-at-bar"));
         // Get the emporerors new groove (sword)
         // Req's d2 finished
-        if (fellatrixSucked() && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] > 0 && player.hasKeyItem("Zetaz's Map") >= 0 && flags[kFLAGS.DOMINIKAS_SWORD_GIVEN] == 0) {
+        if (fellatrixSucked() && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] > 0 && player.keyItems.has("Zetaz's Map") >= 0 && flags[kFLAGS.DOMINIKAS_SWORD_GIVEN] == 0) {
             dominikaSpellblade();
             return;
         }

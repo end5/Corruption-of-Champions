@@ -9,7 +9,7 @@ Starring Gatters Bee, Shamble Sworth and a caribou named Kirbu.
 */
 export function gatsSpectacularRouter(): void {
     if (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] == 0) christmasEncounterAngelJunk();
-    else if (player.hasKeyItem("North Star Key") < 0) findTheWindUpKey();
+    else if (player.keyItems.has("North Star Key") < 0) findTheWindUpKey();
     else giveThatBitchAKeyYo();
 }
 
@@ -110,7 +110,7 @@ export function findTheWindUpKey(): void {
     outputText("\n\nYou reach over the bitter base to pluck your prize free, again careful that your moistened, exposed body refrain from making contact with the frigid obelisk.  There isn't an ounce of your being that wants to experience ripping any frozen flesh free.  As you grasp and pull free the slick, clear trinket you're taken by surprise as the brilliant glow surrounding you snuffs out, quickly leaving you in silent, black darkness.  Your hands grasp tightly onto your bounty, gently rubbing over its curves with your fingertips as you fruitlessly glance around in search of light.");
     outputText("\n\nOne surprise leads to another when a warm glow breaks free from between your hands.  A swirling of green and red mist is concentrated within the frame of your prize, glowing brightly as they swim endlessly through the key's curves at a variety of velocities.  It's plain to see that this little treasure was the cause for the cave's unnatural brilliance.  You're a little ashamed to rob it of its power source... but not enough to give it a second thought as you crawl back down to the entrance only a few feet away.  The last thing you want is for your magical lantern to dull and leave your naked body blind in this hazard-filled hole.");
     outputText("\n\nYou carefully re-enter the flooded tunnel, unsure how the supposed key will take to water.  It makes little impact as you submerge it, though the glowing light looks lovely on the pitch black tunnel.  The sight reinvigorates you slightly, though the warmer waters are probably more to blame.  Chalking up yet another simple retrieval asked of your person, you surface back outside, eager to get back into your [armor] and return to the high mountains.");
-    player.createKeyItem("North Star Key", 0, 0, 0, 0);
+    player.keyItems.create("North Star Key", 0, 0, 0, 0);
     doNext(camp.returnToCampUseOneHour);
 }
 
@@ -149,7 +149,7 @@ export function giveThatBitchAKeyYo(): void {
         flags[kFLAGS.GATS_ANGEL_DISABLED] = 1;
         doNext(camp.returnToCampUseOneHour);
     }
-    // player.removeKeyItem("North Star Key");
+    // player.keyItems.remove("North Star Key");
 }
 
 // 6. Corrupt End #1
@@ -201,7 +201,7 @@ export function theWorstEndingEverDotJPG(): void {
     dynStats("lus", 2 + player.lib / 10 + player.cor / 10, "cor", 10, "resisted", false);
     doNext(camp.returnToCampUseOneHour);
     flags[kFLAGS.GATS_ANGEL_DISABLED] = 1;
-    player.removeKeyItem("North Star Key");
+    player.keyItems.remove("North Star Key");
 }
 
 // 7. Corrupt End #2

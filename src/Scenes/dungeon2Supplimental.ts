@@ -1827,7 +1827,7 @@ export function releaseZForInfo(): void {
     }
     outputText(".  Zetaz scrambles out the south door, never once looking back at the tattered remnants of his old home.", false);
     outputText("\n\n<b>(Key Item Acquired: Zetaz's Map!)</b>", false);
-    player.createKeyItem("Zetaz's Map", 0, 0, 0, 0);
+    player.keyItems.create("Zetaz's Map", 0, 0, 0, 0);
     cleanupAfterCombat();
 }
 
@@ -1885,7 +1885,7 @@ function sexualTortureReleaseZetaz(): void {
     outputText("You hear the faint scrabble of claws on stone and turn around, alarmed, but there's nothing there.  Not even Zetaz.  You imagine the cum-slicked imp sprinting from his own cave and into the deep woods, and the absurd image brings a smile to your face.\n\n", false);
 
     outputText("<b>(Key Item Acquired: Zetaz's Map!)</b>", false);
-    player.createKeyItem("Zetaz's Map", 0, 0, 0, 0);
+    player.keyItems.create("Zetaz's Map", 0, 0, 0, 0);
     cleanupAfterCombat();
 }
 
@@ -1903,7 +1903,7 @@ function sexualTortureTightenZetaz(): void {
     outputText("You hear the faint scrabble of claws on stone and turn around, alarmed, but there's nothing there.  Not even Zetaz.  You imagine the partly hog-tied imp sprinting from his own cave and into the deep woods, his bloated cock bobbing dangerously with every step, and the absurd image brings a smile to your face.\n\n", false);
 
     outputText("<b>(Key Item Acquired: Zetaz's Map!)</b>", false);
-    player.createKeyItem("Zetaz's Map", 0, 0, 0, 0);
+    player.keyItems.create("Zetaz's Map", 0, 0, 0, 0);
     cleanupAfterCombat();
 }
 
@@ -1917,7 +1917,7 @@ function endZetaz(): void {
     outputText("The chair in your hands disintegrates, the desk it impacts splinters apart, and you feel a little bit better.  A piece of parchment flutters back and forth in the middle of it all, freed from some hidden compartment and mostly unscathed.  One of the corners is ripped off, and it has a tear half way across, but it's still perfectly legible.  It's a map!  Though the secret diagram is quite crude, it depicts a winding trail that bypasses numerous harpy nests, minotaur caves, and various unrecognizable pitfalls to reach the cloud-shrouded mountain peak.  The drawing loses much of its detail once it gets to the demon fortifications at the top, but it can't be that hard to track down Lethice once you've entered the seat of her power, can it?\n\n", false);
 
     outputText("<b>(Key Item Acquired: Zetaz's Map!)</b>", false);
-    player.createKeyItem("Zetaz's Map", 0, 0, 0, 0);
+    player.keyItems.create("Zetaz's Map", 0, 0, 0, 0);
     // (ZETAZ IS DEAD)
     flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED]++;
     cleanupAfterCombat();
@@ -2380,7 +2380,7 @@ export function valaBigYou(): void {
     menu();
     addButton(0, "Dom Me", bigValaDomsPC);
     if (player.hasCock()) addButton(1, "Lick Me", bigValaLicksOffDudes);
-    if (vapula.vapulaSlave() && player.gender > 0 && (player.hasCock() || (player.hasVagina() && player.hasKeyItem("Demonic Strap-On") >= 0))) {
+    if (vapula.vapulaSlave() && player.gender > 0 && (player.hasCock() || (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0))) {
         addButton(2, "Dom Vapula", valaDommyVapula3Some);
         addButton(3, "Vapula3Some", valaLoveyVapula3Some);
     }

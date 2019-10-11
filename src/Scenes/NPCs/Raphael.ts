@@ -27,7 +27,7 @@ export class Raphael extends NPCAwareContent implements TimeAwareInterface {
     }
 
     public timeChangeLarge(): boolean {
-        if (checkedRussetRogue++ == 0 && game.time.hours == 6 && flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] >= 0 && player.hasKeyItem("Camp - Chest") >= 0 && player.gems >= 5 && player.statusAffectv1(StatusAffects.TelAdre) >= 1) {
+        if (checkedRussetRogue++ == 0 && game.time.hours == 6 && flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] >= 0 && player.keyItems.has("Camp - Chest") >= 0 && player.gems >= 5 && player.statusAffectv1(StatusAffects.TelAdre) >= 1) {
             /*trace("RAPHAEL FINAL COUNTDOWN: " + flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER]);
             trace("RAPHAEL MET: " + flags[kFLAGS.RAPHAEL_MET]);
             trace("RAPHAEL DRESS TIMER: " + flags[kFLAGS.RAPHAEL_DRESS_TIMER]);

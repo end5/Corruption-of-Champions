@@ -237,7 +237,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
 
         outputText("<b>(Received Key Item: Onyx Token)</b>\n\n", false);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00287] = 1;
-        player.createKeyItem("Onyx Token - Ceraph's", 0, 0, 0, 0);
+        player.keyItems.create("Onyx Token - Ceraph's", 0, 0, 0, 0);
         // [Display Rape Options + Collar Option]
         if (player.gender > 0) {
             outputText("Do you fuck her as a disobedient demon, one last time? (And if so, which of your body parts do you do it with?)", false);
@@ -1011,7 +1011,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
         outputText("After taking a moment to form your thoughts, you begin describing a tall country-style girl, with huge breasts and an aptitude for pet names.  Ceraph cuts you off with a high-pitched cackle, and she actually slaps her palm against her forehead in her excitement.  \"<i>Marble?</i>\" she asks between bouts of laughter.  \"<i>You want me to turn into that cow?  Oh, " + mf(player, "Master", "Mistress") + ", but you surely are a mystery to me.</i>\"  A sharp stare from you cuts off her reverie, and she sobers instantly, going so far as to cringe.  \"<i>My apologies, " + mf(player, "sir", "madam") + "... your wish is my command.</i>\"\n\n", false);
 
         outputText("First, she gestures once again at the environment, changing from a mountainous terrain to the inside of... Whitney's barn?  Sure enough, you look past her and see a milker ", false);
-        if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") >= 0) outputText("similar to the one you got from the factory.", false);
+        if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) outputText("similar to the one you got from the factory.", false);
         else outputText("not too different from the ones you've seen in Ingnam, although modified for human use, it seems.", false);
         outputText("  Any more exploration of your environment is put on hold as your gaze falls back to Ceraph.  Her latex ensemble shimmers and slackens, the strategic peep-holes closing up with unremarkable cotton.  The material reforms until she's left with a pair of overalls and a button-up blouse that are both at least four sizes too big.  ", false);
         // ([if first time]

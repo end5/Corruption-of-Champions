@@ -52,7 +52,7 @@ export class Forest {
             return;
         }
         // Tamani 20% encounter rate
-        if (flags[kFLAGS.TAMANI_TIME_OUT] == 0 && rand(5) == 0 && player.gender > 0 && (player.totalCocks() > 0 || player.hasKeyItem("Deluxe Dildo") < 0)) {
+        if (flags[kFLAGS.TAMANI_TIME_OUT] == 0 && rand(5) == 0 && player.gender > 0 && (player.totalCocks() > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
             if (player.totalCocks() > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
                 tamaniDaughtersScene.encounterTamanisDaughters();
             }
@@ -80,7 +80,7 @@ export class Forest {
             // Reset hilarious shit
             if (player.gender > 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00247] = 0;
             // Tentacle avoidance chance due to dangerous plants
-            if (player.hasKeyItem("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
+            if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
                 trace("TENTACLE'S AVOIDED DUE TO BOOK!");
                 outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", true);
                 simpleChoices("Continue", tentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
@@ -200,7 +200,7 @@ export class Forest {
             // Encounter Gobbalin!
             else {
                 // Tamani 25% of all goblin encounters encounter rate
-                if (rand(4) <= 0 && flags[kFLAGS.TAMANI_TIME_OUT] == 0 && player.gender > 0 && (player.totalCocks() > 0 || player.hasKeyItem("Deluxe Dildo") < 0)) {
+                if (rand(4) <= 0 && flags[kFLAGS.TAMANI_TIME_OUT] == 0 && player.gender > 0 && (player.totalCocks() > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
                     if (player.totalCocks() > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
                         tamaniDaughtersScene.encounterTamanisDaughters();
                     }
@@ -296,7 +296,7 @@ export class Forest {
             // Oh noes, tentacles!
             if (temp == 0) {
                 // Tentacle avoidance chance due to dangerous plants
-                if (player.hasKeyItem("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
+                if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
                     trace("TENTACLE'S AVOIDED DUE TO BOOK!");
                     outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", false);
                     simpleChoices("Continue", tentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);

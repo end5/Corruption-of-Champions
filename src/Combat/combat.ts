@@ -153,7 +153,7 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         addButton(2, "Spells", magic);
         addButton(3, "Items", inventory.inventoryMenu);
         addButton(4, "Run", runAway);
-        if (player.hasKeyItem("Bow") >= 0) addButton(5, "Bow", fireBow);
+        if (player.keyItems.has("Bow") >= 0) addButton(5, "Bow", fireBow);
         addButton(6, "M. Specials", magicalSpecials);
         addButton(7, "Wait", wait);
         addButton(8, "Fantasize", fantasize);
@@ -5260,7 +5260,7 @@ export function physicalSpecials(): void {
         addButton(1, "Bite", spiderBiteAttack);
     }
     // Bow attack
-    if (player.hasKeyItem("Bow") >= 0) {
+    if (player.keyItems.has("Bow") >= 0) {
         addButton(2, "Bow", fireBow);
     }
     // Constrict

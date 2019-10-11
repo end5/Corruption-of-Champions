@@ -5,10 +5,10 @@ export class ErlKingScene {
         if (flags[kFLAGS.WILD_HUNT_ENCOUNTERS] == 0) {
             firstWildHuntEncounter();
         }
-        else if (player.hasKeyItem("Golden Antlers") < 0) {
+        else if (player.keyItems.has("Golden Antlers") < 0) {
             repeatWildHuntEncounter();
         }
-        else if (player.hasKeyItem("Golden Antlers") >= 0) {
+        else if (player.keyItems.has("Golden Antlers") >= 0) {
             encounterPrincessGwynn();
         }
 
@@ -690,7 +690,7 @@ export class ErlKingScene {
             outputText("“<i>No, my Lord,</i>” She croons, rising up to her knees, lapping at your dick.  Once she’s finished cleaning, she helps you with your [armor].  You nod a goodbye to her and begin walking, smirking in amusement at the trickle of cum running down her taut cheeks and down her legs as she waves farewell.\n\n");
         }
 
-        player.createKeyItem("Golden Antlers", 0, 0, 0, 0);
+        player.keyItems.create("Golden Antlers", 0, 0, 0, 0);
         player.orgasm();
         dynStats("lust=", 0);
 

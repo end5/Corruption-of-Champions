@@ -79,7 +79,7 @@ export class Scylla extends TelAdreAbstractContent {
             if (telAdre.katherine.needIntroductionFromScylla()) return;
             if (rand(3) == 0) scyllaAction = SCYLLA_ACTION_FUCKING_URTA; // And after all that there's still just a 1/3 chance it will happen
             // Yay, Foursomes! - unless you're Scylla special
-            if (rand(2) == 0 && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && player.hasKeyItem("Opal Ring") < 0 && urta.urtaAtBar() && player.longestCockLength() >= 8 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) scyllaAction = SCYLLA_ACTION_FURRY_FOURSOME;
+            if (rand(2) == 0 && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && player.keyItems.has("Opal Ring") < 0 && urta.urtaAtBar() && player.longestCockLength() >= 8 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) scyllaAction = SCYLLA_ACTION_FURRY_FOURSOME;
         }
     }
 
@@ -244,7 +244,7 @@ export class Scylla extends TelAdreAbstractContent {
         outputText(images.showImage("scylla-help-round-two-jizz"), false);
         flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA]++;
         // Standard
-        if (player.hasKeyItem("Opal Ring") < 0 || flags[kFLAGS.FED_SCYLLA_TODAY] == 1) {
+        if (player.keyItems.has("Opal Ring") < 0 || flags[kFLAGS.FED_SCYLLA_TODAY] == 1) {
             outputText("You step into the Wet Bitch and are immediately struck by the sighing silence that's settled over the usually bustling tavern. Glancing around, you notice that all the men and herms are leaning back in their chairs, completely worn out. The origin of their exhaustion becomes apparent when a door opens upstairs and an equine shambles out, adjusting his belt and walking unsteadily, looking decidedly drained. Deciding to investigate, you head upstairs and peek through the ajar door.\n\n", false);
 
             outputText("Scylla the nun is inside, daintily smoothing the wrinkles from her too-tight velvet black habit. Her belly is swollen almost to bursting and she absently strokes it with one hand while her other wipes a slimy glob of cum from the side of her mouth with an alabaster pinkie. She slides the finger into her mouth and sucks it hard enough to bring a blush to her cheeks, sighing in savory delight. As you're about to knock on the door and greet her, you hear a loud growling sound and your instincts drop you to a wary crouch, looking for the creature that must've snuck through Tel'Adre's gates. A gurgle and rumble follow and you realize that it's Scylla's tummy that's making those monstrous noises. Before your eyes, her stomach quivers and pulses, flesh roiling and twitching violently under the apparently elastic robe. Then, with a deep draining slurp, her belly contracts, sinking inward until it is flat and smooth. It seems the nun just digested a few gallons of cum in a matter of seconds.\n\n", false);
@@ -1366,7 +1366,7 @@ export class Scylla extends TelAdreAbstractContent {
         outputText("You hadn't realized you fell asleep until the nun's gentle shaking rouses you. The cat-morphs have left, but the trail of their passing is impossible to miss. A long, gooey trail of paw print-shaped milk and cum puddles lead out of the alley and back into the city. Scylla hugs you warmly, her smile bright and satisfied. The nubs on her head look a bit larger than they used to, but she's more or less returned to her previous dimensions, the nun's strange elasticity compensating for her lusty transformations. She explains that the cats were very sorry for their aggression and agreed to a penance for their moment of weakness. Happily, she informs you, they've agreed to public works, trying to restore some of the ruined and abandoned structures in Tel'Adre that remain unused after the demonic sieges of some time ago. She taps you on the nose and assures you that she didn't forget the bop on the head they gave you. She produces a heavy sack of gems and says that while they don't have much, they wanted to offer a tithe to the Champion's noble cause. Holding a small silver bell between her forefinger and thumb, she adds that the tall black-furred girl wanted the two of you to carry her bell when you're walking around the city so she'll be able to find you again.\n\n", false);
         outputText("It occurs to you that, if Scylla's saccharin mood is any indication, you suspect that more than a few of her 'missions of mercy' turn out like this. Your thighs are still sticky with the cat girl's spunk and you can feel it rolling inside you like the moistness of a wet kiss. All in all, you suppose, the day turned out a lot more fun than volunteering at the soup kitchen. You stomach rumbles at the thought of food and you excuse yourself to grab a meal, the nun waving good bye, jingling the ebony herm's tiny bell.", false);
         flags[kFLAGS.KATHERINE_MET_SCYLLA] = 1;
-        player.createKeyItem("Silver Kitty-Bell", 0, 0, 0, 0);
+        player.keyItems.create("Silver Kitty-Bell", 0, 0, 0, 0);
         player.gems += 50;
         statScreenRefresh();
         doNext(camp.returnToCampUseOneHour);
@@ -1425,7 +1425,7 @@ export class Scylla extends TelAdreAbstractContent {
 
         outputText("\"<i>I'm sorry for this,</i>\" the girl apologizes. It's hard to tell if she's genuinely sorry or just still experiencing the submissive streak you fucked into her. \"<i>We were just so hungry and your friend was so tempting. Please take what we've got. After today, I don't think they'll need to eat for a week.</i>\" She presses a few meager gems into your hand and pulls the silver bell from her collar. \"<i>And carry this, so I can find you again,</i>\" she whispers hopefully, flinching as Scylla's tongue snakes into her asshole to slurp down more of your cum. You leave them to their sticky cleanup with a pleased sigh. If only all trips to the soup kitchen could be so satisfying.", false);
         flags[kFLAGS.KATHERINE_MET_SCYLLA] = 1;
-        player.createKeyItem("Silver Kitty-Bell", 0, 0, 0, 0);
+        player.keyItems.create("Silver Kitty-Bell", 0, 0, 0, 0);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -1714,7 +1714,7 @@ export class Scylla extends TelAdreAbstractContent {
                 outputText("\n\nScylla's body is still pinned to the bed by her robe-distorting girth, but she's blinked back the lusty haze enough to help with the post-feeding task.  With tender motions, she helps you pump a few gallons into the condom before it threatens to overflow.  She peels it off and grabs a fresh prophylactic to replace the filled one, fitting it to your [cock biggest] with practiced motions as you tie off the first bubble.  The urgent deluge of your climax ebbs to a series of heavy, ecstatic spurts as the attentive virgin affixes the condom firmly around your member, stroking and licking your underside to encourage the steady flow, filling the latex pouches one after another, twisting their ends into firm knots to keep the precious seed inside the bloated balloons.  Occasionally, a stray twitch sends a bulbous dollop of your spunk splattering against her face or tits, but she merely laughs at the stray spunk, maintaining her self control.");
 
                 outputText("\n\nEventually, your reservoir runs dry and the two of you tie off the last condom.  All around you, a sea of colored rubber orbs sag under the globular weight of their sloshing contents.  The time you took letting Scylla milk you of every last drop has given the morphic nun a chance to process the fattening banquet of your hydraulic sperm-spout.  She still looks positively pregnant with the liquid volume of your spunk, but the cum-siphoning maiden is able to lift her blimp-sized tits and waterlogged tummy to a sitting position.  \"<i>I cannot thank you often enough for this,</i>\" she coos, her soft, quiet voice rich with warm gratitude.  \"<i>It almost seems as if you leave me with more of these gifts every time we do this!</i>\"  she marvels.  \"<i>You truly are a font of kindness.</i>\"");
-                if (player.hasKeyItem("Opal Ring") < 0) {
+                if (player.keyItems.has("Opal Ring") < 0) {
                     outputText("\n\nThough exhausting, you believe that you could provide a similar, absurd quantity for Scylla after a bit of rest.  In fact, if you wanted to, you could offer to be the sole spunk supplier for the eternally thirsty nun.  You'd be keeping the mild woman's impure hunger from staining her reputation, not to mention shielding her from the lusts of strangers.");
                     outputText("\n\nWould you like to offer to become Scylla's personal—and only—cum purveyor?");
                     player.cumMultiplier += 1 + rand(5);
@@ -1751,7 +1751,7 @@ export class Scylla extends TelAdreAbstractContent {
         outputText("\n\nWith a small nod, Scylla agrees.  \"<i>Thank you, [name], this is more kindness than I could have ever asked for.</i>\"  Her eyes light up and she reaches into a small pouch within her robe, producing a small band of pale white stone.  \"<i>This is an opal ring from my home,</i>\" she explains.  \"<i>It normally signifies an oath, though in this case, I believe it is more a promise between friends.  I'd like you to take it, with my gratitude.</i>\"  She presses the ring into your hand with a wide smile, thanking you once more before rising to her feet, wobbling a bit at the liquid weight still inside her.  \"<i>Please don't trouble yourself about the clean up.</i>\"  Gesturing at the parcels you've left today, she adds, \"<i>I'll move these to my room and take care of the mess.  Meeting the kind soul who, ah, lent us their room today will give me a chance to ask where they got these condoms.  For next time,</i>\" she cheerfully laughs.");
 
         outputText("\n\nRing in hand, you head back to camp.");
-        player.createKeyItem("Opal Ring", 0, 0, 0, 0);
+        player.keyItems.create("Opal Ring", 0, 0, 0, 0);
         outputText("\n\n(<b>Gained Key Item: Opal Ring</b>)");
         doNext(camp.returnToCampUseOneHour);
     }

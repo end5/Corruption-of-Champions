@@ -162,13 +162,13 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
                 case KLOC_URTAS_APT:
                     if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] > 31) {
                         if (rand(4) != 0) { // A three in four chance that Kath will stay with Urta once they've hooked up
-                            if (player.hasKeyItem("Spare Key to Urta's House") >= 0) flags[kFLAGS.KATHERINE_LOCATION] = KLOC_URTAS_HOME;
+                            if (player.keyItems.has("Spare Key to Urta's House") >= 0) flags[kFLAGS.KATHERINE_LOCATION] = KLOC_URTAS_HOME;
                             break; // If Urta doesn't have a home to return to then she and Kath stay at the apartment
                         }
                     }
                     else if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] >= 11 && flags[kFLAGS.KATHERINE_URTA_DATE] != KDATE_LITTLE) {
                         if (rand(3) != 0) { // A two in three chance that Kath will stay with Urta if they're fuckbuddies
-                            if (player.hasKeyItem("Spare Key to Urta's House") >= 0) flags[kFLAGS.KATHERINE_LOCATION] = KLOC_URTAS_HOME;
+                            if (player.keyItems.has("Spare Key to Urta's House") >= 0) flags[kFLAGS.KATHERINE_LOCATION] = KLOC_URTAS_HOME;
                             break; // If Urta doesn't have a home to return to then she and Kath stay at the apartment
                         }
                     } // else fall through to the default case, Kath goes home
@@ -201,7 +201,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         flags[kFLAGS.KATHERINE_BALL_SIZE] = 1;
         flags[kFLAGS.KATHERINE_HAIR_COLOR] = "neon pink";
         flags[kFLAGS.KATHERINE_HOURS_SINCE_CUM] = 200; // Give her maxed out cum for that first time
-        player.removeKeyItem("Silver Kitty-Bell"); // Silver Bell key item removed so any partial recruitment down the Scylla route is cancelled
+        player.keyItems.remove("Silver Kitty-Bell"); // Silver Bell key item removed so any partial recruitment down the Scylla route is cancelled
     }
 
     public get breasts(): BreastStore { return _breasts; }
@@ -528,7 +528,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
     }
 
     public needIntroductionFromScylla(): boolean {
-        return game.time.hours > 8 && game.time.hours < 18 && player.hasKeyItem("Silver Kitty-Bell") >= 0;
+        return game.time.hours > 8 && game.time.hours < 18 && player.keyItems.has("Silver Kitty-Bell") >= 0;
     }
 
     // If player has Silver Bell key item and is at Wet Bitch when Scylla is not busy with her Addicts Anonymous group

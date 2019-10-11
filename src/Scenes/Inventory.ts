@@ -70,7 +70,7 @@ export class Inventory {
                 addButton(7, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), holliScene.treeMenu);
                 foundItem = true;
             }
-            if (player.hasKeyItem("Dragon Egg") >= 0) {
+            if (player.keyItems.has("Dragon Egg") >= 0) {
                 emberScene.emberCampDesc();
                 addButton(8, "Egg", emberScene.emberEggInteraction);
                 foundItem = true;
@@ -105,7 +105,7 @@ export class Inventory {
             anemoneScene.anemoneBarrelDescription();
             if (game.time.hours >= 6) addButton(4, "Anemone", anemoneScene.approachAnemoneBarrel);
         }
-        if (player.hasKeyItem("Camp - Chest") >= 0) {
+        if (player.keyItems.has("Camp - Chest") >= 0) {
             outputText("You have a large wood and iron chest to help store excess items located near the portal entrance.\n\n");
             addButton(0, "Chest Store", pickItemToPlaceInCampStorage);
             if (hasItemsInStorage()) addButton(1, "Chest Take", pickItemToTakeFromCampStorage);

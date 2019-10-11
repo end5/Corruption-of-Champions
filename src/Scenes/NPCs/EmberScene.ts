@@ -331,7 +331,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nBefore you realize it, you have eaten as much of it as is possible to eat and the empty halves of the egg lie before you - as you watch, the leftover albumen wicks into the porous shell, disappearing completely.  You pick up the shell, looking at the underside, but not a drop of fluid seeps out.  Interesting...");
         outputText("\n\nFeeling sated, you get up and prepare to return to your camp, but on a whim, you take the shell with you as a souvenir.");
         outputText("\n\n(<b>Gained Key Item: Dragon Eggshell</b>)");
-        player.createKeyItem("Dragon Eggshell", 0, 0, 0, 0);
+        player.keyItems.create("Dragon Eggshell", 0, 0, 0, 0);
         // (+5-10 to strength, toughness, and speed.)
         // (+20 Corruption)
         // (also slimefeed!)
@@ -351,7 +351,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         // this is where the Dragonshell Shield lives, git you one!
         player.gems -= 200;
         statScreenRefresh();
-        player.removeKeyItem("Dragon Eggshell");
+        player.keyItems.remove("Dragon Eggshell");
         inventory.takeItem(weapons.DRGNSHL, telAdre.armorShop);
     }
 
@@ -392,7 +392,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         }
         outputText("\n\n(<b>You have now begun the Mysterious Egg quest.  The Mysterious Egg is added to the <i>Items</i> at the Camp.</b>)");
         // set flags
-        player.createKeyItem("Dragon Egg", 0, 0, 0, 0);
+        player.keyItems.create("Dragon Egg", 0, 0, 0, 0);
         flags[kFLAGS.TOOK_EMBER_EGG] = 1;
         flags[kFLAGS.EMBER_COR] = 50;
         doNext(camp.returnToCampUseOneHour);
@@ -861,7 +861,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou watch the newly hatched dragon, poking its nose into everything that catches its eye, and sigh softly as it starts to burrow into a small elevation in the cracked ground.  Going to be a difficult one, it seems.  Still, it doesn't seem to be some kind of sex-crazed monster like the other weird natives you've met thus far.  Maybe the two of you can help each other?");
         outputText("\n\n(<b>Ember has been gained as a follower!</b>)");
         flags[kFLAGS.EMBER_HATCHED] = 1;
-        player.removeKeyItem("Dragon Egg");
+        player.keyItems.remove("Dragon Egg");
         doNext(camp.returnToCampUseOneHour);
     }
 

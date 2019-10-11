@@ -45,7 +45,7 @@ export class UrtaPregs extends NPCAwareContent {
 
     private urtaSexMenu(): void {
         let spank: () => void = null;
-        if ((player.hasCock() && player.cockThatFits(urta.urtaCapacity()) >= 0) || player.hasKeyItem("Deluxe Dildo") >= 0) spank = urta.spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs;
+        if ((player.hasCock() && player.cockThatFits(urta.urtaCapacity()) >= 0) || player.keyItems.has("Deluxe Dildo") >= 0) spank = urta.spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs;
         // NOT Drunk
         if (!urta.urtaDrunk()) {
             // Lover
@@ -1712,7 +1712,7 @@ export class UrtaPregs extends NPCAwareContent {
 
         outputText("\n\n<b>You got the Key item: Urta's Key (Used at the 'Homes' menu in Tel'Adre.)</b>");
         // Description:  Spare key to Urta's house.  It is adorned with a small fox crest.
-        player.createKeyItem("Spare Key to Urta's House", 0, 0, 0, 0);
+        player.keyItems.create("Spare Key to Urta's House", 0, 0, 0, 0);
         doNext(camp.returnToCampUseOneHour);
     }
 

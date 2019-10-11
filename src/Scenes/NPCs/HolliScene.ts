@@ -56,7 +56,7 @@ export class HolliScene extends NPCAwareContent {
             // Call Jojo goes to above scene, others go to fight or camp directly
             menu();
             addButton(0, "Fight", fightHolli);
-            if (player.hasKeyItem("Jojo's Talisman") >= 0) addButton(1, "Call Jojo", callDatJojo);
+            if (player.keyItems.has("Jojo's Talisman") >= 0) addButton(1, "Call Jojo", callDatJojo);
             addButton(4, "Back", inventory.inventoryMenu);
         }
         else if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 1) {
@@ -543,7 +543,7 @@ export class HolliScene extends NPCAwareContent {
         // no mo' Jojo; ho made schmo go
         // return Jojo to forest, get key item Small Talisman
         player.removeStatusAffect(StatusAffects.PureCampJojo);
-        player.createKeyItem("Jojo's Talisman", 0, 0, 0, 0);
+        player.keyItems.create("Jojo's Talisman", 0, 0, 0, 0);
 
         doNext(playerMenu);
     }
@@ -1035,7 +1035,7 @@ export class HolliScene extends NPCAwareContent {
         // ignore returns to previous menu and is default spacebar option
         menu();
         addButton(0, "CutHerDown", cutHerDown);
-        if (player.hasKeyItem("Jojo's Talisman") >= 0) addButton(1, "Call Jojo", callDatJojo);
+        if (player.keyItems.has("Jojo's Talisman") >= 0) addButton(1, "Call Jojo", callDatJojo);
         addButton(4, "Ignore", treeMenu, true);
     }
 
@@ -1061,7 +1061,7 @@ export class HolliScene extends NPCAwareContent {
     // [Call Jojo]
     private callDatJojo(): void {
         clearOutput();
-        player.removeKeyItem("Jojo's Talisman");
+        player.keyItems.remove("Jojo's Talisman");
         outputText("You take out the small talisman you got from the mouse monk, wondering just how to summon him with it.  A small string dangles from the side; when you pull it, you can feel a stitch coming undone and the weight of the talisman shifts toward the bottom.  A thick, billowing yellow smoke begins to pour out.  God, this reeks!  You hurl it away before the smell can permeate your clothing, and it sets off an echoing bang when it hits the ground!  It's not long before Jojo appears from the edge of the forest and calls to you.");
 
         outputText("\n\n\"<i>Apologies, [name], but the sound and smell were the only way I could be sure of knowing and finding you when you needed me!</i>\"  He raises a cloth over his nose, then hefts his staff.  \"<i>If you choose to fight this demon plant creature, I will try to start a blaze to limit her ability to regrow.  It will take a lot of wood to burn a tree so unnatural, so I will not be able to do much else but ferry tinder from the stock I've been laying in.  You will have to hold her attention.</i>\"");
@@ -1118,7 +1118,7 @@ export class HolliScene extends NPCAwareContent {
             }
         }
         outputText("\n\n(Key Item Gained: Holli's Ashes)");
-        player.createKeyItem("Holli's Ashes", 0, 0, 0, 0);
+        player.keyItems.create("Holli's Ashes", 0, 0, 0, 0);
         cleanupAfterCombat();
     }
 
@@ -1129,7 +1129,7 @@ export class HolliScene extends NPCAwareContent {
         outputText("\n\nBowing neatly, he takes his leave.");
         player.createStatusAffect(StatusAffects.PureCampJojo, 0, 0, 0, 0);
         outputText("\n\n(Key Item Gained: Holli's Ashes)");
-        player.createKeyItem("Holli's Ashes", 0, 0, 0, 0);
+        player.keyItems.create("Holli's Ashes", 0, 0, 0, 0);
         cleanupAfterCombat();
     }
 
@@ -1138,7 +1138,7 @@ export class HolliScene extends NPCAwareContent {
         clearOutput();
         outputText("You hold your tongue, allowing Jojo to make his way back to the forest.");
         outputText("\n\n(Key Item Gained: Holli's Ashes)");
-        player.createKeyItem("Holli's Ashes", 0, 0, 0, 0);
+        player.keyItems.create("Holli's Ashes", 0, 0, 0, 0);
         cleanupAfterCombat();
     }
 

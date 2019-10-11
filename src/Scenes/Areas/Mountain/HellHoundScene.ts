@@ -133,7 +133,7 @@ export class HellHoundScene {
 
         outputText("Some time later, you find yourself at the base of the mountains.  Your mind is once again your own.  After a few moments you realize that you can still feel the faint call of the hellhound master's voice in your mind, then it's gone.  You could probably find it again without too much trouble if you just head back into the mountains, but there isn't really much point unless you've got something to trade for the hellfire he mentioned...", false);
 
-        if (player.hasKeyItem("Marae's Lethicite") >= 0 && player.keyItemv2("Marae's Lethicite") < 3) outputText(" You extract Marae's lethicite from your pack, and wonder if you really want to trade it for the hellfire he offered.", false);
+        if (player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3) outputText(" You extract Marae's lethicite from your pack, and wonder if you really want to trade it for the hellfire he offered.", false);
         // advance to repeat version
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] = 1;
         doNext(camp.returnToCampUseOneHour);
@@ -157,7 +157,7 @@ export class HellHoundScene {
         outputText("You barely spare a thought at the interior in your hurry to get to the master.  As you burst into the room, the master's eyes light up at the sight of you.  \"<i>Ah!  It is my favorite fan.  Have you brought me a piece of that pink crystal I asked you for?</i>\"\n\n", false);
 
         // Player chooses to either give Merae's full Lethicite, or a regular piece of Lethicite.  Limited by what they have, of course.  They cannot choose to leave at this point.  Merae's Lethicite -> G, Regular Lethicite -> H.
-        if (player.keyItemv2("Marae's Lethicite") == 0) simpleChoices("Give All", giveALLTHELETHICITES, "Give Part", giveLethicitePiece, "", null, "", null, "", null);
+        if (player.keyItems.getValue2Of("Marae's Lethicite") == 0) simpleChoices("Give All", giveALLTHELETHICITES, "Give Part", giveLethicitePiece, "", null, "", null, "", null);
         else doNext(giveLethicitePiece);
     }
 
@@ -167,7 +167,7 @@ export class HellHoundScene {
         // Give a single piece of Lethicite, get hellfire
         outputText("You produce the pink crystal and hand it to the master.  As the crystal touches his hand, he gives a low growl of pleasure and holds the crystal up to his eyes.  \"<i>Ah yes, excellent!  Thank you so much for this tasty treat of power.</i>\"\n\n", false);
         // if (PC gave ⅔ Merae's crystal)
-        if (player.keyItemv2("Marae's Lethicite") == 1) {
+        if (player.keyItems.getValue2Of("Marae's Lethicite") == 1) {
             outputText("He looks at the crystal for a moment, before biting off half of it and giving the other half back to you.  \"<i>This is enough for the hellfire, I think.  Go ahead and keep the rest, my favorite fan!</i>\"\n\n", false);
             // Replace ⅔ Merae's Lethicite with regular lethicite.
             player.addStatusValue(StatusAffects.MaraesLethicite, 2, 1);

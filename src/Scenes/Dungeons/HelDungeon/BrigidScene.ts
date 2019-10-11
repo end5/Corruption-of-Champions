@@ -12,7 +12,7 @@ export class BrigidScene {
         else outputText("too badly beaten");
         outputText(" to continue the fight.  You quickly snatch the keys from inside her shield, and hook them onto your own belt.");
         // (New Key Item: Harpy Key A)
-        player.createKeyItem("Harpy Key A", 0, 0, 0, 0);
+        player.keyItems.create("Harpy Key A", 0, 0, 0, 0);
         cleanupAfterCombat();
         flags[kFLAGS.HEL_BRIGID_DEFEATED] = 1;
     }

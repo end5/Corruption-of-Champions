@@ -14,7 +14,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
             if (flags[kFLAGS.VAPULA_FOLLOWER] == .5 || flags[kFLAGS.VAPULA_FOLLOWER] == 1.5) flags[kFLAGS.VAPULA_FOLLOWER]++;
             flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS]++;
         }
-        if (vapulaSlave() && player.hasKeyItem("Demonic Strap-On") < 0 && player.gender == 2 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) {
+        if (vapulaSlave() && player.keyItems.has("Demonic Strap-On") < 0 && player.gender == 2 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) {
             vapulaGivesPCAPresent();
             return true;
         }
@@ -26,7 +26,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
             femaleVapulaRecruitmentPartII();
             return true;
         }
-        if (game.time.hours == 2 && vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] >= 5 && (player.hasCock() || (player.hasKeyItem("Demonic Strap-On") >= 0 && player.hasVagina()))) {
+        if (game.time.hours == 2 && vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] >= 5 && (player.hasCock() || (player.keyItems.has("Demonic Strap-On") >= 0 && player.hasVagina()))) {
             vapulaForceFeeds();
             return true;
         }
@@ -50,7 +50,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.VAPULA_FOLLOWER] = 1;
         flags[kFLAGS.VAPULA_HAREM_FUCK] = 1;
         // [Demonic dildo added]
-        player.createKeyItem("Demonic Strap-On", 0, 0, 0, 0);
+        player.keyItems.create("Demonic Strap-On", 0, 0, 0, 0);
         outputText("\n\n(<b>Gained Item: Demonic Strap-On</b>)");
         doNext(playerMenu);
     }
@@ -58,7 +58,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
     public vapulaGivesPCAPresent(): void {
         outputText("\nVapula walks up to you and frowns, clearly disappointed.  \"<i>Since you got rid of the only way you could properly feed me, I got you this.</i>\"\n\nShe drops a strap-on into your hand as she explains, \"<i>It can convert the lust of a woman into something that will be palatable to my... appetites.  You're welcome.</i>\"");
         outputText("\n\nShe walks away without another word.  It might be time for some discipline.");
-        player.createKeyItem("Demonic Strap-On", 0, 0, 0, 0);
+        player.keyItems.create("Demonic Strap-On", 0, 0, 0, 0);
         outputText("\n\n(<b>Gained Item: Demonic Strap-On</b>)\n");
     }
 
@@ -75,7 +75,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         if (choice == 3) outputText("Vapula is busy drinking a vial of milk that looks very much like the kind you'd usually find on imps.  Her purple cheeks seem to blush darker when she sees you; she awkwardly gulps the rest of the bottle, hiccups, and giggles softly, eyeing you with a coy smile and a lust-filled gaze.  The potion seems to have made her even more aroused than usual.");
         if (choice == 4) {
             outputText("Vapula is currently toying with ");
-            if (player.hasKeyItem("Deluxe Dildo") >= 0) outputText("your deluxe dildo");
+            if (player.keyItems.has("Deluxe Dildo") >= 0) outputText("your deluxe dildo");
             else outputText("a dildo");
             outputText(", pumping as fast as she can.  In her feverish display of lust she doesn't even notice you.");
         }
@@ -197,7 +197,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
             if (player.lust >= 33) mFeed = feedVapulaACupOfJizz;
             else if (output) outputText("\n\nYou aren't suitably aroused to feed Vapula right now.");
         }
-        if (player.hasVagina() && player.hasKeyItem("Demonic Strap-On") >= 0) {
+        if (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0) {
             if (player.lust >= 33) fFeed = chixFeedVapulaBlehblehIVantToZuckYourSpooo;
             else if (output && !player.hasCock()) outputText("\n\nYou aren't suitably aroused to feed Vapula right now.");
         }
@@ -413,7 +413,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         let jojo: () => void = null;
         // Option: Izma
         let izma: () => void = null;
-        if (player.hasCock() || (player.hasVagina() && player.hasKeyItem("Demonic Strap-On") >= 0)) {
+        if (player.hasCock() || (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0)) {
             if (jojoScene.campCorruptJojo()) jojo = vapulaJojoThreesomes;
             if (amilyScene.amilyFollower() && amilyScene.amilyCorrupt() && player.hasCock()) amily = vapulaAndAmilyThreesome;
             if (ceraphFollowerScene.ceraphIsFollower() && player.hasCock()) ceraph = vapulaCeraphThreesome;
@@ -698,7 +698,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         if (player.hasCock()) outputText("\n\nYou could initiate a butt-fuck train, and ram his asshole while he fucks Vapula's; this way he would get what he clearly wants.");
         let tease: () => void = null;
         let train: () => void = null;
-        if (player.hasVagina() || player.hasKeyItem("Demonic Strap-On") >= 0) tease = NTRSomeJojos;
+        if (player.hasVagina() || player.keyItems.has("Demonic Strap-On") >= 0) tease = NTRSomeJojos;
         if (!player.hasCock()) { } else {
             tease = NTRSomeJojos;
             train = jojoButtFuckTrain;
@@ -1014,7 +1014,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
 
     // Forcefeed
     public vapulaForceFeeds(): void {
-        if (player.hasVagina() && player.hasKeyItem("Demonic Strap-On") >= 0 && !player.hasCock()) {
+        if (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0 && !player.hasCock()) {
             outputText("\n<b>In the night...</b>\nArousal blooms in your dreams, and you are relentlessly pushed into increasingly juicier and filthier fantasies; feeling hopelessly wet, you half awaken and hazily slide a hand down towards your crotch, to try and find release and rest.  Your fingers touch leather and latex where your vagina should be; bewildered, you rise to see Vapula working around your crotch, tightening the final harnesses of your strap-on, locking you into the pink dildo throbbing in your " + vaginaDescript(player, 0) + " whilst she licks hungrily at the tip of the opposite end.  You try to sit up but the ferocious succubus pins you down ruthlessly, her strength increased by her state of hunger.  She smirks at you wickedly and whispers, \"<i>So you don't want me to use any dick but the one I gave you, yet you won't feed me?  That's very bad of you, " + player.short + "... really, really bad...  Do you want to starve me?  Do you want me to beg you for cum?  You naughty slut, you better be ready because I'm going to get what is rightfully mine.  I'm HUNGRY!</i>\"");
             outputText("\n\nWith a wolfish groan she swallows the purple dildo up to the hilt and begins to work it savagely, slurping and grunting obscenely.  Before you can properly react, she catches the base of the dildo with her teeth and pushes it into you as hard as she can.  You gasp as the pink end reacts, growing by several inches and sliding further into your moist cunt.  In and out Vapula drags the dildo, slapping it into your groin as she fucks you whilst blowing the purple end for all she is worth, her saliva running down your thighs.  For a moment you think about getting up, asserting your authority and making her stop... but then the warm length wedged in your depths makes you coo with pleasure as Vapula shakes the cock in her mouth around like a bear with a salmon, making your end twist and spasm delightfully.  Deciding it is worth taking advantage of her insane hunger, ");
             // Naga:

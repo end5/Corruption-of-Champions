@@ -148,7 +148,7 @@ export class Bazaar {
             return;
         }
         // Cock Milker
-        else if (player.hasKeyItem("Cock Milker") < 0 && flags[kFLAGS.JOEY_OFFERED_MILKER] == 0 && player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0) {
+        else if (player.keyItems.has("Cock Milker") < 0 && flags[kFLAGS.JOEY_OFFERED_MILKER] == 0 && player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0) {
             outputText("You notice Joey leaning on the counter, lost in thought.  The bunny boy frowns, troubled by something.  He jolts upright when he notices you approaching, his expression lifting into a polite grin.  \"<i>Hey, welcome!  Always nice to see a familiar face.  So, do you have some 'tension' that needs relieving?</i>\"  His eyes travel down to your crotch.  Shameless as ever but with a hesitant offer buried in his eyes...\n\n");
             flags[kFLAGS.JOEY_OFFERED_MILKER] = 1;
         }
@@ -164,7 +164,7 @@ export class Bazaar {
             }
             // You could have Joey or Sara give you one, though it's obvious they plan to use spooge as massage oil. (Sara needs an introduction before she gets a mention and a menu entry -Z)
         }
-        if (flags[kFLAGS.JOEY_OFFERED_MILKER] > 0 && player.hasKeyItem("Cock Milker") < 0 && player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0)
+        if (flags[kFLAGS.JOEY_OFFERED_MILKER] > 0 && player.keyItems.has("Cock Milker") < 0 && player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0)
             milker = askJoeyAboutOffer;
         // 	[Joey] [Sara] [][] [Leave]
 
@@ -209,7 +209,7 @@ export class Bazaar {
         outputText("\n\n(<b>Key Item Acquired: Cock Milker</b>)");
         player.gems -= 200;
         statScreenRefresh();
-        player.createKeyItem("Cock Milker", 0, 0, 0, 0);
+        player.keyItems.create("Cock Milker", 0, 0, 0, 0);
         simpleChoices("JoeyMassage", joeyMassage, "Androgyny", null, "Joey'sOffer", null, "", null, "Leave", enterTheBazaar);
     }
 

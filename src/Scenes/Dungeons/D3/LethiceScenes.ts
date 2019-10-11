@@ -90,7 +90,7 @@ export class LethiceScenes {
         if (player.hasVagina()) addButton(1, "Queen Her", queenHer);
         addButton(2, "Boob Play", boobPlay, hpVictory);
 
-        const hasLethicite: boolean = (player.hasKeyItem("Sheila's Lethicite") > 0) || (player.hasKeyItem("Stone Statue Lethicite") > 0);
+        const hasLethicite: boolean = (player.keyItems.has("Sheila's Lethicite") > 0) || (player.keyItems.has("Stone Statue Lethicite") > 0);
         if (hasLethicite && player.findStatusAffect(StatusAffects.MetMarae) >= 0 && player.findStatusAffect(StatusAffects.FactoryOverload) < 0) {
             addButton(5, "Redemption", redemption, hpVictory);
         }

@@ -1,8 +1,7 @@
-
 /**
-	 * Character class for player and NPCs. Has subclasses Player and NonPlayer.
-	 * @author Yoffy
-	 */
+ * Character class for player and NPCs. Has subclasses Player and NonPlayer.
+ * @author Yoffy
+ */
 export class Character extends Creature {
     private _femininity: number = 50;
 
@@ -61,16 +60,11 @@ export class Character extends Creature {
     public get buttPregnancyIncubation(): number { return _buttPregnancyIncubation; }
 
     // Key items
-    public keyItems: any[];
-
-    public constructor() {
-        keyItems = [];
-    }
+    public keyItems = new KeyItemArray();
 
     // Return bonus fertility
 
     // return total fertility
-
 
     public hasBeard(): boolean {
         return beardLength > 0;
@@ -170,211 +164,6 @@ export class Character extends Creature {
     }
 
     public pregnancyUpdate(): boolean { return false; }
-
-    // Create a keyItem
-    public createKeyItem(keyName: string, value1: number, value2: number, value3: number, value4: number): void {
-        const newKeyItem: KeyItemClass = new KeyItemClass();
-        // used to denote that the array has already had its new spot pushed on.
-        let arrayed: boolean = false;
-        // used to store where the array goes
-        let keySlot: number = 0;
-        let counter: number = 0;
-        // Start the array if its the first bit
-        if (keyItems.length == 0) {
-            // trace("New Key Item Started Array! " + keyName);
-            keyItems.push(newKeyItem);
-            arrayed = true;
-            keySlot = 0;
-        }
-        // If it belongs at the end, push it on
-        if (keyItems[keyItems.length - 1].keyName < keyName && !arrayed) {
-            // trace("New Key Item Belongs at the end!! " + keyName);
-            keyItems.push(newKeyItem);
-            arrayed = true;
-            keySlot = keyItems.length - 1;
-        }
-        // If it belongs in the beginning, splice it in
-        if (keyItems[0].keyName > keyName && !arrayed) {
-            // trace("New Key Item Belongs at the beginning! " + keyName);
-            keyItems.splice(0, 0, newKeyItem);
-            arrayed = true;
-            keySlot = 0;
-        }
-        // Find the spot it needs to go in and splice it in.
-        if (!arrayed) {
-            // trace("New Key Item using alphabetizer! " + keyName);
-            counter = keyItems.length;
-            while (counter > 0 && !arrayed) {
-                counter--;
-                // If the current slot is later than new key
-                if (keyItems[counter].keyName > keyName) {
-                    // If the earlier slot is earlier than new key && a real spot
-                    if (counter - 1 >= 0) {
-                        // If the earlier slot is earlier slot in!
-                        if (keyItems[counter - 1].keyName <= keyName) {
-                            arrayed = true;
-                            keyItems.splice(counter, 0, newKeyItem);
-                            keySlot = counter;
-                        }
-                    }
-                    // If the item after 0 slot is later put here!
-                    else {
-                        // If the next slot is later we are go
-                        if (keyItems[counter].keyName <= keyName) {
-                            arrayed = true;
-                            keyItems.splice(counter, 0, newKeyItem);
-                            keySlot = counter;
-                        }
-                    }
-                }
-            }
-        }
-        // Fallback
-        if (!arrayed) {
-            // trace("New Key Item Belongs at the end!! " + keyName);
-            keyItems.push(newKeyItem);
-            keySlot = keyItems.length - 1;
-        }
-
-        keyItems[keySlot].keyName = keyName;
-        keyItems[keySlot].value1 = value1;
-        keyItems[keySlot].value2 = value2;
-        keyItems[keySlot].value3 = value3;
-        keyItems[keySlot].value4 = value4;
-        // trace("NEW KEYITEM FOR PLAYER in slot " + keySlot + ": " + keyItems[keySlot].keyName);
-    }
-
-    // Remove a key item
-    public removeKeyItem(itemName: string): void {
-        let counter: number = keyItems.length;
-        // Various Errors preventing action
-        if (keyItems.length <= 0) {
-            // trace("ERROR: KeyItem could not be removed because player has no key items.");
-            return;
-        }
-        while (counter > 0) {
-            counter--;
-            if (keyItems[counter].keyName == itemName) {
-                keyItems.splice(counter, 1);
-                trace("Attempted to remove \"" + itemName + "\" keyItem.");
-                counter = 0;
-            }
-        }
-    }
-
-    public addKeyValue(statusName: string, statusValueNum: number = 1, newNum: number = 0): void {
-        let counter: number = keyItems.length;
-        // Various Errors preventing action
-        if (keyItems.length <= 0) {
-            return;
-            // trace("ERROR: Looking for keyitem '" + statusName + "' to change value " + statusValueNum + ", and player has no key items.");
-        }
-        while (counter > 0) {
-            counter--;
-            // Find it, change it, quit out
-            if (keyItems[counter].keyName == statusName) {
-                if (statusValueNum < 1 || statusValueNum > 4) {
-                    // trace("ERROR: AddKeyValue called with invalid key value number.");
-                    return;
-                }
-                if (statusValueNum == 1)
-                    keyItems[counter].value1 += newNum;
-                if (statusValueNum == 2)
-                    keyItems[counter].value2 += newNum;
-                if (statusValueNum == 3)
-                    keyItems[counter].value3 += newNum;
-                if (statusValueNum == 4)
-                    keyItems[counter].value4 += newNum;
-                return;
-            }
-        }
-        // trace("ERROR: Looking for keyitem '" + statusName + "' to change value " + statusValueNum + ", and player does not have the key item.");
-    }
-
-    public keyItemv1(statusName: string): number {
-        let counter: number = keyItems.length;
-        // Various Errors preventing action
-        if (keyItems.length <= 0) {
-            return 0;
-            // trace("ERROR: Looking for keyItem '" + statusName + "', and player has no key items.");
-        }
-        while (counter > 0) {
-            counter--;
-            if (keyItems[counter].keyName == statusName)
-                return keyItems[counter].value1;
-        }
-        // trace("ERROR: Looking for key item '" + statusName + "', but player does not have it.");
-        return 0;
-    }
-
-    public keyItemv2(statusName: string): number {
-        let counter: number = keyItems.length;
-        // Various Errors preventing action
-        if (keyItems.length <= 0) {
-            return 0;
-            // trace("ERROR: Looking for keyItem '" + statusName + "', and player has no key items.");
-        }
-        while (counter > 0) {
-            counter--;
-            if (keyItems[counter].keyName == statusName)
-                return keyItems[counter].value2;
-        }
-        // trace("ERROR: Looking for key item '" + statusName + "', but player does not have it.");
-        return 0;
-    }
-
-    public keyItemv3(statusName: string): number {
-        let counter: number = keyItems.length;
-        // Various Errors preventing action
-        if (keyItems.length <= 0) {
-            return 0;
-            // trace("ERROR: Looking for keyItem '" + statusName + "', and player has no key items.");
-        }
-        while (counter > 0) {
-            counter--;
-            if (keyItems[counter].keyName == statusName)
-                return keyItems[counter].value3;
-        }
-        // trace("ERROR: Looking for key item '" + statusName + "', but player does not have it.");
-        return 0;
-    }
-
-    public keyItemv4(statusName: string): number {
-        let counter: number = keyItems.length;
-        // Various Errors preventing action
-        if (keyItems.length <= 0) {
-            return 0;
-            // trace("ERROR: Looking for keyItem '" + statusName + "', and player has no key items.");
-        }
-        while (counter > 0) {
-            counter--;
-            if (keyItems[counter].keyName == statusName)
-                return keyItems[counter].value4;
-        }
-        // trace("ERROR: Looking for key item '" + statusName + "', but player does not have it.");
-        return 0;
-    }
-
-    public removeKeyItems(): void {
-        let counter: number = keyItems.length;
-        while (counter > 0) {
-            counter--;
-            keyItems.splice(counter, 1);
-        }
-    }
-
-    public hasKeyItem(keyName: string): number {
-        let counter: number = keyItems.length;
-        // Various Errors preventing action
-        if (keyItems.length <= 0)
-            return -2;
-        while (counter > 0) {
-            counter--;
-            if (keyItems[counter].keyName == keyName)
-                return counter;
-        }
-        return -1;
-    }
 
     // Grow
 

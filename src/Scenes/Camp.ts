@@ -150,13 +150,13 @@ export class Camp extends NPCAwareContent {
             processJackFrostEvent();
             return;
         }
-        if (player.hasKeyItem("Super Reducto") < 0 && milkSlave() && player.findStatusAffect(StatusAffects.CampRathazul) >= 0 && player.statusAffectv2(StatusAffects.MetRathazul) >= 4) {
+        if (player.keyItems.has("Super Reducto") < 0 && milkSlave() && player.findStatusAffect(StatusAffects.CampRathazul) >= 0 && player.statusAffectv2(StatusAffects.MetRathazul) >= 4) {
             hideMenus();
             milkWaifu.ratducto();
             return;
         }
         if (nieveHoliday() && game.time.hours == 6) {
-            if (player.hasKeyItem("Nieve's Tear") >= 0 && flags[kFLAGS.NIEVE_STAGE] != 5) {
+            if (player.keyItems.has("Nieve's Tear") >= 0 && flags[kFLAGS.NIEVE_STAGE] != 5) {
                 returnOfNieve();
                 hideMenus();
                 return;
@@ -328,7 +328,7 @@ export class Camp extends NPCAwareContent {
             return;
         }
         // Izzys tits asplode
-        if (isabellaFollower() && flags[kFLAGS.ISABELLA_MILKED_YET] >= 10 && player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") >= 0) {
+        if (isabellaFollower() && flags[kFLAGS.ISABELLA_MILKED_YET] >= 10 && player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) {
             isabellaFollowerScene.milktasticLacticLactation();
             hideMenus();
             return;

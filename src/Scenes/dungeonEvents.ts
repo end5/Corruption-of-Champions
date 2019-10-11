@@ -3,7 +3,7 @@
 public function doDungeon(eventNo:Number):void {
 	if(eventNo == 11000) dungeonLoc = 0;
 	if(eventNo == 11001) {
-		if(player.hasKeyItem("Iron Key") < 0) {
+		if(player.keyItems.has("Iron Key") < 0) {
 			outputText("The door is locked with a key that is not in your possession.", true);
 			doNext(camp.campMenu);
 			return;
@@ -17,7 +17,7 @@ public function doDungeon(eventNo:Number):void {
 	if(eventNo == 11006) dungeonLoc = 6;
 	if(eventNo == 11007) dungeonLoc = 7;
 	if(eventNo == 11008) {
-		if(player.hasKeyItem("Supervisor's Key") < 0) {
+		if(player.keyItems.has("Supervisor's Key") < 0) {
 			outputText("The door is locked with a key that is not in your possession.", true);
 			doNext(camp.campMenu);
 			return;
@@ -215,14 +215,14 @@ public function doDungeon(eventNo:Number):void {
 	if(eventNo == 11028) {
 		outputText("You take the <b>Iron Key</b> to keep with your other important items.", true);
 		doNext(camp.campMenu);
-		player.createKeyItem("Iron Key",0,0,0,0);
+		player.keyItems.create("Iron Key",0,0,0,0);
 		return;
 	}
 	//Build Cock Milker
 	if(eventNo == 11029) {
 		outputText("You puzzle out how to build a fully functional cock-milker from the spare parts here and assemble it.\n\nYou gained a <b>Cock Milker</b>!", true);
 		outputText("\n\nYou'll need a little help to use it though.", false);
-		player.createKeyItem("Cock Milker",0,0,0,0);
+		player.keyItems.create("Cock Milker",0,0,0,0);
 		player.createStatusAffect(StatusAffects.BuiltMilker,0,0,0,0);
 		doNext(camp.campMenu);
 		return;
@@ -231,7 +231,7 @@ public function doDungeon(eventNo:Number):void {
 	if(eventNo == 11030) {
 		outputText("You puzzle out how to build a fully functional breast-milker from the spare parts here and assemble it.\n\nYou gained a <b>Breast Milker</b>!", true);
 		outputText("\n\nYou'll need a little help to use it though.", false);
-		player.createKeyItem("Breast Milker",0,0,0,0);
+		player.keyItems.create("Breast Milker",0,0,0,0);
 		player.createStatusAffect(StatusAffects.BuiltMilker,0,0,0,0);
 		doNext(camp.campMenu);
 		return;
@@ -247,7 +247,7 @@ public function doDungeon(eventNo:Number):void {
 	//Talk to Incubus
 	if(eventNo == 11032) {
 		spriteSelect(30);
-		if(player.hasKeyItem("Hentai Comic") >= 0) {
+		if(player.keyItems.has("Hentai Comic") >= 0) {
 			outputText("The incubus speaks to you with a calm, deep voice, \"<i>And so the insect, heedless of its path, stumbled directly into the spider's web.  Tiny insect... wait, what is that book you're carrying?  Is that hentai?  It IS!  Let me offer you a deal – I'm not really hungry or interested in fighting. So if you hand over the comic, I'll happily ignore your presence here. Though, I guess you could also just submit. Then I could put you to work and still get the comic.</i>\"", true);
 			simpleChoices("Fight",11031,"Trade",11034,"Submit",11033,"",0,"",0);
 		}
@@ -275,7 +275,7 @@ public function doDungeon(eventNo:Number):void {
 	if(eventNo == 11034) {
 		spriteSelect(30);
 		outputText("You hand over the Hentai Comic tentatively to the male sex demon.  As soon as he has it in his grubby mitts he sits down and starts thumbing through the pages, toying with his half-hard member the entire time.  He must really like porn.", true);
-		player.removeKeyItem("Hentai Comic");
+		player.keyItems.remove("Hentai Comic");
 		player.createStatusAffect(StatusAffects.IncubusBribed,0,0,0,0);
 		doNext(camp.campMenu);
 		return;
@@ -866,7 +866,7 @@ public function doDungeon(eventNo:Number):void {
 	//Take Supervisor's Key
 	if(eventNo == 11060) {
 		outputText("You search the desk and find a silver key labelled 'Supervisor'.\n\n(Supervisor's Key acquired!)", true);
-		player.createKeyItem("Supervisor's Key",0,0,0,0);
+		player.keyItems.create("Supervisor's Key",0,0,0,0);
 		doNext(camp.campMenu);
 		return;
 	}

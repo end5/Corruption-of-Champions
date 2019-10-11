@@ -799,7 +799,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
     public doubleStuffKath(): void { // Both Kath and Urta are drunk
         clearOutput();
         outputText("You ask your two " + (katherine.hasCock() ? "herms" : "lovers") + " if they want to go somewhere more private.\n\n");
-        const urtaHasHouse: boolean = player.hasKeyItem("Spare Key to Urta's House") >= 0;
+        const urtaHasHouse: boolean = player.keyItems.has("Spare Key to Urta's House") >= 0;
         outputText("Urta " + katherine.clothesLowerChoice("runs her hand up Kath’s thigh", "slides her hand under Kath’s skirt", "rubs the " + (katherine.hasCock() ? katherine.cockAdj() + "bulge in the " : "") + "crotch of Kath’s bodysuit", "slides her hand under Kath’s dress", "slides her hand between the folds of Kath’s robe") + " and says, “<i>That’s a good idea.  My " + (urtaHasHouse ? "old " : " ") + "apartment’s close enough.</i>”\n\n");
         flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT;
         outputText("It’s an interesting walk.  Both Urta and Kath need your support and both are horny.  They’re constantly groping and kissing you or each other.  When you get to Urta’s " + (urtaHasHouse ? "old " : " ") + "apartment the two " + (katherine.hasCock() ? "herms" : "girls") + " don’t even make it to the bed.  They crash to the floor and start tearing each other’s clothes off while you close the door.\n\n");

@@ -73,7 +73,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
         }
         if (player.lust >= 33 && player.gender > 0) {
             outputText("  Do you have your way with her or leave?", false);
-            const dildo: () => void = (player.hasKeyItem("Deluxe Dildo") >= 0 ? sharkGirlGetsDildoed : null);
+            const dildo: () => void = (player.keyItems.has("Deluxe Dildo") >= 0 ? sharkGirlGetsDildoed : null);
             if (player.gender == 1)
                 simpleChoices("Use Dick", sharkgirlDickFuck, "Pussy w/69", null, "Dildo Rape", dildo, "", null, "Leave", cleanupAfterCombat);
             else if (player.gender == 2) {

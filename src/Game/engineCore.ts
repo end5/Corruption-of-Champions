@@ -1421,7 +1421,7 @@ export function displayStats(e: MouseEvent = null): void {
 
     // Begin Combat Stats
     let combatStats: string = "";
-    if (player.hasKeyItem("Bow") >= 0)
+    if (player.keyItems.has("Bow") >= 0)
         combatStats += "<b>Bow Skill:</b> " + Math.round(player.statusAffectv1(StatusAffects.Kelt)) + "\n";
 
     combatStats += "<b>Lust Resistance:</b> " + (100 - Math.round(lustPercent())) + "% (Higher is better.)\n";

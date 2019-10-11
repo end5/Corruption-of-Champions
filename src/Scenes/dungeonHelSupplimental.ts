@@ -653,7 +653,7 @@ export function helDungeonPrisonerTalk(): void {
     }
     // [Prisoner] (Repeat)
     // [IF PC HAS HARPY KEY A & B]
-    else if (player.hasKeyItem("Harpy Key A") >= 0 && player.hasKeyItem("Harpy Key B") >= 0) {
+    else if (player.keyItems.has("Harpy Key A") >= 0 && player.keyItems.has("Harpy Key B") >= 0) {
         outputText("You smile as you approach Hakon the Salamander.  He starts to yell at you again, but you snap at him to hush.  You explain that Hel and Kiri are waiting outside and that the broodmother has been defeated.  Both sets of keys jingling in your hands.  He watches you approach silently, his eyes wary but hopeful.  You quickly undo his bonds, freeing him for the first time in years.  He struggles to sit, but nearly collapses. You catch him before he hurts himself and, throwing his arm over your shoulder, help the old salamander toward the stairs...");
         // (Go to DUNGEON END scene)
         doNext(towerOutro);
@@ -982,7 +982,7 @@ export function harpyQueenDefeatedByPC(): void {
     outputText("With a final, loud gasp, the Harpy Queen collapses into her throne, unable to oppose you further.  Seeing their broodmother defeated, the other harpies that had been swarming around the room suddenly break off their attack and retreat, edging back to the fringes of the throne room.  Behind you, Hel stumbles out of the melee, covered in little cuts and bruises, but seeming otherwise unhurt.");
     outputText("\n\n\"<i>Y-you'll ruin everything,</i>\" the Harpy Queen groans, trying futilely to stand.  Before she can recover, Hel walks over and plants her clawed foot right on the bitch's chest, pinning her down.  From a small hook on the side of the throne, you take her key-ring for the prisoner down below.");
     // (Acquired Key Item: \"<i>Harpy Key B</i>\")
-    player.createKeyItem("Harpy Key B", 0, 0, 0, 0);
+    player.keyItems.create("Harpy Key B", 0, 0, 0, 0);
     flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] = 1;
     // (PC moves to Throne Room Main Menu:)
     cleanupAfterCombat();

@@ -12,7 +12,7 @@ export class BeeGirl extends Monster {
             }
             player.lust = 98;
             dynStats("lus", 1);
-            const dildoRape: () => void = (player.hasKeyItem("Deluxe Dildo") >= 0 ? game.forest.beeGirlScene.beeGirlsGetsDildoed : null);
+            const dildoRape: () => void = (player.keyItems.has("Deluxe Dildo") >= 0 ? game.forest.beeGirlScene.beeGirlsGetsDildoed : null);
             const milkAndHoney: () => void = (player.findStatusAffect(StatusAffects.Feeder) >= 0 ? game.forest.beeGirlScene.milkAndHoneyAreKindaFunny : null);
             simpleChoices("Rape", game.forest.beeGirlScene.rapeTheBeeGirl, "Dildo Rape", dildoRape, "", null, "B. Feed", milkAndHoney, "Leave", leaveAfterDefeating);
         }

@@ -76,7 +76,7 @@ export class MilkWaifu extends NPCAwareContent {
 
             outputText("\n\n\"<i>Rat nice,</i>\" she mumbles, shifting her giant teats around beneath her.");
             // {Plot Item gained: "Super Reducto"}
-            player.createKeyItem("Super Reducto", 0, 0, 0, 0);
+            player.keyItems.create("Super Reducto", 0, 0, 0, 0);
             outputText("\n\n(<b>Key Item Acquired: Super Reducto</b>)");
         }
         // Arrival: Part 2 (No Rath)
@@ -108,7 +108,7 @@ export class MilkWaifu extends NPCAwareContent {
 
         outputText("\n\n\"<i>Rat nice,</i>\" she mumbles, shifting her giant teats around beneath her.");
         // {Plot Item gained: "Super Reducto"}
-        player.createKeyItem("Super Reducto", 0, 0, 0, 0);
+        player.keyItems.create("Super Reducto", 0, 0, 0, 0);
         outputText("\n\n(<b>Key Item Acquired: Super Reducto</b>)");
         doNext(playerMenu);
     }
@@ -155,7 +155,7 @@ export class MilkWaifu extends NPCAwareContent {
         addButton(0, "Appearance", milkWriteFuAppearance);
         if (flags[kFLAGS.MILK_SIZE] > 0) addButton(1, "Milk Time!", nyanCatMilkTime);
         if (flags[kFLAGS.MILK_SIZE] < 2) addButton(2, "Milk Bath", milkBathTime);
-        if (flags[kFLAGS.MILK_SIZE] < 2 && player.hasKeyItem("Super Reducto") >= 0) addButton(3, "Reducto", superReductoUsage);
+        if (flags[kFLAGS.MILK_SIZE] < 2 && player.keyItems.has("Super Reducto") >= 0) addButton(3, "Reducto", superReductoUsage);
         if (flags[kFLAGS.MILK_SIZE] > 0 && player.lust >= 33 && player.hasCock()) addButton(4, "Titfuck", titFuckDatMilkSlut);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0 && flags[kFLAGS.MILK_SIZE] > 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(5, "Farm Work", sendToFarm);

@@ -200,7 +200,7 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
         // (SUCCESS)
         if ((player.spe > 35 && (rand(player.spe / 3 + 30) > 20)) || (player.spe > 35 && player.findPerk(PerkLib.Evade) >= 0 && rand(3) < 2)) {
             outputText("You dart to the side, diving into a roll that brings you up behind the tree.  You evade the gauntlet of grabbing tentacles that hang from the branches, snatch the large gem in both arms and run for the beach.  You do not hear the sounds of pursuit, only a disappointed sigh.", false);
-            player.createKeyItem("Marae's Lethicite", 0, 0, 0, 0);
+            player.keyItems.create("Marae's Lethicite", 0, 0, 0, 0);
             doNext(camp.returnToCampUseOneHour);
         }
         // (FAIL)
@@ -277,7 +277,7 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
         outputText("You advance on the twisted, arboreal orgy with reluctant determination.  Marae wants you here, and there's no way back without dealing with the sex-intoxicated goddess.  Her long, languid moans make it easy to find her.  The delirious deity's arms are entwined through the roots of her trees while a green-patterned tentacle goes diving into the petal-lined entrance of her sloppy sex.  She cranes her neck back at the sound of your footfalls and asks, \"<i>", false);
         // (FORK HERE BETWEEN STOLE LETHICITE AND LAZY ASSHOLEZ)\"
         // (STOLE)
-        if (player.hasKeyItem("Marae's Lethicite") >= 0) {
+        if (player.keyItems.has("Marae's Lethicite") >= 0) {
             outputText("Welcome back, sneak-thief.  What kind of " + mf(player, "gentleman", "lady") + " is offered sex and then ransacks a god's soul?  Honestly, that right-right theeeeeree-oh yeah right there-is true depravity.</i>", false);
         }
         // (FAIL-STOLE)
