@@ -62,7 +62,7 @@ export class BimboLiqueur extends Consumable {
         else {
             outputText("You pop the cork from the flask and are immediately assaulted by a cloying, spiced scent that paints visions of a slutty slave-girl's slightly-spread folds.  Wow, this is some potent stuff!  Well, you knew what you were getting into when you found this bottle!  You open wide and guzzle it down, feeling the fire of alcohol burning a path to your belly.  The burning quickly fades to a pleasant warmth that makes you light-headed and giggly.\n\n");
             if (game.player.hairColor != "platinum blonde") {
-                outputText("The first change that you notice is to your " + game.player.hairDescript() + ".  It starts with a tingling in your scalp and intensifies ");
+                outputText("The first change that you notice is to your " + game.player.hairDescription(player) + ".  It starts with a tingling in your scalp and intensifies ");
                 if (game.player.hairLength < 36) {
                     outputText("as you feel the weight of your hair growing heavier and longer.");
                     game.player.hairLength = 36;

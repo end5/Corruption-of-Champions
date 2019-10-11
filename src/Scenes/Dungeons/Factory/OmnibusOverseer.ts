@@ -50,7 +50,7 @@ export class OmnibusOverseer extends Monster {
                 }
             }
             dynStats("lus", 7 + player.sens / 20);
-            if (player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript() + " in sympathy.");
+            if (player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript(player) + " in sympathy.");
         }
         combatRoundOver();
     }

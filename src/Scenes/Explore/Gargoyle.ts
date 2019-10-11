@@ -370,7 +370,7 @@ export class Gargoyle {
         outputText("\n\nThe two of you lay there for a while after, until your " + cockDescript(game.player, x) + " has deflated and you've both stopped panting from exertion and pleasure.  Giving her another kiss, you pull out of her cold depths – now significantly warmer thanks to your passion – and stuff your dick back into your armor.");
         if (gargoyleConfidence() >= 70) outputText("  Before you can stand, though, " + flags[kFLAGS.GAR_NAME] + " hugs her arms tightly around you pulling you down on top of her and mashing your face between her soft tits.");
 
-        outputText("\n\n\"<i>Thank you, Master,</i>\" she says, running a hand through your " + hairDescript() + ".  \"<i>That was wonderful.</i>\"");
+        outputText("\n\n\"<i>Thank you, Master,</i>\" she says, running a hand through your " + hairDescription(player) + ".  \"<i>That was wonderful.</i>\"");
 
         outputText("\n\nYou give her a pat on the head and head on back to camp.");
         player.orgasm();
@@ -703,7 +703,7 @@ export class Gargoyle {
         outputText("\n\nShe plays easily within you, running her cool appendage over your own tongue, letting it slide across your teeth and cheeks as she slides a hand down to your ");
         // if Male/Herm:
         if (player.hasCock()) outputText(cockDescript(game.player, 0));
-        else if (player.hasVagina()) outputText(vaginaDescript());
+        else if (player.hasVagina()) outputText(vaginaDescript(player));
         else outputText("barren crotch");
         outputText(".  She breaks the kiss and steps back, laying on one last time – CRACK! with the crop, stinging you again with an intense mix of pain and pleasure.  Gasping and panting from stimulation, you nearly collapse when " + flags[kFLAGS.GAR_NAME] + " unbinds you, though she's quick to catch you before you fall.");
 
@@ -733,7 +733,7 @@ export class Gargoyle {
 
         outputText("\n\nYou do as she so obviously wishes, and spread her legs to get a good look at her now-sopping wet slit. Her vagina seems small, but an experimental touch proves it to be quite malleable – and your single touch causes " + flags[kFLAGS.GAR_NAME] + " to arch her back, gasping with the sudden pleasure.  Smiling at the adorable, enraptured look on her face, you start lapping with a vengeance, grasping her thighs and burying your face between her legs.  You flick your tongue into her smooth, cool slit, lapping up a few drops of water with each flick of your dexterous tongue, and eliciting a gasp or moan each time.");
 
-        outputText("\n\nSoon, " + flags[kFLAGS.GAR_NAME] + " is clutching at her breasts and quickly fingering her cherry-nub clit as you lick her out, trying her best to keep an even rhythm with you, even as the waterfall comes to an end and you begin to feel light-headed, as if a fog has lifted from your mind.  By way of thanks, you redouble your efforts to pleasure her, ramming your tongue into her depths and fucking her mercilessly.  Quickly, she begins to tense, stopping her own actions to grasp at your " + hairDescript() + " and shove your face further into her crotch, locking her legs and tail around your back as she approaches orgasm.");
+        outputText("\n\nSoon, " + flags[kFLAGS.GAR_NAME] + " is clutching at her breasts and quickly fingering her cherry-nub clit as you lick her out, trying her best to keep an even rhythm with you, even as the waterfall comes to an end and you begin to feel light-headed, as if a fog has lifted from your mind.  By way of thanks, you redouble your efforts to pleasure her, ramming your tongue into her depths and fucking her mercilessly.  Quickly, she begins to tense, stopping her own actions to grasp at your " + hairDescription(player) + " and shove your face further into her crotch, locking her legs and tail around your back as she approaches orgasm.");
 
         outputText("\n\nScreaming, " + flags[kFLAGS.GAR_NAME] + " arches her back and thrusts out her bat-wings to their full expanse, clamping down on your tongue as she cums.  You slow your pace, giving her a last few licks as she pants, gasps, and moans, slowly coming down from an orgasmic high.  She collapses backwards, clutching her chest and staring into the rafters.  Chuckling, you stand and give her a pleased pat on the inner thigh, letting her know she did a good job for you.  You leave her smiling atop the altar, slowly getting her breath under control.");
         // (Return PC to camp, advance time 1 hour)

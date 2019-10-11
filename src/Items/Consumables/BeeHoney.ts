@@ -115,16 +115,16 @@ export class BeeHoney extends Consumable {
         if (changes < changeLimit && player.hairLength < 25 && rand(3) == 0) {
             outputText("\n\nFeeling a bit off-balance, you discover your hair has lengthened, ");
             player.hairLength += rand(4) + 1;
-            outputText("becoming " + hairDescript() + ".");
+            outputText("becoming " + hairDescription(player) + ".");
             changes++;
         }
         // -Remove extra breast rows
         if (changes < changeLimit && player.bRows() > 2 && rand(3) == 0 && !game.flags[kFLAGS.HYPER_HAPPY]) {
             changes++;
-            outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
+            outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
             if (player.bRows() >= 3) outputText("abdomen");
             else outputText("chest");
-            outputText(". The " + nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
+            outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ");
             if (player.skinType == CoC.SKIN_TYPE_FUR) outputText(player.hairColor + " " + player.skinDesc);
             else outputText(player.skinTone + " " + player.skinDesc);
             outputText(" remains. <b>You've lost a row of breasts!</b>");
@@ -133,7 +133,7 @@ export class BeeHoney extends Consumable {
         }
         // Antennae
         if (changes < changeLimit && player.antennae == CoC.ANTENNAE_NONE && player.horns == 0 && rand(3) == 0) {
-            outputText("\n\nYour head itches momentarily as two floppy antennae sprout from your " + hairDescript() + ".");
+            outputText("\n\nYour head itches momentarily as two floppy antennae sprout from your " + hairDescription(player) + ".");
             player.antennae = CoC.ANTENNAE_BEE;
             changes++;
         }
@@ -152,7 +152,7 @@ export class BeeHoney extends Consumable {
         }
         // -Nipples reduction to 1 per tit.
         if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
-            outputText("\n\nA chill runs over your " + allBreastsDescript() + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ");
+            outputText("\n\nA chill runs over your " + allBreastsDescript(player) + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ");
             if (player.biggestTitSize() < 1) outputText("'breast'.");
             else outputText("breast.");
             changes++;
@@ -170,8 +170,8 @@ export class BeeHoney extends Consumable {
         }
         // Bee butt - 66% lower chance if already has a tail
         if (changes < changeLimit && player.tailType != CoC.TAIL_TYPE_BEE_ABDOMEN && (player.tailType == CoC.TAIL_TYPE_NONE || rand(1.5) == 0) && rand(4) == 0) {
-            if (player.tailType > CoC.TAIL_TYPE_NONE) outputText("\n\nPainful swelling just above your " + buttDescript() + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
-            else outputText("\n\nPainful swelling just above your " + buttDescript() + " doubles you over.  It gets worse and worse as the swollen lump begins to protrude from your backside, swelling and rounding with a series of pops until you have a bulbous abdomen hanging just above your butt.  The whole thing is covered in a hard chitinous material, and large enough to be impossible to hide.  You sigh as your stinger slides into place with a 'snick', finishing the transformation.  <b>You have a bee's abdomen.</b>");
+            if (player.tailType > CoC.TAIL_TYPE_NONE) outputText("\n\nPainful swelling just above your " + buttDescription(player) + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
+            else outputText("\n\nPainful swelling just above your " + buttDescription(player) + " doubles you over.  It gets worse and worse as the swollen lump begins to protrude from your backside, swelling and rounding with a series of pops until you have a bulbous abdomen hanging just above your butt.  The whole thing is covered in a hard chitinous material, and large enough to be impossible to hide.  You sigh as your stinger slides into place with a 'snick', finishing the transformation.  <b>You have a bee's abdomen.</b>");
             player.tailType = CoC.TAIL_TYPE_BEE_ABDOMEN;
             player.tailVenom = 10;
             player.tailRecharge = 2;

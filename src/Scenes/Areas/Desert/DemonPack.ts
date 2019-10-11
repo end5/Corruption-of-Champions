@@ -54,7 +54,7 @@ export class DemonPack extends Monster {
             }
             if (player.vaginas.length > 0) {
                 if (!player.hasCock()) outputText("Your ", false);
-                outputText(vaginaDescript(0) + " burns ", false);
+                outputText(vaginaDescript(player, 0) + " burns ", false);
             }
             outputText("with arousal.  You make a grab for the nearest demon and catch a handful of jiggly breast. You try desperately to use your other arm to pull her closer to slake your thirst but you both go tumbling to the ground. The demonic leader laughs out loud and the rest of the tribe falls on you, grabbing for anything it can find.", false);
             doNext(game.desert.oasis.oasisSexing);

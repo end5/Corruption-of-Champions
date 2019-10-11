@@ -38,7 +38,7 @@ export class AbstractSuccubus extends Monster {
                     player.takeDamage(int((player.maxHP()) / 4));
                 }
                 if (player.gender == 2) {
-                    outputText("groin, making your " + vaginaDescript(0) + " sting with pain (-10)", false);
+                    outputText("groin, making your " + vaginaDescript(player, 0) + " sting with pain (-10)", false);
                     player.takeDamage(10);
                     dynStats("lus", -8);
                 }
@@ -134,7 +134,7 @@ export class AbstractSuccubus extends Monster {
             if (breastRows.length > 1) {
                 // 50 + 10% per breastRow + breastSize%
                 outputText(capitalA + short + " caresses " + pronoun2 + " some of her rows of ample chest-flesh before shaking it all from side to side enticingly.", false);
-                if (lust >= 50) outputText(", your " + nippleDescript(0) + "s painfully visible.", false);
+                if (lust >= 50) outputText(", your " + nippleDescription(player, 0) + "s painfully visible.", false);
                 else outputText(".", false);
                 if (rand(100) <= (54 + (breastRows.length - 1) * 15 + breastRows[0].breastRating)) {
                     dynStats("lus", rand(breastRows[0].breastRating) + breastRows.length * breastRows[0].breasts + 5);

@@ -1748,38 +1748,38 @@ export class TelAdre {
 
         // If butt is over 15 guaranteed reduction
         if (player.buttRating >= 15) {
-            outputText("\n\nAll that running must have done some good, because your " + buttDescript() + " feels a little less bouncy.", false);
+            outputText("\n\nAll that running must have done some good, because your " + buttDescription(player) + " feels a little less bouncy.", false);
             player.buttRating--;
         }
         else {
             if (player.buttRating >= 10 && rand(3) == 0) {
-                outputText("\n\nThe jogging really helped trim up your " + buttDescript() + ".", false);
+                outputText("\n\nThe jogging really helped trim up your " + buttDescription(player) + ".", false);
                 player.buttRating--;
             }
             else if (player.buttRating >= 5 && rand(3) == 0) {
-                outputText("\n\nYour " + buttDescript() + " seems to have gotten a little bit more compact from the work out.", false);
+                outputText("\n\nYour " + buttDescription(player) + " seems to have gotten a little bit more compact from the work out.", false);
                 player.buttRating--;
             }
             else if (player.buttRating > 1 && rand(4) == 0) {
-                outputText("\n\nYour " + buttDescript() + " seems to have gotten a little bit more compact from the work out.", false);
+                outputText("\n\nYour " + buttDescription(player) + " seems to have gotten a little bit more compact from the work out.", false);
                 player.buttRating--;
             }
         }// If hips is over 15 guaranteed reduction
         if (player.hipRating >= 15) {
-            outputText("\n\nIt feels like your " + hipDescript() + " have shed some pounds and narrowed.", false);
+            outputText("\n\nIt feels like your " + hipDescription(player) + " have shed some pounds and narrowed.", false);
             player.hipRating--;
         }
         else {
             if (player.hipRating >= 10 && rand(3) == 0) {
-                outputText("\n\nIt feels like your " + hipDescript() + " have shed some pounds and narrowed.", false);
+                outputText("\n\nIt feels like your " + hipDescription(player) + " have shed some pounds and narrowed.", false);
                 player.hipRating--;
             }
             else if (player.hipRating >= 5 && rand(3) == 0) {
-                outputText("\n\nIt feels like your " + hipDescript() + " have shed some pounds and narrowed.", false);
+                outputText("\n\nIt feels like your " + hipDescription(player) + " have shed some pounds and narrowed.", false);
                 player.hipRating--;
             }
             else if (player.hipRating > 1 && rand(4) == 0) {
-                outputText("\n\nIt feels like your " + hipDescript() + " have shed some pounds and narrowed.", false);
+                outputText("\n\nIt feels like your " + hipDescription(player) + " have shed some pounds and narrowed.", false);
                 player.hipRating--;
             }
         }
@@ -1848,7 +1848,7 @@ export class TelAdre {
         outputText(" and smooching your belly.  Even with her racially characteristic flexibility, however, she's not able to get any lower from that angle.  \"<i>Hold this, dear,</i>\" she says somewhat snarkily, pivoting around and resting her ass against your " + chestDesc(game.player) + ".  In this new posture, Yara can easily have her way with your junk, and by the way her wagging tail keeps bopping you in the face you can tell she's excited.\n\n", false);
 
         outputText("Not content with simple penetration, it seems, the cat girl gets to work.", false);
-        if (player.balls > 0) outputText("  Her dexterous fingertips brush against your " + ballsDescriptLight() + ", light and fluttery strokes that send shivers coursing through you.  The near-lack of contact is at least as titillating as the less-subtle Marethians you've come across.", false);
+        if (player.balls > 0) outputText("  Her dexterous fingertips brush against your " + ballsDescriptLight(player) + ", light and fluttery strokes that send shivers coursing through you.  The near-lack of contact is at least as titillating as the less-subtle Marethians you've come across.", false);
         outputText("  She scoots forward a bit, dragging her soaking cunt down your chest in an effort to reach your crotch.\n\n", false);
 
         // male
@@ -1880,12 +1880,12 @@ export class TelAdre {
         else {
             outputText("A duo of errant forefingers run along the perimeter of your feminine fortress, your signal to prepare for a siege.  Yara reaches down off the side of your seat, pushing on a lever that sends the back of the chair down to about a 30º angle.  She grasps for the armrests of the chair next, promptly lifting her body up and going into what looks like a forward somersault.  Before you can complement the feat, her legs fly up either side of your head.   The only things to have made contact were her nimble feet, gently stroking their way up from your belly, past your chest, off of your shoulders and soaring beyond the back of the chair.  The feline acrobat calls for you to lay your hands open at the sides of the chair, an order you fulfill with due haste.  She wastes no time in seizing your upper arms, causing her body to slide forward off of you.  You return the favor by clasping onto her as well in the same manner, stopping her descent.\n\n", false);
 
-            outputText("Trying to parse out the scene at play here is a fool's errand.  Yara must have done this before as your two sprawled out bodies have stopped in just the right fashion to make both of your fleshy orifices in plain view of one another's faces.  Air escapes your pursed lips as the \"<i>quality testing</i>\" commences on your " + vaginaDescript() + ", your kitty comrade going in tongue first towards your silken fringes.  ", false);
+            outputText("Trying to parse out the scene at play here is a fool's errand.  Yara must have done this before as your two sprawled out bodies have stopped in just the right fashion to make both of your fleshy orifices in plain view of one another's faces.  Air escapes your pursed lips as the \"<i>quality testing</i>\" commences on your " + vaginaDescript(player) + ", your kitty comrade going in tongue first towards your silken fringes.  ", false);
             if (player.wetness() >= 3) outputText("She may as well be licking a melting popsicle with how wet your snatch is.", false);
             else outputText("Your relatively dry perimeter makes for an easy target.", false);
             outputText("  Not to be outdone, your ambitious tongue moves in as if it has everything to prove, mirroring your partner's efforts. Both of your lapping endeavors are periodically interrupted by moaning or slight gasps, your grasps on one another only growing more tense.\n\n", false);
 
-            outputText("Yara looks up - down in her case - at your " + clitDescript() + ", your feminine fragrance riling her up as if it were catnip. Your work on her box is interrupted as your pleasure buzzer gets the oral shebang of a lifetime, eliciting a knowing laugh from deep within your teammate's throat.  Yara's lucky you redouble your clamp on her arms rather than sending the poor woman sliding to the ground as your body writhes in satisfaction.  But this is war, and you'll be damned if you're weak enough to go straight for the crown jewel as she has. No, you go to town, redefining what it means to eat out a pussy.  Your laborious toil is rewarded as the kitten's assault on your button eases up.  Her hold begins to waver, however, forcing you to yank your prey towards you.  The movement pierces through her contentment, her armlock strengthening as the air fills with the sound of a duo of muffled moans.\n\n", false);
+            outputText("Yara looks up - down in her case - at your " + clitDescription(player) + ", your feminine fragrance riling her up as if it were catnip. Your work on her box is interrupted as your pleasure buzzer gets the oral shebang of a lifetime, eliciting a knowing laugh from deep within your teammate's throat.  Yara's lucky you redouble your clamp on her arms rather than sending the poor woman sliding to the ground as your body writhes in satisfaction.  But this is war, and you'll be damned if you're weak enough to go straight for the crown jewel as she has. No, you go to town, redefining what it means to eat out a pussy.  Your laborious toil is rewarded as the kitten's assault on your button eases up.  Her hold begins to waver, however, forcing you to yank your prey towards you.  The movement pierces through her contentment, her armlock strengthening as the air fills with the sound of a duo of muffled moans.\n\n", false);
 
             outputText("Judging by the contortionist's wobbly embrace, you decide it's the perfect time to go in for the kill.  Yara stands no chance as you pounce for her pierced clit, your tongue lodging itself between the loop and her love-button.  It takes all of her willpower to maintain the offensive on your nub nexus while standing firm in her grasp on your arms.  Your oral tugging and teasing proves to be the victor, however, marked by the femspunk making its way right onto your face.  The cocktail combined with the orgasmic-enhanced last ditch effort by Yara on your nether regions triggers your own satisfying outburst.  The chain reaction ends in both your couplings faltering, sending the feline sliding headfirst for the floor.\n\n", false);
 

@@ -771,14 +771,14 @@ export class Rubi extends TelAdreAbstractContent {
         clearOutput();
         rubiSprite();
         // (-100 Arousal)
-        outputText("You take Rubi by the hand and head into the bedroom, clutching [rubi em] close.  You sit on the edge of the soft fluffy bed and pull the little demon " + rubiMF("boy", "girl") + " onto your lap.  The two of you kiss, letting your " + tongueDescript() + " explore the depths of your partner's mouth.");
+        outputText("You take Rubi by the hand and head into the bedroom, clutching [rubi em] close.  You sit on the edge of the soft fluffy bed and pull the little demon " + rubiMF("boy", "girl") + " onto your lap.  The two of you kiss, letting your " + tongueDescription(player) + " explore the depths of your partner's mouth.");
         outputText("\n\nRunning your hands along Rubi's body, you pull and tear at the clothes keeping you apart.  Garments fly as you ravish each other, and it isn't long before you're both naked, with Rubi straddling your waist.  " + rubiMF("He giggles and reaches between his legs", "She giggles and reaches between her legs") + ", wrapping slender fingers around your ");
         if (player.hasCock()) {
             // trace("Rubi - PlayerHasCock");
             outputText(cockDescript(game.player, x), false);
         }
         else
-            outputText(clitDescript(), false);
+            outputText(clitDescription(player), false);
         outputText(".");
 
         let size: number = 0;
@@ -886,9 +886,9 @@ export class Rubi extends TelAdreAbstractContent {
             else outputText("with a veritable torrent of potent pearlescent spooge.");
         }
         // (Player has clit?)
-        else outputText("  Your " + clitDescript() + " throbs and engorges briefly as your " + vaginaDescript(0) + " reflexively contracts and a warm feeling rocks through your entire body.  Femjuices run down your [legs] and relief overtakes you like a powerful wave upon a beach.");
+        else outputText("  Your " + clitDescription(player) + " throbs and engorges briefly as your " + vaginaDescript(player, 0) + " reflexively contracts and a warm feeling rocks through your entire body.  Femjuices run down your [legs] and relief overtakes you like a powerful wave upon a beach.");
 
-        outputText("\n\nYou stumble backwards, pulling your " + cockClit(x) + " out of Rubi and collapse on the bed next to [rubi em].  [rubi Ey] cuddles up next to you, in a mixed puddle of spunk, and hugs you close.  \"<i>That was ");
+        outputText("\n\nYou stumble backwards, pulling your " + cockClit(player, x) + " out of Rubi and collapse on the bed next to [rubi em].  [rubi Ey] cuddles up next to you, in a mixed puddle of spunk, and hugs you close.  \"<i>That was ");
         if (rubiBimbo() && flags[kFLAGS.RUBI_DEBIMBO] == 0) outputText("like, totally ");
         else outputText("absolutely ");
         outputText("fantastic babe,</i>\" [rubi ey] murmurs before drifting off into a sex-filled dreamland.");
@@ -940,7 +940,7 @@ export class Rubi extends TelAdreAbstractContent {
 
         outputText("\n\nYou also lie down, and align the other end with your [vagOrAss], and slip it inside.  Warmth radiates outwards as the drug takes full effect, your whole body becoming aroused.");
         // (If player has pussy)
-        if (player.hasVagina()) outputText("  Your " + clitDescript() + " stiffens, aching for attention.  It peeks from your folds like a shy little lewd faerie.");
+        if (player.hasVagina()) outputText("  Your " + clitDescription(player) + " stiffens, aching for attention.  It peeks from your folds like a shy little lewd faerie.");
         // (If player has a cock)
         if (player.hasCock()) outputText("  Meanwhile, [eachCock] stiffens, throbbing as the drug overtakes it.");
         if (player.lactationQ() > 0) outputText("  As the warmth spreads up your body, not even your breasts are left alone.  Your nipples harden and begin leaking milk, which pours down the sides of your body and is soaked up into the cushions beneath you.");
@@ -968,7 +968,7 @@ export class Rubi extends TelAdreAbstractContent {
         // (PC has cock?)
         if (player.hasCock()) outputText("[eachCock], stroking it fervently, in desperate need of release.");
         // (PC doesn't have cock, but has pussy?)
-        else if (player.hasVagina()) outputText("your " + clitDescript() + ", rubbing it frantically, in desperate need of release.");
+        else if (player.hasVagina()) outputText("your " + clitDescription(player) + ", rubbing it frantically, in desperate need of release.");
         // (PC doesn't have either, but breasts above A-cup?)
         else outputText("your [chest], rubbing your nipples vigorously, in desperate need of release.");
         // (Bonus, fuckable nipples?)
@@ -987,7 +987,7 @@ export class Rubi extends TelAdreAbstractContent {
             outputText(".");
         }
         // (PC has pussy?)
-        if (player.hasVagina()) outputText("  Your " + vaginaDescript(0) + " clenches down on the enormous invader, which at this point feels like an enormous steel rod lodged firmly inside you, and a spray of fem-juices erupts from your nethers, coating the already slick dildo and Rubi.");
+        if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " clenches down on the enormous invader, which at this point feels like an enormous steel rod lodged firmly inside you, and a spray of fem-juices erupts from your nethers, coating the already slick dildo and Rubi.");
         // (PC lactating?)
         if (player.lactationQ() > 0) outputText("  Your breasts shudder and quake as the orgasmic tsunami washes over them, spraying your sweet smelling milk all over yourself, Rubi and the couch.");
 
@@ -1230,7 +1230,7 @@ export class Rubi extends TelAdreAbstractContent {
         outputText("\n\nMaking your way back to the front window with shaking knees, you see the wolfman's glistening red canine cock just slide right inside Rubi's eager hole.  Her mouth opens, and you can just imagine the low moan that rumbles out, since you've heard her make that noise on several occasions.  A small pang of jealousy arises within you that this man gives her the same reaction.  As Rubi's wolfish lover begins to assail this new territory, more \"<i>oohs</i>\" and \"<i>aahs</i>\" roll out of her mouth and into your imagination.  You're a little ashamed of yourself, but you have to admit this is turning you on.");
         if (!player.isTaur()) {
             outputText("\n\nAs the lovemaking continues, you find your hand descending into your [armor] to fondle ");
-            if (player.hasVagina()) outputText("your " + vaginaDescript());
+            if (player.hasVagina()) outputText("your " + vaginaDescript(player));
             else if (player.hasCock()) outputText("[eachCock]");
             outputText(".  ");
         }

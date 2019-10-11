@@ -298,7 +298,7 @@ export class Salon implements TimeAwareInterface {
         player.slimeFeed();
         outputText("Your eyes are drawn to the huge minotaur cock, and you instinctively kneel down in front of it.\n\n", true);
         outputText("It's the largest available member in the room by a considerable margin, and from your position on your knees, it looks even more massive; it's over two feet long, and has three rings of prepuce spaced around its length. You can just barely span your entire hand around its thickness. You open your mouth wide and lean forward, taking the thick, spongy head into your mouth. The taste is incredibly strong, and its musk is as thick as the minotaur's dick itself. You moan in pleasure, and start bobbing your head back and forth, taking more and more of the dick into your mouth. You stroke the rest of the cock in time with your sucking. You can hear muffled grunting and snorting coming from the other side of the wall, obvious sounds of approval from your partner.\n\n", false);
-        outputText("Driven on by the minotaur's reactions, you take more and more of the minotaur cock into your mouth. As you work your mouth around the first ring, you open up the top section of your " + player.armorName + ", freeing up your " + allBreastsDescript() + ". With each pass, you're able to take more and more of the bull dick down your throat. You caress your " + biggestBreastSizeDescript(player) + " while moaning around the dick. When you get your mouth around the second ring, the minotaur's cock throbs sharply, and his cum explodes in your mouth. Your eyes bulge in shock, and you pull off the cock as quickly as you can. You swallow the first several shots of thick, rich minotaur cum, while the rest shoots all over your face and tits. You ");
+        outputText("Driven on by the minotaur's reactions, you take more and more of the minotaur cock into your mouth. As you work your mouth around the first ring, you open up the top section of your " + player.armorName + ", freeing up your " + allBreastsDescript(player) + ". With each pass, you're able to take more and more of the bull dick down your throat. You caress your " + biggestBreastSizeDescript(player) + " while moaning around the dick. When you get your mouth around the second ring, the minotaur's cock throbs sharply, and his cum explodes in your mouth. Your eyes bulge in shock, and you pull off the cock as quickly as you can. You swallow the first several shots of thick, rich minotaur cum, while the rest shoots all over your face and tits. You ");
         if (player.biggestTitSize() > 1) outputText("hold up ");
         else outputText("arch your back to expose ");
         outputText("your [chest] as cum rains down upon you. By the time his orgasm stops and his dick goes limp, your face and [chest] are covered in a thick layer of spooge.\n\n", false);
@@ -338,9 +338,9 @@ export class Salon implements TimeAwareInterface {
             salonPurchaseMenu();
             return;
         }
-        outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescript() + ".  When they've finished, you're left with ", true);
+        outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescription(player) + ".  When they've finished, you're left with ", true);
         player.hairLength = 1;
-        outputText(hairDescript() + ".", false);
+        outputText(hairDescription(player) + ".", false);
         doNext(camp.returnToCampUseOneHour);
     }
     private cutMedium(): void {
@@ -351,9 +351,9 @@ export class Salon implements TimeAwareInterface {
             salonPurchaseMenu();
             return;
         }
-        outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescript() + ".  When they've finished, you're left with ", true);
+        outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescription(player) + ".  When they've finished, you're left with ", true);
         player.hairLength = 10;
-        outputText(hairDescript() + ".", false);
+        outputText(hairDescription(player) + ".", false);
         doNext(camp.returnToCampUseOneHour);
     }
     private cutLong(): void {
@@ -364,9 +364,9 @@ export class Salon implements TimeAwareInterface {
             salonPurchaseMenu();
             return;
         }
-        outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescript() + ".  When they've finished, you're left with ", true);
+        outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescription(player) + ".  When they've finished, you're left with ", true);
         player.hairLength = 25;
-        outputText(hairDescript() + ".", false);
+        outputText(hairDescription(player) + ".", false);
         doNext(camp.returnToCampUseOneHour);
     }
     private hairGrow(): void {
@@ -444,7 +444,7 @@ export class Salon implements TimeAwareInterface {
 
         outputText("The beast who kept your left hand so busy repositions himself at the now-vacant opening, and you decide to reward him for moving so quickly.  You lick the last of the salty cream from your lips and muse that he isn't the only one getting a reward, but the monstrous cow-man doesn't need to know that.", false);
         if (player.biggestTitSize() >= 2) {
-            outputText("  You wrap the pillowy flesh of your " + allBreastsDescript() + " around the new member, pleasantly surprised by its girth and wide, already-flared tip.  Maybe you could have gotten him off with your hands after all?  ", false);
+            outputText("  You wrap the pillowy flesh of your " + allBreastsDescript(player) + " around the new member, pleasantly surprised by its girth and wide, already-flared tip.  Maybe you could have gotten him off with your hands after all?  ", false);
             if (player.biggestTitSize() < 6) outputText("Even so, you can't quite get your breasts the entire way around him, so you make up for it by pressing it harder into you with your busy hands.  ", false);
             outputText("Runnels of pre cover the shaft and squish wetly between your tits, turning your body into a slip-n-slide that reeks of hot, sticky minotaur sex.", false);
         }
@@ -457,17 +457,17 @@ export class Salon implements TimeAwareInterface {
         if (player.biggestTitSize() >= 2) outputText("tit-fucking ", false);
         else outputText("full-body handjob ", false);
         outputText("you're giving out.  In such a position, you're given the perfect view to watch as your strokes draw forth large bubbles of pre, and before you can lose your high, you latch onto the minotaur's vulnerable urethra and suck, tonguing in wide circles around it since you can't open wide enough to accommodate his flare.  Of course, all the attention just makes him flare wider, not just at the tip, but through the whole shaft.  ", false);
-        if (player.biggestTitSize() >= 2) outputText("The sudden girth change sends an enticing ripple through your " + allBreastsDescript() + " that's pleasurable enough to make you moan into his steadily-widening urethra.  ", false);
+        if (player.biggestTitSize() >= 2) outputText("The sudden girth change sends an enticing ripple through your " + allBreastsDescript(player) + " that's pleasurable enough to make you moan into his steadily-widening urethra.  ", false);
         outputText("You pull off and bounce faster, lost to your lust and the haze of sex-musk permeating the air, intent on seeing just how much this huge stud can spray onto you.\n\n", false);
 
-        outputText("The minotaur does not disappoint.  His hole dilates from the size of the approaching cum-blast, and you sink down his shaft slowly until it's aimed directly at your face.  You close your eyes and feel the first explosion splatter over your " + hairDescript() + " and forehead.  The next takes you full in the face, making it difficult to breathe through the mask of drug-like goo, but a few quick licks gives you a fix and makes it easy to breathe again.  On and on, the minotaur pumps fat ropes of spooge over your body until you're a syrupy, sticky mess that reeks of minotaur pheromones so strongly that dizziness overwhelms you and you fall free of the still-orgasming mino-cock, taking a few final blasts of seed on your " + chestDesc(game.player) + " and crotch.  Your hands instinctively shovel a few loads into your " + assholeOrPussy(player), false);
+        outputText("The minotaur does not disappoint.  His hole dilates from the size of the approaching cum-blast, and you sink down his shaft slowly until it's aimed directly at your face.  You close your eyes and feel the first explosion splatter over your " + hairDescription(player) + " and forehead.  The next takes you full in the face, making it difficult to breathe through the mask of drug-like goo, but a few quick licks gives you a fix and makes it easy to breathe again.  On and on, the minotaur pumps fat ropes of spooge over your body until you're a syrupy, sticky mess that reeks of minotaur pheromones so strongly that dizziness overwhelms you and you fall free of the still-orgasming mino-cock, taking a few final blasts of seed on your " + chestDesc(game.player) + " and crotch.  Your hands instinctively shovel a few loads into your " + assholeOrPussy(player), false);
         if (player.hasVagina()) outputText(" while the animal part of your brain hopes it makes you pregnant with an equally girthy son", false);
         outputText(".\n\n", false);
         // ADD PREG CHECK
         // Preggers chance!
         player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR, 70);
 
-        outputText("Giggling, you stagger over to the next cock in line and turn around, possessed with the idea of taking its spooge in the most direct way possible – anally.   You pull your butt-cheeks apart and lean back, surprising one of the horny beasts with the warmth of your " + assholeDescript() + " as you slowly relax, spreading over his flare.  He actually squirts ropes of something inside of you, but you've been around minotaurs enough to know that it can't be cum, at least not yet.  The slippery gouts of preseed make it nice and easy to rock back and spear yourself on the first few inches, ", false);
+        outputText("Giggling, you stagger over to the next cock in line and turn around, possessed with the idea of taking its spooge in the most direct way possible – anally.   You pull your butt-cheeks apart and lean back, surprising one of the horny beasts with the warmth of your " + assholeDescript(player) + " as you slowly relax, spreading over his flare.  He actually squirts ropes of something inside of you, but you've been around minotaurs enough to know that it can't be cum, at least not yet.  The slippery gouts of preseed make it nice and easy to rock back and spear yourself on the first few inches, ", false);
         if (player.analCapacity() < 80) {
             outputText("delighting in the drug-numbed pain of stretching yourself beyond your normal capacity.", false);
         }
@@ -476,7 +476,7 @@ export class Salon implements TimeAwareInterface {
         // (buttchange here: 90)
         player.buttChange(90, true, false);
 
-        outputText("\n\nYou slide down the twitching bull-shaft until your " + buttDescript() + " slaps the wall, and you draw slowly away, but you push back harder, turned into a lewd, wanting whore by the massive quantity of minotaur seed in your belly, on your skin, and fogging up the air.  The beast pulls out and you whine plaintively, feeling empty and useless until he plunges back inside and reminds you of your purpose.  He starts to fuck you hard, not caring for your pleasure at all, slamming his horse-cock deep and fast.  Each of his three rings of prepuce ", false);
+        outputText("\n\nYou slide down the twitching bull-shaft until your " + buttDescription(player) + " slaps the wall, and you draw slowly away, but you push back harder, turned into a lewd, wanting whore by the massive quantity of minotaur seed in your belly, on your skin, and fogging up the air.  The beast pulls out and you whine plaintively, feeling empty and useless until he plunges back inside and reminds you of your purpose.  He starts to fuck you hard, not caring for your pleasure at all, slamming his horse-cock deep and fast.  Each of his three rings of prepuce ", false);
         if (!player.hasCock()) outputText("drags through your body, touching sensitive nerves you didn't even know you had until you cum, shuddering and shaking like a wanton whore.", false);
         else outputText("presses on your prostate as it squeezes by, making " + sMultiCockDesc(game.player) + " drip and spurt freely until you can bear it no longer and cum, shaking and shuddering like a wanton whore.  Jizz drips and pours from " + sMultiCockDesc(game.player) + " in a steady stream that pools on the floor, slowly rolling towards a drain that doubtless empties into a tank or greedy goblin cunt.", false);
         outputText("\n\n", false);

@@ -937,9 +937,9 @@ export function fuckNieve(): void {
         if (x <= 0 && player.hasVagina() && player.clitLength >= 3.5 && rand(2) == 0) x = -1;
         else x = player.smallestCockIndex();
     }
-    outputText("You look your naked, icy lover up and down, thinking of all the things you could do to her.  She raises a white eyebrow at you curiously while you take in her statuesque form.  A thin layer of frost covers her flesh, giving her pale blue skin a sparkling, shimmering appearance.  You find yourself getting aroused at all the potentialities.  Your " + cockClit(x) + " rises to attention as you ponder it, and with a smirk, you finally settle on something.");
+    outputText("You look your naked, icy lover up and down, thinking of all the things you could do to her.  She raises a white eyebrow at you curiously while you take in her statuesque form.  A thin layer of frost covers her flesh, giving her pale blue skin a sparkling, shimmering appearance.  You find yourself getting aroused at all the potentialities.  Your " + cockClit(player, x) + " rises to attention as you ponder it, and with a smirk, you finally settle on something.");
 
-    outputText("\n\nFirst you disrobe, tossing your clothes aside, and order Nieve onto her knees.  She does so immediately, and without needing to be told what to do, she leans in and grasps your " + cockClit(x) + " with one hand.  Like the rest of her, Nieve's hands are freezing cold, and though it's a strange sensation at first, it's not at all painful or uncomfortable.  \"<i>Allow me, [Master],</i>\" she says, licking the tip of your " + cockClit(x) + " with a wet, cold \"<i>schlick</i>\" that makes you shiver.");
+    outputText("\n\nFirst you disrobe, tossing your clothes aside, and order Nieve onto her knees.  She does so immediately, and without needing to be told what to do, she leans in and grasps your " + cockClit(player, x) + " with one hand.  Like the rest of her, Nieve's hands are freezing cold, and though it's a strange sensation at first, it's not at all painful or uncomfortable.  \"<i>Allow me, [Master],</i>\" she says, licking the tip of your " + cockClit(player, x) + " with a wet, cold \"<i>schlick</i>\" that makes you shiver.");
 
     outputText("\n\nNot wasting any time, she takes the whole tip into her mouth, swirling her tongue around it with practiced ease.");
     // (If small cock/clit (<6):
@@ -954,7 +954,7 @@ export function fuckNieve(): void {
         else if (player.clitLength >= 24) outputText("  She has to take a breath almost immediately, saying, \"<i>By the fat man's beard this thing is huge.  You must make the rest of this world jealous.</i>\"");
         else outputText("  \"<i>Mmm,</i>\" she smacks her lips and takes a quick breath, \"<i>Such a nice example of a candycane right here.  Let's go in for another taste.</i>\"");
     }
-    outputText("  And with that she dives back down onto your " + cockClit(x) + ".  Her head bobs and bows, giving the sensation of an icecube running up and down your ");
+    outputText("  And with that she dives back down onto your " + cockClit(player, x) + ".  Her head bobs and bows, giving the sensation of an icecube running up and down your ");
     if (x >= 0) outputText("dick");
     else outputText("clit");
     outputText(" at great speed.");
@@ -1008,8 +1008,8 @@ export function fuckNieve(): void {
         else outputText("I bet even men get jealous of this bad girl");
         outputText(".</i>\"");
     }
-    outputText("\n\nEventually you just can't handle anymore and your body tenses.  Your legs lock up, " + cockClit(x) + " trembling, back arching slightly. Nieve notices this and latches on to the tip just in time as an orgasm rocks your body.");
-    if (x >= 0) outputText("  Your " + cockClit(x) + " quivers and spurts cum directly into Nieve's eager mouth, who gulps it down as if she were drinking direct from the tap.");
+    outputText("\n\nEventually you just can't handle anymore and your body tenses.  Your legs lock up, " + cockClit(player, x) + " trembling, back arching slightly. Nieve notices this and latches on to the tip just in time as an orgasm rocks your body.");
+    if (x >= 0) outputText("  Your " + cockClit(player, x) + " quivers and spurts cum directly into Nieve's eager mouth, who gulps it down as if she were drinking direct from the tap.");
     outputText("\n\nAs you come down from your little orgasmic high, you glance down at the ice woman, ");
     if (x < 0 || player.cumQ() <= 250) outputText("who has a bit of cum dribbling down her chin");
     else if (player.cumQ() <= 400) outputText("who has a steady stream of cum pouring from her mouth");
@@ -1018,12 +1018,12 @@ export function fuckNieve(): void {
     else outputText("whose stomach is rather large, like a pregnant woman's, from the sheer amount of cum you've pumped into her gullet");
     outputText(".  With a smirk, you tell her it's not over yet.  That was just the appetizer.");
 
-    outputText("\n\nWith a command Nieve falls backwards into the white, glittering powder and spreads her legs, revealing her deep blue nethers, wet and slick despite the intense cold of her body.  With a smile spreading across your face, you get down onto your knees between hers, and rub the head of your " + cockClit(x) + " against her icy cavern.  A chill runs down it and up your spine, but you ignore it. You tease and taunt Nieve's cunt, flicking her joy buzzer ");
+    outputText("\n\nWith a command Nieve falls backwards into the white, glittering powder and spreads her legs, revealing her deep blue nethers, wet and slick despite the intense cold of her body.  With a smile spreading across your face, you get down onto your knees between hers, and rub the head of your " + cockClit(player, x) + " against her icy cavern.  A chill runs down it and up your spine, but you ignore it. You tease and taunt Nieve's cunt, flicking her joy buzzer ");
     if (x >= 0) outputText("with your " + cockDescript(game.player, x) + "");
     else outputText("with yours");
     outputText(", and just slipping the tip in before pulling out.  You do this until your snowbound lover is biting her lip, squirming with barely contained pleasure.");
 
-    outputText("\n\nRight as she begins to open her mouth, to beg you to just stop it and fuck her, you slip your " + cockClit(x) + " in ");
+    outputText("\n\nRight as she begins to open her mouth, to beg you to just stop it and fuck her, you slip your " + cockClit(player, x) + " in ");
     // (if too big:
     if (x >= 0) {
         if (player.cockArea(x) >= 130) outputText("at least as far as it will go, ");
@@ -1039,14 +1039,14 @@ export function fuckNieve(): void {
         // (Cocksize 70/Clit 24)
         else if (player.cockArea(x) <= 70) outputText("Nieve's cunt feels like an icy vice on your oversized cock, but even so, you manage to hit all the right places.  Soon she is wriggling around, eyes tightly shut as she pants for breath.");
         // (Cocksize 130+/Clit 48+)
-        else outputText("Though you can't fit your entire " + cockClit(x) + " inside, you are amazed at how much she takes.  Her pale blue stomach bulges with every thrust.  Soon Nieve is wriggling, her eyes slightly open as she bites her lip in ecstasy.");
+        else outputText("Though you can't fit your entire " + cockClit(player, x) + " inside, you are amazed at how much she takes.  Her pale blue stomach bulges with every thrust.  Soon Nieve is wriggling, her eyes slightly open as she bites her lip in ecstasy.");
     }
     else {
         if (player.clitLength <= 4) outputText("Your meager clit isn't much, but at this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes staring up at you, urging you on faster and faster.");
         else if (player.clitLength <= 12) outputText("At this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes tightly shut as she whispers dirty words you can't even make out.");
         else if (player.cockArea(x) <= 24) outputText("Nieve's cunt feels like an icy vice on your oversized clitty, but even so, you manage to hit all the right places.  Soon she is wriggling around, eyes tightly shut as she pants for breath.");
         // (Cocksize 130+/Clit 48+)
-        else outputText("Though you can't fit your entire " + cockClit(x) + " inside, you are amazed at how much she takes.  Her pale blue stomach bulges with every thrust.  Soon Nieve is wriggling, her eyes slightly open as she bites her lip in ecstasy.");
+        else outputText("Though you can't fit your entire " + cockClit(player, x) + " inside, you are amazed at how much she takes.  Her pale blue stomach bulges with every thrust.  Soon Nieve is wriggling, her eyes slightly open as she bites her lip in ecstasy.");
     }
     outputText("\n\nNieve's body tenses underneath you while a deep, \"<i>Ohhh yes!</i>\" rolls from her lips languidly.  She bites her deep blue lip, stifling any more cries.  Her already tight, bitingly cold quim grips you tighter causing your entire body to shiver.  Her arms extend out into the snow, twitching wildly.  Her legs, meanwhile, can't decide whether they want to grip your neck or bow outwards.  As the orgasm crashes over her body you know you can't hold out much longer either.");
 
@@ -1054,7 +1054,7 @@ export function fuckNieve(): void {
     // ((Clitfucking?)
     if (x < 0) outputText("  Your [clit] suddenly feels suddenly warm, like every nerve ending inside were on fire. It aches and pulses with the rest of your body, as though it were a little cock longing to cum.");
     else {
-        outputText("  Your " + cockClit(x) + " aches and pulses with need before ");
+        outputText("  Your " + cockClit(player, x) + " aches and pulses with need before ");
         if (player.cumQ() < 100) outputText("spilling its meager offering into the ice spirit's womb");
         else if (player.cumQ() < 250) outputText("ejecting streams of white hot jizz into the ice spirit's hungry snatch");
         else if (player.cumQ() < 400) outputText("painting the ice spirit's insides with your cream until some begins to pour out");

@@ -3416,7 +3416,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("“<i>Oh, yeah!  Yes - AH!  It feels so good!</i>” Katherine yowls mindlessly, babbling in her delight at your penetrations.  You, for your part, just grab her " + catGirl("supple skin", "silken fur") + ", hold onto her narrow hips and keep on thrusting.  While you may have started out firmly in charge, as the pace picks up the cat-herm is the one to take the lead; she pushes back against you, bucking and thrashing so wildly you find yourself having to hang on for dear life as she fucks you senseless.  If it weren't for how wet she is, she'd be rubbing your cock raw from friction and the vice-like grip around your shaft.  " + (hasCock() ? "You can just make out the way her cock" + cockMultiple(" flails", "s flail") + " around, stiff as iron with knot" + cockMultiple("", "s") + " swollen to full size - she" : "She") + " can't be much further from climax...\n\n");
 
         outputText("And, indeed, she's not.  Arching her back in a way that would break a human spine, she lets out an ear splitting scream of ecstasy, making you unconsciously recall nights of being woken up by courting cats back in Ingnam.  " + (hasCock() ? "Cum gushes like a river from her cock" + cockMultiple("", "s") + " and her" : "Her") + " cunny floods over with femspray, splattering you and soaking " + (hasCock() ? "the ground and" : "") + " everything from your waist down.  As if signalled by her orgasm, your own climax seizes you by surprise.  ");
-        if (player.hasVagina()) outputText("Your " + vaginaDescript() + " releases its own girl-cum in sympathy, even as y");
+        if (player.hasVagina()) outputText("Your " + vaginaDescript(player) + " releases its own girl-cum in sympathy, even as y");
         else outputText("Y");
         outputText("our cock discharges into her depths, flooding her inviting nethers with your spunk, her pussy-lips drinking every last drop you have to give with insatiable greed.");
         if (player.cumQ() >= 1500) outputText("  Her belly puffs up and out, swelling like an advancing pregnancy, until finally you have finished, leaving her with a barrel-sized balloon of a gut, cum audibly sloshing inside her as her motions churn the liquid.");
@@ -3853,7 +3853,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         const hasPenetrated: boolean = hasAlready(KBIT_TRIED_GIVE_VAGINAL | KBIT_TRIED_GIVE_ANAL | KBIT_TRIED_GIVE_DOUBLE_PEN | KBIT_TRIED_GIVE_SUCK_N_FUCK);
         outputText("You ask Katherine if she'd like to penetrate you.  She " + (hasPenetrated ? "" : "looks startled, then ") + "grins like the proverbial cat that ate the canary.  “<i>Well, all right then...</i>” she declares, swiftly stripping off her clothes.  “<i>Get undressed, turn around and kneel on the " + (isAt(KLOC_KATHS_APT) ? "bed" : "ground") + ".</i>”  Her " + cockType() + " cock" + cockMultiple(" is", "s are") + " already starting to peek out of her sheath, as if to echo her instructions.\n\n");
         outputText("You do as you are told, but you can't resist teasing her about wanting 'doggy-style' sex.\n\n");
-        outputText("The " + cockType("mismatched ", "") + "herm steps up behind you and gives you a playful slap on your " + buttDescript() + ".  “<i>Well, I");
+        outputText("The " + cockType("mismatched ", "") + "herm steps up behind you and gives you a playful slap on your " + buttDescription(player) + ".  “<i>Well, I");
         if (hasDogCock())
             outputText("'ve got " + cockMultiple("a dog dick", "dog dicks"));
         else outputText(" had " + cockMultiple("a dog dick", "dog dicks") + " for a long time");
@@ -3868,9 +3868,9 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         clearOutput();
         outputText(images.showImage("katherine-fucks-you-knottily-in-the-vagoo"));
         if (isAt(KLOC_BAR) || isAt(KLOC_BAR_DRUNK) || isAt(KLOC_BAR_URTA_REFUSED)) letKatKnotYouCommonDialogue(true); // At the bar
-        outputText("You indicate to Katherine that you want it in your " + vaginaDescript() + ".\n\n");
+        outputText("You indicate to Katherine that you want it in your " + vaginaDescript(player) + ".\n\n");
 
-        outputText("Her furry hands promptly begin to rub possessively over your " + assDescript() + ", slowly moving up to take hold of your " + hipDescript() + ".  “<i>Well, all right... if that's what you want...</i>”  You feel her running " + cockMultiple("her ", "the topmost ") + cockLength + "\" cock against your sensitive pussy lips, letting you feel its " + cockType("rubbery-smooth", "barb-covered") + " length, then, drawing back her hips, she suddenly thrusts it home without any hesitation.");
+        outputText("Her furry hands promptly begin to rub possessively over your " + buttDescription(player) + ", slowly moving up to take hold of your " + hipDescription(player) + ".  “<i>Well, all right... if that's what you want...</i>”  You feel her running " + cockMultiple("her ", "the topmost ") + cockLength + "\" cock against your sensitive pussy lips, letting you feel its " + cockType("rubbery-smooth", "barb-covered") + " length, then, drawing back her hips, she suddenly thrusts it home without any hesitation.");
         if (cockNumber > 1) {
             outputText("  Her second cock slaps lewdly against your ");
             if (player.hasCock()) outputText(multiCockDescriptLight(game.player));
@@ -3908,7 +3908,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         else outputText("  Thanks to the glovelike fit your pussy has on her knot, it feels nothing but good to be plugged up like this.");
         outputText("\n\n");
 
-        outputText("You shudder and gasp as your own climax suddenly rocks through you, femcum splashing from your " + vaginaDescript());
+        outputText("You shudder and gasp as your own climax suddenly rocks through you, femcum splashing from your " + vaginaDescript(player));
         if (player.hasCock()) {
             outputText(" and your cocks spurting ");
             if (player.cumQ() < 25) outputText("drops");
@@ -3964,9 +3964,9 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         clearOutput();
         outputText(images.showImage("katherine-fucks-you-knottily-in-the-bungholio"));
         if (isAt(KLOC_BAR) || isAt(KLOC_BAR_DRUNK) || isAt(KLOC_BAR_URTA_REFUSED)) letKatKnotYouCommonDialogue(true); // At the bar
-        outputText("You indicate to Katherine that you want it in your " + assholeDescript() + ".\n\n");
+        outputText("You indicate to Katherine that you want it in your " + assholeDescript(player) + ".\n\n");
 
-        outputText("“<i>Well, I can't say I'm a big fan of the idea, but okay...</i>”  Her" + catGirl("", " furry") + " hands promptly begin to rub possessively over your " + buttDescript() + ", slowly moving up to take hold of your " + hipDescript() + ".  “<i>... if that's what you want.</i>”  You feel her rubbing her " + cockMultiple("", "bottom-most ") + "cock against your anus, letting your cheeks feel its " + cockType("rubbery-smooth", "barb-covered") + " length, then, drawing back her hips, she suddenly thrusts it between them without any hesitation" + cockMultiple("", ", as her upper cock bounces along your back") + ".\n\n");
+        outputText("“<i>Well, I can't say I'm a big fan of the idea, but okay...</i>”  Her" + catGirl("", " furry") + " hands promptly begin to rub possessively over your " + buttDescription(player) + ", slowly moving up to take hold of your " + hipDescription(player) + ".  “<i>... if that's what you want.</i>”  You feel her rubbing her " + cockMultiple("", "bottom-most ") + "cock against your anus, letting your cheeks feel its " + cockType("rubbery-smooth", "barb-covered") + " length, then, drawing back her hips, she suddenly thrusts it between them without any hesitation" + cockMultiple("", ", as her upper cock bounces along your back") + ".\n\n");
 
         outputText("“<i>Gonna - mmm - need just a bit of lube here...</i>” she mumbles, dragging her cock" + cockMultiple("", "s") + " between your buttcheeks.  As she says it, her body matches deed to her word and the " + cockType("puppy pecker", "kitty cock") + " begins drooling a slick, warm fluid into your asscrack" + cockMultiple("", ", as well as onto your cheeks, with the other bouncing around above them") + ".  With soft hands, she rubs the goo into your pucker and all over her pointed shaft, then there's a void of sensation as she pulls it from your asscheeks.  Before you can react, she pushes them open again and rams her cock into your anus!");
         // (butt hymen check + stretch check)
@@ -3997,7 +3997,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("\n\n");
 
         outputText("You shudder and gasp as your own climax suddenly rocks through you");
-        if (player.hasVagina()) outputText(", femcum splashing from your " + vaginaDescript());
+        if (player.hasVagina()) outputText(", femcum splashing from your " + vaginaDescript(player));
         if (player.cockTotal() > 0) {
             outputText((player.hasVagina() ? " and " : ", ") + sMultiCockDesc(game.player) + " spurting ");
             if (player.cumQ() < 25) outputText("drops");
@@ -4054,14 +4054,14 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         if (isAt(KLOC_BAR) || isAt(KLOC_BAR_DRUNK) || isAt(KLOC_BAR_URTA_REFUSED)) letKatKnotYouCommonDialogue(true); // At the bar
         outputText("You indicate to Katherine that you want it in both holes.\n\n");
 
-        outputText((doneBefore ? "She grins from ear to ear and says, " : "She starts in shock at the proposal, then slowly, she nods her head.  ") + "“<i>All right... if that's what you want.</i>”  " + (doneBefore ? "Her " : "Despite her tone, her ") + catGirl("soft", "furry") + " hands promptly begin to rub possessively over your " + assDescript() + ", slowly moving up to take hold of your " + hipDescript() + ".  “<i>Hmm... this is so kinky" + (doneBefore ? "" : ", but I think it just might work") + "...</i>” she murmurs, mostly to herself, and you feel her running her " + cockAdj() + "cocks against your sensitive pussy lips and your tingling anus, letting you feel their " + cockType("rubbery-smooth", "barb-covered") + " length, then, drawing back her hips, she suddenly thrusts the bottom one home without any hesitation.  The other slides along your asscrack harmlessly.");
+        outputText((doneBefore ? "She grins from ear to ear and says, " : "She starts in shock at the proposal, then slowly, she nods her head.  ") + "“<i>All right... if that's what you want.</i>”  " + (doneBefore ? "Her " : "Despite her tone, her ") + catGirl("soft", "furry") + " hands promptly begin to rub possessively over your " + buttDescription(player) + ", slowly moving up to take hold of your " + hipDescription(player) + ".  “<i>Hmm... this is so kinky" + (doneBefore ? "" : ", but I think it just might work") + "...</i>” she murmurs, mostly to herself, and you feel her running her " + cockAdj() + "cocks against your sensitive pussy lips and your tingling anus, letting you feel their " + cockType("rubbery-smooth", "barb-covered") + " length, then, drawing back her hips, she suddenly thrusts the bottom one home without any hesitation.  The other slides along your asscrack harmlessly.");
         player.cuntChange(cockArea(), true, true, false);
         // [check vag hymen and stretch it]
         outputText("\n\n");
 
         outputText("You can't help but look back over your shoulder at Katherine, who appears rapt with concentration.  “<i>Sorry!  But this will be tricky... I need to penetrate fast, but I need some lube, too - unless you want to try and take my other knot completely dry!</i>”  She looks down and pushes the upper shaft between your buttcheeks.\n\n");
 
-        outputText("Fingers digging into your hips, she begins to thrust back and forth inside of you, dragging one shaft through your pussy and the other through your cheeks.  “<i>Mmm, you're so good... I could come from this alone,</i>” she moans.  As if to echo the sentiment, a slow stream of pre-cum infiltrates your asscrack.  “<i>Ahh, here it comes...</i>”  She pulls her shafts out just as you feel a minute stiffening of the knots at their bases, and you can hear her smearing her pre-cum and your copious girl-lube along her lengths.  Your " + assholeDescript() + " does not go neglected either; after she's done rubbing herself to slickness, a palmful of warm gooeyness is pushed into it.  She must already be drooling a huge amount if she's got this much to donate!  Almost on cue, she confirms your hunch with a moan.  “<i>Ahhh, gotta put it in now!  I can't hold back anymore, I'm sorry!</i>”  A hot pressure on both holes is the only warning you get before her twin talents are forced into you, sliding easily into your already wet vagina and pushing past your ring by virtue of the tapered shape and the slickness.");
+        outputText("Fingers digging into your hips, she begins to thrust back and forth inside of you, dragging one shaft through your pussy and the other through your cheeks.  “<i>Mmm, you're so good... I could come from this alone,</i>” she moans.  As if to echo the sentiment, a slow stream of pre-cum infiltrates your asscrack.  “<i>Ahh, here it comes...</i>”  She pulls her shafts out just as you feel a minute stiffening of the knots at their bases, and you can hear her smearing her pre-cum and your copious girl-lube along her lengths.  Your " + assholeDescript(player) + " does not go neglected either; after she's done rubbing herself to slickness, a palmful of warm gooeyness is pushed into it.  She must already be drooling a huge amount if she's got this much to donate!  Almost on cue, she confirms your hunch with a moan.  “<i>Ahhh, gotta put it in now!  I can't hold back anymore, I'm sorry!</i>”  A hot pressure on both holes is the only warning you get before her twin talents are forced into you, sliding easily into your already wet vagina and pushing past your ring by virtue of the tapered shape and the slickness.");
         player.buttChange(cockArea(), true, true, false);
         outputText("\n\n");
 
@@ -4134,11 +4134,11 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("As you watch, she bends over from where she's sitting until she can lick your " + cockDescript(game.player, x) + ", her long, feline tongue running up and down its length, tickling the head.  The sensation is strange; bristly, but not sharp, so it's like being stroked by lots of little tongues at the same time.  Pre-cum begins flowing from your cock-tip like water bubbling from an underground spring, and your feline lover visibly savors the taste before leaning back upright, smacking her lips and smiling at your protest.\n\n");
 
         outputText("“<i>Naughty, naughty; have you forgotten who's fucking whom, this time?</i>” she purrs at you, one hand slipping forward to caress ");
-        if (player.hasVagina()) outputText("your " + vaginaDescript());
+        if (player.hasVagina()) outputText("your " + vaginaDescript(player));
         else outputText("between your asscheeks");
-        outputText(".  Taking hold of your " + hipDescript() + ", she slides her cock" + cockMultiple("", "s") + " forward until she's hovering at the entrance to your ");
+        outputText(".  Taking hold of your " + hipDescription(player) + ", she slides her cock" + cockMultiple("", "s") + " forward until she's hovering at the entrance to your ");
         if (cockNumber > 1 && player.hasVagina())
-            outputText(vaginaDescript() + " and " + assholeDescript());
+            outputText(vaginaDescript(player) + " and " + assholeDescript(player));
         else outputText(assholeOrPussy(player));
         outputText(".  Taking a bit of the pre-cum drooling from your prick, she slathers it over her cock" + cockMultiple("", "s") + ".  Then, without further ado, she slides herself into you.");
         if (player.hasVagina()) {
@@ -4155,7 +4155,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText(" so deliciously full, knot");
         if (player.hasVagina() && cockNumber > 1) outputText("s");
         outputText(" flaring inside you and anchoring you together.  You rock back and forth, thrusting your hips awkwardly in an effort to fuck and be fucked as hard as possible, and feel the oh-so-sweet sensation of release boiling away ");
-        if (player.balls > 0) outputText("in your " + ballsDescriptLight());
+        if (player.balls > 0) outputText("in your " + ballsDescriptLight(player));
         else outputText("at the base of your spine");
         outputText("...\n\n");
 
@@ -4353,7 +4353,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         }
         // Double Cock Scene
         else {
-            outputText("Seeing one of her cocks bob and twitch as your face gets closer you decide to reward the eagerness and start with it.  You open your lips and lick the tip before slowly sliding down her crown and then lower, onto the shaft and down to the base.  Then, you pull your lips up, assaulting her with your tongue all along the way.  Her " + cockType() + " cock leaves your mouth with a loud slurp and you quickly go down the other one.  Katherine strokes your " + hairDescript() + ", very gently helping push you down her shaft.\n\n");
+            outputText("Seeing one of her cocks bob and twitch as your face gets closer you decide to reward the eagerness and start with it.  You open your lips and lick the tip before slowly sliding down her crown and then lower, onto the shaft and down to the base.  Then, you pull your lips up, assaulting her with your tongue all along the way.  Her " + cockType() + " cock leaves your mouth with a loud slurp and you quickly go down the other one.  Katherine strokes your " + hairDescription(player) + ", very gently helping push you down her shaft.\n\n");
 
             outputText("Her hands are actually in the way of what you have planned; with a glare you quickly tell her to let you do it your way.  Katherine mewls apologetically as you grab her erections with both hands and rub them up, down, and together, licking the touching tips with your tongue.");
             if (player.tongueType == TONUGE_SNAKE || player.tongueType == TONUGE_DEMONIC) outputText("  Said tongue wraps around one erection and then the other, stroking gently with its long, flexible length.");
@@ -4487,9 +4487,9 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
     private katherineGoesDownOnTheGirlsOhYahBabyLesbo(): void {
         clearOutput();
         outputText(images.showImage("katherine-eats-out-your-vagoo"));
-        outputText("She gently strokes the lips of your " + vaginaDescript() + ", then leans in and gives it a deep, wet lick.  You can't restrain a shiver at the sensation; Katherine's tongue is unlike anything you've seen in this world so far, broad and bristly, but not so hard that it hurts.  It's like lots of little tongues all licking you at the same time.\n\n");
+        outputText("She gently strokes the lips of your " + vaginaDescript(player) + ", then leans in and gives it a deep, wet lick.  You can't restrain a shiver at the sensation; Katherine's tongue is unlike anything you've seen in this world so far, broad and bristly, but not so hard that it hurts.  It's like lots of little tongues all licking you at the same time.\n\n");
 
-        outputText("Without hesitation, she licks you again, and again, deep strokes that slide up from the very base of your cunny all the way to the tip, lingering on your " + clitDescript() + " and teasing your lovebutton.  You can't help but wrap your " + legs(player) + " around her head and pull her into your crotch, thrusting her face right into your cunt.\n\n");
+        outputText("Without hesitation, she licks you again, and again, deep strokes that slide up from the very base of your cunny all the way to the tip, lingering on your " + clitDescription(player) + " and teasing your lovebutton.  You can't help but wrap your " + legs(player) + " around her head and pull her into your crotch, thrusting her face right into your cunt.\n\n");
 
         outputText("If this bothers Katherine, though, she gives no sign; she just keeps licking and lapping, eagerly slurping her way into your depths.  You buck and thrash at her ministrations; the sensations of that rough tongue all over your insides are indescribable; like rough fingertips but hundreds of times more probing!  Finally, you can't hold it any more and cry out as orgasm washes through you, deluging femcum into Katherine's thirsty maw, even as she strives to lap it up like a cat with a bowl of cream.\n\n");
 
@@ -4512,7 +4512,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("She takes your shaft eagerly, gently stroking it with her fingers to coax it erect, then leaning in to lick the head with her softly bristled tongue, caressing and suckling at the " + cockHead(player, x) + ".");
         if (player.hasVagina()) {
             outputText("  One of her hands slides down your shaft");
-            if (player.balls > 0) outputText(", past your " + ballsDescriptLight() + ",");
+            if (player.balls > 0) outputText(", past your " + ballsDescriptLight(player) + ",");
             outputText(" and gently begins to stroke your cunny, twiddling her fingers to heighten your pleasure by manipulating both sets of organs at once.");
         }
         outputText("\n\n");
@@ -4523,7 +4523,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         }
         outputText("  With a surprising amount of skin in her mouth, she starts to bob and suckle, confining your member in the hot, tight, wetness, her tongue keeping up its ministrations.  She starts to purr with delight, sending the most delicious vibrations rippling through your member.");
         if (player.hasVagina()) {
-            outputText("  Her fingers stroke and piston inside you with the synchronicity only another hermaphrodite could have perfected, rolling your " + clitDescript() + " and sending further sparks of pleasure coursing through your brain.");
+            outputText("  Her fingers stroke and piston inside you with the synchronicity only another hermaphrodite could have perfected, rolling your " + clitDescription(player) + " and sending further sparks of pleasure coursing through your brain.");
         }
         outputText("\n\n");
 
@@ -4567,7 +4567,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("You can't resist a laugh; it looks like she is.  Carefully removing and setting your " + player.armorName + " aside, ");
         if (hasAlready(KBIT_TRIED_DOUBLE_HELIX)) {
-            outputText("you position yourself the same as last time; Kath's legs wrapped around your lower body, her honeypot aligned with your own.  She carefully slides " + cockMultiple("one of ", "") + "her " + cockType() + "-pecker" + cockMultiple("", "s") + " towards your " + vaginaDescript() + ".  You do the same, pointing the tip of your " + cockDescript(game.player, x) + " to her drooling cunt.  You can hear her breathing softly, keeping herself calm, and you try to do the same.\n\n");
+            outputText("you position yourself the same as last time; Kath's legs wrapped around your lower body, her honeypot aligned with your own.  She carefully slides " + cockMultiple("one of ", "") + "her " + cockType() + "-pecker" + cockMultiple("", "s") + " towards your " + vaginaDescript(player) + ".  You do the same, pointing the tip of your " + cockDescript(game.player, x) + " to her drooling cunt.  You can hear her breathing softly, keeping herself calm, and you try to do the same.\n\n");
             outputText("Kath moans as the tips of both your cock and hers slip into place.  In a worried tone she says, “<i>um... after last time I don't think I'll be able to hold back.  We're probably going to wind up knotted like this.</i>”  Rather than replying you just shove your cock a little deeper.\n\nKatherine gives you a quick hug, then she");
         }
         else {
@@ -4577,8 +4577,8 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             if (player.isNaga()) outputText("curling your naga tail back");
             else if (player.isGoo()) outputText("shifting your gooey blob");
             else outputText("lifting your " + leg(player) + " up");
-            outputText(" so she has access to both your " + vaginaDescript(0) + " and your " + cockDescript(game.player, x) + ".\n\n");
-            outputText("Katherine lies down across from you and wraps her legs around your own lower body, her honeypot aligned with your own.  “<i>Okay... now push your dick down like this...</i>” she says, shoving " + cockMultiple("one of ", "") + "her own " + cockType() + "-pecker" + cockMultiple("", "s") + " towards your " + vaginaDescript() + ", slowly teasing you with the tip.\n\n");
+            outputText(" so she has access to both your " + vaginaDescript(player, 0) + " and your " + cockDescript(game.player, x) + ".\n\n");
+            outputText("Katherine lies down across from you and wraps her legs around your own lower body, her honeypot aligned with your own.  “<i>Okay... now push your dick down like this...</i>” she says, shoving " + cockMultiple("one of ", "") + "her own " + cockType() + "-pecker" + cockMultiple("", "s") + " towards your " + vaginaDescript(player) + ", slowly teasing you with the tip.\n\n");
 
             outputText("You repeat the gesture, pointing the tip of your " + cockDescript(game.player, x) + " to her drooling cunt.  You can hear her breathing softly, keeping herself calm, and try to do the same... which is when something occurs to you, and you ask her what the two of you are supposed to do about her knot.  You're not sure that the two of you tying yourselves in this position would be such a good idea, after all.\n\n");
 
@@ -4586,7 +4586,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         }
         outputText(" flexes her legs and pulls you inside her, penetrating you as well.  She yowls in pleasure as she feels the simultaneous pleasure of penetrating and being penetrated.  “<i>Ah... just move your hips - mmm - with me.</i>”\n\n");
 
-        outputText("Shivering with delight as her hot, soaking wet walls envelop your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and her " + cockType("rubbery, pointy dog", "narrow, barbed kitty") + "-cock slides into your " + vaginaDescript() + ", you need no further encouragement, eagerly pumping your hips against hers, trying to push into her and push her into you without letting either cock slip free of its appointed hole.  Katherine gyrates her hips, attempting to stimulate both your parts, panting in pleasure.\n\n");
+        outputText("Shivering with delight as her hot, soaking wet walls envelop your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and her " + cockType("rubbery, pointy dog", "narrow, barbed kitty") + "-cock slides into your " + vaginaDescript(player) + ", you need no further encouragement, eagerly pumping your hips against hers, trying to push into her and push her into you without letting either cock slip free of its appointed hole.  Katherine gyrates her hips, attempting to stimulate both your parts, panting in pleasure.\n\n");
 
         outputText("You whine and whimper at the stimulus, moving your own hips likewise in an effort to intensify the sensations without accidentally enveloping her knot in your cunt.  Katherine mewls and yowls in pleasure in response, voicing her approval and pulling you dangerously close to her knot in an attempt to feel more of you.  Barely comprehending what's happening, your world shrinks down to the feeling of cock in cunt... then with a wet SCHLUCK Katherine's half-swollen knot slips inside your pussy and your hips collide.");
         player.cuntChange(cockArea(), true, true, false);
@@ -4623,7 +4623,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("You gasp for breath, mind still reeling from the earth-shaking pleasure you've experienced.  Your first instinct is to try to move, but you find you can't get up");
         if (cumQ() > 1500) outputText(", and not because your swollen stomach is weighing you down, either");
-        outputText(".  Katherine's knotty cock has locked her into your " + vaginaDescript() + ", leaving you tied together like a dog and his bitch.  ");
+        outputText(".  Katherine's knotty cock has locked her into your " + vaginaDescript(player) + ", leaving you tied together like a dog and his bitch.  ");
         if (hasAlready(KBIT_TRIED_DOUBLE_HELIX)) {
             outputText("You gently rub one of Kath's nipples and ask her how she intends to make up for knotting you like this.\n\n");
 
@@ -4639,7 +4639,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("With the sensation of your full pussy as your guide, it's easy to know when it's finally possible for her to slip free without hurting you; Katherine pulls away and stands on shaky feet.  The jism contained within you spills out in a satisfying cascade of white, that's when you feel a pair of lips touch your sensitive snatch.  Moments later a cat's tongue licks your labia and latches onto it, sucking the jism straight out of you.  You gasp in delight, but keep still, wondering what your lover has in mind.\n\n");
 
         outputText("Once she's done with your pussy, she moves on to your " + cockDescript(game.player, x) + ", taking the tip into her mouth and suckling on it to drain the last bits of cum from your shaft, then she lets go of your " + cockHead(player, x) + " and begins licking the shaft, cleaning you all the way from the base up");
-        if (player.balls > 0) outputText(", and even licking your " + ballsDescriptLight() + " clean");
+        if (player.balls > 0) outputText(", and even licking your " + ballsDescriptLight(player) + " clean");
         outputText(".  You moan and shudder and buck your hips at her ministrations; your ");
         if (player.balls > 0) outputText("balls are still depleted");
         else outputText("cock is still almost totally empty");
@@ -4657,11 +4657,11 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("You nod again unthinkingly.\n\n");
 
-        outputText("Katherine rolls you on your back and begins licking your belly, cleaning you of the sweat produced by your vigorous fucking earlier.  She moves through your " + chestDesc(game.player) + ", stopping shortly to give each of your " + nippleDescript(0) + "s a little peck.  Then she continues to your neck and face.\n\n");
+        outputText("Katherine rolls you on your back and begins licking your belly, cleaning you of the sweat produced by your vigorous fucking earlier.  She moves through your " + chestDesc(game.player) + ", stopping shortly to give each of your " + nippleDescription(player, 0) + "s a little peck.  Then she continues to your neck and face.\n\n");
 
         outputText("You simply lie back and enjoy her attentions; while pleasurable, they aren't as sexual as her previous efforts, and you find the experience more soothing than arousing. It takes a while, but finally with one last lick on ");
         if (player.isNaga() || player.tailType == TAIL_TYPE_DEMONIC) outputText("the tip of your tail");
-        else outputText("your " + buttDescript());
+        else outputText("your " + buttDescription(player));
         outputText(", she finishes.  Katherine grins and happily declares, “<i>There you go, you're clean now!" + (hasAlready(KBIT_TRIED_DOUBLE_HELIX) ? "" : "Sorry for breaking my promise and knotting you.") + "</i>”\n\n");
 
         outputText("Sitting up, you can't resist reaching over and ruffling her ears in a way that the cats you've met always liked, telling her that if this is how she'll apologize for " + (hasAlready(KBIT_TRIED_DOUBLE_HELIX) ? "knotting you, you don't mind her doing so again and again" : "it, you don't mind her doing so again") + ".\n\n");
@@ -4863,7 +4863,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             if (player.eyeType == EYES_FOUR_SPIDER_EYES) outputText("both sets of ");
             outputText("your eyes and");
         }
-        outputText(" gently take her by the cheeks, insistently bringing her head close so that her lips are bumping right against your " + nippleDescript(0) + "s.  She takes the obvious hint and eagerly swallows it, eyes closing as she leans in and starts to suckle.  Purring with contentment, she sends the most delicious vibrations into your breasts, her rough, bristly tongue stroking and caressing to help coax your body into giving up its sweet, rich milk.\n\n");
+        outputText(" gently take her by the cheeks, insistently bringing her head close so that her lips are bumping right against your " + nippleDescription(player, 0) + "s.  She takes the obvious hint and eagerly swallows it, eyes closing as she leans in and starts to suckle.  Purring with contentment, she sends the most delicious vibrations into your breasts, her rough, bristly tongue stroking and caressing to help coax your body into giving up its sweet, rich milk.\n\n");
 
         outputText("You're not sure how long you sit there with her in your arms, just listening to her purr as she quietly sucks and slurps, drinking everything you have to give.  She ");
         if (player.findPerk(PerkLib.Feeder) < 0 && player.lactationQ() < 1000) outputText("empties");

@@ -789,39 +789,39 @@ export function growHair(amount: number = .1): boolean {
     temp = player.hairLength;
     player.hairLength += amount;
     if (player.hairLength > 0 && temp == 0) {
-        outputText("\n<b>You are no longer bald.  You now have " + hairDescript() + " coating your head.\n</b>", false);
+        outputText("\n<b>You are no longer bald.  You now have " + hairDescription(player) + " coating your head.\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 1 && temp < 1) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 3 && temp < 3) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 6 && temp < 6) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 10 && temp < 10) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 16 && temp < 16) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 26 && temp < 26) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 40 && temp < 40) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     else if (player.hairLength >= 40 && player.hairLength >= player.tallness && temp < player.tallness) {
-        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+        outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescription(player) + ".\n</b>", false);
         return true;
     }
     return false;

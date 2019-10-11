@@ -66,7 +66,7 @@ export class CorruptedGlade {
 
             outputText("The tendrils encircling your genitals do not release; instead they pull tighter, one of " + (player.cocks.length > 1 ? "each plant's tiny" : "the tiny plant's") + " appendages penetrating your urethra" + (player.cocks.length > 1 ? "s" : "") + ", squirming up your cum slicked passage" + (player.cocks.length > 1 ? "s" : "") + " with uncomfortable slowness.  You lay there, too weak to resist it or fight, hoping that whatever the plants are doing won't hurt much.  You feel it twisting and coiling inside you... until it stops.  You feel a sharp pinch, and then it withdraws, seemingly satisfied.  The tendrils unwrap, allowing the plants to spring back up, exposing your still over-engorged and sensitive member" + (player.cocks.length > 1 ? "s" : "") + ".\n\n");
 
-            outputText("You lay there for some time until your muscle control returns, your cock" + (player.cocks.length > 1 ? "s" : "") + " still slightly over-large " + (player.balls >= 2 ? "and your " + ballsDescriptLight() : "and") + " feeling sore from the exertion.  At least you hope it's just from the exertion and not from whatever the plant did.\n\n");
+            outputText("You lay there for some time until your muscle control returns, your cock" + (player.cocks.length > 1 ? "s" : "") + " still slightly over-large " + (player.balls >= 2 ? "and your " + ballsDescriptLight(player) : "and") + " feeling sore from the exertion.  At least you hope it's just from the exertion and not from whatever the plant did.\n\n");
             if (player.cumQ() < 25)
                 outputText("As you depart, you notice the plants looking remarkably colorful and healthy...");
             else if (player.cumQ() < 250)
@@ -141,17 +141,17 @@ export class CorruptedGlade {
                 }
             }
             // resume secksings
-            outputText(vaginaDescript(0) + ". Pulling gently, you manage to yank a bit more vine free, allowing it to brush against the damp forest loam. That same soft earth makes the perfect cushion for you as you lay down, spreading your legs. With both hands you grasp the vine, guiding it towards the entrance of your " + vaginaDescript(0) + ". The beaded moisture that covers the vine tingles tantalizingly at the first contact with your lips.\n\n");
+            outputText(vaginaDescript(player, 0) + ". Pulling gently, you manage to yank a bit more vine free, allowing it to brush against the damp forest loam. That same soft earth makes the perfect cushion for you as you lay down, spreading your legs. With both hands you grasp the vine, guiding it towards the entrance of your " + vaginaDescript(player, 0) + ". The beaded moisture that covers the vine tingles tantalizingly at the first contact with your lips.\n\n");
 
             if (tentacle == 0) // Small
-                outputText("With a sexy little sigh, you slip the mushroom-like tip between your nether-lips, feeling it bulge a little as it penetrates you. The vine's lubricants combine with your own, turning your horny cunt into a sloppy little slip-and-slide. You take it all the way to your cervix, easily handling its smaller size as you begin to use it like a favorite dildo. Deep inside your " + vaginaDescript(0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
+                outputText("With a sexy little sigh, you slip the mushroom-like tip between your nether-lips, feeling it bulge a little as it penetrates you. The vine's lubricants combine with your own, turning your horny cunt into a sloppy little slip-and-slide. You take it all the way to your cervix, easily handling its smaller size as you begin to use it like a favorite dildo. Deep inside your " + vaginaDescript(player, 0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
             if (tentacle == 1) // Medium
-                outputText("With a soft grunt, you manage to wrangle the fat tip of the vine between your nether-lips, feeling the swollen bulge pulse inside you penetrate yourself with it. The vine's lubricants combine with your own, turning your horny cunt into a sloppy slip-and-slide. You force in the rest of the vine's length, taking it all the way to your cervix, enjoying the feeling of fullness it gives you as you begin pumping it in and out like an obscene green dildo. Deep inside your " + vaginaDescript(0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
+                outputText("With a soft grunt, you manage to wrangle the fat tip of the vine between your nether-lips, feeling the swollen bulge pulse inside you penetrate yourself with it. The vine's lubricants combine with your own, turning your horny cunt into a sloppy slip-and-slide. You force in the rest of the vine's length, taking it all the way to your cervix, enjoying the feeling of fullness it gives you as you begin pumping it in and out like an obscene green dildo. Deep inside your " + vaginaDescript(player, 0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
             if (tentacle == 2) // Large
-                outputText("With a desperate grunt, you barely manage to force the obscene cock-head of the vine between your nether-lips. The swollen bulge pulses inside you, stretching you uncomfortably as it reacts to the warmth and tightness of your " + vaginaDescript(0) + ". The vine's lubricants begin to combine with your own, rapidly transforming your horny cunt into a sloppy slip-and-slide. You manage to cram the vine the rest of the way inside, bottoming it out against your cervix, reveling in the feeling of being stretched so wide, as you begin pumping it in and out of your " + vaginaDescript(0) + " like an over-sized sex-toy. Deep inside your " + vaginaDescript(0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
+                outputText("With a desperate grunt, you barely manage to force the obscene cock-head of the vine between your nether-lips. The swollen bulge pulses inside you, stretching you uncomfortably as it reacts to the warmth and tightness of your " + vaginaDescript(player, 0) + ". The vine's lubricants begin to combine with your own, rapidly transforming your horny cunt into a sloppy slip-and-slide. You manage to cram the vine the rest of the way inside, bottoming it out against your cervix, reveling in the feeling of being stretched so wide, as you begin pumping it in and out of your " + vaginaDescript(player, 0) + " like an over-sized sex-toy. Deep inside your " + vaginaDescript(player, 0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
             if (player.cuntChange(tentacleSize, true)) outputText("\n\n"); // Stretch cuuuuunt and newline if it gets stretched
 
-            outputText("The rest of the world disappears as your mind tries to cope with the sensation overload coming from your groin. You're dimly aware of your hands pumping the slippery vine in and out, in and out, over and over.  Hips bucking, " + vaginaDescript(0) + " squeezing, thighs trembling, you achieve the first of many orgasms.  Incredibly, the sensitivity of your groin redoubles, nearly blacking you out from the pleasure.  Cumming over and over, you writhe in the dirt, pumping the corrupted prick-vine in and out of your spasming cunt.  Your eyes roll back in your head when the vine begins pumping you full of its strange fluid, and you finally lose your battle to remain conscious.\n\n");
+            outputText("The rest of the world disappears as your mind tries to cope with the sensation overload coming from your groin. You're dimly aware of your hands pumping the slippery vine in and out, in and out, over and over.  Hips bucking, " + vaginaDescript(player, 0) + " squeezing, thighs trembling, you achieve the first of many orgasms.  Incredibly, the sensitivity of your groin redoubles, nearly blacking you out from the pleasure.  Cumming over and over, you writhe in the dirt, pumping the corrupted prick-vine in and out of your spasming cunt.  Your eyes roll back in your head when the vine begins pumping you full of its strange fluid, and you finally lose your battle to remain conscious.\n\n");
 
             outputText("An hour or two later, you wake feeling very sore, but satisfied.  The vine must have popped free at some point and the bulb now rests on your pussy lips.  You go to brush it off and nearly orgasm from touching your nether-lips, still sensitive and parted from the overlarge tentacle they so recently took.  A rush of white goop escapes from between your thighs as you stand, soaking back into the soil immediately.   A quick stretch later, you don your gear and head back to camp with a smile.\n\n");
             // Normal stat changes
@@ -163,7 +163,7 @@ export class CorruptedGlade {
                 player.hairColor = "green";
             }
             if (rand(4) == 0 && player.hipRating <= 10) { // +hip up to 10
-                outputText("A strange shifting occurs below your waist, making your " + player.armorName + " feel tight.  <b>Your hips have grown larger</b>, becoming " + hipDescript() + ".  ");
+                outputText("A strange shifting occurs below your waist, making your " + player.armorName + " feel tight.  <b>Your hips have grown larger</b>, becoming " + hipDescription(player) + ".  ");
                 player.hipRating += rand(3) + 1;
                 player.fertility++;
             }
@@ -181,10 +181,10 @@ export class CorruptedGlade {
 
             if (player.cocks.length > 0) { // Cocks (and maybe vagina)
                 outputText(player.cocks.length == 1 ? cockDescript(game.player, 0) : multiCockDescriptLight(game.player));
-                if (player.vaginas.length > 0) outputText(" and " + vaginaDescript(0));
+                if (player.vaginas.length > 0) outputText(" and " + vaginaDescript(player, 0));
             }
             else if (player.vaginas.length > 0) // Vagina
-                outputText(vaginaDescript(0));
+                outputText(vaginaDescript(player, 0));
             else outputText("nipples"); // Nipples
             // Finish sentance
             outputText(" tingle.  ");
@@ -197,7 +197,7 @@ export class CorruptedGlade {
             }
             // +butt up to 10
             if (rand(4) == 0 && player.buttRating <= 10) {
-                outputText("A strange shifting occurs on your backside, making your " + player.armorName + " feel tight.  <b>Your butt has grown larger</b>, becoming a " + buttDescript() + ".  ");
+                outputText("A strange shifting occurs on your backside, making your " + player.armorName + " feel tight.  <b>Your butt has grown larger</b>, becoming a " + buttDescription(player) + ".  ");
                 player.buttRating += rand(3) + 1;
             }
             // Rarely change one prick to a vine-like tentacle cock.

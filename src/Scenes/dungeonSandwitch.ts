@@ -618,15 +618,15 @@ export function sandstonesAreCool(): void {
                 outputText("  A small set of stones settle on your [balls].");
                 bonus++;
             }
-            outputText("  " + num2Text(player.totalNipples()) + " crawl up to your chest and over your top " + nippleDescript(0) + "s");
+            outputText("  " + num2Text(player.totalNipples()) + " crawl up to your chest and over your top " + nippleDescription(player, 0) + "s");
             if (player.bRows() > 1) {
                 if (player.bRows() == 2) outputText(" and");
                 else outputText(",");
-                outputText(" your middle " + nippleDescript(1) + "s");
+                outputText(" your middle " + nippleDescription(player, 1) + "s");
                 bonus++;
             }
             if (player.bRows() > 2) {
-                outputText(", and your bottom " + nippleDescript(2) + "s");
+                outputText(", and your bottom " + nippleDescription(player, 2) + "s");
                 bonus++;
             }
             outputText(".");
@@ -939,7 +939,7 @@ export function cumWitchCumPumpBadEnd(): void {
     outputText("\n\nWith her slender fingers trailing over your heaving, exhausted form, the cum witch explains, \"<i>Before we get to the fun part, let's see about getting you in the proper mood.</i>\"  You ");
     if (player.HP < 1) outputText("grunt and strain in response, still trying to fight, even though you know it's hopeless.");
     else outputText("groan and touch yourself, trying to show her just how 'in the mood' you are.");
-    outputText("  She affectionately ruffles your " + hairDescript() + " and tuts, \"<i>Now, now, it's cute that you think you still have some agency here, but you really ought to just lay back and let me take worry about it!</i>\"");
+    outputText("  She affectionately ruffles your " + hairDescription(player) + " and tuts, \"<i>Now, now, it's cute that you think you still have some agency here, but you really ought to just lay back and let me take worry about it!</i>\"");
 
     outputText("\n\nThe cum witch rolls up her sleeves and gesticulates rhythmically.  Trails of phosphorescent fire trail from her nails with each motion, and you're being lifted, raised up into the air on streams of phantasmal force.  You hover like that for a moment, then with a brush of luminous energy, you slide sideways onto a bench, the magic disappointing to rest you gently upon the firm wooden surface.  Exposed as it is, [eachCock] rises powerfully, as if displaying itself for inspection.  Given the circumstances, it very well may be.");
 
@@ -1072,7 +1072,7 @@ export function repeatLoseToCumWitchForDudes(): void {
         outputText("\n\nGiggling, the onyx sperm-mage laughs as she slowly begins to frot with you.  \"<i>Why have a dong this big if you can't fit it in anything?</i>\"  She sensually caresses some of your copious cock before bending down and licking at the " + cockHead(player, x) + ".  You shiver and express a drop of pre-cum onto your own ");
         if (player.biggestCockLength() < player.tallness / 2) outputText("[chest]");
         else if (player.biggestCockLength() < player.tallness / 1.6) outputText(face(player));
-        else outputText(hairDescript());
+        else outputText(hairDescription(player));
         outputText(".  The black spellcaster comments, \"<i>I must admit it is fun to look at, but it doesn't look like it's ready to blow just yet.  How about a little encouragement?</i>\"");
 
         outputText("\n\nThe Cum Witch snaps her fingers, and two smooth, spherical bits of stone lift up.  They begin to vibrate so fast that you can hear them humming in the air.  They arc over your chest and flutter down onto ");
@@ -1172,7 +1172,7 @@ export function tooBigCumWitchLossFacial(): void {
     if (player.biggestCockLength() >= player.tallness / 1.6) outputText("  The Cum Witch smiles as she holds it, bending it to make sure the overlong shaft deposits its thick load on your " + face(player) + " where it belongs.");
     outputText("  Your captor is still humping it even as you cum, moaning as the bulges of copious cream press on her smaller boner.  Her visage is alight with ecstasy, and her heavy nipples are dragging on your [chest] as she begins to grunt, her motions going jerky in her ecstasy.");
 
-    outputText("\n\nOozing jism splatters into you with increasing frequency as your supercharged reproductive system asserts itself, thick globs dripping from your chin even as the Cum Witch peaks, adding her own virile sprays into the semen-shower.  Your " + hairDescript() + " mats down as it's soaked with the alabaster sperm, so much so that it dangles in sticky ringlets from your ears.  It feels so good that you start to moan, but that's immediately silenced by a cheek-bulging seed-eruption.  You're not sure whether it's yours or hers, but all you can do is swallow it down and try to breathe through the salty mask as it's piled on thicker and thicker.  There's so much that it's forming a hot, wet puddle behind you and dripping down your [chest], making the buzzing stones squish and splash it about as they help to bring you off.");
+    outputText("\n\nOozing jism splatters into you with increasing frequency as your supercharged reproductive system asserts itself, thick globs dripping from your chin even as the Cum Witch peaks, adding her own virile sprays into the semen-shower.  Your " + hairDescription(player) + " mats down as it's soaked with the alabaster sperm, so much so that it dangles in sticky ringlets from your ears.  It feels so good that you start to moan, but that's immediately silenced by a cheek-bulging seed-eruption.  You're not sure whether it's yours or hers, but all you can do is swallow it down and try to breathe through the salty mask as it's piled on thicker and thicker.  There's so much that it's forming a hot, wet puddle behind you and dripping down your [chest], making the buzzing stones squish and splash it about as they help to bring you off.");
 
     outputText("\n\nThe Cum Witch climbs off you after what must be a minute of non-stop bukkake, but you keep cumming, too addled with pleasure to move your own spooge-hose.  Eyes rolling back in bliss, you cum yourself into unconsciousness while the victorious futanari gets dressed, stopping to rub a last few twinges of magic into you before she goes.  She wouldn't want you to run out of jism early, now would she?");
     // Cum and ballsize boost if appropriate
@@ -1589,7 +1589,7 @@ export function savinMakesAwesomeFemdom(): void {
 
     outputText("\n\nSlowly, the witch turns her attention back to your quivering [vagina].  Her cock, now lying flat on your belly, is thrumming hotly, her heartbeat easily felt through her ready rod, a steady trickle of precum flooding down your chest in eager anticipation of the coming fucking.  You brace yourself as best you can as the witch leans back, sliding her prick down your flesh until its thick head brushes your [vagina].  You shiver, half in anticipation and half in lust-filled need; your quavering cunt's cockhungry muscles easily relax at her touch as she pushes in, the first inches of witchcock spreading your vaginal walls wide in acceptance of the dominating cock, womb ready to be bred, to suck every drop of seed from the cum witch's potent loins.");
 
-    outputText("\n\n\"<i>There's a good girl,</i>\" the witch coos, stroking your " + hairDescript() + " as she slowly, tenderly enters you, her wide hips pushing inch after throbbing inch of cock into your hole.  ");
+    outputText("\n\n\"<i>There's a good girl,</i>\" the witch coos, stroking your " + hairDescription(player) + " as she slowly, tenderly enters you, her wide hips pushing inch after throbbing inch of cock into your hole.  ");
     player.cuntChange(monster.cockArea(0), true, false, true);
     outputText("Suddenly, the witch hooks her fingers around the back of your neck, lifting you up from the sand.  You gasp, unsure, until the witch guides your head up to her massive breast, already leaking milk in anticiaption.  She smiles at you, surprisingly warmly, as she nestles your cheek into the wide valley of her cleavage.  A sudden, primal instinct overtakes you, and you wrap your arms around the witch's waist, holding yourself to her in a tight hug.  The witch gasps, surprised by your sudden act, but relaxes in your grasp as you did in hers, allowing you to support yourself as she cups one of her teats for you, guiding the leaking nipple to your lips.  You take it eagerly, breath catching as the first sweet, creamy drops enter your waiting mouth.  You suckle from the witch like a babe, drinking her delicious milk as it pours into you.  The witch moans loudly, her head rolling back as her milk flows into you, her flared hips finally pressing into yours, her tremendous cock fully buried inside you, its head kissing the lips of your cervix.  \"<i>Good girl,</i>\" she echoes, stroking your hair and milk-bloated cheeks, otherwise still in your sexual embrace.");
 
@@ -2247,7 +2247,7 @@ export function fenPutsHisShittyFetishInYoSphinx(): void {
 
     // Big capable entrances 100+
     if (player.analCapacity() >= 100) {
-        outputText("\n\nYou will yourself to relax, and like magic, your [asshole] stretches out to handle the elephantine force-cock with ease, devouring the flat, flared phallus straight into your rectum.  It distends your belly slightly as it pushes deeper, Sanura grunting when a middle ring catches for a second before popping in, rapt with the ecstasy your welcoming asshole can provide.  She provides you with a lazy smile before straightening out and placing her hand on your head, stroking your " + hairDescript() + " and lazily patting you as she finally bottoms out, accompanied by the feeling of sparking, tingling nuts slapping hard into your [butt].");
+        outputText("\n\nYou will yourself to relax, and like magic, your [asshole] stretches out to handle the elephantine force-cock with ease, devouring the flat, flared phallus straight into your rectum.  It distends your belly slightly as it pushes deeper, Sanura grunting when a middle ring catches for a second before popping in, rapt with the ecstasy your welcoming asshole can provide.  She provides you with a lazy smile before straightening out and placing her hand on your head, stroking your " + hairDescription(player) + " and lazily patting you as she finally bottoms out, accompanied by the feeling of sparking, tingling nuts slapping hard into your [butt].");
         outputText("\n\n\"<i>Mmmm, I knew you'd be a good " + mf(player, "boy", "girl") + ".</i>\"");
     }
     // Medium capacity! 40+!
@@ -2268,7 +2268,7 @@ export function fenPutsHisShittyFetishInYoSphinx(): void {
     // Merge, no new PG
     outputText("\n\nThat's no small comfort to your poor, sore rectum.  It's going to be left gaped by this monstrous woman in short order, pounded into open, stretched submission, just like its owner.  The pain of being opened up this forcefully is enough to bring a tear to your eye and a strange surge of excitement through your crotch.  How can you be enjoying this?  You don't have long to ponder it, your muscles are caving in underneath Sanura's butt-battering fucking, slowly, inexorably stretching to handle her fat flare.  Gods!  You whimper as your [asshole] abruptly gives up the ghost and allows Sanura's phantom member inside, inches of her tingly fuck-tool nestling inside you in seconds.");
 
-    outputText("\n\nSanura straightens with an unseen smile, her hand playfully tangling with your " + hairDescript() + " as she hilts the rest of the way into your abused anus, not stopping until jiggling, magical nuts slap into your [butt].  \"<i>Atta " + mf(player, "boy", "girl") + ".  I thought for a moment that this might have been a waste of magic.  Now just settle in and enjoy it.</i>\"  You wince with the knowledge that somehow, you ARE enjoying it.  The pain seems to have faded with the magical buzzing in your butthole, and all that you're left with is a satisfied stretching and the friction that comes with it.");
+    outputText("\n\nSanura straightens with an unseen smile, her hand playfully tangling with your " + hairDescription(player) + " as she hilts the rest of the way into your abused anus, not stopping until jiggling, magical nuts slap into your [butt].  \"<i>Atta " + mf(player, "boy", "girl") + ".  I thought for a moment that this might have been a waste of magic.  Now just settle in and enjoy it.</i>\"  You wince with the knowledge that somehow, you ARE enjoying it.  The pain seems to have faded with the magical buzzing in your butthole, and all that you're left with is a satisfied stretching and the friction that comes with it.");
 
     // END VARIATION
     // Buttchange 75
@@ -3171,7 +3171,7 @@ export function friendlySandMotherFuck(): void {
         outputText(".  The Sand Mother shudders before you, hands tugging her nipples through her soaked, not-so-concealing robes.  She's whimpering needily, and ");
         if (player.tallness < 72) outputText("you kiss her to silence her, tongue pumping to the same timing that drives your hips.");
         else outputText("you suckle one of the heavy, milk-laden tits to enhance her pleasure");
-        outputText(".  Her fingers roam through your " + hairDescript() + " as she allows her passion to overwhelm her.  Splattering noisily, her juices are dripping and squirting around your hard-thrusting dong");
+        outputText(".  Her fingers roam through your " + hairDescription(player) + " as she allows her passion to overwhelm her.  Splattering noisily, her juices are dripping and squirting around your hard-thrusting dong");
         if (y >= 0) outputText("s");
         outputText(", replaced by fresh secretions as fast as you squeeze them out of her.");
     }
@@ -3641,7 +3641,7 @@ export function changeMindAboutBlessings(): void {
 // *Virility/Fertility
 export function cumWitchBlessed(virility: boolean = true): void {
     clearOutput();
-    outputText("Your choice made, you lower yourself until you are seated on your [legs], your face aligned at the perfect height to fellate her drippy, onyx dong.  You can still smell the scent of freshly-fucked pussy hanging around her shaft like some kind of sexual haze.  She saunters up, wide ebony hips swaying hypnotically as her male-half sways pendulously, closer and closer.  Her hands come to rest on your head and run through your " + hairDescript() + " with slow strokes as she nudges her crown against your upper lip, letting it smear her juices under your nose and across your cheek.  The eleven inches throb pleasantly against the side of your face, the veins standing out in stark relief as you glance down to her orange-sized cum-factories, held in a tight, smooth pouch just below.");
+    outputText("Your choice made, you lower yourself until you are seated on your [legs], your face aligned at the perfect height to fellate her drippy, onyx dong.  You can still smell the scent of freshly-fucked pussy hanging around her shaft like some kind of sexual haze.  She saunters up, wide ebony hips swaying hypnotically as her male-half sways pendulously, closer and closer.  Her hands come to rest on your head and run through your " + hairDescription(player) + " with slow strokes as she nudges her crown against your upper lip, letting it smear her juices under your nose and across your cheek.  The eleven inches throb pleasantly against the side of your face, the veins standing out in stark relief as you glance down to her orange-sized cum-factories, held in a tight, smooth pouch just below.");
     outputText("\n\nUnthinkingly, you reach out to fondle the heavy package, your fingers curling around the woman's soft sack and rolling the swollen testes back and forth.  The black beauty grabs her shaft and lays it across your nose, up between your eyes, and onto your forehead, forcing you to go cross-eyed as you admire it.  An electric tingle runs through her fingers and into your scalp, short-circuiting your thoughts for a second.");
 
     outputText("\n\n...Her cock is gorgeous.  Your mouth waters just looking at it.  You lick your lips before hesitantly extending your tongue out, lapping at the bottommost portions of her divine dick.  The taste of her sweat and caked-on girl-cum is so strong that it makes you shiver.  Another jolt of power slips into you.  It tastes <b>soo good</b>!  You slobber all over it, trying to gather up every taste of her old, spent seed onto your tongue, your eyes fixated on the erection as it dribbles a trail of liquid need down the bridge of your nose.  It likes you!  A ecstatic thrill shivers through your spine at the knowledge that you've pleased it so excellently, and you gingerly grab hold of it, pulling back so that you can plunge the entire thing straight into your mouth.");

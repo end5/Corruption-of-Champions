@@ -167,7 +167,7 @@ export class BunnyGirl {
         outputText("A anticipatory grin widens across your " + face(player) + " as you speedily disrobe, discarding your " + player.armorName, false);
 
         if (player.weaponName != "fists") outputText(" and " + player.weaponName, false);
-        outputText(" in a hurry.   Meanwhile the bunny looks on in a semi-aroused stupor, stroking her length with one hand while her other teases one of the hard nubs of her nipples.  You sigh with excitement as you position yourself above her, lining up her somewhat angular crown with the entrance to your " + vaginaDescript(0) + " before you start to drop.", false);
+        outputText(" in a hurry.   Meanwhile the bunny looks on in a semi-aroused stupor, stroking her length with one hand while her other teases one of the hard nubs of her nipples.  You sigh with excitement as you position yourself above her, lining up her somewhat angular crown with the entrance to your " + vaginaDescript(player, 0) + " before you start to drop.", false);
         if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("  Moisture leaks in a steady drizzle, mixing with bunny-pre to totally slick the soon-to-be invading member.", false);
         outputText("\n\n", false);
 
@@ -176,11 +176,11 @@ export class BunnyGirl {
         outputText(".  You don't need any more encouragement.  The long, slow slide down her thick bunny-dick is heavenly, as the veins on its surface scratch your 'itch' in just the right way.  ", false);
         if (player.vaginalCapacity() < 20) outputText("By the time you're getting close to the bottom you have to work to encompass her length and girth within your velvet folds and grunt with discomfort from each new inch of throbbing fuck-stick, but you take it all.  ", false);
         else if (player.vaginalCapacity() < 50) outputText("By the time you get to the bottom you're panting and moaning, delighting in the feeling of being so perfectly impaled on a rigid fuck-stick.   With her entirely inside you, you're ready to fuck her in earnest.  ", false);
-        else outputText("It doesn't take long to slide down the more-than footlong meat-pole, and to be honest you wish she was a bit bigger.  Your " + vaginaDescript(0) + " is so ready for big dicks that this disproportionate member is average at best.  Still, you clench your thigh muscles to wring it a little tighter, and swoon from the feeling of warm maleness filling your loins.  ", false);
+        else outputText("It doesn't take long to slide down the more-than footlong meat-pole, and to be honest you wish she was a bit bigger.  Your " + vaginaDescript(player, 0) + " is so ready for big dicks that this disproportionate member is average at best.  Still, you clench your thigh muscles to wring it a little tighter, and swoon from the feeling of warm maleness filling your loins.  ", false);
         player.cuntChange(35, true);
         outputText("\n\n", false);
 
-        outputText("While the bunny was content to remain passive up until this point, a fire lights in her eyes now that she's had a taste of pussy.  Her petite hands grab hold of your " + assDescript() + " while she pulls her powerful, oddly-jointed legs underneath of her.  A split second later she pushes up with enough force to bounce you a few inches into the air before you drop down on top of her.  ", false);
+        outputText("While the bunny was content to remain passive up until this point, a fire lights in her eyes now that she's had a taste of pussy.  Her petite hands grab hold of your " + buttDescription(player) + " while she pulls her powerful, oddly-jointed legs underneath of her.  A split second later she pushes up with enough force to bounce you a few inches into the air before you drop down on top of her.  ", false);
         if (player.tallness >= 72) {
             outputText("Your sheer weight makes her grunt in discomfort when you land back atop her, but the squish of copious sexual fluids nearly drowns it out. She even squirts another thick gout of pre inside you.  ", false);
             if (player.cor < 33) outputText("You'll have to try to slow your descent next time!  ", false);
@@ -189,21 +189,21 @@ export class BunnyGirl {
         else outputText("Your bodies clap together with a loud squish of copious sexual fluids, and another thick burble of pre warms your cunny.  ", false);
         outputText("How much pre-cum can she squirt?!\n\n", false);
 
-        outputText("You reach down and grab the bunny's hips for support as she bounces you again, higher this time.  A solid five or six inches of her length slide in and out of your " + vaginaDescript(0) + " before you slap into her, and a split second later, you're airborne again.  She bounces you harder and harder until each thrust of her muscled thighs is launching you nearly a foot off her loins and letting gravity guide you back down her shaft.", false);
-        if (player.clitLength >= 4) outputText("  Your " + clitDescript() + " bounces on her belly, tingling like mad every time it slaps into her tanned, sweat-slicked skin.", false);
+        outputText("You reach down and grab the bunny's hips for support as she bounces you again, higher this time.  A solid five or six inches of her length slide in and out of your " + vaginaDescript(player, 0) + " before you slap into her, and a split second later, you're airborne again.  She bounces you harder and harder until each thrust of her muscled thighs is launching you nearly a foot off her loins and letting gravity guide you back down her shaft.", false);
+        if (player.clitLength >= 4) outputText("  Your " + clitDescription(player) + " bounces on her belly, tingling like mad every time it slaps into her tanned, sweat-slicked skin.", false);
         if (player.biggestLactation() >= 1) outputText("  Milk begins to bead on your " + allBreastsDescript(player) + " from the sensation of the bunny's brutal, almost mechanical fucking.", false);
         outputText("  The eager girl moans, \"<i>Ooooh fuckfuckyes... gotta fuck... gotta breed... ungh... eggs eggs eggs!</i>\"\n\n", false);
 
-        outputText("Eggs?  Is she going to knock you up with eggs?  The confusion she's caused actually distracts you from the sex long enough to push back your orgasm, but the amorous bunny-gal pushes herself over the edge with one last thrust, hard enough to nearly launch you from her tumescent cock.  You slide back down the exhausted bunny, but don't feel the telltale spurting and warmth you'd expect to be bursting inside your " + vaginaDescript(0) + ".  Sure, there is a trickle of warmth, but your convulsing lover's rod hasn't spurted like a male's organ should.   You turn to get a better look at her and notice that she STILL seems lost in orgasm, and her balls are GONE!\n\n", false);
+        outputText("Eggs?  Is she going to knock you up with eggs?  The confusion she's caused actually distracts you from the sex long enough to push back your orgasm, but the amorous bunny-gal pushes herself over the edge with one last thrust, hard enough to nearly launch you from her tumescent cock.  You slide back down the exhausted bunny, but don't feel the telltale spurting and warmth you'd expect to be bursting inside your " + vaginaDescript(player, 0) + ".  Sure, there is a trickle of warmth, but your convulsing lover's rod hasn't spurted like a male's organ should.   You turn to get a better look at her and notice that she STILL seems lost in orgasm, and her balls are GONE!\n\n", false);
 
-        outputText("Your eyes cross from a sudden, massive change in thickness of your lover's pole.  It starts out at your lower lips, spreading them until they're positively gaping.  Muscular contractions in the bunny's shaft make her dick pulse inside you, slowly pushing the bulge upwards and stretching your " + vaginaDescript(0) + "'s walls as it travels towards your womb.  More and more fluid leaks inside of your channel until your " + legs(player) + " relax and go limp.  It isn't just pre-cum anymore – it's dulling the pain and relaxing your body!  You can actually feel your cervix starting to open involuntarily as the bulge passes the halfway point.  From the distended spot downwards, your cunt hangs loosely around the swollen cock, but another knot emerges at the base and starts to slide up your abused tunnel.  ", false);
+        outputText("Your eyes cross from a sudden, massive change in thickness of your lover's pole.  It starts out at your lower lips, spreading them until they're positively gaping.  Muscular contractions in the bunny's shaft make her dick pulse inside you, slowly pushing the bulge upwards and stretching your " + vaginaDescript(player, 0) + "'s walls as it travels towards your womb.  More and more fluid leaks inside of your channel until your " + legs(player) + " relax and go limp.  It isn't just pre-cum anymore – it's dulling the pain and relaxing your body!  You can actually feel your cervix starting to open involuntarily as the bulge passes the halfway point.  From the distended spot downwards, your cunt hangs loosely around the swollen cock, but another knot emerges at the base and starts to slide up your abused tunnel.  ", false);
         // (Cunt Change HERE)
         player.cuntChange(70, true);
         outputText("\n\n", false);
 
-        outputText("The girl underneath you is thrashing and moaning, chanting, \"<i>Yes... eggs eggs EGGS! YES!</i>\" while her ovipositor-like cock robs you of your strength and slides egg-shaped bulges inside you.  Amazingly, your " + vaginaDescript(0) + " is awash with pleasure, and you reach down to ", false);
-        if (player.clitLength >= 4) outputText("fondle your " + clitDescript() + " a moment before wrapping your hand around it and stroking the girl-cock excitedly.", false);
-        else outputText("caress your " + clitDescript() + " a moment before you start to circle it with a finger, teasing it expertly.", false);
+        outputText("The girl underneath you is thrashing and moaning, chanting, \"<i>Yes... eggs eggs EGGS! YES!</i>\" while her ovipositor-like cock robs you of your strength and slides egg-shaped bulges inside you.  Amazingly, your " + vaginaDescript(player, 0) + " is awash with pleasure, and you reach down to ", false);
+        if (player.clitLength >= 4) outputText("fondle your " + clitDescription(player) + " a moment before wrapping your hand around it and stroking the girl-cock excitedly.", false);
+        else outputText("caress your " + clitDescription(player) + " a moment before you start to circle it with a finger, teasing it expertly.", false);
         if (player.cockTotal() > 0) {
             outputText("  " + SMultiCockDesc(game.player) + " twitches and drools ", false);
             if (player.cocks[0].cockLength < 10) outputText("on the bunny's belly", false);
@@ -216,7 +216,7 @@ export class BunnyGirl {
         }
         outputText("  The futanari rabbit's dick-head swells as the egg reaches her tip, completely opening your womb, and then with one last explosive push, launches it deep inside you.\n\n", false);
 
-        outputText("You get off hard.  Despite the drug-induced relaxation that's overwhelmed you from the waist down, rippling convulsions erupt up and down your " + vaginaDescript(0) + ", squeezing the egg-spurting cock tightly.  This only speeds the passage of the bunny's second bulge, and in seconds her distended cock-head is stretched wider than before, locking her inside you for a moment.   The pair of you rock and grind your hips together futilely until the final egg erupts inside of you, accompanied by a huge wave of whatever it is that's made your lower body so nerveless.", false);
+        outputText("You get off hard.  Despite the drug-induced relaxation that's overwhelmed you from the waist down, rippling convulsions erupt up and down your " + vaginaDescript(player, 0) + ", squeezing the egg-spurting cock tightly.  This only speeds the passage of the bunny's second bulge, and in seconds her distended cock-head is stretched wider than before, locking her inside you for a moment.   The pair of you rock and grind your hips together futilely until the final egg erupts inside of you, accompanied by a huge wave of whatever it is that's made your lower body so nerveless.", false);
         if (player.cockTotal() > 0) {
             outputText("  At last, " + sMultiCockDesc(game.player) + " blasts sticky ropes of seed everywhere, cumming with you as your body slides sideways off the exhausted bunny into the dirt.  A few thick strands hit her tits and face, but judging by her half-closed eye-lids and questing tongue, she doesn't mind.", false);
             if (player.cumQ() > 500) outputText("  Not content with that, " + sMultiCockDesc(game.player) + " continues to pump until the bunny is coated with a generous layer of seed", false);
@@ -249,13 +249,13 @@ export class BunnyGirl {
     private bunbunFucksPCInAss(): void {
         spriteSelect(13);
         outputText("", true);
-        outputText("You get a very naughty idea and silently discard your " + player.armorName + ", tossing it aside as you turn around and present your " + assDescript() + " to the bunny-girl.  With a lewd shake, you tease her and give her a good view of your " + assholeDescript() + " while it lowers closer and closer to the turgid bunny-cock, just inches away.  Drops of clear pre-cum roll down her shaft as it twitches eagerly, and the girl watches you through a gleam of sexual excitement while her shaft gets closer and closer to your rear entrance.  You let your " + legs(player) + " relax a little until it's pressing tightly against your sphincter, feeling it slather pre-cum in preparation for the coming penetration.\n\n", false);
+        outputText("You get a very naughty idea and silently discard your " + player.armorName + ", tossing it aside as you turn around and present your " + buttDescription(player) + " to the bunny-girl.  With a lewd shake, you tease her and give her a good view of your " + assholeDescript(player) + " while it lowers closer and closer to the turgid bunny-cock, just inches away.  Drops of clear pre-cum roll down her shaft as it twitches eagerly, and the girl watches you through a gleam of sexual excitement while her shaft gets closer and closer to your rear entrance.  You let your " + legs(player) + " relax a little until it's pressing tightly against your sphincter, feeling it slather pre-cum in preparation for the coming penetration.\n\n", false);
 
         outputText("Looking over your shoulder at the bunny's beet-red face, you let a little of your weight down and start to spread around the bunny-herm's cock.  It slides inside you easily, aided by her copious drops of pre-cum, but ", false);
         if (player.analCapacity() < 20) outputText("it stretches you dangerously wide as you slide down the thick shaft.  The further down it gets, the more you have to work to relax your muscles and push yourself along.  With enough time, patience, and copious bunny-pre, you manage to take it completely inside you.  It twitches happily while you adjust to the intrusion, but you know you're just getting started.", false);
-        else if (player.analCapacity() < 40) outputText("you have to keep pausing as you slide down to let more of her pre-cum bubble out and lubricate the fourteen inch shaft.  It fills you nicely, pressing on your innards in all the right ways as you slowly engulf the bunny-cock with your " + assholeDescript() + ".  After bottoming out, your nervous lover's prick pulsates happily inside you, but you're just getting started.", false);
+        else if (player.analCapacity() < 40) outputText("you have to keep pausing as you slide down to let more of her pre-cum bubble out and lubricate the fourteen inch shaft.  It fills you nicely, pressing on your innards in all the right ways as you slowly engulf the bunny-cock with your " + assholeDescript(player) + ".  After bottoming out, your nervous lover's prick pulsates happily inside you, but you're just getting started.", false);
         else {
-            outputText("you wish it was a bit bigger.  A few seconds is all it takes to get her thick shaft completely inside your " + assholeDescript() + ".  You clench and squeeze your muscles around it as you sit on the bunny-", false);
+            outputText("you wish it was a bit bigger.  A few seconds is all it takes to get her thick shaft completely inside your " + assholeDescript(player) + ".  You clench and squeeze your muscles around it as you sit on the bunny-", false);
             if (player.cor < 50) outputText("girl", false);
             else outputText("bitch", false);
             outputText("'s lap, giggling as you feel it twitch happily inside you, but you're just getting started.", false);
@@ -270,7 +270,7 @@ export class BunnyGirl {
 
         outputText("Without meaning to, you begin to pick up the speed of your up and down strokes.  Your body is feeling horny and warm from all the sex, and having such a strange, attractive lover mating with your backside isn't helping.  ", false);
         if (player.hasVagina()) {
-            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("Juices begin to run from your " + vaginaDescript(0) + ", but you ignore the empty feeling and focus on the throbbing meat inside your backdoor.  ", false);
+            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("Juices begin to run from your " + vaginaDescript(player, 0) + ", but you ignore the empty feeling and focus on the throbbing meat inside your backdoor.  ", false);
         }
         outputText("Fingers find their way to your nipples without conscious thought, and begin ", false);
         if (!player.hasFuckableNipples()) {
@@ -284,26 +284,26 @@ export class BunnyGirl {
             outputText(".", false);
         }
         else outputText("sliding inside them, fucking their cunt-like interiors as you start to lose yourself to the pleasure.", false);
-        outputText("  The bunny reaches down to your " + assDescript() + " and gives it a gentle caress and squeeze.  A moment later both her hands are holding your butt-cheeks, guiding you up and down as you bounce atop her faster and faster.\n\n", false);
+        outputText("  The bunny reaches down to your " + buttDescription(player) + " and gives it a gentle caress and squeeze.  A moment later both her hands are holding your butt-cheeks, guiding you up and down as you bounce atop her faster and faster.\n\n", false);
 
         outputText("You stroke the downy fur of her thighs through your fingers, marveling at her softness as you let the bunny start to set a tempo so fast that her pre-cum is squirting out with each wet, gushy fuck.   She occasionally gives your ass a gentle slap and starts moaning and panting out loud with every heated penetration, \"<i>Fuck... breed... mmm... yes... eggs eggs pleaseletmeegg!</i>\" It's hard to pay attention with the rising pleasure surging through your body", false);
         if (player.cockTotal() > 0) {
             outputText(", and " + sMultiCockDesc(game.player) + " pouring incredibly sticky pre-cum each time she squeezes your prostate", false);
         }
-        else if (player.hasVagina()) outputText(", and your " + vaginaDescript(0) + " clenching and dripping on the verge of orgasm", false);
+        else if (player.hasVagina()) outputText(", and your " + vaginaDescript(player, 0) + " clenching and dripping on the verge of orgasm", false);
         outputText(".", false);
         if (player.biggestLactation() >= 1) {
             outputText("  Milk ", false);
             if (player.biggestLactation() < 2) outputText("leaks", false);
             else if (player.biggestLactation() < 4) outputText("drips", false);
             else outputText("pours", false);
-            outputText(" from your " + nippleDescript(0) + "s, turning your front to a leaky mess as you ride the very edge of pleasure.", false);
+            outputText(" from your " + nippleDescription(player, 0) + "s, turning your front to a leaky mess as you ride the very edge of pleasure.", false);
         }
         outputText("\n\n", false);
 
         outputText("Wait a second, what was that about eggs?  The confusion that comes with that thought distracts you enough to keep you from cumming, but the bunny orgasms before you have a chance to reconsider your position atop her.  She convulses, her rod twitching and thickening slightly, but you don't feel the warmth of erupting cum that you would expect.  You look down at her, but the bunny-girl is too insensate to provide any answer, and it's not until you notice that her balls are missing that you realize something is wildly different about the way her orgasms work.\n\n", false);
 
-        outputText("You gasp in pain as the thickness at the base of your lover's shaft doubles.  It stretches your " + assholeDescript() + " wide, almost painfully wide as something starts to push up her dick from the inside.  Before you can pull yourself off her, a massive gush of fluid drizzles inside of you, quickly numbing any pain and stealing the strength from your " + legs(player) + " and muscles.  You twist back and forth, but the pleasure intensifies as the bulge slips past your sphincter, leaving your body slightly agape in its wake.  You find the rest of its passage to be more comfortable ", false);
+        outputText("You gasp in pain as the thickness at the base of your lover's shaft doubles.  It stretches your " + assholeDescript(player) + " wide, almost painfully wide as something starts to push up her dick from the inside.  Before you can pull yourself off her, a massive gush of fluid drizzles inside of you, quickly numbing any pain and stealing the strength from your " + legs(player) + " and muscles.  You twist back and forth, but the pleasure intensifies as the bulge slips past your sphincter, leaving your body slightly agape in its wake.  You find the rest of its passage to be more comfortable ", false);
         if (player.cockTotal() > 0) {
             outputText("and as it squeezes past your prostate, " + sMultiCockDesc(game.player) + " spurts thick cum on the ground, though you don't QUITE orgasm.", false);
         }
@@ -312,14 +312,14 @@ export class BunnyGirl {
         player.buttChange(70, true);
         outputText("\n\n", false);
 
-        outputText("A moment before the bulge reaches the tip of the rabbit-cock, you feel another sliding through your " + assholeDescript() + ".  The bunny-dick's head thickens for a moment before it dwindles down to its normal shape.  You feel something warm and orb shaped inside you – it's an egg!  The strangeness of the insemination can't hold back the excitement your body built up or the feelings the second egg's passage is leaving in its wake, and you cum hard.  Somehow your body gets enough control to squeeze the girl's penis tightly, but all it accomplishes is speeding the eggs passage as it spurts into your rectum along with another big burst of pleasant, relaxing fluids.", false);
+        outputText("A moment before the bulge reaches the tip of the rabbit-cock, you feel another sliding through your " + assholeDescript(player) + ".  The bunny-dick's head thickens for a moment before it dwindles down to its normal shape.  You feel something warm and orb shaped inside you – it's an egg!  The strangeness of the insemination can't hold back the excitement your body built up or the feelings the second egg's passage is leaving in its wake, and you cum hard.  Somehow your body gets enough control to squeeze the girl's penis tightly, but all it accomplishes is speeding the eggs passage as it spurts into your rectum along with another big burst of pleasant, relaxing fluids.", false);
         if (player.cockTotal() > 0) {
             outputText("  " + SMultiCockDesc(game.player) + " erupts in truth, spraying and splattering white goop over the grass and ground.", false);
             if (player.cumQ() > 500) outputText("  The splattering of your seed only increases in volume as it makes a rather large puddle", false);
             if (player.cumQ() > 2000) outputText(", but you just keep going until you create a lazily winding river of cum that flows its way through the grasses", false);
             if (player.cumQ() > 500) outputText(".", false);
         }
-        if (player.hasVagina()) outputText("  Your " + vaginaDescript(0) + " clenches, empty, drooling, and neglected, wishing it something inside it.", false);
+        if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " clenches, empty, drooling, and neglected, wishing it something inside it.", false);
         outputText("\n\n", false);
 
         outputText("You slide off still-dripping bunny-tool and roll onto your back, panting from the force of your orgasm and remarkably sated.   The eggs inside you don't feel uncomfortable at all, in fact, you barely notice them.  Looking over, you see the rabbit-girl is finally done cumming, though her eyes haven't quite rolled the whole way back down.  Exhausted and filled with pleasant hormones that make it hard to think, the both of you simply lie and rest a bit.\n\n", false);

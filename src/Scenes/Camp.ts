@@ -1330,7 +1330,7 @@ export class Camp extends NPCAwareContent {
             // Tit removal
             else if (player.statusAffectv1(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() < 12) {
                 outputText("", true);
-                outputText("<b>Black milk dribbles from your " + nippleDescript(0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>", false);
+                outputText("<b>Black milk dribbles from your " + nippleDescription(player, 0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>", false);
                 player.removeStatusAffect(StatusAffects.Exgartuan);
             }
         }

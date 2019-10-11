@@ -331,7 +331,7 @@ export class BakeryScene extends TelAdreAbstractContent {
                 outputText(player.modTone(0, 2), false);
                 outputText(player.modThickness(100, 1), false);
                 if (rand(3) == 0 && player.buttRating < 15) {
-                    outputText("\n\nWhen you stand back up your " + buttDescript() + " jiggles a little bit more than you'd expect.", false);
+                    outputText("\n\nWhen you stand back up your " + buttDescription(player) + " jiggles a little bit more than you'd expect.", false);
                     player.buttRating++;
                 }
                 if (rand(3) == 0 && player.hipRating < 15) {
@@ -350,14 +350,14 @@ export class BakeryScene extends TelAdreAbstractContent {
             else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "brownies") {
                 outputText(player.modThickness(100, 4), false);
                 if (rand(2) == 0 && player.hipRating < 30) {
-                    outputText("\n\nAfter finishing, you find your gait has changed.  Your " + hipDescript() + " definitely got wider.", false);
+                    outputText("\n\nAfter finishing, you find your gait has changed.  Your " + hipDescription(player) + " definitely got wider.", false);
                     player.hipRating += 2;
                 }
             }
             else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "cupcakes") {
                 outputText(player.modTone(0, 4), false);
                 if (rand(2) == 0 && player.buttRating < 30) {
-                    outputText("\n\nWhen you stand back up your " + buttDescript() + " jiggles with a good bit of extra weight.", false);
+                    outputText("\n\nWhen you stand back up your " + buttDescription(player) + " jiggles with a good bit of extra weight.", false);
                     player.buttRating += 2;
                 }
             }
@@ -365,11 +365,11 @@ export class BakeryScene extends TelAdreAbstractContent {
                 outputText(player.modTone(0, 2), false);
                 outputText(player.modThickness(100, 2), false);
                 if (rand(3) == 0 && player.buttRating < 25) {
-                    outputText("\n\nWhen you stand back up your " + buttDescript() + " jiggles a little bit more than you'd expect.", false);
+                    outputText("\n\nWhen you stand back up your " + buttDescription(player) + " jiggles a little bit more than you'd expect.", false);
                     player.buttRating++;
                 }
                 if (rand(3) == 0 && player.hipRating < 25) {
-                    outputText("\n\nAfter finishing, you find your gait has changed.  Did your " + hipDescript() + " widen?", false);
+                    outputText("\n\nAfter finishing, you find your gait has changed.  Did your " + hipDescription(player) + " widen?", false);
                     player.hipRating++;
                 }
             }

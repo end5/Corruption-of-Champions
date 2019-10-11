@@ -68,7 +68,7 @@ export class IncubusMechanic extends Monster {
             combatRoundOver();
             return;
         }
-        outputText("The incubus lunges forward in a clumsy attack that you start to side-step, only to feel something grip behind your " + game.buttDescript() + " and pull your " + legs(player) + " out from under you.");
+        outputText("The incubus lunges forward in a clumsy attack that you start to side-step, only to feel something grip behind your " + game.buttDescription(player) + " and pull your " + legs(player) + " out from under you.");
         if ((player.spe - 30) > rand(60)) {
             outputText("  You spin as you fall, twisting your " + legs(player) + " free and springing back to your " + feet(player) + " unharmed.");
         }
@@ -111,18 +111,18 @@ export class IncubusMechanic extends Monster {
                 break;
             case 1: // Chest
                 if (player.hasFuckableNipples()) {
-                    outputText(allBreastsDescript() + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.");
+                    outputText(allBreastsDescript(player) + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.");
                     dynStats("lus", 3);
                     if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
                         player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);
                     else player.addStatusValue(StatusAffects.DemonSeed, 1, 8);
                     player.slimeFeed();
                 }
-                else outputText(allBreastsDescript() + ".  Thankfully it doesn't seem to have much effect.");
+                else outputText(allBreastsDescript(player) + ".  Thankfully it doesn't seem to have much effect.");
                 break;
             default: // Crotch
                 if (player.vaginas.length > 0) {
-                    outputText("crotch.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way past your " + player.armorName + " and into your " + vaginaDescript(0) + ".  You can feel it moving around inside you, doing its best to prepare you for its master.");
+                    outputText("crotch.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way past your " + player.armorName + " and into your " + vaginaDescript(player, 0) + ".  You can feel it moving around inside you, doing its best to prepare you for its master.");
                     dynStats("lus", 3);
                     if (player.findStatusAffect(StatusAffects.DemonSeed) < 0)
                         player.createStatusAffect(StatusAffects.DemonSeed, 5, 0, 0, 0);

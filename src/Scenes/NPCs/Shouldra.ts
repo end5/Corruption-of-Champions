@@ -39,7 +39,7 @@ export class Shouldra extends Monster {
             // (regular attack 1)
             if (choice == 0) outputText("Ducking in close, the girl thunders a punch against your midsection, leaving a painful sting.", false);
             // (regular attack 2)
-            else if (choice == 1) outputText("The girl feints a charge, leans back, and snaps a kick against your " + hipDescript() + ". You stagger, correct your posture, and plunge back into combat.", false);
+            else if (choice == 1) outputText("The girl feints a charge, leans back, and snaps a kick against your " + hipDescription(player) + ". You stagger, correct your posture, and plunge back into combat.", false);
             // (regular attack 3)
             else if (choice == 2) outputText("You momentarily drop your guard as the girl appears to stumble. She rights herself as you step forward and lands a one-two combination against your torso.", false);
             outputText(" (" + damage + ")", false);

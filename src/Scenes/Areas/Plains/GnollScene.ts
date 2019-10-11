@@ -25,13 +25,13 @@ export class GnollScene {
             outputText(multiCockDescriptLight(game.player), false);
             if (player.hasVagina()) outputText(" and ", false);
         }
-        if (player.hasVagina()) outputText(vaginaDescript(0), false);
+        if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
         if (player.gender > 0) outputText(".  ", false);
         else outputText("flat, featureless groin.  ", false);
         //  (if cockTotal=0 AND vaginas=1)
         if (!player.hasCock()) {
             if (player.hasVagina()) {
-                outputText("The gnoll looks a little disappointed at the void between your legs.  \"<i>Aw, I was hoping for something substantial,</i>\" she titters.  That doesn't stop her from hefting her engorged clit-dick and slapping its tip onto the entrance of your " + vaginaDescript(0) + ".  With one jittery lurch forward, she shoves her clit up inside you, her pubic mound mashing up against your " + clitDescript() + ".", false);
+                outputText("The gnoll looks a little disappointed at the void between your legs.  \"<i>Aw, I was hoping for something substantial,</i>\" she titters.  That doesn't stop her from hefting her engorged clit-dick and slapping its tip onto the entrance of your " + vaginaDescript(player, 0) + ".  With one jittery lurch forward, she shoves her clit up inside you, her pubic mound mashing up against your " + clitDescription(player) + ".", false);
                 player.cuntChange(9, true, true, false);
                 outputText("\n\n", false);
             }
@@ -66,7 +66,7 @@ export class GnollScene {
         }
         outputText("In no time whatsoever she falls into an easy rhythm, pistoning her obscene girl-dick in and out of you.  At first, you can do little more than gurgle and squirm under the assault, but all too soon you feel the telltale signs of your own arousal building.  You find yourself moving in sympathy with her thrusts, at least as best you can given the circumstances.", false);
         // (if breastRating>C)
-        if (player.biggestTitSize() >= 3) outputText("  Your " + allBreastsDescript(player) + " bounce up and down as the gnoll grinds her anatomy into yours, slick with sweat under the hot sun.  Your " + nippleDescript(0) + "s tighten and flush as your whole body submits to the rough fuck administered by the hyena girl.", false);
+        if (player.biggestTitSize() >= 3) outputText("  Your " + allBreastsDescript(player) + " bounce up and down as the gnoll grinds her anatomy into yours, slick with sweat under the hot sun.  Your " + nippleDescription(player, 0) + "s tighten and flush as your whole body submits to the rough fuck administered by the hyena girl.", false);
         // (if cockTotal>0)
         if (player.cockTotal() > 0) {
             outputText("  Your hips begin to buck as your orgasm builds, but the gnoll slams her hands down on your sides, pinning you to the hardscrabble ground.  \"<i>Best if you don't move too much, lover,</i>\" she laughs, even as she quickens her pace.  Immediately your ", false);
@@ -138,7 +138,7 @@ export class GnollScene {
 
         outputText("Now you begin to roll your hips in a steady rhythm, running your dick up and down her long clitoral tunnel.  It's like the deepest, tightest cunt you've ever had, gripping every inch of you.", false);
         // (if balls>0)
-        if (player.balls > 0) outputText("  It doesn't take long before your " + ballsDescriptLight() + " begin twitching, pumping cum down the length of your encased cock.", false);
+        if (player.balls > 0) outputText("  It doesn't take long before your " + ballsDescriptLight(player) + " begin twitching, pumping cum down the length of your encased cock.", false);
         outputText("  Your orgasm is quick and hard.  Your entire body seems to tremble under the hot sun and your thrusting doubles and then redoubles, stuffing your dick down hers like mad.\n\n", false);
 
         // (if cumQ()<25)
@@ -243,13 +243,13 @@ export class GnollScene {
     // TakeHerClit
     private takeGnollClit(): void {
         outputText("", true);
-        outputText("You roughly roll her onto her back and pull her long clit up to a vertical position.  She moans softly, and the rough skin beneath your fingers pulses as her arousal brings it harder and taller.  The end bloats larger, fuller, until it might be too wide for your purposes.  You line up your " + vaginaDescript(0) + " and lower yourself onto the long, narrow faux-cock.", false);
+        outputText("You roughly roll her onto her back and pull her long clit up to a vertical position.  She moans softly, and the rough skin beneath your fingers pulses as her arousal brings it harder and taller.  The end bloats larger, fuller, until it might be too wide for your purposes.  You line up your " + vaginaDescript(player, 0) + " and lower yourself onto the long, narrow faux-cock.", false);
         player.cuntChange(9, true, true, false);
         outputText("\n\n", false);
         outputText("It slithers up your love canal with alacrity, and you quickly find yourself sitting on the gnoll's haunches.  You pump your hips up and down, relishing the feel of the thin spike slipping around within you.  This was not, however, what her anatomy was designed to do, and you can feel her monstrous clitoris flagging within you, collapsing down and denying you your well-deserved fucking.\n\n", false);
         outputText("\"<i>Hey!</i>\" you shout, and reach forward to slap the gnoll across the face.  Abruptly the clit-dick hardens inside you, even as the girl's face registers little response.  With a smirk, you try it again.  A second hard slap brings the hyena's pseudocock ramrod straight up inside you, and you roll your hips atop her appreciatively.\n\n", false);
         outputText("Every few strokes, the fake dick starts to fail you and you reach forward to slap her again.  Pump pump slap.  Thrust thrust smack.  Grunt grunt slap.  By the time your body rises up to the quivering summit of orgasm, the gnoll's face is purple with bruises.  You scream your orgasm to the sky, bearing down hard on her hollow clitoris, and come hard enough that you see stars.\n\n", false);
-        outputText("When you can get your feet under yourself again, you stand up, letting the now-shrunken clitoris fall out of your " + vaginaDescript(0) + " with a wet plop.  You leave her there on the sun-caked ground and head back to camp.", false);
+        outputText("When you can get your feet under yourself again, you stand up, letting the now-shrunken clitoris fall out of your " + vaginaDescript(player, 0) + " with a wet plop.  You leave her there on the sun-caked ground and head back to camp.", false);
         player.orgasm();
         cleanupAfterCombat();
     }
@@ -261,7 +261,7 @@ export class GnollScene {
 
         outputText("A rolling, harsh laughter surrounds you as you sink to ground, no longer strong enough to remain upright.  The gnoll's mocking bark fills the air as she disposes of your " + player.armorName, false);
         if (player.weaponName != "fists") outputText(" and " + player.weaponName, false);
-        outputText(" with rough motions, the soft pads of her paw-like hands coarsely grasping your " + hipDescript() + " as much to grope as to strip you.  As she knocks your belongings aside, a small, bulbous bottle rolls out of your pouches, the lurid white fluid sloshing inside like an alabaster stain against the dull browns and greens of the plains.  The hyena-girl pauses in her eagerness to taste the spoils of victory, regarding the stray vial doubtfully.  Her lips curl into a sneer that approaches a smile and she stoops down to retrieve the creamy flask.  Through the panting haze obscuring your vision, you can make out the murky whorls of curious thickness in the cum-colored elixir and you realize that the amazon has found your Succubi's Dream.\n\n", false);
+        outputText(" with rough motions, the soft pads of her paw-like hands coarsely grasping your " + hipDescription(player) + " as much to grope as to strip you.  As she knocks your belongings aside, a small, bulbous bottle rolls out of your pouches, the lurid white fluid sloshing inside like an alabaster stain against the dull browns and greens of the plains.  The hyena-girl pauses in her eagerness to taste the spoils of victory, regarding the stray vial doubtfully.  Her lips curl into a sneer that approaches a smile and she stoops down to retrieve the creamy flask.  Through the panting haze obscuring your vision, you can make out the murky whorls of curious thickness in the cum-colored elixir and you realize that the amazon has found your Succubi's Dream.\n\n", false);
 
         outputText("You try to protest the theft, but she casually snaps her leg into a kick that jerks your chin up and the ground rushes to meet the back of your head, white pain exploding before your eyes.  \"<i>All that you have and all that you are belongs to me,</i>\" the hyena-woman snarls.  \"<i>I will take what tribute I see fit.</i>\"  Laughing again, she flicks the cork from your potion and sniffs the concoction with renewed interest.  Her nostrils crinkle at the scent, but she locks her gaze to yours and, in an aggressive, unblinking gesture, throws her head back to swallow the curiously thick ivory fluid.  Discarding the empty glass, she licks her lips as if the refreshingly cool cream merely inflamed a different sort of thirst.\n\n", false);
 
@@ -274,19 +274,19 @@ export class GnollScene {
 
     private yoDawgHyenaBallz2(): void {
         outputText("", true);
-        outputText("Using the distraction, you roll onto your belly, crawling towards your " + player.armorName + ", hoping to use the distraction to make an escape.  Baring your " + buttDescript() + ", however, proves to be a mistake, as the gnoll fixates on the wobbling orbs, lunging desperately.  She lands atop you, her paws pinning your head and shoulders to the ground as the warmth of her impatient shaft slides between your cheeks, her new scrotum slapping wetly against ", false);
-        if (player.balls > 0) outputText("your own " + ballsDescriptLight(), false);
+        outputText("Using the distraction, you roll onto your belly, crawling towards your " + player.armorName + ", hoping to use the distraction to make an escape.  Baring your " + buttDescription(player) + ", however, proves to be a mistake, as the gnoll fixates on the wobbling orbs, lunging desperately.  She lands atop you, her paws pinning your head and shoulders to the ground as the warmth of her impatient shaft slides between your cheeks, her new scrotum slapping wetly against ", false);
+        if (player.balls > 0) outputText("your own " + ballsDescriptLight(player), false);
         else outputText("your sweat-slick thighs", false);
-        outputText(".  The amazon wastes no time, guiding her monstrous clit to your " + assholeDescript() + " with gasping pleasure, thrusting the barrel-like pseudo-cock deeply inside your nethers, drawing a cry of penetration from your lips.  The plush interior of your anus parts before her energized clitoris, her cunt flowing with warm lubrication so heavily that its deluge inundates your bowels like a flood of pre-cum.", false);
+        outputText(".  The amazon wastes no time, guiding her monstrous clit to your " + assholeDescript(player) + " with gasping pleasure, thrusting the barrel-like pseudo-cock deeply inside your nethers, drawing a cry of penetration from your lips.  The plush interior of your anus parts before her energized clitoris, her cunt flowing with warm lubrication so heavily that its deluge inundates your bowels like a flood of pre-cum.", false);
         player.buttChange(30, true, true, false);
         outputText("\n\n", false);
 
         outputText("Roughly, she bucks against your hips, pushing your face against the grass and dirt, moving with relentless speed as she fucks you with every ounce of strength in her well-toned body.  She snarls and cries out, even laughing with a mad desperation, as she plunges her rock-hard joy buzzer into your loins trying to achieve release.  Your struggles are useless against the rutting passion of the hyena-girl, who uses you like a beast in heat.  In mere minutes, her body seizes, muscles straining with the blissful throes of imminent orgasm and you whisper a prayer that she'll be done shortly.  Gnashing her teeth, she hooks both spotted paws around your shoulders and drives her jet-black member into the velvet folds of your clenching asshole, her sweltering cunny gushing with her girl-cum.\n\n", false);
 
-        outputText("Her bucking pauses for a split-second and you can feel her fuzzy balls throbbing against your " + buttDescript() + ", the stimulation of her fucking filling them with fresh loads, eager to spill into your violated hole.  But, without a passage to let loose the torrent of her sperm with, the gnoll's balls merely swell with unspent passion, lewdly quivering against", false);
+        outputText("Her bucking pauses for a split-second and you can feel her fuzzy balls throbbing against your " + buttDescription(player) + ", the stimulation of her fucking filling them with fresh loads, eager to spill into your violated hole.  But, without a passage to let loose the torrent of her sperm with, the gnoll's balls merely swell with unspent passion, lewdly quivering against", false);
         if (player.balls > 0) outputText(" your distended sac, ballooning with the fatigued flood of the prostate-milking the girl is giving you", false);
         else outputText(" your sore loins, soaked with the slimy river of the girl's excitement", false);
-        outputText(".  \"<i>N-no! I can't... quite... arg!</i>\" She trembles, unable to cum, before mindlessly starting anew, pistoning into your " + assholeDescript() + " with renewed vigor.  \"<i>I just! Have to! Fucking! Cum!</i>\" she grunts from between clenched teeth as she slams into you, the waterfall of lubrication from her pussy soaking your " + skinFurScales(player) + " as she wetly slaps her hips into yours in her increasingly desperate assault.\n\n", false);
+        outputText(".  \"<i>N-no! I can't... quite... arg!</i>\" She trembles, unable to cum, before mindlessly starting anew, pistoning into your " + assholeDescript(player) + " with renewed vigor.  \"<i>I just! Have to! Fucking! Cum!</i>\" she grunts from between clenched teeth as she slams into you, the waterfall of lubrication from her pussy soaking your " + skinFurScales(player) + " as she wetly slaps her hips into yours in her increasingly desperate assault.\n\n", false);
 
         outputText("Again and again, she rushes toward a release, and every time, her balls slosh with overflowing lust, unable to climax yet urging her to greater depravity until even words are too difficult to manage.  Your ravaged body aches under the endless rape.  It's all you can do to work your hands under your hips to masturbate in the blissful pauses while the gnoll's muscles clench in near orgasm, before she slams you back to the dirt for another round.  You lose track of time as your world narrows to the endlessly thrusting shaft of the hyena-girl's massive clitoris and the merciless weight of her ball-slapping, spunk-swollen pouch. Every time you climax, it fuels her mad frenzy until you silently beg your body to shut out the overwhelming sensations, to no avail.  Day fades into night and night into day as the amazon fucks your spasming, shuddering pucker without thought, or pity, or release.\n\n", false);
         // [NEXT]
@@ -321,12 +321,12 @@ export class GnollScene {
 
      Hyena Spot Effect #2
      (if hipRating>0)
-     You cry out as your pelvis suddenly cave inward, crumpling narrower at the top of your legs to form " + hipDescript()
+     You cry out as your pelvis suddenly cave inward, crumpling narrower at the top of your legs to form " + hipDescription(player)
      (decrease hipRating)
 
      Hyena Spot Effect #3
      (if buttRating>0)
-     You seem to bounce on your feet as you drop a few pounds in your rear.  With your new, light " + buttDescript() + ", you feel like you can fly across the plains.
+     You seem to bounce on your feet as you drop a few pounds in your rear.  With your new, light " + buttDescription(player) + ", you feel like you can fly across the plains.
      (decrease buttRating)
 
      Hyena Spot Effect #4

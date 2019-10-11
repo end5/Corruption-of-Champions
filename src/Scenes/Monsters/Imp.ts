@@ -38,19 +38,19 @@ export class Imp extends Monster {
         if (player.lust >= 60 && player.hasVagina()) {
             switch (player.vaginas[0].vaginalWetness) {
                 case VAGINA_WETNESS_NORMAL:
-                    outputText("Your " + allVaginaDescript() + " dampen" + (player.vaginas.length > 1 ? "" : "s") + " perceptibly.");
+                    outputText("Your " + allVaginaDescript(player) + " dampen" + (player.vaginas.length > 1 ? "" : "s") + " perceptibly.");
                     break;
                 case VAGINA_WETNESS_WET:
                     outputText("Your crotch becomes sticky with girl-lust.");
                     break;
                 case VAGINA_WETNESS_SLICK:
-                    outputText("Your " + allVaginaDescript() + " become" + (player.vaginas.length > 1 ? "" : "s") + " sloppy and wet.");
+                    outputText("Your " + allVaginaDescript(player) + " become" + (player.vaginas.length > 1 ? "" : "s") + " sloppy and wet.");
                     break;
                 case VAGINA_WETNESS_DROOLING:
                     outputText("Thick runners of girl-lube stream down the insides of your thighs.");
                     break;
                 case VAGINA_WETNESS_SLAVERING:
-                    outputText("Your " + allVaginaDescript() + " instantly soak" + (player.vaginas.length > 1 ? "" : "s") + " your groin.");
+                    outputText("Your " + allVaginaDescript(player) + " instantly soak" + (player.vaginas.length > 1 ? "" : "s") + " your groin.");
                 default: // Dry vaginas are unaffected
 
             }

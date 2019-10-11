@@ -67,7 +67,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 needNext = true;
             }
             else if (player.statusAffectv1(StatusAffects.Exgartuan) == 2 && player.biggestTitSize() < 12) { // Tit removal
-                outputText("\n<b>Black milk dribbles from your " + nippleDescript(0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>");
+                outputText("\n<b>Black milk dribbles from your " + nippleDescription(player, 0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>");
                 player.removeStatusAffect(StatusAffects.Exgartuan);
                 needNext = true;
             }
@@ -213,7 +213,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         }
         // (+Big Tits)
         if (rand(3) == 0 && player.biggestTitSize() > 1) {
-            outputText("\n\nYour " + allBreastsDescript() + " balloon, each growing about four bra-sizes larger... they feel so... jiggly and sensitive.  Even your nipples seem to grow with them!  Your " + player.armorName + " feels tighter than ever!", false);
+            outputText("\n\nYour " + allBreastsDescript(player) + " balloon, each growing about four bra-sizes larger... they feel so... jiggly and sensitive.  Even your nipples seem to grow with them!  Your " + player.armorName + " feels tighter than ever!", false);
             player.nippleLength += .3;
             temp = player.breastRows.length;
             while (temp > 0) {
@@ -235,7 +235,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         }
         // (+Big Clit)
         if (rand(4) == 0 && player.hasVagina()) {
-            outputText("\n\nYour " + clitDescript() + " plumps up, visibly parting your lips even when you aren't turned on.  It probably ", false);
+            outputText("\n\nYour " + clitDescription(player) + " plumps up, visibly parting your lips even when you aren't turned on.  It probably ", false);
             player.clitLength += 2;
             if (player.clitLength < 6) outputText("gets as big as a cock", false);
             else outputText("gets bigger than most cocks", false);
@@ -251,7 +251,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nYour " + cockDescript(game.player, 0) + " puffs up, getting longer and harder, but also distorting as bumps and nodules sprout all along its surface.  The coloration darkens, turning a very dark purple as a ring of bigger nodules grow out around the head.  You now have a much larger and far more corrupted dick!   It dribbles pre-cum and twitches about as if sniffing the air, feeling very warm and sensitive.", false);
             outputText("\n\nA voice suddenly splits the air, demanding, \"<i>Satiate me mortal, or I'll make you find someone who will!</i>\"", false);
             outputText("\n\nWhat the hell was that?  You look around, but cannot find the source of the voice.  It speaks again, \"<i>Down here.  What are you, deaf!?</i>\"", false);
-            outputText("\n\nYou look down, and find your demonic cock pointing directly at you, and shaking with... indignation?  The ground hits your " + buttDescript() + " hard as you fall backwards, too surprised to maintain your footing.  Is your dick talking to you?", false);
+            outputText("\n\nYou look down, and find your demonic cock pointing directly at you, and shaking with... indignation?  The ground hits your " + buttDescription(player) + " hard as you fall backwards, too surprised to maintain your footing.  Is your dick talking to you?", false);
             outputText("\n\n\"<i>Yes I am.  You should consider yourself lucky – you're now the host of the great demon Exgartuan, and you'd best please me every few hours, or I'll make sure your body finds someone to relieve my building pressure.  But I think you'll do fine.  Come now, I can see a wonderful camp in your mind that we can paint white,</i>\" it suggests.", false);
             outputText("\n\nWell now... this was certainly unexpected.  Perhaps there's a way to be rid of this thing?", false);
             dynStats("lib", 5, "lus", 10, "cor", 10);
@@ -264,7 +264,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nYour " + cockDescript(game.player, 0) + " puffs up, growing even larger as it absorbs the fountain's essence.  It dribbles pre-cum and twitches about as if sniffing the air, feeling very warm and sensitive.", false);
             outputText("\n\nA voice suddenly splits the air, demanding, \"<i>Satiate me mortal, or I'll make you find someone who will!</i>\"", false);
             outputText("\n\nWhat the hell was that?  You look around, but cannot find the source of the voice.  It speaks again, \"<i>Down here.  What are you, deaf!?</i>\"", false);
-            outputText("\n\nYou look down, and find your demonic cock pointing directly at you, and shaking with... indignation?  The ground hits your " + buttDescript() + " hard as you fall backwards, too surprised to maintain your footing.  Is your dick talking to you?", false);
+            outputText("\n\nYou look down, and find your demonic cock pointing directly at you, and shaking with... indignation?  The ground hits your " + buttDescription(player) + " hard as you fall backwards, too surprised to maintain your footing.  Is your dick talking to you?", false);
             outputText("\n\n\"<i>Yes I am.  You should consider yourself lucky – you're now the host of the great demon Exgartuan, and you'd best please me every few hours, or I'll make sure your body finds someone to relieve my building pressure.  But I think you'll do fine.  Come now, I can see a wonderful camp in your mind that we can paint white,</i>\" it suggests.", false);
             outputText("\n\nWell now... this was certainly unexpected.  Perhaps there's a way to be rid of this thing?", false);
             player.cocks[0].cockLength += 1;
@@ -273,7 +273,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         player.createStatusAffect(StatusAffects.Exgartuan, 1, 0, 0, 0);
     }
     private exgartuanInfestTits(): void {
-        outputText("\n\nYour " + allBreastsDescript() + " jiggle as they grow MUCH larger, turning into obscene mounds that shake with every motion of your body.  All your " + nippleDescript(0) + "s puff up with them, gaining volume to match their new, larger homes.  They feel hot and ache to be touched.", false);
+        outputText("\n\nYour " + allBreastsDescript(player) + " jiggle as they grow MUCH larger, turning into obscene mounds that shake with every motion of your body.  All your " + nippleDescription(player, 0) + "s puff up with them, gaining volume to match their new, larger homes.  They feel hot and ache to be touched.", false);
         temp = player.breastRows.length;
         while (temp > 0) {
             temp--;
@@ -282,8 +282,8 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nA voice suddenly splits the air, demanding, \"<i>Touch me mortal, or be stained!</i>\"", false);
         outputText("\n\nYou look about in confusion, trying to locate the source of the voice.", false);
         outputText("\n\n\"<i>Oh for fuck's sake.  Look down.  Further... further... yes, right there on your chest.  BEHOLD!  The great archdemon, Exgartuan - inhabitor of excess!  I've taken up residence in your dainty bosom, and you had best work hard to keep me pleased, or I shall stain your clothes and soak you with my mighty milk!</i>\"", false);
-        outputText("\n\nThe ground hits your " + buttDescript() + " hard as you fall backwards, too surprised to maintain your footing.  Are your breasts really talking to you?", false);
-        outputText("\n\n\"<i>Yes I am,</i>\" mutters Exgartuan, spurting a trickle of milk from your " + nippleDescript(0) + "s for emphasis, \"<i>and you had better take me back to that lovely camp I can see in your memories and give me a nice long massage.</i>\"", false);
+        outputText("\n\nThe ground hits your " + buttDescription(player) + " hard as you fall backwards, too surprised to maintain your footing.  Are your breasts really talking to you?", false);
+        outputText("\n\n\"<i>Yes I am,</i>\" mutters Exgartuan, spurting a trickle of milk from your " + nippleDescription(player, 0) + "s for emphasis, \"<i>and you had better take me back to that lovely camp I can see in your memories and give me a nice long massage.</i>\"", false);
         outputText("\n\nWell now... this was certainly unexpected.  Perhaps there's a way to be rid of this thing?", false);
         player.createStatusAffect(StatusAffects.Exgartuan, 2, 0, 0, 0);
     }
@@ -310,7 +310,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\"<i>No, it's not like that!</i>\" you yell, while pumping away, reveling in the feeling of your hands sliding up and down your pre-cum-soaked shaft.  Tiny moans interrupt your denial, punctuating it with short sharp moans of pleasure.\n\n", false);
 
                 outputText("\"<i>Oh, you're already giving in to me?  I can feel the cum boiling in your ", false);
-                if (player.balls > 0) outputText(ballsDescriptLight(), false);
+                if (player.balls > 0) outputText(ballsDescriptLight(player), false);
                 else outputText("loins", false);
                 outputText(", just aching to squirt out.  Relax and enjoy the feelings.  The more you accept it, the better it will feel.  Just give in and cum, I want to watch it splatter your face,</i>\" taunts your demon-dick.\n\n", false);
 
@@ -325,12 +325,12 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 outputText("The demon speaks up, teasing you, \"<i>Already caving in to my corruption slut?  Are you truly so happy to let a demon control your body so lewdly?  Shouldn't you at least try to pretend not to be pleased by acting like such a wanton whore?</i>\"\n\n", false);
 
                 outputText("His words ring true, but in your heart of hearts you know you're no slave to his corruption.  It's just that right now it feels so good; you love the sensation of both hands sliding up and down your cock, stroking and fondling each sensitive nub.  The flow of pre-cum thickens, practically pooling on your belly while your slippery fingers ", false);
-                if (player.biggestTitSize() >= 5) outputText("shove the bloated demon between your " + allBreastsDescript() + ", surrounding it in a home of jiggling flesh.  The wet demon-pre soaks into the skin of your tits, lubricating the passage as you mash them around, vigorously tit-fucking the source of your unholy desires.", false);
+                if (player.biggestTitSize() >= 5) outputText("shove the bloated demon between your " + allBreastsDescript(player) + ", surrounding it in a home of jiggling flesh.  The wet demon-pre soaks into the skin of your tits, lubricating the passage as you mash them around, vigorously tit-fucking the source of your unholy desires.", false);
                 else outputText("work the shaft relentlessly, drawing out more and more of the demon's pre-seed until your forearms and upper thighs are coated in the stuff, shining darkly.", false);
                 outputText("  You pant and moan, forced to feel such wonderfully obscene sensations.\n\n", false);
                 outputText("\"<i>You should look at yourself, panting and moaning like a rutting animal.  I wonder, are you still a champion  or a slave to the things I'm doing to you?  You look like a sex slave, but are you truly addicted to the feeling of squirting thick demonic jism?  Such a slutty champion you've become, " + player.short + ",</i>\" taunts Exgartuan.  Part of you wants to object, to shout down his suggestions, but every time you open your mouth the only sound to escape is a wanton moan.\n\n", false);
-                outputText("Your orgasm spreads through the demon like a wave.  You briefly wonder if it's the demon causing this to feel so good, or your own corrupt desires.  The thoughts are scattered by the feeling of a fat gob of spooge splattering over your " + face(player) + ".  You blink your eyes clear in time to see the fat, pulsating tip of your " + cockDescript(game.player, 0) + " hovering in front of your face.  Your urethra spreads wide, launching another spurt and splattering it into your " + hairDescript() + ".\n\n", false);
-                outputText("\"<i>Oh, if only your elders could see you now, soaking yourself in cum after submitting to a demon's will.  Ooooh, that feels good,</i>\" mutters your possessed prick as it continues to paint you, the hot eruptions tapering off into a steady trickle of whiteness, running down your " + allBreastsDescript() + ".  You lie back, humiliated, but smiling happily at how RELIEVED you are after creating such a massive eruption.\n\n", false);
+                outputText("Your orgasm spreads through the demon like a wave.  You briefly wonder if it's the demon causing this to feel so good, or your own corrupt desires.  The thoughts are scattered by the feeling of a fat gob of spooge splattering over your " + face(player) + ".  You blink your eyes clear in time to see the fat, pulsating tip of your " + cockDescript(game.player, 0) + " hovering in front of your face.  Your urethra spreads wide, launching another spurt and splattering it into your " + hairDescription(player) + ".\n\n", false);
+                outputText("\"<i>Oh, if only your elders could see you now, soaking yourself in cum after submitting to a demon's will.  Ooooh, that feels good,</i>\" mutters your possessed prick as it continues to paint you, the hot eruptions tapering off into a steady trickle of whiteness, running down your " + allBreastsDescript(player) + ".  You lie back, humiliated, but smiling happily at how RELIEVED you are after creating such a massive eruption.\n\n", false);
 
                 outputText("Temporarily sated, Exgartuan deflates, not even bothering to taunt you while you try to clean up the goop now splattered over your upper body.", false);
             }
@@ -342,7 +342,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 outputText("Your " + cockDescript(game.player, 0) + " seems quite taken with the idea, spurting hot globules of pre-cum until it's glazed itself in a coating of slick wetness.  Both of your hands rub along the surface, soaking themselves in the copious demon-goo, working it entirely of their own volition.  You manage to control your hips at least, and put them to work thrusting up, increasing the stimulation further, and spurring your " + cockDescript(game.player, 0) + " to drizzle even more of its corrupt fluid.  It feels too good to try to resist, and there really isn't any reason to, is there?\n\n", false);
                 outputText("\"<i>That's the ticket, " + player.short + ", you're sooo good at this.  Now go ahead and let it out.  I want to paint your face with seed and watch it drip off.  You'll let me do that right?  Who am I kidding, I feel so good you'll let me do whatever I want, won't you slut?</i>\"\n\n", false);
                 outputText("Oh gods he's right, you're going to let him aim at you and splatter you with waves of demonic jizz.  The worst part is, you can feel a large part of you looking forward to it.  You wonder what has happened to you as you give in, oblivious to the feeling of ", false);
-                if (player.biggestTitSize() >= 5) outputText("your hands smashing your " + allBreastsDescript() + " around the " + cockDescript(game.player, 0) + " and vigorously titfucking it.", false);
+                if (player.biggestTitSize() >= 5) outputText("your hands smashing your " + allBreastsDescript(player) + " around the " + cockDescript(game.player, 0) + " and vigorously titfucking it.", false);
                 else outputText("your hands repositioning your " + cockDescript(game.player, 0) + " so it lays against your chest.", false);
                 outputText("  Without a second thought you lean down to lick and suckle the head, performing auto-fellatio on the demon-dick sprouting from your groin.  You struggle to keep up with the flood of pre-cum, but you know you don't have long to wait...\n\n", false);
                 outputText("You explode, filling your mouth with the tangy seed of your demonic submission.  Why did you ever think to resist such pleasure?  White hot release radiates out from your groin, making your body numb and happy as wave after wave of demon-spunk pours down your throat and spatters your face.  Such unholy pleasures, truly you deserve to enjoy them after what you've been through, right?  You wallow in a growing lake of syrupy submission, happy to be host to such a fun demon.\n\n", false);
@@ -354,20 +354,20 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         // TITURBATION
         else if (player.statusAffectv1(StatusAffects.Exgartuan) == 2) {
             if (player.cor < 50) {
-                outputText("You shrug off your top, preparing to give into the demon's demands.  'At least I'll get to enjoy it too,' you muse, as you finish stripping the offending material from your torso.  You look down over your " + allBreastsDescript() + ", and they don't look particularly evil.  Yet you know that within those wonderful mounds of breast-flesh lurks a great force of corruption, and worse yet, you know you're giving it exactly what it wants.\n\n", false);
+                outputText("You shrug off your top, preparing to give into the demon's demands.  'At least I'll get to enjoy it too,' you muse, as you finish stripping the offending material from your torso.  You look down over your " + allBreastsDescript(player) + ", and they don't look particularly evil.  Yet you know that within those wonderful mounds of breast-flesh lurks a great force of corruption, and worse yet, you know you're giving it exactly what it wants.\n\n", false);
             }
             // (ALT 1st PG)
             else {
-                outputText("You shrug off your top eagerly, ready to cooperate with the demon inside your " + allBreastsDescript() + " and enjoy a relaxing tit-massage.  You slide the offending material to the side and marvel at the wondrously large orbs on your chest.  Truly any place that can give you such wonderful endowments can't be evil.  You lean back, enjoying the warmth in the air as it flows over every extra-sensitive inch of your mounds, more than ready to get started.\n\n", false);
+                outputText("You shrug off your top eagerly, ready to cooperate with the demon inside your " + allBreastsDescript(player) + " and enjoy a relaxing tit-massage.  You slide the offending material to the side and marvel at the wondrously large orbs on your chest.  Truly any place that can give you such wonderful endowments can't be evil.  You lean back, enjoying the warmth in the air as it flows over every extra-sensitive inch of your mounds, more than ready to get started.\n\n", false);
             }
             outputText("Both hands rise unbidden and begin to caress your " + breastDescript(game.player, 0) + ".  They slide over every sensitive inch of ", false);
             if (player.skinType == SKIN_TYPE_PLAIN || player.skinType >= SKIN_TYPE_UNDEFINED) outputText("flesh", false);
             else if (player.skinType == SKIN_TYPE_FUR) outputText("furry-covered flesh", false);
             else if (player.skinType == SKIN_TYPE_SCALES) outputText("soft scaley flesh", false);
             else outputText("gooey surface", false);
-            outputText(", pausing to gently squeeze and caress any particularly sensitive spots.  Soft sighs escape your lips from the self-imposed pleasure-assault.  Your body relaxes totally, slouching down against a rock while you continue to happily play with your " + allBreastsDescript() + ".  The entire time your hands never touch one of your " + nippleDescript(0) + "s, merely circling them from time to time, making you arch your back in need.\n\n", false);
+            outputText(", pausing to gently squeeze and caress any particularly sensitive spots.  Soft sighs escape your lips from the self-imposed pleasure-assault.  Your body relaxes totally, slouching down against a rock while you continue to happily play with your " + allBreastsDescript(player) + ".  The entire time your hands never touch one of your " + nippleDescription(player, 0) + "s, merely circling them from time to time, making you arch your back in need.\n\n", false);
             outputText("A voice taunts, \"<i>Oh, does my champion tit-massager need a little nipple-play?  And to think I thought I was the one needing to get off.  Go ahead then, submit to your desires and play with your nipples.  Wallow in the pleasure that I can give you and remember who your true master is!</i>\"\n\n", false);
-            outputText("At last, fingers wrap themselves about your " + nippleDescript(0) + "s, squeezing them gently and forcing happy gasps from your mouth.  ", false);
+            outputText("At last, fingers wrap themselves about your " + nippleDescription(player, 0) + "s, squeezing them gently and forcing happy gasps from your mouth.  ", false);
             if (player.hasVagina()) {
                 outputText("Juice", false);
                 if (player.totalCocks() > 0) outputText(" and pre-cum", false);
@@ -381,7 +381,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             outputText(" You shake and wriggle, overcome with a strange type of pleasure unlike a 'normal' orgasm.  The boobgasm does feel wonderful, but it does nothing for the aching lust that has built up in your crotch.  Perhaps you'll need to satisfy that as well.\n\n", false);
             // (lust + 15)
             dynStats("sen", .25, "lus", 15, "cor", 1);
-            if (player.biggestLactation() > 1) outputText("As you calm down you realize your " + nippleDescript(0) + "s are dribbling streams of milk, and judging from the pools of whiteness in the soil, you turned into quite the little milk-sprinkler.  ", false);
+            if (player.biggestLactation() > 1) outputText("As you calm down you realize your " + nippleDescription(player, 0) + "s are dribbling streams of milk, and judging from the pools of whiteness in the soil, you turned into quite the little milk-sprinkler.  ", false);
             outputText("You blush and redress, noting that Exgartuan seems to be silent and sleeping...  maybe you'll get a little peace now?", false);
         }
         player.changeStatusValue(StatusAffects.Exgartuan, 2, (12 + rand(7)));
@@ -396,7 +396,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             if (select == 0) {
                 outputText("A muffled voice pipes up, \"<i>Hey!  You forgetting about me?  Fucking champions think they're so good, but you're ignoring your best body part!  Can't you feel all that cum boiling ", false);
                 if (player.balls == 0) outputText("inside?", false);
-                else outputText("in your " + ballsDescriptLight() + "?", false);
+                else outputText("in your " + ballsDescriptLight(player) + "?", false);
                 outputText("  Well you'd better relieve me soon or I'll make sure your body finds someone who does!</i>\"", false);
             }
             else if (select == 1) {
@@ -423,7 +423,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             }
             else if (select == 8) {
                 outputText("Your " + cockDescript(game.player, 0) + " has started rubbing against your thighs as a familiar voice chimes in, \"<i>I've got a hot, steaming batch of cum ", false);
-                if (player.balls > 0) outputText("boiling in your " + ballsDescriptLight() + ".", false);
+                if (player.balls > 0) outputText("boiling in your " + ballsDescriptLight(player) + ".", false);
                 else outputText("cooking deep within you.", false);
                 outputText("  Find me somewhere to deliver it or I'll be shoving it down your throat, champion!</i>\"", false);
             }
@@ -435,10 +435,10 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                     outputText("You feel an ominous jiggling in your " + breastDescript(game.player, 0) + " as the demon inside you stirs back to wakefulness.  The sound of a yawn being muffled by your " + player.armorName + " confirms it.", false);
                     break;
                 case 1:
-                    outputText("After a few hours of peace, Exgartuan begins to stir.  You can feel a desire to be touched building within your " + allBreastsDescript() + ".  What a needy demon.", false);
+                    outputText("After a few hours of peace, Exgartuan begins to stir.  You can feel a desire to be touched building within your " + allBreastsDescript(player) + ".  What a needy demon.", false);
                     break;
                 case 2:
-                    outputText("Exgartuan wakes, making your " + allBreastsDescript() + " wobble pleasantly.  The need to have them groped and fondled slowly grows with the demoness's wakefulness.  She barks out, \"<i>Oi, bitch!  Touch your titties!</i>\"\n\nYou sigh.", false);
+                    outputText("Exgartuan wakes, making your " + allBreastsDescript(player) + " wobble pleasantly.  The need to have them groped and fondled slowly grows with the demoness's wakefulness.  She barks out, \"<i>Oi, bitch!  Touch your titties!</i>\"\n\nYou sigh.", false);
                     break;
                 case 3:
                     outputText("Suddenly your " + chestDesc(game.player) + " feel as if they trying to force their way off your chest.  The strange motions are accompanied by some loud moaning, as if they are stretching awake.  Looks like the delightful peace and quiet has ended.", false);
@@ -715,7 +715,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
     // (FORCE OUT ANY WORM INFECTION)
     public exgartuanWormCure(): void {
         outputText("Your ", false);
-        if (player.balls > 0) outputText(ballsDescriptLight(), false);
+        if (player.balls > 0) outputText(ballsDescriptLight(player), false);
         else outputText("groin", false);
         outputText(" begins to grow warm... no, hot.  You feel it moving and squirming with discomfort as the worms inside you wriggle about, agitated by something.  The heat intensifies and you watch in a mixture of shock and horror as they start crawling out your urethra, sliding down to the ground on a river of thick seminal fluid.  You double over in pain as something stretches you wide, and you feel the main worm pushing itself through your " + cockDescript(game.player, 0) + ", desperate to escape.  It crests the tip, wiggling and stuck for a moment as it struggles to pull free.  At last it pops out and drops to the ground, crawling away.  Exgartuan roars, \"<i>AND STAY OUT!</i>\"", false);
         outputText("\n\nYou guess there was only enough room for one or the other...", false);
@@ -733,7 +733,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             }
             // (Stops)
             else {
-                outputText("Your " + nippleDescript(0) + "s tighten up.  What's that demon up to?  Realization dawns on you when you realize your " + allBreastsDescript() + " no longer feel so 'full'.  Your lactation has stopped!", false);
+                outputText("Your " + nippleDescription(player, 0) + "s tighten up.  What's that demon up to?  Realization dawns on you when you realize your " + allBreastsDescript(player) + " no longer feel so 'full'.  Your lactation has stopped!", false);
                 boobs = player.breastRows.length;
                 while (boobs > 0) {
                     boobs--;
@@ -745,14 +745,14 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         else {
             // (START)
             if (rand(2) == 0) {
-                outputText("Your chest feels cold.  You touch your " + player.armorName + " experimentally and discover a few drops of milk have leaked from your " + nippleDescript(0) + "s!  The demon has made you start lactating!", false);
+                outputText("Your chest feels cold.  You touch your " + player.armorName + " experimentally and discover a few drops of milk have leaked from your " + nippleDescription(player, 0) + "s!  The demon has made you start lactating!", false);
                 player.boostLactation(player.breastRows.length);
             }
             // Nipple stuff
             else {
                 // (Bigger Nipples!)
                 if (rand(2) == 0) {
-                    outputText("The inner surface of your " + player.armorName + " arouses you as it rubs against your " + nippleDescript(0) + "s.  You think about it and realize they've never been like this before.  A quick check reveals each nipple has grown about a half inch longer.  Damn demons.", false);
+                    outputText("The inner surface of your " + player.armorName + " arouses you as it rubs against your " + nippleDescription(player, 0) + "s.  You think about it and realize they've never been like this before.  A quick check reveals each nipple has grown about a half inch longer.  Damn demons.", false);
                     player.nippleLength += .5;
                 }
                 // (SHORTER NIPPLES!)
@@ -806,7 +806,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         if (player.cor <= 20 && player.findPerk(PerkLib.BulgeArmor) >= 0) {
             outputText("A light breeze skims across your face, slowly fading away what little sleep you had managed to enjoy.  As your eyes slowly open and adjust, you begin to faintly make out the red moon sitting high in the sky through the fabric of your tent.  What little light there is comes from the faint remnants of your campfire, down to just embers by this point.  You slowly roll your head to look towards the warmth only to find the entrance to your tent still wide open.  A slight grimace forms as you begin to stretch awake, only to interrupt yourself upon the realization that you are still wearing your " + player.armorName + ".  A quick yet groggy glance also reveals that you've also managed to fall asleep on top of your bedroll rather than nestled cozily inside it.\n\n", false);
 
-            outputText("You glide your hands up past your forehead and through your " + hairDescript() + " as you sit up, indulging in a relaxing, deep breath.  Seeing as how you don't appear to have transmogrified or been roughed up in any discernible fashion, your best guess is that you fell asleep while unraveling your bedroll.  Too tired to further debate this with yourself, you begin to strip naked while thoughts of returning to blissful slumber ease any lingering worries.", false);
+            outputText("You glide your hands up past your forehead and through your " + hairDescription(player) + " as you sit up, indulging in a relaxing, deep breath.  Seeing as how you don't appear to have transmogrified or been roughed up in any discernible fashion, your best guess is that you fell asleep while unraveling your bedroll.  Too tired to further debate this with yourself, you begin to strip naked while thoughts of returning to blissful slumber ease any lingering worries.", false);
             // [if armorname IS NOT EQUAL TO \"<i>
             if (player.armorName != "crotch-hugging slutty swimwear" && player.armorName != "crotch-hugging revealing chainmail bikini") outputText("  You remove your " + player.armorName + " piece by piece, leaving only the magically-altered centerpiece that your favorite demon ever so generously \"<i>gifted</i>\" to you.\n\n", false);
             // [else]
@@ -848,7 +848,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 if (!player.hasSheath()) outputText("base", false);
                 else outputText("sheath", false);
                 outputText(" instead of pulling it free.  Your eyes cross from the feelings coming off your traitorous, possessed flesh after the accidental caress.  Both hands start to pump away, autonomously jacking the swollen demon-shaft into your mouth", false);
-                if (player.biggestTitSize() >= 2) outputText(" and bouncing your " + allBreastsDescript() + " around it", false);
+                if (player.biggestTitSize() >= 2) outputText(" and bouncing your " + allBreastsDescript(player) + " around it", false);
                 outputText(".  Moans of pleasure vibrate the " + cockHead(player) + " lodged in your throat while bubbles of wetness begin to slide down the lower half of your esophagus into your gullet.\n\n", false);
             }
             else {
@@ -863,12 +863,12 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 else {
                     outputText("You grab hold of the swollen flesh with both hands and start to stroke it, reveling at the feel of your palms sliding along the veiny, pre-cum slicked flesh.  You gurgle happily, your moans of pleasure vibrating the " + cockHead(player) + " in your esophagus.  The swollen cock-tip dumps globules of pre-cum down your stretched throat, directly into your hungry gullet.  With both eyes crossed and your hands absorbed in fondling your member, you quickly forget your irritation at being woken up in such a way.  You get to cum SO HARD when you're fucking yourself like this!", false);
                     if (player.biggestTitSize() >= 2) {
-                        outputText("  Your biceps squeeze around your " + allBreastsDescript() + ", mashing them into your " + cockDescript(game.player, 0) + " and adding to the pleasure.", false);
+                        outputText("  Your biceps squeeze around your " + allBreastsDescript(player) + ", mashing them into your " + cockDescript(game.player, 0) + " and adding to the pleasure.", false);
                         if (player.hasFuckableNipples() && player.biggestLactation() > 1) outputText("  Milk and lubricants ", false);
                         else if (player.hasFuckableNipples()) outputText("  Lubricants ", false);
                         else if (player.biggestLactation() > 1) outputText("  Milk ", false);
                         if (player.hasFuckableNipples() || player.hasFuckableNipples()) {
-                            outputText(" from your " + nippleDescript(0) + " puddle in the bouncing cleavage and turn your chest into a slip-n'-slide for dicks.", false);
+                            outputText(" from your " + nippleDescription(player, 0) + " puddle in the bouncing cleavage and turn your chest into a slip-n'-slide for dicks.", false);
                         }
                     }
                     outputText("\n\n", false);
@@ -885,8 +885,8 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                     outputText(" skin of your outer lips is engorged and ready, but there's no pleasure to be had for your greedy gash.  Cool night air washes over the exposed ", false);
                     if (player.skinType == SKIN_TYPE_SCALES) outputText("scales", false);
                     else outputText("skin", false);
-                    outputText(" surrounding your sex, teasing you with the barest hint of sensation while your ignorant hands maul your " + cockDescript(game.player, 0) + " at Exgartuan's behest.  If only you had taken care of yourself earlier, you might have had the control to slip a digit into your " + vaginaDescript(0), false);
-                    if (player.clitLength > 3) outputText(" or stroke your " + clitDescript(), false);
+                    outputText(" surrounding your sex, teasing you with the barest hint of sensation while your ignorant hands maul your " + cockDescript(game.player, 0) + " at Exgartuan's behest.  If only you had taken care of yourself earlier, you might have had the control to slip a digit into your " + vaginaDescript(player, 0), false);
+                    if (player.clitLength > 3) outputText(" or stroke your " + clitDescription(player), false);
                     outputText(" to fully satisfy ALL of yourself.", false);
                     outputText("\n\n", false);
                 }
@@ -896,7 +896,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                     if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) outputText("puffy", false);
                     else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("glistening", false);
                     else outputText("dripping", false);
-                    outputText(" skin of your outer lips is engorged and ready, but with your hands so focused on your " + cockDescript(game.player, 0) + ", there's little for your " + vaginaDescript(0) + " to feel.  The closest it gets to pleasure is the sensation of your " + sackDescript(player) + " slapping against it with the steady rhythm of your masturbation.  If only you had taken care of yourself earlier!  You might have had enough control over your rebellious tool to let a hand attend to your OTHER needs.\n\n", false);
+                    outputText(" skin of your outer lips is engorged and ready, but with your hands so focused on your " + cockDescript(game.player, 0) + ", there's little for your " + vaginaDescript(player, 0) + " to feel.  The closest it gets to pleasure is the sensation of your " + sackDescript(player) + " slapping against it with the steady rhythm of your masturbation.  If only you had taken care of yourself earlier!  You might have had enough control over your rebellious tool to let a hand attend to your OTHER needs.\n\n", false);
                 }
             }
             outputText("Spit foams around the tumescent intruder's girth, bubbling from the uncontrollable pistoning of Exgartuan's wrath at your " + face(player) + ".  The taut, bulging flesh of your own member is rammed so deeply into your own throat that you can feel the pre dripping into your stomach, but you want more.  ", false);
@@ -917,8 +917,8 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             outputText(" deposit.  Quiet, barely audible squishes hang in the air around you as your gut is ", false);
             if (temp < 500) outputText("pumped into", false);
             else outputText("pumped full", false);
-            outputText(" with obscene, liquid sloshing.  Your " + hipDescript() + " and " + assDescript() + " rise off the ground with your back as your muscles lock", false);
-            if (player.balls > 0) outputText(" and your " + ballsDescriptLight() + " pull tight against your groin from the effort", false);
+            outputText(" with obscene, liquid sloshing.  Your " + hipDescription(player) + " and " + buttDescription(player) + " rise off the ground with your back as your muscles lock", false);
+            if (player.balls > 0) outputText(" and your " + ballsDescriptLight(player) + " pull tight against your groin from the effort", false);
             outputText(".", false);
             temp = player.cumQ();
             if (temp > 500) {
@@ -970,10 +970,10 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("Damnable demon.  He doesn't even have the decency to taunt you- or even acknowledge your presence.  You bang your fists against your blighted dick, still unable to register any contact through the tightly-fitted obstruction (and secretly relieved you didn't injure yourself.)  You flop back down onto your back, determined to find some other way to satiate your lust.  Invigorated with their new mission, your hands begin to scour the remaining surface of your body, willing fingertips gently brushing your skin in search of a target.", false);
         // [if one row of breasts]
-        if (player.biggestTitSize() >= 2 && player.bRows() == 1) outputText("  Your quest begins squarely on your pair of " + chestDesc(game.player) + ", your mitts feverishly groping and tugging away in the hope of finding any sanctuary from your encroaching lust.  Unable to extract any meaningful solace from your magnificent mounds, your sights set on your " + nippleDescript(0) + "s.", false);
+        if (player.biggestTitSize() >= 2 && player.bRows() == 1) outputText("  Your quest begins squarely on your pair of " + chestDesc(game.player) + ", your mitts feverishly groping and tugging away in the hope of finding any sanctuary from your encroaching lust.  Unable to extract any meaningful solace from your magnificent mounds, your sights set on your " + nippleDescription(player, 0) + "s.", false);
         // [if ≥2 rows of breasts]
-        else if (player.biggestTitSize() >= 2) outputText("  The " + allBreastsDescript() + " lined down your chest should serve a proper conquest.  Your palms set off to work at once, manhandling as much titflesh as they can satisfy at once.  They dart from one row to the next, inside to out, anything to relieve your libido.  You don't appear to be settling down any, however, so you draw your focus on your top row of " + nippleDescript(0) + "s.", false);
-        else outputText("  With little else to turn to, your " + nippleDescript(0) + "s are your only guiding light to hopefully bringing you the peace you crave.", false);
+        else if (player.biggestTitSize() >= 2) outputText("  The " + allBreastsDescript(player) + " lined down your chest should serve a proper conquest.  Your palms set off to work at once, manhandling as much titflesh as they can satisfy at once.  They dart from one row to the next, inside to out, anything to relieve your libido.  You don't appear to be settling down any, however, so you draw your focus on your top row of " + nippleDescription(player, 0) + "s.", false);
+        else outputText("  With little else to turn to, your " + nippleDescription(player, 0) + "s are your only guiding light to hopefully bringing you the peace you crave.", false);
         // [if nipplecunts]
         if (player.hasFuckableNipples()) outputText("  You waste little time in pushing four fingers into each gaping teat, anxious for any sort of pleasure.  You tickle and tease, push and pull, anything you can think to release you from this torment.", false);
         else outputText("  A little tapping, tickling, and teasing is about all the effort you can seem to muster.", false);
@@ -987,7 +987,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         outputText("", true);
         outputText("Fueled by pure spite and just a hint of loathing, you begin to regain some sort of composure through controlled breathing and what little concentration you can manage.  A few minutes of counting stitches in the top of your tent is all you accomplish, however; your once dormant limp " + cockDescript(game.player, 0) + " is showing a sign of life. Your eyes widen as you feel your possessed pole stiffen up, pressing hard against your " + player.armorName + " as it grows out along with your dick, still impossibly clinging to its every facet.  It stops after only gaining a few inches, but not before driving the fight right back out of you.  Thread-counting is the last thing in your head as you quickly sit right back up, instinctually grasping for your cock.  But the situation refuses to change; your " + player.armorName + " is just as exceedingly resilient as it was before.\n\n", false);
 
-        outputText("Your desire only increasing, you begin desperately clawing at the edges of your " + player.armorName + ".  Your stuck skin only grows red from your efforts, eschewing even the notion that it might break free.  Your breathing begins to draw to a panicked pace as you stop and try to form some coherent thought.  The best your lust-addled brain can come up with is to try moving your " + hipDescript() + ", and see if you can make any contact with your imprisoned penis.  Grinding, thrusting... anything you can think of to just make the slightest bit of contact.  However, your only accomplishment is in putting your " + legs(player) + " to sleep.  A tingling sensation works it way down your lower half, followed by numbness.  But before you can start adding that to your frustrations, a glint of something catches your eye- a single bead of pre-cum resting on the tip of your slightly hard " + cockDescript(game.player, 0) + ", around an inch in diameter if you had to guess.", false);
+        outputText("Your desire only increasing, you begin desperately clawing at the edges of your " + player.armorName + ".  Your stuck skin only grows red from your efforts, eschewing even the notion that it might break free.  Your breathing begins to draw to a panicked pace as you stop and try to form some coherent thought.  The best your lust-addled brain can come up with is to try moving your " + hipDescription(player) + ", and see if you can make any contact with your imprisoned penis.  Grinding, thrusting... anything you can think of to just make the slightest bit of contact.  However, your only accomplishment is in putting your " + legs(player) + " to sleep.  A tingling sensation works it way down your lower half, followed by numbness.  But before you can start adding that to your frustrations, a glint of something catches your eye- a single bead of pre-cum resting on the tip of your slightly hard " + cockDescript(game.player, 0) + ", around an inch in diameter if you had to guess.", false);
         // [if armorname IS EQUAL TO \"<i>crotch-hugging full platemail</i>\" OR \"<i>crotch-hugging scale-mail armor</i>\"]
         if (player.armorName == "crotch-hugging full platemail" || player.armorName == "crotch-hugging scale-mail") outputText("  As you stare in bewilderment, you can't even begin to fathom how it possibly seeped through the steel of your solid " + player.armorName, false);
         // [if armorname IS EQUAL TO \"<i>crotch-hugging practically indecent steel armor</i>\" OR \"<i>crotch-hugging full-body chainmail</i>\" OR \"<i>crotch-hugging revealing chainmail bikini</i>\"]
@@ -1027,7 +1027,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         if (player.biggestTitSize() > 1) outputText("  Your " + chestDesc(game.player) + " work just as hard, smothering Exgartuan in all of their jiggly glory.", false);
         outputText("  From base to tip, you leave no skin, vein, bump, or glan untraced; all the while covering yourself in the devil's endless demonic drizzle.  Unearthly pleasure responds to your every effort, preparing you to move on to the climax.  You lighten your full embrace, firmly grasping the " + cockDescript(game.player, 0) + " with both hands, and commence working his entire shaft.  You try to maintain some semblance of pace, but in your dazed, wanton state you quickly ratchet up your speed.", false);
         // [if scrotum present]
-        if (player.balls > 0) outputText("  Your " + ballsDescriptLight() + " churn with mighty force, roiling in anticipation.", false);
+        if (player.balls > 0) outputText("  Your " + ballsDescriptLight(player) + " churn with mighty force, roiling in anticipation.", false);
         outputText("\n\n", false);
 
         outputText("Your breath ceases as your ", false);
@@ -1235,7 +1235,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         outputText("  Your hands waste no time, caressing every square inch of your flesh.  They gently brush with the softest of grace; they squeeze with the exceptional skill of any expert masseur.  Any particularly sensitive spots get extra attention, eliciting soft moans from you as they only emanate more warmth throughout your body.  You feel as if you're melting into your supporting rock, the pleasure only mounting as your absent gaze goes skyward.", false);
         // [if cock or vagina present]
         if (player.gender > 0) {
-            outputText("  Your " + hipDescript() + " begin grinding together, moist with ", false);
+            outputText("  Your " + hipDescription(player) + " begin grinding together, moist with ", false);
             // [if cock >0]
             if (player.hasCock() && !player.hasVagina()) outputText("pre-cum", false);
             // [if vagina >0]
@@ -1246,7 +1246,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         }
         outputText("  The demoness continues her work, though never touching your nipples; the closest she draws your hands is around your areolas.  The circling is no less irritating as when you haven't neglected her, your back arching in need yet again.\n\n", false);
 
-        outputText("Your gargantuan glands tremble as they begin to speak, \"<i>As always, you long for this just as I do.  It only begs the question as to how you could even think to ignore me.</i>\" You can feel your breasts plump up, seeming to be the demoness' not so subtle gesture of superiority, \"<i>Well, go ahead, champion.  Satiate your lust.</i>\"  Your hands hover over your " + nippleDescript(0) + "s as if waiting for you to take control.", false);
+        outputText("Your gargantuan glands tremble as they begin to speak, \"<i>As always, you long for this just as I do.  It only begs the question as to how you could even think to ignore me.</i>\" You can feel your breasts plump up, seeming to be the demoness' not so subtle gesture of superiority, \"<i>Well, go ahead, champion.  Satiate your lust.</i>\"  Your hands hover over your " + nippleDescription(player, 0) + "s as if waiting for you to take control.", false);
         // [if corruption <50]
         if (player.cor < 50) outputText("  At this point you are too far gone to resist.", false);
         // [else]
@@ -1299,7 +1299,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             // [if vagina >0]
             else if (player.gender == 2) outputText("fem-spunk", false);
             else outputText("liquids", false);
-            outputText(" already coating your " + hipDescript() + ".", false);
+            outputText(" already coating your " + hipDescription(player) + ".", false);
         }
         // else
         else outputText(".", false);

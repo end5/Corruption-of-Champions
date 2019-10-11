@@ -26,7 +26,7 @@ export class EncapsulationPod extends Monster {
             _long = "You're still trapped inside the pod!  By now the walls are totally soaked with some kind of viscous slime.  The smell of it is unbearably sweet and you have to put a hand against the wall to steady yourself.  Warm tentacles are curling and twisting underneath your armor, caressing every ";
             if (player.skinType == SKIN_TYPE_FUR) _long += "furry ";
             if (player.skinType == SKIN_TYPE_SCALES) _long += "scaley ";
-            _long += "inch of your " + legs(player) + ", crotch, and " + game.assDescript() + ".";
+            _long += "inch of your " + legs(player) + ", crotch, and " + game.buttDescription(player) + ".";
         }
         // [Round 3 Description]
         else if (statusAffectv1(StatusAffects.Round) == 3) {
@@ -35,7 +35,7 @@ export class EncapsulationPod extends Monster {
         // [Round 4 Description]
         else {
             _long = "You're trapped inside the pod and being violated by tentacles from the shoulders down!  The slime around your waist is rising even faster now.  It will probably reach ";
-            if (player.biggestTitSize() >= 1) _long += "the underside of your " + game.allBreastsDescript();
+            if (player.biggestTitSize() >= 1) _long += "the underside of your " + game.allBreastsDescript(player);
             else _long += "your chest";
             _long += " in moments.  You're being fucked by a bevy of tentacles while your nipples are ";
             if (!player.hasFuckableNipples()) _long += "fondled ";

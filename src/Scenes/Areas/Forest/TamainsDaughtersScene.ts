@@ -191,10 +191,10 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         const primary: number = player.cockThatFits(50);
         // (Fits)
         if (primary >= 0) {
-            outputText("You pick a random body from the crowd, impaling her on your " + cockDescript(primary) + ".  The others crowd around, jealous of your chosen cock-sleeve.   She looks up at you, blissful as she hugs against you and grinds her tight body down, raping her virginal hole on the firmness of your " + cockDescript(primary) + ".   The others massage your " + legs(player) + ", licking and nibbling your skin as they compete to tempt you into taking them next.", false);
+            outputText("You pick a random body from the crowd, impaling her on your " + cockDescript(player, primary) + ".  The others crowd around, jealous of your chosen cock-sleeve.   She looks up at you, blissful as she hugs against you and grinds her tight body down, raping her virginal hole on the firmness of your " + cockDescript(player, primary) + ".   The others massage your " + legs(player) + ", licking and nibbling your skin as they compete to tempt you into taking them next.", false);
             if (tamaniPresent) {
                 outputText("  Tamani pushes aside the smaller sluts and ", false);
-                if (player.balls > 0) outputText("cups your " + ballsDescriptLight() + ".", false);
+                if (player.balls > 0) outputText("cups your " + ballsDescriptLight(player) + ".", false);
                 else outputText("licks your taint.", false);
             }
             outputText("\n\n", false);
@@ -229,7 +229,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
             outputText("The pressure of orgasm spikes as the first blast takes ", false);
             if (!tamaniPresent) outputText("your goblin daughter", false);
             else outputText("Tamani", false);
-            outputText(" in her waiting womb, painting her walls white.  Each successive glob mixes into the slurry of sexual fluids brewing in her slit, until it starts to dribble out.  The goblin on your face cums noisily, filling your mouth with female moisture.   With no other choice, you swallow it down while your tongue keeps trying to pleasure her.  A sudden void of sensation and cold air overtakes your " + cockDescript(primary) + " as you hear the goblins squabbling.  In no time flat a fresh cunt is squeezing over your still-orgasming member, clamping down to form a tight seal as you pump it full of even more fertile seed.\n\n", false);
+            outputText(" in her waiting womb, painting her walls white.  Each successive glob mixes into the slurry of sexual fluids brewing in her slit, until it starts to dribble out.  The goblin on your face cums noisily, filling your mouth with female moisture.   With no other choice, you swallow it down while your tongue keeps trying to pleasure her.  A sudden void of sensation and cold air overtakes your " + cockDescript(player, primary) + " as you hear the goblins squabbling.  In no time flat a fresh cunt is squeezing over your still-orgasming member, clamping down to form a tight seal as you pump it full of even more fertile seed.\n\n", false);
 
             // (Go to End if < 10 daughters), else keep goin
             if (daughters > 10) {
@@ -251,13 +251,13 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                     outputText("The first daughter to take your seed climbs onto your face and plants herself there, smearing your " + face(player) + " with a mixture of cum and vaginal wetness.  She pinches her budding chest and grinds on top of you, asking, \"<i>You realize I'm going to be pregnant don't you?  I can already feel your little swimmers tickling all my eggs.  Can you imagine what I'll look like in a few days?  With bigger tits leaking milk and my belly stuffed with offspring?  Just let your dick do the thinking and keep cumming until we're all stuffed, ok?  Don't hold back now, we're just aching for more!</i>\"\n\n", false);
                 }
 
-                outputText("The perverse thoughts get to you, worming their way inside you until they reach your " + cockDescript(primary) + ".  It clenches and explodes, packing the slut's womb with cream.  She's lifted off by her sisters, and your next blast fires into the air, splattering over the assembled goblins with a wet plop.  Many gather it up, licking and slurping it, or shoveling it directly into their waiting cunts.  Another pussy is placed on you, and the sensation of new flesh taking you makes the contraction feel even longer.  She staggers off a few moments later, looking pregnant already.  The cycle repeats until", false);
+                outputText("The perverse thoughts get to you, worming their way inside you until they reach your " + cockDescript(player, primary) + ".  It clenches and explodes, packing the slut's womb with cream.  She's lifted off by her sisters, and your next blast fires into the air, splattering over the assembled goblins with a wet plop.  Many gather it up, licking and slurping it, or shoveling it directly into their waiting cunts.  Another pussy is placed on you, and the sensation of new flesh taking you makes the contraction feel even longer.  She staggers off a few moments later, looking pregnant already.  The cycle repeats until", false);
                 if (daughters < 20) outputText(" the majority ", false);
                 else outputText(" half ", false);
                 outputText("of the girls have spooge-slicked cunts and big grins.\n\n", false);
 
                 outputText("As your ", false);
-                if (player.balls > 0) outputText(ballsDescriptLight() + " empty", false);
+                if (player.balls > 0) outputText(ballsDescriptLight(player) + " empty", false);
                 else outputText("prostate empties", false);
                 outputText(", one of the girls wanders over and asks, \"<i>How does it feel knowing your daughter is pregnant with even more children? Does it turn you on, <b>Daddy</b>?</i>\"\n\n", false);
 
@@ -265,7 +265,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 if (daughters > 20) {
                     outputText("You lie there, feeling like an empty husk.  The crowd starts to disperse", false);
                     if (tamaniPresent) outputText(" while Tamani walks away", false);
-                    outputText(", but a few of the little sluts don't look satisfied yet.  They crowd around.  One straddles your chest and begins dancing in an erotic display.  Somehow, your " + cockDescript(primary) + " still manages to twitch weakly in response.  Another goblin opens a satchel and pulls out some fruit and a canteen.  She delicately begins feeding you, clearing wanting you to regain your strength.  It seems they aren't finished with you yet.  You down what feels like gallons of water, and then find yourself presented with another flask of pink goo.  Shrugging, you gulp it down willingly, enjoying the sensation of your " + cockDescript(game.player, 0) + " re-inflating to its maximum, turgid size.\n\n", false);
+                    outputText(", but a few of the little sluts don't look satisfied yet.  They crowd around.  One straddles your chest and begins dancing in an erotic display.  Somehow, your " + cockDescript(player, primary) + " still manages to twitch weakly in response.  Another goblin opens a satchel and pulls out some fruit and a canteen.  She delicately begins feeding you, clearing wanting you to regain your strength.  It seems they aren't finished with you yet.  You down what feels like gallons of water, and then find yourself presented with another flask of pink goo.  Shrugging, you gulp it down willingly, enjoying the sensation of your " + cockDescript(game.player, 0) + " re-inflating to its maximum, turgid size.\n\n", false);
 
                     outputText("Sighing happily, you lie there as the remainder of your daughters take you, fucking you one after another.  The whole time you don't stop eating, converting all of the girl's rations into gallons of baby batter.  Your daughters don't seem to mind, and take turns posing sexily and feeding you while they take turns riding your pole until they're bloating and pregnant.  By the time the last one rises up on shaky legs, you're exhausted and your eyes are drifting closed.  ", false);
                     if (daughters < 50) outputText("Girlish giggles sooth you to sleep as the crowd slowly disperses.", false);
@@ -291,23 +291,23 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
                 outputText("She disappears behind you and you cringe, knowing this will probably be at least slightly uncomfortable.  ", false);
                 if (player.tallness > 48) outputText("You can hear her climbing up on something behind you, in order to get to the right height.  ", false);
-                outputText("Your expression of disdain is ruined when one of the sluts stretches wide and slurps your " + cockHead(player) + " into her mouth.  Her tongue feels like heaven as it slides over your tip, and her sister works the shaft, jerking the spit-lubed monster off with fast strokes.   Your enjoyment is interrupted by a sudden intrusion at your backdoor.  The rubbery flared horse-toy presses against your " + assholeDescript() + ", dribbling a little bit of its strange lubricants into your backdoor as Tamani pushes it forward.   Tiny hands grab your " + assDescript() + " as it's pushed forward, and you have no choice but to relax and allow it inside.\n\n", false);
+                outputText("Your expression of disdain is ruined when one of the sluts stretches wide and slurps your " + cockHead(player) + " into her mouth.  Her tongue feels like heaven as it slides over your tip, and her sister works the shaft, jerking the spit-lubed monster off with fast strokes.   Your enjoyment is interrupted by a sudden intrusion at your backdoor.  The rubbery flared horse-toy presses against your " + assholeDescript(player) + ", dribbling a little bit of its strange lubricants into your backdoor as Tamani pushes it forward.   Tiny hands grab your " + buttDescription(player) + " as it's pushed forward, and you have no choice but to relax and allow it inside.\n\n", false);
 
                 outputText("Half the head slips inside you, then the other, and in no time Tamani is slowly forcing it inside you.  It hurts just a little, enough to make your hips swivel forwards in a futile attempt at escape.  The goblin on your cock nearly chokes from the sudden change, though her sister gives you a wicked grin and strokes harder.  A flash of warmth squirts inside you in time with a moan from Tamani, and suddenly your body is exploding with pleasure.\n\n", false);
 
                 outputText("Cum bubbles from the first goblin's nose as she falls off you, getting a massive facial in the process.  Her twin sister happily jacks you off, aiming your tool down at the row of cunts below you.  The sticky spooge splatters into their holes, painting their toned midriffs and ample thighs with sticky whiteness as you're used like some kind of fertility sprinkler. Tamani shoves her artificial dong further into your backdoor and somehow you manage to squeeze out a few more splattering drops of whiteness for her daughters.\n\n", false);
 
                 outputText("Spent, your " + cockDescript(game.player, 0) + " wilts, drooping downward as it drips the last of its seed.  Tamani seems oblivious to that fact though, and continues to violate you from behind.  You're about to reach around to dislodge the tiny anal rapist when another squirt of aphrodisiacs releases inside you, catching some of your prostate with the goop.  A torrent of blood rushes to your " + cockDescript(game.player, 0) + " and you're suddenly achingly hard again.", false);
-                if (player.balls > 0) outputText("  Your " + ballsDescriptLight() + " ache from the strain, but struggle to churn up more sperm.  ", false);
+                if (player.balls > 0) outputText("  Your " + ballsDescriptLight(player) + " ache from the strain, but struggle to churn up more sperm.  ", false);
                 outputText("A drop of pre-cum beads on the tip and you find yourself relaxing, letting Tamani slide her drug-slicked horse-cock the rest of the way into you.\n\n", false);
             }
-            outputText("A third goblin suddenly attacks your taint, licking between your " + assholeDescript() + " and ", false);
-            if (player.balls > 0) outputText(ballsDescriptLight(), false);
-            else if (player.hasVagina()) outputText(vaginaDescript(0), false);
+            outputText("A third goblin suddenly attacks your taint, licking between your " + assholeDescript(player) + " and ", false);
+            if (player.balls > 0) outputText(ballsDescriptLight(player), false);
+            else if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
             else outputText("shaft", false);
             outputText(" as she presses her hard nipples up against your " + legs(player) + ". ", false);
             // (No Tamani:
-            if (!tamaniPresent) outputText("She presses something against your backdoor and before you have a chance to react, something hot and wet is filling your " + assholeDescript() + ".  You look down as she pulls out a tube of pink residue, and sways with burning desire.\n\n", false);
+            if (!tamaniPresent) outputText("She presses something against your backdoor and before you have a chance to react, something hot and wet is filling your " + assholeDescript(player) + ".  You look down as she pulls out a tube of pink residue, and sways with burning desire.\n\n", false);
             else outputText("The feeling of the ridges and flare of Tamani's fake cock as it slides inside you makes you sway on your feet, drunk with the lust its fluids have induced.   You sway back and forth with burning desire as both of the twins caress and stroke your meat, coaxing as much pleasure from it as possible.\n\n", false);
 
             outputText("You explode, coming harder than ever from the pressure and drugs buried against your prostate.  One of the twins, tired of waiting, pulls your " + cockDescript(game.player, 0) + " over and shoves your tip against her slickened folds.  You manage to pump a thick blob of cum deep inside her before her sister snatches it away, grinding her own hungry twat against you until her entire groin is stained white.  They glare at each other, but after seemingly being sated, they return to fondling your " + cockDescript(game.player, 0) + " together, using it like a hose to drench their smiling sisters with the remaining cum.\n\n", false);
@@ -380,7 +380,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
             outputText("A sudden flow of fluids soaks your " + face(player) + " and dribbles from your chin.  The face-riding goblin bucks like a bronco, nearly breaking your nose before the strength drains from her body and she slides off into the dirt, panting weakly.   Confronted with the sight of ", false);
             if (cocks > 2) outputText("so many girls impaled on your flesh", false);
             else if (cocks == 2) outputText("your daughters' whorish expressions of pleasure", false);
-            else outputText("the sultry gaze of Tamani's oldest daughter as she rides your " + cockDescript(primary), false);
+            else outputText("the sultry gaze of Tamani's oldest daughter as she rides your " + cockDescript(player, primary), false);
             outputText(", you can do nothing but cum.  ", false);
             if (cocks > 1) outputText("Twitching powerfully, your body unloads into the tight, fertile cum-receptacles, giving them exactly what they want.", false);
             else outputText("Twitching powerfully, your body unloads into the tight, fertile cum-receptacle, giving her exactly what she wants.", false);
@@ -410,9 +410,9 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
                 outputText("Tamani massages your ", false);
                 if (player.biggestTitSize() < 1) outputText("chest", false);
-                else outputText(allBreastsDescript(), false);
+                else outputText(allBreastsDescript(player), false);
                 outputText(" as she mounts you, ", false);
-                outputText("squeezing her dripping wet cunt around your " + cockDescript(primary) + ".  She explains, caressing your cheek as you start to drool, \"<i>You see, " + player.short + ", this potion is a special one.  You can probably feel it now, emptying your mind and shutting down your thought processes.  That's what it's supposed to do.  You won't remember anything when I'm done either, aside from how great my pussy feels on your " + cockDescript(primary) + "</i>.\"\n\n", false);
+                outputText("squeezing her dripping wet cunt around your " + cockDescript(player, primary) + ".  She explains, caressing your cheek as you start to drool, \"<i>You see, " + player.short + ", this potion is a special one.  You can probably feel it now, emptying your mind and shutting down your thought processes.  That's what it's supposed to do.  You won't remember anything when I'm done either, aside from how great my pussy feels on your " + cockDescript(player, primary) + "</i>.\"\n\n", false);
 
                 outputText("You drool, accepting the truth.  She's so right, there's no way you'd ever forget the feeling of hot wetness as it rubs around your shaft.  Tamani keeps talking, confidently riding you as your mind soaks up her instructions, \"<i>My hot little cunt needs filling, and your cock knows it.  It wants it.</i>\"  She leans back, allowing you a glimpse of pinkness and sticky female juices while she teases her button, \"<i>Just the sight of my pussy gets you hard and ready.  The thought of feeling that hot hole mounting you just diverts all your blood and willpower into your ready fuckstick.  You CAN'T resist my pussy.</i>\"\n\n", false);
 
@@ -440,27 +440,27 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
             else {
                 // (SMALL PACK)
                 if (daughters < 20) {
-                    outputText("The smaller girls take turns, mounting your cum-soaked rod one after another, using their hungry cunts like cum-sponges until your " + cockDescript(primary) + " is polished with feminine fluids and cleaned of any residual jism.  After so many repeated mountings, you're hard and ready to cum again, and the horny sluts know it.   You're crammed back into each one of them, one after another in a barrage of quick fucks.  Each girl is only given a few seconds on your rod before she's pulled off by her peers and replaced by another ecstatic goblin.  While waiting for their next turn, the spare girls tease you, tweaking your " + nippleDescript(0) + "s while licking your ears and whispering, \"<i>Don't cum for her, it'll be much better in my hot little box,</i>\" or, \"<i>You won't cum for that skank, will you?  Save your baby-batter for me!</i>\"\n\n", false);
+                    outputText("The smaller girls take turns, mounting your cum-soaked rod one after another, using their hungry cunts like cum-sponges until your " + cockDescript(player, primary) + " is polished with feminine fluids and cleaned of any residual jism.  After so many repeated mountings, you're hard and ready to cum again, and the horny sluts know it.   You're crammed back into each one of them, one after another in a barrage of quick fucks.  Each girl is only given a few seconds on your rod before she's pulled off by her peers and replaced by another ecstatic goblin.  While waiting for their next turn, the spare girls tease you, tweaking your " + nippleDescription(player, 0) + "s while licking your ears and whispering, \"<i>Don't cum for her, it'll be much better in my hot little box,</i>\" or, \"<i>You won't cum for that skank, will you?  Save your baby-batter for me!</i>\"\n\n", false);
 
-                    outputText("Amazingly, you orgasm again.  An orgiastic squeal erupts from your " + cockDescript(primary) + "'s current owner, breaking off into pants and gasps ", false);
+                    outputText("Amazingly, you orgasm again.  An orgiastic squeal erupts from your " + cockDescript(player, primary) + "'s current owner, breaking off into pants and gasps ", false);
                     if (player.cumQ() < 100) outputText("as you twitch underneath her, emptying the last of your cum inside her.", false);
                     else if (player.cumQ() < 500) outputText("as you twitch underneath her, pumping her full of cum, thoroughly seeding her womb with spunk.", false);
                     else outputText("as you twitch underneath her in powerful spasms, blasting huge gouts of cum into her waiting body until her belly is bloated with seed and it begins to squirt out around you in time with each eruption of spunk.", false);
-                    outputText("  Disappointed moans rise up from the others as they realize they've lost the cum-lottery.   The winner, patting her belly happily, stands up, filling the air with a loud 'slurrrrrp' as her twat noisily releases your " + cockDescript(primary) + ".", false);
+                    outputText("  Disappointed moans rise up from the others as they realize they've lost the cum-lottery.   The winner, patting her belly happily, stands up, filling the air with a loud 'slurrrrrp' as her twat noisily releases your " + cockDescript(player, primary) + ".", false);
                     if (player.cumQ() >= 500) outputText("  A few enterprising goblins gather around, gathering up the loose spunk and shoveling it into their holes.", false);
                     outputText("\n\n", false);
 
-                    outputText("Tired from the sexual acrobatics, your daughters gather up their possessions and begin dispersing, but a few stick around to lick your " + cockDescript(primary) + " clean and give you deep french-kisses.  Exhausted as well, you begin to doze off, but not before a girlish voice whispers in your ear, \"<i>Thanks daddy!  I'll bring your daughters back once they've grown up so you can have their cherries too.</i>\"\n\n", false);
+                    outputText("Tired from the sexual acrobatics, your daughters gather up their possessions and begin dispersing, but a few stick around to lick your " + cockDescript(player, primary) + " clean and give you deep french-kisses.  Exhausted as well, you begin to doze off, but not before a girlish voice whispers in your ear, \"<i>Thanks daddy!  I'll bring your daughters back once they've grown up so you can have their cherries too.</i>\"\n\n", false);
                 }
                 // (MEDIUM PACK (or bigger))
                 else {
-                    outputText("The smaller girls take turns, mounting your cum-soaked rod one after another, using their hungry cunts like cum-sponges until your " + cockDescript(primary) + " is polished with feminine fluids and cleaned of any residual jism.  After so many repeated mountings, you're hard and ready to cum again, and the horny sluts know it.   You're crammed back into each one of them, one after another in a barrage of quick fucks.  Each girl is only given a few seconds on your rod before she's pulled off by her peers and replaced by another ecstatic goblin.  While waiting for their next turn, the spare girls tease you, tweaking your " + nippleDescript(0) + "s while licking your ears and whispering, \"<i>Don't cum for her, it'll be much better in my hot little box,</i>\" or, \"<i>You won't cum for that skank, will you?  Save your babby-batter for me!</i>\"\n\n", false);
+                    outputText("The smaller girls take turns, mounting your cum-soaked rod one after another, using their hungry cunts like cum-sponges until your " + cockDescript(player, primary) + " is polished with feminine fluids and cleaned of any residual jism.  After so many repeated mountings, you're hard and ready to cum again, and the horny sluts know it.   You're crammed back into each one of them, one after another in a barrage of quick fucks.  Each girl is only given a few seconds on your rod before she's pulled off by her peers and replaced by another ecstatic goblin.  While waiting for their next turn, the spare girls tease you, tweaking your " + nippleDescription(player, 0) + "s while licking your ears and whispering, \"<i>Don't cum for her, it'll be much better in my hot little box,</i>\" or, \"<i>You won't cum for that skank, will you?  Save your babby-batter for me!</i>\"\n\n", false);
 
                     outputText("Amazingly, you orgasm again.  An orgiastic squeal erupts from your " + cockDescript(game.player, 0) + "'s current owner, breaking off into pants and gasps ", false);
                     if (player.cumQ() < 100) outputText("as you twitch underneath her, emptying the last of your cum inside her.", false);
                     else if (player.cumQ() < 500) outputText("as you twitch underneath her, pumping her full of cum, thoroughly seeding her womb with spunk.", false);
                     else outputText("as you twitch underneath her in powerful spasms, blasting huge gouts of cum into her waiting body until her belly is bloated with seed and it begins to squirt out around you in time with each eruption of spunk.", false);
-                    outputText("  Disappointed moans rise up from the others as they realize they've lost the cum-lottery.   The winner, patting her belly happily, stands up, filling the air with a loud 'slurrrrrp' as her twat noisily releases your " + cockDescript(primary) + ".", false);
+                    outputText("  Disappointed moans rise up from the others as they realize they've lost the cum-lottery.   The winner, patting her belly happily, stands up, filling the air with a loud 'slurrrrrp' as her twat noisily releases your " + cockDescript(player, primary) + ".", false);
                     if (player.cumQ() >= 500) outputText("A few enterprising goblins gather around, gathering up the loose spunk and shoveling it into their holes.", false);
                     outputText("\n\n", false);
 
@@ -477,7 +477,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
                     if (daughters < 40) {
                         outputText("Locked in a ceaseless orgasm, you're raped by one goblin after another.  A parade of tight pink pussies and their green-skinned owners passes by you, and once each of them is dripping with white seed, they take the time for a second pass.  By the time it's over, you're raw and sore, and your ", false);
-                        if (player.balls > 0) outputText(ballsDescriptLight() + " hurt", false);
+                        if (player.balls > 0) outputText(ballsDescriptLight(player) + " hurt", false);
                         else outputText("crotch hurts", false);
                         outputText(" from having to generate such a ridiculous quantity of spooge.  The crowd of milling goblins seems much less frantic now that they've gotten what they want.  You're kissed and licked and massaged by the thankful mass, and you lose yourself to unconsciousness, still dribbling semen.", false);
                     }
@@ -514,7 +514,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
                 outputText("She pivots around, placing her drooling, wet gash against your " + cockHead(player) + " and begins vigorously jerking you off.   Her ass bounces hypnotically on your ", false);
                 if (player.biggestTitSize() < 1) outputText("chest", false);
-                else outputText(allBreastsDescript(), false);
+                else outputText(allBreastsDescript(player), false);
                 outputText(", sending a fresh surge of arousal through your " + multiCockDescriptLight(game.player) + ".   Another one of the girls leans down between your " + legs(player) + " licking your ", false);
                 if (player.balls > 0) outputText("balls", false);
                 else if (player.hasVagina()) outputText("pussy", false);
@@ -560,18 +560,18 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 else outputText("Each of y", false);
                 outputText("our " + multiCockDescriptLight(game.player) + " is now rock solid and beading pre-cum at the tip.  ", false);
                 // (single)
-                if (cocks == 1) outputText("The purple-lipped cock-slut grabs your " + cockDescript(game.player, 0) + " and makes a show of smearing the slippery fluid over your shaft, lubricating it as she jacks you off.  Her warm lips form a tight seal on your " + cockHead(player) + " as the young goblin begins lapping at your pre-cum as she sucks it from your urethra.   It feels heavenly, and your " + hipDescript() + " pump weakly into the air in an instinctive bid to enhance the sensation.", false);
+                if (cocks == 1) outputText("The purple-lipped cock-slut grabs your " + cockDescript(game.player, 0) + " and makes a show of smearing the slippery fluid over your shaft, lubricating it as she jacks you off.  Her warm lips form a tight seal on your " + cockHead(player) + " as the young goblin begins lapping at your pre-cum as she sucks it from your urethra.   It feels heavenly, and your " + hipDescription(player) + " pump weakly into the air in an instinctive bid to enhance the sensation.", false);
                 // (multiple)
                 else {
                     outputText("The purple-lipped cock-slut grabs hold of one of your " + multiCockDescriptLight(game.player) + " and makes a show of smearing the slippering fluid over the shaft, lubricating it as she begins to jack you off.  Her sisters, taking the cue, step over the other sated sluts and grab hold of your " + cockDescript(game.player, 1) + ", fondling it lovingly.  ", false);
                     if (cocks > 2) outputText("They spread out until every one of your " + multiCockDescriptLight(game.player) + " has at least one goblin hanging off it, stroking and touching you.  ", false);
-                    outputText("It feels heavenly, and your " + hipDescript() + " pump weakly into the air in an instinctive bid to enhance the sensation.", false);
+                    outputText("It feels heavenly, and your " + hipDescription(player) + " pump weakly into the air in an instinctive bid to enhance the sensation.", false);
                 }
                 outputText("\n\n", false);
 
                 outputText("The goblin who served between the legs crawls back into position, and you realize she must be the youngest, and therefore the lowest on the goblin totem-pole.  Her eager tongue is just as skilled as it was minutes ago, and between her attentions and the tongues on your " + multiCockDescriptLight(game.player) + ", you're leaking streamers of liquid lust.  Hands run over your ", false);
                 if (player.biggestTitSize() < 1) outputText("chest", false);
-                else outputText(allBreastsDescript(), false);
+                else outputText(allBreastsDescript(player), false);
                 outputText(", circling your nipples and massaging your chest while a girlish voice whispers in your ear, \"<i>Cum for us now daddy, we've gotten so wet having to wait on you...</i>\"\n\n", false);
 
                 outputText("Ripples of convulsive pleasure wrack your midsection as you feel the muscular contractions of your orgasm threatening to tear you apart.   Your ", false);
@@ -598,7 +598,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 if (cocks) outputText("each of ", false);
                 outputText("your " + multiCockDescriptLight(game.player) + ".  Your eyes roll back in blissful pleasure as Tamani declares, \"<i>Tamani will take care of you, husband.  You're going to cum into these girls' hungry twats until they have to waddle home, and then you're going to remember why Tamani's cunt owns your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ", forever.</i>\"\n\n", false);
 
-                outputText("Tamani pulls out a ring gag, shoves it into your protesting mouth, and pulls the straps securely around the back of your neck.  She tousles your " + hairDescript() + " as you squirm, but the crowd of goblins easily keeps you subdued, assisting their mother now that they know her plans.   You ", false);
+                outputText("Tamani pulls out a ring gag, shoves it into your protesting mouth, and pulls the straps securely around the back of your neck.  She tousles your " + hairDescription(player) + " as you squirm, but the crowd of goblins easily keeps you subdued, assisting their mother now that they know her plans.   You ", false);
                 if (player.cor > 66) outputText("sigh, actually anticipating what's about to come", false);
                 else if (player.cor > 33) outputText("don't resist, knowing there's no way to stop what's about to happen", false);
                 else outputText("shudder, struggling to pull free", false);
@@ -616,7 +616,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 if (cocks > 2) {
                     outputText("Meanwhile your other " + Appearance.cockNoun(CockTypesEnum.HUMAN) + "s are wasting their spunk over your belly, so some of the waiting girls grab them and pull them aside, ramming their tips deep inside their seemingly bottomless fuck-holes.  They giggle and run their manicured nails over your ", false);
                     if (player.biggestTitSize() < 1) outputText("chest", false);
-                    else outputText(allBreastsDescript(), false);
+                    else outputText(allBreastsDescript(player), false);
                     outputText(", circling your sensitive nipples", false);
                     if (player.biggestLactation() >= 1) {
                         outputText(" as they start to ", false);
@@ -632,7 +632,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 else if (cocks == 2) {
                     outputText("Meanwhile your other " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " is wasting its spunk over your belly, so one of the waiting girls grabs it and pulls it to the side, ramming its tip deep inside her seemingly bottomless fuck-hole.  She giggle and runs their manicured nails over your ", false);
                     if (player.biggestTitSize() < 1) outputText("chest", false);
-                    else outputText(allBreastsDescript(), false);
+                    else outputText(allBreastsDescript(player), false);
                     outputText(", circling your sensitive nipples", false);
                     if (player.biggestLactation() >= 1) {
                         outputText(" as they start to ", false);
@@ -764,10 +764,10 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         if (cocks > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " until it feels much harder and thicker than normal.  You stifle an involuntary groan, but fail to conceal your lust-filled pants from your audience.   A daring girl leaps onto your ", false);
         if (player.biggestTitSize() < 1) outputText("chest", false);
-        else outputText(allBreastsDescript(), false);
+        else outputText(allBreastsDescript(player), false);
         outputText(" and shoves a lactating nipple into your mouth, commanding, \"<i>Drink up, the more fluid you have the more baby batter you can cook up for us!</i>\"\n\n", false);
 
-        outputText("Unable to fight back in any way, you shrug and begin suckling the purplish nipple, tasting the creamy goblin milk as it easily fills your mouth.  You gulp it down, slowly relaxing between the mechanized cock-sucking and gentle breast-feeding.  Your daughter was right, it's almost like paradise. Unfortunately, the pleasure is interrupted by something probing at your backside.  Unable to look with your mouth full of delicious tit, you can only gurgle and dribble in protest as a lubricated tube is inserted into your " + assholeDescript() + ".\n\n", false);
+        outputText("Unable to fight back in any way, you shrug and begin suckling the purplish nipple, tasting the creamy goblin milk as it easily fills your mouth.  You gulp it down, slowly relaxing between the mechanized cock-sucking and gentle breast-feeding.  Your daughter was right, it's almost like paradise. Unfortunately, the pleasure is interrupted by something probing at your backside.  Unable to look with your mouth full of delicious tit, you can only gurgle and dribble in protest as a lubricated tube is inserted into your " + assholeDescript(player) + ".\n\n", false);
 
         outputText("The familiar voice of the machine's inventor whispers, \"<i>", false);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00058] == 0) outputText("Time for your medicine!  We need you to cum enough for each of us, and maybe have a little left over to play with, so suck up the medicine, okay?  Just relax and let it fill you so that you give us all that yummy cummy!</i>\"\n\n", false);
@@ -782,7 +782,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
         outputText("A trickle of warm fluid flows into you, and immediately your skin tingles, burning with heat and need.  ", false);
         if (player.balls > 0) outputText("Your balls tighten inside your sack and swell up like sponges, slowly increasing in size in time with your desire.", false);
-        else outputText("Your body feels tight and needy, your gut clenching as your body adjusts to the drugs it's absorbing so readily through your " + assholeDescript() + ".", false);
+        else outputText("Your body feels tight and needy, your gut clenching as your body adjusts to the drugs it's absorbing so readily through your " + assholeDescript(player) + ".", false);
         outputText("  The suckling pleasure around ", false);
         if (cocks > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " seems to slowly increase as more of the drugs are absorbed by your body, until escaping the straps for your freedom is longer a concern.   Now all that matters is getting free so that you can fuck ");
@@ -795,7 +795,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         outputText("The goblins, upon seeing your change in demeanor, begin smiling to one another and congratulating each other on their hard work.  The girl at the console twists a few more levers and the warmth inside you seems to double as more drugs are forced into your captive frame.  You start " + mf(player, "laughing", "giggling") + ", the narcotics and pleasure overwhelming your thought processes, leaving you feeling like you're floating in heaven.  To anyone watching, you're panting and moaning in between the laughter, slobbering all over the milky goblin-tit in your mouth as your body begins squirting pre-cum into the cock-milker.\n\n", false);
 
         outputText("A few seconds away from your orgasm, the goblin running the machinery makes a few adjustments, and you feel the flow into your rectum growing stronger until you start to feel full and bloated.  Your body caves in to the pleasure, every inch of your skin tingling as you're forced to climax.  ", false);
-        if (player.balls > 0) outputText("Straining and shaking, your " + ballsDescriptLight() + " clench against you, feeling tight as your body struggles to pump out the spooge they're producing.", false);
+        if (player.balls > 0) outputText("Straining and shaking, your " + ballsDescriptLight(player) + " clench against you, feeling tight as your body struggles to pump out the spooge they're producing.", false);
         else outputText("Straining and shaking , your body struggles through the orgasm as it tries to deal with all the cum your prostate and glands are putting out.", false);
         outputText("  The drugs and milking machines squish, suck, and whir noisily as you cum, flooding the tubes above the mechanical cunt-bulb with white.\n\n", false);
 
@@ -844,7 +844,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
     private tamaniDaughtersBadEndChoice(): void {
         spriteSelect(57);
-        outputText("The next morning your unfocused eyes blink open, and you find yourself in the same situation as before.  Thankfully your orgasm has been allowed to end, though you still feel dopey and unfocused from whatever is flowing into you.  You manage to twist your head around to get a better look at the situation and discover a pair of IV's lodged in your arms.  Twisting your body, you realize you can still feel the drug-enema tube lodged in your " + assholeDescript() + ".  Oddly, it's hard to feel worried or concerned about the situation.\n\n", false);
+        outputText("The next morning your unfocused eyes blink open, and you find yourself in the same situation as before.  Thankfully your orgasm has been allowed to end, though you still feel dopey and unfocused from whatever is flowing into you.  You manage to twist your head around to get a better look at the situation and discover a pair of IV's lodged in your arms.  Twisting your body, you realize you can still feel the drug-enema tube lodged in your " + assholeDescript(player) + ".  Oddly, it's hard to feel worried or concerned about the situation.\n\n", false);
 
         outputText("A goblin leans over your face and hugs her jiggling breasts against you as she gushes, \"<i>Thank you so much daddy!   You probably can't see with all the straps holding you down, but you got me and my sisters totally pregnant.  There's even enough of your spunk left over to knock us up a few more times!  We decided that even though we don't need you to cum right now, we'd let you keep coming forever.  Do you want that?</i>\"\n\n", false);
 
@@ -875,7 +875,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
         outputText("She sighs, \"<i>Whatever, Dad.  Next time we need you I'm sure you'll remember how much fun this was and come running home.</i>\"\n\n", false);
 
-        outputText("The restraints pop off you at once, and you pull the tubes and IV's from your skin.  You grunt with discomfort and remove the final tube from your " + assholeDescript() + ".  Climbing off the table, your " + legs(player) + " wobble unsteadily as you try to get your balance.   The goblin says, \"<i>Go on home dad before I strap you back down and teach you to enjoy my gifts!</i>\"\n\n", false);
+        outputText("The restraints pop off you at once, and you pull the tubes and IV's from your skin.  You grunt with discomfort and remove the final tube from your " + assholeDescript(player) + ".  Climbing off the table, your " + legs(player) + " wobble unsteadily as you try to get your balance.   The goblin says, \"<i>Go on home dad before I strap you back down and teach you to enjoy my gifts!</i>\"\n\n", false);
 
         outputText("You sheepishly leave the cave and head home, glad to be out of there before your growing tribe of daughters decides to milk you forever.\n\n", false);
         cleanupAfterCombat();
@@ -921,7 +921,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         }
         outputText("  Tamani pushes her way to the front of the pack, her daughters looking disappointed but yielding to their mother's authority for the time being.  She walks over to you, stepping over your fallen form and uncorking a a potion.  You grunt as she drops her jiggling ass down on your ", false);
         if (player.biggestTitSize() < 1) outputText("chest", false);
-        else outputText(allBreastsDescript(), false);
+        else outputText(allBreastsDescript(player), false);
         outputText(" and says, \"<i>Now husband, you've let your daughters beat you fair and square, so now it's time to take your medicine and give them their reward for becoming so strong.</i>\"\n\n", false);
 
         outputText("The potion's bottle becomes a plug for your mouth as Tamani forces your mouth open.  She tips it back and massages your throat with one hand, forcing you to gulp down the fluid.  ", false);

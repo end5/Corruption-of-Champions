@@ -315,8 +315,8 @@ export class Forest {
                 else {
                     outputText("As you wander in the forest, you keep ", false);
                     if (player.gender == 1) outputText("stroking your half-erect " + multiCockDescriptLight(game.player) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes.", false);
-                    if (player.gender == 2) outputText("idly toying with your " + vaginaDescript(0) + " as you daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.", false);
-                    if (player.gender == 3) outputText("stroking alternatively your " + multiCockDescriptLight(game.player) + " and your " + vaginaDescript(0) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes, before, or while, getting fucked by various monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.", false);
+                    if (player.gender == 2) outputText("idly toying with your " + vaginaDescript(player, 0) + " as you daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.", false);
+                    if (player.gender == 3) outputText("stroking alternatively your " + multiCockDescriptLight(game.player) + " and your " + vaginaDescript(player, 0) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes, before, or while, getting fucked by various monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.", false);
                     if (player.gender == 0) outputText("daydreaming about sex-demons with huge sexual attributes, and how you could please them.", false);
                     outputText("", false);
                     dynStats("tou", .5, "lib", .25, "lus", player.lib / 5);
@@ -377,21 +377,21 @@ export class Forest {
         // PARAGRAPH 2
         // FOR NON-CENTAURS]
         if (!player.isTaur()) {
-            outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces your torso to the ground.  Normally your erection would merely raise itself skyward, but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead, you feel your body forcibly pivoting at the hips until your torso is compelled to rest face down atop your " + multiCockDescriptLight(game.player) + ".", false);
+            outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces your torso to the ground.  Normally your erection would merely raise itself skyward, but your genitals have grown too large and heavy for your " + hipDescription(player) + " to hold them aloft.  Instead, you feel your body forcibly pivoting at the hips until your torso is compelled to rest face down atop your " + multiCockDescriptLight(game.player) + ".", false);
             // IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
             if (player.biggestTitSize() >= 35) {
-                if (lake) outputText("  Your " + chestDesc(game.player) + " hang lewdly off your torso to rest in the lakeside mud, covering much of the ground to either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  Mud cakes against their undersides and coats your " + nippleDescript(0) + "s.", false);
-                else outputText("  Your " + chestDesc(game.player) + " hang lewdly off your torso to rest on the twings and dirt, covering up much of the ground to either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  The rough texture of the bark on various tree roots teases your " + nippleDescript(0) + "s mercilessly.", false);
+                if (lake) outputText("  Your " + chestDesc(game.player) + " hang lewdly off your torso to rest in the lakeside mud, covering much of the ground to either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  Mud cakes against their undersides and coats your " + nippleDescription(player, 0) + "s.", false);
+                else outputText("  Your " + chestDesc(game.player) + " hang lewdly off your torso to rest on the twings and dirt, covering up much of the ground to either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  The rough texture of the bark on various tree roots teases your " + nippleDescription(player, 0) + "s mercilessly.", false);
             }
             // IF CHARACTER HAS A BALLS ADD SENTENCE
             if (player.balls > 0) {
-                outputText("  Your " + player.skinTone + " " + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  Your " + ballsDescriptLight() + " pulse with the need to release their sperm through your " + multiCockDescriptLight(game.player) + " and ", false);
+                outputText("  Your " + player.skinTone + " " + sackDescript(player) + " rests beneath your raised " + buttDescription(player) + ".  Your " + ballsDescriptLight(player) + " pulse with the need to release their sperm through your " + multiCockDescriptLight(game.player) + " and ", false);
                 if (lake) outputText("into the waters of the nearby lake.", false);
                 else outputText("onto the fertile soil of the forest.", false);
             }
             // IF CHARACTER HAS A VAGINA ADD SENTENCE
             if (player.vaginas.length >= 1) {
-                outputText("  Your " + vaginaDescript() + " and " + clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescript() + " above.", false);
+                outputText("  Your " + vaginaDescript(player) + " and " + clitDescription(player) + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescription(player) + " above.", false);
                 // IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
                 if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) {
                     outputText("  Juices stream from your womanhood and begin pooling on the dirt and twigs beneath you.  ", false);
@@ -402,21 +402,21 @@ export class Forest {
         }
         // FOR CENTAURS
         else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
-            outputText("  The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescript() + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hind legs until your equine body is resting on top of your " + multiCockDescriptLight(game.player) + ".", false);
+            outputText("  The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescription(player) + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hind legs until your equine body is resting on top of your " + multiCockDescriptLight(game.player) + ".", false);
             // IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
             if (player.biggestTitSize() >= 35) {
-                if (lake) outputText("  Your " + chestDesc(game.player) + " pull your human torso forward until it also is forced to face the ground, obscured as it is in boob-flesh.  Your tits rest on the wet earth to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  Mud cakes their undersides and coats your " + nippleDescript(0) + "s.", false);
-                else outputText("  Your " + chestDesc(game.player) + " pull your human torso forward until it also is forced to face the ground, obscured as it is in boob-flesh.  Your tits rest on the dirt and twigs to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  The rough texture of the bark on various tree roots teases your " + nippleDescript(0) + "s mercilessly.", false);
+                if (lake) outputText("  Your " + chestDesc(game.player) + " pull your human torso forward until it also is forced to face the ground, obscured as it is in boob-flesh.  Your tits rest on the wet earth to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  Mud cakes their undersides and coats your " + nippleDescription(player, 0) + "s.", false);
+                else outputText("  Your " + chestDesc(game.player) + " pull your human torso forward until it also is forced to face the ground, obscured as it is in boob-flesh.  Your tits rest on the dirt and twigs to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  The rough texture of the bark on various tree roots teases your " + nippleDescription(player, 0) + "s mercilessly.", false);
             }
             // IF CHARACTER HAS A BALLS ADD SENTENCE
             if (player.balls > 0) {
-                outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescript() + ".  Your " + ballsDescriptLight() + " pulse with the need to release their sperm through your " + multiCockDescriptLight(game.player) + " and ", false);
+                outputText("  Your " + player.skinTone + sackDescript(player) + " rests beneath your raised " + buttDescription(player) + ".  Your " + ballsDescriptLight(player) + " pulse with the need to release their sperm through your " + multiCockDescriptLight(game.player) + " and ", false);
                 if (lake) outputText("into the waters of the nearby lake.", false);
                 else outputText("onto the fertile soil of the forest floor.", false);
             }
             // IF CHARACTER HAS A VAGINA ADD SENTENCE
             if (player.vaginas.length >= 1) {
-                outputText("  Your " + vaginaDescript() + " and " + clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescript() + " above.", false);
+                outputText("  Your " + vaginaDescript(player) + " and " + clitDescription(player) + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescription(player) + " above.", false);
                 // IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
                 if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) {
                     if (lake) outputText("  A leaf falls from a tree and lands on the wet lips of your cunt, its light touch teasing your sensitive skin.  Like a mare or cow in heat, your juices stream from your womanhood and pool in the mud beneath you.  The sloppy fem-spunk only makes the ground more muddy.", false);

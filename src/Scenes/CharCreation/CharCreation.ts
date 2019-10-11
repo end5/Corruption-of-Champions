@@ -497,7 +497,7 @@ export class CharCreation {
     private setHair(choice: string): void {
         player.hairColor = choice;
         clearOutput();
-        outputText("You have " + hairDescript() + ".");
+        outputText("You have " + hairDescription(player) + ".");
         chooseEndowment(false);
     }
 
@@ -2553,7 +2553,7 @@ export class CharCreation {
         }
         //Gender endowment choices
         if(eventNo == 10020) {
-            outputText("You have " + hairDescript() + ".", true);
+            outputText("You have " + hairDescription(player) + ".", true);
             outputText("\n\nEvery person is born with a gift.  What's yours?", true);
             if(player.gender == 1) choices("Strength", 10021, "Toughness", 10022, "Speed", 10023, "Smarts", 10024, "Libido", 10025, "Touch", 10026, "Big Cock", 10027, "Lots of Jizz", 10028, "", 0, "", 0);
             if(player.gender == 2) choices("Strength", 10021, "Toughness", 10022, "Speed", 10023, "Smarts", 10024, "Libido", 10025, "Touch", 10026, "Big Breasts", 10029, "Big Clit", 10030, "Fertile", 10031, "Wet Vagina", 10032);

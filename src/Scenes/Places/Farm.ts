@@ -74,7 +74,7 @@ export class Farm {
             }
             if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") >= 0) {
                 if (player.findStatusAffect(StatusAffects.Milked) >= 0) {
-                    outputText("\n\n<b>Your " + nippleDescript(0) + "s are currently too sore to be milked.  You'll have to wait a while.</b>", false);
+                    outputText("\n\n<b>Your " + nippleDescription(player, 0) + "s are currently too sore to be milked.  You'll have to wait a while.</b>", false);
                 }
                 else if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(2, "Get Milked", getMilked);
 
@@ -260,7 +260,7 @@ export class Farm {
                 if (player.cor < 33) outputText("You blush with shame", false);
                 else if (player.cor <= 66) outputText("You flush with a touch of exhibitionism", false);
                 else outputText("You flush hotly and arch your back, openly displaying your milk to the dog-girl", false);
-                outputText(" as her words sink in.   Runners of milk leak down your " + allBreastsDescript() + ", released by the stress of being so exposed.   In no time flat you're soaked in milk.\n\n", false);
+                outputText(" as her words sink in.   Runners of milk leak down your " + allBreastsDescript(player) + ", released by the stress of being so exposed.   In no time flat you're soaked in milk.\n\n", false);
                 outputText("Whitney starts to giggle, but immediately stifles it, apologizing, \"<i>Ah'm sorry, I didn't mean nothing by it.  I know a few folks who LOVE being a walking milk-fountain.  If ya like, I could probably get you set up with your own milking equipment.   You'd be able to keep up with the... fluid accumulations that seem to be troubling you.   I'd even be able to toss you a few gems if you produce enough.</i>\"\n\n", false);
                 outputText("It almost sounds too good to be true.   The farmer-girl nods, reading your expression quite clearly, \"<i>Yes, there is a bit of a catch.  I'll need 250 gems for the parts to get this all set up.   Equipment like this isn't cheap.   Whaddya say, hun?   I understand if you don't want to – you can always just wait for the milk to stop.</i>\"\n\n", false);
                 if (player.gems >= 250) {
@@ -591,7 +591,7 @@ export class Farm {
         else {
             outputText("You walk over to the barn, eagerly anticipating the opportunity to get milked.", false);
             // If ilk withdrawl or high lactation no dicks
-            if (player.findStatusAffect(StatusAffects.LactationReduction) >= 0 && player.totalCocks() == 0) outputText("  Your " + nippleDescript(0) + "s are engorged and ready to be taken care of.", false);
+            if (player.findStatusAffect(StatusAffects.LactationReduction) >= 0 && player.totalCocks() == 0) outputText("  Your " + nippleDescription(player, 0) + "s are engorged and ready to be taken care of.", false);
             // If cocks
             else if (player.totalCocks() > 0) {
                 outputText("Your " + multiCockDescriptLight(game.player) + " erect", false);
@@ -602,7 +602,7 @@ export class Farm {
             }
             // If both
             if (player.findStatusAffect(StatusAffects.LactationReduction) >= 0 && player.cockTotal() > 0) {
-                outputText("Your " + nippleDescript(0) + "s and " + multiCockDescriptLight(game.player) + " grow", false);
+                outputText("Your " + nippleDescription(player, 0) + "s and " + multiCockDescriptLight(game.player) + " grow", false);
                 outputText(" hard and ready of ", false);
                 outputText("their", false);
                 outputText(" own volition.", false);
@@ -623,20 +623,20 @@ export class Farm {
         // Apply
         if (player.findStatusAffect(StatusAffects.BreastsMilked) < 0 || application == 0) {
             if (player.findStatusAffect(StatusAffects.BreastsMilked) < 0) player.createStatusAffect(StatusAffects.BreastsMilked, 0, 0, 0, 0);
-            outputText("You manage to grab the suction cups in spite of your constrictive bindings and pull them to your " + nippleDescript(0) + "s.  They latch on immediately, ", false);
+            outputText("You manage to grab the suction cups in spite of your constrictive bindings and pull them to your " + nippleDescription(player, 0) + "s.  They latch on immediately, ", false);
             if (player.nippleLength <= 1.5) outputText("pulling each of your nipples entirely into the suction-tubes.  ", false);
             else outputText("struggling to fit around each of your nipples as they slide into the suction-tubes.  ", false);
-            outputText("There is a mechanical lurching noise as the suction builds rapidly.  Your nipple swells out to " + int(player.nippleLength * 1.5 * 10) / 10 + " inches of length, turning purplish from the strain.   You can feel something welling up inside your " + allBreastsDescript() + ", building as it moves towards your " + nippleDescript(0) + "s.\n\n", false);
+            outputText("There is a mechanical lurching noise as the suction builds rapidly.  Your nipple swells out to " + int(player.nippleLength * 1.5 * 10) / 10 + " inches of length, turning purplish from the strain.   You can feel something welling up inside your " + allBreastsDescript(player) + ", building as it moves towards your " + nippleDescription(player, 0) + "s.\n\n", false);
         }
         // Apply repeat alternate
         else if (application == 1) {
-            outputText("You stretch down and grab onto the suction cups, pulling them up to your eager nipples.  They latch on, slapping tight against you as the vacuum pressure seals them tightly against your body.  You can feel your " + nippleDescript(0) + "s pulling tight, nearly doubling in size from the intense pressure.  ", false);
+            outputText("You stretch down and grab onto the suction cups, pulling them up to your eager nipples.  They latch on, slapping tight against you as the vacuum pressure seals them tightly against your body.  You can feel your " + nippleDescription(player, 0) + "s pulling tight, nearly doubling in size from the intense pressure.  ", false);
             if (player.nippleLength >= 3) outputText("They nearly burst the tubes designed to milk them by virtue of their sheer size.  ", false);
-            outputText("The sensitive flesh of your " + allBreastsDescript() + " fill with a burgeoning pressure that centers around the tubes connected to your nips.\n\n", false);
+            outputText("The sensitive flesh of your " + allBreastsDescript(player) + " fill with a burgeoning pressure that centers around the tubes connected to your nips.\n\n", false);
         }
         // Version 3
         else if (application == 2) {
-            outputText("Despite the tightness of your harness, you manage to reach down to grab the clear cups of the breast milker.  The cups twitch and move in your hands as you bring them up, ready to milk you.  You begin holding them against your " + nippleDescript(0) + "s and with a sudden lurch the suction pulls against you, pressing the breast-milker's cups tightly against your chest, stretching your " + nippleDescript(0) + "s to nearly twice their normal length.  You feel a building pressure as the machine sucks you relentlessly, drawing your milk to the surface.\n\n", false);
+            outputText("Despite the tightness of your harness, you manage to reach down to grab the clear cups of the breast milker.  The cups twitch and move in your hands as you bring them up, ready to milk you.  You begin holding them against your " + nippleDescription(player, 0) + "s and with a sudden lurch the suction pulls against you, pressing the breast-milker's cups tightly against your chest, stretching your " + nippleDescription(player, 0) + "s to nearly twice their normal length.  You feel a building pressure as the machine sucks you relentlessly, drawing your milk to the surface.\n\n", false);
         }
         // Version 4 huge nips
         if (application == 3) {
@@ -654,7 +654,7 @@ export class Farm {
         if (player.lactationQ() < 50) {
             dynStats("lus", 15);
             if (milksplosion == 0) {
-                outputText("A few drops of milk bud on the tips of your " + nippleDescript(0) + "s, growing larger as they roll down to the edge of the tube.  It feels as if a ", false);
+                outputText("A few drops of milk bud on the tips of your " + nippleDescription(player, 0) + "s, growing larger as they roll down to the edge of the tube.  It feels as if a ", false);
                 if (player.totalBreasts() == 2) outputText("pair", false);
                 else if (player.totalBreasts() == 4) outputText("quartet", false);
                 else outputText("group", false);
@@ -662,11 +662,11 @@ export class Farm {
             }
             // Lightish2
             else if (milksplosion == 1) {
-                outputText("A tiny spurt of milk erupts from each of your " + nippleDescript(0) + "s before the hungry machinery devours it, sucking it down the clear tubes that lead back to the Whitney's machinery.  You unconsciously moan from the pleasure, feeling more than a little turned on by the pulsing suckling feeling the devices provide.  You spray your milk out in tiny streams, emptying your " + allBreastsDescript() + " off their motherly fluids. An hour later your harness loosens, easing you to the floor as the milking-cups drop off your painfully sensitive " + nippleDescript(0) + ".\n\n", false);
+                outputText("A tiny spurt of milk erupts from each of your " + nippleDescription(player, 0) + "s before the hungry machinery devours it, sucking it down the clear tubes that lead back to the Whitney's machinery.  You unconsciously moan from the pleasure, feeling more than a little turned on by the pulsing suckling feeling the devices provide.  You spray your milk out in tiny streams, emptying your " + allBreastsDescript(player) + " off their motherly fluids. An hour later your harness loosens, easing you to the floor as the milking-cups drop off your painfully sensitive " + nippleDescription(player, 0) + ".\n\n", false);
             }
             // Lightish3
             else if (milksplosion == 2) {
-                outputText("The tips of your " + nippleDescript(0) + "s swell for a moment before releasing tiny streams of milk into the suctioning cups.  It rapidly drains away, down the tubes towards the collection device.  The sensation is pleasurable and intense, but long before the machine finishes with you, your milk supply dries up.  The constant pulsing suckling does not abate, stretching and abusing your poor teats for the better part of an hour.  In spite of the pain and sensitivity, you enjoy it, but when the harness finally lowers yourself to the floor, you find yourself already anticipating the next session.\n\n", false);
+                outputText("The tips of your " + nippleDescription(player, 0) + "s swell for a moment before releasing tiny streams of milk into the suctioning cups.  It rapidly drains away, down the tubes towards the collection device.  The sensation is pleasurable and intense, but long before the machine finishes with you, your milk supply dries up.  The constant pulsing suckling does not abate, stretching and abusing your poor teats for the better part of an hour.  In spite of the pain and sensitivity, you enjoy it, but when the harness finally lowers yourself to the floor, you find yourself already anticipating the next session.\n\n", false);
             }
         }
         // Medium (+30 lust)
@@ -674,15 +674,15 @@ export class Farm {
             dynStats("lus", 30);
             // MEDIUMLICIOUS
             if (milksplosion == 0) {
-                outputText("Drops of your milk roll down the edge of the milk-cups as you begin lactating into them.  Milk sprays in solid streams from your nipples, forming a puddle at the bottom of the cup as the machinery siphons it through the clear tube towards the reservoir.   You moan hotly as the milking progresses, emptying your " + allBreastsDescript() + " of their creamy cargo.  For an hour your world is reduced to the sensation of suction and release, though towards the end nothing is coming out but tiny milk-drops.  At long last the harness lowers you to the floor, letting the cups pop off your abused " + nippleDescript(0) + "s.  You feel a little bit sore and sensitive, but overwhelmingly aroused by the experience.\n\n", false);
+                outputText("Drops of your milk roll down the edge of the milk-cups as you begin lactating into them.  Milk sprays in solid streams from your nipples, forming a puddle at the bottom of the cup as the machinery siphons it through the clear tube towards the reservoir.   You moan hotly as the milking progresses, emptying your " + allBreastsDescript(player) + " of their creamy cargo.  For an hour your world is reduced to the sensation of suction and release, though towards the end nothing is coming out but tiny milk-drops.  At long last the harness lowers you to the floor, letting the cups pop off your abused " + nippleDescription(player, 0) + "s.  You feel a little bit sore and sensitive, but overwhelmingly aroused by the experience.\n\n", false);
             }
             //// Medium 2
             if (milksplosion == 1) {
-                outputText("A tight stream of milk erupts from your " + nippleDescript(0) + "s, pouring into the bottom of the hungry nipple-cups.  It pools there as the tubes work to suction it away.  They turn white and the machinery thrums as it works to keep up with you.  The tugging and releasing of the suction as you squirt out your milk is highly erotic, making you wriggle in the harness with sensual delight.  Unfortunately with all the straps you can't do anything about the heat in your groin.  After an hour of milking, when your output has dropped to barely a trickle, you're slowly lowered to the floor and released when the milking cycle completes.\n\n", false);
+                outputText("A tight stream of milk erupts from your " + nippleDescription(player, 0) + "s, pouring into the bottom of the hungry nipple-cups.  It pools there as the tubes work to suction it away.  They turn white and the machinery thrums as it works to keep up with you.  The tugging and releasing of the suction as you squirt out your milk is highly erotic, making you wriggle in the harness with sensual delight.  Unfortunately with all the straps you can't do anything about the heat in your groin.  After an hour of milking, when your output has dropped to barely a trickle, you're slowly lowered to the floor and released when the milking cycle completes.\n\n", false);
             }
             // Medium 3
             if (milksplosion == 2) {
-                outputText("Fat drops of milk pour out of your " + nippleDescript(0) + "s, pooling in the milking-cups as the machine begins to extract your creamy breast-milk.   The milk flow begins streaming out of you it bursts of fluid as the machinery switches to a pulsating suction.  You groan happily as your " + allBreastsDescript() + " empty, relieving you of pent up pressure.   The feeling is enjoyable in more than just that way, and you feel yourself getting ", false);
+                outputText("Fat drops of milk pour out of your " + nippleDescription(player, 0) + "s, pooling in the milking-cups as the machine begins to extract your creamy breast-milk.   The milk flow begins streaming out of you it bursts of fluid as the machinery switches to a pulsating suction.  You groan happily as your " + allBreastsDescript(player) + " empty, relieving you of pent up pressure.   The feeling is enjoyable in more than just that way, and you feel yourself getting ", false);
                 if (player.totalCocks() == 0) {
                     if (player.hasVagina()) outputText("wet", false);
                     else outputText("horny", false);
@@ -703,7 +703,7 @@ export class Farm {
             }
             // High Output2
             if (milksplosion == 1) {
-                outputText("Your " + nippleDescript(0) + " swell up like tiny balloons for a moment before they unleash a torrent of your milk.  The nipple-cylinders instantly flood to capacity, and the milking machinery chugs loudly as it tries to suck it all down the tubes, barely keeping up with you.  You pant and writhe in the harness, each pulse of milk sending a growing sensation of your warmth to your groin that makes you ", false);
+                outputText("Your " + nippleDescription(player, 0) + " swell up like tiny balloons for a moment before they unleash a torrent of your milk.  The nipple-cylinders instantly flood to capacity, and the milking machinery chugs loudly as it tries to suck it all down the tubes, barely keeping up with you.  You pant and writhe in the harness, each pulse of milk sending a growing sensation of your warmth to your groin that makes you ", false);
                 if (player.totalCocks() == 0) {
                     if (player.hasVagina()) outputText("wet", false);
                     else outputText("horny", false);
@@ -724,7 +724,7 @@ export class Farm {
             dynStats("lus", 60);
             milksplosion = rand(2);
             if (milksplosion == 0) {
-                outputText("Your " + nippleDescript(0) + "s twitch and pulse for but a moment, then unleash a torrent of milk, totally filling the tubes.  The machinery lurches, struggling to keep up as you flood the tubes.   An alarm starts blaring as milk begins leaking out around the edges – Whitney's machinery just can't keep up!  You can hear footsteps in the barn, and a pair of soft hands hold the cups against your chest.   The machinery is shut down, but another pair of hands begins massaging your " + allBreastsDescript() + ", pumping wave after wave of milk through the tubes, unaided by the machinery.  You practically ", false);
+                outputText("Your " + nippleDescription(player, 0) + "s twitch and pulse for but a moment, then unleash a torrent of milk, totally filling the tubes.  The machinery lurches, struggling to keep up as you flood the tubes.   An alarm starts blaring as milk begins leaking out around the edges – Whitney's machinery just can't keep up!  You can hear footsteps in the barn, and a pair of soft hands hold the cups against your chest.   The machinery is shut down, but another pair of hands begins massaging your " + allBreastsDescript(player) + ", pumping wave after wave of milk through the tubes, unaided by the machinery.  You practically ", false);
                 if (player.hasVagina()) outputText("cream yourself", false);
                 else if (player.cockTotal()) outputText("jizz yourself", false);
                 else outputText("orgasm", false);
@@ -769,7 +769,7 @@ export class Farm {
         else outputText(".", false);
         // High production = stupid cow.
         if (liters > 2) {
-            outputText("\n\nYou feel woozy and lightheaded from the intense milking, and have difficulty focusing on anything but the residue of fluids coating your " + allBreastsDescript() + ".", false);
+            outputText("\n\nYou feel woozy and lightheaded from the intense milking, and have difficulty focusing on anything but the residue of fluids coating your " + allBreastsDescript(player) + ".", false);
             // Being a cow makes you less dumb
             // Somehow
             if (player.findStatusAffect(StatusAffects.Feeder) >= 0) {
@@ -799,7 +799,7 @@ export class Farm {
         }
         // Horny
         else {
-            outputText("Overwhelmed with your desire, you don't even bother to cover up and make yourself decent, you just run out of the barn, " + allBreastsDescript() + " jiggling and wet, heading straight for camp.");
+            outputText("Overwhelmed with your desire, you don't even bother to cover up and make yourself decent, you just run out of the barn, " + allBreastsDescript(player) + " jiggling and wet, heading straight for camp.");
             if (farmCorruption.whitneyCorruption() < 90) outputText(" It isn't until you get back that you remember the disapproving look Whitney gave you, but if anything, it only makes you hornier.", false);
             dynStats("lus=", 100);
         }
@@ -913,8 +913,8 @@ export class Farm {
         }
         // (OPTIONAL ANAL PROBE)
         if (player.hasKeyItem("Cock Milker: Anal Attachment") >= 0) {
-            if (player.cockTotal() == 1) outputText("A sudden splash of wetness hits your backside, instantly soaking your " + player.skinDesc + " with slippery lubricants.  You feel something narrow touch against your " + assholeDescript() + ", workings its way past the clenching muscles and into your body.  The violation would bother you more if it didn't seem to amplify the feelings radiating down your shaft, but then it starts to change.  You feel it swelling up inside, somehow inflating.  It stretches you wide, pressing against the knot of your prostate, milking out a thick flow of cum.   It pushes tighter and tighter, making you drip and drizzle in a steady flow before deflating, allowing your abused body to relax.  You sigh, but are kept rock hard by the feverish milking of your dick.\n\nEventually the probe inflates again, squeezing out another drizzle of thick spooge, the hose on your " + cockDescript(game.player, 0) + " noisily sucking it down.  You're kept like that for quite a while – never feeling a true orgasm, but forced to expel cum over and over by always increasing waves of pressure in your ass.  You babble incoherently, pleasure-drunk, not even noticing a green light on the far side of the wall come on.  One thing you do notice is that the cock-tube isn't slowing down its ministrations.  You're finally allowed to cum!\n\n", false);
-            else outputText("A sudden splash of wetness hits your backside, instantly soaking your " + player.skinDesc + " with slippery lubricants.  You feel something narrow touch against your " + assholeDescript() + ", workings its way past the clenching muscles and into your body.  The violation would bother you more if it didn't seem to amplify the feelings radiating down your shafts, but then it starts to change.  You feel it swelling up inside, somehow inflating.  It stretches you wide, pressing against the knot of your prostate, milking out a thick flow of cum.   It pushes tighter and tighter, making you drip and drizzle in a steady flow before deflating, allowing your abused body to relax.  You sigh, but are kept rock hard by the feverish milking of your dicks.\n\nEventually the probe inflates again, squeezing out another drizzle of thick spooge, the hoses on your " + multiCockDescriptLight(game.player) + " noisily sucking it down.  You're kept like that for quite a while – never feeling a true orgasm, but forced to expel cum over and over by always increasing waves of pressure in your ass.  You babble incoherently, pleasure-drunk, not even noticing a green light on the far side of the wall come on.  One thing you do notice is that the cock-tubes are no longer slowing down their ministrations.  You're finally allowed to cum!\n\n", false);
+            if (player.cockTotal() == 1) outputText("A sudden splash of wetness hits your backside, instantly soaking your " + player.skinDesc + " with slippery lubricants.  You feel something narrow touch against your " + assholeDescript(player) + ", workings its way past the clenching muscles and into your body.  The violation would bother you more if it didn't seem to amplify the feelings radiating down your shaft, but then it starts to change.  You feel it swelling up inside, somehow inflating.  It stretches you wide, pressing against the knot of your prostate, milking out a thick flow of cum.   It pushes tighter and tighter, making you drip and drizzle in a steady flow before deflating, allowing your abused body to relax.  You sigh, but are kept rock hard by the feverish milking of your dick.\n\nEventually the probe inflates again, squeezing out another drizzle of thick spooge, the hose on your " + cockDescript(game.player, 0) + " noisily sucking it down.  You're kept like that for quite a while – never feeling a true orgasm, but forced to expel cum over and over by always increasing waves of pressure in your ass.  You babble incoherently, pleasure-drunk, not even noticing a green light on the far side of the wall come on.  One thing you do notice is that the cock-tube isn't slowing down its ministrations.  You're finally allowed to cum!\n\n", false);
+            else outputText("A sudden splash of wetness hits your backside, instantly soaking your " + player.skinDesc + " with slippery lubricants.  You feel something narrow touch against your " + assholeDescript(player) + ", workings its way past the clenching muscles and into your body.  The violation would bother you more if it didn't seem to amplify the feelings radiating down your shafts, but then it starts to change.  You feel it swelling up inside, somehow inflating.  It stretches you wide, pressing against the knot of your prostate, milking out a thick flow of cum.   It pushes tighter and tighter, making you drip and drizzle in a steady flow before deflating, allowing your abused body to relax.  You sigh, but are kept rock hard by the feverish milking of your dicks.\n\nEventually the probe inflates again, squeezing out another drizzle of thick spooge, the hoses on your " + multiCockDescriptLight(game.player) + " noisily sucking it down.  You're kept like that for quite a while – never feeling a true orgasm, but forced to expel cum over and over by always increasing waves of pressure in your ass.  You babble incoherently, pleasure-drunk, not even noticing a green light on the far side of the wall come on.  One thing you do notice is that the cock-tubes are no longer slowing down their ministrations.  You're finally allowed to cum!\n\n", false);
         }
         // (ELSE)
         else {
@@ -987,7 +987,7 @@ export class Farm {
         else if (cumQ < 333) {
             if (player.cockTotal() == 1) {
                 outputText("An orgasm hits you like a an ocean wave, shutting down any remaining conscious thoughts and replacing them with one overriding emotion: relief.   You spurt helplessly into the tube, wracked with pleasure as your ", false);
-                if (player.balls > 0) outputText("bloated " + ballsDescriptLight() + " are", false);
+                if (player.balls > 0) outputText("bloated " + ballsDescriptLight(player) + " are", false);
                 else outputText("sensitive " + cockDescript(game.player, 0) + " is", false);
                 outputText(" finally relieved of ", false);
                 if (player.balls > 0) outputText("their ", false);
@@ -996,7 +996,7 @@ export class Farm {
             }
             else {
                 outputText("An orgasm hits you like a an ocean wave, shutting down any remaining conscious thoughts and replacing them with one overriding emotion: relief.   You spurt helplessly into the tube, wracked with pleasure as your ", false);
-                if (player.balls > 0) outputText("bloated " + ballsDescriptLight() + " are", false);
+                if (player.balls > 0) outputText("bloated " + ballsDescriptLight(player) + " are", false);
                 else outputText("sensitive " + multiCockDescriptLight(game.player) + " are", false);
                 outputText(" finally relieved of their pent up seed.  The machine suckles noisily, visibly turning some of the tubes in the wall solid white as the cock-pump's motors work hard to keep up with your impressive output.  Eventually it does come to an end.  Your jets of jism taper off and your dicks start to go soft inside the squirming machinery.  In response you feel it slip off you, retracting into the wall as the harness gently drops you back to the ground.\n\n", false);
             }
@@ -1094,7 +1094,7 @@ export class Farm {
     }
 
     private cowBadEnd1(): void {
-        outputText("You moo with delight, fondling your dripping " + allBreastsDescript() + " as you relax in your stall.   You know there was something uh, important or something that you were going to do - besides getting your udders milked!  Mmmmm, all your worries about that other thing just melt away when you're in your harness, spraying out milk...\n\n", true);
+        outputText("You moo with delight, fondling your dripping " + allBreastsDescript(player) + " as you relax in your stall.   You know there was something uh, important or something that you were going to do - besides getting your udders milked!  Mmmmm, all your worries about that other thing just melt away when you're in your harness, spraying out milk...\n\n", true);
         outputText("You stop, trying to put your remaining wits to work and remember what you were going to do.   Let's see, you were coming here because your tits were so full that they made you ache, and you got hooked up and pumped like a good cow.  Another soft moo escapes your lips.  Now you're turned on and masturbating your drippy udders.  So the next step would be...\n\n", false);
         outputText("...finding someone to fuck you silly while you get something to eat.  It's so simple!  You crawl out of your stall, feeling your ponderous breasts jiggle as they drag on the ground.  A trail of white cream clearly marks your passage out into the fields, eventually passing beyond the edges of Whitney's farm and into the mountains.", false);
         doNext(cowBadEnd2);
@@ -1102,7 +1102,7 @@ export class Farm {
 
     private cowBadEnd2(): void {
         outputText("", true);
-        outputText("A day later, you slosh back into the barn with your breasts painfully full and ready to be emptied.  Your cum-filled belly joins your tits in dragging on the floor while you daydream about your time in the minotaur caves last night.  The first one claimed your " + assholeDescript() + ", brutalizing it over and over while the beast emptied his vast reservoirs of seed into your rectum.  Before the beast's equine-like cock could be stuffed halfway inside you, a slightly smaller minotaur was in front of your face, smearing your lips with a thick coating of his tasty pre.  Like a good cow, you opened wide for the bull and gratefully accepted his thick loads, feeling the narcotic-like spunk shut down your ability to think about anything but sex.\n\n", false);
+        outputText("A day later, you slosh back into the barn with your breasts painfully full and ready to be emptied.  Your cum-filled belly joins your tits in dragging on the floor while you daydream about your time in the minotaur caves last night.  The first one claimed your " + assholeDescript(player) + ", brutalizing it over and over while the beast emptied his vast reservoirs of seed into your rectum.  Before the beast's equine-like cock could be stuffed halfway inside you, a slightly smaller minotaur was in front of your face, smearing your lips with a thick coating of his tasty pre.  Like a good cow, you opened wide for the bull and gratefully accepted his thick loads, feeling the narcotic-like spunk shut down your ability to think about anything but sex.\n\n", false);
         outputText("You moo happily, shivering at the intensity of the fond memories and in anticipation of tonight's activities.  But first you need to get your swollen nipples emptied!  The straps to the harness hang there in front of you – how do you work them again?  Your happy moos turn to moos of confusion and stress, but thankfully Whitney pads into the barn before you have a chance to panic.  She looks down and sighs, filling you with confusion.  You weren't a bad cow, were you?\n\n", false);
         outputText("The anthropomorphic country-girl gives you a gentle pat on the head as she works the straps, talking to herself as she does, \"<i>Don't worry girl, I'm not mad.  I reckon I should've given you a stronger warning is all.  But now the damage is done – what's left of your brains was mushed up by all that milking.  Don't worry none honey, there will always be a spot in my stall for you.  I'll just have to make sure you don't get out with the animals again, won't I?</i>\"\n\n", false);
         outputText("You nod happily, determined to find someone or something that can stuff you as full as your bulls did.  Whitney gives a resigned sigh as she turns the machine on, watching your determined stare melt into a dopey painting of relief...", false);
@@ -1113,7 +1113,7 @@ export class Farm {
         outputText("", true);
         outputText("As you roll onto your back the machine delivers an encore performance on your swollen " + multiCockDescriptLight(game.player) + ", down to the very same orgasm denial.  Wracked by pleasure but now freed to move, you find yourself trying to thrust aganst the tubes, as best as your feeble grip and exhaustion will allow, in order to try to override the machine's will and achieve release.  Nevertheless, the suction expertly mainpulates your arousal and you can do little except endure it as another oversized batch of cum wells up", false);
         // [(balls)
-        if (player.balls > 0) outputText(" in your " + ballsDescriptLight(), false);
+        if (player.balls > 0) outputText(" in your " + ballsDescriptLight(player), false);
         outputText(".  As before, the machine works you on and off for roughly an hour before the wall light once again turns green and the suction on your " + multiCockDescriptLight(game.player) + " intensifies.  Your hips take over as you buck against the machine and push out another ", false);
         if (cumQ < 100) outputText("trickle", false);
         else if (cumQ < 600) outputText("stream", false);
@@ -1143,24 +1143,24 @@ export class Farm {
         outputText(" inserts a rod-like end into your mouth and begins trickling salty fluids down your throat.", false);
         // [(if vag)
         if (player.hasVagina()) {
-            outputText("  Another tube, likewise capped with a thick, firm end instead of a suction cup, reaches your " + vaginaDescript(0) + " and pushes inside, secreting more of the fluid.  ", false);
+            outputText("  Another tube, likewise capped with a thick, firm end instead of a suction cup, reaches your " + vaginaDescript(player, 0) + " and pushes inside, secreting more of the fluid.  ", false);
             player.cuntChange(15, true);
             // [(bigclit)
-            if (player.clitLength > 3) outputText("A smaller suction tube fastens over your " + clitDescript() + " as it rouses from the vaginal stimulation.", false);
+            if (player.clitLength > 3) outputText("A smaller suction tube fastens over your " + clitDescription(player) + " as it rouses from the vaginal stimulation.", false);
         }
         // [(lactation, no nipplecunts)
         if (player.biggestLactation() >= 1 && !player.hasFuckableNipples()) {
-            outputText("  Some tubes of the cup-type latch onto your " + nippleDescript(0) + "s, then begin suction of their own. You feel your breastmilk shift toward the nipples, then begin to dribble into the tubes.", false);
+            outputText("  Some tubes of the cup-type latch onto your " + nippleDescription(player, 0) + "s, then begin suction of their own. You feel your breastmilk shift toward the nipples, then begin to dribble into the tubes.", false);
         }
         // [(nipplecunts)
         if (player.hasFuckableNipples()) {
-            outputText("  More tubes snake up to your " + biggestBreastSizeDescript(player) + " and work their way into your " + nippleDescript(0) + "s.", false);
+            outputText("  More tubes snake up to your " + biggestBreastSizeDescript(player) + " and work their way into your " + nippleDescription(player, 0) + "s.", false);
         }
         outputText("  " + SMultiCockDesc(game.player) + " becomes enormously hard again in a matter of seconds as you absorb the secretions.  You quickly deduce what it is you're tasting; the demon-designed tubing is feeding your own semen back into you, laced with some kind of chemical!\n\n", false);
 
         outputText("Under the effects of this new drug, " + sMultiCockDesc(game.player) + " inflates, engorging with blood until it's much larger than usual", false);
         // [(balls)
-        if (player.balls > 0) outputText(" and your " + sackDescript(player) + " stretches as your " + ballsDescriptLight() + " nearly double in size", false);
+        if (player.balls > 0) outputText(" and your " + sackDescript(player) + " stretches as your " + ballsDescriptLight(player) + " nearly double in size", false);
         outputText(".  Another orgasm passes, this time unhindered as the machine does not slow its efforts in the slightest.  More than twice the previous quantity of semen shoots out of your cock", false);
         if (player.cockTotal() > 1) outputText("s", false);
         outputText(", thanks assuredly to the drug", false);
@@ -1178,7 +1178,7 @@ export class Farm {
         }
         // [(lactation)
         if (player.biggestTitSize() > 1) {
-            outputText("  Your milk sprays out of your " + nippleDescript(0) + "s", false);
+            outputText("  Your milk sprays out of your " + nippleDescription(player, 0) + "s", false);
             // [(nipplecunts)
             if (player.hasFuckableNipples()) outputText(" and rings raise from the bases of the shafts inside your nipples, forming a seal,", false);
             outputText(" as suction begins to whisk it away.", false);
@@ -1193,7 +1193,7 @@ export class Farm {
         if (player.cor > 90) {
             outputText("After literally hundreds of orgasms, the machine once again begins carefully regulating its suction, denying your release.  Repeatedly it teases your " + multiCockDescriptLight(game.player), false);
             // [(vag)
-            if (player.hasVagina()) outputText(" and " + vaginaDescript(0), false);
+            if (player.hasVagina()) outputText(" and " + vaginaDescript(player, 0), false);
             outputText(" to the edge of orgasm and then backs off.  All the pumping in the world can't seem to get you over it, and your frustration mounts as the minutes roll by.  A sharper pressure than usual forms at the base of your " + multiCockDescriptLight(game.player) + " as you fruitlessly grind into the tubes, wishing more than anything to climax; the green light on the wall steadfastedly refuses to light up, mocking your attempts.  From the new pressure an odd strength flows through the rest of your body, increasing your sexual fervor and giving you a second wind, and you finally manage to get a good grip on the tubes, nearly slamming them back and forth on your shaft", false);
             if (player.cockTotal() > 1) outputText("s", false);
             outputText(".  This damn demon machine can't stop you from getting off anymore; with a violent shove you bury " + sMultiCockDesc(game.player) + " into the mouth", false);

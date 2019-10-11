@@ -341,22 +341,22 @@ export class SandWitchScene implements TimeAwareInterface {
         }
         // [lactating]
         if (player.biggestLactation() > 1) {
-            outputText("Her eyes widen when she sees the beads of milk already dripping from your " + nippleDescript(0) + "s as her hand drops between her legs and she begins to slowly masturbate.", false);
+            outputText("Her eyes widen when she sees the beads of milk already dripping from your " + nippleDescription(player, 0) + "s as her hand drops between her legs and she begins to slowly masturbate.", false);
         }
         outputText("\n\n", false);
         // [Corruption < 70]
         if (player.cor < 70) {
             outputText("You smile as you approach", false);
             // [has breasts]
-            if (player.biggestTitSize() > 0) outputText("; your " + nippleDescript(0) + "s  become stiff", false);
+            if (player.biggestTitSize() > 0) outputText("; your " + nippleDescription(player, 0) + "s  become stiff", false);
             // [cock only]
             if (player.totalCocks() > 0 && !player.hasVagina()) outputText(" and your " + cockDescript(game.player, 0) + " hardens.", false);
             // [cunt only]
-            if (player.hasVagina() && player.totalCocks() == 0) outputText(" and your " + vaginaDescript(0) + " begins to drip with moisture.", false);
+            if (player.hasVagina() && player.totalCocks() == 0) outputText(" and your " + vaginaDescript(player, 0) + " begins to drip with moisture.", false);
             // [cock and cunt]
-            if (player.hasVagina() && player.totalCocks() > 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens as your " + vaginaDescript(0) + " begins to drip with moisture.", false);
+            if (player.hasVagina() && player.totalCocks() > 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens as your " + vaginaDescript(player, 0) + " begins to drip with moisture.", false);
             if (player.gender == 0) outputText(" her.", false);
-            outputText(" She seems hesitant at first, but soon approaches and begins to run her hands along your stomach and your " + hipDescript(), false);
+            outputText(" She seems hesitant at first, but soon approaches and begins to run her hands along your stomach and your " + hipDescription(player), false);
             // [has breasts]
             if (player.biggestTitSize() > 0) outputText(", eyes fixed on your " + allBreastsDescript(player), false);
             outputText(".\n\n", false);
@@ -366,7 +366,7 @@ export class SandWitchScene implements TimeAwareInterface {
             outputText("Delicate hands reach around to ", false);
             // [has breasts]
             if (player.biggestTitSize() > 0) outputText("fondle your " + allBreastsDescript(player) + " and ", false);
-            outputText("tease your " + nippleDescript(0) + "s, and you can feel her grinding herself against your strong shoulders. ", false);
+            outputText("tease your " + nippleDescription(player, 0) + "s, and you can feel her grinding herself against your strong shoulders. ", false);
             // [orb penetrated player during combat]
             outputText("With a start you realize that the witch's orb is still inside you as it suddenly begins to pulse within your " + assholeOrPussy(player) + ", causing you to cry out and hasten your pace across the dunes. ", false);
             outputText("You lose track of time and location as you ride, feeling her orgasm over and over against you, her milk pouring down your back and spilling onto the sands. ", false);
@@ -374,7 +374,7 @@ export class SandWitchScene implements TimeAwareInterface {
             if (player.biggestTitSize() > 0) {
                 // [lactating]
                 if (player.biggestLactation() >= 1) {
-                    outputText("Your own " + nippleDescript(0) + "s  are leaking as well, ", false);
+                    outputText("Your own " + nippleDescription(player, 0) + "s  are leaking as well, ", false);
                     // [light-med lactation]
                     if (player.biggestLactation() < 3) outputText("small streams running out ", false);
                     // [heavy lactation]
@@ -517,30 +517,30 @@ export class SandWitchScene implements TimeAwareInterface {
             else {
                 outputText("Finished with your games ", false);
                 // [has cunt]
-                if (player.hasVagina()) outputText("and your " + vaginaDescript(0) + " dripping with desire", false);
+                if (player.hasVagina()) outputText("and your " + vaginaDescript(player, 0) + " dripping with desire", false);
                 outputText(", you push the witch unceremoniously to the ground and deliver a slap to her breasts.  She cries out in pain as milk splashes out onto the sand.  A cruel smile is brought to your face and you start slapping them even harder, alternatively smacking her pair of cunts for good measure.  Surprisingly, her cries of pain begin to turn into moans of pleasure with every slap.  She might even be pushing into the blows slightly, though it is difficult to tell.  After a sizable pool of milk and her juices has drained into the sands beneath her, you reach down and start to drive your fingers hard into one of the sand witch's cunts.  The first few thrusts are enough to violently bring her to orgasm.  You trot forward slowly until you are over her and the witch suddenly hops up. Driving her face into your ", false);
                 // [has cunt]
                 if (player.hasVagina()) {
-                    outputText(vaginaDescript(0) + ", she fingers herself even harder than you had been a moment ago.  Her lips lock unto your " + clitDescript() + " and she suckles on it, drawing a pained gasp from you and causing your pussy juices to gush over her face. You feel ", false);
+                    outputText(vaginaDescript(player, 0) + ", she fingers herself even harder than you had been a moment ago.  Her lips lock unto your " + clitDescription(player) + " and she suckles on it, drawing a pained gasp from you and causing your pussy juices to gush over her face. You feel ", false);
                     // [cunt size is small]
                     if (player.vaginalCapacity() < 10) outputText("one of her fingers ", false);
                     // [cunt size is normal]
                     else if (player.vaginalCapacity() < 20) outputText("several of her fingers ", false);
                     // [cunt size is large]
                     else outputText("a fist ", false);
-                    outputText("pushing deep into your " + vaginaDescript(0) + ", and you're surprised as ", false);
+                    outputText("pushing deep into your " + vaginaDescript(player, 0) + ", and you're surprised as ", false);
                     // [anus size is small]
                     if (player.analCapacity() < 10) outputText("her tongue ", false);
                     // [anus size is normal]
                     else if (player.analCapacity() < 20) outputText("two of her fingers ", false);
                     // [anus size is large]
                     else outputText("a fist ", false);
-                    outputText("penetrates your " + assholeDescript(), false);
+                    outputText("penetrates your " + assholeDescript(player), false);
                     outputText(".", false);
                 }
                 // [does not has cunt]
                 else {
-                    outputText(assholeDescript() + ", she fingers herself even harder than you had been a moment ago.  Her tongue drives into your " + assholeDescript() + ", licking enthusiastically as she squeezes her nipples. ", false);
+                    outputText(assholeDescript(player) + ", she fingers herself even harder than you had been a moment ago.  Her tongue drives into your " + assholeDescript(player) + ", licking enthusiastically as she squeezes her nipples. ", false);
                     // [anus size is small]
                     if (player.analCapacity() < 10) outputText("The sensations are intense, and you could almost swear that her tongue is tracing a pattern as her mouth mutters strange sounds. ", false);
                     // [anus size is normal]
@@ -631,7 +631,7 @@ export class SandWitchScene implements TimeAwareInterface {
 
         outputText("You want to embarrass her further, complete her humiliation upon the sands she once thought to be her domain. You tear her robes into little shreds, exposing her four generously sized breasts. Your eyes follow her dri-^ling nipples, the pupils bouncing as they do. \"Wh-what are you going to do? Rape me?!\" cries the witch, her tone equal parts terrified and wishful. Her thighs attempt to close, though you're sure it's more t$ grind them together than any atte-pt at preserving her modesty. Leaning down, y-u open up to let your tongue lap at her swollen clit. She arches her back and moans, thrusting her hips towa-ds you as bes- she can.\n\n", false);
 
-        outputText("0)w is t$e time. But no, she won't get the dick. She hasn't EAR*ED the dick. She isn't even wor$h your \" + vaginaDescript(0) + \" yet. No n- no, you need -o warm that ho_ cunt up. You whistle to g-t her attention, and as you do, you present your -i%-s ^a_=e* up to*--h-r. Her eyes wi_en, the wo$an's jaw going slack. \"N-no.. not t-e whole thing.\" you nod _n respo-se to her plea. \"The WHO-E THING?!\"\n\n", false);
+        outputText("0)w is t$e time. But no, she won't get the dick. She hasn't EAR*ED the dick. She isn't even wor$h your \" + vaginaDescript(player, 0) + \" yet. No n- no, you need -o warm that ho_ cunt up. You whistle to g-t her attention, and as you do, you present your -i%-s ^a_=e* up to*--h-r. Her eyes wi_en, the wo$an's jaw going slack. \"N-no.. not t-e whole thing.\" you nod _n respo-se to her plea. \"The WHO-E THING?!\"\n\n", false);
 
         outputText("Now she begins to panic. She shake- her head rapidly as you draw bac- your %s99=, and thrust them towards her >pen sl1t...", false);
 
@@ -729,7 +729,7 @@ export class SandWitchScene implements TimeAwareInterface {
         outputText("The sand witch slows to a dead stop as she assesses your intentions, which are made all the more clear as you disrobe and toss your [armor] aside, exposing your ");
         if (player.hasCock()) outputText("hardened  " + multiCockDescriptLight(game.player));
         if (player.gender == 3) outputText(" and ");
-        if (player.hasVagina()) outputText(clitDescript());
+        if (player.hasVagina()) outputText(clitDescription(player));
         outputText(" for her viewing consumption.  Making quite the persuasive argument of non-hostility as you do, the sand witch finally relents, removing her cloak and exposing her four-breasted, ");
         if (player.totalCocks() > 1) outputText(num2Text(player.cockTotal() + 1));
         else outputText("two");
@@ -838,7 +838,7 @@ export class SandWitchScene implements TimeAwareInterface {
         if (player.cockTotal() > 1 || player.gender > 2) outputText("es");
         outputText(" is the only point of dissatisfaction, a point you make clear when you ");
         if (player.hasCock()) outputText("take hold of your " + multiCockDescriptLight(game.player) + " and bring it");
-        else outputText("bring your " + vaginaDescript(0));
+        else outputText("bring your " + vaginaDescript(player, 0));
         outputText(" to her face.  The cute stare of her half-glazed eyes turns to the lunge of lips toward your sex, the sand witch driven like a woman possessed in her efforts to get the next batch going...");
 
         outputText("\n\nFor what feels like an eternity you sit atop the pliant sorceress, having her tend to your sex");
@@ -846,7 +846,7 @@ export class SandWitchScene implements TimeAwareInterface {
         outputText(" while you slowly pump her full of eggs, her girlish little moans resonating through your body as she orally stimulates your ");
         if (player.hasCock()) outputText(multiCockDescriptLight(game.player));
         if (player.gender == 3) outputText(" and ");
-        if (player.hasVagina()) outputText("your " + vaginaDescript(0));
+        if (player.hasVagina()) outputText("your " + vaginaDescript(player, 0));
         outputText(".  At long last her enthusiastic efforts bring you to a more 'traditional' release, lathering ");
         const facial: number = rand(2);
         if (facial == 0) outputText("her facial features with proof of your climax");

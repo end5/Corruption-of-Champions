@@ -245,7 +245,7 @@ export class Doppleganger extends Monster {
 
         str += mf(player, "His", "Her") + " face is " + faceDesc(player) + ".";
 
-        str += " " + mf(player, "His", "Her") + " " + player.hairDescript() + " is parted by";
+        str += " " + mf(player, "His", "Her") + " " + player.hairDescription(player) + " is parted by";
 
         switch (player.earType) {
             case EARS_HORSE:
@@ -288,7 +288,7 @@ export class Doppleganger extends Monster {
         }
 
         str += ". " + mf(player, "He", "She") + " keeps exploring the area around " + mf(player, "his", "her") + " mouth with " + mf(player, "his", "her") + " tongue with a horribly acquisitive, sensual interest.";
-        str += " " + mf(player, "He", "She") + " moves around on " + mf(player, "his", "her") + " " + legs(player) + " with a twitchy jerkiness, " + mf(player, "his", "her") + " " + game.hipDescript() + " swinging and tightening.";
+        str += " " + mf(player, "He", "She") + " moves around on " + mf(player, "his", "her") + " " + legs(player) + " with a twitchy jerkiness, " + mf(player, "his", "her") + " " + game.hipDescription(player) + " swinging and tightening.";
         if (player.tailType != 0) str += " " + mf(player, "His", "Her") + " tail flicks this way and that.";
         str += " " + mf(player, "He", "She") + " wields the exact same " + player.weaponName + " you do, and is dressed in the mirror image of your " + player.armorName + ". ";
         if (player.biggestTitSize() >= 2) str += "It’s difficult not to notice the way the mirror image of your " + breastDescript(player, player.biggestTitRow()) + " ebbs and heaves within it.";

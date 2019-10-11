@@ -6,7 +6,7 @@ export class GooGirl extends Monster {
      */
 
     // [Goo attacks]
-    // Slap – The slime holds its hands up and they morph into a replica of your " + weaponName + ". Happily, she swings at you, painfully smacking her gooey limbs against your head.  You shake your " + hairDescript() + ", clearing your head of the dazing slap. (lightly damages hit points)
+    // Slap – The slime holds its hands up and they morph into a replica of your " + weaponName + ". Happily, she swings at you, painfully smacking her gooey limbs against your head.  You shake your " + hairDescription(player) + ", clearing your head of the dazing slap. (lightly damages hit points)
     // Acid Slap (Only after player's fire attack) – Her body quivering from your flames, the goo-girl delivers a painful slap across your cheek. You gasp when the light stinging becomes a searing burn that seems to get worse as time goes on! (heavily damages hit points and puts Acid Burn on the player)
     private gooGalAttack(): void {
         let damage: number = 0;
@@ -60,7 +60,7 @@ export class GooGirl extends Monster {
                 outputText("delivers a painful slap across your cheek.  You gasp when the light stinging becomes a searing burn that seems to get worse as time goes on!", false);
                 if (player.findStatusAffect(StatusAffects.AcidSlap) < 0) player.createStatusAffect(StatusAffects.AcidSlap, 0, 0, 0, 0);
             }
-            else outputText(", painfully smacking her gooey limbs against your head.  You shake your " + player.hairDescript() + ", clearing your head of the dazing slap.", false);
+            else outputText(", painfully smacking her gooey limbs against your head.  You shake your " + player.hairDescription(player) + ", clearing your head of the dazing slap.", false);
             outputText(" (" + damage + ")", false);
         }
         if (damage > 0) {

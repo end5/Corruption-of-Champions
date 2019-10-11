@@ -96,11 +96,11 @@ public function doDungeon(eventNo:Number):void {
 		//Arousal
 		outputText("In no time flat your blood begins to burn hot with the fires of unnatural lust.  ", true);
 		//Tits – regular
-		if(player.biggestLactation() < 1) outputText("Your " + nippleDescript(0)  + "s begin prodding painfully against your " + player.armorName + ", every touch serving to make them harder and more erect.  ", false);
+		if(player.biggestLactation() < 1) outputText("Your " + nippleDescription(player, 0)  + "s begin prodding painfully against your " + player.armorName + ", every touch serving to make them harder and more erect.  ", false);
 		//Tits – lactating
-		if(player.biggestLactation() >= 1 && player.biggestLactation() < 3) outputText("Your " + nippleDescript(0) + "s get painfully hard as you feel milk begin backing up inside your " + allBreastsDescript() + ".   The succubus glances down mischieviously as her hands begin to grope you through your " + player.armorName + ", squeezing out a few drops of milk.  ", false);
+		if(player.biggestLactation() >= 1 && player.biggestLactation() < 3) outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as you feel milk begin backing up inside your " + allBreastsDescript(player) + ".   The succubus glances down mischieviously as her hands begin to grope you through your " + player.armorName + ", squeezing out a few drops of milk.  ", false);
 		//Tits – megalactating
-		if(player.biggestLactation() >= 3) outputText("Your " + nippleDescript(0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false);
+		if(player.biggestLactation() >= 3) outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false);
 		//Cock – single
 		if(player.cocks.length == 1) {
 			if(player.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(game.player, 0) + " to full hardness in seconds.  ", false);
@@ -114,13 +114,13 @@ public function doDungeon(eventNo:Number):void {
 		//Vagooooz
 		if(player.vaginas.length > 0) {
 			//'uge clit
-			if(player.clitLength >= 4.5) outputText("Popping from between your thighs, your " + clitDescript() + " responds to the sheer hotness of the situation by making itself known.   You squeeze your legs tightly together, hungry for additional sensation.  ", false);
+			if(player.clitLength >= 4.5) outputText("Popping from between your thighs, your " + clitDescription(player) + " responds to the sheer hotness of the situation by making itself known.   You squeeze your legs tightly together, hungry for additional sensation.  ", false);
 			//big clit
-			if(player.clitLength > 1 && player.clitLength < 4.5) outputText("A wave of pleasure erupts from between your legs as your " + clitDescript() + " pops free.    You squeeze your legs tightly together, hungry for the additional sensations.  ", false);
+			if(player.clitLength > 1 && player.clitLength < 4.5) outputText("A wave of pleasure erupts from between your legs as your " + clitDescription(player) + " pops free.    You squeeze your legs tightly together, hungry for the additional sensations.  ", false);
 			//slick
-			if(player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("Squishing wetly, your bottoms become soggy with the flood of fluids leaking from your " + vaginaDescript(0) + ".   Your legs spread apart on their own, begging for any kind of intrusion.  ", false);
+			if(player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("Squishing wetly, your bottoms become soggy with the flood of fluids leaking from your " + vaginaDescript(player, 0) + ".   Your legs spread apart on their own, begging for any kind of intrusion.  ", false);
 			//normal
-			else outputText("Groaning softly, you feel yourself getting wetter and wetter with arousal.  You wish your sticky bottoms were off so you could let something into your " + vaginaDescript(0) + ".  ", false);
+			else outputText("Groaning softly, you feel yourself getting wetter and wetter with arousal.  You wish your sticky bottoms were off so you could let something into your " + vaginaDescript(player, 0) + ".  ", false);
 		}
 		outputText("\n\n", false);
 		//New PG
@@ -142,7 +142,7 @@ public function doDungeon(eventNo:Number):void {
 		}
 		outputText("At first there is only a gentle suction, you assume in order to keep them in place.  Unfinished, your captor places something large and hollow against your backdoor", false);
 		if(player.vaginas.length == 0) outputText(".", false);
-		else outputText(" and an ever larger dildo against your " + vaginaDescript(0) + ".  It seems to pulse and wiggle with a life of its own, rubbing the bumps of its lumpy head against your lips.", false);
+		else outputText(" and an ever larger dildo against your " + vaginaDescript(player, 0) + ".  It seems to pulse and wiggle with a life of its own, rubbing the bumps of its lumpy head against your lips.", false);
 		outputText("  You swoon as you hear the solid click of a button being pushed, and all at once all devices attached to you leap to life.", false);
 		doNext(11019);
 		return;
@@ -152,7 +152,7 @@ public function doDungeon(eventNo:Number):void {
 		spriteSelect(55);
 		outputText("The beautiful seductress that bound you giggles and says, \"<i>Oh it only gets better baby,</i>\" as she pushes another button.  You see a number of needles lower from the equipment above.  Two pause at chest height.  Faded parchment labels on the tubes mark them as \"Gro+\".  You spot the same markings on at least some of the hoses gathering around your groin.  A few are marked with different labels, but you cannot make out the demonic script.  As one, the hoses rear back, then plunge forward, burying themselves into your supple flesh and injecting their drugged payload into your body.  It hurts at first, but the drugs fog your mind, blocking the pain with pulsing waves of desire.   You begin cumming as your body erupts with artificial pleasure.\n\n", true);
 		//Nipples
-		outputText("The suction pulls squirt after squirt of milk from your breasts as your " + allBreastsDescript() + " start to grow, swelling heavier as they enlarge to produce more milk.  You squeal with delight as your nipples turn black, tainted by corruptive chemicals that are slowly dripped into you.  ", false);
+		outputText("The suction pulls squirt after squirt of milk from your breasts as your " + allBreastsDescript(player) + " start to grow, swelling heavier as they enlarge to produce more milk.  You squeal with delight as your nipples turn black, tainted by corruptive chemicals that are slowly dripped into you.  ", false);
 		//Dick
 		if(player.cocks.length > 0) {
 			outputText("The vacuum-pump on your cock noisily sucks down all your spoo, ", false);
@@ -164,7 +164,7 @@ public function doDungeon(eventNo:Number):void {
 			outputText("Dimly, you feel a needle lodged in your taint, pumping your prostate full of something.  Your " + cockDescript(game.player, 0) + " begins growing mid-orgasm, the skin turning a deep purple even as small nodule-like bumps form all over it, rapidly becoming a bloated parody of its demonic counterparts.  ", false);
 		}
 		//Puss Orgasmz
-		if(player.vaginas.length > 0) outputText("Clenching tightly, your " + vaginaDescript(0) + " squeezes tightly on its intruder as its repeatedly violated by the machines.  ", false);
+		if(player.vaginas.length > 0) outputText("Clenching tightly, your " + vaginaDescript(player, 0) + " squeezes tightly on its intruder as its repeatedly violated by the machines.  ", false);
 		//End
 		outputText("\n\nThe world around you disappears, leaving you alone with the drug-enhanced sensations assaulting your body.  In truth, you don't want it to end.  You find yourself wishing it would never end, and no doubt the equipment you're hooked in to will see to that.\n\n", false);
 		if(player.statusAffectv3(StatusAffects.Marble) == 1) {
@@ -288,7 +288,7 @@ public function doDungeon(eventNo:Number):void {
 			combatRoundOver();
 			return;
 		}
-		outputText("The incubus lunges forward in a clumsy attack that you start to side-step, only to feel something grip behind your " + buttDescript() + " and pull your " + legs(player) + " out from under you.", false);
+		outputText("The incubus lunges forward in a clumsy attack that you start to side-step, only to feel something grip behind your " + buttDescription(player) + " and pull your " + legs(player) + " out from under you.", false);
 		if((player.spe-30) > rand(60)) {
 			outputText("  You spin as you fall, twisting your " + legs(player) + " free and springing back to your " + feet(player) + " unharmed.", false);
 		}
@@ -338,18 +338,18 @@ public function doDungeon(eventNo:Number):void {
 		//Chest
 		if(temp == 1) {
 			if(player.hasFuckableNipples()) {
-				outputText(allBreastsDescript() + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.", false);
+				outputText(allBreastsDescript(player) + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.", false);
 				dynStats("lus", 3);
 				if(player.findStatusAffect(StatusAffects.DemonSeed) < 0) player.createStatusAffect(StatusAffects.DemonSeed,5,0,0,0);
 				else player.addStatusValue(StatusAffects.DemonSeed,1,8);
 				player.slimeFeed();
 			}
-			else outputText(allBreastsDescript() + ".  Thankfully it doesn't seem to have much effect.", false);
+			else outputText(allBreastsDescript(player) + ".  Thankfully it doesn't seem to have much effect.", false);
 		}
 		//Crotch
 		if(temp == 2) {
 			if(player.vaginas.length > 0) {
-				outputText("crotch.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way past your " + player.armorName + " and into your " + vaginaDescript(0) + ".  You can feel it moving around inside you, doing its best to prepare you for its master.", false);
+				outputText("crotch.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way past your " + player.armorName + " and into your " + vaginaDescript(player, 0) + ".  You can feel it moving around inside you, doing its best to prepare you for its master.", false);
 				dynStats("lus", 3);
 				if(player.findStatusAffect(StatusAffects.DemonSeed) < 0) player.createStatusAffect(StatusAffects.DemonSeed,5,0,0,0);
 				else player.addStatusValue(StatusAffects.DemonSeed,1,8);
@@ -425,14 +425,14 @@ public function doDungeon(eventNo:Number):void {
 				}
 				player.growTits(1, (2+rand(3)), true, 1);
 				outputText("  ", false);
-				outputText("Your " + nippleDescript(0) + "s ", false);
+				outputText("Your " + nippleDescription(player, 0) + "s ", false);
 				if(player.cocks.length > 0) outputText("and " + multiCockDescript(player), false);
 				outputText(" become rock hard, leaking fluids constantly.  ", false);
 				//MALE
 				if(player.cocks.length > 0 && player.vaginas.length == 0) outputText("Glancing over into the sea of sex, you find yourself drawn to the nearest pussy, as if it was the only thing in the world to matter.  You lose track of the time as you fuck hard dozens of gaping cunts, each of them overflowing with cum from all the participants in this infernal orgy.  ", false);
 				//FEMALE
 				if(player.vaginas.length > 0 && player.cocks.length == 0) {
-					outputText("As you enter the sex-crazed crowd, you notice several \"girls\" with demonic cocks bloated by the use of drugs, getting drawn to you by the scent of your dripping wet " + vaginaDescript(0) + ". Sitting on the floor, you spread your legs wide, facing the nearest one with an inviting lewd moan, while you hungrily grab another cum-covered cock, (one that just finished filling up an obscenely wide gaping vagina), to suck it.  You are soon penetrated and fucked hard and deep, one huge infernal dick after another, as they all cum into you in turn. ", false);
+					outputText("As you enter the sex-crazed crowd, you notice several \"girls\" with demonic cocks bloated by the use of drugs, getting drawn to you by the scent of your dripping wet " + vaginaDescript(player, 0) + ". Sitting on the floor, you spread your legs wide, facing the nearest one with an inviting lewd moan, while you hungrily grab another cum-covered cock, (one that just finished filling up an obscenely wide gaping vagina), to suck it.  You are soon penetrated and fucked hard and deep, one huge infernal dick after another, as they all cum into you in turn. ", false);
 					player.cuntChange(150, true);
 				}
 				//HERM
@@ -459,7 +459,7 @@ public function doDungeon(eventNo:Number):void {
 					outputText(" massive and engorged.  ", false);
 				}
 				else outputText(".  ", false);
-				outputText("Your " + nippleDescript(0) + "s throb, becoming hard, puffy, and starting to dribble milk.  ", false);
+				outputText("Your " + nippleDescription(player, 0) + "s throb, becoming hard, puffy, and starting to dribble milk.  ", false);
 				if(player.vaginas.length > 0) outputText("Your pussy is instantaneously soaked, filling the air with the scent of sex.  ", false);
 				outputText("The desire for more of the drugs battles with your need to fuck and be fucked, until a small functioning part of your brain realizes it'll be easier to get sex than to get more of the drug.  You pull free and throw yourself into the mass of sweaty bodies, losing yourself in the salty tang of sweat and sex, pleasing nipples, clits, and cocks with your hands, and giving and receiving as much pleasure as you can.  You're in heaven.  Vaguely you realize time is passing, but it is a secondary concern next to the idea of having another groin-soaking orgasm.   You fuck and suck until you pass out from delirium.\n\n", false);
 				//GAME OVERZZ
@@ -526,7 +526,7 @@ public function doDungeon(eventNo:Number):void {
 				}
 			}
 			dynStats("lus", 7 + player.sens/20);
-			if(player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript() + " in sympathy.", false);
+			if(player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript(player) + " in sympathy.", false);
 		}
 		combatRoundOver();
 		return;
@@ -563,11 +563,11 @@ public function doDungeon(eventNo:Number):void {
 		}
 		//Singular row - cup size + 3.  Nipple size to 1" if smaller.
 		else if(player.breastRows.length <= 1) {
-			outputText("Your " + allBreastsDescript() + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 3 cup sizes!</b>  ", false);
+			outputText("Your " + allBreastsDescript(player) + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 3 cup sizes!</b>  ", false);
 			player.breastRows[0].breastRating += 3;
 			if(player.nippleLength < .75) {
 				player.nippleLength += .5;
-				outputText("Your " + nippleDescript(0) + "s grow hard and sensitive, becoming much more noticeable inside your " + player.armorName + ".  It appears your nipples have grown larger to match.", false);
+				outputText("Your " + nippleDescription(player, 0) + "s grow hard and sensitive, becoming much more noticeable inside your " + player.armorName + ".  It appears your nipples have grown larger to match.", false);
 			}
 		}
 		//Multiple Rows...
@@ -588,7 +588,7 @@ public function doDungeon(eventNo:Number):void {
 			}
 			if(player.nippleLength < .75) {
 				player.nippleLength += .5;
-				outputText("Your " + nippleDescript(0) + "s grow hard and sensitive, becoming much more noticable inside your " + player.armorName + ".  It appears your nipples are have grown larger to match.", false);
+				outputText("Your " + nippleDescription(player, 0) + "s grow hard and sensitive, becoming much more noticable inside your " + player.armorName + ".  It appears your nipples are have grown larger to match.", false);
 			}
 		}
 		outputText("\n\n", false);
@@ -694,7 +694,7 @@ public function doDungeon(eventNo:Number):void {
 		temp = 0;
 		if(player.breastRows.length > 1) {
 			player.removeBreastRow(1,player.breastRows.length-1);
-			outputText("Your chest tingles and begins to feel lighter.  You hastily pull open your " + player.armorName + " and realize you only have " + allBreastsDescript() + " now!  ", false);
+			outputText("Your chest tingles and begins to feel lighter.  You hastily pull open your " + player.armorName + " and realize you only have " + allBreastsDescript(player) + " now!  ", false);
 			if(player.nippleLength > 1) {
 				outputText("Your nipples shrink down to a more normal size.  ", false);
 				player.nippleLength = .75;
@@ -705,7 +705,7 @@ public function doDungeon(eventNo:Number):void {
 		if(player.breastRows[0].breastRating > 7) {
 			outputText("The weighty flesh that constantly hangs from your chest gets lighter and lighter, vanishing rapidly.  ", false);
 			player.breastRows[0].breastRating = 3 + rand(5);
-			outputText("You now have " + allBreastsDescript() + ".  ", false);
+			outputText("You now have " + allBreastsDescript(player) + ".  ", false);
 			temp++;
 		}
 		//Single row
@@ -777,14 +777,14 @@ public function doDungeon(eventNo:Number):void {
 		//Balls shrink
 		if(player.ballSize > 5) {
 			temp++;
-			outputText("The " + ballsDescriptLight() + " that constantly pull so heavily on your groin tingle and shrink down to a more managable size.  ", false);
+			outputText("The " + ballsDescriptLight(player) + " that constantly pull so heavily on your groin tingle and shrink down to a more managable size.  ", false);
 			player.ballSize = 2 + rand(3);
 		}
 		if(temp > 0) outputText("\n\n", false);
 		//Vajajay
 		if(player.vaginas.length > 0) {
 			if(player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) {
-				outputText("The constant fluids leaking from your " + vaginaDescript(0) + " slow down, then stop.  ", false);
+				outputText("The constant fluids leaking from your " + vaginaDescript(player, 0) + " slow down, then stop.  ", false);
 				player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
 				temp++;
 			}

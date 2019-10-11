@@ -1217,7 +1217,7 @@ export class Player extends Character {
             .length;
     }
 
-    public hairDescript(): string {
+    public hairDescription(player): string {
         return Appearance.hairDescription(this);
     }
 
@@ -1258,7 +1258,7 @@ export class Player extends Character {
                     outputText("\n", false);
                     if (temp3 < breastRows.length - 1) outputText("...and y", false);
                     else outputText("Y", false);
-                    outputText("our " + breastDescript(temp3) + " shrink, dropping to " + breastCup(temp3) + "s.", false);
+                    outputText("our " + breastDescript(this, temp3) + " shrink, dropping to " + breastCup(temp3) + "s.", false);
                 }
                 if (breastRows[temp3].breastRating < 0) breastRows[temp3].breastRating = 0;
             }
@@ -1377,61 +1377,61 @@ export class Player extends Character {
         if (display) {
             if (growthType < 3) {
                 if (amount <= 2) {
-                    if (breastRows.length > 1) outputText("Your rows of " + breastDescript(game.player, 0) + " jiggle with added weight, growing a bit larger.", false);
-                    if (breastRows.length == 1) outputText("Your " + breastDescript(game.player, 0) + " jiggle with added weight as they expand, growing a bit larger.", false);
+                    if (breastRows.length > 1) outputText("Your rows of " + breastDescript(this, 0) + " jiggle with added weight, growing a bit larger.", false);
+                    if (breastRows.length == 1) outputText("Your " + breastDescript(this, 0) + " jiggle with added weight as they expand, growing a bit larger.", false);
                 }
                 else if (amount <= 4) {
-                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your rows of " + breastDescript(game.player, 0) + " expand significantly.", false);
-                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(game.player, 0) + " expand significantly.", false);
+                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your rows of " + breastDescript(this, 0) + " expand significantly.", false);
+                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(this, 0) + " expand significantly.", false);
                 }
                 else {
-                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + breastDescript(game.player, 0) + " tingle strongly, growing disturbingly large.", false);
-                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + breastDescript(game.player, 0) + " intensifies as they continue to grow at an obscene rate.", false);
+                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + breastDescript(this, 0) + " tingle strongly, growing disturbingly large.", false);
+                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + breastDescript(this, 0) + " intensifies as they continue to grow at an obscene rate.", false);
                 }
                 if (biggestTitSize() >= 8.5 && nippleLength < 2) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 2;
                 }
                 if (biggestTitSize() >= 7 && nippleLength < 1) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 1;
                 }
                 if (biggestTitSize() >= 5 && nippleLength < .75) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .75;
                 }
                 if (biggestTitSize() >= 3 && nippleLength < .5) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .5;
                 }
             }
             else {
                 if (amount <= 2) {
-                    if (breastRows.length > 1) outputText("Your top row of " + breastDescript(game.player, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
-                    if (breastRows.length == 1) outputText("Your row of " + breastDescript(game.player, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
+                    if (breastRows.length > 1) outputText("Your top row of " + breastDescript(this, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
+                    if (breastRows.length == 1) outputText("Your row of " + breastDescript(this, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
                 }
                 if (amount > 2 && amount <= 4) {
-                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your top row of " + breastDescript(game.player, 0) + " expand significantly.", false);
-                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(game.player, 0) + " expand significantly.", false);
+                    if (breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your top row of " + breastDescript(this, 0) + " expand significantly.", false);
+                    if (breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(this, 0) + " expand significantly.", false);
                 }
                 if (amount > 4) {
-                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + breastDescript(game.player, 0) + " tingle strongly, growing disturbingly large.", false);
-                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + breastDescript(game.player, 0) + " intensifies as they continue to grow at an obscene rate.", false);
+                    if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + breastDescript(this, 0) + " tingle strongly, growing disturbingly large.", false);
+                    if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + breastDescript(this, 0) + " intensifies as they continue to grow at an obscene rate.", false);
                 }
                 if (biggestTitSize() >= 8.5 && nippleLength < 2) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 2;
                 }
                 if (biggestTitSize() >= 7 && nippleLength < 1) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 1;
                 }
                 if (biggestTitSize() >= 5 && nippleLength < .75) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .75;
                 }
                 if (biggestTitSize() >= 3 && nippleLength < .5) {
-                    outputText("  A tender ache starts at your " + nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.", false);
+                    outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .5;
                 }
             }
@@ -1934,7 +1934,7 @@ export class Player extends Character {
         // remove infestation if cockless
         if (cocks.length == 0) removeStatusAffect(StatusAffects.Infested);
         if (cocks.length == 0 && balls > 0) {
-            outputText("  <b>Your " + sackDescript(player) + " and " + ballsDescriptLight() + " shrink and disappear, vanishing into your groin.</b>", false);
+            outputText("  <b>Your " + sackDescript(player) + " and " + ballsDescriptLight(player) + " shrink and disappear, vanishing into your groin.</b>", false);
             balls = 0;
             ballSize = 1;
         }
@@ -2002,7 +2002,7 @@ export class Player extends Character {
         // Already in heat, intensify further.
         if (inHeat) {
             if (output) {
-                outputText("\n\nYour mind clouds as your " + vaginaDescript(0) + " moistens.  Despite already being in heat, the desire to copulate constantly grows even larger.", false);
+                outputText("\n\nYour mind clouds as your " + vaginaDescript(player, 0) + " moistens.  Despite already being in heat, the desire to copulate constantly grows even larger.", false);
             }
             const temp: number = findStatusAffect(StatusAffects.Heat);
             statusAffect(temp).value1 += 5 * intensity;
@@ -2013,7 +2013,7 @@ export class Player extends Character {
         // Go into heat.  Heats v1 is bonus fertility, v2 is bonus libido, v3 is hours till it's gone
         else {
             if (output) {
-                outputText("\n\nYour mind clouds as your " + vaginaDescript(0) + " moistens.  Your hands begin stroking your body from top to bottom, your sensitive skin burning with desire.  Fantasies about bending over and presenting your needy pussy to a male overwhelm you as <b>you realize you have gone into heat!</b>", false);
+                outputText("\n\nYour mind clouds as your " + vaginaDescript(player, 0) + " moistens.  Your hands begin stroking your body from top to bottom, your sensitive skin burning with desire.  Fantasies about bending over and presenting your needy pussy to a male overwhelm you as <b>you realize you have gone into heat!</b>", false);
             }
             createStatusAffect(StatusAffects.Heat, 10 * intensity, 15 * intensity, 48 * intensity, 0);
             dynStats("lib", 15 * intensity, "resisted", false, "noBimbo", true);

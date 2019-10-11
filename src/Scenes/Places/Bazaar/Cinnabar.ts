@@ -106,7 +106,7 @@ export class Cinnabar extends BazaarAbstractContent {
         statScreenRefresh();
         outputText("Once you give your assent, Cinnabar's paws dive into your " + player.armorName + ", gliding over your " + player.skinDesc + " before re-emerging above your gem-pouch.  She deftly grabs her payment and snakes back through, tickling your belly with her soft, well-groomed fur.  You look at her, then yourself, then her again.  How the hell was she flexible enough to do that?  Cinnabar giggles and curls her tail around your " + legs(player) + ", looping it like a long, flexible rope.  She hugs you and murmurs, \"<i>Where will my " + mf(player, "master", "mistress") + " take " + mf(player, "his", "her") + " slutty, fuck-hungry companion?</i>\"  Her tongue flicks your ear like a snake tasting its prey, and though her attitude sounds submissive and weak, your horny 'companion' is clearly hiding a fiery, aggressive streak.\n\n", false);
 
-        outputText("Before you can make an answer, Cinnabar's hands are back inside your " + player.armorName + ", tugging your " + nippleDescript(0) + " towards an unmarked wagon that's clearly her home.  You smirk and rub her between her legs, feeling the moistness of her sloppy cunt through her now-dampened dress.  Before she can tease you any more, you hook a finger up, pushing her dress into her hungry snatch.  It's easy to lead the giggling rat-whore like this, and when you reach the door she slides her tail into the lock, clicking it open with ease.\n\n", false);
+        outputText("Before you can make an answer, Cinnabar's hands are back inside your " + player.armorName + ", tugging your " + nippleDescription(player, 0) + " towards an unmarked wagon that's clearly her home.  You smirk and rub her between her legs, feeling the moistness of her sloppy cunt through her now-dampened dress.  Before she can tease you any more, you hook a finger up, pushing her dress into her hungry snatch.  It's easy to lead the giggling rat-whore like this, and when you reach the door she slides her tail into the lock, clicking it open with ease.\n\n", false);
 
         outputText("With surprising strength, she drags you inside, kicking the door shut.   She hurredly strips, struggling a little with the tight dress, and you take the cue to disrobe as well.  You get done first, just in time to notice she's stopped with the wet patch on her nose.  She's sniffing and tweaking a nipple, masturbating herself as if she's completely forgotten about you.  A crimson eye peeks through the upraised dress-slit, and you realize she's imploring you to take advantage.\n\n", false);
 
@@ -117,13 +117,13 @@ export class Cinnabar extends BazaarAbstractContent {
         outputText("Cinnabar coos happily, in spite of the pain, and she begs, \"<i>Please " + mf(player, "master", "mistress") + ", look at the mirrors.  Your slut is trying to be good, but she needs to be filled so badly.</i>\"  You turn to look, but hold on to her tortured tits, just in case.  Amazingly, a pair of the mirrors have changed.  They no longer reflect your own image back – they show her gaping, girlcum-dripping gash and twitching, black-skinned anus.  You can even smell her feral musk and feel the heat pouring from her horny genitalia hitting you in a wave.\n\n", false);
 
         outputText("Too shocked to keep your grip, you listen dumbly as Cinnabar groans, \"<i>" + mf(player, "Master", "Mistress") + " is pleased?  This one knows how to use portals for their intended purpose.  Watch slut make more sexy portals.</i>\"  True to her words, many of the other mirrors change, showing both sets of nipples", false);
-        if (!player.hasVagina()) outputText(" and your " + assholeDescript(), false);
-        else outputText(", your " + vaginaDescript() + ", and your " + assholeDescript(), false);
+        if (!player.hasVagina()) outputText(" and your " + assholeDescript(player), false);
+        else outputText(", your " + vaginaDescript(player) + ", and your " + assholeDescript(player), false);
         outputText(" just inches away.  Without any prompting, you reach through to touch her arousal engorged lips, slipping fingertips through the needy gash and marveling at how large it feels.  You push forward, burying one, two, three, and finally four fingers inside her hungry nethers.\n\n", false);
 
         outputText("Cinnabar pants, \"<i>Ungh... more.  Stuff this whore's cunt,</i>\" all while she wiggles her backside against the mirror, clearly enjoying the attention.  You pull back to tease her, but the horny whore groans and reaches through another portal to ", false);
-        if (player.hasVagina()) outputText("grab your " + clitDescript() + ", rolling it between her thumb-pads with a hair too much pressure", false);
-        else outputText("slip two digits into your " + assholeDescript() + ", pulling it apart far enough to cause you discomfort", false);
+        if (player.hasVagina()) outputText("grab your " + clitDescription(player) + ", rolling it between her thumb-pads with a hair too much pressure", false);
+        else outputText("slip two digits into your " + assholeDescript(player) + ", pulling it apart far enough to cause you discomfort", false);
         outputText(".  She wants to be penetrated?  Fine.  You ball your fingers and push forward.  Amazingly, you push through a gossamer curtain of femcum and bury your whole hand inside her cunt with ease.  Her silky-smooth walls tremble and squeeze, caressing your hand like a long-lost lover.\n\n", false);
 
         outputText("Satisfied with your display of power, her fingers ", false);
@@ -135,7 +135,7 @@ export class Cinnabar extends BazaarAbstractContent {
         else player.buttChange(8, true, true, false);
         if (player.hasCock() && !player.hasVagina()) outputText("  Unbidden, " + sMultiCockDesc(game.player) + " begins to harden, stiffening with every brush against your prostate.", false);
         else if (player.hasVagina()) outputText("  Femcum begins to soak the rat's practiced fingers, drenching her finger-pads with liquid lust.", false);
-        outputText("  You rock back, slamming your " + buttDescript() + " against the wall and moaning with need.  She's quite skilled, and ", false);
+        outputText("  You rock back, slamming your " + buttDescription(player) + " against the wall and moaning with need.  She's quite skilled, and ", false);
         if (player.hasVagina()) outputText("caresses your passage in ways that ", false);
         else outputText("works your body in ways that ", false);
         outputText("leave you panting like a bitch in heat.  She urges you on, practically begging, \"<i>Yes!  Stuff my hole!  Fist me, " + mf(player, "master", "mistress") + "; stretch me with your hand until I'm too loose for a minotaur!  Please... please... fist my ass too.  Ruin my holes, " + mf(player, "master", "mistress") + "!  Break fuck-toy's body!</i>\"\n\n", false);
@@ -178,13 +178,13 @@ export class Cinnabar extends BazaarAbstractContent {
             }
         }
         if (player.hasVagina()) {
-            outputText("  She licks your " + clitDescript() + ", and your " + vaginaDescript(0) + " convulses around the intruding digits, making you shiver and moan.  Not wanting to be left out, your " + assholeDescript() + " clamps and puckers with it, wringing the rat's ", false);
+            outputText("  She licks your " + clitDescription(player) + ", and your " + vaginaDescript(player, 0) + " convulses around the intruding digits, making you shiver and moan.  Not wanting to be left out, your " + assholeDescript(player) + " clamps and puckers with it, wringing the rat's ", false);
             if (player.vaginalCapacity() < 30) outputText("fingers", false);
             else outputText("hand", false);
             outputText(" in its hungry embrace.", false);
         }
         // (No dick/cunt:
-        if (player.gender == 0) outputText("  Her soft pads rub your " + assholeDescript() + " just right, setting off your climax with professional skill.  You grunt and squeeze, wringing her fingers inside your hungry hole as if you could milk cum from them.", false);
+        if (player.gender == 0) outputText("  Her soft pads rub your " + assholeDescript(player) + " just right, setting off your climax with professional skill.  You grunt and squeeze, wringing her fingers inside your hungry hole as if you could milk cum from them.", false);
         outputText("  The orgasm is intense, and as you both succumb to exhaustion, two sets of limbs slip from abused orifices.  Cinnabar and you fall into each other, collapsing in a puddle of sexual juices and sweaty limbs.", false);
         if (player.wetness() < 3) { }
         else if (player.wetness() < 5) outputText("  Her arm seems quite soaked with your leavings.", false);
@@ -253,7 +253,7 @@ export class Cinnabar extends BazaarAbstractContent {
 
         outputText("\"<i>Fucking cram that dick in there.  Can't you feel how hot I am?  Gods, it's so BIG... fuck me... just, fuck me!</i>\" she cries.\n\n", false);
 
-        outputText("Throughout her prompting you continue the onslaught, firmly moving your " + hipDescript() + " onward to push your " + cockDescript(game.player, x) + " against the sloppy, cum-dripping hole.  Those black, puffy cunt-lips give one agonizing, convulsing tremble, and then they relax, stretched around the thickness of your shaft like a condom.  Her walls feel so much better on your fuck-stick than on your arm; the slippery walls contract involuntarily, the abused body's instincts trying their best to remove the intruder.\n\n", false);
+        outputText("Throughout her prompting you continue the onslaught, firmly moving your " + hipDescription(player) + " onward to push your " + cockDescript(game.player, x) + " against the sloppy, cum-dripping hole.  Those black, puffy cunt-lips give one agonizing, convulsing tremble, and then they relax, stretched around the thickness of your shaft like a condom.  Her walls feel so much better on your fuck-stick than on your arm; the slippery walls contract involuntarily, the abused body's instincts trying their best to remove the intruder.\n\n", false);
 
         outputText("You slap her ass and watch it jiggle, grunting with pleasure when the ripples work their way from her reddened butt-cheek into her taut, brutalized cunt.  Cinnabar is watching you through one of her portals, mouth parted and eyes rolled partway back as she struggles to keep it together.  Somehow she manages to keep talking.  \"<i>Ungh... I can feel it stretching me... stretching me so good.  Fuck... my – ung – hips... oh gods look how wide my hips are!  You're gonna gape me so fucking good!  I'm gonna be your stretched out cock-sleeve, are you happy?  I'm gonna – ooooohhh... look like your broken, fucked-out brood-rat.</i>\"\n\n", false);
 
@@ -293,7 +293,7 @@ export class Cinnabar extends BazaarAbstractContent {
 
         outputText("Cinnabar's head looks absurdly tiny, perched as it is above her bloated belly.  She moans, \"<i>F-fucking asshole!  You went t-too f-ah-ahhh-st...</i>\"  Her voice trails off as her eyes narrow.  Somehow, even with her broken body, she's managed to get it together enough to yell at you.\n\n", false);
 
-        outputText("\"<i>Fuck you!  You can't wait to get inside and then you sit there smirking?  Fuck that.  If you won't fill me right, I'll make you!</i>\" screams the red rat.  Her already-crimson eyes glow with eldritch light and her hand lifts, radiating with the same unholy power.  Cinnabar's hand punches through one of the mirrors on the wall, disappearing for the tiniest fraction of a second before punching through the ring of your " + assholeDescript() + ", HARD.  You scream, completely and utterly violated, just like Cinnabar.", false);
+        outputText("\"<i>Fuck you!  You can't wait to get inside and then you sit there smirking?  Fuck that.  If you won't fill me right, I'll make you!</i>\" screams the red rat.  Her already-crimson eyes glow with eldritch light and her hand lifts, radiating with the same unholy power.  Cinnabar's hand punches through one of the mirrors on the wall, disappearing for the tiniest fraction of a second before punching through the ring of your " + assholeDescript(player) + ", HARD.  You scream, completely and utterly violated, just like Cinnabar.", false);
         player.buttChange(30, true, true, false);
         outputText("\n\n", false);
 
@@ -302,7 +302,7 @@ export class Cinnabar extends BazaarAbstractContent {
         else outputText("It's too much for your utterly encapsulated member and violated anus, and your poor prostate practically wrings itself dry as it tries to unload.", false);
         outputText("  A half-second later your " + cockDescript(game.player, x) + " joins it, your internal muscles clenching and convulsing, heaving the jizz from your body in one huge, gooey blast.\n\n", false);
 
-        outputText("Cinnabar pulls her dirty paw out and grins like a mouse with a chunk of cheese, massaging her distorting neck while you empty every ounce of cum from your " + ballsDescriptLight() + " into her over-stretched womb-filled body.  She squeaks, \"<i>No-ohhhh-ormally I LIKE being a mewling slut for " + mf(player, "studs", "bitches") + " like you, but if you won't treat a cum-sleeve like me with respect, then I'm going to teach it to you.</i>\"  You nod dumbly, still locked in an climax that ", false);
+        outputText("Cinnabar pulls her dirty paw out and grins like a mouse with a chunk of cheese, massaging her distorting neck while you empty every ounce of cum from your " + ballsDescriptLight(player) + " into her over-stretched womb-filled body.  She squeaks, \"<i>No-ohhhh-ormally I LIKE being a mewling slut for " + mf(player, "studs", "bitches") + " like you, but if you won't treat a cum-sleeve like me with respect, then I'm going to teach it to you.</i>\"  You nod dumbly, still locked in an climax that ", false);
         if (player.cumQ() < 250) outputText("makes your body churn well after you're empty.", false);
         else if (player.cumQ() < 500) outputText("causes her hugely-stretched lips to glaze white.", false);
         else if (player.cumQ() < 1000) outputText("causes her lips to glaze and her belly to bloat.", false);
@@ -312,7 +312,7 @@ export class Cinnabar extends BazaarAbstractContent {
 
         outputText("The now-dominant, living onahole squeals with pleasure, yammering incessant, half-thought pleasure-words as she gets off.  \"<i>Fu-fu... cum... somuchcum... ohhh gods yes... stuff my broken cunt! More!  Gimme more!  I want to feel it – no, I want to bubble with it, be it.  I want to be so full of cum... YES! OoooooooooooooOOOO – sssqeeEAAAAAAAAAAAK!</i>\"\n\n", false);
 
-        outputText("You collapse under her, still twitching weakly while her magic courses through your veins.  Somehow your " + ballsDescriptLight() + " are still twitching, but it's a painful, empty feeling, and you just want it to end.  You groan, nearly crying while your abused shaft is milked by orgasm-fueled rat-cunt contractions.  It makes you delirious and light-headed, and after a seeming eternity of torture, your brain shuts down, unable to cope with it anymore.\n\n", false);
+        outputText("You collapse under her, still twitching weakly while her magic courses through your veins.  Somehow your " + ballsDescriptLight(player) + " are still twitching, but it's a painful, empty feeling, and you just want it to end.  You groan, nearly crying while your abused shaft is milked by orgasm-fueled rat-cunt contractions.  It makes you delirious and light-headed, and after a seeming eternity of torture, your brain shuts down, unable to cope with it anymore.\n\n", false);
 
         outputText("<b>Some time later...</b>\n", false);
         outputText("Cinnabar slaps you hard, stirring you from your unnatural slumber.  You look up at her, blinking dumbly for a moment.  Her lips press against yours, crushing them with the force of her passion.  The rodent's soft, padded hands continue hitting you, slapping your face, boxing your ears, and smacking lamely into your chest.  Yet throughout the beating she's tonguing your mouth, groaning into your lips and smearing herself over your still-huge cock.  At last the rat seems satisfied, and she pulls of you with a panting, confused-looking smirk on her face.\n\n", false);
@@ -345,20 +345,20 @@ export class Cinnabar extends BazaarAbstractContent {
         outputText("The rest of you sinks in, plowing through her surprisingly spongy cervix to violate the very core of her womb.  It pushes out far enough that she looks like a ruddy cock-sleeve, with two bouncing tits hanging off your " + cockHead(player, x) + ".  Incredibly, Cinnabar doesn't seem to mind that her body is being stretched in impossible ways, distended completely beyond the limits of reason.  Instead, she starts murmering, \"<i>Oooh yeah, feel how fucking tight my womb is.  Can't you feel my cervix clamping down, squeezing tight like a cock-ring you couldn't get the whole way down?  ..hahahaha I'm broken aren't I?  Look at me, I'm your furry condom.  My pussy's completely broken... I'm so gaped I'll never walk right again, and I can - I can jerk you off through my belly and womb!</i>\"\n\n", false);
 
         outputText("True to her words, she starts squeezing you through her fur, massaging your " + cockDescript(game.player, x) + " by dragging her stretchy puss along your length with her fingertips.  It's too much, her body is fucking perfect for your " + cockDescript(game.player, x) + ", and you feel warmth building inside you.  Her tail twists around your ", false);
-        if (player.balls > 0) outputText(ballsDescriptLight(), false);
+        if (player.balls > 0) outputText(ballsDescriptLight(player), false);
         else outputText("base", false);
-        outputText(" to prod at your " + assholeDescript() + ", sliding in to push your prostate.  She hits it hard enough to make you pump cum with enough force to distort her already-ballooned body, and you go into an orgasmic frenzy, dragging your " + cockDescript(game.player, x) + " back to her entrance before jamming in all ", false);
+        outputText(" to prod at your " + assholeDescript(player) + ", sliding in to push your prostate.  She hits it hard enough to make you pump cum with enough force to distort her already-ballooned body, and you go into an orgasmic frenzy, dragging your " + cockDescript(game.player, x) + " back to her entrance before jamming in all ", false);
         if (player.cocks[x].cockLength < 24) outputText(num2Text(Math.round(player.cocks[x].cockLength)) + " inches", false);
         else outputText(num2Text(Math.round(player.cocks[x].cockLength / 12)) + " feet", false);
         outputText(" all over again.", false);
         if (player.cocks[x].cockLength >= 60) outputText("  There's no way this should be possible, but it's happening and you couldn't be happier.", false);
         outputText("\n\n", false);
 
-        outputText("Her body is squirming, writhing from the complete and total dick-domination.  You push her hands off your " + cockDescript(game.player, x) + ", and jack yourself off while you cum inside her, watching with fascination as each blast bulges her belly before it vanishes inside her with a wet slosh.  Her huge, stretched lips leak like a sieve, splattering girlcum everywhere while your " + ballsDescriptLight() + " pack", false);
+        outputText("Her body is squirming, writhing from the complete and total dick-domination.  You push her hands off your " + cockDescript(game.player, x) + ", and jack yourself off while you cum inside her, watching with fascination as each blast bulges her belly before it vanishes inside her with a wet slosh.  Her huge, stretched lips leak like a sieve, splattering girlcum everywhere while your " + ballsDescriptLight(player) + " pack", false);
         if (player.balls == 0) outputText("s", false);
         outputText(" her with goo, claiming her ruined body.  Cinnabar pants and screams in between pleasure-squeaks, \"<i>F-fuck... fuck your fuck-toy!  Stuff her cunt... YES!  S-slut is so fucked... Cum, " + mf(player, "master", "mistress") + ", then toss slut aside l-l-like a discarded, broken toy.  YOU'VE RUINED ME " + mf(player, "MASTER", "MISTRESS") + "!</i>\"\n\n", false);
 
-        outputText("Those wonderful, perverse words milk your " + ballsDescriptLight() + " dry as effectively as her massively-gaped cunt and broken body, but you keep pumping until you're sore and completely emptied.  ", false);
+        outputText("Those wonderful, perverse words milk your " + ballsDescriptLight(player) + " dry as effectively as her massively-gaped cunt and broken body, but you keep pumping until you're sore and completely emptied.  ", false);
         if (player.cumQ() >= 500) {
             outputText("The rat-girl has gained a nice ", false);
             if (player.cumQ() < 1000) outputText("spooge-paunch from all the cum.", false);
@@ -391,7 +391,7 @@ export class Cinnabar extends BazaarAbstractContent {
         outputText("", true);
         spriteSelect(91);
         outputText("You're almost there, and though you can feel the burgeoning warmth growing underneath your " + cockDescript(game.player, x) + ", you're determined to push the whole way inside her before you blow.  Cinnabar crams her muzzle through a particularly large mirror and locks onto your lips, ramming her tongue deeper into your throat, pushing harder with each inch of tightly-packed cock you shove inside her.  At last you bottom out, your " + cockHead(player, x) + " bumps the tight ring of her cervix while her tail pulls tight about your ", false);
-        if (player.balls > 0) outputText(ballsDescriptLight(), false);
+        if (player.balls > 0) outputText(ballsDescriptLight(player), false);
         else if (player.hasSheath()) outputText("sheath", false);
         else outputText("base", false);
         outputText(".\n\n", false);
@@ -399,10 +399,10 @@ export class Cinnabar extends BazaarAbstractContent {
         outputText("The kiss is broken abruptly, the suddenly invigorated rat-girl's lips pressing close to your ear as she murmurs, \"<i>Oh yes... feel how tight my poor, abused cunt is... so very tight, clutching you like a swimsuit two sizes too small... Mmm, I can feel you twitching; are you going to cum in this slut's womb?  You've fucked me so hard, gaped me and ruined me... will you finish me off?  Do it " + mf(player, "stud", "bitch") + ", fuck this horny slut's womb full, mark her as your bitch - no, your fucking property!</i>\"\n\n", false);
 
         outputText("Gods, she's so fucking perverse, and she's squeezing you so tight; fuck, even her tail is working you.  It twists around your ", false);
-        if (player.balls > 0) outputText(ballsDescriptLight(), false);
+        if (player.balls > 0) outputText(ballsDescriptLight(player), false);
         else if (player.hasSheath()) outputText("sheath", false);
         else outputText("shaft", false);
-        outputText(" to prod at your " + assholeDescript() + ", sliding in to push your prostate, pressing on it hard enough to make you pump a jet of cum past the rat's relaxing cervix and into her womb.  You go into an orgasmic frenzy, utterly, completely dominating the size-queen with your massive, cum-bloated fuck-stick.  Her ass shakes and wobbles as you pull back roughly, dragging your cock through that over-tightened velvet cunt-sleeve, but before you can slip out, you push back in, fucking her hard enough to make a loud slap from your hips slamming into one another.\n\n", false);
+        outputText(" to prod at your " + assholeDescript(player) + ", sliding in to push your prostate, pressing on it hard enough to make you pump a jet of cum past the rat's relaxing cervix and into her womb.  You go into an orgasmic frenzy, utterly, completely dominating the size-queen with your massive, cum-bloated fuck-stick.  Her ass shakes and wobbles as you pull back roughly, dragging your cock through that over-tightened velvet cunt-sleeve, but before you can slip out, you push back in, fucking her hard enough to make a loud slap from your hips slamming into one another.\n\n", false);
 
         outputText("Her juices fall like rain, soaking the sheets, ", false);
         if (player.balls > 0) outputText("your balls, ", false);
@@ -415,7 +415,7 @@ export class Cinnabar extends BazaarAbstractContent {
 
         outputText("You don't hold back, and you fuck her raw, jerking yourself off through her stretched hide until your ", false);
         if (player.balls == 0) outputText("prostate has been squeezed dry.", false);
-        else outputText(ballsDescriptLight() + " feel sore and empty, completely drained.", false);
+        else outputText(ballsDescriptLight(player) + " feel sore and empty, completely drained.", false);
         if (player.cumQ() > 500) {
             outputText("  The rat-girl has gained a nice, ", false);
             if (player.cumQ() < 1000) outputText("jiggling spooge-paunch from all the cum.", false);
@@ -483,14 +483,14 @@ export class Cinnabar extends BazaarAbstractContent {
 
         outputText("\"<i>D-does " + mf(player, "master", "mistress") + " like?  Ohhhh, fuck this slut " + mf(player, "master", "mistress") + "... shit, come fuck me!  That fucking breast enlargement spell makes my cunt ache and drool for a big, hard cock.  Plug me " + mf(player, "stud", "baby") + ", you can fill me so good!  Do it!  FUCK ME NOW!</i>\" she screams, rocking and grinding into the portals, her tongue thrashing wildly while her lips arch into a needy 'o'.\n\n", false);
 
-        outputText("Your " + hipDescript() + " rock forwards of their own volition.  There's no way your " + multiCockDescriptLight(game.player) + " can resist such a lewd, needy specimen, or the chance to fuck her in so many different ways simultaneously.  First, your " + cockDescript(game.player, x) + " hits her swollen pussy, and as you batter your way inside the slippery entrance, her body rewards you with a gush of girl-cum that soaks your manhood and drips over your " + cockDescript(game.player, y) + ".  A split-second later that second member is pressing at her anus, forcing through the clenched star in a violent, animalistic thrust.\n\n", false);
+        outputText("Your " + hipDescription(player) + " rock forwards of their own volition.  There's no way your " + multiCockDescriptLight(game.player) + " can resist such a lewd, needy specimen, or the chance to fuck her in so many different ways simultaneously.  First, your " + cockDescript(game.player, x) + " hits her swollen pussy, and as you batter your way inside the slippery entrance, her body rewards you with a gush of girl-cum that soaks your manhood and drips over your " + cockDescript(game.player, y) + ".  A split-second later that second member is pressing at her anus, forcing through the clenched star in a violent, animalistic thrust.\n\n", false);
 
         outputText("Cinnabar moans, utterly and completely delighted, but you muffle those moans by spearing her throat on your " + cockDescript(game.player, z) + ", filling her oral orifice completely.  You reach through a pair of portals at arm height to squeeze her spread ass-cheeks, holding tight while you push forwards to completely bury your three lucky members in furry fuck-sleeves.", false);
         if (player.cockTotal() == 4) outputText("  The extra dick dives into the pillowy mounds, smearing a streamer of pre-cum over the tit's surface before it slides into that warm, welcoming cleavage.", false);
         else if (player.cockTotal() > 4) outputText("  The extra dicks dive into the pillowy mounds, smearing streamers of pre-cum all over the tits' surfaces before they slide home into that warm, welcoming cleavage.", false);
         outputText("\n\n", false);
 
-        outputText("The sensation is absolutely divine, but primal need takes over.  You begin to rock your " + hipDescript() + " in and out, triple-penetrating the whore", false);
+        outputText("The sensation is absolutely divine, but primal need takes over.  You begin to rock your " + hipDescription(player) + " in and out, triple-penetrating the whore", false);
         if (player.cockTotal() >= 4) outputText(" while you tit-fuck her swollen breasts", false);
         outputText(".  Slippery-soft warmth wreathes your " + cockDescript(game.player, x) + ", the plush black love-tunnel contracting slightly to happily squeeze you every few seconds.  The darker, sinfully tight star of Cinnabar's anus glazes with your pre-cum, her ass-cheeks wobbling perfectly in your hands with each rhythmic penetration.", false);
         if (player.cockTotal() >= 4) {
@@ -518,13 +518,13 @@ export class Cinnabar extends BazaarAbstractContent {
             outputText("\n\n", false);
         }
 
-        outputText("The slut-rat gargles in irritation around your sensitive, cummed-out cock, clearly displeased that you're still inside her.  You step back from the wall, your " + legs(player) + " giving out from the sensory overload of unsheathing your " + multiCockDescriptLight(game.player) + " simultaneously to drop you flat on your " + assDescript() + ".  At the same time, Cinnabar starts coughing and groaning, clearly exhausted from the one-" + mf(player, "man", "woman") + " gangbang.  You understand how that feels; just touching " + sMultiCockDesc(game.player) + " makes your head swoon.\n\n", false);
+        outputText("The slut-rat gargles in irritation around your sensitive, cummed-out cock, clearly displeased that you're still inside her.  You step back from the wall, your " + legs(player) + " giving out from the sensory overload of unsheathing your " + multiCockDescriptLight(game.player) + " simultaneously to drop you flat on your " + buttDescription(player) + ".  At the same time, Cinnabar starts coughing and groaning, clearly exhausted from the one-" + mf(player, "man", "woman") + " gangbang.  You understand how that feels; just touching " + sMultiCockDesc(game.player) + " makes your head swoon.\n\n", false);
 
         outputText("An incessant licking reaches your ears, getting your attention.  You stand up, careful about your " + multiCockDescriptLight(game.player) + " while you look towards the bed.  The portals are closed down, and Cinnabar is bent double, folded in half like a contortionist", false);
         if (player.cumQ() >= 1000) outputText(" while her huge, cum-filled belly bulges out to the sides", false);
         outputText(".  Her long, pink tongue is lashing over her swollen, black cunt-lips, hungrily cleaning the dirty twat and even licking at her asshole.  It's almost enough to get you hard again, but she eventually breaks from her auto-cunnilingus long enough to glance your way.\n\n", false);
 
-        outputText("\"<i>You're still here?  Go on, I've got a lot of cleaning up to do before my next customer!</i>\" grunts Cinnabar before returning to her task.  You run your hand through your " + hairDescript() + ", exasperated, but quite satisfied.  You'll definitely have to visit her again sometime.\n\n", false);
+        outputText("\"<i>You're still here?  Go on, I've got a lot of cleaning up to do before my next customer!</i>\" grunts Cinnabar before returning to her task.  You run your hand through your " + hairDescription(player) + ", exasperated, but quite satisfied.  You'll definitely have to visit her again sometime.\n\n", false);
 
         outputText("While you're getting dressed, the repeated slurps and moans pause enough for Cinnabar to say, \"<i>I didn't mean to be rude... those dicks... those wonderful, plump cocks... they're a gift.  Come back soon " + mf(player, "stud", "baby") + ", your cream filling tastes gooood.</i>\"  She goes back to licking herself, and you can't help but have a huge grin as you walk out.", false);
         player.orgasm();

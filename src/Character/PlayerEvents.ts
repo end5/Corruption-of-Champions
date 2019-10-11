@@ -112,7 +112,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.findPerk(PerkLib.MaraesGiftButtslut) >= 0 && player.ass.analWetness < 2) { // Prevent Buttsluts from getting dry backdoors
-            outputText("\n<b>Your " + assholeDescript() + " quickly re-moistens.  It looks like Marae's 'gift' can't be removed.</b>\n");
+            outputText("\n<b>Your " + assholeDescript(player) + " quickly re-moistens.  It looks like Marae's 'gift' can't be removed.</b>\n");
             player.ass.analWetness = 2;
             needNext = true;
         }
@@ -471,7 +471,7 @@ export class PlayerEvents implements TimeAwareInterface {
         if (player.findStatusAffect(StatusAffects.Milked) >= 0) { // "Milked"
             player.addStatusValue(StatusAffects.Milked, 1, -1);
             if (player.statusAffectv1(StatusAffects.Milked) <= 0) {
-                outputText("\n<b>Your " + nippleDescript(0) + "s are no longer sore from the milking.</b>\n");
+                outputText("\n<b>Your " + nippleDescription(player, 0) + "s are no longer sore from the milking.</b>\n");
                 player.removeStatusAffect(StatusAffects.Milked);
                 needNext = true;
             }
@@ -498,7 +498,7 @@ export class PlayerEvents implements TimeAwareInterface {
             if (player.statusAffectv1(StatusAffects.LactationReduction) >= 48) {
                 if (player.findStatusAffect(StatusAffects.LactationReduc0) < 0) {
                     player.createStatusAffect(StatusAffects.LactationReduc0, 0, 0, 0, 0);
-                    if (player.biggestLactation() >= 1) outputText("\n<b>Your " + nippleDescript(0) + "s feel swollen and bloated, needing to be milked.</b>\n");
+                    if (player.biggestLactation() >= 1) outputText("\n<b>Your " + nippleDescription(player, 0) + "s feel swollen and bloated, needing to be milked.</b>\n");
                     if (player.biggestLactation() <= 2) player.createStatusAffect(StatusAffects.LactationReduc1, 0, 0, 0, 0);
                     if (player.biggestLactation() <= 1) player.createStatusAffect(StatusAffects.LactationReduc2, 0, 0, 0, 0);
                     needNext = true;
@@ -527,26 +527,26 @@ export class PlayerEvents implements TimeAwareInterface {
             if (player.vaginas.length > 0) {
                 if (player.findPerk(PerkLib.FerasBoonWideOpen) < 0) {
                     if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LOOSE && player.statusAffectv1(StatusAffects.CuntStretched) >= 200) {
-                        outputText("\nYour " + vaginaDescript(0) + " recovers from your ordeals, tightening up a bit.\n");
+                        outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals, tightening up a bit.\n");
                         player.vaginas[0].vaginalLooseness--;
                         player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
                     if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING && player.statusAffectv1(StatusAffects.CuntStretched) >= 100) {
-                        outputText("\nYour " + vaginaDescript(0) + " recovers from your ordeals, tightening up a bit.\n");
+                        outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals, tightening up a bit.\n");
                         player.vaginas[0].vaginalLooseness--;
                         player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
                     if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING_WIDE && player.statusAffectv1(StatusAffects.CuntStretched) >= 70) {
-                        outputText("\nYour " + vaginaDescript(0) + " recovers from your ordeals and becomes tighter.\n");
+                        outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals and becomes tighter.\n");
                         player.vaginas[0].vaginalLooseness--;
                         player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
                 }
                 if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LEVEL_CLOWN_CAR && player.statusAffectv1(StatusAffects.CuntStretched) >= 50) {
-                    outputText("\nYour " + vaginaDescript(0) + " recovers from the brutal stretching it has received and tightens up a little bit, but not much.\n");
+                    outputText("\nYour " + vaginaDescript(player, 0) + " recovers from the brutal stretching it has received and tightens up a little bit, but not much.\n");
                     player.vaginas[0].vaginalLooseness--;
                     player.changeStatusValue(StatusAffects.CuntStretched, 1, 0);
                     needNext = true;
@@ -556,25 +556,25 @@ export class PlayerEvents implements TimeAwareInterface {
         if (player.findStatusAffect(StatusAffects.ButtStretched) >= 0) { // Butt stretching stuff
             player.addStatusValue(StatusAffects.ButtStretched, 1, 1);
             if (player.ass.analLooseness == 2 && player.statusAffectv1(StatusAffects.ButtStretched) >= 72) {
-                outputText("\n<b>Your " + assholeDescript() + " recovers from your ordeals, tightening up a bit.</b>\n");
+                outputText("\n<b>Your " + assholeDescript(player) + " recovers from your ordeals, tightening up a bit.</b>\n");
                 player.ass.analLooseness--;
                 player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
             }
             if (player.ass.analLooseness == 3 && player.statusAffectv1(StatusAffects.ButtStretched) >= 48) {
-                outputText("\n<b>Your " + assholeDescript() + " recovers from your ordeals, tightening up a bit.</b>\n");
+                outputText("\n<b>Your " + assholeDescript(player) + " recovers from your ordeals, tightening up a bit.</b>\n");
                 player.ass.analLooseness--;
                 player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
             }
             if (player.ass.analLooseness == 4 && player.statusAffectv1(StatusAffects.ButtStretched) >= 24) {
-                outputText("\n<b>Your " + assholeDescript() + " recovers from your ordeals and becomes tighter.</b>\n");
+                outputText("\n<b>Your " + assholeDescript(player) + " recovers from your ordeals and becomes tighter.</b>\n");
                 player.ass.analLooseness--;
                 player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
             }
             if (player.ass.analLooseness == 5 && player.statusAffectv1(StatusAffects.ButtStretched) >= 12) {
-                outputText("\n<b>Your " + assholeDescript() + " recovers from the brutal stretching it has received and tightens up.</b>\n");
+                outputText("\n<b>Your " + assholeDescript(player) + " recovers from the brutal stretching it has received and tightens up.</b>\n");
                 player.ass.analLooseness--;
                 player.changeStatusValue(StatusAffects.ButtStretched, 1, 0);
                 needNext = true;
@@ -582,7 +582,7 @@ export class PlayerEvents implements TimeAwareInterface {
         }
         if (player.findPerk(PerkLib.SlimeCore) >= 0) { // Lose slime core perk
             if (player.vaginalCapacity() < 9000 || player.skinAdj != "slimy" || player.skinDesc != "skin" || player.lowerBody != LOWER_BODY_TYPE_GOO) {
-                outputText("\nYour form ripples, as if uncertain at the changes your body is undergoing.  The goo of your flesh cools, its sensitive, responsive membrane thickening into " + skin(player) + " while bones and muscles knit themselves into a cohesive torso, chest and hips gaining definition.  Translucent ooze clouds and the gushing puddle at your feet melts together, splitting into solid trunks as you regain your legs.  Before long, you can no longer see through your own body and, with an unsteady shiver, you pat yourself down, readjusting to solidity.  A lurching heat in your chest suddenly reminds you of the slime core that used to float inside you.  Gingerly touching your " + chestDesc(game.player) + ", you can feel a small, second heartbeat under your ribs that gradually seems to be sinking, past your belly. A lurching wave of warmth sparks through you, knocking you off your fresh legs and onto your " + buttDescript() + ".  A delicious pressure pulses in your abdomen and you loosen your " + player.armorName + " as sweat beads down your neck.  You clench your eyes, tongue lolling in your mouth, and the pressure builds and builds until, in ecstatic release, your body arches in an orgasmic release.\n\n");
+                outputText("\nYour form ripples, as if uncertain at the changes your body is undergoing.  The goo of your flesh cools, its sensitive, responsive membrane thickening into " + skin(player) + " while bones and muscles knit themselves into a cohesive torso, chest and hips gaining definition.  Translucent ooze clouds and the gushing puddle at your feet melts together, splitting into solid trunks as you regain your legs.  Before long, you can no longer see through your own body and, with an unsteady shiver, you pat yourself down, readjusting to solidity.  A lurching heat in your chest suddenly reminds you of the slime core that used to float inside you.  Gingerly touching your " + chestDesc(game.player) + ", you can feel a small, second heartbeat under your ribs that gradually seems to be sinking, past your belly. A lurching wave of warmth sparks through you, knocking you off your fresh legs and onto your " + buttDescription(player) + ".  A delicious pressure pulses in your abdomen and you loosen your " + player.armorName + " as sweat beads down your neck.  You clench your eyes, tongue lolling in your mouth, and the pressure builds and builds until, in ecstatic release, your body arches in an orgasmic release.\n\n");
 
                 outputText("\nPanting, you open your eyes and see that, for once, the source of your climax wasn't your loins.  Feeling a warm, wetness on your abs, you investigate and find the small, heart-shaped nucleus that used to be inside your body has somehow managed to pass through your belly button. Exposed to the open air, the crimson organ slowly crystallizes, shrinking and hardening into a tiny ruby.  Rubbing the stone with your thumb, you're surprised to find that you can still feel a pulse within its glittering facets.  You stow the ruby heart, in case you need it again.\n");
                 player.createKeyItem("Ruby Heart", 0, 0, 0, 0); // [Add 'Ruby Heart' to key items. Player regains slime core if returning to goo body]
@@ -778,7 +778,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
             if (player.hasCock() && player.findPerk(PerkLib.SpiderOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Drider dreams proc
                 outputText("\nIn a moonlit forest, you hang upside down from a thick tree branch suspended by only a string of webbing.  You watch with rising lust as a hapless traveler strolls along below, utterly unaware of the trap you've set.  Your breath catches as " + mf(player, "he", "she") + " finally encounters your web, flailing against the sticky strands in a futile attempt to free " + mf(player, "him", "her") + "self.  Once the traveller's struggles slow in fatigue, you descend easily to the forest floor, wrapping " + mf(player, "him", "her") + " in an elegant silk cocoon before pulling " + mf(player, "him", "her") + " up into the canopy.  Positioning your catch against the tree's trunk, you sink your fangs through the web and into flesh, feeling " + mf(player, "his", "her") + " body heat with every drop of venom.  Cutting " + mf(player, "his", "her") + " crotch free of your webbing, you open " + mf(player, "his", "her") + " [armor] and release the ");
-                if (player.hasVagina()) outputText(vaginaDescript(0) + " and ");
+                if (player.hasVagina()) outputText(vaginaDescript(player, 0) + " and ");
                 outputText(cockDescript(game.player, 0) + " therein; you lower yourself onto " + mf(player, "him", "her") + " over and over again, spearing your eager pussy with " + mf(player, "him", "her") + " prick");
                 if (player.hasVagina()) outputText(" while you bend and force your own into her cunt");
                 outputText(".  It's not long until you feel ");

@@ -323,13 +323,13 @@ export function lustAttack(): void {
         outputText("The push of the " + monster.short + "' sweaty, seductive bodies sliding over yours is deliciously arousing and you feel your ");
         if (player.cocks.length > 0)
             outputText(multiCockDescriptLight(player) + " hardening ");
-        else if (player.vaginas.length > 0) outputText(vaginaDescript(0) + " get wetter ");
+        else if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0) + " get wetter ");
         outputText("in response to all the friction.");
     }
     else {
         outputText("As the " + monster.short + " mill around you, their bodies rub constantly over yours, and it becomes harder and harder to keep your thoughts on the fight or resist reaching out to touch a well lubricated cock or pussy as it slips past.  You keep subconsciously moving your ");
         if (player.gender == 1) outputText(multiCockDescriptLight(player) + " towards the nearest inviting hole.");
-        if (player.gender == 2) outputText(vaginaDescript(0) + " towards the nearest swinging cock.");
+        if (player.gender == 2) outputText(vaginaDescript(player, 0) + " towards the nearest swinging cock.");
         if (player.gender == 3) outputText("aching cock and thirsty pussy towards the nearest thing willing to fuck it.");
         if (player.gender == 0) outputText("groin, before remember there is nothing there to caress.");
     }
@@ -678,7 +678,7 @@ export function fantasize(): void {
     else if (player.balls > 0 && player.ballSize >= 10 && rand(2) == 0) {
         outputText("You daydream about fucking " + monster.a + monster.short + ", feeling your balls swell with seed as you prepare to fuck " + monster.pronoun2 + " full of cum.\n", false);
         temp2 = 5 + rand(player.lib / 8 + player.cor / 8);
-        outputText("You aren't sure if it's just the fantasy, but your " + ballsDescriptLight() + " do feel fuller than before...\n", false);
+        outputText("You aren't sure if it's just the fantasy, but your " + ballsDescriptLight(player) + " do feel fuller than before...\n", false);
         player.hoursSinceCum += 50;
     }
     else if (player.biggestTitSize() >= 6 && rand(2) == 0) {
@@ -686,7 +686,7 @@ export function fantasize(): void {
         temp2 = 5 + rand(player.lib / 8 + player.cor / 8);
     }
     else if (player.biggestLactation() >= 6 && rand(2) == 0) {
-        outputText("You fantasize about grabbing " + monster.a + monster.short + " and forcing " + monster.pronoun2 + " against a " + nippleDescript(0) + ", and feeling your milk let down.  The desire to forcefeed SOMETHING makes your nipples hard and moist with milk.\n", false);
+        outputText("You fantasize about grabbing " + monster.a + monster.short + " and forcing " + monster.pronoun2 + " against a " + nippleDescription(player, 0) + ", and feeling your milk let down.  The desire to forcefeed SOMETHING makes your nipples hard and moist with milk.\n", false);
         temp2 = 5 + rand(player.lib / 8 + player.cor / 8);
     }
     else {
@@ -1771,7 +1771,7 @@ function combatStatusesUpdate(): void {
         if (player.vaginas.length > 0) {
             if (player.lust < 40) outputText("You squirm as the smooth stone orb vibrates within you.\n\n", false);
             if (player.lust >= 40 && player.lust < 70) outputText("You involuntarily clench around the magical stone in your twat, in response to the constant erotic vibrations.\n\n", false);
-            if (player.lust >= 70 && player.lust < 85) outputText("You stagger in surprise as a particularly pleasant burst of vibrations erupt from the smooth stone sphere in your " + vaginaDescript(0) + ".\n\n", false);
+            if (player.lust >= 70 && player.lust < 85) outputText("You stagger in surprise as a particularly pleasant burst of vibrations erupt from the smooth stone sphere in your " + vaginaDescript(player, 0) + ".\n\n", false);
             if (player.lust >= 85) outputText("The magical orb inside of you is making it VERY difficult to keep your focus on combat, white-hot lust suffusing your body with each new motion.\n\n", false);
         }
         else {
@@ -1791,7 +1791,7 @@ function combatStatusesUpdate(): void {
     }
     if (player.inHeat && player.vaginas.length > 0 && monster.totalCocks() > 0) {
         dynStats("lus", (rand(player.lib / 5) + 3 + rand(5)));
-        outputText("Your " + vaginaDescript(0) + " clenches with an instinctual desire to be touched and filled.  ", false);
+        outputText("Your " + vaginaDescript(player, 0) + " clenches with an instinctual desire to be touched and filled.  ", false);
         outputText("If you don't end this quickly you'll give in to your heat.\n\n", false);
     }
     if (player.inRut && player.totalCocks() > 0 && monster.hasVagina()) {
@@ -1829,13 +1829,13 @@ function combatStatusesUpdate(): void {
         else {
             dynStats("lus", (player.lib / 12 + 5 + rand(5)));
             if (player.hasVagina()) {
-                outputText("Your " + vaginaDescript(0) + " clenches with an instinctual desire to be touched and filled.  ", false);
+                outputText("Your " + vaginaDescript(player, 0) + " clenches with an instinctual desire to be touched and filled.  ", false);
             }
             else if (player.totalCocks() > 0) {
                 outputText("Your " + cockDescript(player, 0) + " pulses and twitches, overwhelmed with the desire to breed.  ", false);
             }
             if (player.gender == 0) {
-                outputText("You feel a tingle in your " + assholeDescript() + ", and the need to touch and fill it nearly overwhelms you.  ", false);
+                outputText("You feel a tingle in your " + assholeDescript(player) + ", and the need to touch and fill it nearly overwhelms you.  ", false);
             }
             outputText("If you don't finish this soon you'll give in to this potent drug!\n\n", false);
         }
@@ -2766,7 +2766,7 @@ export function tease(justText: boolean = false): void {
         // 0 butt shake
         case 0:
             // Display
-            outputText("You slap your " + buttDescript(), false);
+            outputText("You slap your " + buttDescription(player), false);
             if (player.buttRating >= 10 && player.tone < 60) outputText(", making it jiggle delightfully.", false);
             else outputText(".", false);
             // Mod success
@@ -2778,13 +2778,13 @@ export function tease(justText: boolean = false): void {
             if (player.breastRows.length == 1) {
                 // 50+ breastsize% success rate
                 outputText("Your lift your top, exposing your " + breastDescript(game.player, 0) + " to " + monster.a + monster.short + ".  You shake them from side to side enticingly.", false);
-                if (player.lust >= 50) outputText("  Your " + nippleDescript(0) + "s seem to demand " + monster.pronoun3 + " attention.", false);
+                if (player.lust >= 50) outputText("  Your " + nippleDescription(player, 0) + "s seem to demand " + monster.pronoun3 + " attention.", false);
             }
             // Multirow
             if (player.breastRows.length > 1) {
                 // 50 + 10% per breastRow + breastSize%
                 outputText("You lift your top, freeing your rows of " + breastDescript(game.player, 0) + " to jiggle freely.  You shake them from side to side enticingly", false);
-                if (player.lust >= 50) outputText(", your " + nippleDescript(0) + "s painfully visible.", false);
+                if (player.lust >= 50) outputText(", your " + nippleDescription(player, 0) + "s painfully visible.", false);
                 else outputText(".", false);
                 chance++;
             }
@@ -2810,7 +2810,7 @@ export function tease(justText: boolean = false): void {
                     }
                     penis = true;
                 }
-                outputText(vaginaDescript(0), false);
+                outputText(vaginaDescript(player, 0), false);
                 outputText(".", false);
             }
             vagina = true;
@@ -2832,7 +2832,7 @@ export function tease(justText: boolean = false): void {
                     chance++;
                 }
                 if (player.vaginas.length > 0) {
-                    outputText(vaginaDescript(0), false);
+                    outputText(vaginaDescript(player, 0), false);
                     vagina = true;
                 }
                 outputText(".", false);
@@ -2842,15 +2842,15 @@ export function tease(justText: boolean = false): void {
         // BIMBO
         // 4 butt shake
         case 4:
-            outputText("You turn away and bounce your " + buttDescript() + " up and down hypnotically", false);
+            outputText("You turn away and bounce your " + buttDescription(player) + " up and down hypnotically", false);
             // Big butts = extra text + higher success
             if (player.buttRating >= 10) {
-                outputText(", making it jiggle delightfully.  " + monster.capitalA + monster.short + " even gets a few glimpses of the " + assholeDescript() + " between your cheeks.", false);
+                outputText(", making it jiggle delightfully.  " + monster.capitalA + monster.short + " even gets a few glimpses of the " + assholeDescript(player) + " between your cheeks.", false);
                 chance += 3;
             }
             // Small butts = less damage, still high success
             else {
-                outputText(", letting " + monster.a + monster.short + " get a good look at your " + assholeDescript() + " and " + vaginaDescript(0) + ".", false);
+                outputText(", letting " + monster.a + monster.short + " get a good look at your " + assholeDescript(player) + " and " + vaginaDescript(player, 0) + ".", false);
                 chance += 1;
                 vagina = true;
             }
@@ -2859,8 +2859,8 @@ export function tease(justText: boolean = false): void {
             break;
         // 5 breast jiggle
         case 5:
-            outputText("You lean forward, letting the well-rounded curves of your " + allBreastsDescript() + " show to " + monster.a + monster.short + ".", false);
-            outputText("  You cup them in your palms and lewdly bounce them, putting on a show and giggling the entire time.  An inch at a time, your " + player.armorName + " starts to come down, dropping tantalizingly slowly until your " + nippleDescript(0) + "s pop free.", false);
+            outputText("You lean forward, letting the well-rounded curves of your " + allBreastsDescript(player) + " show to " + monster.a + monster.short + ".", false);
+            outputText("  You cup them in your palms and lewdly bounce them, putting on a show and giggling the entire time.  An inch at a time, your " + player.armorName + " starts to come down, dropping tantalizingly slowly until your " + nippleDescription(player, 0) + "s pop free.", false);
             if (player.lust >= 50) {
                 if (player.hasFuckableNipples()) {
                     chance++;
@@ -2887,8 +2887,8 @@ export function tease(justText: boolean = false): void {
             }
             if (monster.plural) outputText(monster.capitalA + monster.short + "' gazes are riveted on your groin as you run your fingers up and down your folds seductively.", false);
             else outputText(monster.capitalA + monster.short + "'s gaze is riveted on your groin as you run your fingers up and down your folds seductively.", false);
-            if (player.clitLength > 3) outputText("  You smile as your " + clitDescript() + " swells out from the folds and stands proudly, begging to be touched.", false);
-            else outputText("  You smile and pull apart your lower-lips to expose your " + clitDescript() + ", giving the perfect view.", false);
+            if (player.clitLength > 3) outputText("  You smile as your " + clitDescription(player) + " swells out from the folds and stands proudly, begging to be touched.", false);
+            else outputText("  You smile and pull apart your lower-lips to expose your " + clitDescription(player) + ", giving the perfect view.", false);
             if (player.cockTotal() > 0) outputText("  Meanwhile, " + sMultiCockDesc(player) + " bobs back and forth with your gyrating hips, adding to the display.", false);
             // BONUSES!
             if (player.hasCock()) {
@@ -2899,7 +2899,7 @@ export function tease(justText: boolean = false): void {
             break;
         // 7 special Adjatha-crafted bend over bimbo times
         case 7:
-            outputText("The glinting of light catches your eye and you whip around to inspect the glittering object, turning your back on " + monster.a + monster.short + ".  Locking your knees, you bend waaaaay over, " + chestDesc(game.player) + " swinging in the open air while your " + buttDescript() + " juts out at the " + monster.a + monster.short + ".  Your plump cheeks and " + hipDescript() + " form a jiggling heart-shape as you eagerly rub your thighs together.\n\n", false);
+            outputText("The glinting of light catches your eye and you whip around to inspect the glittering object, turning your back on " + monster.a + monster.short + ".  Locking your knees, you bend waaaaay over, " + chestDesc(game.player) + " swinging in the open air while your " + buttDescription(player) + " juts out at the " + monster.a + monster.short + ".  Your plump cheeks and " + hipDescription(player) + " form a jiggling heart-shape as you eagerly rub your thighs together.\n\n", false);
             outputText("The clear, warm fluid of your happy excitement trickles down from your loins, polishing your " + skin(player) + " to a glossy, inviting shine.  Retrieving the useless, though shiny, bauble, you hold your pose for just a moment longer, a sly little smile playing across your lips as you wiggle your cheeks one more time before straightening up and turning back around.", false);
             vagina = true;
             chance++;
@@ -2939,7 +2939,7 @@ export function tease(justText: boolean = false): void {
         case 11:
             if (silly() && rand(2) == 0) outputText("You strike a herculean pose and flex, whispering, \"<i>Do you even lift?</i>\" to " + monster.a + monster.short + ".", false);
             else {
-                outputText("You open your " + player.armorName + " just enough to let your " + cockDescript(player, 0) + " and " + ballsDescriptLight() + " dangle free.  A shiny rope of pre-cum dangles from your cock, showing that your reproductive system is every bit as fit as the rest of you.  ", false);
+                outputText("You open your " + player.armorName + " just enough to let your " + cockDescript(player, 0) + " and " + ballsDescriptLight(player) + " dangle free.  A shiny rope of pre-cum dangles from your cock, showing that your reproductive system is every bit as fit as the rest of you.  ", false);
                 if (player.findPerk(PerkLib.BroBrains) >= 0) outputText("Bitches love a cum-leaking cock.", false);
                 else outputText("You've got to admit, you look pretty good down there.", false);
             }
@@ -2950,7 +2950,7 @@ export function tease(justText: boolean = false): void {
         // 12 Cat flexibility.
         case 12:
             // CAT TEASE MOTHERFUCK (requires flexibility and legs [maybe can't do it with armor?])
-            outputText("Reaching down, you grab an ankle and pull it backwards, looping it up and over to touch the foot to your " + hairDescript() + ".  You bring the leg out to the side, showing off your " + vaginaDescript(0) + " through your " + player.armorName + ".  The combination of the lack of discomfort on your face and the ease of which you're able to pose shows " + monster.a + monster.short + " how good of a time they're in for with you.", false);
+            outputText("Reaching down, you grab an ankle and pull it backwards, looping it up and over to touch the foot to your " + hairDescription(player) + ".  You bring the leg out to the side, showing off your " + vaginaDescript(player, 0) + " through your " + player.armorName + ".  The combination of the lack of discomfort on your face and the ease of which you're able to pose shows " + monster.a + monster.short + " how good of a time they're in for with you.", false);
             vagina = true;
             if (player.thickness < 33) chance++;
             else if (player.thickness >= 66) chance--;
@@ -2978,7 +2978,7 @@ export function tease(justText: boolean = false): void {
         // 14 Brood Mother
         case 14:
             if (rand(2) == 0) outputText("You tear open your " + player.armorName + " and slip a few fingers into your well-used birth canal, giving your opponent a good look at what they're missing.  \"<i>C'mon stud,</i>\" you say, voice dripping with lust and desire, \"<i>Come to mama " + player.short + " and fuck my pussy 'til your baby batter just POURS out.  I want your children inside of me, I want your spawn crawling out of this cunt and begging for my milk.  Come on, FUCK ME PREGNANT!</i>\"", false);
-            else outputText("You wiggle your " + hipDescript() + " at your enemy, giving them a long, tantalizing look at the hips that have passed so very many offspring.  \"<i>Oh, like what you see, bad boy?  Well why don't you just come on over and stuff that cock inside me?  Give me your seed, and I'll give you suuuuch beautiful offspring.  Oh?  Does that turn you on?  It does!  Come on, just let loose and fuck me full of your babies!</i>\"", false);
+            else outputText("You wiggle your " + hipDescription(player) + " at your enemy, giving them a long, tantalizing look at the hips that have passed so very many offspring.  \"<i>Oh, like what you see, bad boy?  Well why don't you just come on over and stuff that cock inside me?  Give me your seed, and I'll give you suuuuch beautiful offspring.  Oh?  Does that turn you on?  It does!  Come on, just let loose and fuck me full of your babies!</i>\"", false);
             chance += 2;
             damage += 4;
             if (player.inHeat) {
@@ -2992,7 +2992,7 @@ export function tease(justText: boolean = false): void {
             // Req's tits & Pussy
             if (player.biggestTitSize() > 1 && player.hasVagina() && rand(2) == 0) {
                 outputText("Closing your eyes, you lean forward and slip a hand under your " + player.armorName + ".  You let out the slightest of gasps as your fingers find your drooling honeypot, warm tips poking, one after another between your engorged lips.  When you withdraw your hand, your fingers have been soaked in the dripping passion of your cunny, translucent beads rolling down to wet your palm.  With your other hand, you pull down the top of your " + player.armorName + " and bare your " + chestDesc(game.player) + " to " + monster.a + monster.short + ".\n\n", false);
-                outputText("Drawing your lust-slick hand to your " + nippleDescript(0) + "s, the yielding flesh of your cunt-like nipples parts before the teasing digits.  Using your own girl cum as added lubrication, you pump your fingers in and out of your nipples, moaning as you add progressively more digits until only your thumb remains to stroke the inflamed flesh of your over-stimulated chest.  Your throat releases the faintest squeak of your near-orgasmic delight and you pant, withdrawing your hands and readjusting your armor.\n\n", false);
+                outputText("Drawing your lust-slick hand to your " + nippleDescription(player, 0) + "s, the yielding flesh of your cunt-like nipples parts before the teasing digits.  Using your own girl cum as added lubrication, you pump your fingers in and out of your nipples, moaning as you add progressively more digits until only your thumb remains to stroke the inflamed flesh of your over-stimulated chest.  Your throat releases the faintest squeak of your near-orgasmic delight and you pant, withdrawing your hands and readjusting your armor.\n\n", false);
                 outputText("Despite how quiet you were, it's clear that every lewd, desperate noise you made was heard by " + monster.a + monster.short + ".", false);
                 chance += 2;
                 damage += 4;
@@ -3007,13 +3007,13 @@ export function tease(justText: boolean = false): void {
             break;
         // 16 Anal gape
         case 16:
-            outputText("You quickly strip out of your " + player.armorName + " and turn around, giving your " + buttDescript() + " a hard slap and showing your enemy the real prize: your " + assholeDescript() + ".  With a smirk, you easily plunge your hand inside, burying yourself up to the wrist inside your anus.  You give yourself a quick fisting, watching the enemy over your shoulder while you moan lustily, sure to give them a good show.  You withdraw your hand and give your ass another sexy spank before readying for combat again.", false);
+            outputText("You quickly strip out of your " + player.armorName + " and turn around, giving your " + buttDescription(player) + " a hard slap and showing your enemy the real prize: your " + assholeDescript(player) + ".  With a smirk, you easily plunge your hand inside, burying yourself up to the wrist inside your anus.  You give yourself a quick fisting, watching the enemy over your shoulder while you moan lustily, sure to give them a good show.  You withdraw your hand and give your ass another sexy spank before readying for combat again.", false);
             anus = true;
             ass = true;
             break;
         // 17 Bee abdomen tease
         case 17:
-            outputText("You swing around, shedding the " + player.armorName + " around your waist to expose your " + buttDescript() + " to " + monster.a + monster.short + ".  Taking up your oversized bee abdomen in both hands, you heft the thing and wave it about teasingly.  Drops of venom drip to and fro, a few coming dangerously close to " + monster.pronoun2 + ".  \"<i>Maybe if you behave well enough, I'll even drop a few eggs into your belly,</i>\" you say softly, dropping the abdomen back to dangle above your butt and redressing.", false);
+            outputText("You swing around, shedding the " + player.armorName + " around your waist to expose your " + buttDescription(player) + " to " + monster.a + monster.short + ".  Taking up your oversized bee abdomen in both hands, you heft the thing and wave it about teasingly.  Drops of venom drip to and fro, a few coming dangerously close to " + monster.pronoun2 + ".  \"<i>Maybe if you behave well enough, I'll even drop a few eggs into your belly,</i>\" you say softly, dropping the abdomen back to dangle above your butt and redressing.", false);
             ass = true;
             chance += .5;
             damage += .5;
@@ -3047,7 +3047,7 @@ export function tease(justText: boolean = false): void {
             break;
         // 22 SPOIDAH SILK
         case 22:
-            outputText("Reaching back, you milk some wet silk from your spider-y abdomen and present it to " + monster.a + monster.short + ", molding the sticky substance as " + monster.pronoun1 + " looks on curiously.  Within moments, you hold up a silken heart scuplture, and with a wink, you toss it at " + monster.pronoun2 + ". It sticks to " + monster.pronoun3 + " body, the sensation causing " + monster.pronoun2 + " to hastily slap the heart off.  " + mf(monster, "He", "She") + " returns " + monster.pronoun3 + " gaze to you to find you turned around, " + buttDescript() + " bared and abdomen bouncing lazily.  \"<i>I wonder what would happen if I webbed up your hole after I dropped some eggs inside?</i>\" you hiss mischievously.  " + mf(monster, "He", "She") + " gulps.", false);
+            outputText("Reaching back, you milk some wet silk from your spider-y abdomen and present it to " + monster.a + monster.short + ", molding the sticky substance as " + monster.pronoun1 + " looks on curiously.  Within moments, you hold up a silken heart scuplture, and with a wink, you toss it at " + monster.pronoun2 + ". It sticks to " + monster.pronoun3 + " body, the sensation causing " + monster.pronoun2 + " to hastily slap the heart off.  " + mf(monster, "He", "She") + " returns " + monster.pronoun3 + " gaze to you to find you turned around, " + buttDescription(player) + " bared and abdomen bouncing lazily.  \"<i>I wonder what would happen if I webbed up your hole after I dropped some eggs inside?</i>\" you hiss mischievously.  " + mf(monster, "He", "She") + " gulps.", false);
             ass = true;
             break;
         // 23 RUT TEASE
@@ -3063,7 +3063,7 @@ export function tease(justText: boolean = false): void {
             break;
         // 24 STAFF POLEDANCE
         case 24:
-            outputText("You run your tongue across your lips as you plant your staff into the ground.  Before your enemy can react, you spin onto the long, wooden shaft, using it like an impromptu pole.  You lean back against the planted staff, giving your enemy a good look at your body.  You stretch backwards like a cat, nearly touching your fingertips to the ground beneath you, now holding onto the staff with only one leg.  You pull yourself upright and give your " + buttDescript() + " a little slap and your " + chestDesc(game.player) + " a wiggle before pulling open your " + player.armorName + " and sliding the pole between your tits.  You drop down to a low crouch, only just covering your genitals with your hand as you shake your " + buttDescript() + " playfully.  You give the enemy a little smirk as you slip your " + player.armorName + " back on and pick up your staff.", false);
+            outputText("You run your tongue across your lips as you plant your staff into the ground.  Before your enemy can react, you spin onto the long, wooden shaft, using it like an impromptu pole.  You lean back against the planted staff, giving your enemy a good look at your body.  You stretch backwards like a cat, nearly touching your fingertips to the ground beneath you, now holding onto the staff with only one leg.  You pull yourself upright and give your " + buttDescription(player) + " a little slap and your " + chestDesc(game.player) + " a wiggle before pulling open your " + player.armorName + " and sliding the pole between your tits.  You drop down to a low crouch, only just covering your genitals with your hand as you shake your " + buttDescription(player) + " playfully.  You give the enemy a little smirk as you slip your " + player.armorName + " back on and pick up your staff.", false);
             ass = true;
             breasts = true;
             break;
@@ -3112,7 +3112,7 @@ export function tease(justText: boolean = false): void {
             break;
         // 32 Genderless servant clothes
         case 32:
-            outputText("You turn your back to your foe, and flip up your butt flap for a moment.   Your " + buttDescript() + " really is all you have to offer downstairs.", false);
+            outputText("You turn your back to your foe, and flip up your butt flap for a moment.   Your " + buttDescription(player) + " really is all you have to offer downstairs.", false);
             ass = true;
             chance++;
             damage += 2;
@@ -3158,7 +3158,7 @@ export function tease(justText: boolean = false): void {
             damage++;
             break;
         case 39:
-            outputText("Leaning forward, you bow down low, raising a hand up to your lips and blowing " + monster.a + monster.short + " a kiss.  You stand straight, wiggling your " + hipDescript() + " back and forth seductively while trailing your fingers down your front slowly, pouting demurely.  The tip of ");
+            outputText("Leaning forward, you bow down low, raising a hand up to your lips and blowing " + monster.a + monster.short + " a kiss.  You stand straight, wiggling your " + hipDescription(player) + " back and forth seductively while trailing your fingers down your front slowly, pouting demurely.  The tip of ");
             if (player.tailVenom == 1) outputText("your");
             else outputText("a");
             outputText(" bushy tail curls up around your " + leg(player) + ", uncoiling with a whipping motion that makes an audible crack in the air.");
@@ -3168,7 +3168,7 @@ export function tease(justText: boolean = false): void {
             break;
         case 40:
             outputText("Turning around, you stare demurely over your shoulder at " + monster.a + monster.short + ", batting your eyelashes amorously.");
-            if (player.tailVenom == 1) outputText("  Your tail twists and whips about, sliding around your " + hipDescript() + " in a slow arc and framing your rear nicely as you slowly lift your " + player.armorName + ".");
+            if (player.tailVenom == 1) outputText("  Your tail twists and whips about, sliding around your " + hipDescription(player) + " in a slow arc and framing your rear nicely as you slowly lift your " + player.armorName + ".");
             else outputText("  Your tails fan out, twisting and whipping sensually, sliding up and down your " + legs(player) + " and framing your rear nicely as you slowly lift your " + player.armorName + ".");
             outputText("  As your [butt] comes into view, you brush your tail" + ((player.tailVenom > 1) ? "s" : "") + " across it, partially obscuring the view in a tantalizingly teasing display.");
             ass = true;
@@ -3180,7 +3180,7 @@ export function tease(justText: boolean = false): void {
             outputText("Smirking coyly, you sway from side to side, running your tongue along your upper teeth seductively.  You hook your thumbs into your " + player.armorName + " and pull them away to partially reveal ");
             if (player.cockTotal() > 0) outputText(sMultiCockDesc(player));
             if (player.gender == 3) outputText(" and ");
-            if (player.gender >= 2) outputText("your " + vaginaDescript(0));
+            if (player.gender >= 2) outputText("your " + vaginaDescript(player, 0));
             outputText(".  Your bushy tail" + ((player.tailVenom > 1) ? "s" : "") + " cross" + ((player.tailVenom > 1) ? "" : "es") + " in front, wrapping around your genitals and obscuring the view teasingly.");
             vagina = true;
             penis = true;
@@ -3781,13 +3781,13 @@ export function spellHeal(): void {
     // 25% backfire!
     if (rand(4) == 0) {
         outputText("An errant sexual thought crosses your mind, and you lose control of the spell!  Your ", false);
-        if (player.gender == 0) outputText(assholeDescript() + " tingles with a desire to be filled as your libido spins out of control.", false);
+        if (player.gender == 0) outputText(assholeDescript(player) + " tingles with a desire to be filled as your libido spins out of control.", false);
         if (player.gender == 1) {
             if (player.cockTotal() == 1) outputText(cockDescript(player, 0) + " twitches obscenely and drips with pre-cum as your libido spins out of control.", false);
             else outputText(multiCockDescriptLight(player) + " twitch obscenely and drip with pre-cum as your libido spins out of control.", false);
         }
-        if (player.gender == 2) outputText(vaginaDescript(0) + " becomes puffy, hot, and ready to be touched as the magic diverts into it.", false);
-        if (player.gender == 3) outputText(vaginaDescript(0) + " and " + multiCockDescriptLight(player) + " overfill with blood, becoming puffy and incredibly sensitive as the magic focuses on them.", false);
+        if (player.gender == 2) outputText(vaginaDescript(player, 0) + " becomes puffy, hot, and ready to be touched as the magic diverts into it.", false);
+        if (player.gender == 3) outputText(vaginaDescript(player, 0) + " and " + multiCockDescriptLight(player) + " overfill with blood, becoming puffy and incredibly sensitive as the magic focuses on them.", false);
         dynStats("lib", .25, "lus", 15);
     }
     else {
@@ -3823,13 +3823,13 @@ export function spellMight(): void {
     // 25% backfire!
     if (rand(4) == 0) {
         outputText("An errant sexual thought crosses your mind, and you lose control of the spell!  Your ", false);
-        if (player.gender == 0) outputText(assholeDescript() + " tingles with a desire to be filled as your libido spins out of control.", false);
+        if (player.gender == 0) outputText(assholeDescript(player) + " tingles with a desire to be filled as your libido spins out of control.", false);
         if (player.gender == 1) {
             if (player.cockTotal() == 1) outputText(cockDescript(player, 0) + " twitches obscenely and drips with pre-cum as your libido spins out of control.", false);
             else outputText(multiCockDescriptLight(player) + " twitch obscenely and drip with pre-cum as your libido spins out of control.", false);
         }
-        if (player.gender == 2) outputText(vaginaDescript(0) + " becomes puffy, hot, and ready to be touched as the magic diverts into it.", false);
-        if (player.gender == 3) outputText(vaginaDescript(0) + " and " + multiCockDescriptLight(player) + " overfill with blood, becoming puffy and incredibly sensitive as the magic focuses on them.", false);
+        if (player.gender == 2) outputText(vaginaDescript(player, 0) + " becomes puffy, hot, and ready to be touched as the magic diverts into it.", false);
+        if (player.gender == 3) outputText(vaginaDescript(player, 0) + " and " + multiCockDescriptLight(player) + " overfill with blood, becoming puffy and incredibly sensitive as the magic focuses on them.", false);
         dynStats("lib", .25, "lus", 15);
     }
     else {
@@ -5099,39 +5099,39 @@ export function runAway(callHook: boolean = true): void {
         else {
             // Huge balls messages
             if (player.balls > 0 && player.ballSize >= 24) {
-                if (player.ballSize < 48) outputText("With your " + ballsDescriptLight() + " swinging ponderously beneath you, getting away is far harder than it should be.  ", false);
-                else outputText("With your " + ballsDescriptLight() + " dragging along the ground, getting away is far harder than it should be.  ", false);
+                if (player.ballSize < 48) outputText("With your " + ballsDescriptLight(player) + " swinging ponderously beneath you, getting away is far harder than it should be.  ", false);
+                else outputText("With your " + ballsDescriptLight(player) + " dragging along the ground, getting away is far harder than it should be.  ", false);
             }
             // FATASS BODY MESSAGES
             if (player.biggestTitSize() >= 35 || player.buttRating >= 20 || player.hipRating >= 20) {
                 // FOR PLAYERS WITH GIANT BREASTS
                 if (player.biggestTitSize() >= 35 && player.biggestTitSize() < 66) {
                     if (player.hipRating >= 20) {
-                        outputText("Your " + hipDescript() + " forces your gait to lurch slightly side to side, which causes the fat of your " + player.skinTone + " ", false);
-                        if (player.buttRating >= 20) outputText(buttDescript() + " and ", false);
+                        outputText("Your " + hipDescription(player) + " forces your gait to lurch slightly side to side, which causes the fat of your " + player.skinTone + " ", false);
+                        if (player.buttRating >= 20) outputText(buttDescription(player) + " and ", false);
                         outputText(chestDesc(game.player) + " to wobble immensely, throwing you off balance and preventing you from moving quick enough to escape.", false);
                     }
-                    else if (player.buttRating >= 20) outputText("Your " + player.skinTone + buttDescript() + " and " + chestDesc(game.player) + " wobble and bounce heavily, throwing you off balance and preventing you from moving quick enough to escape.", false);
+                    else if (player.buttRating >= 20) outputText("Your " + player.skinTone + buttDescription(player) + " and " + chestDesc(game.player) + " wobble and bounce heavily, throwing you off balance and preventing you from moving quick enough to escape.", false);
                     else outputText("Your " + chestDesc(game.player) + " jiggle and wobble side to side like the " + player.skinTone + " sacks of milky fat they are, with such force as to constantly throw you off balance, preventing you from moving quick enough to escape.", false);
                 }
                 // FOR PLAYERS WITH MASSIVE BREASTS
                 else if (player.biggestTitSize() >= 66) {
                     if (player.hipRating >= 20) {
-                        outputText("Your " + chestDesc(game.player) + " nearly drag along the ground while your " + hipDescript() + " swing side to side ", false);
-                        if (player.buttRating >= 20) outputText("causing the fat of your " + player.skinTone + buttDescript() + " to wobble heavily, ", false);
+                        outputText("Your " + chestDesc(game.player) + " nearly drag along the ground while your " + hipDescription(player) + " swing side to side ", false);
+                        if (player.buttRating >= 20) outputText("causing the fat of your " + player.skinTone + buttDescription(player) + " to wobble heavily, ", false);
                         outputText("forcing your body off balance and preventing you from moving quick enough to get escape.", false);
                     }
-                    else if (player.buttRating >= 20) outputText("Your " + chestDesc(game.player) + " nearly drag along the ground while the fat of your " + player.skinTone + buttDescript() + " wobbles heavily from side to side, forcing your body off balance and preventing you from moving quick enough to escape.", false);
+                    else if (player.buttRating >= 20) outputText("Your " + chestDesc(game.player) + " nearly drag along the ground while the fat of your " + player.skinTone + buttDescription(player) + " wobbles heavily from side to side, forcing your body off balance and preventing you from moving quick enough to escape.", false);
                     else outputText("Your " + chestDesc(game.player) + " nearly drag along the ground, preventing you from moving quick enough to get escape.", false);
                 }
                 // FOR PLAYERS WITH EITHER GIANT HIPS OR BUTT BUT NOT THE BREASTS
                 else if (player.hipRating >= 20) {
-                    outputText("Your " + hipDescript() + " swing heavily from side to side ", false);
-                    if (player.buttRating >= 20) outputText("causing your " + player.skinTone + buttDescript() + " to wobble obscenely ", false);
+                    outputText("Your " + hipDescription(player) + " swing heavily from side to side ", false);
+                    if (player.buttRating >= 20) outputText("causing your " + player.skinTone + buttDescription(player) + " to wobble obscenely ", false);
                     outputText("and forcing your body into an awkward gait that slows you down, preventing you from escaping.", false);
                 }
                 // JUST DA BOOTAH
-                else if (player.buttRating >= 20) outputText("Your " + player.skinTone + buttDescript() + " wobbles so heavily that you're unable to move quick enough to escape.", false);
+                else if (player.buttRating >= 20) outputText("Your " + player.skinTone + buttDescription(player) + " wobbles so heavily that you're unable to move quick enough to escape.", false);
             }
             // NORMAL RUN FAIL MESSAGES
             else if (monster.plural) outputText(monster.capitalA + monster.short + " stay hot on your heels, denying you a chance at escape!", false);

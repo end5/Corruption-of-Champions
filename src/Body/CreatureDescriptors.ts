@@ -1041,3 +1041,29 @@ export function breastDescript(creature: Creature, rowNum: number): string {
     }
     return BreastStore.breastDescript(creature.breastRows[rowNum].breastRating, creature.breastRows[rowNum].lactationMultiplier);
 }
+
+export function ballDescript(creature: Creature): string {
+    return Appearance.ballsDescription(false, false, creature);
+}
+
+export function ballsDescript(creature: Creature): string {
+    return Appearance.ballsDescription(false, true, creature, true);
+}
+
+export function simpleBallsDescript(creature: Creature): string {
+    return Appearance.ballsDescription(false, true, creature);
+}
+
+export function cockClit(creature: Creature, number: number = 0): string {
+    if (creature.hasCock() && number >= 0 && number < creature.cockTotal()) return cockDescript(creature, number);
+    else return clitDescription(creature);
+}
+
+// Allvagina descript
+export function allVaginaDescript(creature: Creature): string {
+    if (creature.vaginas.length == 1) return vaginaDescript(creature, rand(creature.vaginas.length - 1));
+    if (creature.vaginas.length > 1) return (vaginaDescript(creature, rand(creature.vaginas.length - 1)) + "s");
+
+    CoC_Settings.error("ERROR: allVaginaDescript called with no vaginas.");
+    return "ERROR: allVaginaDescript called with no vaginas.";
+}

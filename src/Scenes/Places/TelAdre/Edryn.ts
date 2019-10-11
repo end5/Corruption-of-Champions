@@ -410,7 +410,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText(" while she caresses the side of your " + face(player) + " with the other.  Your body pumps away while your tongues entwine, tracing saliva over each other's lips.  She pulls back and moans out again, trailing off into a whinny as she orgasms underneath you.\n\n", false);
 
         outputText("Her cunt locks tightly around you once again, clamping down in a series of rings from the base all the way to your " + cockHead(player, x) + ".  At once, they start sliding from the base towards the tip, new ones forming along the bottom of the shaft as her pussy milks your " + cockDescript(game.player, x) + " hard.  Trapped inside her, all you can do is groan and cum in response to her climax.  You throw back your head as you feel the warmth of your release building in your ", false);
-        if (player.balls > 0) outputText(ballsDescriptLight(), false);
+        if (player.balls > 0) outputText(ballsDescriptLight(player), false);
         else outputText("loins", false);
         outputText(".\n\n", false);
 
@@ -548,7 +548,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
 
             outputText("\"<i>Centauress? You mean Edryn?</i>\"\n\n", false);
 
-            outputText("\"<i>Yeah!  That's the one!  Oh man, I'd pay a pretty gem to stick my tail up her flanks!</i>\" she laughs, snaking her tail under the table to tickle your thighs.  You give her prehensile extremity a little slap until it comes to rest in your lap, snuggling up around your " + hipDescript() + " as Hel nonchalantly chugs down the rest of her ale.\n\n", false);
+            outputText("\"<i>Yeah!  That's the one!  Oh man, I'd pay a pretty gem to stick my tail up her flanks!</i>\" she laughs, snaking her tail under the table to tickle your thighs.  You give her prehensile extremity a little slap until it comes to rest in your lap, snuggling up around your " + hipDescription(player) + " as Hel nonchalantly chugs down the rest of her ale.\n\n", false);
 
             outputText("Sitting with the salamander, you notice across the crowded bar that Edryn is sitting at her table, sipping a little glass of wine.  Catching your eye, the centauress gives you a sultry wink.  An idea forms in your mind: you could easily introduce the two girls.  Do you?", false);
             flags[kFLAGS.HEL_EDRYN_OFFER]++;
@@ -744,7 +744,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("\n\n", false);
 
             outputText("You wouldn't notice her return if it wasn't for the increase in potent centaur pheromones hitting your nostrils.  It takes a hand slipping under the table to play with your ", false);
-            if (player.balls > 0) outputText(ballsDescriptLight(), false);
+            if (player.balls > 0) outputText(ballsDescriptLight(player), false);
             else if (player.hasSheath()) outputText("sheath", false);
             else if (player.cockTotal() > 0) outputText(cockDescript(game.player, 0), false);
             else outputText("crotch", false);
@@ -766,7 +766,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("\n\n", false);
 
             outputText("As usual, you're barely cognizant of her return.  It isn't until a hand sneaks under the table to surreptitiously fondle your ", false);
-            if (player.balls > 0) outputText(ballsDescriptLight(), false);
+            if (player.balls > 0) outputText(ballsDescriptLight(player), false);
             else if (player.hasSheath()) outputText("sheath", false);
             else if (player.cockTotal() > 0) outputText(cockDescript(game.player, 0), false);
             else outputText("crotch", false);
@@ -897,7 +897,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("You grunt from the force of your exertions and begin to fuck her a little more roughly.  Your arms squeeze tightly around her midsection with a mixture of affection and need as you fulfill her request.  You pound her swollen, dripping cunt with hard strokes that make your intertwined forms shiver, dislodging a few pillows.  Scrabbling noise fills the air.  Your hooves are scrambling for purchase, but there's no traction.  Lying sideways in the pillows with your pregnant lover prevents you from fucking quite as hard as your body would like.\n\n", false);
 
             outputText("Her slippery, silken tunnel feels wonderful as it contracts and squeezes your maleness with vice-like tightness.  Edryn's mouth hangs open, and as her eyes start to cross, you can feel the passage intensifying its muscular twitches.  She's on the brink of orgasm, but you aren't too far behind her.  You pull one arm up to her head and kiss her, running your tongue over her lips before sliding it inside to tangle with hers.  She undulates underneath you, convulsing as she reaches her peak.  Her juices erupt, splattering over your thighs", false);
-            if (player.balls > 0) outputText(" and " + ballsDescriptLight(), false);
+            if (player.balls > 0) outputText(" and " + ballsDescriptLight(player), false);
             outputText(".  Her twat clutches you so tightly that you're immobilized for fear of hurting yourself, and the tight seal of her entrance acts as a cock-ring, actually bloating your " + cockDescript(game.player, x) + " inside her.\n\n", false);
 
             outputText("Your " + cockDescript(game.player, x) + " is milked from ", false);
@@ -960,9 +960,9 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         }
         outputText("  Her button, like her pussy, is many sizes larger than a human's, and it's as big around as a golfball and several inches long.  You suck it into your lips and plunge a hand inside her slippery channel, fisting her while you suckle and bob on her clit.  Edryn whinnies and clenches around the invading fist.  Her cunt erupts and splatters your face with fluid, soaking you with her fragrant scent.\n\n", false);
 
-        outputText("Startled from your sexual fog, you jerk back and gasp.  The smell – it's like sex distilled into orgasm and fired straight into your brain.  Your " + hipDescript() + " shake uncontrollably, spasming wildly as your scent-addled mind sets off a full-body orgasm.  ", false);
+        outputText("Startled from your sexual fog, you jerk back and gasp.  The smell – it's like sex distilled into orgasm and fired straight into your brain.  Your " + hipDescription(player) + " shake uncontrollably, spasming wildly as your scent-addled mind sets off a full-body orgasm.  ", false);
         if (player.hasVagina()) {
-            outputText("Your " + vaginaDescript(0) + " contracts and spasms with the rest of you, ", false);
+            outputText("Your " + vaginaDescript(player, 0) + " contracts and spasms with the rest of you, ", false);
             if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) outputText("squirting", false);
             else outputText("leaking", false);
             outputText(" in a pale imitation of Edryn's box.  ", false);
