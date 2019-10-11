@@ -510,7 +510,7 @@ export class Salon implements TimeAwareInterface {
         outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special mud'.  You close your eyes, letting them plaster your " + face(player) + " with the stuff in hopes that it will improve your complexion as much as you've been promised.  A pair of cucumber slices are laid out on your eyes, obscuring your view.\n\n", false);
 
         outputText("With that finished, the crowd of busty, green-skinned women disperses to leave you in peace.  Time drags on, but eventually the mud hardens and cracks.  As if on cue, tiny hands emerge with wet rags to scrub your face clean.  Once they've finished, you feel like a whole new you! (+10 femininity)", false);
-        player.modFem(100, 10);
+        modFem(player, 100, 10);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -520,7 +520,7 @@ export class Salon implements TimeAwareInterface {
         outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special sand'.  You close your eyes, letting them splatter your " + face(player) + " with the rough, textured goop.  It doesn't feel very good, but that won't matter if it makes you as handsome as it's supposed to.\n\n", false);
 
         outputText("After a while the goblin girls come back and clean the stuff from your face. (+10 masculinity)", false);
-        player.modFem(0, 10);
+        modFem(player, 0, 10);
         doNext(camp.returnToCampUseOneHour);
     }
     /*

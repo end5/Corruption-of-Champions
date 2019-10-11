@@ -328,8 +328,8 @@ export class BakeryScene extends TelAdreAbstractContent {
         else {
             outputText("You hand over " + num2Text(flags[kFLAGS.TEMP_STORAGE_PASTRY_PRICE]) + " gems and get your " + flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] + ".  A moment later you're at a table, licking the sugary residue from your fingertips and wondering just how they make the food so damned good.", false);
             if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "doughnuts") {
-                outputText(player.modTone(0, 2), false);
-                outputText(player.modThickness(100, 1), false);
+                outputText(modTone(player, 0, 2), false);
+                outputText(modThickness(player, 100, 1), false);
                 if (rand(3) == 0 && player.buttRating < 15) {
                     outputText("\n\nWhen you stand back up your " + buttDescription(player) + " jiggles a little bit more than you'd expect.", false);
                     player.buttRating++;
@@ -340,30 +340,30 @@ export class BakeryScene extends TelAdreAbstractContent {
                 }
             }
             else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "cookies") {
-                outputText(player.modTone(0, 1), false);
-                outputText(player.modThickness(100, 2), false);
+                outputText(modTone(player, 0, 1), false);
+                outputText(modThickness(player, 100, 2), false);
                 if (rand(3) == 0 && player.hipRating < 20) {
                     outputText("\n\nAfter finishing, you find your gait has changed.  Did your hips widen?", false);
                     player.hipRating++;
                 }
             }
             else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "brownies") {
-                outputText(player.modThickness(100, 4), false);
+                outputText(modThickness(player, 100, 4), false);
                 if (rand(2) == 0 && player.hipRating < 30) {
                     outputText("\n\nAfter finishing, you find your gait has changed.  Your " + hipDescription(player) + " definitely got wider.", false);
                     player.hipRating += 2;
                 }
             }
             else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "cupcakes") {
-                outputText(player.modTone(0, 4), false);
+                outputText(modTone(player, 0, 4), false);
                 if (rand(2) == 0 && player.buttRating < 30) {
                     outputText("\n\nWhen you stand back up your " + buttDescription(player) + " jiggles with a good bit of extra weight.", false);
                     player.buttRating += 2;
                 }
             }
             else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "pound cake") {
-                outputText(player.modTone(0, 2), false);
-                outputText(player.modThickness(100, 2), false);
+                outputText(modTone(player, 0, 2), false);
+                outputText(modThickness(player, 100, 2), false);
                 if (rand(3) == 0 && player.buttRating < 25) {
                     outputText("\n\nWhen you stand back up your " + buttDescription(player) + " jiggles a little bit more than you'd expect.", false);
                     player.buttRating++;

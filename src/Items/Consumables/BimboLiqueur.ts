@@ -172,7 +172,7 @@ export class BimboLiqueur extends Consumable {
             game.player.orgasm();
             dynStats("int", -1, "lib", 4, "sen", 25);
             // FULL ON BITCHFACE
-            game.player.modFem(100, 100);
+            modFem(game.player, 100, 100);
             // Body
             // Tease/Seduce Boost
             // *boosts min lust and lust resistance)

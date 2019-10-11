@@ -50,14 +50,14 @@ export class Mutations {
         dynStats("tou", temp);
         // Chance of fitness change
         if (HPChange(50, false)) outputText("  Any aches, pains and bruises you have suffered no longer hurt and you feel much better.", false);
-        if (rand(3) == 0) outputText(player.modTone(95, 3), false);
+        if (rand(3) == 0) outputText(modTone(player, 95, 3), false);
     }
 
     // Scholar's Tea
     public scholarsTea(player: Player): void {
         player.slimeFeed();
         outputText("Following the merchant's instructions, you steep and drink the tea. Its sharp taste fires up your palate and in moments, you find yourself more alert and insightful. As your mind wanders, a creative, if somewhat sordid, story comes to mind. It is a shame that you do not have writing implements as you feel you could make a coin or two off what you have conceived. The strange seller was not lying about the power of the tea.", true);
-        if (rand(3) == 0) outputText(player.modTone(15, 1), false);
+        if (rand(3) == 0) outputText(modTone(player, 15, 1), false);
         dynStats("int", (2.5 + rand(5)));
     }
 
@@ -219,8 +219,8 @@ export class Mutations {
         // Demonic changes - higher chance with higher corruption.
         if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
         player.genderCheck();
-        if (rand(4) == 0 && tainted) outputText(player.modFem(5, 2), false);
-        if (rand(4) == 0 && tainted) outputText(player.modThickness(30, 2), false);
+        if (rand(4) == 0 && tainted) outputText(modFem(player, 5, 2), false);
+        if (rand(4) == 0 && tainted) outputText(modThickness(player, 30, 2), false);
     }
 
     public growDemonCock(growCocks: number): void {
@@ -758,9 +758,9 @@ export class Mutations {
             changes++;
         }
         // Give you that mino build!
-        if (rand(4) == 0) outputText(player.modFem(5, 10), false);
-        if (rand(4) == 0) outputText(player.modTone(85, 3), false);
-        if (rand(4) == 0) outputText(player.modThickness(70, 4), false);
+        if (rand(4) == 0) outputText(modFem(player, 5, 10), false);
+        if (rand(4) == 0) outputText(modTone(player, 85, 3), false);
+        if (rand(4) == 0) outputText(modThickness(player, 70, 4), false);
         // Default
         if (changes == 0) {
             outputText("\n\nMinotaur-like vitality surges through your body, invigorating and arousing you!\n", false);
@@ -1262,7 +1262,7 @@ export class Mutations {
             player.gills = false;
             changes++;
         }
-        if (rand(3) == 0) outputText(player.modTone(60, 1), false);
+        if (rand(3) == 0) outputText(modTone(player, 60, 1), false);
         // FAILSAFE CHANGE
         if (changes == 0) {
             outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n", false);
@@ -1466,12 +1466,12 @@ export class Mutations {
         // Demonic changes - higher chance with higher corruption.
         if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
         if (tainted) {
-            outputText(player.modFem(100, 2), false);
-            if (rand(3) == 0) outputText(player.modTone(15, 2), false);
+            outputText(modFem(player, 100, 2), false);
+            if (rand(3) == 0) outputText(modTone(player, 15, 2), false);
         }
         else {
-            outputText(player.modFem(90, 1), false);
-            if (rand(3) == 0) outputText(player.modTone(20, 2), false);
+            outputText(modFem(player, 90, 1), false);
+            if (rand(3) == 0) outputText(modTone(player, 20, 2), false);
         }
         player.genderCheck();
     }
@@ -2278,7 +2278,7 @@ export class Mutations {
             changes++;
         }
         if (player.balls > 0 && rand(3) == 0) {
-            outputText(player.modFem(12, 3), false);
+            outputText(modFem(player, 12, 3), false);
         }
     }
 
@@ -2363,7 +2363,7 @@ export class Mutations {
             changes++;
         }
         if (player.balls > 0 && rand(3) == 0) {
-            outputText(player.modFem(12, 5), false);
+            outputText(modFem(player, 12, 5), false);
         }
     }
 
@@ -2449,8 +2449,8 @@ export class Mutations {
             player.buttRating += 2 + rand(3);
         }
         if (rand(3) == 0) {
-            if (large) outputText(player.modThickness(100, 8), false);
-            else outputText(player.modThickness(95, 3), false);
+            if (large) outputText(modThickness(player, 100, 8), false);
+            else outputText(modThickness(player, 95, 3), false);
         }
     }
 
@@ -2466,8 +2466,8 @@ export class Mutations {
             player.hipRating += 2 + rand(2);
         }
         if (rand(3) == 0) {
-            if (large) outputText(player.modThickness(80, 8), false);
-            else outputText(player.modThickness(80, 3), false);
+            if (large) outputText(modThickness(player, 80, 8), false);
+            else outputText(modThickness(player, 80, 3), false);
         }
     }
 
@@ -2519,8 +2519,8 @@ export class Mutations {
             }
         }
         if (rand(3) == 0) {
-            if (large) outputText(player.modFem(100, 8), false);
-            else outputText(player.modFem(95, 3), false);
+            if (large) outputText(modFem(player, 100, 8), false);
+            else outputText(modFem(player, 95, 3), false);
         }
     }
 
@@ -2672,8 +2672,8 @@ export class Mutations {
             }
         }
         if (rand(3) == 0) {
-            if (large) outputText(player.modFem(0, 8), false);
-            else outputText(player.modFem(5, 3), false);
+            if (large) outputText(modFem(player, 0, 8), false);
+            else outputText(modFem(player, 5, 3), false);
         }
     }
 
@@ -3150,7 +3150,7 @@ export class Mutations {
         }
         dynStats("lus", 10);
         if (rand(3) == 0) {
-            outputText(player.modFem(95, 1), false);
+            outputText(modFem(player, 95, 1), false);
         }
     }
 
@@ -3613,9 +3613,9 @@ export class Mutations {
             player.vaginaType(0);
             changes++;
         }
-        if (rand(3) == 0) outputText(player.modFem(79, 3), false);
-        if (rand(3) == 0) outputText(player.modThickness(70, 4), false);
-        if (rand(5) == 0) outputText(player.modTone(10, 5), false);
+        if (rand(3) == 0) outputText(modFem(player, 79, 3), false);
+        if (rand(3) == 0) outputText(modThickness(player, 70, 4), false);
+        if (rand(5) == 0) outputText(modTone(player, 10, 5), false);
     }
 
     public blackSpellbook(player: Player): void {
@@ -3920,9 +3920,9 @@ export class Mutations {
             changes++;
         }
         if (changes < changeLimit && rand(3) == 0) {
-            if (rand(2) == 0) player.modFem(85, 3);
-            if (rand(2) == 0) player.modThickness(20, 3);
-            if (rand(2) == 0) player.modTone(15, 5);
+            if (rand(2) == 0) modFem(player, 85, 3);
+            if (rand(2) == 0) modThickness(player, 20, 3);
+            if (rand(2) == 0) modTone(player, 15, 5);
         }
     }
 
@@ -4057,9 +4057,9 @@ export class Mutations {
                 player.changeStatusValue(StatusAffects.SlimeCraving, 1, 0);
             }
         }
-        if (rand(2) == 0) outputText(player.modFem(85, 3), false);
-        if (rand(2) == 0) outputText(player.modThickness(20, 3), false);
-        if (rand(2) == 0) outputText(player.modTone(15, 5), false);
+        if (rand(2) == 0) outputText(modFem(player, 85, 3), false);
+        if (rand(2) == 0) outputText(modThickness(player, 20, 3), false);
+        if (rand(2) == 0) outputText(modTone(player, 15, 5), false);
     }
 
     public sharkTooth(type: number, player: Player): void {
@@ -4772,10 +4772,10 @@ export class Mutations {
             dynStats("lus", 3);
         }
         if (changes < changeLimit) {
-            if (rand(2) == 0) outputText(player.modThickness(5, 2), false);
-            if (rand(2) == 0) outputText(player.modTone(76, 2), false);
-            if (player.gender < 2) if (rand(2) == 0) outputText(player.modFem(65, 1), false);
-            else outputText(player.modFem(85, 2), false);
+            if (rand(2) == 0) outputText(modThickness(player, 5, 2), false);
+            if (rand(2) == 0) outputText(modTone(player, 76, 2), false);
+            if (player.gender < 2) if (rand(2) == 0) outputText(modFem(player, 65, 1), false);
+            else outputText(modFem(player, 85, 2), false);
         }
     }
 
@@ -5303,8 +5303,8 @@ export class Mutations {
         // Makes girls very girl(90), guys somewhat girly (61).
         if (changes < changeLimit && rand(2) == 0) {
             let buffer: string = "";
-            if (player.gender < 2) buffer += player.modFem(61, 4);
-            else buffer += player.modFem(90, 4);
+            if (player.gender < 2) buffer += modFem(player, 61, 4);
+            else buffer += modFem(player, 90, 4);
             if (buffer != "") {
                 outputText(buffer, false);
                 changes++;
@@ -5671,7 +5671,7 @@ export class Mutations {
         // -Femininity to 85
         if (player.femininity < 85 && changes < changeLimit && rand(3) == 0) {
             changes++;
-            outputText(player.modFem(85, 3 + rand(5)), false);
+            outputText(modFem(player, 85, 3 + rand(5)), false);
         }
         // -Skin color change – tan, olive, dark, light
         if ((player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "dark" && player.skinTone != "light") && changes < changeLimit && rand(5) == 0) {
@@ -5713,7 +5713,7 @@ export class Mutations {
         }
         // -Body thickness to 25ish
         if (player.thickness > 25 && changes < changeLimit && rand(3) == 0) {
-            outputText(player.modThickness(25, 3 + rand(4)), false);
+            outputText(modThickness(player, 25, 3 + rand(4)), false);
             changes++;
         }
         // Remove odd eyes
@@ -6070,8 +6070,8 @@ export class Mutations {
         outputText("You hesitantly take a bite.  It's sweet, as you'd expect, but there's also a slightly salty, chocolaty undercurrent of flavor.  Even knowing what the minotaur put in Maddie's mix, you find yourself grateful that this new creation doesn't seem to have any of his 'special seasonings'.  It wouldn't do to be getting drugged up while you're slowly devouring the massive, muffin-molded masterpiece. Before you know it, most of the cupcake is gone and you polish off the last chocolaty bites before licking your fingers clean.\n\n", false);
         outputText("Gods, you feel heavy!  You waddle slightly as your body begins thickening, swelling until you feel as wide as a house.  Lethargy spreads through your limbs, and you're forced to sit still a little while until you let out a lazy burp.\n\n", false);
         outputText("As you relax in your sugar-coma, you realize your muscle definition is fading away, disappearing until your " + player.skinDesc + " looks nearly as soft and spongy as Maddie's own.  You caress the soft, pudgy mass and shiver in delight, dimly wondering if this is how the cupcake-girl must feel all the time.", false);
-        outputText(player.modTone(0, 100), false);
-        outputText(player.modThickness(100, 100), false);
+        outputText(modTone(player, 0, 100), false);
+        outputText(modThickness(player, 100, 100), false);
     }
 
     public sweetGossamer(type: number, player: Player): void {
@@ -6497,12 +6497,12 @@ export class Mutations {
         // (below max masculinity)
         if (player.femininity > 0) {
             outputText("Lastly, the change hits your face.  You can feel your jawbones shifting and sliding around, your skin changing to accommodate your face's new shape.  Once it's finished, you feel your impeccable square jaw and give a wide, easy-going grin.  You look awesome!\n\n", false);
-            player.modFem(0, 100);
+            modFem(player, 0, 100);
         }
         outputText("You finish admiring yourself and adjust your " + player.armorName + " to better fit your new physique.  Maybe there's some bitches around you can fuck.  Hell, as good as you look, you might have other dudes wanting you to fuck them too, no homo.\n\n", false);
         // max tone.  Thickness + 50
-        player.modTone(100, 100);
-        player.modThickness(100, 50);
+        modTone(player, 100, 100);
+        modThickness(player, 100, 50);
         // Bonus cum production!
         player.createPerk(PerkLib.BroBrains, 0, 0, 0, 0);
         player.createPerk(PerkLib.BroBody, 0, 0, 0, 0);
@@ -7238,7 +7238,7 @@ export class Mutations {
         // from high to low
         // Your facial features harden as your body becomes more androgynous.
         if (((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && changes < changeLimit && player.femininity != 50) {
-            outputText(player.modFem(50, 2), false);
+            outputText(modFem(player, 50, 2), false);
             changes++;
         }
         // [decrease muscle tone toward 40]
@@ -7693,7 +7693,7 @@ export class Mutations {
         // Body Mass Loss:
         if (player.thickness > 40 && rand(3) == 0 && changes < changeLimit) {
             outputText("\n\nYou feel an odd tightening sensation in your midriff, as if you were becoming narrower and lither.  You frown downwards, and then turn your arms around, examining them closely.  Is it just you or have you lost weight?");
-            player.modThickness(40, 3);
+            modThickness(player, 40, 3);
             changes++;
         }
 
@@ -8008,7 +8008,7 @@ export class Mutations {
         }
         // gain thickness or lose tone or whatever - standard message
         if (rand(4) == 0 && player.thickness < 80 && changes < changeLimit) {
-            outputText(player.modThickness(80, 2), false);
+            outputText(modThickness(player, 80, 2), false);
             changes++;
         }
         // bodypart changes:

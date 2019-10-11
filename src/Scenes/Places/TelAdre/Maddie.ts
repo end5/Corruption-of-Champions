@@ -223,8 +223,8 @@ export class Maddie extends TelAdreAbstractContent {
             outputText("You're woken by a furry hand squeezing your shoulder and violently shaking you around.  With such rough treatment, you snap to full alertness in no time.  The minotaur chef is smiling down at you, the expression looking quite strange on his bestial muzzle as he says, \"<i>Sorry.  Experiment backfired.  Glad you okay.  Gave her more filling and all calm now.  Will make great assistant.</i>\"\n\n", false);
 
             outputText("Once the beast-man has finished talking you realize the cupcake-girl, Madeleine, is standing behind him.  Her blue-iced 'clothes' have been remade, shaped into a form-fitting apron that accentuates her massive, otherworldly curves.  The minotaur chef utters, \"<i>We go now.  Get dressed.  Maybe sometime can visit Maddie.</i>\"  Maddie claps her hands, bouncing and jiggling with excitement as the two of them leave you there to get dressed.", false);
-            outputText(player.modThickness(100, 10), false);
-            outputText(player.modTone(0, 10), false);
+            outputText(modThickness(player, 100, 10), false);
+            outputText(modTone(player, 0, 10), false);
         }
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] = 3;
         doNext(camp.returnToCampUseOneHour);

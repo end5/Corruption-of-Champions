@@ -442,7 +442,7 @@ export class Lottie extends TelAdreAbstractContent {
         // LOTTIE FIGURE +1, MUSCLE TONE +1, DRAINS PC'S LUST.
         lottieTone(1);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00307] == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00307] = 1;
-        outputText(player.modTone(100, 1), false);
+        outputText(modTone(player, 100, 1), false);
         player.orgasm();
         doNext(camp.returnToCampUseOneHour);
     }
@@ -535,7 +535,7 @@ export class Lottie extends TelAdreAbstractContent {
         // LOTTIE FIGURE -1, MUSCLE TONE +1, DRAINS PC'S LUST.
         lottieTone(-1);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00306] == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00306] = 1;
-        outputText(player.modTone(100, 1), false);
+        outputText(modTone(player, 100, 1), false);
         player.orgasm();
         doNext(camp.returnToCampUseOneHour);
     }
@@ -1398,8 +1398,8 @@ export class Lottie extends TelAdreAbstractContent {
         outputText("", true);
         outputText("Taking your mat, you walk over towards the four-armed yoga trainer, sitting down only a meter or two away from her tanned, muscular body. In the corner of your eye, you can see Lottie visibly disheartened as she watches you gazing at the fit, caramel-colored woman in front of you. As you take your position, the intense smell of coffee and desert flowers hits you as the instructor lays on her back and pulls both of her legs up, giving you a clear view of her large thighs and puffy mound. You swear you can see her smiling as the other surrounding members begin to imitate her position. Not wanting to disappoint, you lie on your rear and tilt your head backwards, confronted by another pair of legs lifted into the air. You can see Lottie attempting the same position, only to lean to her right and fall over, earning an annoyed stare from the person next to her.\n\n", false);
         outputText("You continue to take on the vaguely sexual positions of the athletic yoga teacher, the class ending before you know it. Your head strangely dizzy from the smell of sweat and pheromones, you walk home by yourself, completely forgetting about Lottie.", false);
-        outputText(player.modThickness(30, 1), false);
-        outputText(player.modTone(60, 1), false);
+        outputText(modThickness(player, 30, 1), false);
+        outputText(modTone(player, 60, 1), false);
         lottieMorale(-2);
         fatigue(5);
         doNext(camp.returnToCampUseOneHour);
@@ -1438,7 +1438,7 @@ export class Lottie extends TelAdreAbstractContent {
         if (player.cockTotal() > 1) outputText("s", false);
         outputText(" decided to say hello. Needless to say, you decide it'd be better if you swam alone – nothing's wrong with the occasional chubby-assed slut wandering now and then, but it's a pain to not be distracted. Lottie wades at the other end of the pool, doing the occasional stretch before breaking into laps. You take a page from her book and begin to work back and forth from either end, making sure not to stare at Lottie's massive chest as it bounces into the air every so often after a stroke. After a considerable amount of time, you both finish considerably more exhausted than before. She seems to have lightened up since your initial reaction to her body, so you shrug it off and head home.", false);
         // ENCOURAGEMENT -1, FIGURE +2, MUSCLE TONE +2, LUST +9001
-        outputText(player.modTone(100, 2), false);
+        outputText(modTone(player, 100, 2), false);
         dynStats("lus", 40);
         lottieTone(2);
         lottieMorale(-1);
@@ -1456,7 +1456,7 @@ export class Lottie extends TelAdreAbstractContent {
         outputText(". You almost experience a tinge of regret from the now incredibly awkward silence, but it's thrown out the window as soon as you feel a soft hand grab your throbbing member. Looking up, Lottie's face has reddened considerably, but her curiosity overrides her shame as she begins to slowly massage you to full mast. \"<i>I... I did this?</i>\" she asks, facing you with large, wondering eyes. You grin and nod, taking her hand and helping her stroke it further, only to be met with a slap on your wrist as she removes her grip. You look up, frowning as Lottie laughs at the situation. \"<i>I'm – it's nice to know that someone likes me.</i>\" She stutters, smiling timidly. \"<i>But, um, we're here to exercise, " + mf(player, "big guy", "babe") + ". We should do that.</i>\" You groan at the sudden cockblock, but you can't really argue. She takes your hand and leads you into the water, but not before you playfully grab a handful of her plush ass.\n\n", false);
 
         outputText("A while later and you've both finished off several laps of the pool, exhausted from your progress. Lottie flashes you a large smile before you part ways, leaving you still somewhat aroused from the experience.", false);
-        outputText(player.modTone(100, 2), false);
+        outputText(modTone(player, 100, 2), false);
         dynStats("lus", 80);
         lottieTone(2);
         lottieMorale(2);

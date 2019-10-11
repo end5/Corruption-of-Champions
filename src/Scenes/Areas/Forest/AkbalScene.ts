@@ -1057,7 +1057,7 @@ export class AkbalScene {
         }
         else if (player.tone > 30) {
             outputText("  Tingling in your sleep, your [butt] jiggles slightly as it softens along with the rest of your body, changed by Akbal's saliva to be a softer, more pleasant fuck.");
-            player.modTone(30, 5);
+            modTone(player, 30, 5);
         }
         player.orgasm();
         dynStats("cor", 5);

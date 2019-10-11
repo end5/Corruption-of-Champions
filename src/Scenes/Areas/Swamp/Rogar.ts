@@ -753,14 +753,14 @@ export class Rogar {
             player.genderCheck();
             // (below max masculinity)
             if (player.femininity > 0) {
-                player.modFem(0, 100);
+                modFem(player, 0, 100);
             }
             // max tone.  Thickness + 50
             if (player.tone < 100) {
-                player.modTone(100, 100);
+                modTone(player, 100, 100);
             }
             if (player.thickness < 100) {
-                player.modThickness(100, 50);
+                modThickness(player, 100, 50);
             }
             if (player.inte > 21) player.inte = 21;
             dynStats("str", 33, "tou", 33, "int", -1, "lib", 4, "lus", 40);

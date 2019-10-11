@@ -960,8 +960,8 @@ export class BunnyGirl {
             player.knockUp(PregnancyStore.PREGNANCY_BUNNY, PregnancyStore.INCUBATION_BUNNY_BABY, 60);
             player.fertility++;
         }
-        outputText(player.modThickness(100, 3));
-        outputText(player.modTone(0, 3));
+        outputText(modThickness(player, 100, 3));
+        outputText(modTone(player, 0, 3));
         player.orgasm();
         dynStats("lib", 1, "sen", -3);
         doNext(camp.returnToCampUseEightHours);

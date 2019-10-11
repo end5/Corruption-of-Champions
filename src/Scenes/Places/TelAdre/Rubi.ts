@@ -529,7 +529,7 @@ export class Rubi extends TelAdreAbstractContent {
         }
         player.gems -= 3;
         rubiAffection(3);
-        player.modThickness(100, 1);
+        modThickness(player, 100, 1);
         if (rubiAffection() >= 30 && flags[kFLAGS.RUBI_ADMITTED_GENDER] == 0) doNext(specialRelationship20scene);
         else doNext(camp.returnToCampUseOneHour);
     }

@@ -445,8 +445,8 @@ export function getWinterPudding(): void {
     outputText("\n\nYou stuff the stodgy pudding down your mouth, the taste of brandy cream sauce and bitter black treacle sugar combining in your mouth.  You can tell by its thick spongy texture that it's far from good for you, so its exclusivity is more than likely for the best.");
     if (player.thickness < 100 || player.tone > 0) {
         // outputText("\n\nYou feel your waist protrude slightly.  Did you just put on a little weight?  It sure looks like it.");
-        outputText(player.modTone(0, 2));
-        outputText(player.modThickness(100, 2));
+        outputText(modTone(player, 0, 2));
+        outputText(modThickness(player, 100, 2));
     }
     outputText("\n\nYou lick your lips clean, savoring the taste of the Winter Pudding.  You feel kinda antsy...");
     // [Decrease player tone by 5, Increase Lust by 20, Destroy item.]

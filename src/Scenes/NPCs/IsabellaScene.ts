@@ -395,8 +395,8 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
         else if (flags[kFLAGS.ISABELLA_MILKED_YET] > 0) flags[kFLAGS.ISABELLA_MILKED_YET] = 0;
         player.slimeFeed();
         // (Chance of thickening body to 75, chance of softening body if PC has a vag)
-        if (rand(2) == 0) outputText(player.modThickness(75, 4), false);
-        if (rand(2) == 0 && player.hasVagina()) outputText(player.modTone(0, 4), false);
+        if (rand(2) == 0) outputText(modThickness(player, 75, 4), false);
+        if (rand(2) == 0 && player.hasVagina()) outputText(modTone(player, 0, 4), false);
         doNext(camp.returnToCampUseOneHour);
     }
 

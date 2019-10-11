@@ -106,7 +106,7 @@ export class Ifris extends TelAdreAbstractContent {
         dynStats("lus", 5);
         // Body changes here
         // Muscleness boost!
-        outputText(player.modTone(85, 5 + rand(5)), false);
+        outputText(modTone(player, 85, 5 + rand(5)), false);
         fatigue(30);
         doNext(camp.returnToCampUseOneHour);
     }
@@ -157,7 +157,7 @@ export class Ifris extends TelAdreAbstractContent {
             if (player.tou < 40) dynStats("tou", .3);
             // Body changes here
             // Muscleness boost!
-            outputText(player.modTone(85, 5 + rand(5)), false);
+            outputText(modTone(player, 85, 5 + rand(5)), false);
             doNext(camp.returnToCampUseOneHour);
             return;
         }
@@ -253,7 +253,7 @@ export class Ifris extends TelAdreAbstractContent {
         player.orgasm();
         // Body changes here
         // Muscleness boost!
-        outputText(player.modTone(85, 5 + rand(5)), false);
+        outputText(modTone(player, 85, 5 + rand(5)), false);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -335,7 +335,7 @@ export class Ifris extends TelAdreAbstractContent {
         player.orgasm();
         // Body changes here
         // Muscleness boost!
-        outputText(player.modTone(85, 5 + rand(5)), false);
+        outputText(modTone(player, 85, 5 + rand(5)), false);
         doNext(camp.returnToCampUseOneHour);
     }
 }
