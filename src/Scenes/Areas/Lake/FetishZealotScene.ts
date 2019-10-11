@@ -95,7 +95,7 @@ export class FetishZealotScene extends AbstractLakeContent {
         // same as before
         if (broseph == "dude") {
             outputText("He starts to look up, but then his gazes fixes directly on your ", false);
-            if (player.cockTotal() > 0) {
+            if (player.cocks.length > 0) {
                 outputText(multiCockDescriptLight(game.player) + ".  You feel yourself grow hard ", false);
                 if (player.hasVagina()) {
                     outputText("and wet ", false);
@@ -113,7 +113,7 @@ export class FetishZealotScene extends AbstractLakeContent {
             outputText("He starts to look up, but his gazes fixes on your skirt, just barely covering your ", false);
             if (player.hasVagina()) {
                 outputText(vaginaDescript(player, 0) + " ", false);
-                if (player.cockTotal() > 0) {
+                if (player.cocks.length > 0) {
                     outputText("and your " + multiCockDescriptLight(game.player) + " ", false);
                 }
             }
@@ -121,9 +121,9 @@ export class FetishZealotScene extends AbstractLakeContent {
                 outputText("bare crotch ", false);
             }
             outputText("from this angle.  You feel hot under his gaze ", false);
-            if (player.cockTotal() > 0) {
+            if (player.cocks.length > 0) {
                 outputText(", and your " + multiCockDescriptLight(game.player) + " start", false);
-                if (player.cockTotal() == 1) {
+                if (player.cocks.length == 1) {
                     outputText("s", false);
                 }
                 outputText(" to get hard, as your ", false);
@@ -149,11 +149,11 @@ export class FetishZealotScene extends AbstractLakeContent {
                 // jerking off contest
                 outputText("He eagerly stands up and wraps his hands around his fine cock, you quickly try to do the same with your " + multiCockDescript(game.player) + ".  \"<i>I won't lose to you so easily, professor!</i>\" he declares to you, \"<i>Don't act so confidently on your first time.</i>\" you reply.  Then the two of you are madly jerking yourselves off in a mad effort to get off before the other, your respective cocks already moist from the blowjobs they just received.  ", false);
                 // just one cock
-                if (player.totalCocks() == 1) {
+                if (player.cocks.length == 1) {
                     outputText("You piston your hands on your " + cockDescript(game.player, 0) + ", ", false);
                 }
                 // nope two
-                else if (player.totalCocks() == 2) {
+                else if (player.cocks.length == 2) {
                     outputText("With one hand on each of your " + multiCockDescriptLight(game.player) + ", you piston them like mad, ", false);
                 }
                 // oh no, is more than that
@@ -178,13 +178,13 @@ export class FetishZealotScene extends AbstractLakeContent {
                     outputText("and move your " + ballsDescriptLight(player) + " out of the way ", false);
                 }
                 outputText("so he has access to your " + vaginaDescript(player, 0) + ".  He sets to work, and you give him careful instructions on where to lick, how hard, and such.  He easily catches on, and soon he is probing all the right places, and giving the right amount of attention to every part of you.  ", false);
-                if (player.cockTotal() > 0) {
+                if (player.cocks.length > 0) {
                     outputText("You give your " + multiCockDescriptLight(game.player) + " a few gentle strokes, wishing he would give that a little attention too, but this is a lesson on how to please a <i>woman</i>.  ", false);
                 }
                 outputText("You feel yourself getting close to the edge and tell him to stop.  He looks up at you uncertain for a moment, and you tell him \"<i>It's time for the main event.</i>\"\n\n", false);
                 // prick in the twat
                 outputText("He eagerly stands up and starts to push you back against your desk, his fine cock already inside your " + vaginaDescript(player, 0) + ".  He pushes you onto your back and grabs ahold of your legs, starting to make strong thrusts deep inside you, his cock seeming to fit your " + vaginaDescript(player, 0) + " perfectly.  Any pretense of professionalism is lost in the moment, as all you can care about is the feeling of his exquisite cock perfectly filling you, pushing in and out.  All too soon, you hear him gasp, and the wonderful feeling of sweet release fills you.  ", false);
-                if (player.cockTotal() > 0) {
+                if (player.cocks.length > 0) {
                     outputText("Your " + multiCockDescriptLight(game.player) + " spasms and covers you with a liberal amount of your own fluids.  ", false);
                 }
                 outputText("After a moment, your student pulls out of you and helps you back up.\n\n", false);
@@ -249,7 +249,7 @@ export class FetishZealotScene extends AbstractLakeContent {
         // Religious Costume Rape
         outputText("The zealot's attire seems to have settled on an outfit similar to those commonly worn by members of religious orders, though you aren't too surprised to see that it has a slit running down the front and back of the outfit that gives you full access to his sizable cock and asshole.\n\n", false);
         // If player has a dick, chose one of these at random if the player has both
-        if (player.cockTotal() > 0 && (player.gender != 3 || rand(2) == 0)) {
+        if (player.cocks.length > 0 && (player.gender != 3 || rand(2) == 0)) {
             outputText("As you move towards him, he drops onto all fours with his head down and ass in the air.  He seems to have started making a prayer: \"<i>Forgive me my lord, for I have failed to protect your holdings and will now accept your punishment by being violated by the one who defeated me.</i>\" ", false);
             if (player.cor < 50) outputText("You stop and stare at him for a moment, in complete disbelief at this bizarre 'prayer'.  You consider just leaving him alone, but sensing your hesitation, the zealot looks up to you with a horrified expression.  \"<i>You must violate me!</i>\"  He cries out to you, \"<i>Please, let me finish my prayer, put your " + cockDescript(game.player, 0) + " in my ass.</i>\"  Well, he did ask you...\n\n", false);
             else outputText("You chuckle at him, he <i>accepts</i> his punishment?  Oh, you are going to enjoy this so much.\n\n", false);
@@ -268,7 +268,7 @@ export class FetishZealotScene extends AbstractLakeContent {
             else outputText("loose", false);
             outputText(" you are, he still seems to fit you like a glove.  With no need to adjust to his presence inside you, you immediately start to roughly fuck him.  To make sure he doesn't enjoy himself too much, you start to twist and pull at his nipples.  Between his gasps of pleasure and pain, he continues his prayer: \"<i>Gah, oh woe is me, ah-gha, my punishment is my pleas- agh!  My eternal torment will be –ugha, never being able to –hah, enjoy this forever.  Ugha!</i>\"  Finally tired of his antics, you punch him in the stomach, as his amazing rod pumping within your " + vaginaDescript(player, 0) + " pushes you over the edge of an orgasm.\n\n", false);
             outputText("Your lusts sated for now, you rise up off of him and put your " + player.armorName + " back on.  You decide to leave him lying there, still coughing from the blow to his stomach.  ", false);
-            player.cuntChange(monster.cockArea(0), true);
+            player.cuntChange(monster.cocks.cockArea(0), true);
         }
         player.orgasm();
         cleanupAfterCombat();

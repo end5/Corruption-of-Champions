@@ -119,7 +119,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 emberRapesYourHeatness();
                 return true;
             }
-            else if (player.hasCock() && player.inRut && !pregnancy.isPregnant && rand(10) == 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
+            else if (player.cocks.length > 0 && player.inRut && !pregnancy.isPregnant && rand(10) == 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                 emberRapesYourHeatness();
                 return true;
             }
@@ -255,10 +255,10 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         // scenes that require Ember to have a cunt
         if (flags[kFLAGS.EMBER_GENDER] >= 2) {
             eatOut = slurpDraggieCunnies;
-            if (player.hasCock() && player.lust >= 33) penetrateHer = penetrateEmbrah;
+            if (player.cocks.length > 0 && player.lust >= 33) penetrateHer = penetrateEmbrah;
         }
         if (player.hasVagina() && player.lust >= 33) getEatenOut = getEatenOutByEmbra;
-        if (player.hasCock() && player.lust >= 33) {
+        if (player.cocks.length > 0 && player.lust >= 33) {
             getBlown = stickDickInKnifeDrawer;
             pitchAnal = stickItInEmbersButt;
         }
@@ -273,7 +273,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         addButton(5, "Get Eaten Out", getEatenOut);
         addButton(6, "Penetrate Her", penetrateHer);
         addButton(7, "Get Penetrated", getPenetrated);
-        if (emberAffection() >= 95 && player.hasCock() && player.cockThatFits(emberVaginalCapacity()) >= 0 && (player.hasItem(consumables.L_DRAFT) || player.lib >= 50 || player.minLust() >= 40))
+        if (emberAffection() >= 95 && player.cocks.length > 0 && player.cocks.cockThatFits(emberVaginalCapacity()) >= 0 && (player.hasItem(consumables.L_DRAFT) || player.lib >= 50 || player.minLust() >= 40))
             addButton(8, "LustyFuck", highAffectionEmberLustFuck);
         addButton(9, "Leave", emberCampMenu);
 
@@ -479,7 +479,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("  As you observe the egg you realize what you had taken for its pulses are actually just its normal color; the egg is actually 'glowing' with a black light!  As you stare, mesmerized, you begin to consider the pleasing contrast that would result if you covered it in your ");
             if (player.gender == 0) outputText("cum, if you had any... ");
             else {
-                if (player.hasCock()) outputText("white ");
+                if (player.cocks.length > 0) outputText("white ");
                 else outputText("glistening girl-");
                 outputText("cum... ");
             }
@@ -703,7 +703,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.gender == 1) {
             outputText("The light of the egg pulses rapidly, throwing strange illumination and shadow over your form as you hastily peel off your [armor], too far gone to recognize the absurdity.  Your heart is racing so fast with excitement, lust, anticipation... it actually matches the tempo of the pulses from the egg, when you care to notice.");
             outputText("\n\nGrabbing your [cock] in your hands, you stand in front of the egg, ");
-            if (player.cockTotal() <= 2) outputText("pumping vigorously.");
+            if (player.cocks.length <= 2) outputText("pumping vigorously.");
             else outputText("wrangling all your shafts together into one awkward bouquet of male organs and furiously stroking and squeezing them as best you can manage");
             outputText(".  The egg's pulsations lure you on, coaxing you to squeeze, pull, thrust, and massage " + sMultiCockDesc(game.player) + " as best you can.  Harder and faster you go, feeling the churning ache from deep inside you.  Finally, with a cry of release, you unleash a ");
             if (player.cumQ() < 100) outputText("trickle");
@@ -739,7 +739,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             // Herm Version (Z)
             outputText("The light of the egg pulses rapidly, throwing strange illumination and shadow over your form as you hastily peel off your [armor], too far gone to recognize the absurdity.  Your heart is racing so fast with excitement, lust, anticipation... it actually matches the tempo of the pulses from the egg, when you care to notice.");
             outputText("\n\nTormented by the need in both your " + multiCockDescriptLight(game.player) + " and your [vagina], you awkwardly straddle the egg's upper surface, allowing you to grind your netherlips against its shell and stroke [eachCock] at the same time.  It is an awkward, herky-jerky act, struggling to avoid falling off... but the sensation so makes up for it.  Your [vagina] slides and grinds against the egg's hard, unyielding shell as your hand tugs and pulls ");
-            if (player.cockTotal() == 1) outputText("your [cock]");
+            if (player.cocks.length == 1) outputText("your [cock]");
             else outputText("as many of your cocks as you can manage to grab without falling off");
             outputText(".  Finally, relentlessly, inexorably, you cum, spraying your semen into the air to spatter back onto the egg, mixing with the girlish juices from your netherlips to soak into the egg's surface, leaving it slick with your mixed sexual fluids.");
             outputText("\n\nIt's no wonder that you finally lose your battle and slip off, landing hard on your back.  You lay there, gasping for air, and are only just starting to breathe normally again when you see what is happening to the egg.  Before your eyes, the pulsations come with incredible rapidity as your sexual fluid literally seeps into the egg's shell.  Then, when every drop has been drunk, the light resumes its normal rhythm.");
@@ -1319,8 +1319,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
     // counter triggered when PC starts an hour in camp at 100 Lust, output when reaching 10 counters
     public emberBitchesAtYouAboutLustiness(): void {
         outputText("\nYou strive to keep your mind focused, but... your libido is screaming at you, ");
-        if (player.hasCock()) {
-            outputText("your " + num2Text(player.cockTotal()) + " stiff as iron");
+        if (player.cocks.length > 0) {
+            outputText("your " + num2Text(player.cocks.length) + " stiff as iron");
             if (player.hasVagina()) outputText(" and ");
         }
         if (player.hasVagina()) outputText("your " + vaginaDescript(player) + " slick and wet with moisture, ready to fuck");
@@ -1480,11 +1480,11 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         let changes: number = 0;
         const changeLimit: number = 2;
         // Gain Dragon Dick
-        if (changes < changeLimit && player.dragonCocks() < player.totalCocks() && rand(3) == 0) {
+        if (changes < changeLimit && player.cocks.dragonCocks() < player.cocks.length && rand(3) == 0) {
             temp = 0;
             const choices: any[] = [];
             let select: number;
-            temp = player.cockTotal();
+            temp = player.cocks.length;
             // Build an array of all the locations for TF'able cocks.
             while (temp > 0) {
                 temp--;
@@ -1675,19 +1675,19 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         }
         if (player.dragonScore() >= 4 && rand(3) == 0 && player.gender > 0) {
             outputText("\n\nA sudden swell of lust races through your ");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText(cockDescript(game.player, 0));
                 if (player.hasVagina()) outputText(" and ");
             }
             if (player.hasVagina()) outputText(vaginaDescript(player));
             outputText(", making you wish Ember hadn't run you off.  All you can think about now is fucking " + emberMF("his", "her") + "; ");
-            if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+            if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                 outputText("filling her womb with your seed and fertilizing her eggs");
                 if (player.hasVagina() && flags[kFLAGS.EMBER_GENDER] == 3) outputText(" even while ");
             }
             if (player.hasVagina() && (flags[kFLAGS.EMBER_GENDER] == 3 || flags[kFLAGS.EMBER_GENDER] == 1)) outputText("taking that hard, spurting cock inside your own " + vaginaDescript(player, 0));
             outputText("... too late, you realize that <b>Ember's blood has sent your draconic body into ");
-            if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+            if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                 outputText("rut");
 
                 player.goIntoRut(false);
@@ -1819,13 +1819,13 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYour earlier promise to behave yourself gets increasingly harder to keep as Ember's show turns you on more and more");
         if (player.gender > 0) {
             outputText("; ");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText("the bulge inside your [armor]");
                 if (player.hasVagina()) outputText(" and ");
             }
             if (player.hasVagina()) outputText("wetness gathering in your own pussy");
             outputText(" more than indicate");
-            if (!player.hasCock() || !player.hasVagina()) outputText("s");
+            if (!player.cocks.length > 0 || !player.hasVagina()) outputText("s");
             outputText(" your desire to break your promise.");
         }
         outputText("\n\nOne of Ember's clawed fingers slowly penetrates her depths, sinking in all the way to the knuckle and drawing a long throaty moan from her.  She sets upon a steady pace; humming with each thrust inside.  Soon, you realize her pumps are becoming shallower and more erratic, until she removes her finger; the egg's outer shell is visible, coming out of her folds.");
@@ -1908,19 +1908,19 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
             if (rand(2) == 0 && player.dragonScore() >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
-                if (player.hasCock()) {
+                if (player.cocks.length > 0) {
                     outputText(cockDescript(game.player, 0));
                     if (player.hasVagina()) outputText(" and ");
                 }
                 if (player.hasVagina()) outputText(vaginaDescript(player));
                 outputText(", making you wish Ember hadn't run you off.  All you can think about now is fucking " + emberMF("his", "her") + "; ");
-                if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+                if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                     outputText("filling her womb with your seed and fertilizing her eggs");
                     if (player.hasVagina() && flags[kFLAGS.EMBER_GENDER] == 3) outputText(" even while ");
                 }
                 if (player.hasVagina() && (flags[kFLAGS.EMBER_GENDER] == 3 || flags[kFLAGS.EMBER_GENDER] == 1)) outputText("taking that hard, spurting cock inside your own " + vaginaDescript(player, 0));
                 outputText("... too late, you realize that <b>Ember's milk has sent your draconic body into ");
-                if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+                if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                     outputText("rut");
 
                     player.goIntoRut(false);
@@ -1966,19 +1966,19 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
             if (rand(2) == 0 && player.dragonScore() >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
-                if (player.hasCock()) {
+                if (player.cocks.length > 0) {
                     outputText(cockDescript(game.player, 0));
                     if (player.hasVagina()) outputText(" and ");
                 }
                 if (player.hasVagina()) outputText(vaginaDescript(player));
                 outputText(", making you wish Ember hadn't run you off.  All you can think about now is fucking " + emberMF("his", "her") + "; ");
-                if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+                if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                     outputText("filling her womb with your seed and fertilizing her eggs");
                     if (player.hasVagina() && flags[kFLAGS.EMBER_GENDER] == 3) outputText(" even while ");
                 }
                 if (player.hasVagina() && (flags[kFLAGS.EMBER_GENDER] == 3 || flags[kFLAGS.EMBER_GENDER] == 1)) outputText("taking that hard, spurting cock inside your own " + vaginaDescript(player, 0));
                 outputText("... too late, you realize that <b>Ember's milk has sent your draconic body into ");
-                if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+                if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                     outputText("rut");
 
                     player.goIntoRut(false);
@@ -2062,19 +2062,19 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
             if (rand(2) == 0 && player.dragonScore() >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
-                if (player.hasCock()) {
+                if (player.cocks.length > 0) {
                     outputText(cockDescript(game.player, 0));
                     if (player.hasVagina()) outputText(" and ");
                 }
                 if (player.hasVagina()) outputText(vaginaDescript(player));
                 outputText(", making you wish Ember hadn't run you off.  All you can think about now is fucking " + emberMF("his", "her") + "; ");
-                if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+                if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                     outputText("filling her womb with your seed and fertilizing her eggs");
                     if (player.hasVagina() && flags[kFLAGS.EMBER_GENDER] == 3) outputText(" even while ");
                 }
                 if (player.hasVagina() && (flags[kFLAGS.EMBER_GENDER] == 3 || flags[kFLAGS.EMBER_GENDER] == 1)) outputText("taking that hard, spurting cock inside your own " + vaginaDescript(player, 0));
                 outputText("... too late, you realize that <b>Ember's milk has sent your draconic body into ");
-                if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+                if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                     outputText("rut");
 
                     player.goIntoRut(false);
@@ -2257,13 +2257,13 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nYou gasp and moan as Ember works into you, feeling " + emberMF("him", "her") + " extending " + emberMF("his", "her") + " prick to its full length and using that as a way to push " + emberMF("himself", "herself") + " ever deeper into your bowels.");
         // (PC has prick:
-        if (player.hasCock()) outputText("  You can feel the dragon's member rubbing against your prostate, making " + sMultiCockDesc(game.player) + " jump to painful erectness, bubble pre-cum, and drool it down the shaft to pool on the ground.");
+        if (player.cocks.length > 0) outputText("  You can feel the dragon's member rubbing against your prostate, making " + sMultiCockDesc(game.player) + " jump to painful erectness, bubble pre-cum, and drool it down the shaft to pool on the ground.");
         // (PC has cunt:
         if (player.hasVagina()) {
             outputText("  The stimulus is starting to make you wet as well, your [vagina] drooling feminine lubricant ");
             if (player.balls > 0) outputText("over your [balls]");
             outputText(" to puddle underneath you");
-            if (player.hasCock()) outputText(", mingling with your pre to form an ever-growing pool of mixed sexual fluids.");
+            if (player.cocks.length > 0) outputText(", mingling with your pre to form an ever-growing pool of mixed sexual fluids.");
         }
 
         outputText("\n\n\"<i>Oh!  I'm going to start moving now...</i>\" Ember says, beginning to pick up the pace and gently rock you with " + emberMF("his", "her") + " increasingly faster thrusts.  Fuck, wasn't " + emberMF("he", "she") + " already?  You groan, long and hollow, deep in your throat, savoring the deep probes.  You try to enjoy yourself, to fully immerse yourself in the sensations, but find yourself dissatisfied.  The dragon just can't seem to pick up a proper tempo, and you beg " + emberMF("him", "her") + " to speed things up, to start really giving it to you... you're not made of glass, and you won't break.");
@@ -2306,8 +2306,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou moan and heave at the feeling of dragon spooge surging into you, swelling your belly with Ember's rich, virile load.  The sensation is incredible, and you can't help but orgasm in turn");
         if (player.gender > 0) outputText(", ");
         if (player.hasVagina()) outputText("your cunt gushing feminine lubricant to glaze Ember's belly");
-        if (player.hasVagina() && player.hasCock()) outputText(" and ");
-        if (player.hasCock()) {
+        if (player.hasVagina() && player.cocks.length > 0) outputText(" and ");
+        if (player.cocks.length > 0) {
             outputText("your cock ");
             if (player.cumQ() < 250) outputText("spurting gouts of cum onto Ember's upper torso");
             else if (player.cumQ() < 1000) outputText("raining spunk across the supine dragon");
@@ -2361,7 +2361,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("prick already hard and throbbing.  The dragon taps a clawed finger idly on the stump, awaiting your attention.");
 
         outputText("\n\nYou swiftly strip off your [armor], lest they be dirtied by what you are about to do, approach, and kneel before " + emberMF("him", "her") + ", reaching out to gently grasp the erect shaft of " + emberMF("his", "her") + " cock.  The lewdness of what you're about to do makes a perverse thrill run through you.");
-        if (player.hasCock()) outputText("  [EachCock] hardens, spearing aimlessly into the ground in your arousal.");
+        if (player.cocks.length > 0) outputText("  [EachCock] hardens, spearing aimlessly into the ground in your arousal.");
         if (player.hasVagina()) outputText("  Your [vagina] starts to seep with feminine juices, your [clit] hardening in anticipation as your excitement dribbles down onto the thirsty ground.");
 
         outputText("\n\n\"<i>J-just get started with it,</i>\" Ember stammers, opening " + emberMF("his", "her") + " legs wider and breathing heavily.");
@@ -2463,11 +2463,11 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         else outputText("coil up on your serpentine tail) and start peeling off the clothes on your lower half, exposing [eachCock] to the air and awaiting Ember's response.");
 
         outputText("\n\nEmber's eyes glow when " + emberMF("his", "her") + " gaze sets on your dick");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(".");
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         const y: number = x + 1;
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  " + emberMF("He", "She") + " selects the biggest cock and gives it a gentle stroke,");
         }
         else outputText("  " + emberMF("He", "She") + " takes your [cock " + y + "] in hand and begins gently stroking it,");
@@ -2592,8 +2592,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.EMBER_GENDER] >= 2) outputText("pussy ");
         outputText("with a hand, while " + emberMF("he", "she") + " suckles on the fingers of the other.");
 
-        let x: number = player.cockThatFits(emberAnalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(emberAnalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
 
         outputText("\n\nOnce " + emberMF("he", "she") + " sees you're fully stripped, " + emberMF("he", "she") + " walks over to you and pushes you on the grassy ground with a growl of lust.  The slick digits of one hand find themselves wrapped around your erect " + cockDescript(game.player, x) + ", while the others press into Ember's tight pucker, slowly stretching it to accommodate you.");
 
@@ -2768,7 +2768,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou ask if she's the only one who gets to initiate the kiss.  Realization dawns on the dragon's face when she recalls the earlier kiss.  \"<i>That... that was... you!  You tricked me!  H-how could you do that?  I'm leaving!</i>\" Ember blurts out, rushing off.");
 
         outputText("\n\nYou watch her go and smile, licking your lips to savor the last few drops of her nectar.  She really should learn to relax; it would make things much more enjoyable all around.  Idly rubbing your own ");
-        if (player.hasCock()) outputText("stiffened shaft");
+        if (player.cocks.length > 0) outputText("stiffened shaft");
         if (player.gender == 3) outputText(" and ");
         if (player.hasVagina()) outputText("moist cunt");
         if (player.gender == 0) outputText("empty crotch");
@@ -2810,13 +2810,13 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText(", displaying your [vagina].  You tell Ember that " + emberMF("he", "she") + "'ll need to make the next move from here, smiling as you do so.");
 
         outputText("\n\nThe dragon crawls towards you and gently brings " + emberMF("his", "her") + " nose closer to your moistening snatch, catching a whiff of your feminine scent");
-        if (player.hasCock()) outputText(", as well as the musk emanating from your drooling cock");
+        if (player.cocks.length > 0) outputText(", as well as the musk emanating from your drooling cock");
         outputText(".  Ember's eyes close as " + emberMF("he", "she") + " savors your scent, committing it to memory and licking " + emberMF("his", "her") + " lips in preparation for the task ahead.");
 
         outputText("\n\nFinally deciding to get about " + emberMF("his", "her") + " task, the dragon licks your moist slit from top to bottom, stopping briefly to kiss your [clit].  \"<i>So good...</i>\" you hear Ember whisper, before " + emberMF("he", "she") + " suddenly plunges " + emberMF("his", "her") + " tongue inside your warm depths, exploring every nook and cranny, much to your pleasure.");
 
         outputText("\n\nYou shudder and moan, feeling your juices dribble from your womanhood onto the dragon's tongue");
-        if (player.hasCock()) outputText(", and pre-cum beginning to bubble out of " + sMultiCockDesc(game.player));
+        if (player.cocks.length > 0) outputText(", and pre-cum beginning to bubble out of " + sMultiCockDesc(game.player));
         outputText(".  You wriggle in delight, praising Ember's skill with " + emberMF("his", "her") + " tongue and begging " + emberMF("him", "her") + " to keep going.");
 
         outputText("\n\nEmber presses on, nudging your pleasure button with " + emberMF("his", "her") + " nose and wrapping your [vagina] with " + emberMF("his", "her") + " ");
@@ -2830,7 +2830,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.wetness() >= 4) outputText("spattering");
         else outputText("drenching");
         outputText(" Ember's face with your feminine honey");
-        if (player.hasCock()) outputText(" even as " + sMultiCockDesc(game.player) + " belches cum all over the preoccupied dragon");
+        if (player.cocks.length > 0) outputText(" even as " + sMultiCockDesc(game.player) + " belches cum all over the preoccupied dragon");
         outputText(".");
 
         outputText("\n\nYour juices flow into Ember's waiting mouth, guided by the dragon's tongue, and " + emberMF("he", "she") + " is only too happy to drink, trying " + emberMF("his", "her") + " best not to waste even a single drop.");
@@ -2901,21 +2901,21 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         let x: number;
         let y: number;
         // If the PC is too big
-        if (player.cockThatFits(emberVaginalCapacity()) == -1) {
+        if (player.cocks.cockThatFits(emberVaginalCapacity()) == -1) {
             outputText("\n\nEmber looks at your " + multiCockDescriptLight(game.player) + ", then touches her pussy in thought.  Finally, she growls in exasperation.  \"<i>");
-            if (player.cockTotal() == 1) outputText("It doesn't ");
+            if (player.cocks.length == 1) outputText("It doesn't ");
             else outputText("None of them ");
             outputText("fit!</i>\"");
 
             outputText("\n\nYou ask if she's certain that it's too big. Shouldn't you at least try?");
 
             outputText("\n\n\"<i>I know my body better than anyone else... and if you put ");
-            if (player.cockTotal() == 1) outputText("that... that... monster inside me,");
+            if (player.cocks.length == 1) outputText("that... that... monster inside me,");
             else outputText("any of those... those... monsters inside me,");
             outputText(" you'll tear me apart!</i>\"  Ember finishes by exhaling a puff of smoke in frustration... clearly she wants this as much as you.");
 
             outputText("\"<i>Find some way to shrink ");
-            if (player.cockTotal() == 1) outputText("that");
+            if (player.cocks.length == 1) outputText("that");
             else outputText("those");
             outputText(" and then come back!</i>\"  Ember turns on her heels and walks away, moodier than usual.");
             doNext(camp.returnToCampUseOneHour);
@@ -2924,9 +2924,9 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         // (else if PC has multiple fit cocks){
         // as usual take the biggest one that fits, unless...
         // If the PC has a fit dragon cock, always take that one!
-        x = player.cockThatFits(emberVaginalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
-        if (player.cockThatFits(emberVaginalCapacity()) >= 0 && player.cockThatFits2(emberVaginalCapacity()) >= 0) {
+        x = player.cocks.cockThatFits(emberVaginalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
+        if (player.cocks.cockThatFits(emberVaginalCapacity()) >= 0 && player.cocks.cockThatFits2(emberVaginalCapacity()) >= 0) {
             outputText("\n\n\"<i>You have quite a selection, but I only need one... this one!</i>\" Ember says, taking your " + cockDescript(game.player, x) + " in her hand and stroking it into a full erection.");
         }
         // (if PC has a dragon cock)
@@ -3102,7 +3102,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.tongueType == TONUGE_HUMAN) outputText("yours ");
         else outputText("your own inhumanly sinuous muscle ");
         outputText("and slithering almost into your throat.  " + emberMF("He", "She") + " kisses you madly, even as " + emberMF("he", "she") + " sinks to " + emberMF("his", "her") + " knees and gently lays you out on the ground, clearly ready to start the sexing.");
-        if (player.hasCock()) outputText("  As if " + emberMF("his", "her") + " hands caressing your cock weren't evidence of that.");
+        if (player.cocks.length > 0) outputText("  As if " + emberMF("his", "her") + " hands caressing your cock weren't evidence of that.");
 
         outputText("\n\nEmber begins by gently probing your [vagina] with " + emberMF("his", "her") + " tip, savoring the heat emanating from your oozing cock-sleeve.  \"<i>Ready for this?</i>\" Ember asks, trembling in barely contained anticipation.  You groan throatily and try to wrap your [legs] around " + emberMF("his", "her") + " hips in hopes of pulling " + emberMF("him", "her") + " into connection with you.  Catching the hint, Ember begins " + emberMF("his", "her") + " slow plunge into your depths.");
 
@@ -3141,7 +3141,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou snarl back softly through your teeth; you're not ready yet!  Well, if " + emberMF("he", "she") + "'s close, then " + emberMF("he", "she") + " needs to go faster, so you can cum too!  You wrap your arms and [legs] jealously around " + emberMF("him", "her") + ", pistoning back and forth with all the speed and force you can muster, using every muscle you can control in your [vagina] to milk and squeeze your draconic lover... yes, yes, just a little more... Ember groans at your sudden movements, faltering and crashing atop you limply as the overwhelming pleasure saps " + emberMF("him", "her") + " of all " + emberMF("his", "her") + " strength.");
 
         outputText("\n\nFrustrated, horny, and almost there, you roll " + emberMF("him", "her") + " over onto " + emberMF("his", "her") + " back and continue to buck... yes, yes, here it is!  You cry out in ecstasy as the waves of pleasure rock and surge through your body; orgasm hits you like a tidal wave, cascading through your nerves and driving you into welcome, blissful release.");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  Your cock explodes, belching cum to ");
             if (player.cumQ() < 250) outputText("spatter");
             else if (player.cumQ() < 1000) outputText("drench");
@@ -3238,7 +3238,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("Oh, your ");
         if (player.hasVagina()) outputText("[vagina]");
         if (player.gender == 3) outputText(" and ");
-        if (player.hasCock()) outputText("[eachCock]");
+        if (player.cocks.length > 0) outputText("[eachCock]");
         outputText(" so yearn");
         if (player.gender == 1 || player.gender == 2) outputText("s");
         outputText(" to take Ember up on " + emberMF("his", "her") + " offer! ...But you are better than this; you are not some mindless animal, a slave to your lusts.  You fight down the arousal gnawing at you and tell Ember you don't want to fuck " + emberMF("him", "her") + ".");
@@ -3307,7 +3307,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText(".  You want to breed!");
 
         // (if PC has a dick)
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nOne of Ember's roaming hands find your erect [cock biggest] and begins stroking, not caring that you're smearing " + emberMF("his", "her") + " body with pre.  While Ember's other hand settles on stroking your thighs, coaxing you to open your legs before aligning " + emberMF("his", "her") + " rock hard shaft with your waiting [vagina].");
         }
         else {
@@ -3324,7 +3324,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.EMBER_GENDER] == 3) outputText("\n\nYour bedroll is growing slick underneath you as lubricant drools from the herm dragon's neglected cunt, her tail thrashing around madly before sliding into the wet orifice to help goad her on in her goal to breed you.  ");
         else outputText("\n\n");
         outputText("You growl throatily, feeling that same need burning inside you. You clutch and claw against the dragon, fingers grasping deeply into " + emberMF("his", "her") + " scaly limbs as you drag, scrape, and thrust yourself against " + emberMF("him", "her"));
-        if (player.hasCock()) outputText(", your neglected [cock] drooling pre-cum that is being smeared all across your belly and " + emberMF("his", "hers") + " with every move you make");
+        if (player.cocks.length > 0) outputText(", your neglected [cock] drooling pre-cum that is being smeared all across your belly and " + emberMF("his", "hers") + " with every move you make");
         outputText(".  Gods, you can feel " + emberMF("him", "her") + " filling you...");
 
         outputText("\n\nEmber huffs and growls with each thrust, until with a roar " + emberMF("he", "she") + " clutches your hips, penetrating you as far as " + emberMF("he", "she") + " can, then blowing " + emberMF("his", "her") + " load deep into your womb.  \"<i>Aah! T-take it all!</i>\" Ember groans.");
@@ -3355,7 +3355,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou are so close now... so close!  Your hands unthinkingly reach out for Ember's, seeking to entwine your fingers with those of the " + emberMF("male", "herm") + " that you know is about to father your child.  You break the kiss, throwing your head back to moan towards the sky as you finally achieve orgasm.");
 
         // (if PC has a dick)
-        if (player.hasCock()) outputText("\n\nYou cum into your chests and bellies, glueing you to the dragon with your thick spunk.  ");
+        if (player.cocks.length > 0) outputText("\n\nYou cum into your chests and bellies, glueing you to the dragon with your thick spunk.  ");
         else outputText("\n\n");
         outputText("Your contracting walls milk the dragon's sensitive cock, trying to coax even more seed out of your panting dragon lover.  \"<i>I-it's time,</i>\" Ember mutters, crashing into your wet bedroll and thrusting deep inside you.");
 
@@ -3386,8 +3386,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         clearOutput();
         // Silently steal her virginity.
         flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT]++;
-        let x: number = player.cockThatFits(emberVaginalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(emberVaginalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("Ember catches you and rolls you around, pinning you to the ground under her.  She smiles at you seductively and reaches down to stroke your " + cockDescript(game.player, x) + ".");
         if (player.balls > 0) outputText("  She then reaches down lower to rub at your cum filled orbs.");
         if (player.hasVagina()) outputText("  The tip of her tail gently teases your slick [vagina] with tiny strokes.");
@@ -3489,8 +3489,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
     // Bred/Breeding Aftermath
     private emberBreedingAfterMathWatchOutForRadioactiveFallout(emberPregged: boolean = true): void {
         clearOutput();
-        let x: number = player.cockThatFits(emberVaginalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(emberVaginalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You wake up, feeling replenished after your exhausting mating session with your draconic lover, and stretch the last few kinks out.  As you do, you realize you're in still in your tent, which is perfectly clean, with no trace of the copious sexual fluids that you and Ember were splattering everywhere before you took your impromptu nap.");
 
         outputText("\n\nLooking around for the dragon, you spot " + emberMF("him", "her") + " seated in a cross-legged position halfway in and out of the tent's door.  Was " + emberMF("he", "she") + " guarding you while you slept?");
@@ -3740,8 +3740,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("\n\nEmber lowers " + emberMF("his", "her") + " head towards your quivering vagina, ");
             if (player.balls > 0) outputText("slowly pushing your [balls]");
-            else if (player.hasCock()) outputText("slowly pushing your " + multiCockDescriptLight(game.player));
-            if (player.balls > 0 || player.hasCock()) outputText(" out of " + emberMF("his", "her") + " way, ");
+            else if (player.cocks.length > 0) outputText("slowly pushing your " + multiCockDescriptLight(game.player));
+            if (player.balls > 0 || player.cocks.length > 0) outputText(" out of " + emberMF("his", "her") + " way, ");
             outputText("then " + emberMF("he", "she") + " blows softly on your contracting love-hole, slowly extending " + emberMF("his", "her") + " tongue to penetrate you.");
 
             outputText("\n\nYou moan in equal parts pleasure and pain, telling " + emberMF("him", "her") + " that " + emberMF("his", "her") + " treatment feels good and is soothing.  \"<i>Please, keep going,</i>\" you plead.  You ask if " + emberMF("he", "she") + " can try to massage your stomach as well, to help relax the tension in your muscles.");
@@ -3825,8 +3825,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("\n\nEmber lowers " + emberMF("his", "her") + " head towards your quivering [vagina], ");
             if (player.balls > 0) outputText("slowly pushing your [balls]");
-            else if (player.hasCock()) outputText("slowly pushing your " + multiCockDescriptLight(game.player));
-            if (player.balls > 0 || player.hasCock()) outputText(" out of " + emberMF("his", "her") + " way, ");
+            else if (player.cocks.length > 0) outputText("slowly pushing your " + multiCockDescriptLight(game.player));
+            if (player.balls > 0 || player.cocks.length > 0) outputText(" out of " + emberMF("his", "her") + " way, ");
             outputText("then " + emberMF("he", "she") + " blows softly on your contracting love-hole, slowly extending " + emberMF("his", "her") + " tongue to penetrate you.");
 
             outputText("\n\nYou moan in equal parts pleasure and pain, telling " + emberMF("him", "her") + " that " + emberMF("his", "her") + " treatment feels good and is soothing. \"<i>Please, keep going,</i>\" you plead.  You ask if " + emberMF("he", "she") + " can try to massage your stomach as well, to help relax the tension in your muscles.");
@@ -3882,8 +3882,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
     private highAffectionEmberLustFuck(): void {
         clearOutput();
-        let x: number = player.cockThatFits(emberVaginalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(emberVaginalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You strip your [armor] and watch Ember as " + emberMF("he", "she") + " appraises your naked body.  You can see " + emberMF("his", "her"));
         if (flags[kFLAGS.EMBER_GENDER] == 1 || flags[kFLAGS.EMBER_GENDER] == 3) {
             outputText(" dragon cock ");
@@ -3895,7 +3895,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText(".");
 
         outputText("\n\n\"<i>Mmm... now that's a view and a half; just look at you... what a gorgeous " + mf(player, "man", "girl") + ", with such ");
-        if (player.cockTotal() == 1) outputText("a wonderful " + cockDescript(game.player, 0));
+        if (player.cocks.length == 1) outputText("a wonderful " + cockDescript(game.player, 0));
         else outputText(" wonderful cocks");
         outputText("... and you're all mine, here and now,</i>\" " + emberMF("he", "she") + " croons appreciatively, giving you a lewd wink and flick of " + emberMF("his", "her") + " tongue.  \"<i>Still, while I'm enjoying the view, don't keep a " + emberMF("guy", "girl") + " in suspense; what do you have planned?</i>\" " + emberMF("he", "she") + " asks, tail flicking from side to side in an amused manner.");
 
@@ -3955,7 +3955,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\n\"<i>Oh... oh, Marae, I feel so full, so stuffed with my mate's cock... it feels great,</i>\" he moans, though you're well aware of the tinge of pain in his voice, the grimace of discomfort on his face.");
             outputText("\n\nConsidering what he has ahead of himself, you hope he won't be too sore by the time you're done.");
         }
-        else if (player.cockTotal() == 1) {
+        else if (player.cocks.length == 1) {
             outputText("\n\n\"<i>Alright, my mate; I hope you'll find my body as pleasing as I'll find yours - use me until we're both as sated as we can be,</i>\" she says, giggling and giving you a girlish pout at her words.");
 
             outputText("\n\nThat's exactly what you intend to do.  You run a hand over her ass, gently fingering her wet pussy with your thumb.  She lets out a humming noise of appreciation, shivering gently, but stays quiet and still, brushing your [leg] with her long, smooth tail.");
@@ -3977,7 +3977,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         // else if Ember has a pussy and the PC more than one cock:
         else {
             outputText("\n\nEmber's eyes are fixated on [eachCock], and she swallows softly.  Embarrassed, she says, \"<i>P-perhaps you'd like to use ");
-            if (player.cockTotal() == 2) outputText("both");
+            if (player.cocks.length == 2) outputText("both");
             else outputText("two");
             outputText(" of those?  I-I know it's not exactly part of the pose and all, but...</i>\"");
 
@@ -3999,7 +3999,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText(".");
 
             outputText("\n\nThe feeling of having ");
-            if (player.cockTotal() == 2) outputText("both ");
+            if (player.cocks.length == 2) outputText("both ");
             else outputText("two of ");
             outputText("your cocks enveloped in slick tightness and warmth is almost enough to make you fill her up with your seed right then and there, but somehow you manage to hold on.");
 
@@ -4012,9 +4012,9 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou take Ember's legs and support them over your shoulders.  This allows you to hug around them and slide your hips even closer to " + emberMF("him", "her") + ".  Eyes glittering with wanton lust, unabashed in " + emberMF("his", "her") + " naked desire for you, the dragon braces " + emberMF("him", "her") + "self against the leafy bedding of " + emberMF("his", "her") + " den and waits for you to begin, fingers rustling through the leaves and grass.");
 
         outputText("\n\nYou begin humping away, slowly at first, but quickly speeding your tempo until the cave is flooded with the noise of your crotch slapping against " + emberMF("his butt", "her soft folds") + ".  Ember groans and gasps, thrusting " + emberMF("his", "her") + " ass back against you, " + emberMF("his ass", "her cunt"));
-        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cockTotal() > 1) outputText(" and ass");
+        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cocks.length > 1) outputText(" and ass");
         outputText(" rippling and squeezing your intruding member");
-        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cockTotal() > 1) outputText("s");
+        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cocks.length > 1) outputText("s");
         outputText(".");
 
         outputText("\n\nHearing your dragon mate's moans of approval you redouble your efforts at pistoning into " + emberMF("him", "her") + ", giving that tight ");
@@ -4027,7 +4027,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou penetrate " + emberMF("him", "her") + " once, twice and finally hilt as much of your " + cockDescript(game.player, x) + " as you can inside " + emberMF("his", "her"));
         if (flags[kFLAGS.EMBER_GENDER] >= 2) {
             outputText(" slick pussy");
-            if (player.cockTotal() > 1) outputText(" and tight ass");
+            if (player.cocks.length > 1) outputText(" and tight ass");
         }
         else outputText(" tight ass");
         outputText(" and blow your load.");
@@ -4044,16 +4044,16 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("leaving " + emberMF("him", "her") + " gasping for breath as the climax ebbs away.");
 
         outputText("\n\nThe two of you pant in unison, it takes only a few moments of getting your breath back before you pull out of " + emberMF("his", "her") + " hole");
-        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cockTotal() > 1) outputText("s");
+        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cocks.length > 1) outputText("s");
         outputText(", letting a satisfying stream of white mat the leaves below.  You smile at Ember, shaft");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" still flagging above " + emberMF("him", "her") + ".");
 
         outputText("\n\n\"<i>Still not satisfied?</i>\" " + emberMF("he", "she") + " croons, tenderly brushing your cheek.  Then " + emberMF("his", "her") + " lips curl into a wicked, fang-baring grin.  \"<i>Good.  Neither am I.  Time for round two...</i>\"  " + emberMF("He", "She") + " wriggles about under you, repositioning " + emberMF("him", "her") + "self so that " + emberMF("he", "she") + " is on " + emberMF("his", "her") + " hands and knees, tail curled back out of the way and looking over " + emberMF("his", "her") + " shoulder under " + emberMF("his", "her") + " wing at you.  \"<i>Well?  What are you waiting for, an engraved invitation?</i>\" " + emberMF("he", "she") + " teases you.  A shake of the hips makes it quite clear " + emberMF("he", "she") + " is expecting you to take " + emberMF("him", "her") + " from behind, now.");
 
         outputText("\n\nYou caress " + emberMF("his", "her") + " tail, as " + emberMF("he", "she") + " wraps it lovingly around you, and then unceremoniously drive yourself back into " + emberMF("his", "her") + " still loose ");
         if (flags[kFLAGS.EMBER_GENDER] == 1) outputText("ass");
-        else if (player.cockTotal() == 1) outputText("pussy");
+        else if (player.cocks.length == 1) outputText("pussy");
         else outputText("holes");
         outputText(" with a squelch.  It feels so good... taking " + emberMF("him", "her") + " one time after the other.");
 
@@ -4061,23 +4061,23 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nYou start at a steady rhythm.  Ember moans below you, " + emberMF("his", "her") + " chest vibrating with " + emberMF("his", "her") + " rumbling purr.  " + emberMF("He", "She") + " moves in tandem with your own thrusts, helping you drive in and out of " + emberMF("his", "her") + " ");
         if (flags[kFLAGS.EMBER_GENDER] == 1) outputText("ass");
-        else if (player.cockTotal() == 1) outputText("pussy");
+        else if (player.cocks.length == 1) outputText("pussy");
         else outputText("holes");
         outputText(".  The wet squelching of your hips slapping against each other resounds in the den, much to your enjoyment.  \"<i>Mmm, so good... but, can't you go any harder?  Come on, my mate; I'm a dragon, not some powderpuff princess type - this is one " + emberMF("guy", "princess") + " who can most definitely take it,</i>\" " + emberMF("he", "she") + " growls to you in " + emberMF("his", "her") + " pleasure, moaning lewdly and clenching you with each stroke inside of " + emberMF("him", "her") + ".");
 
         outputText("\n\nYou do as " + emberMF("he", "she") + " suggests and begin driving yourself in and out of " + emberMF("him", "her") + " with more intensity.  \"<i>Harder!  Give it to me harder!</i>\" " + emberMF("he", "she") + " snaps.  You redouble your efforts, huffing with each hip-shaking thrust into your dragon mate.  \"<i>Ah!  Just like that.  Show me that you own me, just like I own you.  Ugh!  Show me what a powerful champion you are.  Hmm!  So powerful that you can bend over a dragon like me and fuck me silly.  [name], I love you so much...</i>\" " + emberMF("he", "she") + " trails off into a rumbling purr.  Enflamed by " + emberMF("his", "her") + " encouraging words you grip " + emberMF("him", "her") + " with all your might and thrust into " + emberMF("him", "her") + ".  You'd be worried about hurting " + emberMF("him", "her") + " if it weren't for " + emberMF("his", "her") + " lewd moans at your roughness as " + emberMF("he", "she") + " does " + emberMF("his", "her") + " best to push back against you.");
 
         outputText("\n\nYou feel something pop inside you, and you lean over the moaning dragon below, biting " + emberMF("his", "her") + " back as you ejaculate inside once more.  Spurt after spurt of cum jets inside " + emberMF("his", "her") + " willing hole");
-        if (flags[kFLAGS.EMBER_GENDER] >= 1 && player.cockTotal() > 1) outputText("s");
+        if (flags[kFLAGS.EMBER_GENDER] >= 1 && player.cocks.length > 1) outputText("s");
         outputText(".  The dragon lets out an exultant cry as " + emberMF("his", "her") + " cum-slimed ");
         if (flags[kFLAGS.EMBER_GENDER] == 1) outputText("ass squeezes");
-        else if (player.cockTotal() == 1) outputText("pussy squeezes");
+        else if (player.cocks.length == 1) outputText("pussy squeezes");
         else outputText("holes squeeze");
         outputText(" you, milking your ");
         if (flags[kFLAGS.EMBER_GENDER] == 1) outputText("shaft as his cock spurts dragon-seed onto the leaves below him, filling the air with the scent of spunk and matting them into a steaming morass.");
         // {twin shafts} as {her cunt spasms wetly, drenching your lap with fresh femcum} {and/or} {[her] cock spurts dragon-seed onto the leaves below {her}, filling the air with the scent of spunk and matting them into a steaming morass}
         else {
-            if (player.cockTotal() == 1) outputText("shaft as her cunt spasms wetly, drenching your lap with fresh femcum");
+            if (player.cocks.length == 1) outputText("shaft as her cunt spasms wetly, drenching your lap with fresh femcum");
             else outputText("twin shafts as her cunt spasms wetly, drenching your lap with fresh femcum");
             if (flags[kFLAGS.EMBER_GENDER] == 3) outputText(" and her cock spurts dragon seed onto the leaves below her, filling the air with the scent of spunk and matting them into a steaming morass");
             outputText(".");
@@ -4102,9 +4102,9 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         }
 
         outputText("\n\nEmber crawls over towards you, gripping the base of your shaft");
-        if (player.cockTotal() > 1 && flags[kFLAGS.EMBER_GENDER] >= 2) outputText("s");
+        if (player.cocks.length > 1 && flags[kFLAGS.EMBER_GENDER] >= 2) outputText("s");
         outputText(" tenderly yet firmly, stroking you slowly.  \"<i>I can't believe how hot I get when I see you sporting ");
-        if (player.cockTotal() == 1) outputText("this");
+        if (player.cocks.length == 1) outputText("this");
         else outputText("these");
         outputText(".  It's just so... intoxicating... your scent, the way you look at me, everything really.</i>\"  You pat Ember's head");
         if (flags[kFLAGS.EMBER_ROUNDFACE] == 1 || flags[kFLAGS.EMBER_HAIR] > 0) {
@@ -4113,7 +4113,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             else outputText("hair");
         }
         outputText(".  " + emberMF("He", "She") + " leans against your hand, hugging your midriff and letting your shaft");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" brush against " + emberMF("his", "her") + " cheek.");
 
         outputText("\n\nThe dragon smiles at you, and then Ember opens " + emberMF("his", "her") + " mouth, letting " + emberMF("his", "her") + " inhuman tongue slither out and out.  With lovingly lavish strokes it slides up and down your [cock biggest]'s length, cleaning it of your ");
@@ -4129,15 +4129,15 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou advance on " + emberMF("him", "her") + ", roughly gripping " + emberMF("his", "her") + " butt and spreading " + emberMF("his", "her") + " cheeks, as you plunge yourself back into " + emberMF("his", "her") + " ");
         if (flags[kFLAGS.EMBER_GENDER] == 1) outputText("depths");
         else outputText("nethers");
-        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cockTotal() > 1) outputText(" and depths");
+        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cocks.length > 1) outputText(" and depths");
         outputText(".  \"<i>Ahn.  D-deeper...</i>\"  You hook your arm under " + emberMF("his", "her") + " knee and pull " + emberMF("his", "her") + " leg up, nearly throwing the dragon off balance.  \"<i>Ah!  D-do you like it when I let you take charge?  Ugh- oh!  Well, I think maybe I kind of like letting you be in charge, too...</i>\"  You barely pay attention to " + emberMF("his", "her") + " teasing remarks, instead focusing on exploring " + emberMF("his", "her") + " cummy ");
         if (flags[kFLAGS.EMBER_GENDER] == 1) outputText("ass");
-        else if (player.cockTotal() == 1) outputText("pussy");
+        else if (player.cocks.length == 1) outputText("pussy");
         else outputText("love-holes");
         outputText(".  \"<i>Uhn... yes...  take me again.</i>\"  " + emberMF("He", "She") + " lets " + emberMF("his", "her") + " tongue loll out as " + emberMF("he", "she") + " pants in pleasure.");
 
         outputText("\n\nMoans fit to make a whore blush spill from Ember's throat as " + emberMF("he", "she") + " eagerly grinds and thrusts against you.  " + emberMF("His", "Her") + " inner walls grip and squeeze around ");
-        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cockTotal() > 1) outputText("both of your dicks");
+        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cocks.length > 1) outputText("both of your dicks");
         else outputText("your dick");
         if (flags[kFLAGS.EMBER_GENDER] >= 2) outputText(", moisture drenching the cock buried in her cunt as it slobbers greedily across your burning flesh.");
         if (flags[kFLAGS.EMBER_GENDER] == 1 || flags[kFLAGS.EMBER_GENDER] == 3) outputText("  " + emberMF("His", "Her") + " cock throbs and pulsates, ripples of arousal giving way to cumvein-bulging jets that shoot from " + emberMF("his", "her") + " prick to splatter wetly against the wall.");
@@ -4154,14 +4154,14 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nEmber's orgasm forces your own.  You spew wave after wave of liquid love into " + emberMF("his", "her") + " used ");
 
         if (flags[kFLAGS.EMBER_GENDER] == 1) outputText("ass");
-        else if (player.cockTotal() == 1) outputText("pussy");
+        else if (player.cocks.length == 1) outputText("pussy");
         else outputText("love-holes");
         outputText(", feeling the excess slide out around your cock");
-        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cockTotal() > 1) outputText("s");
+        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cocks.length > 1) outputText("s");
         outputText(".  \"<i>Ahh... more seed from my lover...</i>\" " + emberMF("he", "she") + " whispers, nearly passing out from the pleasure.  You feel yourself grow dizzy with pleasure and tumble onto the soft grass covering the den's floor, bringing Ember along.  Your dick");
-        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cockTotal() > 1) outputText("s");
+        if (flags[kFLAGS.EMBER_GENDER] >= 2 && player.cocks.length > 1) outputText("s");
         outputText(" slide");
-        if (player.cockTotal() == 1) outputText("s");
+        if (player.cocks.length == 1) outputText("s");
         outputText(" out of " + emberMF("his", "her") + " with a wet slurp, allowing your deposit to leak its way under your prone forms.");
 
         outputText("\n\nYou both take a few moments to catch your breath, before Ember rolls over to look at you.  " + emberMF("He", "She") + " extends a clawed hand to lightly brush your cheek.  \"<i>[name]... you really know how to make a dragon feel loved...</i>\"  You return the gesture, telling " + emberMF("him", "her") + " it's easy when a dragon seems to love you just as much.  Ember smiles adoringly at you.  \"<i>Hey, can I ask you something, [name]?</i>\"  You indicate that it's okay.  \"<i>I want to be with you... hold you for a little while... is it okay if we do that?</i>\"");
@@ -4189,8 +4189,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
     // [=Yes=]
     private stayWithEmberAfterLustFuck(): void {
         clearOutput();
-        let x: number = player.cockThatFits(emberVaginalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(emberVaginalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("With a smile, you tell " + emberMF("him", "her") + " that you'd be happy to.  \"<i>Great, come here...</i>\" " + emberMF("he", "she") + " croons, scooting over towards you.  You open your arms and allow the dragon to snuggle up against you, folding your arms comfortably under " + emberMF("his", "her") + " wings.");
 
         // If Ember is male:
@@ -4248,7 +4248,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
     // Frotting:
     private frottingWithEmber(clear: boolean = true): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         if (clear) clearOutput();
         else outputText("\n\n");
         outputText("Ember thrusts against your shaft; the ridges of " + emberMF("his", "her") + " dick stimulate your " + cockDescript(game.player, x) + " and you moan at the feeling.  \"<i>Come on, [name].  Are you going to make me do all the work?</i>\" " + emberMF("he", "she") + " teases you.  You slowly stroke your shaft against " + emberMF("his", "hers") + ", asking just what " + emberMF("he", "she") + " has in mind; wasn't " + emberMF("he", "she") + " planning on taking a breather?");
@@ -4293,8 +4293,8 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
     private penetrateWithEmber(clear: boolean = true): void {
         if (clear) clearOutput();
         else outputText("\n\n");
-        let x: number = player.cockThatFits(emberVaginalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(emberVaginalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("\"<i>Go on.</i>\"  She moves her arms around you and into a hug.  \"<i>Enter me.</i>\"  With no further prelude needed, you slide yourself into the damp interior of her cunt, the organ eagerly accepting you back for the fourth time.");
 
         outputText("\n\nEmber embraces you tightly, caressing your sides with her clawed hand, always careful not to hurt you.  \"<i>This feels so right... but do try to be gentle, I'm still a bit sore from earlier,</i>\" she croons, kissing your cheek.  You gently play with her breasts");

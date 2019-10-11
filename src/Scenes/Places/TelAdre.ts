@@ -138,7 +138,7 @@ export class TelAdre {
     }
 
     public telAdreMenu(): void {
-        if (flags[kFLAGS.VALENTINES_EVENT_YEAR] < date.fullYear && player.balls > 0 && player.hasCock() && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 4 && flags[kFLAGS.TIMES_MET_SCYLLA_IN_ADDICTION_GROUP] > 0 && isValentine()) {
+        if (flags[kFLAGS.VALENTINES_EVENT_YEAR] < date.fullYear && player.balls > 0 && player.cocks.length > 0 && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 4 && flags[kFLAGS.TIMES_MET_SCYLLA_IN_ADDICTION_GROUP] > 0 && isValentine()) {
             crazyVDayShenanigansByVenithil();
             return;
         }
@@ -301,7 +301,7 @@ export class TelAdre {
                 clit = clitPierce;
         }
         let dick: () => void = null;
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             if (player.cocks[0].pierced == 0)
                 dick = dickPierce;
         }
@@ -338,7 +338,7 @@ export class TelAdre {
 
     private dickPierce(): void {
         spriteSelect(63);
-        if (player.totalCocks() > 0) outputText("\"<i>Ok, this is gonna hurt a LOT, but I've heard good things about it.  What kind of piercing do you want done?</i>\" Yara asks.", true);
+        if (player.cocks.length > 0) outputText("\"<i>Ok, this is gonna hurt a LOT, but I've heard good things about it.  What kind of piercing do you want done?</i>\" Yara asks.", true);
         else {
             outputText("You realize you don't have a dick to pierce.  Whoops!  Better pick something else...", true);
             doNext(pierceMenu);
@@ -773,7 +773,7 @@ export class TelAdre {
             return;
         }
         // Dudes
-        else if (piercingLoc == 1 && (player.cockThatFits(36) >= 0 || flags[kFLAGS.HYPER_HAPPY])) {
+        else if (piercingLoc == 1 && (player.cocks.cockThatFits(36) >= 0 || flags[kFLAGS.HYPER_HAPPY])) {
             yaraSex(false);
             return;
         }
@@ -789,7 +789,7 @@ export class TelAdre {
             if (player.vaginas[0].clitPierced > 0) clit = removeClitPierce;
         }
         let dick: () => void = null;
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             if (player.cocks[0].pierced > 0) dick = removeCockPierce;
         }
         let ears: () => void = null;
@@ -1269,10 +1269,10 @@ export class TelAdre {
             katherine.catMorphIntr();
         }
         //Scylla - requires dungeon shut down
-        if(player.totalCocks() > 0 && player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) {
+        if(player.cocks.length > 0 && player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) {
             //Scylla repeat
             //big dick!
-            if(player.longestCockLength() >= 12) {
+            if(player.cocks.longestCockLength() >= 12) {
                 if(flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] == 0) {
                     outputText("\n\nThere is one nun sitting in a corner booth who catches your eye.  She sits straight-backed against the dark, wood chair, her thin waist accentuating the supple curve of her breasts. She's dressed in a black robe that looks a few sizes too small for her hips and wears a black and white cloth over her head.", false);
                     misc1 = scylla.talkToScylla;
@@ -1333,7 +1333,7 @@ export class TelAdre {
         if(!urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] != 1 && game.time.hours < 15) {
             //Scylla + Urta sitting in a tree
             // SOME COMFORT     FUCKED URTA      NOT PISSED      DRUNK TIME    SCYLLA TO LV4    RANDOM CHANCE  HAS THIS HAPPENED BEFORE? SCYLLA REQS ->
-            if(flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 2 && flags[kFLAGS.TIMES_FUCKED_URTA] > 0 && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] < 1 && (urta.urtaDrunk() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && rand(3) == 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] == 0 || (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] > 0)) && ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0 && !urta.urtaDrunk()) || player.balls > 0) && player.totalCocks() > 0 && misc1Name != "Scylla") {
+            if(flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 2 && flags[kFLAGS.TIMES_FUCKED_URTA] > 0 && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] < 1 && (urta.urtaDrunk() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && rand(3) == 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] == 0 || (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] > 0)) && ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0 && !urta.urtaDrunk()) || player.balls > 0) && player.cocks.length > 0 && misc1Name != "Scylla") {
                 if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) {
                     outputText("\n\nUrta's usual place is vacant, though her table still holds a half-drank glass of water.  If it's anything like the last time this happened, she's snuck into a back room with Scylla to relieve some pressure.  It might not hurt to join in...", false);
                 }
@@ -1432,7 +1432,7 @@ export class TelAdre {
         outputText("", true);
         spriteSelect(61);
         outputText("Victoria nods and pulls a measuring tape off her shoulder.  She moves around you with practiced ease, taking measurements from every conceivable angle.  Thanks to her small stature, it's quite easy for her to take your inseam measurement, though Vicky manages to ", false);
-        if (player.biggestCockArea() > 30 || player.totalCocks() > 1) outputText("fondle your bulging package", false);
+        if (player.cocks.biggestCockArea() > 30 || player.cocks.length > 1) outputText("fondle your bulging package", false);
         else if (player.hasVagina()) outputText("rub against your outer lips", false);
         else outputText("slip a finger along your crotch", false);
         outputText(" more than a few times.  You could swear you catch her licking her lips when she stands up, but she quickly turns away, saying, \"<i>I've got one in the back that should fit perfectly!  Be right with you!</i>\"\n\n", false);
@@ -1445,7 +1445,7 @@ export class TelAdre {
             return;
         }
         // Go to debit/update function or back to shop window
-        if (player.hasCock() && player.lust >= 33)
+        if (player.cocks.length > 0 && player.lust >= 33)
             simpleChoices("Yes", curry(debitClothes, itype), "No", tailorShoppe, "", null, "", null, "Flirt", curry(flirtWithVictoria, itype));
         else doYesNo(curry(debitClothes, itype), tailorShoppe);
     }
@@ -1655,7 +1655,7 @@ export class TelAdre {
         outputText("", true);
         // [Buy LifeTime Membership]
         outputText("You fish into your pouches and pull out 500 gems, dumping them into the centaur's hands.  Her eyes widen as she turns and trots towards a counter in the back.  She leans over as she counts, giving you a generous view down her low-cut top at the cleavage she barely bothers to conceal.", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  It brings a flush to your face that has nothing to do with exercise.  Maybe you'll be able to con her into some alone time later?", false);
             dynStats("lus", (10 + player.lib / 10));
         }
@@ -1815,9 +1815,9 @@ export class TelAdre {
     private letsDoYaraSex(girl: boolean = true): void {
         spriteSelect(63);
         outputText("", true);
-        let x: number = player.cockThatFits(36);
+        let x: number = player.cocks.cockThatFits(36);
         if (flags[kFLAGS.HYPER_HAPPY]) {
-            x = player.cockThatFits(50000);
+            x = player.cocks.cockThatFits(50000);
         }
         else if ((x == -1) && !girl)  // No cock that fits
         {
@@ -1838,7 +1838,7 @@ export class TelAdre {
         outputText(", neatly silencing you with the lust-filled fires simmering in her eyes.  \"<i>Call it quality testing,</i>\" she purrs.  Her free hand runs up and down your inner thigh, the ticklish teasing nearly making your head spin.  Licking her lips in anticipation, Yara wiggles out of her clothes and clambers onto the chair, kneeling on the armrests.  Due to her awkward posture, you find your gaze drifting to her wide-spread legs.  Nestled there, twinkling with a radiant luster, is a golden ring, looped through her already-throbbing clit.  A blush darkens her cheeks as she notices your stare, but she seems almost empowered by it.\n\n", false);
 
         outputText("Yara's free hand slides down her belly - past the stud in her navel - down to her box.  Using two fingers, she spreads her lips apart, giving you a great view of both her glistening button-piercing and the fleshy recesses past it.  She bites her bottom lip gently", false);
-        if (!girl && player.hasCock()) outputText(" as your " + cockDescript(game.player, x) + " rises to attention, her eyes fixed upon the stiffened tool.  You resist the urge to grab her thin-yet-girlish hips and power into her right then and there, curious enough to allow her teasing.", false);
+        if (!girl && player.cocks.length > 0) outputText(" as your " + cockDescript(game.player, x) + " rises to attention, her eyes fixed upon the stiffened tool.  You resist the urge to grab her thin-yet-girlish hips and power into her right then and there, curious enough to allow her teasing.", false);
         else outputText(" as a growing puddle of love stains the cushioned chair.  It takes most of your power to not drag her down and force her face into your box.", false);
         outputText("\n\n", false);
 
@@ -1852,7 +1852,7 @@ export class TelAdre {
         outputText("  She scoots forward a bit, dragging her soaking cunt down your chest in an effort to reach your crotch.\n\n", false);
 
         // male
-        if (!girl && player.hasCock()) {
+        if (!girl && player.cocks.length > 0) {
             outputText("Yara's pursed lips touch down upon your cockhead, her head tilting from side to side as she vexingly and repeatedly kisses your " + cockDescript(game.player, x) + ".  However, she abruptly pauses, glancing sidelong at you expectantly.  When you don't immediately respond, she huffs a sigh - onto your dick - and raises her hips level with your nose.  After momentarily getting lost in the bouncing of her tight-yet-jiggly cheeks, you get the message, leaning forward and giving her puffy sex a long and lingering lick.  You're rewarded with a low-pitched and very satisfied groan.  Though you go in for another taste, the shining ring looped through her joy-buzzer attracts your oral attention like a magnet.  Gently as a newborn kitten, your teeth close down on the clit-embedded trinket.  Yara goes absolutely stiff as you begin to softly tug the piercing around, neatly paralyzed by the sensitivity.  Indistinguishable mewling tumbles from her mouth as she attempts to attune herself to your yanking antics.  Her lithe frame spasms in ecstasy, forcing you to release your grip on her, lest something unfortunate happen to her undercarriage.\n\n", false);
 
             outputText("As soon as you release her from the mind-numbing grasp, she whips her hips forward - spattering your " + player.armorName + " with her downpour of girlcum in the process - and leaning back, hastily lining herself up with your " + cockDescript(game.player, x) + ".  Only hesitating for a second to leak a bit of lubricant onto your eager shaft, she plummets downwards, not stopping until her ass slams against your pelvis.\n\n", false);
@@ -1904,7 +1904,7 @@ export class TelAdre {
         dynStats("lus", (10 + player.lib / 10));
 
         // Brain no want to work out the boolean logic shit here, broken out to ensure it will work as intended.
-        if (player.cockTotal() == 0) {
+        if (player.cocks.length == 0) {
             outputText("Sorry, but you don't look like you'd be much fun.");
             outputText("</i>\"");
             doNext(armorShop);
@@ -1916,7 +1916,7 @@ export class TelAdre {
             doNext(armorShop);
             return;
         }
-        else if (player.cockThatFits(75) == -1 && !flags[kFLAGS.LOW_STANDARDS_FOR_ALL]) {
+        else if (player.cocks.cockThatFits(75) == -1 && !flags[kFLAGS.LOW_STANDARDS_FOR_ALL]) {
             outputText("Sorry, but you don't look like you'd be much fun.");
             outputText("</i>\"");
             doNext(armorShop);
@@ -1941,16 +1941,16 @@ export class TelAdre {
         spriteSelect(64);
         clearOutput();
         // X = cock that fits!
-        let x: number = player.cockThatFits(75);
+        let x: number = player.cocks.cockThatFits(75);
         if (x < 0) x = 0;
         // Used for the new cock stuff
         const y: number = x + 1;
         outputText("You walk over to the door and find a sign hanging in front of the window.  The side facing indoors has 'out' on it.  There's also a 'closed' sign hanging to the side of the doorframe.  You take the simple wood plaque in hand and flip it over - can't have anybody walking in on your sexual hijinks, can you?");
         outputText("\n\nA fuzzy, calloused hand grabs you by the scuff of the neck, lifts you off the ground and pushes you against the wall, slamming you into it forcefully enough that some weapons hanging nearby rattle dangerously.  A hot puff of breath hits your cheek, Yvonne's wet, canine nose bumping against your ear as she pants in your face.  She closes, and you feel her bare, sweat-soaked breasts sliding up and down your back, holding you up as firmly as her iron grip.  Yvonne's long, smooth tongue licks you from collarbone to chin, lapping up the sweat that's already starting to bead, the heat of the simmering forge-fires and your companion's well-warmed, powerful frame long since getting to you.");
         outputText("\n\nA distinctly feminine scent wafts up to your nostrils, intermingled with the blacksmith's own pungent body-odor, strong enough to make your head swim.  Yvonne's free hand begins removing your [armor], the blacksmith's confident motions suggesting she's had plenty of experience at this.  The aroma of the super-stacked bitch's estrus increases to the point where it nearly overpowers her salty sweat-smell, her nipples pressing hard into your back.  [EachCock] grows hard from the forceful attention, pinned between the wall and your belly.  Finished with your gear, Yvonne nips your neck and says, \"<i>Nice package, ");
-        if (player.cockArea(x) < 20) outputText("runt");
-        else if (player.cockArea(x) < 40) outputText(mf(player, "boy", "girl"));
-        else if (player.cockArea(x) < 60) outputText("big " + mf(player, "boy", "girl"));
+        if (player.cocks.cockArea(x) < 20) outputText("runt");
+        else if (player.cocks.cockArea(x) < 40) outputText(mf(player, "boy", "girl"));
+        else if (player.cocks.cockArea(x) < 60) outputText("big " + mf(player, "boy", "girl"));
         else outputText(mf(player, "stud", "breeder"));
         outputText(".</i>\"");
         outputText("\n\nThe forge-mistress abruptly releases you and steps away, the supporting cushion of her breasts no longer there to help balance you.  After a moment of confused stumbling, you catch yourself and turn around, curious as to just what the buxom bitch is doing.");
@@ -1977,8 +1977,8 @@ export class TelAdre {
     // [Flirt]
     private flirtWithVictoria(itype: ItemType): void {
         clearOutput();
-        let x: number = player.cockThatFits(70);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(70);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You take the clothes from her and give them a look over.  Setting them on the counter, you tell her that they're quite nice, but if she's interested you might have something that could fit her quite nicely as well in the back.");
 
         if (x < 0) {

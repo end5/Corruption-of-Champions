@@ -75,7 +75,7 @@ export class Oasis {
         // For manpartz
         if (player.cocks.length > 0) {
             outputText("You feel clawed hands grasp at ", false);
-            if (player.cockTotal() > 1) outputText("each of ", false);
+            if (player.cocks.length > 1) outputText("each of ", false);
             outputText("your " + multiCockDescriptLight(game.player) + " and begin to slide up and down before another demon pushes them out of the way and you ", false);
             if (player.cocks[0].cockLength > 25) outputText("feel your " + cockDescript(game.player, 0) + " slide into a hell-girl's sloppy cunt. The demoness moans and pants in pleasure as your " + cockDescript(game.player, 0) + " bottoms out in her gaping pussy and she begins to ride you like the motionless whore you momentarily are, her gigantic breasts threatening to concuss you as she slides the huge distance up and down your cock in her thirst to fill her cavelike cunt.  ", false);
             else {
@@ -130,7 +130,7 @@ export class Oasis {
         outputText("Soon you feel hands and dicks grabbing and jabbing at your " + buttDescription(player) + ", edging inwards bit by bit and jostling for position as a slippery cock positions itself at the opening of your " + assholeDescript(player) + ". It pauses for a second and then dives straight into your waiting asshole.  ", false);
         if (player.vaginas.length > 0) outputText("You feel the cocks in your ass and pussy rubbing into each other as your lower body becomes a temple of friction. The feeling of so much demon stuffing you as full as possible is almost unbearable, and you are inches away from blacking out as you come again.  ", false);
         outputText("The cock fucks you hard and fast for a dozen strokes and then you feel it begin to pump its cum into your stuffed ass until it can't come any more. It slips out of your " + buttDescription(player) + " and is quickly replaced by another which comes and then is itself replaced in what becomes a seemingly endless cycle.  ", false);
-        player.buttChange(monster.cockArea(0), true);
+        player.buttChange(monster.cocks.cockArea(0), true);
         // More fucking!
         outputText("Around you you see the demons wrapped up in the frenzy of fucking that they've fallen into. No hole is unfilled and not a single cock isn't sunk into some being's flesh. The moans and screams are almost contagious and you feel them clouding your brain making you want more, harder.", false);
         dynStats("int", -1, "lib", 1);

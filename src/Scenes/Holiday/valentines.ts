@@ -124,7 +124,7 @@ export function helpValentinesDayIII(): void {
     menu();
     addButton(0, "Scylla", goVisitScyllaVday);
     addButton(1, "Abby", goVisitAbbyVday);
-    if (player.cockThatFits(28) >= 0 || player.hasVagina()) addButton(2, "Pastie", goVisitPastyVDay);
+    if (player.cocks.cockThatFits(28) >= 0 || player.hasVagina()) addButton(2, "Pastie", goVisitPastyVDay);
     addButton(4, "Leave", goHomeFromVDay);
 }
 
@@ -187,7 +187,7 @@ export function cuddleWithScyllaVDay(): void {
     // [if (hasVagina = true)]
     if (player.hasVagina()) outputText("  Your [vagina] is starting to get moist, making a small mess in your underclothes.");
     // [if (hasCock = true)]
-    if (player.hasCock()) outputText("  You realize it'd probably be a done deal if you didn't resist the pull of your hardening cock towards one of Scylla's orifices, but you decide to spare her any temptations and endure yourself.");
+    if (player.cocks.length > 0) outputText("  You realize it'd probably be a done deal if you didn't resist the pull of your hardening cock towards one of Scylla's orifices, but you decide to spare her any temptations and endure yourself.");
     outputText("  In time, your ignited lust slowly changes to constant arousal, and Scylla just sitting there, watching the sun with a beautiful smile on her face, clearly content to just have someone in her arms on this evening is helping you control yourself a lot better.");
     outputText("\n\nHer eyes sparkle a bit as the sun's last rays of light loom over the horizon, and by that time your wants have changed into a pleasant, calm passion and relaxation in the soft arms of the nun, her breast smooshed against your hand and even your own [fullChest], the warmth almost making you think you could simply fall asleep right there.  However, a couple of minutes after the sun has completely crossed the horizon, Scylla rouses you and moves up to her feet herself, helping you get up before planting a hand on the cheek of your [face] and sharing one last, tender kiss with you.  \"<i>Thank you for helping out and spending time with me today, [name].  I will not forget this, and I do appreciate everything you've done to make this day special.  I hope every day turns out great and full of love for you.</i>\" She says, putting a hand on your shoulder and leading you down the stairs.");
 
@@ -209,8 +209,8 @@ export function makeOutWithScyllaVDay(): void {
     // [pg]
     outputText("\n\nAfter a longer while, Scylla's tongue unwraps from yours and, with a moist slurp, she swallows your mixed drool as your lips break their touch.  You both pant heavily, and ");
     // [if (cocks = 1)
-    if (player.cockTotal() == 1) outputText("your [cock] is completely hard and stiff, forming a bulge in your clothing");
-    else if (player.cockTotal() > 1) outputText("[eachCock] is by now completely hard, eager to be touched and wanting to be caressed by the nun you're kissing");
+    if (player.cocks.length == 1) outputText("your [cock] is completely hard and stiff, forming a bulge in your clothing");
+    else if (player.cocks.length > 1) outputText("[eachCock] is by now completely hard, eager to be touched and wanting to be caressed by the nun you're kissing");
     outputText(".");
 
     outputText("\n\nScylla, of course, notices and presses her hand against your bulge.  \"<i>It seems... we've gone a little too far in... celebrating...</i>\" she says, blushing heavily, but leaning in to kiss at your neck, sucking so strongly by sheer instinct that she'll probably leave a hickey. The fragrant flower in her hair bobs next to you before she moves towards your cheek, and back to your lips, need driving her deeper.  Eager to comply, you open your lips, while the two of you tug at the stretchy velvet of her habit.  The modest drape is pulled down and away from her over-stimulated, hungry tit-lips.");
@@ -305,10 +305,10 @@ export function goVisitAbby(): void {
 
     outputText("\n\nNodding, you go in and make yourself at home, before Abylon tugs at your hand and seemingly continues to remove her dress, showing herself to you naked, in all of her small, couple of feet tall \"<i>glory</i>\". \"<i>W-well, time for you to show what you're made of, champ,</i>\" she says, bending around a small table, wiggling her posh bottom at you with a look of certain hunger and restlessness to her eyes.");
     menu();
-    if (player.hasCock()) {
-        const x: number = player.cockThatFits(46);
+    if (player.cocks.length > 0) {
+        const x: number = player.cocks.cockThatFits(46);
         // ([If ([cocksmallest] < 46 cockArea)
-        if (player.cockArea(x) < 46) {
+        if (player.cocks.cockArea(x) < 46) {
             outputText("\n\nYou could certainly go for a dip into that goblin cunt, but, there's also the option of forgoing your pleasure on this special day and using other means to show her a good time.");
             // <You can both pleasure and fuck her>
             addButton(1, "Fuck Her", fuckAbbyVDay);
@@ -327,8 +327,8 @@ export function goVisitAbby(): void {
 // {FUCK HER}
 export function fuckAbbyVDay(): void {
     clearOutput();
-    let x: number = player.cockThatFits(46);
-    if (x < 0) x = player.smallestCockIndex();
+    let x: number = player.cocks.cockThatFits(46);
+    if (x < 0) x = player.cocks.smallestCockIndex();
     outputText("Figuring that the goblin girl's felt so out of place amid a celebration of love, you might as well show her a little affection the only way she's likely to understand.  Pulling aside your [armor] enough to let [eachCock] spring free, you step up behind the bent-over girl and rest your hands on her thick thighs.  The emerald girl's breath quickens as the heat of your manhood presses between the jiggling globes of her ass cheeks and a whimper escapes her throat before she realizes it.  Coughing, in an attempt to cover the moment of weakness, she turns her head to the side to give you a disapproving eye.  “What is this, romance?  Just jam it in, already!” she commands, gruffly.  Her face is flushed a deeper forest hue, pink irises twinkling in the dim light of her spartan home.");
 
     outputText("\n\nUnintimidated, you take just a moment longer to tease the girl.  With the two of you, alone, in this intimate setting, you're given a chance to appreciate the goblin on her own merits.  Unlike most goblins, she doesn't  appear to be using hair dye - her vibrant red hue looks natural and matches the small tuft of silky red hair at the top of her jade pussy.  The three-foot braid hanging from her scalp is both thick and lustrous, suggesting that she may have channeled some of her kind's cock-hungry energy into an obsession with hair care.  Even her home is curiously devoid of the sexual aids you'd expect in a goblin's residence. She does have her kind's affinity for potions and leather, but most of the vials look more like antidotes than poisons and the leather plates she's cured are clearly more to protect the body than accentuate any sexuality.  Considering the rest of her race, she must be something of a paladin among them - showing a degree of self-restraint almost unheard of by the common goblin.");
@@ -466,15 +466,15 @@ export function valentineDayGetPastieDrink(itype: ItemType): void {
         // {Fuck is only present if a character has a cock under 8 cock area, Rub Dick option is present if a character has a member underneath 28 cock area. Pussy Dive is obviously present if a character has a pussy of any kind.}
     }
     menu();
-    if (player.cockThatFits(8) >= 0) addButton(0, "Fuck", fuckPastieForVDay);
-    if (player.hasCock()) addButton(1, "RubOnDick", rubPastieOnYourWangDawg);
+    if (player.cocks.cockThatFits(8) >= 0) addButton(0, "Fuck", fuckPastieForVDay);
+    if (player.cocks.length > 0) addButton(1, "RubOnDick", rubPastieOnYourWangDawg);
     if (player.hasVagina()) addButton(2, "Go In Pussy", goForAPushayDivePasty);
 }
 
 // [Fuck]
 export function fuckPastieForVDay(): void {
     clearOutput();
-    const x: number = player.smallestCockIndex();
+    const x: number = player.cocks.smallestCockIndex();
     outputText("With a semi-sadistic grin, you watch Pastie saunter towards you, clearly allured by the scent of your genitals.  You stroke your " + cockDescript(game.player, x) + ", quickly bringing it to an erection, imagining how tight even this little thing will feel inside Pastie's small, but now unnaturaly stretchable body.");
 
     outputText("\n\nBeing able to resist no longer, you grab her little bum and direct her towards your cock, not really hearing whether she's cheering, complaining, or asking you to stop; honestly, you could care less when you press your " + cockDescript(game.player, x) + " against the entrance to her diminutive vagina and start pushing.");
@@ -551,19 +551,19 @@ export function goForAPushayDivePasty(): void {
     outputText("With a grin and a lick of your lips, you shed your [armor] and spread your legs for the happily drunk fairy, showing her prize: your [vagina] and the [clit] that accompanies it.  It doesn't take Pastie even a few moments to fly towards you and then aim for that [vagina] in a small slalom in the air.  The lips of your gash feel the touch of little hands and feet, and you shudder in anticipation.  Pastie takes long licks all over your vagina and rubs her entire little body around, before finally starting to slip one or another of her limbs experimentally into your [vagina].  It feels amazing to have such a pretty little thing moving around in there, and soon, your [clit] is shown some love as well as Pastie rubs herself all over it before stuffing her face into your wet pussy.");
 
     outputText("\n\nYou raise a hand to your [chest], moaning out loud, ");
-    if (player.hasCock()) outputText("your other hand moving downwards to tug on [oneCock], ");
+    if (player.cocks.length > 0) outputText("your other hand moving downwards to tug on [oneCock], ");
     outputText("anticipating the incoming wriggling inside your pussy and an orgasm you'll have with an entire fairy buried inside you.");
 
     outputText("\n\nPastie doesn't disappoint and is soon pushing herself all the way to her hips inside you to get as good of a taste as she can. It does feel amazing when her little hands press against your inner walls, spreading you wide, and your [vagina] starts quivering and clenching around her in anticipation.");
     // [if (hascock = true)
-    if (player.hasCock()) outputText("  All the while, you continue to jerk off [eachCock], preparing yourself for an orgasm on both sides.");
+    if (player.cocks.length > 0) outputText("  All the while, you continue to jerk off [eachCock], preparing yourself for an orgasm on both sides.");
     outputText("  She finally takes a full dive inside, and you moan out in pleasure, feeling her little body roll and explore in there, her tongue tasting every bit of fluid she can from what's moisturizing your inner passage.");
 
     outputText("\n\nAfter a while, you're moaning out loud, rapidly approaching orgasm, when Pastie, struggling against the clenching and unclenching walls of your [vagina], manages to get her head and hands out of you.  She kisses and wraps her hand around your [clit], stimulating you further as you scream out, her lower body still penetrating you and wiggling around.");
 
     outputText("\n\nYou can take this no more and you shudder in an orgasm, painting Pastie's little body with more of your femcum.  She giggles at the sudden intensity of your contractions, and starts trying to slip out slowly.");
     // [if (hascock = true)]
-    if (player.hasCock()) outputText("  At the same time, your cock deposits its own load onto the ground as your hermaphrodite genitals achieve a simultaneous orgasm.");
+    if (player.cocks.length > 0) outputText("  At the same time, your cock deposits its own load onto the ground as your hermaphrodite genitals achieve a simultaneous orgasm.");
     // [if (isSquirter = true)
     if (player.wetness() >= 4) outputText("  She doesn't have much to say in the matter when your female ejaculation truly shoots in, though, sending her rolling out of your [vagina] and onto the ground.");
 

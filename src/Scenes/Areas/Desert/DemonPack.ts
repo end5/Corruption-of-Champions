@@ -47,13 +47,13 @@ export class DemonPack extends Monster {
                 outputText("\n\nThe demons joke and smile, obviously unconcerned with your state.\n\n", false);
             }
             if (player.cocks.length > 0) {
-                if (player.cockTotal() > 1) outputText("Each of y", false);
+                if (player.cocks.length > 1) outputText("Each of y", false);
                 else outputText("Y", false);
                 outputText("our " + multiCockDescriptLight(player) + " throbs ", false);
                 if (player.hasVagina()) outputText(" and your ", false);
             }
             if (player.vaginas.length > 0) {
-                if (!player.hasCock()) outputText("Your ", false);
+                if (!player.cocks.length > 0) outputText("Your ", false);
                 outputText(vaginaDescript(player, 0) + " burns ", false);
             }
             outputText("with arousal.  You make a grab for the nearest demon and catch a handful of jiggly breast. You try desperately to use your other arm to pull her closer to slake your thirst but you both go tumbling to the ground. The demonic leader laughs out loud and the rest of the tribe falls on you, grabbing for anything it can find.", false);
@@ -80,8 +80,8 @@ export class DemonPack extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createCock(18, 2);
-        this.createCock(18, 2, CockTypesEnum.DEMON);
+        this.cocks.createCock(18, 2);
+        this.cocks.createCock(18, 2, CockTypesEnum.DEMON);
         this.balls = 2;
         this.ballSize = 1;
         this.cumMultiplier = 3;

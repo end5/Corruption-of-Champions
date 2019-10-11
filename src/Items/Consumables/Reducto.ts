@@ -19,7 +19,7 @@ export class Reducto extends Consumable {
         const rdtBreasts: () => void = (game.player.breastRows.length > 0 && game.player.biggestTitSize() > 0 ? reductoBreasts : null);
         const rdtButt: () => void = (game.player.buttRating > 1 ? reductoButt : null);
         const rdtClit: () => void = (game.player.vaginas.length > 0 && game.player.clitLength > 0.25 ? reductoClit : null);
-        const rdtCock: () => void = (game.player.cockTotal() > 0 && game.player.biggestCockArea() > 6 ? reductoCock : null);
+        const rdtCock: () => void = (game.player.cocks.length > 0 && game.player.cocks.biggestCockArea() > 6 ? reductoCock : null);
         const rdtHips: () => void = (game.player.hipRating > 2 ? reductoHips : null);
         const rdtNipples: () => void = (game.player.nippleLength > 0.25 ? reductoNipples : null);
         clearOutput();
@@ -92,12 +92,12 @@ export class Reducto extends Consumable {
         else {
             outputText("You smear the repulsive smelling paste over your " + multiCockDescriptLight(game.player) + ".  It immediately begins to grow warm, almost uncomfortably so, as your " + multiCockDescriptLight(game.player) + " begins to shrink.\n\n");
             if (game.player.cocks.length == 1) {
-                outputText("Your " + cockDescript(game.player, 0) + " twitches as it shrinks, disappearing steadily into your " + (game.player.hasSheath() ? "sheath" : "crotch") + " until it has lost about a third of its old size.");
+                outputText("Your " + cockDescript(game.player, 0) + " twitches as it shrinks, disappearing steadily into your " + (game.player.cocks.hasSheath() ? "sheath" : "crotch") + " until it has lost about a third of its old size.");
                 game.player.cocks[0].cockLength *= 2 / 3;
                 game.player.cocks[0].cockThickness *= 2 / 3;
             }
             else { // MULTI
-                outputText("Your " + multiCockDescriptLight(game.player) + " twitch and shrink, each member steadily disappearing into your " + (game.player.hasSheath() ? "sheath" : "crotch") + " until they've lost about a third of their old size.");
+                outputText("Your " + multiCockDescriptLight(game.player) + " twitch and shrink, each member steadily disappearing into your " + (game.player.cocks.hasSheath() ? "sheath" : "crotch") + " until they've lost about a third of their old size.");
                 for (const i = 0; i < game.player.cocks.length; i++) {
                     game.player.cocks[i].cockLength *= 2 / 3;
                     game.player.cocks[i].cockThickness *= 2 / 3;

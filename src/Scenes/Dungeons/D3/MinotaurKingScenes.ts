@@ -43,7 +43,7 @@ export class MinotaurKingScenes {
             }
         }
         if (smallCockIdx != -1) addButton(1, "Docking", dockucocku, smallCockIdx);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             addButton(2, "Buttfuck", buttufucku);
             addButton(3, "Titfuck", titfuckCowslut);
             addButton(4, "SloppySeconds", sloppySeconds);
@@ -65,7 +65,7 @@ export class MinotaurKingScenes {
 
         outputText("With a dick that big and that hard at your disposal... you could do something that some might consider crazy, something with enough erotic potential that it makes your [cocks] even harder than the fuck-scent in the air and the nude, well-endowed figures before you.");
         outputText("\n\nThe wildly flaring tip of the Minotaur King’s dick is neatly adorned with a nice, big cumslit, one that’s spread wide by pre-cum even now. It’s big enough to be a pussy. Bigger than some goblins’ pussies, you bet, and twice as wet looking. The three medial rings that stud the length between sheath and tip would make great grips for your hands, the better to hold onto while you literally fuck the exotic minotaur-dick. You briefly wonder if those extra rings make such cocks even more pleasurable to ride than");
-        if (player.horseCocks() > 0) outputText(" a horse-dick like yours");
+        if (player.cocks.horseCocks() > 0) outputText(" a horse-dick like yours");
         else outputText(" the average equine prick");
         outputText(", but you discard the thought as irrelevant.");
         outputText("\n\nYou’ll be the one doing the fucking this time.");
@@ -125,8 +125,8 @@ export class MinotaurKingScenes {
         outputText("\n\nYou kick the minotaur King’s legs apart for better access and sidle in close, one hand idly pumping at [cockBiggest] while you do your damnedest not to give in to the delicious scent. No matter how pernicious the desire to indulge in his aroma, how wonderful it would be to press your cheek against that pillar of masculinity and lick, you know you have to resist it or you’ll forget all about getting yourself off and taking down Lethice.");
         outputText("\n\nShe’s watching you too. Her hungry, soulless eyes are watching you stroke your cock, watching you line it up with the angry pucker of the minotaur King’s asshole. The corrupt Queen licks her lips when you push forward. You rub your [cockHeadBiggest] against her most trusted servant’s entrance, slowly splitting his derriere, reshaping it into a vessel for your pleasure. He’s tight, tighter than you would expect from such a massive creature. His asshole clutches at every inch of cock you feed it, almost like it wants to squeeze you off, to massage you with rapt enthusiasm.");
         outputText("\n\nThe royal minotaur’s pained moo tells quite the different story. His horned visage stares down at you in disbelief, but his cock perceptibly plumps between his fingers, displaying a network of bulging veins all too happy to have you stimulate him from behind. Slapping his ass, you give him more of what his body so unsubtly craves. You thrust");
-        if (player.biggestCockLength() >= 24) outputText(" until his belly bulges with the clear outline of your [cockBiggest], displaying just how fully he has been taken to the entire assemblage. You’ve claimed this once noble beast, turned his body into a fuzzy, pleasant-smelling condom for your excessively-large cock.");
-        else if (player.biggestCockLength() >= 12) {
+        if (player.cocks.biggestCockLength() >= 24) outputText(" until his belly bulges with the clear outline of your [cockBiggest], displaying just how fully he has been taken to the entire assemblage. You’ve claimed this once noble beast, turned his body into a fuzzy, pleasant-smelling condom for your excessively-large cock.");
+        else if (player.cocks.biggestCockLength() >= 12) {
             outputText(" until you’ve fed his ass the whole of your girthy rod");
             if (player.hasKnot()) outputText(", knot and all");
             outputText(". A visible bulge presents itself on the once-noble beast’s belly, declaring your dominion over him for all to see. Whatever he was before, he’s your cock-sleeve now.");
@@ -144,13 +144,13 @@ export class MinotaurKingScenes {
         outputText(". If you didn’t have better things to do, or his scent toying with your mind, driving your ardor higher and higher the longer you breath it in, you could savor this for hours. But you’re dizzy with need and in a hurry.");
         outputText("\n\nDeciding to give yourself a little reward, you lean forward and slip your tongue against the pre-soaked surface of the King’s majestic cock, trembling in orgiastic ecstasy as the taste pushes you over the edge.");
         if (player.hasKnot()) outputText(" Your knot balloons.");
-        else if (player.horseCocks() > 0) outputText(" Your flare expands right on cue, matching the one pressing back against your tongue.");
+        else if (player.cocks.horseCocks() > 0) outputText(" Your flare expands right on cue, matching the one pressing back against your tongue.");
         else outputText(" His flare blooms with all the force of a mushroom cloud, nearly pushing your tongue back into your mouth.");
         outputText(" You erupt a split-second before he does, squirting thick ropes of jism into his sucking asshole. Then he goes off, shooting a torrent of spunk twenty feet into the air. Horned goblins dance in the deluge, tongues extended and hands cupped to catch as much as possible.");
         outputText("\n\nSome lands in your mouth while you’re moaning and cumming, hot and fresh, somehow making your orgasm hotter still, juicier than you can truly comprehend.");
         if (player.cumQ() > 2500) {
             outputText(" The King’s belly swells");
-            if (player.biggestCockLength() >= 18) outputText(" even bigger");
+            if (player.cocks.biggestCockLength() >= 18) outputText(" even bigger");
             if (player.cumQ() > 5000) {
                 outputText(", but you’re far from done. You pressurize his entire digestive system. The last few ejaculations backblast out over");
                 if (player.balls > 0) outputText(" your balls");
@@ -188,7 +188,7 @@ export class MinotaurKingScenes {
         else outputText(" the ground");
         outputText(" and take him into your mouth, to see if he tastes as good as he smells. You could take him deep into your throat until your nose nestles deep into the curly brush of his pubic hairs, fully immersed in the taste and scent of this bastion of masculinity.");
         outputText("\n\nA taste just won’t do. The empty ache of your throbbing quim won’t abide you wasting your time with senseless oral, not when a ribbed column of pussy-pleasing fuckmeat is this close at hand. Droplets of feminine leakage spatter the monarch’s shaggy fur behind you while you climb into position above the mountainous member. Your lips are so inflamed that you swear you can feel them squishing and sliding against the hard nub of your clit with every shift of your hips.");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(" Your dick");
             if (player.cocks.length > 1) outputText("s");
             outputText(" twitch");
@@ -211,7 +211,7 @@ export class MinotaurKingScenes {
         }
 
         outputText("\n\nThree rings are the next challenge standing between you and total impalement. Equidistant along the Minotaur King’s shaft, those medial rings are small but significant obstacles along your erotic journey. The first actually bumps against your [clit]");
-        if (player.hasCock()) outputText(", stimulating the base of your jutting she-dick");
+        if (player.cocks.length > 0) outputText(", stimulating the base of your jutting she-dick");
         outputText(". You reverse direction and slide up, filling the air with the sloppy sound of withdrawing phallus, then drop back down, using the momentum to spread your buttery lips over the first obstruction. Your eyes actually roll back from the raw sensation of it.");
         outputText("\n\nSplashes of warm pre-cum splatter off of your cervix. The big boy likes it.");
         outputText("\n\nIt’s hard to think about much right now. Whether it’s his pheromone-laced scent pushing you into an artificial heat");
@@ -238,7 +238,7 @@ export class MinotaurKingScenes {
         outputText(". Your insides stretch like they’re made of rubber");
         if (player.averageVaginalLooseness() >= 5) outputText(", which isn’t far from the truth,");
         outputText(" in order to accommodate the swelling intrusion. The beast below roars. You can feel the bass rumble in your bones - and your [clit].");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(" Hell, you can feel it surging through your [cocks], vibrationally expelling the last few unspent drops from your urethra");
             if (player.cocks.length > 1) outputText("s");
             outputText(".");
@@ -292,7 +292,7 @@ export class MinotaurKingScenes {
 
         clearOutput();
 
-        const x: number = player.biggestCockIndex() + 1;
+        const x: number = player.cocks.biggestCockIndex() + 1;
 
         outputText("Why resort to making use of the brutal minotaur when there’s a puddle of wet trollop so close at hand? It’s a good thing that all the spunk leaking from between her legs actually smells");
         if (player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) outputText(" wonderful");
@@ -309,8 +309,8 @@ export class MinotaurKingScenes {
         if (player.balls > 0) outputText(" ball");
         else outputText(" ass");
         outputText("-slapping impact ripples through the plush cow-slave’s derriere like waves through a pond. She exhales blissful little moos, pushing back against you to the same tempo, ever the faithful cock-milker.");
-        if (player.biggestCockLength() < 18) outputText(" You don’t think she could possibly confuse your less-impressive erection for her minotaur master’s, but she doesn’t give any sign of caring. Perhaps all the minotaur jism stuffed in her twat has left her beyond caring, or maybe she’s just happy to serve a dick - any dick.");
-        else if (player.biggestCockLength() <= 30) outputText(" You didn’t think she’d confuse your prick for her master’s, but she’s happily fucking it all the same. It probably stretches her cunt just about as much.");
+        if (player.cocks.biggestCockLength() < 18) outputText(" You don’t think she could possibly confuse your less-impressive erection for her minotaur master’s, but she doesn’t give any sign of caring. Perhaps all the minotaur jism stuffed in her twat has left her beyond caring, or maybe she’s just happy to serve a dick - any dick.");
+        else if (player.cocks.biggestCockLength() <= 30) outputText(" You didn’t think she’d confuse your prick for her master’s, but she’s happily fucking it all the same. It probably stretches her cunt just about as much.");
         else outputText(" You don’t think she could possibly confuse your slab of cock for a smaller sample like her minotaur master’s, but she doesn’t show much sign of caring. Perhaps all the minotaur jism stuffed in her twat has left her so inundated with pleasure that worry is beyond her. So long as she’s split with a massive shaft, what’s the difference?");
         outputText(" You can see why the overgrown beast-man keeps her around.");
         outputText("\n\nThe quivering cow-slut’s cunt is fucking magic too. It feels like her muscles are pulling you deeper with every thrust, coaxing your [cock " + x + "] to sprout another inch if only to better fill. Gods, you’re getting harder and harder. She feels so damned good that it’s making your head spin, making it impossible to do anything but grab hold of her ass and squeeze like your life depends on it. In this moment, bereft of anything but the sinful squelches emanating from Excellia’s too-moist muff, you feel like you love her, or at least her pussy.");
@@ -372,7 +372,7 @@ export class MinotaurKingScenes {
         outputText("\n\nYou aren’t left waiting long.");
         outputText("\n\nThe minotaur King lurches forward powerfully");
         if (player.biggestTitSize() >= 5) outputText(", jiggling your tits wildly");
-        else if (player.hasCock()) {
+        else if (player.cocks.length > 0) {
             outputText(", making your oozing, half-hard prick");
             if (player.cocks.length > 1) outputText("s");
             outputText(" flail around comically, sliming the floor");

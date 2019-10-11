@@ -52,7 +52,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText(images.showImage("edryn-bar-chat"));
 
         // Used for finding what cock to use!
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         // If no cocks fit, set to primary
         if (x < 0) x = 0;
 
@@ -104,14 +104,14 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("Edryn gestures for you to take a seat, and motions for a waitress to bring you a drink.  You sit with the busty centaur and chat her up for a little bit, recounting your latest adventures and sexual exploits.  She laughs at some, blushes at others, and comforts you at times, but by the time you've finished her child-birth-enlarged nipples are like two hard bullets under her tunic and her face is flushed.  Edryn picks at her food for a moment and excuses herself, \"<i>Sorry dear, but I'm feeling a little flushed.  I'm going to head back to my room and lie down a while...</i>\"\n\n", false);
 
             // (NO WANGUUU)
-            if (player.totalCocks() == 0) {
+            if (player.cocks.length == 0) {
                 outputText("She looks down, eyes fixing on your crotch for a moment before she sighs, \"<i>Why did you get rid of your dick?  I like you a lot, but I don't really want to have sex with you like you are now.</i>\"\n\nIt looks like you won't get to have any fun with her right now.", false);
                 cheatTime(1);
                 doNext(telAdre.barTelAdre);
                 return;
             }
             // (WANG FITS)
-            if (player.cockArea(x) < 300 && player.cockArea(x) > 24) {
+            if (player.cocks.cockArea(x) < 300 && player.cocks.cockArea(x) > 24) {
                 outputText("She winks at you as she gets up and trots off, giving her butt a sensual sway to draw your eyes.  Her potent scent hangs in the air, and your body reacts immediately and intensely, flooding you with arousal.  ", false);
                 outputText("You look down at your " + multiCockDescriptLight(game.player) + " and curse, irritated at how easily she can affect you.  There's no way you'll be turning her down this time.  You get up and follow her back to her room, intent on taking care of the need between your legs.\n\n", false);
                 // Sex
@@ -119,7 +119,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 return;
             }
             // (Too small)
-            else if (player.cockArea(x) <= 24) {
+            else if (player.cocks.cockArea(x) <= 24) {
                 outputText("She looks down, eyes fixating on your crotch for a moment.  Edryn asks, \"<i>When did you get so small?  We can't fuck like this!  ", false);
                 // (Chance of equinum,gro+(twice only),minotaur blood, or purified incubus draft)
                 let itype: ItemType;
@@ -167,7 +167,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("  Despite the oddity of the situation, you stay and enjoy a light conversation with her.  You find the conversation to be interesting, and the pair of you stay there to munch on a light meal of breads, cheeses, and a glass of wine.  While you find the time pleasant, you have a feeling that something is 'off'.\n\n", false);
         // New PG
         outputText("You take a close look at your dinner companion, trying to puzzle out what you're picking up on, but you just can't place it.  Edryn burps quietly, apologizing for her rudeness, and excuses herself to the girl's room.  As she turns away to leave, you get a good look at her backside.  Her horse-like sex is huge and puffy, and glistening with moisture.  The gentle flicking of her tail from side to side pushes her musky scent into you like a wave, ", false);
-        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR && player.totalCocks() > 0) {
+        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR && player.cocks.length > 0) {
             outputText("and the potent female scent works its way into your blood, making you dizzy as your " + cockDescript(game.player, 0) + " ", false);
             if (player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("pours out of its sheath", false);
             else outputText("fills near instantaneously", false);
@@ -178,8 +178,8 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             edrynOffer();
             return;
         }
-        else if (player.totalCocks() > 0) {
-            if (player.horseCocks() > 0) {
+        else if (player.cocks.length > 0) {
+            if (player.cocks.horseCocks() > 0) {
                 outputText("and the potent female scent makes you feel a bit dizzy and dazed.  ", false);
                 if (player.cocks[0].cockLength > 16) outputText("You barely register the thump of your hardening " + Appearance.cockNoun(CockTypesEnum.HORSE) + " as it smacks into the underside of the table.\n\n", false);
                 else outputText("You squirm uncomfortably, feeling constrained by your " + player.armorName + " as you surge to erectness.\n\n", false);
@@ -251,14 +251,14 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 break;
         }
         // Pick most appropriate cock
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         // If no cocks fit, set to main.
         if (x < 0) x = 0;
 
         // (cont centaur)
-        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR && player.totalCocks() > 0) {
+        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR && player.cocks.length > 0) {
             // Too small
-            if (player.cockArea(x) < 24) {
+            if (player.cocks.cockArea(x) < 24) {
                 outputText("Oh my, you're a little bit small for my tastes love.  Maybe you should try some of the local delicacies and trot back here so I can help you out, ok?</i>\"\n\n", false);
                 outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                 cheatTime(1);
@@ -266,7 +266,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 return;
             }
             // Too big
-            if (player.cockArea(x) > 300) {
+            if (player.cocks.cockArea(x) > 300) {
                 outputText("Oh wow, you're a little bit too big for me to handle, love.  Maybe you should try to find something to shrink that down a little, not too much, and trot back here so I can help you out, ok?</i>\"\n\n", false);
                 outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                 cheatTime(1);
@@ -284,18 +284,18 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             else outputText("(Do you fuck her?)", false);
             doYesNo(edrynSexSelecter, telAdre.barTelAdre);
         }
-        else if (player.cockTotal() > 0) {
+        else if (player.cocks.length > 0) {
             // (HORSE CONT)
-            if (player.horseCocks() > 0) {
+            if (player.cocks.horseCocks() > 0) {
                 // Too bigsies
-                if (player.cockArea(x) > 300) {
+                if (player.cocks.cockArea(x) > 300) {
                     outputText("\"<i>Wow, that's huge!  Sweetheart, you'll need to be a bit smaller if you want to play with me.  Why not go out and find something to shrink it down to something a horse like me can handle, then maybe we can play, ok?</i>\"\n\n", false);
                     outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                     cheatTime(1);
                     doNext(telAdre.barTelAdre);
                     return;
                 }
-                if (player.cockArea(x) >= 24) {
+                if (player.cocks.cockArea(x) >= 24) {
                     outputText("\"<i>Mmmhmm, just as I thought.  You were daydreaming about my cunt, weren't you?</i>\" she asks.  Instinctively, you try to shake your head negatively, but she doesn't seem fooled.  Edryn releases your crotch and scolds you, \"<i>Don't lie, you got a whiff of my juicy cunt and all your reserve and fortitude melted into a puddle of fuck and breed.  Believe me, I've seen it happen before.</i>\"\n\n", false);
                     outputText("She doesn't seem irritated, instead she seems quite... turned on.  Edryn explains, \"<i>" + mf(player, "Mr.", "Miss") + " thick and juicy, I'm more than muscle for hire.  I do a little 'wetwork' on the side, and I've yet to meet a horse-cock that doesn't jump at my scent.  Lucky for you, I think you're cute, and I'm feeling randy.  So, how about ", false);
                     if (cost > 0) outputText(num2Text(cost) + " gems, ", false);
@@ -320,7 +320,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             // Normal Wingdangdoodle
             else {
                 // Too bigsies
-                if (player.cockArea(x) > 300) {
+                if (player.cocks.cockArea(x) > 300) {
                     outputText("\"<i>Wow, that's huge!  Sweetheart, you'll need to be a bit smaller if you want to play with me.  Why not go out and find something to shrink it down to something a horse like me can handle, then maybe we can play, ok?</i>\"\n\n", false);
                     outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                     cheatTime(1);
@@ -328,7 +328,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                     return;
                 }
                 // (cont Normal)
-                if (player.cockArea(x) >= 24) {
+                if (player.cocks.cockArea(x) >= 24) {
                     outputText("\"<i>Was the sight of my backside that entrancing to you?</i>\" she teases, \"<i>Normally only the horsey-boys get this hard for me, but you... you want to take a ride on the wild side, don't you?</i>\"\n\n", false);
                     outputText("Her words ring true, and a quick fuck to tamp down your rising lust wouldn't hurt would it?\n\n", false);
                     outputText("Edryn keeps talking, \"<i>I do ALL kinds of mercenary work, even the sloppy wet kind, and lucky for you, I'm more than wet enough to let you satisfy your " + cockDescript(game.player, 0) + " in me.  ", false);
@@ -392,7 +392,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("", true);
 
         outputText(images.showImage("edryn-fuck-as-taur"));
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = 0;
         outputText("Your equine body lurches forwards on its own, rearing up on your hind legs and lunging forwards.  Edryn whinnies as she is violently penetrated and forced to support most of your weight.  Her equine pussy is a wonder, able to stretch to a degree that would shame the raunchiest of human and demon sluts.  The velvet walls of her massive equine cunny clench tightly around you, trapping you completely inside her juicy depths.  She wiggles slightly, bending her body, teasing your " + cockDescript(game.player, x) + " inside her.\n\n", false);
 
@@ -438,7 +438,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         spriteSelect(14);
         outputText("", true);
         outputText(images.showImage("edryn-fuck-as-non-taur"));
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = 0;
         outputText("She wiggles her more than ample backside towards you, squelching wetly against your ", false);
         if (player.tallness < 48) outputText("face", false);
@@ -450,7 +450,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("With a gasp you pull back, a thin coating of female slime clinging wetly to your face.  She leans over her hindquarters, her human-half rosy with the heat of her arousal as she hands you a towel.  You wipe off, and listen to the 'splat-splat-splat' of her animalistic pussy-juice as it drips to the floor.  She's completely soaked in a way that you doubt even a succubus could replicate.  She crooks a finger and waggles back and forth, making her puffy, black cunt-lips jiggle ever-so-slightly.  You don't need any more encouragement.\n\n", false);
         if (player.tallness < 60) outputText("You grab a stool so you'll be tall enough to fuck her properly and climb onto it.  ", false);
         outputText("Supporting your", false);
-        if (player.cockArea(x) > 200) outputText(" hefty package with both hands", false);
+        if (player.cocks.cockArea(x) > 200) outputText(" hefty package with both hands", false);
         else outputText("self with your hand", false);
         outputText(", you guide your " + cockDescript(game.player, x) + " towards the shining, black horse-cunt in front of you.  It parts easily, like a velvet curtain.  You slowly slide forward into Edryn's welcoming nethers, enjoying not having to fight to get your large " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " in for a change.  She trembles as you pass the halfway point, ", false);
         if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText("feeling your ring of prepuce slipping between her lips.  ", false);
@@ -535,7 +535,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("", true);
         outputText(images.showImage("hel-chat-at-bar"));
         let edryn: () => void = null;
-        if (edrynBar() && player.cockThatFits(300) >= 0 && player.effects.getValue1Of(StatusAffects.Edryn) >= 4)
+        if (edrynBar() && player.cocks.cockThatFits(300) >= 0 && player.effects.getValue1Of(StatusAffects.Edryn) >= 4)
             edryn = helEdrynThreeSomeStartYerEngines;
 
         if (edryn != null && flags[kFLAGS.HEL_EDRYN_OFFER] == 0) {
@@ -612,7 +612,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
     private threesomeEdrynAndHel(): void {
         outputText("", true);
         outputText(images.showImage("edryn-hel-threesome"));
-        const x: number = player.cockThatFits(300);
+        const x: number = player.cocks.cockThatFits(300);
         flags[kFLAGS.EDRYN_TIMES_HEL_THREESOMED]++;
         outputText("You arrive in Edryn's private room, a small dark alcove in the bar with a healthy layer of pillows covering the floor.  You start to disrobe, watching as Hel is nearly crushed up against a wall by a sudden butt-bump from Edryn: \"<i>You better start warming me up with that long lizard tongue, cutie,</i>\" she says, herself yanking off her loose shirt.\n\n", false);
 
@@ -656,7 +656,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
 
         outputText("<b>How do you react?</b>", false);
 
-        const aroused: () => void = (player.totalCocks() > 0 ? arousedByPregdryn : null);
+        const aroused: () => void = (player.cocks.length > 0 ? arousedByPregdryn : null);
         // [Shocked] [Pleased] [Aroused (Requires Wang)]
         simpleChoices("Shocked", shockedByEdrynsPregnancy, "Pleased", pleasedbyPregdryn, "Aroused", aroused, "", null, "", null);
     }
@@ -731,13 +731,13 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         // VERY Pregnant Offer
         if (pregnancy.incubation < 250) {
             outputText("Edryn struggles to move, practically waddling thanks to her swollen, pregnant belly.  As usual, the glistening black lips of her sex are on display, and with the hormones pouring through her, she's leaking a steady trail of slime.  The scent coming off her is unreal!  It's like it's reaching right into your brain and cranking the 'fuck' dial up to maximum.  ", false);
-            if (player.cockTotal() > 1) outputText("All of your " + multiCockDescriptLight(game.player) + " fill in seconds, growing rock hard and actually aching with their need.  ", false);
-            else if (player.cockTotal() == 1) outputText("Your " + cockDescript(game.player, 0) + " fills in seconds, growing rock hard and actually aching with need.  ", false);
+            if (player.cocks.length > 1) outputText("All of your " + multiCockDescriptLight(game.player) + " fill in seconds, growing rock hard and actually aching with their need.  ", false);
+            else if (player.cocks.length == 1) outputText("Your " + cockDescript(game.player, 0) + " fills in seconds, growing rock hard and actually aching with need.  ", false);
             outputText("You're totally dazed by the massive spike in arousal, and ", false);
-            if (player.cor + player.lib < 100 || player.cockTotal() < 1) outputText("you struggle not to reach into your " + player.armorName + " to touch yourself.", false);
+            if (player.cor + player.lib < 100 || player.cocks.length < 1) outputText("you struggle not to reach into your " + player.armorName + " to touch yourself.", false);
             else {
                 outputText("you can't stop yourself from grabbing ", false);
-                if (player.cockTotal() == 1) outputText("your ", false);
+                if (player.cocks.length == 1) outputText("your ", false);
                 else outputText("a ", false);
                 outputText(cockDescript(game.player, 0) + " and stroking it under the table.", false);
             }
@@ -745,21 +745,21 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
 
             outputText("You wouldn't notice her return if it wasn't for the increase in potent centaur pheromones hitting your nostrils.  It takes a hand slipping under the table to play with your ", false);
             if (player.balls > 0) outputText(ballsDescriptLight(player), false);
-            else if (player.hasSheath()) outputText("sheath", false);
-            else if (player.cockTotal() > 0) outputText(cockDescript(game.player, 0), false);
+            else if (player.cocks.hasSheath()) outputText("sheath", false);
+            else if (player.cocks.length > 0) outputText(cockDescript(game.player, 0), false);
             else outputText("crotch", false);
             outputText(" to rouse you from the incredible sexual haze.  ", false);
         }
         // Mildly pregnant offer
         else {
             outputText("As usual, when Edryn pivots to leave, she gives you a perfect view of her unusual vagina.  The glistening black lips of her sex practically ooze moisture, and the scent coming off her seems even more potent than usual, making your head swim.  ", false);
-            if (player.cockTotal() > 1) outputText("All of your " + multiCockDescriptLight(game.player) + " fill in seconds, growing rock hard and actually aching with their need.  ", false);
-            else if (player.cockTotal() == 1) outputText("Your " + cockDescript(game.player, 0) + " fills in seconds, growing rock hard and actually aching with need.  ", false);
+            if (player.cocks.length > 1) outputText("All of your " + multiCockDescriptLight(game.player) + " fill in seconds, growing rock hard and actually aching with their need.  ", false);
+            else if (player.cocks.length == 1) outputText("Your " + cockDescript(game.player, 0) + " fills in seconds, growing rock hard and actually aching with need.  ", false);
             outputText("You're a little bit dazed by the sudden spike in arousal, and ", false);
-            if (player.cor + player.lib < 100 || player.cockTotal() < 1) outputText("you struggle not to reach into your " + player.armorName + " to touch yourself.", false);
+            if (player.cor + player.lib < 100 || player.cocks.length < 1) outputText("you struggle not to reach into your " + player.armorName + " to touch yourself.", false);
             else {
                 outputText("you can't stop yourself from grabbing ", false);
-                if (player.cockTotal() == 1) outputText("your ", false);
+                if (player.cocks.length == 1) outputText("your ", false);
                 outputText("a ", false);
                 outputText(cockDescript(game.player, 0) + " and stroking it under the table.", false);
             }
@@ -767,13 +767,13 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
 
             outputText("As usual, you're barely cognizant of her return.  It isn't until a hand sneaks under the table to surreptitiously fondle your ", false);
             if (player.balls > 0) outputText(ballsDescriptLight(player), false);
-            else if (player.hasSheath()) outputText("sheath", false);
-            else if (player.cockTotal() > 0) outputText(cockDescript(game.player, 0), false);
+            else if (player.cocks.hasSheath()) outputText("sheath", false);
+            else if (player.cocks.length > 0) outputText(cockDescript(game.player, 0), false);
             else outputText("crotch", false);
             outputText(" that you come out of your daze.  ", false);
         }
         // (NO WANGUUU)
-        if (player.cockTotal() == 0) {
+        if (player.cocks.length == 0) {
             outputText("She looks down, eyes fixing on your crotch for a moment before she sighs, \"<i>Why did you get rid of your dick?  I like you a lot, but I don't really want to have sex with you like you are now.</i>\"\n\nEdryn leaves looking a little depressed.", false);
             // Bar menu?
             cheatTime(1);
@@ -781,10 +781,10 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             return;
         }
         // (MEETS SIZE REQUIREMENTS)
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         // -1 = none fit.  Set x to 0 for big boys.
         if (x < 0) x = 0;
-        if (player.cockArea(x) >= 24 && player.cockArea(x) < 300) {
+        if (player.cocks.cockArea(x) >= 24 && player.cocks.cockArea(x) < 300) {
             outputText("Edryn is smiling radiantly as she continues to caress you under the table.  She asks, \"<i>", false);
             if (flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] == 0) outputText("Does my scent have an even stronger effect on you now", false);
             else outputText("Are you going to cum just from sniffing at my cunt", false);
@@ -798,7 +798,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             menu();
             outputText("You could have some great, pregnant taur sex.");
             addButton(0, "Preg. Fuck", fuckPregEdryn);
-            if (player.biggestCockArea() >= 300) {
+            if (player.cocks.biggestCockArea() >= 300) {
                 outputText("  Since at least part of you isn't acceptable to her, you could eat her out until you get off from her pheromones alone.");
                 addButton(1, "NoFitEating", jizzFromEatingPregdrynOut);
             }
@@ -807,7 +807,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             return;
         }
         // (PC TOO BIG)
-        else if (player.cockArea(x) > 300) {
+        else if (player.cocks.cockArea(x) > 300) {
             outputText("Edryn brushes her hand over ALL of your " + cockDescript(game.player, 0) + " then jerks it back, startled.  She sighs, \"<i>Dear, that thing is a BEAST.  I mean, there's no doubt I'd love to get it inside me, but I promise it won't fit me.</i>\"\n\n", false);
 
             outputText("She looks at you pleadingly and practically begs, \"<i>Please, find a way to fit me.</i>\"  Edryn grabs you by the shoulders and whispers in your ear, \"<i>Being pregnant makes me so turned on ALL THE TIME.  I need you inside me.</i>\"\n\n", false);
@@ -839,7 +839,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         clearOutput();
         spriteSelect(14);
         outputText(images.showImage("edryn-preggo-fuck"));
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = 0;
         outputText("", true);
         // NONTAUR
@@ -851,7 +851,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText(" was totally worth the bruise-inducing impact.  Edryn pivots about, her hooves clattering noisily against the room's floorboards until she's presenting her hind end to you.  Her tail lifts of its own accord and displays the swollen, black lips of her sex.  A potent glaze of centaur-fluid drips from the gash in a steady trickle, splattering over your " + feet(player) + " as your equine lover closes in.\n\n", false);
 
             outputText("You tear off your " + player.armorName + " in a flash, fully exposing your ", false);
-            if (player.cockTotal() > 1) outputText("chosen ", false);
+            if (player.cocks.length > 1) outputText("chosen ", false);
             outputText(cockDescript(game.player, x) + ".  It drips with anticipation, leaking drops of pre-cum with each inhalation of your mate's over-sexualized slit's scent.  Edryn looks over her shoulder to gauge the distance, but when she sees your state her face breaks into a happy smile.  She says, \"<i>Steady now, we wouldn't want you to miss your target, would we?</i>\" as her backside slowly descends, splattering hot sexual fluids over your length.\n\n", false);
 
             outputText("The centaur's gash devours your " + cockDescript(game.player, x) + " with a long, wet slurping noise.  Her body-heat is much warmer than your own, wrapping slippery heat around every sensitive inch of your fuck-pole.  The flesh around you squeezes and massages instinctively.  It feels so good that it seems as if your " + cockDescript(game.player, x) + " is going to melt under the onslaught of pleasure.  Edryn moans loudly and begins to pump her hips atop you, \"<i>Oooh yes, thats perfeeeect...</i>\"\n\n", false);
@@ -888,7 +888,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("You break the kiss and suck the bottom of her earlobe into your mouth, straining to keep your mouth steady as you pull your " + cockDescript(game.player, x) + " into position with her needy sex.  The " + cockHead(player, x) + " slips into the hot folds, forcing a gasp from your lips that lets Edryn's earlobe escape its oral prison.  She smirks, then nibbles at your shoulder while you slide the rest of the way into her large, slippery channel.  It's a near perfect fit thanks to your similar body types, and the both of you sigh out whinnies of pleasure.\n\n", false);
 
             outputText("Edryn bites down harder, sending a jolt of pain through your shoulder.  Her hips wiggle against yours, and she begins rhythmically clenching and relaxing her entrance, squeezing you tightly ", false);
-            if (!player.hasSheath()) outputText("by the base", false);
+            if (!player.cocks.hasSheath()) outputText("by the base", false);
             else outputText("just above your sheath", false);
             outputText(".  The horse half of your body arches, pulling your " + cockDescript(game.player, x) + " partway out, then lurches back forward to bury it deep inside her.  The impact jiggles her flesh from her ass to her shoulders, and you feel it underneath you as an instinctual, barely thought sign of sexual dominance.\n\n", false);
 
@@ -901,7 +901,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText(".  Her twat clutches you so tightly that you're immobilized for fear of hurting yourself, and the tight seal of her entrance acts as a cock-ring, actually bloating your " + cockDescript(game.player, x) + " inside her.\n\n", false);
 
             outputText("Your " + cockDescript(game.player, x) + " is milked from ", false);
-            if (!player.hasSheath()) outputText("base", false);
+            if (!player.cocks.hasSheath()) outputText("base", false);
             else outputText("sheath", false);
             outputText(" to " + cockHead(player, x) + ", culminating in a tight squeeze at the tip. Then it releases and starts all over again.  Instinctively, you whinny and explode inside the warm, soaking wet tunnel.  The french-kiss turns into a feverish slobber-fest while the two of you mate, lost to orgasm.", false);
             if (player.cumQ() < 300) { }
@@ -927,20 +927,20 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
     private jizzFromEatingPregdrynOut(): void {
         spriteSelect(14);
         outputText("", true);
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = 0;
 
         outputText("You shut the door behind you and rub your eyes, trying to adjust to the darkness in the room.  All the lights are out, save for a single candle on the far wall.  You peer about uselessly for a few seconds until inspiration strikes.  Her potent scent will lead you to her!  You lean down and start turning from side to side, sniffing about.  You hear a feminine giggle, though with the unfamiliar room you can't tell where it's originating from.  It's fairly easy to scent out your 'prey', and you've already determined from the strength of pussy-musk which corner of the room Edryn's in.\n\n", false);
 
         outputText("The smell is potent, sexual, and thoroughly inhuman.  You take a step closer and continue taking little sniffs, barely noticing as your ", false);
-        if (player.cockArea(x) < 24) outputText("small dick begins to twitch and leak.", false);
+        if (player.cocks.cockArea(x) < 24) outputText("small dick begins to twitch and leak.", false);
         else outputText("mammoth cock drags the ground, leaking pre-cum.", false);
         outputText("  The urge to find the juicy, potent pussy at the center of the musk-cloud overrides your thoughts.  Stalking forwards in a haze of desire, you take deeper and deeper breaths, inhaling ever-greater quantities of Edryn's heavenly scent.  You know you're almost there – you can hear her quiet breathing.\n\n", false);
 
         outputText("You're so lost in desperate need that your hurried steps get you in trouble.  Your " + foot(player) + " catches on something, and you fall inexorably forwards.  In a panic, you windmill your arms.  One slaps into fur-covered flesh with a loud 'SLAP', the other disappears into a mass of soft, yielding fabrics.  The pillows catch you, absorbing the fall, but your face splats directly into something warm, wet and aroused.  Edryn gasps and exclaims, \"<i>No need to be so rough about it!  I thought you might like some hide and seek... your dick seemed to like it, and I needed a moment to catch my breath.  It's not easy carrying your child around!</i>\"\n\n", false);
 
         outputText("Her words fall on deaf ears.  You push yourself up onto your elbows and lean forward, feeling strands of female lubricant hanging from your face as you inhale deep lungfuls of her scent.  ", false);
-        if (player.totalCocks() > 1) outputText("Each of y", false);
+        if (player.cocks.length > 1) outputText("Each of y", false);
         else outputText("Y", false);
         outputText("our " + multiCockDescriptLight(game.player) + " ", false);
         if (player.cumQ() < 100) outputText("drips pre-cum onto the pillows.", false);
@@ -955,7 +955,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("You tremble as you pull away, licking her lust from your lips and gasping for air as you shift to lick at her clit.", false);
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
             outputText("  Your hooves twitch weekly on the floor, forgetten about as you focus entirely on your hands, mouth, and pulsating " + Appearance.cockNoun(CockTypesEnum.HUMAN), false);
-            if (player.cockTotal() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(".", false);
         }
         outputText("  Her button, like her pussy, is many sizes larger than a human's, and it's as big around as a golfball and several inches long.  You suck it into your lips and plunge a hand inside her slippery channel, fisting her while you suckle and bob on her clit.  Edryn whinnies and clenches around the invading fist.  Her cunt erupts and splatters your face with fluid, soaking you with her fragrant scent.\n\n", false);
@@ -969,7 +969,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         }
 
         outputText("Cum begins to ooze from ", false);
-        if (player.totalCocks() > 1) outputText("each of ", false);
+        if (player.cocks.length > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " in a steady stream.  Your urethra bulges and flexes, forcing you to waste your seed all over Edryn's pillows.", false);
         if (player.cumQ() < 1000) {
             outputText("  The flow gets thicker and thicker.  Edryn even remarks, \"<i>Oh my, my baby's daddy is just full of cum!  Let it all out for me dear, you did such a good job on my clit that you deserve release.</i>\" You squirt and dribble, breathing airborne orgasm and squirting ", false);
@@ -1031,7 +1031,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         clearOutput();
         spriteSelect(14);
         outputText("", true);
-        let x: number = player.cockThatFits(300);
+        let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = 0;
         let cost: number = 0;
         switch (player.effects.getValue1Of(StatusAffects.Edryn)) {
@@ -1081,11 +1081,11 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
     public eatEdrynPussyLikeABawss(): void {
         clearOutput();
         outputText(images.showImage("edryn-eat-her-out"));
-        let x: number = player.cockThatFits(300);
-        if (x < 0) x = player.smallestCockIndex();
-        const y: number = player.cockThatFits2(300);
+        let x: number = player.cocks.cockThatFits(300);
+        if (x < 0) x = player.cocks.smallestCockIndex();
+        const y: number = player.cocks.cockThatFits2(300);
         outputText("Edryn starts to say something, but you strip out of your [armor] before she gets more than a half-dozen words out, your " + multiCockDescriptLight(game.player) + " jutting proud and erect, leaking clear streams of pre-cum down ");
-        if (player.cockTotal() == 1) outputText("its underside");
+        if (player.cocks.length == 1) outputText("its underside");
         else outputText("their underside");
         outputText(".  You smile mirthfully when you realize Edryn is actually blushing, and beet red at that!  Her hindlegs prance nervously around as she studies you over her shoulder, and her tail won't stop the steady back-and-forth swish that sends more of the boner-fueling musk towards your nose.");
         if (pregnancy.isPregnant) outputText("  You can tell that since she's gotten pregnant her pheromones have become more potent, but that's little more than a dim note on a forgotten chalkboard to your brain.  It's impossible to think about measuring the potency of anything that isn't your own tool in such a swelteringly hot atmosphere.");
@@ -1104,7 +1104,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         if (player.tongueType > TONUGE_HUMAN) outputText("She's not even begun to taste the fruits of your talents, and you let your long, long tongue spool out inside her, pressing hard on her walls and tenderly flicking across each sensitive fold inside her.  ");
         outputText("The busty, animalistic woman moans unashamedly, hands going to her breasts to squeeze them, her clit filling up to its full size.  You can feel the sensitive nodule plump up against the top of your mouth, so you open wide enough to give it a quick suck before returning to polishing her innards.  After that the equine pleasure-buzzer gets rock-hard and continues to bulge meaningfully against you, pulsing hotly in your mouth.");
         outputText("\n\nYou sway dizzily on your [feet] as you try to focus on just basking in her pussy's delicious... potent... sexy aroma.  [EachCock] is lifting needily with every passing second.  ");
-        if (player.cockTotal() == 1) outputText("It's");
+        if (player.cocks.length == 1) outputText("It's");
         else outputText("They're");
         outputText(" so full that your hardness becomes almost painful, and each twitch of your girthy length makes you wish that you could just nestle it inside her - anything to assuage the hurtful levels of desire that have arisen within you.  Breathlessly, you pull back for a gulp of air.  It's so full of Edryn's scent that it's almost choking in strength, so sweet and wet... and utterly feminine.  You put a hand against the wall as you try to stay upright, whimpering with animalistic desire, so perfectly rigid and ready for a cunt.");
 

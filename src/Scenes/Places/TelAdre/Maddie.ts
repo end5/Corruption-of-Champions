@@ -137,19 +137,19 @@ export class Maddie extends TelAdreAbstractContent {
         outputText("", true);
         outputText("You try to speak as calmly as you can in the face of a giant, jiggling sex-pastry, but she ignores your demands to 'wait', 'listen', or 'stop'.  Sponge-cake-soft fists envelop your arms, lifting you from the ground to pin you against some flour sacks.   The cherries covering the cupcake-girl's whipped-cream bra drop off, pushed away by two candy-pink nipples the size of water bottles.  As one, they discharge thick splorts of thick, gooey icing to splatter over the length of your exposed arms.  It hardens nigh-instantaneously in the comparatively cool air, and you're helpless to do anything but squirm as she applies the same treatment to your " + legs(player) + ", immobilizing you completely.\n\n", false);
         outputText("The cock-crazed confection looks down at you and nods, a satisfied smile spreading over glistening, pale blue lips.  She breathlessly exclaims, \"<i>My creat- cr... Dad ", false);
-        if (player.hasCock()) outputText("is like, all out of icing mix!  So I'm going to borrow a few cups from you, 'kay?", false);
+        if (player.cocks.length > 0) outputText("is like, all out of icing mix!  So I'm going to borrow a few cups from you, 'kay?", false);
         else outputText("gave me so much icing mix, and you like, would look soooo much better with some vanil- van... yummy frosting!", false);
         outputText("</i>\"  She's... what!?\n\n", false);
         // (FORK BETWEEN MALE/NONMALE)
         // (MALE)
-        if (player.hasCock()) {
-            let x: number = player.cockThatFits(60);
+        if (player.cocks.length > 0) {
+            let x: number = player.cocks.cockThatFits(60);
             if (x < 0) x = 0;
             outputText("\"<i>Dad said my name is Madeleine, but that's no fun.  Just call me Maddie.  You've got lots of icing like Dad, right?  I-I... need more icing.  It's in my recipe,</i>\" says Maddie.  The baked broad strips your " + player.armorName + " to expose your " + multiCockDescriptLight(game.player) + ".  Cooing with excitement, she examines your ", false);
             if (player.lust >= 75) outputText("rock-hard", false);
             else outputText("hardening", false);
             outputText(" shaft", false);
-            if (player.cockTotal() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(", running a sponge-soft hand over the love-muscle.  You rock your hips, trying to squirm away.  Maddie laughs, breathily chortling while her well-rounded breasts slide to either side of you and pin you to the wall.\n\n", false);
 
             outputText("\"<i>So is this like, where the icing spouts out right?</i>\" asks the confectionery cutey, squeezing you softly.  \"<i>Awww, how sad – yours is stuck, just like Daddy's!  I'll have to squeeze and rub it until it'll let out the icing.</i>\"\n\n", false);
@@ -160,7 +160,7 @@ export class Maddie extends TelAdreAbstractContent {
             outputText("  \"<i>Liar!  If that wasn't icing, then why would Daddy have put his in all those eclairs and me?</i>\" retorts the busty cupcake, continuing on to say, \"<i>I know, I can suck it out!</i>\"  She purses her jelly-like lips and plunges forward, slurping all " + num2Text(Math.floor(player.cocks[x].cockLength)) + " inches into her oven-warmed esophagus.  Your protests are cut off by the tightness squeezing around your " + cockDescript(game.player, x) + ".  It milks you in rippling motions, buttery-slick and pulsing hungrily.\n\n", false);
 
             outputText("A half-melted tongue ", false);
-            if (!player.hasSheath()) outputText("encircles the base", false);
+            if (!player.cocks.hasSheath()) outputText("encircles the base", false);
             else outputText("pokes and prods into your sheath", false);
             outputText(", leaving a syrupy residue trailing over your " + cockDescript(game.player, x) + ".  You groan, sagging into the sugary suspension.  The strength is completely gone from your limbs, stolen by the pastry's prick-devouring maw.  Her shining eyes look up to gloat once she realizes how completely you've submitted to her ministrations, and in no time, her cake-soft hands catch and squeeze your " + cockDescript(game.player, x) + " into the gargantuan swell of her spongy breasts.  A smile crosses your face as you get pleasured by the motherly mounds and the familiar, sweet smell that Maddie exudes.\n\n", false);
 
@@ -171,15 +171,15 @@ export class Maddie extends TelAdreAbstractContent {
             outputText(".  Maddie squeezes her puckered cock-suckers tight around the turgid shaft while she whips her melty tongue in circles around it.  Your climax hits like a hammer-blow to the temple, knocking the thoughts from your head while you pump rope after rope of 'icing' down the cupcake's dick-gripping neck-hole.  The suction relaxes as you fill the ravenous pastry with your seed and let your head limply sink deeper against the cushion of her sponge-cake-soft breast.\n\n", false);
 
             outputText("Maddie milks you for what seems like ages", false);
-            if (player.cockTotal() == 1) outputText(", your " + cockDescript(game.player, x) + " emptying every drop of jizz into the baked cum-tank.", false);
+            if (player.cocks.length == 1) outputText(", your " + cockDescript(game.player, x) + " emptying every drop of jizz into the baked cum-tank.", false);
             else {
                 outputText(" while her skin absorbs the generous donation of your other member", false);
-                if (player.cockTotal() > 2) outputText("s", false);
+                if (player.cocks.length > 2) outputText("s", false);
                 outputText(".", false);
             }
             outputText("  When the jizz-guzzling pastry-girl pulls back at last to free your empty member, it's coated from top to bottom in gooey blue jelly, though it's tinged white in places.  The milked-out member slowly softens", false);
-            if (player.cockTotal() > 1) {
-                if (player.cockTotal() == 2) outputText(" along with your other penis", false);
+            if (player.cocks.length > 1) {
+                if (player.cocks.length == 2) outputText(" along with your other penis", false);
                 else outputText(" along with your other dicks", false);
             }
             outputText(".  Satisfied, your body goes limp and sags against the wall while your face leans on the cupcake-girl's departing breast.\n\n", false);

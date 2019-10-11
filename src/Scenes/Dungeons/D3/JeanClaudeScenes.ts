@@ -85,10 +85,10 @@ export class JeanClaudeScenes {
 
         // Can you(T-form second person) understand me, intruder?
         outputText("\n\n“<i>Peux-tu me comprendre, intrus? Non? Sprechen de Gnollen? How about now? Ah, yes. Human. The language of masters... and slaves.</i>” His widening sneer leaves you in no doubt which camp he considers you as belonging to. “<i>I am Jean-Claude, the Rude King, if you please. You are the interloper, if you please. Ah, yes! Yes you are! Do not try to deny it!</i>” He laughs richly, his slow, velvety voice rolling around you as he goes on. “<i>You have beat up enough of my scouts that you have left, eh, an impression, shall we say? We do not need orders from the demons to watch out for such a rough player as you!</i>” He moves as fast as a snake, belying his size and frame, to grab you tight around the jaw. His claws dig into your skin as he stares deep into your eyes, encompassing you in their rich, bottomless glow. It glows like your blood glows, rising to the surface of your skin, coursing inexorably to your groin,");
-        if (player.hasCock()) outputText(" [eachCock] stiffening");
-        if (player.hasCock() && player.hasVagina()) outputText(" and");
+        if (player.cocks.length > 0) outputText(" [eachCock] stiffening");
+        if (player.cocks.length > 0 && player.hasVagina()) outputText(" and");
         if (player.hasVagina()) outputText(" your [vagina] beading with excitement");
-        if (!player.hasCock() && !player.hasVagina()) outputText(" your loins aflame with excitement");
+        if (!player.cocks.length > 0 && !player.hasVagina()) outputText(" your loins aflame with excitement");
         outputText(" as you sink further into the yellow warmth, immersing yourself in it, so small and pliant and willing to be shaped by that fathomless, over-arching will, this huge masculine creature with a body of carved strength, with his feral, demanding smell surrounding you, with his big, luscious cocks....  The other basilisk’s spell is fading from your limbs, allowing you to move, but it is no respite at all- the more you stare into the eyes in front of you now, the weaker you feel, the more you want to puddle onto the floor and supplicate yourself before their power.");
 
         outputText("\n\n“<i>But now the ball is in the basilisk court, is it not, interloper?</i>” Jean-Claude growls softly, holding your face close, pulling you deeper and deeper into his glow, bathing you in heat. “<i>And the only question now is how I am going to serve you.</i>”");
@@ -214,9 +214,9 @@ export class JeanClaudeScenes {
 
         outputText("The Rex’s yellow glow encompasses you, glaring out everything - your purpose, your memories, your sense of self, replaced only by the need to stare deeper and deeper into the pits of gold, the depthless lava of his will which rolls over you, heating you within and without. When he steps into you and puts his warm, smooth hand on your waist you almost flinch, you are that sensitive to his presence. He grins with the exhilaration of a conqueror as he draws you further into himself. The nagging undercurrents of your own body rise to the surface as you feel his warmth and smell his powerful musk;");
         if (player.hasVagina()) outputText(" your [vagina] beads with excitement");
-        if (player.hasCock() && player.hasVagina()) outputText(" and");
-        if (player.hasCock()) outputText(" [eachCock] hardens");
-        if (player.hasCock() || player.hasVagina()) outputText(" as");
+        if (player.cocks.length > 0 && player.hasVagina()) outputText(" and");
+        if (player.cocks.length > 0) outputText(" [eachCock] hardens");
+        if (player.cocks.length > 0 || player.hasVagina()) outputText(" as");
         outputText(" your body reacts uncontrollably to the presence of the being whose claws reach deeper and deeper into your mind, touching and triggering your basest desires.");
         if (player.effects.findByType(StatusAffects.RemovedArmor) > 0) outputText("  You realize vaguely you already have taken your clothes off, undoubtedly your own subconscious preparing you for this moment.");
         else outputText("  You really are uncomfortably hot underneath the glare of those eyes. Hardly even aware you’re doing it, you begin to take off your [armor]. Piece after piece falls to the floor until you are naked before him.");
@@ -238,8 +238,8 @@ export class JeanClaudeScenes {
 
         outputText("\n\n“<i>You like this?</i>” the monstrous basilisk growls. “<i>The feeling of synthetic flesh? You like the remove, the lack of feature it gives you? Ah... you were a pervert before you even came here, interloper. Well. You will learn that what your new masters will always do is give you exactly what you want.</i>” You are deep in the heat of his golden will and you cannot tell where his words end and where your thoughts begin. Why did you eat those black eggs? He’s right, there cannot be any other reason other than the masochistic thrill you feel from being dehumanized, of looking like a shiny sex doll. The thought sends deep, shameful tingles through your body, which feels increasingly hard to move. But why would you want to move it? It feels so much better to act like what you look like, frozen in supplication, ready to be taken and used whenever your masters desire- a state of true submission. You manage a groan as fireworks of arousal go off in your head,");
         if (player.hasVagina()) outputText(" your [vagina] dribbling excitement");
-        if (player.hasVagina() && player.hasCock()) outputText(" and");
-        if (player.hasCock()) outputText(" your [cock] straining helplessly");
+        if (player.hasVagina() && player.cocks.length > 0) outputText(" and");
+        if (player.cocks.length > 0) outputText(" your [cock] straining helplessly");
         outputText(" to this depth of slutty surrender you have plumbed, your neck muscles seizing up and your limbs tightening as the thoughts sink into you.");
 
         outputText("\n\nSmirking, Jean-Claude gives you a small push. You teeter for a moment and then fall onto your back. Although your paralyzed body was unable to brace itself, you don’t feel much pain; your rubber flesh does cause you to bounce a bit, drawing a flutter of chuckles from the crowd.");
@@ -250,7 +250,7 @@ export class JeanClaudeScenes {
 
         outputText("\n\n“<i>I wish to congratulate whoever it was who created black eggs,</i>” he says at last, with a barked laugh. “<i>They do amazing things, with the right magic. Here slave, let me show you.</i>”");
 
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nHe reaches down and grasps your [cock]- fiercely erect, as it will always be, now. You still feel everything and you cannot flinch or turn away, cannot do anything but helplessly bask in the sensation as Jean-Claude rubs your cock at its base, making it warmer and wetter and gooier until with a slimy sound, he pulls the whole thing away from you. With a kind of horror, you find you can still feel it as he turns around and, to a chorus of dry laughter, presents your ragingly hard erection to his brethren.");
 
             outputText("\n\n“<i>Isn’t black sorcery wonderful?</i>” he roars, waggling his new-found dildo to escalating hilarity, his hot, smooth hand rubbing down your length. “<i>Whilst you could be down here getting a good fucking from me, this little number could be shoved up the ass of a demon’s gutter slut three floors away. You’ll feel both just as much, and either way you will never. Find. Release!</I>”");
@@ -308,7 +308,7 @@ export class JeanClaudeScenes {
         else {
             outputText("\n\nHe grunts with satisfaction as, after just a few thrusts, you take his huge girth right down to his muscled hips. You gasp as he begins to fuck you harder, pressing into your tunnel forcefully. “<i>Been preparing yourself for this, have you?</i>” He growls, his breathing coming heavier as he bucks his heavy body into you. “<i>Few test runs, with my soldiers? Or maybe you’re the kind of girl who sits down and spreads them for anything that might have a big, fat dick. No matter. You belong to me now, body and soul.</i>”");
         }
-        if (!player.hasCock()) outputText("  His other dick bats into your stomach, thrusting upwards towards your [chest] as he speaks, his eyes transfixing you, drawing you further into his savage, potent, golden dreams of lust and conquest as he speaks.");
+        if (!player.cocks.length > 0) outputText("  His other dick bats into your stomach, thrusting upwards towards your [chest] as he speaks, his eyes transfixing you, drawing you further into his savage, potent, golden dreams of lust and conquest as he speaks.");
         else outputText("  His other dick thrusts against your own [cock], hardening it with incessant rubbing as he speaks, his eyes transfixing you, drawing you further into his savage, potent, golden dreams of lust and conquest as he speaks.");
 
         outputText("\n\n“<i>The demons were scared of you, thought you might bring their empire down. And you shall. I will fill you full of my eggs. You will give me dozens, hundreds of loyal soldiers and eager breeders. Whilst Lethice’s fodder fret and furrow over how to produce anything from their cursed seed except fucking imps, we will procreate, we will create an army underneath them, and then, then we shall tear them apart from within. We shall set ourselves above everyone, bring back the old ways, walk Mareth the way our ancestors did, feared by all. A Tyrannosauracy!</i>” He laughs richly as he thrusts himself deep into you, enjoying every inch of your [cunt] as you moan, and he goes on in a lower tone. “<i>My genes are good, but if this is to work I guess I will have to spread our bets a little. Loan you out some. You’d like that, wouldn’t you? Sleep with the crew some nights?</i>”");

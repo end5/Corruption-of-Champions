@@ -134,22 +134,22 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
             else if (player.cor < 66) outputText("playfully", false);
             else outputText("seductively", false);
             outputText(" undress, tossing your " + player.armorName + " to the side to fully expose yourself, just like your soon-to-be lover.", false);
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 if (player.lust < 70) {
-                    if (player.cockTotal() > 1) outputText("  Each of y", false);
+                    if (player.cocks.length > 1) outputText("  Each of y", false);
                     else outputText("  Y", false);
                     outputText("our ", false);
                     if (player.lust < 33) outputText("flaccid", false);
                     else outputText("half-erect", false);
                     outputText(" member", false);
-                    if (player.cockTotal()) outputText("s", false);
+                    if (player.cocks.length) outputText("s", false);
                     outputText(" stiffens slightly as you wonder how the spider-girl will 'do' you, rising in preparation of the coming sexual contact.", false);
                 }
                 else {
-                    if (player.cockTotal() > 1) outputText("  Each of y", false);
+                    if (player.cocks.length > 1) outputText("  Each of y", false);
                     else outputText("  Y", false);
                     outputText("our rock-hard member", false);
-                    if (player.cockTotal()) outputText("s", false);
+                    if (player.cocks.length) outputText("s", false);
                     outputText(" twitches powerfully as you wonder how the spider-girl will 'do' you, trembling in anticipation of the coming sexual contact.", false);
                 }
             }
@@ -180,7 +180,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         // (Combat Intro: Lust Loss)
         else {
             outputText("You drop to the ground and begin to furiously finger your " + vaginaDescript(player, 0) + ", arching your " + hipDescription(player) + " as the aching need for sexual contact overpowers your inhibitions.  ", false);
-            if (player.hasCock()) outputText(SMultiCockDesc(game.player) + " flop about lewdly, leaving trails of pre-cum everywhere that they touch.  ", false);
+            if (player.cocks.length > 0) outputText(SMultiCockDesc(game.player) + " flop about lewdly, leaving trails of pre-cum everywhere that they touch.  ", false);
             outputText("The spider-girl looks down at your prone, masturbating form and slowly begins to diddle her own needy box.  She turns about and spreads her legs, never slowing in her ministrations.  Her pale, heart-shaped ass begins to bob from side to side in time with her fingering, frequently eclipsed by the heavy weight of her spider-like abdomen.\n\n", false);
 
             outputText("Numerous protrusions bulge up from the spherical, arachnid organ, each engorging and twisting slightly in perfect sync with each other.  In truth, you barely notice as you're too focused on the steamy wet delta of her sex to care about her weird spider-bits.  Unfortunately, each of those spinnerets unloads its webbing at you in a wave, pulling your hands away from your sex and completely pinning you to the ground.  You struggle futilely, desperate to get a finger back in your aching box, but the sticky threads hold fast, immobilizing you.  They repeat their contortions again, and a moment later you're buried further under the gossamer threads.\n\n", false);
@@ -255,7 +255,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         // *SUMMARY:  PC is tied down and has a web-condom sprayed around their dick, then a webbing cock-ring.  The PC is then ridden hard, bit numerous times, and never able to cum until pain lances through his (balls/cock) from the lack of release.  Finally, she bites PC's neck and the PC cums, inflating web-condom of various size.
         outputText("", true);
         spriteSelect(73);
-        let x: number = player.cockThatFits(monster.vaginalCapacity());
+        let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = 0;
         // (Noncombat Intro:)
         if (!game.inCombat) {
@@ -281,15 +281,15 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         if (player.lust >= 80) outputText("you thrust up as if you could somehow mate with her vagina in spite of your restraints", false);
         else outputText("you grow harder and harder, entranced by the sexy sight", false);
         outputText(".  She giggles at you before squirting another few strands of webbing at you, this time directly at your " + cockDescript(game.player, x) + ".  It sticks snugly around the ", false);
-        if (!player.hasSheath()) outputText("base", false);
+        if (!player.cocks.hasSheath()) outputText("base", false);
         else outputText("sheath", false);
         outputText(", a tight ring that holds your dick immobile in its vice-like grasp.  ", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("She makes ");
-            if (player.cockTotal() == 2) outputText("a similar ring");
+            if (player.cocks.length == 2) outputText("a similar ring");
             else outputText("similar rings");
             outputText(" for your other penis", false);
-            if (player.cockTotal() > 2) outputText("es", false);
+            if (player.cocks.length > 2) outputText("es", false);
             outputText(" as well, making sure you'll be completely bound.  ", false);
         }
         outputText("You wince from the onset of tightness and wonder if you'll be able to cum like this, but she immediately shoots out more of her silky strands, sealing a perfect sheath of non-sticky fibers around your " + cockDescript(game.player, x) + ", anchored to the ring.\n\n", false);
@@ -298,9 +298,9 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         if (player.spiderScore() < 4) outputText("beast's seed", false);
         else outputText("strange, itinerate spider's seed", false);
         outputText(", would we?</i>\" asks your captor.  Your eyes go wide, and you start to plead with her, but she quickly muffles you with a spray of webbing that blocks your mouth, but leaves your nose open.  A carapace-covered hand", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText(" pushes past your other dick", false);
-            if (player.cockTotal() > 2) outputText("s", false);
+            if (player.cocks.length > 2) outputText("s", false);
             outputText(" and", false);
         }
         outputText(" caresses the poor, bound cock as she looks down at you, a cruel smile spreading over her face as her violet-hued eyes bore into yours.\n\n", false);
@@ -316,13 +316,13 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         outputText(".  The spider-maiden seem to tire of the teasing once you begin to twitch against her.\n\n", false);
 
         outputText("\"<i>Are those pathetic twitches all you can give me?  I'll have to fix that,</i>\" proclaims your arachnid lover.  She leans further down to kiss your " + chestDesc(game.player) + ", then a moment later opens wider and bites down, hard.  Her fangs slide into your flesh with minimal resistance, narrow enough that it feels more like a pinch than anything truly painful, but then her venom begins to flow.  You feel it forcing its way into your veins, burning hotly as the foreign fluid permeates your very being.  Starting at the site of her bite, the heat spreads outward slowly, slowly shifting from boiling discomfort to the fiery blaze of arousal.  Your " + cockDescript(game.player, x) + " begins to pulse in time with your heartbeat under its wrappings, actually starting to ache with need.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Meanwhile, your extra penis", false);
-            if (player.cockTotal() > 2) outputText("es", false);
+            if (player.cocks.length > 2) outputText("es", false);
             outputText(" drool", false);
-            if (player.cockTotal() == 2) outputText("s", false);
+            if (player.cocks.length == 2) outputText("s", false);
             outputText(" pre-cum, but ", false);
-            if (player.cockTotal() == 2) outputText("is", false);
+            if (player.cocks.length == 2) outputText("is", false);
             else outputText("are", false);
             outputText(" completely ignored.", false);
         }
@@ -359,7 +359,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     private femaleSpiderMorphTooBigWebRape(): void {
         outputText("", true);
         spriteSelect(73);
-        let x: number = player.cockThatFits(monster.vaginalCapacity());
+        let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = 0;
         // (Consensual)
         if (!game.inCombat) {
@@ -373,7 +373,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
             outputText("You lay down, quite confident in your plus-sized erection and daydreaming about all the ways she could take you.  Is she going to thigh-fuck you?  Maybe she'll give you a hand-job with that slippery-smooth carapace of hers?  Of course, you suppose she could always just grind her gorgeous little gash on your mammoth manhood.  " + SMultiCockDesc(game.player) + " drips a nice, fat drop of pre-cum from its slightly-dilated slit at its " + cockHead(player) + " from all your dirty thoughts.  The wet droplet reminds you of where you are, and you look up in time get a nice view of the pale woman's well-rounded ass as it shakes back and forth, jiggling slightly while her abdomen sways heavily above it.\n\n", false);
 
             outputText("All over the spherical, arachnid organ, her spinnerets engorge, becoming more visible.  They twist for a moment before spurting out heavy flows of webbing, the weighty strands coating your " + legs(player) + ", arms, parts of your torso , and even your " + feet(player) + ".  The only places left totally uncovered are your head and crotch.  A second blast of smooth, non-sticky threads encase the first, making sure your lover won't get stuck to you once things get intimate.  The spider-maid giggles as she saunters up to get a closer look at your " + cockDescript(game.player, x), false);
-            if (player.cockTotal() > 1) outputText(", ignoring the other, smaller members", false);
+            if (player.cocks.length > 1) outputText(", ignoring the other, smaller members", false);
             outputText(".  She asks, \"<i>This is your pride and joy, isn't it?  Well, I don't have much use for such a bulky thing, but if you eat me out good enough, maybe I'll see if its orgasm is as impressive as its size.</i>\"\n\n", false);
         }
         // (COMBAT LOSS)
@@ -430,8 +430,8 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     public loseToFemaleSpiderMorph(): void {
-        if (player.hasCock()) {
-            if (player.cockThatFits(monster.vaginalCapacity()) == -1) femaleSpiderMorphTooBigWebRape();
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(monster.vaginalCapacity()) == -1) femaleSpiderMorphTooBigWebRape();
             else spiderMorphFemaleRidesACawk();
         }
         else if (player.hasVagina()) defeatFemale();
@@ -454,10 +454,10 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
             let pussyFuck: () => void = null;
             let analFuck: () => void = null;
             if (player.hasVagina()) scissor = fSpiderMorphRape;
-            if (player.hasCock()) {
-                if (player.cockThatFits(monster.vaginalCapacity()) != -1) pussyFuck = fSpiderMorphRapeDude;
+            if (player.cocks.length > 0) {
+                if (player.cocks.cockThatFits(monster.vaginalCapacity()) != -1) pussyFuck = fSpiderMorphRapeDude;
                 else outputText("  <b>You don't have a dick small enough to fuck her vagina.</b>", false);
-                if (player.cockThatFits(monster.analCapacity()) != -1) analFuck = evilSpiderGirlVictoryAnal;
+                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) analFuck = evilSpiderGirlVictoryAnal;
                 else outputText("  <b>Her ass is too tight for you to fit inside.</b>", false);
             }
             simpleChoices("Fuck Ass", analFuck, "Fuck Pussy", pussyFuck, "Scissor", scissor, "", null, "Leave", cleanupAfterCombat);
@@ -499,7 +499,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         outputText("\n\n", false);
 
         outputText("You roll and buck, your hips moving entirely of their own volition.  Eyes closed, you enjoy the moment and let your fingertips curl into the mossy ground beneath while rolling pleasure radiates from your womanhood.  ", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("Throughout it all, " + sMultiCockDesc(game.player) + " spews wasted seed over her leg", false);
             if (player.cumQ() >= 400) {
                 outputText(", even leaving a ", false);
@@ -527,7 +527,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     // *Victory Male
     // Summary:  Bind her hands with vines and fuck the immobilized spider-girl. BORING
     private fSpiderMorphRapeDude(): void {
-        let x: number = player.cockThatFits(monster.vaginalCapacity());
+        let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = 0;
         outputText("", true);
         spriteSelect(73);
@@ -546,9 +546,9 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         outputText("The defeated arachnid trembles visibly, moaning out loud while you plunge into her depths over and over, slowly beginning to fuck her with faster, more confident strokes.  She actually starts to whine, \"<i>P-please j-just pull out before you cum?  I want you to keep fucking me, b-but I don't want to be pregnant.</i>\"\n\n", false);
 
         outputText("That was unexpected.  You slap her ass and bite down on her nipple to silence her worthless words - if she didn't want you to fuck her pussy she shouldn't have been trying so hard to get in your pants.  She writhes, squirming and venting tiny strands of half-formed web from her abdomen with each thrust, nearly cumming but still wide-eyed and worried about pregnancy.  You massage her other breast with your free hand, pumping and pounding away at her", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText(" while your other ", false);
-            if (player.cockTotal() == 2) outputText("cock flops about uselessly", false);
+            if (player.cocks.length == 2) outputText("cock flops about uselessly", false);
             else outputText("cocks flop about uselessly", false);
         }
         outputText(".  That extra stimulation is all it takes to get her off and make her squirt your groin with her copious lady-spunk.  You tweak her nipple and bite down again, ", false);
@@ -559,9 +559,9 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         outputText("You bottom out", false);
         if (player.balls > 0) outputText(" and slap your balls into her soaked taint", false);
         outputText(", " + cockDescript(game.player, x) + " twitching", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText(" while the ", false);
-            if (player.cockTotal() > 2) outputText("rest spasm pointlessly", false);
+            if (player.cocks.length > 2) outputText("rest spasm pointlessly", false);
             else outputText("other spasms pointlessly", false);
         }
         else outputText(" happily as it prepares to unload", false);
@@ -593,9 +593,9 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     // *Victory Anal:
     // Summary: Fuck her ass until she loses control of her spinnerets and starts spraying webs willy-nilly.
     private evilSpiderGirlVictoryAnal(): void {
-        let x: number = player.cockThatFits(monster.analCapacity());
+        let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x == -1) x = 0;
-        const y: number = player.cockThatFits2(monster.analCapacity());
+        const y: number = player.cocks.cockThatFits2(monster.analCapacity());
         outputText("", true);
         spriteSelect(73);
         outputText("You peel off your " + player.armorName + " while you gaze disdainfully down at your prize.  ", false);

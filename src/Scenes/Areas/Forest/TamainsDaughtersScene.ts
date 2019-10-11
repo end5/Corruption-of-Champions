@@ -173,7 +173,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
     private fuckYoDaughtersHomie(): void {
         spriteSelect(57);
         flags[kFLAGS.TIMES_FUCKED_TAMANIS_DAUGHTERS]++;
-        const cocks: number = player.totalCocks();
+        const cocks: number = player.cocks.length;
         const daughters: number = int(flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 2);
 
         outputText("", true);
@@ -188,7 +188,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         outputText(" surges forwards, mobbing you from all sides.  ", false);
 
         // Find a dick that fits
-        const primary: number = player.cockThatFits(50);
+        const primary: number = player.cocks.cockThatFits(50);
         // (Fits)
         if (primary >= 0) {
             outputText("You pick a random body from the crowd, impaling her on your " + cockDescript(player, primary) + ".  The others crowd around, jealous of your chosen cock-sleeve.   She looks up at you, blissful as she hugs against you and grinds her tight body down, raping her virginal hole on the firmness of your " + cockDescript(player, primary) + ".   The others massage your " + legs(player) + ", licking and nibbling your skin as they compete to tempt you into taking them next.", false);
@@ -353,10 +353,10 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
     private legTamanisDaughtersRAEPYou(): void {
         spriteSelect(57);
         flags[kFLAGS.TIMES_FUCKED_TAMANIS_DAUGHTERS]++;
-        const cocks: number = player.totalCocks();
+        const cocks: number = player.cocks.length;
         const daughters: number = int(flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 2);
         // Find a dick that fits
-        const primary: number = player.cockThatFits(50);
+        const primary: number = player.cocks.cockThatFits(50);
 
         outputText("", true);
         outputText("Knowing full well that a ", false);
@@ -402,7 +402,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 outputText("your deflating " + multiCockDescriptLight(game.player) + " a playful slap, smirking when it stiffens in response, \"<i>Honestly, you're so shameful, getting hard again from such an innocent touch.  I didn't know you wanted to make our little family that much bigger.</i>\"\n\n", false);
 
                 outputText("Pantomiming a sigh, Tamani drags her finger from your ", false);
-                if (!player.hasSheath()) outputText("base", false);
+                if (!player.cocks.hasSheath()) outputText("base", false);
                 else outputText("sheath", false);
                 outputText(" to the tip, giggling with mirth as her words and touches bring you to full readiness.\n\n", false);
 
@@ -520,7 +520,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 else if (player.hasVagina()) outputText("pussy", false);
                 else outputText("taint", false);
                 outputText(", massaging your ", false);
-                if (player.hasSheath()) outputText("sheath", false);
+                if (player.cocks.hasSheath()) outputText("sheath", false);
                 else outputText("crotch", false);
                 outputText(", and the sensitive " + player.skinDesc + " around your crotch.   The busty girl on your " + cockDescript(game.player, 0) + " teases, \"<i>Go ahead and let it out " + mf(player, "stud", "sexy") + ".  I'm tired of getting your cream second-hand, so squirt it right into my hot little cunt.</i>\"\n\n", false);
 
@@ -709,7 +709,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         outputText("", true);
 
         // Vars
-        const cocks: number = player.totalCocks();
+        const cocks: number = player.cocks.length;
         const daughters: number = int(flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 2);
 
         outputText("Your efforts to resist were in vain – there's simply too many of your slutty daughters to fight off.  The crowd flows over your ", false);
@@ -859,7 +859,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         spriteSelect(57);
         outputText("", true);
         outputText("\"<i>Wonderful!</i>\" cries the excited pregnant slut.   She gives you a quick peck on the cheek as she prances back over to the machine.  You brace yourself in anticipation, eager to lose yourself to an eternal orgasm.  A switch clicks, and a dial whirs as it's turned up to the maximum.  The fluids pumping into your backside and directly into your veins suddenly jump in pressure, stinging painfully for a moment before the pleasure returns.  Your eyes slowly roll back, your jaw goes slack, and your " + multiCockDescriptLight(game.player) + " spew", false);
-        if (player.totalCocks() == 1) outputText("s", false);
+        if (player.cocks.length == 1) outputText("s", false);
         outputText(" cum into the tubes.\n\n", false);
         if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) outputText("Exgartuan moans, \"<i>Ohhhhhh yeeeeaaaaahhhh...</i>\" before slipping into silence.\n\n", false);
 
@@ -887,12 +887,12 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         outputText("\"<i>Really?</i>\" asks the pregnant goblin before she exclaims, \"<i>You do love us!  Oh Dad, once mom comes home will you fuck all of us?  I want to feel you make love to my drippy, pregnant pussy while she watches!</i>\"\n\n", false);
 
         outputText("You agree to do just that, ", false);
-        if (player.cockTotal() > 1) outputText("each of ", false);
+        if (player.cocks.length > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " rising to full hardness in anticipation.  Your daughter pats ", false);
-        if (player.cockTotal() > 1) outputText("one of them", false);
+        if (player.cocks.length > 1) outputText("one of them", false);
         else outputText("it", false);
         outputText(" as if it were a person and smiles as she pops the restraints from your chair.  She helps you as you stagger up to your " + feet(player) + ", though the feeling of her hand stroking ", false);
-        if (player.cockTotal() > 1) outputText("a", false);
+        if (player.cocks.length > 1) outputText("a", false);
         else outputText("your", false);
         outputText(" " + cockDescript(game.player, 0) + " doesn't make it easy.  The pair of you journey deeper into the caves to a massive antechamber filled with pregnant goblins.  Some are eating, others are sewing at tables, tinkering with machinery, or fiddling with alchemical equipment.  All of them turn to look at you as you enter.\n\n", false);
 
@@ -910,13 +910,13 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         outputText("", true);
         flags[kFLAGS.TIMES_FUCKED_TAMANIS_DAUGHTERS]++;
         // Find a dick that fits
-        const primary: number = player.cockThatFits(50);
+        const primary: number = player.cocks.cockThatFits(50);
 
         outputText("Your attempts to resist prove to be in vain, as your daughters and their extra-curvy mother have completely defeated you.  ", false);
         if (player.HP < 1) outputText("Lying in the dirt, too hurt to fight back, you can only tremble in anticipation of what pleasures they're going to force upon you this time.", false);
         else {
             outputText("Lying back in the dirt, you're too hard to fight back.  You stroke ", false);
-            if (player.totalCocks() > 1) outputText("one of ", false);
+            if (player.cocks.length > 1) outputText("one of ", false);
             outputText("your trembling " + multiCockDescriptLight(game.player) + ", feeling it leak pre-cum in anticipation of getting to knock up some of these beautiful curvy women.", false);
         }
         outputText("  Tamani pushes her way to the front of the pack, her daughters looking disappointed but yielding to their mother's authority for the time being.  She walks over to you, stepping over your fallen form and uncorking a a potion.  You grunt as she drops her jiggling ass down on your ", false);
@@ -932,7 +932,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         outputText("Tamani rubs your temples soothingly as your " + face(player) + " creases with worry and reassures you, \"<i>Don't worry, this will wear off soon.  This drug just shuts down your mind so it'll be nice and open to suggestion.  You can feel how hard it is to think, can't you?  Every time you muster up a thought it gets caught up in the little pink clouds and whisked away.  Don't bother, just relax and listen to Tamani's voice.</i>\"\n\n", false);
 
         outputText("She reaches into your " + player.armorName + " to rub ", false);
-        if (player.totalCocks() > 1) outputText("one of ", false);
+        if (player.cocks.length > 1) outputText("one of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + ", casually stroking the hard member as she pivots around to explain, \"<i>You get so hard for Mistress Tamani, don't you?  ", false);
         if (flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] > 10) outputText("Your body must remember how much it loves being my pussy-hungry husband.", false);
         else outputText("That's because your body knows how hot and moist Tamani's pussy is and how much you want to service it.", false);
@@ -962,15 +962,15 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         outputText("  Pride wells up in you when you realize what a good husband you've been.  Tamani pats you on the head, and whispers, \"<i>Good job lover</i>\" as the cobwebs slowly clear away.   You remember your wife pouring a lust draft down your throat and giving you the 69 of a lifetime, but now it's time to be a good husband and father and help your daughters out too.   The girls clamber forwards, giggling to each other excitedly as they remove what little garments they have.\n\n", false);
 
         outputText("You welcome them into your arms as Tamani steps away with a strange glint in her eye, rubbing the seed on her hand into her snatch.  Potions are pressed to your lips, and you happily accept your daughters' gifts, guzzling them happily and taking the time to compliment them on their alchemical skills while ", false);
-        if (player.cockTotal() > 1) outputText("each of ", false);
+        if (player.cocks.length > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " grows back to full erectness and trembles with desire, ready to seed a womb.  The girls ", false);
-        if (player.cockTotal() == 1) outputText("grab your " + multiCockDescriptLight(game.player) + " and stroke it with long slow strokes, just like their mother.  Unlike her, they don't seem content to wait, and in seconds a slippery gash is stretching to accommodate your cock-head.\n\n", false);
+        if (player.cocks.length == 1) outputText("grab your " + multiCockDescriptLight(game.player) + " and stroke it with long slow strokes, just like their mother.  Unlike her, they don't seem content to wait, and in seconds a slippery gash is stretching to accommodate your cock-head.\n\n", false);
         else outputText("each grab one of your " + multiCockDescriptLight(game.player) + " and stroke it with long slow strokes, just like their mother.  Unlike her, they don't seem content to wait, and in seconds a slippery gash is stretching to accommodate each cock-tip.\n\n", false);
 
         // (TOO BIG)
         if (primary < 0) {
             outputText("Sadly, you're just too big to properly impregnate your daughter, and a stab of worry that you might be a bad father lances through you.  ", false);
-            if (player.cockTotal() == 1) {
+            if (player.cocks.length == 1) {
                 outputText("Thankfully your daughter doesn't seem to mind.  She switches to resume stroking you, though the wet tightness of goblin cunt stretches around as much of your tip as it can.  Between the drugs, the sexy girl on top of you, and your desire to be a good patriarch, they have no problem getting you off into their waiting, fertile wombs.  You cry out and twitch, seeding your daughter's womb with spunk, treating her just like her mother now that she's all grown up.", false);
                 if (player.cumQ() > 700) outputText("It gets everywhere as her womb fails to contain your massive load, even after you've bloated her belly with the stuff.", false);
                 if (player.cumQ() > 2000) outputText("After a few more seconds the puddle from before gets even deeper, and your daughters kindly prop up your head to keep you from drowning in the jism pool.", false);
@@ -987,9 +987,9 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         // (FITS)
         else {
             outputText("Thankfully, the hungry goblin twat is able to devour your " + cockDescript(game.player, 0) + " with ease.  Those pliable, fluid-slicked cunt-walls clench ever-so-tightly around you", false);
-            if (player.biggestCockArea() < 30) outputText(" in spite of the large sizes they usually handle.", false);
+            if (player.cocks.biggestCockArea() < 30) outputText(" in spite of the large sizes they usually handle.", false);
             else outputText("r large size.", false);
-            if (player.totalCocks() > 1) {
+            if (player.cocks.length > 1) {
                 outputText("  You grunt happily as your daughters begin to slide up and down your lengths, moaning lewdly with every wet squelch that escapes their drooling pussies.  Thanks to the drugs, the writhing form of your sexy daughters, and the desire to be a good patriarch for your family, you get off in no time.  You cry out and twitch, seeding your daughters' womb with spunk, treating them just like their mother now that they're all grown up.", false);
                 if (player.cumQ() > 700) outputText("  It gets everywhere as their wombs fail to contain your massive load, even after you've bloated their bellies with the stuff.", false);
                 if (player.cumQ() > 2000) outputText("  After a few more seconds the puddle from before gets even deeper, and your daughters kindly prop up your head to keep you from drowning in the jism pool.", false);
@@ -1035,7 +1035,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         spriteSelect(57);
         if (monster.HP < 1) {
             outputText("You smile in satisfaction as " + monster.a + monster.short + " collapses, unable to continue fighting.", true);
-            if (player.lust >= 33 && player.cockTotal() > 0) {
+            if (player.lust >= 33 && player.cocks.length > 0) {
                 outputText("In spite of their injuries, they do try to present their bodies in as lewd a way as possible.  You could still fuck them, but things might get out of hand...\n\nDo you fuck them?", true);
                 doYesNo(fuckYoDaughtersHomie, cleanupAfterCombat);
             }
@@ -1045,7 +1045,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         else {
             outputText("You smile in satisfaction as your daughters collapse in upon themselves, devolving into a frenzied orgy.  It looks like they're too distracted to continue fighting.  They're putting on quite a show...\n\n", true);
             dynStats("lus", 5);
-            if (player.lust >= 33 && player.cockTotal() > 0) {
+            if (player.lust >= 33 && player.cocks.length > 0) {
                 outputText("You could still fuck them, but things might get out of hand...\n\nDo you fuck them?", false);
                 doYesNo(fuckYoDaughtersHomie, cleanupAfterCombat);
             }
@@ -1064,7 +1064,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 player.orgasm();
             }
             outputText("\n\nYou give up, you're just too turned on by the sea of sexually charged deviants to resist them anymore.  You're ready to fuck them all.", false);
-            if (player.cockTotal() == 0) {
+            if (player.cocks.length == 0) {
                 outputText("The sexy sluts pout, \"<i>Why did you have to go and get rid of your dick!?</i>\" before something hits you in the head, HARD, knocking you out.", false);
                 cleanupAfterCombat();
                 return;
@@ -1083,7 +1083,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         // hp loss
         else {
             outputText("\n\nOverwhelmed by your wounds, you can't even try to stop the goblin horde...", false);
-            if (player.cockTotal() == 0) {
+            if (player.cocks.length == 0) {
                 outputText("The sexy sluts pout, \"<i>Why did you have to go and get rid of your dick!?</i>\" before something hits you in the head, HARD, knocking you out.", false);
                 cleanupAfterCombat();
                 return;

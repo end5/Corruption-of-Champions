@@ -7,7 +7,7 @@ export class Masturbation {
 
     public masturbateMenu(): void {
         menu();
-        if (player.hasCock() && (player.cocks[0].cockType == CockTypesEnum.BEE)) {
+        if (player.cocks.length > 0 && (player.cocks[0].cockType == CockTypesEnum.BEE)) {
             clearOutput();
             outputText("Although your bee cock aches you know that there's no way for you to get relief on your own.  When you touch your shaft or think about cumming images of the bee girl and the sound of her hypnotic buzzing fill your mind.");
             addButton(0, "Next", playerMenu);
@@ -23,19 +23,19 @@ export class Masturbation {
         }
         else addButton(button++, "Masturbate", masturbateGo);
         // catofellato
-        if (player.hasCock() && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
+        if (player.cocks.length > 0 && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
             addButton(button++, "Lick Cock", catAutoLick);
         }
         if (player.hasVagina() && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
             addButton(button++, "Lick 'Gina", lickYerGirlParts);
         }
-        if (player.tentacleCocks() > 0 && player.hasVagina()) {
+        if (player.cocks.tentacleCocks() > 0 && player.hasVagina()) {
             addButton(button++, "Tentapussy", tentacleSelfFuck);
         }
-        if (player.tentacleCocks() > 0) {
+        if (player.cocks.tentacleCocks() > 0) {
             addButton(button++, "Tentabutt", tentacleGoesUpYerPooperNewsAtEleven);
         }
-        if (player.canOvipositBee() && player.lust >= 33 && player.biggestCockArea() > 100) {
+        if (player.canOvipositBee() && player.lust >= 33 && player.cocks.biggestCockArea() > 100) {
             addButton(button++, "LayInCock", getHugeEggsInCawk);
         }
         if (player.canOviposit() && player.hasFuckableNipples() && player.lust >= 33 && player.biggestTitSize() >= 21) {
@@ -58,7 +58,7 @@ export class Masturbation {
     private fappingItems(menus: boolean = true): boolean {
         if (menus) menu();
         let button: number = 0; // Will be greater than zero by the end if the player owns any fapping items
-        const canReachCock: boolean = player.cocks.length > 0 && (!player.isTaur() || player.cocks[player.longestCock()].cockLength >= player.tallness * (5 / 6));
+        const canReachCock: boolean = player.cocks.length > 0 && (!player.isTaur() || player.cocks[player.cocks.longestCock()].cockLength >= player.tallness * (5 / 6));
 
         if (player.keyItems.has("Deluxe Dildo") >= 0 && player.hasVagina() && !player.isTaur()) {
             if (menus) addButton(button, "D. Dildo", deluxeDildo);
@@ -88,7 +88,7 @@ export class Masturbation {
             if (menus) addButton(button, "Dual Belt", dualBeltMasturbation);
             button++;
         }
-        if (player.keyItems.has("Fake Mare") >= 0 && player.hasCock() && player.isTaur()) {
+        if (player.keyItems.has("Fake Mare") >= 0 && player.cocks.length > 0 && player.isTaur()) {
             if (menus) addButton(button, "Fake Mare", centaurDudesGetHorseAids);
             button++;
         }
@@ -113,7 +113,7 @@ export class Masturbation {
             doNext(playerMenu);
             return;
         }
-        if (player.hasCock() && (player.cocks[0].cockType == CockTypesEnum.BEE)) {
+        if (player.cocks.length > 0 && (player.cocks[0].cockType == CockTypesEnum.BEE)) {
             outputText("Although your bee cock aches you know that there's no way for you to get relief on your own.  When you touch your shaft or think about cumming images of the bee girl and the sound of her hypnotic buzzing fill your mind.");
             doNext(playerMenu);
             return;
@@ -141,7 +141,7 @@ export class Masturbation {
             else exgartuan.exgartuanMasturbation();
             return;
         }
-        if (player.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.countCockSocks("gilded")) {
+        if (player.cocks.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.cocks.countCockSocks("gilded")) {
             gildedCockTurbate();
             return;
         }
@@ -254,19 +254,19 @@ export class Masturbation {
             // if length > 16 looong strokes (maybe tittyfucK?)
             // if length > 20 selfsuck
             if (player.cocks[0].cockLength < 12) {
-                if (player.normalCocks() >= 1)
+                if (player.cocks.normalCocks() >= 1)
                     outputText("You stroke quickly, pleasuring your sensitive dick, darting down to fondle the base of your cock.  ");
-                else if (player.horseCocks() >= 1)
+                else if (player.cocks.horseCocks() >= 1)
                     outputText("You stroke quickly, reveling in your sensitive horseflesh, darting down to fondle your sensitive sheath.  ");
-                else if (player.dogCocks() >= 1)
+                else if (player.cocks.dogCocks() >= 1)
                     outputText("You stroke quickly, pleasuring your sensitive, canine erection, darting down to fondle the sensitive sheath at the base of your cock.  ");
-                else if (player.tentacleCocks() >= 1)
+                else if (player.cocks.tentacleCocks() >= 1)
                     outputText("You stroke quickly, pleasuring the supple length of your tentacular endowment, fondling every inhuman nodule as you slide along every inch of twisting length.  ");
                 else if (player.demonCocks() >= 1)
                     outputText("You stroke quickly, pleasuring the bumpy ridges of your demonic tool, fondling every inhuman nodule as you slide along the entire twitching length.  ");
                 else if (player.catCocks() >= 1)
                     outputText("You stroke quickly, feeling the tiny 'barbs' of your " + cockDescript(player) + " sliding through your fingers, even darting down to circle the sensitive skin around your sheath.  ");
-                else if (player.lizardCocks() >= 1)
+                else if (player.cocks.lizardCocks() >= 1)
                     outputText("You stroke quickly, pleasuring your sensitive " + cockDescript(player) + ", sliding fingers over each ridge and bump that covers its knotty length.  ");
                 else if (player.anemoneCocks() >= 1)
                     outputText("You stroke quickly, gasping as your fingers are stung repeatedly with the aphrodisiac-laced tentacles around the base of your " + cockDescript(player) + " and under its crown.  ");
@@ -275,19 +275,19 @@ export class Masturbation {
                 else outputText("You stroke quickly, pleasuring your sensitive dick, darting down to fondle the base of your cock.  ");
             }
             else if (player.cocks[0].cockLength < 20) {
-                if (player.normalCocks() >= 1)
+                if (player.cocks.normalCocks() >= 1)
                     outputText("You delight in teasing the crown of your " + cockDescript(player) + ", rubbing it at the end of each stroke, squeezing out dollops of pre to smear over it and tease yourself with.  It seems to pulse and twitch with each stroke, responding to every touch.  ");
-                else if (player.horseCocks() >= 1)
+                else if (player.cocks.horseCocks() >= 1)
                     outputText("You delight in teasing the sensitive flared tip of your " + cockDescript(player) + ", rubbing it at the end of each stroke, squeezing out dollops of pre to smear over it and tease yourself with.  It seems to pulse and ripple with each stroke, responding to every touch.  ");
-                else if (player.dogCocks() >= 1)
+                else if (player.cocks.dogCocks() >= 1)
                     outputText("You delight in teasing the pointed tip of your " + cockDescript(player) + ", rubbing it at the end of each stroke, squeezing out dollops of pre to smear over it and tease yourself with.  Your knot seems to pulse and twitch with each stroke, reacting to every touch.  ");
-                else if (player.tentacleCocks() >= 1)
+                else if (player.cocks.tentacleCocks() >= 1)
                     outputText("You delight in teasing the over-sized mushroom-like tip of your " + cockDescript(player) + ", caressing it after every stroke as you squeeze out dollops of pre to smear along its slimy length.  It writhes and twists in your hands of it's own volition, lengthening and shortening with each set of strokes.  ");
                 else if (player.demonCocks() >= 1)
                     outputText("You delight in teasing the larger bumps that form a ring around the crown of your " + cockDescript(player) + ", watching as they twitch and spasm in time with the dollops of pre you're squeezing out and smearing over the entire length.  ");
                 else if (player.catCocks() >= 1)
                     outputText("You delight in teasing the sensitive nubs all along your " + cockDescript(player) + ", circling the cock-tip at the end of each stroke to gather pre and slather it over your entire length.  Each of the tiny 'barbs' provides bursts of pleasure with each stroke, driving you on.  ");
-                else if (player.lizardCocks() >= 1)
+                else if (player.cocks.lizardCocks() >= 1)
                     outputText("You delight in teasing the rounded bulbs that cover your " + cockDescript(player) + ", circling them with your fingertips before sliding up to the urethra and gathering a drop of pre.  You smear it over your sensitive reptile skin and revel in the pleasure radiating through you.  ");
                 else if (player.anemoneCocks() >= 1)
                     outputText("You delight in grabbing hold of the tiny, stinging tentacles around the base and squeezing them between your " + cockDescript(player) + " and hand.  Aphrodisiac pours into your blood as you release them and stroke along the length, gathering dollops of pre to coat yourself with and 'accidentally' bumping the other tentacles at the crown.  ");
@@ -296,19 +296,19 @@ export class Masturbation {
                 else outputText("You delight in teasing the crown of your " + cockDescript(player) + ", rubbing it at the end of each stroke, squeezing out dollops of pre to smear over it and tease yourself with.  It seems to pulse and twitch with each stroke, responding to every touch.  ");
             }
             else if (player.cocks[0].cockLength < 26) {
-                if (player.normalCocks() >= 1)
+                if (player.cocks.normalCocks() >= 1)
                     outputText("The head of your " + cockDescript(player) + " wobbles towards your face as you masturbate, a dollop of pre slowly growing atop it.  ");
-                else if (player.horseCocks() >= 1)
+                else if (player.cocks.horseCocks() >= 1)
                     outputText("The flared tip of your " + cockDescript(player) + " wobbles towards your face as you masturbate, a dollop of pre slowly growing atop it.  ");
-                else if (player.dogCocks() >= 1)
+                else if (player.cocks.dogCocks() >= 1)
                     outputText("The pointed tip of your " + cockDescript(player) + " angles towards your face as you masturbate, a dollop of pre slowly leaking from it.  ");
-                else if (player.tentacleCocks() >= 1)
+                else if (player.cocks.tentacleCocks() >= 1)
                     outputText("The overly wide head of your " + cockDescript(player) + " bumps against your lips as you masturbate, waving back and forth like a snake as it searches for an orifice.  ");
                 else if (player.demonCocks() >= 1)
                     outputText("The purplish head of your " + cockDescript(player) + " bumps against your lips as you masturbate, flushing darkly with every beat of your heart.  ");
                 else if (player.catCocks() >= 1)
                     outputText("The slightly pointed tip of your " + cockDescript(player) + " bumps against your lips as you masturbate, flushing with blood as your spines grow thicker in your hand.  ");
-                else if (player.lizardCocks() >= 1)
+                else if (player.cocks.lizardCocks() >= 1)
                     outputText("The pointed, purple tip of your " + cockDescript(player) + " bumps against your lips while its knotted surface flushes near-purple and seems to grow thicker.  ");
                 else if (player.anemoneCocks() >= 1)
                     outputText("The tentacle-ringed tip of your " + cockDescript(player) + " brushes against your lips, making them tingle with artificial heat while you stroke it.  ");
@@ -332,19 +332,19 @@ export class Masturbation {
                 }
             }
             else {
-                if (player.normalCocks() >= 1)
+                if (player.cocks.normalCocks() >= 1)
                     outputText("The head of your " + cockDescript(player) + " wobbles over, bumping your face and smearing your lips with its copious pre-cum.  You are unable to resist opening your mouth and sucking it down, filling your mouth with your cock.  ");
-                else if (player.horseCocks() >= 1)
+                else if (player.cocks.horseCocks() >= 1)
                     outputText("The flared tip of your " + cockDescript(player) + " wobbles over, bumping your face and smearing your lips with its copious pre-cum.  You are unable to resist opening your mouth and sucking it down, filling your mouth with horsemeat.  ");
-                else if (player.dogCocks() >= 1)
+                else if (player.cocks.dogCocks() >= 1)
                     outputText("The head of your " + cockDescript(player) + " wobbles over, bumping your face and smearing your lips with its copious pre-cum.  You are unable to resist opening your mouth and sucking it down, filling your mouth with your " + cockDescript(player) + ".  ");
-                else if (player.tentacleCocks() >= 1)
+                else if (player.cocks.tentacleCocks() >= 1)
                     outputText("The bulbous, mushroom-like head of your " + cockDescript(player) + " pushes against your face eagerly, smearing pre-cum over your lips as it seeks entrance to the nearest orifice.  You're unable to resist opening your mouth to suck it down, filling your mouth with slick rubbery cock-tentacle.  ");
                 else if (player.demonCocks() >= 1)
                     outputText("The tainted swollen head of your " + cockDescript(player) + " pushes against your face, smearing sweet pre-cum over your lips.  You're unable to resist opening wide and taking in the demonic member, submitting wholly to the desire to pleasure your corrupted body-parts.  ");
                 else if (player.catCocks() >= 1)
                     outputText("The pointed tip of your " + cockDescript(player) + " pushes against your face, smearing pre-cum over your lips and tickling you with the many barbs.  You're unable to resist opening wide and taking in the " + cockDescript(player) + ", half-humming half-purring in contentment.  ");
-                else if (player.lizardCocks() >= 1)
+                else if (player.cocks.lizardCocks() >= 1)
                     outputText("The slightly-pointed tip of your " + cockDescript(player) + " pushes against your face, smearing pre-cum over your eager lips.   You can't resist opening wide and slipping it inside as your hands caress the reptilian bulges along your length.  ");
                 else if (player.anemoneCocks() >= 1)
                     outputText("The rounded, tentacle-ringed tip of your " + cockDescript(player) + " slides against your face, smearing pre-cum over your lips and stinging them with aphrodisiacs that make you pant with lust.  You can't resist opening wide to greedily slurp it down, and in seconds tiny, tingling stings are erupting through your oral cavity, filling you with lust and pleasure.  ");
@@ -363,19 +363,19 @@ export class Masturbation {
                 else {
                     // autofellatio doesnt get to be true unless you keep it in your mouth instead of sticking it in your boob.
                     if (player.cor > 60) {
-                        if (player.normalCocks() >= 1)
+                        if (player.cocks.normalCocks() >= 1)
                             outputText("The heady aroma of your cock fills your nostrils as you force inch after inch into your mouth, deepthroating as much of yourself as you can.  ");
-                        else if (player.horseCocks() >= 1)
+                        else if (player.cocks.horseCocks() >= 1)
                             outputText("The thick animalistic scent fills your nostrils as you force inch after inch into your mouth, deepthroating as much of yourself as you can.  ");
-                        else if (player.dogCocks() >= 1)
+                        else if (player.cocks.dogCocks() >= 1)
                             outputText("The strong animal scent of your cock fills your nostrils as you force inch after inch into your mouth, deepthroating as much of yourself as you can.  ");
-                        else if (player.tentacleCocks() >= 1)
+                        else if (player.cocks.tentacleCocks() >= 1)
                             outputText("The sweet scent of your " + cockDescript(player) + " fills your nostrils as inch after inch of tentacle forces its way down your throat.  You struggle briefly with it, wrestling to keep it from pushing the whole way into your gut, swooning with the pleasure that fighting with your own cock induces.  ");
                         else if (player.demonCocks() >= 1)
                             outputText("The spicy demonic odor your " + cockDescript(player) + " radiates fills your nostrils as you force inch after inch of tainted meat down your throat.  You struggle briefly, but your " + cockDescript(player) + " quickly overwhelms your resistance and your gag reflex momentarily seems to disappear.  ");
                         else if (player.catCocks() >= 1)
                             outputText("The sweet, slightly tangy scent of your cock fills your nostrils as you force inch after inch into your mouth, deepthroating as much of the prickly shaft as you can.  The soft spines that coat its surface actually feel quite pleasant as you force it deeper, denying your gag reflex.  ");
-                        else if (player.lizardCocks() >= 1)
+                        else if (player.cocks.lizardCocks() >= 1)
                             outputText("The salty, dry odor of your " + cockDescript(player) + " fills your nostrils as you force inch after inch into your mouth, swallowing as much of the bulgy shaft as you can.  ");
                         else if (player.anemoneCocks() >= 1)
                             outputText("The stinging, aphrodisiac-laced " + cockDescript(player) + " slowly works its way down your throat as you swallow it deeper and deeper, gurgling happily as your throat grows more sensitive.  ");
@@ -394,36 +394,36 @@ export class Masturbation {
         else if (player.cocks.length == 2) { // Pair of cocks
             // Grab it
             // Play with sheath if has one
-            if (player.hasSheath()) {
+            if (player.cocks.hasSheath()) {
                 outputText("Your fingers trace around your sheath, drawing involuntary spasms from your twin members.  ");
             }
             // Prep bit + variance based on thickness
             outputText("You grasp one of your " + multiCockDescriptLight(player) + " in each hand, ");
-            if (player.averageCockThickness() <= 1.8)
+            if (player.cocks.averageCockThickness() <= 1.8)
                 outputText("wrapping your fingers around each tool and just holding yourself, the feelings of two cocks almost too much to bear.  ");
             else outputText("squeezing as many of your tools as your fingers can encircle.  The feeling of squeezing your thick twin cocks is amazing and overwhelming at the same time.  ");
             // Get into it
             // Play with it if <= 10"
-            if (player.averageCockLength() <= 10)
+            if (player.cocks.averageCockLength() <= 10)
                 outputText("Your hips twitch of their own volition, force-fucking your hands.  In moments you're fiercely masturbating,  pumping each shaft in turn, pleasure mounting at the base and growing more urgent with each pump.  You squeal softly, and increase the tempo of your masturbation, desperate for release.  ");
             // Tittyfuck if D cup+
-            else if (player.averageCockLength() < 20) {
+            else if (player.cocks.averageCockLength() < 20) {
                 // autofellatio only gets to be true if you have any dicks left to suck on after sticking them in your boobs
                 outputText("You look down at your trembling members, mere inches away, and tentatively lick at a cocktip.  Both dicks begin oozing pre in response.  ");
                 // Try to stick it in a titty!
                 if (player.hasFuckableNipples()) {
                     // check for dogcocks
-                    if (player.dogCocks() > 0) {
+                    if (player.cocks.dogCocks() > 0) {
                         // make sure that your cocks will fit in your tits if dogcocks
                         if (player.hasFuckableNipples()) {
                             nippleFuck = true;
                             if (multiTitFuck()) autofellatio = true;
                         }
-                        else if (player.dogCocks() != player.cocks.length) { // if you have something that will fit
+                        else if (player.cocks.dogCocks() != player.cocks.length) { // if you have something that will fit
                             nippleFuck = true;
                             autofellatio = true;
                             // UNFINISHED
-                            if (player.normalCocks() > 0) titFuckSingle();
+                            if (player.cocks.normalCocks() > 0) titFuckSingle();
                         } // if you only have dogcocks that are too big, no nipple fuck! Otherwise, run normal multiTitFuck
                     }
                     else {
@@ -453,16 +453,16 @@ export class Masturbation {
                 // Try to stick it in a titty!
                 if (player.hasFuckableNipples()) {
                     // check for dogcocks
-                    if (player.dogCocks() > 0) {
+                    if (player.cocks.dogCocks() > 0) {
                         // make sure that your cocks will fit in your tits if dogcocks
                         if (player.hasFuckableNipples()) {
                             nippleFuck = true;
                             if (multiTitFuck()) autofellatio = true;
                         }
-                        else if (player.dogCocks() != player.cocks.length) { // if you have something that will fit
+                        else if (player.cocks.dogCocks() != player.cocks.length) { // if you have something that will fit
                             nippleFuck = true;
                             autofellatio = true;
-                            if (player.normalCocks() > 0 || player.horseCocks() > 0) titFuckSingle();
+                            if (player.cocks.normalCocks() > 0 || player.cocks.horseCocks() > 0) titFuckSingle();
                         }  // if you only have dogcocks that are too big, no nipple fuck! Otherwise, run normal multiTitFuck
                     }
                     else {
@@ -486,39 +486,39 @@ export class Masturbation {
                 }
             }
         }
-        else if (player.cockTotal() >= 3) { // Three or more cocks
+        else if (player.cocks.length >= 3) { // Three or more cocks
             // Grab it
             // Play with sheath if has one
-            if (player.hasSheath()) {
+            if (player.cocks.hasSheath()) {
                 outputText("Your fingers trace around your sheath, drawing involuntary spasms from your cocks.  ");
             }
             // Prep bit + variance based on thickness
             outputText("You grasp one of your " + multiCockDescriptLight(player) + " in each hand, ");
-            if (player.averageCockThickness() <= 1.8)
+            if (player.cocks.averageCockThickness() <= 1.8)
                 outputText("wrapping your fingers around each tool and just holding yourself, the feelings of your " + num2Text(player.cocks.length) + " cocks making you feel giddy.  ");
             else outputText("squeezing as many of your tools as your fingers can encircle.  The feeling of rubbing your bundle of cocks together is indescribable.  Your eyes roll back in uncontrollable pleasure.  ");
             // Get into it
             // Play with it if <= 10"
-            if (player.averageCockLength() <= 10)
+            if (player.cocks.averageCockLength() <= 10)
                 outputText("Your hips twitch of their own volition, forcing you to fuck your hands.  In moments you're fiercely masturbating,  pumping each shaft in turn, pleasure mounting in your loins and growing more urgent with each pump.  You squeal softly, and increase the tempo of your masturbation, desperate for release.  ");
             // Tittyfuck if D cup+
-            else if (player.averageCockLength() < 20) {
+            else if (player.cocks.averageCockLength() < 20) {
                 // autofellatio only gets to be true if you have any dicks left to suck on after sticking them in your boobs
                 outputText("You look down at your trembling members, mere inches away, and tentatively lick at a cocktip.  Your dicks begin oozing pre in response.  ");
                 // Try to stick it in a titty!
                 if (player.hasFuckableNipples()) {
                     // check for dogcocks
-                    if (player.dogCocks() > 0) {
+                    if (player.cocks.dogCocks() > 0) {
                         // make sure that your cocks will fit in your tits if dogcocks
                         if (player.hasFuckableNipples()) {
                             nippleFuck = true;
                             if (multiTitFuck()) autofellatio = true;
                         }
-                        else if (player.dogCocks() != player.cocks.length) { // if you have something that will fit
+                        else if (player.cocks.dogCocks() != player.cocks.length) { // if you have something that will fit
                             nippleFuck = true;
                             autofellatio = true;
-                            if ((player.normalCocks() > 0 || player.horseCocks() > 0) && player.cocks.length - player.dogCocks() == 1) titFuckSingle();
-                            if (player.cocks.length - player.dogCocks() > 1) multiTitFuck();
+                            if ((player.cocks.normalCocks() > 0 || player.cocks.horseCocks() > 0) && player.cocks.length - player.cocks.dogCocks() == 1) titFuckSingle();
+                            if (player.cocks.length - player.cocks.dogCocks() > 1) multiTitFuck();
                         } // if you only have dogcocks that are too big, no nipple fuck! Otherwise, run normal multiTitFuck
                     }
                     else {
@@ -542,23 +542,23 @@ export class Masturbation {
                 }
             }
             // Deepthroat yourself, maybe titfuck if equipped.
-            if (player.averageCockLength() >= 20) {
+            if (player.cocks.averageCockLength() >= 20) {
                 // autofellatio only gets to be true if you have any dicks left to suck on after sticking them in your boobs
                 outputText("Your " + multiCockDescriptLight(player) + " brush against your face, throbbing with need.   You open your mouth and suck one of your pricks into your mouth, taking as much of it in as possible, running your tongue along the underside.  You smile and pop it free, then take a different shaft into your maw.  ");
                 // Try to stick it in a titty!
                 if (player.hasFuckableNipples()) {
                     // check for dogcocks
-                    if (player.dogCocks() > 0) {
+                    if (player.cocks.dogCocks() > 0) {
                         // make sure that your cocks will fit in your tits if dogcocks
                         if (player.hasFuckableNipples()) {
                             nippleFuck = true;
                             if (multiTitFuck()) autofellatio = true;
                         }
-                        else if (player.dogCocks() != player.cocks.length) { // if you have something that will fit
+                        else if (player.cocks.dogCocks() != player.cocks.length) { // if you have something that will fit
                             nippleFuck = true;
                             autofellatio = true;
-                            if ((player.normalCocks() > 0 || player.horseCocks() > 0) && player.cocks.length - player.dogCocks() == 1) titFuckSingle();
-                            if (player.cocks.length - player.dogCocks() > 1) multiTitFuck();
+                            if ((player.cocks.normalCocks() > 0 || player.cocks.horseCocks() > 0) && player.cocks.length - player.cocks.dogCocks() == 1) titFuckSingle();
+                            if (player.cocks.length - player.cocks.dogCocks() > 1) multiTitFuck();
                         } // if you only have dogcocks that are too big, no nipple fuck! Otherwise, run normal multiTitFuck
                     }
                     else {
@@ -674,7 +674,7 @@ export class Masturbation {
         else if (player.cor < 80)
             outputText("You strip naked in an exaggerated fashion, hoping someone might be watching.\n\n");
         else {
-            if (player.hasCock() || player.hasVagina())
+            if (player.cocks.length > 0 || player.hasVagina())
                 outputText("You strip naked, fondling your naughty bits as you do so and casting seductive looks around, hoping someone or something is nearby to fuck you.\n\n");
             else outputText("You strip naked, casting seductive looks around, hoping someone or something is nearby to fuck you.\n\n");
         }
@@ -898,10 +898,10 @@ export class Masturbation {
             }
             outputText("tip of your " + cockDescript(player) + " against the opening of ");
             /* Old method
-                    if(player.horseCocks() > 0) outputText("Shivering with anticipation, you place the flared tip of your " + horseDescript(0) + " against the opening of ", false);
-                    else if(player.normalCocks() > 0) outputText("Shivering with anticipation, you place the tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
-                    else if(player.dogCocks() > 0) outputText("Shivering with anticipation, you place the pointed tip of your " + dogDescript(0) + " against the opening of ", false);
-                    else if(player.tentacleCocks() > 0) outputText("Shivering with anticipation, you place the bulbous tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
+                    if(player.cocks.horseCocks() > 0) outputText("Shivering with anticipation, you place the flared tip of your " + horseDescript(0) + " against the opening of ", false);
+                    else if(player.cocks.normalCocks() > 0) outputText("Shivering with anticipation, you place the tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
+                    else if(player.cocks.dogCocks() > 0) outputText("Shivering with anticipation, you place the pointed tip of your " + dogDescript(0) + " against the opening of ", false);
+                    else if(player.cocks.tentacleCocks() > 0) outputText("Shivering with anticipation, you place the bulbous tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
                     else if(player.demonCocks() > 0) outputText("Shivering with anticipation, you place the bump-encircled tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
                     else if(player.catCocks() > 0) outputText("Shivering with anticipation, you place the tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
                     else if(player.anemoneCocks() > 0 || player.displacerCocks() > 0) outputText("Shivering with anticipation, you place the wriggling tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
@@ -938,10 +938,10 @@ export class Masturbation {
             }
             outputText("your " + cockDescript(player) + " into ");
             /* Old method
-                    if(player.normalCocks() > 0) outputText("Without hesitation, you shove the tip of your " + cockDescript(game.player, 0) + " into ", false);
-                    else if(player.horseCocks() > 0) outputText("Without hesitation, you shove the engorged flare of your " + cockDescript(game.player, 0) + " into ", false);
-                    else if(player.dogCocks() > 0) outputText("Without hesitation, you shove the pointed tip of your " + dogDescript(0) + " into ", false);
-                    else if(player.tentacleCocks() > 0) outputText("Without hesitation, you shove the over-sized mushroom that is your " + cockDescript(game.player, 0) + " into ", false);
+                    if(player.cocks.normalCocks() > 0) outputText("Without hesitation, you shove the tip of your " + cockDescript(game.player, 0) + " into ", false);
+                    else if(player.cocks.horseCocks() > 0) outputText("Without hesitation, you shove the engorged flare of your " + cockDescript(game.player, 0) + " into ", false);
+                    else if(player.cocks.dogCocks() > 0) outputText("Without hesitation, you shove the pointed tip of your " + dogDescript(0) + " into ", false);
+                    else if(player.cocks.tentacleCocks() > 0) outputText("Without hesitation, you shove the over-sized mushroom that is your " + cockDescript(game.player, 0) + " into ", false);
                     else if(player.demonCocks() > 0) outputText("Without hesitation, you shove the bump-ringed monstrosity that is your " + cockDescript(game.player, 0) + " into ", false);
                     else if(player.anemoneCocks() > 0) outputText("Without hesitation, you shove the tentacle-laden mushroom that is your " + cockDescript(game.player, 0) + " into ", false);
                     else if(player.displacerCocks() > 0) outputText("Without hesitation, you shove the opened top of your " + cockDescript(game.player, x) + " into ");
@@ -999,12 +999,12 @@ export class Masturbation {
                 }
                 outputText("your " + cockDescript(player) + " and y");
                 /* Old method
-                            if(player.normalCocks() > 0) outputText("Slick juices dribble down the skin of your " + cockDescript(game.player, 0) + " and y", false);
-                            else if(player.horseCocks() > 0) outputText("Slick juices dribble down the mottled skin of your " + horseDescript(0) + " and y", false);
-                            else if(player.dogCocks() > 0) outputText("Slick juices dribble down the red, shiny skin of your " + dogDescript(0) + " and y", false);
-                            else if(player.tentacleCocks() > 0) outputText("Slick juices dribble down the rubbery skin of your " + cockDescript(game.player, 0) + " and y", false);
+                            if(player.cocks.normalCocks() > 0) outputText("Slick juices dribble down the skin of your " + cockDescript(game.player, 0) + " and y", false);
+                            else if(player.cocks.horseCocks() > 0) outputText("Slick juices dribble down the mottled skin of your " + horseDescript(0) + " and y", false);
+                            else if(player.cocks.dogCocks() > 0) outputText("Slick juices dribble down the red, shiny skin of your " + dogDescript(0) + " and y", false);
+                            else if(player.cocks.tentacleCocks() > 0) outputText("Slick juices dribble down the rubbery skin of your " + cockDescript(game.player, 0) + " and y", false);
                             else if(player.demonCocks() > 0) outputText("Slick juices dribble down the shiny purplish skin and nodules of your " + cockDescript(game.player, 0) + " and y", false);
-                            else if(player.lizardCocks() > 0) outputText("Slick juices dribble down the bumpy purple skin of your " + cockDescript(game.player, 0) + " and y", false);
+                            else if(player.cocks.lizardCocks() > 0) outputText("Slick juices dribble down the bumpy purple skin of your " + cockDescript(game.player, 0) + " and y", false);
                             else if(player.catCocks() > 0) outputText("Slick juices dribble over the pink, spiny protrusions that cover your " + cockDescript(game.player, 0) + " and y", false);
                             else if(player.anemoneCocks() > 0) outputText("Slick juices dribble over the nearly transparent skin of your " + cockDescript(game.player, 0) + " and y", false);
                             else if(player.displacerCocks() > 0) outputText("Slick juices dribble over the dusky purple of your " + cockDescript(game.player, 0) + " and y", false);
@@ -1050,13 +1050,13 @@ export class Masturbation {
                 }
                 outputText("your " + cockDescript(player) + " and y");
                 /* Old method
-                            if(player.normalCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the skin of your " + cockDescript(game.player, 0) + " and y", false);
-                            else if(player.horseCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the mottled skin of your " + horseDescript(0) + " and y", false);
-                            else if(player.dogCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the red, shiny skin of your " + dogDescript(0) + " and y", false);
-                            else if(player.tentacleCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the rubbery skin of your " + cockDescript(game.player, 0) + " and y", false);
+                            if(player.cocks.normalCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the skin of your " + cockDescript(game.player, 0) + " and y", false);
+                            else if(player.cocks.horseCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the mottled skin of your " + horseDescript(0) + " and y", false);
+                            else if(player.cocks.dogCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the red, shiny skin of your " + dogDescript(0) + " and y", false);
+                            else if(player.cocks.tentacleCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the rubbery skin of your " + cockDescript(game.player, 0) + " and y", false);
                             else if(player.demonCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the shiny purplish skin and nodules of your " + cockDescript(game.player, 0) + " and y", false);
                             else if(player.catCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the spiny, pink flesh of your " + cockDescript(game.player, 0) + " and y", false);
-                            else if(player.lizardCocks() > 0 || player.displacerCocks()) outputText("Rivulets of milky girlcum drizzle over the purplish, knotted flesh of your " + cockDescript(game.player, 0) + " and y", false);
+                            else if(player.cocks.lizardCocks() > 0 || player.displacerCocks()) outputText("Rivulets of milky girlcum drizzle over the purplish, knotted flesh of your " + cockDescript(game.player, 0) + " and y", false);
                             else if(player.anemoneCocks() > 0) outputText("Rivulets of milky girlcum drizzle and drip from the many tiny tentacles of your " + cockDescript(game.player, 0) + " and y", false);
                             else outputText("Rivulets of milky girlcum drizzle over the sensitive skin of your " + cockDescript(game.player, 0) + " and y", false);
                 */
@@ -1096,20 +1096,20 @@ export class Masturbation {
                         outputText("its length white.  Y");
                 }
                 /* Old method
-                            if(player.normalCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining it white.  Y", false);
-                            else if(player.horseCocks() > 0) outputText("Milky girlcum squirts out from around your " + horseDescript(0) + ", staining its mottled skin white.  Y", false);
-                            else if(player.dogCocks() > 0) outputText("Milky girlcum squirts out from around your " + dogDescript(0) + ", staining its shiny skin white.  Y", false);
-                            else if(player.tentacleCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its rubbery skin white.  Y", false);
+                            if(player.cocks.normalCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining it white.  Y", false);
+                            else if(player.cocks.horseCocks() > 0) outputText("Milky girlcum squirts out from around your " + horseDescript(0) + ", staining its mottled skin white.  Y", false);
+                            else if(player.cocks.dogCocks() > 0) outputText("Milky girlcum squirts out from around your " + dogDescript(0) + ", staining its shiny skin white.  Y", false);
+                            else if(player.cocks.tentacleCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its rubbery skin white.  Y", false);
                             else if(player.demonCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its purplish-skin white.  Y", false);
                             else if(player.catCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the pink kitty-skin white.  Y", false);
-                            else if(player.lizardCocks() > 0 || player.displacerCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the purple, knotty flesh white.  Y", false);
+                            else if(player.cocks.lizardCocks() > 0 || player.displacerCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the purple, knotty flesh white.  Y", false);
                             else if(player.anemoneCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the odd aquatic shaft wide.  Y", false);
                             else outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its length white.  Y", false);
                 */
             }
         }
         // Round and compare cock thickness to vag looseness
-        if (Math.round(player.cockArea(0)) >= player.vaginalCapacity()) {
+        if (Math.round(player.cocks.cockArea(0)) >= player.vaginalCapacity()) {
             // Different noises based on sensitivity
             if (player.sens < 45)
                 outputText("ou grunt with exertion as you attempt to stuff your " + cockDescript(player) + " into ");
@@ -1124,7 +1124,7 @@ export class Masturbation {
             else outputText("the gaping fuck-mouth of your inhuman nipple-cunt. ");
             // Compare cockthickness and vaglooseness more specifically
             // if it barely fits
-            if (Math.round(player.cockArea(0)) == player.vaginalCapacity()) {
+            if (Math.round(player.cocks.cockArea(0)) == player.vaginalCapacity()) {
                 if (player.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipple is barely up to the task of accepting the " + cockDescript(player) + ", but accept it it does. ");
                 else if (player.averageVaginalLooseness() < 4)
@@ -1163,13 +1163,13 @@ export class Masturbation {
                             outputText("tips of your bloated nipples wrap around the " + cockHead(player) + " of your " + cockDescript(player) + ", swallowing it like an enormous mouth.  ");
                     }
                     /* Old method
-                                    if(player.normalCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the tip of your " + cockDescript(game.player, 0) + " swallowing it like an enormous mouth. ", false);
-                                    else if(player.horseCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the flared tip of your " + horseDescript(0) + " swallowing it like an enormous mouth. ", false);
-                                    else if(player.dogCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the pointed tip of your " + dogDescript(0) + " swallowing it like an enormous mouth. ", false);
-                                    else if(player.tentacleCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the rounded tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
+                                    if(player.cocks.normalCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the tip of your " + cockDescript(game.player, 0) + " swallowing it like an enormous mouth. ", false);
+                                    else if(player.cocks.horseCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the flared tip of your " + horseDescript(0) + " swallowing it like an enormous mouth. ", false);
+                                    else if(player.cocks.dogCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the pointed tip of your " + dogDescript(0) + " swallowing it like an enormous mouth. ", false);
+                                    else if(player.cocks.tentacleCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the rounded tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
                                     else if(player.demonCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the nodule-ringed tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
                                     else if(player.catCocks() > 0) outputText("The swollen tips of your bloated nipples stretch around the barbed tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
-                                    else if(player.lizardCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the pointed tip of your " + cockDescript(game.player, 0) + ", stretching oddly as it swallows the knot-covered appendage. ", false);
+                                    else if(player.cocks.lizardCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the pointed tip of your " + cockDescript(game.player, 0) + ", stretching oddly as it swallows the knot-covered appendage. ", false);
                                     else if(player.anemoneCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the stinging tentacles that surround your " + cockDescript(game.player, 0) + "'s tip, convulsing with wet squishing sounds as they become red and enflamed with artificial lust.  ", false);
                                     else if(player.displacerCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the outstretched head of your " + cockDescript(game.player, 0) + ", convulsing with wet, squishing sounds as it wriggles inside you.");
                                     else outputText("The swollen tips of your bloated nipples wrap around the " + cockHead(0) + " of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
@@ -1178,7 +1178,7 @@ export class Masturbation {
                 outputText("With each thrust, you bury your " + cockDescript(player) + " deeper into your greedy tit. Overwhelmed by the combined sensations, your mind is barely able to cope with the intense feeling of fullness where no such feeling should be possible.");
             }
             // if it doesnt really fit
-            if (Math.round(player.cockArea(0)) > player.vaginalCapacity()) {
+            if (Math.round(player.cocks.cockArea(0)) > player.vaginalCapacity()) {
                 if (player.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipple is woefully insufficient compared to your " + cockDescript(player) + ", delerious with arousal, you keep trying anyway. ");
                 else if (player.averageVaginalLooseness() < 4)
@@ -1217,13 +1217,13 @@ export class Masturbation {
                             outputText("The swollen lips of your bloated nipple gape wide, but the " + cockHead(player) + " of your " + cockDescript(player) + " spreads them even wider.  ");
                     }
                     /* Old method
-                                    if(player.normalCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
-                                    else if(player.horseCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the flared tip of your " + horseDescript(0) + " spreads them even wider. ", false);
-                                    else if(player.dogCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the massive girth of your " + dogDescript(0) + " spreads them even wider. ", false);
-                                    else if(player.tentacleCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
+                                    if(player.cocks.normalCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
+                                    else if(player.cocks.horseCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the flared tip of your " + horseDescript(0) + " spreads them even wider. ", false);
+                                    else if(player.cocks.dogCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the massive girth of your " + dogDescript(0) + " spreads them even wider. ", false);
+                                    else if(player.cocks.tentacleCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
                                     else if(player.demonCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
                                     else if(player.catCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the barbed tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
-                                    else if(player.lizardCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the pointed tip of your " + cockDescript(game.player, 0) + " slowly spreads them even wider. ", false);
+                                    else if(player.cocks.lizardCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the pointed tip of your " + cockDescript(game.player, 0) + " slowly spreads them even wider. ", false);
                                     else if(player.anemoneCocks() > 0)  outputText("The swollen lips of your bloated nipple gape wide, but the stinging tip of your " + cockDescript(game.player, 0) + " spreads them wider and fills them with artificial lust. ", false);
                                     else if(player.displacerCocks() > 0)  outputText("The swollen lips of your bloated nipple gape wide, but the wide head of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
                                     else outputText("The swollen lips of your bloated nipple gape wide, but the " + cockHead(0) + " of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
@@ -1265,12 +1265,12 @@ export class Masturbation {
                         outputText("pooling at your crotch.  ");
                 }
                 /* Old method
-                            if(player.normalCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling at your crotch. ", false);
-                            else if(player.horseCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling in and around your sheath. ", false);
-                            else if(player.tentacleCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, mixing with the tentacles own lubricants. ", false);
+                            if(player.cocks.normalCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling at your crotch. ", false);
+                            else if(player.cocks.horseCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling in and around your sheath. ", false);
+                            else if(player.cocks.tentacleCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, mixing with the tentacles own lubricants. ", false);
                             else if(player.demonCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the base of your member. ", false);
                             else if(player.catCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the spines near your base. ", false);
-                            else if(player.lizardCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the bulbs near your base. ", false);
+                            else if(player.cocks.lizardCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the bulbs near your base. ", false);
                             else if(player.anemoneCocks() > 0)  outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the wriggling tentacles near your base. ", false);
                             else if(player.hasKnot()) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the bulb near your base. ", false);
                             else  outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the spines near your base. ", false);
@@ -1278,7 +1278,7 @@ export class Masturbation {
             }
             else outputText("girl-lube spurts out of your tortured nipple with each thrust of your " + cockDescript(player) + ", spattering your arms and face with your secretions. ");
         }
-        if (Math.round(player.cockArea(0)) < player.vaginalCapacity()) {
+        if (Math.round(player.cocks.cockArea(0)) < player.vaginalCapacity()) {
             // Different noises based on sensitivity
             if (player.sens < 45)
                 outputText("ou sigh with pleasure");
@@ -1320,13 +1320,13 @@ export class Masturbation {
                         outputText("swallowing it completely.  ");
                 }
                 /* Old method
-                            if(player.normalCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely. ", false);
-                            else if(player.horseCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the flared tip of your " + horseDescript(0) + " and begin to slide down its length, swallowing it completely. ", false);
-                            else if(player.dogCocks() > 0 || player.displacerCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + dogDescript(0) + " and begin to slide down its length, even swallowing your bulging knot without difficulty. ", false);
-                            else if(player.tentacleCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as it twists and pulses on its own, fucking your nipple.  ", false);
+                            if(player.cocks.normalCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely. ", false);
+                            else if(player.cocks.horseCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the flared tip of your " + horseDescript(0) + " and begin to slide down its length, swallowing it completely. ", false);
+                            else if(player.cocks.dogCocks() > 0 || player.displacerCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + dogDescript(0) + " and begin to slide down its length, even swallowing your bulging knot without difficulty. ", false);
+                            else if(player.cocks.tentacleCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as it twists and pulses on its own, fucking your nipple.  ", false);
                             else if(player.demonCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each bump and nodule makes you quiver with unholy pleasures.  ", false);
                             else if(player.catCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each springy barb makes you quiver with pleasure.  ", false);
-                            else if(player.lizardCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each of the bulgy knots along its length stretch the orifice further.  ", false);
+                            else if(player.cocks.lizardCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each of the bulgy knots along its length stretch the orifice further.  ", false);
                             else if(player.anemoneCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely and leaving a searing trail of desire in its path.  ", false);
                             else outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely. ", false);
                 */
@@ -1340,11 +1340,11 @@ export class Masturbation {
             else if (player.averageVaginalWetness() < 4)
                 outputText("girl-lube drizzles down the length of your " + cockDescript(player) + " in thick streams, pooling at your crotch. ");
             else {
-                if (player.normalCocks() > 0)
+                if (player.cocks.normalCocks() > 0)
                     outputText("girl-lube pours out of your swollen nipple over your " + cockDescript(player) + " and hands, pooling on the ground below you. ");
-                else if (player.hasSheath() > 0)
+                else if (player.cocks.hasSheath() > 0)
                     outputText("girl-lube drizzles down the length of your " + cockDescript(player) + " in thick streams, pooling in and around your sheath. ");
-                else if (player.tentacleCocks() > 0)
+                else if (player.cocks.tentacleCocks() > 0)
                     outputText("girl-lube pours out of your swollen nipple over your " + cockDescript(player) + " and hands, pooling on the ground below you. ");
                 else if (player.demonCocks() > 0)
                     outputText("girl-lube pours out of your swollen nipple over your " + cockDescript(player) + " and hands, pooling on the ground below you. ");
@@ -1379,7 +1379,7 @@ export class Masturbation {
         if (fittableCocks > 2 && holeTotal < fittableCocks) {
             outputText("You are momentarily stumped as you realize that you don't have enough nipples for all of your cocks. ");
             // can you fit more than one in each?
-            if (player.vaginalCapacity() >= 2 * player.cockArea(randomCock)) {
+            if (player.vaginalCapacity() >= 2 * player.cocks.cockArea(randomCock)) {
                 doubleUp = true; // WTF IS MULTIDIVISICATION?  SERIOUSLY?
                 outputText("The words \"multiple insertions\" drifts through your lust-fogged brain, and you begin to position two dicks against a poor, unsuspecting nipple, preparing to double-penetrate.  ");
                 // does this give enough space?
@@ -1403,7 +1403,7 @@ export class Masturbation {
             else outputText("Milky girlcum squirts out from around your shafts, staining them white. Y");
         }
         // Round and compare cock thickness to vag looseness
-        if (Math.round(player.cockArea(randomCock)) >= player.vaginalCapacity()) {
+        if (Math.round(player.cocks.cockArea(randomCock)) >= player.vaginalCapacity()) {
             // Different noises based on sensitivity
             if (player.sens < 45)
                 outputText("ou grunt with exertion as you attempt to stuff your cocks into ");
@@ -1418,7 +1418,7 @@ export class Masturbation {
             else outputText("the gaping fuck-mouths of your inhuman nipple-cunts. ");
             // Compare cockthickness and vaglooseness more specifically
             // if it barely fits
-            if (Math.round(player.cockArea(randomCock)) == player.vaginalCapacity()) {
+            if (Math.round(player.cocks.cockArea(randomCock)) == player.vaginalCapacity()) {
                 if (player.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipples are barely up to the task of accepting your swollen rods, but accept them they do. ");
                 else if (player.averageVaginalLooseness() < 4)
@@ -1427,7 +1427,7 @@ export class Masturbation {
                 outputText("With each thrust, you bury your shafts deeper into your greedy tits. Overwhelmed by the combined sensations, your mind is barely able to cope with the intense feelings of fullness where no such feelings should be possible. ");
             }
             // if it doesnt really fit well
-            if (Math.round(player.cockArea(randomCock)) > player.vaginalCapacity()) {
+            if (Math.round(player.cocks.cockArea(randomCock)) > player.vaginalCapacity()) {
                 if (player.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipples are woefully insufficient compared to the width of your swollen rods. Delirious with arousal, you keep pushing them in anyway. ");
                 else if (player.averageVaginalLooseness() < 4)
@@ -1444,7 +1444,7 @@ export class Masturbation {
                 outputText("girl-lube drools from your tortured nipples in thick streams, pooling beneath your ass. ");
             else outputText("girl-lube spurts out of your tortured nipples with each thrust of your hips, spattering your arms and face with your secretions. ");
         }
-        if (Math.round(player.cockArea(randomCock)) < player.vaginalCapacity()) {
+        if (Math.round(player.cocks.cockArea(randomCock)) < player.vaginalCapacity()) {
             if (!doubleUp) {
                 // Different noises based on sensitivity
                 if (player.sens < 45)
@@ -1476,7 +1476,7 @@ export class Masturbation {
                     outputText("ou moan with pleasure as your stiff cocks slide into ");
                 else outputText("ou scream with delight as your stiff cocks slide into ");
                 // if you have really small dicks or HUGE nipples - THIS I LIKE
-                if (4 * Math.round(player.averageCockThickness()) < player.averageVaginalLooseness()) {
+                if (4 * Math.round(player.cocks.averageCockThickness()) < player.averageVaginalLooseness()) {
                     if (player.averageVaginalLooseness() < 2)
                         outputText("the over-stretched openings on your swollen nipples. Though they are reletively small and delicate, you can easily slide two of your tiny cocks into each of their slippery passages.");
                     else if (player.averageVaginalLooseness() < 4)
@@ -1518,32 +1518,32 @@ export class Masturbation {
         if (player.cocks[randomCock].cockType == CockTypesEnum.HUMAN) {
             outputText("tip of ");
             // more than one?
-            if (player.normalCocks() > 1)
-                outputText("one of your " + num2Text(player.normalCocks()) + " " + cockDescript(player, randomCock) + "s ");
+            if (player.cocks.normalCocks() > 1)
+                outputText("one of your " + num2Text(player.cocks.normalCocks()) + " " + cockDescript(player, randomCock) + "s ");
             else outputText("your " + cockDescript(player, randomCock) + " ");
         }
         // Applying randomization - horse cocks
         if (player.cocks[randomCock].cockType == CockTypesEnum.HORSE) {
             outputText("flared tip of ");
             // more than one?
-            if (player.horseCocks() > 1)
-                outputText("one of your " + num2Text(player.horseCocks()) + " " + cockDescript(player, randomCock) + "s ");
+            if (player.cocks.horseCocks() > 1)
+                outputText("one of your " + num2Text(player.cocks.horseCocks()) + " " + cockDescript(player, randomCock) + "s ");
             else outputText("your " + cockDescript(player, randomCock) + " ");
         }
         // Applying randomization - dog cocks
         if (player.cocks[randomCock].cockType == CockTypesEnum.DOG) {
             outputText("pointed tip of ");
             // more than one?
-            if (player.dogCocks() > 1)
-                outputText("one of your " + num2Text(player.dogCocks()) + " " + cockDescript(player, randomCock) + "s ");
+            if (player.cocks.dogCocks() > 1)
+                outputText("one of your " + num2Text(player.cocks.dogCocks()) + " " + cockDescript(player, randomCock) + "s ");
             else outputText("your " + cockDescript(player, randomCock) + " ");
         }
         // Applying randomization - everything else
         if (player.cocks[randomCock].cockType.Index >= 3) {
             outputText("tip of ");
             // more than one?
-            if (player.normalCocks() > 1)
-                outputText("one of your " + num2Text(player.normalCocks()) + " " + cockDescript(player, randomCock) + "s ");
+            if (player.cocks.normalCocks() > 1)
+                outputText("one of your " + num2Text(player.cocks.normalCocks()) + " " + cockDescript(player, randomCock) + "s ");
             else outputText("your " + cockDescript(player, randomCock) + " ");
         }
         if (player.lib < 70)
@@ -1576,19 +1576,19 @@ export class Masturbation {
         if (player.cocks.length > 0) {
             if (player.cocks.length == 1) {
                 outputText("The sensations prove too much for you, and you feel the tightness building in your ");
-                if (player.normalCocks() == 1)
+                if (player.cocks.normalCocks() == 1)
                     outputText("twitching manhood, growing rapidly.  You stroke furiously, feeling the pressure of your cum as it nears release.  ");
                 else if (player.hasKnot())
                     outputText("swelling, bulbous knot.  You feel it growing tighter and tighter until it's nearly twice the width of your " + cockDescript(player) + ".  The pressure is an agonizing pleasure that only builds higher and higher as you come closer and closer to orgasm.  ");
-                else if (player.horseCocks() == 1)
+                else if (player.cocks.horseCocks() == 1)
                     outputText("swollen equine sheath, slowly beginning to work its way up your shaft.  Pre-cum begins pouring from your " + cockDescript(player) + ", slicking your " + cockDescript(player) + " as you get ready to blow.  ");
-                else if (player.tentacleCocks() == 1)
+                else if (player.cocks.tentacleCocks() == 1)
                     outputText("wiggling vine-like cock, growing rapidly.  You feel the rubbery surface of your tentacle prick contracting as it nears release.  Thick bulges of fluids collect and travel along the length of your " + cockDescript(player) + ", the first of which is almost to your oversized tip.  ");
                 else if (player.demonCocks() == 1)
                     outputText("tainted man-meat, growing rapidly.  You feel the nodules close to the base swell and pulse, starting a rippling wave of pleasure that migrates upwards.  The ring of bumps around your crown double in size, flaring out as your " + cockDescript(player) + " prepares to unload.  ");
                 else if (player.catCocks() == 1)
                     outputText("full, cat-like sheath.  You feel it tingling and throbbing as the spines pulsate with arousal.  You feel the barbs at the bottom thickening as bulges of fluid migrate through your " + cockDescript(player) + " towards the tip.  ");
-                else if (player.lizardCocks() == 1)
+                else if (player.cocks.lizardCocks() == 1)
                     outputText("swollen member.  You can feel it tingling and bulging strangly as it begins to contract and pulse.  Pre-cum leaks from your " + cockDescript(player) + " in a steady stream as each 'bulb' nearly doubles in size, and then one at a time, they deflate while your urethra dilates wide.  ");
                 else if (player.anemoneCocks() == 1)
                     outputText("base.  The tentacles surrounding your " + cockDescript(player) + " go nuts, constricting around it, inadvertently firing aphrodisiacs into the orgasmic flesh as they wring a potent, hip-jerking climax from you.  ");
@@ -1632,14 +1632,14 @@ export class Masturbation {
             if (player.cocks.length > 1) {
                 outputText("The sensations prove too much for you, and you feel the tightness building in your loins.  ");
 
-                if (player.dogCocks() > player.normalCocks() && player.dogCocks() > player.horseCocks()) { // Primary Dog
+                if (player.cocks.dogCocks() > player.cocks.normalCocks() && player.cocks.dogCocks() > player.cocks.horseCocks()) { // Primary Dog
                     let dogIndex: number;
                     for (dogIndex = 0; dogIndex < player.cocks.length; dogIndex++) {
                         if (player.cocks[dogIndex].cockType == CockTypesEnum.DOG) break;
                     }
                     outputText("Your feel your knots bulging and swelling, growing tighter and tighter until they're nearly double the width of a " + cockDescript(player, dogIndex) + ".  The agonizing pressure builds higher and tighter with every passing second as you get closer and closer to orgasm.  ");
                 }
-                else if (player.horseCocks() > player.normalCocks()) { // Primary Horse
+                else if (player.cocks.horseCocks() > player.cocks.normalCocks()) { // Primary Horse
                     let horseIndex: number;
                     for (horseIndex = 0; horseIndex < player.cocks.length; horseIndex++) {
                         if (player.cocks[horseIndex].cockType == CockTypesEnum.HORSE) break;
@@ -1790,9 +1790,9 @@ export class Masturbation {
                 outputText("The toy's girth seems to pulse and swell within you, spreading you wide open as it sops up your natural wetness and grows larger.  You grab it in a two-handed grip and begin working it in and out of your " + vaginaDescript(player) + ", gasping and twitching as every ridge and feature of the dildo rubs you just right.  Every inch of your nethers tingles with a desire to be touched, rubbed, and squeezed. ");
                 if (player.cocks.length > 0) {
                     outputText("Even your " + multiCockDescript(player) + " ache");
-                    if (player.totalCocks() == 1) outputText("s");
+                    if (player.cocks.length == 1) outputText("s");
                     outputText(" and pulse");
-                    if (player.totalCocks() == 1) outputText("s");
+                    if (player.cocks.length == 1) outputText("s");
                     outputText(", bouncing on your belly.  ");
                 }
                 outputText("You answer that need by pistoning the fat juicy dick even harder into your tightly stretched box, cooing as tiny squirts of fluid erupt with every thrust.\n\n");
@@ -2092,7 +2092,7 @@ export class Masturbation {
 
             outputText("A very familiar feeling of pleasure rushes through your body, causing you to shudder. You pull your cock out and begin to stroke it as you suck on the tip, practically drinking your pre-cum. You can feel your cum building up as it gets ready to be released. After flicking your tongue against the tip of your " + cockDescript(player) + ", you feel the flood of cum flowing up your dick");
 
-            if (player.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.countCockSocks("gilded")) {
+            if (player.cocks.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.cocks.countCockSocks("gilded")) {
                 flags[kFLAGS.GILDED_JERKED]++;
 
                 const gems: number = midasCockJackingGemsRoll();
@@ -2121,7 +2121,7 @@ export class Masturbation {
 
             outputText("Another shot of pre-cum is sent down your throat, followed by the building pressure of your release. You force your head down to the base of your " + cockDescript(player) + ", sending it deeply down your throat, feeling the warm and smooth inside as it tightens around the invading member. Thank goodness you're holding your breath, or you would be suffocating right now. You hurry up before you choke on your cock,  moving your head back and forth while your hand caresses the base of your cock. ");
 
-            if (player.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.countCockSocks("gilded")) {
+            if (player.cocks.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.cocks.countCockSocks("gilded")) {
 
                 flags[kFLAGS.GILDED_JERKED]++;
 
@@ -2172,7 +2172,7 @@ export class Masturbation {
         clearOutput();
         outputText("You find a flat, comfortable rock to sit down on and meditate.  As always, meditation brings a sense of peace and calm to you, but it eats up two hours of the day.");
 
-        dynStats("lus", -50, "cor", -.3 - 0.3 * player.countCockSocks("alabaster"));
+        dynStats("lus", -50, "cor", -.3 - 0.3 * player.cocks.countCockSocks("alabaster"));
         if (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10) HPChange(50, true);
         doNext(camp.returnToCampUseTwoHours);
     }
@@ -2209,7 +2209,7 @@ export class Masturbation {
 
     private centaurMasturbation(): boolean {
         clearOutput();
-        const canMasturbateHugeCock: boolean = player.hasCock() && (player.tallness * (5 / 6) < player.cocks[player.longestCock()].cockLength);
+        const canMasturbateHugeCock: boolean = player.cocks.length > 0 && (player.tallness * (5 / 6) < player.cocks[player.cocks.longestCock()].cockLength);
         if (player.hasFuckableNipples()) {
             if (canMasturbateHugeCock && rand(2) == 0) { // 50/50 chance of either if you can do both
                 centaurHugeCock();
@@ -2251,23 +2251,23 @@ export class Masturbation {
         else outputText("Slick lubricant squishes around your fingers as you finger-fuck your chest-pussies.");
         outputText("  You moan and lean over, shoving a second finger inside each of them and rubbing your thumbs over the miniature clits as you near orgasm.\n\n");
 
-        if (player.hasVagina() || player.hasCock()) {
+        if (player.hasVagina() || player.cocks.length > 0) {
             let plural: boolean = false;
             outputText("Denied a single touch, your ");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 if (player.hasVagina())
                     outputText(multiCockDescriptLight(player) + " and " + vaginaDescript(player));
                 else outputText(cockDescript(player));
                 // Set as plural if multi dick or dick and vag.
-                if (player.hasVagina() || player.totalCocks() > 1) plural = true;
+                if (player.hasVagina() || player.cocks.length > 1) plural = true;
             }
             else outputText(vaginaDescript(player));
             if (plural)
                 outputText(" leak their own fluid, quivering with ache and need that you can't reach to satisfy.");
             else outputText(" leaks its own fluids, quivering with ache and need that you can't reach to satisfy.");
-            if (player.totalCocks() > 1)
+            if (player.cocks.length > 1)
                 outputText("  You feel each of your " + multiCockDescriptLight(player) + " tapping against your belly as your muscles clench, getting as much pleasure as possible from your male endowments.");
-            else if (player.totalCocks() == 1)
+            else if (player.cocks.length == 1)
                 outputText("  You feel your " + multiCockDescriptLight(player) + " tapping against your belly as your muscles clench, getting as much pleasure as possible from your male endowment.");
             if (player.balls > 0) outputText("  Rocking slightly inside your sack, your " + ballsDescriptLight(player) + " repeatedly clench up against your body, ready to release.");
             outputText("\n\n");
@@ -2276,7 +2276,7 @@ export class Masturbation {
         outputText("A slow wave of contractions starts deep inside each of your " + nippleDescription(player, 0) + "s.  It intensifies as it rises towards the surface of your " + breastDescript(player, 0) + ", reaching a crescendo that brings you to the peak of pleasure.  Your eyes roll back as you slump down in orgasmic bliss, fingers pumping relentlessly at you slippery nipple-holes.  Noisy wet squelches and incessant moaning rouse you from your pleasure-induced coma, eventually waking you back to reality.\n\n");
 
         // Optional post orgasm bits for dicks/pussies
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             if (player.cumQ() < 50) outputText("A small puddle of semen has formed under you, ");
             else if (player.cumQ() < 200) outputText("A decent sized puddle of white seed has formed under you, ");
             else if (player.cumQ() < 1000) outputText("A large puddle of white seed has formed underneath you and even splattered your underside, ");
@@ -2294,7 +2294,7 @@ export class Masturbation {
                 outputText("The air is saturated with the heady scent of aroused horse-pussy, and if the wetness between your hind-legs is any indication, your hind-quarters would be a slip 'n slide of pleasure for any daring enough to penetrate you.");
             else outputText("The air is filled with the thick musk of your bestial horse-pussy.  If the rivulets of moisture dripping down to your hooves are any indication, you might need to get used to the smell.");
         }
-        if (player.hasCock() || player.hasVagina()) outputText("\n\n");
+        if (player.cocks.length > 0 || player.hasVagina()) outputText("\n\n");
 
         // Real aftermath
         outputText("Judging by the sky, at least an hour has passed.  You sigh and pry your cramped fingers from your aching " + nippleDescription(player, 0) + "s, rubbing the sore entrances with your palm before you climb back up onto your " + feet(player) + ".  As you get dressed, you're very conscious of how much better you feel from the wonderful finger-fuck.  ");
@@ -2310,7 +2310,7 @@ export class Masturbation {
 
     private centaurHugeCock(): void {
         // Set plurality and primary cock.
-        const primary: number = player.longestCock();
+        const primary: number = player.cocks.longestCock();
         const plural: boolean = (player.cocks.length > 1);
         outputText("You shrug out of your " + player.armorName + ", not that it does much to impede your " + multiCockDescriptLight(player) + " as a centaur.   ");
         if (player.cor < 33)
@@ -2337,14 +2337,14 @@ export class Masturbation {
             else outputText("dome-like head");
             outputText(".");
         }
-        if (player.tallness * 1.5 < player.cocks[player.longestCock()].cockLength) {
+        if (player.tallness * 1.5 < player.cocks[player.cocks.longestCock()].cockLength) {
             outputText("  In no time flat you're rendered virtually immobile by the length of ");
             if (plural) outputText("all ");
             outputText("your " + multiCockDescriptLight(player) + ".");
         }
         outputText("\n\n");
         // Get started (not THAT long)
-        if (player.tallness * 1.5 >= player.cocks[player.longestCock()].cockLength) {
+        if (player.tallness * 1.5 >= player.cocks[player.cocks.longestCock()].cockLength) {
             outputText("Bending down and grabbing hold with both hands, you take ");
             if (plural)
                 outputText("a ");
@@ -2361,9 +2361,9 @@ export class Masturbation {
             outputText(".  It feels so good that you close your eyes and whinny with delight.\n\n");
 
             outputText("You smear your pre-cum over the tip, rolling your palm across the sensitive tip in a way that makes it hard to stand.  Meanwhile your other hand is busy fondling the underside, stroking what little of your length you can reach.  Even with the limited access, you can feel your " + cockDescript(player, primary) + " pulsing in your grip, growing harder with every touch and caress.");
-            if (player.totalCocks() == 2)
+            if (player.cocks.length == 2)
                 outputText("  Your other dick mimics its lucky brother's pleasure, even though it's been ignored in order for you to focus on your current 'toy'.");
-            else if (player.totalCocks() > 2)
+            else if (player.cocks.length > 2)
                 outputText("  Your other " + multiCockDescriptLight(player) + " mimic their lucky brother's pleasure, even though they've been ignored in order for you to focus on your current 'toy'.");
             outputText("  You let your hind legs give out and slump down, locking your forelegs while you tremble with what can only be the approach of an orgasm.\n\n");
         }
@@ -2386,14 +2386,14 @@ export class Masturbation {
 
             // STROKE (long)
             outputText("You smear your pre-cum over the tip, rolling your palm across the sensitive tip in a way that makes it hard to stand.  Meanwhile your other hand is making great use of your incredible length, jacking you off with long fluid strokes.  In no time flat, you can feel your " + cockDescript(player) + " pulsing in your grip, growing harder in time with your fevered stroking.");
-            if (player.totalCocks() == 2)
+            if (player.cocks.length == 2)
                 outputText("  Your other dick mimics its lucky brother's pleasure, even though it's been ignored in order for you to focus on your current 'toy'.");
-            else if (player.totalCocks() > 2)
+            else if (player.cocks.length > 2)
                 outputText("  Your other " + multiCockDescriptLight(player) + " mimic their lucky brother's pleasure, even though they've been ignored in order for you to focus on your current 'toy'.");
             outputText("  You let your hind legs give out and slump down, locking your forelegs while you tremble with what can only be the approach of an orgasm.\n\n");
         }
         // Cumjaculation
-        if (player.tallness * 1.5 >= player.cocks[player.longestCock()].cockLength)
+        if (player.tallness * 1.5 >= player.cocks[player.cocks.longestCock()].cockLength)
             outputText("Squeezing tightly around your " + cockHead(player));
         else outputText("Pumping hard");
         outputText(", you orgasm, feeling relief flow through you with every pump of ");
@@ -2417,7 +2417,7 @@ export class Masturbation {
         if (!plural)
             outputText("member");
         else outputText("members");
-        if (player.hasSheath()) {
+        if (player.cocks.hasSheath()) {
             if (plural)
                 outputText(" slowly grow limp and slide back inside your sheath.");
             else outputText(" slowly growing limp and sliding back inside your sheath.");
@@ -2471,7 +2471,7 @@ export class Masturbation {
     private centaurCantMasturbate(): void {
         if (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] == 0) {
             outputText("No matter how you twist and turn, you can't reach anywhere close to your ");
-            if (player.hasCock() || player.hasVagina())
+            if (player.cocks.length > 0 || player.hasVagina())
                 outputText("genitalia");
             else outputText("anything remotely sexual");
             outputText("!  It seems that being a centaur has a rather crippling downside – you can't reach around to get yourself off and sate your lusts!\n\n");
@@ -2488,7 +2488,7 @@ export class Masturbation {
 
     // [Maturbate] -- [Fake Mare] (Cock Centaurs Only)
     private centaurDudesGetHorseAids(): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         clearOutput();
         if (player.keyItems.getValue1Of("Fake Mare") == 0) {
             if (player.cor < 50)
@@ -2498,13 +2498,13 @@ export class Masturbation {
         }
         outputText("Seeing the toy's exposed, gaping genitals, you feel a stirring in your " + multiCockDescriptLight(player) + ".  You yearn to touch yourself, but your centaur lower body prevents you, as usual.  Grunting with annoyance, you trot up to the toy and give its wide cunt an experimental fisting.  ");
         // [If small cock:
-        if (player.cockArea(x) < 30)
+        if (player.cocks.cockArea(x) < 30)
             outputText("Your hand slips in easily... since it's made for real horsecocks, it's a bit too big to give you any satisfaction.  Your gaze shifts upwards to the toy's fake anus, which seems a bit more your size.</i>\"");
         else outputText("Your fist slips in easily, and you give the toy a few preparatory thrusts to make sure it's nice and ready for your hefty cock.");
         outputText("\n\n");
 
         outputText("Satisfied the toy is ready for you, you clop back a few paces and surge forward.  You mount the toy easily, your belly running across its smooth, warm back until your chest bumps against the mare's head.  You grip her shoulders for support and start to buck your hips, your " + cockDescript(player, x) + " poking around in search of entrance.  Finally, you feel the tip of your prick ");
-        if (player.cockArea(x) < 30)
+        if (player.cocks.cockArea(x) < 30)
             outputText("pressing against the tight ring of the toy's anus");
         else outputText("lining up with the toy's gaping cunt");
         outputText(".  You rear your " + hipDescription(player) + " and slam yourself into the mare's waiting hole.\n\n");
@@ -2513,21 +2513,21 @@ export class Masturbation {
         if (player.balls > 0)
             outputText(" and " + ballsDescriptLight(player));
         outputText(" hard against her rump as you pound into her tight, slick ");
-        if (player.cockArea(x) >= 30)
+        if (player.cocks.cockArea(x) >= 30)
             outputText("horsecunt");
         else outputText("asshole");
         outputText(".\n\n");
 
         outputText("Finally able to get the release you weren't able to give yourself, you feel an orgasm mounting deep within you.  You let out a loud, equine whinny as you hump the toy faster and faster, pounding her with your " + cockDescript(player, x) + " until the pleasure overwhelms you.  You cry out as you cum, squirting your centaur-cum as far into the toy as you can shoot it");
 
-        if (player.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.countCockSocks("gilded")) {
+        if (player.cocks.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.cocks.countCockSocks("gilded")) {
 
             flags[kFLAGS.GILDED_JERKED]++;
 
             const gems: number = midasCockJackingGemsRoll();
 
             outputText(".\n\nSated, you spend a few blissful minutes enjoying the warmth and tightness of the mare-like onahole until your " + cockDescript(player, x) + " is soft inside it.  You scamper off of her, dropping back to your four equine feet.  <b>You are startled to see glittering gems pouring from her ");
-            if (player.cockArea(x) >= 30)
+            if (player.cocks.cockArea(x) >= 30)
                 outputText("horsecunt");
             else outputText("asshole");
             outputText(" and you scramble to gather all " + gems + " of them up.</b> Satisfied you didn't miss any shinies, you disassemble the toy and haul it off back to your stash.");
@@ -2614,7 +2614,7 @@ export class Masturbation {
 
             outputText("\n\nThe sensation nearly causes you to black out, your girth stretching more than you can ever remember to accept this invader within you, and you curl up even further atop yourself, the anticipation goading you on.  You shove more of your egg-laying tube down your length, and now stimulating honey begins to seep from the hole of your bloated and bulging cock along with the remnants of the cum that Exgartuan was trying to use against you.  Perhaps now resigned to his 'fate', the demon seems to have gone silent - though knowing him he's merely planning something else.");
 
-            outputText("\n\nMore eggs begin to rise up from your abdomen, one after the other beginning to shove its way down your poor stretched length.  The first is nearly halfway down your " + num2Text(player.cocks[player.biggestCockIndex()].cockLength) + " inches, and you feel another entering your slit.  Then you feel something else deep within, something that drops your jaw.  Your cock begins to lurch, as if beginning to orgasm, and you realize what Exartuan is doing. He's trying to make you climax to force the eggs out!");
+            outputText("\n\nMore eggs begin to rise up from your abdomen, one after the other beginning to shove its way down your poor stretched length.  The first is nearly halfway down your " + num2Text(player.cocks[player.cocks.biggestCockIndex()].cockLength) + " inches, and you feel another entering your slit.  Then you feel something else deep within, something that drops your jaw.  Your cock begins to lurch, as if beginning to orgasm, and you realize what Exartuan is doing. He's trying to make you climax to force the eggs out!");
 
             outputText("\n\nYou struggle, ");
             if (shouldraFollower.followerShouldra()) outputText("ghost-assisted ");
@@ -2856,7 +2856,7 @@ export class Masturbation {
                     outputText("honey");
                 else outputText("goo");
                 outputText(".  Quickly, you thrust it into your other breast and let the egging continue.  Suddenly conscious of your situation, you hold your previous [nipple] closed.");
-                if (player.hasCock()) outputText("  Your [chest] and ovipositor meanwhile are slowly being coated in white from your languid pleasure.");
+                if (player.cocks.length > 0) outputText("  Your [chest] and ovipositor meanwhile are slowly being coated in white from your languid pleasure.");
                 outputText("\n\nEventually, no more eggs come down the tube, and with a contented sigh, you release your ovipositor and, clutching your [chest] tightly to prevent the eggs' escape, pass out for the remainder of the hour.");
             }
             // Stage 2 no/moderate chance of pregnancy
@@ -2951,7 +2951,7 @@ export class Masturbation {
         else outputText("  You");
         outputText(" twist your wrist down.  That change in direction comes far easier than trying to stroke it.  Releasing sets of alien muscles that you had held instinctively, you let your " + cockDescript(game.player, x) + " do what it was made to do.  It slithers down sinuously, the purplish head pressing heavy and hot against your juicy mound just hard enough to encourage you to press back against it.  It slowly spreads your clinging tunnel around its obscene girth one fold at a time.");
         // Cunt change!
-        player.cuntChange(player.cockArea(x), true, true, false);
+        player.cuntChange(player.cocks.cockArea(x), true, true, false);
 
         outputText("\n\nRipples of delight radiate along your " + cockDescript(game.player, x) + " as it buries itself as deeply into your velvet tunnel as possible.  The fat, purplish head stretches you out as it goes, just enough that the trailing stalk is comfortably ensconced in twat.  Tugging on the exposed portion, you find yourself pumping wildly on your length, squeezing it while paroxysms of ecstasy render your fine muscle control useless.  The dual sensations of being fucked and dishing out a hot dicking have overlapped into a tangled-up knot inside you.");
         if (y >= 0) {
@@ -2959,7 +2959,7 @@ export class Masturbation {
             if (player.cocks[y].cockType == CockTypesEnum.TENTACLE) {
                 outputText("  In no time flat the second tendril has gotten the idea, and it elongates to reach for your unoccupied asshole.  There's a moment of token resistance before it violates your [asshole], but then, there's only the warm heat of a torrid butt-fuck.");
                 // BUTTCHANGE IF APPROPRIATE
-                player.buttChange(player.cockArea(y), true, true, false);
+                player.buttChange(player.cocks.cockArea(y), true, true, false);
             }
         }
         outputText("\n\nDelirious with excitement, you grab hold of your [chest]");
@@ -2969,9 +2969,9 @@ export class Masturbation {
         outputText(".");
         if (player.lactationQ() >= 250) outputText("  Milk squirts from your engorged teat almost immediately to fall in a moist, creamy rain across your writhing form.");
         // {no new PG}  Three + Tentalce fork - one in mouth
-        if (player.tentacleCocks() >= 3) {
+        if (player.cocks.tentacleCocks() >= 3) {
             outputText("  The pleasured noises that have been issuing forth from your 'O'-gaped lips are cut off by a sudden intrusion from another of your arboreal phalluses.   This one punches straight into your throat without pause, sliding so smoothly across your tongue that you barely care about gagging when it feels so good.  Trickles of your sweet pre-cum are dribbling out from [eachCock] into your holes");
-            if (player.tentacleCocks() < player.cocks.length) outputText(" and the open air");
+            if (player.cocks.tentacleCocks() < player.cocks.length) outputText(" and the open air");
             outputText(".");
             if (player.biggestTitSize() >= 4) outputText("  Laying right between your boobs, it doesn't take long for the shaft to extend far enough to loop around each tit, sliding slowly encircling each curvy mound as it presses them together around itself, getting a titfuck while it plows your unresisting mouth.");
         }
@@ -2983,13 +2983,13 @@ export class Masturbation {
             }
         }
         // MORE
-        if (player.tentacleCocks() >= 6) {
+        if (player.cocks.tentacleCocks() >= 6) {
             outputText("\n\nThe excess green tools rise up above you.  They survey the view before them in a crude approximation of a sentient surveyor, seeming to take in the shifting, squiggling view of your ardent masturbation.  In truth, you're just trying to think of where to stick them.  A few droplets of liquid lust leak from their tips in sympathetic pleasure, and it gives you an idea for just what to do with them.  They stretch out towards your torso, veering to the sides at the last second.  Dripping onto your shoulders, the pulsating plant-pricks slowly push into your armpit, lubricating your " + skinFurScales(player) + " with their amorous liquid.");
-            if (player.tentacleCocks() >= 7) outputText("  They pile in there, really squirming against each other as much as you, frotting against your sweat-slick flesh.  ");
+            if (player.cocks.tentacleCocks() >= 7) outputText("  They pile in there, really squirming against each other as much as you, frotting against your sweat-slick flesh.  ");
             outputText("  You're fucking your armpits, and it feels divine, so good that your pits are swampy pits of sex within moments.");
         }
         // One more:
-        else if (player.tentacleCocks() >= 4) {
+        else if (player.cocks.tentacleCocks() >= 4) {
             outputText("\n\nThe last green tool rises up above you.  It surveys the view before it in a crude approximation of a sentient surveyor, seeming to take in the shifting, squiggling view of your ardent masturbation.  In truth, you're just trying to think of where to stick it.  A droplet of liquid lust leaks from the tip in sympathetic pleasure, and it gives you an idea for just what to do with it.  It stretches out towards your torso but veers left at the last second.  Dripping onto your shoulder, the pulsating plant-prick slowly pushes into your armpit, lubricating your " + skinFurScales(player) + " with its amorous liquid.  You're fucking your armpit and it feels divine, so good that you quickly slick your pit and twist the spare cock around yourself so that it can double-fuck both sides.");
         }
 
@@ -2999,19 +2999,19 @@ export class Masturbation {
             outputText("balls");
         else outputText("groin");
         outputText(".  Orgasm is rapidly closing in, and there's no slowing your frenzied flora at this point.  You ");
-        if (player.tentacleCocks() >= 3)
+        if (player.cocks.tentacleCocks() >= 3)
             outputText("gurgle");
         else outputText("moan");
         outputText(" as your inner muscles begin to contract into tight knots, the pressure building to a turgid, throbbing peak.  Then, as you");
-        if (player.tentacleCocks() >= 3)
+        if (player.cocks.tentacleCocks() >= 3)
             outputText("r multitude of penises");
         outputText(" thrust deep inside yourself, a volcano of pleasure erupts, pumping thick flows of white goo straight into your snatch");
-        if (player.tentacleCocks() == 2)
+        if (player.cocks.tentacleCocks() == 2)
             outputText(" and ass");
-        else if (player.tentacleCocks() > 2)
+        else if (player.cocks.tentacleCocks() > 2)
             outputText(", ass, and mouth");
         outputText(".");
-        if (player.tentacleCocks() >= 3) {
+        if (player.cocks.tentacleCocks() >= 3) {
             outputText("  You gulp the salty flow down as best you are able");
             if (player.cumQ() >= 500) {
                 outputText(".  That doesn't really count for much with how heavy your load is, ");
@@ -3022,9 +3022,9 @@ export class Masturbation {
             outputText(".");
         }
         outputText("  Your birth canal is quickly flooded with white spooge");
-        if (player.tentacleCocks() >= 2) outputText(", while your [ass]'s interior is painted bright white");
+        if (player.cocks.tentacleCocks() >= 2) outputText(", while your [ass]'s interior is painted bright white");
         outputText(".");
-        if (player.tentacleCocks() == 2) {
+        if (player.cocks.tentacleCocks() == 2) {
             outputText("  Your untended " + cockDescript(game.player, y) + " blows spunk over you ");
             if (player.cumQ() < 50)
                 outputText("in small spurts");
@@ -3046,34 +3046,34 @@ export class Masturbation {
                 outputText(".  The sensations coming from your prehensile penises are just so overwhelming that it's like a whole-body-gasm.");
             }
         }
-        else if (player.tentacleCocks() >= 4) {
+        else if (player.cocks.tentacleCocks() >= 4) {
             outputText("  Meanwhile, the purple tip");
-            if (player.tentacleCocks() == 4)
+            if (player.cocks.tentacleCocks() == 4)
                 outputText("s swell");
             else outputText(" swells");
             outputText(" in your armpit");
-            if (player.tentacleCocks() >= 5) outputText("s");
+            if (player.cocks.tentacleCocks() >= 5) outputText("s");
             outputText(", engorging immensely as they press right into the soft, concave flesh within, the semen squirting out in pressured, arm-soaking jets.");
         }
 
         outputText("\n\nAt once, your whole body sags back, limp and drained.  The elongated tentacle");
-        if (player.tentacleCocks() > 1)
+        if (player.cocks.tentacleCocks() > 1)
             outputText("s retract");
         else outputText(" retracts");
         outputText(" back to ");
-        if (player.tentacleCocks() == 1)
+        if (player.cocks.tentacleCocks() == 1)
             outputText("its");
         else outputText("their");
         outputText(" normal length, popping out of your vagina");
-        if (player.tentacleCocks() == 2)
+        if (player.cocks.tentacleCocks() == 2)
             outputText(" and ass");
-        else if (player.tentacleCocks() > 2) outputText(", ass, and mouth");
+        else if (player.cocks.tentacleCocks() > 2) outputText(", ass, and mouth");
         outputText(", leaving your orifice");
-        if (player.tentacleCocks() > 1) outputText("s");
+        if (player.cocks.tentacleCocks() > 1) outputText("s");
         outputText(" to dribble the spent passion on the ground.  Damn, that was satisfying.");
         // (-2 sens + 1 per tentacle dick, -100 lust)
         player.orgasm();
-        dynStats("sen", (-1 * (1 + player.tentacleCocks())));
+        dynStats("sen", (-1 * (1 + player.cocks.tentacleCocks())));
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -3101,7 +3101,7 @@ export class Masturbation {
 
         outputText("You eagerly reveal your flora pecker as it squirms and wriggles on its own, gently caressing the green surface here and there, its coloration changing as you tease yourself.  After toying with your tentacle dick for a while, you decide to get down to business; using your newly acquired shaft muscles, you expertly guide your ever-writhing " + cockDescript(player, tentacle) + " to your back, pointing it toward your buttocks.  You grind the tip against your [butt], making pre-cum flow from your mushroom-like head and smearing it against your " + skinFurScales(player) + ".  Using your own seminal fluid as a natural lube, you press the tip of your " + cockDescript(player, tentacle) + " in front of your own backdoor, stretching your anal opening little by little, careful not to tear your own insides.  This goes on for a while, until you suddenly lose all patience and roughly stuff your own " + cockDescript(player, tentacle) + " at full force inside your colon.");
         // [anal tightness check]
-        player.buttChange(player.cockArea(tentacle), true, true, false);
+        player.buttChange(player.cocks.cockArea(tentacle), true, true, false);
 
         outputText("\n\nThe impetuousness of the act makes you cry in a mixture of pleasure and pain, your [asshole] being overloaded with intense sensations.  Fortunately the tender and rubbery texture of your " + cockDescript(player, tentacle) + " allows for more sensitivity, the subtle friction sending tingles from your crotch all the way up your spine.  You shiver from the sheer cocktail of raw pleasure you're inflicting on your own body.  Your " + cockDescript(player, tentacle) + " keeps squirming against your insides, making you quiver and giggle like a whore, until it lodges all the way inside your colon, adopting a more comfortable position.  You then proceed to ferociously fuck your own [asshole], stretching it a bit more at every thrust.");
 
@@ -3250,9 +3250,9 @@ export class Masturbation {
         if (silly()) outputText(", the alliteration of the experience further arousing you");
         outputText(". Your toes curl as you begin to pull in and out, pumping the dildo with smooth motions. Your tongue hangs from your mouth, your breathing becomes heavy, and your moans lewdly express pure lust as you increase your tempo. Before too long, you feel your pucker becoming more sensitive and know an orgasm is quickly approaching.");
         player.buttChange(8, true, true, false);
-        if (player.hasCock() && player.hasVagina())
+        if (player.cocks.length > 0 && player.hasVagina())
             outputText("\n\nYou moan in ecstasy while your [vagina] and " + multiCockDescriptLight(player) + " erupt with sex juices. ");
-        else if (player.hasCock())
+        else if (player.cocks.length > 0)
             outputText("\n\nYou moan in ecstasy while cum spurts from your " + multiCockDescriptLight(player) + ". ");
         else if (player.hasVagina()) {
             outputText("\n\nYou moan in ecstasy while juices ");
@@ -3271,7 +3271,7 @@ export class Masturbation {
     }
 
     private midasCockJackingGemsRoll(): number {
-        const cockSocks: number = player.countCockSocks("gilded");
+        const cockSocks: number = player.cocks.countCockSocks("gilded");
         let gems: number = 10 + rand(20);
 
         if (player.cumQ() < 1000 * cockSocks)
@@ -3293,7 +3293,7 @@ export class Masturbation {
 
     private onaholeRepeatUse(corrupted: boolean): void {
         let gemsCreated: number = 0; // Changed as gems caused a duplicate var warning
-        if (player.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.countCockSocks("gilded")) {
+        if (player.cocks.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.cocks.countCockSocks("gilded")) {
             flags[kFLAGS.GILDED_JERKED]++;
             gemsCreated = midasCockJackingGemsRoll();
             player.gems += gemsCreated;

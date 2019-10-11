@@ -24,7 +24,7 @@ export class Farmers extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createCock(9, 2, CockTypesEnum.HUMAN);
+        this.cocks.createCock(9, 2, CockTypesEnum.HUMAN);
         this.balls = 2;
         this.ballSize = 1;
         this.cumMultiplier = 3;

@@ -319,7 +319,7 @@ export class Camp extends NPCAwareContent {
             return;
         }
         // Exgartuan clearing
-        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (player.cockArea(0) < 100 || player.cocks.length == 0)) {
+        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (player.cocks.cockArea(0) < 100 || player.cocks.length == 0)) {
             exgartuanCampUpdate();
             return;
         }
@@ -1112,7 +1112,7 @@ export class Camp extends NPCAwareContent {
                 return;
             }
             // Shouldra xgartuan fight
-            if (player.hasCock() && followerShouldra() && player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) {
+            if (player.cocks.length > 0 && followerShouldra() && player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) {
                 if (flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == 0) {
                     shouldraFollower.shouldraAndExgartumonFightGottaCatchEmAll();
                     sleepRecovery(false);
@@ -1124,7 +1124,7 @@ export class Camp extends NPCAwareContent {
                     return;
                 }
             }
-            if (player.hasCock() && followerShouldra() && flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == -0.5) {
+            if (player.cocks.length > 0 && followerShouldra() && flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == -0.5) {
                 shouldraFollower.keepShouldraPartIIExgartumonsUndeatH();
                 sleepRecovery(false);
                 return;
@@ -1320,10 +1320,10 @@ export class Camp extends NPCAwareContent {
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0) {
             trace("EXGARTUAN V1: " + player.effects.getValue1Of(StatusAffects.Exgartuan) + " V2: " + player.effects.getValue2Of(StatusAffects.Exgartuan));
             // if too small dick, remove him
-            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (player.cockArea(0) < 100 || player.cocks.length == 0)) {
+            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (player.cocks.cockArea(0) < 100 || player.cocks.length == 0)) {
                 outputText("", true);
                 outputText("<b>You suddenly feel the urge to urinate, and stop over by some bushes.  It takes wayyyy longer than normal, and once you've finished, you realize you're alone with yourself for the first time in a long time.", false);
-                if (player.hasCock()) outputText("  Perhaps you got too small for Exgartuan to handle?</b>\n", false);
+                if (player.cocks.length > 0) outputText("  Perhaps you got too small for Exgartuan to handle?</b>\n", false);
                 else outputText("  It looks like the demon didn't want to stick around without your manhood.</b>\n", false);
                 player.effects.remove(StatusAffects.Exgartuan);
             }

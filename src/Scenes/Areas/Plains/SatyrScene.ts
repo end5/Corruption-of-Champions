@@ -171,11 +171,11 @@ export class SatyrScene {
         outputText("He grabs your [ass] and roughly squeezes your cheeks, kneeling down while lifting you up so he can impale your [vagOrAss].");
 
         outputText("\n\nYou can only watch in lust and horror as his massive cock aligns with your hole.  Finally, with a grunt, he pushes forward and spears you mercilessly on his shaft");
-        if ((player.hasVagina() && player.vaginalCapacity() < monster.cockArea(0)) || (!player.hasVagina() && player.analCapacity() < monster.cockArea(0))) outputText(", not even bothered by the fact that his cock doesn't even fit inside you");
+        if ((player.hasVagina() && player.vaginalCapacity() < monster.cocks.cockArea(0)) || (!player.hasVagina() && player.analCapacity() < monster.cocks.cockArea(0))) outputText(", not even bothered by the fact that his cock doesn't even fit inside you");
         outputText(".");
         // [cunt/buttchange]
-        if (player.hasVagina()) player.cuntChange(monster.cockArea(0), true, true, false);
-        else player.buttChange(monster.cockArea(0), true, true, false);
+        if (player.hasVagina()) player.cuntChange(monster.cocks.cockArea(0), true, true, false);
+        else player.buttChange(monster.cocks.cockArea(0), true, true, false);
         outputText("\n\nYou scream in pain and pleasure from the satyr's rough entry, and struggle in a vain attempt to escape his imposing shaft.");
 
         outputText("\n\nThe beast-man merely shifts his grip from your [butt] to your shoulders, grunting lewdly as he starts to roughly piston himself in and out of your abused orifice; he doesn't care anything about you, only that he can empty his aching, needy balls into your belly.");
@@ -183,13 +183,13 @@ export class SatyrScene {
         outputText("\n\nYou moan in shame as you feel yourself growing ");
         if (player.hasVagina()) outputText("wet ");
         if (player.gender == 3) outputText("and ");
-        if (player.hasCock()) outputText("hard ");
+        if (player.cocks.length > 0) outputText("hard ");
         if (player.gender == 0) outputText("aroused ");
         outputText("from your rough fucking.  Beads of lubricant splatter about as his brutal thrusts rock you.  Each loud slap from his hips sends a wave of shock and pleasure quaking throughout your body, and you find yourself moaning each time.  The scent of sex grows so overpowering that it even manages to block the thick reek of alcohol emanating from your goat-like partner.");
 
         outputText("\n\nThe satyr's thrusts pick up the pace as he grows more excited at finally having a victim to fuck, his pumps cause his swollen nuts to slap meatily against your ass, rocking you in his strong, powerful arms.  He grunts and coughs in his throat; he's on the very verge of climax...");
         outputText("\n\nYou scream as your [vagOrAss] clenches, strangling the satyr's cock in a vice-like grip.");
-        if (player.hasCock()) outputText("  [EachCock] throbs as it send strings of cum flying straight into the satyr's chest, painting it white.");
+        if (player.cocks.length > 0) outputText("  [EachCock] throbs as it send strings of cum flying straight into the satyr's chest, painting it white.");
         if (player.hasVagina()) outputText("  A veritable flood of girlcum escapes the small space between your vaginal walls and the satyr's massive shaft, covering his balls and legs with your female fluids.");
 
         outputText("\n\nThe satyr barely notices your orgasm as his own climax finally hits, letting out a surprisingly bleat-like cry as he cums inside you, a torrent of thick, hot cum gushing into your body, flooding into your guts until the sheer quantity forces it into your ");
@@ -225,8 +225,8 @@ export class SatyrScene {
         if (player.lust >= 33 && player.gender > 0) {
             outputText("\n\nYou wonder if you should give the satyr some sort of payback for attempting to rape you... do you take advantage of the helpless goat-man?");
             // [Male][Female][Leave]
-            if (player.hasCock() && player.cockThatFits(monster.analCapacity()) >= 0) butt = malesTakeAdvantageOfSatyrs;
-            else if (player.hasCock()) outputText("\n\nYou're too big to fuck his ass...");
+            if (player.cocks.length > 0 && player.cocks.cockThatFits(monster.analCapacity()) >= 0) butt = malesTakeAdvantageOfSatyrs;
+            else if (player.cocks.length > 0) outputText("\n\nYou're too big to fuck his ass...");
             if (player.hasVagina()) faces = femaleTakesAdvantageOfSatyr;
         }
         let bikiniTits: () => void = null;
@@ -242,7 +242,7 @@ export class SatyrScene {
         outputText("\n\nYou saunter forward and topple him over onto his back.  He lets out a noise like a goat that's been struck, even as you move to pin him to the ground, swivelling your hips until you are practically sitting on his face with your [vagina] over his mouth.  You grind your crotch into his face and demand he lick you, taking hold of the copious hair around his privates and pulling to suggest what refusal may mean.");
 
         outputText("\n\nToo horny to fight back or protest, the satyr wastes no time in burying his face into you, licking and kissing your netherlips, nipping at your [clit]");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(", even going as far as to deliver a tongue-stroke or two to ");
             if (player.balls > 0) outputText("your [sack]");
             else outputText("the base of your " + multiCockDescriptLight(game.player));
@@ -256,7 +256,7 @@ export class SatyrScene {
         outputText("\n\nThe satyr's muffled bleat of pleasure is all the warning that you get, as his massive prick throbs powerfully enough to break your grasp on its slimy length.  You can see it enlarging, as the little cum-slit at the tip opens up into a 'O' shape and fountains cum several feet over you head.  Several gobs of smelly, hot goat-cum rain down upon the both you as the satyr ejects gallons of pent-up jism into the air, no doubt catching the attention of any passers-by that might be around.");
 
         outputText("\n\nThe unexpected rain is so gross, and yet so hot, that you find your own orgasm rapidly following.  With a buck and a gasp and a moan, you grind your sopping wet gash squarely into the goat-man's mouth, painting his face as you cum all over it");
-        if (player.hasCock()) outputText(", your own cock belching its usual load across his stomach and the surroundings");
+        if (player.cocks.length > 0) outputText(", your own cock belching its usual load across his stomach and the surroundings");
         outputText(".");
 
         outputText("\n\nAfter a few minutes, the perverted fountain of goat-spunk is reduce to nothing but a trickle; yet the satyr's cock is still hard as a rock, throbbing and spurting longs strings of leftover cum over its slimy length.  The satyr himself goes limp; he seems to have passed out sometime during his explosive orgasm.");
@@ -271,8 +271,8 @@ export class SatyrScene {
     private malesTakeAdvantageOfSatyrs(): void {
         clearOutput();
         spriteSelect(98);
-        let x: number = player.cockThatFits(monster.analCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(monster.analCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You examine your conquest, trying to decide how it is you should use him to find some sexual release.  For a better view, you stride over, push him to the ground, and roughly cup his face.  The satyr looks up to you in fear, struggling in your grasp as you better examine him; he is most definitely male; you can't ignore the goat-like lines on his cheeks, nor the small goatee that grows from his chin, and his nose flares as he breathes and he bleats weakly while you pull his face this way and that way.  Finally, the satyr manages to yank his face out of your hands and lie prone on the floor, still gauging your movements.");
 
         outputText("\n\nYou decide that you don't want to fuck his mouth, at least not this time, and promptly flip the startled satyr over onto his back.  He bleats again in panic, and you silence him with a swift, cracking slap on the ass.  Ah, yes, his ass... it jiggles and ripples far more than it should of any male.  You grope it and examine it in further detail; it's plump and rounded, kinda soft - you might say cushiony.  Spreading his cheeks apart, you see a rather loose hole winking at you even as the satyr renews his struggles to get away from your grasp; seems like this goatman is no stranger to being on the receiving end of anal sex...");
@@ -310,7 +310,7 @@ export class SatyrScene {
         clearOutput();
         spriteSelect(98);
         outputText("The satyr eyes you up and down hungrily; his hands move to grope your [chest], gently tweaking your [nipples], then he moves down towards your ");
-        if (player.hasCock()) outputText("hardening maleness, giving it a few strokes to bring it to full mast, then he moves on to your ");
+        if (player.cocks.length > 0) outputText("hardening maleness, giving it a few strokes to bring it to full mast, then he moves on to your ");
         if (player.balls > 0) outputText("[balls], rolling each of your orbs around with reverence at the life-giving load they produce; finally he addresses your ");
         // ((if PC has a pussy)
         if (player.hasVagina()) outputText("[vagina], spreading your labia wide to see the interior of your rapidly moistening walls.");
@@ -343,7 +343,7 @@ export class SatyrScene {
         outputText("\n\nYou cry out, howling your joy as his hot masculinity fills you with his potent seed, and then shudder as orgasm rocks through your body in turn;  your own ");
         if (player.hasVagina()) outputText("pussy gushes fluids down his massive manhood");
         if (player.gender == 3) outputText(" and ");
-        if (player.hasCock()) outputText("cock spurts cream across your intertwined forms");
+        if (player.cocks.length > 0) outputText("cock spurts cream across your intertwined forms");
         outputText(".  Moaning softly and heaving in great lungfuls of breath, you sink back down onto him, feeling well and truly sated.");
 
         outputText("\n\nThe satyr's load has reduced to a trickle, but he still tries to pump more of it inside your ");
@@ -355,7 +355,7 @@ export class SatyrScene {
         if (!player.hasVagina() && flags[kFLAGS.SATYR_KIDS] == 0) {
             outputText("\n\nYou stare at him blankly, then, as coherent thought returns to you, you ask how he can knock you up when you don't have a womb.");
             outputText("\n\nHe winks at your disquieted expression.  \"<i>Satyr seed is so potent that we can impregnate anything, even ");
-            if (player.hasCock()) outputText("males");
+            if (player.cocks.length > 0) outputText("males");
             else outputText("neuters");
             outputText(" like you, lover.</i>\"");
 

@@ -791,12 +791,12 @@ export class Loppe extends TelAdreAbstractContent {
             outputText("\n\n\"<i>So, sugar,</i>\" she says, interrupting your reverie, \"<i>we can do this however you like.  I don't really mind pitching or catching, especially with a cutie like you.</i>\"  Loppe winks at you, posing for your benefit.\n\n");
 
             // [(any cock fits area 80)
-            if (player.hasCock()) {
-                if (player.smallestCockArea() <= loppeCapacity()) outputText("Pulling her onto your dick would result in some cowgirl fun, though you'd have to deal with her cock pointed right at you when she came.  ");
+            if (player.cocks.length > 0) {
+                if (player.cocks.smallestCockArea() <= loppeCapacity()) outputText("Pulling her onto your dick would result in some cowgirl fun, though you'd have to deal with her cock pointed right at you when she came.  ");
                 else outputText("As good as it would feel to shove your [cock smallest] into her cunt, the nervous looks she's giving it tell you what her response would probably be.  ");
             }
             // [(any cock)
-            if (player.hasCock()) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
+            if (player.cocks.length > 0) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
             if (player.hasVagina()) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
             // [(boobs >= boobjob req)
             if (player.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
@@ -835,12 +835,12 @@ export class Loppe extends TelAdreAbstractContent {
             outputText("\n\n\"<i>How will you be having me, sugar?</i>\" she asks, hopefully.\n\n");
 
             // [(any cock fits area 80)
-            if (player.hasCock()) {
-                if (player.smallestCockArea() <= loppeCapacity()) outputText("Pulling her onto your dick would result in some cowgirl fun, though you'd have to deal with her cock pointed right at you when she came.  ");
+            if (player.cocks.length > 0) {
+                if (player.cocks.smallestCockArea() <= loppeCapacity()) outputText("Pulling her onto your dick would result in some cowgirl fun, though you'd have to deal with her cock pointed right at you when she came.  ");
                 else outputText("As good as it would feel to shove your [cock smallest] into her cunt, the nervous looks she's giving it tell you what her response would probably be.  ");
             }
             // [(any cock)
-            if (player.hasCock()) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
+            if (player.cocks.length > 0) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
             if (player.hasVagina()) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
             // [(boobs >= boobjob req)
             if (player.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
@@ -859,11 +859,11 @@ export class Loppe extends TelAdreAbstractContent {
         // [Cowgirl][Frot][TakeVaginal][Boobjob][TakeAnal][Bail]
         menu();
         // if(flags[kFLAGS.LOPPE_TIMES_SEXED] > 0)
-        if (player.hasCock() && player.lust >= 33) {
-            if (player.cockThatFits(loppeCapacity()) >= 0)
+        if (player.cocks.length > 0 && player.lust >= 33) {
+            if (player.cocks.cockThatFits(loppeCapacity()) >= 0)
                 addButton(0, "Cow-girl", loppeRidesCocks);
         }
-        if (player.hasCock() && player.lust >= 33)
+        if (player.cocks.length > 0 && player.lust >= 33)
             addButton(1, "Get BJ", loppeWorshipsDicks);
         if (player.hasVagina() && player.lust >= 33)
             addButton(2, "TakeVaginal", getFuckedInYerTwatYaCunt);
@@ -889,13 +889,13 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\n\"<i>I would love to, sugar!</i>\"  Loppe gazes at your " + multiCockDescriptLight(game.player) + ".");
         // [(2 fit cocks)
-        const x: number = player.cockThatFits(loppeCapacity());
-        const y: number = player.cockThatFits2(loppeCapacity());
+        const x: number = player.cocks.cockThatFits(loppeCapacity());
+        const y: number = player.cocks.cockThatFits2(loppeCapacity());
 
-        if (y >= 0 && player.cockTotal() == 2) outputText("  \"<i>In fact... I could just eat both of those up.</i>\"");
+        if (y >= 0 && player.cocks.length == 2) outputText("  \"<i>In fact... I could just eat both of those up.</i>\"");
         // (3+ fit cocks)
-        else if (y >= 0 && player.cockTotal() == 3) outputText("  \"<i>But I'm afraid I'll only be able to handle two of them.</i>\"");
-        if (player.cockTotal() > 1 && y >= 0) outputText("\n\nBetter than the usual reaction... at least she's willing to give more than one some love.");
+        else if (y >= 0 && player.cocks.length == 3) outputText("  \"<i>But I'm afraid I'll only be able to handle two of them.</i>\"");
+        if (player.cocks.length > 1 && y >= 0) outputText("\n\nBetter than the usual reaction... at least she's willing to give more than one some love.");
 
         outputText("\n\nLoppe pushes you on your back and gently takes hold of ");
         if (y >= 0) outputText("two of ");
@@ -916,7 +916,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText(".  \"<i>Itadakimasu!</i>\" Loppe says, licking her lips as she finally slides you home.");
 
         outputText("\n\nYou moan softly; she's so warm inside, burning with lust and dripping with arousal, her innards stretching so perfectly to fit around every contour and groove of your shaft");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(", yet squeezing you as tightly as a velvety vise.  In fact, she's gripping you so hard that you can't seem to push yourself any further into her depths; she's squeezing you much too tightly to move in or out, an outright amazing feat, if Loppe gets half as much action as she claims to.");
 
         outputText("\n\nUnfortunately for you, Loppe seems utterly consumed in her lust.  She pants and drools as she begins to brutally gyrate her hips atop you, bouncing on your prick");
@@ -958,7 +958,7 @@ export class Loppe extends TelAdreAbstractContent {
     // {If NoFace:
     private loppeRidesYouNoFaceJizz(): void {
         clearOutput();
-        const y: number = player.cockThatFits2(loppeCapacity());
+        const y: number = player.cocks.cockThatFits2(loppeCapacity());
 
         outputText("You let go of the horse-dicked rabbit and she gratefully swivels herself fully upright, cock jutting out over your belly - instinctively, your ");
         if (player.isTaur()) outputText("foreleg tucks under her cock, angling it away from your body.");
@@ -974,8 +974,8 @@ export class Loppe extends TelAdreAbstractContent {
     // {If Facial:}
     private loppeRidesYouSpunksInYourEye(): void {
         clearOutput();
-        const x: number = player.cockThatFits(loppeCapacity());
-        const y: number = player.cockThatFits2(loppeCapacity());
+        const x: number = player.cocks.cockThatFits(loppeCapacity());
+        const y: number = player.cocks.cockThatFits2(loppeCapacity());
 
         outputText("You keep your ");
         if (player.isDrider()) outputText("legs");
@@ -994,14 +994,14 @@ export class Loppe extends TelAdreAbstractContent {
         clearOutput();
 
         outputText("You let go of Loppe, and she gratefully swivels herself fully upright, cock jutting out over your belly - your hand lunges forward and places itself palm upright underneath the shaft, fingers curling around as you push it further up and up until it's pointing, as best you can make it, at her face!  You can feel it throbbing like mad against your fingers, can feel the impressive bulge of semen as it distends her urethra and surges up towards her flared tip.  With an ululation of ecstasy, she literally explodes into orgasm, cum geysering from her cock and squarely into her face, causing her to choke and splutter at the surprise facial, the pearly spooge splattering down her throat and onto her breasts.  With a laugh she shakes her head, closing her eyes and opening her mouth; even as she continues to bounce and buck and grind against you, her cock keeps spurting cum, and she clumsily tries to catch it, eagerly swallowing down mouthful after mouthful.  She's actually quite good at it, but despite her best efforts, her hair, ears, face and breasts end up completely plastered in cum... not that this stops her from milking you with her lower hole");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" until you can't help it and cum yourself.");
         loppeRidesPCCockFinal();
     }
 
     private loppeRidesPCCockFinal(): void {
-        const x: number = player.cockThatFits(loppeCapacity());
-        const y: number = player.cockThatFits2(loppeCapacity());
+        const x: number = player.cocks.cockThatFits(loppeCapacity());
+        const y: number = player.cocks.cockThatFits2(loppeCapacity());
 
         outputText(images.showImage("loppe-rides-your-cock"));
         outputText("\n\nYour " + cockDescript(game.player, x) + " gushes fluids into her hungry womb");
@@ -1108,21 +1108,21 @@ export class Loppe extends TelAdreAbstractContent {
         clearOutput();
         outputText(images.showImage("loppe-worships-your-cock"));
         outputText("As your eyes sweep over the naked half-breed's form, they focus on her equine masculinity, already standing proud and eager at the prospect of sex.  Distinctly aware of your own male appendage");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(", you conversationally ask Loppe what she thinks of your [cock biggest], an idea starting to form in your mind.");
 
         // (if cock area <= 17.5)
-        if (player.biggestCockArea() <= 17.5) {
+        if (player.cocks.biggestCockArea() <= 17.5) {
             outputText("\n\n\"<i>What do I think about your dick?  Well... it's much smaller than my own, but it's cute.  And to be honest I wouldn't mind having it fill me up, even if you won't be able to go that deep.</i>\"");
             outputText("\n\nLoppe laughs.  \"<i>Or, were you thinking I'd care about who has the biggest dick between us?  As long as you can hump me till I blow a load of my own, I'm fine.  And, to be entirely honest, lately I find myself getting off on anything... so, as long as you don't mind a little tussle in the bed, I certainly don't mind getting on with a cutie like you.</i>\"  She winks and blows you a kiss.");
         }
-        else if (player.biggestCockArea() <= 35) {
+        else if (player.cocks.biggestCockArea() <= 35) {
             outputText("\n\n\"<i>What do I think about your dick?  Well, it's about the same size as mine, which is good, I think... and it looks hard too.  I can see the veins bulge each time it throbs.  Looks tasty... and I wouldn't mind having something like that inside me.</i>\"  She nods appreciatively.");
         }
         else { // cock area > 35
             outputText("\n\n\"<i>What do I think about your dick?  Well... it's huge!  So big, hard and juicy - that's a cock I can really get my hands around.  To be honest with you, I'm having a hard time not taking it for a spin.  Such a wonderful looking member... ");
             // [(if cock area > Loppe's capacity)
-            if (player.biggestCockArea() > loppeCapacity()) outputText("even if it does look too big to fit.");
+            if (player.cocks.biggestCockArea() > loppeCapacity()) outputText("even if it does look too big to fit.");
             else outputText("or maybe I should get a taste first?");
             outputText("</i>\"  She licks her lips.");
         }
@@ -1260,7 +1260,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText("\n\nLoppe's technique is exquisite; she gyrates her hips with each thrust, making sure to press her flare against that special spot inside you that makes you scream in pleasure, once she sees your reaction, she deliberately drags her tip across it with each pass, depositing huge amounts of pre.");
 
         outputText("\n\nYou hiss and shudder, writhing across the bedsheets as your lover works her magic on you, filling you with pleasure.  Juices flow wet and thick from your pussy");
-        if (player.hasCock()) outputText(", precum begins to drool from your " + multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(", precum begins to drool from your " + multiCockDescriptLight(game.player));
         outputText(".");
 
         // Not Centaur:
@@ -1278,7 +1278,7 @@ export class Loppe extends TelAdreAbstractContent {
             outputText("\n\nWith a pointed comment about her not being enough of a stallion to please a proper mare and a laugh for emphasis, you push your hips back with extra force, moaning at the feeling of her horse-cock inside your mare's cunt.  The lusty half-breed doesn't bother replying, she just thrusts against you as hard as she can, pistoning in and out of your [vagina] with abandon.  Each slap of your hips sends pleasure rippling through you.  You gasp and moan, flicking your fingers across your [nipples] for further stimulus.  You rut back against your hybrid herm lover as hard as you can... just a little more, oh, you're so close!");
         }
         outputText("\n\nLoppe gasps and screams, almost neighing, as you feel her cock bulge right before the first of many ropes of cum splatter against the walls of your womb.  You cry out in delight as the sensation of steaming hot spunk gushing into you sets your inflamed nerves alight; your cunt squeezes down on her cock rapturously as you shudder and heave your way to your own climax");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(", neglected cock fountaining cum ");
             if (player.cumQ() < 500) outputText("between you and painting you both");
             else outputText("gushing onto the bedsheets and smearing your belly");
@@ -1289,7 +1289,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText("\n\nLoppe's endless ropes of semen fill you to the brim within instants; the excess jets out of the seal formed by her cock, smearing her bedsheets with the results of your coupling.  By the time she's spent you're lying in a pool of your combined juices, completely matted with cum and utterly satisfied.  Loppe sighs and smiles at you.  \"<i>So... how did you like your ride, sugar?</i>\" she asks, lightly humping you with her slowly softening horse-prick as she leans over you.");
 
         outputText("\n\nYou smile, stroke her cheek, and give her a kiss.  Loppe grins happily at you. \"<i>... Let's not waste any time and get started with round 2!</i>\" She says excitedly");
-        if (!player.isTaur() && player.hasCock()) outputText(", giving you a quick peck on the cheek and licking a small gob of cum that seems to have stuck to your chin");
+        if (!player.isTaur() && player.cocks.length > 0) outputText(", giving you a quick peck on the cheek and licking a small gob of cum that seems to have stuck to your chin");
         outputText(".");
 
         outputText("\n\nAlready...?  Loppe smiles and gives you a kiss, straight on the lips; as the two of you lock lips you can feel her cock, still buried inside you, hardening once more.  It throbs as it fills you up again, still leaking cum.  Breaking the kiss, Loppe gives you a seductive glance and says as innocently as she can.  \"<i>You did say anytime, sugar... and the time is now!</i>\"  You barely have time to protest before she begins humping you once more, droplets of your previous session splattering about with each slap of your hips...");
@@ -1411,9 +1411,9 @@ export class Loppe extends TelAdreAbstractContent {
         outputText("\n\nShivering around the horse-cock spearing your tingling ass, you grind back against your hermaphrodite lover in physical encouragement, impatient with desire.  Loppe giggles, amused by your reactions.");
 
         outputText("\n\nYou moan as Loppe quickly pulls out, leaving you with a feeling of uncomfortable emptiness; but soon she thrusts herself back inside, filling you up once more.  She initially sets upon a slow, long rhythm but quickly speeds up as your moans and gasps of pleasure encourage her to go further.  \"<i>How is it, sugar?  It feels pretty good back here,</i>\"  Loppe pants, humping you.  You simply nod, groaning softly at the sensations filling you");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(", cock");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" dripping pre");
             if (player.hasVagina()) outputText(" and");
         }
@@ -1423,7 +1423,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\nLoppe happily complies, thrusting herself deeper and stronger.  ");
         // [(cock)
-        if (player.hasCock()) outputText("One of her hands reaches around to grasp your pre-slickned [cock biggest], stroking you in time with her thrusts.  ");
+        if (player.cocks.length > 0) outputText("One of her hands reaches around to grasp your pre-slickned [cock biggest], stroking you in time with her thrusts.  ");
         if (player.gender == 2) outputText("One of her hands reaches around to tease your dripping [vagina] and erect [clit], dipping a finger in every time she bottoms out.  ");
         outputText("Wet slapping noises fill the room, and you gasp in pleasure each time her cum-churning balls slap against ");
         if (player.balls > 0) outputText("yours");
@@ -1562,7 +1562,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText(".");
 
         outputText("\n\nYou moan as she gets into her task");
-        if (player.hasCock()) outputText(", feeling your erect [cock] press against your underbelly, mashed between your centaur half and the soft carpet of Loppe's room.  You hope she doesn't mind a few stains...  ");
+        if (player.cocks.length > 0) outputText(", feeling your erect [cock] press against your underbelly, mashed between your centaur half and the soft carpet of Loppe's room.  You hope she doesn't mind a few stains...  ");
         // (else vag)
         else if (player.hasVagina()) outputText("; your cunt is sopping, making a small pool of juices one the floor.  ");
         else outputText(".  ");
@@ -1573,13 +1573,13 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\nHer enthusiasm is contagious, and you find yourself bucking against her with almost as much eagerness as she's using to fuck your [asshole].  The pleasure is exquisite; that flared tip of hers plugs your hole in a most wonderful way... it's almost like every thrust fills up a part of you that was missing, while every pull creates a vacuum that threatens to suck that big horse-dick right where it belongs.  ");
         // [PC has cock:
-        if (player.hasCock()) outputText("  The bumps against your prostate send waves of pleasure running through [eachCock] and spreading along your body, until they reach your throat and come out as a ragged groan.  ");
+        if (player.cocks.length > 0) outputText("  The bumps against your prostate send waves of pleasure running through [eachCock] and spreading along your body, until they reach your throat and come out as a ragged groan.  ");
         outputText("If she keeps this up for too much longer, you will pop any moment now...");
 
         outputText("\n\n\"<i>Ohhh!  G-gonna cum... [name], your ass is incredible!</i>\"  Loppe moans, humping your butt like a herm possessed, delirious with her eagerness to climax.  Precum shoots in spurts easily equal to the orgasms of normal men and dickgirls; when she blows, it's going to be a big one...");
 
         outputText("\n\nYou clench your ass and groan, shuddering as you try to stop Loppe's movements with your gripping sphincter.  The ferocious climax brought by your anal stimulation sends waves of pleasure coursing along your body, rattling your teeth and making you see stars.");
-        if (player.hasCock()) outputText("  [EachCock] spasms and unloads beneath you, smearing you and the carpet below and pooling thickly with fluid forced out by the prostate stimulation.");
+        if (player.cocks.length > 0) outputText("  [EachCock] spasms and unloads beneath you, smearing you and the carpet below and pooling thickly with fluid forced out by the prostate stimulation.");
         if (player.hasVagina()) outputText("  Your vagina contracts, trying to grip at a phantom member as you spill your fluids on the carpet beneath you.");
 
         outputText("\n\nThe scent of your orgasm and the feeling of your sphincter clenching around her cock as tightly as it can is too much for Loppe, who roughly slams into you one last time and whinnies with glee as she floods your ass with cum.  She continues to thrust and rut and buck as she fills you with splurt after gush of hot, thick herm spunk.  The liquid warmth of Loppe's orgasm only enhances your afterglow, and slowly you feel yourself filled until you");
@@ -1589,7 +1589,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\n\"<i>Ohhh... you are incredible, [name].  ");
         // [PC has dick that fits)
-        if (player.cockThatFits(loppeCapacity()) >= 0) outputText("Though I hope you won't mind riding me, sometime,</i>\" she laughs.  \"<i>");
+        if (player.cocks.cockThatFits(loppeCapacity()) >= 0) outputText("Though I hope you won't mind riding me, sometime,</i>\" she laughs.  \"<i>");
         outputText("How about another round, hmm?  Big strong 'taur like you should certainly be able to hold a little more loving inside of you, right?</i>\"  She croons happily, running her hands up and down your ass as if trying to entice you.");
 
         // (Low Libido)
@@ -1800,7 +1800,7 @@ export class Loppe extends TelAdreAbstractContent {
         if (player.cor >= 66) outputText("\n\nYou leave her assertion unanswered and haul your childish date to the bath; soon, the two of you are clean enough that you can dry yourself off and pull your clothes on.");
 
         outputText("\n\n\"<i>Bye, sugar!");
-        if (player.hasCock()) outputText("  Maybe next time I'll be the one to give you a bit of a holdout!");
+        if (player.cocks.length > 0) outputText("  Maybe next time I'll be the one to give you a bit of a holdout!");
         outputText("</i>\"");
         // leave, set LoppeDenial flag = 7
         flags[kFLAGS.LOPPE_DENIAL_COUNTER] = 5;

@@ -15,7 +15,7 @@ export class HermCentaur extends Monster {
         // THIS SHIT IS RETARDED.
         // Rather than doing something smart, like usiing the mf() function to set the gender prounouns in checkMonster, instead, each create<x> function sets them to something. So if you createVag then createCock, you get male pronouns. Fuck off.
         this.createBreastRow(Appearance.breastCupInverse("E"));
-        this.createCock(36, 5, CockTypesEnum.HORSE);
+        this.cocks.createCock(36, 5, CockTypesEnum.HORSE);
         this.createVagina(false, 4, 5);
 
         this.balls = 2;
@@ -92,7 +92,7 @@ export class HermCentaur extends Monster {
         if (player.lust <= 50) outputText(" your " + skin(player) + " grows feverishly hot.");
         else {
             outputText(" blood rushes to your loins, invigorating");
-            if (player.hasCock()) outputText(" [eachCock] with the desire to plunge inside that juicy-hot hole.");
+            if (player.cocks.length > 0) outputText(" [eachCock] with the desire to plunge inside that juicy-hot hole.");
             else if (player.hasVagina()) outputText(" your [vagina] with the desire to submit while juices pool between your [legs].");
             else outputText(" your anus until it puckers, craving something to fill it - anything.");
         }
@@ -111,19 +111,19 @@ export class HermCentaur extends Monster {
         else if (player.lust < 60) outputText("\n\nYour blink, but find your eyes staying closed a moment longer than you intended, visions of yourself suckling down the pink sweetness occupying your mind.");
         else if (player.lust < 70) {
             outputText("\n\nYou groan in disappointment when you realize what's going to happen, but as soon as you're slicked with the aphrodisiac,");
-            if (player.hasCock()) outputText(" [eachCock] awakens, filling itself towards full erection.");
+            if (player.cocks.length > 0) outputText(" [eachCock] awakens, filling itself towards full erection.");
             else if (player.hasVagina()) outputText(" a wet heat answers in your loins, growing more insistent from moment to moment.");
             else outputText(" your [asshole] tingles, craving something to fill it.");
         }
         else if (player.lust < 80) {
             outputText("\n\nYou sigh and try to gain a better position during the pink rain");
-            if (player.hasCock()) outputText(" ignoring the stiffening pressure of [eachCock]");
+            if (player.cocks.length > 0) outputText(" ignoring the stiffening pressure of [eachCock]");
             else outputText(" ignoring the increasing wetness of your inner [armor]");
             outputText(". It's getting harder to think straight with all this desire welling up inside you.  It isn't for a few moments that you realize you tongue is hanging out and drooling all over youself.  Gods, you want to fuck!");
         }
         else if (player.lust < 90) {
             outputText("\n\nPanting feverishly, you try to ignore the blush-colored downfall, but it's a futile gesture.  It makes your " + skinFurScales(player) + " burn hot, wicking inside you with devilish efficiency to stoke the fires of your lust beyond normal limits.");
-            if (player.hasCock()) outputText("  Pre begins to dribble from your hot-and-ready cum-slit, eager to pour out in a deluge of sperm.");
+            if (player.cocks.length > 0) outputText("  Pre begins to dribble from your hot-and-ready cum-slit, eager to pour out in a deluge of sperm.");
             else if (player.hasVagina()) outputText("  A flood of sopping moisture dribbles down your [legs], the proof of your unholy desire to breed.");
             outputText(" You NEED to fuck soon.  You can barely contain yourself!");
         }

@@ -73,11 +73,11 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
         }
-        if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) { // All the hourly bee cock checks except the 'seek out the bee girl' check. That's in timeChangeLarge
+        if (player.cocks.length > 0 && player.cocks[0].cockType == CockTypesEnum.BEE) { // All the hourly bee cock checks except the 'seek out the bee girl' check. That's in timeChangeLarge
             outputText("\n");
             if (player.cocks.length > 1) {
                 outputText("You feel a stickiness and some stinging from your cocks.  It seems your bee cock has absorbed your new addition, leaving no trace of it.\n");
-                while (player.cocks.length > 1) player.removeCock(1, 1);
+                while (player.cocks.length > 1) player.cocks.removeCock(1, 1);
             }
             if (player.cocks[0].cockLength < 25 || player.cocks[0].cockThickness < 4) {
                 outputText("Your " + cockDescript(player, 0) + " quivers for a moment before growing slightly ");
@@ -140,7 +140,7 @@ export class PlayerEvents implements TimeAwareInterface {
         }
         if (player.effects.findByType(StatusAffects.Luststick) >= 0) { // Luststic countdown
             player.effects.addValue(StatusAffects.Luststick, 1, -1);
-            if (rand(2) == 0 && player.hasCock()) { // 50% chance to lust spike
+            if (rand(2) == 0 && player.cocks.length > 0) { // 50% chance to lust spike
                 // Display if haven't displayed
                 if (player.flags[kFLAGS.PC_CURRENTLY_LUSTSTICK_AFFECTED] == 0) {
                     outputText("\nYour body tingles, practically a slave to the effects of harpy lipstick.  Blood surges to " + sMultiCockDesc(player) + ", making you groan out loud with forced pleasure.  Unasked-for fantasies assault you, and you spend a few moments fantasizing about fucking feathery women before you come to your senses.\n");
@@ -271,7 +271,7 @@ export class PlayerEvents implements TimeAwareInterface {
 
         if (player.inRut) { // Rut v1 is bonus cum, v2 is bonus libido, v3 is hours till it's gone
             trace("RUT:" + player.effects.getValue3Of(StatusAffects.Rut));
-            if (player.effects.getValue3Of(StatusAffects.Rut) <= 1 || player.totalCocks() == 0) { // Remove bonus libido from rut
+            if (player.effects.getValue3Of(StatusAffects.Rut) <= 1 || player.cocks.length == 0) { // Remove bonus libido from rut
                 dynStats("lib", -player.effects.getValue2Of(StatusAffects.Rut), "resisted", false, "noBimbo", true);
                 player.effects.remove(StatusAffects.Rut); // remove heat
                 if (player.lib < 10) player.lib = 10;
@@ -318,8 +318,8 @@ export class PlayerEvents implements TimeAwareInterface {
         // flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00330] prevents PC getting two of the same notices overnite
         else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00330] > 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00330]--;
         if (player.perks.findByType(PerkLib.FutaForm) >= 0) { // Futa checks
-            if (!player.hasCock()) { // (Dick regrowth)
-                player.createCock();
+            if (!player.cocks.length > 0) { // (Dick regrowth)
+                player.cocks.createCock();
                 player.cocks[0].cockLength = 10;
                 player.cocks[0].cockThickness = 2.75;
                 outputText("\n<b>As time passes, your loins grow itchy for a moment.  A split-second later, a column of flesh erupts from your crotch.  Your new, 10-inch cock pulses happily.");
@@ -397,8 +397,8 @@ export class PlayerEvents implements TimeAwareInterface {
         if (player.perks.findByType(PerkLib.BroBody) >= 0) { // Bro checks
             player.effects.remove(StatusAffects.Feeder);
             player.perks.remove(PerkLib.Feeder);
-            if (!player.hasCock()) { // (Dick regrowth)
-                player.createCock();
+            if (!player.cocks.length > 0) { // (Dick regrowth)
+                player.cocks.createCock();
                 player.cocks[0].cockLength = 10;
                 player.cocks[0].cockThickness = 2.75;
                 outputText("\n<b>As time passes, your loins grow itchy for a moment.  A split-second later, a column of flesh erupts from your crotch.  Your new, 10-inch cock pulses happily.");
@@ -754,7 +754,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 dayTenDreams();
                 return true;
             }
-            if (player.hasCock() && player.perks.findByType(PerkLib.BeeOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Bee dreams proc
+            if (player.cocks.length > 0 && player.perks.findByType(PerkLib.BeeOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Bee dreams proc
                 // happens at first sleep after hitting stage 3 unfertilized
                 // To Wong Foo, Thanks for Everything, Julie Newmar
                 outputText("\nYou sit atop your favorite flower, enjoying the smell of verdure and the sounds of the forest.  The sun is shining brightly and it feels wonderful on your chitin.  Your wings twitch happily in the soft breeze, and it feels good to be alive and doing the colony's work... the only sour note is your heavy, bloated abdomen, so full of unfertilized eggs that it droops, so full it strains your back and pinches your nerves.  Still, it's too nice a day to let that depress you, and you take up your customary song, humming tunelessly but mellifluously as you wait for passers-by.");
@@ -776,7 +776,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 // Hey whoever, maybe you write them? -Z
                 return true;
             }
-            if (player.hasCock() && player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Drider dreams proc
+            if (player.cocks.length > 0 && player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Drider dreams proc
                 outputText("\nIn a moonlit forest, you hang upside down from a thick tree branch suspended by only a string of webbing.  You watch with rising lust as a hapless traveler strolls along below, utterly unaware of the trap you've set.  Your breath catches as " + mf(player, "he", "she") + " finally encounters your web, flailing against the sticky strands in a futile attempt to free " + mf(player, "him", "her") + "self.  Once the traveller's struggles slow in fatigue, you descend easily to the forest floor, wrapping " + mf(player, "him", "her") + " in an elegant silk cocoon before pulling " + mf(player, "him", "her") + " up into the canopy.  Positioning your catch against the tree's trunk, you sink your fangs through the web and into flesh, feeling " + mf(player, "his", "her") + " body heat with every drop of venom.  Cutting " + mf(player, "his", "her") + " crotch free of your webbing, you open " + mf(player, "his", "her") + " [armor] and release the ");
                 if (player.hasVagina()) outputText(vaginaDescript(player, 0) + " and ");
                 outputText(cockDescript(game.player, 0) + " therein; you lower yourself onto " + mf(player, "him", "her") + " over and over again, spearing your eager pussy with " + mf(player, "him", "her") + " prick");
@@ -831,7 +831,7 @@ export class PlayerEvents implements TimeAwareInterface {
             lake.gooGirlScene.slimeBadEnd();
             return true;
         }
-        if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE && player.lust >= 100) {
+        if (player.cocks.length > 0 && player.cocks[0].cockType == CockTypesEnum.BEE && player.lust >= 100) {
             outputText("\nYou can’t help it anymore, you need to find the bee girl right now.  You rush off to the forest to find the release that you absolutely must have.  Going on instinct you soon find the bee girl's clearing and her in it.\n\n");
             forest.beeGirlScene.beeSexForCocks(false);
             return true;

@@ -60,7 +60,7 @@ export function dreamSelect(): boolean {
         choices[choices.length] = 8;
     }
     // Exgartucock
-    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.hasCock()) {
+    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.cocks.length > 0) {
         choices[choices.length] = 9;
         choices[choices.length] = 9;
         choices[choices.length] = 9;
@@ -77,7 +77,7 @@ export function dreamSelect(): boolean {
         choices[choices.length] = 12;
         choices[choices.length] = 12;
         choices[choices.length] = 12;
-        if (player.hasCock() && player.cor > 50) {
+        if (player.cocks.length > 0 && player.cor > 50) {
             choices[choices.length] = 13;
             choices[choices.length] = 13;
             choices[choices.length] = 13;
@@ -189,7 +189,7 @@ export function dreamSelect(): boolean {
         // cat
         else if (daydream == 4) {
             // FEMALE
-            if (player.hasVagina() && (!player.hasCock() || rand(2) == 0))
+            if (player.hasVagina() && (!player.cocks.length > 0 || rand(2) == 0))
                 outputText("being a full cat and getting pounded by another as you mewl with pleasure.  He comes and pulls out, the barbs on his cock rake your insides as you yowl from the sensation. You clean yourself before searching for another cat to pound you, then another, and another...  ", false);
             // MALE
             else
@@ -315,7 +315,7 @@ export function dreamSelect(): boolean {
 
                     outputText("\n\nIt all sinks in now, you are just like them.  As they pull off your fancy, girly clothing your bulging panties come into view and they begin to play with your body in ways that feel so wonderful.  You begin to reach out and play with their little trap cocks as they begin to pound away at your tiny hole.  So many cute little erections around you as you suckle and lick at them all like candy.");
                     outputText("\n\nYou awake with a moan, right where you went to sleep in the middle of your camp.  ");
-                    if (player.hasCock()) outputText("  [EachCock] is fully erect and throbbing.");
+                    if (player.cocks.length > 0) outputText("  [EachCock] is fully erect and throbbing.");
                     else if (player.hasVagina()) outputText("  Your [vagina] dripping wet with need.");
                     outputText("  You shudder as you recall the erotic dream you were just having, a hand caressing your aching loins.");
                     // end dream
@@ -361,7 +361,7 @@ export function dreamSelect(): boolean {
 
 export function dayTenDreams(): void {
     outputText("\n", false);
-    if (player.hasCock()) {
+    if (player.cocks.length > 0) {
         if (player.cor < 50) {
             outputText("Your task completed, you return through the portal to your home.  Exhausted but happy, the sight of your village fills you with a surge of emotions.  Most prominently, and perhaps most enjoyably: pride.  You did it.\n\n", false);
 
@@ -487,7 +487,7 @@ export function displacerDreamIII(): void {
     outputText("\n\nAs you settle back in to sleep, you feel a soft squirming beneath the covers.  Lifting the blanket, you can't stop your jaw from dropping.  There, between your legs is a cock just like the one in your dreams, fitting snugly into its purple cock-sock.  You give it a tentative poke, and the canine-like tip again unfurls into its starfish-like head tipped with wiggling tendrils.  How odd... was this the intended effect of the cock-sock?");
 
     outputText("\n\nYou give your <b>new coeurl cock</b> a few tentative strokes, to confirm its verisimilitude.  When you're satisfied it's not just another dream, you sigh and flop backwards onto your bed.  This world just gets stranger by the second... you idly wonder what it would be like on some other world...");
-    let x: number = player.cockTotal();
+    let x: number = player.cocks.length;
     while (x > 0) {
         x--;
         if (player.cocks[x].sock == "amaranthine" && player.cocks[x].cockType != CockTypesEnum.DISPLACER) {

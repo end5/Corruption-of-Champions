@@ -159,21 +159,21 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
 
         if (player.cocks.length == 0) {
             outputText("A building sense of pressure grows in your groin, bulging the flesh of your crotch out.  You ignore it, focusing on suckling more of the sweet fluids from your goddess' breasts.   The warmth in your middle feels like it's dripping down into that new bulge, making it tingle with sensitivity.  You ignore it, and lash your tongue across the slippery nipple in your mouth, being rewarded with another warm blast of syrupy sap.   Your mind fills with an impenetrable haze of lust, overcoming any logic with thoughts of raw sex intermingled with animal desire. You're pulled back again by that unholy strength, fighting to get one last lick on that nipple.  Your " + legs(player) + " and " + hipDescription(player) + " shake with lust, driven mad by sweet desire.  Marae reaches down to cup your groin, and blinds you with intense sensation.  She guides your gaze down to a new appendage that's sprouted from your needy groin – <b>a tentacle dick</b>!  It wavers to and fro, coiling on itself and tasting the air like a snake.\n\n", false);
-            player.createCock();
+            player.cocks.createCock();
             player.cocks[0].cockLength = 36;
             player.cocks[0].cockThickness = 2;
             player.cocks[0].cockType = CockTypesEnum.TENTACLE;
         }
         else {
             outputText("You drink deeply, suckling her thick syrupy milk with strength born of an instantaneous addiction.  The desire to attain more of her 'milk' overrides any other thoughts, clouding over them like a dense morning fog.  The slick nipples feel like they tense and squirm in your mouth as you draw every last bit of their delicious cargo into your greedy gullet.  You " + hipDescription(player) + " twitch and squirm, throbbing and hard, making your " + multiCockDescriptLight(game.player) + " bob in the air.   Heedless of your groin's incessant begging, you work the nipple in your mouth as if it was your whole world, trying to pleasure as much as suckle.  You can feel your " + multiCockDescriptLight(game.player) + " squirming in the air  as if reaching for her.  Wait, squirming!?  You're pulled back from her nipple and given the chance to look down, where ", false);
-            if (player.tentacleCocks() < player.cockTotal()) {
+            if (player.cocks.tentacleCocks() < player.cocks.length) {
                 // Single cawks
                 if (player.cocks.length == 1) {
                     // Set primary cock flag
                     player.cocks[0].cockType = CockTypesEnum.TENTACLE;
                 }
                 // multi
-                if (player.cockTotal() > 1) {
+                if (player.cocks.length > 1) {
                     temp = player.cocks.length;
                     // Set cock flags
                     while (temp > 0) {
@@ -358,8 +358,8 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
             outputText(".  Marae's advance seems like an inexorable march to your eyes, and before you have a chance to react, she's crushed against you in a full-body hug.  Her tongue digs into your mouth, rooting out your tongue and melting your resistance in an overwhelming, lust-powered assault.  You vision swims for a moment when she releases you and pulls back.  It's hard to focus with the busty, nude image of fertility beckoning you.  It makes " + sMultiCockDesc(game.player) + " strain to reach her, but she dances back with a knowing smile and says, \"<i>Not yet my eager little subject.  Let me undress you, THEN you can worship me.</i>\"\n\n", false);
 
             outputText("Vines whip out, sliding under your " + player.armorName + ", undoing clasps, and removing it until you stand naked and exposed to Marae.  She smirks and crooks her finger at you in a 'come hither' gesture.  You lurch forward, as if pulled on an invisible string until you're standing inches away from her, your " + cockDescript(game.player, 0) + " rubbing her belly", false);
-            if (player.cockTotal() == 2) outputText(" while your other dangles against her thigh", false);
-            else if (player.cockTotal() > 2) outputText(" while your others dangle against her thighs", false);
+            if (player.cocks.length == 2) outputText(" while your other dangles against her thigh", false);
+            else if (player.cocks.length > 2) outputText(" while your others dangle against her thighs", false);
             outputText(".  The goddess gives you a cruel smile, as if she knows something you don't, and she commands, \"<i>Worship me with your cum, champion.  Submit to your goddess and spend your fertile seed for her.</i>\"\n\n", false);
 
             outputText("Marae extends her arms, and the twin tentacles crawl forward like snakes as they wriggle down her appendages.  You thrust your crotch forwards, presenting it to the goddess, and only wonder why for a brief second before you toss away the nagging, useless thought.  Why would anything but pleasuring the living goddess before you matter?  Her corruptive aura floats in the air, filling you with the desire to submit to your queen and obey her every whim.  " + SMultiCockDesc(game.player) + " twitches and starts to drip pre-cum, itching to fulfill your deity's desires.\n\n", false);
@@ -367,20 +367,20 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
             outputText("The tentacle on her right arm convulses, then splits open along four joints.  The tip folds open to reveal a pink, wriggling interior that promises pleasures mortal minds weren't meant to comprehend.  Meanwhile, while you're distracted by the eager plant-hole, the other tentacle slips behind you and climbs up your " + leg(player) + ", leaving a trail of slime in its wake.   It slides between your cheeks and prods at your " + assholeDescript(player) + ".  You jerk forwards in surprise, but Marae pushes your " + hipDescription(player) + " back, allowing it to work its way inside.", false);
             player.buttChange(12, true, true, false);
             outputText("  The open plant-hole dives for your groin while you're distracted, hits your " + cockDescript(game.player, 0) + " and devours it with a greedy sluuuuurp.", false);
-            if (player.cockTotal() == 2) outputText("  Another vine that may as well be the first's twin snakes from between the goddess' legs and jumps onto your " + cockDescript(game.player, 1) + ".", false);
-            else if (player.cockTotal() > 2) outputText("  More 'open' vines shimmy forth from between Marae's legs and jump up onto your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + "s.", false);
+            if (player.cocks.length == 2) outputText("  Another vine that may as well be the first's twin snakes from between the goddess' legs and jumps onto your " + cockDescript(game.player, 1) + ".", false);
+            else if (player.cocks.length > 2) outputText("  More 'open' vines shimmy forth from between Marae's legs and jump up onto your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + "s.", false);
 
             outputText("You grunt and pump your hips, shameless as you give in to the squeezing, textured tentacle", false);
-            if (player.cockTotal() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(".  Cum boils out from your ", false);
             if (player.balls == 0) outputText("body", false);
             else outputText("balls", false);
             outputText(", but it's quickly devoured by Marae's tree-based tentacle-beast without a sound.  ", false);
             if (player.cumQ() > 500) {
                 outputText("The thick bulges of spooge actually distort the vines", false);
-                if (player.cockTotal() > 1) outputText("s", false);
+                if (player.cocks.length > 1) outputText("s", false);
                 outputText(", letting you get the barest glimpse of white through the over-stretched tentacle-tube", false);
-                if (player.cockTotal() > 1) outputText("s", false);
+                if (player.cocks.length > 1) outputText("s", false);
                 outputText(".  ", false);
             }
             outputText("A hot, slippery pressure touches something inside your " + assholeDescript(player) + " and makes you squirt even harder.  Marae's minions have found your prostate!  You grunt and groan, but the orgasm doesn't seem to stop.  The goddess teases, \"<i>What?  You didn't think I'd actually let you cum on me did you?</i>\"\n\n", false);
@@ -395,17 +395,17 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
             if (player.hasFuckableNipples()) outputText(", slipping inside your cunt-like nipples with ease.  You moan into her ear at the unexpected penetration and shiver from the tingling shocks of pleasure in your " + breastDescript(game.player, 0) + ".", false);
             else outputText(".", false);
             outputText("  Hammering in your chest, your heart beats fast enough to flush your whole body when your " + cockDescript(game.player, 0) + " manages to slip between Marae's legs.  It doesn't penetrate, merely trapping itself between her fluid-lubed thighs", false);
-            if (player.cockTotal() == 2) outputText(" while your other cock rubs over her surface", false);
-            else if (player.cockTotal() > 2) outputText(" while your other cocks rubs over her surface", false);
+            if (player.cocks.length == 2) outputText(" while your other cock rubs over her surface", false);
+            else if (player.cocks.length > 2) outputText(" while your other cocks rubs over her surface", false);
             outputText(".\n\n", false);
 
             outputText("You swoon, your head buzzing with desire for more of this buzzing goddess' embrace.  The urge to kneel before her and worship her cunt rocks you to the core, blasting away the last of your feeble resistance, but before you can do so, Marae grabs you by the chin and commands, \"<i>No my child.  You can serve me better by breeding.</i>\"  Her fingers pull apart the petals of her flowery fuck-hole while she continues, \"<i>Go ahead, put it inside.  I'll show you how to practice the new faith of Marae.</i>\"\n\n", false);
 
             outputText("She's easy to push down into the soft grasses of the island, and her legs part to allow you better access.  Your " + cockDescript(game.player, 0) + " doesn't need to be told what to do, and it slips into her waiting wetness as if it was made for her.  ", false);
-            if (player.cocks[0].cockThickness > 5 || player.cockArea(0) > 100) outputText("With how big you are, there's no way it should be able to fit, but her body isn't even distorted by your girth.  Perhaps she changed you to fit her?  You pull back and your thickness seems unchanged.  You shake your head to clear the unwelcome thoughts and ram yourself back into her.  Fucking is what's important.  ", false);
+            if (player.cocks[0].cockThickness > 5 || player.cocks.cockArea(0) > 100) outputText("With how big you are, there's no way it should be able to fit, but her body isn't even distorted by your girth.  Perhaps she changed you to fit her?  You pull back and your thickness seems unchanged.  You shake your head to clear the unwelcome thoughts and ram yourself back into her.  Fucking is what's important.  ", false);
             else outputText("She feels perfect.  A velvet vice of hot, slippery wetness clutches tightly around your " + cockDescript(game.player, 0) + ".  It almost feels like it's actually gripping you, cradling your cock in her ambrosia-slicked box.", false);
-            if (player.cockTotal() > 1) {
-                if (player.cockTotal() > 2) outputText("  Another ", false);
+            if (player.cocks.length > 1) {
+                if (player.cocks.length > 2) outputText("  Another ", false);
                 else outputText("Your other ", false);
                 outputText(Appearance.cockNoun(CockTypesEnum.HUMAN) + " prods at her tight pucker, and with a slight adjustment, you're able to line it up.  It's wet!  Inch after inch slides in with incredible ease, violating her slippery butthole until you've completely double-penetrated her.", false);
             }
@@ -422,19 +422,19 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
             outputText("Marae laughs and teases, \"<i>If this is how you fuck it's no wonder I haven't met your children yet.  If you're going to be my disciple you need to fuck your partners hard until you're stuffing them with cum.  Then you need to do it again.  Alternatively you should be bouncing on their cock and milking it with your " + vaginaDescript(player, 0) + " until your womb is packed so full you can't walk.  Now show me how you'll do it, or I might keep you here until you're properly trained!</i>\"\n\n", false);
 
             outputText("You happily thrust forwards, ramming your " + cockDescript(game.player, 0) + " into her cunt with such force that a wet slap echoes over the lake and her fluids splatter your abdomen.  ", false);
-            if (player.cockTotal() > 1) outputText("Her asshole is squelching and dripping from your " + cockDescript(game.player, 1) + ", actually squirting more lubricant than her pussy from the violent fucking!  ", false);
+            if (player.cocks.length > 1) outputText("Her asshole is squelching and dripping from your " + cockDescript(game.player, 1) + ", actually squirting more lubricant than her pussy from the violent fucking!  ", false);
             outputText("In spite of the obscene amount of pleasure " + sMultiCockDesc(game.player) + " is getting, you focus on obeying your goddess, and you work the muscles in your " + vaginaDescript(player, 0) + " and " + assholeDescript(player) + " to pleasure her tentacles.  Muffled sloshes and spurts reach your ears, and you realize just how successful your efforts are.  Marae's pinching her nipples and arching her back, and a moment later a wave of pleasure hits you upside the head with the force of a hammer-blow.\n\n", false);
 
             outputText("Cum boils out of your ", false);
             if (player.balls > 0) outputText("rapidly contracting balls", false);
             else outputText("tentacle-squeezed prostate", false);
             outputText(" and erupts into Marae's womb.  Your hips rock forward, grazing her cervix with your " + cockHead(player) + " to better fill her uterus.  ", false);
-            if (player.cockTotal() > 1) outputText("The " + cockDescript(game.player, 1) + " in her ass spasms and explodes with its brother, glazing her slippery colon with a coating of syrupy spunk.  ", false);
-            if (player.cockTotal() > 2) {
+            if (player.cocks.length > 1) outputText("The " + cockDescript(game.player, 1) + " in her ass spasms and explodes with its brother, glazing her slippery colon with a coating of syrupy spunk.  ", false);
+            if (player.cocks.length > 2) {
                 outputText("Neglected but orgasming, ", false);
-                if (player.cockTotal() > 3) outputText("the remainder of ", false);
+                if (player.cocks.length > 3) outputText("the remainder of ", false);
                 outputText("your ", false);
-                if (player.cockTotal() > 3) outputText(multiCockDescriptLight(game.player), false);
+                if (player.cocks.length > 3) outputText(multiCockDescriptLight(game.player), false);
                 else outputText(cockDescript(game.player, 2), false);
                 outputText(" does its best to coat Marae's thighs with whiteness.  ", false);
             }

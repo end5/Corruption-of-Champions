@@ -77,7 +77,7 @@ export class ChameleonGirlScene {
 
     // Herm Loss (Z edited)
     private loseToChameleonWithCockAnBallsAnCunt(): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         spriteSelect(89);
         outputText("\n\n\"<i>Hah! You didn't think you could beat me in </i>my<i> bog, did you?</i>\" the haughty chameleon laughs. She stalks towards you, swaying her wide hips in an exaggerated imitation of a dominatrix, shedding her spare clothing as she approaches.  She stops and stands before you, trying her best to look intimidating.  Wondering what exactly she has planned for you, you await your fate.  From the worried look in her eyes, you can tell she has no idea what she's doing.");
 
@@ -95,7 +95,7 @@ export class ChameleonGirlScene {
 
         outputText("\n\nThe weight lifts from your chest, but you're kept where you are by what's filling you.  The chameleon girl slides her foot down your belly, dragging her dull claws lightly over your skin.  Her ankle bumps into the hard shaft of your prick, and she lifts her foot, balancing herself in practiced form on the other.  She chuckles quietly and bites her fingertip, teasing along your aching cock with her sole.  Its skin is smooth, and feels like thick, supple leather when she grips you with it.  You can tell from her flexibility that her feet are made for gripping and climbing trees, and she easily finds a hold on your cock.  Thankfully taking care to keep her claws out of the way, she begins to jerk you off with her foot, sliding the whole sole up and down");
         // [if(cockarea <40)
-        if (player.cockArea(x) < 40) outputText(" and occasionally lifting it to take the shaft between two dexterous toes and work it more delicately");
+        if (player.cocks.cockArea(x) < 40) outputText(" and occasionally lifting it to take the shaft between two dexterous toes and work it more delicately");
         outputText(".  She blushes as she watches your breaths turn to pants from the pleasure.");
 
         outputText("\n\nThe feelings of being filled and having your " + cockDescript(game.player, x) + " serviced by her foot are just too good, and you quickly reach orgasm, spattering her foot and shin with your hot cum.  Her face is red as she tries to maintain her composure, and her entire body is starting to grow flush with barely contained excitement.  She softly rubs your semen into your softening man-meat as you recover from your orgasm, looking at it almost blankly and smiling.  After a moment she snaps herself out of her reverie, remembering that she was supposed to be punishing you but obviously too aroused to do much.  \"<i>Um, yeah! And you, uhh, better not come back!</i>\"  She rushes off back into the trees, presumably to masturbate somewhere where you won't notice.  You shake your head at the girl's antics, dress yourself, and head back to camp.");
@@ -107,7 +107,7 @@ export class ChameleonGirlScene {
 
     // -Male Loss (Z edited)
     private dudesLoseToChamChams(): void {
-        const x: number = rand(player.totalCocks());
+        const x: number = rand(player.cocks.length);
         spriteSelect(89);
         outputText("\n\nRecognizing that you're no danger, her skin shifts back into its natural " + monster.skinTone + " coloration as she walks towards you.  She swings her hips seductively as she splashes slowly through the water and licks her lips with a loud smack of her tongue, then reaches out and forcefully pulls your " + player.armorName + " above your waist before you can even try to resist her advances, and pushes you back against a tree.  With a few quick pulls of fabric she's stripped her own clothes, and she tosses her thong over a low-hanging branch.  The other band of silk she uses to quickly bind your wrists.  Were you in any shape to fight back you could pull free, but you're too ");
         if (player.lust > 99) outputText("overwhelmed by lust");
@@ -121,7 +121,7 @@ export class ChameleonGirlScene {
         outputText("\n\nHer dripping cunt grinds against your face, clearly wanting for attention.  Reflex turns your head away, but immediately she skins your arms against the rough bark again.  You bury your face in her pussy, doing your best to eat her out and move this process along.  A sharp gasp fills the air above you; clearly, she didn't expect the assault on her sex so soon.  Her musky scent fills your nose, matching the humid bog air oddly well.  You feel something grip onto your " + cockDescript(game.player, x) + ", and realize that she must have moved her foot onto it.  Her toes are apparently as skilled at gripping as her fingers, and the sole of her foot is fortunately covered in the same soft skin as the front of her torso.  Still wet and slick from the waters of the bog, it glides easily along your cock, her toes working your shaft with impressive dexterity and bringing you more pleasure than you'd have thought possible. A gush of female fluids leaks out and drenches your face as she moans, and she pushes herself back.  You take a few grateful breaths as she removes her foot and carefully climbs her way down a bit, pulling your bound arms with her so that she's now in position to impale herself on your " + cockDescript(game.player, x) + ".");
 
         outputText("\n\nShe teases the head of your cock with the smooth folds of her cunt, swirling around a bit as she creeps forwards little by little.  By now your need has grown so great that you don't even care that you're being raped, or how she proceeds, only that you must get off.  You moan lustily and, breaking into a wide smile, the chameleon girl slides herself down your rod, taking you ");
-        if (player.cockArea(x) <= monster.vaginalCapacity()) outputText("to the base of its shaft");
+        if (player.cocks.cockArea(x) <= monster.vaginalCapacity()) outputText("to the base of its shaft");
         else outputText("as far as you can go into her");
         outputText(".  Her eyes go wide and she gasps sharply.  She begins panting and gyrating her wide hips as she slides ever so slightly up and down your cock, not pulling herself more than a couple inches away from you.  The range of motion she's able to put into her hips while holding herself up on the trunk of a tree astounds, and you watch the girl sway her hips rhythmically left to right, back and forth, around and around as she slowly, slowly teases her way mere inches up your shaft, making the same controlled movements on the way back down.  You don't know how much more of this pleasure you can take.  You want to ram into her slick cunt, but you're forced to just stand there and feel every smooth movement of her hips drive you mad with lust.");
 
@@ -179,11 +179,11 @@ export class ChameleonGirlScene {
         let pussy: () => void = null;
         let herm: () => void = null;
         let item: () => void = null;
-        if (player.hasCock()) dick = manFucksChameleonWithBiggishWang;
+        if (player.cocks.length > 0) dick = manFucksChameleonWithBiggishWang;
         if (player.hasVagina()) pussy = femaleHasWinSexWithChamCham;
         if (player.gender == 3) herm = fuckDatChameleonAsACoolGuyGirlHerm;
         // let PC use item
-        if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.hasCock()) item = useAnItemOnTheChamcham;
+        if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.cocks.length > 0) item = useAnItemOnTheChamcham;
         else if (player.hasItem(consumables.SENSDRF) && (player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT))) item = useAnItemOnTheChamcham;
         simpleChoices("Use Dick", dick, "Use Pussy", pussy, "Herm Style", herm, "Use Item", item, "Leave", cleanupAfterCombat);
     }
@@ -192,8 +192,8 @@ export class ChameleonGirlScene {
     private fuckDatChameleonAsACoolGuyGirlHerm(): void {
         clearOutput();
         spriteSelect(89);
-        let x: number = player.cockThatFits(monster.vaginalCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You shed your " + player.armorName + " and approach the fallen chameleon girl.  She stares at you in fascination as she spots your multiple endowments: " + sMultiCockDesc(game.player) + " and " + vaginaDescript(player, 0) + ".  You look her up and down, following the smooth curves of her thin body with your eyes.  Squatting down beside her, you take her by the shoulders in one arm and trail your fingertips lightly up her torso with the other, feeling the soft skin of her belly.  Her eyes widen, and she looks from her hand to your face and back again.  When your hand reaches the silk cloth covering her chest, you pull it off with a light tug and cast it off to the side.  You cup her small breast in your palm, and as you squeeze it her skin tone changes perceptibly, flashing to a much brighter shade of the colors it was.");
 
         outputText("\n\nCurious, you take her nipple between your index finger and thumb, pinching and twisting and pulling on it, eliciting a series of sharp gasps and squeals.  She arches her back into your supporting arm and her skin flashes wildly, long stripes of color shifting across her body with your every tweak.  You find her complete inability to hide what she's feeling amusing, but you're much too turned on to just sit there and play with her.  Releasing her breast, you take her arm and guide her hand to your own slick cunt.  She gets the idea and begins to work her fingers lightly in and out of your wet folds.  You squeeze her close and breathe in deep, enjoying the sensation of her long fingers plunging in and out of your " + vaginaDescript(player, 0) + ".  It feels so good to have her touching you, and as you bask in the pleasure you lose your balance.  The two of you topple over backwards, landing in the shallow water with a splash.  Unsure what to do, the chameleon girl freezes up and looks almost apologetically into your eyes.  You laugh quietly at her confusion and guide her fingers back into motion with your hand.");
@@ -218,7 +218,7 @@ export class ChameleonGirlScene {
     private manFucksChameleonWithBiggishWang(): void {
         clearOutput();
         spriteSelect(89);
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("You approach the fallen girl, and she looks up at you, a pleading expression in her eyes.  You might feel worse for her if she hadn't tried to assault you in a bog.  Reaching down behind her, you find the knot of the cloth covering her breasts, and with a quick pull you yank it off and toss it aside, then drop your [armorName], revealing your erect prick.  Her eyes widen when she sees it and her mouth parts slightly, letting a bit of her tongue slip out to lick her lips.  Quietly disdainful of the slutty girl's open arousal, you decide that if she wants to taste it so badly, she may.  But when you put your hand on the back of her head to push her onto your stiff cock, she manages to work up the strength to grab your arm with a free hand and resist its impulse.  Looking her over, you can see that her sudden burst of energy is due to ");
         if (monster.lust > 99) outputText("her masturbating even more furiously than before at the thought of having your cock.");
         // [if lost by HP:
@@ -279,7 +279,7 @@ export class ChameleonGirlScene {
         // optionz go herez
         let milk: () => void = null;
         let drafts: () => void = null;
-        if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.hasCock()) milk = giveTheChameleonASuccubiMilk;
+        if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.cocks.length > 0) milk = giveTheChameleonASuccubiMilk;
         if (player.hasItem(consumables.SENSDRF) && (player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT))) drafts = doseDatChameleonWithLustAndSensitivityDrafts;
 
         simpleChoices("SuccMilk", milk, "LustnSensD.", drafts, "", null, "", null, "Back", defeatChameleonGirl);
@@ -296,7 +296,7 @@ export class ChameleonGirlScene {
 
         outputText("\n\nFor a moment, nothing happens, and she sits there paralyzed, waiting for the drug to take effect.  Her tits begin to plump up, slowly but surely growing as the milk has its way with her body; a smile parts your lips at the sight.  Her eyes widen as her once-meager tits fill out to DD-cups, pushing against and eventually tearing the thin silk covering from within.  They finally stop growing, and the chameleon girl sits there trembling, unsure what to think about her new disproportionate bust.  Completely pleased with her new appearance and harboring no such reservations, you start to shed your " + player.armorName + ".");
 
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("\n\nShe looks back up from her rack to see you standing naked in front of her, cock erect after watching her sudden growth.  Her eyes water, and she flushes red with anger.  \"<i>You... why would you...</i>\"  You cut her off with a push, taking her off her knees and onto her back, and then jump on top of her, pinning her to the peat");
         if (player.hasLongTail() > 0) outputText(" with your tail,");
         else outputText(" by straddling her,");
@@ -333,14 +333,14 @@ export class ChameleonGirlScene {
         outputText("\n\nYou keep going down her leg, though, teasing her along the length of her calf.  Reaching her foot, you bend her leg to give you better access to its sole.  You tickle her across her wide sole with just the lightest touch of your fingertips, and she shudders, too assaulted to even manage a proper giggle.  You play with her foot for a minute; she tries to kick back against your hand and her sole curls around and grips your fingers as though trying to milk them for their touch.  She seems to almost go limp below you, crazed by your tortuous wanderings over her hypersensitive flesh.  Deciding that she's finally had enough, you put her leg down and run your hand back up it, moving towards her waist.");
 
         // (if no cock or cock is too damn big)
-        if (!player.hasCock() || player.cockArea(player.smallestCockIndex()) > monster.vaginalCapacity()) {
+        if (!player.cocks.length > 0 || player.cocks.cockArea(player.cocks.smallestCockIndex()) > monster.vaginalCapacity()) {
             outputText("\n\nYou reach under her thong and toy with her clit for just a moment.  She nearly jumps, almost managing to sit up before collapsing back down into the water, and you slip a couple fingers into her slick cunt to be immediately met with a gush of her fluids.  She cries out loudly and her pussy clenches around your fingers as she cums, getting off quickly after all her waiting; then curls up on her side as her tail thrashes wildly while orgasm slowly melts her painful nerves down to normal levels.  After a minute she slackens and spreads out on the ground, panting heavily as she recovers.  Smiling down at the tired chameleon girl, you wish her luck with her new nerves and untie her hands.  She's too exhausted to get up, though, and you leave her lying there to sleep in the swampy water.");
             // player.lust+=30;
             dynStats("lus", 30);
         }
         // (else if at least one cock of appropriate size)
         else {
-            const x: number = player.cockThatFits(monster.vaginalCapacity());
+            const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
             if (x < 0) {
                 outputText("COCK ERROR");
                 cleanupAfterCombat();

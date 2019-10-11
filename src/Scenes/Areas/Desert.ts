@@ -66,9 +66,9 @@ export class Desert {
             return;
         }
         // Chance of dick-dragging! 10% + 10% per two foot up to 30%
-        temp = 10 + (player.longestCockLength() - player.tallness) / 24 * 10;
+        temp = 10 + (player.cocks.longestCockLength() - player.tallness) / 24 * 10;
         if (temp > 30) temp = 30;
-        if (temp > rand(100) && player.longestCockLength() >= player.tallness && player.totalCockThickness() >= 12) {
+        if (temp > rand(100) && player.cocks.longestCockLength() >= player.tallness && player.cocks.totalCockThickness() >= 12) {
             exploration.bigJunkDesertScene();
             return;
         }

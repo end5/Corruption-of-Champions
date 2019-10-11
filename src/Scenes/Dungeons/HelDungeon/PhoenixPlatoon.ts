@@ -22,7 +22,7 @@ export class PhoenixPlatoon extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createCock();
+        this.cocks.createCock();
         this.balls = 2;
         this.ballSize = 1;
         this.cumMultiplier = 3;

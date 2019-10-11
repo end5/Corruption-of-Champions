@@ -61,7 +61,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         checkedExgartuan = 0; // Make sure we test just once in timeChangeLarge
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0) { // Update Exgartuan stuff
             trace("EXGARTUAN V1: " + player.effects.getValue1Of(StatusAffects.Exgartuan) + " V2: " + player.effects.getValue2Of(StatusAffects.Exgartuan));
-            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (!player.hasCock() || player.cockArea(0) < 100)) { // If too small dick, remove him
+            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (!player.cocks.length > 0 || player.cocks.cockArea(0) < 100)) { // If too small dick, remove him
                 outputText("\n<b>You suddenly feel the urge to urinate, and stop over by some bushes.  It takes wayyyy longer than normal, and once you've finished, you realize you're alone with yourself for the first time in a long time.  Perhaps you got too small for Exgartuan to handle?</b>\n");
                 player.effects.remove(StatusAffects.Exgartuan);
                 needNext = true;
@@ -154,7 +154,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
     public timeChangeLarge(): boolean {
         if (checkedExgartuan++ == 0 && player.effects.findByType(StatusAffects.Exgartuan) >= 0 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0 && game.time.hours == 4) {
             // Exgartuan must be present, must be awake and it must be night time
-            if (player.hasCock() && player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && rand(3) == 0 && player.hoursSinceCum >= 24) { // Exgartuan night time surprise!
+            if (player.cocks.length > 0 && player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && rand(3) == 0 && player.hoursSinceCum >= 24) { // Exgartuan night time surprise!
                 outputText("\n");
                 exgartuanSleepSurprise();
                 return true;
@@ -191,8 +191,8 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         }
         if (player.effects.findByType(StatusAffects.Exgartuan) < 0 && !changed && rand(2) == 0) {
             let choices: number = 0;
-            if (player.cockTotal() > 0) {
-                if (player.cockArea(0) >= 100) choices++;
+            if (player.cocks.length > 0) {
+                if (player.cocks.cockArea(0) >= 100) choices++;
             }
             if (player.biggestTitSize() >= 12) choices++;
             // Can you be infested?
@@ -223,7 +223,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             changed = true;
         }
         // (+Big dick)
-        if (rand(3) == 0 && player.totalCocks() > 0) {
+        if (rand(3) == 0 && player.cocks.length > 0) {
             outputText("\n\nYour " + multiCockDescriptLight(game.player) + " feels tighter inside your " + player.armorName + ", even when flaccid.  You shudder and realize you've probably gained more than a few inches in total length, and who knows how your thickness has changed.", false);
             temp = player.cocks.length;
             while (temp > 0) {
@@ -303,7 +303,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             if (player.cor < 33) {
                 outputText("Too tired to resist the demon in your dick any longer, you grab it with both hands, lifting up the hefty dick with both hands as it floods with blood, swollen and purple.  Your whole body flushes, reacting to the strong feelings this... demon forces through you.  It makes your whole body blush with shame, but you force yourself to continue taking care of this abomination.  It really does feel good – you can see how some of the denizens of this land would fall to such sensation.  But you're made of sterner stuff!  At least that's what you assure yourself as your hands continue to lovingly caress the source of your pleasure.\n\n", false);
                 outputText("You sigh, squeezing out thick globs of pre-cum as you fondle the nodule-ringed crown of your " + cockDescript(game.player, 0) + ", twitching happily against your hands.  Oh gods it feels too good to be true.  Happy coos of pleasure escape your mouth as you try to endure your lewd actions.  You struggle against your possessed loins as they guide your fingertips over the most sensitive places, temporarily stealing away control of your limbs.", false);
-                if (player.tentacleCocks() > 0) outputText("  A tentacle-cock curls up, tightening around the base like an organic cock-ring.  It makes each of the corrupt nodules grow bigger, harder, and even more sensitive.", false);
+                if (player.cocks.tentacleCocks() > 0) outputText("  A tentacle-cock curls up, tightening around the base like an organic cock-ring.  It makes each of the corrupt nodules grow bigger, harder, and even more sensitive.", false);
 
                 outputText("\n\nThe demon's voice teases you, \"<i>Such a pure champion, rolling in the dirt and moaning like a whore.  Do you really think you're saving anyone like that?  You can't even keep your own hands off your tainted dick!</i>\"\n\n", false);
 
@@ -370,10 +370,10 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             outputText("At last, fingers wrap themselves about your " + nippleDescription(player, 0) + "s, squeezing them gently and forcing happy gasps from your mouth.  ", false);
             if (player.hasVagina()) {
                 outputText("Juice", false);
-                if (player.totalCocks() > 0) outputText(" and pre-cum", false);
+                if (player.cocks.length > 0) outputText(" and pre-cum", false);
                 outputText(" soaks your groin", false);
             }
-            else if (player.totalCocks() > 0) outputText("pre-cum soaks your groin", false);
+            else if (player.cocks.length > 0) outputText("pre-cum soaks your groin", false);
             else outputText("Warmth radiates through your body", false);
             outputText(" as you're more and more turned on by the feelings coming from your chest.  Fingertips ", false);
             if (player.nippleLength < 2) outputText("pinch together and pull, and it's too much for you.", false);
@@ -391,7 +391,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
     // (NOT PLAYED WITH RECENTLY: +LUST MESSAGE)
     public exgartuanBored(): void {
         let select: number = 0;
-        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.cockArea(0) >= 100) {
+        if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.cocks.cockArea(0) >= 100) {
             select = rand(9);
             if (select == 0) {
                 outputText("A muffled voice pipes up, \"<i>Hey!  You forgetting about me?  Fucking champions think they're so good, but you're ignoring your best body part!  Can't you feel all that cum boiling ", false);
@@ -469,7 +469,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             if (monster.short == "goblin" && rand(3) == 0) {
                 outputText("A strangely harmonic voice chants gibberish, rising in volume and pitch.  It's coming from your groin!  The goblin girl giggles and squeals, \"<i>Stop that!  It's using magic on my coo-chiieeeeeee!!!</i>\"", false);
                 // (+20 or 10% of cocksize, whichever is greater to vag capacity
-                monster.effects.addValue(StatusAffects.BonusVCapacity, 1, player.cockArea(0) * .1);
+                monster.effects.addValue(StatusAffects.BonusVCapacity, 1, player.cocks.cockArea(0) * .1);
                 monster.lust += 10;
                 return true;
             }
@@ -532,7 +532,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 return true;
             }
             // (Taunts Male Foes -enemy lust)
-            else if (monster.totalCocks() > 0) {
+            else if (monster.cocks.length > 0) {
                 select = rand(8);
                 switch (select) {
                     case 0:
@@ -566,7 +566,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         }
         // Exgartuan in tittays!
         else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2) {
-            if (monster.totalCocks() > 0) {
+            if (monster.cocks.length > 0) {
                 select = rand(8);
                 switch (select) {
                     case 0:
@@ -845,7 +845,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             // (LOWCOR:
             if (player.cor < 33) {
                 outputText("You grab hold of the perverse prick with both hands, not to stroke it, but to try and pry the invader from your oral cavity by force.  The surface is slick with sweat and pre-cum, and your hands slide inexorably towards the ", false);
-                if (!player.hasSheath()) outputText("base", false);
+                if (!player.cocks.hasSheath()) outputText("base", false);
                 else outputText("sheath", false);
                 outputText(" instead of pulling it free.  Your eyes cross from the feelings coming off your traitorous, possessed flesh after the accidental caress.  Both hands start to pump away, autonomously jacking the swollen demon-shaft into your mouth", false);
                 if (player.biggestTitSize() >= 2) outputText(" and bouncing your " + allBreastsDescript(player) + " around it", false);
@@ -1003,9 +1003,9 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("However, just before you can give up the ghost, the aforementioned mound begins stirring yet again.  A belabored moan is all you can muster, begging for this torment to cease.  Suddenly, the chill air makes contact below your waistline.  You try to raise your head to make sure you haven't gone even more insane, your tense muscles able to lift it enough to see that your " + player.armorName + " has started to split down the middle.  You dig your hands deeper into the ground in an attempt to make sure you haven't started hallucinating, too.  But as the cool air hits your newly exposed skin, any lingering doubts begin to fade away, replaced by mounting awe.  As your outfit continues to crack open, a heady musk hits you like a ton of bricks, furthering your deranged desire.  The rupture continues straight down the middle of your garb, uncovering the base of your cock to the elements and filling it with a newfound life as it begins to pulsate.  Your " + cockDescript(game.player, 0) + " resembles a butterfly emerging from a cocoon, complete with a layer of pre coating its every facet.  Rational thought struggles to reside in your paralyzed state, awestruck as your rod breaks free from its cell and reaches for the sky.  Liquid strands cling helplessly or fall back down to earth as it swells to full size- maybe even a little bigger.", false);
         // [if cocks ==2]
-        if (player.cockTotal() == 2) outputText("  Your " + cockDescript(game.player, 1) + " remains flaccid beside this bronze adonis, as if sapped of all its life.", false);
+        if (player.cocks.length == 2) outputText("  Your " + cockDescript(game.player, 1) + " remains flaccid beside this bronze adonis, as if sapped of all its life.", false);
         // [if cocks ≥3]
-        else if (player.cockTotal() > 2) outputText("  Your extra cocks remain flaccid beside this bronze adonis, as if sapped of all their life.", false);
+        else if (player.cocks.length > 2) outputText("  Your extra cocks remain flaccid beside this bronze adonis, as if sapped of all their life.", false);
         outputText("  Through the blurry, trembling mess that is your vision, you can make out the mighty titan, its figure silhouetted against the blood-red moon behind it.  After what feels like forever, your majestic manhood slowly descends from its great heights towards you, pulsating in time with your frenzied heartbeat.  As if it were a god descending from heaven to bless a mortal, the " + cockDescript(game.player, 0) + " stops right above your gaze, its urethra slowly widening, continuing to spill pre-cum all over your plagued form.\n\n", false);
 
         outputText("A lifetime seems to have passed by in that dead stare.  You manage to catch your breath, your shuddering body calming as it prepares for salvation.", false);
@@ -1237,11 +1237,11 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         if (player.gender > 0) {
             outputText("  Your " + hipDescription(player) + " begin grinding together, moist with ", false);
             // [if cock >0]
-            if (player.hasCock() && !player.hasVagina()) outputText("pre-cum", false);
+            if (player.cocks.length > 0 && !player.hasVagina()) outputText("pre-cum", false);
             // [if vagina >0]
-            if (player.hasVagina() && !player.hasCock()) outputText("juice", false);
+            if (player.hasVagina() && !player.cocks.length > 0) outputText("juice", false);
             // [if cock >0, vagina >0]
-            if (player.hasCock() && player.hasVagina()) outputText("an aromatic cocktail of pre and juice", false);
+            if (player.cocks.length > 0 && player.hasVagina()) outputText("an aromatic cocktail of pre and juice", false);
             outputText(" as your tit massage begins to excite your nether regions.", false);
         }
         outputText("  The demoness continues her work, though never touching your nipples; the closest she draws your hands is around your areolas.  The circling is no less irritating as when you haven't neglected her, your back arching in need yet again.\n\n", false);
@@ -1342,9 +1342,9 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         if (player.cor < 33) {
             outputText("Having grown weary of the demon's constant taunts, you finally decide to give in to his forced temptations.  May as well get this over with now rather than letting it get out of hand.  As satisfying as it feels to manhandle your man meat, your corrupt passenger always manages to make it feel wrong once you've regained your senses.  Your pondering quickly begins to dissolve once you feel your " + cockDescript(game.player, 0) + " slowly stretch its way out from your slithery slit", false);
             // [if cocks == 2]
-            if (player.cockTotal() == 2) outputText(", your remaining tool hiding away inside you, uninvited.", false);
+            if (player.cocks.length == 2) outputText(", your remaining tool hiding away inside you, uninvited.", false);
             // [if cocks ≥ 3]
-            else if (player.cockTotal() >= 3) outputText(", your remaining poles hiding away inside you, uninvited.", false);
+            else if (player.cocks.length >= 3) outputText(", your remaining poles hiding away inside you, uninvited.", false);
             else outputText(".", false);
             outputText("  Just how the hell does Exgartuan manage to-\"<i>No time for your feeble mind to try and comprehend my power, champion,\" your rod interrupts, \"I wouldn't want you to hurt yourself BEFORE I get the chance to.\"  Now you REALLY want to get this over with and move on.  With a dejected sigh and a preparatory stretch of your shoulders, you reach down to do the dirty deed.\n\n", false);
 
@@ -1357,18 +1357,18 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("No, wait, it's pretty fucking clear you love the fucking; it's the fucking demon that you fucking can't tolerate.  You think.  Fuck.  You shake your head to try and clear your thoughts, focusing on what you came over here to do.  Your erect " + cockDescript(game.player, 0) + " has already made its way out of your slithery slit", false);
             // [if cocks == 2]
-            if (player.cockTotal() == 2) outputText(", your remaining tool still hiding away inside you, uninvited.", false);
+            if (player.cocks.length == 2) outputText(", your remaining tool still hiding away inside you, uninvited.", false);
             // [if cocks ≥ 3]
-            else if (player.cockTotal() > 2) outputText(", your remaining poles still hiding away inside you, uninvited.", false);
+            else if (player.cocks.length > 2) outputText(", your remaining poles still hiding away inside you, uninvited.", false);
             else outputText(".  You lean down to embrace the demon and your arms are frozen in place before you can even touch him.  Of course.  \"Are you hungry, champion?\" Exgartuan mocks, shaking slightly to further dig in the knife, \"And to think you're so eager to jump in and have some fun.  But I have something else planned today.\"\n\n", false);
         }
         // [else]
         else {
             outputText("All right, no more fooling around; you've been looking forward to this all your life.  Like you say every time you get to bump elbows with this divine deity of dicks, no use wasting any more time with idle fantasies; you've got the real thing right on you.  Or inside of you, as you begin coaxing the demon out of your serpent-like slit, slowly rubbing him up to full size.  \"Oh yea, right under my head.  That feels great,\" Exgartuan never seems to get enough of you.  But when he feels so goddamn good, how can you resist?", false);
             // [if cocks == 2]
-            if (player.cockTotal() == 2) outputText("  Speaking of resisting, it appears your second tool has been forced to stay in the shed.", false);
+            if (player.cocks.length == 2) outputText("  Speaking of resisting, it appears your second tool has been forced to stay in the shed.", false);
             // [if cocks ≥ 3]
-            else if (player.cockTotal() >= 3) outputText("  Speaking of resisting, it appears your remaining tools have been forced to stay in the shed.", false);
+            else if (player.cocks.length >= 3) outputText("  Speaking of resisting, it appears your remaining tools have been forced to stay in the shed.", false);
             outputText("  Your " + cockDescript(game.player, 0) + " makes good on its end of the bargain by pumping out its own never-ending supply of lubricant, making your master massage all the more slick and smooth along its surface.  You lay off for a moment to admire your work, your demonic dong throbbing happily now that its full of blood and as tall and thick as a tree.  The corrupt warmth and comfort flowing through your body pleases you to no end.\n\n", false);
 
             outputText("\"" + player.short + ", am I ever glad I wound up with you,\" the engorged demon praises you through a surprisingly pleased tone, \"An eternity together fueled by your cock massages would be too short.  I have something I've been meaning to try today, though.  A slut such as yourself should get a kick out of it.\"  You take the compliment, interested in just what your partner in crime has in mind as you lean back and enjoy the show.\n\n", false);

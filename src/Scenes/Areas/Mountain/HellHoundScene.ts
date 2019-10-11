@@ -34,10 +34,10 @@ export class HellHoundScene {
         if (player.vaginas.length > 0 && player.lowerBody != LOWER_BODY_TYPE_NAGA) outputText("slamming his twin dicks into your " + vaginaDescript(player, 0) + " and your " + assholeDescript(player) + ".  ", false);
         else outputText("slamming his lower dick into your " + assholeDescript(player) + ", while rubbing the other between the cheeks of your " + buttDescription(player) + ".  ", false);
         if (player.vaginas.length > 0 && player.lowerBody != LOWER_BODY_TYPE_NAGA) {
-            if (player.vaginalCapacity() < monster.cockArea(0)) outputText("You feel an intense mixture of sensations in your lower body as your " + assholeDescript(player) + " feels like it is being torn apart, while your " + vaginaDescript(player, 0) + " is filled with an intense pleasure at being filled with the creature's large member.  ", false);
+            if (player.vaginalCapacity() < monster.cocks.cockArea(0)) outputText("You feel an intense mixture of sensations in your lower body as your " + assholeDescript(player) + " feels like it is being torn apart, while your " + vaginaDescript(player, 0) + " is filled with an intense pleasure at being filled with the creature's large member.  ", false);
             else outputText("Your lower body explodes with pain as the hellhound forces himself in too quickly for either your " + assholeDescript(player) + " or your " + vaginaDescript(player, 0) + " to handle.  ", false);
             if (player.vaginas[0].virgin) outputText("<b>You are no longer a virgin!  </b>", false);
-            if (player.cuntChange(monster.cockArea(0), false)) outputText("The beast howls as your " + vaginaDescript(player, 0) + " is stretched to accommodate the large shaft.  ", false);
+            if (player.cuntChange(monster.cocks.cockArea(0), false)) outputText("The beast howls as your " + vaginaDescript(player, 0) + " is stretched to accommodate the large shaft.  ", false);
             outputText("The hellhound pants for a few seconds before continuing.  ", false);
             if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) outputText("The pause gives your " + vaginaDescript(player, 0) + " time to moisten, ensuring the next thrust won't be quite as rough.  ", false);
             outputText("This time the beast starts pumping in and out more gently, only a short distance at a time as the hellhound continues panting.  As the pain in your " + assholeDescript(player) + " fades, you start feeling pleasure to match the sensations rising from your " + vaginaDescript(player, 0) + ". Each thrust of the beast's twin manhoods bring you closer and closer to your peak.\n\n", false);
@@ -58,7 +58,7 @@ export class HellHoundScene {
         player.slimeFeed();
         // (after either of them)
         // (Lose player anal virginity; if player has vagina, lose vaginal virginity)
-        player.buttChange(monster.cockArea(0), true);
+        player.buttChange(monster.cocks.cockArea(0), true);
         player.orgasm();
         // [if not corrupt]
         if (player.cor < 40) dynStats("tou", -2, "cor", 1);
@@ -208,7 +208,7 @@ export class HellHoundScene {
         outputText("\"<i>Hum, hum, hum.</i>\"  He chuckles.  \"<i>The crystal of a goddess, this is going to bring changes, oh yes.</i>\"  The crystal flares up as he grips it more tightly.  \"<i>And you, oh you deserve so much more than just hellfire for this gift.  Come!</i>\"  He calls out.  In a moment, the biggest hellhound you've ever seen rushes into the room.\n\n", false);
 
         // if (PC has two dog dicks)
-        if (player.dogCocks() >= 2) {
+        if (player.cocks.dogCocks() >= 2) {
             // the male bad end
             outputText("This hound is quite clearly a she, bearing a massive septuplet of breasts, and wide hips.  She is also quite clearly pregnant, and radiates an intense aura of power.  One of her two heads intones towards the crazed omnibus, \"<i>You called me master?</i>\"  \"<i>Yes I did my precious Cremera!  Have sex with this imitation at once!  " + mf(player, "He", "She") + " is to become your third head!</i>\"\n\n", false);
 
@@ -216,7 +216,7 @@ export class HellHoundScene {
 
             // make sure that the PC will fit in the bitch
             // (PC's dog cocks are not each of an area of 20 to 60 OR PC has more than two cocks)
-            if (player.totalCocks() > 2 || player.cockThatFits(60) < 0) {
+            if (player.cocks.length > 2 || player.cocks.cockThatFits(60) < 0) {
                 outputText("He then reaches around your waist and takes a hold of your " + multiCockDescriptLight(game.player) + ".  \"<i>Before we get started, let's make sure you're just right for Cremera.</i>\"  He then reforms your body to have twin doggy pricks of appropriately sized.  \"<i>Now.</i>\"\n\n", false);
                 // PC's dicks become two 14 by 3 inch dog dicks, all other dicks are removed
                 player.cocks[0].cockType = CockTypesEnum.DOG;
@@ -226,7 +226,7 @@ export class HellHoundScene {
                 player.cocks[0].cockLength = 14;
                 player.cocks[1].cockLength = 14;
                 while (player.cocks.length > 2) {
-                    player.removeCock(2, 1);
+                    player.cocks.removeCock(2, 1);
                 }
             }
             outputText("You don't hesitate.  You pounce on the horny barghest, slamming your two dog pricks inside her two cunts without hesitation.  The bitch responds with a low growl, and starts bucking her rear against you, while you thrust into her with abandon.  The pleasure of her interior drives you mad like no other that you've ever been in before.  The loud squelching and stimulation of her slobbering pussies don't give you a chance to do anything but thrust and lose yourself in the feeling.\n\n", false);
@@ -289,8 +289,8 @@ export class HellHoundScene {
         // --- ELSE (CORRUPTION >= 20) ---
         else {
             outputText("The musky scent sends pleasure all over your body, moistening your " + vaginaDescript(player, 0) + ". You decide the foreplay is over and remove the lower part of your " + player.armorName + ". You stroke both members, bringing them to full, overly-erect state. You grab one of them while you carefully position your butt over the first mastiff-like dong. Its pointy tip pushes against your asshole. Relaxing your sphincter, the pre-dripping cone-shaped rod easily slides into you. Having the first penis halfway buried into your ready asshole, you stop. Struggling with your balance, you grab the hellhound's other throbbing member, guiding it to your now soaking vagina. Slowly you let yourself down, impaling yourself on his gorgeous twin members.  ", false);
-            player.cuntChange(monster.cockArea(0), true, false, true);
-            player.buttChange(monster.cockArea(1), true, false, true);
+            player.cuntChange(monster.cocks.cockArea(0), true, false, true);
+            player.buttChange(monster.cocks.cockArea(1), true, false, true);
             // --- CORRUPTION < 40 (and not masocistic - I lost track if there is such a perk) ---
             if (player.cor < 40 && player.perks.findByType(PerkLib.Masochist) < 0) {
                 outputText("As you bottom out on his sheath, you lean forward to engulf more of his hot cocks inside you. The hellhound enjoys the treatment you are giving him. As a result, the flames along his eyes and snout flicker back to life. Just as your hardening clit presses against the top of his ballsack, the hellhound's natural flames lick across your sex. The magical fire fills you with arousal, but also applies intense pain to your most sensitive spot. You practically jump off the corrupt creature, pulling the dicks from your holes in great speed. Nearly blacking out from the sensations, you cover your burnt button, not daring to touch it. You curse the creature, loudly swearing at the hellhound. In your fury, you barely notice that he looks disappointed and maybe even somewhat sorry.", false);
@@ -306,10 +306,10 @@ export class HellHoundScene {
             outputText("  Riding the hound for a couple of minutes, you feel the dick in your " + assholeDescript(player) + " extending, giving you a good stretching. Its brother in your " + vaginaDescript(player, 0) + " does the same, pushing more and more girl-fluids out of your slippery slit while stimulating your sensitive clit from the inside. You lean forward, running your hands through your fuckpet's dense midnight black fur, feeling his animal body warmth. The hellhound is moaning and panting beneath you, unsure whether to fear you or to enjoy what you are doing to him.\n\n", false);
 
             // --- IF PC HAS PENIS ---
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText("His canine cock in your anus stimulates your prostate perfectly. His exotic black dong applies pressure in parts of your body you wouldn't expect to get such pleasure from.", false);
                 // --- IF ONE PENIS ---
-                if (player.totalCocks() == 1) outputText("  Soon your own " + cockDescript(game.player, 0) + " reacts, quickly growing into a full throbbing erection. You leave your member alone, and it keeps flapping against the hellhound's belly while you ride him.", false);
+                if (player.cocks.length == 1) outputText("  Soon your own " + cockDescript(game.player, 0) + " reacts, quickly growing into a full throbbing erection. You leave your member alone, and it keeps flapping against the hellhound's belly while you ride him.", false);
                 // --- ELSE ---
                 else outputText("  Soon " + sMultiCockDesc(game.player) + " reacts, quickly growing into a throbbing erection.  You leave your members alone, and they flap against the hellhound's belly while you ride him.", false);
             }
@@ -321,9 +321,9 @@ export class HellHoundScene {
 
             outputText("Slowly but steadily you bring yourself to the verge of orgasm. The hellhound under you squirms and tries to get free, his hind legs flailing through the air behind your back. You keep riding his magnificent member, grinding it up and down in your moist cave. Finally you feel the familiar rippling of your vaginal walls, milking his cock and intensifying your pleasant sensations. Clamping down on his members, you keep moving your hips in a circling motion, working your clit, vagina and butt in equal measure. The sensations eventually grant you an intense orgasm while the hellhound's still-distended members apply the perfect pressure to all of your sensitive spots and prolong your bliss.", false);
             // --- IF PC HAS PENIS ---
-            if (player.totalCocks() > 0) {
+            if (player.cocks.length > 0) {
                 // --- IF ONE PENIS ---
-                if (player.cockTotal() == 1) outputText("Your " + cockDescript(game.player, 0) + " twitches as it ejects its sticky load.", false);
+                if (player.cocks.length == 1) outputText("Your " + cockDescript(game.player, 0) + " twitches as it ejects its sticky load.", false);
                 // --- ELSE ---
                 else outputText("Your " + multiCockDescriptLight(game.player) + " twitch as they eject their sticky loads.", false);
                 outputText("  Keeping up your motions, you scatter your cum across the hellhound's body and the ground nearby.", false);

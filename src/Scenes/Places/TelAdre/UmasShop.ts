@@ -1453,7 +1453,7 @@ export class UmasShop extends TelAdreAbstractContent {
             addButton(2, "Fingerbang", sexGetFingered);
         }
 
-        if (player.hasCock()) // Has a dick
+        if (player.cocks.length > 0) // Has a dick
         {
             addButton(3, "Handjob", sexHandjob);
             addButton(4, "Get Blown", sexGetABJFromDisMilfyLesboSlut);
@@ -1493,7 +1493,7 @@ export class UmasShop extends TelAdreAbstractContent {
         outputText("you are.  Sparks dance across your skin and you shiver, asking just how Uma can get you so turned on with just a few touches?  \"<i>That's a trade secret, dear.  Now let's get rid of all your tension,</i>\" the mare's hands slide around your body, caressing, touching and pinching, and somehow you feel yourself getting ever closer to the edge of climax.  You moan and whimper in pleasure, reduced to blissed-out putty in the mare's skillful hands, and unthinkingly blurt out she's a beautiful minx.  \"<i>Why... thank you dear,</i>\"  she smiles happily, even as she moves her hand to one last spot on your body, right above your crotch.  \"<i>Now cum.</i>\"  She presses the spot and you gasp.\n\n");
         outputText("You groan deep in your throat and obey Uma's commands explicitly, shuddering as the waves of climax rip through your body and culminate in your loins, ");
 
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("cum ");
             if (player.cumQ() < 50) outputText("dribbling ");
             else if (player.cumQ() < 250) outputText("pouring ");
@@ -1512,7 +1512,7 @@ export class UmasShop extends TelAdreAbstractContent {
 
         outputText("You writhe in pleasure, twisting yourself on the table as an explosive orgasm rocks you to the core.  You nearly pass out from the ordeal and when you're finally done you slump on the table nervelessly panting and satisfied.  Taking a deep breath, you turn to look a Uma, pretty sure you must've covered her body with your explosive discharge, but to your surprise she only has a bit of ");
 
-        if (player.hasCock()) outputText("cum ");
+        if (player.cocks.length > 0) outputText("cum ");
         if (player.gender == 3) outputText("and ");
         if (player.hasVagina()) outputText("juices ");
 
@@ -1563,7 +1563,7 @@ export class UmasShop extends TelAdreAbstractContent {
         else if (player.thickness > 90 && player.tone < 10) outputText("her fingertips stealing a grope of your chubby belly as they travel lower, ");
         else if (player.thickness > 70 && player.tone < 30) outputText("her fingertips sinking into paunch of your belly, ");
 
-        if (player.hasCock()) outputText("past [eachCock], and ");
+        if (player.cocks.length > 0) outputText("past [eachCock], and ");
 
         if (player.hasVagina()) {
             outputText("down towards the honeypot ");
@@ -1592,7 +1592,7 @@ export class UmasShop extends TelAdreAbstractContent {
 
             outputText(" Uma's probing hand in your female juices");
 
-            if (player.hasCock()) outputText(", your forgotten cock spraying cum in a pearlescent arc to splatter onto the floor");
+            if (player.cocks.length > 0) outputText(", your forgotten cock spraying cum in a pearlescent arc to splatter onto the floor");
             outputText(".\n\n");
 
             outputText("\"<i>Oh, deary.  You're so cute I could just squeeze you all day!</i>\"  Uma laughs happily as she pumps her fingers inside you one more time, drawing one last discharge before you finally slump on the older mare's lap.  The mare removes her hand from your sensitive pussy and brings it close to her mouth, promptly licking your juices off her hand, close to your ear to ensure you hear every single lewd sound she makes as she cleans your orgasm from her hand.  \"<i>Hmm, virgins definitely have the best taste.  Sweet, slick and unclaimed.  Be sure to warn Loppe to go easy on you when you finally decide to work with her equine pride, though I wonder if she'll be able to restrain herself with such a cutie like you,</i>\" Uma says as she kisses the back of your neck once more before returning to her cleaning duty.\n\n");
@@ -1711,17 +1711,17 @@ export class UmasShop extends TelAdreAbstractContent {
     // Needs Cock.
     private sexGetABJFromDisMilfyLesboSlut(): void {
         // Aim for something right around the biggest she can take, otherwise just take smallest.
-        let x: number = player.cockThatFits(25);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(25);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         outputText("Fidgeting in place, very much aware of the cum-filled cock");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" in your pants, you ask whether Uma would be willing to give you a little intimate release.");
         outputText("\n\nUma arches an eyebrow, \"<i>Sorry, [name], but when it comes to cocks, my pussy and ass are both off-limits... I suppose that, for you, though, I could give you a blowjob - just because you’re my little Loppe’s special someone, though.</i>\"");
         outputText("\n\nYou ");
         if (player.lust >= 75) outputText("eagerly ");
         outputText("tell her that would be plenty, and thank her for her consideration.  \"<i>Okay, follow me then.</i>\"  The mare leads you away, out her office and down the corridor towards the far back of the clinic. Her enticing equine tail swishes lazily side to side the entire way, an organic magnet for your roving eyes.  You follow closely in her wake, looking forward to her “special treatment” with such ardor that you give up on concealing the tenting mass under your [armor]. It makes walking a little more difficult, but the feeling of your length");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" grinding and growing is well-worth the obvious discomfort.");
 
         outputText("\n\nThe room she leads you to is quite simple: wooden walls and floor, a couple of drains set in the boards that are probably for the more... fluid generous clientele, ");
@@ -1747,7 +1747,7 @@ export class UmasShop extends TelAdreAbstractContent {
         else if (flags[kFLAGS.UMA_TIMES_SUCKED_YOU] < 5) outputText("She actually seems to be smiling a little as she looks at you.  \"<i>All right, time to see if I can handle this brutish thing.</i>\"  ");
         else outputText("It's clear that she doesn't mind doing this for you at all. In fact, she's even smiling down at you as she fondles you one-handed.  \"<i>Time to see if I can make you squirm as hard as Loppe does.</i>\"  ");
         outputText("She opens her mouth wide and takes ");
-        if (player.cockTotal() == 1) outputText("your");
+        if (player.cocks.length == 1) outputText("your");
         else outputText("a single");
         outputText(" dick into her mouth, slurping on it.");
 
@@ -1772,24 +1772,24 @@ export class UmasShop extends TelAdreAbstractContent {
         outputText("</i>\"");
 
         // Bonus handjobbies?
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("\n\nYou politely suggest she put ");
-            if (player.cockTotal() == 2) outputText("one of ");
+            if (player.cocks.length == 2) outputText("one of ");
             outputText("her hands to work on your spare prick");
-            if (player.cockTotal() > 2) outputText("s");
+            if (player.cocks.length > 2) outputText("s");
             outputText(".  The curvacious mare hums at the thought, inadvertently sending pleasant shockwaves through your length as she considers.  Making up her mind, ");
             if (flags[kFLAGS.UMA_TIMES_SUCKED_YOU] < 3) outputText("perhaps thinking it will end this sooner");
             else outputText("perhaps encouraged by the way you swell in her mouth");
             outputText(", she wraps ");
-            if (player.cockTotal() == 2) outputText("one hand around your girthy tool and starts pumping");
+            if (player.cocks.length == 2) outputText("one hand around your girthy tool and starts pumping");
             else outputText("both hands around your girthy tools and starts pumping");
             outputText(", stroking up and down with firm twists of her practiced hand");
-            if (player.cockTotal() > 2) outputText("s");
+            if (player.cocks.length > 2) outputText("s");
             outputText(".  Her soft palm");
-            if (player.cockTotal() > 2) outputText("s are");
+            if (player.cocks.length > 2) outputText("s are");
             else outputText(" is");
             outputText(" the perfect mate to your spare length");
-            if (player.cockTotal() > 2) outputText("s");
+            if (player.cocks.length > 2) outputText("s");
             outputText(", and soon you are dribbling and dripping from all of your " + multiCockDescriptLight(game.player) + ".");
         }
 
@@ -1806,7 +1806,7 @@ export class UmasShop extends TelAdreAbstractContent {
         // {Less than five blowjobs}
         if (flags[kFLAGS.UMA_TIMES_SUCKED_YOU] < 5) {
             outputText("\n\nUma pulls off just as your flow of juices goes white and salty, the inevitable prelude to the first discharge of an orgasm.  A slightly sour expression is painted across her face from the sudden change and she looks on in shock as your length");
-            if (player.cockTotal() > 1) outputText("s erupt");
+            if (player.cocks.length > 1) outputText("s erupt");
             else outputText(" erupts");
             outputText(".  Even though you are no longer enclosed in that wonderfully warm, wet hole, you still shoot long, powerful lances of cum.  Uma catches the first across her face before she can move. The second splatters across the breasts that once nursed Loppe, some even falling into the valley of her cleavage.");
             if (player.cumQ() >= 500) outputText("  She gets out of the way after that, leaving you to lie there, spraying your seed like a perverted sprinkler.");
@@ -1832,17 +1832,17 @@ export class UmasShop extends TelAdreAbstractContent {
                 outputText("  Your crotch is absolutely glazed with the stuff.");
             }
             // Bonus dicks
-            if (player.cockTotal() > 1) {
+            if (player.cocks.length > 1) {
                 outputText("\n\nAngled off to the side");
-                if (player.cockTotal() > 2) outputText("s");
+                if (player.cocks.length > 2) outputText("s");
                 outputText(", your other erection");
-                if (player.cockTotal() > 2) outputText("s release");
+                if (player.cocks.length > 2) outputText("s release");
                 else outputText(" releases");
                 outputText(" all over the floor, fitfully sagging, then thickening with each shot.  ");
-                if (player.cockTotal() == 2) outputText("Its ");
+                if (player.cocks.length == 2) outputText("Its ");
                 else outputText("Their ");
                 outputText("lewd dance continues on in imitation of your main member's pleasure.  ");
-                if (player.cockTotal() == 2) outputText("It's ropes");
+                if (player.cocks.length == 2) outputText("It's ropes");
                 else outputText("Their ropes");
                 outputText(" aren't anywhere near as thick.");
             }
@@ -1895,7 +1895,7 @@ export class UmasShop extends TelAdreAbstractContent {
         outputText("As you're busying yourself with your things, Uma struts with quiet confidence over to the table and seats herself on it, hands at her sides and gripping the edges for extra support, legs spread and smiling knowingly, as if anticipating your approval.   \"<i>Well, dear?  I'm ready if you are,</i>\" she laughs softly, one hand lifting off the table to caress her breasts, as much to start honing her arousal as to entice you to approach.\n\n");
         outputText("You approach the mare and kneel before her, inhaling her scent as you do so.  It smells sweet, enticing and arousing, a fragrance that sends your head reeling with Uma's arousal.  You find the fires of your arousal burn even hotter now.  ");
 
-        if (player.hasCock()) outputText("Blood engorges [eachCock],  ");
+        if (player.cocks.length > 0) outputText("Blood engorges [eachCock],  ");
         if (player.hasVagina()) outputText("moisture gathers on your netherlips, drops of your arousal sliding out of your [pussy] and down towards your [feet].  ");
         outputText("You gaze up at Uma, silently asking for permission.\n\n");
 

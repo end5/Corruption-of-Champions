@@ -36,7 +36,7 @@ export function wormEncounter(): void {
         player.effects.create(StatusAffects.MetWorms, 0, 0, 0, 0);
         doNext(camp.returnToCampUseOneHour);
     }
-    else if (player.hasCock()) {
+    else if (player.cocks.length > 0) {
         outputText("Minding your own business, you make your way through the mountain and you find yourself stopped by another mass of the sickly worms. The collective stops, apparently sensing your presence and briefly ebbs in your direction. After a few tense moments, the mass begins moving again... straight towards you at an alarming rate!\n\n");
         outputText("What do you do?");
         simpleChoices("Confront", wormsConfront, "Do Nothing", wormsDoNothing, "", null, "", null, "Run", wormsRun);
@@ -273,29 +273,29 @@ export function nightTimeInfestation(): void {
     outputText("You're dreaming of the time you were infected with the worms... the way their comforting bulk sat so heavily in your body, constantly keeping you horny and potent, jism and slippery white parasites practically dripping from your cum-slit with every heated moment.  It felt so good to let them in, to let them claim you, and to become the worm-packing carrier you were meant to be.  You can remember how it felt to have one slithering up your urethra even now, the tiny body trailing slime as it squirmed through your shaft towards its goal.");
     outputText("\n\nMmmm, the way that little annelid rubbed your insides felt so good, and it only got better from there on.  After you let them get comfortable inside, you were also so horny, and it was so easy to get off.  You could just... think about squirting worms into some unsuspecting demon's vulnerable holes, and your little pets would coax your [balls] to climax.  They made you cum so fast and so hard!  You can still feel the squirming inside you, though it's getting deeper and deeper, just like the first time...");
     outputText("\n\nWait!  You snap awake from your fantasy to the sensation of hundreds of worms swarming [eachCock].  Your urethra");
-    if (player.cockTotal() > 1) outputText("s are");
+    if (player.cocks.length > 1) outputText("s are");
     else outputText(" is");
     outputText(" open and vulnerable to the piles of spunk-hungry parasites, and as you look on in shock, you see four of them slide into your worm-packed tunnel");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(", one after another!  No!  You reach for your [cock biggest] to somehow try and stop the infestation, but it's a futile gesture.  The worm pile on your [legs] is as big as the rest of you.  Worse still, you doubt you can pull out the ones that have already crawled inside.");
 
     outputText("\n\nGrabbing hold of [oneCock] with both hands, you pinch your fingers around ");
-    if (player.cocks[player.biggestCockIndex()].cockThickness >= 6) outputText("as tight around the girth as you can");
+    if (player.cocks[player.cocks.biggestCockIndex()].cockThickness >= 6) outputText("as tight around the girth as you can");
     else outputText("tightly around your girth");
     outputText(", hoping to contain the squiggling menace in the upper reaches of your erection.");
-    if (player.cockTotal() > 1) {
+    if (player.cocks.length > 1) {
         outputText("  It's a vain effort, as your other penis");
-        if (player.cockTotal() > 2) outputText("es are");
+        if (player.cocks.length > 2) outputText("es are");
         else outputText(" is");
         outputText("already turning into ");
-        if (player.cockTotal() == 2) outputText("an ");
+        if (player.cocks.length == 2) outputText("an ");
         outputText("infestation highway");
-        if (player.cockTotal() > 2) outputText("s");
+        if (player.cocks.length > 2) outputText("s");
         outputText(".  ");
-        if (player.cockTotal() == 2) outputText("Its");
+        if (player.cocks.length == 2) outputText("Its");
         else outputText("Their");
         outputText("inside");
-        if (player.cockTotal() > 2) outputText("s are");
+        if (player.cocks.length > 2) outputText("s are");
         else outputText(" is");
         outputText(" filled to the brim with moist wigglers.");
     }
@@ -306,7 +306,7 @@ export function nightTimeInfestation(): void {
     outputText("\n\nMoaning, you look on as the distended bulge makes its way down your [cock biggest], thrashing slightly when it disappears into your crotch, the sensations far stronger once it passes beyond your sight.  This is it... you're definitely infested now.  The worms are inside of you, and they're going to make you cum.  Lying back while your [hips] fruitlessly twitch upward, you let your eyes close and give in to the knowledge that soon, you'll be another horny worm-factory, roaming around and spraying them out at every opportunity.  That big, slithering blob joins the rest in your prostate, stretching it dangerously, and it starts to shake, thumping at the sides of your innermost organ.");
 
     outputText("\n\nThe painful pressure and erotic horror rise with the onslaught of spasming ecstasy in your reproductive organs, peaking when that huge intruder nestles itself completely inside you, squeezing your organ until you're wailing and bucking your hips, slapping [eachCock] on your belly while you cum.  The torrent of cum that you loose is unexpectedly voluminous, splattering off your [chest] and chin, dripping onto the ground in gooey streams.  Reacting quickly, the rest of the colony smushes over your spurting boner");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" to absorb the sensual nutrition.  Some of them even slop off the sides after the dripping whiteness, to get to it before it absorbs into the brittle, wasted earth.  You cum and cum, almost without end, yet each thick jet is slurped into the writhing mass immediately, leaving behind just the parasitic, clear slime.");
 
     outputText("\n\nThe big one bathes in your jism, moving faster and faster to spur you to release even more.  Glittering spunk drains out of your tip mixed with a few white creatures until [eachCock] is twitching against you, convulsing with pleasure but unable to leak a single drop.  Only after you've given everything does the internal prostate massage subside, the uncomfortable weight settling into a steady throb.  They feel so good, and a hot wave of contentment slowly rolls through you.  Maternal pride wells up unbidden - these things are a part of you now, and keeping them fed feels so good.");

@@ -52,8 +52,8 @@ export class Forest {
             return;
         }
         // Tamani 20% encounter rate
-        if (flags[kFLAGS.TAMANI_TIME_OUT] == 0 && rand(5) == 0 && player.gender > 0 && (player.totalCocks() > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
-            if (player.totalCocks() > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
+        if (flags[kFLAGS.TAMANI_TIME_OUT] == 0 && rand(5) == 0 && player.gender > 0 && (player.cocks.length > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
+            if (player.cocks.length > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
                 tamaniDaughtersScene.encounterTamanisDaughters();
             }
             else
@@ -152,9 +152,9 @@ export class Forest {
             return;
         }
         // Chance of dick-dragging! 10% + 10% per two foot up to 30%
-        temp = 10 + (player.longestCockLength() - player.tallness) / 24 * 10;
+        temp = 10 + (player.cocks.longestCockLength() - player.tallness) / 24 * 10;
         if (temp > 30) temp = 30;
-        if (temp > rand(100) && player.longestCockLength() >= player.tallness && player.totalCockThickness() >= 12) {
+        if (temp > rand(100) && player.cocks.longestCockLength() >= player.tallness && player.cocks.totalCockThickness() >= 12) {
             bigJunkForestScene();
             return;
         }
@@ -177,7 +177,7 @@ export class Forest {
 
             // Dicks + lots of cum boosts goblin probability
             // Vags + Fertility boosts imp probability
-            if (player.totalCocks() > 0) impGob--;
+            if (player.cocks.length > 0) impGob--;
             if (player.hasVagina()) impGob++;
             if (player.totalFertility() >= 30) impGob++;
             if (player.cumQ() >= 200) impGob--;
@@ -200,8 +200,8 @@ export class Forest {
             // Encounter Gobbalin!
             else {
                 // Tamani 25% of all goblin encounters encounter rate
-                if (rand(4) <= 0 && flags[kFLAGS.TAMANI_TIME_OUT] == 0 && player.gender > 0 && (player.totalCocks() > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
-                    if (player.totalCocks() > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
+                if (rand(4) <= 0 && flags[kFLAGS.TAMANI_TIME_OUT] == 0 && player.gender > 0 && (player.cocks.length > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
+                    if (player.cocks.length > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
                         tamaniDaughtersScene.encounterTamanisDaughters();
                     }
                     else
@@ -355,7 +355,7 @@ export class Forest {
     // [RANDOM SCENE IF CHARACTER HAS AT LEAST ONE COCK LARGER THAN THEIR HEIGHT, AND THE TOTAL COMBINED WIDTH OF ALL THEIR COCKS IS TWELVE INCHES OR GREATER]
     public bigJunkForestScene(lake: boolean = false): void {
         outputText("", true);
-        const x: number = player.longestCock();
+        const x: number = player.cocks.longestCock();
 
         // PARAGRAPH 1
         outputText("Walking along the ", false);
@@ -369,8 +369,8 @@ export class Forest {
             else outputText("  As it drags across the grass, twigs, and exposed tree roots, the sensation forces you to imagine the fingers of a giant hand sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ", gently jerking it off.", false);
         }
         else if (player.cocks.length >= 2) {
-            if (lake) outputText("  With all of your " + multiCockDescriptLight(game.player) + " dragging through the mud, they begin feeling as if the lips of " + num2Text(player.cockTotal()) + " different cunts were slobbering over each one.", false);
-            else outputText("  With all of your " + multiCockDescriptLight(game.player) + " dragging across the grass, twigs, and exposed tree roots, they begin feeling as if the rough fingers of " + num2Text(player.cockTotal()) + " different monstrous hands were sliding over each shaft, gently jerking them off.", false);
+            if (lake) outputText("  With all of your " + multiCockDescriptLight(game.player) + " dragging through the mud, they begin feeling as if the lips of " + num2Text(player.cocks.length) + " different cunts were slobbering over each one.", false);
+            else outputText("  With all of your " + multiCockDescriptLight(game.player) + " dragging across the grass, twigs, and exposed tree roots, they begin feeling as if the rough fingers of " + num2Text(player.cocks.length) + " different monstrous hands were sliding over each shaft, gently jerking them off.", false);
         }
         outputText("\n\n", false);
 
@@ -463,7 +463,7 @@ export class Forest {
         outputText("A humanoid figure with a set of goat-like horns and legs - a satyr - is currently buried balls-deep in one of the vagina-flowers that scatter the grove, whooping in delight as he hungrily pounds into its ravenously sucking depths.  He stops on occasion to turn and take a slobbering suckle from a nearby breast-like growth; evidently, he doesn't care that he's stuck there until the flower's done with him.\n\n", false);
 
         // (Player lacks a penis:
-        if (!player.hasCock()) {
+        if (!player.cocks.length > 0) {
             outputText("You can't really see any way to take advantage of this scenario, so you simply turn back and leave the way you came.", false);
             doNext(camp.returnToCampUseOneHour);
         }
@@ -491,7 +491,7 @@ export class Forest {
     private rapeSatyr(): void {
         outputText("", true);
         spriteSelect(99);
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
 
         // (Low Corruption)
         if (player.cor < 33) outputText("For a moment you hesitate... taking someone from behind without their consent seems wrong... but then again you doubt a satyr would pass on the opportunity if you were in his position.", false);
@@ -513,12 +513,12 @@ export class Forest {
         outputText("Eventually, his bleating and screaming start to annoy you, so you silence him by grabbing at his horns and shoving his head to the side, into one of the breast-like growths nearby.  The satyr unthinkingly latches onto the floral nipple and starts to suckle, quieting him as you hoped.  You're not sure why, but he starts to voluntarily buck back and forth between you and the flower; maybe he's getting into the spirit of things, or maybe the vegetal teat he's pulling on has introduced an aphrodisiac chemical after so many violent attempts to pull out of the kindred flower.\n\n", false);
 
         outputText("You resolve not to think about it right now and just enjoy pounding the satyr's ass.  With his bucking you're able to thrust even farther into his tight puckered cherry, ", false);
-        if (player.cockArea(x) >= 100) outputText("stretching it all out of normal proportion and ruining it for whomever might happen to use it next.", false);
+        if (player.cocks.cockArea(x) >= 100) outputText("stretching it all out of normal proportion and ruining it for whomever might happen to use it next.", false);
         else outputText("stretching it to fit your " + cockDescript(game.player, x) + " like a condom.", false);
         outputText("  Your groin throbs, ", false);
         if (player.balls > 0) outputText("your balls churn, ", false);
         outputText("and you grunt as you feel the first shots of cum flowing along " + sMultiCockDesc(game.player) + ", only to pour out into", false);
-        if (player.cockTotal() > 1) outputText(" and onto", false);
+        if (player.cocks.length > 1) outputText(" and onto", false);
         outputText(" the satyr's abused ass; you continue pounding him even as you climax, causing rivulets of cum to run down his cheeks and legs.\n\n", false);
 
         outputText("Still slurping obscenely on the fake breast, the satyr groans and murmurs; you're not sure how much of a role the sap he's swallowing or the cunt-flower on his cock is playing, but it looks like he's actually enjoying himself now.", false);
@@ -551,8 +551,8 @@ export class Forest {
     }
     // [=Again=]
     private secondSatyrFuck(): void {
-        let x: number = player.cockThatFits(monster.analCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(monster.analCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("", true);
         outputText("There's no harm in using the helpless goat once more... This time though, you decide you'll use his mouth.  With a yank on his horns, you forcefully dislodge him from the breast-plant and force him to his knees, turning his head towards you; he doesn't put up much resistance and when you present your erect shaft to him, he licks his lips in excitement and latches onto your " + cockDescript(game.player, x) + ".\n\n", false);
 

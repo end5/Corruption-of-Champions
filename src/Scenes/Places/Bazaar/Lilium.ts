@@ -86,8 +86,8 @@ export class Lilium extends BazaarAbstractContent {
         let buttFuck: () => void = null;
         let nippleFuck: () => void = null;
         let rideHer: () => void = null;
-        if (player.hasCock() && player.tongueType >= TONUGE_DEMONIC) buttFuck = buttFuckTongueJeorb;
-        if (player.hasCock()) nippleFuck = liliumNippleFuck;
+        if (player.cocks.length > 0 && player.tongueType >= TONUGE_DEMONIC) buttFuck = buttFuckTongueJeorb;
+        if (player.cocks.length > 0) nippleFuck = liliumNippleFuck;
         if (player.hasVagina()) rideHer = liliumDickRidah;
         simpleChoices("Buttfuck", buttFuck, "Ride Her", rideHer, "Nipple-Fuck", nippleFuck, "", null, "", null);
     }
@@ -105,7 +105,7 @@ export class Lilium extends BazaarAbstractContent {
     private buttFuckTongueJeorb(): void {
         outputText("", true);
         spriteSelect(93);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("The two of you find a secluded alley between two buildings.  Lilium removes her corset and skirt before moving to help you remove your " + player.armorName + ".\n\n", false);
 
@@ -201,7 +201,7 @@ export class Lilium extends BazaarAbstractContent {
 
     // #########NIPPLE FUCK SCENE######### REQUIRES PENIS
     private liliumNippleFuck(): void {
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
 
         outputText("", true);
@@ -220,7 +220,7 @@ export class Lilium extends BazaarAbstractContent {
 
         let doubleNipFuck: boolean = false;
         // (if multicock)
-        if (player.cockTotal() >= 2) {
+        if (player.cocks.length >= 2) {
             doubleNipFuck = true;
             outputText("Thinking it unfair that just one of her breasts receives your attention, you grab another of your " + multiCockDescriptLight(game.player) + " and unceremoniously jam it into Lilium's lonely nipple-cunt, causing her to let out a loud squeal from the extra penetration.  The extra purchase on Lilium's body from both your cocks now being inside her breasts causes the demon's body to rock back and forth vigorously with each of your thrusts.  You move yourself backwards slightly, pulling her with you away from the wall to avoid concussing her.  When you resume your thrusts you can hear her moans warble as her body rocks with yours.\n\n", false);
             doubleNipFuck = true;
@@ -238,12 +238,12 @@ export class Lilium extends BazaarAbstractContent {
         if (player.tailType > TAIL_TYPE_NONE) outputText("your tail", false);
         else outputText("your " + feet(player), false);
         outputText(" as you cum", false);
-        if (player.cockTotal() > 2) outputText(", your unused cocks drenching her with seed", false);
+        if (player.cocks.length > 2) outputText(", your unused cocks drenching her with seed", false);
         outputText(".  The tightness of her ", false);
         if (doubleNipFuck) outputText("nipple-cunts around your twin cocks causes some of your cum to squirt back out of her nipples", false);
         else outputText("nipple-cunt around your cock causes some of your cum to squirt back out of her nipple", false);
         outputText(" each time you fire another load into her, the balance leaking down on Lilium's stomach and thighs.", false);
-        if (player.cumQ() >= 700 && player.cockTotal() > 1) outputText("Rivers and rivers of cum pour out of your cocks, distending her nipple-holes as the backflow gushes from around the heads.", false);
+        if (player.cumQ() >= 700 && player.cocks.length > 1) outputText("Rivers and rivers of cum pour out of your cocks, distending her nipple-holes as the backflow gushes from around the heads.", false);
         outputText("\n\n", false);
 
         outputText("The sensation of you pulling out of her fuck-able nipple", false);

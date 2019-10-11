@@ -485,7 +485,7 @@ export class IzumiScene {
         clearOutput();
 
         // Male/Herms
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("You swallow your pride and shake your head, signalling Izumi that you don’t intend to resist.  Her face splits into a truly lascivious grin and she licks her lips, hungrily.\n\n");
 
             outputText("“<i>Yeah, that’s what I thought.</i>”  She smirks.  “<i>You just do exactly what I say, when I say, and nothing bad will happen to you.  Well... Nothing <i>too</i> bad, anyway.</i>”\n\n");
@@ -495,8 +495,8 @@ export class IzumiScene {
             else outputText(" chest and forcing you backwards onto the ground.");
             outputText("  You grunt from the impact and try to sit up, but Izumi easily restrains you with a single well-muscled arm.  “<i>Well now, let’s see what we’re workin’ with here, shall we?</i>” she announces casually, as she pulls aside your [armor] to reveal your cock.\n\n");
 
-            if (player.biggestCockLength() <= 6) surrenderSmallCock();
-            else if (player.biggestCockLength() <= 14) surrenderMediumCock();
+            if (player.cocks.biggestCockLength() <= 6) surrenderSmallCock();
+            else if (player.cocks.biggestCockLength() <= 14) surrenderMediumCock();
             else surrenderLargeCock();
         }
         // Female
@@ -799,7 +799,7 @@ export class IzumiScene {
             outputText("Looking up at you with a superior smirk, Izumi continues to run her hands over your body, clearly more interested in stealthily groping you to check out the goods than actually undressing you. The tortuous anticipation just makes everything feel that much better though - soon, you’re going to find yourself completely naked in front of this strange woman. Not just yet, but <i>soon</i>, oh so soon....  It’s hard to believe how erotic the idea now seems to you.  Like a child the night before a birthday, you’re equal parts excited and desperate - and before long you’re practically screaming internally for Izumi to hurry up, rip off the rest of your clothes and just strip you <i>bare</i> already.  By the time she gets round to removing the bottom half of your clothing, you’re positively soaking wet.\n\n");
 
             outputText("Izumi grunts in surprise as she surveys your dripping folds");
-            if (player.hasCock()) outputText(", your [cock] slowly thickening under her scrutiny");
+            if (player.cocks.length > 0) outputText(", your [cock] slowly thickening under her scrutiny");
             outputText(".  You shift in place,");
             if (player.isNaga()) outputText(" wriggling atop your [legs]");
             else outputText(" subtly parting your [legs] and even ");
@@ -1081,20 +1081,20 @@ export class IzumiScene {
 
         menu();
 
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             addButton(0, "Anal", cowedIntoPuttingItInIntoHerGiantOniButt);
             addButton(1, "Vaginal", fuckhugeOniWantsYourBabiesOrSomeShit);
         }
 
-        if (player.hasVagina() && !player.hasCock()) {
+        if (player.hasVagina() && !player.cocks.length > 0) {
             addButton(2, "69", littleChampLittleChampFuckhugeOniIsCominTaEatcha);
         }
 
-        if (!player.hasCock() && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.hasVagina()) {
             addButton(0, "Next", noDickNoVagNoService);
         }
 
-        if (player.hasVagina() || player.hasCock()) {
+        if (player.hasVagina() || player.cocks.length > 0) {
             addButton(9, "Leave", lossSceneLeave);
         }
 
@@ -1120,14 +1120,14 @@ export class IzumiScene {
 
         outputText("“<i>Oh!</i>”  Izumi yelps, surprised, her head snapping up as you grope at her soft flesh.  “<i>Oh.  </i>Oh...<i></i>”  She repeats as comprehension slowly dawns.  “<i>So, wait, you decided you actually </i>do<i> want to...</i>”  She trails off as you nod, and a sly smile begins to spread across her face.  “<i>I guess there’s a little Oni in you after all, huh?</i>”  She says, leaning in closer to you to draw you into a hug - which you use as an opportunity to enjoy the better access to her breasts.\n\n");
 
-        if (player.hasCock()) outputText("“<i>Or maybe,</i>”  She whispers seductively into your ear, “<i>You wanna bury that little Oni of yours in </i>me<i>.  Hmmmm?</i>”  You shudder as you feel her hand snake into your underwear and run sinuously across your crotch, readying you for the ordeal ahead...\n\n");
+        if (player.cocks.length > 0) outputText("“<i>Or maybe,</i>”  She whispers seductively into your ear, “<i>You wanna bury that little Oni of yours in </i>me<i>.  Hmmmm?</i>”  You shudder as you feel her hand snake into your underwear and run sinuously across your crotch, readying you for the ordeal ahead...\n\n");
     }
 
     // Special loss scene if the player loses whilst being titsmothered by izumi
     public deathBySnuSnuIMeanGiantOniTits(): void {
         flags[kFLAGS.IZUMI_LAST_ENCOUNTER] = 1;
 
-        if (player.isTaur() || player.isDrider() || !player.hasCock()) {
+        if (player.isTaur() || player.isDrider() || !player.cocks.length > 0) {
             this.fuckedUpByAFuckhugeOni(true);
             return;
         }
@@ -1148,20 +1148,20 @@ export class IzumiScene {
 
         if (player.tallness <= 60) {
             outputText("At the same time, the arm gripping your waist slides downwards too, hooking under your [butt] almost like some kind of seat, freeing you to keep grinding your needy cock");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" into her midsection while you suck at her teat.");
-            if (player.biggestCockLength() <= 5) {
+            if (player.cocks.biggestCockLength() <= 5) {
                 outputText("  “<i>Hmph.</i>” Izumi grunts, smirking as she cups your balls.  “<i>Just like a baby... in more ways than one, am I right?</i>”  She continues, extending her middle finger to stroke the entirety of the underside of");
-                if (player.totalCocks() > 1) outputText(" one of your");
+                if (player.cocks.length > 1) outputText(" one of your");
                 else outputText(" your");
                 outputText(" trembling, undersized prick");
-                if (player.totalCocks() > 1) outputText("s");
+                if (player.cocks.length > 1) outputText("s");
                 outputText(", from tip to base, as your hips roll into your backstroke.  You shiver in embarrassment, causing Izumi to snort with amusement.\n\n");
             }
         }
 
         outputText("The thought of Izumi getting turned on too just makes your lust burn even hotter and you renew your efforts, grinding and humping into Izumi’s stomach, running your tongue over the soft skin of her breasts as she strokes your hair indulgently.  The climbing heat of your bodies conspires to melt your thoughts away, your poor dick");
-        if (player.totalCocks() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" trapped in the hottest point of all - directly between you.  Assaulted on all sides by the rising heat and the increasingly slippery sensation of rubbing against Izumi’s sweat-soaked body, your cock feels as though it has been transformed into a supernova of arousal, burning with desire and incredibly sensitive.\n\n");
 
         outputText("The two of you remain there in this strange half-standing, half-fucking position for what feels like the best part of an hour as you grind and groan, suckle and slurp.  If just rubbing away at her from the outside feels this good, how much better must it feel to actually feel [oneCock] inside her, part of you wonders... and then another quieter, darker part of you wonders if it wouldn’t be so much hotter if you never found out.\n\n");
@@ -1171,20 +1171,20 @@ export class IzumiScene {
         outputText("“<i>Hey, you’re getting close, right?</i>”  She asks. You nod vigorously, but she continues anyway. “<i>You’re gonna do it, right?  You’re gonna cum, just from this, just from rubbing up against me.</i>” You nod even more desperately, feeling your orgasm already starting to rise up inside you.  Izumi actually pants, looking almost as aroused as you feel.  “<i>That’s okay... that’s good.  Go ahead and cum, okay?  I want to see if you can really blow your load just from a little frottage...</i>” Frottage.  You make a mental note to remember that word.  If that’s the name for this, it might be worth knowing, you think.  Then, at long last, your orgasm hits.\n\n");
 
         outputText("You positively explode, throwing open your mouth and howling in ecstasy as your long-awaited orgasm bursts out of you.  You feel a jet of hot, warm goo pulse free from");
-        if (player.totalCocks() > 1) outputText(" each of");
+        if (player.cocks.length > 1) outputText(" each of");
         outputText(" your iron-hard cock");
-        if (player.totalCocks() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText("... only to splatter instantly against the insides of your [armor].  Your eyes go wide as you realize in a rush of embarrassment that you forgot to even so much as slip your cock");
-        if (player.totalCocks() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" free before humping yourself to a climax against Izumi’s stomach.  The realisation does nothing to hinder your orgasm, however - and may even have heightened it - as surge after surge of baby batter explodes free from your erection");
-        if (player.totalCocks() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(", coating the insides of your underwear with thick, sticky goo.\n\n");
 
         outputText("Your underwear thoroughly decorated, your cock");
-        if (player.totalCocks() > 1) outputText("s relent");
+        if (player.cocks.length > 1) outputText("s relent");
         else outputText(" relents");
         outputText(", deflating and ceasing");
-        if (player.totalCocks() > 1) outputText(" their");
+        if (player.cocks.length > 1) outputText(" their");
         else outputText(" it’s");
         outputText(" relentless demands.  Puffing and panting, you manage to raise your head enough to look up at Izumi, still wearing that everpresent smirk.\n\n");
 
@@ -1203,14 +1203,14 @@ export class IzumiScene {
         outputText("“<i>Hey,</i>”  Izumi whispers, fingers rolling tantalizingly over [eachCock].  “<i>Let’s try something dirty...</i>”\n\n");
 
         outputText("She pushes you gently onto your back, pulling your clothes aside and freeing your erection");
-        if (player.totalCocks() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" to the air.  Her grin widens as she stands, removing her clothing - such as it is - and hurling it across the cave.  She stands there for a moment, hands on her hips, eyeing up your");
-        if (player.totalCocks() > 1) outputText(" [multicock]");
+        if (player.cocks.length > 1) outputText(" [multicock]");
         else outputText(" [cock biggest]");
         outputText(" with a hungry smile.  In turn, you take the opportunity to survey Izumi’s naked body in detail.  The light from the smouldering campfire licks hungrily across her skin, illuminating her skin in warm, flickering gold as you size her up. Her muscles are well toned but not obtrusively so, her frame still distinctly feminine.  She stands there completely unabashed, displaying every inch of herself to you, and you feel your cock");
-        if (player.totalCocks() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" twitch in response to the sight.");
-        if (player.totalCocks() > 1) outputText("  They");
+        if (player.cocks.length > 1) outputText("  They");
         else outputText("  It");
         outputText(" must have been visible to Izumi, too, since she laughs and speaks up a moment later.\n\n");
 
@@ -1235,9 +1235,9 @@ export class IzumiScene {
         outputText("“<i>Ohh, enjoying yourself too much to respond, huh?</i>”  Izumi grins lazily, completely misconstruing your silence. Her arousal is written clear across her face, and her transparently lewd expression causes your already strained erection to ache urgently.  With herculean effort, you slam your waist upwards with renewed vigour, hammering home with punishing force as you feel your orgasm begin to rise up within you.  Your fingers clench tighter, digging into the yielding softness of Izumi’s hips, while she grunts and pants in equal parts surprise and arousal at your sudden enthusiasm.\n\n");
 
         outputText("With a primal roar, you bury yourself to the hilt in the Oni girl’s backside as your orgasm explodes out of you.  Izumi lets out a triumphant laugh, arching her back in pleasure at the sensation of your cum flooding her insides");
-        if (player.totalCocks() > 1) {
+        if (player.cocks.length > 1) {
             outputText(", the cock");
-            if (player.totalCocks() > 2) outputText("s");
+            if (player.cocks.length > 2) outputText("s");
             outputText(" not buried to the root in Izumi’s butt erupting in concert, splattering the joining between you with musky jizz.");
         }
         else {
@@ -1325,7 +1325,7 @@ export class IzumiScene {
     protected littleChampLittleChampFuckhugeOniIsCominTaEatcha(): void {
         lossSceneStay();
 
-        if (flags[kFLAGS.IZUMI_SEEN_PC_GENDER] != 2 && !player.hasCock()) {
+        if (flags[kFLAGS.IZUMI_SEEN_PC_GENDER] != 2 && !player.cocks.length > 0) {
             outputText("Izumi’s fingers stroke questingly over your slit for a moment, then she frowns, confused.\n\n");
 
             outputText("“<i>Huh. You, uh.. You actually </i>don’t<i> have a dick.</i>”  She says, sounding a little taken aback.  “<i>You know, I gotta say, I think you’re the first person I’ve met on this rock without a wang? Seriously. I just kind of assumed you had one. Kinda lost track of my gameplan here, ‘cause I was really expecting something to grab onto down here.</i>”  She taps her lip with her free hand while you stare at her, bemused.  Then an ominous, toothy grin spreads slowly across her face.  “<i>Okay, new plan.</i>” She announces, then her hand snaps out to snatch hold of your");
@@ -1444,7 +1444,7 @@ export class IzumiScene {
             else if (player.tou >= 90) {
                 outputText("her arm lunges out in an uppercutting grab, her fist latching around your throat and lifting you from the floor.  Her grip is crushingly tight, but you can endure it... for now, at least.  Looking to respond in kind, you reach out for the bright red curve of Izumi’s horn.\n\n");
             }
-            else if (player.lib >= 40 && (player.biggestTitSize() >= 2 || player.biggestCockLength() >= 5)) {
+            else if (player.lib >= 40 && (player.biggestTitSize() >= 2 || player.cocks.biggestCockLength() >= 5)) {
                 outputText("her arm lunges out in an uppercutting grab, her fist latching around your throat and wrenching you from the floor.  You struggle, helplessly, against her arm for a moment before an idea strikes; \n\n");
 
                 if (player.biggestTitSize() > 2) outputText("maybe giving her face a little personal time nestled between your [chest] will finally distract the Oni enough.  You reach out for the bright red curve of Izumi’s horn, ");
@@ -1483,12 +1483,12 @@ export class IzumiScene {
             addButton(1, "TribHorn", tribThatRockyHornGirl);
         }
 
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             addButton(2, "LetsFuck", letGoAndFuck);
             addButton(3, "RevengeAnal", gonnaGetMeSomeRevengeButtsexin);
             addButton(4, "RevengeOral", sayThatsAPrettyFaceBeAShameIfSomebodyJizzedAllOverIt);
 
-            if (player.tentacleCocks() >= 8) addButton(5, "Tentacruel", tentacruelRevengeFux);
+            if (player.cocks.tentacleCocks() >= 8) addButton(5, "Tentacruel", tentacruelRevengeFux);
         }
     }
 
@@ -1612,7 +1612,7 @@ export class IzumiScene {
         outputText("She goes very quiet for a moment, then practically spits out a “<i>Fine.</i>”  Grinning, you slowly, tentatively release your grip on her horn.  True to her word, she doesn’t budge, glaring at the wall so hard you’d think she was trying to bore a hole through it.  You give her a congratulatory pat on the butt for obeying so reliably as you return to your position behind her, Izumi turning her head to stare furiously as you unfasten your clothing...\n\n");
 
         // Small cocks
-        if (player.biggestCockLength() <= 4) {
+        if (player.cocks.biggestCockLength() <= 4) {
             outputText("There’s a moment of silence as you unveil yourself to the captive Oni, your [cock biggest] on full display.  She stares at your crotch blankly, then her eyes flick up to meet your own.\n\n");
 
             outputText("“<i>Are you serious?</i>”  She says, flatly.  “<i>You are, aren’t you?  You’re actually going to try and rape me with... </i>that.<i>  Seriously kid, I hate to break it to you, but most women prefer dicks they can actually, you know, feel. Or </i>see.”  You scowl at her in response and step up to her backside; she can talk trash all she wants for now, but she’s going to be the one begging for another taste of your dick by the end of the time you’re through with her.\n\n");
@@ -1672,7 +1672,7 @@ export class IzumiScene {
             outputText("Shrugging to yourself, you snatch up a purse full of gems from next to the Oni’s campfire - payment for the insult - then wander off back to camp.\n\n");
         }
         // Regular dicks
-        else if (player.biggestCockLength() > 4 && player.biggestCockLength() <= 12) {
+        else if (player.cocks.biggestCockLength() > 4 && player.cocks.biggestCockLength() <= 12) {
             outputText("“<i>Tch, I should have known...</i>”  Izumi grumbles.  “<i>Well, whatever.  Just just hurry up and blow your load before- H-Hey wait, what are you doing back there?!</i>”  She raises her voice in alarm as your intent becomes clear, lining your [cock biggest] up not with her obediently displayed pussy, but with her asshole.\n\n");
 
             outputText("“<i>Hey!  W-Who said you could use that hole?!</i>” she yells.  You just flash her a charming smile, then return to the much more interesting business of getting ready to fuck her ass raw.  She glares at you for a moment, then turns back to the wall with a snort.  “<i>Whatever.  I won’t lose,</i>”  she growls.\n\n");
@@ -1790,7 +1790,7 @@ export class IzumiScene {
         outputText("You’re not satisfied just with that though, particularly when the main event is displayed so tantalizingly before you.  Raising yet another tentacle, you plunge forwards and force yourself into Izumi’s pussy, penetrating her fully.  Despite her increased size, she’s surprisingly tight, but you’re still able to comfortably push in deeper than you’d probably be able to with a smaller partner.  Izumi grunts and sways in the impromptu sling you’ve set up, rocking backwards and forwards as you pump into her from two different angles.  It’s an interesting experience to say the least, double-dicking an amazonian monster-woman while simultaneously ensuring she can’t fight back by molesting her magical horn.  For good measure, you give the horn another quick squeeze and roll the coiled tentacle wrapping it around a little, eliciting a high pitched squeal from Izumi, her entire body going momentarily tense.\n\n");
 
         outputText("When she relaxes, her face is completely flushed, her eyes looking distinctly fogged with arousal.  She isn’t struggling or resisting anymore; in fact, you realize, she’s even begun to roll her hips in time with your thrusts, helping you to penetrate her deeper, harder, stronger.  She seems to be functioning almost on automatic, stretching her neck forwards to accept more of your length as you thrust into her mouth, then twisting her head to the side as you pull out, stimulating more of your member than your previous thrusting.  Even her moaning seems quieter, more submissive, as though she’s accepted her role in the proceedings - or at least blocked out everything but the sensations she’s feeling enough to enjoy them.");
-        if (player.tentacleCocks() >= 10) outputText("  You decide to test the theory, snaking another prehensile appendage into each of her open, outstretched palms.  Sure enough, after a few fumbling attempts, Izumi manages to grasp the concept of a handjob and awkwardly starts to jerk them off.");
+        if (player.cocks.tentacleCocks() >= 10) outputText("  You decide to test the theory, snaking another prehensile appendage into each of her open, outstretched palms.  Sure enough, after a few fumbling attempts, Izumi manages to grasp the concept of a handjob and awkwardly starts to jerk them off.");
 
         outputText("\n\nRegardless, you’re still not finished.  After all, there’s still one hole left unaccounted for, and after all the trouble she’s given you, it hardly seems fair that she should just get to check out and enjoy the ride.  Izumi’s eyes widen as she feels your final tentacock slide between her buttcheeks, rubbing against the slick flesh, tracing an ominous ring around her hole before prodding demandingly at the entrance to her ass.\n\n");
 
@@ -1822,7 +1822,7 @@ export class IzumiScene {
 
         outputText("“<i>Kiss it,</i>” you order. Izumi’s eyes flicker briefly to look up at your face, but by this point she knows better than to attempt disobedience.  Leaning hesitantly forwards, Izumi purses her lips as she moves in for the kiss.");
 
-        const cockIndex: number = player.biggestCockIndex();
+        const cockIndex: number = player.cocks.biggestCockIndex();
 
         if (player.cocks[cockIndex].cockType == CockTypesEnum.HORSE) outputText("  Visibly unsure of where to put herself, Izumi finally settles for brushing her lips against the exact center of the flared mass that makes up the head of your stallion-prick.");
         else if (player.cocks[cockIndex].cockType == CockTypesEnum.DOG) outputText("  Her eyes darting nervously from side to side, Izumi leans forwards and takes the very tip of your dogcock into her mouth, pressing her lips against the main bulk of what passes for your head.");

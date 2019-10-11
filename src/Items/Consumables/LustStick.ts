@@ -9,7 +9,7 @@ export class LustStick extends Consumable {
     }
 
     public canUse(): boolean {
-        if (game.player.hasCock() && game.player.perks.findByType(PerkLib.LuststickAdapted) < 0) {
+        if (game.player.cocks.length > 0 && game.player.perks.findByType(PerkLib.LuststickAdapted) < 0) {
             outputText("You look at the tube of lipstick, but get the idea it would be a pretty bad idea to smear a thick coating of cock-hardening aphrodisiacs over your own lips.  ");
             return false;
         }
@@ -25,7 +25,7 @@ export class LustStick extends Consumable {
         else {
             game.player.effects.create(StatusAffects.LustStickApplied, 24, 0, 0, 0);
             outputText("You carefully open the sweet-smelling tube and smear the lipstick over your lips.  ");
-            if (game.player.hasCock()) outputText("It tingles a little, but the drugs have little to no effect on you now.");
+            if (game.player.cocks.length > 0) outputText("It tingles a little, but the drugs have little to no effect on you now.");
             else outputText("Honestly, it amazes you that something as little as a kiss can make a man putty in your hands.");
             outputText("  You finish and pucker your lips, feeling fairly sexy with your new makeup on.\n\n");
         }

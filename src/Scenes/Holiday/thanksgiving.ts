@@ -313,7 +313,7 @@ export function turkeyGirlTwoTheTurkeningBySavinWhatADickInAButt(): void {
 
     // [Shoo Off] [Let her Come] [Hello again!]
     menu();
-    if (player.hasCock()) {
+    if (player.cocks.length > 0) {
         if (player.keyItems.has("Deluxe Dildo") >= 0 || player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT)) {
             outputText("\n\n<b>You could let her come, like last year, or great her in a whole new way (by clicking 'Hello Again')</b>");
             addButton(2, "Hello Again", helloAgain);
@@ -337,7 +337,7 @@ export function helloAgain(): void {
     outputText("\n\n\"<i>Gobble?</i>\" Gobbles asks cheerily, big blue eyes staring intently at your crotch.");
 
     outputText("\n\n\"<i>Gobble,</i>\" you answer, pushing her head down toward your [cock].  She giggles giddily as you free your prick, already hard enough to bop her on the nose as she buries her face in your groin.  The turkey takes a deep breath, wallowing in the potent musk of your " + multiCockDescriptLight(player) + ", venturing to lick along the side of your shaft.  You let out a soft moan, stroking her auburn locks as the turkey happily suckles on your prick, taking the head ");
-    if (player.cockArea(0) <= 60) outputText("and down to the base");
+    if (player.cocks.cockArea(0) <= 60) outputText("and down to the base");
     else outputText("and swallowing your shaft until her throat is bulging with your massive manhood");
     outputText(".  She bobs up and down your length, hefting up her huge rack when she's at the peak to rub your sensitive underside, trying to titfuck you but just too damn big to get them into the action.  You suppose you'll have to take care of that...");
     menu();
@@ -419,57 +419,57 @@ export function turkeyDesertBitches(): void {
     outputText("\n\n\"<i>Fuck!</i>\" you groan as the venom drips off your [cock], a small droplet vanishing into your dilated urethra.  Your heart skips a beat as the lusty cream works its magic, pounding through your sex.  Well, that backfired! You clutch at your [chest]");
     if (player.biggestTitSize() > 1) outputText(", cupping a tit");
     outputText(" as the venom takes control, flushing your skin and forcing out all thoughts but one: fuck that turkey! There's nothing for it, now: you grab Gobbles' hips and plunge in");
-    if (player.cockTotal() == 2) outputText(" with both cocks, one ramming into her abused cunny and the other right up her vulnerable little bumhole");
-    else if (player.cockTotal() > 2) outputText(" with every cock you've got, half in the pink and half in the stink, spreading her as wide as you are in both barrels");
+    if (player.cocks.length == 2) outputText(" with both cocks, one ramming into her abused cunny and the other right up her vulnerable little bumhole");
+    else if (player.cocks.length > 2) outputText(" with every cock you've got, half in the pink and half in the stink, spreading her as wide as you are in both barrels");
     outputText(", shocking her so much that she can't hold back, screaming and cumming on the spot! You groan, thrusting forward as her spasming muscles contract around your cock");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(", milking you as hard as she can while her orgasm overtakes her.  Gravy geysers out of her swollen tits as fem-cum splashes out around your deep-buried cock");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(", drenching your [hips] and [legs] in creamy girl-spunk, tinged pink by the poison you fist-fucked up her cunt.");
 
     outputText("\n\nThe squawking turkey seems to be depthless, easily swallowing up every inch of your " + multiCockDescriptLight(player) + " until ");
-    if (player.cockArea(0) >= 50) {
+    if (player.cocks.cockArea(0) >= 50) {
         outputText("her stomach is bulging obscenely with the sheer volume of cockflesh rammed up her cunt");
-        if (player.cockTotal() > 1) outputText("and ass");
+        if (player.cocks.length > 1) outputText("and ass");
     }
     else outputText("your hips are slapping into hers, making her butt bounce with the impact");
     outputText(".  She cries her one word to the heavens as you pound into her hole");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(", thrusting your cock");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" deep inside.  Her avian legs break free of her hold, wrapping around your [hips] and pulling you in, locking you in her spasming hole");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" as she cums and cums, pleading, \"<i>Gobble!</i>\" at the top of her lungs.  You switch your grip to her bountiful bosom, roughly squeezing her tits as you hump your cock");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" in and out of her slick slit{and quivering behind}, pinching her nipples to give the squealing turkey just a little more pleasure.");
 
     outputText("\n\nGobbles' feathered arms reach up, hooking around your neck and bringing you down, pulling you into a startlingly passionate kiss.  You lose yourself in her warm embrace, hips pistoning on automatic as you caress and kiss the lusty bird, tongue playing across her full red lips as you cup a breast just hard enough to make it lactate, so that your fingers are coated in thick gravy.  You bring them up to her cheek, smearing a bit over her lower lip before she eagerly swallows it up, suckling her own lactic lust from your digit like a little teat; you join in, half-kissing her and half licking up the gravy from your fingers, tongue tying with hers more than once, playing across each other.  Your sexy moans turn to gasps and cries as you continue to pound her puss");
-    if (player.cockTotal() > 1) outputText(" and ass");
+    if (player.cocks.length > 1) outputText(" and ass");
     outputText(", her legs spurring you on every time you withdraw, muscles clenching when you pause, never letting you rest.  Needy slut! But she's more than willing to do her part, thrusting her hips up to meet you, squeezing and milking your cock");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" every time you pierce her, working your shaft");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" so expertly that you know you won't be able to hold on for long - and neither will she, the way she's panting and gasping along with you!");
 
     outputText("\n\nYou draw nearer to the breaking point, hips unrelentingly slamming your shaft");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" deep into Gobbles' eager depths, urged on by her happy squawks and gleeful cries.  Lust-venom-addled as the two of you are, orgasm approaches like a wave of relief, crashing through your bodies in beautiful unison.  \"<i>Gobbles!</i>\" she cries as her cunt ");
-    if (player.cockTotal() > 1) outputText("and ass ");
+    if (player.cocks.length > 1) outputText("and ass ");
     outputText("squirm around your cock");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(", wringing the cum from you with powerful spastic contraction.  Her arms pull you down into the valley of her gravy-laden bosom, squeezing your face between her massive mounds as she cums, drawing the spunk right out of you.  With a potent, feral roar, you cum, " + multiCockDescriptLight(player) + " blasting its salty load deep into Gobbles' womb");
-    if (player.cockTotal() > 1) outputText(" and bowels");
+    if (player.cocks.length > 1) outputText(" and bowels");
     outputText("; her back arches, teats wobbling around your head as she takes your cum, squawking and gobbling gaily as more and more of your virile spunk pours into her, mixing with her own fem-cum and the remnants of the lusty draft your fucked into her.");
 
     outputText("\n\n\"<i>Gobble!</i>\" she sighs happily as your cock");
-    if (player.cockTotal() > 1) outputText("s deposit the last of their");
+    if (player.cocks.length > 1) outputText("s deposit the last of their");
     else outputText(" deposits the last of its");
     outputText(" cream into her, fully stuffing your turkey-girl.  Panting, you let your head rest between her tits a moment long, shaft");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" wilting inside her until like a broken dam, her cunt");
-    if (player.cockTotal() > 1) outputText(" and ass");
+    if (player.cocks.length > 1) outputText(" and ass");
     outputText(" begin");
-    if (player.cockTotal() == 1) outputText("s");
+    if (player.cocks.length == 1) outputText("s");
     outputText(" to drool spunk, pooling onto the hungry ground with the gallons of spilt gravy and fem-spooge.");
 
     outputText("\n\n\"<i>Gobble,</i>\" you agree, wrapping the giddy turkey up in your arms and planting one last kiss on her big ol' boob.  She stares sedately at you with big, blue eyes, a cute little smile on her lips as you withdraw from her, wiping the last of your spunk on her feathery thigh.  Running your hand through the turkey-girl’s hair, you whisper what a good little cockgobbler she is.  However, you soon find that the poor thing’s passed out, your rut finally over with.  Still, she's left you with a nice soft tit-pillow to lay your head down upon as you pick up the lunch you’d been preparing to eat before the eager slut arrived.");

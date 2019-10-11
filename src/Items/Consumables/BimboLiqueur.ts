@@ -101,13 +101,13 @@ export class BimboLiqueur extends Consumable {
                 game.player.ballSize = 3;
                 game.player.cumMultiplier = 2;
             }
-            if (game.player.hasCock()) {
+            if (game.player.cocks.length > 0) {
                 outputText("\n\n[EachCock] seems to be responding to the liqueur in its own way.  Clenching and relaxing obscenely, your genitals begin to drizzle cum onto the ground in front of you, throwing you into paroxysms of bliss.  The flow of cum is steady but weak, and each droplet that leaves you lets [eachCock] go more flaccid.  Even once you're soft and little, it doesn't stop.  You cum your way down to nothing, a tiny droplet heralding your new, girlish groin.  <b>You no longer have ");
-                if (game.player.cockTotal() == 1) outputText("a penis");
+                if (game.player.cocks.length == 1) outputText("a penis");
                 else outputText("penises");
                 outputText("!</b>");
-                while (game.player.hasCock()) {
-                    game.player.removeCock(0, 1);
+                while (game.player.cocks.length > 0) {
+                    game.player.cocks.removeCock(0, 1);
                 }
             }
             outputText("  Somehow, you feel like you could seduce anyone right now!\n\n");

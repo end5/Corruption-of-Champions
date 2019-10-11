@@ -1323,7 +1323,7 @@ export class Saves {
             // ARRAYS HERE!
             // Set Cock array
             for (i = 0; i < saveFile.data.cocks.length; i++) {
-                player.createCock();
+                player.cocks.createCock();
             }
             // Populate Cock Array
             for (i = 0; i < saveFile.data.cocks.length; i++) {

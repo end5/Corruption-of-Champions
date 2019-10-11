@@ -92,8 +92,8 @@ Optional Morning Oral for small-membered males*/
             // (Raise threshold for next occurance to current affection + 15)
             // [Accept - Use standard] [Normal Menu Options]
             let suck: () => void = null;
-            if (player.hasCock()) {
-                if (player.cocks[player.shortestCockIndex()].cockLength < 9)
+            if (player.cocks.length > 0) {
+                if (player.cocks[player.cocks.shortestCockIndex()].cockLength < 9)
                     suck = isabellaScene.izzyGivesSmallWangsFreeOral;
             }
             choices("Talk", isabellaScene.talkWithIsabella, "Drink", isabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
@@ -111,8 +111,8 @@ Optional Morning Oral for small-membered males*/
 
         outputText("Isabella sighs and slumps down against her metal defender at your words.  Eventually, she answers, \"<i>I... understand, " + player.short + ".  I shall continue mein lonely vigil.  Vas zere somezing else I could do for you, ja?</i>\"\n\n", false);
         let suck: () => void = null;
-        if (player.hasCock()) {
-            if (player.cocks[player.shortestCockIndex()].cockLength < 9)
+        if (player.cocks.length > 0) {
+            if (player.cocks[player.cocks.shortestCockIndex()].cockLength < 9)
                 suck = isabellaScene.izzyGivesSmallWangsFreeOral;
         }
         choices("Talk", isabellaScene.talkWithIsabella, "Drink", isabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
@@ -151,8 +151,8 @@ Optional Morning Oral for small-membered males*/
             if (isabellaAccent()) outputText("Hi " + player.short + "!  Vat do you need from Izabella?", false);
             else outputText("Hiya " + player.short + "!  Anything I can help you with?", false);
             outputText("</i>\"", false);
-            if (player.hasCock()) {
-                if (player.shortestCockLength() > 9) {
+            if (player.cocks.length > 0) {
+                if (player.cocks.shortestCockLength() > 9) {
                     outputText("\n\nSadly, you're too big for Isabella to be interested in providing you with morning blowjobs.");
                 }
                 else {
@@ -228,7 +228,7 @@ Optional Morning Oral for small-membered males*/
         let bjToggle: () => void = null;
         let bjTogText: string = "";
         let getSucked: () => void = null;
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] == 0) {
                 bjTogText = "No BJs";
             }
@@ -236,7 +236,7 @@ Optional Morning Oral for small-membered males*/
                 bjTogText = "Plz BJs";
             }
             bjToggle = toggleIsabellasMorningWoodChopping;
-            if (player.shortestCockLength() <= 9 && player.lust >= 33) getSucked = isabellaScene.izzyGivesSmallWangsFreeOral;
+            if (player.cocks.shortestCockLength() <= 9 && player.lust >= 33) getSucked = isabellaScene.izzyGivesSmallWangsFreeOral;
         }
         outputText("\n\n", false);
         outputText("You could get a drink of Isabella's delicious milk, straight from the tap.", false);
@@ -244,9 +244,9 @@ Optional Morning Oral for small-membered males*/
         if (getSucked != null) outputText("  Or you could have her suck you off now, since she seems quite taken with the size of your penis.", false);
         outputText("  There's always the opportunity to climb under her skirt and service her as well.", false);
         if (player.lust < 33) outputText("  <b>You aren't aroused enough to initiate sex.</b>", false);
-        if (player.hasCock() && player.lust >= 33) hotdog = repeatGermanBratwurstInCamp;
+        if (player.cocks.length > 0 && player.lust >= 33) hotdog = repeatGermanBratwurstInCamp;
         let fuckHer: () => void = null;
-        if (player.cockThatFits(164) >= 0 && player.lust >= 33) fuckHer = fuckIsabella;
+        if (player.cocks.cockThatFits(164) >= 0 && player.lust >= 33) fuckHer = fuckIsabella;
         choices(bjTogText, bjToggle, "Drink Milk", isabellaScene.nomOnMommaIzzysTits, "Hotdog", hotdog, "Service Her", isabellaScene.volunteerToSlurpCowCunt, "TentacleSex", tentacle,
             "Get Sucked", getSucked, "Fuck Her", fuckHer, "", null, "", null, "Back", callForFollowerIsabella);
     }
@@ -287,7 +287,7 @@ Optional Morning Oral for small-membered males*/
             // (FAIL3)
             else {
                 outputText("No matter what you do, you can't get the normally-industrious cow-girl to focus right now.  She's obviously bored with your attempts to teach her, and she spends the entire lesson trying to tease you with her body.  It's more effective than you care to admit", false);
-                if (player.hasCock()) outputText(", and you leave the lesson with certain stiffness in your loins.", false);
+                if (player.cocks.length > 0) outputText(", and you leave the lesson with certain stiffness in your loins.", false);
                 else if (player.hasVagina()) outputText(", and you leave the lesson with wet panties.", false);
                 else outputText(".", false);
                 // (+big lust)
@@ -337,7 +337,7 @@ Optional Morning Oral for small-membered males*/
     public isabellaMorningWakeupCall(): void {
         spriteSelect(31);
         flags[kFLAGS.ISABELLA_MORNING_FELLATIO_COUNT]++;
-        const x: number = player.shortestCockIndex();
+        const x: number = player.cocks.shortestCockIndex();
         outputText("\n", false);
         outputText("Sighing happily, your dream takes on a markedly sexual tone, a bevy of delightful sensations wrapping around your loins in your sleep.  Your " + hipDescription(player) + " pump slightly as your body reacts to the hot, pleasant feelings emanating from your now-stiff cock.  The turgid member is like a lightning rod, shuddering every few seconds under an assault of thunderous pleasure-strikes.  You let out a sleepy, contented sigh as your body starts to stir to wakefulness.  The tactile sensations seem so similar to a hot, tight cunt, and yet so achingly different.  Sometimes, a few places are left exposed to the cool morning air, the breeze chilling that portion of your member's skin in sensual contrast with the heat of whatever is squeezing the rest of it.\n\n", false);
 
@@ -352,7 +352,7 @@ Optional Morning Oral for small-membered males*/
         if (player.balls > 0) outputText(ballsDescriptLight(player) + " against her chin, the cum-bloated orbs bouncing and shuddering with your " + cockDescript(game.player, x) + " as release nears.", false);
         else {
             outputText(cockDescript(game.player, x) + " the whole way into her mouth, the slippery, hot cow-girl's lips sealing tightly around your ", false);
-            if (player.hasSheath()) outputText("sheath", false);
+            if (player.cocks.hasSheath()) outputText("sheath", false);
             else outputText("base", false);
             outputText(".", false);
         }
@@ -362,12 +362,12 @@ Optional Morning Oral for small-membered males*/
         if (player.balls > 0) outputText("  Your balls clench tightly as they release your seed", false);
         else outputText("  You clench tightly and release your seed", false);
         outputText(" to the cow-girl's vacuum-tight lips, ejaculating a nice, thick load of spooge to fill her hungry mouth.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  At the same time, you cum from ", false);
-            if (player.cockTotal() > 2) outputText("the rest of your " + multiCockDescriptLight(game.player), false);
+            if (player.cocks.length > 2) outputText("the rest of your " + multiCockDescriptLight(game.player), false);
             else outputText("the one penis she's left untouched", false);
             outputText(", spraying across your belly and " + chestDesc(game.player) + ".  Isabella, ever attentive, grabs the twitching cock", false);
-            if (player.cockTotal() > 2) outputText("s", false);
+            if (player.cocks.length > 2) outputText("s", false);
             outputText(" and pumps to help ease the lusty tension from your body.", false);
         }
         if (player.cumQ() < 250) outputText("  She slurps it all down with a smile, giving you a happy wink as her throat swallows the last of your salty load.", false);
@@ -416,7 +416,7 @@ Optional Morning Oral for small-membered males*/
             if (player.cor < 33) outputText("blush and ", false);
             else if (player.cor >= 66) outputText("smirk and ", false);
             outputText("let Isabella know that if she's still interested, you'd like her to suck you off in the mornings again.  Her face colors, but you see her eight nipple-tips poking hard at her silk shirt as she answers, \"<i>", false);
-            if (player.cocks[player.shortestCockIndex()].cockLength > 9) {
+            if (player.cocks[player.cocks.shortestCockIndex()].cockLength > 9) {
                 if (isabellaAccent()) outputText("I vill, but only once you shrink zat monster down.  I cannot handle somezing like zat!", false);
                 else outputText("I will, but only once you shrink that monster down.  I can't handle something like that!", false);
             }
@@ -434,15 +434,15 @@ Optional Morning Oral for small-membered males*/
     private repeatGermanBratwurstInCamp(): void {
         spriteSelect(31);
         outputText("", true);
-        let x: number = player.smallestCockIndex();
+        let x: number = player.cocks.smallestCockIndex();
         outputText("You ask Isabella if she would mind helping you blow off some pressure before you go back out.  She glances down at " + sMultiCockDesc(game.player) + " and ", false);
         if (flags[kFLAGS.ISABELLA_TIME_SINCE_LAST_HOTDOGGING] < 5 && flags[kFLAGS.ISABELLA_TIME_SINCE_LAST_HOTDOGGING] > 0) {
             if (isabellaAccent()) outputText("mumbles, \"<i>Already?  Did I not just take care of you?</i>\"  The blushing cow-girl teases, \"<i>Are you really zat horny, or do you just like mein heiny that much?", false);
             else outputText("mumbles, \"<i>Already?  Didn't I just take care of you?</i>\"  The blushing cow-girl teases, \"<i>Are you really that horny, or do you just like my heiny that much?", false);
         }
-        else if (player.cockArea(x) > 38) {
+        else if (player.cocks.cockArea(x) > 38) {
             // If too big, use the biggest dick for hotdoggin!
-            x = player.biggestCockIndex();
+            x = player.cocks.biggestCockIndex();
             if (isabellaAccent()) outputText("gasps, \"<i>Oh yes, I see.  It looks so pent up... a shame it is too big to get ze full treatment in mein caboose.  You vill still cum for mein cheeks though, ja?", false);
             else outputText("gasps, \"<i>Oh yes, I see.  It looks so pent up... a shame it's too big for you to get the full treatment in my caboose.  You'll still cum for my cheeks though, right?", false);
         }
@@ -465,7 +465,7 @@ Optional Morning Oral for small-membered males*/
 
         if (isabellaAccent()) outputText("Isabella crooks a finger at you and commands, \"<i>Come, sit down, but lean back so Isabella has plenty of room to vork at milking zis naughty ", false);
         else outputText("Isabella crooks a finger at you and commands, \"<i>Come, sit down, but lean back so I have plenty of room to work at milking this naughty ", false);
-        if (player.cockArea(x) <= 38) outputText("little ", false);
+        if (player.cocks.cockArea(x) <= 38) outputText("little ", false);
         outputText("snake...</i>\"\n\n", false);
 
         outputText("Approaching slowly, you drink in your cow-girl companion's curvy body, devouring every detail of her body.  From her curvy thighs and bubblelicious ass to her pale, creamy spots, her body seems sculpted to titillate any eyes lucky enough to drink in her fertile frame.  Isabella swivels her shaking derriere around, slapping her bronzed ass against you.  The surprising impact pushes you down into the camp chair she previously indicated, teasing you from the brief skin-to-crotch contact as she takes complete charge of the situation.  " + SMultiCockDesc(game.player) + " stands out from your loins, pulsing hard, just aching for another touch of Isabella's bottom.\n\n", false);
@@ -487,15 +487,15 @@ Optional Morning Oral for small-membered males*/
         else outputText("\"<i>Good " + mf(player, "boy", "girl") + ".  Relax, Momma Isabella will take care of you.</i>\"\n\n", false);
 
         outputText("The curvaceous cow-girl's stance shifts slightly, her teasing, shaking dance coming to a stop for just a moment as she adjusts to rest her rump against your " + cockDescript(game.player, x) + ".  ", false);
-        if (player.cockTotal() == 2) outputText("The other penis is shoved to the side, forgotten about as Isabella selects the lucky fuck-stick.  ", false);
-        else if (player.cockTotal() > 2) outputText("The other penises are shoved aside, forgotten about as Isabella selects the lucky fuck-stick.  ", false);
+        if (player.cocks.length == 2) outputText("The other penis is shoved to the side, forgotten about as Isabella selects the lucky fuck-stick.  ", false);
+        else if (player.cocks.length > 2) outputText("The other penises are shoved aside, forgotten about as Isabella selects the lucky fuck-stick.  ", false);
         outputText("She arches her body and slides up and down your " + cockDescript(game.player, x) + ", gradually increasing the weight she's pressing on it with every stroke.  Your dripping member slips into Isabella's tightly-compressed ass-cleavage with a wet-sounding *POP*.  Her derriere is so hot... so sweat-slicked... so... so... perfectly tight.  You aren't even fucking her yet", false);
-        if (player.cockArea(x) <= 38) outputText(", though with your dick completely devoured by her big butt-cheeks, you may as well be.", false);
+        if (player.cocks.cockArea(x) <= 38) outputText(", though with your dick completely devoured by her big butt-cheeks, you may as well be.", false);
         else outputText(", as the mast rising from the top of her crack indicates.", false);
         outputText("  Yet, you know without a doubt that there would be no shame in cumming right now and turning the red-head's tight ass-crack into a cum-filled canyon.\n\n", false);
 
         // (Small enough for buttfukkins)
-        if (player.cockArea(x) <= 38) {
+        if (player.cocks.cockArea(x) <= 38) {
             if (isabellaAccent()) outputText("\"<i>Oh my, does mein behind feel so good zat your cute, delectable cock vill squirt all over me before you even get to feel ze best part?</i>\" teases Isabella as she flexes one side and then the other, forcing your " + cockDescript(game.player, x) + " to bend in response to the two dueling masses of her booty cheeks.  She keeps teasing you as she caresses your member with her hefty butt.  \"<i>You have such a naughty look on your face, drooling on yourself from just a little bit of play with Momma Isabella.  No, don't stop, I want to watch the ecstasy spread through you while I work your nice, hot cock.  My asshole wants to kiss it... Can I kiss your dick with my asshole?</i>\"", false);
             else outputText("\"<i>Oh my, does my ass-job feel so good that your cute, delectable cock is gonna squirt all over me before you even get to feel the best part?</i>\" teases Isabella as she flexes one side and then the other, forcing your " + cockDescript(game.player, x) + " to bend in response to the two dueling masses of her booty cheeks.  She keeps teasing you as she caresses your member with her hefty butt.  \"<i>You have such a naughty look on your face, drooling on yourself from just a little bit of play with Momma Isabella.  No, don't stop, I want to watch the ecstasy spread through you while I work your nice, hot cock.  My asshole wants to kiss it... Can I kiss your dick with my asshole?</i>\"", false);
             // (if libido <=15:
@@ -566,8 +566,8 @@ Optional Morning Oral for small-membered males*/
     private izzyTentacleRapeBool(): boolean {
         spriteSelect(31);
         let counter: number = 0;
-        temp = player.cockTotal();
-        while (counter < player.tentacleCocks() && temp > 0) {
+        temp = player.cocks.length;
+        while (counter < player.cocks.tentacleCocks() && temp > 0) {
             temp--;
             // Does this dick work for it?
             if (player.cocks[temp].cockType == CockTypesEnum.TENTACLE && player.cocks[temp].cockLength >= 24) {
@@ -597,7 +597,7 @@ Optional Morning Oral for small-membered males*/
 
         let counter: number = 0;
         temp = player.cocks.length;
-        while (counter < player.tentacleCocks() && temp > 0) {
+        while (counter < player.cocks.tentacleCocks() && temp > 0) {
             temp--;
             // Does this dick work for it?
             if (player.cocks[temp].cockType == CockTypesEnum.TENTACLE && player.cocks[temp].cockLength >= 24) {
@@ -810,7 +810,7 @@ Optional Morning Oral for small-membered males*/
         if (player.tallness < 72) outputText("face", false);
         else outputText("chest", false);
         outputText(", as she assures you you'll always come first while she's with you.\n\n", false);
-        if (player.hasCock()) outputText("(You have a hunch that you might be able to catch her using the milkers at the farm if you 'explore' there, provided she hasn't been recently milked.)\n\n");
+        if (player.cocks.length > 0) outputText("(You have a hunch that you might be able to catch her using the milkers at the farm if you 'explore' there, provided she hasn't been recently milked.)\n\n");
         // get 1 Izzit Milk or Cream? item, set Izzy Milked Yet flag to -1, which adds [GetMilk] button to follower menu
         flags[kFLAGS.ISABELLA_MILKED_YET] = -1;
         inventory.takeItem(consumables.IZYMILK, camp.returnToCampUseOneHour);
@@ -1054,7 +1054,7 @@ Optional Morning Oral for small-membered males*/
             }
             // both cases, flavor text
             // [Male/herm: if penis <18 inches & testicles smaller than however long in diameter a baseball is]
-            if (player.hasCock() && player.longestCockLength() < 18) {
+            if (player.cocks.length > 0 && player.cocks.longestCockLength() < 18) {
                 outputText("  A pressure builds in your crotch, at first subtle, then incredibly obnoxious to the point where you're forced to undo the lower portion of your " + player.armorName + " to seek some sort of relief.  Your shock is total as you stare at your former " + cockDescript(game.player, 0) + ", now measuring at least 18 inches long – a condition that Isabella has already noticed and is clearly formulating a gripe about.", false);
                 if (player.balls < 0) outputText("  Two testicles fall into a scrotum near the base of your enlarged meat, already swelling into baseball-sized balls o' fun.", false);
                 else if (player.ballSize < 4) outputText("  Your testicles engorge in the transformative powers of the cow-girl's violent reaction to the Pro Bova, growing to baseball-sized in short order.", false);
@@ -1079,12 +1079,12 @@ Optional Morning Oral for small-membered males*/
                 outputText("</i>\"\n\n", false);
             }
             // [if male and player race not cowboy]
-            else if (changed && player.hasCock() && player.race() != "cow-morph") {
+            else if (changed && player.cocks.length > 0 && player.race() != "cow-morph") {
                 outputText("  \"<i>", false);
                 if (isabellaAccent()) outputText("Nein nein nein nein, zis von't do at all!", false);
                 else outputText("No, no! This is awful!", false);
                 outputText("</i>\" she cries as she approaches, eyes locked on your oversized genitalia.", false);
-                if (player.longestCockLength() < 18) {
+                if (player.cocks.longestCockLength() < 18) {
                     if (isabellaAccent()) outputText("  \"<i>Zis did not have to be any bigger!  Vhat a tragedy! Your poor little wiener!</i>\"", false);
                     else outputText("  \"<i>This did not have to be any bigger!  What a tragedy! Your poor little wiener!</i>\"", false);
                     outputText("  You raise an eyebrow at her selective worry, indicating just how cow-like you've become.  ", false);
@@ -1112,10 +1112,10 @@ Optional Morning Oral for small-membered males*/
             outputText("She rewards you by freeing one of her arms and wrapping it around your head, pulling you in between her gleaming ebony melons.  Shaking about and wrapping your head in a marshmallowy shroud of comfort, Isabella continues to force burps out, not content until all of the gas is gone.  She pulls you out of your fleshy prison after the oral venting subsides, dragging you down to the ground with her as her gassy magic begins to take hold.\n\n", false);
 
             // if meets any requirements for cow-y TF
-            if (player.lowerBody != LOWER_BODY_TYPE_HOOFED || player.horns <= 0 || player.hornType != HORNS_COW_MINOTAUR || player.earType != EARS_COW || player.tailType != TAIL_TYPE_COW || (player.hasCock() && player.longestCockLength() < 18)) {
+            if (player.lowerBody != LOWER_BODY_TYPE_HOOFED || player.horns <= 0 || player.hornType != HORNS_COW_MINOTAUR || player.earType != EARS_COW || player.tailType != TAIL_TYPE_COW || (player.cocks.length > 0 && player.cocks.longestCockLength() < 18)) {
                 outputText("You're not surprised when you take the now-familiar cow-" + mf(player, "boy", "girl") + " form, ", false);
-                if ((!player.hasCock() || rand(2) == 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n", false);
-                else if (player.hasCock()) outputText("Isabella not able to keep a little frustration from her face as your dick grows to enviable size.\n\n", false);
+                if ((!player.cocks.length > 0 || rand(2) == 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n", false);
+                else if (player.cocks.length > 0) outputText("Isabella not able to keep a little frustration from her face as your dick grows to enviable size.\n\n", false);
             }
             // if all requirements already filled (already a busty cow-girl/well-endowed cowboy)
             else outputText("Predictably, her sweet-smelling fumes do nothing but further exacerbate your sex-drive, and from the look in her eyes, she's looking forward to it.\n\n", false);
@@ -1156,7 +1156,7 @@ Optional Morning Oral for small-membered males*/
         if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 1) {
             outputText("Flashing a smirk, you beckon her your way, stripping from your " + player.armorName + ".  With delicate and deliberate motions you pull the hem of Isabella's milk-stained blouse down, reaching into the depths of her cleavage and taking hold of her oversized breasts.  It takes effort to heave the heavy, fluid-filled mammaries up and out of her shirt.  Once exposed to the open air, her quadruplet of nipples twitch and stiffen, only swelling further as you alternatingly tease her teats with the edge of your fingernail.  You trace little circles along the areola, running up and over the nubs; your gentle-but-devastating caressing technique sets Isabella all a-shiver, knees knocking together in hardly-contained ecstasy.  If given enough time, you figure you could push the cow-girl to climax merely from nipple stimulation, but your own body demands satisfaction as well.\n\n", false);
             // male: titjoob (Z)
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText("Figuring to put your oversized organ to use, you pull Isabella's tits apart and slap your hard length between them.  As soon as she figures out your intentions, the cow-girl moves to take over, mashing her pillowy endowments together around your maleness.  Perhaps it was from the gas, but what should be a simple titty-fuck is driving you insane with pleasure; her warm, sweaty boob flesh contours to the curves of your shaft and head as well as any pussy.  You can't help yourself – you begin to pump your hips, your tip poking out to dance tantalizingly above Isabella's face before withdrawing, only to peek out again seconds later.  The cow-girl smiles and opens wide, her long tongue slithering free from its shelter.\n\n", false);
 
                 outputText("She expertly licks and flicks at the underside of your cock during your next thrust, sending an almost electric current of pleasure through you.  You two find a rhythm quickly, grinding, thrusting, and licking in perfect unison.  As you come closer to orgasm, you begin increasing the pace; your lover is more than happy to match.  Suddenly, Isabella releases her hold on her bosom and instead wraps her arms around your " + buttDescription(player) + ", pulling you toward her and her wide-open mouth. Your legs catch on her boobs, but she doesn't even notice, closing her full lips around as much of your shaft as she can fit.  As good as her warm, wet mouth feels, her tongue demands the majority of your attention.  It besieges your junk completely, wrapping around the shaft, tickling the undercarriage, and even stroking – a perfect prehensile ejaculatory aid.\n\n", false);
@@ -1188,7 +1188,7 @@ Optional Morning Oral for small-membered males*/
         else {
             outputText("Flashing a smirk, you beckon her your way, stripping from your " + player.armorName + ".  With delicate and deliberate motions you pull the hem of Isabella's milk-stained blouse down, reaching into the depths of her cleavage and taking hold of her oversized breasts.  It takes effort to heave the heavy, fluid-filled mammaries up and out of her shirt.  Once exposed to the open air, her quadruplet of nipples twitch and stiffen, only swelling further as you alternatingly tease her teats with the edge of your fingernail.  You trace little circles along the areola, running up and over the nubs; your gentle-but-devastating caressing technique sets Isabella all a-shiver, knees knocking together in hardly-contained ecstasy.  If given enough time, you figure you could push the cow-girl to climax merely from nipple stimulation, but your own body demands satisfaction as well.\n\n", false);
             // male
-            if (player.hasCock() && (!player.hasVagina() || rand(2) == 0)) {
+            if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
                 outputText("Figuring to put your oversized organ to use, you pull Isabella's tits apart and slap your hard length between them.  As soon as she has figured out your intentions, the cow-girl moves to take over, mashing her pillowy endowments together around your maleness.  Perhaps it was from the gas, but what should be a simple titfuck is driving you insane with pleasure; her warm, sweaty boob flesh contours to the curves of your shaft and head as well as any pussy.  You can't help yourself – you begin to pump your hips, your tip poking out to dance tantalizingly above Isabella's face before withdrawing, only to peek out again seconds later.  The cow-girl smiles and opens wide, her long tongue slithering free from its shelter.\n\n", false);
 
                 outputText("She expertly licks and flicks at the underside of your cock during your next thrust, sending an almost electric current of pleasure through you.  You two find a rhythm quickly, grinding, thrusting, and licking in perfect unison.  As you come closer to orgasm, you begin increasing the pace; your lover is more than happy to match.  Suddenly, Isabella releases her hold on her bosom and instead wraps her arms around your " + buttDescription(player) + ", pulling you toward her and her wide-open mouth. Your legs catch on her boobs, but she doesn't even notice, closing her full lips around as much of your shaft as she can fit.  As good as her warm, wet mouth feels, her tongue demands the majority of your attention.  It besieges your junk completely, wrapping around the shaft, tickling the undercarriage, and even stroking – a perfect prehensile ejaculatory aid.\n\n", false);
@@ -1274,8 +1274,8 @@ Optional Morning Oral for small-membered males*/
         clearOutput();
         spriteSelect(31);
         // AREA FOR SCENE ACCESS: (164);
-        let x: number = player.shortestCockIndex();
-        if (player.cocks[x].cockLength >= 9) x = player.cockThatFits(164);
+        let x: number = player.cocks.shortestCockIndex();
+        if (player.cocks[x].cockLength >= 9) x = player.cocks.cockThatFits(164);
         const y: number = x + 1;
 
         // {New Option in Isabella's [Sex] Menu: [Fuck Her]} -- Requires sex-ready lust & a cock she is capable of taking
@@ -1307,7 +1307,7 @@ Optional Morning Oral for small-membered males*/
         outputText("\n\nWith a lusty grin, Isabella reaches behind her back and begins to undo the laces of her corset.  A moment later, and her massive milky mammaries pop free of their restraints, the huge soft orbs jiggling freely with every breath their owner takes.  Your bovine friend quickly pulls you out of your [armor] too, letting you stand naked in the breeze, your [cock " + y + "] hardening at the occasional brush or stroke she gives it.");
 
         outputText("\n\nOnce denuded, Isabella drops to her knees and cups her huge breasts, hefting them up around your [cock " + y + "].  You shudder as her warm, soft titflesh envelops your prick, ");
-        if (player.cockArea(x) < 50) outputText("utterly engulfing your length");
+        if (player.cocks.cockArea(x) < 50) outputText("utterly engulfing your length");
         else outputText("surrounding a fair amount of your massive shaft");
         outputText(".  Slowly, the cow-girl begins to work her tits along your cock, rubbing her smooth, mottled skin up and down, up and down, occasionally venturing to lick you with her huge, wide tongue, nearly wrapping you in wet muscle between strokes of her breasts.");
 
@@ -1319,7 +1319,7 @@ Optional Morning Oral for small-membered males*/
 
         outputText("\n\nYou slide your dick across her entrance, coating yourself in her slick lubricants in preparation.  Again the cow-girl bellows loudly as you slip your shaft into her, stretching her pussy-lips into a warm embrace.  ");
         // [(dick fitzwell)
-        if (player.cockArea(x) < 80) outputText("Ordinarily tight, Isabella is practically soaked with lube, making the effort to cram your cock into her an easy task; soon your hips are pressed against her raised ass, her thick thighs wrapped around your body.  ");
+        if (player.cocks.cockArea(x) < 80) outputText("Ordinarily tight, Isabella is practically soaked with lube, making the effort to cram your cock into her an easy task; soon your hips are pressed against her raised ass, her thick thighs wrapped around your body.  ");
         outputText("Rearing back, you slam your groin into Isabella's, grinning as she sprays femlube around your prick, obviously enjoying the [cockFit " + y + "] inside her.");
 
         outputText("\n\nYou pick up the pace, giving her nice, strong thrusts until the ground is sodden with her juices and errant blobs of your pre-cum.  Hardly satisfied by the simple missionary position, though, you grab Isabella by the shoulders and pull her up, latching onto one of her eight large nipples and gulping down a quick-flowing stream of milk.  She groans and moos, stroking your hair as you nurse from her and slam your dick into her at once, giving and taking from the cow-girl until she throws her head back and screams, cumming hard around your dick.  You thrust your way through it, riding out her powerful contractions and bucking until she's panting and heaving, and her flow's dropped to but a trickle in your mouth.");
@@ -1365,7 +1365,7 @@ Optional Morning Oral for small-membered males*/
 
     // Fuck Her (Male/Dick'd Herms)
     private fuckIsabellaInTheBarn(): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         clearOutput();
         outputText("You quietly slip into the barn and make your way over to Isabella's stall.  Silently opening the door, you're afforded a good look at the nude, bent-over cowgirl, your eyes drinking in her lush curves and thick, soft ass - and the glistening pussy between her meaty thighs, slightly parted by a pair of mottle-skinned fingers rubbing and teasing at her big clit.");
 
@@ -1411,13 +1411,13 @@ Optional Morning Oral for small-membered males*/
 
         outputText("\n\n\"<i>Oh, [name]...</i>\" the cowgirl groans as a single languid movement of your hips brings your [cock smallest] to her eager fuckhole, your crown just passing between her lips to kiss the warm mouth of her cunny.  Isabella takes hold of your shoulders, further burying your face into her pillowy bosom as her fur-covered thighs wrap around your [hips], urging you ever onward, her legs pushing another inch of your prick into her.  You get the hint and start easing into her, letting Isabella's powerful legs guide you in, ushering your [cock smallest] into her warm, welcoming vaginal embrace.");
         // {If small/Isabella-sized cock}
-        if (player.cocks[player.smallestCockIndex()].cockLength < 9) {
+        if (player.cocks[player.cocks.smallestCockIndex()].cockLength < 9) {
             outputText("  You slide easily into her, until your [hips] press into Isabella's thighs, your groins joined together.  ");
             if (isabellaAccent()) outputText("\"<i>Mmm, zuch a nice fit,</i>\"");
             else outputText("\"<i>Mmm, that's a nice fit,</i>\"  Isabella sighs, her vaginal muscles gently caressing your shaft.");
         }
         // {If medium cock}
-        else if (player.smallestCockArea() < 40) {
+        else if (player.cocks.smallestCockArea() < 40) {
             outputText("  Your cock enters her, stretching Isabella's walls apart until your [cock smallest] comes to caress the closed mouth of her cervix, eagerly brushing up against the entrance to her womb.  ");
             if (isabellaAccent()) outputText("\"<i>Ach, so big</i>\"");
             else outputText("\"<i>It's so big,</i>\"");
@@ -1430,7 +1430,7 @@ Optional Morning Oral for small-membered males*/
             else outputText("God it's so huge, I... it's tearing me apart!</i>\"");
         }
         outputText("\n\nOnce you're as far into Isabella as you can go, she relaxes her death grip on your [ass], and you start to move your hips, slowly rocking yourself back and dragging inches of thick cockmeat slowly, tantalizingly out of her.  Isabella moans lewdly, arching her back as you leave her box empty, her inner depths left gaping as you withdraw...  before plunging back in.  She cries out in ecstasy as you hammer back in with a single thrust, throwing yourself ");
-        if (player.smallestCockArea() <= 164) outputText("in up to the hilt, smearing her wildly contracting walls with thick smears of leaking pre");
+        if (player.cocks.smallestCockArea() <= 164) outputText("in up to the hilt, smearing her wildly contracting walls with thick smears of leaking pre");
         else outputText("in until your [cock smallest] batters into her womb, thick globs of pre smearing her seed-catcher");
         outputText(".  Your wrap your arms firmly around your lover's shoulders, hugging her tight as you piston your [cock smallest] into her, starting to move harder and faster with each buck of your [hips].  Isabella cries out again, her open mouth a perfect opportunity to slip your tongue in, running the tip along her own's wide, pink surface.  Her lips lock around you, suckling on your tongue as you had on her teats a moment before, tasting herself on you through the kiss.");
 

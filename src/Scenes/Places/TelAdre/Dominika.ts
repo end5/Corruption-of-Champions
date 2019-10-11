@@ -298,7 +298,7 @@ export class Dominika extends TelAdreAbstractContent {
         spriteSelect(58);
         outputText("", true);
         outputText(images.showImage("dominika-oral-sex"));
-        let x: number = player.cockThatFits(36);
+        let x: number = player.cocks.cockThatFits(36);
         // [Random one-shot after Player has done a Scylla scene]
         // Mind control at 6th suck
         if (timesFellatrixSucked() >= 6 && timesFellatrixSucked() - 4 >= flags[kFLAGS.DOMINIKA_LAST_HYPNO_SUCK_COUNT]) {
@@ -366,7 +366,7 @@ export class Dominika extends TelAdreAbstractContent {
                 outputText("Once you arrive at the second-story apartment, Dominika practically pulls you into the other room, eager to descend upon your " + vaginaDescript(player, 0) + ". She lays you on the bed again, removing the bottom of your " + player.armorName + " and laying beneath you. Gliding her hands over your thighs she aggressively begins lapping at your " + vaginaDescript(player, 0) + " with her tongue, coating it in spit. \"<i>Mmm, I hope you squirt a river,</i>\" she purrs, giving your " + clitDescription(player) + " a kiss as intimate as a lover's. The way her lips move is intoxicating, sliding their slippery glossy surface over every inch of your " + vaginaDescript(player, 0) + " before engulfing the delicate flesh.\n\n", false);
                 outputText("She forces your legs open and holds your hands at your side so that she can have free reign over your exposed cunt, hardly submissive even as she takes you in her mouth. Her lips twist from side to side as she rubs her mouth lewdly over your flesh. Spit drips between your legs, and deep satisfied slurping noises arise from the bobbing blonde hair before you. Her mouth is warm and breathy against you, but her plump lips press to your skin like a seal, letting you know that you can only leave her mouth when she is ready. The friction is electric, and you drool nectar into her mouth. All of it is slurped down into her waiting throat.\n\n", false);
                 outputText("Her tongue aggressively shoves itself into you once more, slapping against the walls of your " + vaginaDescript(player, 0) + " as though trying to break them down. You can practically feel your juices splattering across your cunt and then slurped up by her in the frenzy she approaches you with. Your world becomes consumed by raw sensation as effortlessly as your own " + vaginaDescript(player, 0) + " is consumed by her ravenous maw, losing yourself in the pleasure granted you by those plump fuckable puckers. ", false);
-                if (player.totalCocks() == 0) outputText("A part of you even wishes that you had a cock so you could shove through them!\n\n", false);
+                if (player.cocks.length == 0) outputText("A part of you even wishes that you had a cock so you could shove through them!\n\n", false);
                 else outputText("A part of you even wishes that she had chosen your cock so you could shove it through them!\n\n", false);
                 outputText("You don't speak, cannot speak as she sucks and gulps at your flesh. You can only offer up strangled gasps and shuddered squeals to her actions, prostrated like a servant before her, gripping the covers and mattress beneath you. Your " + vaginaDescript(player, 0) + " is hers, to impose whatever demands she wishes, and the insatiable suckling upon you makes her demands clear. Her tongue twists about in you and against you, mocking your fingers with how much better it seems to know your pleasure.\n\n", false);
                 outputText("You cannot resist for long after she takes over your spot once again, grinding against it and forcing you to arc your back. Pleasure surrounds you as effortlessly as her lips surround your " + clitDescription(player) + ", and you find yourself cumming hard against her. She drinks everything you give her, sucking on your " + vaginaDescript(player, 0) + " to ensure as little as possible escapes. You feel as though the orgasm could last forever, but settle slowly as she gently kisses your lips, stroking along your belly.\n\n", false);
@@ -375,7 +375,7 @@ export class Dominika extends TelAdreAbstractContent {
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00153]++;
         }
         // MULTICAWWWWK
-        else if (player.cockTotal() >= 2 && rand(2) == 0) {
+        else if (player.cocks.length >= 2 && rand(2) == 0) {
             // [If \"<i>Yes</i>\" and multi-cock]
             if (flags[kFLAGS.DOMINIKA_TIMES_MULTICOCK_SLOBBERED] == 0) {
                 outputText("She licks her teeth rather than her lips, reminding you in some ways of a predator observing prey.  You scarcely have time to contemplate this before she tugs you into the next room.  If the exceedingly comfortable-looking bed is any indication this would be where she sleeps.  Dominika insists upon you sitting on it and you find it to be exactly as comfortable as it looks, if not more so.  \"<i>I knew it was an offer you'd accept,</i>\" she coos.  \"<i>So few are worth my attentions, but you... you caught my eye, champion.</i>\"  She approaches you with a seductive slink in her step, grabbing hold of your " + player.armorName + " and tugging away the bottom.  Her eyes light up with mischievous anticipation as she sees what waits beneath it.\n\n", false);
@@ -415,7 +415,7 @@ export class Dominika extends TelAdreAbstractContent {
             flags[kFLAGS.DOMINIKA_TIMES_MULTICOCK_SLOBBERED]++;
         }
         // [If \"<i>Yes</i>\" and penis small enough to suck]
-        else if (player.cockArea(x) <= 36) {
+        else if (player.cocks.cockArea(x) <= 36) {
             // Dogcock suck
             if (player.hasKnot(x)) {
                 // - first time dogsuck
@@ -582,7 +582,7 @@ export class Dominika extends TelAdreAbstractContent {
             if (player.tallness < 64) outputText("leans down", false);
             else outputText("pushes herself up", false);
             outputText(", biting your lip just barely lightly enough to not draw blood.  Her hand caresses down the side of your head and your neck almost possessively.  You can feel her knee pressing in between your legs, grinding into your ", false);
-            if (player.hasCock()) outputText(multiCockDescriptLight(game.player), false);
+            if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player), false);
             else if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
             else outputText("groin", false);
             outputText(".  The action turns into a kiss of some small passion, the smell of your crotch still fresh on her breath as those slippery ebon pillows graze over your own inferior display.  She breathes heavily against you, looking in your eyes and filling your vision with her own blue eyes.\n\n", false);
@@ -698,8 +698,8 @@ export class Dominika extends TelAdreAbstractContent {
     private dominikaBlowjobs(): void {
         outputText("", true);
         outputText(images.showImage("dominika-gives-you-blowjob"));
-        let x: number = player.cockThatFits(36);
-        if (x < 0) x = player.biggestCockIndex();
+        let x: number = player.cocks.cockThatFits(36);
+        if (x < 0) x = player.cocks.biggestCockIndex();
 
         outputText("You open your eyes.  Are you lying down?  Why are you lying down?  Attempting to fight off the haze of awakening you look dimly around.  The familiar scenery takes you a moment to place it, but you soon recognize the magical markings that cover Dominika's loft.  Yes, that's right, you had spoken with Dominika at the bar, and she had invited you over, hadn't she?\n\n", false);
 
@@ -722,7 +722,7 @@ export class Dominika extends TelAdreAbstractContent {
 
         outputText("Her fingers have grown familiar to you.  They have stroked your chest, squeezed your thighs, and ", false);
         // (if penis)
-        if (player.hasCock()) outputText("caressed your dick.", false);
+        if (player.cocks.length > 0) outputText("caressed your dick.", false);
         else outputText("caressed your labia.", false);
         outputText("  Now they curl around your chin, squeezing it and forcing you to look at her.  \"<i>If I am the moon, you will be the stars,</i>\" she hisses, \"<i>If I am the king you are the knight, and if I am the knight you are the sword.  If you are the sword then I am merchant, blacksmith, and miner.  <b>You are mine to mold and refine.</b>  If I am the rose you are the thorn.  If I am the siren, you are the rocks.  Should I be the spider, you are the web.  <b>You are a tool in my service, to defend me, to cut down what I say is to be cut down.</b></i>\"\n\n", false);
 
@@ -732,8 +732,8 @@ export class Dominika extends TelAdreAbstractContent {
         else outputText("It's magic.  You're positive of it, you can practically feel it in the air.  It was hidden when she first started speaking, when she told you to relax, obfuscated by the twisting circles around the room.  The feeling that twists the most in the gut is the knowledge that you do not care.  You know she is ensnaring your mind – you can practically envision her lips dragging chains around you – but you trust her.  You know that the only reason you trust her right now is further magic and yet you dismiss this as a non-issue.  Worst of all even though you try as hard as you can to keep this knowledge in the forefront of your mind, every word Dominika utters pulls at your attention, demanding you surrender and let her lips engulf your mind – and you don't see a reason to deny her.\n\n", false);
 
         // (Penis)
-        if (player.hasCock()) {
-            if (player.cockArea(x) <= 36) {
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockArea(x) <= 36) {
                 outputText("\"<i><b>You are my champion,</b></i>\" Dominika hisses slowly, trailing a finger over your lower lip.  \"<i><b>And it is my will you shall serve.</b></i>\"  With a low exhale the room settles from the warped space that had dominated the background.  You let out a staggering breath, realizing for the first time the edge you had been kept on.  Your " + cockDescript(game.player, x) + " aches with an uncanny stiffness, as solid as stone and as erect as a spire.  Dominika stands above you, her expression one of confidence.  An arcane circle-constellation forms in the air beneath her hand, her fingers looping through intangible curves.  \"<i>Off,</i>\" she says simply.  Piece by piece your " + player.armorName + " removes itself, at times flinging into a corner of the room.  Soon you lay before her nude and vulnerable, forcibly but willingly exposed.  \"<i><b>You will give me everything.</b></i>\" Her hand closes, the circle dissipating, and she lowers herself once more.  Down she slinks past the limited vision your magical constriction offers.  Unable to see her features you must rely on sensation to know where she lurks – and it is clear that she is lurking in your lap.\n\n", false);
 
                 outputText("Her fingertips trail slowly down the swollen veins of your " + cockDescript(game.player, x) + " in a manner reminiscent of all the times you have visited her before.  You can trust her, so you must not have anything to worry about.  This will be like any other blowjob Dominika has given you.  When her tongue comes up to the underside of your prick and drags up the sweaty meat all the concerns that might have existed with the magical confinement melt away.  It must be her fetish.  You don't mind indulging her fetish, you're not an asshole.  You trust her.  You trust the dark softness of void given form as they curl around your head.  Her mouth slips fully around you and descends, skipping all foreplay.  Every inch of your " + cockDescript(game.player, x) + " enters her deep and hungry mouth.  The clenching heat of her throat pulls at your shaft as it slides down, swallowing around you.  Her hands no longer caress you to encourage your erection but instead clench your thighs to hold the cabalist up.\n\n", false);

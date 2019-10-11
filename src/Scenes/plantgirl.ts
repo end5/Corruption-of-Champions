@@ -126,11 +126,11 @@ else {
     //(if genitalia is present:
     if(player.gender > 0) {
         outputText("sending blood rushing down to your ");
-        if(player.hasCock()) outputText(multiCockDescriptLight(game.player));
+        if(player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
         if(player.gender == 3) outputText(" and ");
         if(player.hasVagina()) outputText([vagina]);
         outputText(".  She lowers her other hand down towards your genitalia, and begins to massage ");
-        if(player.gender == 3 || (player.vaginas.length + player.cockTotal() > 1)) outputText("them")
+        if(player.gender == 3 || (player.vaginas.length + player.cocks.length > 1)) outputText("them")
         else outputText("it");
         outputText(" through your pants.");
     }
@@ -201,11 +201,11 @@ choices[choices.length] = plantRapingAssTrappedSexIntro;
 //GIVE HER A BJ
 choices[choices.length] = trappedFlowerSexBlowjob;
 //SHE RIDES UR DICK
-if(player.hasCock()) choices[choices.length] = trappedPlantSexPussy;
+if(player.cocks.length > 0) choices[choices.length] = trappedPlantSexPussy;
 //SHE BLOWS YA
-if(player.hasCock()) choices[choices.length] = trappedPlantSexWantsToBlowYa;
+if(player.cocks.length > 0) choices[choices.length] = trappedPlantSexWantsToBlowYa;
 //SHE WANTS UR DICK IN HER ASS
-if(player.hasCock()) choices[choices.length] = strugglePlantLadyFailAnal;
+if(player.cocks.length > 0) choices[choices.length] = strugglePlantLadyFailAnal;
 //SHE WANTS 69 - ANY GENDER
 if(player.gender > 0) choices[choices.length] = failStruggle69;
 //SHE FUCKS YER CUNT, YA GIT
@@ -270,16 +270,16 @@ outputText("The fact she's planning to plant her cock in your ass gives you caus
 export function fuckMyAssPlantLadyWhileImTrapped():void {
 clearOutput();
 outputText("You look up into the plant girl's eyes and smile, signalling that you're ready for what she has in mind.  She returns your lustful leer and presses her lips against yours, tongues once again darting around in search of each other as the plant girl reaches down to both your chest and ");
-if(player.hasCock()) outputText(multiCockDescriptLight(game.player));
+if(player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
 if(player.gender == 3) outputText(" and ");
 if(player.hasVagina()) outputText(clitDescription(player));
 outputText(", and begins to caress and ");
-if(player.hasCock()) outputText("stroke");
+if(player.cocks.length > 0) outputText("stroke");
 else outputText("finger");
 outputText(" you.");
 
 outputText("\n\nAs she takes ");
-if(player.hasCock()) outputText("[oneCock]");
+if(player.cocks.length > 0) outputText("[oneCock]");
 else if(player.hasVagina()) outputText("your " + clitDescription(player));
 outputText(" into her hand, you can feel her slip her plant-like penis into your [butt].  A loud series of deep moans escape from you both as your arm reach around and cradles her head in close, desiring the warmth of her body against yours as she presses on into your rump. With a moan, she pushes past your [asshole] and enters your rectum, causing a small cry of pain to stumble out of your mouth as she begins to push deeper and deeper into you; luckily she's considerate enough to not injure you");
 //PC asshole is virgin, tight, or loose:
@@ -299,10 +299,10 @@ else outputText("  You can hear her hiss in frustration at how loose your anus i
 outputText("\n\nYou groan out in a pleasurable pain as she adjusts to the sensation of your ass and picks up speed.  Her cock's warmth darts in and out of you as her thighs slap against your ass cheeks with a loud series of smacks.  The creature begins to whimper soft as she thrusts her prick, leading her to release a thin amount of pre into your humid anus, in turn lubing you up for her increasingly forceful gyrations.  Faster and faster the plant woman thrusts, your wails of lust becoming louder alongside her labor.  She begins to pant and moan as she works herself into a sexual flurry, slapping your ass cheeks as her carnal bliss intensifies.  You grip the branches in your hands as tightly as you can, looking to something to help brace you during your ravaging.");
 
 //PC has a dick(s) less than 48 inches long:
-if(player.shortestCockLength() < 48) {
+if(player.cocks.shortestCockLength() < 48) {
     outputText("\n\nYour ");
     if(player.balls > 0) outputText("[balls] and ");
-    outputText(cockDescript(player, player.shortestCockIndex()) + " flap");
+    outputText(cockDescript(player, player.cocks.shortestCockIndex()) + " flap");
     if(player.balls > 0) outputText("s");
     outputText(" against your thighs as she fucks you harder and harder as her hand finds its way down to your prick");
     if(player.totalCock() > 1) outputText("s");
@@ -361,7 +361,7 @@ outputText("\"<i>MHHMMpffffrmPH!</i>\ you mumble as her cock hits the back of yo
 //(If PC has balls:
 if(player.balls > 0) outputText("wrap themselves around your ([balls] and begin to squeeze");
 //(If PC has a cock(s):
-else if(player.hasCock()) outputText("wrap themselves around your " + multiCockDescriptLight(game.player) + " and begin to squeeze");
+else if(player.cocks.length > 0) outputText("wrap themselves around your " + multiCockDescriptLight(game.player) + " and begin to squeeze");
 //(If PC has a pussy:
 else if(player.hasVagina()) outputText("take hold of you clitDescription(player) and tug hard");
 //(If PC is genderless:
@@ -398,26 +398,26 @@ doNext(9999);
 export function trappedPlantSexPussyGOOO():void {
 clearOutput();
 outputText("The vines around you begin to shift, and you fear that she might have misinterpreted your preferences for sex, gritting your teeth as you await the inevitable violation of your body.  The continuing sound of cracking vines and growth intrigues you enough to open your eyes, witnessing both yourself and the plant woman being lifted off of the ground by her cabal of creepers.  Lifting you further and further into the air, the vegetation draw her close to your restrained, naked body.  The floral beauty's petal like vagina is soaked in anticipation and glistening in the warm glow of the sun.");
-var x:number = player.cockThatFits(9999); //Undefined capacity for now.
-if(x < 0) x = player.smallestCockIndex();
+var x:number = player.cocks.cockThatFits(9999); //Undefined capacity for now.
+if(x < 0) x = player.cocks.smallestCockIndex();
 //(If  cock(s) are 4 inches or less)
 if(player.cocks[x].cockLength < 4) {
     outputText("\n\nThe plant woman goes to massage your " + cockDescript(game.player, x) + ", but stops when she sees how small you are.  Rather than dumping you on your ass, one of the vines that holds you wraps itself around [eachCock] and then proceeds to pierce the sensitive flesh of your glans with what you assume are barbs.  Unconsciously, you scream out in pain; it isn't the worst agony you have ever felt, but the sharp stinging that floods your sensitive member is enough to be a mood killer. In increasing agony, you gaze down at your " + multiCockDescriptLight(game.player) + " to witness your member");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" swelling up. The head");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" of your cock");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" swell");
-    if(player.cockTotal() == 1) outputText("s");
+    if(player.cocks.length == 1) outputText("s");
     outputText(" to what seems to be double ");
-    if(player.cockTotal() > 1) outputText("their ");
+    if(player.cocks.length > 1) outputText("their ");
     else outputText("its ");
     outputText("original size, and your unsubstantial shaft");
-    if(player.cockTotal() > 1) outputText("s gain");
+    if(player.cocks.length > 1) outputText("s gain");
     else outputText(" gain");
     outputText(" some length in the process.  Is this some kind of allergic reaction?  A chemical?  Some kind of hormone? Regardless of how this is done, your once insignificant penis");
-    if(player.cockTotal() > 1) outputText("es are now ");
+    if(player.cocks.length > 1) outputText("es are now ");
     else outputText(" is now ");
     outputText("of sufficient length to penetrate this creature; though, you suspect the effects are temporary.");
     //(cock size temporarily increased to 7 inches)
@@ -436,7 +436,7 @@ else if(player.tallness < 96) outputText("forehead against your chest, sniffing 
 else outputText("places her head against your stomach, eyes closing as the creature takes in the rising and descent of your stomach ");
 outputText(" as she slowly begins to work her hips, grinding the innards of her hot and moist sex against your " +  cockDescript(game.player, x) + ".");
 //(if one cock:
-if(player.cockTotal() == 1) outputText("  The plant creature begins to speed up her thrusting against your cock, eager to drive you over the edge with the tightness of her hole.");
+if(player.cocks.length == 1) outputText("  The plant creature begins to speed up her thrusting against your cock, eager to drive you over the edge with the tightness of her hole.");
 else {
     //(If multi-cocked:
     outputText("\n\nAs she bobs her hips against you, the sensation in your nerve endings drives you to moan with every sensual gyration.  With a devilish smile, the plant woman pauses as she closes her eyes; your pleasure interrupted, you look upon the plant woman's face.  What she could be up to?  The rough grip that takes your other cocks by surprise answers your question.  Looking down, you see that the creature has taken your members into the grasp of her vines.  Frantic worry overtakes you; you aren't sure what those vines are made of, but given that part of this creature is tree bark, you're sure you don't want to find out.  Rather than chaffing and ripping the hell out of your cocks however, the vines form an orifice shaped bundle that begins to vibrate. Before your very eyes, a growth of flowers sprout from the vines, forming into a makeshift set of flowery vaginas. With a lustful hunger in her eyes, she slams her pelvis against yours, taking [eachCock] into her bizarre groups of florid vaginas, shifting them back and forth in perfect unison with her thrusts against you.");
@@ -450,7 +450,7 @@ else outputText("thighs");
 outputText(".  With rolled back eyes, your penis goes haywire with sexual pleasure, body flooded with the instinct to thrust against the plant woman as she slams into your lap.  Gritting your teeth, you feel release boiling up in your loins.  Abandoned to pure pleasure, you grunt fiercely as your " +  multiCockDescriptLight(game.player) + " tense up and prepare to inseminate this plant monster's cunt.");
 outputText("\n\nOrgasm comes fast and furiously as [eachCock] springs forth loads of semen into her tight body.  Both of you groan while enjoying the sensation of your fluids mixing with each other.  Squeezing you in close to her body with her arms, the creature takes to  mashing her ample ass cheeks against your pelvis to drive delicious cock against the opening of her cervix, causing your stream of semen to shoot deeper into her.");
 //(Multi-cocked:
-if(player.cockTotal() > 1) outputText("  Buried deep in the makeshift vaginas, [eachCock] thrusts forward and eagerly deposits the nourishment the creature craves.");
+if(player.cocks.length > 1) outputText("  Buried deep in the makeshift vaginas, [eachCock] thrusts forward and eagerly deposits the nourishment the creature craves.");
 //Vagina:
 if(player.hasVagina()) outputText("  Cumming hard, your " + clitDescription(player) + " releases a liberal stream of juices down the vine that fucks you, dissolving into the appendage as you moan in furious release.");
 
@@ -465,7 +465,7 @@ export function trappedPlantSexWantsToBlowYa():void {
 clearOutput();
 outputText("The plant woman looks your body up and down, seemingly torn between what tickles her fancy and how she can take your body.  Her almost childlike darting of her eyes stops when she lays her sight on your multiCockDescriptLight(game.player), sending an aroused shiver through her body as she appears to finalize her decision.  Like a child walking to the local stream for a swim, she proceeds towards you in an almost skipping like fashion.  Reaching your naked body, she promptly sinks to her knees and takes your " + multiCockDescriptLight(game.player) + " into her hand");
 //(if more than 4 cocks or PC cocks are more than 10 inches in diameter combined:
-if(player.cockTotal() >= 4 || player.totalCockThickness() >= 10) outputText("... or she tries to, as she fumbles with your freakish bundle of dicks.  Unable to fit them all into her hand she shrugs");
+if(player.cocks.length >= 4 || player.cocks.totalCockThickness() >= 10) outputText("... or she tries to, as she fumbles with your freakish bundle of dicks.  Unable to fit them all into her hand she shrugs");
 outputText(", staring up at you with her leafy hair semi-obstructing her flirtatious and suggestive eyes.");
 //[Blow me! (leads to TsI: 1.4a)]        [Nope (leads to TsI: 1.4r)]
 menu();
@@ -485,34 +485,34 @@ export function trappedPlantSexBlowMe():void {
 clearOutput();
 outputText("The thought of getting a blowjob from this rather attractive... um... plant lady excites you greatly, springing your flaccid maleness from it's slumber.  Before the plant woman's very eyes, [eachCock] expands like heated metal; only in a much more dramatic and erotic fashion.");
 //(if cock(s) are 3-24 inches:)
-if(player.longestCockLength() < 24) {
+if(player.cocks.longestCockLength() < 24) {
     outputText("  Now staring her straight in the eyes, your ");
     outputText(multiCockDescriptLight(game.player) + " stare");
-    if(player.cockTotal() == 1) outputText("s");
+    if(player.cocks.length == 1) outputText("s");
     outputText(" defiantly at the plant woman; erect in a such a fashion that suggests insult at the attractive creature before ");
-    if(player.cockTotal() == 1) outputText("it");
+    if(player.cocks.length == 1) outputText("it");
     else outputText("them");
     outputText(" that will be tending to them today.  Eager to rise to said challenge, the plant woman attempts to take your " + multiCockDescriptLight(game.player) + " into her mouth and ");
 
     //(if cock(s) do not exceed 6 inches in total diameter:)
-    if(player.totalCockThickness() < 6) {
+    if(player.cocks.totalCockThickness() < 6) {
         outputText(" manages to fit ");
-        if(player.cockTotal() == 1) outputText("it");
+        if(player.cocks.length == 1) outputText("it");
         else outputText("them");
         outputText(" into her mouth with little difficulty");
-        if(player.cockTotal() > 1) outputText(".  What a champ");
+        if(player.cocks.length > 1) outputText(".  What a champ");
     }
     //if total cocks exceed 6 inches total diameter, but up to two cocks fall under 6 inches:
-    else if(player.twoDickRadarSpecial(6)) {
+    else if(player.cocks.twoDickRadarSpecial(6)) {
         outputText(" manages to take two of your pricks into her mouth without dislocating a jaw or showing any obvious of discomfort");
     }
     else outputText(" manages to swallow your dick into her mouth");
     outputText(".");
     //(If cock count is more than two:
-    if(player.cockTotal() > 2) {
+    if(player.cocks.length > 2) {
         outputText("  The rest of your left out cocks ache for her touch; as she takes the two cocks she has further into her mouth, she raises her arms and attempts to take hold of your members, stroking them as best as she can as she works you with her mouth");
         //(cock(s) are 3-12 inches:
-        if(player.cocks[player.thinnestCockIndex()].cockLength < 12) outputText(" against her face, while planting her hands against your thighs");
+        if(player.cocks[player.cocks.thinnestCockIndex()].cockLength < 12) outputText(" against her face, while planting her hands against your thighs");
         //Cocks are 13-24 inches:
         else outputText(" in-between her shoulder and neck, using them both to form a tight hole for your other cocks to fuck");
         outputText(".");
@@ -520,29 +520,29 @@ if(player.longestCockLength() < 24) {
     //		(jump to Continued... (“normal” dick sized oral) )
     //Continued... (“normal” dick sized sexing)
     outputText("With your member");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" inside of her mouth, she begins the long awaited sucking and stimulation; starting out slowly at first, she slides the top of her tongue along the bottom of your prick");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(", going so gradual that you believe she is savoring the taste of you in her mouth.  To your surprise, she pulls back and lets your cock");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" pop out of her maw, smacking and licking her lips as she grunts her approval like someone who has just enjoyed a fine meal.  Shaking her now intrusive hair out of the way of her eyes, she darts her head forward and takes your ");
-    if(player.cockTotal() >= 2) outputText("two ");
+    if(player.cocks.length >= 2) outputText("two ");
     outputText("saliva covered member");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" into her mouth; with little regard for her gag reflex, she raises her hands on your ");
-    if(player.cockTotal() >= 4) outputText("upper shafts");
-    else if(player.cockTotal() >= 3) outputText("upper shaft");
+    if(player.cocks.length >= 4) outputText("upper shafts");
+    else if(player.cocks.length >= 3) outputText("upper shaft");
     else outputText("[hips]");
     outputText(" as she better positions herself for the entirety of your ");
     outputText("cock");
-    if(player.cockTotal() > 1) outputText("s as they make");
+    if(player.cocks.length > 1) outputText("s as they make");
     else outputText(" as it makes");
     outputText(" contact with the back of her throat.  You feel a bit of pre-cum leak out from the tip");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" of your ");
-    if(player.cockTotal() > 1) outputText("two ");
+    if(player.cocks.length > 1) outputText("two ");
     outputText("dick");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" and ooze against the back of her throat, causing her to moan in delight as your sticky fluids coat her throat.");
 
     //(If Naga:
@@ -550,13 +550,13 @@ if(player.longestCockLength() < 24) {
     //If Goo legs:
     else if(player.isGoo()) {
         outputText("\n\nWorking your soft, goopy lower body around her, you envelop her stomach and torso. This is obvious a cause for concern from the plant woman as she stops and prepares for something bad to happen.  Reassuring her, you take her shoulders and the back of her head into your mass, thrusting her against your cock");
-        if(player.cockTotal() > 1) outputText("s");
+        if(player.cocks.length > 1) outputText("s");
         outputText(" as you assert a degree of control and influence on your pleasuring.  The sticky mess that is your body solicits a series of lustfully moans from the woman who tends to your loins with her mouth.");
     }
     outputText("\n\nBobbing her head back and forth against you, she sucks and roughs up your cock");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" with her energetic efforts");
-    if(player.cockTotal() == 1) outputText(".");
+    if(player.cocks.length == 1) outputText(".");
     else {
         outputText(", while she cheek fucks the remainder of your " + multiCockDescriptLight(game.player) + ".");
     }
@@ -565,61 +565,61 @@ if(player.longestCockLength() < 24) {
     if(player.balls > 0) outputText("[balls]");
     else {
         outputText("shaft");
-        if(player.cockTotal() > 1) outputText("s");
+        if(player.cocks.length > 1) outputText("s");
     }
     //(If balls are present:
     if(player.balls > 0) {
         outputText(" and the base of your shaft");
-        if(player.cockTotal() > 1) outputText("s");
+        if(player.cocks.length > 1) outputText("s");
     }
     outputText(", she squeezes with considerable force, almost as if she is attempting to bottle up pressure in your ");
     if(player.balls > 0) outputText("[sack]");
     else outputText("loins");
     outputText(" so that your creamy contents will explode forth into her craw.  Like a knotted up hose line, your cock");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" begin");
-    if(player.cockTotal() == 1) outputText("s");
+    if(player.cocks.length == 1) outputText("s");
     outputText(" to ache due to the irritating discomfort in your shaft");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText("; you're unsure if you will be able to achieve orgasm with such a tense grip on your spear");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText("!  In a rhythmic fashion, the creature ascends your member");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" and promptly descends back downward, flooding your nerves with pleasure and a growing need to cum as she darts back and forth like a grounded raven chasing after a worm.");
 
     outputText("\n\nYour body answers forcefully as the plant woman takes one last plunge down your cock(s), bellowing forth a river of cum as she bottoms out, causing you to writhe around your \"prison\" in orgasmic bliss. The moment your seed rushes out, the hand around your ");
     if(player.balls > 0) {
         outputText("balls and shaft");
-        if(player.cockTotal() > 1) outputText("s");
+        if(player.cocks.length > 1) outputText("s");
     }
     else {
         outputText("shaft");
-        if(player.cockTotal() > 1) outputText("s");
+        if(player.cocks.length > 1) outputText("s");
     }
     outputText(" tightens considerably;  with gusto, she starts stroking the base of your shaft like a squeeze tube, eager to aid your sperm in their journey to her stomach as they unknowingly rush to their certain doom.  Bleat red, her face compresses against your loins as she takes load after load into her throat, moaning like a wanton harlot and swallowing every once in a while to ensure that there will be room for more splooge in her mouth.  Just when you think she is going to injure you with her fierce grip, she lets you go; and not a moment too soon it seems, judging from the redness in your ");
     if(player.balls > 0) outputText("scrotum's");
     else {
-        if(player.cockTotal() == 1) outputText("cock's");
+        if(player.cocks.length == 1) outputText("cock's");
         else outputText("cocks'");
     }
     outputText(" skin.  Content with your 'donation', the plant woman releases your cock");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(" from her mouth with a loud pop; leaving trails of drool and semen on her chin as she does so.  The vines holding you retract from around your limbs and allows you to suit up and leave, whilst she cradles her sated stomach and hums to herself.");
     player.orgasm();
 }
 else {
     //(If all cocks exceed 24 inches, and two to three cocks measure 6 inches in diameter or less total:
     outputText("  Despite having to position herself a considerable distance away from your body, the plant woman manages to take [oneCock] and fits it into her mouth.  Due to the distance between you two, the plant woman has to ");
-    if(player.cockTotal() == 1) outputText("prop some of your length up on her average body to prevent it from straining towards the ground.");
+    if(player.cocks.length == 1) outputText("prop some of your length up on her average body to prevent it from straining towards the ground.");
     else outputText("prop your other dicks up with her average body to prevent them from hitting the dirt covered ground.  Obviously she has plans for them, and doesn't want her prize catches getting dirty.");
     //(jump to Continued... (huge dick sized oral)
     //	Continued... (huge dick sized oral)
     //(All cocks exceed 4  inches in diameter individually:
     outputText("\n\nHaving to scoot back a fair bit to enjoy her catch, the plant woman kneels against the dirty ground and attempts to take your " + cockDescript(game.player, 0) + " into her mouth.  You feel her attempt to fit your rod into her little mouth; teeth accidentally scraping along your head, the buckling of jaws, and soft lips that are rebutted are all the signs you need to understand that your " + multiCockDescriptLight(game.player));
-    if(player.cockTotal() == 1) outputText("is");
+    if(player.cocks.length == 1) outputText("is");
     else outputText("are");
     outputText(" much too large to fit inside of her mouth.  Undeterred by your freakish large member");
-    if(player.cockTotal() > 1) outputText("s");
+    if(player.cocks.length > 1) outputText("s");
     outputText(", the plant woman smothers her face against your " + cockDescript(game.player, 0) + ", allowing your pre-cum to lather up her face well. Stopping to sheepishly grin up at you, you see that the plant woman has trails of pre-cum connecting between her face and the head of your dick.  Like a kitten with a ball of string, she chases after the strands of pre-cum and attempts to catch them in her mouth.  You grunt and cough at her childish display, to remind her of what she's SUPPOSED to be doing; odd, coming from someone who's trapped in a vine prison.  Embarrassed, the plant woman nods her head apologetically, and takes to your " + cockDescript(game.player, 0) + " with ferocious effort, smearing her face along the head of your cock while dragging her tongue along it with wanton abandon.  You groan at the sensation, and tense up as your body is fluid with relaxing sexual chemicals, easing you up and getting you ready for the pleasure that follows.");
 
     outputText("\n\nThe plant woman continues with her ridiculous method of getting you off, treating the tip of your cock like a pair of billowy breasts as she quickly rubs her face across your head, soaking up more pre-cum as she goes.  A ticklish sensation flies through your cock like lightning in the night sky; grunting and groaning at the treatment, you look down the length of your dick and presumably see the plant woman flicking her tongue along your urethra opening, causing a mix of pleasure and a need to stop being tickled, which interferes with your ability to truly enjoy her efforts.  At her mercy... or lack thereof, she continues her ticklish assault on your dick as you twist and groan in your prison, your body begging simultaneously to cum and for the tickling to stop.  Eventually unable to contain your groans, you loudly yell out repeatedly in frustration as your body twitches uncontrollably;  “STOP! STOP! STOP!!!... FUCK KEEP GOING; AH, FUCK, STOP!”, ringing out in your head as you lose control, wanting desperately for this to end.  The worst part is that the tickle doesn't produce a laugh, only the futile need to break free, as well as to cum in order to end your “torment”.");
@@ -656,55 +656,55 @@ doNext(9999);
 export function plantAnalGivingTheDick():void {
 clearOutput();
 outputText("The sight of this nice, ample ass and the thought of fucking a supple  little pucker piques your " + multiCockDescriptLight(game.player) + ", causing ");
-if(player.cockTotal() == 1) outputText("it");
+if(player.cocks.length == 1) outputText("it");
 else outputText("them");
 outputText(" to become semi-erect.  As you reach her full ass, your prick");
-if(player.cockTotal() > 1) outputText("s poke");
+if(player.cocks.length > 1) outputText("s poke");
 else outputText(" pokes");
 outputText(" at her soft behind, signaling to her that now is the time guide you into her tight pucker.  Slowly, she edges your cock against the tight opening of her asshole.  Realizing that the asshole ");
-if(player.cockTotal() == 1) outputText("it");
+if(player.cocks.length == 1) outputText("it");
 else outputText("they");
 outputText(" will hopefully penetrate is a winner in the tightness department, your " + multiCockDescriptLight(game.player) + " surge");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(" with vigor and anticipation.   The plant woman can barely contain her surprise as your dick");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(" become");
-if(player.cockTotal() == 1) outputText("s");
+if(player.cocks.length == 1) outputText("s");
 outputText(" rock hard and push");
-if(player.cockTotal() == 1) outputText("es");
+if(player.cocks.length == 1) outputText("es");
 outputText(" against her butt hole, her hand shooting up her mouth to contain a giggle.  Looking back over her shoulder at you, she smirks as she pushes against your cock head");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(", easing ");
-if(player.cockTotal() == 1) outputText("it");
+if(player.cocks.length == 1) outputText("it");
 else outputText("them");
 outputText(" into her tight pucker.  With a sudden and rough slide forward your cock");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(" satisfyingly penetrate");
-if(player.cockTotal() == 1) outputText("s");
+if(player.cocks.length == 1) outputText("s");
 outputText(" her anus, leading to a slight gasp as the plant woman takes you inside of her.");
 
 outputText("\n\nKeeping her comfort in mind, the plant creature stares at the trunk in front of her and takes her time as she gradually eases more and more of you inside of her hot innards.  You grunt as the walls of her ass painfully yield to your spear(s) of lust;  The rough stretching of her contours along your glans continuing until she loosens up, to where both of you can be comfortable with the act.  Throwing caution to the wind, the plant woman “tests the waters” by bounces her ass off of your thighs, eventually increasing in tempo as she adapts to the " + cockDescript(game.player, 0) + " inside of her.  The initial throes of anal sex that your captor inflicts on herself begins to overwhelm your cock");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(", causing you to shudder in delicious pleasure as you moan loudly.");
 
 outputText("\n\nHearing your cries of bliss, the creature staring back at you continues her gaze, soaking up the expression on your flushed face and grinning at the fact that you're enjoying to this as much as she is  Her body language betrays her own sexual passions as you return her gaze; every sign of pleasure or reaction to her bucking from you arouses her greatly, getting off to watching you wiggling around and grimacing.  In a deep sexual rut, she dives her hand down to her pussy and begins to stroke it, working her delicate fingers along her ever moist labia.  Her eyes widen and tighten with every wave of pleasure as she fucks her ass along your member and continues to masturbate, gradually picking up her efforts at self-stimulation.  Soon her curved rump is mashing against you, creating a flurry of  fleshly, slapping noises that are frequently drowned out by her constant pleasurable cries of ecstasy.");
 outputText("\n\nHer schlicking becomes short and fast, indicating with her feverish pace that her orgasm is fast approaching.  You feel your own coming on too but you aren't quite there yet, savoring the brush of tight ass along your shaft for as long as you can. That all changes when the plant woman screams out in orgasm, her whole body convulsing in built up euphoria.  The tight shape of her sphincter clamps down hard on your cock");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(" as she weakly bounces against you, squeezing down on you with just the right amount of force that it drives you past the point of no return, unleashing a ");
 //Cum output low:
 if(player.cumQ() < 20) outputText("small amount of semen");
 else if(player.cumQ() < 250) outputText("generous amount of cum");
 else outputText("flood of sticky spunk");
 outputText(" from your cock");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(" and into her tight asshole.");
 
 //(If there are free cocks:
-if(player.cockTotal() > 1) outputText("\n\nThe rest of your " + multiCockDescriptLight(game.player) + " erupt as well, coating her butt and thighs in sticky jizz.  Like a true slut, the plant woman grabs your ejaculating prick and crams it into her fuck-hole, her pussy milking you of all the cum you can muster up.");
+if(player.cocks.length > 1) outputText("\n\nThe rest of your " + multiCockDescriptLight(game.player) + " erupt as well, coating her butt and thighs in sticky jizz.  Like a true slut, the plant woman grabs your ejaculating prick and crams it into her fuck-hole, her pussy milking you of all the cum you can muster up.");
 outputText("\n\nPanting heavily, the floral vixen  giggles and releases you from the vines.  Still wracked with fatigue and orgasm, you slump against her back as she leans against the tree, breathing in tandem with her as you both enjoy the high from a successful orgasm.");
 
 outputText("\n\nAfter a bit of time passes, you work up the strength to stand and pull your cock");
-if(player.cockTotal() > 1) outputText("s");
+if(player.cocks.length > 1) outputText("s");
 outputText(" from her body.  Surprisingly, no cum (yours or otherwise) leaks out of her love button... weird.  With your lust quenched, you decide to head back to camp and get back to... whatever you were doing.  As you put your [armor] back on, the plant woman slips in quietly and kisses you tenderly on the neck.  Smiling, you wave to the delicate plant woman and make for camp.");
 player.orgasm();
 doNext(camp.returnToCampUseOneHour);
@@ -715,14 +715,14 @@ export function failStruggle69():void {
 clearOutput();
 //(Options are a combination of pussy eating and performing oral on the plant woman; Scenes in the TsI:1.6 section has support for PC's with a cock(s) only, and genderless characters.)
 outputText("With a loud sniff at the air around her, the plant woman closes her eyes and nods her head back and forth. It seems an aroma unknown to you enters her nostrils as she enjoys the flow of it through her being.  Looking around, you try to determine where this mystery smell is coming from; all your eyes see is the bush surrounding you, the vines that hold you, the sky, and the advancing plant woman.  With a disarming grin, the plant woman descends to her knees and inhales once more, shuddering as her forehead lazily comes to rest on your pelvis.  Your perplexing confusion is subdued as you discern that the enigmatic scent she smells is your own; specifically, your ");
-if(player.hasCock()) outputText(multiCockDescriptLight(game.player));
+if(player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
 else if(player.hasVagina()) outputText(vaginaDescript(player));
 else outputText(assholeDescript(player) + " as she dives nose first into the under crevice of your " + buttDescription(player) + ", rubbing the bridge of it between your cheeks as she giggles");
 outputText(".");
 
 outputText("\n\nYour nostrils fill with the sweet scent of something nectar like; the smell inciting your arousal and sexual desire.  Shaking your head, you fleetly look the creature up and down until your eyes sight the droplets of moisture on the ground; you're not sweating... and this creature doesn't look like it sweats either.  Standing to entice you, the plant woman darts her eyes down to her pussy and licks her lips.  That's when the mystery odor that floods your olfactory sense is revealed.  Like a shiny gem, her moist pussy catches your eye, eager to receive a lashing foom your tongue.");
 outputText("\n\nThe view of the world around you spins suddenly and abruptly as your vine-like prison takes your body in the air.  The vines twisting and spinning your form, the equilibrium in your head struggles to realign itself and adapt to the disorienting oscillation.  The twisting sensation stops, clearing the blur of colors your helpless eyes see as you realize you are now hanging upside down; the plant woman's wet clit stares back at you in anticipation... as does a large... plant-like cock.  Intending to have you join in on the fun, the plant creature uses her vines to separate your [legs], exposing your ");
-if(player.hasCock()) outputText(multiCockDescriptLight(game.player));
+if(player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
 else if(player.hasVagina()) outputText("[clit]");
 else outputText("[asshole]");
 outputText(" with her hands as she moves in for the 'kill'.");
@@ -738,7 +738,7 @@ addButton(3,"69 EatAll",struggle69Plant,3);
 export function nowayStruggle69Plant():void {
 clearOutput();
 outputText("The dizzying sensation of being hung upside down like a hunter's catch in a tree is bad enough; the idea of this thing forcing her fuck hole against your face and licking your genitalia is more than enough for you to try and break free.  Thrashing around in the vine prison like a fly caught in a spider web, you try to show the plant woman that you are not okay with her choice in 'having fun' with you.  Your erratic and frenzied rejection dawns on the plant woman, and she pouts as she dejectedly flips you up right.  Her stare carries with it a plea for you to reconsider, but you ensure that you will not be swayed on this matter.  With a sad expression on her face, she stares down at the ground, lamenting your denial; raising an eyebrow, you call out the plant creature and assure her through your ");
-if(player.hasCock()) outputText(multiCockDescriptLight);
+if(player.cocks.length > 0) outputText(multiCockDescriptLight);
 if(player.hasVagina()) outputText("[clit]");
 outputText(" that you still want to fool around.  Conveying your preference, you gesture to her that she should... ");
 //(leads to trapped scene selection)
@@ -793,9 +793,9 @@ if(target == 2) {
     outputText("\n\nHowever, you aren't the only one who knows how to torment a pussy.  The plant creature decides it's time for your punishment and takes to your [clit] with enough speed to put a hyperactive rabbit to shame.  Your own pace becomes erratic as you spasm and groan at her lightning fast treatment of your pussy, trying your best to keep your gradual snail's paced caressing of her vagina.  The battle with the plant creature to see who can make the other lose control and orgasm in defeat begins, and neither of you gives any ground as you both reach your peaks.");
     outputText("\n\nNeck in neck, you power on with your agonizing pace until she decides to play dirty.  Taking her index finger, she jams into your [vagina] and starts pumping you, causing you to moan angrily.");
     //(Herm support:
-    if(player.hasCock()) {
+    if(player.cocks.length > 0) {
         outputText("\n\nIf that wasn't bad enough, the unsporting woman also takes to your " + multiCockDescriptLight(game.player) + " and strokes ");
-        if(player.cockTotal() == 1) outputText("it");
+        if(player.cocks.length == 1) outputText("it");
         else outputText("them");
         outputText(" teasingly.  The pompous creature gives you a stare down at your form and grins at the “superior” position she thinks she has you in.");
     }
@@ -808,9 +808,9 @@ if(target == 2) {
     //(otherwise:
     else outputText("\n\nTaking your other hand, you desperately grab her clit lip and fumble it around between your fingers.  Both your bodies twitch violently and orgasm simultaneously, producing a chorus of thunderous moaning from both of you as you spray each other with your lady juices.");
 
-    if(player.hasCock()) {
+    if(player.cocks.length > 0) {
         outputText("  With your feminine release comes a slightly painful build up of pressure in your loins; then, the hot and heavy eruption of cum in the air as your prick");
-        if(player.cockTotal() > 1) outputText("s explode");
+        if(player.cocks.length > 1) outputText("s explode");
         else outputText(" explodes");
         outputText(", coating the floral vixen in your seed.");
     }
@@ -850,11 +850,11 @@ else {
     if(player.balls > 0) outputText("testicles begin");
     else {
         outputText("cock");
-        if(player.cockTotal() == 1) outputText(" begins");
+        if(player.cocks.length == 1) outputText(" begins");
         else outputText("s begin");
     }
     outputText(" to churn ");
-    if(player.balls == 0 && player.cockTotal() == 1) outputText("its");
+    if(player.balls == 0 && player.cocks.length == 1) outputText("its");
     else outputText("their");
     outputText(" payload in preparation for insemination.  Apathetic to the cruel fate in store for your cum, you attempt to thrust against her face, eager to churn forth your creamy payload into her awaiting stomach.  Breathing heavily as she works your now chaffed dick, the lady of the earth huffs erratically, struggling to coax your delectable seed from you.  Obliging her, [eachCock] convulses and squeezes with the throes of orgasm, unleashing your spunk into the plant woman's throat.  The slow tug of gravity trickles your donation into the core of this creature, turning her into the perfect, “natural” receptacle to house your syrupy load; something the floral vixen approves of,  moaning out in fierce contentment as the trunk of her body is nourished. As she lowers you to the ground, she slides your [cock] out of her mouth. Thick, salty seed droops on her tongue and lips as she rises to her feet, displaying her catch along her mouth.  Pursing her lips together, the creature gulps the remainder of your donation and smiles devilishly,  her face showing pleasure as her muscles work millions of your seedlings into her gut.");
     //(transitions to End to 69! scene, got a BJ)
@@ -948,9 +948,9 @@ if (inCombat && player.HP < maxHP()) {
 outputText("\n\nYou feel your orgasm approaching, and your body delivers the last bit of energy needed to finish the job.");
 
 //PC has more than one dick:
-if(player.cockTotal() > 1) {
+if(player.cocks.length > 1) {
     outputText("  Your extra endowment");
-    if(player.cockTotal() == 2) outputText(" flaps");
+    if(player.cocks.length == 2) outputText(" flaps");
     else outputText("s flap");
     outputText(" wildly against her thighs and ass, quietly acknowledging the call to arms and prepare to do their part.");
 }
@@ -962,15 +962,15 @@ outputText(".  The sensation is too much, and you cry out as you flood her vagin
 if(player.balls == 0) outputText(multiCockDescriptLight(game.player));
 else outputText(ballsDescriptLight(player));
 outputText(" acknowledge");
-if(player.balls == 0 && player.cockTotal() == 1) outputText("s");
+if(player.balls == 0 && player.cocks.length == 1) outputText("s");
 outputText(" her desire and continue to shoot thick streams of your seed into her");
-if(player.cockTotal() > 1) outputText(" as well as on her stomach and the ground beneath you");
+if(player.cocks.length > 1) outputText(" as well as on her stomach and the ground beneath you");
 if(player.hasVagina()) outputText("; your vaginaDescript(player, 0) quivers with the need for release, letting loose with its own torrent of lady fluids as you moan in orgasm");
 outputText(".  After a few moments, you slump down on the plant woman's chest, completely spent. A few minutes rest does you good, and with time you rise back up and look down at your partner; a dazed, blissful expression has fallen on her features, the creature lost in pure nirvana as she cradles her stomach. Satisfied with how things turned out, you give her one last kiss and struggle to get back up.  Damn, your ");
 if(player.balls > 0) outputText("[balls] really hurt");
 else {
     outputText("dick really hurts");
-    if(player.cockTotal() > 1) outputText("s really hurt");
+    if(player.cocks.length > 1) outputText("s really hurt");
 }
 outputText(", but looking back at the heap of a woman behind you, you concur that it was totally worth it.");
 //(scene ends if no injuries were sustained during the fight and HP remained maxed; otherwise, scene goes to V & D 1.1inj. end)
@@ -1036,7 +1036,7 @@ outputText("As you approach the plant creature you feel a twitch in your pants; 
 export function victoryDefeatPlantGirlGetBJDARKVADER():void {
 clearOutput();
 outputText("Your " + multiCockDescriptLight(game.player) + " become");
-if(player.cockTotal() == 1) outputText("s");
+if(player.cocks.length == 1) outputText("s");
 outputText(" rock hard at the sight of the plant woman's B-cup breasts bouncing ever so slightly as she walks towards you.  Her feminine legs crossing over the other with every step as she attempts to arouse you.  With foreplay on the mind, she lowers her hands onto of your shoulders and begins to kiss your neck, ignorant to the fact that you are well and ready for some oral attention... Perhaps she just doesn't know it yet?  Deciding to “help” her understand, you take her wrists into your hands and lower them down towards your waistline.  Letting out an amused \"<i>mmhm</i>\" in-between smooching your neck, she traces her soft and delicate hands across your abdomen, sensation spreading through your stomach. “Close, but not quite there yet” you think to yourself.  Guiding her once again, you direct her sensual hands to your crotch (plate) and rub them along it.  A giggle rings out from your partner as she pulls her lips from your neck with a devilish grin on her face at her realization of what you want your partner to do.  You motion down to your crotch with your eyes, intent on conveying to her that it isn't going to suck itself.");
 //(Scene leads to V and D 1.2)
 //9999
@@ -1055,13 +1055,13 @@ else outputText(" licks up from your gouch before");
 outputText(" slowly proceeding towards your glans and swirling her tongue around it like a tootsie roll.  It isn't long before the plant woman suddenly stops and looks up at you with mischievous eyes.  She raises her eyebrows twice, and then ");
 
 //[If cock(s) are tentacle dicks and greater than 24 inches in length, jump to (V and D 1.2tc)]
-if(player.tentacleCocks() > 0 && (player.tentacleCocks() == player.totalCocks() || rand(2) == 0)) {
+if(player.cocks.tentacleCocks() > 0 && (player.cocks.tentacleCocks() == player.cocks.length || rand(2) == 0)) {
     plantGirlPCWinGetTentacleBJ();
     return;
 }
 else {
     //[if cock size is 4-14 inches]
-    if(player.cocks[player.biggestCockIndex()].cockLength < 14) outputText("takes the entirety of your [cock biggest] in her mouth and down her throat.  You lurch forward as your cock hits the back of her throat, moaning intensely at the plant girl's ability to take your whole penis in her mouth.");
+    if(player.cocks[player.cocks.biggestCockIndex()].cockLength < 14) outputText("takes the entirety of your [cock biggest] in her mouth and down her throat.  You lurch forward as your cock hits the back of her throat, moaning intensely at the plant girl's ability to take your whole penis in her mouth.");
 
     //[If cock size is greater than 14 inches]
     else outputText("attempts to take as much of your member as she possibly can.  Your [cock biggest] slams against the back of her throat, and the plant woman tries to take a little more of you to no avail.  She looks up at you apologetically, but you pet her head and ensure that she knows you aren't upset with her.");
@@ -1159,7 +1159,7 @@ if (inCombat) {
     if(player.balls > 0) ouptutText("Your [balls] slap");
     else outputText("Your pelvis slaps");
     outputText(" against her pussy, causing wet slapping sounds and coating your [sack] liberally with her sexual secretions.  The plant woman moans weakly");
-    if(player.cockTotal() > 1) outputText(" grabs a of your penis and guides it to her vagina.");
+    if(player.cocks.length > 1) outputText(" grabs a of your penis and guides it to her vagina.");
     else {
         outputText(", while she ");
         //PC has testicles: (
@@ -1167,7 +1167,7 @@ if (inCombat) {
     }
     //Vagina check:
     if(player.hasVagina()) {
-        if(player.cockTotal() == 1 && player.balls > 0) outputText("  Not content with just teasing your balls, the");
+        if(player.cocks.length == 1 && player.balls > 0) outputText("  Not content with just teasing your balls, the");
         else outputText("  The");
         outputText(" attractive creature darts her hand down to your [vagina], fingering you passionately as she takes the length of your meat into her hungry sex.");
     }
@@ -1175,7 +1175,7 @@ if (inCombat) {
     outputText("\n\nSuddenly, she cries out in orgasm; you wait in eager anticipation and expect more lady fluids to drench you.  Instead you feel vibrations in her breasts, and flower petals burst forth from the sides of her mounds.  You stop, staring at the bizarre occurrence that is occurring before you, her leaking teats situated in the middle of her flowery breasts.  The plant woman's face portrays a sense of embarrassment and shame, causing you to let out a startled laugh. “Well now, I don't mind if I do” You remark as you take her right nipple in your mouth, suckling and licking her breast while caressing her flower petals, which drives her over the edge.  You begin fucking her ass once again, and with a sigh of relief, she takes to enjoying the act once more, with you reaching orgasm not long after.");
 
     outputText("\n\nYou grunt and moan as your " + cockDescript(game.player, x) + " shoots its anal payload ");
-    if(player.cockTotal() > 1) outputText(" along with its vagina-clad brother");
+    if(player.cocks.length > 1) outputText(" along with its vagina-clad brother");
     outputText(".  She slumps against you, lost in pleasure and sensation as you drench her interior with hot, sticky cum.  The plant woman's nectar-flavored milk shoots forth from her breasts and coats the ground in front of the both of you, causing her to shake and moan furiously.");
     if(player.hasVagina()) outputText("Your [vagina] obliges, and a few steams of lady spunk flow from your [clit] and intertwine with the fauna creature's fluids on the ground.");
     outputText("  As the plant woman comes down from her climax, you lick your hands clean of her nectar and pull out from her.  You shoot her a look of appreciation, and she fires back a look of utter contentment and bliss.  You leave her to recuperate from the act and head back to camp.");
@@ -1275,7 +1275,7 @@ if (inCombat)
 else {
     outputText("Ideas of popping a large, flowery cock in your mouth and downing this creature's hot, salty cum into your gullet flood your mind, causing you to lick your lips at the imaginary taste of sweet, spunky jism against your wet and eager tongue.  Staring down at the plant creature's pelvis, though, causes a wave of disappointment to wash over you.  As she closes the distance between the two of you, the missing bob, prod, poke - hell; even a pitiful wiggle in her drawers - is soul-crushingly absent.  Her hands caress your [chest] as she helps to remove your [armor], rubbing along your body in an obvious attempt to arouse you. You gaze down on her body once again and sigh, still not seeing any miraculous sprouting of a thick, plump cock for you to lick and suck.  Sensing your discontent and disappointment, the plant woman's eyes meet yours as she gauges the reason for your unhappiness.  To help her understand, you ");
     //PC has a dick:
-    if(player.hasCock()) outputText("take [oneCock] and poke the tip of your head against her pelvis; where a penis would be located if she were a guy... or pretty much everything else around here.");
+    if(player.cocks.length > 0) outputText("take [oneCock] and poke the tip of your head against her pelvis; where a penis would be located if she were a guy... or pretty much everything else around here.");
     //PC doesn't have a dick:
     else outputText("mimic the motions of sucking on a large phallic object, popping your cheek out with your tongue for effect.");
     outputText("\n\nYet nothing happens.");
@@ -1286,7 +1286,7 @@ else {
 //(Victory... where the cock?, V 1.4?:
 if (inCombat) {
     outputText("\n\nYou snap out of your musings to discover that ");
-    if(player.hasCock()) outputText("[eachCock] is rigidly erect");
+    if(player.cocks.length > 0) outputText("[eachCock] is rigidly erect");
     else if(player.hasVagina()) outputText("your [vagina] is gazed over with your secretions");
     //Genderless:
     else outputText("your body is flushed with sexual need");
@@ -1318,12 +1318,12 @@ else outputText("With careful coordination and care, you quickly and deftly swee
 outputText("\n\nYou lower yourself to her pelvis and begin to trace your finger across it, making a stroking motion with your other hand as you do so.  The plant woman stares at you in utter confusion.  You shake your head as you stand, spilling a few drops of sweat from your arm on her leafy body in the process.  You grab a vine and start to 'ram' it against your [butt] to signify what you want her to do.  Eyes widening, the plant woman tries to stand while she concentrates on what you're trying to say.  Throwing your hands up in the air, you sigh and start back toward camp.  The plant woman whimpers behind you as you start to leave, causing you to turn around.  Perching herself up against a tree trunk, the plant woman beckons you to come back.  You cross your arms and arc your finger several times to her pelvis. “Look, you don't have what I want, so-” you start to say.  The plant woman's pelvis in response begins to vibrate, with the occasional bump appearing.  Quizzically you stare at her pelvis, wondering just was exactly is happening.  Your questions are soon answered when a plant-like appendage bursts from her pelvic area. “Well,” you think to yourself, “that certainly is a game changer...”");
 
 outputText("\n\nGrinning, you disrobe and gently lay the plant woman on the ground with her cock bobbing in the air in eager anticipation.  As you lower yourself onto her loins, ");
-if(player.hasCock()) outputText("[eachCock] becomes rock solid");
+if(player.cocks.length > 0) outputText("[eachCock] becomes rock solid");
 if(player.gender == 3) outputText(" while ");
 if(player.hasVagina()) outputText("your pussy becomes incredibly wet");
 if(player.gender == 0) outputText("nipples become erect");
 outputText(" in response to your own arousal and desire.  The tip of her penis presses against your cheeks and pushes its way into you as you allow it past your anus and into the depths of your ass.  The creature opens her mouth in an 'ohh' expression, enjoying the sensation of breaking past your [asshole].  As she bottoms out, ");
-if(player.hasCock()) outputText("[eachCock] jerks upward, the last shot of blood filling and hitting them like a thunderous punch");
+if(player.cocks.length > 0) outputText("[eachCock] jerks upward, the last shot of blood filling and hitting them like a thunderous punch");
 if(player.gender == 3) outputText(", while ");
 if(player.hasVagina()) outputText("your pussy leaks a bit of girl cum.  It slowly drools out onto her pelvis");
 if(player.gender == 0) outputText("your body quivers from the sensation");
@@ -1343,7 +1343,7 @@ outputText(" as you bob your [asshole] against her lap, moaning loudly as you do
 //PC has a pussy (and/or) a dick:
 if(player.gender > 0) {
     outputText("grab both your [chest] and ");
-    if(player.hasCock()) outputText("[oneCock]");
+    if(player.cocks.length > 0) outputText("[oneCock]");
     if(player.hasVagina()) outputText("your vulva");
 }
 //PC is genderless:
@@ -1352,19 +1352,19 @@ outputText(", intent on magnifying your own pleasure.");
 
 //Dicked and/or pussy equipped players only, genderless skips this part
 outputText("\n\nThe pace quickens as your cheeks begin to slam against her pelvis, while the creature ");
-if(player.hasCock()) outputText("strokes [oneCock] with her hands");
+if(player.cocks.length > 0) outputText("strokes [oneCock] with her hands");
 if(player.gender == 3) outputText(" as she also ");
 if(player.hasVagina()) outputText("massages your labia");
 if(player.gender == 0) outputText("massages you");
 outputText(".");
 outputText("  The plant woman thrusts in kind,  mashing her pelvis against your own as you bounce off the creature. You manage to time your descent with her thrusts to intensify both of your pleasures.  She ");
-if(player.hasCock()) outputText("quickens her pace of stroking your cock");
+if(player.cocks.length > 0) outputText("quickens her pace of stroking your cock");
 if(player.gender == 3) outputText(" and ");
 if(player.hasVagina()) outputText("fingers the interior of your pussy, causing you to roll your eyes into the back of your head as she sensually teases the inside of your sex");
 if(player.gender == 0) outputText("raises herself to deliver a passionate kiss");
 outputText(".  You feel her thrusts getting shorter now, and you know that her she going to blow her load soon.  With gradually closing eyes and increasingly frequent panting and moaning, she grabs your hips and holds them in place as she thrusts upward one last time.  With a lusty moan, her spunk shoots into your hot innards with significant force, allowing you to feel the impact of every shot of cum in your anus.");
 outputText("\n\nYou cry out in fierce orgasm, ");
-if(player.hasCock()) {
+if(player.cocks.length > 0) {
     outputText("[eachCock] erupting its own payload onto her face and chest");
 }
 if(player.gender == 3) outputText(", ");

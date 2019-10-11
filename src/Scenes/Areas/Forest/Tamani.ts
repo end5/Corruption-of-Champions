@@ -30,7 +30,7 @@ export class Tamani extends Goblin {
             selector = rand(2);
             if (selector == 0) {
                 outputText("With effort you manage to wrench your eyes away from the inviting folds of Tamani's vagina.  ", false);
-                if (player.totalCocks() > 1) outputText("Each of y", false);
+                if (player.cocks.length > 1) outputText("Each of y", false);
                 else outputText("Y", false);
                 outputText("our " + multiCockDescriptLight(game.player), false);
                 if (player.lust > 80) outputText(" drips pre-cum", false);
@@ -41,7 +41,7 @@ export class Tamani extends Goblin {
             }
             else {
                 outputText("Struggling, you pull your eyes back into your head and away from Tamani's gorgeous slit.  You shudder, feeling ", false);
-                if (player.totalCocks() > 1) outputText("each of ", false);
+                if (player.cocks.length > 1) outputText("each of ", false);
                 outputText("your " + multiCockDescriptLight(player), false);
                 if (player.lust <= 41) outputText(" thicken perceptibly", false);
                 else if (player.lust <= 81) outputText(" twitch eagerly", false);
@@ -55,12 +55,12 @@ export class Tamani extends Goblin {
             selector = rand(2);
             if (selector == 0) {
                 outputText("You barely manage to step yourself from lunging forward to bury your mouth between your mistress's legs.  Hard and trembling between your legs, ", false);
-                if (player.totalCocks() > 1) outputText("each of ", false);
+                if (player.cocks.length > 1) outputText("each of ", false);
                 outputText("your " + multiCockDescriptLight(player) + " aches with need.  You battle with the compulsion to kneel before your short, stacked mistress and perform your duties as her breeder husband.", false);
             }
             else {
                 outputText("You wrench your gaze from the juicy mound before you with great difficulty.  The desire to submit to your wife and fuck her on the spot rages through your body, melting your resistance into liquid lust and pooling it in your groin.  ", false);
-                if (player.totalCocks() > 1) outputText("Each of y", false);
+                if (player.cocks.length > 1) outputText("Each of y", false);
                 else outputText("Y", false);
                 outputText("our " + multiCockDescriptLight(player) + " pulses and dribbles pre-cum, aching to do its duty and fire load after load into Tamani's perfect pussy.", false);
             }
@@ -75,11 +75,11 @@ export class Tamani extends Goblin {
         } else {
             outputText("Tamani gives up on defeating you and starts masturbating!", true);
         }
-        if (player.lust >= 33 && player.totalCocks() > 0) {
+        if (player.lust >= 33 && player.cocks.length > 0) {
             outputText("  You could fuck her, but if that's the case why did you bother fighting her?\n\nWhat do you do to her?", false);
             let temp: () => void = null;
             let temp2: () => void = null;
-            if (player.hasCock() && player.cockThatFits(analCapacity()) >= 0) temp = game.forest.tamaniScene.tamaniAnalShits;
+            if (player.cocks.length > 0 && player.cocks.cockThatFits(analCapacity()) >= 0) temp = game.forest.tamaniScene.tamaniAnalShits;
             // NOT PREGGERS
             if (!game.forest.tamaniScene.pregnancy.isPregnant && player.canOvipositSpider()) {
                 temp2 = game.forest.tamaniScene.tamaniBeaten;
@@ -91,7 +91,7 @@ export class Tamani extends Goblin {
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (hpVictory) {
-            if (player.totalCocks() > 0) {
+            if (player.cocks.length > 0) {
                 if (rand(2) == 0) game.forest.tamaniScene.tamaniSexLost();
                 else game.forest.tamaniScene.tamaniSexLetHer();
             } else {
@@ -99,7 +99,7 @@ export class Tamani extends Goblin {
                 cleanupAfterCombat();
             }
         } else {
-            if (player.totalCocks() > 0) {
+            if (player.cocks.length > 0) {
                 // hypnoslut loss scene
                 if (game.flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] > 19 && rand(2) == 0) {
                     game.forest.tamaniScene.getRapedByTamaniYouHypnoSlut();

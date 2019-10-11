@@ -32,7 +32,7 @@ export class FetishCultistScene extends AbstractLakeContent {
         // ZOOKEEPER RAEPS.  WEIRDOZ
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR || player.lowerBody == LOWER_BODY_TYPE_NAGA) {
             // Special centaur version by Astronomy
-            if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR && player.balls > 0 && player.totalCocks() > 0 && rand(4) < 3) {
+            if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR && player.balls > 0 && player.cocks.length > 0 && rand(4) < 3) {
                 if (player.cocks[0].cockType == CockTypesEnum.HORSE) {
                     outputText("The entrance door to the stables swings open. Standing there is the familiar sight of your favorite zookeeper.  She's wearing overalls and a plain, dirt marked t-shirt, but you notice the overalls have the familiar logo of the zoo – your home.  You can make out a part of the logo says  \"Featsy's Slutty Beast Zoo - Zoo Keeper\" on it. As she walks into the stables, you see she's carrying a small stool with her, a sight that fills you with anticipation. You watch her walk down the aisle in between all the stable stands, glancing between all the zoo's pet centaurs, yourself included.  Most of them are male and you can even see the odd herm going by her big pair of tits and large set of balls with a dangling cock. The zookeeper smiles lustfully as she looks from side to side at the different centaurs available. As she slowly walks towards you, you can't help but hope that she'll choose you for today's 'treatment'.  To your immense delight, you see that the girl has stopped in front of you.  You try to move but the ropes holding you in place arrest your movement.  The omnipresent weight of your cock as it dangles between your legs grows heavier and heavier as your body remembers the zookeeper.  The girl steps into your stand, closing the door behind her.  As you look at her, you can see her face is blushing red, and her eyes are clearly fixated on your " + cockDescript(game.player, 0) + " and " + ballsDescriptLight(player) + ".\n\n", false);
 
@@ -134,9 +134,9 @@ export class FetishCultistScene extends AbstractLakeContent {
                 // boy's surprise
                 else if (player.gender == 1) {
                     outputText("and to your shame, you feel ", false);
-                    if (player.totalCocks() > 1) outputText("each of ", false);
+                    if (player.cocks.length > 1) outputText("each of ", false);
                     outputText("your " + multiCockDescriptLight(game.player) + " poke out of your pelvic slit, growing to full erectness.  You strain against your bonds, desperate to bring release to ", false);
-                    if (player.totalCocks() > 1) outputText("each of ", false);
+                    if (player.cocks.length > 1) outputText("each of ", false);
                     outputText("your " + multiCockDescriptLight(game.player) + ", but there is nothing you can do and you keeper laughs at you.  \"<i>Oh so eager to bury that eager cock of yours inside my snatch?  Too bad, I'm the one who gets to choose what goes in there, and it's not your cock.</i>\" she says to you, clearly enjoying the frustration you're going through.\n\n", false);
                 }
                 // girl's surprise
@@ -146,7 +146,7 @@ export class FetishCultistScene extends AbstractLakeContent {
                 // herm's frustrations
                 else {
                     outputText("and with a shudder you feel your pelvic slit open up so that your " + vaginaDescript(player, 0) + " is exposed and ", false);
-                    if (player.totalCocks() > 1) outputText("each of ", false);
+                    if (player.cocks.length > 1) outputText("each of ", false);
                     outputText("your " + multiCockDescriptLight(game.player) + " can thrust up into the air.  You make a few futile thrusts into the air, desperate to find some way to get release from your mixed genitals.  \"<i>Hmm, sorry snakey, but I can't pick one of those to play with, maybe if you had only one...</i>\" she says to you with a snark, but you know she is lying and is clearly enjoying your frustration.\n\n", false);
                 }
 
@@ -179,7 +179,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             outputText("You stand up and look over at the cultist. She is now wearing a nurse's uniform with bared breasts.  You notice that your " + player.armorName + " changed into a bizarre cross between a patient's gown and a collection of black straps with buckles.  While tight in some places, it doesn't hinder your movement or hide your more sexual parts at all.", false);
             if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
                 outputText("  It also dawns to your fogged mind that you now have a human-looking lower body, though your sexual organs are unchanged.", false);
-                if (player.cockTotal() > 0) outputText("  As you see your " + multiCockDescriptLight(game.player) + ", 'incredibly large' is the only qualifier you can think of.", false);
+                if (player.cocks.length > 0) outputText("  As you see your " + multiCockDescriptLight(game.player) + ", 'incredibly large' is the only qualifier you can think of.", false);
             }
             outputText("\n\n", false);
             if (player.armorValue == 0) player.modArmorName = "bondage patient clothes";
@@ -243,7 +243,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             if (player.vaginas.length > 0 && !changed) {
                 outputText("The smile disappears from her lips and she says, 'Now if I understand it correctly, you are beset by random panic attacks due to an unusually sized clitoris, coupled with a lack of breasts.  To address this issue, I will be giving you a special injection at the site.'  She briefly steps out of the room before returning with a syringe.  'It'll be ok, the good news is that the pain for this injection will quickly subside, just take nice easy breaths and you'll be fine.  In fact, you might find this quite enjoyable after the first hurdle.'  She leans down and pushes the needle into your clitoris.  The pain is quite intense, but thankfully it does not last long.  'This injection will address your unnatural body shape by turning your clitoris into a penis. It even has the added benefit of removing the unneeded vagina.' she says to you in a pleasant voice while pulling the needle out.  You look down to see that you " + clitDescription(player) + " is indeed growing larger, and you can feel your womb disappearing within you.\n\n", false);
                 player.knockUpForce(); // The only event I can find anywhere that removes a pregnancy
-                player.createCock();
+                player.cocks.createCock();
                 player.removeVagina(0, 1);
                 outputText("Soon you have a fully formed " + cockDescript(game.player, 0) + " standing tall and proud where your old femininity used to lie.  The nurse sets the syringe aside and climbs on top of your legs. She giggles softly before lowering herself and taking your " + cockDescript(game.player, 0) + " between her breasts and starts rubbing and playing with them while running your " + cockDescript(game.player, 0) + " between them.  It is an exquisite experience having her tit fuck your brand new " + cockDescript(game.player, 0) + ", and you notice that she seems to be enjoying it just as much as you are.  It doesn't take long for her ministrations to make you cum between her breasts, and cum you do.  Satisfied, the nurse rises from you and says \"<i>Looks to me like its working properly.  For now, I've got to go take care of another patient. Don't you do anymore running about until I get back, ok?  I'll be back to check on your progress as soon as I'm able!</i>\"  She gives you a wink, and turns to walk out the door.", false);
                 dynStats("sen", 3);
@@ -254,7 +254,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             // (5 - if player has no genitals)
             if (player.gender == 0 && !changed) {
                 outputText("The smile disappears from her lips and she says, 'Now if I understand it correctly, you are beset by random panic attacks due to a lack of genitals.'  To address this issue, I will be giving you a special injection at the site.'  She briefly steps out of the room before returning with a syringe.  'It'll be ok, the good news is that the pain for this injection will quickly subside, just take nice easy breaths and you'll be fine.  In fact, you might find this quite enjoyable after the first hurdle.'  She leans down and pushes the needle into your crotch.  The pain is quite intense, but thankfully it does not last long.  'This injection will address your unnatural body shape by giving you a penis,' she says to you, smiling while pulling the needle out, 'and then, I get to be the first to play with it!'.  You look down to see that the flesh where she injected you is pushing out of your body, becoming larger and more defined as the seconds tick by.\n\n", false);
-                player.createCock();
+                player.cocks.createCock();
                 outputText("Soon you have a fully formed " + cockDescript(game.player, 0) + " standing tall and proud where your bare crotch used to lie.  The nurse sets the syringe aside and climbs on top of your legs. She giggles softly before lowering herself and taking your " + cockDescript(game.player, 0) + " between her breasts and starts rubbing and playing with them while running your " + cockDescript(game.player, 0) + " between them.  It is an exquisite experience having her tit fuck your brand new " + cockDescript(game.player, 0) + ", and you notice that she seems to be enjoying it just as much as you are.  It doesn't take long for her ministrations to make you cum between her breasts, and cum you do.  Satisfied, the nurse rises from you and says \"<i>That was fun, maybe later we can practice more.  For now, I've got to go take care of another patient. Don't you do anymore running about until I get back, ok?  I'll be back to check on your progress as soon as I'm able!</i>\"  She gives you a wink, and turns to walk out the door.", false);
                 dynStats("sen", 3);
                 changed = true;
@@ -284,7 +284,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             outputText("Her outfit shifts into that of a noble woman, and she looks down at you.", false);
             if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
                 outputText("  It dawns to your fogged mind that you now have a human-looking lower body, though your sexual organs are unchanged.", false);
-                if (player.cockTotal() > 0) outputText("  As you see your " + multiCockDescriptLight(game.player) + ", 'incredibly large' is the only qualifier you can think of.", false);
+                if (player.cocks.length > 0) outputText("  As you see your " + multiCockDescriptLight(game.player) + ", 'incredibly large' is the only qualifier you can think of.", false);
             }
             outputText("\n\n", false);
             // (variant 3: special toy, requires both dick and vagina)
@@ -439,7 +439,7 @@ export class FetishCultistScene extends AbstractLakeContent {
 
             // sex to be written here
             outputText("The cultist turns around, presenting her rear end to you, looking over her shoulder.  ", false);
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText("Her eyes lock onto your very erect maleness.  \"<i>I got that thing that hard?  Oh fuck yes!</i>\"  She wraps her arms around her body and rocks back and forth.  ", false);
                 // if (PC has a vagina)
                 if (player.hasVagina()) outputText("Then, she hesitates for some reason, before saying, \"<i>Um, I'm not sure why I'm asking this since you've got a good tool there already, but... I've got some vibrators, if you want to play with them instead...</i>\"\n\n", false);
@@ -455,7 +455,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             let vibe: () => void = null;
             let fuckVag: () => void = null;
             if (player.hasVagina()) vibe = swimsuitVibrators;
-            if (player.hasCock()) fuckVag = plugSwimsuitVag;
+            if (player.cocks.length > 0) fuckVag = plugSwimsuitVag;
             simpleChoices("FuckHerVag", fuckVag, "Vibrator", vibe, "", null, "", null, "Leave", cleanupAfterCombat);
             return;
         }
@@ -490,22 +490,22 @@ export class FetishCultistScene extends AbstractLakeContent {
 
     // PC goes for the vagina
     private plugSwimsuitVag(): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
         if (player.hasVagina()) outputText("You decline the vibrators; you'd much rather take her incredibly wet pussy.  ", false);
         else outputText("You tell her you're gonna fuck her.  ", false);
         outputText("She nods at you and turns around shivering even harder.  You step forward and put your hands on her shoulders, then start to run them over her body, while your " + multiCockDescriptLight(game.player) + " pokes her in the back.  \"<i>Oh fuck me, I need you to fuck me now!</i>\" she screams.  Grinning, you push her to the ground and grip her pert, bouncing breasts.  You push her bathing suit to the side so that you have access to her waiting snatch.  You assure her that you'll be fucking her all right, all while you tease and play with her exposed body.\n\n", false);
 
         outputText("When you push your " + cockDescript(game.player, x) + " inside her, she goes absolutely insane underneath you.  She squirms and wriggles all over your " + cockDescript(game.player, x) + ", as you ", false);
-        if (player.cockArea(x) < 50) outputText("push further and further until you're all the way inside her.", false);
-        else if (player.cockArea(x) < 200) outputText("push further and further, until to your great delight, she manages to take all of your massive member without any trouble!", false);
+        if (player.cocks.cockArea(x) < 50) outputText("push further and further until you're all the way inside her.", false);
+        else if (player.cocks.cockArea(x) < 200) outputText("push further and further, until to your great delight, she manages to take all of your massive member without any trouble!", false);
         else outputText("manage to get your monster cock further and further inside her.  To your immense shock, she manages to take the whole thing, without it seeming to warp her body at all!", false);
         outputText("  Her slick interior seems to fit your shaft perfectly, and with the way she is squirming around you, you're getting one hell of a ride.\n\n", false);
 
         outputText("After all the foreplay, the two of you are already reaching your peaks thanks to her incredible, tight cunt and its ministrations to your member.  The cultist is screaming in pleasure, telling you to look at her, to fondle her, and to fuck her; you happily oblige her.  Her interior contracts about your " + cockDescript(game.player, x) + " as you loose the proof of your orgasm deep inside her.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your remaining cock", false);
-            if (player.cockTotal() == 2) outputText(" lets loose its load", false);
+            if (player.cocks.length == 2) outputText(" lets loose its load", false);
             else outputText("s let loose their loads", false);
             outputText(" onto her back and legs, ", false);
             if (player.cumQ() < 50) outputText("adding a little white decoration", false);
@@ -626,8 +626,8 @@ export class FetishCultistScene extends AbstractLakeContent {
         outputText("With her moving your hand over her large wet spot, she coos this to you and goes back to her nursing. Your hand falls on top of the warm spot and more pussy juice spreads out across the cloth. You lift up your hand with strands of girlcum stretching out like a juicy spiderweb. You pull the cloth covering her pussy to the side, exposing her glistening wet sex to the cold cabin air. She lets out a humming moan of satisfaction, still teasing and playing with your teat. You slip two fingers into her moist cave with squishing sounds as you easily slide in and out. The weight of her head on your arm begins to lift up and soon you're able to reach around her back and grab her tits. You give them the same treatment she'd been giving your chest and treat them like your playthings. The rocking of the chair increases as you two both go at each other, your finger fucking becoming rougher as her suckling ratchets up in intensity.  The sloppy sex causing massive amounts of saliva and milk to coat your chest and belly while pooling on her boobs and chest.\n\n", false);
 
         // [Cock](this goes for herms too)
-        if (player.hasCock()) {
-            if (player.cockTotal() > 1) outputText("Each of y", false);
+        if (player.cocks.length > 0) {
+            if (player.cocks.length > 1) outputText("Each of y", false);
             else outputText("Y", false);
             outputText("our " + multiCockDescriptLight(game.player) + " becomes fully erect as it rubs up against her warm ass cheeks, which is enough to fulfill its desire.   Her cum bubbles into the palm of your hand while your cum drizzles her ass with sticky whiteness.\n\n", false);
         }

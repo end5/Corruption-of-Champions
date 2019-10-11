@@ -45,11 +45,11 @@ export class Salon implements TimeAwareInterface {
 
     private salonFavoritesPaymentMenu(): void {
         let blow: () => void = null;
-        if (player.hasCock()) blow = goblinHairDresserFacefuck;
+        if (player.cocks.length > 0) blow = goblinHairDresserFacefuck;
         let minoCum: () => void = null;
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00142] > 0) minoCum = goblinHairDresserFacefuck;
         menu();
-        if (flags[kFLAGS.LYNNETTE_PREGNANCY_CYCLE] >= 4 && player.hasCock()) addButton(5, "Fuck Goblin", fuckLynnette);
+        if (flags[kFLAGS.LYNNETTE_PREGNANCY_CYCLE] >= 4 && player.cocks.length > 0) addButton(5, "Fuck Goblin", fuckLynnette);
         addButton(0, "Goblin Blow", blow);
         addButton(1, "Canine", gloryholeDoggie);
         addButton(2, "Imp", gloryholeImp);
@@ -61,11 +61,11 @@ export class Salon implements TimeAwareInterface {
 
     private salonPaymentMenu(): void {
         let blow: () => void = null;
-        if (player.hasCock()) blow = goblinHairDresserFacefuck;
+        if (player.cocks.length > 0) blow = goblinHairDresserFacefuck;
         let minoCum: () => void = null;
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00142] > 0) minoCum = buyMinoCum;
         menu();
-        if (flags[kFLAGS.LYNNETTE_PREGNANCY_CYCLE] >= 4 && player.hasCock()) addButton(5, "Fuck Goblin", fuckLynnette);
+        if (flags[kFLAGS.LYNNETTE_PREGNANCY_CYCLE] >= 4 && player.cocks.length > 0) addButton(5, "Fuck Goblin", fuckLynnette);
         addButton(0, "Goblin Blow", blow);
         addButton(1, "Canine", gloryholeDoggie);
         addButton(2, "Imp", gloryholeImp);
@@ -131,7 +131,7 @@ export class Salon implements TimeAwareInterface {
         outputText("You step inside the cave, and are greeted by a sight you did not expect.  The cave's floor is covered with smooth wood panelling and the walls are nearly entirely covered with hanging mirrors.  The few stalactites have hooks drilled into them, from which hang hundreds of scissors, shears, razors, combs, and other hairstyling impliments.  It reminds you of the hair-cutter's shop in your hometown.", true);
         outputText("\n\nThere are a few chairs along the wall and goblins with latex dresses and gloves looking bored.  At the sight of you they perk up and clamor around you excitedly, until one with a gravity-defying chest pushes them apart and greets you.", false);
         outputText("   \"<i>I apologize for my daughters,</i>\" she says as she presses herself against you.  \"<i>They're a bunch of brainless hussies for the most part.  My name is Lynnette, and welcome to my salon!  You want your hair cut or lengthened?  We've got you covered, and we don't ask for much - just a shot of cum.", false);
-        if (player.cockTotal() == 0) {
+        if (player.cocks.length == 0) {
             outputText("  You look like you don't got any of your own, but we've got glory holes in the back if you need to get some.  Just don't swallow too much, ok?</i>\"\n\nShe shows you to the back of the cave, which is boarded-up.  There are about 20 holes in boards, and most are empty.  While you watch, a few new dicks slide in, and just as quickly the goblin's daughters commence sucking and fucking them.  There are only a few you could take a crack at - do you blow one (and if so which one)?", false);
         }
         else {
@@ -164,7 +164,7 @@ export class Salon implements TimeAwareInterface {
                 return;
             }
             else {
-                if (player.cockTotal() == 0) {
+                if (player.cocks.length == 0) {
                     outputText("\n\nShe taps her chin in thought. \"<i>A real shame you aren't packing any more.  No worries, the glory holes in the back are pretty popular with the demons and monsters, just go back there and catch some spooge and we'll see about helping with your hair, ok?</i>\"\n\n(There are a number of dicks in the glory hole, which do you want to deal with (if you're willing at all)?", false);
                 }
                 else {
@@ -199,7 +199,7 @@ export class Salon implements TimeAwareInterface {
                 else outputText("[leg]");
                 outputText(", compressing her mountainous mammaries against you hard enough to leave milky stains in her wake.\n\n\"<i>How's my favorite breeder doing?</i>\" comes the honeyed words from her mouth, and as she begins to feel at the crotch of your [armor], she asks, \"<i>I can cut your hair, if you like, but why do that when there's a woman with a quim in front of you, waiting to get stuffed?</i>\"  She smirks. \"<i>So what'll it be?</i>\"");
             }
-            if (player.cockTotal() == 0) {
+            if (player.cocks.length == 0) {
                 outputText("\n\nHer expression drops when she realizes you're no longer packing. \"<i>You should really grow a cock back, honey. It's a little shameful for such a perfect stud to be so under-equipped.</i>\"", false);
             }
             favoriteSalonMenu();
@@ -217,7 +217,7 @@ export class Salon implements TimeAwareInterface {
                 outputText("Lynnette opens the door for you, ushering in before you have more than a few moments to take in her curvy voluptuousness. Her dress is sheer and tight to her relatively flat belly, indicated that her womb is free for the moment, and judging by the way she beams at your entrance, she's still feeling a little bit of post-birth euphoria. \"<i>Welcome back, honey! Here for a bit of fun, a haircut, or both?</i>\"");
                 // Normal offers with a bit hinting at knocking her up when appropriate
             }
-            if (player.cockTotal() == 0) {
+            if (player.cocks.length == 0) {
                 outputText("\n\nShe taps her chin in thought. \"<i>I see you still can't make payment for our services on your own.  No worries, the glory holes in the back are pretty popular with the demons and monsters, just go back there and catch some spooge and we'll see about helping with your hair, ok?</i>\"\n\n(There are a number of dicks in the glory hole, which do you want to deal with (if you're willing at all)?", false);
             }
             else {
@@ -227,7 +227,7 @@ export class Salon implements TimeAwareInterface {
         // Standard repeats
         else {
             outputText("Lynnette the goblin answers the door and lets you in, waving you deeper into her shop.  Her shining black dress barely contains her fertile-hips and jiggling chest as she greets you, \"<i>Welcome back, honey!  ", true);
-            if (player.cockTotal() == 0) {
+            if (player.cocks.length == 0) {
                 outputText("I see you still can't make payment for our services on your own.  No worries, the glory holes in the back are pretty popular with the demons and monsters, just go back there and catch some spooge and we'll see about helping with your hair, ok?</i>\"\n\n(There are a number of dicks in the glory hole, which do you want to deal with (if you're willing at all)?", false);
             }
             else {
@@ -409,17 +409,17 @@ export class Salon implements TimeAwareInterface {
         player.slimeFeed();
         outputText("As the salon door swings closed behind you, a familiar, heavenly scent catches your nose and wicks into your brain, flooding you with need and molten-hot lust.  Lynnette saunters over with her lips slightly pursed and her body jiggling, but you brush her aside.  She's completely forgotten as you close in on the source of your olfactory bliss.  Your sigh dreamily while your pupils slowly dilate from the familiar chemicals pounding through your bloodstream", false);
         if (player.hasVagina()) outputText(" and puffing up your twat with liquid arousal.\n\n", false);
-        else if (player.hasCock()) outputText(" and turning " + sMultiCockDesc(game.player) + " into a turgid, pulsating mass.\n\n", false);
+        else if (player.cocks.length > 0) outputText(" and turning " + sMultiCockDesc(game.player) + " into a turgid, pulsating mass.\n\n", false);
         else outputText("\n\n", false);
 
         outputText("You push your way past a few more staring goblin sluts, tearing off your " + player.armorName + " as you go.  The animal part of your brain recognizes that such needless trapping would just get in the way of all the thick, dripping, minotaur spunk just waiting to pump inside you.  Another door swings closed behind you while the scent drags you heedlessly deeper into the salon, closing in on the secluded glory-holes the goblins keep hidden away in the back.  You drool spittle down your neck while you lose yourself in the memory of that taste on your tongue, letting your body seek it out on autopilot.", false);
-        if (player.hasVagina() || player.hasCock()) {
+        if (player.hasVagina() || player.cocks.length > 0) {
             outputText("  A trail of ", false);
             if (player.hasVagina()) {
                 outputText("female slime ", false);
-                if (player.hasCock()) outputText("and ", false);
+                if (player.cocks.length > 0) outputText("and ", false);
             }
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 if (player.cumQ() < 100) outputText("pre-cum ", false);
                 else if (player.cumQ() < 500) outputText("pre-cum a few inches wide ", false);
                 else outputText("pre-cum over a foot wide ", false);
@@ -477,7 +477,7 @@ export class Salon implements TimeAwareInterface {
         player.buttChange(90, true, false);
 
         outputText("\n\nYou slide down the twitching bull-shaft until your " + buttDescription(player) + " slaps the wall, and you draw slowly away, but you push back harder, turned into a lewd, wanting whore by the massive quantity of minotaur seed in your belly, on your skin, and fogging up the air.  The beast pulls out and you whine plaintively, feeling empty and useless until he plunges back inside and reminds you of your purpose.  He starts to fuck you hard, not caring for your pleasure at all, slamming his horse-cock deep and fast.  Each of his three rings of prepuce ", false);
-        if (!player.hasCock()) outputText("drags through your body, touching sensitive nerves you didn't even know you had until you cum, shuddering and shaking like a wanton whore.", false);
+        if (!player.cocks.length > 0) outputText("drags through your body, touching sensitive nerves you didn't even know you had until you cum, shuddering and shaking like a wanton whore.", false);
         else outputText("presses on your prostate as it squeezes by, making " + sMultiCockDesc(game.player) + " drip and spurt freely until you can bear it no longer and cum, shaking and shuddering like a wanton whore.  Jizz drips and pours from " + sMultiCockDesc(game.player) + " in a steady stream that pools on the floor, slowly rolling towards a drain that doubtless empties into a tank or greedy goblin cunt.", false);
         outputText("\n\n", false);
 
@@ -540,7 +540,7 @@ export class Salon implements TimeAwareInterface {
             else if (player.tallness >= 55) outputText("[hips]");
             else outputText("side");
             outputText(" so that she can slip a manicured hand inside your underclothes. She handles [eachCock] ");
-            if (player.cockTotal() > 1) outputText("in turn ");
+            if (player.cocks.length > 1) outputText("in turn ");
             outputText("with the skill of a practiced snake-charmer before ");
             if (player.balls == 0) outputText("pressing down near the [sheath]");
             else outputText("curling her petite fingers around your [sack] to heft it");
@@ -583,10 +583,10 @@ export class Salon implements TimeAwareInterface {
         outputText("\n\nLynnette's bed bounces as she lets herself fall back into her pillows, and you watch her cowgirl-sized knockers flatten slightly under their own weight, showing just how big they truly are.  Everything below her neck and above her belly-button is covered in an ocean of jade breast-flesh, one the goblin is happy to highlight by digging her fingers into it, letting her digits vanish into the oh-so-soft love-cushions.  She moans and spreads her legs, giving you a better view while she bats her eyelashes in the most ravenous come-hither look you've ever seen.  Her lower lips, wet and plump with love-juices, part slightly, inviting you to fill them.  You know full well that she's had many daughters, but the flawless, malachite swell of her snatch shows no sign of wear, and rather, glistens as evidence of her race's natural elasticity.");
         outputText("\n\n\"<i>Mount me,</i>\" the goblin growls as she displays her nude body to you, \"<i>I want to feel you inside, [name].  I want to make you cum for me.</i>\"  She smiles lecherously.  \"<i>You WILL cum for me.</i>\"  The glittering look of promise in her eyes leaves no room for doubt in your heart.  She's going to wind up with a cuntful of cum, and all you can do is provide it for her.");
         outputText("\n\nBefore you can crawl into bed after her and give her the loving she deserves, you catch a whiff of something sweet and undeniably... fertile in the air. It's obviously the pheromone-laden scent of the green matron's arousal, hanging thickly in the air and working its way into your system. Twitching unsubtly, your maleness");
-        if (player.cockTotal() > 1) outputText("es have");
+        if (player.cocks.length > 1) outputText("es have");
         else outputText(" has");
         outputText(" begun to bead clear droplets of precum. They run down the underside of your distended, eager cumvein");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" and race down towards your ");
         if (player.balls > 0) outputText("[balls]");
         else outputText("[sheath]");
@@ -594,18 +594,18 @@ export class Salon implements TimeAwareInterface {
 
         outputText("\n\n\"<i>Fuck me,</i>\" the pregnancy-obsessed slut begs as she moves a hand down to her cunny, spreading the lips wide-open with reveal a glittering amethyst tunnel that promises sublime pleasure to all who enter.");
         outputText("\n\nYou climb up onto the bed with one hand wrapped around [oneCock] and your eyes leering down over your jade prize, your dick oozing droplets of molten-hot pre onto your waiting conquest's slick thighs as you climb into position. She looks up at you imploringly as she awaits the inevitable penetration, grabbing your hand and pressing down on her sodden box. The sensation reminds you vaguely of holding your hand above a pot of boiling water, the steaming heat collecting into condensation upon your hand. That settles it; you absolutely need to fuck her NOW! Your dick");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" won't take no for an answer.");
-        let x: number = player.cockThatFits(80);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(80);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("\n\nGrunting as you aggressively move yourself into place, you lock eyes with the shameless slut, letting her know with a single look just how hard you are going to fuck her, how perfectly pounded her pussy is going to be.  That one expression leaves her unequivocally sure of her impending bowleggedness, and the little tart just grins.  You thrust forward with all the subtleness of a rampaging bull, battering your " + cockHead(player, x) + " right through her slobbering delta, feeling the lips cling to your girth as they're stretched out into an o-ring of cock-squeezing pleasure, somehow incredibly tight around you but with more give than any woman ought to have.");
-        if (player.cockArea(x) > 50) {
+        if (player.cocks.cockArea(x) > 50) {
             outputText("  Her tummy bulges with the outline of your swollen mass, clearly displaying the shape of your bitch-breaking dong as it travels up ");
-            if (player.cockArea(x) <= 80) outputText("her belly.");
+            if (player.cocks.cockArea(x) <= 80) outputText("her belly.");
             else outputText("into her ribcage, penetrating farther than any lesser race could ever hope to handle.");
         }
         outputText(" The breeder grabs hold of your [hips] and tugs as hard as her meager strength will allow.  ");
-        if (player.cockArea(x) <= 90) {
+        if (player.cocks.cockArea(x) <= 90) {
             outputText("Slapping against her hard enough to release a splash of girlish cum, you hilt yourself completely");
             if (player.balls > 0) outputText(", [balls] resting on her soaked, juicy ass-cheeks.");
         }
@@ -623,21 +623,21 @@ export class Salon implements TimeAwareInterface {
         outputText("  There's a tsunami of sperm building up inside you to the point where holding it in is actually starting to hurt you, but at the same time, your body refuses to give in and climax yet either.");
         outputText("\n\nLynnette's huge, milk-dripping nipples erupt like the verdant volcano peaks they resemble, spraying gushes of ivory cream in lewd cascades that wash over you both, acting as a sweet, slick lubricant that allows her thighs to slip and slide over your own with ease.  She whimpers when your hands attach themselves to her leaky teats, attracted to the mounds as if by magnetism, and you squeeze down on them, pinching off the flow only to release the pressure, making her release her lactic load in huge, pulsing sprays.  She cries out, \"<i>Milk me!  Milk me like a dirty, bova slut!</i>\"  Her back lifts to press those squirting nubs more firmly between your fingers as another orgasm, smaller than the first, wracks her tender, tiny body.");
         outputText("\n\nYour thrusts transform from powerful lunges into a frenzied jackhammering so powerful that the impact ripples along her considerable thighs and ass.  Even her squirting tits shake and jostle with the pussy-plowing impacts as you mount the goblin like a rutting beast, battering your " + cockHead(player, x) + " ");
-        if (player.cockArea(x) > 24) outputText("up against her slightly-yielding cervix");
+        if (player.cocks.cockArea(x) > 24) outputText("up against her slightly-yielding cervix");
         else outputText("in as close to the cervix as you possibly can");
         outputText(", grunting and growling as you lose yourself in the feel of her soaked, velvet tunnel.  Your focus collapses entirely down to the feel of that slick tunnel around you and how far you can push into it, how strongly you can make it climax and squeeze around you.");
         outputText("\n\nLooking up at you in between reason-deadening orgasms, Lynnette purses her considerably puffy, cock-sucking lips to lick them.  She reaches up with both arms to grab you firmly about the neck, surprising you with her strength as she pulls you down, guiding your mouth to her moistened puckers for an eager kiss.  Her lips slip and slide across yours as you nuzzle mouth to mouth, your hips still working, and you trade saliva, sparring your tongues back and forth between your paired oral orifices.  One of her hands grabs your [hair] in a tight grip, breaking the kiss long enough for her to growl, \"<i>Cum.  Now.</i>\"");
 
         outputText("\n\nYour body has been ready to go off for some time now, and the words act like an irresistible trigger for your climax, causing you to lurch your " + cockDescript(game.player, x) + " ");
-        if (player.cockArea(x) <= 90) outputText("completely inside once more");
+        if (player.cocks.cockArea(x) <= 90) outputText("completely inside once more");
         else outputText("as deeply inside as you can");
         outputText(" and hold it there.");
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your other member");
-            if (player.cockTotal() > 2) outputText("s are");
+            if (player.cocks.length > 2) outputText("s are");
             else outputText(" is");
             outputText(" spasming ");
-            if (player.longestCockLength() <= 12) outputText("on the greedy green slut's belly");
+            if (player.cocks.longestCockLength() <= 12) outputText("on the greedy green slut's belly");
             else outputText("in the milk-stained valley between her tits, absolutely buried in squishy-soft breast");
             outputText(", jizzing in wild spurts.  The cum mixes with all the goblin-cream into a sticky-slick morass that paints Lynnette white.");
         }

@@ -156,7 +156,7 @@ export class MilkWaifu extends NPCAwareContent {
         if (flags[kFLAGS.MILK_SIZE] > 0) addButton(1, "Milk Time!", nyanCatMilkTime);
         if (flags[kFLAGS.MILK_SIZE] < 2) addButton(2, "Milk Bath", milkBathTime);
         if (flags[kFLAGS.MILK_SIZE] < 2 && player.keyItems.has("Super Reducto") >= 0) addButton(3, "Reducto", superReductoUsage);
-        if (flags[kFLAGS.MILK_SIZE] > 0 && player.lust >= 33 && player.hasCock()) addButton(4, "Titfuck", titFuckDatMilkSlut);
+        if (flags[kFLAGS.MILK_SIZE] > 0 && player.lust >= 33 && player.cocks.length > 0) addButton(4, "Titfuck", titFuckDatMilkSlut);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0 && flags[kFLAGS.MILK_SIZE] > 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(5, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1 && flags[kFLAGS.MILK_SIZE] > 0) addButton(5, "Go Camp", backToCamp);
@@ -206,7 +206,7 @@ export class MilkWaifu extends NPCAwareContent {
         else if (flags[kFLAGS.MILK_SIZE] == 1) outputText("\n\nThough you've reduced them <i>considerably</i>, " + flags[kFLAGS.MILK_NAME] + "'s most eye-catching feature is still her tremendous bosom.  Those huge tits of hers would look more normal on a cowgirl than a human girl, and a rather petite one at that.  Her areola are palm-sized and tipped with a pair of prominent nipples, always eager to release their motherly fluids.  She can easily fill a tub with those things, and she alone could provide enough to feed a small village, producing more than the all the cows of Ingnam combined every day.");
         else {
             outputText("\n\nThanks to your intervention, " + flags[kFLAGS.MILK_NAME] + "'s breasts aren't so cripplingly large.  Reduced to a DD-cup, you've even managed to scrape together some clothes that actually fit her.  In her current state, you might even call her bust perky, her milk-laden breasts both firm and yet so delightfully soft; you can easily sink your fingers into them, or bury your face");
-            if (player.hasCock()) outputText(" or cock");
+            if (player.cocks.length > 0) outputText(" or cock");
             outputText(" between her pillowy bosoms.  Despite the reduction in size, " + flags[kFLAGS.MILK_NAME] + " is happy to tell you that she's still got plenty of milk inside her, though perhaps not quite as much as before: she can't quite fill the pool all by herself, but now even short milkings leave her blissfully empty for hours afterwards.  She's not an entire farm unto herself now and she seems fairly pleased by this, all things considered.");
         }
 
@@ -422,7 +422,7 @@ export class MilkWaifu extends NPCAwareContent {
         outputText(".  Before you can get too far, though, " + flags[kFLAGS.MILK_NAME] + " turns on a heel, her huge rack pushing you back through the milky pool and then against the opposite rim.  You're dazed for only a brief second before her breasts press firmly into your back, so hard that a new streak of milk pours from her teats, wetting your back much as you did hers.  You relax against the rim as she cups up handfuls of milk, rubbing it into your own hair and shoulders, deft fingers massaging every muscle in your back with the skill of the greatest masseuses, and you can feel the tension bleeding from your muscles.  You yawn powerfully, resting your chin on your arms and letting the milky girl massage you, coating your " + skinFurScales(player) + " in her rich, delicious milk.");
 
         // If PC has a dick:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nOne of the milk girl's hands brushes against your thigh, slipping around your [leg]; slender fingers wrap around your [cock], milky lubricant making her soft strokes all the more pleasurable.  You groan in lusty delight as her fingers slide up and down your quickly-hardening length");
             if (player.balls > 0) outputText(", her other hand cupping your [balls], rolling the " + num2Text(player.balls) + " orbs in her palm with delightful dexterity");
             outputText(".  Leaning over the two titanic teats between you, she traces a line of kisses down your back, licking up stray drops of milk between affectionate caresses.");
@@ -439,7 +439,7 @@ export class MilkWaifu extends NPCAwareContent {
         // [Fuck Her](PC must have gender; if cooch, also C+ cups) [Don't]
         menu();
         addButton(4, "Don't", dontFuckTheMilkWaifu);
-        if (player.hasCock()) addButton(0, "Fuck Her", fuckTheMilkWaifu);
+        if (player.cocks.length > 0) addButton(0, "Fuck Her", fuckTheMilkWaifu);
         if (player.hasVagina() && player.biggestTitSize() >= 3) addButton(1, "LesboFuck", beARugMunchingMilkDyke);
 
     }
@@ -461,8 +461,8 @@ export class MilkWaifu extends NPCAwareContent {
         outputText("You turn around and pull the milk-slut against you, her massive teats pressing hard against your [chest] until they spurt.  You stroke her cheeks, bringing her lips up to yours.  Her hand finds your [cock] again, stroking you with mounting speed as your tongue finds its way into her mouth, your hands wandering down to grope her sizable ass and flared, breeder's hips.  Your lover sighs heavily, breath filled with lust as you push her up against the rim of the tub, her legs spreading wide for easy access to her milk-lubed cunt.  She locks her arms around your shoulders, moaning happily as you press into her, your [cock] slipping easily into her sodden box.");
 
         outputText("\n\nSubmerged beneath a sea of creamy milk, it's so very, very easy to slide into " + flags[kFLAGS.MILK_NAME] + ", ");
-        if (player.cockArea(0) < 20) outputText("pushing your few inches into her until your hips join, her nice and loose cunt easily taking your length");
-        else if (player.cockArea(0) < 50) outputText("hilting her in one long stroke");
+        if (player.cocks.cockArea(0) < 20) outputText("pushing your few inches into her until your hips join, her nice and loose cunt easily taking your length");
+        else if (player.cocks.cockArea(0) < 50) outputText("hilting her in one long stroke");
         else outputText("your cock gaining as much entrance as your massive member can, the excess dickmeat embraced in cream between you");
         outputText(".  With your prick buried in her, " + flags[kFLAGS.MILK_NAME] + " hooks her legs around your [hips] and starts to gently rock her hips, letting you take the initiative.  Smiling at the meek girl, you sink your fingers into milk-yielding titflesh and start to move your hips, thrusting into her with measured ease, letting milk flood into her channel and coat your dick to lubricate each and every stroke.");
 
@@ -515,7 +515,7 @@ export class MilkWaifu extends NPCAwareContent {
             outputText("[cock] and idly stroke the turgid mass");
         }
         outputText(", inadvertently drawing a lewd moan from yourself.  The fat nipple stuffed in your mouth does an adequate job of muffling your pleasurable vocalizations");
-        if (player.hasCock()) outputText(", but it does little to hide the swelling of [eachCock] - you have the milk for that");
+        if (player.cocks.length > 0) outputText(", but it does little to hide the swelling of [eachCock] - you have the milk for that");
         outputText(".");
 
         outputText("\n\nAn excited moan worms out of " + flags[kFLAGS.MILK_NAME] + "'s puffy lips, a testament to the raw sensitivity of her milk-bloated jugs.  As your tongue swirls over the leaky nozzle's pebbly skin, she releases another breathy pant of delight.  The vocal tremors seem to coo all the way down to your loins, joining with your fingers' caresses to stir you to aching, trembling arousal.  ");
@@ -523,7 +523,7 @@ export class MilkWaifu extends NPCAwareContent {
         // (DA HERMS)
         if (player.gender == 3) {
             outputText("Your [cock] throbs painfully in your hand, so hot and hard that you're sure you must have begun to leak precum, but any fluid is swiftly washed away by the ever-present milk.  ");
-            if (player.cockTotal() > 1) outputText("You make sure to fondle each of your members equally, caressing, squeezing, and stroking to the tempo of your swelling passion.  ");
+            if (player.cocks.length > 1) outputText("You make sure to fondle each of your members equally, caressing, squeezing, and stroking to the tempo of your swelling passion.  ");
             outputText("With your off-hand, you rub your cream-lubricated fingers through your sodden gash, the flesh parting easily to allow a few of your questing fingers inside.  Delicious bliss unfolds from your [clit] as it pushes free of its hood, fully engorging, faintly throbbing from aching need.  You brush the button a few times before going back to fingering your box, yet you make sure to strum your thumb across your clit every few moments to keep yourself as close to peak as possible.  Truly, being a hermaphrodite is bliss.");
         }
         // (DA SCHLICKS)
@@ -531,14 +531,14 @@ export class MilkWaifu extends NPCAwareContent {
         // (DA DUDES)
         else {
             outputText("[OneCock] throbs painfully in your hand, so hot and hard that you're sure you must have begun to leak precum, but any fluid is swiftly washed away by the ever-present milk.");
-            if (player.cockTotal() > 1) outputText("  You make sure to fondle each of your members equally, caressing, squeezing, and stroking to the tempo of your swelling passion.");
+            if (player.cocks.length > 1) outputText("  You make sure to fondle each of your members equally, caressing, squeezing, and stroking to the tempo of your swelling passion.");
             if (player.balls > 0) outputText("  With your offhand, you cradle your [sack], hefting your [balls] as you feel your desire churning to new levels.");
         }
         // (TOGETHER)
         outputText("\n\nA spray of warmth impacts off your shoulders, and you turn into it, delighted to see " + flags[kFLAGS.MILK_NAME] + "'s other teat unloading yet another potent blast of silky goodness.  With a little regret, you pull off, earning a hair-drenching facial, and switch to the fountaining tit-tip in a heartbeat.  You work your throat to keep up with the flow, cheeks bulging from the pressure.  Ultimately, between your limited ingurgitating ability and the spiraling waves of pleasure rolling out from your groin, you fail to get all the milk down, and it sprays from the corners of your mouth while runnels of fluid leak down to your chin.");
 
         outputText("\n\nThe tub is dangerously full by this point, milk lapping at the edges like the tide coming in, and as you climax, you briefly wonder if perhaps, it has.  White-hot heat rockets through your middle, lazily climbing your spine to make an assault on your brain.  Your jaw locks, inadvertently biting down on the chocolate-toned nipple to momentarily staunch its flow.  Pistoning seemingly of their own volition, your [hips] sway back and forth, stirring up creamy waves that splash about the room, soaking the floor and your gear with milk.");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  [EachCock] release its own gooey load, sputtering and spurting to add to the pearly deluge.");
             if (player.cumQ() >= 1500) outputText("  With every torrent of seed you release, you can see it lift partway out of the tub, propelled by your incredible virility towards the nearest female specimen.");
             if (player.cumQ() >= 4000) outputText("  Soon, the tub's fluid contents break out of their confines to stain your companion's dusky flesh white, an alabaster glaze that would entice you to further feats of debauchery were it not for the pleased contentment your maleness now radiates.");
@@ -601,11 +601,11 @@ export class MilkWaifu extends NPCAwareContent {
 
             outputText("\n\n\"<i>N-no more.  Can't...  take it...  please.  Ahhhhh,</i>\" " + flags[kFLAGS.MILK_NAME] + " cries, squirming in your embrace, your hands firmly locked on her tits, milking her for every drop.  She's in for a mighty boobgasm in mere moments: you could soothe her through it with a gentle suckle or finish her off normally.");
             // If PC has a cock that fits:
-            if (player.cockThatFits(50) >= 0 && player.hasCock()) outputText("  Then again, maybe you could hike her panties down and give her a good fucking to send her over the edge.  In her state, she certainly won't mind!");
+            if (player.cocks.cockThatFits(50) >= 0 && player.cocks.length > 0) outputText("  Then again, maybe you could hike her panties down and give her a good fucking to send her over the edge.  In her state, she certainly won't mind!");
             menu();
             addButton(0, "Normal", finishMilkNormall);
             addButton(1, "Suckle", suckleDatMilk);
-            if (player.cockThatFits(50) >= 0 && player.hasCock()) addButton(2, "Fuck", fuckDatMilkSlat);
+            if (player.cocks.cockThatFits(50) >= 0 && player.cocks.length > 0) addButton(2, "Fuck", fuckDatMilkSlat);
         }
     }
 
@@ -639,7 +639,7 @@ export class MilkWaifu extends NPCAwareContent {
     // [Fuck Her] (Needs a dick what fits)
     private fuckDatMilkSlat(): void {
         clearOutput();
-        const x: number = player.cockThatFits(50);
+        const x: number = player.cocks.cockThatFits(50);
         outputText("Sitting behind the milky girl, chest pressed to her back tight enough to feel her every breath, you can't help but feel " + flags[kFLAGS.MILK_NAME] + "'s full, round ass brushing against your " + cockDescript(game.player, x) + ".  Responding to her touch, your prick begins to stiffen, filling out through your [armor] and into the valley of " + flags[kFLAGS.MILK_NAME] + "'s ass.  She gasps ever so slightly when she feels your prick pushing against her silky undergarments, but you can feel her heart race, her flesh heating as she starts to move her ass more deliberately, rubbing you from stem to head.");
 
         outputText("\n\nOne of your hands drifts down from " + flags[kFLAGS.MILK_NAME] + "'s teats, fingers tracing along her supple skin and ample curves to the hem of her panties.  You pull them down with one smooth motion, baring the full mounds of her dusky ass cheeks.  She pushes back immediately, humping up and down your rod as you work to free yourself from your [armor].  Finally, your " + cockDescript(game.player, x) + " pops free from its binds, only to be instantly buried in " + flags[kFLAGS.MILK_NAME] + "'s rear cleavage; she gives a happy, girlish giggle when your throbbing rod pushes through her valley, practically bouncing on your cock.  You wrap your arms around her waist, one hand working her still-needy teats as the other dives between her legs, easily slipping a few fingers into her sodden gash.  " + flags[kFLAGS.MILK_NAME] + " moans lustily as your digits enter her, biting her lower lip when your fingertips caress her inner walls and spasming muscles, soon soaked in her feminine fluids.  Your thumb swirls around the bud of her clit, drawing ragged gasps of pleasure from her lips until you silence her with a kiss, driving your tongue into her mouth as your fingers assault her cunt, fingering her until she's nice, wet, and ready.");

@@ -136,7 +136,7 @@ export class Izma extends Monster {
         this.imageName = "izma";
         this.long = "Izma the tigershark stands a bit over 6' tall, with orange skin bearing horizontal stripes covering most of her body.  Her silver-white hair cascades past her shoulders, draping over an impressive pair of DD-cup breasts barely restrained by a skimpy black bikini top.  Under the knee-length grass skirt below them rustles her beastly fifteen-inch penis and four-balled sack; you catch occasional glimpses of them as she moves.  She's tucked her usual reading glasses into her locker at the moment.";
         // this.plural = false;
-        this.createCock(15, 2.2);
+        this.cocks.createCock(15, 2.2);
         this.balls = 4;
         this.ballSize = 3;
         this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);

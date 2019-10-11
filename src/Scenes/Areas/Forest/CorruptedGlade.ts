@@ -43,7 +43,7 @@ export class CorruptedGlade {
     private flowerFun(): void {
         clearOutput();
         spriteSelect(92);
-        if (player.hasCock()) { // Sex scenes for those with cawks
+        if (player.cocks.length > 0) { // Sex scenes for those with cawks
             if (player.cocks.length == 1) { // Single Cawk
                 outputText("You grin to yourself as you decide to see just how close to a pussy these perverted little flowers are.  The thick stem bends with ease as you grasp it and bend it towards your groin, your other hand fumbling to open your " + player.armorName + ".  In seconds you free yourself and gingerly bring the folds closer, the musky scent that fills the air rapidly bringing you to a full, throbbing hardness.  The first touch of petals to your skin slicks you with the flower's silky secretions, allowing you to easily slip between the petals.  Though the flower looks fairly deep, you quickly feel yourself bottom out inside the petal's slippery grip.  Shrugging, you decide to make the best of it and begin thrusting into the plant, enjoying the unusual sensations along the front-most parts of your " + cockDescript(game.player, 0) + ".  As you pound away, you begin to notice a change in the rear of the flower.\n\n");
 
@@ -202,13 +202,13 @@ export class CorruptedGlade {
             }
             // Rarely change one prick to a vine-like tentacle cock.
             if (rand(3) == 0 && player.cocks.length > 0 && player.hairColor == "green") {
-                if (player.tentacleCocks() < player.cockTotal()) {
+                if (player.cocks.tentacleCocks() < player.cocks.length) {
                     if (player.cocks.length == 1) { // Single cawks
                         outputText("Your feel your " + cockDescript(game.player, 0) + " bending and flexing of its own volition... looking down, you see it morph into a green vine-like shape.  <b>You now have a tentacle cock!</b>  ");
                         // Set primary cock flag
                         player.cocks[0].cockType = CockTypesEnum.TENTACLE;
                     }
-                    if (player.cockTotal() > 1) { // multi
+                    if (player.cocks.length > 1) { // multi
                         outputText("Your feel your " + multiCockDescriptLight(game.player) + " bending and flexing of their own volition... looking down, you watch them morph into flexible vine-like shapes.  <b>You now have green tentacle cocks!</b>  ");
                         for (const x = 0; x < player.cocks.length; x++) player.cocks[x].cockType = CockTypesEnum.TENTACLE;
                     }

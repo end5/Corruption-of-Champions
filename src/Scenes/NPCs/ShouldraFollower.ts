@@ -105,7 +105,7 @@ export class ShouldraFollower extends NPCAwareContent {
         clearOutput();
         spriteSelect(67);
         // Male:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("Bringing you up near her face, she examines your body and begins pushing her scaled-up forefinger against your prick, pressing it back onto your stomach.  The sensation of the giant fairy's caress causes you to gasp, and you try to move the finger around in a vain attempt to relieve some of the pressure. Shouldra coos at your pathetic efforts and begins to softly rub up and down your dick with the pad of her finger.  The smoothness of her skin allows the ridges of her fingerprint to glide over with little friction, sending sharp spikes of pleasure each time one rubs over the crown of your cock.  Your hips begin to feebly shake beneath her digit, pre leaking out of you and covering the tip of her finger.  Waves of pleasure wash over you, and you begin to relax against her hand.  Her soft palm provides a wonderfully warm place to rest as her finger massages your cock, the sticky feeling of your pre-cum intensifying the sensations tenfold.  Your entire body begins to move with her finger, your back gliding around her palm from your body's sweat.  It becomes difficult to think, your feeble attempts at escape turning into feeble attempts at holding onto her fingertip.  As the ridges continue to goad you towards orgasm, you quicken your pace.  The specter, amused, merely holds her finger in place, allowing you to slide up and down, desperately rubbing against her in an effort to nut.  Before the moment of release can come, she peels you off with her thumb, pushing you back into the softness of her hand and leaving you shaking from the denial.");
             outputText("\n\n\"<i>Heh.  Look what you did!  Now my finger's all dirty...</i>\"");
             outputText("\n\nShouldra gives her finger a gentle lick, getting a good taste of the mess.  After smacking her tongue a bit, a small blush runs across her face, obviously turned on by the perverted taste.  She begins to suck on her finger like a lollipop, letting out wet, seductive sounds with every motion.  Her tongue dances around the tip, lapping up every bit of the sticky pre-cum you left behind.  The sight becomes too much to bear and you begin masturbating in an effort to relieve your frustration yourself.  The possessed fae peeks down at you with a half-lidded eye and takes the finger out with a wet *pop*, bringing you closer to her face.");
@@ -147,18 +147,18 @@ export class ShouldraFollower extends NPCAwareContent {
         outputText("\n\nSoon, your body is engulfed up to your lower [legs], mired in pussy and lubricant.  It's like taking a bath in slime, only the bathtub is giving you a whole-body embrace, slipping, sliding, and taking pleasure from every motion you make.");
         if (player.gender > 0) {
             outputText("  Inspired by this, your own body has long since responded");
-            if (player.hasCock()) outputText(", becoming firmly erect.  You happily piston your hips to grind your " + multiCockDescriptLight(game.player) + " along the pink-glossed walls, oozing your fluids in delight.");
+            if (player.cocks.length > 0) outputText(", becoming firmly erect.  You happily piston your hips to grind your " + multiCockDescriptLight(game.player) + " along the pink-glossed walls, oozing your fluids in delight.");
             else outputText(", growing wet, though in this slick fluid, your contribution is a mere drop in the ocean.");
         }
         outputText("  The warm fleshy dream is abruptly ended as Shouldra yanks you out by your [feet].  \"<i>I'm gonna put you the whole way in.  Do me a solid and get me off a few times, will ya?</i>\"");
 
         outputText("\n\nDripping with her lusty leavings, you vigorously nod and crane your head back up to the randy passage.  Your plus-sized poltergeist wastes no time in returning you to her box's moist embrace, stuffing you most of the way in with a simple motion.  A finger as big as your [legs] pushes your [feet] the rest of the way inside, stuffing you so high up you bump your head on the narrow entrance of her womb.  It's dark inside her, but you quickly get to work, sliding and squirming around, humping your ");
-        if (player.hasCock()) outputText(multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
         else if (player.hasVagina()) outputText(vaginaDescript(player));
         else outputText("[butt]");
         outputText(" against the slick walls.  You push your way towards the pinkish slit in the distance begin to slide your [legs] over the inner edges of her lips, pressing your arms up above you for stability.");
         outputText("\n\nYou must have hit her g-spot, because as soon as you do, a rush of lady-spunk envelops you.  The walls squeeze around you, this time rippling in waves up and down your body, squeezing you affectionately as your temporary shelter vents thick flows of girl-goo all around you.  You hold onto the pulsing walls for dear life, moaning into the steamy cunt while it gives you a full-body massage.");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  [EachCock] is quickly brought to orgasm by the exotic situation, and you fire off your own load into the deluge of sex-juice.");
             if (player.cumQ() >= 1000) outputText("  Somehow, you pour out almost as much spunk as Vala's orgasm, turning the inside of her honeypot into an off-white mess.");
         }
@@ -199,7 +199,7 @@ export class ShouldraFollower extends NPCAwareContent {
         outputText("\n\nShouldra stops massaging the fairy's cunt, simply standing there as the poor girl's juices flow around your feet.  You're too shocked to try to regain control, awestruck by the arousing and somewhat frightening change of the fairy before you.  Before you can snap out of it, Vala reaches down and grabs you in an enormous hand, lifting you up to her face.  \"<i>Somebody... somebody has to take care of Bitch's pussy!  Bitch needs to get off now!</i>\"");
 
         outputText("\n\nA squeal of delight echoes in your head as Vala begins lowering you down to her dripping cunt.  The heat washes over your body, tickling the surface of your skin in gentle waves.  Your feet begin sinking into the cushy, moist flesh of her cunny, sending out another stream of juice in response. A deep moan resounds throughout the cave as your legs become engulfed in her pussy.  You're able to slip in fairly easily, but once inside, her walls begin a gentle, tantalizing squeeze that seems to pulse with her every heartbeat.");
-        if (player.hasCock()) outputText("  Your cock slips past the folds, pressed up against your stomach as the underside is massaged with the gentle tightness within.");
+        if (player.cocks.length > 0) outputText("  Your cock slips past the folds, pressed up against your stomach as the underside is massaged with the gentle tightness within.");
         outputText("  Once you're up to your chest, Vala stops, instead grasping your shoulders between her thumb and forefingers as she begins to gently slide you in and out of her.");
 
         outputText("\n\nEach motion sends a chill up your spine as the fairy uses you as a dildo.  Every time you're pushed back in, a torrent of fluids gushes out, washing you in her scent.  The smell makes you dizzy, and soon you find yourself moaning in time with her, with the ghost girl following soon after.  In your daze you notice your hands reaching out to grasp at the giant fairy's oversized clit. With Shouldra busy soaking in the sensations, you realize this must be your own doing, and the revelation ends what little resistance you were putting up before.  The sounds of your lower half being thrust in and out become the only thing you can focus on, each plunge bringing you closer and closer to your limit; you feel her walls around you become tighter and tighter as the fairy begins to near hers as well.  Soon, her pussy begins to spasm, the sharp motions sending you flying over the edge, releasing your seed into her oversized cunt.  The fairy gives a loud moan of satisfaction, and the geyser of resulting fluids sends you flying out of your soft prison, and into the now ankle pool below.  With the last bits of your strength, you manage to crawl out of the puddle, and bask in the satisfying feeling of release ebbing throughout your body.  As you lay on your side, you see feel Shouldra oozing out of your mouth, regaining her form beside you.");
@@ -216,13 +216,13 @@ export class ShouldraFollower extends NPCAwareContent {
     public sandWitchGetsGhostly(): void {
         spriteSelect(67);
         clearOutput();
-        if (player.hasCock() && (!player.hasVagina() || rand(2) == 0)) {
+        if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
             outputText("As you admire your latest victory, a familiar specter pokes her head out from your torso.  The sand witch shuffles backward on the ground, her face an amalgamation of dread, confusion, and curiosity.  \"<i>What say we have a little fun with this one, eh, Champ?</i>\" Shouldra suggests, licking her lips in anticipation.  You wave an arm outwards, giving the antsy apparition the go ahead to pursue her prey.  The desert denizen unearths a second breath, climbing to her feet in an attempt to escape.  She doesn't make it too far before the ghost girl dives into her back, hurling the witch to the dunes.");
             outputText("\n\n\"<i>Get out of my head!</i>\" the sorceress screams, thrashing around in the sand clinging to her cranium.  She eventually calms down and faces you, her brown eyes now the customary glowing shade of yellow you've come to welcome.  \"<i>Now all we need is a skeleton, a wolf man, and some bats.  Then we'll have ourselves a holiday!</i>\" Shouldra jokes while climbing to her new feet, her voice replacing that of her quarry.  The ghost girl begins exploring the sand witch's body; it doesn't take long for her to fixate on the witch's quartet of lactating lovelies.  Reassured that the ghost girl is in control, you strip free of your [armor] and approach the bewitched witch.");
             outputText("\n\n\"<i>I haven't done anything yet and these factories are already working at over-capacity,</i>\" the spirit points out.  She takes a moment to jab a finger into one of the milky teats and samples her host's product.  Her reaction is like that of a gourmet chef enjoying a fine delicacy.  \"<i>Mmmm... invigorating.  But I think we can do something about the modest proportions of the source,</i>\" Shouldra teases, circling the witches' hands around the churning cantaloupes.  The ghost girl wastes no time in getting right to her own variety of spell casting, doing her best to keep from wavering as she continues to grope the sorceress' silos.");
             outputText("\n\nYou smile and shrug as you witness all four tits quickly climb up the brassiere measuring scale, easily gaining an extra couple of cup sizes.  Their perky stature defies all logic, as well; the size-obsessed ghost has never been one for realistic interpretations.  Tangentially, the length of the ghost girl's spell has you make a mental note.  It went on quite a bit long to be just for some ample augmentation.  \"<i>Now the question is what to do with these slobbering puppies,</i>\" Shouldra teases, reeling you in with a seducible gaze.  The two of you shuffle through the desert sands towards one another, the haunted witch throwing her arms over your shoulders.  Her churning funbags press tightly against your [fullChest], soaking you in her milk.");
             outputText("\n\nLips locked, the witch pushes you back into the sands, her modest frame jiggling around atop you.  The possessed witch's glare turns mischievous as you watch her breasts spread apart of their own accord.  The fleshy mountains then quickly scoop up your [cock], ");
-            if (player.longestCockLength() < 18) outputText("completely smothering all around it in breastflesh.  The immense pressure sends tense shivers up your spine; your rod feels wonderful.  Things only escalate as the enchantress begins slowly thrusting back and forth, her massive mammaries working every inch of your shaft.  The heavenly stroking works so well, in fact, that you barely notice the head of your cock poke out from your partner's cleavage.  Your length and girth have increased substantially, enough for full-on quad-boob action.");
+            if (player.cocks.longestCockLength() < 18) outputText("completely smothering all around it in breastflesh.  The immense pressure sends tense shivers up your spine; your rod feels wonderful.  Things only escalate as the enchantress begins slowly thrusting back and forth, her massive mammaries working every inch of your shaft.  The heavenly stroking works so well, in fact, that you barely notice the head of your cock poke out from your partner's cleavage.  Your length and girth have increased substantially, enough for full-on quad-boob action.");
             else outputText("smothering all around it in breastflesh.  The immense pressure sends tense shivers up your spine; your rod feels wonderful.  Things only escalate as the enchantress begins slowly thrusting back and forth, her massive mammaries working your shaft.  The heavenly stroking works so well, in fact, that you barely notice your cock broadening within the embrace.  Your girth has increased substantially, still enough for full-on quad-boob action.");
             outputText("\n\n\"<i>Looks like the modified milk formula is doing the trick,</i>\" Shouldra says in between pants.  \"<i>Fine fun bags like these deserve a fine dick.  Now help me out here.  I only have one set of hands.</i>\" The sand witch mashes into her lower set of tits, motioning for you to grab the reigns of the upper pair hovering in front of your face.  Though you're certain she could easily handle the task on her own somehow, the thought of manhandling those muffins is too majestic to pass up.  Little time is wasted in your fervent grappling, your firm hold squeezing a moan out from the poltergeist.");
             outputText("\n\nFour hands, four boobs, more than enough to pleasure a man.  Not that that stops Shouldra from ramping things up even further, submerging your [cockHead] deep within the witch's gullet.  Your fingers dig into supple sandbags as your whole body tenses up, the salacious working of your giant prick dragging you closer to your climax.  Sensing your event horizon approaching, the ghost girl redoubles her efforts: her tongue explores every inch of your crow's nest while her fearsome foursome speed up their thrusting all along your mast, drenching your body in ever-increasing torrents of milky mayhem.");
@@ -267,11 +267,11 @@ export class ShouldraFollower extends NPCAwareContent {
     // Genderless Masturbation
     private shouldraFappinTimes(): void {
         spriteSelect(67);
-        if (player.hasCock() && player.effects.findByType(StatusAffects.Infested) >= 0) {
+        if (player.cocks.length > 0 && player.effects.findByType(StatusAffects.Infested) >= 0) {
             shouldraAndWormsYoureGonnaHaveABadTime();
         }
         else if (player.gender == 0) genderlessShouldraMasturbation();
-        else if (player.hasCock() && (!player.hasVagina() || rand(2) == 0)) maleMasturbationProper();
+        else if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) maleMasturbationProper();
         else {
             if (rand(2) == 0) girlyMasturbationWithGhosts();
             else shouldraTongueLicksPCs();
@@ -460,7 +460,7 @@ export class ShouldraFollower extends NPCAwareContent {
         outputText("\n\nHer smile only widens as one of flowers engorge in the magic, quickly sprouting into a terrifically monstrous abomination of nature.  Thick tendrils sprout from its base, wriggling excitedly and dripping with... something.  \"<i>Oh, good boy!</i>\" Shouldra coos, reaching out to the gargantuan plant in the strangest display of filial affection.  The tentacled beast eagerly sweeps you up, dangling you several feet in the air with one large, excited tentacle wrapped around your chest and one [leg].");
         outputText("\n\nLike a fast-motion sunflower reaching toward sunlight, the gigantic blossom tilts towards you and your rigid [cock].  You notice the more-than-passing resemblance in the folds to a certain aspect of the female anatomy enshrouded by the soft folds of an actual rose.  Where Shouldra comes up with these spells, you could only guess.");
         // [if cockSize < 200
-        if (player.cockArea(0) < 200) outputText("  Shouldra laughs happily as she considers the size difference; your dick simply does not pack enough of a punch for the assuredly hungry flower.  Always eager to help, Shouldra, not the least bit discomforted by her near-helpless situation, happily sings out the necessary enchantment.  You can't help but think she's having a bit too much fun with this for her own good.");
+        if (player.cocks.cockArea(0) < 200) outputText("  Shouldra laughs happily as she considers the size difference; your dick simply does not pack enough of a punch for the assuredly hungry flower.  Always eager to help, Shouldra, not the least bit discomforted by her near-helpless situation, happily sings out the necessary enchantment.  You can't help but think she's having a bit too much fun with this for her own good.");
         outputText("\n\nShouldra's high-pitched and nearly crazed laughter peals from your mouth as the tentacles lower you towards the vegetative vagina.  Shouldra's ecstatic reaction to this whole overgrown situation rubs off on you slightly; each time you blink, the glistening pedals just look more and more inviting.  Curse Shouldra and her ability to impart lust, but damn it all, you want to fuck the chlorophyll out of that plant!");
         outputText("\n\nThe ghost girl relinquishes part of her hold on you, most likely knowing full well your new fascination with her construct.  Sure enough, as soon as you take up the reins, your efforts to reach the rose doubles.  Luckily for you, the tentacles, slimy as a swimming goo girl's tentacles, are no match for your lust-driven struggle.  You slip out of their grasp, free-falling for several feet to land, with a big and airy poof, right into the cushiony bloom.  The pleasant and heady aroma of the enlarged rose nearly drives you wild.  You just can't get enough.");
         outputText("\n\nYou crawl on your belly across to the flower's entrance, shuddering with delight as your [cock] slides, catches, and flops against each and every pedal on the way.  With an effort spurred by your ever-increasing desire to bone a thing, you lunge forward, a hand reaching forward... to smack into the edge of the flowery fuckbox.  You freeze momentarily as your body registers the sheer lubrication of the lips; whereas the pedals glistened with dew, the unnatural opening virtually leaks in an obviously spiritually-imparted sense of anticipation.");
@@ -475,7 +475,7 @@ export class ShouldraFollower extends NPCAwareContent {
         outputText("\n\nAs the thought crosses your mind, a familiar-looking ghost sits up in your torso, clamoring out and leaning over you with a huge smile on her face.  \"<i>Have fun?</i>\" she asks innocently.  \"<i>I thought you might like that little trick.  Picked it up a few decades back from a dryad; nice bunch, as long as they warm up to you.</i>\"");
         outputText("\n\nYou don't bother responding.  She reaches to you, and you take her hand, letting her guide you to your feet.");
         // if cocksize <200:
-        if (player.cockArea(0) < 200) outputText("  You stagger a bit at the unaccustomed heft of your junk altering your center of gravity, but you know that will wear off soon enough.");
+        if (player.cocks.cockArea(0) < 200) outputText("  You stagger a bit at the unaccustomed heft of your junk altering your center of gravity, but you know that will wear off soon enough.");
         outputText("  She reaches into her tunic and tosses you a full bottle of ectoplasm, giving you a wink before incorporealizing once more and floating into you.  All's well that ends well.");
         player.orgasm();
         dynStats("sen", -2);
@@ -803,10 +803,10 @@ export class ShouldraFollower extends NPCAwareContent {
                 outputText("\n\nYou grin at her rather candid explanation and take a seat.  Shouldra sits down beside you, eager to continue explaining herself, \"<i>Knocking my rocks off was always high on my list of shit to do.  But I also love just messing with people.  You may know it as 'haunting.'  And you know me; why would I bother with small time stuff like blowing a curtain or pretending to be a dead relative?</i>\"  This doesn't sound quite as innocent as she's making it out to be.  The sight of the crying, soaked goblin alone in the woods certainly didn't paint a pretty picture.");
                 outputText("\n\nDetecting your mounting concern, Shouldra decides to pipe up, \"<i>Now, come on.  I'm not 'Shouldra the Friendly Ghost.'  I'm the sweet little gal you met that tried to punch your teeth in so I could have my way with you.  Keep things in perspective here!</i>\"  Well, that makes for a clear enough point.  \"<i>Anyway, when I finally settled down - oh, ten or thirty years ago - I came to discover the local area's just littered with goblins.  You couldn't walk a mile without tripping over one!  Most of them are fairly simple creatures; they just want to fuck and breed and fuck and throw a bottle of something at you and fuck.  Sometimes you could find one with a little more ambition or sense.  Those were my favorites.</i>\"");
                 outputText("\n\nShouldra leans back as she reminisces, \"<i>But those ruins were crawling with the little beasts.  I'm sure you won't believe me, but I'm not ALWAYS horny.  Usually, but not always.  And when I wasn't horny, I still loved messing with all those delicate little flowers as they fought over what precious few dicks come out there.</i>\"  Precious few?  You're pretty sure you've been finding things with cocks without too much trouble, telling the ghost as much.  \"<i>Eh, not really the case back where you found me, where I was staying.  And, honestly, looking at my catches over the last, say, hundred years?  If I had to wager to guess... maybe less than ten percent had a fun stick for me to play with.");
-                if (player.hasCock()) outputText("</i>\"  Shouldra eyes your [cock] gingerly, acting as if she can stare right through your outfit at it.  \"<i>");
+                if (player.cocks.length > 0) outputText("</i>\"  Shouldra eyes your [cock] gingerly, acting as if she can stare right through your outfit at it.  \"<i>");
                 else outputText("  ");
                 outputText("The half-millenium or so of scarcity has really shaped my interests.  I'm at the point now where I just lose it whenever I get these ghostly mitts on a slab of meat.  And the big ones?  ");
-                if (player.biggestCockArea() >= 200) outputText("Ones like yours?  ");
+                if (player.cocks.biggestCockArea() >= 200) outputText("Ones like yours?  ");
                 outputText("Then I'm just in heaven.</i>\"  Hold on.  She can turn any dick into a towering monument.  What's so special about ones that come pre-packaged, you ask?  \"<i>I kinda break the one rule I had at that point, but when I find someone with a big boner, it just... feels so good to me.  There's just something about an all-natural magnum opus that just lights my fire.</i>\"");
                 outputText("\n\nYou can't help but snicker as Shouldra comes clean with her fetishes.  She smiles and shrugs, \"<i>I am how I am.  That's about the only worthwhile explanation I can come up with.</i>\"  The ghost girl waves her hand around a bit as she tries to divert the discussion, \"<i>Anyway, I'm way off topic.  What I'm getting at is that there were a lot of fucking goblins, and messing with them never got old.</i>\"  The contemplative phantom laughs to herself, no doubt remembering some of her more fond spooks.  You decide to interrupt her aimless gazing, interested in hearing some of her tales of \"horror.\"  You may come to regret it, but you've since learned to try and ignore that sense of foreboding whenever you bump shoulders with Shouldra.");
                 outputText("\n\n\"<i>Okay, this one time?  Ran into a couple of goblins.  Best of friends.  Had the whole 'strength in numbers' and 'share the wealth' thing going on.  Things couldn't have been better.  In fact, they got worse when one of them was 'persuaded' into ramming the other one night.  With her unusually large fist.  Into a rather unsuspecting rear entryway.</i>\"  The wraith laughs slyly, unsurprisingly content with her story.  \"<i>You should have heard the scream that bitch made.  It took everything in me to not just burst out laughing.  But here's the 'clench-er'...</i>\"  You imagine the ghost girl will one day regale someone far in the future on how she killed someone with awful puns.");
@@ -925,7 +925,7 @@ export class ShouldraFollower extends NPCAwareContent {
         const butt: () => void = shouldrasButtBigginator;
         const nipples: () => void = shouldraGivesYaSomeFukkinTeats;
         if (player.balls > 0) balls = groBallsBiggaGHOSTYSTYLE;
-        if (player.hasCock()) cock = shouldraCockBloating101;
+        if (player.cocks.length > 0) cock = shouldraCockBloating101;
         if (player.hasVagina()) clit = shouldraGrowsYoClit;
         choices("Balls", balls, "Breasts", breast, "Clit", clit, "Cock", cock, "Nipples", nipples, "Butt", butt, "", null, "", null, "", null, "Back", shouldraTalkMenu);
     }
@@ -985,7 +985,7 @@ export class ShouldraFollower extends NPCAwareContent {
         // same growth as Gro+, depending on cock number
         if (player.cocks.length == 1) {
             outputText("Several more inches push their way from your ");
-            if (!player.hasSheath()) outputText("crotch");
+            if (!player.cocks.hasSheath()) outputText("crotch");
             else outputText("sheath");
             outputText(" in short order.  Shouldra happily grasps your fuller dick, stroking it vigorously.  Knowing your inaction will strand you for the rest of the day, you're able to pry your haunted hands away from your crotch.", false);
             player.increaseCock(0, 4);
@@ -1066,7 +1066,7 @@ export class ShouldraFollower extends NPCAwareContent {
         if (player.biggestTitSize() >= 1) breasts = shouldraReductosYourTits;
         if (player.buttRating >= 2) butt = shrinkDatBootyForYoGhost;
         if (player.balls > 0 && player.ballSize > 1) balls = shouldraReductosYourBallsUpInsideYa;
-        if (player.hasCock() && player.longestCockLength() > 4) cock = shouldraMakesCocksDisappear;
+        if (player.cocks.length > 0 && player.cocks.longestCockLength() > 4) cock = shouldraMakesCocksDisappear;
         if (player.hasVagina() && player.clitLength > .25) clit = clittyVanishingActShouldra;
         choices("Balls", balls, "Breasts", breasts, "Clit", clit, "Cock", cock, "Nipples", nipples, "Butt", butt, "", null, "", null, "", null, "Back", shouldraTalkMenu);
     }
@@ -1133,11 +1133,11 @@ export class ShouldraFollower extends NPCAwareContent {
             outputText("\n\nYour dicks vibrate slightly as the magic begins to sink in.  You about jump out of your skin when they [if (cocks < 2) both][if (cocks >= 2) all] suddenly start smoking and flailing about.  Your fear is short lived, however, when they begin to wail and cry.");
             outputText("\n\n\"<i>I'm sorry, [Master]!  Please have mercy on me!</i>\" your [cock biggest] pleads.");
             outputText("\n\n\"<i>[Master], have mercy!  I'll make it up to you!  Please!</i>\" the [cock smallest] begs.");
-            if (player.cockTotal() > 2) outputText("\n\n\"<i>I'll fuck extra hard, [Master]!  Just give me a chaaaance!</i>\" another yells.");
-            if (player.cockTotal() > 3) outputText("\n\n\"<i>What did we do wrong?  At least tell us that much!</i>\" one of your cocks begs.");
-            if (player.cockTotal() > 4) outputText("\n\n\"<i>I'll never fucking forgive you for this!</i>\" another of your dicks shouts furiously.");
-            if (player.cockTotal() > 5) outputText("\n\n\"<i>Are we a nuisance?  Please, [Master], there must be another way!</i>\" yet another one of your many cocks pleads.");
-            if (player.cockTotal() > 6) outputText("\n\nThe remainder of your plentiful penises are a sad mixture of crying and begging.");
+            if (player.cocks.length > 2) outputText("\n\n\"<i>I'll fuck extra hard, [Master]!  Just give me a chaaaance!</i>\" another yells.");
+            if (player.cocks.length > 3) outputText("\n\n\"<i>What did we do wrong?  At least tell us that much!</i>\" one of your cocks begs.");
+            if (player.cocks.length > 4) outputText("\n\n\"<i>I'll never fucking forgive you for this!</i>\" another of your dicks shouts furiously.");
+            if (player.cocks.length > 5) outputText("\n\n\"<i>Are we a nuisance?  Please, [Master], there must be another way!</i>\" yet another one of your many cocks pleads.");
+            if (player.cocks.length > 6) outputText("\n\nThe remainder of your plentiful penises are a sad mixture of crying and begging.");
             outputText("\n\nThe cacophony of voices finally subside, your crotch finally settling down with each of your cocks at roughly two/thirds their original size.  A single tear rolls down your cheek; you suspect the melodramatic spirit is at fault here.");
             for (const ii = 0; ii < player.cocks.length; ii++) {
                 player.cocks[ii].cockLength *= 2 / 3;
@@ -1292,7 +1292,7 @@ export class ShouldraFollower extends NPCAwareContent {
         outputText("\n\n\"<i>I'm not that big a fan of dry spells, you know.  They tend to make me a little... vindictive.</i>\"  Now you realize what this is all about.  \"<i>Typically these sobering times were due to either a spot of laziness or bad luck.  Not being able to relieve oneself is one thing.  It's quite another when you are teased with salvation for well over a week, exercising every thread of your self-control to stop yourself from just reaching out and taking it; all because you feel some sort of obligation to a so-called partner.</i>\"  Shouldra puts her translucent arms around your head, putting her lips to your ear, \"<i>Consider yourself obliged.</i>\"");
         outputText("\n\nYou want to at least stand up, get a clearer picture of just what's going on - or about to.  Your body just won't cooperate, though, no matter how hard you try and shake it.  \"<i>If magic were a drug, you'd have OD'd something fierce by now,</i>\" Shouldra interjects as she rises back to her feet.  The spirit's been much busier than you thought.");
         // if PC has cock
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nThe calculated shade works her way over to your [cock], a vacant expression dominating her face.  You're unsure just what that means, but it becomes the least of your concerns when she jabs her thumb into your [cockHead]!  You instinctively wince in pain, but the sensation never comes.  Not much of anything registers, really.  This soon becomes a blessing as you witness the eidolon stretch your cock away from you, insert BOTH her hands into it, and stretch your slit high into the air.  She then casually slips inside it as if it were a sleeping bag, disappearing into its distended depths.  It all happened so fast, nothing really had time to register.  You try and touch your magnified member, only to discover that it's now rock solid.  No, not erect, but literally made of stone!");
         }
         // if PC has no cock, but has vagina
@@ -1312,18 +1312,18 @@ export class ShouldraFollower extends NPCAwareContent {
         outputText("\n\nShouldra moans in ecstasy, each finger shooting out one payload after another.  Your entire arm is spasming, forcing the ghost to grab onto it with your left hand.  Seemingly endless streams of cum spray against your head and down your throat.  You can hardly describe what you're feeling.  The poltergeist seems incredibly content with herself.  Your body is flush with sexual release.  But you find that, mentally, you're unfulfilled.  ...Shit, you hope Shouldra doesn't pick up on that as she enjoys your hand cannons.");
         outputText("\n\nThankfully, the ghost seems to be in her own personal heaven, still filling your gullet full of cream, lightening her grasp in-between each pulse.  Finally, she finishes and lazily drags your soaked hand from your mouth, dangling the twitching members wearily in the air.");
         outputText("\n\n\"<i>That felt even better than I imagined it would,</i>\" the satisfied spirit finally proclaims, leaning back on your left hand.  She lifts your flaccid fingers over your own petrified sex, dripping cum all over it.  It doesn't really surprise you as the jism soaks into your ");
-        if (player.hasCock()) outputText("[cock]");
+        if (player.cocks.length > 0) outputText("[cock]");
         else outputText("[cunt]");
         outputText(", softening the ");
-        if (player.hasCock()) outputText("magically enlarged member");
+        if (player.cocks.length > 0) outputText("magically enlarged member");
         else outputText("magically gaped snatch");
         outputText(" back to a much less craggy complexion.  Shouldra slowly drags you back to your [feet] after a minute or two of blissful respite and walks you closer to the cliffside to stare off into the moonlit horizon.  It never really dawned on you just how fucking high you are; just where the fuck did she take you?");
         outputText("\n\n\"<i>Well, that was a lot of fun, Champ.  I hope that I made my point abundantly clear,</i>\" she says while vacantly rubbing your dick fingers.  She turns away from the ledge as if to leave, but stops after a few brief steps.  \"<i>Actually, I think I'll make sure you remember this occasion.</i>\"  She what- The fucking crazy bitch is running you off the cliff!  Things go from kooky fun to morbid chaos as you take a mighty leap hundreds of feet over seemingly uninviting waters, the little orb of light trailing closely behind you.  Suddenly you feel yourself in control of your body again.  \"<i>I had my fun.  Now it's your turn,</i>\" Shouldra blasts into your head, pointing your eyes to your ");
-        if (player.hasCock()) outputText("flailing cock");
+        if (player.cocks.length > 0) outputText("flailing cock");
         else outputText("moist vagina");
         outputText(".");
         // if cock
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nYou aren't sure why you kowtow to her little game.  Maybe it's the surge of adrenaline, the rapidly approaching water below or you're just horny after the less-than-fulfilling sex act before.  Either way, you grasp onto your rod with your left hand, pumping for all you're worth as you plummet helplessly.  But as your [cock] surges to life, you soon find that its enchanted size has easily made it more than a one-handed job!  Without any further hesitation, both of your hands- in your tense excitement, you forgot about your five-cocked feature.  The dicks-on-big-dick action is... it feels way too fucking good right now.");
             outputText("\n\nWith all participants at full salute, your manic stroking commences.  The wind races past you while your beating heart pounds into your ears.  You hold your wang firmly against your [chest] in an attempt to keep it from flailing about, putting it square into your face.  Easily halfway down the descent, your pick up the pace of your caress, circling your massive [cockHead] with your mutated hand.  It doesn't take you long to reach your own precipice, phallic fingers pressing hard into your mast.  Just as you're about to climax, your body slams hard into the ocean.");
         }
@@ -1359,14 +1359,14 @@ export class ShouldraFollower extends NPCAwareContent {
         let select: number;
 
         // 1 PC with cock - 1
-        if (player.hasCock() && player.biggestCockArea() < 200) {
+        if (player.cocks.length > 0 && player.cocks.biggestCockArea() < 200) {
             choices[choices.length] = 1;
             choices[choices.length] = 1;
             choices[choices.length] = 1;
             choices[choices.length] = 1;
         }
-        // 2 PC with BIG COCK - if (this.player.biggestCockArea() >= 200)
-        else if (player.hasCock()) {
+        // 2 PC with BIG COCK - if (this.player.cocks.biggestCockArea() >= 200)
+        else if (player.cocks.length > 0) {
             choices[choices.length] = 2;
             choices[choices.length] = 2;
             choices[choices.length] = 2;
@@ -1447,7 +1447,7 @@ export class ShouldraFollower extends NPCAwareContent {
                 else if (subSelect == 1) outputText("An uncomfortable stirring in your nether regions has you stop to undo your [armor] and figure out what's the matter.  Your [cock] is wagging enthusiastically.  Shouldra's face quickly sprouts from your shoulder, \"<i>Oh look, he's happy to see you!</i>\" You pay her an irritated glance which she returns with a content snicker.  With your cock under control, you redo your [armor] and continue on your way.");
                 else if (subSelect == 2) outputText("You're distracted as you notice your [cock] snaking its way down your [leg], quickly growing larger.  You make your displeasure obvious, causing it to recoil back to its original size.  Seems as though your ghostly friend is getting restless.");
                 else if (subSelect == 3) outputText("You come to a halt as you suddenly lose control of your arms, forcing you to watch your hands dart down your [armor] to fiercely grab at your [cock].  Though you let out a growl for her to stop, it takes Shouldra a minute to return your arms to you.  She must be getting restless.");
-                else if (subSelect == 4 && player.horseCocks() == 0) outputText("There's a sudden twisting pain in your [cock], forcing you to undo your [armor] and see what's wrong.  To your dismay, a large equine dong is staring back at you, leaking profusely.  \"<i>Just testing out some new transformations, Champ,</i>\" Shouldra snickers.  You yell out again as your dick quickly turns back to normal.");
+                else if (subSelect == 4 && player.cocks.horseCocks() == 0) outputText("There's a sudden twisting pain in your [cock], forcing you to undo your [armor] and see what's wrong.  To your dismay, a large equine dong is staring back at you, leaking profusely.  \"<i>Just testing out some new transformations, Champ,</i>\" Shouldra snickers.  You yell out again as your dick quickly turns back to normal.");
                 else outputText("One of your hands begins playing with your [cock], no doubt spurred on by your paranormal passenger.  \"<i>You know, Champ, I could make you some easy gems.  Just find some know-nothing and introduce them to The Amazing Penis, capable of astounding feats like responding to any vocal coital commands!</i>\"  Playing the part of a sideshow attraction is quite the tangent to your typical daily activities.  Probably best not to think about it.");
                 break;
             case 2:
@@ -1468,7 +1468,7 @@ export class ShouldraFollower extends NPCAwareContent {
                 if (subSelect == 0) outputText("Your [balls] are getting warm.  They're getting... really hot.  \"<i>Don't mind me, Champ. Just... checking something out.</i>\"  You decide the best course of action would probably be not to pry any further into whatever machination the ghost girl is working on.");
                 else if (subSelect == 1) outputText("A tightness in your [armor] reveals to you your swelling [balls].  Shouldra continues to try and convince you of the importance of a virile package, but you remind her as to who's in control of this ship.  Regretfully conceding, the ghost girl returns your sac to its original proportions.");
                 else if (subSelect == 2) outputText("You suddenly fall [if (isBiped = true) to your knees][if (isBiped = false) to the ground] as your [balls] begin to thrash and vibrate wildly!  \"<i>Interesting. That was way more effective than I would have guessed.  I'll have to make a note of that,</i>\" your paranormal passenger says, ending the spell.  With a mild case of confusion, you're left to your thoughts as you go about your business.");
-                else if (subSelect == 3 && player.hasCock()) outputText("You feel your [balls] quickly swell then tighten out of nowhere, forcing some of their payload out your [cock].  Suddenly your hand darts down your [armor] and delivers the errant cum directly to your mouth!  \"<i>Had some time on my hands, so I decided to try out some new recipes.  What do you think?</i>\" Shouldra asks.  Tastes... citrus-y?  That your loins are being used as an experimental factory is... disconcerting.");
+                else if (subSelect == 3 && player.cocks.length > 0) outputText("You feel your [balls] quickly swell then tighten out of nowhere, forcing some of their payload out your [cock].  Suddenly your hand darts down your [armor] and delivers the errant cum directly to your mouth!  \"<i>Had some time on my hands, so I decided to try out some new recipes.  What do you think?</i>\" Shouldra asks.  Tastes... citrus-y?  That your loins are being used as an experimental factory is... disconcerting.");
                 else outputText("\"<i>Champ... you weren't thinking of impregnating anyone too soon, were you?</i>\"  You ask Shouldra what's wrong, afraid of the answer you'll hear.  The odd sensations you've felt in your [balls] are probably related.  \"<i>Well, let's just say that your sperm may be little wild cards at the moment.  I'll... get that sorted out shortly.</i>\"  On that note, a rough churning starts up down below.  Your baby batter isn't safe with this ghost around, it seems.");
                 break;
             // PC with boobs
@@ -1877,7 +1877,7 @@ export class ShouldraFollower extends NPCAwareContent {
         outputText(".  You blush furiously and back into the corner of the (now rather cold) booth");
         if (flags[kFLAGS.PC_FETISH] > 0) {
             outputText(" as your heart races and blood rushes down towards your ");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText("drowsy member");
                 if (player.hasVagina()) outputText(" and ");
             }
@@ -1891,7 +1891,7 @@ export class ShouldraFollower extends NPCAwareContent {
         else outputText("a tight-fitting tank top and skirt");
         outputText(" adorn your person.");
 
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nYou run a hand down your chest, examining the new material.  Silky smooth...  As your hand slides across your stomach, you press in slightly.  You've only made a small dent in the food before you, but there's already a noticeable bulge beneath your belt, and a few slivers of " + skinFurScales(player) + " are visible between the buttons.  You rub the modest mound, resulting in a subdued gurgling and a content burp; you've gotten full pretty quickly.  Maybe you should just leave the rest of the food and- \"<i>Not so fast, bucko!</i>\" Shouldra fumes, causing you to jump in your seat.  \"<i>You might be full, but <b>I've</b> barely started!</i>\" Your gut churns violently as the ghost girl's inhuman appetite infects your own.  Oh dear...");
             outputText("You quickly grab something, an eclair, from the table in an effort to ease the pain in your stomach.  The taste is incredible; you don't know if it's the hunger or Shouldra's magic, but this is easily the best eclair you've ever eaten.  You moan low in your throat as you savor the eclair, thick sweet cream exploding in your mouth, chilled chocolatey pastry caressing your tongue like a skilled lover.  Sugar and pastry mix and twirl around your mouth, and you can't help but close your eyes and relax, mind and body comforted by a glucose euphoria.");
             if (silly()) outputText("  This is a <i>fucking good eclair</i>.");

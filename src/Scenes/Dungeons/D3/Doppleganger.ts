@@ -87,7 +87,7 @@ export class Doppleganger extends Monster {
 
             case 2:
                 outputText("\n\n“<i>This, though... this I like, [name].</i>” [He] closes [his] eyes and");
-                if (player.hasCock()) outputText(" strokes [his] [cock]");
+                if (player.cocks.length > 0) outputText(" strokes [his] [cock]");
                 else if (player.hasVagina()) outputText(" slides two fingers into [his] [vagina] and gently frigs [himself]");
                 else outputText(" slips a hand ");
                 outputText(" underneath [his] " + this.armorName + ". The sheer bizarreness of seeing yourself masturbate gives you pause; again the unreality intensifies, and you feel yourself shimmer uncertainly. “<i>Once I’m out of here, I’m going to hang onto this. Revel in not changing my form for once, as a tribute to the kind soul who gave me it!</i>”");
@@ -199,7 +199,7 @@ export class Doppleganger extends Monster {
 
         if (player.cocks.length > 0) {
             for (const i = 0; i < player.cocks.length; i++) {
-                this.createCock((player.cocks[i] as Cock).cockLength, (player.cocks[i] as Cock).cockThickness, (player.cocks[i] as Cock).cockType);
+                this.cocks.createCock((player.cocks[i] as Cock).cockLength, (player.cocks[i] as Cock).cockThickness, (player.cocks[i] as Cock).cockType);
             }
         }
 

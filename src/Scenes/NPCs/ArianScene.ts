@@ -592,7 +592,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
     private peepOnArian(): void {
         clearOutput();
         outputText("Curious, you decide to take a little peek through the lock; you press yourself against it as best you can, looking through into the bedroom beyond.  True to what your ears heard, the sickly albino's health has improved enough for him to focus on more... carnal matters.  Naked from the waist down, he sits on the edge of his bed, groinal slit disgorging a single, average-sized phallus.  Maybe 6 inches long, it's a bright purple-red color, covered in strange lumps");
-        if (player.lizardCocks() > 0) outputText(" just like yours");
+        if (player.cocks.lizardCocks() > 0) outputText(" just like yours");
         outputText(", though this isn't stopping him from enthusiastically stroking himself off.");
 
         outputText("\n\n\"<i>Curse my illness... curse my dreams... oh, [name]... if only you knew....</i>\"  Arian pants and moans, the distinct sound of fapping quite audible from where you are.  He whimpers softly and bites his lip, clearly nearing the brink.  \"<i>Ah! The things you do to me... the things I wish you would do to me... ah....</i>\"  He groans to himself.");
@@ -625,7 +625,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nSlowly you approach the hiding lizard, and sit on his bed.  You let him know you're flattered to be his object of desire, and that there's no need to hide himself.  If he felt this way about you he should just have said so.");
         outputText("\n\nArian peeks from under his covers.  \"<i>Y - You mean you're not mad at me?</i>\"  You smile and tell him you aren't.  Arian visibly relaxes, letting his covers fall on his chest.");
         // (if PC is male)
-        if (player.hasCock() && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.hasVagina()) {
             outputText("\n\n\"<i>I just assumed... since we're both male....</i>\" He explains himself, fidgeting.  \"<i>I didn't know if you... well... if you would mind that....</i>\"");
             outputText("\n\nYou raise your eyebrow; it seems that Arian is not opposed to some male on male.... What do you tell him?");
             // [Don't mind] [Like Girls]
@@ -634,14 +634,14 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             addButton(1, "Like Girls", youLikeGirlsNotSickLizardDudes);
         }
         // (else if PC is genderless)
-        else if (!player.hasCock() && !player.hasVagina()) {
+        else if (!player.cocks.length > 0 && !player.hasVagina()) {
             outputText("\n\n\"<i>I just assumed... since we're both male....</i>\"  He fidgets with his hands.  \"<i>I didn't know if you... well... if you would mind that....</i>\"");
             outputText("\n\nYou stop him in his tracks, and tell him you're not exactly male.  You strip your undergarments and let Arian gaze in fascination at your crotch - your clean, smooth, genderless crotch.  Not believing what he is seeing Arian crawls forward to touch your crotch, mesmerized.  \"<i>How?  You... I... we can't....</i>\"  You silence him with a finger, and tell him there's plenty you two can do.");
             // (Display Sex Menu)
             arianSexMenu(false);
         }
         // (else if PC is female)
-        else if (!player.hasCock() && player.hasVagina()) {
+        else if (!player.cocks.length > 0 && player.hasVagina()) {
             outputText("\n\n\"<i>It's just that... well... you're so beautiful and I'm... I didn't think you....</i>\"  He trails off.");
             outputText("\n\nYou tell him he looks adorable, especially when he's acting like a hopeless virgin.  At the mention of the word ‘virgin' Arian recoils.  Surprised by this development, you ask him if he really is a virgin.");
             outputText("\n\nArian hides his face once more inside his covers and says in a whisper, \"<i>Yes....</i>\"");
@@ -677,7 +677,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         // Penetrate - (Proceed to appropriate scene)
         // Get Penetrated - (Proceed to appropriate scene)
         menu();
-        if (player.hasCock() && player.cockThatFits(50) >= 0) addButton(0, "Penetrate", giveArianAnal);
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(50) >= 0) addButton(0, "Penetrate", giveArianAnal);
         addButton(1, "Get Penetrated", getPenetratedByArianAndHisHitlerMustache);
     }
     // [=Prefer Female=]
@@ -712,7 +712,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
 
         // Redirecting the scene if the players cock is too big for the anal scene... not ideal, but its a QWIKFIX™
         menu();
-        if (player.cockThatFits(50) == -1) {
+        if (player.cocks.cockThatFits(50) == -1) {
             addButton(0, "Next", getBlownByArian);
         }
         else {
@@ -1221,7 +1221,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nArian takes a glance at your crotch.");
 
             // if PC has no cock)
-            if (!player.hasCock()) {
+            if (!player.cocks.length > 0) {
                 outputText("\n\nBut sighs in disappointment when [Arian ey] sees no bulge.  \"<i>Maybe... you could grow your dick back and... nevermind....</i>\"  Arian averts [Arian eir] eyes.");
                 outputText("\n\nYou tell [Arian em] you'll think about it.");
             }
@@ -1374,25 +1374,25 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // (Display Options)
         menu();
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             // PC must have a cock that fits (cock area 50 or less)
-            if (player.cockThatFits(50) >= 0) addButton(0, "Anal - Pitch", giveArianAnal);
+            if (player.cocks.cockThatFits(50) >= 0) addButton(0, "Anal - Pitch", giveArianAnal);
             // Get Blown:
             // PC must have a cock.
             addButton(2, "Get Blown", getBlownByArian);
             // Penetrate:
             // Arian must be herm/female.
             // PC must have a cock that fits (cock area 50 or less)
-            if (player.cockThatFits(flags[kFLAGS.ARIAN_CAPACITY]) >= 0 && flags[kFLAGS.ARIAN_VAGINA] > 0)
+            if (player.cocks.cockThatFits(flags[kFLAGS.ARIAN_CAPACITY]) >= 0 && flags[kFLAGS.ARIAN_VAGINA] > 0)
                 addButton(4, "Fuck Vagina", penetrateArian);
             // Double Pen Arian:
             // PC must have at least 2 cocks that fit. That means two cocks with a cock area of <= 50.
             // This isn't meant to give AnalXP, but given the fact that Arian's ass will get pen'd it would also be justified. Up to you Fen!
-            if (player.cockThatFits(50) >= 0 && player.cockThatFits2(50) >= 0 && flags[kFLAGS.ARIAN_VAGINA] > 0) addButton(8, "Double Pen", doublePenetrateArian);
+            if (player.cocks.cockThatFits(50) >= 0 && player.cocks.cockThatFits2(50) >= 0 && flags[kFLAGS.ARIAN_VAGINA] > 0) addButton(8, "Double Pen", doublePenetrateArian);
             // Docking
             // ArianCockSize needs to be below 3. (ArianDblCock does not affect this decision.)
             // PC cock area must be <= 30.
-            if (player.smallestCockArea() <= 30 && flags[kFLAGS.ARIAN_COCK_SIZE] < 3 && flags[kFLAGS.ARIAN_COCK_SIZE] > 0) addButton(7, "Docking", arianDocking);
+            if (player.cocks.smallestCockArea() <= 30 && flags[kFLAGS.ARIAN_COCK_SIZE] < 3 && flags[kFLAGS.ARIAN_COCK_SIZE] > 0) addButton(7, "Docking", arianDocking);
         }
         // Get Anal:
         // Arian must have a cock.
@@ -1417,7 +1417,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
     // Modified by AnalXP.
     // PC must have a cock that fits (cock area 50 or less)
     private giveArianAnal(): void {
-        let x: number = player.cockThatFits(50);
+        let x: number = player.cocks.cockThatFits(50);
         clearOutput();
         arianHealth(3);
         flags[kFLAGS.ARIAN_ANAL_XP] += 10;
@@ -1431,7 +1431,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         // This breaks the capacity-restriction, but it's a quickfix to make the scene stop crashing in lieu of writing new
         // content to work around the player not being able to call this scene from earlier interactions with Arian.
         if (x == -1) {
-            x = player.smallestCockIndex();
+            x = player.cocks.smallestCockIndex();
         }
 
         outputText("You tell Arian that, if [Arian ey]'s willing, you'd like to take [Arian em] from behind.");
@@ -1798,8 +1798,8 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
     // Arian must be herm/female.
     // PC must have a cock that fits (cock area 50 or less)
     private penetrateArian(): void {
-        let x: number = player.cockThatFits(50);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(50);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         flags[kFLAGS.ARIAN_VIRGIN] += 1;
         arianHealth(3);
@@ -1814,7 +1814,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYou nod your head, insisting that you do think so.  With a lustful purr, you ask just how she would like to try out her girl parts, maybe see just how pretty she can feel with the right... encouragement?");
 
         outputText("\n\n\"<i>Of course!  I would love it.  So what should I do?</i>\" she asks, tail waving lazily behind her as she awaits further instructions.  \"<i>Should I help you get ready first?</i>\"  She looks down between your legs to see your half-erect cock");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(".  \"<i>Err... readier?</i>\"  She asks, smiling nervously.");
 
         outputText("\n\nYou smile, and tell her that, seeing as how this is fairly new to her, you'll try and let her take charge.  You sashay over to her bed and lay down on your back, [eachCock] jutting proudly into the air, before telling Arian you want her to straddle you.");
@@ -2003,10 +2003,10 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nThe lizan mage can barely contain [Arian emself] as [Arian ey] tosses and turns on [Arian eir] bed, gasping and moaning at your ministrations.  You lick your lips as you continue to ride [Arian em], ");
         if (player.hasVagina()) outputText("cunt dripping with arousal");
-        if (player.hasCock() && player.hasVagina()) outputText(" and ");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0 && player.hasVagina()) outputText(" and ");
+        if (player.cocks.length > 0) {
             outputText("cock");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" drooling precum onto [Arian eir] belly");
         }
         outputText(".  You're so close now, you can feel it.  You tell Arian you're going to cum, and beg [Arian em] to cum with you.");
@@ -2021,7 +2021,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         else outputText(".");
 
         outputText("\n\nWith a cry of glee, you orgasm, giving yourself over to the pleasures of the act.  Your ass clenches around the bulbous shaft intruding in your bowels, trying to wring it of all its delicious load.");
-        if (player.hasCock()) outputText("  [EachCock] spasms and shoots rope after rope of cum, painting Arian's [arian chest] white, as well as the groaning lizan's face.");
+        if (player.cocks.length > 0) outputText("  [EachCock] spasms and shoots rope after rope of cum, painting Arian's [arian chest] white, as well as the groaning lizan's face.");
         if (player.hasVagina()) outputText("  Your [pussy], though unattended, joins in the perverted display, leaking copious amount of fluids on top of the prone lizan.");
 
         outputText("\n\n\"<i>Ahhhhh...</i>\"  Arian sighs, going limp on [Arian eir] bed.  You follow shortly, laying down on top of [Arian em], embracing [Arian em] as [Arian ey] does the same.  \"<i>[name], you're amazing.</i>\"");
@@ -2052,14 +2052,14 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nAnd what if you want to be the catcher sometimes, huh?  [Arian Ey]'s got such a wonderful cock, how can [Arian ey] deny you the pleasure of taking it up the ass?  [Arian Ey]'s so greedy, you tell him, playfully tapping him on the nose.  [Arian Ey] whimpers.  \"<i>Okay, I like being the pitcher too, but can you do me now?  Please?</i>\"  [Arian Ey] asks, eagerly wiggling [Arian eir] hips.");
             outputText("\n\nYou contemplate it...");
             // (if PC has a cock){
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 player.orgasm();
                 dynStats("sen", 2);
                 player.slimeFeed();
                 // [Yes: Play the \"<i>PC fucks Arian's ass</i>\" scene]
                 // [No: You tell Arian you've had enough fun for now; maybe later, after you've both recovered.]
                 menu();
-                if (player.cockThatFits(50) >= 0 && player.hasCock()) addButton(0, "Yes", giveArianAnal);
+                if (player.cocks.cockThatFits(50) >= 0 && player.cocks.length > 0) addButton(0, "Yes", giveArianAnal);
                 else outputText(".  You're too big to fit inside Arian's ass, though.");
                 addButton(1, "No", camp.returnToCampUseOneHour);
                 return;
@@ -2151,7 +2151,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\n\"<i>Yes, I liked it very much!  Though I hope you'll let me return the favor... somehow,</i>\"  [Arian Ey] says, releasing you from between [Arian eir] legs, while [Arian eir] tail lazily curls to gently massage your neck in a sign of affection.");
 
         // [NoCock:
-        if (!player.hasCock()) outputText("\n\nYou tell [Arian ey] you'll think of some way [Arian ey] can return the favor,");
+        if (!player.cocks.length > 0) outputText("\n\nYou tell [Arian ey] you'll think of some way [Arian ey] can return the favor,");
         else outputText("\n\nWell, you happen to have a creamy lolly of your own that [Arian ey] could lick, you tease,");
         outputText(" rolling your neck in pleasure as [Arian ey] rubs it with [Arian eir] reptilian tail.");
 
@@ -2335,8 +2335,8 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.ARIAN_VIRGIN] += 1;
         arianHealth(3);
         outputText(images.showImage("arianfemale-home-doublepenetrate"));
-        const x: number = player.cockThatFits(flags[kFLAGS.ARIAN_CAPACITY]);
-        const y: number = player.cockThatFits2(flags[kFLAGS.ARIAN_CAPACITY]);
+        const x: number = player.cocks.cockThatFits(flags[kFLAGS.ARIAN_CAPACITY]);
+        const y: number = player.cocks.cockThatFits2(flags[kFLAGS.ARIAN_CAPACITY]);
         outputText("You look over your feminine lizard lover, and feel your " + multiCockDescriptLight(game.player) + " starting to stir in your [armor].  Since you have enough tools for the job, and Arian has enough holes, you ask if Arian would be willing to let you fuck her in both her ass and pussy at the same time?");
 
         outputText("\n\nArian bites her lower lip, fidgeting a bit at your suggestion.  \"<i>Sure.  I mean... that's the way sex is supposed to be with lizan females, and I do have the parts now.</i>\"");
@@ -3201,14 +3201,14 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nAt one point the bending lizan gives up and falls flat on [Arian eir] back then gets right up eyeing you with a glow in [Arian eir] eyes.  \"<i>That was a stupid idea!  I know just how to make it!  I can lick your butt instead!  Do you think it tastes like cloud ice-cream like your rainbow aura?</i>\"");
 
         outputText("\n\nYou shake your head and tell [Arian em] you'd rather [Arian ey] didn't lick your butt.  Why don't you go and get [Arian em] some candy instead?  \"<i>Candy!?  I love candy!  You can smear chocolate on yourself and I could lick it clean! Then we'd get chocolate flavored cloud ice-cream with " + player.race() + " musk!  What a great idea!  Get your undies off so I can get started!</i>\"  [Arian Ey] pounces on you, effectively removing your underpants and exposing your ");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(multiCockDescriptLight(game.player));
             if (player.hasVagina()) outputText(" and ");
         }
         if (player.hasVagina()) outputText("[vagina]");
-        if (!player.hasVagina() && !player.hasCock()) outputText("genderless crotch");
+        if (!player.hasVagina() && !player.cocks.length > 0) outputText("genderless crotch");
         outputText(".  \"<i>Hmm, that looks much tastier than candy actually.</i>\"  [Arian Ey] licks your ");
-        if (player.hasCock()) outputText("cock from base to tip");
+        if (player.cocks.length > 0) outputText("cock from base to tip");
         else if (player.hasVagina()) outputText("pussy all the way from the back to the tip of your [clit]");
         else outputText("your sweaty crotch");
         outputText(".  \"<i>Yummy!  I could use seconds, but roleplay time is over; let's... masturbate each other!</i>\"  [Arian Ey] begins stroking [Arian eir] ");
@@ -3497,7 +3497,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nWell, now; looks like Arian might be dreaming about anal sex.  You wonder what to do....  Well, since it's basically [Arian eir] fault that you are awake, you feel a little payback is in order.  You whisper in [Arian eir] ear that you are sure.");
         outputText("\n\n\"<i>But sausages belong inside breads,</i>\" Arian whimpers.  \"<i>But... if you're sure... okay....</i>\"  Under the covers you feel Arian wiggling [Arian eir] butt against you, [Arian eir] tail lifting to make room for the \"<i>sausage</i>\".");
         // (if PC has a cock)
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nYou wonder for a moment if maybe this is fair, but decide that, if [Arian ey]'s obviously dreaming about it eagerly....  Your hand slips under the covers to start stroking your [cock smallest], gently coaxing yourself to erection.  Once you've gotten yourself sufficiently stiff, you wrap your arms around the lizan's waist for balance and start pushing yourself in.");
         }
         else {
@@ -3532,11 +3532,11 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\n\"<i>Hmm, okay then.  Shove it in.</i>\"  Arian lifts [Arian eir] tail out of the way, wiggling [Arian eir] hips against you.");
 
         // (if PC has a cock)
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nWell, if this is what [Arian ey] wants, you're happy to oblige.  Your hand slips under the covers to start stroking your [cock smallest], gently coaxing yourself to erection.  Once you've gotten yourself sufficiently stiff, you wrap your arms around the lizan's waist for balance and start pushing yourself in.");
             outputText("\n\nArian moans.  \"<i>Such a familiar flavor.  Why didn't you tell me you were [name] flavored?  I love muffins.  I love [name] muffins.</i>\"");
             outputText("\n\nYou blink in surprise; is Arian really asleep, you wonder?  No, [Arian ey]'s got to be awake, otherwise how could [Arian ey] realize you're actually fucking [Arian eir] ass?  \"<i>Hmm... tasty...</i>\"  You lean over the lizan, ");
-            if (player.hasCock()) outputText("cock");
+            if (player.cocks.length > 0) outputText("cock");
             else outputText("finger");
             outputText(" still worming its way into [Arian eir] fuckable ass, but it really does look like [Arian ey]'s fast asleep.  Weird.  \"<i>So many muffins... all [name] flavored...</i>\"  [Arian ey] calms down and begins snoring lightly.");
             outputText("\n\nUnbelievable... if you didn't know better you'd think that Arian is the one doing the teasing here.  Still... [Arian ey]'s fast asleep right now, and you don't feel like fucking [Arian em] in [Arian eir] sleep");
@@ -3577,7 +3577,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\n\"<i>...[name]... no... don't stuff that turkey... stuff me....  I wanna be tasty too.</i>\"");
         outputText("\n\nIs [Arian ey] dreaming about food, or sex?");
         // (if PC has a cock)
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nAh well, why not indulge a little?  You take one hand and begin to sensuously stroke your shaft, aiming to get yourself nice and erect, while with the fingers of the other you slide into the lizan's tailhole, seeing if your teasing will get a reaction and prove [Arian ey] wants [Arian eir] butt fucked.");
             outputText("\n\n\"<i>Hmm... hehe.  It's so little... [name]... you can do better.</i>\"");
             outputText("\n\nOkay, it seems there's no need to hesitate any more.  Your cock rock-solid with anticipation, you wriggle yourself into the proper position and thrust yourself bluntly up [Arian eir] ass.  Arian moans lewdly in [Arian eir] sleep, [Arian eir] well-trained pucker easily, nay, eagerly taking you in a single thrust, the hungry muscles sliding wetly across your length and then clamping down in an effort to suck you inside.");
@@ -3612,7 +3612,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
     // Outcome slightly modified by AnalXP.
     public wakeUpAfterArianSleep(): void {
         clearOutput();
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             if (flags[kFLAGS.ARIAN_VAGINA] > 0)
                 outputText(images.showImage("arianfemale-camp-dreamingArian"));
             else
@@ -3624,7 +3624,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\nGetting yourself out of bed, you start to stretch your muscles, cracking joints and generally waking yourself up.  While you are doing this, the lizan yawns loudly, slowly coming awake as well.  Rubbing the sleep out of [Arian eir] eyes, Arian utters.  \"<i>Morning, [name].  Sleep well?</i>\"  [Arian ey] turns to look at you and suddenly hides [Arian emself] under the covers.");
                 outputText("\n\nYou give [Arian em] a wide grin and repeat the sentiment, assuring [Arian em] that you did indeed sleep well.  Aww, why's [Arian ey] being so shy?  It's far too late for either of you to be worried about being naked around each other.");
                 outputText("\n\nArian's head pokes from under the covers.  \"<i>I suppose you're right... but that's still an impressive sight,</i>\"  [Arian ey] says pointing at your erect cock");
-                if (player.cockTotal() > 1) outputText("s");
+                if (player.cocks.length > 1) outputText("s");
                 outputText(".");
 
                 outputText("\n\nWell, Arian gives you quite an incentive to sprout it.  Even in [Arian eir] sleep, [Arian ey]'s a masterful tease, you tell [Arian em].");
@@ -3635,7 +3635,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\nYou easily catch on to what the lizan has in mind and, with a smile, do as you are told, baring your crotch so to give [Arian em] the best access.");
 
                 outputText("\n\nArian promptly nuzzles your " + multiCockDescriptLight(game.player) + ", rubbing [Arian eir] face all over ");
-                if (player.cockTotal() == 1) outputText("it");
+                if (player.cocks.length == 1) outputText("it");
                 else outputText("them");
                 outputText(" shamelessly until a dollop of pre forms on the tip of your [cock biggest].  \"<i>[name]?</i>\"  You give a deliberate groan, playing up how much you're enjoying this for Arian's benefit and smiling at [Arian em].  \"<i>Thanks for the breakfast,</i>\"  [Arian ey] says with a smile, then proceeds to take the entirety of your [cock] past [Arian eir] lips and down [Arian eir] throat.  You can't resist chuckling and patting [Arian em] on the head.");
 

@@ -217,19 +217,19 @@ export class BeeHoney extends Consumable {
             changes++;
         }
         if (special) { // All the speical honey effects occur after any normal bee transformations (if the player wasn't a full bee morph)
-            if (!player.hasCock()) {
+            if (!player.cocks.length > 0) {
                 outputText("\n\nYou double over in pain as the effects start to concentrate into your groin.  You need to get release, but what you’ve got just isn’t cutting it.  You fall to the ground and grab at your crotch, trying desperately to get the release you need.  Finally, it happens.  With a sudden burst of intense relief and sexual satisfaction, a new human looking penis bursts from your skin and sprays your seed all over the ground in front of you.  When you’re able to recover and take a look at your new possession.  <b>You now have an eight inch long human cock that is very sensitive to stimulation.</b>");
-                player.createCock();
+                player.cocks.createCock();
                 player.cocks[0].cockLength = rand(3) + 8;
                 player.cocks[0].cockThickness = 2;
                 dynStats("sen", 10);
             }
             else if (player.cocks.length > 1) {
-                const biggest: number = player.biggestCockIndex();
+                const biggest: number = player.cocks.biggestCockIndex();
                 outputText("\n\nThe effects of the honey move towards your groin, and into your " + multiCockDescriptLight(player) + ", causing them to stand at attention.  They quiver for a moment, and feel rather itchy.  Suddenly you are overwhelmed with pleasure as <b>your " + cockDescript(player, biggest) + " is absorbed into your " + cockDescript(player, 0) + "!</b>  You grab onto the merging cock and pump it with your hands as it increases in size and you cum in pleasure.  Your " + cockDescript(player, 0) + " seems a lot more sensative now...");
                 player.cocks[0].cockLength += 5 * Math.sqrt(0.2 * player.cocks[biggest].cArea());
                 player.cocks[0].cockThickness += Math.sqrt(0.2 * player.cocks[biggest].cArea());
-                player.removeCock(biggest, 1);
+                player.cocks.removeCock(biggest, 1);
                 dynStats("sen", 5);
             }
             else if (player.cocks[0].cArea() < 100) {

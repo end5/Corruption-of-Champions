@@ -36,7 +36,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
         // Set 'PC met Sharkgirls' for Izma stuff
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230] == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230] = 1;
         if (player.effects.findByType(StatusAffects.SharkGirl) < 0) player.effects.create(StatusAffects.SharkGirl, 0, 0, 0, 0);
-        else if (player.effects.getValue1Of(StatusAffects.SharkGirl) >= 7 && player.totalCocks() > 0) {
+        else if (player.effects.getValue1Of(StatusAffects.SharkGirl) >= 7 && player.cocks.length > 0) {
             spriteSelect(70);
             sharkBadEnd();
             return;
@@ -95,8 +95,8 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
         spriteSelect(70);
         // Naga get a different version of this scene.
         if (player.isNaga()) {
-            let x: number = player.cockThatFits(monster.analCapacity());
-            if (x < 0) x = player.smallestCockIndex();
+            let x: number = player.cocks.cockThatFits(monster.analCapacity());
+            if (x < 0) x = player.cocks.smallestCockIndex();
             // [if(monster.lust > 99)
             if (monster.lust > 99) outputText("You slither towards the furiously masturbating shark-girl. She lies on her back, desperately trying to relieve herself of her lust. She eyes you for a second, but her focus quickly returns to your own sex, moaning and sighing loudly. You admire the scene for a moment, but decide that she must be punished for her attempt to rape you.\n\n", false);
             else outputText("You slither towards the defeated shark-girl. She lies on her back, clearly weakend and in pain from the fight. You pity the poor girl for a moment, but you quickly remember that she just tried to rape you. Overcome by the need for revenge and the need to sate your lusts, you decide to punish her for her painful advances on you.\n\n", false);
@@ -259,7 +259,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
             return;
         }
         // Female:
-        if (player.hasVagina() && (player.totalCocks() == 0 || rand(2) == 0)) {
+        if (player.hasVagina() && (player.cocks.length == 0 || rand(2) == 0)) {
             outputText("You slump down in defeat, too ", false);
             // [defeat via HP]
             if (player.HP < 1) outputText("hurt ", false);

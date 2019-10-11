@@ -39,7 +39,7 @@ export class UrtaQuest extends NPCAwareContent {
     public isUrta(): boolean {
         if (flags[kFLAGS.URTA_QUEST_STATUS] > 0 && flags[kFLAGS.URTA_QUEST_STATUS] < 1) {
             if (player.short == "Urta") {
-                if (player.hasCock()) {
+                if (player.cocks.length > 0) {
                     if (player.cocks[0].cockLength == 20 && player.cocks[0].cockThickness == 3) {
                         if (player.hasVagina()) {
                             if (player.breastRows[0].breastRating == 7) return true;
@@ -174,7 +174,7 @@ export class UrtaQuest extends NPCAwareContent {
         game.player = player;
 
         // See called method comment.
-        player.fixFuckingCockTypesEnum();
+        player.cocks.fixFuckingCockTypesEnum();
     }
 
     // Urta Appearance Screen(C)*
@@ -212,7 +212,7 @@ export class UrtaQuest extends NPCAwareContent {
         player.faceType = FACE_FOX;
         player.tailType = TAIL_TYPE_FOX;
         player.tailVenom = 1;
-        player.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockType = CockTypesEnum.HORSE;
         player.cocks[0].cockLength = 20;
         player.cocks[0].cockThickness = 3;
@@ -473,7 +473,7 @@ export class UrtaQuest extends NPCAwareContent {
 
         outputText("\n\n\"<i>Oooooh yeah, that's a good cock,</i>\" she laughs, reaching down to stroke your rock-hard member.");
         // If PC has a cock:
-        if (player2.hasCock()) {
+        if (player2.cocks.length > 0) {
             outputText("  \"<i>I've got a better one ");
             if (helFollower.followerHel()) outputText("at home");
             else outputText("at my beck and call");
@@ -544,10 +544,10 @@ export class UrtaQuest extends NPCAwareContent {
         if (player2.hasVagina())
             addButton(1, "FuckHerVag", putUrtasWangInPCsCunt, truth);
         // Put a PC dick in Urta's vag(C)*
-        if (player2.cockThatFits(urta.urtaCapacity()) >= 0)
+        if (player2.cocks.cockThatFits(urta.urtaCapacity()) >= 0)
             addButton(2, "Ride Dick", putAPCDickInUrtaCoochies, truth);
         // Put Urta dick in the PC's asshole [Cocked PCs](C)*
-        if (player2.hasCock())
+        if (player2.cocks.length > 0)
             addButton(3, "Fuck Ass", urtaPutsHerDickInPCsWithDicks, truth);
         // PC blows Urta(C)*
         addButton(4, "Get BJ", pcBlowsUrtasDong, truth);
@@ -563,8 +563,8 @@ export class UrtaQuest extends NPCAwareContent {
     private urtaPutsHerDickInPCsWithDicks(truth: boolean): void {
         clearOutput();
         outputText("You push " + player2.short + " down onto the ground, glad that " + player2.mf("he", "she") + "'s not wearing " + player2.mf("his", "her") + " gear right now.  Unfortunately, you've still got to get out of yours, an action made all the more difficult by the heat welling up in your groin.  Your rebellious cock is already half-stiff, lifting the hem of your armored skirt away from your thighs.  Fingers scrabbling, you struggle with your chestpiece's bindings.  Your nipples stiffen, scraping against the inside of it while you fight to remove it.  You straddle " + player2.short + "'s waist to hold " + player2.mf("him", "her") + " down while you work the bothersome, restraining material free, practically grinding your semi-rigid dick against " + player2.mf("his", "hers") + " in excitement.  " + player2.mf("His", "Her") + " hands begin aiding you in your task, allowing your tightly compressed breasts to finally, happily breathe.   They jiggle as they flop free, and to your delight, " + player2.short + "'s eyes lock on them.");
-        outputText("\n\nGrabbing hold of " + player2.mf("his", "her") + " head, you pull " + player2.short + "'s lips to one of your puckered nipples.  " + player2.mf("He", "She") + " swallows it immediately, grabbing hold of your tits to squeeze and fondle them, openly enjoying the fruits of your womanly shape.  Tingles of electric enjoyment fire from your unrestrained areola when " + player2.mf("he", "she") + " squeezes down on the other with " + player2.mf("his", "her") + " fingers, expertly twisting the little nub around to give you the maximum pleasure.  In no time flat, you're humping " + player2.mf("his", "her") + " " + cockDescript(player2, player2.biggestCockIndex()) + " openly, letting " + player2.mf("him", "her") + " guide your motions with deft, controlling touches to your onyx nipples.  Your pre-cum bubbles out unhindered, the thick gobs swaying and splattering on " + player2.mf("his", "her") + " belly and rigid tool, quickly lubricating the phallic embrace into a sticky, hot mess.");
-        outputText("\n\n" + player2.short + " releases your tender tits after a few particularly sloppy thrusts.  You can feel " + player2.mf("his", "her") + " " + cockDescript(player2, player2.biggestCockIndex()) + " releasing some of its own pre-cum onto your cock's thick spooge-vein, and " + player2.mf("his", "her") + " hands fall to grab at the blanket below, unintentionally clenching at the waves of pleasure you're giving " + player2.mf("him", "her") + ".  You bend now, onto all fours");
+        outputText("\n\nGrabbing hold of " + player2.mf("his", "her") + " head, you pull " + player2.short + "'s lips to one of your puckered nipples.  " + player2.mf("He", "She") + " swallows it immediately, grabbing hold of your tits to squeeze and fondle them, openly enjoying the fruits of your womanly shape.  Tingles of electric enjoyment fire from your unrestrained areola when " + player2.mf("he", "she") + " squeezes down on the other with " + player2.mf("his", "her") + " fingers, expertly twisting the little nub around to give you the maximum pleasure.  In no time flat, you're humping " + player2.mf("his", "her") + " " + cockDescript(player2, player2.cocks.biggestCockIndex()) + " openly, letting " + player2.mf("him", "her") + " guide your motions with deft, controlling touches to your onyx nipples.  Your pre-cum bubbles out unhindered, the thick gobs swaying and splattering on " + player2.mf("his", "her") + " belly and rigid tool, quickly lubricating the phallic embrace into a sticky, hot mess.");
+        outputText("\n\n" + player2.short + " releases your tender tits after a few particularly sloppy thrusts.  You can feel " + player2.mf("his", "her") + " " + cockDescript(player2, player2.cocks.biggestCockIndex()) + " releasing some of its own pre-cum onto your cock's thick spooge-vein, and " + player2.mf("his", "her") + " hands fall to grab at the blanket below, unintentionally clenching at the waves of pleasure you're giving " + player2.mf("him", "her") + ".  You bend now, onto all fours");
         if (player2.tallness < 60) outputText(" and let your tits hang over " + player2.mf("his", "her") + " " + face(player2));
         else if (player2.tallness < 76) outputText(" and let your tits swing between you");
         else if (player2.tallness < 84) outputText(" and let your tits smash into " + player2.mf("his", "her"));
@@ -581,7 +581,7 @@ export class UrtaQuest extends NPCAwareContent {
             player2.ass.analLooseness = 1;
         }
         outputText("  " + player2.short + " writhes as " + player2.mf("he", "she") + " takes you, " + player2.mf("his", "her") + " hips lifting slightly off the ground to make sure you grind into " + player2.mf("his", "her") + " prostate.  A long strand of clear excitement oozes from " + player2.mf("his", "her") + " tip");
-        if (player2.cockTotal() > 1) outputText("s");
+        if (player2.cocks.length > 1) outputText("s");
         outputText(", thick, viscous, and clinging to the drying mess you left behind.");
 
         outputText("\n\nGrabbing hold of you by the scruff of your neck, " + player2.short + " pulls you down into a kiss.  You passionately french " + player2.mf("him", "her") + " and try your hardest to time your thrusts to each plunging slurp your tongue makes into " + player2.mf("his", "her") + " oral cavity.  Together, you make love, mouth to mouth and cock to ass.  " + player2.mf("His", "Her") + " dark pucker wrings at your horse-cock, the tight muscles at " + player2.mf("his", "her") + " entrance seizing every time your sheath tickles up against them.  Groaning into " + player2.mf("his", "her") + " mouth, you lose whatever control you had and let your equine dong take over, helpless to resist your overpowering lust.  You pound " + player2.mf("his", "her") + " clenching anus hard and fast, breaking the kiss as you moan, forgetting how to do anything but hold your body in position and drive your thighs back and forth, back and forth-and-back-forth, faster and faster.");
@@ -589,13 +589,13 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nYour balls begin to tingle with warmth in that familiar way that they do just before you cum, rising slightly involuntarily as your sack starts to pull tight and release.  Your cock flexes inside your lover's asshole hard enough to squeeze a spurt of dick-juice onto " + player2.mf("his", "her") + " chest, and with an exultant moan, you declare, \"<i>I'm gonna...  CUUUUUUM!</i>\"  " + player2.short + " answers you with a moan of " + player2.mf("his", "her") + " own, digging " + player2.mf("his", "her") + " hands into your swaying, unrestrained tits as " + player2.mf("he", "she") + " releases.");
 
         outputText("\n\nYou ram your turgid mass in until your sheath is smashed flat against your abdominals, almost painfully.  Below, your taut sack expands slightly before shrinking, pumping hot pleasure through your abdomen and down your rapidly dilating urethra.  You can feel it dilate the base of your cock, stopped up for a second by " + player2.short + "'s sphincter, and then it pushes through, widening " + player2.mf("his", "her") + " butthole in the process.  Your flare feels as wide as one of Aunt Nancy's plates back at the bar, immobilizingly thick and pulsing with every hammering heartbeat that pounds through it.  You release some of your pent-up, achingly hot seed into " + player2.mf("his", "her") + " butt with a cry of joy.  Wriggling down against " + player2.mf("him", "her") + ", you squeeze " + player2.mf("his", "her") + " pulsing erection");
-        if (player2.cockTotal() > 1) outputText("s");
+        if (player2.cocks.length > 1) outputText("s");
         outputText(" between your bodies, " + player2.mf("his", "her") + " liquid love exploding all over your cock-locked forms.  Each time you cum, a fresh-squeezed spurt of semen splatters into your tits, " + player2.mf("his", "her") + " prostate violently being milked by the heady flows of vixen-spunk you force inside " + player2.mf("his", "her") + " rectum.");
         if (player2.hasVagina()) outputText("  You don't notice the female fluids that drip from her sodden slit - they soak into your big balls, already forgotten.");
         outputText("\n\n" + player2.short + " kisses you, or at least tries to - " + player2.mf("his", "her") + " body wiggles " + player2.mf("him", "her") + " away with every blissful spurt that " + player2.mf("he", "she") + " makes");
         if (player2.cumQ() >= 500) {
             outputText(", made worse by the sheer volume of spunk " + player2.mf("his", "her") + " cock");
-            if (player2.cockTotal() > 1) outputText("s exude");
+            if (player2.cocks.length > 1) outputText("s exude");
             else outputText(" exudes");
         }
         outputText(".  Wonderfully, " + player2.mf("his", "her") + " belly begins to round out from your seemingly endless flow of animal jizz.  Without meaning to, you imagine " + player2.mf("him", "her") + " as your uber-pregnant, belly-dragging brood-mare, cum drooling from every packed hole and " + player2.mf("his", "her") + " body drenched in excess.  The thought sets off another explosive orgasm, even before the first has finished.  Your climax is so powerful that your balls feel like they're being squeezed in a vice.  " + player2.short + "'s asshole fountains cum around the edges of your potent phallus as it's filled beyond capacity.  " + player2.mf("His", "Her") + " belly rounds just as you imagined it, and you begin to piston your hips while your eyes roll back, unseeing.  You don't care, you're drooling all over your spunked up broodmare and giving " + player2.mf("him", "her") + " another load of kits, even if it is in " + player2.mf("his", "her") + " ass!");
@@ -671,7 +671,7 @@ export class UrtaQuest extends NPCAwareContent {
     // Put a PC dick in Urta's vag(C)*
     private putAPCDickInUrtaCoochies(truth: boolean): void {
         clearOutput();
-        let x: number = player2.cockThatFits(urta.urtaCapacity());
+        let x: number = player2.cocks.cockThatFits(urta.urtaCapacity());
         outputText("You push " + player2.short + " down onto the ground, glad that " + player2.mf("he", "she") + "'s not wearing " + player2.mf("his", "her") + " gear right now.  Unfortunately, you've still got to get out of yours, an action made all that more difficult by the heat welling up in your groin.  Your rebellious cock is already half-stiff, lifting the hem of your armored skirt away from your thighs.  Fingers scrabbling, you struggle with your chestpiece's bindings.  Your nipples stiffen, scraping against the inside of it while you fight with to remove it.  You straddle " + player2.short + "'s waist to hold " + player2.mf("him", "her") + " down while you work the bothersome, restraining material free, practically grinding your semi-rigid dick against " + player2.mf("his", "hers") + " in excitement.  " + player2.mf("His", "Her") + " hands begin aiding you in your task, allowing your tightly compressed breasts to finally, happily breathe.");
 
         outputText("\n\nYour cock throbs in tune with your heartbeat, each pulsation causing a thick gobbet of anticipatory precum to splat wetly onto your lover's belly, but you aren't in the mood to indulge it this time.  If you're risking the possibility of never returning to your lover's arms again, then you want to remind yourself yet again of the first man ");
@@ -2742,13 +2742,13 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nWell, this is quite the surprise!  You have no idea who 'Taoth' is, but you can only guess that it's some kind of spirit or demon or something.  She seems to have been put into some kind of wild rut and heat, determined to produce a baby to release this... thing from inside of her.  Do you");
         if (player.gender > 0) outputText(" fuck the horny fox and help her out of her predicament, or");
         outputText(" send her to Tel'Adre to find a suitable partner, like Edryn?");
-        /*if(player.hasCock()) {
-            if(player.cockThatFits(urtaCapacity()) < 0) outputText("  A shame you're too big to fit inside her.");
+        /*if(player.cocks.length > 0) {
+            if(player.cocks.cockThatFits(urtaCapacity()) < 0) outputText("  A shame you're too big to fit inside her.");
         }*/
         // Genderless PCs auto-select the Edryn option, KnockUrta requires PC has penis, KnockMe requires PC has vagina
         menu();
         // [KnockUrta] [KnockMe] [Edryn]
-        if (player.hasCock()) addButton(0, "KnockUrta", knockUpUrtaWithGodChild);
+        if (player.cocks.length > 0) addButton(0, "KnockUrta", knockUpUrtaWithGodChild);
         if (player.hasVagina()) addButton(1, "KnockMe", getKnockedUpWithGodChild);
         addButton(2, "Edryn", urtaAndEdrynGodChild);
 
@@ -2756,21 +2756,21 @@ export class UrtaQuest extends NPCAwareContent {
     // PC Knocks Up Urta with God Child*
     private knockUpUrtaWithGodChild(): void {
         clearOutput();
-        let x: number = player.cockThatFits(urta.urtaCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(urta.urtaCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("Well, this problem seems like it can solved the same way you've dealt with most of Urta's issues - with the judicious application of sperm.  You strip out of your [armor], which causes the lust-crazed vixen's eyes to bulge in appreciation, her mouth beginning to drool nearly as much as her genitals.  She whimpers needily, \"<i>Now?  Can we do it now?</i>\"  One after another, she takes trembling steps towards you, each movement a shuffling half-step, as if she's afraid you'll run away.  Feverish sweat drips from her forehead, and her ears are constantly twitching this way and that.");
         outputText("\n\nYou admit to her that you'll fuck her and fill her, whatever it takes to help her through this.");
         outputText("\n\nAt first, the gray-furred fox smiles gratefully, like someone finding water after a day without, but then, it twists into a manic, depraved grin, full of teeth and slavering saliva.  She doubles over like she's in pain, her legs pulled tight to her heaving breasts.  Uncoiling like a spring, the fertility-crazed vixen launches herself toward you, a ball of flying, sexual fury.  She slams into your [chest], hurling you over to the ground, kissing you with lip-bruising force, her tongue forcing its way into your mouth, slapping at your tongue, lapping at every crevice of your oral opening.");
 
         outputText("\n\nYou feel wetness dripping in the middle of your [fullChest] and over [eachCock], the twin streams of sex-lube just pouring out of Urta like water from a broken dam.  Her green eyes pin you under their overly intense weight, searching you.  She holds herself like that, grinding her fat, flared cockhead along your middle, smearing her plush vulva and sweaty nutsack against");
-        if (player.cockTotal() == 1) outputText(" your own");
+        if (player.cocks.length == 1) outputText(" your own");
         else outputText(" [oneCock]");
         outputText(".  The nub of her clit is a diamond-hard button that drags across your sensitive " + skin(player) + ", aggressively smashed into your genitals.  Still, somehow, she seems to be holding back, probing you with some last vestige of sanity for your consent.");
 
         outputText("\n\nSighing, you figure you may as well lie back and enjoy it, and you push your tongue back against hers, letting her set the fevered, frenzied pace but along for the ride regardless.  She picks up on the change in your attitude and shifts, a soft-fingered grip snaring [oneCock] and lifting it up, pressing it into the slick wetness between her thighs.  You gasp, muffled by her overwhelmingly intense french-kiss, the fox-girl's puffy black lips smothering your own in warm, wet affection.  Likewise, the onyx opening of her vagina yields against your " + cockDescript(game.player, x) + ", clinging tightly around your girth as they swallow the first few inches of you.  Already, you can feel her inner walls massaging your tender erection towards orgasm.  They squeeze and tug on your " + cockHead(player, x) + " powerfully while small squirts of fox-lube drizzle down to your [sheath].  The fox drives herself the rest of the way down onto you.  Her hips hit yours with a loud smack, splattering her moisture down your [legs].");
 
         outputText("\n\nFinally, Urta breaks the kiss, panting for air as she begins to buck and rock atop you.  Your " + cockDescript(game.player, x) + " shivers against the squeezing pressures the frenzied fox is forcing upon you, and already you can feel yourself trickling and leaking into her sodden vice.  Both of your bodies have become absolutely drenched in sticky, musky horse-pre");
-        if (player.cockTotal() > 1) outputText(", the mess made worse by your multiple-cocked virility.  There's so much that the clear juices roll off you to either side, puddling in your blankets below");
+        if (player.cocks.length > 1) outputText(", the mess made worse by your multiple-cocked virility.  There's so much that the clear juices roll off you to either side, puddling in your blankets below");
         outputText(".  Her nipples dig into yours");
         if (player.hasFuckableNipples()) {
             outputText(", kissing into the ");
@@ -2882,9 +2882,9 @@ export class UrtaQuest extends NPCAwareContent {
         player.cuntChange(60, true, true, false);
 
         outputText("\n\nYou hold on to her waist for support, teeth clacking against each other with each bone-jarring, cunt-filling rut.  Urta's gone absolutely wild!  Her copious, ever-dripping pre is pouring out of your abused, cock-gaped slit, unimpeded by the girthy horse-cock that enters and exits, so fast it might as well be a blur.  Helpless under the onslaught, you moan");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(", your own forgotten length");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" laying on your stomach, bouncing fitfully but ultimately ignored.");
         }
         else outputText(", the slippery wetness of your [vagina] and the sheer hardness of your [clit] overwhelming.");

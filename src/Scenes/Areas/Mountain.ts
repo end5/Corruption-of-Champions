@@ -39,7 +39,7 @@ export class Mountain {
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] < 3) {
                 trace("CHANCE AT HELLHOUND GAO");
                 // Requires canine face, [either two dog dicks, or a vag and pregnant with a hellhound], at least two other hellhound features (black fur, dog legs, dog tail), and corruption >=60.
-                if (player.faceType == FACE_DOG && (player.dogCocks() >= 2 || (player.hasVagina() && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND)) && player.cor >= 60 && player.tailType == TAIL_TYPE_DOG && (player.lowerBody == LOWER_BODY_TYPE_DOG || player.hairColor == "midnight black")) {
+                if (player.faceType == FACE_DOG && (player.cocks.dogCocks() >= 2 || (player.hasVagina() && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND)) && player.cor >= 60 && player.tailType == TAIL_TYPE_DOG && (player.lowerBody == LOWER_BODY_TYPE_DOG || player.hairColor == "midnight black")) {
                     trace("PASS BODYCHECK");
                     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] == 0) {
                         hellHoundScene.HellHoundMasterEncounter();
@@ -101,7 +101,7 @@ export class Mountain {
             trace("IMP/Gobb");
             // Dicks + lots of cum boosts goblin probability
             // Vags + Fertility boosts imp probability
-            if (player.totalCocks() > 0) impGob--;
+            if (player.cocks.length > 0) impGob--;
             if (player.hasVagina()) impGob++;
             if (player.totalFertility() >= 30) impGob++;
             if (player.cumQ() >= 200) impGob--;
@@ -176,7 +176,7 @@ export class Mountain {
                     if (player.hasVagina()) outputText("dampens");
                     else outputText("twinges");
                     outputText(", aching to be filled");
-                    if (player.hasCock()) outputText(", while [eachCock] rises to attention, straining at your [armor]");
+                    if (player.cocks.length > 0) outputText(", while [eachCock] rises to attention, straining at your [armor]");
                     outputText(".");
 
                     outputText("\n\nYou can barely see it from your vantage point, but you can imagine it: the semi-transparent pre-cum dribbling from the minotaur's cumslit, oozing down onto your tongue.  Your entire body shivers at the thought, whether from disgust or desire you aren't sure.  You imagine your lips wrapping around that large equine cock, milking it for all of its delicious cum.  Your body burns hot like the noonday sun at the thought, hot with need, with envy at the cow-girl, but most of all with arousal.");
@@ -273,9 +273,9 @@ export class Mountain {
         outputText("\n\nThe minotaur grunts, finally, as if he finds you acceptable, and turns back to the plush ass before him, plowing into it once more.  The cow-girl, however, motions for you to move forward, and latches onto a [nipple] when you do.  Her soft lips encircle your areola, while her tongue dances over the rapidly hardening flesh of your teat.  Your breasts tingle with the slightest bit of suction, making you gasp as small droplets of milk escape your nipple and roll over the cow-girl's tongue.  She sucks more and more, eagerly gulping down your refreshing lactic beverage.");
 
         outputText("\n\nAll the while the minotaur continues grunting, thrusting his massive member into the woman's hungry cunt.  The two rock back and forth, pushing her face right into your breast before pulling back again.  The cow-girl's legs tremble and you suddenly find her arm grasping your shoulder for support.  Her other hand drifts down between your own naked legs, ");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("ignoring your cock");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" entirely, ");
         }
         outputText("slipping a finger into your moistening ");
@@ -289,7 +289,7 @@ export class Mountain {
         outputText("\n\nThe broad-shouldered minotaur urges his mate onto her knees while he does the same, his dick never leaving its temporary home.  The cow-girl pulls you along, bringing you to your knees and then onto your back.  You have a moment of sudden modesty as you fold your legs, trying to block your crotch from view.  The bovine woman simply chuckles in between moans and lightly presses your knees apart.  Your legs spread wide, lewdly showing off your nether region to the cow-girl, and anyone else that's watching.");
 
         outputText("\n\nWithout wasting any time, the girl leans down and");
-        if (player.hasCock()) outputText(", once again ignoring your manhood completely");
+        if (player.cocks.length > 0) outputText(", once again ignoring your manhood completely");
         outputText(", dives tongue first into your wet ");
         if (player.hasVagina()) outputText("quim");
         else outputText("back door");

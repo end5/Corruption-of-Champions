@@ -199,7 +199,7 @@ export class Sophie extends Harpy {
         const select: number = 1;
         let rando: number = 1;
         // Update attacks for girls/neuters
-        if (!player.hasCock() || this.effects.findByType(StatusAffects.BimboBrawl) >= 0) {
+        if (!player.cocks.length > 0 || this.effects.findByType(StatusAffects.BimboBrawl) >= 0) {
             // Talons
             special1 = talonsSophie;
             // Batter
@@ -216,7 +216,7 @@ export class Sophie extends Harpy {
             // compulsion
             special3 = sophieCompulsionAttack;
         }
-        if (player.hasCock() && this.effects.findByType(StatusAffects.BimboBrawl) < 0) rando = 1 + rand(3);
+        if (player.cocks.length > 0 && this.effects.findByType(StatusAffects.BimboBrawl) < 0) rando = 1 + rand(3);
         else rando = 1 + rand(2);
         if (rando == 1) special1();
         if (rando == 2) special2();

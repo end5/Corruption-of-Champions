@@ -102,7 +102,7 @@ export class Raphael extends NPCAwareContent implements TimeAwareInterface {
         // ({If female player has gotten smaller than 4 feet}
         if (player.tallness < 48) return false;
         // ({If player has grown ANY cock and balls}
-        if (player.balls > 0 || player.cockTotal() > 0) return false;
+        if (player.balls > 0 || player.cocks.length > 0) return false;
         // (For now:
         // ({If player has lost all gender}
         if (player.gender == 0) return false;
@@ -321,7 +321,7 @@ export class Raphael extends NPCAwareContent implements TimeAwareInterface {
             // ({If female player has gotten smaller than 4 feet}
             if (player.tallness < 48) outputText("Raphael squints like he has trouble seeing you from there, because of your dimunitive size. \"<i>I've dated goblins once... didn't work out.</i>\"\n\n", false);
             // ({If player has grown ANY cock and balls}
-            if (player.balls > 0 || player.cockTotal() > 0) outputText("\"<i>What is that bulge below the tight outfit I gave you?</i>\" The fox inspects your groin. \"<i>No, never mind. I don't want to know.</i>\"\n\n", false);
+            if (player.balls > 0 || player.cocks.length > 0) outputText("\"<i>What is that bulge below the tight outfit I gave you?</i>\" The fox inspects your groin. \"<i>No, never mind. I don't want to know.</i>\"\n\n", false);
             // (For now:
             // ({If player has lost all gender}
             if (player.gender == 0) outputText("\"<i>There's... something different about you today. Your smell, it has changed.</i>\"\n\n", false);

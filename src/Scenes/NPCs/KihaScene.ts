@@ -228,10 +228,10 @@ export class KihaScene extends NPCAwareContent {
         }
         // Vagina with optional double-dick!
         let fuckHer: () => void = null;
-        if (player.hasCock()) {
-            if (player.cockThatFits(monster.vaginalCapacity()) != -1 && player.lust >= 33) {
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(monster.vaginalCapacity()) != -1 && player.lust >= 33) {
                 outputText("\n\nYou could fuck her vagina", false);
-                if (player.cockThatFits2(monster.vaginalCapacity()) != -1 && player.cockTotal() > 1)
+                if (player.cocks.cockThatFits2(monster.vaginalCapacity()) != -1 && player.cocks.length > 1)
                     outputText(" and ass", false);
                 outputText(".", false);
                 fuckHer = victoryDickKiha;
@@ -239,7 +239,7 @@ export class KihaScene extends NPCAwareContent {
         }
         let buttFuck: () => void = null;
         // Buttfuck 20 or less
-        if (player.cockThatFits(monster.analCapacity()) >= 0 && player.lust >= 33) {
+        if (player.cocks.cockThatFits(monster.analCapacity()) >= 0 && player.lust >= 33) {
             buttFuck = analRapuzulaKiha;
         }
         // Conversation Only - Emotional Rape! (40- Corruption!)
@@ -267,8 +267,8 @@ export class KihaScene extends NPCAwareContent {
             outputText("The dragoness sighs and glances around.  \"<i>Since you weren't able to satisfy me in battle, let's see if you have anything else to offer...</i>\"\n\n", false);
 
             outputText("Leaving her axe to rest a few feet away, stuck on the ground, Kiha strips off your " + player.armorName + " revealing your ", false);
-            if (player.hasCock()) outputText(multiCockDescriptLight(game.player), false);
-            if (player.hasCock() && player.hasVagina()) outputText(" and ", false);
+            if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player), false);
+            if (player.cocks.length > 0 && player.hasVagina()) outputText(" and ", false);
             if (player.hasVagina()) outputText(vaginaDescript(player), false);
             outputText(".\n\n", false);
             // TO THE RAPES!
@@ -303,7 +303,7 @@ export class KihaScene extends NPCAwareContent {
         outputText("Kiha recoils at the drops of white beading atop your " + nippleDescription(player, 0) + " and asks, \"<i>Do you really think that's hot?  It's disgusting.  A perversion of the body only a sick... MAMMAL would enjoy.</i>\"\n\n", false);
 
         outputText("The scaly woman leans down to tug on your " + nippleDescription(player, 0) + "s in turn, laughing every time a spurt of milk erupts from one of your tits.  Each rough squeeze sends shivers of erotic sensation through your body, and you quickly grow aroused from the rough treatment.  Kiha keeps going, ", false);
-        if (player.hasCock()) outputText("not noticing the stiffening in your loins", false);
+        if (player.cocks.length > 0) outputText("not noticing the stiffening in your loins", false);
         else if (player.hasVagina()) outputText("not noticing the scent of your growing need", false);
         else outputText("not noticing the flush of your skin", false);
         outputText(" as she callowly milks your breasts.  She isn't even blushing; if anything, her expression reminds you of a child playing with a new toy.  Kiha isn't aroused by this at all!\n\n", false);
@@ -342,7 +342,7 @@ export class KihaScene extends NPCAwareContent {
     private kihaRapesMen(): void {
         outputText("", true);
         spriteSelect(72);
-        let x: number = player.cockThatFits(monster.vaginalCapacity());
+        let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = 0;
         outputText("You try to rise, but the dragon girl whips around, her long, thick tail delivering a subduing crack against the side of your head, dropping you back onto your " + buttDescription(player) + ".  Triumphantly standing over you, the scaled woman eyes you with a panting breathlessness that betrays the coldness in her gaze.  She squints, arcing an imperious eyebrow as she looks you up and down, drawing her hands back to shoulder level and barely brushing against her breasts.  Her tail lashes back and forth between her legs, wrapping around her calves as she lifts a clawed foot and rests it lightly upon your stiffening groin.  Apparently, your fight left her wanting more than just your gems.  Her flexible toes squeeze your " + multiCockDescriptLight(game.player) + " through your " + player.armorName + ", and she snorts in derision.  \"<i>This is it, huh?  Pathetic.  I'm going to have to do all the work if I have any hope of you satisfying me.</i>\"\n\n", false);
 
@@ -364,8 +364,8 @@ export class KihaScene extends NPCAwareContent {
         outputText(".  The tail in your mouth begins to pump deeper into your throat, wrenching your jaw open as the slick, textured scales thrust past your tongue and uvula to snake into your esophagus, forcing the girl's honey into every crevasse of your maw.  The sight of you being face-fucked by her phallic appendage is enough to bring her to a second, screaming climax, Kiha's ass finally loosening enough for the orgasm seething in your loins to burst free", false);
         if (player.balls > 0) outputText(", your " + ballsDescriptLight(player) + " practically leaping in over-burdened joy as their heavy load rushes through your flesh", false);
         outputText(".  A geyser of hot spunk sprays from your " + cockDescript(game.player, x) + ", flooding her innards with the excruciatingly hefty torrent of seed all her teasing and abuse built within you.", false);
-        if (player.cockTotal() > 1) {
-            if (player.cockTotal() > 2) outputText("  Your unoccupied shafts spray ropey strands of cum all around you, jerking and straining under the weight of the dragoness.", false);
+        if (player.cocks.length > 1) {
+            if (player.cocks.length > 2) outputText("  Your unoccupied shafts spray ropey strands of cum all around you, jerking and straining under the weight of the dragoness.", false);
             else outputText("  Your unoccupied shaft sprays ropey strands of cum all around you, jerking and straining under the weight of the dragoness.", false);
         }
         outputText("  She pulls her sphincter tight to keep the fountaining jizz inside her and jams her tail half way down your throat until the thick flesh can't fit past your jaw anymore.  She wriggles the limb within you and pants sadistically as the bulge in your neck slides another inch deeper.  You begin to choke.\n\n", false);
@@ -427,9 +427,9 @@ export class KihaScene extends NPCAwareContent {
         outputText(".\n\n", false);
 
         // If Multi/Herm
-        if (player.cockTotal() > 1 || player.gender == 3) outputText("\"<i>W-what are you going to do, you freak of nature?  If you make me play with those, I swear... I swear I'll hit you!</i>\"", false);
+        if (player.cocks.length > 1 || player.gender == 3) outputText("\"<i>W-what are you going to do, you freak of nature?  If you make me play with those, I swear... I swear I'll hit you!</i>\"", false);
         // If Cock
-        else if (player.hasCock()) outputText("\"<i>G-get that away from me!  As if I'd want anything to do with your hard, juicy cock!  Idiot!</i>\"", false);
+        else if (player.cocks.length > 0) outputText("\"<i>G-get that away from me!  As if I'd want anything to do with your hard, juicy cock!  Idiot!</i>\"", false);
         // If Vagina
         else if (player.hasVagina()) outputText("\"<i>What do you think you're going to do with that pathetic, dripping pussy, huh?  I swear, if you make me l-lick that thing...</i>\"", false);
         // If Genderless
@@ -445,9 +445,9 @@ export class KihaScene extends NPCAwareContent {
         outputText("The girl tries to speak, but you reach down towards her nether region, placing two fingers along the smooth of her belly and slowly creeping lower and lower, eliciting a small gasp from your victim as you reach her moist entrance.  She manages to reach out and grasp your hand, tensing as you begin to stroke her wetness, already lubricated by her juices.  You chuckle, announcing that she must've been turned on by the kiss - if she wasn't wet already, she sure as hell is now.  \"<i>N-no!  You're... you're wrong...</i>\" the dragon-girl stammers, though she finds herself unable to continue while you increase the speed of your heavy petting.  The draconic woman is a slave to your nimble fingers, with any attempt to stifle her moans ultimately failing as an odd yelp or gasp escapes her pouting lips.  With a gentle push you enter inside her, your panting toy clamping her legs shut against your probing fingers.\n\n", false);
 
         outputText("You notice the dragon-girl's warm breath pervade the air as you feel the warmth of her insides, her slick tongue beginning to drool out of her mouth from the sensation of her moist lips being invaded by your stern hand.  The aroused state of her nipples poking up into the humid air give you an idea, as you take your free hand and begin to grope and massage the breasts in between your fingers.  The teats perk to your ministrations while you roughly squeeze her heaving bosom, almost as if to milk her like a cow.  A grunt escapes your lips as you rub your ", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(multiCockDescriptLight(game.player) + " against her soft flesh, ", false);
-            if (player.cockTotal() == 1) outputText("a small bead of pre-cum forming from the tip and slathering her back with your juices.", false);
+            if (player.cocks.length == 1) outputText("a small bead of pre-cum forming from the tip and slathering her back with your juices.", false);
             else outputText("small beads of pre-cum forming from the tips and slathering her back with your juices.", false);
         }
         else outputText(nippleDescription(player, 0) + "s against the hard ridges of her back, your tongue softly licking her smooth skin.", false);
@@ -456,14 +456,14 @@ export class KihaScene extends NPCAwareContent {
         outputText("There's nothing your hot and bothered slave can do outside of melting underneath the heat of your own body, the irony of the dragon-girl losing in a game of passions lost in the rough, commanding movements of your hands and the taste of her plush lips against your own.  You're intertwined as a single being of pure lust under the shade of the tree, which ends as soon as it began when the draconic beast-girl shudders in pleasure, signalling her release.\n\n", false);
 
         outputText("Her moist juices flush from beneath her, drenching your fingers in her essence.  She slowly removes her lips from yours, moving closer towards you", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(" and accidentally brushing against your trembling genitals, pushing you hard enough to cause you to ejaculate against her backside", false);
             player.orgasm();
         }
         outputText(".  The girl sighs in relief, tuckered out more from the sensual experience than the battle itself.  You slowly remove yourself, leaving the tired girl underneath the tree to rest.\n\n", false);
 
         outputText("\"<i>I... hate you... </i>\" she whispers, before turning in for a deep slumber.  You watch her soft face as she snores, graceful as a pig, before walking back to camp.", false);
-        if (!player.hasCock()) dynStats("lus", 120);
+        if (!player.cocks.length > 0) dynStats("lus", 120);
         cleanupAfterCombat();
     }
     // *Victory Tail-dildo, for girls - Fencrafted for maximum pomf (Zed)
@@ -485,7 +485,7 @@ export class KihaScene extends NPCAwareContent {
         outputText("  You tire of her constant insults and inability to face facts.  A-ha!  You grab your underwear and ball it up, noting the pungent smell of your sweat and sex.  The scaly slut recoils, but you close in and stuff the musky undergarments in her mouth, ignoring her struggles as you grab some vines and bind her arms.  Perfect!\n\n", false);
 
         outputText("Kiha's eyes well up with tears while her eyebrows stay locked in a perpetually angry glare.  At the same time, you begin to hear fluids dripping down to the ground.  You surreptitiously glance below and confirm that your initial thought was correct - she's gotten much wetter after having to suck on your pussy-", false);
-        if (player.hasCock()) outputText(", cum-,", false);
+        if (player.cocks.length > 0) outputText(", cum-,", false);
         outputText(" and sweat-soaked underwear.  The black, crimson-embedded slits of her eyes narrow in barely suppressed rage, but as she is now, she's no threat to you.\n\n", false);
 
         outputText("You reach back down and once again take hold of the rebellious dragon's tail.  \"<i>I'm going to get myself off.  Perhaps if you had been more agreeable I might have considered helping you out too.  Now, if you don't mind, I think this nice, ribbed tail-dildo should work just fine.</i>\"  You twist her squirming appendage about and rub the thicker bottom scales over your lower lips, your body shivering from the pleasure.  As you slide the hot, scaled pretend-penis along your femininity, it ", false);
@@ -520,8 +520,8 @@ export class KihaScene extends NPCAwareContent {
     // *Victory Dicking - Fencrafted
     private victoryDickKiha(): void {
         spriteSelect(72);
-        const x: number = player.cockThatFits(monster.vaginalCapacity());
-        const y: number = player.cockThatFits2(monster.vaginalCapacity());
+        const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
+        const y: number = player.cocks.cockThatFits2(monster.vaginalCapacity());
         outputText("", true);
         outputText("You walk up and push the dragoness off the tree and onto her side to get a better look at her sopping vagina and tight rump.  Initially she doesn't react, though when she realizes what you're about to do, she cries, \"<i>How very much like my old masters you are.  As soon as you've won a fight, you think of nothing but sex.  ", false);
         if (monster.lust > 99) outputText("Just because you've aroused my body doesn't mean I'll enjoy this!", false);
@@ -542,9 +542,9 @@ export class KihaScene extends NPCAwareContent {
         outputText("You advance on her helpless form and repeat your actions, raising her leg and shoving her tail aside.  She resists, but not as fiercely as before.  Her tail is easily kept at bay while you lower yourself to align your " + hipDescription(player) + " with the Kiha's moist cunt.  The heat rolling out of her loins is unreal.  Her pussy seems to fog the air with its combination of warmth and wetness, and as you press your " + cockDescript(game.player, x) + " closer, it feels almost like a woman is about to give you head, with her hot breath washing over your genitals.\n\n", false);
 
         // (DOUBLE DICKING VARIANT)
-        if (y != -1 && player.cockTotal() > 1) {
+        if (y != -1 && player.cocks.length > 1) {
             outputText("That perfect, dripping entrance beckons for your " + cockDescript(game.player, x) + ", but your other penis", false);
-            if (player.cockTotal() == 2) outputText(" is", false);
+            if (player.cocks.length == 2) outputText(" is", false);
             else outputText("es are", false);
             outputText(" aching so much that you may as well try to double your pleasure and fun.  Without hesitation, you slide two cocks inside your unsuspecting partner.  The top one smoothly sheaths itself inside Kiha's velvety tunnel.  Her tightly-clenched pucker proves more resistant to your " + cockDescript(game.player, y) + "'s sudden intrusion, pushing back with near painful force as inch after inch penetrates her delicious rear passage.  One last, glorious push completely buries both your bones in their draconic sockets, much to the delight of your captive, if her moans are to be believed.\n\n", false);
 
@@ -581,9 +581,9 @@ export class KihaScene extends NPCAwareContent {
             if (player.isNaga() || player.tailType == TAIL_TYPE_LIZARD || z >= 0) outputText(" gasping mouth,", false);
             outputText(" and tight anus with waves of white.", false);
             if (player.cumQ() >= 500) outputText("  Her belly distends before long, stuffed by the heavy loads of cream you push out.", false);
-            if (player.cockTotal() > 2) {
+            if (player.cocks.length > 2) {
                 outputText("  You even coat her belly and tits with seed thanks to your extra penis", false);
-                if (player.cockTotal() > 3) outputText("es", false);
+                if (player.cocks.length > 3) outputText("es", false);
                 outputText(".", false);
             }
             outputText("\n\n", false);
@@ -702,13 +702,13 @@ export class KihaScene extends NPCAwareContent {
         spriteSelect(72);
         // Kiha PC victory anal scene - by Space.
         // Requires at least one penis with area <= 20
-        let x: number = player.cockThatFits(monster.analCapacity());
+        let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = 0;
-        const y: number = player.cockThatFits2(monster.analCapacity());
+        const y: number = player.cocks.cockThatFits2(monster.analCapacity());
         outputText("You watch the dragoness slump against the tree, her tail barely covering her soaked snatch.  You lick your lips hungrily at the prospect of ravishing the haughty dragon-girl's cunny, but decide she deserves something a bit more special.  You want that tight ass of hers, and you want it now.\n\n", false);
 
         outputText("You tell her to turn around but, still defiant, she refuses.  Glowering, you use your most commanding voice and bellow the command at her.  She still refuses.\n\n", false);
-        if (player.cockArea(x) <= 20) outputText("You quickly shed your " + player.armorName + ", letting your " + multiCockDescriptLight(game.player) + " out to breathe in the warm, swampy air.  Her red eyes widen slightly, but she quickly regains her composure, suddenly all confidence despite her obvious loss.  \"<i>Oh? What do you think you're gonna do with THAT, huh?  Just ravish me like some kind of sex-crazed demon? Is that your genius plan?</i>\"\n\n", false);
+        if (player.cocks.cockArea(x) <= 20) outputText("You quickly shed your " + player.armorName + ", letting your " + multiCockDescriptLight(game.player) + " out to breathe in the warm, swampy air.  Her red eyes widen slightly, but she quickly regains her composure, suddenly all confidence despite her obvious loss.  \"<i>Oh? What do you think you're gonna do with THAT, huh?  Just ravish me like some kind of sex-crazed demon? Is that your genius plan?</i>\"\n\n", false);
         else outputText("You quickly shed your " + player.armorName + ", letting your " + multiCockDescriptLight(game.player) + " out to breathe in the warm, swampy air. Her red eyes widen slightly, but she quickly regains her composure, suddenly all confidence despite her obvious loss.  \"<i>Hah, look at that pathetic thing.  You might have gotten me a little hot, but I really doubt you could please anyone with that puny piece of equipment.</i>\"\n\n", false);
 
         outputText("Her words sting, and you resolve to make sure she enjoys what you're about to do.  You approach the defensive dragon and take her arms in your hands and turn her around.  Surprisingly, she resists your movements very little, only struggling when you aggressively push her face into the tree.\n\n", false);
@@ -744,7 +744,7 @@ export class KihaScene extends NPCAwareContent {
         // [if multi-cocks and one is within cock area of 20]
         if (y >= 0) {
             outputText("A perverted idea forms in your mind. You reach down, grab", false);
-            if (player.cockTotal() == 2) outputText(" your other dick", false);
+            if (player.cocks.length == 2) outputText(" your other dick", false);
             else outputText(" another of your dicks", false);
             outputText(", and line it up to the entrance of her now-stretched hole, ramming them both in on your next thrust, expanding her tight passage far beyond its normal limits.  The dragon breaks her silence with a shriek as your two cocks ravage her bunghole, her walls nearly crushing your members as she clenches her muscles in shock.  The extreme tightness and the unbelievable heat enveloping your dicks becomes too much, and you feel the point of no return approaching quickly.\n\n", false);
 
@@ -753,8 +753,8 @@ export class KihaScene extends NPCAwareContent {
             outputText("You pull out one final time, placing them at her gaping ring.  Knowing what you're about to do, the dragon visibly relaxes in an attempt to make it as painless as possible.  Getting a good grip on her hips, you thrust your dongs forward and pull her back onto your cocks simultaneously.  Your " + cockDescript(game.player, y) + " slips from the exposed hole and slides itself between her buttcheeks, while your remaining " + cockDescript(game.player, x) + " hits home.\n\n", false);
 
             outputText("Kiha shudders in her own climax, soaking her thighs as you finally release your seed into her ravaged ass.  Your other " + Appearance.cockNoun(player.cocks[y].cockType) + " follows its brother, painting her leather-colored skin with alabaster cream", false);
-            if (player.cockTotal() >= 3) {
-                if (player.cockTotal() == 3) outputText("; your remaining cock tarnishes the ground with your cum", false);
+            if (player.cocks.length >= 3) {
+                if (player.cocks.length == 3) outputText("; your remaining cock tarnishes the ground with your cum", false);
                 else outputText("; your remaining cocks tarnish the ground with your cum", false);
             }
             else if (player.hasVagina()) outputText("; your " + vaginaDescript(player) + " pulses with pleasure, soaking your thighs with girl-cum as your cocks unload", false);
@@ -763,7 +763,7 @@ export class KihaScene extends NPCAwareContent {
             outputText("The dragoness slumps and falls to the ground, drawing your spent shaft from her ass's depths.  It appears that she has fainted from overwhelming pain, pleasure, and exhaustion. Deciding that you're done here, you retrieve your " + player.armorName + " and leave the girl in a mixed puddle of your cum and hers.  Perhaps now she'll treat you with a little more respect.  You return to camp.", false);
         }
         else {
-            if (player.cockArea(x) <= 20) outputText("You move your hands to her breasts, feeling the lightly scaled flesh and begin tweaking her nipples in time to your continued thrusting.  She breaks her self-imposed silence with a long, pleasured sigh, but cuts it short when you laugh at her body's betrayal of her emotions.  \"<i>H-how can anyone even l-like this anyway?</i>\" she pants with barely contained pleasure.  \"<i>All you're doing is sticking your pathetic dick inside something that it isn-isn't designed for.  I-I can barely feel your ti-tiny little cock... uhh... stretching my ass, filling it with s-such force.  Its head tickling my walls with your... ohhh... pathetic attempts to get yourself o-off...</i>\"\n\n", false);
+            if (player.cocks.cockArea(x) <= 20) outputText("You move your hands to her breasts, feeling the lightly scaled flesh and begin tweaking her nipples in time to your continued thrusting.  She breaks her self-imposed silence with a long, pleasured sigh, but cuts it short when you laugh at her body's betrayal of her emotions.  \"<i>H-how can anyone even l-like this anyway?</i>\" she pants with barely contained pleasure.  \"<i>All you're doing is sticking your pathetic dick inside something that it isn-isn't designed for.  I-I can barely feel your ti-tiny little cock... uhh... stretching my ass, filling it with s-such force.  Its head tickling my walls with your... ohhh... pathetic attempts to get yourself o-off...</i>\"\n\n", false);
             else outputText("You move your hands to her breasts, feeling the lightly scaled flesh and begin tweaking her nipples in time to your continued thrusting.  She breaks her self-imposed silence with a long, pleasured sigh, but cuts it short when you laugh at her body's betrayal of her emotions.  \"<i>H-how can anyone even l-like this anyway?</i>\"  She pants with barely contained pleasure.  \"<i>Dicks don't even belong there, you... you freak!  It... it doesn't even feel good... stretching my ass, filling it with s-such force.  Its head tickling my walls with your... ohhh... pathetic attempts to get yourself o-off...</i>\"\n\n", false);
 
             outputText("Her moans become louder as you continue the butt-fuck, her hole becoming as wet as her pussy as your intruding member slides in and out of her dilated sphincter.  Her involuntary signs of enjoyment spur you on and pre flows freely from your member, allowing you to ignore her crushing tightness and enjoy the hot pleasure that envelops your " + cockDescript(game.player, x) + ".  You doubt that even her pussy's depths would give you this kind of feeling.\n\n", false);

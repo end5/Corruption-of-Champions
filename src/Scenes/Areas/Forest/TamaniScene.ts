@@ -148,13 +148,13 @@ export class TamaniScene implements TimeAwareInterface {
         else outputText("Something inside you swells up with seed, spurring your desire to new heights.", false);
         outputText("  You NEED to fuck her pussy full – NOW.\n\n", false);
         // (FITS)
-        if (player.cockArea(0) <= 90) {
+        if (player.cocks.cockArea(0) <= 90) {
             outputText("Tamani breaks the kiss and gives you a coy smile as she shimmies down your body, dropping her moist cunt onto your " + cockDescript(game.player, 0) + "'s " + cockHead(player) + ".  She swings her hips in a little circle, teasing you with her moist entrance as your drug-enhanced pre-cum bubbles and drools around her lips, mixing with her own copious fluids as it flows down your length", false);
             if (player.balls > 0) outputText(" and drips from your " + ballsDescriptLight(player), false);
             outputText(".  She stops and teases, \"<i>Ready to stuff me full of your cream?  I just KNOW I'll get pregnant from such a purrfect mate.</i>\"\n\n", false);
             outputText("Tamani doesn't wait for an answer – she pauses until you're about to reply, then drops her weight down, fully impaling herself and turning the beginnings of your reply into a babbled moan.  She plants her feet on your thighs and her arms around your back and begins bouncing up and down rapidly, squeezing and contracting, milking your " + cockDescript(game.player, 0) + " in her tight wet walls the entire time. Your inner abdominal muscles begin clenching and squeezing, sending a wave of heat through your groin as your baby-batter begins its journey towards the goblin's womb.\n\n", false);
             outputText("You grab her with both hands and slam her down, taking her to the hilt", false);
-            if (player.cockArea(0) > 30) outputText(" and watching her belly bulge from your size", false);
+            if (player.cocks.cockArea(0) > 30) outputText(" and watching her belly bulge from your size", false);
             outputText(".  She twists violently, practically thrashing in your arms as spunk begins pouring into her womb, making her belly start to bloat.  The goblin babbles incoherently with each blast of cum, stretching tighter and tighter around you as her pussy works to hold in every drop of spunk.  Her belly bloats a bit more, until the pressure is too much to bear and jism begins spurting around her opening, splattering into a puddle on the ground.\n\n", false);
             outputText("All good things eventually end, and with a sigh you pull the insensate goblin slut free of your " + cockDescript(game.player, 0) + ", watching a river of whiteness drain from between her thighs.  You set her down and the escaping jism suddenly stops, the remainder held inside by some kind of reflex.  Tamani giggles and pats her still pregnant-looking belly, \"<i>Wasn't the sample nice?  Come see me when your dick has had a chance to recover and we can do this again, and again, and again.  You're practically hooked already aren't you " + mf(player, "stud", "hun") + "?</i>\"\n\n", false);
             outputText("It takes a moment to put your " + player.armorName + " back on and make ready to leave, but somehow you know this isn't the last you've seen of this goblin.", false);
@@ -164,7 +164,7 @@ export class TamaniScene implements TimeAwareInterface {
         // (TOO BIG)
         else {
             outputText("Tamani breaks your sloppy kiss and shimmies down your body, clutching tightly to your " + cockDescript(game.player, 0) + " and " + player.skinDesc + " as she settles down lower on your groin.  The goblin somehow manages to turn herself around so that is she is hanging upside-down, with her legs and arms clutching tightly to your member while her tongue ", false);
-            if (player.hasSheath()) {
+            if (player.cocks.hasSheath()) {
                 outputText("licks the edges of your sheath", false);
                 if (player.balls > 0) outputText(" and balls", false);
             }
@@ -253,7 +253,7 @@ export class TamaniScene implements TimeAwareInterface {
                 if (player.HP < 1) outputText("You collapse, unable to fight back any longer.  For her part, Tamani seems disappointed with the outcome, but approaches your prone form in spite of your sorry appearance.", false);
                 else outputText("You tear off your clothes in a frenzy of lust and stagger towards Tamani, openly fondling your groin.   She smirks and pushes you hard, throwing you off balance and onto your back.", false);
                 outputText("  She wiggles her " + tamaniChest() + ", and despite your efforts to control your body, ", false);
-                if (player.cockTotal() == 1) outputText("an erection emerges", false);
+                if (player.cocks.length == 1) outputText("an erection emerges", false);
                 else outputText("erections sprout up like weeds", false);
                 outputText(".  She strips you down, giving you a smirk as she says, \"<i>Just lie there and I'll take what I need, babe.</i>\"\n\n", false);
             }
@@ -350,7 +350,7 @@ export class TamaniScene implements TimeAwareInterface {
         else {
             outputText("She gets down on all fours, crawling up your legs until her gloss-covered lips reach your " + multiCockDescriptLight(game.player) + ".   Warm wetness slides along your length as the gobbo-slut gets you slick and wet with her saliva.   It has quite the effect on you, turning your " + cockDescript(game.player, 0) + " into a hard trembling pleasure-center.  You sigh, enjoying the attention but more than ready to release your pent-up sexual need into the willing girl.\n\n", false);
             // (fits)
-            if (player.cockArea(0) <= 90) {
+            if (player.cocks.cockArea(0) <= 90) {
                 outputText("Tamani turns about, dragging her wet gash across you and giving you a nice view of her plump butt-cheeks.  The soft skin of her palms squeezes around you as she lifts you up, positioning your " + cockDescript(game.player, 0) + " against her womanhood.   She grinds against your " + cockHead(player) + ", her folds slowly parting to take you.  Slowly, inch after inch of dickflesh sinks into her amazingly elastic yet tight pussy.  ", false);
                 if (player.cocks[0].cockLength >= 12) outputText("Her body visibly stretches around you, and you silently thank whatever gods or demons adapted goblins to be able to fulfill this role.  ", false);
                 outputText("Moaning like a whore, she easily slips the rest of the way down, bottoming out her sopping-wet fuck-tunnel.\n\n", false);
@@ -494,29 +494,29 @@ export class TamaniScene implements TimeAwareInterface {
     public tamaniSexWon(): void {
         spriteSelect(56);
         tamaniKnockUp();
-        let x: number = player.cockThatFits(90);
-        if (x == -1) x = player.biggestCockIndex();
+        let x: number = player.cocks.cockThatFits(90);
+        if (x == -1) x = player.cocks.biggestCockIndex();
         outputText("", true);
-        if (player.cockArea(x) <= 90) {
+        if (player.cocks.cockArea(x) <= 90) {
             outputText("You grab hold of the insensate goblin by her pink-dyed hair and shove her into the mud, irritated with her constant demands and rape attempts.  The horny slut doesn't even have the grace to be ashamed of her defeat.  She just lies in the mud, wiggling her exposed ass back and forth in the air, trying to tempt you with it.\n\n", false);
             outputText("It's too tempting of a target to resist.  You open your " + player.armorName + " and allow your " + multiCockDescriptLight(game.player) + " to flop free.  You're already hard from the enticing display, and in a moment you're pressing against her lust-slicked pussy", false);
-            if (player.totalCocks() > 1) outputText(" and tight asshole", false);
+            if (player.cocks.length > 1) outputText(" and tight asshole", false);
             outputText(".  You don't allow her any say in the matter, pushing forward as you feel the small girl's flesh yield around ", false);
-            if (player.totalCocks() > 1) outputText("each of ", false);
+            if (player.cocks.length > 1) outputText("each of ", false);
             outputText("your girth", false);
-            if (player.totalCocks() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(".  She squeals happily, clearly getting what she desires.  For a moment you feel disappointed in yourself, but the sensations of her tight hole", false);
-            if (player.totalCocks() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(" clenching and squeezing around you quickly washes it away.\n\n", false);
 
             outputText("You rock back and forth methodically, treating Tamani like a tight cock-sleeve.  The goblin slut's hands rub her belly, not even attempting to pull her face out of the mud as she moans and giggles like a whore.  You keep working her cunt like a ", false);
             if (player.gender == 1) outputText("man", false);
             else outputText("herm", false);
             outputText(" possessed, sawing in and out with brutal efficiency, the wet squelches of the slut's juices driving you to piston back and forth with even greater force.  She gurgles happily, her ", false);
-            if (player.totalCocks() == 1) outputText("pussy squeezing tightly as she cums hard.\n\n", false);
+            if (player.cocks.length == 1) outputText("pussy squeezing tightly as she cums hard.\n\n", false);
             else outputText("holes squeezing tightly as she cums hard.\n\n", false);
 
-            if (player.totalCocks() > 1) {
+            if (player.cocks.length > 1) {
                 outputText("Each of your " + multiCockDescriptLight(game.player) + " pulsates, spasming inside your goblin-flesh prison, spraying a bit of sticky goo into the happy slut.   You can hear her babbling, pleasure-drunk as she quivers around you, \"<i>Fuck yes! Cu-ah-ahm in me!  Fuck fuckfuckfucKFUCKYEAH!  Oooh, that's it, put me in the dirt and show me who's boss!</i>\"  The words seem to have the desired effect, helping you empty every ounce of cock-cream into the slut's tight holes.", false);
                 if (player.cumQ() >= 250) outputText("  She pants, turning her head in the mud to watch as her belly visibly inflates, stuffed totally full of cum. ", false);
                 if (player.cumQ() >= 500) outputText("  In no time at all a river of jism pours from her, pooling below as you overwhelm her body's capacity to store spunk.", false);
@@ -538,7 +538,7 @@ export class TamaniScene implements TimeAwareInterface {
         // Too big? Jerk off with feet and bukkake
         else {
             outputText("You throw Tamani on her back, too drunk on desire to care how it feels for the tiny slut.  There's no way she could ever take ", false);
-            if (player.totalCocks() > 1) outputText("any of your massive members", false);
+            if (player.cocks.length > 1) outputText("any of your massive members", false);
             else outputText("your massive member", false);
             outputText(", so you grab her by the ankles and wrap her soft-soled feet about yourself.   You start jerking yourself off, using Tamani as a cute but expendable masturbation aid.  She chews a fingernail and massages her " + tamaniChest() + " as she watches you, doing her best to put on a show.  The little slut seems to like it.\n\n", false);
             outputText("Her feet start to grow slick with your sweat and pre-cum, sliding effortlessly along the length of your shaft as you continue to bring yourself towards orgasm.  You watch while Tamani dips her fingers into the slick folds of her hungry cunt, getting off on being used in such a perverse manner.  She coos, \"<i>How do my feet feel " + mf(player, "stud", "slut") + "?  Are they soft and slick when they slide on your cock?  Are you going to cum for Tamani and paint her white?  You are.  You know you are.  Cum for Tamani.</i>\"\n\n", false);
@@ -600,7 +600,7 @@ export class TamaniScene implements TimeAwareInterface {
         outputText("Her pregnancy swollen belly and growing breasts rub along your shaft as she kisses and squeezes it.  You're so turned on it hurts, and you KNOW it's from whatever she put in her lipstick this time.  You beg her, \"<i>Please, fuck me, I'm so horny it hurts!</i>\"\n\n", false);
 
         // (Fits) – pregnant capacity is lowered by about 50%
-        if (player.cockArea(0) <= 50) {
+        if (player.cocks.cockArea(0) <= 50) {
             outputText("Tamani pulls herself up to her feet and grabs your " + cockDescript(game.player, 0) + " with a two-handed grip, guiding it towards her dripping cunny.  She squats down, taking the entire length in a quick thrust.   She giggles and starts bouncing on you relentlessly, teasing her nipples and talking dirty to you the whole time, \"<i>Come on stud, fuck your pregnant goblin wife.   I want to walk around pregnant and dripping with your cum for the rest of the day.  If you really stuff me up I can bring it back and share with the rest of my family, what do you think about that?  Dozens of my hot little sisters and daughters stuffed with your babies?</i>\"\n\n", false);
             outputText("You cum with near-painful intensity.  Tamani is actually lifted up by the force of your ejaculation.  Cum squirts from her abused fuckhole as she slips back down, rubbing her belly with both hands and tittering girlishly.  The waves of seed you're putting out seem far beyond your normal ability, and you try to manage a glare at her, blaming her, but she just licks her lips and winks in between orgasmic moans.    Cum squirts from her, streaming down her thighs and puddling under your " + buttDescription(player) + ".  At last you finish, leaving her looking even more pregnant than before.  Your ", false);
             if (player.balls > 0) outputText(ballsDescriptLight(player), false);
@@ -683,7 +683,7 @@ export class TamaniScene implements TimeAwareInterface {
 
     public encounterTamani(): void {
         // Fems:
-        if (player.totalCocks() <= 0) {
+        if (player.cocks.length <= 0) {
             tamaniFemaleEncounter();
         }
         // Dudezillaz:
@@ -705,9 +705,9 @@ export class TamaniScene implements TimeAwareInterface {
         spriteSelect(56);
         outputText("", true);
         // Find a dick that fits
-        const primary: number = player.cockThatFits(65);
+        const primary: number = player.cocks.cockThatFits(65);
         let secondary: number = 0;
-        const cocks: number = player.totalCocks();
+        const cocks: number = player.cocks.length;
 
         outputText("Tamani crooks her finger and you come running, already feeling yourself straining against your " + player.armorName + " for a chance to fuck your wife and mistress.  She giggles, \"<i>Ohhh, how sweet, you're so ready to do your duty.</i>\"\n\n", false);
 
@@ -719,7 +719,7 @@ export class TamaniScene implements TimeAwareInterface {
             outputText("Tamani is completely right.  You grab her ass, feeling your fingers sink in to her supple flesh as you pull her back towards your ", false);
             if (cocks > 0) outputText("main ", false);
             outputText(cockDescript(game.player, 0) + ".  Her warmth spreads over your " + cockHead(player, primary) + " slowly, making you twitch and drip inside her, lubricating her already dripping channel with even more slick fluids.  With a mighty heave you push inside her, feeling yourself penetrating deep inside her, directly into her fertile womb.  Tamani rubs your " + legs(player) + " with her hands, giving you a massage as you bottom out against her, feeling her juices stain your ", false);
-            if (player.hasSheath()) outputText("sheath", false);
+            if (player.cocks.hasSheath()) outputText("sheath", false);
             else outputText("crotch", false);
             outputText("\n\n", false);
 
@@ -837,7 +837,7 @@ export class TamaniScene implements TimeAwareInterface {
 
     public tamaniAnalShits(): void {
         spriteSelect(56);
-        const x: number = player.cockThatFits(monster.analCapacity());
+        const x: number = player.cocks.cockThatFits(monster.analCapacity());
         outputText("", true);
         outputText("You grab hold of the insensate goblin by her pink-dyed hair and shove her into the mud, irritated with her constant demands and rape attempts.  The horny slut doesn't even have the grace to be ashamed of her defeat.  She just lies in the mud, wiggling her exposed ass back and forth in the air, trying to tempt you with it.\n\n", false);
 
@@ -858,7 +858,7 @@ export class TamaniScene implements TimeAwareInterface {
     public tamaniBeaten(): void {
         clearOutput();
         outputText("With the goblin defeated, you're finally free to tend to your body's true desires, even if they may be different than the ones the goblin was intent on stoking.  You shed your [armor] like a second skin, shrugging out of the offending garments with ease.  With your nude form revealed, Tamani ");
-        if (player.hasCock()) outputText("licks her lips in anticipation, eyes locked on [eachCock]");
+        if (player.cocks.length > 0) outputText("licks her lips in anticipation, eyes locked on [eachCock]");
         else outputText("frowns in displeasure, noting your lack of a penis");
         outputText(".  She's clueless to the growing size that dangles beneath your spider-half, the secret drider treasure that you usually keep retracted.  A dollop of green goo drips from the tip of the semi-hard organ, still hidden from the goblin matron.");
 
@@ -880,7 +880,7 @@ export class TamaniScene implements TimeAwareInterface {
         outputText("\n\nStill holding her fast, you simply enjoy the sensation, slowly stuffing Tamani's womb full of round orbs and gushy green padding.  A trickle of extra ooze escapes the curvy skank's thighs, mixed with her own clear juices.  It forms a sticky puddle beneath her that only grows larger as the goblin bloats.  Trickles of milk suddenly burst from the darkened nipples to wet your fingers, so you squeeze harder, milking the little slut like the whore-cow she is.  She cries, \"<i>FUCK YES!  Make me carry your babes and squirt milk everywhere!  Gods... so... pregnant...</i>\"");
 
         outputText("\n\nTamani's hands begin to roam across the taut dome of her gravid belly as it swells still bigger, and with a jubilant shriek, she climaxes, spraying gouts of green-tinged pussy-juice in a fan beneath her.  She goes limp in your grip, though her milk keeps flowing unimpeded.  You let her go, though she's held to your prong by the pressure of the last few eggs that pass into her stretchy, fertile womb.  You hum happily, feeling completely relieved, utterly languid and satisfied.");
-        if (player.hasCock()) outputText("  White coats the goblin from her shoulders up, the only evidence of your male satisfaction.  You were so focused on the act of impregnation and the unique pleasure that it provides that you barely noticed [eachCock] erupting in sympathetic pleasure.");
+        if (player.cocks.length > 0) outputText("  White coats the goblin from her shoulders up, the only evidence of your male satisfaction.  You were so focused on the act of impregnation and the unique pleasure that it provides that you barely noticed [eachCock] erupting in sympathetic pleasure.");
         outputText("\n\nAt last, the bloated bitch slides into the gooey green puddle with a splash, freeing your ovipositor to retract.  She immediately begins snoring, clearly as satisfied as you.  What a strange creature.");
         flags[kFLAGS.TIMES_OVIPOSITED_TAMANI]++;
         // Don't encounter Tamani for 3 days if fertilized

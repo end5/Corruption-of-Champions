@@ -69,8 +69,8 @@ export class Lake {
             return;
         }
         // Chance of dick-dragging! OLD:10% + 10% per two foot up to 30%
-        temp = 10 + (player.longestCockLength() - player.tallness) / 24 * 10;
-        if (temp > 0 && player.longestCockLength() >= player.tallness - 10 && player.totalCockThickness() >= 8)
+        temp = 10 + (player.cocks.longestCockLength() - player.tallness) / 24 * 10;
+        if (temp > 0 && player.cocks.longestCockLength() >= player.tallness - 10 && player.cocks.totalCockThickness() >= 8)
             choice[choice.length] = 8;
 
         // ONE TIME EVENTS
@@ -321,11 +321,11 @@ export class Lake {
         if (player.lust < 33) outputText("\n\nYou aren't aroused enough to fuck her.");
         else {
             // (If cocksize above 48")
-            if (player.hasCock()) {
-                if (player.shortestCockLength() > 48) outputText("\n\nUnfortunately, you don't think she can quite handle your cock.");
+            if (player.cocks.length > 0) {
+                if (player.cocks.shortestCockLength() > 48) outputText("\n\nUnfortunately, you don't think she can quite handle your cock.");
                 else addButton(0, "Fuck Her", ottergirlLikesDongs);
             }
-            if (player.hasVagina() || !player.hasCock()) addButton(1, "Facesitting", ottersForGals);
+            if (player.hasVagina() || !player.cocks.length > 0) addButton(1, "Facesitting", ottersForGals);
         }
         if (flags[kFLAGS.MET_OTTERGIRL] > 1) addButton(2, "Get Fish", getSomeFishYaFatty);
         addButton(4, "Leave", avoidZeOtterPussy);
@@ -342,14 +342,14 @@ export class Lake {
         let x: number;
         let y: number = -1;
         temp = 0;
-        while (temp < player.cockTotal()) {
+        while (temp < player.cocks.length) {
             if (player.cocks[temp].cockLength < 48) {
                 if (y < 0) y = temp;
                 else if (player.cocks[temp].cockLength > player.cocks[y].cockLength) y = temp;
             }
             temp++;
         }
-        if (y < 0) y = player.smallestCockIndex();
+        if (y < 0) y = player.cocks.smallestCockIndex();
         x = y;
 
         // (Under 6")

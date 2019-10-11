@@ -103,11 +103,11 @@ public function doDungeon(eventNo:Number):void {
 		if(player.biggestLactation() >= 3) outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false);
 		//Cock – single
 		if(player.cocks.length == 1) {
-			if(player.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(game.player, 0) + " to full hardness in seconds.  ", false);
+			if(player.cocks.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(game.player, 0) + " to full hardness in seconds.  ", false);
 			//Cock – single big
-			if(player.cockArea(0) >= 30 && player.cockArea(0) < 100) outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ".  ", false);
+			if(player.cocks.cockArea(0) >= 30 && player.cocks.cockArea(0) < 100) outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ".  ", false);
 			//Cock -megahuge
-			if(player.cockArea(0) >= 100) outputText("As you struggle not to lose consciousness, you realize your over-aroused body had pumped most of your blood to your over-sized " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ", which now droops to the floor, pulsing hotly.  ", false);
+			if(player.cocks.cockArea(0) >= 100) outputText("As you struggle not to lose consciousness, you realize your over-aroused body had pumped most of your blood to your over-sized " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ", which now droops to the floor, pulsing hotly.  ", false);
 		}
 		//DO MULTIZ
 		if(player.cocks.length > 1) outputText("The feeling of light-headedness nearly robs you of consciousness as your " + multiCockDescript(player) + " fill with blood, pulsating with arousal as they reach full size.  ", false);
@@ -133,7 +133,7 @@ public function doDungeon(eventNo:Number):void {
 			if(player.vaginas.length > 0) outputText("and a vacuum pump to your clit.  ", false);
 			else {
 				outputText("and another vacuum pump to your bare groin.  In seconds a wet fleshy growth erupts.  You have grown a cock!  ", false);
-				player.createCock();
+				player.cocks.createCock();
 			}
 		}
 		else {
@@ -400,7 +400,7 @@ public function doDungeon(eventNo:Number):void {
 				//Grow dick!
 				if(player.cocks.length > 0) {
 					player.lengthChange(player.increaseCock(0, 5), player.cocks.length);
-					if(player.averageCockLength() >= 9 && player.averageCockThickness() < 2) {
+					if(player.cocks.averageCockLength() >= 9 && player.cocks.averageCockThickness() < 2) {
 						outputText("You feel yourself gain in thickness as well, to match your new length.  ", false);
 						temp = player.cocks.length;
 						while(temp > 0) {
@@ -408,7 +408,7 @@ public function doDungeon(eventNo:Number):void {
 							if(player.cocks[temp].cockThickness < 2) player.cocks[temp].cockThickness++;
 						}
 					}
-					else if(player.averageCockLength() >= 15 && player.averageCockThickness() < 3) {
+					else if(player.cocks.averageCockLength() >= 15 && player.cocks.averageCockThickness() < 3) {
 						outputText("You feel yourself gain in thickness as well, to match your new length.  ", false);
 						temp = player.cocks.length;
 						while(temp > 0) {
@@ -450,7 +450,7 @@ public function doDungeon(eventNo:Number):void {
 				if(player.cocks.length > 0) {
 					outputText(", filling your " + multiCockDescriptLight(player), false);
 					outputText(" with sensation", false);
-					if(player.cockTotal() == 1) outputText("s", false);
+					if(player.cocks.length == 1) outputText("s", false);
 					outputText(" as ", false);
 					if(player.cocks.length > 1) outputText("they", false);
 					else outputText("it", false);
@@ -604,7 +604,7 @@ public function doDungeon(eventNo:Number):void {
 			outputText("A sudden pressure builds in your groin.  You look down in wonder, more than a little turned on by the prospect of growing your own penis.  Your skin ripples and bulges outwards, the sensation turning from pressure to feelings of intense warmth.  The bump distends, turning purple near the tip as it reaches three inches in size.  You touch it and cry out with pleasure, watching it leap forwards another inch in response.  Your tiny dick's crown becomes more and more defined as it grows larger, until you have what looks like a normal six inch dick.  You sigh with happiness and desire at your new addition.  Before you can enjoy it, another wave of heat washes through you, making your new addition respond.  It grows painfully hard as it crests eight inches in length.  ", false);
 			if(player.cor < 80) outputText("In horror you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your cock look more like a crazed sex-toy than a proper penis.  You pant and nearly cum as it lengthens one last time, peaking at ten inches long.  One last ring of nodules forms around the edge of your demon-dick's crown, pulsating darkly with each beat of your horrified heart.", false);
 			else outputText("Curious, you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your penis look more like those amazing cocks you saw on demons!  You pant and moan in happiness as it lengthens one last time, peaking at ten inches long.  The excitement of possessing such a magnificent pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your new demon-dick's crown, you notice to your surprise that the liquid you ejaculated is pitch black!  But as your new cock pulsates darkly with each beat of your heart, the only thing you have on your mind is to try it out as soon as possible...", false);
-			player.createCock();
+			player.cocks.createCock();
 			player.cocks[0].cockType = CockTypesEnum.DEMON;
 			player.cocks[0].cockLength = 10;
 			player.cocks[0].cockThickness = 2;
@@ -629,7 +629,7 @@ public function doDungeon(eventNo:Number):void {
 		}
 		if(player.cocks.length > 1) {
 			//Already has demoncocks
-			if(player.demonCocks() == player.cockTotal()) {
+			if(player.demonCocks() == player.cocks.length) {
 				outputText("Your " + multiCockDescriptLight(player) + " leap forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + multiCockDescriptLight(player) + " get longer and thicker.  They pulsate, as if promising dark pleasure as they settle into their new enhanced size.", false);
 				temp = player.cocks.length;
 				while(temp > 0) {
@@ -745,12 +745,12 @@ public function doDungeon(eventNo:Number):void {
 		//Remove multiple.
 		if(player.cocks.length > 1) {
 			outputText("Your " + multiCockDescriptLight(player) + " shiver and retract back towards your body.  When the process finishes you are left with only your " + cockDescript(game.player, 0) + ".  ", false);
-			player.removeCock(1,player.cocks.length-1);
+			player.cocks.removeCock(1,player.cocks.length-1);
 			genderCheck();
 			temp++;
 		}
 		//Super long nerf
-		if(player.hasCock()) {
+		if(player.cocks.length > 0) {
 			if(player.cocks[0].cockLength > 12) {
 				outputText("A tingling sensation worms through your " + cockDescript(game.player, 0) + " as it shrinks down to a more modest eleven inches.  ", false);
 				player.cocks[0].cockLength = 11;

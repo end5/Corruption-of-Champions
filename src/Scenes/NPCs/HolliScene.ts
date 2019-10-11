@@ -66,7 +66,7 @@ export class HolliScene extends NPCAwareContent {
         else if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 2) {
             // [Fuck It] [Ride Stamen] [Do Nothing] [Destroy It]
             if (output) outputText("Before you is a large, waist-high plant of questionable origin.  A huge, violet bloom sits atop a strong, central stalk, and the obscene flower looks positively female in every sense, right down to a clit-shaped bump and moist, gently parted lips.  Inside that central passage, you can see a bevy of wiggling staman surrounding a larger, flared stalk.  The scent that wafts out of that opening is sweet and floral, but undoubtedly sexual.  It looks like an organic sex toy and is clearly corrupt.  It wouldn't be hard to get rid of right now, assuming you don't let it grow larger.");
-            if (player.hasCock() && player.cockThatFits(100) >= 0 && player.lust >= 33) fuck = fuckFuckingFuckFlowerP2;
+            if (player.cocks.length > 0 && player.cocks.cockThatFits(100) >= 0 && player.lust >= 33) fuck = fuckFuckingFuckFlowerP2;
 
             if (player.hasVagina() && player.lust >= 33) ride = rideDatFuckingFukkFlowerP2;
             simpleChoices("Fuck It", fuck, "Ride Stamen", ride, "", null, "Destroy It", destroyDatFuckingPlantAtP2, "Back", inventory.inventoryMenu);
@@ -77,7 +77,7 @@ export class HolliScene extends NPCAwareContent {
                 if (output) outputText("\n\nIt could be burned down with your supernatural fire, but it would definitely tire you.");
                 burnIt = torchP3Tree;
             }
-            if (player.hasCock() && player.lust >= 33) fuck = fuckTheFlower;
+            if (player.cocks.length > 0 && player.lust >= 33) fuck = fuckTheFlower;
             if (player.hasVagina() && player.lust >= 33) ride = rideTheWalrusP3;
             // [Fuck flower] [Drink Sap] [Ride Tentacles] [{Torch It}] [Leave It]
             simpleChoices("Fuck Flower", fuck, "Drink Sap", drinkThePlantGirlsSap, "Ride Tentacle", ride, "Torch It", burnIt, "Leave It", inventory.inventoryMenu);
@@ -114,7 +114,7 @@ export class HolliScene extends NPCAwareContent {
             if (flags[kFLAGS.HOLLI_SUBMISSIVE] == 0) {
                 let eat: () => void = null;
                 if (flags[kFLAGS.HOLLI_FRUIT] > 0) eat = eatHolliFruit;
-                if (player.hasCock() && player.lust >= 33) fuck = fuckHolliInZeFlowerPuss;
+                if (player.cocks.length > 0 && player.lust >= 33) fuck = fuckHolliInZeFlowerPuss;
                 if (player.hasVagina() && player.lust >= 33) ride = level4RideHollisTentacruels;
 
                 let guardT: string = "";
@@ -128,8 +128,8 @@ export class HolliScene extends NPCAwareContent {
             }
             else {
                 menu();
-                if (player.hasCock() && player.lust >= 33) addButton(0, "Fuck Holli", holliGetsDickDommed);
-                if (player.tentacleCocks() >= 10 && player.lust >= 33) addButton(1, "TentacleBone", fullOnTentacleTasticGangBangForHolli);
+                if (player.cocks.length > 0 && player.lust >= 33) addButton(0, "Fuck Holli", holliGetsDickDommed);
+                if (player.cocks.tentacleCocks() >= 10 && player.lust >= 33) addButton(1, "TentacleBone", fullOnTentacleTasticGangBangForHolli);
                 if (player.hasVagina() && player.lust >= 33) addButton(2, "Ride Holli", vaginalDomHollisTentacruels);
                 addButton(3, "Drink Sap", haveAMapleSyrupSnack);
                 if (flags[kFLAGS.HOLLI_FRUIT] > 0) addButton(4, "Eat A Fruit", eatHolliFruit);
@@ -185,7 +185,7 @@ export class HolliScene extends NPCAwareContent {
     private fertilizeHolli(cock: boolean = true): void {
         // 20% chance per sexing.  Up to bonus 20% for jizz or fertility! Max 62%.
         let odds: number = 20;
-        if (cock && player.hasCock()) {
+        if (cock && player.cocks.length > 0) {
             odds += player.cumQ() / 300;
             if (odds > 40) odds = 40;
             if (player.perks.findByType(PerkLib.MaraesGiftStud) >= 0) odds += 10;
@@ -253,7 +253,7 @@ export class HolliScene extends NPCAwareContent {
         else outputText("\n\n<b>What do you do?</b>");
         // [Fuck It] [Ride Stamen] [Do Nothing] [Destroy It]
         let fuck: () => void = null;
-        if (player.hasCock() && player.cockThatFits(100) >= 0 && player.lust >= 33) fuck = fuckFuckingFuckFlowerP2;
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(100) >= 0 && player.lust >= 33) fuck = fuckFuckingFuckFlowerP2;
         let ride: () => void = null;
         if (player.hasVagina() && player.lust >= 33) ride = rideDatFuckingFukkFlowerP2;
         simpleChoices("Fuck It", fuck, "Ride Stamen", ride, "Do Nothing", playerMenu, "Destroy It", destroyDatFuckingPlantAtP2, "", null);
@@ -273,8 +273,8 @@ export class HolliScene extends NPCAwareContent {
     // Fuck It (skimmed)
     private fuckFuckingFuckFlowerP2(): void {
         clearOutput();
-        let x: number = player.cockThatFits(100);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(100);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("Undoing your [armor], you approach the pulsating plant with one thought in mind: fucking it.  At the sight of [eachCock], the petals flutter happily, their surface glimmering with moisture in an instant, slick and wet for your pleasure.  You lean down to inhale the sweet yet sensual nature of the flower's aroma, letting it tickle your nostrils as you idly fondle [oneCock].  Your maleness quickly assumes your favorite state - hard and sensitive, ready to plunge into the nearest set of wet lips with reckless abandon.  At the same time, you can see the wriggling tendrils inside the flower's vase waving about hungrily.");
         outputText("\n\nYou laugh in amusement; who are you to deny it the creamy treat it so richly deserves?  Letting go of your " + cockDescript(game.player, x) + ", you reach around the soft petals to the harder, central bud and slide yourself through the honeyed embraced into the pulsating, tentacled flower-core.  Juicy warmth snuggles about your dick, the velvet-soft chamber immediately tightening up while the petals fold in, crossing over one another until they form a tube long enough to swallow you whole.  Gentle suction begins to rhythmically tug at your " + cockHead(player, x) + ", swelling you larger and more sensitive inside.  Immediately, the tiny tendrils you saw swarming around earlier reach up to massage your cock, slithering across your skin like tiny, sinuous snakes.");
         outputText("\n\nIt's enough to make your [legs] quake, and you slowly slide to the ground.  The flower, now a tightly-sealed bulb, sucks hard enough to stay latched onto you as you recline.  It makes the stem double over, but the resilient plant seems to handle the strain with ease.  Rivulets of clear slime escape from the tight seal to run down your ");
@@ -285,7 +285,7 @@ export class HolliScene extends NPCAwareContent {
         else if (player.cor < 66) outputText(" and you worriedly glance around, hoping yet terrified that someone will walk in on it.");
         else outputText(" and you glance around, hoping someone will walk in on the sexy show you're making.");
         outputText("\n\nNow panting with unbearable lust and undeniable levels of pleasure, you give up all sense of propriety and resort to fucking wildly, [hips] jumping inches into the air.  The flower's interior is a slick, silky heaven for your " + cockDescript(game.player, x) + ", a sucking, squeezing hole of seemingly infinite pleasure.  Inside its gluttonous gullet, the numerous tentacles twist around, the longest ones circling the base of your shaft");
-        if (player.hasSheath()) outputText(" inside your violated sheath");
+        if (player.cocks.hasSheath()) outputText(" inside your violated sheath");
         outputText(".  With so much blood trapped in your " + cockDescript(game.player, x) + ", it's bigger and harder than ever, twitching valiantly against its restraints with every beat of your heart.");
         outputText("\n\nOne of the tentacles circles your " + cockHead(player, x) + " for a moment, and without much warning or pause, it lances forward to bury itself into your vulnerable cum-slit.  Your preconceptions are turned on their heads when there's a complete lack of pain from the abrupt penetration.  If anything, it actually feels kind of good... like there's a warm, slippery finger caressing your penis from the inside out.  It slithers in and out of you, pumping you inside, burrowing pleasure into your center even while stroking you from without.  Your body, burning from the exertion of fucking the flower's pod and the constantly-rising tidal wave of lust, begins to twitch spasmodically.");
         outputText("\n\nThe internal suction spikes as your dick bloats larger, and with a roar of bestial pleasure, you arch your back, hands pushing your " + cockDescript(game.player, x) + " as deep into the plant's gullet as possible.  ");
@@ -309,7 +309,7 @@ export class HolliScene extends NPCAwareContent {
         outputText("\n\nGrabbing hold of the plant, you tug it up against your mons and sigh.  The silky-smooth petals flatten against your thighs, the tips curling over to touch the sides of your [butt], slicking it with lubricating moisture.  You let go, and the flower holds fast to your [hips], firmly embracing you as its stamen begin to roam across your vulva.  Slowly, an intrepid tentacle ventures between your labia, into the slick passageway you're so ready to fill with wiggly delight.  A dribble of fresh fluid rushes out at those first, hesitant touches, and encouraged by its success, the stamen's brothers join in on the slippery party, plunging into your box and immediately swirling over your inner walls.");
         outputText("\n\nDriven mercilessly by the sudden onslaught of sensation, you flop back onto the ground, but the flower comes with you, latched onto your [hips] with no sign of releasing.  The swirling tentacles twist around inside you in a tornado of ecstasy, and the pleasure, that awful, unstoppable pleasure, twists your muscles into knots.  They instinctively convulse to raise your lower lips higher, as if that would somehow propagate even deeper penetration.  One of the tentacles retracts, drawing a burst of slick cunt-lube with it.  Then, it twists around your [clit], tightening up on the over-sensitive bud until it feels like it could pop.");
         if (player.clitLength > 4) outputText("  Your heavy buzzer is so big that the flexible plant-cock has plenty of room to curl around it, and if you could see it, your clit would look almost like a candy-cane (if one set of stripes was jerking off the cane beneath).");
-        if (player.cockTotal() > 0) outputText("  [EachCock] soon has its own partner twisting around it, a pussy-slicked vine to jerk and twine about its girth.");
+        if (player.cocks.length > 0) outputText("  [EachCock] soon has its own partner twisting around it, a pussy-slicked vine to jerk and twine about its girth.");
         outputText("\n\nWith nothing to occupy your roving hands, you let them slide up your " + skinFurScales(player) + " to your ");
         if (player.bRows() > 1) outputText("lowest row of tits, cupping them before groping to your top row of breasts");
         else outputText("[chest]");
@@ -329,7 +329,7 @@ export class HolliScene extends NPCAwareContent {
         outputText(".");
 
         outputText("\n\nWith that thought somehow staying firmly in your battered consciousness, you reach a climax of mind-breaking proportion, eyes rolling wildly as every muscle locks in one united twitch of rapture.");
-        if (player.hasCock()) outputText("  [EachCock] explodes in release, pumping heavy flows of seed into the petals, even as y");
+        if (player.cocks.length > 0) outputText("  [EachCock] explodes in release, pumping heavy flows of seed into the petals, even as y");
         else outputText("Y");
         outputText("our quivering pussy, already sopping wet, releases the last of your juices in a soaked ");
         if (player.cumQ() < 50) outputText("drizzle");
@@ -365,7 +365,7 @@ export class HolliScene extends NPCAwareContent {
         outputText(".\n\n<b>What do you do?</b>");
         let fuck: () => void = null;
         let ride: () => void = null;
-        if (player.hasCock() && player.lust >= 33) fuck = fuckTheFlower;
+        if (player.cocks.length > 0 && player.lust >= 33) fuck = fuckTheFlower;
         if (player.hasVagina() && player.lust >= 33) ride = rideTheWalrusP3;
         // [Fuck flower] [Drink Sap] [Ride Tentacles] [{Torch It}] [Leave It]
         simpleChoices("Fuck Flower", fuck, "Drink Sap", drinkThePlantGirlsSap, "Ride Tentacle", ride, "Torch It", burnIt, "Leave It", playerMenu);
@@ -374,7 +374,7 @@ export class HolliScene extends NPCAwareContent {
     // Fuck Flower (skimmed)
     private fuckTheFlower(): void {
         clearOutput();
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         // (Similar to stage 2 fuck, but no cock limits, wetter, and more aggressive.
         outputText("Smiling to yourself, you shed your [armor] like a snake wriggling free of useless, old skin and expose yourself.  Of course, the tree doesn't react - it's just a tree, right?  So, feeling a little cocky (in more than one way), you prowl up to the flower, intent on venting some frustration in the best way possible.  The petals are as violet as ever and glittering with the moisture you've grown used to seeing appear whenever you approach, as if by magic.  The inner folds look even softer, if a bit redder, and they drip steadily with sweet nectar.");
         outputText("\n\nYou bend down for a sniff - nothing like a little foreplay, after all.  The flower-cunt's scent is spicy-sweet and undeniably potent.  The air visibly steams with the wood-bound box's honeyed heat, and you close your eyes to better appreciate it.  There's a distinct, feminine undercurrent to the odor, a cloying aroma that clings to your nostrils, sending a pleasant tingle to your loins.");
@@ -389,23 +389,23 @@ export class HolliScene extends NPCAwareContent {
 
         outputText("\n\nYou're swung to and fro, held aloft by a shrubbery harness seemingly intent on teasing you.  First, you get a taste of heaven, but only on your " + cockHead(player, x) + ".  Then, you're left to flutter in the breeze, the only sexual sensation available the cool wind fluttering across your whetted tip.  Over and over, the plant teases you until you lose track of time.  The closest thing to a watch you have is the gentle throb in your [balls] and its gradually strengthening intensity.  Oh, how it aches!  You feel taut and stretched like a harp string being tuned, only the musician just keeps cranking away, ratcheting up the pressure until you feel about to snap.  Your one comfort is the momentary bliss of the flower's sweet kiss, an exciting pleasure that's slowly being turned into an aching hell.");
         outputText("\n\nDuring a particularly shameless moan, you realize that you're dipping a little deeper with each pendulous stream.  Luckily, the corrupt tree's arboreal lust must be rising like your own, and after a few slow swings, your " + cockDescript(game.player, x) + " is slipping three quarters of the way in");
-        if (player.cockArea(x) >= 150) outputText(", sliding down the trunk as easily if the entire inside was a giant pussy just waiting to get fucked");
+        if (player.cocks.cockArea(x) >= 150) outputText(", sliding down the trunk as easily if the entire inside was a giant pussy just waiting to get fucked");
         outputText(".");
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your other penis");
-            if (player.cockTotal() > 2) outputText("es rub");
+            if (player.cocks.length > 2) outputText("es rub");
             else outputText(" rubs");
             outputText(" sensually across the moist outer blossom, drooling their clear pre-cum over the petals.");
         }
         outputText("  Schliiick.  You slide out.  Slorp-pop.  You slide in, this time to the ");
-        if (player.hasSheath()) outputText("sheath");
+        if (player.cocks.hasSheath()) outputText("sheath");
         else outputText("base");
         if (player.balls > 0) outputText(" with your gurgling balls slapping against the flower's edge");
         outputText(", accompanied by a small squirt of sweet lubricants.");
         outputText("\n\nYou've been kept on edge for so long that even this brief taste of liquid-soft snugness has your body clenching and warm bliss mounting inside of you.  You wrap as much of your [legs] around the trunk below as possible and give into your pleasure, thrusting your " + cockDescript(game.player, x) + " against the petalled muff each time the vines draw you away.  You rut like a demon's pet, half-mad with pleasure and desire so powerful it obviates rational thought.  The ecstasy rises like an all consuming tide, tinting your vision pink as your eyes roll back and [eachCock] thickens.");
 
         outputText("\n\nJizz blasts out of your " + multiCockDescriptLight(game.player) + " with uncommon force, painting the flower's interior with white");
-        if (player.cockTotal() > 1) outputText(", as your multiple endowments allow you to drizzle the purple bloom's exterior with alabaster cream");
+        if (player.cocks.length > 1) outputText(", as your multiple endowments allow you to drizzle the purple bloom's exterior with alabaster cream");
         outputText(".");
         if (player.cumQ() > 500) outputText("  Pearly ropes big enough to fill a flask lurch out from your cum-slit, propelled by your quivering orgasmic muscles deep into the trunk, and you swear you can hear the pitch of your sexual pumping rising in tone, changed by the flooded vessel.");
         if (player.cumQ() > 1500) outputText("  A wave of your thick gunk rolls out from under your pumping cock - you've filled the tree beyond even its capacity, and the thick puddle forming beneath your [feet] is all the proof you need of your virility.");
@@ -605,15 +605,15 @@ export class HolliScene extends NPCAwareContent {
     private fuckHolliInZeFlowerPuss(): void {
         clearOutput();
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("With a knowing smile, you toss your [armor] aside and say, \"<i>Let's do this.</i>\"  [EachCock] juts out, hard and proud from your body, pointed straight towards the entrancing woman before you.  She leans down from her perch in the tree and rolls her shoulders from side to side, jiggling her pale green assets back and forth, traces of syrup hanging from her pendulous melons.");
         outputText("\n\n\"<i>Well, come on over then, ");
         if (player.tallness < 84) outputText("little");
         else outputText("big");
         outputText(" " + mf(player, "boy", "girl") + ",</i>\" the arboreal tramp suggests with a husky coo, \"<i>I got you some sugar.</i>\"  She pinches her nipples and gasps, dark streams of sugary juices dripping wetly into the soil as she beckons you closer.");
         outputText("\n\nYou confidently advance, phallus first, and press your erection into the syrup-spurting valley, getting fluid all over yourself in the process.  Wet, sticky squishes greet your ears as [oneCock] is enveloped in the jiggling G-cups, webs of amber fluid hanging between your loins and the hefty globes as they're lifted away, stroking along your sensitive length.");
-        if (player.cockTotal() > 1) {
-            if (player.cockTotal() == 2) outputText("  Your other penis splays");
+        if (player.cocks.length > 1) {
+            if (player.cocks.length == 2) outputText("  Your other penis splays");
             else outputText("The rest of your penises splay");
             outputText(" to the side, smearing furrows of the stuff around as they slide over the butter-smooth skin.");
         }
@@ -621,13 +621,13 @@ export class HolliScene extends NPCAwareContent {
         if (player.balls > 0) outputText("cradle your [balls], gently massaging your sack");
         else {
             outputText("gently caress your ");
-            if (player.hasSheath()) outputText("sheath");
+            if (player.cocks.hasSheath()) outputText("sheath");
             else outputText("loins");
         }
         outputText(" encouragingly.  You respond by edging your [hips] upward, more effectively presenting your shaft to be pleasured.");
 
         outputText("\n\nSighing happily, the immobile beauty ");
-        if (player.cockArea(x) < 100) outputText("leans down and kisses the tip, opening her glossy green puckers to slurp it down, sucking just hard enough to make your " + cockHead(player, x) + " tingle with erotic warmth.");
+        if (player.cocks.cockArea(x) < 100) outputText("leans down and kisses the tip, opening her glossy green puckers to slurp it down, sucking just hard enough to make your " + cockHead(player, x) + " tingle with erotic warmth.");
         else outputText("kisses up and down your huge, towering shaft, slobbering her glossy green puckers all over your urethral bulge, making it even more of a wet mess.");
         outputText("  You grab hold of the edges of her tits and squeeze, smushing them tight around yourself and sliding them up and down.  The plant-woman's twinkling golden eyes meet your own while she pleasures your " + cockDescript(game.player, x) + ", and her hands come to rest over top of your own, assisting you with the quick tit-fuck.");
 
@@ -637,7 +637,7 @@ export class HolliScene extends NPCAwareContent {
         outputText(", slapping wetly against you.  Soon, the slick texture of her soft melons has you throbbing eagerly and dribbling hot trails of pre-cum.  You're going to blow any second now, and the hot bloom of pleasure within you is spreading further and further.  Those gold and black eyes look up imploringly while the pale green cheeks hollow hungrily, and you release ecstatically, arching your back as you pound the heavy tits down your length.");
 
         outputText("\n\nA geyser of spunk rockets out into ");
-        if (player.cockArea(x) >= 100) outputText("the air, where it hangs for a moment before splattering down atop the plant-girl's leaf-colored hair and face, forming a gossamer shroud.");
+        if (player.cocks.cockArea(x) >= 100) outputText("the air, where it hangs for a moment before splattering down atop the plant-girl's leaf-colored hair and face, forming a gossamer shroud.");
         else outputText("her mouth, which works noisily to swallow the hot load even as you inject it into her.  After a few swallows, she leans back and lets you shoot it up into the air, so that it can fall down over her face and hair, into a gossamer shroud.");
         // highish cum:
         if (player.cumQ() >= 500) outputText("  You keep blasting heavy ropes of seed until her body and trunk are painted with goo, and then you cum some more, smattering spunk until she looks more like a gooey waterfall than a fey creature.");
@@ -651,7 +651,7 @@ export class HolliScene extends NPCAwareContent {
         if (player.tallness < 60) outputText("tits");
         else outputText("arms");
         outputText(".  [EachCock], instead of slamming into the bark painfully, slots into something warm and wet, pulsating and pliant.  A clingy, tight hold that ripples gently around your member");
-        if (player.cockTotal() > 1) outputText("s, massaging the bundle of cocks with uncommon ferver");
+        if (player.cocks.length > 1) outputText("s, massaging the bundle of cocks with uncommon ferver");
         else outputText(", massing your tool with uncommon fervor");
         outputText(".  Your grunt of irritation vanishes as soon as your tender sex is forced into the heavenly hole, and with the soft breasts pressing into ");
         if (player.biggestTitSize() >= 2) outputText("your own");
@@ -746,16 +746,16 @@ export class HolliScene extends NPCAwareContent {
         }
         outputText("Biting into it, sweet juices seem to explode from the flesh, dribbling down your chin.  It tastes like a dessert and you chow down, happily munching away.  In no time flat, you're down to just a core.  You toss it and wipe your [face] clean, then burp.  Damn, that was good!");
         // TF CHANCES
-        if (rand(2) == 0 && player.cockTotal() > player.tentacleCocks()) {
+        if (rand(2) == 0 && player.cocks.length > player.cocks.tentacleCocks()) {
             const choices: any[] = [];
             temp = 0;
-            while (temp < player.cockTotal()) {
+            while (temp < player.cocks.length) {
                 if (player.cocks[temp].cockType != CockTypesEnum.TENTACLE) choices[choices.length] = temp;
                 temp++;
             }
             temp = choices[rand(choices.length)];
             outputText("\n\nYour " + num2Text2(temp + 1) + " penis itches, and you idly scratch at it.  As you do, it begins to grow longer and longer, all the way to the ground before you realize something is wrong.  You pull open your [armor] and look down, discovering your " + player, temp) + " has become a tentacle!  As you watch, it shortens back up; it's colored green except for a purplish head, and evidence seems to suggest you can make it stretch out at will.  <b>You now have a");
-            if (player.tentacleCocks() > 0) outputText("nother");
+            if (player.cocks.tentacleCocks() > 0) outputText("nother");
             outputText(" tentacle-cock!</b>");
             player.cocks[temp].cockType = CockTypesEnum.TENTACLE;
             player.cocks[temp].knotMultiplier = 1.3;
@@ -880,10 +880,10 @@ export class HolliScene extends NPCAwareContent {
         outputText("\n\nHolli leans forward, entranced by the sight.  Her head and shoulders slip through the surprisingly pliant bark as she bends down to view the show.  Swaying beneath her, Holli's weighty tits dangle unrestrained and unbound.  Sappy moisture clings to her almond nipples like morning dew, dripping in small drops onto the wasted ground.  The tips of her teats have gone rigid, engorged with whatever strange substance passes for blood.  Similarly, the dryad's flower is in full bloom, with its vibrant petals spread open, welcomingly.  The constant lubricants make the slick lips glitter like diamonds in the light, until their owner's shadow eclipses the illumination.");
         outputText("\n\nHanging out of her tree, Holli reaches for [oneCock], but stops just short.  \"<i>Can I pleasure it, please?</i>\"  She's looking up at you hopefully, like a kid hoping for a treat.");
         outputText("\n\nSo long as she continues to be good, you don't mind letting her have a few licks.  You nod to the black-eyed beauty and rock forward, butting your [cockHead biggest] right into her soft lips.  Holli squeaks in surprise and grabs hold, firmly gripping your [cock biggest] in her capable fingers.  She makes to kiss it, but you pump yourself forward again.  The first few inches sink into her mouth before she can react.  This time, all she manages is a muffled groan, lips thoroughly snared with dick.  Her distraught vocalizations die down as she begins to accept her role, gently sliding your [cock biggest] down to take in as much as she can");
-        if (player.biggestCockArea() > 80) outputText(", jaw stretching obscenely");
+        if (player.cocks.biggestCockArea() > 80) outputText(", jaw stretching obscenely");
         outputText(".");
         outputText("\n\nYou congratulate her on her success in handling your dick and push on the back of her head with gentle but unforgiving pressure.  Pleasant body heat envelops your prick as it's gobbled down deep");
-        if (player.biggestCockArea() <= 80) {
+        if (player.cocks.biggestCockArea() <= 80) {
             outputText(", swallowed to the ");
             if (player.balls > 0) outputText("[balls]");
             else outputText("[sheath]");
@@ -898,11 +898,11 @@ export class HolliScene extends NPCAwareContent {
         outputText("\n\nYou grab hold of the hungry cock-sucker by her neck and push her back, up into her tree, releasing your [cock biggest] before it can blow.  It's a close thing - you're rigid and bobbing, muscles clenching involuntary right on the edge.  Holli makes a choking protestation as she's forced into place but doesn't struggle, fearful of your wrath.  You let the hungry slut go, unharmed but chastised by the rough treatment.  Your cum is destined for her twat, not to be wasted in her slutty noise-hole.");
 
         outputText("\n\nStepping up, you ram your rigid phallus deep into the slick flower at Holli's waist.");
-        if (player.biggestCockArea() > 80) outputText("  It bends slightly as the immense girth is forced inside her, aiming down, deep inside the trunk.");
+        if (player.cocks.biggestCockArea() > 80) outputText("  It bends slightly as the immense girth is forced inside her, aiming down, deep inside the trunk.");
         outputText("  Holli flops into your [chest], twitching weakly and breathing heavily.  \"<i>Fffuck, so good!</i>\" she pants, nuzzling her cheek into your collarbone while her hands play across your shoulders.  You ruthlessly mount her flowery mound with fast motions.  Juices squirt out around your member at the apex of every stroke, raining down over the surrounding ground.  You grab Holli's deep green hair and pull her back.  Her face is wrecked by bliss, her mouth and eyes moving in uncoordinated twitches.");
         outputText("\n\nYou kiss your planty pet forcefully, and she yields to your impressive dominance, putty in your hands.  Her body quavers against you, and then, she's moaning into your lips, forgetting the kiss as climax wracks her frail, human-like half.  Nectar drips down your [legs] in a steady drizzle, sweet, lubricating juices that fill the air with a flowery, feminine musk.  You pull away from her mouth's incessant utterances and watch her cum, held in your arms.  The pleasant caresses of the dryad's inner walls squeeze down with pliant pressure, rolling over your [cock biggest] in slow waves, hungrily sucking at you and ready for sperm.");
         outputText("\n\nThe abruptness of your orgasm startles you.  One moment there's the sanguine ecstasy of the surrounding fuck-flesh, and the next, there's an explosive volcano of lust boiling out of your " + multiCockDescriptLight(game.player) + ", geysering fountains of fluid.");
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Excess jism spurts onto Holli's jiggling udders from below, spotting the viridian mounds with white.");
             if (player.cumQ() >= 500) outputText("  The constant sprays turn them white in little time, dripping from the peaks of her nipples along with her sticky sap.");
         }
@@ -1153,15 +1153,15 @@ export class HolliScene extends NPCAwareContent {
 
         // FOOOOARK - choose with RNG for herms
         // branch of penis-having
-        if (player.gender == 1 || (rand(2) == 0 && player.hasCock())) {
+        if (player.gender == 1 || (rand(2) == 0 && player.cocks.length > 0)) {
             outputText("\n\nShe strips off your [armor] haphazardly, rending and shredding with vicious tugs and leaving deep lines where the clasps bite into your " + skinFurScales(player) + " before parting.  [OneCock] exposed, she lowers her mouth to the [cockHead biggest] and");
-            if (player.cocks[player.biggestCockIndex()].cockThickness > 6) outputText(", stretching her jaw wide open in a way that makes you wince,");
+            if (player.cocks[player.cocks.biggestCockIndex()].cockThickness > 6) outputText(", stretching her jaw wide open in a way that makes you wince,");
             outputText(" engulfs you.  Holli's tongue plays over your slit and she looks up at you for just a moment to be sure you're watching.");
 
             outputText("\n\nOnce she's captured your attention, she smiles disarmingly around your shaft... until you feel a prick at the end.  A small stem slides into your cockhole, and you freeze in panic.  Holli's eyes dance with amusement at your discomfort, and she begins to work her lips up and down the [cock biggest], giggling into it every time the insertion scrapes your inside and you flinch.  It's hardly more than a few minutes of this internal and external stimulation before your doped-up mind is at the brink of climax, and your dick twitches eagerly.  Holli responds to this, halting her current plunge and watching you again.");
 
             outputText("\n\nYour pleasure-fogged eyes goggle at her face for several minutes as your impending orgasm recedes at a glacial pace - when the demon judges you to be calmed enough, ");
-            if (player.biggestCockLength() > 24) outputText("her neck ripples and extends grotesquely, and her head begins to migrate down all " + num2Text(Math.round(player.biggestCockLength())) + " of your prick with alarming speed, pushing the stem inside along with it.  ");
+            if (player.cocks.biggestCockLength() > 24) outputText("her neck ripples and extends grotesquely, and her head begins to migrate down all " + num2Text(Math.round(player.cocks.biggestCockLength())) + " of your prick with alarming speed, pushing the stem inside along with it.  ");
             else outputText("she sinks her head down to the base of your prick in one quick thrust, bringing the stem with it.  ");
             outputText("The sensation of having your entire [cock biggest] penetrated and sucked into her hot, wet, clinging throat pushes you back toward the edge and over, and it literally becomes a race for Holli to reach bottom before your nerves fire.  Her wet lips impact your crotch with a lewd splatter, but her tongue keeps going deep into your body, stopping only once it reaches your prostate.  A small bulge fires down the thin stem, forcing through your slit and into the shaft to lodge in your gland.  Holli's mouth and tongue withdraw once it is in place, and she grabs your cock in her hand, masturbating you vigorously.");
 
@@ -1195,7 +1195,7 @@ export class HolliScene extends NPCAwareContent {
             outputText("\n\nSomething ");
             if (!player.isGoo() && !player.isNaga()) outputText("slips between your thighs and ");
             outputText("noses at your [vagina].  A phallic tendril, unnoticed by you as the demon was probing you with her tongue, slips into place, pressing insistently for admittance.  Muddled and slack-muscled from the her nectar, you can do nothing to keep it out; it threads its way between your well-lubricated labia with a soft, smooth scrape, forcing a sigh from your mouth");
-            if (player.hasCock()) outputText(" and a glob of precum from [eachCock]");
+            if (player.cocks.length > 0) outputText(" and a glob of precum from [eachCock]");
             outputText(".");
 
             outputText("\n\nHolli smiles wanly at your body's betrayal, thrusting the tentacle in time with your wanton gasps.  Within minutes, her face pinches and your cunt is flooded with thick, liquid pressure.  The tentacle withdraws, triggering one last flush as it brushes by your labia, trailing hot, sticky sap.  Your expression must reveal something of your disappointment at its exit, because the demon takes your face in her hands and brings it closer to hers.");
@@ -1208,7 +1208,7 @@ export class HolliScene extends NPCAwareContent {
             outputText(".  The demon looks up, breathing heavily.  \"<i>Don't worry, lover.  When your time comes, you will as well.</i>\"  She holds you, looking into your eyes with her own eerie black portals, apparently waiting for something; as your heaving body calms down, she strokes your [hair].  Increasingly able to focus your thoughts on something other than the pleasure of being thrust into, awareness creeps in on you.  The wet, yielding pressure of Holli's ejaculate is receding as it oozes from your spread-open cunt, but in its wake, it's leaving a lesser, solid sensation.");
 
             outputText("\n\nYour musings are interrupted as another rough tentacle is jammed into your [vagina], filling your mind with pleasure and chasing out reason.  The green demon thrusts to orgasm again, and once again, bringing you maddeningly close to your limit but always depositing a fresh load of goo and withdrawing the spent tentacle for another bout of holding you still before you can peak.  Through Holli's unwelcome pauses and the sap of the fourth and fifth tentacles, the sensation from your cunt continues to change; by the entry of the sixth, it feels as though the walls have thickened and are gripping onto the shaft of Holli's appendage, every inch as sensitive as your [clit] and entrance used to be and wracking your body.  The demon bites her lower lip and this tendril climaxes as well; as it slides out, it feels as though the walls of your pussy are sliding out with it.  With a pop, something comes free, and you look down to see a bud of fleshy, vibrant red petals unfurling from your entrance.  Eyes glittering with excitement, Holli releases one of your hands from her grasp, and you automatically reach down to touch the flora emerging from your sex.  The simplest stroke sends near-orgasmic convulsions up the inside of your pussy and to the base of your spine, and the flower drools lubricant.");
-            if (player.hasCock()) outputText("  [OneCock] drools precum down its length and onto the flower, triggering another spasm and another gush from your prick.  Holli laughs as you continue to self-stimulate with your uncontrollable fluids.");
+            if (player.cocks.length > 0) outputText("  [OneCock] drools precum down its length and onto the flower, triggering another spasm and another gush from your prick.  Holli laughs as you continue to self-stimulate with your uncontrollable fluids.");
 
             outputText("\n\n\"<i>What a pretty blossom you have become, my pet.</i>\"  The demon traces your new petals with the tip of her last tendril, destroying your muscle control and making you helpless in her grip.  Pressing herself to you, Holli slides the tendril in slowly, dragging it across the inside of your florid pussy, which constricts to perfectly fit the intruder and causes your eyes to roll back in your head as every tight inch of your new, sensitized vagina is stimulated.  In just two thrusts you're at your peak, and the demon squeezes you to her chest as she speaks.  \"<i>As promised, your time is now.</i>\"");
 
@@ -1219,7 +1219,7 @@ export class HolliScene extends NPCAwareContent {
             if (player.biggestTitSize() > 1) outputText("your breasts cupped and pressed together by vines, ");
             if (!player.isNaga() && !player.isGoo()) outputText("your thighs spread wide open, ");
             outputText("and your nectar-drooling flower-sex exposed with your [clit]");
-            if (player.hasCock()) outputText(" and [eachCock]");
+            if (player.cocks.length > 0) outputText(" and [eachCock]");
             outputText(" bobbing in a state of permanent semi-arousal.");
 
             outputText("\n\nThe young sapling encasing you bends toward Holli with a gesture from the demon, and she leans over you.  \"<i>Sweet little toy... you never had a chance.  I am Mareth. There is a part of me in everything of this world.  Now, in you as well.</i>\"  The verdant woman smiles darkly as vines cover your eyes, blinding you.  As something begins nosing up to your pussy, she whispers, \"<i>It won't be lonely, though...</i>\"");
@@ -1299,7 +1299,7 @@ export class HolliScene extends NPCAwareContent {
         outputText("\n\n\"<i>And how am I to do that?</i>\" the newest Champion counters.");
 
         outputText("\n\nThe dryad gestures once again to her companion's " + multiCockDescriptLight(game.player) + ", causing the brown-haired girl's mouth to hang open a little.  \"<i>I can think of few better ways to demonstrate your vitality,</i>\" Holli coos.  \"<i>Do not feel indebted to us, but if you would share of yourself, we would be grateful.  And, in truth, is it not a hint of longing I see in your eyes?  Come, join with " + mf(player, "him", "her") + " for a while and clear your head.</i>\"");
-        if (player.smallestCockArea() > 36) outputText("  As the dryad speaks, the silent figure's [cock smallest] shudders and begins to shrink, dwindling to a size that would fit " + mf(player, "him", "her") + " prospective lover.");
+        if (player.cocks.smallestCockArea() > 36) outputText("  As the dryad speaks, the silent figure's [cock smallest] shudders and begins to shrink, dwindling to a size that would fit " + mf(player, "him", "her") + " prospective lover.");
 
         outputText("\n\nThe brown-haired girl wavers a bit more, but then appears to come to a decision.  Quietly unfastening her clothing, she bares herself, revealing a pair of C-cup breasts, a slender waist with wide hips, and a healthy handful of backside.");
 
@@ -1316,7 +1316,7 @@ export class HolliScene extends NPCAwareContent {
         outputText(" filling the Champion's pussy with so much semen it cascades from her stretched hole as Holli continues to pump.");
 
         outputText("\n\nThe dryad herself soon gives a cry and pushes her tits into the brown-haired girl's back as her climax comes.  A bulge ascends the green shaft, disappearing into the beat-up cunt of the Champion, and a trickle of golden sap leaks back down Holli's cock.  Pulling free, the dryad wipes her member off and folds it back into its bud; it shrinks and dwindles until nothing is left but her clitoris.  The silent one's branches lower the girl to the ground, " + mf(player, "his", "her") + " always-erect prick");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" drooling aftershocks onto her breasts.");
 
         outputText("\n\n\"<i>Thank you, Champion,</i>\"  Holli prompts, and the girl's eyes snap open.  \"<i>The first time of a virgin is priceless; I could not help but partake.  Your gift of vitality is accepted.  Take as much of our fruit as you like, and go with our blessing.</i>\"");
@@ -1381,7 +1381,7 @@ export class HolliScene extends NPCAwareContent {
             outputText("'s mouth open and close in bliss.  ");
         }
         else outputText("leans down and kisses the [woman/hermaphrodite]'s smooth chest, causing her to arch her back in pleasure.  ");
-        if (player.hasCock()) outputText("With a nervous glance downward, he slides one hand to her [cock smallest].  \"<i>It's not gay if it's a chick's,</i>\" he mumbles to himself, and then begins to stroke haltingly, playing his finger along the urethra and drawing a squirt of precum from his shivering partner.  ");
+        if (player.cocks.length > 0) outputText("With a nervous glance downward, he slides one hand to her [cock smallest].  \"<i>It's not gay if it's a chick's,</i>\" he mumbles to himself, and then begins to stroke haltingly, playing his finger along the urethra and drawing a squirt of precum from his shivering partner.  ");
         else {
             outputText("His hand slides to the [clit] above her wet fuck-hole; collecting some of the frothing lube from their wet sex, ");
             if (player.clitLength < 6) outputText("he smears it over the little button and then begins to trace up and down the underside with a finger.  ");
@@ -1392,26 +1392,26 @@ export class HolliScene extends NPCAwareContent {
         if (player.gender == 2) outputText("woman");
         else outputText("hermaphrodite");
         outputText(" in the tree arches her back and her [vagina] clamps down on his tool");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("; ");
             if (player.balls > 0) outputText("her balls draw closer to her body and ");
             outputText("her trembling dick");
-            if (player.cockTotal() == 1) outputText(" throbs");
+            if (player.cocks.length == 1) outputText(" throbs");
             else outputText("s throb");
             outputText(" as she nears climax");
         }
         outputText(".");
 
         // [(cock)]
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nThe youth's eyes widen briefly as he realizes what's coming, and he squeezes them shut against the expected load.  When none comes, he peeks at his lover again; several vines have reached down from her canopy and angled her cock");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" toward her face; ");
-            if (player.biggestCockArea() < 20) {
+            if (player.cocks.biggestCockArea() < 20) {
                 outputText("semen spurts and dribbles down her [chest], pooling in the combined laps and mingling with the sticky lube ringing her vagina.  ");
                 if (player.cumQ() >= 500) outputText("So much so that by the time she finishes her climax, both her partner's legs and her trunk are covered in a sheen of milky white seed.  ");
             }
-            else if (player.biggestCockArea() < 80) {
+            else if (player.cocks.biggestCockArea() < 80) {
                 outputText("her mouth is now full of cockhead, and she gulps as eagerly as she spurts, drooling lines of white from the corners of her lips.  ");
                 // [(big skeet)]
                 if (player.cumQ() >= 500) outputText("The waves of seed don't stop coming, pouring into her and swelling her belly out until its round bulge pushes the cock away from her mouth and the remaining squirts fall on her [chest].  ");
@@ -1431,8 +1431,8 @@ export class HolliScene extends NPCAwareContent {
             outputText(" of female orgasm pours from her pussy, and her mouth opens wide in pleasure.  The tree branches surrounding the young man seem to close in, pushing him toward her.  Getting the message, he leans in and kisses his lover; her tongue probes his mouth with abandon as her body shakes out its fit and her [vagina] wrings his prick.  ");
         }
         outputText("Pushed past his limit by her lewd display, the young man groans, shudders, and begins to unload his pent-up cargo.  Falling on top of his partner's slick ");
-        if (player.cockTotal() == 1) outputText("cock");
-        else if (player.cockTotal() > 1) outputText("cocks");
+        if (player.cocks.length == 1) outputText("cock");
+        else if (player.cocks.length > 1) outputText("cocks");
         else outputText("chest");
         outputText(", he goes limp and slack-jawed as his dick squirts, filling her vagina.");
 

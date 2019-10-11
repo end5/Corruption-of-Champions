@@ -112,8 +112,8 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         outputText("“<i>Well, you’re an adventurer, right?  You’ve probably seen more action than some of our veterans, never mind the usual wet-behind-the-ears rookie.</i>”  Edryn shrugs, waving her hand flippantly.  “<i>So, show her a few tricks before you send her down our way; I’m sure with your coaching, she’ll get in for sure.</i>”\n\n");
         outputText("You smile and thank the centauress for her help.  “<i>It was nothing,</i>” she replies, looking quite pleased at your thanks all the same.\n\n");
         flags[kFLAGS.KATHERINE_TRAINING] |= KBIT_TRAINING_TALK_EDRYN; // Using a mask so it doesn’t matter what order you talk to Edryn and Urta in
-        const cockFitIndex: number = player.cockThatFits(300);
-        if ((cockFitIndex >= 0 && player.cockArea(cockFitIndex) >= 24) && (player.lowerBody == LOWER_BODY_TYPE_CENTAUR || player.horseCocks() > 0 || player.cor > 50 || player.effects.getValue1Of(StatusAffects.Edryn) > 0)) {
+        const cockFitIndex: number = player.cocks.cockThatFits(300);
+        if ((cockFitIndex >= 0 && player.cocks.cockArea(cockFitIndex) >= 24) && (player.lowerBody == LOWER_BODY_TYPE_CENTAUR || player.cocks.horseCocks() > 0 || player.cor > 50 || player.effects.getValue1Of(StatusAffects.Edryn) > 0)) {
             outputText("“<i>So... I don’t suppose there’s anything else you might have on your mind...?</i>”  She gives you a coy look and fiddles with a nipple through her shirt.");
             doYesNo((edryn.pregnancy.isPregnant ? pregnantEdrynSexSelector : edryn.edrynSexSelecter), telAdre.barTelAdre);
         }
@@ -332,10 +332,10 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         let takeVag: () => void = null;       // Mount her option is only available to females and herms with a vaginal capacity >= 100
         let takeAnal: () => void = null;      // Take Anal option is only available when Kath’s knot size is less than 4</i>”
         let takeVagAndAss: () => void = null; // Take both is available for those who meet both the Mount Her and Take Anal requirements
-        if (player.cockThatFits(70) > -1) {
+        if (player.cocks.cockThatFits(70) > -1) {
             penKath = katherine.penetrateKatsVag;
             penAnal = katherine.pcPenetratesKatAnally;
-            if (player.cockThatFits2(70) > -1) penBoth = katherine.pcPenetratesKatDoubly;
+            if (player.cocks.cockThatFits2(70) > -1) penBoth = katherine.pcPenetratesKatDoubly;
         }
         if (player.hasVagina() && player.vaginalCapacity() >= 100) { // Don't want to get knotted together out here at the lake
             takeVag = katherine.letKatKnotYourCuntPussyFuck;
@@ -406,13 +406,13 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         let takeAnal: () => void = null;      // Take Anal option is only available when Kath’s knot size is less than 4</i>”
         let takeVagAndAss: () => void = null; // Take both is available for those who meet both the Mount Her and Take Anal requirements
         let suckNFucked: () => void = null;
-        if (player.cockThatFits(70) > -1) {
+        if (player.cocks.cockThatFits(70) > -1) {
             penKath = katherine.penetrateKatsVag;
             penAnal = katherine.pcPenetratesKatAnally;
-            if (player.cockThatFits2(70) > -1) penBoth = katherine.pcPenetratesKatDoubly;
+            if (player.cocks.cockThatFits2(70) > -1) penBoth = katherine.pcPenetratesKatDoubly;
             if (katherine.knotSize <= 4) suckNFucks = katherine.suckNFuck;
         }
-        if (player.hasCock() && flags[kFLAGS.KATHERINE_TIMES_SEXED] > 0) suckNFucked = katherine.suckedNFuckedByKat;
+        if (player.cocks.length > 0 && flags[kFLAGS.KATHERINE_TIMES_SEXED] > 0) suckNFucked = katherine.suckedNFuckedByKat;
         if (player.hasVagina()) {
             takeVag = katherine.letKatKnotYourCuntPussyFuck;
             if (katherine.knotSize < 4 && katherine.cockNumber > 1) takeVagAndAss = katherine.getDoublePennedByKat;
@@ -995,7 +995,7 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         let spitroast: () => void = threesome.spitroastKath;
         let three69: () => void = threesome.threeSixtyNine;
         if (player.gender == 0) spitroast = null;
-        if (!player.hasCock()) three69 = null;
+        if (!player.cocks.length > 0) three69 = null;
         simpleChoices("Spitroast", spitroast, "369", three69, "Try Leaving", threesome.roastYou, "", null, "", null);
     }
 
@@ -1066,7 +1066,7 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         outputText("The two herms look at each other, and nod silently, then hug each other and say, “<i>I’m sorry,</i>” in unison.  Then, with a wicked grin, they spring up and hug you, letting you feel the prominent bulges of their erect cocks against your belly.\n\n");
         outputText("Okay, okay, you say, laughing at the two amorous herms.  You don’t know about them, but you really don’t feel like being charged with public indecency... so let’s go to the back-rooms? you suggest once more.\n\n");
         outputText("“<i>Sounds good to me!</i>” they cheer at once.  You lead the girls away, arm in arm, followed by the envious stares of more than a few patrons...");
-        const dpKath: () => void = (player.hasCock() ? threesome.doublePenetrateKath : null);
+        const dpKath: () => void = (player.cocks.length > 0 ? threesome.doublePenetrateKath : null);
         simpleChoices("Let 'em fuck", threesome.doubleStuffKath, "DP Kath", dpKath, "", null, "", null, "", null);
     }
 

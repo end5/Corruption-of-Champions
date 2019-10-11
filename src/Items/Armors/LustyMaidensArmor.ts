@@ -27,9 +27,9 @@ export class LustyMaidensArmor extends Armor {
         outputText("\n\nYou shake your head and smile ruefully - maybe once you finish getting dressed!  There's still a bottom to put on, after all.  Regardless, one of your hands keeps coming to rest on your boob, idly groping and fondling your heavy tit whenever you have a free moment.  This sure is some fun armor!");
         dynStats("lus", 25, "resisted", false);
         outputText("\n\nNow, the bottom is a leather thong and skirt combination.  The thong itself is leather dyed radiant white, with intricate gold filigree covering the front triangle.  On the back triangle, there's a similar pattern, though you could swear that from a distance the pattern looks a bit like arrows pointing towards where your [asshole] will be with golden sperm surrounding them. No, that has to be your imagination.  All this time in this strange land must really be getting to you!  Both pieces are molded to accentuate the female form, with a crease in the gusset that will rest over your vagina, ensuring ");
-        if (game.player.hasCock() || game.player.balls > 0) {
+        if (game.player.cocks.length > 0 || game.player.balls > 0) {
             outputText("that it won't fit you ");
-            if (game.player.hasCock()) outputText("or your " + multiCockDescriptLight(game.player));
+            if (game.player.cocks.length > 0) outputText("or your " + multiCockDescriptLight(game.player));
             else outputText("or your [balls]");
             outputText(" at all!  <b>You put your old gear back on with a sigh</b>.");
             return false;
@@ -92,7 +92,7 @@ export class LustyMaidensArmor extends Armor {
         else if (monster.short == "anemone") outputText(" and stroke " + monster.pronoun3 + " taint, even brushing over the featureless spot where an asshole would be, if she had one, to try and coax more of " + monster.pronoun3 + " dirty, perverted thoughts to distill into salty seed");
         else outputText(" and stroke " + monster.pronoun3 + " taint, even brushing close to " + monster.pronoun3 + " asshole to try and coax more of " + monster.pronoun3 + " dirty, perverted thoughts to distill into salty seed");
         outputText(".  A startled moan slips out of " + monster.pronoun3 + " lips, but you're just getting warmed up.  You dive down onto " + monster.pronoun3 + " " + cockDescriptShort(monster, 0) + ", taking the " + cockHead(monster) + " straight into your mouth with a smooth gulp.");
-        if (monster.cockArea(0) >= 80) outputText("  It's so big and strong that it pushes right into your throat, stretching out your neck in the shape of the intruding cock.");
+        if (monster.cocks.cockArea(0) >= 80) outputText("  It's so big and strong that it pushes right into your throat, stretching out your neck in the shape of the intruding cock.");
         outputText("  The strong, pulsing cock feels so good inside your mouth, like it belongs there, and you can't help but think that you're doing a good deed by helping " + monster.a + monster.short + " empty every last perverse desire onto your purifying breasts.");
 
         outputText("\n\nUp and down, up and down, you slide across the expansive member with unhurried, slow strokes, each time making your [chest] bounce beautifully.  Your [nipples] are so hard");
@@ -103,7 +103,7 @@ export class LustyMaidensArmor extends Armor {
         outputText(".  Still, you're not sure how much hotter you can get before you're cumming all over your g-string, letting your own dark thoughts seep into your magical underwear.");
 
         outputText("\n\nBelow you, " + monster.a + monster.short + " is moaning out loud and roughly thrusting " + monster.pronoun3 + " hips to meet your every motion, their tip expanding slightly in your mouth as " + monster.pronoun3 + " passion mounts.  You pull back");
-        if (monster.cockArea(0) >= 80) outputText(" with a messy cough to clear your throat");
+        if (monster.cocks.cockArea(0) >= 80) outputText(" with a messy cough to clear your throat");
         outputText(" and tease, \"<i>Oh, you're going to cum already, aren't you?  Well, go ahead then.</i>\"  You pump your [chest] faster against the twitching rod and smile when a thick bead of pre sloughs off into your squishy boobs, smearing across your " + skin(player) + ".  You kiss it, licking the dollop that slips out of the dilating cum-slit before commanding, \"<i>Cum for me, " + mf(monster, "boy", "girl") + ".  Let it allll out.</i>\"");
         outputText("\n\n" + monster.capitalA + monster.short + " groans and shakes");
         if (monster.balls > 0) outputText(", " + monster.pronoun3 + " balls pumping and bouncing in " + monster.pronoun3 + " sack");

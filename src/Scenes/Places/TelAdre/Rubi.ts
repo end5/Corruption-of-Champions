@@ -670,7 +670,7 @@ export class Rubi extends TelAdreAbstractContent {
             else outputText("\n\nRubi nods towards the bottles and box in the corner and gives you a sly wink.  \"<i>Want another massage?</i>\"");
             addButton(4, "Massage", chocoRubiMassage);
         }
-        if (player.isNaga() && flags[kFLAGS.RUBI_BIMBO] == 0 && flags[kFLAGS.RUBI_COCK_SIZE] < player.biggestCockLength() && player.hasCock() && flags[kFLAGS.RUBI_SHE] == 0 && player.cor >= 85 && flags[kFLAGS.RUBI_BREAST_SIZE] <= 2) {
+        if (player.isNaga() && flags[kFLAGS.RUBI_BIMBO] == 0 && flags[kFLAGS.RUBI_COCK_SIZE] < player.cocks.biggestCockLength() && player.cocks.length > 0 && flags[kFLAGS.RUBI_SHE] == 0 && player.cor >= 85 && flags[kFLAGS.RUBI_BREAST_SIZE] <= 2) {
             outputText("\n\n<b>You could use your snake-like motions to hypnotize Rubi and turn [rubi em] into a more complacent, eager slut. Doing so is likely irreversible.</b>");
             addButton(5, "Hypno", hypnoBimboficationForRubiSloots);
         }
@@ -681,13 +681,13 @@ export class Rubi extends TelAdreAbstractContent {
         // [Fuck Rubi (if player has cock, OR at least a 4</i>\" clit)] [Dildo Fuck (If player has Deluxe Dildo)] [Tease] [Release (Only if Normal or Incubus Rubi who has been teased)] [Titfuck (Bimbo Rubi only)] [Give Item]
         menu();
         if (player.lust >= 33) {
-            if (player.hasCock() || (player.hasVagina() && player.clitLength >= 4)) addButton(0, "Fuck", fuckRubi);
+            if (player.cocks.length > 0 || (player.hasVagina() && player.clitLength >= 4)) addButton(0, "Fuck", fuckRubi);
             if (player.keyItems.has("Deluxe Dildo") >= 0) addButton(1, "Dildo Fuck", dildoFuckRubi);
         }
         addButton(2, "Tease", teaseRubi);
         if (flags[kFLAGS.RUBI_BLU_BALLS] > 0 && flags[kFLAGS.RUBI_ORGASM_DENIAL] > 0 && !rubiBimbo() && flags[kFLAGS.RUBI_COCK_SIZE] > 0) addButton(3, "Release", releaseRubi);
 
-        if (flags[kFLAGS.RUBI_AFFECTION] >= 75 && rubiCapacity() < player.biggestCockArea() && player.hasCock())
+        if (flags[kFLAGS.RUBI_AFFECTION] >= 75 && rubiCapacity() < player.cocks.biggestCockArea() && player.cocks.length > 0)
             addButton(4, "Train", anallyTrainYourBitchBoySlutHowToBeAnalForDCL);
         // Get Fucked
         // PC gets fucked by Rubi
@@ -698,7 +698,7 @@ export class Rubi extends TelAdreAbstractContent {
         // Hotdogging
         // PC hotdogs Rubi's ass
         // PC must have a penis
-        if (player.hasCock()) addButton(6, "Hotdogging", rubiHotdogging);
+        if (player.cocks.length > 0) addButton(6, "Hotdogging", rubiHotdogging);
         addButton(9, "Back", rubisFuckingHouseYouPervert);
     }
 
@@ -765,15 +765,15 @@ export class Rubi extends TelAdreAbstractContent {
     public fuckRubi(): void {
         outputText(images.showImage("rubi-fuck"), false);
         let x: number;
-        x = player.cockThatFits(rubiCapacity());
+        x = player.cocks.cockThatFits(rubiCapacity());
         if (x < 0)
-            x = player.biggestCockIndex();
+            x = player.cocks.biggestCockIndex();
         clearOutput();
         rubiSprite();
         // (-100 Arousal)
         outputText("You take Rubi by the hand and head into the bedroom, clutching [rubi em] close.  You sit on the edge of the soft fluffy bed and pull the little demon " + rubiMF("boy", "girl") + " onto your lap.  The two of you kiss, letting your " + tongueDescription(player) + " explore the depths of your partner's mouth.");
         outputText("\n\nRunning your hands along Rubi's body, you pull and tear at the clothes keeping you apart.  Garments fly as you ravish each other, and it isn't long before you're both naked, with Rubi straddling your waist.  " + rubiMF("He giggles and reaches between his legs", "She giggles and reaches between her legs") + ", wrapping slender fingers around your ");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             // trace("Rubi - PlayerHasCock");
             outputText(cockDescript(game.player, x), false);
         }
@@ -782,11 +782,11 @@ export class Rubi extends TelAdreAbstractContent {
         outputText(".");
 
         let size: number = 0;
-        let cock: boolean = player.hasCock();
+        let cock: boolean = player.cocks.length > 0;
         // (If player cock/clit at or under 4</i>\")
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             if (player.cocks[x].cockLength <= 4) size = 0;
-            else if (player.cockThatFits(rubiCapacity()) >= 0) size = 1;
+            else if (player.cocks.cockThatFits(rubiCapacity()) >= 0) size = 1;
             else size = 2;
         }
         else {
@@ -806,26 +806,26 @@ export class Rubi extends TelAdreAbstractContent {
         else outputText("\n\n\"<i>Oh by Marae... there's no way I could fit this inside me... but there are other things we can do with this.</i>\"");
 
         outputText("\n\nRelinquishing the hold on your ");
-        if (player.hasCock()) outputText("cock");
+        if (player.cocks.length > 0) outputText("cock");
         else outputText("clit");
         outputText(", Rubi slips off your lap and kneels on the floor.  [rubi Ey] pauses a moment, taking in your ");
-        if (player.hasCock()) outputText(cockDescript(game.player, x));
+        if (player.cocks.length > 0) outputText(cockDescript(game.player, x));
         else outputText("[clit]");
         outputText(" with [rubi eir] eyes before leaning in and giving it a tentative lick, which sends a shiver up your spine.  Seeing that, [rubi ey] gives a little smile and licks again, running [rubi eir] smooth tongue all along the length of your ");
-        if (player.hasCock()) outputText("swollen member");
+        if (player.cocks.length > 0) outputText("swollen member");
         else outputText("impressive love button");
         outputText(".  Rubi's mouth dances along its length, at times flicking delicately and at others slurping loudly.  [rubi Eir] tongue ripples along the underside of ");
-        if (player.hasCock()) outputText("your cockhead");
+        if (player.cocks.length > 0) outputText("your cockhead");
         else outputText("the tip of your clit");
         outputText(", sending shivers of pleasure up your spine.");
         // (If Cock)
-        if (player.hasCock()) outputText("  Amazingly, with the expert ministrations of your lover's mouth, you can't hold yourself in much longer, and begin to tense up, but at the last minute you pull yourself away from Rubi's grip and lips, halting yourself before you can cum.");
+        if (player.cocks.length > 0) outputText("  Amazingly, with the expert ministrations of your lover's mouth, you can't hold yourself in much longer, and begin to tense up, but at the last minute you pull yourself away from Rubi's grip and lips, halting yourself before you can cum.");
 
         // (These two paragraphs for cocks under 24 area)
         if (size < 2) {
             // (Normal/Incubus Rubi)
             outputText("\n\nFiguring [rubi ey]'s had enough time in charge, you stand and get behind Rubi, pushing [rubi em] so that [rubi eir] chest and head are resting on the edge of the bed.  You lift [rubi eir] tail and place your ");
-            if (player.hasCock()) outputText(cockDescript(game.player, x));
+            if (player.cocks.length > 0) outputText(cockDescript(game.player, x));
             else outputText("[clit]");
             outputText(" at [rubi eir] tight ");
             if (flags[kFLAGS.RUBI_NO_CUNT] > 0) outputText("tailhole");
@@ -838,7 +838,7 @@ export class Rubi extends TelAdreAbstractContent {
         // (These two paragraphs for cocks over 24 area)
         else {
             outputText("\n\nFiguring [rubi ey]'s had enough time in charge, you stand and get behind Rubi, pushing [rubi em] so that [rubi eir] chest and head are resting on the edge of the bed.  You lift [rubi eir] tail, press [rubi eir] legs together, and place your ");
-            if (player.hasCock()) outputText(cockDescript(game.player, x));
+            if (player.cocks.length > 0) outputText(cockDescript(game.player, x));
             else outputText("[clit]");
             outputText(" at the space just below [rubi eir] ");
             if (flags[kFLAGS.RUBI_NO_CUNT] > 0) outputText("balls");
@@ -848,13 +848,13 @@ export class Rubi extends TelAdreAbstractContent {
             if (rubiBimbo()) outputText(", not that [rubi ey] needs the extra lubrication, as she's practically dripping like a faucet, which dribbles down [rubi eir] legs suitably enough");
             outputText(".");
             outputText("\n\nYou press forward, your enormous ");
-            if (player.hasCock()) outputText(cockDescript(game.player, x));
+            if (player.cocks.length > 0) outputText(cockDescript(game.player, x));
             else outputText("[clit]");
             outputText(" slipping between Rubi's thighs, which grip you tightly.  You feel [rubi eir] ");
             if (flags[kFLAGS.RUBI_COCK_SIZE] > 0) outputText("hard cock");
             else outputText("stiff clit");
             outputText(" pressing against the top of ");
-            if (player.hasCock()) outputText("your dick");
+            if (player.cocks.length > 0) outputText("your dick");
             else outputText("your clit");
             outputText(", and know that with every thrust you give, [rubi ey]'ll get a good thrill too.");
         }
@@ -868,7 +868,7 @@ export class Rubi extends TelAdreAbstractContent {
 
         outputText("\n\nYou keep this up for as long as you can, steeling yourself until you just can't take any more.  With a final, deep thrust, you groan and let your mind blank as the orgasm overtakes you.  ");
         // (Player has cock under 24 area?)
-        if (player.hasCock() && player.cockArea(x) <= rubiCapacity()) {
+        if (player.cocks.length > 0 && player.cocks.cockArea(x) <= rubiCapacity()) {
             outputText("Your " + cockDescript(game.player, x) + " engorges for a second before erupting deep inside your demonic little fucktoy.  ");
             if (player.cumQ() < 250) outputText("Cum dribbles out from [rubi eir] hole as you give a couple extra thrusts.");
             else if (player.cumQ() < 1000) outputText("A generous amount of cum trickles from [rubi eir] depths as you give a couple extra thrusts.");
@@ -879,7 +879,7 @@ export class Rubi extends TelAdreAbstractContent {
                 outputText(" as you give a couple extra thrusts.");
             }
         }
-        else if (player.hasCock()) {
+        else if (player.cocks.length > 0) {
             outputText("Your " + cockDescript(game.player, x) + " engorges for a second before erupting beneath Rubi, splattering [rubi em] and the blankets ");
             if (player.cumQ() < 250) outputText("with a fair amount of your seed.");
             else if (player.cumQ() < 1000) outputText("with a generous amount of your spunk.");
@@ -907,7 +907,7 @@ export class Rubi extends TelAdreAbstractContent {
         clearOutput();
         rubiSprite();
         // (If PC has no cock)
-        if (!player.hasCock()) outputText("You don't have the equipment to give Rubi a good fucking, but there is one thing you do have.");
+        if (!player.cocks.length > 0) outputText("You don't have the equipment to give Rubi a good fucking, but there is one thing you do have.");
         // (If PC has cock)
         else outputText("While you do have the requisite equipment to give Rubi a good fucking, you'd much rather use something else.");
         // (Add)
@@ -942,7 +942,7 @@ export class Rubi extends TelAdreAbstractContent {
         // (If player has pussy)
         if (player.hasVagina()) outputText("  Your " + clitDescription(player) + " stiffens, aching for attention.  It peeks from your folds like a shy little lewd faerie.");
         // (If player has a cock)
-        if (player.hasCock()) outputText("  Meanwhile, [eachCock] stiffens, throbbing as the drug overtakes it.");
+        if (player.cocks.length > 0) outputText("  Meanwhile, [eachCock] stiffens, throbbing as the drug overtakes it.");
         if (player.lactationQ() > 0) outputText("  As the warmth spreads up your body, not even your breasts are left alone.  Your nipples harden and begin leaking milk, which pours down the sides of your body and is soaked up into the cushions beneath you.");
         // (Virginity/stretch check!)
         player.cuntChange(30, true, true, false);
@@ -966,7 +966,7 @@ export class Rubi extends TelAdreAbstractContent {
 
         outputText("\n\nBut you're not done yet.  You frantically pump the dildo faster and faster.  You can feel something welling up inside you, something to quench the flames burning throughout your body.  Soon the double dong between you grows too big to properly thrust, so in desperation your hands move towards ");
         // (PC has cock?)
-        if (player.hasCock()) outputText("[eachCock], stroking it fervently, in desperate need of release.");
+        if (player.cocks.length > 0) outputText("[eachCock], stroking it fervently, in desperate need of release.");
         // (PC doesn't have cock, but has pussy?)
         else if (player.hasVagina()) outputText("your " + clitDescription(player) + ", rubbing it frantically, in desperate need of release.");
         // (PC doesn't have either, but breasts above A-cup?)
@@ -978,7 +978,7 @@ export class Rubi extends TelAdreAbstractContent {
 
         outputText("\n\nFinally, mercifully, the orgasm welling up inside you rolls over you like a tidal wave, quenching the fires of lust that burned within.  Your lips contort into an \"<i>O</i>\" and a long groan escapes your lips.");
         // (PC has cock?)
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  [EachCock] twitches and shudders, loosing several jets of cum onto your body, ");
             if (player.cumQ() < 250) outputText("splattering messily");
             else if (player.cumQ() < 500) outputText("coating you lightly");
@@ -1231,7 +1231,7 @@ export class Rubi extends TelAdreAbstractContent {
         if (!player.isTaur()) {
             outputText("\n\nAs the lovemaking continues, you find your hand descending into your [armor] to fondle ");
             if (player.hasVagina()) outputText("your " + vaginaDescript(player));
-            else if (player.hasCock()) outputText("[eachCock]");
+            else if (player.cocks.length > 0) outputText("[eachCock]");
             outputText(".  ");
         }
         else outputText("\n\n");
@@ -1327,7 +1327,7 @@ export class Rubi extends TelAdreAbstractContent {
         else if (player.cor >= 33) outputText("get undressed without much pause or fanfare.  Rubi makes a show of turning [rubi eir] head, but you can see [rubi em] peeping glimpses out of the corners of [rubi eir] eyes, and [rubi eir] boner seems to be bigger and harder than it was moments before.");
         else {
             outputText("make [rubi em] turn around while you undress.  You quickly shuck your clothes and ask [rubi em] what to do next, holding a hand across your [chest] and groin");
-            if (player.biggestCockArea() >= 40 || player.biggestTitSize() >= 8) outputText(", not that it does much good");
+            if (player.cocks.biggestCockArea() >= 40 || player.biggestTitSize() >= 8) outputText(", not that it does much good");
             outputText(".");
         }
 
@@ -2414,7 +2414,7 @@ export class Rubi extends TelAdreAbstractContent {
         if (!player.hasVagina()) outputText("asshole");
         else outputText("cunt");
         outputText(" of yours all ready for me.</i>\"  Rubi's head descends between your legs");
-        if (player.hasCock()) outputText(", ignoring your " + multiCockDescriptLight(game.player) + " completely,");
+        if (player.cocks.length > 0) outputText(", ignoring your " + multiCockDescriptLight(game.player) + " completely,");
         outputText(" and presses [rubi eir] face into your [vagOrAss], inhaling deeply.  [rubi Eir] lips pucker as [rubi ey] plants a kiss directly onto your ");
         if (!player.hasVagina()) outputText("ass");
         else outputText("moistening pussy");
@@ -3595,7 +3595,7 @@ export class Rubi extends TelAdreAbstractContent {
         else outputText("little slut");
         outputText(" ready to lust after your cock openly, to cling to you whenever you arrive and grope your bulge in public. He needs to be less worried about propriety and more focused on sexual satiation and appeal... yes.");
         outputText("\n\nRubi is watching you in open mouthed fascination. His lips move, stammering, trying to talk, but he just can't get the words out. It's no wonder, really - you've got your big, hard tool");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" whipped out and swaying with your sinuous movements, and all he has is his comparatively undersized little pecker. You rock your whole body with the snake-like grace given to you by your naga body, swaying rhythmically as you meet his eyes. Knowing full well just what kinds of depravity you'd like to force him into, you feel a ");
         if (game.monk >= 5) outputText("familiar ");
         else outputText("strange ");

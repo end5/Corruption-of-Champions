@@ -134,9 +134,9 @@ export class HelSpawnScene extends NPCAwareContent {
         outputText("\n\nYou squeeze Helia's hands and reassure her as best you can, saying she can tell you anything.  She looks away, blushing hotly; beneath her cloak, the radiant fire of her long tail shines brighter, casting a pale glow even through the heavy fabric.  You ask again what's wrong, and with a little coaxing, Hel looks up, her bright crimson eyes staring into yours.");
 
         outputText("\n\n\"<i>I don't just like you, [name] - I mean, I do.  Like you, I mean.  But it's... it's more than that, you know?  Sure, I've said the word, but I say 'love' to a lot of people, a lot of things.  I love your ");
-        if (player.hasCock()) outputText(multiCockDescriptLight(game.player));
-        if (player.hasVagina() && player.hasCock()) outputText(" and your [chest] and your [vagina]");
-        if (!player.hasCock() && player.hasVagina()) outputText(" [vagina] and [chest]");
+        if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
+        if (player.hasVagina() && player.cocks.length > 0) outputText(" and your [chest] and your [vagina]");
+        if (!player.cocks.length > 0 && player.hasVagina()) outputText(" [vagina] and [chest]");
         outputText(" and everything else about you.  But... but that doesn't mean anything.  It doesn't.  I say I love minotaur dicks, and centaurs, and those two fox pricks at the bar filling both my holes, and I love beer and fighting and ramming my tail up peoples' assholes.  But that's not real love, right?  Love is - oh, god, I'm making a mess of this.  Again. I keep doing this; it always works out so much better in my head.</i>\"");
 
         outputText("\n\n\"<i>I guess what I'm trying to say is... I love you, [name].  I really, really do.  Not fake, shitty, stupid love; not me saying it in the heat of the moment.  I've been thinking about this for a while, now.  You've been so good to me [name], better than I deserve.  You saved my family, you've given me a place to live, and more kindness than I could ever have imagined when I jumped you in the plains so very long ago.</i>\"");
@@ -183,13 +183,13 @@ export class HelSpawnScene extends NPCAwareContent {
         if (flags[kFLAGS.HEL_LOVE] == -1) outputText("Even if you don't love me, you'd love our child, right?  You can fuck me full of kids, or even... even get someone else to, I don't care.  I just </i>need<i> it, [name].  More than anything else in the whole wide world.");
         else {
             outputText("I love you, [name].  I love you so much.  I want to share this with you.  ");
-            if (player.hasCock()) outputText("You'll fuck me full of kids, right?  Please?  Give me your seed, [name].  Give it all to me until I'm fucking gravid with your salamander babies.");
+            if (player.cocks.length > 0) outputText("You'll fuck me full of kids, right?  Please?  Give me your seed, [name].  Give it all to me until I'm fucking gravid with your salamander babies.");
             else outputText("Even if you can't fuck me full of babies... you could grow a dick!  There's plenty of things in this god-forsaken world that do that. O-or if you don't want to, I bet I can get one of the fox-girls, or a minotaur, or something.  You know I can find a dick somewhere, just say the word.");
         }
         outputText("  So what do you say, [name]?  Let's have a kid!</i>\"");
         menu();
-        if (player.hasCock() && player.cockThatFits(helFollower.heliaCapacity()) >= 0) addButton(0, "Have A Kid", haveAKid);
-        else if (player.hasCock()) outputText("  <b>Unfortunately, you're too big to squeeze inside Helia to do the business yourself.  You might need to shrink down some.</b>");
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(helFollower.heliaCapacity()) >= 0) addButton(0, "Have A Kid", haveAKid);
+        else if (player.cocks.length > 0) outputText("  <b>Unfortunately, you're too big to squeeze inside Helia to do the business yourself.  You might need to shrink down some.</b>");
         addButton(1, "Another Dad", getAnotherDad);
         addButton(2, "No Or Later", noKidsHel);
     }
@@ -275,7 +275,7 @@ export class HelSpawnScene extends NPCAwareContent {
         clearOutput();
         spriteSelect(68);
         // [Another Dad] (PC has no dick)
-        if (!player.hasCock()) {
+        if (!player.cocks.length > 0) {
             outputText("You tell Helia you'd love to a share a child with her, but you're not... properly equipped for the endeavor.  \"<i>That's fine!  I can... I can wait, a little.  I-if you want to go grow one, I mean.  If not, then we can find someone with a cock.  ");
             if (player.effects.getValue1Of(StatusAffects.TelAdre) >= 1) outputText("There's Miko and Mai from the bar.  Mai's said she wanted a kid, but can't take care of one... she'd probably be willing to fuck one into me!  If that's not alright, then... lemme think.  ");
             outputText("Uh, maybe not a minotaur... they always plug more minotaurs, and I don't want a bull coming out of my twat.  Uh, maybe I could track down one of the spider boys from the swamp and jump on </i>his<i> dick.  They're pretty cute, right?  Dunno how that'd affect a child, though.  Maybe he'd end up with like, extra eyes, or chitin?  Still, better than an imp or some shit.  So what do you think?  Wanna grow a dick, or leave the knocking-up to someone else?</i>\"");
@@ -293,8 +293,8 @@ export class HelSpawnScene extends NPCAwareContent {
         // [Spiderboy]
         addButton(1, "Spiderboy", spiderboyWouldBeBestDad);
         // [I will] (If PC has a dick)
-        if (player.hasCock() && player.cockThatFits(helFollower.heliaCapacity()) >= 0) addButton(2, "I Will", haveAKid);
-        else if (!player.hasCock()) addButton(2, "I Will", growingDicks4Hel);
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(helFollower.heliaCapacity()) >= 0) addButton(2, "I Will", haveAKid);
+        else if (!player.cocks.length > 0) addButton(2, "I Will", growingDicks4Hel);
         addButton(3, "No Or Later", noKidsHel);
     }
 
@@ -336,7 +336,7 @@ export class HelSpawnScene extends NPCAwareContent {
         clearOutput();
         spriteSelect(68);
         outputText("You shake you head and say no, you don't want to have children.  Not right now, anyway.  ");
-        if (player.hasCock() && player.cockThatFits(helFollower.heliaCapacity()) >= 0) outputText("You couldn't if you wanted to anyway - you're too big to fit.  ");
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(helFollower.heliaCapacity()) >= 0) outputText("You couldn't if you wanted to anyway - you're too big to fit.  ");
         outputText("As the words leave your lips, you can see Hel's shoulders slump, a crestfallen look spreading across her face.  \"<i>A-are you sure?  Please, [name], I really, really want a child.  For </i>us<i> to have one.</i>\"");
         outputText("\n\nYou tell her that no, at least for now you aren't interested.  She begs and pleads for several minutes, but you hold your ground.  Finally, she relents.  \"<i>Alright, [name].  I... I'll respect that, I guess.  Dad gave me some herbs, said as long as I take them, I should go back to normal.  If that's what you want, I'll start on them.  Just tell me if - when - you're ready, [name].  I will be.</i>\"");
 
@@ -383,7 +383,7 @@ export class HelSpawnScene extends NPCAwareContent {
 
         outputText("\n\n\"<i>I swear it took him like, half an hour to actually just tie me up properly.  His spinners are spurting like little cocks everywhere, and he's apologizing and trembling all over until I actually have to help the poor kid get me all tied up and gagged.  But then - and this is rich - he wiggles out of his shirt, and oh my god the kid's a fucking tripod.  I mean he puts minotaurs to shame, and how.  Here's this shy kid, never had a girl before, and he's packing a god-damn monster down under");
         // If PC has a giant wang:
-        if (player.biggestCockArea() >= 20) outputText(", though still nothing compared to you, lover mine");
+        if (player.cocks.biggestCockArea() >= 20) outputText(", though still nothing compared to you, lover mine");
         outputText(".  So he's rock-hard now, trembling with excitement; he spreads my legs nice and wide, stroking himself as he lines up and... oops, wrong hole.  That was a surprise, lemme tell you.  Not an </i>unpleasant<i> surprise, mind you, but still.  Just about rips me in half with this giant thing, slides all the way to the hilt and just stops, like he doesn't know what to do.  He just sort of moans and wiggles his hips a little, hugging himself to me and burying his head in my chest.</i>\"");
 
         outputText("\n\n\"<i>Well, what's a girl to do?  I get my hands free pretty easy, and run my fingers through his hair, tell him everything's okay, he's doing great.  Poor kid looks up at me with these huge puppy-dog eyes and asks, 'R-really?' like he's so shocked.  God damn, he was cute.  So I give him a little kiss, help him pull out and line up with the real prize.  Oh, you should have seen his face when he slid home: tongue rolled out, eyes crossed.  He just about came right there, but I clenched down hard, told him he'd have to work for it.  I pull him in tight, just bury his face in my tits and guide his hips, getting him working nice and slow.  But that boy, give him a little urging on and he's a natural... in about five minutes he's got me on all four and humping away, plunging this fucking monster in until I'm screaming and cumming and he is too.  Oh, we made quite the mess, we two.</i>\"");
@@ -501,7 +501,7 @@ export class HelSpawnScene extends NPCAwareContent {
         clearOutput();
         spriteSelect(68);
         outputText("\"<i>Is that so? Yeah, I can see it.  ");
-        if (player.hasCock() && !player.hasVagina()) outputText("If I were a guy, I'd want a big strong son to hang out with, too.  Take him fishing, teach him how to fight the way you do... you'll make a great dad, my love.  I'm sure you will.");
+        if (player.cocks.length > 0 && !player.hasVagina()) outputText("If I were a guy, I'd want a big strong son to hang out with, too.  Take him fishing, teach him how to fight the way you do... you'll make a great dad, my love.  I'm sure you will.");
         else outputText("Would be nice to have a man around here, you know?  I miss hanging around the boys back home, watching 'em strut like peacocks for every passing girl.");
         outputText(" And any son of mine is going to be a real lady killer, mark my words.  We're going to have to fight off whole hordes of goblin sluts, all looking for a piece of our handsome little boy before you know it.</i>\"");
         outputText("\n\nYou share a quiet laugh with your lover before leaving her with a kiss and a final pat on the belly - and feeling the little kick of your spawn reacting to you.");
@@ -514,7 +514,7 @@ export class HelSpawnScene extends NPCAwareContent {
         spriteSelect(68);
         outputText("\"<i>Yeah, a girl would be pretty great.  ");
         // if PC is male:
-        if (player.hasCock() && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.hasVagina()) {
             outputText("I dunno if you had any sisters growing up, [name], but let me warn you: a little girl, especially a little salamandress, is going to be a hell of a handful.  But I can just see you when she's all grown up, packing a big old sword and threatening every boy that wants a piece of her: 'Treat her right or you'll have the CHAMPION to deal with.  Rawr.'");
         }
         else outputText("We're going to be a gaggle of tittering girls before you know it, though.  Salamanders grow up so fast, [name]...  I just hope she doesn't turn out like me, you know?  I don't know if I could stomach seeing my little girl becoming a wanton slut like her mom.  I might get jealous, after all...");
@@ -1411,7 +1411,7 @@ export class HelSpawnScene extends NPCAwareContent {
             if (flags[kFLAGS.HELSPAWN_INCEST] == 0) outputText("  You wash your hands of the defeated slut and head back to camp, leaving her to work through her tension herself.");
             else {
                 outputText("  You reach down and give your lovely, lusty daughter a pat on her expansive rear, telling her she'll always look her best with her ass in the air, begging for ");
-                if (!player.hasCock()) outputText("sex");
+                if (!player.cocks.length > 0) outputText("sex");
                 else outputText("your cock");
                 outputText("... and that if she's lucky, you might tend to her when you've cooled off.");
             }

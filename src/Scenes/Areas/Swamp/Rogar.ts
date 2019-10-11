@@ -93,7 +93,7 @@ export class Rogar {
                     outputText("You can feel a heat rising in your groin at the memory of Ro'gar so aroused before.", false);
                     if (player.hasVagina()) outputText("  When you witnessed him make that other beast submit with strength alone it created a demanding need in your " + vaginaDescript(player) + " during the match, and the memory is doing much the same now.", false);
                     // ((if player has cock(s))
-                    if (player.hasCock()) outputText("  You feel " + sMultiCockDesc(game.player) + " shift as you remember how hard you got from behind the tree, finding yourself absent mindedly stroking yourself with an open palm as pre-cum soaks through your clothing.", false);
+                    if (player.cocks.length > 0) outputText("  You feel " + sMultiCockDesc(game.player) + " shift as you remember how hard you got from behind the tree, finding yourself absent mindedly stroking yourself with an open palm as pre-cum soaks through your clothing.", false);
                     outputText("  You begin to pleasure yourself discreetly as the memory of the two fighting burns through your mind, trying not to squirm too obviously.  \"<i>Sorry ya had ta see that before.</i>\"  Ro'gar's face flushes lime green as you smile distractedly at him.  \"<i>He was wanderin' too close so I had ta get him ta back off.</i>\"  Ro'gar drinks again from his mug and you reassure him, sliding from your chair and setting your mug upon the table.  Your lips curl into a grin as you ask for a private match...\n\n", false);
                 }
                 // (int>=30)
@@ -142,7 +142,7 @@ export class Rogar {
                 if (player.inte < 30) {
                     outputText("You can feel a heat rising in your groin at the memory of Ro'gar so aroused before.", false);
                     if (player.hasVagina()) outputText("  When you witnessed him make that other beast submit with strength alone it created a demanding need in your " + vaginaDescript(player) + " during the match, and the memory is doing much the same now.", false);
-                    if (player.hasCock()) outputText("  You feel " + sMultiCockDesc(game.player) + " shift as you remember how hard you got from behind the tree, finding yourself absent mindedly stroking yourself with an open palm as pre-cum soaks through your clothing.", false);
+                    if (player.cocks.length > 0) outputText("  You feel " + sMultiCockDesc(game.player) + " shift as you remember how hard you got from behind the tree, finding yourself absent mindedly stroking yourself with an open palm as pre-cum soaks through your clothing.", false);
                     outputText("  You begin to pleasure yourself discreetly as the memory of the two fighting burns through your mind, trying not to squirm too obviously.  \"<i>Sorry ya had ta see that before.</i>\"  Ro'gar's face flushes lime green as you smile distractedly at him.  \"<i>He was wanderin' too close so I had ta get him ta back off.</i>\"   Ro'gar drinks again from his mug, and you explain that it's no problem and shift in your chair before setting your mug on the table.  \"<i>How's about you give me a rubdown then, and I'll give you yer own 'private match'?</i>\"  Ro'gar punctuates this strange request with an odd grin and a rumble in his chest.\n\n", false);
                 }
                 // (int >=30)
@@ -171,7 +171,7 @@ export class Rogar {
                 outputText("\"<i>Come on in.</i>\"  Ro'gar extends a hand, welcoming you inside.  You quickly take a seat and fold your arms", false);
                 if (player.lib > 50) {
                     outputText(" over your musk-fueled, growing ", false);
-                    if (player.hasCock()) outputText("bulge", false);
+                    if (player.cocks.length > 0) outputText("bulge", false);
                     else outputText("nipples", false);
                 }
                 outputText(".  \"<i>I been meanin' ta speak with ya,</i>\" Ro'gar starts, from across the table.  He rests his arms on it and turns his head to face you before he continues.  \"<i>I've been plannin' to git away from this here place for some time now, an' I reckon if'n you didn't come along I'd have just taken off without a clue.</i>\"  He lets out a sigh before continuing. \"<i>I've just been lookin' fer a place to settle in an' be around people that'd be acceptin' of a feller like me.  Y'ever find a place like that?</i>\"  Ro'gar turns his whole body to face you, an expectant look in his eyes.\n\n", false);
@@ -255,7 +255,7 @@ export class Rogar {
                     outputText("  Your " + vaginaDescript(player, 0) + " starts to quiver as the warm water rolls over its lips, moistening in excitement as your skin is rubbed over by strong hands.  Your chest heaves as it relaxes to his touch, your " + nippleDescription(player, 0) + "s becoming stiff under his rubbing.", false);
                     outputText("  Even your " + feet(player) + " and fingers curl as you smell the sweat and musk of Ro'gar's closeness, the animalistic scent arousing you.", false);
                 }
-                else if (player.hasCock()) outputText("  " + SMultiCockDesc(game.player) + " stirs to life, making it obvious how much you are enjoying the rub down, then begins to drool with lust.  Through lidded eyes you faintly make out Ro'gar's toothy smirk becoming a hungry grin.", false);
+                else if (player.cocks.length > 0) outputText("  " + SMultiCockDesc(game.player) + " stirs to life, making it obvious how much you are enjoying the rub down, then begins to drool with lust.  Through lidded eyes you faintly make out Ro'gar's toothy smirk becoming a hungry grin.", false);
                 dynStats("lus", 5 + player.lib / 20 + player.sens / 20);
                 outputText("\n\n", false);
             }
@@ -306,7 +306,7 @@ export class Rogar {
         // [(if player has tail)
         if (player.hasLongTail() > 0 || player.isNaga()) outputText("  Your tail brushes along Ro'gar's legs eagerly, tickling his thighs as you service him.", false);
         outputText("  Ro'gar presses his fat length against your lips and you immediately dive onto it, licking over the uncut head and kissing along the hefty shaft.  You slip your tongue between his bulbous head and folded flaps of skin, collecting the salty pre-cum pooling there and dipping down to lick over Ro'gar's heavy and swollen cum factories.  You warm them with your mouth as you feel pre-cum dripping down over your " + face(player) + ".  You slide your tongue up to the tip of Ro'gar's cock, taking it into your mouth to suckle on it.  More and more passes your lips as salty pre-cum begins to fill your mouth.  \"<i>Mmf, fuck,</i>\" Ro'gar hisses as your mouth goes down over his meaty length.  He holds your head firmly in place, shifting his hips and thrusting upward as he starts to facefuck you, slapping his pent-up sack against your chin.  He thrusts into your mouth relentlessly, and it's all you can do to keep your lips wrapped tightly around his shaft.  You reach down to touch yourself under your clothes, rubbing over ", false);
-        if (player.hasCock()) outputText(sMultiCockDesc(game.player), false);
+        if (player.cocks.length > 0) outputText(sMultiCockDesc(game.player), false);
         else if (player.hasVagina()) outputText("your " + vaginaDescript(player, 0), false);
         else outputText("your " + assholeDescript(player), false);
         outputText(" as Ro'gar penetrates your mouth.  Soon the orc gives out a low groan and slams his cock down your throat, holding you impaled on the green monster as he begins pumping you full of thick seed.  You can feel the heavy spunk sliding down your throat and filling your stomach with each throatful of cum he pumps into you.  Eventually his member slips out of your soaked mouth and blasts the last few ropes out over your " + face(player) + ", 'dirtying' you with a starchy load as he promised.\n\n", false);
@@ -315,7 +315,7 @@ export class Rogar {
         // (int <30)
         if (player.inte < 30) outputText("  That fight between him and his opponent went on for quite a while, so it makes some sense.", false);
         outputText("  You smile warmly and plant a kiss wet with cum on Ro'gar's forehead, deciding to let him rest while you collect your things and head back to camp.  Your needy ", false);
-        if (player.hasCock()) outputText("erection", false);
+        if (player.cocks.length > 0) outputText("erection", false);
         else if (player.hasVagina()) outputText("pussy", false);
         else outputText("ass", false);
         outputText(" aches, each step of the way rubbing the sensitive", false);
@@ -479,7 +479,7 @@ export class Rogar {
         let rubdub: () => void = null;
 
         if (player.hasItem(consumables.BROBREW)) brodown = brobrobrobro;
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             giveAnal = fuckRogarsButtPussyBoyCuntManMoundSissySlitQueerQuim;
             getAnal = loseButtGinity;
             frot = frotWithRogar;
@@ -562,7 +562,7 @@ export class Rogar {
             outputText("You are left panting for breath from Ro'gar's continued teasing, your skin on fire from every touch as his thin oil smears over it.  You spread your legs lewdly on Ro'gar's lap, blood rushing south as you feel yourself stiffen and throb - though you aren't the only one sporting wood, as you soon feel Ro'gar's hot manhood pressed up to your side.  He groans into your shoulder, bucking his hips to hump your flesh.  Pre-cum dribbles from Ro'gar's swollen cockhead and smears you in his need.  \"<i>Come here,</i>\" he whispers directly into your ear.  His hands grip your bottom as he pulls you closer to face him.  Your chest presses to his as you straddle Ro'gar's hips.  Ro'gar's throbbing ten inches of man meat tucks between the cheeks of your " + buttDescription(player) + ". He gives you a playful wink, bucking his hips to bounce you in his lap.  The feeling of his hot, thick length rubbing over your " + assholeDescript(player) + "  and wetting it with copious pre makes you gasp like a bitch in heat.  The dripping orc spooge snakes down in between your cheeks, and you feel your body shudder with anticipation; Ro'gar lets the liquid pour over his own hard-on.  \"<i>My favorite boy ready for the ride of his life?</i>\"  He grins impishly as he grips the head of his thick, uncut orc cock and pushes it against your boy cunt.  A gasp of pleasure escapes your lips and your hands clasp onto Ro'gar's shoulders, wriggling your " + buttDescription(player) + " over the green mile.\n\n", false);
 
             outputText("With a buck of Ro'gar's hips his slick cockhead slips into your " + assholeDescript(player) + ".  Your lips part wide, letting out a sharp gasp as he nestles within you.  \"<i>Git ridin', boy!</i>\" he barks, with a hard smack against your " + buttDescription(player) + ".  You yelp at the rough treatment, easing yourself down slowly to slide Ro'gar's stiff flesh further into you, and feel yourself growing hard as the throbbing manhood stretches you open.  " + SMultiCockDesc(game.player) + " swells with blood as it brushes against Ro'gar's stomach, and the sensitive urethra picks up a thin layer of his slime from his skin, making you burn with sensitivity.  Your hips shift into Ro'gar's body more, rubbing your " + multiCockDescriptLight(game.player) + " tightly against him.", false);
-            if (player.cockTotal() > 1) {
+            if (player.cocks.length > 1) {
                 outputText("Lines of pre-cum are drawn with your erections, adulterating the sweat and oil on Ro'gar's body as you bob your hips along Ro'gar's mast.   ", false);
             }
             outputText("Your spunk dribbles over Ro'gar's green skin and collects in his navel as his mouth attacks your neck with an assault of nips and licks, each nibble rubbing his tusks over your sensitized skin.  Hands roughly grip your " + buttDescription(player) + ", spreading your cheeks apart manually and kneading the flesh like dough.  He coaxes you to move faster with demanding nudges of your hips, growling deeply with each thrust of his cock inside you.  Hot fluid sticks to your inner walls, arousal making you buck your hips helplessly as you become more and more sensitive with each thrust.  You're soon bouncing up and down on Ro'gar's prick, and to further your wild ride, Ro'gar begins bucking his hips up to meet your " + buttDescription(player) + ".\n\n", false);
@@ -618,16 +618,16 @@ export class Rogar {
         outputText("Pulling back off of Ro'gar's face, you feel your entire body twitch in anticipation.  You press your " + hipDescription(player) + " against his muscled ass, lining your aroused member up against his tight rear while your hands grope over the firm muscled cheeks, spreading them apart eagerly.\n\n", false);
 
         // [((If biggest cock is less than 4 inches))
-        if (player.longestCockLength() < 4) {
+        if (player.cocks.longestCockLength() < 4) {
             outputText("\"<i>Yer serious?</i>\" Ro'gar asks with a quirked eyebrow.  You blink as he suddenly gets up to stare you in the eyes.  \"<i>Not to be rude, " + player.short + ", but I ain't gonna feel nothin'.</i>\"  You can't help but feel a little offended, saying something about motions of large bodies of water.  Ro'gar doesn't seem convinced as he buries his forehead in a palm.  \"<i>Listen, this ain't a really good time for this.  I'm already losin' my mojo.  You come back another time, okay?</i>\"  With that, you are ushered out as politely as possible.  You can't help but feel a little embarrassed as you walk the city streets like this is some sort of walk of shame.", false);
             doNext(camp.returnToCampUseOneHour);
             return;		// end if too small
         }
         // ((else If smallest cock is over 18 inches))
-        else if (player.shortestCockLength() > 18) {
+        else if (player.cocks.shortestCockLength() > 18) {
             outputText("\"<i>E-easy there...</i>\" Ro'gar actually stutters, looking at you with concern.  You are impossibly huge for him, and despite your titanic head rubbing pre-cum over Ro'gar's green hole it just won't fit.  You let out an annoyed grumble and begin to rub your length over Ro'gar's body and orc cock.  With lustful grunts Ro'gar bucks his hips into your " + multiCockDescriptLight(game.player) + ", grinding the stiff masts together as they leak and drool over one another.\n\n", false);
             // [(If multiple cock)
-            if (player.cockTotal() > 1) outputText(SMultiCockDesc(game.player) + " grinds over every inch of Ro'gar's front, and his dark olive skin soaks in your glistening fluids.  Ro'gar's length is lost in the forest of your meat.  With his green monster assaulted by multiple angles and dwarfed in size he whimpers softly.  \"<i>Ain't never felt nothin' like this.  Almost like fuckin' a dick.</i>\"", false);
+            if (player.cocks.length > 1) outputText(SMultiCockDesc(game.player) + " grinds over every inch of Ro'gar's front, and his dark olive skin soaks in your glistening fluids.  Ro'gar's length is lost in the forest of your meat.  With his green monster assaulted by multiple angles and dwarfed in size he whimpers softly.  \"<i>Ain't never felt nothin' like this.  Almost like fuckin' a dick.</i>\"", false);
             // (else If single cock)
             else outputText("Your " + multiCockDescriptLight(game.player) + " bucks against Ro'gar's orcish pride.  The pair of hard cocks press tightly together as you dwarf Ro'gar in size.  You hump his orc sex with your " + multiCockDescriptLight(game.player) + " and grunt in strain; your hands reach down to grip the pair of manhoods tightly, jerking them fast with squeezed pumps.", false);
             // (If player has balls)
@@ -649,8 +649,8 @@ export class Rogar {
             // end racialdicks, still inside right fit path
 
             outputText("\n\nYou grip his hips and begin a steady pace, slapping flesh loudly against his muscled ass.  His thick, powerful legs twitch in the air as you pound into his orcish hole, and the orc's toes curl visibly with each brutal thrust you make into him.  You groan as his musk makes your " + multiCockDescriptLight(game.player) + " throb all the more within him.  To further his humiliation, you whisper in his pointed ear how good he feels wrapped around your length.  He blushes a lime green before you make him groan out your name with a rough smack over his ass.", false);
-            if (player.cockTotal() > 2) outputText("  Your other cocks grind over that firm orc rump, drooling over his skin and making his rear glisten with your sex.", false);
-            else if (player.cockTotal() > 1) outputText("  Your other cock grinds over that firm orc rump, drooling over his skin and making his rear glisten with your sex.", false);
+            if (player.cocks.length > 2) outputText("  Your other cocks grind over that firm orc rump, drooling over his skin and making his rear glisten with your sex.", false);
+            else if (player.cocks.length > 1) outputText("  Your other cock grinds over that firm orc rump, drooling over his skin and making his rear glisten with your sex.", false);
             outputText("You decide to see how loud you can make him moan and begin ramming deep within him.  The thrusts slam hard enough to make Ro'gar's back arch, your bulbous cockhead prodding his buried prostate with each hilt.  His big hand beats furiously at his massive orc cock, strained groans bellowing out loudly as his heavy sack clenches tight against the base of his green rod.  Orc spunk flies out over his chest, hitting his chin and splattering over his heaving pecs.  His cum collects between his bulging muscles and splashes over his head.  Ro'gar's anal walls clench down tight around you as you pick up the pace of your brutal fuck; your " + cockDescript(game.player, 0) + " is milked hard as you feel your climax rapidly approaching.  Sweat drips from your body onto Ro'gar's skin, and you finally feel yourself hit the edge.  With a burst of ecstasy you hilt completely within your orc fuck toy.", false);
             // [(If dog cock)
             if (player.hasKnot(0)) outputText("  Your knot forces past Ro'gar's tight, anal ring to pulse inside him, joining the pair of you together.", false);
@@ -658,7 +658,7 @@ export class Rogar {
             if (player.balls > 0) outputText("  With short jerks of your hips, you begin to unload your pent up orbs into the orc's innards.", false);
             outputText("  Wave after wave of thick seed spills from your cock into Ro'gar as his head falls back at the blissful sensation.", false);
             // [(if multiple cock)
-            if (player.cockTotal() > 1) outputText("  The other meat rubbing over his olive skin outside adds to the coating of spunk, making a giant mess of Ro'gar's body.  In seconds he resembles a well-paid whore beneath your " + multiCockDescriptLight(game.player) + ".", false);
+            if (player.cocks.length > 1) outputText("  The other meat rubbing over his olive skin outside adds to the coating of spunk, making a giant mess of Ro'gar's body.  In seconds he resembles a well-paid whore beneath your " + multiCockDescriptLight(game.player) + ".", false);
             outputText("\n\n", false);
         }
         // end right fit path
@@ -733,7 +733,7 @@ export class Rogar {
                 if (player.nippleLength > .5) player.nippleLength = .25;
                 player.breastRows[0].lactationMultiplier = 0;
             }
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 if (player.cocks[0].cockLength < 10) {
                     if (player.cocks[0].cockThickness < 2.75) {
                         player.cocks[0].cockThickness = 2.75;
@@ -795,7 +795,7 @@ export class Rogar {
         spriteSelect(86);
         outputText("You allow yourself to be led into Ro'gar's apartment and look around the modestly furnished lounge. Ro'gar seats himself in a cushioned chair.  \"<i>Thanks fer comin'.  I missed ya.</i>\"  He snickers, and you draw closer. His calloused hand reaches down to cup your " + buttDescription(player) + ".  He smirks at you, the frisky orc chuckling deeply and firmly squeezing.  You retaliate with a hard smack against Ro'gar's muscled rump.  He growls low, answering the challenge and crashing his lips into your own.  Muffled grunts and groans issue from both of you as you undress each other.  Soon you are standing in the nude and Ro'gar's hefty cock presses against your " + multiCockDescriptLight(game.player) + ".\n\n", false);
         // (If multiple cocks)
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("Feeling your lengths stiffen against Ro'gar's hard green monster, you buck against Ro'gar's hard need, enveloping it in your cocks and coaxing a lewd groan from the orc.  Ro'gar growls as he feels his orc length surrounded, his green member being slathered with your pre-cum from multiple directions.  His arms wrap around you as he fucks your " + multiCockDescriptLight(game.player) + ", grinding his orc cock between all your lengths; he presses his tusks against your neck and suckles, teeth grating the flesh while his tongue passes over the indentations they leave behind.  Ro'gar backs you up and you feel a hard wall behind you.  His oil-coated body rubs over your own, smearing onto your chest, arms, and hips.  Your hands grip tightly to Ro'gar's back as you grind into him with your " + multiCockDescriptLight(game.player) + ".  Ro'gar reaches his hand down, wrapping his fingers around his length and the nearest cock to it, then strokes them slowly.  Hot breath washes over your face as he stares deep into your eyes, the deep blue pools hazed with lust as you fuck against each other's loins.  Your two bodies mingle with sweat and pre-cum, and soon your groins are sticky and glazed.  You fuck your cocks together, the strong scent of man musk filling your nose and sending a shudder down your spine and a thrill through your groin.  Ro'gar suddenly moans, his orc cock caught between your " + multiCockDescriptLight(game.player) + " as he unloads over your chest.  His heavy sack clenches tight beneath his cock as he spills his thick seed onto you, coating you in his countless ropes.  The heat warms your skin as you reach your limit; each of your " + multiCockDescriptLight(game.player) + " twitches, hot and sticky spunk splashing over Ro'gar's olive skin.\n\n", false);
         }
         // (If single cock)

@@ -148,7 +148,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
                 outputText("\n\n\"<i>Cor, well ah'll be.  Sweetie, you be leaking Champagne.</i>\"  She gives your other nipple a tweak to fill a second shot glass.  The same clear liquid pours out, and the little champagne bubbles tickle your nipples to new heights of sensitivity, causing your ");
                 if (player.hasVagina()) outputText("pussy to wetten");
                 if (player.gender == 3) outputText(" and ");
-                if (player.hasCock()) outputText("[eachCock] to stiffen");
+                if (player.cocks.length > 0) outputText("[eachCock] to stiffen");
                 outputText(".  \"<i>Ye know, I got's an idea.  How's about ye stick by me for the next hour.  I'm sure ye must be diein' to drain those big'uns of yours.  We might as well sell your champagne ta the patrons.  Whaddaya say Lassie?</i>\"");
                 // [SELL YOUR BOOZE]  [LEAVE]
             }
@@ -462,7 +462,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
                 player.createVagina();
                 player.genderCheck();
                 outputText("\n\nYou can feel ");
-                if (player.hasCock()) outputText("the flesh under your cock[if (hasBalls = true)  and behind your [balls]]");
+                if (player.cocks.length > 0) outputText("the flesh under your cock[if (hasBalls = true)  and behind your [balls]]");
                 else outputText("the blank expanse of flesh that is your crotch");
                 outputText(" start to tingle and squirm... mmm... that feels nice!  There's a sensation you, like, can't describe, and then your crotch feels all wet... but in a good, sticky sorta way.  Oh, wow!  <b>You've, like, just grown a new virgin pussy!</b>  Awesome!");
                 player.effects.setValue(StatusAffects.BimboChampagne, 3, 1);
@@ -529,7 +529,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             drink = bazaardNiamhDrink;
         else outputText("\n\n<b>You're too poor to get a drink.</b>");
         let fuck: () => void = null;
-        if (player.hasCock())
+        if (player.cocks.length > 0)
             fuck = bazaarSex;
         simpleChoices("Get A Drink", drink, "Tit-Fuck", fuck, "", null, "", null, "Back", bazaar.enterTheBazaar);
     }
@@ -577,7 +577,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
 
     // [Bazaar sex]
     private bazaarSex(): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         const y: number = x + 1;
         clearOutput();
         if (flags[kFLAGS.NIAMH_STATUS] == 2) {
@@ -671,8 +671,8 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         if (player.hasVagina()) outputText("  You feel your excitement dripping down the inside of your thighs as your pussy wettens.");
         dynStats("lus", 10 + player.sens / 5, "resisted", false);
         // [If player has cocks]
-        if (player.hasCock()) outputText("  You start to feel sympathetic sensations in [eachCock] as the hands and paws of the bar goers milk your nipples.  With their fingers sliding over your sensitive nubs you can easily imagine them sliding up and down your cock");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 0) outputText("  You start to feel sympathetic sensations in [eachCock] as the hands and paws of the bar goers milk your nipples.  With their fingers sliding over your sensitive nubs you can easily imagine them sliding up and down your cock");
+        if (player.cocks.length > 1) outputText("s");
         outputText(".");
         // If lust is low
         if (player.lust < 50 || player.gender == 0) {
@@ -686,7 +686,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("\n\nYou're not sure how much more you can give before it becomes impossible to ignore your raging hormones.");
             outputText("\n\nNiamh notices your condition, as does several other patrons in the bar.  ");
             if (player.hasVagina()) outputText("You can feel your labia dripping with need.  ");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText("pre-cum drizzles down your " + multiCockDescriptLight(game.player) + " as the need to fuck a pussy grows stronger.  A few wandering hands reveals some apparent interest amongst the folks in the bar in seeing your genitals as active as your nipples.");
             }
             // [FUCK THE BAR] [LEAVE]
@@ -703,12 +703,12 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // If [player has pussy]
         if (player.hasVagina()) outputText("The drooling of your [vagina] gets worse as the constant \"tapping of your kegs\" drives your sense of self-restraint to its limits.  The hands of various drunks start moving more aggressively over your breasts, eventually winding their way down between your thighs.");
         // IF [player has cock/s]
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("[EachCock] grows to its full length.  You try to keep ");
-            if (player.cockTotal() == 1) outputText("it");
+            if (player.cocks.length == 1) outputText("it");
             else outputText("them");
             outputText(" discreet but it's impossible.  You try to push ");
-            if (player.cockTotal() == 1) outputText("it");
+            if (player.cocks.length == 1) outputText("it");
             else outputText("them");
             outputText(" down or aside, but other pairs of hands begin stroking you.");
         }
@@ -750,9 +750,9 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // IF [Player has a large pregnancy]
         if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 100) outputText("  \"<i>Oi!  Careful folks, this babe could blow at any time!</i>\"  Niamh pats your belly with chiding affection.");
         // IF [Player has a single cock]
-        if (player.cockTotal() == 1) outputText("\n\n\"<i>Mmmmm, now that be what me wants.</i>\"  Niamh settles down, pressing her womanhood over your mouth.  Through some lustful instinct your tongue begins licking her folds, seeking for an entrance into the busty cat girl's depths.  Her own rough tongue begins slurping up the sides of your erection.");
+        if (player.cocks.length == 1) outputText("\n\n\"<i>Mmmmm, now that be what me wants.</i>\"  Niamh settles down, pressing her womanhood over your mouth.  Through some lustful instinct your tongue begins licking her folds, seeking for an entrance into the busty cat girl's depths.  Her own rough tongue begins slurping up the sides of your erection.");
         // ELSE IF [Player has multiple cocks]
-        else if (player.cockTotal() > 1) outputText("\n\n\"<i>Ooooh, how delightful.  Ye come overly equipped dontcha?</i>\"  Niamh grabs a handful of your cock meat as she settles her hips down to smother your face with her vaginal folds.  Her labia slip between your lips and you find yourself tonguing her cunt in search of her entrance.  With your cocks in her hands she begins glomping down on one of your shafts with her own mouth, eagerly sucking you off while giving you a hand job at the same time.  Excessive amounts of your pre-cum serve as the perfect lubricant for her hands as they stroke you off.  \"<i>Mmmmm,</i>\"  Niamh purrs, \"<i>I hope your cum is as good as your " + boozeBoobsType() + ".</i>\"");
+        else if (player.cocks.length > 1) outputText("\n\n\"<i>Ooooh, how delightful.  Ye come overly equipped dontcha?</i>\"  Niamh grabs a handful of your cock meat as she settles her hips down to smother your face with her vaginal folds.  Her labia slip between your lips and you find yourself tonguing her cunt in search of her entrance.  With your cocks in her hands she begins glomping down on one of your shafts with her own mouth, eagerly sucking you off while giving you a hand job at the same time.  Excessive amounts of your pre-cum serve as the perfect lubricant for her hands as they stroke you off.  \"<i>Mmmmm,</i>\"  Niamh purrs, \"<i>I hope your cum is as good as your " + boozeBoobsType() + ".</i>\"");
         // IF [Player has 2+ inch clit]
         if (player.clitLength >= 2) outputText("\n\nThe sensations in your groin become more pleasurably irresistible as you feel something wet and tight slip around your clit.  Amongst the ruckus of voices in the bar you can make out the distinctive yelps of a fairy that call out in time with the sensations of whatever is sliding up and down your pussy's nub.");
 
@@ -772,12 +772,12 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // IF [Player has fuckable nipples]
         if (player.hasFuckableNipples()) outputText("  The cocks filling your nipples start pumping hot sperm into your breasts, mixing with your " + boozeBoobsType() + " and causing every nerve ending in your nipples to tingle.  Some of them ejaculate so much that it feels as if your breasts are swelling even larger, almost to the point of bursting before the cum spills out.");
         // IF [Player has cocks]
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText("  You feel as if your body is exploding everywhere.  Niamh gags momentarily as her mouth fills with your seed, and you realize your cock");
-            if (player.cockTotal() > 1) outputText("s have");
+            if (player.cocks.length > 1) outputText("s have");
             else outputText(" has");
             outputText(" begun spurting ");
-            if (player.cockTotal() == 1) outputText("its ");
+            if (player.cocks.length == 1) outputText("its ");
             else outputText("their ");
             outputText("jizz.  Niamh swallows it down her throat but not without some of it getting plastered across her face.");
             // IF [character is pregnant]
@@ -793,9 +793,9 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         if (player.effects.getValue1Of(StatusAffects.Edryn) >= 5 && player.gender == 3 && game.time.hours == 14 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0) {
             outputText("\n\nYou're so dizzy on pleasure that you barely notice it when you're lifted off the table and carried through the bar again.  You can hardly feel your feet and legs when the crowd stands you up, and with a weak lifting of your head you see the reason for the sudden change of position.  Right in front of you is Edryn's womanly hindquarters with her black cunt lips jiggling back and forth, dripping her girly horse juices from their sopping wet folds.  You don't even have to do anything as several hands angle [eachCock] and guide you forwards.");
             // IF [player has a single cock]
-            if (player.cockTotal() == 1) outputText("  Edryn moans out loud in ecstasy as your [cock] fills her up.");
+            if (player.cocks.length == 1) outputText("  Edryn moans out loud in ecstasy as your [cock] fills her up.");
             // If [player has multiple cocks]
-            else if (player.cockTotal() > 1) outputText("  The heads of your cocks press in between Edryn's labia causing her to cry out, \"<i>Oh gawd!  How many dicks are y-you f-f-fucking meeee with???</i>\"  Edryn's orgasm cuts her voice off and every muscle in her cunt contracts around your " + multiCockDescriptLight(game.player) + ".");
+            else if (player.cocks.length > 1) outputText("  The heads of your cocks press in between Edryn's labia causing her to cry out, \"<i>Oh gawd!  How many dicks are y-you f-f-fucking meeee with???</i>\"  Edryn's orgasm cuts her voice off and every muscle in her cunt contracts around your " + multiCockDescriptLight(game.player) + ".");
             outputText("\n\nAs Edryn's cunt literally sucks you in deeper you feel Urta move up behind you.  As her horse-cock pokes against your pussy lips you realize just before the first thrust what is about to happen.  Tel'Adre's finest guard rams her massive member inside you, making you the center of a fuck sandwich.");
             // IF[player is pregnant]
             if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 200) outputText("  Your pregnant belly presses up against Edryn's ass as both Urta's cock and Edryn's pussy keeps you pinned in place between them.");
@@ -852,14 +852,14 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             if (player.hasVagina()) outputText("  You gag on it at the same time a new cock fills your cunt, ready to renew the thrusting that's been causing your tits to bounce all over the place.");
 
             // IF [player has single cock small-med cock]
-            if (player.cockTotal() == 1 && player.cockArea(0) < 75) outputText("\n\nA cat girl with six C-cup breasts jumps up onto the table and mounts you.  She grabs your cock and proceeds to shove it up between the folds of her tight pussy.");
+            if (player.cocks.length == 1 && player.cocks.cockArea(0) < 75) outputText("\n\nA cat girl with six C-cup breasts jumps up onto the table and mounts you.  She grabs your cock and proceeds to shove it up between the folds of her tight pussy.");
             // OR IF [player has single huge cock]
-            else if (player.cockTotal() == 1) outputText("\n\nA cow girl with six large tits and quad nipples crawls with difficulty up and onto the table, carefully positioning her bare bovine cunt above your massive member, and proceeds to thrust her ridiculously wide hips down around it.");
+            else if (player.cocks.length == 1) outputText("\n\nA cow girl with six large tits and quad nipples crawls with difficulty up and onto the table, carefully positioning her bare bovine cunt above your massive member, and proceeds to thrust her ridiculously wide hips down around it.");
             // FOR BOTH COCK SIZES -
-            if (player.cockTotal() == 1) outputText("  Your cock remains tightly embedded inside the girl.  She bounces up and down causing her six tits to shake for the crowd's enjoyment.  You're so hard that even if she tried to dismount the head of your cock would have grown too thick to allow it to slide out of her pussy's entrance.  You can't hold back and a surging sensation rushes through you, blasting your hot seed up inside the wildly busty girl.  You hear cries from the crowd \"<i>Knock her up!  Knock her up! Knock her up!</i>\"  You hear cheers when they see your cum leaking out of her.");
+            if (player.cocks.length == 1) outputText("  Your cock remains tightly embedded inside the girl.  She bounces up and down causing her six tits to shake for the crowd's enjoyment.  You're so hard that even if she tried to dismount the head of your cock would have grown too thick to allow it to slide out of her pussy's entrance.  You can't hold back and a surging sensation rushes through you, blasting your hot seed up inside the wildly busty girl.  You hear cries from the crowd \"<i>Knock her up!  Knock her up! Knock her up!</i>\"  You hear cheers when they see your cum leaking out of her.");
 
             // If [player has multiple cocks]
-            else if (player.cockTotal() > 1) outputText("\n\nIt isn't long before mouths and pussies take their turns as the female inclined customers of the bar mount your shafts, eager to get loads of your man seed to erupt inside of them.  Girls and herms of every shape and breed take turns sucking the cum out of you.  You can't hold back and within minutes you're blasting sperm into various pussies all at once.  As soon as one pussy is removed another takes its place.  You start hearing chanting from the crowd \"<i>Knock them up!  Knock them up! Knock them up!</i>\"  The crowd cheers various hoorays whenever they see your cum suddenly erupt from one of the various cunts your cocks are stuffed in.");
+            else if (player.cocks.length > 1) outputText("\n\nIt isn't long before mouths and pussies take their turns as the female inclined customers of the bar mount your shafts, eager to get loads of your man seed to erupt inside of them.  Girls and herms of every shape and breed take turns sucking the cum out of you.  You can't hold back and within minutes you're blasting sperm into various pussies all at once.  As soon as one pussy is removed another takes its place.  You start hearing chanting from the crowd \"<i>Knock them up!  Knock them up! Knock them up!</i>\"  The crowd cheers various hoorays whenever they see your cum suddenly erupt from one of the various cunts your cocks are stuffed in.");
 
             outputText("\n\nThe smell of sex fills your nostrils.  The hot seed of the crowd fills your throat and covers your body.  Even after your breasts start lactating regular milk the fucking continues.  Only after every patron in the bar has managed to cum their brains out through use of your flesh do things settle down.  You're out of breath, out of strength, and out of booze or milk to give.");
 
@@ -868,9 +868,9 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("\n\nAs you leave the bar you look around.  Every cock hangs low looking satisfied.");
 
             // IF [player has one cock]
-            if (player.cockTotal() == 1) outputText("  The six titted girl smiles at you, patting her belly while your cum runs down the inside of her thighs.  You only now wonder about how fertile she might be.");
+            if (player.cocks.length == 1) outputText("  The six titted girl smiles at you, patting her belly while your cum runs down the inside of her thighs.  You only now wonder about how fertile she might be.");
             // IF [player has multiple cocks]
-            else if (player.cockTotal() > 1) outputText("  Various girls around the room are patting their bellies and giving you sultry looks while your cum continues to drip from their pussies.  You passively wonder if any of them might indeed be hauling around some larger pregnant bellies in a few days, but you try to push those thoughts from your head.  At the moment they seem happy.");
+            else if (player.cocks.length > 1) outputText("  Various girls around the room are patting their bellies and giving you sultry looks while your cum continues to drip from their pussies.  You passively wonder if any of them might indeed be hauling around some larger pregnant bellies in a few days, but you try to push those thoughts from your head.  At the moment they seem happy.");
             // IF [player has pussy]
             if (player.hasVagina()) {
                 outputText("  You walk slightly bow legged out of the bar.  Cum is still dripping from your snatch and will likely continue to do so for a while.");

@@ -142,7 +142,7 @@ export class IncubusMechanicScenes {
             else outputText(" sticky with lust");
             outputText(" at his masculine scent and appearance.");
         }
-        else if (player.hasCock()) {
+        else if (player.cocks.length > 0) {
             outputText(" You feel a heady, turgid warmth growing in your own crotch, mirroring the ardor displayed by the cock you're about to service.");
         }
         outputText(" A patch of neatly trimmed pubic hairs lead up his abdomen to a set well-defined muscles, half-hidden under his loose not-so-coveralls.");
@@ -189,7 +189,7 @@ export class IncubusMechanicScenes {
         menu();
         addButton(0, "Kill", killMechanic);
         addButton(1, "Let Go", letMechanicGo, hpVictory);
-        if (player.hasCock()) addButton(2, "Buttfuck", buttfuckTheMechanic, hpVictory);
+        if (player.cocks.length > 0) addButton(2, "Buttfuck", buttfuckTheMechanic, hpVictory);
         if (player.hasVagina()) addButton(3, "Ride Cock", rideMechanicsCock);
     }
 
@@ -218,7 +218,7 @@ export class IncubusMechanicScenes {
     private buttfuckTheMechanic(hpVictory: boolean): void {
         flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_FUCKED;
 
-        let x: number = player.cockThatFits(200);
+        let x: number = player.cocks.cockThatFits(200);
         if (x == -1) x = 0;
 
         clearOutput();
@@ -386,7 +386,7 @@ export class IncubusMechanicScenes {
 
         outputText("\n\nLetting your [legs] go slack, you press down upon the incubus' length. His " + cockHead(monster) + " presses poignantly at your entrance, throbbing gently. Small blooms of warm tickle over your lips, warm and wet as he leaks his liquid excitement into your nethers, lubricating you further. You relax a bit more");
 
-        const mCockArea: number = monster.cockArea(0);
+        const mCockArea: number = monster.cocks.cockArea(0);
         const pCuntArea: number = player.vaginalCapacity();
         let tightFit: boolean = false;
 
@@ -417,7 +417,7 @@ export class IncubusMechanicScenes {
             tightFit = true;
             outputText(" and feel the immensely girthy boner butt up against your lips, too wide to slip even the tiniest bit inside. Grunting in frustration, you grind against him, slicking his head further and applying more force. You push harder and harder, actually bending his rigid shaft slightly from the force. He groans in pain and pleasure. Suddenly, your voice joins his. His " + cockHead(monster) + " finally powers through your sopping gates and into your tunnel, stretching it painfully wide as it goes. The intensity of the combined pain and pleasure shocks you so badly that you nearly faint, and your [legs] go limp, forcing your body to slide down the belly-stretching meat-pole. You quiver and cry, sobbing words that sometimes sound like no and sometimes sound like yes, filled with more cock than you ever hoped to handle.");
         }
-        player.cuntChange(monster.cockArea(0), false, false, false);
+        player.cuntChange(monster.cocks.cockArea(0), false, false, false);
 
         // Merge together
         outputText("\n\nYou hold yourself atop him and let your abdominal muscles flutter around the incubus' " + cockDescriptShort(monster) + " like an organic sextoy, getting used to holding him inside you. Turning to look back over your shoulders, you place a hand upon his chest feel his well-defined muscles. You stop to admire his nipple, tugging at it a little bit. He growls in irritation, but you just squeeze his dick with your");
@@ -480,7 +480,7 @@ export class IncubusMechanicScenes {
     }
 
     public mechanicFuckedYouUp(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (player.hasCock() && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.hasVagina()) {
             maleLossToMechanic(hpVictory);
         }
         else {
@@ -501,23 +501,23 @@ export class IncubusMechanicScenes {
             outputText("\n\nThe inubus leers, smiling down at you.");
 
             // Small cocks
-            if (player.biggestCockLength() < 6) {
+            if (player.cocks.biggestCockLength() < 6) {
                 outputText("\n\n\"<i>That's it? You expect to please anyone with such a pitiful endowment? I suppose there may be someone into that, somewhere.</i>\" The incubus sighs. <i>\"Your flaws only make my job harder.</i>\"");
             }
             // Medium cocks
-            else if (player.biggestCockLength() < 12) {
+            else if (player.cocks.biggestCockLength() < 12) {
                 outputText("\"<i>You're so... average. I suppose you'll do, if the succubi feel like having a drab, everyday orgasm.</i>\" The incubus shrugs. \"<i>A dick will do...</i>\"");
             }
             // Big cocks
-            else if (player.biggestCockLength() < 18) {
+            else if (player.cocks.biggestCockLength() < 18) {
                 outputText("\n\n\"<i>Huh....</i>\" The incubus seems pleasantly surprised by your endowment. \"<i>I gotta say, that'll probably work good for what I have in mind. Maybe you'll even be popular with the succubi.</i>\" He laughs.");
             }
             // Huge cocks
             else {
                 outputText("\"<i>Seriously?</i>\" the incubus asks. \"<i>How am I supposed to work with something so gargantuan?</i>\" He disdainfully pulls a vial from his pocket and upends it over your crotch. The effect is immediate. [Eachcock] shrinks from ridiculously large down to horse-sized. <i>\"There, that's better.\"</i>");
                 // Shrink down to 18" by 3"
-                player.cocks[player.biggestCockIndex()].cockLength = 18;
-                player.cocks[player.biggestCockIndex()].cockThickness = 3;
+                player.cocks[player.cocks.biggestCockIndex()].cockLength = 18;
+                player.cocks[player.cocks.biggestCockIndex()].cockThickness = 3;
             }
 
             // Merge size forks
@@ -533,15 +533,15 @@ export class IncubusMechanicScenes {
             outputText("\n\nLeering down at you, the incubus swiftly tears away your [armor], his fingers suddenly razor-sharp claws. He is precise in his attentions, leaving your [skin] pristine and unbroken. You get the impression he doesn't want damaged goods. He regards your " + multiCockDescriptLight(game.player) + " with interest, judging them.");
 
             // Small cocks
-            if (player.biggestCockLength() < 6) {
+            if (player.cocks.biggestCockLength() < 6) {
                 outputText("\n\n\"<i>That's it? You expect to please anyone with such a pitiful endowment? I suppose there may be someone into that, somewhere.</i>\" The incubus sighs. <i>\"Your flaws only make my job harder.</i>\"");
             }
             // Medium cocks
-            else if (player.biggestCockLength() < 12) {
+            else if (player.cocks.biggestCockLength() < 12) {
                 outputText("\n\n\"<i>You're so... average. I suppose you'll do, if the succubi feel like having a drab, everyday orgasm.</i>\" The incubus shrugs. \"<i>A dick will do...</i>\"");
             }
             // Big cocks
-            else if (player.biggestCockLength() < 18) {
+            else if (player.cocks.biggestCockLength() < 18) {
                 outputText("\n\n\"<i>Huh....</i>\" The incubus seems pleasantly surprised by your endowment. \"<i>I gotta say, that'll probably work good for what I have in mind. Maybe you'll even be popular with the succubi.</i>\" He laughs.");
             }
             // Huge cocks
@@ -549,8 +549,8 @@ export class IncubusMechanicScenes {
                 outputText("\n\n\"<i>Seriously?</i>\" the incubus asks. \"<i>How am I supposed to work with something so gargantuan?</i>\" He disdainfully pulls a vial from his pocket and upends it over your crotch. The effect is immediate. [Eachcock] shrinks from ridiculously large down to horse-sized. <i>\"There, that's better.\"</i>");
 
                 // Shrink down to 18" by 3"
-                player.cocks[player.biggestCockIndex()].cockLength = 18;
-                player.cocks[player.biggestCockIndex()].cockThickness = 3;
+                player.cocks[player.cocks.biggestCockIndex()].cockLength = 18;
+                player.cocks[player.cocks.biggestCockIndex()].cockThickness = 3;
             }
 
             // MERGE size fork

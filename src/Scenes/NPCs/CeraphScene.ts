@@ -79,11 +79,11 @@ export class CeraphScene extends NPCAwareContent {
         spriteSelect(7);
         outputText("", true);
         // UBER-Fullbodypenetration
-        if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR && player.biggestCockArea() > 500 && (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 || monk >= 5)) {
+        if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR && player.cocks.biggestCockArea() > 500 && (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 || monk >= 5)) {
             hugeCorruptionForceFuckCeraph();
             return;
         }
-        if (player.cockArea(0) <= monster.vaginalCapacity()) {
+        if (player.cocks.cockArea(0) <= monster.vaginalCapacity()) {
             // [Male] Fuck 'Dat Pussah
             // [lust]
             if (monster.lust > 99) {
@@ -103,12 +103,12 @@ export class CeraphScene extends NPCAwareContent {
                 outputText("getting an exhibitionist thrill ", false);
             }
             outputText("and begin stroking ", false);
-            if (player.totalCocks() > 1) outputText("each of ", false);
+            if (player.cocks.length > 1) outputText("each of ", false);
             outputText("your stiff " + multiCockDescriptLight(game.player) + ", preparing to penetrate her.\n\n", false);
 
             outputText("Ceraph squirms in the dirt as you bring your " + cockDescript(game.player, 0) + " closer and closer to her female hole, her cock twitching with need like some kind of perverse, mutant clit.  Her hips twitch at you, as if eager to devour your maleness.  You don't keep her waiting, ", false);
 
-            if (player.cockArea(0) < 40) {
+            if (player.cocks.cockArea(0) < 40) {
                 outputText("and with a forceful thrust, you sheath yourself inside the demon's unholy pussy", false);
             }
             else outputText("and with a mighty effort, you force your over-sized cock inside her.  For a moment all you can do is stare in awe as it distorts her body – the fact that such a thing is possible puzzles you", false);
@@ -149,11 +149,11 @@ export class CeraphScene extends NPCAwareContent {
                 outputText("getting an exhibitionist thrill ", false);
             }
             outputText("and begin stroking ", false);
-            if (player.cockTotal() > 1) outputText("each of ", false);
+            if (player.cocks.length > 1) outputText("each of ", false);
             outputText("your stiff " + multiCockDescriptLight(game.player) + ", preparing to penetrate her.\n\n", false);
 
             outputText("The " + cockHead(player) + " of your " + cockDescript(game.player, 0) + " squishes flat against her twat, too big for her prodigious demon-cunt to swallow.  Spurred by frustrated desires, you lift her legs and wrap her girlcum-slicked thighs about your ", false);
-            if (player.cockTotal() > 1) outputText("primary ", false);
+            if (player.cocks.length > 1) outputText("primary ", false);
             outputText(cockDescript(game.player, 0) + ". Ceraph's smooth skin and soft thigh-flesh form a comfortably tight masturbation tube.  Starting slowly, you begin rocking back and forth, sawing your prodigious cock-flesh over her body.  The demoness swivels her hips underneath your " + cockDescript(game.player, 0) + ", her slippery gash and near-crushed member feverishly rubbing into you.  Though you didn't get to truly violate her, her thighs and unblemished skin are more than good enough to bring you to the brink of orgasm.\n\n", false);
             outputText("The defeated omnibus wraps her arms around your " + cockDescript(game.player, 0) + " and whines lustily, \"<i>No, please!  You'll cover me in seed and despoil my face!  Please don't glaze me in that awful stuff!</i>\"\n\n", false);
             outputText("You grunt, hold the captive by her ankles, and use her like a disposable sex-toy.  The slap of your " + hipDescription(player) + " slapping into her thighs echoes loudly, nearly drowning out the wet squishing of your " + cockDescript(game.player, 0) + " with each violent brush against her cuntlips.  ", false);
@@ -234,7 +234,7 @@ export class CeraphScene extends NPCAwareContent {
         else if (player.cor < 66) outputText("You groan, wondering why she just won't get over her little act.  Even though this wasn't your best idea, it isn't nearly as bad as she makes it out to be.  You get dressed and leave, eager to be rid of her.\n\n", false);
         else outputText("You bend over and rub your belly while whispering in her ear, \"<i>Like mother, like child.</i>\"\n\n", false);
         outputText("As you leave, you don't bother to spare a glance at the confused omnibus; she isn't worth your time.\n\n", false);
-        player.cuntChange(monster.cockArea(0), true);
+        player.cuntChange(monster.cocks.cockArea(0), true);
         player.orgasm();
         dynStats("lib", 3, "sen", 3, "cor", 1);
         player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); // Ceraph causes faster pregnancies
@@ -257,7 +257,7 @@ export class CeraphScene extends NPCAwareContent {
         outputText("The demon places a hand on your forehead and rubs your temples.  Strength drains from your body with every touch, until you're left helpless and paralyzed.  She snaps an earring into your left ear, and dizziness washes over you.  A moment later she's piercing the other side, and the now-familiar vertigo that accompanies it seems to come and go quicker than before.  You hope she doesn't take your " + player.armorName + " while you're paralyzed, leaving you to roam the realm totally exposed.  Confusion and waves of new desire battle in your mind as you try to come to grips with the odd thought.\n\n", false);
 
         outputText("Ceraph watches your ", false);
-        if (player.cockTotal() > 0) outputText("cock bounce in time with your fluttering heartbeats", false);
+        if (player.cocks.length > 0) outputText("cock bounce in time with your fluttering heartbeats", false);
         else if (player.hasVagina()) outputText("vagina get wetter and wetter", false);
         else outputText("parted lips and confused expression", false);
         outputText(" as the new thoughts and desires settle themselves inside you.  She gives you a gentle pat and explains, \"<i>It's ok baby, you're an exhibitionist now.  The moment I put those cursed earrings in your cute little ears, they slid their magic deep inside you, teaching you how to be a good " + mf(player, "boy", "girl") + " and get turned on by exposing yourself.</i>\"\n\n", false);
@@ -304,16 +304,16 @@ export class CeraphScene extends NPCAwareContent {
         outputText("The demoness pulls out a diamond-studded piercing and closes in on you, her cock hard, her pussy moist, and her hips swaying seductively as she advances.  Ceraph gives you a serious look and warns you, \"<i>You know how close you are to being my pet, don't you?  You just need this piercing and a little time to get used to it.  Then if you're good, I'll strip you naked, tie you down, and let you lick me out.  We can even let the imps watch!</i>\"\n\n", false);
 
         outputText("The idea turns you on immensely, and you pant and gasp as ", false);
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             outputText("pre-cum oozes from ", false);
-            if (player.totalCocks() > 1) outputText("each of ", false);
+            if (player.cocks.length > 1) outputText("each of ", false);
             outputText("your " + multiCockDescriptLight(game.player) + ".", false);
         }
         else if (player.hasVagina()) outputText("feminine moisture drools from between your lips and your " + clitDescription(player) + " turns into a hard button.", false);
         else outputText("your body aches for release.", false);
         outputText("  With an amused grin, Ceraph yanks down your gear and ", false);
         // [dicks]
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             outputText("grabs your " + cockDescript(game.player, 0), false);
             if (player.cocks[0].pierced > 0) outputText(", the old piercing clattering to the ground as it slides out of your flesh, ", false);
             outputText(" and snaps the diamond stud through your sensitive flesh, making your vision haze red in pain.\n\n", false);
@@ -388,7 +388,7 @@ export class CeraphScene extends NPCAwareContent {
         spriteSelect(7);
         outputText("At this point, you know she's right.  The desires Ceraph has awakened inside you will never go away.  In spite of the hassle they've caused, you've come to love being so uncontrollably aroused by such humiliating treatment.", false);
         if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " tingles as you wonder how many piercings and fetishes she could fit into your labia.", false);
-        else if (player.cockTotal() > 0) outputText("  Your " + cockDescript(game.player, 0) + " grows rock hard as you wonder if she'll give you a Jacob's ladder full of new fetishes and thoughts.", false);
+        else if (player.cocks.length > 0) outputText("  Your " + cockDescript(game.player, 0) + " grows rock hard as you wonder if she'll give you a Jacob's ladder full of new fetishes and thoughts.", false);
         else outputText("  Your body hums with arousal as you wonder if she'll give you a cock and cunt, pierce them both, and fill you with new fetishes and sexy submissive thoughts.", false);
 
         outputText("\n\nWith your mind made up, you give Ceraph a solemn nod.  The demon smiles knowingly and saunters up to you.  She grabs you by the head and looks you dead in the eye, as if searching for something.  Moments drag by until she releases you all at once, taking her whip and binding it crudely around your neck.  She pulls on it, forcing you down to the dirt, and commands, \"<i>Pets crawl.  And they don't wear clothes.</i>\"\n\n", false);
@@ -422,7 +422,7 @@ export class CeraphScene extends NPCAwareContent {
         outputText("", true);
         spriteSelect(7);
         outputText("Months pass in pure bliss.  Since adoption into Mistress Ceraph's harem, pet gained over a dozen piercings and nearly twice as many fetishes.  Pet learned to love spanking, and developed the ability to cum just from having " + mf(player, "his", "her") + " nipples pinched or being paddled.  Ceraph enjoyed that for a while, but she did eventually tire, and pet was given a fetish for orgasm denial", false);
-        if (player.cockTotal() > 0) outputText(" along with a magical cock-ring", false);
+        if (player.cocks.length > 0) outputText(" along with a magical cock-ring", false);
         outputText(".  Two weeks of drug and bondage induced edging nearly broke pet's mind, but Mistress was nice and let " + mf(player, "him", "her") + " cum over and over after getting a new piercing and worshiping her feet for a few hours.\n\n", false);
 
         outputText("The champion that left Ingnam so long ago is totally unrecognizable, body and soul.  The spirit that once burned bright with the desire to save the innocents of the village has been warped and twisted beyond repair.  The once-champion known only as 'pet', not even worthy of a proper name, spends all " + mf(player, "his", "her") + " time lusting after Mistress Ceraph, taking part in her depraved orgies and willingly submitting to any kinks or debaucheries that are presented to " + mf(player, "him", "her") + ".  Pet's life of individuality and choice is over, all that remains is pleasure and pain.", false);
@@ -519,9 +519,9 @@ export class CeraphScene extends NPCAwareContent {
         spriteSelect(7);
         outputText("You nod, biting your lip anxiously and undoing your armor to give her better access to your body.  The demoness pulls out a diamond-studded piercing and closes in on you, her cock hard, her pussy moist, and her hips swaying seductively as she advances.  Ceraph gives you a serious look and warns you, \"<i>You know how close you are to being my pet, don't you?  You just need this piercing and a little time to get used to it.  Then if you're good I'll strip you naked, tie you down, and let you lick me out.  We can even let the imps watch!</i>\"\n\n", false);
         outputText("The idea turns you on immensely, and you pant and gasp as ", false);
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             outputText("pre-cum oozes from ", false);
-            if (player.totalCocks() > 1) outputText("each of ", false);
+            if (player.cocks.length > 1) outputText("each of ", false);
             outputText("your " + multiCockDescriptLight(game.player) + ".", false);
         }
         else if (player.hasVagina()) {
@@ -531,7 +531,7 @@ export class CeraphScene extends NPCAwareContent {
 
         outputText("\n\nWith an amused grin, Ceraph yanks down your gear and ", false);
         // [dicks]
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText("grabs your " + cockDescript(game.player, 0), false);
             if (player.cocks[0].pierced > 0)
                 outputText(", the old piercing clattering to the ground as it slides out of your flesh,", false);
@@ -627,9 +627,9 @@ export class CeraphScene extends NPCAwareContent {
             let dicking: () => void = null;
             let buttsmexing: () => void = null;
             // Dickings ahoyu!
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 dicking = maleFuckCeraphsPussy;
-                if (player.cockThatFits(monster.analCapacity()) != -1) buttsmexing = buttRapeCeraph;
+                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttsmexing = buttRapeCeraph;
                 else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
             }
             let cunting: () => void = null;
@@ -691,8 +691,8 @@ export class CeraphScene extends NPCAwareContent {
 
         outputText("You start to black out as you feel her release a wave of seed onto your " + hairDescription(player) + ".  Though you're too far gone to realize it, your eyes are slowly rolling back as your vision goes black.  Copious demonic fluids fill your mouth while Ceraph gets off on riding your face.  You're nearly gone when she finally pulls herself off of you, jacking her cock off and splattering a few ropes of thick male cum onto your chest and neck.  Coughing and sputtering out her sexual fluids, you fight back to consciousness, humiliated and aroused beyond measure.\n\n", false);
 
-        if (player.totalCocks() > 0) {
-            if (player.totalCocks() > 1) outputText("Each of y", false);
+        if (player.cocks.length > 0) {
+            if (player.cocks.length > 1) outputText("Each of y", false);
             else outputText("Y", false);
             outputText("our " + multiCockDescript(game.player) + " is twitching and dripping pre-cum, on the edge of orgasm.  ", false);
         }
@@ -714,7 +714,7 @@ export class CeraphScene extends NPCAwareContent {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291] += 2;
         outputText("", true);
         spriteSelect(7);
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
 
         outputText("You laugh at Ceraph's ", false);
         if (monster.HP < 1) outputText("beaten, prone", false);
@@ -724,7 +724,7 @@ export class CeraphScene extends NPCAwareContent {
         outputText("The hermaphrodite dominatrix frigs her dripping slit, getting off on the dominance in your words, but she still manages to snarl defiantly, \"<i>F-uuuck off.  Just... rape me or whatever and get it over with.</i>\"\n\n", false);
 
         outputText("She's quite the sore loser!  You drop your " + player.armorName + " on the ground and stroke your ", false);
-        if (player.cockTotal() > 1) outputText("largest ", false);
+        if (player.cocks.length > 1) outputText("largest ", false);
         outputText(cockDescript(game.player, x) + ", feeling the blood pump into it.  The thick, penile flesh inflates to the ludicrous size it adopts every time you get hard.  Ceraph's eyes widen into dinner plate-sized saucers of shock as she beholds the behemoth that sprouts from your loins.  She actually tries to scrabble away in the dirt, but she fails miserably.  ", false);
         if (monster.HP < 1) outputText("Her hands are too busy starting to pump away at her nodule-covered demon-dick to help her crawl away.", false);
         else outputText("Both her hands are too busy at her groin to help her escape.", false);
@@ -754,7 +754,7 @@ export class CeraphScene extends NPCAwareContent {
         if (player.cocks[x].cockLength > 84) outputText("You've still got a lot more dick to get wet, and you start pushing the rest through her, using her like a plus-sized, organic onahole.  ", false);
         else {
             outputText("You sigh happily, rubbing your ", false);
-            if (!player.hasSheath()) outputText("groin", false);
+            if (!player.cocks.hasSheath()) outputText("groin", false);
             else outputText("sheath", false);
             outputText(" against her slippery, split slit, before you pull back and start fucking her like a plus-sized, organic onahole.  ", false);
         }
@@ -765,8 +765,8 @@ export class CeraphScene extends NPCAwareContent {
         outputText("\n\n", false);
 
         outputText("You push the used fuck-toy off your " + cockDescript(game.player, 0), false);
-        if (player.cockTotal() == 2) outputText(" and marvel at the cum your other cock dumped into the puddle", false);
-        else if (player.cockTotal() > 2) outputText(" and marvel at the cum your other cocks dumped into the puddle", false);
+        if (player.cocks.length == 2) outputText(" and marvel at the cum your other cock dumped into the puddle", false);
+        else if (player.cocks.length > 2) outputText(" and marvel at the cum your other cocks dumped into the puddle", false);
         outputText(".  Ceraph's pussy gapes at least " + num2Text(int(player.cocks[x].cockThickness + 1)) + " inches wide, pushing her hips so far apart as to make it difficult to walk.  She shudders, drooling spit, pussy-juice, and sperm as her mouth, neck, and chest tighten up.  Her lower body doesn't change one iota; your magics are still overpowering her natural abilities below the waist.  The abused dom twitches a few more times before her eyes reappear and she pulls her tongue back into her mouth.\n\n", false);
 
         outputText("Ceraph gasps, \"<i>Ohhhhkay.  That felt goooooooood.</i>\"  She gathers some of your sperm from her space and swallows it with a smile before she offers, \"<i>You've shown me a good time, mortal.", false);
@@ -951,7 +951,7 @@ export class CeraphScene extends NPCAwareContent {
         let temp2: number = 0;
         // 1 = wang, 2 = cunt, 3 = tits.
         // Add dicks
-        temp = player.totalCocks();
+        temp = player.cocks.length;
         while (temp > 0) {
             temp--;
             choices[choices.length] = 1;
@@ -976,7 +976,7 @@ export class CeraphScene extends NPCAwareContent {
         if (choice == 0) outputText("FUCK AN ERROR HAPPENED GET FENOXO ON THE HORN!", false);
         // (DICKS)
         else if (choice == 1) {
-            temp2 = rand(player.cockTotal());
+            temp2 = rand(player.cocks.length);
             outputText("She pipes up, \"<i>", false);
             if (player.cocks[temp2].cockType == CockTypesEnum.HORSE) outputText("Oooh, is that a horse-cock?  Those are quite nice.  I love the feel of a flare inside me, or even better, plunging one deep into a slut's poor, abused asshole.", false);
             else if (player.cocks[temp2].cockType == CockTypesEnum.DOG) outputText("Oooh, is that a dog-cock?  Those are quite nice.  It's oh-so-fun to enhance the knots on those and then watch them puff up enough to distend some poor slave's gut.", false);
@@ -986,9 +986,9 @@ export class CeraphScene extends NPCAwareContent {
             else if (player.cocks[temp2].cockType == CockTypesEnum.TENTACLE) outputText("Oooh, a tentacle cock?  How lucky to find one of those on you!  I've been meaning to add another poor tentacle-slave.", false);
             else if (player.cocks[temp2].cockType == CockTypesEnum.ANEMONE) outputText("Oooh, an anemone-cock?  Simply marvelous!  I might have to crank up the strength of the venom and use it myself!", false);
             else outputText("Oooh, a normal, uncorrupted cock.  How utterly droll!  You'd think these would be more common, but it's quite a treat to come across one.", false);
-            if (player.cockTotal() > 1) {
+            if (player.cocks.length > 1) {
                 outputText("  Of course that's not the only prick you're packing, hrmmm?  Maybe I should take ", false);
-                if (player.cockTotal() == 2) outputText("the other one", false);
+                if (player.cocks.length == 2) outputText("the other one", false);
                 else outputText("one of the others", false);
             }
             outputText(".", false);
@@ -1014,7 +1014,7 @@ export class CeraphScene extends NPCAwareContent {
         outputText("A long, silent moment passes before Ceraph makes up her mind.  She points at your ", false);
         if (choice == 1) {
             outputText("manhood", false);
-            if (player.cockTotal() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(" ", false);
         }
         else if (choice == 2) outputText("vagina ", false);
@@ -1046,24 +1046,24 @@ export class CeraphScene extends NPCAwareContent {
         // (Cock)
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] == 1) {
             // Pick a dick at random!
-            x = rand(player.cockTotal());
+            x = rand(player.cocks.length);
             outputText("Ceraph's fingers feel unexpectedly hot as they brush your " + cockDescript(game.player, x) + ", as if she had just come out of a heated tub.  You don't have long to ponder that little detail as they pinch into a tight ring", false);
             if (player.cocks[x].cockThickness >= 4) outputText(", compressing your massive girth into the rigid shaft", false);
             outputText(", slowly closing.  It should hurt but it doesn't, it just feels warmer and warmer, and then with a sudden 'PYOING!', Ceraph is holding your " + cockDescript(game.player, x), false);
-            if (player.balls > 0 && player.cockTotal() == 1) {
+            if (player.balls > 0 && player.cocks.length == 1) {
                 outputText(" and balls", false);
                 // Gotcher balls!
                 player.balls = 0;
                 player.ballSize = 1;
             }
-            if (player.cockTotal() == 1) player.effects.remove(StatusAffects.Infested);
+            if (player.cocks.length == 1) player.effects.remove(StatusAffects.Infested);
             outputText(" in her hand!  At the base there's smooth flesh and an arcane mark, somehow keeping the disembodied dick alive to pulse and squirm in her grasp.  The place on your groin is left completely smooth and featureless, as if it had never been there at all.\n\n", false);
 
             outputText("Ceraph runs a finger up and down the length, setting off fireworks in your brain – you can still feel it!  The demoness laughs and says, \"<i>Don't worry, you won't feel the sensations constantly once I bond it elsewhere, though you may get a hint of feeling when unconscious.  For now, enjoy the pleasure!  Oh, I packed that tasty fetish into the cock for later.  Ta-ta, my pet!  Now go find me some more delicious dicks!</i>\"\n\n", false);
 
             outputText("She pirouettes away, practically dancing through the mountains while she strokes and teases the cock you just lost.  Thankfully she was true to her word – your mind feels significantly clearer, at least when a burning hot demon-tongue isn't enveloping Ceraph's new toy.", false);
             // PYOING!
-            player.removeCock(x, 1);
+            player.cocks.removeCock(x, 1);
             // (-fetish, +cock-toy status +1)
             flags[kFLAGS.PC_FETISH]--;
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218]++;
@@ -1352,7 +1352,7 @@ export class CeraphScene extends NPCAwareContent {
     public buttRapeCeraph(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
         spriteSelect(7);
-        let x: number = player.cockThatFits(monster.analCapacity());
+        let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = 0;
         outputText("", true);
         outputText("Completely defeated, the haughty demoness lies face down in the dirt, ", false);
@@ -1371,8 +1371,8 @@ export class CeraphScene extends NPCAwareContent {
         outputText("\"<i>Nooooo... don't stick it in my pussy!  You'll get me pregnant!  Or is that what you're after?  Are you gonna keep cumming in my naughty hole until I'm too pregnant to move?  Is that your plan, champion? Are you going to keep all the demons too pregnant to resist you?  Look at how wet you've made my pussy... I'm a high class demon, y-you can't make me pregnant!  Nooooo,</i>\" groans Ceraph while her tail wraps around your " + cockDescript(game.player, x) + ", clearly trying to entice you, but you've got a surprise in store for her.\n\n", false);
 
         outputText("You rub your " + cockHead(player, x) + " against the demonic juice-fountain, letting Ceraph slather you with corrupted lubricants while you tease her whorishly-ready fuck-lips.  In seconds you're soaked from tip to hips, and before Ceraph can con you into filling her full of demonic children, you drop her low and ram your " + hipDescription(player) + " forward.  Her pucker, though tight, yields before your onslaught, gradually dilating to accept your " + cockHead(player, x) + " and the first few inches of your " + cockDescript(game.player, x) + ".", false);
-        if (player.cockTotal() == 2) outputText("  The other " + cockDescript(game.player, x) + " rubs against her butt-cheeks, sliding through them with ease thanks to her copious secretions.", false);
-        else if (player.cockTotal() > 2) outputText("  The rest of your male genitals slide between the demoness' pert butt-cheeks in one huge, femcum-slicked bundle.", false);
+        if (player.cocks.length == 2) outputText("  The other " + cockDescript(game.player, x) + " rubs against her butt-cheeks, sliding through them with ease thanks to her copious secretions.", false);
+        else if (player.cocks.length > 2) outputText("  The rest of your male genitals slide between the demoness' pert butt-cheeks in one huge, femcum-slicked bundle.", false);
         outputText("  Ceraph squeaks in distress, taken completely by surprise and for once, completely lacking a witty retort.\n\n", false);
 
         outputText("The demon grunts like a wounded animal underneath you, her long, demonic tongue hanging out to flop in the dirt while you rock her half-comatose form closer to your crotch.  Inside, your " + cockHead(player, x) + " squeezes past the tightness of her anal ring to the unusual warmth of a demon's innermost depths.  More and more of your " + cockDescript(game.player, x) + " slips into the wonderfully tight, hot little hole, the penetration growing ever easier as the defeated demon relaxes into her role as a cum-dump unworthy of your children.", false);
@@ -1383,7 +1383,7 @@ export class CeraphScene extends NPCAwareContent {
         outputText("Ceraph whimpers and begs, \"<i>Noooo... you're raping my ass... g-get it out of there!  Aren't you supposed to be p-pure?  Untainted?  You're – unf – fucking a demon's butt like some kind of pervy animal!  Please... f-fuck my pussy.  I don't even mind if you don't wash it off... just stick it in my cunt.</i>\"\n\n", false);
 
         outputText("Like hell!  You pull harder, splitting her asscheeks until they're squished into your body, her cock-gaped asshole ", false);
-        if (!player.hasSheath()) outputText("barely touching your groin", false);
+        if (!player.cocks.hasSheath()) outputText("barely touching your groin", false);
         else outputText("rubbing your sheath", false);
         outputText(".  The demon's ass is warm enough to make you feel you could melt like an icicle in an oven, the blissful sensations spurring you to play with her supple ass-cheeks while you enjoy the complete penetration of a demon's backdoor.  You give those cheeks a hard slap and pull back, enjoying the feel of her gloriously tight ring as it slides over the pussy-slicked length of your " + cockDescript(game.player, x) + ".\n\n", false);
 

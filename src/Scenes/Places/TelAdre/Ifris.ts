@@ -162,9 +162,9 @@ export class Ifris extends TelAdreAbstractContent {
             return;
         }
         // 4b3-PC succeeds! Is male/herm-
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             // Double dickings!
-            if (player.cockTotal() > 1 && rand(2) == 0 && player.cockThatFits(70) != -1 && player.cockThatFits2(70) != -1) {
+            if (player.cocks.length > 1 && rand(2) == 0 && player.cocks.cockThatFits(70) != -1 && player.cocks.cockThatFits2(70) != -1) {
                 ifrisDP();
                 return;
             }
@@ -200,7 +200,7 @@ export class Ifris extends TelAdreAbstractContent {
                 outputText(". Smiling, she watches you carefully, her tongue sliding out of her lips, laving up the underside of the shaft, urging it on its final steps to full hardness. She groans in desire as she takes your " + cockHead(player) + " into her mouth once again, pulling a moan from you with her first, hard suckle upon your sensitive tip; it seems she doesn't want to tease anymore.\n\n", false);
 
                 outputText("The sexy little dark-haired devil takes your dick to the ", false);
-                if (player.hasSheath()) outputText("sheath", false);
+                if (player.cocks.hasSheath()) outputText("sheath", false);
                 else outputText("base", false);
                 outputText(" in her throat once again, holding there until you push the weight up, sliding up the length with your movement, and then back down as you lower, encouraging your exercise with the pleasure of her sweet mouth. Knowing you can't keep it up forever though, she merely urges you to do better before giving in, her hand gripping the base of your " + cockDescript(game.player, 0) + " tightly as her head starts to bob purposefully up and down your massive length.\n\n", false);
 
@@ -276,7 +276,7 @@ export class Ifris extends TelAdreAbstractContent {
 
         outputText("You set the machine's bar back in place, letting your worn-out limbs go slack across Ifris's body, your hands coming to rest on her tight, squeezable butt.  The two slick holes start a whole new wave of contractations, and without the distraction of the weights, you're unable to resist.  ", false);
         // (Knotting - req's 2 dogdicks!)
-        if (player.dogCocks() >= 2) {
+        if (player.cocks.dogCocks() >= 2) {
             outputText("Both your canine cocks bloat with seed, the knot's distending and stretching so wide that Ifris couldn't pull off if she wanted.  A moment later, the twin dog-dicks explode pillars of alabaster cream, painting the truly knotted woman's innards white.  ", false);
             if (player.cumQ() >= 1000) outputText("She groans and moans as she's filled, her body distending to deal with the unholy amount of seed your cocks can spew.  ", false);
             outputText("Throughout the massive release, you're softly grunting, held immobile by your animalistic body's instincts as your peckers try their damnedest to impregnate your overly fit mate.  You're still cumming, but your knots are starting to deflate at last.  ", false);
@@ -288,13 +288,13 @@ export class Ifris extends TelAdreAbstractContent {
             outputText("At the same time, your hands squeeze hard on her butt-cheeks and your hips start to jack-hammer against her, slamming into her as if she was a worthless piece of meat for you to impregnate.  You shiver, feeling not entirely in control of yourself, the demonic influence of your tainted members robbing you of control.  ", false);
         }
         // Flaring - req's 2 horsecocks!)
-        else if (player.horseCocks() >= 2) {
+        else if (player.cocks.horseCocks() >= 2) {
             outputText("Both your equine cocks explode inside Ifris, their tips swelling outward into thick flares that plug her stuffed channels.  A moment later, the swollen tips unleash pillars of alabaster cream, painting everything above the flares white.  ", false);
             if (player.cumQ() >= 1000) outputText("She groans and moans as she's filled, her body distending to deal with the unholy amount of seed your cocks can spew.  ", false);
             outputText("Your hips begin to rock and thrust, and no matter what you try to do, you cannot seem to still your body, your animal instincts owning your waist as you inseminate your seductive, teasing lover's body.  ", false);
         }
         // (Tentacle pistoning + head-mushrooming)
-        else if (player.tentacleCocks() >= 2) {
+        else if (player.cocks.tentacleCocks() >= 2) {
             outputText("Both your plant-like pricks explode inside Ifris, the purplish tips swelling up inside her to disproportionate sizes.  A moment later, the vine-dicks explode out twin pillars of ropey seed, painting her inner walls with spunk.  ", false);
             if (player.cumQ() >= 1000) outputText("She groans and moans as she's filled, her body distending to deal with the unholy amount of seed your cocks can spew.  ", false);
             outputText("At the same time, both tentacle-shafts curl and piston, winding around in other in the space between your bodies, curling and thrusting to rub every inch of your sensitive, prehensile shafts against Ifris' pussy-walls.  You shake and shudder, feeling more like a tentacle beast than a " + mf(player, "man", "woman") + ".  ", false);
@@ -308,9 +308,9 @@ export class Ifris extends TelAdreAbstractContent {
         // (Standard)
         else {
             outputText("Both your cocks explode inside Ifris, submitting alabaster pillars to her request for your release.  The red-hued sexpot exhales a happy hum and rocks her hips back and forth, her oily, lubricated holes squeezing your dicks for every drop of delectable seed.  ", false);
-            if (player.cockTotal() > 2) {
+            if (player.cocks.length > 2) {
                 outputText("The ", false);
-                if (player.cockTotal() == 1) outputText("one unbound prick remaining paints the muscular woman's lower back with goo, but she doesn't seem to mind.", false);
+                if (player.cocks.length == 1) outputText("one unbound prick remaining paints the muscular woman's lower back with goo, but she doesn't seem to mind.", false);
                 else outputText("other, unbound pricks paint the muscular woman's lower back in goo, but she doesn't seem to mind.", false);
                 outputText("  ", false);
             }
@@ -319,7 +319,7 @@ export class Ifris extends TelAdreAbstractContent {
         outputText("She purrs, \"<i>Delightful,</i>\" into your ear and plants a wet kiss on you, surely leaving a dusky, black lip-print on your neck.\n\n", false);
 
         outputText("The last few contractions work through you, emptying the last of your load inside Ifris and allowing you to feel utterly, completely at peace.  Sliding up, she lets your slowly-deflating cocks ", false);
-        if (player.dogCocks() >= 2) outputText("noisily pop free", false);
+        if (player.cocks.dogCocks() >= 2) outputText("noisily pop free", false);
         else outputText("slide", false);
         outputText(" from her sperm-glazed snatch and anus.  Her body's warmth vanishes as she stands, and with a wink, she reattaches her bikini bottom, the tight garment moulding to her soaked camel-toe and holding in all of your leavings.  She walks away without another word, ", false);
         if (player.cumQ() >= 1000) outputText("her body bloated with cum and sloshing audibly with every step", false);

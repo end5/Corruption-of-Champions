@@ -178,8 +178,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         let x: number = 0;
         // TO ZE RAPES!
         // Player Loss – Rape – Male =< 85 cockarea
-        if (player.hasCock() && (player.gender == 1 || rand(4) < 3) && player.cockThatFits(85) >= 0) {
-            x = player.cockThatFits(85);
+        if (player.cocks.length > 0 && (player.gender == 1 || rand(4) < 3) && player.cocks.cockThatFits(85) >= 0) {
+            x = player.cocks.cockThatFits(85);
             outputText("The salamander pulls off your " + player.armorName + " with practiced speed, ", false);
             if (player.gender == 3) outputText("revealing your " + vaginaDescript(player, 0) + " and ", false);
             outputText("letting your " + cockDescript(game.player, x) + " flop free, already hardened and ready for action.  She kneels down, straddling you, and grasps your " + cockDescript(game.player, x) + " firmly in both of her smoothly scaled, clawed hands.  You're nervous for a moment, eyes flickering to her long, sharp nails.  Seeing the concern in your eye, she laughs amicably.  \"<i>Hey, don't worry, lover.  I wouldn't ruin a perfectly good cock like this...  At least, not without getting a sample first...</i>\" she says, grinning.  For emphasis, she leans down and gives your " + cockDescript(game.player, x) + " a slow, sensuous lick with her long, forked tongue.\n\n", false);
@@ -215,7 +215,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\n", false);
 
             outputText("All good things must come to an end, however, and soon the salamander's hot cunt contracts around your tongue as she cums, squirting girl-juice all over your face and neck.  You give her a last good tongue-fucking, picking up the pace and bringing her to a screaming, shuddering climax.  The power of her orgasm has a welcome side effect, as her tail begins to thrash wildly within you, battering your cunt and bringing you, too, to a massive, mind-numbing climax", false);
-            if (player.hasCock()) outputText(", your cock shooting a massive rope of spunk onto her face as your vag cums from the tailfucking", false);
+            if (player.cocks.length > 0) outputText(", your cock shooting a massive rope of spunk onto her face as your vag cums from the tailfucking", false);
             outputText(".\n\n", false);
 
             outputText("Before your mind has settled, your new friend has collapsed on top of you, resting her cheek on your " + chestDesc(game.player) + ".  Her breath is ragged, not unlike yours, and her eyelids seem suddenly heavy.  Smiling, she slowly withdraws her cum-soaked tail from your " + vaginaDescript(player, 0) + " and slips it under your head like a pillow, soft and warm, if not a little moist.  Seeing as she doesn't seem intent on going anywhere, you, too, close your eyes and drift off to a peaceful sleep.", false);
@@ -272,10 +272,10 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.lust < 33) outputText("\n\nYou aren't turned on enough to fuck her right now.", false);
         }
         else {
-            if (player.hasCock() && player.cockThatFits(85) >= 0 && player.lust >= 33) {
+            if (player.cocks.length > 0 && player.cocks.cockThatFits(85) >= 0 && player.lust >= 33) {
                 addButton(0, "Rape Ass", rapingHelsAssMeansYourCorruptCauseAnalIsEvil);
             }
-            else if (!player.hasCock() || player.cockThatFits(85) == -1) {
+            else if (!player.cocks.length > 0 || player.cocks.cockThatFits(85) == -1) {
                 outputText("\n\nYour dick is too big to fuck her anally.", false);
             }
 
@@ -327,14 +327,14 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         let tailWank: () => void = null;
         let dp: () => void = null;
         let getBlown: () => void = null;
-        if (player.hasCock()) {
-            if (player.cockThatFits(85) >= 0) {
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(85) >= 0) {
                 fuckVag = beatUpHelAndStealHerWalletFromHerVagina;
                 fuckAss = fuckHelsAss;
             }
             else outputText("\n\n<b>You're too big to penetrate the salamander.</b>", false);
             tailWank = helTailWanksYourDickBecauseSheLovesYouDesuDesuHoraHora;
-            if (player.cockTotal() > 1 && player.cockThatFits(85) >= 0 && player.cockThatFits2(85) >= 0)
+            if (player.cocks.length > 1 && player.cocks.cockThatFits(85) >= 0 && player.cocks.cockThatFits2(85) >= 0)
                 dp = dpHel;
             getBlown = helBlowsYou;
         }
@@ -353,7 +353,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         // Racial Specific Options: [Naga: Coil her Up (69)] [M. Centaur: Mount Her] [F. Centaur: Hanging 69]
         // [Possession]
         if (player.isNaga()) {
-            if (player.hasCock() && player.cockThatFits(85) >= 0) {
+            if (player.cocks.length > 0 && player.cocks.cockThatFits(85) >= 0) {
                 bodyButt = nagaCoilsUpHel;
                 bodyText = "CoilFuck";
             }
@@ -363,7 +363,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             }
         }
         else if (player.isTaur()) {
-            if (player.hasCock() && player.cockThatFits(85) >= 0) {
+            if (player.cocks.length > 0 && player.cocks.cockThatFits(85) >= 0) {
                 bodyText = "Mount Her";
                 bodyButt = mountHel;
             }
@@ -418,7 +418,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     public beatUpHelAndStealHerWalletFromHerVagina(): void {
         spriteSelect(68);
         outputText("", true);
-        const x: number = player.cockThatFits(helFollower.heliaCapacity());
+        const x: number = player.cocks.cockThatFits(helFollower.heliaCapacity());
         outputText("You tell her that, sure, you could blow off some steam.  Still grinning, she tosses off her skimpy scale bikini and flops down on her back, already starting to finger her cunt.  You follow suit, stripping off your " + player.armorName + " and straddling her hips.  She reaches forward and grasps your " + cockDescript(game.player, x) + " in her scaly, clawed hands, causing you to miss a heartbeat before, smiling, she starts to pump it.  Her other hand continues to finger her cunt, preparing it for your " + cockDescript(game.player, x) + "'s penetration.  Content to let her lead for the moment, you grasp her wide hips just above where the crimson scales turn to soft flesh, tensing up as she begins to guide you into her slit.\n\n", false);
 
         outputText("The tip of your cock brushes against the lips of her cunt – it's burning hot, making you recoil a bit in her grasp.  But the salamander doesn't let up, instead guiding your cock head into her burning cunt, and then grasping your " + buttDescription(player) + " and pushing you the rest of the way in with one mighty pull!  You gasp as the explosive heat of her innermost depths overwhelms you, numbing your mind to any sensation but her burning cunt and the muscles contracting over your cock, already starting to milk you.\n\n", false);
@@ -448,7 +448,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     public fuckHelsAss(): void {
         spriteSelect(68);
         outputText("", true);
-        const x: number = player.cockThatFits(helFollower.heliaAnalCapacity());
+        const x: number = player.cocks.cockThatFits(helFollower.heliaAnalCapacity());
         outputText("You tell her that, yes, you want to blow off some steam, and motion for her to get on hands and knees.\n\n", false);
 
         outputText("\"<i>Oh, I think I know what we both want,</i>\" she says, grinning wolfishly as she strips out of her skimpy bikini and gets down on her hands and knees, turning so that her muscular ass is facing you.  Seductively, she lifts her tail in the air and waggles it in a 'come hither' motion before getting it out of your way, revealing your prize beneath it – her tight little pucker.\n\n", false);
@@ -482,7 +482,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     // Player Win – Victory Fuck – Get Blown (Male) (edited)
     public helBlowsYou(): void {
         spriteSelect(68);
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
         outputText("You agree to her proposition, and tell her to get on her knees as you draw out your " + cockDescript(game.player, x) + " and slip out of your " + player.armorName + ".  She grins and drops to her knees, quickly discarding her scaled bikini as you stroke yourself to hardness.  You close the distance between you and the salamander is quick to take your cock into her mouth, lustily sucking it in as she starts to fondle her breasts enticingly.\n\n", false);
 
@@ -511,8 +511,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     // Player Win – DP(Multicock Only) (edited)
     public dpHel(): void {
         spriteSelect(68);
-        const x: number = player.cockThatFits(helFollower.heliaCapacity());
-        const y: number = player.cockThatFits2(helFollower.heliaCapacity());
+        const x: number = player.cocks.cockThatFits(helFollower.heliaCapacity());
+        const y: number = player.cocks.cockThatFits2(helFollower.heliaCapacity());
         outputText("", true);
         outputText("You tell her that, yes, you want to blow off some steam.  You start to undo your " + player.armorName + ", and quickly her eyes go wide.  \"<i>You've got something extra, don't ya!</i>\" she laughs, looking mighty impressed.  \"<i>Well, I think we can take care of that " + cockDescript(game.player, y) + ", too. Just sit back and relax, lover!</i>\"\n\n", false);
 
@@ -553,7 +553,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("Even as she licks your " + vaginaDescript(player, 0) + ", you feel a sudden pressure on your own back door. Looking over your shoulder, you see the very tip of her tail pressing against your " + assholeDescript(player) + ", seeking to double your pleasure.  You try and relax your sphincter, letting just a few inches into your ass, and even that is enough to make you gasp as her dexterous tip works in conjunction with her long tongue.\n\n", false);
 
         outputText("You can only endure a minute or so of this treatment before you come, screaming your pleasure as you thrust into her face, soaking her with girl cum", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(" while " + sMultiCockDesc(game.player) + " shoots its load into her red hair", false);
             if (player.cumQ() >= 500) outputText(", bathing her in streams of jism", false);
         }
@@ -575,7 +575,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     public helTailWanksYourDickBecauseSheLovesYouDesuDesuHoraHora(): void {
         spriteSelect(68);
         outputText("", true);
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("You think for a moment, then saunter up to the hot salamander.  She gasps initially, then grins wolfishly as you tell her to put the large, prehensile tail to good use.  You shift your grip to her shoulders and push her down to her knees; she's quick to start pulling you out of your " + player.armorName + ".  After a moment of fiddling, your " + cockDescript(game.player, x) + " pops free, already hardening; she wraps her clawed, scaly hands around it and gives a few experimental pumps, but you're quick to remind her that you have a different position in mind.\n\n", false);
 
         outputText("The salamander reclines back, letting her tail slip between her legs and snake its way toward you.  The surface of her tail, once glowing bright-hot, is now little more than red scales; you have momentary second thoughts, but the first touch of its tip against your leg is enough to calm you – she's hot, but not enough to burn you.  Your " + cockDescript(game.player, x) + " begins to throb with anticipation as the dawdling tailtip makes a slow, sensual trek from the ground to your crotch, lingering and playing along the sensitive skin of your inner thighs and " + buttDescription(player) + " before eventually slithering onto your " + cockDescript(game.player, x) + ".\n\n", false);
@@ -617,7 +617,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("Eventually, you can take no more, and feel your climax coming on.  The salamander, sensing this from the fashion you're wringing her tail, gives your " + buttDescription(player) + " a hard slap and slams in as far as it can go.  You rocket over the edge, screaming and shuddering so hard that you collapse onto the dirt", false);
         if (player.gender > 0) {
             outputText(", with your ", false);
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText("cock", false);
                 if (player.hasVagina()) outputText(" and ", false);
             }
@@ -642,8 +642,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     private nagaCoilsUpHel(): void {
         spriteSelect(68);
         outputText("", true);
-        const x: number = player.cockThatFits(85);
-        const y: number = player.cockThatFits2(85);
+        const x: number = player.cocks.cockThatFits(85);
+        const y: number = player.cocks.cockThatFits2(85);
         outputText("You slither closer to the salamander and tell her that, yeah, you could stand to work off some steam.  She grins at that and closes the distance between you, reaching out to caress your serpentine half.  \"<i>Mmm.  Sexy tail, lover,</i>\" she says, reaching around and giving your " + buttDescription(player) + " a squeeze in her smooth, scaled hands.  \"<i>It'd be a real shame for such beautiful coils to go unused, you know...</i>\" she adds, giving you a little wink.\n\n", false);
 
         outputText("You get the idea in a hurry, and discard your " + player.armorName + " as she disrobes, giving you a good view of her smooth snatch and her big, soft breasts.  The sight of her nude form causes your " + cockDescript(game.player, x) + " to quickly slip out of its hidey-hole in your reptilian half; she grabs it and starts to stroke it, bringing it to full hardness as you coil your tail around her feet.  She gasps from the sudden tightness around her belly as you make a full loop around her, binding her arms to her side and pulling her up off the ground with your strong tail.\n\n", false);
@@ -713,8 +713,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     // Player Win – Mount Her (Wangbearing Centaurs of height >= 60</i>\") (edited)
     private mountHel(): void {
         spriteSelect(68);
-        let x: number = player.cockThatFits(85);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(85);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("", true);
         outputText("You trot up to the salamander and, just as you're about to tell her a few of your fantasies you two could enact, she spills one of her own!  \"<i>Oh, Marae,</i>\" she purrs, reaching out to stroke your blank flank, \"<i>I've always wanted my very own warhorse.  What do you say you let me ride you... and maybe I'll let you ride me?</i>\"\n\n", false);
 
@@ -780,23 +780,23 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("  You scream and buck, nearly throwing her from her harness.  Laughing maniacally, she forces more of her arm into your unsuspecting depths until she's up past her elbow in centaur cunt.  You gasp and buck and whinny, but anything that serves to dislodge her arm from your " + vaginaDescript(player, 0) + " only gives her ample opportunity to jam it right back in.\n\n", false);
 
         outputText("She hammers your cervix, fist-fucking you like a massive knotted cock.  It takes a minute to reconcile yourself to the enormous penetration, but soon you're shaking your hips and whinnying with pleasure.  ", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("Now that you're calmer, the salamander takes the opportunity to grasp " + oMultiCockDesc(game.player) + " with her free hand and guide it into her mouth.  Her forked, reptilian tongue flicks out, running across your girth as more and more of you slips past her thin lips and down her throat", false);
-            if (player.shortestCockLength() <= 24) outputText(" , until you're buried to the hilt", false);
+            if (player.cocks.shortestCockLength() <= 24) outputText(" , until you're buried to the hilt", false);
             outputText(".  You moan lewdly as she begins to suck in time with her fist-fucking, doubling up on you until your mind is almost numb with pleasure.  ", false);
         }
         outputText("This feels awfully one-sided, but her vulnerable nethers are just out of your reach – but that's not going to stop you.\n\n", false);
 
         outputText("With a wicked smile, you snatch up the woman's writhing tail and grasp it like a whip, coiling it until only a foot or so extends past your wrist.  Now, you lean down and prod at her with the tail, trying blindly to set its pointed tip into her vacant cunt.  Finally, you find your mark, her tail slipping past her hips and into her slit.  You thrust the tail forward into its owner, eliciting a yelp of pleasure", false);
-        if (player.hasCock()) outputText(" from around your encapsulated cock", false);
+        if (player.cocks.length > 0) outputText(" from around your encapsulated cock", false);
         outputText(".  Getting a good grip on her hot, red tail, you start to fuck her hard, fast, and perhaps vengefully as she continues to assault your " + vaginaDescript(player, 0), false);
-        if (player.hasCock()) outputText(" and swelling member", false);
+        if (player.cocks.length > 0) outputText(" and swelling member", false);
         outputText(".\n\n", false);
 
         outputText("It cannot go on forever.  You soon feel the tell-tale pressure of impending orgasm building behind your " + vaginaDescript(player, 0), false);
-        if (player.hasCock()) outputText(" and shaft", false);
+        if (player.cocks.length > 0) outputText(" and shaft", false);
         outputText(".  And you're not alone: under your intense tail-fucking, the salamander screams her climax, and you feel a gout of girl-cum squirt onto your underside.  You aren't far behind, clamping down on her invading fist as your own orgasm hits, nearly toppling you over with its intensity", false);
-        if (player.hasCock()) outputText(" and filling her throat with jism", false);
+        if (player.cocks.length > 0) outputText(" and filling her throat with jism", false);
         outputText(".\n\n", false);
 
         outputText("It takes a minute for your body to calm down; when it has, your salamander lover slips out from her harness and collapses on the ground, soaked in a mixture of your cum and hers.  Exhausted beyond the efforts of willpower, you drop to the ground beside her and drift off to a restive, bruised sleep.\n\n", false);
@@ -872,8 +872,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     // Player Win – Corrupt Rape – Rape her Ass (wangers and mash) (edited)
     private rapingHelsAssMeansYourCorruptCauseAnalIsEvil(): void {
         spriteSelect(68);
-        const x: number = player.cockThatFits(85);
-        const y: number = player.cockThatFits2(85);
+        const x: number = player.cocks.cockThatFits(85);
+        const y: number = player.cocks.cockThatFits2(85);
         outputText("", true);
 
         outputText("Already getting hard in your " + player.armorName + ", you circle around the downed salamander and give her a rough kick in the scaly back.  She yelps and takes a face-plant, leaving her muscular ass and long, hot tail waggling invitingly in the air.  Grinning, you hastily toss your " + player.armorName + " aside and tear her bikini bottom off, revealing the gash of her pussy, as well as your real prize – her tight little pucker, nearly hidden in the shadow of her tail.  As you get ready to claim the spoils of your victory, the still defiant salamander lashes out with that same tail!\n\n", false);
@@ -955,12 +955,12 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("She notices your approach over her shoulder, and stops groping her hefty tits just long enough to wave. \"<i>Hey, lover!  I – gah! – I'd normally swing a sword your way but – oh YEAH! – I'm a bit – come on, you limp-dick bastard!  FUCK ME! – busy at the moment.</i>\"\n\n", false);
 
         outputText("You can't help but laugh at the absurdity of it.  She grins over her shoulder at you, but stops to gasp as the minotaur between her legs bucks his hips, burying his dick deep in her welcoming cunt.  \"<i>Well, don't just stand there, killer!  ", false);
-        if (player.hasCock()) outputText("I've got another hole needs filling!</i>\"", false);
+        if (player.cocks.length > 0) outputText("I've got another hole needs filling!</i>\"", false);
         else outputText("There's enough 'taur to go around, so come on!</i>\"", false);
 
         /// Player's Options:
         // Male/Herm – [Fuck her Ass] [Mino Lick] [Leave]
-        if (player.hasCock() && player.cockThatFits(85) >= 0)
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(85) >= 0)
             simpleChoices("FuckHerAss", fuckHerAss, "Mino Lick", helMinoThreeSomeLickItsDick, "", null, "", null, "Nope", leaveMinotaurHelThreesome);
         // Female/Genderless – [Mino Lick] [Leave]
         else simpleChoices("", null, "Mino Lick", helMinoThreeSomeLickItsDick, "", null, "", null, "Nope", leaveMinotaurHelThreesome);
@@ -979,7 +979,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     private fuckHerAss(): void {
         spriteSelect(68);
         outputText("", true);
-        let x: number = player.cockThatFits(85);
+        let x: number = player.cocks.cockThatFits(85);
         if (x < 0) x = 0;
         outputText("Well, damned if you're going to let a chance to fuck her good, hot ass slip by.  You quickly strip out of your " + player.armorName + " and grab your " + cockDescript(game.player, x) + ", stroking it to hardness as you approach the salamander and her Minotaur.  You drop to your knees behind the salamander and push her tail out of the way (not an easy task as she bounces happily atop the 'taur) to reveal her other hole.  You slip your cockhead in, meeting more than a little resistance, as your lover has trouble relaxing her muscles mid-fuck, but eventually force your way inside her, eliciting a deep, lusty moan from her lips.\n\n", false);
 
@@ -1021,7 +1021,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\"<i>Bully for you,</i>\" the salamander laughs, hammering at his pelvis with renewed vigor.  \"<i>Give me one last shot of that delicious cream.  Come on, damn you... CUM IN ME!</i>\"\n\n", false);
 
         outputText("With a mighty bellow, the 'taur slams his hips into hers and comes on demand, pumping her so full of bull-cum that jets of it begin shooting back at him, coating his furry chest with his own jism.  The sight of it's enough to drive you over the edge, and you thrust down on the bull's snout and cry aloud as your own orgasm comes, your " + assholeOrPussy(player) + " clenching down on his tongue, trapping it inside you as your orgasm rocks your body", false);
-        if (player.hasCock()) outputText(" while " + sMultiCockDesc(game.player) + " ejects its load into the mess on the 'taur's chest", false);
+        if (player.cocks.length > 0) outputText(" while " + sMultiCockDesc(game.player) + " ejects its load into the mess on the 'taur's chest", false);
         outputText(".\n\n", false);
 
         outputText("Finally, your orgasm ends, and you roll off the minotaur.  Shakily, he staggers to his hooves, throws a handful of gems onto the prone salamander, and stumbles off to recover.  You look up from your collapsed state, and see your friend wallowing in a thick pool of cum – hers, yours, the 'taurs – panting heavily.  A huge stream of it is pouring from her cunt like a waterfall, a half-dozen backed-up minotaur orgasms unleashed at once.  Seeing you stare, your friend chuckles and stands, walking over to you and cuddling up, her head rested on your chest for just a moment before she leans up and plants a surprisingly tender kiss on your lips.\n\n", false);
@@ -1406,7 +1406,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         spriteSelect(68);
         outputText("", true);
         outputText("Well, that's an offer you can't refuse.  The girls' faces both brighten visibly as you say that you could use a drink.  Hel scoots to the side, allowing you to nestle yourself into Isabella's lap beside her.  You're already salivating slightly by the time Isabella hands her teat off to you", false);
-        if (player.hasCock()) outputText(", and your " + player.armorName + " is tenting visibly, displaying your excitement as you take her soft, delightfully warm and full breast in hand", false);
+        if (player.cocks.length > 0) outputText(", and your " + player.armorName + " is tenting visibly, displaying your excitement as you take her soft, delightfully warm and full breast in hand", false);
         else outputText(", and your nipples stiffen with excitement as you take her soft, delightfully warm and full breast in hand", false);
         outputText(".\n\n", false);
 
@@ -1426,17 +1426,17 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         const dick4: number = 0;
         let vag: () => void = null;
         // (If PC is Herm::)
-        if (player.hasCock() && player.hasVagina()) {
+        if (player.cocks.length > 0 && player.hasVagina()) {
             outputText("You'll need to decide which of your sex organs to use on the hot redheads.\n\n", false);
-            if (player.cockThatFits(85) >= 0) {
+            if (player.cocks.cockThatFits(85) >= 0) {
                 dick = stuffIzzyAndSalamanderWithDicks;
             }
             else outputText("<b>You're too big to fuck them with your man-bits...</b>", false);
             vag = izzySallyThreeSomeVagoozlaz;
         }
         else if (player.hasVagina()) vag = izzySallyThreeSomeVagoozlaz;
-        else if (player.hasCock()) {
-            if (player.cockThatFits(85) >= 0) {
+        else if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(85) >= 0) {
                 dick = stuffIzzyAndSalamanderWithDicks;
             }
             else outputText("<b>You're too big to fuck them with your man-bits...</b>\n\n", false);
@@ -1476,7 +1476,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         temp = player.cocks.length;
         while (temp > 0) {
             temp--;
-            if (player.cockArea(temp) <= 85) {
+            if (player.cocks.cockArea(temp) <= 85) {
                 if (x == -1) x = temp;
                 else if (y == -1) y = temp;
                 else if (z == -1) z = temp;
@@ -1601,21 +1601,21 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("You bury your face into her crotch and slip your tongue inside her, wincing at the intense heat of the fiery salamander's inner walls.  You slide your tongue into her, flicking it across her hot, velvety tunnel in as close to synchronous with Isabella's own ministrations as you can.  You set yourself into a rhythm, flicking and slurping at Hel's fuck-hole twice for every gasp and pleasure-shudder Isabella drags out of you with her massive cow-tongue.\n\n", false);
 
         // (IF HERM)
-        if (player.hasCock()) outputText("As you continue to lick Hel out, you feel a sudden crawling sensation across your belly. Looking down with alarm, you see her armored tail snaking its way across you.  It wraps around " + oMultiCockDesc(game.player) + ", coiling tightly, though it refuses to move.  Groaning, you try to buck your hips into her coiled tail, but Isabella's grasp on your " + hipDescription(player) + " prevents you from moving more than an inch.  Frustrated, you try to pleasure your tightly-bound cock somehow, but cannot even get your hands around it.  Giving up, you return to licking Hel's cunny, and are immediately rewarded by a hard jerk of your cock.  Now you get it!  You start licking the salamander out with redoubled effort, with a stroke for every lick.\n\n", false);
+        if (player.cocks.length > 0) outputText("As you continue to lick Hel out, you feel a sudden crawling sensation across your belly. Looking down with alarm, you see her armored tail snaking its way across you.  It wraps around " + oMultiCockDesc(game.player) + ", coiling tightly, though it refuses to move.  Groaning, you try to buck your hips into her coiled tail, but Isabella's grasp on your " + hipDescription(player) + " prevents you from moving more than an inch.  Frustrated, you try to pleasure your tightly-bound cock somehow, but cannot even get your hands around it.  Giving up, you return to licking Hel's cunny, and are immediately rewarded by a hard jerk of your cock.  Now you get it!  You start licking the salamander out with redoubled effort, with a stroke for every lick.\n\n", false);
 
         outputText("Meanwhile, Isabella has utterly buried herself in your groin.  You knew her tongue granted her immense oral abilities by virtue of its size and shape, but her skill in wielding it is driving you wild.  She's going slowly, but that's only making each long, luscious stroke of her cow-tongue even better, tantalizing you between licks.  Mercifully, she slides a pair of her fingers into your " + vaginaDescript(player) + ", working them into your-now-sopping-wet box between tongue-thrusts.\n\n", false);
 
         outputText("The combination of the cow-girl's finger-and-tongue fuck", false);
         // (IF HERM:
-        if (player.hasCock()) outputText(" and Hel jerking your " + cockDescript(game.player, 0) + " off", false);
+        if (player.cocks.length > 0) outputText(" and Hel jerking your " + cockDescript(game.player, 0) + " off", false);
         outputText(" is driving you quickly toward your limit.  You start to tongue-fuck the salamander as hard and fast as you can, sliding as many fingers into her hungry cunt as possible, and even plugging your thumb into her tight little asshole, anything to bring her to orgasm at the same time you cum.\n\n", false);
 
         outputText("It works like a charm: with a sharp cry, Hel clamps down on your invading fingers and tongue, her vaginal muscles spasming and contracting as the beginnings of orgasm hit her.  You can hear Isabella begin to moo ecstatically behind you, sending immensely-pleasurable vibrations up through your " + vaginaDescript(player) + ".  You let yourself go, sinking into orgasmic bliss as the cow", false);
-        if (player.hasCock()) outputText(" and salamander double-team", false);
+        if (player.cocks.length > 0) outputText(" and salamander double-team", false);
         outputText(" works to send you over the edge.  You scream into Hel's cunt as you cum, setting off the peak of her own orgasm, and Isabella shrieks in ecstasy as Hel fists her cow-cunt until she, too, cums hard.  You recoil as Hel's femcum squirts onto your face, covering you with her juices, and you're treated to the sight of much the same happening to her and to Isabella as your " + vaginaDescript(player) + " releases its pent-up femspunk, splattering the cow-girl.\n\n", false);
 
         outputText("Now a sweat-and-cum-soaked mess, the girls collapse onto their backs around you.  Sighing contentedly, Isabella rolls over and nuzzles her head on your chest; a moment later and Hel does the same", false);
-        if (player.hasCock()) outputText(", wrapping her warm tail around your " + cockDescript(game.player, 0) + " lovingly", false);
+        if (player.cocks.length > 0) outputText(", wrapping her warm tail around your " + cockDescript(game.player, 0) + " lovingly", false);
         outputText(".\n\n", false);
 
         outputText("\"<i>That was amazing.  Seriously,</i>\" the salamander says, still panting from the experience.  \"<i>I mean, holy shit, you two.  We... we really need to do this more often.</i>\"\n\n", false);
@@ -1688,8 +1688,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     public foxyFluffsFoursomeAsMale(): void {
         spriteSelect(68);
         outputText("", true);
-        let x: number = player.cockThatFits(85);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(85);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You strip out of your " + player.armorName + " and grab your " + cockDescript(game.player, x) + ".  Giggling drunkenly, Miko flops onto her back on the bed and begins to stroke her knotty cock as Helia and Mai get on their knees, Hel burying herself between Miko's spread legs as her sister wraps her soft hands around your " + cockDescript(game.player, x) + " and guides it into her mouth.  You run your hands through Mai's silver hair as she sucks you off, jerking off the base of your cock and flicking her wet tongue across the head and shaft, her full lips wrapped around your girth in a cute little \"<i>O.</i>\" She carries on for another minute, letting you guide the speed and force of her blowjob with your hands planted on her head.\n\n", false);
 
         outputText("Now rock-hard and sopping wet, you give Mai a playful push back and tell her to tend to her twin.  With a lewd smile stained with your pre, she switches places with Hel, standing between her sister's spread legs and lining her own doggy cock up with Miko's wet and ready snatch.  Mai presses in, sliding herself up to the knot in her sister; you grin at the looks of rapturous pleasure that quickly spread across the twins' faces as Mai begins to fuck her sister slowly and gently, going easy until you and Hel can get into position.\n\n", false);
@@ -1799,7 +1799,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         // {If PC has high libido}
         if (player.lib >= 50) {
             outputText("\n\nYou grab Hel's shoulders and throw her onto the ground, your ");
-            if (player.hasCock()) outputText("[cock] stiffening, ready to go again");
+            if (player.cocks.length > 0) outputText("[cock] stiffening, ready to go again");
             if (player.gender == 3) outputText(" and your ");
             if (player.hasVagina()) outputText("[vagina] already soaked with your lustful secretions");
             if (player.gender == 0) outputText("ass ready to be fucked again");
@@ -1808,7 +1808,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         // {PC has low libido}
         else {
             outputText("\n\nYou grimace, but decide it's better to try and keep up with the lusty salamander than risk your friend getting addicted to ");
-            if (player.hasCock()) outputText("another dick's ");
+            if (player.cocks.length > 0) outputText("another dick's ");
             outputText("cum.  You nod, agreeing to pleasure her whenever she needs it.");
 
             outputText("\n\nShe smiles at you, clawed hands clutching tightly to your " + skinFurScales(player) + ". \"<i>Don't worry about a thing, lover mine.  I'll be careful not to hurt you... too much.</i>\"");

@@ -34,7 +34,7 @@ export class HermCentaurScenes {
 
         menu();
 
-        if (player.hasCock()) addButton(0, "Fuck Her", maleFuckHer);
+        if (player.cocks.length > 0) addButton(0, "Fuck Her", maleFuckHer);
         if (player.hasVagina()) addButton(1, "Get Fucked", femFuckHer);
         addButton(5, "Release", letHerGo);
         addButton(6, "Kill", killHer);
@@ -61,9 +61,9 @@ export class HermCentaurScenes {
     private maleFuckHer(): void {
         flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_FUCKED;
 
-        let y: number = player.cockThatFits(monster.vaginalCapacity());
+        let y: number = player.cocks.cockThatFits(monster.vaginalCapacity());
 
-        if (y < 0) y = player.smallestCockIndex();
+        if (y < 0) y = player.cocks.smallestCockIndex();
 
         clearOutput();
         outputText("You shrug out of your [armor] as you close with the defeated beast-woman.  Looking at her like this, she almost seems more animal than woman.  Her hundreds of pounds of muscular equine flesh twist and contort as you approach, shifting her bulk to allow you unimpeded access to either of her trembling, moist genitals.  Glancing up to her pale, freckled face, you trap her green eyes with your own and say, \"<i>" + ((player.cor > 50) ? "I'm gonna wreck it!" : "We do this my way.") + "</i>\"");
@@ -230,14 +230,14 @@ export class HermCentaurScenes {
     }
 
     public inSovietCoCPonyRidesYou(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (player.hasCock() && player.hasVagina()) {
+        if (player.cocks.length > 0 && player.hasVagina()) {
             if (rand(2) == 0) maleLoss(hpVictory);
             else femLoss(hpVictory);
         }
 
-        if (player.hasCock() && !player.hasVagina()) maleLoss(hpVictory);
-        else if (player.hasVagina() && !player.hasCock()) femLoss(hpVictory);
-        else if (!player.hasVagina() && !player.hasCock()) femLoss(hpVictory);
+        if (player.cocks.length > 0 && !player.hasVagina()) maleLoss(hpVictory);
+        else if (player.hasVagina() && !player.cocks.length > 0) femLoss(hpVictory);
+        else if (!player.hasVagina() && !player.cocks.length > 0) femLoss(hpVictory);
     }
 
     private femLoss(hpVictory: boolean): void {
@@ -248,7 +248,7 @@ export class HermCentaurScenes {
             outputText("put your rump up in the air, fully exposing your");
             if (player.hasVagina()) outputText(" [vagina]");
             else outputText("self");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText(" and");
                 if (player.balls > 0) outputText(" [sack]");
                 else outputText(" " + multiCockDescriptLight(game.player));
@@ -273,13 +273,13 @@ export class HermCentaurScenes {
         else outputText(" ");
 
         outputText("Your [vagina] is so puffy and inflamed with passion that it feels ready to burst out of your [armor], even as the drooling fem-cum makes it squish wetly with your every motion.");
-        if (player.hasCock()) outputText(" [EachCock] fares little better, a turgid mess of pre-cum leaking lust that seems to grow harder and more sensitive by the moment.");
+        if (player.cocks.length > 0) outputText(" [EachCock] fares little better, a turgid mess of pre-cum leaking lust that seems to grow harder and more sensitive by the moment.");
         outputText(" That wonderful warmth excites you sexually, a deepening puddle of lust in your loins that makes you so hot and wet that you swear it must be what's dripping out onto the cobble below.");
 
         outputText("\n\nYou're moved to the other side, with a fresh, juicy nipple for you to nuzzle.  You do so without thought, effortlessly clasping your lips in a tight seal around the heavenly nub and suckling, even as you rest your cheek against the pale, freckled skin of the melon-sized tit.  The fluid begins to flow almost effortlessly, flooding out in response to the slightest hint of suction from your hungry mouth.  Bubbling, almost boiling over, your lust mounts to higher and higher levels, your loins seeming to simmer with molten desire to be bred.  In response, you begin peeling away your [armor].  You know this delicious milk will be gone soon, and when you finish, you want to be mounted, hard.");
 
         outputText("\n\nWith your [vagina]");
-        if (player.hasCock()) outputText(" and " + multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(" and " + multiCockDescriptLight(game.player));
         outputText(" freed, your hands unabashedly dive into your folds, spreading them as wide as possible, heedless to the discomfort.  You drink and stretch, swallow and tug.  Over and over, you give into the artificial, hedonistic desires your dual - endowed mistress's milk instills in you.  There's no fighting it, only giving in utterly as you prepare yourself to be filled, speared upon your mistress's mighty member and filled with her hot cum until your body turns into a quivering, orgasmic wreck.");
 
         outputText("\n\nThe tainted centaur pulls you back even as your lips stretch forward in desperation, but at last, you pop off the nipple, disappointed.  She tilts your head to look up at her green eyes and glittering, black horn.  She's a terrible demon, a beautiful maiden, and a monstrously large, giant-like centaur, all at once.  You pant, whining with your exhalations until she gently releases you.  Flopping down nervelessly, you catch yourself before you smack off the hard stone.  You rise up again, ready to fuck, only to come up into a face full of slime-lubed horse-cunt.");
@@ -295,7 +295,7 @@ export class HermCentaurScenes {
         outputText("\n\n\"<i>Hold... still,</i>\" the demon grumbles as she fidgets, steel-shod feet cracking noisily against the pave-stones.  Her flat tip batters up against a different part of your anatomy with near bruising force every time she tries to hit your target, but she's as awkward as the beasts her lower body resembles.  You nearly scream in surprise when she smashes it into your [asshole], but thankfully, the heavy head is withdrawn, searching for more fertile pastures.  Again, she tries to spear your pussy, but misses, sliding beneath and glossing your [clit] with a heavy coating of horse-slime.");
 
         outputText("\n\nA hand reaches down to grab your " + hairDescription(player) + " and pull back sharply.  \"<i>Stay... put...</i>\" its owner pants.  You have been staying put!  At least, when you haven't been shaking with barely-contained need.  The angle is somewhat painful, flexing your spine into a dangerous arch even as the force of her tug shoots needles of discomfort into your abused crown.  Then, the horse-like lower body steps forward, and you're seeing stars and smiling dopily. The flared head smashed into your semi-stretched pussy for only the briefest moment before its body's momentum carried it through your entrance and deep into your canal.  Even now, you can feel the medial ring thrumming with each beat of the centaur's heart, just inside your entrance while the fat tip butts up against your cervix.");
-        player.cuntChange(monster.biggestCockArea(), true, true, false);
+        player.cuntChange(monster.cocks.biggestCockArea(), true, true, false);
 
         outputText("\n\nYou sag into the welcoming penetration, pushing back against the intruding maleness in a drug-fueled stupor.  Only after a few moments of fervent grinding do you realize that you truly want to push that beast the whole way into your womb - to feel it sliding wholly and completely inside you.  \"<i>Greedy little mare, aren't you</i>\" the confident centaur herm asks as she begins to rock with you, the soft flare stretching wider to scrape along every sensitive nerve of your interior with surprising tenderness.  She lets go of your hair, and you meekly look up and nod, pushing your body back hard with each thrust.");
 
@@ -340,9 +340,9 @@ export class HermCentaurScenes {
     private maleLoss(hpVictory: boolean): void {
         clearOutput();
 
-        let y: number = player.cockThatFits(monster.vaginalCapacity());
+        let y: number = player.cocks.cockThatFits(monster.vaginalCapacity());
 
-        if (y < 0) y = player.smallestCockIndex();
+        if (y < 0) y = player.cocks.smallestCockIndex();
 
         outputText("Dropping down, you");
         if (hpVictory) {

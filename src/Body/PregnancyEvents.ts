@@ -1102,7 +1102,7 @@ export function updatePregnancy(): boolean {
                 // [balls:
                 else if (player.balls > 0) outputText("  Slathered in hallucinogenic frog slime, your balls tingle, sending warm pulses of pleasure all the way up into your brain.");
                 // [cock:
-                else if (player.hasCock()) outputText("  Splashing against the underside of your " + multiCockDescriptLight(player) + ", the slime leaves a warm, oozy sensation that makes you just want to rub [eachCock] over and over and over again.");
+                else if (player.cocks.length > 0) outputText("  Splashing against the underside of your " + multiCockDescriptLight(player) + ", the slime leaves a warm, oozy sensation that makes you just want to rub [eachCock] over and over and over again.");
                 // genderless:
                 else outputText("  Your asshole begins twitching, aching for something to push through it over and over again.");
                 outputText("  Seated in your own slime, you moan softly, unable to keep your hands off yourself.");
@@ -1174,16 +1174,16 @@ export function updatePregnancy(): boolean {
             }
             if (player.buttPregnancyIncubation == 20) {
                 outputText("<b>\nA honey-scented fluid drips from your rectum.</b>  At first it worries you, but as the smell fills the air around you, you realize anything with such a beautiful scent must be good.  ", false);
-                if (player.cockTotal() > 0) outputText("The aroma seems to permeate your very being, slowly congregating in your ", false);
-                if (player.cockTotal() == 1) {
+                if (player.cocks.length > 0) outputText("The aroma seems to permeate your very being, slowly congregating in your ", false);
+                if (player.cocks.length == 1) {
                     outputText(cockDescript(game.player, 0), false);
-                    if (player.horseCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + cockDescript(game.player, 0) + " is twitching and dripping, the flare swollen and purple.  ", false);
-                    if (player.dogCocks() == 1) outputText(", each inhalation making it thicker, harder, and firmer.  You suck in huge lungfuls of air, desperate for more, until your " + cockDescript(game.player, 0) + " is twitching and dripping, its knot swollen to the max.  ", false);
-                    if (player.normalCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + cockDescript(game.player, 0) + " is twitching and dripping, the head swollen and purple.  ", false);
+                    if (player.cocks.horseCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + cockDescript(game.player, 0) + " is twitching and dripping, the flare swollen and purple.  ", false);
+                    if (player.cocks.dogCocks() == 1) outputText(", each inhalation making it thicker, harder, and firmer.  You suck in huge lungfuls of air, desperate for more, until your " + cockDescript(game.player, 0) + " is twitching and dripping, its knot swollen to the max.  ", false);
+                    if (player.cocks.normalCocks() == 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + cockDescript(game.player, 0) + " is twitching and dripping, the head swollen and purple.  ", false);
                     // FAILSAFE FOR NEW COCKS
-                    if (player.normalCocks() == 0 && player.dogCocks() == 0 && player.horseCocks() == 0) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air until your " + cockDescript(game.player, 0) + " is twitching and dripping.  ", false);
+                    if (player.cocks.normalCocks() == 0 && player.cocks.dogCocks() == 0 && player.cocks.horseCocks() == 0) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air until your " + cockDescript(game.player, 0) + " is twitching and dripping.  ", false);
                 }
-                if (player.cockTotal() > 1) outputText("groin.  Your " + multiCockDescriptLight(player) + " fill and grow with every lungful of the stuff you breathe in.  You suck in great lungfuls of the tainted air, desperate for more, your cocks twitching and dripping with need.  ", false);
+                if (player.cocks.length > 1) outputText("groin.  Your " + multiCockDescriptLight(player) + " fill and grow with every lungful of the stuff you breathe in.  You suck in great lungfuls of the tainted air, desperate for more, your cocks twitching and dripping with need.  ", false);
                 outputText("You smile knowing you couldn't stop from masturbating if you wanted to.\n", false);
                 dynStats("int", -.5, "lus", 500);
                 displayedUpdate = true;
@@ -1282,7 +1282,7 @@ export function updatePregnancy(): boolean {
     if (player.buttPregnancyIncubation == 1 && player.buttPregnancyType == PregnancyStore.PREGNANCY_BEE_EGGS) {
         outputText("\n", false);
         outputText("There is a sudden gush of honey-colored fluids from your ass.  Before panic can set in, a wonderful scent overtakes you, making everything ok.  ", false);
-        if (player.cockTotal() > 0) outputText("The muzzy feeling that fills your head seems to seep downwards, making your equipment hard and tight.  ", false);
+        if (player.cocks.length > 0) outputText("The muzzy feeling that fills your head seems to seep downwards, making your equipment hard and tight.  ", false);
         if (player.vaginas.length > 0) outputText("Your " + vaginaDescript(player, 0) + " becomes engorged and sensitive.  ", false);
         outputText("Your hand darts down to the amber, scooping up a handful of the sticky stuff.  You wonder what your hand is doing as it brings it up to your mouth, which instinctively opens.  You shudder in revulsion as you swallow the sweet-tasting stuff, your mind briefly wondering why it would do that.  The stuff seems to radiate warmth, quickly pushing those nagging thoughts away as you scoop up more.\n\n", false);
         outputText("A sudden slip from below surprises you; a white sphere escapes from your anus along with another squirt of honey.  Your drugged brain tries to understand what's happening, but it gives up, your hands idly slathering honey over your loins.  The next orb pops out moments later, forcing a startled moan from your mouth.  That felt GOOD.  You begin masturbating to the thought of laying more eggs... yes, that's what those are.  You nearly cum as egg number three squeezes out.  ", false);
@@ -1448,23 +1448,23 @@ export function updatePregnancy(): boolean {
             return true;
         }
         // [(if pc has 0-9 existing cocks)
-        else if (player.cockTotal() < 10) {
+        else if (player.cocks.length < 10) {
             outputText("As you take in the sight, small nodules around the tip begin to form and lengthen, until the little anemone is capped by a mop of wriggling blue-green tentacles.  Horrified, you grasp it at the base and give it a sharp pull.  The pain makes you lock up and nearly takes away your consciousness as its sticky surface releases its grip on your labia and " + clitDescription(player) + "!  The small anemone and you both lay there twitching, but it recovers its bearings first; through your haze of pain you watch it flexing its body, wedging the head under itself, and elevating the base.", false);
             player.cuntChange(20, true, true, false);
 
             outputText("\n\nBeset by a panic, you watch as the strange thing sets butt-end down on your pubic mound and adheres", false);
             // [(if cocks)
-            if (player.cockTotal() > 0) outputText(" below your " + multiCockDescriptLight(player), false);
+            if (player.cocks.length > 0) outputText(" below your " + multiCockDescriptLight(player), false);
             outputText(". A sharp pinch lances through the nerves in your groin and sends your hands to it reflexively.  This smaller pain, coupled with the adrenaline and dopamine that have finally chased the fog from your head, is enough to pull your thoughts into focus for another attempt to remove your strange, parasitic offspring.  You shift your grip and pull a few more times, but the thing doesn't budge.  The handling of it only serves to make the stalk thicken and become stiff; gradually you notice that you're feeling the sensation of your own pulling not from the skin at the point of attachment but from the stalk itself, and this realization is accompanied by the ring of tentacles opening and pulling back to reveal the crown of a penis!  <b>You have a new anemone-penis!</b>", false);
             // [(dick slot 1 exists)
-            if (player.cockTotal() > 0) outputText("  The tentacles writhe around, rubbing against your " + multiCockDescriptLight(player), false);
+            if (player.cocks.length > 0) outputText("  The tentacles writhe around, rubbing against your " + multiCockDescriptLight(player), false);
             // (doesn't exist)
             else outputText("  The tentacles curl inwards, rubbing on the head of your new blue pecker", false);
-            player.createCock((4 + rand(3)), 1.2);
-            player.cocks[player.cockTotal() - 1].cockType = CockTypesEnum.ANEMONE;
+            player.cocks.createCock((4 + rand(3)), 1.2);
+            player.cocks[player.cocks.length - 1].cockType = CockTypesEnum.ANEMONE;
             outputText(" and you quickly become fully erect from the aphrodisiac they inject.  Over and over the tentacles caress " + sMultiCockDesc(player) + " sensually, leaving behind a tingling trail of vibrant pleasure", false);
             // [(if no dick1 and no balls)
-            if (player.totalCocks() == 1 && player.balls == 0) outputText("; you feel a pressure build below the shaft, near your asshole", false);
+            if (player.cocks.length == 1 && player.balls == 0) outputText("; you feel a pressure build below the shaft, near your asshole", false);
             outputText(".  As the venom and the rubbing work you to the edge of climax, your muscles clench and a ", false);
             if (player.cumQ() < 100) outputText("glob", false);
             else if (player.cumQ() < 500) outputText("squirt", false);
@@ -1474,7 +1474,7 @@ export function updatePregnancy(): boolean {
             if (player.biggestTitSize() >= 1) outputText(allBreastsDescript(player) + " and ", false);
             outputText("stomach", false);
             // [(dick1 exists)
-            if (player.cockTotal() > 1) outputText(", followed in short order by white squirts from " + sMultiCockDesc(player) + " remaining", false);
+            if (player.cocks.length > 1) outputText(", followed in short order by white squirts from " + sMultiCockDesc(player) + " remaining", false);
             outputText(".  Your " + vaginaDescript(player, 0) + " quivers and pulses as well, adding ", false);
             if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLICK) outputText("a trickle", false);
             else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING) outputText("a squirt", false);

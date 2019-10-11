@@ -20,7 +20,7 @@ export class InfestedHellhoundScene {
     public infestedHellhoundLossRape(): void {
         outputText("", true);
         // [BOTH INFESTED]
-        if (player.totalCocks() > 0 && player.effects.findByType(StatusAffects.Infested) >= 0) {
+        if (player.cocks.length > 0 && player.effects.findByType(StatusAffects.Infested) >= 0) {
             // (LUST)
             if (player.lust > 99) {
                 outputText("No amount of shame from the act of submitting to such a beast can overpower the furnace of lust raging in your loins.  ", false);
@@ -41,7 +41,7 @@ export class InfestedHellhoundScene {
             cleanupAfterCombat();
         }
         // [PLAYER'S COCKS ARE BIG ENOUGH TO BE INFECTED]
-        else if (player.effects.findByType(StatusAffects.Infested) < 0 && player.biggestCockArea() >= 40 && player.hasCock()) {
+        else if (player.effects.findByType(StatusAffects.Infested) < 0 && player.cocks.biggestCockArea() >= 40 && player.cocks.length > 0) {
             // (LUST)
             if (player.lust > 99) {
                 outputText("No amount of shame from the act of submitting to such a beast can overpower the furnace of lust raging in your loins.  ", false);
@@ -54,7 +54,7 @@ export class InfestedHellhoundScene {
             else {
                 outputText("Too wounded to stand, you drop down to all fours in order to keep yourself off the ground.   Too late you realize your mistake – the snarling beast is behind you and its razor-shark teeth easily sink into your " + player.armorName + " before tearing it off, exposing your " + buttDescription(player) + " and " + multiCockDescriptLight(game.player) + ".  A cold mountain breeze blows across your now exposed " + player.skinDesc + ", reminding you just how utterly vulnerable you are to the alien lusts of this symbiotic monstrosity.  With a brutal lunge it knocks you off your " + feet(player) + " and onto your back.\n\n", false);
             }
-            if (player.totalCocks() > 1) {
+            if (player.cocks.length > 1) {
                 outputText("The infested hound repositions itself, blocking out the sun with its dark fur, leaving you with only the pale flames surrounding its fuzzy sack to look at.   The warm wetness of its smooth tongue starts sliding over ", false);
                 outputText("each of your " + multiCockDescriptLight(game.player) + ".  It feels good, better than it has any right to.  ", false);
                 outputText("Every single one of your " + multiCockDescriptLight(game.player) + " hardens under the stimulation, happy to be so well-treated.\n\n", false);
@@ -98,7 +98,7 @@ export class InfestedHellhoundScene {
             cleanupAfterCombat();
         }
         // [HAS PUSSY AND NO DICK BIG ENOUGH TO BE INFECTED]
-        else if (player.hasVagina() && player.biggestCockArea() < 40 && player.lowerBody != LOWER_BODY_TYPE_NAGA) {
+        else if (player.hasVagina() && player.cocks.biggestCockArea() < 40 && player.lowerBody != LOWER_BODY_TYPE_NAGA) {
             // (LUST)
             if (player.lust > 99) {
                 outputText("No amount of shame from the act of submitting to such a beast can overpower the furnace of lust raging in your loins.  ", false);
@@ -124,9 +124,9 @@ export class InfestedHellhoundScene {
             outputText("It's so wrong... but so hot.  He's filling you with them!  The fucking hell-mutt is cumming and plugging both your holes full of his parasitic cargo!  Gods, you're filled with wriggling worms, squirming and writhing against your tender cunt-walls and rectum.   You're getting fuller and fuller, and the spooge they're swimming in is so fucking hot it practically burns you.  You cum hard, clamping down on the invading members, and squealing with a mix of pain and pleasure, driven beyond rational thought by the absurdity and pleasure of the situation.\n\n", false);
 
             outputText("Unable to support yourself any longer, you collapse, your hips held up by the pair of demonic black dog-dicks lodged in your orifices.  They keep cumming and cumming, until your body takes a slow slide off to the ground.  Your eyes drift closed, lulled to sleep by the squirming warmth plugging both your holes.  ", false);
-            player.cuntChange(monster.cockArea(0), true);
+            player.cuntChange(monster.cocks.cockArea(0), true);
             outputText("  ", false);
-            player.buttChange(monster.cockArea(0), true);
+            player.buttChange(monster.cocks.cockArea(0), true);
             // (Status applied – worm plugged) –
             // random chance of big lust boost as worms evacuate
             // your body.  When worms leave they take with them up
@@ -167,7 +167,7 @@ export class InfestedHellhoundScene {
 
             outputText("Unable to support yourself any longer, you collapse, your hips held up by the demonic black dog-dick lodged in your orifice.  They keep cumming and cumming, until your body takes a slow slide off to the ground.  Your eyes drift closed, lulled to sleep by the squirming warmth plugging your " + assholeDescript(player) + " and coating your back.", false);
             outputText("  ", false);
-            player.buttChange(monster.cockArea(0), true);
+            player.buttChange(monster.cocks.cockArea(0), true);
             player.orgasm();
             dynStats("lib", 1, "cor", 1);
             cleanupAfterCombat();

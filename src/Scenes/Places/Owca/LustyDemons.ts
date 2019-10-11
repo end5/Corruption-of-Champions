@@ -44,8 +44,8 @@ export class LustyDemons extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createCock(18, 2);
-        this.createCock(18, 2, CockTypesEnum.DEMON);
+        this.cocks.createCock(18, 2);
+        this.cocks.createCock(18, 2, CockTypesEnum.DEMON);
         this.balls = 2;
         this.ballSize = 1;
         this.cumMultiplier = 3;

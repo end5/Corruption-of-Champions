@@ -549,7 +549,7 @@ export class Player extends Character {
             demonCounter++;
         if (lowerBody == 5 || lowerBody == 6)
             demonCounter++;
-        if (demonCocks() > 0)
+        if (this.cocks.demonCocks() > 0)
             demonCounter++;
         return demonCounter;
     }
@@ -569,7 +569,7 @@ export class Player extends Character {
             humanCounter++;
         if (lowerBody == 0)
             humanCounter++;
-        if (normalCocks() == 1 && totalCocks() == 1)
+        if (this.cocks.normalCocks() == 1 && this.cocks.length == 1)
             humanCounter++;
         if (breastRows.length == 1 && skinType == 0)
             humanCounter++;
@@ -591,8 +591,8 @@ export class Player extends Character {
             minoCounter++;
         if (tallness > 80 && minoCounter > 0)
             minoCounter++;
-        if (cocks.length > 0 && minoCounter > 0) {
-            if (horseCocks() > 0)
+        if (this.cocks.length > 0 && minoCounter > 0) {
+            if (this.cocks.horseCocks() > 0)
                 minoCounter++;
         }
         if (vaginas.length > 0)
@@ -692,7 +692,7 @@ export class Player extends Character {
             dogCounter++;
         if (lowerBody == 2)
             dogCounter++;
-        if (dogCocks() > 0)
+        if (this.cocks.dogCocks() > 0)
             dogCounter++;
         if (breastRows.length > 1)
             dogCounter++;
@@ -759,7 +759,7 @@ export class Player extends Character {
             foxCounter++;
         if (lowerBody == 17)
             foxCounter++;
-        if (dogCocks() > 0 && foxCounter > 0)
+        if (this.cocks.dogCocks() > 0 && foxCounter > 0)
             foxCounter++;
         if (breastRows.length > 1 && foxCounter > 0)
             foxCounter++;
@@ -784,7 +784,7 @@ export class Player extends Character {
             catCounter++;
         if (lowerBody == 9)
             catCounter++;
-        if (catCocks() > 0)
+        if (this.cocks.catCocks() > 0)
             catCounter++;
         if (breastRows.length > 1 && catCounter > 0)
             catCounter++;
@@ -809,7 +809,7 @@ export class Player extends Character {
             lizardCounter++;
         if (lowerBody == 10)
             lizardCounter++;
-        if (lizardCocks() > 0)
+        if (this.cocks.lizardCocks() > 0)
             lizardCounter++;
         if (horns > 0 && (hornType == 3 || hornType == 4))
             lizardCounter++;
@@ -846,7 +846,7 @@ export class Player extends Character {
             horseCounter++;
         if (tailType == 1)
             horseCounter++;
-        if (horseCocks() > 0)
+        if (this.cocks.horseCocks() > 0)
             horseCounter++;
         if (lowerBody == 1 || lowerBody == 4)
             horseCounter++;
@@ -917,7 +917,7 @@ export class Player extends Character {
             dragonCounter++;
         if (tongueType == 3)
             dragonCounter++;
-        if (dragonCocks() > 0)
+        if (this.cocks.dragonCocks() > 0)
             dragonCounter++;
         if (wingType == 10)
             dragonCounter++;
@@ -1030,7 +1030,7 @@ export class Player extends Character {
     // Kangascore
     public kangaScore(): number {
         let kanga: number = 0;
-        if (kangaCocks() > 0)
+        if (this.cocks.kangaCocks() > 0)
             kanga++;
         if (earType == 8)
             kanga++;
@@ -1066,7 +1066,7 @@ export class Player extends Character {
             mutantCounter++;
         if (tailType > 0)
             mutantCounter++;
-        if (cockTotal() > 1)
+        if (this.cocks.length > 1)
             mutantCounter++;
         if (hasCock() && hasVagina())
             mutantCounter++;
@@ -1901,7 +1901,7 @@ export class Player extends Character {
                 if (cocks[temp].cockLength <= cocks[storedCock].cockLength) storedCock = temp;
             }
             // Smallest cock should be selected, now remove it!
-            removeCock(storedCock, 1);
+            this.cocks.removeCock(storedCock, 1);
             removed++;
             deadCock--;
             if (cocks.length == 0) deadCock = 0;

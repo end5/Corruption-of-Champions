@@ -7,7 +7,7 @@ export class MinotaurKing extends Monster {
 
         this.tallness = 12 * 14;
 
-        this.createCock(24, 5, CockTypesEnum.HORSE);
+        this.cocks.createCock(24, 5, CockTypesEnum.HORSE);
         this.createBreastRow(0);
 
         this.balls = 2;
@@ -241,7 +241,7 @@ export class MinotaurKing extends Monster {
     }
 
     private cowslutTeaseCocks(): void {
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             const sel: number = rand(3);
             if (sel == 0) {
                 outputText("Excellia crawls over to you while you’re distracted with her lord and wraps her arms around your waist, crushing her milk-swollen tits against your crotch. You can feel their warmth through your [armor], promising nothing but bliss in their embrace. When you push her away, you become aware of the rivers of milk she poured down your");

@@ -187,7 +187,7 @@ export class CharCreation {
         game.time.hours = 0;
         // Clear cocks
         while (player.cocks.length > 0) {
-            player.removeCock(0, 1);
+            player.cocks.removeCock(0, 1);
             trace("1 cock purged.");
         }
         // Clear vaginas
@@ -334,7 +334,7 @@ export class CharCreation {
         player.tone = 60;
 
         player.createBreastRow();
-        player.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockLength = 5.5;
         player.cocks[0].cockThickness = 1;
         player.cocks[0].cockType = CockTypesEnum.HUMAN;
@@ -511,7 +511,7 @@ export class CharCreation {
         addButton(3, "Smarts", confirmEndowmentSmarts);
         addButton(4, "Libido", confirmEndowmentLibido);
         addButton(5, "Touch", confirmEndowmentTouch);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             addButton(6, "Big Cock", confirmEndowmentBigCock);
             addButton(7, "Lots of Jizz", confirmEndowmentMessyOrgasms);
         }
@@ -845,7 +845,7 @@ export class CharCreation {
         // Balls: Four 5 inch wide
         // Vagina: Tight, virgin, 0.5 inch clitoris
         player.createVagina();
-        player.createCock();
+        player.cocks.createCock();
         player.createBreastRow();
         player.clitLength = 0.5;
         player.tallness = 67;
@@ -938,8 +938,8 @@ export class CharCreation {
         player.tailType = TAIL_TYPE_FOX;
         player.tailVenom = 1;
         if (player.biggestTitSize() > 1) player.breastRows[0].breastRating = 1;
-        if (!player.hasCock()) {
-            player.createCock();
+        if (!player.cocks.length > 0) {
+            player.cocks.createCock();
             player.cocks[0].cockType = CockTypesEnum.DOG;
             player.cocks[0].cockLength = 8;
             player.cocks[0].cockThickness = 1;
@@ -956,8 +956,8 @@ export class CharCreation {
 
     private customCeveo(): void {
         // Male. 2 cock. 5.5 average thickness and 12 in with excessive thickness both pierced with silver rings. Balls, large, about the size of a billiard ball, four of them. All humanish, more details on the character.
-        player.createCock();
-        player.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
         player.balls = 4;
         player.ballSize = 3;
         player.cocks[0].cockThickness = 5.5;
@@ -1018,7 +1018,7 @@ export class CharCreation {
     private customCharaun(): void {
         outputText("As a gifted fox with a juicy, thick knot, a wet cunt, and magical powers, you have no problems with being chosen as champion.");
         // Herm, Fox Cock: (27"l x 1.4"w, knot multiplier 3.6), No Balls, Cum Multiplier: 7,500, Vaginal Wetness: 5, Clit length: 0.5, Virgin, Fertility: 15	9-tailed "enlightened" kitsune( a pure-blooded kitsune with the "Enlightened Nine-tails" perk and magic specials)
-        if (!player.hasCock()) player.createCock();
+        if (!player.cocks.length > 0) player.cocks.createCock();
         if (!player.hasVagina()) player.createVagina();
         player.gender = 3;
         player.cocks[0].cockLength = 27;
@@ -1120,10 +1120,10 @@ export class CharCreation {
         // Male
         player.gender = 1;
         // Would it be possible to code a cock type that morphs into different cock types? (i.e. it loads a different cock type description each sex scene) If so, I'd like him to have a pair of them, one 24 inches long and 3 inches wide and the second 12-inches long and 2 inches wide. If not, I'll take a dragon and horse cock at 24/3 each as well as a dog and cat cock at 12/2 each.
-        player.createCock();
-        player.createCock();
-        player.createCock();
-        player.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockLength = 24;
         player.cocks[0].cockThickness = 3;
         player.cocks[0].cockType = CockTypesEnum.HORSE;
@@ -1214,7 +1214,7 @@ export class CharCreation {
     private customHikari(): void {
         // Character Creation	If possible I would like a herm with a cat cock that is 10 inches by 4 inches. Anything else is up to you.	I would like a herm catmorph with two large d breasts and shoulder length hair. Also if possible I would like to start with some gel armor. Everything else is fair game.	Hikari
         outputText("As a herm with a super-thick cat-cock, D-cup breasts, and out-of-this-world armor, you're a natural pick for champion.");
-        if (!player.hasCock()) player.createCock();
+        if (!player.cocks.length > 0) player.cocks.createCock();
         player.cocks[0].cockType = CockTypesEnum.CAT;
         player.cocks[0].cockLength = 10;
         player.cocks[0].cockThickness = 4;
@@ -1249,8 +1249,8 @@ export class CharCreation {
         // the first, a vulpine dick (12 in. long, 2.8 in. thick with a knot roughly 4.5 in. at full size) with a Fertite jacob's ladder piercing
         // and the second, a barbed feline dick (10 in. long and 2.5 in thick) with an Emerald jacob's ladder
         // heh, ribbed for their pleasure ;d lol
-        player.createCock();
-        player.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockLength = 12;
         player.cocks[0].cockThickness = 2.8;
         player.cocks[0].cockType = CockTypesEnum.DOG;
@@ -1396,7 +1396,7 @@ export class CharCreation {
     private customLukaz(): void {
         // Specific Character
         // Male. 11.5 inch dog dick, 4 balls, 2 inches in diameter.
-        player.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockLength = 11.5;
         player.cocks[0].cockThickness = 2;
         player.cocks[0].cockType = CockTypesEnum.DOG;
@@ -1408,7 +1408,7 @@ export class CharCreation {
         player.hipRating = 4;
         player.buttRating = 4;
         player.femininity = 30;
-        player.createCock();
+        player.cocks.createCock();
         player.balls = 4;
         player.cumMultiplier = 4;
         player.ballSize = 2;
@@ -1565,7 +1565,7 @@ export class CharCreation {
         player.hairLength = 15;
         player.createBreastRow();
         player.createVagina();
-        player.createCock();
+        player.cocks.createCock();
         player.tallness = 73;
         player.breastRows[0].breastRating = 5;
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
@@ -1719,12 +1719,12 @@ export class CharCreation {
         player.breastRows[3].breastRating = 5;
         player.breastRows[3].nipplesPerBreast = 4;
         player.breastRows[3].fuckable = true;
-        if (!player.hasCock()) player.createCock();
-        player.createCock();
-        player.createCock();
-        player.createCock();
-        player.createCock();
-        player.createCock();
+        if (!player.cocks.length > 0) player.cocks.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockType = CockTypesEnum.HORSE;
         player.cocks[0].cockLength = 15;
         player.cocks[0].cockThickness = 3;
@@ -1795,7 +1795,7 @@ export class CharCreation {
         // anal wetness 1
         player.ass.analWetness = 2;
         player.gender = 3;
-        player.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockLength = 11;
         player.cocks[0].cockThickness = 2;
         player.cocks[0].knotMultiplier = 1.2;
@@ -1922,7 +1922,7 @@ export class CharCreation {
     private customRope(): void {
         // 529315025394020	Character Creation	Neuter (no genitals) "50-50 masculine-feminine ratio. Shark teeth."	Rope
         outputText("Despite outward appearances, you're actually something of a neuter, with shark-like teeth, an androgynous face, and a complete lack of genitalia.");
-        if (player.hasCock()) player.removeCock(0, 1);
+        if (player.cocks.length > 0) player.cocks.removeCock(0, 1);
         if (player.hasVagina()) player.removeVagina();
         player.gender = 0;
         player.femininity = 50;
@@ -1945,9 +1945,9 @@ export class CharCreation {
         player.breastRows[0].breastRating = 3;
         player.breastRows[1].breastRating = 3;
         player.breastRows[2].breastRating = 3;
-        player.createCock();
-        player.createCock();
-        player.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockLength = 8;
         player.cocks[0].cockThickness = 1.6;
         player.cocks[1].cockLength = 8;
@@ -2383,7 +2383,7 @@ export class CharCreation {
             player.tou+=2;
             player.balls = 2;
             player.ballSize = 1;
-            player.createCock();
+            player.cocks.createCock();
             player.tallness = 71;
             player.tone = 60;
             player.cocks[0].cockLength = 5.5;

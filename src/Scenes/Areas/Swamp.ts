@@ -18,7 +18,7 @@ export class Swamp {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272]++;
         /*  SPECIAL SCENE OVERWRITES */
         // KIHA X HEL THREESOME!
-        if (!kihaFollower.followerKiha() && player.cor < 60 && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.hasCock() && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0) {
+        if (!kihaFollower.followerKiha() && player.cor < 60 && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.cocks.length > 0 && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0) {
             kihaFollower.kihaXSalamander();
             return;
         }

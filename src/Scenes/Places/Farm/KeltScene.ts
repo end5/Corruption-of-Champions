@@ -168,7 +168,7 @@ STATUSES:
         else outputText("\"<i>Now there's a rear end I could get behind!  For someone who claims to be a hero, you sure are built like a fucktoy!  With an ass like that, you remind me of my last lay... of course, she was a horse!</i>\"\r\r", false);
         outputText("He slaps your ass with his open palm, getting in a good grope while he's at it.  His animalistic musk is in your nostrils, making you feel dizzy and more than a little aroused.  He grins widely, then walks around to your front, ", false);
         // (No Cock:
-        if (player.totalCocks() == 0) outputText("\"<i>Well, aren't you a pretty little thing, all together.  You and I will get along real nice, that's for sure!</i>\"\r\r", false);
+        if (player.cocks.length == 0) outputText("\"<i>Well, aren't you a pretty little thing, all together.  You and I will get along real nice, that's for sure!</i>\"\r\r", false);
         else {
             // (Any Cock:
             outputText("and almost inevitably, his eyes drop down to your " + cockDescript(game.player, 0) + ".  He snorts, ", false);
@@ -224,7 +224,7 @@ STATUSES:
         else outputText("\"<i>Now there's a rear end I could get behind!  For someone who claims to be a hero, you sure are built like a fucktoy!  With an ass like that, you remind me of my last lay... of course, she was a horse!</i>\"\r\r", false);
         outputText("He slaps your " + buttDescription(player) + " with his open palm, getting in a good grope while he's at it.  His animalistic musk is in your nostrils, making you feel dizzy and somehow even a little aroused.  The centaur's obvious enjoyment of your body is a little flattering, even if his words are cruel.  He paces around to your front, a shameless grin on his face while he taunts you, ", false);
         // (No Cock:
-        if (player.totalCocks() == 0) outputText("\"<i>Well, aren't you a pretty little thing, all together.  You and I will get along real nice, that's for sure!</i>\"\r\r", false);
+        if (player.cocks.length == 0) outputText("\"<i>Well, aren't you a pretty little thing, all together.  You and I will get along real nice, that's for sure!</i>\"\r\r", false);
         else {
             // (Any Cock:
             outputText("and almost inevitably, his eyes drop down to your " + cockDescript(game.player, 0) + ".  He snorts, ", false);
@@ -621,7 +621,7 @@ STATUSES:
                 outputText("Scrambling to your feet and babbling apologies, you hastily open the door to the barn, entering immediately.  Before you is a thin, upraised table, with straps in it, like saddle stirrups.  Your heart leaps excitedly, and Kelt laughs a little to himself as he tells you to get on, facedown.  You hasten to comply.\r\r", false);
                 outputText("Lying on the rough table with your feet in the stirrups, your ass is suspended at just the right height.  Kelt moves with obvious hunger, running his finger along your nethers.", false);
                 // (Penis:
-                if (player.totalCocks() > 0) outputText("  Your " + cockDescript(game.player, 0) + " is rock hard, but he ignores it almost contemptuously.  You almost feel ashamed of it, compared to the slowly-growing manhood between his legs.", false);
+                if (player.cocks.length > 0) outputText("  Your " + cockDescript(game.player, 0) + " is rock hard, but he ignores it almost contemptuously.  You almost feel ashamed of it, compared to the slowly-growing manhood between his legs.", false);
                 // (Vagina:
                 if (player.hasVagina()) outputText("  For a moment, his fingers trace the line of your exposed " + vaginaDescript(player, 0) + ", giving you the slightest of warnings before he crudely jams two fingers deep inside, as though scouting out your depths.  You whimper urgently at the treatment, and more so as Kelt removes his fingers, licking with obvious pleasure.", false);
                 outputText("\r\r\"<i>Oh?  Like that, do you?  Well, we're not here for what you like.  You're here to satisfy me, slut.  And I know what I'm after.</i>\"\r\r", false);
@@ -633,7 +633,7 @@ STATUSES:
                 outputText("\r\r", false);
                 outputText("You can't help it... at the thought of being used as his worthless fucktoy, you suffer a mild orgasm of your own, crying out your submission to this powerful creature.", false);
                 // (Penis:
-                if (player.totalCocks() > 0) outputText("  Beneath you, pressed firmly into the harsh wood of the mounting board, your " + cockDescript(game.player, 0) + " erupts, splattering your stomach with your own cum.  As the thick semen slides down towards your face, you begin slipping on your own warm seed, rocking back and forth with each harsh pounding Kelt delivers to your backside.", false);
+                if (player.cocks.length > 0) outputText("  Beneath you, pressed firmly into the harsh wood of the mounting board, your " + cockDescript(game.player, 0) + " erupts, splattering your stomach with your own cum.  As the thick semen slides down towards your face, you begin slipping on your own warm seed, rocking back and forth with each harsh pounding Kelt delivers to your backside.", false);
                 // (Vagina:
                 if (player.hasVagina()) outputText("  Your poor, neglected pussy quivers with delight, convulsing without even being touched.  Thick juices run freely down your leg, dripping off to splatter the hay below you as you moan like a bitch in heat.", false);
                 // (Genderless:
@@ -864,9 +864,9 @@ STATUSES:
 
             outputText("You take a moment to indulge in the sensation - the feeling of this big, muscled creature against your warm scales, at your mercy.  His panicky heartbeat reverberates through your frame, and he glowers at you, unable to resist, as you languidly trace the line of his proud jaw with your finger.  \"<i>Let me go now, and I promise I won't kill you.  I may have to beat you, but I won't kill you,</i>\" he growls.  You are barely listening - you are staring into his eyes.  There is something there aside from anger - is it fear?  You smirk, and slowly begin to rise above him, until your genital slit is level with his face.  As you do so, you slide the tip of your tail towards Kelt's member and gently flick its end; he grits his teeth as his big horse cock begins to strain to attention again.  You gently circumnavigate his head, tormenting him as you speak.\r\r", false);
             // If male/hermaphrodite
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 // Single cock:
-                if (player.cockTotal() == 1) {
+                if (player.cocks.length == 1) {
                     outputText("\"<i>Pretty pony stepped on a snake.  Now pretty pony has to pay the price,</i>\" you say, sighing as you part your lips and allow your " + cockDescript(game.player, 0) + " to slide out and feel the fresh air.\n\n\"<i>You put that in my mouth and I will bite it off,</i>\" snarls Kelt.\n\n\"<i>Will you?</i>\" you sneer. \"<i>I will grow one back.  You, on the other hand, will die a slow, agonising death.  Be smart.</i>\" He stares up at you, and yes, it's fear: pure, animalistic fear of a horse for a viper.  You open your mouth and bare your fangs in a wide, triumphant smile at him; venom dribbles down your chin.  He lowers his eyes and opens his mouth in submission.  Needing no further invitation, you slide your " + cockDescript(game.player, 0) + " into his mouth, massaging your hands into his hair as you do so.\r\r", false);
 
                     outputText("He is unpracticed at first, unsure; you feel his teeth rub against your length and for a moment you wonder if he actually will carry through his threat.  You tease at his horsecock with your tail, circling his head faintly and then, gently, sticking the very tip of it into his urethra.  He moans around your " + cockDescript(game.player, 0) + " and his teeth seem to vanish, replaced with a sucking, eager wetness.  You slowly begin to feed more of your length into him.\r\r", false);
@@ -947,7 +947,7 @@ STATUSES:
             outputText("Feigning a coy smile, you drop to your knees and beckon Kelt towards you.  The foolish stud trots over saying, \"<i>That's more like it, slut.  Maybe when I'm done with your mouth, I'll let you have my dick in your ass too.</i>\"  His sheath ripples and swells as his thick member begins to slowly droop out from the folded skin, hanging towards the ground.  It continues growing as he comes closer and closer, until it finally begins to grow rigid and arc up to point at your face.  You breathe in your master's wonderful scent an — No!  You won't cave in to him this time!\r\r", false);
             outputText("You grip his dick just below the flare and yank it down hard, stepping up and back until you're behind the beast.  His flexible horse-dick seems to be handling the angle well, so you pull it back further until Kelt dances about uncomfortably, trying to relax the pressure on his exposed member.  He barks, \"<i>You really have no fucking clue what you're doing, do you, bitch?</i>\"\r\r", false);
             outputText("Your cheeks color, but your anger drives away the urge to submit.  A quick jerk on his flared dong makes Kelt whinny painfully, and he lashes out with a vicious kick from his hind legs.  You anticipate such a move, and dodge, bending his length further just as his backside starts lifting up.  The pain robs his kick of any strength, and you're able to sidestep one leg and force the other aside with a block before it can connect.  He lands hard, wobbling and whinnying uncomfortably, even starting to cry, \"<i>Ah, oww... please, just stop hurting me!</i>\"\r\r", false);
-            if (player.tallness < 50 || player.totalCocks() == 0) {
+            if (player.tallness < 50 || player.cocks.length == 0) {
                 if (player.tallness < 50) outputText("Realizing you're too short to dominate him properly, you come up with another plan.  ", false);
                 outputText("You give his ass a hard smack before you ball up your hand into a fist.  \"<i>Who's the bitch now?!</i>\" you taunt, punching forwards into his asshole.  He cries out at the sudden discomfort, but you feel his dick thicken perceptibly in your hand.  You open your hand when you bump into an apple sized knot inside him, and give it a small, experimental squeeze.  Kelt whinnies and squirts like a garden-hose, splattering a generous helping of clear pre-cum into the grass.  You grin wolfishly and constrict your fingers around the organ.  His horse-cock twitches and flares in your hand, unloading a massive squirt of cum from the stimulation.\r\r", false);
             }
@@ -959,12 +959,12 @@ STATUSES:
             if (player.gender == 0) {
                 outputText("You turn around, bending over to expose your " + assholeDescript(player) + ".  \"<i>Lick it, bitch,</i>\" you command.  When he doesn't, you give the rope a pull, and his hooves paw at the dirt in pain.  \"<i>I said LICK!</i>\" you scream, and this time he does.  His tongue slips between your " + buttDescription(player) + ".  \"<i>Deeper,</i>\" you sigh, and he complies, no longer capable of resistance.  You make him tonguefuck you until you come to a shuddering orgasm.\r\r", false);
             }
-            else if (player.hasVagina() && (player.totalCocks() == 0 || rand(2) == 0)) {
+            else if (player.hasVagina() && (player.cocks.length == 0 || rand(2) == 0)) {
                 outputText("You spread your " + legs(player) + " and expose your " + vaginaDescript(player, 0) + ".  \"<i>Lick it, bitch,</i>\" you command.  When he doesn't, you give the rope a pull, and his hooves paw at the dirt in pain.  \"<i>I said LICK!</i>\" you scream, and this time he does.  His tongue slips between your puffy folds ", false);
                 if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLICK) outputText("tasting them experimentally.  ", false);
                 else outputText("immediately becoming slick with your fuck-me-juices.  ", false);
                 outputText("\"<i>Deeper,</i>\" you sigh, and he complies, no longer capable of resistance.  You make him tonguefuck you until you come to a shuddering, cunt-clenching orgasm.", false);
-                if (player.totalCocks() > 0) outputText("Your " + cockDescript(game.player, 0) + " splatters cock-cream into his hair, further humiliating him.", false);
+                if (player.cocks.length > 0) outputText("Your " + cockDescript(game.player, 0) + " splatters cock-cream into his hair, further humiliating him.", false);
                 outputText("\r\r", false);
             }
             else {

@@ -36,7 +36,7 @@ export class NagaScene {
             // dude secks
             if (player.gender == 1 || (player.gender == 3 && rand(2) == 0)) {
                 // [Player cock is too big]
-                if (player.cockArea(0) > 35) {
+                if (player.cocks.cockArea(0) > 35) {
                     outputText("The kiss continues as both of your bodies rub together sensually, your tails continuing to wrap around one another. There is a pulsing in your " + cockDescript(game.player, 0) + " as it starts to grow hard against the naga's soft belly. Feeling this, the naga gently pulls away, slowly letting your tongue out of her mouth as she does so. Her hands make their way over your shoulders, down your abs, and stop at your " + multiCockDescriptLight(game.player) + ".\n\n", false);
                     outputText("\"<i>You're quite the big boy, aren't you?</i>\" she says as she wraps both of her hands around your now throbbing " + cockDescript(game.player, 0) + ". She starts to slide her hands up and down your length. Sticking out her tongue, she wraps it around the tip and licks at the pre that is starting to leak out.\n\n", false);
                     outputText("A hiss of pleasure escapes your lips as the naga strokes and licks at your " + cockDescript(game.player, 0) + ", her talented fingers and tongue bringing you into a further state of arousal. The naga stops her caressing and brings your " + cockDescript(game.player, 0) + " to her chest, pressing her breasts around it. She slowly starts to slide her body up and down your shaft, using her tongue to bring some of your pre and lubricate her body. Once she is satisfied with her body's slickness, she quickens her pace.\n\n", false);
@@ -52,23 +52,23 @@ export class NagaScene {
                 // [Cock isn't too big]
                 else {
                     outputText("The kiss continues and both of your bodies rub together sensually, your tails continuing to wrap around one another. There is a pulsing in your " + multiCockDescriptLight(game.player) + " as ", false);
-                    if (player.cockTotal() == 1) outputText("it starts ", false);
+                    if (player.cocks.length == 1) outputText("it starts ", false);
                     else outputText("they start ", false);
                     outputText("to grow hard against the naga's soft belly. Feeling this, the naga gently pulls away, slowly letting your tongue out of her mouth as she does so. Her hands make their way over your shoulders, down your abs, and stop at your " + multiCockDescriptLight(game.player) + ".\n\n", false);
                     // [player has one dick]
-                    if (player.totalCocks() == 1) outputText("Gently she starts to stroke the length of your " + cockDescript(game.player, 0) + " with one hand while circling the tip with the other. ", false);
+                    if (player.cocks.length == 1) outputText("Gently she starts to stroke the length of your " + cockDescript(game.player, 0) + " with one hand while circling the tip with the other. ", false);
                     // [player has two dicks]
-                    if (player.totalCocks() == 2) outputText("She takes one in each of her hands and gently strokes them up and down. Every few seconds she stops at the tip to rub her palms over them. ", false);
+                    if (player.cocks.length == 2) outputText("She takes one in each of her hands and gently strokes them up and down. Every few seconds she stops at the tip to rub her palms over them. ", false);
                     // [player has three or more dicks]
-                    if (player.totalCocks() >= 3) outputText("She takes one in each hand, stroking them slowly and making sure to pay attention to the tip. Every so often she switches to a different dick to make sure that each and every one of your throbbing cocks has some love given to them. ", false);
+                    if (player.cocks.length >= 3) outputText("She takes one in each hand, stroking them slowly and making sure to pay attention to the tip. Every so often she switches to a different dick to make sure that each and every one of your throbbing cocks has some love given to them. ", false);
                     outputText("A hiss of pleasure escapes your lips as the naga strokes your " + multiCockDescriptLight(game.player) + ", her talented fingers bringing you further into a state of arousal. She stops her caress and brings her hand to a scaly covering at her crotch, spreading it wide to reveal her soft pussy.\n\n", false);
 
                     // [player has one dick]
-                    if (player.totalCocks() == 1) outputText("She carefully lines it up with your member and starts to tease the tip before gently inserting the first few inches. ", false);
+                    if (player.cocks.length == 1) outputText("She carefully lines it up with your member and starts to tease the tip before gently inserting the first few inches. ", false);
                     // [player has two dicks]
-                    if (player.totalCocks() == 2) outputText("She carefully lines it up with both of your members and starts to tease their tips before gently inserting the first few inches. ", false);
+                    if (player.cocks.length == 2) outputText("She carefully lines it up with both of your members and starts to tease their tips before gently inserting the first few inches. ", false);
                     // [player has three or more dicks]
-                    if (player.totalCocks() >= 3) outputText("She carefully lines it up with one of your members and starts to tease the tip before gently inserting the first few inches. ", false);
+                    if (player.cocks.length >= 3) outputText("She carefully lines it up with one of your members and starts to tease the tip before gently inserting the first few inches. ", false);
                     outputText("She pulls her hips back slightly before pushing them back down, swallowing a bit more of you into her.  As she pulls back the second time, she shifts her arms to rest on your shoulders and grips your back tightly as she pushes you deeper inside of her.\n\n", false);
                     outputText("Every thrust brings you deeper inside of her pussy, its soft walls massaging you. It seems like her pussy managed to swallow your entire cock in no time at all. The naga pauses for a moment, your hips pressed together, panting. You shift your arms up a little higher to rest at her waist and lower your head to nuzzle at her neck. The naga leans her head into yours and wraps one of her arms around your head. Once more she pulls back her hips before thrusting them back onto your cock. No longer is she slowly bringing you inside her, now she thrusts herself onto you, going faster and faster. Your tails tighten around each other as you reach climax. A sudden yell escapes your throat as you cum inside of her, your tail squeezing hard enough to crush a lesser being. The naga shudders in your grip as she reaches her own climax. ", false);
                     // [lots of jizz]
@@ -179,8 +179,8 @@ export class NagaScene {
 
         outputText("You pause for a moment, enjoying the sensation of filling someone up with your body, surprised at just how good it feels. Grabbing the naga's hips you slowly push yourself in and out of her now full pussy, ", false);
         // (if male)
-        if (player.totalCocks() > 0) {
-            if (player.cockTotal() == 1) outputText("your " + cockDescript(game.player, 0), false);
+        if (player.cocks.length > 0) {
+            if (player.cocks.length == 1) outputText("your " + cockDescript(game.player, 0), false);
             else outputText("one of your " + multiCockDescriptLight(game.player), false);
             outputText(" hitting the naga's pleasure buzzer with each downward thrust.", false);
         }
@@ -190,7 +190,7 @@ export class NagaScene {
         }
         // (if herm)
         else if (player.gender == 3) {
-            if (player.cockTotal() == 1) outputText("your " + cockDescript(game.player, 0), false);
+            if (player.cocks.length == 1) outputText("your " + cockDescript(game.player, 0), false);
             else outputText("your " + multiCockDescriptLight(game.player), false);
             outputText(" and clit rubbing against the naga's pleasure buzzer with each downward thrust.", false);
         }
@@ -241,7 +241,7 @@ export class NagaScene {
         outputText("", true);
         player.orgasm();
         // Male or 50% herms
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             // Centaur
             if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
                 outputText("As your massive bulk looms over the defeated naga, your eyes gleam with desire. Your heart pounds in your ears as lusty thoughts echo in your head. You lift the snakewoman up into your arms, bringing her close before licking her neck and tasting her smooth scaly skin as her tail dangles down to the sand. As you touch her, she recovers, and her tail slowly wraps around your equine half to support her own weight. She returns your attentions by running her long forked tongue down your chest. Her scaly tail rubs sensually over your flesh as she continues to wind around you, caressing your " + cockDescript(game.player, 0) + "  with her tip, making you hard in a flash. The naga wriggles free from your embrace and coils behind you. Her entire length is now wrapped around various portions of both your human and equine halves, and she uses her grip to dangle underneath you. Her hands reach out to take a firm hold of your " + cockDescript(game.player, 0) + ".  You shiver as her tongue darts out and slides around your cock, pre-cum dripping from your head as she licks you. The agile naga lowers more of herself beneath you, spreading her pussy wide open before sliding onto your " + cockDescript(game.player, 0) + " and letting out a hissy moan as you penetrate her. Your body tingles as her entire length quivers in pleasure, sending ripples over the flesh her tail is wrapped around.  Jolts of pleasure run through you as the naga woman grinds her hips against your " + cockDescript(game.player, 0) + " , driving it into her as far as she can take.  With a loud and drawn-out moan, ", false);
@@ -262,7 +262,7 @@ export class NagaScene {
                 outputText("You slowly begin moving your fingers in and out of her wet snatch, petting her underbelly with your free hand. You can tell that she is still tense; the look on her face is a mix of passion and fear. She struggles weakly, terrified as you place your warm " + cockDescript(game.player, 0) + " against her belly. You feel her grow still as your length rubs against her. You look deeply into her amber eyes as you wrap your arms around her, and after a moment's hesitation, kiss her passionately. Surprised at your own decision, your mind quickly conjures an image of her biting you. Instead, she relaxes in your arms and returns the kiss, abandoning herself to your will.\n\n", false);
 
                 // [if cock fits]
-                if (player.cockArea(0) <= monster.vaginalCapacity()) {
+                if (player.cocks.cockArea(0) <= monster.vaginalCapacity()) {
                     outputText("Chills run down your spine as her delicate forked tongue tangles with your own, and you gently press the tip of your " + cockDescript(game.player, 0) + " against her moist pussy-lips. Her tail slowly wraps around your legs as she moans in a soft and mildly hissing voice. You sink your engorged member into her depths, pausing for a moment to let her adapt to your presence, before pumping away and kissing her passionately as you both get caught up in the wonderful sensations of your entwined bodies. Her tight passage massages your length, and her scaly body rubbing on your skin only encourages you to go further while you rock back and forth in her embrace. You gradually increase your pace, hearing her moans become louder as she moves her hips in time with yours. Your fingers dig into her smooth backside as you continue thrusting into her, pleasure building for what seems like a wonderful eternity. You finally reach your limit, thrusting frantically until you climax, ", false);
                     // [normal cum load]
                     if (player.cumQ() < 250) outputText("shooting thick ropes of sperm deep inside her as the both of you wail with excitement.", false);
@@ -297,7 +297,7 @@ export class NagaScene {
                 fatigue(20);
                 outputText("Your mind fills with obscene and corrupted fantasies as you behold the defeated creature lying before you.  Leaning forward to get a closer look, your thoughts wander, and you find yourself wondering what you could do to her extremely flexible body.  Unable to contain your undying lust, you remove your " + player.armorName + " and lay on top of her, rapidly moving your hands across her scaly form in a hunt for her pussy.  The snakewoman struggles weakly beneath you, but you easily pin her to the ground. Her tail thrashes in the sand as you locate the mound of scales covering her nether-lips. You open it roughly and shove your fingers in, smiling at her cries of denial. To put an end to her complaints, you suddenly move forward and drive your " + cockDescript(game.player, 0) + " inside her all at once, not caring whether it fits or not. The lack of lubrication couldn't bother you less. You can practically taste the incredible sensations of her love-canal as it begins to moisten. Hungering for more, you start to pound the snake woman mercilessly. Shoving your entire length in and out of her abused cunt causes her to whimper and moan in a mixture of pain and pleasure. She responds to your brutality in kind, biting at your shoulder. It takes a few seconds before your arm grows numb, and you realize too late that this little bitch is injecting you with her venom! You pry her off before she can finish, her fangs still dripping with lethal fluid. This fat little worm has gone way too far.\n\n", false);
                 // [player has more than 1 dick]
-                if (player.cockTotal() > 1) {
+                if (player.cocks.length > 1) {
                     outputText("You pause just long enough to force your " + cockDescript(game.player, 1) + " inside, stretching her pussy wide and ramming into her cervix. You receive an immediate reaction as she screams in pain, as if pleading for you to stop. The desperate thrashing and squirming beneath you only serves to drive you onward. Your shoulder starts to burn as the venom seeps into your blood; you need to wrap this up soon, or else you might pass out before you've finished.", false);
                 }
                 // [player has 1 dick]
@@ -496,7 +496,7 @@ export class NagaScene {
             outputText("You close your eyes and ready yourself to meet your fate. Instead, you feel the hand of the naga at your crotch, sliding your " + player.armorName + " down to give her better access to your " + cockDescript(game.player, 0) + ". A gasp of surprise escapes you as the naga grabs ahold of your " + cockDescript(game.player, 0) + " and starts to stroke it, licking at the " + cockHead(player) + " with her serpentine tongue. You moan as she quickens her pace, causing a wave of heat to rise through your shaft.\n\n", false);
 
             // (Cock fits)
-            if (player.cockArea(0) <= monster.vaginalCapacity()) {
+            if (player.cocks.cockArea(0) <= monster.vaginalCapacity()) {
                 outputText("She stops suddenly and you look at her, a pleading look in your eyes despite yourself. The naga isn't done with you yet, and she makes this known by opening up the scaly slit at her crotch to reveal her moist cunt. She rubs the opening on to the " + cockHead(player) + " of your " + cockDescript(game.player, 0) + ", teasing your throbbing member before slowly sliding it in. She carefully lowers herself onto you, swallowing up the first few inches of your " + cockDescript(game.player, 0) + ". Her hips slide back, before bringing them back down and sliding more of your cock into her. She continues to gently swallow more of you inside of her, the folds of her love canal massaging you with each progressive thrust. Finally there is no more of you that she can push into her, her stomach presses against you in an attempt to try to bring more of you inside her.\n\n", false);
                 outputText("You feel the hands of the snake woman firmly grab your shoulders and watch as she pulls away from you, shouting with pleasure as she thrusts herself down on the full length of your shaft. Unable to move or do anything to help her, you watch helplessly as she manipulates your body, her slick netherlips completely enveloping your " + cockDescript(game.player, 0) + ".  Again and again she thrusts her hips onto your " + cockDescript(game.player, 0) + ", her pussy squeezing you almost as tightly as her tail. She continues to impale herself on your " + cockDescript(game.player, 0) + ", her thrusts becoming more intense by the moment. Finally she gives one last squeeze and tilts her head back with a yell. Unable to hold back, her tight walls begin to convulse, squeezing your " + cockDescript(game.player, 0) + " tighter than ever before. You can feel a pressure welling up inside as her soaking pussy attempts to milk your " + cockDescript(game.player, 0) + " of its tasty seed. You try to hold back, but it's no use. As she continues to pump at your " + cockDescript(game.player, 0) + ", a torrent of warm, sticky cum ", false);
                 // Cum variants
@@ -915,7 +915,7 @@ export class NagaScene {
         outputText("\n\nAbove her, you groan in complete satisfaction, eyes rolling back as you find release");
         if (player.gender > 0) {
             outputText(", ");
-            if (player.hasCock()) outputText("jizz");
+            if (player.cocks.length > 0) outputText("jizz");
             if (player.gender == 3) outputText(" and ");
             if (player.hasVagina()) outputText("femcum");
             outputText(" raining down on the prone naga");
@@ -945,8 +945,8 @@ export class NagaScene {
         outputText(" you relax against her, two bodies twined into one passionate shape.  The naga's tail circles one of your [legs] and your abdomen affectionately, and your ovipositor suddenly thickens, stretched a bit wider at the base as your first egg drops into the chute.  The scaly seductress wiggles a little at this, but her sultry gaze leaves no doubt as to her enjoyment of it.  You flex muscles you don't truly understand and force another egg in behind the first... and a third... and a fourth.");
         outputText("\n\nPOP!  The first egg exits your tubular psuedo-wang with a gush of honey to lubricate its passage, and like magic, it wicks away into the naga's body, beyond your feeling.  The snake's eyelashes flutter crazily, and her fingernails dig into your " + skinFurScales(player) + " brutally hard.  You find it difficult to notice any pain from it though; any discomfort is easily blunted by the pleasure of thick eggs sliding through your organ.  There really is no way to compare it to anything else - you have a tight cunt wrapped around your shaft, like a cock, but you also have hard objects sliding through your interior passage, like a vagina.  You can feel all of this along with the gentle stretching of your tube as each round orb squeezes out, accompanied by spurts of honey.  The alternately building and releasing tension repeats over and over, like a half-dozen tiny orgasms.  It is divine.");
         outputText("\n\nYour body, reacting to the mounting pleasure, begins to squeeze and push your remaining eggs out rapid fire.  The muscles you flexed to start the action seem entirely out of your control now, contracting crazily to fill your tube with heavy thickness.  Pressure builds up, and you try to relax, but you wind up arching your back and groping the naga's tits, crying out with orgasmic bliss.  Your prong twists and wiggles inside your partner, and then, with a triumphant pulsation, it opens wide, spraying out a string of eggs and honey with such rapidity that your eyes roll back and your [hips] begin to shake.  Splort, squish, splort!  Over and over, your body squirts eggs into the equally orgasming naga, sliding the eggs home into her roomy womb.");
-        if (player.hasCock()) outputText("  [EachCock] erupts to splatter her with white");
-        if (player.hasCock() && player.hasVagina()) outputText(" and y");
+        if (player.cocks.length > 0) outputText("  [EachCock] erupts to splatter her with white");
+        if (player.cocks.length > 0 && player.hasVagina()) outputText(" and y");
         else if (player.hasVagina()) outputText("  Y");
         if (player.hasVagina()) {
             outputText("our [vagina] ");
@@ -954,7 +954,7 @@ export class NagaScene {
             else if (player.wetness() < 5) outputText("gushes");
             else outputText("splatters");
             outputText(" clear femcum over the Naga's tight belly");
-            if (player.hasCock()) outputText(" as well");
+            if (player.cocks.length > 0) outputText(" as well");
         }
         if (player.gender > 0) outputText(".");
 

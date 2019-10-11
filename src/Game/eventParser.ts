@@ -486,7 +486,7 @@ export function goNext(time: number, needNext: boolean): boolean {
         if (player.inHeat) temp += 2;
         if (vapula.vapulaSlave()) temp += 7;
         if (game.time.hours == 2) {
-            if (game.time.days % 30 == 0 && flags[kFLAGS.ANEMONE_KID] > 0 && player.hasCock() && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
+            if (game.time.days % 30 == 0 && flags[kFLAGS.ANEMONE_KID] > 0 && player.cocks.length > 0 && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
                 anemoneScene.goblinNightAnemone();
                 needNext = true;
             }
@@ -518,8 +518,8 @@ export function goNext(time: number, needNext: boolean): boolean {
                 }
             }
             // wormgasms
-            else if (flags[kFLAGS.EVER_INFESTED] == 1 && rand(100) <= 4 && player.hasCock() && player.effects.findByType(StatusAffects.Infested) < 0) {
-                if (player.hasCock() && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0) {
+            else if (flags[kFLAGS.EVER_INFESTED] == 1 && rand(100) <= 4 && player.cocks.length > 0 && player.effects.findByType(StatusAffects.Infested) < 0) {
+                if (player.cocks.length > 0 && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0) {
                     nightTimeInfestation();
                     return true;
                 }
@@ -726,9 +726,9 @@ export function goNext(time: number, needNext: boolean): boolean {
     if (player.armorName == "lusty maiden's armor") {
         // Removal due to no longer fitting:
         // Grew Cock or Balls
-        if (player.hasCock() || player.balls > 0) {
+        if (player.cocks.length > 0 || player.balls > 0) {
             outputText("\nYou fidget uncomfortably in the g-string of your lewd bikini - there simply isn't enough room for your ");
-            if (player.hasCock()) outputText("maleness");
+            if (player.cocks.length > 0) outputText("maleness");
             else outputText("bulgy balls");
             outputText(" within the imprisoning leather, and it actually hurts to wear it.  <b>You'll have to find some other form of protection!</b>\n\n");
             inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
@@ -749,8 +749,8 @@ export function goNext(time: number, needNext: boolean): boolean {
     }
     // update cock type as dog/fox depending on whether the player resembles one more than the other.
     // Previously used to be computed directly in cockNoun, but refactoring prevents access to the Player class when in cockNoun now.
-    if (player.totalCocks() != 0) {
-        let counter: number = player.totalCocks() - 1;
+    if (player.cocks.length != 0) {
+        let counter: number = player.cocks.length - 1;
         while (counter >= 0) {
             if (player.cocks[counter].cockType == CockTypesEnum.DOG || player.cocks[counter].cockType == CockTypesEnum.FOX) {
                 if (player.dogScore() >= player.foxScore())

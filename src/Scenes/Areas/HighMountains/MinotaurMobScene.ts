@@ -276,7 +276,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             else if (player.wetness() <= 4) outputText("leaks from your ", false);
             else outputText("rolls out in a wave from your ", false);
             outputText(vaginaDescript(player, 0) + ".", false);
-            if (player.hasCock()) outputText("  " + SMultiCockDesc(game.player) + " hardens and dangles above the ground, leaking in sympathy with your hungry quim.  Of course it will likely be ignored - rutting minotaurs have little use for someone else's dick.", false);
+            if (player.cocks.length > 0) outputText("  " + SMultiCockDesc(game.player) + " hardens and dangles above the ground, leaking in sympathy with your hungry quim.  Of course it will likely be ignored - rutting minotaurs have little use for someone else's dick.", false);
             outputText("The beast-men remove their terribly-tended loincloths and discard them, though one smears his over your face before he tosses it aside, the musky aroma sending your body into overdrive.\n\n", false);
         }
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] >= 25 && player.minotaurNeed()) minotaurGangBadEnd();
@@ -357,7 +357,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("A huge, bloated mass stretches past your pussy lips, forcing out a squirt of girlcum and feminine lube.  ", false);
         player.cuntChange(60, true, false, true);
         outputText("The head flares wide as it squirts into your womb; warmth blooms from the uterine cum-deposit, turning your muscles slack, and setting off an orgasm of your own.  Your pussy ripples and squeezes at the invader, matched in its orgasmic contractions by your cock-stuffed asshole.  The minitaur behind you whines and hilts himself as hard as his relatively lithe body will allow, slapping his balls into his brother's slowly emptying cum-sacks.", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  " + SMultiCockDesc(game.player) + " explodes against the minotaur's belly, weakly spurting ", false);
             if (player.cumQ() < 25) outputText("a few spots of cum into his sweat-matted fur.", false);
             else if (player.cumQ() < 50) outputText("a steady trickle of cum into his fur.", false);
@@ -414,7 +414,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText(" the father of the child in your womb.  You shiver at the smell, the heavenly fluid drying on your " + skinFurScales(player) + " while that slippery tip is moved down to your lips.  Opening your jaw wider, you let the musky prick pop into your mouth.  It tastes like salty sweat, skin, and the heavenly taste of pre-cum all mixed together. The cock pushes deeper, all three rings of prepuce bumping through your lips while the head begins to burrow into your esophagus.  Thankfully the constantly-dripping pre-cum it spouts shuts down your gag reflex, and your only worry becomes wondering just how long you'll have to hold your breath.\n\n", false);
 
         outputText("Fuzz-covered balls brush your chin, their slowly-churning mass resting heavily on your " + face(player) + ".  You hesitantly lick them, lapping up the sweat from their fur.  The pungent pheromones tickle at your nose, even as you're kept from breathing by the cock obstructing your tightly-stretched throat.  All this fellatio has made your " + vaginaDescript(player) + " so sopping wet that you hear it squish and slosh with every twitch and movement of your " + legs(player) + ".  It hungers for penetration, but pregnant and swollen as your womb is, you know your sons won't touch it.", false);
-        if (player.hasCock()) outputText("  The pre-cum leaking from your " + multiCockDescriptLight(game.player) + " reminds you of your poor, ignored maleness, but you'll have to settle for servicing your sons' delectable organs.\n\n", false);
+        if (player.cocks.length > 0) outputText("  The pre-cum leaking from your " + multiCockDescriptLight(game.player) + " reminds you of your poor, ignored maleness, but you'll have to settle for servicing your sons' delectable organs.\n\n", false);
 
         outputText("Pain radiates through your " + buttDescription(player) + " as a strong impact rocks your body.  You'd glance back, but the penis in your mouth holds your head stationary while it begins to slide in and out of your throat.  Another cheek-reddening slap hits your ass, and this time you definitely feel the large, furred shape of a minotaur's hand as the source of your discomfort.  The cock in your mouth draws back, not far enough to empty your mouth, yet far enough for you to breathe in sweet, sweet air through your nose. It plunges back in, just in time for another butt-reddening smack to push you the last few inches back towards those sweaty balls.\n\n", false);
 
@@ -605,7 +605,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("Your body is burning up, buzzing with growing lust from the obscenity going on a few feet away from you.  What do you do?", false);
         // 	[win options]
         let getSuck: () => void = null;
-        if (player.hasCock()) getSuck = createCallBackFunction(forceMinitaurToGiveOral, 1);
+        if (player.cocks.length > 0) getSuck = createCallBackFunction(forceMinitaurToGiveOral, 1);
         let nipFuck: () => void = null;
         if (player.hasFuckableNipples()) nipFuck = victoryBJNippleFuckMinotaurGang;
         let titFuck: () => void = null;
@@ -778,7 +778,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             else outputText("They lick their fingers clean, and a moment later, cocks are spearing your nipples, disappearing deep into the tingling passages concealed within your chest.\n\n", false);
         }
         // Dicks)
-        if (player.hasCock()) outputText(SMultiCockDesc(game.player) + " hangs limply on one of your boys' bellies, dribbling weakly at your need, but there's not any way for it to get involved in the crowd of orgiastic bodies.\n\n", false);
+        if (player.cocks.length > 0) outputText(SMultiCockDesc(game.player) + " hangs limply on one of your boys' bellies, dribbling weakly at your need, but there's not any way for it to get involved in the crowd of orgiastic bodies.\n\n", false);
 
         outputText("That's more like it - now that you're completely impaled in every way, the real fun can start!  You increase the speed of your body's movements, reveling in the absolute dominance and control you hold over your drug-dispensing offspring.  They leak and dribble as you fuck them hard and fast, occasionally reaching out to slap or spank one of them when they start to move.  You ride them like a set of living dildos, squelching noisily from every hole as you leak lube, spit, and pre-cum in equal measure. It's so hot and nasty", false);
         if (player.cor < 33) outputText(" that you cringe a little when you realize you're having an incestuous orgy, but the rising tide of minotaur-drug in your bloodstream washes the errant thought away.", false);
@@ -824,7 +824,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText("", true);
         spriteSelect(94);
         outputText("You hastily remove the lower portions of your " + player.armorName + " to expose your " + vaginaDescript(player), false);
-        if (player.hasCock()) outputText(" and " + multiCockDescriptLight(game.player), false);
+        if (player.cocks.length > 0) outputText(" and " + multiCockDescriptLight(game.player), false);
         outputText(" to the air.  The defeated ", false);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] < 20) outputText("mob", false);
         else outputText("tribe", false);
@@ -873,7 +873,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             else if (player.wetness() >= 2) outputText("  Some of the fluids escape his mouth to run down his shaggy chin.", false);
             else outputText("  All of your moistness is collected on his tongue and sucked into his mouth.", false);
             outputText("  Your quivering cunt tries to milk the poor boy's tongue like a cock, actually pulling him harder against your fem-cum-slicked nether-lips while you climax.", false);
-            if (player.hasCock()) outputText("  Salty cum dribbles down his back from your spurting " + multiCockDescriptLight(game.player) + ", the male part of you orgasming along in a perverse symphony with your girl-parts.\n\n", false);
+            if (player.cocks.length > 0) outputText("  Salty cum dribbles down his back from your spurting " + multiCockDescriptLight(game.player) + ", the male part of you orgasming along in a perverse symphony with your girl-parts.\n\n", false);
         }
         // (PENISCOCKSUCKERFUCK)
         else {
@@ -893,7 +893,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             outputText("The serpent-like tongue snakes ", false);
             if (player.balls > 0) outputText("around your " + sackDescript(player) + " before curling ", false);
             outputText("around the base of your " + multiCockDescriptLight(game.player) + ".  It circles up ", false);
-            if (player.cockTotal() > 1) outputText("a", false);
+            if (player.cocks.length > 1) outputText("a", false);
             else outputText("the", false);
             outputText(" shaft before stopping at the frenulum.  The wet heat of his tongue seems to seep into your dick-flesh until you feels as if you could melt, but the minitaur is just getting started.  He opens wide and takes your " + cockHead(player) + " into his mouth; it rubs sensually over the remainder of flat tongue still inside, and he sucks expertly at it until you're drooling pre-cum on his tongue.  He shivers at that, but it doesn't make him ", false);
             if (!player.isTaur()) outputText("break eye-contact or ", false);
@@ -901,9 +901,9 @@ export class MinotaurMobScene implements TimeAwareInterface {
 
             if (player.hasVagina()) outputText("Humming happily, the minitaur slips a digit inside your " + vaginaDescript(player) + ", and while you didn't ask for it, the added stimulation only heightens your need.  ", false);
             outputText("His circling, wiggling tongue slides up and down your length as he sucks on the tip, giving you a wondrous tongue-fuck", false);
-            if (player.cockTotal() > 1) {
+            if (player.cocks.length > 1) {
                 outputText(" while he strokes ", false);
-                if (player.cockTotal() > 2) outputText("one of your ignored penises", false);
+                if (player.cocks.length > 2) outputText("one of your ignored penises", false);
                 else outputText("on your ignored penis", false);
             }
             outputText(".", false);
@@ -972,7 +972,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         outputText(".  He shyly scratches at his head as he daintily lifts his loincloth, stiffing up until his erection is bobbing before your " + face(player) + ".  \"<i>Mom, could you... lick it please?  It hurts.</i>\"  You smirk and open wide, giving him a perfect view of your slowly-undulating tongue and glistening lips.\n\n", false);
 
         outputText("Your girlish minitaur son dives right in to your inviting maw.  His cock slides through your lips, over your tongue, and into the recesses of your throat with ease, leaving a trail of tingling pre-cum coating everything in its wake.  Even though the sudden appearance of your smallest child has forced your bigger offspring to shift, all it's done is pulled your shaking, violated breasts out to the sides in a lewd display of breast penetration.  The three pound away at you violently, humping to their own rhythms and making it impossible to focus on anything but the violent penetration.", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  " + SMultiCockDesc(game.player), false);
             if (player.hasVagina()) outputText(" and " + vaginaDescript(player) + " drool", false);
             else outputText(" drools", false);

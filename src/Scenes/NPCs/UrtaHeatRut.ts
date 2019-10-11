@@ -9,8 +9,8 @@ export class UrtaHeatRut extends NPCAwareContent {
         clearOutput();
         urta.urtaSprite();
         outputText("As you walk over to the table where your foxy herm-lover sits, you think you see eyes following you, your presence attracting an unusual amount of attention. ");
-        if (player.inHeat && player.inRut && player.hasCock() && player.hasVagina()) outputText(" Males, females and herms alike stare at you with a mixture of puzzlement, longing and hostility, as if unsure whether they want to fight with you, fuck you senseless or be fucked senseless by you.");
-        else if (player.inRut && player.hasCock()) outputText(" Males stare at you with a hint of challenge in their eyes, whilst females eye you attentively. Herms don't seem sure whether they want to fight you or fuck you.");
+        if (player.inHeat && player.inRut && player.cocks.length > 0 && player.hasVagina()) outputText(" Males, females and herms alike stare at you with a mixture of puzzlement, longing and hostility, as if unsure whether they want to fight with you, fuck you senseless or be fucked senseless by you.");
+        else if (player.inRut && player.cocks.length > 0) outputText(" Males stare at you with a hint of challenge in their eyes, whilst females eye you attentively. Herms don't seem sure whether they want to fight you or fuck you.");
         // (Player in heat
         else if (player.inHeat && player.hasVagina()) outputText(" Males, and individuals who look like females at first, until you spot the telltale bulge of at least one cock in garments or hanging freely between their legs, stare at you with obvious desire as you go, more than a few erections starting to form in your wake.");
         outputText("  You ignore them all, concentrating on Urta.");
@@ -20,7 +20,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         if (urtaLove()) outputText(" she opens her arms to embrace you, and smiles.");
         else outputText(" she smiles when she sees you, but then gives the air a sniff and immediately seems to gain more color to the skin under her fur.  \"<i>Uh, I, I see.</i>\"  You sit down next to her, but even though she isn't even suggesting anything yet, you already find it hard to control yourself.");
 
-        if (player.inRut && player.hasCock()) outputText("  Urta is right next to you, and she has already proven herself a good lay");
+        if (player.inRut && player.cocks.length > 0) outputText("  Urta is right next to you, and she has already proven herself a good lay");
         else outputText("  You keep reminding yourself what Urta is packing between her legs and how much precious semen it can give, and can't help but want to try that now");
 
         outputText(".  Not to mention, with or without the monster between her legs, her body is sexy as hell.");
@@ -28,7 +28,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText("\n\n\"<i>Well, you do help me with my own releases, so I suppose that's fair....");
         if (player.inHeat && player.hasVagina()) outputText("  You... smell good, so I at least hope you're not here to tease me.");
         outputText("</i>\"  She leans closer to you, and ");
-        if (player.inRut && player.hasCock()) outputText("your eyes are quickly drawn to her full breasts as she whispers something to you. You're too hypnotized to care.");
+        if (player.inRut && player.cocks.length > 0) outputText("your eyes are quickly drawn to her full breasts as she whispers something to you. You're too hypnotized to care.");
         else outputText("you lose yourself in your imagination about having Urta take you raw and pump you full of sperm.  There's a faint voice you hear, and you realize it's Urta's as you snap back to reality.");
         outputText("  She coughs and repeats herself.  \"<i>Are you here because of your, um, condition? You'd prefer to blow off some steam with ");
         if (urtaLove()) outputText("your adorable, hot vixen");
@@ -38,11 +38,11 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText("\n\nYou nod with a little too much enthusiasm.  She grabs you by the hand as she leaves a few gems on the table, careful not to touch any part of your that may be too sensitive at this point.");
 
         outputText("\n\nAs she leads you into the alleys and apparently, towards her home, your mind and eyes");
-        if (player.inRut && player.hasCock()) outputText(" focus is on the hips of the fox-morph");
+        if (player.inRut && player.cocks.length > 0) outputText(" focus is on the hips of the fox-morph");
         else outputText(" focus on catching a glimpse of that amazing cock, and you keep imagining what she can do with it");
         outputText(".  Your aggressive hormonal state demands that you ");
-        if (player.inRut && player.inHeat && player.hasCock() && player.hasVagina()) outputText(" put a baby in her, then let her put a baby in you");
-        else if (player.inRut && player.hasCock()) outputText(" put a baby in her so she can push it out of those beautiful hips");
+        if (player.inRut && player.inHeat && player.cocks.length > 0 && player.hasVagina()) outputText(" put a baby in her, then let her put a baby in you");
+        else if (player.inRut && player.cocks.length > 0) outputText(" put a baby in her so she can push it out of those beautiful hips");
         else outputText(" put that beautiful big cock into your needy [vagina]");
         // [If Urta's fertility quest wasnât done]
         if (!urtaQuestDone()) outputText(", even if something keeps reminding you that's impossible.");
@@ -53,25 +53,25 @@ export class UrtaHeatRut extends NPCAwareContent {
         else outputText("  I'm really flattered you thought of me when in such a state!</i>\"");
 
         outputText("\n\nSuddenly, the instincts get a bit too strong and the moment you enter a somewhat long, dark, separate alley, You put your arms around Urta and push your ");
-        if (player.inRut && player.inHeat && player.hasCock() && player.hasVagina()) outputText("mixed genitals");
-        else if (player.inRut && player.hasCock()) outputText("[cock biggest]");
+        if (player.inRut && player.inHeat && player.cocks.length > 0 && player.hasVagina()) outputText("mixed genitals");
+        else if (player.inRut && player.cocks.length > 0) outputText("[cock biggest]");
         else outputText("[vagina]");
         outputText(" against her backside.");
 
         outputText("\n\n\"<i>Um, you know, I'm horny, too, but at least wait 'til we get to my place...</i>\"");
 
         // Player in heat and rut:
-        if (player.inRut && player.inHeat && player.hasCock() && player.hasVagina()) {
+        if (player.inRut && player.inHeat && player.cocks.length > 0 && player.hasVagina()) {
             outputText("\n\nYou turn Urta around and see in her eyes a desire nearly as big as in yours.  You practically throw yourself at her, pushing her against the wall, mauling her big breasts, assaulting her lips and rubbing your thighs against her big, erect horse-dong, not really sure yet how the hell you'll satisfy all your body's desires at once.  Urta growls with desire, ripping her dress open and the two of you quickly toss your [armor] all over the place.");
             outputText("\n\nUrta looks like she's about to say something, but then she stops, confusion pushing aside horniness, if only for the moment.  \"<i>I... What are you going to use?  Your cock?  Your pussy?</i>\" she asks, panting with eagerness to begin.");
             // [Cock] [Pussy])
             menu();
-            if (player.cockThatFits(urta.urtaCapacity()) >= 0) addButton(0, "Cock", sateRutWithSoberUrta);
+            if (player.cocks.cockThatFits(urta.urtaCapacity()) >= 0) addButton(0, "Cock", sateRutWithSoberUrta);
             else addButton(0, "Cock", sateRutWithSoberUrtaButHuegDicked);
             addButton(1, "Pussy", soberUrtaSatingPCHeat);
         }
         // Player in rut:
-        else if (player.inRut && player.hasCock()) {
+        else if (player.inRut && player.cocks.length > 0) {
             outputText("\n\nYou roughly shove your fingers into her mouth as your hand moves lower, between her thighs. The naughty slut isn't even wearing proper underwear, and you quickly begin to molest her black pussy lips before slipping a finger inside.");
             if (player.hasVagina()) outputText("  Your " + multiCockDescriptLight(game.player) + " and [vagina] are filling your clothes with mixed juices");
             else outputText("  Your [cock biggest] begins to seep precum into your clothes");
@@ -83,7 +83,7 @@ export class UrtaHeatRut extends NPCAwareContent {
             if (player.hasVagina()) outputText(" and your pussy dripping and eager");
             outputText(".");
             menu();
-            if (player.cockThatFits(urta.urtaCapacity()) >= 0) addButton(0, "Next", sateRutWithSoberUrta);
+            if (player.cocks.cockThatFits(urta.urtaCapacity()) >= 0) addButton(0, "Next", sateRutWithSoberUrta);
             else addButton(0, "Next", sateRutWithSoberUrtaButHuegDicked);
         }
         // Player in heat:
@@ -102,8 +102,8 @@ export class UrtaHeatRut extends NPCAwareContent {
         urta.urtaSprite();
         outputText("As you walk over to the table where your foxy herm-lover sits, you think you see eyes following you, your presence attracting an unusual amount of attention.");
         // Player in heat and rut:
-        if (player.inHeat && player.inRut && player.hasCock() && player.hasVagina()) outputText("  Males, females and herms alike stare at you with a mixture of puzzlement, longing and hostility, as if unsure whether they want to fight with you, fuck you senseless or be fucked senseless by you.");
-        else if (player.inRut && player.hasCock()) outputText("  Males stare at you with a hint of challenge in their eyes, whilst females eye you attentively. Herms don't seem sure whether they want to fight you or fuck you.");
+        if (player.inHeat && player.inRut && player.cocks.length > 0 && player.hasVagina()) outputText("  Males, females and herms alike stare at you with a mixture of puzzlement, longing and hostility, as if unsure whether they want to fight with you, fuck you senseless or be fucked senseless by you.");
+        else if (player.inRut && player.cocks.length > 0) outputText("  Males stare at you with a hint of challenge in their eyes, whilst females eye you attentively. Herms don't seem sure whether they want to fight you or fuck you.");
         // Player in heat:
         else outputText("  Males, and individuals who look like females at first, until you spot the telltale bulge of at least one cock in garments or hanging freely between their legs, stare at you with obvious desire as you go, more than a few erections starting to form in your wake.");
         outputText("  You ignore them all, concentrating on Urta.");
@@ -126,13 +126,13 @@ export class UrtaHeatRut extends NPCAwareContent {
         urta.urtaSprite();
         outputText("You say it's her who seems to be different today, and gently push her away, before apologizing and making your leave.  ");
         if (player.faceType == 2) outputText("Your nose does seem to pick up that Urta was and still is getting unusually aroused behind you.  ");
-        if (player.inRut && player.hasCock()) outputText("[EachCock] twitches in protest at you leaving a willing lay behind.  ");
+        if (player.inRut && player.cocks.length > 0) outputText("[EachCock] twitches in protest at you leaving a willing lay behind.  ");
         // [Medium lust increase]
 
         // [If the PC has a snake tongue]
         if (player.tongueType == TONUGE_SNAKE) outputText("You instinctively taste the air, and Urta suddenly seems utterly delicious. ");
         // Rut:
-        if (player.inRut && player.hasCock()) outputText("Your " + multiCockDescriptLight(game.player) + " hardens in your pants as you still force yourself to leave.");
+        if (player.inRut && player.cocks.length > 0) outputText("Your " + multiCockDescriptLight(game.player) + " hardens in your pants as you still force yourself to leave.");
         // [Medium lust increase]
         else outputText("Your condition does seem kind of protesting against leaving such a willing lay behind, but it isn't time to be indulging it.");
 
@@ -149,14 +149,14 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText("You raise an eyebrow and ask Urta if she minds telling you the reason for such attention and what exactly it is that you smell like.");
 
         // Rut And Heat:
-        if (player.inRut && player.inHeat && player.hasCock() && player.hasVagina()) outputText("\n\n\"<i>Gods, sexy!  You smell like you walked in here to make babies - like you want to grab the girls and the herms and plough them full of cum, even as you let the guys and the herms stuff your greedy cunt full of baby juice and make you just as pregnant.  It's the best smell ever...</i>\"");
+        if (player.inRut && player.inHeat && player.cocks.length > 0 && player.hasVagina()) outputText("\n\n\"<i>Gods, sexy!  You smell like you walked in here to make babies - like you want to grab the girls and the herms and plough them full of cum, even as you let the guys and the herms stuff your greedy cunt full of baby juice and make you just as pregnant.  It's the best smell ever...</i>\"");
         // Rut:
-        else if (player.inRut && player.hasCock()) outputText("\n\n\"<i>Well, let me put it like this: you smell like you walked in here to grab every girl here by the hips and breed them all for hours on end, until the whole lot of them's knocked up.</i>\"");
+        else if (player.inRut && player.cocks.length > 0) outputText("\n\n\"<i>Well, let me put it like this: you smell like you walked in here to grab every girl here by the hips and breed them all for hours on end, until the whole lot of them's knocked up.</i>\"");
 
         else if (player.inHeat && player.hasVagina()) outputText("\n\n\"<i>Well, let me put it like this: You smell like you walked in here to tease and flirt with every man and herm in the place... stride into the middle of the floor like a queen, then pull off your clothes and bend over to let yourself be fucked and bred for hours until you were well and truly knocked up.</i>\"");
 
         // If player is in both heat and rut:
-        if (player.inRut && player.inHeat && player.hasCock() && player.hasVagina()) {
+        if (player.inRut && player.inHeat && player.cocks.length > 0 && player.hasVagina()) {
             outputText(" Urta shudders with desire and, to your shock, she starts openly fondling her huge prick ");
             if (!urtaLove()) outputText("under her skirt");
             else outputText("through her quickly-soaked dress");
@@ -168,7 +168,7 @@ export class UrtaHeatRut extends NPCAwareContent {
             addButton(1, "Vagina", drunkUrtaIntroPartDuex, 2);
             addButton(2, "Watch", watchDrunkRuturtaJerkoff);
         }
-        else if (player.inRut && player.hasCock()) {
+        else if (player.inRut && player.cocks.length > 0) {
             drunkUrtaIntroPartDuex(1, false);
         }
         else {
@@ -197,7 +197,7 @@ export class UrtaHeatRut extends NPCAwareContent {
 
         outputText("\n\nYou're a bit surprised by the reaction, and while you're still putty in her hands, Urta pushes you onto the bar table with strength nigh-impossible for her frame.  You feel wood under your back.  Her tail unfolds and presents her already erect equine penis to you, ");
         // Player in both :
-        if (player.inRut && player.inHeat && player.hasCock() && player.hasVagina()) outputText("and she proceeds to maul her breasts, pre-cum seeping copiously from her cock and her snatch drooling over her balls and onto the floor.");
+        if (player.inRut && player.inHeat && player.cocks.length > 0 && player.hasVagina()) outputText("and she proceeds to maul her breasts, pre-cum seeping copiously from her cock and her snatch drooling over her balls and onto the floor.");
         else if (chosenSex == 1) outputText("but she doesn't seem to mind it for the moment.  Rather, the fur between her thighs appears to be rapidly soaking.");
         else outputText("which she seems more than intent to push into you, although you do see a bit of female lubricant sliding down her balls.");
 
@@ -217,7 +217,7 @@ export class UrtaHeatRut extends NPCAwareContent {
 
         menu();
         if (chosenSex == 1) {
-            if (player.cockThatFits(urta.urtaCapacity()) >= 0) addButton(0, "Next", drunkUrtaRidesARutPCsCock);
+            if (player.cocks.cockThatFits(urta.urtaCapacity()) >= 0) addButton(0, "Next", drunkUrtaRidesARutPCsCock);
             else addButton(0, "Next", sateRutWithDrunkUrtaWithHugeDick);
         }
         else addButton(0, "Next", drunkenUrtaFucksPCInHeat);
@@ -296,9 +296,9 @@ export class UrtaHeatRut extends NPCAwareContent {
 
         outputText("As she presses your back against the wall, you spread your [legs] wide, allowing Urta easy access to your awaiting womanhood");
         // [If herm]:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(" by shoving your " + multiCockDescriptLight(game.player));
-            if (player.hasCock() && player.balls > 0) outputText(" and [balls]");
+            if (player.cocks.length > 0 && player.balls > 0) outputText(" and [balls]");
             outputText(" out of the way");
         }
         else if (player.balls > 0) outputText(" by shoving your [balls] out of the way");
@@ -315,7 +315,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         else outputText("You moan again, feeling Urta's member stretch, harden and throb, blood running through it.  You feel complete, and your heat is ignited further by the sensation of something so wonderful and big filling you.");
 
         outputText("\n\nUrta leans closer into your body, pressing her big breasts against your [fullChest] as she reaches down to stimulate your ");
-        if (player.hasCock()) outputText("[cock biggest]");
+        if (player.cocks.length > 0) outputText("[cock biggest]");
         else {
             outputText("clitoris, ");
             if (player.clitLength < 2.5) outputText("rubbing the hard, stimulated sensitive spot between her fingers");
@@ -324,7 +324,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText(", letting you have a few moments to get used to her mammoth member and accommodate it.");
 
         outputText("\n\n\"<i>Ready to get fucked, lover?</i>\"  She pushes your back against the wall before withdrawing her hips and her cock, and then pushes back in, making you yell from the stimulation.  She starts to pound you with long, deep strokes, her giant hermhood stretching you wide and making it hard to feel or think about anything else other than pleasure.  Urta licks your [nipples] as she continues to pound into you, and you feel a fast-approaching orgasm.  The sexy hermaphrodite vixen rams herself into you a few more times before you let yourself go and announce your ecstasy to the walls of the empty alley.");
-        if (player.hasCock()) outputText(" Cum rushes out of [eachCock] and onto the soft fur of Urta's abdomen, then starts leaking out slowly in time with her thrusts.");
+        if (player.cocks.length > 0) outputText(" Cum rushes out of [eachCock] and onto the soft fur of Urta's abdomen, then starts leaking out slowly in time with her thrusts.");
         outputText(" Your cunt clamps down tighter onto Urta as you orgasm,");
         if (player.wetness() >= 4) outputText(" pussy juice shooting out around her member, coating Urta's fur and soaking her balls and the base of her cock.");
         else outputText(" love juices flowing liberally out of you, giving the skin of Urta's cock a visible shine and spreading onto her balls.");
@@ -332,7 +332,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText("\n\nSqueezed by your hungry cunt, the fox hermaphrodite finds it impossible to retain control and grabs your [hips], lifting you and pressing you more firmly against the wall as she starts to pound the living heavens out of you, increasing the pace and ferocity of her thrusts.  Your [vagina] happily responds to the overstimulation by jumping onto the way to another orgasm, but Urta seems more visibly concerned with her own pleasure right now.");
 
         outputText("\n\nYou reach out to play with your [chest] and [nipples] while your other hand moves lower, starting to pleasure your ");
-        if (player.hasCock()) outputText("[cock biggest]");
+        if (player.cocks.length > 0) outputText("[cock biggest]");
         else outputText("[clit]");
         outputText(".  Urta alternates between sensual moans and aggressive groans, her own thighs slightly soaked by her own secretions, but continues to pound you with her cock.  The two of you kiss passionately as she presses her breasts against your [chest], and you take the chance to move your hand and squeeze her own chest before moving an arm around her neck and pressing her stronger into the kiss.");
 
@@ -346,7 +346,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText(".");
 
         outputText("\n\nThe first two surges of Urta's seminal fluids stretch your insides with hot, sticky goo, your breeding state registering that it's getting what it needs and starting to work on squeezing out more.  The problem is, trying to get more out of Urta can be quite dangerous; wave after wave of semen flows out of her cock and into you, cum gushing out on the side of her cock as she thrusts, giving you a small paunch, then quite the belly as she continues to fill you up. The insemination triggers another orgasm in you, ");
-        if (player.hasCock()) outputText("your own member responding alike to Urta's, shooting out semen, ");
+        if (player.cocks.length > 0) outputText("your own member responding alike to Urta's, shooting out semen, ");
         outputText("your [vagina] ");
         if (player.wetness() >= 4) outputText("once again setting off to coat Urta in your juices.");
         else outputText("squeezing on her, trying to milk her of her seed.");
@@ -364,7 +364,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText("\n\nUrta groans as she rams the rest of her cock into you, filling you with her extraordinary, equine breeder once again.  Then, she begins to hump you from behind, smacking her groin against your [butt] as her member stretches you.");
 
         outputText("\n\nYou reach down to play with yourself, your [clit] ");
-        if (player.hasCock()) outputText("and " + multiCockDescriptLight(game.player) + " ");
+        if (player.cocks.length > 0) outputText("and " + multiCockDescriptLight(game.player) + " ");
         outputText("hardening again in response to the act.  Urta continues to slam into your backside, delivering a small smack to your [butt].");
 
         // Regular Urta]
@@ -376,7 +376,7 @@ export class UrtaHeatRut extends NPCAwareContent {
 
         outputText("\n\nThe vixen squeezes your [butt] as she drives herself fully home, and you feel her member paint the deepest of your insides with her precious seed as it pulses and twitches inside you, stretching you unimaginably wide and pleasuring the entirety of your womanhood at once while delivering its seed straight into your womb.  You yell in complete, all-encompassing rapture as ");
         // [Hermaphrodite]
-        if (player.hasCock()) outputText("[eachCock] shoots its seed onto the floor of the alley, helplessly");
+        if (player.cocks.length > 0) outputText("[eachCock] shoots its seed onto the floor of the alley, helplessly");
         else outputText("your [vagina] squeezes and tugs on her shooting member, leaking its own juices all over her member, the intensity of the orgasm shaking you right into your core");
         outputText(".");
 
@@ -429,7 +429,7 @@ export class UrtaHeatRut extends NPCAwareContent {
     private sateRutWithSoberUrtaButHuegDicked(): void {
         clearOutput();
         urta.urtaSprite();
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("Urta observes your approaching " + cockDescript(game.player, x) + " with a hungry, eager expression. Without taking her eyes off of it, she flips up her ");
         if (!urtaLove()) outputText("skirt");
         else outputText("dress");
@@ -473,7 +473,7 @@ export class UrtaHeatRut extends NPCAwareContent {
 
     // Quote:[=Sate Rut with Sober Urta=]
     private sateRutWithSoberUrta(): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         clearOutput();
         urta.urtaSprite();
         outputText("Urta observes your approaching package with a hungry, eager expression. Without taking her eyes off of it, she flips up her skirt, her huge horse-cock whipping up to slap between her breasts, pre already dribbling down the tip.");
@@ -556,7 +556,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText(" and hiking it up to expose her pre-spewing cock.  A steady trickle of feminine lubricant dribbles out of her gash, oozing over her apple-sized balls and dripping noisily onto the floor, but Urta couldn't care less; she's too fixated on plunging her maleness into your ready pussy to notice her feminine urges.");
 
         outputText("\n\nAwkwardly, reluctantly, the fox-morph backs away, her soft fingers with their claw-like nails trailing erotically down your body, playing with your [nipples] in a way that sends sparks of pleasure surging through your brain, until finally she has reached your crotch.  Sparing you a soft smirk, she bends her head down until her face is hovering right about your [vagina], dramatically sniffing the scent rising from your fertile breeding-hole before she sticks her muzzle into it");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(", impatiently nudging aside your " + multiCockDescriptLight(game.player));
             if (player.balls > 0) outputText(" and your [balls]");
             outputText(" to get to the feminine orifice below");
@@ -576,7 +576,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText("\n\nLike an animal, Urta begins to rock back and forth, thrusting her cock wildly into you with brutal eagerness, slamming you with such force that the table creaks and groans in a manner that would be most alarming if you weren't too caught up in your own pleasure to care.  You throw your head back in ecstasy, getting brief glimpses of the situation in the bar around you.  It looks like the others are enjoying the show quite a lot in their own right - you see more than a few couples or threesomes starting to kiss, fondle each other, even beginning to have sex on their own.");
 
         outputText("\n\nUrta's usual shyness seems forgotten - as do her usual manners, for she pays no attention to your [clit] ");
-        if (player.hasCock()) outputText("nor even your " + multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText("nor even your " + multiCockDescriptLight(game.player));
         outputText(", despite usually trying to make it just as good for you.  She begins to thrust into you with even greater force than before.  You groan and whimper under her; partly from the pleasures of being taken so roughly, so triumphantly, and partly to goad her on, to make her feel even more aroused and alpha-male-like.");
 
         outputText("\n\nIt works.  Urta howls in triumph as her cock finally explodes insides you, flooding your interior with her hot, salty cum.  Your belly gurgles and bulges as she shoots spurt after spurt of spooge inside you, flooding your womb with her herm seed.  You cry out in ecastasy as your own juices pour forth, your [vagina] doing its best to milk as much cum from your vulpine lover as possible.  As your belly swells out into a small paunch, the last few jets of cum splashing into your womb, you wait for the exhausted Urta to pull out... and then you realize that Urta's cock isn't going soft.  You can feel it start to slacken, but it remains fundamentally erect, and after a few deep breathes, Urta begins to thrust into you once again, her erection rapidly stiffening and hardening within you until she is pounding at you again, just as fiercely before.  Again she spews her seed within you, but once more her erection fails to soften; though much of her cum is pinned up inside you by the sheer thickness of her cock and the widely flared head buried inside you, a copious amount still manages to leak and dribble out of you, dripping down between your [butt] and puddling onto the table.");
@@ -636,7 +636,7 @@ export class UrtaHeatRut extends NPCAwareContent {
         outputText("\n\nThe warmth of her cock and balls pressed against your own [cock biggest] as well as her skillful, if somewhat brutal handling of your members, pressed together, does give you quite the pleasure, but you realize it'd be infinitely better if Urta indeed put your throbbing penis in her wet, tightly squeezing pussy.");
 
         outputText("\n\n\"<i>Why the hell do you need such a big dick anyway?  Freakin' monsters need less than that to be satisfied!  You trying to ");
-        if (player.biggestCockArea() < 150) outputText("compete with minotaurs or something?");
+        if (player.cocks.biggestCockArea() < 150) outputText("compete with minotaurs or something?");
         else outputText("set a world record or something?");
         outputText("</i>\"\n\n");
         outputText("\n\nHer treatment of your [cock biggest], pressed against her own shaft, gets more rough, brutal and frantic, but you realize you're both on the edge of an orgasm and she's just trying to be done with it and blow off her own steam.  Your [cock biggest] starts leaking precum copiously as your shaft is covered in Urta's own secretions, and with a blush, you realize her wet pussy is leaking her juices over her balls and your body all the way down to your [asshole].");
@@ -669,7 +669,7 @@ export class UrtaHeatRut extends NPCAwareContent {
     // Quote:[Drunken Urta Fucks Cock]
     private drunkUrtaRidesARutPCsCock(): void {
         clearOutput();
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         urta.urtaSprite();
         outputText("You decide not to fight the situation; truthfully, the promises given by the sight of the hot hermaphrodite vixen climbing on top of you ignite your lusts and sing to your rut in ways you don't think you'd be able to safely ignore.");
 

@@ -1175,7 +1175,7 @@ export function goreAttack(): void {
             outputText("You lower your head and charge, slamming into " + monster.a + monster.short + " and burying both your horns into " + monster.pronoun2 + "!  ");
         }
         // Bonus damage for rut!
-        if (player.inRut && monster.cockTotal() > 0) {
+        if (player.inRut && monster.cocks.length > 0) {
             outputText("The fury of your rut lent you strength, increasing the damage!  ");
             damage += 5;
         }
@@ -1439,10 +1439,10 @@ export function dropItem(monster: Monster): void {
     }
 }
 export function awardPlayer(): void {
-    if (player.countCockSocks("gilded") > 0) {
+    if (player.cocks.countCockSocks("gilded") > 0) {
         // trace( "awardPlayer found MidasCock. Gems bumped from: " + monster.gems );
 
-        const bonusGems: number = monster.gems * 0.15 + 5 * player.countCockSocks("gilded"); // int so AS rounds to whole numbers
+        const bonusGems: number = monster.gems * 0.15 + 5 * player.cocks.countCockSocks("gilded"); // int so AS rounds to whole numbers
         monster.gems += bonusGems;
         // trace( "to: " + monster.gems )
     }
@@ -1529,7 +1529,7 @@ function combatStatusesUpdate(): void {
             }
             else if (tentaround == 2) {
                 outputText("Now that they’ve settled in, the tentacles go to work on your body, rudely molesting every sensitive place they can find.");
-                if (player.hasCock()) outputText(" They twirl and writhe around your [cocks].");
+                if (player.cocks.length > 0) outputText(" They twirl and writhe around your [cocks].");
                 if (player.hasVagina()) outputText(" One flosses your nether-lips, rubbing slippery bumps maddenly against your [clit].");
                 outputText(" " + num2Text(player.totalNipples()) + " tendrils encircle your [nipples]");
                 if (player.hasFuckableNipples()) outputText(", threatening to slide inside them at a moment’s notice");
@@ -1552,7 +1552,7 @@ function combatStatusesUpdate(): void {
                 }
                 outputText(".");
                 if (player.hasFuckableNipples()) outputText(" Your [nipples] are similarly entered.");
-                if (player.hasCock()) outputText(" And [eachCock] is suddenly coated in slimy, extraplanar oil and pumped with rapid, sure strokes.");
+                if (player.cocks.length > 0) outputText(" And [eachCock] is suddenly coated in slimy, extraplanar oil and pumped with rapid, sure strokes.");
                 outputText(" There’s too much. If you don’t break free, you’re going to wind up losing to a simple spell!");
                 dynStats("lus", 10);
             }
@@ -1755,7 +1755,7 @@ function combatStatusesUpdate(): void {
         }
     }
     // Harpy lip gloss
-    if (player.hasCock() && player.effects.findByType(StatusAffects.Luststick) >= 0 && (monster.short == "harpy" || monster.short == "Sophie")) {
+    if (player.cocks.length > 0 && player.effects.findByType(StatusAffects.Luststick) >= 0 && (monster.short == "harpy" || monster.short == "Sophie")) {
         // Chance to cleanse!
         if (player.perks.findByType(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
             outputText("You manage to cleanse the harpy lip-gloss from your system with your knowledge of medicine!\n\n", false);
@@ -1789,14 +1789,14 @@ function combatStatusesUpdate(): void {
         outputText("You feel something shift inside you, making you feel warm.  Finding the desire to fight this... hunk gets harder and harder.\n\n", false);
         dynStats("lus", (player.effects.getValue1Of(StatusAffects.DemonSeed) + int(player.sens / 30) + int(player.lib / 30) + int(player.cor / 30)));
     }
-    if (player.inHeat && player.vaginas.length > 0 && monster.totalCocks() > 0) {
+    if (player.inHeat && player.vaginas.length > 0 && monster.cocks.length > 0) {
         dynStats("lus", (rand(player.lib / 5) + 3 + rand(5)));
         outputText("Your " + vaginaDescript(player, 0) + " clenches with an instinctual desire to be touched and filled.  ", false);
         outputText("If you don't end this quickly you'll give in to your heat.\n\n", false);
     }
-    if (player.inRut && player.totalCocks() > 0 && monster.hasVagina()) {
+    if (player.inRut && player.cocks.length > 0 && monster.hasVagina()) {
         dynStats("lus", (rand(player.lib / 5) + 3 + rand(5)));
-        if (player.totalCocks() > 1) outputText("Each of y", false);
+        if (player.cocks.length > 1) outputText("Each of y", false);
         else outputText("Y", false);
         if (monster.plural) outputText("our " + multiCockDescriptLight(player) + " dribbles pre-cum as you think about plowing " + monster.a + monster.short + " right here and now, fucking " + monster.pronoun3 + " " + vaginaDescript(monster) + "s until they're totally fertilized and pregnant.\n\n", false);
         else outputText("our " + multiCockDescriptLight(player) + " dribbles pre-cum as you think about plowing " + monster.a + monster.short + " right here and now, fucking " + monster.pronoun3 + " " + vaginaDescript(monster) + " until it's totally fertilized and pregnant.\n\n", false);
@@ -1831,7 +1831,7 @@ function combatStatusesUpdate(): void {
             if (player.hasVagina()) {
                 outputText("Your " + vaginaDescript(player, 0) + " clenches with an instinctual desire to be touched and filled.  ", false);
             }
-            else if (player.totalCocks() > 0) {
+            else if (player.cocks.length > 0) {
                 outputText("Your " + cockDescript(player, 0) + " pulses and twitches, overwhelmed with the desire to breed.  ", false);
             }
             if (player.gender == 0) {
@@ -2038,7 +2038,7 @@ export function display(): void {
             }
             else if (player.lust <= 50) {
                 outputText("\nYou pant. You can’t help it, not with the exertion of fighting and how blessedly <i>warm</i> you’re starting to get between the legs.");
-                if (!player.hasCock() && !player.hasVagina()) outputText(" You wish, for a moment, that you hadn’t so carelessly lost your genitalia.");
+                if (!player.cocks.length > 0 && !player.hasVagina()) outputText(" You wish, for a moment, that you hadn’t so carelessly lost your genitalia.");
                 outputText(" Trying not to breath about this beast was never going to work anyway.\n");
             }
             else if (player.lust <= 60) {
@@ -2055,7 +2055,7 @@ export function display(): void {
                     if (player.wetness() >= 4) outputText(", and not just wet in the normal, everyday, ready-to-fuck way");
                     outputText(". The pernicious need is slipping inside you with every breath you take around this virile brute, twisting through your body until cunt-moistening feelers are stroking your brain, reminding you how easy it would be to spread your legs. He’s a big, big boy, and you’ve got such a ready, aching pussy.\n");
                 }
-                else if (player.hasCock()) {
+                else if (player.cocks.length > 0) {
                     outputText("\nYou’re hard - harder than you’d ever expect to be from being face to face with a corrupted bovine’s dripping dick. It just... it smells so good. His whole body does. Even when you duck under a swing, you’re blasted with nothing but pure pheromones. You get dizzy just trying keep your breath, and you desperately want to tend to the ache");
                     if (player.isTaur()) outputText(" below.\n");
                     else outputText(" between your legs.\n");
@@ -2401,17 +2401,17 @@ export function tease(justText: boolean = false): void {
             choices[choices.length] = 7;
         }
         // Cock flash!
-        if (futa && player.hasCock()) {
+        if (futa && player.cocks.length > 0) {
             choices[choices.length] = 10;
             choices[choices.length] = 11;
-            if (player.cockTotal() > 1) choices[choices.length] = 10;
-            if (player.cockTotal() >= 2) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 10) choices[choices.length] = 10;
-            if (player.biggestCockArea() >= 25) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 50) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 75) choices[choices.length] = 10;
-            if (player.biggestCockArea() >= 100) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 300) choices[choices.length] = 10;
+            if (player.cocks.length > 1) choices[choices.length] = 10;
+            if (player.cocks.length >= 2) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 10) choices[choices.length] = 10;
+            if (player.cocks.biggestCockArea() >= 25) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 50) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 75) choices[choices.length] = 10;
+            if (player.cocks.biggestCockArea() >= 100) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 300) choices[choices.length] = 10;
         }
     }
     else if (bro) {
@@ -2432,17 +2432,17 @@ export function tease(justText: boolean = false): void {
             if (player.str >= 80) choices[choices.length] = 9;
         }
         // Cock flash!
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             choices[choices.length] = 10;
             choices[choices.length] = 11;
-            if (player.cockTotal() > 1) choices[choices.length] = 10;
-            if (player.cockTotal() >= 2) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 10) choices[choices.length] = 10;
-            if (player.biggestCockArea() >= 25) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 50) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 75) choices[choices.length] = 10;
-            if (player.biggestCockArea() >= 100) choices[choices.length] = 11;
-            if (player.biggestCockArea() >= 300) choices[choices.length] = 10;
+            if (player.cocks.length > 1) choices[choices.length] = 10;
+            if (player.cocks.length >= 2) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 10) choices[choices.length] = 10;
+            if (player.cocks.biggestCockArea() >= 25) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 50) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 75) choices[choices.length] = 10;
+            if (player.cocks.biggestCockArea() >= 100) choices[choices.length] = 11;
+            if (player.cocks.biggestCockArea() >= 300) choices[choices.length] = 10;
         }
     }
     // VANILLA FOLKS
@@ -2474,16 +2474,16 @@ export function tease(justText: boolean = false): void {
             if (player.vaginalCapacity() >= 75) choices[choices.length] = 2;
         }
         // Cock flash!
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             choices[choices.length] = 3;
-            if (player.cockTotal() > 1) choices[choices.length] = 3;
-            if (player.cockTotal() >= 2) choices[choices.length] = 3;
-            if (player.biggestCockArea() >= 10) choices[choices.length] = 3;
-            if (player.biggestCockArea() >= 25) choices[choices.length] = 3;
-            if (player.biggestCockArea() >= 50) choices[choices.length] = 3;
-            if (player.biggestCockArea() >= 75) choices[choices.length] = 3;
-            if (player.biggestCockArea() >= 100) choices[choices.length] = 3;
-            if (player.biggestCockArea() >= 300) choices[choices.length] = 3;
+            if (player.cocks.length > 1) choices[choices.length] = 3;
+            if (player.cocks.length >= 2) choices[choices.length] = 3;
+            if (player.cocks.biggestCockArea() >= 10) choices[choices.length] = 3;
+            if (player.cocks.biggestCockArea() >= 25) choices[choices.length] = 3;
+            if (player.cocks.biggestCockArea() >= 50) choices[choices.length] = 3;
+            if (player.cocks.biggestCockArea() >= 75) choices[choices.length] = 3;
+            if (player.cocks.biggestCockArea() >= 100) choices[choices.length] = 3;
+            if (player.cocks.biggestCockArea() >= 300) choices[choices.length] = 3;
         }
     }
     // ==EXTRAS========
@@ -2509,7 +2509,7 @@ export function tease(justText: boolean = false): void {
         if (player.pregnancyIncubation <= 24) choices[choices.length] = 13;
     }
     // 14 Brood Mother
-    if (monster.hasCock() && player.hasVagina() && player.perks.findByType(PerkLib.BroodMother) >= 0 && (player.pregnancyIncubation <= 0 || player.pregnancyIncubation > 216)) {
+    if (monster.cocks.length > 0 && player.hasVagina() && player.perks.findByType(PerkLib.BroodMother) >= 0 && (player.pregnancyIncubation <= 0 || player.pregnancyIncubation > 216)) {
         choices[choices.length] = 14;
         choices[choices.length] = 14;
         choices[choices.length] = 14;
@@ -2578,7 +2578,7 @@ export function tease(justText: boolean = false): void {
         }
     }
     // 23 RUT
-    if (player.inRut && monster.hasVagina() && player.hasCock()) {
+    if (player.inRut && monster.hasVagina() && player.cocks.length > 0) {
         choices[choices.length] = 23;
         choices[choices.length] = 23;
         choices[choices.length] = 23;
@@ -2669,7 +2669,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 34;
     }
     // 35 Servant Boy Clothes (male only)
-    if (player.armorName == "cute servant's clothes" && player.hasCock()) {
+    if (player.armorName == "cute servant's clothes" && player.cocks.length > 0) {
         choices[choices.length] = 35;
         choices[choices.length] = 35;
         choices[choices.length] = 35;
@@ -2817,7 +2817,7 @@ export function tease(justText: boolean = false): void {
             break;
         // 3 cock flash
         case 3:
-            if (player.isTaur() && player.horseCocks() > 0) {
+            if (player.isTaur() && player.cocks.horseCocks() > 0) {
                 outputText("You let out a bestial whinny and stomp your hooves at your enemy.  They prepare for an attack, but instead you kick your front hooves off the ground, revealing the hefty horsecock hanging beneath your belly.  You let it flop around, quickly getting rigid and to its full erect length.  You buck your hips as if you were fucking a mare in heat, letting your opponent know just what's in store for them if they surrender to pleasure...", false);
                 if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) damage += 5;
             }
@@ -2889,9 +2889,9 @@ export function tease(justText: boolean = false): void {
             else outputText(monster.capitalA + monster.short + "'s gaze is riveted on your groin as you run your fingers up and down your folds seductively.", false);
             if (player.clitLength > 3) outputText("  You smile as your " + clitDescription(player) + " swells out from the folds and stands proudly, begging to be touched.", false);
             else outputText("  You smile and pull apart your lower-lips to expose your " + clitDescription(player) + ", giving the perfect view.", false);
-            if (player.cockTotal() > 0) outputText("  Meanwhile, " + sMultiCockDesc(player) + " bobs back and forth with your gyrating hips, adding to the display.", false);
+            if (player.cocks.length > 0) outputText("  Meanwhile, " + sMultiCockDesc(player) + " bobs back and forth with your gyrating hips, adding to the display.", false);
             // BONUSES!
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) damage += 5;
                 penis = true;
             }
@@ -3052,7 +3052,7 @@ export function tease(justText: boolean = false): void {
             break;
         // 23 RUT TEASE
         case 23:
-            if (player.horseCocks() > 0 && player.longestHorseCockLength() >= 12) {
+            if (player.cocks.horseCocks() > 0 && player.cocks.longestHorseCockLength() >= 12) {
                 outputText("You whip out your massive horsecock, and are immediately surrounded by a massive, heady musk.  Your enemy swoons, nearly falling to her knees under your oderous assault.  Grinning, you grab her shoulders and force her to her knees.  Before she can defend herself, you slam your horsecock onto her head, running it up and down on her face, her nose acting like a sexy bump in an onahole.  You fuck her face -- literally -- for a moment before throwing her back and sheathing your cock.", false);
             }
             else {
@@ -3178,7 +3178,7 @@ export function tease(justText: boolean = false): void {
             break;
         case 41:
             outputText("Smirking coyly, you sway from side to side, running your tongue along your upper teeth seductively.  You hook your thumbs into your " + player.armorName + " and pull them away to partially reveal ");
-            if (player.cockTotal() > 0) outputText(sMultiCockDesc(player));
+            if (player.cocks.length > 0) outputText(sMultiCockDesc(player));
             if (player.gender == 3) outputText(" and ");
             if (player.gender >= 2) outputText("your " + vaginaDescript(player, 0));
             outputText(".  Your bushy tail" + ((player.tailVenom > 1) ? "s" : "") + " cross" + ((player.tailVenom > 1) ? "" : "es") + " in front, wrapping around your genitals and obscuring the view teasingly.");
@@ -3397,23 +3397,23 @@ export function tease(justText: boolean = false): void {
         }
         // Penis bonuses!
         if (penis) {
-            if (player.cockTotal() > 1) {
+            if (player.cocks.length > 1) {
                 bonusChance += 1;
                 bonusDamage += 2;
             }
-            if (player.biggestCockArea() >= 15) {
+            if (player.cocks.biggestCockArea() >= 15) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestCockArea() >= 30) {
+            if (player.cocks.biggestCockArea() >= 30) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestCockArea() >= 60) {
+            if (player.cocks.biggestCockArea() >= 60) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestCockArea() >= 120) {
+            if (player.cocks.biggestCockArea() >= 120) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
@@ -3451,10 +3451,10 @@ export function tease(justText: boolean = false): void {
                     bonusDamage += 1;
                 }
             }
-            if (player.biggestCockArea() < 8) {
+            if (player.cocks.biggestCockArea() < 8) {
                 bonusChance--;
                 bonusDamage -= 2;
-                if (player.biggestCockArea() < 5) {
+                if (player.cocks.biggestCockArea() < 5) {
                     bonusChance--;
                     bonusDamage -= 2;
                 }
@@ -3783,7 +3783,7 @@ export function spellHeal(): void {
         outputText("An errant sexual thought crosses your mind, and you lose control of the spell!  Your ", false);
         if (player.gender == 0) outputText(assholeDescript(player) + " tingles with a desire to be filled as your libido spins out of control.", false);
         if (player.gender == 1) {
-            if (player.cockTotal() == 1) outputText(cockDescript(player, 0) + " twitches obscenely and drips with pre-cum as your libido spins out of control.", false);
+            if (player.cocks.length == 1) outputText(cockDescript(player, 0) + " twitches obscenely and drips with pre-cum as your libido spins out of control.", false);
             else outputText(multiCockDescriptLight(player) + " twitch obscenely and drip with pre-cum as your libido spins out of control.", false);
         }
         if (player.gender == 2) outputText(vaginaDescript(player, 0) + " becomes puffy, hot, and ready to be touched as the magic diverts into it.", false);
@@ -3825,7 +3825,7 @@ export function spellMight(): void {
         outputText("An errant sexual thought crosses your mind, and you lose control of the spell!  Your ", false);
         if (player.gender == 0) outputText(assholeDescript(player) + " tingles with a desire to be filled as your libido spins out of control.", false);
         if (player.gender == 1) {
-            if (player.cockTotal() == 1) outputText(cockDescript(player, 0) + " twitches obscenely and drips with pre-cum as your libido spins out of control.", false);
+            if (player.cocks.length == 1) outputText(cockDescript(player, 0) + " twitches obscenely and drips with pre-cum as your libido spins out of control.", false);
             else outputText(multiCockDescriptLight(player) + " twitch obscenely and drip with pre-cum as your libido spins out of control.", false);
         }
         if (player.gender == 2) outputText(vaginaDescript(player, 0) + " becomes puffy, hot, and ready to be touched as the magic diverts into it.", false);
@@ -4822,7 +4822,7 @@ export function kissAttack(): void {
         return;
     }
     // Success but no effect:
-    if (monster.lustVuln <= 0 || !monster.hasCock()) {
+    if (monster.lustVuln <= 0 || !monster.cocks.length > 0) {
         if (monster.plural) outputText("  Mouth presses against mouth, and you allow your tongue to stick out to taste the saliva of one of their number, making sure to give them a big dose.  Pulling back, you look at " + monster.a + monster.short + " and immediately regret wasting the time on the kiss.  It had no effect!\n\n", false);
         else outputText("  Mouth presses against mouth, and you allow your tongue to stick to taste " + monster.pronoun3 + "'s saliva as you make sure to give them a big dose.  Pulling back, you look at " + monster.a + monster.short + " and immediately regret wasting the time on the kiss.  It had no effect!\n\n", false);
         enemyAI();
@@ -4874,7 +4874,7 @@ export function possess(): void {
         outputText("There is nothing to possess inside the golem.");
     }
     // Sample possession text (>79 int, perhaps?):
-    else if ((!monster.hasCock() && !monster.hasVagina()) || monster.lustVuln == 0 || monster.inte == 0 || monster.inte > 100) {
+    else if ((!monster.cocks.length > 0 && !monster.hasVagina()) || monster.lustVuln == 0 || monster.inte == 0 || monster.inte > 100) {
         outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself into the opponent's frame.  Unfortunately, it seems ", false);
         if (monster.inte > 100) outputText("they were FAR more mentally prepared than anything you can handle, and you're summarily thrown out of their body before you're even able to have fun with them.  Darn, you muse.\n\n", false);
         else outputText("they have a body that's incompatible with any kind of possession.\n\n", false);
@@ -4905,7 +4905,7 @@ export function runAway(callHook: boolean = true): void {
         return;
     }
     // Rut doesnt let you run from dicks.
-    if (player.inRut && monster.totalCocks() > 0) {
+    if (player.inRut && monster.cocks.length > 0) {
         outputText("The thought of another male in your area competing for all the pussy infuriates you!  No way will you run!", true);
         // Pass false to combatMenu instead:		menuLoc = 3;
         // 		doNext(combatMenu);
@@ -5276,7 +5276,7 @@ export function physicalSpecials(): void {
         addButton(4, "Gore", goreAttack);
     }
     // Infest if infested
-    if (player.effects.findByType(StatusAffects.Infested) >= 0 && player.effects.getValue1Of(StatusAffects.Infested) == 5 && player.hasCock()) {
+    if (player.effects.findByType(StatusAffects.Infested) >= 0 && player.effects.getValue1Of(StatusAffects.Infested) == 5 && player.cocks.length > 0) {
         addButton(5, "Infest", playerInfest);
     }
     // Kiss supercedes bite.

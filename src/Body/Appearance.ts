@@ -394,11 +394,11 @@ export class Appearance  {
         Replaced with a call to the more common cockDesript function.
             public static function cockDescription(i_creature:Creature, i_cockIndex:Number):String
             {
-                if (i_creature.totalCocks() == 0) {
+                if (i_creature.cocks.length == 0) {
                     CoC_Settings.error("<b>ERROR: CockDescript Called But No Cock Present</b>");
                     return "<b>ERROR: CockDescript Called But No Cock Present</b>";
                 }
-                if (i_creature.totalCocks() <= i_cockIndex || (i_cockIndex == 99 || i_cockIndex == -1)) {
+                if (i_creature.cocks.length <= i_cockIndex || (i_cockIndex == 99 || i_cockIndex == -1)) {
                     CoC_Settings.error("<b>ERROR: CockDescript called with index of " + i_cockIndex + " - out of BOUNDS</b>");
                     return "<b>ERROR: CockDescript called with index of " + i_cockIndex + " - out of BOUNDS</b>";
                 }
@@ -715,7 +715,7 @@ export class Appearance  {
                 //If used for multiple cocks, set multi flag
                 if (i_cockIndex < 0) {
                     //Since we have multi dicks lets talk about the biggest!
-                    i_cockIndex = i_creature.biggestCockIndex();
+                    i_cockIndex = i_creature.cocks.biggestCockIndex();
                     multi = true;
                 }
                 //Pierced - 1/5 chance
@@ -1104,7 +1104,7 @@ export class Appearance  {
     {
         var description:String = "";
         var notCapitalised:Boolean = false;
-        if (i_creature.totalCocks() > 1) {
+        if (i_creature.cocks.length > 1) {
             if (i_singular) {
                 (i_capitalised) ? description += "O" : description += "o";
                 description += "ne of ";
@@ -1130,21 +1130,21 @@ export class Appearance  {
             CoC_Settings.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
             return "<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>";
         }
-        if (i_creature.horseCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.HORSE);
+        if (i_creature.cocks.horseCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.HORSE);
         else if (i_creature.cocks[0] == CockTypesEnum.BEE) description += cockNoun(CockTypesEnum.BEE);
-        else if (i_creature.dogCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.DOG);
-        else if (i_creature.demonCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.DEMON);
-        else if (i_creature.tentacleCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.TENTACLE);
-        else if (i_creature.catCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.CAT);
-        else if (i_creature.lizardCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.LIZARD);
-        else if (i_creature.anemoneCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.ANEMONE);
-        else if (i_creature.kangaCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.KANGAROO);
-        else if (i_creature.dragonCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.DRAGON);
-        else if (i_creature.displacerCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.DISPLACER);
-        else if (i_creature.foxCocks() == i_creature.totalCocks()) description += cockNoun(CockTypesEnum.FOX);
+        else if (i_creature.cocks.dogCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.DOG);
+        else if (i_creature.demonCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.DEMON);
+        else if (i_creature.cocks.tentacleCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.TENTACLE);
+        else if (i_creature.catCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.CAT);
+        else if (i_creature.cocks.lizardCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.LIZARD);
+        else if (i_creature.anemoneCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.ANEMONE);
+        else if (i_creature.cocks.kangaCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.KANGAROO);
+        else if (i_creature.cocks.dragonCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.DRAGON);
+        else if (i_creature.displacerCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.DISPLACER);
+        else if (i_creature.cocks.foxCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.FOX);
         else description += cockNoun(CockTypesEnum.HUMAN);
         //Add s if plural
-        if (i_creature.cockTotal() > 1) description += "s";
+        if (i_creature.cocks.length > 1) description += "s";
         //Reset to normal description if singular
         else description = cockDescription(i_creature, 0);
         return description;
@@ -1341,7 +1341,7 @@ export class Appearance  {
     /* Moved to Creature.as
             public static function sheathDescription(i_character:Character):String
             {
-                if (i_character.hasSheath()) return "sheath";
+                if (i_character.cocks.hasSheath()) return "sheath";
                 else return "base";
             }
     */
@@ -2641,7 +2641,7 @@ export class Appearance  {
         averageLength /= currCock;
         averageThickness /= currCock;
         // Quantity descriptors
-        if (creature.cockTotal() == 1) {
+        if (creature.cocks.length == 1) {
             if (dogCocks == 1) return cockNoun(CockTypesEnum.DOG);
             if (horseCocks == 1) return cockNoun(CockTypesEnum.HORSE);
             if (normalCocks == 1) return cockDescript(creature, 0);

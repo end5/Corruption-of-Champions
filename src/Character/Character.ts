@@ -187,21 +187,21 @@ export class Character extends Creature {
        return "massive custom-made";
      }*/
     public viridianChange(): boolean {
-        let count: number = cockTotal();
+        let count: number = this.cocks.length;
         if (count == 0)
             return false;
         while (count > 0) {
             count--;
-            if (cocks[count].sock == "amaranthine" && cocks[count].cockType != CockTypesEnum.DISPLACER)
+            if (this.cocks[count].sock == "amaranthine" && this.cocks[count].cockType != CockTypesEnum.DISPLACER)
                 return true;
         }
         return false;
     }
 
     public hasKnot(arg: number = 0): boolean {
-        if (arg > cockTotal() - 1 || arg < 0)
+        if (arg > this.cocks.length - 1 || arg < 0)
             return false;
-        return (cocks[arg].cockType == CockTypesEnum.DOG || cocks[arg].cockType == CockTypesEnum.FOX || cocks[arg].cockType == CockTypesEnum.DISPLACER);
+        return (this.cocks[arg].cockType == CockTypesEnum.DOG || this.cocks[arg].cockType == CockTypesEnum.FOX || this.cocks[arg].cockType == CockTypesEnum.DISPLACER);
     }
 
     public maxHP(): number {

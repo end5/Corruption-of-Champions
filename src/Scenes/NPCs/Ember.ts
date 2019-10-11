@@ -145,7 +145,7 @@ export class Ember extends Monster {
             this.pronoun3 = "her";
         }
         if (gender == 1 || gender == 3) {
-            this.createCock(16, 2, CockTypesEnum.DRAGON);
+            this.cocks.createCock(16, 2, CockTypesEnum.DRAGON);
             this.balls = 2;
             this.ballSize = 4;
             this.cumMultiplier = 3;

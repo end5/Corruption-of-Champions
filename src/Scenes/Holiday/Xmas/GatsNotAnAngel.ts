@@ -170,19 +170,19 @@ export function theWorstEndingEverDotJPG(): void {
     else outputText("  Wait, what?  It appears that in your desperation to contain the situation, your lingering doubt was enough to get you blurt out a bold faced lie.  You figure that you may as well roll with it for now.");
     outputText("\n\n\"<i>That can't be right.  Carol was lying beside me up on the mountain.  Then you came and dragged me away,</i>\" North replies, still as casual and calm as before.  Carol... you figure that must be the name of the spirit you left behind.  Without missing a beat, you devise an explanation consisting of dreams, loneliness and immeasurable amounts of time leading to North's obvious hallucinations.  Why would a spirit be so large and leave the two of you lost to a cold and forgotten mountaintop?  As North processes your explanation, you figure it best to just go straight for your coup de grace, insisting on the love between the two of you.");
     outputText("\n\nIt's hard to get a read on just what's going on in that tin-covered head of his.  In a last ditch effort to reign in the situation, you strip free of your [armor], accentuating ");
-    if (player.hasCock()) outputText("[eachCock]");
+    if (player.cocks.length > 0) outputText("[eachCock]");
     if (player.gender == 3) outputText(" and ");
     if (player.hasVagina()) outputText("your [vagina]");
     outputText(" to try and convince the confused soldier.  You look North over, figuring the best way to work him under your spell.  It isn't a long search, as you decide that his ");
     // [if (hasCock = true)
-    if (player.hasCock()) outputText("keyhole");
+    if (player.cocks.length > 0) outputText("keyhole");
     // [if (hasCock = false)
     else outputText("windup key");
     outputText(" would make a worthy candidate for your first alluring act of debauchery.");
     outputText("\n\nA playful, sly smile is the only hint you give to the strangely compliant tin man as you slink on around to his back, gracefully resting your fingertips upon his crystal key.");
     outputText("\n\n\"<i>What are you doing?</i>\" he asks, his tone still as polite and reserved as ever.  He doesn't react with much more than a sideways glance as you lurch the sizeable apparatus free of his backside.  ");
     // [if (hasCock = true)
-    if (player.hasCock()) outputText("You slide the key playfully down your wrist, rubbing your [cock] with your free hand.  You aren't entirely sure if he'll even feel a sensation from your penetration, but perhaps it'll at least get him in the mood.  With your manhood at full mast, you gently skirt along the edges of the keyhole.");
+    if (player.cocks.length > 0) outputText("You slide the key playfully down your wrist, rubbing your [cock] with your free hand.  You aren't entirely sure if he'll even feel a sensation from your penetration, but perhaps it'll at least get him in the mood.  With your manhood at full mast, you gently skirt along the edges of the keyhole.");
     else outputText("A mischievous tongue traces along the smooth, perfect surface of the windup key.  You promptly lower the makeshift toy precariously in front of your [cunt]; if there was ever a time to make a wind up pun or remark as some sort of goofy foreplay, now would be the time.");
     outputText("\n\n\"<i>This isn't right.</i>\"");
     outputText("\n\nNorth backs away from you, breaking the little amount of action you were trying to get started.");
@@ -218,38 +218,38 @@ export function fuckTheAngelBadEnd(): void {
     outputText("\n\nCompensation only she can provide.");
     outputText("\n\nInnocent as always, you didn't really expect her to pick up the hint.  Your chocolate-colored goddess seems flustered and confused.  Of course, you are holding her tin soldier up for ransom, so it's only natural she'd respond with bewilderment and stress.  You tut - this isn't going to go anywhere without a push.  Grasping the key tightly with one hand, you tell her to rest her chin upon the cliff, and to open wide.");
     outputText("\n\nThe giantess has no choice but to comply with your odd demands, still unaware of the plans you have in store for her.  Her snow-dusted head rests against the edge of mountain, her cold, mint-like breath causing the vanilla ground to ebb and flow like a tide.  Pursing her lips, she impulsively licks them before opening her maw slowly, allowing her tongue to stretch out upon the ground.  You walk towards it, slowly removing your [armor].  The prospect of fucking someone's tongue seems interesting enough to grab your attention, and it isn't every day you run into a desperate spirit like this.");
-    if (player.hasCock()) outputText("\n\nTaking out your junk");
+    if (player.cocks.length > 0) outputText("\n\nTaking out your junk");
     else outputText("\n\nCaressing your cunt");
     outputText(", you wander your way towards the giant's mouth-muscle, climbing on top of her warm, pink bed. There's gotta be some kinda magic involved - her mint saliva sends tingles through your body, while dragging your ");
-    if (player.hasCock()) outputText(multiCockDescriptLight(player));
+    if (player.cocks.length > 0) outputText(multiCockDescriptLight(player));
     else outputText(vaginaDescript(player));
     outputText(" against each bump and curve is beginning to get you hard.  She winces at the taste of your crotch against her tongue, though she's obviously never given oral to something with a heartbeat before.  Well, there's a first time for everything.");
     outputText("\n\nHer mouth is already lubricated with what appears to be chocolatey saliva, a sweet syrup coating your genitals with a cool, arousing fluid.  It's not hard to guess that her tongue might be incredibly sensitive, and every hump against it seems to be getting the giantess unconsciously excitable.  Her eyes begin to flutter and a groan escapes her lips, while you hug against each wave of her warm breath.  The hypersensitivity of her mouth-muscle begins to take control of her movements, the grinding of your ");
-    if (player.hasCock()) {
+    if (player.cocks.length > 0) {
         outputText("member");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
     }
     else outputText(vaginaDescript(player));
     outputText(" along the softness of her maw causing her to twitch and drool uncomfortably.  You're beginning to fuck along her slowly, chuckling at every wince and moan she makes from the taste of your genitals.");
 
     outputText("\n\nOne of the giantess' hands moves slowly towards the top of her head - what could she possibly be planning, you wonder.  Your query is answered almost instantly as the tips of her fingers start to caress the lengths of her striped horns, and her unused hand drifts slowly beneath to pet the increasingly wet problem below.  It didn't take her long to forget that pathetic bin of a man!  If anything, the taste of your ");
-    if (player.hasCock()) outputText("cock");
+    if (player.cocks.length > 0) outputText("cock");
     else outputText("pussy");
     outputText(" seems to have awakened something inside of her.  Each breath of the jiggling giant intensifies, while her heaving breasts press up against the hard mountainside.  You thrust between the curves of her tongue, lapping at her chestnut saliva and caressing each bump and groove.  Her soft, candy-coated lips slowly descend every so often in an attempt to kiss you, to which you respond with slow licks of those luscious love-pillows.  Your titanic lover jerks slightly - she's dipped a finger inside of her slick honeypot, flowing freely to wherever her arousal will take her.  Taking to the tongue-fucking charade quite easily, you wonder if she's allowed her mechanical mate to blow one off on her blushing bronze face before.");
     outputText("\n\nDespite the increasing ecstasy wrought on by your talkbox-twiddling escapade, you snap back from your delirium to take notice of your lover's aroused antics.  The giantess pushes back and forth against another nearby mountain while furiously fingering her tight cunt.  Upon further inspection, a large curiously-shaped rock appears to be lubed up and ramming her from behind, pounding into her ample ass by her command.  Unable to resist any longer, she's taken to pleasuring herself from every angle, entrusting you to take command on her tongue.");
     outputText("\n\nThe grooves of her syrup-coated organ hum against your body, the chocolate-covered taste buds massaging your figure as you grind along them.  The vibrations drooling along your " + skinFurScales(player) + " appear to be coming from the snow-dusted girl herself, a result of her constant moaning from the good plowing she's receiving from behind.  Her fingers dance between her, now focusing on squeezing her cushiony tits together to rub her nipples against the hardness of the cliff's edge, while bending down further to fit more of the lubed-up loverock taking her from below.  In some form of ambrosia-induced harmony, you've allowed yourself to become a part of this incredibly orchestrated scene of scented fucking.");
     outputText("\n\nThe giantess' butt-drilling escalates with her hand ravaging the tight confines of her dripping pussy, attempting to cry words but unwilling to close her mouth on you.  It's amazing, this chance to drag your ");
-    if (player.hasCock()) outputText("dick");
+    if (player.cocks.length > 0) outputText("dick");
     else outputText("vagina");
     outputText(" on a person's tongue to fuck it thoroughly.  You wonder if she's already long forgotten the pile of bolts she was originally trying to save.  A man frozen in time, never to wake up because - whoops!  You're taking care of her needs now.  Maybe you'll invest in a giant goblin-built sex machine, who knows?  Judging by the bitch's aroused whines, she was probably waiting for the chance to strip for the next person to find her up the mountain.  It's about time she let herself go, after all.");
     outputText("\n\nYou grin at the thoughts pervading your mind, unaware of the intense pleasure building up in your junk - the sugary syrup coating the base of her mouth starts to force your [hips] to propel further, to splatter your love inside her.  It's almost automatic, the movement of your [hips] against each rubbery, vibrating protrusion tickling and fondling you while receiving satisfaction in return.  You're going to cum, and there's nothing stopping you now!");
     outputText("\n\nWith a jerk of your hips, you release your ");
-    if (player.hasCock()) outputText("hot, white seed");
+    if (player.cocks.length > 0) outputText("hot, white seed");
     else outputText("feminine juices");
     outputText(" all along her starving tongue, your eyes lifting up as you stretch to force as much as you can upon her.  A slick, stubby tendril fits between your [butt], while more of her taste buds rub against you in your squirting ecstasy.  Your ");
-    if (player.hasCock()) {
+    if (player.cocks.length > 0) {
         outputText(multiCockDescriptLight(player));
-        if (player.cockTotal() == 1) outputText("throbs");
+        if (player.cocks.length == 1) outputText("throbs");
         else outputText("throb");
     }
     else outputText(vaginaDescript(player) + " throbs");

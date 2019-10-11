@@ -191,12 +191,12 @@ export class Exploration {
     // AND THE TOTAL COMBINED WIDTH OF ALL THEIR COCKS IS TWELVE INCHES OR GREATER]
     public bigJunkDesertScene(): void {
         outputText("", true);
-        const x: number = player.longestCock();
+        const x: number = player.cocks.longestCock();
         // PARAGRAPH 1
         outputText("Walking along the sandy dunes of the desert you find yourself increasingly impeded by the bulk of your " + cockDescript(game.player, x) + " dragging along the sandscape behind you.  The incredibly hot surface of the desert causes your loins to sweat heavily and fills them with relentless heat.", false);
 
         if (player.cocks.length == 1) outputText("  As it drags along the dunes, the sensation forces you to imagine the rough textured tongue of a monstrous animal sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ".", false);
-        else if (player.cocks.length >= 2) outputText("  With all of your " + multiCockDescriptLight(game.player) + " dragging through the sands they begin feeling as if the rough textured tongues of " + num2Text(player.cockTotal()) + " different monstrous animals were slobbering over each one.", false);
+        else if (player.cocks.length >= 2) outputText("  With all of your " + multiCockDescriptLight(game.player) + " dragging through the sands they begin feeling as if the rough textured tongues of " + num2Text(player.cocks.length) + " different monstrous animals were slobbering over each one.", false);
         outputText("\n\n", false);
 
         // PARAGRAPH 2

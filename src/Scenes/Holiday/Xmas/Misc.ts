@@ -176,10 +176,10 @@ export function acceptChristmasBJs(): void {
 
 export function acceptChristmasManBJ(): void {
     clearOutput();
-    let x: number = player.cockThatFits(80);
-    if (x < 0) x = player.biggestCockIndex();
+    let x: number = player.cocks.cockThatFits(80);
+    if (x < 0) x = player.cocks.biggestCockIndex();
     // (if cock >= ridonkulous)
-    if (player.cockArea(x) >= 80) {
+    if (player.cocks.cockArea(x) >= 80) {
         outputText("You free your [cock " + (x + 1) + "] from your [armor], signaling your acceptance.  Your monster flops free, and the harpy grabs at her throat reflexively when she looks at it.  She glances up to you with wide eyes and back down at it.  \"<i>A-a promise is a promise, but...</i>\"");
         outputText("\n\nShe turns and flees with a few terrified flaps of her wings.  You sigh, covering your enormous prick once more.  At least you won't have to deal with her pesky shrieking any more.  The air warms and the snow thaws soon after you return, leaving no trace of its presence but a few spots of slushy mud.");
         dynStats("lus", 10);
@@ -189,14 +189,14 @@ export function acceptChristmasManBJ(): void {
     // (else if cock would please Goldilocks) (area<= 30 or some shit i dunno whatever the standard is)
     else {
         outputText("You free your [cock " + (x + 1) + "] from your [armor], signaling your acceptance.  The immediate rush of cold air that greets it makes you hope she won't be wasting any time.  The pale harpy woman squeals at the sight, raising her hands to her chin and practically bouncing in place.  In a flash she's on her knees, stroking and licking at your meat until it's hard in front of her face.  Her hot breath against your shaft has you more than ready for the sanctuary from the biting cold.  She eyes your erect prick");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" almost hungrily, licking her lips before swiftly engulfing almost its entire length in her mouth.  Her expert technique astounds you; you certainly didn't expect her to have any idea what she was doing but she's able to take you nearly to the base of your shaft in one motion.");
 
         outputText("\n\nThe heat of her throat against your sensitive flesh is such a relief that you lose your balance.  You gasp air and place a hand on the back of her head, partly to steady yourself and partly to bring her closer in.  Not meeting resistance, you pull her against you until her full lips are wrapped around the very base of your [cock " + (x + 1) + "].  She smiles around its girth and slowly slides her head back, dragging the tip of her tongue along its length and leaving you covered in her glistening saliva.  The freezing temperature elicits another sharp intake of air, but the painful sensation is forgotten as she starts to bob back and forth, taking you in so deeply and so quickly that it's impossible to think of much but the warm comfort of her mouth.  ");
         // (if only one cock)
-        if (player.cockTotal() == 1) outputText("She grabs onto your hips, enabling herself to move all the quicker.");
+        if (player.cocks.length == 1) outputText("She grabs onto your hips, enabling herself to move all the quicker.");
         // (if two cocks)
-        else if (player.cockTotal() == 2) outputText("With her other hands she starts to work the shaft of the second cock, pumping in time with the motions of her head.");
+        else if (player.cocks.length == 2) outputText("With her other hands she starts to work the shaft of the second cock, pumping in time with the motions of her head.");
         // (if 3+ cocks)
         else outputText("She grabs onto two of your other erect cocks with her hands and begins pumping away at them in time with the motions of her head.");
 
@@ -208,7 +208,7 @@ export function acceptChristmasManBJ(): void {
         // (else if cum output is ridonkulous)
         else outputText("  Though at first she looks like she'll be able to handle it, the river of semen exploding from the rip of your cock doesn't stop.  Her eyes widen as the almost unending torrent of spunk fills her, rushing down her throat and into her belly.  You can almost see her bloating with the stuff before it starts to spill back out, dripping white from her lips around your shaft.");
         // (if multicock)
-        if (player.cockTotal() > 1) outputText("  Your cum sprays over her, coating her skin and plumage in a white to rival their own.  Strands of your semen dripping and running over her hardly even stand out on her bright body.");
+        if (player.cocks.length > 1) outputText("  Your cum sprays over her, coating her skin and plumage in a white to rival their own.  Strands of your semen dripping and running over her hardly even stand out on her bright body.");
         outputText("  When you finish, you let the harpy go.  She looks just as satisfied as you are.  A trail of cum and saliva still connects your [cockHead " + (x + 1) + "] to her; she breaks it with a lick of her lips and gives your softening member a longing glance before standing up, panting from exertion.");
 
         outputText("\n\nThe happy girl suddenly hugs you as you're in the process of putting your prick back into your [armor].  The silvery glow around her pale skin looks stronger now, so strong that you're almost sure you can see it.  \"<i>Oh, thank you!</i>\" she starts, but quickly composes herself.  \"<i>For, um, helping me.  Up.</i>\"  She lets go and backs away from you.  \"<i>I've gotta be going though, see you around!  Enjoy the weather!</i>\"  With that, she wings off into the skies.  She lands atop a nearby tree, arms outstretched in an odd pose.  The silvery glow surrounding her is still visible, even at a distance.  You shake your head and return to camp, wondering who in the world that was.  Not long after you return, the air warms once more and the snow melts, leaving the ground a slushy mess in spots.");
@@ -266,10 +266,10 @@ export function approachKamiTheChristmasRoo(): void {
         // Blow Job
         // Double-Dick Fuck (requires at least 2 cocks)
         menu();
-        if (player.hasCock() && player.cockThatFits(70) >= 0) addButton(0, "Give Anal", giveKamiTheChristmasRooAnal);
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(70) >= 0) addButton(0, "Give Anal", giveKamiTheChristmasRooAnal);
         addButton(1, "Receive Anal", takeItRooButtStyle);
         addButton(2, "Give BJ", KamiBlowJob);
-        if (player.cockTotal() > 1 && player.cockThatFits(70) >= 0 && player.cockThatFits2(70) >= 0) addButton(3, "Doube-Fuck", KamiDoubleDickFuck);
+        if (player.cocks.length > 1 && player.cocks.cockThatFits(70) >= 0 && player.cocks.cockThatFits2(70) >= 0) addButton(3, "Doube-Fuck", KamiDoubleDickFuck);
     }
     else {
         outputText("You summon the buxom waitress over, getting a much better view of her gentle face now that she's found the time to sit and talk with you.  With hazelnut-brown eyes, a gorgeous set of lips and tousled blonde hair, her faux-rebellious look is the icing on the festive cake for this busty waitress, her cute little santa hat being the strawberry on top.  Smooth, olive skin runs halfway down her meaty thighs before fading into soft fur, while her frail forearms follow the same pattern. Her huge kangaroo tail wags idly throughout your conversation, and you've gained a pretty good rhythm whilst engaging her in it. Determined to make things go well, you pause to pull out a charming one-liner when her index finger meets your ");
@@ -316,16 +316,16 @@ export function chooseLetsGoKami(): void {
     // Double-Dick Fuck (requires at least 2 cocks)
     // Note: I don't know much about vaginal or anal capacities so just give her general ones similar to Izma or Urta. ]
     menu();
-    if (player.hasCock() && player.cockThatFits(70) >= 0) addButton(0, "Give Anal", giveKamiTheChristmasRooAnal);
+    if (player.cocks.length > 0 && player.cocks.cockThatFits(70) >= 0) addButton(0, "Give Anal", giveKamiTheChristmasRooAnal);
     addButton(1, "Receive Anal", takeItRooButtStyle);
     addButton(2, "Give BJ", KamiBlowJob);
-    if (player.cockTotal() > 1 && player.cockThatFits(70) >= 0 && player.cockThatFits2(70) >= 0) addButton(3, "DoubleFuck", KamiDoubleDickFuck);
+    if (player.cocks.length > 1 && player.cocks.cockThatFits(70) >= 0 && player.cocks.cockThatFits2(70) >= 0) addButton(3, "DoubleFuck", KamiDoubleDickFuck);
 }
 
 // [Player chooses 'Give Anal']
 export function giveKamiTheChristmasRooAnal(): void {
     clearOutput();
-    const x: number = player.cockThatFits(70);
+    const x: number = player.cocks.cockThatFits(70);
     outputText("You head briskly towards the voluptuous waitress, rearing her around by the wrists and pressing her against the wall.  \"<i>H-Hey, wait!</i>\" Kami yelps, but you sense excitement in her delicate plea.");
 
     outputText("\n\nIntent on being the dominant partner, you spit on one of your fingers and slide it into her tight asshole at once, prepping it for your oncoming invasion.  Freeing just enough room in your garments for your own member to breathe, you waste no time at all in aligning your fuck-stick underneath her thick kangaroo tail and right between her rosy asscheeks. Kami invites you into her ass as seductively as she can, swaying her ample thighs and massaging her pucker against your cock-head aggressively.  \"<i>Be at least a bit gentle, doll,</i>\"  she coos seductively in your ear, giving you the green light for a full-on pounding as your cock sinks into her heart-shaped butt and unleashes hell.");
@@ -369,11 +369,11 @@ export function takeItRooButtStyle(): void {
     // [If player has pussy]
     if (player.hasVagina()) outputText("Your cunt oozes in return, envious of the tenderized hole above it.  ");
     outputText("You dedicate a few more minutes to soaking up every moment of her animalistic romping, savoring the feeling of a hung rod in your punished posterior.  Your climax quickly comes to loom over you, however, the potent, ");
-    if (player.hasCock()) outputText("prostate");
+    if (player.cocks.length > 0) outputText("prostate");
     else outputText("ass");
     outputText("-numbing sensations at your rear becoming too much to bear.  Slamming back into Kami's pole one last time, you breathe a shuddered sigh of relief as your orgasm takes over, the sensation spreading throughout your entire body like electricity.");
     // [If male]
-    if (player.hasCock()) outputText("  Your pent-up cock ejaculates there and then, shamelessly gushing sloppy semen against the wall in front of you.");
+    if (player.cocks.length > 0) outputText("  Your pent-up cock ejaculates there and then, shamelessly gushing sloppy semen against the wall in front of you.");
     // [If female]
     if (player.gender == 3) outputText("  Meanwhile, y");
     else if (player.hasVagina()) outputText("Y");
@@ -400,7 +400,7 @@ export function KamiBlowJob(): void {
     outputText("\n\nThe reaction you get from her, however, is much more spontaneous - Kami's kangaroo toes curl out while she moans enthusiastically.  The joy of having her length engulfed by your tight throat is painted plain on her face as much as you are buried into her crotch.  Throttling your head forward, Kami groans.  Her warm precum already starts to spill against your bottom lip, a little spooge dribbling out sloppily every time you pull back.  You reach behind her large member and spear her two holes with a finger each, drilling your two digits inside her erogenous pockets with lustful intent.  \"<i>W- oh god!</i>\"  She cries, your stimulation apparently too much for her to handle. Kami's tight pucker clamps down hard as her fem-sex and cock erupt simultaneously, soaking cum against both your active finger and the back of your throat.");
 
     outputText("\n\nYou gulp down her load without a sweat, pulling your fingers free from Kami's wetness. You allow Kami's soft, delicate lips to envelope and smother your own, giving her a taste of her man-milk in return.  You give her a seductive wink before finally pulling away to put on your garments, but Kami insists on your attention to apologize.  \"<i>Hey, uh, sorry for cumming so early there - if it's any consolation, that was amazing!  Next time you should be the one taking charge, doll.</i>\"  You beam at Kami, the waitress pecking you on the cheek before you head back to camp.");
-    if (player.hasCock()) outputText("  You think you might still need to find an outlet for that itch of yours, with [eachCock] still erect and needing release.");
+    if (player.cocks.length > 0) outputText("  You think you might still need to find an outlet for that itch of yours, with [eachCock] still erect and needing release.");
     dynStats("lus", 20 + player.lib / 10 + player.sens / 10);
     // [Player heads back to camp, An hour passes, Lust = + 40 and KamiEnc = 1]
     flags[kFLAGS.KAMI_ENCOUNTER] = 1;
@@ -409,8 +409,8 @@ export function KamiBlowJob(): void {
 
 export function KamiDoubleDickFuck(): void {
     // [Player selects 'Double-Dick Fuck']
-    const x: number = player.cockThatFits(70);
-    const y: number = player.cockThatFits2(70);
+    const x: number = player.cocks.cockThatFits(70);
+    const y: number = player.cocks.cockThatFits2(70);
     clearOutput();
     outputText("You chuckle heartily - of course you're going to ravish her!  How ridiculous to assume otherwise.  In a split second, you've already grabbed her by her arms, forcing her back against the wall.  Kami passionately yelps, but her eagerness to grind against your growing package reveals her true intentions.");
     outputText("\n\nTaking the initiative, you hold the waitress by the throat whilst you free room in your [armor] for your succulent snatch-hungry sausages.  Wasting no time at all, you align your rock-hard rods underneath her huge phallus and directly at her needy orifices, moving your hands underneath her legs and lifting her slightly to add leverage for yourself.  Kami pants in anticipation, gently pressing herself against your cockheads in an attempt to entice you.  Ever the tease, you notice the waitress gasp between her delectable lips.  \"<i>Are you gonna put those fine-ass rods to use, or do I have to do it myself?</i>\"  Not about to disappoint, you push into her, penetrating the soft confines of her pussy before reaching into her tight little ass, slowly but steadily plunging further and further inside until your needy tools can't reach any further.  \"<i>F-Fuck!  Drill me hard!</i>\" she cries desperately.");
@@ -512,7 +512,7 @@ export function unwrapPolarPete(): void {
     outputText("\n\n\"<i>It's a special treat just for you.  Go on, use that wonderful mouth of yours,</i>\" he eggs you on as you comply.  The strange candy cane doesn't feel normal at all, Pete has to angle it to nudge your lips as it isn't as stiff as normal candy.  As you wrap your lips around the thick sugary treat it feels flexible in your lips.  The sweet peppermint flavor washes over your tongue along with something else.  You can't quite pick out what it is, but something mixed in with the special candy is making your skin hot against the cold weather.");
 
     outputText("\n\n\"<i>Yes, that's it. Don't be shy now.</i>\"  Pete gives a jolly laugh as he starts pushing more past your lips.  You give a muffled moan, your lips wrapped tight around the giant confection.  The heat in your body grows, and your loins began to ache.");
-    if (player.hasCock()) outputText("  [EachCock] grows stiff and soaks your [armor] with precum.");
+    if (player.cocks.length > 0) outputText("  [EachCock] grows stiff and soaks your [armor] with precum.");
     // (if vagina)
     if (player.hasVagina()) outputText("  Your [vagina] grows moist, dripping eager juices and soaking your [armor].");
 
@@ -527,7 +527,7 @@ export function unwrapPolarPete(): void {
 
     outputText("\n\n\"<i>Mmm, I'll definitely have to go down your chimney every year.  You're so very good,</i>\" he pants, clouds of mist fogging his face as he exhales deep breaths in the cold air.  He suddenly takes on a brutal pace, the sound of flesh slapping flesh filling your ears as he leans forward and begins to pound away at you with refocused intent.");
     // [(if cock)
-    if (player.hasCock()) outputText("  His continued ramming of your prostate mixed with the addictive candy crammed in your mouth sends you over the edge, [eachCock] shooting out ropes of snow white all over your chest.  Pete eyes you over with a lurid gaze, your face covered in his cum and your body covered in your own.");
+    if (player.cocks.length > 0) outputText("  His continued ramming of your prostate mixed with the addictive candy crammed in your mouth sends you over the edge, [eachCock] shooting out ropes of snow white all over your chest.  Pete eyes you over with a lurid gaze, your face covered in his cum and your body covered in your own.");
     else if (player.hasVagina()) outputText("  Your [vagina] quivers, the rough thrusting into your [asshole] mixed with the addictive candy in your mouth sending you over the edge.  With a low muffled moan your mound spills your lust over your groin, dripping down to lube Pete's thrusts as well as your [legs].  Pete gives you a lurid gaze.");
 
     outputText("\n\nWatching you writhe in pleasure filled bliss, Pete pounds away at you with a few sharp thrusts.  His ballsack nestles in between your ass cheeks as he buries as much of his south pole into you as possible.  With his ebony cock twitching and unloading into you, he groans loudly, and he pumps your stomach full of his creamy Holiday cheer.  You feel a bit bloated as your stomach bulges.  Pete pulls out as his hot minty spunk spills from your abused [asshole].");
@@ -839,7 +839,7 @@ export function nieveSexMenu(): void {
     // Female Nieve
     // Must have a penis or at least a 3.5 inch clit
     // Nieve's capacity is about 130.
-    if ((player.hasCock() || (player.hasVagina() && player.clitLength >= 3.5)) && player.lust >= 33) {
+    if ((player.cocks.length > 0 || (player.hasVagina() && player.clitLength >= 3.5)) && player.lust >= 33) {
         if (flags[kFLAGS.NIEVE_GENDER] == 2) addButton(1, "Fuck Her", fuckNieve);
     }
     // Get Fucked by Gurumash
@@ -932,10 +932,10 @@ export function suckNieveOff(): void {
 export function fuckNieve(): void {
     clearOutput();
     let x: number = -1;
-    if (player.hasCock()) {
-        x = player.cockThatFits(130);
+    if (player.cocks.length > 0) {
+        x = player.cocks.cockThatFits(130);
         if (x <= 0 && player.hasVagina() && player.clitLength >= 3.5 && rand(2) == 0) x = -1;
-        else x = player.smallestCockIndex();
+        else x = player.cocks.smallestCockIndex();
     }
     outputText("You look your naked, icy lover up and down, thinking of all the things you could do to her.  She raises a white eyebrow at you curiously while you take in her statuesque form.  A thin layer of frost covers her flesh, giving her pale blue skin a sparkling, shimmering appearance.  You find yourself getting aroused at all the potentialities.  Your " + cockClit(player, x) + " rises to attention as you ponder it, and with a smirk, you finally settle on something.");
 
@@ -969,7 +969,7 @@ export function fuckNieve(): void {
         else if (player.hasKnot(x)) {
             outputText("  Nieve eyes the knot on your cock as though it were a challenge.  She inches down your shaft, getting ever closer.");
             // (Cocksize >40)
-            if (player.cockArea(x) >= 40) outputText("  Eventually, though, she admits defeat and goes back to working your shaft, though she eyes that knot from time to time with no small amount of anger.");
+            if (player.cocks.cockArea(x) >= 40) outputText("  Eventually, though, she admits defeat and goes back to working your shaft, though she eyes that knot from time to time with no small amount of anger.");
             // (Cocksize <40)
             else outputText("  It takes her a few good minutes, but eventually she works her way down and takes the entire knot into her mouth.  She raises her hands in triumph and lets out a \"<i>Mmmmrrrrrpphhh!</i>\" before pulling back for a breath, inadvertently exposing your wet hard cock to the cold, wintery air.");
         }
@@ -1026,25 +1026,25 @@ export function fuckNieve(): void {
     outputText("\n\nRight as she begins to open her mouth, to beg you to just stop it and fuck her, you slip your " + cockClit(player, x) + " in ");
     // (if too big:
     if (x >= 0) {
-        if (player.cockArea(x) >= 130) outputText("at least as far as it will go, ");
+        if (player.cocks.cockArea(x) >= 130) outputText("at least as far as it will go, ");
     }
     outputText("with a wet \"<i>schluck.</i>\"  The words coming out of her mouth are lost in a loud \"<i>ooohhhh</i>\" as her eyes roll backwards, closely followed by her head.  Her wet pussy grips you tightly, giving you a strange tingling sensation.  Your hot rod combined with her arctic nethers actually causes some steam to rise up, and you're a little captivated to see more tufts of steam rise with every slow, gentle thrust you make.");
 
     outputText("\n\nDeciding to take this to the next level, you take hold of Nieve's legs and lift so that her ankles rest on your shoulders.  You give a soft grunt, moving your grip down to her firm buttocks now raised in the air, and plow away once more.  ");
     if (x >= 0) {
         // ((cocksize 3/Clit 3)
-        if (player.cockArea(x) <= 7) outputText("Your meager penis isn't much, but at this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes staring up at you, urging you on faster and faster.");
+        if (player.cocks.cockArea(x) <= 7) outputText("Your meager penis isn't much, but at this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes staring up at you, urging you on faster and faster.");
         // (Cocksize 30/Clit 12)
-        else if (player.cockArea(x) <= 30) outputText("At this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes tightly shut as she whispers dirty words you can't even make out.");
+        else if (player.cocks.cockArea(x) <= 30) outputText("At this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes tightly shut as she whispers dirty words you can't even make out.");
         // (Cocksize 70/Clit 24)
-        else if (player.cockArea(x) <= 70) outputText("Nieve's cunt feels like an icy vice on your oversized cock, but even so, you manage to hit all the right places.  Soon she is wriggling around, eyes tightly shut as she pants for breath.");
+        else if (player.cocks.cockArea(x) <= 70) outputText("Nieve's cunt feels like an icy vice on your oversized cock, but even so, you manage to hit all the right places.  Soon she is wriggling around, eyes tightly shut as she pants for breath.");
         // (Cocksize 130+/Clit 48+)
         else outputText("Though you can't fit your entire " + cockClit(player, x) + " inside, you are amazed at how much she takes.  Her pale blue stomach bulges with every thrust.  Soon Nieve is wriggling, her eyes slightly open as she bites her lip in ecstasy.");
     }
     else {
         if (player.clitLength <= 4) outputText("Your meager clit isn't much, but at this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes staring up at you, urging you on faster and faster.");
         else if (player.clitLength <= 12) outputText("At this angle you manage to hit all the right places.  Soon Nieve is wriggling around, eyes tightly shut as she whispers dirty words you can't even make out.");
-        else if (player.cockArea(x) <= 24) outputText("Nieve's cunt feels like an icy vice on your oversized clitty, but even so, you manage to hit all the right places.  Soon she is wriggling around, eyes tightly shut as she pants for breath.");
+        else if (player.cocks.cockArea(x) <= 24) outputText("Nieve's cunt feels like an icy vice on your oversized clitty, but even so, you manage to hit all the right places.  Soon she is wriggling around, eyes tightly shut as she pants for breath.");
         // (Cocksize 130+/Clit 48+)
         else outputText("Though you can't fit your entire " + cockClit(player, x) + " inside, you are amazed at how much she takes.  Her pale blue stomach bulges with every thrust.  Soon Nieve is wriggling, her eyes slightly open as she bites her lip in ecstasy.");
     }
@@ -1087,7 +1087,7 @@ export function nieveFucksYou(): void {
     // [if (hasVagina = true)
     if (player.hasVagina()) outputText("  Your [vag] is a sodden box so soon after he started, and you start to want more, much more!");
     // [if (hasCock = true)
-    if (player.hasCock()) outputText("  Your [cock biggest] is also rock hard in a short while and you quickly desire some more stimulation from your icy love slave.");
+    if (player.cocks.length > 0) outputText("  Your [cock biggest] is also rock hard in a short while and you quickly desire some more stimulation from your icy love slave.");
 
     // [(if PC has vagina or large enough tits) \"<i>So [master],</i>\" He says pulling back slightly, \"<i>Where would you like me to put this?</i>\"][(if anal is the only option, automatically selected) \"<i>Well I guess I know where to put this huh?</i>\" He says coyly.]
     // [Anal][Vaginal][(tits >3) Tit-Fuck]
@@ -1104,7 +1104,7 @@ export function takeNieveAnal(): void {
 
     outputText("\n\nHe continues increasing the tempo until you're both rutting like animals, the lewd squelches coming from the pounding fill the environment as you start to feel a warming sensation in your ass.  The unusually loud squelches tell you he's leaking some precum as the frigid phallus drives into your [asshole] like a perverted slip 'n slide.");
     // [if (hasCock = true)
-    if (player.hasCock()) outputText("  Nieve then bends forward while keeping his pace to give you a reach-around.  Grabbing your own [cock biggest] in one hand, he starts to pump it to the speed of his thrusts, torturing you with the extra-stimulation in such a good way.");
+    if (player.cocks.length > 0) outputText("  Nieve then bends forward while keeping his pace to give you a reach-around.  Grabbing your own [cock biggest] in one hand, he starts to pump it to the speed of his thrusts, torturing you with the extra-stimulation in such a good way.");
     // [if (hasVagina = true)
     else if (player.hasVagina()) outputText("  As Nieve continues to pound away, he places one hand on your sopping wet cunt and begins to finger you in time with his assault, making you lust-drunk with the stimulation as he finger bangs you.");
 
@@ -1116,7 +1116,7 @@ export function takeNieveAnal(): void {
     if (player.gender > 0) {
 
         // [if (hasCock = true)
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(", ");
             outputText("while your body undulates and seizes as cum starts to spew forth from [eachCock]");
             // (normal volume:
@@ -1149,7 +1149,7 @@ export function takeNieveVaginal(): void {
     if (player.balls > 0) outputText(", gently moving your [balls] out of the way in the process");
     outputText(".  He slams his nine inch blue rod balls deep into your sodden box.  A loud squelch fills the air at the penetration, giving Nieve the go ahead to start in top gear, pistoning in and out at a hurried pace.");
     // [if (hasCock = true)
-    if (player.hasCock()) outputText("  During the pounding Nieve grabs your dangling [cock biggest] and starts to pump it in time with his own thrusts, quite eager to please his [master].  Every time your feminine half cums, so does your male half, splashing its happy seed into the valley that your combined bodies have made.");
+    if (player.cocks.length > 0) outputText("  During the pounding Nieve grabs your dangling [cock biggest] and starts to pump it in time with his own thrusts, quite eager to please his [master].  Every time your feminine half cums, so does your male half, splashing its happy seed into the valley that your combined bodies have made.");
     // [if (isLactating = true)
     if (player.lactationQ() >= 100) outputText("  Your ice man reaches out with a free hand to caress your [chest], twiddling his fingers around your delicate [nipples]. After some rough pulling and flicking, pounding away all the while, he feels milk dribble onto his hand.  He catches a quick glance of the liquid before diving head-first to suckle on your milk faucets, drinking heavily of your cream as he's about to give you his.");
     outputText("\n\nYou enjoy the ride and then some, as his phallus hammers away at your cunt, desperate to feed your womb with his seed.  He caresses, fondles and nibbles all parts of your body, quickly stimulating one area after the other to freshen the feeling again and again... and again.  Everytime you come, he pounds a little slower and harder, grunting heavier as you try to wring him dry of all his dickmilk, wanting desperately to feel full of it.");

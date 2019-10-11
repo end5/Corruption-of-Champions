@@ -284,9 +284,9 @@ export function gooArmorBeatsUpPC(): void {
         outputText("\n\nBefore you can recover enough to say a word, the goo-girl saunters off out the door.  To your surprise, you feel rather invigorated after the battle, and rolling your shoulders, you turn your attention back to the dungeon ahead.");
     }
     // (PC has Dick)
-    else if (player.hasCock()) {
+    else if (player.cocks.length > 0) {
         outputText("She begins to use her goo to peel back your armor, soon revealing your defenseless, half-erect cock");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(".  She makes a show of licking her lips as tendrils of goo wrap tightly around [eachCock] like a warm, wet onahole. You writhe and struggle against your gooey bonds, but your efforts are futile.  The goo-girl inside the armor only shakes her head at you, and squeezes [eachCock] tighter.");
         outputText("\n\nYou gasp with pleasure as she starts to stroke your " + multiCockDescriptLight(player) + ", jerking you off as she looms over you, grinning wickedly.  \"<i>Oh, you like that do you?</i>\" the armor-goo asks.  \"<i>Well, maybe this can be mutually... beneficial.</i>\"  She starts to increase her tempo, making you squirm and writhe as she wanks your " + multiCockDescriptLight(player) + ", licking her lips as little bubbles of pre-cum form.  Helpless, you can only submit and try to enjoy yourself as the armored goo-girl continues to milk you.");
         outputText("\n\nShe continues to jerk you off mercilessly, her grin spreading to inhuman width as your pre begins to flow around and into her gooey 'hands'.  She soaks you up greedily, enjoying the meal, but her fucking is relentless until you feel orgasm approaching.  \"<i>Aw, ");
@@ -366,8 +366,8 @@ export function takeGooArmorAndWearIt(): void {
     outputText("\n\nBefore she can get too excited, you remind the goo that she's supposed to be your armor right about now.  Clasping her hands over her mouth in embarrassment, she utters a muted apology and urges you to just \"<i>put me on!</i>\"  Awkwardly, you strip out of your [armor] and open up the platemail armor and clamber in.  It's wet and squishy, making you shudder and squirm as you squash your new friend flat against the metal armor.");
     outputText("\n\nEventually, the two of you get situated. The goo-girl slips around your body inside the heavy armor, maneuvering so that your face is unobstructed and your joints, not protected by the armor, are soundly clad in squishy goo.  She even forms a gooey beaver on your new helm, allowing you to open and close her like a visor in battle.  Eventually, her goo settles around your ");
     if (player.hasVagina()) outputText("[vagina]");
-    if (player.hasVagina() && player.hasCock()) outputText(" and ");
-    if (player.hasCock()) outputText(multiCockDescriptLight(player));
+    if (player.hasVagina() && player.cocks.length > 0) outputText(" and ");
+    if (player.cocks.length > 0) outputText(multiCockDescriptLight(player));
     if (player.gender == 0) outputText("groin");
     outputText(", encasing your loins in case you need a little mid-battle release, she says.");
 
@@ -428,7 +428,7 @@ export function harpyHordeLustAttack(): void {
     else {
         outputText("sending shivers of lust up your spine");
         dynStats("lus", 5);
-        if (player.hasCock()) dynStats("lus", 15);
+        if (player.cocks.length > 0) dynStats("lus", 15);
     }
     outputText(".");
     dynStats("lus", 10);
@@ -534,7 +534,7 @@ export function kiriSexIntro(): void {
     // If Genderless: \"<i>Unfortunately, there's not much she can do for you...</i>\"
     menu();
     if (player.gender == 0) outputText("Unfortunately, there's not much she can do for you...");
-    if (player.hasCock()) addButton(0, "Anal", kiriSexAnal);
+    if (player.cocks.length > 0) addButton(0, "Anal", kiriSexAnal);
     if (player.hasVagina()) addButton(1, "Get Licked", kiriSexGetLicked);
     addButton(4, "Back", playerMenu);
 }
@@ -542,18 +542,18 @@ export function kiriSexIntro(): void {
 // Kiri -- [Sex] -- [Anal]
 export function kiriSexAnal(): void {
     clearOutput();
-    let x: number = player.cockThatFits(60);
-    if (x < 0) x = player.smallestCockIndex();
+    let x: number = player.cocks.cockThatFits(60);
+    if (x < 0) x = player.cocks.smallestCockIndex();
     const y: number = x + 1;
     outputText("You whip your [cock " + (y) + "] out of your [armor] and tell Kiri to get on all fours.  She grimaces, but does as you ask.  You hike up her shift to reveal her large, egg-laying pussy and her tight little pucker.");
     outputText("\n\n\"<i>Just make sure you pull out, all right? I don't wanna get pregnant - EEEP!</i>\" she shrieks as your [cock " + y + "] pokes against her backdoor.  Her wings beat furiously around you, nearly lifting you both off the ground.  You give her a swat on the ass to help her get a grip as you take hold of her inhumanly wide hips.  She wriggles around for a bit before finally calming down and trying to relax as best she can.");
     outputText("\n\nIt takes some doing, but you eventually manage to push your prick in past her tight sphincter.  With a relieved sigh, you start to push into her ass, slowly but steadily feeding her inches of your [cock " + y + "] until ");
-    if (player.cockArea(x) > 60) outputText("you can fit no more in");
+    if (player.cocks.cockArea(x) > 60) outputText("you can fit no more in");
     else outputText("you are buried to the hilt");
     outputText(".  Beneath you, Kiri writhes and groans in pained pleasure as you stuff her ass full of your cock.  When you've finally buried yourself as far as you'll go, you give her lush ass cheeks a little squeeze and start to rock your hips.  Kiri gasps, suddenly feeling empty as you withdraw from inside her - and screams when you slam yourself back in.");
     outputText("\n\nSinking your hands into her soft, plush butt, you start to hammer her asshole, fucking her hard and fast until you're both moaning like whores.  Your combined pre-cum and juices are staining the floor and her inner walls.  To your surprise, Kiri lifts herself off the ground and presses her back to your chest, letting her wings wrap around you.  Grinning, you grope her perky breasts as you continue to ream her ass.  She puts her hands on yours, pinching her nipples and guiding you to all her most sensitive spots.");
     outputText("\n\nYou cum quickly, grunting into her ear and ramming yourself until you're ");
-    if (player.cockArea(x) > 60) outputText("as far in as you can manage");
+    if (player.cocks.cockArea(x) > 60) outputText("as far in as you can manage");
     else outputText("filling her completely");
     outputText(".  Your cock squirts a thick load inside her, shooting creamy ropes of jizz deep into her bowels ");
     // [if High Cum Production:
@@ -569,7 +569,7 @@ export function kiriSexAnal(): void {
 export function kiriSexGetLicked(): void {
     clearOutput();
     outputText("You ask Kiri to eat you out. She grimaces but drops to her knees and undoes the bottom of your [armor], revealing your lusty [vagina]");
-    if (player.hasCock()) outputText(" and " + multiCockDescriptLight(player));
+    if (player.cocks.length > 0) outputText(" and " + multiCockDescriptLight(player));
     outputText(".  With a word of encouragement from you, she leans forward and presses her face into your groin, letting her tongue loose to explore your lower lips.");
     outputText("\n\nThe girl's tongue is surprisingly skilled.  She quickly teases it across your clitty, making you moan with unexpected pleasure.  She begins to tease and play with your pleasure buzzer, using the flat of her tongue to tickle the sensitive flesh around it; you urge her on with little pats of the head and shoulders, even reaching down to cup one of her perky breasts beneath her loose shift or stroke one of her great orange wings.");
     outputText("\n\nShe finally slips her tongue in and starts to caress the walls of your [vagina], running her soft, warm tongue along your innermost depths with delightful speed and gentleness.  You smile and run your hands through her short orange hair, stroking her as she grips your hips and buries her face in your twat.");
@@ -742,8 +742,8 @@ export function checkOutDemBirdBitches(): void {
         outputText("\n\nYou suppose you could use one of them to get yourself off.");
         // (Display Options:
         // If Male: [Missionary] [Get Wanked] [Ride Anal] (Capacity: 80)
-        if (player.hasCock()) {
-            if (player.cockThatFits(80) >= 0) missionary = phoenixMissionary;
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(80) >= 0) missionary = phoenixMissionary;
             else outputText("\n\nYou're too big to fuck one of them properly.");
             wanked = phoenixWanking;
         }
@@ -758,8 +758,8 @@ export function checkOutDemBirdBitches(): void {
 // Phoenixes -- [Missionary]
 export function phoenixMissionary(): void {
     clearOutput();
-    let x: number = player.cockThatFits(80);
-    if (x < 0) x = player.smallestCockIndex();
+    let x: number = player.cocks.cockThatFits(80);
+    if (x < 0) x = player.cocks.smallestCockIndex();
     const y: number = x + 1;
     outputText("You grab the healthiest looking phoenix off the top of the pile and throw the hermaphrodite on her back a few feet from her sisters.  She grunts, looking up at you with grim, fierce eyes.  \"<i>I'll never submit!  I am a proud warrior, not some-</i>\" Yeah, whatever.  You rip her chain shirt open, revealing the large, soft globes of her D-cups beneath.  The phoenix gasps at the sudden exposure and turns her head away, fixing her expression in place like chiseled marble, determined not to look you in the eye as you take your pleasure.");
 
@@ -774,38 +774,38 @@ export function phoenixMissionary(): void {
     outputText("\n\n\"<i>I... well... maybe...</i>\" she admits, and you nod as her once-struggling legs go a bit limp.");
 
     outputText("\n\nYou return your attention to between her legs.  Getting her fully erect reptilian cock out of the way, you expose your prize - her sodden cunt");
-    if (player.cockTotal() > 1) outputText(" and the tight ring of her pucker");
+    if (player.cocks.length > 1) outputText(" and the tight ring of her pucker");
     outputText(".  You grasp her wide flanks and, lining your [cock " + y + "]");
-    if (player.cockTotal() > 1) outputText(" and extra boner up with her holes");
+    if (player.cocks.length > 1) outputText(" and extra boner up with her holes");
     else outputText(" up with her hole");
     outputText(", push in, penetrating her cunt");
-    if (player.cockTotal() > 1) outputText(" and ass");
+    if (player.cocks.length > 1) outputText(" and ass");
     outputText(" and sliding into her warm, wet channel");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(".");
 
     outputText("\n\nThe phoenix squirms as you push into her depths, groaning as more and more of your cockmeat pierces her until you finally hilt her.  Gritting her teeth, the phoenix reaches up and grabs your shoulders, holding onto you as your cock");
-    if (player.cockTotal() > 1) outputText("s drive");
+    if (player.cocks.length > 1) outputText("s drive");
     else outputText(" drives");
     outputText(" into her; you roll your hips back and forth for short but powerful strokes into her blazing hot innards.  As the pace picks up, you pull the phoenix-girl into a long, tender kiss.  The kiss soon turns into her moaning into your mouth as you fuck her cunt ");
-    if (player.cockTotal() > 1) outputText("and ass ");
+    if (player.cocks.length > 1) outputText("and ass ");
     outputText("hard, slamming your hips into hers.");
 
     outputText("\n\nShe cums first");
-    if (player.cockTotal() > 1) outputText(", your double penetration too much for her to handle");
+    if (player.cocks.length > 1) outputText(", your double penetration too much for her to handle");
     outputText(".  The phoenix grips your shoulders tight enough for her claws to cut into you as her tight pussy ");
-    if (player.cockTotal() > 1) outputText("and tighter sphincter spasm");
+    if (player.cocks.length > 1) outputText("and tighter sphincter spasm");
     else outputText("spasms");
     outputText(" around your dick");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(".  With her squirming in your embrace and squeezing down so hard, you can't help but blow your load.  You press your lips hard into hers and cum, pumping thick ropes of steaming jizz into her wet box");
-    if (player.cockTotal() > 1) outputText(" and hot asshole");
+    if (player.cocks.length > 1) outputText(" and hot asshole");
     outputText(".  As you cum into her, you feel her reptile prick shoot off, squirting a long white rope onto her chest and yours until her tits are soaked with her spunk.");
 
     outputText("\n\nYou release the phoenix from your embrace, and are pleased to see she's passed out from the overwhelming pleasure.  Grinning, you pull your cock");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" out of her ravaged hole");
-    if (player.cockTotal() > 1) outputText("s");
+    if (player.cocks.length > 1) outputText("s");
     outputText(" and gather your gear.");
     // (Return to Mezzanine main menu)
     player.orgasm();
@@ -814,7 +814,7 @@ export function phoenixMissionary(): void {
 
 // Phoenixes -- [Get Wanked]
 export function phoenixWanking(): void {
-    const x: number = player.biggestCockIndex();
+    const x: number = player.cocks.biggestCockIndex();
     const y: number = x + 1;
 
     clearOutput();
@@ -960,12 +960,12 @@ export function harpyQueenBeatsUpPCBadEnd(clearS: boolean = false): void {
     outputText("\n\n\"<i>Mother!</i>\" a harpy calls, stepping up to the throne. Behind her come another dozen sisters, struggling to keep Hel bound between them.  The salamander screams and curses and cries, but it is useless - she cannot escape, any more than you can.  Hel is pushed down onto her knees beside you, still defiant, but, at seeing you already captured... the fight goes completely out of her eyes.");
     outputText("\n\n\"<i>Ah, another salamander?  Well well, what a coincidence.  I don't believe our other specimen is going to last much longer.  You seem like a healthy girl; with a bit of... modification... you'd make a fine replacement.</i>\"");
     outputText("\n\n\"<i>And you,</i>\" the queen says, looking back to you.  \"<i>I could always use another ");
-    if (player.hasCock()) outputText("sperm bank");
+    if (player.cocks.length > 0) outputText("sperm bank");
     else outputText("incubator");
     outputText(" in my harem.  Yes, you'll do nicely...</i>\"");
     outputText("\n\n<b>SIX MONTHS LATER...</b>\n");
     outputText("You groan, your wrists chafing in the manacles hanging overhead.  The harpy slut riding your huge, engorged dick crosses her eyes, screams, and cums.  Another wave of seed lurches out of your cripplingly-large balls, so massive that they drag on the floor between your [legs].  You shudder slightly, but the act of ejaculation has lost all meaning");
-    if (!player.hasCock()) outputText(", even if the sudden new sensations nearly broke your mind when the harpies used their magics to grow these huge male implements on your body");
+    if (!player.cocks.length > 0) outputText(", even if the sudden new sensations nearly broke your mind when the harpies used their magics to grow these huge male implements on your body");
     outputText(".  Indeed, as soon as that slut's gotten her fill, one of her sisters pushes her roughly off your shaft and mounts you, bending over and backing into your massive schlong.  A little shudder of pleasure courses up your body as the twenty-ninth slut you've serviced today starts to milk you for your magically-enhanced seed.  The tubes pumping enchanted drugs directly into the flesh of your testes goes into overtime, flooding your system with lust and the strange concoction that creates the Phoenixes.");
     outputText("\n\nYou slump as another orgasm plows through you, swelling the harpy's womb until she looks nine months pregnant.  You barely feel it, though your skin flushes hotly as the woman plants a lust-stick kiss on your lips in thanks... Another salamander male was what the Queen needed; you weren't it, but with Hel and the captive that turned out to be her father around, she found use for you, too: breeding harpies to continue her bloodline while the phoenixes go off to war against the demons.");
     outputText("\n\nYou gaze across the subterranean breeding chamber, over tables and toys covered in gallons of spent semen, to where Helia and Hakon the salamanders are chained.  Hakon has long since passed out, his age and years of abuse weakening him to the point where he can only function a small part of the day.  Beside him, though, Hel is awake and kicking, struggling futilely under the huge girth of the Harpy Queen's hips which pin her to the wall in place of chains.");
@@ -1049,7 +1049,7 @@ export function harpyQueenAdvantage(): void {
     outputText("\n\nWhat.");
     // (Display Options: [Fuck Her] [Interrogate] [Kill Her] [Let Her Go])
     let fuck: () => void = null;
-    if (player.lust > 33 && player.hasCock()) fuck = fuckHarpyQueen;
+    if (player.lust > 33 && player.cocks.length > 0) fuck = fuckHarpyQueen;
     simpleChoices("Fuck Her", fuck, "Interrogate", harpyQueenInterrogate, "Kill Her", killHarpyQueen, "Let Her Go", letHarpyQueenGo, "Back", playerMenu);
 }
 
@@ -1157,7 +1157,7 @@ export function fuckHarpyQueen(): void {
     // If Herm: All Above
     // If Genderless: \"<i>You don't really see how this is going to work out...</i>\" (NO SMUT 4 U)
     let anal: () => void = null;
-    if (player.biggestCockArea() > 50) anal = harpyQueenSexAnal;
+    if (player.cocks.biggestCockArea() > 50) anal = harpyQueenSexAnal;
     simpleChoices("Anal", anal, "Vaginal", vaginalHarpyQueenSex, "", null, "", null, "Back", playerMenu);
 }
 // Harpy Queen Sex -- [Dick in Anal]
@@ -1169,7 +1169,7 @@ export function harpyQueenSexAnal(): void {
     outputText("\n\nYou give Hel a little wink, and though occupied by forcing the harpy to eat her out, she just manages to return it.  With that, you press the head of your " + cockDescript(player, 0) + " against the harpie's sphincter.  Though much of your length is eaten up by her tremendous ass cheeks, her anus still clenches frightfully at your insistent prodding.  Scowling, you rear your hand back and give the harpy bitch a forceful slap on the butt.");
     outputText("\n\nThough her pillowy cheeks absorb much of the blow, she still lets out a pitiful yelp into Hel's pussy, and loosens up for a split second.  You plunge your shaft in, grunting at the incredible tightness of her anal passage.  She must have been a virgin back here before you took her; she screeches and writhes as your force your cock into her immensely tight bumhole, fighting for every inch you can stuff her with.");
     outputText("\n\nYou swat the harpy again to shut her up, but all that does is make her vice-like ass squeeze on your cock, painfully compressing the head.  You growl in pain, and in revenge slam yourself into her ");
-    if (player.cockArea(0) < 100) outputText("until your hips sink into her pillowy ass");
+    if (player.cocks.cockArea(0) < 100) outputText("until your hips sink into her pillowy ass");
     else outputText("until your massive " + cockDescript(player, 0) + " can go no further inside her");
     outputText(".  Sunk in as far as you'll go, you leave your cock where it is and instead give the broodmother a hard slap.  She screeches and clamps down, wringing your " + cockDescript(player, 0) + " hard.  But it's more pleasurable this time, now that she's nice and stretched by your anal intruder.");
     outputText("\n\nYou give her another swat, and another, spanking the harpy bitch until she's outright milking your " + cockDescript(player, 0) + " inside her.  Laughing, Hel starts telling the queen what a good slut she is, taking your " + cockDescript(player, 0) + " up her ass and squeezing it like a whore as she tongue-fucks another woman.  The queen tries to protest, but you give her another hard slap to teach her some manners.");
@@ -1193,7 +1193,7 @@ export function vaginalHarpyQueenSex(): void {
     outputText("\n\nFinally, you feel her slick walls around your " + cockDescript(player, 0) + ". The queen shudders, but now seeing that you mean to pump her full of your seed, visibly relaxes. Still, she's just too loose to give you the pleasure you're seeking...");
 
     outputText("\n\nA wicked grin spreads across your face.  You reach forward and grab Hel's tail, wincing at its heat, and drag it back between the Harpy Queen's loins.  Hel looks at you over her shoulder and, grinning, takes over for you.  You brace yourself as her prehensile tail slithers back and, curling once around your " + cockDescript(player, 0) + ", slips inside the queen with you.  You and the broodmother both gasp at once as her burning-hot tail crawls along your cock's shaft and into her gaping cunt until the harpy lets out a little scream into Hel's own crotch.  You guess the salamander found her womb and is wriggling her tail into it.");
-    if (player.cockArea(0) < 48) outputText("  Not to be outdone, you slam your hips forward, ramming your " + cockDescript(player, 0) + " into the queen's depths until you catch up with Hel, pounding the entrance to her womb.");
+    if (player.cocks.cockArea(0) < 48) outputText("  Not to be outdone, you slam your hips forward, ramming your " + cockDescript(player, 0) + " into the queen's depths until you catch up with Hel, pounding the entrance to her womb.");
     outputText("\n\nNow that you have a second shaft inside the harpy's birth canal, it seems a lot less roomy. You start to piston your hips into the queen bitch; your shaft runs along three slick walls and Hel's hot tail with each thrust, leaving your " + cockDescript(player, 0) + " feeling like it's in a liquid inferno, and it feels wonderful.  You start to fuck the queen faster, already feeling your own orgasm rising.  Her juices spill freely from her loose cunt, pooling between her thighs as you and Hel fill her utterly, giving her what's probably the first satisfying fuck she's been able to get in years.");
     outputText("\n\nYou aren't surprised when the harpy gets off, rolling her head back and screeching as she climaxes. Laughing, Hel starts to thrash her tail around inside her, nearly managing to wrap it around your " + cockDescript(player, 0) + " inside her.  With the sudden contractions and extra motion around your cock, you aren't able to last any longer; ");
     if (player.cumQ() < 300) {

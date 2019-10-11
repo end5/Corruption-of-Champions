@@ -111,7 +111,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         // (Display Options: \"<i>[Penetrate Her](Cockwielder PC Only)  [Get Fucked]  [Gooflation]
         // [Get Dominated](Must have a gender)  [Dick/No Dick])
         let penetrate: () => void = null;
-        if (player.hasCock()) penetrate = penetrateValeria;
+        if (player.cocks.length > 0) penetrate = penetrateValeria;
         const getFucked: () => void = valeriaGetFucked;
         const gooFlation: () => void = gooFlation;
         let dominated: () => void = null;
@@ -184,19 +184,19 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         if (player.biggestTitSize() > 3) outputText("bumping over your [chest] and stopping for a brief moment to tickle your sensitive tits with her goopy bottom before ");
         outputText("coming to a stop over your crotch.  She pours herself into your lap, ");
         // [if PC has cock: \"<i>
-        if (player.hasCock()) outputText("her gooey ass devouring your " + cockDescript(game.player, 0) + " as she slides down your belly");
-        if (player.hasCock() && player.hasVagina()) outputText(" and ");
+        if (player.cocks.length > 0) outputText("her gooey ass devouring your " + cockDescript(game.player, 0) + " as she slides down your belly");
+        if (player.cocks.length > 0 && player.hasVagina()) outputText(" and ");
         if (player.hasVagina()) outputText(" letting bits of her goo-body slither into your wet, waiting [vagina], ever so slightly peeling your walls apart");
         // If PC has no gender
         if (player.gender == 0) outputText("poking the shaft of her cock gingerly, teasingly against your [asshole]");
         outputText(".");
 
         outputText("\n\nShe rocks back in your lap, sticking her arms to your [legs] for support as she slings her legs over your shoulders.  She grabs her cock, stroking it sensually");
-        if (player.hasCock()) outputText(", as she rhythmically flexes her ass cheeks, shifting her fluidity around your shaft within her with a feeling like lotion-covered hands gently stroking you");
+        if (player.cocks.length > 0) outputText(", as she rhythmically flexes her ass cheeks, shifting her fluidity around your shaft within her with a feeling like lotion-covered hands gently stroking you");
         outputText(".");
 
         // (If Female)
-        if (!player.hasCock() && player.hasVagina()) {
+        if (!player.cocks.length > 0 && player.hasVagina()) {
             outputText("\n\nValeria gives you a little grin and, still grasping her cock, begins to push it downward.  Her shaft slides down her body in a way that only a goo-girl's appendage could, its base traveling down her groin until her rod flops wetly onto the lips of your [vagina].  Though her cock sits neatly atop your entrance, Valeria only gives you a little smirk and pushes down again.  Her gooey prick folds in on itself, slathering your pussylips with slime as she literally pours herself into you, reconstituting her cock to perfectly fill each and every crevase of your eager [vagina].");
             outputText("\n\nValeria sits in your lap, seemingly motionless, but you can feel her cock pouring in and out of your cunt, fucking you as fast and hard as any solid prick ever could.  Your breath catches in your throat as Valeria utterly fills you, stretching your cunt with her massive, malleable member until she threatens to tear you apart.  Her gooey prick slams through your cervix, battering the entrance to your womb.  Were she solid, you're sure you would be in incredible pain; but being so soft and slippery, all you feel is pleasure as she fills and empties you.");
             outputText("\n\nGrinning wickedly, Valeria shifts her legs closer to her body, running them over your [chest]. You gasp as her soft, sticky goo slithers across your sensitive flesh.  Her feet stop just atop your [nipples].");
@@ -215,7 +215,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             outputText(" until they literally pop inside you, flowing back out in goopy streaks.");
         }
         // (If Male/Herm)
-        else if (player.hasCock()) {
+        else if (player.cocks.length > 0) {
             outputText("\n\nWith your cock stuffed into Valeria's warm, gooey innards, the goo-girl makes a show of rocking herself back and forth in your lap, using her entire bottom like one sopping-wet cunt riding your cock.  With her own rod in hand, she pushes down, letting the base of her prick shift down her body until it bends around your hips and pops back into form just above your [butt].  Your eyes go wide, but when you try to yelp, Val roughly shoves one of her feet into your mouth.  \"<i>Shh, partner,</i>\" she laughs, flicking your tongue with her soft, citrusy toes, \"<i>just let it happen... It'll be good, I promise.</i>\"");
 
             outputText("\n\nResigned, you let the goo-girl have her way.  You try your best to relax as her goo-cock slithers between your ass-cheeks, her prick remaining just hard enough for her to hotdog herself between your cheeks.  But rather than penetrate, she instead seems content for the moment to rock her hips in your lap, riding your " + cockDescript(game.player, 0) + " and fucking your butt-cheeks with her own rod.  As she rides you, Valeria slips a little more foot into your mouth, pouring her leg into you until you get the hint and start to suckle her dainty toes, easily slipping your tongue into her soft body to taste her insides.");
@@ -313,7 +313,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nWith a sexual swing of her hips, Valeria closes the distance between you and presses her lips to yours.  One of her arms easily wraps around your neck, pulling you close to her as her other snakes into your clothes, teasing and caressing your inner thighs.  Suddenly, Valeria gives you a rough push, throwing you onto your ass.  She looms over you, licking her lips and placing one of her gooey feet firmly on your chest.  Goop seeps out of her heels, slithering out to bind your arms and [legs] as she encases your torso.");
         outputText("\n\n\"<i>Just lie back and submit, partner. It'll be better that way...</i>\"");
         // (PC has Vagina)
-        if (player.hasVagina() && (!player.hasCock() || rand(2) == 0)) {
+        if (player.hasVagina() && (!player.cocks.length > 0 || rand(2) == 0)) {
             outputText("\n\nValeria begins to use her goo to peel back your clothes, soon revealing your defenseless [vagina].  She makes a show of licking her lips as tendrils of goo seep into your cunt, filling you utterly.  You meekly submit to your gooey captor, letting Valeria have her way with you. Seeing your lack of resistance, she smiles and coos what a good " + mf(player, "boy", "girl") + " you are, slowly withdrawing herself from your [vagina].");
             outputText("\n\nYou have only a moment to figure out what's coming before her goo - now perfectly shaped like the inside of your cunt - slams back into you like a stiff cock.  You can't help yourself as a moan escapes your lips, barely audible through the goop covering your mouth.");
             player.cuntChange(player.vaginalCapacity(), true, true, false);
@@ -394,7 +394,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         spriteSelect(79);
         clearOutput();
         outputText("You slip an arm around Valeria's slender shoulders and pull her close.  Patting your crotch, you tell her you're practically a gourmet chef for a girl like her.  She giggles and slips a hand easily into your [armor], ");
-        if (player.hasCock()) outputText("brushing along the length of your rapidly-hardening cock");
+        if (player.cocks.length > 0) outputText("brushing along the length of your rapidly-hardening cock");
         else outputText("brushing a wet, warm knuckle across your [clit]");
         outputText(".");
 
@@ -439,7 +439,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         outputText("You cautiously approach with Valeria's voice egging you on, \"<i>We gonna fuck her? We're gonna fuck her, ain't we, [name]?</i>\" She affectionately fondles your ");
         const list: any[] = ["[hips]"];
         if (player.balls > 0) list.push("[balls]");
-        if (player.totalCocks() > 0) list.push("[multiCockDescriptLight]");
+        if (player.cocks.length > 0) list.push("[multiCockDescriptLight]");
         if (player.hasVagina()) list.push("[vagina]");
         list.push("[asshole]");
         list.push("[nipples]");
@@ -448,24 +448,24 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             clearList();
             addToList("[hips]");
             if(player.balls > 0) addToList("[balls]");
-            if(player.totalCocks() > 0) addToList("[multiCockDescriptLight]");
+            if(player.cocks.length > 0) addToList("[multiCockDescriptLight]");
             if(player.hasVagina()) addToList("[vagina]");
             addToList("[asshole]");
             addToList("[nipples]");
             outputText(outputList() + " with liquid-soft caresses, almost ephemeral and yet still so perfectly all-consuming, filling every tiny imperfection in your [skin] with blue, gooey goodness and teasing whatever entrances she can get at. ");
         */
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("You sigh as [eachCock] stands at full erection. Bluish coating");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" barely thicker than a condom stretch");
-            if (player.cockTotal() == 1) outputText("es");
+            if (player.cocks.length == 1) outputText("es");
             outputText(" around ");
-            if (player.cockTotal() == 1) outputText("it as it distends");
+            if (player.cocks.length == 1) outputText("it as it distends");
             else outputText("them as they distend");
             outputText(" Valeria's increasingly liquescent form. Dripping off the tip");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(", sapphire slime falls in long gooey stands, yet the whole time you feel as if a dozen hands are dragging lubricant-coated feathers over the whole of your sensitive organ");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(".");
         }
         else if (player.hasVagina()) outputText("You sigh your as [vagina] is tenderly caressed by what feels like dozens of lubricant-soaked feathers, tickling at the skin in a way that makes your entrance grow hot enough to make you wonder why Valeria hasn't been cooked into steam. The airtight seal over your mons is steadily shifting around and about to stimulate you. Sometimes, a narrow band of semi-solid goo slips between your lips like an oh-so-narrow thong, the slime mixing with your own suddenly-copious sexual juices to form a salacious, barely restrained soup of girlish need. She holds herself back from diving into your entrance... for now.");
@@ -481,7 +481,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nThe bluish");
         if (monster.skinTone != "blue") outputText(" " + (monster as GooGirl).gooColor6());
         outputText(" juices slowly meld together until you cannot tell one from the other, and they firm up into a semi-translucent, flat-bottomed sphere, trapping you there. Your debauched and hopelessly aroused state is visible to any who would wander by, stroked by dark-colored currents that wrap around your ");
-        if (player.hasCock() || player.hasVagina()) outputText("genitals");
+        if (player.cocks.length > 0 || player.hasVagina()) outputText("genitals");
         else outputText("[asshole]");
         outputText(" with sinful tightness. An involuntary shiver of excitement traverses up your spine, though your body is held almost completely stock-still in its sloshing vice.");
 
@@ -528,25 +528,25 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             outputText(". Valeria takes this as an invitation, and " + num2Text(player.totalNipples()) + " phallic objects greedily push at your cunt-nipples, eagerly sliding themselves inside your welcome chest-pussies. Looking down, you can see the navy-blue outlines of the phallic tendrils waving and writhing as they push their way deep, embedding themselves tit-deep in blissful warmth.");
         }
         // Dick
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nValeria's voice calls out once more, \"<i>You didn't think I'd forget ");
-            if (player.cockTotal() == 1) outputText("this little guy");
+            if (player.cocks.length == 1) outputText("this little guy");
             else outputText("these little guys");
             outputText(", did you? ");
-            if (player.biggestCockArea() >= 50) outputText("...Maybe big guy is a bit more appropriate. Whatever. ");
+            if (player.cocks.biggestCockArea() >= 50) outputText("...Maybe big guy is a bit more appropriate. Whatever. ");
             outputText("I was just saving the best for last. Hold on tight, tiger.</i>\"");
             outputText("\n\nThe sleeve of squishy ecstasy surrounding [eachCock] tightens up a little to hold your twitching, ecstatic boner");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" in place, and something even warmer than the slippery container");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" pushes at your head");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(", circling your urethra");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(". You inadvertantly clench your muscles in a way that makes your " + multiCockDescriptLight(game.player) + " so very swollen, in turn making it that much easier for the gelatinous fiend to have her way with your cumslit");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(". You feel that warm, wet fluid slowly peel it open and push inside. It doesn't hurt at all, but it is a little weird having your " + multiCockDescriptLight(game.player) + " slowly stuffed in such a way. The warmth travels the whole way down your dick");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" to your middle, where you can feel it travel a bit further before it finally stops at your [balls].");
         }
         // Merge
@@ -571,31 +571,31 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             outputText(" pulling away from your body, gaining cup sizes in a span of seconds, your skin stretching taut under the moist deluge. Your tit-twats quiver with delight, feeling nothing but obscene, ever-growing pleasure until they're squeezing down on the sloppy tentacle-cocks, milking them to cum harder and faster, which in turn bloats your ecstatic tits into blissful, bloated orbs.");
         }
         // {cocks!}
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nThe sealed, cock-plugging tube");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" in [eachCock] ");
-            if (player.totalCocks() > 1) outputText("do not");
+            if (player.cocks.length > 1) outputText("do not");
             else outputText("does not");
             outputText(" differ greatly from Valeria's other liquid attentions. ");
-            if (player.totalCocks() > 1) outputText("They start");
+            if (player.cocks.length > 1) outputText("They start");
             else outputText("It starts");
             outputText(" by thickening, stretching your cumvein");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" as wide as ");
-            if (player.totalCocks() > 1) outputText("they");
+            if (player.cocks.length > 1) outputText("they");
             else outputText("it");
             outputText("'ll go without pain and then rolling thick pulses of gelatinous matter into your urethra");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText("s");
             outputText(". The sleeve");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" squeeze");
-            if (player.totalCocks() == 1) outputText("s");
+            if (player.cocks.length == 1) outputText("s");
             outputText(" down on your length");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" harder, starting to slide around in ways that would be impossible for a vagina, and you find yourself helplessly blowing your load straight into the dick-plug");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(", spurting bliss that can't even hope to escape from your loins. You feel ");
             if (player.balls == 0) outputText("something expanding as you cum, filling up with spunk or slime or some mixture of the two");
             else outputText("your [balls] expanding as you cum, filling up with spunk or slime or some mixture of the two, weighing down your sack with ever-increasing heaviness. Tender licks of tongue roll across the surface as you fill beyond completely");
@@ -612,7 +612,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             }
             outputText(" Your tits have grown much larger, " + breastCup(player, 0) + "-cups at least.");
         }
-        if (player.hasCock() && player.balls > 0) {
+        if (player.cocks.length > 0 && player.balls > 0) {
             player.ballSize += 3 + rand(2);
             outputText(" Your balls look positively swollen with libidinous juices.");
         }
@@ -638,7 +638,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             player.effects.setValue(StatusAffects.GooStuffed, 3, 1);
             player.knockUpForce(PregnancyStore.PREGNANCY_GOO_STUFFED, 500); // Blocks other pregnancies - Way higher than GooStuffed status can last. Cleared when GooStuffed removed
         }
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             if (player.balls > 0) player.effects.setValue(StatusAffects.GooStuffed, 2, 2);
             else player.effects.setValue(StatusAffects.GooStuffed, 2, 1);
         }
@@ -662,7 +662,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             if (player.bRows() > 2) outputText(", and so on");
             outputText(", working out every drop of thick, body-filling slime while your ass is still busy draining. Even after they empty, they don't seem to lose a single bit of the size they've gained....");
         }
-        if (player.hasCock() && player.effects.getValue2Of(StatusAffects.GooStuffed) > 0) {
+        if (player.cocks.length > 0 && player.effects.getValue2Of(StatusAffects.GooStuffed) > 0) {
             outputText("\n\n[EachCock] suddenly fills to twitching tumescence and explodes in a completely untelegraphed orgasm, throwing huge strands of odd-colored cum in ");
             if (player.balls > 0) outputText("ball-clenching");
             else outputText("body-clenching");

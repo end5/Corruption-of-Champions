@@ -86,7 +86,7 @@ export class LethiceScenes {
         outputText("\n\nThe question remains - what to do with her?");
 
         menu();
-        if (player.hasCock()) addButton(0, "Plow Her", plowHer);
+        if (player.cocks.length > 0) addButton(0, "Plow Her", plowHer);
         if (player.hasVagina()) addButton(1, "Queen Her", queenHer);
         addButton(2, "Boob Play", boobPlay, hpVictory);
 
@@ -254,7 +254,7 @@ export class LethiceScenes {
         outputText("\n\nLetting her continue on her way, you glance up to the remaining demons in the stands, and the horde flopping around the floor more towards the door. They hoot and holler, stroking their cocks or brazenly fingering themselves, urging you to claim your conquest any way you want. Clearly Lethice isn’t too well-loved, it seems - or demons just value voyeurism more than loyalty. Not surprising, but your heart still hammers all the harder for the added encouragement.");
 
         outputText("\n\nYour [hips] rock back and forth, smearing the demon’s chin with musky slime");
-        if (player.hasCock()) outputText(" and dragging your [cock] across her face, smearing pre all through her hair");
+        if (player.cocks.length > 0) outputText(" and dragging your [cock] across her face, smearing pre all through her hair");
         outputText(". She keeps wriggling under you, trying to rest herself free of your pin, but you’re relentless in your determination: she’s not moving from this spot until you cum all over her face!");
 
         outputText("\n\n<i>“Lick harder, bitch!”</i> you shout, giving in to your dominant side and bucking your hips against Lethice’s demonic tongue.");
@@ -293,11 +293,11 @@ export class LethiceScenes {
         outputText("\n\nYou cut her off, tired of hearing the self-righteous bitch talk. Your hands lock around her teats, pinching and pulling at the vulnerable peaks until their owner’s back arches, voice twisting into a shrill scream of pleasure and pain. The more you savage her perky little tits, though, you start to feel Lethice’s demonic flesh shiver and prickle under your fingers. And then it starts to grow. The Demon Queen’s titflesh starts to expand in your hands, filling out like a pair of balloons. Her nipples swell up too, the once compact little points expanding rapidly across her smooth flesh.");
 
         outputText("\n\nYour eyes go wide, staring at Lethice’s rapidly-growing chest. Your fallen foes gives you a teasing look, fluttering her eyelashes like an innocent maiden - she’s not even taking this seriously! Giving her a fearsome scowl, you rear back and give one of her swelling teats a rough slap. The sound echoes throughout the throne room, a thunderous sound that lays a hush over the crowd of demons. Lethice gasps, but her chest seems to hop up a whole cup size the moment you strike her alabaster flesh.");
-        if (player.hasCock()) outputText(" They’re easily big enough to fuck now!");
+        if (player.cocks.length > 0) outputText(" They’re easily big enough to fuck now!");
 
         outputText("\n\nYou’re half sure now that Lethice is just trying to entice you, but after all you’ve been through... everything you’ve done to get here... you don’t really care. You’re going to take your just rewards from the queen, whether she likes it or not.");
 
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nYanking off your [armor], you grab your [cock] and let the hardening slab of meat flop into the growing valley of Lethice’s cleavage. The Demon Queen licks her lips at the sight of it, her dark eyes gleaming hungrily. You have to give her another rough push down, putting the demoness back in her place: she’s not in charge here!");
 
             outputText("\n\nHer back goes flat against the flagstone, making her grunt with surprise, but she just giggles and cups her breasts, inviting you to ravish the slip of flesh between them. Her tits are two plump orbs now, sinfully soft and jiggling with every one of their owner’s quickened breaths. You ram your hips forward, more than happy to take advantage of the quivering valley you’ve brought into existence. Each thrust between the Demon Queen’s tits just makes them grow more and more, at first lovingly caressing your [cock], then enveloping it completely. She’s quickly surrounded your entire member in her ever-expanding titflesh, and shows no sign of stopping! The once petite queen looks positively cowgirl-like now, and you’re starting to feel liquid sloshing around in her chest too! She gasps, and a squirt of pale purple milk squirts out of her now saucer-sized teats. Geysers of corrupted cream spurt out of her every time your [hips] slam into Lethice’s jiggling underside, eliciting a sensual moan from the soulless faux-nun with each mighty thrust.");
@@ -616,7 +616,7 @@ export class LethiceScenes {
         outputText("\n\nAnd now... now the Demon’s Champion stands victorious on the ramparts of the last free city in your realm, looking over the carnal chaos you’ve let loose. The streets of Tel’Adre are overrun with demons of every shape and form, fucking like mad as the screaming, struggling defenders drown in a sea of corrupted cum and milk and every other sexual fluid they could imagine.");
 
         outputText("\n\nThe sight of such a magnificent, victorious orgy sends shivers of delight through you almost as sexual as the wet, tight hug of your consort’s sex around your");
-        if (player.hasCock()) outputText(" [cock]");
+        if (player.cocks.length > 0) outputText(" [cock]");
         else outputText(" newwgrown cock. Just another side benefit of demonhood: molding your body on the fly to suit whatever takes your fancy moment to moment.");
         outputText(" The thrill of victory simply and utterly overwhelmed your queen when she arrived to survey the scene of your victory, and you soon found yourself with Lethice bent over the sandy stone walls, breasts bared to the growing crowd of demons in the streets as you plow her from behind, hips pistoning hard against her lush, soft rump.");
 
@@ -695,7 +695,7 @@ export class LethiceScenes {
         outputText("\n\nYou look up with a start, blinking away the haze of lust that has fallen over you. Your [hips] are still pistoning like a jackhammer, but you wrest your attentions up to the glorious throne high above you where Mistress reclines, casually consuming the glowing soul-crystals that bear her name. The black-skinned dragoness beneath you moans and shudders, cum gushing from her corrupted cock and splattering onto the floor. Her whole body convulses in mindless pleasure, making a mess of your mistress’s throne dais.");
 
         outputText("\n\n<i>“Tsk! Now look what you’ve done, Champ,”</i> Mistress chides, tracing one of her lush fingers across the rim of her goblet. Slowly, sensuously, she drops her hand down to the side of her throne and coils her slender digits around a leather strap hooked there. Mistress coils her hand around it and gives the strap a harsh pull, yanking you by the neck off of the prostrate woman. Cum sprays from your");
-        if (player.dogCocks() == 0) outputText(" newly-grown doggy cock");
+        if (player.cocks.dogCocks() == 0) outputText(" newly-grown doggy cock");
         else outputText(" thick, throbbing dog-member");
         outputText(" as your swollen knot is yanked from the dragon-girl’s hole. You tumble across the floor with a pathetic whine, drooling spunk from your twitching member. Your beloved Mistress gives you a disapproving scowl as you recover.");
 

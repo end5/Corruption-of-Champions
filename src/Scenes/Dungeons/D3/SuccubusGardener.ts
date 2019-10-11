@@ -279,7 +279,7 @@ export class SuccubusGardener extends Monster {
         }
         else if (player.lust < 100) {
             outputText("Ohhhh, you're close now. You can feel the need hammering inside of you, soaking in through your [skinFurScales] to stoke the fires between your [legs] into a blazing inferno, one you couldn't resist even if you wanted to. Then... then you'll be free to cum. You shake your head. Gotta hold it together");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText(", even while your rigid cock" + ((player.cocks.length > 1) ? "s are" : " is") + " drizzling ropes of pre unimpeded.");
             }
             else if (player.hasVagina()) {

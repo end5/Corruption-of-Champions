@@ -322,7 +322,7 @@ export class PhoukaScene implements TimeAwareInterface {
                 outputText("  It looks like he needs a nap and you take that as your cue to get out of here.");
             else {
                 outputText("\n\nYou look at the sleeping phouka");
-                if (player.hasCock())
+                if (player.cocks.length > 0)
                     outputText(", [eachCock] beginning to swell" + (player.hasVagina() ? " and your [vagina] starting to moisten" : "") + ".");
                 else if (player.hasVagina())
                     outputText(", your [vagina] starting to moisten.");
@@ -332,7 +332,7 @@ export class PhoukaScene implements TimeAwareInterface {
             addButton(0, "Leave", phoukaDrinkLeave);
             if (player.lust >= 33) {
                 addButton(1, "Ride Faerie", phoukaSexFaerieNonCombat); // Works for all
-                if (player.hasCock()) addButton(2, "Fuck Faerie", phoukaSexFaerieFemaleNonCombat); // Male or Herm Only
+                if (player.cocks.length > 0) addButton(2, "Fuck Faerie", phoukaSexFaerieFemaleNonCombat); // Male or Herm Only
             }
         }
     }
@@ -426,7 +426,7 @@ export class PhoukaScene implements TimeAwareInterface {
                 menu();
                 addButton(0, "Leave", phoukaLeaveOnLustWin);
                 addButton(1, "Anal Ride", phoukaSexFaeriePostCombat); // Works for all
-                if (player.hasCock()) addButton(2, "Fuck Faerie", phoukaSexFaerieFemalePostCombat); // Male or Herm Only
+                if (player.cocks.length > 0) addButton(2, "Fuck Faerie", phoukaSexFaerieFemalePostCombat); // Male or Herm Only
             }
         }
     }
@@ -688,7 +688,7 @@ export class PhoukaScene implements TimeAwareInterface {
                 outputText("You sigh in frustration as the " + phoukaName() + " pulls free from your ass, obviously about to leave.  He notices your condition and thinks better of it. <i>“Just gimme a sec.  I’ll get ye off,”</i> he says. <i>“After all, I do want ye to come back fer more.”</i>\n\nHe starts jacking himself off, whispering something to himself under his breath.  When his cock looks nice and hard he grabs your flanks and drives the full length back inside you.  As he pistons into your rectum, you feel that denied orgasm building and at last you cum.");
             else
                 outputText("Not yet satisfied, you wait for the flood to stop, then begin to really ride your man-sized faerie.\n\nYou don't give him the chance to go soft.  Your [if (isNaga = true)tail][if (isNaga = false)legs] feel rubbery and your muscles are burning when you finally cum.");
-            if (player.hasCock()) outputText("  [EachCock] fires several blasts of cum into the bog [if (isTaur = true)beneath you][if (isTaur = false)and all over your faerie partner].");
+            if (player.cocks.length > 0) outputText("  [EachCock] fires several blasts of cum into the bog [if (isTaur = true)beneath you][if (isTaur = false)and all over your faerie partner].");
             outputText("\n\nYour sphincter clenches on the intruder, either trying to force it out or draw more in, even you can't say which.  You let out a sigh and put a hand on your belly, still heavy with a thick cum slurry.\n\nYou're just about to [if (isTaur = true)stand up when your partner thrusts forward][if (isTaur = false)roll off your spent partner when he thrusts upward] violently with his hips.  Caught off guard you try to steady yourself, only to feel his hands [if (isTaur = true)grip your flanks][if (isTaur = false)wrap around your waist].  The " + phoukaName() + " cums a second time, blasting another load of cum deep into your bowels.  Your stomach muscles are no match for this wave of spooge and [if (isTaur = true)you feel your heavy belly sink deeper into the bog][if (isTaur = false)you topple forward], stuffed with enough cum for anyone to assume you're pregnant with twins.  More than that you can feel each of the one-way valves in your gut give way, one after another, until a fountain of thick sugary sperm bubbles into your stomach.  If the " + phoukaName() + " had made one more deposit you probably would have tasted it.\n\nYour partner pushes on you, [if (isTaur = true)pulling his spent member from your rectum.  ][if (isTaur = false)rolling you off of him, wheezing, <i>“Air, air!”</i> ]He shrinks back to his normal size and recovers faster than you.  Before he leaves, he takes the time to pat your belly. <i>“Awful waste lad.  Go swallow an egg, a pink one.  That or suck down some o’ that succubi milk.  Then you come back here and I'll give you a real party.”</i>");
             dynStats("cor", rand(1) + 3); // Extra two corruption for being enough of a pervert to want to fuck the phouka
             if (postCombat) {
@@ -716,10 +716,10 @@ export class PhoukaScene implements TimeAwareInterface {
         else
             outputText(", but she still looks more human than most of the people you've met in Mareth.");
         outputText("\n\nThe most important thing to you right now is her sopping wet pussy, which looks most inviting.  While she lies there recovering you press your [cock biggest] against her hole.  Her eyes flutter open as you [if (isTaur = true)line your stallion prick up and push.  She slides along the ground on her back but then, to your surprise, she grabs your pole with her hands and presses the head against her muff, helping you impale her][if (isTaur = false)wrap your hands around her tiny waist and push]. <i>“Oh fuck - sooo big!”</i> she moans as you force open her pussy.  The walls of her vagina spasm around your cock and you realize she's already cumming.  Taking advantage, you rest most of your weight on your cock and slide several more inches inside.\n\n[if (isTaur = true)To your surprise the horny faerie girl’s][if (isTaur = false)The horny faerie wraps her twitching legs around you.  To your surprise her] orgasm just doesn't end.  Instead her whole body, inside and out, continues to spasm.  Your only proof it's an orgasm and not some kind of seizure is that she keeps moaning and screaming <i>“MORE!”</i>, <i>“YES!”</i> and sometimes <i>“FILL ME!”</i>\n\nThe constant squeezing and sucking of her elastic cunt feels as good as anything a succubus could do and soon enough you feel a familiar warmth in your [balls].  'Fill me' she begs you in an exhausted whisper.  You're only too happy to oblige this faerie fuckslut.  ");
-        if (player.biggestCockLength() < 8)
-            outputText("You push the last inch of your " + int(player.biggestCockLength()) + " prick into the moaning slut.");
-        else if (player.biggestCockLength() < 15)
-            outputText("You feed the last inch of your " + int(player.biggestCockLength()) + " cock into her.  Your cockhead bumps against her cervix and the slut beneath you begs for more.");
+        if (player.cocks.biggestCockLength() < 8)
+            outputText("You push the last inch of your " + int(player.cocks.biggestCockLength()) + " prick into the moaning slut.");
+        else if (player.cocks.biggestCockLength() < 15)
+            outputText("You feed the last inch of your " + int(player.cocks.biggestCockLength()) + " cock into her.  Your cockhead bumps against her cervix and the slut beneath you begs for more.");
         else {
             outputText("You drive as much of your cock as you can into the little faerie slut, but there's just too much meat for her to take in.");
             if (player.cor <= 50)

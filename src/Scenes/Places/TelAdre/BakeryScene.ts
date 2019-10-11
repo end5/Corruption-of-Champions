@@ -4,7 +4,7 @@ export class BakeryScene extends TelAdreAbstractContent {
 
     // [First time approach]
     public bakeryuuuuuu(): void {
-        if (isEaster() && player.hasCock() && (flags[kFLAGS.LAST_EASTER_YEAR] < date.fullYear || rand(20) == 0)) {
+        if (isEaster() && player.cocks.length > 0 && (flags[kFLAGS.LAST_EASTER_YEAR] < date.fullYear || rand(20) == 0)) {
             flags[kFLAGS.LAST_EASTER_YEAR] = date.fullYear;
             easterBakeSale();
             return;

@@ -87,7 +87,7 @@ export class GoblinScene {
         else outputText("trembling", false);
         outputText(" form.  Your breath is knocked from your body as she drops all her weight onto your middle, making her ass and well-rounded tits jiggle enticingly.   She reaches up to twist her nipple-studs, grinding the sopping wetness of her crotch up and down your belly.\n\n", false);
         outputText("Your body grows hot, responding to the tiny fetish-slut's outrageous display of desire.  ", false);
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText(images.showImage("goblin-loss-male-raped"));
             outputText("The warmth spreads, growing larger ", false);
             if (player.cocks[0].cockLength <= 7) outputText("as your bulge begins to press between her soft ass-cheeks", false);
@@ -106,9 +106,9 @@ export class GoblinScene {
         else outputText("twisting and tweaking", false);
         outputText(", torturing you with pain and pleasure.\n\n", false);
         // [DICK VERSION]
-        if (player.totalCocks() > 0 && (!player.hasVagina() || rand(2) == 0)) {
+        if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
             // [TOO BIG]
-            if (player.cockArea(0) > monster.vaginalCapacity()) {
+            if (player.cocks.cockArea(0) > monster.vaginalCapacity()) {
                 outputText("She lifts her body up high, grabbing your " + cockDescript(game.player, 0) + " with both her petite hands.  Your mind somehow makes note of the shiny black of her fingernails as she struggles to part her dripping wet womanhood around your massive member.  Though her body stretches to an absurd degree, she just can't get you inside. She pouts and drops your tool back onto you, promising you, \"<i>I'll find a way to get every ounce of your cum inside me, don't you worry.</i>\"\n\n", false);
                 outputText("The little slut jumps back onto you, wrapping her arms and legs tightly around your member.  Her tongue slithers over ", false);
                 if (player.balls > 0) outputText("your " + ballsDescriptLight(player), false);
@@ -215,22 +215,22 @@ export class GoblinScene {
         // cunt stuff
         if (player.hasVagina()) cuntFuck = gobboGetsRapedFem;
         // Dick stuff:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             // Corrupt too big scene
-            if (player.cockArea(player.biggestCockIndex()) > monster.vaginalCapacity() && player.cor > 80 && game.monk > 2)
+            if (player.cocks.cockArea(player.cocks.biggestCockIndex()) > monster.vaginalCapacity() && player.cor > 80 && game.monk > 2)
                 corruptTooBig = rapeAGoblinCorruptTooBig;
             // Regular too big scene
-            if (player.cockArea(player.biggestCockIndex()) > monster.vaginalCapacity())
+            if (player.cocks.cockArea(player.cocks.biggestCockIndex()) > monster.vaginalCapacity())
                 tooBig = manRapesGoblinTooBig;
             // It fits!
-            if (player.cockThatFits(monster.vaginalCapacity()) >= 0) {
+            if (player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0) {
                 jog = gobboGetsRapedMaleFits;
                 fitsFuck = gatsGoblinBoners;
             }
             // Buttsex toggle
-            if (player.cockThatFits(monster.analCapacity()) >= 0 && player.cor > 70) buttseks = gobboButtSecks;
+            if (player.cocks.cockThatFits(monster.analCapacity()) >= 0 && player.cor > 70) buttseks = gobboButtSecks;
             // Spidercondom
-            if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && player.cockThatFits(monster.vaginalCapacity()) >= 0)
+            if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0)
                 spiderCondom = goblinCondomed;
         }
         // Breastfeed adds an option
@@ -267,7 +267,7 @@ export class GoblinScene {
     }
     private gobboButtSecks(): void {
         spriteSelect(24);
-        let x: number = player.cockThatFits(monster.analCapacity());
+        let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = 0;
         outputText("", true);
         outputText(images.showImage("goblin-win-male-buttsex"));
@@ -400,15 +400,15 @@ export class GoblinScene {
 
     // Corrupt too big fuck
     private rapeAGoblinCorruptTooBig(): void {
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
         spriteSelect(24);
         outputText(images.showImage("goblin-win-male-corruptedfuck"));
         outputText("You begin to remove your " + player.armorName + ", looking down on your helpless would-be-attacker and soon-to-be victim while licking your lips hungrily. Your " + multiCockDescriptLight(game.player), false);
-        if (player.cockTotal() == 1) outputText(" is", false);
+        if (player.cocks.length == 1) outputText(" is", false);
         else outputText(" are all", false);
         outputText(" far more aware of the situation than she is as you stoop down and strip her of every scrap of her admittedly sparse clothing. While you look her over, ", false);
-        if (player.cockTotal() > 1) outputText("one of your " + multiCockDescriptLight(game.player) + " comes to rest on top of her and the fact that it's ", false);
+        if (player.cocks.length > 1) outputText("one of your " + multiCockDescriptLight(game.player) + " comes to rest on top of her and the fact that it's ", false);
         else outputText("your " + cockDescript(game.player, x) + " comes to rest on top of her and the fact that it's ", false);
         if (player.cocks[0].cockLength < 20) outputText("about as long as her entire torso", false);
         else outputText("bigger than she is", false);
@@ -449,11 +449,11 @@ export class GoblinScene {
             if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_SLICK) outputText("juices ", false);
             else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_DROOLING) outputText("floods ", false);
             else outputText("explodes ", false);
-            if (player.cockTotal() > 1) outputText("and the rest of your " + multiCockDescriptLight(game.player) + " drench her, ", false);
+            if (player.cocks.length > 1) outputText("and the rest of your " + multiCockDescriptLight(game.player) + " drench her, ", false);
         }
-        else if (player.cockTotal() > 1) {
+        else if (player.cocks.length > 1) {
             outputText("while your other " + Appearance.cockNoun(CockTypesEnum.HUMAN), false);
-            if (player.cockTotal() > 2) outputText(" drench her, ", false);
+            if (player.cocks.length > 2) outputText(" drench her, ", false);
             else outputText(" drenches her, ", false);
         }
         outputText("the bitch is too tight! Like a natural cock-ring! ", false);
@@ -464,8 +464,8 @@ export class GoblinScene {
         outputText("For what seems like hours you almost literally screw the brains out of her little green head, working yourself back up to the brink. You consider pulling out this time, but decide against it. At least two loads worth at once; it'll work, and the bitch has it coming.\n\n", false);
         outputText("\"<i>Let's. Try. This. AGAIN!</i>\" you shout, pulling the two of you back into a sitting position and arching both of your backs.\n\n", false);
         outputText("Your " + cockDescript(game.player, x) + " is pressed so firmly against her skin that you can see the cum working its way up and out of your shaft and bloating your goblin toy with only the first shot. ", false);
-        if (player.cockTotal() > 2) outputText("Your remaining " + multiCockDescriptLight(game.player) + " blast geysers into the air, coating you both in your spunk. ", false);
-        if (player.cockTotal() == 2) outputText("Your remaining penis blasts geysers into the air, coating you both with spunk. ", false);
+        if (player.cocks.length > 2) outputText("Your remaining " + multiCockDescriptLight(game.player) + " blast geysers into the air, coating you both in your spunk. ", false);
+        if (player.cocks.length == 2) outputText("Your remaining penis blasts geysers into the air, coating you both with spunk. ", false);
         outputText("The same tightness that prevented your cumming the first time now ensures that none of the copious amount of seed you blast into her escapes until you pull out. It's a good thing your corruption was so effective, as she is beginning to look pregnant enough to hold a beach ball.\n\n", false);
         outputText("Finally you blow your last wad into this latest piece of ass, shoving her off of your " + cockDescript(game.player, x) + " and letting her fall to the ground. The impact sends torrents of cum sluicing out of her.\n\n", false);
         outputText("You stand and prepare to leave, looking down at the goblin slut you just finished with.\n\n", false);
@@ -480,10 +480,10 @@ export class GoblinScene {
     private manRapesGoblinTooBig(): void {
         outputText("", true);
         outputText(images.showImage("goblin-win-male-corruptedbj"));
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         spriteSelect(24);
         outputText("You whip out your stiffening maleness, revealing its ", false);
-        if (player.cockArea(x) < 80) outputText("nearly ", false);
+        if (player.cocks.cockArea(x) < 80) outputText("nearly ", false);
         outputText(" absurd size to your victim.  The goblin-girl's eyes grow to the size of dinner plates in shock as she takes in the view.   Knowing you'll try regardless of the size-mismatch, she spreads her legs and settles herself more comfortably on the ground.\n\n", false);
         outputText("You ", false);
         if (player.cor < 50) outputText("shrug and guess you may as well try since she's ready", false);
@@ -515,12 +515,12 @@ export class GoblinScene {
     // [DUDEGASM]
     private gobboGetsRapedMaleFits(): void {
         spriteSelect(24);
-        let x: number = player.cockThatFits(monster.vaginalCapacity());
-        if (x < 0) x = player.biggestCockIndex();
+        let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
+        if (x < 0) x = player.cocks.biggestCockIndex();
         outputText("", true);
         outputText(images.showImage("goblin-win-male-getridden"));
         // (FITS( barley) – Get ridden)
-        if (player.cockArea(x) > monster.vaginalCapacity() * .8) {
+        if (player.cocks.cockArea(x) > monster.vaginalCapacity() * .8) {
             outputText("You pick up the defeated goblin, looking her over. She crosses her arms across her chest pitifully and asks, \"<i>What now?</i>\" with her eyes darting down when she thinks you won't notice. A grimace temporarily crossing her face at the size of your " + cockDescript(game.player, x) + ". You get the idea of giving her more cock than she can handle, and lower her down towards your " + cockDescript(game.player, x) + ". The tip slips between her moist and folds, stretching her and taking some of her weight off your arms. She winces slightly, wrapping her legs as far around your " + hipDescription(player) + " as possible.\n\n", false);
             outputText("You start walking, letting your movements work with gravity, allowing you to penetrate her with little difficulty. Those puffy wet walls clench you tightly as she slides down, ", false);
             if (player.cocks[0].cockType == CockTypesEnum.DEMON) outputText("rubbing painfully against your demonic nubs", false);
@@ -594,7 +594,7 @@ export class GoblinScene {
     // Spider goblin condom
     private goblinCondomed(): void {
         spriteSelect(24);
-        const x: number = player.cockThatFits(monster.vaginalCapacity());
+        const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         outputText("", true);
         outputText(images.showImage("goblin-win-male-goblincondomed"));
         outputText("Defeated, the goblin girl's knees give out and she sinks backward, lying on her back with her emerald ankles suspended above her head. \"Use me,\" she begs, \"humiliate, degrade, and debase me! Just, whatever you do, fill me!\" As you strip off your " + player.armorName + ", she spreads her legs as wide as she can, the wanton girl presenting her drooling pussy to you, puffy green lips already dripping with beads of anxious sweat and eager lubrication. She wiggles in the dirt, gripping her plump rear with both hands and lifting her ass into the air for you, hopefully. You can practically feel the heat pouring off the small slut's cum-hungry cunt, her breeding-fever leaving her eyes glassy and unfocused. Standing over her, it's clear that the only things she's even aware of are the pulsing pussy between her legs and your burgeoning erection.\n\n", false);
@@ -621,30 +621,30 @@ export class GoblinScene {
     // REQUIRES: AT LEAST ONE DICK AND A COPY OF ATLAS SHRUGGED - MUST NOT BE MONSTROUSLY HUGE
     private gatsGoblinBoners(): void {
         outputText("", true);
-        let x: number = player.cockThatFits(monster.analCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(monster.analCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText(images.showImage("goblin-win-male-goblinboners"));
         outputText("The goblin lies strewn across the ground upon her stomach, exhausted from the battle. Her plump legs are unintentionally spread open while her ass pokes up into the air, giving you a clear view of her wet pussy as she tries to get herself off.  It seems as if the green-skinned slut has already forgotten about you - too many fruitless encounters might've caused her to give up hope on finding a virile specimen to pump her full of cum.\n\n", false);
 
         outputText("Luckily for her, you have every intention of changing that.\n\n", false);
 
         outputText("You begin to fondle your cock", false);
-        if (player.cockTotal() > 1) outputText("s", false);
+        if (player.cocks.length > 1) outputText("s", false);
         outputText(" as you walk towards the unsuspecting goblin girl, taking in the sight of her perfectly round cheeks as they jiggle against her hurried movements, her soft thighs clenched against the eager hand between them.  Bending down, you quickly grab the goblin's ample hips, causing the girl to squeak in surprise as she turns around to catch the sight of your erect length", false);
-        if (player.cockTotal() > 1) outputText("s", false);
+        if (player.cocks.length > 1) outputText("s", false);
         outputText(".\n\n", false);
 
         outputText("\"<i>W-woah!  Hey stud, whaddya think you're doing back there?</i>\" she yelps, more surprised than scared at your sudden appearance.  Instead of answering, you decide to grab your cock", false);
-        if (player.cockTotal() > 1) outputText("s", false);
+        if (player.cocks.length > 1) outputText("s", false);
         outputText(" and slap ", false);
-        if (player.cockTotal() == 1) outputText("it", false);
+        if (player.cocks.length == 1) outputText("it", false);
         else outputText("them", false);
         outputText(" against the bare flesh of her ass, whilst your victim anxiously awaits your next move.  You take your time massaging the goblin's slutty ass with your bare hands before sliding your " + cockDescript(game.player, x) + " in between her soft cheeks.  Your horny victim appears impatient, attempting to grind against you as she spreads her moist lips open, enthusiastic that she's found someone willing to mate with her.  You slap her ass firmly as you quicken your thrusting - seconds before finally plunging ", false);
-        if (player.cockTotal() == 1) outputText("your dick inside of the panting whore, pushing her forwards violently as you enter her tight snatch", false);
-        else if (player.cockTotal() == 2) outputText("both of your dicks inside of the panting whore, pushing her forwards violently as you enter her tight snatch and asshole", false);
+        if (player.cocks.length == 1) outputText("your dick inside of the panting whore, pushing her forwards violently as you enter her tight snatch", false);
+        else if (player.cocks.length == 2) outputText("both of your dicks inside of the panting whore, pushing her forwards violently as you enter her tight snatch and asshole", false);
         else {
             outputText("two of your dicks inside of the panting whore, pushing her forwards violently as you enter her tight snatch and asshole - your other cock", false);
-            if (player.cockTotal() >= 4) outputText("s", false);
+            if (player.cocks.length >= 4) outputText("s", false);
             outputText(" remaining sandwiched in between her asscheeks", false);
         }
         outputText(".\n\n", false);
@@ -652,7 +652,7 @@ export class GoblinScene {
         outputText("You roughly pound against the goblin girl, maintaining a firm grip on her hips while she squeals with delight.  The sound of your groin slapping against her echoes throughout the area, followed by your grunting and the goblin's moans of ecstasy.  Your victim struggles to lift herself up by her arms, only to collapse back down from the feeling of you invading her insides.\n\n", false);
 
         outputText("Eventually you begin to feel yourself coming to a climax, your movements getting faster and faster as you build up to your release.  The goblin below you has already lost herself to the pleasure of your " + cockDescript(game.player, x) + ", her eyes rolled upwards and her tongue drooling out of her mouth while her slutty face rubs against the ground you're currently pounding her on.  With a final thrust, your hips lurch forward as you paint her insides with your thick spunk, relishing in the feeling of your ejaculate filling her up to the brim and plugging her entrance", false);
-        if (player.cockTotal() == 2) outputText("s", false);
+        if (player.cocks.length == 2) outputText("s", false);
         outputText(".  You slowly release yourself from her tight body, finishing off by covering her curved back and pert rump with the rest of your seed.\n\n", false);
 
         outputText("You pick yourself back up, jerking yourself slowly as cum dribbles from your " + cockDescript(game.player, x) + " onto the collapsed body of the goblin.  It'll be awhile before she comes back to consciousness, but you're certain she'll have a better appreciation for sex when she does.", false);
@@ -665,7 +665,7 @@ export class GoblinScene {
         outputText(images.showImage("goblin-win-drider-egged"));
         // Play standard goblin victory text
         outputText("The pitiful struggling of the little green-skinned creature as she tries to scramble away from you gives you a rather generous view of her drooling box.  While you feel yourself ");
-        if (player.hasCock()) outputText("harden");
+        if (player.cocks.length > 0) outputText("harden");
         else if (player.hasVagina()) outputText("moisten");
         else outputText("twitch");
         outputText(" slightly,  you can't help but register the growing weight of your spider half.  Looking down at the goblin again, you decide that maybe you can both get something... <i>similar</i> to what you want.");
@@ -689,7 +689,7 @@ export class GoblinScene {
         outputText("\n\nYou finally bottom out, working the green cum-sleeve all the way down as you feel your thickness brush against her cervix.  You slide your hands out from under her arms and reposition them on her shoulders, pinning her in place for what's about to come.  Her stomach pushes out slightly when the first wave of lube forces its way inside her and she gasps in bliss, rubbing her hands across her 'pregnancy'.  Your own smile grows wider as you feel your bottom half clench and shiver, as the first of many eggs forces its way up your ovipositor.");
 
         outputText("\n\nYou feel its slow path up into the goblin, your egg-tube flaring out around it, until it stops just short of her womb's entrance.  She looks up from her stomach, her wide-eyed stare meeting yours for only a second before a powerful spasm forces the egg past her clenched cervix.  The miniature whore convulses, her eyes rolling back, tongue lolling as she cums hard, a torrent of girlcum spraying across your chitin.");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  Your own orgasm is just as strong, [eachCock] spraying powerfully across your torso");
             if (player.hasVagina()) outputText("and y");
         }

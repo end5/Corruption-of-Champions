@@ -72,12 +72,12 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
     public breakingKeltOptions(): void {
         clearOutput();
         spriteSelect(35);
-        if ((!player.hasCock() && flags[kFLAGS.KELT_BREAK_LEVEL] == 0) || flags[kFLAGS.NEVER_RESIST_KELT] == 1 || player.effects.getValue2Of(StatusAffects.Kelt) >= 40 || player.effects.findByType(StatusAffects.Kelt) < 0) {
+        if ((!player.cocks.length > 0 && flags[kFLAGS.KELT_BREAK_LEVEL] == 0) || flags[kFLAGS.NEVER_RESIST_KELT] == 1 || player.effects.getValue2Of(StatusAffects.Kelt) >= 40 || player.effects.findByType(StatusAffects.Kelt) < 0) {
             farm.keltScene.keltEncounter();
             return;
         }
         if (flags[kFLAGS.KELT_BREAK_LEVEL] > 0) {
-            if (!player.hasCock()) {
+            if (!player.cocks.length > 0) {
                 outputText("You can't keep trying to break Kelt without the proper tool to do it with.");
                 menu();
                 addButton(0, "Next", farm.farmExploreEncounter);
@@ -209,7 +209,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         if (!player.isTaur()) outputText("pulling [eachCock] out of your [armor] and stroking yourself with your free hand");
         else {
             outputText("slapping your hardening dick");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" against your belly in anticipation");
         }
         outputText(".  You might as well add some flavor to the meal.");
@@ -223,7 +223,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         outputText("\n\n\"<i>Hey dipshit - I have a job here, and if you do this, you're going to fuck shit up for everybody.  Not to mention, I'm gonna come back and kick your ass once I get loose!  Besides, I've got a few sluts that need tending to.</i>\"");
 
         outputText("\n\nWhen you've leaked a sufficient amount of pre, you stop masturbating.  [EachCock] is already rock-hard, and you will have to put ");
-        if (player.cockTotal() == 1) outputText("it");
+        if (player.cocks.length == 1) outputText("it");
         else outputText("them");
         outputText(" to use later.  You lift the keg and walk up to Kelt.");
 
@@ -680,7 +680,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         // Fix hair color!
         if (flags[kFLAGS.KELLY_HAIR_COLOR] == 0) flags[kFLAGS.KELLY_HAIR_COLOR] = "chestnut brown";
         // PUNISH SCENES IF APPROPRIATE
-        if (flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT] > 0 && flags[kFLAGS.TIMES_PUNISHED_KELLY] == 0 && rand(3) == 0 && player.hasCock()) {
+        if (flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT] > 0 && flags[kFLAGS.TIMES_PUNISHED_KELLY] == 0 && rand(3) == 0 && player.cocks.length > 0) {
             flags[kFLAGS.KELLY_DISOBEYING_COUNTER] = 0;
             punishKelly();
             return;
@@ -734,7 +734,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText(".");
             addButton(6, "Give CanineP", giveKellyAPepper);
         }
-        if (flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT] > 0 && flags[kFLAGS.KELLY_DISOBEYING_COUNTER] >= 3 && player.hasCock()) {
+        if (flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT] > 0 && flags[kFLAGS.KELLY_DISOBEYING_COUNTER] >= 3 && player.cocks.length > 0) {
             outputText("\n<b>It looks like Kelly has taken to pleasuring herself again in your absense.  Do you want to take care of that?</b>");
             addButton(7, "Punish", punishKelly);
         }
@@ -752,16 +752,16 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
 
     private kellySexMenu(): void {
         menu();
-        if (player.hasCock() && player.lust >= 33) {
-            if (player.cockThatFits(300) >= 0 || flags[kFLAGS.KELLY_CUNT_TYPE] == 1) {
+        if (player.cocks.length > 0 && player.lust >= 33) {
+            if (player.cocks.cockThatFits(300) >= 0 || flags[kFLAGS.KELLY_CUNT_TYPE] == 1) {
                 if (pregnancy.isPregnant) addButton(0, "Preg Fuck", kellyPregSex);
                 else if (!player.isTaur()) addButton(0, "Fuck Cunt", fuckKellysCunt);
                 else addButton(0, "Fuck Cunt", taurOnTaurSexKelly);
                 if (flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT] == 0) addButton(0, "VirginFuck", takeKellysVirginity);
-                if (player.tentacleCocks() >= 2) addButton(1, "TentaFuck", tentaFuckKelly);
+                if (player.cocks.tentacleCocks() >= 2) addButton(1, "TentaFuck", tentaFuckKelly);
             }
             else outputText("\n<b>You're too big to fuck her vagina.</b>");
-            if (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] == 0 && player.cockThatFits(18, "length") < 0 && !player.isTaur()) {
+            if (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] == 0 && player.cocks.cockThatFits(18, "length") < 0 && !player.isTaur()) {
                 outputText("\n<b>You're too big to fuck her tits.  Maybe if you gave her something to make her grow more...</b>");
             }
             else if (!player.isTaur()) addButton(2, "Titfuck", kellyTitJob);
@@ -778,8 +778,8 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
     private fuckKellysCunt(): void {
         clearOutput();
         flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT]++;
-        let x: number = player.cockThatFits(300);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(300);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You strip out of your [armor] in a hurry, intent on claiming your equine slut from behind.  As soon as [eachCock] flops free, Kelly takes notice, her hand coming in front of her mouth in surprise.");
 
         outputText("\n\n\"<i>Are we... are you going to fuck me, [Master]?</i>\"  Kelly asks excitedly, pawing at the ground with a forehoof.");
@@ -799,16 +799,16 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("height makes reaching her pussy a difficult task.  ");
         }
         outputText("Holding your " + cockDescript(game.player, x) + " in one hand, you press your " + cockHead(player, x) + " against her entrance.   The steamy cunt pulses wetly around your girth, slowly spreading its thick lips to accept your rigid endowment.");
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your other erection");
-            if (player.cockTotal() > 2) outputText("s hang");
+            if (player.cocks.length > 2) outputText("s hang");
             else outputText(" hangs");
             outputText(" down below, collecting her drippings and smearing across her belly.");
         }
         outputText("  You slowly slide inside the tight tunnel, feeling Kelly's powerful muscles squeeze delightfully around you, massaging your " + cockDescript(game.player, x) + " with slow undulations.");
 
         outputText("\n\nKelly moans unrepentantly, loud enough for anyone nearby to hear.  Her hands move to her nipples and pinch at the tight buds, tugging and squeezing the only erogenous zones she can reach.  You ");
-        if (player.cockArea(x) >= 300) outputText("bottom out inside her");
+        if (player.cocks.cockArea(x) >= 300) outputText("bottom out inside her");
         else outputText("slide as far into her as she can handle");
         outputText(" and smack her ass for good measure.  She's so fucking warm!  You sit there for a moment, just to revel in the hot, slippery heat.  Then, you draw back, exposing yourself to the cool air - but only for a moment.  You slam your hips back into the tight centaur-twat without hesitation, the force of the impact jolting the larger woman's body forward.");
         outputText("\n\n\"<i>Yessss,</i>\" Kelly moans as she's impaled, her breasts jiggling as she paws at them.  \"<i>Ple-ooohhhh... please don't stop, [Master]!</i>\"  She begins to push her body against you, the silken tunnel she calls a cunt twitching rhythmically around your " + cockDescript(game.player, x) + " each time you hit the apex of your strokes.  You squeeze her haunches as you 'ride' her.  She loves every moment of it, even when you slap her butt for good measure, spurring her to bounce herself atop your rod faster and faster.");
@@ -846,8 +846,8 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
     private taurOnTaurSexKelly(): void {
         clearOutput();
         flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT]++;
-        let x: number = player.cockThatFits(300);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(300);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("Admiring your [armor], you slowly remove the portions that cover your animal-like bottom half, wondering how you could ever handle having to wear pants.  Letting [eachCock] swing free below you, smacking against your belly when erect - now that's life.  That's how you were meant to be!  You go ahead and undo the top parts of your gear as well, not wanting anything to come between you and the slutty fem-centaur just a few feet away.  She's keeping her eyes down submissively, but she keeps casting glances under your lower half, licking her lips whenever she gets a good look at [oneCock].");
 
         outputText("\n\nSeeking to tease her even more, you circle around her front, letting her admire your nudity as you drink her feminine curves, particularly the large swells of her chest.  You grope on without asking or warning, simply taking of what's yours, squeezing and testing your property.  Kelly bites her lower lip, her hindlegs trotting about, the attention obviously arousing her delicate, cum-hungry sensibilities.  She quietly mouths, \"<i>Please,</i>\" but you have no intention of giving it to her just yet.");
@@ -858,7 +858,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         outputText(", pressing it into her face, letting your sweat and the scent of your groin smother as effectively as your presence.  Her tongue extends, knowing what you want even before you have to ask.  She licks you, tentatively and then with increasing levels of confidence, smearing saliva all over your flesh as she licks up every drop of sweat, orally lubricating you with hot, wet tongue.");
         if (player.balls > 0) outputText("  Your [balls] tingle pleasantly from the attention, and you groan when she sucks one into her mouth, worshipping it with her lips.");
         outputText("\n\nSuitably turned on, you drag yourself away from Kelly, your skin popping out of her mouth with a lewd pop.  She's blushing when you turn around, openly groping her fat tits and casting lascivious looks towards your member");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(".  You gesture for her to rise and turn around, which she does");
         if (player.tallness < 60) outputText(" before sitting back down (she's too tall to take standing up) and lifting her tail");
         else outputText(" before lifting her tail");
@@ -905,7 +905,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         let four: number = -4;
         let five: number = -5;
         let temp: number = 0;
-        while (temp < player.totalCocks()) {
+        while (temp < player.cocks.length) {
             if (player.cocks[temp].cockType == CockTypesEnum.TENTACLE) {
                 if (one < 0) one = temp;
                 else if (two < 0) two = temp;
@@ -934,7 +934,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\nKelly still has a free hand, and your " + cockDescript(player, five) + " is left alone, flustered.  The squirming tentacle quickly finds a comfortable spot near her boob, but this time you don't need to do anything; the eager slut catches the vegetal rod and begins to stroke it furiously.  Her hands pump along your lengths in turn; both pricks are so hard that you don't know which one will cum first.  Her fingers move across the surface of your meaty green dongs with expert care, teasing you more and more.  You enjoy the double handjob, your duo of plant-like dongs ready to explode in a mess of cum.");
         }
         // [if (cocks > 5)
-        if (player.tentacleCocks() > 5) {
+        if (player.cocks.tentacleCocks() > 5) {
             outputText("\n\nSadly, there is no body part to fill or grind against for your remaining tentacle junk; you just wrap it around her horny body, crawling against every spot of skin that isn't occupied by some tentacle dong.");
         }
         outputText("\n\nEventually the slutty mare's holes and flesh are starting to drain your stamina; a pressure builds in your crotch as the imminent release arrives. With a raging grunt, you pump harder and faster, not caring in the least about the fuck-toy within your tentacle embrace.  [EachCock] jiggles in extreme arousal as they have their way with the quivering lump of horny flesh that you call Kelly.  At last the pressure is too much to bear, and you blast her with everything you have.  Torrents of spunk boil as they find their way up your urethras and utterly fill the centauress' holes.  Her lips contract lewdly around your " + cockDescript(player, one) + ", ready to swallow everything it squirts.  At the same time, her tight twat seems to be crunching your " + cockDescript(player, two) + " like a vice; you can't help but pump more and more ropes of jism into the slut's waiting womb.");
@@ -1043,8 +1043,8 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
     // Rimjob/Ride/Riding crop
     // Rimjob(C)
     private getARimjobFromKelly(): void {
-        let x: number = player.cockThatFits(300);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(300);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         flags[kFLAGS.TIMES_RIM_JOBBED_BY_KELLY]++;
         outputText("\"<i>You aren't worthy of my dick,</i>\" you say, as you slowly peel off your [armor]; you do it facing away from Kelly so that she can take in your [butt] as you slowly wriggle free of your underclothing.  \"<i>But I still need servicing.  So...</i>\"");
@@ -1074,7 +1074,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         outputText("\n\nHer tongue probes deeper and deeper into you, her plump lips pressing into your [asshole] until she touches something sensitive.  Your " + cockDescript(game.player, x) + " immediately reacts, twitching upwards restlessly.");
 
         outputText("\n\n\"<i>That's it,</i>\" you breathe. \"<i>Good girl.  Keep doing that...</i>\"  As she gently pushes and flicks her warm mouth muscle against your prostate, your dick");
-        if (player.cockTotal() > 1) outputText("s harden");
+        if (player.cocks.length > 1) outputText("s harden");
         else outputText(" hardens");
         outputText(" until after minutes of blissful pleasure you are bulging with need.  Her saliva coats your opening as you clench your muscles and trap her tongue deep in you before roughly rubbing your [ass] against her, face fucking her for all you are worth; the soft, slippery sensation inside you is immense and you pick up the pace.");
         if (player.isNaga()) outputText("  You clench her almost bone crushingly tight in your coils as rut overtakes you.");
@@ -1115,8 +1115,8 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
     // Ride(C)
     // (Assumes Kelly is at camp; minor revisions required otherwise)
     private rideKellyForPunishment(): void {
-        let x: number = player.cockThatFits(300);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(300);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         flags[kFLAGS.TIMES_RIDDEN_KELLY_FOR_PUNISHMENT]++;
         // First Time:
@@ -1340,8 +1340,8 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
 
     private takeKellysVirginity(): void {
         clearOutput();
-        let x: number = player.cockThatFits(300);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(300);
+        if (x < 0) x = player.cocks.smallestCockIndex();
 
         outputText("You tell Kelly that you intend to come claim the prize you broke her for - her virgin ");
         if (flags[kFLAGS.KELLY_CUNT_TYPE] == 1) outputText("horse-");
@@ -1382,7 +1382,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         if (player.isTaur()) outputText("breast as you snuggle up behind her, centaur to centaur,");
         else outputText("ass");
         outputText(" and laugh, \"<i>Here it comes, you eager whore!</i>\"  Then, you spear through her entrance with one powerful thrust.  In that second, her pussy somehow gets even hotter and warmer around your girth, and you sink yourself as deeply as you can");
-        if (player.cockArea(x) <= 300) {
+        if (player.cocks.cockArea(x) <= 300) {
             outputText(", nestling your [sheath] up against her ");
             if (flags[kFLAGS.KELLY_CUNT_TYPE] == 1) outputText("plump, equine cunt-lips");
             else outputText("slippery, pink cunt-lips");
@@ -1465,8 +1465,8 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
 
         let x: number;
 
-        if (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] == 0) x = player.cockThatFits(18, "length");
-        else x = player.biggestCockIndex();
+        if (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] == 0) x = player.cocks.cockThatFits(18, "length");
+        else x = player.cocks.biggestCockIndex();
 
         outputText("As Kelly eagerly trots towards you your eyes are naturally drawn to her breasts, bouncing gently with her swaying canter.  They are just slightly too big and pert to be of non-demonic origin; every step she takes makes them palpitate, her fat, tan curves dancing for you in the sunlight, her erect nipples begging to be touched and teased");
         // [Lactation:
@@ -1528,9 +1528,9 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
     private kellyPregSex(): void {
         clearOutput();
         let x: number;
-        if (flags[kFLAGS.KELLY_CUNT_TYPE] == 1) x = player.biggestCockIndex();
-        else x = player.cockThatFits(300);
-        if (x < 0) x = player.smallestCockIndex();
+        if (flags[kFLAGS.KELLY_CUNT_TYPE] == 1) x = player.cocks.biggestCockIndex();
+        else x = player.cocks.cockThatFits(300);
+        if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("Maybe because of her pregnancy, the slut seems to release even more powerful scents out of her slick pussy; you actually have a clear view of her wide, parted lips exuding sexual musk.  You want to take her right now, right there, and deposit on her unborn offspring the load they truly deserve.  As if it weren't enough, Kelly is releasing copious amount of juices and whinnies meekly from time to time, as if her pregnancy makes her uneasy and she needs a big fat cock to release her tension.");
         outputText("\n\nYou remove your [armor] and watch your " + multiCockDescriptLight(game.player) + " grow into a rock-hard erect state under the aphrodisiac scent; you're ready to stuff the breeding mare before you.  Driven mad with lust, you jump the centaur's behind and slap her angrily, making her moan and snort in submissive pleasure.  You can't take it anymore and with feverish excitement, you grab hold of [oneCock] and plunge it deep into Kelly's dark recesses.");
 
@@ -1583,13 +1583,13 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             // Not Centaur:
             if (!player.isTaur()) {
                 outputText("She helps you take off the lower half of your [armor] as you set yourself down and then wraps her warm hand around ");
-                if (player.cockTotal() == 1) outputText("[oneCock], gently tugging it.  It quickly hardens with the pleasing friction she coils around it.");
+                if (player.cocks.length == 1) outputText("[oneCock], gently tugging it.  It quickly hardens with the pleasing friction she coils around it.");
                 else outputText("first your [cock], then your [cock 2], gently tugging until they are both hard from the pleasing friction she coils around them.");
             }
             // Centaur:
             else {
                 outputText("You leisurely clop yourself around so your back end is facing her and sigh as ");
-                if (player.cockTotal() == 1) outputText("a warm hands wraps itself around your [cock] and then begins to gently tug, quickly hardening it with pleasing coils of friction.");
+                if (player.cocks.length == 1) outputText("a warm hands wraps itself around your [cock] and then begins to gently tug, quickly hardening it with pleasing coils of friction.");
                 else outputText("a warm hand wraps around first your [cock] and then your [cock 2] before beginning to gently tug, both quickly hardening from the pleasing coils of friction.");
             }
         }
@@ -1599,15 +1599,15 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\nGrinning, your centaur slave ");
             if (!player.isTaur()) {
                 outputText("slides off the lower half of your [armor] as you set yourself down and then grasps your cock");
-                if (player.cockTotal() > 1) outputText("s");
+                if (player.cocks.length > 1) outputText("s");
                 outputText(" with her soft hands.  You sigh as she begins to gently pump, making ");
-                if (player.cockTotal() > 1) outputText("them");
+                if (player.cocks.length > 1) outputText("them");
                 else outputText("it");
                 outputText(" harden quickly.");
             }
             else {
                 outputText("trots around behind you.  You sigh as ");
-                if (player.cockTotal() == 1) outputText("a warm hands wraps itself around your [cock] and then begins to gently tug, quickly hardening it with pleasing coils of friction.");
+                if (player.cocks.length == 1) outputText("a warm hands wraps itself around your [cock] and then begins to gently tug, quickly hardening it with pleasing coils of friction.");
                 else outputText("a warm hand wraps around first your [cock] and then your [cock 2] before beginning to gently tug, both quickly hardening from the pleasing coils of friction.");
             }
         }
@@ -1626,7 +1626,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             else outputText("  Now I am a woman, I work for another woman, and I spend most days polishing her [cock biggest]!");
             outputText("</i>\"  She laughs musically as she continues to rub your straining meat.  <i>\"They'll be alright, [Master].  They were never bound to me as tightly as I am to you, I was never as strong or as clever as you- and I was always waiting for someone to make me into a submissive cockslave, I just never realized it.  They'll probably shake out of it and go their separate ways eventually, find new lives.  Unless...</i>\"  She pauses again. \"<i>Unless you want me to go find them, [Master]?  Make them part of your glorious harem instead?  Make them see how inferior a [master] I really was?</i>\"  You tell her to keep pumping, close your eyes and imagine not one but three mare sluts serving you: imagining three plump, hungry mouths slathering up and down your [cock biggest] at the same time, ");
             // 1< cock:
-            if (player.cockTotal() > 1) outputText("imagining thrusting every single one of your cocks into a wet, willing hole, ");
+            if (player.cocks.length > 1) outputText("imagining thrusting every single one of your cocks into a wet, willing hole, ");
             // vagina:
             else if (player.hasVagina()) outputText("imagining one of them tongue-fucking your [vagina] as you buck into another's tight cunt, ");
             outputText("imagining the symphony of feminine squeals and moans as you cum....  Kelly coos as you bark wordlessly, jizz surging powerfully out of your " + multiCockDescriptLight(game.player) + ".  She keeps masturbating you, pumping you with gentle, insistent pressure until you are spent.  Once you're done, she bends in and licks you clean, humming happily as she laps at your [cockHead] with her soothing, seeking tongue.");
@@ -1646,7 +1646,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\n\"<i>For all the trouble I went through, bringing out your true self.  That pretty, needy pussy, those big whorish jugs, that thirst for cum, all the things you enjoy so much....  Do you know how difficult getting all that succubus milk together was?  It doesn't grow on trees, slave.  Then there's all that rich jizz I have to keep feeding you.  I'm rendering YOU a service when I use your wanton body, not the other way around.  Every time I deign to plug one of your slut-holes with hot cock, you are falling more and more in debt with me.</i>\"");
 
             outputText("\n\n\"<i>I-I'm sorry [Master],</i>\" Kelly whispers, her hot hands sliding up and down your [cock]");
-            if (player.cockTotal() > 1) outputText(" and [cock 2]");
+            if (player.cocks.length > 1) outputText(" and [cock 2]");
             outputText(".  \"<i>Of course I can never repay you for what you've done for me.  I wasn't thinking.</i>\"");
 
             outputText("\n\n\"<i>It was never your strong point.</i>\"  You close your eyes, enjoying the waves of undulating pleasure she is sending up and down your [cock].  \"<i>Now, a few years of dedicated service here, bearing and raising my children, serving my body how and when I see fit....  Why, you could be sat beside my throne, sucking my [cock biggest] day and night, within a decade.</i>\"  You feel Kelly's hot breath on your [cock biggest] and wonder which she is now imagining - the bit about your imaginary throne, or the bit about the decade of fucking and breeding before it.  More black blossoms in your head as you surge past the point of no return.  \"<i>And if you thought I did things to make you squeal here, bitch... just wait until I get you home.</i>\"  You groan as you cum, a fountain of white, pulsing pleasure, spurting everywhere.  Once you're done, Kelly bends in and licks you clean, humming happily as she laps at your [cockHead] with her soothing, seeking tongue.");
@@ -1661,7 +1661,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             if (!player.isTaur()) outputText("into the air");
             else outputText("onto the ground");
             outputText(".  Kelly nuzzles your [cocks] when you're done, slurping obscenely as she polishes your nobhead");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" to a shine.  You thank her with a slap on the ass and leave.");
         }
         // 4.
@@ -1743,7 +1743,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         menu();
         // Hair Dye/Apple Sauce
         // [chestnut brown/sable black/garish purple/bright pink/slutty blonde)
-        if (player.cockThatFits(300) >= 0 && player.hasCock()) addButton(0, "Applesauce", giveKellyAppleSauce);
+        if (player.cocks.cockThatFits(300) >= 0 && player.cocks.length > 0) addButton(0, "Applesauce", giveKellyAppleSauce);
         if (player.hasItem(consumables.BLACK_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "sable black") addButton(1, "Black Dye", dyeKellysBitchAssHair, consumables.BLACK_D);
         if (player.hasItem(consumables.BLOND_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "slutty blonde") addButton(2, "Blond Dye", dyeKellysBitchAssHair, consumables.BLOND_D);
         if (player.hasItem(consumables.PURPDYE) && flags[kFLAGS.KELLY_HAIR_COLOR] != "garish purple") addButton(3, "Purple Dye", dyeKellysBitchAssHair, consumables.PURPDYE);
@@ -1870,8 +1870,8 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("  Ooh!</i>\"  You slap her ass and grab her around her supple, human waist as you pass her.  Laughing, you walk into the barn together.");
         }
         // [merge]
-        const x: number = player.cockThatFits(300);
-        const y: number = player.cockThatFits2(300);
+        const x: number = player.cocks.cockThatFits(300);
+        const y: number = player.cocks.cockThatFits2(300);
         // Not Centaur:
         if (!player.isTaur()) {
             outputText("\n\nThe mere smell of the apple sauce has got Kelly's vagina dribbling, and in the close, warm environment of the barn the cloying, sweet smell radiating off her has got [eachCock] rock hard again, and your arousal urges you to work quickly.  You lead her to a shelf roughly level with her collarbone and place the bowl of apples sauce on it.  Transfixed by it, swallowing audibly, the centaur reaches for it automatically.  You catch her hand.");
@@ -1951,7 +1951,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         clearOutput();
         outputText("You step into Kelly, a question fading on her lips as you put your arms around her waist and answer it by drawing her face into yours.  You kiss her hungrily, pushing your tongue into her hot mouth.  It's almost an instinctive reaction - it's difficult to look at her face and not be drawn to her plump, pert lips, to not want to touch them, to use them.  And godsdamn, does she know how to use them.  She responds to your kiss in kind, humming blissfully as she eagerly accepts your tongue, rolling and curling it with her own, entwined like two lovers, drawing it further into her warm wetness as her pillowy boobs push into your [chest], her sweet, horny smell invading your nostrils as her overfull lips mash into your own, rubbing at your philtrum gently.");
         outputText("\n\nYou are already ragingly hard, [eachCock] throbbing to the idea of those warm, expert folds of flesh sliding over ");
-        if (player.cockTotal() == 1) outputText("it");
+        if (player.cocks.length == 1) outputText("it");
         else outputText("them");
         outputText(".  You pull away, catching Kelly's tongue with your own lips teasingly as you do, so you can watch her very slowly withdraw it, licking her lips so they glisten, her eyes shining with a depthless, green desire.  You murmur that it's time to put that mouth to use it was made for.  She's folding her legs beneath her before you've finished speaking, her hungry jade eyes never leaving yours.");
 
@@ -1959,7 +1959,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         if (!player.isTaur()) {
             outputText("\n\nYour [cock biggest] strains outwards as you slide out of your [armor], and you grin as you draw in close to Kelly's face, letting the heavy, demanding smell of your musk envelop her.  Her skin flushes and her breath comes more rapidly as you brush her cheek with it.  You smile and gently but firmly tell her to put her hands under her tits, close her eyes, open her mouth and then be still.  You admire the sight as you languidly rub yourself, your pretty centaur slave presenting her big round breasts to you and her tongue out, waiting to take your load whole.");
             outputText("\n\nYou step in and tease her with your [cock biggest], softly brushing her face with your [cockHead biggest], working the musky smell deep into her head.  She closes her eyes and breathes out deeply, enveloping your crotch in warm air.");
-            if (player.cocks[player.biggestCockIndex()].cockType == CockTypesEnum.HORSE) outputText("  You wonder whether the fact it is a horse cock, protruding proudly out of its sheath, makes it particularly difficult for her to resist, that it triggers some deep urge hardwired into her.  There's no way to really judge, but it seems like you've only just begun to tantalize her with it that the air below you is filled with bitten off grunts and moans, her mouth and head unconsciously bending towards your flared stallion prick as you rub it into her, always keeping it tantalizingly out of reach of her mouth.");
+            if (player.cocks[player.cocks.biggestCockIndex()].cockType == CockTypesEnum.HORSE) outputText("  You wonder whether the fact it is a horse cock, protruding proudly out of its sheath, makes it particularly difficult for her to resist, that it triggers some deep urge hardwired into her.  There's no way to really judge, but it seems like you've only just begun to tantalize her with it that the air below you is filled with bitten off grunts and moans, her mouth and head unconsciously bending towards your flared stallion prick as you rub it into her, always keeping it tantalizingly out of reach of her mouth.");
             outputText("  Finally, after about a minute of this tender torture, she groans from deep within her throat.");
 
             outputText("\n\n\"<i>Please [Master], let me swallow you, let me taste your strength, let me feel like a slut should,</i>\" she begs.  \"<i>I'll make it so good for you you'll never want anyone else, just like I will never want anyone else.  Just... let me drink your cum!</i>\"  You let a long second go by.");
@@ -2020,14 +2020,14 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             }
             // [merge]
             outputText("\n\nBreathing heavily, she presses her lips against the base of your [cock biggest] again before slowly working her way up, licking here and kissing softly there as she goes.  ");
-            if (player.biggestCockLength() > 15) outputText("It's a long way up and the effect is like a lift slowly rising, turning on a glow of lights on each level as it goes.  ");
+            if (player.cocks.biggestCockLength() > 15) outputText("It's a long way up and the effect is like a lift slowly rising, turning on a glow of lights on each level as it goes.  ");
             outputText("Finally she reaches your [cockHead biggest], and after resting her lips on your crown for a short time, moving them ever-so-gently to tantalize the most sensitive part of your bulging erection, she opens wide and envelops you, gripping the end of your dick in a soft, wet cave of shifting pleasure.  She slowly impales herself on it, her plump lips encapsulating more and more of your dick in sucking mouth flesh, and then it recedes, eventually even retreating from the crown as she goes back to licking and kissing the length.");
             outputText("\n\nYou look down with a mix of bemusement and amazement.  She doesn't return your gaze, her eyes closed and her hands on her boobs.  She continues to suck, lick and kiss your [cock biggest], slathering every inch she can reach with attention.  She really isn't trying to get any kind of reaction out of you.  She is completely bent upon worshipping your cock.  She finds a vein bulging with blue urgency and traces it upwards; the act makes you sigh and dribble pre-cum with pleasure.  Rising upwards, Kelly spreads her masterful tongue across your cum-slit and whimpers as the musky taste hits the back of her throat.");
             outputText("\n\nGrinning, you fully take in the image of your big boobed cumslut barely able to control her arousal as she laps at the very end of your cock with her hot tongue, and close your eyes as it causes you to dribble out even more pre.  It's enough.  Kelly moans as she sips the tiny stream down and shudders, her eyes rolling as femcum volubly spatters the ground behind her.  You shake your head in amazement.  It's so tempting to join her in orgasm and coat her with the load that is now pressing insistently on your cock... but no.  You aren't done yet, not by a long shot.");
 
             outputText("\n\n\"<i>It's lovely that you're such a bitch you can cum just from lapping up the smallest trickle of my weakest juices,</i>\" you say, letting amusement soak into your words.  \"<i>But we aren't here for you.  What can you do for me?</i>\"  The centaur only has eyes for your prick, licking her plump lips instinctively as she gathers her breath, her ardour and hunger not dimmed in the slightest.  She swathes your [cockHead biggest] in her mouth again, her head bobbing purposefully as your length is swallowed by the roiling wetness again, this time working rhythmically, ribbing it with pliant pleasure.  You sigh as you begin to lose yourself in the soft but purposeful motion, revolving your hips now with the pulse of her movements.");
             outputText("\n\nBit by bit, she takes more and more of your [cock biggest] into her milking redness.");
-            if (player.biggestCockLength() > 12) outputText("  She can't take all of your dick but she tries her best, thrusting her head down as she crams her mouth with your thick hardness until you are touching her tonsils.  Lust crowding you now, you take hold of her head and force her further down your [cock biggest], gently but purposefully pushing further into her tight throat with each thrust.  You manage to hold back on your urge to simply face fuck her as hard as you can, instead taking hold of the base of her braid and moving her back and forth on your length as sensually as you can, drawing your dick back from the delicious tightness of her throat so she can breathe deep and spend a moment worshipping your [cockHead biggest] with her tongue and lips, eliciting a moaned 'mmm' from her each time before penetrating her gullet again.");
+            if (player.cocks.biggestCockLength() > 12) outputText("  She can't take all of your dick but she tries her best, thrusting her head down as she crams her mouth with your thick hardness until you are touching her tonsils.  Lust crowding you now, you take hold of her head and force her further down your [cock biggest], gently but purposefully pushing further into her tight throat with each thrust.  You manage to hold back on your urge to simply face fuck her as hard as you can, instead taking hold of the base of her braid and moving her back and forth on your length as sensually as you can, drawing your dick back from the delicious tightness of her throat so she can breathe deep and spend a moment worshipping your [cockHead biggest] with her tongue and lips, eliciting a moaned 'mmm' from her each time before penetrating her gullet again.");
             // [Cock <12:
             else outputText("  Her mouth is a good fit for your dick and you soon find your limit, touching the back of her throat with each gentle thrust.  You manage to hold back on your urge to simply face fuck her as hard as you can, instead taking hold of the base of her braid and moving her back and forth on your length as sensually as you can, drawing your dick back to the entrance of her mouth so she can worship your [cockHead biggest] with her tongue and lips, eliciting a moaned 'mmm' or from her each time before thrusting deep into her maw again.");
             outputText("\n\nShe runs her tongue forward along the underbelly of your [cock biggest] as you thrust inwards and then backwards as you withdraw, creating the sweetest friction imaginable, and you find you are breathing hard, running close to the wind now as you thrust into her sucking, milking mouth harder and harder.  The more vigorously you do it, the louder Kelly's muffled sighs and slurps of pleasure become.");
@@ -2046,14 +2046,14 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\nYou feel your [cock biggest] straining downwards as you slide out of your [armor], and you grin as you draw in close to Kelly, letting the smell of your demanding musk envelop her as you stand over her, drooping your cock against her face.  Her skin flushes and her breath comes more rapidly as you brush her cheek with it.  You smile, step back and gently but firmly tell her to put her hands under her tits, close her eyes, open her mouth and then be still.");
             outputText("\n\nYou admire the sight for a moment.  Blood surges into your [cock biggest] as you look at your pretty centaur slave presenting her big, round breasts to you with her tongue out, waiting patiently to take your load whole.  You clop in and tease her again with your [cock biggest], softly brushing her face with your [cockHead biggest], working the musky smell deep into her head.  She closes her eyes and breathes out deeply, enveloping your crotch in warm air.");
             // Horse cock:
-            if (player.cocks[player.biggestCockIndex()].cockType == CockTypesEnum.HORSE) outputText("\n\nYou wonder whether the fact that you are a centaur and it is a horse cock, protruding proudly out of its sheath, makes it particularly difficult for her to resist, that your animal musk triggers some deep urge hardwired into her.  There's no way to really judge, but it seems like you've only just begun to tantalize her with it that the air below your barrel-like body is filled with bitten off grunts and moans as you rub her with your flared stallion prick, always keeping it tantalizingly out of reach of her mouth.");
+            if (player.cocks[player.cocks.biggestCockIndex()].cockType == CockTypesEnum.HORSE) outputText("\n\nYou wonder whether the fact that you are a centaur and it is a horse cock, protruding proudly out of its sheath, makes it particularly difficult for her to resist, that your animal musk triggers some deep urge hardwired into her.  There's no way to really judge, but it seems like you've only just begun to tantalize her with it that the air below your barrel-like body is filled with bitten off grunts and moans as you rub her with your flared stallion prick, always keeping it tantalizingly out of reach of her mouth.");
             outputText("  Finally, after about a minute of this tender torture, you hear her groan from deep within her throat.");
 
             outputText("\"<i>Please [Master], let me swallow you, let me taste your strength, let me feel like a slut should,</i>\" she begs. \"<i>I'll make it so good for you you'll never want anyone else, just like I will never want anyone else.  Just... let me drink your cum!</i>\"");
             outputText("\n\nYou let a long second go by.");
             outputText("\n\n\"<i>Go on then,</i>\" you say, trying to keep the amused tone out of your voice. \"<i>Show me why you deserve it.  Nice and slow.  And keep your hands where they are.</i>\"  Kelly lets out a small whinny of pleasure and bends into your crotch, kissing the base of your [cock biggest] longingly as she gets to work.");
             // If PC has anything else aside from a single cock:
-            if (player.cockTotal() > 1 || player.hasVagina()) outputText("  You're in no hurry, and with a slight roll of your [hips] you direct her to start at the front and work her way down.");
+            if (player.cocks.length > 1 || player.hasVagina()) outputText("  You're in no hurry, and with a slight roll of your [hips] you direct her to start at the front and work her way down.");
 
             // Vagina and balls:
             if (player.hasVagina() && player.balls > 0) {
@@ -2106,7 +2106,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             // [merge]
             outputText("\n\nBreathing heavily, she presses her lips against the base of your [cock biggest] again before slowly working her way down, licking here and kissing softly there as she goes.");
             // [Cock >15 inches:
-            if (player.biggestCockLength() > 15) {
+            if (player.cocks.biggestCockLength() > 15) {
                 outputText("  It's a long way down and the effect is like a lift slowly descending, turning on a glow of lights on each level as it goes.");
             }
             outputText("  Finally she reaches your [cockHead biggest], and after resting her lips on your crown for a short time, moving them ever-so-gently to tantalize the most sensitive part of your bulging erection, she opens wide and envelops you, gripping the end of your dick in a soft, wet cave of shifting pleasure.  She slowly impales herself on it, her plump lips encapsulating more and more of your dick in sucking mouth flesh... and then it recedes, eventually even retreating from the crown as she goes back to licking and kissing the length.");
@@ -2116,7 +2116,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\n\"<i>It's lovely that you're such a bitch you can cum just from lapping up the smallest trickle of my weakest juices,</i>\" you say, letting amusement soak into your words.  \"<i>But we aren't here for you.  What can you do for me?</i>\"  After a short pause, Kelly responds by swathing your [cockHead biggest] in her mouth again, her head bobbing purposefully as your length is swallowed by the roiling wetness again, this time working rhythmically, ribbing it with pliant pleasure.  You sigh as you begin to lose yourself in the soft but assiduous motion, revolving your hips now with the pulse of her movements.");
             outputText("\n\nBit by bit, she takes more and more of your [cock biggest] into her milking redness.  ");
             // [Cock >12:
-            if (player.biggestCockLength() > 12) {
+            if (player.cocks.biggestCockLength() > 12) {
                 outputText("  She can't take all of your dick but she tries her best, thrusting her head down as she crams her mouth with your thick hardness until you are touching her tonsils.  Lust crowding you now, you thrust your back haunches forward, forcing her further down your [cock biggest], gently but purposefully pushing further into her tight throat with each thrust.  You manage to hold back on your urge to simply face fuck her as hard as you can, instead moving her back and forth on your length as sensually as you can, drawing your dick back from the delicious tightness of her throat so she can breathe deep and spend a moment worshipping your [cockHead biggest] with her tongue and lips, eliciting a moaned “mmm” from her each time before penetrating her gullet again.");
             }
             // [Cock <12:

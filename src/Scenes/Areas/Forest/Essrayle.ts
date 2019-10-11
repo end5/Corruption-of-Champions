@@ -127,12 +127,12 @@ export class Essrayle {
         outputText("\n\nBeing rather large, it takes a moment to reorient yourself, but you manage to almost deepthroat the entirety of it.  Essy squeaks in surprise, moaning out as you take her nipple all the way and more as one hand kneads and squeezes through the almost doughy flesh of her other breast.  Clamping down with your lips, you begin to tug and suck as hard as you can.  You're briefly surprised when a long, loud, pleasured 'Moo' comes from the plant girl, and thick, syrupy, milky sap spills into your mouth almost instantly.");
 
         outputText("\n\nHer milk is a delightful substance, tasting like sweet cream, and you eagerly gulp it down, nursing hungrily for more.  The bovine utterances continue as Essy's lowest hand moves further down your waist, eventually coming to rest upon your crotch.  Though she's obviously highly distracted by your attentions to her breast, those lithe fingers ");
-        if (player.hasCock() && player.hasVagina()) outputText("find the dual sexes there.  Another hand joins the first, one gripping and tugging on your hardening cock as the other cups and squeezes over your pussy.");
-        else if (player.hasCock()) {
+        if (player.cocks.length > 0 && player.hasVagina()) outputText("find the dual sexes there.  Another hand joins the first, one gripping and tugging on your hardening cock as the other cups and squeezes over your pussy.");
+        else if (player.cocks.length > 0) {
             outputText("circle about ");
-            if (player.cockTotal() > 1) outputText("one of ");
+            if (player.cocks.length > 1) outputText("one of ");
             outputText("your shaft");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(", beginning to squeeze and slide about its length until your nursing is interrupted by moans of your own delight");
         }
         else outputText("stroke about the puffy, now-inflamed lips of your own flower, taking the lips between two fingers and stroking up and down across their length fully before switching to your moist core.");
@@ -150,7 +150,7 @@ export class Essrayle {
         outputText(".  Her lower hands grasp you, helping to raise you up until you're at the proper height, whence she abruptly plants her lips upon your crotch.");
 
         // Cock=
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nEssy drags her thin tongue over the length of [oneCock], flowing over every inch of it, bending about its curve as she licks from base to tip before engulfing it with her lips. Without a moment's hesitation, she slides down to the hilt, giving amazing pleasure from the surreal tightness, hitting you as you feel the plant's throat rippling and actually milking at your length.");
 
             outputText("\n\nEssy just smiles as she begins to bob her head, slowly at first, but with increasing speed as your moans of delight egg her on.  Two tentacles rise up, funneling wide at the tips and engulfing your [nipples]");
@@ -283,7 +283,7 @@ export class Essrayle {
         outputText("\n\nHer otherworldly, amethyst eyes lose their usual depth and become dull and dazed as the shadow of docility settles over her, Essy's expression softening to a blissful, cow-like contentment.  \"<i>Mooooo,</i>\" she languidly moans as her huge tits heave in oceanic jiggles.  They pulse under your siphoning caress, as if struggling to produce more sap.  While the oblivious girl seems lost in some private, torpid trance of delirious euphoria, her breasts almost appear to be swelling as if to embody her budding, enraptured exhilaration.");
 
         outputText("\n\nAs appealing as it may be to have the plant girl water herself to a glossy shine, you're reluctant to let her fountaining ivory go to waste.  Taking care to keep the steady pace of your pumping, you lubricate your now hard cock in the thick, syrupy \"milk.\"  Slick with the nourishing warmth of her nectar, you abandon all restraint, enjoying those verdant, pillowy, green breasts for all they're worth.  The wet sounds of squelching fill the air as you fuck ");
-        if (player.biggestCockLength() < 20) outputText("her lower pair of wobbling udders");
+        if (player.cocks.biggestCockLength() < 20) outputText("her lower pair of wobbling udders");
         else outputText("both sets of milk-bloated breasts");
         outputText(" faster and faster, the hot slapping of her bountiful bosom against your [cock]");
         if (player.balls > 0) outputText(" and your swollen, heavy balls against her fecund belly");

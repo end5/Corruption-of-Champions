@@ -312,7 +312,7 @@ export class MinervaScene {
         // {Male: [NEXT] / Female/Herm: [NEXT]}
         // Sex Menu
         if (player.gender == 1) {
-            if (player.cockThatFits(minervaVCapacity()) >= 0) addButton(0, "Next", minervaCowgirlSex);
+            if (player.cocks.cockThatFits(minervaVCapacity()) >= 0) addButton(0, "Next", minervaCowgirlSex);
             else addButton(0, "Next", letMinervaSuckYouOff);
         }
         else addButton(0, "Next", minervaLapSex);
@@ -581,7 +581,7 @@ export class MinervaScene {
             outputText(".  Without further ado, you weave a tale of how you saved a nice herm bee-girl from several of those nasty imps.  The little buggers were trying to rape the nice girl, and you couldn't just stand there and do nothing.  Taking it upon yourself, you beat those smelly imps into a pulp before carrying the grateful herm away.  To find a bee-girl that was a herm is a rare thing, indeed, and this one was just as pretty as her sisters.  She was so grateful for being saved from those little monsters that she gave you a mass of her honey and explained that she only wanted to find someone to have her eggs with.  Being the generous champion you are, you offered to help her out, flirtatiously pulling the curvy girl to you before kissing her.  That night, you spent your time with your grateful damsel, making love and having your womb and rear filled with sticky eggs and bearing the bee-girl's eggy babies for her.");
         }
         // PC cock:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nRolling right into another story, you begin to tell Minerva about the time you fought three hundred goblins, yet another fierce battle, with them tearing your clothes off and trying to rape you for your seed.  They would cry, \"<i>We claim this pole for the horde,</i>\" but you wouldn't let them have it without a fight, raising your spear of impregnation, you thrust deep into their ranks, activating your mighty spear's life-giving magics, and flooding the enemy lines with rich, potent streams of power.  Your attack was successful, the thick goopy mess defeating the goblin horde temporarily; they always came back each time though, with greater numbers.");
         }
         outputText("\n\nWith your tale over, your audience claps excitedly, the lonely siren quite happy to hear such silly stories.  \"<i>Oh, that was wonderful!  You tell such great stories!</i>\" she says happily, her tail swaying between her legs.  \"<i>It was a lot of fun to listen to, even if it got a bit silly,</i>\" she says with a bright smile before looking down, and putting a hand on her toned, flat stomach.  \"<i>Those damsels");
@@ -655,14 +655,14 @@ export class MinervaScene {
             if (flags[kFLAGS.TIMES_MINERVA_SEXED] == 0) {
                 outputText("\n\n\Minerva blushes and looks you up and down, looking a little nervous.  \"<i>Well... it's been a long time since I have been with someone, let alone someone who wasn't some domineering beast...  I guess it would be all right, some companionship would be nice...");
                 // PC cock, add:
-                if (player.hasCock()) outputText(" just... not in my vagina, all right?  That's... special.");
+                if (player.cocks.length > 0) outputText(" just... not in my vagina, all right?  That's... special.");
                 outputText("  Did you have anything specific in mind?");
                 // PC female, add: "
                 if (player.hasVagina()) outputText("  Would you mind how we do it?  You're the one asking, so... would you want me to fuck your ass?  Or... do you want me to try to fit between those sexy hips of yours?");
                 outputText("</i>\"");
             }
             // Dick Too Big - PC exceed capacity
-            else if (rand(2) == 0 && player.hasCock() && player.cockThatFits(minervaACapacity()) < 0)
+            else if (rand(2) == 0 && player.cocks.length > 0 && player.cocks.cockThatFits(minervaACapacity()) < 0)
                 outputText("Looking at the monstrous mass of your mammoth member, Minerva blushes hard and stares at it with wide eyes.  \"<i>Oh... oh my, that... that's </i>big</i>... I'm sorry, I don't think that's going to fit inside me, how about we try something else?  I'm sure we can come up with something!</i>\"  Minerva says with confidence.");
             // {Repeated/No romance:
             else if (!minervaRomanced()) {
@@ -674,7 +674,7 @@ export class MinervaScene {
             else {
                 outputText("\n\nMinerva blushes and smiles at you, looking pleased that you're eager to spend some quality time with her.  \"<i>Sure, love!  I always have fun when we lie together, and I could use some of our quality time.");
                 // PC cock, add:
-                if (player.hasCock()) outputText("  Since we're together, I'll even let you have my pussy, I bet you like the sound of that!");
+                if (player.cocks.length > 0) outputText("  Since we're together, I'll even let you have my pussy, I bet you like the sound of that!");
                 // PC female, add:
                 if (player.hasVagina()) outputText("  I'd be happy to pound that cute butt of yours and stuff your hot pussy - which would you rather have, my dear?");
                 outputText("</i>\"");
@@ -682,16 +682,16 @@ export class MinervaScene {
         }
         menu();
         let btnIdx: number = 0;
-        if (player.hasCock() && player.cockThatFits(minervaACapacity()) >= 0)
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(minervaACapacity()) >= 0)
             addButton(btnIdx++, "FuckHerButt", fuckMinervasAsshole);
-        if (player.hasCock() && player.cockThatFits(minervaVCapacity()) >= 0 && minervaRomanced()) {
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(minervaVCapacity()) >= 0 && minervaRomanced()) {
             addButton(btnIdx++, "FuckCowgirl", minervaCowgirlSex);
             addButton(btnIdx++, "RestrainFuck", fuckMinervaWithHerHandsBehindHerBack);
         }
         if (player.hasVagina())
             addButton(btnIdx++, "TakeHerDick", minervaLapSex);
         addButton(btnIdx++, "EatHerOut", goDownOnAHermAndLoveItYouDirtySlutYou);
-        if (player.hasCock())
+        if (player.cocks.length > 0)
             addButton(btnIdx++, "Get BJ", letMinervaSuckYouOff);
         addButton(9, "Leave", repeatEncounterMinerva);
     }
@@ -701,8 +701,8 @@ export class MinervaScene {
     private fuckMinervasAsshole(): void {
         clearOutput();
         spriteSelect(95);
-        let x: number = player.cockThatFits(minervaACapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(minervaACapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         flags[kFLAGS.TIMES_MINERVA_SEXED]++;
         outputText("You give her a smile and place a hand on Minerva's thigh, gently pushing to indicate she should get down on all fours.  The redheaded siren looks at you for a moment before nodding.  Slipping her tight, short shorts down her legs and tossing them aside, she gets down onto her hands and knees, as it is obvious what your intentions are.  Spreading her knees apart, Minerva lowers her chest and pushes her curvy rump up, presenting herself to you.");
         outputText("\n\nYou smirk and step forward, reaching out to appreciatively squeeze her firm, plump ass, then draw back a hand and give a playful slap to the nearest of her spankable cheeks, the sudden spank drawing a sharp squeak of surprise from the shark-like harpy, looking back at you with a blush on her face, a little embarrassed, but appreciative of the sentiment.  Lifting her long, sharky tail out of the way, she sways it from side to side before curling it gently around your back.  Pushing her rear back and bumping her ass against your hips, she's giving you a clear sign that she's ready.");
@@ -713,7 +713,7 @@ export class MinervaScene {
         if (player.hasVagina()) outputText(" and your [vagina]");
         outputText(" to the open air.");
         outputText("\n\nFeeling Minerva's bare ass rubbing against you helps coax your ");
-        if (player.cockTotal() > 1) outputText("shafts");
+        if (player.cocks.length > 1) outputText("shafts");
         else outputText("shaft");
         outputText(" to erectness, and you begin to teasingly drag [oneCock] through the crack of her curvy, spankable ass, hesitating to actually penetrate her until you're ready.  Your vexation brings a brighter blush to her cheeks, her tail squirming gently against you as she takes the hint.  Her hips start pushing back and forth, using her soft rounded rump to massage [eachCock], wanting to get you just as needy as she is.");
 
@@ -772,8 +772,8 @@ export class MinervaScene {
     private minervaCowgirlSex(): void {
         clearOutput();
         spriteSelect(95);
-        let x: number = player.cockThatFits(minervaVCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(minervaVCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         flags[kFLAGS.TIMES_MINERVA_SEXED]++;
         outputText("You look the attractive siren up and down and");
         if (player.tallness <= 60) outputText(", with some trepidation, given the difference in size,");
@@ -875,8 +875,8 @@ export class MinervaScene {
     // SEX SCENE 2.5 female/herm: LAP SEX
     // PC in Minerva's lap getting fucked by Minerva:
     private minervaLapSex(): void {
-        let x: number = player.cockThatFits(minervaACapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(minervaACapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         spriteSelect(95);
         flags[kFLAGS.TIMES_MINERVA_SEXED]++;
@@ -919,9 +919,9 @@ export class MinervaScene {
 
         outputText("\n\nThe feeling of being stuffed by such a cool, thick, and sticky fluid sends you spiraling over the edge in a mind-blowing orgasm.  Back arching and hands gripping the ground as you let out a piercing cry, your [vagina] clenches tightly and quivers around the invading member");
         // PC herm:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText(", your own throbbing phallus");
-            if (player.cockTotal() > 1) outputText("es");
+            if (player.cocks.length > 1) outputText("es");
             outputText(" cumming alongside,");
             // {Low-moderate cum:
             if (player.cumQ() < 500) outputText(" gushing your cum all over both of your bellies");
@@ -1043,8 +1043,8 @@ export class MinervaScene {
     // 4-6= sex scene 6: Blow job!
     // any - Minerva sucks off male/herm = needs penis
     private letMinervaSuckYouOff(): void {
-        let x: number = player.cockThatFits(minervaVCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(minervaVCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         spriteSelect(95);
         flags[kFLAGS.TIMES_MINERVA_SEXED]++;
@@ -1060,12 +1060,12 @@ export class MinervaScene {
         outputText("\n\nAnxious and ready, Minerva looks down at you before kneeling, placing a hand on your [hips] as she takes hold of your " + cockDescript(game.player, x) + " and slowly starts to stroke it.  Her eyes looking up at you, she leans in and starts to gently lick your hardening flesh with the tip of her tongue.  Under her careful, deliberate attentions your manhood is quickly brought to full attention.");
 
         // if cock area 21+:
-        if (player.cockArea(x) < 21) { }
-        else if (player.cockArea(x) < 34) {
+        if (player.cocks.cockArea(x) < 21) { }
+        else if (player.cocks.cockArea(x) < 34) {
             outputText("\n\nMinerva's eyes widen as your dick grows before her eyes.  \"<i>Goodness, you have a pretty good size, don't you?  I'm going to make you feel really good.</i>\"");
         }
         // if cock area 34+:
-        else if (player.cockArea(x) < 60) outputText("\n\nMinerva's eyes widen as your dick grows and grows, quickly growing almost as large as her own sizable package.  \"<i>Wow, you're hung, aren't you?  I'll do my best to take everything... wow,</i>\" she says with a blush on her face.");
+        else if (player.cocks.cockArea(x) < 60) outputText("\n\nMinerva's eyes widen as your dick grows and grows, quickly growing almost as large as her own sizable package.  \"<i>Wow, you're hung, aren't you?  I'll do my best to take everything... wow,</i>\" she says with a blush on her face.");
         // if cock area 60+:
         else outputText("\n\nMinerva's eyes widen and her mouth opens in shock as your dick grows and grows... and grows, quickly dwarfing her own sizable package.  \"<i>G-geez, what a huge dick, it's enormous...</i>\" she says with wonder in her voice.  Gulping, she licks her lips.  \"<i>W-well... I'll do my best to take all of it...</i>\"  A little nervousness is mixed into her voice, but with how tall she is, you're sure she could take it all.");
 
@@ -1083,7 +1083,7 @@ export class MinervaScene {
 
         outputText("\n\nPuckering her glossy black lips, Minerva starts to bob her head, taking in more and more of you with each downwards motion");
         // If cockarea 50+:
-        if (player.cockArea(x) >= 50) outputText(", your huge cock deep inside her mouth, and soon far down her throat.  With some difficulty, her slightly angular nose presses down against your crotch, every inch of your " + cockDescript(game.player, x) + " trapped inside her cool, wet mouth and throat");
+        if (player.cocks.cockArea(x) >= 50) outputText(", your huge cock deep inside her mouth, and soon far down her throat.  With some difficulty, her slightly angular nose presses down against your crotch, every inch of your " + cockDescript(game.player, x) + " trapped inside her cool, wet mouth and throat");
         outputText(".");
 
         outputText("\n\nSlurping and licking your package, she continues to bob her head up and down, working your length with everything she can.  Looking down behind her, you can clearly see her shapely rump swaying back and forth, she's clearly not minding the sexual act.");
@@ -1120,8 +1120,8 @@ export class MinervaScene {
     // 4-4= sex scene 4:  hand held behind
     // any- pc fucks Minerva, holding min's wrists from behind
     private fuckMinervaWithHerHandsBehindHerBack(): void {
-        let x: number = player.cockThatFits(minervaVCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(minervaVCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         spriteSelect(95);
         flags[kFLAGS.TIMES_MINERVA_SEXED]++;
@@ -1199,7 +1199,7 @@ export class MinervaScene {
         outputText("\n\nPulling her tongue back in, she gives you another grin and approaches, slipping a hand around and grabbing hold of your [butt] before leading you to the mossy base of one of her fruit trees so you can get comfortable.");
 
         outputText("\n\nSitting you down with your back against the tree, Minerva kneels her tall body down, looking up at you as she crawls toward you.  Smirking at her attitude, you spread your legs, spreading them wide and opening up the crotch of your [armor] so that Minerva can have her way with your feminine bits");
-        if (player.hasCock()) outputText(", and, perhaps, your more male parts while she's down there");
+        if (player.cocks.length > 0) outputText(", and, perhaps, your more male parts while she's down there");
         outputText(".");
 
         outputText("\n\nLicking her lips, the blue and grey herm moves in closer as you free your genitalia and present yourself to her, eager to see what she can do with that mouth of hers.  Grabbing hold of your thighs, Minerva  leans in");
@@ -1233,7 +1233,7 @@ export class MinervaScene {
         outputText("\n\nUnfortunately... or perhaps fortunately, Minerva is not yet done with you.  Licking her lips clean from your juices, she leans back in and draws her tongue up your still quivering cunt.  The slow, teasing touch on your freshly orgasmic flesh feels even better than before, your eyes snapping wide open as you gasp from the sensation.  Grinning her sharky grin, Minerva digs in again, her hands reaching around and grabbing hold of your [butt] before opening her mouth wide and clamping down on you, enclosing your feminine sex inside her cool, wet mouth, her tongue lashing out and spearing into you again, delving deeper then ever before, licking walls that had been left untouched by the siren.");
 
         // If dick:
-        if (player.hasCock()) outputText("\n\nOne of her hands slides back from your rear and across your flesh to your swollen, untouched cock, her soft hand closing around your member and stroking you as she works to send you plummeting back into that ocean of heavenly delights.");
+        if (player.cocks.length > 0) outputText("\n\nOne of her hands slides back from your rear and across your flesh to your swollen, untouched cock, her soft hand closing around your member and stroking you as she works to send you plummeting back into that ocean of heavenly delights.");
 
         outputText("\n\nWith how sensitive you are from your recent orgasms, and the skillful tongue probing your depths like a squirming eel sending jolts of electric pleasure through your quivering depths, it's not long before you're gasping and panting once again, drool slipping down your chin, your hands gripping both the tree and your sharky lover's body.  Deeper and deeper her wriggling tongue slithers, teasing and worming its way inside you until it even reaches your cervix, the tip of Minerva's tongue licking all around the edge of your sacred entrance, teasing it tenderly even as she licks every wall inside you.");
 

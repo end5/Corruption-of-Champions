@@ -50,13 +50,13 @@ export class SuccubusGardenerScenes {
         if (flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] > 0) outputText(" Perhaps Scylla's ruby mouth could give her a run for her money, but there's only one way to be sure.");
         else if (telAdre.dominika.fellatrixSucked() > 0) outputText(" Perhaps Dominika's all-consuming mouth could give her a run for her money, but there's only one way to be sure.");
         outputText(" You grab hold of the blubbering slut by her curled horns, admiring the way the tentacle-juice on her lips shines in the light, and pull her against your crotch, pressing her against");
-        if (player.hasCock()) outputText(" [oneCock]");
+        if (player.cocks.length > 0) outputText(" [oneCock]");
         else if (player.hasVagina()) outputText(" your [vagina]");
         else outputText(" the sensitive skin of your groin");
         outputText(". She eagerly goes to work, moaning from the attentions of the tentacle down below, and licking with such fervor that you'd think this is what she wanted all along.");
 
         outputText("\n\nRocking your [hips] to the pace of her short, frenzied lips, you lose yourself in the moment. Here in the garden with a succubus to serve your every whim, it's easy to just stop and enjoy the little things in life. Lethice can sit on her throne for the few minutes it will take you to");
-        if (player.hasCock()) outputText(" blow a wad down this slut's throat");
+        if (player.cocks.length > 0) outputText(" blow a wad down this slut's throat");
         else if (player.hasVagina()) outputText(" cream yourself on this slut's face");
         else outputText(" teach this bitch how to pleasure an asshole");
         outputText(". None-too-quiet slurps hang in the steamy air, accompanied by your own " + mf(player, "grunts", "coos") + " of enjoyment. You reach down to cup one of her breasts, ignorant of the shadows creeping nearer.");
@@ -64,15 +64,15 @@ export class SuccubusGardenerScenes {
         outputText("\n\nA flash of green obscures your vision for a moment. Before you can react, it has looped around your neck as strongly as a bar of iron and is pulling back, dragging you to the ground while your muscles are still focused on limply thrusting forward. It presses you flat, and in spite of your struggles, a dozen similarly powerful tendrils emerge. They wrap your limbs up in pale green cocoons of squirming plant life. The only parts of you remaining exposed are your crotch and your face, but even the latter has narrow bands encircling it, holding you still.");
 
         outputText("\n\nThe lusty demoness, still fucking one of her pets, looks dumbly in your directly, her gaze somewhat vacant and her jaw slackened. You can see the tentacle in her sopping wet cunt pulsating, and rivulets of sappy moisture are running from her over-engorged looks. She doesn't seem to be in any state to take advantage of you, but then again, she doesn't need to. A large, orange tentacle is hovering above you.");
-        if (!player.hasCock()) outputText(" Its outline is clearly phallic, but how could such a huge thing ever fit inside you, let alone anyone?");
+        if (!player.cocks.length > 0) outputText(" Its outline is clearly phallic, but how could such a huge thing ever fit inside you, let alone anyone?");
         else {
             outputText(" Its tip oozes lubricants, but the gaping pussy at its tip is big enough to hold six minotaurs' monster-cocks.");
-            if (player.biggestCockLength() < 36) outputText(" How could you ever hope to fill it?");
+            if (player.cocks.biggestCockLength() < 36) outputText(" How could you ever hope to fill it?");
             else outputText(" How long were they preparing this for you?");
         }
 
         let createdVag: boolean = false;
-        if (!player.hasCock() && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.hasVagina()) {
             // Genderless
             outputText("\n\nInterestingly, the new arrival descends towards your featureless cross, dripping neon orange goo as it goes. Where the stuff lands on you, your flesh alights with tingles of raw, pure sensation, somewhere stuck between pain and pleasure and yet neither. Then, that column of pulsating, phallic meat is pressing down against you, ramming itself into you, and there is not you nor your flesh can do but yield to its touches. You gasp, opening... no, <i>blossoming</i>, revealing sensitive lips and folds.");
 
@@ -81,14 +81,14 @@ export class SuccubusGardenerScenes {
             player.createVagina();
             createdVag = true;
         }
-        else if (player.hasVagina() && !player.hasCock()) {
+        else if (player.hasVagina() && !player.cocks.length > 0) {
             // Cooches only
             outputText("\n\nThe new arrival descends towards your already well-lubricated pussy, dripping neon orange goo as it goes. Where the stuff lands on you, you alight with raw, deviously pleasurable sensation, particularly on your pussy lips. They burn with raw, unfiltered sensation, both pleasure and pain all in one. Then, that column of pulsating, phallic meat presses down against you, too fat for any normal pussy to take, and yet somehow, it's ramming itself into you. You spread to accept it... and then spread some more, blossoming.");
 
         }
 
         // Merge Genderless & Coochies
-        if (!player.hasCock()) // 100% gonna have a cooch by this point
+        if (!player.cocks.length > 0) // 100% gonna have a cooch by this point
         {
             outputText("\n\nYou can feel your");
             if (createdVag) outputText(" new");
@@ -104,17 +104,17 @@ export class SuccubusGardenerScenes {
         // Dicks
         else {
             outputText("\n\nThat monstrous, hungry-looking pussy wastes no time in descending towards your " + multiCockDescriptLight(game.player) + ".");
-            if (player.biggestCockLength() <= 12) outputText(" The ease with which you slide inside is no surprise, given the disparity in size.");
-            else if (player.biggestCockLength() <= 30) outputText(" The ease with which you enter is no real surprise, given that even your bloated length" + ((player.cocks.length > 1) ? "s are" : " is") + " small by comparison.");
-            else if (player.biggestCockLength() <= 48) outputText(" You slide in with ease, perfectly matched to the hungry fuck-tunnel in size.");
+            if (player.cocks.biggestCockLength() <= 12) outputText(" The ease with which you slide inside is no surprise, given the disparity in size.");
+            else if (player.cocks.biggestCockLength() <= 30) outputText(" The ease with which you enter is no real surprise, given that even your bloated length" + ((player.cocks.length > 1) ? "s are" : " is") + " small by comparison.");
+            else if (player.cocks.biggestCockLength() <= 48) outputText(" You slide in with ease, perfectly matched to the hungry fuck-tunnel in size.");
             else outputText(" Sliding in must take quite the effort. The orange-hued twat is drooling around you, slowly working down an inch at a time. It takes all of you, even if it has to stretch beyond all reason to do so.");
             outputText(" It feels good, better");
-            if (player.biggestCockLength() <= 12) outputText(" than a giant that looks that loose should. You'd swear it was tight little twat from how firmly it's squeezing you!");
-            else if (player.biggestCockLength() <= 30) outputText(" than you had thought at a glance. Not only is it the perfect size, but it seems to hug and touch every part of your maleness" + ((player.cocks.length > 1) ? "es" : "") + " just right.");
-            else if (player.biggestCockLength() > 48) outputText(" than you would expect given how tightly-stretched it looks. You'd think it'd be pressing down painfully, but it feels tailor made to take you instead.");
+            if (player.cocks.biggestCockLength() <= 12) outputText(" than a giant that looks that loose should. You'd swear it was tight little twat from how firmly it's squeezing you!");
+            else if (player.cocks.biggestCockLength() <= 30) outputText(" than you had thought at a glance. Not only is it the perfect size, but it seems to hug and touch every part of your maleness" + ((player.cocks.length > 1) ? "es" : "") + " just right.");
+            else if (player.cocks.biggestCockLength() > 48) outputText(" than you would expect given how tightly-stretched it looks. You'd think it'd be pressing down painfully, but it feels tailor made to take you instead.");
 
             // Dicks need to grow
-            if (player.biggestCockLength() <= 30) {
+            if (player.cocks.biggestCockLength() <= 30) {
                 outputText("\n\nGlowing orange goo leaks from the oversized slit in thick beads. You briefly wonder what purpose the odd coloration could serve when the feeling of your cock" + ((player.cocks.length > 1) ? "s" : "") + " stretching answers. It's making you grow bigger, somehow! The sensation is akin to stretching long-dormant muscles... an subtle flexing of unrealized potential that makes you aware of just how much you can do, or in this case, how big you can get. Your vision swims as your body works to keep up with the sudden change, and you close your eyes to keep from sicking up.");
 
                 outputText("\n\nThe tentacle starts sliding up and down. At first, it's motions are slow and languid, giving you plenty of time to feel the supple slickness of its interior texture against you, but as your mass increases, so too does the speed of its up-and-down pumping motion. Even when it's pushing down, it somehow maintains a gentle suction that the velvety walls are tight against you, allowing you to subsume yourself in slippery cunt. The bigger you get, the better it feels. You aren't sure whether you're simply feeling more and more pussy at once or if you're somehow getting more sensitive, but it's enough to make your eyes roll back and your " + multiCockDescriptLight(game.player) + " practically piss pre-cum.");
@@ -177,22 +177,22 @@ export class SuccubusGardenerScenes {
 
     public surrenderToTheGardener(hpVictory: boolean = false): void {
         // Male
-        if (player.hasCock() && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.hasVagina()) {
             maleLoss(hpVictory);
         }
 
         // Genderless
-        if (!player.hasCock() && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.hasVagina()) {
             femGenderlessLoss(hpVictory);
         }
 
         // Fems
-        if (player.hasVagina() && !player.hasCock()) {
+        if (player.hasVagina() && !player.cocks.length > 0) {
             femGenderlessLoss(hpVictory);
         }
 
         // Herms can have either!
-        if (player.hasVagina() && player.hasCock()) {
+        if (player.hasVagina() && player.cocks.length > 0) {
             if (rand(2) == 0) femGenderlessLoss(hpVictory);
             else maleLoss(hpVictory);
         }
@@ -233,7 +233,7 @@ export class SuccubusGardenerScenes {
 
         outputText("\n\nThe succubus idly toys with your [vagina], sometimes rubbing her thumb");
         if (player.balls > 0) outputText(" across your [sack],");
-        else if (player.hasCock()) outputText(" across the underside of your [cock],");
+        else if (player.cocks.length > 0) outputText(" across the underside of your [cock],");
         else outputText(" against your [clit],");
         outputText(" confiding aloud, <i>\"To be honest, I'm a little jealous of you.\"</i>");
 
@@ -260,7 +260,7 @@ export class SuccubusGardenerScenes {
         outputText("\n\nIt grows dark as the tentacles adjust to your presence within their midst. Those not actively engaged in sliding across your [skinFurScales] are straightening once more, blocking the light and warmth of the sun out for what is perhaps the last time. Bands of slick, wet plant roll across your shoulders and [chest], enveloping them much like your limbs a moment before. A narrow band slides over your collarband and worms around your neck into an impromptu collar, tight enough that it's impossible to ignore but loose enough to allow you to breathe.");
 
         outputText("\n\nWetness drizzles your [vagina]");
-        if (player.hasCock()) outputText(" and " + multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(" and " + multiCockDescriptLight(game.player));
         outputText(" with foreign wetness. The vines' lubricant is surprisingly warm on your skin, and the feeling of rivulets of it running down the crack of your [butt] and over your [asshole] is surprisingly pleasant.");
         if (player.isBiped()) outputText(" Your [legs] are eased open, but who are you to stop them? You're as wet as anything, and if spreading wide is the next step towards scratching your itch, so be it.");
         outputText(" Your [clit] must look like a");
@@ -281,7 +281,7 @@ export class SuccubusGardenerScenes {
         outputText("\n\nYour [vagina] clinges tightly to the girthy intruder. The size of the glistening, girlspunk-stained stalk seems perfectly suited to keeping your lips your comfortably stretched. Perhaps it's all the aphrodisiac-laced spooge you're guzzling, but you don't feel an ounce of pain. Your pussy is incandescent with ecstasy. Letting your eyes drift closed, you voluntarily abandon you other senses in order to focus on the rhythmic strumming of your vaginal nerves. The pleasure is so right... so perfect, that you feel compelled to play your tongue along the tentacle in your mouth and work forgotten, vaginal muscles, trying to say thank you in the only way you're capable of.");
 
         // Dicks
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\n[EachCock], long ignored and pulsing ribbons of off-white lust, is snapped up by what feels like a custom-made sleeve. You can hear the noisy slurp of it vacuuming up your length");
             if (player.cocks.length > 1) outputText("s");
             outputText(" over the lurid squishing sounds coming from your cunt, and the two sensations combine into a riot of overwhelming sensory data. You're fucking and being fucked to two different, incongruent tempos and unable to make sense of it in the slightest.");
@@ -332,10 +332,10 @@ export class SuccubusGardenerScenes {
         outputText("<i>\"I'll be your doggie,\"</i> you gasp with an accompanying needy arch of your back.");
 
         outputText("\n\nPressing down on your [cock] once more, the succubus giggles, <i>\"Oh, you've chosen wisely, my little pet. Oh... oh my, has pet got a bone?\"</i> She bends over, stripping your [armor] with effortless efficiency to expose the eagerly pulsating length.");
-        if (player.biggestCockLength() >= 18) outputText(" <i>\"Oh, it's quite the big bone, isn't it? You're going to have an awful hard time dragging that around on all fours, [puppy]. Why, I bet the moment you see a bitch, you're going to be humping the ground, practically immobilized by it.");
-        else if (player.biggestCockLength() >= 8) {
+        if (player.cocks.biggestCockLength() >= 18) outputText(" <i>\"Oh, it's quite the big bone, isn't it? You're going to have an awful hard time dragging that around on all fours, [puppy]. Why, I bet the moment you see a bitch, you're going to be humping the ground, practically immobilized by it.");
+        else if (player.cocks.biggestCockLength() >= 8) {
             outputText(" <i>\"Oh, that's quite the nice bone you've got there, isn't it? Why, everyone is going to see how big you are down there, even while you're walking on all fours. I suppose you'd be good for breeding the bitches");
-            if (player.cocks[player.biggestCockIndex()].cockType != CockTypesEnum.DOG) outputText(", once you have an appropriately-shaped cock");
+            if (player.cocks[player.cocks.biggestCockIndex()].cockType != CockTypesEnum.DOG) outputText(", once you have an appropriately-shaped cock");
             outputText(".");
         }
         else {
@@ -404,7 +404,7 @@ export class SuccubusGardenerScenes {
         if (player.cocks.length > 1) outputText("s thrum");
         else outputText(" thrums");
         outputText(" with ready excitement. A thin trail of pre-spooge rolls out of you, trailing on the ground behind you with each happy twitch of your bitch-");
-        if (player.biggestCockLength() >= 12) outputText("breaker");
+        if (player.cocks.biggestCockLength() >= 12) outputText("breaker");
         else outputText("boner");
         outputText(". You hope she doesn't mind, but you have a hunch that she won't mind you being THAT kind of messy puppy.");
 
@@ -549,15 +549,15 @@ export class SuccubusGardenerScenes {
         outputText("Trapped in a hellish loop of constant yet unsatisfied orgasm, you're pulled into the sea of tentacles. Your eyes have rolled back too far to see the grinning demoness or her confidently swaggering derriere, but if they could, they'd grow wide with worry once the twisting, dripping vines blocked her out. Hunger and thirst soon compete with pleasure for your attention. The swelling of your belly has already receeded, the fluid inside long side converted to ivory jets of release.");
 
         outputText("\n\nA stalk as thick as your leg rises up, its tip nearly divided by a gash big enough to swallow a man whole, and");
-        if (player.biggestCockLength() < 6) {
+        if (player.cocks.biggestCockLength() < 6) {
             outputText(" swiftly engulfs your meager offering");
             if (player.cocks.length > 1) outputText("s");
         }
-        else if (player.biggestCockLength() < 12) {
+        else if (player.cocks.biggestCockLength() < 12) {
             outputText(" rapidly devours your plus-sized length");
             if (player.cocks.length > 1) outputText("s");
         }
-        else if (player.biggestCockLength() < 24) {
+        else if (player.cocks.biggestCockLength() < 24) {
             outputText(" devours your immense offering");
             if (player.cocks.length > 1) outputText("s");
             outputText(" with steady determination");

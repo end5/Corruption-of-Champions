@@ -14,15 +14,15 @@ export class FapArena extends BazaarAbstractContent {
     public fapArenaGOOOO(): void {
         outputText("", true);
         // (set X = longest cock)
-        const x: number = player.longestCock();
+        const x: number = player.cocks.longestCock();
         // [1st time]
         if (flags[kFLAGS.FAP_ARENA_RULES_EXPLAINED] == 0) outputText("As you approach the tent, you notice these people are actually waiting in line, pleasantly chatting with each other.  All varieties of species are there, from cute little goblins and mouse-faced people with rodent-like teeth, to towering centaurs and minotaurs, the latter easily noticed with their strong scent.   You spot the occasional sharp-toothed dog-morph or shark breeder, some traditional incubi and a few tentacled mutants, victims of consuming corrupted vegetation.  There are even a few humans, nonchalantly standing in the waiting line and making conversation, as if some of the others weren't monstrosities.  What strikes you is everyone's perfect civility.  Obviously everyone is used to the place.\n\n", false);
 
         outputText("The waiting line advances and you finally end up in front of the tent's entrance guarded by a surprisingly tall goblin.  She looks at you with assessing eyes, suddenly grabs your crotch with her left hand, rubs it for a second, and says, ", false);
         // [if dick size < 8 inches]
-        if (player.longestCockLength() < 8) {
+        if (player.cocks.longestCockLength() < 8) {
             outputText("\"<i>I'm afraid you aren't well-endowed enough to take part in our sessions.  Please come back when ", false);
-            if (!player.hasCock()) outputText("you have a cock.", false);
+            if (!player.cocks.length > 0) outputText("you have a cock.", false);
             else outputText("your cock is sufficiently long.", false);
             outputText("</i>\"", false);
             // THE FOLLOWING IS CUT - I AINT SELLING GRO+ HERE! NOAP
@@ -84,7 +84,7 @@ export class FapArena extends BazaarAbstractContent {
         // Increment 'times fap-arena'ed
         flags[kFLAGS.FAP_ARENA_SESSIONS]++;
         outputText("", true);
-        const x: number = player.longestCock();
+        const x: number = player.cocks.longestCock();
 
         outputText("\"<i>READY!</i>\"\n\n", false);
         if (player.cor > 66) outputText("You eagerly seize the rod on your right side; squeezing it a bit in impatience.  A  little tingle alerts you to your left neighbor grabbing " + oMultiCockDesc(game.player) + " with an expert hand.  Everyone around you quickly grabs hold of the nearest cock on their right side.  Some of them are trembling because of the induced stress and arousal.\n\n", false);
@@ -139,7 +139,7 @@ export class FapArena extends BazaarAbstractContent {
 
     private fapResults(place: number = 3): void {
         outputText("", true);
-        const x: number = player.longestCock();
+        const x: number = player.cocks.longestCock();
         const num: number = rand(50) + 5;
         let tent: boolean = false;
         // Loses
@@ -152,7 +152,7 @@ export class FapArena extends BazaarAbstractContent {
             else outputText("appreciable", false);
             // (depending on cum production)
             outputText(" rope of the creamiest, whitest liquid you've ever produced.", false);
-            if (player.cockTotal() > 1) outputText("  Several more gouts follow suit from the unstimulated dickflesh dangling from your groin.", false);
+            if (player.cocks.length > 1) outputText("  Several more gouts follow suit from the unstimulated dickflesh dangling from your groin.", false);
             outputText("  Your whole body shivers, clenches and relaxes several times as you completely lose control of your muscles, your mind only focusing on the cum cannon located between your legs.\n\n", false);
 
             outputText("Your left partner is very professional.  At the very moment your " + cockDescript(game.player, x) + " starts shooting its goo, your cock-milker yells in a thundering voice: \"<i>NUMBER " + (num - 1) + " SCORING!</i>\"  For a moment, lost in your pleasure, you pay little attention to the world outside of your " + cockDescript(game.player, x) + ".  Then you remember the game and shout in a whorish, pleasure-filled voice: \"<i>NUMBER " + num + " CUMMING!</i>\"", false);
@@ -296,15 +296,15 @@ export class FapArena extends BazaarAbstractContent {
             outputText("You eventually reach your final peak and start unloading a glorious load, flooding your partner's colon.  As baby-batter freely flows out of your urethra, you let an orgasming scream of your own, ferociously gripping the bountiful ass-cheeks within your grasp, digging your fingers in the soft skin.  You cum, cum and cum, your shaft vibrating on its own in your partner's anus; at the same time, other people in the butt-fuck train start coming too, and everyone's body tenses and clenches as if they wanted to milk every ounce of seed available into their butts.", false);
             tent = tentacleFapCum();
             // [if player has multicocks]
-            if ((player.cockTotal() > 2) || (!tent && player.cockTotal() > 1)) {
-                if (player.cockTotal() > 3 || (!tent && player.cockTotal() > 2)) outputText("  Your other cocks also spill ", false);
-                if ((tent && player.cockTotal() == 3) || (player.cockTotal() == 2 && !tent)) outputText("  Your other cock also spills ", false);
+            if ((player.cocks.length > 2) || (!tent && player.cocks.length > 1)) {
+                if (player.cocks.length > 3 || (!tent && player.cocks.length > 2)) outputText("  Your other cocks also spill ", false);
+                if ((tent && player.cocks.length == 3) || (player.cocks.length == 2 && !tent)) outputText("  Your other cock also spills ", false);
                 outputText("a ", false);
                 if (player.cumQ() > 1000) outputText("mighty", false);
                 else if (player.cumQ() > 500) outputText("large", false);
                 else outputText("good", false);
                 outputText(" spray of ", false);
-                if (player.cockTotal() > 3 || (!tent && player.cockTotal() > 2)) outputText("their ", false);
+                if (player.cocks.length > 3 || (!tent && player.cocks.length > 2)) outputText("their ", false);
                 else outputText("its ", false);
                 outputText("own, unhindered by the tight colon holding your first " + cockDescript(game.player, x) + ".", false);
             }
@@ -335,15 +335,15 @@ export class FapArena extends BazaarAbstractContent {
             outputText("A pressure builds at your crotch as a milky torrent of seed finds its way into your urethra, down your sodomite partner's colon.  Almost simultaneously, you feel an equally thick spray of spooge being released inside your own " + buttDescription(player) + ". At the peak of your orgasm, you are unable to think of anything but the steady flow of jism coming in and out of you.", false);
             tent = tentacleFapCum();
             // [if player has multicocks]
-            if ((player.cockTotal() > 2) || (!tent && player.cockTotal() > 1)) {
-                if (player.cockTotal() > 3 || (!tent && player.cockTotal() > 2)) outputText("  Your other cocks also spill ", false);
-                if ((tent && player.cockTotal() == 3) || (player.cockTotal() == 2 && !tent)) outputText("  Your other cock also spills ", false);
+            if ((player.cocks.length > 2) || (!tent && player.cocks.length > 1)) {
+                if (player.cocks.length > 3 || (!tent && player.cocks.length > 2)) outputText("  Your other cocks also spill ", false);
+                if ((tent && player.cocks.length == 3) || (player.cocks.length == 2 && !tent)) outputText("  Your other cock also spills ", false);
                 outputText("a ", false);
                 if (player.cumQ() > 1000) outputText("mighty", false);
                 else if (player.cumQ() > 500) outputText("large", false);
                 else outputText("good", false);
                 outputText(" spray of ", false);
-                if (player.cockTotal() > 3 || (!tent && player.cockTotal() > 2)) outputText("their ", false);
+                if (player.cocks.length > 3 || (!tent && player.cocks.length > 2)) outputText("their ", false);
                 else outputText("its ", false);
                 outputText("own, unhindered by the tight colon holding your first " + cockDescript(game.player, x) + ".", false);
             }
@@ -420,7 +420,7 @@ export class FapArena extends BazaarAbstractContent {
     // [SPECIAL: if player has an extra tentacle dick more than 40 inches long OR if the player has lost and has a unique tentacle dick, add this paragraph before the PC cums]
     private tentacleFapSpecial(place: number): void {
         temp = player.cocks.length;
-        const x: number = player.longestCock();
+        const x: number = player.cocks.longestCock();
         while (temp > 0) {
             temp--;
             if (player.cocks[x].cockLength >= 40 && player.cocks[x].cockType == CockTypesEnum.TENTACLE)
@@ -448,7 +448,7 @@ export class FapArena extends BazaarAbstractContent {
     // [in both cases, special paragraph for cumming with tentacle dick]
     private tentacleFapCum(): boolean {
         temp = player.cocks.length;
-        const x: number = player.longestCock();
+        const x: number = player.cocks.longestCock();
         while (temp > 0) {
             temp--;
             if (player.cocks[x].cockLength >= 40 && player.cocks[x].cockType == CockTypesEnum.TENTACLE)

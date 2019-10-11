@@ -130,7 +130,7 @@ export function futaVagXmasElfClr(): void {
 
 export function dickXmasElfGo(): void {
     // (Dickfuck)
-    if (player.cockArea(0) < 80) {
+    if (player.cocks.cockArea(0) < 80) {
         outputText("She pushes you down onto your bedroll and whispers, \"<i>Time to enjoy your present.</i>\"\n\n", false);
 
         outputText("She mounts you without pretense, straddling and inserting your " + cockDescript(game.player, 0) + " in one smooth motion.  The sudden change from cool, night air to hot, tight pussy sends shockwaves of pleasure into your skull.  You master yourself before your eyes roll the whole way back and close your mouth before you start drooling.   Her vise-like tightness is inhuman, but somehow not so tight as to be uncomfortable.   The internal muscles clench and squeeze around you with an uncommon degree of control.  She's so hot, wet, and tight that you shiver.  You start rocking underneath her, giving in completely to the pleasure of her hole.\n\n", false);
@@ -170,7 +170,7 @@ export function dickXmasElfGo(): void {
 
         outputText("Before you can puzzle out her meaning, she takes a big gulp of air, grabs your " + cockHead(player) + " with both hands, and presses her lips into your urethra.  She blows into it with a look of intense concentration.  You can feel your urethra filling, expanding with something, but it feels more like liquid than air, tingling as it slides deep into your shaft towards your ", false);
         if (player.balls > 0) outputText("balls", false);
-        else if (player.hasSheath()) outputText("sheath", false);
+        else if (player.cocks.hasSheath()) outputText("sheath", false);
         else outputText("body", false);
         outputText(".   She blows and blows, seemingly filling you with an inexhaustible supply of whatever magical substance she's forcing inside you. The tingling grows stronger and stronger, and then changes to warmth as a pleasurable heat centers itself in your midsection.\n\n", false);
 

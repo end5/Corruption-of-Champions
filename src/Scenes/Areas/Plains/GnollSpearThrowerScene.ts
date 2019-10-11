@@ -113,7 +113,7 @@ export class GnollSpearThrowerScene {
 
         outputText("The gnoll begins to piston into you rough and fast, losing herself in the breeding, unconcerned with your own comfort.", false);
         // <Heroes with Penises>
-        if (player.hasCock()) outputText("  Each time the shaft slides into you, a jolt of urgent pleasure shoots through you as her thrusts slam against your prostate.", false);
+        if (player.cocks.length > 0) outputText("  Each time the shaft slides into you, a jolt of urgent pleasure shoots through you as her thrusts slam against your prostate.", false);
         // <Others>
         else outputText("  Each lunge from the dominant hyena seems to be at a slightly different angle and strength, ensuring that your entrance is constantly stretched and pulled in new ways.", false);
         outputText("  Time loses meaning as your world narrows down to the endless thrusts of the warrior sending waves of pleasure flowing through you, building into a fog of bliss that fills your mind.  Her grunts echo in the grassland as her strange shaft fills you again and again, claiming your body as her property.\n\n", false);
@@ -122,7 +122,7 @@ export class GnollSpearThrowerScene {
 
         outputText("A warm weight starts to grow deep within your abused core.  A soft, needy whimpering fills the air and it takes some time before you realize it is being dragged from your mouth each time the thick shaft plows into you.  Suddenly, pleasure crashes through your body and mind as orgasm suddenly explodes within you.  ", false);
         // <Male>
-        if (player.hasCock()) outputText("Your cum spurts from your " + multiCockDescriptLight(game.player) + ", spraying your seed over the dry ground, giving life to the savanna.", false);
+        if (player.cocks.length > 0) outputText("Your cum spurts from your " + multiCockDescriptLight(game.player) + ", spraying your seed over the dry ground, giving life to the savanna.", false);
         // <Females>
         else if (player.hasVagina()) outputText("Your own juices flow freely from your " + vaginaDescript(player) + ", coating your thighs and dripping onto the dry grass below you.", false);
         outputText("  Muscles deep within you ripple, spasming around the strange intruder buried deep within you.  The hyena roars her pleasure, slamming deep into your " + assholeDescript(player) + " as your body milks her hard cunt for the juices flowing from her.\n\n", false);
@@ -151,7 +151,7 @@ export class GnollSpearThrowerScene {
         let vagoo: () => void = null;
         if (player.hasVagina()) vagoo = victoryRapeHyenaCunnilingus;
         let penor: () => void = null;
-        if (player.hasCock()) penor = hyenaVictoryRapeFellatio;
+        if (player.cocks.length > 0) penor = hyenaVictoryRapeFellatio;
         if (player.lust >= 33 && player.gender > 0) {
             outputText("\n\nUsing the hyena to get off would be easy.  What do you do?", false);
             simpleChoices("Get BJ", penor, "Get Licked", vagoo, "", null, "", null, "Leave", cleanupAfterCombat);
@@ -162,10 +162,10 @@ export class GnollSpearThrowerScene {
     // <Hyena Defeat - Fellatio>
     private hyenaVictoryRapeFellatio(): void {
         spriteSelect(54);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
-        let y: number = player.cockThatFits2(40);
-        if (player.cockTotal() > 1 && (y < 0 || y == x)) {
+        let y: number = player.cocks.cockThatFits2(40);
+        if (player.cocks.length > 1 && (y < 0 || y == x)) {
             y = 0;
             if (y == x) y = 1;
         }
@@ -184,18 +184,18 @@ export class GnollSpearThrowerScene {
         outputText("as it starts to be pulled from your encased member.\n\n", false);
 
         // <One Cock>
-        if (player.cockTotal() == 1) outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, you see one of her spotted hands drop from her pendulous breast to grip her own shaft.  Her second hand follows, sliding two furred fingers into the tip of her strange shaft as she starts to move up and down the dark flesh in time to the suckling of her muzzle.  Her dark brown eyes slowly slide closed in bliss as she pleasures herself while servicing the shaft buried deep within her maw.\n\n", false);
+        if (player.cocks.length == 1) outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, you see one of her spotted hands drop from her pendulous breast to grip her own shaft.  Her second hand follows, sliding two furred fingers into the tip of her strange shaft as she starts to move up and down the dark flesh in time to the suckling of her muzzle.  Her dark brown eyes slowly slide closed in bliss as she pleasures herself while servicing the shaft buried deep within her maw.\n\n", false);
         // <Two Cocks>
-        else if (player.cockTotal() == 2) {
+        else if (player.cocks.length == 2) {
             outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, a spotted hand leaves one pendulous breast to wrap around your unattended " + cockDescript(game.player, y) + ".  Her powerful grip feels like a vice as she begins to slide the paw along the length.  Moving in time to the rippling of her throat, the hand tries hard to match the flood of sensations radiating from her muzzle.", false);
             // <If character has Scrotum>
             if (player.balls > 0) outputText("  Her second paw finally cups your " + ballsDescriptLight(player) + ", squeezing and massaging to add to the powerful sensations.", false);
             outputText("\n\n", false);
         }
         // Three or More Cocks>
-        if (player.totalCocks() > 2) {
+        if (player.cocks.length > 2) {
             outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, a spotted hand leaves one pendulous breast to wrap around your unattended " + cockDescript(game.player, y) + ".  Soon, her second hand slides along ", false);
-            if (player.cockTotal() == 3) outputText("your other ", false);
+            if (player.cocks.length == 3) outputText("your other ", false);
             else outputText("another ", false);
             outputText("free member.  Her powerful grips feel like a vice on the twin members as she begins to slide her paws along two of your shafts.  Moving in time to the rippling of her throat, the hands try hard to match the flood of sensations radiating from her muzzle.  Her own 'member' throbs, untouched, as she loses herself in trying to pleasure you.\n\n", false);
         }
@@ -209,18 +209,18 @@ export class GnollSpearThrowerScene {
         if (player.cocks[x].cockLength >= 7) {
             outputText("Orgasm crashes through your body and mind as time loses its meaning.  The gnoll's muzzle plunges forward once more, enveloping the pulsing shaft deep into her maw.  The powerful muscles of her throat ripple as she swallows, milking your " + cockDescript(game.player, x) + " for each spurt of your potent seed.", false);
             // <Two Cocks>
-            if (player.cockTotal() == 2) outputText("  Your second " + cockDescript(game.player, y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.", false);
+            if (player.cocks.length == 2) outputText("  Your second " + cockDescript(game.player, y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.", false);
             // <Three or More Cocks>
-            if (player.cockTotal() >= 3) outputText("  Your " + multiCockDescriptLight(game.player) + " throb in her paws, coating her muzzle, neck, and breasts with thick ropes of cum.", false);
+            if (player.cocks.length >= 3) outputText("  Your " + multiCockDescriptLight(game.player) + " throb in her paws, coating her muzzle, neck, and breasts with thick ropes of cum.", false);
             outputText("  You feel your knees weaken as her muzzle works harder and faster, trying to drain you of every drop.  Her paws wrap around your waist and powerful arms lift you and lay you on the ground as that talented muzzle continues to milk you dry.\n\n", false);
         }
         // <Cock 0 is less than 7\">
         else {
             outputText("Orgasm crashes through your body and mind as time loses its meaning.  The gnolls's cheeks sink in as she starts to suck as hard as she can, increasing the glorious pressure on your trapped member.  The powerful muscles of her muzzle ripple as she swallows, milking your " + cockDescript(game.player, x) + " as each spurt of your potent seed splashes across her tongue.", false);
             // <Two Cocks>
-            if (player.totalCocks() == 2) outputText("  Your " + cockDescript(game.player, y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.", false);
+            if (player.cocks.length == 2) outputText("  Your " + cockDescript(game.player, y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.", false);
             // <Three or More Cocks>
-            if (player.cockTotal() >= 3) outputText("  Your " + multiCockDescriptLight(game.player) + " throb in her paws, coating her muzzle, neck, and breasts with thick ropes of cum.", false);
+            if (player.cocks.length >= 3) outputText("  Your " + multiCockDescriptLight(game.player) + " throb in her paws, coating her muzzle, neck, and breasts with thick ropes of cum.", false);
             outputText("  You feel your knees weaken as her muzzle works harder and faster, trying to drain you of every drop.  He paws wrap around your waist and powerful arms lift you and lay you on the ground as that talented muzzle continues to milk you dry.\n\n", false);
         }
         outputText("The world goes gray and fuzzy as your lose yourself in the afterglow of the powerful orgasm.  When you last sit up, dizzy, you find that the hyena has disappeared.  You find your " + player.armorName + " neatly folded next to you, but absolutely coated in the juices of the departed amazon.  Next to this musky pile is a small bag containing her gift to you.", false);

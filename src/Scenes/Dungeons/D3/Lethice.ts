@@ -405,7 +405,7 @@ export class Lethice extends Monster {
         outputText("\n\nWhile the demons are down, and Lethice is still recovering from your first skirmish, you have a much-needed moment to relieve the tensions starting to grow within you. Or you could press the attack, and take the fight to the queen.");
 
         menu();
-        if (player.hasCock() || player.hasVagina()) addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
+        if (player.cocks.length > 0 || player.hasVagina()) addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
         if (player.effects.findByType(StatusAffects.KnowsHeal) >= 0) addButton(1, "Heal", p2Heal);
         addButton(2, "Next", p2Next);
     }
@@ -417,29 +417,29 @@ export class Lethice extends Monster {
         if (hpVictory) outputText(" lying stunned and helpless");
         else outputText(" who’ve fallen into a frenzied orgy");
         outputText(" on the floor. One in particular catches your attention: a purple-skinned harlot of an omnibus, with bone-formed high heels and voluptuous breasts and hips and a throbbing canine’s cock swinging between her legs, resting over a positively massive pair of balls, more like what you’d expect to be swinging under a centaur’s shaft. You reach down and grab her by her curling horns, pulling her off the crotch of another demon and pulling your [armor] aside to reveal your own");
-        if (player.hasCock()) outputText(" cock.");
+        if (player.cocks.length > 0) outputText(" cock.");
         else outputText(" cunt.");
 
         outputText("\n\n<i>“O-oh my!”</i> she purrs, black eyes batting at you as you make your intentions clear. <i>“Here I thought you were saving this for the queen.”</i>");
         outputText("\n\nYou growl for her to get started, prompting her to slither out a forked tongue to");
-        if (player.hasCock()) outputText(" wrap around your [cock]");
+        if (player.cocks.length > 0) outputText(" wrap around your [cock]");
         else outputText(" lap across the lips of your [cunt]");
         outputText(". Shudders of pleasure almost instantly begin to wrack your body, reacting to the demoness’s talented touch. She’s certainly skilled with her tongue, flicking and licking and caressing your sex with vigorous determination. You guide her movements by her demonic horns at first, but soon find yourself too busy gasping and moaning to try and control her - there’s no point, when she’s this good at");
-        if (!player.hasCock()) outputText(" munching rug.");
+        if (!player.cocks.length > 0) outputText(" munching rug.");
         else outputText(" sucking cock.");
         outputText("\n\nAround you, spurred on by your face-fucking the omnibus, the defeated demon court undulates in waves of orgiastic pleasure, gleefully sucking each other’s cocks, penetrating any hole they can find, or simply rolling on the floor locked in each other’s sensual embraces. Those that didn’t join the fight hoot and holler from the stands, encouraging you to fuck the omnibus like the eager slut she is. For her part, the horny demon just smirks up at you between long, loving licks across your sex.");
 
         // [Oral Finish] [Fuck Demoncunt] [Ride Dogcock]
         menu();
         addButton(0, "OralFinish", oralFinish);
-        if (player.hasCock()) addButton(1, "FuckDemon", fuckDemon);
+        if (player.cocks.length > 0) addButton(1, "FuckDemon", fuckDemon);
         addButton(2, "RideCock", rideCock);
     }
 
     private oralFinish(): void {
         clearOutput();
 
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("You ignore the horde’s jeers, grinding your hips against the omnibus’s face until you feel the tell-tale rise of climax surging through you. Her throat bulges around your [cock] and the load of salty spunk you pour down her gullet, right up until you pull out and give her face a showering for good measure.");
             outputText("\n\nSated, you give the well-used omnibus a shove back into the demon fuck-pile and ready your [weapon]. Confident in your readiness, you advance on Lethice.");
         }
@@ -596,7 +596,7 @@ export class Lethice extends Monster {
             damage = player.takeDamage(damage);
 
             outputText(" You can’t avoid them all! One clips you on its way past, ripping into your [skin] and leaving you feeling... flushed and hot in its wake.");
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 outputText(" There’s suddenly a dearth of room in the crotch of your [armor], rubbing distractingly and slowing you with added weight. <b>[EachCock] has grown bigger!</b>");
 
                 player.increaseEachCock(1);

@@ -105,7 +105,7 @@ export class Holli extends Monster {
         // Hit
         else {
             outputText("  The darts find flesh, and you feel yourself slowing down drastically; all you want to do as the plant woman's poison takes you is fuck and sleep.  \"<i>Just give up,</i>\" Holli coos.  \"<i>Think how good it would be to fall into my arms and ");
-            if (player.hasCock()) outputText("come inside me");
+            if (player.cocks.length > 0) outputText("come inside me");
             else outputText("have me inside you");
             outputText(", forever...</i>\"");
             // lust damage, fatigue damage, light HP damage
@@ -217,7 +217,7 @@ export class Holli extends Monster {
         this.imageName = "holli";
         this.long = "Marae's offshoot, Holli stands rooted in front of you.  Solid black eyes with golden pupils stare out at you.  Her normally-nude body is concealed inside her tree, though occasionally she will flash you the devilish grin of a sadistic temptress and the bark will split to reveal a pale, jiggling bit of flesh.  A pair of gnarled oak horns sprout from her forehead; leaves and flowers alternately bloom and wither on them as her face contorts with emotion.";
         // this.plural = false;
-        this.createCock(12, 2, CockTypesEnum.HUMAN);
+        this.cocks.createCock(12, 2, CockTypesEnum.HUMAN);
         this.balls = 0;
         this.ballSize = 0;
         this.cumMultiplier = 3;

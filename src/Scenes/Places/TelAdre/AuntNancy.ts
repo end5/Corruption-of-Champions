@@ -236,11 +236,11 @@ export class AuntNancy extends TelAdreAbstractContent {
         // [If you have a vagina:]
         if (player.hasVagina()) {
             outputText("The spider lady ", false);
-            if (player.balls > 0 && player.hasCock()) outputText("lifts away your other \"<i>equipment</i>\" and ", false);
+            if (player.balls > 0 && player.cocks.length > 0) outputText("lifts away your other \"<i>equipment</i>\" and ", false);
             outputText("examines the folds of your " + vaginaDescript(player, 0) + ".  You shiver at the sensation of one of her smooth, cold hands rubbing against your folds, the tips of her fingers sliding into you.  Aunt Nancy smiles up at you, enjoying your reaction.  \"<i>Did you like that?</i>\" she asks with her deliciously throaty voice, and you nod enthusiastically.  \"<i>Good...</i>\" she purrs, before slipping her long, slippery tongue inside of you.  You cry out in sudden surprise at the sudden feeling of it moving inside of you, exploring your shape, before she pulls it out as you squirm.  \"<i>Mmmmmm...</i>\" Aunt Nancy murmurs.  \"<i>You taste goood, friend.</i>\"\n\n", false);
         }
         // [If you have a penis:]
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("Aunt Nancy gently caresses your " + multiCockDescriptLight(game.player) + " with her smooth black hands, enjoying your moans of delight, before lowering her head to kiss the head of your " + cockDescript(game.player, 0) + ".  Her tongue snakes around it, and the spider-lady sucks a little, drinking up the little stream of pre-cum now leaking out, before raising her head up to look at you, a gentle smile on her face as her many hands continue to rub and explore your " + multiCockDescriptLight(game.player) + ".  \"<i>Not as good as my husband's,</i>\" she whispers, \"<i>but quite a piece, certainly.</i>\"\n\n", false);
         }
         // [If you have no genitals at all:]
@@ -249,23 +249,23 @@ export class AuntNancy extends TelAdreAbstractContent {
         // [All:]
         outputText("Two of her hands suddenly wrap themselves around the cheeks of your " + buttDescription(player) + ", and squeeze gently.  \"<i>Very nice,</i>\" the spider-lady whispers, and then her long tongue spools out to slide over the surface of your " + buttDescription(player) + ".  The tip of it even slips inside, gently, and you feel her saliva coating the inside of your bum.  It feels sensitive, and much more relaxed now than a minute ago.\n\n", false);
 
-        if (player.hasCock()) outputText("Aunt Nancy rises up above you, still smiling with gentle sensuality, and reaches out.  ", false);
+        if (player.cocks.length > 0) outputText("Aunt Nancy rises up above you, still smiling with gentle sensuality, and reaches out.  ", false);
         // [If you have at least one dick, she always takes the smallest so as to avoid missing out on another scene later:]
-        const x: number = player.shortestCockIndex();
-        if (player.hasCock()) {
+        const x: number = player.cocks.shortestCockIndex();
+        if (player.cocks.length > 0) {
             outputText("Gently, she picks " + oMultiCockDesc(game.player) + ", and brings it up to her pussy. You see its entrance, two parted shell-plates dripping wet fluid, and would almost panic at the unfamiliar sight if you weren't so very relaxed.  With loving guidance, Aunt Nancy slides the full length of your " + cockDescript(game.player, x) + " deep inside of her.  Both of you moan in delight as your dick rubs and stimulates her in a way she's clearly been missing for a long, long while; her exotic insides, smooth and silky and deep, squeeze and caress your " + cockDescript(game.player, x) + " like a velvet glove.  Little feelers inside of her begin to massage your cock, and the wet, dripping fluids inside of her are just as relaxing as her saliva.\n\n", false);
 
             outputText("\"<i>Oooooh,</i>\" she sighs dreamily, her eyes temporarily distant and unfocused.  \"<i>Marae on earth, that hits the spot.</i>\"\n\n", false);
             let titFucked: boolean = false;
-            const y: number = player.longestCock();
+            const y: number = player.cocks.longestCock();
             // [If your longest dick is of at least auto-titfucking size:]
-            if (player.cockTotal() >= 2) {
+            if (player.cocks.length >= 2) {
                 if (player.cocks[y].cockLength >= 22) {
                     titFucked = true;
                     outputText("As Aunt Nancy rides you enthusiastically, the spider-lady lifts ", false);
-                    if (player.totalCocks() > 2) outputText("another one of ", false);
+                    if (player.cocks.length > 2) outputText("another one of ", false);
                     outputText("your ", false);
-                    if (player.cockTotal() == 2) outputText("other cock ", false);
+                    if (player.cocks.length == 2) outputText("other cock ", false);
                     else outputText("cocks ", false);
                     outputText("up to her heaving bosom, and slips it between her soft, lovely breasts.  \"<i>Want something else nice?</i>\" asks the spider-lady, eyes twinkling.\n\n", false);
 
@@ -280,14 +280,14 @@ export class AuntNancy extends TelAdreAbstractContent {
                     outputText(", is incredible.  Aunt Nancy coos happily, clearly enjoying the taste.\n\n", false);
                 }
                 // [If there are still dicks left over:]
-                if (player.cockTotal() > 2) {
-                    if (player.cockTotal() == 3) outputText("Another of her hands wraps itself around your other cock", false);
+                if (player.cocks.length > 2) {
+                    if (player.cocks.length == 3) outputText("Another of her hands wraps itself around your other cock", false);
                     else outputText("Her other hands wrap themselves around more of your cocks", false);
                     outputText(", milking and stroking the ", false);
                     outputText("pulsating prick", false);
-                    if (player.cockTotal() > 3) outputText("s", false);
+                    if (player.cocks.length > 3) outputText("s", false);
                     outputText(" for all ", false);
-                    if (player.cockTotal() == 3) outputText("it's", false);
+                    if (player.cocks.length == 3) outputText("it's", false);
                     else outputText("they're", false);
                     outputText(" worth.\n\n", false);
                 }
@@ -298,7 +298,7 @@ export class AuntNancy extends TelAdreAbstractContent {
                 outputText("As milk leaks slowly from your " + nippleDescription(player, 0) + "s, the spider-lady notices.  She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescription(player, 0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
             }
             // [If no cocks are of titfucking size and # Cocks <= 4 or if there are cocks of titfucking size and # Cocks <= 3 (If Nancy still has free hands)]
-            if (!titFucked || (titFucked && player.cockTotal() <= 2)) {
+            if (!titFucked || (titFucked && player.cocks.length <= 2)) {
                 outputText("Her remaining hands gently work their way across your body, alternating between rubbing and squeezing your " + buttDescription(player) + ", even sometimes slipping fingers inside to probe the insides, ", false);
                 // [If the player has balls]
                 if (player.balls > 0) outputText("gently kneading and caressing your " + ballsDescriptLight(player) + " as the cum inside churns and boils and ", false);
@@ -348,9 +348,9 @@ export class AuntNancy extends TelAdreAbstractContent {
     private auntNancyPoonPartIII(): void {
         outputText("", true);
         // [If PC has a cock]
-        if (player.hasCock()) {
-            const x: number = player.shortestCockIndex();
-            const y: number = player.longestCock();
+        if (player.cocks.length > 0) {
+            const x: number = player.cocks.shortestCockIndex();
+            const y: number = player.cocks.longestCock();
             outputText("You can feel it when the spider-lady's pussy begins to quiver in delight. Aunt Nancy soon moans, then cries out in incredible pleasure.  The lower half of her eyes all close, while the others all roll up into her head in ecstasy.  \"<i>Yes!  YEEEEESSSSSSS!</i>\" she hisses with throaty, feminine indulgence.  The tiny feelers in her otherwise silky-smooth vagina suddenly begin to squeeze and pull at your " + cockDescript(game.player, x) + ", and you let out a bellow of pleasure of your own as you feel your ", false);
             // [If PC has balls]
             if (player.balls > 0) outputText(ballsDescriptLight(player) + " tense, churning and tightening.", false);
@@ -364,7 +364,7 @@ export class AuntNancy extends TelAdreAbstractContent {
             outputText("\n\n", false);
 
             // [If PC has another dick of at least auto-titfucking size:]
-            if (player.cocks[y].cockLength >= 22 && player.cockTotal() > 1) {
+            if (player.cocks[y].cockLength >= 22 && player.cocks.length > 1) {
                 outputText("Aunt Nancy unwraps her tongue from your " + cockDescript(game.player, y) + " to cry out in delight, even as her hands let go of her lovely breasts to grab at your trunk.  Nonetheless, her big, pillowy boobs are more than firm enough to keep the shaft of your " + cockDescript(game.player, y) + " snugly inside as she bucks and shrieks atop you, and they more than contribute to your own sexual pleasure.\n\n", false);
 
                 outputText("It too spasms, spitting gooey ropes of cum all over both of you", false);
@@ -373,20 +373,20 @@ export class AuntNancy extends TelAdreAbstractContent {
                 outputText(".\n\n", false);
             }
             // [If there are still dicks left over:]
-            if (player.cockTotal() > 2) {
+            if (player.cocks.length > 2) {
                 // [If no cocks are of titfucking size and # Cocks = 2 or if there are cocks of titfucking size and # Cocks = 3]
-                if (player.cockTotal() > 1) {
-                    if ((player.cocks[y].cockLength < 22 && player.cockTotal() == 2) || (player.cocks[y].cockLength >= 22 && player.cockTotal() == 2))
+                if (player.cocks.length > 1) {
+                    if ((player.cocks[y].cockLength < 22 && player.cocks.length == 2) || (player.cocks[y].cockLength >= 22 && player.cocks.length == 2))
                         outputText("Your other dick fires off too, her smooth, shell-covered hands still wrapped around it, and it makes even more of a mess, splattering over both of you.\n\n", false);
                     // [Else]
-                    else if ((player.cocks[y].cockLength < 22 && player.cockTotal() > 2) || (player.cocks[y].cockLength >= 22 && player.cockTotal() > 2))
+                    else if ((player.cocks[y].cockLength < 22 && player.cocks.length > 2) || (player.cocks[y].cockLength >= 22 && player.cocks.length > 2))
                         outputText("The rest of your " + multiCockDescriptLight(game.player) + " fire off too, her smooth, shell-covered hands still wrapped around them, and they make even more of a mess, splattering over both of you.\n\n", false);
                 }
             }
             // [If you also have a vagina:]
             if (player.hasVagina()) {
                 outputText("Your " + vaginaDescript(player, 0) + " clenches, tightly, ", false);
-                if (player.balls == 0 && (player.cocks[y].cockLength < 22 || (player.cocks[y].cockLength >= 22 && player.cockTotal() <= 2)))
+                if (player.balls == 0 && (player.cocks[y].cockLength < 22 || (player.cocks[y].cockLength >= 22 && player.cocks.length <= 2)))
                     outputText("squeezing the fingers on Aunt Nancy's hand still tickling your insides", false);
                 else outputText("making you long for something inside of it", false);
                 outputText(", as " + sMultiCockDesc(game.player) + " spasms in ecstacy.\n\n", false);
@@ -394,11 +394,11 @@ export class AuntNancy extends TelAdreAbstractContent {
             // [All w/ penis:]
             outputText("Eventually, both your orgasms end.  You feel worn out, like you just ran a long mile, even though Aunt Nancy was doing most of the work.  However, she seems fine, smiling down at you with a big, happy grin.", false);
             // [If the PC has multiple dicks or a cum multiplier of at least 2]
-            if (player.cockTotal() >= 2 && player.cumQ() >= 700) outputText("  Her lower body's a mess of smeary dollops of cum, right up to the bottom halves of her impressive boobs, and her face and upper body haven't fared much better. Behind her you can see where stray shots that sprayed over her have painted streaks of her abdomen white.", false);
+            if (player.cocks.length >= 2 && player.cumQ() >= 700) outputText("  Her lower body's a mess of smeary dollops of cum, right up to the bottom halves of her impressive boobs, and her face and upper body haven't fared much better. Behind her you can see where stray shots that sprayed over her have painted streaks of her abdomen white.", false);
             outputText("\n\n", false);
 
             // [If the PC has multiple dicks or a cum multiplier of at least 2]
-            if (player.cockTotal() >= 2 && player.cumQ() >= 700)
+            if (player.cocks.length >= 2 && player.cumQ() >= 700)
                 outputText("Aunt Nancy runs one hand up her milky-pale body, digging a wide furrow in the thick layer of gooey cum as it moves up her belly and up the curve of her breast, before she peels it away and lifts it in front of her mouth.", false);
             else
                 outputText("Aunt Nancy puts one hand beneath her dripping pussy and squeezes some powerful internal muscle.  A thick dollop of gooey cum falls onto it from inside of her, and she lifts it in front of her mouth.", false);

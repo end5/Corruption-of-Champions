@@ -11,7 +11,7 @@ export class MinotaurScene {
     public minoVictoryRapeChoices(): void {
         spriteSelect(44);
         // Determine if PC can rape with a dick!
-        const x: number = player.cockThatFits(monster.analCapacity());
+        const x: number = player.cocks.cockThatFits(monster.analCapacity());
         let dickRape: () => void = null;
         let cuntRape: () => void = null;
         let tentaRape: () => void = null;
@@ -23,19 +23,19 @@ export class MinotaurScene {
         let feedposit: string = "B. Feed";
         let bikiniTits: number;
         // Checking to see if can urethral pen
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             let counter: number = 0;
             // Loop through to see if any dicks qualify, and if so enable it.
-            while (counter < player.cockTotal()) {
+            while (counter < player.cocks.length) {
                 if (player.cocks[counter].cockThickness <= 4 && player.cocks[counter].cockLength >= 14) urethralPen = minoUrethralPen;
                 counter++;
             }
         }
-        if (player.hasCock()) {
-            if (player.cockThatFits(80) >= 0) bj = minotaurBlowjob;
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(80) >= 0) bj = minotaurBlowjob;
         }
-        if (player.hasCock() && x >= 0) dickRape = bumRapeaMinotaur;
-        if (x >= 0 && player.cockTotal() > 1 && player.tentacleCocks() > 0) tentaRape = rapeMinotaurTentacles;
+        if (player.cocks.length > 0 && x >= 0) dickRape = bumRapeaMinotaur;
+        if (x >= 0 && player.cocks.length > 1 && player.cocks.tentacleCocks() > 0) tentaRape = rapeMinotaurTentacles;
         if (player.hasVagina()) cuntRape = girlRapeAMinotaur;
         // Centaurs can't do the herm scene
         if (player.gender == 3 && x >= 0 && !player.isTaur()) hermRape = minotaurGetsRapedByHerms;
@@ -98,7 +98,7 @@ export class MinotaurScene {
         }
         choices("Use Cock", dickRape, "Use Vagina", cuntRape, "Use Both", hermRape, "TentacleDick", tentaRape, "UrethraFuck", urethralPen, "Get Filled", filled, tempText, temp, "MakeHimSuck", bj, feedposit, temp2, "Leave", cleanupAfterCombat);
 
-        if (x < 0 && player.hasCock()) outputText("\nSadly, you're too well endowed to penetrate the minotaur.", false);
+        if (x < 0 && player.cocks.length > 0) outputText("\nSadly, you're too well endowed to penetrate the minotaur.", false);
         if (player.gender == 3 && player.isTaur()) outputText("\nIf you had a different body type you might be able to penetrate him while taking him, but as a centaur that's not an option.", false);
     }
 
@@ -107,14 +107,14 @@ export class MinotaurScene {
     private rapeMinotaurTentacles(): void {
         spriteSelect(44);
         // multicock but single tentalce rape scene
-        if (player.cocks.length > 1 && player.tentacleCocks() == 1) {
+        if (player.cocks.length > 1 && player.cocks.tentacleCocks() == 1) {
             rapeMinotaurTentacle();
             return;
         }
         minoRapeIntro();
         let x: number = 0;
         let counter: number = 0;
-        while (counter < player.cockTotal()) {
+        while (counter < player.cocks.length) {
             if (player.cocks[counter].cockType == CockTypesEnum.TENTACLE) {
                 x = counter;
                 break;
@@ -136,7 +136,7 @@ export class MinotaurScene {
         if (player.cor >= 50 && player.cor < 80) outputText("You roughly grab him, slamming him close to your " + multiCockDescript(game.player) + " - just how this beast likes it.  ", false);
         if (player.cor >= 80) outputText("You grin and roughly pull his horns towards your " + multiCockDescript(game.player) + ", ready to roughly ride this beast.  ", false);
         // Mixed dix
-        if (player.cockTotal() != player.tentacleCocks()) {
+        if (player.cocks.length != player.cocks.tentacleCocks()) {
             mismatched = true;
             temp = player.cocks.length;
             temp2 = -1;
@@ -166,13 +166,13 @@ export class MinotaurScene {
         // Vaginassss
         if (player.vaginas.length >= 1) {
             outputText("With your " + cockDescript(player, temp2) + " successfully embedded in the minotaur, you twist around, positioning your " + vaginaDescript(player, 0) + " to take the minotaur's enormous length into yourself.  You feel his member deliciously slide in, and feel the beast's hot breath radiate as he starts panting in lust.  ", false);
-            player.cuntChange(monster.cockArea(0), true, false, true);
+            player.cuntChange(monster.cocks.cockArea(0), true, false, true);
         }
         // Multivaginas...wtf
         if (player.vaginas.length > 1 && !mismatched && player.cocks.length > 2) outputText("Your tentacle cocks writhe upon themselves, each turning to an unattended " + vaginaDescript(player, 1) + " on your body, and quickly filling up the cavernous depths. You groan in ecstasy at the self-fucking you are receiving as all your pussies start leaking their wonderful fluids.  ", false);
         // more dicks than available holes
-        if ((player.tentacleCocks() == 2 || player.tentacleCocks() == 3)) outputText("Your next tentacle dick, saddened by not having anything to writhe around, turns to the minotaurs protruding member. It darts out from your crotch, wrapping around his monstrous meat and constricting, like a snake might around its prey. Your tongue lolls out as you feel that cock twist and grab his dick, pulsing with both your blood and the beast's twitching member.  ", false);
-        if (player.tentacleCocks() > 3) outputText("Your remaining tentacle dicks wave around the minotaur, tending to his balls, weaving around his limbs, and generally rubbing and throbbing all over him, spreading pre-cum around and through him, leaving both of you moaning in pleasure.  ", false);
+        if ((player.cocks.tentacleCocks() == 2 || player.cocks.tentacleCocks() == 3)) outputText("Your next tentacle dick, saddened by not having anything to writhe around, turns to the minotaurs protruding member. It darts out from your crotch, wrapping around his monstrous meat and constricting, like a snake might around its prey. Your tongue lolls out as you feel that cock twist and grab his dick, pulsing with both your blood and the beast's twitching member.  ", false);
+        if (player.cocks.tentacleCocks() > 3) outputText("Your remaining tentacle dicks wave around the minotaur, tending to his balls, weaving around his limbs, and generally rubbing and throbbing all over him, spreading pre-cum around and through him, leaving both of you moaning in pleasure.  ", false);
         // Cum
         outputText("Your tentacles throb and pulse, quickening in pace as you can feel the cum swelling in your prostate. They wave madly, and then, just as their motion makes you dizzy, you feel them stiffen suddenly, and start spewing their load all in and across the minotaur. You gasp and pause, collapsing on the strong back of the minotaur, basking in the afterglow.", false);
         player.orgasm();
@@ -184,7 +184,7 @@ export class MinotaurScene {
         minoRapeIntro();
         let x: number = 0;
         let counter: number = 0;
-        while (counter < player.cockTotal()) {
+        while (counter < player.cocks.length) {
             if (player.cocks[counter].cockType == CockTypesEnum.TENTACLE) {
                 x = counter;
                 break;
@@ -198,12 +198,12 @@ export class MinotaurScene {
         // Reset for upcoming stuff
         temp = 0;
         // if multi with pony dick!
-        if (player.horseCocks() == 1) {
+        if (player.cocks.horseCocks() == 1) {
             outputText("But it isn't enough for you. You take your pony prick, and with your hands, pull his anus wide. The flare at your tip takes some effort to get in, but once it's inside, you ram right to the hilt, knocking the wind from the minotaur with a solid grunt.  ", false);
             temp = 1;
         }
         // if multi with dogdick
-        if (player.dogCocks() == 1 && temp != 1) {
+        if (player.cocks.dogCocks() == 1 && temp != 1) {
             temp = 1;
             outputText("But it isn't enough for you. You take your bitch knotter, and with your hands, pull his anus wide. You slide in easily, right up to your knot, but he's too tight for you to slip that in.  ", false);
         }
@@ -259,7 +259,7 @@ export class MinotaurScene {
         outputText("A bit of gooey pre-cum begins to gather at the tip of his thick, horse-like cock.  Your tongue flits out instinctively, and you taste its scent in the air.  It's too much for you to handle, and you are overcome with an absolute need to fill yourself with his nectar.  You throw yourself onto his crotch, grabbing his thighs and rubbing his cock along your torso as you position your mouth over his length, taking care to keep your long fangs out of the way.  You violently pull yourself to him, forcing more of him than you thought you could handle down your throat.  You feel his pre lubricating your insides, numbing you to the pain and allowing you to take him deeper.  You take one hand from his leg and place it on the still exposed bit of his shaft, stroking what you could not take in your mouth. His animal grunting grows louder as you take just a bit more of him with each thrust downwards.  Mad with lust, you remove your other hand from his thigh, balancing on your lengthy tail and his cock, and use it to ", false);
 
         // if(player.cocks.length > 0)
-        if (player.hasCock()) outputText("furiously stroke your own " + multiCockDescriptLight(game.player) + ". Your muffled vocalizations of pleaure weakly join his own.\n\n", false);
+        if (player.cocks.length > 0) outputText("furiously stroke your own " + multiCockDescriptLight(game.player) + ". Your muffled vocalizations of pleaure weakly join his own.\n\n", false);
         else outputText("part the folds of your " + vaginaDescript(player, 0) + ", sliding it inside and masturbating with a furious vigor. Your muffled vocalizations of pleaure weakly join his own.\n\n", false);
 
         outputText("As your lungs pain for breath, you realize that you will need to finish him off quicker than this.  The tip of your tail darts towards him and slides under his rear.  You find his anus and slip the tip inside.  An abrupt change in his rythmic grunting and panting signals his surprise, but he makes no move to remove your intrusion.  Thankful for this, you slowly pass it deeper into him even as you try to push him deeper into you.  You can feel the orgasm rising in the minotaur's huge prick, and before it hits, you begin to rub what you judge to be his prostate in an effort to milk him of his semen.  This is clearly successful, as you feel an enormous load of his cum pass through his cock, swelling it inside your throat. As the first ropes of the hot goodness shoot into you, your mind is overwhelmed, and you join him in orgasm, your eyes rolling back into your head and your cries gurgling as they are pushed back before they can even begin by the thick semen pooling inside you.  Dizzy from the lack of oxygen and the aphrodisiac nature of his cum, you continue to rub his prostate, and he continues to cum and cum into you, filling your belly and throat, the excess spilling out of your mouth.  You're in perfect bliss, but though the pleasure has numbed you to the pain, you realize that your body will give out soon.  Just as you feel that you cannot go on, the fountain of semen gushing into you begins to slow, and the minotaur's cock begins to soften.  You slide off of him and remove your tail from him, noticing that he passed out at some point during his marathon orgasm.\n\n", false);
@@ -277,7 +277,7 @@ export class MinotaurScene {
         let counter: number = 0;
         let x: number = 0;
         // Find which dick to use!
-        while (counter < player.cockTotal()) {
+        while (counter < player.cocks.length) {
             if (player.cocks[counter].cockThickness <= 4 && player.cocks[counter].cockLength >= 14) {
                 x = counter;
                 break;
@@ -352,11 +352,11 @@ export class MinotaurScene {
     // Man buttrapes a minotaur butt.
     private bumRapeaMinotaur(): void {
         spriteSelect(44);
-        const x: number = player.cockThatFits(monster.analCapacity());
+        const x: number = player.cocks.cockThatFits(monster.analCapacity());
         minoRapeIntro();
         outputText("\n\nYou droop your ", false);
         // Regular or multi...
-        if (player.cockTotal() == 1) outputText(cockDescript(game.player, x), false);
+        if (player.cocks.length == 1) outputText(cockDescript(game.player, x), false);
         else outputText(multiCockDescriptLight(game.player), false);
         outputText(" across his upraised backside, ", false);
         // pre-cum descriptions
@@ -403,15 +403,15 @@ export class MinotaurScene {
         minoCumAddiction(5);
         outputText("\n\nWith a quick shove, you roll the panting minotaur onto his back, exposing his pulsing " + cockDescriptShort(monster, 0) + " to the open air.  A simple flourish later, you peel back your " + player.armorName + " to expose your " + vaginaDescript(player, 0) + ", already wetter than usual from the scent in the air.   You walk forward, straddling the oblivious minotaur as he masturbates furiously, muscles bulging with exertion and covered in sweat.  Your eyes zero in as a dollop of pre escapes his ribbed horse-like member, locating the source of the scent.\n\n", false);
         // Too small
-        if (player.vaginalCapacity() < monster.cockArea(0)) {
+        if (player.vaginalCapacity() < monster.cocks.cockArea(0)) {
             outputText("Restraint evaporates as you lower yourself, your aching " + vaginaDescript(player, 0) + " desperate for contact.  Your thighs quiver as you touch his wobbling column of maleness, the slick pre-cum soaking into your engorged clitty, filling it with tingling warmth.  Oblivious to the apparent size difference, your body pushes downwards, your knees giving out, forcing his flared head against your " + vaginaDescript(player, 0) + " roughly.  The need to be speared on the beast's meat is overwhelming urged on by constantly leaking pre-cum currently pumping into your love-canal.  With strength born of unnatural lust, you grip his flanks and drive yourself downwards, feeling yourself stretch painfully as you take in his length.  ", false);
         }
         // Good match
-        if (player.vaginalCapacity() >= monster.cockArea(0) && player.vaginalCapacity() < monster.cockArea(0) * 1.5) {
+        if (player.vaginalCapacity() >= monster.cocks.cockArea(0) && player.vaginalCapacity() < monster.cocks.cockArea(0) * 1.5) {
             outputText("Restraint evaporates as you lower yourself, your aching " + vaginaDescript(player, 0) + " desperate for contact.  Your thighs quiver as you touch his wobbling column of maleness, the slick pre-cum soaking into your engorged clitty, filling it with tingling warmth.  You push downwards eagerly, happily noting that you should be able to accommodate his length and girth.  The overly wide head slips inside, easily lubricated with his copious fluids, musky pre-spunk lubricating your passage with its intoxicating sensation.  With deliberate slowness, you sink down along his shaft, shuddering once, twice, then three times as you pass each of the thick fleshy rings along his length.  Eventually, you bottom on him.  ", false);
         }
         // Bigger than he is
-        if (player.vaginalCapacity() >= monster.cockArea(0) * 1.5) {
+        if (player.vaginalCapacity() >= monster.cocks.cockArea(0) * 1.5) {
             outputText("Restraint evaporates as you lower yourself, your aching " + vaginaDescript(player, 0) + " desperate for contact.  Your thighs quiver as you touch his wobbling column of maleness, the slick pre-cum soaking into your engorged clitty, filling it with tingling warmth.  With a lusty giggle you slip his head inside your " + vaginaDescript(player, 0) + ", allowing him to drool his musky pre-seed deep inside your wide love-canal.  Sinking down slowly, your easily encompass all of his equine-like member, enjoying the feeling of his three thick cock-ridges as they slip through your lips.  Eventually you take all of him, wishing he was just a bit bigger...", false);
         }
         // Resume sexings, p2
@@ -420,19 +420,19 @@ export class MinotaurScene {
         else outputText(hipDescription(player) + ", forcefully grinding up and down along his length like a cheap sex-toy.  ", false);
         // Size variants
         // Too small
-        if (player.vaginalCapacity() < monster.cockArea(0)) outputText("Every ridge of his " + cockDescriptShort(monster, 0) + " presses tightly against your walls, smearing more of his wondrous pre-seed into your body with every stroke.  ", false);
+        if (player.vaginalCapacity() < monster.cocks.cockArea(0)) outputText("Every ridge of his " + cockDescriptShort(monster, 0) + " presses tightly against your walls, smearing more of his wondrous pre-seed into your body with every stroke.  ", false);
         // Just right
-        if (player.vaginalCapacity() >= monster.cockArea(0) && player.vaginalCapacity() * 1.5 < monster.cockArea(0)) outputText("Every stroke of his " + cockDescriptShort(monster, 0) + " deposits a bit more of his wondrous preseed into your body, spreading a relaxing warmth throughout your groin.  ", false);
+        if (player.vaginalCapacity() >= monster.cocks.cockArea(0) && player.vaginalCapacity() * 1.5 < monster.cocks.cockArea(0)) outputText("Every stroke of his " + cockDescriptShort(monster, 0) + " deposits a bit more of his wondrous preseed into your body, spreading a relaxing warmth throughout your groin.  ", false);
         // Too big
-        if (player.vaginalCapacity() * 1.5 >= monster.cockArea(0)) outputText("Every stroke of his " + cockDescriptShort(monster, 0) + " slides easily into your " + vaginaDescript(player, 0) + ", allowing him to slowly build up a puddle of his wondrous druggy pre-seed into your aching womb.  ", false);
+        if (player.vaginalCapacity() * 1.5 >= monster.cocks.cockArea(0)) outputText("Every stroke of his " + cockDescriptShort(monster, 0) + " slides easily into your " + vaginaDescript(player, 0) + ", allowing him to slowly build up a puddle of his wondrous druggy pre-seed into your aching womb.  ", false);
         // Resume!
         outputText("The minotaur picks up the pace, heartbeat thudding through his rigid meat, making it convulse and vibrate as he slams you down on it over and over again.  You feel his balls twitching against your ass as his cock visibly thickens, bulging out at the base and slowly fattening inside you until it feels fit to burst.  With a throaty roar he cums at last, fountaining seed directly into your womb.  Your eyes roll back as it fills you, swooning as you feel the liquid pleasure seeping into you.  Your " + vaginaDescript(player, 0) + " clamps down, trapping his seed inside, his orgasm dragging on as his balls begin to shrink.  The copious fluid fills your womb, distending your belly painfully.  The minotaur gives one last powerful spurt, the force pushing you off his " + cockDescriptShort(monster, 0) + ", just as you both reach total sexual satisfaction.\n\n", false);
         // Check for stetchiness!
-        player.cuntChange(monster.cockArea(0), true);
+        player.cuntChange(monster.cocks.cockArea(0), true);
 
         // ITS OVER
         outputText("He passes out with a contented sigh, balls shrunk down to the size of baseballs and his cock still dribbling cum.  You pull yourself to your feet unsteadily, drunk with pleasure as you stagger away, clamping your " + vaginaDescript(player, 0) + " down unconsciously to hold in his wonderful seed.", false);
-        if (player.vaginalCapacity() < monster.cockArea(0)) outputText("\n\nMixed with the sheer sexual pleasure, you feel a diffuse pain and numbness coming from your much-abused " + vaginaDescript(player, 0) + ", but decide with a smile that it was well worth it as his cum numbs away the last of the pain.", false);
+        if (player.vaginalCapacity() < monster.cocks.cockArea(0)) outputText("\n\nMixed with the sheer sexual pleasure, you feel a diffuse pain and numbness coming from your much-abused " + vaginaDescript(player, 0) + ", but decide with a smile that it was well worth it as his cum numbs away the last of the pain.", false);
         player.orgasm();
         dynStats("spe", -.5, "int", -.5, "sen", 1.5, "cor", 1);
         // Preggers chance!
@@ -447,7 +447,7 @@ export class MinotaurScene {
         outputText("\n\nWith little care for the beast's feelings, you grip his cock with both hands, pulling it towards yourself, bending it up at an awkward angle that makes him give a trembling moo of pain.   You edge closer, your own " + cockDescript(game.player, 0) + " bumping into his pucker, his obscene equine-like cock dripping that wonderfully scented spunk as you pull it to your " + vaginaDescript(player, 0) + ", smearing it against your cunt-lips.\n\n", false);
         outputText("With a twisted grin and a grunt of pain, you push forward, slipping his " + cockDescriptShort(monster, 0) + " into your " + vaginaDescript(player, 0) + " as your " + cockDescript(game.player, 0) + " penetrates his tight but accommodating back-door.  You immediately feel a surge of his pre-cum squirt into you as you push forward, forcefully spearing yourself AND him at the same time.  The slick fluids spread warmth through your groin, making you feel light-headed and horny at the same time, spurring you to force the last of both cock-lengths into their respective holes.\n\n", false);
         temp = player.vaginas[0].vaginalLooseness;
-        player.cuntChange(monster.cockArea(0), true);
+        player.cuntChange(monster.cocks.cockArea(0), true);
         if (player.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_GAPING) outputText("A small suppressed part of your mind dimly registers that this should be fairly painful, but the lust and drug-like pre-cum wash that thought away with waves of pleasure.  ", false);
         if (player.vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_GAPING) outputText("The intense feelings seem to grow more and more powerful as he stays inside you, his drug-like pre-cum making your " + vaginaDescript(player, 0) + " tingle from the inside-out.", false);
         outputText("Your " + cockDescript(game.player, 0) + " quivers from his tightness, each beat of his powerful heart squeezing you tightly in his rear passage.   Through your foggy mind, you come to realize that your hips are pistoning against him with disturbing speed, burning away what's left of your reason with white-hot lust and minotaur spunk.  You slap his ass as you fuck him, humiliating the beast, leering down at him as he moos and moans hopelessly.   At last the pleasure overwhelms you, and you fire your spunk into him like a cannon, your hips still fucking him with unthinking determination.   Jizz sputters from his tail-hole with each thrust, splattering over his ass-cheeks.  A sudden blast of inhuman warmth fills you as the beast begins to cum, huge blasts pouring directly into your womb with every thrust of monstrous meat into your " + vaginaDescript(player, 0) + ".\n\n", false);
@@ -497,7 +497,7 @@ export class MinotaurScene {
         // {CHECK: If male PC with big butt (Over... I have no idea what butt numbers are), use this}
         // {CHECK: If female or herm PC with big butt and vagina too small to fit minotaur cock, use this}
         if (!autoRape) {
-            if (rand(2) == 0 && player.buttRating >= 15 && player.vaginalCapacity() < monster.biggestCockArea() && player.tone < 60) {
+            if (rand(2) == 0 && player.buttRating >= 15 && player.vaginalCapacity() < monster.cocks.biggestCockArea() && player.tone < 60) {
                 getMinoHawtDawged();
                 return;
             }
@@ -548,7 +548,7 @@ export class MinotaurScene {
         // BUTTSECKS!
         else {
             outputText("The bull-man roughly grabs your hair and repositions himself to press against your asshole, slowly building the pressure until suddenly, the flared head pops into you.  ", false);
-            player.buttChange(monster.cockArea(0), true);
+            player.buttChange(monster.cocks.cockArea(0), true);
             minoCumAddiction(15);
         }
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) outputText("\n\nHe positions himself behind your rear legs, and roughly impales you onto his shaft, forcing himself as far into you as he can manage. You cry out, and you feel your stomach distending to accommodate his incredible size. Grabbing your ass, he begins to violently pound your backside with his massive member.  ", false);
@@ -562,12 +562,12 @@ export class MinotaurScene {
             outputText("He manhandles your tits as he does so, almost violently squeezing and stretching them to his enjoyment.  ", false);
             if (player.biggestLactation() > 1.5) outputText("He then gives a grunt in what you take to be approval as your milk begins to squirt out. He licks a milk-coated finger in satisfaction.  ", false);
         }
-        if (player.cockTotal() == 1) outputText("The bull-man bends forward a little, and grabs your " + cockDescript(game.player, 0) + " in a crushing grip. He makes short jerking motions as he keeps thrusting into you.", false);
-        if (player.cockTotal() > 1) outputText("The bull-man bends forward a little, and grabs one of your " + cockDescript(game.player, 0) + "s in a crushing grip. He makes short jerking motions as he keeps thrusting into you.", false);
+        if (player.cocks.length == 1) outputText("The bull-man bends forward a little, and grabs your " + cockDescript(game.player, 0) + " in a crushing grip. He makes short jerking motions as he keeps thrusting into you.", false);
+        if (player.cocks.length > 1) outputText("The bull-man bends forward a little, and grabs one of your " + cockDescript(game.player, 0) + "s in a crushing grip. He makes short jerking motions as he keeps thrusting into you.", false);
         if (player.vaginas.length > 0) {
-            if (player.vaginalCapacity() < monster.cockArea(0)) outputText("\n\nYou clench your teeth in pain as his thick ribbed cock ravages your tight pussy. After a while, a kind of numbness sets in, and you start to feel dim waves of pleasure piercing through the curtain of pain. You hear grunts of pleasure and satisfaction coming from the beast's mouth.", false);
-            if (player.vaginalCapacity() >= monster.cockArea(0) && player.vaginalCapacity() < monster.cockArea(0) * 1.5) outputText("\n\nYou feel his monstrous ribbed cock deliciously rubbing against your love-canal, sending maddening waves of pleasure to your brain as the beast keeps shoving into you. Oblivious to anything but your own enjoyment, you moan loudly like a whore, as the beast chuckles and grunts from his own pleasure.", false);
-            if (player.vaginalCapacity() >= monster.cockArea(0) * 1.5) outputText("\n\nYou feel his monstrous cock sliding easily in and out of your wide fuck-hole, hearing the beast grunt in dissatisfaction. He suddenly clouts your left buttock, which makes you tense your muscles, including your vagina's, and you start to feel the ribs on his cock rubbing against your wall. The pleasure it procures you makes you tense your muscles harder, causing the pleasure to swell again. The minotaur grunts in approval, and continues his violent pounding as you start moaning.", false);
+            if (player.vaginalCapacity() < monster.cocks.cockArea(0)) outputText("\n\nYou clench your teeth in pain as his thick ribbed cock ravages your tight pussy. After a while, a kind of numbness sets in, and you start to feel dim waves of pleasure piercing through the curtain of pain. You hear grunts of pleasure and satisfaction coming from the beast's mouth.", false);
+            if (player.vaginalCapacity() >= monster.cocks.cockArea(0) && player.vaginalCapacity() < monster.cocks.cockArea(0) * 1.5) outputText("\n\nYou feel his monstrous ribbed cock deliciously rubbing against your love-canal, sending maddening waves of pleasure to your brain as the beast keeps shoving into you. Oblivious to anything but your own enjoyment, you moan loudly like a whore, as the beast chuckles and grunts from his own pleasure.", false);
+            if (player.vaginalCapacity() >= monster.cocks.cockArea(0) * 1.5) outputText("\n\nYou feel his monstrous cock sliding easily in and out of your wide fuck-hole, hearing the beast grunt in dissatisfaction. He suddenly clouts your left buttock, which makes you tense your muscles, including your vagina's, and you start to feel the ribs on his cock rubbing against your wall. The pleasure it procures you makes you tense your muscles harder, causing the pleasure to swell again. The minotaur grunts in approval, and continues his violent pounding as you start moaning.", false);
         }
         outputText("\n\nFinally, you can feel he's ready to cum. His thrusts become shorter and faster, and just when you think you can't stand it anymore he starts shooting his sperm into you. Your stomach begins to round out from the sheer amount of bull seed being pumped into your belly.  ", false);
         dynStats("lib", 1, "sen", -.5, "cor", 1);
@@ -586,7 +586,7 @@ export class MinotaurScene {
             // Preggers chance!
             player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR);
         }
-        if (player.cockTotal() > 0 && (player.sens + rand(40) > 50)) {
+        if (player.cocks.length > 0 && (player.sens + rand(40) > 50)) {
             outputText("You orgasm, ", false);
             if (player.cumQ() < 25) outputText("spurting your seed helplessly from the brutal rape.  ", false);
             if (player.cumQ() >= 25 && player.cumQ() < 250) outputText("squirting thick ropes of cum over the cave.  ", false);
@@ -608,9 +608,9 @@ export class MinotaurScene {
         outputText("The huge bull-man grabs you around the waist with one hand and flips you over. You hang upside down in his grip, your " + legs(player) + " splayed in the air.  The minotaur rubs your face across his sweat-slick balls, smearing his musk into your skin. Each of the minotaur's testicles is bigger than a man's head, and the skin of his sack is pulled taut over his cum-filled balls.\n\n", false);
         outputText("The minotaur traps your " + legs(player) + " in one hand and slams your back against the cold cave wall. You gasp, spraying drops of musky sweat from your lips. Dragging you against the rough stone, the minotaur lifts you higher and bends your " + legs(player) + " back over a rock ledge. You are pinned against the cave wall, " + legs(player) + " held in one of the minotaur's hands while his other roughly gropes your stretched-out body.", false);
         if (player.hasBreasts()) outputText("  The bull-man grabs your " + biggestBreastSizeDescript(player) + ", squeezing and mauling them with his calloused hand.", false);
-        if (player.cockTotal() >= 1) {
+        if (player.cocks.length >= 1) {
             outputText("  Your " + multiCockDescriptLight(game.player) + " slap", false);
-            if (player.cockTotal() == 1) outputText("s", false);
+            if (player.cocks.length == 1) outputText("s", false);
             outputText(" painfully against your belly as the minotaur drags you along the wall.", false);
         }
         outputText("  All you can see is the minotaur's huge shaft, the tip grinding against your mouth. The minotaur slaps his cock-head against your face, rubbing his musk and pre-cum into your cheeks and hair.\n\n", false);
@@ -654,7 +654,7 @@ export class MinotaurScene {
         if (monster.lust > 99) outputText("You push his hands away and y", false);
         else outputText("Y", false);
         outputText("ou lean over him, feeling your generous breast-flesh jiggle, your " + nippleDescription(player, 0) + "s tingling with desire as they rub across the horse-like minotaur dong.   The beast's pre starts forming into large drops along his flared head, and you waste no time smearing it through your cleavage, lubricating the space between your tits and breathing deeply of its perfect scent.", false);
-        if (player.totalCocks() > 0) outputText("  Your " + cockDescript(game.player, 0) + " grows harder and more aroused than ever before while your ", false);
+        if (player.cocks.length > 0) outputText("  Your " + cockDescript(game.player, 0) + " grows harder and more aroused than ever before while your ", false);
         else outputText("  Your body aches with arousal while your ", false);
         if (player.hasVagina()) outputText(vaginaDescript(player, 0) + " grows hotter and hotter, begging to be taken.", false);
         else outputText(assholeDescript(player) + " puckers slightly, as if begging to be taken by another monstrous beast.", false);
@@ -686,13 +686,13 @@ export class MinotaurScene {
 
         outputText("You shed your " + player.armorName + " and step over its waist, trembling slightly with anticipation of your next fix.  Taking his flared drug-nozzle in hand, you hold it steady and lower yourself down, feeling his slippery narcotic pre-cum smearing over your hole.  ", false);
         // Too tight!
-        if (player.analCapacity() < monster.cockArea(0)) {
+        if (player.analCapacity() < monster.cocks.cockArea(0)) {
             outputText("You have to push harder and harder to get it inside you, even with the copious lube's drug-like affects relaxing your sphincter.  The penetration is slow, but inch by inch you force it inside you.", false);
         }
         else {
             outputText("Your muscles instantly relax on contact with the pre, and you feel the massive tool sliding up your spacious asshole with ease.", false);
         }
-        if (!player.buttChange(monster.cockArea(0), true)) outputText("  ", false);
+        if (!player.buttChange(monster.cocks.cockArea(0), true)) outputText("  ", false);
         outputText("The minotaur's eyes open wide as he lets out a lustful '<i>Moooooo</i>'.  He doesn't struggle or even move – you're giving him exactly what he wants, after all.\n\n", false);
 
         outputText("You bottom out, sighing happily as you feel his hot fluids leaking inside you, radiating pure pleasure out from your core.   Bestial hands grab your " + nippleDescription(player, 0) + "s and begin gently twisting them, taking surprising care for all their strength.  Spurred on by the feelings radiating from your ", false);
@@ -843,11 +843,11 @@ export class MinotaurScene {
         outputText("You grin and stumble up the mountain, inhaling deep breaths from moment to moment to make sure you're on the right track.  The scent gets stronger and stronger, making you ", false);
         if (player.hasVagina()) {
             outputText("wet ", false);
-            if (player.cockTotal() > 0) {
+            if (player.cocks.length > 0) {
                 outputText("and hard ", false);
             }
         }
-        else if (player.cockTotal() > 0) outputText("hard ", false);
+        else if (player.cocks.length > 0) outputText("hard ", false);
         else outputText("shiver ", false);
         outputText("with anticipation.  Though you don't notice, your pupils have dilated and your eyes are glassy from the smell alone.  Scrabbling up the rocks, you're oblivious to the cuts and scrapes that form on your hands and arms from the frantic climb.   You pull yourself up onto a ledge and heave yourself over it, lying down to pant and drool from exhaustion.  Only after you've recovered do you realize that you've found them!\n\n", false);
 
@@ -899,7 +899,7 @@ export class MinotaurScene {
     private minotaurBlowjob(): void {
         spriteSelect(44);
         outputText("", true);
-        const x: number = player.cockThatFits(80);
+        const x: number = player.cocks.cockThatFits(80);
         outputText("You step towards the minotaur, ", false);
         if (!player.isTaur()) outputText("peeling away your " + player.armorName + " and ", false);
         outputText("revealing your " + multiCockDescriptLight(game.player) + " to the defeated bull.  The beast looks to you in both arousal and shock, mouth parting slightly at the idea of another creature taking charge.  Within the musky stench of its dripping shaft you nearly lose yourself, and ", false);
@@ -944,13 +944,13 @@ export class MinotaurScene {
 
         if (player.gender > 0) {
             outputText("\n\n");
-            if (player.hasCock()) outputText("Forcing [oneCock] between his bound thighs, you frot his flared bull-cock, your mixed pre soaking into the fur of his belly as you thrust against him.");
+            if (player.cocks.length > 0) outputText("Forcing [oneCock] between his bound thighs, you frot his flared bull-cock, your mixed pre soaking into the fur of his belly as you thrust against him.");
             if (player.hasVagina()) outputText("Grasping his bull-cock, you pull it against your pussy, rubbing your juices up and down his impressive length as your lips and clit grind on him, adding to your pleasure.");
         }
 
         // (If male or herm:
         outputText("\n\n");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("As your orgasm washes over you, you spray your cum, ");
             if (player.cumQ() < 100) outputText("spattering");
             else if (player.cumQ() < 500) outputText("drenching");
@@ -994,9 +994,9 @@ export class MinotaurScene {
 
         outputText("\n\nYour body, long-ready to lay, quickly achieves a climax; ");
         // (if male or herm:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("you thrust your cock");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(" through the air harder and faster, drenching his ");
             // (if cum volume low:
             if (player.cumQ() < 250) outputText("backside with your cum");
@@ -1026,7 +1026,7 @@ export class MinotaurScene {
         if (player.lust > 99) {
             outputText("You collapse to your knees, hands racing to your crotch and your ");
             // (If Male or Herm:
-            if (player.hasCock()) outputText("[cock biggest], which you frantically try to stroke and rub through your [armor], its throbbing arousal clearly evident.");
+            if (player.cocks.length > 0) outputText("[cock biggest], which you frantically try to stroke and rub through your [armor], its throbbing arousal clearly evident.");
             // If Herm:
             if (player.gender == 3) outputText("  Your other hand races to your ");
             // (If Female or Herm:
@@ -1048,7 +1048,7 @@ export class MinotaurScene {
         outputText("\n\nThe minotaur's muzzle eagerly digs into the crack between your bulbous ass-cheeks as you yelp, surprised, and you feel his tongue flicking out a moment later, searching around inside your tightly-sandwiched asscrack for your [asshole].  It slathers a good portion of your ass with saliva before it darts further inward, licking along your taint - and then skips right over your [asshole].");
         outputText("\n\nYou let out a frustrated moan, fairly into the licking by this point, and try to wiggle your hips encouragingly as his tongue continues to search and slather your tight rear with spit.  His tongue withdraws back into his mouth, making you jump from the sudden motion, but then a second later it's back out again, poking and prodding and licking up every bit it can - until finally, he finds your asshole.");
         outputText("\n\nThe minotaur's broad tongue licks and laps at your [butthole] as you writhe and moan, each lick twice as pleasant as the last, and you feel ");
-        if (player.hasCock()) outputText("[eachCock] twitching beneath you, painting the floor with dribbles of your pre.");
+        if (player.cocks.length > 0) outputText("[eachCock] twitching beneath you, painting the floor with dribbles of your pre.");
         if (player.gender == 3) outputText("  You also feel ");
         if (player.hasVagina()) outputText("your [vagina] clenching and unclenching as your entire hips try to push against the Minotaur's searching tongue, dripping with his spit - along with your own juices.");
 

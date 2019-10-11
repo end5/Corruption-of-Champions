@@ -27,7 +27,7 @@ export class TentacleBeast extends Monster {
             else {
                 outputText("While you attempt to avoid the onslaught of pseudopods, one catches you around your " + foot(player) + " and drags you to the ground. You attempt to reach for it to pull it off only to have all of the other tentacles grab you in various places and immobilize you in the air. You are trapped and helpless!!!\n\n", false);
                 // Male/Herm Version:
-                if (player.hasCock()) outputText("The creature, having immobilized you, coils a long tendril about your penis. You shudder as the creature begins stroking your cock like a maid at a dairy farm in an attempt to provoke a response from you. Unable to resist, your " + cockDescript(player, 0) + " easily becomes erect, signaling to the creature that you are responsive to harsher stimulation.\n", false);
+                if (player.cocks.length > 0) outputText("The creature, having immobilized you, coils a long tendril about your penis. You shudder as the creature begins stroking your cock like a maid at a dairy farm in an attempt to provoke a response from you. Unable to resist, your " + cockDescript(player, 0) + " easily becomes erect, signaling to the creature that you are responsive to harsher stimulation.\n", false);
                 // Female Version:
                 else if (player.hasVagina()) outputText("The creature quickly positions a long tentacle with a single sucker over your clitoris. You feel the power of the suction on you, and your body quickly heats up.  Your clit engorges, prompting the beast to latch the sucker onto your " + clitDescription(player) + ".\n", false);
                 // Genderless
@@ -93,10 +93,10 @@ export class TentacleBeast extends Monster {
         this.imageName = "tentaclebeast";
         this.long = "You see the massive, shambling form of the tentacle beast before you.  Appearing as a large shrub, it shifts its bulbous mass and reveals a collection of thorny tendrils and cephalopodic limbs.";
         // this.plural = false;
-        this.createCock(40, 1.5);
-        this.createCock(60, 1.5);
-        this.createCock(50, 1.5);
-        this.createCock(20, 1.5);
+        this.cocks.createCock(40, 1.5);
+        this.cocks.createCock(60, 1.5);
+        this.cocks.createCock(50, 1.5);
+        this.cocks.createCock(20, 1.5);
         this.balls = 0;
         this.ballSize = 0;
         this.cumMultiplier = 3;

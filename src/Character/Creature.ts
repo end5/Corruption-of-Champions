@@ -271,7 +271,7 @@ export class Creature {
     // MALE STUFF
     // public var cocks:Array;
     // TODO: Tuck away into Male genital class?
-    public cocks: any[];
+    public cocks = new CockArray();
     // balls
     public balls: number = 0;
     public cumMultiplier: number = 1;
@@ -322,7 +322,7 @@ export class Creature {
             "weaponName", "weaponVerb", "armorName"
         ]);
         // 3. validate members
-        for (const cock of cocks) {
+        for (const cock of this.cocks) {
             error += cock.validate();
         }
         for (const vagina of vaginas) {
@@ -370,7 +370,6 @@ export class Creature {
     public constructor() {
         // cocks = new Array();
         // The world isn't ready for typed Arrays just yet.
-        cocks = [];
         vaginas = [];
         // vaginas: Vector.<Vagina> = new Vector.<Vagina>();
         breastRows = [];
@@ -382,10 +381,10 @@ export class Creature {
         dynStats("lus=", 0, "res", false);
         hoursSinceCum = 0;
 
-        if (countCockSocks("gilded") > 0) {
+        if (this.cocks.countCockSocks("gilded") > 0) {
 
-            const randomCock: number = rand(cocks.length);
-            const bonusGems: number = rand(cocks[randomCock].cockThickness) + countCockSocks("gilded"); // int so AS rounds to whole numbers
+            const randomCock: number = rand(this.cocks.length);
+            const bonusGems: number = rand(this.cocks[randomCock].cockThickness) + this.cocks.countCockSocks("gilded"); // int so AS rounds to whole numbers
             outputText("\n\nFeeling some minor discomfort in your " + cockDescript(this, randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n");
             gems += bonusGems;
         }
@@ -402,447 +401,6 @@ export class Creature {
                 index = counter;
         }
         return breastRows[index].breastRating;
-    }
-
-    public cockArea(i_cockIndex: number): number {
-        if (i_cockIndex >= cocks.length || i_cockIndex < 0)
-            return 0;
-        return (cocks[i_cockIndex].cockThickness * cocks[i_cockIndex].cockLength);
-    }
-
-    public biggestCockLength(): number {
-        if (cocks.length == 0)
-            return 0;
-        return cocks[biggestCockIndex()].cockLength;
-    }
-
-    public biggestCockArea(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cockArea(index) < cockArea(counter))
-                index = counter;
-        }
-        return cockArea(index);
-    }
-
-    // Find the second biggest dick and it's area.
-    public biggestCockArea2(): number {
-        if (cocks.length <= 1)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        let index2: number = -1;
-        // Find the biggest
-        while (counter > 0) {
-            counter--;
-            if (cockArea(index) < cockArea(counter))
-                index = counter;
-        }
-        // Reset counter and find the next biggest
-        counter = cocks.length;
-        while (counter > 0) {
-            counter--;
-            // Is this spot claimed by the biggest?
-            if (counter != index) {
-                // Not set yet?
-                if (index2 == -1)
-                    index2 = counter;
-                // Is the stored value less than the current one?
-                if (cockArea(index2) < cockArea(counter)) {
-                    index2 = counter;
-                }
-            }
-        }
-        // If it couldn't find a second biggest...
-        if (index == index2)
-            return 0;
-        return cockArea(index2);
-    }
-
-    public longestCock(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cocks[index].cockLength < cocks[counter].cockLength)
-                index = counter;
-        }
-        return index;
-    }
-
-    public longestCockLength(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cocks[index].cockLength < cocks[counter].cockLength)
-                index = counter;
-        }
-        return cocks[index].cockLength;
-    }
-
-    public longestHorseCockLength(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if ((cocks[index].cockType != CockTypesEnum.HORSE && cocks[counter].cockType == CockTypesEnum.HORSE) || (cocks[index].cockLength < cocks[counter].cockLength && cocks[counter].cockType == CockTypesEnum.HORSE))
-                index = counter;
-        }
-        return cocks[index].cockLength;
-    }
-
-    public twoDickRadarSpecial(width: number): boolean {
-        // No two dicks?  FUCK OFF
-        if (cockTotal() < 2)
-            return false;
-
-        // Set up vars
-        // Get thinnest, work done already
-        const thinnest: number = thinnestCockIndex();
-        let thinnest2: number = 0;
-        // For ze loop
-        let temp: number = 0;
-        // Make sure they arent the same at initialization
-        if (thinnest2 == thinnest)
-            thinnest2 = 1;
-        // Loop through to find 2nd thinnest
-        while (temp < cocks.length) {
-            if (cocks[thinnest2].cockThickness > cocks[temp].cockThickness && temp != thinnest)
-                thinnest2 = temp;
-            temp++;
-        }
-        // If the two thicknesses added together are less than the arg, true, else false
-        return cocks[thinnest].cockThickness + cocks[thinnest2].cockThickness < width;
-    }
-
-    public totalCockThickness(): number {
-        let thick: number = 0;
-        let counter: number = cocks.length;
-        while (counter > 0) {
-            counter--;
-            thick += cocks[counter].cockThickness;
-        }
-        return thick;
-    }
-
-    public thickestCock(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cocks[index].cockThickness < cocks[counter].cockThickness)
-                index = counter;
-        }
-        return index;
-    }
-
-    public thickestCockThickness(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cocks[index].cockThickness < cocks[counter].cockThickness)
-                index = counter;
-        }
-        return cocks[index].cockThickness;
-    }
-
-    public thinnestCockIndex(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cocks[index].cockThickness > cocks[counter].cockThickness)
-                index = counter;
-        }
-        return index;
-    }
-
-    public smallestCockIndex(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cockArea(index) > cockArea(counter)) {
-                index = counter;
-            }
-        }
-        return index;
-    }
-
-    public smallestCockLength(): number {
-        if (cocks.length == 0)
-            return 0;
-        return cocks[smallestCockIndex()].cockLength;
-    }
-
-    public shortestCockIndex(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cocks[index].cockLength > cocks[counter].cockLength)
-                index = counter;
-        }
-        return index;
-    }
-
-    public shortestCockLength(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cocks[index].cockLength > cocks[counter].cockLength)
-                index = counter;
-        }
-        return cocks[index].cockLength;
-    }
-
-    // Find the biggest cock that fits inside a given value
-    public cockThatFits(i_fits: number = 0, type: string = "area"): number {
-        if (cocks.length <= 0)
-            return -1;
-        let cockIdxPtr: number = cocks.length;
-        // Current largest fitter
-        let cockIndex: number = -1;
-        while (cockIdxPtr > 0) {
-            cockIdxPtr--;
-            if (type == "area") {
-                if (cockArea(cockIdxPtr) <= i_fits) {
-                    // If one already fits
-                    if (cockIndex >= 0) {
-                        // See if the newcomer beats the saved small guy
-                        if (cockArea(cockIdxPtr) > cockArea(cockIndex))
-                            cockIndex = cockIdxPtr;
-                    }
-                    // Store the index of fitting dick
-                    else
-                        cockIndex = cockIdxPtr;
-                }
-            }
-            else if (type == "length") {
-                if (cocks[cockIdxPtr].cockLength <= i_fits) {
-                    // If one already fits
-                    if (cockIndex >= 0) {
-                        // See if the newcomer beats the saved small guy
-                        if (cocks[cockIdxPtr].cockLength > cocks[cockIndex].cockLength)
-                            cockIndex = cockIdxPtr;
-                    }
-                    // Store the index of fitting dick
-                    else
-                        cockIndex = cockIdxPtr;
-                }
-            }
-        }
-        return cockIndex;
-    }
-
-    // Find the 2nd biggest cock that fits inside a given value
-    public cockThatFits2(fits: number = 0): number {
-        if (cockTotal() == 1)
-            return -1;
-        let counter: number = cocks.length;
-        // Current largest fitter
-        let index: number = -1;
-        let index2: number = -1;
-        while (counter > 0) {
-            counter--;
-            // Does this one fit?
-            if (cockArea(counter) <= fits) {
-                // If one already fits
-                if (index >= 0) {
-                    // See if the newcomer beats the saved small guy
-                    if (cockArea(counter) > cockArea(index)) {
-                        // Save old wang
-                        if (index != -1)
-                            index2 = index;
-                        index = counter;
-                    }
-                    // If this one fits and is smaller than the other great
-                    else {
-                        if ((cockArea(index2) < cockArea(counter)) && counter != index) {
-                            index2 = counter;
-                        }
-                    }
-                    if (index >= 0 && index == index2)
-                        trace("FUCK ERROR COCKTHATFITS2 SHIT IS BROKED!");
-                }
-                // Store the index of fitting dick
-                else
-                    index = counter;
-            }
-        }
-        return index2;
-    }
-
-    public smallestCockArea(): number {
-        if (cockTotal() == 0)
-            return -1;
-        return cockArea(smallestCockIndex());
-    }
-
-    public smallestCock(): number {
-        return cockArea(smallestCockIndex());
-    }
-
-    public biggestCockIndex(): number {
-        if (cocks.length == 0)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (cockArea(index) < cockArea(counter))
-                index = counter;
-        }
-        return index;
-    }
-
-    // Find the second biggest dick's index.
-    public biggestCockIndex2(): number {
-        if (cocks.length <= 1)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        let index2: number = 0;
-        // Find the biggest
-        while (counter > 0) {
-            counter--;
-            if (cockArea(index) < cockArea(counter))
-                index = counter;
-        }
-        // Reset counter and find the next biggest
-        counter = cocks.length;
-        while (counter > 0) {
-            counter--;
-            // Make sure index2 doesn't get stuck
-            // at the same value as index1 if the
-            // initial location is biggest.
-            if (index == index2 && counter != index)
-                index2 = counter;
-            // Is the stored value less than the current one?
-            if (cockArea(index2) < cockArea(counter)) {
-                // Make sure we don't set index2 to be the same
-                // as the biggest dick.
-                if (counter != index)
-                    index2 = counter;
-            }
-        }
-        // If it couldn't find a second biggest...
-        if (index == index2)
-            return 0;
-        return index2;
-    }
-
-    public smallestCockIndex2(): number {
-        if (cocks.length <= 1)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        let index2: number = 0;
-        // Find the smallest
-        while (counter > 0) {
-            counter--;
-            if (cockArea(index) > cockArea(counter))
-                index = counter;
-        }
-        // Reset counter and find the next biggest
-        counter = cocks.length;
-        while (counter > 0) {
-            counter--;
-            // Make sure index2 doesn't get stuck
-            // at the same value as index1 if the
-            // initial location is biggest.
-            if (index == index2 && counter != index)
-                index2 = counter;
-            // Is the stored value less than the current one?
-            if (cockArea(index2) > cockArea(counter)) {
-                // Make sure we don't set index2 to be the same
-                // as the biggest dick.
-                if (counter != index)
-                    index2 = counter;
-            }
-        }
-        // If it couldn't find a second biggest...
-        if (index == index2)
-            return 0;
-        return index2;
-    }
-
-    // Find the third biggest dick index.
-    public biggestCockIndex3(): number {
-        if (cocks.length <= 2)
-            return 0;
-        let counter: number = cocks.length;
-        let index: number = 0;
-        let index2: number = -1;
-        let index3: number = -1;
-        // Find the biggest
-        while (counter > 0) {
-            counter--;
-            if (cockArea(index) < cockArea(counter))
-                index = counter;
-        }
-        // Reset counter and find the next biggest
-        counter = cocks.length;
-        while (counter > 0) {
-            counter--;
-            // If this index isn't used already
-            if (counter != index) {
-                // Has index been set to anything yet?
-                if (index2 == -1)
-                    index2 = counter;
-                // Is the stored value less than the current one?
-                else if (cockArea(index2) < cockArea(counter)) {
-                    index2 = counter;
-                }
-            }
-        }
-        // If it couldn't find a second biggest...
-        if (index == index2 || index2 == -1)
-            index2 = 0;
-        // Reset counter and find the next biggest
-        counter = cocks.length;
-        while (counter > 0) {
-            counter--;
-            // If this index isn't used already
-            if (counter != index && counter != index2) {
-                // Has index been set to anything yet?
-                if (index3 == -1)
-                    index3 = counter;
-                // Is the stored value less than the current one?
-                else if (cockArea(index3) < cockArea(counter)) {
-                    index3 = counter;
-                }
-            }
-        }
-        // If it fails for some reason.
-        if (index3 == -1)
-            index3 = 0;
-        return index3;
     }
 
     public wetness(): number {
@@ -1081,7 +639,7 @@ export class Creature {
     // Calculate bonus virility rating!
     // anywhere from 5% to 100% of normal cum effectiveness thru herbs!
     public virilityQ(): number {
-        if (!hasCock())
+        if (this.cocks.length <= 0)
             return 0;
         let percent: number = 0.01;
         if (cumQ() >= 250)
@@ -1116,7 +674,7 @@ export class Creature {
 
     // Calculate cum return
     public cumQ(): number {
-        if (!hasCock())
+        if (this.cocks.length <= 0)
             return 0;
         let quantity: number = 0;
         // Base value is ballsize*ballQ*cumefficiency by a factor of 2.
@@ -1160,190 +718,10 @@ export class Creature {
         return quantity;
     }
 
-    public countCocksOfType(type: CockTypesEnum): number {
-        if (cocks.length == 0) return 0;
-        let counter: number = 0;
-        for (const x = 0; x < cocks.length; x++) {
-            if (cocks[x].cockType == type) counter++;
-        }
-        return counter;
-    }
-
-    public anemoneCocks(): number { // How many anemonecocks?
-        return countCocksOfType(CockTypesEnum.ANEMONE);
-    }
-
-    public catCocks(): number { // How many catcocks?
-        return countCocksOfType(CockTypesEnum.CAT);
-    }
-
-    public demonCocks(): number { // How many demoncocks?
-        return countCocksOfType(CockTypesEnum.DEMON);
-    }
-
-    public displacerCocks(): number { // How many displacerCocks?
-        return countCocksOfType(CockTypesEnum.DISPLACER);
-    }
-
-    // Note: DogCocks/FoxCocks are functionally identical. They actually change back and forth depending on some
-    // of the PC's attributes, and this is recaluculated every hour spent at camp.
-    // As such, delineating between the two is kind of silly.
-    public dogCocks(): number { // How many dogCocks
-        if (cocks.length == 0) return 0;
-        let counter: number = 0;
-        for (const x = 0; x < cocks.length; x++) {
-            if (cocks[x].cockType == CockTypesEnum.DOG || cocks[x].cockType == CockTypesEnum.FOX) counter++;
-        }
-        return counter;
-    }
-
-    public dragonCocks(): number { // How many dragonCocks?
-        return countCocksOfType(CockTypesEnum.DRAGON);
-    }
-
-    public foxCocks(): number { // How many foxCocks
-        return dogCocks();
-    }
-
-    public horseCocks(): number { // How many horsecocks?
-        return countCocksOfType(CockTypesEnum.HORSE);
-    }
-
-    public kangaCocks(): number { // How many kangawangs?
-        return countCocksOfType(CockTypesEnum.KANGAROO);
-    }
-
-    public lizardCocks(): number { // How many lizard/snake-cocks?
-        return countCocksOfType(CockTypesEnum.LIZARD);
-    }
-
-    public normalCocks(): number { // How many normalCocks?
-        return countCocksOfType(CockTypesEnum.HUMAN);
-    }
-
-    public tentacleCocks(): number { // How many tentaclecocks?
-        return countCocksOfType(CockTypesEnum.TENTACLE);
-    }
-
-    public findFirstCockType(ctype: CockTypesEnum): number {
-        let index: number = 0;
-        if (cocks[index].cockType == ctype)
-            return index;
-        while (index < cocks.length) {
-            index++;
-            if (cocks[index].cockType == ctype)
-                return index;
-        }
-        // trace("Creature.findFirstCockType ERROR - searched for cocktype: " + ctype + " and could not find it.");
-        return 0;
-    }
-
-    /*public function findFirstCockType(type:Number = 0):Number
-    {
-        var index:Number = 0;
-        if (cocks[index].cockType == type)
-            return index;
-        while (index < cocks.length)
-        {
-            index++;
-            if (cocks[index].cockType == type)
-                return index;
-        }
-        //trace("Creature.findFirstCockType ERROR - searched for cocktype: " + type + " and could not find it.");
-        return 0;
-    }*/
-
-    // Change first normal cock to horsecock!
-    // Return number of affected cock, otherwise -1
-    public addHorseCock(): number {
-        let counter: number = cocks.length;
-        while (counter > 0) {
-            counter--;
-            // Human - > horse
-            if (cocks[counter].cockType == CockTypesEnum.HUMAN) {
-                cocks[counter].cockType = CockTypesEnum.HORSE;
-                return counter;
-            }
-            // Dog - > horse
-            if (cocks[counter].cockType == CockTypesEnum.DOG) {
-                cocks[counter].cockType = CockTypesEnum.HORSE;
-                return counter;
-            }
-            // Tentacle - > horse
-            if (cocks[counter].cockType == CockTypesEnum.TENTACLE) {
-                cocks[counter].cockType = CockTypesEnum.HORSE;
-                return counter;
-            }
-            // Demon -> horse
-            if (cocks[counter].cockType == CockTypesEnum.DEMON) {
-                cocks[counter].cockType = CockTypesEnum.HORSE;
-                return counter;
-            }
-            // Catch-all
-            if (cocks[counter].cockType.Index > 4) {
-                cocks[counter].cockType = CockTypesEnum.HORSE;
-                return counter;
-            }
-        }
-        return -1;
-    }
-
-    // TODO Seriously wtf. 1500+ calls to cockTotal, 340+ call to totalCocks. I'm scared to touch either.
-    // How many cocks?
-    public cockTotal(): number {
-        return (cocks.length);
-    }
-
-    // Alternate
-    public totalCocks(): number {
-        return (cocks.length);
-    }
-
-    // BOolean alternate
-    public hasCock(): boolean {
-        return cocks.length >= 1;
-
-    }
-
-    public hasSockRoom(): boolean {
-        let index: number = cocks.length;
-        while (index > 0) {
-            index--;
-            if (cocks[index].sock == "")
-                return true;
-        }
-        return false;
-    }
-
-    // Deprecated
-    public hasSock(arg: string = ""): boolean {
-        let index: number = cocks.length;
-
-        while (index > 0) {
-            index--;
-            if (cocks[index].sock != "") {
-                if (arg == "" || cocks[index].sock == arg)
-                    return true;
-            }
-        }
-        return false;
-    }
-    public countCockSocks(type: string): number {
-        let count: number = 0;
-
-        for (const i = 0; i < cocks.length; i++) {
-            if (cocks[i].sock == type) {
-                count++;
-            }
-        }
-        trace("countCockSocks found " + count + " " + type);
-        return count;
-    }
-
     public canAutoFellate(): boolean {
-        if (!hasCock())
+        if (this.cocks.length <= 0)
             return false;
-        return (cocks[0].cockLength >= 20);
+        return (this.cocks[0].cockLength >= 20);
     }
 
     // PC can fly?
@@ -1367,19 +745,6 @@ export class Creature {
         return false;
     }
 
-    // Create a cock. Default type is HUMAN
-    public createCock(clength: number = 5.5, cthickness: number = 1, ctype: CockTypesEnum = null): boolean {
-        if (ctype == null) ctype = CockTypesEnum.HUMAN;
-        if (cocks.length >= 10)
-            return false;
-        const newCock: Cock = new Cock(clength, cthickness, ctype);
-        // var newCock:cockClass = new cockClass();
-        cocks.push(newCock);
-        cocks[cocks.length - 1].cockThickness = cthickness;
-        cocks[cocks.length - 1].cockLength = clength;
-        return true;
-    }
-
     // create vagoo
     public createVagina(virgin: boolean = true, vaginalWetness: number = 1, vaginalLooseness: number = 0): boolean {
         if (vaginas.length >= 2)
@@ -1401,54 +766,14 @@ export class Creature {
     }
 
     public genderCheck(): void {
-        if (hasCock() && hasVagina())
+        if (this.cocks.length > 0 && hasVagina())
             gender = GENDER_HERM;
-        else if (hasCock())
+        else if (this.cocks.length > 0)
             gender = GENDER_MALE;
         else if (hasVagina())
             gender = GENDER_FEMALE;
         else
             gender = GENDER_NONE;
-    }
-
-    // Remove cocks
-    public removeCock(arraySpot: number, totalRemoved: number): void {
-        // Various Errors preventing action
-        if (arraySpot < 0 || totalRemoved <= 0) {
-            // trace("ERROR: removeCock called but arraySpot is negative or totalRemoved is 0.");
-            return;
-        }
-        if (cocks.length == 0) {
-            // trace("ERROR: removeCock called but cocks do not exist.");
-        }
-        else {
-            if (arraySpot > cocks.length - 1) {
-                // trace("ERROR: removeCock failed - array location is beyond the bounds of the array.");
-            }
-            else {
-                try {
-                    const cock: Cock = cocks[arraySpot];
-                    if (cock.sock == "viridian") {
-                        this.perks.remove(PerkLib.LustyRegeneration);
-                    }
-                    else if (cock.sock == "cockring") {
-                        let numRings: number = 0;
-                        for (const i = 0; i < cocks.length; i++) {
-                            if (cocks[i].sock == "cockring") numRings++;
-                        }
-
-                        if (numRings == 0) this.perks.remove(PerkLib.PentUp);
-                        else this.perks.setValue(PerkLib.PentUp, 1, 5 + (numRings * 5));
-                    }
-                    cocks.splice(arraySpot, totalRemoved);
-                }
-                catch (e: Error) {
-                    trace("Argument error in Creature[" + this._short + "]: " + e.message);
-                }
-                // trace("Attempted to remove " + totalRemoved + " cocks.");
-            }
-        }
-        genderCheck();
     }
 
     // REmove vaginas
@@ -1497,16 +822,6 @@ export class Creature {
         }
     }
 
-    // This is placeholder shit whilst I work out a good way of BURNING ENUM TO THE FUCKING GROUND
-    // and replacing it with something that will slot in and work with minimal changes and not be
-    // A FUCKING SHITSTAIN when it comes to intelligent de/serialization.
-    public fixFuckingCockTypesEnum(): void {
-        if (this.cocks.length > 0) {
-            for (const i = 0; i < this.cocks.length; i++) {
-                this.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(this.cocks[i].cockType.Index);
-            }
-        }
-    }
 
     public buttChangeNoDisplay(cArea: number): boolean {
         let stretched: boolean = false;
@@ -1809,18 +1124,6 @@ export class Creature {
         return (average / breastRows.length);
     }
 
-    public averageCockThickness(): number {
-        let counter: number = cocks.length;
-        let average: number = 0;
-        while (counter > 0) {
-            counter--;
-            average += cocks[counter].cockThickness;
-        }
-        if (cocks.length == 0)
-            return 0;
-        return (average / cocks.length);
-    }
-
     public averageNippleLength(): number {
         let counter: number = breastRows.length;
         let average: number = 0;
@@ -1855,18 +1158,6 @@ export class Creature {
             average += vaginas[counter].vaginalWetness;
         }
         return (average / vaginas.length);
-    }
-
-    public averageCockLength(): number {
-        let counter: number = cocks.length;
-        let average: number = 0;
-        while (counter > 0) {
-            counter--;
-            average += cocks[counter].cockLength;
-        }
-        if (cocks.length == 0)
-            return 0;
-        return (average / cocks.length);
     }
 
     public canTitFuck(): boolean {
@@ -1911,21 +1202,5 @@ export class Creature {
         return Math.floor(nipples / breasts);
     }
 
-    public hasSheath(): boolean {
-        if (cocks.length == 0) return false;
-        for (const x = 0; x < cocks.length; x++) {
-            switch (cocks[x].cockType) {
-                case CockTypesEnum.CAT:
-                case CockTypesEnum.DISPLACER:
-                case CockTypesEnum.DOG:
-                case CockTypesEnum.FOX:
-                case CockTypesEnum.HORSE:
-                case CockTypesEnum.KANGAROO:
-                    return true; // If there's even one cock of any of these types then return true
-                default:
-            }
-        }
-        return false;
-    }
 
 }

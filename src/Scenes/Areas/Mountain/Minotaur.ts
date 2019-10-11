@@ -46,7 +46,7 @@ export class Minotaur extends Monster {
         this.imageName = "minotaur";
         this.long = "";
         // this.plural = false;
-        this.createCock(rand(13) + 24, 2 + rand(3), CockTypesEnum.HORSE);
+        this.cocks.createCock(rand(13) + 24, 2 + rand(3), CockTypesEnum.HORSE);
         this.balls = 2;
         this.ballSize = 2 + rand(13);
         this.cumMultiplier = 1.5;

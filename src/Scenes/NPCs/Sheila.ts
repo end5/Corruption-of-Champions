@@ -103,7 +103,7 @@ export class Sheila extends Monster {
         // Hit:
         else {
             outputText("Sheila's eyes glint suspiciously, and you feel your mind slowing down and your body heating up as you meet her lascivious gaze.  Too late you look away, but the damage is done; her fantasies of ");
-            if (!player.hasCock()) outputText("burying her drooling tail inside you until it squirts");
+            if (!player.cocks.length > 0) outputText("burying her drooling tail inside you until it squirts");
             else outputText("riding your dick to the hilt");
             outputText(" run rampant inside your head and crowd out everything else.  \"<i>Did you see it, [name]?  My love for you?</i>\" Sheila asks, smiling.  God, did you ever!  You can hardly focus on anything!");
             // big (20+) int drop and big lib-based lust gain if successful, locks Infest command for the fight if successful, always misses if Sheila is blinded
@@ -183,7 +183,7 @@ export class Sheila extends Monster {
     private lickEmAndStickEm(): void {
         outputText("Sheila's voice gets closer, becoming disarmingly apologetic as you scrub furiously at your face in darkness.  \"<i>Oh, my.  I didn't mean to get that in your eyes... let me help clean you up, love.</i>\"  Your face is gently gripped between her hands and pulled down, then the demon begins passing her tongue over you affectionately, wiping the fluid away with long, ticklish licks as you wait for the other shoe to fall.");
         outputText("\"<i>All better,</i>\" Sheila announces.  With her thumb, she gingerly pushes one eyelid up before you can pull away, proving her claim - and causing you to look right into her own glowing, purple iris.  A fantasy invades your mind, one where ");
-        if (player.hasCock()) outputText("[oneCock] fucks Sheila to the base while her tail snakes around and penetrates your [vagOrAss]");
+        if (player.cocks.length > 0) outputText("[oneCock] fucks Sheila to the base while her tail snakes around and penetrates your [vagOrAss]");
         else outputText("you take Sheila from behind by plunging her spaded tail into your [vagina] as she lies face-down on the ground with her ass pushed in the air");
         outputText(".");
         // results, no new pg

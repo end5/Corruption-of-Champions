@@ -128,7 +128,7 @@ function dungeonMenu(): void {
                 if (player.gender == 1) outputText("stud", false);
                 else outputText("sexy", false);
                 outputText("!  You haven't seen a confused human about calling itself a champion have you?</i>\"\n\nShe shakes her more-than-ample bosom from side to side as she licks her lips and offers, \"<i>If you do, be sure and bring them back here ok?  We've got their spot all ready for them, but that little prick Zetaz fucked up the pickup.  Tell you what – if you bring me the 'champion' I'll ", false);
-                if (player.totalCocks() > 0) outputText("give you the blowjob of a lifetime", false);
+                if (player.cocks.length > 0) outputText("give you the blowjob of a lifetime", false);
                 else if (player.hasVagina()) outputText("lick your honeypot 'til you soak my face", false);
                 else outputText("give you a new addition and show you how to use it", false);
                 outputText(".</i>\"\n\nThe succubus turns away from you and makes a show of tweaking her make-up, ignoring you for the moment.", false);
@@ -864,7 +864,7 @@ function dungeonMenu(): void {
         // 		text1 = "North";
         // 		choice1 = 11135;
         addButton(1, "North", dungeonEnterRoom, DUNGEON_WITCH_WEST_WARRENS_MAIN);
-        if (player.hasCock() && player.lust >= 33) {
+        if (player.cocks.length > 0 && player.lust >= 33) {
             // 			text3 = "FuckWitches";
             // 			choice3 = knockUpSomeDoubleStuffedSandWitches;
             addButton(2, "FuckWitches", knockUpSomeDoubleStuffedSandWitches);
@@ -1013,7 +1013,7 @@ function dungeonMenu(): void {
                 outputText("\n\nBeneath the ebony woman, you see the sand witch begin to quiver and moan, thick gouts of semen back-flooding from her packed cunny as her belly rounds with delicious fecundity.  Her muscles lock, then twitch feebly for a few seconds before she slides off into the new-born cum-puddle, slipping along the floor in an insensate pile of orgasmic bliss.  You're so enraptured by the sight, that you don't even try to hide when the ebony futanari turns to face you, putting on a pointed, wide-brimmed hat and black robe.  For the slightest second you see a pair of orange-sized balls and one thick, cum-lubed member, but those quickly disappear into the voluminous robes.");
                 outputText("\n\n\"<i>Well now, surely you aren't one of the witches here to receive my seed,</i>\" the odd witch muses, \"<i>I'm afraid you must be an interloper then.  Pity, ");
                 if (player.hasVagina()) outputText("but then, maybe you can come to serve us as a mother.  Our tribe is not wasteful.");
-                else if (player.hasCock()) outputText("but perhaps, once you have been disabused of your notions of freedom, you could serve as my loyal cum-pump.  It does get so tiring inseminating all these girls alone.");
+                else if (player.cocks.length > 0) outputText("but perhaps, once you have been disabused of your notions of freedom, you could serve as my loyal cum-pump.  It does get so tiring inseminating all these girls alone.");
                 else outputText("but then, perhaps you could be made to serve in other ways.");
                 outputText("</i>\"");
 
@@ -1142,7 +1142,7 @@ function relieveTension(): void {
             // Grow dick!
             if (player.cocks.length > 0) {
                 player.lengthChange(player.increaseCock(0, 5), player.cocks.length);
-                if (player.averageCockLength() >= 9 && player.averageCockThickness() < 2) {
+                if (player.cocks.averageCockLength() >= 9 && player.cocks.averageCockThickness() < 2) {
                     outputText("You feel yourself gain in thickness as well, to match your new length.  ");
                     temp = player.cocks.length;
                     while (temp > 0) {
@@ -1150,7 +1150,7 @@ function relieveTension(): void {
                         if (player.cocks[temp].cockThickness < 2) player.cocks[temp].cockThickness++;
                     }
                 }
-                else if (player.averageCockLength() >= 15 && player.averageCockThickness() < 3) {
+                else if (player.cocks.averageCockLength() >= 15 && player.cocks.averageCockThickness() < 3) {
                     outputText("You feel yourself gain in thickness as well, to match your new length.  ");
                     temp = player.cocks.length;
                     while (temp > 0) {
@@ -1192,7 +1192,7 @@ function relieveTension(): void {
             if (player.cocks.length > 0) {
                 outputText(", filling your " + multiCockDescriptLight(player));
                 outputText(" with sensation");
-                if (player.cockTotal() == 1) outputText("s");
+                if (player.cocks.length == 1) outputText("s");
                 outputText(" as ", false);
                 if (player.cocks.length > 1)
                     outputText("they");
@@ -1307,10 +1307,10 @@ function succubusBadEndPartTwo(): void {
         outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ");
     }
     if (player.cocks.length == 1) { // Cock – single
-        if (player.cockArea(0) < 30) {
+        if (player.cocks.cockArea(0) < 30) {
             outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(game.player, 0) + " to full hardness in seconds.  ");
         }
-        else if (player.cockArea(0) < 100) { // Cock – single big
+        else if (player.cocks.cockArea(0) < 100) { // Cock – single big
             outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ".  ");
         }
         else outputText("As you struggle not to lose consciousness, you realize your over-aroused body had pumped most of your blood to your over-sized " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ", which now droops to the floor, pulsing hotly.  "); // Cock -megahuge
@@ -1341,7 +1341,7 @@ function succubusBadEndPartTwo(): void {
             outputText("and a vacuum pump to your clit.  ");
         else {
             outputText("and another vacuum pump to your bare groin.  In seconds a wet fleshy growth erupts.  You have grown a cock!  ");
-            player.createCock();
+            player.cocks.createCock();
         }
     }
     else if (player.vaginas.length > 0)
@@ -1445,7 +1445,7 @@ export function succubusLossRape(): void {
         else outputText("a fleshy growth erupts from your pale flesh, growing harder.", false);
         outputText("  In seconds you're playing with it, tugging the sensitive button as it fills up with more and more blood, growing bigger and harder than ever before.  Your legs give out as you begin stroking it with feverish intensity, barely registering as it grows to nearly eighteen inches in length, not noticing the increasingly veiny surface or different texture at the tip.  You force yourself to stop as a sudden truth asserts itself upon your consciousness - you need to shove your clit-like cock into a pussy.  You need to cum inside that hungry slut's blue spunk-receptacle.\n\n", false);
         outputText("You stand on shaky legs and lunge forwards, impaling the slutty nurse on your new tool with a violent animalistic passion.  Fucking her roughly, you lick her nipples to finally get the taste you've ached for.  Girl-cum squirts from the sloppy fuck-hole of the latex-nurse underneath you as you fuck her like a desperate animal.  She squeals with pleasure, splitting her legs wide apart to encourage your new maleness.  Your eyes roll back from the drug-enhanced pleasure of her dripping cunt as a male orgasm rocks your mind.  Mixed fluids splatter your pistoning hips as you do what you were always meant to do - feed and pleasure succubi.  Somehow your tool remains rigid and your hips continue plunging your new cum-spigot deeper and deeper into your mistress as the next orgasm begins to build inside your drug-addled mind, even as you black out.", false);
-        player.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockLength = 16;
         player.cocks[0].cockThickness = 1.5;
         // [[[[To bad end!]]]
@@ -1471,7 +1471,7 @@ export function succubusVictoryRape(): void {
         outputText(", shifting to " + player.hairColor + ".  The bone structures of her cheeks, nose, and face shift ever so slightly, and you suddenly realize you are looking down at a slutty version of yourself!  You aren't sure if it's the growing pool of succubus fluid below you or how hot your female twin is, but your " + cockDescript(game.player, 0) + " is as hard as a rock.\n\n", false);
         outputText("Well, you DID decide to rape her, and now you know that you ARE smoking hot.  You shrug and shove your fem-double's legs apart, exposing her glistening fuck-target.  You bend down and bite her nipple as you position yourself at her entrance, allowing her to grasp your " + cockDescript(game.player, 0) + " and coat it with her slick dark fluids.  It tingles as the tainted cunt-juices wick up into your dick like the oil from a lantern back home. At first it burns painfully, as if badly sunburned, but you adjust to the discomfort and marvel as your skin turns blackish-purple. Midnight-colored nodules sprout along the upper and lower portions of your " + cockDescript(game.player, 0) + ", perfectly shaped to tease clits.  Just under its head, a ring of larger growths emerge, somewhat pointy, but flexible, rubbery and incredibly sensitive.  Your " + cockDescript(game.player, 0) + " gets harder and harder as it grows slightly beyond its normal size.  It tugs your groin forwards, practically leaping towards its demonic mate on its own volition.  You cave in and press forwards, parting her folds and submerging your crown in corruptive bliss.\n\n", false);
         // ((TOO BIG))
-        if (player.cockArea(0) > monster.vaginalCapacity()) {
+        if (player.cocks.cockArea(0) > monster.vaginalCapacity()) {
             outputText("But the pleasure is short-lived, as even her altered physiology can't accommodate your massive tool. With a grunt of frustration you yank your hungry demonic cock away from your goal.  She smiles knowingly and massages her breasts, releasing streams of the same black fluid from her tumescent nipples. It coats the valley of her pornstar-sized breasts, allowing the fluid to flow down and pool in her tight little belly button.\n\n", false);
             outputText("\"<i>This will, like, be even better anyways stud!</i>\" coos a higher pitched you, smashing her tits together wetly for emphasis.  Viscous strings of lubricants form a mesmerizing lattice between her mountainous tits as she puts on a show for you.  Entirely of its own accord, your " + cockDescript(game.player, 0) + " drags you into her web of corruption, plopping itself firmly into the river of desire that fountains from the peaks on either side. With a steady rhythm, you rock your " + hipDescription(player) + " back and forwards, plunging into her delicious fuckpillows without abandon. With an inhuman strength, she pushes them together, forcing them to completely encircle your over-sized pole with a tight ring of corruption-dripping tit-flesh.\n\n", false);
             player.cocks[0].cockType = CockTypesEnum.DEMON;
@@ -1743,7 +1743,7 @@ export function incubusLossRape(): void {
             outputText("The prick in your mouth surges forward, sliding deep into your throat.  The coils around your neck tighten in response, choking your neck into a tight cock-sleeve as you feel bulges of cum moving along its length.  In moments you feel your belly starting to grow full, sloshing with cum as you become desperate to breathe.  The tentacles lodged in your " + assholeDescript(player) + " and " + vaginaDescript(player, 0) + " react in similar fashion, stretching you wide as they begin pumping your body full of vast quantities of spunk.  A few free tentacles begin spurting gobs of the white stuff onto your " + player.skinDesc + ", soaking you in the stuff as you black out from a combination of oxygen deprivation and pleasure.", false);
             player.orgasm();
             dynStats("cor", 25);
-            player.buttChange(monster.cockArea(0), true);
+            player.buttChange(monster.cocks.cockArea(0), true);
             if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0)
                 doNext(factoryFinisher);
             else cleanupAfterCombat();
@@ -1774,7 +1774,7 @@ export function incubusLossRape(): void {
             }
             outputText("The feeling is so intense that your " + hipDescription(player) + " twitch and move of their own volition while your eyes roll back in pleasure.\n\n", false);
             outputText("You black out just as you feel the cock-tentacle in your throat retracting. You dully feel your body drop to the ground, your pregnant-looking belly sloshing with demon jizz.", false);
-            player.buttChange(monster.cockArea(0), true);
+            player.buttChange(monster.cocks.cockArea(0), true);
             player.orgasm();
             dynStats("cor", 25);
             if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0)
@@ -1790,7 +1790,7 @@ export function incubusVictoryRapeBackdoor(): void {
     outputText("His eyes flash open as if you'd just sent a jolt of electricity through him and he regains his senses, becoming hyper-aware of what you're doing. The incubus instinctively moves to control your " + hipDescription(player) + " and " + buttDescription(player) + " as they grind against him, guiding his cock towards pleasurable areas up your " + assholeDescript(player) + " that you would never have guessed were there a short while ago.\n\n", false);
     outputText("All too soon, he grunts and shivers as loads of his hot cum begin to squirt into you. He may be cumming, but you're not done yet; each squirt of seed only fans the flames of lust within you, making your increasingly wet and noisy thrusts even harder. Enjoying the ride and still nowhere near satisfied, you start sliding up and down on his slick pole even faster than before. He halfheartedly tries to push you off as you continue draining him of his seed, your lust seemingly unquenchable. But you cannot be stopped; his efforts only add to your pleasure as he struggles and unloads underneath you. With your belly beginning to swell with the cum you're relentlessly drawing from the incubus, you don't know how much longer either of you will last. Each movement of his tool inside you heightens the fire inside you until, with an unholy roar, the pleasure peaks and wave after wave of shuddering orgasm crashes over you. Each one hits hotter and harder than the last until finally, your senses are overcome and you lose consciousness entirely.\n\n", false);
     outputText("You awaken moments later beside a sleeping, limp, and drained incubus. You have definitely come out on top from the encounter. Though you feel stretched, sticky and a little sore, for the moment at least the burning desire to fill your " + assholeDescript(player) + " is satisfied.", false);
-    player.buttChange(monster.cockArea(0), true);
+    player.buttChange(monster.cocks.cockArea(0), true);
     player.slimeFeed();
     player.orgasm();
     dynStats("cor", 2);
@@ -1971,7 +1971,7 @@ function omnibusVictoryGrowDick(): void {
         if (player.cor < 80)
             outputText("In horror you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your cock look more like a crazed sex-toy than a proper penis.  You pant and nearly cum as it lengthens one last time, peaking at ten inches long.  One last ring of nodules forms around the edge of your demon-dick's crown, pulsating darkly with each beat of your horrified heart.");
         else outputText("Curious, you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your penis look more like those amazing cocks you saw on demons!  You pant and moan in happiness as it lengthens one last time, peaking at ten inches long.  The excitement of possessing such a magnificent pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your new demon-dick's crown, you notice to your surprise that the liquid you ejaculated is pitch black!  But as your new cock pulsates darkly with each beat of your heart, the only thing you have on your mind is to try it out as soon as possible...");
-        player.createCock();
+        player.cocks.createCock();
         player.cocks[0].cockType = CockTypesEnum.DEMON;
         player.cocks[0].cockLength = 10;
         player.cocks[0].cockThickness = 2;
@@ -1998,7 +1998,7 @@ function omnibusVictoryGrowDick(): void {
     if (player.cocks.length > 1) {
         let temp: number = player.cocks.length;
         // Already has demoncocks
-        if (player.demonCocks() == player.cockTotal()) {
+        if (player.demonCocks() == player.cocks.length) {
             outputText("Your " + multiCockDescriptLight(player) + " leap forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + multiCockDescriptLight(player) + " get longer and thicker.  They pulsate, as if promising dark pleasure as they settle into their new enhanced size.");
             while (temp > 0) {
                 temp--;
@@ -2109,12 +2109,12 @@ function omnibusVictoryNormalGroin(): void {
     // Remove multiple.
     if (player.cocks.length > 1) {
         outputText("Your " + multiCockDescriptLight(player) + " shiver and retract back towards your body.  When the process finishes you are left with only your " + cockDescript(game.player, 0) + ".  ");
-        player.removeCock(1, player.cocks.length - 1);
+        player.cocks.removeCock(1, player.cocks.length - 1);
         genderCheck();
         changed = true;
     }
     // Super long nerf
-    if (player.hasCock()) {
+    if (player.cocks.length > 0) {
         if (player.cocks[0].cockLength > 12) {
             outputText("A tingling sensation worms through your " + cockDescript(game.player, 0) + " as it shrinks down to a more modest eleven inches.  ");
             player.cocks[0].cockLength = 11;
@@ -2274,7 +2274,7 @@ export function omnibusLossRape2(): void {
         if (player.cor < 33) outputText("sweet ", false);
         if (player.cor >= 66) outputText("tainted ", false);
         outputText("sexual energies deep into its gullet.  And that's just the start!</i>\"  Her hands let go of the squirming mass, dropping it squarely into your lap.\n\n", false);
-        if (player.averageCockLength() < 15) outputText("With one swift motion, the beast engulfs your " + cockDescript(game.player, 0) + " in its slimy maw.  ", false);
+        if (player.cocks.averageCockLength() < 15) outputText("With one swift motion, the beast engulfs your " + cockDescript(game.player, 0) + " in its slimy maw.  ", false);
         else outputText("Distending obscenely, the beast starts engulfing your " + cockDescript(game.player, 0) + " in its slimy maw, progressing along its entire length until you can no longer see your pleasure tool.  ", false);
         outputText("The slimy tentacles waste no time, massaging you with mechanical precision.  You groan in helpless pleasure, growing to painful hardness within the squirming confines of the creature.  Three protrusions sprout from the creature's core, dripping with slime of their own, and covered on the inside with the same wriggling protrusions that now massage your trapped member.  Two curl around your " + hipDescription(player) + ", while the last one", false);
         if (player.balls > 0) outputText(" smothers your balls, entrapping them in sticky sensation as it continues across your taint between your butt-cheeks.  ", false);
@@ -2362,7 +2362,7 @@ export function demonBadEnd(): void {
         if (player.biggestTitSize() <= 1) {
             outputText("pushed apart the thick flesh of a powerful demonic member, complete with two swollen balls.", false);
             player.gender = 1;
-            player.createCock();
+            player.cocks.createCock();
             player.cocks[0].cockLength = 10;
             player.cocks[0].cockThickness = 2;
             player.cocks[0].cockType = CockTypesEnum.DEMON;
@@ -2380,7 +2380,7 @@ export function demonBadEnd(): void {
     // [male]
     if (player.gender == 1) {
         // Multispoooooo
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText(multiCockDescriptLight(player) + " pulsate, straining for just a touch of the succubus' hand.  She paces around you, giggling and toying with you as your " + multiCockDescript(player) + " seem to follow her, twitching and thickening any time she takes a step closer.\n\n", false);
             outputText("She reaches out, cupping the underside of a shaft, slowly stroking your most sensitive places while she stops the bimbo-like voice and teases, \"<i>Awww, so hard and ready.  It looks to me like you're already a slave to your desires.  You're twitching and dripping, just from the soft touches of your enemy's fingers.  Are you truly so in need of release as to willingly offer it to me?  No, don't answer, your " + cockDescript(game.player, 0) + " already has.</i>\"\n\n", false);
             outputText("You glance down, seeing just how hard her words have made you.  You squirm your " + hipDescription(player) + "s pathetically, trying to hump her hand and increase the stimulation.  The succubus immediately releases you and draws back, shedding her secretary's clothes like a snake sheds its skin.  Now clad only in a tight leather corset and thigh-high stockings with garters, the succubus tosses you onto a table, surprising you with her raw strength.  Seemingly from nowhere, she produces a whip, winding it tightly around ", false);

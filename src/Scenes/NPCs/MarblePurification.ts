@@ -545,7 +545,7 @@ export class MarblePurification extends NPCAwareContent {
         else outputText("way too small for your stature.");
         outputText("  You also find that you aren’t wearing your " + player.armorName + ", and your " + player.weaponName + " is nowhere to be seen.  ");
         // ifPC does not have: dick has more than 40 area, or breasts bigger then HHH cup, or centaur lower body, or naga lower body, or slime lower body, or drider lower body)
-        if ((player.hasCock() && player.smallestCockArea() <= 40) && player.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider())
+        if ((player.cocks.length > 0 && player.cocks.smallestCockArea() <= 40) && player.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider())
             outputText("Instead a plain but rather slim form fitting two piece garb adorns your body.  Whoever dressed you in that definitely wanted your bodily assets to be fully visible to anyone looking at you.");
         else outputText("You’re completely naked.");
 
@@ -610,13 +610,13 @@ export class MarblePurification extends NPCAwareContent {
         outputText("\n\nHer hand moves down your body, and finds itself on your [chest].  She toys a bit with the nipples, giggling at your reaction, then moves down to your stomach and pokes you.  Your reaction only promotes more laughter.  You guess that she wants to get a <i>feel</i> for her new toy, and your thoughts are confirmed when she grips your legs, continuing to test you for any places that might be suitable targets for tickling you.");
         outputText("\n\nEventually the pokings and proddings wind down, and the young cow-girl becomes more interested in your naughty bits now.  ");
         // if (player is male)
-        if (player.hasCock() && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.hasVagina()) {
             outputText("At this point your " + multiCockDescriptLight(game.player) + " is rock hard, and Clara gives it a few strokes.  She does seem to lose interest surprisingly quick though.");
         }
-        else if (player.hasVagina() && !player.hasCock()) {
+        else if (player.hasVagina() && !player.cocks.length > 0) {
             outputText("You’ve become quite wet at this point, and Clara gives your " + vaginaDescript(player) + " a few rubs, before tugging on your " + clitDescription(player) + " once.");
         }
-        else if (player.hasCock() && player.hasVagina()) {
+        else if (player.cocks.length > 0 && player.hasVagina()) {
             outputText("Your arousal at this point is quite apparent on the whole of your genitals.  Clara gives you a few touches and caresses, but doesn’t seem all that interested.");
         }
         else {
@@ -628,8 +628,8 @@ export class MarblePurification extends NPCAwareContent {
 
         // Proceed to either the has fitted cock, no fitted cock, or has not cock variants.
         menu();
-        if (!player.hasCock()) addButton(0, "Next", cocklessPCsGetAbusedByCowCunts);
-        else if (player.cockThatFits(20) < 0) addButton(0, "Next", cockTooBigForCowCuntageBadEndage);
+        if (!player.cocks.length > 0) addButton(0, "Next", cocklessPCsGetAbusedByCowCunts);
+        else if (player.cocks.cockThatFits(20) < 0) addButton(0, "Next", cockTooBigForCowCuntageBadEndage);
         else addButton(0, "Next", badEndDickThatFitsClara);
     }
 
@@ -640,11 +640,11 @@ export class MarblePurification extends NPCAwareContent {
     // cock n is the largest cock that will fit in Clara’s 20 capacity
     public badEndDickThatFitsClara(): void {
         clearOutput();
-        let x: number = player.cockThatFits(20);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(20);
+        if (x < 0) x = player.cocks.smallestCockIndex();
 
         // if (PC does not have: dick has more than 40 area, or breasts bigger then HHH cup, or centaur lower body, or naga lower body, or slime lower body, or drider lower body)
-        if ((player.hasCock() && player.smallestCockArea() <= 40) && player.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider()) {
+        if ((player.cocks.length > 0 && player.cocks.smallestCockArea() <= 40) && player.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider()) {
             outputText("In seconds she’s freed you of the form fitting garment that you woke up in.  ");
         }
         outputText("You’re still erect from the arousal that nursing from Clara gave you.  The young cow-girl straddles your calves and gives your " + cockDescript(game.player, x) + " a slight flick with her finger and continues to smile broadly at you.  \"<i>One thing that I was really worried about was that you woouldn’t have a penis that I could actually fit inside me.  Thankfully, that isn’t the case, and that pretty pecker is just my size!</i>\"  She pulls apart the lips of her womanhood before continuing, \"<i>This will be my first time ever putting anything in here, take note just how special of a slave you are to me!</i>\"");
@@ -664,13 +664,13 @@ export class MarblePurification extends NPCAwareContent {
     public cockTooBigForCowCuntageBadEndage(): void {
         clearOutput();
         outputText("\"<i>Now, we do have one problem.  ");
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("All of your penises are");
         }
         else outputText("Your penis is");
         outputText(" too big for a virgin like me to fit!  How the hell am I suppose to get that inside me?</i>\"  Clara stands up and starts stomping around the room.  ");
         // if (PC has at least one dick that will fit inside Marble’s current capacity)
-        if (player.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) {
+        if (player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) {
             outputText("\"<i>‘It’s not a flaw, it’s a feature,’ she said, ‘This is why we train ourselves to take big endowments,’ she said!  Fuck you Marble!  I’m not sticking that stupid big thing inside me.</i>\"  ");
         }
         else {
@@ -834,9 +834,9 @@ export class MarblePurification extends NPCAwareContent {
         outputText("\n\nClara doesn't stand a chance.  In a matter of moments, she's brought to the ground once more, tightly bound up in a thick rope.  \"<i>Time to teach you a lesson!</i>\"  Marble yells with a look of rage in her eyes.");
         outputText("\n\nHow should you punish Clara?  You could let Marble spank Clara, ");
         // (if PC either has a cock with an area under 20 or a vagina)
-        if ((player.hasCock() && player.cockThatFits(20) >= 0) || player.hasVagina()) outputText("use Marble's unstable state of mind to get her into a forceful threesome with Clara, ");
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.hasVagina()) outputText("use Marble's unstable state of mind to get her into a forceful threesome with Clara, ");
         // (if PC either has a cock that will fit Marble, or has a vagina)
-        if ((player.hasCock() && player.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.hasVagina()) outputText("have sex in front of Clara so she can see what your love really is, ");
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.hasVagina()) outputText("have sex in front of Clara so she can see what your love really is, ");
         // (if Marble is a futa)
         if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) outputText("egg Marble into violating Clara with her cock, ");
         outputText(" or try to calm Marble down so that she doesn't do anything to her sister.");
@@ -845,8 +845,8 @@ export class MarblePurification extends NPCAwareContent {
         // PC chooses what kind of victory scene they want to do to Clara.
         // options are: Spank (can always do), Threesome (if the PC has a cock that is under 20 area, or a vagina), "NTR" (if PC has a cock that will fit Marble, or a vagina), Marble cock (if Marble has a cock), and Calm down (always possible).
         addButton(0, "Spank", murbleSpanksCowCunt);
-        if ((player.hasCock() && player.cockThatFits(20) >= 0) || player.hasVagina()) addButton(1, "Threesome", pcAndMurbleDoubleTeamCowButt);
-        if ((player.hasCock() && player.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.hasVagina()) addButton(2, "NTR", NTRIsClearlyTheWorstFetishWhyWouldYouWriteThisOMG);
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.hasVagina()) addButton(1, "Threesome", pcAndMurbleDoubleTeamCowButt);
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.hasVagina()) addButton(2, "NTR", NTRIsClearlyTheWorstFetishWhyWouldYouWriteThisOMG);
         if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) addButton(3, "Marble Cock", futaMarbleIsAHugeCowToCowCuntAndStuffsCowCuntsCuntFullOfCowCock);
         addButton(4, "Calm Down", calmMurblesFatAssDown);
     }
@@ -877,13 +877,13 @@ export class MarblePurification extends NPCAwareContent {
     // does not work with centaur, naga, drider, or goo bodies.  However, I don't particularly want to just say you can't do this scene if you have them.
     {
         clearOutput();
-        const x: number = player.cockThatFits(20);
+        const x: number = player.cocks.cockThatFits(20);
         outputText("You step forward and suggest to Marble that the two of you should work together to punish Clara.  She nods and asks what you have in mind.  Well, you were thinking that a sexual punishment from the two of you would be appropriate.");
         outputText("\n\n\"<i>What?  I don't want to have a threesome with my sister!  Only " + player.short + " should be able to touch me!</i>\"");
         outputText("\n\nThat outburst from the younger sibling seems to have been enough to convince your lover to go along with it.  If it wasn't for her current mood, you doubt that she'd ever have agreed.");
         outputText("\n\nThe two of you strip yourselves and the bound malefactor down.  Then, you both consider the naked tied-up girl, deciding how to go about this.  ");
         // if (PC has a cock under 20 area, and Marble has a cock)
-        if ((player.hasCock() && x >= 0) && flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
+        if ((player.cocks.length > 0 && x >= 0) && flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
             // n is the index of the PC's biggest cock under 20 area.
             outputText("Eventually you pull her up and sandwich her between your bodies.  Marble expresses an aversion to anal, so you take the backside while she takes the front.  \"<i>Hey, you can't do this to me!  I don't want to lose my virginity to my sister!</i>\" Clara cries out indignantly.");
             outputText("\n\n\"<i>Well, are you saying you've learned your lesson?  Are you going to apologize for trying to take my sweetie away from me?</i>\"");
@@ -896,7 +896,7 @@ export class MarblePurification extends NPCAwareContent {
             outputText("\n\nIt doesn't take much longer for you and Marble to rush to your peaks and fill up the cow-girl holes together.  Clara seems to have fallen just short of her peak when the two of you pull back, and she seems to suddenly regain her composure.  \"<i>Wait, what?  Noo!  You can't just, uh....  What am I saying?!</i>\"  It looks like she's having a bit of a crisis deciding if she wants to cum or is too bothered by the thought of what just happened to her.");
             outputText("\n\n\"<i>Damn it all, why couldn't " + player.short + " have taken the front?  Now I'll never be able to experience it for the first time with my perfect mate!  You're evil, sister.</i>\"  Marble looks like she is about to blow up once more at that comment....");
         } // else if (PC has a cock, Marble does not)
-        else if ((player.hasCock() && x >= 0) && flags[kFLAGS.MARBLE_DICK_TYPE] == 0) {
+        else if ((player.cocks.length > 0 && x >= 0) && flags[kFLAGS.MARBLE_DICK_TYPE] == 0) {
             // n is the index of the PC's biggest cock under 20 area.
             outputText("\n\nEventually you push her down on all fours.  You stand behind her, while Marble stands in front of her sister's face.  \"<i>Wait, do you actually think I'll service yoou?</i>\" Clara asks indignantly.");
             outputText("\n\n\"<i>You will if you don't want me to twist your ears,</i>\" comes the response.  You prod your " + cockDescript(game.player, x) + " up against her tight asshole and suggest that you might be taking a different entrance if she doesn't cooperate for her punishment.  \"<i>Of course, if you're sorry for what you tried to do to " + player.short + "...</i>\" Marble suggests.");
@@ -950,8 +950,8 @@ export class MarblePurification extends NPCAwareContent {
         outputText("\n\nFrom there, you decide it is time to let your partner lead for a while.  She is quite happy to roll her massive melons around your face while you snuggle against the wonderfully smooth skin.  Abruptly, you feel the woman whose breasts you're trapped within turn around.  \"<i>The fuck is this, sis?</i>\"  The voice is spitting mad now.  You can hear that it's behind you, evidently someone wants to make sure the audience gets a full view of your sexual escapade.");
         outputText("\n\nAfter a little more rack riding, Marble decides that it is time to get onto the main event.  She uncharacteristically violently forces you into a sitting position and tears the rest of your garments off.  You don't even get a chance to pull off her skirt before ");
         // if (PC has a cock that fits)
-        const x: number = player.cockThatFits(marbleScene.marbleCuntCapacity());
-        if (player.hasCock() && x >= 0) {
+        const x: number = player.cocks.cockThatFits(marbleScene.marbleCuntCapacity());
+        if (player.cocks.length > 0 && x >= 0) {
             outputText("she drops herself onto your " + cockDescript(game.player, x) + ".  Since your bovine mate isn't in the habit of wearing any form of undergarments, her skirt doesn't really do much to get in the way of penetration.  A shriek of dismay accompanies this act.");
             outputText("\n\nThere is no hesitation after you've been mounted.  Instantly you're being roughly ridden by a beast that has been awakened in Marble, and there is nothing that can stop it.  A loud slapping sound fills the air with each drop of her hips, then they rise up again and drop once more.  What is essentially a hollow jackhammer seems to be running on your lap right now, and its operator's hands are holding firm to your shoulders to make sure you stay in place.");
         }

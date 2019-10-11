@@ -46,11 +46,11 @@ export class BunnyGirl {
             let Vagina: () => void = null;
             let sixtyNine: () => void = null;
             let eggs: () => void = null;
-            if (player.cockThatFits(40) >= 0) {
+            if (player.cocks.cockThatFits(40) >= 0) {
                 Vagina = bunbunGetsFucked;
                 outputText("  Fuck her vagina?", false);
             }
-            else if (player.cockTotal() > 0) outputText("  <b>You're too to big fit inside her...</b>", false);
+            else if (player.cocks.length > 0) outputText("  <b>You're too to big fit inside her...</b>", false);
 
             // Dick requires one 40 area or smaller.
             if (player.hasVagina()) {
@@ -100,11 +100,11 @@ export class BunnyGirl {
             DickInV = bunbunFucksYourVag;
             outputText("  Her dick in your vagina?", false);
         }
-        if (player.cockThatFits(40) >= 0) {
+        if (player.cocks.cockThatFits(40) >= 0) {
             Vagina = bunbunGetsFucked;
             outputText("  Fuck her vagina?", false);
         }
-        else if (player.cockTotal() > 0) outputText("  <b>You're too big to fit inside her...</b>", false);
+        else if (player.cocks.length > 0) outputText("  <b>You're too big to fit inside her...</b>", false);
         if (player.gender > 0) {
             sixtyNine = bunbun69;
             outputText("  Sixty-nine her?", false);
@@ -143,11 +143,11 @@ export class BunnyGirl {
                 DickInV = bunbunFucksYourVag;
                 outputText("  Her dick in your vagina?", false);
             }
-            if (player.cockThatFits(40) >= 0) {
+            if (player.cocks.cockThatFits(40) >= 0) {
                 Vagina = bunbunGetsFucked;
                 outputText("  Fuck her vagina?", false);
             }
-            else if (player.cockTotal() > 0) outputText("  <b>You're too big to fit inside her...</b>", false);
+            else if (player.cocks.length > 0) outputText("  <b>You're too big to fit inside her...</b>", false);
             if (player.gender > 0) {
                 sixtyNine = bunbun69;
                 outputText("  Sixty-nine her?", false);
@@ -204,20 +204,20 @@ export class BunnyGirl {
         outputText("The girl underneath you is thrashing and moaning, chanting, \"<i>Yes... eggs eggs EGGS! YES!</i>\" while her ovipositor-like cock robs you of your strength and slides egg-shaped bulges inside you.  Amazingly, your " + vaginaDescript(player, 0) + " is awash with pleasure, and you reach down to ", false);
         if (player.clitLength >= 4) outputText("fondle your " + clitDescription(player) + " a moment before wrapping your hand around it and stroking the girl-cock excitedly.", false);
         else outputText("caress your " + clitDescription(player) + " a moment before you start to circle it with a finger, teasing it expertly.", false);
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText("  " + SMultiCockDesc(game.player) + " twitches and drools ", false);
             if (player.cocks[0].cockLength < 10) outputText("on the bunny's belly", false);
             else if (player.cocks[0].cockLength < 18) outputText("between the bunny's tiny tits", false);
             else if (player.cocks[0].cockLength < 28) outputText("on the bunny's face", false);
             else outputText("past the bunny's head", false);
             outputText(", and your free hand wastes no time in tending to your male ");
-            if (player.cockTotal() == 1) outputText("half's needs, slathering it in pre-cum and stroking hard and fast.", false);
+            if (player.cocks.length == 1) outputText("half's needs, slathering it in pre-cum and stroking hard and fast.", false);
             else outputText("halfs' needs, slathering them in pre-cum and stroking hard and fast.", false);
         }
         outputText("  The futanari rabbit's dick-head swells as the egg reaches her tip, completely opening your womb, and then with one last explosive push, launches it deep inside you.\n\n", false);
 
         outputText("You get off hard.  Despite the drug-induced relaxation that's overwhelmed you from the waist down, rippling convulsions erupt up and down your " + vaginaDescript(player, 0) + ", squeezing the egg-spurting cock tightly.  This only speeds the passage of the bunny's second bulge, and in seconds her distended cock-head is stretched wider than before, locking her inside you for a moment.   The pair of you rock and grind your hips together futilely until the final egg erupts inside of you, accompanied by a huge wave of whatever it is that's made your lower body so nerveless.", false);
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText("  At last, " + sMultiCockDesc(game.player) + " blasts sticky ropes of seed everywhere, cumming with you as your body slides sideways off the exhausted bunny into the dirt.  A few thick strands hit her tits and face, but judging by her half-closed eye-lids and questing tongue, she doesn't mind.", false);
             if (player.cumQ() > 500) outputText("  Not content with that, " + sMultiCockDesc(game.player) + " continues to pump until the bunny is coated with a generous layer of seed", false);
             if (player.cumQ() > 2000) outputText(" and the excess is running down the hill in a small river", false);
@@ -265,7 +265,7 @@ export class BunnyGirl {
         outputText("\n\n", false);
 
         outputText("Your partner gasps in surprise as you pull yourself up, dragging her cock slowly through the tight ring of your pucker until she's about to slip out, and then dropping back down to envelop her again.  She involuntarily grunts wordless pleasure noises, thrilled with the sensation your warm body provides.  Her hands grab her nipples as you repeat your actions, working her with a slow, smooth rhythm that should bring her to orgasm... eventually.  ", false);
-        if (player.totalCocks() > 0) outputText("Each time she bumps and slides past your prostate a dollop of your pre-cum spurts from " + sMultiCockDesc(game.player) + " onto the ground, and you have a hard time not using your new lover like an anal toy and masturbating yourself.  ", false);
+        if (player.cocks.length > 0) outputText("Each time she bumps and slides past your prostate a dollop of your pre-cum spurts from " + sMultiCockDesc(game.player) + " onto the ground, and you have a hard time not using your new lover like an anal toy and masturbating yourself.  ", false);
         outputText("The long-eared slut makes a display of touching her nipples, pulling and twisting on them as you watch her over your shoulder.\n\n", false);
 
         outputText("Without meaning to, you begin to pick up the speed of your up and down strokes.  Your body is feeling horny and warm from all the sex, and having such a strange, attractive lover mating with your backside isn't helping.  ", false);
@@ -287,7 +287,7 @@ export class BunnyGirl {
         outputText("  The bunny reaches down to your " + buttDescription(player) + " and gives it a gentle caress and squeeze.  A moment later both her hands are holding your butt-cheeks, guiding you up and down as you bounce atop her faster and faster.\n\n", false);
 
         outputText("You stroke the downy fur of her thighs through your fingers, marveling at her softness as you let the bunny start to set a tempo so fast that her pre-cum is squirting out with each wet, gushy fuck.   She occasionally gives your ass a gentle slap and starts moaning and panting out loud with every heated penetration, \"<i>Fuck... breed... mmm... yes... eggs eggs pleaseletmeegg!</i>\" It's hard to pay attention with the rising pleasure surging through your body", false);
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText(", and " + sMultiCockDesc(game.player) + " pouring incredibly sticky pre-cum each time she squeezes your prostate", false);
         }
         else if (player.hasVagina()) outputText(", and your " + vaginaDescript(player, 0) + " clenching and dripping on the verge of orgasm", false);
@@ -304,7 +304,7 @@ export class BunnyGirl {
         outputText("Wait a second, what was that about eggs?  The confusion that comes with that thought distracts you enough to keep you from cumming, but the bunny orgasms before you have a chance to reconsider your position atop her.  She convulses, her rod twitching and thickening slightly, but you don't feel the warmth of erupting cum that you would expect.  You look down at her, but the bunny-girl is too insensate to provide any answer, and it's not until you notice that her balls are missing that you realize something is wildly different about the way her orgasms work.\n\n", false);
 
         outputText("You gasp in pain as the thickness at the base of your lover's shaft doubles.  It stretches your " + assholeDescript(player) + " wide, almost painfully wide as something starts to push up her dick from the inside.  Before you can pull yourself off her, a massive gush of fluid drizzles inside of you, quickly numbing any pain and stealing the strength from your " + legs(player) + " and muscles.  You twist back and forth, but the pleasure intensifies as the bulge slips past your sphincter, leaving your body slightly agape in its wake.  You find the rest of its passage to be more comfortable ", false);
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText("and as it squeezes past your prostate, " + sMultiCockDesc(game.player) + " spurts thick cum on the ground, though you don't QUITE orgasm.", false);
         }
         else outputText("and your arousal returns in force.", false);
@@ -313,7 +313,7 @@ export class BunnyGirl {
         outputText("\n\n", false);
 
         outputText("A moment before the bulge reaches the tip of the rabbit-cock, you feel another sliding through your " + assholeDescript(player) + ".  The bunny-dick's head thickens for a moment before it dwindles down to its normal shape.  You feel something warm and orb shaped inside you – it's an egg!  The strangeness of the insemination can't hold back the excitement your body built up or the feelings the second egg's passage is leaving in its wake, and you cum hard.  Somehow your body gets enough control to squeeze the girl's penis tightly, but all it accomplishes is speeding the eggs passage as it spurts into your rectum along with another big burst of pleasant, relaxing fluids.", false);
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText("  " + SMultiCockDesc(game.player) + " erupts in truth, spraying and splattering white goop over the grass and ground.", false);
             if (player.cumQ() > 500) outputText("  The splattering of your seed only increases in volume as it makes a rather large puddle", false);
             if (player.cumQ() > 2000) outputText(", but you just keep going until you create a lazily winding river of cum that flows its way through the grasses", false);
@@ -339,9 +339,9 @@ export class BunnyGirl {
         spriteSelect(13);
         outputText("", true);
         // Requires wang that fits
-        const x: number = player.cockThatFits(40);
+        const x: number = player.cocks.cockThatFits(40);
         // Second wang that fits for DP
-        const y: number = player.cockThatFits2(40);
+        const y: number = player.cocks.cockThatFits2(40);
 
         outputText("You disrobe and toss your " + player.armorName + " to the side, immediately forgetting about it as the bunny-girl lifts her sack to expose the bright pink flesh of her femininity.  It glistens, practically steaming up the air with her plentiful lubricants.  She runs a slender finger around the moist hole, beckoning you to plunge inside and fill her hungry flesh with your " + cockDescript(game.player, x) + ".  Lust burns through you as you drop to your knees and line your " + cockDescript(game.player, x) + " up with that ready opening", false);
         if (y != -1) outputText(", taking care to align your " + cockDescript(game.player, y) + " with her tightly puckered backdoor as well.", false);
@@ -358,7 +358,7 @@ export class BunnyGirl {
         outputText(" into her slippery, warm depths.  She pants and groans with happiness, going so far as to vocalize her pleasure, \"<i>Oooh yes, I don't know why but it feels just as good as breeding season!  If you keep this up, " + mf(player, "stud", "sexy") + ", you might... ahhhh.. make me egg!</i>\"\n\n", false);
 
         outputText("You don't try to make sense of it and instead plunge further forward, watching with delight as more and more of your length is devoured by the horny bunny's body.  ", false);
-        if (player.cockArea(x) >= 25) outputText("Her belly bulges pleasantly, displaying the vaguely cylindrical shape of a cock through her skin in a way that makes you feel utterly dominant over this 'female'.  ", false);
+        if (player.cocks.cockArea(x) >= 25) outputText("Her belly bulges pleasantly, displaying the vaguely cylindrical shape of a cock through her skin in a way that makes you feel utterly dominant over this 'female'.  ", false);
         outputText("Once you bottom out, the hermaphrodite actually starts to squirt pre-cum onto herself.  It isn't quite as much as you'd expect from a real orgasm, but it's enough that she makes a slippery mess of her tits and belly.  She gathers it up and starts stroking herself off with it, and you watch the enthusiastic bunny masturbate herself.\n\n", false);
 
         outputText("\"<i>Nooooooo,</i>\" she cries, thinking you meant to stop, but you savagely slam back in, rocking her body and making her petite, pre-cum-glazed tits jiggle pleasantly.   Her 'no' turns into an 'OHHH' in that split second, and before she can stop or catch her breath, you start fucking hard, watching her cum-shined breasts wobble underneath you.  ", false);
@@ -382,10 +382,10 @@ export class BunnyGirl {
         outputText("You bottom out with brutal force", false);
         if (player.balls > 0) outputText(", slapping your balls against her ass", false);
         outputText(", as your ", false);
-        if (player.hasSheath()) outputText("sheath", false);
+        if (player.cocks.hasSheath()) outputText("sheath", false);
         else outputText("base", false);
         outputText(" rubs her passion-inflamed pussy-lips.  " + SMultiCockDesc(game.player) + " unloads, splattering out ropes of cum into ", false);
-        if ((player.cockTotal() == 2 && y == -1) || player.cockTotal() > 2) outputText("and onto ", false);
+        if ((player.cocks.length == 2 && y == -1) || player.cocks.length > 2) outputText("and onto ", false);
         outputText("the insensate bunny-breeder.  Her silken pussy milks and squeezes as you cum, seeming to draw your seed from your cock itself and pull it deeper inside, leaving none to waste.", false);
         if (y != -1) {
             outputText("  Her ass gurgles from your deposit", false);
@@ -461,7 +461,7 @@ export class BunnyGirl {
             return;
         }
         // Dudes
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             // EASTER CANDY VERSION
             if (isEaster()) {
                 outputText("It'd be a shame if both of you didn't have a chance at a little fun, wouldn't it? Gripping the dusky-skinned girl, you gently push her down and hover over her face for a moment, playing with the whiskers on her freckled cheeks. Your tickling seems to excite the girl and before long, she's panting through her buck teeth, her stiffness rigid and pulsing with her racing heartbeat. Flipping over her, you park your [legs] on either side of her ears and lean down toward her crotch, savoring the slightly sweet scent of chocolate that wafts from her sweat-slick body. Her cock is almost intimidating, bulging obscenely in front of you, tiny dollops of pre-cum oozing to the pointed tip in rich bubbles that trickle down her caramel skin. Warily, you bring your nose up to her shaft and sniff, pleasantly surprised to find that the bulbs of sticky semen smell more like fresh marshmallows than the salty discharge you're used to. Actually, it smells really, REALLY good. You rest your cheek against the bunny-girl's root and tentatively lick up her shaft, gathering the stray strands of cum that stripe her dusky dick with snowy white. She gasps and her cock twitches against your face, bobbing back and forth in time to the rapid vibration of her legs. When you taste her cum, it's even better than it smells- like an orgy of cotton candy, marshmallows, and sweet juice swirling in your mouth, as tantalizing as the first spoonful of ice cream. Invisible bunny or no, you just have to get more of her cum!\n\n", false);
@@ -626,7 +626,7 @@ export class BunnyGirl {
         outputText("\n\nPulling her so that she presses her tits against your [chest], the throbbing egg-depositor rubs between her legs.  With a high squeal she pushes forward harder, the long lapin cock twitching with her heartbeat");
         if (player.gender == 0) outputText(" against the empty place of your crotch.");
         else {
-            if (player.hasCock()) outputText(" alongside [eachCock]");
+            if (player.cocks.length > 0) outputText(" alongside [eachCock]");
             if (player.hasVagina()) outputText(" and her hefty oval balls rubbing the [vagina] tucked between your thighs");
             outputText(".");
         }
@@ -638,11 +638,11 @@ export class BunnyGirl {
         outputText("\n\nShe continues writhing against you, bouncing up and down against the bee-abdomen and working the eggs in faster.  As you feel the first one reach the end of the trail you find yourself experiencing an ecstatic energy");
         if (player.gender > 0) {
             outputText(", ");
-            if (player.hasCock()) outputText("[eachCock]");
+            if (player.cocks.length > 0) outputText("[eachCock]");
             if (player.gender == 3) outputText(" and ");
             if (player.hasVagina()) outputText("your [vagina]");
             outputText(" lathering the bunny-girl in ");
-            if (player.hasCock()) outputText("spunk");
+            if (player.cocks.length > 0) outputText("spunk");
             if (player.gender == 3) outputText(" and ");
             if (player.hasVagina()) outputText("femcum");
         }
@@ -652,7 +652,7 @@ export class BunnyGirl {
         outputText("\n\nYour front is coated with the bunny-girl's spooge, dripping down both your thighs onto the yellow and black chitin of your bee-abdomen.");
         if (player.gender > 0) {
             outputText("  You add to the mess, ");
-            if (player.hasCock()) outputText("spraying a long, thick load against the bunny's soft tits from your [eachCock]");
+            if (player.cocks.length > 0) outputText("spraying a long, thick load against the bunny's soft tits from your [eachCock]");
             if (player.gender == 3) outputText(" and ");
             if (player.hasVagina()) outputText("splashing her balls with your girlcum");
             outputText(".");
@@ -750,8 +750,8 @@ export class BunnyGirl {
         // [Get Egged] (Female/Futa only)
         if (player.hasVagina()) addButton(1, "Get Egged", getEggflated);
         // [Fuck Her] (Male/Futa Only)
-        if (player.hasCock()) {
-            if (player.cockThatFits(40) >= 0) addButton(2, "Fuck Her", fuckTheEggBoundBun);
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(40) >= 0) addButton(2, "Fuck Her", fuckTheEggBoundBun);
             else outputText("  <b>You're too big to fuck her!</b>");
         }
         addButton(9, "Leave", camp.returnToCampUseOneHour);
@@ -821,7 +821,7 @@ export class BunnyGirl {
         if (!isEaster()) outputText("dusky");
         else outputText("caramel-skinned");
         outputText(" bunny-girl with an easy smile.  Loosening your [armor] just enough to let your stiffening cock");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" free, you set your hands lightly on her ample hips, guiding your fingertips up her narrow waist and along the slick flesh of her tensed arms.  She trembles at your touch, but the boiling lust within her turns the fearful shudder into an orgasmic one in the very next second.  In this state, even just the touch of your fingers is enough to set her off, the bound hare's shaft spasming fruitlessly as the thick bronze of her cock ring holds back the torrential flood of her impotent climax.  You wrap your hands around her back, guiding them back down, over the ");
         if (!isEaster()) outputText("supple mounds");
         else outputText("taut dough");
@@ -925,7 +925,7 @@ export class BunnyGirl {
         else outputText("treat");
         outputText(". You pant, finding it difficult to draw a breath with the burden massing in your inner recess, your tongue hanging freely  and drool trickling down the side of your mouth.");
         // Futa:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  Quite without realizing it, [eachCock] spasms in messy orgasm, spurting ropes of spunk  across the bunny girl's tawny skin like a gooey glaze.");
         }
         outputText("  Your vision swims and when you blink back the dizziness, you find your gut has bloated to the size of ");
@@ -939,7 +939,7 @@ export class BunnyGirl {
         else outputText("candy fattened");
         outputText(" weight on the conical cock.  With fresh space to fill, the eggs flow into you once more, one pushing another in a procession up your large intestine.");
         // Futa:
-        if (player.hasCock()) outputText("  The steady movement of the orbs pushing past your prostate drills another, even messier orgasm from your " + multiCockDescriptLight(game.player) + ", cum arcing into the air to shower down on the two of you in pearl beads.");
+        if (player.cocks.length > 0) outputText("  The steady movement of the orbs pushing past your prostate drills another, even messier orgasm from your " + multiCockDescriptLight(game.player) + ", cum arcing into the air to shower down on the two of you in pearl beads.");
 
         outputText("\n\nTime seems to flow from one moment to the next, your consciousness fading in and out as a small deluge of ");
         if (!isEaster()) outputText("bunny seed");
@@ -948,7 +948,7 @@ export class BunnyGirl {
 
         outputText("\n\n");
         // Futa:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("Your exhausted " + multiCockDescriptLight(game.player) + " somehow find" + (player.cocks.length > 1 ? "" : "s") + " the strength for a gushing orgasm of " + (player.cocks.length > 1 ? "their" : "its") + " own, strands of spoo spilling across your own body, white hot spunk bringing a fresh sheen to your sweat-slick [chest].  ");
         }
         outputText("Eventually, enough of the eggs melt to let you stand under your own power.  You grab your [armor] but hold off on putting it on until you have a chance to shrink down to a more normal size.  Before you leave, you make sure to remove the rope from her wrists, for when she gathers her orgasm-blasted wits.");

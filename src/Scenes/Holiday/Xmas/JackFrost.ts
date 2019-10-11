@@ -188,7 +188,7 @@ export function processJackFrostEvent(): void {
             // (How should you demonstrate?)
             // [Pen Ass] [Ride Cock] [Spank and Finger Ass]
             menu();
-            if (player.hasCock()) addButton(0, "Pen Ass", penetradeCorruptJojoAss);
+            if (player.cocks.length > 0) addButton(0, "Pen Ass", penetradeCorruptJojoAss);
             if (player.hasVagina()) addButton(1, "Ride Cock", rideCorruptJojoCock);
             addButton(2, "Spank n Finger", spankNFingerCorruptJojoAss);
         }
@@ -216,7 +216,7 @@ export function processJackFrostEvent(): void {
             outputText("\n\nIt's not really possible to smirk and kiss at the same time, but your murine lover does her level best to try.  Breaking the kiss with a smile, she tugs you gently towards your tent.  \"<i>Come on then, lover-" + mf(player, "boy", "girl") + ", let's go and get warmed up...</i>\" She coos.  Her hands start to remove your clothes, \"<i>So, what do you have in mind, exactly...?</i>\"");
             // [Penetrate Her] [Make out]
             menu();
-            if (player.hasCock()) addButton(0, "Penetrate", penetradePureMouseWaifu);
+            if (player.cocks.length > 0) addButton(0, "Penetrate", penetradePureMouseWaifu);
             addButton(1, "Ride Cock", makeOutWithPureMouseWaifu);
             return;
         }
@@ -234,7 +234,7 @@ export function processJackFrostEvent(): void {
                 outputText("\n\nAmily smiles with glee.  \"<i>Oh, I would love it [master]...</i>\"");
 
                 // (if PC has a dick)
-                if (player.hasCock()) {
+                if (player.cocks.length > 0) {
                     outputText("\n\nYou strip off your lower garments, exposing your " + multiCockDescriptLight(player) + " to the hungry eyes of your cumslut.  You tell her you would like her to give you a \"<i>hand</i>\", with the extraction process...");
                     outputText("\n\nAmily bows respectfully.  \"<i>Right away, [master].</i>\"");
                     outputText("\n\nShe promptly takes hold of your [cock] with awe-filled respect, her long, dextrous fingers quickly falling into the familiar rhythym of dancing along your cock to fill you with the most wonderous sensations.  Her spaded tail wiggles idly for several moments, then slithers through the air to brush its feather-like tip against the tip and underside of your shaft");
@@ -417,7 +417,7 @@ export function processJackFrostEvent(): void {
         outputText("\n\nYou wipe some moisture from your brow, nodding agreement.  Yeah, that was pretty fun... you didn't think wrestling could be this fun, nor this sexy, you point out");
         if (player.gender > 0) {
             outputText(", as evidenced by ");
-            if (player.hasCock()) outputText("your erect " + multiCockDescriptLight(player));
+            if (player.cocks.length > 0) outputText("your erect " + multiCockDescriptLight(player));
             if (player.gender == 3) outputText(" and ");
             else if (player.hasVagina()) outputText("your ");
             if (player.hasVagina()) outputText("dripping [vagina]");
@@ -435,7 +435,7 @@ export function processJackFrostEvent(): void {
         outputText("\n\nThe salamander suddenly cries out, steaming-hot femcum splashing across your [legs] as she orgasms first, spasming from her position atop you before falling limp with an ecstatic sigh, giving you free reign to do what you want.  Not that you could do anything, yourself, since you suddenly spasm and cries out as your own orgasm overwhelms you.");
 
         // (If PC has a cock)
-        if (player.hasCock()) outputText("  A torrent of seed splashes against Helia's taut belly, as [eachCock] throbs and spews its seed while sandwiched between the two of you.");
+        if (player.cocks.length > 0) outputText("  A torrent of seed splashes against Helia's taut belly, as [eachCock] throbs and spews its seed while sandwiched between the two of you.");
         // (if PC has a pussy)
         if (player.hasVagina()) outputText("  Your [vagina] quivers and spill your juices with the force of a wave.  Moisture falls on the ground to join in with Helia's own discharge.");
 
@@ -508,7 +508,7 @@ export function processJackFrostEvent(): void {
         // [Fuck her] [Lick Boobs and Finger Pussy]
         flags[kFLAGS.JACK_FROST_PROGRESS] = 12;
         menu();
-        if (player.hasCock() && player.cockThatFits(67) >= 0) addButton(0, "Fuck Her", kihaXmasFuck);
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(67) >= 0) addButton(0, "Fuck Her", kihaXmasFuck);
         addButton(1, "Finger Her", kihaXmasFingering);
     }
     // Feast time! Just a collection of words on the pleasant day...
@@ -543,8 +543,8 @@ export function processJackFrostEvent(): void {
 // PC needs to have a cock.
 export function kihaXmasFuck(): void {
     clearOutput();
-    let x: number = player.cockThatFits(67);
-    if (x < 0) x = player.smallestCockIndex();
+    let x: number = player.cocks.cockThatFits(67);
+    if (x < 0) x = player.cocks.smallestCockIndex();
     outputText("Stripping off your [armor], you tell the dragon-girl that a good workout is all she needs to get nice and warm.  She snorts in dismissal, but the way she's looking at you is a pretty good indication she's willing to try it.  \"<i>So, what do you have in mind?</i>\" she blusters.  You stroke your quickly erecting " + multiCockDescriptLight(player) + " and, smirking, ask her if your intentions aren't obvious?");
     outputText("\n\nShe stalks over, tail swaying sensually behind her, and takes you by the shoulders.  Then, with a mischievous grin, she pushes you into the snow.  \"<i>All right, but you're on the bottom - you can have the cold back this time!</i>\" she smirks, straddling your waist.");
     outputText("\n\nYou laugh and tell her you're fine with that, but she better hurry up, the cold is starting to catch up to you.   The mock-dragon blows a fine trickle of smoke from her nose, reaching down to stroke your shaft.  \"<i>Such a pervert, aren't you?  Here I am all freezing and wet, and all you can think about is fucking me, is that it?  You just want to shove this cock into my wet cunny and ride me until you burst, isn't that right?</i>\"  She growls lustfully, her fingers nimbly caressing and stroking your " + cockDescript(game.player, x) + " as she speaks.");
@@ -621,7 +621,7 @@ export function makeOutWithPureMouseWaifu(): void {
     if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText("Smiling sheepishly you  tell her to mind the erection... though you're not actually looking for sex, you can't help with how cute she looks...  \"<i>Flirt.</i>\"  Amily giggles, but otherwise doesn't comment on it.  ");
     outputText("The mouse promptly walks over and sits down just in front of you, her back facing you and giving you a perfect opportunity to hug her.  Not keen on missing such an opportunity, you do so.");
 
-    if (player.hasCock()) outputText("\n\n\"<i>You know I can feel your dick poking me in the back, right?</i>\" Amily giggles, wriggling back against your jutting shaft for emphasis.  You chuckle and tell her to lay off your man-parts... this is just a natural reaction.  \"<i>Oh yeah?  Maybe you wanna see my natural reaction to this situation, hmm?</i>\" she croons.  Maybe later... right now you just want to enjoy her like this.");
+    if (player.cocks.length > 0) outputText("\n\n\"<i>You know I can feel your dick poking me in the back, right?</i>\" Amily giggles, wriggling back against your jutting shaft for emphasis.  You chuckle and tell her to lay off your man-parts... this is just a natural reaction.  \"<i>Oh yeah?  Maybe you wanna see my natural reaction to this situation, hmm?</i>\" she croons.  Maybe later... right now you just want to enjoy her like this.");
 
     outputText("\n\nThe mouse sighs softly.  \"<i>You know how I feel about you, [name]?  I feel that Marae herself must have blessed me to have someone like you find me.  For all the ordeals I faced, having you in my life makes up for everything.  Having you here like this, arms wrapped around me, our hearts beating together... I want this moment to last forever,</i>\" she declares quietly.");
 
@@ -674,7 +674,7 @@ export function rideCorruptJojoCock(): void {
     player.cuntChange(20, true, true, false);
 
     outputText("\n\nYou thrust, buck, and heave, enjoying everything there is about mastering this once-pure soul and reducing him to your fuck puppet.  Finally, with an ecstatic howl, you cum, female lubricants gushing onto his burning hot cock");
-    if (player.hasCock()) outputText(", your own futa-cock spewing its load, which you deliberately spray in his face for amusement");
+    if (player.cocks.length > 0) outputText(", your own futa-cock spewing its load, which you deliberately spray in his face for amusement");
     outputText(".  Your orgasm triggers Jojo's own; though he has cum without permission, at least he waited for you to cum first like a good slut should.  Rope after rope of mousy sperm bats your cervix, trying to get past the barrier and into the waiting womb inside, even as Jojo tries his best to fuck you over and over as he spills his load, until he finally slumps into the ground, panting, with his mouth open and his tongue lolling out, eyes glazed over in a pleasured daze.");
 
     outputText("\n\nYou wait until you're sure you dripped the last few drops of femcum from your cunt, then, with a groan, noisily pull yourself off of the mouse's now-limp dick.  Moving so that you are hovering it over Jojo's face, you authoritatively command your slave to clean up all the mouse-spunk he stuffed into your cunt.  The panting mouse-slut breaks out of his trance with a start, and quickly raises to get started and do your bidding, even as drops of your mixed juice and his slutty baby-batter drip on his face.  He drinks the spunk with joy, moaning in enjoyment at the act.");

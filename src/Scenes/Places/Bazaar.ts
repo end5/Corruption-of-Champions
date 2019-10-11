@@ -253,9 +253,9 @@ export class Bazaar {
         outputText("Once he feels the tension from your upper body has been released, the girly bunny-boy slides himself lower, placing his taut, barely-covered rear atop your " + buttDescription(player) + ".  Joey's hands slide down along your spine, smoothing out every knotted muscle in your back as he goes.  You could swear his fingers are magic; you feel like a lump of clay being worked by a master sculptor.  Sighing dreamily, you lie there and groan while he finishes the small of your back, muscles rendered into goo-like softness.\n\n", false);
         outputText("Your masseuse moves up to your arms, squeezing and rubbing with practiced skill.  You're so tranquil that you barely react when he begins to grind his thong-covered bulge on your utterly-relaxed back.  Each slow, measured drag of his body is done to the tempo his fingertips set on your now-limp arms.  You sigh contentedly, letting the bunny dry-hump your lax muscles as if it were all part of the massage.  Even though he stops the massage, his hips keep pumping until you can feel his six inches of hardness threatening to escape his sweat-slicked thong.\n\n", false);
         outputText("Joey dismounts and gives your " + buttDescription(player) + " a rough squeeze as he prances towards a nearby table with a large number of bottles.  You hear him drop a cork on the floor and watch it roll by your face.  The masseuse noisily gulps down whatever concoction he's just opened up, sighing contentedly and giving a cute, girlish burp once he's finished.  He leans down and breathes huskily into your ear, his hand roaming your body while he explains, \"<i>I just drank one of our house specials.  It's a nice little concoction that'll kick my prostate and balls into overdrive.  In a minute I'll start leaking my favorite lotion, and I won't stop for at least twenty minutes.  Just enough time to finish your massage.", false);
-        if (player.hasCock()) outputText("  Would you like one?", false);
+        if (player.cocks.length > 0) outputText("  Would you like one?", false);
         outputText("</i>\"", false);
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nDo you accept Joey's potion?", false);
             doYesNo(joeysMassageWithEXTRASpooge, joeysMassageWifNoExtraJizz);
         }
@@ -280,13 +280,13 @@ export class Bazaar {
         outputText("The bed cradles you as you close your eyes and lie back, noting the slight change in darkness beyond your eyelids from Joey's new position.  Spunk begins to rain over your " + face(player) + ", puddling seed around your eyes and forehead before it drips down your cheeks and bubbles on your lips.  You're quickly distracted from the salty, cummy facial when your personal leporid lotion-dispenser ", false);
         // (fork to male or genderless, no new PG)
         // (MALE)
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("slides his warm, ruby lips over your " + cockDescript(game.player, 0) + ", licking and slurping the " + cockHead(player) + " like a treasured candy.  That hot, breathy embrace hugs tight to your urethral bulge, slobbering up the cock-tip.  The flexible, thin rabbit tongue swirls over your cum-slit to lap at the bubbling pre-cum, even as his quaking balls continue to bury your face in bunny-semen.", false);
-            if (player.totalCocks() > 1) {
+            if (player.cocks.length > 1) {
                 outputText("  He takes your " + cockDescript(game.player, 1) + " with his free hand and pulls it over, giving it an affectionate, loving smooch.", false);
-                if (player.totalCocks() > 2) {
+                if (player.cocks.length > 2) {
                     outputText("  The process is repeated", false);
-                    if (player.totalCocks() > 3) outputText(" as necessary until " + sMultiCockDesc(game.player) + " is coated with dick-drenching bunny spit.", false);
+                    if (player.cocks.length > 3) outputText(" as necessary until " + sMultiCockDesc(game.player) + " is coated with dick-drenching bunny spit.", false);
                     else outputText(", coating your " + cockDescript(game.player, 2) + " with dick-drenching bunny spit.", false);
                 }
             }
@@ -301,7 +301,7 @@ export class Bazaar {
             outputText(".  He skillfully works a free hand over your slippery butt-cheek, squeezing the supple flesh while he expertly rubs your interior, stroking it with semen-lubed touches.\n\n", false);
         }
         // Fems/Genderless cum+epilogue
-        if (!player.hasCock()) {
+        if (!player.cocks.length > 0) {
             // (Genderless orgasm)
             if (player.gender == 0) outputText("Though his single finger makes you burn with passion, Joey's second slides effortlessly after it, filling your " + assholeDescript(player) + " with another of his cum-soaked digits.  His warm jism slides down the crack between the fingers, slowly pooling in your backdoor.  Once you've adjusted, he continues to the massage, stroking and bumping your interior with the confident, practiced strokes of a professional. You pull hard on your tortured " + nippleDescription(player, 0) + "s, egging up the gradual upwelling of pleasure while you lick the bunny-cream from your lips.  A moment later, the no-longer-offending digits press hard on a sensitive spot, and you're arching your back, screaming with pleasure.\n\n", false);
             // (Female orgasm)
@@ -347,7 +347,7 @@ export class Bazaar {
         outputText("\n\n", false);
 
         outputText("Joey's fingertips brush along your shaft, squeezing it with tender touches that make it stiffen and thicken.  He starts slowly jacking you off while his other hand traces one of your nipples.  \"<i>We've got to get you nice and hard now so that you can let out all that nice, creamy lotion,</i>\" explains the fem-boy.  You nod in understanding, blushing hard while he fondles " + sMultiCockDesc(game.player) + " with soft caresses.  He plays your manhood", false);
-        if (player.cockTotal() > 1) outputText("s like fiddles", false);
+        if (player.cocks.length > 1) outputText("s like fiddles", false);
         else outputText(" like a fiddle", false);
         outputText(", expertly running his fingertip around the sensitive " + cockHead(player) + " before tracing down along your rapidly filling urethra.  It feels good – better than it should, and the warmth inside you begins to leak into the bunny-boy's waiting hand in moments.\n\n", false);
 
@@ -521,8 +521,8 @@ export class Bazaar {
         menu();
         if (flags[kFLAGS.FOUND_SOCKS] == 0) addButton(4, "Low Stock", askGretaAboutInventory);
         else {
-            if (flags[kFLAGS.FOUND_SOCKS] == 2 && player.cocks.length > 0 && player.hasSockRoom()) addButton(1, "Browse Socks", browseDemSocksSon);
-            if (player.hasSock()) addButton(2, "Remove Sock", takeOffDatSock);
+            if (flags[kFLAGS.FOUND_SOCKS] == 2 && player.cocks.length > 0 && player.cocks.hasSockRoom()) addButton(1, "Browse Socks", browseDemSocksSon);
+            if (player.cocks.hasSock()) addButton(2, "Remove Sock", takeOffDatSock);
         }
         if (flags[kFLAGS.OWN_MAIDEN_BIKINI] == 0) addButton(0, "Bikini", askGretaAboutZeBikini);
         addButton(9, "Back", enterTheBazaarAndMenu);
@@ -667,7 +667,7 @@ export class Bazaar {
         outputText("You take the cock-sock over to the counter where Greta sits, knitting even more garments and place down the gems required.  \"<i>Aha, good choice, honey!</i>\" the succubus says, snatching up the money and stashing it away.  \"<i>Now let's get that bad boy fitted on you.</i>\"");
 
         // [If PC only has one cock, jump immediately to Putting It On, else:
-        if (player.cockTotal() == 1) {
+        if (player.cocks.length == 1) {
             menu();
             addButton(0, "Next", cockSockTarget, 0);
         }
@@ -676,7 +676,7 @@ export class Bazaar {
             temp = 0;
             let button: number = 0;
             menu();
-            while (button < player.cockTotal()) {
+            while (button < player.cocks.length) {
                 if (player.cocks[button].sock == "") addButton(button, String(button + 1), cockSockTarget, button);
                 button++;
             }
@@ -785,7 +785,7 @@ export class Bazaar {
         temp = 0;
         let button: number = 0;
         menu();
-        while (button < player.cockTotal()) {
+        while (button < player.cocks.length) {
             if (player.cocks[button].sock != "") addButton(button, String(button + 1), removeTargettedSock, button);
             button++;
         }
@@ -798,14 +798,14 @@ export class Bazaar {
         outputText("\n\n\"<i>Ah, all right then,</i>\" she says smoothly, setting aside her knitting needles.  \"<i>Making room for a new sock, or just looking to get rid of this one?  No matter, it's a simple counterspell.</i>\"  Greta stands up from her chair, though she's only on her feet for a moment before she kneels down in front of you, placing one hand under your " + cockDescript(player, index) + ".  With her free hand, she runs a little circle around your " + cockHead(player, index) + ", muttering something under her breath.");
 
         outputText("\n\nSuddenly your cock feels white-hot, burning with passionate arousal.  It jumps to attention immediately");
-        if (player.cockArea(index) >= 100) outputText(", almost knocking Greta over in the process");
+        if (player.cocks.cockArea(index) >= 100) outputText(", almost knocking Greta over in the process");
         outputText(", the cock-sock suddenly feeling unforgivingly tight.  With a light giggle, Greta gives your dick a soft kiss, and the burning arousal seems to dissipate, replaced with a cool, relaxing sensation that spreads throughout your body.");
         outputText("\n\nYour dick rapidly deflates, and as it does so, the sock covering it falls off naturally.  The busty succubus gathers up the now-mundane sock and returns to her seat behind the counter.");
 
         const storage: string = player.cocks[index].sock;
         let extra: boolean = false;
         player.cocks[index].sock = "";
-        temp = player.cockTotal();
+        temp = player.cocks.length;
         while (temp > 0) {
             temp--;
             // If the PC has another cock with the same effect.
@@ -876,7 +876,7 @@ export class Bazaar {
         // (Continue Here)
         outputText("The dainty little femboy hops back up onto the table, straddling your ass.  He gives his cock a few little strokes, pouring the warm chocolatey 'massage oil' right onto the small of your back.  Rivulets of the bunny-spunk cover your back, giving you goosebumps as they roll across you like velvety rivers.  His hands go to work once more, working the rich brown liquid into every pore, coating your back in chocolate.  He repeats his actions from before, his thumbs and knuckles working your flesh as though he were a master sculptor working clay.");
         outputText("\n\nWithout bothering to get off of you, Joey asks, \"<i>You want to turn over for me?</i>\"  You oblige, rotating around while the masseuse remains straddling your lower body.  His little cock presses against your ");
-        if (player.hasCock()) outputText("own");
+        if (player.cocks.length > 0) outputText("own");
         else if (player.hasVagina()) outputText("cunt");
         else outputText("pitifully empty mound");
         outputText(", its candy-coated flesh slipping enticingly over yours.  To your surprise, Joey seems to be wearing some kind of cock ring for this massage.  It's multicolored, just like the eggs, encircling his small (by Mareth's standards) manhood.  As you watch his balls seem to twitch and inflate ever-so-slightly.  That thing is preventing him from cumming completely, whatever it is, everything coming out must be pre-cum!");
@@ -884,33 +884,33 @@ export class Bazaar {
         outputText("\n\nJoey catches your gaze, \"<i>Oh yes.  This would be your dessert, I'm saving all this sweet chocolate just for you.  The ring is candy too.  Melts in your mouth, not on my dick.  But that 'comes' later, now we have to work out all that tension in your body.</i>\" He giggles, letting his cock drool its candy payload all over your groin, stomach and chest before getting to work, his fingers working the goo into your skin.  As he works on your stomach, groin and hips, he actually flips around, so that his dripping package is right over your face.  Chocolate drips onto your face, and you can't help but to lick your lips to sample this confectionary cum.  It's sweet and rich, just like real chocolate, but it still has the salty-sweet tang of semen.  All in all, it's an interesting combination that you're eager to get more of.");
 
         outputText("\n\nThe rabbit-eared boy's hands find your ");
-        if (player.hasCock()) outputText(multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
         else if (player.hasVagina()) outputText("[vagina]");
         else outputText("[asshole]");
         outputText(", spreading his sweet bounty all over.  His fingers to go work, rubbing up and down");
-        if (!player.hasCock()) outputText(", in and out");
+        if (!player.cocks.length > 0) outputText(", in and out");
         outputText(", removing all that pent up tension from inside you.  ");
-        if (player.hasCock()) outputText("[EachCock] begins leaking pre-cum, mixing with Joey's on your belly to create what looks like a chocolate-white chocolate marbled confection.");
+        if (player.cocks.length > 0) outputText("[EachCock] begins leaking pre-cum, mixing with Joey's on your belly to create what looks like a chocolate-white chocolate marbled confection.");
         else if (player.hasVagina()) outputText("Your cunt grows ever wetter, and not just because of the new chocolate coating.  Despite Joey's femboy appearance, you've got to hand it to him, he does know his way around a pussy.");
         else outputText("Your asshole winks and clenches, aching for release that Joey is kind, and skilled, enough to give.");
 
         outputText("\n\nIn no time at all, your body is arching on the bed under Joey's ministrations.  You gasp as his fingers twirl around your groin, expertly bringing you to the edge.  More of his chocolate-flavored cum drizzles into your open mouth; you can't help but gulp it down eagerly.  Every mouthful of that rich, sweet cum seems better than the last.  Sadly, Joey switches positions, straddling your waist, leaving your chocolate-smeared mouth empty once more.  He ");
-        if (player.hasCock()) outputText("takes hold of [oneCock] and strokes gently, rubbing his thumb against the head");
+        if (player.cocks.length > 0) outputText("takes hold of [oneCock] and strokes gently, rubbing his thumb against the head");
         else if (player.hasVagina()) outputText("reaches between his legs, slipping two fingers inside you while his thumb gently rubs your clit");
         else outputText("reaches between his legs, slipping two fingers inside your ass while his thumb rubs against your perineum");
         outputText(", and with his free hand he leans forward, tweaking a [nipple] softly.");
 
         outputText("\n\nUnder his skilled hand, you're soon bucking and twitching, your candy-coated body aching for release.  \"<i>Let's... just... get all of this... naughty... tension... out,</i>\" he pants, emphasizing each word even though his voice barely rises above a whisper.  With one final twist of his fingers, you're sent over the edge.  Your body arches, lifting Joey up into the air with a gleeful shout, while ");
-        if (player.hasCock()) outputText("[eachCock] pulses and spasms, loosing rope after rope of white jizz through the air, splattering against the wall and floor messily");
+        if (player.cocks.length > 0) outputText("[eachCock] pulses and spasms, loosing rope after rope of white jizz through the air, splattering against the wall and floor messily");
         else if (player.hasVagina()) outputText("your pussy tightens around his fingers, suddenly releasing a flood of femcum that splatters messily against the table");
         else outputText("your asshole twitches and spasms, unable to do much more than grant you a vague half-orgasm");
         outputText(".  Your entire body tingles as you slowly descend back to the table, practically melting into it as if you were nothing more than the bunny-spunk covering your skin.");
 
         outputText("\n\nJoey giggles again, slipping off of you, landing on the floor with a wet slap.  The floor must be covered in various liquids by this point.  He raises his hand to his mouth, tasting the mixture of your juices on his fingertips.  You lean back on the bed, completely relaxed.  You try to raise a hand, but fail completely, your body is simply too loose to obey you right now.  Thankfully, you don't have to move for what Joey seems to have in mind.  He flips a lever on the headrest, lowering it down slightly so your head is almost hanging off the edge.  You see him upside down, his chocolate-glazed cock staring right down at you.  His sack, amazingly, has swelled up incredibly during the massage.  While he once sported an average set of balls, these are easily the size of basketballs now, filled with tasty candy goodness.");
         outputText("\n\n\"<i>Mmm, this is my favorite part!</i>\" Joey laughs, stroking his dick, \"<i>dessert!</i>\"  You gladly open your mouth just as Joey pushes forward, taking his entire member into your mouth.  Considering what else lives in Mareth, Joey is practically tiny");
-        if (player.hasCock()) {
-            if (player.biggestCockArea() >= 30) outputText(", especially compared to you.");
-            else if (player.smallestCockArea() < 6) outputText(", of course, if he's considered tiny, what does that make you?");
+        if (player.cocks.length > 0) {
+            if (player.cocks.biggestCockArea() >= 30) outputText(", especially compared to you.");
+            else if (player.cocks.smallestCockArea() < 6) outputText(", of course, if he's considered tiny, what does that make you?");
         }
         else outputText(".");
         outputText("  You suck and slurp, slipping your tongue up and down his length until not a trace of chocolate remains.  His penis continues to leak the chocolatey pre-cum, but the deeper you take him, the less it matters, until he's practically pumping the chocolate directly into your stomach.");
@@ -999,7 +999,7 @@ export class Bazaar {
         outputText("Your tongue flicks from your lips at all the possibilities that course through your mind.  \"<i>Lemme go!</i>\"  The feline barks out from under you, though you have better ideas.  You move your free hand back and roughly pull down his pants, exposing his muscled rump to the cool, night air.  Feeling a firm cheek beneath your hand, you rub and squeeze it almost affectionately before swatting the cheek roughly, coaxing a strained grunt from the tiger man's mouth.");
 
         // [(If player doesn't have cock)
-        if (!player.hasCock()) {
+        if (!player.cocks.length > 0) {
             outputText("\n\nDeciding to humiliate the poor fool, you begin to spank your hand against the tiger man's rear.  Your swats grow steadily more forceful and your slaps begin to grow louder and louder, filling the night air with the sound of your hand slapping firm cheeks.  You reduce the defiant growls uttered by the tiger man to soft whimpers and he slowly ceases his struggles and submits.  Your hand grips a cheek firmly, fingers digging into the abused flesh and feeling the warmth of the sting you've inflicted.  Tilting your head over, you can't help but smirk as the tiger's erect manhood juts out between his legs.");
 
             outputText("\n\n\"<i>What's that racket?</i>\" You turn your head, hearing a low voice shout from inside the nearby tent.  With a snicker you shove the humiliated tiger to the ground and leave him exposed and aroused as the occupants of the tent pour out.  By the time they surround him you are long gone and back to the well-lit collection of tents in the bazaar.");
@@ -1011,15 +1011,15 @@ export class Bazaar {
         // [[[(If player does have cock)
         outputText("\n\nYou decide to have a little fun with the muscular ass in front of you.  You hold the struggling tiger's wrists with one hand and fish out your " + multiCockDescriptLight(game.player) + " free from your [armor].  Your eyes drink in how the burly tiger man writhes under you.  He's completely at your mercy.");
         // [(If multicock)
-        if (player.cockTotal() > 1) outputText("  Your hand strokes along your " + multiCockDescriptLight(game.player) + " and press them to the warm cheeks exposed before you.");
+        if (player.cocks.length > 1) outputText("  Your hand strokes along your " + multiCockDescriptLight(game.player) + " and press them to the warm cheeks exposed before you.");
         else outputText("  You pump your " + multiCockDescriptLight(game.player) + " and milk a pearl of pre-cum out to drip onto the enticing ass before you.");
         outputText("  \"<i>O-OI!</i>\"  The tiger man shouts out, his head turning to try to see behind him.  With a grin on your lips you grip the hilt of [oneCock] and slap its length over the tiger's rump.  You can see the tint to the tiger man's cheek as he hears and feels your dick smacking his exposed ass.  Pre-cum drips down [oneCock] as you line yourself up, jamming it between the tiger's lovely mounds. He gives a surprised shout as your cockhead presses to his tiny, puckered hole.");
 
         // Cocksize check
         // [[If smallest cock is over 16 inches)
-        if (player.smallestCockLength() >= 16) {
+        if (player.cocks.smallestCockLength() >= 16) {
             outputText("\n\nYour lips part to let out a grunt of frustration.  Your cockhead is unable to break through the tiger man's tight resistance.  His struggles start to die down as [eachCock] continues to drool over his muscled rear.");
-            if (player.totalCocks() == 1) outputText("  You squeeze your " + multiCockDescriptLight(game.player) + " between his warm ass cheeks, stroking yourself with his exposed bottom.  The tiger whimpers meekly under you.");
+            if (player.cocks.length == 1) outputText("  You squeeze your " + multiCockDescriptLight(game.player) + " between his warm ass cheeks, stroking yourself with his exposed bottom.  The tiger whimpers meekly under you.");
             else outputText("  Your fattest cock grinds between the tiger man's rear, dripping spunk over his back and clothing while your other cocks make a sloppy mess of his ass.");
             outputText("  The tiger man's muscled butt is soon glazed with your pre-cum.  Wet, slapping noises echo out into the alley as you grind your hips into his rear.  You can't help but think in the back of your head that the noise is stirring people inside the tent he came out of.");
         }
@@ -1027,12 +1027,12 @@ export class Bazaar {
         else {
             outputText("\n\nYou jam your cockhead into the tiger man's tight ring.  He groans in displeasure under you as your persistent force pushes past his resistance.");
             // [(If multicock)
-            if (player.cockTotal() > 1) outputText("  One of your cocks slips into his hot, constricting confines, the remaining lengths pressed fast to the tiger man's rear and leaving glistening trails of eager fluids like markings on a bitch's ass.");
+            if (player.cocks.length > 1) outputText("  One of your cocks slips into his hot, constricting confines, the remaining lengths pressed fast to the tiger man's rear and leaving glistening trails of eager fluids like markings on a bitch's ass.");
             else outputText("  Your " + multiCockDescriptLight(game.player) + " pushes in, your pre-cum-slicked length sliding in with a wet noise.");
             outputText("  The burly man under you whimpers in protest as you begin to rock against his fine ass.  His firm rear dimples and twitches under your hips, each slam");
             if (player.balls > 0) outputText(" swatting your " + ballsDescriptLight(player) + " against him,");
             outputText(" making him shout out in discomfort.  Your " + multiCockDescriptLight(game.player) + " stretching him out");
-            if (player.cockTotal() > 1) outputText(" while beating his rear");
+            if (player.cocks.length > 1) outputText(" while beating his rear");
             outputText(".  All his shouting stirs whoever resides in the tent he came out of.");
         }
         // (combine cock size paths)
@@ -1071,27 +1071,27 @@ export class Bazaar {
         outputText("\n\n\"<i>I suggest you try and relax, little chip.</i>\"  The satyr speaks while he uncorks a bottle of lust draft.  \"<i>And also to avoid dark pathways, but it's a little late for that.</i>\"  The satyr grins wickedly as his fingers clench around your nose.  Knowing what is coming, you hold your breath futilely.  Soon, you gasp and choke as the pink liquid is forced down your throat.  In moments your body begins to succumb to its effect.  Heat grows under your clothing and soon all four men are looking you over with hungry eyes.");
 
         outputText("\n\nYour [armor] is quickly disposed of, putting your body on display for the four men.  Every breath is a whimpering pant as the effects of the lust draft take over your body.  Your eyes strain to remain focused.  The warmth and tingling floods your senses and washes down your skin to your loins, causing them to ache.");
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  [EachCock] grows stiff as everyone watches.  You wince to try and fight off the draft, but soon you're driping pearls of pre-cum.");
         }
         if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " grows slick in your excitement.");
         if (player.gender == 0) outputText("  Your skin heats and tingles, sweat wetting its surface.");
         outputText("  The satyr runs his hand along your body and sizes you up with a lewd gaze and gentle touch, making you shudder under his fingertips from the effects of the draft.  \"<i>Not bad I suppose.  You could have done better, though.</i>\"  The satyr turns his head to the tiger man as the satyr's words strike at your pride, though the rebuttal on your lips is quickly silenced as his fingers");
-        if (player.hasCock()) outputText(" wrap around your " + multiCockDescriptLight(game.player) + ".");
+        if (player.cocks.length > 0) outputText(" wrap around your " + multiCockDescriptLight(game.player) + ".");
         else outputText(" rub over your " + assholeDescript(player) + ".");
         outputText("  His hand teases your body as the pair of muscled men holds you down in place.  You can only gasp out and wiggle your hips at the touch.  You turn your head and look pleadingly at your captors.  The large green man holding your wrists looks like an oversized goblin with yellow eyes.  His olive skin is stretched tight over his bulging muscles.  His bulky frame looks as powerful as he is tall, standing perhaps seven feet tall.  The equally built man holding down your lower body looks much like a bear man with piercing green eyes, shorter and stockier than the green orc by far.  The pair of 'gym bunnies' have matching bulges swelling in their pants as their eyes fix over your nude body");
-        if (player.hasCock()) outputText(" and hard shaft");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 0) outputText(" and hard shaft");
+        if (player.cocks.length > 1) outputText("s");
         outputText(".");
 
         // [(If muticock 3 or more)
-        if (player.cockTotal() >= 3) outputText("\n\nNot to be left out, each of the two men take a hand off of your limbs and grip one of your " + multiCockDescriptLight(game.player) + ".  Your head swings back onto the table you're laid out on, mouth open wide as you moan and arch your back.  Each hand goes at an individual rhythm as sex overwhelms your thoughts.  The hands pinning you down are gone, though you're unable to focus on escaping.");
+        if (player.cocks.length >= 3) outputText("\n\nNot to be left out, each of the two men take a hand off of your limbs and grip one of your " + multiCockDescriptLight(game.player) + ".  Your head swings back onto the table you're laid out on, mouth open wide as you moan and arch your back.  Each hand goes at an individual rhythm as sex overwhelms your thoughts.  The hands pinning you down are gone, though you're unable to focus on escaping.");
 
         // (if cock(s)
-        if (player.hasCock()) outputText("\n\nThe satyr pumps your length in his hand.  Your hips buck madly as the hand spreads your own pre-cum over your shaft with lewd schlicking noises.");
+        if (player.cocks.length > 0) outputText("\n\nThe satyr pumps your length in his hand.  Your hips buck madly as the hand spreads your own pre-cum over your shaft with lewd schlicking noises.");
         else outputText("\n\nHis fingers slip past your puckered flesh and dip into your " + assholeDescript(player) + " and spread apart, loosening you for what feels like ages.");
         outputText("  Without warning the hand is gone");
-        if (player.cockTotal() > 1) outputText(" and your " + multiCockDescriptLight(game.player) + " wetly slaps your stomach with need");
+        if (player.cocks.length > 1) outputText(" and your " + multiCockDescriptLight(game.player) + " wetly slaps your stomach with need");
         outputText(".  A whimper escapes your lips.  \"<i>This should be fine...</i>\"  The cool, collected voice of the satyr murmurs.");
 
         outputText("\n\n\"<i>I'm going to use the hole.</i>\"  The gruff voice behind you grunts out.  You turn to see the burly orc fumbling with his pants.  The size of his bulge sends a chill down your spine of ");
@@ -1107,7 +1107,7 @@ export class Bazaar {
         outputText(" expression as the satyr's hand strokes over his hard length.  It looks at least eight inches long, smooth like a human's cock and protruding from a forest of curly, brown fur.  The satyr lines himself up and rubs his stiff cockhead over your " + assholeDescript(player) + ".");
 
         outputText("\n\nThe effects of the draft still fresh in your system, you moan out as your sensitive " + assholeDescript(player) + " is poked and prodded.  The slick, hot satyr spunk clings to your pucker and eases your entrance open with his bulbous cockhead.  The satyr calmly takes his time until your hole is dripping and ready for him.  The seemingly endless torture has erstwhile driven you mad, seeming like the satyr has waited hours before finally deciding to plunge into you.  Once satisfied, the satyr shoves his hips forward and stuffs his cock into you roughly.  You wince at the sting and bite your lower lip, trying to keep from giving them the satisfaction of hearing your whimpers.  You shut your eyes and utter out a groan regardless, the feeling of the member pulsing against your silken walls making you utter a low moan");
-        if (player.hasCock()) outputText(" while [eachCock] twitches and leaks generously over your " + skinFurScales(player));
+        if (player.cocks.length > 0) outputText(" while [eachCock] twitches and leaks generously over your " + skinFurScales(player));
         outputText(".");
 
         outputText("\n\nYou gasp as something hot and wet presses to your face.  You open your eyes to be greeted with a stiff cock pressed against your cheek, the tiger man from before looming over you and rubbing his barbed, drooling shaft over your face.  \"<i>Should be obvious.</i>\" The tiger rumbles.  \"<i>But no biting, lest you want to be beaten and left outside this tent to lick your wounds.</i>\"  The tiger man growls as he insistently rubs his cock over your face.");
@@ -1164,7 +1164,7 @@ export class Bazaar {
             outputText("\n\nYou are hardly able to focus on the barbed cock in your mouth, moaning around the hard cock as you look at the small bump on your belly.  With your hands servicing the bear as the tiger fills your mouth, the two men haven't left either side of your head.  With a wet pop, the tiger man pulls his saliva-coated prick from your mouth and he moves to the orc, shoving him aside with a grunt.  \"<i>My turn now.</i>\"  He grins impishly as he lines himself up with your hole, your " + assholeDescript(player) + " looking like a well-used cum dump.  He rams in with ease and begins to pound away inside of you, making you moan with your mouth open wide.");
             outputText("\n\nThe bear takes advantage of this, shoving his impossibly thick cock between your open lips.  Your lips vibrate around his shaft as you moan.  The bear climbs onto the table and begins to fuck your face while your " + assholeDescript(player) + " is used for the third time in a row.  Your jaw stretches painfully around the girth of the bear's pride, your hands gripping at his legs as you look up at him with pleading eyes.  He only grins down at you as he watches his fat length slipping past your lips and bulging inside your throat.  Your throat constricts with gags and vibrates with moans as you involuntarily milk the bear's cock.  Each time the feline cock drills into you, the barbs leave you whimpering and gagging around the bearcock throatfucking you.  The barbs in your ass seem to bring a new sensation to the abuse as wet slapping noises echo in the tent.  Your " + buttDescription(player) + " is wet with the combined cum of three males in a row, their cum and pre-cum dripping from your upturned " + buttDescription(player) + " to form a growing puddle of lust on the floor and table.");
             outputText("\n\nThe bear and tiger don't last long.  The bear finishes first as he pins your head between his hips and the table.  Your fingers clench over his furred legs as a deep groan rumbles from his belly.  You can feel his load shooting directly down your throat to fill your stomach.  The bear pulls out as the last lurch of his cock spits a rope of cum over your face, causing you to shut your eyes and wince as the hot liquid oozes down your cheeks.  With an amused grunt, the bear gets off the table to leave you with the tiger man.  With a raspy hiss the tiger is last, his flared barbs quivering over your cum soaked walls as he grows closer to adding his own spunk to your collection. He leans down over your laying form and gives you a wink.  ");
-            if (player.hasCock()) outputText("His hand dips down to play with your " + multiCockDescriptLight(game.player) + ", stroking you off as he gives a few more brutal pounds of his hips.  ");
+            if (player.cocks.length > 0) outputText("His hand dips down to play with your " + multiCockDescriptLight(game.player) + ", stroking you off as he gives a few more brutal pounds of his hips.  ");
             else if (player.hasVagina()) outputText("Fingers ram into your " + vaginaDescript(player, 0) + ", thrusting into you as he fucks your other hole.  ");
             outputText("His face near yours, he licks your cheek and plants a brief kiss on your lips. You give him a confused look at the affection and he meets it with a wide grin.  \"<i>You're cute for a cocksucker.  Knew I had it made when I found you.</i>\" he snickers, causing you to blush.");
             if (player.gender > 0) outputText("  Your lips part as you moan, feeling your climax building before coating the tiger's hand and your lower body in your sex.  The tiger man just brings his hand up to his lips to taste your juices before hilting into you one last time.");
@@ -1196,7 +1196,7 @@ export class Bazaar {
 
             outputText("\n\nWith a raspy growl the bear is last, his thick dick spasming as he grinds his fat cock over your cum soaked walls while he grows closer and closer to adding his own spunk to your collection.  He leans down over your laying form and gives you a wink.  ");
             // [(If cock(s))
-            if (player.hasCock()) outputText("His hand dips down to play with your " + multiCockDescriptLight(game.player) + ", stroking you off as he gives a few more brutal pounds of his hips.");
+            if (player.cocks.length > 0) outputText("His hand dips down to play with your " + multiCockDescriptLight(game.player) + ", stroking you off as he gives a few more brutal pounds of his hips.");
             else if (player.hasVagina()) outputText("Fingers ram into your " + vaginaDescript(player, 0) + ", thrusting into you as he fucks your other hole.");
             outputText("  His face near yours, he licks your cheek and plants a brief kiss on your lips.  You give him a confused look at the affection and he meets it with a wide grin.  \"<i>You're cute for a cocksucker.  Loved the way you went right for my dick.</i>\"  He snickers, causing you to blush.");
             if (player.gender > 0) outputText("  Your lips part as you moan, feeling your climax building before coating the bear's hand and your lower body in your sex.  The bear just brings his hand up to his lips to taste your honey before hilting into you one last time.");
@@ -1225,7 +1225,7 @@ export class Bazaar {
             outputText("\n\nYour hands frantically work over their shafts, squeezing and tugging at their hard erections while your nimble fingers dance over the stiff flesh.  Your efforts bear fruit as the two men groan out, one cumming and the other soon after, shooting into your mouth with twin streams of cum.  They shoot into your mouth and sloppily coat your lips and chin, pulling out to let a few ropes coat your face.  Your eyes shut as the two continue to give you a sperm facial.  Each new, hot rope of cum clings over your cheeks and warms your skin.  The tiger and bear move away as you reach up to clean the mess from your eyes and, as soon as you open them you're greeted with the sight of the large orc looming over you.  He grins oddly at you as his head leans down to lick the cum from your face, instead covering you in his saliva.  \"<i>Zug like you.  Zug know you love big orc cock.</i>\" His speech is simple and grunted, though the words make you feel a hot blush rise in your cheeks.");
 
             outputText("\n\nHe shouts out a war cry and starts brutally fucking you senseless.");
-            if (player.hasCock()) outputText("  His hand drips down to clumsily play with your " + multiCockDescriptLight(game.player) + ", stroking you off as he gives you a few more brutal pounds of his hips.");
+            if (player.cocks.length > 0) outputText("  His hand drips down to clumsily play with your " + multiCockDescriptLight(game.player) + ", stroking you off as he gives you a few more brutal pounds of his hips.");
             else if (player.hasVagina()) outputText("  Fingers dip into your " + vaginaDescript(player, 0) + ", ramming into you as he fucks your other hole.");
             if (player.gender > 0) outputText("  Your lips part as you feel your climax building, and soon you coat the orc's hand and your lower body in your lust.  The orc just brings his hand up to taste your juices before hilting into you one last time.");
             outputText("  A third wave of warmth floods you and the pressure grows even higher as you resemble an overstuffed breeding bitch.  Exhaustion catches up with you and your eyes begin to grow heavy.  The last thing you see is the orc's face twisted in orgasmic pleasure before you pass out.");

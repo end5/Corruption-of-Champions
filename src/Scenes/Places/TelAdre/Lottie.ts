@@ -17,7 +17,7 @@ export class Lottie extends TelAdreAbstractContent {
 
     // [INITIAL INTRO – Requires Male/Herm, visits at 5pm – 7pm]
     public lottieAppearance(display: boolean = true): () => void {
-        if (!player.hasCock()) return null;
+        if (!player.cocks.length > 0) return null;
         if (player.effects.findByType(StatusAffects.MetMarae) < 0) return null;
         if (game.time.hours >= 15 && game.time.hours <= 23) {
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00281] == 0) {
@@ -279,7 +279,7 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00298]++;
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You tell her that you're fine with the idea, as long as she's willing to follow your lead. \"<i>W-wow, you really wanna... and with me? Okay, sure, lemme just uh, hang on...</i>\" She fumbles with her clothing, clearly trying to get undressed in public before you decide to stop her – there are far better places for this. Taking her by the hand, you lead her into one of the empty saunas, your erection stirring in your pants as you grow more and more eager to take her. \"<i>" + player.short + "... I'm – I really don't know where to start, h-hey.</i>\" She throws an uneasy glance at you, her intent for you to take the lead apparent in her heavy breathing and wanting eyes. Not one to disappoint, you grab her by the hips and lean her against the wall, ripping off her clothes and revealing her velvety skin underneath. Reaching down, you grab a handful of her luxurious ass, squeezing and slapping it lightly. Lottie moans into your shoulder and reaches towards your groin, removing your " + player.armorName + ". She begins stroking your " + cockDescript(game.player, x) + " lightly, picking up the pace as you continue to work on her pert rump. You can't help but lust over her full figure, using one of your hands to firmly grope her pillowy jugs and reaching your other towards her glistening pussy. You move your hand over her cushiony rack before burying your head into her bosom and eagerly sucking on one of her nipples, fondling the other between your thumb and forefinger. Your other hand is already fast at work, fingering her hot cunt. You can feel her legs about to buckle beneath their own weight. Lottie moans in between short, hot breaths, \"<i>Y-you're... really amazing, " + mf(player, "guy", "lady") + ".</i>\" You give her chubby ass a hard slap in agreement.  Lottie squeals with  glee, jerking your " + cockDescript(game.player, x) + " as it pokes into her soft stomach. The sensation of your tip rubbing against her velvety skin drives you wild.\n\n", false);
         outputText("You tell Lottie you've decided you're going to take her for a vigorous work out. She can only pant with anticipation.\n\n", false);
@@ -339,7 +339,7 @@ export class Lottie extends TelAdreAbstractContent {
     public gotInShapeComedyDeclineLottie(): void {
         spriteSelect(36);
         outputText("", true);
-        outputText("Haha, of course you fucking aren't, why would you be? Lottie stares at you, tears welling in her eyes. Oh, whoops – you must've said that out loud. Proceeding to not give two shits about the bawling pig-slut in front of you, you take a good squeeze of her cushiony tits before whipping your " + cockDescript(player, player.biggestCockIndex()) + " out and slapping her in the face with it.  \"<i>W-w-why... why are you... *sniff* p-please...!</i>\" The pig girl chokes in between sobs. It almost gives you a hard on - almost. You take one final step backwards, before announcing quite loudly to the other cafe-goers that you're going for a home run. Lottie squeaks before you take your " + cockDescript(player, player.biggestCockIndex()) + " and swing at her face, hitting dead on and managing to leave a bit of pre-cum on her newly-christened cheek. You stand triumphantly at your latest work of art, though Lottie seems to have other ideas, running out the door in complete misery, pre-cum and all. You decide you'd better return home too, and head back towards the camp – but not before spending the next hour or so chasing after Lottie and taking grabs at her plush ass.", false);
+        outputText("Haha, of course you fucking aren't, why would you be? Lottie stares at you, tears welling in her eyes. Oh, whoops – you must've said that out loud. Proceeding to not give two shits about the bawling pig-slut in front of you, you take a good squeeze of her cushiony tits before whipping your " + cockDescript(player, player.cocks.biggestCockIndex()) + " out and slapping her in the face with it.  \"<i>W-w-why... why are you... *sniff* p-please...!</i>\" The pig girl chokes in between sobs. It almost gives you a hard on - almost. You take one final step backwards, before announcing quite loudly to the other cafe-goers that you're going for a home run. Lottie squeaks before you take your " + cockDescript(player, player.cocks.biggestCockIndex()) + " and swing at her face, hitting dead on and managing to leave a bit of pre-cum on her newly-christened cheek. You stand triumphantly at your latest work of art, though Lottie seems to have other ideas, running out the door in complete misery, pre-cum and all. You decide you'd better return home too, and head back towards the camp – but not before spending the next hour or so chasing after Lottie and taking grabs at her plush ass.", false);
         // [PC no longer encounters Lottie.]
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00278] = 1;
         doNext(camp.returnToCampUseOneHour);
@@ -402,11 +402,11 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText(images.showImage("lottie-fuck-her-in-teh-butzor"));
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You brush her grip off of " + oMultiCockDesc(game.player) + ", only to turn her around and fit your girth between her large cheeks", false);
-        if (player.totalCocks() == 2) outputText(", managing to squeeze in your other cock along with it", false);
-        else if (player.totalCocks() > 2) outputText(", the rest of your dicks poking and prodding against her soft flesh", false);
+        if (player.cocks.length == 2) outputText(", managing to squeeze in your other cock along with it", false);
+        else if (player.cocks.length > 2) outputText(", the rest of your dicks poking and prodding against her soft flesh", false);
         outputText(".  \"<i>You sure do like my butt, huh?</i>\"  She giggles softly, satisfied that at least some of her fat is being put to use.  You groan as she starts to move her ample hips, massaging your " + cockDescript(game.player, x) + " within her jiggling buttocks.  Your tip brushes against her asshole, smearing pre-cum all over the hot entrance.  Lottie starts to push back towards your cock, clearly overcome with lust.  You wait a few seconds as she aimlessly grinds against you before you spread her cheeks and plunge your " + cockDescript(game.player, x) + " into her tight backdoor. Lottie squeals against the wall in delight as you fill her stomach and begin pounding away at her relentlessly, her large tits bouncing rhythmically. She continues to drive herself into you, her tight, fiery insides squeezing your length whilst you watch her heavy butt ripple with every thrust.\n\n", false);
 
         outputText("Lottie is a complete mess, gasping and convulsing underneath you as you plunge into her depths. Her mouth hangs wide open as she holds on to one of her plush tits, using her free hand to pleasure herself. You take hold of her lavish buttcheeks and force your length in deep, bottoming out inside her hot ass. You remain inside her and begin gyrating your hips, rubbing against the tight walls of her interior. Her legs collapse underneath you and you wrap one hand around her pot belly to hold her in place, resuming your thrusting.\n\n", false);
@@ -416,15 +416,15 @@ export class Lottie extends TelAdreAbstractContent {
         outputText(".\n\n", false);
 
         // [If Multi]
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("Deciding you aren't done with her bouncy rear, you take ", false);
-            if (player.cockTotal() == 2) outputText("your other cock", false);
+            if (player.cocks.length == 2) outputText("your other cock", false);
             else outputText("one of your cocks", false);
             outputText(" and push it against her puckered hole. \"<i>H-hey, wait a mome- OHH!</i>\" You ease yourself back into her, with ", false);
-            if (player.cockTotal() == 2) outputText("your two ", false);
+            if (player.cocks.length == 2) outputText("your two ", false);
             else outputText("two of your ", false);
             outputText(" throbbing cocks buried deep in her rectum. The pressure against your hot rods is immense, though you continue to slowly push and pull her sweaty ass against you, enjoying the feeling of her meaty fuckpillows as they massage your cock", false);
-            if (player.cockTotal() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(".\n\n", false);
         }
         if (player.balls > 0) outputText("Your " + sackDescript(player) + " begins to swell", false);
@@ -452,16 +452,16 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText(images.showImage("lottie-gives-you-a-blowjob"));
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
 
         outputText("You grab Lottie's shoulders and firmly move her down towards your crotch. She kneels down, face to face with your " + cockDescript(game.player, x) + ".  Feeling her hot breath against your " + skinFurScales(player) + ", you tell her to suck it.\n\n", false);
 
         // [If player cock is at or below 4']
         if (player.cocks[x].cockLength <= 4) {
             outputText("She stares at your " + cockDescript(game.player, x) + " and then up at you. \"<i>I... oh, well I guess this is okay.</i>\" She lazily slurps your member into her mouth, and moans at the taste of your " + cockDescript(game.player, x) + ". Her agile tongue moves over your entire length, licking gently over your sensitive head and along your shaft. Your " + cockDescript(game.player, x) + " sits comfortably inside her warm hole, covered in her saliva", false);
-            if (player.cockTotal() > 1) {
+            if (player.cocks.length > 1) {
                 outputText(" while your other cock", false);
-                if (player.cockTotal() == 2) outputText(" pokes", false);
+                if (player.cocks.length == 2) outputText(" pokes", false);
                 else outputText("s poke", false);
                 outputText(" against her chin", false);
             }
@@ -470,19 +470,19 @@ export class Lottie extends TelAdreAbstractContent {
         // [If the player has a cock between 5' – 12']
         else if (player.cocks[x].cockLength <= 12) {
             outputText("She stares intently at your " + cockDescript(game.player, x) + " with hunger in her eyes. A small amount of drool escapes her luscious lips as she moves forward, kissing your ", false);
-            if (player.cockTotal() > 1) outputText(" biggest head lightly", false);
+            if (player.cocks.length > 1) outputText(" biggest head lightly", false);
             else outputText(" head lightly", false);
             outputText(".  Her saliva leaks onto your " + cockDescript(game.player, x) + ", though she is quick to lick it up while she works her tongue around the rest of your shaft", false);
-            if (player.cockTotal() > 1) outputText(", jerking off your " + cockDescript(player, player.biggestCockIndex2()) + " with both hands", false);
+            if (player.cocks.length > 1) outputText(", jerking off your " + cockDescript(player, player.cocks.biggestCockIndex2()) + " with both hands", false);
             outputText(".  She places small licks on the tip of your head, and then hungrily devours the rest of your length in one fell swoop.\n\n", false);
         }
         // [If the player has a cock equal to or over 13']
         else {
             outputText("She gasps as you lift your " + cockDescript(game.player, x) + " and slap her face. \"<i>It's... wow, " + player.short + "!</i>\" You grin before poking her pudgy cheek with the tip of your ", false);
-            if (player.cockTotal() > 1) outputText("biggest erection", false);
+            if (player.cocks.length > 1) outputText("biggest erection", false);
             else outputText("erection", false);
             outputText(".  A small amount of drool escapes her luscious lips as she moves forward, kissing your head lightly. Her saliva leaks onto your " + cockDescript(game.player, x) + ", though she is quick to lick it up while she works her tongue around the rest of your lengthy shaft", false);
-            if (player.cockTotal() > 1) outputText(" - using her hands to massage your leftover " + cockDescript(player, player.biggestCockIndex2()), false);
+            if (player.cocks.length > 1) outputText(" - using her hands to massage your leftover " + cockDescript(player, player.cocks.biggestCockIndex2()), false);
             outputText(". She places small licks on the tip of your head, and without warning stuffs as much of your thick girth as she can into her mouth, coughing around your " + cockDescript(game.player, x) + ".\n\n", false);
         }
 
@@ -490,13 +490,13 @@ export class Lottie extends TelAdreAbstractContent {
         if (player.balls > 0) outputText(", your sack slapping against her chin ", false);
         else if (player.biggestTitSize() > 2) outputText(" while you play with your " + biggestBreastSizeDescript(player), false);
         outputText(". You remark on what a hungry little piggy she must be, and the chubby girl moans in response, the vibrations massaging your member. Relishing the feeling of your " + cockDescript(game.player, x) + " in between her hungry lips, you start to thrust into her warm mouth hole, grabbing onto her head as you pound her face against your groin.", false);
-        if (player.cockTotal() > 1) {
-            if (player.cockTotal() == 2) outputText("  Your extra cock flails wildly, slapping against her cheeks.", false);
-            else if (player.cockTotal() > 2) outputText("  Your extra cocks flail wildly, slapping against her cheeks.", false);
+        if (player.cocks.length > 1) {
+            if (player.cocks.length == 2) outputText("  Your extra cock flails wildly, slapping against her cheeks.", false);
+            else if (player.cocks.length > 2) outputText("  Your extra cocks flail wildly, slapping against her cheeks.", false);
         }
         outputText("  Lottie's slick tongue desperately wraps itself around your length as you drive in and out of her fuckhole relentlessly, drool beginning to leak from her mouth. She", false);
         // [if Multi]
-        if (player.cockTotal() > 1) outputText(" stops rubbing your " + cockDescript(game.player, x) + " to ", false);
+        if (player.cocks.length > 1) outputText(" stops rubbing your " + cockDescript(game.player, x) + " to ", false);
         // (Otherwise)
         else outputText(" reaches down towards her dripping pussy; plunging two fingers into her wetness while using the other hand to ", false);
         // If Balls]
@@ -515,15 +515,15 @@ export class Lottie extends TelAdreAbstractContent {
         if (player.cocks[x].cockLength > 12) outputText("Licking at your cockhead, Lottie squishes her breasts against the rest of your member, making sure to lap up the stray beads of pre-cum squirting from your tip. Relishing the taste of your " + cockDescript(game.player, x) + " in her mouth she begins to suck at your head, flicking her tongue around your urethra and pressing her full lips against it, creating a vacuum of pleasure around your manhood.\n\n", false);
 
         // [If Multi]
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("You decide to make use of ", false);
-            if (player.cockTotal() == 2) outputText("your", false);
+            if (player.cocks.length == 2) outputText("your", false);
             else outputText("an", false);
-            outputText(" extra cock as you push it between her pouty lips, her face brushing against it while she tries to titfuck your main member. Looking up at you, Lottie descends on you and begins fellating your " + cockDescript(player, player.biggestCockIndex2()) + ", not forgetting to knead her fat tits into your " + cockDescript(game.player, x) + ".\n\n", false);
+            outputText(" extra cock as you push it between her pouty lips, her face brushing against it while she tries to titfuck your main member. Looking up at you, Lottie descends on you and begins fellating your " + cockDescript(player, player.cocks.biggestCockIndex2()) + ", not forgetting to knead her fat tits into your " + cockDescript(game.player, x) + ".\n\n", false);
         }
 
         outputText("Raising her body up and down, you watch as the pig-slut massages her rack tightly around your rod whilst you plunge between her cleavage, thrusting slightly to match her movements. \"<i>" + player.short + ", p-please cum on me, god- I need this!</i>\" she moans, her saliva lubing her chest while she pumps your dick in between her melons", false);
-        if (player.cockTotal() > 1) outputText(" and chokes on your meat", false);
+        if (player.cocks.length > 1) outputText(" and chokes on your meat", false);
         outputText(".  You throb against her hot flesh, feeling your spunk bubbling up inside you.  Throwing your head back, you give one final thrust before pulling back and exploding all over your squishy slut, ", false);
         if (player.cumQ() < 500) outputText("thick ropes of cum splattering all over her face and pooling in between her tits", false);
         else outputText("massive globules of cum splattering all over her face and painting her tits", false);
@@ -957,7 +957,7 @@ export class Lottie extends TelAdreAbstractContent {
     private lottieFatLoserCulminationFuckChoice(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You've decided that Lottie's only worth one purpose now. A few minutes later and you've taken your whore to the washrooms. Mirrors line the sides of the walls to allow members to observe their physiques. It's entirely empty for the night, though you make sure to lock the door just in case. You turn around to see Lottie cowering in the corner. She knows what you want – and you swear on Mareth's giant tree titties you'll get it. Walking over, you bark at Lottie to strip down and get on all fours. She whimpers at your command, but knows full well what you'll do if she doesn't. Slowly, but surely, she pulls down her tank top, revealing her creamy tits as they bounce out of her clothing. It's not like you haven't seen them before, but her reluctance as she desperately tries to pull off her top while covering her tits at the same time stirs a primal reaction within you. The girl tries to remove her shorts as quickly as possible, but you growl at her to turn around and bend over, giving you a good view of her luscious ass as it juts out towards you. She peels her tight shorts off her hips slowly, revealing her pink, moist lips – the little slut's getting turned on, you laugh to yourself. With her naked body on full display, Lottie quietly moves down to the ground, positioning herself on all fours with her butt facing towards you. She looks behind herself to see your erect " + cockDescript(game.player, x) + " on full display, quickly squealing and looking away. You grin as you stroke yourself into fullness, walking over and placing yourself behind Lottie's full derriere. \"<i>" + player.short + "?</i>\" she gently sobs, \"<i>P-please don't do this.</i>\" With that, you grab her ample thighs and thrust forward, driving your " + cockDescript(game.player, x) + " straight into her trembling wetness.\n\n", false);
 
@@ -980,7 +980,7 @@ export class Lottie extends TelAdreAbstractContent {
     private lottieFatLoserCulminationHumiliationChoice(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("A few minutes later and you've taken your whore outside of the gym and around to the back, where an equipment shed lies in waiting. You make quick work of the lock, busting it open with a nearby metal pole. The two of you walk slowly inside, Lottie pausing behind you to gaze at the tools and exercise apparatuses littering the walls. Soon, you find what you're looking for. You've never been one to judge a person for their fetishes, but you make a mental note to thank the person who couldn't control theirs. A single leather collar attached to a leash dangles silently upon a hook attached to the walls of the shed. Grinning, you take it down, adjusting the length of the rope before handing it to Lottie. \"<i>W-what's this for, " + mf(player, "sir", "ma'am") + "?</i>\" she mumbles, but you pay no attention to her questioning as you loosen the collar and push it down on the girl's neck, tightening it before she can protest. \"<i>N-no! What are yo-!</i>\" Slap! You pelt your hand against her soft cheek, causing her to jerk on the rope and fall to the floor, miserable and in pain. Your slut slowly looks up at you with watering eyes, a hand to her face to quell the stinging sensation. \"<i>I... I understand.</i>\" She mutters quietly, picking up the leash and placing it in your hands, before standing on her knees and adopting a begging position in front of you. You grunt as the girl pulls out her small tongue, reluctantly licking at your groin to satisfy the beast behind your clothes. Just like a whore to assume that's what you're here for. You walk away from her attempts to fellate you, pulling on the leash and yanking your girl forwards. She gets up and starts walking behind you and out into the sunlight, before you stop her once more. No, you tell her – she has to strip down before she's presentable to the public. You want the world to know how well you've trained your fat little piggy.\n\n", false);
 
@@ -1024,19 +1024,19 @@ export class Lottie extends TelAdreAbstractContent {
     private lottieHighMoraleFatLoveSelfOneTimeEvent(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You begin to talk about your story, how you came to be in Mareth and how you got to be where you are now. You've encountered nasty things, and you've seen people become nasty things themselves. You also know that you've changed since then. You've become someone you didn't expect yourself to become in a million years – and whether it was for better or for worse was up to you to decide. You know you've been through hard times, but you've never once regretted the decisions you've made – because they led to her. To Lottie. The girl begins to tear up at your confession. \"<i>Oh, " + player.short + ", I...</i>\" But you continue your story. You tell her that no matter what she looks like, no matter what happens – you'll always love her for who she is. But the most important thing, the absolute most important thing she needs to remember, is that she needs to love herself - because you'll never stop loving her as long as she does. At this point, Lottie bursts into tears of happiness, beaming through her tear-stricken face. \"<i>You idiot! You big, dumb, idiot!</i>\" she laughs, running out of her seat to plant a kiss on your lips and to pull you in for a hug. \"<i>I love you too,</i>\" she purrs, cuddling up to you in a warm embrace that lasts for what seems like an hour. You're not sure you've helped get over her self-consciousness entirely, but judging by her reaction you seem to have lifted her mood an incredible amount. The both of you chat away at the cafe for a while before deciding to hit the yoga rooms to stretch out – you've placed a mat down while you wait for Lottie to change, when the girl walks in and surprises you.\n\n", false);
 
         outputText("Your rosy lover bounces into the empty, dim lit room, her ample thighs squishing out of a pair of super tight shorts, while her breasts fill over a sports bra. You're immediately turned on by the incredibly erotic display, Lottie catching scent of your increasingly hardening member and giggling while she crushes her boobs together in front of you. \"<i>I'm guessing you like what you see?</i>\" she purrs, walking over to you and pushing you down upon the gym mat. Lottie makes quick work of your lower clothes, your " + cockDescript(game.player, x) + " bouncing out and at attention, which she grabs hastily as she begins to jerk you off. The pig-girl presses your member against her moist slit, grinding it back and forth while her moans fill the empty room. You grunt in pleasure, jerking your hips slightly to help the process along, to which she replies by bending down to press her overflowing tits against your chest. You take your hands and slap them upon her ass, groping and squeezing while she moans into you. The girl shudders in bliss as the grinding sends her into an early orgasm. \"<i>I... I've got something better for you, babe...</i>\" she pants as she pulls apart the opening in her shorts to reveal her blushing pussy. Keeping a firm grip on your " + cockDescript(game.player, x) + ", Lottie lifts herself up and slowly lowers her body upon it, your tip parting her folds and entering her hot insides. You grunt at the sensation of her inner walls squeezing tightly against your member, ", false);
-        if (player.cockArea(x) <= 40) outputText("her ample cheeks resting on your groin as you bottom out in her", false);
+        if (player.cocks.cockArea(x) <= 40) outputText("her ample cheeks resting on your groin as you bottom out in her", false);
         else outputText("though you only reach so far before you've filled her up entirely with your length", false);
         outputText(". You decide to take matters into your own hands as you grab her thick hips and drive upwards, Lottie squealing as you begin to pump in and out of her. The pig-girl's creamy breasts pop out of her bra and jump to your thrusts, her fat legs hugging either side while she bounces upon you. \"<i>God, I-I love you! Unh, I feel so hot, babe!</i>\" She yells as you pork your lover enthusiastically. The slaps of her full buttcheeks hitting your groin pervade the air, your grunts accompanied by Lottie's orgasmic moaning.\n\n", false);
 
         outputText("As you feel yourself about to explode, you keep a tight grip on her hips before thrusting forward, filling her insides with your hot spunk. Lottie trembles in orgasm, the feeling of your cum inside of her sending her over the edge.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your other cock", false);
-            if (player.cockTotal() == 2) outputText(" does", false);
+            if (player.cocks.length == 2) outputText(" does", false);
             else outputText("s do", false);
             outputText(" not disappoint, spurting your essence all over the pig-girl.", false);
         }
@@ -1059,7 +1059,7 @@ export class Lottie extends TelAdreAbstractContent {
     private lottieHighMoraleFatYoullGetThereOneTimeEvent(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You tell Lottie that the way she looks right now shouldn't affect how she feels about herself as a person – her value isn't determined by her weight, and never will be. You pat her hand before giving her a thumbs up. You believe in her and you believe in her goal, whether it leads to a better appreciation for herself or her body. She's reassured by your words, stroking your hand gently. You make clear to the girl that you aren't going to leave her because of how she looks, because she's beautiful where it counts. Lottie melts, blushing hard at your compliments. \"<i>Oh, " + player.short + ", sometimes I wish I could be as brave as you, y'know?</i>\" she exclaims, sighing politely. Continuing your rant, you explain how all she needs is a little self confidence to get her going – she can't be afraid to take leaps into the deep end to get what she wants, right? She giggles at your enthusiasm, though takes your words into consideration. \"<i>Self confidence, huh?</i>\" Lottie mutters to herself. \"<i>" + player.short + "... could you come with me for a moment?</i>\"\n\n", false);
 
@@ -1068,9 +1068,9 @@ export class Lottie extends TelAdreAbstractContent {
         outputText("The nude pig-girl stands in front of you, turning red at your hungry gaze. \"<i>I'm not comfortable with my body, but... if self confidence is the key to getting what I want, then... will you fuck me, " + player.short + "?</i>\"\n\n", false);
 
         outputText("In only seconds flat you remove your clothes to jump the piggy, whipping out your " + cockDescript(game.player, x) + " and pushing it against Lottie's wet slit, the pig-girl lying on her back while her legs rest upon your shoulders. With a hearty thrust you drive yourself into her, eliciting a loud moan while you pork her insides with your meat. Her thick thighs slap against you as you bend over to take a lustful grab at her melons, sucking at her nipple and pinching the other, her sweet taste enveloping your mouth. Lottie buries you in her cleavage, yelping as you piledrive her tight pussy into submission – but you've got more in store. Flipping her over, Lottie lies face down with her soft butt jutting up in the air, your persistent fucking driving her wild. You continue gripping onto her tits as you pound her flesh, every thrust accompanied by her pleasured grunts. Back and forth you mount her until the familiar sensation in your loins signal your release. You increase your pace, pounding her pussy until you pull your head back and ejaculate inside her inner walls, slamming in harder every few seconds with each burst.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("Your other cock", false);
-            if (player.cockTotal() == 2) outputText(" twitches ", false);
+            if (player.cocks.length == 2) outputText(" twitches ", false);
             else outputText("s twitch ", false);
             outputText("in ecstasy, releasing all over her plump butt.", false);
         }
@@ -1110,10 +1110,10 @@ export class Lottie extends TelAdreAbstractContent {
     private lottieElleThreesomeFirstTime(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You chuckle devilishly as you undress in front of your naked and wanting harem. Both of the girls blush nervously as they stare at your " + cockDescript(game.player, x) + " – though the hunger in their eyes suggests anything but anxiety. You lay down on your back, gesturing for the girls to come over to you. Lottie enthusiastically trots towards you, lying down in front of " + sMultiCockDesc(game.player) + " and popping the tip ", false);
-        if (player.cockTotal() > 1) outputText("of one ", false);
+        if (player.cocks.length > 1) outputText("of one ", false);
         outputText(" into her full lips, circling around it with her eager tongue. The spider-girl grows more enthusiastic, hopping back to lie next to Lottie, placing her hot mouth at the base of your shaft and licking softly. She runs her tongue along your length while Lottie sucks hungrily on your head, slurping beads of pre-cum and stopping every so often to plant her lips on her spider-friend, swapping saliva along with the taste of your cock. As you let the girls work on your slick member, the spider-slut removes herself before straddling your face, her wet pussy inches from your hungry maw. Lottie begins to work around your length while Elle leans forward and plunges it into her mouth, sucking hard and fast. She releases your tip with a wet pop, moaning as you dig your tongue inside her hot cunt, tasting her juices and sucking gently on her hard clit. Lottie moves herself above your length, lowering herself slowly until you buck upwards, slamming your " + cockDescript(game.player, x) + " directly inside of her. Both of the girls squeal and moan from either end, Elle's thick thighs on either side of your head while she tries to pull you deeper inside. Lottie's pillowy breasts heave as she bounces on top of you, leaning over to the spider-girl as they share a deep kiss. Elle's extra hands knead Lottie's breasts while her main two hold onto her own hips, grinding along your face while you sip at her sweet nectar. Your techniques seem to work, as the spider-girl shudders in orgasm, her sweaty thighs clamping down on you while she shakes in ecstasy. Lottie climaxes soon after, holding on to Elle's head as the girl sucks gently on her soft nipple flesh, her inner walls tightening against you. As you feel your own release coming, you order your sluts to take themselves off of you, to which they comply. In moments you've grabbed the spider-girl and forced her to spread her legs wide open, plunging your " + cockDescript(game.player, x) + " inside and squirting your hot spunk. Lottie positions herself on top of the girl, placing their pussies against each other and grinding in pleasure. Once you finish filling your spider-slut, you drive into the pig-girl, ropes of your cum splattering her inner walls. You continue thrusting in and out of the both of them for several minutes, before finishing up by letting each girl suckle at your cock. \"<i>Satisfactory.</i>\" You mumble, putting your clothes back on and heading out the door, making sure to grab a ", false);
         if (silly()) outputText("bacon ", false);
         outputText("shake on the way out.", false);
@@ -1131,10 +1131,10 @@ export class Lottie extends TelAdreAbstractContent {
     private fuckElleInsteadOfThatFatSlutFirstTime(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You chuckle devilishly as you undress in front of your naked and wanting harem – but you only have eyes for one girl. You point at the spider-girl, informing the both of them that you only plan to fuck her. Lottie may have thought she could win you over with another slut, but you feel as if you should teach her a lesson about being too presumptuous about what you want. Elle walks towards you, her child-bearing hips swaying hypnotically as she ", false);
-        if (player.cockTotal() == 1) {
+        if (player.cocks.length == 1) {
             outputText("begins to caress your " + cockDescript(game.player, x) + " with two of her hands, while the other sets to work on ", false);
             if (player.balls > 0) outputText("massaging your balls", false);
             else if (player.hasVagina()) outputText("massaging your pussy", false);
@@ -1142,9 +1142,9 @@ export class Lottie extends TelAdreAbstractContent {
         }
         else outputText("uses all four of her hands to handle your " + multiCockDescriptLight(game.player) + ", jerking each one with ease", false);
         outputText(". Lottie stands next to the both of you, sobbing quietly as she fingers herself to the erotic display. You decide to tease Lottie further, reaching around the arachne-girl to enjoy her slick cunt with your digits, and pressing your own lips against hers while she jerks you off. You pick up the spider-girl and, with one swift movement, impale her upon your " + cockDescript(game.player, x) + ", holding onto her womanly thighs and pumping her with your meat. Four of her arms hug you tightly as you let loose on the athletic woman, the spinnerets on her shoulders dangling idly, yet erect with throbbing need. Could they be...? You quickly erase the thought, continuing your barbaric display of lust as you probe the girl's mouth with your tongue, glancing every so often at Lottie to make sure she witnesses every single thrust. The pig-girl lies shamelessly spread-eagled on the floor, moaning and masturbating furiously to her best friend getting endlessly ploughed by her lover. Lottie clenches her sweaty thighs together and yelps, shuddering in orgasm. Defeated, she lays upon the ground, miserable. It gives you an idea. You hug Elle close to your body as you walk towards the pig-slut, positioning yourself on top of her while her best friend bounces upon your cock. Lottie opens her eyes to see the bronze beauty's taut ass slapping against your groin, your combined juices leaking out of her abused hole. \"<i>W-why...</i>\" the pig-girl chokes between sobs, but you only increase your pace as you feel your own release building. You continue to pound effortlessly into your new whore, cum bubbling in your groin until you take one final step and thrust deep into her insides. Ropes of your cum splatter her inner walls, leaking out and painting the helpless pig-girl below you.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your extra cock", false);
-            if (player.cockTotal() == 2) outputText(" throbs, spilling out its essence along the floor and onto Lottie.", false);
+            if (player.cocks.length == 2) outputText(" throbs, spilling out its essence along the floor and onto Lottie.", false);
             else outputText("s throb, spilling out their essence along the floor and onto Lottie.", false);
         }
         outputText("  Elle follows suit, groaning in pleasure as she reaches her own peak, her hole tightening around your length and trapping the rest of your spunk inside. The spinnerets upon her shoulder pulse in orgasm, spurting sticky globs of what appears to be thread up into the air and back down onto the pig, spunk pooling around her cleavage. You both relax, letting the spider-girl down off of you to collapse on the floor. You bend down, looking at Lottie before shoving your " + cockDescript(game.player, x) + " inside of her and letting one final spurt of your seed fill her up. \"<i>Satisfactory,</i>\" you mumble, redressing and heading out the door");
@@ -1162,7 +1162,7 @@ export class Lottie extends TelAdreAbstractContent {
     public charlottesWebComedyBullshit(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You slap your " + cockDescript(game.player, x) + " gleefully as you point at the two girls in front of you. \"<i>OOOH, NOW I GET IT.</i>\" You yell triumphantly, your knowledge of fictional stories about farm animals finally coming to good use. \"<i>YOU ASSHOLES ARE JUST LIKE CHARLOTTE'S WEB.</i>\" They both tilt their heads to the side quizzically, unsure of the excellent referential joke you just made – but you continue anyway. \"<i>No, cause like – there's a spider called Charlotte and a pig called Wilbur and the spider talks by spinning webs and... ugh, forget it.</i>\" You decide the slutty animorphs aren't worth your time, stomping off in frustration. \"<i>W-wait! " + player.short + ", don't leave me!</i>\" Lottie yells as she runs towards you, but it's too late. You're fucking done – until you bump into an elderly white mouse. \"<i>BIMBO MARBLE'S NON-EXISTANT TITTIES, IF IT ISN'T E.B. WHITE!</i>\" you yell, ejaculating in your pants as your mind overloads from the referential humour. He smiles, asking politely if you want to go on a journey through space.  You eagerly agree as you follow the old man down into a dark alleyway, excited to go on the adventure of a lifetime.\n\n", false);
         outputText("<b>...</b>\nYou wake up hours later, missing a few gems. Your asshole is now a Little Stuart.\n\n", false);
@@ -1176,7 +1176,7 @@ export class Lottie extends TelAdreAbstractContent {
     private lottieSuccessOneShot(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         if (player.tone > 30 || player.thickness < 70) {
             outputText("You walk into the yoga area and are met with the smell of sweat and flowers pervading the room. You look over to the middle of the bare area to find Lottie bending over, her ass squished in tight booty shorts thrust in your direction. At the sound of your entrance she jerks up, looking over to you – you notice she's already removed her top. \"<i>Like what you see, babe?</i>\" she grins, cupping one of her heavy breasts in her palm. \"<i>I've been spending some time in the yoga room practicing some... positions. I thought you might like to try them out.</i>\" The pig-girl slides down to the floor, attempting the splits as her legs move apart in different directions. This girl is flexible as hell, you think to yourself.\n\n", false);
@@ -1410,7 +1410,7 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText("Taking your mat, you walk over towards the smiling pig-girl, sitting down next to her and beginning your stretches. Lottie lies flat on her soft belly, pulling up her legs from behind her and stretching her back, jutting out her heavy breasts as they squish underneath her sweaty clothing. Her eyes clearly affixed onto the instructor in the middle of the class, you take the opportunity to gaze at her flushed body, running your eyes along her defined back to her lush ass and her rosy thighs. Realising you've been sitting awkwardly the entire time, you stretch your arms and lay on your back, replicating the pose of the yoga trainer along with the rest of the class. It isn't until you look over to Lottie that you awkwardly discover her staring at your crotch – your discreet staring has earned you a pent-up orgasm waiting to happen. You laugh nervously as Lottie continues ogling your strained boner", false);
-        if (player.cockTotal() > 1) outputText("s", false);
+        if (player.cocks.length > 1) outputText("s", false);
         outputText(", while you secretly relish in the fact that you're at the back of the class. \"<i>Was... was that because of me?</i>\" Lottie whispers, tactlessly pointing directly at your " + multiCockDescriptLight(game.player) + ". You nod in response, Lottie giggling at your aroused reaction to her body. She playfully slaps your stiff length, and returns to her stretches. You groan and move towards an easier, less-exposed position.\n\n", false);
 
         outputText("The class ends a while later, Lottie continuing to tease you as you walk out of the gym. You note in your head that you'll get her back later, but for now you're exhausted.", false);
@@ -1435,7 +1435,7 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText("You can't risk it, so you decide to take a plunge into the water – it's freezing at first, but you quickly warm up. Lottie takes your avoidance to heart and looks visibly discouraged, though you wonder what her reaction would've been if your cockrocket", false);
-        if (player.cockTotal() > 1) outputText("s", false);
+        if (player.cocks.length > 1) outputText("s", false);
         outputText(" decided to say hello. Needless to say, you decide it'd be better if you swam alone – nothing's wrong with the occasional chubby-assed slut wandering now and then, but it's a pain to not be distracted. Lottie wades at the other end of the pool, doing the occasional stretch before breaking into laps. You take a page from her book and begin to work back and forth from either end, making sure not to stare at Lottie's massive chest as it bounces into the air every so often after a stroke. After a considerable amount of time, you both finish considerably more exhausted than before. She seems to have lightened up since your initial reaction to her body, so you shrug it off and head home.", false);
         // ENCOURAGEMENT -1, FIGURE +2, MUSCLE TONE +2, LUST +9001
         outputText(modTone(player, 100, 2), false);
@@ -1450,8 +1450,8 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText("You figure it can't do much harm to let " + sMultiCockDesc(game.player) + " fly, so you decide to leave it be, even leaning back so as to accentuate the hardening length. It doesn't take long for Lottie to notice, letting out a little gasp as she observes your ", false);
-        if (player.biggestCockArea() >= 15) outputText("pride and joy", false);
-        else if (player.biggestCockArea() < 5) outputText("secret shame", false);
+        if (player.cocks.biggestCockArea() >= 15) outputText("pride and joy", false);
+        else if (player.cocks.biggestCockArea() < 5) outputText("secret shame", false);
         else outputText("painfully average prick", false);
         outputText(". You almost experience a tinge of regret from the now incredibly awkward silence, but it's thrown out the window as soon as you feel a soft hand grab your throbbing member. Looking up, Lottie's face has reddened considerably, but her curiosity overrides her shame as she begins to slowly massage you to full mast. \"<i>I... I did this?</i>\" she asks, facing you with large, wondering eyes. You grin and nod, taking her hand and helping her stroke it further, only to be met with a slap on your wrist as she removes her grip. You look up, frowning as Lottie laughs at the situation. \"<i>I'm – it's nice to know that someone likes me.</i>\" She stutters, smiling timidly. \"<i>But, um, we're here to exercise, " + mf(player, "big guy", "babe") + ". We should do that.</i>\" You groan at the sudden cockblock, but you can't really argue. She takes your hand and leads you into the water, but not before you playfully grab a handful of her plush ass.\n\n", false);
 
@@ -1593,9 +1593,9 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         let tentacle: () => void = null;
         let thirtyMinute: () => void = null;
-        if (silly() && player.hasCock()) thirtyMinute = lottiesThirtyMinutePigGasm;
-        if (player.tentacleCocks() > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00306] == 2) tentacle = tentaDickLottieButtFuckbuttFuckButtFUCKBUTTFUCKBUTTFUCK;
-        let x: number = player.cockThatFits(40);
+        if (silly() && player.cocks.length > 0) thirtyMinute = lottiesThirtyMinutePigGasm;
+        if (player.cocks.tentacleCocks() > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00306] == 2) tentacle = tentaDickLottieButtFuckbuttFuckButtFUCKBUTTFUCKBUTTFUCK;
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("", true);
         // [If Encouragement 0 – 30]
@@ -1619,7 +1619,7 @@ export class Lottie extends TelAdreAbstractContent {
         // [If Encouragement 30 – 60]
         else if (lottieMorale() <= 60) {
             outputText("You ask Lottie if she's keen for a little 'extracurricular workout', earning a giggle and a tilt of the head from the pig-girl. \"<i>What do you mean, " + mf(player, "big guy", "babe") + "?</i>\" she asks. You sigh and stand up, revealing your hardening member", false);
-            if (player.cockTotal() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(". \"<i>I... oh.</i>\" Taking Lottie's hand, you quickly lead her out of the cafe and into the pool area, looking for an empty sauna to sneak into. Considering that the gym's pool is only used by a few semi-aquatic humanoids and the odd ", false);
             if (silly()) outputText("street ", false);
             outputText("shark, your search isn't that difficult. Hopping into the toasty room, you quickly undress, Lottie still standing by the doorway. \"<i>H-hey, y'know, I didn't actually agree on this or a-anything...</i>\" she stutters, nervously fiddling with her top. Without missing a beat, you walk towards her and plant a kiss on her full lips, tasting her sweetness as you probe her mouth with your eager tongue. The girl melts underneath your touch, passionately returning your erotic display while you take the chance to slip Lottie out of her top, reaching into her shorts to feel between her creamy hips. She moans as you slowly push two fingers inside her moist wetness, simultaneously pulling out your " + cockDescript(game.player, x) + " and pushing her back against the wall. Lottie begins to jerk you off slowly, massaging the length of your " + cockDescript(game.player, x) + " with one hand while the other takes care at gently caressing your tip. You start to thrust into her hands on reflex while you claim her mouth, the feel of her sugary tongue wrapped around yours sending you both into fits of needy lust. You use your hands to reach around and squeeze her chubby derriere, lightly slapping it whilst a stray hand heads towards her source of hot desire. You slick your hand against her wetness, Lottie moaning in your mouth while you work towards bringing her to an early climax. However, the sudden roughness of your hands against her mound only causes a quick jerk to your " + cockDescript(game.player, x) + ", her soft hands tightening against your shaft. You groan in response, removing yourself from the lips of her mouth and instead placing your own against her erect nipple, sucking forcefully. The pig-slut grabs your head and pushes you towards her heaving chest, relinquishing her grip on your member to hug you closer.\n\n", false);
@@ -1631,7 +1631,7 @@ export class Lottie extends TelAdreAbstractContent {
         // [If Encouragement 60 – 100]
         else {
             outputText("You take Lottie's hand in your own, causing a small blush from her in response. \"<i>" + player.short + "?</i>\" she begins, only to be cut off by a small peck to the lips. Lottie reddens, giggling slightly and gazing around for any onlookers. \"<i>What's brought this on, babe?</i>\" She beams, twirling and caressing your fingers among her own. You tell her that you thought she just needed a little more 'special exercise' to help get the blood flowing – making sure to emphasise \"<i>special exercise</i>\" with exaggerated air quotes. She playfully pushes away your idiotic gesture and takes you out of your seat, leading the way into the pool area and into one of the empty saunas. Locking the door behind you, she turns around to face you and your hardening crotch. \"<i>I think you're getting a little over excited, babe,</i>\" she purrs, her confidence getting the better of you as she takes a step closer, but you're the one in charge. Grabbing Lottie by the hips, you twirl her around to face the wall, grinding your hardening length", false);
-            if (player.cockTotal() > 1) outputText("s", false);
+            if (player.cocks.length > 1) outputText("s", false);
             outputText(" against her plump asscheeks. \"<i>W-woah! I... well, okay...</i>\" she moans, reaching back to stroke your " + cockDescript(game.player, x) + " through your clothing while you grab a handful of her rosy ass, slapping and squishing it against your palm. You continue to hump relentlessly against Lottie's tight shorts, occasionally reaching around to feel her hot mound, causing the odd squeal or moan to emanate from her pouting lips. Eventually deciding clothes are the only thing between Lottie's lewd figure and your own " + cockDescript(game.player, x) + ", you simultaneously remove your outfit while ripping off her sweaty top, causing her breasts to spill out into your eager, groping hand. Despite your sudden stripping, Lottie immediately gets back into position, placing your cock in between her pillow-like asscheeks and moaning while you flick and tease her swollen nipples, rocking back and forth against you.\n\n", false);
 
             outputText("Lottie whimpers in between short, hot breaths, \"<i>You're driving me crazy here, babe...</i>\" You give her chubby ass a hard slap in agreement. Lottie squeals in glee, jerking your " + cockDescript(game.player, x) + " as it pokes up through her ass. The sensation of your tip rubbing against her velvety skin drives you wild.\n\n", false);
@@ -1653,7 +1653,7 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText(images.showImage("lottie-fuck-her-doggie-style-repeat"));
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("A few minutes later and you've taken your whore to the washrooms. Mirrors line the sides of the walls to allow members to observe how far they've gone and how far they still need to go. It's entirely empty for the night, though you make sure to lock the door just in case. You turn around to see Lottie cowering in the corner. She knows what you want – and you swear on Mareth's giant tree titties you'll get it. With her naked body on full display, Lottie quietly moves down to the ground, positioning herself on all fours with her butt facing towards you. She looks behind herself to see your erect " + cockDescript(game.player, x) + " on full display, quickly squealing and looking away. You grin as you stroke yourself into fullness, walking over and placing yourself behind Lottie's full derriere. \"<i>" + player.short + "?</i>\" she gently sobs, \"<i>P-please don't do this.</i>\" With that, you grab her ample thighs and thrust forward, driving your " + cockDescript(game.player, x) + " straight into her tense wetness.\n\n", false);
 
@@ -1675,7 +1675,7 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText(images.showImage("lottie-fuck-her-in-public-repeat"));
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("A few minutes later and you've taken your whore outside of the gym and around to the back, where an equipment shed lies waiting. You make quick work of the lock, busting it open with a nearby metal pole. The two of you walk slowly inside, Lottie pausing behind you to gaze at the tools and exercise apparatuses littering the walls. Soon, you find what you're looking for. You've never been one to judge a person for their fetishes, but you make a mental note to thank the person who couldn't control theirs. A single leather collar attached to a leash dangles silently upon a hook attached to the walls of the shed. Grinning, you take it down, adjusting the length of the rope before handing it to Lottie. \"<i>W-what's this for, " + mf(player, "sir", "ma'am") + "?</i>\" she mumbles, but you pay no attention to her questioning as you loosen the collar and push it down on the girl's neck, tightening it before she can protest. \"<i>N-no! What are yo-!</i>\" Slap! You pelt your hand against her soft cheek, causing her to jerk on the rope and fall to the floor, miserable and in pain. Your slut slowly looks up at you with watering eyes, a hand to her face to quell the stinging sensation. \"<i>I... I understand.</i>\" She mutters quietly, picking up the leash and placing it in your hands, before standing on her knees and adopting a begging position in front of you. You grunt as the girl pulls out her small tongue, reluctantly licking at your groin to satisfy the beast behind your clothes. Just like a whore to assume that's what you're here for. You walk away from her attempts to fellate you, pulling on the leash and yanking your girl forward. She gets up and starts walking behind you and out into the sunlight - you want the world to know how well you've trained your fat little piggy.\n\n", false);
 
@@ -1700,17 +1700,17 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText(images.showImage("lottie-fuck-her-cowgirl-repeat"));
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("A few minutes later and you've both gone to the yoga rooms – you've already placed a mat down while you wait for Lottie to change. Your rosy lover bounces into the empty, dim lit room, her ample thighs squishing out of a pair of super tight shorts, while her breasts fill over a sports bra. You're immediately turned on by the incredibly erotic display, Lottie catching scent of your increasingly hardening member and giggling while she crushes her boobs together in front of you. \"<i>I'm guessing you like what you see?</i>\" she purrs, walking over to you and pushing you down upon the gym mat. Lottie makes quick work of your lower clothes, your " + cockDescript(game.player, x) + " bouncing out and at attention, which she grabs hastily as she begins to jerk you off. The pig-girl presses your member against her moist slit, grinding it back and forth while her moans fill the empty room. You grunt in pleasure, jerking your hips slightly to help the process along, to which she replies by bending down to press her overflowing tits against your chest. You take your hands and slap them upon her ass, groping and squeezing while she moans into you. The girl shudders in bliss as the grinding sends her into an early orgasm. \"<i>I... I've got something better for you, babe...</i>\" she pants as she pulls apart the opening in her shorts to reveal her blushing pussy. Keeping a firm grip on your " + cockDescript(game.player, x) + ", Lottie lifts herself up and slowly lowers her body upon it, your tip parting her folds and entering her hot insides. You grunt at the sensation of her inner walls squeezing tightly against your member, ", false);
-        if (player.cockArea(x) <= 40) outputText("her ample cheeks resting on your groin as you bottom out in her", false);
+        if (player.cocks.cockArea(x) <= 40) outputText("her ample cheeks resting on your groin as you bottom out in her", false);
         else outputText("though you only reach so far before you've filled her up entirely with your length", false);
         outputText(". You decide to take matters into your own hands as you grab her thick hips and drive upwards, Lottie squealing as you begin to pump in and out of her. The pig-girl's creamy breasts pop out of her bra and jump to your thrusts, her fat legs hugging either side while she bounces upon you. \"<i>God, I-I love you! Unh, I feel so hot, babe!</i>\" She yells as you pork your lover enthusiastically. The slaps of her full buttcheeks hitting your groin pervade the air, your grunts accompanied by Lottie's orgasmic moaning.\n\n", false);
 
         outputText("As you feel yourself about to explode, you keep a tight grip on her hips before thrusting forward, filling her insides with your hot spunk. Lottie trembles in orgasm, the feeling of your cum inside of her sending her over the edge.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your other cock", false);
-            if (player.cockTotal() == 2) outputText(" does", false);
+            if (player.cocks.length == 2) outputText(" does", false);
             else outputText("s do", false);
             outputText(" not disappoint, spurting your essence all over the pig-girl.", false);
         }
@@ -1730,7 +1730,7 @@ export class Lottie extends TelAdreAbstractContent {
     public lottieRepeatQuickie(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
 
         outputText("You follow Lottie out into the pool area, waiting as she walks into the dressing room to get changed. When she comes out however, you're surprised to find that she hasn't changed into anything – in fact, she's removed all her clothes entirely!\n\n", false);
@@ -1738,9 +1738,9 @@ export class Lottie extends TelAdreAbstractContent {
         outputText("The nude pig-girl stands in front of you, turning red at your hungry gaze. \"<i>Will you f-fuck my pussy, " + player.short + "?</i>\"\n\n", false);
 
         outputText("In moments flat you remove your clothes to jump the piggy, whipping out your " + cockDescript(game.player, x) + " and pushing it against Lottie's wet slit, the pig-girl lying on her back while her legs rest upon your shoulders. With a hearty thrust you drive yourself into her, eliciting a loud moan while you pork her insides with your meat. Her thick thighs slap against you as you bend over to take a lustful grab at her melons, sucking at her nipple and pinching the other, her sweet taste enveloping your mouth. Lottie buries you in her cleavage, yelping as you piledrive her tight pussy into submission – but you've got more in store. Flipping her over, Lottie lies face down with her soft butt jutting up in the air, your persistent fucking driving her wild. You continue gripping onto her tits as you pound her flesh, every thrust accompanied by her pleasured grunts. Back and forth you mount her until the familiar sensation in your loins signal your release. You increase your pace, pounding her pussy until you pull your head back and ejaculate inside her inner walls, slamming in harder every few seconds with each burst.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your other cock", false);
-            if (player.cockTotal() == 2) outputText(" twitches ", false);
+            if (player.cocks.length == 2) outputText(" twitches ", false);
             else outputText("s twitch ", false);
             outputText("in ecstasy, releasing all over her plump butt.", false);
         }
@@ -1760,7 +1760,7 @@ export class Lottie extends TelAdreAbstractContent {
         spriteSelect(36);
         outputText("", true);
         outputText(images.showImage("lottie-fuck-her-threesome-repeat"));
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You both walk to the yoga rooms, to find Elle stretching in the empty area. She spots the both of you, waving hello -  but you all have other, dirtier intentions in mind. Elle strips down, her perky tits bouncing loose. You chuckle devilishly as you undress in front of your naked and wanting harem. Both of the girls blush nervously as they stare at your " + cockDescript(game.player, x) + " – though the hunger in their eyes suggests anything but anxiety. You lay down on your back, gesturing for the girls to come over to you. Lottie enthusiastically trots towards you, lying down in front of your member and popping the tip into her full lips, circling around with her agile tongue. The spider-girl grows more enthusiastic, hopping behind to lie next to Lottie, placing her hot mouth at the base of your shaft and licking softly. She runs her tongue along your length while Lottie sucks hungrily on your head, slurping beads of pre-cum and stopping every so often to plant her lips on her spider-friend, swapping saliva along with the taste of your cock. As you let the girls work on your slick member, the spider-slut removes herself before straddling your face, her wet pussy inches from your hungry maw. Lottie begins to work around your length while Elle leans forward and plunges it into her mouth, sucking hard and fast. She releases your tip with a wet pop, moaning as you dig your tongue inside her hot cunt, tasting her juices and sucking gently on her hard clit. Lottie moves herself above your length, lowering herself slowly until you buck upwards, slamming your " + cockDescript(game.player, x) + " directly inside of her. Both of the girls squeal and moan from either ends, Elle's thick thighs on either side of your head while she tries to pull you in deeper inside. Lottie's pillowy breasts heave as she bounces on top of you, leaning over to the spider-girl as they share a deep kiss. Elle's extra hands knead Lottie's breasts, while her main two hold onto her own hips, grinding along your face while you sip at her sweet nectar. Your techniques seem to work, as the spider-girl shudders in orgasm, her sweaty thighs clamping down on you while she shakes in ecstasy. Lottie climaxes soon after, holding on to Elle's head as the girl sucks gently on her soft nipple flesh, her inner walls tightening against you. As you feel your own release coming, you order your sluts to take themselves off of you, to which they comply. In seconds you've grabbed the spider-girl and forced her to spread her legs wide open, plunging your " + cockDescript(game.player, x) + " inside and squirting your hot spunk. Lottie positions herself on top of the girl, placing their pussies against each other and grinding in lust. Once you finish filling your spider-slut, you drive into the pig-girl, ropes of your cum splattering her inner walls. You continue thrusting in and out of the both of them for several minutes, before finishing up by letting each girl suckle at your cock. \"<i>Satisfactory,</i>\" you mumble, redressing and heading out the door, making sure to grab a ", false);
         if (silly()) outputText("bacon ", false);
@@ -1775,10 +1775,10 @@ export class Lottie extends TelAdreAbstractContent {
     public lottieRepeatSUPERNEATORARES(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You both walk to the yoga rooms, to find Elle stretching in the empty area. She spots the both of you, waving hello -  but you all have other, dirtier intentions in mind. Elle strips down, her perky tits letting loose. You chuckle devilishly as you undress in front of your naked and wanting harem – but you only have eyes for one girl. You point at the spider-girl, informing the both of them that you only plan to fuck her. Lottie may have thought she could win you over with another slut, but you feel as if you should teach her a lesson about being too presumptuous about what you want. Elle walks towards you, her child-bearing hips swaying hypnotically as she ", false);
-        if (player.cockTotal() == 1) {
+        if (player.cocks.length == 1) {
             outputText("begins to caress your " + cockDescript(game.player, x) + " with two of her hands, while the other sets to work on massaging your ", false);
             if (player.balls > 0) outputText("balls", false);
             else if (player.hasVagina()) outputText("pussy", false);
@@ -1786,9 +1786,9 @@ export class Lottie extends TelAdreAbstractContent {
         }
         else outputText("uses all four of her hands to handle " + sMultiCockDesc(game.player) + ", jerking each one with ease", false);
         outputText(". Lottie stands next to the both of you, sobbing quietly as she fingers herself to the erotic display. You decide to tease Lottie further, reaching around the arachne-girl to enjoy her slick cunt with your digits, and pressing your own lips against hers while she jerks you off. You pick up the spider-girl, and with one swift movement impale her upon your " + cockDescript(game.player, x) + ", holding onto her womanly thighs and pumping her with your meat. Four of her arms hug you tightly as you let loose on the athletic woman, the spinnerets on her shoulders dangling idly, yet erect with throbbing need. Could they be...? You quickly erase the thought, continuing your barbaric display of lust as you probe the girl's mouth with your tongue, glancing every so often at Lottie to make sure she witnesses every single thrust. The pig-girl lies shamelessly spread-eagled on the floor, moaning and masturbating furiously to her best friend getting endlessly ploughed by her lover. Lottie clenches her sweaty thighs together and yelps, shuddering in orgasm. Defeated, she lays upon the ground, miserable. It gives you an idea. You hug Elle close to your body as you walk towards the pig-slut, positioning yourself on top of her while her best friend bounces upon your cock. Lottie opens her eyes to see the bronze beauty's taut ass slapping against your groin, your combined juices leaking out of her abused hole. \"<i>W-why...</i>\" the pig-girl chokes between sobs, but you only increase your pace as you feel your own release building up. You continue to pound effortlessly into your new whore, cum bubbling in your groin until you take one final step and thrust deep into her insides. Ropes of your cum splatter her inner walls, leaking out and painting the helpless pig-girl below you.", false);
-        if (player.cockTotal() > 1) {
+        if (player.cocks.length > 1) {
             outputText("  Your extra cock", false);
-            if (player.cockTotal() == 2) outputText(" throbs, spilling out its essence along the floor and onto Lottie.", false);
+            if (player.cocks.length == 2) outputText(" throbs, spilling out its essence along the floor and onto Lottie.", false);
             else outputText("s throb, spilling out their essence along the floor and onto Lottie.", false);
         }
         outputText("  Elle follows suit, groaning in pleasure as she reaches her own peak, her hole tightening around your length and trapping the rest of your spunk inside. The spinnerets upon her shoulder pulse in orgasm, spurting sticky globs of what appears to be thread up into the air and back down onto the pig, spunk pooling around her cleavage. You both relax, letting the spider-girl down off of you to collapse on the floor. You bend down, looking at Lottie before shoving your " + cockDescript(game.player, x) + " inside of her and letting one final spurt of your seed fill her up. \"<i>Satisfactory.</i>\" You mumble, redressing and heading out the door, making sure to grab a ", false);
@@ -1804,7 +1804,7 @@ export class Lottie extends TelAdreAbstractContent {
     public lottieRepeatBackwardsAssCowgirl(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You both walk into the yoga area, met with the smell of sweat and flowers pervading the room. Lottie gently asks for you to lie down on your back, to which you comply quite easily. You're comfortable, folding your arms behind your head to give you leverage as you watch your lover walk slowly to you. Lottie turns around, her thick thighs straddling you as she sits down on your groin with her back facing your direction, giving you  a perfect view of her curvy body and plump ass. Your " + cockDescript(game.player, x) + " nestles gently between her rosy cheeks, pulsing with lustful intent as the girl grabs her hips and begins to pleasure you through her ass. The silence of the room breaks at your fevered pants and grunts as Lottie's skillful assjob sends you through fits of ecstasy, every curve of her bottom jiggling against the heat of your member. Her pace picks up while she bounces upon you, squeezing and squashing her perfect ass until one final lift in the air is met with her plunging your length up into her hot interior. The feeling of your molten cock inside her immediately sends Lottie into fits of orgasmic bliss, the intense heat filling the pig-girl with pleasure. Her attempts to continue are thwarted by your " + cockDescript(game.player, x) + " scraping against her inner walls, her thick thighs clenched together while she slowly moves up and down upon you. Deciding to take things into your own hands, you thrust upwards, almost pushing the girl off with your strength and causing Lottie to squeal as you begin pounding her irresistible hole. Her lush buttcheeks jiggle with every movement you make, the rising and falling of her body moving in accordance to your own will. You pump in and out, keeping a steady rhythm inside the hot and bothered woman.\n\n", false);
 
@@ -1820,7 +1820,7 @@ export class Lottie extends TelAdreAbstractContent {
     public lottieRepeatFEMDOMFEMFDOM(): void {
         spriteSelect(36);
         outputText("", true);
-        let x: number = player.cockThatFits(40);
+        let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
         outputText("You both walk into the yoga area and are met with the smell of sweat and flowers pervading the room. You look around, unable to find your lover until –THUNK! A heavy weight is brought down upon your head, pulling you down to the ground and away from consciousness as everything fades to black.\n\n", false);
 
@@ -1884,7 +1884,7 @@ export class Lottie extends TelAdreAbstractContent {
         let zzzzzzz: number = -1;
         let zzzzzzzz: number = -1;
         let counter: number = 0;
-        while (counter < player.cockTotal()) {
+        while (counter < player.cocks.length) {
             if (player.cocks[counter].cockType == CockTypesEnum.TENTACLE) {
                 if (x == -1) x = counter;
                 else if (y == -1) y = counter;
@@ -1911,7 +1911,7 @@ export class Lottie extends TelAdreAbstractContent {
 
         // [if a single, lonely tentapenis]
         outputText("You firmly squeeze your ", false);
-        if (player.tentacleCocks() > 1) outputText("first ", false);
+        if (player.cocks.tentacleCocks() > 1) outputText("first ", false);
         outputText("writhing member as it stretches out, snaking towards Lottie's genitals and probing her moistened lips.  The tip of your vine-like length wriggles vertically along her eager hole, vibrating against her hardening clit and causing the sweating pig-whore to oink in pleasure.  She struggles to move her arms towards her aching need, desperate to relieve herself from the thick, stretching snake pushing against her slick cunt.  Without a word of warning, the hardened tentacle presses the side of its slick length firmly against her entrance, before whipping itself backwards and plunging into her heated hole.\n\n", false);
 
         outputText("Lottie groans from pleasure while your thickened, snake-like cock lies pulsing inside her, trapped within the tightening walls of her womb.  You force the bestial length to curl back outwards, before pumping back with incredible force - plowing your girl with fevered abandon as the insatiable vine pushes her face into the mattress soaked with her saliva.\n\n", false);
@@ -1919,7 +1919,7 @@ export class Lottie extends TelAdreAbstractContent {
         // [if extra cock] //this is to be added to the standard text
         if (y >= 0) {
             outputText("Seeing that you have extra junk left to be used, and she has some vacant holes, you quickly remedy this problematic situation; guiding your " + cockDescript(game.player, y) + " toward her moist butthole, you press the tip of your tree-like beast against her plush buttocks, literally stabbing her flesh with your penile flora.  The butt-slut doesn't seem to care: if anything, she squirms all the more, visibly aroused.  Her ass seems to stretch on its own as it braces itself for the imminent butt-devastation.  You welcome Lottie's efforts to comply to your anal needs and with a single thrust, you push ", false);
-            if (player.cockArea(y) <= 80) outputText("the entirety of your " + cockDescript(game.player, y), false);
+            if (player.cocks.cockArea(y) <= 80) outputText("the entirety of your " + cockDescript(game.player, y), false);
             else outputText("as many inches of your " + cockDescript(game.player, y), false);
             outputText(" as you can, tearing her insides as your mammoth makes room for itself.  The piggy girl squeals, the intense and rough friction proving too much for her sensitive anal receptors.  You push further, making sure her colon is completely stuffed with vine-like cock.  You rest there for a while, letting Lottie thrash wildly as she futilely tries to accommodate to the beast filling her interior.  It feels good, but you rapidly lose patience and start sliding your rubbery dong in and out of her butthole, smearing her anal entrance with your own pre-cum, making further thrusts easier and faster.  You butt-fuck the pig-girl until her anal walls feel numb from the raw violation, and you butt-fuck her a little more.\n\n", false);
 
@@ -2044,7 +2044,7 @@ export class Lottie extends TelAdreAbstractContent {
 
     public lottiesThirtyMinutePigGasm(): void {
         outputText("", true);
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("\"<i>Hey, babe!</i>\"  Lottie greets you in her usual, cheerful fashion.  Though her smile is booming with assumed confidence, the look in her eyes tells a different story.  She has sad, dependent eyes.  She looks up to you!  Then again, why shouldn't she?  You are her personal trainer after all.\n\n", false);
 
         outputText("Smiling back, you give her a warm greeting.  After the pleasantries are dealt with, you instruct her that it is time for some pre-workout stretches.  Ever eager to please you, Lottie begins.  She spreads her legs as far as she can and then leans down in an attempt to touch her toes.  As she bends over, you get a glimpse of her spacious ass.  Baby got back!  While she fights to touch her toes, her chubby ass wiggles and jiggles; it's the very definition of the term \"<i>more cushion for the pushin'.</i>\"  The more you watch, the more blood rushes to your " + cockDescript(game.player, x) + ".  You bite your lip as sweat beads on your skin; you NEED to tame that ass!\n\n", false);

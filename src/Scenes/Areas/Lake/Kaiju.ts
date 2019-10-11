@@ -146,7 +146,7 @@ export class Kaiju extends AbstractLakeContent {
         spriteSelect(103);
         outputText("You make no moves as the hand firmly but gently picks you up and brings you upwards towards her ample bosom.  She holds you tightly to a breast, nearly smothering you in tit flesh.  Her perky nipple seems massive up close as it practically bounces off your head when she begins grinding you up and down her gargantuan breast");
         // [only apply if player has dick]
-        if (player.hasCock()) outputText(", [eachCock] stiffening in your [armor] from the stimulation as your whole body is used in what seems more and more like a massive boob job");
+        if (player.cocks.length > 0) outputText(", [eachCock] stiffening in your [armor] from the stimulation as your whole body is used in what seems more and more like a massive boob job");
         outputText(".");
         if (player.hasVagina()) outputText("  Your [vagina] moistens from your body's growing arousal.");
 
@@ -158,9 +158,9 @@ export class Kaiju extends AbstractLakeContent {
         outputText(".  \"<i>Let's have some fun!</i>\"");
 
         // [if player has cock]
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nShe brings you up to her nipple, letting your throbbing cock");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             if (player.balls > 0) outputText(" and [balls]");
             outputText(" rest on her perky pink naughty bit.  She coos in delight as her hand slowly rubs your private parts along her firm nipple.  She begins to bounce ever so slightly, which at her size means a verifiable mountain of boob begins smacking heavily against your lower body.  \"<i>Oh yes,</i>\" she says, moaning in ecstasy, \"<i>fuck my breast!</i>\"  You don't really seem to have a choice in the matter as she picks up the pace, almost violently slamming you against her smooth green skin and stiff pink nipple.  Despite the relatively soft flesh of her mammary, it is still hundreds of pounds of tit flesh.  As if unsatisfied with just smothering you in boob she takes one green pinkie finger and begins to spank you in a manner she probably believes to be quite soft but lands quite hard on your [butt].  A small number of spankings begin to leave your ass red and tingling, each strike pushing your " + multiCockDescriptLight(game.player) + " further into soft breast and firm nipple.  \"<i>Please, cum on me!</i>\" she commands, and almost as if on cue your body obeys, jizz flying and coating her breast with as much sperm as your body can produce.");
             // [if PC has balls]
@@ -213,12 +213,12 @@ export class Kaiju extends AbstractLakeContent {
             outputText("  Your [fullChest] slide across the slick yet firm vaginal flesh of her surprisingly dexterous cunt, your [nipples] stiffening from the constant teasing massage.");
         }
         // [If PC has cock]
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("  [EachCock] ");
-            if (player.cockTotal() > 1) outputText("are");
+            if (player.cocks.length > 1) outputText("are");
             else outputText("is");
             outputText(" throbbing from the sexual stimulants of her aphrodisiac moisture and the pressing walls of her cunt flesh, pre forming at your tip");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(".");
         }
         outputText("\n\nJust when you begin to think you can see her womb her hand drags you back down her slippery passage, before pushing you back up again.  Her fingers push you up and down, in and out of her trembling pussy, her wet and skillful muscles helping to speed you along as she steadily picks up her pace.  The closer she seems to get to climax, the more her pussy walls tremble and push, the more her juices gather, and the faster she sends you on your dizzying roller coaster ride through her female sex.");
@@ -226,7 +226,7 @@ export class Kaiju extends AbstractLakeContent {
         if (player.sens < 50) {
             outputText("\n\nThe sensations of the giant's masterful cunt sends you into orgasm.");
             // [If PC has cock]
-            if (player.hasCock()) outputText("  [EachCock] spasms as you release your load onto her pussy walls, making them just a bit more slick with your contribution.");
+            if (player.cocks.length > 0) outputText("  [EachCock] spasms as you release your load onto her pussy walls, making them just a bit more slick with your contribution.");
             if (player.hasVagina()) outputText("  Your own pussy releases its own feminine juices, soaking your thighs even further in wetness.");
             // [Lust decreases, end sensitivity scene]
             player.orgasm();
@@ -248,7 +248,7 @@ export class Kaiju extends AbstractLakeContent {
                 outputText("  Undeterred, you continue grinding upon the spurting pole until you reach your own smaller, far less impressive orgasm, releasing your own ");
                 if (player.hasVagina()) outputText("feminine juices");
                 if (player.gender == 3) outputText(" and ");
-                if (player.hasCock()) outputText("thick cum");
+                if (player.cocks.length > 0) outputText("thick cum");
                 outputText(".  You look out upon the lake to see much of it has taken on a remarkably more milky white color.  Even for a giant that was a prodigious amount of cum she unleashed!");
                 // [lust decreases, end corrupted herm scene]
                 player.orgasm();
@@ -290,21 +290,21 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\n\n\"<i>Oh, so you like my boobies huh?</i>\" she says as a smile forms on her face.  \"<i>I always wanted tits as big as mountains, so now that I got them why not have fun with them?  Let’s ‘hug’!</i>\" she continues as she reaches down to pick you up.");
         outputText("\n\nYou make no moves as the hand firmly but gently picks you up and brings you upwards towards her ample bosom.  She holds you tightly to a breast, nearly smothering you in tit flesh.  Her perky nipple seems massive up close as it practically bounces off your head as she begins grinding you up and down her gargantuan breast");
         // [only apply if player has dick]
-        if (player.hasCock()) outputText(", [eachCock] stiffening in your [armor] from the stimulation as your whole body is used in what seems more and more like a massive boob job");
+        if (player.cocks.length > 0) outputText(", [eachCock] stiffening in your [armor] from the stimulation as your whole body is used in what seems more and more like a massive boob job");
         outputText(".");
         if (player.hasVagina()) outputText("  Your [vagina] moistens from your body's growing arousal.");
 
         outputText("\n\n\"<i>Oh my, it seems someone is enjoying my special hug,</i>\" the giant beauty says noticing your rising arousal.  The lusty giant removes the lower half of your [armor] revealing your ");
-        if (player.hasCock()) outputText(multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
         if (player.gender == 3) outputText(" and ");
         if (player.hasVagina()) outputText("[vagina]");
         if (player.gender == 0) outputText("bare groin");
         outputText(".  \"<i>Let's have some fun!</i>\"");
 
         // [if player has cock]
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nShe brings you up to her nipple, letting your throbbing erection");
-            if (player.cockTotal() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             if (player.balls > 0) outputText(" and [balls]");
             outputText(" rest on her perky pink naughty bit.  She coos in delight as her hand slowly rubs your private parts along her firm nipple.  She begins to bounce ever so slightly, which at her size means a verifiable mountain of boob begins smacking heavily against your lower body.  \"<i>Oh yes,</i>\" she says, moaning in ecstasy, \"<i>fuck my breast!</i>\"  You don't really seem to have a choice in the matter as she picks up the pace, almost violently slamming you against her smooth green skin and stiff pink nipple.  Despite the relatively soft flesh of her mammary, it is still hundreds of pounds of tit flesh.  As if unsatisfied with just smothering you in boob she takes one green pinkie finger and begins to spank you in a manner she probably believes to be quite soft but lands quite hard on your [butt].  A small number of spankings begin to leave your ass red and tingling, each strike pushing your " + multiCockDescriptLight(game.player) + " further into her soft breast and firm nipple.  \"<i>Please, cum on me!</i>\" she commands, and almost as if on cue your body obeys, jizz flying and coating her breast with as much sperm as your body can produce.");
             if (player.balls > 0) outputText("  Your [balls] begin to ache as you slowly empty your load onto green flesh.");
@@ -351,12 +351,12 @@ export class Kaiju extends AbstractLakeContent {
             outputText("\n\nYour [chest] slide across the slick yet firm vaginal flesh of her surprisingly dexterous cunt, your [nipples] stiffening from the constant teasing massage.");
         }
         // [If PC has cock]
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\nYour hard cock");
-            if (player.totalCocks() > 1) outputText("s are");
+            if (player.cocks.length > 1) outputText("s are");
             else outputText(" is");
             outputText(" throbbing from the sexual stimulants of her aphrodisiac moisture and the pressing walls of her cunt flesh, pre forming at your tip");
-            if (player.totalCocks() > 1) outputText("s");
+            if (player.cocks.length > 1) outputText("s");
             outputText(".");
         }
 
@@ -364,7 +364,7 @@ export class Kaiju extends AbstractLakeContent {
         // [If PC's sensitivity is 50 or over]
         if (player.sens >= 50) {
             outputText("\n\nThe sensations of the giant's masterful cunt sends you into orgasm.");
-            if (player.hasCock()) outputText("  [EachCock] spasms as you release your load onto her pussy walls, making them just a bit more slick with your contribution.");
+            if (player.cocks.length > 0) outputText("  [EachCock] spasms as you release your load onto her pussy walls, making them just a bit more slick with your contribution.");
             if (player.hasVagina()) outputText("  Your own pussy releases its own feminine juices, soaking your thighs even further in wetness.");
             // [Lust decreases, end sensitivity scene]
             player.orgasm();
@@ -390,7 +390,7 @@ export class Kaiju extends AbstractLakeContent {
                     outputText("  Undeterred, you continue grinding upon the spurting pole until you reach your own smaller, far less impressive orgasm, releasing your own ");
                     if (player.hasVagina()) outputText("feminine juices");
                     if (player.gender == 3) outputText(" and ");
-                    if (player.hasCock()) outputText("thick cum");
+                    if (player.cocks.length > 0) outputText("thick cum");
                     outputText(".");
                     player.orgasm();
                 }
@@ -423,11 +423,11 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\n\n\"<i>Gods above [name] but you look like a whore!  By Marae you’re turning me on!</i>\"");
 
         outputText("\n\nShe quickly has you positioned in front of her cock once more, this time feet first so she can keep your head free.  You can see your legs slowly slide down into her green cock, her cum-slit swallowing you up to your [hips].  You can feel the walls of her cock head push in all around you, squeezing your [butt]");
-        if (player.hasCock()) outputText(" and your " + multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(" and your " + multiCockDescriptLight(game.player));
         outputText(".  \"<i>Wow, you look absolutely gorgeous in my cock!</i>\" the giantess says with glee, perverse desire in her eyes as she shoves you in further up to your [chest], her trembling, squeezing cock seeming to give you an almost relaxing massage.  You can barely believe it, but this unnatural giantess has as much control over her urethral walls as the most whorish succubus has over her cunt!  Only your arms and head are free of her cock as her unusual member starts squeezing and rippling all along your body.  It seems her dick wants to give you a happy ending.");
 
         outputText("\n\nJudging by the lustful cooing sounds, the jolly green girl is nearing her limit, her free hand snaking down to gently stroke her giant cock.  \"<i>Going to cum I’m going to cum going to cum!</i>\" she shouts as she reaches her own orgasm before you.  Suddenly her dick widens at the base as her cum shot heads your way!  With your body lodged tightly in the way, the corrupted turtle sperm has nowhere to go but in, your [asshole] suddenly filling up as your bowels are flooded with cum!");
-        if (player.hasCock()) outputText("  So much jizz fills your ass it can’t help but to press in on your prostate, making [eachCock] stiffen with a seriously growing urge.");
+        if (player.cocks.length > 0) outputText("  So much jizz fills your ass it can’t help but to press in on your prostate, making [eachCock] stiffen with a seriously growing urge.");
         if (player.hasVagina()) outputText("  Your ass isn’t alone in the feeling of being flooded as your [vagina] and womb are packed with the hermaphrodite’s sperm.");
         outputText("  You manage to reach your own orgasmic climax right before the pressure finally pops you out of her cock like a cork from a wine bottle.  You black out somewhere above the lake.");
         outputText("\n\nYou wake up about an hour later, dressed and in your boat, already docked back at shore.  The green giant Venus must have caught you.");
@@ -581,7 +581,7 @@ export class Kaiju extends AbstractLakeContent {
         // [If player has balls of grapefruit size or larger]
         if (player.balls > 0 && player.ballSize >= 6) outputText("Your [balls] rest on the hermaphrodite's hand, bouncing loudly with each thunderous stroke from the speed and force she is employing to get herself off.  ");
         // [end balls] [If player has cock]
-        if (player.hasCock()) outputText("You can feel your [armor] getting tighter as [eachCock] begins to stiffen under your clothing from all the constant pressure of the cock squeezing down on your member.  ");
+        if (player.cocks.length > 0) outputText("You can feel your [armor] getting tighter as [eachCock] begins to stiffen under your clothing from all the constant pressure of the cock squeezing down on your member.  ");
         // [If player has vagina]
         if (player.hasVagina()) outputText("You begin to feel a wetness between your legs as your cunt begins leaking as your arousal spikes from the intense rubbing the herm's penis is giving your whole body.  ");
         // [If genderless]
@@ -593,7 +593,7 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\n\n\"<i>See?  You make such a good little cock toy,</i>\" the giantess coos as she begins to stroke faster and faster.  \"<i>You’re making my dick feel so good!</i>\"");
 
         outputText("\n\nCraning your neck you can see more pre bubbling forth from her cock tip, a strong smell of sex issuing forth.  Does her precum contain pheromones?  The thought is quickly shaken out of your head as you’re forced faster and tighter along her cock's massive length.  The warmth radiating out from her member forces the stiffness out of your muscles momentarily until they stiffen again, this time from the throes of orgasm");
-        if (player.hasCock()) outputText(" as you cum in your [armor]");
+        if (player.cocks.length > 0) outputText(" as you cum in your [armor]");
         outputText(".  You can feel the spasming of the giant's cock as you feel the pressure from her shaft increase as a load of cum rushes through it, erupting out of her tip like a volcano with globs of white lava.  \"<i>Well, that's a hell of a load,</i>\" she says, seeming quite proud of herself.  She sets you back down in your boat and roughly shoves it out further into the lake.  \"<i>Learn some manners you meanie!</i>\" she calls out.");
         // [Lust is decreased, Venus is removed from the game]
         player.orgasm();
@@ -611,7 +611,7 @@ export class Kaiju extends AbstractLakeContent {
 
         outputText("\n\nEnding your inspection and deciding to get down to work, you get down on your knees and begin rubbing your hands in gentle circles right at her cock's base.  Despite her enormous size Venus seems to be quite sensitive and it isn't long before she begins cooing in pleasure.  You start rubbing the green cock more roughly, kneading the dick flesh with your hands as you slowly start to move up the herm's shaft.  \"<i>Oh... I didn't know this would feel so good,</i>\" the giant moans, tugging on a tit with one hand as another snakes past you towards her wet gash, a finger probing into the depths of her cunt and leaving you to continue your work on her erect cock.  You massage the throbbing member with your hands, stroking and kneading it to the rhythm of the green girl’s moaning and cooing.  As you crawl further up her cock you get off your knees and lie on the twitching beast, freeing up your legs to better stroke her with your entire body.");
         // [If PC has cock]
-        if (player.hasCock()) outputText("  [EachCock] quickly hardens now as it is rubbed up against the giant's massive shaft.");
+        if (player.cocks.length > 0) outputText("  [EachCock] quickly hardens now as it is rubbed up against the giant's massive shaft.");
         if (player.hasVagina()) outputText("  The warm heat that radiates off of the titanic member seems to seep into your nether region, making your [vagina] leak out moisture onto the massive prick.");
         outputText("  She squirms under your touch, falling on her back and wriggling almost uncontrollably.  You're quite surprised at the power you hold over such a behemoth.");
 
@@ -664,11 +664,11 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\n\n\"<i>Sorry about that, it only just occurred to me that might pose a problem.  But I have an even better idea, and this way I can see your cute face!</i>\" she says, blushing in delight at the view of your precum dripping face.  \"<i>Gods above [name] but you look like a whore!  By Marae you’re turning me on!</i>\"");
 
         outputText("\n\nShe quickly has you positioned in front of her cock once more, this time feet first so she can keep your head free.  You can see your legs slowly slide down into her green cock, her cum-slit swallowing you up to your [hips].  You can feel the walls of her cock head push in all around you, squeezing your [butt]");
-        if (player.hasCock()) outputText(" and your " + multiCockDescriptLight(game.player));
+        if (player.cocks.length > 0) outputText(" and your " + multiCockDescriptLight(game.player));
         outputText(".  \"<i>Wow, you look absolutely gorgeous in my cock!</i>\" the giantess says with glee, perverse desire in her eyes as she shoves you in further up to your [chest], her trembling, squeezing cock seeming to give you an almost relaxing massage.  You can barely believe it, but this unnatural giantess has as much control over her urethral walls as the most whorish succubus has over her cunt!  Only your arms and head are free of her cock as her unusual member starts squeezing and rippling all along your body.  It seems her new dick wants to give you a happy ending.");
         outputText("\n\nJudging by the lustful cooing sounds, the jolly green girl is nearing her limit, her free hand snaking down to gently stroke her giant cock.  \"<i>Going to cum I’m going to cum going to cum!</i>\" she shouts as she reaches her own orgasm before you.  Suddenly her dick widens at the base as her second cum shot heads your way!  With your body lodged tightly in the way, the corrupted turtle sperm has nowhere to go but in, your [butt] suddenly filling up as your bowels are flooded with cum!");
         // [If PC has a cock]
-        if (player.hasCock()) outputText("  So much jizz fills your ass it can’t help but to press in on your prostate, making [eachCock] stiffen with a seriously growing urge.");
+        if (player.cocks.length > 0) outputText("  So much jizz fills your ass it can’t help but to press in on your prostate, making [eachCock] stiffen with a seriously growing urge.");
         // [If PC has a vagina]
         if (player.hasVagina()) outputText("  Your ass isn’t alone in the feeling of being flooded as your [vagina] and womb are packed with the hermaphrodite’s sperm.");
         outputText("\n\nYou manage to reach your own orgasmic climax right before the pressure finally pops you out of her cock like a cork from a wine bottle.  You black out somewhere above the lake.");
@@ -744,7 +744,7 @@ export class Kaiju extends AbstractLakeContent {
             outputText("\n\nAnd that’s when you feel the impossible.  Your asshole expands, gently giving ground to the leviathan at your backdoor as you feel your hips part and stretch away from each other.  Her magic pink cum has turned you into the most elastic fuck toy in the land!  Oh, this is just too wrong.");
             player.buttChange(500, true, true, false);
             outputText("\n\nSuddenly her entire cockhead enters your ass, stretching you out obscenely.  You orgasm instantly.  You might handle anal better than this under normal conditions, but then there’s nothing normal about taking something this huge.");
-            if (player.hasCock()) outputText("  You prostate is pressed down like a button, and there’s just no letting up!");
+            if (player.cocks.length > 0) outputText("  You prostate is pressed down like a button, and there’s just no letting up!");
             if (player.hasVagina()) outputText("  Even if your cunt is empty, there is no free space left there, your cunt walls forced together like glue.");
 
             outputText("\n\nDespite the impossible intruder stretching out every part of yourself into a cockhead shaped condom with waving arms and legs your skin doesn’t even feel tight yet.  Just how stretchy are you?  You begin to find out as the green girl’s hand goes down the full length of her cock, your bottom half going down every inch of the way as your middle stretches like a rubber band.  \"<i>Oh gods [name]!  You feel incredible!  You’re so tight!</i>\" Venus says, her lust fueled mind even forgetting about the spell she placed on you, all non-essential thoughts and memories pushed out by her fiery need to fuck.  \"<i>Fuck, fuck, fuck, fuckfuckfuckfuckfuck!</i>\" she continues, language becoming the next casualty as she pumps her dick faster and faster with her hand, using you as an all natural elastic onahole!  You’d be amazed at how painless the experience is if you could form coherent thoughts, but that big dick in you has driven out all rational thought, your mind more blissed and fucked out than even the sultry giant’s!");
@@ -761,13 +761,13 @@ export class Kaiju extends AbstractLakeContent {
         outputText("  Inches slide in at a time as it spasms inside of you, attempting to hit every sensitive spot your ass may have as it slowly tries to stretch you out.\n\n");
 
         // [If PC has a cock]
-        if (player.hasCock()) outputText("[EachCock] stiffens as the tree tendril pushes against your prostate, forcing a thick glob of pre up your shaft.  ");
+        if (player.cocks.length > 0) outputText("[EachCock] stiffens as the tree tendril pushes against your prostate, forcing a thick glob of pre up your shaft.  ");
         if (player.hasVagina()) outputText("As the first vine-cock works its way up your rectum a second has found its way up to your snatch!  The plant-like head rubs against your folds almost lovingly, tenderly, before the head starts to prod past your pink lips, butting up against your cunt as part of the shaft rears up to rub against your clit, sending shockwaves through your body, and the vine-cock chooses this moment to plunge into your [vagina].  Now you have two cocks ramming into your holes, pressing up against your walls as if to feel each other through you.  The plant dick in your pussy slides up and down through your folds, each thrust out going ever so slowly, only to ram back in at full speed, more inches sliding in every time until the head is bumping up against your cervix, leaky pre-seed slowly filling up your cunt to leak out between your thighs.  ");
         outputText("  The next sinuous cock threads itself between your legs, up your belly, past your chest to lightly poke at your lips.  You open your mouth to shout when the cock in your [asshole] hits a sensitive spot and the cock at your mouth slides right in, dripping seed into your mouth, your tongue suddenly awash in a salty, yet pleasantly sweet flavor.");
         if (player.biggestTitSize() >= 1) outputText("  Another tendril snakes its way up your abdomen to nestle between your [chest], slicking your mounds with pre as it slides between your tits, giving itself a titty-fuck with your titties!");
 
         outputText("\n\nMore tentacles squirm up, wrapping around your limbs bondage fashion, while others rub and knead against you in a lewd massage, all while the giant’s pussy flesh wrings around you, soaking you and massaging you and the tentacles as the green girl screams like a whore in the throes of the best sex of her life.");
-        if (player.hasCock()) outputText("  More tentacles arrive and begin to wrap around your " + multiCockDescriptLight(game.player) + ", slowly jacking you off to the tempo set by the cocks in your ass and mouth, wracking you with further pleasure.");
+        if (player.cocks.length > 0) outputText("  More tentacles arrive and begin to wrap around your " + multiCockDescriptLight(game.player) + ", slowly jacking you off to the tempo set by the cocks in your ass and mouth, wracking you with further pleasure.");
         outputText("  All this intense pleasure is too much for you and you reach one of the hardest, messiest orgasms of your life, and by the way the green giant’s pussy clenches and soaks you even further in her fluids you know she has reached yet another climax as well, and yet she doesn’t stop thrusting that tree in and out of her abused turtle snatch, taking you for a further ride as you get pulled along with the corrupt foliage, attached by the tireless vines.");
 
         outputText("\n\nIt is many hours before the pressure and pleasure becomes too much for even the slutty giant, but rather than end it she merely ratchets her sexual perversion down a peg, taking the tree out of her soaked cunt for now, but still diddling herself off to smaller orgasms with you.  You’re helpless as she uses you as a living dildo, pushing you as far into her dripping cunt as you will go, smacking you repeatedly into her G-spot and bringing herself to orgasm after orgasm.  Her massaging walls and inquisitive fingers bring you to orgasm almost as much.  Even in the haze of her lust, she still cares enough to get you off.  But that doesn’t seem to stop her from pumping you into her pussy for hours, only taking you out to feed you more of her milk to keep you going.  Finally, her arms grow tired, and even her impossible libido wanes. Hopefully you’ll be able to leave her and head back to camp soon... or so you thought.\n\nWhether through magic or gods only know how, she seems to have formed a boulder into a smooth, wide, bulbous yet short (relatively speaking) vaginal plug, which she uses to plug up her hole with you still trapped inside.  It appears you’re to now call her vagina home, a live in sex toy only taken out to be fed milk and pleasure her in various ways.");

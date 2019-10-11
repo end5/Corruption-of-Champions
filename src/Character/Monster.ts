@@ -147,7 +147,7 @@ export class Monster extends Creature {
 
         //// 2. Gender, genitals, and pronouns (also see "note for 2." below)
         //// 2.1. Male
-        /// *REQUIRED*/ this.createCock(length,thickness,type); // defaults 5.5,1,human; could be called multiple times
+        /// *REQUIRED*/ this.cocks.createCock(length,thickness,type); // defaults 5.5,1,human; could be called multiple times
         /// *OPTIONAL*/ //this.balls = numberOfBalls; // default 0
         /// *OPTIONAL*/ //this.ballSize = ; // default 0. should be set if balls>0
         /// *OPTIONAL*/ //this.cumMultiplier = ; // default 1
@@ -373,7 +373,7 @@ export class Monster extends Creature {
                 this.pronoun3 = "his";
             }
         }
-        const result: boolean = super.createCock(clength, cthickness, ctype);
+        const result: boolean = this.cocks.createCock(clength, cthickness, ctype);
         this.genderCheck();
         return result;
     }
@@ -397,7 +397,6 @@ export class Monster extends Creature {
     }
 
     protected initGenderless(): void {
-        this.cocks = [];
         this.vaginas = [];
         initedGenitals = true;
         if (plural) {
@@ -835,7 +834,7 @@ export class Monster extends Creature {
         const Hehas: string = Pronoun1 + " " + have + " ";
         result = "You are inspecting " + a + short + " (imageName='" + imageName + "', class='" + getQualifiedClassName(this) + "'). You are fighting " + pronoun2 + ".\n\n";
         result += Heis + (Appearance.DEFAULT_GENDER_NAMES[gender] || ("gender#" + gender)) +
-            " with " + Appearance.numberOfThings(cocks.length, "cock") +
+            " with " + Appearance.numberOfThings(this.cocks.length, "cock") +
             ", " + Appearance.numberOfThings(vaginas.length, "vagina") +
             " and " + Appearance.numberOfThings(breastRows.length, "breast row") + ".\n\n";
         // APPEARANCE
@@ -867,8 +866,8 @@ export class Monster extends Creature {
         else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae] || ("antennaeType#" + antennae)) + " antennae.\n\n";
 
         // GENITALS AND BREASTS
-        for (const i = 0; i < cocks.length; i++) {
-            const cock: Cock = (cocks[i] as Cock);
+        for (const i = 0; i < this.cocks.length; i++) {
+            const cock = this.cocks[i];
             result += Pronoun3 + (i > 0 ? (" #" + (i + 1)) : "") + " " + cock.cockType.toString().toLowerCase() + " cock is ";
             result += Appearance.inchesAndFeetsAndInches(cock.cockLength) + " long and " + cock.cockThickness + "\" thick";
             if (cock.isPierced) result += ", pierced with " + cock.pLongDesc;
@@ -876,8 +875,8 @@ export class Monster extends Creature {
             result += ".\n";
         }
         if (balls > 0 || ballSize > 0) result += Hehas + Appearance.numberOfThings(balls, "ball") + " of size " + ballSize + ".\n";
-        if (cumMultiplier != 1 || cocks.length > 0) result += Pronoun1 + " " + have + " cum multiplier " + cumMultiplier + ". ";
-        if (hoursSinceCum > 0 || cocks.length > 0) result += "It were " + hoursSinceCum + " hours since " + pronoun1 + " came.\n\n";
+        if (cumMultiplier != 1 || this.cocks.length > 0) result += Pronoun1 + " " + have + " cum multiplier " + cumMultiplier + ". ";
+        if (hoursSinceCum > 0 || this.cocks.length > 0) result += "It were " + hoursSinceCum + " hours since " + pronoun1 + " came.\n\n";
         for (i = 0; i < vaginas.length; i++) {
             const vagina: VaginaClass = (vaginas[i] as VaginaClass);
             result += Pronoun3 + (i > 0 ? (" #" + (i + 1)) : "") + " " + (Appearance.DEFAULT_VAGINA_TYPE_NAMES[vagina.type] || ("vaginaType#" + vagina.type)) + (vagina.virgin ? " " : " non-") + "virgin vagina is ";

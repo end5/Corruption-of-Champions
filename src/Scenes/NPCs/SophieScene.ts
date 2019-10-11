@@ -80,7 +80,7 @@ export class SophieScene implements TimeAwareInterface {
             }
             else { // She's in camp and not pregnant
                 if (flags[kFLAGS.SOPHIE_HEAT_COUNTER] == 0) { // Tick over into heat if appropriate
-                    if (player.hasCock()) {
+                    if (player.cocks.length > 0) {
                         if (sophieBimbo.bimboSophie()) sophieBimbo.sophieGoesIntoSeason();
                         else sophieFollowerScene.sophieFollowerGoesIntoSeas();
                         flags[kFLAGS.SOPHIE_HEAT_COUNTER] = 720;
@@ -106,18 +106,18 @@ export class SophieScene implements TimeAwareInterface {
 
     public timeChangeLarge(): boolean {
         if (checkedSophie++ == 0 && game.time.hours == 6) {
-            if (flags[kFLAGS.NO_PURE_SOPHIE_RECRUITMENT] == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS] >= 5 && !pregnancy.isPregnant && player.hasCock() && !sophieAtCamp()) {
+            if (flags[kFLAGS.NO_PURE_SOPHIE_RECRUITMENT] == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS] >= 5 && !pregnancy.isPregnant && player.cocks.length > 0 && !sophieAtCamp()) {
                 sophieFollowerScene.sophieFollowerIntro();
                 return true;
             }
-            if (flags[kFLAGS.SLEEP_WITH] == "Sophie" && player.hasCock()) {
-                if (sophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && rand(2) == 0 && player.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) {
+            if (flags[kFLAGS.SLEEP_WITH] == "Sophie" && player.cocks.length > 0) {
+                if (sophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && rand(2) == 0 && player.cocks.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) {
                     outputText("\n<b><u>Something odd happens that morning...</u></b>");
                     if (pregnancy.event >= 2) sophieBimbo.fuckYoPregnantHarpyWaifu(true);
                     else sophieBimbo.sophieFenCraftedSex(true);
                     return true;
                 }
-                if (sophieFollowerScene.sophieFollower() && player.lust >= 50 && player.smallestCockArea() <= 5 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+                if (sophieFollowerScene.sophieFollower() && player.lust >= 50 && player.cocks.smallestCockArea() <= 5 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
                     sophieFollowerScene.sophieSmallDongTeases();
                     return true;
                 }
@@ -263,7 +263,7 @@ export class SophieScene implements TimeAwareInterface {
             return;
         }
         // (Has dick)
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             // (Random Rape)
             if (rand(2) == 0 && !pregnancy.isPregnant) {
                 outputText("During your exploration of the mountains you wind up passing close to the harpy nests again, and Sophie flaps her way over to you.  Her breasts jiggle pleasantly and she hooks her talons through the belt you use to hold your pouches before you can stop her.  The force of her flapping wings pulls you off the mountain, suspending you hundreds of feet above the ground as she flies you back towards her nest.  ", false);
@@ -331,7 +331,7 @@ export class SophieScene implements TimeAwareInterface {
     }
     private consensualSexSelector(): void {
         sophieBimbo.sophieSprite();
-        if (player.cockThatFits(232) < 0) consensualSophieSexNoFit();
+        if (player.cocks.cockThatFits(232) < 0) consensualSophieSexNoFit();
         else consensualHotSophieDickings();
     }
 
@@ -364,7 +364,7 @@ export class SophieScene implements TimeAwareInterface {
         outputText("Sophie throws her head back and laughs. \"<i>Don't worry about any demons here.  Any time a demon is dumb enough to wander too close to our nests, we give him a 'foot-job' he won't forget.</i>\"  To illustrate, the busty harpy lifts her leg and proudly displays her razor-sharp talons.", false);
         // Check her out if you're in the mood or dirty-minded
         // Requires wang
-        if ((player.cor > 60 || player.lust > 60 || player.lib > 70) && player.hasCock()) {
+        if ((player.cor > 60 || player.lust > 60 || player.lib > 70) && player.cocks.length > 0) {
             outputText("  In spite of the danger of the situation, your gaze drops between her legs to her completely exposed sex.  You nod in agreement with her, buying a few extra seconds to inspect her vagina.  Tinged pink, it's much larger than a human's; perhaps due to the size of the eggs she lays?\n\n", false);
         }
         // Otherwise leave.
@@ -398,7 +398,7 @@ export class SophieScene implements TimeAwareInterface {
         sophieBimbo.sophieSprite();
         outputText("", true);
         // (FEMALE\Unsexed)(Genderless –  forces Leave.)
-        if (player.totalCocks() == 0) {
+        if (player.cocks.length == 0) {
             outputText("Sophie looks you up and down", false);
             if (player.hasVagina()) outputText(" and insists, \"<i>Well, keep looking; if I wanted a girl I'd be busy with one of my nieces right now.</i>\"", false);
             outputText(".  She turns around and fluffs her tail-feathers at you in what is clearly a dismissal.", false);
@@ -441,7 +441,7 @@ export class SophieScene implements TimeAwareInterface {
         // (Incongruity here: she disdains the young ones for wanting to fuck instead of talk and then jumps right to wanting to fuck. Not that cougars aren't dumb as hell. - Z)
 
         outputText("The older harpy reclines in her nest and dips a hand between her muscled thighs while she talks, \"<i>", false);
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             outputText("Would you stay and help a lonely matron with her needs?</i>\"\n\n", false);
             // [To consensual sex or sophie sadface.
             doYesNo(consensualSexSelector, shootDownSophieSex);
@@ -545,9 +545,9 @@ export class SophieScene implements TimeAwareInterface {
             else {
                 outputText("Mmmm, you sure know how to get a woman's blood pumping before you give her what she wants, don't you?", false);
                 // (Dick:
-                if (player.totalCocks() > 0) outputText("  Maybe you'll let me try your 'other' milk next time?", false);
+                if (player.cocks.length > 0) outputText("  Maybe you'll let me try your 'other' milk next time?", false);
                 outputText("</i>\"", false);
-                if (player.totalCocks() > 0) {
+                if (player.cocks.length > 0) {
                     outputText("  The harpy laughs and caresses your backside tenderly as she whispers, \"<i>It's been a long time, you know...</i>\"\n\n", false);
                     dynStats("lus", 25);
                 }
@@ -558,7 +558,7 @@ export class SophieScene implements TimeAwareInterface {
         // (Volunteered:
         else {
             outputText("Delicious!  It's been so long since I've had someone to bring me such fresh milk.", false);
-            if (player.totalCocks() > 0) {
+            if (player.cocks.length > 0) {
                 outputText("  Maybe you'll let me try your 'other' milk next time?</i>\"  The harpie laughs and caresses your backside tenderly as she whispers, \"<i>It's been a long time, you know...</i>\"\n\n", false);
                 // (+25 lust)
                 dynStats("lus", 25);
@@ -590,7 +590,7 @@ export class SophieScene implements TimeAwareInterface {
         sophieBimbo.sophieSprite();
         outputText("", true);
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS]++;
-        const x: number = player.cockThatFits(232);
+        const x: number = player.cocks.cockThatFits(232);
         if (x < 0) {
             CoC_Settings.error("");
             outputText("ERROR: No cock found that fits, yet 'fits' scene was called.", true);
@@ -618,19 +618,19 @@ export class SophieScene implements TimeAwareInterface {
             else outputText("her breasts pressing against your stomach", false);
         }
         outputText(", ", false);
-        if (player.totalCocks() > 1) outputText("each of ", false);
+        if (player.cocks.length > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " begins to poke and prod against her crotch and slightly parted slit.  ", false);
-        if (player.cockArea(x) <= 6) {
+        if (player.cocks.cockArea(x) <= 6) {
             outputText("She frowns and asks, \"<i>Is that all there is?  You're so small you may as well get rid of it and become a girl!  You'd be a cute little girl, you know that?</i>\"", false);
         }
-        else if (player.cockArea(x) < 150) {
+        else if (player.cocks.cockArea(x) < 150) {
             outputText("She grins and teases, \"<i>What are you waiting for?  You aren't intimidated by how big my pussy is, are you?  Trust me, my muscles will make it plenty tight for you.  What you should be concerned about is how you're taking advantage of a needy older woman, you pig.</i>\"", false);
         }
         else {
             outputText("Her eyes widen in delight, but she teases you anyway, \"<i>Oh by Marae, you're quite the big boy aren't you?  Are you sure I can take that?  Forcing such a huge, delicious member on a poor old woman, you should be ashamed!</i>\"", false);
         }
-        if (player.cockTotal() > 1 && player.biggestCockArea() > 232) {
-            outputText("  Her hands push away the bloated flesh of your " + cockDescript(player, player.biggestCockIndex()) + " in an effort to better get at your " + cockDescript(game.player, x) + ".  She grunts, \"<i>Tempting, but too much of a good thing.</i>\"", false);
+        if (player.cocks.length > 1 && player.cocks.biggestCockArea() > 232) {
+            outputText("  Her hands push away the bloated flesh of your " + cockDescript(player, player.cocks.biggestCockIndex()) + " in an effort to better get at your " + cockDescript(game.player, x) + ".  She grunts, \"<i>Tempting, but too much of a good thing.</i>\"", false);
         }
         outputText("\n\n", false);
 
@@ -643,8 +643,8 @@ export class SophieScene implements TimeAwareInterface {
         outputText(".  I've been milking cute " + mf(player, "studs", "herms") + " like you since the demons took over, and you're my latest conquest.  That's okay with you, right?  You don't mind me relieving all your pressure for my needy eggs do you?  Of course you don't.</i>\"  Her words carry more weight than they ought to, chasing away any reluctance or worries from your mind and replacing them with acceptance.  Sophie really knows what she's doing.  She's seduced you to the point of penetration.  Being a conquest isn't that bad; you'll get to fuck this confident older woman until you're squirting all over her eggs.\n\n", false);
 
         outputText("Sophie coos, \"<i>Go on " + mf(player, "boy", "girl") + ", give your " + cockDescript(game.player, x) + " a taste.</i>\"  You oblige her request by rocking your hips forward, ", false);
-        if (player.cockArea(x) <= 6) outputText("plunging your " + cockDescript(game.player, x) + " inside the oversized vagina.", false);
-        else if (player.cockArea(x) <= 150) outputText("burying your " + cockDescript(game.player, x) + " deep into her massive gash.", false);
+        if (player.cocks.cockArea(x) <= 6) outputText("plunging your " + cockDescript(game.player, x) + " inside the oversized vagina.", false);
+        else if (player.cocks.cockArea(x) <= 150) outputText("burying your " + cockDescript(game.player, x) + " deep into her massive gash.", false);
         else outputText("slowly working your " + cockDescript(game.player, x) + " into her massive gash, finding it barely big enough for you.", false);
         outputText("  Her warm, feathery thighs close around behind you, locking their talons together to hold your " + cockDescript(game.player, x) + " in the squelching wet walls of her pussy.  The act of her 'imprisoning' you causes the slippery walls to squeeze tightly about your girth, just as she promised.  Your hips rock with an ingrown need that's thwarted by Sophie's muscular thighs.  There is no thrusting, no repeated penetration.  There is only the slow rhythm of her muscles as they squeeze and massage your " + cockDescript(game.player, x) + ".\n\n", false);
 
@@ -697,7 +697,7 @@ export class SophieScene implements TimeAwareInterface {
         else if (player.cumQ() < 4000) outputText("into the soft, cum-slicked surface of her nest", false);
         else outputText("into the massive cum-puddle you've turned her nest into", false);
         outputText(".  You struggle up to your feet and marvel at how rigid ", false);
-        if (player.cockTotal() > 1) outputText("each of ", false);
+        if (player.cocks.length > 1) outputText("each of ", false);
         outputText(" your " + multiCockDescriptLight(game.player) + " remains.  Sophie giggles, \"<i>", false);
         if (flags[kFLAGS.FUCKED_SOPHIE_COUNTER] == 0) {
             outputText("Sorry cutey, the lip gloss is going to keep you nice and hard.  It's meant to help your ", false);
@@ -723,11 +723,11 @@ export class SophieScene implements TimeAwareInterface {
         sophieBimbo.sophieSprite();
         outputText("", true);
         outputText("You sprawl out in Sophie's nest and allow her to wrap her wings about you protectively.  Her hands stay busy the entire time, alternatively masturbating ", false);
-        if (player.cockTotal() > 1) outputText("each of ", false);
+        if (player.cocks.length > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " or her own cum-slicked twat.  The harpy gets herself off numerous times, clearly enjoying your discomfort and the fullness of her vagina.  After a few hours of this pleasure-hell you can feel your body dredging up another load, and Sophie whispers in your ear, \"<i>Relax and squirt it all out for me.</i>\"\n\n", false);
 
         outputText("Her feathers tickle ", false);
-        if (player.cockTotal() > 1) outputText("all of ", false);
+        if (player.cocks.length > 1) outputText("all of ", false);
         outputText("your " + multiCockDescriptLight(game.player), false);
         if (player.balls > 0) outputText(" and balls", false);
         outputText(" while her hands stroke and squeeze, and in no time you're coming for the confident harpy again.  Ropes of white jism ", false);
@@ -762,7 +762,7 @@ export class SophieScene implements TimeAwareInterface {
     // [Consentual Sex No Fito]
     private consensualSophieSexNoFit(): void {
         sophieBimbo.sophieSprite();
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS]++;
         outputText("", true);
         outputText("With her spread thighs beckoning you so invitingly, there's no way you could resist.  You tear off your " + player.armorName + " and jump into her nest with her, hardening delightfully from your close proximity to the well-endowed woman.  Sophie places a hand ", false);
@@ -827,7 +827,7 @@ export class SophieScene implements TimeAwareInterface {
         outputText("</i>\"\n\n", false);
 
         outputText("You struggle up to your feet and marvel at how rigid ", false);
-        if (player.cockTotal() > 1) outputText("each of ", false);
+        if (player.cocks.length > 1) outputText("each of ", false);
         outputText("your " + multiCockDescriptLight(game.player) + " remains.  Sophie giggles, \"<i>", false);
         if (flags[kFLAGS.FUCKED_SOPHIE_COUNTER] == 0) {
             outputText("Sorry cutey, the lip gloss is going to keep you nice and hard.  It's meant to help your ", false);
@@ -872,7 +872,7 @@ export class SophieScene implements TimeAwareInterface {
         if (player.perks.findByType(PerkLib.LuststickAdapted) >= 0) return;
         // Increment luststick resistance
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00285] += Math.floor(hours / 2);
-        if (!player.hasCock()) return;
+        if (!player.cocks.length > 0) return;
         // Max of 20.
         if (hours > 20) hours = 20;
         // Add duration if under effects
@@ -905,10 +905,10 @@ export class SophieScene implements TimeAwareInterface {
             let clitFuck: () => void = null;
             let cuntFuck: () => void = null;
             let bimbo: () => void = null;
-            if (player.lust >= 33 && player.totalCocks() > 0) {
+            if (player.lust >= 33 && player.cocks.length > 0) {
                 // Set dick rape to correct scene.
                 // Too big
-                if (player.cockThatFits(232) == -1) { dickRape = maleVictorySophieRapeHUGE; }
+                if (player.cocks.cockThatFits(232) == -1) { dickRape = maleVictorySophieRapeHUGE; }
                 // Fits
                 else dickRape = maleVictorySophieRape;
             }
@@ -930,9 +930,9 @@ export class SophieScene implements TimeAwareInterface {
     public sophieWonCombat(): void {
         sophieBimbo.sophieSprite();
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS] = 0;
-        if (player.hasCock()) {
-            if (player.cockThatFits(232) < 0) tooBigForOwnGoodSophieLossRape();
-            else if (player.biggestCockArea() <= 5) tinyDickSupremeSophieLoss();
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(232) < 0) tooBigForOwnGoodSophieLossRape();
+            else if (player.cocks.biggestCockArea() <= 5) tinyDickSupremeSophieLoss();
             else normalLossRapuuuuSophie();
         }
         else {
@@ -943,7 +943,7 @@ export class SophieScene implements TimeAwareInterface {
     // Male 'Normal' – throw on back and grab ankles, force over head and fuck
     private maleVictorySophieRape(): void {
         sophieBimbo.sophieSprite();
-        const x: number = player.cockThatFits(232);
+        const x: number = player.cocks.cockThatFits(232);
         outputText("", true);
         outputText("Sophie is ", false);
         if (monster.HP < 1) outputText("too beaten to resist, and lies on the ground in a semi-conscious heap.", false);
@@ -978,7 +978,7 @@ export class SophieScene implements TimeAwareInterface {
     // Male 'Doesn't Fit'
     private maleVictorySophieRapeHUGE(): void {
         sophieBimbo.sophieSprite();
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
 
         outputText("Not satisfied with a simple victory, you undress and expose your ", false);
@@ -1064,7 +1064,7 @@ export class SophieScene implements TimeAwareInterface {
         outputText("\"<i>Alright, okay!  It felt great... please don't stop,</i>\" begs Sophie.  She cups her large breasts and teases her nipples, trying to entice you into resuming the motions.  Her submission to your pleasure is all you needed to hear.   You return to the intense scissoring, and pick up the pace until you're both trembling and soaked with sweat from the effort.  One of the circling harpies calls out, \"<i>Sluuuuuuuts!</i>\" but you give the bird the finger coupled with a seductive look.  She wheels away in disgust and is soon forgotten.\n\n", false);
 
         outputText("Girl-cum starts to run down the crack of your " + buttDescription(player) + " and a moment later you're cumming.", false);
-        if (player.cockTotal() > 0) {
+        if (player.cocks.length > 0) {
             outputText("  " + SMultiCockDesc(game.player) + " explodes, splattering her with seed.  The bird-woman looks at the mess like so much wasted potential, but it just makes you grin harder.", false);
             if (player.cumQ() < 400) { }
             else if (player.cumQ() < 1000) outputText("  Jism rains everywhere until she's thoroughly glazed with spooge.", false);
@@ -1112,7 +1112,7 @@ export class SophieScene implements TimeAwareInterface {
         outputText("The motherly harpy groans out more commands, \"<i>That's it; relax and let me take over, little girl. We're going to make each other feel very good.</i>\"  Though she isn't in any position to command you, you can feel your body accepting her words.  It occurs to you that she's using some kind of compulsion to help her, but you're too relaxed and sexually excited to give a damn.  You lie your head down and lightly fondle her nipples while you clit is savagely milked by Sophie's pussy as if it were a cow's teat.  Even with her command to relax, your " + hipDescription(player) + " still shiver and buck with excitement, and you know orgasm is close.\n\n", false);
 
         outputText("A quick uptake in the rhythm of Sophie's squeezes brings you to climax, and your relaxed body is wracked by tiny quivers of movement while your clit balloons with blood inside her.  It feels so good that your eyes roll back and you struggle to hold on.  ", false);
-        if (player.totalCocks() > 0) {
+        if (player.cocks.length > 0) {
             outputText("Whiteness erupts from " + sMultiCockDesc(game.player) + " as the orgasm hits your groin.  ", false);
             if (player.cumQ() < 50) outputText("It leaves a small puddle of white submission on Sophie's back.  ", false);
             else if (player.cumQ() < 250) outputText("It leaves a thick puddle of seed dripping from Sophie's back.  ", false);
@@ -1191,7 +1191,7 @@ export class SophieScene implements TimeAwareInterface {
     private normalLossRapuuuuSophie(): void {
         sophieBimbo.sophieSprite();
         outputText("", true);
-        const x: number = player.cockThatFits(232);
+        const x: number = player.cocks.cockThatFits(232);
 
         outputText("Sophie watches your lust-wracked body with an expression of pity.  The harpy woman saunters over and muses, \"<i>Well that was a waste.  You aren't exactly hard to get in the mood, you know?  Why don't you just come fuck me next time and skip all the foreplay?</i>\"  The motherly bird-woman takes a moment to preen her feathery hair while she watches your hands pump away at your " + cockDescript(game.player, x) + " ", false);
         if (player.hasVagina()) outputText("and " + vaginaDescript(player, 0) + " ", false);
@@ -1237,7 +1237,7 @@ export class SophieScene implements TimeAwareInterface {
     private tooBigForOwnGoodSophieLossRape(): void {
         sophieBimbo.sophieSprite();
         outputText("", true);
-        const x: number = player.biggestCockIndex();
+        const x: number = player.cocks.biggestCockIndex();
 
         outputText("Sophie reaches forwards with a clawed foot to pull down your armor, but your " + cockDescript(game.player, x) + " bursts free on its own.  She recoils in shock, nearly falling onto her feathery ass.   Sophie screeches, \"<i>How did you even hide that monster!?  I CAN'T TAKE THAT!</i>\"   She lashes and batters your head with her wings and kicks.  A particularly powerful hit lands just above your ears and things go black...\n\n", false);
 

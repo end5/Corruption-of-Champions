@@ -79,7 +79,7 @@ export class MinotaurMob extends Monster {
             else {
                 outputText("  You can understand firsthand just how potent and addictive that fluid is...", false);
             }
-            if (player.hasCock()) outputText("  " + SMultiCockDesc(game.player) + " twitches and dribbles its own pre-seed, but it doesn't smell anywhere near as good!", false);
+            if (player.cocks.length > 0) outputText("  " + SMultiCockDesc(game.player) + " twitches and dribbles its own pre-seed, but it doesn't smell anywhere near as good!", false);
             outputText("  Shuddering and moaning, your body is wracked by ever-increasing arousal.  Fantasies of crawling under the beast-men's soaked legs and lapping at their drooling erections inundate your mind, your body shivering and shaking in response.  ", false);
             if (player.lust <= 99) outputText("You pull back from the brink with a start.  It'll take more than a little drugged pre-cum to bring you down!", false);
             else outputText("You sigh and let your tongue loll out.  It wouldn't so bad, would it?", false);
@@ -146,7 +146,7 @@ export class MinotaurMob extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createCock(rand(13) + 24, 2 + rand(3), CockTypesEnum.HORSE);
+        this.cocks.createCock(rand(13) + 24, 2 + rand(3), CockTypesEnum.HORSE);
         this.balls = 2;
         this.ballSize = 2 + rand(13);
         this.cumMultiplier = 1.5;

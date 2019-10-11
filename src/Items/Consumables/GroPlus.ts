@@ -18,7 +18,7 @@ export class GroPlus extends Consumable {
         const gpBalls: () => void = (game.player.balls > 0 ? growPlusBalls : null);
         const gpBreasts: () => void = (game.player.breastRows.length > 0 ? growPlusBreasts : null);
         const gpClit: () => void = (game.player.vaginas.length > 0 ? growPlusClit : null);
-        const gpCock: () => void = (game.player.cockTotal() > 0 ? growPlusCock : null);
+        const gpCock: () => void = (game.player.cocks.length > 0 ? growPlusCock : null);
         const gpNipples: () => void = (game.player.totalNipples() > 0 ? growPlusNipples : null);
         clearOutput();
         outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?  ");
@@ -86,7 +86,7 @@ export class GroPlus extends Consumable {
                 game.player.cocks[i].cockThickness += 0.5;
             }
         }
-        if (game.player.hasSheath())
+        if (game.player.cocks.hasSheath())
             outputText("sheath.");
         else outputText("crotch.");
         dynStats("sen", 2, "lus", 10);

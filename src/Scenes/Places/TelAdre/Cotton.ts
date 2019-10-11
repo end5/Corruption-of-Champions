@@ -254,7 +254,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Once you're done and about to hit the showers, Cotton pulls you aside and says with a grin, \"<i>Up for some post-workout exercises?</i>\"", false);
             // [Shower Sex (Fuck Her) (As Male or Herm only)] [Shower Sex (Get Fucked)] [Tantric Sex (Only if Speed is 50+)] [Leave]
-            if (player.hasCock())
+            if (player.cocks.length > 0)
                 fuckHer = fuckCottonInShowerRepeat;
             if (player.gender > 0)
                 getFucked = cottonFucksYouInShowerRepeat;
@@ -266,7 +266,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\"<i>Good, good, you won't regret it. First things first, pet, let's get you out of that dreadful clothing.</i>\"  She leads you to the lockers and helps you strip out of your " + player.armorName + ".", false);
             if (player.gender == 3) outputText("  She spies your crotch and smiles, \"<i>Oh, best of both worlds, are we? Well you're in good company then.</i>\"", false);
             // (If PC is male:
-            else if (player.hasCock()) outputText("  She cradles your " + cockDescript(game.player, 0) + " and smiles at you, \"<i>Well, we might find a use for that later.</i>\"", false);
+            else if (player.cocks.length > 0) outputText("  She cradles your " + cockDescript(game.player, 0) + " and smiles at you, \"<i>Well, we might find a use for that later.</i>\"", false);
             // (If PC is female:
             else if (player.hasVagina()) outputText("  She pats your groin and says, \"<i>Y'know, I know some good exercises that really work the vaginal muscles... perhaps we'll talk about that later.</i>\"", false);
             outputText("\n\n", false);
@@ -287,7 +287,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Once you're done and about to hit the showers, Cotton pulls you aside and says, \"<i>I know you weren't comfortable with our shower before, so I won't join you this time. But if you ever change your mind, just say the word.</i>\"", false);
             // [Shower Sex (Fuck Her)] [Shower Sex (Get Fucked)] [Tantric Sex (Only if Speed is 50+)] [Leave]
-            if (player.hasCock())
+            if (player.cocks.length > 0)
                 fuckHer = fuckCottonInShowerRepeat;
             if (player.gender > 0)
                 getFucked = cottonFucksYouInShowerRepeat;
@@ -309,7 +309,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Once you're done and about to hit the showers, Cotton pulls you aside and says with a grin, \"<i>Up for some post-workout exercises?</i>\"", false);
             // [Shower Sex (Fuck Her) (As Male or Herm only)] [Shower Sex (Get Fucked)] [Tantric Sex (Only if Speed is 50+)] [Leave]
-            if (player.hasCock())
+            if (player.cocks.length > 0)
                 fuckHer = fuckCottonInShowerRepeat;
             if (player.gender > 0)
                 getFucked = cottonFucksYouInShowerRepeat;
@@ -405,7 +405,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
         outputText("\"<i>Well? Care for a little... post-workout stretching?</i>\"", false);
         // [Fuck Her (Male or Herm only)] [Get Fucked] [Service her] [Refuse]
-        if (player.hasCock())
+        if (player.cocks.length > 0)
             option1 = cottonFirstTimeFuckHer;
         if (player.gender > 0)
             option2 = cottonFucksYou;
@@ -418,7 +418,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         flags[kFLAGS.COTTON_MET_FUCKED] = 2;
         outputText("", true);
         outputText(images.showImage("cotton-first-fuck"));
-        let x: number = player.cockThatFits(100);
+        let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = 0;
         outputText("Needing no encouragement, you step behind the large horse herm and push her under the stream of water. \"<i>Oh, taking the lead are we?</i>\" She laughs, \"<i>Please, by all means, my little pet.</i>\"\n\n", false);
 
@@ -553,7 +553,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         spriteSelect(12);
         outputText("", true);
         outputText(images.showImage("cotton-shower-fuck-repeat"));
-        let x: number = player.cockThatFits(60);
+        let x: number = player.cocks.cockThatFits(60);
         if (x < 0) x = 0;
 
         /*OLD ORIGINAL REPEAT SHOWER SEX
@@ -572,15 +572,15 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             else outputText("pulling you closer.\n\n", false);
 
             // (If PC has one cock)
-            if (player.cockArea(x) >= 100) {
-                if (player.cockTotal() == 1) outputText("You feel your " + cockDescript(game.player, x) + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, yours strains for attention.", false);
+            if (player.cocks.cockArea(x) >= 100) {
+                if (player.cocks.length == 1) outputText("You feel your " + cockDescript(game.player, x) + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, yours strains for attention.", false);
                 // (If PC has multiple cocks)
-                else if (player.cockTotal() > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, your group of cocks strains for attention.", false);
+                else if (player.cocks.length > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath your large body, while Cotton's remains curiously limp.  While her cock dangles, your group of cocks strains for attention.", false);
             }
             else {
-                if (player.cockTotal() == 1) outputText("You feel your " + cockDescript(game.player, x) + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while yours strains for attention.", false);
+                if (player.cocks.length == 1) outputText("You feel your " + cockDescript(game.player, x) + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while yours strains for attention.", false);
                 // (If PC has multiple cocks)
-                else if (player.cockTotal() > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while your group of cocks strains for attention.", false);
+                else if (player.cocks.length > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while your group of cocks strains for attention.", false);
             }
             // (If PC has a pussy, add the following)
             if (player.hasVagina()) outputText("  Meanwhile, your " + vaginaDescript(player, 0) + " behind you moistens both from the steam and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
@@ -601,11 +601,11 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Suitably turned on now, you look around and drag one of the nearby benches from the changing rooms into the showers and pull it under the water. Cotton grins, understanding what you plan to do with it, and gets onto all fours on top of it. You walk over the bench, getting your body under the spray of water, and get your cock into position. Your fellow equine lover helps with the fine movement, placing your cock at her entrance while giving your underside a reassuring pat. You slowly push forward, and Cotton bites her lip, again giving a reassuring pat.", false);
             // (If player has two cocks, add)
-            if (player.cockTotal() == 2) outputText("  With a slight grin, you begin poking your extra dick at Cotton's other hole. You hear an indignant grunt, followed by a sigh, and feel her hands on your member, guiding it all the way into her hole.", false);
+            if (player.cocks.length == 2) outputText("  With a slight grin, you begin poking your extra dick at Cotton's other hole. You hear an indignant grunt, followed by a sigh, and feel her hands on your member, guiding it all the way into her hole.", false);
             // (If the player has more cocks, add)
-            else if (player.cockTotal() > 2) outputText("  The rest of your cocks jiggle and bob, rubbing up against her thighs and butt wildly.", false);
+            else if (player.cocks.length > 2) outputText("  The rest of your cocks jiggle and bob, rubbing up against her thighs and butt wildly.", false);
             // (If player is too big, add)
-            if (player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(game.player, x) + ". She shivers and quakes, and leans against the bench, gripping your forelegs for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
+            if (player.cocks.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(game.player, x) + ". She shivers and quakes, and leans against the bench, gripping your forelegs for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
             // (if player is too small (under 4</i>\")
             else if (player.cocks[x].cockLength < 4) {
                 outputText("  Her approval wavers and you hear from below you, \"<i>Is it in yet?</i>\" Your face flushes red and you confirm it is, looking down with embarrassment. Cotton rubs one of your forelegs reassuringly and says, \"<i>");
@@ -618,11 +618,11 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             outputText("You keep this up for a while, fatigue not really an issue with a body of your size and shape. Cotton, meanwhile, gasps for breath audibly and has taken to laying her front half down on the bench, her ass right up in the air. She strokes your forelegs lovingly, showing she's still ready for more.  ");
-            if (player.cockArea(x) >= 100) outputText("Oblivious to you, her own limp cock leaks cum down onto the bench as an orgasm rocks her body.");
+            if (player.cocks.cockArea(x) >= 100) outputText("Oblivious to you, her own limp cock leaks cum down onto the bench as an orgasm rocks her body.");
             else if (pregnancy.event > 1) outputText("Oblivious to you, her own cock twitches and spasms, letting loose a spray of cum across her swollen, pregnant belly, breasts and the bench as an orgasm rocks her body.");
             else outputText("Oblivious to you, her own cock twitches and spasms, letting loose a spray of cum across her belly, breasts and the bench as an orgasm rocks her body.", false);
             // (If player is too big, add)
-            if (player.cockArea(x) > 70) outputText("  Even with all the pounding you've been doing, you can't fit your entire girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. Were you able to see her toned stomach, you're sure you could see the outline of your " + cockDescript(game.player, x) + " in it. Her back arches under the shower, her red hair messily draped around her face and bench, and she bites her lip as another orgasm rocks her body.", false);
+            if (player.cocks.cockArea(x) > 70) outputText("  Even with all the pounding you've been doing, you can't fit your entire girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. Were you able to see her toned stomach, you're sure you could see the outline of your " + cockDescript(game.player, x) + " in it. Her back arches under the shower, her red hair messily draped around her face and bench, and she bites her lip as another orgasm rocks her body.", false);
             outputText("\n\n", false);
 
             outputText("Finally you just can't take any more. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
@@ -647,17 +647,17 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             if (pregnancy.event > 1) outputText("pulling you gently towards her bulging belly, which you can't help but put your hands against as you kiss her. The bulge is firm and solid, almost a drum of solid muscle, and you caress it as you and the mare-morph make out, eliciting soft murmurs of appreciation for your efforts.");
             else outputText("pulling you closer.\n\n", false);
 
-            if (player.cockArea(x) >= 100) {
+            if (player.cocks.cockArea(x) >= 100) {
                 // (If PC has one cock)
-                if (player.cockTotal() == 1) outputText("  You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + cockHead(player, x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
+                if (player.cocks.length == 1) outputText("  You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + cockHead(player, x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
                 // (If PC has multiple cocks)
-                else if (player.cockTotal() > 1) outputText("  You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+                else if (player.cocks.length > 1) outputText("  You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
             }
             else {
                 // (If PC has one cock)
-                if (player.cockTotal() == 1) outputText("You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member.  The two rub together as you make out, sending ripples of pleasure up your spine.", false);
+                if (player.cocks.length == 1) outputText("You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member.  The two rub together as you make out, sending ripples of pleasure up your spine.", false);
                 // (If PC has multiple cocks)
-                else if (player.cockTotal() > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+                else if (player.cocks.length > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
             }
             // (If PC has a pussy, add the following)
             if (player.hasVagina()) outputText("Your " + vaginaDescript(player, 0) + " meanwhile moistens both from the water and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
@@ -678,11 +678,11 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Suitably turned on now, you coil your body around Cotton's torso, with your tail spreading her legs apart while you place your " + cockDescript(game.player, x) + " at her pussy. You slowly push in, and Cotton bites her lip, looking at you in approval.", false);
             // (If player has two cocks, add)
-            if (player.cockTotal() == 2) outputText("  With a slight grin, you position your extra dick at Cotton's other hole. She quirks her eyebrow and a look of panic momentarily crosses her face, but you push forward anyway. Cotton's eyes roll up briefly and her lip quivers.", false);
+            if (player.cocks.length == 2) outputText("  With a slight grin, you position your extra dick at Cotton's other hole. She quirks her eyebrow and a look of panic momentarily crosses her face, but you push forward anyway. Cotton's eyes roll up briefly and her lip quivers.", false);
             // (If the player has more cocks, add)
-            else if (player.cockTotal() > 2) outputText("  The rest of your cocks strain, aching for holes to fill. With none available, they throb as they rub against Cotton's smooth skin.", false);
+            else if (player.cocks.length > 2) outputText("  The rest of your cocks strain, aching for holes to fill. With none available, they throb as they rub against Cotton's smooth skin.", false);
             // (If player is too big, add)
-            if (player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(game.player, x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
+            if (player.cocks.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(game.player, x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
             // (if player is too small (under 4</i>\") add)
             else if (player.cocks[x].cockLength < 4) {
                 outputText("  Her approval wavers and she asks, \"<i>Is it in yet?</i>\" Your face flushes red and you confirm it is, looking down with embarrassment. Cotton lifts your chin and gives you a kiss, \"<i>");
@@ -695,11 +695,11 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             outputText("You keep this up for a while, before fatigue takes over. You carefully lay Cotton down in the spray of water, coiling your body under her so her rear end is up in the air, hooves resting on the ground, and continue your work unhindered. She kisses your lips, neck, and whatever she can get her mouth on.  ");
-            if (player.cockArea(x) >= 100) outputText("Her own cock, still limp, visibly twitches and begins leaking cum onto her belly as an orgasm rocks her body.");
+            if (player.cocks.cockArea(x) >= 100) outputText("Her own cock, still limp, visibly twitches and begins leaking cum onto her belly as an orgasm rocks her body.");
             else if (pregnancy.event > 1) outputText("Her own cock twitches and spasms, letting loose a spray of cum across her swollen, pregnant belly, breasts and face as an orgasm rocks her body.");
             else outputText("Her own cock twitches and spasms, letting loose a spray of cum across her belly, breasts and face as an orgasm rocks her body.", false);
             // (If player is too big, add)
-            if (player.cockArea(x) > 70) outputText("  Even in this pseudo-missionary position you can't stuff your entire enormous girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. You can even make out the shape of your cock in Cotton's toned stomach, pumping back and forth, which brings a smile to your face. Her back arches under the shower, her hair messily spread out beneath her and she bites her lip as another orgasm rocks her body.", false);
+            if (player.cocks.cockArea(x) > 70) outputText("  Even in this pseudo-missionary position you can't stuff your entire enormous girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. You can even make out the shape of your cock in Cotton's toned stomach, pumping back and forth, which brings a smile to your face. Her back arches under the shower, her hair messily spread out beneath her and she bites her lip as another orgasm rocks her body.", false);
             outputText("\n\n", false);
 
             outputText("Finally you just can't take anymore. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
@@ -724,18 +724,18 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             if (pregnancy.event > 1) outputText("pulling you gently towards her bulging belly, which you can't help but put your hands against as you kiss her. The bulge is firm and solid, almost a drum of solid muscle, and you caress it as you and the mare-morph make out, eliciting soft murmurs of appreciation for your efforts.");
             else outputText("pulling you closer.", false);
 
-            if (player.cockArea(x) >= 100) {
+            if (player.cocks.cockArea(x) >= 100) {
                 // (If PC has one cock)
-                if (player.cockTotal() == 1) outputText("  You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + cockHead(player, x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
+                if (player.cocks.length == 1) outputText("  You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  Your " + cockHead(player, x) + " rubs against her belly, sending ripples of pleasure up your spine.", false);
                 // (If PC has multiple cocks)
-                else if (player.cockTotal() > 1) outputText("  You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+                else if (player.cocks.length > 1) outputText("  You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention, though Cotton's remains curiously limp.  The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
                 // (If PC has a pussy, add the following)
             }
             else {
                 // (If PC has one cock)
-                if (player.cockTotal() == 1) outputText("  You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The two rub together as you make out, sending ripples of pleasure up your spine.", false);
+                if (player.cocks.length == 1) outputText("  You feel your " + cockDescript(game.player, x) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The two rub together as you make out, sending ripples of pleasure up your spine.", false);
                 // (If PC has multiple cocks)
-                else if (player.cockTotal() > 1) outputText("  You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
+                else if (player.cocks.length > 1) outputText("  You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
                 // (If PC has a pussy, add the following)
             }
 
@@ -757,11 +757,11 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Suitably turned on now, you reach down and hook your arm under one of Cotton's legs, lifting it up while you position your " + cockDescript(game.player, x) + " at her pussy. You slowly push in, and Cotton bites her lip, looking at you in approval.", false);
             // (If player has two cocks, add)
-            if (player.cockTotal() == 2) outputText("  With a slight grin, you position your other dick at Cotton's other hole. She quirks her eyebrow and a look of panic momentarily crosses her face, but you push forward anyway. Cotton's eyes roll up briefly and her lip quivers.", false);
+            if (player.cocks.length == 2) outputText("  With a slight grin, you position your other dick at Cotton's other hole. She quirks her eyebrow and a look of panic momentarily crosses her face, but you push forward anyway. Cotton's eyes roll up briefly and her lip quivers.", false);
             // (If the player has more cocks, add)
-            if (player.cockTotal() > 2) outputText("  The rest of your cocks strain, aching for holes to fill. With none available, they throb as they rub against Cotton's smooth skin.", false);
+            if (player.cocks.length > 2) outputText("  The rest of your cocks strain, aching for holes to fill. With none available, they throb as they rub against Cotton's smooth skin.", false);
             // (If player is too big, add)
-            if (player.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(game.player, x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
+            if (player.cocks.cockArea(x) > 70) outputText("  Though you are far too big for her, you make sure to stuff her as much as you can. Her cunt, big as it is, squeezes tightly on your " + cockDescript(game.player, x) + ". She shivers and quakes, and leans against the shower wall, gripping the shower-head for support. You thrust your overly large tool inside her over and over, stretching her already not-insignificant cunt even wider. Her tongue actually rolls out of her snout, lolling to the side while her eyes roll up into her head, lost in the pleasure. Her body rocks with an orgasm while you piston away under the spray of water.", false);
             // (if player is too small (under 4</i>\") add)
             else if (player.cocks[x].cockLength < 4) {
                 outputText("  Her approval wavers and she asks, \"<i>Is it in yet?</i>\" Your face flushes red and you confirm it is, looking down in embarrassment. Cotton lifts your chin and gives you a kiss, \"<i>");
@@ -774,11 +774,11 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             outputText("You keep this up for a while before fatigue takes over. You carefully lay Cotton down in the spray of water and continue your work unhindered. She kisses your lips, neck, and whatever she can get her mouth on.  ");
-            if (player.cockArea(x) >= 100) outputText("Her own cock, still limp, visibly twitches and begins leaking cum onto her belly as an orgasm rocks her body.");
+            if (player.cocks.cockArea(x) >= 100) outputText("Her own cock, still limp, visibly twitches and begins leaking cum onto her belly as an orgasm rocks her body.");
             else if (pregnancy.event > 1) outputText("Her own cock twitches and spasms, loosing a spray of cum across her swollen, pregnant belly, breasts and face as an orgasm rocks her body.");
             else outputText("Her own cock twitches and spasms, letting loose a spray of cum across her belly, breasts and face as an orgasm rocks her body.", false);
             // (If player is too big, add)
-            if (player.cockArea(x) > 70) outputText("  Even in the missionary position you can't stuff your entire enormous girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. You can even make out the shape of your cock in Cotton's toned stomach, pumping back and forth, which brings a smile to your face. Her back arches under the shower, her hair messily spread out beneath her and she bites her lip as another orgasm rocks her body.", false);
+            if (player.cocks.cockArea(x) > 70) outputText("  Even in the missionary position you can't stuff your entire enormous girth into her, but she doesn't care. Her eyes seem to roll back and forth like it's hard to focus, and her tongue drips water, sweat and saliva onto her body. She's panting for breath and you are able to make out faint, \"<i>Oh gods, oh gods</i>\" over the running water. You can even make out the shape of your cock in Cotton's toned stomach, pumping back and forth, which brings a smile to your face. Her back arches under the shower, her hair messily spread out beneath her and she bites her lip as another orgasm rocks her body.", false);
             outputText("\n\n", false);
 
             outputText("Finally you just can't take any more. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
@@ -811,7 +811,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("", true);
         outputText(images.showImage("cotton-shower-fucks-you-repeat"));
         /*OLD SEX SCENES HERE
-        if(player.hasCock() && (player.gender != 3 || rand(2) == 0)) {
+        if(player.cocks.length > 0 && (player.gender != 3 || rand(2) == 0)) {
             outputText("You decide to take her up on her offer, and she pulls you towards the showers, quickly disrobing the both of you. She turns only one shower-head on and pulls you into an embrace underneath the rapidly heating stream. Cotton's cock stirs between you, and though yours tingles, it remains limp in her presence.\n\n", false);
 
             outputText("Finally breaking the kiss, Cotton reaches down and hooks her arms under both your legs. You quickly wrap your arms around her neck as she lifts you off the ground. You carefully grip her with your legs as she uses one arm to position her dick at your waiting entrance. You give her a kiss just as she presses into you, and moan into her mouth. She gives a couple careful thrusts before her free hand returns to holding you.\n\n", false);
@@ -866,10 +866,10 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("She continues kissing down your belly, reaching your centaur body. She makes you turn around so your rear end is in the spray of water with her.", false);
             // (If PC has a large penis, bigger than Cotton's capacity, add)
-            if (player.hasCock()) {
-                if (player.cockArea(0) > 70) outputText("  \"<i>Oh my, what's this?</i>\" She puts a hand under your enormous, yet embarrassingly limp cock and lifts it slightly. \"<i>My little pet has such a big dick... Just how I like it. Perhaps next time I'll get to try it out... but not today, hm? This is all about you right now.</i>\"", false);
+            if (player.cocks.length > 0) {
+                if (player.cocks.cockArea(0) > 70) outputText("  \"<i>Oh my, what's this?</i>\" She puts a hand under your enormous, yet embarrassingly limp cock and lifts it slightly. \"<i>My little pet has such a big dick... Just how I like it. Perhaps next time I'll get to try it out... but not today, hm? This is all about you right now.</i>\"", false);
                 // (If PC has a penis under 4</i>\", add)
-                else if (player.longestCockLength() < 4) outputText("  \"<i>Awww, what's this?</i>\" She puts a hand under your embarrassingly small and limp cock and lifts it slightly. \"<i>It's so cute and tiny. And it certainly knows its place. Only room for one cock right now, not that this is much of a cock.</i>\" She giggles and plants a kiss on the tip, \"<i>It is cute though. I love it.</i>\"", false);
+                else if (player.cocks.longestCockLength() < 4) outputText("  \"<i>Awww, what's this?</i>\" She puts a hand under your embarrassingly small and limp cock and lifts it slightly. \"<i>It's so cute and tiny. And it certainly knows its place. Only room for one cock right now, not that this is much of a cock.</i>\" She giggles and plants a kiss on the tip, \"<i>It is cute though. I love it.</i>\"", false);
                 // (If PC has a penis neither large or small, add)
                 else outputText("Cotton puts a hand under your embarrassingly limp cock and smiles, \"<i>You know how to show a girl you like her... There's only room for one cock right now.</i>\"", false);
             }
@@ -924,11 +924,11 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             }
 
             outputText("She continues kissing a trail down your belly and to your crotch.", false);
-            if (player.hasCock()) {
+            if (player.cocks.length > 0) {
                 // (If PC has a large penis, bigger than Cotton's capacity, add)
-                if (player.biggestCockArea() > 70) outputText("  \"<i>Oh my, what's this?</i>\" She puts a hand under your enormous, yet embarrassingly limp cock and lifts it slightly. \"<i>My little pet has such a big dick... Just how I like it. Perhaps next time I'll get to try it out... but not today, hm? This is all about you right now.</i>\"", false);
+                if (player.cocks.biggestCockArea() > 70) outputText("  \"<i>Oh my, what's this?</i>\" She puts a hand under your enormous, yet embarrassingly limp cock and lifts it slightly. \"<i>My little pet has such a big dick... Just how I like it. Perhaps next time I'll get to try it out... but not today, hm? This is all about you right now.</i>\"", false);
                 // (If PC has a penis under 4</i>\", add)
-                if (player.longestCockLength() < 4) outputText("  \"<i>Awww, what's this?</i>\" She puts a hand under your embarrassingly small and limp cock and lifts it slightly. \"<i>It's so cute and tiny. And it certainly knows its place. Only room for one cock right now, not that this is much of a cock.</i>\" She giggles and plants a kiss on the tip, \"<i>It is cute though. I love it.</i>\"", false);
+                if (player.cocks.longestCockLength() < 4) outputText("  \"<i>Awww, what's this?</i>\" She puts a hand under your embarrassingly small and limp cock and lifts it slightly. \"<i>It's so cute and tiny. And it certainly knows its place. Only room for one cock right now, not that this is much of a cock.</i>\" She giggles and plants a kiss on the tip, \"<i>It is cute though. I love it.</i>\"", false);
                 // (If PC has a penis neither large or small, add)
                 else outputText("  Cotton puts a hand under your embarrassingly limp cock and smiles, \"<i>You know how to show a girl you like her... There's only room for one cock right now.</i>\"", false);
             }
@@ -1007,7 +1007,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("\"<i>Now comes the yoga portion of this little workout,</i>\" she says as she uncurls her legs, spreading them wide and long on the mat. She bends her knees and leans back, propping herself up on her arms. Her jet-black equine cock stands at full attention, pulsing steadily. \"<i>Come sit down on my cock, pet, and we'll get this party started right.</i>\"\n\n", false);
 
         outputText("Gulping slightly, you stand and approach her. Cotton runs a hand along her member, causing you to shiver with the", false);
-        if (player.hasCock()) outputText(" familiar", false);
+        if (player.cocks.length > 0) outputText(" familiar", false);
         else outputText(" alien", false);
         outputText(" sensations on an unfamiliar part of your body... well, her body. You stand over her hips and slowly lower yourself down, impaling your " + assholeOrPussy(player) + " on her meaty tool. In addition to the beautiful sensation of being filled, you also get the sensation of warm, tight constriction on your phantom cock.", false);
         // (for Naga Body, add)
@@ -1020,7 +1020,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         if (player.hasVagina()) player.cuntChange(72, true, true, false);
         else player.buttChange(72, true, true, false);
         // (If PC has a penis, add)
-        if (player.hasCock()) outputText("  Meanwhile, your own " + cockDescript(game.player, 0) + " hangs limply in front of you, tingling with arousal, but unable to harden. Cotton gives it a pat and says, \"<i>Worry not, pet, there's only room for one cock right now, but I'll want it some other time.</i>\"", false);
+        if (player.cocks.length > 0) outputText("  Meanwhile, your own " + cockDescript(game.player, 0) + " hangs limply in front of you, tingling with arousal, but unable to harden. Cotton gives it a pat and says, \"<i>Worry not, pet, there's only room for one cock right now, but I'll want it some other time.</i>\"", false);
         outputText("\n\n", false);
 
         outputText("\"<i>Now let's move on to the Lotus,</i>\" Cotton says, and sits up.", false);
@@ -1055,7 +1055,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
         outputText("It doesn't take much longer for the sensations to consume you, feeling yourself both getting fucked and fucking at the same time. Lightning fires through every nerve in your body as an orgasm begins to overtake you. Cotton doesn't look far behind. As your body begins to tremble and arch, so too does hers.", false);
         // (If PC has a penis)
-        if (player.hasCock()) outputText("  Your " + cockDescript(game.player, 0) + " twitches and tingles, releasing its pent up seed in a dribbling torrent down your belly and chest, right into your face and pooling around your head.", false);
+        if (player.cocks.length > 0) outputText("  Your " + cockDescript(game.player, 0) + " twitches and tingles, releasing its pent up seed in a dribbling torrent down your belly and chest, right into your face and pooling around your head.", false);
         // (If PC has a vagina)
         if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " shivers and clamps down hard on the invading cock, pulsing and milking it as it unloads directly into your womb.", false);
         // (If PC doesn't have a vagina)

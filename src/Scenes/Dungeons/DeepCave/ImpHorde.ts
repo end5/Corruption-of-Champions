@@ -28,7 +28,7 @@ export class ImpHorde extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createCock(12, 2, CockTypesEnum.DEMON);
+        this.cocks.createCock(12, 2, CockTypesEnum.DEMON);
         this.balls = 2;
         this.ballSize = 1;
         createBreastRow(0);

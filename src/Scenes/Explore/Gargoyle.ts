@@ -266,7 +266,7 @@ export class Gargoyle {
             // (Display options: [Wake Her] [Use Her (if Lust >= 30)] [Appearance] and [Leave])
             addButton(0, "Wake Her", returnToCathedral, true);
             if (player.lust >= 33) {
-                if (player.hasCock()) addButton(1, "Use Her", useGargoyleMaleHerm);
+                if (player.cocks.length > 0) addButton(1, "Use Her", useGargoyleMaleHerm);
                 else if (player.hasVagina()) addButton(1, "Use Her", useHerGargoyleFemale);
             }
             addButton(3, "Appearance", gargoyleAppearance);
@@ -322,7 +322,7 @@ export class Gargoyle {
         outputText("\n\nDeciding you've gotten her more than ready, you grasp your [cock biggest] and push the head against her still-tight ass.  Her mouth forms a sharp “O” of pleasure as you grab her hips and push into her.  Though you've lubed her up plenty, her passage is still incredibly tight, and so cool inside it takes a force of will to keep your cock from wilting.  But all it takes is one look at her face over her shoulder, eyes rolled back in pleasure, to keep you thrusting in at full mast.");
 
         // (if PC's first cock is 50 inches or bigger; Silly Mode only:)
-        if (player.cocks[player.biggestCockIndex()].cockLength >= 50) {
+        if (player.cocks[player.cocks.biggestCockIndex()].cockLength >= 50) {
             outputText("\n\nKnowing full well the living statue doesn't have much in the way of anatomy, you continue to push more and more of monstrous manhood into " + flags[kFLAGS.GAR_NAME] + "'s asshole, watching with glee as her stomach begins to distend with the massive size of your prick.  Then her chest bulges, making her gasp in pain and clutch at her breast; that doesn't stop you, though.  With one mighty, massive thrust, you slam yourself up to the hilt in " + flags[kFLAGS.GAR_NAME] + "'s ass, and watch with glee as the head bursts out of her mouth, squirting pre and drool all over the floor.  The poor gargoyle makes a muffled scream and starts flailing around helplessly, trying to do <i>something</i> about the massive member now protruding from her mouth.");
 
             outputText("\n\nWith gusto, you start hammering away at your living cock-sleeve, using her entire body as one great big ona-hole to take your gargantuan girth.  Resigned to her fate, " + flags[kFLAGS.GAR_NAME] + " slumps forward and grasps the head of your [cock biggest], giving you a handy through her mouth as her innards milk the rest of your shaft.");
@@ -350,8 +350,8 @@ export class Gargoyle {
     // no limits
     private gargoyleCoochiiGetsPlowed(): void {
         clearOutput();
-        let x: number = player.cockThatFits(60);
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(60);
+        if (x < 0) x = player.cocks.smallestCockIndex();
 
         outputText("You gently push " + flags[kFLAGS.GAR_NAME] + " onto her back and spread her long, marble legs, giving you a clear view of her tight little pussy.  You brush your hand along her thighs, making her gasp with the sensation as your knuckles run along her smooth, cool flesh.  Your fingers come to her small clit, and you caress her tiny pleasure buzzer, eliciting a tiny moan from the gargoyle.  Grinning, you give it another flick; " + flags[kFLAGS.GAR_NAME] + " squirms, trying to either enhance or end the sensation, you can't be sure.  You start to finger her clitty harder, creating little circles around it as you slip another finger into her tight passage.");
 
@@ -360,7 +360,7 @@ export class Gargoyle {
         outputText("\n\nYou pull your " + cockDescript(game.player, x) + " from your [armor], letting it flop down atop her crotch.  Embarrassed, " + flags[kFLAGS.GAR_NAME] + " looks away as you rub the underside of your cock across her mons, spitting on it for a bit of extra lubricant.  You lean back, lining the tip of your cockhead with the gargoyle's tight slit, and press forward.  She lets out a sharp gasp as your cock presses against her, pushing it past her lips and finally slipping into her depths.");
 
         outputText("\n\nThough her opening was painfully tight, her inner passage expands easily around your cock, letting you slip in more and more of your dickmeat until you're buried ");
-        if (player.cockArea(x) > 60) outputText("as far as she can take you.");
+        if (player.cocks.cockArea(x) > 60) outputText("as far as she can take you.");
         else outputText("up to the hilt inside her.");
         outputText("  Now that you're so deep in the gargoyle, you can see her visibly trembling, panting with pleasure.  Leaning down, you cup her cheek and plant a kiss on her thin lips.  She returns it eagerly, letting your probing tongue in to play with hers.  Mid-kiss, she wraps her arms and legs around you, holding you close against her heaving chest.");
         outputText("\n\nYou start to thrust against her, making short, fast strokes in and out of her cool passage.  Soon, you're both moaning with pleasure as you change the tempo, switching to long and hard pumps that make the Cathedral echo with the sound of your hips slapping into " + flags[kFLAGS.GAR_NAME] + "'s raised asscheeks.  She can only hold on to you tighter, biting her lower lip, eyes closed, as you start to well and truly pound her.");
@@ -702,7 +702,7 @@ export class Gargoyle {
 
         outputText("\n\nShe plays easily within you, running her cool appendage over your own tongue, letting it slide across your teeth and cheeks as she slides a hand down to your ");
         // if Male/Herm:
-        if (player.hasCock()) outputText(cockDescript(game.player, 0));
+        if (player.cocks.length > 0) outputText(cockDescript(game.player, 0));
         else if (player.hasVagina()) outputText(vaginaDescript(player));
         else outputText("barren crotch");
         outputText(".  She breaks the kiss and steps back, laying on one last time – CRACK! with the crop, stinging you again with an intense mix of pain and pleasure.  Gasping and panting from stimulation, you nearly collapse when " + flags[kFLAGS.GAR_NAME] + " unbinds you, though she's quick to catch you before you fall.");
@@ -770,7 +770,7 @@ export class Gargoyle {
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0) outputText("  You can hear the demonic voice of Exgartuan inside your mind, yelling and cursing as he is rapidly drained from your body and sealed into the holy rod within you.");
 
         // (If PC has a cock:
-        if (player.hasCock()) {
+        if (player.cocks.length > 0) {
             outputText("\n\n" + flags[kFLAGS.GAR_NAME] + " suddenly releases your hips and, pressing her soft breasts into your sweat-slicked back, grabs your [cock biggest] in her cold hand.  You let out a little gasp as she begins to jerk you off, rapidly pistoning your cock as she continues to pound your ass.  Between the dual stimulation, you feel a pressure begin to swell up inside your abused prostate, a tell-tale sign of orgasm.  She gives you a few last thrusts before you cum, splattering the altar with thick ropes of cum as you both yell in ecstasy.");
         }
         else {
@@ -1000,7 +1000,7 @@ export class Gargoyle {
         // (All Other Display Options: [Strap-on] [Leave])
         // (Use normal sex scenes for above options, as well as Leave options.
         menu();
-        if (player.hasCock()) addButton(0, "Vaginal", gargoyleCoochiiGetsPlowed);
+        if (player.cocks.length > 0) addButton(0, "Vaginal", gargoyleCoochiiGetsPlowed);
         else addButton(1, "Strap-on", strapOnGargoyle);
         addButton(4, "Leave", camp.returnToCampUseOneHour);
     }

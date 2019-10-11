@@ -90,10 +90,10 @@ export class FetishCultist extends Monster {
             outputText("Her eyes glaze over and you feel your mind suddenly becoming filled with a blur of every sexual perversion you could possibly think of, and then some.", false);
             if (player.vaginas.length > 0) {
                 outputText("  You feel your " + vaginaDescript(player, 0) + " soaking itself in a sudden burst", false);
-                if (player.cockTotal() > 0) outputText(", while a sudden influx of pre-cum blurts out and streams down your " + multiCockDescriptLight(player) + ", painfully hardened by a vast amount of blood rushing to your groin", false);
+                if (player.cocks.length > 0) outputText(", while a sudden influx of pre-cum blurts out and streams down your " + multiCockDescriptLight(player) + ", painfully hardened by a vast amount of blood rushing to your groin", false);
                 outputText(".", false);
             }
-            else if (player.cockTotal() > 0) outputText("  A sudden influx of pre-cum blurts out and streams down your " + multiCockDescriptLight(player) + ", painfully hardened by a vast amount of blood rushing to your groin.", false);
+            else if (player.cocks.length > 0) outputText("  A sudden influx of pre-cum blurts out and streams down your " + multiCockDescriptLight(player) + ", painfully hardened by a vast amount of blood rushing to your groin.", false);
             if (player.gender == 0) outputText("  Your genderless body is suddenly filled by a perverted warmth.", false);
             outputText("\n\nYou notice that the young woman seems to have calmed down some.", false);
             dynStats("lus", (lust / 3 * (1 + player.cor / 300)));

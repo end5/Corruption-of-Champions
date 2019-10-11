@@ -236,7 +236,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         clearOutput();
         sophieBimbo.sophieSprite();
         // Sophie is in season
-        if (sophieBimbo.sophieIsInSeason() && player.hasCock() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+        if (sophieBimbo.sophieIsInSeason() && player.cocks.length > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
             // Replacement Greeting Screen For In Season
             // Similar to bimbo sophie
             outputText("Sophie's entire soft body jiggles and shudders visibly when she hears you call her.  Her walk towards you is a bit too fast to be sensuous, despite her best attempts, and her tail feathers twitch, fanning a breeze towards you that reeks of pheromones and her needy sex.  She puts a hand on her hip, making a small show of her jiggling butt and immense mammaries as she gives you a wink and stares at you with lowered eyelids, bedroom eyes seeking to provoke more arousal from you.  Her finger presses against your [chest] as she speaks, slowly and seductively, trying to accentuate every word by adding the power of her lips to it.  \"<i>Sooo, you wanted to see me?  That's good, because Momma Sophie wanted to see you as well.</i>\"");
@@ -250,8 +250,8 @@ export class SophieFollowerScene extends NPCAwareContent {
             // [Special]
             menu();
             addButton(0, "Appearance", sophieAppearance);
-            if (player.hasCock()) {
-                if (player.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) {
+            if (player.cocks.length > 0) {
+                if (player.cocks.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) {
                     addButton(1, "Vaginal", fuckFollowerSophie);
                     addButton(2, "Special", sophieSpecial);
                 }
@@ -423,11 +423,11 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("\"<i>Oh, really? I was kind of hoping you'd want a taste of me soon.</i>\"  Sophie somewhat perks up at the mention of having sex with you.  \"<i>So, what'd you like? The usual, or should Momma do something special for you this time around?</i>\"  She licks her lips at the suggestion.");
 
         // [Usual] [Nurse] [YouMove] [IMove] [Titfuck] [GetDMilked] [Extra1] [....]
-        if (player.hasCock()) {
-            if (player.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) addButton(0, "Vaginal", fuckFollowerSophie);
+        if (player.cocks.length > 0) {
+            if (player.cocks.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) addButton(0, "Vaginal", fuckFollowerSophie);
             addButton(1, "Blowjob", sophieFollowerGivesBlowjobs);
         }
-        if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 && flags[kFLAGS.SOPHIE_FAMILY_INCEST] > 0 && player.cockThatFits(sophieBimbo.sophieCapacity()) >= 0)
+        if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 && flags[kFLAGS.SOPHIE_FAMILY_INCEST] > 0 && player.cocks.cockThatFits(sophieBimbo.sophieCapacity()) >= 0)
             addButton(8, "DaughterFuck", sophieIncestInHerCooterOrSomethingIDunno);
         addButton(9, "Back", followerSophieMainScreen);
     }
@@ -487,15 +487,15 @@ export class SophieFollowerScene extends NPCAwareContent {
                 outputText("\n\nThe matron smiles at the thought before giving you a big, down-soft hug.  She whispers, \"<i>I'd like that too,</i>\" in your ear while both sets of wings run up and down your body.  Reluctantly, Sophie pulls away.");
 
                 outputText("\n\n\"<i>I'll see you tonight, [name]");
-                if (player.smallestCockArea() <= 5 && player.hasCock()) outputText(", but don't be surprised if I go a little rough on that tiny dick of yours in the morning");
+                if (player.cocks.smallestCockArea() <= 5 && player.cocks.length > 0) outputText(", but don't be surprised if I go a little rough on that tiny dick of yours in the morning");
                 outputText("!</i>\" she calls.");
-                if (player.smallestCockArea() <= 5 && player.hasCock()) outputText("\n\n<b>If you don't want her to tease you about your small penis, you had better tell her to stop sleeping with you.</b>");
+                if (player.cocks.smallestCockArea() <= 5 && player.cocks.length > 0) outputText("\n\n<b>If you don't want her to tease you about your small penis, you had better tell her to stop sleeping with you.</b>");
             }
             // NORMAL
             else {
                 outputText("\n\nSophie smiles radiantly and hugs you, her wing-tips fluttering excitedly for a few moments before wrapping around into an even more all-encompassing embrace.  She says, \"<i>That sounds lovely.</i>\"");
                 outputText("\n\nShe separates from you with a happy smile.");
-                if (player.smallestCockArea() <= 5 && player.hasCock()) outputText("  \"<i>You won't mind me teasing your cute little dick in the mornings, will you [name]?  It's so cute...</i>\" she muses.\n\n<b>If you don't want her to tease you about your small penis, you had better not sleep with her.</b>");
+                if (player.cocks.smallestCockArea() <= 5 && player.cocks.length > 0) outputText("  \"<i>You won't mind me teasing your cute little dick in the mornings, will you [name]?  It's so cute...</i>\" she muses.\n\n<b>If you don't want her to tease you about your small penis, you had better not sleep with her.</b>");
             }
             flags[kFLAGS.SLEEP_WITH] = "Sophie";
         }
@@ -514,9 +514,9 @@ export class SophieFollowerScene extends NPCAwareContent {
     // vaginal Fuck*
     // Needs some mods for when she's in season!
     private fuckFollowerSophie(): void {
-        let x: number = player.cockThatFits(sophieBimbo.sophieCapacity());
-        if (x < 0) x = player.smallestCockIndex();
-        const y: number = player.cockThatFits2(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
+        const y: number = player.cocks.cockThatFits2(sophieBimbo.sophieCapacity());
         clearOutput();
         // In season intro
         if (sophieBimbo.sophieIsInSeason()) {
@@ -530,11 +530,11 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("  You strip out of your [armor] without a second thought and present your " + cockDescript(game.player, x) + " to Sophie.");
 
         // Small
-        if (player.cockArea(x) <= 5) {
+        if (player.cocks.cockArea(x) <= 5) {
             outputText("\n\nShe snickers, \"<i>That little thing is going to fuck me?  " + mf(player, "I thought you were a man, but that looks like a little girl-clit!", "I know you're a herm, but maybe you should just turn that little thing into a proper clit!") + "</i>\"  Prodding your girlish member, she comments, \"<i>It's kind of cute in its own way, though I don't think I'll feel much.</i>\"  Her fingers tickle along the underside of it as she giggles, \"<i>I could just play with this dainty girl-cock all day long...</i>\"");
         }
         // Medium
-        else if (player.cockArea(x) <= sophieBimbo.sophieCapacity() / 2) {
+        else if (player.cocks.cockArea(x) <= sophieBimbo.sophieCapacity() / 2) {
             outputText("\n\nShe asks, \"<i>So this is what you want to fuck me with, huh?  It's not THAT impressive.</i>\"  Her hand wraps around your " + cockDescript(game.player, x) + ", squeezing it softly until it rises in her palms.  \"<i>Oooh, it does seem nice and virile, though, doesn't it?</i>\"  She strokes the underside and coos to it, watching raptly as you fully erect.");
         }
         // Big
@@ -595,13 +595,13 @@ export class SophieFollowerScene extends NPCAwareContent {
     // [Next]
     private sophieVagFollowerFollowup(): void {
         clearOutput();
-        let x: number = player.cockThatFits(sophieBimbo.sophieCapacity());
-        if (x < 0) x = player.smallestCockIndex();
-        const y: number = player.cockThatFits2(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
+        const y: number = player.cocks.cockThatFits2(sophieBimbo.sophieCapacity());
 
         outputText("You're roused a few moments later by a smiling Sophie, the proof of your union dripping between her thighs.  She quips, \"<i>");
         if (sophieBimbo.sophieIsInSeason()) outputText("If that didn't take, I don't know what will!");
-        else if (player.cockArea(x) <= 5) outputText("Not too bad for a tiny girl-dick!");
+        else if (player.cocks.cockArea(x) <= 5) outputText("Not too bad for a tiny girl-dick!");
         else outputText("It's always better when you have to wait for it, isn't it?");
         outputText("</i>\"");
         outputText("\n\nYou'd come up with a snarky reply, but you're just so fucking tired.  You sigh and try to get dressed, having some difficulty getting on your [feet] until Sophie lends a hand.  She kisses you on the cheek and mouths \"<i>thanks</i>\" before flouncing off, fluttering happily.");
@@ -612,12 +612,12 @@ export class SophieFollowerScene extends NPCAwareContent {
     // Sucking dicks.
     private sophieFollowerGivesBlowjobs(): void {
         clearOutput();
-        let x: number = player.cockThatFits(sophieBimbo.sophieCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
 
         outputText("Sophie cocks her head to the side and chuckles, \"<i>You wanna feel Momma Sophie's lips around that ");
-        if (player.cockArea(x) <= 5) outputText("tiny clit you call a penis");
-        else if (player.cockArea(x) <= sophieBimbo.sophieCapacity() / 2) outputText("needy boy-cock");
+        if (player.cocks.cockArea(x) <= 5) outputText("tiny clit you call a penis");
+        else if (player.cocks.cockArea(x) <= sophieBimbo.sophieCapacity() / 2) outputText("needy boy-cock");
         else outputText("over-swollen engorgement you call a cock");
         outputText("?</i>\"  She saunters up with her hips swaying seductively, her juicy mound squelching noisily, webs of lubricant dangling between her thighs whenever they spread.  The harpy's fingertip punches into your chest");
         if (player.biggestTitSize() >= 1) outputText(", right between your [chest]");
@@ -633,8 +633,8 @@ export class SophieFollowerScene extends NPCAwareContent {
 
     // Blow Sixtynine*
     private sophieBlowsSixtyNine(): void {
-        let x: number = player.cockThatFits(sophieBimbo.sophieCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         outputText("You nod eagerly, something that gets the busty harpy smiling as her whole body flushes.  She rushes at you, leaping and flapping, speeding towards you faster as old feathers kick up in a wake behind her.  You spread your arms and let her slam into you, the impact cushioned by her weighty breasts and large, soft thighs.  Both of you roll end over end through the dirt, eventually coming to rest with her straddling your [chest] and rubbing a finger through her slippery folds.  She adds another finger to spread them wide, the pink interior pulsing wetly and dripping with female moisture.");
 
@@ -643,12 +643,12 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("\n\nYou cock an eyebrow in response, but before you can properly answer, the motherly woman is lifting herself up and spinning about, giving you a perfect view of her bodacious heiny before it dips down towards your " + face(player) + ", the heavy butt-cheeks and thick thighs utterly blotting out the light as the woman's sodden snatch descends towards your mouth.  Her tangy, sweet scent fills your nostrils more potently by the second, until her slippery warmth and feminine odor are dominating your perception.  Her labia spread wide over your nose and mouth as Sophie's supple, curvy thighs clasp over your ears.  You're literally deaf, blind, and mute at this point, yet there's still one way you can communicate at this point - with your tongue.");
 
         outputText("\n\nSimultaneous to your vaginal ensnarement, Sophie attends to the pressing bulge");
-        if (player.cockTotal() > 1) outputText("s");
+        if (player.cocks.length > 1) outputText("s");
         outputText(" that ");
-        if (player.cockTotal() > 1) outputText("are");
+        if (player.cocks.length > 1) outputText("are");
         else outputText("is");
         outputText(" mounting higher and higher.  She easily pulls [eachCock] from your constraining [armor], testing the girth and rigidity of the swollen shaft");
-        if (player.cockTotal() > 1) outputText("s, searching for her target of the day.  At last, she settles on your " + cockDescript(game.player, x) + ", giving it an affectionate squeeze");
+        if (player.cocks.length > 1) outputText("s, searching for her target of the day.  At last, she settles on your " + cockDescript(game.player, x) + ", giving it an affectionate squeeze");
         else outputText(", giving it an affectionate squeeze");
         outputText(".  She exhales on it with breath so hot and moist you almost think the blowjob has begun, but when her lips truly meet your " + cockHead(player, x) + ", that notion is shattered by the slippery-sweet embrace.  With your senses so deprived by snatch, smothered in quim, the touch of Sophie's golden cock-pillows on you seems multiplied seven-fold.  Your back arches instinctively, trying to lift your [hips] higher, but the matron's gentle, firm hand pushes you back down.  Her tongue flicks out to dance along the underside of your urethra while her cushiony mouth slips ever-lower.");
 
@@ -673,12 +673,12 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("\n\nSophie hums happily as you begin to drip directly onto her tongue, the pre-cum bubbling out of your spit-polished cum-slit in a steady flow.  Though you know just what is plying your " + cockDescript(game.player, x) + " with slices of heavenly sensation, your gloss-drugged mind begins to slip into fantasy anyway.  Just like in the real world, Sophie's cunt is slathering your [face] with her fragrant arousal, and your pole is smothered with amber aphrodisiacs.  In the fantasy though, there's a pussy squeezing down on you and a second set of thick harpy thighs clenching around your waist.  Those fertile, egg-bearing thighs are bouncing up and down your length, and the twat above you is ripe with arousal, bounded above by a belly swollen with incubating life that will someday be your daughter.  Every morning you're sucked off to completion by one of your girls and kissed until your lips and rod are slathered to an amber shine.  Then you lie back and partake in the fruits of your position as " + mf(player, "king", "breeder-queen") + " of the harpies: creampie after creampie, tangy harpy-cunt to lick, and skilled fellatio every single time your lust begins to flag.  You groan into the slit above, your hands grabbing hold of the juicy haunches and pulling them down into you.");
 
         outputText("\n\nAn answering cry of pleasure reverberates down your phallus in response, accompanied by a gradually increasing suction that rouses you from the fantasy.  Your [hips] slowly rock to the tempo of Sophie's lip-vacuum, and as you aggressively lick and lap at her ever-wettening box, you realize that both of you are getting closer to orgasm.  Sophie plunges her swollen, cock-sucking lips down your length ");
-        if (player.cockArea(x) <= 60) outputText("to the [sheath]");
+        if (player.cocks.cockArea(x) <= 60) outputText("to the [sheath]");
         else outputText("as far as she can, gagging slightly");
         outputText(".  Her thighs begin to tremble around you, hard enough that you begin to worry that she might somehow crush your head, yet it's more like being smothered with soft pads than anything truly worrisome.  You shudder in excitement of your own and begin to flick her clit, eager to make her share in the pleasure.");
 
         outputText("\n\nTwo simultaneous hums of delight vibrate through both pairs of genitals, matched in perfect, harmonious climax.  Sophie's cheeks bulge as you offer your liquid lust up to her sucking, oral opening.  Her tongue tickles along your bulging urethra as it pumps wave after wave of jizz into the back of her mouth.  She noisily gulps it down, belly gurgling as she tries to keep up with you.  The puffy mound above you spasms around your mouthy movements and releases a wave of tangy harpy-cum, the fragrant, slippery stuff splattering over the whole of your [face] and forcing you to drink deep gulps of musky girl-jizz.");
-        if (player.cumQ() >= 1000 || player.cockTotal() > 1) outputText("  Warm goo covers your [hips] and [butt] once your virile deposit becomes too much for Sophie to handle.");
+        if (player.cumQ() >= 1000 || player.cocks.length > 1) outputText("  Warm goo covers your [hips] and [butt] once your virile deposit becomes too much for Sophie to handle.");
         if (player.cumQ() >= 500) outputText("  She quickly gives up on trying to swallow it after she starts showing some cum-pudge, but her hand pumps you energetically as she milks your " + cockDescript(game.player, x) + ", squeezing the voluminous ropes of cum all over your [chest].");
         if (player.cumQ() >= 3000) outputText("  You make a big white puddle with all the drippings, sinking into the cummy mud as you eat out the orgasmic harpy matron.");
 
@@ -700,8 +700,8 @@ export class SophieFollowerScene extends NPCAwareContent {
 
     // Forceful Blowjob*
     private forceSophieBlowjob(): void {
-        let x: number = player.cockThatFits(sophieBimbo.sophieCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         // Increments a displeasure counter - doing enough of these causes her to leave in the night if it gets too high.
         flags[kFLAGS.SOPHIE_FOLLOWER_IRRITATION]++;
@@ -713,13 +713,13 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText(" \"<i>but don't make a habit of this, or you'll wake up alone.</i>\"  Sophie's tongue flicks across your " + cockHead(player, x) + " experimentally.  \"<i>At least you taste good.</i>\"  The slippery muscle slides across your sensitive dick-skin again, longer this time, lingering on the underside as the golden lips edge closer.");
 
         outputText("\n\nImpatient, you slide your fingers through her feathery locks and edge her closer.  Her shining, amber mouth bumps into your " + cockHead(player, x) + ", followed by a surprised chirp from the unresisting harpy.  At that first touch, the electric tingle of her glossy gold lipstick hits you, causing your heart to beat faster and your " + cockDescript(game.player, x) + " to thicken slightly with arousal in her hand.  You involuntarily push harder without meaning to, spreading Sophie's plump cock-kissers around the thickening meat, her spit slicking the slow, steady journey into her mouth.  Like magic, she begins to push forward on her own, almost pulling out of your grip in her eagerness.  Her mouth smoothly slides down ");
-        if (player.cockArea(x) <= 60) outputText("as far as it can go, even taking you part way into her throat before she runs out of room");
+        if (player.cocks.cockArea(x) <= 60) outputText("as far as it can go, even taking you part way into her throat before she runs out of room");
         else outputText("the whole way to your base, inch after inch of dick-flesh vanishing into her pliant throat");
         outputText(".");
 
         outputText("\n\nWith her snug, gold lips clinging around your rod, Sophie looks up with lust-lidded eyes, the noisy squelching that's coming from below leaving no doubt in your mind as to her state.  The burning, lust-fueling make-up that girds her cock-pillows seems to be seeping into you in greater and greater quantities.  It makes your whole body feel flush, burning-hot and ready to fuck her sweet, feathery behind.  You prepare to pull out, until you see those plush golden lips locked in place, sliding with slippery friction along every single inch of your " + cockDescript(game.player, x) + ".  You throb powerfully at that sight and flex inside her oral embrace, causing the harpy to churn out a delighted giggle, interrupted by a pleasured moan as she masturbates beneath your maleness.");
-        if (player.cockTotal() == 2) outputText("  Your extra cock flops against her cheek, catching on her ear and slowly leaking pre-cum into her down-soft hair.");
-        else if (player.cockTotal() > 2) outputText("  Your extra cocks flop against her cheeks, catching on her ear and shoulder and slowly leaking pre-cum into her down-soft hair.");
+        if (player.cocks.length == 2) outputText("  Your extra cock flops against her cheek, catching on her ear and slowly leaking pre-cum into her down-soft hair.");
+        else if (player.cocks.length > 2) outputText("  Your extra cocks flop against her cheeks, catching on her ear and shoulder and slowly leaking pre-cum into her down-soft hair.");
 
         outputText("\n\nSophie abruptly grabs hold of one of her big, motherly tits and gropes herself passionately.  Her lips open just enough to separate from your " + cockDescript(game.player, x) + " and exude a lascivious moan as she masturbates herself.  The quivering tongue tickling at your underside is utterly enjoyable, a fact enhanced by the golden gloss now smeared all over your rod.  There's a tingling, pulsating quickening inside you.");
         if (player.balls > 0) outputText("  Your [balls] feel almost like they're filling up, taut with liquid weight that begs to pump out");
@@ -768,7 +768,7 @@ export class SophieFollowerScene extends NPCAwareContent {
     // Sophie Teases Small Dicks In The Morning*
     // No toggles.  If you have a small penis you deserve the small penis femdom.
     public sophieSmallDongTeases(): void {
-        const x: number = player.smallestCockIndex();
+        const x: number = player.cocks.smallestCockIndex();
         outputText("\n<b><u>As you're waking up that morning...</u></b>");
         outputText("\nTingly warmth envelops your [oneCock] with supple, soft sensation, wrapping it up tight in pulsing warmth.  A slippery protrusion slithers around your girth, tickling at your [sheath]");
         if (player.balls > 0) outputText(" and [balls]");
@@ -871,8 +871,8 @@ export class SophieFollowerScene extends NPCAwareContent {
     // [special]
     private sophieSpecial(): void {
         clearOutput();
-        const x: number = player.cockThatFits(sophieBimbo.sophieCapacity());
-        if (x < 0) player.smallestCockIndex();
+        const x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        if (x < 0) player.cocks.smallestCockIndex();
         outputText("\"<i>Ahhh, so you do want a bit of Momma Sophie's special treatment... such a brave " + mf(player, "boy", "girl") + ", aren't you?</i>\" She leans in closer as she starts to get rid of your [armor].  \"<i>Very brave... we might have to put you back into place.  Momma Sophie will milk this " + cockDescript(game.player, x) + " until the only thing that even allows you to cum anytime in the future will be the fact I drugged you with my lipstick.</i>\"");
 
         outputText("\n\nSlowly, she sinks to her knees, fishing out your " + cockDescript(game.player, x) + " from your [armor], licking her lips eagerly.  \"<i>First, we cover it with a lot of my special lipstick, so you'll stay hard no matter what.  That, and, well, so you can't resist when Momma Sophie wants you to squirt.</i>\"");
@@ -880,8 +880,8 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("\n\nIndeed, her plush golden lips wrap about your " + cockDescript(game.player, x) + ", slathering it with both her saliva and lipstick as she bobs her head up and down on your member, causing it to become painfully hard as you thrust your [hips] instinctively, seeking more of this delicious mouth.  She grumbles, displeased at you moving and tries to hold you in place by grabbing your [ass] and trying to hold you in place; however, this proves to be rather uneffective as you begin to shake from her oral assault, her tongue licking up and down your " + cockDescript(game.player, x) + ", covering it completely in a mix of slutty spit and drugged lipstick... as a matter of fact, you feel light in the head");
         if (player.balls > 0) outputText(", and your [balls] are just waiting to unload a virile, sticky package down her throat");
         outputText(".  Sophie seems to sense it and chuckles, pulling her mouth off your " + cockDescript(game.player, x) + ", causing you to whine as you seek out her mouth again.  \"<i>There, there, my little cum pump.  Momma Sophie wouldn't be so mean as to leave you and your ");
-        if (player.cockArea(x) <= 5) outputText("squirting clitty");
-        else if (player.cockArea(x) <= 30) outputText("needy boy-cock");
+        if (player.cocks.cockArea(x) <= 5) outputText("squirting clitty");
+        else if (player.cocks.cockArea(x) <= 30) outputText("needy boy-cock");
         else outputText("giant piece of a meat rod");
         outputText(" without blowing a nice big load. It just can't go in my mouth... and you should be nice and compliant, not doing things on your own.</i>\"");
 
@@ -896,8 +896,8 @@ export class SophieFollowerScene extends NPCAwareContent {
         else outputText("  Her ass is suddenly pushed out more towards you, cum gushing out of her wet cunt as she starts inflating from the sheer amount of cum in your first load.");
 
         outputText("\n\n\"<i>Good " + mf(player, "boy", "girl") + " with a nice, obedient ");
-        if (player.cockArea(x) <= 5) outputText("clitty");
-        else if (player.cockArea(x) <= 30) outputText("pretty cock");
+        if (player.cocks.cockArea(x) <= 5) outputText("clitty");
+        else if (player.cocks.cockArea(x) <= 30) outputText("pretty cock");
         else outputText("humongous cunt-stretcher");
         outputText("... all for me... but you can't go soft, can you?  You just want to squirt more of your virile cum into Momma Sophie.</i>\"  Sophie rolls her hips atop of you, her jizz and girl-cum slickened ass hitting against your pelvis as she ruthlessly uses your overly sensitive " + cockDescript(game.player, x) + ", going from the tip to the base as she bounces atop of you.  The drugged lipstick and her constant, magic-powered demands don't allow you to go soft even for a moment as she rides you to completion, her hand working between her thighs at her own clit all the while when finally her pussy grips hard at you, causing you to thrust your hips and moan from sheer sensitivity, unable to achieve another orgasm so quickly.");
 
@@ -907,8 +907,8 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText(", and turns towards you, jiggling her tits right above your [face] as she bends over you, asking, \"<i>Now, wasn't that fun, [name]?  You think we should end now, shouldn't we?  Or do you want to give momma Sophie more of your thick cum so she's definitely pregnant twice over?</i>\"  Drugged and fucked to the edge of your sense of self-worth, you practically beg her to put you inside her again, your golden-tinted member standing proudly in the air, waiting for her hips and pussy to descend.  \"<i>Good answer, very good answer.</i>\"  She descends upon you again, rubbing her pussy against the tip of your " + cockDescript(game.player, x) + ", teasing both herself and you before drawing you inside and hilting you down to your [sheath] into her!");
 
         outputText("\n\nSophie's wet pussy is like heaven after being separated from it.  With her lipstick making your member so sensitive and so itching with want and her breasts bobbing over your head, they prompt you to grab them as she bounces atop of you.  \"<i>Ohhh, my cutie wanted to play with Momma's breasts!  Too bad Momma is too intent on fucking this cutie's ");
-        if (player.cockArea(x) <= 5) outputText("dainty little fem-cock");
-        else if (player.cockArea(x) <= 30) outputText("nice, sweet cum-squirter");
+        if (player.cocks.cockArea(x) <= 5) outputText("dainty little fem-cock");
+        else if (player.cocks.cockArea(x) <= 30) outputText("nice, sweet cum-squirter");
         else outputText("immense, gorgeous beast of a cock");
         outputText(" until it's almost broken!  Come on you sweet thing, you know you want to squirt it in me like you're a broken faucet!</i>\"");
 
@@ -933,8 +933,8 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("\n\nIt feels like you're drowning in liquid... but it's way too sticky, her vaginal muscles clenching around you as you're treated to a faceful of boob when she roughly pushes your face against them, her cunt picking up where it left. Your " + cockDescript(game.player, x) + " is sore and sensitive, and you definitely already shot out everything you've had, but the harpy's lipstick and her sheer lust for being impregnated seem to keep you going. You almost black out from being suffocated in her breasts, but every few loud smacks she pulls you away for a while, letting you breathe while her breeding passage sups at your erection, drinking your pre and the remains of cum from your urethra greedily, seeking to slowly build another orgasm in you.");
 
         outputText("\n\nYou feel Sophie's lips on your own before she coos in your ear, enticing you to keep going and to cum together with her again.  \"<i>Hold it in for a while... just let me have my fun, dear... and I will let you cum again.  Yes, you should cum as soon as I do.  Don't worry, you breeding me got me so horny it won't take long... and your sensitive, tormented");
-        if (player.cockArea(x) <= 5) outputText(" clitty");
-        else if (player.cockArea(x) <= 30) outputText(", pretty cock");
+        if (player.cocks.cockArea(x) <= 5) outputText(" clitty");
+        else if (player.cocks.cockArea(x) <= 30) outputText(", pretty cock");
         else outputText(", humongous cunt-stretcher");
         outputText(" is probably ready to blow another load very soon, isn't it?  You just can't keep up with Momma Sophie's exquisite pussy, you have to keep cumming and cumming over and over again.</i>\"");
 
@@ -994,8 +994,8 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("You shut her up the best way you know how - planting your lips upon her own, knowing full-well of the effects of her lustful lipstick.  Sophie returns the gesture, locking her tongue around yours while she tastes you, grinding her other set of lips against your attentive member.");
 
         outputText("\n\nYou take a hold of her motherly hips, guiding them up and against your hardening rod.  Sophie's fine with allowing you to take the reins, leaning down to press her beautiful bosom against your [chest].  Lifting her ass up, you slap it back down against your pent-up cock");
-        if (player.cockTotal() > 1) outputText(", your second one sliding up between her butt");
-        if (player.cockTotal() > 3) outputText(" while the others press against her");
+        if (player.cocks.length > 1) outputText(", your second one sliding up between her butt");
+        if (player.cocks.length > 3) outputText(" while the others press against her");
         outputText(".  Sophie cries out in pleasure, almost waking up the entire neighbourhood - which would be a bad thing, considering your neighbours.  You quickly take another taste of her lips, shutting her up while you start to pound upwards into her hungry quim.");
 
         outputText("\n\nYour ravenous glans presses against the tight confines of your feathery matron, squeezing against her velvet walls with every push of your [hips].  The rose-colored harpy rests herself against you, gently whispering cries into your ear as you focus all your carnal attention on the bouncing hips in front of you.");
@@ -1107,8 +1107,8 @@ export class SophieFollowerScene extends NPCAwareContent {
 
     private phaseTwoOfIncest(daughter: number): void {
         clearOutput();
-        let x: number = player.cockThatFits(sophieBimbo.sophieCapacity());
-        if (x < 0) x = player.smallestCockIndex();
+        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        if (x < 0) x = player.cocks.smallestCockIndex();
         daughter++;
         outputText("Tightening your hold on your curvaceous daughter, you shove her down onto the ground.  Growling with an almost primal edge, you lean down and inspect your prize, hands running over her ");
         if (daughter == 1) outputText("massive pillowy tits");
