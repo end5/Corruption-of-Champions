@@ -36,7 +36,7 @@ export class GoblinScene {
     public goblinRapesPlayer(): void {
         spriteSelect(24);
         outputText("", true);
-        if (player.findPerk(PerkLib.BimboBrains) >= 0 || player.findPerk(PerkLib.FutaFaculties) >= 0) {
+        if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0) {
             // [Female Bimbo Loss Against Goblin]
             if (player.hasVagina()) {
                 outputText(images.showImage("goblin-loss-female-bimbodildo"));

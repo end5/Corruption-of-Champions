@@ -705,13 +705,13 @@ export class Saves {
                 saveFile.data.perks.push([]);
                 // trace("Saveone Perk");
                 // trace("Populate One Perk");
-                saveFile.data.perks[i].id = player.perk(i).ptype.id;
-                // saveFile.data.perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
-                saveFile.data.perks[i].value1 = player.perk(i).value1;
-                saveFile.data.perks[i].value2 = player.perk(i).value2;
-                saveFile.data.perks[i].value3 = player.perk(i).value3;
-                saveFile.data.perks[i].value4 = player.perk(i).value4;
-                // saveFile.data.perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
+                saveFile.data.perks[i].id = player.perks[i].ptype.id;
+                // saveFile.data.perks[i].perkName = player.perks[i].ptype.id; //uncomment for backward compatibility
+                saveFile.data.perks[i].value1 = player.perks[i].value1;
+                saveFile.data.perks[i].value2 = player.perks[i].value2;
+                saveFile.data.perks[i].value3 = player.perks[i].value3;
+                saveFile.data.perks[i].value4 = player.perks[i].value4;
+                // saveFile.data.perks[i].perkDesc = player.perks[i].perkDesc; // uncomment for backward compatibility
             }
 
             // Set Status Array
@@ -1455,23 +1455,23 @@ export class Saves {
                 }
                 else {
                     trace("Creating perk : " + ptype);
-                    player.createPerk(ptype, value1, value2, value3, value4);
+                    player.perks.create(ptype, value1, value2, value3, value4);
 
-                    if (isNaN(player.perk(player.numPerks - 1).value1)) {
-                        if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus") {
-                            player.perk(player.numPerks - 1).value1 = .3;
+                    if (isNaN(player.perks[player.perks.length - 1].value1)) {
+                        if (player.perks[player.perks.length - 1].perkName == "Wizard's Focus") {
+                            player.perks[player.perks.length - 1].value1 = .3;
                         }
                         else {
-                            player.perk(player.numPerks).value1 = 0;
+                            player.perks[player.perks.length].value1 = 0;
                         }
 
-                        trace("NaN byaaaatch: " + player.perk(player.numPerks - 1).value1);
+                        trace("NaN byaaaatch: " + player.perks[player.perks.length - 1].value1);
                     }
 
-                    if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus") {
-                        if (player.perk(player.numPerks - 1).value1 == 0 || player.perk(player.numPerks - 1).value1 < 0.1) {
+                    if (player.perks[player.perks.length - 1].perkName == "Wizard's Focus") {
+                        if (player.perks[player.perks.length - 1].value1 == 0 || player.perks[player.perks.length - 1].value1 < 0.1) {
                             trace("Wizard's Focus boosted up to par (.5)");
-                            player.perk(player.numPerks - 1).value1 = .5;
+                            player.perks[player.perks.length - 1].value1 = .5;
                         }
                     }
                 }
@@ -1479,12 +1479,12 @@ export class Saves {
 
             // Fixup missing History: Whore perk IF AND ONLY IF the flag used to track the prior selection of a history perk has been set
             if (hasHistoryPerk == false && flags[kFLAGS.HISTORY_PERK_SELECTED] != 0) {
-                player.createPerk(PerkLib.HistoryWhore, 0, 0, 0, 0);
+                player.perks.create(PerkLib.HistoryWhore, 0, 0, 0, 0);
             }
 
             // Fixup missing Lusty Regeneration perk, if the player has an equipped viridian cock sock and does NOT have the Lusty Regeneration perk
             if (hasViridianCockSock == true && hasLustyRegenPerk == false) {
-                player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+                player.perks.create(PerkLib.LustyRegeneration, 0, 0, 0, 0);
             }
 
             if (flags[kFLAGS.TATTOO_SAVEFIX_APPLIED] == 0) {
@@ -1707,13 +1707,13 @@ export class Saves {
         // Fixing shit!
 
         // Fix duplicate elven bounty perks
-        if (player.findPerk(PerkLib.ElvenBounty) >= 0) {
+        if (player.perks.findByType(PerkLib.ElvenBounty) >= 0) {
             // CLear duplicates
-            while (player.perkDuplicated(PerkLib.ElvenBounty)) player.removePerk(PerkLib.ElvenBounty);
+            while (player.perks.exists(PerkLib.ElvenBounty)) player.perks.remove(PerkLib.ElvenBounty);
             // Fix fudged preggers value
-            if (player.perkv1(PerkLib.ElvenBounty) == 15) {
-                player.setPerkValue(PerkLib.ElvenBounty, 1, 0);
-                player.addPerkValue(PerkLib.ElvenBounty, 2, 15);
+            if (player.perks.getValue1Of(PerkLib.ElvenBounty) == 15) {
+                player.perks.setValue(PerkLib.ElvenBounty, 1, 0);
+                player.perks.addValue(PerkLib.ElvenBounty, 2, 15);
             }
         }
 
@@ -1767,7 +1767,7 @@ export class Saves {
             }
             if (flags[kFLAGS.AMILY_OVIPOSITED_COUNTDOWN] > 0) {
                 if (flags[kFLAGS.AMILY_BUTT_PREGNANCY_TYPE] != 0) return; // Must be a new format save
-                if (player.findPerk(PerkLib.SpiderOvipositor) >= 0)
+                if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
                     flags[kFLAGS.AMILY_BUTT_PREGNANCY_TYPE] = PregnancyStore.PREGNANCY_DRIDER_EGGS;
                 else
                     flags[kFLAGS.AMILY_BUTT_PREGNANCY_TYPE] = PregnancyStore.PREGNANCY_BEE_EGGS;
@@ -1886,7 +1886,7 @@ export class Saves {
             if (flags[kFLAGS.URTA_PREGNANCY_TYPE] == PregnancyStore.PREGNANCY_PLAYER) return; // Must be a new format save
             if (flags[kFLAGS.URTA_PREGNANCY_TYPE] > 0) { // URTA_PREGNANCY_TYPE was previously URTA_EGG_INCUBATION, assume this was an egg pregnancy
                 flags[kFLAGS.URTA_INCUBATION] = flags[kFLAGS.URTA_PREGNANCY_TYPE];
-                if (player.findPerk(PerkLib.SpiderOvipositor) >= 0)
+                if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
                     flags[kFLAGS.URTA_PREGNANCY_TYPE] = PregnancyStore.PREGNANCY_DRIDER_EGGS;
                 else
                     flags[kFLAGS.URTA_PREGNANCY_TYPE] = PregnancyStore.PREGNANCY_BEE_EGGS;

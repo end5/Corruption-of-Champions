@@ -29,16 +29,16 @@ export class InquisitorsCorset extends Armor {
     }
 
     public playerEquip(): Armor {
-        while (game.player.findPerk(PerkLib.BloodMage) >= 0) game.player.removePerk(PerkLib.BloodMage);
-        while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
-        game.player.createPerk(PerkLib.BloodMage, 0, 0, 0, 0);
-        game.player.createPerk(PerkLib.SluttySeduction, 10, 0, 0, 0);
+        while (game.player.perks.findByType(PerkLib.BloodMage) >= 0) game.player.perks.remove(PerkLib.BloodMage);
+        while (game.player.perks.findByType(PerkLib.SluttySeduction) >= 0) game.player.perks.remove(PerkLib.SluttySeduction);
+        game.player.perks.create(PerkLib.BloodMage, 0, 0, 0, 0);
+        game.player.perks.create(PerkLib.SluttySeduction, 10, 0, 0, 0);
         return super.playerEquip();
     }
 
     public playerRemove(): Armor {
-        while (game.player.findPerk(PerkLib.BloodMage) >= 0) game.player.removePerk(PerkLib.BloodMage);
-        while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
+        while (game.player.perks.findByType(PerkLib.BloodMage) >= 0) game.player.perks.remove(PerkLib.BloodMage);
+        while (game.player.perks.findByType(PerkLib.SluttySeduction) >= 0) game.player.perks.remove(PerkLib.SluttySeduction);
         return super.playerRemove();
     }
 
@@ -64,14 +64,14 @@ export class InquisitorsCorset extends Armor {
                             //+lust
                             dynStats("lus", 5);
                         }
-                        if(player.findPerk(PerkLib.BloodMage) < 0) player.createPerk(PerkLib.BloodMage,0,0,0,0);
-                        if(player.findPerk(PerkLib.SluttySeduction) < 0) player.createPerk(PerkLib.SluttySeduction,10,0,0,0);
+                        if(player.perks.findByType(PerkLib.BloodMage) < 0) player.perks.create(PerkLib.BloodMage,0,0,0,0);
+                        if(player.perks.findByType(PerkLib.SluttySeduction) < 0) player.perks.create(PerkLib.SluttySeduction,10,0,0,0);
             }
 
             override public function unequipEffect(player:Player, output:Boolean):void
             {
-                while(player.findPerk(PerkLib.BloodMage) >= 0) player.removePerk(PerkLib.BloodMage);
-                while(player.findPerk(PerkLib.SluttySeduction) >= 0) player.removePerk(PerkLib.SluttySeduction);
+                while(player.perks.findByType(PerkLib.BloodMage) >= 0) player.perks.remove(PerkLib.BloodMage);
+                while(player.perks.findByType(PerkLib.SluttySeduction) >= 0) player.perks.remove(PerkLib.SluttySeduction);
             }
     */
 }

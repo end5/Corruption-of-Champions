@@ -990,7 +990,7 @@ export class HelFollower extends NPCAwareContent {
                 buttons++;
             }
         }
-        if (player.lust >= 33 && player.findPerk(PerkLib.Incorporeality) >= 0 && izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0 && buttons < 9) {
+        if (player.lust >= 33 && player.perks.findByType(PerkLib.Incorporeality) >= 0 && izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0 && buttons < 9) {
             addButton(buttons, "Possess", heliaCampPossession);
             buttons++;
         }

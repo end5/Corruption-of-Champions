@@ -587,7 +587,7 @@ export function appearance(e: MouseEvent = null): void {
         outputText("  Two human-like legs grow down from your " + hipDescription(player) + ", sheathed in scales and ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.", false);
     else if (player.lowerBody == LOWER_BODY_TYPE_RACCOON)
         outputText("  Your legs, though covered in fur, are humanlike.  Long feet on the ends bear equally long toes, and the pads on the bottoms are quite sensitive to the touch.");
-    if (player.findPerk(PerkLib.Incorporeality) >= 0)
+    if (player.perks.findByType(PerkLib.Incorporeality) >= 0)
         outputText("  Of course, your " + legs(player) + " are partially transparent due to their ghostly nature.", false);
 
     outputText("\n", false);

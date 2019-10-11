@@ -75,7 +75,7 @@ export class KitsuneScene {
             doNext(createCallBackFunction(followTheWillOWisp, true));
         }// PC did NOT see through glamour
         // With Religious BG:
-        else if (player.findPerk(PerkLib.HistoryReligious) >= 0) {
+        else if (player.perks.findByType(PerkLib.HistoryReligious) >= 0) {
             outputText("The instant she touches you, she recoils with a yelp, a brilliant flash temporarily blinding you both.\n\n");
             outputText("\"<i>Ow, ow, ow!</i>\"\n\n");
             outputText("When the spots clear from your eyes, the kitsune's glamour has been dispelled, revealing her for what she truly is.  A pair of large triangular fox ears poke up from her ");
@@ -896,7 +896,7 @@ export class KitsuneScene {
         player.orgasm();
         dynStats("lib", 1, "sen", 1);
         player.boostLactation(1.5);
-        if (player.findPerk(PerkLib.Feeder) >= 0) {
+        if (player.perks.findByType(PerkLib.Feeder) >= 0) {
             player.addStatusValue(StatusAffects.Feeder, 1, 1);
             player.changeStatusValue(StatusAffects.Feeder, 2, 0);
         }
@@ -1087,7 +1087,7 @@ export class KitsuneScene {
                 button = kitsuneButton(button, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri);
         }
         // [Feeder]
-        if (player.findPerk(PerkLib.Feeder) >= 0)
+        if (player.perks.findByType(PerkLib.Feeder) >= 0)
             button = kitsuneButton(button, "Breastfeed", feederTheKitsunes);
         addButton(9, "Leave", leaveKitsune);
     }
@@ -2220,7 +2220,7 @@ export class KitsuneScene {
     // [Meditate]
     private meditateLikeAKitsuneEhQuestionMark(): void {
         clearOutput();
-        if (player.hasItem(consumables.FOXJEWL) && player.tailType == TAIL_TYPE_FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.earType == EARS_FOX && player.findPerk(PerkLib.CorruptedNinetails) < 0 && player.findPerk(PerkLib.EnlightenedNinetails) < 0) {
+        if (player.hasItem(consumables.FOXJEWL) && player.tailType == TAIL_TYPE_FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.earType == EARS_FOX && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
             // 20% chance if PC has fox ears, 1 or more fox tails, carries a Fox Jewel, and meets level & INT requirements for the next tail:
             outputText("You sit down carefully on a small mat in front of the shrine and clear your mind.  Closing your eyes, you meditate on the things you've learned in your journey thus far, and resolve to continue fighting against the forces of corruption that permeate the land.\n\n");
 
@@ -2237,7 +2237,7 @@ export class KitsuneScene {
                 // Increment tail by 1, consume Fox Jewel, -2 COR, -20 LUST, +2 INT, Advance 1 hr and return to camp.
                 // Apply Nine-Tails perk if applicable.
                 player.tailVenom = 9;
-                player.createPerk(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
+                player.perks.create(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
                 dynStats("int", 2, "lus", -20, "cor", -2);
             }
             player.consumeItem(consumables.FOXJEWL);

@@ -72,7 +72,7 @@ export class Mountain {
             return;
         }
         // Boosts mino and hellhound rates!
-        if (player.findPerk(PerkLib.PiercedFurrite) >= 0 && rand(3) == 0) {
+        if (player.perks.findByType(PerkLib.PiercedFurrite) >= 0 && rand(3) == 0) {
             if (rand(2) == 0) chooser = 1;
             else chooser = 3;
         }
@@ -81,11 +81,11 @@ export class Mountain {
             chooser = 1;
         }
         // 10% MORE chance for minos if uber-addicted
-        if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && rand(10) == 0) {
+        if (player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0 && rand(10) == 0) {
             chooser = 1;
         }
         // Every 15 explorations chance at mino bad-end!
-        if (player.exploredMountain % 16 == 0 && player.findPerk(PerkLib.MinotaurCumAddict) >= 0) {
+        if (player.exploredMountain % 16 == 0 && player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) {
             spriteSelect(44);
             minotaurScene.minoAddictionBadEndEncounter();
             return;
@@ -94,7 +94,7 @@ export class Mountain {
             // Determines likelyhood of imp/goblins
             // Below - goblin, Equal and up - imp
             let impGob: number = 5;
-            if (player.findPerk(PerkLib.PiercedLethite) >= 0) {
+            if (player.perks.findByType(PerkLib.PiercedLethite) >= 0) {
                 if (impGob <= 3) impGob += 2;
                 else if (impGob < 7) impGob = 7;
             }

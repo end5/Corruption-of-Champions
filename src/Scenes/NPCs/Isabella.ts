@@ -17,15 +17,15 @@ export class Isabella extends Monster {
             outputText("You duck aside at the last moment, relying entirely on your speed.\n", false);
         }
         // Determine if evaded
-        else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("You easily evade her incredibly linear attack.\n", false);
         }
         // ("Misdirection"
-        else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("You easily misdirect her and step aside at the last moment.\n", false);
         }
         // Determine if cat'ed
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("You throw yourself out of the way with cat-like agility at the last moment, avoiding her attack.\n", false);
         }
         else {
@@ -55,15 +55,15 @@ export class Isabella extends Monster {
             outputText("You duck aside at the last moment, relying entirely on your speed.\n", false);
         }
         // Determine if evaded
-        else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("You easily evade her incredibly linear attack.\n", false);
         }
         // ("Misdirection"
-        else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("You easily misdirect her and step aside at the last moment.\n", false);
         }
         // Determine if cat'ed
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("You bend backward with cat-like agility to avoid her attack.\n", false);
         }
         else {
@@ -73,7 +73,7 @@ export class Isabella extends Monster {
                 outputText("You deflect her blow away, taking no damage.\n", false);
                 damage = 0;
             }
-            else if (player.findPerk(PerkLib.Resolute) >= 0 && player.tou >= 75) {
+            else if (player.perks.findByType(PerkLib.Resolute) >= 0 && player.tou >= 75) {
                 outputText("You resolutely ignore the blow thanks to your immense toughness.\n");
                 damage = 0;
             }
@@ -98,15 +98,15 @@ export class Isabella extends Monster {
             outputText("You duck aside at the last moment, relying entirely on your speed.\n", false);
         }
         // Determine if evaded
-        else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("You easily evade her incredibly linear attack.\n", false);
         }
         // ("Misdirection"
-        else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("You easily misdirect her and step aside at the last moment.\n", false);
         }
         // Determine if cat'ed
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("You bend backward with cat-like agility to avoid her attack.\n", false);
         }
         else {
@@ -115,7 +115,7 @@ export class Isabella extends Monster {
             if (damage <= 0) {
                 outputText("You manage to block her with your own fists.\n", false);
             }
-            else if (player.findPerk(PerkLib.Resolute) >= 0 && player.tou >= 75) {
+            else if (player.perks.findByType(PerkLib.Resolute) >= 0 && player.tou >= 75) {
                 outputText("You resolutely ignore the blow thanks to your immense toughness.\n");
             }
             else {

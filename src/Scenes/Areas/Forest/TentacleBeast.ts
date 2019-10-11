@@ -20,7 +20,7 @@ export class TentacleBeast extends Monster {
         // Not Trapped yet
         if (player.findStatusAffect(StatusAffects.TentacleBind) < 0) {
             // Success
-            if (int(Math.random() * (((player.spe) / 2))) > 15 || (player.findPerk(PerkLib.Evade) >= 0 && int(Math.random() * (((player.spe) / 2))) > 15)) {
+            if (int(Math.random() * (((player.spe) / 2))) > 15 || (player.perks.findByType(PerkLib.Evade) >= 0 && int(Math.random() * (((player.spe) / 2))) > 15)) {
                 outputText("In an impressive display of gymnastics, you dodge, duck, dip, dive, and roll away from the shower of grab-happy arms trying to hold you. Your instincts tell you that this was a GOOD thing.\n", false);
             }
             // Fail

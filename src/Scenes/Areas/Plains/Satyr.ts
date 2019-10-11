@@ -56,7 +56,7 @@ export class Satyr extends Monster {
             if (damage > 0) {
                 damage = player.takeDamage(damage);
                 outputText("He charges at you with a loud bleat, catching you off-guard and sending you flying into the ground.");
-                if (player.findPerk(PerkLib.Resolute) < 0) {
+                if (player.perks.findByType(PerkLib.Resolute) < 0) {
                     outputText("  The pain of the impact is so big you feel completely dazed, almost seeing stars.");
                     player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
                 }

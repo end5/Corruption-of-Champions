@@ -373,7 +373,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             }
         }
         // Possess crams in free spot or overlaps another.
-        if (player.findPerk(PerkLib.Incorporeality) >= 0) {
+        if (player.perks.findByType(PerkLib.Incorporeality) >= 0) {
             // Taurs or nagas with both scenes, replace 1!
             if (bodyButt != null && bodyButt2 != null) {
                 if (rand(2) == 0) {

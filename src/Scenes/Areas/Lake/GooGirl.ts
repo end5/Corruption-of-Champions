@@ -12,39 +12,39 @@ export class GooGirl extends Monster {
         let damage: number = 0;
         // return to combat menu when finished
         doNext(playerMenu);
-        if (findPerk(PerkLib.Acid) >= 0) outputText("Her body quivering from your flames, the goo-girl ", false);
+        if (this.perks.findByType(PerkLib.Acid) >= 0) outputText("Her body quivering from your flames, the goo-girl ", false);
         else outputText("The slime holds its hands up and they morph into a replica of your " + player.weaponName + ".  Happily, she swings at you", false);
         // Determine if dodged!
         if (player.spe - spe > 0 && int(Math.random() * (((player.spe - spe) / 4) + 80)) > 80) {
-            if (findPerk(PerkLib.Acid) >= 0) outputText("tries to slap you, but you dodge her attack.", false);
+            if (this.perks.findByType(PerkLib.Acid) >= 0) outputText("tries to slap you, but you dodge her attack.", false);
             else outputText(", missing as you dodge aside.", false);
             return;
         }
         // Determine if evaded
-        if (short != "Kiha" && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
-            if (findPerk(PerkLib.Acid) >= 0) outputText("tries to slap you, but you evade her attack.", false);
+        if (short != "Kiha" && player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
+            if (this.perks.findByType(PerkLib.Acid) >= 0) outputText("tries to slap you, but you evade her attack.", false);
             else outputText(", but you evade the clumsy attack.", false);
             return;
         }
         // ("Misdirection"
-        if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
-            if (findPerk(PerkLib.Acid) >= 0) outputText("tries to slap you.  You misdirect her, avoiding the hit.", false);
+        if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+            if (this.perks.findByType(PerkLib.Acid) >= 0) outputText("tries to slap you.  You misdirect her, avoiding the hit.", false);
             else outputText(", missing as you misdirect her attentions.", false);
             return;
         }
         // Determine if cat'ed
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
-            if (findPerk(PerkLib.Acid) >= 0) outputText("tries to slap you, but misses due to your cat-like evasion.", false);
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+            if (this.perks.findByType(PerkLib.Acid) >= 0) outputText("tries to slap you, but misses due to your cat-like evasion.", false);
             else outputText(", missing due to your cat-like evasion.", false);
             return;
         }
         // Determine damage - str modified by enemy toughness!
-        if (findPerk(PerkLib.Acid) >= 0) damage = int((str + 10 + weaponAttack) - rand(player.tou) - player.armorDef);
+        if (this.perks.findByType(PerkLib.Acid) >= 0) damage = int((str + 10 + weaponAttack) - rand(player.tou) - player.armorDef);
         else damage = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
         if (damage > 0) damage = player.takeDamage(damage);
         if (damage <= 0) {
             damage = 0;
-            if (findPerk(PerkLib.Acid) >= 0) {
+            if (this.perks.findByType(PerkLib.Acid) >= 0) {
                 if (rand(player.armorDef + player.tou) < player.armorDef) outputText("tries to slap you, but the acid-bearing slap spatters weakly off your " + player.armorName + ".", false);
                 else outputText("tries to slap you with an acid-loaded hand, but it splatters off you ineffectually.", false);
             }
@@ -56,7 +56,7 @@ export class GooGirl extends Monster {
         }
         // everyone else
         else {
-            if (findPerk(PerkLib.Acid) >= 0) {
+            if (this.perks.findByType(PerkLib.Acid) >= 0) {
                 outputText("delivers a painful slap across your cheek.  You gasp when the light stinging becomes a searing burn that seems to get worse as time goes on!", false);
                 if (player.findStatusAffect(StatusAffects.AcidSlap) < 0) player.createStatusAffect(StatusAffects.AcidSlap, 0, 0, 0, 0);
             }
@@ -100,7 +100,7 @@ export class GooGirl extends Monster {
 
     protected performCombatAction(): void {
         // 1/3 chance of base attack + bonus if in acid mode
-        if ((findPerk(PerkLib.Acid) >= 0 && rand(3) == 0) || rand(3) == 0)
+        if ((this.perks.findByType(PerkLib.Acid) >= 0 && rand(3) == 0) || rand(3) == 0)
             gooGalAttack();
         else if (rand(5) == 0) gooEngulph();
         else if (rand(3) == 0) gooPlay();

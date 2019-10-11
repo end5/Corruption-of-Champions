@@ -22,7 +22,7 @@ export class Forest {
         // Every tenth exploration finds a pumpkin if eligible!
         if (player.statusAffectv1(StatusAffects.ExploredDeepwoods) % 10 == 0 && isHalloween()) {
             // If Fera isn't free yet...
-            if (player.findPerk(PerkLib.FerasBoonBreedingBitch) < 0 && player.findPerk(PerkLib.FerasBoonAlpha) < 0) {
+            if (player.perks.findByType(PerkLib.FerasBoonBreedingBitch) < 0 && player.perks.findByType(PerkLib.FerasBoonAlpha) < 0) {
                 if (date.fullYear > flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE]) {
                     pumpkinFuckEncounter();
                     return;
@@ -131,7 +131,7 @@ export class Forest {
             return;
         }
         // Raise Jojo chances for furrite
-        if (player.findPerk(PerkLib.PiercedFurrite) >= 0 && rand(5) == 0 && (player.cor > 25 || game.monk > 0)) {
+        if (player.perks.findByType(PerkLib.PiercedFurrite) >= 0 && rand(5) == 0 && (player.cor > 25 || game.monk > 0)) {
             chooser = 1;
         }
         // If Jojo lives in camp, never encounter him
@@ -181,7 +181,7 @@ export class Forest {
             if (player.hasVagina()) impGob++;
             if (player.totalFertility() >= 30) impGob++;
             if (player.cumQ() >= 200) impGob--;
-            if (player.findPerk(PerkLib.PiercedLethite) >= 0) {
+            if (player.perks.findByType(PerkLib.PiercedLethite) >= 0) {
                 if (impGob <= 3) impGob += 2;
                 else if (impGob < 7) impGob = 7;
             }

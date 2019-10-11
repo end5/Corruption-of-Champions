@@ -46,7 +46,7 @@ export class BeeHoney extends Consumable {
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Drink text
         if (special) {
             outputText("You uncork the bottle and pour the incredibly strong smelling concentrated honey down your throat.  Its taste is also mighty intense.  All at once you feel the effects of the substance start to course through your body.");
@@ -162,10 +162,10 @@ export class BeeHoney extends Consumable {
             }
         }
         // Gain oviposition!
-        if (changes < changeLimit && player.findPerk(PerkLib.BeeOvipositor) < 0 && player.tailType == CoC.TAIL_TYPE_BEE_ABDOMEN && rand(2) == 0) {
+        if (changes < changeLimit && player.perks.findByType(PerkLib.BeeOvipositor) < 0 && player.tailType == CoC.TAIL_TYPE_BEE_ABDOMEN && rand(2) == 0) {
             outputText("\n\nAn odd swelling starts in your insectile abdomen, somewhere along the underside.  Curling around, you reach back to your extended, bulbous bee part and run your fingers along the underside.  You gasp when you feel a tender, yielding slit near the stinger.  As you probe this new orifice, a shock of pleasure runs through you, and a tubular, black, semi-hard appendage drops out, pulsating as heavily as any sexual organ.  <b>The new organ is clearly an ovipositor!</b>  A few gentle prods confirm that it's just as sensitive; you can already feel your internals changing, adjusting to begin the production of unfertilized eggs.  You idly wonder what laying them with your new bee ovipositor will feel like...");
             outputText("\n\n(<b>Perk Gained:  Bee Ovipositor - Allows you to lay eggs in your foes!</b>)");
-            player.createPerk(PerkLib.BeeOvipositor, 0, 0, 0, 0);
+            player.perks.create(PerkLib.BeeOvipositor, 0, 0, 0, 0);
             changes++;
         }
         // Bee butt - 66% lower chance if already has a tail

@@ -630,7 +630,7 @@ export class UmasShop extends TelAdreAbstractContent {
             PerkLib.ChiReflowMagic,
             PerkLib.ChiReflowSpeed
         ]) {
-            if (player.findPerk(perk) >= 0) {
+            if (player.perks.findByType(perk) >= 0) {
                 return perk;
             }
         }
@@ -645,27 +645,27 @@ export class UmasShop extends TelAdreAbstractContent {
      */
     public applyNeedlework(selectedSession: number): void {
         if (selectedSession == NEEDLEWORK_UNDO) {
-            player.removePerk(this.getNeedleworkPerk());
+            player.perks.remove(this.getNeedleworkPerk());
             flags[kFLAGS.UMA_TIMES_ACUPUNCTURE_UNDO]++;
         }
         else if (selectedSession == NEEDLEWORK_SPEED) {
-            player.createPerk(PerkLib.ChiReflowSpeed, 0, 0, 0, 0);
+            player.perks.create(PerkLib.ChiReflowSpeed, 0, 0, 0, 0);
             outputText("<b>" + NEEDLEWORK_SPEED_PERK_DESC + "</b>");
         }
         else if (selectedSession == NEEDLEWORK_LUST) {
-            player.createPerk(PerkLib.ChiReflowLust, 0, 0, 0, 0);
+            player.perks.create(PerkLib.ChiReflowLust, 0, 0, 0, 0);
             outputText("<b>" + NEEDLEWORK_LUST_PERK_DESC + "</b>");
         }
         else if (selectedSession == NEEDLEWORK_DEFENSE) {
-            player.createPerk(PerkLib.ChiReflowDefense, 0, 0, 0, 0);
+            player.perks.create(PerkLib.ChiReflowDefense, 0, 0, 0, 0);
             outputText("<b>" + NEEDLEWORK_DEFENSE_PERK_DESC + "</b>");
         }
         else if (selectedSession == NEEDLEWORK_MAGIC) {
-            player.createPerk(PerkLib.ChiReflowMagic, 0, 0, 0, 0);
+            player.perks.create(PerkLib.ChiReflowMagic, 0, 0, 0, 0);
             outputText("<b>" + NEEDLEWORK_MAGIC_PERK_DESC + "</b>");
         }
         else if (selectedSession == NEEDLEWORK_ATTACK) {
-            player.createPerk(PerkLib.ChiReflowAttack, 0, 0, 0, 0);
+            player.perks.create(PerkLib.ChiReflowAttack, 0, 0, 0, 0);
             outputText("<b>" + NEEDLEWORK_ATTACK_PERK_DESC + "</b>");
         }
     }

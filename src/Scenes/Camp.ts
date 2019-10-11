@@ -102,7 +102,7 @@ export class Camp extends NPCAwareContent {
             // Purifying Murble
             if (player.cor < 50 && !campCorruptJojo() && !amilyScene.amilyCorrupt() && !vapulaSlave()
                 && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 0 && flags[kFLAGS.MARBLE_COUNTUP_TO_PURIFYING] >= 200
-                && player.findPerk(PerkLib.MarblesMilk) < 0) {
+                && player.perks.findByType(PerkLib.MarblesMilk) < 0) {
                 hideMenus();
                 marblePurification.BLUHBLUH();
                 return;
@@ -663,7 +663,7 @@ export class Camp extends NPCAwareContent {
             }
         }
         let baitText: string = "Masturbate";
-        if (((player.findPerk(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10)) && !(player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0)) baitText = "Meditate";
+        if (((player.perks.findByType(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10)) && !(player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0)) baitText = "Meditate";
         // Initialize companions/followers
         if (game.time.hours > 4 && game.time.hours < 23) {
             if (followersCount() > 0)
@@ -1034,14 +1034,14 @@ export class Camp extends NPCAwareContent {
                 dynStats("tou", -.1, "int", -.1);
                 // fatigue
                 fatigue(-2 * timeQ);
-                if (player.findPerk(PerkLib.SpeedyRecovery) >= 0) fatigue(-1 * timeQ);
+                if (player.perks.findByType(PerkLib.SpeedyRecovery) >= 0) fatigue(-1 * timeQ);
             }
             // REGULAR HP/FATIGUE RECOVERY
             else {
                 HPChange(timeQ * 10, true);
                 // fatigue
                 fatigue(-4 * timeQ);
-                if (player.findPerk(PerkLib.SpeedyRecovery) >= 0) fatigue(-2 * timeQ);
+                if (player.perks.findByType(PerkLib.SpeedyRecovery) >= 0) fatigue(-2 * timeQ);
             }
         }
         else {
@@ -1062,13 +1062,13 @@ export class Camp extends NPCAwareContent {
                 outputText("\nYour time spent waiting is very troubled, and you aren't able to settle down.  You get up feeling tired and unsatisfied, always thinking of Marble's milk.\n", false);
                 // fatigue
                 fatigue(-1 * timeQ);
-                if (player.findPerk(PerkLib.SpeedyRecovery) >= 0) fatigue(-0.5 * timeQ);
+                if (player.perks.findByType(PerkLib.SpeedyRecovery) >= 0) fatigue(-0.5 * timeQ);
             }
             // REGULAR HP/FATIGUE RECOVERY
             else {
                 // fatigue
                 fatigue(-2 * timeQ);
-                if (player.findPerk(PerkLib.SpeedyRecovery) >= 0) fatigue(-1 * timeQ);
+                if (player.perks.findByType(PerkLib.SpeedyRecovery) >= 0) fatigue(-1 * timeQ);
             }
         }
         else {
@@ -1219,14 +1219,14 @@ export class Camp extends NPCAwareContent {
             dynStats("tou", -.1, "int", -.1);
             // fatigue
             fatigue(-int(player.fatigue / 2));
-            if (player.findPerk(PerkLib.SpeedyRecovery) >= 0) fatigue(-int(player.fatigue / 4));
+            if (player.perks.findByType(PerkLib.SpeedyRecovery) >= 0) fatigue(-int(player.fatigue / 4));
         }
         // Mino withdrawal
         else if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3) {
             if (display) outputText("\nYou spend much of the night tossing and turning, aching for a taste of minotaur cum.\n", false);
             HPChange(timeQ * 15, true);
             fatigue(-int(player.fatigue / 2));
-            if (player.findPerk(PerkLib.SpeedyRecovery) >= 0) fatigue(-int(player.fatigue / 4));
+            if (player.perks.findByType(PerkLib.SpeedyRecovery) >= 0) fatigue(-int(player.fatigue / 4));
         }
         // REGULAR HP/FATIGUE RECOVERY
         else {

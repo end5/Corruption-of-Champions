@@ -744,10 +744,10 @@ export class Scylla extends TelAdreAbstractContent {
         outputText("What addiction would you like to discuss?", false);
         // Set choices
         let milk: () => void = null;
-        if ((player.findPerk(PerkLib.MarblesMilk) >= 0 || player.statusAffectv3(StatusAffects.Marble) > 0) && player.findPerk(PerkLib.MarbleResistant) < 0)
+        if ((player.perks.findByType(PerkLib.MarblesMilk) >= 0 || player.statusAffectv3(StatusAffects.Marble) > 0) && player.perks.findByType(PerkLib.MarbleResistant) < 0)
             milk = scyllaPtVMilk;
         let cum: () => void = null;
-        if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 50 || player.findPerk(PerkLib.MinotaurCumAddict) >= 0) cum = scyllaPtVCum;
+        if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 50 || player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) cum = scyllaPtVCum;
         let sex: () => void = null;
         if (player.lib >= 85 || player.minLust() >= 20) sex = scyllaPtVSex;
         let tentacles: () => void = null;

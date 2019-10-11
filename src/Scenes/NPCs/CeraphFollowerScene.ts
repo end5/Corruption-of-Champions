@@ -676,7 +676,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
         outputText("", true);
         // requires that the PC have a cock, just to keep it simple, no centaurs and probably not slimes
         outputText("You call on Ceraph, but are a bit taken aback when she doesn't appear right away.  You look around to see if you might have missed her, then spot something else streaking towards you from the wastes.  It is kicking up so much dust that you don't have time to see what it is before it ", false);
-        if (player.findPerk(PerkLib.Evade) < 0 && player.spe / 5 + rand(20) < 22) outputText("flies into you, knocking you to the ground.  After a moment, you find yourself faced with a pair of overeager cat-morphs grinning down at you.", false);
+        if (player.perks.findByType(PerkLib.Evade) < 0 && player.spe / 5 + rand(20) < 22) outputText("flies into you, knocking you to the ground.  After a moment, you find yourself faced with a pair of overeager cat-morphs grinning down at you.", false);
         else outputText("just barely misses you and crashes into the ground behind you.  After a moment, two bodies disentangle themselves from the impact site.  Once they stand up, you can see that a pair of overeager cat morphs have arrived in your camp.", false);
         outputText("\n\n", false);
 

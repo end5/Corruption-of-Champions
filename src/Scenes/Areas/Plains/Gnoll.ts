@@ -22,15 +22,15 @@ export class Gnoll extends Monster {
             else if (player.spe - spe >= 20) outputText("You deftly avoid " + a + short + "'s slow " + weaponVerb + ".\n", false);
         }
         // Determine if evaded
-        else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n", false);
         }
         // ("Misdirection"
-        else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
         }
         // Determine if cat'ed
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "", false);
             if (plural) outputText("' attacks.\n", false);
             else outputText("'s attack.\n", false);
@@ -135,15 +135,15 @@ export class Gnoll extends Monster {
             else if (player.spe - spe >= 20) outputText("You deftly avoid " + a + short + "'s slow " + weaponVerb + ".\n", false);
         }
         // Determine if evaded
-        else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n", false);
         }
         // ("Misdirection"
-        else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
         }
         // Determine if cat'ed
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "", false);
             if (plural) outputText("' attacks.\n", false);
             else outputText("'s attack.\n", false);
@@ -273,15 +273,15 @@ export class Gnoll extends Monster {
                 else if (player.spe - spe >= 20) outputText("You deftly avoid " + a + short + "'s slow " + weaponVerb + ".\n", false);
             }
             // Determine if evaded
-            else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+            else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
                 outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n", false);
             }
             // ("Misdirection"
-            else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+            else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
                 outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
             }
             // Determine if cat'ed
-            else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+            else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
                 outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "", false);
                 if (plural) outputText("' attacks.\n", false);
                 else outputText("'s attack.\n", false);

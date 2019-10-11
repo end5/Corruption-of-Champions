@@ -211,9 +211,9 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         addButton(5, "Wait", (monster as Lethice).grappleWait);
 
         let whitefireLustCap: number = 75;
-        if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) whitefireLustCap += 10;
+        if (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10) whitefireLustCap += 10;
 
-        const gotEnergy: boolean = player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
+        const gotEnergy: boolean = player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
 
         if (player.lust < whitefireLustCap && player.findStatusAffect(StatusAffects.KnowsWhitefire) >= 0 && gotEnergy) {
             addButton(1, "Dispell", (monster as Lethice).dispellRapetacles);
@@ -237,9 +237,9 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         else if (monster instanceof Lethice) {
             const ml: Lethice = monster as Lethice;
             whitefireLustCap = 75;
-            if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) whitefireLustCap += 10;
+            if (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10) whitefireLustCap += 10;
 
-            gotEnergy = player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
+            gotEnergy = player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100;
 
             if (player.findStatusAffect(StatusAffects.LethicesRapeTentacles) >= 0) {
                 if (player.lust < whitefireLustCap && player.findStatusAffect(StatusAffects.KnowsWhitefire) >= 0 && gotEnergy) {
@@ -279,15 +279,15 @@ export function packAttack(): void {
         outputText("You duck, weave, and dodge.  Despite their best efforts, the throng of demons only hit the air and each other.");
     }
     // Determine if evaded
-    else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+    else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
         outputText("Using your skills at evading attacks, you anticipate and sidestep " + monster.a + monster.short + "' attacks.");
     }
     // ("Misdirection"
-    else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName == "red, high-society bodysuit") {
+    else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName == "red, high-society bodysuit") {
         outputText("Using Raphael's teachings, you anticipate and sidestep " + monster.a + monster.short + "' attacks.");
     }
     // Determine if cat'ed
-    else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+    else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
         outputText("With your incredible flexibility, you squeeze out of the way of " + monster.a + monster.short + "' attacks.");
     }
     else {
@@ -631,7 +631,7 @@ function fireBow(): void {
     else if (monster.plural)
         outputText(monster.capitalA + monster.short + " look down at the arrow that now protrudes from one of " + monster.pronoun3 + " bodies");
     else outputText(monster.capitalA + monster.short + " looks down at the arrow that now protrudes from " + monster.pronoun3 + " body");
-    if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+    if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
     damage = doDamage(damage);
     monster.lust -= 20;
     if (monster.lust < 0) monster.lust = 0;
@@ -750,7 +750,7 @@ export function bite(): void {
 
     // Deal damage and update based on perks
     if (damage > 0) {
-        if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+        if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
         damage = doDamage(damage);
     }
 
@@ -783,7 +783,7 @@ export function bite(): void {
 
 export function fatigueRecovery(): void {
     fatigue(-1);
-    if (player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) fatigue(-(1 + rand(3)));
+    if (player.perks.findByType(PerkLib.EnlightenedNinetails) >= 0 || player.perks.findByType(PerkLib.CorruptedNinetails) >= 0) fatigue(-(1 + rand(3)));
 }
 
 // ATTACK
@@ -813,7 +813,7 @@ export function attack(): void {
         outputText("It's all or nothing!  With a bellowing cry you charge down the treacherous slope and smite the sandtrap as hard as you can!  ");
         (monster as SandTrap).trapLevel(-4);
     }
-    if (player.findPerk(PerkLib.DoubleAttack) >= 0 && player.spe >= 50 && flags[kFLAGS.DOUBLE_ATTACK_STYLE] < 2) {
+    if (player.perks.findByType(PerkLib.DoubleAttack) >= 0 && player.spe >= 50 && flags[kFLAGS.DOUBLE_ATTACK_STYLE] < 2) {
         if (player.findStatusAffect(StatusAffects.FirstAttack) >= 0) player.removeStatusAffect(StatusAffects.FirstAttack);
         else {
             // Always!
@@ -921,7 +921,7 @@ export function attack(): void {
 	}*/
     // BASIC DAMAGE STUFF
     // Double Attack Hybrid Reductions
-    if (player.findPerk(PerkLib.DoubleAttack) >= 0 && player.spe >= 50 && player.str > 61 && flags[kFLAGS.DOUBLE_ATTACK_STYLE] == 0) {
+    if (player.perks.findByType(PerkLib.DoubleAttack) >= 0 && player.spe >= 50 && player.str > 61 && flags[kFLAGS.DOUBLE_ATTACK_STYLE] == 0) {
         damage = 60.5;
     }
     else damage = player.str;
@@ -931,7 +931,7 @@ export function attack(): void {
     if (monster.findStatusAffect(StatusAffects.Level) >= 0) damage = Math.round(damage * 1.75);
     // Determine if critical hit!
     let crit: boolean = false;
-    if (rand(100) <= 4 || (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
+    if (rand(100) <= 4 || (player.perks.findByType(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
         crit = true;
         damage *= 1.75;
     }
@@ -941,7 +941,7 @@ export function attack(): void {
     if (player.weaponName != "jeweled rapier" && player.weaponName != "deadly spear") {
         reduction += monster.armorDef;
         // Remove half armor for lunging strikes
-        if (player.findPerk(PerkLib.LungingAttacks) >= 0)
+        if (player.perks.findByType(PerkLib.LungingAttacks) >= 0)
             reduction -= monster.armorDef / 2;
     }
     // Take 5 off enemy armor for katana
@@ -955,11 +955,11 @@ export function attack(): void {
     damage -= reduction;
     // Damage post processing!
     // Thunderous Strikes
-    if (player.findPerk(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
+    if (player.perks.findByType(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
         damage *= 1.2;
 
-    if (player.findPerk(PerkLib.ChiReflowMagic) >= 0) damage *= UmasShop.NEEDLEWORK_MAGIC_REGULAR_MULTI;
-    if (player.findPerk(PerkLib.ChiReflowAttack) >= 0) damage *= UmasShop.NEEDLEWORK_ATTACK_REGULAR_MULTI;
+    if (player.perks.findByType(PerkLib.ChiReflowMagic) >= 0) damage *= UmasShop.NEEDLEWORK_MAGIC_REGULAR_MULTI;
+    if (player.perks.findByType(PerkLib.ChiReflowAttack) >= 0) damage *= UmasShop.NEEDLEWORK_ATTACK_REGULAR_MULTI;
 
     // One final round
     damage = Math.round(damage);
@@ -994,7 +994,7 @@ export function attack(): void {
     // Have to put it before doDamage, because doDamage applies the change, as well as status effects and shit.
     if (monster instanceof Doppleganger) {
         if (monster.findStatusAffect(StatusAffects.Stunned) < 0) {
-            if (damage > 0 && player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+            if (damage > 0 && player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
             if (damage > 0) damage = doDamage(damage, false);
 
             (monster as Doppleganger).mirrorAttack(damage);
@@ -1005,7 +1005,7 @@ export function attack(): void {
     }
 
     if (damage > 0) {
-        if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+        if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
         damage = doDamage(damage);
     }
 
@@ -1017,7 +1017,7 @@ export function attack(): void {
         outputText("You hit " + monster.a + monster.short + "! (" + damage + ")", false);
         if (crit) outputText(" <b>*CRIT*</b>");
     }
-    if (player.findPerk(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
+    if (player.perks.findByType(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
         if (monster.armorDef > 0) outputText("\nYour hits are so brutal that you damage " + monster.a + monster.short + "'s defenses!");
         if (monster.armorDef - 10 > 0) monster.armorDef -= 10;
         else monster.armorDef = 0;
@@ -1055,7 +1055,7 @@ export function attack(): void {
         // Weapon Procs!
         if (player.weaponName == "huge warhammer" || player.weaponName == "spiked gauntlet" || player.weaponName == "hooked gauntlets") {
             // 10% chance
-            if (rand(10) == 0 && monster.findPerk(PerkLib.Resolute) < 0) {
+            if (rand(10) == 0 && monster.perks.findByType(PerkLib.Resolute) < 0) {
                 outputText("\n" + monster.capitalA + monster.short + " reels from the brutal blow, stunned.", false);
                 monster.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
             }
@@ -1187,7 +1187,7 @@ export function goreAttack(): void {
         // CAP 'DAT SHIT
         if (damage > player.level * 10 + 100) damage = player.level * 10 + 100;
         if (damage > 0) {
-            if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+            if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
             damage = doDamage(damage);
         }
         // Different horn damage messages
@@ -1289,26 +1289,26 @@ export function combatMiss(): boolean {
 
 }
 export function combatEvade(): boolean {
-    return monster.short != "Kiha" && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10;
+    return monster.short != "Kiha" && player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10;
 
 }
 export function combatFlexibility(): boolean {
-    return player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6;
+    return player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6;
 
 }
 export function combatMisdirect(): boolean {
-    return player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit";
+    return player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit";
 }
 
 // DEAL DAMAGE
 export function doDamage(damage: number, apply: boolean = true): number {
-    if (player.findPerk(PerkLib.Sadist) >= 0) {
+    if (player.perks.findByType(PerkLib.Sadist) >= 0) {
         damage *= 1.2;
         dynStats("lus", 3);
     }
     if (monster.HP - damage <= 0) {
 		/* No monsters use this perk, so it's been removed for now
-		if(monster.findPerk(PerkLib.LastStrike) >= 0) doNext(monster.perk(monster.findPerk(PerkLib.LastStrike)).value1);
+		if(monster.perks.findByType(PerkLib.LastStrike) >= 0) doNext(monster.perks[monster.perks.findByType(PerkLib.LastStrike)].value1);
 		else doNext(endHpVictory);
 		*/
         doNext(endHpVictory);
@@ -1399,7 +1399,7 @@ export function dropItem(monster: Monster): void {
     }
     if (monster instanceof Harpy || monster instanceof Sophie) {
         if (rand(10) == 0) itype = armors.W_ROBES;
-        else if (rand(3) == 0 && player.findPerk(PerkLib.LuststickAdapted) >= 0) itype = consumables.LUSTSTK;
+        else if (rand(3) == 0 && player.perks.findByType(PerkLib.LuststickAdapted) >= 0) itype = consumables.LUSTSTK;
         else itype = consumables.GLDSEED;
     }
     // Chance of armor if at level 1 pierce fetish
@@ -1688,7 +1688,7 @@ function combatStatusesUpdate(): void {
         const slap: number = 3 + (maxHP() * 0.02);
         outputText("<b>Your muscles twitch in agony as the acid keeps burning you. (" + slap + ")</b>\n\n", false);
     }
-    if (player.findPerk(PerkLib.ArousingAura) >= 0 && monster.lustVuln > 0 && player.cor >= 70) {
+    if (player.perks.findByType(PerkLib.ArousingAura) >= 0 && monster.lustVuln > 0 && player.cor >= 70) {
         if (monster.lust < 50) outputText("Your aura seeps into " + monster.a + monster.short + " but does not have any visible effects just yet.\n\n", false);
         else if (monster.lust < 60) {
             if (!monster.plural) outputText(monster.capitalA + monster.short + " starts to squirm a little from your unholy presence.\n\n", false);
@@ -1757,7 +1757,7 @@ function combatStatusesUpdate(): void {
     // Harpy lip gloss
     if (player.hasCock() && player.findStatusAffect(StatusAffects.Luststick) >= 0 && (monster.short == "harpy" || monster.short == "Sophie")) {
         // Chance to cleanse!
-        if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
+        if (player.perks.findByType(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
             outputText("You manage to cleanse the harpy lip-gloss from your system with your knowledge of medicine!\n\n", false);
             player.removeStatusAffect(StatusAffects.Luststick);
         }
@@ -1803,7 +1803,7 @@ function combatStatusesUpdate(): void {
     }
     if (player.findStatusAffect(StatusAffects.NagaVenom) >= 0) {
         // Chance to cleanse!
-        if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
+        if (player.perks.findByType(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
             outputText("You manage to cleanse the naga venom from your system with your knowledge of medicine!\n\n", false);
             player.spe += player.statusAffectv1(StatusAffects.NagaVenom);
             mainView.statsView.showStatUp('spe');
@@ -1822,7 +1822,7 @@ function combatStatusesUpdate(): void {
     }
     else if (player.findStatusAffect(StatusAffects.TemporaryHeat) >= 0) {
         // Chance to cleanse!
-        if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
+        if (player.perks.findByType(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
             outputText("You manage to cleanse the heat and rut drug from your system with your knowledge of medicine!\n\n", false);
             player.removeStatusAffect(StatusAffects.TemporaryHeat);
         }
@@ -1843,7 +1843,7 @@ function combatStatusesUpdate(): void {
     // Poison
     if (player.findStatusAffect(StatusAffects.Poison) >= 0) {
         // Chance to cleanse!
-        if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
+        if (player.perks.findByType(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
             outputText("You manage to cleanse the poison from your system with your knowledge of medicine!\n\n", false);
             player.removeStatusAffect(StatusAffects.Poison);
         }
@@ -1859,7 +1859,7 @@ function combatStatusesUpdate(): void {
     }
     // Drider incubus venom
     if (player.findStatusAffect(StatusAffects.DriderIncubusVenom) >= 0) {
-        if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 41) {
+        if (player.perks.findByType(PerkLib.Medicine) >= 0 && rand(100) <= 41) {
             outputText("You negate the effects of the drider incubus’ venom with your knowledge of medicine!\n\n", false);
 
             player.str += player.statusAffectv2(StatusAffects.DriderIncubusVenom);
@@ -1904,22 +1904,22 @@ export function regeneration(combat: boolean = true): void {
     if (combat) {
         // Regeneration
         healingPercent = 0;
-        if (player.findPerk(PerkLib.Regeneration) >= 0) healingPercent += 1;
-        if (player.findPerk(PerkLib.Regeneration2) >= 0) healingPercent += 2;
+        if (player.perks.findByType(PerkLib.Regeneration) >= 0) healingPercent += 1;
+        if (player.perks.findByType(PerkLib.Regeneration2) >= 0) healingPercent += 2;
         if (player.armorName == "skimpy nurse's outfit") healingPercent += 2;
         if (player.armorName == "goo armor") healingPercent += 2;
-        if (player.findPerk(PerkLib.LustyRegeneration) >= 0) healingPercent += 1;
+        if (player.perks.findByType(PerkLib.LustyRegeneration) >= 0) healingPercent += 1;
         if (healingPercent > 5) healingPercent = 5;
         HPChange(Math.round(maxHP() * healingPercent / 100), false);
     }
     else {
         // Regeneration
         healingPercent = 0;
-        if (player.findPerk(PerkLib.Regeneration) >= 0) healingPercent += 2;
-        if (player.findPerk(PerkLib.Regeneration2) >= 0) healingPercent += 4;
+        if (player.perks.findByType(PerkLib.Regeneration) >= 0) healingPercent += 2;
+        if (player.perks.findByType(PerkLib.Regeneration2) >= 0) healingPercent += 4;
         if (player.armorName == "skimpy nurse's outfit") healingPercent += 2;
         if (player.armorName == "goo armor") healingPercent += 3;
-        if (player.findPerk(PerkLib.LustyRegeneration) >= 0) healingPercent += 2;
+        if (player.perks.findByType(PerkLib.LustyRegeneration) >= 0) healingPercent += 2;
         if (healingPercent > 10) healingPercent = 10;
         HPChange(Math.round(maxHP() * healingPercent / 100), false);
     }
@@ -1939,7 +1939,7 @@ export function startCombat(monster_: Monster, plotFight_: boolean = false): voi
         monster.pronoun3 = emberScene.emberMF("his", "her");
     }
     // Reduce enemy def if player has precision!
-    if (player.findPerk(PerkLib.Precision) >= 0 && player.inte >= 25) {
+    if (player.perks.findByType(PerkLib.Precision) >= 0 && player.inte >= 25) {
         if (monster.armorDef <= 10) monster.armorDef = 0;
         else monster.armorDef -= 10;
     }
@@ -1960,7 +1960,7 @@ export function startCombatImmediate(monster_: Monster, _plotFight: boolean): vo
         monster.pronoun3 = emberScene.emberMF("his", "her");
     }
     // Reduce enemy def if player has precision!
-    if (player.findPerk(PerkLib.Precision) >= 0 && player.inte >= 25) {
+    if (player.perks.findByType(PerkLib.Precision) >= 0 && player.inte >= 25) {
         if (monster.armorDef <= 10) monster.armorDef = 0;
         else monster.armorDef -= 10;
     }
@@ -2273,37 +2273,37 @@ export function tease(justText: boolean = false): void {
     // 5% chance for each tease level.
     chance += player.teaseLevel * 5;
     // 10% for seduction perk
-    if (player.findPerk(PerkLib.Seduction) >= 0) chance += 10;
+    if (player.perks.findByType(PerkLib.Seduction) >= 0) chance += 10;
     // 10% for sexy armor types
-    if (player.findPerk(PerkLib.SluttySeduction) >= 0) chance += 10;
+    if (player.perks.findByType(PerkLib.SluttySeduction) >= 0) chance += 10;
     // 10% for bimbo shits
-    if (player.findPerk(PerkLib.BimboBody) >= 0) {
+    if (player.perks.findByType(PerkLib.BimboBody) >= 0) {
         chance += 10;
         bimbo = true;
     }
-    if (player.findPerk(PerkLib.BroBody) >= 0) {
+    if (player.perks.findByType(PerkLib.BroBody) >= 0) {
         chance += 10;
         bro = true;
     }
-    if (player.findPerk(PerkLib.FutaForm) >= 0) {
+    if (player.perks.findByType(PerkLib.FutaForm) >= 0) {
         chance += 10;
         futa = true;
     }
     // 2 & 2 for seductive valentines!
-    if (player.findPerk(PerkLib.SensualLover) >= 0) {
+    if (player.perks.findByType(PerkLib.SensualLover) >= 0) {
         chance += 2;
     }
-    if (player.findPerk(PerkLib.ChiReflowLust) >= 0) chance += UmasShop.NEEDLEWORK_LUST_TEASE_MULTI;
+    if (player.perks.findByType(PerkLib.ChiReflowLust) >= 0) chance += UmasShop.NEEDLEWORK_LUST_TEASE_MULTI;
     // ==============================
     // Determine basic damage.
     // ==============================
     damage = 6 + rand(3);
-    if (player.findPerk(PerkLib.SensualLover) >= 0) {
+    if (player.perks.findByType(PerkLib.SensualLover) >= 0) {
         damage += 2;
     }
-    if (player.findPerk(PerkLib.Seduction) >= 0) damage += 5;
+    if (player.perks.findByType(PerkLib.Seduction) >= 0) damage += 5;
     // + slutty armor bonus
-    if (player.findPerk(PerkLib.SluttySeduction) >= 0) damage += player.perkv1(PerkLib.SluttySeduction);
+    if (player.perks.findByType(PerkLib.SluttySeduction) >= 0) damage += player.perks.getValue1Of(PerkLib.SluttySeduction);
     // 10% for bimbo shits
     if (bimbo || bro || futa) {
         damage += 5;
@@ -2488,7 +2488,7 @@ export function tease(justText: boolean = false): void {
     }
     // ==EXTRAS========
     // 12 Cat flexibility.
-    if (player.findPerk(PerkLib.Flexibility) >= 0 && player.isBiped() && player.hasVagina()) {
+    if (player.perks.findByType(PerkLib.Flexibility) >= 0 && player.isBiped() && player.hasVagina()) {
         choices[choices.length] = 12;
         choices[choices.length] = 12;
         if (player.wetness() >= 3) choices[choices.length] = 12;
@@ -2509,7 +2509,7 @@ export function tease(justText: boolean = false): void {
         if (player.pregnancyIncubation <= 24) choices[choices.length] = 13;
     }
     // 14 Brood Mother
-    if (monster.hasCock() && player.hasVagina() && player.findPerk(PerkLib.BroodMother) >= 0 && (player.pregnancyIncubation <= 0 || player.pregnancyIncubation > 216)) {
+    if (monster.hasCock() && player.hasVagina() && player.perks.findByType(PerkLib.BroodMother) >= 0 && (player.pregnancyIncubation <= 0 || player.pregnancyIncubation > 216)) {
         choices[choices.length] = 14;
         choices[choices.length] = 14;
         choices[choices.length] = 14;
@@ -2608,7 +2608,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 26;
     }
     // 27 FEEDER
-    if (player.findPerk(PerkLib.Feeder) >= 0 && player.biggestTitSize() >= 4) {
+    if (player.perks.findByType(PerkLib.Feeder) >= 0 && player.biggestTitSize() >= 4) {
         choices[choices.length] = 27;
         choices[choices.length] = 27;
         choices[choices.length] = 27;
@@ -2805,7 +2805,7 @@ export function tease(justText: boolean = false): void {
                     if (player.cocks.length == 1) outputText(cockDescript(player, 0), false);
                     if (player.cocks.length > 1) outputText(multiCockDescriptLight(player), false);
                     outputText(" and ", false);
-                    if (player.findPerk(PerkLib.BulgeArmor) >= 0) {
+                    if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) {
                         damage += 5;
                     }
                     penis = true;
@@ -2819,7 +2819,7 @@ export function tease(justText: boolean = false): void {
         case 3:
             if (player.isTaur() && player.horseCocks() > 0) {
                 outputText("You let out a bestial whinny and stomp your hooves at your enemy.  They prepare for an attack, but instead you kick your front hooves off the ground, revealing the hefty horsecock hanging beneath your belly.  You let it flop around, quickly getting rigid and to its full erect length.  You buck your hips as if you were fucking a mare in heat, letting your opponent know just what's in store for them if they surrender to pleasure...", false);
-                if (player.findPerk(PerkLib.BulgeArmor) >= 0) damage += 5;
+                if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) damage += 5;
             }
             else {
                 outputText("You open your " + player.armorName + ", revealing your ", false);
@@ -2827,7 +2827,7 @@ export function tease(justText: boolean = false): void {
                 if (player.cocks.length > 1) outputText(multiCockDescriptLight(player), false);
                 if (player.hasVagina()) outputText(" and ", false);
                 // Bulgy bonus!
-                if (player.findPerk(PerkLib.BulgeArmor) >= 0) {
+                if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) {
                     damage += 5;
                     chance++;
                 }
@@ -2875,13 +2875,13 @@ export function tease(justText: boolean = false): void {
             break;
         // 6 pussy flash
         case 6:
-            if (player.findPerk(PerkLib.BimboBrains) >= 0 || player.findPerk(PerkLib.FutaFaculties) >= 0) {
+            if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0) {
                 outputText("You coyly open your " + player.armorName + " and giggle, \"<i>Is this, like, what you wanted to see?</i>\"  ", false);
             }
             else {
                 outputText("You coyly open your " + player.armorName + " and purr, \"<i>Does the thought of a hot, ", false);
                 if (futa) outputText("futanari ", false);
-                else if (player.findPerk(PerkLib.BimboBody) >= 0) outputText("bimbo ", false);
+                else if (player.perks.findByType(PerkLib.BimboBody) >= 0) outputText("bimbo ", false);
                 else outputText("sexy ");
                 outputText("body turn you on?</i>\"  ", false);
             }
@@ -2892,7 +2892,7 @@ export function tease(justText: boolean = false): void {
             if (player.cockTotal() > 0) outputText("  Meanwhile, " + sMultiCockDesc(player) + " bobs back and forth with your gyrating hips, adding to the display.", false);
             // BONUSES!
             if (player.hasCock()) {
-                if (player.findPerk(PerkLib.BulgeArmor) >= 0) damage += 5;
+                if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) damage += 5;
                 penis = true;
             }
             vagina = true;
@@ -2909,7 +2909,7 @@ export function tease(justText: boolean = false): void {
         // 8 Pec Dance
         case 8:
             outputText("You place your hands on your hips and flex repeatedly, skillfully making your pecs alternatively bounce in a muscular dance.  ", false);
-            if (player.findPerk(PerkLib.BroBrains) >= 0) outputText("Damn, " + monster.a + monster.short + " has got to love this!", false);
+            if (player.perks.findByType(PerkLib.BroBrains) >= 0) outputText("Damn, " + monster.a + monster.short + " has got to love this!", false);
             else outputText(monster.capitalA + monster.short + " will probably enjoy the show, but you feel a bit silly doing this.", false);
             chance += (player.tone - 75) / 5;
             damage += (player.tone - 70) / 5;
@@ -2918,7 +2918,7 @@ export function tease(justText: boolean = false): void {
         // 9 Heroic Pose
         case 9:
             outputText("You lift your arms and flex your incredibly muscular arms while flashing your most disarming smile.  ", false);
-            if (player.findPerk(PerkLib.BroBrains) >= 0) outputText(monster.capitalA + monster.short + " can't resist such a heroic pose!", false);
+            if (player.perks.findByType(PerkLib.BroBrains) >= 0) outputText(monster.capitalA + monster.short + " can't resist such a heroic pose!", false);
             else outputText("At least the physical changes to your body are proving useful!", false);
             chance += (player.tone - 75) / 5;
             damage += (player.tone - 70) / 5;
@@ -2927,12 +2927,12 @@ export function tease(justText: boolean = false): void {
         // 10 Bulgy groin thrust
         case 10:
             outputText("You lean back and pump your hips at " + monster.a + monster.short + " in an incredibly vulgar display.  The bulging, barely-contained outline of your " + cockDescript(player, 0) + " presses hard into your gear.  ", false);
-            if (player.findPerk(PerkLib.BroBrains) >= 0) outputText("No way could " + monster.pronoun1 + " resist your huge cock!", false);
+            if (player.perks.findByType(PerkLib.BroBrains) >= 0) outputText("No way could " + monster.pronoun1 + " resist your huge cock!", false);
             else outputText("This is so crude, but at the same time, you know it'll likely be effective.", false);
             outputText("  You go on like that, humping the air for your foe", false);
             outputText("'s", false);
             outputText(" benefit, trying to entice them with your man-meat.", false);
-            if (player.findPerk(PerkLib.BulgeArmor) >= 0) damage += 5;
+            if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) damage += 5;
             penis = true;
             break;
         // 11 Show off dick
@@ -2940,10 +2940,10 @@ export function tease(justText: boolean = false): void {
             if (silly() && rand(2) == 0) outputText("You strike a herculean pose and flex, whispering, \"<i>Do you even lift?</i>\" to " + monster.a + monster.short + ".", false);
             else {
                 outputText("You open your " + player.armorName + " just enough to let your " + cockDescript(player, 0) + " and " + ballsDescriptLight(player) + " dangle free.  A shiny rope of pre-cum dangles from your cock, showing that your reproductive system is every bit as fit as the rest of you.  ", false);
-                if (player.findPerk(PerkLib.BroBrains) >= 0) outputText("Bitches love a cum-leaking cock.", false);
+                if (player.perks.findByType(PerkLib.BroBrains) >= 0) outputText("Bitches love a cum-leaking cock.", false);
                 else outputText("You've got to admit, you look pretty good down there.", false);
             }
-            if (player.findPerk(PerkLib.BulgeArmor) >= 0) damage += 5;
+            if (player.perks.findByType(PerkLib.BulgeArmor) >= 0) damage += 5;
             penis = true;
             break;
         // ==EXTRAS========
@@ -3545,11 +3545,11 @@ export function tease(justText: boolean = false): void {
         // NERF TEASE DAMAGE
         damage *= .7;
         bonusDamage *= .7;
-        if (player.findPerk(PerkLib.HistoryWhore) >= 0) {
+        if (player.perks.findByType(PerkLib.HistoryWhore) >= 0) {
             damage *= 1.15;
             bonusDamage *= 1.15;
         }
-        if (player.findPerk(PerkLib.ChiReflowLust) >= 0) damage *= UmasShop.NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI;
+        if (player.perks.findByType(PerkLib.ChiReflowLust) >= 0) damage *= UmasShop.NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI;
         if (monster.plural) damage *= 1.3;
         damage = (damage + rand(bonusDamage)) * monster.lustVuln;
 
@@ -3644,7 +3644,7 @@ export function magicMenu(): void {
     outputText("What spell will you use?\n\n");
     // WHITE SHITZ
     let whiteLustCap: number = 75;
-    if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) whiteLustCap += 10;
+    if (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10) whiteLustCap += 10;
 
     if (player.lust >= whiteLustCap)
         outputText("You are far too aroused to focus on white magic.\n\n");
@@ -3674,7 +3674,7 @@ export function magicMenu(): void {
         }
     }
     // JOJO ABILITIES -- kind makes sense to stuff it in here along side the white magic shit (also because it can't fit into M. Specials :|
-    if (player.findPerk(PerkLib.CleansingPalm) >= 0 && player.cor < 10) {
+    if (player.perks.findByType(PerkLib.CleansingPalm) >= 0 && player.cor < 10) {
         addButton(3, "C.Palm", spellCleansingPalm);
     }
     addButton(9, "Back", combatMenu, false);
@@ -3682,18 +3682,18 @@ export function magicMenu(): void {
 
 export function spellMod(): number {
     let mod: number = 1;
-    if (player.findPerk(PerkLib.Archmage) >= 0 && player.inte >= 75) mod += .5;
-    if (player.findPerk(PerkLib.Channeling) >= 0 && player.inte >= 60) mod += .5;
-    if (player.findPerk(PerkLib.Mage) >= 0 && player.inte >= 50) mod += .5;
-    if (player.findPerk(PerkLib.Spellpower) >= 0 && player.inte >= 50) mod += .5;
-    if (player.findPerk(PerkLib.WizardsFocus) >= 0) {
-        mod += player.perkv1(PerkLib.WizardsFocus);
+    if (player.perks.findByType(PerkLib.Archmage) >= 0 && player.inte >= 75) mod += .5;
+    if (player.perks.findByType(PerkLib.Channeling) >= 0 && player.inte >= 60) mod += .5;
+    if (player.perks.findByType(PerkLib.Mage) >= 0 && player.inte >= 50) mod += .5;
+    if (player.perks.findByType(PerkLib.Spellpower) >= 0 && player.inte >= 50) mod += .5;
+    if (player.perks.findByType(PerkLib.WizardsFocus) >= 0) {
+        mod += player.perks.getValue1Of(PerkLib.WizardsFocus);
     }
-    if (player.findPerk(PerkLib.ChiReflowMagic) >= 0) mod += UmasShop.NEEDLEWORK_MAGIC_SPELL_MULTI;
+    if (player.perks.findByType(PerkLib.ChiReflowMagic) >= 0) mod += UmasShop.NEEDLEWORK_MAGIC_SPELL_MULTI;
     return mod;
 }
 export function spellArouse(): void {
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(15) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(15) > 100) {
         outputText("You are too tired to cast this spell.", true);
         doNext(magicMenu);
         return;
@@ -3769,7 +3769,7 @@ export function spellArouse(): void {
     return;
 }
 export function spellHeal(): void {
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
         outputText("You are too tired to cast this spell.", true);
         doNext(magicMenu);
         return;
@@ -3809,7 +3809,7 @@ export function spellHeal(): void {
 // maximum of 15, allows it to exceed the maximum.  Chance of backfiring
 // and increasing lust by 15.
 export function spellMight(): void {
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(25) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(25) > 100) {
         outputText("You are too tired to cast this spell.", true);
         doNext(magicMenu);
         return;
@@ -3864,7 +3864,7 @@ export function spellMight(): void {
 
 // (15) Charge Weapon – boosts your weapon attack value by 10 * SpellMod till the end of combat.
 export function spellChargeWeapon(): void {
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(15) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(15) > 100) {
         outputText("You are too tired to cast this spell.", true);
         doNext(magicMenu);
         return;
@@ -3883,7 +3883,7 @@ export function spellChargeWeapon(): void {
 export function spellBlind(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     outputText("", true);
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
         outputText("You are too tired to cast this spell.", true);
         doNext(magicMenu);
         return;
@@ -3966,7 +3966,7 @@ export function spellBlind(): void {
 export function spellWhitefire(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     outputText("", true);
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100) {
         outputText("You are too tired to cast this spell.", true);
         doNext(magicMenu);
         return;
@@ -4004,7 +4004,7 @@ export function spellWhitefire(): void {
         // Using fire attacks on the goo]
         if (monster.short == "goo-girl") {
             outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer.", false);
-            if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid, 0, 0, 0, 0);
+            if (monster.perks.findByType(PerkLib.Acid) < 0) monster.perks.create(PerkLib.Acid, 0, 0, 0, 0);
         }
     }
     outputText("\n\n", false);
@@ -4028,7 +4028,7 @@ export function spellWhitefire(): void {
 export function spellCleansingPalm(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     clearOutput();
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(30) > 100) {
         outputText("You are too tired to cast this spell.", true);
         doNext(magicMenu);
         return;
@@ -4090,17 +4090,17 @@ export function spellCleansingPalm(): void {
 }
 
 export function spellPerkUnlock(): void {
-    if (flags[kFLAGS.SPELLS_CAST] >= 5 && player.findPerk(PerkLib.SpellcastingAffinity) < 0) {
+    if (flags[kFLAGS.SPELLS_CAST] >= 5 && player.perks.findByType(PerkLib.SpellcastingAffinity) < 0) {
         outputText("<b>You've become more comfortable with your spells, unlocking the Spellcasting Affinity perk and reducing fatigue cost of spells by 20%!</b>\n\n");
-        player.createPerk(PerkLib.SpellcastingAffinity, 20, 0, 0, 0);
+        player.perks.create(PerkLib.SpellcastingAffinity, 20, 0, 0, 0);
     }
-    if (flags[kFLAGS.SPELLS_CAST] >= 15 && player.perkv1(PerkLib.SpellcastingAffinity) < 35) {
+    if (flags[kFLAGS.SPELLS_CAST] >= 15 && player.perks.getValue1Of(PerkLib.SpellcastingAffinity) < 35) {
         outputText("<b>You've become more comfortable with your spells, further reducing your spell costs by an additional 15%!</b>\n\n");
-        player.setPerkValue(PerkLib.SpellcastingAffinity, 1, 35);
+        player.perks.setValue(PerkLib.SpellcastingAffinity, 1, 35);
     }
-    if (flags[kFLAGS.SPELLS_CAST] >= 45 && player.perkv1(PerkLib.SpellcastingAffinity) < 50) {
+    if (flags[kFLAGS.SPELLS_CAST] >= 45 && player.perks.getValue1Of(PerkLib.SpellcastingAffinity) < 50) {
         outputText("<b>You've become more comfortable with your spells, further reducing your spell costs by an additional 15%!</b>\n\n");
-        player.setPerkValue(PerkLib.SpellcastingAffinity, 1, 50);
+        player.perks.setValue(PerkLib.SpellcastingAffinity, 1, 50);
     }
 }
 
@@ -4112,7 +4112,7 @@ export function hellFire(): void {
     if (monster.cor < 50) flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     else flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
     outputText("", true);
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
         outputText("You are too tired to breathe fire.\n", true);
         doNext(combatMenu);
         return;
@@ -4168,10 +4168,10 @@ export function hellFire(): void {
     }
     else if (monster.short == "Vala") {
         outputText("  Vala beats her wings with surprising strength, blowing the fireball back at you!  ", false);
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(2) == 0) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(2) == 0) {
             outputText("You dive out of the way and evade it!", false);
         }
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(4) == 0) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(4) == 0) {
             outputText("You use your flexibility to barely fold your body out of the way!", false);
         }
         else {
@@ -4304,7 +4304,7 @@ export function kick(): void {
     // Apply AND DONE!
     damage -= reduction;
     // Damage post processing!
-    if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+    if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
     // (None yet!)
     if (damage > 0) damage = doDamage(damage);
 
@@ -4483,7 +4483,7 @@ export function spiderBiteAttack(): void {
 export function superWhisperAttack(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     outputText("", true);
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(10) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(10) > 100) {
         outputText("You are too tired to focus this ability.", true);
         doNext(combatMenu);
         return;
@@ -4512,7 +4512,7 @@ export function superWhisperAttack(): void {
         enemyAI();
         return;
     }
-    if (monster.findPerk(PerkLib.Focused) >= 0) {
+    if (monster.perks.findByType(PerkLib.Focused) >= 0) {
         if (!monster.plural) outputText(monster.capitalA + monster.short + " is too focused for your whispers to influence!\n\n");
         enemyAI();
         return;
@@ -4543,7 +4543,7 @@ export function superWhisperAttack(): void {
 export function dragonBreath(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     clearOutput();
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
         outputText("You are too tired to breathe fire.", true);
         doNext(combatMenu);
         return;
@@ -4606,10 +4606,10 @@ export function dragonBreath(): void {
     // Special enemy avoidances
     else if (monster.short == "Vala") {
         outputText("Vala beats her wings with surprising strength, blowing the fireball back at you! ", false);
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(2) == 0) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(2) == 0) {
             outputText("You dive out of the way and evade it!", false);
         }
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(4) == 0) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(4) == 0) {
             outputText("You use your flexibility to barely fold your body out of the way!", false);
         }
         else {
@@ -4621,14 +4621,14 @@ export function dragonBreath(): void {
     // Goos burn
     else if (monster.short == "goo-girl") {
         outputText(" Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer. ", false);
-        if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid, 0, 0, 0, 0);
+        if (monster.perks.findByType(PerkLib.Acid) < 0) monster.perks.create(PerkLib.Acid, 0, 0, 0, 0);
         damage = Math.round(damage * 1.5);
         damage = doDamage(damage);
         monster.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
         outputText("(" + damage + ")\n\n", false);
     }
     else {
-        if (monster.findPerk(PerkLib.Resolute) < 0) {
+        if (monster.perks.findByType(PerkLib.Resolute) < 0) {
             outputText("  " + monster.capitalA + monster.short + " reels as your wave of force slams into " + monster.pronoun2 + " like a ton of rock!  The impact sends " + monster.pronoun2 + " crashing to the ground, too dazed to strike back.");
             monster.createStatusAffect(StatusAffects.Stunned, 1, 0, 0, 0);
         }
@@ -4730,10 +4730,10 @@ export function fireballuuuuu(): void {
     }
     else if (monster.short == "Vala") {
         outputText("Vala beats her wings with surprising strength, blowing the fireball back at you! ", false);
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(2) == 0) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(2) == 0) {
             outputText("You dive out of the way and evade it!", false);
         }
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(4) == 0) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(4) == 0) {
             outputText("You use your flexibility to barely fold your body out of the way!", false);
         }
         else {
@@ -4746,7 +4746,7 @@ export function fireballuuuuu(): void {
         // Using fire attacks on the goo]
         if (monster.short == "goo-girl") {
             outputText(" Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer. ", false);
-            if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid, 0, 0, 0, 0);
+            if (monster.perks.findByType(PerkLib.Acid) < 0) monster.perks.create(PerkLib.Acid, 0, 0, 0, 0);
             damage = Math.round(damage * 1.5);
         }
         if (monster.findStatusAffect(StatusAffects.Sandstorm) >= 0) {
@@ -4867,7 +4867,7 @@ export function kissAttack(): void {
 export function possess(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
     outputText("", true);
-    if (monster.short == "plain girl" || monster.findPerk(PerkLib.Incorporeality) >= 0) {
+    if (monster.short == "plain girl" || monster.perks.findByType(PerkLib.Incorporeality) >= 0) {
         outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself toward the opponent's frame.  Sadly, it was doomed to fail, as you bounce right off your foe's ghostly form.", false);
     }
     else if (monster instanceof LivingStatue) {
@@ -4992,7 +4992,7 @@ export function runAway(callHook: boolean = true): void {
     let escapeMod: number = 20 + monster.level * 3;
     if (game.debug) escapeMod -= 300;
     if (player.canFly()) escapeMod -= 20;
-    if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
+    if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) escapeMod -= 25;
 
     // Big tits doesn't matter as much if ya can fly!
     else {
@@ -5037,8 +5037,8 @@ export function runAway(callHook: boolean = true): void {
     // Ember is SPUCIAL
     if (monster.short == "Ember") {
         // GET AWAY
-        if (player.spe > rand(monster.spe + escapeMod) || (player.findPerk(PerkLib.Runner) >= 0 && rand(100) < 50)) {
-            if (player.findPerk(PerkLib.Runner) >= 0) outputText("Using your skill at running, y");
+        if (player.spe > rand(monster.spe + escapeMod) || (player.perks.findByType(PerkLib.Runner) >= 0 && rand(100) < 50)) {
+            if (player.perks.findByType(PerkLib.Runner) >= 0) outputText("Using your skill at running, y");
             else outputText("Y");
             outputText("ou easily outpace the dragon, who begins hurling imprecations at you.  \"What the hell, [name], you weenie; are you so scared that you can't even stick out your punishment?\"");
             outputText("\n\nNot to be outdone, you call back, \"Sucks to you!  If even the mighty Last Ember of Hope can't catch me, why do I need to train?  Later, little bird!\"");
@@ -5058,7 +5058,7 @@ export function runAway(callHook: boolean = true): void {
         // Fliers flee!
         if (player.canFly()) outputText(monster.capitalA + monster.short + " can't catch you.", false);
         // sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape
-        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) {
+        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) {
             outputText("Using your running skill, you build up a head of steam and jump, then spread your arms and flail your tail wildly; your opponent dogs you as best " + monster.pronoun1 + " can, but stops and stares dumbly as your spastic tail slowly propels you several meters into the air!  You leave " + monster.pronoun2 + " behind with your clumsy, jerky, short-range flight.");
         }
         // Non-fliers flee
@@ -5072,7 +5072,7 @@ export function runAway(callHook: boolean = true): void {
         return;
     }
     // Runner perk chance
-    else if (player.findPerk(PerkLib.Runner) >= 0 && rand(100) < 50) {
+    else if (player.perks.findByType(PerkLib.Runner) >= 0 && rand(100) < 50) {
         game.inCombat = false;
         outputText("Thanks to your talent for running, you manage to escape.", false);
         if (monster.short == "Izma") {
@@ -5094,7 +5094,7 @@ export function runAway(callHook: boolean = true): void {
             else outputText(monster.capitalA + monster.short + " manages to grab your " + legs(player) + " and drag you back to the ground before you can fly away!", false);
         }
         // fail
-        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
+        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
         // Nonflyer messages
         else {
             // Huge balls messages
@@ -5201,30 +5201,30 @@ export function magicalSpecials(): void {
     menu();
 
     // Berserk
-    if (player.findPerk(PerkLib.Berzerker) >= 0) {
+    if (player.perks.findByType(PerkLib.Berzerker) >= 0) {
         addButton(0, "Berzerk", berzerk);
     }
-    if (player.findPerk(PerkLib.Dragonfire) >= 0) {
+    if (player.perks.findByType(PerkLib.Dragonfire) >= 0) {
         addButton(1, "DragonFire", dragonBreath);
     }
-    if (player.findPerk(PerkLib.FireLord) >= 0) {
+    if (player.perks.findByType(PerkLib.FireLord) >= 0) {
         addButton(2, "Fire Breath", fireballuuuuu);
     }
-    if (player.findPerk(PerkLib.Hellfire) >= 0) {
+    if (player.perks.findByType(PerkLib.Hellfire) >= 0) {
         addButton(3, "Hellfire", hellFire);
     }
     // Possess ability.
-    if (player.findPerk(PerkLib.Incorporeality) >= 0) {
+    if (player.perks.findByType(PerkLib.Incorporeality) >= 0) {
         addButton(4, "Possess", possess);
     }
-    if (player.findPerk(PerkLib.Whispered) >= 0) {
+    if (player.perks.findByType(PerkLib.Whispered) >= 0) {
         addButton(5, "Whisper", superWhisperAttack);
     }
-    if (player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
+    if (player.perks.findByType(PerkLib.CorruptedNinetails) >= 0) {
         addButton(6, "C.FoxFire", corruptedFoxFire);
         addButton(7, "Terror", kitsuneTerror);
     }
-    if (player.findPerk(PerkLib.EnlightenedNinetails) >= 0) {
+    if (player.perks.findByType(PerkLib.EnlightenedNinetails) >= 0) {
         addButton(6, "FoxFire", foxFire);
         addButton(7, "Illusion", kitsuneIllusion);
     }
@@ -5318,7 +5318,7 @@ export function berzerk(): void {
 export function corruptedFoxFire(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     clearOutput();
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
         outputText("You are too tired to use this ability.", true);
         doNext(magicalSpecials);
         return;
@@ -5341,7 +5341,7 @@ export function corruptedFoxFire(): void {
     // Using fire attacks on the goo]
     if (monster.short == "goo-girl") {
         outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer.", false);
-        if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid, 0, 0, 0, 0);
+        if (monster.perks.findByType(PerkLib.Acid) < 0) monster.perks.create(PerkLib.Acid, 0, 0, 0, 0);
     }
     dmg = doDamage(dmg);
     outputText("  (" + dmg + ")\n\n", false);
@@ -5353,7 +5353,7 @@ export function corruptedFoxFire(): void {
 export function foxFire(): void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
     clearOutput();
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(35) > 100) {
         outputText("You are too tired to use this ability.", true);
         doNext(magicalSpecials);
         return;
@@ -5380,7 +5380,7 @@ export function foxFire(): void {
     // Using fire attacks on the goo]
     if (monster.short == "goo-girl") {
         outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer.", false);
-        if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid, 0, 0, 0, 0);
+        if (monster.perks.findByType(PerkLib.Acid) < 0) monster.perks.create(PerkLib.Acid, 0, 0, 0, 0);
     }
     dmg = doDamage(dmg);
     outputText("  (" + dmg + ")\n\n", false);
@@ -5393,7 +5393,7 @@ export function foxFire(): void {
 export function kitsuneTerror(): void {
     clearOutput();
     // Fatigue Cost: 25
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(20) > 100) {
         outputText("You are too tired to use this ability.", true);
         doNext(magicalSpecials);
         return;
@@ -5433,7 +5433,7 @@ export function kitsuneTerror(): void {
 export function kitsuneIllusion(): void {
     clearOutput();
     // Fatigue Cost: 25
-    if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(25) > 100) {
+    if (player.perks.findByType(PerkLib.BloodMage) < 0 && player.fatigue + spellCost(25) > 100) {
         outputText("You are too tired to use this ability.", true);
         doNext(magicalSpecials);
         return;

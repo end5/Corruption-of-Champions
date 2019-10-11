@@ -9,13 +9,13 @@ export class BimboLiqueur extends Consumable {
     }
 
     public canUse(): boolean {
-        if (game.player.findPerk(PerkLib.FutaForm) < 0) return true;
+        if (game.player.perks.findByType(PerkLib.FutaForm) < 0) return true;
         outputText("Ugh.  This stuff is so, like... last year.  Maybe you can find someone else to feed it to?\n\n");
         return false;
     }
 
     public useItem(): boolean {
-        if (game.player.findPerk(PerkLib.BroBody) >= 0) {
+        if (game.player.perks.findByType(PerkLib.BroBody) >= 0) {
             outputText("You wince as the stuff hits your stomach, already feeling the insidious effects beginning to take hold.  A lengthy belch escapes your lips as your stomach gurgles, and you giggle abashedly to yourself.");
             if (game.player.tallness < 77) {
                 outputText(" ...Did the ground just get farther away?  You glance down and realize, you're growing!  Like a sped-up flower sprout, you keep on getting taller until finally stopping around... six and a half feet, you assume.  Huh.  You didn't expect that to happen!");
@@ -43,13 +43,13 @@ export class BimboLiqueur extends Consumable {
 
             outputText("Your surging, absurdly potent libido surges through your body, reminding you that you need to fuck.  Not just bitches, but guys too.  Hard cocks, wet pussies, hell, you don't care.  They can have both or a dozen of either.  You just want to get laid and bone something, hopefully at the same time!");
             outputText("\n\n<b>(Perks Lost: Bro Body");
-            if (game.player.findPerk(PerkLib.BroBrains) >= 0) outputText(", Bro Brains");
+            if (game.player.perks.findByType(PerkLib.BroBrains) >= 0) outputText(", Bro Brains");
             outputText(")\n");
             outputText("(Perks Gained: Futa Form, Futa Faculties)\n");
-            game.player.removePerk(PerkLib.BroBody);
-            game.player.removePerk(PerkLib.BroBrains);
-            game.player.createPerk(PerkLib.FutaFaculties, 0, 0, 0, 0);
-            game.player.createPerk(PerkLib.FutaForm, 0, 0, 0, 0);
+            game.player.perks.remove(PerkLib.BroBody);
+            game.player.perks.remove(PerkLib.BroBrains);
+            game.player.perks.create(PerkLib.FutaFaculties, 0, 0, 0, 0);
+            game.player.perks.create(PerkLib.FutaForm, 0, 0, 0, 0);
             if (game.player.inte > 35) {
                 game.player.inte = 35;
                 dynStats("int", -0.1);
@@ -160,13 +160,13 @@ export class BimboLiqueur extends Consumable {
                 }
                 outputText("\n\n");
             }
-            if (game.player.findPerk(PerkLib.BimboBody) < 0) {
+            if (game.player.perks.findByType(PerkLib.BimboBody) < 0) {
                 outputText("<b>(Bimbo Body - Perk Gained!)\n");
-                game.player.createPerk(PerkLib.BimboBody, 0, 0, 0, 0);
+                game.player.perks.create(PerkLib.BimboBody, 0, 0, 0, 0);
             }
-            if (game.player.findPerk(PerkLib.BimboBrains) < 0) {
+            if (game.player.perks.findByType(PerkLib.BimboBrains) < 0) {
                 outputText("(Bimbo Brains - Perk Gained!)\n"); // int to 20.  max int 50)
-                game.player.createPerk(PerkLib.BimboBrains, 0, 0, 0, 0);
+                game.player.perks.create(PerkLib.BimboBrains, 0, 0, 0, 0);
                 if (game.player.inte > 21) game.player.inte = 21;
             }
             game.player.orgasm();

@@ -26,7 +26,7 @@ export class GnollSpearThrower extends Monster {
             return;
         }
         // Determine if evaded
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n", false);
             // See below, removes the attack count once it hits rock bottom.
             if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
@@ -38,7 +38,7 @@ export class GnollSpearThrower extends Monster {
             return;
         }
         // ("Misdirection"
-        if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
             // See below, removes the attack count once it hits rock bottom.
             if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
@@ -50,7 +50,7 @@ export class GnollSpearThrower extends Monster {
             return;
         }
         // Determine if cat'ed
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "", false);
             if (plural) outputText("' attacks.\n", false);
             else outputText("'s attack.\n", false);
@@ -108,22 +108,22 @@ export class GnollSpearThrower extends Monster {
             outputText("The gnoll pulls a long, dark wooden javelin from over her shoulder.  Her spotted arm strikes forward, launching the missile through the air.  The spear flashes through the distance towards your vulnerable form.  Even as you see doom sailing towards you, a primal instinct to duck pulls you down, and you feel the wind from the massive missile as it passes close to your ear.", false);
         }
         // Determine if evaded
-        else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s thrown spear.\n", false);
         }
         // ("Misdirection"
-        else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' thrown spear.\n", false);
         }
         // Determine if cat'ed
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "'s thrown spear.", false);
         }
         // <Hyena Attack 2 – Javelin – Unsuccessful – Absorbed>
         else if (player.armorDef > 10 && rand(2) == 0) {
             outputText("The gnoll pulls a long, dark wooden javelin from over her shoulder.  Her spotted arm strikes forward, launching the missile through the air.  The spear flashes through the air but hits at an angle, sliding off your " + player.armorName + " without doing any damage.  It disappears into the grass.", false);
         }
-        else if (player.findPerk(PerkLib.Resolute) >= 0 && player.tou >= 75) {
+        else if (player.perks.findByType(PerkLib.Resolute) >= 0 && player.tou >= 75) {
             outputText("You resolutely ignore the spear, brushing the blunted tip away when it hits you.\n");
         }
         // <Hyena Attack 2 – Javelin – Successful – Player Entangled>
@@ -161,15 +161,15 @@ export class GnollSpearThrower extends Monster {
             outputText("The gnoll grins at you before striding forward and pivoting.  A spotted leg snaps up and out, flashing through the air towards your " + chestDesc(game.player) + ".  You step back just in time, robbing the blow of force.  The paw lightly strikes your torso before the female hyena springs back, glaring at you.", false);
         }
         // Determine if evaded
-        else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        else if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s snap-kick.\n", false);
         }
         // ("Misdirection"
-        else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        else if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' snap-kick.\n", false);
         }
         // Determine if cat'ed
-        else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        else if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "'s snap-kick.", false);
         }
         // Determine damage - str modified by enemy toughness!
@@ -233,7 +233,7 @@ export class GnollSpearThrower extends Monster {
             outputText("You see the gnoll's black lips pull back ever so slightly and the powerful muscles in her shapely thighs tense moments before she charges.  With a leap you throw yourself to the side, feeling the wind and fury pass through where you had just been standing.  You gracefully turn to face the hyena as she does the same, knowing that could have been very bad.", false);
         }
         // Determine if evaded
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n", false);
             // See below, removes the attack count once it hits rock bottom.
             if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
@@ -244,7 +244,7 @@ export class GnollSpearThrower extends Monster {
             }
         }
         // ("Misdirection"
-        if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
             // See below, removes the attack count once it hits rock bottom.
             if (statusAffectv1(StatusAffects.Attacks) == 0) removeStatusAffect(StatusAffects.Attacks);
@@ -255,7 +255,7 @@ export class GnollSpearThrower extends Monster {
             }
         }
         // Determine if cat'ed
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "", false);
             if (plural) outputText("' attacks.\n", false);
             else outputText("'s attack.\n", false);

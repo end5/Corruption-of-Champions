@@ -589,19 +589,19 @@ export class Monster extends Creature {
             return true;
         }
         // Determine if evaded
-        if (!(this instanceof Kiha) && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        if (!(this instanceof Kiha) && player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'");
             if (!plural) outputText("s");
             outputText(" attack.\n", false);
             return true;
         }
         // ("Misdirection"
-        if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n", false);
             return true;
         }
         // Determine if cat'ed
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "", false);
             if (plural) outputText("' attacks.\n", false);
             else outputText("'s attack.\n", false);

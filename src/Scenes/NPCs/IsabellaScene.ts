@@ -40,7 +40,7 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
     }
 
     public timeChangeLarge(): boolean {
-        if (checkedIsabella++ == 0 && game.time.hours == 6 && isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0 && flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] == 0 && player.hasCock() && (game.time.days % 2 == 0 || player.findPerk(PerkLib.MarblesMilk) < 0) && player.shortestCockLength() <= 9) {
+        if (checkedIsabella++ == 0 && game.time.hours == 6 && isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0 && flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] == 0 && player.hasCock() && (game.time.days % 2 == 0 || player.perks.findByType(PerkLib.MarblesMilk) < 0) && player.shortestCockLength() <= 9) {
             spriteSelect(31);
             isabellaFollowerScene.isabellaMorningWakeupCall();
             return true;
@@ -622,9 +622,9 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
             outputText("  A hand grabs hold of the back of your " + player.armorName + " and lifts you up, placing you firmly over the cow-girl's fur-covered knee.  You can feel the transition from fur to skin underneath your belly, at the midpoint of her thigh.  ", false);
             if (player.lust > 99) outputText("You start trying to hump and grind, but the angry cow will have none of it.  ", false);
             outputText("SMACK!  A powerful impact slams into your " + buttDescription(player) + ", making you gasp out in pain", false);
-            if (player.findPerk(PerkLib.Masochist) >= 0) outputText(" and pleasure", false);
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) outputText(" and pleasure", false);
             outputText(".  The next blow follows shortly after, equally hard but placed upon your other, yet-unbruised butt-cheek.", false);
-            if (player.findPerk(PerkLib.Masochist) >= 0) {
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) {
                 outputText("  You gasp and ", false);
                 if (player.hasCock()) outputText("squirt pre-cum ", false);
                 else if (player.hasVagina()) outputText("slick your thighs ", false);
@@ -635,14 +635,14 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
 
             if (isabellaAccent()) outputText("Isabella grunts, \"<i>Look at you, acting like one of ze demons!  Now Izabella vill have to beat ze corruption out of you!</i>\"  You groan ", false);
             else outputText("Isabella grunts, \"<i>Look at you, acting like one of the demons!  Now I will have to beat the corruption out of you!</i>\"  You groan ", false);
-            if (player.findPerk(PerkLib.Masochist) >= 0) outputText("excitedly, wondering just how many more smacks you'll get to take", false);
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) outputText("excitedly, wondering just how many more smacks you'll get to take", false);
             else outputText("piteously", false);
             outputText(" while Isabella cocks her elbow for another spank.  SLAP!  It hits hard enough to send ripples through every soft part of your body.  A bird takes flight somewhere in the distance", false);
-            if (player.findPerk(PerkLib.Masochist) >= 0) outputText(" while you swoon and moan, wiggling your rump", false);
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) outputText(" while you swoon and moan, wiggling your rump", false);
             outputText(".  The cow-girl picks up the pace, scolding you in between each heavy-handed hit to your bottom.\n\n", false);
 
             outputText("\"<i>Bad <SMACK> " + mf(player, "boy", "girl") + "! <CRACK> Learn <SLAP> your <SWAT> lesson!</i>\"  Her sentence is punctuated with one bone-jarring blow that ", false);
-            if (player.findPerk(PerkLib.Masochist) < 0) outputText("draws a scream from your lips, pushing you past the bounds of consciousness.  Isabella hefts your limp form like a wet noodle and grasses sway behind you as you're carried off.", false);
+            if (player.perks.findByType(PerkLib.Masochist) < 0) outputText("draws a scream from your lips, pushing you past the bounds of consciousness.  Isabella hefts your limp form like a wet noodle and grasses sway behind you as you're carried off.", false);
             else {
                 outputText("pushes you past your limit.", false);
                 if (player.hasCock()) {
@@ -673,7 +673,7 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
             // (+4 sensitivity, -100 lust if masochist, -40 fatigue)
             fatigue(-40);
             dynStats("sen", 4);
-            if (player.findPerk(PerkLib.Masochist) >= 0) player.orgasm();
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) player.orgasm();
         }
         // [Lose And Get Spanked – Tall]
         else {
@@ -683,9 +683,9 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
             if (player.lust > 99) outputText("You start trying to masturbate yourself, but the angry cow will have none of it.  ", false);
             outputText("SMACK!  A powerful impact slams into your " + buttDescription(player) + ", making you gasp out in pain", false);
 
-            if (player.findPerk(PerkLib.Masochist) >= 0) outputText(" and pleasure", false);
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) outputText(" and pleasure", false);
             outputText(".  The next blow follows shortly after, equally hard but placed upon your other, yet-unbruised butt-cheek.", false);
-            if (player.findPerk(PerkLib.Masochist) >= 0) {
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) {
                 outputText("  You gasp and ", false);
                 if (player.hasCock()) outputText("squirt pre-cum", false);
                 else if (player.hasVagina()) outputText("slick your thighs", false);
@@ -696,14 +696,14 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
 
             if (isabellaAccent()) outputText("Isabella grunts, \"<i>Look at you, acting like one of ze demons!  Now Izabella vill have to beat ze corruption out of you!</i>\"  You groan ", false);
             else outputText("Isabella grunts, \"<i>Look at you, acting like one of thee demons!  Now I will have to beat the corruption out of you!</i>\"  You groan ", false);
-            if (player.findPerk(PerkLib.Masochist) < 0) outputText("piteously", false);
+            if (player.perks.findByType(PerkLib.Masochist) < 0) outputText("piteously", false);
             else outputText("excitedly, wondering just how many more smacks you'll get to take", false);
             outputText(" while Isabella cocks her elbow for another spank.  SLAP!  It hits hard enough to send ripples through every soft part of your body and grind your chin into the dirt.  A bird takes flight somewhere in the distance", false);
-            if (player.findPerk(PerkLib.Masochist) >= 0) outputText(" while you swoon and moan, wiggling your rump", false);
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) outputText(" while you swoon and moan, wiggling your rump", false);
             outputText(".  The cow-girl picks up the pace, scolding you in between each heavy-handed hit to your bottom.\n\n", false);
 
             outputText("\"<i>Bad <SMACK> " + mf(player, "boy", "girl") + "! <CRACK> Learn <SLAP> your <SWAT> lesson!</i>\"  Her sentence is punctuated with one bone-jarring blow that", false);
-            if (player.findPerk(PerkLib.Masochist) >= 0) outputText(" draws a scream from your lips, pushing you past the bounds of consciousness.  Isabella hefts your limp form heavily, dragging you through the dirt as your eyes close.", false);
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) outputText(" draws a scream from your lips, pushing you past the bounds of consciousness.  Isabella hefts your limp form heavily, dragging you through the dirt as your eyes close.", false);
             else {
                 outputText(" pushes you past your limit.", false);
                 if (player.hasCock()) {
@@ -733,7 +733,7 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
             // (+4 sensitivity, -100 lust if masochist, -40 fatigue)
             fatigue(-40);
             dynStats("sen", 4);
-            if (player.findPerk(PerkLib.Masochist) >= 0) player.orgasm();
+            if (player.perks.findByType(PerkLib.Masochist) >= 0) player.orgasm();
         }
         if (player.hasCock()) {
             if (player.cocks[player.shortestCockIndex()].cockLength < 9) {

@@ -351,7 +351,7 @@ export class Farm {
                     return;
                 }
                 else {
-                    if (player.findPerk(PerkLib.MarbleResistant) >= 0) {
+                    if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) {
                         // (work with Marble when helping)
                         marbleScene.postAddictionFarmHelpings();
                         return;
@@ -431,7 +431,7 @@ export class Farm {
             else marbleScene.encounterMarbleExploring2();
         }
         else {
-            if (player.findPerk(PerkLib.MarbleResistant) >= 0) {
+            if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) {
                 marbleScene.postAddictionFarmExplorings();
                 return;
             }

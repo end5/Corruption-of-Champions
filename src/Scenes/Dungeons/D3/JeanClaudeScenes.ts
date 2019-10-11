@@ -205,7 +205,7 @@ export class JeanClaudeScenes {
     }
 
     public basiliskBadEnds(): void {
-        if (player.findPerk(PerkLib.BasiliskWomb) >= 0) bwombBadEnd();
+        if (player.perks.findByType(PerkLib.BasiliskWomb) >= 0) bwombBadEnd();
         else regularBadEnd();
     }
 

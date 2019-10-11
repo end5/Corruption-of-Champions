@@ -15,12 +15,12 @@ export class Shouldra extends Monster {
             return;
         }
         // ("Misdirection"
-        if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("The girl wades in for a swing, but you deftly misdirect her and avoid the attack. She recovers quickly, spinning back at you.", false);
             return;
         }
         // Determine if cat'ed
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("The girl wades in for a swing, but you deftly twist your flexible body out of the way. She recovers quickly, spinning back at you.", false);
             return;
         }

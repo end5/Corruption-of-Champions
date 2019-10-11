@@ -482,7 +482,7 @@ export function goNext(time: number, needNext: boolean): boolean {
         // The more imps you create, the more often you get gangraped.
         temp = player.statusAffectv1(StatusAffects.BirthedImps) * 2;
         if (temp > 7) temp = 7;
-        if (player.findPerk(PerkLib.PiercedLethite) >= 0) temp += 4;
+        if (player.perks.findByType(PerkLib.PiercedLethite) >= 0) temp += 4;
         if (player.inHeat) temp += 2;
         if (vapula.vapulaSlave()) temp += 7;
         if (game.time.hours == 2) {
@@ -538,28 +538,28 @@ export function goNext(time: number, needNext: boolean): boolean {
             }
         }
         // No diapause?  Normal!
-        if (player.findPerk(PerkLib.Diapause) < 0) {
+        if (player.perks.findByType(PerkLib.Diapause) < 0) {
             if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             if (flags[kFLAGS.EVENT_PARSER_ESCAPE] == 1) {
                 flags[kFLAGS.EVENT_PARSER_ESCAPE] = 0;
                 return true;
             }
             // DOUBLE PREGGERS SPEED
-            if (player.findPerk(PerkLib.MaraesGiftFertility) >= 0) {
+            if (player.perks.findByType(PerkLib.MaraesGiftFertility) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             // DOUBLE PREGGERS SPEED
-            if (player.findPerk(PerkLib.MagicalFertility) >= 0) {
+            if (player.perks.findByType(PerkLib.MagicalFertility) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             if (flags[kFLAGS.EVENT_PARSER_ESCAPE] == 1) {
                 flags[kFLAGS.EVENT_PARSER_ESCAPE] = 0;
                 return true;
             }
-            if (player.findPerk(PerkLib.FerasBoonBreedingBitch) >= 0) {
+            if (player.perks.findByType(PerkLib.FerasBoonBreedingBitch) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
-            if (player.findPerk(PerkLib.FerasBoonWideOpen) >= 0 || player.findPerk(PerkLib.FerasBoonMilkingTwat) >= 0) {
+            if (player.perks.findByType(PerkLib.FerasBoonWideOpen) >= 0 || player.perks.findByType(PerkLib.FerasBoonMilkingTwat) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             if (flags[kFLAGS.EVENT_PARSER_ESCAPE] == 1) {
@@ -567,7 +567,7 @@ export function goNext(time: number, needNext: boolean): boolean {
                 return true;
             }
             // DOUBLE PREGGERS SPEED
-            if (player.findPerk(PerkLib.BroodMother) >= 0) {
+            if (player.perks.findByType(PerkLib.BroodMother) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             if (flags[kFLAGS.EVENT_PARSER_ESCAPE] == 1) {
@@ -603,21 +603,21 @@ export function goNext(time: number, needNext: boolean): boolean {
                 return true;
             }
             // DOUBLE PREGGERS SPEED
-            if (player.findPerk(PerkLib.MaraesGiftFertility) >= 0) {
+            if (player.perks.findByType(PerkLib.MaraesGiftFertility) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             // DOUBLE PREGGERS SPEED
-            if (player.findPerk(PerkLib.MagicalFertility) >= 0) {
+            if (player.perks.findByType(PerkLib.MagicalFertility) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             if (flags[kFLAGS.EVENT_PARSER_ESCAPE] == 1) {
                 flags[kFLAGS.EVENT_PARSER_ESCAPE] = 0;
                 return true;
             }
-            if (player.findPerk(PerkLib.FerasBoonBreedingBitch) >= 0) {
+            if (player.perks.findByType(PerkLib.FerasBoonBreedingBitch) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
-            if (player.findPerk(PerkLib.FerasBoonWideOpen) >= 0 || player.findPerk(PerkLib.FerasBoonMilkingTwat) >= 0) {
+            if (player.perks.findByType(PerkLib.FerasBoonWideOpen) >= 0 || player.perks.findByType(PerkLib.FerasBoonMilkingTwat) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             if (flags[kFLAGS.EVENT_PARSER_ESCAPE] == 1) {
@@ -625,7 +625,7 @@ export function goNext(time: number, needNext: boolean): boolean {
                 return true;
             }
             // DOUBLE PREGGERS SPEED
-            if (player.findPerk(PerkLib.BroodMother) >= 0) {
+            if (player.perks.findByType(PerkLib.BroodMother) >= 0) {
                 if (player.pregnancyAdvance()) needNext = true; // Make sure pregnancy texts aren't hidden
             }
             if (flags[kFLAGS.EVENT_PARSER_ESCAPE] == 1) {

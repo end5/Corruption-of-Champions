@@ -67,7 +67,7 @@ export class Mutations {
         let temp2: number = 0;
         let temp3: number = 0;
         let rando: number = rand(100);
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) rando += 10;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) rando += 10;
         outputText("The draft is slick and sticky, ", true);
         if (player.cor <= 33) outputText("just swallowing it makes you feel unclean.", false);
         if (player.cor > 33 && player.cor <= 66) outputText("reminding you of something you just can't place.", false);
@@ -350,12 +350,12 @@ export class Mutations {
             dynStats("lib", 1, "lus", rand(5) + player.cor / 20 + flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] / 5);
         }
         // (Healing – if hurt and uber-addicted (hasperk))
-        if (player.HP < player.maxHP() && player.findPerk(PerkLib.MinotaurCumAddict) >= 0) {
+        if (player.HP < player.maxHP() && player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) {
             outputText("\n\nThe fire of your arousal consumes your body, leaving vitality in its wake.  You feel much better!", false);
             HPChange(int(player.maxHP() / 4), false);
         }
         // Uber-addicted status!
-        if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && flags[kFLAGS.MINOTAUR_CUM_REALLY_ADDICTED_STATE] <= 0) {
+        if (player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0 && flags[kFLAGS.MINOTAUR_CUM_REALLY_ADDICTED_STATE] <= 0) {
             flags[kFLAGS.MINOTAUR_CUM_REALLY_ADDICTED_STATE] = 3 + rand(2);
             outputText("\n\n<b>Your body feels so amazing and sensitive.  Experimentally you pinch yourself and discover that even pain is turning you on!</b>", false);
         }
@@ -370,7 +370,7 @@ export class Mutations {
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         if (changeLimit == 1) changeLimit = 2;
         // Temporary storage
         let temp: number = 0;
@@ -751,7 +751,7 @@ export class Mutations {
             player.gills = false;
             changes++;
         }
-        if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && player.findPerk(PerkLib.MaraesGiftButtslut) < 0) || player.ass.analWetness > 1)) {
+        if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && player.perks.findByType(PerkLib.MaraesGiftButtslut) < 0) || player.ass.analWetness > 1)) {
             outputText("\n\nYou feel a tightening up in your colon and your [asshole] sucks into itself.  You feel sharp pain at first but that thankfully fades.  Your ass seems to have dried and tightened up.");
             player.ass.analWetness--;
             if (player.ass.analLooseness > 1) player.ass.analLooseness--;
@@ -789,7 +789,7 @@ export class Mutations {
         // Chancee to raise limit
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Used for random chances
         // Set up output
         outputText("You down the potion, grimacing at the strong taste.", true);
@@ -1277,7 +1277,7 @@ export class Mutations {
         let temp2: number = 0;
         let temp3: number = 0;
         let rando: number = Math.random() * 100;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) rando += 10;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) rando += 10;
         if (rando >= 90 && !tainted) rando -= 10;
         if (player.cor < 35) outputText("You wonder why in the gods' names you would drink such a thing, but you have to admit, it is the best thing you have ever tasted.", true);
         if (player.cor >= 35 && player.cor < 70) {
@@ -1434,9 +1434,9 @@ export class Mutations {
             if (player.skinTone == "blue" || player.skinTone == "purple" || player.skinTone == "indigo" || player.skinTone == "shiny black") {
                 if (player.vaginas.length > 0) {
                     outputText("\n\nYour heart begins beating harder and harder as heat floods to your groin.  You feel your clit peeking out from under its hood, growing larger and longer as it takes in more and more blood.", false);
-                    if (player.clitLength > 3 && player.findPerk(PerkLib.BigClit) < 0) outputText("  After some time it shrinks, returning to its normal aroused size.  You guess it can't get any bigger.", false);
-                    if (player.clitLength > 5 && player.findPerk(PerkLib.BigClit) >= 0) outputText("  Eventually it shrinks back down to its normal (but still HUGE) size.  You guess it can't get any bigger.", false);
-                    if (((player.findPerk(PerkLib.BigClit) >= 0) && player.clitLength < 6)
+                    if (player.clitLength > 3 && player.perks.findByType(PerkLib.BigClit) < 0) outputText("  After some time it shrinks, returning to its normal aroused size.  You guess it can't get any bigger.", false);
+                    if (player.clitLength > 5 && player.perks.findByType(PerkLib.BigClit) >= 0) outputText("  Eventually it shrinks back down to its normal (but still HUGE) size.  You guess it can't get any bigger.", false);
+                    if (((player.perks.findByType(PerkLib.BigClit) >= 0) && player.clitLength < 6)
                         || player.clitLength < 3) {
                         temp += 2;
                         player.clitLength += (rand(4) + 2) / 10;
@@ -1490,7 +1490,7 @@ export class Mutations {
         let changeLimit: number = 1;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Initial outputs & crit level
         outputText("", true);
         if (type == 0) {
@@ -1530,7 +1530,7 @@ export class Mutations {
             temp = rand(2);
             if (temp == 0) {
                 outputText("\n\nAs you swallow the pepper, you note that the spicy hotness on your tongue seems to be spreading. Your entire body seems to tingle and burn, making you feel far warmer than normal, feverish even. Unable to stand it any longer you tear away your clothes, hoping to cool down a little. Sadly, this does nothing to aid you with your problem. On the bright side, the sudden feeling of vertigo you've developed is more than enough to take your mind off your temperature issues. You fall forward onto your hands and knees, well not really hands and knees to be honest. More like paws and knees. That can't be good, you think for a moment, before the sensation of your bones shifting into a quadrupedal configuration robs you of your concentration. After that, it is only a short time before your form is remade completely into that of a large dog, or perhaps a wolf. The distinction would mean little to you now, even if you were capable of comprehending it. ", false);
-                if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("All you know is that there is a scent on the wind, it is time to hunt, and at the end of the day you need to come home for your milk.", false);
+                if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) outputText("All you know is that there is a scent on the wind, it is time to hunt, and at the end of the day you need to come home for your milk.", false);
                 else outputText("All you know is that there is a scent on the wind, and it is time to hunt.", false);
             }
             if (temp == 1) outputText("\n\nYou devour the sweet pepper, carefully licking your fingers for all the succulent juices of the fruit, and are about to go on your way when suddenly a tightness begins to build in your chest and stomach, horrid cramps working their way first through your chest, then slowly flowing out to your extremities, the feeling soon joined by horrible, blood-curdling cracks as your bones begin to reform, twisting and shifting, your mind exploding with pain. You fall to the ground, reaching one hand forward. No... A paw, you realize in horror, as you try to push yourself back up. You watch in horror, looking down your foreleg as thicker fur erupts from your skin, a " + player.hairColor + " coat slowly creeping from your bare flesh to cover your body. Suddenly, you feel yourself slipping away, as if into a dream, your mind warping and twisting, your body finally settling into its new form. With one last crack of bone you let out a yelp, kicking free of the cloth that binds you, wresting yourself from its grasp and fleeing into the now setting sun, eager to find prey to dine on tonight.", false);
@@ -1827,7 +1827,7 @@ export class Mutations {
             if (player.cumMultiplier < 2 && rand(2) == 0 && changes < changeLimit) {
                 temp = 1.5;
                 // Lots of cum raises cum multiplier cap to 2 instead of 1.5
-                if (player.findPerk(PerkLib.MessyOrgasms) >= 0) temp = 2;
+                if (player.perks.findByType(PerkLib.MessyOrgasms) >= 0) temp = 2;
                 if (temp < player.cumMultiplier + .05 * crit) {
                     changes--;
                 }
@@ -2219,7 +2219,7 @@ export class Mutations {
         // Chances to up the max number of changes
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Generic drinking text
         outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.", true);
         // low corruption thoughts
@@ -2256,7 +2256,7 @@ export class Mutations {
                 // Temp is the max it can be raised to
                 temp = 3;
                 // Lots of cum raises cum multiplier cap to 6 instead of 3
-                if (player.findPerk(PerkLib.MessyOrgasms) >= 0) temp = 6;
+                if (player.perks.findByType(PerkLib.MessyOrgasms) >= 0) temp = 6;
                 if (temp < player.cumMultiplier + .4 * crit) {
                     changes--;
                 }
@@ -2292,7 +2292,7 @@ export class Mutations {
         // Chances to up the max number of changes
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Generic drinking text
         outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.", true);
         // low corruption thoughts
@@ -2341,7 +2341,7 @@ export class Mutations {
                 // Temp is the max it can be raised to
                 temp = 3;
                 // Lots of cum raises cum multiplier cap to 6 instead of 3
-                if (player.findPerk(PerkLib.MessyOrgasms) >= 0) temp = 6;
+                if (player.perks.findByType(PerkLib.MessyOrgasms) >= 0) temp = 6;
                 if (temp < player.cumMultiplier + .4 * crit) {
                     changes--;
                 }
@@ -2824,7 +2824,7 @@ export class Mutations {
     public purePearl(player: Player): void {
         outputText("You cram the pearl in your mouth and swallow it like a giant pill with some difficulty.  Surprisingly there is no discomfort, only a cool calming sensation that springs up from your core.", true);
         dynStats("lib", -5, "lus", -25, "cor", -10);
-        if (player.findPerk(PerkLib.PurityBlessing) < 0) player.createPerk(PerkLib.PurityBlessing, 0, 0, 0, 0);
+        if (player.perks.findByType(PerkLib.PurityBlessing) < 0) player.perks.create(PerkLib.PurityBlessing, 0, 0, 0, 0);
     }
 
     // TODO FIX
@@ -3166,10 +3166,10 @@ export class Mutations {
         else if (player.statusAffectv3(StatusAffects.Marble) <= 0) outputText("You gulp down the bottle's contents; Marble makes some really good tasting milk.\n\n", false);
         else if (player.statusAffectv3(StatusAffects.Marble) > 0) {
             // [player is completely addicted]
-            if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("You gulp down the bottle's contents; it's no substitute for the real thing, but it's a nice pick me up.\n\n", false);
+            if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) outputText("You gulp down the bottle's contents; it's no substitute for the real thing, but it's a nice pick me up.\n\n", false);
             else {
                 // [player is no longer addicted]
-                if (player.findPerk(PerkLib.MarbleResistant) >= 0) outputText("You gulp down the bottle's contents; you're careful not to get too attached to the taste.\n\n", false);
+                if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) outputText("You gulp down the bottle's contents; you're careful not to get too attached to the taste.\n\n", false);
                 // [player is addicted]
                 else outputText("You gulp down the bottle's contents; you really needed that.\n\n", false);
             }
@@ -3221,7 +3221,7 @@ export class Mutations {
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         if (enhanced) changeLimit += 2;
         // Temporary storage
         let temp: number = 0;
@@ -3452,7 +3452,7 @@ export class Mutations {
         if (player.findStatusAffect(StatusAffects.Feeder) < 0 && player.biggestLactation() >= 3 && rand(2) == 0 && player.biggestTitSize() >= 5 && player.cor >= 35) {
             outputText("\n\nYou start to feel a strange desire to give your milk to other creatures.  For some reason, you know it will be very satisfying.\n\n<b>(You have gained the 'Feeder' perk!)</b>", false);
             player.createStatusAffect(StatusAffects.Feeder, 0, 0, 0, 0);
-            player.createPerk(PerkLib.Feeder, 0, 0, 0, 0);
+            player.perks.create(PerkLib.Feeder, 0, 0, 0, 0);
             changes++;
         }
         // UNFINISHED
@@ -3737,7 +3737,7 @@ export class Mutations {
         if (rand(3) == 0) changeLimit++;
         if (rand(4) == 0) changeLimit++;
         if (rand(5) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         outputText("You drink the ale, finding it to have a remarkably smooth yet potent taste.  You lick your lips and sneeze, feeling slightly tipsy.", true);
         dynStats("lus", 15);
         // Stronger
@@ -3913,7 +3913,7 @@ export class Mutations {
             player.vaginaType(0);
             changes++;
         }
-        if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && player.findPerk(PerkLib.MaraesGiftButtslut) < 0) || player.ass.analWetness > 1)) {
+        if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && player.perks.findByType(PerkLib.MaraesGiftButtslut) < 0) || player.ass.analWetness > 1)) {
             outputText("\n\nYou feel a tightening up in your colon and your [asshole] sucks into itself.  You feel sharp pain at first but that thankfully fades.  Your ass seems to have dried and tightened up.");
             player.ass.analWetness--;
             if (player.ass.analLooseness > 1) player.ass.analLooseness--;
@@ -4067,7 +4067,7 @@ export class Mutations {
         let changeLimit: number = 2;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         if (type == 0) outputText("You have no idea why, but you decide to eat the pointed tooth. To your surprise, it's actually quite brittle, turning into a fishy-tasting dust. You figure it must just be a tablet made to look like a shark's tooth.", true);
         else if (type == 1) outputText("You have no idea why, but you decide to eat the pointed, glowing tooth. To your surprise, it's actually quite brittle, crumbling into a fishy-tasting dust. Maybe it's just a tablet made to look like a shark's tooth.", true);
         // STATS
@@ -4247,7 +4247,7 @@ export class Mutations {
         let changeLimit: number = 1;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // b) Description while used
         outputText("Pinching your nose, you quickly uncork the vial and bring it to your mouth, determined to see what effects it might have on your body. Pouring in as much as you can take, you painfully swallow before going for another shot, emptying the bottle.", false);
         // (if outside combat)
@@ -4489,7 +4489,7 @@ export class Mutations {
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Text go!
         outputText("", true);
         outputText("You take a bite of the fruit and gulp it down. It's thick and juicy and has an almost overpowering sweetness. Nevertheless, it is delicious and you certainly could use a meal.  You devour the fruit, stopping only when the hard, nubby pit is left; which you toss aside.", false);
@@ -4789,7 +4789,7 @@ export class Mutations {
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
         if (rand(4) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // clear screen
         outputText("", true);
         outputText("You uncork the vial of fluid and drink it down.  The taste is sour, like a dry wine with an aftertaste not entirely dissimilar to alcohol.  Instead of the warmth you'd expect, it leaves your throat feeling cold and a little numb.", false);
@@ -4952,9 +4952,9 @@ export class Mutations {
             outputText(" nipples relax.  It's a strange feeling, and you pull back your top to touch one.  It feels fine, though there doesn't seem to be any milk leaking out.  You give it a squeeze and marvel when nothing ", false);
             if (player.hasFuckableNipples()) outputText("but sexual fluid ", false);
             outputText("escapes it.  <b>You are no longer lactating.</b>  That makes sense, only mammals lactate!  Smiling, you muse at how much time this will save you when cleaning your gear.", false);
-            if (player.findPerk(PerkLib.Feeder) >= 0 || player.findStatusAffect(StatusAffects.Feeder) >= 0) {
+            if (player.perks.findByType(PerkLib.Feeder) >= 0 || player.findStatusAffect(StatusAffects.Feeder) >= 0) {
                 outputText("\n\n(<b>Feeder perk lost!</b>)", false);
-                player.removePerk(PerkLib.Feeder);
+                player.perks.remove(PerkLib.Feeder);
                 player.removeStatusAffect(StatusAffects.Feeder);
             }
             changes++;
@@ -4975,10 +4975,10 @@ export class Mutations {
             }
         }
         // -VAGs
-        if (player.hasVagina() && player.findPerk(PerkLib.Oviposition) < 0 && changes < changeLimit && rand(5) == 0 && player.lizardScore() > 3) {
+        if (player.hasVagina() && player.perks.findByType(PerkLib.Oviposition) < 0 && changes < changeLimit && rand(5) == 0 && player.lizardScore() > 3) {
             outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n", false);
             outputText("(<b>Perk Gained: Oviposition</b>)", false);
-            player.createPerk(PerkLib.Oviposition, 0, 0, 0, 0);
+            player.perks.create(PerkLib.Oviposition, 0, 0, 0, 0);
             changes++;
         }
 
@@ -5177,7 +5177,7 @@ export class Mutations {
         let changeLimit: number = 1;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // If this is a pregnancy change, only 1 change per proc.
         if (pregnantChange) changeLimit = 1;
         else outputText("", true);
@@ -5327,10 +5327,10 @@ export class Mutations {
             outputText("\n\nYou feel strange.  Fertile... somehow.  You don't know how else to think of it, but you know your body is just aching to be pregnant and give birth.", false);
         }
         // -VAGs
-        if (player.hasVagina() && player.findPerk(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) == 0 && player.bunnyScore() > 3) {
+        if (player.hasVagina() && player.perks.findByType(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) == 0 && player.bunnyScore() > 3) {
             outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n\n", false);
             outputText("(<b>Perk Gained: Bunny Eggs</b>)", false);
-            player.createPerk(PerkLib.BunnyEggs, 0, 0, 0, 0);
+            player.perks.create(PerkLib.BunnyEggs, 0, 0, 0, 0);
             changes++;
         }
         // Shrink Balls!
@@ -5516,7 +5516,7 @@ export class Mutations {
         if (type == 1) changeLimit += 2;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Generic eating text:
         outputText("", true);
         outputText("You pop the nut into your mouth, chewing the delicious treat and swallowing it quickly.  No wonder harpies love these things so much!", false);
@@ -5798,12 +5798,12 @@ export class Mutations {
         }
         // SPECIAL:
         // Harpy Womb – All eggs are automatically upgraded to large, requires legs + tail to be harpy.
-        if (player.findPerk(PerkLib.HarpyWomb) < 0 && player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == TAIL_TYPE_HARPY && rand(4) == 0 && changes < changeLimit) {
-            player.createPerk(PerkLib.HarpyWomb, 0, 0, 0, 0);
+        if (player.perks.findByType(PerkLib.HarpyWomb) < 0 && player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == TAIL_TYPE_HARPY && rand(4) == 0 && changes < changeLimit) {
+            player.perks.create(PerkLib.HarpyWomb, 0, 0, 0, 0);
             outputText("\n\nThere's a rumbling in your womb, signifying that some strange change has taken place in your most feminine area. No doubt something in it has changed to be more like a harpy. (<b>You've gained the Harpy Womb perk! All the eggs you lay will always be large so long as you have harpy legs and a harpy tail.</b>)", false);
             changes++;
         }
-        if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && player.findPerk(PerkLib.MaraesGiftButtslut) < 0) || player.ass.analWetness > 1)) {
+        if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && player.perks.findByType(PerkLib.MaraesGiftButtslut) < 0) || player.ass.analWetness > 1)) {
             outputText("\n\nYou feel a tightening up in your colon and your [asshole] sucks into itself.  You feel sharp pain at first but that thankfully fades.  Your ass seems to have dried and tightened up.");
             player.ass.analWetness--;
             if (player.ass.analLooseness > 1) player.ass.analLooseness--;
@@ -5855,7 +5855,7 @@ export class Mutations {
         if (type == 1) changeLimit += 2;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Used as a holding variable for biggest dicks and the like
         let biggestCock: number;
         // ****************
@@ -6045,9 +6045,9 @@ export class Mutations {
         }
         // UBEROOOO
         // kangaroo perk: - any liquid or food intake will accelerate a pregnancy, but it will not progress otherwise
-        if (player.findPerk(PerkLib.Diapause) < 0 && player.kangaScore() > 4 && rand(4) == 0 && changes < changeLimit && player.hasVagina()) {
+        if (player.perks.findByType(PerkLib.Diapause) < 0 && player.kangaScore() > 4 && rand(4) == 0 && changes < changeLimit && player.hasVagina()) {
             // Perk name and description:
-            player.createPerk(PerkLib.Diapause, 0, 0, 0, 0);
+            player.perks.create(PerkLib.Diapause, 0, 0, 0, 0);
             outputText("\n\nYour womb rumbles as something inside it changes.\n<b>(You have gained the Diapause perk.  Pregnancies will not progress when fluid intake is scarce, and will progress much faster when it isn't.)", false);
             changes++;
             // trigger effect: Your body reacts to the influx of nutrition, accelerating your pregnancy. Your belly bulges outward slightly.
@@ -6080,7 +6080,7 @@ export class Mutations {
         let changeLimit: number = 1;
         if (rand(2) == 0) changeLimit++;
         if (rand(2) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Consuming Text
         if (type == 0) outputText("You wad up the sweet, pink gossamer and eat it, finding it to be delicious and chewy, almost like gum.  Munching away, your mouth generates an enormous amount of spit until you're drooling all over yourself while you devour the sweet treat.", false);
         else if (type == 1) outputText("You wad up the sweet, black gossamer and eat it, finding it to be delicious and chewy, almost like licorice.  Munching away, your mouth generates an enormous amount of spit until you're drooling all over yourself while you devour the sweet treat.", false);
@@ -6287,12 +6287,12 @@ export class Mutations {
             changes++;
         }
         // Drider butt
-        if (type == 1 && player.findPerk(PerkLib.SpiderOvipositor) < 0 && player.isDrider() && player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && changes < changeLimit && rand(3) == 0 && (player.hasVagina || rand(2) == 0)) {
+        if (type == 1 && player.perks.findByType(PerkLib.SpiderOvipositor) < 0 && player.isDrider() && player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && changes < changeLimit && rand(3) == 0 && (player.hasVagina || rand(2) == 0)) {
             outputText("\n\nAn odd swelling sensation floods your spider half.  Curling your abdomen underneath you for a better look, you gasp in recognition at your new 'equipment'!  Your semi-violent run-ins with the swamp's population have left you <i>intimately</i> familiar with the new appendage.  <b>It's a drider ovipositor!</b>  A few light prods confirm that it's just as sensitive as any of your other sexual organs.  You idly wonder what laying eggs with this thing will feel like...");
             outputText("\n\n(<b>Perk Gained:  Spider Ovipositor - Allows you to lay eggs in your foes!</b>)");
             // V1 - Egg Count
             // V2 - Fertilized Count
-            player.createPerk(PerkLib.SpiderOvipositor, 0, 0, 0, 0);
+            player.perks.create(PerkLib.SpiderOvipositor, 0, 0, 0, 0);
             // Opens up drider ovipositor scenes from available mobs. The character begins producing unfertilized eggs in their arachnid abdomen. Egg buildup raises minimum lust and eventually lowers speed until the player has gotten rid of them.  This perk may only be used with the drider lower body, so your scenes should reflect that.
             // Any PC can get an Ovipositor perk, but it will be much rarer for characters without vaginas.
             // Eggs are unfertilized by default, but can be fertilized:
@@ -6361,7 +6361,7 @@ export class Mutations {
     public broBrew(player: Player): void {
         outputText("", true);
         // no drink for bimbos!
-        if (player.findPerk(PerkLib.BimboBody) >= 0) {
+        if (player.perks.findByType(PerkLib.BimboBody) >= 0) {
             outputText("The stuff hits you like a giant cube, nearly staggering you as it begins to settle.", false);
             if (player.tallness < 77) {
                 player.tallness = 77;
@@ -6402,18 +6402,18 @@ export class Mutations {
                 dynStats("lib", .1);
             }
             outputText("\n\n", false);
-            if (player.findPerk(PerkLib.BimboBrains) >= 0) outputText("<b>(Lost Perks - Bimbo Brains, Bimbo Body)\n", false);
+            if (player.perks.findByType(PerkLib.BimboBrains) >= 0) outputText("<b>(Lost Perks - Bimbo Brains, Bimbo Body)\n", false);
             else outputText("<b>(Lost Perk - Bimbo Body)\n", false);
-            player.removePerk(PerkLib.BimboBrains);
-            player.removePerk(PerkLib.BimboBody);
-            player.createPerk(PerkLib.FutaForm, 0, 0, 0, 0);
-            player.createPerk(PerkLib.FutaFaculties, 0, 0, 0, 0);
+            player.perks.remove(PerkLib.BimboBrains);
+            player.perks.remove(PerkLib.BimboBody);
+            player.perks.create(PerkLib.FutaForm, 0, 0, 0, 0);
+            player.perks.create(PerkLib.FutaFaculties, 0, 0, 0, 0);
             outputText("(Gained Perks - Futa Form, Futa Faculties)</b>", false);
             player.genderCheck();
             return;
         }
         // HP restore for bros!
-        if (player.findPerk(PerkLib.BroBody) >= 0 || player.findPerk(PerkLib.FutaForm) >= 0) {
+        if (player.perks.findByType(PerkLib.BroBody) >= 0 || player.perks.findByType(PerkLib.FutaForm) >= 0) {
             outputText("You crack open the can and guzzle it in a hurry.  Goddamn, this shit is the best.  As you crush the can against your forehead, you wonder if you can find a six-pack of it somewhere?\n\n", false);
             fatigue(-33);
             HPChange(100, true);
@@ -6442,7 +6442,7 @@ export class Mutations {
             if (player.nippleLength > .5) player.nippleLength = .25;
             player.breastRows[0].lactationMultiplier = 0;
             player.removeStatusAffect(StatusAffects.Feeder);
-            player.removePerk(PerkLib.Feeder);
+            player.perks.remove(PerkLib.Feeder);
             outputText("All too soon, your boobs are gone.  Whoa!\n\n", false);
         }
 
@@ -6504,13 +6504,13 @@ export class Mutations {
         modTone(player, 100, 100);
         modThickness(player, 100, 50);
         // Bonus cum production!
-        player.createPerk(PerkLib.BroBrains, 0, 0, 0, 0);
-        player.createPerk(PerkLib.BroBody, 0, 0, 0, 0);
+        player.perks.create(PerkLib.BroBrains, 0, 0, 0, 0);
+        player.perks.create(PerkLib.BroBody, 0, 0, 0, 0);
         outputText("<b>(Bro Body - Perk Gained!)\n", false);
         outputText("(Bro Brains - Perk Gained!)</b>\n", false); // int to 20.  max int 50)
-        if (player.findPerk(PerkLib.Feeder) >= 0) {
+        if (player.perks.findByType(PerkLib.Feeder) >= 0) {
             outputText("<b>(Perk Lost - Feeder!)</b>\n", false);
-            player.removePerk(PerkLib.Feeder);
+            player.perks.remove(PerkLib.Feeder);
         }
         if (player.inte > 21) player.inte = 21;
         dynStats("str", 33, "tou", 33, "int", -1, "lib", 4, "lus", 40);
@@ -6529,7 +6529,7 @@ export class Mutations {
         let changeLimit: number = 1;
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         // Effect script 1:  (higher intelligence)
         if (player.inte < 100 && rand(3) == 0 && changes < changeLimit) {
             outputText("\n\nYou groan softly as your head begins pounding something fierce.  Wincing in pain, you massage your temples as the throbbing continues, and soon, the pain begins to fade; in its place comes a strange sense of sureness and wit.", false);
@@ -6588,11 +6588,11 @@ export class Mutations {
             changes++;
         }
         // Legs
-        if (changes < changeLimit && player.findPerk(PerkLib.Incorporeality) < 0 && (player.skinTone == "white" || player.skinTone == "sable") && player.hairType == 2) {
+        if (changes < changeLimit && player.perks.findByType(PerkLib.Incorporeality) < 0 && (player.skinTone == "white" || player.skinTone == "sable") && player.hairType == 2) {
             // (ghost-legs!  Absolutely no problem with regular encounters, though! [if you somehow got this with a centaur it'd probably do nothing cuz you're not supposed to be a centaur with ectoplasm ya dingus])
             outputText("\n\nAn otherworldly sensation begins in your belly, working its way to your " + hipDescription(player) + ". Before you can react, your " + legs(player) + " begin to tingle, and you fall on your rump as a large shudder runs through them. As you watch, your lower body shimmers, becoming ethereal, wisps rising from the newly ghost-like " + legs(player) + ". You manage to rise, surprised to find your new, ghostly form to be as sturdy as its former corporeal version. Suddenly, like a dam breaking, fleeting visions and images flow into your head, never lasting long enough for you to concentrate on one. You don't even realize it, but your arms fly up to your head, grasping your temples as you groan in pain. As fast as the mental bombardment came, it disappears, leaving you with a surprising sense of spiritual superiority.  <b>You have ghost legs!</b>\n\n", false);
             outputText("<b>(Gained Perk:  Incorporeality</b>)", false);
-            player.createPerk(PerkLib.Incorporeality, 0, 0, 0, 0);
+            player.perks.create(PerkLib.Incorporeality, 0, 0, 0, 0);
         }
         // Effect Script 8: 100% chance of healing
         if (changes == 0) {
@@ -6622,7 +6622,7 @@ export class Mutations {
         let changeLimit: number = 1;
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 
         // possible use effects:
         // - toughess up, sensitivity down
@@ -6735,12 +6735,12 @@ export class Mutations {
             outputText("\n\nNumbness clouds your mind, making you feel slow witted and dull.  Maybe these candies weren't such a exceptio... fantas... good idea.", false);
             dynStats("int", -(1 + rand(5)));
         }
-        if (player.findPerk(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) == 0) {
+        if (player.perks.findByType(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) == 0) {
             outputText("Slowly, ", false);
             if (player.skinType == SKIN_TYPE_PLAIN) outputText("your skin", false);
             else outputText("the skin under your " + player.skinDesc, false);
             outputText(" begins to feel duller, almost... thicker.  You pinch yourself and find that your epidermis feels more resistant to damage, almost like natural armor!\n<b>(Thick Skin - Perk Gained!)</b>", false);
-            player.createPerk(PerkLib.ThickSkin, 0, 0, 0, 0);
+            player.perks.create(PerkLib.ThickSkin, 0, 0, 0, 0);
         }
         outputText("\n\nAfter the sensations pass, your " + player.skinDesc + " feels a little less receptive to touch.", false);
         dynStats("sen", -3);
@@ -6932,7 +6932,7 @@ export class Mutations {
         if (player.cumQ() < 5000 < 2 && rand(3) == 0 && changes < changeLimit && player.hasCock()) {
             temp = 2 + rand(4);
             // Lots of cum raises cum multiplier cap to 2 instead of 1.5
-            if (player.findPerk(PerkLib.MessyOrgasms) >= 0) temp += rand(10);
+            if (player.perks.findByType(PerkLib.MessyOrgasms) >= 0) temp += rand(10);
             player.cumMultiplier += temp;
             // Flavor text
             if (player.balls == 0) outputText("\n\nYou feel a churning inside your gut as something inside you changes.", false);
@@ -7166,7 +7166,7 @@ export class Mutations {
         // Effect:
         // Boosts the special effect of Dragonbreath by 20% for 1 use. ie: if Tainted's breath weapon has a 80% chance to stun on hit, +20% equals 100% chance to stun.
         outputText("You crack the shell easily and swallow the large yolk and the copious amounts of albumen - the yolk is blue, while the rest is crimson-tinted.  It tastes like... well, it tastes mostly of spiced mint, you think.");
-        if (player.findPerk(PerkLib.Dragonfire) >= 0) {
+        if (player.perks.findByType(PerkLib.Dragonfire) >= 0) {
             if (player.findStatusAffect(StatusAffects.DragonBreathCooldown) >= 0) player.removeStatusAffect(StatusAffects.DragonBreathCooldown);
             else {
                 if (player.findStatusAffect(StatusAffects.DragonBreathBoost) < 0) player.createStatusAffect(StatusAffects.DragonBreathBoost, 0, 0, 0, 0);
@@ -7189,7 +7189,7 @@ export class Mutations {
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
         if (mystic) changeLimit += 2;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         if (mystic) outputText("You examine the jewel for a bit, rolling it around in your hand as you ponder its mysteries.  You hold it up to the light with fascinated curiosity, watching the eerie purple flame dancing within.  Without warning, the gem splits down the center, dissolving into nothing in your hand.  As the pale lavender flames swirl around you, the air is filled with a sickly sweet scent that drips with the bitter aroma of licorice, filling you with a dire warmth.");
         else outputText("You examine the jewel for a bit, rolling it around in your hand as you ponder its mysteries.  You hold it up to the light with fascinated curiosity, watching the eerie blue flame dancing within.  Without warning, the gem splits down the center, dissolving into nothing in your hand.  As the pale azure flames swirl around you, the air is filled with a sweet scent that drips with the aroma of wintergreen, sending chills down your spine.");
 
@@ -7336,11 +7336,11 @@ export class Mutations {
             changes++;
         }
         // [Grow 9th tail and gain Corrupted Nine-tails perk]
-        else if (mystic && rand(4) == 0 && changes < changeLimit && player.tailType == TAIL_TYPE_FOX && player.tailVenom == 8 && player.level >= 9 && player.earType == EARS_FOX && player.inte >= 90 && player.findPerk(PerkLib.CorruptedNinetails) < 0 && player.findPerk(PerkLib.EnlightenedNinetails) < 0) {
+        else if (mystic && rand(4) == 0 && changes < changeLimit && player.tailType == TAIL_TYPE_FOX && player.tailVenom == 8 && player.level >= 9 && player.earType == EARS_FOX && player.inte >= 90 && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
             outputText("Your bushy tails begin to glow with an eerie, ghostly light, and with a crackle of electrical energy, split into nine tails.  <b>You are now a nine-tails!  But something is wrong...  The cosmic power radiating from your body feels...  tainted somehow.  The corruption pouring off your body feels...  good.</b>");
             outputText("\n\nYou have the inexplicable urge to set fire to the world, just to watch it burn.  With your newfound power, it's a goal that is well within reach.");
             outputText("\n\n(Perk Gained: Corrupted Nine-tails - Grants two magical special attacks.)");
-            player.createPerk(PerkLib.CorruptedNinetails, 0, 0, 0, 0);
+            player.perks.create(PerkLib.CorruptedNinetails, 0, 0, 0, 0);
             dynStats("lib", 2, "lus", 10, "cor", 10);
             player.tailVenom = 9;
             changes++;
@@ -7615,7 +7615,7 @@ export class Mutations {
             public function deBimbo(player:Player):void
             {
                 clearOutput();
-                if (player.findPerk(PerkLib.BimboBrains) < 0 && player.findPerk(PerkLib.FutaFaculties) < 0) {
+                if (player.perks.findByType(PerkLib.BimboBrains) < 0 && player.perks.findByType(PerkLib.FutaFaculties) < 0) {
                     outputText("You can't use this right now, and it's too expensive to waste!\n\n");
                     if (game.debug) {}
                     else {
@@ -7625,13 +7625,13 @@ export class Mutations {
                 }
                 outputText("Well, time to see what this smelly, old rat was on about!  You pinch your nose and swallow the foul-tasting mixture with a grimace.  Oh, that's just <i>nasty!</i>  You drop the vial, which shatters on the ground, clutching at your head as a wave of nausea rolls over you.  Stumbling back against a rock for support, you close your eyes.  A constant, pounding ache throbs just behind your temples, and for once, you find yourself speechless.  A pained groan slips through your lips as thoughts and memories come rushing back.  One after another, threads of cognizant thought plow through the simple matrices of your bimbo mind, shredding and replacing them.");
                 outputText("\n\nYou... you were an air-headed ditz!  A vacuous, idiot-girl with nothing between her ears but hunger for dick and pleasure!  You shudder as your faculties return, the pain diminishing with each passing moment.");
-                if (player.findPerk(PerkLib.BimboBrains) >= 0) {
+                if (player.perks.findByType(PerkLib.BimboBrains) >= 0) {
                     outputText("\n\n(<b>Perk Removed:  Bimbo Brains - Your intelligence and speech patterns are no longer limited to that of a bimbo.</b>)");
-                    player.removePerk(PerkLib.BimboBrains);
+                    player.perks.remove(PerkLib.BimboBrains);
                 }
-                else if (player.findPerk(PerkLib.FutaFaculties) >= 0) {
+                else if (player.perks.findByType(PerkLib.FutaFaculties) >= 0) {
                     outputText("\n\n(<b>Perk Removed:  Futa Faculties - Your intelligence and speech patterns are no longer limited to that of a futanari bimbo.</b>)");
-                    player.removePerk(PerkLib.FutaFaculties);
+                    player.perks.remove(PerkLib.FutaFaculties);
                 }
             }
     */
@@ -7659,7 +7659,7 @@ export class Mutations {
         if (rand(2) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
         if (rand(3) == 0) changeLimit++;
-        if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+        if (player.perks.findByType(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
         outputText("You pour some of the oil onto your hands and ");
         if (player.cor < 30) outputText("hesitantly ");
         else if (player.cor > 70) outputText("eagerly ");
@@ -7824,8 +7824,8 @@ export class Mutations {
             if (rand(4) == 0 && changes < changeLimit) {
                 if (player.femininity < 70 && player.femininity >= 60) {
                     outputText("\n\nYou laugh as you feel your features once again soften, before stopping abruptly.  Your laugh sounded more like a girly giggle than anything else.  Feeling slightly more sober, you touch the soft flesh of your face prospectively.  The trap oil has changed you profoundly, making your innate maleness... difficult to discern, to say the least.  You suspect you could make yourself look even more like a girl now if you wanted to.");
-                    if (player.findPerk(PerkLib.Androgyny) < 0) {
-                        player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
+                    if (player.perks.findByType(PerkLib.Androgyny) < 0) {
+                        player.perks.create(PerkLib.Androgyny, 0, 0, 0, 0);
                         outputText("\n\n(<b>Perk Gained: Androgyny</b>)");
                     }
                     player.femininity += 10;
@@ -7855,8 +7855,8 @@ export class Mutations {
                     player.femininity = 30;
                     // Masculinity Increase Final (max masculinity allowed increased by +10):
                     outputText("\n\nYou laugh as you feel your features once again soften, before stopping abruptly.  Your laugh sounded more like a boyish crow than anything else.  Feeling slightly more sober, you touch the defined lines of your face prospectively.  The trap oil has changed you profoundly, making your innate femaleness... difficult to discern, to say the least.  You suspect you could make yourself look even more like a boy now if you wanted to.");
-                    if (player.findPerk(PerkLib.Androgyny) < 0) {
-                        player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
+                    if (player.perks.findByType(PerkLib.Androgyny) < 0) {
+                        player.perks.create(PerkLib.Androgyny, 0, 0, 0, 0);
                         outputText("\n\n(<b>Perk Gained: Androgyny</b>)");
                     }
                 }

@@ -424,7 +424,7 @@ export function harpyHordeGangBangStruggle(clearDisp: boolean = true): void {
 // ATTACK THREE: LUSTY HARPIES!
 export function harpyHordeLustAttack(): void {
     outputText("The harpies back off for a moment, giving you room to breathe - only to begin a mini strip-tease, pulling off bits of clothing to reveal their massive asses and hips or bearing their small, perky tits.  They caress themselves and each other, moaning lewdly.  Distracted by the burlesque, you don't notice a lipstick-wearing harpy approaching you until it's too late!  She plants a kiss right on your lips, ");
-    if (player.findPerk(PerkLib.LuststickAdapted) >= 0) outputText("doing relatively little thanks to your adaptation");
+    if (player.perks.findByType(PerkLib.LuststickAdapted) >= 0) outputText("doing relatively little thanks to your adaptation");
     else {
         outputText("sending shivers of lust up your spine");
         dynStats("lus", 5);
@@ -875,7 +875,7 @@ export function phoenixAginal(): void {
 
     outputText("\n\n");
     // [If Broodmother, not pregnant:
-    if (player.findPerk(PerkLib.BroodMother) >= 0) outputText("You assure her she will be soon");
+    if (player.perks.findByType(PerkLib.BroodMother) >= 0) outputText("You assure her she will be soon");
     else outputText("You grin at her");
     outputText(" and strip out of your [armor]. The phoenix, a bit more dominant than you might have liked, roughly grabs your [chest], pinching your nipples as she takes over wringing her cock from you. Oh well. You decide to roll with it and slide a hand down to your [vagina], stroking your pussy as your lover warms up.");
 

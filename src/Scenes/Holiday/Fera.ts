@@ -119,7 +119,7 @@ export function pumpkinFuckPartIII(): void {
     outputText("\n\nFera disappears along with all the evidence of your encounter, her ruby lips hanging in the air for a split-second before fading as well.  You're left naked, alone with your discarded armor, lusts, and recently adjusted attitude.");
     // (+30 corrution, Fera's Boon - Alpha gained)
     outputText("\n\n(<b>Perk Gained: Fera's Boon - Alpha</b>)");
-    player.createPerk(PerkLib.FerasBoonAlpha, 0, 0, 0, 0);
+    player.perks.create(PerkLib.FerasBoonAlpha, 0, 0, 0, 0);
     dynStats("cor", 30);
     doNext(camp.returnToCampUseOneHour);
 }
@@ -214,7 +214,7 @@ export function mountPumpkinsIII(): void {
     outputText("\n\n<i>\"I went ahead and gave you your reward.  It seemed fitting to enhance the power of your womb, since that was how you saved me.  My hero,\"</i> Fera explains before giving you a chaste kiss on the lips.  <i>\"You'll find yourself breeding easier and giving birth faster.  Now go, fill this world with strong offspring.  Do not disappoint me.\"</i>");
     outputText("\n\nFera disappears along with all the evidence of your encounter, her ruby lips hanging in the air for a split-second before fading as well.  You're left naked, alone with your discarded armor, urge of release, and recently adjusted attitude.");
     outputText("\n\n(<b>Perk Gained: Fera's Boon - Breeding Bitch</b>)");
-    player.createPerk(PerkLib.FerasBoonBreedingBitch, 0, 0, 0, 0);
+    player.perks.create(PerkLib.FerasBoonBreedingBitch, 0, 0, 0, 0);
     dynStats("cor", 30);
     doNext(camp.returnToCampUseOneHour);
 }
@@ -404,7 +404,7 @@ export function dickBoostingFuntimes(): void {
     }
     player.orgasm();
     dynStats("lib", 10, "cor", 5);
-    player.createPerk(PerkLib.FerasBoonSeeder, 0, 0, 0, 0);
+    player.perks.create(PerkLib.FerasBoonSeeder, 0, 0, 0, 0);
     menu();
     addButton(0, "Next", postSeederUpgrade);
 }
@@ -488,7 +488,7 @@ export function gapeMePleaseFera(): void {
     player.cuntChange(90000, true, true, false);
     // (cum!)
     // Minimum size to 4
-    player.createPerk(PerkLib.FerasBoonWideOpen, 0, 0, 0, 0);
+    player.perks.create(PerkLib.FerasBoonWideOpen, 0, 0, 0, 0);
     // Boost fertility by a bunch
     player.fertility += 20;
     if (player.fertility > 50) player.fertility = 50;
@@ -547,7 +547,7 @@ export function tightLikeAToigar(): void {
     player.orgasm();
     dynStats("lib", 5, "sen", 20, "cor", 3);
     // Maximum size to 2
-    player.createPerk(PerkLib.FerasBoonMilkingTwat, 0, 0, 0, 0);
+    player.perks.create(PerkLib.FerasBoonMilkingTwat, 0, 0, 0, 0);
     if (player.vaginas[0].vaginalLooseness > VAGINA_LOOSENESS_LOOSE) player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
     // Boost fertility a little
     player.fertility += 10;
@@ -589,7 +589,7 @@ export function growADickForFera(): void {
     player.cocks[0].cockLength = 10;
     player.cocks[0].cockThickness = 2.5;
     // Add five corruption.
-    player.createPerk(PerkLib.FerasBoonSeeder, 0, 0, 0, 0);
+    player.perks.create(PerkLib.FerasBoonSeeder, 0, 0, 0, 0);
     menu();
     genderCheck();
     addButton(0, "Next", afterFeraGivesYouACawk);

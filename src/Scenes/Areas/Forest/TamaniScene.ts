@@ -671,7 +671,7 @@ export class TamaniScene implements TimeAwareInterface {
         flags[kFLAGS.TAMANI_PREGNANCY_COUNT] = 2;
         const cum: number = player.cumQ();
         // Breeder perk is awesome
-        if (player.findPerk(PerkLib.MaraesGiftStud) >= 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT] += 3;
+        if (player.perks.findByType(PerkLib.MaraesGiftStud) >= 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT] += 3;
         if (cum >= 50 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
         if (cum >= 100 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
         if (cum >= 200 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;

@@ -29,9 +29,9 @@ export function updatePregnancy(): boolean {
         if (player.findStatusAffect(StatusAffects.Birthed) < 0) player.createStatusAffect(StatusAffects.Birthed, 1, 0, 0, 0);
         else {
             player.addStatusValue(StatusAffects.Birthed, 1, 1);
-            if (player.findPerk(PerkLib.BroodMother) < 0 && player.statusAffectv1(StatusAffects.Birthed) >= 10) {
+            if (player.perks.findByType(PerkLib.BroodMother) < 0 && player.statusAffectv1(StatusAffects.Birthed) >= 10) {
                 outputText("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n", false);
-                player.createPerk(PerkLib.BroodMother, 0, 0, 0, 0);
+                player.perks.create(PerkLib.BroodMother, 0, 0, 0, 0);
             }
         }
     }

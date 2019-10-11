@@ -3502,7 +3502,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         if (player.isTaur()) outputText("positioning your centaur, ");
         else if (player.isDrider()) outputText("drider body over the bulk of her back, ");
         outputText("and release your ovipositor from its usual hiding slit, already dripping with ");
-        if (player.findPerk(PerkLib.SpiderOvipositor) >= 0) outputText("green slime");
+        if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0) outputText("green slime");
         else outputText("honey");
         outputText(" in anticipation of laying.  The appendage droops down, curling around to slide its wet length against Urta's balls and the base of her cock.  \"<i>[name], wha...?</i>\" she slurs at you, but you just gently shush her and tell her to relax.  With a little effort, you bring it slithering back up to pry at the dampness of her netherlips...");
 
@@ -3519,7 +3519,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         else outputText("  The entirety of your sexual world begins and ends with your ovipositor, with the sensation of the mock-cock burrowing inexorably towards Urta's womb overwhelming you with pleasure.  Having no other sexual organs to distract you allows you to fully embrace it; you thrust harder and harder, desperate to ensure you have reached the womb before you start to lay.");
 
         outputText("\n\nFinally, blissfully, you reach the cervix; with one last mighty thrust, eliciting a shriek of arousal-tinged pain and an explosive gout of cum from your vulpine brood-host, you penetrate her all the way into the womb.  You both hover there, gasping as you recover from your mutual exertions, when the wonderful tingling of your eggs moving emanates from your insectile fuckspear.  You moan and groan as contractions push the first of your eggs down, pumping a steady stream of ");
-        if (player.findPerk(PerkLib.BeeOvipositor) >= 0) outputText("honey");
+        if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0) outputText("honey");
         else outputText("spider-goo");
         outputText(" to keep Urta moist and slick and pliable.");
 
@@ -3564,7 +3564,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.URTA_EGGS] = player.eggs();
         flags[kFLAGS.URTA_FERTILE_EGGS] = player.fertilizedEggs();
         flags[kFLAGS.URTA_TIMES_EGG_PREGGED]++;
-        if (player.findPerk(PerkLib.BeeOvipositor) >= 0)
+        if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0)
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_BEE_EGGS, 72);
         else
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 72);
@@ -3607,7 +3607,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
             }
         }
         // [Giant Bee:
-        else if (player.findPerk(PerkLib.BeeOvipositor) >= 0) outputText("\n\nWell, you're pretty sure the eggs will just hatch into bee swarms; doesn't Tel'Adre have farms of some kind that could use them, you ask?  Urta looks thoughtful for a few moments, then nods.  \"<i>Yeah, and the farmers often complain that the crops don't produce so well because the drought means there's almost no insects to pollinate them any more.  They'd be happy to take in some swarms, even if they will grow up and move away after three years,</i>\" she mumbles, more to herself than to you.");
+        else if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0) outputText("\n\nWell, you're pretty sure the eggs will just hatch into bee swarms; doesn't Tel'Adre have farms of some kind that could use them, you ask?  Urta looks thoughtful for a few moments, then nods.  \"<i>Yeah, and the farmers often complain that the crops don't produce so well because the drought means there's almost no insects to pollinate them any more.  They'd be happy to take in some swarms, even if they will grow up and move away after three years,</i>\" she mumbles, more to herself than to you.");
         // [Drider:
         else outputText("\n\nMaybe she could give them up to a tailor's guild or something?  After all, they'll be driders like you are now, so they could produce lots of silk for the city.  The fox-morph looks puzzled at the idea, then rubs her chin contemplatively.  \"<i>I guess that might work...</i>\" she mumbles.");
 
@@ -3615,7 +3615,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
 
         urtaLove(-10);
         outputText("\n\nYou kiss the embarrassed fox on the nose and tell her to take care before heading out.  She grabs you by the neck and kisses you back hard, whispering, \"<i>Don't try to make me do this sober, sneaky ");
-        if (player.findPerk(PerkLib.SpiderOvipositor) >= 0) outputText("spider");
+        if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0) outputText("spider");
         else outputText("little bee");
         outputText("...</i>\"\n");
         // (Technically finished, now, but waiting Fen's okay before adding repeatable version)
@@ -3703,7 +3703,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.URTA_EGGS] = player.eggs();
         flags[kFLAGS.URTA_FERTILE_EGGS] = player.fertilizedEggs();
         flags[kFLAGS.URTA_TIMES_EGG_PREGGED]++;
-        if (player.findPerk(PerkLib.BeeOvipositor) >= 0)
+        if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0)
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_BEE_EGGS, 72);
         else
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 72);

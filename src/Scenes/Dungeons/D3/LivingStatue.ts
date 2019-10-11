@@ -38,7 +38,7 @@ export class LivingStatue extends Monster {
         this.weaponAttack = 25;
         this.armorName = "cracked stone";
 
-        createPerk(PerkLib.Resolute, 0, 0, 0, 0);
+        this.perks.create(PerkLib.Resolute, 0, 0, 0, 0);
 
         checkMonster();
     }

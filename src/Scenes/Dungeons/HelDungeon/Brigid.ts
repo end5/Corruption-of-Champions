@@ -19,7 +19,7 @@ export class Brigid extends Monster {
         let damage: number = 5;
         damage = player.takeDamage(5);
         outputText(" (" + damage + ")");
-        if (player.findPerk(PerkLib.Resolute) >= 0) outputText("  Of course, your resolute posture prevents her from accomplishing much.");
+        if (player.perks.findByType(PerkLib.Resolute) >= 0) outputText("  Of course, your resolute posture prevents her from accomplishing much.");
         else player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
         combatRoundOver();
     }

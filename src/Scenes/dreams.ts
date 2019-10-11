@@ -42,7 +42,7 @@ export function dreamSelect(): boolean {
     if (player.minotaurAddicted()) {
         choices[choices.length] = 6;
         choices[choices.length] = 6;
-        if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0) choices[choices.length] = 6;
+        if (player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) choices[choices.length] = 6;
     }
     // Akbal
     if (flags[kFLAGS.AKBAL_SUBMISSION_COUNTER] > 4) {
@@ -117,10 +117,10 @@ export function dreamSelect(): boolean {
     let dreamLust: number = dreamtemp;
 
     // Lusty increases by 1/3rd
-    if (player.findPerk(PerkLib.Lusty) >= 0) dreamLust += (dreamtemp / 3);
+    if (player.perks.findByType(PerkLib.Lusty) >= 0) dreamLust += (dreamtemp / 3);
 
     // Well Adjusted cuts by half
-    if (player.findPerk(PerkLib.WellAdjusted) >= 0) dreamLust = (dreamLust / 2);
+    if (player.perks.findByType(PerkLib.WellAdjusted) >= 0) dreamLust = (dreamLust / 2);
 
     if (dreamLust > 0) dynStats("lus", dreamLust);
 

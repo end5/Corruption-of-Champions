@@ -18,17 +18,17 @@ export class Izma extends Monster {
             return;
         }
         // Determine if evaded
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Izma attempts to get close, but you manage to side-step her before she can lay her gauntleted hands on you.\n", false);
             return;
         }
         // ("Misdirection"
-        if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Izma attempts to get close, but you put Raphael's teachings to use and side-step the sharkgirl, confusing her with your movements.\n", false);
             return;
         }
         // Determine if cat'ed
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("Izma attempts to get close, but you manage to side-step her before she can lay her gauntleted hands on you.\n", false);
             return;
         }
@@ -49,17 +49,17 @@ export class Izma extends Monster {
             return;
         }
         // Determine if evaded
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Izma tries to clinch you, but she didn't count on your skills in evasion.  You manage to sidestep her at the last second.\n", false);
             return;
         }
         // ("Misdirection"
-        if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+        if (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
             outputText("Izma ducks and weaves forward to clinch you, but thanks to Raphael's teachings, you're easily able to misguide her and avoid the clumsy grab.\n", false);
             return;
         }
         // Determine if cat'ed
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
             outputText("Izma tries to lock you in a clinch, but your cat-like flexibility makes it easy to twist away from her grab.\n", false);
             return;
         }

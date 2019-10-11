@@ -19,26 +19,26 @@ export class ArmorWithPerk extends Armor {
     }
 
     public playerEquip(): Armor { // This item is being equipped by the player. Add any perks, etc.
-        while (game.player.findPerk(playerPerk) >= 0) game.player.removePerk(playerPerk);
-        game.player.createPerk(playerPerk, playerPerkV1, playerPerkV2, playerPerkV3, playerPerkV4);
+        while (game.player.perks.findByType(playerPerk) >= 0) game.player.perks.remove(playerPerk);
+        game.player.perks.create(playerPerk, playerPerkV1, playerPerkV2, playerPerkV3, playerPerkV4);
         return super.playerEquip();
     }
 
     public playerRemove(): Armor { // This item is being removed by the player. Remove any perks, etc.
-        while (game.player.findPerk(playerPerk) >= 0) game.player.removePerk(playerPerk);
+        while (game.player.perks.findByType(playerPerk) >= 0) game.player.perks.remove(playerPerk);
         return super.playerRemove();
     }
 
     /*
             override public function equipEffect(player:Player, output:Boolean):void
             {
-                if(player.findPerk(playerPerk) < 0)
-                    player.createPerk(playerPerk,playerPerkV1,playerPerkV2,playerPerkV3,playerPerkV4);
+                if(player.perks.findByType(playerPerk) < 0)
+                    player.perks.create(playerPerk,playerPerkV1,playerPerkV2,playerPerkV3,playerPerkV4);
             }
 
             override public function unequipEffect(player:Player, output:Boolean):void
             {
-                while(player.findPerk(playerPerk) >= 0) player.removePerk(playerPerk);
+                while(player.perks.findByType(playerPerk) >= 0) player.perks.remove(playerPerk);
             }
     */
 }

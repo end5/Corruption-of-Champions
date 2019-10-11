@@ -106,12 +106,12 @@ export class Player extends Character {
     public get armorDef(): number {
         let armorDef: number = _armor.def;
         // Blacksmith history!
-        if (armorDef > 0 && findPerk(PerkLib.HistorySmith) >= 0) {
+        if (armorDef > 0 && this.perks.findByType(PerkLib.HistorySmith) >= 0) {
             armorDef = Math.round(armorDef * 1.1);
             armorDef += 1;
         }
         // Skin armor perk
-        if (findPerk(PerkLib.ThickSkin) >= 0) {
+        if (this.perks.findByType(PerkLib.ThickSkin) >= 0) {
             armorDef += 2;
             if (skinType > SKIN_TYPE_PLAIN) armorDef += 1;
         }
@@ -123,7 +123,7 @@ export class Player extends Character {
         // 'Thick' dermis descriptor adds 1!
         if (skinAdj == "smooth") armorDef += 1;
         // Agility boosts armor ratings!
-        if (findPerk(PerkLib.Agility) >= 0) {
+        if (this.perks.findByType(PerkLib.Agility) >= 0) {
             if (armorPerk == "Light") armorDef += Math.round(spe / 8);
             else if (armorPerk == "Medium") armorDef += Math.round(spe / 13);
         }
@@ -155,9 +155,9 @@ export class Player extends Character {
     }
     public get weaponAttack(): number {
         let attack: number = _weapon.attack;
-        if (findPerk(PerkLib.WeaponMastery) >= 0 && weaponPerk == "Large" && str > 60)
+        if (this.perks.findByType(PerkLib.WeaponMastery) >= 0 && weaponPerk == "Large" && str > 60)
             attack *= 2;
-        if (findPerk(PerkLib.LightningStrikes) >= 0 && spe >= 60 && weaponPerk != "Large") {
+        if (this.perks.findByType(PerkLib.LightningStrikes) >= 0 && spe >= 60 && weaponPerk != "Large") {
             attack += Math.round((spe - 50) / 3);
         }
         if (findStatusAffect(StatusAffects.Berzerking) >= 0) attack += 30;
@@ -251,13 +251,13 @@ export class Player extends Character {
             damage = Math.round(damage * .75);
 
         // Take damage you masochist!
-        if (findPerk(PerkLib.Masochist) >= 0 && lib >= 60) {
+        if (this.perks.findByType(PerkLib.Masochist) >= 0 && lib >= 60) {
             damage = Math.round(damage * .7);
             dynStats("lus", 2);
             // Dont let it round too far down!
             if (damage < 1) damage = 1;
         }
-        if (findPerk(PerkLib.ImmovableObject) >= 0 && tou >= 75) {
+        if (this.perks.findByType(PerkLib.ImmovableObject) >= 0 && tou >= 75) {
             damage = Math.round(damage * .8);
             if (damage < 1) damage = 1;
         }
@@ -272,8 +272,8 @@ export class Player extends Character {
 
         // Uma's Accupuncture Bonuses
         let modArmorDef: number = 0;
-        if (findPerk(PerkLib.ChiReflowDefense) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_DEFENSE_DEFENSE_MULTI) - armorDef);
-        if (findPerk(PerkLib.ChiReflowAttack) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_ATTACK_DEFENSE_MULTI) - armorDef);
+        if (this.perks.findByType(PerkLib.ChiReflowDefense) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_DEFENSE_DEFENSE_MULTI) - armorDef);
+        if (this.perks.findByType(PerkLib.ChiReflowAttack) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_ATTACK_DEFENSE_MULTI) - armorDef);
         damage -= modArmorDef;
         if (damage < 0) damage = 0;
         return damage;
@@ -1168,7 +1168,7 @@ export class Player extends Character {
                 createStatusAffect(StatusAffects.SlimeCravingFeed, 0, 0, 0, 0);
             }
         }
-        if (findPerk(PerkLib.Diapause) >= 0) {
+        if (this.perks.findByType(PerkLib.Diapause) >= 0) {
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00228] += 3 + rand(3);
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00229] = 1;
         }
@@ -1232,7 +1232,7 @@ export class Player extends Character {
                 temp = 1;
                 breastRows[0].breastRating--;
                 // Shrink again 50% chance
-                if (breastRows[0].breastRating >= 1 && rand(2) == 0 && findPerk(PerkLib.BigTits) < 0) {
+                if (breastRows[0].breastRating >= 1 && rand(2) == 0 && this.perks.findByType(PerkLib.BigTits) < 0) {
                     temp++;
                     breastRows[0].breastRating--;
                 }
@@ -1276,7 +1276,7 @@ export class Player extends Character {
         let temp2: number = 0;
         let temp3: number = 0;
         // Chance for "big tits" perked characters to grow larger!
-        if (findPerk(PerkLib.BigTits) >= 0 && rand(3) == 0 && amount < 1) amount = 1;
+        if (this.perks.findByType(PerkLib.BigTits) >= 0 && rand(3) == 0 && amount < 1) amount = 1;
 
         // Needs to be a number, since uint will round down to 0 prevent growth beyond a certain point
         let temp: number = breastRows.length;
@@ -1300,7 +1300,7 @@ export class Player extends Character {
                 if (!flags[kFLAGS.HYPER_HAPPY]) {
                     // Diminishing returns!
                     if (breastRows[temp2].breastRating > 3) {
-                        if (findPerk(PerkLib.BigTits) < 0)
+                        if (this.perks.findByType(PerkLib.BigTits) < 0)
                             temp /= 1.5;
                         else
                             temp /= 1.3;
@@ -1308,19 +1308,19 @@ export class Player extends Character {
 
                     // WHy are there three options here. They all have the same result.
                     if (breastRows[temp2].breastRating > 7) {
-                        if (findPerk(PerkLib.BigTits) < 0)
+                        if (this.perks.findByType(PerkLib.BigTits) < 0)
                             temp /= 2;
                         else
                             temp /= 1.5;
                     }
                     if (breastRows[temp2].breastRating > 9) {
-                        if (findPerk(PerkLib.BigTits) < 0)
+                        if (this.perks.findByType(PerkLib.BigTits) < 0)
                             temp /= 2;
                         else
                             temp /= 1.5;
                     }
                     if (breastRows[temp2].breastRating > 12) {
-                        if (findPerk(PerkLib.BigTits) < 0)
+                        if (this.perks.findByType(PerkLib.BigTits) < 0)
                             temp /= 2;
                         else
                             temp /= 1.5;
@@ -1337,15 +1337,15 @@ export class Player extends Character {
         if (!flags[kFLAGS.HYPER_HAPPY]) {
             // Diminishing returns!
             if (breastRows[0].breastRating > 3) {
-                if (findPerk(PerkLib.BigTits) < 0) amount /= 1.5;
+                if (this.perks.findByType(PerkLib.BigTits) < 0) amount /= 1.5;
                 else amount /= 1.3;
             }
             if (breastRows[0].breastRating > 7) {
-                if (findPerk(PerkLib.BigTits) < 0) amount /= 2;
+                if (this.perks.findByType(PerkLib.BigTits) < 0) amount /= 2;
                 else amount /= 1.5;
             }
             if (breastRows[0].breastRating > 12) {
-                if (findPerk(PerkLib.BigTits) < 0) amount /= 2;
+                if (this.perks.findByType(PerkLib.BigTits) < 0) amount /= 2;
                 else amount /= 1.5;
             }
         }
@@ -1442,19 +1442,19 @@ export class Player extends Character {
     public minLust(): number {
         let min: number = 0;
         // Bimbo body boosts minimum lust by 40
-        if (findStatusAffect(StatusAffects.BimboChampagne) >= 0 || findPerk(PerkLib.BimboBody) >= 0 || findPerk(PerkLib.BroBody) >= 0 || findPerk(PerkLib.FutaForm) >= 0) {
+        if (findStatusAffect(StatusAffects.BimboChampagne) >= 0 || this.perks.findByType(PerkLib.BimboBody) >= 0 || this.perks.findByType(PerkLib.BroBody) >= 0 || this.perks.findByType(PerkLib.FutaForm) >= 0) {
             if (min > 40) min += 10;
             else if (min >= 20) min += 20;
             else min += 40;
         }
         // Omnibus' Gift
-        if (findPerk(PerkLib.OmnibusGift) >= 0) {
+        if (this.perks.findByType(PerkLib.OmnibusGift) >= 0) {
             if (min > 40) min += 10;
             else if (min >= 20) min += 20;
             else min += 35;
         }
         // Nymph perk raises to 30
-        if (findPerk(PerkLib.Nymphomania) >= 0) {
+        if (this.perks.findByType(PerkLib.Nymphomania) >= 0) {
             if (min >= 40) min += 10;
             else if (min >= 20) min += 15;
             else min += 30;
@@ -1466,17 +1466,17 @@ export class Player extends Character {
             else min += 30;
         }
         // Hot blooded perk raises min lust!
-        if (findPerk(PerkLib.HotBlooded) >= 0) {
-            if (min > 0) min += perk(findPerk(PerkLib.HotBlooded)).value1 / 2;
-            else min += perk(findPerk(PerkLib.HotBlooded)).value1;
+        if (this.perks.findByType(PerkLib.HotBlooded) >= 0) {
+            if (min > 0) min += this.perks[this.perks.findByType(PerkLib.HotBlooded)].value1 / 2;
+            else min += this.perks[this.perks.findByType(PerkLib.HotBlooded)].value1;
         }
-        if (findPerk(PerkLib.LuststickAdapted) > 0) {
+        if (this.perks.findByType(PerkLib.LuststickAdapted) > 0) {
             if (min < 50) min += 10;
             else min += 5;
         }
         // Add points for Crimstone
-        min += perkv1(PerkLib.PiercedCrimstone);
-        min += perkv1(PerkLib.PentUp);
+        min += this.perks.getValue1Of(PerkLib.PiercedCrimstone);
+        min += this.perks.getValue1Of(PerkLib.PentUp);
         // Harpy Lipstick status forces minimum lust to be at least 50.
         if (min < 50 && findStatusAffect(StatusAffects.Luststick) >= 0) min = 50;
         // SHOULDRA BOOSTS
@@ -1496,7 +1496,7 @@ export class Player extends Character {
     }
 
     public minotaurAddicted(): boolean {
-        return findPerk(PerkLib.MinotaurCumAddict) >= 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1;
+        return this.perks.findByType(PerkLib.MinotaurCumAddict) >= 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1;
     }
     public minotaurNeed(): boolean {
         return flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1;
@@ -1948,14 +1948,14 @@ export class Player extends Character {
         }
         else if (delta > 0) {
             trace("and increasing");
-            if (findPerk(PerkLib.MessyOrgasms) >= 0) {
+            if (this.perks.findByType(PerkLib.MessyOrgasms) >= 0) {
                 trace("and MessyOrgasms found");
                 delta *= 1.5;
             }
         }
         else if (delta < 0) {
             trace("and decreasing");
-            if (findPerk(PerkLib.MessyOrgasms) >= 0) {
+            if (this.perks.findByType(PerkLib.MessyOrgasms) >= 0) {
                 trace("and MessyOrgasms found");
                 delta *= 0.5;
             }
@@ -1969,7 +1969,7 @@ export class Player extends Character {
     public increaseCock(cockNum: number, lengthDelta: number): number {
         let bigCock: boolean = false;
 
-        if (findPerk(PerkLib.BigCock) >= 0)
+        if (this.perks.findByType(PerkLib.BigCock) >= 0)
             bigCock = true;
 
         return cocks[cockNum].growCock(lengthDelta, bigCock);

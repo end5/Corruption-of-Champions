@@ -18,7 +18,7 @@ export class Clara extends Monster {
         // Throw offensive potions at the player
         outputText("Clara suddenly snatches something from a pouch at her belt. \"<i>Try this, little cutie!</i>\" She snarls, and throws a vial of potion at you.", false);
         // Dodge chance!
-        if ((player.findPerk(PerkLib.Evade) >= 0 && rand(10) <= 3) || (rand(100) < player.spe / 5)) {
+        if ((player.perks.findByType(PerkLib.Evade) >= 0 && rand(10) <= 3) || (rand(100) < player.spe / 5)) {
             outputText("\nYou narrowly avoid the gush of alchemic fluids!\n", false);
         }
         else {

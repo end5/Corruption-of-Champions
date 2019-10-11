@@ -94,7 +94,7 @@ export class SophieScene implements TimeAwareInterface {
                         else sophieFollowerScene.sophieFertilityExpired();
                         needNext = true;
                     }
-                    if (game.time.hours == 10 && (player.findPerk(PerkLib.LuststickAdapted) < 0 || rand(3) == 0) && sophieBimbo.bimboSophie() && !sophieBimbo.sophieIsInSeason() && flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] == 0) {
+                    if (game.time.hours == 10 && (player.perks.findByType(PerkLib.LuststickAdapted) < 0 || rand(3) == 0) && sophieBimbo.bimboSophie() && !sophieBimbo.sophieIsInSeason() && flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] == 0) {
                         sophieBimbo.bimboSophieLustStickSurprise();
                         needNext = true;
                     }
@@ -869,7 +869,7 @@ export class SophieScene implements TimeAwareInterface {
 
     public luststickApplication(hours: number = 4): void {
         // Immune to luststick?
-        if (player.findPerk(PerkLib.LuststickAdapted) >= 0) return;
+        if (player.perks.findByType(PerkLib.LuststickAdapted) >= 0) return;
         // Increment luststick resistance
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00285] += Math.floor(hours / 2);
         if (!player.hasCock()) return;

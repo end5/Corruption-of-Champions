@@ -359,16 +359,8 @@ export class Creature {
 
     // Monsters have few perks, which I think should be a status effect for clarity's sake.
     // TODO: Move perks into monster status effects.
-    private _perks: any[];
-    public perk(i: number): PerkClass {
-        return _perks[i];
-    }
-    public get perks(): any[] {
-        return _perks;
-    }
-    public get numPerks(): number {
-        return _perks.length;
-    }
+    public perks = new PerkArray();
+
     // Current status effects. This has got very muddy between perks and status effects. Will have to look into it.
     // Someone call the grammar police!
     // TODO: Move monster status effects into perks. Needs investigation though.
@@ -382,7 +374,6 @@ export class Creature {
         vaginas = [];
         // vaginas: Vector.<Vagina> = new Vector.<Vagina>();
         breastRows = [];
-        _perks = [];
         statusAffects = [];
         // keyItems = new Array();
     }
@@ -399,204 +390,6 @@ export class Creature {
             outputText("\n\nFeeling some minor discomfort in your " + cockDescript(this, randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n");
             gems += bonusGems;
         }
-    }
-
-    // Create a perk
-    public createPerk(ptype: PerkType, value1: number, value2: number, value3: number, value4: number): void {
-        const newKeyItem: PerkClass = new PerkClass(ptype);
-        // used to denote that the array has already had its new spot pushed on.
-        let arrayed: boolean = false;
-        // used to store where the array goes
-        let keySlot: number = 0;
-        let counter: number = 0;
-        // Start the array if its the first bit
-        if (perks.length == 0) {
-            // trace("New Perk Started Array! " + keyName);
-            perks.push(newKeyItem);
-            arrayed = true;
-            keySlot = 0;
-        }
-        // If it belongs at the end, push it on
-        if (perk(perks.length - 1).perkName < ptype.name && !arrayed) {
-            // trace("New Perk Belongs at the end!! " + keyName);
-            perks.push(newKeyItem);
-            arrayed = true;
-            keySlot = perks.length - 1;
-        }
-        // If it belongs in the beginning, splice it in
-        if (perk(0).perkName > ptype.name && !arrayed) {
-            // trace("New Perk Belongs at the beginning! " + keyName);
-            perks.splice(0, 0, newKeyItem);
-            arrayed = true;
-            keySlot = 0;
-        }
-        // Find the spot it needs to go in and splice it in.
-        if (!arrayed) {
-            // trace("New Perk using alphabetizer! " + keyName);
-            counter = perks.length;
-            while (counter > 0 && !arrayed) {
-                counter--;
-                // If the current slot is later than new key
-                if (perk(counter).perkName > ptype.name) {
-                    // If the earlier slot is earlier than new key && a real spot
-                    if (counter - 1 >= 0) {
-                        // If the earlier slot is earlier slot in!
-                        if (perk(counter - 1).perkName <= ptype.name) {
-                            arrayed = true;
-                            perks.splice(counter, 0, newKeyItem);
-                            keySlot = counter;
-                        }
-                    }
-                    // If the item after 0 slot is later put here!
-                    else {
-                        // If the next slot is later we are go
-                        if (perk(counter).perkName <= ptype.name) {
-                            arrayed = true;
-                            perks.splice(counter, 0, newKeyItem);
-                            keySlot = counter;
-                        }
-                    }
-                }
-            }
-        }
-        // Fallback
-        if (!arrayed) {
-            // trace("New Perk Belongs at the end!! " + keyName);
-            perks.push(newKeyItem);
-            keySlot = perks.length - 1;
-        }
-
-        perk(keySlot).value1 = value1;
-        perk(keySlot).value2 = value2;
-        perk(keySlot).value3 = value3;
-        perk(keySlot).value4 = value4;
-        // trace("NEW PERK FOR PLAYER in slot " + keySlot + ": " + perk(keySlot).perkName);
-    }
-
-    /**
-     * Remove perk. Return true if there was such perk
-     */
-    public removePerk(ptype: PerkType): boolean {
-        let counter: number = perks.length;
-        // Various Errors preventing action
-        if (perks.length <= 0) {
-            return false;
-        }
-        while (counter > 0) {
-            counter--;
-            if (perk(counter).ptype == ptype) {
-                perks.splice(counter, 1);
-                // trace("Attempted to remove \"" + perkName + "\" perk.");
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // has perk?
-    public findPerk(ptype: PerkType): number {
-        if (perks.length <= 0)
-            return -2;
-        for (const counter = 0; counter < perks.length; counter++) {
-            if (perk(counter).ptype == ptype)
-                return counter;
-        }
-        return -1;
-    }
-
-    // Duplicate perk
-    // Deprecated?
-    public perkDuplicated(ptype: PerkType): boolean {
-        let timesFound: number = 0;
-        if (perks.length <= 0)
-            return false;
-        for (const counter = 0; counter < perks.length; counter++) {
-            if (perk(counter).ptype == ptype)
-                timesFound++;
-        }
-        return (timesFound > 1);
-    }
-
-    // remove all perks
-    public removePerks(): void {
-        _perks = [];
-    }
-
-    public addPerkValue(ptype: PerkType, valueIdx: number = 1, bonus: number = 0): void {
-        const counter: number = findPerk(ptype);
-        if (counter < 0) {
-            trace("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
-            return;
-        }
-        if (valueIdx < 1 || valueIdx > 4) {
-            CoC_Settings.error("addPerkValue(" + ptype.id + ", " + valueIdx + ", " + bonus + ").");
-            return;
-        }
-        if (valueIdx == 1)
-            perk(counter).value1 += bonus;
-        if (valueIdx == 2)
-            perk(counter).value2 += bonus;
-        if (valueIdx == 3)
-            perk(counter).value3 += bonus;
-        if (valueIdx == 4)
-            perk(counter).value4 += bonus;
-    }
-
-    public setPerkValue(ptype: PerkType, valueIdx: number = 1, newNum: number = 0): void {
-        const counter: number = findPerk(ptype);
-        // Various Errors preventing action
-        if (counter < 0) {
-            trace("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
-            return;
-        }
-        if (valueIdx < 1 || valueIdx > 4) {
-            CoC_Settings.error("setPerkValue(" + ptype.id + ", " + valueIdx + ", " + newNum + ").");
-            return;
-        }
-        if (valueIdx == 1)
-            perk(counter).value1 = newNum;
-        if (valueIdx == 2)
-            perk(counter).value2 = newNum;
-        if (valueIdx == 3)
-            perk(counter).value3 = newNum;
-        if (valueIdx == 4)
-            perk(counter).value4 = newNum;
-    }
-
-    public perkv1(ptype: PerkType): number {
-        const counter: number = findPerk(ptype);
-        if (counter < 0) {
-            // trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
-            return 0;
-        }
-        return perk(counter).value1;
-    }
-
-    public perkv2(ptype: PerkType): number {
-        const counter: number = findPerk(ptype);
-        if (counter < 0) {
-            // trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
-            return 0;
-        }
-        return perk(counter).value2;
-    }
-
-    public perkv3(ptype: PerkType): number {
-        const counter: number = findPerk(ptype);
-        if (counter < 0) {
-            trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
-            return 0;
-        }
-        return perk(counter).value3;
-    }
-
-    public perkv4(ptype: PerkType): number {
-        const counter: number = findPerk(ptype);
-        if (counter < 0) {
-            trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
-            return 0;
-        }
-        return perk(counter).value4;
     }
 
     // {region StatusEffects
@@ -1190,17 +983,17 @@ export class Creature {
         else if (lowerBody == 3)
             bonus = 20;
         // Wet pussy provides 20 point boost
-        if (findPerk(PerkLib.WetPussy) >= 0)
+        if (this.perks.findByType(PerkLib.WetPussy) >= 0)
             bonus += 20;
-        if (findPerk(PerkLib.HistorySlut) >= 0)
+        if (this.perks.findByType(PerkLib.HistorySlut) >= 0)
             bonus += 20;
-        if (findPerk(PerkLib.OneTrackMind) >= 0)
+        if (this.perks.findByType(PerkLib.OneTrackMind) >= 0)
             bonus += 10;
-        if (findPerk(PerkLib.Cornucopia) >= 0)
+        if (this.perks.findByType(PerkLib.Cornucopia) >= 0)
             bonus += 30;
-        if (findPerk(PerkLib.FerasBoonWideOpen) >= 0)
+        if (this.perks.findByType(PerkLib.FerasBoonWideOpen) >= 0)
             bonus += 25;
-        if (findPerk(PerkLib.FerasBoonMilkingTwat) >= 0)
+        if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) >= 0)
             bonus += 40;
         total = (bonus + statusAffectv1(StatusAffects.BonusVCapacity) + 8 * vaginas[0].vaginalLooseness * vaginas[0].vaginalLooseness) * (1 + vaginas[0].vaginalWetness / 10);
         return total;
@@ -1211,11 +1004,11 @@ export class Creature {
         // Centaurs = +30 capacity
         if (lowerBody == 4)
             bonus = 30;
-        if (findPerk(PerkLib.HistorySlut) >= 0)
+        if (this.perks.findByType(PerkLib.HistorySlut) >= 0)
             bonus += 20;
-        if (findPerk(PerkLib.Cornucopia) >= 0)
+        if (this.perks.findByType(PerkLib.Cornucopia) >= 0)
             bonus += 30;
-        if (findPerk(PerkLib.OneTrackMind) >= 0)
+        if (this.perks.findByType(PerkLib.OneTrackMind) >= 0)
             bonus += 10;
         if (ass.analWetness > 0)
             bonus += 15;
@@ -1290,7 +1083,7 @@ export class Creature {
             removeStatusAffect(StatusAffects.LactationReduc2);
         if (findStatusAffect(StatusAffects.LactationReduc3) >= 0)
             removeStatusAffect(StatusAffects.LactationReduc3);
-        if (findPerk(PerkLib.Feeder) >= 0) {
+        if (this.perks.findByType(PerkLib.Feeder) >= 0) {
             // You've now been milked, reset the timer for that
             addStatusValue(StatusAffects.Feeder, 1, 1);
             changeStatusValue(StatusAffects.Feeder, 2, 0);
@@ -1394,24 +1187,24 @@ export class Creature {
             percent += 0.01;
         if (cumQ() >= 1600)
             percent += 0.02;
-        if (findPerk(PerkLib.BroBody) >= 0)
+        if (this.perks.findByType(PerkLib.BroBody) >= 0)
             percent += 0.05;
-        if (findPerk(PerkLib.MaraesGiftStud) >= 0)
+        if (this.perks.findByType(PerkLib.MaraesGiftStud) >= 0)
             percent += 0.15;
-        if (findPerk(PerkLib.FerasBoonAlpha) >= 0)
+        if (this.perks.findByType(PerkLib.FerasBoonAlpha) >= 0)
             percent += 0.10;
-        if (perkv1(PerkLib.ElvenBounty) > 0)
+        if (this.perks.getValue1Of(PerkLib.ElvenBounty) > 0)
             percent += 0.05;
-        if (findPerk(PerkLib.FertilityPlus) >= 0)
+        if (this.perks.findByType(PerkLib.FertilityPlus) >= 0)
             percent += 0.03;
-        if (findPerk(PerkLib.PiercedFertite) >= 0)
+        if (this.perks.findByType(PerkLib.PiercedFertite) >= 0)
             percent += 0.03;
-        if (findPerk(PerkLib.OneTrackMind) >= 0)
+        if (this.perks.findByType(PerkLib.OneTrackMind) >= 0)
             percent += 0.03;
-        if (findPerk(PerkLib.MagicalVirility) >= 0)
+        if (this.perks.findByType(PerkLib.MagicalVirility) >= 0)
             percent += 0.05;
         // Messy Orgasms?
-        if (findPerk(PerkLib.MessyOrgasms) >= 0)
+        if (this.perks.findByType(PerkLib.MessyOrgasms) >= 0)
             percent += 0.03;
         if (percent > 1)
             percent = 1;
@@ -1429,34 +1222,34 @@ export class Creature {
         // trace("CUM ESTIMATE: " + int(1.25*2*cumMultiplier*2*(lust + 50)/10 * (hoursSinceCum+10)/24)/10 + "(no balls), " + int(ballSize*balls*cumMultiplier*2*(lust + 50)/10 * (hoursSinceCum+10)/24)/10 + "(withballs)");
         let lustCoefficient: number = (lust + 50) / 10;
         // Pilgrim's bounty maxxes lust coefficient
-        if (findPerk(PerkLib.PilgrimsBounty) >= 0)
+        if (this.perks.findByType(PerkLib.PilgrimsBounty) >= 0)
             lustCoefficient = 150 / 10;
         if (balls == 0)
             quantity = int(1.25 * 2 * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
         else
             quantity = int(ballSize * balls * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
-        if (findPerk(PerkLib.BroBody) >= 0)
+        if (this.perks.findByType(PerkLib.BroBody) >= 0)
             quantity *= 1.3;
-        if (findPerk(PerkLib.FertilityPlus) >= 0)
+        if (this.perks.findByType(PerkLib.FertilityPlus) >= 0)
             quantity *= 1.5;
-        if (findPerk(PerkLib.MessyOrgasms) >= 0)
+        if (this.perks.findByType(PerkLib.MessyOrgasms) >= 0)
             quantity *= 1.5;
-        if (findPerk(PerkLib.OneTrackMind) >= 0)
+        if (this.perks.findByType(PerkLib.OneTrackMind) >= 0)
             quantity *= 1.1;
-        if (findPerk(PerkLib.MaraesGiftStud) >= 0)
+        if (this.perks.findByType(PerkLib.MaraesGiftStud) >= 0)
             quantity += 350;
-        if (findPerk(PerkLib.FerasBoonAlpha) >= 0)
+        if (this.perks.findByType(PerkLib.FerasBoonAlpha) >= 0)
             quantity += 200;
-        if (findPerk(PerkLib.MagicalVirility) >= 0)
+        if (this.perks.findByType(PerkLib.MagicalVirility) >= 0)
             quantity += 200;
-        if (findPerk(PerkLib.FerasBoonSeeder) >= 0)
+        if (this.perks.findByType(PerkLib.FerasBoonSeeder) >= 0)
             quantity += 1000;
         // if(hasPerk("Elven Bounty") >= 0) quantity += 250;;
-        quantity += perkv1(PerkLib.ElvenBounty);
-        if (findPerk(PerkLib.BroBody) >= 0)
+        quantity += this.perks.getValue1Of(PerkLib.ElvenBounty);
+        if (this.perks.findByType(PerkLib.BroBody) >= 0)
             quantity += 200;
         quantity += statusAffectv1(StatusAffects.Rut);
-        quantity *= (1 + (2 * perkv1(PerkLib.PiercedFertite)) / 100);
+        quantity *= (1 + (2 * this.perks.getValue1Of(PerkLib.PiercedFertite)) / 100);
         // trace("Final Cum Volume: " + int(quantity) + "mLs.");
         // if (quantity < 0) trace("SOMETHING HORRIBLY WRONG WITH CUM CALCULATIONS");
         if (quantity < 2)
@@ -1733,7 +1526,7 @@ export class Creature {
                 try {
                     const cock: Cock = cocks[arraySpot];
                     if (cock.sock == "viridian") {
-                        removePerk(PerkLib.LustyRegeneration);
+                        this.perks.remove(PerkLib.LustyRegeneration);
                     }
                     else if (cock.sock == "cockring") {
                         let numRings: number = 0;
@@ -1741,8 +1534,8 @@ export class Creature {
                             if (cocks[i].sock == "cockring") numRings++;
                         }
 
-                        if (numRings == 0) removePerk(PerkLib.PentUp);
-                        else setPerkValue(PerkLib.PentUp, 1, 5 + (numRings * 5));
+                        if (numRings == 0) this.perks.remove(PerkLib.PentUp);
+                        else this.perks.setValue(PerkLib.PentUp, 1, 5 + (numRings * 5));
                     }
                     cocks.splice(arraySpot, totalRemoved);
                 }
@@ -1853,7 +1646,7 @@ export class Creature {
     public cuntChangeNoDisplay(cArea: number): boolean {
         if (vaginas.length == 0) return false;
         let stretched: boolean = false;
-        if (findPerk(PerkLib.FerasBoonMilkingTwat) < 0 || vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_NORMAL) {
+        if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) < 0 || vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_NORMAL) {
             // cArea > capacity = autostreeeeetch.
             if (cArea >= vaginalCapacity()) {
                 if (vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_LEVEL_CLOWN_CAR) { }
@@ -1900,16 +1693,16 @@ export class Creature {
         let counter: number = 0;
         if (inHeat)
             counter += statusAffectv1(StatusAffects.Heat);
-        if (findPerk(PerkLib.FertilityPlus) >= 0)
+        if (this.perks.findByType(PerkLib.FertilityPlus) >= 0)
             counter += 15;
-        if (findPerk(PerkLib.MaraesGiftFertility) >= 0)
+        if (this.perks.findByType(PerkLib.MaraesGiftFertility) >= 0)
             counter += 50;
-        if (findPerk(PerkLib.FerasBoonBreedingBitch) >= 0)
+        if (this.perks.findByType(PerkLib.FerasBoonBreedingBitch) >= 0)
             counter += 30;
-        if (findPerk(PerkLib.MagicalFertility) >= 0)
+        if (this.perks.findByType(PerkLib.MagicalFertility) >= 0)
             counter += 10;
-        counter += perkv2(PerkLib.ElvenBounty);
-        counter += perkv1(PerkLib.PiercedFertite);
+        counter += this.perks.getValue2Of(PerkLib.ElvenBounty);
+        counter += this.perks.getValue1Of(PerkLib.PiercedFertite);
         return counter;
     }
 
@@ -1949,13 +1742,13 @@ export class Creature {
     }
 
     public canOvipositSpider(): boolean {
-        if (eggs() >= 10 && findPerk(PerkLib.SpiderOvipositor) >= 0 && isDrider() && tailType == 5)
+        if (eggs() >= 10 && this.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && isDrider() && tailType == 5)
             return true;
         return false;
     }
 
     public canOvipositBee(): boolean {
-        if (eggs() >= 10 && findPerk(PerkLib.BeeOvipositor) >= 0 && tailType == 6)
+        if (eggs() >= 10 && this.perks.findByType(PerkLib.BeeOvipositor) >= 0 && tailType == 6)
             return true;
         return false;
     }
@@ -1967,35 +1760,35 @@ export class Creature {
     }
 
     public eggs(): number {
-        if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
+        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return -1;
-        else if (findPerk(PerkLib.SpiderOvipositor) >= 0)
-            return perkv1(PerkLib.SpiderOvipositor);
+        else if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
+            return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
         else
-            return perkv1(PerkLib.BeeOvipositor);
+            return this.perks.getValue1Of(PerkLib.BeeOvipositor);
     }
 
     public addEggs(arg: number = 0): number {
-        if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
+        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return -1;
         else {
-            if (findPerk(PerkLib.SpiderOvipositor) >= 0) {
-                addPerkValue(PerkLib.SpiderOvipositor, 1, arg);
+            if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
+                this.perks.addValue(PerkLib.SpiderOvipositor, 1, arg);
                 if (eggs() > 50)
-                    setPerkValue(PerkLib.SpiderOvipositor, 1, 50);
-                return perkv1(PerkLib.SpiderOvipositor);
+                    this.perks.setValue(PerkLib.SpiderOvipositor, 1, 50);
+                return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
             }
             else {
-                addPerkValue(PerkLib.BeeOvipositor, 1, arg);
+                this.perks.addValue(PerkLib.BeeOvipositor, 1, arg);
                 if (eggs() > 50)
-                    setPerkValue(PerkLib.BeeOvipositor, 1, 50);
-                return perkv1(PerkLib.BeeOvipositor);
+                    this.perks.setValue(PerkLib.BeeOvipositor, 1, 50);
+                return this.perks.getValue1Of(PerkLib.BeeOvipositor);
             }
         }
     }
 
     public dumpEggs(): void {
-        if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
+        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return;
         setEggs(0);
         // Sets fertile eggs = regular eggs (which are 0)
@@ -2003,40 +1796,40 @@ export class Creature {
     }
 
     public setEggs(arg: number = 0): number {
-        if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
+        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return -1;
         else {
-            if (findPerk(PerkLib.SpiderOvipositor) >= 0) {
-                setPerkValue(PerkLib.SpiderOvipositor, 1, arg);
+            if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
+                this.perks.setValue(PerkLib.SpiderOvipositor, 1, arg);
                 if (eggs() > 50)
-                    setPerkValue(PerkLib.SpiderOvipositor, 1, 50);
-                return perkv1(PerkLib.SpiderOvipositor);
+                    this.perks.setValue(PerkLib.SpiderOvipositor, 1, 50);
+                return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
             }
             else {
-                setPerkValue(PerkLib.BeeOvipositor, 1, arg);
+                this.perks.setValue(PerkLib.BeeOvipositor, 1, arg);
                 if (eggs() > 50)
-                    setPerkValue(PerkLib.BeeOvipositor, 1, 50);
-                return perkv1(PerkLib.BeeOvipositor);
+                    this.perks.setValue(PerkLib.BeeOvipositor, 1, 50);
+                return this.perks.getValue1Of(PerkLib.BeeOvipositor);
             }
         }
     }
 
     public fertilizedEggs(): number {
-        if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
+        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return -1;
-        else if (findPerk(PerkLib.SpiderOvipositor) >= 0)
-            return perkv2(PerkLib.SpiderOvipositor);
+        else if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
+            return this.perks.getValue2Of(PerkLib.SpiderOvipositor);
         else
-            return perkv2(PerkLib.BeeOvipositor);
+            return this.perks.getValue2Of(PerkLib.BeeOvipositor);
     }
 
     public fertilizeEggs(): number {
-        if (findPerk(PerkLib.SpiderOvipositor) < 0 && findPerk(PerkLib.BeeOvipositor) < 0)
+        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return -1;
-        else if (findPerk(PerkLib.SpiderOvipositor) >= 0)
-            setPerkValue(PerkLib.SpiderOvipositor, 2, eggs());
+        else if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
+            this.perks.setValue(PerkLib.SpiderOvipositor, 2, eggs());
         else
-            setPerkValue(PerkLib.BeeOvipositor, 2, eggs());
+            this.perks.setValue(PerkLib.BeeOvipositor, 2, eggs());
         return fertilizedEggs();
     }
 

@@ -108,11 +108,11 @@ export class Salon implements TimeAwareInterface {
         if (player.femininity < 100 && player.gender == 2) mudFacial2 = mudFacial;
         else if (player.femininity < 85 && (player.gender == 0 || player.gender == 3)) mudFacial2 = mudFacial;
         else if (player.femininity < 70 && player.gender == 1) mudFacial2 = mudFacial;
-        else if (player.femininity < 100 && player.findPerk(PerkLib.Androgyny) >= 0) mudFacial2 = mudFacial;
+        else if (player.femininity < 100 && player.perks.findByType(PerkLib.Androgyny) >= 0) mudFacial2 = mudFacial;
         if (player.femininity > 0 && player.gender == 1) sandFacial2 = sandFacial;
         else if (player.femininity > 30 && player.gender == 2) sandFacial2 = sandFacial;
         else if (player.femininity > 20 && (player.gender == 0 || player.gender == 3)) sandFacial2 = sandFacial;
-        else if (player.femininity > 0 && player.findPerk(PerkLib.Androgyny) >= 0) sandFacial2 = sandFacial;
+        else if (player.femininity > 0 && player.perks.findByType(PerkLib.Androgyny) >= 0) sandFacial2 = sandFacial;
 
         menu();
         addButton(0, "Cut Short", cutShort2);
@@ -146,7 +146,7 @@ export class Salon implements TimeAwareInterface {
         spriteSelect(38);
         const minoCum: number = 0;
         // Chance for mino craziness here
-        if (rand(5) == 0 && (player.findPerk(PerkLib.MinotaurCumAddict) >= 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 0)) {
+        if (rand(5) == 0 && (player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 0)) {
             minotaurCumBukkakeInSalon();
             return;
         }

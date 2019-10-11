@@ -37,11 +37,11 @@ export class ErlKingScene {
                 -10 for Centaur Half
         */
 
-        if (player.findPerk(PerkLib.Evade) >= 0) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0) {
             baseVal += 20;
             trace("+20 for Evade");
         }
-        if (player.findPerk(PerkLib.Runner) >= 0) {
+        if (player.perks.findByType(PerkLib.Runner) >= 0) {
             baseVal += 20;
             trace("+20 for Runner");
         }
@@ -49,30 +49,30 @@ export class ErlKingScene {
             baseVal += 20;
             trace("+20 for Drider");
         }
-        if (player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
+        if (player.perks.findByType(PerkLib.CorruptedNinetails) >= 0) {
             baseVal += 30;
             trace("+30 For Ninetails");
         }
-        if (player.findPerk(PerkLib.EnlightenedNinetails) >= 0) {
+        if (player.perks.findByType(PerkLib.EnlightenedNinetails) >= 0) {
             baseVal += 30;
             trace("+30 for Ninetails");
         }
 
         // Akbal Blessings
-        if (player.findPerk(PerkLib.FireLord) >= 0) {
+        if (player.perks.findByType(PerkLib.FireLord) >= 0) {
             baseVal += 10;
             trace("+10 for Firelord");
         }
-        if (player.findPerk(PerkLib.Whispered) >= 0) {
+        if (player.perks.findByType(PerkLib.Whispered) >= 0) {
             baseVal += 10;
             trace("+10 for Whispered");
         }
 
-        if (player.findPerk(PerkLib.Fast) >= 0) {
+        if (player.perks.findByType(PerkLib.Fast) >= 0) {
             baseVal += 10;
             trace("+10 for Fast");
         }
-        if (player.findPerk(PerkLib.Incorporeality) >= 0) {
+        if (player.perks.findByType(PerkLib.Incorporeality) >= 0) {
             baseVal += 10;
             trace("+10 for Incorporeal");
         }

@@ -116,7 +116,7 @@ export class Character extends Creature {
         }
         // Chance for eggs fertilization - ovi elixir and imps excluded!
         if (type != PregnancyStore.PREGNANCY_IMP && type != PregnancyStore.PREGNANCY_OVIELIXIR_EGGS && type != PregnancyStore.PREGNANCY_ANEMONE) {
-            if (findPerk(PerkLib.SpiderOvipositor) >= 0 || findPerk(PerkLib.BeeOvipositor) >= 0) {
+            if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0 || this.perks.findByType(PerkLib.BeeOvipositor) >= 0) {
                 if (totalFertility() + bonus > Math.floor(Math.random() * beat)) {
                     fertilizeEggs();
                 }
@@ -207,9 +207,9 @@ export class Character extends Creature {
     public maxHP(): number {
         let max: number = 0;
         max += int(tou * 2 + 50);
-        if (findPerk(PerkLib.Tank) >= 0) max += 50;
-        if (findPerk(PerkLib.Tank2) >= 0) max += Math.round(tou);
-        if (findPerk(PerkLib.ChiReflowDefense) >= 0) max += UmasShop.NEEDLEWORK_DEFENSE_EXTRA_HP;
+        if (this.perks.findByType(PerkLib.Tank) >= 0) max += 50;
+        if (this.perks.findByType(PerkLib.Tank2) >= 0) max += Math.round(tou);
+        if (this.perks.findByType(PerkLib.ChiReflowDefense) >= 0) max += UmasShop.NEEDLEWORK_DEFENSE_EXTRA_HP;
         if (level <= 20) max += level * 15;
         else max += 20 * 15;
         max = Math.round(max);

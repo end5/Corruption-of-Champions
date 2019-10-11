@@ -16,17 +16,17 @@ export class Masturbation {
         let button: number = 0;
 
         // FAP BUTTON GOAADFADHAKDADK
-        if ((player.findPerk(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10)) {
+        if ((player.perks.findByType(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10)) {
             if (player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0)
                 addButton(button++, "Masturbate", masturbateGo);
             else addButton(button++, "Meditate", meditate);
         }
         else addButton(button++, "Masturbate", masturbateGo);
         // catofellato
-        if (player.hasCock() && (player.findPerk(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
+        if (player.hasCock() && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
             addButton(button++, "Lick Cock", catAutoLick);
         }
-        if (player.hasVagina() && (player.findPerk(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
+        if (player.hasVagina() && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
             addButton(button++, "Lick 'Gina", lickYerGirlParts);
         }
         if (player.tentacleCocks() > 0 && player.hasVagina()) {
@@ -44,7 +44,7 @@ export class Masturbation {
         if (fappingItems(false))
             addButton(8, "Items", fappingItems);
         else if (button == 1) { // If you can only masturbate or meditate the normal way then do that automatically
-            if ((player.findPerk(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10)) {
+            if ((player.perks.findByType(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10)) {
                 if (player.findStatusAffect(StatusAffects.Exgartuan) >= 0 && player.statusAffectv2(StatusAffects.Exgartuan) == 0)
                     masturbateGo();
                 else meditate();
@@ -2041,7 +2041,7 @@ export class Masturbation {
 
     private lickYerGirlParts(): void { // Female cat masturbation
         clearOutput();
-        if (player.findPerk(PerkLib.Flexibility) < 0) {
+        if (player.perks.findByType(PerkLib.Flexibility) < 0) {
             outputText("You undress from your " + player.armorName + " and take a seat down on the ground. You spread your legs and look down at your sex. It's aching for something more than just your fingers, and you have a craving to taste the lustful juices leaking out. A very perverted idea of cats flashes through your brain, putting a naughty smile on your face. You lay on your side and spread your legs, giving you a perfect view of your " + vaginaDescript(player) + " You lean your head down towards the pleasure-hole, only to be stopped half-way there. You stick your tongue out, trying to add a few more inches, but this doesn't do anything except increase your appetite and your lust as a drop of warm saliva falls onto your " + vaginaDescript(player) + ". You stretch and wriggle your tongue out in a fruitless effort to taste your dripping wet cunt, craving the feeling of your tongue caressing your lips and penetrating into your depths... but it is not to be. You sit back up, frustrated and even more aroused than you were before.");
             dynStats("lus", 15);
             doNext(camp.returnToCampUseOneHour);
@@ -2074,7 +2074,7 @@ export class Masturbation {
     private catAutoLick(): void { // Male cat masturbation
         clearOutput();
         // NOT FEXIBLE
-        if (player.findPerk(PerkLib.Flexibility) < 0) {
+        if (player.perks.findByType(PerkLib.Flexibility) < 0) {
             // Fails [Herm has a 50/50 chance of getting either.]
             // [Male]
             outputText("You undress from your " + player.armorName + " and take a seat down on the ground, your " + cockDescript(player) + " pointing straight at your face. You stroke the erect member a few times, but then remember the cats back at the village. You stare at your " + cockDescript(player) + "; the more you look at the cock, the more your mouth craves to suck on it. You open your mouth as wide as you can and lean towards your cock, only to be stopped halfway to the tip. You stick your tongue out and try to lick the head. You pretend you're rolling your tongue around the head, but this only makes your cock harder in eagerness. You throw your head forward in an attempt to flick your tongue against it, but the " + cockDescript(player) + " is pulled back as you go forward. You slump your back onto the ground and let out a frustrated groan. The only thing you've managed to do is make yourself more aroused than when you started.");
@@ -2173,7 +2173,7 @@ export class Masturbation {
         outputText("You find a flat, comfortable rock to sit down on and meditate.  As always, meditation brings a sense of peace and calm to you, but it eats up two hours of the day.");
 
         dynStats("lus", -50, "cor", -.3 - 0.3 * player.countCockSocks("alabaster"));
-        if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10) HPChange(50, true);
+        if (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10) HPChange(50, true);
         doNext(camp.returnToCampUseTwoHours);
     }
 

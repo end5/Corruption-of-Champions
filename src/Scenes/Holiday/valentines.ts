@@ -194,7 +194,7 @@ export function cuddleWithScyllaVDay(): void {
     outputText("\n\nLater, when you move through the desert around Tel'Adre towards your own camp, looking back at Scylla waving towards you, you're somehow glad things turned out that way, and feel more determined than ever to not only defeat the demons, but also spread the good will and positive feelings through any world you may call your own.");
 
     outputText("\n\n(<b>You have gained the Pure and Loving perk!</b>");
-    player.createPerk(PerkLib.PureAndLoving, 0, 0, 0, 0);
+    player.perks.create(PerkLib.PureAndLoving, 0, 0, 0, 0);
     doNext(camp.returnToCampUseTwoHours);
 }
 
@@ -247,9 +247,9 @@ export function makeOutWithScyllaVDayII(): void {
     outputText("\n\nAn hour or so later and quite a bit after sunset, you return to your camp, satisfied and pleased with how you celebrated this holiday...");
 
     // Only add the perk if the player doesn't already have it.
-    if (player.findPerk(PerkLib.SensualLover) < 0) {
+    if (player.perks.findByType(PerkLib.SensualLover) < 0) {
         outputText("\n\n(<b>You have gained the Sensual Lover perk!</b>)");
-        player.createPerk(PerkLib.SensualLover, 0, 0, 0, 0);
+        player.perks.create(PerkLib.SensualLover, 0, 0, 0, 0);
     }
 
     doNext(camp.returnToCampUseTwoHours);
@@ -263,7 +263,7 @@ export function feedScyllaVDay(): void {
     outputText("You feed Scylla what feels like a gallon of jizz!");
     player.orgasm();
     outputText("\n\n(<b>You have gained the One Track Mind perk.</b>");
-    player.createPerk(PerkLib.OneTrackMind, 0, 0, 0, 0);
+    player.perks.create(PerkLib.OneTrackMind, 0, 0, 0, 0);
     doNext(camp.returnToCampUseTwoHours);
 }
 
@@ -341,9 +341,9 @@ export function fuckAbbyVDay(): void {
 
     outputText("\n\nSated, you disentangle yourself from the clinging girl and lay her into her bed, with a kiss on her sweat-slick forehead.  She absently strokes between her legs, feeling the oozing jizz dribbling out of her stuffed snatch.  Maybe, for her, this is the meaning of the holiday: not just a casual fuck, but taking the time to really savor the body of someone who's important to you.  Even if it isn't love, in the strictest sense, being close to the people who impact your life is reason enough to find joy in your days.  You wish the little paladin a good night and, blowing out her candles, you take your leave.");
 
-    if (player.findPerk(PerkLib.SensualLover) < 0) {
+    if (player.perks.findByType(PerkLib.SensualLover) < 0) {
         outputText("\n\n(<b>You've received the Sensual Lover Perk!</b>)");
-        player.createPerk(PerkLib.SensualLover, 0, 0, 0, 0);
+        player.perks.create(PerkLib.SensualLover, 0, 0, 0, 0);
     }
 
     player.orgasm();
@@ -376,7 +376,7 @@ export function pleasureAbbyVDay(): void {
     outputText("\n\nAll in all, you're pleased that perhaps you've managed to show a goblin that real affection does exist... not to mention get somebody off twice on a new Mareth holiday!");
 
     outputText("\n\n(<b>You've received the Pure and Loving Perk!</b>)");
-    player.createPerk(PerkLib.PureAndLoving, 0, 0, 0, 0);
+    player.perks.create(PerkLib.PureAndLoving, 0, 0, 0, 0);
     dynStats("lus", 80);
     doNext(camp.returnToCampUseTwoHours);
 }
@@ -503,7 +503,7 @@ export function fuckPastieForVDay(): void {
     outputText("\n\nYou grin and lick your lips as you return to camp.");
 
     outputText("\n\n(<b>You have gained the One Track Mind perk!</b>)");
-    player.createPerk(PerkLib.OneTrackMind, 0, 0, 0, 0);
+    player.perks.create(PerkLib.OneTrackMind, 0, 0, 0, 0);
     player.orgasm();
     dynStats("sen", -2);
     doNext(camp.returnToCampUseTwoHours);
@@ -539,7 +539,7 @@ export function rubPastieOnYourWangDawg(): void {
     outputText("\n\nYou grin and whistle a spritely tune as you return to camp.");
     // (You have gained the One Track Mind perk!)
     outputText("\n\n(<b>You have gained the One Track Mind perk!</b>)");
-    player.createPerk(PerkLib.OneTrackMind, 0, 0, 0, 0);
+    player.perks.create(PerkLib.OneTrackMind, 0, 0, 0, 0);
     player.orgasm();
     dynStats("sen", -2);
     doNext(camp.returnToCampUseTwoHours);
@@ -571,9 +571,9 @@ export function goForAPushayDivePasty(): void {
 
     outputText("\n\nTrue, this might not have been the most romantic sex act, but it was certainly enjoyable for the two of you.");
 
-    if (player.findPerk(PerkLib.SensualLover) < 0) {
+    if (player.perks.findByType(PerkLib.SensualLover) < 0) {
         outputText("\n\n(<b>You have gained the Sensual Lover perk!</b>)");
-        player.createPerk(PerkLib.SensualLover, 0, 0, 0, 0);
+        player.perks.create(PerkLib.SensualLover, 0, 0, 0, 0);
     }
 
     player.orgasm();

@@ -3758,7 +3758,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             outputText("sits down on her bed and spreads her legs");
 
         outputText(".\n\nStill smiling, she begins to gently stroke her sheath" + (hasBalls() ? ", balls" : "") + " and pussy, coaxing out her " + cockType("dog", "cat") + " cock" + cockMultiple("", "s") + ".  Making sure she's positioned so that she's not going to tumble off in mid-fuck, she takes hold of her thighs and bends over... and over... until she has practically pressed her nose into her own crotch.");
-        if (player.findPerk(PerkLib.Flexibility) < 0) outputText("  The sight is enough to make your spine wince in sympathy.");
+        if (player.perks.findByType(PerkLib.Flexibility) < 0) outputText("  The sight is enough to make your spine wince in sympathy.");
         // (player has Feline Flexibility:
         else outputText("  You watch how she does it, resolving to test your body and see if you can bend like that.");
         outputText("  Having loosened up, she straightens her back until her mouth is hovering in front of the tip of her " + cockMultiple("", "topmost ") + cockType("dog", "cat") + " cock.  Her cat-like tongue, long, flat, and bristly looking, reaches out to stroke the " + cockType("rubbery, conical", "narrow, barbed") + " tip, slurping around it and getting it nice and slick.  Then, she opens her mouth and starts bending forward again, gulping down all " + cockLength + " inches of " + cockType("dog", "cat") + " cock until she reaches the knot.  A moment's hesitation, to muster her courage, and then she engulfs it as well, pressing her nose flat against her own " + (hasBalls() ? "ballsack" : "taint") + ".\n\n");
@@ -4866,10 +4866,10 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText(" gently take her by the cheeks, insistently bringing her head close so that her lips are bumping right against your " + nippleDescription(player, 0) + "s.  She takes the obvious hint and eagerly swallows it, eyes closing as she leans in and starts to suckle.  Purring with contentment, she sends the most delicious vibrations into your breasts, her rough, bristly tongue stroking and caressing to help coax your body into giving up its sweet, rich milk.\n\n");
 
         outputText("You're not sure how long you sit there with her in your arms, just listening to her purr as she quietly sucks and slurps, drinking everything you have to give.  She ");
-        if (player.findPerk(PerkLib.Feeder) < 0 && player.lactationQ() < 1000) outputText("empties");
+        if (player.perks.findByType(PerkLib.Feeder) < 0 && player.lactationQ() < 1000) outputText("empties");
         else outputText("does her best to empty");
         outputText(" your first breast, and then moves to the next one.  Finally, she's drunk ");
-        if (player.findPerk(PerkLib.Feeder) < 0 && player.lactationQ() < 1000) outputText("you dry");
+        if (player.perks.findByType(PerkLib.Feeder) < 0 && player.lactationQ() < 1000) outputText("you dry");
         else outputText("so much of your seemingly inexhaustible supply of milk that she's physically incapable of drinking any more");
         outputText(", and she lets your nipple go with a loud pop.");
         if (player.lactationQ() < 500) { }

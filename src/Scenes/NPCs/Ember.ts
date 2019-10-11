@@ -92,7 +92,7 @@ export class Ember extends Monster {
         // Description:
         outputText("Ember bares " + emberMF("his", "her") + " teeth and releases a deafening roar; a concussive blast of force heads straight for you!");
         outputText("  Try as you might, you can't seem to protect yourself; and the blast hits you like a stone, throwing you to the ground.");
-        if (player.findPerk(PerkLib.Resolute) < 0) {
+        if (player.perks.findByType(PerkLib.Resolute) < 0) {
             outputText("  Your head swims - it'll take a moment before you can regain your balance.");
             // Miss: You quickly manage to jump out of the way and watch in awe as the blast gouges into the ground you were standing on mere moments ago.
             player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);

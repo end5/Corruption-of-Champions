@@ -817,7 +817,7 @@ export class Raphael extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.RAPHAEL_INTELLIGENCE_TRAINING] == 4) {
             outputText("However, you realize he's left you with more than just pleasant memories of sitting with him around the picnic.  Realizing how skillfully you declined him and how deftly you led him around, you realize you may have mastered his art of keeping another's attention and leading them around with cunning and acting.  This misdirection could have great applications in battle.\n\n", false);
             // Optional Perk: Misdirection. Intelligence adds to the chance to evade. Turns you into a true rogue together with the bodysuit.])
-            player.createPerk(PerkLib.Misdirection, 0, 0, 0, 0);
+            player.perks.create(PerkLib.Misdirection, 0, 0, 0, 0);
         }
         outputText("You return to camp, having cleaned up the picnic and taking the rations that were left with you.  You can't help but wonder if you'll ever see him again though.\n\n", false);
         // [Removes Raph from the game. 7 days later, the Quicksilver scene plays out.]
@@ -858,7 +858,7 @@ export class Raphael extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.RAPHAEL_INTELLIGENCE_TRAINING] == 4) {
             outputText("You realize he's left you with more than just pleasant memories of sitting with him around the picnic, though. Realizing how skillfully you declined him and how deftly you led him around, you realize you may have mastered his art of keeping another's attention and leading them around with cunning and acting. This misdirection could have great applications in battle.\n\n", false);
             // [Optional Perk: Misdirection. Intelligence adds to the chance to evade. Turns you into a true rogue together with the bodysuit.])
-            player.createPerk(PerkLib.Misdirection, 0, 0, 0, 0);
+            player.perks.create(PerkLib.Misdirection, 0, 0, 0, 0);
 
         }
 
@@ -1062,7 +1062,7 @@ export class Raphael extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.RAPHAEL_INTELLIGENCE_TRAINING] == 4) {
             outputText("However, you realize he's left you with more than just pleasant memories of sitting with him around the picnic.  Realizing how skillfully you declined him and how deftly you led him around, you realize you may have mastered his art of keeping another's attention and leading them around with cunning and acting.  This misdirection could have great applications in battle.\n\n", false);
             // [Optional Perk: Misdirection. Intelligence adds to the chance to evade. Turns you into a true rogue together with the bodysuit.])
-            player.createPerk(PerkLib.Misdirection, 0, 0, 0, 0);
+            player.perks.create(PerkLib.Misdirection, 0, 0, 0, 0);
             outputText("(Gained Perk: Misdirection!)\n\n");
         }
         outputText("You return to camp, having cleaned up the picnic and taking the rations that were left with you. You can't help but wonder if you'll ever see him again though.", false);

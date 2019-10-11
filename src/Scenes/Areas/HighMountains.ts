@@ -20,7 +20,7 @@ export class HighMountains {
 
         let chooser: number = rand(4);
         // Boosts mino and hellhound rates!
-        if (player.findPerk(PerkLib.PiercedFurrite) >= 0 && rand(3) == 0) {
+        if (player.perks.findByType(PerkLib.PiercedFurrite) >= 0 && rand(3) == 0) {
             chooser = 1;
         }
         // Helia monogamy fucks

@@ -245,22 +245,22 @@ export class UrtaQuest extends NPCAwareContent {
         player.fatigue = 0;
 
         // PERKS
-        player.createPerk(PerkLib.Resistance, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Agility, 0, 0, 0, 0);
-        player.createPerk(PerkLib.WeaponMastery, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Acclimation, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Nymphomania, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Precision, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Seduction, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Evade, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Tactician, 0, 0, 0, 0);
-        player.createPerk(PerkLib.LungingAttacks, 0, 0, 0, 0);
-        player.createPerk(PerkLib.ImmovableObject, 0, 0, 0, 0);
-        player.createPerk(PerkLib.BrutalBlows, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Brawler, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Berzerker, 0, 0, 0, 0);
-        player.createPerk(PerkLib.Tank, 0, 0, 0, 0);
-        player.createPerk(PerkLib.HistoryFighter, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Resistance, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Agility, 0, 0, 0, 0);
+        player.perks.create(PerkLib.WeaponMastery, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Acclimation, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Nymphomania, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Precision, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Seduction, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Evade, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Tactician, 0, 0, 0, 0);
+        player.perks.create(PerkLib.LungingAttacks, 0, 0, 0, 0);
+        player.perks.create(PerkLib.ImmovableObject, 0, 0, 0, 0);
+        player.perks.create(PerkLib.BrutalBlows, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Brawler, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Berzerker, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Tank, 0, 0, 0, 0);
+        player.perks.create(PerkLib.HistoryFighter, 0, 0, 0, 0);
 
         // GEAR!
         player.setWeapon(weapons.URTAHLB);
@@ -1214,7 +1214,7 @@ export class UrtaQuest extends NPCAwareContent {
         damage += player.weaponAttack;
         // Determine if critical hit!
         let crit: boolean = false;
-        if (rand(100) <= 4 || (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
+        if (rand(100) <= 4 || (player.perks.findByType(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
             crit = true;
             damage *= 2;
         }
@@ -1224,7 +1224,7 @@ export class UrtaQuest extends NPCAwareContent {
         if (player.weaponName != "jeweled rapier" && player.weaponName != "deadly spear") {
             reduction += monster.armorDef;
             // Remove half armor for lunging strikes
-            if (player.findPerk(PerkLib.LungingAttacks) >= 0)
+            if (player.perks.findByType(PerkLib.LungingAttacks) >= 0)
                 reduction -= monster.armorDef / 2;
         }
         // Take 5 off enemy armor for katana
@@ -1238,13 +1238,13 @@ export class UrtaQuest extends NPCAwareContent {
         damage -= reduction;
         // Damage post processing!
         // Thunderous Strikes
-        if (player.findPerk(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
+        if (player.perks.findByType(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
             damage *= 1.2;
         // One final round
         damage = Math.round(damage);
 
         if (damage > 0) {
-            if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+            if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
             damage = doDamage(damage);
         }
         if (damage <= 0) {
@@ -1255,7 +1255,7 @@ export class UrtaQuest extends NPCAwareContent {
             outputText("You hit " + monster.a + monster.short + "! (" + damage + ")", false);
             if (crit) outputText(" <b>*CRIT*</b>");
         }
-        if (player.findPerk(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
+        if (player.perks.findByType(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
             if (monster.armorDef > 0) outputText("\nYour hits are so brutal that you damage " + monster.a + monster.short + "'s defenses!");
             if (monster.armorDef - 10 > 0) monster.armorDef -= 10;
             else monster.armorDef = 0;
@@ -1354,7 +1354,7 @@ export class UrtaQuest extends NPCAwareContent {
         damage *= .7;
         // Determine if critical hit!
         let crit: boolean = false;
-        if (rand(100) <= 4 || (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
+        if (rand(100) <= 4 || (player.perks.findByType(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
             crit = true;
             damage *= 1.75;
         }
@@ -1364,7 +1364,7 @@ export class UrtaQuest extends NPCAwareContent {
         if (player.weaponName != "jeweled rapier" && player.weaponName != "deadly spear") {
             reduction += monster.armorDef;
             // Remove half armor for lunging strikes
-            if (player.findPerk(PerkLib.LungingAttacks) >= 0)
+            if (player.perks.findByType(PerkLib.LungingAttacks) >= 0)
                 reduction -= monster.armorDef / 2;
         }
         // Take 5 off enemy armor for katana
@@ -1378,13 +1378,13 @@ export class UrtaQuest extends NPCAwareContent {
         damage -= reduction;
         // Damage post processing!
         // Thunderous Strikes
-        if (player.findPerk(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
+        if (player.perks.findByType(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
             damage *= 1.2;
         // One final round
         damage = Math.round(damage);
 
         if (damage > 0) {
-            if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+            if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
             damage = doDamage(damage);
         }
         if (damage <= 0) {
@@ -1395,18 +1395,18 @@ export class UrtaQuest extends NPCAwareContent {
             outputText("You hit " + monster.a + monster.short + "! (" + damage + ")", false);
             if (crit) outputText(" <b>*CRIT*</b>");
         }
-        if (player.findPerk(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
+        if (player.perks.findByType(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
             if (monster.armorDef > 0) outputText("\nYour hits are so brutal that you damage " + monster.a + monster.short + "'s defenses!");
             if (monster.armorDef - 10 > 0) monster.armorDef -= 10;
             else monster.armorDef = 0;
         }
-        if (monster.findStatusAffect(StatusAffects.Stunned) < 0 && monster.findPerk(PerkLib.Resolute) < 0 && damage > 0) {
+        if (monster.findStatusAffect(StatusAffects.Stunned) < 0 && monster.perks.findByType(PerkLib.Resolute) < 0 && damage > 0) {
             if (monster.tou / 10 + rand(20) + 1 < 20) {
                 outputText("\n<b>" + monster.capitalA + monster.short + " is stunned!</b>");
                 monster.createStatusAffect(StatusAffects.Stunned, 1, 0, 0, 0);
             }
         }
-        else if (monster.findPerk(PerkLib.Resolute) >= 0) {
+        else if (monster.perks.findByType(PerkLib.Resolute) >= 0) {
             outputText("\nWhile it should have some chance of stunning, your foe seems far too resolute to be affected by such an ailment.");
         }
         outputText("\n", false);
@@ -1478,7 +1478,7 @@ export class UrtaQuest extends NPCAwareContent {
         damage *= 1.25;
         // Determine if critical hit!
         let crit: boolean = false;
-        if (monster.findStatusAffect(StatusAffects.Stunned) >= 0 || rand(100) <= 4 || (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
+        if (monster.findStatusAffect(StatusAffects.Stunned) >= 0 || rand(100) <= 4 || (player.perks.findByType(PerkLib.Tactician) >= 0 && player.inte >= 50 && (player.inte - 50) / 5 > rand(100))) {
             crit = true;
             damage *= 2;
         }
@@ -1488,7 +1488,7 @@ export class UrtaQuest extends NPCAwareContent {
         if (player.weaponName != "jeweled rapier" && player.weaponName != "deadly spear") {
             reduction += monster.armorDef;
             // Remove half armor for lunging strikes
-            if (player.findPerk(PerkLib.LungingAttacks) >= 0)
+            if (player.perks.findByType(PerkLib.LungingAttacks) >= 0)
                 reduction -= monster.armorDef / 2;
         }
         // Take 5 off enemy armor for katana
@@ -1502,13 +1502,13 @@ export class UrtaQuest extends NPCAwareContent {
         damage -= reduction;
         // Damage post processing!
         // Thunderous Strikes
-        if (player.findPerk(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
+        if (player.perks.findByType(PerkLib.ThunderousStrikes) >= 0 && player.str >= 80)
             damage *= 1.2;
         // One final round
         damage = Math.round(damage);
 
         if (damage > 0) {
-            if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+            if (player.perks.findByType(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
             damage = doDamage(damage);
         }
         if (damage <= 0) {
@@ -1519,7 +1519,7 @@ export class UrtaQuest extends NPCAwareContent {
             outputText("You hit " + monster.a + monster.short + "! (" + damage + ")", false);
             if (crit) outputText(" <b>*CRIT*</b>");
         }
-        if (player.findPerk(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
+        if (player.perks.findByType(PerkLib.BrutalBlows) >= 0 && player.str > 75) {
             if (monster.armorDef > 0) outputText("\nYour hits are so brutal that you damage " + monster.a + monster.short + "'s defenses!");
             if (monster.armorDef - 10 > 0) monster.armorDef -= 10;
             else monster.armorDef = 0;

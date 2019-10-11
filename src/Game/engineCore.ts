@@ -66,7 +66,7 @@ export function HPChange(changeNum: number, display: boolean): void {
     if (changeNum == 0) return;
     if (changeNum > 0) {
         // Increase by 20%!
-        if (player.findPerk(PerkLib.HistoryHealer) >= 0) changeNum *= 1.2;
+        if (player.perks.findByType(PerkLib.HistoryHealer) >= 0) changeNum *= 1.2;
         if (player.HP + int(changeNum) > maxHP()) {
             if (player.HP >= maxHP()) {
                 if (display) outputText("You're as healthy as you can be.\n", false);
@@ -193,7 +193,7 @@ export function displayPerks(e: MouseEvent = null): void {
     let temp: number = 0;
     outputText("", true);
     while (temp < player.perks.length) {
-        outputText("<b>" + player.perk(temp).perkName + "</b> - " + player.perk(temp).perkDesc + "\n", false);
+        outputText("<b>" + player.perks[temp].perkName + "</b> - " + player.perks[temp].perkDesc + "\n", false);
         temp++;
     }
     menu();
@@ -203,7 +203,7 @@ export function displayPerks(e: MouseEvent = null): void {
         outputText(" to spend.</b>", false);
         addButton(1, "Perk Up", perkBuyMenu);
     }
-    if (player.findPerk(PerkLib.DoubleAttack) >= 0) {
+    if (player.perks.findByType(PerkLib.DoubleAttack) >= 0) {
         outputText("\n<b>You can adjust your double attack settings.</b>");
         addButton(2, "Dbl Options", doubleAttackOptions);
     }
@@ -375,7 +375,7 @@ export function buildPerkList(): any[] {
     if (player.str >= 25) {
         _add(new PerkClass(PerkLib.StrongBack));
     }
-    if (player.findPerk(PerkLib.StrongBack) >= 0 && player.str >= 50) {
+    if (player.perks.findByType(PerkLib.StrongBack) >= 0 && player.str >= 50) {
         _add(new PerkClass(PerkLib.StrongBack2));
     }
     // Tier 1 Strength Perks
@@ -397,19 +397,19 @@ export function buildPerkList(): any[] {
             _add(new PerkClass(PerkLib.Berzerker));
     }
     // slot 2 - toughness perk 1
-    if (player.findPerk(PerkLib.Tank) < 0 && player.tou >= 25) {
+    if (player.perks.findByType(PerkLib.Tank) < 0 && player.tou >= 25) {
         _add(new PerkClass(PerkLib.Tank));
     }
     // slot 2 - regeneration perk
-    if (player.findPerk(PerkLib.Tank) >= 0 && player.tou >= 50) {
+    if (player.perks.findByType(PerkLib.Tank) >= 0 && player.tou >= 50) {
         _add(new PerkClass(PerkLib.Regeneration));
     }
     // Tier 1 Toughness Perks
     if (player.level >= 6) {
-        if (player.findPerk(PerkLib.Tank) >= 0 && player.tou >= 60) {
+        if (player.perks.findByType(PerkLib.Tank) >= 0 && player.tou >= 60) {
             _add(new PerkClass(PerkLib.Tank2));
         }
-        if (player.findPerk(PerkLib.Regeneration) >= 0 && player.tou >= 70) {
+        if (player.perks.findByType(PerkLib.Regeneration) >= 0 && player.tou >= 70) {
             _add(new PerkClass(PerkLib.Regeneration2));
         }
         if (player.tou >= 75) {
@@ -434,17 +434,17 @@ export function buildPerkList(): any[] {
         _add(new PerkClass(PerkLib.Runner));
     }
     // slot 3 - Double Attack perk
-    if (player.findPerk(PerkLib.Evade) >= 0 && player.findPerk(PerkLib.Runner) >= 0 && player.spe >= 50) {
+    if (player.perks.findByType(PerkLib.Evade) >= 0 && player.perks.findByType(PerkLib.Runner) >= 0 && player.spe >= 50) {
         _add(new PerkClass(PerkLib.DoubleAttack));
     }
     // Tier 1 Speed Perks
     if (player.level >= 6) {
         // Speedy Recovery - Regain Fatigue 50% faster speed.
-        if (player.findPerk(PerkLib.Evade) >= 0 && player.spe >= 60) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && player.spe >= 60) {
             _add(new PerkClass(PerkLib.SpeedyRecovery));
         }
         // Agility - A small portion of your speed is applied to your defense rating when wearing light armors.
-        if (player.spe > 75 && player.findPerk(PerkLib.Runner) >= 0 && (player.armorPerk == "Light" || player.armorPerk == "Medium")) {
+        if (player.spe > 75 && player.perks.findByType(PerkLib.Runner) >= 0 && (player.armorPerk == "Light" || player.armorPerk == "Medium")) {
             _add(new PerkClass(PerkLib.Agility));
         }
         if (player.spe >= 60) {
@@ -465,14 +465,14 @@ export function buildPerkList(): any[] {
     if (player.inte >= 50) {
         _add(new PerkClass(PerkLib.Spellpower));
     }
-    if (player.findPerk(PerkLib.Spellpower) >= 0 && player.inte >= 50) {
+    if (player.perks.findByType(PerkLib.Spellpower) >= 0 && player.inte >= 50) {
         _add(new PerkClass(PerkLib.Mage));
     }
     // Tier 1 Intelligence Perks
     if (player.level >= 6) {
         if (player.inte >= 50)
             _add(new PerkClass(PerkLib.Tactician));
-        if (spellCount() > 0 && player.findPerk(PerkLib.Spellpower) >= 0 && player.findPerk(PerkLib.Mage) >= 0 && player.inte >= 60) {
+        if (spellCount() > 0 && player.perks.findByType(PerkLib.Spellpower) >= 0 && player.perks.findByType(PerkLib.Mage) >= 0 && player.inte >= 60) {
             _add(new PerkClass(PerkLib.Channeling));
         }
         if (player.inte >= 60) {
@@ -481,7 +481,7 @@ export function buildPerkList(): any[] {
     }
     // Tier 2 Intelligence perks
     if (player.level >= 12) {
-        if (player.findPerk(PerkLib.Mage) >= 0 && player.inte >= 75) {
+        if (player.perks.findByType(PerkLib.Mage) >= 0 && player.inte >= 75) {
             _add(new PerkClass(PerkLib.Archmage));
         }
     }
@@ -512,23 +512,23 @@ export function buildPerkList(): any[] {
         _add(new PerkClass(PerkLib.CorruptedLibido, 20, 0, 0, 0));
     }
     // Slot 7 - Seduction (Must have seduced Jojo
-    if (player.findPerk(PerkLib.Seduction) < 0 && player.cor >= 50 && monk >= 5) {
+    if (player.perks.findByType(PerkLib.Seduction) < 0 && player.cor >= 50 && monk >= 5) {
         _add(new PerkClass(PerkLib.Seduction));
     }
     // Slot 7 - Nymphomania
-    else if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 75) {
+    else if (player.perks.findByType(PerkLib.CorruptedLibido) >= 0 && player.cor >= 75) {
         _add(new PerkClass(PerkLib.Nymphomania));
     }
     // Slot 7 - UNFINISHED :3
-    if (minLust() >= 20 && player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 50) {
+    if (minLust() >= 20 && player.perks.findByType(PerkLib.CorruptedLibido) >= 0 && player.cor >= 50) {
         _add(new PerkClass(PerkLib.Acclimation));
     }
     // Tier 1 Corruption Perks - acclimation over-rides
     if (player.level >= 6) {
-        if (player.cor >= 60 && player.findPerk(PerkLib.CorruptedLibido) >= 0) {
+        if (player.cor >= 60 && player.perks.findByType(PerkLib.CorruptedLibido) >= 0) {
             _add(new PerkClass(PerkLib.Sadist));
         }
-        if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 70) {
+        if (player.perks.findByType(PerkLib.CorruptedLibido) >= 0 && player.cor >= 70) {
             _add(new PerkClass(PerkLib.ArousingAura));
         }
     }
@@ -539,7 +539,7 @@ export function buildPerkList(): any[] {
     // FILTER PERKS
     perkList = perkList.filter(
         function(perk: any, idx: number, array: any[]): boolean {
-            return player.findPerk(perk.perk.ptype) < 0;
+            return player.perks.findByType(perk.perk.ptype) < 0;
         });
     mainView.aCb.dataProvider = new DataProvider(perkList);
     return perkList;
@@ -550,7 +550,7 @@ export function applyPerk(perk: PerkClass): void {
     player.perkPoints--;
     // Apply perk here.
     outputText("<b>" + perk.perkName + "</b> gained!");
-    player.createPerk(perk.ptype, perk.value1, perk.value2, perk.value3, perk.value4);
+    player.perks.create(perk.ptype, perk.value1, perk.value2, perk.value3, perk.value4);
     if (perk.ptype == PerkLib.StrongBack2) player.itemSlot5.unlocked = true;
     if (perk.ptype == PerkLib.StrongBack) player.itemSlot4.unlocked = true;
     if (perk.ptype == PerkLib.Tank2) {
@@ -1335,7 +1335,7 @@ export function hideUpDown(): void {
 
 export function physicalCost(mod: number): number {
     let costPercent: number = 100;
-    if (player.findPerk(PerkLib.IronMan) >= 0) costPercent -= 50;
+    if (player.perks.findByType(PerkLib.IronMan) >= 0) costPercent -= 50;
     mod *= costPercent / 100;
     return mod;
 }
@@ -1343,18 +1343,18 @@ export function physicalCost(mod: number): number {
 export function spellCost(mod: number): number {
     // Addiditive mods
     let costPercent: number = 100;
-    if (player.findPerk(PerkLib.SpellcastingAffinity) >= 0) costPercent -= player.perkv1(PerkLib.SpellcastingAffinity);
-    if (player.findPerk(PerkLib.WizardsEndurance) >= 0) costPercent -= player.perkv1(PerkLib.WizardsEndurance);
+    if (player.perks.findByType(PerkLib.SpellcastingAffinity) >= 0) costPercent -= player.perks.getValue1Of(PerkLib.SpellcastingAffinity);
+    if (player.perks.findByType(PerkLib.WizardsEndurance) >= 0) costPercent -= player.perks.getValue1Of(PerkLib.WizardsEndurance);
 
     // Limiting it and multiplicative mods
-    if (player.findPerk(PerkLib.BloodMage) >= 0 && costPercent < 50) costPercent = 50;
+    if (player.perks.findByType(PerkLib.BloodMage) >= 0 && costPercent < 50) costPercent = 50;
 
     mod *= costPercent / 100;
 
-    if (player.findPerk(PerkLib.HistoryScholar) >= 0) {
+    if (player.perks.findByType(PerkLib.HistoryScholar) >= 0) {
         if (mod > 2) mod *= .8;
     }
-    if (player.findPerk(PerkLib.BloodMage) >= 0 && mod < 5) mod = 5;
+    if (player.perks.findByType(PerkLib.BloodMage) >= 0 && mod < 5) mod = 5;
     else if (mod < 2) mod = 2;
 
     mod = Math.round(mod * 100) / 100;
@@ -1371,7 +1371,7 @@ export function fatigue(mod: number, type: number = 0): void {
         mod = spellCost(mod);
 
         // Blood mages use HP for spells
-        if (player.findPerk(PerkLib.BloodMage) >= 0) {
+        if (player.perks.findByType(PerkLib.BloodMage) >= 0) {
             takeDamage(mod);
             statScreenRefresh();
             return;
@@ -1387,8 +1387,8 @@ export function fatigue(mod: number, type: number = 0): void {
     if (mod < 0) {
         let multi: number = 1;
 
-        if (player.findPerk(PerkLib.HistorySlacker) >= 0) multi += 0.2;
-        if (player.findPerk(PerkLib.ControlledBreath) >= 0 && player.cor < 30) multi += 0.1;
+        if (player.perks.findByType(PerkLib.HistorySlacker) >= 0) multi += 0.2;
+        if (player.perks.findByType(PerkLib.ControlledBreath) >= 0 && player.cor < 30) multi += 0.1;
 
         mod *= multi;
     }
@@ -1547,14 +1547,14 @@ export function displayStats(e: MouseEvent = null): void {
 
     bodyStats += "<b>Pregnancy Speed Multiplier:</b> ";
     let preg: number = 1;
-    if (player.findPerk(PerkLib.Diapause) >= 0)
+    if (player.perks.findByType(PerkLib.Diapause) >= 0)
         bodyStats += "? (Variable due to Diapause)\n";
     else {
-        if (player.findPerk(PerkLib.MaraesGiftFertility) >= 0) preg++;
-        if (player.findPerk(PerkLib.BroodMother) >= 0) preg++;
-        if (player.findPerk(PerkLib.FerasBoonBreedingBitch) >= 0) preg++;
-        if (player.findPerk(PerkLib.MagicalFertility) >= 0) preg++;
-        if (player.findPerk(PerkLib.FerasBoonWideOpen) >= 0 || player.findPerk(PerkLib.FerasBoonMilkingTwat) >= 0) preg++;
+        if (player.perks.findByType(PerkLib.MaraesGiftFertility) >= 0) preg++;
+        if (player.perks.findByType(PerkLib.BroodMother) >= 0) preg++;
+        if (player.perks.findByType(PerkLib.FerasBoonBreedingBitch) >= 0) preg++;
+        if (player.perks.findByType(PerkLib.MagicalFertility) >= 0) preg++;
+        if (player.perks.findByType(PerkLib.FerasBoonWideOpen) >= 0 || player.perks.findByType(PerkLib.FerasBoonMilkingTwat) >= 0) preg++;
         bodyStats += preg + "\n";
     }
 
@@ -1577,14 +1577,14 @@ export function displayStats(e: MouseEvent = null): void {
     if (player.vaginas.length > 0)
         bodyStats += "<b>Vaginal Capacity:</b> " + Math.round(player.vaginalCapacity()) + "\n" + "<b>Vaginal Looseness:</b> " + Math.round(player.looseness()) + "\n";
 
-    if (player.findPerk(PerkLib.SpiderOvipositor) >= 0 || player.findPerk(PerkLib.BeeOvipositor) >= 0)
+    if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 || player.perks.findByType(PerkLib.BeeOvipositor) >= 0)
         bodyStats += "<b>Ovipositor Total Egg Count: " + player.eggs() + "\nOvipositor Fertilized Egg Count: " + player.fertilizedEggs() + "</b>\n";
 
     if (player.findStatusAffect(StatusAffects.SlimeCraving) >= 0) {
         if (player.statusAffectv1(StatusAffects.SlimeCraving) >= 18)
             bodyStats += "<b>Slime Craving:</b> Active! You are currently losing strength and speed.  You should find fluids.\n";
         else {
-            if (player.findPerk(PerkLib.SlimeCore) >= 0)
+            if (player.perks.findByType(PerkLib.SlimeCore) >= 0)
                 bodyStats += "<b>Slime Stored:</b> " + ((17 - player.statusAffectv1(StatusAffects.SlimeCraving)) * 2) + " hours until you start losing strength.\n";
             else
                 bodyStats += "<b>Slime Stored:</b> " + (17 - player.statusAffectv1(StatusAffects.SlimeCraving)) + " hours until you start losing strength.\n";
@@ -1619,17 +1619,17 @@ export function displayStats(e: MouseEvent = null): void {
     // Marble Milk Addition
     if (player.statusAffectv3(StatusAffects.Marble) > 0) {
         addictStats += "<b>Marble Milk:</b> ";
-        if (player.findPerk(PerkLib.MarbleResistant) < 0 && player.findPerk(PerkLib.MarblesMilk) < 0)
+        if (player.perks.findByType(PerkLib.MarbleResistant) < 0 && player.perks.findByType(PerkLib.MarblesMilk) < 0)
             addictStats += Math.round(player.statusAffectv2(StatusAffects.Marble)) + "%\n";
-        else if (player.findPerk(PerkLib.MarbleResistant) >= 0)
+        else if (player.perks.findByType(PerkLib.MarbleResistant) >= 0)
             addictStats += "0%\n";
         else
             addictStats += "100%\n";
     }
 
     // Mino Cum Addiction
-    if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00340] > 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 0 || player.findPerk(PerkLib.MinotaurCumAddict) >= 0) {
-        if (player.findPerk(PerkLib.MinotaurCumAddict) < 0)
+    if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00340] > 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 0 || player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) {
+        if (player.perks.findByType(PerkLib.MinotaurCumAddict) < 0)
             addictStats += "<b>Minotaur Cum:</b> " + Math.round(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] * 10) / 10 + "%\n";
         else
             addictStats += "<b>Minotaur Cum:</b> 100+%\n";
@@ -1763,36 +1763,36 @@ export function lustPercent(): number {
     // TOTAL IS LIMITED TO 75%!
     // ++++++++++++++++++++++++++++++++++++++++++++++++++
     // Corrupted Libido reduces lust gain by 10%!
-    if (player.findPerk(PerkLib.CorruptedLibido) >= 0) lust -= 10;
+    if (player.perks.findByType(PerkLib.CorruptedLibido) >= 0) lust -= 10;
     // Acclimation reduces by 15%
-    if (player.findPerk(PerkLib.Acclimation) >= 0) lust -= 15;
+    if (player.perks.findByType(PerkLib.Acclimation) >= 0) lust -= 15;
     // Purity blessing reduces lust gain
-    if (player.findPerk(PerkLib.PurityBlessing) >= 0) lust -= 5;
+    if (player.perks.findByType(PerkLib.PurityBlessing) >= 0) lust -= 5;
     // Resistance = 10%
-    if (player.findPerk(PerkLib.Resistance) >= 0) lust -= 10;
-    if (player.findPerk(PerkLib.ChiReflowLust) >= 0) lust -= UmasShop.NEEDLEWORK_LUST_LUST_RESIST;
+    if (player.perks.findByType(PerkLib.Resistance) >= 0) lust -= 10;
+    if (player.perks.findByType(PerkLib.ChiReflowLust) >= 0) lust -= UmasShop.NEEDLEWORK_LUST_LUST_RESIST;
 
     if (lust < 25) lust = 25;
     if (player.statusAffectv1(StatusAffects.BlackCatBeer) > 0) {
         if (lust >= 80) lust = 100;
         else lust += 20;
     }
-    lust += Math.round(player.perkv1(PerkLib.PentUp) / 2);
+    lust += Math.round(player.perks.getValue1Of(PerkLib.PentUp) / 2);
     // ++++++++++++++++++++++++++++++++++++++++++++++++++
     // MULTIPLICATIVE REDUCTIONS
     // THESE PERKS ALSO RAISE MINIMUM LUST OR HAVE OTHER
     // DRAWBACKS TO JUSTIFY IT.
     // ++++++++++++++++++++++++++++++++++++++++++++++++++
     // Bimbo body slows lust gains!
-    if ((player.findStatusAffect(StatusAffects.BimboChampagne) >= 0 || player.findPerk(PerkLib.BimboBody) >= 0) && lust > 0) lust *= .75;
-    if (player.findPerk(PerkLib.BroBody) >= 0 && lust > 0) lust *= .75;
-    if (player.findPerk(PerkLib.FutaForm) >= 0 && lust > 0) lust *= .75;
+    if ((player.findStatusAffect(StatusAffects.BimboChampagne) >= 0 || player.perks.findByType(PerkLib.BimboBody) >= 0) && lust > 0) lust *= .75;
+    if (player.perks.findByType(PerkLib.BroBody) >= 0 && lust > 0) lust *= .75;
+    if (player.perks.findByType(PerkLib.FutaForm) >= 0 && lust > 0) lust *= .75;
     // Omnibus' Gift reduces lust gain by 15%
-    if (player.findPerk(PerkLib.OmnibusGift) >= 0) lust *= .85;
+    if (player.perks.findByType(PerkLib.OmnibusGift) >= 0) lust *= .85;
     // Luststick reduces lust gain by 10% to match increased min lust
-    if (player.findPerk(PerkLib.LuststickAdapted) >= 0) lust *= 0.9;
+    if (player.perks.findByType(PerkLib.LuststickAdapted) >= 0) lust *= 0.9;
     if (player.findStatusAffect(StatusAffects.Berzerking) >= 0) lust *= .6;
-    if (player.findPerk(PerkLib.PureAndLoving) >= 0) lust *= 0.95;
+    if (player.perks.findByType(PerkLib.PureAndLoving) >= 0) lust *= 0.95;
 
     // Lust mods from Uma's content -- Given the short duration and the gem cost, I think them being multiplicative is justified.
     // Changing them to an additive bonus should be pretty simple (check the static values in UmasShop.as)
@@ -1943,26 +1943,26 @@ export function stats(stre: number, toug: number, spee: number, intel: number, l
     // MOD CHANGES FOR PERKS
     // Bimbos learn slower
     if (!noBimbo) {
-        if (player.findPerk(PerkLib.FutaFaculties) >= 0 || player.findPerk(PerkLib.BimboBrains) >= 0 || player.findPerk(PerkLib.BroBrains) >= 0) {
+        if (player.perks.findByType(PerkLib.FutaFaculties) >= 0 || player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.BroBrains) >= 0) {
             if (intel > 0) intel /= 2;
             if (intel < 0) intel *= 2;
         }
-        if (player.findPerk(PerkLib.FutaForm) >= 0 || player.findPerk(PerkLib.BimboBody) >= 0 || player.findPerk(PerkLib.BroBody) >= 0) {
+        if (player.perks.findByType(PerkLib.FutaForm) >= 0 || player.perks.findByType(PerkLib.BimboBody) >= 0 || player.perks.findByType(PerkLib.BroBody) >= 0) {
             if (libi > 0) libi *= 2;
             if (libi < 0) libi /= 2;
         }
     }
 
     // Uma's Perkshit
-    if (player.findPerk(PerkLib.ChiReflowSpeed) >= 0 && spee < 0) spee *= UmasShop.NEEDLEWORK_SPEED_SPEED_MULTI;
-    if (player.findPerk(PerkLib.ChiReflowLust) >= 0 && libi > 0) libi *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
-    if (player.findPerk(PerkLib.ChiReflowLust) >= 0 && sens > 0) sens *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
+    if (player.perks.findByType(PerkLib.ChiReflowSpeed) >= 0 && spee < 0) spee *= UmasShop.NEEDLEWORK_SPEED_SPEED_MULTI;
+    if (player.perks.findByType(PerkLib.ChiReflowLust) >= 0 && libi > 0) libi *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
+    if (player.perks.findByType(PerkLib.ChiReflowLust) >= 0 && sens > 0) sens *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
 
     // lust resistance
     if (lust2 > 0 && resisted) lust2 *= lustPercent() / 100;
-    if (libi > 0 && player.findPerk(PerkLib.PurityBlessing) >= 0) libi *= 0.75;
-    if (corr > 0 && player.findPerk(PerkLib.PurityBlessing) >= 0) corr *= 0.5;
-    if (corr > 0 && player.findPerk(PerkLib.PureAndLoving) >= 0) corr *= 0.75;
+    if (libi > 0 && player.perks.findByType(PerkLib.PurityBlessing) >= 0) libi *= 0.75;
+    if (corr > 0 && player.perks.findByType(PerkLib.PurityBlessing) >= 0) corr *= 0.5;
+    if (corr > 0 && player.perks.findByType(PerkLib.PureAndLoving) >= 0) corr *= 0.75;
     // Change original stats
     player.str += stre;
     player.tou += toug;
@@ -1982,20 +1982,20 @@ export function stats(stre: number, toug: number, spee: number, intel: number, l
     player.cor += corr;
 
     // Bonus gain for perks!
-    if (player.findPerk(PerkLib.Strong) >= 0 && stre >= 0) player.str += stre * player.perk(player.findPerk(PerkLib.Strong)).value1;
-    if (player.findPerk(PerkLib.Tough) >= 0 && toug >= 0) player.tou += toug * player.perk(player.findPerk(PerkLib.Tough)).value1;
-    if (player.findPerk(PerkLib.Fast) >= 0 && spee >= 0) player.spe += spee * player.perk(player.findPerk(PerkLib.Fast)).value1;
-    if (player.findPerk(PerkLib.Smart) >= 0 && intel >= 0) player.inte += intel * player.perk(player.findPerk(PerkLib.Smart)).value1;
-    if (player.findPerk(PerkLib.Lusty) >= 0 && libi >= 0) player.lib += libi * player.perk(player.findPerk(PerkLib.Lusty)).value1;
-    if (player.findPerk(PerkLib.Sensitive) >= 0 && sens >= 0) player.sens += sens * player.perk(player.findPerk(PerkLib.Sensitive)).value1;
+    if (player.perks.findByType(PerkLib.Strong) >= 0 && stre >= 0) player.str += stre * player.perks[player.perks.findByType(PerkLib.Strong)].value1;
+    if (player.perks.findByType(PerkLib.Tough) >= 0 && toug >= 0) player.tou += toug * player.perks[player.perks.findByType(PerkLib.Tough)].value1;
+    if (player.perks.findByType(PerkLib.Fast) >= 0 && spee >= 0) player.spe += spee * player.perks[player.perks.findByType(PerkLib.Fast)].value1;
+    if (player.perks.findByType(PerkLib.Smart) >= 0 && intel >= 0) player.inte += intel * player.perks[player.perks.findByType(PerkLib.Smart)].value1;
+    if (player.perks.findByType(PerkLib.Lusty) >= 0 && libi >= 0) player.lib += libi * player.perks[player.perks.findByType(PerkLib.Lusty)].value1;
+    if (player.perks.findByType(PerkLib.Sensitive) >= 0 && sens >= 0) player.sens += sens * player.perks[player.perks.findByType(PerkLib.Sensitive)].value1;
 
     // Uma's Str Cap from Perks
-    if (player.findPerk(PerkLib.ChiReflowSpeed) >= 0) {
+    if (player.perks.findByType(PerkLib.ChiReflowSpeed) >= 0) {
         if (player.str > UmasShop.NEEDLEWORK_SPEED_STRENGTH_CAP) {
             player.str = UmasShop.NEEDLEWORK_SPEED_STRENGTH_CAP;
         }
     }
-    if (player.findPerk(PerkLib.ChiReflowDefense) >= 0) {
+    if (player.perks.findByType(PerkLib.ChiReflowDefense) >= 0) {
         if (player.spe > UmasShop.NEEDLEWORK_DEFENSE_SPEED_CAP) {
             player.spe = UmasShop.NEEDLEWORK_DEFENSE_SPEED_CAP;
         }

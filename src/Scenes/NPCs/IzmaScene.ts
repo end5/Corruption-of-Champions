@@ -1124,14 +1124,14 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("Izma looks to you curiously once you return to her.  \"<i>So what's your story with her?</i>\" she asks.  You give a sigh and tell Izma how you met Marble at Whitney's farm and how a relationship formed between you over time.  Then you go on about how, sadly, you became addicted to her milk without even realizing its corrupt nature.  ", false);
             // (If the player is fatally addicted)
-            if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("You couldn't break your addiction, and now you'll die without a steady supply of her milk.", false);
+            if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) outputText("You couldn't break your addiction, and now you'll die without a steady supply of her milk.", false);
             // (If the player broke their addiction)
             else outputText("Thankfully, though you were able to break her milk's hold, and you realized you love Marble despite all that transpired between you, letting her move in with you.", false);
             outputText("\n\n", false);
 
             outputText("Izma grits her teeth and sucks air through them as you finish your story.  \"<i>That... damn cow...</i>\" she growls, making you gulp at her barely contained rage.  \"<i>She took you, my perfect alpha, and ", false);
             // (Fatally addicted)
-            if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("turned you into some weak drug-addict", false);
+            if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) outputText("turned you into some weak drug-addict", false);
             // (Broke addiction)
             else outputText("drugged you into some twisted relationship", false);
             outputText(".</i>\"  You give her a nervous chuckle and assure her that this isn't the case, but Izma doesn't want to listen.  \"<i>I'll keep quiet for now, but if that bovine steps out of line...</i>\" she trails off and her fangs pop free, before she goes to set up her bedroll and trunk near your own bed.  Seems she wants to keep close to your bed to protect you.  Or at least, that's your interpretation.  You give a sigh and shake your head. It's doubtful these two will ever warm up to each other.", false);
@@ -1200,14 +1200,14 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("Izma looks to you curiously once you return to her.  \"<i>So what's your story with her?</i>\" she asks.  You give a sigh and tell Izma how you met Marble at Whitney's farm and how a relationship formed between you over time.  Then you go on about how, sadly, you became addicted to her milk without even realizing its corrupt nature.  ", false);
         // (If the player is fatally addicted)
-        if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("You couldn't break your addiction, and now you'll die without a steady supply of her milk.", false);
+        if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) outputText("You couldn't break your addiction, and now you'll die without a steady supply of her milk.", false);
         // If the player broke their addiction)
         else outputText("Thankfully though you were able to break her milk's hold, and you realized you love Marble despite all that transpired between you, letting her move in with you.", false);
         outputText("\n\n", false);
 
         outputText("Izma grits her teeth and sucks air through them as you finish your story.  \"<i>That... damn cow...</i>\" she growls, making you gulp at her barely contained rage.  \"<i>She took you, my perfect alpha, and ", false);
         // (Fatally addicted)
-        if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("turned you into some weak drug-addict", false);
+        if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) outputText("turned you into some weak drug-addict", false);
         // (Broke addiction)
         else outputText("drugged you into some twisted relationship", false);
         outputText(".</i>\"  You give her a nervous chuckle and assure her that this isn't the case, but Izma doesn't want to listen.  \"<i>I'll keep quiet for now, but if that bovine steps out of line...</i>\" she trails off and her fangs pop free, before she goes to set up her bedroll and trunk near your own bed.  Seems she wants to keep close to your bed to protect you.  Or at least, that's your interpretation.  You give a sigh and shake your head.  It's doubtful these two will ever warm up to each other.", false);

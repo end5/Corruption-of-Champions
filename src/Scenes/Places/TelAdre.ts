@@ -581,24 +581,24 @@ export class TelAdre {
                 break;
             case 9:
                 shortP += "lethite ";
-                if (player.findPerk(PerkLib.PiercedLethite) < 0) player.createPerk(PerkLib.PiercedLethite, 0, 0, 0, 0);
+                if (player.perks.findByType(PerkLib.PiercedLethite) < 0) player.perks.create(PerkLib.PiercedLethite, 0, 0, 0, 0);
                 longP += "Lethite ";
                 break;
             case 10:
                 shortP += "fertite ";
-                if (player.findPerk(PerkLib.PiercedFertite) < 0) player.createPerk(PerkLib.PiercedFertite, 5, 0, 0, 0);
-                else player.addPerkValue(PerkLib.PiercedFertite, 1, 5);
+                if (player.perks.findByType(PerkLib.PiercedFertite) < 0) player.perks.create(PerkLib.PiercedFertite, 5, 0, 0, 0);
+                else player.perks.addValue(PerkLib.PiercedFertite, 1, 5);
                 longP += "Fertite ";
                 break;
             case 11:
                 shortP += "furrite ";
-                if (player.findPerk(PerkLib.PiercedFurrite) < 0) player.createPerk(PerkLib.PiercedFurrite, 0, 0, 0, 0);
+                if (player.perks.findByType(PerkLib.PiercedFurrite) < 0) player.perks.create(PerkLib.PiercedFurrite, 0, 0, 0, 0);
                 longP += "Furrite ";
                 break;
             case 12:
                 shortP += "crimstone ";
-                if (player.findPerk(PerkLib.PiercedCrimstone) < 0) player.createPerk(PerkLib.PiercedCrimstone, 5, 0, 0, 0);
-                else player.addPerkValue(PerkLib.PiercedCrimstone, 1, 5);
+                if (player.perks.findByType(PerkLib.PiercedCrimstone) < 0) player.perks.create(PerkLib.PiercedCrimstone, 5, 0, 0, 0);
+                else player.perks.addValue(PerkLib.PiercedCrimstone, 1, 5);
                 longP += "Crimstone ";
                 break;
         }

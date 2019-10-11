@@ -24,7 +24,7 @@ export function modFem(char: Character, goal: number, strength: number = 1): str
         Changed = true;
     }
     // Fix if it went out of bounds!
-    if (char.findPerk(PerkLib.Androgyny) < 0)
+    if (char.perks.findByType(PerkLib.Androgyny) < 0)
         fixFemininity(char);
     // Abort if nothing changed!
     if (!Changed)

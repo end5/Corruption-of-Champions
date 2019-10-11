@@ -82,7 +82,7 @@ export class CorruptedGlade {
                 booster += 3;
             else if (player.ballSize < 6)
                 booster += 2;
-            if (player.findPerk(PerkLib.MessyOrgasms) >= 0 && player.cumMultiplier < 3) booster += 1;
+            if (player.perks.findByType(PerkLib.MessyOrgasms) >= 0 && player.cumMultiplier < 3) booster += 1;
             player.cumMultiplier += booster;
         }
         else { // Oral sex for those without!

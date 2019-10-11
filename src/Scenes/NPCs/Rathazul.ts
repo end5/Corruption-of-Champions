@@ -239,7 +239,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
             lethiciteDefense = growLethiciteDefense;
         }
         if (player.findStatusAffect(StatusAffects.CampRathazul) >= 0) {
-            if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] == 0 && (sophieBimbo.bimboSophie() || player.findPerk(PerkLib.BimboBrains) >= 0 || player.findPerk(PerkLib.FutaFaculties) >= 0)) {
+            if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] == 0 && (sophieBimbo.bimboSophie() || player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0)) {
                 rathazulDebimboOffer();
                 return true;
             }

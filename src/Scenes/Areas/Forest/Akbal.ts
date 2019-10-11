@@ -20,13 +20,13 @@ export class Akbal extends Monster {
             return;
         }
         // Determine if evaded
-        if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+        if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 10) {
             outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.", false);
             combatRoundOver();
             return;
         }
         // Determine if flexibilitied
-        if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 10) {
+        if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 10) {
             outputText("Using your cat-like agility, you twist out of the way of " + a + short + "'s attack.", false);
             combatRoundOver();
             return;
@@ -117,13 +117,13 @@ export class Akbal extends Monster {
                 return;
             }
             // Determine if evaded
-            if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 20) {
+            if (player.perks.findByType(PerkLib.Evade) >= 0 && rand(100) < 20) {
                 outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s fire-breath.", false);
                 combatRoundOver();
                 return;
             }
             // Determine if flexibilitied
-            if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 10) {
+            if (player.perks.findByType(PerkLib.Flexibility) >= 0 && rand(100) < 10) {
                 outputText("Using your cat-like agility, you contort your body to avoid " + a + short + "'s fire-breath.", false);
                 combatRoundOver();
                 return;

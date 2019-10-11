@@ -631,7 +631,7 @@ export class Lethice extends Monster {
         else {
             outputText("You try to avoid it, but the burning weapon catches your [leg], simultaneously scorching your flesh and attempting to pull you off balance.");
 
-            if (player.findPerk(PerkLib.Resolute) < 0 && rand(player.tou) <= 25) {
+            if (player.perks.findByType(PerkLib.Resolute) < 0 && rand(player.tou) <= 25) {
                 outputText(" The ground rushes up at you awful fast. Lethice has tripped you, <b>stunning you!</b>");
                 player.createStatusAffect(StatusAffects.Stunned, 1, 0, 0, 0);
             }

@@ -369,7 +369,7 @@ export class AkbalScene {
             outputText("You grin as you flip him over onto his back, staring down at his breeding tool between his legs, firmly erect as it rests on his rather full set of balls. Quite clearly, this \"<i>God</i>\" hasn't had much action for quite some time, hence his aggressive nature towards you. You finger yourself slightly as you examine his feline shaft, coated with layers of barbs that look as though they would be quite painful. Leaning down, you run your fingers over them, smirking as they bend slightly. They may not be enough to harm you, but sex would definitely be unpleasant... unless you happened to have a source of suitable lube nearby.\n\n", false);
             outputText("Remembering the cats back home", false);
             // ({If player has the flexibility Perk}
-            if (player.findPerk(PerkLib.Flexibility) >= 0)
+            if (player.perks.findByType(PerkLib.Flexibility) >= 0)
                 outputText(" and your own experience with such matters", false);
             outputText(", you figure you have a pretty good idea where a reliable source of lube could be. You grin as you grab the demon cat by the scruff of his neck, ", false);
             // ({If strength >60}
@@ -953,7 +953,7 @@ export class AkbalScene {
         // [After 8th submission, if whispered and corruption is greater than 80%]
         // (fighting Akbal disables this scene, but you retain the ability if you rape him after)
         else if (flags[kFLAGS.PLAYER_RESISTED_AKBAL] == 0 && flags[kFLAGS.AKBAL_SUBMISSION_COUNTER] >= 8 && player.cor > 80) {
-            if (player.cor < 80 || player.findPerk(PerkLib.FireLord) >= 0) {
+            if (player.cor < 80 || player.perks.findByType(PerkLib.FireLord) >= 0) {
                 outputText("You awake in your camp feeling dangerous, powerful and fiercely satisfied.", false);
             }
             else {
@@ -964,15 +964,15 @@ export class AkbalScene {
                 outputText("(You are now capable of breathing Akbal's fire.)", false);
                 // ['LOTF' or 'Terrestrial Fire Lord' appears as perk]
                 // [Gain 'Terrestrial Fire' in Specials]
-                player.createPerk(PerkLib.FireLord, 0, 0, 0, 0);
+                player.perks.create(PerkLib.FireLord, 0, 0, 0, 0);
             }
         }
         // [After 4th submission if corruption is greater than 40%]
-        else if (player.findPerk(PerkLib.Whispered) < 0 && player.cor >= 40) {
+        else if (player.perks.findByType(PerkLib.Whispered) < 0 && player.cor >= 40) {
             outputText("You awake in your camp with Akbal standing over you, the chorus of voices in your head reaching the apex of an agonizingly beautiful song, and then falling silent.  When you rise, Akbal licks your face before turning away and sprinting into the forest.\n\n", false);
-            if (player.findPerk(PerkLib.Whispered) < 0) {
+            if (player.perks.findByType(PerkLib.Whispered) < 0) {
                 outputText("(You are now Whispered.)", false);
-                player.createPerk(PerkLib.Whispered, 0, 0, 0, 0);
+                player.perks.create(PerkLib.Whispered, 0, 0, 0, 0);
                 // ['Whispered' appears as perk]
                 // [Gain 'Whisper' in Specials]
             }

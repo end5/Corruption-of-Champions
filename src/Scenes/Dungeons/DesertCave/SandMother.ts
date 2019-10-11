@@ -43,8 +43,8 @@ export class SandMother extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 7;
         this.gems = rand(15) + 55;
-        this.createPerk(PerkLib.Resolute, 0, 0, 0, 0);
-        this.createPerk(PerkLib.Focused, 0, 0, 0, 0);
+        this.perks.create(PerkLib.Resolute, 0, 0, 0, 0);
+        this.perks.create(PerkLib.Focused, 0, 0, 0, 0);
         this.drop = NO_DROP;
         checkMonster();
     }

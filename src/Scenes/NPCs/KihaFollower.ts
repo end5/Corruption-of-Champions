@@ -883,7 +883,7 @@ export class KihaFollower extends NPCAwareContent {
             // Req: Gro+ (also soft ghost req!)
             if (player.hasItem(consumables.GROPLUS)) {
                 if (display) {
-                    if (player.findPerk(PerkLib.Incorporeality) >= 0) outputText("\nYou could try and pump her boobs a bit with gro+, and if she decides against it, possess her and do it anyway!");
+                    if (player.perks.findByType(PerkLib.Incorporeality) >= 0) outputText("\nYou could try and pump her boobs a bit with gro+, and if she decides against it, possess her and do it anyway!");
                     else outputText("\nYou could see if she'd let you pump her boobs with gro+.");
                 }
                 gro = ghostboobiesKiha;
@@ -1561,7 +1561,7 @@ export class KihaFollower extends NPCAwareContent {
         outputText("Gaze flitting between the syringe in your outstretched grasp and your eager face, Kiha seems to be struggling not to punch you in the face.  \"<i>'Gro+'?</i>\" she repeats incredulously, tail swishing in annoyance.  \"<i>And what do you plan to do with that, exactly?</i>\"");
         outputText("[pg]Not bothered by her predictable response, you try your best to explain how you came across the stuff.  Noting her lack of a response, you change the subject to sex and how interesting it might be with its help.  Kiha shakes her head disappointedly and turns away with a low growl.  She moves away from you without even denying the offer, leaving you and your needle of growth serum in her dust.");
         // {if no ghost legs (whadda fag)}
-        if (player.findPerk(PerkLib.Incorporeality) < 0) {
+        if (player.perks.findByType(PerkLib.Incorporeality) < 0) {
             outputText("[pg]Shaking your head in disappointment, you shuffle away, replacing the Gro+ in your pack with a sigh.  Maybe some day.");
             doNext(playerMenu);
             return;

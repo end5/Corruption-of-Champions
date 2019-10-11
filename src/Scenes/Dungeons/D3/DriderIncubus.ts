@@ -287,7 +287,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
                 // your outer membrane }
                 outputText(".");
 
-                if (player.findPerk(PerkLib.Resolute) < 0) {
+                if (player.perks.findByType(PerkLib.Resolute) < 0) {
                     outputText(" <b>You’re left stunned by the blow!</b> It’ll be a moment before you can regain your wits.");
                     player.createStatusAffect(StatusAffects.Stunned, 0, 0, 0, 0);
                 }
@@ -367,7 +367,7 @@ export class DriderIncubus extends AbstractSpiderMorph {
         outputText("\n\nDisjointed, erotic thoughts claw at your mind’s defenses, worming their way in through what cracks they find, plunging sensuous fantasies of every shape and size in place of your own imaginings.");
 
         // Resist, no new line
-        if (player.findPerk(PerkLib.Resolute) >= 0) {
+        if (player.perks.findByType(PerkLib.Resolute) >= 0) {
             _seenResolute = true;
             outputText(" You marshal your mental discipline and discard the errant thoughts.");
         }
@@ -387,8 +387,8 @@ export class DriderIncubus extends AbstractSpiderMorph {
 
         // Avoid
         // 9999, scale avoidance off lust/lib/corr?
-        if (player.findPerk(PerkLib.Resolute) >= 0 || rand(3) >= 0) {
-            if (player.findPerk(PerkLib.Resolute) >= 0) _seenResolute = true;
+        if (player.perks.findByType(PerkLib.Resolute) >= 0 || rand(3) >= 0) {
+            if (player.perks.findByType(PerkLib.Resolute) >= 0) _seenResolute = true;
             outputText(" You flex your considerable will and feel the concentrated mental filth slough off. Whatever his attack was, it failed!");
         }
         else {

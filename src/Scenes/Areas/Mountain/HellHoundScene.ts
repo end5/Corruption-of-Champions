@@ -190,7 +190,7 @@ export class HellHoundScene {
         // increase lust by 30, corruption by 6, and libido by 3
         dynStats("lib", 3, "lus", 30, "cor", 6);
         // player gains hellfire perk.  Hellfire deals physical damage to completely pure foes, lust damage to completely corrupt foes, and a mix for those in between.  Its power is based on the PC's corruption and level.  Appearance is slightly changed to mention that the PC's eyes and mouth occasionally show flicks of fire from within them, text could possibly vary based on corruption.
-        player.createPerk(PerkLib.Hellfire, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Hellfire, 0, 0, 0, 0);
         // Hellhounds no longer encounterable.
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141]++;
         doNext(camp.returnToCampUseOneHour);
@@ -292,7 +292,7 @@ export class HellHoundScene {
             player.cuntChange(monster.cockArea(0), true, false, true);
             player.buttChange(monster.cockArea(1), true, false, true);
             // --- CORRUPTION < 40 (and not masocistic - I lost track if there is such a perk) ---
-            if (player.cor < 40 && player.findPerk(PerkLib.Masochist) < 0) {
+            if (player.cor < 40 && player.perks.findByType(PerkLib.Masochist) < 0) {
                 outputText("As you bottom out on his sheath, you lean forward to engulf more of his hot cocks inside you. The hellhound enjoys the treatment you are giving him. As a result, the flames along his eyes and snout flicker back to life. Just as your hardening clit presses against the top of his ballsack, the hellhound's natural flames lick across your sex. The magical fire fills you with arousal, but also applies intense pain to your most sensitive spot. You practically jump off the corrupt creature, pulling the dicks from your holes in great speed. Nearly blacking out from the sensations, you cover your burnt button, not daring to touch it. You curse the creature, loudly swearing at the hellhound. In your fury, you barely notice that he looks disappointed and maybe even somewhat sorry.", false);
                 player.takeDamage(20);
                 dynStats("lus", -99);

@@ -706,7 +706,7 @@ export class Rogar {
         outputText("Getting to your feet, you wipe the clinging cum and brew from your lips with your tongue.  You compliment Ro'gar's load while referring to him as 'dude'.  Ro'gar looks a bit perplexed but gives you a wide grin.  \"<i>You get any more of those an' you should bring 'em over.  We'll 'drink' ta the occasion.</i>\"  He punctuates his sentence with a wink that makes you grin.  Leaning forward, you press your lips to his.  His tongue pushes yours as they wrestle against each other.  You kissed a dude, and you liked it.  Yes homo.\n\n", false);
 
         outputText("Leaving Ro'gar's apartment you wander out into the streets.", false);
-        if (player.findPerk(PerkLib.BroBody) < 0) {
+        if (player.perks.findByType(PerkLib.BroBody) < 0) {
             if (player.balls == 0) {
                 player.balls = 2;
                 player.ballSize = 3;
@@ -765,7 +765,7 @@ export class Rogar {
             if (player.inte > 21) player.inte = 21;
             dynStats("str", 33, "tou", 33, "int", -1, "lib", 4, "lus", 40);
             changed = true;
-            player.removePerk(PerkLib.Feeder);
+            player.perks.remove(PerkLib.Feeder);
         }
         // [(if player received a change from brew)
         if (changed) {
@@ -774,13 +774,13 @@ export class Rogar {
             if (cocked) outputText(", and you smile to yourself as your now-larger endowment rubs against garments not suited to it", false);
             outputText(".  Who needs book smarts anyway?  Nerds.", false);
             // lose lust, gain bro traits, slimefeed
-            player.createPerk(PerkLib.BroBrains, 0, 0, 0, 0);
-            player.createPerk(PerkLib.BroBody, 0, 0, 0, 0);
+            player.perks.create(PerkLib.BroBrains, 0, 0, 0, 0);
+            player.perks.create(PerkLib.BroBody, 0, 0, 0, 0);
             outputText("<b>(Bro Body - Perk Gained!)\n", false);
             outputText("(Bro Brains - Perk Gained!)</b>\n", false); // int to 20.  max int 50)
-            if (player.findPerk(PerkLib.Feeder) >= 0) {
+            if (player.perks.findByType(PerkLib.Feeder) >= 0) {
                 outputText("<b>(Perk Lost - Feeder!)</b>\n", false);
-                player.removePerk(PerkLib.Feeder);
+                player.perks.remove(PerkLib.Feeder);
             }
         }
         player.orgasm();

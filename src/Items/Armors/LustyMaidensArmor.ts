@@ -54,18 +54,18 @@ export class LustyMaidensArmor extends Armor {
     }
 
     public playerEquip(): Armor {
-        while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
+        while (game.player.perks.findByType(PerkLib.SluttySeduction) >= 0) game.player.perks.remove(PerkLib.SluttySeduction);
         if (game.player.hasVirginVagina()) {
-            game.player.createPerk(PerkLib.SluttySeduction, 10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS], 0, 0, 0);
+            game.player.perks.create(PerkLib.SluttySeduction, 10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS], 0, 0, 0);
         }
         else {
-            game.player.createPerk(PerkLib.SluttySeduction, 6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS], 0, 0, 0);
+            game.player.perks.create(PerkLib.SluttySeduction, 6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS], 0, 0, 0);
         }
         return super.playerEquip();
     }
 
     public playerRemove(): Armor {
-        while (game.player.findPerk(PerkLib.SluttySeduction) >= 0) game.player.removePerk(PerkLib.SluttySeduction);
+        while (game.player.perks.findByType(PerkLib.SluttySeduction) >= 0) game.player.perks.remove(PerkLib.SluttySeduction);
         return super.playerRemove();
     }
 
@@ -135,25 +135,25 @@ export class LustyMaidensArmor extends Armor {
                 /*Stats: Virgin - 9, Non-Virgin - 5
 
                 //NONVIRGIN:
-                if(wearer.hasPerk("Slutty Seduction") < 0) wearer.createPerk("Slutty Seduction",6,0,0,0,"Your incredibly revealing steel armor allows you access to 'Seduce', an improved form of 'Tease'.");
+                if(wearer.hasPerk("Slutty Seduction") < 0) wearer.perks.create("Slutty Seduction",6,0,0,0,"Your incredibly revealing steel armor allows you access to 'Seduce', an improved form of 'Tease'.");
                 //VIRGIN:
-                if(wearer.hasPerk("Slutty Seduction") < 0) wearer.createPerk("Slutty Seduction",10,0,0,0,"Your incredibly revealing steel armor allows you access to 'Seduce', an improved form of 'Tease'.");
+                if(wearer.hasPerk("Slutty Seduction") < 0) wearer.perks.create("Slutty Seduction",10,0,0,0,"Your incredibly revealing steel armor allows you access to 'Seduce', an improved form of 'Tease'.");
                 Special Bonus: Every time you use the special titfuck scene, you gain two defense and 2 tease damage up to a max of 8.  Every night you lose half your bonus (minimum 1).
                 Min lust: 30
                 Min libido: 50*/
     /*			if(wearer.hasVirginVagina()) {
-                    while(wearer.findPerk(PerkLib.SluttySeduction) >= 0) wearer.removePerk(PerkLib.SluttySeduction);
-                    wearer.createPerk(PerkLib.SluttySeduction,10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
+                    while(wearer.perks.findByType(PerkLib.SluttySeduction) >= 0) wearer.perks.remove(PerkLib.SluttySeduction);
+                    wearer.perks.create(PerkLib.SluttySeduction,10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
                 }
                 else {
-                    while(wearer.findPerk(PerkLib.SluttySeduction) >= 0) wearer.removePerk(PerkLib.SluttySeduction);
-                    if(wearer.findPerk(PerkLib.SluttySeduction) < 0) wearer.createPerk(PerkLib.SluttySeduction,6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
+                    while(wearer.perks.findByType(PerkLib.SluttySeduction) >= 0) wearer.perks.remove(PerkLib.SluttySeduction);
+                    if(wearer.perks.findByType(PerkLib.SluttySeduction) < 0) wearer.perks.create(PerkLib.SluttySeduction,6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
                 }
             }
 
             override public function unequipEffect(wearer:Player, output:Boolean):void
             {
-                while(wearer.findPerk(PerkLib.SluttySeduction) >= 0) wearer.removePerk(PerkLib.SluttySeduction);
+                while(wearer.perks.findByType(PerkLib.SluttySeduction) >= 0) wearer.perks.remove(PerkLib.SluttySeduction);
             }
     */
 }

@@ -364,7 +364,7 @@ export class FollowerInteractions extends NPCAwareContent {
         outputText("You can't think of anything to say to her at this point, and can do nothing but stare.  Marble then turns to Amily and yells, \"<i>I'm " + mf(player, "his", "her") + " lover too.  " + mf(player, "He", "She") + " didn't tell you about me, did " + mf(player, "he", "she") + "?</i>\"  Amily looks at Marble for a few moments before looking back at you with tears in her eyes.  She says, \"<i>I know what kind of world this is, but I'd think you'd at least tell me about someone like her.  Did our kids together mean nothing to you?</i>\"  At this point, Marble's hammer flies to the ready in her hands.  She practically screams, \"<i>YOU HAD KIDS TOGETHER?!?!</i>\" her hammer flying to the ready in her hands.\n\n", false);
 
         // If PC was addicted (A2), if PC had kids with Marble and is not addicted (A3), otherwise (A4)
-        if (player.findPerk(PerkLib.MarblesMilk) >= 0) {
+        if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) {
             // Silent -> PC is addicted (A2)
             // outputText("Marble moves in front of you and faces towards Amily.  \"<i>This " + mf(player, "man","woman") + " is mine!  " + mf(player, "He","She") + " needs me to survive, and I will do anything to protect them.</i>\" Marble declares before saying in a dangerous low voice towards Amily \"<i>Leave now, or I will kill you.</i>\" Amily tries to look at you through her tear filled eyes for a moment, but Marble softly says to you \"<i>" + player.short + ", put your arms around me.</i>\"  It wasn't a request, and without hesitation you put your arms around her.  Amily gives one last horrified look at you before grabbing her things and running away from the camp.  You doubt that you'll see her again.\n\n", false);
             outputText("Marble moves protectively in front of you and turns to Amily.  \"<i>This " + player.race() + " is mine!  " + mf(player, "He", "She") + " needs me to survive, and I will do anything to protect " + mf(player, "him", "her") + ",</i>\"  Marble declares.  Then, in a dangerously gentle voice, says, \"<i>Leave now, or I will kill you.</i>\"  Amily tries to look at you through her tear-filled eyes, but Marble softly whispers,  \"<i>" + player.short + ", put your arms around me.</i>\"  Though soft, her words had nothing in them to suggest a request rather than a command.  You hesitate for a  moment, but, remembering that an angry Marble is a Marble that could revoke milk privileges, you decide that making her mad is something you just can't afford.  You take a deep breath and wrap your arms around Marble.  Amily gives one last anguished look at you before she turns to pack her things.  As she scurries away from the site of her former bed, you doubt that you'll see her again.\n\n");
@@ -396,7 +396,7 @@ export class FollowerInteractions extends NPCAwareContent {
         // Can go to B2 if the PC is addicted to Marble, otherwise B3
 
         // Pimp -> PC is addicted (B2)
-        if (player.findPerk(PerkLib.MarblesMilk) >= 0) {
+        if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) {
             outputText("Marble blinks before saying \"<i>" + player.short + ", try again, I know you're better than that.</i>\"  You blink in response and wonder yourself what possessed you to say that.\n\n", false);
             // Player chooses stay silent (A1) or explain (C1)
             simpleChoices("StaySilent", marbleIsPissyAndYourTooDumbToTalk, "Explain", LucyYouGotSomeSplainingToDo, "", null, "", null, "", null);
@@ -459,7 +459,7 @@ export class FollowerInteractions extends NPCAwareContent {
         else {
             let blameMarble: () => void = BlameMarblezSweetVagoozle;
             outputText("After a while it becomes apparent to both yourself and the others that you have no idea what you're talking about.  Marble then says to you, \"<i>Well, do you have anything else to say?</i>\" At this point it probably isn't possible to say something to make both of them happy, will you stay silent or turn on one of them to try and keep the other?\n\n", false);
-            if (player.findPerk(PerkLib.MarblesMilk) >= 0) {
+            if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) {
                 outputText("Since you need Marble's milk to live, there's no way you can blame her.  It would be tantamount to suicide.", false);
                 blameMarble = null;
             }

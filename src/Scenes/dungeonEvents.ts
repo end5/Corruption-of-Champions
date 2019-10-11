@@ -508,7 +508,7 @@ public function doDungeon(eventNo:Number):void {
 		temp = rand(2);
 		if(temp == 0) outputText("The demoness grips her sizable breasts and squeezes, spraying milk at you.\n", false);
 		else outputText("Your foe curls up to pinch her nipples, tugging hard and squirting milk towards you.\n", false);
-		if((player.spe > 50 && rand(4) == 0) || (player.findPerk(PerkLib.Evade) >= 0 && rand(3) == 0) || (player.findPerk(PerkLib.Misdirection) >= 0 && rand(4) == 0 && player.armorName == "red, high-society bodysuit")) {
+		if((player.spe > 50 && rand(4) == 0) || (player.perks.findByType(PerkLib.Evade) >= 0 && rand(3) == 0) || (player.perks.findByType(PerkLib.Misdirection) >= 0 && rand(4) == 0 && player.armorName == "red, high-society bodysuit")) {
 			outputText("You sidestep the gushing fluids.", false);
 		}
 		//You didn't dodge
@@ -822,7 +822,7 @@ public function doDungeon(eventNo:Number):void {
 	//Omnibus Post-Boon stuff
 	if(eventNo == 11055) {
 		outputText("\n\nThe omnibus disappeared while you were examining the changes.  You guess you did get what you wanted.  You blush and smile, still feeling very horny.  You decide to use the privacy of the office to relieve the tension you've been building up since you arrived.\n\nYou masturbate quickly and efficiently, eager to calm down and resume your exploration.  In no time at all an orgasm crashes through your body.  Stretching and standing up, you find yourself still aroused.\n\nYou slap your forehead as realization washes over you - <b>the demoness' magic is keeping you from ever being totally satisfied!</b>\n(Perk Gained - Omnibus' Gift - Minimum lust has been increased!)", false);
-		player.createPerk(PerkLib.OmnibusGift,0,0,0,0);
+		player.perks.create(PerkLib.OmnibusGift,0,0,0,0);
 		player.orgasm();
 		dynStats("cor", 2);
 		cleanupAfterCombat();

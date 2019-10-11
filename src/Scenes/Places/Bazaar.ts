@@ -158,7 +158,7 @@ export class Bazaar {
             // No scenes for Sara yet!
             outputText("\"<i>I told you I'm not working until you give me a raise!  Do the damned massages yourself!</i>\"\n\nJoey blushes and apologies.  \"<i>I guess I'm the only one available for now.</i>\"\n\n", false);
             outputText("The price list indicate it's 10 gems for a massage, though the gleefully illustrated 'oil' reminds you just what they plan to use on you.\n\n", false);
-            if (player.findPerk(PerkLib.Androgyny) < 0) {
+            if (player.perks.findByType(PerkLib.Androgyny) < 0) {
                 outputText("There also appears to be an option for a special 'Androgyny Treatment' that costs 500 gems.  Joey catches you looking at it and mutters, \"<i>That treatment isn't fun like our massages.  It would unlock the full potential of your visage, allowing it to be as masculine or feminine as possible.</i>\"\n\n", false);
                 androgyny = joeyAndrogyny;
             }
@@ -233,7 +233,7 @@ export class Bazaar {
         outputText("You ask for a mirror, but Joey just titters with a knowing smile on his succulent lips as he replies, \"<i>Oh, you haven't changed at all " + mf(player, "handsome", "dear") + ".  This will let you change it to whatever extreme you like, but those kinds of facials aren't a service we currently offer.  I do hear that there's a goblin salon in the mountains that might be able to help you finish up your look though!</i>\"\n\n", false);
 
         outputText("Thanking the cute bunny-boy for his help, you hand over the payment and head back to check on camp.", false);
-        player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
+        player.perks.create(PerkLib.Androgyny, 0, 0, 0, 0);
         dynStats("lus", 5);
         doNext(camp.returnToCampUseOneHour);
     }
@@ -716,17 +716,17 @@ export class Bazaar {
 
         if (flags[kFLAGS.SOCK_HOLDING] == "cobalt") {
             player.gems -= 250;
-            // if(player.findPerk(PerkLib.PhallicRestraint) < 0) player.createPerk(PerkLib.PhallicRestraint,0,0,0,0);
+            // if(player.perks.findByType(PerkLib.PhallicRestraint) < 0) player.perks.create(PerkLib.PhallicRestraint,0,0,0,0);
         }
 
         if (flags[kFLAGS.SOCK_HOLDING] == "scarlet") {
-            // if(player.findPerk(PerkLib.PhallicPotential) < 0) player.createPerk(PerkLib.PhallicPotential,0,0,0,0);
+            // if(player.perks.findByType(PerkLib.PhallicPotential) < 0) player.perks.create(PerkLib.PhallicPotential,0,0,0,0);
             player.gems -= 250;
         }
 
         if (flags[kFLAGS.SOCK_HOLDING] == "viridian") {
-            if (player.findPerk(PerkLib.LustyRegeneration) < 0) {
-                player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+            if (player.perks.findByType(PerkLib.LustyRegeneration) < 0) {
+                player.perks.create(PerkLib.LustyRegeneration, 0, 0, 0, 0);
                 player.gems -= 1000;
             }
             else {
@@ -736,8 +736,8 @@ export class Bazaar {
 
         if (flags[kFLAGS.SOCK_HOLDING] == "cockring") {
             player.gems -= 100;
-            if (player.findPerk(PerkLib.PentUp) < 0) player.createPerk(PerkLib.PentUp, 10, 0, 0, 0);
-            else player.addPerkValue(PerkLib.PentUp, 1, 5);
+            if (player.perks.findByType(PerkLib.PentUp) < 0) player.perks.create(PerkLib.PentUp, 10, 0, 0, 0);
+            else player.perks.addValue(PerkLib.PentUp, 1, 5);
         }
 
         if (flags[kFLAGS.SOCK_HOLDING] == "alabaster") player.gems -= 25;
@@ -814,24 +814,24 @@ export class Bazaar {
             }
         }
         if (extra && storage == "cockring") {
-            if (player.perkv1(PerkLib.PentUp) >= 10) player.addPerkValue(PerkLib.PentUp, 1, -5);
-            else player.setPerkValue(PerkLib.PentUp, 1, 10);
+            if (player.perks.getValue1Of(PerkLib.PentUp) >= 10) player.perks.addValue(PerkLib.PentUp, 1, -5);
+            else player.perks.setValue(PerkLib.PentUp, 1, 10);
         }
         else {
             if (storage == "gilded") {
-                player.removePerk(PerkLib.MidasCock);
+                player.perks.remove(PerkLib.MidasCock);
             }
             if (storage == "cobalt") {
-                player.removePerk(PerkLib.PhallicRestraint);
+                player.perks.remove(PerkLib.PhallicRestraint);
             }
             if (storage == "scarlet") {
-                player.removePerk(PerkLib.PhallicPotential);
+                player.perks.remove(PerkLib.PhallicPotential);
             }
             if (storage == "viridian") {
-                player.removePerk(PerkLib.LustyRegeneration);
+                player.perks.remove(PerkLib.LustyRegeneration);
             }
             if (storage == "cockring") {
-                player.removePerk(PerkLib.PentUp);
+                player.perks.remove(PerkLib.PentUp);
             }
         }
         outputText("\n\n\"<i>If you need another one, we've got plenty more for sale.</i>\"");

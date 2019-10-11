@@ -228,7 +228,7 @@ export function xmasFuckFollowup(): void {
     outputText("", true);
     outputText("You awaken in the morning, sore and exhausted, but more satisfied than you've ever felt before.  Your body feels INCREDIBLY sensitive from head to toe, but particularly on your well-used " + cockDescript(game.player, 0) + ".  In spite of the traumatic lovemaking, you feel remarkably clear-headed.\n\n", false);
     outputText("Did you enjoy being able to cum so much");
-    if (player.findPerk(PerkLib.ElvenBounty) >= 0) outputText(" <b>again</b>");
+    if (player.perks.findByType(PerkLib.ElvenBounty) >= 0) outputText(" <b>again</b>");
     outputText("?", false);
     // [Yes][No] – yes awards (+250 mls cum volume), no awards +15 intellect
     doYesNo(xmasPerkM, xmasSmart);
@@ -247,7 +247,7 @@ export function xmasFuckFollowupFems(): void {
     outputText("You awaken in the morning, sore and exhausted, but more satisfied than you've ever felt before.  Your body feels INCREDIBLY sensitive from head to toe, but particularly in your well-used " + vaginaDescript(player, 0) + ".  In spite of the traumatic lovemaking, you feel remarkably clear-headed.  The dildo appears to have completely dissolved inside you, leaving behind a pinkish fluid that drips from your lips.\n\n", false);
 
     outputText("Do you think it might have done anything to you");
-    if (player.findPerk(PerkLib.ElvenBounty) >= 0) outputText(" <b>again</b>");
+    if (player.perks.findByType(PerkLib.ElvenBounty) >= 0) outputText(" <b>again</b>");
     outputText("?", false);
     // [Yes][No] – yes awards (+15 fertility!), no awards +15 intellect
     doYesNo(xmasPerkM, xmasSmart);
@@ -261,20 +261,20 @@ export function xmasFuckFollowupFems(): void {
 }
 
 export function xmasPerkM(): void {
-    if (player.findPerk(PerkLib.ElvenBounty) < 0) {
-        if (temp == 1001) player.createPerk(PerkLib.ElvenBounty, 250, 0, 0, 0);
-        else player.createPerk(PerkLib.ElvenBounty, 0, 15, 0, 0);
+    if (player.perks.findByType(PerkLib.ElvenBounty) < 0) {
+        if (temp == 1001) player.perks.create(PerkLib.ElvenBounty, 250, 0, 0, 0);
+        else player.perks.create(PerkLib.ElvenBounty, 0, 15, 0, 0);
         outputText("<b>New Perk Acquired - Elven Bounty!</b>", true);
     }
     else {
         clearOutput();
         outputText("<b>Perk Enhanced - Elven Bounty!</b>");
         if (temp == 1001) {
-            player.addPerkValue(PerkLib.ElvenBounty, 1, 250);
+            player.perks.addValue(PerkLib.ElvenBounty, 1, 250);
             outputText("<b> - +250mL cum production!</b>");
         }
         else {
-            player.addPerkValue(PerkLib.ElvenBounty, 2, 15);
+            player.perks.addValue(PerkLib.ElvenBounty, 2, 15);
             outputText("<b> - +15 bonus fertility!</b>");
         }
 
