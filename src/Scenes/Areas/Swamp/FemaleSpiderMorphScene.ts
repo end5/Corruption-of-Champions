@@ -295,7 +295,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         outputText("You wince from the onset of tightness and wonder if you'll be able to cum like this, but she immediately shoots out more of her silky strands, sealing a perfect sheath of non-sticky fibers around your " + cockDescript(game.player, x) + ", anchored to the ring.\n\n", false);
 
         outputText("\"<i>We wouldn't want me to get pregnant from a ", false);
-        if (player.spiderScore() < 4) outputText("beast's seed", false);
+        if (spiderScore(player) < 4) outputText("beast's seed", false);
         else outputText("strange, itinerate spider's seed", false);
         outputText(", would we?</i>\" asks your captor.  Your eyes go wide, and you start to plead with her, but she quickly muffles you with a spray of webbing that blocks your mouth, but leaves your nose open.  A carapace-covered hand", false);
         if (player.cocks.length > 1) {

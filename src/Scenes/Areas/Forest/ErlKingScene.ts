@@ -82,21 +82,21 @@ export class ErlKingScene {
         }
 
         // Heavy penalty for prey features. The penalty is applied PER FEATURE.
-        if (player.kitsuneScore() > 0) {
-            baseVal -= (player.kitsuneScore() * 20);
-            trace("-20 for each Kitsune part (-" + String(player.kitsuneScore() * 20) + ")");
+        if (kitsuneScore(player) > 0) {
+            baseVal -= (kitsuneScore(player) * 20);
+            trace("-20 for each Kitsune part (-" + String(kitsuneScore(player) * 20) + ")");
         }
-        if (player.bunnyScore() > 0) {
-            baseVal -= (player.bunnyScore() * 20);
-            trace("-20 for each Bunny part (-" + String(player.bunnyScore() * 20) + ")");
+        if (bunnyScore(player) > 0) {
+            baseVal -= (bunnyScore(player) * 20);
+            trace("-20 for each Bunny part (-" + String(bunnyScore(player) * 20) + ")");
         }
-        if (player.harpyScore() > 0) {
-            baseVal -= (player.harpyScore() * 20);
-            trace("-20 for each Harpy part (-" + String(player.harpyScore() * 20) + ")");
+        if (harpyScore(player) > 0) {
+            baseVal -= (harpyScore(player) * 20);
+            trace("-20 for each Harpy part (-" + String(harpyScore(player) * 20) + ")");
         }
-        if (player.gooScore() > 0) {
-            baseVal -= (player.gooScore() * 10);
-            trace("-10 for each Goo part (-" + String(player.gooScore() * 10) + ")");
+        if (gooScore(player) > 0) {
+            baseVal -= (gooScore(player) * 10);
+            trace("-10 for each Goo part (-" + String(gooScore(player) * 10) + ")");
         }
 
         if (player.isTaur()) {
@@ -286,7 +286,7 @@ export class ErlKingScene {
 
         outputText("The ropes are thicker than your wrist, and you could probably untie them, given time, but the spin of the net, combined with the mind-bending terror of the fog has left you no room to think.  The hounds are snarling, the world is spinning, you’re prey, and you’ve been caught.\n\n");
 
-        if (player.bunnyScore() >= 4 || player.kitsuneScore() >= 4 || player.harpyScore() >= 4 || pScore > 100) repeatWildHuntAWinnerIsYou();
+        if (bunnyScore(player) >= 4 || kitsuneScore(player) >= 4 || harpyScore(player) >= 4 || pScore > 100) repeatWildHuntAWinnerIsYou();
         else repeatWildHuntGivenToTheHounds();
     }
 

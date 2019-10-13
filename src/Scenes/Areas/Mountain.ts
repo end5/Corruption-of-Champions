@@ -427,7 +427,7 @@ export class Mountain {
         if (player.effects.getValue1Of(StatusAffects.MinoPlusCowgirl) == 0)
             outputText("  Apparently this isn't an uncommon show, and the locals enjoy it immensely.", false);
         // Lust!
-        dynStats("lus", 5 + player.lib / 20 + player.minoScore() + player.cowScore());
+        dynStats("lus", 5 + player.lib / 20 + minoScore(player) + cowScore(player));
         doNext(camp.returnToCampUseOneHour);
     }
 }

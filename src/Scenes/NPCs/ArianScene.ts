@@ -3200,7 +3200,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nAt one point the bending lizan gives up and falls flat on [Arian eir] back then gets right up eyeing you with a glow in [Arian eir] eyes.  \"<i>That was a stupid idea!  I know just how to make it!  I can lick your butt instead!  Do you think it tastes like cloud ice-cream like your rainbow aura?</i>\"");
 
-        outputText("\n\nYou shake your head and tell [Arian em] you'd rather [Arian ey] didn't lick your butt.  Why don't you go and get [Arian em] some candy instead?  \"<i>Candy!?  I love candy!  You can smear chocolate on yourself and I could lick it clean! Then we'd get chocolate flavored cloud ice-cream with " + player.race() + " musk!  What a great idea!  Get your undies off so I can get started!</i>\"  [Arian Ey] pounces on you, effectively removing your underpants and exposing your ");
+        outputText("\n\nYou shake your head and tell [Arian em] you'd rather [Arian ey] didn't lick your butt.  Why don't you go and get [Arian em] some candy instead?  \"<i>Candy!?  I love candy!  You can smear chocolate on yourself and I could lick it clean! Then we'd get chocolate flavored cloud ice-cream with " + race(player) + " musk!  What a great idea!  Get your undies off so I can get started!</i>\"  [Arian Ey] pounces on you, effectively removing your underpants and exposing your ");
         if (player.cocks.length > 0) {
             outputText(multiCockDescriptLight(game.player));
             if (player.hasVagina()) outputText(" and ");

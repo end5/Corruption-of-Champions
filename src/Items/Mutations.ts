@@ -1978,7 +1978,7 @@ export class Mutations {
                 changes++;
             }
         }
-        if (changes < changeLimit && player.dogScore() >= 3 && rand(4) == 0) {
+        if (changes < changeLimit && dogScore(player) >= 3 && rand(4) == 0) {
             changes++;
             outputText("\n\n", false);
             outputText("Images and thoughts come unbidden to your mind, overwhelming your control as you rapidly lose yourself in them, daydreaming of... ", false);
@@ -4376,7 +4376,7 @@ export class Mutations {
         player.cor = 5;
         player.lust = 10;
         player.hairType = 0;
-        if (player.humanScore() > 4) {
+        if (humanScore(player) > 4) {
             outputText("\n\nYou blink and the world twists around you.  You feel more like yourself than you have in a while, but exactly how isn't immediately apparent.  Maybe you should take a look at yourself?", false);
         }
         else {
@@ -4975,7 +4975,7 @@ export class Mutations {
             }
         }
         // -VAGs
-        if (player.hasVagina() && player.perks.findByType(PerkLib.Oviposition) < 0 && changes < changeLimit && rand(5) == 0 && player.lizardScore() > 3) {
+        if (player.hasVagina() && player.perks.findByType(PerkLib.Oviposition) < 0 && changes < changeLimit && rand(5) == 0 && lizardScore(player) > 3) {
             outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n", false);
             outputText("(<b>Perk Gained: Oviposition</b>)", false);
             player.perks.create(PerkLib.Oviposition, 0, 0, 0, 0);
@@ -5327,7 +5327,7 @@ export class Mutations {
             outputText("\n\nYou feel strange.  Fertile... somehow.  You don't know how else to think of it, but you know your body is just aching to be pregnant and give birth.", false);
         }
         // -VAGs
-        if (player.hasVagina() && player.perks.findByType(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) == 0 && player.bunnyScore() > 3) {
+        if (player.hasVagina() && player.perks.findByType(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) == 0 && bunnyScore(player) > 3) {
             outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n\n", false);
             outputText("(<b>Perk Gained: Bunny Eggs</b>)", false);
             player.perks.create(PerkLib.BunnyEggs, 0, 0, 0, 0);
@@ -5863,7 +5863,7 @@ export class Mutations {
         // ****************
         // -Int less than 10
         if (player.inte < 10) {
-            if (player.inte < 8 && player.kangaScore() >= 5) {
+            if (player.inte < 8 && kangaScore(player) >= 5) {
                 outputText("\n\nWhile you gnaw on the fibrous fruit, your already vacant mind continues to empty, leaving nothing behind but the motion of your jaw as you slowly chew and swallow your favorite food.  Swallow.  Chew.  Swallow.  You don't even notice your posture worsening or your arms shortening.  Without a single thought, you start to hunch over but keep munching on the food in your paws as if were the most normal thing in the world.  Teeth sink into one of your fingers, leaving you to yelp in pain.  With the last of your senses, you look at your throbbing paw to notice you've run out of kanga fruit!", false);
                 outputText("\n\nStill hungry and licking your lips in anticipation, you sniff in deep lungfuls of air.  There's more of that wonderful fruit nearby!  You bound off in search of it on your incredibly muscular legs, their shape becoming more and more feral with every hop.  Now guided completely by instinct, you find a few stalks that grow from the ground.  Your belly rumbles, reminding you of your hunger, as you begin to dig into the kanga fruits...", false);
                 outputText("\n\nLosing more of what little remains of yourself, your body is now entirely that of a feral kangaroo and your mind has devolved to match it.  After you finish the handful of fruits you found, you move on in search for more of the tasty treats.  Though you pass by your camp later on, there's no memory, no recognition, just a slight feeling of comfort and familiarity.  There's no food here so you hop away.", false);
@@ -6045,7 +6045,7 @@ export class Mutations {
         }
         // UBEROOOO
         // kangaroo perk: - any liquid or food intake will accelerate a pregnancy, but it will not progress otherwise
-        if (player.perks.findByType(PerkLib.Diapause) < 0 && player.kangaScore() > 4 && rand(4) == 0 && changes < changeLimit && player.hasVagina()) {
+        if (player.perks.findByType(PerkLib.Diapause) < 0 && kangaScore(player) > 4 && rand(4) == 0 && changes < changeLimit && player.hasVagina()) {
             // Perk name and description:
             player.perks.create(PerkLib.Diapause, 0, 0, 0, 0);
             outputText("\n\nYour womb rumbles as something inside it changes.\n<b>(You have gained the Diapause perk.  Pregnancies will not progress when fluid intake is scarce, and will progress much faster when it isn't.)", false);
@@ -6121,7 +6121,7 @@ export class Mutations {
         // (decrease strength to 70)
         if (player.str > 70 && rand(3) == 0) {
             outputText("\n\nLethargy rolls through you while you burp noisily.  You rub at your muscles and sigh, wondering why you need to be strong when you could just sew up a nice sticky web to catch your enemies.  ", false);
-            if (player.spiderScore() < 4) outputText("Wait, you're not a spider, that doesn't make any sense!", false);
+            if (spiderScore(player) < 4) outputText("Wait, you're not a spider, that doesn't make any sense!", false);
             else outputText("Well, maybe you should put your nice, heavy abdomen to work.", false);
             dynStats("str", -1);
             changes++;
@@ -8478,7 +8478,7 @@ export class Mutations {
         outputText("Feeling parched, you gobble down the fruit without much hesitation. Despite the skin being fuzzy like a peach, the inside is relatively hard, and its taste reminds you of that of an apple.  It even has a core like an apple. Finished, you toss the core aside.");
 
         // BAD END:
-        if (player.ferretScore() >= 6) {
+        if (ferretScore(player) >= 6) {
             // Get warned!
             if (flags[kFLAGS.FERRET_BAD_END_WARNING] == 0) {
                 outputText("\n\nYou find yourself staring off into the distance, dreaming idly of chasing rabbits through a warren.  You shake your head, returning to reality.  <b>Perhaps you should cut back on all the Ferret Fruit?</b>");

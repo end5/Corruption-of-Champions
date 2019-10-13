@@ -477,7 +477,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.cor < 80) outputText("being such a wanton slut", false);
             else outputText("giving it up too easily", false);
             outputText(".  Jojo's dick-mouths latch on and suck hard, pulling your " + nippleDescription(player, 0) + "s deep into their internal reservoir and stimulating your breasts to release a torrent of milk.  ", false);
-            if (player.cowScore() >= 5) outputText("You find yourself mooing in contentment as your fuck-slave works to milk you.  ", false);
+            if (cowScore(player) >= 5) outputText("You find yourself mooing in contentment as your fuck-slave works to milk you.  ", false);
             outputText("You watch with a happy smile, enjoying the sensations as the tentacles bulge and move milk-distended knots down their lengths towards Jojo.  They are so full that the sloshing whiteness actually becomes visible through the 'skin' of his tendrils.", false);
             if (player.breastRows.length > 1) {
                 // (NewPG if multirow)

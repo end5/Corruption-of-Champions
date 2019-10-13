@@ -237,12 +237,12 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.perks.findByType(PerkLib.Oviposition) >= 0 || player.perks.findByType(PerkLib.BunnyEggs) >= 0) { // Oviposition perk for lizard and bunny folks
-            if ((player.nagaScore() + player.lizardScore() < 3) && player.perks.findByType(PerkLib.Oviposition) >= 0 && player.perks.findByType(PerkLib.BasiliskWomb) < 0) { // --Lose Oviposition perk if lizard score gets below 3.
+            if ((nagaScore(player) + lizardScore(player) < 3) && player.perks.findByType(PerkLib.Oviposition) >= 0 && player.perks.findByType(PerkLib.BasiliskWomb) < 0) { // --Lose Oviposition perk if lizard score gets below 3.
                 outputText("\nAnother change in your uterus ripples through your reproductive systems.  Somehow you know you've lost a little bit of reptilian reproductive ability.\n(<b>Perk Lost: Oviposition</b>)\n");
                 player.perks.remove(PerkLib.Oviposition);
                 needNext = true;
             }
-            else if (player.bunnyScore() < 3 && player.perks.findByType(PerkLib.BunnyEggs) >= 0) { // --Lose Oviposition perk if bunny score gets below 3.
+            else if (bunnyScore(player) < 3 && player.perks.findByType(PerkLib.BunnyEggs) >= 0) { // --Lose Oviposition perk if bunny score gets below 3.
                 outputText("\nAnother change in your uterus ripples through your reproductive systems.  Somehow you know you've lost your ability to spontaneously lay eggs.\n(<b>Perk Lost: Bunny Eggs</b>)\n");
                 player.perks.remove(PerkLib.BunnyEggs);
                 needNext = true;
@@ -591,7 +591,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.keyItems.has("Ruby Heart") >= 0) { // Regain slime core
-            if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4 && player.vaginalCapacity() >= 9000 && player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody == LOWER_BODY_TYPE_GOO) {
+            if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && gooScore(player) >= 4 && player.vaginalCapacity() >= 9000 && player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody == LOWER_BODY_TYPE_GOO) {
                 outputText("\nAs you adjust to your new, goo-like body, you remember the ruby heart you expelled so long ago.  As you reach to pick it up, it quivers and pulses with a warm, cheerful light.  Your fingers close on it and the nucleus slides through your palm, into your body!\n\n");
 
                 outputText("There is a momentary pressure in your chest and a few memories that are not your own flicker before your eyes.  The dizzying sight passes and the slime core settles within your body, imprinted with your personality and experiences.  There is a comforting calmness from your new nucleus and you feel as though, with your new memories, you will be better able to manage your body's fluid requirements.\n");

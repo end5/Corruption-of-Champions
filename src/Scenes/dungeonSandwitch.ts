@@ -3459,7 +3459,7 @@ export function askHowSandMothersAreChosen(): void {
     outputText("You ask the Sand Mother how her people choose who will be a Sand Mother of a new coven.");
 
     outputText("\n\nThe statuesque woman smirks ruefully, \"<i>Politics, of course.</i>\"  Politics?  She sees the confused look on your face and explains, \"<i>It shouldn't surprise you.  You");
-    if (player.race() == "human") outputText("'re a human");
+    if (race(player) == "human") outputText("'re a human");
     else outputText(" were a human");
     outputText(".  Our people are notorious for forming gangs and cliques, groups focused around a leader's charisma.  It's only natural that has continued in Mareth.  It would not surprise me to learn that even the demons have their own factions and political malcontents, though I imagine they deal with them far more harshly than we.</i>\"");
 

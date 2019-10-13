@@ -286,7 +286,7 @@ export class TelAdre {
         spriteSelect(63);
         player.effects.create(StatusAffects.Yara, 0, 0, 0, 0);
         outputText("You introduce yourself and ask Yara about her past, noting that ", true);
-        if (player.humanScore() <= 2) outputText("you were once a human too.", false);
+        if (humanScore(player) <= 2) outputText("you were once a human too.", false);
         else outputText("you haven't seen many other humans about.", false);
         outputText("\n\nShe blushes a little when she answers, her tail curling about her protectively, \"<i>My home city was built around a portal, and the Baron that ruled it insisted that we send a sacrifice through every year.  We were raised believing that if we didn't sacrifice SOMEONE, the gods would become angry and bring our city to ruin.  Of course the whole thing was a sham, but the families of those sacrificed get compensation.  My father tried to whore me out first, but when that didn't work, the bastard had me drugged and sacrificed.  I woke up next to a lake, ate some weird fruit when I got hungry, and I... well, I changed.  Thankfully I found my way here before I ran into any demons, or who knows what would have happened to me!  Tel'Adre has been good to me, and I'm sure it'll be good to you.  Now, how about getting a piercing?</i>\"", false);
         dynStats("int", 2, "lus", -5, "cor", -1);
@@ -1052,7 +1052,7 @@ export class TelAdre {
             return;
         }
         outputText("The interior of The Wet Bitch is far different than the mental picture its name implied.  It looks like a normal tavern, complete with a large central hearth, numerous tables and chairs, and a polished dark wood bar.  The patrons all seem to be dressed and interacting like normal people, that is if normal people were mostly centaurs and dog-morphs of various sub-species.  The atmosphere is warm and friendly, and ");
-        if (player.humanScore() <= 3) outputText("despite your altered appearance, ");
+        if (humanScore(player) <= 3) outputText("despite your altered appearance, ");
         outputText("you hardly get any odd stares.  There are a number of rooms towards the back, as well as a stairway leading up to an upper level.");
 
         scylla.scyllaBarSelectAction(); // Done before anything else so that other NPCs can check scylla.action to see what she's doing
@@ -1226,7 +1226,7 @@ export class TelAdre {
             return;
         }
         outputText("The interior of The Wet Bitch is far different than the mental picture its name implied.  It looks like a normal tavern, complete with a large central hearth, numerous tables and chairs, and a polished dark wood bar.  The patrons all seem to be dressed and interacting like normal people, that is if normal people were mostly centaurs and dog-morphs of various sub-species.  The atmosphere is warm and friendly, and ", false);
-        if(player.humanScore() <= 3) outputText("despite your altered appearance, ", false);
+        if(humanScore(player) <= 3) outputText("despite your altered appearance, ", false);
         outputText("you hardly get any odd stares.  There are a number of rooms towards the back, as well as a stairway leading up to an upper level.", false);
         //Hours of operation decrease after birth
         if(!urtaQuest.urtaBusy()) {

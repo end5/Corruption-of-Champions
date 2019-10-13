@@ -226,7 +226,7 @@ export class BunnyGirl {
         outputText("\n\n", false);
 
         outputText("You sprawl out, leaking sexual fluids as your womb closes in around the foreign cargo, closing your cervix to hold in both the eggs.  An indeterminate amount of time has passed, but the forced euphoria of your new pregnancy makes it hard to get up just yet.  You see the bunny standing up with her dick finally going limp and no balls to speak of.  She leans down and gives you a kiss on the lips before whispering, \"<i>", false);
-        if (player.bunnyScore() < 4) outputText("It's so good to finally think straight!  I don't know why I went into heat right now, but it's so much easier to think now that I've gotten rid of those eggs.  Don't worry, you won't be popping out rabbits since you aren't an easter-bun.  Your body will probably absorb them in a few days.  Just don't be surprised if you feel a little bloated or feel a little weird after.</i>\"\n\n", false);
+        if (bunnyScore(player) < 4) outputText("It's so good to finally think straight!  I don't know why I went into heat right now, but it's so much easier to think now that I've gotten rid of those eggs.  Don't worry, you won't be popping out rabbits since you aren't an easter-bun.  Your body will probably absorb them in a few days.  Just don't be surprised if you feel a little bloated or feel a little weird after.</i>\"\n\n", false);
         // Pregnant already
         else if (player.pregnancyIncubation > 0) outputText("It's so good to finally think straight!  I don't know why I went into heat right now, but it really is a shame you're pregnant.  Your body will destroy the little eggs before they can even do anything!  Well, at least I feel sooo much better...</i>\"\n\n", false);
         // Preggers
@@ -234,7 +234,7 @@ export class BunnyGirl {
 
         outputText("She walks away, her puffy tail twitching with the breeze while your eyes drift closed.", false);
         // (Easter vag-preg + 8 hours pass)
-        if (player.bunnyScore() < 4) {
+        if (bunnyScore(player) < 4) {
             player.knockUp(PregnancyStore.PREGNANCY_BUNNY, PregnancyStore.INCUBATION_BUNNY_EGGS);
         }
         else {
@@ -953,7 +953,7 @@ export class BunnyGirl {
         }
         outputText("Eventually, enough of the eggs melt to let you stand under your own power.  You grab your [armor] but hold off on putting it on until you have a chance to shrink down to a more normal size.  Before you leave, you make sure to remove the rope from her wrists, for when she gathers her orgasm-blasted wits.");
         // [If full bunny morph, End Encounter. Weight up, sensitivity down, fertility up.]
-        if (player.bunnyScore() < 4) {
+        if (bunnyScore(player) < 4) {
             player.knockUp(PregnancyStore.PREGNANCY_BUNNY, PregnancyStore.INCUBATION_BUNNY_EGGS);
         }
         else {

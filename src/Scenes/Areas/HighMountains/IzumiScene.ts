@@ -195,12 +195,12 @@ export class IzumiScene {
 
             outputText("“<i>Hm?</i>” the shadow grunts, then speaks.  “<i>Oh?  Now how did you find your way in here, I wonder?</i>”  The voice is deep, rich and undeniably female, but has a gravelly edge to it like a cross between magma and molten chocolate.  You hear the hiss of indrawn breath and a small light flares up briefly in the darkness, then the shadow speaks again.  “<i>Well, whatever. It’s been a while since I had company, ");
 
-            if (player.minoScore() > 3) outputText("plus it looks like you're thinking with the head on top of your neck, rather than the head between your legs, unlike the stupid brutes who usually wander around these parts.  ");
-            else if (player.dogScore() > 3) outputText("plus it looks like you'd actually be able to resist chasing down a stick, if I threw one outta' the cave.  ");
-            else if (player.goblinScore() > 3) outputText("plus you don't seem to be as insufferable as the rest of those little green whores who trollop around these parts, hunting their next lay.  ");
-            else if (player.demonScore() > 3) outputText("plus you're not forever going on about corruption this, enslavement that, demonic taint the other, unlike the insufferable clods who usually wander around these parts.  ");
-            else if (player.harpyScore() > 3) outputText("plus you're not screeching incessantly, like the feathery sluts who usually flap their way around these parts.  They're lucky they </i>can<i> fly, 'cause I'd give them something to really squawk about if I could get my hands on them.  ");
-            else if (player.lizardScore() > 3) outputText("plus, you don't have the same creepy eyes that the scaley idiots from around these parts keep trying to use on me.  ");
+            if (minoScore(player) > 3) outputText("plus it looks like you're thinking with the head on top of your neck, rather than the head between your legs, unlike the stupid brutes who usually wander around these parts.  ");
+            else if (dogScore(player) > 3) outputText("plus it looks like you'd actually be able to resist chasing down a stick, if I threw one outta' the cave.  ");
+            else if (goblinScore(player) > 3) outputText("plus you don't seem to be as insufferable as the rest of those little green whores who trollop around these parts, hunting their next lay.  ");
+            else if (demonScore(player) > 3) outputText("plus you're not forever going on about corruption this, enslavement that, demonic taint the other, unlike the insufferable clods who usually wander around these parts.  ");
+            else if (harpyScore(player) > 3) outputText("plus you're not screeching incessantly, like the feathery sluts who usually flap their way around these parts.  They're lucky they </i>can<i> fly, 'cause I'd give them something to really squawk about if I could get my hands on them.  ");
+            else if (lizardScore(player) > 3) outputText("plus, you don't have the same creepy eyes that the scaley idiots from around these parts keep trying to use on me.  ");
             else outputText("plus you don’t look like the troglodytes who usually wander around these parts.  ");
             outputText("Sit down, sit down!</i>”\n\n");
         }
@@ -265,7 +265,7 @@ export class IzumiScene {
 
         outputText("“<i>Ah, but where to begin?  My clan calls me ‘Izumi, <b>The Font Of All Strength’</b>.</i>”  She snorts in amusement at your reaction to her name.  “<i>I know, it’s a little pompous, right?  Just use Izumi, I always do.  Either way, I’m a traveller from another world.");
 
-        if (player.humanScore() > 3) {
+        if (humanScore(player) > 3) {
             outputText("  I’ve met humans before a few times.  Back home, my people like to play games with them to see how they’ll react; show up, scare the locals, steal a sheep and run off giggling to yourself, that kind of thing.  Sometimes one of them is actually brave enough to come after us.  Sometimes we even slap ‘em on the back, give ‘em the sheep and then drink them under the table.</i>” \n\n");
 
             outputText("She takes a long, powerful drag on her pipe, her lips locked tight around the mouthpiece.  “<i>It was fun for a while, but bothering goatherds for the next thousand years wasn’t my scene, frankly, so I left.  Bailed.  Disappeared.");

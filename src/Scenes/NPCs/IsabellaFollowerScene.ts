@@ -1061,7 +1061,7 @@ Optional Morning Oral for small-membered males*/
                 changed = true;
             }
             // [if female/herm and player race not cow-girl]
-            if (changed && player.hasVagina() && player.race() != "cow-girl") {
+            if (changed && player.hasVagina() && race(player) != "cow-girl") {
                 outputText("  \"<i>Goodness, look at you!</i>\" Isabella exclaims, waving away the remnant wisps of the gassy mist.  \"<i>Surely, you're giving me a run for ", false);
                 if (isabellaAccent()) outputText("mein money now, ja?", false);
                 else outputText("my money now, darling!", false);
@@ -1079,7 +1079,7 @@ Optional Morning Oral for small-membered males*/
                 outputText("</i>\"\n\n", false);
             }
             // [if male and player race not cowboy]
-            else if (changed && player.cocks.length > 0 && player.race() != "cow-morph") {
+            else if (changed && player.cocks.length > 0 && race(player) != "cow-morph") {
                 outputText("  \"<i>", false);
                 if (isabellaAccent()) outputText("Nein nein nein nein, zis von't do at all!", false);
                 else outputText("No, no! This is awful!", false);

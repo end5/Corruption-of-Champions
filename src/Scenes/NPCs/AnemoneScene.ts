@@ -1749,7 +1749,7 @@ export class AnemoneScene implements TimeAwareInterface {
         outputText("\n\n\"<i>Move it, blue bitch,</i>\" she demands.  \"<i>Tammi said to keep watch for a ");
         if (player.tallness > 48) outputText("tall");
         else outputText("short");
-        outputText(", " + mf(player, "studly", "gorgeous") + " " + player.race() + "; told us that " + mf(player, "he", "she") + "'d be able to knock us all up like " + mf(player, "he", "she") + " did her, and a few of the little goblin tramps outside the family have seen one in this camp.  We're going to get our babies.</i>\"  Kid A remains silent, but shakes her head uncertainly, holding her equipment closer to her chest.");
+        outputText(", " + mf(player, "studly", "gorgeous") + " " + race(player) + "; told us that " + mf(player, "he", "she") + "'d be able to knock us all up like " + mf(player, "he", "she") + " did her, and a few of the little goblin tramps outside the family have seen one in this camp.  We're going to get our babies.</i>\"  Kid A remains silent, but shakes her head uncertainly, holding her equipment closer to her chest.");
 
         outputText("\n\nThe goblin looks a little surprised.  \"<i>What do you mean, getting in our way?  I'll warn you once; step aside and let us search that camp for baby batter, or I will make you regret it.</i>\"  She considers the anemone irately, then gestures to her entourage and adds, \"<i>I'd have these cunts ride your sad little willy silly to punish you for being such a slag, but we can't get goblins out of you people - only more blue bitches.</i>\"");
 

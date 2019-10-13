@@ -1216,7 +1216,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         }
         outputText("\n\nSatisfied, Ember turns to take another look at you.");
         // (If PC has high dragon or lizard score)
-        if (player.nagaScore() >= 3 || player.lizardScore() >= 3 || player.dragonScore() >= 3) {
+        if (nagaScore(player) >= 3 || lizardScore(player) >= 3 || dragonScore(player) >= 3) {
             outputText("  Ember's eyes linger on your form.  After a moment of awkward silence, you clear your throat.  " + emberMF("he", "she") + " blinks and says hurriedly.  \"<i>Sorry... I was just admiring you-</i>\" Realizing what " + emberMF("he", "she") + " was about to say,and quickly blurts out.  \"<i>I mean the weather! Yes, nice day today isn't it?</i>\"  You're not convinced, but let it slide. Ember recomposes and clears " + emberMF("his", "her") + " throat before saying.");
             // (+1 Affection)
             points++;
@@ -1666,14 +1666,14 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         // Get Dragon Breath (Tainted version)
         // Can only be obtained if you are considered a dragon-morph, once you do get it though, it won't just go away even if you aren't a dragon-morph anymore.
 
-        if (player.dragonScore() >= 4 && changes < changeLimit && player.perks.findByType(PerkLib.Dragonfire) < 0) {
+        if (dragonScore(player) >= 4 && changes < changeLimit && player.perks.findByType(PerkLib.Dragonfire) < 0) {
             outputText("\n\nYou feel something awakening within you... then a sudden sensation of choking grabs hold of your throat, sending you to your knees as you clutch and gasp for breath.  It feels like there's something trapped inside your windpipe, clawing and crawling its way up.  You retch and splutter and then, with a feeling of almost painful relief, you expel a bellowing roar from deep inside of yourself... with enough force that clods of dirt and shattered gravel are sent flying all around.  You look at the small crater you have literally blasted into the landscape with a mixture of awe and surprise.");
             outputText("\n\nIt seems Ember's dragon blood has awaked some kind of power within you... your throat and chest feel very sore, however; you doubt you can force out more than one such blast before resting.\n\n(<b>Gained Perk: Dragonfire!</b>)");
             player.perks.create(PerkLib.Dragonfire, 0, 0, 0, 0);
             if (emberAffection() >= 75) outputText("\n\nEmber immediately dives back in to soothe your battered throat and mouth with another kiss.");
             changes++;
         }
-        if (player.dragonScore() >= 4 && rand(3) == 0 && player.gender > 0) {
+        if (dragonScore(player) >= 4 && rand(3) == 0 && player.gender > 0) {
             outputText("\n\nA sudden swell of lust races through your ");
             if (player.cocks.length > 0) {
                 outputText(cockDescript(game.player, 0));
@@ -1906,7 +1906,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("  Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!");
             }
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
-            if (rand(2) == 0 && player.dragonScore() >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
+            if (rand(2) == 0 && dragonScore(player) >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
                 if (player.cocks.length > 0) {
                     outputText(cockDescript(game.player, 0));
@@ -1964,7 +1964,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("  Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!");
             }
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
-            if (rand(2) == 0 && player.dragonScore() >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
+            if (rand(2) == 0 && dragonScore(player) >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
                 if (player.cocks.length > 0) {
                     outputText(cockDescript(game.player, 0));
@@ -2060,7 +2060,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nEmber gets so flustered that " + emberMF("he", "she") + " just stares at you in stunned silence, wearing a goofy smile.  \"<i>Wha... you know, there's no point in saying anything.  I know you'll just sneak another opportunity like this in the future... doesn't mean I won't make you pay for this when I catch you later.</i>\"");
             outputText("\n\nYou whisper into her ear that you're looking forward to it, and gently raise yourself from " + emberMF("his", "her") + " lap to leave.");
             // (no new PG, PC has dragon-morph status and is opposite Ember's sex:
-            if (rand(2) == 0 && player.dragonScore() >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
+            if (rand(2) == 0 && dragonScore(player) >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
                 if (player.cocks.length > 0) {
                     outputText(cockDescript(game.player, 0));

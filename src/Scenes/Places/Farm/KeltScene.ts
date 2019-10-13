@@ -477,7 +477,7 @@ STATUSES:
             if (temp == 2) outputText("\"<i>See the red dot, in the middle of the target?  Imagine that's your ass, and the arrow is a big, fat, minotaur cock.  That should help you hit the target.</i>\"\r\r", false);
             // (25% Chance:
             if (temp == 3) {
-                if (player.race() != "centaur") outputText("\"<i>If you were a centaur, I'd recommend suicide.  Since you're a " + player.race() + ", I'd say your best option is to fuck off.</i>\"\r\r", false);
+                if (race(player) != "centaur") outputText("\"<i>If you were a centaur, I'd recommend suicide.  Since you're a " + race(player) + ", I'd say your best option is to fuck off.</i>\"\r\r", false);
                 else outputText("\"<i>As a centaur, I'd recommend suicide.  Really, it's that or man the fuck up.</i>\"\r\r", false);
             }
             // player.effects.addValue(StatusAffects.Kelt,1,5+rand(4));

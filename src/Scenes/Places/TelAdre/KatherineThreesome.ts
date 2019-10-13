@@ -36,7 +36,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText("Smirking, the cat begins to remove her shirt, pulling it off and casting it aside.  “<i>How big of a mess are we going to make with just a circlejerk?</i>”\n\n");
         outputText("“<i>Kitty, you got no idea who you’re talking about, do you?</i>” Urta says, letting the cat’s dick go to help you remove her clothes and armor as well.\n\n");
         outputText("As soon as Urta’s top is off her, you move your hands to grope at her soft orbs, pinching and twisting her nipples, then pulling her head against your " + (player.breasts.breasts.hasBreasts() ? breastDescript(player, 0) : "chest") + ", and finally giving her perky fox-ear a gentle bite");
-        const race: string = player.race(); // Looks like the best way to be sure you have sharp teeth
+        const race: string = race(player); // Looks like the best way to be sure you have sharp teeth
         const race3: string = race.substr(0, 3); // Tests for cat, dog, fox
         const race6: string = race.substr(0, 6); // Tests for dragon, drider, ferret, spider
         if (race3 == "cat" || race3 == "dog" || race3 == "fox" || race6 == "dragon" || race6 == "drider" || race6 == "ferret" || race6 == "spider" || race == "naga" || race == "kitsune" || race == "demon-morph" || race == "shark-morph" || race.search("lizan") > -1)

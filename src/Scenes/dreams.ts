@@ -7,33 +7,33 @@ export function dreamSelect(): boolean {
     dreamtemp = rand(player.lib / 10 + player.cor / 20) + player.cor / 20;
 
     // BUILD UP CHOICES ARRAY
-    temp = player.humanScore();
+    temp = humanScore(player);
     // Add human numbers to choices
     while (temp > 0) {
         choices[choices.length] = 0;
         temp--;
     }
-    temp = player.dogScore();
+    temp = dogScore(player);
     while (temp > 0) {
         choices[choices.length] = 2;
         temp--;
     }
-    temp = player.horseScore();
+    temp = horseScore(player);
     while (temp > 0) {
         choices[choices.length] = 1;
         temp--;
     }
-    temp = player.cowScore();
+    temp = cowScore(player);
     while (temp > 0) {
         choices[choices.length] = 3;
         temp--;
     }
-    temp = player.catScore();
+    temp = catScore(player);
     while (temp > 0) {
         choices[choices.length] = 4;
         temp--;
     }
-    temp = player.demonScore();
+    temp = demonScore(player);
     while (temp > 0) {
         choices[choices.length] = 5;
         temp--;
@@ -95,13 +95,13 @@ export function dreamSelect(): boolean {
         choices[choices.length] = 15;
     }
     // Sand trap
-    if (player.sandTrapScore() >= 2) {
+    if (sandTrapScore(player) >= 2) {
         choices[choices.length] = 16;
         choices[choices.length] = 16;
         choices[choices.length] = 16;
         choices[choices.length] = 16;
     }
-    if (player.mouseScore() >= 3) {
+    if (mouseScore(player) >= 3) {
         choices[choices.length] = 17;
         choices[choices.length] = 17;
         choices[choices.length] = 17;

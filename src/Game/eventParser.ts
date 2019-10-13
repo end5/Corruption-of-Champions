@@ -753,7 +753,7 @@ export function goNext(time: number, needNext: boolean): boolean {
         let counter: number = player.cocks.length - 1;
         while (counter >= 0) {
             if (player.cocks[counter].cockType == CockTypesEnum.DOG || player.cocks[counter].cockType == CockTypesEnum.FOX) {
-                if (player.dogScore() >= player.foxScore())
+                if (dogScore(player) >= foxScore(player))
                     player.cocks[counter].cockType = CockTypesEnum.DOG;
                 else
                     player.cocks[counter].cockType = CockTypesEnum.FOX;

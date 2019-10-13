@@ -62,7 +62,7 @@ export let singleArgConverters: Record<string, any> =
     onecock(thisPtr: any): any { return oMultiCockDesc(game.player); },
     pg(thisPtr: any): any { return "\n\n"; },
     pussy(thisPtr: any): any { return vaginaDescript(player); },
-    race(thisPtr: any): any { return game.player.race(); },
+    race(thisPtr: any): any { return race(game.player); },
     sack(thisPtr: any): any { return sackDescript(player); },
     sheath(thisPtr: any): any { return sheathDescription(game.player); },
     skin(thisPtr: any): any { return skin(game.player); },

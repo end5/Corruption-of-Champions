@@ -2544,7 +2544,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 17;
     }
     // 18 DOG TEASE
-    if (player.dogScore() >= 4 && player.hasVagina() && player.isBiped()) {
+    if (dogScore(player) >= 4 && player.hasVagina() && player.isBiped()) {
         choices[choices.length] = 18;
         choices[choices.length] = 18;
     }
@@ -2571,7 +2571,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 22;
         choices[choices.length] = 22;
         choices[choices.length] = 22;
-        if (player.spiderScore() >= 4) {
+        if (spiderScore(player) >= 4) {
             choices[choices.length] = 22;
             choices[choices.length] = 22;
             choices[choices.length] = 22;
@@ -2686,7 +2686,7 @@ export function tease(justText: boolean = false): void {
     // 38 Kitsune Tease
     // 39 Kitsune Tease
     // 40 Kitsune Tease
-    if (player.kitsuneScore() >= 2 && player.tailType == TAIL_TYPE_FOX) {
+    if (kitsuneScore(player) >= 2 && player.tailType == TAIL_TYPE_FOX) {
         choices[choices.length] = 37;
         choices[choices.length] = 37;
         choices[choices.length] = 37;
@@ -2705,7 +2705,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 40;
     }
     // 41 Kitsune Gendered Tease
-    if (player.kitsuneScore() >= 2 && player.tailType == TAIL_TYPE_FOX) {
+    if (kitsuneScore(player) >= 2 && player.tailType == TAIL_TYPE_FOX) {
         choices[choices.length] = 41;
         choices[choices.length] = 41;
         choices[choices.length] = 41;
@@ -2724,7 +2724,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 42;
     }
     // 43 - special mino + cowgirls
-    if (player.hasVagina() && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW) {
+    if (player.hasVagina() && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && cowScore(player) >= 3 && player.tailType == TAIL_TYPE_COW) {
         choices[choices.length] = 43;
         choices[choices.length] = 43;
         choices[choices.length] = 43;
@@ -2758,7 +2758,7 @@ export function tease(justText: boolean = false): void {
     // =======================================================
     select = choices[rand(choices.length)];
     if (monster.short.indexOf("minotaur") != -1) {
-        if (player.hasVagina() && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW)
+        if (player.hasVagina() && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && cowScore(player) >= 3 && player.tailType == TAIL_TYPE_COW)
             select = 43;
     }
     // Lets do zis!

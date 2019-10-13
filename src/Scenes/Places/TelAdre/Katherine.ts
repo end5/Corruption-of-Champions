@@ -3890,7 +3890,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("Fingers digging into your hips, she begins to thrust back and forth inside of you");
         if (cockNumber > 1) outputText(", her second cock still slapping wetly against you and smearing trickles of pre-cum that stretch and dangle as it bounces");
         outputText(".  She grunts and groans.  “<i>Oh- Oh yeah, you're unbelievable!");
-        if (player.harpyScore() >= 4 || player.sharkScore() >= 4 || player.catScore() >= 4 || player.dogScore() >= 4 || player.bunnyScore() >= 4) outputText("  Mmm... yeah, that's it, moan for me, you little slut; who's the alpha, huh?  Katherine's your alpha - go on, say it!</i>” she yells, pounding herself into you with greater force, her claws extending just far enough to begin biting into your flesh, pinpricks of pain to counter the pleasure.");
+        if (harpyScore(player) >= 4 || sharkScore(player) >= 4 || catScore(player) >= 4 || dogScore(player) >= 4 || bunnyScore(player) >= 4) outputText("  Mmm... yeah, that's it, moan for me, you little slut; who's the alpha, huh?  Katherine's your alpha - go on, say it!</i>” she yells, pounding herself into you with greater force, her claws extending just far enough to begin biting into your flesh, pinpricks of pain to counter the pleasure.");
         else outputText("</i>”");
         outputText("\n\n");
 
@@ -3978,7 +3978,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("Fingers digging into your hips, she begins to thrust back and forth inside you" + cockMultiple("", ", her secondary cock slapping wetly against your back") + ".  She grunts and groans, “<i>Oh- Oh yeah, you're unbelievable!");
         // [(player has high harpy/shark/cat/dog/bunny score)
-        if (player.harpyScore() >= 4 || player.sharkScore() >= 4 || player.catScore() >= 4 || player.dogScore() >= 4 || player.bunnyScore() >= 4)
+        if (harpyScore(player) >= 4 || sharkScore(player) >= 4 || catScore(player) >= 4 || dogScore(player) >= 4 || bunnyScore(player) >= 4)
             outputText("  Mmm... yeah, that's it, moan for me, you little slut; who's the alpha bitch, huh?  Katherine's your alpha - go on, say it!</i>” she yells out, pounding herself into you with greater force and her " + catGirl("sharp nails dig in", "claws extend") + " just far enough to begin biting into your flesh, pinpricks of pain to counter the pleasure.\n\n");
         else outputText("</i>”\n\n");
 

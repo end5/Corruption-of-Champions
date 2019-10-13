@@ -458,7 +458,7 @@ export function pcDefeatsHarpyHorde(): void {
     flags[kFLAGS.HEL_HARPIES_DEFEATED] = 1;
     outputText("The harpies collapse in a pile in the center of the room, all utterly defeated... except one.  The lone harpy that did not attack you throughout the fight, a rather slight girl with a shock of bright orange hair, still stands, gaping at the destruction you've wrought.  Eventually, her gaze shifts up to you.");
 
-    outputText("\n\n\"<i>Holy shit, " + mf(player, "dude", "lady") + ".  You're a goddamn one-" + player.race() + "-army, aren't you? You... you must be [name], right? Hel... er, Miss Helia told me about you.  I'm, uh... I'm Kiri.  Sorry about the other girls - I'd just spiked their drinks, but they didn't have time to finish them.  You're a little earlier than I was expecting.  Sorry,</i>\" she whispers nervously, rubbing the back of her neck.");
+    outputText("\n\n\"<i>Holy shit, " + mf(player, "dude", "lady") + ".  You're a goddamn one-" + race(player) + "-army, aren't you? You... you must be [name], right? Hel... er, Miss Helia told me about you.  I'm, uh... I'm Kiri.  Sorry about the other girls - I'd just spiked their drinks, but they didn't have time to finish them.  You're a little earlier than I was expecting.  Sorry,</i>\" she whispers nervously, rubbing the back of her neck.");
 
     outputText("\n\nYou ask her who she is exactly and how she knows Hel.");
 

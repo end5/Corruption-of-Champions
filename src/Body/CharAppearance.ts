@@ -8,44 +8,44 @@ export function appearance(e: MouseEvent = null): void {
 	if(player.lowerBody == LOWER_BODY_TYPE_PONY) race = "pony-kin";
 	//determine sheath
 	var sheath:Boolean = false;
-	if(player.catScore() >= 4) race = "cat-" + mf(player, "boy","girl");
-	if(player.lizardScore() >= 4)
+	if(catScore(player) >= 4) race = "cat-" + mf(player, "boy","girl");
+	if(lizardScore(player) >= 4)
 	{
 		if(player.gender == 0) race = "lizan";
 		else if(player.gender == 1) race = "male lizan";
 		else if(player.gender == 2) race = "female lizan";
 		else race = "hermaphrodite lizan";
 	}
-	if(player.dogScore() >= 4) race = "dog-morph";
-	if(player.horseScore() >= 3)
+	if(dogScore(player) >= 4) race = "dog-morph";
+	if(horseScore(player) >= 3)
 	{
 		if(player.lowerBody == LOWER_BODY_TYPE_CENTAUR) race = "centaur-morph";
 		else race = "equine-morph";
 	}
-	if(player.mutantScore() >= 5) race = "corrupted mutant";
-	if(player.minoScore() >= 4) race = "minotaur-morph";
-	if(player.cowScore() > 5)
+	if(mutantScore(player) >= 5) race = "corrupted mutant";
+	if(minoScore(player) >= 4) race = "minotaur-morph";
+	if(cowScore(player) > 5)
 	{
 		race = "cow-";
 		if(player.gender <= 1) race += "boi";
 		else race += "girl";
 	}
-	if(player.beeScore() >= 4) race = "bee-morph";
-	if(player.goblinScore() >= 5) race = "goblin";
-	if(player.humanScore() >= 5 && race == "corrupted mutant") race = "somewhat human mutant";
-	if(player.demonScore() > 4) race = "demon-morph";
+	if(beeScore(player) >= 4) race = "bee-morph";
+	if(goblinScore(player) >= 5) race = "goblin";
+	if(humanScore(player) >= 5 && race == "corrupted mutant") race = "somewhat human mutant";
+	if(demonScore(player) > 4) race = "demon-morph";
 	if(player.lowerBody == LOWER_BODY_TYPE_NAGA) race = "naga";
 	if(player.lowerBody == LOWER_BODY_TYPE_CENTAUR) race = "centaur";
-	if(player.sharkScore() >= 3) race = "shark-morph";
-	if(player.bunnyScore() >= 4) race = "bunny-" + mf(player, "boy","girl");
-	if(player.gooScore() >= 3)
+	if(sharkScore(player) >= 3) race = "shark-morph";
+	if(bunnyScore(player) >= 4) race = "bunny-" + mf(player, "boy","girl");
+	if(gooScore(player) >= 3)
 	{
 		race = "goo-";
 		if(player.gender <= 1) race += "boi";
 		else race += "girl";
 	}*/
 
-    race = player.race();
+    race = race(player);
     // Discuss race
     outputText("", true);
     if (race != "human") outputText("You began your journey as a human, but gave that up as you explored the dangers of this realm.  ", false);

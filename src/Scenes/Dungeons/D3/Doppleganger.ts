@@ -241,7 +241,7 @@ export class Doppleganger extends Monster {
 
         str += "You are fighting the doppelganger. " + mf(player, "He", "She") + " is a ";
         str += String(Math.floor(player.tallness / 12) + " foot " + player.tallness % 12 + " inch tall ");
-        str += player.race() + ", with " + player.bodyType() + ". ";
+        str += race(player) + ", with " + player.bodyType() + ". ";
 
         str += mf(player, "His", "Her") + " face is " + faceDesc(player) + ".";
 

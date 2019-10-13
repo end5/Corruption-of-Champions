@@ -328,7 +328,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nCurious and eager to change the subject, you ask her where exactly her aforementioned 'mates' are.  She narrows her eyes at the question.  \"<i>Don't expect that's any of your bizzo, eh stickybeak?  No offense, but I don't know you from Marae an' I'm not about to give info to some dipstick demon dag in disguise.");
         // [(high demon score)
-        if (player.demonScore() >= 4) outputText("  I mean, take a squizz at yourself.  It's like you're not even trying to hide it; I've seen imps that look more like normal people.");
+        if (demonScore(player) >= 4) outputText("  I mean, take a squizz at yourself.  It's like you're not even trying to hide it; I've seen imps that look more like normal people.");
         outputText("  Forget it.</i>\"  You deny the accusation, but she continues to glare at you.");
 
         outputText("\n\n\"<i>No worries,</i>\" she says, her words at odds with her chilly expression.  \"<i>Just be on your way and we'll forget it happened.</i>\"");
@@ -685,7 +685,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\n\"<i>You make it sound like it's only the three blokes and yours truly huddled in a cave for warmth,</i>\" she responds, finally.  \"<i>Sorry, I know I've never said otherwise; just a funny thought.  Actually we're part of a little hidden alcove, village-sized, with over fifteen families.  Everyone I've ever met that's like me lives in a similar enclave, led by a political and quasi-religious yobbo");
         // [(pc is kangaroo)
-        if (player.race() == "kangaroo-morph") outputText(" - except you, I suppose");
+        if (race(player) == "kangaroo-morph") outputText(" - except you, I suppose");
         outputText(".  We trade our goods in prearranged op shops and dead drops but avoid bringing outsiders into our own settlements, even when they're right corkers.</i>\"");
 
         outputText("\n\nYou press her on the last point.  \"<i>Well, what you don't know, you can't reveal when the demons take you, right?</i>\" she answers.  \"<i>I dunno if I should tell you this, but... the other reason has to do with our bodies.</i>\"  She looks over at you, searching your face for something inscrutable; you compose a mask of patient, perfect attention as you chew another mouthful of meat.  \"<i>Y'see, we're very empathetic to and conductive of emotions under certain circumstances - namely, during a shag.</i>\"  She looks away again, into the fire; as you peer closer, she actually appears to be blushing.  \"<i>When we, er... orgasm,</i>\" she resumes, still not meeting your eyes, \"<i>we give or take emotion and feeling from our partner depending on whether they have more or less than us.  For example, it means that horny buggers");
@@ -4125,7 +4125,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             else outputText("You grab her hips and");
             outputText(" help her impale herself on your tool.");
 
-            outputText("\n\nThe demon shudders as your [sheath] bumps up against her vulva.  \"<i>Y-yeah, but I never paid attention to growing dongers without balls and that kinda arcane stuff, mate... didn't think I'd end up fucking a strange " + player.race() + " like you until you stuck it in me.  I always wanted to marry a normal bloke like my dad.</i>\"");
+            outputText("\n\nThe demon shudders as your [sheath] bumps up against her vulva.  \"<i>Y-yeah, but I never paid attention to growing dongers without balls and that kinda arcane stuff, mate... didn't think I'd end up fucking a strange " + race(player) + " like you until you stuck it in me.  I always wanted to marry a normal bloke like my dad.</i>\"");
 
             outputText("\n\n\"<i>Pardon,</i>\" you interrupt irritably, pushing her back up, \"<i>but </i>you're<i> the one who's sticking it in you.  And if you want to fuck your father so badly, go find him and leave me alone.</i>\"");
 

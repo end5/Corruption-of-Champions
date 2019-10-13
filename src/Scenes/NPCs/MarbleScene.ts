@@ -1443,7 +1443,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             case 0:
                 outputText("During your talk, Marble asks where you're from.");
                 // [if PC is human]
-                if (player.race() == "human") {
+                if (race(player) == "human") {
                     outputText("  \"<i>The only other human I've ever met is that wandering trader Giacomo,</i>\" she tells you \"<i>but he doesn't really talk about himself.  Maybe you could tell me about humans?  I was wondering where they live and what kind of people they are.</i>\"");
                     // [if PC is shorter then 5 feet]
                     if (player.tallness < 60) outputText("  Her eyes light up. \"<i>Are they all as cute as you?</i>\"");
@@ -1451,18 +1451,18 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                     else if (player.tallness > 78) outputText("  \"<i>Are most of you this tall?</i>\"");
                 }
                 // [if PC is cow-girl/cowboi]
-                else if (player.race() == "cow-morph" || player.race() == "cow-boy") {
+                else if (race(player) == "cow-morph" || race(player) == "cow-boy") {
                     outputText("  \"<i>It's so nice to see another of my kind,</i>\" she tells you, \"<i>I haven't seen any since I left home.  Where are you from?</i>\"");
                 }
                 // [if PC is a dogmorph]
-                else if (player.race() == "dog-morph") outputText("  \"<i>I've seen lots of dog-morphs before, are you from Barkersvile?</i>\"");
+                else if (race(player) == "dog-morph") outputText("  \"<i>I've seen lots of dog-morphs before, are you from Barkersvile?</i>\"");
                 // [if PC is a centaur]
                 else if (player.isTaur()) outputText("  \"<i>I've seen a few centaurs before, but they don't seem to have regular homes.  They're nomads, wandering the plains.  Are you the same?</i>\"");
                 // [if PC is not human, cow-girl/cowboi, dogmorph, or centaur]
-                else outputText("  \"<i>It's very rare that we get a " + player.race() + " here.  Are you from around these parts?</i>\"");
+                else outputText("  \"<i>It's very rare that we get a " + race(player) + " here.  Are you from around these parts?</i>\"");
                 outputText("\n\nYou sigh and think back for a moment before answering her.");
                 // [if PC is not human anymore]
-                if (player.race() != "human") outputText("\n\nYou start by explaining that you weren't born as what you appear to be; you were once a human.  Marble is surprised by this, but when you start to explain how you came to be what you are, she stops you.  \"<i>You don't need to tell me the power of some of the things in this world.  Mommy taught me how to find LaBova if I ever lose a part of my bovinity,</i>\" she says, winking at you.  \"<i>I don't know of anything that will give humanity though, so I can't really help you if you want to change back...</i>\"  You tell her that's fine and that you'll look on your own if you need to do so.  \"<i>Well then, where is your human home?</i>\" she asks.");
+                if (race(player) != "human") outputText("\n\nYou start by explaining that you weren't born as what you appear to be; you were once a human.  Marble is surprised by this, but when you start to explain how you came to be what you are, she stops you.  \"<i>You don't need to tell me the power of some of the things in this world.  Mommy taught me how to find LaBova if I ever lose a part of my bovinity,</i>\" she says, winking at you.  \"<i>I don't know of anything that will give humanity though, so I can't really help you if you want to change back...</i>\"  You tell her that's fine and that you'll look on your own if you need to do so.  \"<i>Well then, where is your human home?</i>\" she asks.");
                 outputText("\n\nYou tell her that you aren't from this world, and how you actually passed through a portal to get here, and tell her about your home and your family.  However, you avoid any mention of your mission, or about your village's tradition.  Marble pays close attention to everything you say, and seems to really enjoy the story.  At the end, she stops to think about what you told her.  \"<i>That sounds like a really nice place; I wonder if I'll be able to visit some time?  Well sweetie, you've told me about your family; want to hear about mine?</i>\"  Politely, you say you'd be happy to hear about them.");
                 outputText("\n\nShe smiles and tells you that she was the oldest child of a cow-girl named Hana, and a dog-morph named Roland.  She loved her mother and very much appreciated the many lessons that Hana taught her, but she was always closer to Roland.  He was always kind to her and never demanded anything from her, always helping her in what she wanted to do and accepting anything she did without complaints.  It was he that taught her how to survive and how to fight.  She goes on to say that she had two other younger siblings, both cow-girls, before she left home.");
                 outputText("\n\nThe rest of the meal passes without anything of interest being discussed.  Having now finished your meal together, the two of you stand up and Marble shows you out of her room.  As you're leaving, Marble tells you with a smile on her face that she enjoyed your talk together, and hopes that you'll join her for another soon.");
@@ -2835,21 +2835,21 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         // morph – keeps track of player's form (human, dog-morph, centaur)
         let morph: string = "human";
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur";
-        if (player.dogScore() >= 4) morph = "dog-morph";
-        if (player.horseScore() >= 3) {
+        if (dogScore(player) >= 4) morph = "dog-morph";
+        if (horseScore(player) >= 3) {
             if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur-morph";
             else morph = "equine-morph";
         }
-        if (player.mutantScore() >= 5) morph = "corrupted mutant";
-        if (player.minoScore() >= 4) morph = "minotaur-morph";
-        if (player.cowScore() >= 5) {
+        if (mutantScore(player) >= 5) morph = "corrupted mutant";
+        if (minoScore(player) >= 4) morph = "minotaur-morph";
+        if (cowScore(player) >= 5) {
             morph = "cow-";
             if (player.gender <= 1) morph += "boi";
             else morph += "girl";
         }
-        if (player.beeScore() >= 4) morph = "bee-morph";
-        if (player.goblinScore() >= 5) morph = "goblin";
-        if (player.humanScore() >= 5 && morph == "corrupted mutant") morph = "somewhat human mutant";
+        if (beeScore(player) >= 4) morph = "bee-morph";
+        if (goblinScore(player) >= 5) morph = "goblin";
+        if (humanScore(player) >= 5 && morph == "corrupted mutant") morph = "somewhat human mutant";
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur";
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur";
         // gender – keeps track of player's gender (male, female, genderless, or hermaphrodite)

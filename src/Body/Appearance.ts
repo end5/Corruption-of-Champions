@@ -1438,7 +1438,7 @@ export class Appearance  {
             "muff"];
         description += randomChoice(options);
         // Something that would be nice to have but needs a variable in Creature or Character.
-        // if(i_creature.bunnyScore() >= 3) description += "rabbit hole";
+        // if(bunnyScore(i_creature) >= 3) description += "rabbit hole";
 
         return description;
     }

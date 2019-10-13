@@ -1652,7 +1652,7 @@ export function zetazTaunt(): void {
     if (monster.effects.findByType(StatusAffects.round) < 0) {
         monster.effects.create(StatusAffects.round, 1, 0, 0, 0);
         outputText("Zetaz asks, \"<i>Do you even realize how badly you fucked up my life, ", false);
-        if (player.humanScore() >= 4) outputText("human", false);
+        if (humanScore(player) >= 4) outputText("human", false);
         else outputText("'human'", false);
         outputText("?  No, of course not.  That's the kind of attitude I'd expect from one of you!</i>\"", false);
     }

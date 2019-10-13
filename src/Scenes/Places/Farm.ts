@@ -387,7 +387,7 @@ export class Farm {
             if (player.faceType == FACE_DOG) outputText("sensitive ", false);
             outputText("nose, and set to work.", false);
             // [Lust increase based on libido, degree of cow/mino features]
-            dynStats("lus", player.cowScore() + player.minoScore());
+            dynStats("lus", cowScore(player) + minoScore(player));
             outputText("\n\nAn hour later you can stand it no more and exit the milking barn. Gulping down the fresher air and dragging the tools back to their shed, you admit to yourself that Whitney is a much harder worker and has a stronger constitution than you thought. You promise yourself you'll come back and help her out some more -- as soon as your nose recovers.", false);
             // always +1 str till 50, then 50% chance.
             if (player.str <= 50) dynStats("str", 1);
