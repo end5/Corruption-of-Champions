@@ -308,7 +308,7 @@ export class SophieScene implements TimeAwareInterface {
         // (NO DICK)
         else {
             // (NO LACTATE)
-            if (player.biggestLactation() < 1) {
+            if (player.breasts.biggestLactation() < 1) {
                 outputText("Your climb manages to take you back into the harpy nests again.  Sophie flutters down next to you and warns, \"<i>Cutey, a " + mf(player, "neuter", "girl") + " like you doesn't belong up here.  The younger harpies don't really get the idea of conversation and see you as competition.</i>\"\n\n", false);
 
                 outputText("Do you see the wisdom of her words and climb back down the mountain, fight Sophie, or keep climbing?", false);
@@ -446,7 +446,7 @@ export class SophieScene implements TimeAwareInterface {
             // [To consensual sex or sophie sadface.
             doYesNo(consensualSexSelector, shootDownSophieSex);
         }
-        else if (player.biggestLactation() >= 1.5) {
+        else if (player.breasts.biggestLactation() >= 1.5) {
             outputText("My, you're quite the laden little cow aren't you?  Would you mind sharing?</i>\"\n\n", false);
             // to b. feeding or sophie sadface.
             doYesNo(cramANippleInIt, shootDownSophieSex);
@@ -495,47 +495,47 @@ export class SophieScene implements TimeAwareInterface {
         outputText("left-most " + nippleDescription(player, 0) + ".  Her mouth latches on and begins to suckle; her lips tickle your sensitive tit-flesh and leave a pleasant tingle.  Sophie grunts and moans around the nipple as she masturbates.\n\n", false);
 
         // (Low PG)
-        if (player.biggestLactation() < 2) {
+        if (player.breasts.biggestLactation() < 2) {
             outputText("She suckles harder and harder until your feel your milk let down.  A pleasant trickle of your breast-milk leaks from your " + nippleDescription(player, 0) + " into her mouth.  Sophie's arms close around your back, allowing her to lock herself onto you as she giddily sucks down your liquid nutrients.  The expression on her ", false);
             if (monster.HP < 1) outputText("battered ", false);
             else outputText("lusty ", false);
             outputText("visage is one of pure satisfaction, and you wonder at her strange love of milk.  The harpy empties the first nipple and moves on to the ", false);
-            if (player.totalNipples() > 2) outputText("next", false);
+            if (player.breasts.totalNipples() > 2) outputText("next", false);
             else outputText("other", false);
             outputText(", closing her eyes and relaxing in your embrace.", false);
-            if (player.totalNipples() > 2) {
+            if (player.breasts.totalNipples() > 2) {
                 outputText("  This nipple doesn't last long either, and she's forced to move on to the next, ", false);
-                if (player.totalNipples() < 5) outputText("before finishing the last one.", false);
+                if (player.breasts.totalNipples() < 5) outputText("before finishing the last one.", false);
                 else outputText("and the next, continuing until you're quite empty.", false);
             }
             outputText("\n\n", false);
         }
         // (Medium PG)
-        else if (player.biggestLactation() < 3.5) {
+        else if (player.breasts.biggestLactation() < 3.5) {
             outputText("She suckles hard, but it seems unnecessary given how quickly your milk lets down.  Breast-milk gushes into her mouth and causes her eyes to widen at the speed of the flow.   Her arms lock around your back in a firm embrace, as if she were worried you'd pull back and deny her.  She struggles to swallow all the milk you're putting out, but the expression on her face is one of pure bliss.  You have to wonder just what would make a bird love milk this much.  Her eyes droop closed while she relaxes against your " + nippleDescription(player, 0) + ".  The milk eventually runs dry, and she has to move on to your ", false);
-            if (player.totalNipples() == 2) outputText("other ", false);
+            if (player.breasts.totalNipples() == 2) outputText("other ", false);
             else outputText("next ", false);
             outputText(nippleDescription(player, 0) + ".  The suckling goes on nearly as long as it did with the first, until she finishes.", false);
-            if (player.totalBreasts() > 2) {
-                if (player.totalNipples() > 2) outputText("She drinks from each of the nipples that adorn your " + allBreastsDescript(player) + " until her belly is full and gurgling.", false);
+            if (player.breasts.totalBreasts() > 2) {
+                if (player.breasts.totalNipples() > 2) outputText("She drinks from each of the nipples that adorn your " + allBreastsDescript(player) + " until her belly is full and gurgling.", false);
                 else outputText("She drinks from each breast in turn until her belly is full and gurgling.", false);
             }
-            else if (player.totalNipples() > 2) outputText("She drinks from each nipple in turn until her belly is full and gurgling.", false);
+            else if (player.breasts.totalNipples() > 2) outputText("She drinks from each nipple in turn until her belly is full and gurgling.", false);
             outputText("\n\n", false);
         }
         // (High PG)
         else {
             outputText("She suckles hard for a moment, and winds up sputtering at the flood of milk that you produce.  Breast-milk gushes over her face, and she can only look on with a ecstatic pleasure at what she's started.  Sophie leans forward and latches back on, her throat swallowing visibly and often as she struggles to keep up with your milk-flow.  Her arms close around your back and lock together in an effort to hold onto you, even as your milk squirts out from the corners of her mouth.  Her blissful expression makes you wonder just what would make a harpy love milk so much.  Her eyelids droop while she relaxes against the " + nippleDescription(player, 0) + ".  The suckling goes on and on, until your milk slows to a reasonable trickle.  Content to have drained one milk-spout, Sophie moves on to the ", false);
-            if (player.totalNipples()) outputText("other ", false);
+            if (player.breasts.totalNipples()) outputText("other ", false);
             else outputText("next ", false);
             outputText("one and begins the cycle anew.", false);
-            if (player.totalNipples() >= 4) outputText("  With all your nipples, this goes on for quite some time.", false);
+            if (player.breasts.totalNipples() >= 4) outputText("  With all your nipples, this goes on for quite some time.", false);
             outputText("\n\n", false);
         }
 
         outputText("Sophie pulls back with ", false);
-        if (player.biggestLactation() >= 3.5) outputText("an incredibly loud burp and blushes red.", false);
-        else if (player.biggestLactation() >= 2) outputText("a satisfied burp.", false);
+        if (player.breasts.biggestLactation() >= 3.5) outputText("an incredibly loud burp and blushes red.", false);
+        else if (player.breasts.biggestLactation() >= 2) outputText("a satisfied burp.", false);
         else outputText("a satisfied 'ahhh'.", false);
         outputText("  She wipes a bit of milk from her lips and says, \"<i>", false);
         if (game.inCombat) {
@@ -607,12 +607,12 @@ export class SophieScene implements TimeAwareInterface {
         }
 
         outputText("With her spread thighs beckoning you so invitingly, there's no way you could resist.  You tear off your " + player.armorName + " and jump into her nest with her, hardening delightfully from your close proximity to the well-endowed woman.  Sophie places a hand ", false);
-        if (player.biggestTitSize() < 1) outputText("on your chest", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("on your chest", false);
         else outputText("between your " + allBreastsDescript(player), false);
         outputText(", tracing up and down your " + player.skinDesc + " with slow, measured strokes.  She boasts, \"<i>The last time a willing mate found his way up to my nest, it only took a few moments for him to fertilize me.  He just couldn't handle all this.</i>\"  She pulls you into her breasts for emphasis and squeezes them around your head.\n\n", false);
 
         outputText("Sophie releases you from her bountiful bosom, but you take your time coming back out; you even stop to lick one of her pert nipples.  The harpy takes you by the hips and pulls you on top of her, squeezing your " + buttDescription(player) + " for good measure.   With ", false);
-        if (player.biggestTitSize() >= 1) outputText("her breasts rubbing against your own", false);
+        if (player.breasts.biggestTitSize() >= 1) outputText("her breasts rubbing against your own", false);
         else {
             if (player.tallness <= 48) outputText("her breasts pressed into your face", false);
             else outputText("her breasts pressing against your stomach", false);
@@ -766,7 +766,7 @@ export class SophieScene implements TimeAwareInterface {
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS]++;
         outputText("", true);
         outputText("With her spread thighs beckoning you so invitingly, there's no way you could resist.  You tear off your " + player.armorName + " and jump into her nest with her, hardening delightfully from your close proximity to the well-endowed woman.  Sophie places a hand ", false);
-        if (player.biggestTitSize() < 1) outputText("on your chest", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("on your chest", false);
         else outputText("between your " + allBreastsDescript(player), false);
         outputText(", tracing up and down your " + player.skinDesc + " with slow, measured strokes.  She boasts, \"<i>The last time a willing mate found his way up to my nest, it only took a few moments for him to fertilize me.  He just couldn't handle all this.</i>\"  She pulls you into her breasts for emphasis and squeezes them around your head.\n\n", false);
 
@@ -774,7 +774,7 @@ export class SophieScene implements TimeAwareInterface {
         if (player.tallness <= 48) outputText("her breasts pressed into your face", false);
         else if (player.tallness < 72) {
             outputText("her breasts rubbing against your ", false);
-            if (player.biggestTitSize() >= 1) outputText("own", false);
+            if (player.breasts.biggestTitSize() >= 1) outputText("own", false);
             else outputText("chest", false);
         }
         else outputText("her breasts pressing against your stomach", false);
@@ -1055,7 +1055,7 @@ export class SophieScene implements TimeAwareInterface {
         // (cock-clit)
         else outputText("Your " + clitDescription(player) + " puffs up, growing to an obscene, cock-like size.  You moan happily and begin to stroke the incredibly sensitive protrusion.   The whole time your hips continue to force your " + vaginaDescript(player, 0) + " against the harpy's pussy, and you feel her own clitty budding up and getting hard.   It rubs between your girl-cum-slicked bodies, making your hips shake and twitch with delightful sensations.  ", false);
         outputText("Loud squishes and fluid noises fill the air as the scissoring intensifies, and in no time Sophie's body is covered in a thin sheen of sweat and blushing hard.  ", false);
-        if (player.biggestTitSize() >= 1) outputText("You pinch a " + nippleDescription(player, 0), false);
+        if (player.breasts.biggestTitSize() >= 1) outputText("You pinch a " + nippleDescription(player, 0), false);
         else outputText("You arch your back", false);
         outputText(" and throatily question, \"<i>How could masturbation feel better than this?  Can't you feel how wet we've gotten each other?  My pussy's practically burning with need, and I can feel how hot this it making you.   Admit it, my snatch feels great.</i>\"\n\n", false);
 
@@ -1198,7 +1198,7 @@ export class SophieScene implements TimeAwareInterface {
         outputText("with relentless intensity.  Though her eyes are full of warmth, the smile painted across her face is anything but kind.\n\n", false);
 
         outputText("The harpy leans over, brushing her swollen breasts over your ", false);
-        if (player.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
+        if (player.breasts.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
         else outputText("chest", false);
         outputText(".  You squirm at the sudden extra pressure, but Sophie leans further to whisper in your ear, \"<i>You've gotten so horny for momma Sophie.</i>\"  Her hand slips inside your " + player.armorName + " and gives you a measuring squeeze while she undresses you.\n\n", false);
 

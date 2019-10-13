@@ -174,10 +174,10 @@ export class Monster extends Creature {
         //// after these method calls.
 
         //// 3. Breasts
-        /// *REQUIRED*/ this.createBreastRow(size,nipplesPerBreast); // default 0,1
+        /// *REQUIRED*/ this.breasts.createBreastRow(size,nipplesPerBreast); // default 0,1
         //// Repeat for multiple breast rows
-        //// You can call just `this.createBreastRow();` for flat breasts
-        //// Note useful method: this.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
+        //// You can call just `this.breasts.createBreastRow();` for flat breasts
+        //// Note useful method: this.breasts.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
 
         //// 4. Ass
         /// *OPTIONAL*/ //this.ass.analLooseness = ANAL_LOOSENESS_; // default TIGHT
@@ -413,7 +413,7 @@ export class Monster extends Creature {
 
     public createBreastRow(size: number = 0, nipplesPerBreast: number = 1): boolean {
         initedBreasts = true;
-        return super.createBreastRow(size, nipplesPerBreast);
+        return super.breasts.createBreastRow(size, nipplesPerBreast);
     }
 
     public set tallness(value: number): void {

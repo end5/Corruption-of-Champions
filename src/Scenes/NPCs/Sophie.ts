@@ -253,7 +253,7 @@ export class Sophie extends Harpy {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING_WIDE);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);

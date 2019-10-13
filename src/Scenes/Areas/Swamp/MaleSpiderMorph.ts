@@ -23,7 +23,7 @@ export class MaleSpiderMorph extends AbstractSpiderMorph {
         this.cocks.createCock(6, 2);
         this.balls = 2;
         this.ballSize = 2;
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);

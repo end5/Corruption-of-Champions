@@ -149,13 +149,13 @@ STATUSES:
         outputText("", true);
         outputText("You have no problem stripping down naked in front of Kelt, even enjoying the process a little bit.  Judging by his leer, Kelt is enjoying it too.  He seems aroused by his power over you more than anything else... and you find yourself admitting that you're a little aroused by it as well.\r\r", false);
         outputText("You remove your top first, slowly revealing your " + allBreastsDescript(player) + ".  Kelt is pacing around you, eyes locked on your chest hungrily.  As you let your top fall to the ground, he laughs mockingly, though, ", false);
-        if (player.gender == 1 && player.biggestTitSize() < 1) outputText("\"<i>What are you, a girl?  Get on with it so I can see what I'm dealing with.</i>\"\r\r", false);
+        if (player.gender == 1 && player.breasts.biggestTitSize() < 1) outputText("\"<i>What are you, a girl?  Get on with it so I can see what I'm dealing with.</i>\"\r\r", false);
         else {
-            if (player.biggestTitSize() == 0) outputText("\"<i>Oops!  Could have sworn I'd find a pair of tits on you.  That's okay... I'm sure you'll hit puberty some day!</i>\"\r\r", false);
+            if (player.breasts.biggestTitSize() == 0) outputText("\"<i>Oops!  Could have sworn I'd find a pair of tits on you.  That's okay... I'm sure you'll hit puberty some day!</i>\"\r\r", false);
             // (Too small, A to DD:
-            else if (player.biggestTitSize() <= 5) outputText("\"<i>Ha! No wonder you cover up like a sniveling human!  Any centaur maiden would be ashamed to go out in public with " + num2Text(player.totalBreasts()) + " mosquito bites like that!  What do they call you back home... 'Tiny Tits'?  Or maybe they all just assume you're a guy!</i>\"\r\r", false);
+            else if (player.breasts.biggestTitSize() <= 5) outputText("\"<i>Ha! No wonder you cover up like a sniveling human!  Any centaur maiden would be ashamed to go out in public with " + num2Text(player.breasts.totalBreasts()) + " mosquito bites like that!  What do they call you back home... 'Tiny Tits'?  Or maybe they all just assume you're a guy!</i>\"\r\r", false);
             // (Medium, E to HHH:
-            else if (player.biggestTitSize() <= 11) outputText("\"<i>Uh oh, boys... look out!  Miss Melons here has been putting on a little weight!  How did someone like you become an adventurer?  From the waist up, you're good for whoring and not much else!</i>\"\r\r", false);
+            else if (player.breasts.biggestTitSize() <= 11) outputText("\"<i>Uh oh, boys... look out!  Miss Melons here has been putting on a little weight!  How did someone like you become an adventurer?  From the waist up, you're good for whoring and not much else!</i>\"\r\r", false);
             // (Big, Watermelon and beyond:
             else outputText("\"<i>Oooh, doesn't that look yummy?  Be honest... you wanna learn to shoot?  You'll be slapping yourself in the tits with every shot!  Heh... I bet that's the way you like it too!  Time to change your profession, slut.  Wet nurse and milk cow... they're just about all you're suited for!</i>\"\r\r", false);
         }
@@ -205,13 +205,13 @@ STATUSES:
         outputText("", true);
         outputText("You are uncomfortable with the idea of being naked in front of this crude, cruel taskmaster.  But he is good at what he does, and if this is the only way to convince him to teach you, then you'll just have to get it over with.  You agree to his terms reluctantly, and begin to strip off your clothes.\r\r", false);
         outputText("You remove your top first, slowly revealing your " + allBreastsDescript(player) + ".  Kelt is pacing around you, eyes locked on your chest hungrily.  As you let your top fall to the ground, he laughs mockingly, ", false);
-        if (player.gender == 1 && player.biggestTitSize() < 1) outputText("\"<i>What are you, a girl?  Get on with it so I can see what I'm dealing with.</i>\"\r\r", false);
+        if (player.gender == 1 && player.breasts.biggestTitSize() < 1) outputText("\"<i>What are you, a girl?  Get on with it so I can see what I'm dealing with.</i>\"\r\r", false);
         else {
-            if (player.biggestTitSize() == 0) outputText("\"<i>Oops!  Could have sworn I'd find a pair of tits on you.  That's okay... I'm sure you'll hit puberty some day!</i>\"\r\r", false);
+            if (player.breasts.biggestTitSize() == 0) outputText("\"<i>Oops!  Could have sworn I'd find a pair of tits on you.  That's okay... I'm sure you'll hit puberty some day!</i>\"\r\r", false);
             // (Too small, A to DD:
-            else if (player.biggestTitSize() <= 5) outputText("\"<i>Ha! No wonder you cover up like a sniveling human!  Any centaur maiden would be ashamed to go out in public with " + num2Text(player.totalBreasts()) + " mosquito bites like that!  What do they call you back home... 'Tiny Tits'?  Or maybe they all just assume you're a guy!</i>\"\r\r", false);
+            else if (player.breasts.biggestTitSize() <= 5) outputText("\"<i>Ha! No wonder you cover up like a sniveling human!  Any centaur maiden would be ashamed to go out in public with " + num2Text(player.breasts.totalBreasts()) + " mosquito bites like that!  What do they call you back home... 'Tiny Tits'?  Or maybe they all just assume you're a guy!</i>\"\r\r", false);
             // (Medium, E to HHH:
-            else if (player.biggestTitSize() <= 11) outputText("\"<i>Uh oh, boys... look out!  Miss Melons here has been putting on a little weight!  How did someone like you become an adventurer?  From the waist up, you're good for whoring and not much else!</i>\"\r\r", false);
+            else if (player.breasts.biggestTitSize() <= 11) outputText("\"<i>Uh oh, boys... look out!  Miss Melons here has been putting on a little weight!  How did someone like you become an adventurer?  From the waist up, you're good for whoring and not much else!</i>\"\r\r", false);
             // (Big, Watermelon and beyond:
             else outputText("\"<i>Oooh, doesn't that look yummy?  Be honest... you wanna learn to shoot?  You'll be slapping yourself in the tits with every shot!  Heh... I bet that's the way you like it too!  Time to change your profession, slut.  Wet nurse and milk cow... they're just about all you're suited for!</i>\"\r\r", false);
         }
@@ -550,7 +550,7 @@ STATUSES:
                 return;
             }
             // (No Breasts—Do standard Naked event)
-            if (player.biggestTitSize() == 0 && temporary == 3) temporary = 4;
+            if (player.breasts.biggestTitSize() == 0 && temporary == 3) temporary = 4;
             // (Naked, 20% Chance)
             if (temporary == 3) {
                 outputText("The practice begins as normal, but something is a little different today.  To your surprise, Kelt's regular insults and comments seem to be a little less harsh and a little more bemused.  Although he still insults your achievements and mocks your failures, he almost seems entertained by your efforts.  His apparent good mood is not necessarily better... without his usual fiery insults, you are a little unsure of how your progress is going.  One shot goes long, and to your surprise, Kelt doesn't yell at you.  Instead, he laughs heartily.  Flushed and a little embarrased, you ask what you did wrong.\r\r", false);
@@ -559,14 +559,14 @@ STATUSES:
                 outputText("\"<i>I am being serious.  Women aren't warriors.  And those with tits do not become warriors.  I just think it's funny. You, begging me to teach you, while you have those udders hanging off your chest!</i>\"\r\r", false);
                 outputText("To your surprise, he suddenly leans forward, fist moving towards your head.  You raise your arms to deflect the blow, but he changes tactics suddenly and grabs one of your " + breastDescript(game.player, 0) + " instead.  You stiffen, but before you can react further, he squeezes them brutally, mauling your breasts roughly with his hands.\r\r", false);
                 // (Small Size, A-DD:
-                if (player.biggestTitSize() <= 5) outputText("\"<i>Ha!  Even with your itty-bitty-titty, you have to admit to a certain... weakness, is it?  Awfully sensitive, aren't they?  Ooh, am I making the little girl wet?  Naughty slut!</i>\"\r\r", false);
+                if (player.breasts.biggestTitSize() <= 5) outputText("\"<i>Ha!  Even with your itty-bitty-titty, you have to admit to a certain... weakness, is it?  Awfully sensitive, aren't they?  Ooh, am I making the little girl wet?  Naughty slut!</i>\"\r\r", false);
                 // (Medium Size, E-HHH:
-                else if (player.biggestTitSize() <= 11) outputText("\"<i>Just look at these mommy melons!  You want to be an archer?  I'm amazed you don't slap yourself in the tits with every shot!  Easy target to grab onto.  But hey, I bet you like it that way.  Like it when people grope these fat titties of yours?</i>\"\r\r", false);
+                else if (player.breasts.biggestTitSize() <= 11) outputText("\"<i>Just look at these mommy melons!  You want to be an archer?  I'm amazed you don't slap yourself in the tits with every shot!  Easy target to grab onto.  But hey, I bet you like it that way.  Like it when people grope these fat titties of yours?</i>\"\r\r", false);
                 // (Big Size, Watermelon and beyond:
                 else outputText("\"<i>Look at you! You're a miracle of science, you are... any other creature would break their back, trying to haul these milk bags around!  Tell the truth, now... which one of your parents was actually a cow?</i>\"\r\r", false);
                 outputText("Despite his cruel words, you can't help but groan a little bit as he brutalizes your sensitive chest.  Kelt seems to take a good deal of pleasure in how helpless you are, pinching and flicking your " + nippleDescription(player, 0) + "s.\r\r", false);
                 // (Milk)
-                if (player.biggestLactation() > 1) {
+                if (player.breasts.biggestLactation() > 1) {
                     outputText("Inevitably, beads of milk appear on the tips of your breasts, and Kelt lets out a hoot of laughter.\r\r", false);
                     outputText("\"<i>Oh, boy!  Mommy here brought snacks for everyone!  Don't mind if I do!</i>\"\r\r", false);
                     outputText("Without hesitation, he lowers his lips to your engorged breast, suckling on the nipple.  He is immediately rewarded with a jet of milk, and you whimper slightly with pleasure as the centaur begins aggressively suckling your tit.  He drinks down your sweet, warm cream hungrily, and you are so enthralled with the sensations of release that you are powerless to stop him as he takes his fill of you.  The other hand continues to crudely grope your unattended teat, and despite yourself, you can feel your arousal building.  At last, Kelt releases you, wiping his mouth with an arrogant grin.\r\r", false);

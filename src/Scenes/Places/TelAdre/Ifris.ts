@@ -235,7 +235,7 @@ export class Ifris extends TelAdreAbstractContent {
                 outputText("Ifris all but squeals in delight as you tell her you're totally up for smashing that record, a wide grin spreading her thick lips, briefly worrying you when you see those sharp teeth of hers... but then you remind yourself how good she is with them, as you lay back onto the bench, gripping the bars above you. The devil girl doesn't even wait this time, leaning up to give your cheek a little peck as she pulls your " + chestDesc(game.player) + " free of your top.\n\n", false);
 
                 outputText("She leans in before you've started, peppering your " + nippleDescription(player, 0) + "s and ", false);
-                if (player.biggestTitSize() >= 1) outputText("breasts", false);
+                if (player.breasts.biggestTitSize() >= 1) outputText("breasts", false);
                 else outputText("chest", false);
                 outputText(" with soft kisses, teasing the nubs to hardness with flicks of her tongue. You eagerly lift your " + legs(player) + " as she slides down, pulling your bottoms away to expose your moistening cunt to her hungry gaze.  Urging your " + legs(player) + " apart, she crawls between them, tail swaying behind her as she waits for you to begin. You comply with her wishes, eager to feel the pleasure of her mouth more than the burn of your exercise, and you're not left wanting.\n\n", false);
 

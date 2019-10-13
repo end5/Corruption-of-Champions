@@ -1195,7 +1195,7 @@ export class HelFollower extends NPCAwareContent {
 
         outputText("\n\nHel pats your flank with her free hand, but doesn't let up, instead adding her long, slender tongue to the mix.  She flicks it along the " + cockHead(player, x) + " of your " + cockDescript(game.player, x) + ", sending shivers of pleasure up your rigid shaft.  You ache to do something here, to add to your own pleasure or return it to your partner, ");
         // if no boobs:
-        if (player.biggestTitSize() < 3) outputText(" but your body is too big, and you must content yourself to endure Hel's ministrations");
+        if (player.breasts.biggestTitSize() < 3) outputText(" but your body is too big, and you must content yourself to endure Hel's ministrations");
         else outputText(" but all you can do is take hold of your [chest] and tease and tweak your [nipples], getting what pleasure you can from your sensitive teats");
         outputText(".");
 

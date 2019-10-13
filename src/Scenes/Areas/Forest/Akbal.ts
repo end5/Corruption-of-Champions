@@ -157,10 +157,10 @@ export class Akbal extends Monster {
         this.ballSize = 4;
         this.cumMultiplier = 6;
         this.hoursSinceCum = 400;
-        createBreastRow();
-        createBreastRow();
-        createBreastRow();
-        createBreastRow();
+        this.breasts.createBreastRow();
+        this.breasts.createBreastRow();
+        this.breasts.createBreastRow();
+        this.breasts.createBreastRow();
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
         this.tallness = 4 * 12;

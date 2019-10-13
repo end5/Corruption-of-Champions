@@ -445,7 +445,7 @@ export class ErlKingScene {
         if (player.skinType == SKIN_TYPE_FUR) outputText("Your fur turns jet black.");
         else outputText("Black fur runs down your body like a tide coming in.");
         outputText("  Your muscles bulge and swell beneath the midnight coat.");
-        if (player.hasBreasts()) outputText("  Your chest first flattens out, then swells, as");
+        if (player.breasts.breasts.hasBreasts()) outputText("  Your chest first flattens out, then swells, as");
         else outputText("  T");
         outputText(" taut muscles fill in your entire frame.");
         if (player.lowerBody == LOWER_BODY_TYPE_DOG) outputText("  Your doggie paws tingle as muscles build there, rebuilding them as stocky, athletic hound legs.");
@@ -581,7 +581,7 @@ export class ErlKingScene {
                 outputText("\n\n");
 
                 outputText("You wrap your arms around the trunk of the tree as his hands grip your flanks.  His own equine legs begin thrusting him against you, his ribbed cock sliding in and out of your [pussy], the ridges of his horselike shaft massaging you from the inside.  The force of his fucking ginds your [chest] against the tree.");
-                if (player.biggestLactation() > 0) outputText("  The friction begins milking you, making you ooze milk down the trunk.");
+                if (player.breasts.biggestLactation() > 0) outputText("  The friction begins milking you, making you ooze milk down the trunk.");
                 outputText("  The mild pain of abrasion couples with the pleasure of his forceful fucking and you feel your climax approaching.\n\n");
 
                 outputText("With a moan, you cum, hugging the tree with all your might, thrusting back with your hindquarters.  With gentlemanly demeanor, the Erlking continues pumping his thick cock in and out of you until your orgasm recedes.  He then cums himself, filling your insides with his hot spunk. \n\n");
@@ -808,7 +808,7 @@ export class ErlKingScene {
         outputText("Two long, slim fingers slide into your pussy as she sucks on your love button.  Her tongue flickers and massages your clit as her finger pump in and out of your dripping snatch.  She hums, letting the vibrations from her lips travel in and buzz around your clitty.  Just as you shiver, on the edge of your orgasm, she closes her teeth lightly on your clitty, humming and buzzing them against your sensitive nub.  You cry out, gushing pussyjuices down her chin and chest.  She keeps licking, drawing another shivering orgasm on the heels of the first. \n\n");
 
         outputText("You slump back on the stump, trembling.  You glance down");
-        if (player.hasBreasts()) outputText(" between your breasts");
+        if (player.breasts.breasts.hasBreasts()) outputText(" between your breasts");
         outputText(" to see her smiling and elegantly licking her slim fingers clean. You shudder as she begins lapping at your pussy, cleaning you methodically.");
 
         outputText("When you can finally move again, Princess is kneeling next to you obediently.  She closes her eyes, smiling as you pat her head, ruffling her pink hair.  When you stand, she rises to help dress you, blowing you a kiss as you leave the forest behind.\n\n");

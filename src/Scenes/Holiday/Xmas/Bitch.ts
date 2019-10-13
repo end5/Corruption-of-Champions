@@ -162,7 +162,7 @@ export function dickXmasElfGo(): void {
         outputText("The elf grabs ahold of your " + cockDescript(game.player, 0) + " with both hands and cuddles against it as if it were a person, planting kisses along the edge of its " + cockHead(player) + ".  She laughs, \"<i>Oh my, you're so big!  I almost wish I was big enough to take this bad boy.  Believe me, you haven't lived until you've been milked by an elf's cunt.</i>\"\n\n", false);
 
         outputText("She wraps her arms around it and begins licking it, squatting down and standing up, jerking you off with her whole body.  Each time her cute bottom bumps your " + allBreastsDescript(player) + " ", false);
-        if (player.biggestTitSize() >= 2) outputText("making them jiggle", false);
+        if (player.breasts.biggestTitSize() >= 2) outputText("making them jiggle", false);
         else outputText("making her tight butt give a tiny jiggle", false);
         outputText(".  She hums happily as she works at the task, slathering it in spit, pressing her moist cunt against you.   Her warm body sliding along you feels fantastic, and feeling a bit daring, you give her a light slap on the ass-cheek.\n\n", false);
 

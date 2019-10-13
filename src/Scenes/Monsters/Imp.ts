@@ -72,7 +72,7 @@ export class Imp extends Monster {
         this.cocks.createCock(rand(2) + 11, 2.5, CockTypesEnum.DEMON);
         this.balls = 2;
         this.ballSize = 1;
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
         this.tallness = rand(24) + 25;

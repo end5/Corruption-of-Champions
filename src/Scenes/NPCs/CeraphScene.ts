@@ -216,10 +216,10 @@ export class CeraphScene extends NPCAwareContent {
         outputText("Ceraph cries in mock protest, \"<i>No, don't make me cum inside you!  Please Champion, I swore not to spill my seed, lest I father a bastard child!</i>\"\n\n", false);
 
         outputText("The sensations of her vibrating nodules ensure you don't have the will or the strength to pull off of her, and what little power your " + legs(player) + " have is used to keep bouncing and grinding on top of her, filling the air with wet squelches and slippery squishes.  You fall forwards, barely catching yourself before you slam into the sultry demoness.  Your ", false);
-        if (player.biggestTitSize() < 1) outputText("chest ", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("chest ", false);
         else outputText("tits ", false);
         outputText("squish against hers, squeezing a gout of milk from her nipples.  Both pairs of ", false);
-        if (player.biggestTitSize() < 1) outputText("nipples", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("nipples", false);
         else outputText("jiggling mounds", false);
         outputText(" feel wonderful as they're pressed between you, sliding back and forth in time with your body's urgent grinding.\n\n", false);
 
@@ -276,7 +276,7 @@ export class CeraphScene extends NPCAwareContent {
         outputText("", true);
         spriteSelect(7);
         outputText("Ceraph giggles as she closes in on you once again.  Unable to fight back, you lie there as she once again massages your temples, using her magic to paralyze your body.  She's all too happy to build up the suspense as she pulls out a pair of shining black studs, \"<i>Oh, did you want to know what these are going to teach you?  Well, how about I slide them into your ", false);
-        if (player.hasFuckableNipples()) outputText("slut", false);
+        if (player.breasts.hasFuckableNipples()) outputText("slut", false);
         else if (player.nippleLength < 1) outputText("cute", false);
         else outputText("tight", false);
         outputText("-nipples and you tell me all about your fetishes and which one makes you the hottest.  OK?</i>\"\n\n", false);
@@ -635,7 +635,7 @@ export class CeraphScene extends NPCAwareContent {
             let cunting: () => void = null;
             if (player.hasVagina()) cunting = rideCeraphsCockLikeaBAWSSexclamation11eleven;
             let bikiniTits: () => void = null;
-            if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+            if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
 
             simpleChoices("Fuck Her", dicking, "Ride Her", cunting, "FuckHerAss", buttsmexing, "B.Titfuck", bikiniTits, "Leave", leave);
             /*
@@ -674,7 +674,7 @@ export class CeraphScene extends NPCAwareContent {
         outputText(", \"<i>Really?  Is that it?  After being under my magic for so long, you try to make a stand and fail, like this?!  Pathetic.</i>\"\n\n", false);
 
         outputText("The demonic hermaphrodite steps one foot onto your chest", false);
-        if (player.biggestTitSize() > 1) outputText(", right between your " + allBreastsDescript(player), false);
+        if (player.breasts.biggestTitSize() > 1) outputText(", right between your " + allBreastsDescript(player), false);
         outputText(".  Her foot is arched like a high-heel, with a bone-like protrusion forming the heel and digging painfully into your chest.  She looks down at you, watching with a bemused expression while her right hand traces idle circles over her puffy feminine sex.  You can't help but enjoy the situation, pinned under the sexy demon and restrained by her heel.  Ceraph smirks and taunts, \"<i>So what am I to do you with you?  I want you to submit to my harem, not become a bound and unwilling slave.</i>\"\n\n", false);
 
         outputText("She reaches down to pinch one of your erect nipples, \"<i>Though I'm sure you'd enjoy the restraint and humiliation...  I suppose I'll just have to punish you for your transgression and hope you've learned your lesson.  Now I'm not letting you go until you get me off or suffocate, so I hope you have a talented tongue!</i>\"\n\n", false);
@@ -885,13 +885,13 @@ export class CeraphScene extends NPCAwareContent {
             if (flags[kFLAGS.PC_FETISH] > 1) outputText("all the fetishes", false);
             else outputText("the fetish", false);
             outputText(" I've placed upon you if you'll trade me that stuff.  There's a naughty boy in my harem whose quick wit I've begun to tire of.", false);
-            if (player.gender > 0 || player.biggestTitSize() > 2) outputText("  Or if you'd rather keep it, I could take one of your endowments for my own use and remove a single fetish.  It's always fun giving one of my old pets a new part to play with.", false);
+            if (player.gender > 0 || player.breasts.biggestTitSize() > 2) outputText("  Or if you'd rather keep it, I could take one of your endowments for my own use and remove a single fetish.  It's always fun giving one of my old pets a new part to play with.", false);
             outputText("  Maybe you just need some better equipment though?  I have this sexy armor I'd love to loan you, pet.</i>\"\n\n", false);
             liqueur = tradeCeraphBimboLiqueur;
-            if (player.gender > 0 || player.biggestTitSize() > 2) endowment = tradeCeraphCrotchityBits;
+            if (player.gender > 0 || player.breasts.biggestTitSize() > 2) endowment = tradeCeraphCrotchityBits;
         }
         // (No Bimbo Liquer)
-        else if (player.gender > 0 || player.biggestTitSize() > 2) {
+        else if (player.gender > 0 || player.breasts.biggestTitSize() > 2) {
             outputText("She finishes and perks up, leering lewdly at you.  \"<i>I tell you what.  Let me take one of your endowments to use on my pets and I'll get rid of ", false);
             if (flags[kFLAGS.PC_FETISH] == 1) outputText("your fetish for you.</i>\"\n\n", false);
             else outputText("one of your fetishes for you.</i>\"\n\n", false);
@@ -1006,8 +1006,8 @@ export class CeraphScene extends NPCAwareContent {
         // (Tits)
         else {
             outputText("Ceraph's hands reach up to cup the swell of your " + biggestBreastSizeDescript(player) + " as she asks, \"<i>", false);
-            if (player.biggestTitSize() > 14) outputText("Oh wow... just wow.  How do you walk?  With melons like this you could tit-fuck three or four people at once!  Absolutely exquisite.", false);
-            else if (player.biggestTitSize() > 6) outputText("Tell me dear, are they real?  I mean, were they always this size, or did you have to get a little bit of work done?", false);
+            if (player.breasts.biggestTitSize() > 14) outputText("Oh wow... just wow.  How do you walk?  With melons like this you could tit-fuck three or four people at once!  Absolutely exquisite.", false);
+            else if (player.breasts.biggestTitSize() > 6) outputText("Tell me dear, are they real?  I mean, were they always this size, or did you have to get a little bit of work done?", false);
             else outputText("Well, these are a bit small.  Have you ever considered trying some Gro Plus?  I hear it's all the rage with Lethice's lackeys nowadays.", false);
             outputText("</i>\"\n\n", false);
         }
@@ -1088,7 +1088,7 @@ export class CeraphScene extends NPCAwareContent {
         // (Tits)
         else {
             // Take da biggest titz!
-            x = player.biggestTitRow();
+            x = player.breasts.biggestTitRow();
             // Store nipplecuntz or milks
             if (player.breastRows[x].fuckable) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] = 4;
             else if (player.lactationQ() >= 100) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] = 5;
@@ -1100,7 +1100,7 @@ export class CeraphScene extends NPCAwareContent {
                 if (x >= player.breastRows.length - 2) outputText("your torso has shifted and your " + breastDescript(player, x + 1) + " have moved up to fill the void.", false);
                 // Multiple below
                 else outputText("your torso has shifted and your other breasts have moved up to fill the void.", false);
-                player.removeBreastRow(x, 1);
+                player.breasts.removeBreastRow(x, 1);
             }
             // Top row is only row
             else if (x == 0) {
@@ -1115,7 +1115,7 @@ export class CeraphScene extends NPCAwareContent {
             // everybody else
             else {
                 outputText("your torso leaves the now-empty spot as a flat, featureless void.", false);
-                player.removeBreastRow(x, 1);
+                player.breasts.removeBreastRow(x, 1);
             }
             // Oh shit something went wrong.
             if (player.breastRows.length == 0) outputText("<b>ERROR!  ERROR!  Please contact Fenoxo and reload your game if you don't want your save messed up.</b>", false);

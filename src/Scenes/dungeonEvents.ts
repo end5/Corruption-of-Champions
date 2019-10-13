@@ -96,11 +96,11 @@ public function doDungeon(eventNo:Number):void {
 		//Arousal
 		outputText("In no time flat your blood begins to burn hot with the fires of unnatural lust.  ", true);
 		//Tits – regular
-		if(player.biggestLactation() < 1) outputText("Your " + nippleDescription(player, 0)  + "s begin prodding painfully against your " + player.armorName + ", every touch serving to make them harder and more erect.  ", false);
+		if(player.breasts.biggestLactation() < 1) outputText("Your " + nippleDescription(player, 0)  + "s begin prodding painfully against your " + player.armorName + ", every touch serving to make them harder and more erect.  ", false);
 		//Tits – lactating
-		if(player.biggestLactation() >= 1 && player.biggestLactation() < 3) outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as you feel milk begin backing up inside your " + allBreastsDescript(player) + ".   The succubus glances down mischieviously as her hands begin to grope you through your " + player.armorName + ", squeezing out a few drops of milk.  ", false);
+		if(player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 3) outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as you feel milk begin backing up inside your " + allBreastsDescript(player) + ".   The succubus glances down mischieviously as her hands begin to grope you through your " + player.armorName + ", squeezing out a few drops of milk.  ", false);
 		//Tits – megalactating
-		if(player.biggestLactation() >= 3) outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false);
+		if(player.breasts.biggestLactation() >= 3) outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  ", false);
 		//Cock – single
 		if(player.cocks.length == 1) {
 			if(player.cocks.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(game.player, 0) + " to full hardness in seconds.  ", false);
@@ -337,7 +337,7 @@ public function doDungeon(eventNo:Number):void {
 		}
 		//Chest
 		if(temp == 1) {
-			if(player.hasFuckableNipples()) {
+			if(player.breasts.hasFuckableNipples()) {
 				outputText(allBreastsDescript(player) + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.", false);
 				dynStats("lus", 3);
 				if(player.effects.findByType(StatusAffects.DemonSeed) < 0) player.effects.create(StatusAffects.DemonSeed,5,0,0,0);
@@ -382,7 +382,7 @@ public function doDungeon(eventNo:Number):void {
 		//First time...
 		if(player.effects.findByType(StatusAffects.TensionReleased) < 0) {
 			outputText("You nod and step forwards, allowing her to hook up a modified harness and inject you with the demonic concoction.  In no time heat boils through your veins, pooling on your chest and crotch.  ", false);
-			if(player.biggestTitSize() < 10) {
+			if(player.breasts.biggestTitSize() < 10) {
 				player.growTits(1, (2+rand(3)), true, 1);
 				outputText("  ", false);
 			}
@@ -420,7 +420,7 @@ public function doDungeon(eventNo:Number):void {
 				//Grow chest
 				//(If player has 0 bewbs)
 				if(player.breastRows.length == 0) {
-					player.createBreastRow();
+					player.breasts.createBreastRow();
 					outputText("Your chest tingles, revealing a pair of pink nipples on your new mammory glands.  ", false);
 				}
 				player.growTits(1, (2+rand(3)), true, 1);
@@ -464,7 +464,7 @@ public function doDungeon(eventNo:Number):void {
 				outputText("The desire for more of the drugs battles with your need to fuck and be fucked, until a small functioning part of your brain realizes it'll be easier to get sex than to get more of the drug.  You pull free and throw yourself into the mass of sweaty bodies, losing yourself in the salty tang of sweat and sex, pleasing nipples, clits, and cocks with your hands, and giving and receiving as much pleasure as you can.  You're in heaven.  Vaguely you realize time is passing, but it is a secondary concern next to the idea of having another groin-soaking orgasm.   You fuck and suck until you pass out from delirium.\n\n", false);
 				//GAME OVERZZ
 				outputText("In time you wake, your body aching both from the exertion and a desire for more.  On one hand you had a mission here, but why fight and struggle with danger and loneliness when you could be high on sex and cumming near-constantly?  You cuddle up to an exhausted girl and decide to wait for the drug-mistresses to give you another turn in the pile.  One of them turns, as if noticing your train of thought, and wheels over a breast-pump.  She hooks it up to your still-leaking nipples and you ", false);
-				if(player.biggestLactation() >= 3) outputText("moo", false);
+				if(player.breasts.biggestLactation() >= 3) outputText("moo", false);
 				else outputText("moo", false);
 				outputText(" with happiness.  She grins, promising another dose to you if you are a good cow for her.", false);
 				gameOver();
@@ -526,7 +526,7 @@ public function doDungeon(eventNo:Number):void {
 				}
 			}
 			dynStats("lus", 7 + player.sens/20);
-			if(player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript(player) + " in sympathy.", false);
+			if(player.breasts.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript(player) + " in sympathy.", false);
 		}
 		combatRoundOver();
 		return;
@@ -557,7 +557,7 @@ public function doDungeon(eventNo:Number):void {
 		//Grow if none
 		if(player.breastRows.length == 0) {
 			outputText("<b>Your chest swells out, forming rounded C-cup globes, capped with tiny erect nipples!</b>", true);
-			player.createBreastRow();
+			player.breasts.createBreastRow();
 			player.breastRows[0].breastRating = 3;
 			player.nippleLength = .25;
 		}
@@ -693,7 +693,7 @@ public function doDungeon(eventNo:Number):void {
 		outputText("", true);
 		temp = 0;
 		if(player.breastRows.length > 1) {
-			player.removeBreastRow(1,player.breastRows.length-1);
+			player.breasts.removeBreastRow(1,player.breastRows.length-1);
 			outputText("Your chest tingles and begins to feel lighter.  You hastily pull open your " + player.armorName + " and realize you only have " + allBreastsDescript(player) + " now!  ", false);
 			if(player.nippleLength > 1) {
 				outputText("Your nipples shrink down to a more normal size.  ", false);
@@ -716,7 +716,7 @@ public function doDungeon(eventNo:Number):void {
 				player.nippleLength = .75;
 				temp++;
 			}
-			if(player.hasFuckableNipples()) {
+			if(player.breasts.hasFuckableNipples()) {
 				outputText("The vagina-like openings in your nipples close, sealing themselves shut.  ", false);
 				player.breastRows[0].fuckable = false;
 				temp++;

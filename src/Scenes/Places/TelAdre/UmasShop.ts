@@ -388,7 +388,7 @@ export class UmasShop extends TelAdreAbstractContent {
         outputText("You swallow audibly and brace yourself for what's to come.\n\n");
         outputText("Uma presses her elbow against your chest ");
 
-        if (player.biggestTitSize() >= 1) {
+        if (player.breasts.biggestTitSize() >= 1) {
             outputText("between your [chest] ");
         }
 

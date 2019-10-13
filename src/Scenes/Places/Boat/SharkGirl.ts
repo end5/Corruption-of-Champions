@@ -39,7 +39,7 @@ export class SharkGirl extends Monster {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 15, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("D"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);

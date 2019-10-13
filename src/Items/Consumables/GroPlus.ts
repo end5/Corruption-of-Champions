@@ -19,7 +19,7 @@ export class GroPlus extends Consumable {
         const gpBreasts: () => void = (game.player.breastRows.length > 0 ? growPlusBreasts : null);
         const gpClit: () => void = (game.player.vaginas.length > 0 ? growPlusClit : null);
         const gpCock: () => void = (game.player.cocks.length > 0 ? growPlusCock : null);
-        const gpNipples: () => void = (game.player.totalNipples() > 0 ? growPlusNipples : null);
+        const gpNipples: () => void = (game.player.breasts.totalNipples() > 0 ? growPlusNipples : null);
         clearOutput();
         outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?  ");
         choices("Balls", gpBalls, "Breasts", gpBreasts, "Clit", gpClit, "Cock", gpCock, "Nipples", gpNipples, "", null, "", null, "", null, "", null, "Nevermind", growPlusCancel);
@@ -102,7 +102,7 @@ export class GroPlus extends Consumable {
         game.player.nippleLength += (rand(2) + 3) / 10;
         dynStats("lus", 15);
         // NIPPLECUNTZZZ
-        if (!game.player.hasFuckableNipples() && rand(4) == 0) {
+        if (!game.player.breasts.hasFuckableNipples() && rand(4) == 0) {
             let nowFuckable: boolean = false;
             for (const x = 0; x < game.player.breastRows.length; x++) {
                 if (!game.player.breastRows[x].fuckable && game.player.nippleLength >= 2) {

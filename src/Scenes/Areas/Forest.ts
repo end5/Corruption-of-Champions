@@ -379,7 +379,7 @@ export class Forest {
         if (!player.isTaur()) {
             outputText("The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces your torso to the ground.  Normally your erection would merely raise itself skyward, but your genitals have grown too large and heavy for your " + hipDescription(player) + " to hold them aloft.  Instead, you feel your body forcibly pivoting at the hips until your torso is compelled to rest face down atop your " + multiCockDescriptLight(game.player) + ".", false);
             // IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
-            if (player.biggestTitSize() >= 35) {
+            if (player.breasts.biggestTitSize() >= 35) {
                 if (lake) outputText("  Your " + chestDesc(game.player) + " hang lewdly off your torso to rest in the lakeside mud, covering much of the ground to either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  Mud cakes against their undersides and coats your " + nippleDescription(player, 0) + "s.", false);
                 else outputText("  Your " + chestDesc(game.player) + " hang lewdly off your torso to rest on the twings and dirt, covering up much of the ground to either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  The rough texture of the bark on various tree roots teases your " + nippleDescription(player, 0) + "s mercilessly.", false);
             }
@@ -404,7 +404,7 @@ export class Forest {
         else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
             outputText("  The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescription(player) + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hind legs until your equine body is resting on top of your " + multiCockDescriptLight(game.player) + ".", false);
             // IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
-            if (player.biggestTitSize() >= 35) {
+            if (player.breasts.biggestTitSize() >= 35) {
                 if (lake) outputText("  Your " + chestDesc(game.player) + " pull your human torso forward until it also is forced to face the ground, obscured as it is in boob-flesh.  Your tits rest on the wet earth to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  Mud cakes their undersides and coats your " + nippleDescription(player, 0) + "s.", false);
                 else outputText("  Your " + chestDesc(game.player) + " pull your human torso forward until it also is forced to face the ground, obscured as it is in boob-flesh.  Your tits rest on the dirt and twigs to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  The rough texture of the bark on various tree roots teases your " + nippleDescription(player, 0) + "s mercilessly.", false);
             }

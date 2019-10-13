@@ -1382,7 +1382,7 @@ export class SophieBimbo extends NPCAwareContent {
         outputText("  You pull on her nipple, earning yourself a squawk of surprised excitement from Sophie.  She writhes in your grip, twisting this way and that, pulling harder on her poor abused nipple as her pussy goes wild around you.");
 
         outputText("\n\nYou feel her juices drip out over your length and across your middle as she hits climax, one hand holding on to your shoulder for support.  Her velvety interior spasms wonderfully, convulsing around your " + cockDescript(game.player, x) + " in what can only be the throes of orgasm.  Sophie folds double, dropping her tits onto your ");
-        if (player.biggestTitSize() >= 1) outputText("own");
+        if (player.breasts.biggestTitSize() >= 1) outputText("own");
         else outputText("chest");
         outputText(", as she kisses you passionately, moaning into your mouth.  The effects of her potent lip-gloss hit you immediately, fortifying your pleasure into a tsunami wave of excitement, one that's cresting whether you want it to or not.  You cry out into Sophie's tongue, hips lifting her off the ground, as you cum, hard.  Your ejaculate fires out in long, thick ropes of white, painting the harpy's sodden innards white.  With her folds coated in spunk, your spasming " + cockDescript(game.player, x) + " pours the rest of your lusts into her, emptying your [balls] completely.");
         if (pregnancy.isPregnant) {

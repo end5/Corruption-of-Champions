@@ -28,7 +28,7 @@ export class IncubusMechanic extends Monster {
             else {
                 outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
                 let titfuck: () => void = null;
-                if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
+                if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
                     titfuck = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
                 }
                 simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "B.Titfuck", titfuck, "Nothing", cleanupAfterCombat);
@@ -110,7 +110,7 @@ export class IncubusMechanic extends Monster {
                 player.slimeFeed();
                 break;
             case 1: // Chest
-                if (player.hasFuckableNipples()) {
+                if (player.breasts.hasFuckableNipples()) {
                     outputText(allBreastsDescript(player) + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.");
                     dynStats("lus", 3);
                     if (player.effects.findByType(StatusAffects.DemonSeed) < 0)
@@ -147,7 +147,7 @@ export class IncubusMechanic extends Monster {
         this.ballSize = 2;
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
         this.tallness = rand(9) + 70;

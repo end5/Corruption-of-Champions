@@ -3253,7 +3253,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
                 if (player.cocks.length > 0 && player.hasVagina() && player.cocks.cockThatFits(70) >= 0) helix = katDoubleHelixCraziness;
             }
         }
-        if (player.lactationQ() > 0 && player.biggestLactation() >= 1 && player.biggestTitSize() >= 1) {
+        if (player.lactationQ() > 0 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestTitSize() >= 1) {
             if (doneSubmissive(KBIT_SUB_START_LACTATION))
                 suckle = suckleMenu;
             else suckle = suckleTacularKats;
@@ -4984,7 +4984,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("\n\nYou shift on the ground and reply that you’re lactating.  She gets up and kneels beside you, stomach growling once again.");
         // (if flat chested)
-        if (player.biggestTitSize() < 3) outputText("\n\n“<i>But you barely even have breasts,</i>” she says, resting her hand gently on your chest.  You ask her if that means anything in Mareth.");
+        if (player.breasts.biggestTitSize() < 3) outputText("\n\n“<i>But you barely even have breasts,</i>” she says, resting her hand gently on your chest.  You ask her if that means anything in Mareth.");
         else outputText("\n\nShe presses her hand gently against your chest and her pupils dilate.  “<i>No.  They... they must have checked, must have sniffed for it.</i>”");
 
         outputText("\n\nShe starts to fumble with your [armor], her hunger clearly overriding her better judgement.  That’s your opening.  You punch upward with your bound hands, catching her in the gut and knocking the wind out of her.");
@@ -5349,7 +5349,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
     }
 
     private bathTimeCentaurRide(): void {
-        outputText("\n\nKath holds you for a while, just grinding against you slowly and laying kiss after kiss on your lips and neck.  Finally she lets go and walks along your flank.  She stops beside you, pets your side and jumps onto your back.  She reaches around your torso and " + (player.hasBreasts() ? "starts to play with your breasts" : "runs her hands over your manly chest") + ".  Not satisfied with just that Kath begins grinding against you, " + (hasCock() ? "the " + cockMultiple("tip of her cock", "tips of her cocks") : "her pussy") + " grinding against what would be your ass if you were a human.  As a centaur it’s the sensitive spot where your spine curves.  Her " + (hasCock() ? "cockhead" + cockMultiple(" keeps", "s keep") : "groin keeps") + " rubbing against the small depression there, creating lovely sensations that travel in both directions.  At one end of your body your cock" + (player.cocks.length > 1 ? "s grow" : " grows") + " even harder, at the other your throw your head back and start to moan.\n\n");
+        outputText("\n\nKath holds you for a while, just grinding against you slowly and laying kiss after kiss on your lips and neck.  Finally she lets go and walks along your flank.  She stops beside you, pets your side and jumps onto your back.  She reaches around your torso and " + (player.breasts.breasts.hasBreasts() ? "starts to play with your breasts" : "runs her hands over your manly chest") + ".  Not satisfied with just that Kath begins grinding against you, " + (hasCock() ? "the " + cockMultiple("tip of her cock", "tips of her cocks") : "her pussy") + " grinding against what would be your ass if you were a human.  As a centaur it’s the sensitive spot where your spine curves.  Her " + (hasCock() ? "cockhead" + cockMultiple(" keeps", "s keep") : "groin keeps") + " rubbing against the small depression there, creating lovely sensations that travel in both directions.  At one end of your body your cock" + (player.cocks.length > 1 ? "s grow" : " grows") + " even harder, at the other your throw your head back and start to moan.\n\n");
 
         outputText("Katherine puts a hand on your cheek and draws your head back for a deep kiss.  The angle is a bit difficult for both of you, so she releases you, her hands going back to tweaking your nipples.  Kath leans forward and her rough tongue begins to lick the nape of your neck, driving you wild.\n\n");
 

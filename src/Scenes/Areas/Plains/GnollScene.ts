@@ -66,7 +66,7 @@ export class GnollScene {
         }
         outputText("In no time whatsoever she falls into an easy rhythm, pistoning her obscene girl-dick in and out of you.  At first, you can do little more than gurgle and squirm under the assault, but all too soon you feel the telltale signs of your own arousal building.  You find yourself moving in sympathy with her thrusts, at least as best you can given the circumstances.", false);
         // (if breastRating>C)
-        if (player.biggestTitSize() >= 3) outputText("  Your " + allBreastsDescript(player) + " bounce up and down as the gnoll grinds her anatomy into yours, slick with sweat under the hot sun.  Your " + nippleDescription(player, 0) + "s tighten and flush as your whole body submits to the rough fuck administered by the hyena girl.", false);
+        if (player.breasts.biggestTitSize() >= 3) outputText("  Your " + allBreastsDescript(player) + " bounce up and down as the gnoll grinds her anatomy into yours, slick with sweat under the hot sun.  Your " + nippleDescription(player, 0) + "s tighten and flush as your whole body submits to the rough fuck administered by the hyena girl.", false);
         // (if cockTotal>0)
         if (player.cocks.length > 0) {
             outputText("  Your hips begin to buck as your orgasm builds, but the gnoll slams her hands down on your sides, pinning you to the hardscrabble ground.  \"<i>Best if you don't move too much, lover,</i>\" she laughs, even as she quickens her pace.  Immediately your ", false);

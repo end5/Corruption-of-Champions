@@ -417,7 +417,7 @@ export function turkeyDesertBitches(): void {
     outputText("\"<i>G-gobble!?</i>\" Gobbles whines at your moment of hesitation, wiggling her upraised botty at you enticingly, hot flesh jiggling just close enough to brush your " + multiCockDescriptLight(player) + " with her lust-coated cheeks.");
 
     outputText("\n\n\"<i>Fuck!</i>\" you groan as the venom drips off your [cock], a small droplet vanishing into your dilated urethra.  Your heart skips a beat as the lusty cream works its magic, pounding through your sex.  Well, that backfired! You clutch at your [chest]");
-    if (player.biggestTitSize() > 1) outputText(", cupping a tit");
+    if (player.breasts.biggestTitSize() > 1) outputText(", cupping a tit");
     outputText(" as the venom takes control, flushing your skin and forcing out all thoughts but one: fuck that turkey! There's nothing for it, now: you grab Gobbles' hips and plunge in");
     if (player.cocks.length == 2) outputText(" with both cocks, one ramming into her abused cunny and the other right up her vulnerable little bumhole");
     else if (player.cocks.length > 2) outputText(" with every cock you've got, half in the pink and half in the stink, spreading her as wide as you are in both barrels");
@@ -705,12 +705,12 @@ export function getDoneEatingOutPigSlut(): void {
         if (player.hipRating < 35) player.hipRating += 1;
         changed = true;
     }
-    if (player.biggestTitSize() < 20) {
+    if (player.breasts.biggestTitSize() < 20) {
         outputText(" Your boobs also grow, gaining size as it seems that every part of your body wants to join in on the growth.");
-        if (player.biggestTitSize() < 3) player.growTits(3, player.bRows(), false, 1);
-        if (player.biggestTitSize() < 6) player.growTits(2, player.bRows(), false, 1);
-        if (player.biggestTitSize() < 12) player.growTits(2, player.bRows(), false, 1);
-        if (player.biggestTitSize() < 20) player.growTits(2, player.bRows(), false, 1);
+        if (player.breasts.biggestTitSize() < 3) player.growTits(3, player.breasts.length, false, 1);
+        if (player.breasts.biggestTitSize() < 6) player.growTits(2, player.breasts.length, false, 1);
+        if (player.breasts.biggestTitSize() < 12) player.growTits(2, player.breasts.length, false, 1);
+        if (player.breasts.biggestTitSize() < 20) player.growTits(2, player.breasts.length, false, 1);
         changed = true;
     }
     outputText("\n\nYou sigh");

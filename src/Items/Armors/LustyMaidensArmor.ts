@@ -14,11 +14,11 @@ export class LustyMaidensArmor extends Armor {
     }
 
     public canUse(): boolean {
-        if (game.player.biggestTitSize() < CoC.BREAST_CUP_A) { // {No titties}
+        if (game.player.breasts.biggestTitSize() < CoC.BREAST_CUP_A) { // {No titties}
             outputText("You slide the bikini top over your chest and buckle it into place, but the material hangs almost comically across your flat chest.  The cold chain dangles away from you, swaying around ridiculously before smacking, cold and hard into your [nipples].  This simply won't do - it doesn't fit you, and you switch back to your old armor.\n\n");
             return false;
         }
-        if (game.player.biggestTitSize() < CoC.BREAST_CUP_D) { // {Too small titties}
+        if (game.player.breasts.biggestTitSize() < CoC.BREAST_CUP_D) { // {Too small titties}
             outputText("You slide the bikini top over your chest, shivering when the cold chains catch on your nipples, stiffening them nicely. The material nicely accentuates your chest, but there's a definite problem.  Your [chest] aren't big enough!  Sure, they look nice done up in glittering silver and gold trim.  If only the metal wasn't hanging loosely around your underbust, flopping around whenever you move.  It doesn't even look that sexy on you!  You'll need a bigger chest to truly make use of this armor.  For now, you switch back to your old equipment.\n\n");
             return false;
         }
@@ -96,7 +96,7 @@ export class LustyMaidensArmor extends Armor {
         outputText("  The strong, pulsing cock feels so good inside your mouth, like it belongs there, and you can't help but think that you're doing a good deed by helping " + monster.a + monster.short + " empty every last perverse desire onto your purifying breasts.");
 
         outputText("\n\nUp and down, up and down, you slide across the expansive member with unhurried, slow strokes, each time making your [chest] bounce beautifully.  Your [nipples] are so hard");
-        if (player.hasFuckableNipples() || player.lactationQ() >= 100) outputText(", dripping,");
+        if (player.breasts.hasFuckableNipples() || player.lactationQ() >= 100) outputText(", dripping,");
         outputText(" and sensitive, scraping around the nebulous inner lining of your bikini and occasionally catching on the metal that feels even warmer than normal.  Behind you, your [butt] is bouncing happily to the rhythm your corruption-devouring breasts have set, the thong digging tightly into your [vagina] in the most exquisite way.  You feel so hot and sensual, but still secure in the knowledge that you won't have to worry about such a creature ravaging your ");
         if (player.hasVirginVagina()) outputText("maidenhead");
         else outputText("sloppy gash");

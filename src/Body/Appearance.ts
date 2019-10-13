@@ -166,9 +166,9 @@ export class Appearance  {
         // Milkiness/Arousal/Wetness Descriptors 33% of the time
         if (rand(3) == 0 && !haveDescription) {
             // Fuckable chance first!
-            if (i_creature.hasFuckableNipples()) {
+            if (i_creature.breasts.hasFuckableNipples()) {
                 // Fuckable and lactating?
-                if (i_creature.biggestLactation() > 1) {
+                if (i_creature.breasts.biggestLactation() > 1) {
                     options = ["milk-lubricated ",
                         "lactating ",
                         "lactating ",
@@ -192,23 +192,23 @@ export class Appearance  {
                 haveDescription = true;
             }
             // Just lactating!
-            else if (i_creature.biggestLactation() > 0) {
+            else if (i_creature.breasts.biggestLactation() > 0) {
                 // Light lactation
-                if (i_creature.biggestLactation() <= 1) {
+                if (i_creature.breasts.biggestLactation() <= 1) {
                     options = ["milk moistened ",
                         "slightly lactating ",
                         "milk-dampened "];
                     description += randomChoice(options);
                 }
                 // Moderate lactation
-                if (i_creature.biggestLactation() > 1 && i_creature.biggestLactation() <= 2) {
+                if (i_creature.breasts.biggestLactation() > 1 && i_creature.breasts.biggestLactation() <= 2) {
                     options = ["lactating ",
                         "milky ",
                         "milk-seeping "];
                     description += randomChoice(options);
                 }
                 // Heavy lactation
-                if (i_creature.biggestLactation() > 2) {
+                if (i_creature.breasts.biggestLactation() > 2) {
                     options = ["dripping ",
                         "dribbling ",
                         "milk-leaking ",
@@ -265,21 +265,21 @@ export class Appearance  {
             else description += "cherry-like nub";
         }
         if (choice == 2) {
-            if (i_creature.hasFuckableNipples()) description += "fuckable nip";
+            if (i_creature.breasts.hasFuckableNipples()) description += "fuckable nip";
             else {
-                if (i_creature.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
+                if (i_creature.breasts.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
                 else description += "nipple";
             }
         }
         if (choice == 3) {
-            if (i_creature.hasFuckableNipples()) description += "nipple-hole";
+            if (i_creature.breasts.hasFuckableNipples()) description += "nipple-hole";
             else {
-                if (i_creature.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
+                if (i_creature.breasts.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
                 else description += "nipple";
             }
         }
         if (choice == 4) {
-            if (i_creature.hasFuckableNipples()) description += "nipple-cunt";
+            if (i_creature.breasts.hasFuckableNipples()) description += "nipple-cunt";
             else description += "nipple";
         }
         return description;
@@ -2421,7 +2421,7 @@ export class Appearance  {
         let storage: string = "";
         if (creature.breastRows.length == 0) return "unremarkable chest muscles ";
         if (creature.breastRows.length == 2) {
-            // if(creature.totalBreasts() == 4) storage += "quartet of ";
+            // if(creature.breasts.totalBreasts() == 4) storage += "quartet of ";
             storage += "two rows of ";
         }
         if (creature.breastRows.length == 3) {
@@ -2496,7 +2496,7 @@ export class Appearance  {
     public static biggestBreastSizeDescript(creature: Creature): string {
         let temp14: number = Math.random() * 3;
         let descript: string = "";
-        const temp142: number = creature.biggestTitRow();
+        const temp142: number = creature.breasts.biggestTitRow();
         // ERROR PREVENTION
         if (creature.breastRows.length - 1 < temp142) {
             CoC_Settings.error("");
@@ -2582,7 +2582,7 @@ export class Appearance  {
     /* Moved to Creature.as
             public static function chestDesc(creature:Creature):String
             {
-                if (creature.biggestTitSize() < 1) return "chest";
+                if (creature.breasts.biggestTitSize() < 1) return "chest";
                 else return biggestBreastSizeDescript(creature);
             }
     */

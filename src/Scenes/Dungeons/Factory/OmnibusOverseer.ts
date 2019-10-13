@@ -50,7 +50,7 @@ export class OmnibusOverseer extends Monster {
                 }
             }
             dynStats("lus", 7 + player.sens / 20);
-            if (player.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript(player) + " in sympathy.");
+            if (player.breasts.biggestLactation() > 1) outputText("Milk dribbles from your " + allBreastsDescript(player) + " in sympathy.");
         }
         combatRoundOver();
     }
@@ -67,7 +67,7 @@ export class OmnibusOverseer extends Monster {
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
-        createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
         this.tallness = rand(9) + 70;

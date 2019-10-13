@@ -179,7 +179,7 @@ export class AuntNancy extends TelAdreAbstractContent {
         outputText("You look the still-beautiful spider-lady in the eye, and, half-mesmerized, nod in agreement.  She smiles broadly (and, you can't help but notice, quite lewdly) and puts one of her lower arms through one of yours, while putting the upper one on your shoulder.  \"<i>Well then,</i>\" Aunt Nancy says, \"<i>I suppose we should be off.</i>\"\n\n", false);
 
         outputText("She leads you through the streets of Tel'Adre, weaving through crowds and back alleys, before you finally end up just outside a modest little adobe building tucked away in a side street.  Slowly, she wraps all four of her arms around you, giving you a gentle hug", false);
-        if (player.biggestTitSize() >= 1) outputText(" and taking the opportunity to grope your " + allBreastsDescript(player) + " right through your " + player.armorName, false);
+        if (player.breasts.biggestTitSize() >= 1) outputText(" and taking the opportunity to grope your " + allBreastsDescript(player) + " right through your " + player.armorName, false);
         outputText(".\n\n", false);
 
         outputText("\"<i>Come into my parlor,</i>\" she whispers into your ear, licking it gently before sticking the tip of her long tongue into the hole before pressing her soft lips against the lobe of it.\n\n", false);
@@ -294,7 +294,7 @@ export class AuntNancy extends TelAdreAbstractContent {
             }
 
             // [If PC is lactating, and there are no dicks of autotitfucking size available:]
-            if (!titFucked && player.biggestLactation() >= 1) {
+            if (!titFucked && player.breasts.biggestLactation() >= 1) {
                 outputText("As milk leaks slowly from your " + nippleDescription(player, 0) + "s, the spider-lady notices.  She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescription(player, 0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
             }
             // [If no cocks are of titfucking size and # Cocks <= 4 or if there are cocks of titfucking size and # Cocks <= 3 (If Nancy still has free hands)]
@@ -321,7 +321,7 @@ export class AuntNancy extends TelAdreAbstractContent {
 
             outputText("It feels wonderful.  You lie back and moan, enjoying the smooth, silky insides of her pussy, feeling tiny feelers occasionally caress and pull at your fingers inside of her.\n\n", false);
             // [If PC is lactating:]
-            if (player.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescription(player, 0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescription(player, 0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
+            if (player.breasts.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescription(player, 0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescription(player, 0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
         }
         // [If the PC has no genitals at all:]
         else {
@@ -340,7 +340,7 @@ export class AuntNancy extends TelAdreAbstractContent {
             outputText("It feels wonderful.  You lie back and moan, enjoying the smooth, silky insides of her pussy, feeling tiny feelers occasionally caress and pull at your fingers inside of her.\n\n", false);
 
             // [If PC is lactating:]
-            if (player.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescription(player, 0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescription(player, 0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
+            if (player.breasts.biggestLactation() >= 1) outputText("As milk leaks slowly from your " + nippleDescription(player, 0) + "s, the spider-lady notices. She lowers her head and wraps her soft, lovely lips around the tip of one of your " + allBreastsDescript(player) + ", sucking gently and frantically flicking her tongue against your " + nippleDescription(player, 0) + ".  You moan and lie back into the web, the multitude of sexual pleasures assaulting your senses almost more than you can bear as Aunt Nancy begins swallowing up your milk.\n\n", false);
         }
         doNext(auntNancyPoonPartIII);
     }
@@ -418,7 +418,7 @@ export class AuntNancy extends TelAdreAbstractContent {
 
             outputText("You howl in pleasure, feeling the orgasm coursing through you like hot metal up and down your spine.  You let out a exclamation of pleasure of your own, as you feel her hands tighten on your " + chestDesc(game.player) + ", and soon you too are luxuriating in the feeling of her body against yours, inside of you, pressing all your most vulnerable places.", false);
             // [If PC has a vagina and is a squirter and/or is lactating:]
-            if (player.wetness() >= 5 || player.biggestLactation() >= 1)
+            if (player.wetness() >= 5 || player.breasts.biggestLactation() >= 1)
                 outputText("  Her hands are soon drenched in your body's wonderful secretions, just as your", false);
             else outputText("  Your", false);
             outputText(" fingers are soon soaked in the lovely, sweet-smelling juices of her pussy.\n\n", false);

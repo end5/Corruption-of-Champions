@@ -53,7 +53,7 @@ export class MaleSpiderMorphScene {
             if (player.cocks.biggestCockArea() > monster.analCapacity()) frot = victoryFrotTheSpoidah;
         }
         let bikiniTits: () => void = null;
-        if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+        if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
         outputText("The male spider-morph collapses onto his hands and knees, ", false);
         if (monster.lust > 99) outputText("masturbating with furious abandon, working his ebon dick with such vigor that the spider's pre-cum-slicked dick-skin noisily slides itself back and forth over his fattened glans; it becomes apparent just how much foreskin he truly has at this point, as even with his frenzied rubbing his glans remains shrouded in the thick excess skin while his fist slaps lewdly against his groin.  Dribbles of pre-cum leak from between his fingers to spill on the ground.", false);
         else outputText("wobbling back and forth as he tries to stay up and fight.  There's no way he can oppose you, as beaten as he is now.", false);
@@ -210,7 +210,7 @@ export class MaleSpiderMorphScene {
         outputText("An idea comes to you while you try to get off on the limp-dicked man, and you decide to act on it immediately.  Grabbing his head in both hands, you push the spider-boy's head against his shoulder and command, \"<i>Bite.</i>\"  He fights against you, but he's too weak from the recent combat, not to mention orgasm, to put up much of a fight.  All too soon he's letting his fangs slip into his shoulder and wincing slightly from the pain.  His cock immediately stiffens inside your cum-packed cunt, fueled by the aphrodisiacs he's pouring into himself.  You firmly hold the pathetic male in place and rub his cheek while softly murmuring, \"<i>Good boy,</i>\" over and over again into his ear, all while milking his venom into his body.\n\n", false);
 
         outputText("Without even waiting for him to finish, you go back to your cock-riding, the sensation of his trembling, drug-fueled erection tickling at all the right places.  Inside your " + vaginaDescript(player, 0) + ", that wonderful, foreskin-clad member bastes in its own spooge, soaking up the sloppy spunk while you use it as your personal, living dildo.  You ", false);
-        if (!player.hasFuckableNipples()) outputText("pinch", false);
+        if (!player.breasts.hasFuckableNipples()) outputText("pinch", false);
         else outputText("finger", false);
         outputText(" your " + nippleDescription(player, 0) + "s, struggling to get off while the spider-boy cums again, this time without any warning at all.\n\n", false);
 
@@ -318,7 +318,7 @@ export class MaleSpiderMorphScene {
         if (player.lust > 99) outputText(", caressing yourself with reckless abandon while praying the sexy spider-boy will come violate you with his thick-skinned prick.", false);
         else outputText(", clearly too injured and fatigued by the battle to make more than a few token movements.", false);
         outputText("  He pounces you, lightning fast, quick enough that you don't even react until he's on top of you.  Chitin-clad legs brush your " + hipDescription(player) + ", the hard knees sinking deep into the swampy loam.  Grinning happily, the spider-boy leans over you and sucks a " + nippleDescription(player, 0) + " ", false);
-        if (player.hasFuckableNipples()) outputText("into his mouth before plunging his tongue into the tit-pussy's passage", false);
+        if (player.breasts.hasFuckableNipples()) outputText("into his mouth before plunging his tongue into the tit-pussy's passage", false);
         else outputText("into his mouth before circling his tongue around it", false);
         outputText(".\n\n", false);
 
@@ -344,8 +344,8 @@ export class MaleSpiderMorphScene {
         else if (player.wetness() >= 2) outputText("dribbles lube", false);
         else outputText("gets soaked", false);
         outputText(", your " + nippleDescription(player, 0) + "s ", false);
-        if (player.hasFuckableNipples()) outputText("drip their own slippery juices", false);
-        else if (player.biggestLactation() >= 1) outputText("bead drops of milk", false);
+        if (player.breasts.hasFuckableNipples()) outputText("drip their own slippery juices", false);
+        else if (player.breasts.biggestLactation() >= 1) outputText("bead drops of milk", false);
         else outputText("fully engorge", false);
         outputText(", ", false);
         if (player.cocks.length > 0) outputText(sMultiCockDesc(game.player) + " becomes so full and hard it feels like it could burst, ", false);

@@ -322,9 +322,9 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
 
         // (ORGASM HERE!)
         outputText("Helplessly twitching in your place, you fight with your body's desire to copulate, trying not to impale your quivering snatch on the pirate's nose.  ", false);
-        if (player.hasFuckableNipples()) {
+        if (player.breasts.hasFuckableNipples()) {
             outputText("Roxanne pulls her hands off your ass and reaches up, swaying unsteadily until she catches your " + nippleDescription(player, 0) + "s.  A second later she slips her digits inside the welcoming tit-pussies, finger-fucking your breasts as ", false);
-            if (player.biggestLactation() < 1.5) outputText("expertly as the one below", false);
+            if (player.breasts.biggestLactation() < 1.5) outputText("expertly as the one below", false);
             else outputText("they begin to squirt milk around her", false);
             outputText(".  ", false);
         }
@@ -347,7 +347,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         spriteSelect(78);
         outputText("", true);
         outputText("You shimmy out of your " + player.armorName + " and smirk, turning around to lean onto the table", false);
-        if (player.biggestTitSize() >= 2) outputText(", your breasts cushioning you from the hard wood below", false);
+        if (player.breasts.biggestTitSize() >= 2) outputText(", your breasts cushioning you from the hard wood below", false);
         outputText(".  Poisontail eyeballs the ring of your " + assholeDescript(player) + ", salivating as she grabs your " + buttDescription(player) + " in her scaled hands.  With anguished slowness, she pulls the cheeks as wide apart as possible.  You hear her gasp in delight a split-second before you do the same.  Her tongue launched from her mouth and found your " + assholeDescript(player) + " immediately!  Now she's sliding it in circles around the sensitive ring, making the skin of that pucker tighten and wink.\n\n", false);
 
         outputText("Roxanne groans and gives your " + buttDescription(player) + " a raunchy squeeze, making love to your cheeks as her tongue worships your asshole.  She murmers, \"<i>Thish would be sho much better if it was jussht foreplay.  Why don't you lose next time, okay babe?</i>\"  You moan out loud when her tongue returns to its task, arching your back and whimpering from the intense, anal pleasure.  ", false);
@@ -466,7 +466,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
             }
             else outputText("An outpouring of spunk drools from " + sMultiCockDesc(game.player) + ", spurting submissively under the table.", false);
         }
-        if (player.biggestLactation() >= 2) outputText("  Bursts of milk erupt from your pinned " + nippleDescription(player, 0) + "s, blasting out while you cum to stain the table white.", false);
+        if (player.breasts.biggestLactation() >= 2) outputText("  Bursts of milk erupt from your pinned " + nippleDescription(player, 0) + "s, blasting out while you cum to stain the table white.", false);
         outputText("  As it winds down, you fall into slumber, snoring happily after your violation.\n\n", false);
 
         outputText("<b>LATER...</b>\n", false);

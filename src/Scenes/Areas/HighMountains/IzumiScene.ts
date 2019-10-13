@@ -528,9 +528,9 @@ export class IzumiScene {
         else outputText(" drops to the floor, laying next to you on her side.");
         outputText("  She releases your chin, but her hand snakes around behind your head to your other cheek, pulling you in towards her.  You can’t help but grunt in surprise as the side of your head is forcibly pushed up against one massive, pillowy-soft breast");
 
-        if (player.biggestTitSize() >= 1 && player.biggestTitSize() < 3) outputText(", your [chest] dwarfed by the larger womans own pair.");
-        else if (player.biggestTitSize() >= 3 && player.biggestTitSize() < 5) outputText(", your [chest] moulding themselves against the underside of the Oni’s larger pair.");
-        else if (player.biggestTitSize() >= 5 && player.biggestTitSize() <= 8) outputText(", your [chest] compressing against the Oni’s larger pair, forming a delicious valley of flesh between your bodies.");
+        if (player.breasts.biggestTitSize() >= 1 && player.breasts.biggestTitSize() < 3) outputText(", your [chest] dwarfed by the larger womans own pair.");
+        else if (player.breasts.biggestTitSize() >= 3 && player.breasts.biggestTitSize() < 5) outputText(", your [chest] moulding themselves against the underside of the Oni’s larger pair.");
+        else if (player.breasts.biggestTitSize() >= 5 && player.breasts.biggestTitSize() <= 8) outputText(", your [chest] compressing against the Oni’s larger pair, forming a delicious valley of flesh between your bodies.");
         else outputText(", your [chest] dwarfing the larger womans own pair.");
 
         outputText("  “<i>There.</i>”  She announces happily, softly stroking your cheek as though to reassure you.  “<i>All better now, right?  Good.</i>”  She doesn’t even wait for a response before turning her attention back to your [cock biggest]....\n\n");
@@ -764,7 +764,7 @@ export class IzumiScene {
             outputText("\n\n");
 
             // Big knockers!
-            if (player.biggestTitSize() >= 15) {
+            if (player.breasts.biggestTitSize() >= 15) {
                 outputText("Izumi’s eyes widen in surprise as she pulls aside your clothing to reveal your impressive bust, your [chest] finally free.\n\n");
 
                 outputText("“<i>Wha- Wait, these are real?!</i>”  she exclaims, loudly.");
@@ -890,7 +890,7 @@ export class IzumiScene {
         outputText("“<i>Now, where were we?</i>” Izumi murmurs.  You look down as she gently rolls a hand around to cup one of your breasts. “<i>Oh yeah,</i>” She adds, playfully. “I<i> remember...</i>” Izumi gropes at your chest experimentally, stroking, fondling, squeezing, molesting your bust as she gauges it for firmness.\n\n");
 
         // Itty-bitty-titties
-        if (player.biggestTitSize() <= 2) {
+        if (player.breasts.biggestTitSize() <= 2) {
             outputText("“<i>Haha... You’re pretty cute, you know?</i>” Izumi whispers into your ear, idly twiddling one of your nipples between thumb and forefinger as though this were a perfectly natural conversation. “<i>Funny, I was going to play with your breasts a little, get you nice and warmed up... but I can’t seem to find ‘em.  That’s not right, is it?  Girls have boobs, big, pillowy things to show off in front of the fellas... but you don’t.  Completely flat, aren’t ya? Almost like you were a boy.  That’s gotta be embarrassing, right?</i>”  You look down at your chest, blushing furiously.  You’d never really thought about it before, but now that Izumi mentions it....  Plus, with Izumi leaning in and gripping you from behind, those strong, muscled arms caging you in as her enormous breasts press inescapably against your spine, you have to admit you do feel kind of inadequate... as well as strangely aroused.\n\n");
 
             outputText("“<i>Well, it’s pretty sad, but don’t be too upset,</i>” Izumi continues, reaching around with her other hand to play with the other nipple.  She pointedly avoids so much as stroking against the unimpressive mounds that make up your sub-average titflesh, solely concerned with molesting your now diamond-hard nipples, heightening both your sense of arousal and your rising shame at your small size.  “<i>I’m sure someone, somewhere, will still want to take you.  Of course, they’ll probably be the kinky type.  Who else would want someone as flat as you?  There isn’t even enough here to rub up against.  But hey, some guys are into that.  You might have to pretend to be a schoolgirl for ‘em, but they’re into it...</i>”  Without warning, Izumi shifts up her game, pinching your [nipples] painfully and pulling on them slightly, forcing you to let out a moan of confusion; half pleasure, half pain.\n\n");
@@ -1444,10 +1444,10 @@ export class IzumiScene {
             else if (player.tou >= 90) {
                 outputText("her arm lunges out in an uppercutting grab, her fist latching around your throat and lifting you from the floor.  Her grip is crushingly tight, but you can endure it... for now, at least.  Looking to respond in kind, you reach out for the bright red curve of Izumi’s horn.\n\n");
             }
-            else if (player.lib >= 40 && (player.biggestTitSize() >= 2 || player.cocks.biggestCockLength() >= 5)) {
+            else if (player.lib >= 40 && (player.breasts.biggestTitSize() >= 2 || player.cocks.biggestCockLength() >= 5)) {
                 outputText("her arm lunges out in an uppercutting grab, her fist latching around your throat and wrenching you from the floor.  You struggle, helplessly, against her arm for a moment before an idea strikes; \n\n");
 
-                if (player.biggestTitSize() > 2) outputText("maybe giving her face a little personal time nestled between your [chest] will finally distract the Oni enough.  You reach out for the bright red curve of Izumi’s horn, ");
+                if (player.breasts.biggestTitSize() > 2) outputText("maybe giving her face a little personal time nestled between your [chest] will finally distract the Oni enough.  You reach out for the bright red curve of Izumi’s horn, ");
                 else outputText("thinking quickly, you slip open your [armor] with one hand, bearing your [cock] to the world, your other hand reaching for the bright red curve of Izumi’s horn, ");
 
                 outputText("trying to force her gaze toward your ‘assets.’\n\n");
@@ -1543,10 +1543,10 @@ export class IzumiScene {
 
         outputText("“<i>Ahahh, hey now... not bad, kid.  Not bad at all.</i>”  Izumi leans back, allowing you to lay across her stomach while she relaxes, resting her back against the cave wall and smiling at you encouragingly.  You take the time to adjust to the new sensations enveloping your cock, steeling yourself to give Izumi the fucking of a lifetime.  Satisfied that you’re ready, you begin to move, thrusting your hips - slowly at first - into Izumi.  She wets her lips a little, one arm snaking over your back to draw you into a gentle hug,");
 
-        if (player.biggestTitSize() >= 1 && player.biggestTitSize() < 3) outputText(" smothering your [chest] with her own, much larger, pair.\n\n");
-        else if (player.biggestTitSize() >= 3 && player.biggestTitSize() < 5) outputText(" your [chest] moulding themselves against the Oni’s larger pair.\n\n");
-        else if (player.biggestTitSize() >= 5 && player.biggestTitSize() <= 8) outputText(" your [chest] compressing against the Oni’s larger pair, forming a delicious valley of flesh.\n\n");
-        else if (player.biggestTitSize() > 8) outputText(" your [chest] dominating the Oni’s own in the battle for space between the two of you.\n\n");
+        if (player.breasts.biggestTitSize() >= 1 && player.breasts.biggestTitSize() < 3) outputText(" smothering your [chest] with her own, much larger, pair.\n\n");
+        else if (player.breasts.biggestTitSize() >= 3 && player.breasts.biggestTitSize() < 5) outputText(" your [chest] moulding themselves against the Oni’s larger pair.\n\n");
+        else if (player.breasts.biggestTitSize() >= 5 && player.breasts.biggestTitSize() <= 8) outputText(" your [chest] compressing against the Oni’s larger pair, forming a delicious valley of flesh.\n\n");
+        else if (player.breasts.biggestTitSize() > 8) outputText(" your [chest] dominating the Oni’s own in the battle for space between the two of you.\n\n");
         else outputText(" pressing you into her chest.\n\n");
 
         outputText("“<i>You don’t need to be so restrained.  It’s not like you’re gonna hurt me if you pick up the pace a little.</i>”  She looks away, her blush visibly deepening.  “<i>N-Not that this isn’t nice by itself, you understand, I just... you know, if ya want to, you can go faster, I don’t mind...</i>”\n\n");
@@ -1566,7 +1566,7 @@ export class IzumiScene {
         outputText("The effect is instantaneous; Izumi screws her eyes shut, cramming a knuckle into her mouth.  You’re momentarily worried she might be in pain, but then she gives you a short, sharp nod of the head.  Izumi’s grip tightens around you, drawing you into an even closer hug, the contours of her body rubbing against your skin, heat rising as your bodies rub slickly against one another.  Her free hand rests demurely at the base of her neck, twitching occasionally as your probing fingers run across a sensitive ridge or bump on her horn.\n\n");
 
         outputText("The moment your hand touches her horn, Izumi’s pussy clamps down around your cock, slowly relaxing into an awkward rhythm of irregular twitches, periodically clenching around your length as you stimulate her horn.  Surprisingly quickly, she’s reduced to visibly panting with arousal, her bust heaving");
-        if (player.biggestTitSize() > 0) outputText(" against your own");
+        if (player.breasts.biggestTitSize() > 0) outputText(" against your own");
         outputText(" as she gasps for air.\n\n");
 
         outputText("“<i>Ah, shit,</i>” she gasps suddenly, “<i>I think, I don’t think I’m gonna be able to hold it any longer, s-sorry... ah! Nghahh, oh shit, here it comes!</i>”  Izumi’s eyes go wide as she suddenly jerks forwards slightly, arching her back away from the wall, her fingernails scraping across your back and the walls of her pussy clamping down around you like a vice.  She wraps her free hand around the back of your head, pulling you into her so hard that it’s almost painful.  You feel your own orgasm rising in turn and bury yourself up to the hilt, forcing yourself as deeply into Izumi as you can possibly manage.  She wails in orgasmic gratitude, her legs wrapping themselves around your waist and locking together, forcing you to remain where you are, buried deep within her as her muscles go insane, juddering and squeezing, stimulating every inch of your cock, forcing your orgasm out of you as though she bore it a grudge.\n\n");

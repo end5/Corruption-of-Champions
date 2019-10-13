@@ -371,7 +371,7 @@ export class MinotaurKingScenes {
         outputText("\n\nNo longer feeling the pressure of his expanding crown is an immense relief and accomplishment you feel bizarrely proud of. Your nose is pressed deep into sticky folds of the minotaur’s sheath, your lips liberally slimed with half-dried pre. The tops of his swollen, excessively virile nuts slap your chin as the brutish monarch roars in pleasure. You close your eyes and hum, perfectly content to sit here and vibrate around his cock until he dumps his prodigious load directly into your hungry belly.");
         outputText("\n\nYou aren’t left waiting long.");
         outputText("\n\nThe minotaur King lurches forward powerfully");
-        if (player.biggestTitSize() >= 5) outputText(", jiggling your tits wildly");
+        if (player.breasts.biggestTitSize() >= 5) outputText(", jiggling your tits wildly");
         else if (player.cocks.length > 0) {
             outputText(", making your oozing, half-hard prick");
             if (player.cocks.length > 1) outputText("s");

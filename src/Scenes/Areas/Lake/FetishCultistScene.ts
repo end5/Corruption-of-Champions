@@ -190,10 +190,10 @@ export class FetishCultistScene extends AbstractLakeContent {
             outputText(" you aren't supposed to be out of bed yet,</i>\" she says to you.  You're almost certain that you are in a hospital room, and the nurse is looking in from the doorway with a cart next to her.  You look over at the bed and a wave of panic washes over you as you see a collection of straps, clearly designed to keep someone restrained there, and you even notice a ball gag on the pillow.  Unable to comprehend anything but what you see in this room, you try to flee, only to be stopped by the nurse.  She pushes you back into the room and tells you that you have to calm down.  Her words have the opposite effect on you and you only feel more panicked.  You start to wrestle with her to get out, but your strength quickly ebbs away, leaving you almost completely helpless before the nurse.  She manages to get you over to the hospital bed, where she pushes you down onto your back and begins strapping you in place, using both the restraints on the bed and some of the ones on your own outfit.  She even gags you with the ball gag before checking every strap to be certain they are secure.  Once the nurse finishes, she straightens up and says to you with a smile, \"<i>It's okay, you're safe now.  Nothing bad will happen to you while I'm here.</i>\" For some reason, her words seem to make the restraints feel safe and comfortable, and you are finally able to calm down.\n\n", false);
             // Five possible variants based on body
             // (1 - if player has nipplecunts)
-            if (player.hasFuckableNipples()) {
+            if (player.breasts.hasFuckableNipples()) {
                 outputText("Still smiling, the nurse looks closely at your " + nippleDescription(player, 0) + " and says, \"<i>I see... they really are interesting.  Sorry about tying you down like that.  I know experiments like this can be a little scary, but just remember that you are helping others by agreeing to do this.</i>\"  She leaves the room for a moment and comes back with a pair of syringes.  \"<i>I hope you are as ready for this as I am,</i>\" she says with a look of glee on her face as she climbs on top of you.  She then sticks the syringes into her own nipples simultaneously and injects their contents inside her.  Quivering slightly she sets the empty syringes aside before she starts rubbing her breasts feverishly.  A moment later she stops and pulls her hands away to reveal that her nipples have grown quite long, about four inches from the tops of her mounds.  With a sigh, she lowers herself toward you and pushes her elongated nipples into your " + nippleDescription(player, 0) + "s.  You feel your breasts seem to eagerly pull the tips inside and begin sucking on the nurse's dick-like nipples.  You feel a fluid start to come out of the nurse's nipples directly into your own, and the two of you begin moaning in ecstasy.  After a few minutes of your " + nippleDescription(player, 0) + "s draining the nurse's long nipples, you feel them pull out of you.  With a sigh of contentment, the nurse pulls back to reveal that her nipples have returned to normal.  She then puts her hands on your " + allBreastsDescript(player) + " and starts to massage them, occasionally poking her fingers inside.  You find that they feel fuller and healthier than ever, and ", false);
                 // [if breasts are not lactating]
-                if (player.biggestLactation() < 1) {
+                if (player.breasts.biggestLactation() < 1) {
                     outputText("they have even started to lactate.  ", false);
                     player.boostLactation(1.5);
                 }
@@ -218,7 +218,7 @@ export class FetishCultistScene extends AbstractLakeContent {
                 changedCock = true;
             }
             // (3 - if player has regular breasts)
-            if (player.biggestTitSize() > 1 && !changed) {
+            if (player.breasts.biggestTitSize() > 1 && !changed) {
                 outputText("The smile disappears from her lips and she says, 'Now if I understand it correctly, you are beset by random panic attacks due to unnaturally low levels of lactation.  To address this issue, I will be giving you a special injection at the site.'  She briefly steps out of the room before returning with a syringe.  'It'll be ok, the good news is that the pain for this injection will quickly subside, just take nice easy breaths and you'll be fine.  In fact, you might find this quite enjoyable after the first hurdle.'  She steps over to you and carefully pushes the syringe into your first breast.  You feel a sharp pain from the needle going in, but after a moment you start to feel a glowing pleasure spread throughout your breast.  ", false);
                 // [if player only has one row of breasts]
                 if (player.breastRows.length == 1) {
@@ -230,7 +230,7 @@ export class FetishCultistScene extends AbstractLakeContent {
                 if (player.breastRows.length > 2) outputText("Once about a sixth of the fluid has been injected into the first breast, she moves on to the second and you feel a similar sharp pain followed by the glowing pleasure.  She continues this until all of your " + allBreastsDescript(player) + " have been injected.  ", false);
                 outputText("Soon the glowing pleasure fills your breasts completely and you feel an orgasm shoot through your body as your " + allBreastsDescript(player), false);
                 // [if breasts are already lactating]
-                if (player.biggestLactation() >= 1) outputText(" start lactating even more.  ", false);
+                if (player.breasts.biggestLactation() >= 1) outputText(" start lactating even more.  ", false);
                 // [if breasts are not lactating]
                 else outputText(" start lactating.  ", false);
                 outputText("Nodding approvingly, the nurse says  \"<i>Good, for now I've got to go take care of another patient. Don't you do anymore running about until I get back, ok?</i>\" as she turns away and goes out the door.", false);
@@ -595,7 +595,7 @@ export class FetishCultistScene extends AbstractLakeContent {
         if (player.gender == 1) genderTag = "man";
         if (player.gender == 2 || player.gender == 3) genderTag = "woman";
         if (player.gender == 0) {
-            if (player.biggestTitSize() > 1) genderTag = "woman";
+            if (player.breasts.biggestTitSize() > 1) genderTag = "woman";
             else genderTag = "man";
         }
         outputText(genderTag + " sits in the confessional.  It is clear this " + genderTag + "'s mind is devoid of conscious thoughts, but they have a clear purpose.  Feelings of anticipation and need surround this person as they open their mouth.  \"<i>Holy mother,</i>\" they speak to the woman sitting across from them with apprehension,\"<i>I have such strange thoughts and needs, they arouse me in ways that they probably shouldn't.  Is there anywhere where I can find my place?</i>\"\n\n\"<i>It's quite all right.</i>\" she replies.  \"<i>This is a sanctuary to those who have desires that others would call strange or bizarre, we welcome any who share our needs.  All that we ask is that you be willing to share those desires with those that you find.</i>\"  The other brightens and says, \"<i>Of course, I would love nothing more!</i>\"  The " + mf(player, "man", "woman") + " who was once a champion and the fetish cultist who corrupted " + mf(player, "him", "her") + " step out of the confessional, and soon the sounds of a massive orgy can be heard from the cathedral, as the followers of the fetish welcome their new member.\n\n", false);

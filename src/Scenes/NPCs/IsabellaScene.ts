@@ -601,7 +601,7 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
             }
         }
         isabellaFollowerScene.isabellaAffection(2);
-        if (!isabellaFollower() || !player.hasVagina() || player.biggestTitSize() < 1) {
+        if (!isabellaFollower() || !player.hasVagina() || player.breasts.biggestTitSize() < 1) {
             doNext(camp.returnToCampUseOneHour);
         }
         else {
@@ -887,7 +887,7 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
         outputText("Isabella's eyes are tiny, insane pin-pricks that focus on you as she realizes you're awake.  She moans,");
         if (isabellaAccent()) outputText(" \"<i>Das is good [boy]!  Don't move!  Iz impolite to interrupt your elder's pleasure, and your tiny cock is so small and unique.  You vill lie there until momma has had her fill, ja?</i>\" To emphasize her point she puts a hand ", false);
         else outputText(" \"<i>There's a good [boy]!  Don't move!  Its impolite to interrupt your elder's pleasure, and your tiny cock is so small and unique.  You will lie there until momma has had her fill, yes?</i>\" To emphasize her point she puts a hand ", false);
-        if (player.biggestTitSize() < 1) outputText("on your chest", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("on your chest", false);
         else outputText("in between your " + allBreastsDescript(player), false);
         outputText(", pushing your torso so hard it sinks an inch or two into mud that reeks of Isabella's sex-juices.  You lie there, immobilized and defeated while you're forcibly raped, used like a small, disposable dildo.\n\n", false);
 
@@ -970,7 +970,7 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
         2966	vaginalProdNPokeIsabella()
         2967	tinyVictoryTittyFuckingFuntimesWithMilk()*/
         let lactation: () => void = null;
-        if (player.biggestLactation() >= 1) lactation = victoryLactation69;
+        if (player.breasts.biggestLactation() >= 1) lactation = victoryLactation69;
         let buttsex: () => void = null;
         let sixtyNine: () => void = null;
         if (player.gender > 0 && player.lust >= 33) sixtyNine = victoryAgainstIzzzzzySixtyNine;
@@ -1028,7 +1028,7 @@ export class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
         outputText(".  You arch your back, crushing the cow-girl's face with the swell of your jiggling breast while you drain the last of your milky reserves into her, using her as your personal breast-pump.", false);
 
         // (Cuntnips)
-        if (player.hasFuckableNipples()) outputText("  Isabella thrusts her tongue at your " + nippleDescription(player, 0) + ", burrowing it deep into the unusual passage to get at the last of your liquid bounty and inadvertently intensifying your pleasure.  Your arm gives out and you drop on top of her, burying her in tit while hers serve as your pillows.", false);
+        if (player.breasts.hasFuckableNipples()) outputText("  Isabella thrusts her tongue at your " + nippleDescription(player, 0) + ", burrowing it deep into the unusual passage to get at the last of your liquid bounty and inadvertently intensifying your pleasure.  Your arm gives out and you drop on top of her, burying her in tit while hers serve as your pillows.", false);
         // (Cock & Puss)
         if (player.gender == 3) {
             if (player.wetness() == 5) outputText("  The juices that splatter from your " + vaginaDescript(player) + " almost seems an afterthought, but when you cum, you cum <i>allll</i> over.", false);

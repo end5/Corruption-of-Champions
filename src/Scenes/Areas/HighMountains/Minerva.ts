@@ -185,7 +185,7 @@ export class Minerva extends Monster {
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
         this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
-        createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.tallness = 8 * 12 + 4;

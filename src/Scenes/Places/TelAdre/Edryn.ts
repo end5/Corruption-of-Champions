@@ -405,7 +405,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         else outputText("You smile, realizing you hadn't meant to think of her as a mare and you as her stud, but that's exactly what you are right now.  Your thrusts speed up as you renew your determination to fill this cunt full of fillies.", false);
 
         outputText("\n\nShe twists around to look you in the eye as you work her drooling horse-cunt over.  You can hear her copious fluids splattering the floor and feel them dripping down your hind legs as she moans, leaning back into you and planting a sloppy kiss on your lips.  One of her hands ", false);
-        if (player.biggestTitSize() <= 1) outputText("strokes your chest", false);
+        if (player.breasts.biggestTitSize() <= 1) outputText("strokes your chest", false);
         else outputText("caresses a breast", false);
         outputText(" while she caresses the side of your " + face(player) + " with the other.  Your body pumps away while your tongues entwine, tracing saliva over each other's lips.  She pulls back and moans out again, trailing off into a whinny as she orgasms underneath you.\n\n", false);
 

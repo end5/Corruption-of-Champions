@@ -29,7 +29,7 @@ export class AkbalScene {
                     vagoo = girlsRapeAkbal;
                     vagooLick = rapeAkbalForcedFemaleOral;
                 }
-                if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor)
+                if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor)
                     bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
                 if (player.cocks.length > 0)
                     buttFuck = rapeAkbal;
@@ -494,7 +494,7 @@ export class AkbalScene {
         else {
             outputText("You groan loudly as Akbal's impressive shaft stretches your pussy wide, instantly thankful that you had the idea to lube him up beforehand. Your less-than-willing partner adds his own groan to yours, the twitching of his meat signalling that he's not quite to opposed to the idea as he makes out. Maybe he's got a thing about dominance, from either angle. Nevertheless, you continue to push down until your hips reach his with a light bump. The sensation of his immense cock filling you up causes you to shudder, before leaning into the demon, pressing your " + chestDesc(game.player) + " against his, revealing in his silky fur stroking multiple parts of your body all at once. The yowling male takes off, ducking his head to lick and nip at your " + nippleDescription(player, 0) + "s", false);
             // ({If Lactating}
-            if (player.biggestLactation() >= 1)
+            if (player.breasts.biggestLactation() >= 1)
                 outputText(", adding a purr of pleasant surprise as he locks his lips around one nipple, drawing out mouthfuls of your sweet milk before gulping it down.  The sheer taboo of feeding a demon your milk sends shivers down your spine", false);
             outputText(".\n\n", false);
 
@@ -1607,7 +1607,7 @@ export class AkbalScene {
             outputText(" body until he reaches your [fullChest].  After a second of feeling around he finds your [nipples].");
 
             // [if (hasNippleCunts = False)]
-            if (!player.hasFuckableNipples())
+            if (!player.breasts.hasFuckableNipples())
                 outputText("\n\nThe demon gently teases your erect [nipples] with his hands before rubbing your [fullChest] in large circular motions.  The feeling of his soft fur gliding across your " + skinFurScales(player) + " in combination with his mouth and tongue attacking your [vagOrAss] is making your body convulse.");
             else
                 outputText("\n\nThe demon lets out a sound of surprise against your [vagOrAss] as he notices your [nipples].  He delves a finger into your [nipple] and swabs the moist cavity with a curious finger.  After a few moments of playing with your [nipples] he begins rubbing your [fullChest] in large circular motions.  He takes time to tease each of your tits with the feeling of his soft fur until you can take no more.");

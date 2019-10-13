@@ -657,10 +657,10 @@ export class IncubusMechanicScenes {
             outputText("\n\nGods, your pussy is wet, but you've got to fight it! You have to hold on, maybe bite him or something to give you the time to recover and get back on the offensive! Yeah... biting might do the trick. You inhale to steel yourself for the oral assault, getting a nice, long whiff of his supremely potent pheromones in the process. Your [clit] gets so stiff that you start writhing your [hips] in order to squish your cunt-lips tight around. <i>Mmmm, gotta attack...</i> you think, but your heart just isn't in it anymore. You open your mouth, letting him push his tip inside, so that you can bite him, of course. Oh, the flavor is so intense... so strong and masculine and perfect on your tongue that you decide NOT to chomp down. Not yet. You can spend a little time recovering first, with his wonderfully tasty, throbbing-hot demon-cock on your happily licking tongue.");
 
             outputText("\n\nSoon, those licks turn to sucks, and those sucks into a devilishly pleasurable blowjob. One hand winds to your steaming box while the other gropes at your [fullChest],");
-            if (player.hasFuckableNipples()) outputText(" slipping inside a [nipple] to thrust just like your other hand. You work your upper and lower pussies like a woman possessed.");
+            if (player.breasts.hasFuckableNipples()) outputText(" slipping inside a [nipple] to thrust just like your other hand. You work your upper and lower pussies like a woman possessed.");
             else {
                 outputText(" pinching and tugging on");
-                if (player.totalNipples() > player.totalBreasts()) outputText(" nipple after nipple, your myriad breastly endowments providing you with oh so many buttons to tend to");
+                if (player.breasts.totalNipples() > player.breasts.totalBreasts()) outputText(" nipple after nipple, your myriad breastly endowments providing you with oh so many buttons to tend to");
                 else outputText("your [nipples] one after another");
             }
             outputText(" Alas, all good things must come to an end, and your lovely, lovely little lollipop is rudely pulled from your questing lips with a noisy pop.");
@@ -680,10 +680,10 @@ export class IncubusMechanicScenes {
             outputText("\n\nGods, your pussy is wet, but you've got to fight it! You have to hold on, maybe bite him or something to give you the time to recover and get back on the offensive! Yeah... biting might do the trick. You inhale to steel yourself for the oral assault, getting a nice, long whiff of his supremely potent pheromones in the process. Your [clit] gets so stiff that you start writhing your [hips] in order to squish your cunt-lips tight around. <i>Mmmm, gotta attack...</i> you think, but your heart just isn't in it anymore. You open your mouth, letting him push his tip inside, so that you can bite him, of course. Oh, the flavor is so intense... so strong and masculine and perfect on your tongue that you decide NOT to chomp down. Not yet. You can spend a little time recovering first, with his wonderfully tasty, throbbing-hot demon-cock on your happily licking tongue.");
             outputText("\n\nSoon, those licks turn to sucks, and those sucks into a devilishly pleasurable blowjob. One hand winds under your [armor] to tend to your steaming box while the other gropes at your [fullChest],");
 
-            if (player.hasFuckableNipples()) outputText(" slipping inside a [nipple] to thrust just like your other hand. You work your upper and lower pussies like a woman possessed.");
+            if (player.breasts.hasFuckableNipples()) outputText(" slipping inside a [nipple] to thrust just like your other hand. You work your upper and lower pussies like a woman possessed.");
             else {
                 outputText(" pinching and tugging on");
-                if (player.totalNipples() > player.totalBreasts()) outputText(" nipple after nipple, your myriad breastly endowments providing you with oh so many buttons to tend to");
+                if (player.breasts.totalNipples() > player.breasts.totalBreasts()) outputText(" nipple after nipple, your myriad breastly endowments providing you with oh so many buttons to tend to");
                 else outputText("your [nipples] one after another");
             }
             outputText(" Alas, all good things must come to an end, and your lovely, lovely little lollipop is rudely pulled from your questing lips with a noisy pop.");

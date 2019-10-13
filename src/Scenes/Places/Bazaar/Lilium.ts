@@ -120,10 +120,10 @@ export class Lilium extends BazaarAbstractContent {
 
         outputText("You establish a rhythm of pleasuring Lilium from both sides; thrust in, flex tongue, pull out, release and soon she begins pushing her hips back in time to meet you on every thrust.", false);
         // (If player has breasts)
-        if (player.biggestTitSize() >= 1) {
+        if (player.breasts.biggestTitSize() >= 1) {
             outputText("  A tingle emanates from your " + nippleDescription(player, 0) + "s as your " + allBreastsDescript(player) + " slide across her sweat-slicked back with every thrust.", false);
             // (If player has a lot of milk)
-            if (player.biggestLactation() >= 1) outputText("  The stream of milk that leaves your breasts each time you press your body against Lilium's adds further lubrication between you.", false);
+            if (player.breasts.biggestLactation() >= 1) outputText("  The stream of milk that leaves your breasts each time you press your body against Lilium's adds further lubrication between you.", false);
         }
         outputText("\n\n", false);
 
@@ -166,16 +166,16 @@ export class Lilium extends BazaarAbstractContent {
         outputText("\n\n", false);
 
         // (if player has breasts)
-        if (player.biggestTitSize() >= 1) {
+        if (player.breasts.biggestTitSize() >= 1) {
             outputText("You turn your attention to your own " + allBreastsDescript(player) + " and how they bounce from the force of your vigorous fucking, supporting the weight of your " + breastDescript(game.player, 0) + " with your hands as you continue to ride Lilium's cock.", false);
             // (if demonic tongue)
             if (player.tongueType == TONUGE_DEMONIC) outputText("  Letting your demonic tongue extend out from between your lips, you wrap it around one " + nippleDescription(player, 0) + " and gently squeeze, sending an electric thrill that flows to your core and back out to the tips of your fingers.", false);
             // (else if no demonic tongue)
             else outputText("  You begin to squeeze your " + nippleDescription(player, 0) + " between two fingers, sending an electric thrill that flows to your core and back out to the tips of your fingers.", false);
             // (if lactating a little)
-            if (player.biggestLactation() >= 1 && player.biggestLactation() <= 2) outputText("  A small stream of milk leaks out and dribbles over your tongue, giving you a taste of your own fluids.", false);
+            if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() <= 2) outputText("  A small stream of milk leaks out and dribbles over your tongue, giving you a taste of your own fluids.", false);
             // (else if lactating a lot)
-            else if (player.biggestLactation() > 2) outputText("  A powerful stream of milk fires out of your " + nippleDescription(player, 0) + ", coating Lilium's flat stomach.", false);
+            else if (player.breasts.biggestLactation() > 2) outputText("  A powerful stream of milk fires out of your " + nippleDescription(player, 0) + ", coating Lilium's flat stomach.", false);
             outputText("\n\n", false);
         }
 

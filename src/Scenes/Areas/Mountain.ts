@@ -167,7 +167,7 @@ export class Mountain {
             }
             // Mino gangbang
             if (player.effects.findByType(StatusAffects.MinoPlusCowgirl) < 0 || rand(10) == 0) {
-                if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] == 1 && player.horns > 0 && player.hornType == HORNS_COW_MINOTAUR && player.earType == EARS_COW && player.tailType == TAIL_TYPE_COW && player.lactationQ() >= 200 && player.biggestTitSize() >= 3 && player.minotaurAddicted()) {
+                if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] == 1 && player.horns > 0 && player.hornType == HORNS_COW_MINOTAUR && player.earType == EARS_COW && player.tailType == TAIL_TYPE_COW && player.lactationQ() >= 200 && player.breasts.biggestTitSize() >= 3 && player.minotaurAddicted()) {
                     // PC must be a cowmorph (horns, legs, ears, tail, lactating, breasts at least C-cup)
                     // Must be addicted to minocum
                     outputText("As you pass a shadowy cleft in the mountainside, you hear the now-familiar call of a cowgirl echoing from within.  Knowing what's in store, you carefully inch closer and peek around the corner.");
@@ -356,7 +356,7 @@ export class Mountain {
         outputText("\n\nYou gingerly sit up, your body still quaking with pleasure.  Every movement sends another luxurious aftershock rippling through your body.  You crawl over to the splayed out minotaur, opposite your cow-girl partner, and join her in licking the man's cock clean.  It takes some work, but soon it glistens in the light of the red sky above you.");
 
         outputText("\n\nAs if you both possess some kind of bovine telepathy, you both lean forward, wrapping your ");
-        if (player.bRows() > 1) outputText("uppermost ");
+        if (player.breasts.length > 1) outputText("uppermost ");
         outputText("breasts around his monolithic shaft.  Your faces meet and her soft lips press against yours, each of you earnestly pressing your tongues into the other's mouths, swapping the juices you've collected over the past hour or so.  The bull beneath you groans, awakening to the feeling of four breasts surrounding his love muscle.");
 
         outputText("\n\nThe two of your pump your breasts up and down, your lips barely leaving each other long enough to give his member the occasional kiss, lick or slurp.  Up and down you go, and this time it's the minotaur's body that's wracked with bliss, writhing on the ground.  Milk dribbles from your breasts, coating you, the cow-girl and the minotaur in a fine white sheen and creating a sweet-smelling aroma that permeates the air.");

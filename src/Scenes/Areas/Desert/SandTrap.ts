@@ -113,7 +113,7 @@ export class SandTrap extends Monster {
         this.ballSize = 4;
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
-        this.createBreastRow(0, 0);
+        this.breasts.createBreastRow(0, 0);
         this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.tallness = rand(8) + 150;

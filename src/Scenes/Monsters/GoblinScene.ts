@@ -43,7 +43,7 @@ export class GoblinScene {
                 outputText("The goblin saunters up to you, wiggling her hips with a needy, sexual sway. She opens a small pouch, the sight of which instantly bombards your easy mind with thoughts of your lower lips being opened similarly, and pulls out a tube of lipstick, pausing to apply it to her lips. She caps off the tube and blows you a kiss with a wet smacking sound as she steps up to your trembling form. Your breath is knocked from your body as she drops all her weight onto your middle, making her ass and well-rounded tits jiggle just like yours do when you are bouncing on a cock. She reaches up to twist her nipple-studs, grinding the wetness of her crotch up and down your belly. You can't help but envy her piercings. Like, they totally turn you on!\n\n", false);
                 outputText("Your body is already hot and your " + nippleDescription(player, 0) + "s harden involuntarily in response to the tiny slut's totally understandable display of desire. Your " + vaginaDescript(player, 0) + " leaks enough girl-juice to form a puddle beneath you, doing its best to show your fellow slut how ready you are. You 'subtly' (at least in your little mind) push your chest forward, making your " + nippleDescription(player, 0) + "s easy targets for the goblin. She grabs hold of your breasts", false);
                 // --[If nipplecunts]
-                if (player.hasFuckableNipples()) outputText(", fingering your wet nipplecunts and pinching the now-puffy areolas tightly, sending uncontrollable waves of pleasure from your chest to your groin.", false);
+                if (player.breasts.hasFuckableNipples()) outputText(", fingering your wet nipplecunts and pinching the now-puffy areolas tightly, sending uncontrollable waves of pleasure from your chest to your groin.", false);
                 // -[If not]
                 else outputText(" and slides her fingers up to your nipples, pinching and twisting them, torturing you with pain and pleasure.", false);
                 outputText("\n\n", false);
@@ -102,7 +102,7 @@ export class GoblinScene {
             else outputText("It rapidly forms into a puddle as your " + vaginaDescript(player, 0) + " does its best to show just how ready you are.  ", false);
         }
         outputText("Your " + nippleDescription(player, 0) + "s poke upwards, giving the goblin easy targets.  She grabs hold of them ", false);
-        if (player.hasFuckableNipples()) outputText("slipping her thumbs inside the tender cunts and pinching against them tightly", false);
+        if (player.breasts.hasFuckableNipples()) outputText("slipping her thumbs inside the tender cunts and pinching against them tightly", false);
         else outputText("twisting and tweaking", false);
         outputText(", torturing you with pain and pleasure.\n\n", false);
         // [DICK VERSION]
@@ -383,9 +383,9 @@ export class GoblinScene {
             else if (player.vaginas[0].vaginalWetness > VAGINA_WETNESS_WET) outputText("leaving her sticky with your nether-juices", false);
             else outputText("leaving the taste of pussy on her tongue", false);
             outputText(".  ", false);
-            if (player.biggestLactation() >= 3.5) outputText("Milk explodes from your nipples, soaking the petite slut.  ", false);
-            else if (player.biggestLactation() > 2) outputText("Twin streams of milk soak the slut's hair, running down her face like white tears.  ", false);
-            else if (player.biggestLactation() >= 1) outputText("Milk dribbles from your nipples, falling into the little slut's hair.  ", false);
+            if (player.breasts.biggestLactation() >= 3.5) outputText("Milk explodes from your nipples, soaking the petite slut.  ", false);
+            else if (player.breasts.biggestLactation() > 2) outputText("Twin streams of milk soak the slut's hair, running down her face like white tears.  ", false);
+            else if (player.breasts.biggestLactation() >= 1) outputText("Milk dribbles from your nipples, falling into the little slut's hair.  ", false);
             outputText("Her face has a strange dopey smile on it, and she looks like she's in some strange state in between consciousness and sleep.  You grab her by the hair and toss her on the ground, watching her body twitch and jump as her orgasm continues to rack her body.  It looks like it's starting to slow down, the little twat ought to be fine.\n\n", false);
             outputText("You casually dress, ignoring the pants and moans from the blissed-out goblin, and prepare to leave.   Taking one last look over your shoulder, you realize her fluids have made a puddle bigger than her.  She'll probably have a hell of a hangover when she wakes up.  You ", false);
             if (player.cor > 50) outputText("smirk", false);
@@ -431,17 +431,17 @@ export class GoblinScene {
         if (player.cocks[0].cockLength < 20) outputText("can feel the massive bulge in her midsection", false);
         else outputText("stretch her so much that you can see the bulge even from this angle", false);
         outputText(" and it drives your lust even higher. You withdraw more cock from the hole than your cum starved slut has body, causing her eyes to roll into the back of her head as her " + vaginaDescript(monster) + " clamps down on you and she cums again. Every time you pull out or hammer home brings her off to the point that by the time you've both gotten down on all fours, rutting like a pair of wild animals, she can only lie there, practically foaming at the wide open mouth", false);
-        if (player.biggestTitSize() >= 1) {
+        if (player.breasts.biggestTitSize() >= 1) {
             outputText(", her head resting between your " + breastDescript(game.player, 0), false);
-            if (player.biggestLactation() >= 1) {
+            if (player.breasts.biggestLactation() >= 1) {
                 outputText(" as your " + nippleDescription(player, 0) + " ", false);
-                if (player.biggestLactation() < 2) outputText("occasionally drip milky tears onto her face", false);
-                if (player.biggestLactation() < 3) outputText("weep streams of milk onto her features", false);
+                if (player.breasts.biggestLactation() < 2) outputText("occasionally drip milky tears onto her face", false);
+                if (player.breasts.biggestLactation() < 3) outputText("weep streams of milk onto her features", false);
                 else outputText("plaster her with gouts of fluid", false);
             }
         }
         outputText(". Her hair is matted with", false);
-        if (player.biggestLactation() >= 1) outputText(" milk and", false);
+        if (player.breasts.biggestLactation() >= 1) outputText(" milk and", false);
         outputText(" the sweat of the both of you, and the only sound she makes is an occasional gurgle of ecstasy every few orgasms.\n\n", false);
         outputText("\"<i>Alright, whore. You wanted my babies? Here. They. CUM!</i>\" you yell. However, ", false);
         if (player.hasVagina()) {
@@ -527,12 +527,12 @@ export class GoblinScene {
             else if (player.hasKnot(0)) outputText("stretching painfully around your knot", false);
             else if (player.cocks[0].cockType == CockTypesEnum.HORSE || player.cocks[0].cockType.Index > 3) outputText("feeling painfully tight around you", false);
             outputText(". With each and every step she slides down further, stretching her to capacity, until she sits almost completely impaled on you, grabbing your ", false);
-            if (player.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
+            if (player.breasts.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
             else outputText("torso", false);
             outputText(" to help support herself.  A steady pulse of motion massages you in time with the green girl's breathing.  You realize just how much of her body must be devoted to accommodating monstrous members, no wonder goblins are so fragile in a fight!\n\n", false);
             outputText("She pants happily, her tongue rolling free from her mouth as she comments, \"<i>So full. . .</i>\"  Still wincing from the monster inside her she begins to cheer you on, \"<i>oooh go-ah-faster! I wanna bounce!</i>\"\n\n", false);
             outputText("It's all the encouragement you need, and you break into a run, feeling her lithe form bounce on your " + cockDescript(game.player, x) + ", drawing out a cacophony of cries ranging from happy wails and moans to slight yelps of pain. Her tiny fists dig into your ", false);
-            if (player.biggestTitSize() >= 1) outputText("tits", false);
+            if (player.breasts.biggestTitSize() >= 1) outputText("tits", false);
             else outputText("skin", false);
             outputText(" as she hangs on, clenching and smashing her ample tits against you. You run hard, feeling her bounce and wriggle as her cunt and rapid breathing squeezing and milking you like you never before. You're sure if you could feel like this every time you took a jog, you'd be in great shape.\n\n", false);
             outputText("\"<i>Ooh fuck stud, bounce me! Yeah just like that,</i>\" she moans, \"<i>Are you gonna cum? Omigod please cum, I need you to fill me up just like this!</i>\"\n\n", false);
@@ -559,12 +559,12 @@ export class GoblinScene {
             else if (player.hasKnot(0)) outputText("stretching tightly around your knot", false);
             else if (player.cocks[0].cockType == CockTypesEnum.HORSE || player.cocks[0].cockType.Index > 3) outputText("feeling absolutely perfect around you", false);
             outputText(".  With each and every step you take, she slides down further, until she sits fully impaled on you, grabbing your ", false);
-            if (player.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
+            if (player.breasts.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
             else outputText("torso", false);
             outputText(" to help support herself.   A steady pulse of motion massages you in time with the green girl's breathing, making you realize just how much of her body must be devoted to accommodating monstrous members.\n\n", false);
             outputText("She pants happily, her tongue rolling free from her mouth as she cheers you on, \"<i>oooh go-ah-faster!  I wanna bounce!</i>\"\n\n", false);
             outputText("It's all the encouragement you need, and you break into a run, feeling her lithe form bounce on your " + cockDescript(game.player, x) + ", drawing out a cacophony of happy wails and moans.  Her tiny fists dig into your ", false);
-            if (player.biggestTitSize() >= 1) outputText("tits", false);
+            if (player.breasts.biggestTitSize() >= 1) outputText("tits", false);
             else outputText("skin", false);
             outputText(" as she hangs on, clenching and smashing her ample tits against you.  You run hard, feeling her bounce and wriggle as her cunt and rapid breathing begin squeezing and milking you like never before.  You're sure if you could feel like this every time you took a jog, you'd be in great shape.\n\n", false);
             outputText("\"<i>Ooh fuck stud, bounce me! Yeah just like that,</i>\" she moans, \"<i>Are you gonna cum? Omigod please cum, I need you to fill me like this!</i>\"\n\n", false);

@@ -56,7 +56,7 @@ export class GreenSlime extends Monster {
         this.pronoun1 = "it";
         this.pronoun2 = "it";
         this.pronoun3 = "its";
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
         this.tallness = rand(8) + 80;

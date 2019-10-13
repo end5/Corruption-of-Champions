@@ -219,7 +219,7 @@ export class Doppleganger extends Monster {
         this.breastRows = [];
 
         for (i = 0; i < player.breastRows.length; i++) {
-            this.createBreastRow();
+            this.breasts.createBreastRow();
             const tbr: BreastRowClass = this.breastRows[i];
             const sbr: BreastRowClass = player.breastRows[i];
 
@@ -291,7 +291,7 @@ export class Doppleganger extends Monster {
         str += " " + mf(player, "He", "She") + " moves around on " + mf(player, "his", "her") + " " + legs(player) + " with a twitchy jerkiness, " + mf(player, "his", "her") + " " + game.hipDescription(player) + " swinging and tightening.";
         if (player.tailType != 0) str += " " + mf(player, "His", "Her") + " tail flicks this way and that.";
         str += " " + mf(player, "He", "She") + " wields the exact same " + player.weaponName + " you do, and is dressed in the mirror image of your " + player.armorName + ". ";
-        if (player.biggestTitSize() >= 2) str += "It’s difficult not to notice the way the mirror image of your " + breastDescript(player, player.biggestTitRow()) + " ebbs and heaves within it.";
+        if (player.breasts.biggestTitSize() >= 2) str += "It’s difficult not to notice the way the mirror image of your " + breastDescript(player, player.breasts.biggestTitRow()) + " ebbs and heaves within it.";
 
         return str;
     }

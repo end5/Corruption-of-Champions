@@ -171,7 +171,7 @@ export class Isabella extends Monster {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
         this.effects.create(StatusAffects.BonusVCapacity, 45, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("EE+"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("EE+"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 38, 0, 0, 0);

@@ -181,7 +181,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nValeria lets out a long, low moan as you fellate her goo-cock and runs her hand through your [hair], urging you onwards.  You continue on for a few minutes, slowly working her slick cock in and out of your throat until she eventually pushes your head back and withdraws herself, already panting from the pleasure.  \"<i>That's enough, [name].  Time for the main event, I think.</i>\"");
         outputText("\n\nThe tip of her goopy cock slips out of your well-used mouth, leaving its sticky, citrusy residue clinging to your lips.  Valeria slides back along your chest, ");
         // [if PC has C-cups or bigger,
-        if (player.biggestTitSize() > 3) outputText("bumping over your [chest] and stopping for a brief moment to tickle your sensitive tits with her goopy bottom before ");
+        if (player.breasts.biggestTitSize() > 3) outputText("bumping over your [chest] and stopping for a brief moment to tickle your sensitive tits with her goopy bottom before ");
         outputText("coming to a stop over your crotch.  She pours herself into your lap, ");
         // [if PC has cock: \"<i>
         if (player.cocks.length > 0) outputText("her gooey ass devouring your " + cockDescript(game.player, 0) + " as she slides down your belly");
@@ -202,16 +202,16 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nGrinning wickedly, Valeria shifts her legs closer to her body, running them over your [chest]. You gasp as her soft, sticky goo slithers across your sensitive flesh.  Her feet stop just atop your [nipples].");
             // (paragraph finishes with the below:)
             // (If PC has normal tits)
-            if (!player.hasFuckableNipples()) outputText("  Valeria swirls her heels around your sensitive [nipples], letting the tips slip into her gooey feet.  She rocks her heels back and forth, popping your nips in and out of her gooey body, feeling like little pinches and squeezes on your defenseless flesh.");
+            if (!player.breasts.hasFuckableNipples()) outputText("  Valeria swirls her heels around your sensitive [nipples], letting the tips slip into her gooey feet.  She rocks her heels back and forth, popping your nips in and out of her gooey body, feeling like little pinches and squeezes on your defenseless flesh.");
             // if PC has nipplecunts)
             else outputText("  The goo-girl, still grinning, picks her feet up off your chest. You can only watch as both her dainty feet swirl and bend, reconstituting themselves as a pair of massive flared horsecocks.  You barely have time to yelp before she plunges both of her bestial shafts deep into your [chest].  You moan like a whore as the goo-girl triple-penetrates you, ramming her three cocks into your stretched cunt and the holes on your chest.");
             // (end if)
             outputText("\n\nUnder Valeria's triple attacks on your [vagina] and [nipples], you cannot last very long.  Gasping with pleasure, you feel your climax rising.  But not one to be outdone, your gooey lover lets out her own long, loud moan and rams her cock");
-            if (player.hasFuckableNipples()) outputText("s");
+            if (player.breasts.hasFuckableNipples()) outputText("s");
             outputText(" deeper inside you than ever before.  You feel streaks of goo pouring into you as she cums, pouring her essence into your womb ");
-            if (player.hasFuckableNipples()) outputText("and [chest] ");
+            if (player.breasts.hasFuckableNipples()) outputText("and [chest] ");
             outputText("until slime overflows from inside you, pooling under her hips.  Filled beyond your capacity, you scream your pleasure and cum, clamping down on Valeria's cock");
-            if (player.hasFuckableNipples()) outputText("s");
+            if (player.breasts.hasFuckableNipples()) outputText("s");
             outputText(" until they literally pop inside you, flowing back out in goopy streaks.");
         }
         // (If Male/Herm)
@@ -319,7 +319,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             player.cuntChange(player.vaginalCapacity(), true, true, false);
             outputText("\n\n\"<i>Oh, you like that, do you?</i>\" the armor-goo asks, smiling evilly.  \"<i>Hmm, maybe if you're a good " + mf(player, "boy", "girl") + ", I'll let you get off, too</i>\"  Still grinning, she begins to hammer her cock-like appendage into your pussy, fucking you fast and hard with her goo-dildo.");
             // [If PC has breasts > A-cups:
-            if (player.biggestTitSize() > 1) {
+            if (player.breasts.biggestTitSize() > 1) {
                 outputText("  As she hammers your cunny, bits of her goo swirl around your [chest], squeezing and massaging your tits. You squirm as she roughly teases your boobs, pinching at your nipples and squeezing your tender flesh roughly.");
                 if (player.lactationQ() > 0) outputText("  To her delight, a spray of warm milk jets out of your sore nipples, milky white mixing into blue goo like oil in water.  \"<i>Mmm, tasty!</i>\" she teases, massaging more and more from you.");
             }
@@ -499,7 +499,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
     private valeriaGooRapeII(): void {
         clearOutput();
         outputText("The lump that bumped you earlier smacks off ");
-        if (player.biggestTitSize() >= 3) outputText("the valley of your cleavage");
+        if (player.breasts.biggestTitSize() >= 3) outputText("the valley of your cleavage");
         else outputText("your chest");
         outputText(" once more, and this time you catch a glimpse of it out of the corner of your eye. It's the goo-girl's core, clasped in a fist of deep-blue. It pulses faintly as it's held there, just before you, while subtle vibrations and temperature fluctuations alert you to some kind of secret communications between the two women. Just what are they planning?");
         outputText("\n\nYou get your answer in the form of a sudden");
@@ -521,11 +521,11 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nThere, the cerulean shaft batters hard against the restrictive opening to your womb, pushing with firm pressure until some slime rolls into your empty, baby-making chamber. You cannot help but cry out to the sensation of your incredibly thorough doublestuffing. Wincing, you endure the slow stretching of your inner gates, and once the tunneling ooze has established a decent-size path to your uterus, the outside solidifies, much like the one in your ass. A suction starts on your [clit] to distract you from this, and its success is evidenced by the copious fuck-juices your [vagina] feeds the mixed goo-girls.");
         }
         // Fuckable nipples
-        if (player.hasFuckableNipples() && player.biggestTitSize() >= 5) {
+        if (player.breasts.hasFuckableNipples() && player.breasts.biggestTitSize() >= 5) {
             outputText("\n\nYour [fullChest] are roughly squeezed and groped by what feels like Valeria's hands, pressed together and pulled apart. Sometimes they even pull on them, suctioning your tits hard enough to make them appear larger for a time. No matter what, the licentious caresses always come back to your [nipples], squeezing and tugging on them until your lust makes them as wet and free-flowing");
             if (player.hasVagina()) outputText(" as your snatch");
             else outputText(" as the randiest slut's snatch");
-            outputText(". Valeria takes this as an invitation, and " + num2Text(player.totalNipples()) + " phallic objects greedily push at your cunt-nipples, eagerly sliding themselves inside your welcome chest-pussies. Looking down, you can see the navy-blue outlines of the phallic tendrils waving and writhing as they push their way deep, embedding themselves tit-deep in blissful warmth.");
+            outputText(". Valeria takes this as an invitation, and " + num2Text(player.breasts.totalNipples()) + " phallic objects greedily push at your cunt-nipples, eagerly sliding themselves inside your welcome chest-pussies. Looking down, you can see the navy-blue outlines of the phallic tendrils waving and writhing as they push their way deep, embedding themselves tit-deep in blissful warmth.");
         }
         // Dick
         if (player.cocks.length > 0) {
@@ -564,9 +564,9 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             outputText(" your girlcum in feverish releases of ecstasy, repeatedly getting off on this perverse, doubled slime-flation.");
         }
         // {titties}
-        if (player.hasFuckableNipples() && player.biggestTitSize() >= 5) {
+        if (player.breasts.hasFuckableNipples() && player.breasts.biggestTitSize() >= 5) {
             outputText("\n\nYour breasts soon experience something similar as the tentacle-like phalli convulse and squirt, ejaculating thick streamers of something hot straight into your tits. Rather than feeling the copious goo-spoo rolling back out your entrances, you just get fuller and fuller until you see the curve of your ");
-            if (player.bRows() > 1) outputText("top row of breasts");
+            if (player.breasts.length > 1) outputText("top row of breasts");
             else outputText("breasts");
             outputText(" pulling away from your body, gaining cup sizes in a span of seconds, your skin stretching taut under the moist deluge. Your tit-twats quiver with delight, feeling nothing but obscene, ever-growing pleasure until they're squeezing down on the sloppy tentacle-cocks, milking them to cum harder and faster, which in turn bloats your ecstatic tits into blissful, bloated orbs.");
         }
@@ -603,11 +603,11 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         }
         // Butt fillinggasm
         outputText("\n\nWhimpering in ecstasy, you groan out with each ass-filling pump, letting your attention focus on the feeling of being filled. The imprisoning orb slowly loses cohesion, freeing you to instinctively rub your bloating belly as it expands");
-        if (player.biggestTitSize() >= 5 && player.hasFuckableNipples()) outputText(", pausing to handle your hefty, swelling tits");
+        if (player.breasts.biggestTitSize() >= 5 && player.breasts.hasFuckableNipples()) outputText(", pausing to handle your hefty, swelling tits");
         outputText(", moaning and groaning as Valeria's shape gradually coalesces back around you. The goo-girl's core vanishes from view and reappears down south, pressing against your [asshole] as the \"pipe\" that filled you so full melts into slime. You scream in anal ecstasy as it slips past your ring, lodging firmly in your butt while the jellied mass inside convulses, rubbing against your walls in all the right ways, almost like it's experiencing an orgasm all its own.");
         outputText("\n\nYou shake and squirm on the ground, writhing in climax until your slime-filling settles enough to allow you to take stock of your situation. Valeria is back in place, forming her usual protective coating.");
-        if (player.biggestTitSize() >= 5 && player.hasFuckableNipples()) {
-            for (const x = 0; x < player.bRows(); x++) {
+        if (player.breasts.biggestTitSize() >= 5 && player.breasts.hasFuckableNipples()) {
+            for (const x = 0; x < player.breasts.length; x++) {
                 player.breastRows[x].breastRating += 3 + rand(3);
             }
             outputText(" Your tits have grown much larger, " + breastCup(player, 0) + "-cups at least.");
@@ -642,7 +642,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
             if (player.balls > 0) player.effects.setValue(StatusAffects.GooStuffed, 2, 2);
             else player.effects.setValue(StatusAffects.GooStuffed, 2, 1);
         }
-        if (player.biggestTitSize() >= 5 && player.hasFuckableNipples()) player.effects.setValue(StatusAffects.GooStuffed, 4, 1);
+        if (player.breasts.biggestTitSize() >= 5 && player.breasts.hasFuckableNipples()) player.effects.setValue(StatusAffects.GooStuffed, 4, 1);
         cleanupAfterCombat();
     }
 
@@ -655,11 +655,11 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         outputText("bitch in heat. Gods, there's so much!");
         if (player.effects.getValue4Of(StatusAffects.GooStuffed) > 0) {
             outputText("\n\n");
-            if (!player.hasFuckableNipples()) outputText("Stiffening up");
+            if (!player.breasts.hasFuckableNipples()) outputText("Stiffening up");
             else outputText("Opening up");
             outputText(", your [nipples], suddenly disgorge rivers of gelatinous slime, adding to growing puddle below with, odd-colored obscene lactation. You grab one with one hand and squeeze, shooting out huge streamers of milky-goo until your tit is sore and aching. You repeat on the other side");
-            if (player.bRows() > 1) outputText(" and the next row down");
-            if (player.bRows() > 2) outputText(", and so on");
+            if (player.breasts.length > 1) outputText(" and the next row down");
+            if (player.breasts.length > 2) outputText(", and so on");
             outputText(", working out every drop of thick, body-filling slime while your ass is still busy draining. Even after they empty, they don't seem to lose a single bit of the size they've gained....");
         }
         if (player.cocks.length > 0 && player.effects.getValue2Of(StatusAffects.GooStuffed) > 0) {

@@ -31,7 +31,7 @@ export class Essrayle {
             outputText(".");
 
             outputText("\n\nA soft, sweet-smelling hand rests under your chin and directs you to look back to her once more.  \"<i>Don't be so shy,</i>\" she coos, pressing those large, squishy things firmly against your ");
-            if (player.biggestTitSize() >= 10) outputText("own");
+            if (player.breasts.biggestTitSize() >= 10) outputText("own");
             else outputText("[chest]");
             outputText(".  \"<i>You must be one of those adventurers I've been hearing about, am I right?</i>\"");
 
@@ -77,7 +77,7 @@ export class Essrayle {
             outputText("Essrayle giggles, sending ripples through her ample breasts.  \"<i>Oh, why thank you!  It's nothing major - I doubt it'll be much of a burden to you.  But in my travels, I've grown wilted and depleted of the energy to go on.  I'm soooo hungry!  Would you please-?</i>\"  She leaves the question hanging, looking to you imploringly.  Hastily your hand goes to where your supplies are housed, but you stop as she waves a hand dismissively.  \"<i>No, no, I don't mean biscuits or the like.</i>\"  Confused, you frown, but soften as you feel her hand rest upon your [chest].  \"<i>I require a special kind of food to do what I do, one that won't exhaust your supplies in the least.</i>\"\n\n");
         }
         // (If breasts
-        if (player.biggestTitSize() > 1) outputText("Your nipples stiffen, breasts puffing out with a heated breath");
+        if (player.breasts.biggestTitSize() > 1) outputText("Your nipples stiffen, breasts puffing out with a heated breath");
         else outputText("You arch your back gently, unconsciously pressing into her slender fingers a bit further");
         outputText(" as her hand begins to circle your chest.  \"<i>Though you, that's another story.</i>\"  She grins seductively as the air around you seems to thicken with a gentle pink mist.  Out of instinct, you look around, trying to discern the source - could she be one of the demons?");
         outputText("\n\nAgain you hear Essy's laugh, sweet and playful, feeling her suddenly hug you tight into her ample bosom.  Her skin is so soft, smelling so sweet and rather floral, and those tremendous breasts squish as they cover the lower half of your [face], silencing any protests you might have.  \"<i>Shhh, just relax,</i>\" she coos, a hand caressing your back tenderly, \"<i>just breathe deeply, cutie.</i>\"");
@@ -95,11 +95,11 @@ export class Essrayle {
         // (If breasts present)
         if (player.breastRows[0].breastRating >= 1) {
             outputText("\n\n\"<i>Oooh, how I adore these,</i>\" she coos to you, taking your breasts into two hands and beginning to squeeze and knead firmly into the pillowy flesh");
-            if (player.bRows() > 1) outputText(" of your uppermost pair");
+            if (player.breasts.length > 1) outputText(" of your uppermost pair");
             outputText(".  You moan, and this only seems to encourage her, as she takes your nipples between thumb and forefinger, twisting and turning them this way and that.  She giggles at how your moans seem to fluctuate by coincidence, continuing to tease them");
-            if (player.bRows() > 1) outputText(", steadily working over the multitude of fleshy mounds on your body");
+            if (player.breasts.length > 1) outputText(", steadily working over the multitude of fleshy mounds on your body");
             outputText(".");
-            if (player.hasFuckableNipples()) outputText("  Her fingers play with your nipples and press gently to tease at them.  She seems quite surprised as they sink in with minimal effort.  A grin spreads over her face as she begins to steadily thrust those digits in and out of your nipples, fingers swirling about the interiors all the while.");
+            if (player.breasts.hasFuckableNipples()) outputText("  Her fingers play with your nipples and press gently to tease at them.  She seems quite surprised as they sink in with minimal effort.  A grin spreads over her face as she begins to steadily thrust those digits in and out of your nipples, fingers swirling about the interiors all the while.");
             outputText("  \"<i>You certainly have a lovely pair, but they could always be better, don't you think?</i>\"");
             // [Yes] [No]
             menu();
@@ -162,7 +162,7 @@ export class Essrayle {
             outputText("\n\nSmiling as she inspects your now juicy folds first hand, her lips close over yours, tongue snaking and squirming into your quivering pussy.  The plant gives you a royal tongue-lashing, slurping away lewdly, lips plucking at your throbbing clit with amazing expertise.");
         }
         // [if breasts then also=
-        if (player.biggestTitSize() >= 1) {
+        if (player.breasts.biggestTitSize() >= 1) {
             outputText("\n\nYour breasts bounce and quiver wildly as you bounce up and down, held tightly by those tentacles, Essy dining happily down below.  Those opaque coverings ripple and squeeze hard about your breasts, pumping them for ");
             if (player.lactationQ() >= 400) outputText("your milk and ");
             outputText("your pleasure.  In time, their pumping increases in force and tempo just as her lips and tongue do.");
@@ -189,7 +189,7 @@ export class Essrayle {
 
             outputText("\n\nThose massive tits begin to grind about your own, puffy nipples feeling warm against your flesh as they move up, down, and around in slow circular motions, their owner smiling knowingly all the while. It begins to grow soothing indeed, almost playful when a sudden pressure grips about your [nipples] tightly.  It feels almost as if they were being enclosed in some tight tubes, squeezed upon tightly but never painful.");
             outputText("\n\nCurious, you look down to the source of the compression.  Gone are the flopping faux teats, and further down, a single massive, purple nipple seems to fatly squeeze about your own smaller one, engulfing it with ease.  A quick glance confirms the other");
-            if (player.totalNipples() > 2) outputText("s have");
+            if (player.breasts.totalNipples() > 2) outputText("s have");
             else outputText(" has");
             outputText(" been swallowed up as well.");
 
@@ -197,17 +197,17 @@ export class Essrayle {
 
             outputText("\n\nOnce more your [legs] shake some as the surreal experience continues. The pressure only grows with each throb of those fragrant, green breasts, your own only increasing in size with every pulse they give.  A third hand combs along your cheek, Essrayle cooing sweetly to you. \"<i>Relax,</i>\" she whispers, \"<i>relax and enjoy.</i>\"");
             outputText("\n\nAs the weight in your chest steadily increases, her hands take hold of you, keeping you standing through the pleasurable procedure.");
-            if (player.bRows() > 1) outputText("  She eventually dislodges with a wet pop, setting your new breasts to wobbling about as she moves down your body, repeating the gestures upon each set of breasts in return.");
+            if (player.breasts.length > 1) outputText("  She eventually dislodges with a wet pop, setting your new breasts to wobbling about as she moves down your body, repeating the gestures upon each set of breasts in return.");
 
-            outputText("\n\nWeak from the pleasure, the last thing you see is her smiling face before you fall forward into her embrace.  The next thing you know, you're alone in the glade, staring at the canopy above.  There's a heavy weight on your chest and you struggle to sit up.  " + Num2Text(player.bRows() * 2) + " massive breasts jiggle and sway upon your chest, all full and aching to be milked");
-            if (player.bRows() > 1) outputText(", the top pair being largest, descending in size with each subsequent pair");
+            outputText("\n\nWeak from the pleasure, the last thing you see is her smiling face before you fall forward into her embrace.  The next thing you know, you're alone in the glade, staring at the canopy above.  There's a heavy weight on your chest and you struggle to sit up.  " + Num2Text(player.breasts.length * 2) + " massive breasts jiggle and sway upon your chest, all full and aching to be milked");
+            if (player.breasts.length > 1) outputText(", the top pair being largest, descending in size with each subsequent pair");
             outputText(".");
             // Boost size, set lactation quantity.
-            player.growTits(7, player.bRows(), false, 2);
-            player.boostLactation(player.bRows());
+            player.growTits(7, player.breasts.length, false, 2);
+            player.boostLactation(player.breasts.length);
             outputText("\n\nYou sit there for the next hour or two, milking your bloated bosom and giving the flora a generous watering in the process.  When all is taken care of, you stumble back upright with a brief struggle and don your gear once more.  The smell of fresh-cut flowers seems to linger on your [armor] as you depart.");
         }
-        if (player.hasBreasts() && player.isLactating()) {
+        if (player.breasts.breasts.hasBreasts() && player.isLactating()) {
             player.milked();
             player.boostLactation(0.01);
         }
@@ -360,28 +360,28 @@ export class Essrayle {
         outputText("\n\n\"<i>Ytnuob ruoy htiw sdnas eht doolf. Edit yklim eht wolf tel!</i>\"");
 
         outputText("\n\nYou feel a sweltering heat fall over you. With a sudden urge you thrust your chest out as ");
-        if (player.biggestTitSize() <= 1) {
+        if (player.breasts.biggestTitSize() <= 1) {
             outputText("four bulging tits erupt from your chest");
             player.breastRows[0].breastRating = 4;
-            if (player.bRows() == 1) player.createBreastRow();
+            if (player.breasts.length == 1) player.breasts.createBreastRow();
             player.breastRows[1].breastRating = 4;
         }
         // if two breasts:
-        else if (player.bRows() == 1) {
+        else if (player.breasts.length == 1) {
             outputText("two more bulging tits erupt from your chest");
             if (player.breastRows[0].breastRating < 4) {
                 outputText(" while your top row expands");
                 player.breastRows[0].breastRating = 4;
             }
-            if (player.bRows() == 1) player.createBreastRow();
+            if (player.breasts.length == 1) player.breasts.createBreastRow();
             player.breastRows[1].breastRating = player.breastRows[0].breastRating;
         }
         // if four+ breasts:
         else {
             outputText("your [fullChest] swell larger and larger under the expanding magic of the spell");
-            player.growTits(6, player.bRows(), false, 2);
+            player.growTits(6, player.breasts.length, false, 2);
         }
-        player.boostLactation(player.bRows());
+        player.boostLactation(player.breasts.length);
         outputText(", filling with warm, fluid weight.  They jiggle and wobble against each other and your belly as they adjust to their brimming plumpness.  You now proudly sport [fullChest].");
 
         outputText("\n\nGrinning, Essrayle nods happily, rolling the scroll back up.  \"<i>Yes, that looks veeerry good on you!</i>\”  She ogles your chest for a while before glancing down at her own.  \"<i>But I think I could do you one better, since you've been so sweet to me,</i>\" the all-natural beauty coos happily.  \"<i>As a special bonus to you, how'd you like to have these too?</i>\" she moos, running her finger about her four, plump nipples, giving you a seductive smile.");

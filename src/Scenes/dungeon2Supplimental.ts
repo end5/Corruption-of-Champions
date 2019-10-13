@@ -185,7 +185,7 @@ export function impGangUber(): void {
         // +50 lust!
         dynStats("lus", 50);
         outputText("The imps in the back finish their spell-casting, and point at you in unison.  A wave of pure arousal hits you with the force of a freight train.   Your equipment rubs across your suddenly violently sensitive " + nippleDescription(player, 0), false);
-        if (player.biggestLactation() > 1) outputText(" as they begin to drip milk", false);
+        if (player.breasts.biggestLactation() > 1) outputText(" as they begin to drip milk", false);
         outputText(".  The lower portions of your coverings ", false);
         if (player.cocks.length > 0) {
             outputText("are pulled tight by your " + multiCockDescript(player) + ", ", false);
@@ -215,24 +215,24 @@ export function loseToImpMob(): void {
     outputText("You're grabbed by the chin, and your jaw is pried open to make room for a swollen dog-dick.   It's shoved in without any warmup or fan-fare, and you're forced to taste his pre in the back of your throat.  You don't dare bite down or resist in such a compromised position, and you're forced to try and suppress your gag reflex and keep your teeth back as he pushes the rest of the way in, burying his knot behind your lips.\n\n", false);
 
     // (tits)
-    if (player.biggestTitSize() > 1) {
+    if (player.breasts.biggestTitSize() > 1) {
         outputText("A sudden weight drops onto your chest as one of the demons straddles your belly, allowing his thick, tainted fuck-stick to plop down between your " + allBreastsDescript(player) + ".  The hot fluid leaking from his nodule-ringed crown  swiftly lubricates your cleavage.  In seconds the little devil is squeezing your " + breastDescript(game.player, 0) + " around himself as he starts pounding his member into your tits.  The purplish tip peeks out between your jiggling flesh mounds, dripping with tainted moisture.", false);
-        if (player.biggestLactation() > 1) outputText("  Milk starts to squirt from the pressure being applied to your " + breastDescript(game.player, 0) + ", which only encourages the imp to squeeze even harder.", false);
+        if (player.breasts.biggestLactation() > 1) outputText("  Milk starts to squirt from the pressure being applied to your " + breastDescript(game.player, 0) + ", which only encourages the imp to squeeze even harder.", false);
         outputText("\n\n", false);
     }
     // (NIPPLECUNTS!)
-    if (player.hasFuckableNipples()) {
+    if (player.breasts.hasFuckableNipples()) {
         outputText("A rough tweak on one of your nipples startles you, but your grunt of protest is turned into a muffled moan when one of the imp's tiny fingers plunges inside your " + nippleDescription(player, 0) + ".  He pulls his hand out, marveling at the sticky mess, and wastes no time grabbing the top of your tit with both hands and plunging himself in.", false);
-        if (player.biggestTitSize() < 7) outputText("  He can only get partway in, but it doesn't seem to deter him.", false);
+        if (player.breasts.biggestTitSize() < 7) outputText("  He can only get partway in, but it doesn't seem to deter him.", false);
         else outputText("  Thanks to your massive bust, he is able to fit his entire throbbing prick inside you.", false);
         outputText("  The demon starts pounding your tit with inhuman vigor, making the entire thing wobble enticingly.  The others, seeing their brother's good time, pounce on ", false);
-        if (player.totalNipples() > 2) outputText("each of ", false);
+        if (player.breasts.totalNipples() > 2) outputText("each of ", false);
         outputText("your other " + nippleDescription(player, 0), false);
-        if (player.totalNipples() > 2) outputText("s", false);
+        if (player.breasts.totalNipples() > 2) outputText("s", false);
         outputText(", fighting over the opening", false);
-        if (player.totalNipples() > 2) outputText("s", false);
+        if (player.breasts.totalNipples() > 2) outputText("s", false);
         outputText(".  A victor quickly emerges, and in no time ", false);
-        if (player.totalNipples() == 2) outputText("both", false);
+        if (player.breasts.totalNipples() == 2) outputText("both", false);
         else outputText("all the", false);
         outputText(" openings on your chest are plugged with a tumescent demon-cock.\n\n", false);
     }
@@ -257,10 +257,10 @@ export function loseToImpMob(): void {
     outputText("As one, the crowd of demons orgasm.  Hot spunk gushes into your ass, filling you with uncomfortable pressure.  ", false);
     if (player.hasVagina()) outputText("A thick load bastes your pussy with whiteness, and you can feel it seeping deeper inside your fertile womb.  ", false);
     outputText("Your mouth is filled with a wave of thick cream.  Plugged as you are by the demon's knot, you're forced to guzzle down the stuff, lest you choke on his tainted baby-batter.", false);
-    if (player.biggestTitSize() > 1) {
+    if (player.breasts.biggestTitSize() > 1) {
         outputText("  More and more hits your chin as the dick sandwiched between your tits unloads, leaving the whitish juice to dribble down to your neck.", false);
-        if (player.hasFuckableNipples()) {
-            if (player.totalNipples() == 2) outputText("  The pair", false);
+        if (player.breasts.hasFuckableNipples()) {
+            if (player.breasts.totalNipples() == 2) outputText("  The pair", false);
             else outputText("  The group", false);
             outputText(" of cocks buried in your " + nippleDescription(player, 0) + " pull free before they cum, dumping the spooge into the gaping holes they've left behind.  It tingles hotly, making you quiver with pleasure.", false);
         }
@@ -284,7 +284,7 @@ export function loseToImpMob(): void {
 export function loseToImpMobII(): void {
     outputText("", true);
     outputText("You wake up, sore from the previous activity and a bit groggy.  You try to move, but find yourself incapable.  Struggling futilely, you thrash around until you realize your arms and legs are strapped down with heavy iron restraints.  You gasp out loud when you look down and discover your ", false);
-    if (player.biggestTitSize() < 1) outputText("new", false);
+    if (player.breasts.biggestTitSize() < 1) outputText("new", false);
     else outputText("much larger", false);
     outputText(" tits, wobbling with every twist and movement you make.  You're stark naked, save for a sheer and somewhat perverse nurse's outfit.   The room around you looks to be empty, though you can see a number of blankets piled in the corners and a few cages full of spooge-covered faeries, all snoring contently.\n\n", false);
 
@@ -297,7 +297,7 @@ export function loseToImpMobII(): void {
     outputText("Zetaz pours a few bottles into a larger container and connects a tube to an opening on the bottom of the bottle.  Your eyes trace the tube back to the gag in your mouth, and after feeling around with your tongue, you realize it's been threaded through the gag and down your throat.   Zetaz lifts up the bottle and hangs it from a hook on the ceiling, and you watch in horror as the fluid flows through the tube, helpless to stop it.  You shake your head desperately, furious at having fallen into the little fucker's hands at last.\n\n", false);
 
     outputText("Zetaz walks up and paws at your ", false);
-    if (player.biggestTitSize() < 1) outputText("new", false);
+    if (player.breasts.biggestTitSize() < 1) outputText("new", false);
     else outputText("larger", false);
     outputText(" mounds, flitting into the air to bring himself to eye-level.  He rambles, \"<i>It's so good to see you again, " + player.short + ".  Because of you, I had to flee from my honored place by Lethice's side.  I've had to hide in this fetid forest.  I'll admit, it hasn't been all bad.  We've caught a few faeries to play with, and with you here, the boys and I will have lots of fun.  We just need to reshape that troubled mind a little bit.</i>\"\n\n", false);
 
@@ -473,7 +473,7 @@ export function encapsulationPodAI(): void {
         outputText("The rest of the mass continues to crawl up you.  They tickle at your ", false);
         if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 120) outputText("pregnant ", false);
         outputText("belly as they get closer and closer to ", false);
-        if (player.biggestTitSize() < 1) outputText("your chest", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("your chest", false);
         else outputText("the underside of your " + allBreastsDescript(player), false);
         outputText(".  Gods above, this is turning you on!  Your lower body is being violated in every conceivable way and it's only arousing you more.  Between the mind-numbing smell and the sexual assault you're having a hard time focusing.\n", false);
         if (player.lust < 65) {
@@ -485,7 +485,7 @@ export function encapsulationPodAI(): void {
     // [Round 3 Action]
     else if (monster.effects.getValue1Of(StatusAffects.Round) == 3) {
         outputText("The wet, warm pressure of the fungus' protrusion working their way up your body feels better than it has any right to be.  It's like a combination of a warm bath and a gentle massage, and when combined with the thought-numbing scent in the air, it's nigh-impossible to resist relaxing a little.  In seconds the mass of tentacles is underneath your " + player.armorName + " and rubbing over your chest and " + nippleDescription(player, 0) + "s.  You swoon from the sensation and lean back against the wall while they stroke and caress you, teasing your sensitive " + nippleDescription(player, 0) + ".", false);
-        if (player.hasFuckableNipples()) outputText("  Proof of your arousal leaks from each " + nippleDescription(player, 0) + " as their entrances part for the probing tentacles.  They happily dive inside to begin fucking your breasts, doubling your pleasure.", false);
+        if (player.breasts.hasFuckableNipples()) outputText("  Proof of your arousal leaks from each " + nippleDescription(player, 0) + " as their entrances part for the probing tentacles.  They happily dive inside to begin fucking your breasts, doubling your pleasure.", false);
         outputText("  Moans escape your mouth as your hips begin to rock in time with the tentacles and the pulsing luminance of your fungus-pod.  It would be easy to lose yourself here.  You groan loudly enough to startle yourself back to attention.  You've got to get out!\n\n", false);
 
         outputText("The tentacles that aren't busy with your " + allBreastsDescript(player) + " are already climbing higher, and the slime has reached your waist.  If anything it actually makes the constant violation more intense and relaxing.  You start to sink down into it, but catch yourself and pull yourself back up.  No! You've got to fight!\n", false);
@@ -514,19 +514,19 @@ export function encapsulationPodAI(): void {
             outputText("Your body twitches weakly, too relaxed to move while it gets off from anal penetration.", false);
         }
         else outputText("Your body twitches weakly, too relaxed to move while it gets off from being double-penetrated.", false);
-        if (player.hasFuckableNipples()) {
+        if (player.breasts.hasFuckableNipples()) {
             outputText("  Your " + nippleDescription(player, 0) + "s squirt around their phallic partners, leaking sexual lubricant ", false);
-            if (player.biggestLactation() > 1) outputText("and milk ", false);
+            if (player.breasts.biggestLactation() > 1) outputText("and milk ", false);
             outputText("while the fucking continues.", false);
         }
         if (player.cocks.length > 0) {
             outputText("  The tentacles around " + sMultiCockDesc(player) + " squeeze and rotate, screwing you silly through your orgasm while cum dribbles in a steady stream from your loins.  Normally it would be squirting out in thick ropes, but the muscle-relaxing drugs in your system make the spurts a steady, weak flow.", false);
             if (player.cumQ() > 800) outputText("  Of course with all the semen you produce, the flesh-pod's ooze clouds over quite quickly, blocking your vision with a purple-white haze.", false);
         }
-        if (player.biggestLactation() > 1) {
+        if (player.breasts.biggestLactation() > 1) {
             outputText("Milk leaks out too, ", false);
-            if (player.biggestLactation() < 2) outputText("though the slight dribble is barely noticeable to you.", false);
-            else if (player.biggestLactation() < 3) outputText("coloring things a little more white.", false);
+            if (player.breasts.biggestLactation() < 2) outputText("though the slight dribble is barely noticeable to you.", false);
+            else if (player.breasts.biggestLactation() < 3) outputText("coloring things a little more white.", false);
             else outputText("thickening your fluid-filled prison with nutrients.", false);
         }
         // [NEXT – CHOOSE APPRORIATE]
@@ -803,7 +803,7 @@ export function valaGetsSexedPtDuece(): void {
         // (large girth dicks)
         else {
             outputText("Vala slides onto your " + cockDescript(game.player, 0) + " with gleeful squeals as you part her rose-petal labia and slide into her well-worn depths. If the marks on her back are any indication, her ability to accommodate your girth is a result of endless sessions with the captors, probably two or more to a hole. However she ended up so stretched, it works for you because her slavering cunt sucks up your titanic dick into her well-lubricated uterus. Her abdomen distorts at your insertion, but instead of pain or fear, her expression is utter bliss, her pink eyes fluttering as she wordlessly mutters sweet nothings into your ", false);
-            if (player.biggestTitSize() < 1) outputText("chest", false);
+            if (player.breasts.biggestTitSize() < 1) outputText("chest", false);
             else outputText("breasts", false);
             outputText(". She's tight and getting tighter as you pump slowly, working your long inches into the fairy's needy hole. Her body is hot around you and her milky tits drool with each thrust, their nectar fragrant like rose water. At this rate, the condom-tight girl is going to make you blow your load before you get a chance to see what a fairy orgasm looks like.\n\n", false);
 
@@ -815,7 +815,7 @@ export function valaGetsSexedPtDuece(): void {
             if (player.hasVagina()) outputText("nuzzling your joy buzzer", false);
             else outputText("tickling your prostate", false);
             outputText(" and you thrust more forcefully than she was braced for, finally lifting the fey cocksleeve off your root. Without wasting a moment, you pull the locking bar out of the shackle and finally allow your orgasm to spew into her waiting womb. You slip in the fairy's cum puddle and fall on your " + buttDescription(player) + " as your " + cockDescript(game.player, 0) + " dumps its long-delayed loads inside the distended girl. The feeling of cum filling her pussy drives her to a fourth orgasm, her toes curling and wings flapping wildly. She's so tightly clenched around you that there's nowhere for your cum to run out, so her womb bloats to a well-feasted fatness and she loses the strength to keep writhing in your lap, simply collapsing into your ", false);
-            if (player.biggestTitSize() < 1) outputText("chest", false);
+            if (player.breasts.biggestTitSize() < 1) outputText("chest", false);
             else outputText("breasts", false);
             outputText(".\n\n", false);
 
@@ -1028,7 +1028,7 @@ export function badEndValaNumber2Pt2(): void {
         outputText("Between your thighs, a wet slurping tears through the air and a sudden seething heat fills your groin as a fresh pussy opens up, just under your dick.  ", false);
     }
     // (No breasts:
-    if (player.biggestTitSize() < 1) outputText("You shudder and your chest feels like it's being flooded by the spooge floating at your tonsils. Before your eyes, the girdle around your chest is pushed down and a pair of swelling breasts fills your vision, filling heavily with milk just aching to be sucked from your distended nipples.  ", false);
+    if (player.breasts.biggestTitSize() < 1) outputText("You shudder and your chest feels like it's being flooded by the spooge floating at your tonsils. Before your eyes, the girdle around your chest is pushed down and a pair of swelling breasts fills your vision, filling heavily with milk just aching to be sucked from your distended nipples.  ", false);
     outputText("The space between your shoulder blades feels like it's been torn open and your muscles reknit themselves as gossamer wings burst from your skin, thin as a dragonfly's and nearly as long as you are tall, settling against their rubber counterparts. Every inch of your skin seems to blister as a feeling of molten glass pouring over you causes you to tremble with agonized shudders, your pores sealing and skin gaining a glossy sheen.\n\n", false);
 
     outputText("\"<i>You're looking more like her by the second,</i>\" Zetaz compliments, stroking your now-flawless face. \"<i>Don't worry about that pesky mind of yours- I don't like using drugs to wipe that imperfection away like some of my kin. No, we'll just use you until you break. Perhaps I'll let Vala have you from time to time, too. Won't that be fun? The two of you will grow to be inseparable, I'm sure.</i>\" Zetaz steps back and signals the imps clinging to the fairy to come down. \"<i>Why don't we get started?</i>\"", false);
@@ -1476,7 +1476,7 @@ export function cleansedValaFuckHerBrainsOut(): void {
 
         outputText("Still in your lap, she swings her legs around yours and braces herself with one hand around your neck and the other on your knees. Sliding back and forth, she strokes her pussy against yours, the slick folds of her labia rubbing against your " + clitDescription(player) + " with wet squishing sounds, sending electric shivers up your spine. You begin to rock back, in time with her motions, your stiff clit stroking hers in tight circles that leave the fairy panting, her legs clenching and unclenching around your " + buttDescription(player) + ". The two of you jill against the other's joy buzzers until your bodies tremble with orgasm, the fairy sliding her hand from your neck to one of your heaving breasts, squeezing a nipple between her second knuckles hard enough to make you squeak with pain.", false);
         // [Lactating-
-        if (player.biggestLactation() >= 1) outputText("  The pressure is enough to draw your milk to the surface, tiny jets splashing between the two of you as the fairy milks you with two incredibly agile fingers.", false);
+        if (player.breasts.biggestLactation() >= 1) outputText("  The pressure is enough to draw your milk to the surface, tiny jets splashing between the two of you as the fairy milks you with two incredibly agile fingers.", false);
         outputText("\n\n", false);
 
         // [Short characters- 3'- 4'11"]
@@ -1497,7 +1497,7 @@ export function cleansedValaFuckHerBrainsOut(): void {
             outputText("The fairy, catching her breath between rolling her tender lower lips against yours and panting with desire, leans in with a whisper. \"<i>I need to taste you,</i>\" she confesses, \"<i>to know the nourishment of humans.</i>\" You nod, wrapping an arm around the girl's narrow waist and haul her up to your bosom. She nuzzles against your " + allBreastsDescript(player) + " her purple hair cascading around your " + player.skinDesc + " with a glimmering sparkle of pink amid violet. \"<i>My chest is so heavy,</i>\" she whines softly, her supple breasts pressing against yours. She flutters her wings and lifts out of your embrace just enough to turn upside down in the air, her hair spilling into your lap and her mammoth jugs hanging heavily around her chin. \"<i>Please,</i>\" she whispers as she strokes your " + allBreastsDescript(player) + " with her tiny nose, delicate lips kissing your " + nippleDescription(player, 0) + ". You wrap your hands on either side of her breasts and squeeze them together until her stiff, pink nipples touch and you bring your mouth forward, tongue flicking the milky flesh before drawing both into your lips with relish. Her mammaries begin to leak immediately, filling your mouth with the rich, decadent taste of buttermilk, sweet and heavy on your tongue.\n\n", false);
 
             // [Not lactating –
-            if (player.biggestLactation() < 1) {
+            if (player.breasts.biggestLactation() < 1) {
                 outputText("To your surprise, the mere taste of the girl's milk sends a fluid pulsing through your chest and you can feel your breasts filling with milk! You have begun to lactate!  ", false);
                 player.boostLactation(3);
             }
@@ -1537,7 +1537,7 @@ export function cleansedValaFuckHerBrainsOutPtII(): void {
 
             outputText("Your limbs entwined, you let the helpless, orgasming fairy's hands fondle your shoulders and back as you draw your knees up, enveloping Vala in a full body embrace, her loins milking with every ounce of strength left to her. A flush of pride and nurturing compassion fills your heart even as your own crescendo erupts, linking the two of you in a creamy bond of shivering passion. She nestles in the hollow of your lap, panting with every pulse of jizz you pump into her, nuzzling your chest, perfectly at ease in your ", false);
             //
-            if (player.biggestTitSize() < 1) outputText("chest", false);
+            if (player.breasts.biggestTitSize() < 1) outputText("chest", false);
             else outputText("bosom", false);
             outputText(". Your seed soothes the fires burning at the edge of her mind, easing her back from the edge of lusty oblivion. When you finally uncurl from around her, she shivers, missing the blazing body heat and looks up into your eyes, pink irises sparkling. You understand her unspoken request instantly and you bend down to press your lips against her breast, suckling one milk-laden tit, then the other, soothing the girl's swollen mammaries, buttermilk cream rich on your tongue. Gradually, the two of you separate.\n\n", false);
         }
@@ -1815,7 +1815,7 @@ export function releaseZForInfo(): void {
     outputText("A loincloth flies across the room and deposits itself on your shoulder, startling you from your planning.  You glance back and see Zetaz tearing through his possessions, tossing his most prized items into a burlap sack with reckless abandon.  His whole body is trembling, as he ties it to a wooden pole, never once looking up at you.  Perhaps he fears you might change your mind?  ", false);
     if (player.cor > 66) {
         outputText("You smirk down at him and fold your arms over your ", false);
-        if (player.biggestTitSize() < 1) outputText("chest", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("chest", false);
         else outputText(breastDescript(game.player, 0), false);
         outputText(", relishing his fear while you consider the possibilities", false);
     }
@@ -2002,7 +2002,7 @@ export function femaleZetazOverPtII(): void {
     outputText("You look down at the male and moan, \"<i>Please, hurry up... I need your cum... your babies.  Put your cock inside me!</i>\"\n\n", false);
 
     outputText("Zetaz looks surprised at your words, and you start to wonder why, but the heat and pleasure of his long, thick member spearing your love-canal interrupts your thought process.  He reaches up, and begins to ", false);
-    if (player.biggestTitSize() < 1) outputText("tweak your " + nippleDescription(player, 0) + "s roughly, pulling and yanking on them as", false);
+    if (player.breasts.biggestTitSize() < 1) outputText("tweak your " + nippleDescription(player, 0) + "s roughly, pulling and yanking on them as", false);
     else outputText("maul at your " + allBreastsDescript(player) + ", slapping and squeezing them as", false);
     outputText(" he begins to repeatedly thrust against your " + vaginaDescript(player, 0) + ", fucking you in earnest.  The wet slap of his balls on your juice-slimed body fills the chamber and sends ripples of pleasure down your " + legs(player) + ".  With your eyelids half-closed, your tongue masturbating your lips, and your pussy practically squirting lubricants at the end of each thrust, you must look like every male's wet dream.\n\n", false);
 
@@ -2039,7 +2039,7 @@ export function zetazBadEndEpilogue(): void {
     }
     else {
         outputText("The imps never released the champion from that chamber after that.  'He' gave birth to a healthy litter of imps a few weeks later, and the hormones from the pregnancy ", false);
-        if (player.biggestTitSize() < 1) outputText("created a decent set of chest-bumps.", false);
+        if (player.breasts.biggestTitSize() < 1) outputText("created a decent set of chest-bumps.", false);
         else outputText("swelled her already impressive rack with milk.", false);
         outputText("  After that, the imps really took a liking to her, and she was let down from her restraints.  She never got much chance to get up though; she was well and truly fucked at every opportunity.  She was already hooked.  With her incredible libido and the constant fucking, staying was the easy choice.\n\n", false);
 
@@ -2191,7 +2191,7 @@ export function malesZetazOverPtII(): void {
     outputText(" barely three inches long, even while hard.  He pulls out another plunger and rams the needle into your still-aching clit, making it swell until it's almost five inches long and trembling like your manhood used to.\n\n", false);
 
     outputText("\"<i>Now you're starting to look like a proper bitch.  ", false);
-    if (player.biggestTitSize() < 2) outputText("It doesn't look right without a decent rack, but boss said no tits for the new breeding bitch.  Sure makes it hard to get excited about fucking that new twat of yours though...", false);
+    if (player.breasts.biggestTitSize() < 2) outputText("It doesn't look right without a decent rack, but boss said no tits for the new breeding bitch.  Sure makes it hard to get excited about fucking that new twat of yours though...", false);
     else outputText("With a rack like that and a nice, wet cunt, you'll have the other guys lining up for their turn in no time...", false);
     outputText("</i>\" rambles one of the imps.  You groan and shake your hips lewdly, still turned on after all the fucking, feeling empty without the unholy heat of an imp inside you.  A hunger buzzes away in your womb, demanding you get pregnant, and you're thrilled to see Zetaz stride in with a raging, fully erect stiffy.  It throbs hungrily as he smiles up at you and climbs atop the conveniently positioned platform.\n\n", false);
 
@@ -2447,7 +2447,7 @@ export function bigValaLicksOffDudes(): void {
     outputText("\n\n\"<i>What did you dtho tho mee?</i>\" Vala whines as her tongue pokes out to test the newly swollen flesh, sliding across the immense, pillowy lips on its own.  Her grip on you slackens as she shudders with pleasure, eyes rolling halfway back before she lets out a sugary, pleasure-addled moan.  \"<i>Okthay, okthay... jusht... be careful!</i>\"  She sets you down before the act of speaking makes her moan any harder, actually pushing you on to your back and fumbling around your [armor] on her own, trying to take it off.  You try to help, but her eager, shaking fingertips keep getting in the way.  You can see she hasn't stopped licking her lips or moaning through the puffy maw she calls a mouth, and once she finally gets a fingernail into your equipment, she tears it off you and tosses it aside.");
     outputText("\n\nThe mountainous pixie lifts you up to her lips with a smile, or as much of one as she can manage at the moment, with her tongue drooling out the corner of her mouth.  Slowly, almost tentatively, she brings you closer and closer to her open pucker, her movements so slow and deliberate that it seems she's both afraid to do it and stubbornly insistent on this course of action at the same time.");
     outputText("\n\nYour [foot] hits her plush, lower lip, feeling the warmth of her breath flowing over your body.  Her lust-lidded eyes gaze down at you worshipfully as she moans across you, gingerly slipping your [feet] across her lubricated mouth and into the saliva-filled cavity behind.  They come to rest on her tongue, which eagerly slithers around your [legs] and [hips] before winding to your [chest], flicking each of your [nipples] in turn along the way.");
-    if (player.hasFuckableNipples()) outputText("  It even pauses at one to slip a tiny bit inside, too big to penetrate your nipplecunt properly but teasing it all the same.");
+    if (player.breasts.hasFuckableNipples()) outputText("  It even pauses at one to slip a tiny bit inside, too big to penetrate your nipplecunt properly but teasing it all the same.");
     outputText("  Finally, it encircles the back of your neck and curls up to slide across your chin.  You greedily slurp the tip of her oral muscle into your own mouth, and the effect is immediate.");
     outputText("\n\nVala whimpers around you hard enough to vibrate through your whole body.  Her tongue pulls you partway into the wet heat you're feeling down south, still moaning even as her newly hypersensitive oral organ slips around the back of your [legs], curling all the way to the base of your [hips].  [EachCock] presses proudly against her upper lip, and the soft cushion of her flesh smushes comfortingly around ");
     if (player.cocks.length > 1) outputText("each");

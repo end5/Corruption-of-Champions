@@ -1949,7 +1949,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         if (sheilaCorruption() <= 30) outputText("pert");
         else outputText("jiggly");
         outputText(" breasts as she fiddles with your own clothing.  She manages to remove the top of your [armor], exposing your [chest]; she then returns your favor by ");
-        if (!player.hasFuckableNipples()) outputText("squeezing and fondling");
+        if (!player.breasts.hasFuckableNipples()) outputText("squeezing and fondling");
         else outputText("plunging two fingers into");
         outputText(" your own " + nippleDescription(player, 0) + "s.  You shiver as she paws at the sensitive nubs on your chest, but don't let up your assault, moving your mouth down to tickle one of hers with your teeth and tongue.  Soon she's quaking and twitching beneath your ministrations; rubbing at her crotch with one hand as she half-heartedly tries to tease you back with the other.");
 
@@ -2161,7 +2161,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             if ((player.isTaur() && player.tallness * (5 / 6) < player.cocks[player.cocks.longestCock()].cockLength) || player.cocks.length > 0) choices[choices.length] = "cock";
         }
         if (player.hasVagina() && !player.isTaur()) choices[choices.length] = "vagina";
-        if (player.hasFuckableNipples()) choices[choices.length] = "nipplecunt";
+        if (player.breasts.hasFuckableNipples()) choices[choices.length] = "nipplecunt";
         if (player.gender == 0 || choices.length == 0) choices[choices.length] = "ass";
 
         if (choices.length == 0) {
@@ -4261,7 +4261,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("  \"<i>Why the look, mate?  Seems like you're saturated for now, and just in time.  This... is...</i>\"  She pulls her tail up from the end of your clitoris, then slides it back down, slowly.  \"<i>... perfect!</i>\"  As her tight hole swallows your sensitive distaff staff once again, your eyes roll and her head drops, dragging her hair");
             // [(horse)
             if (player.isTaur()) outputText(" through the grass");
-            else if (player.biggestTitSize() >= 1) outputText(" between your " + allBreastsDescript(player));
+            else if (player.breasts.biggestTitSize() >= 1) outputText(" between your " + allBreastsDescript(player));
             else outputText(" along your flat chest");
             outputText(".  \"<i>Ffuck, even your girl parts are amazing.</i>\"  Sheila plants kiss after kiss on your ");
             if (!player.isTaur()) outputText("[chest]");

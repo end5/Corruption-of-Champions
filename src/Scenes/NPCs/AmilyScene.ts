@@ -465,7 +465,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
 
                     outputText("She looks thoughtful. \"<i>You know...</i>\" She begins, but stops and ", false);
                     // [If breasts are flat, manly breasts]
-                    if (player.biggestTitSize() < 1) outputText("sniffs the air intensely, her whiskers quivering. ", false);
+                    if (player.breasts.biggestTitSize() < 1) outputText("sniffs the air intensely, her whiskers quivering. ", false);
                     // [If breasts are A-cup or bigger]
                     else outputText("stares at the bulge in your top, as well as the bulge in your bottom.  ", false);
                     outputText("\"<i>Never mind,</i>\" she says after a moment. \"<i>You're a hermaphrodite, aren't you? Forget I mentioned it.</i>\"\n\n", false);
@@ -516,7 +516,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                     outputText("\"<i>I was born here, I grew up here, and I would have gotten married and settled down here if it hadn't been for those demons.</i>\" She spits the word 'demons' with contempt. \"<i>After it was all over, I had nowhere else to go. So I stayed here. I've still got nowhere else to go, to be honest. I haven't found any other settlements of my own people, and I'd sooner die than give myself over to the demons. But it seems that if I'm ever going to see more of my people living free, I'm going to have to take the leading role...</i>\"\n\n", false);
 
                     // (If breasts < A-Cup)
-                    if (player.biggestTitSize() < 1) {
+                    if (player.breasts.biggestTitSize() < 1) {
                         outputText("She stares at you intently, and you ask her what the matter is.\n\n", false);
 
                         outputText("\"<i>You see, that role I was talking about? I've had a long time to think about it, and there's no one else for it. If there are ever going to be more of my kind born into freedom, they're going to have to be born. Literally; I need to find a mate that is pure, one that can give me strong and pure children of my own kind,</i>\" she explains, one hand absently touching her flat belly. \"<i>The few males of my kind that I've managed to find are demon slaves – far too corrupt to make suitable mates, even if I could free them. I've heard, though, that humans are strangely weak breeders; your seed would be free of taint, and you would father more of my own kind. Unlike, say, an imp or a minotaur.</i>\"\n\n", false);
@@ -7611,7 +7611,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("hermaphrodite giggles, and whispers, \"<i>I didn't need them anyway.</i>\"");
 
         outputText("\n\nAmily's big, fuzzy ears tickle your head as she nuzzles at the nape of her neck.  Her arm falls across your torso onto the far side of your [chest] to gently cup ");
-        if (player.averageNipplesPerBreast() <= 1) outputText("one of your nipples");
+        if (player.breasts.averageNipplesPerBreast() <= 1) outputText("one of your nipples");
         else outputText("at your multitude of nipples");
         outputText(".  Panting eagerly, she licks up the underside of your chin, eventually cresting your jawline.  Her lips meet yours, their supple, slippery pressure heavenly on your own, and a slim tongue sides across the paired puckers to delve inside your maw.  You return the gesture in kind, slithering around your flexible organ to taste her mouth... her lips... her everything.  You make love to her mouth the way you imagine you'll be making love to her nethers in a few moments.");
         outputText("\n\nAmily abruptly grunts in displeasure, and the skillful twirls of her tongue lapse into uncontrolled jerks.  Her lips, which you were oh so enjoying, push slightly to the side.  You make to break away and voice your complaint, but a reassuring hand lays across the other side of your [chest], crossing the mouse-woman's arm as a second mouth comes to rest on the exposed half of your own.  You retract your tongue just as the new arrival is forcing its own into your well-packed jaw.  With all the cushy, girly orifices sloppily kissing on you and the pair of mouth-muscles wrangling your own, you can't even properly return the french anymore.  You do your best to simply focus on the wriggling menagerie of spit-slobbering snakes, licking and suckling them as skillfully as you can given the circumstances.  Sometimes they even tangle up in each other and retreat, sliding between the two girls' lips in their own twisted dance before returning to you, the real object of their affection.");

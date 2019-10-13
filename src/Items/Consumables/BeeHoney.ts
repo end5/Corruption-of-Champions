@@ -119,17 +119,17 @@ export class BeeHoney extends Consumable {
             changes++;
         }
         // -Remove extra breast rows
-        if (changes < changeLimit && player.bRows() > 2 && rand(3) == 0 && !game.flags[kFLAGS.HYPER_HAPPY]) {
+        if (changes < changeLimit && player.breasts.length > 2 && rand(3) == 0 && !game.flags[kFLAGS.HYPER_HAPPY]) {
             changes++;
             outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
-            if (player.bRows() >= 3) outputText("abdomen");
+            if (player.breasts.length >= 3) outputText("abdomen");
             else outputText("chest");
             outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ");
             if (player.skinType == CoC.SKIN_TYPE_FUR) outputText(player.hairColor + " " + player.skinDesc);
             else outputText(player.skinTone + " " + player.skinDesc);
             outputText(" remains. <b>You've lost a row of breasts!</b>");
             dynStats("sen", -5);
-            player.removeBreastRow(player.breastRows.length - 1, 1);
+            player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
         }
         // Antennae
         if (changes < changeLimit && player.antennae == CoC.ANTENNAE_NONE && player.horns == 0 && rand(3) == 0) {
@@ -151,9 +151,9 @@ export class BeeHoney extends Consumable {
             changes++;
         }
         // -Nipples reduction to 1 per tit.
-        if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
+        if (player.breasts.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
             outputText("\n\nA chill runs over your " + allBreastsDescript(player) + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ");
-            if (player.biggestTitSize() < 1) outputText("'breast'.");
+            if (player.breasts.biggestTitSize() < 1) outputText("'breast'.");
             else outputText("breast.");
             changes++;
             // Loop through and reset nipples

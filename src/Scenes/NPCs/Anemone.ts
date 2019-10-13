@@ -71,7 +71,7 @@ export class Anemone extends Monster {
         this.cocks.createCock(7, 1, CockTypesEnum.ANEMONE);
         this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
         this.effects.create(StatusAffects.BonusVCapacity, 5, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("B"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("B"));
         this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);

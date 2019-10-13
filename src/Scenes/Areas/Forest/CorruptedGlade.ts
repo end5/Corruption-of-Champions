@@ -235,12 +235,12 @@ export class CorruptedGlade {
             else outputText("  Thankfully, the feeling goes away after a few minutes, leaving you feeling just a bit more sensitive.");
         }
         if (rand(2) == 0) { // 50% Chance of breast-growth
-            if (player.biggestTitSize() > 5) {
+            if (player.breasts.biggestTitSize() > 5) {
                 outputText("  As you redress, you feel a sense of added weight on your chest.  After a few moments you realize your already-formidable chest has grown even larger.");
                 player.growTits(1, 1 + rand(3), false, 1);
             }
             else {
-                if (player.biggestTitSize() == 0) { // No tits yet
+                if (player.breasts.biggestTitSize() == 0) { // No tits yet
                     outputText("  As you redress, you realize you have grown a pair of luscious breasts!  Perhaps this was a good idea after all...");
                     player.growTits(1, 2 + rand(3), false, 1);
                 }

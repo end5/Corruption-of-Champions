@@ -249,20 +249,20 @@ export class Mutations {
         outputText("Your wobbly " + legs(player) + " give out underneath you as your body's willpower seems to evaporate, your mouth reading the words on the scroll with a backwards sounding sing-song voice.\n\n", true);
         if (player.hairColor == "sandy blonde") {
             outputText("Your mouth forms a smile of its own volition, reading, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n", false);
-            if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
+            if (player.breastRows.length == 0 || player.breasts.biggestTitSize() == 0) {
                 outputText("You grow a perfectly rounded pair of C-cup breasts!  ", false);
-                if (player.breastRows.length == 0) player.createBreastRow();
+                if (player.breastRows.length == 0) player.breasts.createBreastRow();
                 player.breastRows[0].breasts = 2;
                 player.breastRows[0].breastRating = 3;
                 if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
                 dynStats("sen", 2, "lus", 1);
             }
-            if (player.biggestTitSize() > 0 && player.biggestTitSize() < 3) {
+            if (player.breasts.biggestTitSize() > 0 && player.breasts.biggestTitSize() < 3) {
                 outputText("Your breasts suddenly balloon outwards, stopping as they reach a perfectly rounded C-cup.  ", false);
                 player.breastRows[0].breastRating = 3;
                 dynStats("sen", 1, "lus", 1);
             }
-            if (player.averageNipplesPerBreast() < 1) {
+            if (player.breasts.averageNipplesPerBreast() < 1) {
                 outputText("A dark spot appears on each breast, rapidly forming into a sensitive nipple.  ", false);
                 temp = player.breastRows.length;
                 while (temp > 0) {
@@ -273,20 +273,20 @@ export class Mutations {
                 }
                 dynStats("sen", 2, "lus", 1);
             }
-            if (player.biggestLactation() > 0) {
+            if (player.breasts.biggestLactation() > 0) {
                 outputText("A strong pressure builds in your chest, painful in its intensity.  You yank down your top as ", false);
-                if (player.biggestLactation() < 2) outputText("powerful jets of milk spray from your nipples, spraying thick streams over the ground.  You moan at the sensation and squeeze your tits, hosing down the tainted earth with an offering of your milk.  You blush as the milk ends, quite embarassed with your increased milk production.  ", false);
-                if (player.biggestLactation() >= 2 && player.biggestLactation() <= 2.6) outputText("eruptions of milk squirt from your nipples, hosing thick streams everywhere.  The feeling of the constant gush of fluids is very erotic, and you feel yourself getting more and more turned on.  You start squeezing your breasts as the flow diminishes, anxious to continue the pleasure, but eventually all good things come to an end.  ", false);
-                if (player.biggestLactation() > 2.6 && player.biggestLactation() < 3) outputText("thick hoses of milk erupt from your aching nipples, forming puddles on the ground.  You smile at how well you're feeding the earth, your milk coating the ground faster than it can be absorbed.  The constant lactation is pleasurable... in a highly erotic way, and you find yourself moaning and pulling on your nipples, your hands completely out of control.  In time you realize the milk has stopped, and even had time to soak into the dirt.  You wonder at your strange thoughts and pull your hands from your sensitive nipples.  ", false);
+                if (player.breasts.biggestLactation() < 2) outputText("powerful jets of milk spray from your nipples, spraying thick streams over the ground.  You moan at the sensation and squeeze your tits, hosing down the tainted earth with an offering of your milk.  You blush as the milk ends, quite embarassed with your increased milk production.  ", false);
+                if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() <= 2.6) outputText("eruptions of milk squirt from your nipples, hosing thick streams everywhere.  The feeling of the constant gush of fluids is very erotic, and you feel yourself getting more and more turned on.  You start squeezing your breasts as the flow diminishes, anxious to continue the pleasure, but eventually all good things come to an end.  ", false);
+                if (player.breasts.biggestLactation() > 2.6 && player.breasts.biggestLactation() < 3) outputText("thick hoses of milk erupt from your aching nipples, forming puddles on the ground.  You smile at how well you're feeding the earth, your milk coating the ground faster than it can be absorbed.  The constant lactation is pleasurable... in a highly erotic way, and you find yourself moaning and pulling on your nipples, your hands completely out of control.  In time you realize the milk has stopped, and even had time to soak into the dirt.  You wonder at your strange thoughts and pull your hands from your sensitive nipples.  ", false);
 
-                if (player.biggestLactation() >= 3) outputText("you drop to your knees and grab your nipples.  With a very sexual moan you begin milking yourself, hosing out huge quantities of milk.  You pant and grunt, offering as much of your milk as you can.  It cascades down a hill in a small stream, and you can't help but blush with pride... and lust.  The erotic pleasures build as you do your best to feed the ground all of your milk.  You ride the edge of orgasm for an eternity, milk everywhere.  When you come to, you realize you're kneeling there, tugging your dry nipples.  Embarrassed, you stop, but your arousal remains.  ", false);
-                if (player.biggestLactation() < 3) {
+                if (player.breasts.biggestLactation() >= 3) outputText("you drop to your knees and grab your nipples.  With a very sexual moan you begin milking yourself, hosing out huge quantities of milk.  You pant and grunt, offering as much of your milk as you can.  It cascades down a hill in a small stream, and you can't help but blush with pride... and lust.  The erotic pleasures build as you do your best to feed the ground all of your milk.  You ride the edge of orgasm for an eternity, milk everywhere.  When you come to, you realize you're kneeling there, tugging your dry nipples.  Embarrassed, you stop, but your arousal remains.  ", false);
+                if (player.breasts.biggestLactation() < 3) {
                     player.boostLactation(.7);
                     outputText("Your breasts feel fuller... riper... like your next milking could be even bigger.  ", false);
                 }
                 dynStats("lib", 1, "sen", 4, "lus", 15);
             }
-            if (player.biggestLactation() == 0) {
+            if (player.breasts.biggestLactation() == 0) {
                 outputText("A pleasurable release suddenly erupts from your nipples!  Twin streams of milk are spraying from your breasts, soaking into the ground immediately.  It stops all too soon, though a voice in your head assures you that you can lactate quite often now.  ", false);
                 player.boostLactation(1);
                 dynStats("lib", .5, "sen", 1, "lus", 10);
@@ -508,17 +508,17 @@ export class Mutations {
                 changes++;
             }
             // -Remove extra breast rows
-            if (changes < changeLimit && player.bRows() > 1 && rand(3) == 0) {
+            if (changes < changeLimit && player.breasts.length > 1 && rand(3) == 0) {
                 changes++;
                 outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
-                if (player.bRows() >= 3) outputText("abdomen", false);
+                if (player.breasts.length >= 3) outputText("abdomen", false);
                 else outputText("chest", false);
                 outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ", false);
                 if (player.skinType == SKIN_TYPE_FUR) outputText(player.hairColor + " " + player.skinDesc, false);
                 else outputText(player.skinTone + " " + player.skinDesc, false);
                 outputText(" remains. <b>You've lost a row of breasts!</b>", false);
                 dynStats("sen", -5);
-                player.removeBreastRow(player.breastRows.length - 1, 1);
+                player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
             }
             // Shrink boobages till they are normal
             else if (rand(2) == 0 && changes < changeLimit && player.breastRows.length > 0) {
@@ -547,7 +547,7 @@ export class Mutations {
                     temp = 0;
                     temp2 = 0;
                     temp3 = 0;
-                    if (player.biggestTitSize() >= 1) outputText("\n", false);
+                    if (player.breasts.biggestTitSize() >= 1) outputText("\n", false);
                     while (temp3 < player.breastRows.length) {
                         if (player.breastRows[temp3].breastRating >= 1) {
                             player.breastRows[temp3].breastRating--;
@@ -1157,7 +1157,7 @@ export class Mutations {
                         // temp3 = counter
                         temp2 = 0;
                         temp3 = player.breastRows.length;
-                        if (player.biggestTitSize() > 3) outputText("\n", false);
+                        if (player.breasts.biggestTitSize() > 3) outputText("\n", false);
                         while (temp3 > 0) {
                             temp3--;
                             if (player.breastRows[temp3].breastRating > 3) {
@@ -1326,7 +1326,7 @@ export class Mutations {
             player.growTits(temp, player.breastRows.length, true, 3);
             if (player.breastRows.length == 0) {
                 outputText("A perfect pair of B cup breasts, complete with tiny nipples, form on your chest.", false);
-                player.createBreastRow();
+                player.breasts.createBreastRow();
                 player.breastRows[0].breasts = 2;
                 player.breastRows[0].breastsPerRow = 2;
                 player.breastRows[0].nipplesPerBreast = 1;
@@ -1882,7 +1882,7 @@ export class Mutations {
             if (player.breastRows[0].breastRating > 0 && player.vaginas.length > 0) {
                 // Doggies only get 3 rows of tits! FENOXO HAS SPOKEN
                 if (player.breastRows.length < 3 && rand(2) == 0 && changes < changeLimit) {
-                    player.createBreastRow();
+                    player.breasts.createBreastRow();
                     // Store temp to the index of the newest row
                     temp = player.breastRows.length - 1;
                     // Breasts are too small to grow a new row, so they get bigger first
@@ -1966,7 +1966,7 @@ export class Mutations {
         else if (rand(2) == 0 && changes < changeLimit) {
             outputText("\n\nYour chest tingles uncomfortably as your center of balance shifts.  <b>You now have a pair of B-cup breasts.</b>", false);
             outputText("  A sensitive nub grows on the summit of each tit, becoming a new nipple.", false);
-            player.createBreastRow();
+            player.breasts.createBreastRow();
             player.breastRows[0].breastRating = 2;
             player.breastRows[0].breasts = 2;
             dynStats("sen", 4, "lus", 6);
@@ -2591,21 +2591,21 @@ export class Mutations {
         // LARGE
         else {
             // New lines if changes
-            if (player.bRows() > 1 || player.buttRating > 5 || player.hipRating > 5 || player.hasVagina()) outputText("\n\n", false);
+            if (player.breasts.length > 1 || player.buttRating > 5 || player.hipRating > 5 || player.hasVagina()) outputText("\n\n", false);
             // Kill pussies!
             if (player.vaginas.length > 0) {
                 outputText("Your vagina clenches in pain, doubling you over.  You slip a hand down to check on it, only to feel the slit growing smaller and smaller until it disappears, taking your clit with it!\n\n", false);
-                if (player.bRows() > 1 || player.buttRating > 5 || player.hipRating > 5) outputText("  ", false);
+                if (player.breasts.length > 1 || player.buttRating > 5 || player.hipRating > 5) outputText("  ", false);
                 player.removeVagina(0, 1);
                 player.clitLength = .5;
                 player.genderCheck();
             }
             // Kill extra boobages
-            if (player.bRows() > 1) {
-                outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + breastDescript(player, player.bRows() - 1) + " have vanished.</b>", false);
+            if (player.breasts.length > 1) {
+                outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + breastDescript(player, player.breasts.length - 1) + " have vanished.</b>", false);
                 if (player.buttRating > 5 || player.hipRating > 5) outputText("  ", false);
                 // Remove lowest row.
-                player.removeBreastRow((player.bRows() - 1), 1);
+                player.breasts.removeBreastRow((player.breasts.length - 1), 1);
             }
             // Ass/hips shrinkage!
             if (player.buttRating > 5) {
@@ -2618,7 +2618,7 @@ export class Mutations {
                 player.hipRating -= 2;
             }
             // Shrink tits!
-            if (player.biggestTitSize() > 0) {
+            if (player.breasts.biggestTitSize() > 0) {
                 player.shrinkTits();
             }
             if (player.cocks.length > 0) {
@@ -2683,7 +2683,7 @@ export class Mutations {
         outputText("You devour the egg, momentarily sating your hunger.", true);
         if (!large) {
             // Grow nipples
-            if (player.nippleLength < 3 && player.biggestTitSize() > 0) {
+            if (player.nippleLength < 3 && player.breasts.biggestTitSize() > 0) {
                 outputText("\n\nYour nipples engorge, prodding hard against the inside of your " + player.armorName + ".  Abruptly you realize they've gotten almost a quarter inch longer.", false);
                 player.nippleLength += .2;
                 dynStats("lus", 15);
@@ -2692,7 +2692,7 @@ export class Mutations {
         // LARGE
         else {
             // Grow nipples
-            if (player.nippleLength < 3 && player.biggestTitSize() > 0) {
+            if (player.nippleLength < 3 && player.breasts.biggestTitSize() > 0) {
                 outputText("\n\nYour nipples engorge, prodding hard against the inside of your " + player.armorName + ".  Abruptly you realize they've grown more than an additional quarter-inch.", false);
                 player.nippleLength += (rand(2) + 3) / 10;
                 dynStats("lus", 15);
@@ -2834,7 +2834,7 @@ export class Mutations {
                 var gpBreasts:Function = (player.breastRows.length > 0 ? growPlusBreasts : null);
                 var gpClit:Function = (player.vaginas.length > 0 ? growPlusClit : null);
                 var gpCock:Function = (player.cocks.length > 0 ? growPlusCock : null);
-                var gpNipples:Function = (player.totalNipples() > 0 ? growPlusNipples : null);
+                var gpNipples:Function = (player.breasts.totalNipples() > 0 ? growPlusNipples : null);
                 itemSubMenu = true;
                 clearOutput();
                 outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?  ");
@@ -2845,7 +2845,7 @@ export class Mutations {
                 var clitEvent:Number = 0;
                 if (player.vaginas.length > 0) clitEvent = 1041;
                 var nipplesEvent:Number = 0;
-                if (player.totalNipples() > 0) nipplesEvent = 1043;
+                if (player.breasts.totalNipples() > 0) nipplesEvent = 1043;
                 var breastEvent:Number = 0;
                 if (player.breastRows.length > 0) breastEvent = 1040;
                 var cockEvent:Number = 0;
@@ -2935,7 +2935,7 @@ export class Mutations {
                 player.nippleLength += (rand(2) + 3) / 10;
                 dynStats("lus", 15);
                 //NIPPLECUNTZZZ
-                if (!player.hasFuckableNipples() && rand(4) == 0) {
+                if (!player.breasts.hasFuckableNipples() && rand(4) == 0) {
                     var nowFuckable:Boolean = false;
                     for (var x:int = 0; x < player.breastRows.length; x++) {
                         if (!player.breastRows[x].fuckable && player.nippleLength >= 2) {
@@ -2971,7 +2971,7 @@ export class Mutations {
             public function reducto(player:Player):void
             {
                 var rdtBalls:Function = (player.balls > 0 && player.ballSize > 1 ? reductoBalls : null);
-                var rdtBreasts:Function = (player.breastRows.length > 0 && player.biggestTitSize() > 0 ? reductoBreasts : null);
+                var rdtBreasts:Function = (player.breastRows.length > 0 && player.breasts.biggestTitSize() > 0 ? reductoBreasts : null);
                 var rdtButt:Function = (player.buttRating > 1 ? reductoButt : null);
                 var rdtClit:Function = (player.vaginas.length > 0 && player.clitLength > 0.25 ? reductoClit : null);
                 var rdtCock:Function = (player.cocks.length > 0 && player.cocks.biggestCockArea() > 6 ? reductoCock : null);
@@ -2983,7 +2983,7 @@ export class Mutations {
                 var clitEvent:Number = 0;
                 if (player.vaginas.length > 0 && player.clitLength > .25) clitEvent = 1056;
                 var breastEvent:Number = 0;
-                if (player.breastRows.length > 0 && player.biggestTitSize() > 0) breastEvent = 1055;
+                if (player.breastRows.length > 0 && player.breasts.biggestTitSize() > 0) breastEvent = 1055;
                 var cockEvent:Number = 0;
                 if (player.cocks.length > 0 && player.cocks.biggestCockArea() > 6) cockEvent = 1057;
                 var nippleEvent:Number = 0;
@@ -3015,7 +3015,7 @@ export class Mutations {
                 clearOutput();
                 outputText("You smear the foul-smelling ointment all over your " + allBreastsDescript(player) + ", covering them entirely as the paste begins to get absorbed into your " + player.skinDesc + ".\n");
                 player.shrinkTits(true);
-                if (rand(2) == 0 && player.biggestTitSize() >= 1) {
+                if (rand(2) == 0 && player.breasts.biggestTitSize() >= 1) {
                     outputText("\nThe effects of the paste continue to manifest themselves, and your body begins to change again...");
                     player.shrinkTits(true);
                 }
@@ -3127,13 +3127,13 @@ export class Mutations {
         let i: number = 0;
         outputText("You gulp down the bottle of lactaid, easily swallowing the creamy liquid.", true);
         // Bump up size!
-        if (player.averageBreastSize() < 8) {
+        if (player.breasts.averageBreastSize() < 8) {
             outputText("\n\n", false);
             if (player.breastRows.length == 1) player.growTits((1 + rand(5)), 1, true, 1);
             else player.growTits(1 + rand(2), player.breastRows.length, true, 1);
         }
         // Player doesn't lactate
-        if (player.biggestLactation() < 1) {
+        if (player.breasts.biggestLactation() < 1) {
             outputText("\n\n", false);
             outputText("You feel your " + nippleDescription(player, 0) + "s become tight and engorged.  A single droplet of milk escapes each, rolling down the curves of your breasts.  <b>You are now lactating!</b>", false);
             for (i = 0; i < player.breastRows.length; i++) {
@@ -3328,7 +3328,7 @@ export class Mutations {
         let boobsGrew: boolean = false;
         // Increase player's breast size, if they are HH or bigger
         // do not increase size, but do the other actions:
-        if (((tainted && player.biggestTitSize() <= 11) || (!tainted && player.biggestTitSize() <= 5)) && changes < changeLimit && (rand(3) == 0 || enhanced)) {
+        if (((tainted && player.breasts.biggestTitSize() <= 11) || (!tainted && player.breasts.biggestTitSize() <= 5)) && changes < changeLimit && (rand(3) == 0 || enhanced)) {
             if (rand(2) == 0) outputText("\n\nYour " + breastDescript(game.player, 0) + " tingle for a moment before becoming larger.", false);
             else outputText("\n\nYou feel a little weight added to your chest as your " + breastDescript(game.player, 0) + " seem to inflate and settle in a larger size.", false);
             player.growTits(1 + rand(3), 1, false, 3);
@@ -3346,7 +3346,7 @@ export class Mutations {
             player.hairType = 0;
         }
         // If breasts are D or bigger and are not lactating, they also start lactating:
-        if (player.biggestTitSize() >= 4 && player.breastRows[0].lactationMultiplier < 1 && changes < changeLimit && (rand(3) == 0 || boobsGrew || enhanced)) {
+        if (player.breasts.biggestTitSize() >= 4 && player.breastRows[0].lactationMultiplier < 1 && changes < changeLimit && (rand(3) == 0 || boobsGrew || enhanced)) {
             outputText("\n\nYou gasp as your " + breastDescript(game.player, 0) + " feel like they are filling up with something.  Within moments, a drop of milk leaks from your " + breastDescript(game.player, 0) + "; <b> you are now lactating</b>.", false);
             player.breastRows[0].lactationMultiplier = 1.25;
             changes++;
@@ -3365,18 +3365,18 @@ export class Mutations {
                 }
                 if (player.breastRows.length >= 3 && player.breastRows[2].nipplesPerBreast == 1) {
                     outputText("Finally, your ");
-                    if (player.bRows() == 3) outputText("third row of " + breastDescript(game.player, 2) + " mutates along with its sisters, sprouting into a wonderland of nipples.", false);
-                    else if (player.bRows() >= 4) {
+                    if (player.breasts.length == 3) outputText("third row of " + breastDescript(game.player, 2) + " mutates along with its sisters, sprouting into a wonderland of nipples.", false);
+                    else if (player.breasts.length >= 4) {
                         outputText("everything from the third row down mutates, sprouting into a wonderland of nipples.", false);
                         player.breastRows[3].nipplesPerBreast = 4;
-                        if (player.bRows() >= 5) player.breastRows[4].nipplesPerBreast = 4;
-                        if (player.bRows() >= 6) player.breastRows[5].nipplesPerBreast = 4;
-                        if (player.bRows() >= 7) player.breastRows[6].nipplesPerBreast = 4;
-                        if (player.bRows() >= 8) player.breastRows[7].nipplesPerBreast = 4;
-                        if (player.bRows() >= 9) player.breastRows[8].nipplesPerBreast = 4;
+                        if (player.breasts.length >= 5) player.breastRows[4].nipplesPerBreast = 4;
+                        if (player.breasts.length >= 6) player.breastRows[5].nipplesPerBreast = 4;
+                        if (player.breasts.length >= 7) player.breastRows[6].nipplesPerBreast = 4;
+                        if (player.breasts.length >= 8) player.breastRows[7].nipplesPerBreast = 4;
+                        if (player.breasts.length >= 9) player.breastRows[8].nipplesPerBreast = 4;
                     }
                     player.breastRows[2].nipplesPerBreast = 4;
-                    outputText("  <b>You have a total of " + num2Text(player.totalNipples()) + " nipples.</b>");
+                    outputText("  <b>You have a total of " + num2Text(player.breasts.totalNipples()) + " nipples.</b>");
                 }
             }
             // QUAD DAMAGE IF WEIRD SHIT BROKE BEFORE
@@ -3398,7 +3398,7 @@ export class Mutations {
                     player.breastRows[3].nipplesPerBreast = 4;
                 }
             }
-            else if (player.biggestLactation() > 1) {
+            else if (player.breasts.biggestLactation() > 1) {
                 if (rand(2) == 0) outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescript(game.player, 0) + " start leaking milk from a massive jump in production.", false);
                 else outputText("\n\nSomething shifts inside your " + breastDescript(game.player, 0) + " and they feel MUCH fuller and riper.  You know that you've started producing much more milk.", false);
                 player.boostLactation(2.5);
@@ -3449,7 +3449,7 @@ export class Mutations {
         // apply an effect where the player really wants
         // to give their milk to other creatures
         // (capable of getting them addicted):
-        if (player.effects.findByType(StatusAffects.Feeder) < 0 && player.biggestLactation() >= 3 && rand(2) == 0 && player.biggestTitSize() >= 5 && player.cor >= 35) {
+        if (player.effects.findByType(StatusAffects.Feeder) < 0 && player.breasts.biggestLactation() >= 3 && rand(2) == 0 && player.breasts.biggestTitSize() >= 5 && player.cor >= 35) {
             outputText("\n\nYou start to feel a strange desire to give your milk to other creatures.  For some reason, you know it will be very satisfying.\n\n<b>(You have gained the 'Feeder' perk!)</b>", false);
             player.effects.create(StatusAffects.Feeder, 0, 0, 0, 0);
             player.perks.create(PerkLib.Feeder, 0, 0, 0, 0);
@@ -3849,17 +3849,17 @@ export class Mutations {
             changes++;
         }
         // -Remove extra breast rows
-        if (changes < changeLimit && player.bRows() > 1 && rand(3) == 0) {
+        if (changes < changeLimit && player.breasts.length > 1 && rand(3) == 0) {
             changes++;
             outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
-            if (player.bRows() >= 3) outputText("abdomen", false);
+            if (player.breasts.length >= 3) outputText("abdomen", false);
             else outputText("chest", false);
             outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ", false);
             if (player.skinType == SKIN_TYPE_FUR) outputText(player.hairColor + " " + player.skinDesc, false);
             else outputText(player.skinTone + " " + player.skinDesc, false);
             outputText(" remains. <b>You've lost a row of breasts!</b>", false);
             dynStats("sen", -5);
-            player.removeBreastRow(player.breastRows.length - 1, 1);
+            player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
         }
         // Skin/fur
         if (player.skinType != SKIN_TYPE_PLAIN && changes < changeLimit && rand(4) == 0 && player.faceType == FACE_HUMAN) {
@@ -4441,7 +4441,7 @@ export class Mutations {
         if (player.ass.analWetness > 1) player.ass.analWetness = 1;
         // Clear breasts
         player.breastRows = [];
-        player.createBreastRow();
+        player.breasts.createBreastRow();
         player.nippleLength = .25;
         // Girls and herms get bewbs back
         if (player.gender > 2) {
@@ -4601,8 +4601,8 @@ export class Mutations {
             temp3 = 0;
             // Determine if shrinkage is required
             // and set temp2 to threshold
-            if (!player.hasVagina() && player.biggestTitSize() > 2) temp2 = 2;
-            else if (player.biggestTitSize() > 4) temp2 = 4;
+            if (!player.hasVagina() && player.breasts.biggestTitSize() > 2) temp2 = 2;
+            else if (player.breasts.biggestTitSize() > 4) temp2 = 4;
             // IT IS!
             if (temp2 > 0) {
                 // temp3 stores how many rows are changed
@@ -4926,9 +4926,9 @@ export class Mutations {
             changes++;
         }
         // -Breasts vanish to 0 rating if male
-        if (player.biggestTitSize() >= 1 && player.gender == 1 && changes < changeLimit && rand(3) == 0) {
+        if (player.breasts.biggestTitSize() >= 1 && player.gender == 1 && changes < changeLimit && rand(3) == 0) {
             // (HUEG)
-            if (player.biggestTitSize() > 8) {
+            if (player.breasts.biggestTitSize() > 8) {
                 outputText("\n\nThe flesh on your chest tightens up, losing nearly half its mass in the span of a few seconds.  With your center of balance shifted so suddenly, you stagger about trying not to fall on your ass.  You catch yourself and marvel at the massive change in breast size.", false);
                 // Half tit size
             }
@@ -4946,11 +4946,11 @@ export class Mutations {
             changes++;
         }
         // -Lactation stoppage.
-        if (player.biggestLactation() >= 1 && changes < changeLimit && rand(4) == 0) {
-            if (player.totalNipples() == 2) outputText("\n\nBoth of your", false);
+        if (player.breasts.biggestLactation() >= 1 && changes < changeLimit && rand(4) == 0) {
+            if (player.breasts.totalNipples() == 2) outputText("\n\nBoth of your", false);
             else outputText("\n\nAll of your many", false);
             outputText(" nipples relax.  It's a strange feeling, and you pull back your top to touch one.  It feels fine, though there doesn't seem to be any milk leaking out.  You give it a squeeze and marvel when nothing ", false);
-            if (player.hasFuckableNipples()) outputText("but sexual fluid ", false);
+            if (player.breasts.hasFuckableNipples()) outputText("but sexual fluid ", false);
             outputText("escapes it.  <b>You are no longer lactating.</b>  That makes sense, only mammals lactate!  Smiling, you muse at how much time this will save you when cleaning your gear.", false);
             if (player.perks.findByType(PerkLib.Feeder) >= 0 || player.effects.findByType(StatusAffects.Feeder) >= 0) {
                 outputText("\n\n(<b>Feeder perk lost!</b>)", false);
@@ -4964,9 +4964,9 @@ export class Mutations {
             }
         }
         // -Nipples reduction to 1 per tit.
-        if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
+        if (player.breasts.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
             outputText("\n\nA chill runs over your " + allBreastsDescript(player) + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ", false);
-            if (player.biggestTitSize() < 1) outputText("'breast'.", false);
+            if (player.breasts.biggestTitSize() < 1) outputText("'breast'.", false);
             else outputText("breast.", false);
             changes++;
             // Loop through and reset nipples
@@ -5276,12 +5276,12 @@ export class Mutations {
             else {
                 dynStats("sen", 15);
                 outputText("Every movement of your body seems to bring heightened waves of sensation that make you woozy.  Your " + player.armorName + " rubs your " + nippleDescription(player, 0) + "s deliciously", false);
-                if (player.hasFuckableNipples()) {
+                if (player.breasts.hasFuckableNipples()) {
                     outputText(", sticking to the ", false);
-                    if (player.biggestLactation() > 2) outputText("milk-leaking nipple-twats", false);
+                    if (player.breasts.biggestLactation() > 2) outputText("milk-leaking nipple-twats", false);
                     else outputText("slippery nipple-twats", false);
                 }
-                else if (player.biggestLactation() > 2) outputText(", sliding over the milk-leaking teats with ease", false);
+                else if (player.breasts.biggestLactation() > 2) outputText(", sliding over the milk-leaking teats with ease", false);
                 else outputText(" catching on each of the hard nubs repeatedly", false);
                 outputText(".  Meanwhile, your crotch... your crotch is filled with such heavenly sensations from ", false);
                 if (player.gender == 1) {
@@ -5602,8 +5602,8 @@ export class Mutations {
                     // (female 1)
                     if (rand(2) == 0) {
                         outputText("In your fantasy you're a happy harpy mother, your womb stretched by the sizable egg it contains. The surging hormones in your body arouse you again, and you turn to the father of your children, planting a wet kiss on his slobbering, lipstick-gilt cock. The poor adventurer writhes, hips pumping futilely in the air. He's been much more agreeable since you started keeping his cock coated with your kisses. You mount the needy boy, fantasizing about that first time when you found him near the portal, in the ruins of your old camp. The feeling of your stiff nipples ", false);
-                        if (player.hasFuckableNipples()) outputText("and pussy leaking over ", false);
-                        else if (player.biggestLactation() >= 1.5) outputText("dripping milk inside ", false);
+                        if (player.breasts.hasFuckableNipples()) outputText("and pussy leaking over ", false);
+                        else if (player.breasts.biggestLactation() >= 1.5) outputText("dripping milk inside ", false);
                         else outputText("rubbing inside ", false);
                         outputText("your " + player.armorName + " shocks you from the dream, leaving you with nothing but the moistness of your loins for company. Maybe next year you'll find the mate of your dreams?", false);
                     }
@@ -5642,7 +5642,7 @@ export class Mutations {
             else outputText(player.skinTone + " " + player.skinDesc, false);
             outputText(" remains. <b>You've lost a row of breasts!</b>", false);
             dynStats("sen", -5);
-            player.removeBreastRow(player.breastRows.length - 1, 1);
+            player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
         }
         // -Shrink tits if above DDs.
         // Cannot happen at same time as row removal
@@ -6178,9 +6178,9 @@ export class Mutations {
             }
         }
         // [Increase to Breast Size] - up to Large DD
-        if (player.smallestTitSize() < 6 && changes < changeLimit && rand(4) == 0) {
-            outputText("\n\nAfter eating it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + breastDescript(player, player.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.", false);
-            player.breastRows[player.smallestTitRow()].breastRating++;
+        if (player.breasts.smallestTitSize() < 6 && changes < changeLimit && rand(4) == 0) {
+            outputText("\n\nAfter eating it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + breastDescript(player, player.breasts.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.", false);
+            player.breastRows[player.breasts.smallestTitRow()].breastRating++;
             changes++;
         }
         // [Increase to Ass Size] - to 11
@@ -6217,22 +6217,22 @@ export class Mutations {
             changes++;
         }
         // -Remove breast rows over 2.
-        if (changes < changeLimit && player.bRows() > 2 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+        if (changes < changeLimit && player.breasts.length > 2 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
             changes++;
             outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
-            if (player.bRows() >= 3) outputText("abdomen", false);
+            if (player.breasts.length >= 3) outputText("abdomen", false);
             else outputText("chest", false);
             outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ", false);
             if (player.skinType == SKIN_TYPE_FUR) outputText(player.hairColor + " " + player.skinDesc, false);
             else outputText(player.skinTone + " " + player.skinDesc, false);
             outputText(" remains. <b>You've lost a row of breasts!</b>", false);
             dynStats("sen", -5);
-            player.removeBreastRow(player.breastRows.length - 1, 1);
+            player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
         }
         // -Nipples reduction to 1 per tit.
-        if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
+        if (player.breasts.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
             outputText("\n\nA chill runs over your " + allBreastsDescript(player) + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ", false);
-            if (player.biggestTitSize() < 1) outputText("'breast'.", false);
+            if (player.breasts.biggestTitSize() < 1) outputText("'breast'.", false);
             else outputText("breast.", false);
             changes++;
             // Loop through and reset nipples
@@ -6426,14 +6426,14 @@ export class Mutations {
         outputText(".\n\n", false);
 
         // (Tits b' gone)
-        if (player.biggestTitSize() >= 1) {
+        if (player.breasts.biggestTitSize() >= 1) {
             outputText("A tingle starts in your " + nippleDescription(player, 0) + "s before the tight buds grow warm, hot even.  ", false);
-            if (player.biggestLactation() >= 1) outputText("Somehow, you know that the milk you had been producing is gone, reabsorbed by your body.  ", false);
+            if (player.breasts.biggestLactation() >= 1) outputText("Somehow, you know that the milk you had been producing is gone, reabsorbed by your body.  ", false);
             outputText("They pinch in towards your core, shrinking along with your flattening " + allChestDesc(game.player) + ".  You shudder and flex in response.  Your chest isn't just shrinking, it's reforming, sculping itself into a massive pair of chiseled pecs.  ", false);
             if (player.breastRows.length > 1) {
                 outputText("The breasts below vanish entirely.  ", false);
                 while (player.breastRows.length > 1) {
-                    player.removeBreastRow(player.breastRows.length - 1, 1);
+                    player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
                 }
             }
             player.breastRows[0].breastRating = 0;
@@ -6953,29 +6953,29 @@ export class Mutations {
             outputText("  You now have a [balls].");
         }
         // Sprouting more!
-        if (changes < changeLimit && enhanced && player.bRows() < 4 && player.breastRows[player.bRows() - 1].breastRating > 1) {
+        if (changes < changeLimit && enhanced && player.breasts.length < 4 && player.breastRows[player.breasts.length - 1].breastRating > 1) {
             outputText("\n\nYour belly rumbles unpleasantly for a second as the ");
             if (!enhanced) outputText("berry ");
             else outputText("drink ");
             outputText("settles deeper inside you.  A second later, the unpleasant gut-gurgle passes, and you let out a tiny burp of relief.  Before you finish taking a few breaths, there's an itching below your " + allChestDesc(game.player) + ".  You idly scratch at it, but gods be damned, it hurts!  You peel off part of your " + player.armorName + " to inspect the unwholesome itch, ");
-            if (player.biggestTitSize() >= 8) outputText("it's difficult to see past the wall of tits obscuring your view.");
+            if (player.breasts.biggestTitSize() >= 8) outputText("it's difficult to see past the wall of tits obscuring your view.");
             else outputText("it's hard to get a good look at.");
             outputText("  A few gentle prods draw a pleasant gasp from your lips, and you realize that you didn't have an itch - you were growing new nipples!");
             outputText("\n\nA closer examination reveals your new nipples to be just like the ones above in size and shape");
-            if (player.breastRows[player.bRows() - 1].nipplesPerBreast > 1) outputText(", not to mention number");
-            else if (player.hasFuckableNipples()) outputText(", not to mention penetrability");
-            outputText(".  While you continue to explore your body's newest addition, a strange heat builds behind the new nubs. Soft, jiggly breastflesh begins to fill your cupped hands.  Radiant warmth spreads through you, eliciting a moan of pleasure from your lips as your new breasts catch up to the pair above.  They stop at " + breastCup(player, player.bRows() - 1) + "s.  <b>You have " + num2Text(player.bRows() + 1) + " rows of breasts!</b>");
-            player.createBreastRow();
-            player.breastRows[player.bRows() - 1].breastRating = player.breastRows[player.bRows() - 2].breastRating;
-            player.breastRows[player.bRows() - 1].nipplesPerBreast = player.breastRows[player.bRows() - 2].nipplesPerBreast;
-            if (player.hasFuckableNipples()) player.breastRows[player.bRows() - 1].fuckable = true;
-            player.breastRows[player.bRows() - 1].lactationMultiplier = player.breastRows[player.bRows() - 2].lactationMultiplier;
+            if (player.breastRows[player.breasts.length - 1].nipplesPerBreast > 1) outputText(", not to mention number");
+            else if (player.breasts.hasFuckableNipples()) outputText(", not to mention penetrability");
+            outputText(".  While you continue to explore your body's newest addition, a strange heat builds behind the new nubs. Soft, jiggly breastflesh begins to fill your cupped hands.  Radiant warmth spreads through you, eliciting a moan of pleasure from your lips as your new breasts catch up to the pair above.  They stop at " + breastCup(player, player.breasts.length - 1) + "s.  <b>You have " + num2Text(player.breasts.length + 1) + " rows of breasts!</b>");
+            player.breasts.createBreastRow();
+            player.breastRows[player.breasts.length - 1].breastRating = player.breastRows[player.breasts.length - 2].breastRating;
+            player.breastRows[player.breasts.length - 1].nipplesPerBreast = player.breastRows[player.breasts.length - 2].nipplesPerBreast;
+            if (player.breasts.hasFuckableNipples()) player.breastRows[player.breasts.length - 1].fuckable = true;
+            player.breastRows[player.breasts.length - 1].lactationMultiplier = player.breastRows[player.breasts.length - 2].lactationMultiplier;
             dynStats("sen", 2, "lus", 30);
             changes++;
         }
         // Find out if tits are eligible for evening
         let tits: boolean = false;
-        counter = player.bRows();
+        counter = player.breasts.length;
         while (counter > 1) {
             counter--;
             // If the row above is 1 size above, can be grown!
@@ -7711,10 +7711,10 @@ export class Mutations {
             changes++;
         }
         // Breast Loss: (towards A cup)
-        if (player.biggestTitSize() > 1 && rand(4) == 0 && changes < changeLimit) {
+        if (player.breasts.biggestTitSize() > 1 && rand(4) == 0 && changes < changeLimit) {
             outputText("\n\nYou gasp as you feel a compressing sensation in your chest and around your [fullChest].  The feeling quickly fades however, leaving you feeling like you have lost a considerable amount of weight from your upper body.");
             temp = 0;
-            while (temp < player.bRows()) {
+            while (temp < player.breasts.length) {
                 if (player.breastRows[temp].breastRating > 70) player.breastRows[temp].breastRating -= rand(3) + 15;
                 else if (player.breastRows[temp].breastRating > 50) player.breastRows[temp].breastRating -= rand(3) + 10;
                 else if (player.breastRows[temp].breastRating > 30) player.breastRows[temp].breastRating -= rand(3) + 7;
@@ -7726,12 +7726,12 @@ export class Mutations {
             changes++;
         }
         // Breast Gain: (towards A cup)
-        if (player.biggestTitSize() < 1 || player.breastRows[0].breastRating < 1 && rand(4) == 0 && changes < changeLimit) {
+        if (player.breasts.biggestTitSize() < 1 || player.breastRows[0].breastRating < 1 && rand(4) == 0 && changes < changeLimit) {
             outputText("\n\nYou feel a vague swelling sensation in your [fullChest], and you frown downwards.  You seem to have gained a little weight on your chest.  Not enough to stand out, but- you cup yourself carefully- certainly giving you the faintest suggestion of boobs.");
             player.breastRows[0].breastRating = 1;
-            if (player.bRows() > 1) {
+            if (player.breasts.length > 1) {
                 temp = 1;
-                while (temp < player.bRows()) {
+                while (temp < player.breasts.length) {
                     if (player.breastRows[temp].breastRating < 1) player.breastRows[temp].breastRating = 1;
                 }
             }
@@ -7936,10 +7936,10 @@ export class Mutations {
         clearOutput();
         outputText("You bite into the fruit Essrayle gave you with little hesitation.  It's amazingly sweet, with a texture that's rather gummy.  The juice is a candied grape syrup that fills your cheeks and flows down your throat with far more fluid than the size of the plant should allow.  You hastily devour the entire thing, unable to stop yourself once you've started.");
         outputText("\n\nA tingling warmth shifts to a roaring inferno in your veins, your heart-rate spiking abruptly.  The intensity of it almost makes your body feel molten!  But, as quickly as it came, the sensation fades into merely a pleasing warmth that settles in your chest.");
-        if (player.averageNipplesPerBreast() < 4) {
+        if (player.breasts.averageNipplesPerBreast() < 4) {
             outputText("  At first you think nothing has changed, but a second look confirms that your breasts now sport the same quartet of cow-like nipples the bovine plant-girl bears.");
             if (player.nippleLength < 4) player.nippleLength = 4;
-            temp = player.bRows();
+            temp = player.breasts.length;
             while (temp > 0) {
                 temp--;
                 player.breastRows[temp].nipplesPerBreast = 4;
@@ -7947,7 +7947,7 @@ export class Mutations {
         }
         // [Player gains quad nipples, milk production and libido way up]
         dynStats("lib", 5);
-        player.boostLactation(3 * player.bRows());
+        player.boostLactation(3 * player.breasts.length);
     }
 
     // TF Items
@@ -8542,9 +8542,9 @@ export class Mutations {
         }
 
         // -If male with breasts or female/herm with breasts > B cup:
-        if (!flags[kFLAGS.HYPER_HAPPY] && (player.biggestTitSize() > 2 || (player.cocks.length > 0 && player.biggestTitSize() >= 1)) && rand(2) == 0 && changes < changeLimit) {
+        if (!flags[kFLAGS.HYPER_HAPPY] && (player.breasts.biggestTitSize() > 2 || (player.cocks.length > 0 && player.breasts.biggestTitSize() >= 1)) && rand(2) == 0 && changes < changeLimit) {
             outputText("\n\nYou cup your tits as they begin to tingle strangely.  You can actually feel them getting smaller in your hands!");
-            for (x = 0; x < player.bRows(); x++) {
+            for (x = 0; x < player.breasts.length; x++) {
                 if (player.breastRows[x].breastRating > 2 || (player.cocks.length > 0 && player.breastRows[x].breastRating >= 1)) {
                     player.breastRows[x].breastRating--;
                 }
@@ -8576,9 +8576,9 @@ export class Mutations {
             }
         }
         // -If the PC has quad nipples:
-        if (player.averageNipplesPerBreast() > 1 && rand(4) == 0 && changes < changeLimit) {
+        if (player.breasts.averageNipplesPerBreast() > 1 && rand(4) == 0 && changes < changeLimit) {
             outputText("\n\nA tightness arises in your nipples as three out of four on each breast recede completely, the leftover nipples migrating to the middle of your breasts.  <b>You are left with only one nipple on each breast.</b>");
-            for (x = 0; x < player.bRows(); x++) {
+            for (x = 0; x < player.breasts.length; x++) {
                 player.breastRows[x].nipplesPerBreast = 1;
             }
             changes++;

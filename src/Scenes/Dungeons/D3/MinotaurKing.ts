@@ -8,7 +8,7 @@ export class MinotaurKing extends Monster {
         this.tallness = 12 * 14;
 
         this.cocks.createCock(24, 5, CockTypesEnum.HORSE);
-        this.createBreastRow(0);
+        this.breasts.createBreastRow(0);
 
         this.balls = 2;
         this.ballSize = 4;

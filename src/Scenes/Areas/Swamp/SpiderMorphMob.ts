@@ -98,7 +98,7 @@ export class SpiderMorphMob extends Monster {
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
         this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
         this.tallness = rand(8) + 70;

@@ -237,7 +237,7 @@ export class FetishZealotScene extends AbstractLakeContent {
         if (player.lust >= 33 && player.gender > 0) {
             outputText("\n\nDo you want to take advantage of his vulnerable state to sate your lusts?", false);
             let bikiniTits: () => void = null;
-            if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+            if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
             simpleChoices("Yes", zealotWinRape, "", null, "", null, "B.Titfuck", bikiniTits, "Leave", cleanupAfterCombat);
         }
         else cleanupAfterCombat();

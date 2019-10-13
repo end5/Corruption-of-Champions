@@ -117,7 +117,7 @@ export class MinotaurLord extends Monster {
         this.ballSize = 2 + rand(13);
         this.cumMultiplier = 1.5;
         this.hoursSinceCum = this.ballSize * 10;
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
         this.effects.create(StatusAffects.BonusACapacity, 50, 0, 0, 0);

@@ -17,8 +17,8 @@ export class SandMother extends Monster {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_WET, VAGINA_LOOSENESS_LOOSE);
         this.effects.create(StatusAffects.BonusVCapacity, 70, 0, 0, 0);
-        this.createBreastRow(Appearance.breastCupInverse("DD"));
-        this.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
         this.effects.create(StatusAffects.BonusACapacity, 50, 0, 0, 0);

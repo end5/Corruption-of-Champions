@@ -81,26 +81,26 @@ export function updatePregnancy(): boolean {
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 displayedUpdate = true;
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.  You wonder just what kind of creature they're getting ready to feed.\n", false);
                     player.boostLactation(.5);
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
@@ -196,26 +196,26 @@ export function updatePregnancy(): boolean {
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 displayedUpdate = true;
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.  You wonder just what kind of creature they're getting ready to feed.\n", false);
                     player.boostLactation(.5);
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
@@ -257,26 +257,26 @@ export function updatePregnancy(): boolean {
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 displayedUpdate = true;
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.  You wonder just what kind of creature they're getting ready to feed.\n", false);
                     player.boostLactation(.5);
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("<b>\nYou realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("<b>\nYour breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("<b>\nYour breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
@@ -394,26 +394,26 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 150) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.  You wonder just what kind of creature they're getting ready to feed.\n", false);
                     player.boostLactation(.5);
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
@@ -423,22 +423,22 @@ export function updatePregnancy(): boolean {
                 // A small scene for very late in the pregnancy, its breast growth for the little cowgirl.  This scene should be a few days before birth, so the milk doesn't stop before the cowgirl is born.
                 outputText("\n<b>Your belly has become heavily pregnant; at the same time, ", false);
                 // If (PC has flat breasts)
-                if (player.biggestTitSize() <= 0) {
+                if (player.breasts.biggestTitSize() <= 0) {
                     outputText("your chest has begun to feel a bit odd.  Your run your hands over it to find that your breasts have grown to around C-cups at some point when you weren't paying attention!  ", false);
                     player.breastRows[0].breastRating = 3;
                 }
-                else if (player.biggestTitSize() <= 1) {
+                else if (player.breasts.biggestTitSize() <= 1) {
                     outputText("your breasts feel oddly tight in your top.  You put a hand to them and are startled when you find that they've grown to C-cups!  ", false);
                     player.breastRows[0].breastRating = 3;
                 }
-                else if (player.biggestTitSize() <= 10) {
+                else if (player.breasts.biggestTitSize() <= 10) {
                     outputText("your breasts feel oddly full.  You grab them with your hands, and after a moment you're able to determine that they've grown about a cup in size.  ", false);
                     player.breastRows[0].breastRating++;
                 }
                 else {
                     outputText("your breasts feel a bit odd.  You put a hand on your chest and start touching them.  ", false);
                 }
-                if (player.biggestLactation() < 1) {
+                if (player.breasts.biggestLactation() < 1) {
                     outputText("You gasp slightly in surprise and realize that you've started lactating.", false);
                     player.boostLactation(player.breastRows.length);
                 }
@@ -493,26 +493,26 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.  You wonder just what kind of creature they're getting ready to feed.\n", false);
                     player.boostLactation(.5);
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
@@ -554,26 +554,26 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.\n", false);
                     player.boostLactation(.5);
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
@@ -616,30 +616,30 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                     displayedUpdate = true;
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
@@ -686,30 +686,30 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                     displayedUpdate = true;
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
@@ -726,30 +726,30 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 82 || player.pregnancyIncubation == 16) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                     displayedUpdate = true;
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
@@ -918,30 +918,30 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                     displayedUpdate = true;
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                     displayedUpdate = true;
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                     displayedUpdate = true;
@@ -1043,26 +1043,26 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 32 || player.pregnancyIncubation == 64 || player.pregnancyIncubation == 85 || player.pregnancyIncubation == 150) {
                 // Increase lactation!
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
                     outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.  You wonder just what kind of creature they're getting ready to feed.\n", false);
                     player.boostLactation(.5);
                 }
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() > 0 && player.breasts.biggestLactation() < 1) {
                     outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n", false);
                     player.boostLactation(.5);
                 }
                 // Lactate if large && not lactating
-                if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() == 0) {
+                if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.biggestLactation() == 0) {
                     outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n", false);
                     player.boostLactation(1);
                 }
                 // Enlarge if too small for lactation
-                if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
                 // Enlarge if really small!
-                if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+                if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
                     outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n", false);
                     player.growTits(1, 1, false, 3);
                 }
@@ -1286,7 +1286,7 @@ export function updatePregnancy(): boolean {
         if (player.vaginas.length > 0) outputText("Your " + vaginaDescript(player, 0) + " becomes engorged and sensitive.  ", false);
         outputText("Your hand darts down to the amber, scooping up a handful of the sticky stuff.  You wonder what your hand is doing as it brings it up to your mouth, which instinctively opens.  You shudder in revulsion as you swallow the sweet-tasting stuff, your mind briefly wondering why it would do that.  The stuff seems to radiate warmth, quickly pushing those nagging thoughts away as you scoop up more.\n\n", false);
         outputText("A sudden slip from below surprises you; a white sphere escapes from your anus along with another squirt of honey.  Your drugged brain tries to understand what's happening, but it gives up, your hands idly slathering honey over your loins.  The next orb pops out moments later, forcing a startled moan from your mouth.  That felt GOOD.  You begin masturbating to the thought of laying more eggs... yes, that's what those are.  You nearly cum as egg number three squeezes out.  ", false);
-        if (player.averageLactation() >= 1 && player.biggestTitSize() > 2) outputText("Seeking even greater sensation, your hands gather the honey and massage it into your " + breastDescript(game.player, 0) + ", slowly working up to your nipples.  Milk immediately begins pouring out from the attention, flooding your chest with warmth.  ", false);
+        if (player.breasts.averageLactation() >= 1 && player.breasts.biggestTitSize() > 2) outputText("Seeking even greater sensation, your hands gather the honey and massage it into your " + breastDescript(game.player, 0) + ", slowly working up to your nipples.  Milk immediately begins pouring out from the attention, flooding your chest with warmth.  ", false);
         outputText("Each egg seems to come out closer on the heels of the one before, and each time your conscious mind loses more of its ability to do anything but masturbate and wallow in honey.\n\n", false);
         outputText("Some time later, your mind begins to return, brought to wakefulness by an incredibly loud buzzing...  You sit up and see a pile of dozens of eggs resting in a puddle of sticky honey.  Most are empty, but a few have hundreds of honey-bees emptying from them, joining the massive swarms above you.  ", false);
         if (player.cor < 35) outputText("You are disgusted, but glad you were not stung during the ordeal.  You stagger away and find a brook to wash out your mouth with.", false);
@@ -1471,7 +1471,7 @@ export function updatePregnancy(): boolean {
             else outputText("spray", false);
             outputText(" of semen shoots from your new penis and lands on your ", false);
             // [(if boobs)
-            if (player.biggestTitSize() >= 1) outputText(allBreastsDescript(player) + " and ", false);
+            if (player.breasts.biggestTitSize() >= 1) outputText(allBreastsDescript(player) + " and ", false);
             outputText("stomach", false);
             // [(dick1 exists)
             if (player.cocks.length > 1) outputText(", followed in short order by white squirts from " + sMultiCockDesc(player) + " remaining", false);
@@ -1525,23 +1525,23 @@ export function updatePregnancy(): boolean {
 
         player.knockUpForce(); // Clear Pregnancy
         outputText("\n\nWhen you wake you find a large number of tiny imp tracks... and a spattering of cum on your clothes and body.  They must be born fully-formed.", false);
-        if (player.averageLactation() > 0 && player.averageLactation() < 5) {
+        if (player.breasts.averageLactation() > 0 && player.breasts.averageLactation() < 5) {
             outputText("  Your breasts won't seem to stop dribbling milk, lactating more heavily than before.", false);
             player.boostLactation(.5);
         }
         // Lactate if large && not lactating
-        if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.averageLactation() == 0) {
+        if (player.breasts.biggestTitSize() >= 3 && player.breasts.mostBreastsPerRow() > 1 && player.breasts.averageLactation() == 0) {
             outputText("  As you ponder the implications, <b>you realize your breasts have been slowly lactating</b>.  You wonder how much longer it will be before they stop.", false);
             player.boostLactation(1);
         }
         player.boostLactation(.01);
         // Enlarge if too small for lactation
-        if (player.biggestTitSize() == 2 && player.mostBreastsPerRow() > 1) {
+        if (player.breasts.biggestTitSize() == 2 && player.breasts.mostBreastsPerRow() > 1) {
             outputText("  <b>Your breasts have grown to C-cups!</b>", false);
             player.growTits(1, 1, false, 3);
         }
         // Enlarge if really small!
-        if (player.biggestTitSize() == 1 && player.mostBreastsPerRow() > 1) {
+        if (player.breasts.biggestTitSize() == 1 && player.breasts.mostBreastsPerRow() > 1) {
             outputText("  <b>Your breasts have grown to B-cups!</b>", false);
             player.growTits(1, 1, false, 3);
         }
@@ -1647,7 +1647,7 @@ export function updatePregnancy(): boolean {
         outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it bulges and shifts as another living being moves independently inside you. Instinctively, you spread your legs as you feel the creature press outward, parting your cervix.\n\nYou try to push with your vaginal muscles, but you feel the creature moving more of its own volition. Your lips part as a pair of black-furred hands grip your vulva and begin to spread them and pull. You cry out in agony as your hips are widened forcefully by the passing mass of the being exiting your womb. A bovine face appears, mercifully lacking in horns. Shoulders follow, muscles already rippling on the newborn's form. A thick barrel chest follows, narrow, masculine hips and powerful bovine legs and hooves.\n\nFinally the worst is over as the toddler-sized minotaur gets to his feet, apparently already able to stand and walk.  He clops around your legs and over to your upper body, and takes hold of one of your milk-swollen breasts. He wraps his bestial lips around your nipple and begins to suckle, relieving the pressure on the milk-swollen jug.\n\n", false);
         outputText("He suckles and suckles and suckles, leaving you to wonder just how much milk you were actually holding, but even as you wonder this, your eyes grow wide as the newborn minotaur begins to grow. He gains inches at a time, his horns starting to grow from his skull, his muscles rippling and thickening, his cock lengthening, his balls swelling. He reaches four feet tall, but keeps growing, soon then five feet tall, starting to resemble more and more the monster who sired him. Finally, he pulls off your breasts, and finishes his milk-inspired growth spurt at six feet tall, looking practically full grown. His one gesture of gratitude for being brought into the world is a slobbery lick at your cheek, then he turns and runs off towards the mountain, leaving you to recover from the ordeal.  You swiftly pass out.\n\n", false);
         player.knockUpForce(); // Clear Pregnancy
-        if (player.averageLactation() > 0 && player.averageLactation() < 5) {
+        if (player.breasts.averageLactation() > 0 && player.breasts.averageLactation() < 5) {
             outputText("Your breasts won't seem to stop dribbling milk, lactating more heavily than before.", false);
             player.boostLactation(1);
         }
@@ -1715,7 +1715,7 @@ export function updatePregnancy(): boolean {
         outputText("Pain shoots through you as they pull open your cervix forcefully. You grip the ground and pant and push as the pains of labor overwhelm you. You feel your hips being forceably widened by the collective mass of the creatures moving down your birth canal. You spread your legs wide, laying your head back with groans and cries of agony as little white figures begin to emerge from between the lips of your abused pussy. Large innocent eyes, even larger ears, cute little muzzles, long slender pink tails all appear as the figures emerge. Each could be no larger than six inches tall, but they seem as active and curious as if they were already developed children. \n\n", false);
         outputText("Two emerge, then four, eight... you lose track. They swarm your body, scrambling for your chest, and take turns suckling at your nipples. Milk does their bodies good, making them grow rapidly, defining their genders as the girls grow cute little breasts and get broader hips and the boys develop their little mouse cocks and feel their balls swell. Each stops suckling when they reach two feet tall, and once every last one of them has departed your sore, abused cunt and drunk their fill of your milk, they give you a few grateful nuzzles, then run off towards the forest, leaving you alone to recover.\n", false);
         player.knockUpForce(); // Clear Pregnancy
-        if (player.averageLactation() > 0 && player.averageLactation() < 5) {
+        if (player.breasts.averageLactation() > 0 && player.breasts.averageLactation() < 5) {
             outputText("Your breasts won't seem to stop dribbling milk, lactating more heavily than before.", false);
             player.boostLactation(.5);
         }
@@ -1756,7 +1756,7 @@ export function updatePregnancy(): boolean {
         outputText("She drinks endlessly, and seems more alive and stronger with every gulp. Hours pass in quiet, motherly bliss as she drains your breastmilk first from one breast, then the other. Her little stomach bulges slightly, but she does not stop, and you do not want her to. Even with the strange, soothing effect of the pregnancy wearing off, you feel nothing but affection for this child.\n\n", false);
         outputText("By the time she is finished, the centaur girl is obviously stronger, able to stand and move about on her own. She explores her new body, jumping and prancing happily, while you lay back and watch, too exhausted to join her. Suddenly, though, her ears perk up, as she looks towards the horizon urgently. She hesitates just long enough to plant a sweet kiss on your cheek, then dashes off, smiling broadly. Exhausted, you are unable to follow... but that comforting sensation returns.  Somehow, you sense she will be all right.", false);
         player.knockUpForce(); // Clear Pregnancy
-        if (player.averageLactation() > 0 && player.averageLactation() < 5) {
+        if (player.breasts.averageLactation() > 0 && player.breasts.averageLactation() < 5) {
             outputText("  Your " + allBreastsDescript(player) + " won't seem to stop dribbling milk, lactating more heavily than before.", false);
             player.boostLactation(.5);
         }
@@ -1797,7 +1797,7 @@ export function updatePregnancy(): boolean {
         player.boostLactation(.01);
         // Main Text here
         player.knockUpForce(); // Clear Pregnancy
-        if (player.averageLactation() > 0 && player.averageLactation() < 5) {
+        if (player.breasts.averageLactation() > 0 && player.breasts.averageLactation() < 5) {
             outputText("Your breasts won't seem to stop dribbling milk, lactating more heavily than before.  ", false);
             player.boostLactation(.5);
         }

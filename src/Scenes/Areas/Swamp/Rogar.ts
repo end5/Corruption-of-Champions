@@ -86,7 +86,7 @@ export class Rogar {
             outputText("\"<i>Welcome to my li'l getaway.</i>\"  Ro'gar extends his arms out inside the hut as he welcomes you.  You smile and politely compliment Ro'gar on his cozy domicile.  The orc grins happily before reaching out to grab your shoulders in his strong hands.  \"<i>Have yerself a seat.</i>\"  He pulls out a chair and plops you into it before you can protest.  Once you are successfully plopped, the orc turns to rummage around with things on the other side of the small table.  \"<i>There she is....</i>\"  His deep tone rumbles as he pulls out a large bottle of dark liquid and two mugs.  He sets them on the table with a thud and pops the cork from the bottle, pouring two generous servings before sliding one towards you.  \"<i>Ain't the finest but s'all I got.</i>\"  He nervously smiles, holding his own mug as he watches you.  Whether to appear polite or because you suddenly remember your thirst, you take the mug and sip.  The strong flavor hits your tongue and burns your throat.  You barely refrain from coughing and swallow hard with a gasp.  Ro'gar grins and knocks back his mug with ease as he walks over and sits down on the edge of his bed to face you.  \"<i>It just occurs ta me that I cain't recall yer name.  All this time an' it's slipped my mind ta ask ya.</i>\"  You tell him, and he grins toothily.  \"<i>" + player.short + ", huh?  Nice ta meet'cha.</i>\"\n\n", false);
 
             // ((high femininity or breasts >=B-cup, libido 50 or more))
-            if (player.biggestTitSize() >= 2 && player.lib >= 50) {
+            if (player.breasts.biggestTitSize() >= 2 && player.lib >= 50) {
                 outputText("As you drink more your mind wanders.  ", false);
                 // (Int<30)
                 if (player.inte <= 30) {
@@ -109,7 +109,7 @@ export class Rogar {
                 return;
             }
             // ((high femininity or breasts >=B-cup, libido less than 50))
-            else if (player.biggestTitSize() >= 2) {
+            else if (player.breasts.biggestTitSize() >= 2) {
                 outputText("You grin as you chat with Ro'gar mindlessly.  ", false);
                 // [(int <30)
                 if (player.inte < 30) outputText("Ro'gar apologizes for wrestling for his territory in your sight.", false);
@@ -156,7 +156,7 @@ export class Rogar {
         // Not sure what determines this yet
         else if (flags[kFLAGS.ROGAR_PHASE] == 2) {
             // ((high femininity or breasts >=B-cup))
-            if (player.biggestTitSize() >= 2) {
+            if (player.breasts.biggestTitSize() >= 2) {
                 outputText("You travel to Ro'gar's hut using the map again, your memory of the earlier trip making the passage much smoother.  When you knock on the door, though, you receive no answer.  In fact, the hut is eerily silent.  Trying the handle, you find the door unlatched.  You peer inside and discover that not only is it quiet and dark, quite a bit is missing.  Ro'gar is nowhere to be found, along with most of his belongings.  Looking around, you find no sign of distress or struggle.  It doesn't seem like anything happened to him.  Perhaps he moved?  Either way, he's not here now and it doesn't look like he's coming back anytime soon.  As you head back to camp you wonder if you'll ever see him again.", false);
                 doNext(camp.returnToCampUseOneHour);
                 // move Ro'gar to Wet Bitch, set Ro'gar phase = 3
@@ -339,7 +339,7 @@ export class Rogar {
         // Ro'roh Raggy flag is set by how Ro' perceives the PC; in other words, it's toggled by whether the PC is feminine
 
         // ((high femininity or breasts >=B-cup, Ro'roh Raggy flag = 0))
-        if ((player.biggestTitSize() >= 2)) {
+        if ((player.breasts.biggestTitSize() >= 2)) {
             if (flags[kFLAGS.ROGAR_WARNING] == 0) {
                 outputText("Judging the patron's figure based on how imposingly filled out the cloak is, he or she is clearly very muscled.  You spy a green hand reach for a can and a spark of recognition hits you.  You're completely unsure how to break the ice, but tug on the hem of the cloak.  The figure turns toward you, and you're greeted with the green, toothy smile of Ro'gar, the orc from the swamp!  \"<i>H'lo, " + player.short + "!  I'm s'rprised to see ya here...</i>\"\n\n", false);
 
@@ -426,16 +426,16 @@ export class Rogar {
         outputText("", true);
         spriteSelect(86);
         // (if high femininity or breasts <=B-cup and Ro'roh Raggy = 0)
-        if ((player.biggestTitSize() >= 2) && flags[kFLAGS.ROGAR_WARNING] == 0) {
+        if ((player.breasts.biggestTitSize() >= 2) && flags[kFLAGS.ROGAR_WARNING] == 0) {
             outputText("Ro'gar the orc is drinking at the bar again, two crushed cans sitting by his half-empty one.  The bartender is casting irritated glances at them as though she'd like to throw them away, but doesn't dare take them from the enormous, burly orc until he finishes or leaves.  You tug on his cloak as you take a seat next to him, and he turns to you with a toothy smile.  That smile dims to a frown as he looks you over, eyes lingering on the womanly contours of your face", false);
-            if (player.biggestTitSize() >= 2) outputText(" and your " + chestDesc(game.player), false);
+            if (player.breasts.biggestTitSize() >= 2) outputText(" and your " + chestDesc(game.player), false);
             outputText(".  \"<i>Gee, ya look... different.  Been samplin' some of the local foods, huh?</i>\"  You agree cautiously, and he flags the bartender over and buys you a drink.  \"<i>I'm just bein' polite since we're pals,</i>\" the orc ventures.  \"<i>Ya kin pay me back another time.</i>\"  You nod, sip your drink, and converse reservedly with him for a while, then go on your way.", false);
             // set Ro'roh Raggy = 1
             flags[kFLAGS.ROGAR_WARNING] = 1;
             doNext(camp.returnToCampUseOneHour);
         }
         // (high fem or breasts >=B-cup and Ro'roh Raggy =1)
-        else if ((player.biggestTitSize() >= 2) && flags[kFLAGS.ROGAR_WARNING] == 1) {
+        else if ((player.breasts.biggestTitSize() >= 2) && flags[kFLAGS.ROGAR_WARNING] == 1) {
             outputText("Ro'gar the orc is here drinking again, but as you catch his eye, a pained expression flashes across his face as he looks over your form.  It's clear he doesn't relish the prospect of talking to you right now, but knowing him, he's too polite to say so.  The wind spills from your sails and your icebreaker slips from your mind - answering him with a simple glance of resignation is the most you can manage.  He gives you a weak smile and returns to his drink.", false);
             // return to bar menu
             doNext(telAdre.barTelAdre);
@@ -721,10 +721,10 @@ export class Rogar {
             }
             outputText("\n\n", false);
             // (Tits b' gone)
-            if (player.biggestTitSize() >= 1) {
+            if (player.breasts.biggestTitSize() >= 1) {
                 if (player.breastRows.length > 1) {
                     while (player.breastRows.length > 1) {
-                        player.removeBreastRow(player.breastRows.length - 1, 1);
+                        player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
                     }
                 }
                 player.breastRows[0].breastRating = 0;

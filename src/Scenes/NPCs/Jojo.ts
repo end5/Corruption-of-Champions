@@ -61,7 +61,7 @@ export class Jojo extends Monster {
         this.ballSize = 1;
         this.cumMultiplier = 1;
         this.hoursSinceCum = 1000;
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
         this.tallness = 4 * 12;

@@ -294,7 +294,7 @@ export class Creature {
     public fertility: number = 10;
     public clitLength: number = .5;
     public nippleLength: number = .25;
-    public breastRows: any[];
+    public breastRows = new BreastRowArray();
     public ass: AssClass = new AssClass();
 
     public validate(): string {
@@ -372,7 +372,6 @@ export class Creature {
         // The world isn't ready for typed Arrays just yet.
         vaginas = [];
         // vaginas: Vector.<Vagina> = new Vector.<Vagina>();
-        breastRows = [];
         // keyItems = new Array();
     }
 
@@ -388,19 +387,6 @@ export class Creature {
             outputText("\n\nFeeling some minor discomfort in your " + cockDescript(this, randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n");
             gems += bonusGems;
         }
-    }
-
-    public biggestTitSize(): number {
-        if (breastRows.length == 0)
-            return -1;
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[index].breastRating < breastRows[counter].breastRating)
-                index = counter;
-        }
-        return breastRows[index].breastRating;
     }
 
     public wetness(): number {
@@ -476,38 +462,6 @@ export class Creature {
         return ((bonus + this.effects.getValue1Of(StatusAffects.BonusACapacity) + 6 * ass.analLooseness * ass.analLooseness) * (1 + ass.analWetness / 10));
     }
 
-    public hasFuckableNipples(): boolean {
-        let counter: number = breastRows.length;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[counter].fuckable)
-                return true;
-        }
-        return false;
-    }
-
-    public hasBreasts(): boolean {
-        if (breastRows.length > 0) {
-            if (biggestTitSize() >= 1)
-                return true;
-        }
-        return false;
-    }
-
-    public hasNipples(): boolean {
-        let counter: number = breastRows.length;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[counter].nipplesPerBreast > 0)
-                return true;
-        }
-        return false;
-    }
-
-    public lactationSpeed(): number {
-        // Lactation * breastSize x 10 (milkPerBreast) determines scene
-        return biggestLactation() * biggestTitSize() * 10;
-    }
 
     // Hacky code till I can figure out how to move appearance code out.
     // TODO: Get rid of this
@@ -521,18 +475,6 @@ export class Creature {
         throw new Error("Not implemented. BAD");
     }
 
-    public biggestLactation(): number {
-        if (breastRows.length == 0)
-            return 0;
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[index].lactationMultiplier < breastRows[counter].lactationMultiplier)
-                index = counter;
-        }
-        return breastRows[index].lactationMultiplier;
-    }
     public milked(): void {
         if (this.effects.findByType(StatusAffects.LactationReduction) >= 0)
             this.effects.setValue(StatusAffects.LactationReduction, 1, 0);
@@ -600,7 +542,7 @@ export class Creature {
                         if (breastRows[index].lactationMultiplier < breastRows[counter].lactationMultiplier)
                             index = counter;
                     }
-                    // trace(biggestLactation());
+                    // trace(this.breasts.biggestLactation());
                     breastRows[index].lactationMultiplier += todo;
                     if (breastRows[index].lactationMultiplier < 0)
                         breastRows[index].lactationMultiplier = 0;
@@ -622,18 +564,6 @@ export class Creature {
             }
         }
         return changes;
-    }
-
-    public averageLactation(): number {
-        if (breastRows.length == 0)
-            return 0;
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            index += breastRows[counter].lactationMultiplier;
-        }
-        return Math.floor(index / breastRows.length);
     }
 
     // Calculate bonus virility rating!
@@ -754,17 +684,6 @@ export class Creature {
         return true;
     }
 
-    // create a row of breasts
-    public createBreastRow(size: number = 0, nipplesPerBreast: number = 1): boolean {
-        if (breastRows.length >= 10)
-            return false;
-        const newBreastRow: BreastRowClass = new BreastRowClass();
-        newBreastRow.breastRating = size;
-        newBreastRow.nipplesPerBreast = nipplesPerBreast;
-        breastRows.push(newBreastRow);
-        return true;
-    }
-
     public genderCheck(): void {
         if (this.cocks.length > 0 && hasVagina())
             gender = GENDER_HERM;
@@ -796,30 +715,6 @@ export class Creature {
             }
         }
         genderCheck();
-    }
-
-    // Remove a breast row
-    public removeBreastRow(arraySpot: number, totalRemoved: number): void {
-        // Various Errors preventing action
-        if (arraySpot < -1 || totalRemoved <= 0) {
-            // trace("ERROR: removeBreastRow called but arraySpot is negative or totalRemoved is 0.");
-            return;
-        }
-        if (breastRows.length == 0) {
-            // trace("ERROR: removeBreastRow called but cocks do not exist.");
-        }
-        else if (breastRows.length == 1 || breastRows.length - totalRemoved < 1) {
-            // trace("ERROR: Removing the current breast row would break the Creature classes assumptions about breastRow contents.");
-        }
-        else {
-            if (arraySpot > breastRows.length - 1) {
-                // trace("ERROR: removeBreastRow failed - array location is beyond the bounds of the array.");
-            }
-            else {
-                breastRows.splice(arraySpot, totalRemoved);
-                // trace("Attempted to remove " + totalRemoved + " breastRows.");
-            }
-        }
     }
 
 
@@ -1051,89 +946,6 @@ export class Creature {
         return fertilizedEggs();
     }
 
-    public bRows(): number {
-        return breastRows.length;
-    }
-
-    public totalBreasts(): number {
-        let counter: number = breastRows.length;
-        let total: number = 0;
-        while (counter > 0) {
-            counter--;
-            total += breastRows[counter].breasts;
-        }
-        return total;
-    }
-
-    public totalNipples(): number {
-        let counter: number = breastRows.length;
-        let total: number = 0;
-        while (counter > 0) {
-            counter--;
-            total += breastRows[counter].nipplesPerBreast * breastRows[counter].breasts;
-        }
-        return total;
-    }
-
-    public smallestTitSize(): number {
-        if (breastRows.length == 0)
-            return -1;
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[index].breastRating > breastRows[counter].breastRating)
-                index = counter;
-        }
-        return breastRows[index].breastRating;
-    }
-
-    public smallestTitRow(): number {
-        if (breastRows.length == 0)
-            return -1;
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[index].breastRating > breastRows[counter].breastRating)
-                index = counter;
-        }
-        return index;
-    }
-
-    public biggestTitRow(): number {
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[index].breastRating < breastRows[counter].breastRating)
-                index = counter;
-        }
-        return index;
-    }
-
-    public averageBreastSize(): number {
-        let counter: number = breastRows.length;
-        let average: number = 0;
-        while (counter > 0) {
-            counter--;
-            average += breastRows[counter].breastRating;
-        }
-        if (breastRows.length == 0)
-            return 0;
-        return (average / breastRows.length);
-    }
-
-    public averageNippleLength(): number {
-        let counter: number = breastRows.length;
-        let average: number = 0;
-        while (counter > 0) {
-            counter--;
-            average += (breastRows[counter].breastRating / 10 + .2);
-        }
-        return (average / breastRows.length);
-    }
-
     public averageVaginalLooseness(): number {
         let counter: number = vaginas.length;
         let average: number = 0;
@@ -1158,48 +970,6 @@ export class Creature {
             average += vaginas[counter].vaginalWetness;
         }
         return (average / vaginas.length);
-    }
-
-    public canTitFuck(): boolean {
-        if (breastRows.length == 0) return false;
-
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[index].breasts < breastRows[counter].breasts && breastRows[counter].breastRating > 3)
-                index = counter;
-        }
-        if (breastRows[index].breasts >= 2 && breastRows[index].breastRating > 3)
-            return true;
-        return false;
-    }
-
-    public mostBreastsPerRow(): number {
-        if (breastRows.length == 0) return 2;
-
-        let counter: number = breastRows.length;
-        let index: number = 0;
-        while (counter > 0) {
-            counter--;
-            if (breastRows[index].breasts < breastRows[counter].breasts)
-                index = counter;
-        }
-        return breastRows[index].breasts;
-    }
-
-    public averageNipplesPerBreast(): number {
-        let counter: number = breastRows.length;
-        let breasts: number = 0;
-        let nipples: number = 0;
-        while (counter > 0) {
-            counter--;
-            breasts += breastRows[counter].breasts;
-            nipples += breastRows[counter].nipplesPerBreast * breastRows[counter].breasts;
-        }
-        if (breasts == 0)
-            return 0;
-        return Math.floor(nipples / breasts);
     }
 
 

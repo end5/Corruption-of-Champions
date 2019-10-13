@@ -96,9 +96,9 @@ export class InfestedHellhound extends HellHound {
         this.balls = 2;
         this.ballSize = 5;
         this.cumMultiplier = 8;
-        this.createBreastRow();
-        this.createBreastRow();
-        this.createBreastRow();
+        this.breasts.createBreastRow();
+        this.breasts.createBreastRow();
+        this.breasts.createBreastRow();
         this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
         this.ass.analWetness = ANAL_WETNESS_NORMAL;
         this.tallness = 47;

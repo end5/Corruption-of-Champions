@@ -122,7 +122,7 @@ export function agreeToHelpHeliaDungeon(): void {
 export function morningAfterHeliaDungeonAgreements(): void {
     outputText("\nWhen your eyes flicker open at the crack of dawn, you're pleased to see Helia is lying on your chest, ");
     // [If PC has >C Cups, \"<i>
-    if (player.biggestTitSize() > 3) outputText("her head nestled between your soft tits and ");
+    if (player.breasts.biggestTitSize() > 3) outputText("her head nestled between your soft tits and ");
     outputText("snoring boorishly.  The air around you smells like hot booze and sex, yet you awaken feeling as spirited and lively as you ever have.  You give Hel a little shake, waking her.");
 
     outputText("\n\n\"<i>Huh, wha?</i>\" she groans, rubbing her head.  \"<i>Oh, hey there, lover mine,</i>\" she adds after a moment, giving you a long kiss on the lips.  The two of you untangle yourselves, giving each other the occasional tease and playful slap on the ass, flirting shamelessly as you dress and ready yourselves for the coming day.");
@@ -264,7 +264,7 @@ export function gooArmorBeatsUpPC(): void {
         outputText("\n\n\"<i>Oh, you like that do you?</i>\" the armor-goo asks, smiling evilly.  \"<i>Well, maybe this can be mutually... beneficial.</i>\"  Still grinning, she begins to hammer her cock-like appendage into your pussy, fucking you fast and hard with her goo-dildo.");
         player.cuntChange(25, true, true, false);
         // [If PC has breasts > A-cups:
-        if (player.biggestTitSize() > 1) {
+        if (player.breasts.biggestTitSize() > 1) {
             outputText("  As she hammers your cunny, bits of her goo swirl around your [chest], squeezing and massaging your tits.  You squirm as she roughly teases your boobs, pinching at your nipples and squeezing your tender flesh roughly.");
             // [if PC is lactating: \"<i>
             if (player.lactationQ() > 0) outputText("  To her delight, a spray of warm milk jets out of your sore nipples, milky white mixing into blue goo like oil in water. \"<i>Mmm, tasty!</i>\" she teases, massaging more and more from you.</i>\"");
@@ -278,7 +278,7 @@ export function gooArmorBeatsUpPC(): void {
         outputText("\n\nYou erupt, femspunk gushing out of your [vagina] and into the goo-cock.  Laughing, the goo-girl absorbs your cum, growing larger and larger as you feed her, until she towers over you, her massive cock now wide enough to painfully stretch your walls.  \"<i>Oh, that's good.  Good, girl, good.  Yes, let it all out, just like that... just like that,</i>\" she coos, soaking your juices up until your orgasm finally passes.  Sated, she withdraws from inside you, leaving a decidedly empty feeling in your gut as she allows you to stand.");
 
         outputText("\n\n\"<i>Mmm, that was fun,</i>\" the goo-girl says, patting her full belly.  You can see a bit of your cum ");
-        if (player.biggestTitSize() > 1 && player.lactationQ() > 0) outputText("and milk ");
+        if (player.breasts.biggestTitSize() > 1 && player.lactationQ() > 0) outputText("and milk ");
         outputText("swirling around inside her.  \"<i>Well, I suppose since you fed me so well, I'll let you go.  This time! See you around, tasty!</i>\"");
 
         outputText("\n\nBefore you can recover enough to say a word, the goo-girl saunters off out the door.  To your surprise, you feel rather invigorated after the battle, and rolling your shoulders, you turn your attention back to the dungeon ahead.");

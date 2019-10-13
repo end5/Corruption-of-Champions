@@ -149,7 +149,7 @@ export class CorruptedDrider extends AbstractSpiderMorph {
         this.cocks.createCock(9, 2, CockTypesEnum.DEMON);
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
         this.effects.create(StatusAffects.BonusVCapacity, 70, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 70, 0, 0, 0);

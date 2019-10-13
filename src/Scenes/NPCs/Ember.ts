@@ -153,9 +153,9 @@ export class Ember extends Monster {
         }
         if (gender >= 2) {
             this.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
-            createBreastRow(Appearance.breastCupInverse("F"));
+            this.breasts.createBreastRow(Appearance.breastCupInverse("F"));
         } else {
-            createBreastRow(Appearance.breastCupInverse("flat"));
+            this.breasts.createBreastRow(Appearance.breastCupInverse("flat"));
         }
         this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
         this.ass.analWetness = ANAL_WETNESS_DRY;

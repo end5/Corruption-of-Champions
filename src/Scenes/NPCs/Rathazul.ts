@@ -580,7 +580,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         if (player.gender >= 2) outputText(" with stockings and garters", false);
         outputText(".  He still manages to look somewhat pleased with himself in spite of the blunder, even bragging a little bit, \"<i>Let me show you the different lengths of string I used.</i>\"\n\n", false);
         if (player.cocks.length > 0 && player.cocks.biggestCockArea() >= 40) outputText("The silken material does little to hide the bulge of your groin, if anything it looks a little lewd.  Rathazul mumbles and looks away, shaking his head.\n\n", false);
-        if (player.biggestTitSize() >= 8) outputText("Your " + biggestBreastSizeDescript(player) + " barely fit into the breastplate, leaving you displaying a large amount of jiggling cleavage.\n\n", false);
+        if (player.breasts.biggestTitSize() >= 8) outputText("Your " + biggestBreastSizeDescript(player) + " barely fit into the breastplate, leaving you displaying a large amount of jiggling cleavage.\n\n", false);
         player.destroyItems(useables.B_CHITN, 5);
         player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
         inventory.takeItem(armors.BEEARMR, returnToRathazulMenu);

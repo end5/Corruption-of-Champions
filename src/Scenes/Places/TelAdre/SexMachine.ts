@@ -101,13 +101,13 @@ export class SexMachine extends TelAdreAbstractContent {
                 outputText("\n\n", false);
 
                 outputText("You gasp in pleasure, unable to move, fight, or even touch yourself as the machine begins to fuck you with its metallic cocks. The screen flashes, showing 'phase one is completed', and that it has begun phase two, 'implantation'. You don't have time to question the machine's intentions as it begins to fuck you harder and faster, your juices and arousal only helping the machine to continue.", false);
-                if (player.biggestTitSize() >= 2) outputText("  It slips a fourth cock between your " + chestDesc(game.player) + ", using two arms to press them together and fuck your tits as well, splashing a burst of mysterious cum on your face with every thrust.", false);
+                if (player.breasts.biggestTitSize() >= 2) outputText("  It slips a fourth cock between your " + chestDesc(game.player) + ", using two arms to press them together and fuck your tits as well, splashing a burst of mysterious cum on your face with every thrust.", false);
                 outputText("\n\n", false);
 
                 outputText("It doesn't take long until the cock in your mouth cums, spraying a thicker, heavier load of the heavenly seed down your throat and into your stomach. You gasp, swallowing without a choice, as your eyes roll back in your head, the machine ramming its cock into your g-spot, pushing you almost instantly to orgasm. You moan out loud, the cock popping out of your mouth now that its finished delivering its load. Your rippling vaginal walls milk the fake dick in your cunt, as it and the prick in your ass begin to cum heavily.  Every hole is quickly filled with mysterious jizz, stuffing you completely.\n\n", false);
 
                 outputText("Finally the machine slows down, beginning to lower you back onto the padded bench with ", false);
-                if (player.biggestTitSize() >= 2) outputText("your breasts covered in cum and ", false);
+                if (player.breasts.biggestTitSize() >= 2) outputText("your breasts covered in cum and ", false);
                 outputText("jizz leaking from every hole on your body. You groan, sore and stiff from the brutal workout but happy with afterglow. The screen before you appears to be saving data on your measurements, as well as physical stress levels. The final number flies past too fast for you to read, but the label sends a chill up your spine: \"Pregnancy percentage chance\".\n\n", false);
 
                 outputText("It isn't long until the goblin comes into the room gasping. \"<i>You used my baby? You... wait, it worked? It worked! Tell me, how was it?  Wait no, don't tell me, it was wonderful of course!</i>\" the red-headed goblin beams.  She's covered from head to toe in grease, wearing dirty clothing that has various tools sticking out of every pocket; a stereotypical engineer. \"<i>The machine is made to milk studly men dry and use their cum to impregnate goblin females.  It automates the process!  But if you want to use it too, feel free, sexy.</i>\"  She winks at you lewdly. \"<i>But who knows what kind of cum will knock you up!</i>\"\n\n", false);
@@ -126,7 +126,7 @@ export class SexMachine extends TelAdreAbstractContent {
                 player.cuntChange(30, true, true, false);
                 player.buttChange(30, true, true, false);
                 outputText("  They begin to stroke slowly", false);
-                if (player.biggestTitSize() >= 2) outputText(", and it doesn't take long for the machine to slip a cock between your breasts as well, starting to tit fuck you as it rotates you in your restraints to optimize your position", false);
+                if (player.breasts.biggestTitSize() >= 2) outputText(", and it doesn't take long for the machine to slip a cock between your breasts as well, starting to tit fuck you as it rotates you in your restraints to optimize your position", false);
                 else outputText(" while the machine rotates you in place to optimized your positioning.", false);
                 outputText(".\n\n", false);
 
@@ -195,11 +195,11 @@ export class SexMachine extends TelAdreAbstractContent {
                 outputText("  You moan lustfully, your girly juices beginning to flow down your thighs as the cock begins to thrust deep inside of you.  The metallic sleeve on your member thrusts down around you, even as the machine penetrates your " + vaginaDescript(player) + ". It's almost as if you were fucking your own cunt!\n\n", false);
 
                 outputText("You moan around the cock in your mouth, tasting the heady and thick cum it gives you, letting it trickle down the back of your throat slowly as it bucks in your mouth, leaving you helpless to call for help as every part of you is fucked.", false);
-                if (player.biggestTitSize() >= 2) outputText("  Well, not every part of you, but that is rapidly fixed as a final cock rubs against your " + chestDesc(game.player) + ", starting to stimulate your chest as well.", false);
+                if (player.breasts.biggestTitSize() >= 2) outputText("  Well, not every part of you, but that is rapidly fixed as a final cock rubs against your " + chestDesc(game.player) + ", starting to stimulate your chest as well.", false);
                 outputText("\n\n", false);
 
                 outputText("It doesn't take long, the pressure on your prostate from the cock in your ass, your dick being stroked and milked, and your cunt being fucked pushes you over the edge. The sudden outlet of sexual fluids is impressive. Your ass, throat, and cunt are all filled with cum at the same time.", false);
-                if (player.biggestTitSize() >= 2) outputText("  The cock on your chest pumps cum onto your " + chestDesc(game.player) + ", as y", false);
+                if (player.breasts.biggestTitSize() >= 2) outputText("  The cock on your chest pumps cum onto your " + chestDesc(game.player) + ", as y", false);
                 else outputText("  Y", false);
                 outputText("our cock is milked of all its cum by the tube that was gently slipped into the tip of it when you were too lost in your own lusts to notice. You pant as the device gently sets you down onto the padded bench, the screen seeming to save some varied information about you.\n\n", false);
 

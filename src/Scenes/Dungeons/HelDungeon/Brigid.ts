@@ -60,7 +60,7 @@ export class Brigid extends Monster {
         if (LOWER_BODY_TYPE_HARPY > 0) {
             this.effects.create(StatusAffects.BonusVCapacity, LOWER_BODY_TYPE_HARPY, 0, 0, 0);
         }
-        createBreastRow(Appearance.breastCupInverse("D"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.tallness = rand(8) + 70;

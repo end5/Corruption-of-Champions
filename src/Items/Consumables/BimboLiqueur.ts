@@ -21,8 +21,8 @@ export class BimboLiqueur extends Consumable {
                 outputText(" ...Did the ground just get farther away?  You glance down and realize, you're growing!  Like a sped-up flower sprout, you keep on getting taller until finally stopping around... six and a half feet, you assume.  Huh.  You didn't expect that to happen!");
                 game.player.tallness = 77;
             }
-            if (game.player.biggestTitSize() < 7) {
-                if (game.player.biggestTitSize() < 1)
+            if (game.player.breasts.biggestTitSize() < 7) {
+                if (game.player.breasts.biggestTitSize() < 1)
                     outputText("  Tingling, your chest begins to itch, then swell into a pair of rounded orbs.  ");
                 else outputText("  You feel a tingling inside your breasts.  ");
                 outputText("They quiver ominously, and you can't help but squeeze your tits together to further appreciate the boobquake as another tremor runs through them.  Unexpectedly, the shaking pushes your hands further apart as your tits balloon against each other, growing rapidly against your now-sunken fingers.  The quakes continue until calming at around an E-cup.");

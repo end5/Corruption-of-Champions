@@ -261,7 +261,7 @@ export class KihaScene extends NPCAwareContent {
         else outputText("You collapse, too wounded to keep fighting.  Kiha strikes the ground with her axe and snorts out a puff of smoke.  \"<i>What a wimp!  I've barely started fighting and you're already beaten!</i>\"\n\n", false);
 
         // 33% of tit-milk humiliation if applicable.
-        if (player.biggestLactation() >= 2) kihaMilkTitHumiliation();
+        if (player.breasts.biggestLactation() >= 2) kihaMilkTitHumiliation();
         // Rape texts if horny
         else if (monster.lust >= 50) {
             outputText("The dragoness sighs and glances around.  \"<i>Since you weren't able to satisfy me in battle, let's see if you have anything else to offer...</i>\"\n\n", false);
@@ -479,8 +479,8 @@ export class KihaScene extends NPCAwareContent {
         if (silly()) outputText(" with a pomf =3", false);
         else outputText(".", false);
         outputText("  Now nude, you sway your " + hipDescription(player) + " back and forth sensually, forcing Kiha to watch your body before you use her.  ", false);
-        if (player.biggestTitSize() <= 4) outputText("She looks away and blushes as she says, \"<i>It's not like I'd find such tiny breasts attractive!</i>\"  Her mannerisms seem to indicate that she does.", false);
-        else if (player.biggestTitSize() <= 12) outputText("She sighs and says, \"<i>As if I'd be impressed by udders like those!</i>\"", false);
+        if (player.breasts.biggestTitSize() <= 4) outputText("She looks away and blushes as she says, \"<i>It's not like I'd find such tiny breasts attractive!</i>\"  Her mannerisms seem to indicate that she does.", false);
+        else if (player.breasts.biggestTitSize() <= 12) outputText("She sighs and says, \"<i>As if I'd be impressed by udders like those!</i>\"", false);
         else outputText("She laughs and taunts, \"<i>How do you even walk with ridiculous hooters like those?  Go on, moo, cow!</i>\"", false);
         outputText("  You tire of her constant insults and inability to face facts.  A-ha!  You grab your underwear and ball it up, noting the pungent smell of your sweat and sex.  The scaly slut recoils, but you close in and stuff the musky undergarments in her mouth, ignoring her struggles as you grab some vines and bind her arms.  Perfect!\n\n", false);
 

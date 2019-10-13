@@ -191,7 +191,7 @@ export class BunnyGirl {
 
         outputText("You reach down and grab the bunny's hips for support as she bounces you again, higher this time.  A solid five or six inches of her length slide in and out of your " + vaginaDescript(player, 0) + " before you slap into her, and a split second later, you're airborne again.  She bounces you harder and harder until each thrust of her muscled thighs is launching you nearly a foot off her loins and letting gravity guide you back down her shaft.", false);
         if (player.clitLength >= 4) outputText("  Your " + clitDescription(player) + " bounces on her belly, tingling like mad every time it slaps into her tanned, sweat-slicked skin.", false);
-        if (player.biggestLactation() >= 1) outputText("  Milk begins to bead on your " + allBreastsDescript(player) + " from the sensation of the bunny's brutal, almost mechanical fucking.", false);
+        if (player.breasts.biggestLactation() >= 1) outputText("  Milk begins to bead on your " + allBreastsDescript(player) + " from the sensation of the bunny's brutal, almost mechanical fucking.", false);
         outputText("  The eager girl moans, \"<i>Ooooh fuckfuckyes... gotta fuck... gotta breed... ungh... eggs eggs eggs!</i>\"\n\n", false);
 
         outputText("Eggs?  Is she going to knock you up with eggs?  The confusion she's caused actually distracts you from the sex long enough to push back your orgasm, but the amorous bunny-gal pushes herself over the edge with one last thrust, hard enough to nearly launch you from her tumescent cock.  You slide back down the exhausted bunny, but don't feel the telltale spurting and warmth you'd expect to be bursting inside your " + vaginaDescript(player, 0) + ".  Sure, there is a trickle of warmth, but your convulsing lover's rod hasn't spurted like a male's organ should.   You turn to get a better look at her and notice that she STILL seems lost in orgasm, and her balls are GONE!\n\n", false);
@@ -273,11 +273,11 @@ export class BunnyGirl {
             if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("Juices begin to run from your " + vaginaDescript(player, 0) + ", but you ignore the empty feeling and focus on the throbbing meat inside your backdoor.  ", false);
         }
         outputText("Fingers find their way to your nipples without conscious thought, and begin ", false);
-        if (!player.hasFuckableNipples()) {
+        if (!player.breasts.hasFuckableNipples()) {
             outputText("pulling and tugging on them", false);
-            if (player.biggestLactation() >= 1) {
+            if (player.breasts.biggestLactation() >= 1) {
                 outputText(", spurting out ", false);
-                if (player.biggestLactation() >= 4) outputText("sprays", false);
+                if (player.breasts.biggestLactation() >= 4) outputText("sprays", false);
                 else outputText("drops", false);
                 outputText(" of milk", false);
             }
@@ -292,10 +292,10 @@ export class BunnyGirl {
         }
         else if (player.hasVagina()) outputText(", and your " + vaginaDescript(player, 0) + " clenching and dripping on the verge of orgasm", false);
         outputText(".", false);
-        if (player.biggestLactation() >= 1) {
+        if (player.breasts.biggestLactation() >= 1) {
             outputText("  Milk ", false);
-            if (player.biggestLactation() < 2) outputText("leaks", false);
-            else if (player.biggestLactation() < 4) outputText("drips", false);
+            if (player.breasts.biggestLactation() < 2) outputText("leaks", false);
+            else if (player.breasts.biggestLactation() < 4) outputText("drips", false);
             else outputText("pours", false);
             outputText(" from your " + nippleDescription(player, 0) + "s, turning your front to a leaky mess as you ride the very edge of pleasure.", false);
         }

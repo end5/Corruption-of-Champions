@@ -404,7 +404,7 @@ function wait(): void {
             outputText("The creature continues spiraling around your cock, sending shivers up and down your body. You must escape or this creature will overwhelm you!");
         else if (player.hasVagina())
             outputText("The creature continues sucking your clit and now has latched two more suckers on your nipples, amplifying your growing lust. You must escape or you will become a mere toy to this thing!");
-        else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
+        else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.breasts.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
         dynStats("lus", (8 + player.sens / 10));
         combatRoundOver();
     }
@@ -521,7 +521,7 @@ function struggle(): void {
                 outputText("The creature continues spiraling around your cock, sending shivers up and down your body. You must escape or this creature will overwhelm you!");
             else if (player.hasVagina())
                 outputText("The creature continues sucking your clit and now has latched two more suckers on your nipples, amplifying your growing lust. You must escape or you will become a mere toy to this thing!");
-            else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
+            else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.breasts.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
             dynStats("lus", (3 + player.sens / 10 + player.lib / 20));
             combatRoundOver();
         }
@@ -681,11 +681,11 @@ export function fantasize(): void {
         outputText("You aren't sure if it's just the fantasy, but your " + ballsDescriptLight(player) + " do feel fuller than before...\n", false);
         player.hoursSinceCum += 50;
     }
-    else if (player.biggestTitSize() >= 6 && rand(2) == 0) {
+    else if (player.breasts.biggestTitSize() >= 6 && rand(2) == 0) {
         outputText("You fantasize about grabbing " + monster.a + monster.short + " and shoving " + monster.pronoun2 + " in between your jiggling mammaries, nearly suffocating " + monster.pronoun2 + " as you have your way.\n", false);
         temp2 = 5 + rand(player.lib / 8 + player.cor / 8);
     }
-    else if (player.biggestLactation() >= 6 && rand(2) == 0) {
+    else if (player.breasts.biggestLactation() >= 6 && rand(2) == 0) {
         outputText("You fantasize about grabbing " + monster.a + monster.short + " and forcing " + monster.pronoun2 + " against a " + nippleDescription(player, 0) + ", and feeling your milk let down.  The desire to forcefeed SOMETHING makes your nipples hard and moist with milk.\n", false);
         temp2 = 5 + rand(player.lib / 8 + player.cor / 8);
     }
@@ -1531,8 +1531,8 @@ function combatStatusesUpdate(): void {
                 outputText("Now that they’ve settled in, the tentacles go to work on your body, rudely molesting every sensitive place they can find.");
                 if (player.cocks.length > 0) outputText(" They twirl and writhe around your [cocks].");
                 if (player.hasVagina()) outputText(" One flosses your nether-lips, rubbing slippery bumps maddenly against your [clit].");
-                outputText(" " + num2Text(player.totalNipples()) + " tendrils encircle your [nipples]");
-                if (player.hasFuckableNipples()) outputText(", threatening to slide inside them at a moment’s notice");
+                outputText(" " + num2Text(player.breasts.totalNipples()) + " tendrils encircle your [nipples]");
+                if (player.breasts.hasFuckableNipples()) outputText(", threatening to slide inside them at a moment’s notice");
                 else {
                     outputText(", pinching and tugging them");
                     if (player.isLactating()) outputText(", squeezing out small jets of milk");
@@ -1551,7 +1551,7 @@ function combatStatusesUpdate(): void {
                     if (player.hasVirginVagina()) outputText(" <b>You've come all this way only to lose your virginity to these things!</b>");
                 }
                 outputText(".");
-                if (player.hasFuckableNipples()) outputText(" Your [nipples] are similarly entered.");
+                if (player.breasts.hasFuckableNipples()) outputText(" Your [nipples] are similarly entered.");
                 if (player.cocks.length > 0) outputText(" And [eachCock] is suddenly coated in slimy, extraplanar oil and pumped with rapid, sure strokes.");
                 outputText(" There’s too much. If you don’t break free, you’re going to wind up losing to a simple spell!");
                 dynStats("lus", 10);
@@ -2376,14 +2376,14 @@ export function tease(justText: boolean = false): void {
         if (player.buttRating >= 20) choices[choices.length] = 4;
         if (player.buttRating >= 25) choices[choices.length] = 4;
         // Breast jiggle!
-        if (player.biggestTitSize() >= 2) choices[choices.length] = 5;
-        if (player.biggestTitSize() >= 4) choices[choices.length] = 5;
-        if (player.biggestTitSize() >= 8) choices[choices.length] = 5;
-        if (player.biggestTitSize() >= 15) choices[choices.length] = 5;
-        if (player.biggestTitSize() >= 30) choices[choices.length] = 5;
-        if (player.biggestTitSize() >= 50) choices[choices.length] = 5;
-        if (player.biggestTitSize() >= 75) choices[choices.length] = 5;
-        if (player.biggestTitSize() >= 100) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 2) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 4) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 8) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 15) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 30) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 50) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 75) choices[choices.length] = 5;
+        if (player.breasts.biggestTitSize() >= 100) choices[choices.length] = 5;
         // Pussy Flash!
         if (player.hasVagina()) {
             choices[choices.length] = 2;
@@ -2394,7 +2394,7 @@ export function tease(justText: boolean = false): void {
             if (player.vaginalCapacity() >= 75) choices[choices.length] = 6;
         }
         // Adj special!
-        if (player.hasVagina() && player.buttRating >= 8 && player.hipRating >= 6 && player.biggestTitSize() >= 4) {
+        if (player.hasVagina() && player.buttRating >= 8 && player.hipRating >= 6 && player.breasts.biggestTitSize() >= 4) {
             choices[choices.length] = 7;
             choices[choices.length] = 7;
             choices[choices.length] = 7;
@@ -2416,7 +2416,7 @@ export function tease(justText: boolean = false): void {
     }
     else if (bro) {
         // 8 Pec Dance
-        if (player.biggestTitSize() < 1 && player.tone >= 60) {
+        if (player.breasts.biggestTitSize() < 1 && player.tone >= 60) {
             choices[choices.length] = 8;
             if (player.tone >= 70) choices[choices.length] = 8;
             if (player.tone >= 80) choices[choices.length] = 8;
@@ -2456,14 +2456,14 @@ export function tease(justText: boolean = false): void {
         if (player.buttRating >= 20) choices[choices.length] = 0;
         if (player.buttRating >= 25) choices[choices.length] = 0;
         // Breast jiggle!
-        if (player.biggestTitSize() >= 2) choices[choices.length] = 1;
-        if (player.biggestTitSize() >= 4) choices[choices.length] = 1;
-        if (player.biggestTitSize() >= 8) choices[choices.length] = 1;
-        if (player.biggestTitSize() >= 15) choices[choices.length] = 1;
-        if (player.biggestTitSize() >= 30) choices[choices.length] = 1;
-        if (player.biggestTitSize() >= 50) choices[choices.length] = 1;
-        if (player.biggestTitSize() >= 75) choices[choices.length] = 1;
-        if (player.biggestTitSize() >= 100) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 2) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 4) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 8) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 15) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 30) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 50) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 75) choices[choices.length] = 1;
+        if (player.breasts.biggestTitSize() >= 100) choices[choices.length] = 1;
         // Pussy Flash!
         if (player.hasVagina()) {
             choices[choices.length] = 2;
@@ -2498,7 +2498,7 @@ export function tease(justText: boolean = false): void {
     // 13 Pregnant
     if (player.pregnancyIncubation <= 216 && player.pregnancyIncubation > 0) {
         choices[choices.length] = 13;
-        if (player.biggestLactation() >= 1) choices[choices.length] = 13;
+        if (player.breasts.biggestLactation() >= 1) choices[choices.length] = 13;
         if (player.pregnancyIncubation <= 180) choices[choices.length] = 13;
         if (player.pregnancyIncubation <= 120) choices[choices.length] = 13;
         if (player.pregnancyIncubation <= 100) choices[choices.length] = 13;
@@ -2522,7 +2522,7 @@ export function tease(justText: boolean = false): void {
         if (player.inHeat) choices[choices.length] = 14;
     }
     // 15 Nipplecunts
-    if (player.hasFuckableNipples()) {
+    if (player.breasts.hasFuckableNipples()) {
         choices[choices.length] = 15;
         choices[choices.length] = 15;
         if (player.hasVagina()) choices[choices.length] = 15;
@@ -2530,7 +2530,7 @@ export function tease(justText: boolean = false): void {
         if (player.hasVagina()) choices[choices.length] = 15;
         if (player.wetness() >= 3) choices[choices.length] = 15;
         if (player.wetness() >= 5) choices[choices.length] = 15;
-        if (player.biggestTitSize() >= 3) choices[choices.length] = 15;
+        if (player.breasts.biggestTitSize() >= 3) choices[choices.length] = 15;
         if (player.nippleLength >= 3) choices[choices.length] = 15;
     }
     // 16 Anal gape
@@ -2586,7 +2586,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 23;
     }
     // 24 Poledance - req's staff! - Req's gender!  Req's TITS!
-    if (player.weaponName == "wizard's staff" && player.biggestTitSize() >= 1 && player.gender > 0) {
+    if (player.weaponName == "wizard's staff" && player.breasts.biggestTitSize() >= 1 && player.gender > 0) {
         choices[choices.length] = 24;
         choices[choices.length] = 24;
         choices[choices.length] = 24;
@@ -2594,7 +2594,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 24;
     }
     // 25 Tall Tease! - Reqs 2+ feet & PC Cunt!
-    if (player.tallness - monster.tallness >= 24 && player.biggestTitSize() >= 4) {
+    if (player.tallness - monster.tallness >= 24 && player.breasts.biggestTitSize() >= 4) {
         choices[choices.length] = 25;
         choices[choices.length] = 25;
         choices[choices.length] = 25;
@@ -2608,16 +2608,16 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 26;
     }
     // 27 FEEDER
-    if (player.perks.findByType(PerkLib.Feeder) >= 0 && player.biggestTitSize() >= 4) {
+    if (player.perks.findByType(PerkLib.Feeder) >= 0 && player.breasts.biggestTitSize() >= 4) {
         choices[choices.length] = 27;
         choices[choices.length] = 27;
         choices[choices.length] = 27;
-        if (player.biggestTitSize() >= 10) choices[choices.length] = 27;
-        if (player.biggestTitSize() >= 15) choices[choices.length] = 27;
-        if (player.biggestTitSize() >= 25) choices[choices.length] = 27;
-        if (player.biggestTitSize() >= 40) choices[choices.length] = 27;
-        if (player.biggestTitSize() >= 60) choices[choices.length] = 27;
-        if (player.biggestTitSize() >= 80) choices[choices.length] = 27;
+        if (player.breasts.biggestTitSize() >= 10) choices[choices.length] = 27;
+        if (player.breasts.biggestTitSize() >= 15) choices[choices.length] = 27;
+        if (player.breasts.biggestTitSize() >= 25) choices[choices.length] = 27;
+        if (player.breasts.biggestTitSize() >= 40) choices[choices.length] = 27;
+        if (player.breasts.biggestTitSize() >= 60) choices[choices.length] = 27;
+        if (player.breasts.biggestTitSize() >= 80) choices[choices.length] = 27;
     }
     // 28 FEMALE TEACHER COSTUME TEASE
     if (player.armorName == "backless female teacher's clothes" && player.gender == 2) {
@@ -2724,7 +2724,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 42;
     }
     // 43 - special mino + cowgirls
-    if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW) {
+    if (player.hasVagina() && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW) {
         choices[choices.length] = 43;
         choices[choices.length] = 43;
         choices[choices.length] = 43;
@@ -2736,7 +2736,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 43;
     }
     // 44 - Bikini Mail Teases!
-    if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
+    if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
         choices[choices.length] = 44;
         choices[choices.length] = 44;
         choices[choices.length] = 44;
@@ -2758,7 +2758,7 @@ export function tease(justText: boolean = false): void {
     // =======================================================
     select = choices[rand(choices.length)];
     if (monster.short.indexOf("minotaur") != -1) {
-        if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW)
+        if (player.hasVagina() && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW)
             select = 43;
     }
     // Lets do zis!
@@ -2862,7 +2862,7 @@ export function tease(justText: boolean = false): void {
             outputText("You lean forward, letting the well-rounded curves of your " + allBreastsDescript(player) + " show to " + monster.a + monster.short + ".", false);
             outputText("  You cup them in your palms and lewdly bounce them, putting on a show and giggling the entire time.  An inch at a time, your " + player.armorName + " starts to come down, dropping tantalizingly slowly until your " + nippleDescription(player, 0) + "s pop free.", false);
             if (player.lust >= 50) {
-                if (player.hasFuckableNipples()) {
+                if (player.breasts.hasFuckableNipples()) {
                     chance++;
                     outputText("  Clear slime leaks from them, making it quite clear that they're more than just nipples.", false);
                 }
@@ -2961,7 +2961,7 @@ export function tease(justText: boolean = false): void {
             // PREG
             outputText("You lean back, feigning a swoon while pressing a hand on the small of your back.  The pose juts your huge, pregnant belly forward and makes the shiny spherical stomach look even bigger.  With a teasing groan, you rub the protruding tummy gently, biting your lip gently as you stare at " + monster.a + monster.short + " through heavily lidded eyes.  \"<i>All of this estrogen is making me frisky,</i>\" you moan, stroking hand gradually shifting to the southern hemisphere of your big baby-bump.", false);
             // if lactating]
-            if (player.biggestLactation() >= 1) {
+            if (player.breasts.biggestLactation() >= 1) {
                 outputText("  Your other hand moves to expose your " + chestDesc(game.player) + ", cupping and squeezing a stream of milk to leak down the front of your " + player.armorName + ".  \"<i>Help a mommy out.</i>\"\n\n", false);
                 chance += 2;
                 damage += 4;
@@ -2990,14 +2990,14 @@ export function tease(justText: boolean = false): void {
         // 15 Nipplecunts
         case 15:
             // Req's tits & Pussy
-            if (player.biggestTitSize() > 1 && player.hasVagina() && rand(2) == 0) {
+            if (player.breasts.biggestTitSize() > 1 && player.hasVagina() && rand(2) == 0) {
                 outputText("Closing your eyes, you lean forward and slip a hand under your " + player.armorName + ".  You let out the slightest of gasps as your fingers find your drooling honeypot, warm tips poking, one after another between your engorged lips.  When you withdraw your hand, your fingers have been soaked in the dripping passion of your cunny, translucent beads rolling down to wet your palm.  With your other hand, you pull down the top of your " + player.armorName + " and bare your " + chestDesc(game.player) + " to " + monster.a + monster.short + ".\n\n", false);
                 outputText("Drawing your lust-slick hand to your " + nippleDescription(player, 0) + "s, the yielding flesh of your cunt-like nipples parts before the teasing digits.  Using your own girl cum as added lubrication, you pump your fingers in and out of your nipples, moaning as you add progressively more digits until only your thumb remains to stroke the inflamed flesh of your over-stimulated chest.  Your throat releases the faintest squeak of your near-orgasmic delight and you pant, withdrawing your hands and readjusting your armor.\n\n", false);
                 outputText("Despite how quiet you were, it's clear that every lewd, desperate noise you made was heard by " + monster.a + monster.short + ".", false);
                 chance += 2;
                 damage += 4;
             }
-            else if (player.biggestTitSize() > 1 && rand(2) == 0) {
+            else if (player.breasts.biggestTitSize() > 1 && rand(2) == 0) {
                 outputText("You yank off the top of your " + player.armorName + ", revealing your " + chestDesc(game.player) + " and the gaping nipplecunts on each.  With a lusty smirk, you slip a pair of fingers into the nipples of your " + chestDesc(game.player) + ", pulling the nipplecunt lips wide, revealing the lengthy, tight passage within.  You fingerfuck your nipplecunts, giving your enemy a good show before pulling your armor back on, leaving the tantalizing image of your gaping titpussies to linger in your foe's mind.", false);
                 chance += 1;
                 damage += 2;
@@ -3295,51 +3295,51 @@ export function tease(justText: boolean = false): void {
     if (auto) {
         // TIT BONUSES
         if (breasts) {
-            if (player.bRows() > 1) {
+            if (player.breasts.length > 1) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.bRows() > 2) {
+            if (player.breasts.length > 2) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.bRows() > 4) {
+            if (player.breasts.length > 4) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestLactation() >= 2) {
+            if (player.breasts.biggestLactation() >= 2) {
                 bonusChance++;
                 bonusDamage += 2;
             }
-            if (player.biggestLactation() >= 3) {
+            if (player.breasts.biggestLactation() >= 3) {
                 bonusChance++;
                 bonusDamage += 2;
             }
-            if (player.biggestTitSize() >= 4) {
+            if (player.breasts.biggestTitSize() >= 4) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestTitSize() >= 7) {
+            if (player.breasts.biggestTitSize() >= 7) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestTitSize() >= 12) {
+            if (player.breasts.biggestTitSize() >= 12) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestTitSize() >= 25) {
+            if (player.breasts.biggestTitSize() >= 25) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.biggestTitSize() >= 50) {
+            if (player.breasts.biggestTitSize() >= 50) {
                 bonusChance += .5;
                 bonusDamage += 1;
             }
-            if (player.hasFuckableNipples()) {
+            if (player.breasts.hasFuckableNipples()) {
                 bonusChance++;
                 bonusDamage += 2;
             }
-            if (player.averageNipplesPerBreast() > 1) {
+            if (player.breasts.averageNipplesPerBreast() > 1) {
                 bonusChance++;
                 bonusDamage += 2;
             }
@@ -4996,8 +4996,8 @@ export function runAway(callHook: boolean = true): void {
 
     // Big tits doesn't matter as much if ya can fly!
     else {
-        if (player.biggestTitSize() >= 35) escapeMod += 5;
-        if (player.biggestTitSize() >= 66) escapeMod += 10;
+        if (player.breasts.biggestTitSize() >= 35) escapeMod += 5;
+        if (player.breasts.biggestTitSize() >= 66) escapeMod += 10;
         if (player.hipRating >= 20) escapeMod += 5;
         if (player.buttRating >= 20) escapeMod += 5;
         if (player.ballSize >= 24 && player.balls > 0) escapeMod += 5;
@@ -5103,9 +5103,9 @@ export function runAway(callHook: boolean = true): void {
                 else outputText("With your " + ballsDescriptLight(player) + " dragging along the ground, getting away is far harder than it should be.  ", false);
             }
             // FATASS BODY MESSAGES
-            if (player.biggestTitSize() >= 35 || player.buttRating >= 20 || player.hipRating >= 20) {
+            if (player.breasts.biggestTitSize() >= 35 || player.buttRating >= 20 || player.hipRating >= 20) {
                 // FOR PLAYERS WITH GIANT BREASTS
-                if (player.biggestTitSize() >= 35 && player.biggestTitSize() < 66) {
+                if (player.breasts.biggestTitSize() >= 35 && player.breasts.biggestTitSize() < 66) {
                     if (player.hipRating >= 20) {
                         outputText("Your " + hipDescription(player) + " forces your gait to lurch slightly side to side, which causes the fat of your " + player.skinTone + " ", false);
                         if (player.buttRating >= 20) outputText(buttDescription(player) + " and ", false);
@@ -5115,7 +5115,7 @@ export function runAway(callHook: boolean = true): void {
                     else outputText("Your " + chestDesc(game.player) + " jiggle and wobble side to side like the " + player.skinTone + " sacks of milky fat they are, with such force as to constantly throw you off balance, preventing you from moving quick enough to escape.", false);
                 }
                 // FOR PLAYERS WITH MASSIVE BREASTS
-                else if (player.biggestTitSize() >= 66) {
+                else if (player.breasts.biggestTitSize() >= 66) {
                     if (player.hipRating >= 20) {
                         outputText("Your " + chestDesc(game.player) + " nearly drag along the ground while your " + hipDescription(player) + " swing side to side ", false);
                         if (player.buttRating >= 20) outputText("causing the fat of your " + player.skinTone + buttDescription(player) + " to wobble heavily, ", false);

@@ -161,7 +161,7 @@ export class Helspawn extends Monster {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 85, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("E+"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("E+"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 85, 0, 0, 0);

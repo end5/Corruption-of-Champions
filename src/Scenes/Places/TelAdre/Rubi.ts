@@ -919,7 +919,7 @@ export class Rubi extends TelAdreAbstractContent {
         // (If PC has a cunt)
         if (player.hasVagina()) outputText("You press the tip into your cunt quickly, giving it a taste of what is to come.  The brief contact is enough to make you shudder slightly with pleasure.  ");
         // (If PC has fuckable nipples)
-        if (player.hasFuckableNipples()) outputText("You let the dildo meander up your body until it reaches your breasts, and with a bit of a grin you insert the tip right into one nipple, enjoying the feeling of your breasts swell up with arousal.  You do the same with the other nipple, and take a minute going back and forth.  ");
+        if (player.breasts.hasFuckableNipples()) outputText("You let the dildo meander up your body until it reaches your breasts, and with a bit of a grin you insert the tip right into one nipple, enjoying the feeling of your breasts swell up with arousal.  You do the same with the other nipple, and take a minute going back and forth.  ");
         outputText("Finally you bring the dildo up to your mouth, licking the juices off of it, eagerly downing the goblin sex-drug.");
 
         outputText("\n\nRubi looks on in rapt silence, and you can tell [rubi ey]'s eagerly waiting [rubi eir] turn.  You get on your hands and knees and crawl over " + rubiMF("him", "her") + ", pressing the dildo against [rubi eir] skin, letting the drug do its magic.  [rubi Eir] skin flushes and [rubi ey] curls [rubi eir] spine impulsively.");
@@ -972,9 +972,9 @@ export class Rubi extends TelAdreAbstractContent {
         // (PC doesn't have either, but breasts above A-cup?)
         else outputText("your [chest], rubbing your nipples vigorously, in desperate need of release.");
         // (Bonus, fuckable nipples?)
-        if (player.hasFuckableNipples()) outputText("  Your fingers easily slip inside each nipple, pumping in and out like little cocks.");
+        if (player.breasts.hasFuckableNipples()) outputText("  Your fingers easily slip inside each nipple, pumping in and out like little cocks.");
         // (No cock, no pussy, no breasts?)
-        if (player.gender == 0 && player.biggestTitSize() == 0) outputText("  Your hands roam all along your body, from your bare crotch to your nipples, even through your hair, all in search of something to give you the release you so desperately crave.");
+        if (player.gender == 0 && player.breasts.biggestTitSize() == 0) outputText("  Your hands roam all along your body, from your bare crotch to your nipples, even through your hair, all in search of something to give you the release you so desperately crave.");
 
         outputText("\n\nFinally, mercifully, the orgasm welling up inside you rolls over you like a tidal wave, quenching the fires of lust that burned within.  Your lips contort into an \"<i>O</i>\" and a long groan escapes your lips.");
         // (PC has cock?)
@@ -1327,7 +1327,7 @@ export class Rubi extends TelAdreAbstractContent {
         else if (player.cor >= 33) outputText("get undressed without much pause or fanfare.  Rubi makes a show of turning [rubi eir] head, but you can see [rubi em] peeping glimpses out of the corners of [rubi eir] eyes, and [rubi eir] boner seems to be bigger and harder than it was moments before.");
         else {
             outputText("make [rubi em] turn around while you undress.  You quickly shuck your clothes and ask [rubi em] what to do next, holding a hand across your [chest] and groin");
-            if (player.cocks.biggestCockArea() >= 40 || player.biggestTitSize() >= 8) outputText(", not that it does much good");
+            if (player.cocks.biggestCockArea() >= 40 || player.breasts.biggestTitSize() >= 8) outputText(", not that it does much good");
             outputText(".");
         }
 
@@ -2850,7 +2850,7 @@ export class Rubi extends TelAdreAbstractContent {
             outputText("\n\nThe silence is broken when Rubi shouts, \"<i>Oh fuck yes, this is more like it!</i>\"  [rubi Ey] stands and dances what can only be called the titty-dance, squeezing one breast and then the other in quick succession to some tune that exists only in [rubi eir] head.  It seems that, in addition to a new body, the liqueur also granted Rubi excessive amounts of energy!");
 
             outputText("\n\nSuddenly remembering you're here, [rubi ey] stops and gives you a great big hug, pressing [rubi eir] breasts against ");
-            if (player.biggestTitSize() < 1) outputText("yours");
+            if (player.breasts.biggestTitSize() < 1) outputText("yours");
             else outputText("you");
             outputText(".  \"<i>Like, thank you so much baby!  You're the freaking best!  Now... you want to break this body in?</i>\"");
 

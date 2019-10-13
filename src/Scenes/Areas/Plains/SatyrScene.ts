@@ -230,7 +230,7 @@ export class SatyrScene {
             if (player.hasVagina()) faces = femaleTakesAdvantageOfSatyr;
         }
         let bikiniTits: () => void = null;
-        if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
+        if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
         simpleChoices("FuckHisButt", butt, "Ride Face", faces, "B.Titfuck", bikiniTits, "", null, "Leave", cleanupAfterCombat);
     }
     // Female (Z)

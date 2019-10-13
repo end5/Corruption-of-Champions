@@ -92,7 +92,7 @@ export class Shouldra extends Monster {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_WET, VAGINA_LOOSENESS_NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("D"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);

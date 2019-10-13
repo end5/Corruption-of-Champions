@@ -8,7 +8,7 @@ export class Lethice extends Monster {
         this.tallness = 12 * 9;
 
         this.createVagina(false, 3, 3);
-        this.createBreastRow(8);
+        this.breasts.createBreastRow(8);
 
         this.balls = 2;
         this.ballSize = 4;
@@ -457,7 +457,7 @@ export class Lethice extends Monster {
 
         outputText("The demons’ urging tears down your self-control, and with a grunt of effort and desire, you shove the omnibus down on her back. She yelps with surprise, but her fall is cushioned by the massive, milky tits of a cow-girl-turned-demon behind her who’s busily sucking a pair of demonic dongs. Your omnibus recovers from her surprise in a heartbeat, turning it into a luxurious stretch that spreads her pussy-lips open under the hefty, churning weight of her equine-like balls.");
         outputText("\n\nYou lunge on her the moment you see that vermillion slit opening, driving your [cock] to the hilt inside the sloppy twat and making the omnibus moan with delight. Her canid cock bobs up at full mast, poking at your [chest]");
-        if (player.hasFuckableNipples()) outputText(" until you give her a wicked grin and guide the tip inside your [nipple]");
+        if (player.breasts.hasFuckableNipples()) outputText(" until you give her a wicked grin and guide the tip inside your [nipple]");
         else outputText(" and smearing your [skinFurScales] with pre");
         outputText(". You grab her melon-sized tits and squeeze them as hard as you can while you hammer your [hips] forward, taking advantage of the silky-wet vice of her twat to milk yourself to orgasm. She’s practically an ona-hole for you, only able to squirm around and moan while you pound away.");
         outputText("\n\nSuddenly, your entire body tenses, shivering with new sensation. You look over your shoulder in time to see another succubus crawling up behind you, running her tongue through the crack of your ass");
@@ -465,7 +465,7 @@ export class Lethice extends Monster {
         else outputText(" down to the base of your cock");
         outputText(". Another demoness snuggles up behind you, pressing a hefty pair of jugs into your back and murmuring about how she wants to see you breed that hermaphroditic cum-slut under you.");
         outputText("\n\nWith more and more demons crawling up over you, urging you to cement your victory on their companion or adding to your pleasure with mouths and corrupted tongues, it’s not long before you surrender to your body’s carnal demands. Giving one last, mighty thrust into the omnibus’s twat, you grunt with the surging pleasure of cum swelling through your shaft, spilling out and basting the demoness’s womb. She cries out, bucking her hips against you and quickly following you with a shot of her own");
-        if (!player.hasFuckableNipples()) outputText(" that splatters all over your chest");
+        if (!player.breasts.hasFuckableNipples()) outputText(" that splatters all over your chest");
         else outputText(" right into your tit");
         outputText("! You give her a reproachful look, still grinding your hips as the aftershocks of orgasm pass.");
         outputText("\n\n<i>“Not sorry,”</i> she giggles, running a finger around her cum-smeared twat and pushing every spare droplet back in as you pull out. <i>“Mmm, that’ll make for a lovely brood of imps, </i>Champion<i>!”</i>");
@@ -601,7 +601,7 @@ export class Lethice extends Monster {
 
                 player.increaseEachCock(1);
             }
-            else if (player.biggestTitSize() <= 0) {
+            else if (player.breasts.biggestTitSize() <= 0) {
                 outputText(" The inside of your [armor] is suddenly pressing back on your [nipples]. <b>You’ve grown breasts!</b> That bitch!");
                 player.growTits(3, player.breastRows.length, false, 2);
             }

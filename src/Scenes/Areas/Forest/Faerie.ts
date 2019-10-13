@@ -148,13 +148,13 @@ export class Faerie {
         if (player.nippleLength >= 1) {
             outputText("She looks you over, stopping at your upper torso and letting out a cry of glee. She lands on your chest, her exposed pussy coming to rest on your nipple. With one hand she grabs hold of you above her head and uses her other hand to guide the rapidly hardening nub between her legs. She sighs in delight as her tight confines squeeze your nipple hard, the feeling somewhere between pinching fingers and suckling lips. You gasp in delight yourself, and you notice she can exercise amazing control with her groin muscles as a rippling feeling courses through your nipple.\n\n", false);
             outputText("Your nipple starts to get sloppy and wet as if someone's tongue were around it, but it's really the faerie's love juices dribbling down, some running down your breast and some down her legs. She starts thrusting against you, and you notice her clit getting hard and pushing into your soft flesh. With a free hand you grab the area around your nipple and squeeze it harder, forcing more into her.\n\n", false);
-            if (player.biggestLactation() > 1) outputText("A squirt of milk shoots inside her, making the faerie moan. She looks up at you with lusty, slitted eyes, squeezing her legs together to draw more from you.\n\n", false);
+            if (player.breasts.biggestLactation() > 1) outputText("A squirt of milk shoots inside her, making the faerie moan. She looks up at you with lusty, slitted eyes, squeezing her legs together to draw more from you.\n\n", false);
             outputText("Eventually you both find a rhythm and soon she's moaning loudly.  ", false);
             if (player.hasVagina()) outputText("With your other hand you start diddling your " + vaginaDescript(player, 0) + ", adding your own soft moans to hers.  ", false);
             outputText("A few blissful moments later, she shudders and you feel her uncontrolled spasms around your nipple.  ", false);
             if (player.hasVagina()) outputText("You join her shortly after.  ", false);
             outputText("The faerie goes limp and spirals to the ground, crashing gently and still twitching in the afterglow. Stepping back carefully, you leave her.", false);
-            if (player.biggestLactation() > 1.5) outputText("\n\nA copious gout of your milk escapes her rosy folds.", false);
+            if (player.breasts.biggestLactation() > 1.5) outputText("\n\nA copious gout of your milk escapes her rosy folds.", false);
             player.orgasm();
             dynStats("lib", -2);
             doNext(camp.returnToCampUseOneHour);
@@ -178,7 +178,7 @@ export class Faerie {
         }
         outputText("The faerie flies close to your nipple and sucks it gingerly.  You pant in pleasure as you feel it pucker tight in her mouth, tingling with her saliva.  She lets it pop free, swollen with arousal.  Her hand flicks it playfully, the sudden sensation fluttering through you as you close your eyes in pleasure.  You recover and find she has flown high into the trees, waving playfully as she escapes.\n\nYou frown and begin to dress yourself, flushing irritably as your nipples protrude further into your clothes than you remember.", false);
         player.nippleLength += .25;
-        if (player.nippleLength > 3 || player.biggestTitSize() <= 2) {
+        if (player.nippleLength > 3 || player.breasts.biggestTitSize() <= 2) {
             outputText("  Thankfully it appears to be temporary.", false);
             player.nippleLength -= .25;
         }

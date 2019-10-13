@@ -185,7 +185,7 @@ export function pumpkinMountingLevelII(): void {
     outputText("\n\nFera's pert bust catches your eye, but the most jarring thing by far is the realization that all the gunk and slime is gone.  She is cleaner and more pristine than a virgin on her wedding night.  Well, the hard red nipples and her puffy sex seem to disagree with that assumption.");
 
     outputText("\n\n<i>\"How should I thank my savior?  That is the human tradition is it not?\"</i>  Fera interrupts, sliding her palm along the sensitive folds of your [vagina]");
-    if (player.biggestTitSize() >= 2) outputText(", her free hand working your [fullChest] with glee");
+    if (player.breasts.biggestTitSize() >= 2) outputText(", her free hand working your [fullChest] with glee");
     outputText(".  <i>\"There's never too much of a good thing.  Of course, my champion must have the proper train of thought...\"</i>");
 
     outputText("\n\nWait... what? You start to pull back, but her grip tightens, forcing you rigid with involuntary pain.  Prickly vines boil out of the ground around your legs and entwine into a twisted web with the strength of iron.  In seconds, you're firmly bound up to your chest, no part of you left mobile.");

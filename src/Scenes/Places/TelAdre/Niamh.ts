@@ -101,7 +101,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // Feeder
         if (player.perks.findByType(PerkLib.Feeder) >= 0) outputText("  You understand exactly what she's going through; the weight of a huge pair of breasts, the sensitivity as they engorge with fluids, the near-maddening sensation of the contents sloshing around underneath your straining skin...");
         // (Player has G-cups or bigger;
-        else if (player.biggestTitSize() >= 15) {
+        else if (player.breasts.biggestTitSize() >= 15) {
             if (player.lactationQ() == 0)
                 outputText("  Not terribly surprising; you know your tits are sensitive, and you don't even make milk in them.");
             else
@@ -137,7 +137,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
     // [Here]
     private drinkNiamhsBeerInTelAdre(): void {
         clearOutput();
-        if (player.lactationQ() >= 300 && player.biggestTitSize() >= 5 && rand(2) == 0 && flags[kFLAGS.MET_NIAMH] > 0) {
+        if (player.lactationQ() >= 300 && player.breasts.biggestTitSize() >= 5 && rand(2) == 0 && flags[kFLAGS.MET_NIAMH] > 0) {
             outputText("\"<i>Skoal!</i>\" you cheer as you down the delicious mug of booze.  The incredibly potent beverage warms you down to your chest and beyond.  The heat of the alcohol trails like fire down into your gut and warms your genitals, causing you to feel more aroused.  The buzz of the beverage makes you light headed, as if thinking had become a little more difficult.");
             outputText("\n\nYou start to stumble as your sense of balance shifts and you realize the heat in your body is expanding outwards.  Looking down you see it isn't the heat that's expanding, but your own bountiful tits.  Each of your [fullChest] have gained two full cup sizes, and within seconds they've gained even more.  Beneath your clothes your areola darken in color and you can feel each nipple throbbing with the need to expel its milky contents.");
             outputText("\n\n\"<i>Oh me, ma darlin'.</i>\"  Niamh comments, \"<i>Those beauties o' yours look to be burstin' out o' ye...</i>\"  Your [armor] falls open as your enlargening breasts swell too large to be contained.  Each of your nipples fatten up and begin squirting a liquid that looks unusual.");
@@ -454,7 +454,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             // (Player has breasts smaller than DD-cup:
             if (player.breastRows[0].breastRating < 5) {
                 outputText("\n\nYou feel this, like, totally sweet tingling in your boobies... And then your [armor] gets, like, tighter; wow, it seems like Niamh's booze is making your boobies grow!  That's so awesome!  You giggle and gulp down as much as you can... Aw; your boobies are <b>kinda</b> big now, but, like, you wanted great big bouncy sloshy boobies like Niamh has.  That'd be so hot!");
-                player.effects.setValue(StatusAffects.BimboChampagne, 2, 5 - player.biggestTitSize());
+                player.effects.setValue(StatusAffects.BimboChampagne, 2, 5 - player.breasts.biggestTitSize());
                 player.breastRows[0].breastRating = 5;
             }
             // (Player does not have vagina:
@@ -648,7 +648,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
     private leaveWithBeerTits(): void {
         clearOutput();
         outputText("The offer is tempting but right now you'd much rather deal with your boozy boobs privately.  You take off while trying to keep your [armor] modestly in place over your tits but it's difficult.  Your nipples constantly leak and drip a trail of alcohol all the way back to camp.  Thankfully by the time you arrive the effects seem to have mostly worn off.  Your nipples return to dripping milk, but although they've shrunk back down a bit they don't quite shrink all the way, leaving you with somewhat larger endowments than you had before.");
-        player.growTits(2, player.bRows(), false, 2);
+        player.growTits(2, player.breasts.length, false, 2);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -664,7 +664,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         player.gems = Math.round(player.gems);
         statScreenRefresh();
         // If player has only two breasts.
-        if (player.bRows() == 1) outputText("With a chipper giggle Niamh pulls you closer to the bar.  With both hands she helps you heft your tits up and on to the counter.");
+        if (player.breasts.length == 1) outputText("With a chipper giggle Niamh pulls you closer to the bar.  With both hands she helps you heft your tits up and on to the counter.");
         // If player has four or six breasts.
         else outputText("Niamh giggles as you try to move your breasts closer to the bar to be milked by the patrons, but it's obvious only the top pair of your tits can easily rest on the counter top.  \"<i>Lassie, it might be unconventional, but givin' the circumstance mayhaps it'd be best if ye laid down on the bar.</i>\"");
         outputText("\n\nIt isn't long before patrons start lining up for mugs of your particular brand of booze.  They tug on your nipples, teasing the beverage from your teats.  Each drunken tug however encourages your libido, arousing you further.");
@@ -676,7 +676,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText(".");
         // If lust is low
         if (player.lust < 50 || player.gender == 0) {
-            player.growTits(2, player.bRows(), false, 2);
+            player.growTits(2, player.breasts.length, false, 2);
             outputText("\n\nYou feel flushed from the sensations, but finally you run dry.  Your breasts have shrunk back down, but they still feel a little larger than they were earlier.  As little droplets of milk instead of booze return to dripping from your nipples, Niamh hands you your cut of the gems you earned from the sales.");
             // [LEAVE]
             doNext(camp.returnToCampUseOneHour);
@@ -717,12 +717,12 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         if (player.buttRating >= 20) outputText("  She slaps your ass to emphasize her meaning, and the action sends jiggling waves through each immense cheek.");
 
         outputText("\n\nA few more hollers go up from the crowd that's drunk themselves silly on the booze from your tits.  Hands and paws begin grabbing your limbs and tits and carry you aloft.  ");
-        if (player.biggestTitSize() >= 20) outputText("Your giant boobs are large enough to temporarily hang off the sides of your body as you're carried.");
+        if (player.breasts.biggestTitSize() >= 20) outputText("Your giant boobs are large enough to temporarily hang off the sides of your body as you're carried.");
         outputText("  Your [butt] hits the table first as the crowd puts you down.  Some patrons begin sucking on your nipples directly.");
         // [IF player has four or more giant tits, but not hugely pregnant]
-        if ((player.pregnancyIncubation == 0 || player.pregnancyIncubation > 100) && player.bRows() > 1) outputText("  You are essentially a pile of " + boozeBoobsType() + " filled tits.");
+        if ((player.pregnancyIncubation == 0 || player.pregnancyIncubation > 100) && player.breasts.length > 1) outputText("  You are essentially a pile of " + boozeBoobsType() + " filled tits.");
         // [IF player is hugely pregnant with four or more tits]
-        else if (player.bRows() > 1) outputText("  You are essentially a giant pregnant belly surrounded by your [chest] on the table, helpless to the sexual advances of the bar goers and you can't get enough of it.");
+        else if (player.breasts.length > 1) outputText("  You are essentially a giant pregnant belly surrounded by your [chest] on the table, helpless to the sexual advances of the bar goers and you can't get enough of it.");
 
         // ===============
         // Third Paragraph
@@ -761,7 +761,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // ===============
         outputText("\n\nYour nipples squirt relentlessly while the crowd thickens around you.  Each customer tries to suck off mouthfuls of your delectable " + boozeBoobsType() + ".  Niamh allows her own breasts to rest on top of you, pushed out to the sides so that others may slurp up the beer leaking from her tender nipples as well.  The two of you become a mass of tit flesh spraying alcohol into the waiting mouths of customers.");
         // IF[Character has fuckable nipples]
-        if (player.hasFuckableNipples()) outputText("  Eventually some of the randier drunks start whipping out their cocks, and begin pressing the heads against the openings of your nipples.  Within moments you feel your booze bloated breasts being fucked silly by " + num2Text(player.totalNipples()) + " hard cocks.  Each thrust causes " + boozeBoobsType() + " to spill out around their shafts.");
+        if (player.breasts.hasFuckableNipples()) outputText("  Eventually some of the randier drunks start whipping out their cocks, and begin pressing the heads against the openings of your nipples.  Within moments you feel your booze bloated breasts being fucked silly by " + num2Text(player.breasts.totalNipples()) + " hard cocks.  Each thrust causes " + boozeBoobsType() + " to spill out around their shafts.");
         // ELSE[Character doesn't have fuckable nipples]
         else outputText("  Some of the hornier customers start shoving cocks of all shapes and sizes into the moist wet cleavages formed by yours and Niamh's breasts.");
 
@@ -770,7 +770,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // ===============
         outputText("\n\nAltogether the bar fucks you silly.  Your " + boozeBoobsType() + " filled tits jiggle with the relentless sex.  Orgasms run down your spine; quaking your flesh in pleasure as you cum.  Niamh's sweet pussy soaks your face with her own orgasms while others in the bar fill your canyons of cleavage with jizz.");
         // IF [Player has fuckable nipples]
-        if (player.hasFuckableNipples()) outputText("  The cocks filling your nipples start pumping hot sperm into your breasts, mixing with your " + boozeBoobsType() + " and causing every nerve ending in your nipples to tingle.  Some of them ejaculate so much that it feels as if your breasts are swelling even larger, almost to the point of bursting before the cum spills out.");
+        if (player.breasts.hasFuckableNipples()) outputText("  The cocks filling your nipples start pumping hot sperm into your breasts, mixing with your " + boozeBoobsType() + " and causing every nerve ending in your nipples to tingle.  Some of them ejaculate so much that it feels as if your breasts are swelling even larger, almost to the point of bursting before the cum spills out.");
         // IF [Player has cocks]
         if (player.cocks.length > 0) {
             outputText("  You feel as if your body is exploding everywhere.  Niamh gags momentarily as her mouth fills with your seed, and you realize your cock");
@@ -804,9 +804,9 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
 
             outputText("\n\nBetween Edryn's horse-cunt and Urta's horse-cock you effectively become their living fucktoy.  Your body shakes and shimmies back and forth as the two of them grind you between their sexes.  Your breasts spray " + boozeBoobsType() + " everywhere, slapping against Edryn's ass in the process.");
             // IF [player has four huge tits]
-            if (player.bRows() == 2) outputText("  Your second row of tits get thrust out to either side every time Urta's torso presses your own against Edryn.");
+            if (player.breasts.length == 2) outputText("  Your second row of tits get thrust out to either side every time Urta's torso presses your own against Edryn.");
             // IF [player has six giant breasts]
-            else if (player.bRows() == 3) outputText("  Your lowest row of tits slap against all three of your thighs as the love making becomes more brutal.");
+            else if (player.breasts.length == 3) outputText("  Your lowest row of tits slap against all three of your thighs as the love making becomes more brutal.");
             // IF [player has large balls]
             if (player.balls > 0 && player.ballSize > 14) outputText("  Your hanging testicles bounce around between everyone's legs.");
             // IF [player has giant ass]
@@ -820,7 +820,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("\n\nThe next thing you're aware of is feeling an intense pressure in your gut.  As your vision returns you weakly make out the desert outside Tel'Adre passing you by.  As your senses return you realize you're riding on Edryn's back and Urta is sitting behind you.  \"<i>Hellooooo...</i>\"  A very drunk Urta whispers in your ear.  \"<i>Looks like you're awake.</i>\"  She reaches around and pats your bloated belly.  \"<i>You really took a lot.  We sort of felt we overdid it, so we decided to give you a lift back to your camp.</i>\"  Urta's cum is still spilling out of your crotch, soaking Edryn's sides.  Edryn's own hindquarters are leaking from the many loads you gave her.");
             // IF [Player is pregnant but not with eggs] You pat your pregnant belly and silently hope Urta's ocean of cum hasn't drowned the child, if that's even possible.
             outputText("\n\nThe two of them drop you off along with your clothes and gear back at camp.  Each of them winks and blows you a kiss as they travel back to Tel'Adre.  Your breasts are leaking milk again, and they appear to have grown permanently larger.");
-            player.growTits(2, player.bRows(), false, 2);
+            player.growTits(2, player.breasts.length, false, 2);
         }
         // IF [Urta but not Edryn is present in the bar and sex with her is unlocked and character has pussy]
         else if (player.hasVagina() && game.time.hours < 15 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0) {
@@ -832,12 +832,12 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
 
             outputText("\n\nOrgasm after orgasm keeps you dizzy and drunk while you gush " + boozeBoobsType() + " and take in cum.  The bar patrons finally wear themselves out with fucking your oversexed body.  Niamh crawls off of your face and back down to the floor.  She pauses to catch her breath and regain her sense of balance, leaning on the table and resting her breasts on your face.  You've barely regained your own senses when Urta tries to help you up.");
             // IF [Player has four or more breasts]
-            if (player.bRows() > 1) outputText("  Your rows of breasts shift around as your posture changes, making squelching sounds as they slide around.");
+            if (player.breasts.length > 1) outputText("  Your rows of breasts shift around as your posture changes, making squelching sounds as they slide around.");
             // If [player not pregnant]
             if (player.pregnancyIncubation == 0) outputText("  Urta's small ocean of sperm streams out from your pussy like a river down your legs as you try to stand.");
 
             outputText("\n\nWhen you're finally on your feet all the cum covering your body and filling your cleavage begins dripping down and pooling around your feet.  Milk is dripping from your nipples, signaling that the effects of Niamh's beer have finally worn off.  \"<i>Oi lass, I think ye be needin' a dip in a river.  Pity ye in a desert eh?</i>\"  She grins.  Still half drunk off booze and sex you haphazardly gather your things.  Urta graciously helps you out of the bar and through the streets of Tel'Adre until you've gathered your senses enough to find your way back to camp.  Your breasts ache from the pleasant ordeal, each one feeling fuller and larger than it was before this all began.");
-            player.growTits(2, player.bRows(), false, 2);
+            player.growTits(2, player.breasts.length, false, 2);
         }
         // =====
         // Generic ending if the first two don't trigger
@@ -892,7 +892,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
                         break;
                 }
             }
-            player.growTits(2, player.bRows(), false, 2);
+            player.growTits(2, player.breasts.length, false, 2);
         }
         player.orgasm();
         doNext(camp.returnToCampUseOneHour);

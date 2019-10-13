@@ -212,7 +212,7 @@ export function femaleGirlsLoseToSammitches(): void {
     outputText("\n\nYour attention is brought back to the sand-witches on your body as the one on your face cums directly into your mouth, making you flinch.  The warm flood of cum spill over your arms and [legs] as well.  The witches on you are pushing their cunts as hard as possible, and they hold onto your body, making one last booming moan.  Grinding their cum-sloobering pussies in the afterglow, they pant out in exhaustion.  Once they finally devour every little bit of pleasure they can get from you, they get up and join their sisters in the sex toy display, leaving you alone, covered in milk and cum, eyes practically glued shut with caked-on lady-cum.");
 
     outputText("\n\nWho cares-your hands are finally free.  You shoot one down to your sex, happily fingering the soaked hole and stroking the [clit].  One witch who already picked her strap-on, a hard cat cock with soft rubbery barbs, sees you having fun and runs over to stop you.  There's a quaint struggle, but she holds your hands up and saddles herself on your stomach, her kitty cock resting ");
-    if (player.biggestTitSize() >= 1) outputText("between");
+    if (player.breasts.biggestTitSize() >= 1) outputText("between");
     else outputText("on");
     outputText(" your [chest].");
 
@@ -292,7 +292,7 @@ export function memeberedFolksFindTrueWuv(): void {
         outputText("\n\nA short witch shoulders through her sisters to appraise you.  Her sisters part before her confident strides with a suprising degree of deference, even though this woman is at least a foot shorter than most of them.  She doesn't even have huge breasts!  They might be double-D's or E's if she's lucky.  Obscuring a great deal of the right half of her face, a swirling tattoo with patterns intricate enough to make your vision swim clearly differentiates her from her cohorts.");
         outputText("\n\n\"<i>An interloper, huh?  Well, now that you've found us, we can't exactly let you go free, can we, sisters?</i>\" the diminutive enchantress says with an icy undercurrent of dark promise.  A murmured but incomprehensive babble of assent is voiced by the crowd.  Shit, you're in deep here.  The tattooed tramp casually hovers her palm over your face and begins to chant nonsensical words.  Any second now, there'll be an explosion of flame, or a clap of sandstone, and you'll be burned or pulped into the next world...  You close your eyes and breathe deep, savoring what's sure to be your last breath of cool, fresh air.");
         outputText("\n\nYour pain fades under a numbing explosion of warmth, leaving you feeling whole and hale.  Is this... death?  The pleasant heat slowly circulates through your extremities before nestling in your chest.  Your heart beats faster, pounded on by an overexcited drummer somewhere inside you.  Wait, dead people don't have heartbeats.  You open your eyes and look up into the witch's smiling face, illuminated by her glowing tattoos as the rest of your injuries vanish.  Rolling her wrist to make her hand and fingers twirl above you, she stokes the artificial calefaction hotter.  A twitch within your [armor] alerts you to a new feeling that's spreading through you - lust.  The hotter it gets, the faster your heart beats and the harder [eachCock] grows.  You whimper as the ardor savages your restraint, causing you to whimper and paw at your tenting, twitching bulge.  Scraping against the insides of your gear, your [nipples] are in no better shape.  They faintly ache to be touched");
-        if (player.hasFuckableNipples()) outputText(", fondled, and fucked");
+        if (player.breasts.hasFuckableNipples()) outputText(", fondled, and fucked");
         else outputText(" and fondled");
         outputText(".");
         if (player.hasVagina()) outputText("  Your [vagina] even gets in on the action, converting your undergarments into a swampy mess of female pheromones and dripping lubricant.");
@@ -618,14 +618,14 @@ export function sandstonesAreCool(): void {
                 outputText("  A small set of stones settle on your [balls].");
                 bonus++;
             }
-            outputText("  " + num2Text(player.totalNipples()) + " crawl up to your chest and over your top " + nippleDescription(player, 0) + "s");
-            if (player.bRows() > 1) {
-                if (player.bRows() == 2) outputText(" and");
+            outputText("  " + num2Text(player.breasts.totalNipples()) + " crawl up to your chest and over your top " + nippleDescription(player, 0) + "s");
+            if (player.breasts.length > 1) {
+                if (player.breasts.length == 2) outputText(" and");
                 else outputText(",");
                 outputText(" your middle " + nippleDescription(player, 1) + "s");
                 bonus++;
             }
-            if (player.bRows() > 2) {
+            if (player.breasts.length > 2) {
                 outputText(", and your bottom " + nippleDescription(player, 2) + "s");
                 bonus++;
             }
@@ -867,7 +867,7 @@ export function turnIntoASammitch(): void {
     outputText("\n\nThe Cum Witch begins moving your hand for you, artlessly toying with your cunt as she whispers into your ear.  She's brainwashing you, and you're too helpless, too vacant to lift a finger.  Besides, it's better to listen to her.  Just listening, it's better.  Yes, that's it.");
 
     outputText("\n\n\"<i>Oh, I can just tell you're going to be a great sister!  You'll love being milked almost as much as you'll love having my kids.</i>\" she coos.  You start to nod in agreement before you remember to listen, your thought processes slowly resuming.  \"<i>You'll love having my babies so much that you'll try to keep both your wombs full all the time, once you get your second one, won't you?  You love my cum, and you want it in all of your holes, but mostly your wombs</i>\"  This time you do nod - it's going to be fun!  You can't wait to ");
-    if (player.bRows() < 2) outputText("get four big, milky tits");
+    if (player.breasts.length < 2) outputText("get four big, milky tits");
     else if (player.lactationQ() < 200) outputText("have your tits made into perfect milkers");
     else outputText("get your four, big tits milked");
     outputText(" or to get your first proper administration of witch-cum.");
@@ -1076,9 +1076,9 @@ export function repeatLoseToCumWitchForDudes(): void {
         outputText(".  The black spellcaster comments, \"<i>I must admit it is fun to look at, but it doesn't look like it's ready to blow just yet.  How about a little encouragement?</i>\"");
 
         outputText("\n\nThe Cum Witch snaps her fingers, and two smooth, spherical bits of stone lift up.  They begin to vibrate so fast that you can hear them humming in the air.  They arc over your chest and flutter down onto ");
-        if (player.totalNipples() > 2) outputText("two of ");
+        if (player.breasts.totalNipples() > 2) outputText("two of ");
         outputText("your [nipples]");
-        if (player.hasFuckableNipples()) outputText(", sinking inside your moist tit-holes almost immediately");
+        if (player.breasts.hasFuckableNipples()) outputText(", sinking inside your moist tit-holes almost immediately");
         outputText(".  With two vibrators savaging your [nipples] and the black-hued beauty riding your cock like her own personal rocket, you can barely contain yourself.  Your back arches, and you try to buck your hips, to fuck her, her cock, whatever, but you're still too exhausted from the fight to shift her body weight.  You can do nothing but lie there while she uses you, humping your cock, her ebony length dragging its lurid pleasure across your " + cockDescript(game.player, x) + " while you wriggle and writhe ecstatically.");
 
         outputText("\n\nAfter a while of continual teasing, the sable seductress leans over you and lets her huge breasts sweetly kiss on your elephantine mass.  She leans down as if to kiss you, but at the last moment, she swerves to the side, licking the nape of your neck up to your ear before breathily whispering promises into your ear, \"<i>There's nothing like blowing off some steam out here in the sands after my work.  And to have such a... gifted " + mf(player, "boy", "girl") + " to play with is a treat in and of itself.</i>\"  She grunts, sweaty balls bouncing on your [sheath].  \"<i>You look so helpless for someone who's packing so much.  I look forward to seeing how you look with my cum hiding that expression.</i>\"");
@@ -1160,7 +1160,7 @@ export function tooBigCumWitchLossFacial(): void {
     else outputText("  You give her a lewd look and lick your tongue across your lips as you anticipate the big, fat load she's going to feed you, hungry for wet, decadent pleasure regardless of inhibitions.");
 
     outputText("\n\nThe hot moisture she's secreting all over your " + cockDescript(game.player, x) + " seems to be affecting you as well as the vibrations ");
-    if (player.hasFuckableNipples()) outputText("in");
+    if (player.breasts.hasFuckableNipples()) outputText("in");
     else outputText("on");
     outputText(" your [nipples].  It feels like there's so much blood being forced inside your erection that the sheer over-tumescence will make you burst.  The need is overwhelming.  You HAVE to cum, and you're so wet, so stained with spunk and juice that there's no time like now.  The Cum Witch's heels press in on your ");
     if (player.balls > 0) outputText("[balls], compressing them slightly as a tingle of magic lances into you, fattening them under her ministrations");
@@ -1564,7 +1564,7 @@ export function savinMakesAwesomeFemdom(): void {
     else outputText("Uncontrollable lust surges through you, your heart pounding beneath your [chest] as your [legs] collapse out from under you.  Your hands desperately claw at your [armor], trying to touch your needy cunt, the fire in your genitals burning like whitefire through your veins.  You moan with helpless lust as the witch looms over you, grabbing your hands away from your crotch and pushing you onto your back.  A moment later, she's on you, straddling your [hips] between her lush thighs.");
     outputText("\n\nPinned beneath the witch, you struggle weakly in her grasp as she slowly strips off your [armor], bearing your [chest] to her surprisingly soft, gentle caresses.  ");
     // if Multiboob:
-    if (player.bRows() > 1) {
+    if (player.breasts.length > 1) {
         outputText("She caresses each of your breasts, cupping each in turn, running her thumb over each nipple");
         if (player.lactationQ() >= 200) outputText(" until milk streams down your chest, much to her delight");
         outputText(".");
@@ -2151,7 +2151,7 @@ export function fuckDatLionPussah(): void {
     else outputText("\n\nSanura's eyes go wide upon seeing your monstrous cock.  She opens her mouth, attempting to speak, but no words come out.  Her tail reaches out, coiling around your dick in futility.  \"<i>By Marae's pillowy tits that thing is huge,</i>\" she says finally, regaining her voice.  \"<i>I don't know if I can take something that big... but goddamnit, I'm going to try.</i>\"");
 
     outputText("\n\nYour manhood spikes upwards at the attention, becoming painfully hard as the sphinx continues to survey your body.  Her tail flicks over your " + skinFurScales(player) + " gently, stopping briefly to tantalize ");
-    if (player.totalNipples() == 2) outputText("both");
+    if (player.breasts.totalNipples() == 2) outputText("both");
     else outputText("each");
     outputText(" of your nipples, which stiffen in response, just like your cock.  You can't help but think there's some sort of magic at work here.  Her tail passes between your thighs, gracefully tickling your ");
     if (player.hasVagina()) outputText("damp cunt, which suddenly tightens up and practically gushes with slick juices.");
@@ -3008,25 +3008,25 @@ export function loseToSandMother(): void {
     outputText(" hinders all of your attempts to fight back.  You try to argue that you aren't a servant of the demons, that you were fighting against them for your own people just as she is, but every time you open your mouth she forces it closed again with her magic.  \"<i>I am not interested in the lies of a demonic servant.  It is time we dealt with you once and for all.</i>\"");
 
     outputText("\n\nShe kneels and prods your slick pussy with her fingers, forcing sensations that rise up through your body and exit your lips as moans.  \"<i>You'll need an extra one of these of course.</i>\"  The Sand Mother reaches forwards with her free hand to grope your tits.");
-    if (player.bRows() == 1) {
+    if (player.breasts.length == 1) {
         outputText("  Plus an extra set of these to ensure you produce as much milk as the rest of your soon-to-be sisters.");
-        player.createBreastRow();
+        player.breasts.createBreastRow();
     }
     // if player has four breasts
-    else if (player.bRows() == 2) outputText("  Thankfully you're already endowed with enough breasts to begin immediate production of milk.");
+    else if (player.breasts.length == 2) outputText("  Thankfully you're already endowed with enough breasts to begin immediate production of milk.");
     // if player has six breasts
     else outputText("  Hmmm. We've never had a sister blessed with more than four breasts. I wonder if perhaps we can use your unusual anatomy to our advantage.");
     outputText("  She squeezes a [nipple] and a yelp of pleasure escapes you.  \"<i>I see you like that idea. Excellent.</i>\"");
     // if breasts are smaller than a normal sand witch's
-    if (player.biggestTitSize() < 3) outputText("  \"<i>Of course we'll have to grow them a bit to suit our needs.</i>\"");
+    if (player.breasts.biggestTitSize() < 3) outputText("  \"<i>Of course we'll have to grow them a bit to suit our needs.</i>\"");
     // if breasts are larger than a normal sand witch's
-    else if (player.biggestTitSize() >= 14) outputText("  \"<i>Mmmm, and with such massive ones I'm sure we can expect you to produce more than most of our sisters could.</i>\"");
+    else if (player.breasts.biggestTitSize() >= 14) outputText("  \"<i>Mmmm, and with such massive ones I'm sure we can expect you to produce more than most of our sisters could.</i>\"");
 
     outputText("\n\nThe Sand Mother's fingers slide around your labia, teasing them, occasionally fingering your entrance and thumbing your clit.  A light sweat breaks out all over your " + skinFurScales(player) + ".  \"<i>Yes, you're really starting to enjoy that idea, aren't you?</i>\"  You start to nod before regaining your senses. \"<i>I see.  You still need persuasion.</i>\"  She pinches your clit and an orgasm starts shivering inside your [hips].  \"<i>Of course that was never in doubt.  I could never completely trust you, even if I could bring you around to our way of thinking.</i>\"");
 
     outputText("\n\n\"<i>SISTERS! Fetch the Cum Witch!</i>\"  The Sand Mother smiles as she gives the command.  She watches your body flinch and your breasts ");
-    if (player.biggestTitSize() < 5) outputText("jiggle");
-    else if (player.biggestTitSize() < 10) outputText("bounce");
+    if (player.breasts.biggestTitSize() < 5) outputText("jiggle");
+    else if (player.breasts.biggestTitSize() < 10) outputText("bounce");
     else outputText("quake");
     outputText(" with every twitch of her fingers inside you.");
     if (player.lactationQ() >= 50) outputText("  Streams of milk are already starting to pour down the swells of your tits.");
@@ -3037,8 +3037,8 @@ export function loseToSandMother(): void {
     else outputText("This must be the Cum Witch the Sand Mother sent for!");
 
     outputText("\n\nShe and the Sand Mother whisper back and forth, and they seem to disagree about something.  From the stares the Cum Witch gives you, you infer that their discussion concerns you.  Finally, the Cum Witch frowns and speaks loud enough to be heard, \"<i>I don't think we need it, but you're right.  It would be a waste.</i>\"  She bows to the Sand Mother and then approaches you");
-    if (player.bRows() <= 2) outputText(", admiring the extra set of breasts you already possess");
-    else outputText(", admiring how you've managed to grow " + num2Text(player.bRows()) + " rows of breasts instead of just two on your panting torso");
+    if (player.breasts.length <= 2) outputText(", admiring the extra set of breasts you already possess");
+    else outputText(", admiring how you've managed to grow " + num2Text(player.breasts.length) + " rows of breasts instead of just two on your panting torso");
     outputText(".");
 
     outputText("\n\nThe chocolate skinned woman tosses aside her robe dramatically and lowers her incredibly toned body between your thighs.  Despite the presence of an overly endowed human cock that's already rising beyond your expectations, her overall figure is quite feminine and normal - just one pair of breasts.  She pokes your thoroughly soaked vagina and says, \"<i>This'll have to change.  Just one simply won't do, but right now, the body is the lesser priority.</i>\"  She angles her cock between the folds of your pussy and immediately spears your, shoving her length inside you as if testing your depths.  Once comfortable she raises her hands to either side of your head while her cock thrusts with a steady rhythm into your cunt.  \"<i>Up here...</i>\"  She taps your head with her fingers while she angles your face to stare her in the eyes, \"<i>...is what we have to fix first.</i>\"");
@@ -3067,16 +3067,16 @@ export function sandMotherBadEndsLadiesEpilogue(): void {
     clearOutput();
     outputText("The Champion awoke to a body changed. " + mf(player, "His", "Her") + " body had been transformed in to that of a Sand Witch's.");
     // if player had six breasts
-    if (player.bRows() > 2) outputText("  Although unlike the other Sand Witches, this one sported extra breasts which she used to her utmost advantage.");
+    if (player.breasts.length > 2) outputText("  Although unlike the other Sand Witches, this one sported extra breasts which she used to her utmost advantage.");
     // if player had gigantic breasts
-    if (player.biggestTitSize() >= 22) outputText("  She was unrivaled in her ability to produce milk thanks to the natural enormity of her breasts that her other sisters couldn't come close to.  They were so large that they often impeded her movement, which she admittedly didn't mind so much.");
+    if (player.breasts.biggestTitSize() >= 22) outputText("  She was unrivaled in her ability to produce milk thanks to the natural enormity of her breasts that her other sisters couldn't come close to.  They were so large that they often impeded her movement, which she admittedly didn't mind so much.");
 
     outputText("\n\nAs best as she could remember, her life had begun only a decade ago, aging quickly to become ready for service in her Sand Mother's coven at the age of five.  She'd been eager to give her milk and use her two wombs to breed as many new sisters as possible.");
     // if player had the broodmother perk
     if (player.perks.findByType(PerkLib.BroodMother) >= 0) outputText("  She'd immediately shown a unique propensity for rapid pregnancies, birthing new sisters at twice the rate of any other Sand Witch.  Her surprisingly fertile wombs helped give an extra edge to the Sand Mother's plans.");
 
     // if player had broodmother and gigantic breasts
-    if (player.perks.findByType(PerkLib.BroodMother) >= 0 && player.biggestTitSize() >= 22) outputText("  As a result, the champion who could no longer remember her true past became little more than a giant pregnant belly surrounded by " + num2Text(player.bRows()) + " breasts so massive that the other sand witches often used her tits as comfortable cushions to sit upon, their thighs tightly gripping each giant nipple against their aching cunts for pleasure.");
+    if (player.perks.findByType(PerkLib.BroodMother) >= 0 && player.breasts.biggestTitSize() >= 22) outputText("  As a result, the champion who could no longer remember her true past became little more than a giant pregnant belly surrounded by " + num2Text(player.breasts.length) + " breasts so massive that the other sand witches often used her tits as comfortable cushions to sit upon, their thighs tightly gripping each giant nipple against their aching cunts for pleasure.");
 
     outputText("\n\nTwo years later, at the call of the Great Mother, the sand witches went to war.  ");
     if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) outputText("Their harpy and phoenix allies allowed them to approach Lethice's fortress unhindered, and i");
@@ -3257,9 +3257,9 @@ export function lesboMilkFilling(): void {
     }
     // BOTH
     outputText("\n\nAllowing an eager, pleased expression to occupy your " + face(player) + ", you peel the top of your armor down to expose your [chest] and [nipples], heaving with your excited, eager inhalations.  The Sand Mother watches you with a lecherous expression as she opens the top half of her robe.  Her four areolae are huge and moist with her creamy drippings, the pebbly texture shining dully in the unnatural light as fresh liquid beads on her enormous, lust-tightened nipples.  Shimmying out of your bottoms, you stretch your hands up high over your head and arch your back");
-    if (player.biggestTitSize() >= 10) outputText(", [fullChest] swaying enticingly as you strike your seductive pose");
+    if (player.breasts.biggestTitSize() >= 10) outputText(", [fullChest] swaying enticingly as you strike your seductive pose");
     outputText(".   Freeing your body from its bindings is almost as exciting as seducing the queen of the lactic sorceresses, and you ");
-    if (player.biggestTitSize() >= 2) outputText("cup your mammaries");
+    if (player.breasts.biggestTitSize() >= 2) outputText("cup your mammaries");
     else outputText("run your hands down your chest");
     outputText(" as you stride closer.");
 
@@ -3740,19 +3740,19 @@ export function fuckOneSandWitch(): void {
     outputText(" into her nethers. Drool escapes her lips and drips down her cheek even as her eyes roll back in her head. Talk about an easy lay.");
 
     // {if player has large but not extremely massive breasts}
-    if (player.biggestTitSize() >= 4 && player.biggestTitSize() < 15) {
+    if (player.breasts.biggestTitSize() >= 4 && player.breasts.biggestTitSize() < 15) {
         outputText("\n\nYour breasts bounce up and down as you get in to the groove of fucking your pregnant playtoy.");
         // {if player is largely pregnant and has large breasts.}
         if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 200) outputText("  Each time it does so your own breasts slap against your swollen midsection.");
         // {if player has four or more large breasts and is not pregnant}
-        else if (player.bRows() >= 2) outputText("  Your lower pair of breasts slap against the pregnant girl's belly with each thrust.");
+        else if (player.breasts.length >= 2) outputText("  Your lower pair of breasts slap against the pregnant girl's belly with each thrust.");
     }
     // else if player has extremely huge breasts
-    else if (player.biggestTitSize() >= 15) {
+    else if (player.breasts.biggestTitSize() >= 15) {
         outputText("\n\nYour [chest] are massive enough that they jiggle instead of bounce with each thrust.");
         // if player has only one set of massive breasts
-        if (player.bRows() == 1) outputText("  Your two heavy milk sacs sway and at times you must rest them on top of the poor witch's belly to keep from prematurely exhausting yourself.");
-        else if (player.bRows() >= 2) outputText("  Resting on top of each other and on top of the witch's legs, your giant globes of tit flesh quake each time you hips move.");
+        if (player.breasts.length == 1) outputText("  Your two heavy milk sacs sway and at times you must rest them on top of the poor witch's belly to keep from prematurely exhausting yourself.");
+        else if (player.breasts.length >= 2) outputText("  Resting on top of each other and on top of the witch's legs, your giant globes of tit flesh quake each time you hips move.");
         outputText("  The witches around the room can't help but gawk at how much more endowed your mammaries are than even their own, and how the wrong forwards or backwards movement could result in either you or the witch you're fucking to be suddenly smothered under the weight of your ridiculously engorged tits.");
     }
     outputText("\n\nIt isn't long before the sensations of naked wet flesh sliding along your ");
@@ -3762,7 +3762,7 @@ export function fuckOneSandWitch(): void {
     if (player.balls > 0) outputText("  Your [balls] tense with the anticipation of releasing the fruit of your loins into her waiting womb.");
     outputText("  With both hands you reach up and grab the fat nipples of the witch's lower breasts, tugging on them like reins as you try to thrust deeper.  \"<i>Ung! Ah!</i>\" The witch bites her lower lip in pleasure and pain as you roughly handle her leaking teats.");
     // {if player has huge or massive breasts}
-    if (player.biggestTitSize() >= 15) outputText("  The weight of your own tits bears heavily against your arms as you try to keep the motion of your hips constant while pulling on your lover's milk knobs.");
+    if (player.breasts.biggestTitSize() >= 15) outputText("  The weight of your own tits bears heavily against your arms as you try to keep the motion of your hips constant while pulling on your lover's milk knobs.");
     // {if player's tits can lactate}
     else outputText("  Each of your [nipples] begin spraying milk over the witch as your body begins its crescendo.");
 
@@ -3822,7 +3822,7 @@ export function fuckTwoPregWitches(): void {
     if (!player.isNaga()) outputText("You straddle ");
     else outputText("You entwine your serpentine tail around ");
     outputText("their two legs that remain on the floor while allowing their raised legs to ");
-    if (player.biggestTitSize() >= 15) outputText("slide between your cleavage");
+    if (player.breasts.biggestTitSize() >= 15) outputText("slide between your cleavage");
     // {for small or non-breasted characters}
     else outputText("rest against your torso and shoulders");
     outputText(".");
@@ -3853,10 +3853,10 @@ export function fuckTwoPregWitches(): void {
     // {if player lactates}
     if (player.lactationQ() >= 200) outputText("  Your own breasts begin spraying down the two pregnant sluts with your own dairy fluids.");
     // {if player has large but not huge breasts}
-    if (player.biggestTitSize() >= 5 && player.biggestTitSize() < 20) outputText("  Each thrust in to the eager cunts causes your breasts to bounce up and down.");
-    else if (player.biggestTitSize() >= 20) outputText("  Each thrust in to the eager cunts causes your massive breasts to sway back and forth, slapping against your own sides.");
+    if (player.breasts.biggestTitSize() >= 5 && player.breasts.biggestTitSize() < 20) outputText("  Each thrust in to the eager cunts causes your breasts to bounce up and down.");
+    else if (player.breasts.biggestTitSize() >= 20) outputText("  Each thrust in to the eager cunts causes your massive breasts to sway back and forth, slapping against your own sides.");
     // {if player has six huge breasts}
-    if (player.bRows() >= 3) {
+    if (player.breasts.length >= 3) {
         if (player.breastRows[2].breastRating >= 20) outputText("  Your lower beach ball sized breasts are large enough to rest on the floor to either side as you fuck, and both witches eventually lower the legs they've had raised so as to hook them around your massive mammaries and hug your flesh even closer to their thighs.");
     }
     if (player.balls > 0) outputText("  The closer your shafts come to their climax the more tense your balls become, preparing to pump their loads through your cocks.");
@@ -3942,17 +3942,17 @@ export function fuckAllThePregWitches(): void {
     else outputText("their bodies");
     outputText(" to the limit.");
     // {if player has non-huge tits}
-    if (player.biggestTitSize() > 3 && player.biggestTitSize() < 10) outputText("  Your tits bounce as you enthusiastically grind away.");
+    if (player.breasts.biggestTitSize() > 3 && player.breasts.biggestTitSize() < 10) outputText("  Your tits bounce as you enthusiastically grind away.");
     // {else if player has huge tits}
-    else if (player.biggestTitSize() >= 10 && player.biggestTitSize() < 20) outputText("  The heavy weight of your huge tits causes them to sway with every thrust of your hips.");
+    else if (player.breasts.biggestTitSize() >= 10 && player.breasts.biggestTitSize() < 20) outputText("  The heavy weight of your huge tits causes them to sway with every thrust of your hips.");
     // {if player has really huge tits}
-    else if (player.biggestTitSize() >= 20) outputText("  The immense swells of your mammaries press down upon the ass of the girl in front of you.");
+    else if (player.breasts.biggestTitSize() >= 20) outputText("  The immense swells of your mammaries press down upon the ass of the girl in front of you.");
     // {if player has four non-huge tits}
-    if (player.bRows() >= 2) {
+    if (player.breasts.length >= 2) {
         if (player.breastRows[1].breastRating >= 3) outputText("  Your second row of breasts slap against the ass cheeks of the girl in front of you.");
     }
     // {if player has six huge but not really huge tits}
-    if (player.bRows() >= 3) {
+    if (player.breasts.length >= 3) {
         if (player.breastRows[2].breastRating >= 3 && player.breastRows[2].breastRating < 20) {
             outputText("  Your lowermost row of breasts become squashed against the witch");
             if (multi) outputText("s");
@@ -4098,7 +4098,7 @@ export function grabTheMilkGirl(): void {
     clearOutput();
     outputText("You call out to the milk slave before she can slink away, and wade over to the side of the tub, leaving your face a few scant inches from her massive, milk-laden jugs. She cocks her head to the side, obviously unused to the attention, and quietly whispers, \"<i>" + mf(player, "M-master?", "M-mistress?") + "</i>\"");
     outputText("\n\nYou flash her a mischievous grin before grabbing a handful of her giant tits and pulling, yanking her into the tub with you. The milk-maid lets out a sharp cry of surprise as she tumbles in, a huge splash of cream spraying over the rim of the tub, painting the walls white. Gasping, her head pops back over the surface of her own milk, long ebony hair dripping onto the tops of her seemingly-buoyant teats, which bob over the milky waves with a strangely serene, regal grace.  \"<i>" + mf(player, "M-master?", "M-mistress?") + "</i>\" the slave girl repeats, her lower lip quivering with fright as she wades through her own lactation, slowly retreating to the edge of the tub. Smiling, you reach out and stroke her cheek, telling her it's all right, that you thought she might like a bath, too. She starts to reply in her broken dialect, but you cut her off with a playful stroke of her massive mounds, urging her over toward you. Though still nervous, she does as you ask, sliding up under your arm and onto your lap. Once seated, she looks ups to you with saucer-like brown eyes until you cup her cheek and give her a short, tender kiss, pressing your lips to her dusky mounds. To your delight, she seems to melt at your touch, relaxing in an instant as you hold her as close as you can, seperated only by her prodigious chest");
-    if (player.biggestTitSize() >= 8) outputText(", pressing deep into your own huge rack, your nipples flicking across her own leaky tits");
+    if (player.breasts.biggestTitSize() >= 8) outputText(", pressing deep into your own huge rack, your nipples flicking across her own leaky tits");
     outputText(".");
 
     outputText("\n\n\"<i>O-oh,</i>\" she moans, just on the edge of hearing, her cheeks flushing hotly in your hand. The cute little slave turns aside, moving her udders out of the way so that she can rest her head on your chest, obviously enjoying the simple act of your arm around her shoulders and the odd gentle touch. You let her enjoy it for a few long, pleasurable minutes, content in the silent company of the milky girl. From time to time you gently stroke her cow-like teats, or reach down to rub her thick, rich milk into your loins, enjoying the incredible texture of it on your ");
@@ -4123,14 +4123,14 @@ export function grabTheMilkGirl(): void {
     // {If PC has cooch:
     if (player.hasVagina()) {
         outputText("\n\nHer hands shift downwards, delicate fingertips slipping across the slit of your [vagina]. You gasp, shivering as her milk-slick fingers easily slip into your sodden box, her thumb swirling gently around your [clit].  Her other hand traces upwards, carressing your [hips] and [butt] before finally arriving at your [chest], which she massages with well-practiced skill.");
-        if (player.biggestTitSize() >= 1) outputText("  She cups your breasts, having to reach so far around both your rack and hers that she's straining her arms to rub your [nipples], but she does so valiantly, stroking them with her incredibly deft fingers.");
+        if (player.breasts.biggestTitSize() >= 1) outputText("  She cups your breasts, having to reach so far around both your rack and hers that she's straining her arms to rub your [nipples], but she does so valiantly, stroking them with her incredibly deft fingers.");
         if (player.lactationQ() >= 200) outputText("  A spurt of milk escapes your own full jugs, joining the pool-full of your new friend's.  She gasps with surprise and delight, quickly nuzzling herself into your back and going to work, milking you just as she would herself, letting the hefty flow of your motherly fluids pour into the pool, odd trickles smearing down your chest, staining your chest as white as her own.");
     }
     // [Fuck Her](PC must have gender; if cooch, also C+ cups) [Don't]
     menu();
     dynStats("lus", 33, "resisted", false);
     if (player.cocks.length > 0) addButton(0, "Dick Fuck", fuckMilkbabeWithPenor);
-    if (player.hasVagina() && player.biggestTitSize() >= 3) addButton(1, "Lady Fuck", ladyFucks);
+    if (player.hasVagina() && player.breasts.biggestTitSize() >= 3) addButton(1, "Lady Fuck", ladyFucks);
     addButton(2, "Don't Fuck", dontFuckMilkBathBabe);
 }
 
@@ -4259,16 +4259,16 @@ export function sandPregUpdate(): boolean {
     // 2:
     if (player.pregnancyIncubation == 280) {
         outputText("\nYou've been having strange dreams recently, about seeds growing before your eyes into beautiful flowers; what's really weird is the sense of pride and maternal contentment that seeing them bloom makes you feel.  Your breasts are definitely heavier than normal, and sometimes you wake up to find them damp; are you ");
-        if (player.biggestLactation() < 1) outputText("starting to lactate");
+        if (player.breasts.biggestLactation() < 1) outputText("starting to lactate");
         else outputText("lactating more");
         outputText("?  Your belly is even bulging a little bit more than food can explain.\n");
-        temp = player.bRows();
+        temp = player.breasts.length;
         while (temp > 0) {
             temp--;
             if (player.breastRows[temp].breastRating < 1) player.breastRows[temp].breastRating = 1;
 
         }
-        while (player.biggestLactation() < 1.5) {
+        while (player.breasts.biggestLactation() < 1.5) {
             player.boostLactation(.5);
         }
         return true;
@@ -4276,13 +4276,13 @@ export function sandPregUpdate(): boolean {
     // 3:
     if (player.pregnancyIncubation == 216) {
         outputText("\nYour breasts have definitely grown bigger, and they occasionally trickle milk.  More importantly than that, your stomach is bulging out in a small but unquestionable pot belly.  You're definitely pregnant.\n");
-        temp = player.bRows();
+        temp = player.breasts.length;
         while (temp > 0) {
             temp--;
             if (player.breastRows[temp].breastRating < 20) player.breastRows[temp].breastRating++;
             else player.breastRows[temp].breastRating += 0.5;
         }
-        while (player.biggestLactation() < 1.5) {
+        while (player.breasts.biggestLactation() < 1.5) {
             player.boostLactation(.5);
         }
         return true;
@@ -4290,7 +4290,7 @@ export function sandPregUpdate(): boolean {
     // 4:
     if (player.pregnancyIncubation == 180) {
         outputText("\nYour belly continues to grow, the hormones triggering your milk's production to kick it up a notch.  Your breasts are so heavy and sensitive, aching to be used to feed life-giving milk to something.\n");
-        while (player.biggestLactation() < 2) {
+        while (player.breasts.biggestLactation() < 2) {
             player.boostLactation(.5);
         }
         return true;
@@ -4298,7 +4298,7 @@ export function sandPregUpdate(): boolean {
     // 5:
     if (player.pregnancyIncubation == 120) {
         outputText("\nYou sometimes catch yourself humming to your unborn child, stroking your belly like a contented mother.  At other times, you catch yourself proudly stroking your swollen breasts, admiring the way it makes the milk spurt and flow.");
-        while (player.biggestLactation() < 3) {
+        while (player.breasts.biggestLactation() < 3) {
             player.boostLactation(.5);
         }
         return true;
@@ -4306,7 +4306,7 @@ export function sandPregUpdate(): boolean {
     // 6:
     if (player.pregnancyIncubation == 72) {
         outputText("\nMilk dribbles constantly out of your nipples now, in many ways being harder to deal with than the ever-increasing swell of your midriff.  The scent of milk hangs in the air around you constantly, giving you a craving to suckle almost as bad as your breasts' need to be suckled from.\n");
-        while (player.biggestLactation() < 4.5) {
+        while (player.breasts.biggestLactation() < 4.5) {
             player.boostLactation(.5);
         }
         return true;
@@ -4314,7 +4314,7 @@ export function sandPregUpdate(): boolean {
     // 7:
     if (player.pregnancyIncubation == 48) {
         outputText("\nYour stomach hangs out, heavy and round as any full-term mother's back in Ingnam, your breasts feeling almost as taut and swollen, as if jealous of the life nearly grown inside your womb.  At morning, you find yourself milking your breasts until the cascading fluid ends up glazing your engorged stomach in a beautiful liquid white sheen, not that it seems to make much difference to your production.  You can only hope whatever's growing inside you will be hungry enough to keep up with all the food you'll have for it...");
-        while (player.biggestLactation() < 5.5) {
+        while (player.breasts.biggestLactation() < 5.5) {
             player.boostLactation(.5);
         }
         return true;

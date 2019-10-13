@@ -122,7 +122,7 @@ export class Tamani extends Goblin {
         // this.plural = false;
         this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 55, 0, 0, 0);
-        createBreastRow(Appearance.breastCupInverse("E"));
+        this.breasts.createBreastRow(Appearance.breastCupInverse("E"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);

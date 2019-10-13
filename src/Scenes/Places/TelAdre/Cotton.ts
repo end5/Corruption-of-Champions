@@ -33,7 +33,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
     }
 
     public timeChangeLarge(): boolean {
-        if (game.time.hours == 6 && flags[kFLAGS.COTTON_BREAKFAST_CLUB] == 1 && player.biggestLactation() >= 2) {
+        if (game.time.hours == 6 && flags[kFLAGS.COTTON_BREAKFAST_CLUB] == 1 && player.breasts.biggestLactation() >= 2) {
             flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 0;
             nomSomeTitMilkCereal();
             return true;
@@ -587,10 +587,10 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             // (If PC has breasts)
-            if (player.biggestTitSize() >= 2) {
+            if (player.breasts.biggestTitSize() >= 2) {
                 outputText("Cotton leans down, groping your " + biggestBreastSizeDescript(player) + ", taking one " + nippleDescription(player, 0) + " into her mouth and sucking it greedily.", false);
                 // (and if PC is lactating)
-                if (player.biggestLactation() >= 1) {
+                if (player.breasts.biggestLactation() >= 1) {
                     outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescription(player, 0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, pet, I might have to taste you more often.</i>\"", false);
                     flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 1;
                 }
@@ -664,10 +664,10 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             // (If PC has breasts)
-            if (player.biggestTitSize() >= 2) {
+            if (player.breasts.biggestTitSize() >= 2) {
                 outputText("Cotton leans down, groping your " + biggestBreastSizeDescript(player) + ", taking one " + nippleDescription(player, 0) + " into her mouth and sucking it greedily.", false);
                 // (and if PC is lactating)
-                if (player.biggestLactation() >= 1) {
+                if (player.breasts.biggestLactation() >= 1) {
                     outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescription(player, 0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, pet, I might have to taste you more often.</i>\"", false);
                     flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 1;
                 }
@@ -743,10 +743,10 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             // (If PC has breasts)
-            if (player.biggestTitSize() >= 2) {
+            if (player.breasts.biggestTitSize() >= 2) {
                 outputText("Cotton leans down, groping your " + biggestBreastSizeDescript(player) + ", taking one " + nippleDescription(player, 0) + " into her mouth and sucking it greedily.", false);
                 // (and if PC is lactating)
-                if (player.biggestLactation() >= 1) {
+                if (player.breasts.biggestLactation() >= 1) {
                     outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescription(player, 0) + ". Cotton's eyes turn up to your face in surprise but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, pet, I might have to taste you more often.</i>\"", false);
                     flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 1;
                 }
@@ -852,10 +852,10 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             // (If PC has breasts)
-            if (player.biggestTitSize() >= 2) {
+            if (player.breasts.biggestTitSize() >= 2) {
                 outputText("Cotton's kisses lead down to your " + biggestBreastSizeDescript(player) + ", where she takes one " + nippleDescription(player, 0) + " into her mouth, sucking it greedily and teasing it masterfully.", false);
                 // (and if PC is lactating)
-                if (player.biggestLactation() >= 1) {
+                if (player.breasts.biggestLactation() >= 1) {
                     outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescription(player, 0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as the draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, little pet.  I simply must have you for breakfast sometime.</i>\"", false);
                     flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 1;
                 }
@@ -911,10 +911,10 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("\n\n", false);
 
             // (If PC has breasts)
-            if (player.biggestTitSize() >= 2) {
+            if (player.breasts.biggestTitSize() >= 2) {
                 outputText("Cotton's kisses lead down to your " + biggestBreastSizeDescript(player) + ", where she takes one " + nippleDescription(player, 0) + " into her mouth, sucking it greedily and teasing it masterfully.", false);
                 // (and if PC is lactating)
-                if (player.biggestLactation() >= 1) {
+                if (player.breasts.biggestLactation() >= 1) {
                     outputText("  Her efforts are soon rewarded as milk begins seeping from your " + nippleDescription(player, 0) + ". Cotton's eyes turn up to your face in surprise, but she doesn't remove her mouth, instead taking the time to gulp down your tasty milk. It isn't long before she draws back, wipes her mouth and practically tackles your other breast, eager to drain it of its precious cargo. You can't help but moan as a draining sensation overwhelms you. After a moment, Cotton pulls away and smacks her lips. \"<i>That is some tasty, tasty milk, little pet.  I simply must have you for breakfast...</i>\"", false);
                     flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 1;
                 }
@@ -1031,10 +1031,10 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("  You take this opportunity to bury your face in Cotton's prodigious bosom, taking one black, perky nipple into your mouth, then the other. You can actually feel your own tongue on phantom nipples, flicking and teasing you mercilessly. You relinquish your hold on the nipples and pull back slightly, your saliva forming a slight bridge from nipple to lip.\n\n", false);
 
         // (If PC has breasts)
-        if (player.biggestTitSize() >= 2) {
+        if (player.breasts.biggestTitSize() >= 2) {
             outputText("Cotton returns the favor, her short-snouted mouth latching on to one " + nippleDescription(player, 0) + " and sucking it relentlessly. The sensations you get from this are, if anything, greater than normal. Your nipples feel like they're on fire, with every molecule aching to be touched, licked, sucked and teased.", false);
             // (If PC is lactating, add)
-            if (player.biggestLactation() >= 1) {
+            if (player.breasts.biggestLactation() >= 1) {
                 outputText("  You feel a familiar sensation welling up in your breasts as milk begins pouring into Cotton's mouth. She grins as best she can without letting go of your tit, eagerly drinking down your milk. In yet another moment of trepidation, you realize you can taste your own milk slipping over Cotton's tongue. You smack your lips. It tastes sweet and creamy, and oh-so warm. Cotton moves to your next nipple, letting the first dribble milk onto the both of you. Again Cotton sucks on your " + nippleDescription(player, 0) + " for a moment before it begins dispensing its precious cargo into her mouth. You taste every gulp, each one sweeter than the next, before Cotton pulls back and smacks her lips together. \"<i>You taste so sweet, pet. I simply must have you around for breakfast...</i>\"", false);
                 flags[kFLAGS.COTTON_BREAKFAST_CLUB] = 1;
             }

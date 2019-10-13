@@ -392,7 +392,7 @@ export class Player extends Character {
                 desc += "a wide-set body, some soft, forgiving flesh, and a hint of muscle underneath it";
             else {
                 desc += "a wide, cushiony body";
-                if (gender >= 2 || biggestTitSize() > 3 || hipRating > 7 || buttRating > 7)
+                if (gender >= 2 || this.breasts.biggestTitSize() > 3 || hipRating > 7 || buttRating > 7)
                     desc += " and plenty of jiggle on your curves";
             }
         }
@@ -406,16 +406,16 @@ export class Player extends Character {
                 desc += "an extremely substantial frame packing a decent amount of muscle";
             else if (tone > 25) {
                 desc += "a very wide body";
-                if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
+                if (gender >= 2 || this.breasts.biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
                     desc += ", lots of curvy jiggles,";
                 desc += " and hints of muscle underneath";
             }
             else {
                 desc += "a thick";
-                if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
+                if (gender >= 2 || this.breasts.biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
                     desc += ", voluptuous";
                 desc += " body and plush, ";
-                if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
+                if (gender >= 2 || this.breasts.biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
                     desc += " jiggly curves";
                 else
                     desc += " soft flesh";
@@ -623,9 +623,9 @@ export class Player extends Character {
             minoCounter++;
         if (vaginas.length > 0)
             minoCounter++;
-        if (biggestTitSize() > 4 && minoCounter > 0)
+        if (this.breasts.biggestTitSize() > 4 && minoCounter > 0)
             minoCounter++;
-        if (biggestLactation() > 2 && minoCounter > 0)
+        if (this.breasts.biggestLactation() > 2 && minoCounter > 0)
             minoCounter++;
         return minoCounter;
     }
@@ -1070,7 +1070,7 @@ export class Player extends Character {
             mutantCounter++;
         if (hasCock() && hasVagina())
             mutantCounter++;
-        if (hasFuckableNipples())
+        if (this.breasts.hasFuckableNipples())
             mutantCounter++;
         if (breastRows.length > 1)
             mutantCounter++;
@@ -1090,7 +1090,7 @@ export class Player extends Character {
     }
 
     public lactationQ(): number {
-        if (biggestLactation() < 1)
+        if (this.breasts.biggestLactation() < 1)
             return 0;
         // (Milk production TOTAL= breastSize x 10 * lactationMultiplier * breast total * milking-endurance (1- default, maxes at 2.  Builds over time as milking as done)
         // (Small – 0.01 mLs – Size 1 + 1 Multi)
@@ -1099,7 +1099,7 @@ export class Player extends Character {
         let total: number;
         if (this.effects.findByType(StatusAffects.LactationEndurance) < 0)
             this.effects.create(StatusAffects.LactationEndurance, 1, 0, 0, 0);
-        total = biggestTitSize() * 10 * averageLactation() * this.effects.getValue1Of(StatusAffects.LactationEndurance) * totalBreasts();
+        total = this.breasts.biggestTitSize() * 10 * this.breasts.averageLactation() * this.effects.getValue1Of(StatusAffects.LactationEndurance) * this.breasts.totalBreasts();
         if (this.effects.getValue1Of(StatusAffects.LactationReduction) >= 48)
             total = total * 1.5;
         return total;
@@ -1388,19 +1388,19 @@ export class Player extends Character {
                     if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + breastDescript(this, 0) + " tingle strongly, growing disturbingly large.", false);
                     if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + breastDescript(this, 0) + " intensifies as they continue to grow at an obscene rate.", false);
                 }
-                if (biggestTitSize() >= 8.5 && nippleLength < 2) {
+                if (this.breasts.biggestTitSize() >= 8.5 && nippleLength < 2) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 2;
                 }
-                if (biggestTitSize() >= 7 && nippleLength < 1) {
+                if (this.breasts.biggestTitSize() >= 7 && nippleLength < 1) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 1;
                 }
-                if (biggestTitSize() >= 5 && nippleLength < .75) {
+                if (this.breasts.biggestTitSize() >= 5 && nippleLength < .75) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .75;
                 }
-                if (biggestTitSize() >= 3 && nippleLength < .5) {
+                if (this.breasts.biggestTitSize() >= 3 && nippleLength < .5) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .5;
                 }
@@ -1418,19 +1418,19 @@ export class Player extends Character {
                     if (breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + breastDescript(this, 0) + " tingle strongly, growing disturbingly large.", false);
                     if (breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + breastDescript(this, 0) + " intensifies as they continue to grow at an obscene rate.", false);
                 }
-                if (biggestTitSize() >= 8.5 && nippleLength < 2) {
+                if (this.breasts.biggestTitSize() >= 8.5 && nippleLength < 2) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 2;
                 }
-                if (biggestTitSize() >= 7 && nippleLength < 1) {
+                if (this.breasts.biggestTitSize() >= 7 && nippleLength < 1) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = 1;
                 }
-                if (biggestTitSize() >= 5 && nippleLength < .75) {
+                if (this.breasts.biggestTitSize() >= 5 && nippleLength < .75) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .75;
                 }
-                if (biggestTitSize() >= 3 && nippleLength < .5) {
+                if (this.breasts.biggestTitSize() >= 3 && nippleLength < .5) {
                     outputText("  A tender ache starts at your " + nippleDescription(player, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
                     nippleLength = .5;
                 }
@@ -1827,7 +1827,7 @@ export class Player extends Character {
             if (cocks[0].cockLength >= 16 && cocks[0].cockLength - temp2 < 16) {
                 if (cocks.length == 1) outputText("  <b>Your " + cockDescript(game.player, 0) + " would look more at home on a large horse than you.</b>", false);
                 if (cocks.length > 1) outputText("  <b>Your " + multiCockDescriptLight(game.player) + " would look more at home on a large horse than on your body.</b>", false);
-                if (biggestTitSize() >= BREAST_CUP_C) {
+                if (this.breasts.biggestTitSize() >= BREAST_CUP_C) {
                     if (cocks.length == 1) outputText("  You could easily stuff your " + cockDescript(game.player, 0) + " between your breasts and give yourself the titty-fuck of a lifetime.", false);
                     if (cocks.length > 1) outputText("  They reach so far up your chest it would be easy to stuff a few cocks between your breasts and give yourself the titty-fuck of a lifetime.", false);
                 }

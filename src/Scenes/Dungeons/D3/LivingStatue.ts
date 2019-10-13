@@ -25,7 +25,7 @@ export class LivingStatue extends Monster {
         this.lustVuln = 0;
 
         this.tallness = 16 * 12;
-        this.createBreastRow(0, 1);
+        this.breasts.createBreastRow(0, 1);
         initGenderless();
 
         this.drop = NO_DROP;

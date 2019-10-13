@@ -28,7 +28,7 @@ export class WormMass extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createBreastRow(0, 0);
+        this.breasts.createBreastRow(0, 0);
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
         this.ass.analWetness = ANAL_WETNESS_DRY;
         this.tallness = 1;

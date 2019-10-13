@@ -71,7 +71,7 @@ export class JeanClaude extends Monster {
         this.balls = 2;
         this.ballSize = 6;
         this.hoursSinceCum = 9999;
-        createBreastRow(0);
+        this.breasts.createBreastRow(0);
         tallness = 86;
 
         ass.analLooseness = 0;

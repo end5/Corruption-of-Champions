@@ -16,7 +16,7 @@ export class Reducto extends Consumable {
 
     public useItem(): boolean {
         const rdtBalls: () => void = (game.player.balls > 0 && game.player.ballSize > 1 ? reductoBalls : null);
-        const rdtBreasts: () => void = (game.player.breastRows.length > 0 && game.player.biggestTitSize() > 0 ? reductoBreasts : null);
+        const rdtBreasts: () => void = (game.player.breastRows.length > 0 && game.player.breasts.biggestTitSize() > 0 ? reductoBreasts : null);
         const rdtButt: () => void = (game.player.buttRating > 1 ? reductoButt : null);
         const rdtClit: () => void = (game.player.vaginas.length > 0 && game.player.clitLength > 0.25 ? reductoClit : null);
         const rdtCock: () => void = (game.player.cocks.length > 0 && game.player.cocks.biggestCockArea() > 6 ? reductoCock : null);
@@ -43,7 +43,7 @@ export class Reducto extends Consumable {
         clearOutput();
         outputText("You smear the foul-smelling ointment all over your " + allBreastsDescript(game.player) + ", covering them entirely as the paste begins to get absorbed into your " + game.player.skinDesc + ".\n");
         game.player.shrinkTits(true);
-        if (rand(2) == 0 && game.player.biggestTitSize() >= 1) {
+        if (rand(2) == 0 && game.player.breasts.biggestTitSize() >= 1) {
             outputText("\nThe effects of the paste continue to manifest themselves, and your body begins to change again...");
             game.player.shrinkTits(true);
         }
