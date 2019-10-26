@@ -262,3 +262,218 @@ export function storageTakeGroPlus(): void {
     else player.effects.create(StatusAffects.TakenGroPlus, 4, 0, 0, 0);
     inventory.takeItem(consumables.GROPLUS, playerMenu);
 }
+
+export function dungeonRoom() {
+    dungeonMenu();
+    // Entry Room
+    if (game.dungeonLoc == DUNGEON_FACTORY_FOYER) {
+        outputText("<b><u>The Factory Foyer</u></b>\nThe door swings shut behind you with an ominous 'creeeeeaaaaaaak' followed by a loud 'SLAM'.  Glancing around, you find yourself in some kind of stylish foyer, complete with works of art and a receptionist's desk.  Looking closer at the paintings on the wall quickly reveals their tainted and demonic nature: One appears at first to be a painting of a beautiful smiling woman, except you notice dripping tentacles coiling around the hem of her dress.  Behind the receptionist's desk, the second painting is even less discreet, openly depicting a number of imps gang-raping a vaguely familiar-looking woman.  Luckily, whatever demon is employed as the receptionist is away at the moment.  Behind the desk on the northern wall stands a secure-looking iron door.  On the eastern wall is a simple wooden door, though the color of the wood itself is far darker and redder than any of the hard woods from your homeland.  Behind you to the south is the rusty iron entry door.", true);
+        addButton(0, "North", openFactoryDoor);
+        addButton(1, "East", dungeonEnterRoom, DUNGEON_FACTORY_BREAK_ROOM);
+        addButton(6, "South", leaveFactory);
+    }
+    // Pump Room
+    if (game.dungeonLoc == DUNGEON_FACTORY_PUMP_ROOM) {
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
+            outputText("<u><b>Pump Room</b></u>\nAs you step through the iron door, a cacophony of thrumming mechanical noise assaults your ears.  Coppery pipes arch overhead, riveted into spiked iron brackets that hang from the ceiling in twisted pairs.  The constant thrum-thrum-thrum of concealed pumps and mechanisms makes it difficult to hear anything, but you swear you can make out the faint sounds of sexual pleasure emanating from the northwest side of the room.  Investigating further, you spot a door along the west wall of the room that appears to be the source of the licentious sounds.  The vibrations of all the machinery are strongest along the east walls, indicating the possible site of this hellish place's power-plant. There is a door on the east wall and a door on the north.  To the south is a solid iron door that leads back to the lobby.", true);
+        }
+        else outputText("<u><b>Pump Room</b></u>\nAs you step through the iron door, silence is the only noise you hear.  Coppery pipes arch overhead, riveted into spiked iron brackets that hang from the ceiling in twisted pairs.  The near-complete silence of the place unnerves you, but allows you to make out the faint sounds of sexual pleasure emanating from northwest side of the room.  Investigating further, you spot a door along the west wall of the room that appears to be the source of the licentious sounds.  There are two other doors, one along the east wall and one on the north.  To the south is a solid iron door that leads back to the lobby.", true);
+        addButton(0, "North", dungeonEnterRoom, DUNGEON_FACTORY_REPAIR_CLOSET);
+        addButton(1, "East", dungeonEnterRoom, DUNGEON_FACTORY_FURNACE_ROOM);
+        addButton(5, "West", dungeonEnterRoom, DUNGEON_FACTORY_MAIN_CHAMBER);
+        addButton(6, "South", dungeonEnterRoom, DUNGEON_FACTORY_FOYER);
+    }
+    // Break Room
+    if (game.dungeonLoc == DUNGEON_FACTORY_BREAK_ROOM) {
+        spriteSelect(96);
+        outputText("Stepping through the dark red doorway, you wander into an expansive break room. Tables surrounded by crude wooden chairs fill most of the floor space. Along the far eastern wall sits a small counter, complete with a strange ebony sculpture of a busty woman with 'Mrs. Coffee' printed on the side. Below the sculpture is a pot of steaming hot coffee, giving off an invigoratingly rich smell.", true);
+        // Hooks for succubi encounter
+        // (if succubus gone/defeated)
+        if (player.effects.findByType(StatusAffects.FactorySuccubusDefeated) >= 0) {
+            if (player.keyItems.has("Iron Key") < 0) {
+                outputText("  It seems your opponent dropped a small iron key as she fled.", false);
+                addButton(2, "Iron Key", takeIronKey);
+            }
+            addButton(4, "Coffee", drinkCoffee);
+            addButton(5, "West", dungeonEnterRoom, DUNGEON_FACTORY_FOYER);
+        }
+        else {
+            spriteSelect(55);
+            outputText("\n\nStanding next to the coffeemaker is a blue-skinned woman holding a mug of coffee.  As she takes a sip, oblivious to your presence, you see the mug has '#1 Dad' written on it.  Dressed in a tiny vest, short skirt, and sheer stockings, she looks every bit an air-headed secretarial ditz.  Her two horns are little more than nubs, mostly covered by her flowing blond hair, and if it wasn't for her blue skin and the tip of a spaded tail peeking out from under her skirt, you'd never know what she was.\n\n", false);
+            // demon bad end available
+            if (demonScore(player) >= 4 && player.cor > 75) {
+                outputText("The busty succubus turns, her barely contained breasts jiggling obscenely as she notices you, \"<i>Oh, like hi there ", false);
+                if (player.gender == 1) outputText("stud", false);
+                else outputText("sexy", false);
+                outputText("!</i>\"  She stops, sniffing the air, a curious expression on her face as she slowly circles you, her heals clicking loudly on the floor.  A knowing grin blooms across her face as understanding hits her.\n\n", false);
+                outputText("She exclaims, \"<i>Omigawsh!  You're the champion!  Your, like, soul is still there and everything!  But, you're like, completely corrupt an' stuff!  Ya know what'd be fun?  I could fuck you 'til you cum so hard your soul melts out an' you turn into a demon.  Wouldn't that be great?</i>\"\n\n", false);
+                outputText("The secretarial demoness pulls out a file and fiddles with her nails, murmuring, \"<i>I guess if you don't wanna, we could just hook you up in the factory.  What's it gonna be?</i>\"", false);
+                addButton(0, "Fight", succubusCombatStart);
+                addButton(1, "Go Demon", demonBadEnd);
+                addButton(2, "Hook Up", succubusBadEnd);
+                return; // This prevents the masturbate and item menus showing
+            }
+            // Not recognized
+            else if (humanScore(player) <= 3) {
+                outputText("The busty succubus turns, her barely contained breasts jiggling obscenely as she notices you, \"<i>Oh, like hi there ", false);
+                if (player.gender == 1) outputText("stud", false);
+                else outputText("sexy", false);
+                outputText("!  You haven't seen a confused human about calling itself a champion have you?</i>\"\n\nShe shakes her more-than-ample bosom from side to side as she licks her lips and offers, \"<i>If you do, be sure and bring them back here ok?  We've got their spot all ready for them, but that little prick Zetaz fucked up the pickup.  Tell you what – if you bring me the 'champion' I'll ", false);
+                if (player.cocks.length > 0) outputText("give you the blowjob of a lifetime", false);
+                else if (player.vaginas.length > 0) outputText("lick your honeypot 'til you soak my face", false);
+                else outputText("give you a new addition and show you how to use it", false);
+                outputText(".</i>\"\n\nThe succubus turns away from you and makes a show of tweaking her make-up, ignoring you for the moment.", false);
+                addButton(0, "Fight", succubusCombatStart);
+                addButton(1, "It's Me!", secretarialSuccubusInsult);
+                addButton(2, "Leave", dungeonEnterRoom, DUNGEON_FACTORY_FOYER);
+                return; // This prevents the masturbate and item menus showing
+            }
+            else {
+                outputText("The busty succubus turns, her barely contained breasts jiggling obscenely as she notices you, \"<i>Oh, like hi there ", false);
+                if (player.gender == 1) outputText("stud", false);
+                else outputText("sexy", false);
+                outputText("!  What's a cute little morsel like you doing by yourself out here?</i>\"", false);
+                addButton(0, "Fight", succubusCombatStart);
+                addButton(1, "Talk", succubusTalkOne);
+                addButton(2, "Run", dungeonEnterRoom, DUNGEON_FACTORY_FOYER);
+                return; // This prevents the masturbate and item menus showing
+            }
+        }
+    }
+    // Furnace Room
+    if (game.dungeonLoc == DUNGEON_FACTORY_FURNACE_ROOM) {
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
+            outputText("<b><u>Furnace Room</u></b>\nThe air inside this room is hot enough to coat your " + player.skinTone + " " + player.skinDesc + " in a fine sheen of sweat.  The eastern side of the chamber is more machine than wall, a solid mass of iron piping covered in small metal blast-doors through which fuel is to be fed.  A small transparent plate is riveted into the wall, allowing you to see some kind of pink crystalline fuel being burned by purple-white fire.  The few visible controls and gauges don't seem to be linked into anything important, and the machinery looks far too durable to damage with what you have.  The only exit is a heavy iron door on the west wall.  ", true);
+        }
+        else {
+            outputText("<b><u>Furnace Room</u></b>\nDespite the machinery being shut down, the air in this room is still hot enough to coat your " + player.skinTone + " " + player.skinDesc + " in a fine sheen of sweat.  The eastern side of the chamber is more machine than wall, a solid mass of iron piping covered in small metal blast-doors through which fuel is to be fed.  A small transparent plate is riveted into the wall, allowing you to see some the ashes of a previous fuel source.  The few visible controls and gauges don't seem to be linked into anything important, and the machinery looks far too durable to damage with what you have.  The only exit is a heavy iron door on the west wall.  ", true);
+        }
+
+        // If the players found D3, hide him entirely to avoid two-places-at-once syndrome.
+        if (player.effects.findByType(StatusAffects.FactoryIncubusDefeated) >= 0 || flags[kFLAGS.D3_DISCOVERED] == 1) {
+            addButton(5, "West", openFactoryDoor);
+        }
+        // Incubus is ALLLLIVE
+        else {
+            spriteSelect(30);
+            if (player.effects.findByType(StatusAffects.IncubusBribed) >= 0) {
+                outputText("\n\nThe incubus mechanic is here, thumbing through a hentai comic and laughing to himself at the absurdity of it.  That doesn't stop him from stroking his half-hard member the whole time...", false);
+                addButton(1, "Fight", startIncubusFight);
+                addButton(5, "West", openFactoryDoor);
+            }
+            else {
+                outputText("\n\nA demonic mechanic lounges against the hot machinery, unperturbed by the high temperatures of the room.  He wears cut-off denim overalls, stained with grease in a few places.  They don't seem to be in good repair, and have a fair-sized hole at his groin, where a floppy foot-long member hangs free.  His skin is light purple and unblemished, as you would expect from a sexual demon.  He has a rugged handsome face and black hair tied back in a simple ponytail.  Two large curving horns protrude from his forehead, curving back along his skull and giving him a dangerous appearance.  A narrow goatee grows from his chin, about 3 inches long and braided skillfully.  He looks up and smiles, amused at your appearance.", false);
+                addButton(0, "Fight", startIncubusFight);
+                addButton(1, "Talk", talkToIncubus);
+            }
+        }
+    }
+    // Repair Closet
+    if (game.dungeonLoc == DUNGEON_FACTORY_REPAIR_CLOSET) {
+        outputText("<b><u>Repair Closet</u></b>\nAs you carefully slip inside the room, you note with some relief that it seems to be an empty storage closet. The room is tiny, barely 6' by 8' and almost entirely empty.  The one piece of furniture inside the closet is a simple wooden cabinet, placed against the far wall.  ", true);
+        if (player.effects.findByType(StatusAffects.BuiltMilker) >= 0)
+            outputText("The shelves are empty.  ", false);
+        else {
+            outputText("The shelves of the cabinet hold various pieces of pump machinery, probably used to repair complete machines further into the factory.  ", false);
+            if (player.inte >= 40) {
+                outputText("You realize there are enough pieces here to put together a breast-milking pump or a cock-milker.  ", false);
+                if (player.keyItems.has("Cock Milker") >= 0)
+                    outputText("\nYou already have a cock milker.\n", false);
+                else {
+                    addButton(3, "C. Milker", takeCockMilker);
+                }
+                if (player.keyItems.has("Breast Milker") >= 0)
+                    outputText("\nYou already have a breast milker.\n", false);
+                else {
+                    addButton(2, "B. Milker", takeBreastMilker);
+                }
+            }
+        }
+        outputText("The only exit is back to the south.", false);
+        addButton(6, "South", openFactoryDoor);
+    }
+    // Main Chamber
+    if (game.dungeonLoc == DUNGEON_FACTORY_MAIN_CHAMBER) {
+        // Dungeon still operational
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
+            outputText("<b><u>Main Chamber</u></b>\nThis cavernous chamber is filled with a cacophony of sexual moans.  Rows of harnesses are spaced evenly throughout this room, nearly all of them filled with delirious-looking humans.  Each is over-endowed with huge breasts and a penis of elephantine proportions.  The source of their delirium hangs down from the ceiling - groups of hoses that end with needles buried deep into the poor 'girls' flesh, pumping them full of demonic chemicals.  Constant sucking and slurping noises emanate from nipple and cock pumps as they keep the victims in a state of near-constant orgasm.  ", true);
+            if (player.cor < 50) outputText("You wish you could free them, but it would take the better part of a day to get them all free.  It'd be better to find the control room and shut down the infernal machinery.  ", false);
+            else outputText("You wish you had some machinery like this for yourself.  It looks so fun!  Still, you suppose you should find the control panel to shut this down and free these people.  ", false);
+            outputText("There is a doorway to the east marked with an 'exit' sign above it.  Along the southern wall is a stairwell that leads up to some kind of foreman's office.  Perhaps the controls are in there?", false);
+        }
+        // Dungeon shut down.
+        else {
+            outputText("The chamber is significantly emptier since you've shut down this factory.  Roughly half the girls appear to have left.  The rest seem to be pre-occupied by fucking each other in a massive orgy.  A few enterprising ladies have found leather outfits and appear to be helping to manually administer the chemical cocktails to those engaged in rampant sexual exploits.  It seems some of them preferred a life of near-constant orgasm to their freedom.  There is a door to the east marked as 'EXIT', and a stairwell along the south wall that leads to an overseer's office.", true);
+            outputText("\n\nOne of the leather-clad ladies steps over and offers, 'Would you like a dose?  You look like you need to relieve some tension...", false);
+            addButton(2, "Tension", relieveTension);
+        }
+        addButton(1, "East", openFactoryDoor);
+        addButton(6, "South(Up)", dungeonEnterRoom, DUNGEON_FACTORY_FOREMANS_OFFICE);
+    }
+    // Foreman's Office
+    if (game.dungeonLoc == DUNGEON_FACTORY_FOREMANS_OFFICE) {
+        outputText("<b><u>Foreman's Office</u></b>\nThis office provides an excellent view of the 'factory floor' through a glass wall along the north side.  Towards the south side of the room is a simple desk with an even simpler chair behind it.  The desk's surface is clear of any paperwork, and only has a small inkwell and quill on top of it.  There are a few statues of women and men posted at the corners of the room.  All are nude and appear to be trapped in mid-orgasm.  You wonder if they're statues or perhaps some kind of perverted petrified art.  The north has a glass door leading back to the factory.  There are two other doors, both made of very solid looking metal.  One is on the east wall and another is on the south, behind the desk.  The one behind the desk is marked 'Premium Storage' (though it appears to be locked).", true);
+        if (player.effects.findByType(StatusAffects.FactoryOmnibusDefeated) < 0) {
+            spriteSelect(16);
+            outputText("\n\nA nearly nude demonic woman is standing behind the desk, appraising you.  She is gorgeous in the classical sense, with a curvy hourglass figure that radiates pure sexuality untamed by any desire for proper appearance.  Shiny black lip-gloss encapsulates her bubbly lips, while dark eyeshadow highlights her bright red eyes.  The closest thing she has to clothing is a narrow band of fabric that wraps around her significant chest, doing little to hide the pointed nubs of her erect nipples.  Her crotch is totally uncovered, revealing the hairless lips of her glistening womanhood.\n\n", false);
+            outputText("She paces around the edge of the desk, licking her lips and speaking, \"<i>So you've made it all the way here have you, 'champion'?  Too bad you've wasted your time.  Have you figured it out yet?  Have you discovered why you were sent here with no weapons or blessed items?  Have you found out why there are more humans here than anywhere else in this realm?  I'll tell you why.  You weren't a champion.  You were a sacrificial cow, meant to be added to our herd.  You just got lucky enough to get free.</i>\"\n\n", false);
+            outputText("A part of you wants to deny her, to scream that she is wrong.  But it makes too much sense to be a lie... and the evidence is right behind you, on the factory floor.  All those women must be the previous champions, kept alive and cumming for years in order to feed these insatiable demons.  The demoness watches your reaction with something approaching sexual bliss, as if the monstrous betrayal of it all is turning her on.\n\n", false);
+            outputText("\"<i>Yes,</i>\" she coos, \"<i>you belong here.  The question is do you accept your fate, or do you fight it?</i>\"", false);
+            addButton(0, "Fight", omnibusStartCombat);
+            addButton(1, "Accept", omnibusAcceptOffer);
+        }
+        else {
+            addButton(1, "East", dungeonEnterRoom, DUNGEON_FACTORY_PUMP_CONTROL);
+            addButton(5, "North(Down)", dungeonEnterRoom, DUNGEON_FACTORY_MAIN_CHAMBER);
+            addButton(6, "South", openPumpRoom);
+            if (player.keyItems.has("Supervisor's Key") < 0) {
+                addButton(2, "Desk", takeSupervisorsKey);
+            }
+        }
+    }
+    // Pump controll room...
+    if (game.dungeonLoc == DUNGEON_FACTORY_PUMP_CONTROL) {
+        // PUMP CONTROL ROOM
+        outputText("<b><u>Pump Control Room</u></b>\n", true);
+        if (player.effects.findByType(StatusAffects.DungeonShutDown) < 0) {
+            outputText("This room is little more than a closet in reality.  There is a simple set of mechanical controls on a finely crafted terminal against the far wall.  You spend a moment looking over them, and realize you have three options to deal with this place.\n\n", true);
+            outputText("-You could close the storage vent valves and overload the fluid storage systems.  The storage tanks along the back portion of the building would rupture, releasing thousands of gallons of tainted fluids into the surrounding area, but the facility's systems would suffer catastrophic failures and shut down forever.\n", false);
+            // (Consequences - lake goddess becomes tainted!)
+            outputText("-You could perform a system shutdown and then smash the controls.  It'd let the girls go and keep the factory shut down in the short term.  However most of the equipment would be undamaged and the place could be re-opened without too much work on the demons' part.\n", false);
+            // (Consequences - If Marcus is a demon he takes over running the factory forever.  If not, nothing bad happens)
+            outputText("-You could leave the equipment to continue running.  After all, the girls downstairs did seem to be enjoying themselves...\n", false);
+            // (Consequences - Marcus takes over if demonic choice taken, if not he shuts down the equipment & things continue as per #3).
+            addButton(3, "Valves", factoryOverload);
+            addButton(4, "Shutdown", factoryShutdown);
+        }
+        else {
+            outputText("This room is little more than a closet in reality.  There is a simple set of mechanical controls on the a finely crafted terminal against the far wall.  The controls are now inoperable, due to the damage your actions have caused.", false);
+        }
+        addButton(5, "West", dungeonEnterRoom, DUNGEON_FACTORY_FOREMANS_OFFICE);
+    }
+    // Premium Products
+    if (game.dungeonLoc == DUNGEON_FACTORY_STORE_ROOM) {
+        outputText("<b><u>Premium Products</u></b>\nThis store room is filled with a few opened crates, meant to store the various substances in the factory.  It looks as if the current overseer has allowed supplies to run low, as there is not much to be gleaned from this meager stash.\n\n", true);
+        addButton(0, "North", dungeonEnterRoom, DUNGEON_FACTORY_FOREMANS_OFFICE);
+        if (player.effects.findByType(StatusAffects.TakenLactaid) >= 0) {
+            if (player.effects.getValue1Of(StatusAffects.TakenLactaid) > 0) {
+                outputText("There is a crate with " + num2Text(player.effects.getValue1Of(StatusAffects.TakenLactaid)) + " bottles of something called 'Lactaid' inside.\n\n", false);
+                addButton(2, "Lactaid", storageTakeLactaid);
+            }
+        }
+        else {
+            outputText("There is a crate with five bottles of something called 'Lactaid' inside.\n\n", false);
+            addButton(2, "Lactaid", storageTakeLactaid);
+        }
+        if (player.effects.findByType(StatusAffects.TakenGroPlus) >= 0) {
+            if (player.effects.getValue1Of(StatusAffects.TakenGroPlus) > 0) {
+                outputText("There is a crate with " + num2Text(player.effects.getValue1Of(StatusAffects.TakenGroPlus)) + " bottles of something called 'Gro+' inside.\n\n", false);
+                addButton(3, "GroPlus", storageTakeGroPlus);
+            }
+        }
+        else {
+            outputText("There is a crate with five bottles of something called 'Gro+' inside.\n\n", false);
+            addButton(3, "GroPlus", storageTakeGroPlus);
+        }
+    }
+}
