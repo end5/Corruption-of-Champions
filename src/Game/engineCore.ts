@@ -1479,7 +1479,7 @@ export function displayStats(e: MouseEvent = null): void {
     if (flags[kFLAGS.KELLY_KIDS] - flags[kFLAGS.KELLY_KIDS_MALE] > 0)
         childStats += "<b>Children With Kelly (Females):</b> " + (flags[kFLAGS.KELLY_KIDS] - flags[kFLAGS.KELLY_KIDS_MALE]) + "\n";
 
-    if (mountain.salon.lynnetteApproval() != 0)
+    if (Salon.lynnetteApproval() != 0)
         childStats += "<b>Lynnette Children:</b> " + flags[kFLAGS.LYNNETTE_BABY_COUNT] + "\n";
 
     if (flags[kFLAGS.MARBLE_KIDS] > 0)
@@ -1698,8 +1698,8 @@ export function displayStats(e: MouseEvent = null): void {
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00281] > 0)
         interpersonStats += "<b>Lottie's Encouragement:</b> " + Lottie.lottieMorale() + " (higher is better)\n" + "<b>Lottie's Figure:</b> " + Lottie.lottieTone() + " (higher is better)\n";
 
-    if (mountain.salon.lynnetteApproval() != 0)
-        interpersonStats += "<b>Lynnette's Approval:</b> " + mountain.salon.lynnetteApproval() + "\n";
+    if (Salon.lynnetteApproval() != 0)
+        interpersonStats += "<b>Lynnette's Approval:</b> " + Salon.lynnetteApproval() + "\n";
 
     if (flags[kFLAGS.OWCAS_ATTITUDE] > 0)
         interpersonStats += "<b>Owca's Attitude:</b> " + flags[kFLAGS.OWCAS_ATTITUDE] + "\n";

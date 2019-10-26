@@ -13,7 +13,7 @@ export class Minotaur extends Monster {
             outputText("You defeat a minotaur!  ", true);
             game.desert.antsScene.phyllaBeatAMino();
         } else {
-            game.mountain.minotaurScene.minoVictoryRapeChoices();
+            MinotaurScene.minoVictoryRapeChoices();
         }
     }
 
@@ -25,7 +25,7 @@ export class Minotaur extends Monster {
             outputText("\n\nThe minotaur picks you up and forcibly tosses you from his cave, grunting in displeasure.", false);
             cleanupAfterCombat();
         } else
-            game.mountain.minotaurScene.getRapedByMinotaur();
+            MinotaurScene.getRapedByMinotaur();
     }
 
     public get long(): string {
@@ -83,7 +83,7 @@ export class Minotaur extends Monster {
                 .add(consumables.MINOBLO, 1 / 2)
                 .elseDrop(null);
         }
-        this.special1 = game.mountain.minotaurScene.minoPheromones;
+        this.special1 = MinotaurScene.minoPheromones;
         this.tailType = TAIL_TYPE_COW;
         checkMonster();
     }

@@ -145,7 +145,7 @@ export class MinotaurLord extends Monster {
         this.gems = rand(5) + 5;
         this.drop = NO_DROP;
         this.tailType = TAIL_TYPE_COW;
-        this.special1 = game.mountain.minotaurScene.minoPheromones;
+        this.special1 = MinotaurScene.minoPheromones;
         checkMonster();
     }
 

@@ -3,10 +3,6 @@
  */
 
 export class Mountain {
-    public hellHoundScene: HellHoundScene = new HellHoundScene();
-    public infestedHellhoundScene: InfestedHellhoundScene = new InfestedHellhoundScene();
-    public minotaurScene: MinotaurScene = new MinotaurScene();
-    public salon: Salon = new Salon();
     // Explore Mountain
     public exploreMountain(): void {
         player.exploredMountain++;
@@ -42,12 +38,12 @@ export class Mountain {
                 if (player.faceType == FACE_DOG && (player.cocks.dogCocks() >= 2 || (player.vaginas.length > 0 && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND)) && player.cor >= 60 && player.tailType == TAIL_TYPE_DOG && (player.lowerBody == LOWER_BODY_TYPE_DOG || player.hairColor == "midnight black")) {
                     trace("PASS BODYCHECK");
                     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] == 0) {
-                        hellHoundScene.HellHoundMasterEncounter();
+                        HellHoundScene.HellHoundMasterEncounter();
                         return;
                     }
                     // Level 2 requires lethecite
                     else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] == 1 && player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3) {
-                        hellHoundScene.HellHoundMasterEncounter();
+                        HellHoundScene.HellHoundMasterEncounter();
                         return;
                     }
                 }
@@ -87,7 +83,7 @@ export class Mountain {
         // Every 15 explorations chance at mino bad-end!
         if (player.exploredMountain % 16 == 0 && player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) {
             spriteSelect(44);
-            minotaurScene.minoAddictionBadEndEncounter();
+            MinotaurScene.minoAddictionBadEndEncounter();
             return;
         }
         if (chooser == 0) {
@@ -203,10 +199,10 @@ export class Mountain {
             // Cum addictus interruptus!  LOL HARRY POTTERFAG
             // Withdrawl auto-fuck!
             if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3) {
-                minotaurScene.minoAddictionFuck();
+                MinotaurScene.minoAddictionFuck();
                 return;
             }
-            minotaurScene.getRapedByMinotaur(true);
+            MinotaurScene.getRapedByMinotaur(true);
             spriteSelect(44);
         }
         // Worms
@@ -251,17 +247,17 @@ export class Mountain {
             if (player.effects.findByType(StatusAffects.WormsOn) >= 0 && rand(2) == 0) {
                 // If lowered encounter rate, 25% chance, otherwise 50%.
                 if (player.effects.findByType(StatusAffects.WormsHalf) >= 0 && rand(2) == 0) {
-                    hellHoundScene.hellhoundEncounter();
+                    HellHoundScene.hellhoundEncounter();
                     return;
                 }
-                infestedHellhoundScene.infestedHellhoundEncounter();
+                InfestedHellhoundScene.infestedHellhoundEncounter();
                 return;
             }
-            hellHoundScene.hellhoundEncounter();
+            HellHoundScene.hellhoundEncounter();
         }
         // Hairdresser
         if (chooser == 4) {
-            salon.hairDresser();
+            Salon.hairDresser();
         }
     }
     private joinBeingAMinoCumSlut(): void {

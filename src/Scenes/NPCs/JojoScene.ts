@@ -869,7 +869,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         else if (jojoCumQ() >= 4000)
             outputText(" with a dazed, crazy-looking smile", false);
         outputText(", \"<i>What'll it be today?</i>\"\n\n", false);
-        mountain.salon.salonPurchaseMenu();
+        Salon.salonPurchaseMenu();
     }
 
     // Scene 1: Amily Teaches Jojo How To Give Blowjobs. (Z)

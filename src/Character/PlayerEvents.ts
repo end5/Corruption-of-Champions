@@ -304,7 +304,7 @@ export class PlayerEvents implements TimeAwareInterface {
         }
         if (player.effects.getValue2Of(StatusAffects.Kelt) > 0) player.effects.addValue(StatusAffects.Kelt, 2, -0.15); // Reduce kelt submissiveness by 1 every 5 hours
         // Mino cum update.
-        if (mountain.minotaurScene.minoCumUpdate()) {
+        if (MinotaurScene.minoCumUpdate()) {
             needNext = true;
         }
         else if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 2 && game.time.hours % 13 == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00330] == 0) { // Repeated warnings!

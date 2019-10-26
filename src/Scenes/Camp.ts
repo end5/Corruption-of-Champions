@@ -1285,7 +1285,7 @@ export class Camp extends NPCAwareContent {
         addButton(4, "Next", placesPage2);
         if (farmFound()) addButton(5, "Farm", farm.farmExploreEncounter);
         if (flags[kFLAGS.OWCA_UNLOCKED] == 1) addButton(6, "Owca", owca.gangbangVillageStuff);
-        if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) addButton(7, "Salon", mountain.salon.salonGreeting);
+        if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) addButton(7, "Salon", Salon.salonGreeting);
         if (player.effects.getValue1Of(StatusAffects.TelAdre) >= 1) addButton(8, "Tel'Adre", telAdre.telAdreMenu);
         addButton(9, "Back", playerMenu);
     }

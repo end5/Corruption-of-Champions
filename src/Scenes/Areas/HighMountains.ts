@@ -65,10 +65,10 @@ export class HighMountains {
             // Cum addictus interruptus!  LOL HARRY POTTERFAG
             // Withdrawl auto-fuck!
             if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3) {
-                mountain.minotaurScene.minoAddictionFuck();
+                MinotaurScene.minoAddictionFuck();
                 return;
             }
-            mountain.minotaurScene.getRapedByMinotaur(true);
+            MinotaurScene.getRapedByMinotaur(true);
             spriteSelect(44);
             return;
         }
