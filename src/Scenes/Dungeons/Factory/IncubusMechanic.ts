@@ -37,7 +37,7 @@ export class IncubusMechanic extends Monster {
     }
 
     private defeatedInDungeon3(hpVictory: boolean): void {
-        d3.incubusMechanic.beatDaMechanic(hpVictory);
+        IncubusMechanicScenes.beatDaMechanic(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -59,7 +59,7 @@ export class IncubusMechanic extends Monster {
     }
 
     private wonInDungeon3(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
+        IncubusMechanicScenes.mechanicFuckedYouUp(hpVictory, pcCameWorms);
     }
 
     private cockTripAttack(): void {

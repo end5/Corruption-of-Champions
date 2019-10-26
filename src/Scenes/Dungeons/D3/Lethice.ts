@@ -96,11 +96,11 @@ export class Lethice extends Monster {
             return;
         }
 
-        d3.lethice.defeated(hpVictory);
+        LethiceScenes.defeated(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.lethice.won(hpVictory, pcCameWorms);
+        LethiceScenes.won(hpVictory, pcCameWorms);
     }
 
     private _roundCount: number = 0;

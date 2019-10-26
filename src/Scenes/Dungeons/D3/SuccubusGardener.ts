@@ -49,12 +49,12 @@ export class SuccubusGardener extends Monster {
 
     public defeated(hpVictory: boolean): void {
         cleanupEffects();
-        d3.succubusGardener.fuckUpTheGardener(hpVictory);
+        SuccubusGardenerScenes.fuckUpTheGardener(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         cleanupEffects();
-        d3.succubusGardener.surrenderToTheGardener(hpVictory);
+        SuccubusGardenerScenes.surrenderToTheGardener(hpVictory);
     }
 
     protected performCombatAction(): void {

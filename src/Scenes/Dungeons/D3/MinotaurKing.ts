@@ -86,11 +86,11 @@ export class MinotaurKing extends Monster {
             return;
         }
 
-        d3.minotaurKing.theKingIsDeadLongLiveTheKing(hpVictory);
+        MinotaurKingScenes.theKingIsDeadLongLiveTheKing(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.minotaurKing.hailToTheKingBaby(hpVictory, pcCameWorms);
+        MinotaurKingScenes.hailToTheKingBaby(hpVictory, pcCameWorms);
     }
 
     private _milkDrinks: number = 0;

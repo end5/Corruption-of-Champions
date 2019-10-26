@@ -7,16 +7,6 @@ export class D3 {
     public rooms: Record<string, any> = {};
     private _currentRoom: string; // I don't think we'll need to save/load this, as we're not gonna allow saving in the dungeon, and it'll be overwritten by calling enterD3();
 
-    public jeanClaude: JeanClaudeScenes = new JeanClaudeScenes();
-    public doppleganger: DopplegangerScenes = new DopplegangerScenes();
-    public incubusMechanic: IncubusMechanicScenes = new IncubusMechanicScenes();
-    public livingStatue: LivingStatueScenes = new LivingStatueScenes();
-    public succubusGardener: SuccubusGardenerScenes = new SuccubusGardenerScenes();
-    public hermCentaur: HermCentaurScenes = new HermCentaurScenes();
-    public driderIncubus: DriderIncubusScenes = new DriderIncubusScenes();
-    public minotaurKing: MinotaurKingScenes = new MinotaurKingScenes();
-    public lethice: LethiceScenes = new LethiceScenes();
-
     public constructor() {
         configureRooms();
     }
@@ -345,7 +335,7 @@ export class D3 {
             if (flags[kFLAGS.D3_ENTERED_MAGPIEHALL] == 1) outputText("  Your spirits rise. They look like they may very well be made of the same material as the screen in the basilisk hall.");
             if (player.inte >= 70 || player.sens >= 70) outputText("  Disquiet edges down your spine. Something about this place doesn’t feel right. The room seems faded at the corners, as if it’s not quite there.");
 
-            addButton(2, "Glasses", doppleganger.getDemGlasses);
+            addButton(2, "Glasses", DopplegangerScenes.getDemGlasses);
         }
 
         return false;
@@ -373,7 +363,7 @@ export class D3 {
             }
 
             menu();
-            addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisks);
+            addButton(0, "Go!", JeanClaudeScenes.gogoFuckTheseBasilisks);
             addButton(1, "Fall Back", fallbackFromMagpieHallS);
 
             return true;
@@ -464,7 +454,7 @@ export class D3 {
 
             menu();
 
-            addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisksNorth);
+            addButton(0, "Go!", JeanClaudeScenes.gogoFuckTheseBasilisksNorth);
             addButton(1, "Stronghold", move, "tunnel2");
 
             return true;
@@ -527,7 +517,7 @@ export class D3 {
             // [Surrender] [Fight]
             menu();
             addButton(0, "Fight", startCombatImmediate, new SuccubusGardener());
-            addButton(1, "Surrender", succubusGardener.surrenderToTheGardener);
+            addButton(1, "Surrender", SuccubusGardenerScenes.surrenderToTheGardener);
 
             return true;
         }
@@ -564,7 +554,7 @@ export class D3 {
         outputText("This particular corner of the courtyard feels remarkably cramped, even a little claustrophobic. To the north, a stone wall rises, dwarfing the smaller one to the east, and to make matters worse, the hedges to the southwest are high and square, virtually a wall in their own right. The only avenues of travel available are to the south or west, following the red sandstone bricks as they bend around the corner.");
 
         if (flags[kFLAGS.D3_CENTAUR_DEFEATED] == 0) {
-            hermCentaur.encounterThePony();
+            HermCentaurScenes.encounterThePony();
             return true;
         }
 
@@ -602,7 +592,7 @@ export class D3 {
             outputText("\n\nWait... what’s that?");
 
             menu();
-            addButton(0, "Next", livingStatue.encounter);
+            addButton(0, "Next", LivingStatueScenes.encounter);
             return true;
         }
 
@@ -614,22 +604,22 @@ export class D3 {
     private greatliftRoomFunc(): boolean {
         outputText("Intricate stonework supports this precarious platform as it juts from the side of Lethice's fortress, hanging over a sheer cliff that must go down for hundreds of feet. The harpies appear to have moved away from the area immediately below, whether by choice or by demonic action, though you can still spot a few of their nests in other places on the mountainside. A complicated looking machine sits on the side of the platform, attached to a cage that dangles over the edge, supported by a lowly metal cable. It must be some kind of mechanical lift - a way to come and go as one would please.");
 
-        incubusMechanic.meetAtElevator();
+        IncubusMechanicScenes.meetAtElevator();
 
         return false;
     }
 
     private throneRoom(): boolean {
         if (flags[kFLAGS.DRIDERINCUBUS_DEFEATED] == 0) {
-            driderIncubus.encounterDriderIncbutt();
+            DriderIncubusScenes.encounterDriderIncbutt();
             return true;
         }
         else if (flags[kFLAGS.MINOTAURKING_DEFEATED] == 0) {
-            minotaurKing.encounterMinotaurKing();
+            MinotaurKingScenes.encounterMinotaurKing();
             return true;
         }
         else if (flags[kFLAGS.LETHICE_DEFEATED] == 0) {
-            lethice.encounterLethice();
+            LethiceScenes.encounterLethice();
             return true;
         }
 

@@ -16,11 +16,11 @@ export class JeanClaude extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        d3.jeanClaude.beatDaFuckhugeBasilisk(hpVictory);
+        JeanClaudeScenes.beatDaFuckhugeBasilisk(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.jeanClaude.fuckhugeBasiliskFuckedYouUp(hpVictory);
+        JeanClaudeScenes.fuckhugeBasiliskFuckedYouUp(hpVictory);
     }
 
     public handleTease(lustDelta: number, successful: boolean): void {

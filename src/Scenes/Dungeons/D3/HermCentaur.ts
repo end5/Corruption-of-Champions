@@ -45,11 +45,11 @@ export class HermCentaur extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        d3.hermCentaur.beatThePony(hpVictory);
+        HermCentaurScenes.beatThePony(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.hermCentaur.inSovietCoCPonyRidesYou(hpVictory, pcCameWorms);
+        HermCentaurScenes.inSovietCoCPonyRidesYou(hpVictory, pcCameWorms);
     }
 
     // Gonna handle this a little differently than usual.

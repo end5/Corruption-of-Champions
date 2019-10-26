@@ -6,11 +6,11 @@
 export class LivingStatue extends Monster {
     public defeated(hpVictory: boolean): void {
         flags[kFLAGS.D3_STATUE_DEFEATED] = 1;
-        d3.livingStatue.beatUpDaStatue(hpVictory);
+        LivingStatueScenes.beatUpDaStatue(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.livingStatue.fuckinMarbleOP(hpVictory, pcCameWorms);
+        LivingStatueScenes.fuckinMarbleOP(hpVictory, pcCameWorms);
     }
 
     public constructor() {

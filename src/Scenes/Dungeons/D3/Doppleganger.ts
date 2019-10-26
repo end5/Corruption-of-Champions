@@ -122,11 +122,11 @@ export class Doppleganger extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        d3.doppleganger.punchYourselfInTheBalls();
+        DopplegangerScenes.punchYourselfInTheBalls();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.doppleganger.inSovietCoCSelfFucksYou();
+        DopplegangerScenes.inSovietCoCSelfFucksYou();
     }
 
     public handleSpellResistance(spell: string): void {

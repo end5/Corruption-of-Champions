@@ -41,11 +41,11 @@ export class DriderIncubus extends AbstractSpiderMorph {
     }
 
     public defeated(hpVictory: boolean): void {
-        d3.driderIncubus.beatTheSpooderbutt(hpVictory);
+        DriderIncubusScenes.beatTheSpooderbutt(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        d3.driderIncubus.spooderbuttGetsANewCockSleeve(hpVictory, pcCameWorms);
+        DriderIncubusScenes.spooderbuttGetsANewCockSleeve(hpVictory, pcCameWorms);
     }
 
     private _goblinFree: boolean = false;
