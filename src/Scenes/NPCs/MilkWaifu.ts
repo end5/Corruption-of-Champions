@@ -162,7 +162,7 @@ export class MilkWaifu extends NPCAwareContent {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1 && flags[kFLAGS.MILK_SIZE] > 0) addButton(5, "Go Camp", backToCamp);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) addButton(9, "Back", camp.campSlavesMenu);
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) addButton(9, "Back", farm.farmCorruption.rootScene);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
     private sendToFarm(): void {
@@ -191,7 +191,7 @@ export class MilkWaifu extends NPCAwareContent {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     // Appearance
@@ -212,16 +212,16 @@ export class MilkWaifu extends NPCAwareContent {
 
         outputText("\n\nBetween her lithe legs and childbearing hips is her cunt, a short stripe of dark, downy hair drawing your attention just above it.  And, hidden between her pert cheeks is her tight little backdoor, right where it belongs.");
 
-        if (farm.farmCorruption.hasTattoo("milky")) {
+        if (FarmCorruption.hasTattoo("milky")) {
             outputText("\n\n");
-            if (farm.farmCorruption.milkyFullTribalTats()) {
+            if (FarmCorruption.milkyFullTribalTats()) {
                 outputText("She is covered from head to tail in tribal tattoos, erotic lines snaking all over her naked frame, giving her the look of a barely tamed savage.");
             }
-            else if (farm.farmCorruption.numMilkyButterflyTats() == 4) {
+            else if (FarmCorruption.numMilkyButterflyTats() == 4) {
                 outputText("She is covered from head to tail in tattooed butterflies, as if the pretty insects are attracted to her chocolate skin. When she moves she does it with an extra bounce and flick of the head, admiring how she looks as she goes.");
             }
             else {
-                if (farm.farmCorruption.numTattoos("milky") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
+                if (FarmCorruption.numTattoos("milky") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
                 else outputText("She has ");
 
                 if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.MILKY_TATTOO_COLLARBONE] + "\n");

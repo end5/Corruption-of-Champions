@@ -1247,7 +1247,7 @@ export class Camp extends NPCAwareContent {
     private farmFound(): boolean { // Returns true as soon as any known dungeon is found
         if (player.effects.findByType(StatusAffects.MetWhitney) >= 0 && player.effects.getValue1Of(StatusAffects.MetWhitney) > 1) {
             if (flags[kFLAGS.FARM_DISABLED] == 0) return true;
-            if (player.cor >= 70 && player.level >= 12 && farm.farmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
+            if (player.cor >= 70 && player.level >= 12 && FarmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
         }
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED]) return true;
         return false;

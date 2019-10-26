@@ -2584,7 +2584,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                 addButton(5, "Go Camp", backToCamp);
                 if (flags[kFLAGS.FOLLOWER_PRODUCTION_AMILY] == 0) addButton(6, "Harvest Milk", harvestMilk);
                 else addButton(6, "Stop Harvest", stopHarvestingMilk);
-                addButton(9, "Back", farm.farmCorruption.rootScene);
+                addButton(9, "Back", FarmCorruption.rootScene);
             }
         }
     }
@@ -2625,7 +2625,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("As she collapses onto the ground, crying her heart out, you silently redress yourself and slink away. All this blubbering has turned you off, and it's obvious that nothing can be done until you've grown a cock, a pussy, or both.", false);
             dynStats("lus", -20);
             if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) doNext(playerMenu);
-            else doNext(farm.farmCorruption.rootScene);
+            else doNext(FarmCorruption.rootScene);
         }
     }
 
@@ -2698,13 +2698,13 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
             // [Horsecock]
             outputText("pink pussy in between her legs; " + stopSayingNetherlipsFuck + ".\n", false);
 
-            if (farm.farmCorruption.hasTattoo("amily")) {
+            if (FarmCorruption.hasTattoo("amily")) {
                 outputText("\n");
-                if (farm.farmCorruption.amilyFullTribalTats()) {
+                if (FarmCorruption.amilyFullTribalTats()) {
                     outputText("She is covered from head to tail in tribal tattoos, erotic lines snaking all over her naked frame, giving her the look of a barely tamed savage.\n");
                 }
                 else {
-                    if (farm.farmCorruption.numTattoos("amily") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
+                    if (FarmCorruption.numTattoos("amily") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
                     else outputText("\nShe has ");
 
                     if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.AMILY_TATTOO_COLLARBONE] + "\n");
@@ -5562,7 +5562,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private harvestMilk(): void {
@@ -5578,7 +5578,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
 
         if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1) flags[kFLAGS.FOLLOWER_PRODUCTION_AMILY] = 1;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private stopHarvestingMilk(): void {
@@ -5591,7 +5591,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_PRODUCTION_AMILY] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private talkWithCORRUPTCUNT(sexAfter: boolean = false): void {

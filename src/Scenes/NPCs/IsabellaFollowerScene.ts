@@ -187,7 +187,7 @@ Optional Morning Oral for small-membered males*/
         if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(5, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(5, "Go Camp", backToCamp);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(9, "Back", farm.farmCorruption.rootScene);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
     private sendToFarm(): void {
@@ -217,7 +217,7 @@ Optional Morning Oral for small-membered males*/
 
         flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private campIzzySexMenu(): void {

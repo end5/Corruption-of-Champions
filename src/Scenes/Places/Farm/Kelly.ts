@@ -73,7 +73,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         clearOutput();
         spriteSelect(35);
         if ((!player.cocks.length > 0 && flags[kFLAGS.KELT_BREAK_LEVEL] == 0) || flags[kFLAGS.NEVER_RESIST_KELT] == 1 || player.effects.getValue2Of(StatusAffects.Kelt) >= 40 || player.effects.findByType(StatusAffects.Kelt) < 0) {
-            farm.keltScene.keltEncounter();
+            KeltScene.keltEncounter();
             return;
         }
         if (flags[kFLAGS.KELT_BREAK_LEVEL] > 0) {
@@ -88,7 +88,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         }
         outputText("Having met Kelt, you know he's liable to subject you to plenty of abuse in exchange for training.  Are you going to endure it, resist, or never resist?");
         menu();
-        addButton(0, "Endure", farm.keltScene.keltEncounter);
+        addButton(0, "Endure", KeltScene.keltEncounter);
         addButton(1, "Resist", resistKeltsBSBreakHimIntro);
         addButton(2, "Never", neverBreakKeltIntoKelly);
     }
@@ -164,7 +164,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         flags[kFLAGS.NEVER_RESIST_KELT] = 1;
         outputText("You decide that trying to break Kelt is something you'd never want to do.  Besides, he's teaching you a useful skill, and there's just something charming about that bastard...");
         menu();
-        addButton(0, "Go To Kelt", farm.keltScene.keltEncounter);
+        addButton(0, "Go To Kelt", KeltScene.keltEncounter);
         addButton(1, "Go Home", camp.returnToCampUseOneHour);
     }
 
@@ -641,13 +641,13 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
                     break;
             default:
         }
-        if (farm.farmCorruption.hasTattoo("kelly")) {
+        if (FarmCorruption.hasTattoo("kelly")) {
             outputText("\n\n");
-            if (farm.farmCorruption.kellyFullTribalTats()) {
+            if (FarmCorruption.kellyFullTribalTats()) {
                 outputText("She is covered from head to tail in tribal tattoos, erotic lines snaking all over her naked frame, giving her the look of a barely tamed savage.");
             }
             else {
-                if (farm.farmCorruption.numTattoos("kelly") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
+                if (FarmCorruption.numTattoos("kelly") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
                 else outputText("She has ");
 
                 if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_COLLARBONE] + "\n");
@@ -747,7 +747,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         flags[kFLAGS.KELLY_DISOBEYING_COUNTER] = 0;
 
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 0) addButton(9, "Leave", camp.returnToCampUseOneHour);
-        else addButton(9, "Back", farm.farmCorruption.rootScene);
+        else addButton(9, "Back", FarmCorruption.rootScene);
     }
 
     private kellySexMenu(): void {
@@ -1687,7 +1687,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         }
         // 5.
         else {
-            if (!farm.farmCorruption.whitneyCorrupt()) {
+            if (!FarmCorruption.whitneyCorrupt()) {
                 outputText("\n\nYou ask if she has had much to do with Whitney, before or now.");
 
                 outputText("\n\n\"<i>Not really,</i>\" says Kelly.  There's a hard note in her voice as she works her arms, masturbating your bulging meat.  \"<i>Before we just kept away from each other.  She knew about my wives and my aura but she didn't care, as long as I kept the imps and gnolls away and I didn't try it on her.  Of course it occurred to me, but... there's a cold edge to that woman.  Keeps it hidden, but there is - how else has she lived out here on her own for this long?  I didn't want to find out what she's hiding, plus I really needed the job.</i>\"  She's definitely pumping you aggressively, jerking your [cocks] with brisk movements until the flesh under her tight grasp is singing with blood.");
@@ -1816,7 +1816,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("You tap your chin idly and ask Kelly what she likes eating.  Aside from dick, you add, rolling your eyes as she opens her mouth eagerly.");
             outputText("\n\n\"<i>Oh.  Um.  Well...</i>\" she furrows her brow as if remembering a very distant time.  \"<i>I used to like fruit.</i>\"  She laughs a bit.  \"<i>A stereotype really, you know, horses and apples?  Whitney even planted me a couple of apple trees across the back, but I never took care of them because I was a bit of a jerk-off back then.</i>\"");
             outputText("\n\nAt least your jerk off-ing is put to good use these days, you say kindly.  \"<i>That's nice of you to say, [Master],</i>\" replies the centaur solemnly.  She's wringing her hands, her thoughts elsewhere.");
-            if (!farm.farmCorruption.whitneyCorrupt()) outputText(" \"<i>I'd like to go and check on it, but... I don't think Whitney likes me much anymore.  I'd hate to cause more trouble than I already have.</i>\"");
+            if (!FarmCorruption.whitneyCorrupt()) outputText(" \"<i>I'd like to go and check on it, but... I don't think Whitney likes me much anymore.  I'd hate to cause more trouble than I already have.</i>\"");
             else outputText("“<i>I'd like to go and check on it, but... I’d hate to get into Mistress Whitney’s bad books.  I’ve caused enough trouble already.</i>”");
             outputText(" You 'pfft' and wave your hand airily to show what YOU think of Whitney.  You tell her to stay put - as her treat, you'll go check on the orchard and bring back some apples for her, if there are any.");
             outputText("\n\n\"<i>You will?  I- well, thank you so much [Master], but you'll be careful, won't you?</i>\" she says fretfully, still wringing her hands.  You go into her barn, grab a metal bowl and then stride off gallantly, as if setting off to take on Lethice herself, when in fact your epic quest involves jumping over a fence and walking 200 yards through some light woodland.");

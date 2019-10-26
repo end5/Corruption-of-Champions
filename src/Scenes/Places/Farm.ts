@@ -1,11 +1,5 @@
 
 export class Farm {
-    public keltScene: KeltScene = new KeltScene();
-    public kelly: Kelly = new Kelly();
-    private get marbleScene(): MarbleScene {
-        return marbleScene;
-    }
-    public farmCorruption: FarmCorruption = new FarmCorruption();
 
     public constructor() {
 
@@ -19,11 +13,11 @@ export class Farm {
     public farmExploreEncounter(): void {
         outputText("Whitney marches up to you as soon as you approach the farm, a stoic expression plastered across her face.");
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] > 0) {
-            farmCorruption.rootScene();
+            FarmCorruption.rootScene();
             return;
         }
 
-        if (farmCorruption.takeoverPrompt() == true) return;
+        if (FarmCorruption.takeoverPrompt() == true) return;
 
         if (flags[kFLAGS.FARM_DISABLED] == 1) {
             outputText("Whitney marches up to you as soon as you approach the farm, a stoic expression plastered across her face.");
@@ -69,8 +63,8 @@ export class Farm {
             const cockMilk: number = 0;
             const marble: number = 0;
             if (player.effects.findByType(StatusAffects.Kelt) >= 0 && player.effects.findByType(StatusAffects.KeltOff) < 0) {
-                if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(1, "Kelly", kelly.breakingKeltOptions);
-                else addButton(1, "Kelt", kelly.breakingKeltOptions);
+                if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(1, "Kelly", Kelly.breakingKeltOptions);
+                else addButton(1, "Kelt", Kelly.breakingKeltOptions);
             }
             if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) {
                 if (player.effects.findByType(StatusAffects.Milked) >= 0) {
@@ -323,21 +317,21 @@ export class Farm {
         outputText("", true);
         // In withdrawl odds are higher.
         if (player.effects.findByType(StatusAffects.NoMoreMarble) < 0 && player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) {
-            if (player.effects.getValue3Of(StatusAffects.Marble) == 1) marbleScene.addictedEncounterHappy();
-            else marbleScene.encounterMarbleAshamedAddiction();
+            if (player.effects.getValue3Of(StatusAffects.Marble) == 1) MarbleScene.addictedEncounterHappy();
+            else MarbleScene.encounterMarbleAshamedAddiction();
             return;
         }
         // 1/3 chance of marblez
         if (rand(3) == 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0 && player.effects.findByType(StatusAffects.Marble) > 0) {
             // Rapez Override normal
             if (player.effects.findByType(StatusAffects.MarbleRapeAttempted) >= 0 || flags[kFLAGS.MARBLE_WARNING] == 3) {
-                marbleScene.marbleAfterRapeBattle();
+                MarbleScene.marbleAfterRapeBattle();
                 player.effects.create(StatusAffects.NoMoreMarble, 0, 0, 0, 0);
                 return;
             }
             // Angry meeting
             if (flags[kFLAGS.MARBLE_WARNING] == 1) {
-                marbleScene.marbleWarningStateMeeting();
+                MarbleScene.marbleWarningStateMeeting();
                 return;
             }
             if (player.effects.findByType(StatusAffects.Marble) >= 0) {
@@ -345,33 +339,33 @@ export class Farm {
                 if (player.effects.getValue3Of(StatusAffects.Marble) == 0) {
                     marbling = rand(2);
                     // Help out Marble, version 1 (can occur anytime before the player becomes addicted):
-                    if (marbling == 0) marbleScene.helpMarble1();
+                    if (marbling == 0) MarbleScene.helpMarble1();
                     // Help out Marble, version 2 (can occur anytime before Marble knows about her milk):
-                    if (marbling == 1) marbleScene.helpMarble2();
+                    if (marbling == 1) MarbleScene.helpMarble2();
                     return;
                 }
                 else {
                     if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) {
                         // (work with Marble when helping)
-                        marbleScene.postAddictionFarmHelpings();
+                        MarbleScene.postAddictionFarmHelpings();
                         return;
                     }
                     if (player.effects.getValue3Of(StatusAffects.Marble) == 1) {
                         if (player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) marbling = 0;
                         else marbling = 1;
                         // While Addicted Events type 1 (Marble likes her addictive milk):
-                        if (marbling == 0) marbleScene.addictedEncounterHappy();
+                        if (marbling == 0) MarbleScene.addictedEncounterHappy();
                         // Exploration event while addicted (event triggered while addicted, but not suffering withdrawal):
-                        else marbleScene.marbleEncounterAddictedNonWithdrawl();
+                        else MarbleScene.marbleEncounterAddictedNonWithdrawl();
                         return;
                     }
                     else {
                         if (player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) marbling = 0;
                         else marbling = 1;
                         // While Addicted Events type 2 (Marble is ashamed):
-                        if (marbling == 0) marbleScene.encounterMarbleAshamedAddiction();
+                        if (marbling == 0) MarbleScene.encounterMarbleAshamedAddiction();
                         // Exploration event while addicted (event triggered while addicted, but not suffering withdrawal):
-                        else marbleScene.marbleEncounterAddictedNonWithdrawlAshamed();
+                        else MarbleScene.marbleEncounterAddictedNonWithdrawlAshamed();
                         return;
                     }
                 }
@@ -426,13 +420,13 @@ export class Farm {
             // Meet Marble while exploring version 1 (can occur anytime before the player becomes addicted):
             // Higher chance after talk texts have been exhausted
             if (flags[kFLAGS.MURBLE_FARM_TALK_LEVELS] >= 7)
-                marbleScene.encounterMarbleExploring();
+                MarbleScene.encounterMarbleExploring();
             // Meet Marble while exploring version 2 (can occur anytime before the player becomes addicted):
-            else marbleScene.encounterMarbleExploring2();
+            else MarbleScene.encounterMarbleExploring2();
         }
         else {
             if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) {
-                marbleScene.postAddictionFarmExplorings();
+                MarbleScene.postAddictionFarmExplorings();
                 return;
             }
             // PC Likes it
@@ -440,17 +434,17 @@ export class Farm {
                 if (player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) marbling = 0;
                 else marbling = 1;
                 // While Addicted Events type 1 (Marble likes her addictive milk):
-                if (marbling == 0) marbleScene.addictedEncounterHappy();
+                if (marbling == 0) MarbleScene.addictedEncounterHappy();
                 // Exploration event while addicted (event triggered while addicted, but not suffering withdrawal):
-                else marbleScene.marbleEncounterAddictedNonWithdrawl();
+                else MarbleScene.marbleEncounterAddictedNonWithdrawl();
             }
             else {
                 if (player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) marbling = 0;
                 else marbling = 1;
                 // While Addicted Events type 2 (Marble is ashamed):
-                if (marbling == 0) marbleScene.encounterMarbleAshamedAddiction();
+                if (marbling == 0) MarbleScene.encounterMarbleAshamedAddiction();
                 // Exploration event while addicted (event triggered while addicted, but not suffering withdrawal):
-                else marbleScene.marbleEncounterAddictedNonWithdrawlAshamed();
+                else MarbleScene.marbleEncounterAddictedNonWithdrawlAshamed();
             }
         }
     }
@@ -461,7 +455,7 @@ export class Farm {
 
         // Marble after-rape
         if (player.effects.findByType(StatusAffects.MarbleRapeAttempted) >= 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0) {
-            marbleScene.marbleAfterRapeBattle();
+            MarbleScene.marbleAfterRapeBattle();
             player.effects.create(StatusAffects.NoMoreMarble, 0, 0, 0, 0);
             return;
         }
@@ -478,19 +472,19 @@ export class Farm {
         // Meet Marble First Time
         if (player.effects.findByType(StatusAffects.Marble) < 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0) {
             doNext(camp.returnToCampUseOneHour);
-            marbleScene.encounterMarbleInitially();
+            MarbleScene.encounterMarbleInitially();
             return;
         }
         // Meet kelt 1st time
         if (rand(2) == 0 && player.effects.findByType(StatusAffects.Kelt) < 0 && player.effects.findByType(StatusAffects.KeltOff) < 0) {
             doNext(camp.returnToCampUseOneHour);
-            keltScene.keltEncounter();
+            KeltScene.keltEncounter();
             return;
         }
         // In withdrawl odds are higher.
         if (player.effects.findByType(StatusAffects.NoMoreMarble) < 0 && player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) {
-            if (player.effects.getValue3Of(StatusAffects.Marble) == 1) marbleScene.addictedEncounterHappy();
-            else marbleScene.encounterMarbleAshamedAddiction();
+            if (player.effects.getValue3Of(StatusAffects.Marble) == 1) MarbleScene.addictedEncounterHappy();
+            else MarbleScene.encounterMarbleAshamedAddiction();
             return;
         }
         explore = rand(3);
@@ -800,7 +794,7 @@ export class Farm {
         // Horny
         else {
             outputText("Overwhelmed with your desire, you don't even bother to cover up and make yourself decent, you just run out of the barn, " + allBreastsDescript(player) + " jiggling and wet, heading straight for camp.");
-            if (farmCorruption.whitneyCorruption() < 90) outputText(" It isn't until you get back that you remember the disapproving look Whitney gave you, but if anything, it only makes you hornier.", false);
+            if (FarmCorruption.whitneyCorruption() < 90) outputText(" It isn't until you get back that you remember the disapproving look Whitney gave you, but if anything, it only makes you hornier.", false);
             dynStats("lus=", 100);
         }
         // Boost lactation by a tiny bit and prevent lactation reduction

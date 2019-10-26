@@ -272,7 +272,7 @@ export class SophieBimbo extends NPCAwareContent {
         addButton(7, "Appearance", sophieBimboAppearance);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(9, "Leave", camp.campSlavesMenu);
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0) addButton(9, "Back", farm.farmCorruption.rootScene);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
     // Appearance:
@@ -295,13 +295,13 @@ export class SophieBimbo extends NPCAwareContent {
 
         outputText("\n\nSophie's arms are covered in feathers as well, and are somewhat wing-like in appearance, though she has human hands at the ends of them.  Her primary wings are larger and sprout out above her shoulder blades.  She often keeps them folded out of the way behind her, but she can kick up a huge dust-storm with them when she wants.");
 
-        if (farm.farmCorruption.hasTattoo("sophie")) {
+        if (FarmCorruption.hasTattoo("sophie")) {
             outputText("\n\n");
-            if (farm.farmCorruption.sophieFullTribalTats()) {
+            if (FarmCorruption.sophieFullTribalTats()) {
                 outputText("She is covered from head to tail in tribal tattoos, erotic lines snaking all over her naked frame, giving her the look of a barely tamed savage.");
             }
             else {
-                if (farm.farmCorruption.numTattoos("sophie") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
+                if (FarmCorruption.numTattoos("sophie") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
                 else outputText("She has ");
 
                 if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] + "\n");
@@ -381,7 +381,7 @@ export class SophieBimbo extends NPCAwareContent {
             flags[kFLAGS.FARM_EGG_COUNTDOWN] = 7;
         }
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private stopHarvest(): void {
@@ -395,7 +395,7 @@ export class SophieBimbo extends NPCAwareContent {
 
         flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private sendToFarm(): void {
@@ -425,7 +425,7 @@ export class SophieBimbo extends NPCAwareContent {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private bimboSophieSexMenu(): void {

@@ -127,13 +127,13 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nJojo is an anthropomorphic mouse with immaculate white fur. His brown eyes stare at you with a mixture of despair and unrequited need. Though he stands only four feet tall, he is covered in lean muscle and moves with incredible speed. He’s naked, with a large tainted throbbing member bouncing at attention. A fuzzy sack with painfully large looking balls dangles between his legs.");
             if (tentacleJojo()) outputText(" A number of tentacles vaugley resembling cocks have sprouted from his back and groin. They sway restlessly around him, oozing thick, fragrant pre from their tips.");
 
-            if (farm.farmCorruption.hasTattoo("jojo")) {
+            if (FarmCorruption.hasTattoo("jojo")) {
                 outputText("\n\n");
-                if (farm.farmCorruption.jojoFullTribalTats()) {
+                if (FarmCorruption.jojoFullTribalTats()) {
                     outputText("He is covered from head to tail in tribal tattoos, erotic lines snaking all over his naked frame, giving him the look of a barely tamed savage.");
                 }
                 else {
-                    if (farm.farmCorruption.numTattoos("jojo") > 1) outputText("He has the following tattoos emblazoned across his body:\n");
+                    if (FarmCorruption.numTattoos("jojo") > 1) outputText("He has the following tattoos emblazoned across his body:\n");
                     else outputText("He has ");
 
                     if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.JOJO_TATTOO_COLLARBONE] + "\n");
@@ -184,7 +184,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_JOJO] == 0) addButton(7, "Harvest Draft", harvestJojoDraft);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_JOJO] == 1) addButton(7, "Stop Harvest", stopHarvestJojoDraft);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) addButton(9, "Back", farm.farmCorruption.rootScene);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
     private harvestJojoDraft(): void {
@@ -200,7 +200,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
         if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1) flags[kFLAGS.FOLLOWER_PRODUCTION_JOJO] = 1;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private stopHarvestJojoDraft(): void {
@@ -215,7 +215,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_PRODUCTION_JOJO] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private sendToFarm(): void {
@@ -245,7 +245,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private jojoMutationOfferYes(): void {

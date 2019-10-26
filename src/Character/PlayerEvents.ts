@@ -686,7 +686,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 if (latexGirl.gooHappiness() < 75) latexGirl.gooObedience(-1, false);
                 if (latexGirl.gooHappiness() >= 90) latexGirl.gooObedience(1, false);
             }
-            farm.farmCorruption.updateFarmCorruption(); // Farm Corruption updating
+            FarmCorruption.updateFarmCorruption(); // Farm Corruption updating
             if (player.effects.findByType(StatusAffects.Contraceptives) >= 0) { // Herbal contraceptives countdown
                 if (player.effects.getValue1Of(StatusAffects.Contraceptives) == 1) {
                     player.effects.addValue(StatusAffects.Contraceptives, 2, -1);

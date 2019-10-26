@@ -730,9 +730,9 @@ export class FarmCorruption extends AbstractFarmContent {
         if (player.effects.findByType(StatusAffects.MarbleRapeAttempted) < 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0 && player.effects.findByType(StatusAffects.Marble) >= 0 && flags[kFLAGS.MARBLE_WARNING] == 0) addButton(1, "Marble", farm.meetMarble);
 
         if (player.effects.findByType(StatusAffects.Kelt) >= 0 && player.effects.findByType(StatusAffects.KeltOff) < 0) {
-            if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(2, "Kelly", farm.kelly.breakingKeltOptions);
+            if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(2, "Kelly", Kelly.breakingKeltOptions);
             else if (flags[kFLAGS.KELT_BREAK_LEVEL] == 0 && flags[kFLAGS.KELT_TALKED_FARM_MANAGEMENT] == 0) addButton(2, "Kelt", keltAChangeInManagement);
-            else addButton(2, "Kelt", farm.kelly.breakingKeltOptions);
+            else addButton(2, "Kelt", Kelly.breakingKeltOptions);
         }
 
         if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) {

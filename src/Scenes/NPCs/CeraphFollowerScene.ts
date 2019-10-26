@@ -89,7 +89,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
         outputText("“<i>I’ll go over there tonight then,</i>” she says. There’s a far-away gleam of excitement in her eyes as she tugs on a nipple; only now does it occur to you what ‘marked as being under demon protection’ might entail. “<i>Anything else, [master]?</i>”");
 
         flags[kFLAGS.FOLLOWER_AT_FARM_CERAPH] = 1;
-        farm.farmCorruption.whitneyCorruption(10);
+        FarmCorruption.whitneyCorruption(10);
 
         ceraphFollowerAppearance(false);
     }

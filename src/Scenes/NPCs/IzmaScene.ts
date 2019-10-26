@@ -1614,7 +1614,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1 && !pregnancy.isPregnant) addButton(6, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] != 0) addButton(6, "Go Camp", backToCamp);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) addButton(9, "Back", farm.farmCorruption.rootScene);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
     private sendToFarm(): void {
@@ -1644,7 +1644,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     // Get a tiger shark tooth

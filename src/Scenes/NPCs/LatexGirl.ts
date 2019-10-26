@@ -568,7 +568,7 @@ export class LatexGirl extends NPCAwareContent {
         addButton(3, "Breast Size", setLatexysBustSize);
         addButton(4, "Dick Options", changeGooDick);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(9, "Back", farm.farmCorruption.rootScene);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(9, "Back", FarmCorruption.rootScene);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(5, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(5, "Go Camp", backToCamp);
@@ -598,7 +598,7 @@ export class LatexGirl extends NPCAwareContent {
         flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] = 0;
 
         // [+1 Obedience and -1 Happiness every two days kept at the farm]
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private useLatexy(): void {

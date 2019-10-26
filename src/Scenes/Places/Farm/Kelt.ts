@@ -94,8 +94,8 @@ export class Kelt extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        if (game.flags[kFLAGS.KELT_BREAK_LEVEL] == 1) game.farm.kelly.defeatKellyNDBREAKHIM();
-        else game.farm.kelly.breakingKeltNumeroThree();
+        if (game.flags[kFLAGS.KELT_BREAK_LEVEL] == 1) Kelly.defeatKellyNDBREAKHIM();
+        else Kelly.breakingKeltNumeroThree();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -103,7 +103,7 @@ export class Kelt extends Monster {
             outputText("\n\nKelt recoils for a moment before assuming a look of superiority...");
             doNext(game.endLustLoss);
         } else {
-            game.farm.kelly.keltFucksShitUp();
+            Kelly.keltFucksShitUp();
         }
     }
 

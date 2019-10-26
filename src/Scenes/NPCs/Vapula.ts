@@ -221,7 +221,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] == 0) addButton(7, "Harvest Milk", harvestMilk);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] == 1) addButton(7, "Stop Harvest", stopHarvest);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(9, "Back", farm.farmCorruption.rootScene);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
     private sendToFarm(): void {
@@ -249,7 +249,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private harvestMilk(): void {
@@ -264,7 +264,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] = 1;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     private stopHarvest(): void {
@@ -276,7 +276,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] = 0;
 
-        doNext(farm.farmCorruption.rootScene);
+        doNext(FarmCorruption.rootScene);
     }
 
     // Vapula Appearance - this bitch is purpler than a Nigerian (Z)
@@ -287,13 +287,13 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nShe has a pink, wet pussy, although you know it can be stretched to take members of any size.  Drops of fem-juice often drip from her lush fuck-hole, leaving a trail behind her as she walks.");
         outputText("\n\nVapula has a tight asshole, placed right between her plush buttcheeks where it belongs.");
 
-        if (farm.farmCorruption.hasTattoo("vapula")) {
+        if (FarmCorruption.hasTattoo("vapula")) {
             outputText("\n\n");
-            if (farm.farmCorruption.vapulaFullTribalTats()) {
+            if (FarmCorruption.vapulaFullTribalTats()) {
                 outputText("She is covered from head to tail in tribal tattoos, erotic lines snaking all over her naked frame, giving her the look of a barely tamed savage.");
             }
             else {
-                if (farm.farmCorruption.numTattoos("vapula") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
+                if (FarmCorruption.numTattoos("vapula") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
                 else outputText("She has ");
 
                 if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] + "\n");
