@@ -1357,7 +1357,7 @@ export class Saves {
             }
             // Set Vaginal Array
             for (i = 0; i < saveFile.data.vaginas.length; i++) {
-                player.createVagina();
+                player.vaginas.createVagina();
             }
             // Populate Vaginal Array
             for (i = 0; i < saveFile.data.vaginas.length; i++) {

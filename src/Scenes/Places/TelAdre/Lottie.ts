@@ -1137,7 +1137,7 @@ export class Lottie extends TelAdreAbstractContent {
         if (player.cocks.length == 1) {
             outputText("begins to caress your " + cockDescript(game.player, x) + " with two of her hands, while the other sets to work on ", false);
             if (player.balls > 0) outputText("massaging your balls", false);
-            else if (player.hasVagina()) outputText("massaging your pussy", false);
+            else if (player.vaginas.length > 0) outputText("massaging your pussy", false);
             else outputText("massaging your ass", false);
         }
         else outputText("uses all four of her hands to handle your " + multiCockDescriptLight(game.player) + ", jerking each one with ease", false);
@@ -1781,7 +1781,7 @@ export class Lottie extends TelAdreAbstractContent {
         if (player.cocks.length == 1) {
             outputText("begins to caress your " + cockDescript(game.player, x) + " with two of her hands, while the other sets to work on massaging your ", false);
             if (player.balls > 0) outputText("balls", false);
-            else if (player.hasVagina()) outputText("pussy", false);
+            else if (player.vaginas.length > 0) outputText("pussy", false);
             else outputText("ass", false);
         }
         else outputText("uses all four of her hands to handle " + sMultiCockDesc(game.player) + ", jerking each one with ease", false);

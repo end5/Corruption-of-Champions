@@ -23,7 +23,7 @@ export class InfestedHellhound extends HellHound {
                 outputText("  The worms wriggle and squirm all over you, working their way towards your groin.  It tickles pleasantly, but you brush them away before they can get inside you.  The thought of being turned into a worm-dispensing cum fountain is horrifying, but it leaves you hard.", false);
                 dynStats("lus", (5 + Math.round(player.cor / 20)));
             }
-            else if (player.hasVagina()) outputText("  Thankfully, the worms don't seem to want anything to do with you, and rapidly drop down to the ground.", false);
+            else if (player.vaginas.length > 0) outputText("  Thankfully, the worms don't seem to want anything to do with you, and rapidly drop down to the ground.", false);
         }
         // Sidestep
         else {

@@ -246,7 +246,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
             let fellatio: () => void = null;
             let cunnilingus: () => void = null;
             if (player.cocks.length > 0) fellatio = roxanneGivesABlowjob;
-            if (player.hasVagina()) cunnilingus = roxanneCunnilingus;
+            if (player.vaginas.length > 0) cunnilingus = roxanneCunnilingus;
             simpleChoices("Cunnilingus", cunnilingus, "Fellatio", fellatio, "Rimming", roxanneRimjob, "", null, "", null);
         }
     }
@@ -273,7 +273,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         if (player.cocks.cockArea(x) < 60) outputText("the entire length of your " + cockDescript(game.player, x), false);
         else outputText("as much of your over-sized member as she can encompass", false);
         outputText(", constricting, snake-like, to hold you in a slippery, warm embrace.  Suddenly, a pointed nail drags over your taint, pressing just hard enough to hold you still while the shemale pirate works your " + cockDescript(game.player, x) + " with her tongue", false);
-        if (player.hasVagina()) outputText(", stopping just short of your female entrance", false);
+        if (player.vaginas.length > 0) outputText(", stopping just short of your female entrance", false);
         outputText(".\n\n", false);
 
         outputText("Slurping and pumping, the pulsating tongue drags over your " + cockDescript(game.player, x) + ", molding into a perfect cock-sleeve.  At first it's a slow, gradual pump that smears your shaft with booze-flavored spit, but when the first dollop of pre-cum rolls onto the flexible fellatio-tool, the pirate goes into over-drive, pumping with wild abandon.  Her tail whips back and forth, passionately slapping the table, chairs, and dirt in her excitement.\n\n", false);
@@ -302,8 +302,8 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         outputText("", true);
         outputText("You shimmy out of your " + player.armorName + " and lean back, exposing your " + vaginaDescript(player) + " to the drunken lizan's maw.  She wobbles back and forth for a moment, clutching at your " + legs(player) + " to steady herself before she leans in, brushing her scaled nose against your vulva.  You shudder from the sudden contact with her scales, but she doesn't rush it, instead huffing and sniffing at the moist entrance.  Her alcohol-lidded eyes gaze up at you, the bleary orbs slightly confused as her jaw slowly opens to release her tongue.\n\n", false);
         outputText("The pink length of Poisontail's tongue oozes out like a sentient creature, waggling slightly as if sniffing the air before it presses on the ", false);
-        if (player.wetness() >= 4) outputText("juice-dribbling ", false);
-        else if (player.wetness() >= 2) outputText("juicy ", false);
+        if (player.vaginas.wetness() >= 4) outputText("juice-dribbling ", false);
+        else if (player.vaginas.wetness() >= 2) outputText("juicy ", false);
         outputText("entrance of your loins.  You swoon, leaning against the chair's back and scooting your crotch forward in a fit of wanton need.  The tip of Roxanne's nose disappears into the moist lips, her slick, oral organ engulfed by your lusty tunnel.  It squirms and wriggles inside you, the thick pink protrusion lashing about, swirling in a circular motion to lap the juice from your walls.  Spit begins to drip down your " + legs(player) + " and you see Roxanne's saliva frothing at the corners of her mouth while she works you over.\n\n", false);
 
         outputText("Face blushing red, you groan and hump at the lizan, grabbing her horns so that you can smear her nose into your " + clitDescription(player) + ".  She pulls back, resisting your insistent pulls with inebriated strength, but before you can let go she reverses direction and smashes her forehead into your gut, winding you.  Your fingers release immediately, clutching at your aching middle while the angry lizard snarls, \"<i>You're getting oral, NOT using me as a dildo!  ...but I am sorry I hit you that hard. I just needed to breathe.  Relax and let me make it up to you...</i>\"\n\n", false);
@@ -329,7 +329,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
             outputText(".  ", false);
         }
         outputText("Unable to dam the pressure up inside you any longer, you cum with brain-breaking, mouth-babbling intensity.  The lizan doesn't relent in the slightest as you begin to spasm", false);
-        if (player.wetness() >= 5) outputText(" and squirt", false);
+        if (player.vaginas.wetness() >= 5) outputText(" and squirt", false);
         outputText(" against her.  She tightens her grip and speeds up her tongue's sensual massaging, nearly blacking you out while you writhe in her embrace.  Heat, pure, blissful heat, spreads through you, draining the strength from your uncontrollable twitches and leaving languid warmth in its place.  ", false);
         if (player.cocks.length > 0) outputText(SMultiCockDesc(game.player) + " bounces on her head, between her horns, spilling a trail of sticky seed down her back.  ", false);
         outputText("You slouch down, pleasure-drunk and giggling while Roxanne disentangles herself.\n\n", false);
@@ -357,7 +357,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
             else outputText("pulses with need", false);
             outputText(", a bead of pre-cum already hanging from the tip.  ", false);
         }
-        if (player.hasVagina()) outputText("Meanwhile, your neglected box is getting wetter and wetter, with no sign of stopping.  The lizan's massive, questing tongue ignores it.  ", false);
+        if (player.vaginas.length > 0) outputText("Meanwhile, your neglected box is getting wetter and wetter, with no sign of stopping.  The lizan's massive, questing tongue ignores it.  ", false);
         outputText("Completely focused on your anal ring, Roxanne keeps her tongue exactly where it is, working the sparking nerves around your rectum incessantly.\n\n", false);
 
         // (Optional cock milking)
@@ -369,7 +369,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
             outputText(", milking the shaft like a cow's teat.  Smooth, scaled fingers circle it at the base and slowly slide down, tugging at your skin and squeezing out thick dollops of pre-cum with every pull.\n\n", false);
         }
         // (Optional pussy milking if no cock)
-        else if (player.hasVagina()) outputText("Surprisingly, one of the pirate's hands comes off your " + buttDescription(player) + " to play with your " + vaginaDescript(player) + ".  Long, sharp nails play over the sensitive skin of your vulva while the supple, scaled thumb presses between them.  Juicy girl-cum quickly coats her fingers, but it doesn't seem to bother her in the least.\n\n", false);
+        else if (player.vaginas.length > 0) outputText("Surprisingly, one of the pirate's hands comes off your " + buttDescription(player) + " to play with your " + vaginaDescript(player) + ".  Long, sharp nails play over the sensitive skin of your vulva while the supple, scaled thumb presses between them.  Juicy girl-cum quickly coats her fingers, but it doesn't seem to bother her in the least.\n\n", false);
 
         outputText("The long, wondrous tongue pushes forward, wriggling inside you.  At first it's just the tip, but the drunken lizard forces inch after inch inside you with constant intensity.  You can feel her spit frothing around your " + assholeDescript(player) + ", bubbling while she fills your backdoor with ever larger quantities of saliva-covered tongue.  Seeming to go on forever, the penetration robs you of strength, filling you with dozens more inches.  Roxanne hums at your dark hole, vibrating her tongue inside you while it arches to caress the most sensitive spots.\n\n", false);
 
@@ -381,9 +381,9 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
             else if (player.cumQ() < 1500) outputText("  It forms a large pool before the ground soaks it up.", false);
             else outputText("  It forms a massive pool before the ground soaks it up.", false);
         }
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("  You quiver and cum on her fingers, ", false);
-            if (player.wetness() >= 4) outputText("soaking them with your gushing orgasms ", false);
+            if (player.vaginas.wetness() >= 4) outputText("soaking them with your gushing orgasms ", false);
             else outputText("sliming them with copious girl-cum ", false);
             outputText("while she teases your " + clitDescription(player) + " with those terribly-slow touches.", false);
         }
@@ -410,7 +410,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
 
         outputText("Too intoxicated to control yourself, your sphincter clenches repeatedly, drawing in a few more inches of Roxanne's thickness.  It packs you completely, filling you in a way that centers all of your limited thoughts on the feel of that bulbous mass inside your anus.  While the lizan is scaled from head to toe, her penis clearly isn't.  You judge by the shape stuffing you that her cock is like that of a human,  a long veiny shaft capped with a rounded crown.  Her balls slap ", false);
         if (player.balls > 0) outputText("against your own, the " + num2Text(player.balls + 2) + " orbs rolling around each other in their sweaty sacks", false);
-        else if (player.hasVagina()) outputText("against your " + vaginaDescript(player) + ", the sweaty orbs growing slick with the moisture of your growing need", false);
+        else if (player.vaginas.length > 0) outputText("against your " + vaginaDescript(player) + ", the sweaty orbs growing slick with the moisture of your growing need", false);
         else outputText("against your taint, the sweaty skin pressing hard between your bodies", false);
         outputText(".\n\n", false);
 
@@ -434,15 +434,15 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
             if (player.cocks.length == 1) outputText("It bounces against your belly with your heartbeats, loving the forced anal pressure.  ", false);
             else outputText("They bounce against your belly with your heartbeats, loving the anal pressure.  ", false);
             outputText("Sticky droplets of pre-cum leak from you, and you can't stifle the pleasured gasps that burst from your maw.", false);
-            if (player.hasVagina()) outputText("  To your delight and shame, your pussy is equally aroused by the action, musky and wet from the pirate's lewd anal battering.", false);
+            if (player.vaginas.length > 0) outputText("  To your delight and shame, your pussy is equally aroused by the action, musky and wet from the pirate's lewd anal battering.", false);
             outputText("\n\n", false);
         }
         // (JUST CUNTS:
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("The constant pressure of her thrusts seems to flow straight to your " + vaginaDescript(player) + ", inflaming your moistening labia.  You can feel her mass compressing your feminine organs, rubbing your inner walls against each other.  The sublime internal friction releases your natural lubricants, ", false);
-            if (player.wetness() < 2) outputText("sliming your ready vulva.", false);
-            else if (player.wetness() <= 3) outputText("soaking your ready vulva.", false);
-            else if (player.wetness() <= 4) outputText("which drip from your ready vulva.", false);
+            if (player.vaginas.wetness() < 2) outputText("sliming your ready vulva.", false);
+            else if (player.vaginas.wetness() <= 3) outputText("soaking your ready vulva.", false);
+            else if (player.vaginas.wetness() <= 4) outputText("which drip from your ready vulva.", false);
             else outputText("which leak in a steady stream from your ready vulva.", false);
             outputText("\n\n", false);
         }
@@ -524,7 +524,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
 
         outputText("You breathe in shallow breaths, trying to see just how much more remains; thankfully it looks like there's only a few more inches left to sink up your butt-hole.  Roxanne rubs her palms against the small of your back, pushing hard enough to squish you into the cushions and tighten your prick-packed body around her needy, pulsing shaft.  At last she bottoms out, her heavy, swollen testes bouncing against your ", false);
         if (player.balls > 0) outputText("own", false);
-        else if (player.hasVagina()) outputText(vaginaDescript(player), false);
+        else if (player.vaginas.length > 0) outputText(vaginaDescript(player), false);
         else outputText("now-narrow taint", false);
         outputText(", churning and swelling with the heavy load they're ready to disgorge.\n\n", false);
 
@@ -532,7 +532,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
 
         outputText("\"<i>I'm cuuuuUUUUUMMMMMMIIIIIIIING!</i>\" she wails with banshee-like volume, nearly giving you a headache from her screeching pleasure.  Her base bloats, forcing your violated backside ever-wider as her massive cum-vein engorges with seed.  You writhe on the end of the heavy cock-spear while your intestines fill with a week's worth of seedy, cursed payload, rumbling and sloshing while they're packed.  It's too much for your fragile psyche to bear, and the complete violation of your inebriated, lusty form sets off a body-wrenching orgasm.  Your eyes cross, then roll back as your body spasms around the lizan's spit-roasting shaft.  The pleasure cascades through you, washing away the discomfort and pain of the act throughout your orgasm, and before you can come back down, you slip into unconsciousness", false);
         if (player.cocks.length > 0 && player.cumQ() >= 1000) outputText(", drooling spit into the huge puddle of cum you made on her bed", false);
-        else if (player.hasVagina() && player.wetness() >= 4) outputText(", drooling spit into the sloppy puddy of fem-cum you splattered on the mattress", false);
+        else if (player.vaginas.length > 0 && player.vaginas.wetness() >= 4) outputText(", drooling spit into the sloppy puddy of fem-cum you splattered on the mattress", false);
         outputText(".", false);
         outputText("  <b>You'll wake and head back to camp with a massive hangover.</b>", false);
         // (-100 lust, -1 int, hangover effect)
@@ -612,10 +612,10 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         outputText("\n\nRoxanne gleefully slaps your [butt] and counters, \"<i>I'm getting ready, ya greedy butt-slut!</i>\"  She groans, and you feel some of her syrupy pre slipping through your well-lubed ring.  Despite her words, she's ready to go and just as ready to blow.  She edges her fluid-dribbling invader past your gate and suddenly thrusts, forcing you open and battering her way into your rectum with one hard push.  As big as she is, only her tip and the first few inches get in, but you feel as if you're about to be split in half.  The pulsating, fleshy spear twitches happily from the warmth of your innards and the squeezing of your big, rounded booty.");
         player.buttChange(Math.floor(30 + (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00225] / 4)), true, true, false);
         outputText("\n\n[if (hasCock = true) \"[EachCock] twitches, only half-hard and yet trembling from the light bumps your poor prostate receives.  You moan and give a saucy wiggle as your ass caresses the bulbous invader, pulling it deeper to rub up against your anal G-spot.  A tiny jet of pre squirts on the bed sheets, foreshadowing the fun to come.\"]");
-        if (player.cocks.length > 0 && player.hasVagina()) outputText("  ");
+        if (player.cocks.length > 0 && player.vaginas.length > 0) outputText("  ");
         outputText("[if (hasVagina = true) \"Meanwhile, your [vagina] gets slicker and slicker, your lust permeating the air with potent female musk.  Oh, if only Roxanne would fuck you there too!\"]");
         outputText("  Roxanne grunts, \"<i>That's a good girl...");
-        if (!player.hasVagina()) outputText(" \"<i>Oh, I know you don't have a pussy, but tonight, you're my big-bootied, cum-dumpster bitch!</i>\"");
+        if (!player.vaginas.length > 0) outputText(" \"<i>Oh, I know you don't have a pussy, but tonight, you're my big-bootied, cum-dumpster bitch!</i>\"");
         else outputText("\"<i>Oh, you'll make such a great anal cum-dumpster for me.  Your poor pussy will be so cum-starved, but you'll be so stuffed with jizz that you'll look pregnant anyhow!</i>\"");
         outputText("\n\nYou whimper as Roxanne thrusts herself further forward, burying another few inches of potent lizard-cock inside you.  Its sheer size shifts your innards slightly, and you're sure there must be a visible bulge on your tummy by now.  The shemale sighs blissfully and continues to work her dick further and further inside you.  Finally, when you feel you can fit no more, her large, quaking testes press against your rump.  If you didn't have such a round ass, she'd probably still be trying to go further inside, but your plump derriere actually helps to distance her from your vulnerable pucker - by a bit.");
         outputText("\n\nSighing with relief, your body shudders softly as you adjust to the meat-spear inside you, slowly relaxing until your stretched butt-cunt more comfortably fills the role of Roxanne's fuck-toy.  She exhales happily and places her smooth palms on your shoulders, gripping you firmly before she pushes again.  You squeal in distress as at least another inch of the pirate's gigantic dong slides inside you, her hips and balls smushing your jiggly cheeks out to the side.  Her sack must be painfully pressing into you by now, but Roxanne doesn't relent.  She holds you there, forcing you to hold even more than before.");

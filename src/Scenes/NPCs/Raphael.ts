@@ -1409,9 +1409,9 @@ export class Raphael extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\nAfter five minutes of this, sending you gasping and writhing, you dare to raise your head and look down with a fierce blush.  Raphael is still at it.  He looks up and patiently resumes eye contact, like you're an invitee to the discourse between him and the glistening red, tongue-lashed and dilated femslit before him.  The look he throws you is enough to send you over the edge and you cum hard, ");
         // ({Low wetness multiplier})
-        if (player.wetness() < 3) outputText("your cunt fluttering");
+        if (player.vaginas.wetness() < 3) outputText("your cunt fluttering");
         // ({Medium wetness multiplier}
-        else if (player.wetness() < 4) outputText("sending out a small spurt of femcum landing on your belly");
+        else if (player.vaginas.wetness() < 4) outputText("sending out a small spurt of femcum landing on your belly");
         // ({High wetness multiplier}
         else outputText("gushing a torrent of femcum into the air");
         outputText(".  Raphael backs off a bit afterwards, giving you a few more laps of admiration around the throbbing fissure and cleaning you of any spillage. He ends with a tiny kiss, just inside your inner thigh.");

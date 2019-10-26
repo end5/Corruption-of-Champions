@@ -92,7 +92,7 @@ export class TamanisDaughters extends Goblin {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_TIGHT);
+        this.vaginas.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_TIGHT);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;

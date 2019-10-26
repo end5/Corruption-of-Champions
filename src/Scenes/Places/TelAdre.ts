@@ -296,7 +296,7 @@ export class TelAdre {
         spriteSelect(63);
         hideUpDown();
         let clit: () => void = null;
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             if (player.vaginas[0].clitPierced == 0)
                 clit = clitPierce;
         }
@@ -324,7 +324,7 @@ export class TelAdre {
         if (player.tonguePierced == 0)
             tongue = tonguePierce;
         let vulva: () => void = null;
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             if (player.vaginas[0].labiaPierced == 0) vulva = vulvaPierce;
         }
         outputText("Yara asks, \"<i>Ok then, what would you like pierced " + mf(player, "sir", "cutie") + "?  Just keep in mind my piercings are special - they're permanent and CAN'T be removed.</i>\"", true);
@@ -350,7 +350,7 @@ export class TelAdre {
 
     private clitPierce(): void {
         spriteSelect(63);
-        if (player.hasVagina()) outputText("\"<i>Ohhh, that's going to be suckably cute!</i>\" exclaims Yara, blushing more than a little. \"<i>What kind of piercing would you like?</i>", true);
+        if (player.vaginas.length > 0) outputText("\"<i>Ohhh, that's going to be suckably cute!</i>\" exclaims Yara, blushing more than a little. \"<i>What kind of piercing would you like?</i>", true);
         else {
             outputText("You realize you don't have a clit to pierce.  Whoops!  Better pick something else...", true);
             doNext(pierceMenu);
@@ -404,7 +404,7 @@ export class TelAdre {
     private vulvaPierce(): void {
         spriteSelect(63);
         piercingLoc = 8;
-        if (player.hasVagina()) outputText("Yara explains, \"<i>This is gonna hurt a lot, but I think you'll love how it feels after.  I know I do!  Now what kind of jewelry do you want down-town?</i>\"", true);
+        if (player.vaginas.length > 0) outputText("Yara explains, \"<i>This is gonna hurt a lot, but I think you'll love how it feels after.  I know I do!  Now what kind of jewelry do you want down-town?</i>\"", true);
         else {
             outputText("You realize you don't have a pussy to pierce.  Whoops!  Better pick something else...", true);
             doNext(pierceMenu);
@@ -785,7 +785,7 @@ export class TelAdre {
         spriteSelect(63);
         hideUpDown();
         let clit: () => void = null;
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             if (player.vaginas[0].clitPierced > 0) clit = removeClitPierce;
         }
         let dick: () => void = null;
@@ -805,7 +805,7 @@ export class TelAdre {
         let tongue: () => void = null;
         if (player.tonguePierced > 0) tongue = removeTonguePierce;
         let vulva: () => void = null;
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             if (player.vaginas[0].labiaPierced > 0) vulva = removeVulvaPierce;
         }
         if (clit == null && dick == null && ears == null && eyebrow == null && lip == null && nipples == null && nose == null && tongue == null && vulva == null) {
@@ -1433,7 +1433,7 @@ export class TelAdre {
         spriteSelect(61);
         outputText("Victoria nods and pulls a measuring tape off her shoulder.  She moves around you with practiced ease, taking measurements from every conceivable angle.  Thanks to her small stature, it's quite easy for her to take your inseam measurement, though Vicky manages to ", false);
         if (player.cocks.biggestCockArea() > 30 || player.cocks.length > 1) outputText("fondle your bulging package", false);
-        else if (player.hasVagina()) outputText("rub against your outer lips", false);
+        else if (player.vaginas.length > 0) outputText("rub against your outer lips", false);
         else outputText("slip a finger along your crotch", false);
         outputText(" more than a few times.  You could swear you catch her licking her lips when she stands up, but she quickly turns away, saying, \"<i>I've got one in the back that should fit perfectly!  Be right with you!</i>\"\n\n", false);
         outputText("She disappears in the back for a few moments, then returns with " + itype.longName + " that looks as if it were tailor-made for you.\n\n", false);
@@ -1821,7 +1821,7 @@ export class TelAdre {
         }
         else if ((x == -1) && !girl)  // No cock that fits
         {
-            if (player.hasVagina()) // But the PC has a vagoo! Swap over to female mode"
+            if (player.vaginas.length > 0) // But the PC has a vagoo! Swap over to female mode"
             {
                 outputText("\"<i>Oh dear, cutie. There is no way I could take that huge cock of yours!</i>\" she says, looking rather crestfallen at your enormous member. \"<i>Oh well</i>\", she sighs. \"<i>I guess I'll just have to explore your feminine side instead</i>\"\n");
                 girl = true;
@@ -1881,7 +1881,7 @@ export class TelAdre {
             outputText("A duo of errant forefingers run along the perimeter of your feminine fortress, your signal to prepare for a siege.  Yara reaches down off the side of your seat, pushing on a lever that sends the back of the chair down to about a 30º angle.  She grasps for the armrests of the chair next, promptly lifting her body up and going into what looks like a forward somersault.  Before you can complement the feat, her legs fly up either side of your head.   The only things to have made contact were her nimble feet, gently stroking their way up from your belly, past your chest, off of your shoulders and soaring beyond the back of the chair.  The feline acrobat calls for you to lay your hands open at the sides of the chair, an order you fulfill with due haste.  She wastes no time in seizing your upper arms, causing her body to slide forward off of you.  You return the favor by clasping onto her as well in the same manner, stopping her descent.\n\n", false);
 
             outputText("Trying to parse out the scene at play here is a fool's errand.  Yara must have done this before as your two sprawled out bodies have stopped in just the right fashion to make both of your fleshy orifices in plain view of one another's faces.  Air escapes your pursed lips as the \"<i>quality testing</i>\" commences on your " + vaginaDescript(player) + ", your kitty comrade going in tongue first towards your silken fringes.  ", false);
-            if (player.wetness() >= 3) outputText("She may as well be licking a melting popsicle with how wet your snatch is.", false);
+            if (player.vaginas.wetness() >= 3) outputText("She may as well be licking a melting popsicle with how wet your snatch is.", false);
             else outputText("Your relatively dry perimeter makes for an easy target.", false);
             outputText("  Not to be outdone, your ambitious tongue moves in as if it has everything to prove, mirroring your partner's efforts. Both of your lapping endeavors are periodically interrupted by moaning or slight gasps, your grasps on one another only growing more tense.\n\n", false);
 

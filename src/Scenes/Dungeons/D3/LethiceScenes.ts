@@ -87,7 +87,7 @@ export class LethiceScenes {
 
         menu();
         if (player.cocks.length > 0) addButton(0, "Plow Her", plowHer);
-        if (player.hasVagina()) addButton(1, "Queen Her", queenHer);
+        if (player.vaginas.length > 0) addButton(1, "Queen Her", queenHer);
         addButton(2, "Boob Play", boobPlay, hpVictory);
 
         const hasLethicite: boolean = (player.keyItems.has("Sheila's Lethicite") > 0) || (player.keyItems.has("Stone Statue Lethicite") > 0);
@@ -339,12 +339,12 @@ export class LethiceScenes {
             outputText("\n\nWith corrupted milk all but pouring from Lethice’s engorged breast like from a fountainhead, it doesn’t take much to slip her slick shaft inside you, spreading out your hole around a pillar of thick demonic meat. You claim your prize: the body of the demon queen, brought low and reduced to your own personal whore. Even her body is molding itself to you, submitting to your every desire... But that’s your just deserts, your reward for finally laying low this tyrant, and ridding Mareth of its demon overlord once and for all!");
 
             outputText("\n\nGrinning to yourself, you grab the demoness’s oversized horns like a pair of handlebars and sink yourself down until her tits are pressed firmly to your ass, her meat buried completely inside. You shiver at the sensation of ice-cold milk squirting into your");
-            if (player.hasVagina()) outputText(" womb");
+            if (player.vaginas.length > 0) outputText(" womb");
             outputText(" bowels");
             outputText(", pumping out of the Demon Queen like cum out of a real cock. It feels... good. <b>Really</b> good! The milk might be cold, but you feel a heat start spreading through your loins, spurring you to start really moving - to start taking all the pleasure that Lethice’s mutable body can give you!");
 
             outputText("\n\n");
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("One cock’s not enough for you now. Not at the end of your adventure, after everything this bitch and her minions have put you through. You need <b>more</b>! You hike");
                 if (!player.isNaga()) outputText(" a leg");
                 else outputText(" your coils");
@@ -352,23 +352,23 @@ export class LethiceScenes {
             }
 
             outputText("You start to move, grinding against Lethice’s jiggling rack and drawing her dick-nipple");
-            if (player.hasVagina()) outputText("s");
+            if (player.vaginas.length > 0) outputText("s");
             outputText(" through you, again and again. The demons around you hoot and holler, driven wild with lust as you rape their queen, and you can’t help but smile.");
             if (player.cor >= 66) outputText(" You’re finally where you belong!");
             else outputText(" Even the demons recognize what you’ve done! Now the only question is what to do with them afterwards...");
             outputText(" For now, though, you sate yourself by riding faster, bouncing on Lethice’s plump chest. Faster and faster, you piston your [hips] until you and Lethice both are moaning with pleasure, your bodies quaking with growing ecstasy.");
 
             outputText("\n\nGiving little concern to your corrupted partner’s pleasure, you ride her dick-nipple");
-            if (player.hasVagina()) outputText("s");
+            if (player.vaginas.length > 0) outputText("s");
             outputText(" as hard and fast as you can, letting purple milk spray from your hole as Lethice’s milky tits cum their corrupted load inside you. She screams, back arching and wings beating like hammers against the stone. But that doesn’t matter to you - not right now, not when you’re so close! You shove the demoness down, pinning her between your pounding hips and the unrelenting stone.");
 
             outputText("\n\nNot long after, you cum. An explosive orgasm shudders through you, wracking your body with convulsions of pleasure. Milk gushes into your");
-            if (player.hasVagina()) outputText(" holes");
+            if (player.vaginas.length > 0) outputText(" holes");
             else outputText(" ass");
             outputText(" from the Demon Queen’s swollen breast");
-            if (player.hasVagina()) outputText("s");
+            if (player.vaginas.length > 0) outputText("s");
             outputText(", gushing their lactic load inside you. You keep pistoning your hips as fast as you can, dragging out every iota of pleasure that you can before the climax passes over you, leaving you panting and gasping and leaking corrupted fluids from your hole");
-            if (player.hasVagina()) outputText("s");
+            if (player.vaginas.length > 0) outputText("s");
             outputText(".");
 
             outputText("\n\nWhen you’re done with her, the Demon Queen looks like any other well-used whore: ragged, gasping, slathered with sexual fluids and milk. She wasn’t so tough after all - just another demon that stood in your way. Sated, you stagger up and to the nearest place to rest: her throne. You collapse upon it, assured of your victory as you look out upon the defeated host of demons you plowed through to get here.");

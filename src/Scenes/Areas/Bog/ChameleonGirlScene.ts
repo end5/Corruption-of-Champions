@@ -67,7 +67,7 @@ export class ChameleonGirlScene {
         // Abraxas' Note: This is like the tenth edition of this doc, something got mixed up in one of the transitions, I lost a paragraph along the way. Your scene is fine though, sorry about that.
         if (player.gender == 3 && rand(2) == 0) loseToChameleonWithCockAnBallsAnCunt();
         else if (player.gender == 1 || (player.gender == 3 && rand(2) == 0)) dudesLoseToChamChams();
-        else if (player.hasVagina()) loseToChamChamWithPCCunt();
+        else if (player.vaginas.length > 0) loseToChamChamWithPCCunt();
         else {
             outputText("\n\nThe Chameleon Girl gives you a once-over, but finding no genitals, she sighs and slaps you hard enough to have you black out.");
             player.takeDamage(20);
@@ -180,7 +180,7 @@ export class ChameleonGirlScene {
         let herm: () => void = null;
         let item: () => void = null;
         if (player.cocks.length > 0) dick = manFucksChameleonWithBiggishWang;
-        if (player.hasVagina()) pussy = femaleHasWinSexWithChamCham;
+        if (player.vaginas.length > 0) pussy = femaleHasWinSexWithChamCham;
         if (player.gender == 3) herm = fuckDatChameleonAsACoolGuyGirlHerm;
         // let PC use item
         if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.cocks.length > 0) item = useAnItemOnTheChamcham;

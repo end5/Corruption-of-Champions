@@ -88,7 +88,7 @@ export class Lilium extends BazaarAbstractContent {
         let rideHer: () => void = null;
         if (player.cocks.length > 0 && player.tongueType >= TONUGE_DEMONIC) buttFuck = buttFuckTongueJeorb;
         if (player.cocks.length > 0) nippleFuck = liliumNippleFuck;
-        if (player.hasVagina()) rideHer = liliumDickRidah;
+        if (player.vaginas.length > 0) rideHer = liliumDickRidah;
         simpleChoices("Buttfuck", buttFuck, "Ride Her", rideHer, "Nipple-Fuck", nippleFuck, "", null, "", null);
     }
 

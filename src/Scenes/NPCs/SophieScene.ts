@@ -400,9 +400,9 @@ export class SophieScene implements TimeAwareInterface {
         // (FEMALE\Unsexed)(Genderless –  forces Leave.)
         if (player.cocks.length == 0) {
             outputText("Sophie looks you up and down", false);
-            if (player.hasVagina()) outputText(" and insists, \"<i>Well, keep looking; if I wanted a girl I'd be busy with one of my nieces right now.</i>\"", false);
+            if (player.vaginas.length > 0) outputText(" and insists, \"<i>Well, keep looking; if I wanted a girl I'd be busy with one of my nieces right now.</i>\"", false);
             outputText(".  She turns around and fluffs her tail-feathers at you in what is clearly a dismissal.", false);
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  What do you do?", false);
                 // [Stay&Sex] [Leave]
                 simpleChoices("Force Sex", FirstTimeSophieForceSex, "Leave", camp.returnToCampUseOneHour, "", null, "", null, "", null);
@@ -913,7 +913,7 @@ export class SophieScene implements TimeAwareInterface {
                 else dickRape = maleVictorySophieRape;
             }
             // Girl options!
-            if (player.lust >= 33 && player.hasVagina()) {
+            if (player.lust >= 33 && player.vaginas.length > 0) {
                 // All girls get cuntfuck
                 cuntFuck = sophieVictoryPussyGrind;
                 // big clit girls
@@ -1194,7 +1194,7 @@ export class SophieScene implements TimeAwareInterface {
         const x: number = player.cocks.cockThatFits(232);
 
         outputText("Sophie watches your lust-wracked body with an expression of pity.  The harpy woman saunters over and muses, \"<i>Well that was a waste.  You aren't exactly hard to get in the mood, you know?  Why don't you just come fuck me next time and skip all the foreplay?</i>\"  The motherly bird-woman takes a moment to preen her feathery hair while she watches your hands pump away at your " + cockDescript(game.player, x) + " ", false);
-        if (player.hasVagina()) outputText("and " + vaginaDescript(player, 0) + " ", false);
+        if (player.vaginas.length > 0) outputText("and " + vaginaDescript(player, 0) + " ", false);
         outputText("with relentless intensity.  Though her eyes are full of warmth, the smile painted across her face is anything but kind.\n\n", false);
 
         outputText("The harpy leans over, brushing her swollen breasts over your ", false);

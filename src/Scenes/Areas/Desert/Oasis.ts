@@ -171,7 +171,7 @@ export class Oasis {
             return;
         }
         // If you submitted willingly - chance of bad end
-        if (player.effects.getValue1Of(StatusAffects.VoluntaryDemonpack) >= 6 && player.hasVagina()) {
+        if (player.effects.getValue1Of(StatusAffects.VoluntaryDemonpack) >= 6 && player.vaginas.length > 0) {
             doNext(oasisBadEnd);
             return;
         }

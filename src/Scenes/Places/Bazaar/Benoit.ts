@@ -162,7 +162,7 @@ export class Benoit extends BazaarAbstractContent {
 
             outputText("\n\nYou wonder how a blind anything can make it in such a rough and ready place as the Bazaar, but then Benoit curls his claws protectively into what appears to be a pile of robes sitting next to him, which opens dark brown eyes and sets its muzzle on the counter, looking at you plaintively.  The Alsatian buried within the cloth looks to you like a big softy, but you're willing to concede the point as made.");
         }
-        else if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] == 0 && player.hasVagina() && (player.inHeat || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.perks.findByType(PerkLib.HarpyWomb) >= 0 || player.perks.findByType(PerkLib.Oviposition) >= 0) && (player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.pregnancyIncubation == 0) && flags[kFLAGS.BENOIT_STATUS] == 0) {
+        else if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] == 0 && player.vaginas.length > 0 && (player.inHeat || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.perks.findByType(PerkLib.HarpyWomb) >= 0 || player.perks.findByType(PerkLib.Oviposition) >= 0) && (player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.pregnancyIncubation == 0) && flags[kFLAGS.BENOIT_STATUS] == 0) {
             if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] == 0) benoitAndFemPCTalkAboutEggings();
             suggest = eggySuggest;
             suggestText = "Suggest";
@@ -244,7 +244,7 @@ export class Benoit extends BazaarAbstractContent {
             }
         }
 
-        if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] > 0 && player.hasVagina() && flags[kFLAGS.BENOIT_STATUS] == 0) {
+        if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] > 0 && player.vaginas.length > 0 && flags[kFLAGS.BENOIT_STATUS] == 0) {
             suggest = eggySuggest;
             suggestText = "Suggest";
         }
@@ -445,7 +445,7 @@ export class Benoit extends BazaarAbstractContent {
         }
         // Basilisk Womb
         // Requires: Had sex with Benoit at least twice, have vagina, select talk
-        if (((flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] > 2 && player.inte >= 60 && flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] == 0) || flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] == 2) && player.hasVagina()) {
+        if (((flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] > 2 && player.inte >= 60 && flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] == 0) || flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] == 2) && player.vaginas.length > 0) {
             outputText("You ask " + benoitMF("Benoit", "Benoite") + " if " + benoitMF("he", "she") + " has ever thought about trying to do something to help his people's plight.");
 
             outputText("\n\nThe basilisk is silent for a time, running his claws along the counter pensively.  \"<i>Yes,</i>\" he says eventually, in a quiet tone.  \"<i>I 'ave.  Away from ze mountains, I 'ave 'ad time to sink.  I am not ze demons' slave anymore, and I am a funny joke of a basilisk anyway, so I 'ave often thought about... making certain zacrifices.  If we 'ad just one female, away from zeir corruption, zen...</i>\" he trails off, sighing heavily before smiling ruefully at you.  \"<i>Zose were ze kind of soughts I 'ad before I met you.  Crazy, yes?  Even more crazy to be still sinking zem when a good woman is giving me 'er love for no reason except through ze kindness of 'er 'art.  Still... it is so frustrating, being able to sink clearly about zese sings and not being able to do anysing about it.</i>\"");
@@ -505,7 +505,7 @@ export class Benoit extends BazaarAbstractContent {
             // option 9 is non-lover non-fem only
             if (!benoitLover() && benoitMF("he", "she") == "he") choices[choices.length] = 9;
             // Special male benoit fucker only talks
-            if (benoitLover() && benoitMF("he", "she") == "he" && player.hasVagina()) {
+            if (benoitLover() && benoitMF("he", "she") == "he" && player.vaginas.length > 0) {
                 choices[choices.length] = 10;
                 choices[choices.length] = 11;
                 choices[choices.length] = 12;
@@ -620,8 +620,8 @@ export class Benoit extends BazaarAbstractContent {
 
                 outputText("\n\n“<i>It is... different,</i>” she says eventually, before laughing at the platitude.  “<i>Ze ‘ole wizzing situation, zis is terrible for instance.  I do not know [name], I am so busy during ze day and it ‘appened so suddenly, it is difficult to properly reflect.  Sometimes I am sinking somesing, like ‘ow somesing smells, and zen I catch myself sinking... would Benoit ‘ave sought zat? Is my perception different because I ‘ave different ‘ormones swirling around my ‘ead?</i>” She turns the plate around in her hands absently. “<i>Zerr are... uzzer sings, too.  Sometimes I am smelling a customer is finding me strange, and I realize I am doing somesing which is... male.  Like, somesing I would never ‘ave sought about before, walking with feet splayed instead of in a line.  A ‘undred and one sings to remember to not stand out.  Zat is wearying.</i>”");
 
-                if (benoitLover() && player.cocks.length > 0 && player.hasVagina()) outputText("\n\nShe smiles shyly at you. “<i>I am very lucky in one respect zo, because I ‘ave not ‘ad to resink what I find attractive to lie wizz you.  Whatever you ‘ave between your legs you smell and feel female to me, and zat is a comfort.</i>”");
-                else if (benoitLover() && player.cocks.length > 0 && !player.hasVagina()) {
+                if (benoitLover() && player.cocks.length > 0 && player.vaginas.length > 0) outputText("\n\nShe smiles shyly at you. “<i>I am very lucky in one respect zo, because I ‘ave not ‘ad to resink what I find attractive to lie wizz you.  Whatever you ‘ave between your legs you smell and feel female to me, and zat is a comfort.</i>”");
+                else if (benoitLover() && player.cocks.length > 0 && !player.vaginas.length > 0) {
                     outputText("She smiles shyly at you. “<i>One sing I ‘ave definitely ‘ad to resink is what I find attractive.  I did not find ze male form attractive before, so for my body to... respond... when you are close, zat is when I most feel ze disconnect between my experience and what I am now.  Per’aps zis is also why I ‘ave not sought about it too much; it is better just to rely on instinct.</i>”");
                     outputText("\n\nCharming, you say.");
                     outputText("\n\nBenoite grins wider at your affected hurt. “<i>Oh do not worry [name], you ‘ave a beautiful personality.  And ow important exactly do you sink your personal appearance is to me?</i>”");
@@ -1086,7 +1086,7 @@ export class Benoit extends BazaarAbstractContent {
     public popOutBenoitEggs(): void {
         if (player.vaginas.length == 0) {
             outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.genderCheck();
         }
         outputText("\nA sudden pressure in your belly rouses you, making you moan softly in pain as you feel your womb rippling and squeezing, the walls contracting around the ripe eggs inside you.  You drag yourself from your bedding, divesting yourself of your lower clothes and staggering out into the middle of the camp.  Squatting upright, you inhale deeply and start to concentrate.");

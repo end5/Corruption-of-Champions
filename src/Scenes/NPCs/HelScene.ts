@@ -199,7 +199,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("She collapses atop you, panting heavily.  \"<i>That.  Was.  Awesome,</i>\" she laughs, reaching up to give your nipple a pinch as she nestles her head on you.  Your cock begins to deflate inside her as trickles of spooge spill out around your girth, but she doesn't seem intent on leaving any time soon, and you have to admit, the warmth of her against you is more than nice.  The salamander gives you one last grin and withdraws her tail from your lips.  A moment later, she slides it under your head like a pillow, and closes her eyes, exhausted.  Soon, you, too, fall into a peaceful sleep.\n\n", false);
         }
         // Player Loss – Rape – Female
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("\"<i>Hmm, I've always loved a tumble with another woman,</i>\" the salamander admits, stripping your armor off with a speed so quick that you can't help but think she's had plenty of experience.  ", false);
             if (player.gender == 3) outputText("\"<i>Though not exactly a woman, are we?</i>\" she laughs, giving your " + cockDescript(game.player, x) + " a quick stroke.  ", false);
             outputText("She takes a step forward and kneels down atop your shoulders, pinning your arms to the ground and pushing her cunt toward your face.  \"<i>And I love taking charge even more! Now lick, and I might let you get off, too.</i>\"\n\n", false);
@@ -319,7 +319,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             return;
         }
         let getLicked: () => void = null;
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             getLicked = getLickedByHel;
         }
         let fuckVag: () => void = null;
@@ -367,7 +367,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
                 bodyText = "Mount Her";
                 bodyButt = mountHel;
             }
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 bodyText2 = "Hanging69";
                 bodyButt2 = helVaginaTaur69;
             }
@@ -430,7 +430,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("She gasps with the sudden change, but grins wolfishly at you.  Without missing a beat, she takes her tits in hand and starts to work them along the length of your shaft, pumping your " + cockDescript(game.player, 0) + " for all it's worth as her prehensile tail slips into her now vacant cunt, pleasuring her as she titfucks you.  You grab hold of her shoulders and, taken by wild urge, lean down and kiss the salamander.  She returns it, thrusting her tongue into your mouth and redoubling her titfuck.\n\n", false);
 
         outputText("Finally you cum!  You grit your teeth and pull out of the kiss as you make one last, mighty thrust into her titflesh.  Never stopping, your lover takes your cock into her mouth and starts milking it with her tongue, lips, and hands", false);
-        if (player.hasVagina()) outputText(" while releasing her breasts to finger your " + vaginaDescript(player, 0), false);
+        if (player.vaginas.length > 0) outputText(" while releasing her breasts to finger your " + vaginaDescript(player, 0), false);
         outputText(".  You run your hands through her hair as you shoot strings of jism again and again into her mouth until her cheeks start to bulge.  When you're through, she makes a loud gulp and licks her lips, grinning at you wide enough that a tiny amount of your cum leaks from her cheeks.\n\n", false);
 
         outputText("Exhausted, you can't help but collapse into her cleavage, your cheek coming to rest between her soft breasts.  You smile at her, and cup one of them even as she begins to stroke your cheek, smiling.  Your eyes feel heavy, and exhaustion begins to overtake you.  Slowly, you drift off into a peaceful sleep in the embrace of your lover.", false);
@@ -619,9 +619,9 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             outputText(", with your ", false);
             if (player.cocks.length > 0) {
                 outputText("cock", false);
-                if (player.hasVagina()) outputText(" and ", false);
+                if (player.vaginas.length > 0) outputText(" and ", false);
             }
-            if (player.hasVagina()) outputText("vagina", false);
+            if (player.vaginas.length > 0) outputText("vagina", false);
             outputText(" contracting and squirting all over your lover", false);
         }
         outputText(", writhing in pleasure as her tail slowly withdraws from your " + assholeDescript(player) + ".\n\n", false);
@@ -913,7 +913,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("The sight of the salamander berserker on her knees stirs the fire in your loins, and in moments you've stripped out of your " + player.armorName + " and advanced upon her.  She looks up at you, gritting her teeth as if preparing to strike – you preempt her with a hard kick in the chest, knocking her on her back, then kneel down and straddle her, pinning her arms down underneath your knees as you bring your " + assholeDescript(player) + " to hover over her face.\n\n", false);
 
         outputText("She gets the idea in a hurry, and you feel her forked, serpentine tongue dart out and begin exploring your thighs, ass cheeks, and crotch.", false);
-        if (player.hasVagina()) outputText("  Her tongue begins to zero in on your " + vaginaDescript(player, 0) + ", but you give her a quick penalty swat on the tits.  You've got other plans!", false);
+        if (player.vaginas.length > 0) outputText("  Her tongue begins to zero in on your " + vaginaDescript(player, 0) + ", but you give her a quick penalty swat on the tits.  You've got other plans!", false);
         outputText("\n\n", false);
 
         outputText("After a few moments of this, her long tongue traces its way along your " + buttDescription(player) + ", causing small shudders of pleasure to rock through you, but she's only just getting to the main event.  You force yourself to relax your sphincter as her tongue flicks once, twice, thrice across your " + assholeDescript(player) + ".  In a heartbeat, she's in!  You gasp as her long, slender tongue flicks and writhes within you, teasing and pleasuring the sensitive muscles of your ass as she works more and more of it in.\n\n", false);
@@ -1014,7 +1014,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("You have to give him a nasty slap on the cheek before he actually does anything, though.  But when he does, it feels heavenly.  His tongue is large, flat, and VERY wet, licking at your thighs and ass so that you shudder at the strange, not altogether unpleasant, feeling.  Finally, though, he comes to his prize.  You shiver with anticipation as he gives your waiting hole an experimental lick, testing the waters.  An encouraging squeeze between your " + hipDescription(player) + " is enough to set him working.  His massive tongue finally penetrates you, slipping into your waiting, sensitive hole, making you gasp in delight as he slathers your inner walls with his tongue.\n\n", false);
 
         outputText("Happily, you start to buck your hips on his muzzle, riding his tongue like a heavily-lubed prehensile cock.  You look from the 'taur to the salamander facing you, impaled on the bull's cock like you are on his tongue.  She's gorgeous, you think – bucking wildly on his shaft, her red hair whipping in the breeze as her massive tits bounce in time with her.  You can't stop yourself from reaching across the bull's body and kissing her, full on the lips.  She starts, missing a thrust, but in the blink of an eye is returning the kiss, entwining her reptilian tongue with yours as you begin to fuck the bull in unison, your bucking hips coming into sync.  All too soon, though, you can sense the tension building in the bull, and he begins to bellow into your ", false);
-        if (player.hasVagina()) outputText("crotch", false);
+        if (player.vaginas.length > 0) outputText("crotch", false);
         else outputText("ass", false);
         outputText(", announcing his impending orgasm.\n\n", false);
 
@@ -1426,7 +1426,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         const dick4: number = 0;
         let vag: () => void = null;
         // (If PC is Herm::)
-        if (player.cocks.length > 0 && player.hasVagina()) {
+        if (player.cocks.length > 0 && player.vaginas.length > 0) {
             outputText("You'll need to decide which of your sex organs to use on the hot redheads.\n\n", false);
             if (player.cocks.cockThatFits(85) >= 0) {
                 dick = stuffIzzyAndSalamanderWithDicks;
@@ -1434,7 +1434,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             else outputText("<b>You're too big to fuck them with your man-bits...</b>", false);
             vag = izzySallyThreeSomeVagoozlaz;
         }
-        else if (player.hasVagina()) vag = izzySallyThreeSomeVagoozlaz;
+        else if (player.vaginas.length > 0) vag = izzySallyThreeSomeVagoozlaz;
         else if (player.cocks.length > 0) {
             if (player.cocks.cockThatFits(85) >= 0) {
                 dick = stuffIzzyAndSalamanderWithDicks;
@@ -1801,7 +1801,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nYou grab Hel's shoulders and throw her onto the ground, your ");
             if (player.cocks.length > 0) outputText("[cock] stiffening, ready to go again");
             if (player.gender == 3) outputText(" and your ");
-            if (player.hasVagina()) outputText("[vagina] already soaked with your lustful secretions");
+            if (player.vaginas.length > 0) outputText("[vagina] already soaked with your lustful secretions");
             if (player.gender == 0) outputText("ass ready to be fucked again");
             outputText(".\n\n\"<i>Well, we're off to a good start!</i>\" Hel laughs, pulling you down into her soft, warm cleavage.  \"<i>Come on then, lover mine - show me what you've got!</i>\"");
         }

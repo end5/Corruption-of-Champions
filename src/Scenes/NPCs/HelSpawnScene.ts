@@ -135,8 +135,8 @@ export class HelSpawnScene extends NPCAwareContent {
 
         outputText("\n\n\"<i>I don't just like you, [name] - I mean, I do.  Like you, I mean.  But it's... it's more than that, you know?  Sure, I've said the word, but I say 'love' to a lot of people, a lot of things.  I love your ");
         if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
-        if (player.hasVagina() && player.cocks.length > 0) outputText(" and your [chest] and your [vagina]");
-        if (!player.cocks.length > 0 && player.hasVagina()) outputText(" [vagina] and [chest]");
+        if (player.vaginas.length > 0 && player.cocks.length > 0) outputText(" and your [chest] and your [vagina]");
+        if (!player.cocks.length > 0 && player.vaginas.length > 0) outputText(" [vagina] and [chest]");
         outputText(" and everything else about you.  But... but that doesn't mean anything.  It doesn't.  I say I love minotaur dicks, and centaurs, and those two fox pricks at the bar filling both my holes, and I love beer and fighting and ramming my tail up peoples' assholes.  But that's not real love, right?  Love is - oh, god, I'm making a mess of this.  Again. I keep doing this; it always works out so much better in my head.</i>\"");
 
         outputText("\n\n\"<i>I guess what I'm trying to say is... I love you, [name].  I really, really do.  Not fake, shitty, stupid love; not me saying it in the heat of the moment.  I've been thinking about this for a while, now.  You've been so good to me [name], better than I deserve.  You saved my family, you've given me a place to live, and more kindness than I could ever have imagined when I jumped you in the plains so very long ago.</i>\"");
@@ -175,7 +175,7 @@ export class HelSpawnScene extends NPCAwareContent {
         spriteSelect(68);
         outputText("You're not from here, so you probably don't know much about salamanders.  Basically, we're effectively infertile.  I can get filled with gallons of cum day in and day out, and chances are none of it will take inside me.  I've always thought I could slut around as much as I wanted, and I'd never have to worry about the consequences.  But... that's not forever, I guess.  When a salamander girl finds the person she wants to be with forever, ");
         // if PC is female/herm:
-        if (player.hasVagina()) outputText("even another woman, it seems, ");
+        if (player.vaginas.length > 0) outputText("even another woman, it seems, ");
         outputText("we... change.</i>\"");
 
         outputText("\n\nHel reaches up and undoes the clasp on her cloak.  When it falls away, your eyes are drawn immediately to her tail - once burning with a blood-red hellfire, her leathery tail is now surrounded by a pale radiance, shimmering like white gold.  Your eyes widen, but Hel flinches back as you try to approach.  \"<i>It's called the Pale Flame, [name].  Just like it looks.  When a 'mander girl finds the person she wants to be with, our bodies change.  While I'm like this... I'm as fertile as a goblin, and... and I </i>want<i> to be.  I want... I need... a child, [name].  I want to be pumped full of cum until I'm bloated, to bear a little salamander for us to raise and love.  ");
@@ -501,7 +501,7 @@ export class HelSpawnScene extends NPCAwareContent {
         clearOutput();
         spriteSelect(68);
         outputText("\"<i>Is that so? Yeah, I can see it.  ");
-        if (player.cocks.length > 0 && !player.hasVagina()) outputText("If I were a guy, I'd want a big strong son to hang out with, too.  Take him fishing, teach him how to fight the way you do... you'll make a great dad, my love.  I'm sure you will.");
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText("If I were a guy, I'd want a big strong son to hang out with, too.  Take him fishing, teach him how to fight the way you do... you'll make a great dad, my love.  I'm sure you will.");
         else outputText("Would be nice to have a man around here, you know?  I miss hanging around the boys back home, watching 'em strut like peacocks for every passing girl.");
         outputText(" And any son of mine is going to be a real lady killer, mark my words.  We're going to have to fight off whole hordes of goblin sluts, all looking for a piece of our handsome little boy before you know it.</i>\"");
         outputText("\n\nYou share a quiet laugh with your lover before leaving her with a kiss and a final pat on the belly - and feeling the little kick of your spawn reacting to you.");
@@ -514,7 +514,7 @@ export class HelSpawnScene extends NPCAwareContent {
         spriteSelect(68);
         outputText("\"<i>Yeah, a girl would be pretty great.  ");
         // if PC is male:
-        if (player.cocks.length > 0 && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             outputText("I dunno if you had any sisters growing up, [name], but let me warn you: a little girl, especially a little salamandress, is going to be a hell of a handful.  But I can just see you when she's all grown up, packing a big old sword and threatening every boy that wants a piece of her: 'Treat her right or you'll have the CHAMPION to deal with.  Rawr.'");
         }
         else outputText("We're going to be a gaggle of tittering girls before you know it, though.  Salamanders grow up so fast, [name]...  I just hope she doesn't turn out like me, you know?  I don't know if I could stomach seeing my little girl becoming a wanton slut like her mom.  I might get jealous, after all...");

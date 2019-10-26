@@ -88,7 +88,7 @@ export class Doppleganger extends Monster {
             case 2:
                 outputText("\n\n“<i>This, though... this I like, [name].</i>” [He] closes [his] eyes and");
                 if (player.cocks.length > 0) outputText(" strokes [his] [cock]");
-                else if (player.hasVagina()) outputText(" slides two fingers into [his] [vagina] and gently frigs [himself]");
+                else if (player.vaginas.length > 0) outputText(" slides two fingers into [his] [vagina] and gently frigs [himself]");
                 else outputText(" slips a hand ");
                 outputText(" underneath [his] " + this.armorName + ". The sheer bizarreness of seeing yourself masturbate gives you pause; again the unreality intensifies, and you feel yourself shimmer uncertainly. “<i>Once I’m out of here, I’m going to hang onto this. Revel in not changing my form for once, as a tribute to the kind soul who gave me it!</i>”");
                 outputText("\n\nIt’s getting harder to ignore the way your body shimmers and bleeds contrast at the edges, whilst your reflection only becomes more and more sharply defined.");
@@ -204,14 +204,14 @@ export class Doppleganger extends Monster {
         }
 
         if (player.vaginas.length > 0) {
-            this.createVagina();
+            this.vaginas.createVagina();
             (this.vaginas[0] as VaginaClass).vaginalLooseness = player.vaginas[0].vaginalLooseness;
             (this.vaginas[0] as VaginaClass).vaginalWetness = player.vaginas[0].vaginalWetness;
             (this.vaginas[0] as VaginaClass).virgin = player.vaginas[0].virgin;
         }
         // Genderless get forced to have a cunny
         if (player.vaginas.length == 0 && player.cocks.length == 0) {
-            this.createVagina();
+            this.vaginas.createVagina();
             (this.vaginas[0] as VaginaClass).vaginalLooseness = 2;
             (this.vaginas[0] as VaginaClass).vaginalWetness = 6;
             (this.vaginas[0] as VaginaClass).virgin = false;

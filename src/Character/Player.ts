@@ -1329,7 +1329,7 @@ export class Player extends Character {
     // Second parameter: intensity, an integer multiplier that can increase the
     // duration and intensity. Defaults to 1.
     public goIntoHeat(output: boolean, intensity: number = 1): boolean {
-        if (!hasVagina() || pregnancyIncubation != 0) {
+        if (this.vaginas.length <= 0 || pregnancyIncubation != 0) {
             // No vagina or already pregnant, can't go into heat.
             return false;
         }

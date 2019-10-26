@@ -288,7 +288,7 @@ Optional Morning Oral for small-membered males*/
             else {
                 outputText("No matter what you do, you can't get the normally-industrious cow-girl to focus right now.  She's obviously bored with your attempts to teach her, and she spends the entire lesson trying to tease you with her body.  It's more effective than you care to admit", false);
                 if (player.cocks.length > 0) outputText(", and you leave the lesson with certain stiffness in your loins.", false);
-                else if (player.hasVagina()) outputText(", and you leave the lesson with wet panties.", false);
+                else if (player.vaginas.length > 0) outputText(", and you leave the lesson with wet panties.", false);
                 else outputText(".", false);
                 // (+big lust)
                 dynStats("lus", 25);
@@ -541,7 +541,7 @@ Optional Morning Oral for small-membered males*/
 
             outputText("Isabella reaches between her legs to ", false);
             if (player.balls > 0) outputText("squeeze your balls", false);
-            else if (player.hasVagina()) outputText("rub your soaked vulva and " + clitDescription(player), false);
+            else if (player.vaginas.length > 0) outputText("rub your soaked vulva and " + clitDescription(player), false);
             else outputText("caress your taint", false);
             if (isabellaAccent()) outputText(".  She teases you with a slight undercurrent of disdain in her melodious voice, \"<i>Cumming already?  Very vell, go on zen.  Let your disgusting, obscene cock control you.  I can feel it trickling and dribbling on mein bum.  Do vat your fat, over-sized dick commands and cum all over Momma Isabella's butt.  Big, thick pricks always seem to cum vay too fast.</i>\"\n\n", false);
             else outputText(".  She teases you with a slight undercurrent of disdain in her melodious voice, \"<i>Cumming already?  Very well, go on then.  Let your disgusting, obscene cock control you.  I can feel it trickling and dribbling on my bum.  Do what your fat, over-sized dick commands and cum all over Momma Isabella's butt.  Big, thick pricks always seem to cum way too fast.</i>\"\n\n", false);
@@ -1043,12 +1043,12 @@ Optional Morning Oral for small-membered males*/
                 changed = true;
             }
             // ([Female/herm: if breasts smaller than G-cup and not lactating a whole lot]
-            if (player.hasVagina() && player.breasts.biggestTitSize() < 15 && player.breasts.biggestLactation() < 2) {
+            if (player.vaginas.length > 0 && player.breasts.biggestTitSize() < 15 && player.breasts.biggestLactation() < 2) {
                 outputText("  Unbeknownst to you, Isabella's potent cow-gas has gone to town on your " + breastDescript(game.player, 0) + ", growing them to an obnoxious G-cup... no, not exactly growing, you realize, but filling... you give one of your swollen teats a squeeze, not quite surprised by the gout of milk that stains your " + player.armorName + ".\n\n", false);
                 changed = true;
             }
             // ([Female/herm: if breasts >G-cup and lactating]
-            else if (player.hasVagina() && player.breasts.biggestLactation() >= 2) {
+            else if (player.vaginas.length > 0 && player.breasts.biggestLactation() >= 2) {
                 outputText("  Propped up as you are with your soft " + breastDescript(game.player, 0) + " nestling under your chin, you can easily see the growing puddle of alabaster liquid seeping into the ground.  You heave yourself up, the effort rewarded with a jet of milk shot into the air as your evidently over-laden boobs jostle about inside your " + player.armorName + ". It seems the effects of Isabella's gas has ramped your lactation to overdrive.", false);
                 changed = true;
             }
@@ -1061,7 +1061,7 @@ Optional Morning Oral for small-membered males*/
                 changed = true;
             }
             // [if female/herm and player race not cow-girl]
-            if (changed && player.hasVagina() && race(player) != "cow-girl") {
+            if (changed && player.vaginas.length > 0 && race(player) != "cow-girl") {
                 outputText("  \"<i>Goodness, look at you!</i>\" Isabella exclaims, waving away the remnant wisps of the gassy mist.  \"<i>Surely, you're giving me a run for ", false);
                 if (isabellaAccent()) outputText("mein money now, ja?", false);
                 else outputText("my money now, darling!", false);
@@ -1114,7 +1114,7 @@ Optional Morning Oral for small-membered males*/
             // if meets any requirements for cow-y TF
             if (player.lowerBody != LOWER_BODY_TYPE_HOOFED || player.horns <= 0 || player.hornType != HORNS_COW_MINOTAUR || player.earType != EARS_COW || player.tailType != TAIL_TYPE_COW || (player.cocks.length > 0 && player.cocks.longestCockLength() < 18)) {
                 outputText("You're not surprised when you take the now-familiar cow-" + mf(player, "boy", "girl") + " form, ", false);
-                if ((!player.cocks.length > 0 || rand(2) == 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n", false);
+                if ((!player.cocks.length > 0 || rand(2) == 0) && player.vaginas.length > 0) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n", false);
                 else if (player.cocks.length > 0) outputText("Isabella not able to keep a little frustration from her face as your dick grows to enviable size.\n\n", false);
             }
             // if all requirements already filled (already a busty cow-girl/well-endowed cowboy)
@@ -1188,7 +1188,7 @@ Optional Morning Oral for small-membered males*/
         else {
             outputText("Flashing a smirk, you beckon her your way, stripping from your " + player.armorName + ".  With delicate and deliberate motions you pull the hem of Isabella's milk-stained blouse down, reaching into the depths of her cleavage and taking hold of her oversized breasts.  It takes effort to heave the heavy, fluid-filled mammaries up and out of her shirt.  Once exposed to the open air, her quadruplet of nipples twitch and stiffen, only swelling further as you alternatingly tease her teats with the edge of your fingernail.  You trace little circles along the areola, running up and over the nubs; your gentle-but-devastating caressing technique sets Isabella all a-shiver, knees knocking together in hardly-contained ecstasy.  If given enough time, you figure you could push the cow-girl to climax merely from nipple stimulation, but your own body demands satisfaction as well.\n\n", false);
             // male
-            if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
+            if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
                 outputText("Figuring to put your oversized organ to use, you pull Isabella's tits apart and slap your hard length between them.  As soon as she has figured out your intentions, the cow-girl moves to take over, mashing her pillowy endowments together around your maleness.  Perhaps it was from the gas, but what should be a simple titfuck is driving you insane with pleasure; her warm, sweaty boob flesh contours to the curves of your shaft and head as well as any pussy.  You can't help yourself – you begin to pump your hips, your tip poking out to dance tantalizingly above Isabella's face before withdrawing, only to peek out again seconds later.  The cow-girl smiles and opens wide, her long tongue slithering free from its shelter.\n\n", false);
 
                 outputText("She expertly licks and flicks at the underside of your cock during your next thrust, sending an almost electric current of pleasure through you.  You two find a rhythm quickly, grinding, thrusting, and licking in perfect unison.  As you come closer to orgasm, you begin increasing the pace; your lover is more than happy to match.  Suddenly, Isabella releases her hold on her bosom and instead wraps her arms around your " + buttDescription(player) + ", pulling you toward her and her wide-open mouth. Your legs catch on her boobs, but she doesn't even notice, closing her full lips around as much of your shaft as she can fit.  As good as her warm, wet mouth feels, her tongue demands the majority of your attention.  It besieges your junk completely, wrapping around the shaft, tickling the undercarriage, and even stroking – a perfect prehensile ejaculatory aid.\n\n", false);

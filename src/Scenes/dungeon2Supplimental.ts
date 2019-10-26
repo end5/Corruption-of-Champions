@@ -191,9 +191,9 @@ export function impGangUber(): void {
             outputText("are pulled tight by your " + multiCockDescript(player) + ", ", false);
             if (player.cocks.length > 1) outputText("each ", false);
             outputText("beading a drop of pre-cum at the tip", false);
-            if (player.hasVagina()) outputText(", and in addition, the clothes around your groin ", false);
+            if (player.vaginas.length > 0) outputText(", and in addition, the clothes around your groin ", false);
         }
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("become stained with feminine moisture", false);
             if (player.clitLength > 3) outputText(" as your clit swells up in a more sensitive imitation of a cock", false);
         }
@@ -237,7 +237,7 @@ export function loseToImpMob(): void {
         outputText(" openings on your chest are plugged with a tumescent demon-cock.\n\n", false);
     }
     // (SINGLE PEN)
-    if (!player.hasVagina()) {
+    if (!player.vaginas.length > 0) {
         outputText("Most of the crowd centers itself around your lower body, taking a good long look at your " + assholeDescript(player) + ".  An intrepid imp steps forwards and pushes his member into the unfilled orifice.  You're stretched wide by the massive and unexpectedly forceful intrusion.  The tiny corrupted nodules stroke every inch of your interior, eliciting uncontrollable spasms from your inner muscles.  The unintentional dick massage gives your rapist a wide smile, and he reaches down to smack your ass over and over again throughout the ordeal.", false);
         player.buttChange(12, true, true, false);
         outputText("\n\n", false);
@@ -255,7 +255,7 @@ export function loseToImpMob(): void {
     }
     // (ORGAZMO)
     outputText("As one, the crowd of demons orgasm.  Hot spunk gushes into your ass, filling you with uncomfortable pressure.  ", false);
-    if (player.hasVagina()) outputText("A thick load bastes your pussy with whiteness, and you can feel it seeping deeper inside your fertile womb.  ", false);
+    if (player.vaginas.length > 0) outputText("A thick load bastes your pussy with whiteness, and you can feel it seeping deeper inside your fertile womb.  ", false);
     outputText("Your mouth is filled with a wave of thick cream.  Plugged as you are by the demon's knot, you're forced to guzzle down the stuff, lest you choke on his tainted baby-batter.", false);
     if (player.breasts.biggestTitSize() > 1) {
         outputText("  More and more hits your chin as the dick sandwiched between your tits unloads, leaving the whitish juice to dribble down to your neck.", false);
@@ -270,13 +270,13 @@ export function loseToImpMob(): void {
     else {
         outputText("and " + sMultiCockDesc(player) + " unloads, splattering the many demons with a bit of your own seed.  You'd smile if your mouth wasn't so full of cock.  At least you got to make a mess of them!", false);
     }
-    if (player.hasVagina()) {
+    if (player.vaginas.length > 0) {
         outputText("  Your cunt clenches around the invading cock as orgasm takes you, massaging the demonic tool with its instinctual desire to breed.  Somehow you get him off again, and take another squirt of seed into your waiting cunt.", false);
     }
     outputText("\n\n", false);
 
     outputText("Powerless and in the throes of post-coital bliss, you don't object as you're lifted on the table", false);
-    if (!player.hasVagina()) outputText(" and forced to start drinking bottle after bottle of succubi milk", false);
+    if (!player.vaginas.length > 0) outputText(" and forced to start drinking bottle after bottle of succubi milk", false);
     outputText(".  You pass out just as round two is getting started, but the demons don't seem to mind....", false);
     doNext(loseToImpMobII);
 }
@@ -289,7 +289,7 @@ export function loseToImpMobII(): void {
     outputText(" tits, wobbling with every twist and movement you make.  You're stark naked, save for a sheer and somewhat perverse nurse's outfit.   The room around you looks to be empty, though you can see a number of blankets piled in the corners and a few cages full of spooge-covered faeries, all snoring contently.\n\n", false);
 
     outputText("Eventually a lone imp enters the room.  It's Zetaz!  He looks you up and down and decrees, \"<i>You're ready.</i>\"  You struggle to shout him down, but all that escapes the gag in your mouth is incomprehensible gibberish.  He chuckles and flips a switch on the wall, and suddenly the most heavenly vibration begins within your sopping twat.", false);
-    if (!player.hasVagina()) {
+    if (!player.vaginas.length > 0) {
         outputText("...Wait, your what?  You have a cunt now!?", false);
     }
     outputText("  Your eyes cross at the pleasure as your mind struggles to figure out why it feels so good.\n\n", false);
@@ -335,7 +335,7 @@ export function impGangGetsRapedByMale(): void {
     outputText("Grabbing the center one by his horns, you pull him forwards until your shaft is pressed against the back of his throat.  He gags audibly, but you pull him back before it can overwhelm him, only to slam it in deep again.  ", false);
     outputText("The girly imp to your left, seeing how occupied your " + cockDescript(game.player, 0) + " is, shifts his attention down to your ", false);
     if (player.balls > 0) outputText(ballsDescriptLight(player), false);
-    else if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
+    else if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0), false);
     else outputText("ass", false);
     outputText(", licking with care", false);
     if (player.balls == 0) outputText(" and plunging deep inside", false);
@@ -427,9 +427,9 @@ export function encapsulationPodAI(): void {
         outputText("You shiver from the feeling of warm wetness crawling up your " + legs(player) + ".   Tentacles brush against your ", false);
         if (player.balls > 0) {
             outputText(ballsDescriptLight(player) + " ", false);
-            if (player.hasVagina()) outputText("and ", false);
+            if (player.vaginas.length > 0) outputText("and ", false);
         }
-        if (player.hasVagina()) outputText(vaginaDescript(player, 0) + " ", false);
+        if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0) + " ", false);
         else if (player.balls == 0) outputText("taint ", false);
         outputText("as they climb ever-further up your body.  In spite of yourself, you feel the touch of arousal licking at your thoughts.\n", false);
         if (player.lust < 35) {
@@ -450,7 +450,7 @@ export function encapsulationPodAI(): void {
             outputText(", it begins to squeeze and relax to a pleasant tempo.  ", false);
         }
         else {
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("prods at your groin, circling around your " + vaginaDescript(player, 0) + " deliberately, as if seeking other toys to play with.  ", false);
                 if (player.clitLength > 4) outputText("It brushes your " + clitDescription(player) + " then curls around it, squeezing and gently caressing it with a slow, pleasing rhythm.  ", false);
             }
@@ -463,7 +463,7 @@ export function encapsulationPodAI(): void {
             if (player.cocks.length == 2) outputText(cockDescript(game.player, 1) + " gets the same treatment, and soon both of your " + multiCockDescriptLight(player) + " are quite happy to be here.  ", false);
             else outputText(multiCockDescriptLight(player) + " get the same treatment and soon feel quite happy to be here.  ", false);
         }
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("The violation of your " + vaginaDescript(player, 0) + " is swift and painless.  The fungus' slippery lubricants make it quite easy for it to slip inside, and you find your " + vaginaDescript(player, 0) + " engorging with pleasure in spite of your need to escape.  The tentacle folds up so that it can rub its stalk over your " + clitDescription(player) + ", ", false);
             if (player.clitLength > 3) outputText("and once it discovers how large it is, it wraps around it and squeezes.  It feels good!  ", false);
             else outputText("and it has quite an easy time making your bud grow hard and sensitive.  The constant rubbing feels good!  ", false);
@@ -510,7 +510,7 @@ export function encapsulationPodAI(): void {
         outputText("You're floating in pure liquid bliss.  Thoughts melt away before they can form, and every inch of your body is being caressed, squeezed, or penetrated by the warm, slime-slicked tentacles.  Nearly every muscle in your body goes completely slack as you're cradled with bliss.  Without your thoughts or stress bothering you, the pleasure swiftly builds to a crescendo.\n\n", false);
 
         outputText("The wave of need starts out inside your crotch, begging to be let out, but you can't even be bothered to move your " + hipDescription(player) + " anymore.  Without your help, release stays just out of reach, but the tentacles working your body seem intent on spurring it on.  The one inside your " + assholeDescript(player) + " begins to pump more quickly, and with the added pressure, you cum quickly.  ", false);
-        if (!player.hasVagina()) {
+        if (!player.vaginas.length > 0) {
             outputText("Your body twitches weakly, too relaxed to move while it gets off from anal penetration.", false);
         }
         else outputText("Your body twitches weakly, too relaxed to move while it gets off from being double-penetrated.", false);
@@ -790,10 +790,10 @@ export function valaGetsSexedPtDuece(): void {
         // (small-to-medium girth dicks)
         if (x >= 0) {
             outputText("Vala's pussy surrounds you like a quivering mouth, but she's simply too used for you to get much friction. The fairy barely even notices, grinding her front against you, tits rubbing your chest like a liquid massage, cream leaking down your torso. She hooks her legs around your " + buttDescription(player) + " and, using her wings, lifts up before dropping down again. Although she's too loose for your preference, the girl seems to be getting off just fine by using your " + cockDescript(game.player, x) + " as a fucking post. You spot the wooden rack to one side of the room and the variety of carved dildos worked into the pegging ladder. A wicked thought crosses your mind, but lacking any other options, you guess you could at least give it a try. Pulling the fairy over to the lacquered bench, you choose one that seems like a likely fit and position your " + assholeOrPussy(player) + " over the carved cock. When the fairy drops herself onto you next, she forces you down with her, penetrating you on the peg. It proves to be a bit thicker than you realized, however, and you gasp at the weight that settles into your gut. You try to get up and select a smaller peg, but the fairy's jack-hammering flight keeps you rooted on the post. Your " + cockDescript(game.player, x) + " swells from the stimulation your ", false);
-            if (player.hasVagina()) outputText("cunt", false);
+            if (player.vaginas.length > 0) outputText("cunt", false);
             else outputText("prostate", false);
             outputText(" is receiving and the fairy's frenzied pace becomes your own. You lift off as quickly as possible just so that her descent will shove the full length of the polished wood back inside your clenching ", false);
-            if (player.hasVagina()) outputText("slit.\n\n", false);
+            if (player.vaginas.length > 0) outputText("slit.\n\n", false);
             else outputText("rectum.\n\n", false);
 
             outputText("You feel your orgasm building and you manage to lift off of the peg entirely, quickly sliding down to the next biggest one, before the fairy begins her decent. This time, she uses her wings to provide additional force and drives you down, impaling you on the foot-long dildo and your cock explodes. The fairy bucks wildly against you, her slavering pussy clenching hard enough to actually squeeze you for once, eagerly sucking up every drop of your seed, her fingers wildly rubbing her clit as she jills herself off in desperate orgasm.\n\n", false);
@@ -812,7 +812,7 @@ export function valaGetsSexedPtDuece(): void {
             outputText("She moans in a series of small, cute gasps and her pussy clenches your " + cockDescript(game.player, 0) + " as tightly as the makeshift cock-ring. You savor the sweet shivers that run up her spritely body, fingers clenching around your arms and legs wrapping about your " + hipDescription(player) + " to slam deeper, even taking the chained shackle at your base into her gushing slit. It feels like a flood is released from the fairy's gaping box, warm fluid splashing around your bulging length and raining down to leave a thin, clear puddle under you. You bite your lip and slide your fingers into her vice-like pussy, trying to unhook the shackle around your cock. The added insertion gives the girl enough to climax again, her body shaking violently against yours, squirting her hot girl cum over your hand, making it difficult to spring the catch. The pressure in your loins is getting painful now, and you lean against a wall, using both hands to try to unclap the fetters around your " + cockDescript(game.player, 0) + ". Between her wings and the chain, she manages to stay firmly locked onto your root, grinding orgasmically as you push more fingers past her pulsing vulva and fumble at the cock-ring.\n\n", false);
 
             outputText("When she cums a third time, her rose-smelling lubricant utterly soaks your hands and you nearly wail with frustration. Clenching your teeth, you grunt and grab the fairy's cock-widened hips. You jam into her as hard and fast as you can, trying to fuck through the pressure and break your shackles with the force of your cum. The fairy is lost in her lust, her hands rubbing her clit while the other reaches around your back. She slides a finger upward ", false);
-            if (player.hasVagina()) outputText("nuzzling your joy buzzer", false);
+            if (player.vaginas.length > 0) outputText("nuzzling your joy buzzer", false);
             else outputText("tickling your prostate", false);
             outputText(" and you thrust more forcefully than she was braced for, finally lifting the fey cocksleeve off your root. Without wasting a moment, you pull the locking bar out of the shackle and finally allow your orgasm to spew into her waiting womb. You slip in the fairy's cum puddle and fall on your " + buttDescription(player) + " as your " + cockDescript(game.player, 0) + " dumps its long-delayed loads inside the distended girl. The feeling of cum filling her pussy drives her to a fourth orgasm, her toes curling and wings flapping wildly. She's so tightly clenched around you that there's nowhere for your cum to run out, so her womb bloats to a well-feasted fatness and she loses the strength to keep writhing in your lap, simply collapsing into your ", false);
             if (player.breasts.biggestTitSize() < 1) outputText("chest", false);
@@ -864,7 +864,7 @@ export function loseToVala(): void {
     if (player.gender == 0) {
         outputText("", true);
         outputText("Vala forces a bottle into your throat before your defeated form has a chance to react, and you grunt with pleasure as a new gash opens between your " + legs(player) + "!", false);
-        player.createVagina();
+        player.vaginas.createVagina();
         player.gender = 2;
         doNext(loseToValaFemale);
     }
@@ -1024,7 +1024,7 @@ export function badEndValaNumber2Pt2(): void {
 
     outputText("There's no time to contemplate your fate, however, as the imp's black poison seems to take hold and you feel a burning all along your body. ", false);
     // (No vagina:
-    if (!player.hasVagina()) {
+    if (!player.vaginas.length > 0) {
         outputText("Between your thighs, a wet slurping tears through the air and a sudden seething heat fills your groin as a fresh pussy opens up, just under your dick.  ", false);
     }
     // (No breasts:
@@ -1552,7 +1552,7 @@ export function cleansedValaFuckHerBrainsOutPtII(): void {
         if (player.cor > 40) dynStats("cor", -.3);
     }
     // Part 2 - girls
-    else if (player.hasVagina()) {
+    else if (player.vaginas.length > 0) {
         // [All characters]
         outputText("Vala's irrepressible energy is restored in short order, and she redresses swiftly barely noticing the tiny milk spots staining her green dress or the thin trail of lubrication leaking between her legs as she flutters a foot off the ground. She gives you a kiss on the cheek and winks affectionately. \"<i>Visit me anytime, okay " + player.short + "? For a free drink or... anything else,</i>\" she winks. She bundles her hair back up into a sensible bun and flies out of the stockroom, ignoring the curious glances that follow her as she retrieves her plain apron. You sigh appreciatively and retrieve your own clothes only to find that you've grown! Whatever growth drug the imps gave to Vala must not be entirely out of her system, because her milk seems to have added an extra inch to your frame.", false);
         if (player.tallness >= 120) {
@@ -1935,7 +1935,7 @@ export function loseToZetaz(): void {
     if (player.gender == 0) {
         outputText("He squints down at you with a bemused look and laughs, \"<i>How did you lose your gender anyhow?  Never mind, we've got to do something about that!</i>\"\n\n", false);
         outputText("Zetaz grabs a bottle, uncorks it, and crams it against your lips while you're still too dazed to resist.  He massages your throat to make you swallow the milk-like fluid, and in seconds the skin of your groin splits to form a new, virgin pussy.\n\n", false);
-        player.createVagina();
+        player.vaginas.createVagina();
         player.gender = 2;
     }
     // (fork to male/female/herm)
@@ -2380,7 +2380,7 @@ export function valaBigYou(): void {
     menu();
     addButton(0, "Dom Me", bigValaDomsPC);
     if (player.cocks.length > 0) addButton(1, "Lick Me", bigValaLicksOffDudes);
-    if (vapula.vapulaSlave() && player.gender > 0 && (player.cocks.length > 0 || (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0))) {
+    if (vapula.vapulaSlave() && player.gender > 0 && (player.cocks.length > 0 || (player.vaginas.length > 0 && player.keyItems.has("Demonic Strap-On") >= 0))) {
         addButton(2, "Dom Vapula", valaDommyVapula3Some);
         addButton(3, "Vapula3Some", valaLoveyVapula3Some);
     }
@@ -2406,7 +2406,7 @@ export function bigValaDomsPC(): void {
     // {Female:}
     else if (player.gender == 2) {
         outputText("\n\nShuddering from the onslaught of lusty pheromones and the humiliating situation you've sent yourself into, you find your body beginning to flush in its own arousal.  You inhale deeply of the lusty cunt-scent, letting your own feminine delta begin to moisten in reciprocation.  ");
-        if (player.wetness() >= 3) outputText("Your [vagina] seems to always be wet, but now, with this sight before you, your girl-cum is running in rivers down your [legs] to mix into the puddling lady-spunk below.  ");
+        if (player.vaginas.wetness() >= 3) outputText("Your [vagina] seems to always be wet, but now, with this sight before you, your girl-cum is running in rivers down your [legs] to mix into the puddling lady-spunk below.  ");
         outputText("Your armor seems tight and constricting against your rock-hard [nipples].  It's something you can't escape from, and with each passing moment, the sensations coming from your chest seem more and more worrisome, stoking your fiery lust to an incredible degree.");
     }
     // {Herm:}

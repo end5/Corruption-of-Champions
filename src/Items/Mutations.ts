@@ -335,7 +335,7 @@ export class Mutations {
             else outputText("Each of y", false);
             outputText("our " + multiCockDescriptLight(game.player) + " aches, flooding with blood until it's bloating and trembling.", false);
         }
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("  Your " + clitDescription(player) + " engorges, ", false);
             if (player.clitLength < 3) outputText("parting your lips.", false);
             else outputText("bursting free of your lips and bobbing under its own weight.", false);
@@ -494,7 +494,7 @@ export class Mutations {
                 else {
                     outputText("\n\nA tightness in your groin is the only warning you get before your <b>" + vaginaDescript(player, 0) + " disappears forever</b>!", false);
                     // Goodbye womanhood!
-                    player.removeVagina(0, 1);
+                    player.vaginas.removeVagina(0, 1);
                     if (player.cocks.length == 0) {
                         outputText("  Strangely, your clit seems to have resisted the change, and is growing larger by the moment... shifting into the shape of a small ribbed minotaur-like penis!  <b>You now have a horse-cock!</b>", false);
                         player.cocks.createCock();
@@ -636,8 +636,8 @@ export class Mutations {
         // Anti-masturbation status
         if (rand(4) == 0 && changes < changeLimit && player.effects.findByType(StatusAffects.Dysfunction) < 0) {
             if (player.cocks.length > 0) outputText("\n\nYour " + cockDescript(game.player, 0) + " tingles abruptly, then stops.  Worried, you reach down to check it, only to discover that it feels... numb.  It will be very hard to masturbate like this.", false);
-            else if (player.hasVagina()) outputText("\n\nYour " + vaginaDescript(player, 0) + " tingles abruptly, then stops.  Worried, you reach down to check it, only to discover that it feels... numb.  It will be very hard to masturbate like this.", false);
-            if (player.cocks.length > 0 || player.hasVagina()) {
+            else if (player.vaginas.length > 0) outputText("\n\nYour " + vaginaDescript(player, 0) + " tingles abruptly, then stops.  Worried, you reach down to check it, only to discover that it feels... numb.  It will be very hard to masturbate like this.", false);
+            if (player.cocks.length > 0 || player.vaginas.length > 0) {
                 player.effects.create(StatusAffects.Dysfunction, 96, 0, 0, 0);
                 changes++;
             }
@@ -1363,7 +1363,7 @@ export class Mutations {
             }
         }
         if (player.vaginas.length == 0 && (rand(3) == 0 || (rando > 75 && rando < 90))) {
-            player.createVagina();
+            player.vaginas.createVagina();
             player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
             player.vaginas[0].vaginalWetness = VAGINA_WETNESS_NORMAL;
             player.vaginas[0].virgin = true;
@@ -1444,7 +1444,7 @@ export class Mutations {
                     dynStats("sen", 3, "lus", 8);
                 }
                 else {
-                    player.createVagina();
+                    player.vaginas.createVagina();
                     player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
                     player.vaginas[0].vaginalWetness = VAGINA_WETNESS_NORMAL;
                     player.vaginas[0].virgin = true;
@@ -2009,7 +2009,7 @@ export class Mutations {
                 }
             }
             // Pure female fantasies
-            else if (player.hasVagina()) {
+            else if (player.vaginas.length > 0) {
                 outputText("wagging your dripping " + vaginaDescript(player, 0) + " before a pack of horny wolves, watching their shiny red doggie-pricks practically jump out of their sheaths at your fertile scent.", false);
                 dynStats("lus", 5 + player.lib / 20);
                 // BREAK 1
@@ -2533,7 +2533,7 @@ export class Mutations {
             // Kill pussies!
             if (player.vaginas.length > 0) {
                 outputText("\n\nYour vagina clenches in pain, doubling you over.  You slip a hand down to check on it, only to feel the slit growing smaller and smaller until it disappears, taking your clit with it! <b> Your vagina is gone!</b>", false);
-                player.removeVagina(0, 1);
+                player.vaginas.removeVagina(0, 1);
                 player.clitLength = .5;
                 player.genderCheck();
             }
@@ -2591,12 +2591,12 @@ export class Mutations {
         // LARGE
         else {
             // New lines if changes
-            if (player.breasts.length > 1 || player.buttRating > 5 || player.hipRating > 5 || player.hasVagina()) outputText("\n\n", false);
+            if (player.breasts.length > 1 || player.buttRating > 5 || player.hipRating > 5 || player.vaginas.length > 0) outputText("\n\n", false);
             // Kill pussies!
             if (player.vaginas.length > 0) {
                 outputText("Your vagina clenches in pain, doubling you over.  You slip a hand down to check on it, only to feel the slit growing smaller and smaller until it disappears, taking your clit with it!\n\n", false);
                 if (player.breasts.length > 1 || player.buttRating > 5 || player.hipRating > 5) outputText("  ", false);
-                player.removeVagina(0, 1);
+                player.vaginas.removeVagina(0, 1);
                 player.clitLength = .5;
                 player.genderCheck();
             }
@@ -3295,13 +3295,13 @@ export class Mutations {
             player.lengthChange(temp3, 1);
             if (player.cocks[temp].cockLength < 2) {
                 outputText("  ", false);
-                if (player.cocks.length == 1 && !player.hasVagina()) {
+                if (player.cocks.length == 1 && !player.vaginas.length > 0) {
                     outputText("Your " + cockDescript(game.player, 0) + " suddenly starts tingling.  It's a familiar feeling, similar to an orgasm.  However, this one seems to start from the top down, instead of gushing up from your loins.  You spend a few seconds frozen to the odd sensation, when it suddenly feels as though your own body starts sucking on the base of your shaft.  Almost instantly, your cock sinks into your crotch with a wet slurp.  The tip gets stuck on the front of your body on the way down, but your glans soon loses all volume to turn into a shiny new clit.", false);
                     if (player.balls > 0) outputText("  At the same time, your " + ballsDescriptLight(player) + " fall victim to the same sensation; eagerly swallowed whole by your crotch.", false);
                     outputText("  Curious, you touch around down there, to find you don't have any exterior organs left.  All of it got swallowed into the gash you now have running between two fleshy folds, like sensitive lips.  It suddenly occurs to you; <b>you now have a vagina!</b>", false);
                     player.balls = 0;
                     player.ballSize = 1;
-                    player.createVagina();
+                    player.vaginas.createVagina();
                     player.clitLength = .25;
                     player.cocks.removeCock(0, 1);
                 }
@@ -3311,8 +3311,8 @@ export class Mutations {
                 }
             }
             // if the last of the player's dicks are eliminated this way, they gain a virgin vagina;
-            if (player.cocks.length == 0 && !player.hasVagina()) {
-                player.createVagina();
+            if (player.cocks.length == 0 && !player.vaginas.length > 0) {
+                player.vaginas.createVagina();
                 player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
                 player.vaginas[0].vaginalWetness = VAGINA_WETNESS_NORMAL;
                 player.vaginas[0].virgin = true;
@@ -3458,7 +3458,7 @@ export class Mutations {
         // UNFINISHED
         // If player has addictive quality and drinks pure version, removes addictive quality.
         // if the player has a vagina and it is tight, it loosens.
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             if (player.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_LOOSE && changes < changeLimit && rand(2) == 0) {
                 outputText("\n\nYou feel a relaxing sensation in your groin.  On further inspection you discover your " + vaginaDescript(player, 0) + " has somehow relaxed, permanently loosening.", false);
                 player.vaginas[0].vaginalLooseness++;
@@ -3608,7 +3608,7 @@ export class Mutations {
             player.effects.remove(StatusAffects.BlackNipples);
         }
         // Debugcunt
-        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
+        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.vaginas.length > 0) {
             outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
             player.vaginaType(0);
             changes++;
@@ -3793,14 +3793,14 @@ export class Mutations {
             changes++;
         }
         // Boost vaginal capacity without gaping
-        if (changes < changeLimit && rand(3) == 0 && player.hasVagina() && player.effects.getValue1Of(StatusAffects.BonusVCapacity) < 40) {
+        if (changes < changeLimit && rand(3) == 0 && player.vaginas.length > 0 && player.effects.getValue1Of(StatusAffects.BonusVCapacity) < 40) {
             if (player.effects.findByType(StatusAffects.BonusVCapacity) < 0) player.effects.create(StatusAffects.BonusVCapacity, 0, 0, 0, 0);
             player.effects.addValue(StatusAffects.BonusVCapacity, 1, 5);
             outputText("\n\nThere is a sudden... emptiness within your " + vaginaDescript(player, 0) + ".  Somehow you know you could accommodate even larger... insertions.", false);
             changes++;
         }
         // Boost fertility
-        if (changes < changeLimit && rand(4) == 0 && player.fertility < 40 && player.hasVagina()) {
+        if (changes < changeLimit && rand(4) == 0 && player.fertility < 40 && player.vaginas.length > 0) {
             player.fertility += 2 + rand(5);
             changes++;
             outputText("\n\nYou feel strange.  Fertile... somehow.  You don't know how else to think of it, but you're ready to be a mother.", false);
@@ -3908,7 +3908,7 @@ export class Mutations {
             player.effects.remove(StatusAffects.BlackNipples);
         }
         // Debugcunt
-        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
+        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.vaginas.length > 0) {
             outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
             player.vaginaType(0);
             changes++;
@@ -3947,7 +3947,7 @@ export class Mutations {
          var goopiness:Number = 0;
          if(player.skinType == SKIN_TYPE_GOO) goopiness+=2;
          if(player.hair.indexOf("gooey") != -1) goopiness++;
-         if(player.hasVagina()) {
+         if(player.vaginas.length > 0) {
          if(player.vaginalCapacity() >= 9000) goopiness++;
          }*/
         // Cosmetic changes based on 'goopyness'
@@ -4024,9 +4024,9 @@ export class Mutations {
             return;
         }
         // 3a. Grow vagina if none
-        if (!player.hasVagina()) {
+        if (!player.vaginas.length > 0) {
             outputText("\n\nA wet warmth spreads through your slimey groin as a narrow gash appears on the surface of your groin.  <b>You have grown a vagina.</b>", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
             player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_GAPING;
             player.clitLength = .4;
@@ -4103,7 +4103,7 @@ export class Mutations {
         }
         // Smexual stuff!
         // -TIGGERSHARK ONLY: Grow a cunt (guaranteed if no gender)
-        if (type == 1 && (player.gender == 0 || (!player.hasVagina() && changes < changeLimit && rand(3) == 0))) {
+        if (type == 1 && (player.gender == 0 || (!player.vaginas.length > 0 && changes < changeLimit && rand(3) == 0))) {
             changes++;
             // (balls)
             if (player.balls > 0) outputText("\n\nAn itch starts behind your " + ballsDescriptLight(player) + ", but before you can reach under to scratch it, the discomfort fades. A moment later a warm, wet feeling brushes your " + sackDescript(player) + ", and curious about the sensation, <b>you lift up your balls to reveal your new vagina.</b>", false);
@@ -4111,7 +4111,7 @@ export class Mutations {
             else if (player.cocks.length > 0) outputText("\n\nAn itch starts on your groin, just below your " + multiCockDescriptLight(game.player) + ". You pull the manhood aside to give you a better view, and you're able to watch as <b>your skin splits to give you a new vagina, complete with a tiny clit.</b>", false);
             // (neither)
             else outputText("\n\nAn itch starts on your groin and fades before you can take action. Curious about the intermittent sensation, <b>you peek under your " + player.armorName + " to discover your brand new vagina, complete with pussy lips and a tiny clit.</b>", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.clitLength = .25;
             dynStats("sen", 10);
             player.genderCheck();
@@ -4119,7 +4119,7 @@ export class Mutations {
         // WANG GROWTH - TIGGERSHARK ONLY
         if (type == 1 && (!player.cocks.length > 0) && changes < changeLimit && rand(3) == 0) {
             // Genderless:
-            if (!player.hasVagina()) outputText("\n\nYou feel a sudden stabbing pain in your featureless crotch and bend over, moaning in agony. Your hands clasp protectively over the surface - which is swelling in an alarming fashion under your fingers! Stripping off your clothes, you are presented with the shocking site of once-smooth flesh swelling and flowing like self-animate clay, resculpting itself into the form of male genitalia! When the pain dies down, you are the proud owner of a new human-shaped penis", false);
+            if (!player.vaginas.length > 0) outputText("\n\nYou feel a sudden stabbing pain in your featureless crotch and bend over, moaning in agony. Your hands clasp protectively over the surface - which is swelling in an alarming fashion under your fingers! Stripping off your clothes, you are presented with the shocking site of once-smooth flesh swelling and flowing like self-animate clay, resculpting itself into the form of male genitalia! When the pain dies down, you are the proud owner of a new human-shaped penis", false);
             // Female:
             else outputText("\n\nYou feel a sudden stabbing pain just above your " + vaginaDescript(player) + " and bend over, moaning in agony. Your hands clasp protectively over the surface - which is swelling in an alarming fashion under your fingers! Stripping off your clothes, you are presented with the shocking site of once-smooth flesh swelling and flowing like self-animate clay, resculpting itself into the form of male genitalia! When the pain dies down, you are the proud owner of not only a " + vaginaDescript(player) + ", but a new human-shaped penis", false);
             if (player.balls == 0) {
@@ -4425,12 +4425,12 @@ export class Mutations {
         // Clear vaginas
         while (player.vaginas.length > 0) {
             virgin = player.vaginas[0].virgin;
-            player.removeVagina(0, 1);
+            player.vaginas.removeVagina(0, 1);
             trace("1 vagina purged.");
         }
         // Reset vaginal virginity to correct state
         if (player.gender >= 2) {
-            player.createVagina();
+            player.vaginas.createVagina();
             player.vaginas[0].virgin = virgin;
         }
         player.clitLength = .25;
@@ -4601,7 +4601,7 @@ export class Mutations {
             temp3 = 0;
             // Determine if shrinkage is required
             // and set temp2 to threshold
-            if (!player.hasVagina() && player.breasts.biggestTitSize() > 2) temp2 = 2;
+            if (!player.vaginas.length > 0 && player.breasts.biggestTitSize() > 2) temp2 = 2;
             else if (player.breasts.biggestTitSize() > 4) temp2 = 4;
             // IT IS!
             if (temp2 > 0) {
@@ -4817,7 +4817,7 @@ export class Mutations {
                 outputText("your " + multiCockDescriptLight(game.player) + " with the desire to breed.  You get a bit hornier when you realize your sex-drive has gotten a boost.", false);
             }
             // (COOCH)
-            else if (player.hasVagina()) outputText("puddling in your " + vaginaDescript(player, 0) + ".  An instinctive desire to mate and lay eggs spreads through you, increasing your lust and boosting your sex-drive.", false);
+            else if (player.vaginas.length > 0) outputText("puddling in your " + vaginaDescript(player, 0) + ".  An instinctive desire to mate and lay eggs spreads through you, increasing your lust and boosting your sex-drive.", false);
             // (TARDS)
             else outputText("puddling in your featureless crotch for a split-second before it slides into your " + buttDescription(player) + ".  You want to be fucked, filled, and perhaps even gain a proper gender again.  Through the lust you realize your sex-drive has been permanently increased.", false);
             // +3 lib if less than 50
@@ -4865,7 +4865,7 @@ export class Mutations {
             else if (player.cor < 66) outputText("is a little strange for your tastes.", false);
             else {
                 outputText("looks like it might be more fun to receive than use on others.  ", false);
-                if (player.hasVagina()) outputText("Maybe you could find someone else with one to ride?", false);
+                if (player.vaginas.length > 0) outputText("Maybe you could find someone else with one to ride?", false);
                 else outputText("Maybe you should test it out on someone and ask them exactly how it feels?", false);
             }
             outputText("  <b>You now have a bulbous, lizard-like cock.</b>", false);
@@ -4975,7 +4975,7 @@ export class Mutations {
             }
         }
         // -VAGs
-        if (player.hasVagina() && player.perks.findByType(PerkLib.Oviposition) < 0 && changes < changeLimit && rand(5) == 0 && lizardScore(player) > 3) {
+        if (player.vaginas.length > 0 && player.perks.findByType(PerkLib.Oviposition) < 0 && changes < changeLimit && rand(5) == 0 && lizardScore(player) > 3) {
             outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n", false);
             outputText("(<b>Perk Gained: Oviposition</b>)", false);
             player.perks.create(PerkLib.Oviposition, 0, 0, 0, 0);
@@ -5312,22 +5312,22 @@ export class Mutations {
         }
 
         // De-wettification of cunt (down to 3?)!
-        if (player.wetness() > 3 && changes < changeLimit && rand(3) == 0) {
+        if (player.vaginas.wetness() > 3 && changes < changeLimit && rand(3) == 0) {
             // Just to be safe
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("\n\nThe constant flow of fluids that sluice from your " + vaginaDescript(player, 0) + " slow down, leaving you feeling a bit less like a sexual slip-'n-slide.", false);
                 player.vaginas[0].vaginalWetness--;
                 changes++;
             }
         }
         // Fertility boost!
-        if (changes < changeLimit && rand(4) == 0 && player.fertility < 50 && player.hasVagina()) {
+        if (changes < changeLimit && rand(4) == 0 && player.fertility < 50 && player.vaginas.length > 0) {
             player.fertility += 2 + rand(5);
             changes++;
             outputText("\n\nYou feel strange.  Fertile... somehow.  You don't know how else to think of it, but you know your body is just aching to be pregnant and give birth.", false);
         }
         // -VAGs
-        if (player.hasVagina() && player.perks.findByType(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) == 0 && bunnyScore(player) > 3) {
+        if (player.vaginas.length > 0 && player.perks.findByType(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) == 0 && bunnyScore(player) > 3) {
             outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n\n", false);
             outputText("(<b>Perk Gained: Bunny Eggs</b>)", false);
             player.perks.create(PerkLib.BunnyEggs, 0, 0, 0, 0);
@@ -5565,7 +5565,7 @@ export class Mutations {
             // (sub 40 lib)
             if (player.lib < 40) {
                 outputText("\n\nA passing flush colors your " + face(player) + " for a second as you daydream about sex. You blink it away, realizing the item seems to have affected your libido.", false);
-                if (player.hasVagina()) outputText(" The moistness of your " + vaginaDescript(player) + " seems to agree.", false);
+                if (player.vaginas.length > 0) outputText(" The moistness of your " + vaginaDescript(player) + " seems to agree.", false);
                 else if (player.cocks.length > 0) outputText(" The hardness of " + sMultiCockDesc(game.player) + " seems to agree.", false);
                 dynStats("lus", 5);
             }
@@ -5598,7 +5598,7 @@ export class Mutations {
                     }
                 }
                 // Cunts!
-                else if (player.hasVagina()) {
+                else if (player.vaginas.length > 0) {
                     // (female 1)
                     if (rand(2) == 0) {
                         outputText("In your fantasy you're a happy harpy mother, your womb stretched by the sizable egg it contains. The surging hormones in your body arouse you again, and you turn to the father of your children, planting a wet kiss on his slobbering, lipstick-gilt cock. The poor adventurer writhes, hips pumping futilely in the air. He's been much more agreeable since you started keeping his cock coated with your kisses. You mount the needy boy, fantasizing about that first time when you found him near the portal, in the ruins of your old camp. The feeling of your stiff nipples ", false);
@@ -5618,7 +5618,7 @@ export class Mutations {
         //   Sexual:
         // ****************
         // -Grow a cunt (guaranteed if no gender)
-        if (player.gender == 0 || (!player.hasVagina() && changes < changeLimit && rand(3) == 0)) {
+        if (player.gender == 0 || (!player.vaginas.length > 0 && changes < changeLimit && rand(3) == 0)) {
             changes++;
             // (balls)
             if (player.balls > 0) outputText("\n\nAn itch starts behind your " + ballsDescriptLight(player) + ", but before you can reach under to scratch it, the discomfort fades. A moment later a warm, wet feeling brushes your " + sackDescript(player) + ", and curious about the sensation, <b>you lift up your balls to reveal your new vagina.</b>", false);
@@ -5626,7 +5626,7 @@ export class Mutations {
             else if (player.cocks.length > 0) outputText("\n\nAn itch starts on your groin, just below your " + multiCockDescriptLight(game.player) + ". You pull your manhood aside to give you a better view, and you're able to watch as <b>your skin splits to give you a new vagina, complete with a tiny clit.</b>", false);
             // (neither)
             else outputText("\n\nAn itch starts on your groin and fades before you can take action. Curious about the intermittent sensation, <b>you peek under your " + player.armorName + " to discover your brand new vagina, complete with pussy lips and a tiny clit.</b>", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.clitLength = .25;
             dynStats("sen", 10);
             player.genderCheck();
@@ -5816,7 +5816,7 @@ export class Mutations {
             player.effects.remove(StatusAffects.BlackNipples);
         }
         // Debugcunt
-        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
+        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.vaginas.length > 0) {
             outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
             player.vaginaType(0);
             changes++;
@@ -6045,7 +6045,7 @@ export class Mutations {
         }
         // UBEROOOO
         // kangaroo perk: - any liquid or food intake will accelerate a pregnancy, but it will not progress otherwise
-        if (player.perks.findByType(PerkLib.Diapause) < 0 && kangaScore(player) > 4 && rand(4) == 0 && changes < changeLimit && player.hasVagina()) {
+        if (player.perks.findByType(PerkLib.Diapause) < 0 && kangaScore(player) > 4 && rand(4) == 0 && changes < changeLimit && player.vaginas.length > 0) {
             // Perk name and description:
             player.perks.create(PerkLib.Diapause, 0, 0, 0, 0);
             outputText("\n\nYour womb rumbles as something inside it changes.\n<b>(You have gained the Diapause perk.  Pregnancies will not progress when fluid intake is scarce, and will progress much faster when it isn't.)", false);
@@ -6136,7 +6136,7 @@ export class Mutations {
             player.tailRecharge += 5;
         }
         // (tightens vagina to 1, increases lust/libido)
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             if (player.looseness() > 1 && changes < changeLimit && rand(3) == 0) {
                 outputText("\n\nWith a gasp, you feel your " + vaginaDescript(player, 0) + " tightening, making you leak sticky girl-juice. After a few seconds, it stops, and you rub on your " + vaginaDescript(player, 0) + " excitedly. You can't wait to try this out!", false);
                 dynStats("lib", 2, "lus", 25);
@@ -6489,9 +6489,9 @@ export class Mutations {
             }
         }
         // (Pussy b gone)
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("At the same time, your " + vaginaDescript(player, 0) + " burns hot, nearly feeling on fire.  You cuss in a decidedly masculine way for a moment before the pain fades to a dull itch.  Scratching it, you discover your lady-parts are gone.  Only a sensitive patch of skin remains.\n\n", false);
-            player.removeVagina(0, 1);
+            player.vaginas.removeVagina(0, 1);
         }
         player.genderCheck();
         // (below max masculinity)
@@ -6715,14 +6715,14 @@ export class Mutations {
                 outputText("\n\nUnfortunately, the skin of ", false);
                 if (player.cocks.length > 0) {
                     outputText(sMultiCockDesc(game.player), false);
-                    if (player.hasVagina()) outputText(" and", false);
+                    if (player.vaginas.length > 0) outputText(" and", false);
                     outputText(" ", false);
                 }
-                if (player.hasVagina()) {
+                if (player.vaginas.length > 0) {
                     if (!player.cocks.length > 0) outputText("your ");
                     outputText(vaginaDescript(player, 0) + " ", false);
                 }
-                if (!(player.cocks.length > 0 || player.hasVagina())) outputText(assholeDescript(player) + " ", false);
+                if (!(player.cocks.length > 0 || player.vaginas.length > 0)) outputText(assholeDescript(player) + " ", false);
                 outputText(" numbs up too.  You give yourself a gentle touch, but are quite disturbed when you realize you can barely feel it.  You can probably still fuck something to get off, but regular masturbation is out of the question...", false);
                 player.effects.create(StatusAffects.Dysfunction, 50 + rand(100), 0, 0, 0);
             }
@@ -6758,7 +6758,7 @@ export class Mutations {
         }
         if (rand(4) == 0 && player.effects.findByType(StatusAffects.LustyTongue) < 0) {
             outputText("The constant tingling in your mouth grows and grows, particularly around your lips, until they feel as sensitive as ", false);
-            if (player.hasVagina()) outputText("your", false);
+            if (player.vaginas.length > 0) outputText("your", false);
             else outputText("a woman's", false);
             outputText(" lower lips.  You'll have to be careful not to lick them!", false);
             // (Lustytongue status)
@@ -7089,7 +7089,7 @@ export class Mutations {
             player.effects.remove(StatusAffects.BlackNipples);
         }
         // Debugcunt
-        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
+        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.vaginas.length > 0) {
             outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
             player.vaginaType(0);
             changes++;
@@ -7282,7 +7282,7 @@ export class Mutations {
             changes++;
         }
         // [Increase Vaginal Capacity] - requires vagina, of course
-        if (player.hasVagina() && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && player.effects.getValue1Of(StatusAffects.BonusVCapacity) < 200 && changes < changeLimit) {
+        if (player.vaginas.length > 0 && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && player.effects.getValue1Of(StatusAffects.BonusVCapacity) < 200 && changes < changeLimit) {
             outputText("\n\nA gurgling sound issues from your abdomen, and you double over as a trembling ripple passes through your womb.  The flesh of your stomach roils as your internal organs begin to shift, and when the sensation finally passes, you are instinctively aware that your " + vaginaDescript(player, 0) + " is a bit deeper than it was before.");
             if (player.effects.findByType(StatusAffects.BonusVCapacity) < 0) {
                 player.effects.create(StatusAffects.BonusVCapacity, 0, 0, 0, 0);
@@ -7291,7 +7291,7 @@ export class Mutations {
             changes++;
         }
         // [Vag of Holding] - rare effect, only if PC has high vaginal looseness
-        else if (player.hasVagina() && ((mystic) || (!mystic && rand(5) == 0)) && player.effects.getValue1Of(StatusAffects.BonusVCapacity) >= 200 && player.effects.getValue1Of(StatusAffects.BonusVCapacity) < 8000 && changes < changeLimit) {
+        else if (player.vaginas.length > 0 && ((mystic) || (!mystic && rand(5) == 0)) && player.effects.getValue1Of(StatusAffects.BonusVCapacity) >= 200 && player.effects.getValue1Of(StatusAffects.BonusVCapacity) < 8000 && changes < changeLimit) {
             outputText("\n\nYou clutch your stomach with both hands, dropping to the ground in pain as your internal organs begin to twist and shift violently inside you.  As you clench your eyes shut in agony, you are overcome with a sudden calm.  The pain in your abdomen subsides, and you feel at one with the unfathomable infinity of the universe, warmth radiating through you from the vast swirling cosmos contained within your womb.");
             if (silly()) outputText("  <b>Your vagina has become a universe unto itself, capable of accepting colossal insertions beyond the scope of human comprehension!</b>");
             else outputText("  <b>Your vagina is now capable of accepting even the most ludicrously sized insertions with no ill effects.</b>");
@@ -7432,7 +7432,7 @@ export class Mutations {
             player.effects.remove(StatusAffects.BlackNipples);
         }
         // Debugcunt
-        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
+        if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.vaginas.length > 0) {
             outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
             player.vaginaType(0);
             changes++;
@@ -7684,7 +7684,7 @@ export class Mutations {
             changes++;
         }
         // Libido Increase:
-        if (player.lib < 70 && player.hasVagina() && rand(3) == 0 && changes < changeLimit) {
+        if (player.lib < 70 && player.vaginas.length > 0 && rand(3) == 0 && changes < changeLimit) {
             outputText("\n\nYou feel your blood quicken and rise, and a desire to... hunt builds within you.");
             dynStats("lib", 2);
             if (player.lib < 30) dynStats("lib", 2);
@@ -7799,7 +7799,7 @@ export class Mutations {
             dynStats("sen", 2);
         }
         // Fertility Decrease:
-        if (player.hasVagina() && rand(4) == 0 && changes < changeLimit) {
+        if (player.vaginas.length > 0 && rand(4) == 0 && changes < changeLimit) {
             outputText("\n\nThe vague numbness in your skin sinks slowly downwards, and you put a hand on your lower stomach as the sensation centers itself there.  ");
             dynStats("sen", -2);
             // High fertility:
@@ -7894,10 +7894,10 @@ export class Mutations {
             changes++;
         }
         // Vagina Turns Black:
-        if (player.hasVagina() && player.vaginaType() != 5 && rand(4) == 0 && changes < changeLimit) {
+        if (player.vaginas.length > 0 && player.vaginaType() != 5 && rand(4) == 0 && changes < changeLimit) {
             outputText("\n\nYour [vagina] feels... odd.  You undo your clothes and gingerly inspect your nether regions.  The tender pink color of your sex has disappeared, replaced with smooth, marble blackness starting at your lips and working inwards.");
             // (Wet:
-            if (player.wetness() >= 3) outputText("  Your natural lubrication makes it gleam invitingly.");
+            if (player.vaginas.wetness() >= 3) outputText("  Your natural lubrication makes it gleam invitingly.");
             // (Corruption <50:
             if (player.cor < 50) outputText("  After a few cautious touches you decide it doesn't feel any different- it does certainly look odd, though.");
             else outputText("  After a few cautious touches you decide it doesn't feel any different - the sheer bizarreness of it is a big turn on though, and you feel it beginning to shine with anticipation at the thought of using it.");
@@ -8166,9 +8166,9 @@ export class Mutations {
 
         // SEXYYYYYYYYYYY
         // vag-anal capacity up for non-goo (available after PC < 5 ft; capacity ceiling reasonable but not horse-like or gooey)
-        if (player.tallness < 60 && (player.analCapacity() < 100 || (player.vaginalCapacity() < 100 && player.hasVagina())) && changes < changeLimit && rand(3) == 0) {
+        if (player.tallness < 60 && (player.analCapacity() < 100 || (player.vaginalCapacity() < 100 && player.vaginas.length > 0)) && changes < changeLimit && rand(3) == 0) {
             outputText("\n\nYour ");
-            if (player.vaginalCapacity() < 100 && player.hasVagina()) outputText("[vagina]");
+            if (player.vaginalCapacity() < 100 && player.vaginas.length > 0) outputText("[vagina]");
             else outputText("[asshole]");
             outputText(" itches, and you shyly try to scratch it, looking around to see if you're watched.  ");
             if (player.isTaur()) outputText("Backing up to a likely rock, you rub your hindquarters against it, only to be surprised when you feel your hole part smoothly against the surface, wider than you're used to!");
@@ -8179,7 +8179,7 @@ export class Mutations {
             outputText(".");
             // adds some lust
             dynStats("lus", 10 + player.sens / 5);
-            if (player.vaginalCapacity() < 100 && player.hasVagina()) {
+            if (player.vaginalCapacity() < 100 && player.vaginas.length > 0) {
                 if (player.effects.findByType(StatusAffects.BonusVCapacity) < 0) player.effects.create(StatusAffects.BonusVCapacity, 0, 0, 0, 0);
                 player.effects.addValue(StatusAffects.BonusVCapacity, 1, 5);
             }

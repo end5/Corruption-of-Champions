@@ -297,7 +297,7 @@ export class TentacleBeastScene {
                 }
             }
             // has vagina:
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("A squirming tentacle forces its way inside your " + vaginaDescript(player, 0) + ", undulating and squirming as it works its way deeper and deeper.  Your body responds by pumping out more fluid, making the passage of the monstrous thing easier.", false);
                 player.cuntChange(32, true, true, false);
                 if (player.cocks.length > 0) {
@@ -352,7 +352,7 @@ export class TentacleBeastScene {
                 outputText("You rear up as a surge of euphoria races through you; your equine strength manages to overpower the tentacles holding your forelegs down for the briefest of moments needed to release your spunk into the suction of the tentacle, and you feel it get whisked out and down toward the writhing mass.\n\n", false);
             }
             // has vagina:
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("Your " + vaginaDescript(player, 0) + " ripples about the coiled intruder as you climax; fem-cum drips down the tentacle and fills the area with your musky scent.  You rear up as a surge of euphoria races through you, managing to overpower the tentacles holding your forelegs down for the briefest of moments.  But even with your forelegs free, the tentacle in your " + vaginaDescript(player, 0) + " remains, rippling with waves of seed that spray inside you in massive, hot globules.  The sticky substance flooding your love canal pushes you over the edge and you orgasm again, spraying more as you cry out in pleasure.\n\n", false);
             }
             // has cock, normal cum amount, anus < gaping:
@@ -378,7 +378,7 @@ export class TentacleBeastScene {
                 return;
             }
             // { has vagina, anus < gaping:
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("Just as you think it's over, a tentacle rams into your " + assholeDescript(player) + " and begins to swell massively, causing another surge of girlcum to leave you, and another, and another.", false);
                 player.buttChange(40, true, true, false);
                 outputText("  It continues to violate your ass until you black out from exhaustion, the number of times you've orgasmed no longer countable.", false);

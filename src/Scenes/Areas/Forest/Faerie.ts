@@ -5,7 +5,7 @@ export class Faerie {
     public encounterFaerie(): void {
         spriteSelect(17);
         outputText("A faerie slightly taller and thicker than your middle finger flits about the air. Her flat chest and girlish bob of hair make her look quite cute, but the solid black stockings and leather straps covering her chest show her slutty nature. Her wings are a light red, the color of aroused genitals.\n\n", true);
-        if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
+        if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
             outputText("She seems to notice you getting hard at the sight of her and looks down. \"<i>Ew, man parts!</i>\" the faerie exclaims, flying away like a frightened bird.", false);
             if (rand(player.spe / 2) + player.effects.getValue1Of(StatusAffects.FaerieFucked) > 15) {
                 if (player.effects.getValue1Of(StatusAffects.FaerieFucked) < 5) {
@@ -38,7 +38,7 @@ export class Faerie {
         outputText("The faerie slows the beating of her wings and hovers towards you. You dismiss your fearful notions, certain a small faerie is quite harmless to you.\n\n", false);
         outputText("How do you react?", false);
         // Shoo Away, Nothing, RAEP
-        if (player.hasVagina()) simpleChoices("Shoo Away", faerieShooAway, "Nothing", faerieDoNothing, "Rape", faerieRAEP, "", null, "", null);
+        if (player.vaginas.length > 0) simpleChoices("Shoo Away", faerieShooAway, "Nothing", faerieDoNothing, "Rape", faerieRAEP, "", null, "", null);
         else simpleChoices("Shoo Away", faerieShooAway, "Nothing", faerieDoNothing, "", null, "", null, "", null);
     }
 
@@ -150,9 +150,9 @@ export class Faerie {
             outputText("Your nipple starts to get sloppy and wet as if someone's tongue were around it, but it's really the faerie's love juices dribbling down, some running down your breast and some down her legs. She starts thrusting against you, and you notice her clit getting hard and pushing into your soft flesh. With a free hand you grab the area around your nipple and squeeze it harder, forcing more into her.\n\n", false);
             if (player.breasts.biggestLactation() > 1) outputText("A squirt of milk shoots inside her, making the faerie moan. She looks up at you with lusty, slitted eyes, squeezing her legs together to draw more from you.\n\n", false);
             outputText("Eventually you both find a rhythm and soon she's moaning loudly.  ", false);
-            if (player.hasVagina()) outputText("With your other hand you start diddling your " + vaginaDescript(player, 0) + ", adding your own soft moans to hers.  ", false);
+            if (player.vaginas.length > 0) outputText("With your other hand you start diddling your " + vaginaDescript(player, 0) + ", adding your own soft moans to hers.  ", false);
             outputText("A few blissful moments later, she shudders and you feel her uncontrolled spasms around your nipple.  ", false);
-            if (player.hasVagina()) outputText("You join her shortly after.  ", false);
+            if (player.vaginas.length > 0) outputText("You join her shortly after.  ", false);
             outputText("The faerie goes limp and spirals to the ground, crashing gently and still twitching in the afterglow. Stepping back carefully, you leave her.", false);
             if (player.breasts.biggestLactation() > 1.5) outputText("\n\nA copious gout of your milk escapes her rosy folds.", false);
             player.orgasm();
@@ -160,7 +160,7 @@ export class Faerie {
             doNext(camp.returnToCampUseOneHour);
             return;
         }
-        if (player.clitLength >= 1.0 && player.clitLength <= 4.5 && player.hasVagina() && rand(2) == 0) {
+        if (player.clitLength >= 1.0 && player.clitLength <= 4.5 && player.vaginas.length > 0 && rand(2) == 0) {
             outputText("A smile crosses her face and she flutters down to your crotch. She starts by scissoring you despite the size difference, driving your clit into her despite its erect state. Compared to her, it looks massive. She swings one leg over it and starts impaling herself on it. Your taut clitoris barely fits inside her, and the tight confines on your sensitive nub are enough to make you weak in the knees. Staggering to the ground, you grab hold of her frail body in your fist and thrust her roughly on your engorged button. She wails in both pain and pleasure, being crushed and stretched open at once. Her cries of pain combined with the intense stimulation on your most sensitive part bring you to a quick orgasm.\n\n", false);
             if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("You drench the poor faerie completely in your female juices, soaking her hair and body. Overwhelmed and spent, you drop her to the ground and catch your breath. She licks up what's around her face, but is too weak to do anything else but lie in the dirt.\n\n", false);
             else outputText("Shuddering, you maintain your composure and keep going, trying to ride the high for another. Eventually you look down and you can see the faerie's eyes have glazed over and rolled to the back of her head. Her cunt has started clamping down on you a lot harder, evidence of her state of near-constant orgasm. The random clenching brings you off again very quickly and you have an intense orgasm, joining your fae cohort.\n\n", false);

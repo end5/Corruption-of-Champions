@@ -38,7 +38,7 @@ export class GoblinScene {
         outputText("", true);
         if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0) {
             // [Female Bimbo Loss Against Goblin]
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText(images.showImage("goblin-loss-female-bimbodildo"));
                 outputText("The goblin saunters up to you, wiggling her hips with a needy, sexual sway. She opens a small pouch, the sight of which instantly bombards your easy mind with thoughts of your lower lips being opened similarly, and pulls out a tube of lipstick, pausing to apply it to her lips. She caps off the tube and blows you a kiss with a wet smacking sound as she steps up to your trembling form. Your breath is knocked from your body as she drops all her weight onto your middle, making her ass and well-rounded tits jiggle just like yours do when you are bouncing on a cock. She reaches up to twist her nipple-studs, grinding the wetness of her crotch up and down your belly. You can't help but envy her piercings. Like, they totally turn you on!\n\n", false);
                 outputText("Your body is already hot and your " + nippleDescription(player, 0) + "s harden involuntarily in response to the tiny slut's totally understandable display of desire. Your " + vaginaDescript(player, 0) + " leaks enough girl-juice to form a puddle beneath you, doing its best to show your fellow slut how ready you are. You 'subtly' (at least in your little mind) push your chest forward, making your " + nippleDescription(player, 0) + "s easy targets for the goblin. She grabs hold of your breasts", false);
@@ -95,7 +95,7 @@ export class GoblinScene {
             else outputText("as your bulge grows up her back and creeps towards her shoulders steadily", false);
             outputText(".  ", false);
         }
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText(images.showImage("goblin-loss-female-raped"));
             if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_NORMAL) outputText("The lips of your sex engorge, becoming almost as puffy as the goblin's.  ", false);
             else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("Feminine lubricant soaks into the back of your " + player.armorName + ".  ", false);
@@ -106,7 +106,7 @@ export class GoblinScene {
         else outputText("twisting and tweaking", false);
         outputText(", torturing you with pain and pleasure.\n\n", false);
         // [DICK VERSION]
-        if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
+        if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
             // [TOO BIG]
             if (player.cocks.cockArea(0) > monster.vaginalCapacity()) {
                 outputText("She lifts her body up high, grabbing your " + cockDescript(game.player, 0) + " with both her petite hands.  Your mind somehow makes note of the shiny black of her fingernails as she struggles to part her dripping wet womanhood around your massive member.  Though her body stretches to an absurd degree, she just can't get you inside. She pouts and drops your tool back onto you, promising you, \"<i>I'll find a way to get every ounce of your cum inside me, don't you worry.</i>\"\n\n", false);
@@ -119,7 +119,7 @@ export class GoblinScene {
                 else outputText("prevent the monstrous girl from getting what she wants", false);
                 outputText(".  The goblin looks back over her shoulder, narrows her eyes, and pulls back to say, \"<i>Don't even think about holding back stud.</i>\"\n\n", false);
                 outputText("She works her fingers into the void her tongue left behind, ", false);
-                if (player.hasVagina()) outputText("caressing your " + clitDescription(player), false);
+                if (player.vaginas.length > 0) outputText("caressing your " + clitDescription(player), false);
                 else outputText("pressing tightly against your prostate", false);
                 outputText(" as she whispers, \"<i>Go ahead, make my twat a swollen cum-dump.  I NEED you to FILL me with ALL of your cream.  Stuff me full of your fuck-juice and I promise I'll give you a dozen slutty daughters to fill with jizz every night.</i>\"\n\n", false);
                 outputText("Her fingers and words have the desired effect, drawing out a tremendously pleasurable orgasm.  Your hips rock and buck against her lithe body, forcing her to cling on to your spasming form as globules of cum force their way up your massive urethra.  You can feel them explode into the tiny girl's sopping tunnel, immediately soaking into her womb.", false);
@@ -213,7 +213,7 @@ export class GoblinScene {
             eggs = laySomeDriderEggsInGobboTwat;
         }
         // cunt stuff
-        if (player.hasVagina()) cuntFuck = gobboGetsRapedFem;
+        if (player.vaginas.length > 0) cuntFuck = gobboGetsRapedFem;
         // Dick stuff:
         if (player.cocks.length > 0) {
             // Corrupt too big scene
@@ -444,7 +444,7 @@ export class GoblinScene {
         if (player.breasts.biggestLactation() >= 1) outputText(" milk and", false);
         outputText(" the sweat of the both of you, and the only sound she makes is an occasional gurgle of ecstasy every few orgasms.\n\n", false);
         outputText("\"<i>Alright, whore. You wanted my babies? Here. They. CUM!</i>\" you yell. However, ", false);
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("while your " + vaginaDescript(player, 0) + " ", false);
             if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_SLICK) outputText("juices ", false);
             else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_DROOLING) outputText("floods ", false);
@@ -666,7 +666,7 @@ export class GoblinScene {
         // Play standard goblin victory text
         outputText("The pitiful struggling of the little green-skinned creature as she tries to scramble away from you gives you a rather generous view of her drooling box.  While you feel yourself ");
         if (player.cocks.length > 0) outputText("harden");
-        else if (player.hasVagina()) outputText("moisten");
+        else if (player.vaginas.length > 0) outputText("moisten");
         else outputText("twitch");
         outputText(" slightly,  you can't help but register the growing weight of your spider half.  Looking down at the goblin again, you decide that maybe you can both get something... <i>similar</i> to what you want.");
 
@@ -691,10 +691,10 @@ export class GoblinScene {
         outputText("\n\nYou feel its slow path up into the goblin, your egg-tube flaring out around it, until it stops just short of her womb's entrance.  She looks up from her stomach, her wide-eyed stare meeting yours for only a second before a powerful spasm forces the egg past her clenched cervix.  The miniature whore convulses, her eyes rolling back, tongue lolling as she cums hard, a torrent of girlcum spraying across your chitin.");
         if (player.cocks.length > 0) {
             outputText("  Your own orgasm is just as strong, [eachCock] spraying powerfully across your torso");
-            if (player.hasVagina()) outputText("and y");
+            if (player.vaginas.length > 0) outputText("and y");
         }
-        else if (player.hasVagina()) outputText("  Y");
-        if (player.hasVagina()) outputText("our [vagina] clenching in time with hers as your copious fluids drench your spider half.");
+        else if (player.vaginas.length > 0) outputText("  Y");
+        if (player.vaginas.length > 0) outputText("our [vagina] clenching in time with hers as your copious fluids drench your spider half.");
 
         outputText("\n\nThen the next egg rolls forward, and the next, and the next...");
 

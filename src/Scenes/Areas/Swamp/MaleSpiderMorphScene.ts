@@ -47,13 +47,13 @@ export class MaleSpiderMorphScene {
         let mount: () => void = null;
         let buttfuck: () => void = null;
         let frot: () => void = null;
-        if (player.hasVagina()) mount = victoryCowgirlRidingOnSpiderBoi;
+        if (player.vaginas.length > 0) mount = victoryCowgirlRidingOnSpiderBoi;
         if (player.cocks.length > 0) {
             if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttfuck = victoryButtFuck;
             if (player.cocks.biggestCockArea() > monster.analCapacity()) frot = victoryFrotTheSpoidah;
         }
         let bikiniTits: () => void = null;
-        if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+        if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
         outputText("The male spider-morph collapses onto his hands and knees, ", false);
         if (monster.lust > 99) outputText("masturbating with furious abandon, working his ebon dick with such vigor that the spider's pre-cum-slicked dick-skin noisily slides itself back and forth over his fattened glans; it becomes apparent just how much foreskin he truly has at this point, as even with his frenzied rubbing his glans remains shrouded in the thick excess skin while his fist slaps lewdly against his groin.  Dribbles of pre-cum leak from between his fingers to spill on the ground.", false);
         else outputText("wobbling back and forth as he tries to stay up and fight.  There's no way he can oppose you, as beaten as he is now.", false);
@@ -69,7 +69,7 @@ export class MaleSpiderMorphScene {
     public loseToMaleSpiderMorph(): void {
         const choices: any[] = [];
         if (player.cocks.length > 0) choices[choices.length] = 0;
-        if (player.hasVagina()) choices[choices.length] = 1;
+        if (player.vaginas.length > 0) choices[choices.length] = 1;
         if (player.gender == 0) {
             spriteSelect(74);
             outputText("The raven-haired spider-guy tears off your " + player.armorName + ", and disgusted by what he finds, he kicks you in the head, knocking you out.", true);
@@ -330,8 +330,8 @@ export class MaleSpiderMorphScene {
         outputText(" moans of pleasure to his ministrations.  Helpless to do anything but grow more and more aroused, you give up entirely on resisting and let yourself be putty in his hands.\n\n", false);
 
         outputText("The spider-morph's eyes seem to grow purple in the dim swamp light as he lifts himself away from your " + chestDesc(game.player) + ", looking you in the eye.  \"<i>I knew you wanted this,</i>\" he says, rubbing his floppy foreskin against your entrance hard enough for you to feel the stiffness of the member hidden within the loose sheath.  His solid-black shaft feels wonderful against your ", false);
-        if (player.wetness() >= 4) outputText("soaked", false);
-        else if (player.wetness() >= 2) outputText("wet", false);
+        if (player.vaginas.wetness() >= 4) outputText("soaked", false);
+        else if (player.vaginas.wetness() >= 2) outputText("wet", false);
         else outputText("moist", false);
         outputText(" mons, teasing against your vulva until your " + clitDescription(player) + " emerges from its hood, ", false);
         if (player.clitLength >= 3) outputText("frotting against him", false);
@@ -339,9 +339,9 @@ export class MaleSpiderMorphScene {
         outputText(".  You start rocking your " + hipDescription(player) + " encouragingly, trying to snare his marvelous maleness, but every time you catch his tip within your lips, he changes the angle and swivels away, teasing you.\n\n", false);
 
         outputText("The arachnid man kisses at your neck, slobbering a messy, unpracticed kiss against your throat.  For one so talented with his hands, he sure is a mess when it comes to kissing - maybe spider-people don't kiss each other much?  The spider-morph pops off, leaving a small hickey behind before revealing his true intent.  Fangs slide into the tender, bruised spot above your collarbone with a small burst of pain, making you gasp.  You hold absolutely still, not wanting to make it any worse.  Numbing, boiling warmth explodes inside you, making you gasp out in shock. A split-second later, the pain vanishes under a growing tide of arousal.  Your " + vaginaDescript(player) + " ", false);
-        if (player.wetness() >= 5) outputText("pours out a river of lube", false);
-        else if (player.wetness() >= 3) outputText("drools out a steady stream of lube", false);
-        else if (player.wetness() >= 2) outputText("dribbles lube", false);
+        if (player.vaginas.wetness() >= 5) outputText("pours out a river of lube", false);
+        else if (player.vaginas.wetness() >= 3) outputText("drools out a steady stream of lube", false);
+        else if (player.vaginas.wetness() >= 2) outputText("dribbles lube", false);
         else outputText("gets soaked", false);
         outputText(", your " + nippleDescription(player, 0) + "s ", false);
         if (player.breasts.hasFuckableNipples()) outputText("drip their own slippery juices", false);
@@ -376,7 +376,7 @@ export class MaleSpiderMorphScene {
         spriteSelect(74);
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.genderCheck();
         }
         outputText("You shudder violently, your stomach growling fiercely at you. It feels as if something is moving around in your womb, and you bend over on all fours, raising your ass into the air as if it is the most natural thing in the world. A slimy green fluid starts leaking out of your " + vaginaDescript(player, 0) + ", making a small puddle on the ground. The sensation is extremely pleasurable as you feel it running down your thighs. Groaning, you start to push out a small, smooth green ball, and the action makes your " + vaginaDescript(player, 0) + " so much wetter.  You push out another, and another, each ball rubbing against your inner walls before dropping into the slimy pool of goo. After the sixth, you orgasm, ", false);

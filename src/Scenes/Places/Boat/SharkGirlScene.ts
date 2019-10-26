@@ -259,7 +259,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
             return;
         }
         // Female:
-        if (player.hasVagina() && (player.cocks.length == 0 || rand(2) == 0)) {
+        if (player.vaginas.length > 0 && (player.cocks.length == 0 || rand(2) == 0)) {
             outputText("You slump down in defeat, too ", false);
             // [defeat via HP]
             if (player.HP < 1) outputText("hurt ", false);

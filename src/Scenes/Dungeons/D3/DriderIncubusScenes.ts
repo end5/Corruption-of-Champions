@@ -374,7 +374,7 @@ export class DriderIncubusScenes {
         // Kina text ends here
 
         outputText("\n\nMitzi might as well be a creature born of sapphic desire. She doesn’t show any sign of needing to breath or talk. It’s like her whole world is composed of vaginas, clits, and the fluids within. Her single mindedness is reflected in the motions of her unholy tongue, prowling around every sensitive fold to press on the most sensitive nerves, channeling your");
-        if (player.wetness() >= 3) outputText(" copious");
+        if (player.vaginas.wetness() >= 3) outputText(" copious");
         outputText(" lubrication down the crease in the middle of pussy-pleaser to collect in her mouth.");
         outputText("\n\nShe swallows noisily, making sure you can hear the sound of her gulp.");
         outputText("\n\nIt’s too much. You drop down to the ground, [legs] spread, never letting go of the enthusiastic goblin’s hair on your way down. Her own tits cushion the fall just as your tingling netherlips muffle her sounds of surprise. If anything, the change in locale makes her even more determined in the motions of her tongue. She flexes the whiplike organ in ways that make your eyes cross and your [nipples] ache.");
@@ -601,7 +601,7 @@ export class DriderIncubusScenes {
         outputText("\n\n<i>“That’s my good little spider,”</i> you coo in his ear, <i>“It feels good not to fight, doesn’t it - to give in?”</i> You kiss his cheek when he whimpers something to the affirmative. <i>“I’m going to fuck you sooo good, but you’ve got to let me know how much you like it, okay?”</i>");
         outputText("\n\nKinarial shudders and moans louder. Atta boy.");
         outputText("\n\nYou stroke his underside from base to tip before breaking contact, playfully eyeing the strand of sticky juice that momentarily connects his bloated phallus to your wiggling digit. Once it snaps, you playfully lick yourself clean, hollowing your cheeks with the force of the suction. His vocalizations turn plaintive and whiny from the lack of contact, but you silence him by bringing the exterior of your [vagina] to rest against him. There’s no way he can ignore the feeling of your slick,");
-        if (player.wetness() >= 3) outputText(" soaked");
+        if (player.vaginas.wetness() >= 3) outputText(" soaked");
         else outputText(" aroused");
         outputText(" lips spreading against him, the way your petals push open to reveal the delicate smoothness of your inner flower.");
 
@@ -629,7 +629,7 @@ export class DriderIncubusScenes {
         // Merge
         outputText("\n\nLifting your [hips], you edge your [vagina] closer and closer to the incubus drider’s demonic length. You swear you can smell the corruption pouring off it in waves, a rich musk that makes you dizzy and eager to have it inside you. It’s so big and thick and yet oh so very wrong. The head spears your lips while you’re still trying to digest all this, your body acting on autopilot, concerned only with the act of filling the overwhelming need.");
         outputText("\n\nHe slips in so easily.");
-        if (player.hasVirginVagina()) outputText(" Your virginity seems an afterthought, torn away from you before you know it. It didn’t even hurt. Why weren’t you fucking before? A whole new world of fucking is open to you now, your [vagina] loudly and perniciously declaring that it wants to feel this again and again. Maybe you can take down the minotaur and ride him as well before getting to Lethice.");
+        if (player.vaginas.hasVirginVagina()) outputText(" Your virginity seems an afterthought, torn away from you before you know it. It didn’t even hurt. Why weren’t you fucking before? A whole new world of fucking is open to you now, your [vagina] loudly and perniciously declaring that it wants to feel this again and again. Maybe you can take down the minotaur and ride him as well before getting to Lethice.");
         else outputText(" You almost regret fighting him all this time. A wonderful dick like this deserves to be ridden, holstered within a pair of wet and willing folds until it can spill its powerful, corrupting load deep into your innermost recesses again and again. A girl could fall in love with feelings like this.");
         outputText("\n\nYou grab hold of his shoulders and push down ferociously, taking him in one fluid, wet-sounding push. You moan right alongside your tainted boy-toy, suddenly and immensely glad that you didn’t let him beg you off onto the goblin. You would’ve missed the mating of a lifetime. The way your nerves sing with delight, you’re barely able to remember to properly humiliate Kinariel. You bounce your [hips], rubbing up against his smooth, well-muscled neck and listening to him cry in delight. Your [vagina] squeezes tight around him, pitching him up an octave, playing him like an instrument, albeit one that you find yourself increasingly enamored with.");
         outputText("\n\nThe jeers from your perverse audience barely register to you by now, but your partner is certainly still aware, judging by the way his eyes flick from demoness to fuckslave to incubus. He’s going to the one that got humiliated by the Champion, no doubt about it, and his body fucking loves it. You grab him by the hair and make him look you in the eyes, slowing your fucking enough that you’ll be able to manage a complete sentence.");
@@ -645,7 +645,7 @@ export class DriderIncubusScenes {
         }
         outputText(". He floods you with his tainted seed, stuffing your passage until every nook and cranny is chock full of demonspunk, bathed in his reproductive corruption.");
         outputText("\n\nYou go off with him, unsubtly triggered by the feeling of being so suitably and powerfully filled, not just by a wonderful, cunt-stroking cock but by the sinfully slippery love juice he pours into you, seemingly without end. You close your eyes and turn your [hips] loose to buck as wildly as they wish, even if the violent spasm force torrential gouts of ivory goo to squirt from between your fluttering lips. It’s a");
-        if (flags[kFLAGS.PC_FETISH] < 1 || player.hasVirginVagina() || player.cor <= 33) outputText("n unexpectedly");
+        if (flags[kFLAGS.PC_FETISH] < 1 || player.vaginas.hasVirginVagina() || player.cor <= 33) outputText("n unexpectedly");
         outputText(" wonderful feeling, getting to cum in front of an audience like this.");
         outputText("\n\nYou ride the waves of ecstasy just as you ride the gnarly pussy-pleaser that gave gave them to you. The sweaty, orgasmically writhing whore that you’ve become may be a long way from the");
         if (player.perks.findByType(PerkLib.HistorySlut) < 0 && player.perks.findByType(PerkLib.HistoryWhore) < 0) outputText(" chaste");

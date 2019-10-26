@@ -68,7 +68,7 @@ export class CorruptedDrider extends AbstractSpiderMorph {
                 dynStats("lus", 15);
                 outputText("Again, the drider ties your mouth up in her syrupy lip-lock, seeming to bind your mouth as effectively as her webs bind your body.  Her sweet venom bubbles and froths at the corners of the oral embrace, dripping over her many-breasted bosom and your " + chestDesc(player) + ".", false);
                 if (player.cocks.length > 0) outputText("  " + SMultiCockDesc(game.player) + " spews a rope of pre-cum into your " + player.armorName + ", desperate to get out and fuck.", false);
-                if (player.hasVagina()) outputText("  Fem-cum dribbles down your " + legs(player) + " while your " + clitDescription(player) + " gets so hard you think it'll explode.", false);
+                if (player.vaginas.length > 0) outputText("  Fem-cum dribbles down your " + legs(player) + " while your " + clitDescription(player) + " gets so hard you think it'll explode.", false);
                 outputText("  This time, the drider is the one to break the kiss.  She asks, \"<i>Are you ready, my horny little morsel?</i>\"\n", false);
                 if (player.lust <= 99) outputText("You shake your head 'no' and stand your ground!\n", false);
             }
@@ -77,10 +77,10 @@ export class CorruptedDrider extends AbstractSpiderMorph {
                 outputText("This time you barely move.  Your body is too entranced by the idea of another venom-laced kiss to resist.  Glorious purple goo washes into your mouth as her lips meet yours, sealing tight but letting your tongue enter her mouth to swirl around and feel the venom drip from her fangs.  It's heavenly!  Your " + skin(player) + " grows hot and tingly, and you ache to be touched so badly.  Your " + nippleDescription(player, 0) + "s feel hard enough to cut glass, and a growing part of you admits that you'd love to feel the drider's chitinous fingers pulling on them.", false);
                 // (HIT? + 20 lust)
                 dynStats("lus", 20);
-                if (player.cocks.length > 0 || player.hasVagina()) {
+                if (player.cocks.length > 0 || player.vaginas.length > 0) {
                     outputText("  The moisture in your crotch only gets worse.  At this point, a ", false);
-                    if (player.wetness() < 3 && player.cumQ() < 200) outputText("small", false);
-                    else if (player.wetness() < 5 && player.cumQ() < 500) outputText("large", false);
+                    if (player.vaginas.wetness() < 3 && player.cumQ() < 200) outputText("small", false);
+                    else if (player.vaginas.wetness() < 5 && player.cumQ() < 500) outputText("large", false);
                     else outputText("massive", false);
                     outputText(" wet stain that reeks of your sheer sexual ache has formed in your " + player.armorName + ".", false);
                     if (player.lust <= 99) outputText("  Amazingly, you resist her and pull back, panting for breath.", false);
@@ -147,7 +147,7 @@ export class CorruptedDrider extends AbstractSpiderMorph {
         this.long = "This particular spider-woman is a drider - a creature with a humanoid top half and the lower body of a giant arachnid.  From a quick glance, you can tell that this one has fallen deeply to corruption.  She is utterly nude, exposing her four well-rounded, D-cup breasts with their shiny black nipples.  " + (pierced ? "Gold piercings and chains link the curvy tits together, crossing in front of her four mounds in an 'x' pattern.  " : "") + "On her face and forehead, a quartet of lust-filled, " + skinTone + " eyes gaze back at you.  Behind her, the monster-girl's " + hairColor + " hair drapes down her back like a cloak.  The drider's lips seem to shine with a light all their own, and a steady trickle of purple, reflective fluid beads and drips from them.  At her waist, there's a juicy looking snatch with a large, highly visible clit.  From time to time it pulsates and grows, turning part-way into a demon-dick.  Her spider-half has eight spindly legs with black and " + hairColor + " stripes - a menacing display if ever you've seen one.";
         // this.plural = false;
         this.cocks.createCock(9, 2, CockTypesEnum.DEMON);
-        this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
+        this.vaginas.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
         this.effects.create(StatusAffects.BonusVCapacity, 70, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;

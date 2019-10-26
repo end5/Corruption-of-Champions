@@ -51,7 +51,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     }
 
     private assholeOrDP(): string {
-        if (player.hasVagina()) return (vaginaDescript(player, 0) + " and " + assholeDescript(player));
+        if (player.vaginas.length > 0) return (vaginaDescript(player, 0) + " and " + assholeDescript(player));
         return assholeDescript(player);
     }
     private vaginaOrDicksOrCrotch(): string {
@@ -309,9 +309,9 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("stroking your own member", false);
             if (player.cocks.length > 1) outputText("s", false);
             outputText(" ", false);
-            if (player.hasVagina()) outputText("and ", false);
+            if (player.vaginas.length > 0) outputText("and ", false);
         }
-        if (player.hasVagina()) outputText("caressing your aching twat ", false);
+        if (player.vaginas.length > 0) outputText("caressing your aching twat ", false);
         outputText("as the mouse slowly paints himself with spoo.  By the time he has finished, he is soaked from head to toe, and lying in a puddle of his own making.  The tentacles fall limp and slowly begin to retract, until the only visible indication of their presence is a small lump on each shoulder.  His tails seem to regrow their fur in an instant, but they stay separate, and retain their thicker size.  Last but not least, you see that his member has shrunk back down to almost a foot and a half long, but has thickened up nicely.  Most of it returns to his natural pink skin-tone, but the head remains an angry purple as it stays hard and keeps drooling.\n\n", false);
         outputText("The dildo is gone, leaving only a hot pink tinge on the fur around his pucker.  Whatever dark magic you managed to imbue it with was used up by the transformation.  Jojo is still out cold, probably unable to cope with the force of his altered orgasm, but his body is doing an admirable job of adjusting.  You even see his three tails curling together until they look like one larger tail.  Only close inspection would reveal the difference.\n\n", false);
         outputText("You turn back to your tent, turned on beyond all measure, and needing to masturbate NOW.  You wonder what Jojo's new additions will feel like on your body when he wakes up, but for now you'll have to get off another way.", false);
@@ -336,11 +336,11 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("A few seconds later Jojo comes bounding into camp on all fours, blushing furiously and with his ass high in the air, trying to keep his tumescent mouse-member from dragging along the ground.  He presents himself to you, putting his hands behind his back and displaying his prick.  It squirms and wriggles obscenely in a way that nothing that thick should be able to move.  Jojo is biting his lip and blushing hard at his uncontrollable display.  You note that despite his blush, the tiny lumps on his shoulders are growing larger and taking on a purplish hue, while his three tails have begun to disentangle themselves behind him.\n\n", false);
         outputText("Desperation hangs thick about him in the air as his newfound additions react to your summons.  Somehow he knows you wanted to use them, but he's trying to hold himself back like a good bitch.  You egg him on a bit, taunting, \"<i>Awww, look at the cute little tentacles begging to come out and play,</i>\" while you begin to brush your fingertips along underside of his writhing cock.  Jojo's eye cross from the pleasure, his member growing longer and longer under your touches until it's swaying in the air, snake-like, with its flared purple tip lying in the palm of your hand.\n\n", false);
         outputText("You drop it, letting it smack into the floor with a wet-sound 'SPLAT' that creates a puddle of pre-cum on the ground.  With your hands free, it is easy to quickly remove your " + player.armorName + " and toss it back towards your tent.  By the time you turn back around, his snake-like member is curling up your thigh, towards your " + assholeOrPussy(player) + ".  ", false);
-        if (player.hasVagina()) outputText("You feel it split in half, dividing in order to take you from both ends.  ", false);
+        if (player.vaginas.length > 0) outputText("You feel it split in half, dividing in order to take you from both ends.  ", false);
         outputText("You marvel at just how hard it is to dominate someone who can fuck you from a few feet away and wrap you up with a half-dozen appendages before you just give in and decide to enjoy it.\n\n", false);
         outputText("You put your arms on your hips and say, \"<i>Go ahead and ravage me then, but if I don't love every second of it you'll regret it.</i>\"\n\n", false);
         outputText("Looking very much like a starving man looking at a steak, Jojo smiles serenely and lashes out with his shoulder-tentacles, grabbing your arms and pinning them to your waist.  They wrap about your middle and lift you off the ground with ease.  Suspended in front of him, you're effortlessly rotated in place until your " + assholeDescript(player) + " is in the air and your legs splayed apart, with the mutant-mouse's primary tentacle getting ever closer to your " + assholeDescript(player), false);
-        if (player.hasVagina()) outputText(" and " + vaginaDescript(player, 0), false);
+        if (player.vaginas.length > 0) outputText(" and " + vaginaDescript(player, 0), false);
         outputText(".\n\n", false);
         // REAL SECKS STARTS HERE
         if (player.cocks.length > 0) {
@@ -362,7 +362,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                     else if (player.cocks.cockArea(0) >= 20) outputText("engulfing", false);
                     else outputText("easily swallowing", false);
                     outputText(" your " + cockDescript(game.player, 0) + " in a tight vise of pleasure.  The other two tentacles slide under, ", false);
-                    if (!player.hasVagina()) outputText("rubbing back and forth along your taint and smearing you with their slime.", false);
+                    if (!player.vaginas.length > 0) outputText("rubbing back and forth along your taint and smearing you with their slime.", false);
                     else {
                         outputText("rubbing against your thighs and smearing them with lubricant while one of them easily sucks your " + clitDescription(player) + " inside.", false);
                         // (If big clit –
@@ -388,7 +388,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                     else if (player.cocks.cockArea(0) >= 20) outputText("engulfing", false);
                     else outputText("easily swallowing", false);
                     outputText(" your " + multiCockDescriptLight(game.player) + " in tight vises of pleasure.  The remaining tentacle slides underneath, seeking ", false);
-                    if (player.hasVagina()) {
+                    if (player.vaginas.length > 0) {
                         outputText("out your " + clitDescription(player) + " and sucking it inside.", false);
                         // (If big clit –
                         if (player.clitLength >= 4) outputText("  You nearly cum on the spot from the clitoral stimulation; it's like you have a super-sensitive cock being licked by a thousand tongues.", false);
@@ -410,7 +410,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             }
         }
         // (0 dicks but clit)
-        if (player.cocks.length == 0 && player.hasVagina()) {
+        if (player.cocks.length == 0 && player.vaginas.length > 0) {
             outputText("One of Jojo's tail-tentacles slides underneath his body, shooting forwards to seek out your " + clitDescription(player) + ".  It pauses an inch or two away and opens up a horrific orifice full of wriggling tentacles and slick fluids.  The next moment it lunges forwards and sucks it inside.", false);
             // (If big clit –
             if (player.clitLength >= 4) outputText("  You nearly cum on the spot from the clitoral stimulation; it's like you have a super-sensitive cock being licked by a thousand tongues.", false);
@@ -419,22 +419,22 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // GET BUTT/VAGOO PENETRATED
         outputText("The ", false);
-        if (player.hasVagina()) outputText("pair of tentacles ", false);
+        if (player.vaginas.length > 0) outputText("pair of tentacles ", false);
         else outputText("tentacle ", false);
         outputText("hanging over your bottom decide", false);
-        if (!player.hasVagina()) outputText("s", false);
+        if (!player.vaginas.length > 0) outputText("s", false);
         outputText(" that now is a good time to penetrate your undefended opening", false);
-        if (player.hasVagina()) outputText("s", false);
+        if (player.vaginas.length > 0) outputText("s", false);
         outputText(", and press against you, ", false);
         // Virgin taking
-        if (player.hasVirginVagina() || player.ass.analLooseness == 0) {
+        if (player.vaginas.hasVirginVagina() || player.ass.analLooseness == 0) {
             outputText("barely slipping inside your virginal opening", false);
-            if (player.hasVirginVagina() && player.ass.analLooseness == 0) outputText("s", false);
+            if (player.vaginas.hasVirginVagina() && player.ass.analLooseness == 0) outputText("s", false);
         }
         // not virgin taking
         else {
             // With cunt
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 if (player.vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_GAPING_WIDE) outputText(" practically falling into your oversized cum-receptacles", false);
                 else {
                     if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText(" sliding inside easily thanks to your copious lubrication", false);
@@ -452,9 +452,9 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // ON WITH THE PENETRATION
         outputText(".  Your " + mouthMuzzle() + " opens with a wordless cry of surprise ", false);
-        if (player.hasVagina()) outputText("and pleasure ", false);
+        if (player.vaginas.length > 0) outputText("and pleasure ", false);
         outputText("as Jojo's tentacle", false);
-        if (player.hasVagina()) outputText("s begin", false);
+        if (player.vaginas.length > 0) outputText("s begin", false);
         else outputText(" begins", false);
         outputText(" thoroughly violating you, pistoning in and out relentlessly.", false);
         if (player.cocks.length > 0) {
@@ -462,7 +462,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.cocks.length == 1) outputText("  The tentacle on your " + multiCockDescriptLight(game.player) + " seems appreciative, and begins sucking to swallow down all your pre.", false);
             if (player.cocks.length > 1) outputText("  The tentacles on your " + multiCockDescriptLight(game.player) + " seem appreciative, and begin sucking to swallow down all your pre.", false);
         }
-        if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " spasms around the invader, clenching uncontrollably as it's plowed by the thick vine-prick.", false);
+        if (player.vaginas.length > 0) outputText("  Your " + vaginaDescript(player, 0) + " spasms around the invader, clenching uncontrollably as it's plowed by the thick vine-prick.", false);
         outputText("\n\n", false);
         outputText("You feel the bindings around your waist sliding and twisting to free up some of their length.  The pair of tentacle-cocks rear up before your " + allBreastsDescript(player) + " like hungry snakes eyeing a mouse.\n\n", false);
         // (Large tits &/or multitits with no lactation)
@@ -500,7 +500,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // Cumsplosion
         outputText("Jojo unleashes a howl of bestial pleasure, and you feel the ", false);
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("tentacles in your " + assholeOrDP() + " thicken perceptibly.  Bulges of cum work their way down the tentacles, spreading your " + assholeOrDP() + " wide before stuffing you full of mouse cream.  You can feel your bowels and uterus filling, expanding you until you look ", false);
             if (player.pregnancyIncubation == 0) outputText("mildly pregnant", false);
             else outputText("even more pregnant", false);
@@ -712,7 +712,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             player.orgasm();
         }
         // (Vagoozle!)
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00333] > 0) outputText("You know from experience that machine usually takes an hour before it will allow release", false);
             else outputText("You figure the machine will probably pump him for quite a while before it allows release", false);
             outputText(", and you're getting quite turned on from the show.  You shuck your " + player.armorName + " and reveal your " + vaginaDescript(player) + ", feeling your " + clitDescription(player) + " grow firm and hard.  For his part, Jojo doesn't even notice.  He just moans, squirms, and twitches any time he's brought particularly close to orgasm.  Seating yourself down below him, you let your fingers play across your now-wet folds, caressing your labia before you slide a few digits inside.  You brush your thumb against your clitoral hood and shudder from pleasure, enjoying watching your pet get milked as much as he's enjoying the milking.  ", false);
@@ -731,7 +731,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("At long last, the appointed time has come, and Jojo lets out the most lewd-sounding squeak you've ever heard come from his mouth.  His ass-cheeks and legs clench and flex against their restraints", false);
         if (player.cocks.length > 0) outputText(", squeezing your " + cockDescript(game.player, x) + " with agonizingly pleasurable pressure", false);
         outputText(".  His back arches in ecstasy.  Most noticeably, the tube slurping on his cock is suddenly distorting as thick, round globules of mousey seed are sucked towards the wall.  The bulges are quickly smoothed out into one long, hose-dilating river of rodent-spooge.", false);
-        if (!player.cocks.length > 0 && player.hasVagina()) outputText("  His balls tremble and shrink in your mouth, pumping his prodigious semen out, wasting it in exchange for a pittance of gems.", false);
+        if (!player.cocks.length > 0 && player.vaginas.length > 0) outputText("  His balls tremble and shrink in your mouth, pumping his prodigious semen out, wasting it in exchange for a pittance of gems.", false);
         outputText("\n\n", false);
 
         if (player.cocks.length > 0) {
@@ -739,7 +739,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.cocks.cockThatFits(40) < 0) outputText("You release your cum all over Jojo's back, matting his white fur with cum.  Each successive splatter of spunk makes the mouse look even more like a semen-drenched whore.  It's a good look for him.", false);
             else outputText("You pull out and release your cum all over Jojo's back, matting his white fur with cum.  Each successive splatter of spunk makes the mouse look even more like a semen-drenched whore.  It's a good look for him.", false);
         }
-        else if (player.hasVagina()) outputText("You climax and clamp down on your fingers, squeezing your hand as your own cries of pleasure mix with your cock-toy's milked-out moans.", false);
+        else if (player.vaginas.length > 0) outputText("You climax and clamp down on your fingers, squeezing your hand as your own cries of pleasure mix with your cock-toy's milked-out moans.", false);
         else outputText("You sigh wistfully as Jojo ejaculates his load, wishing you could feel such exquisite sensations.  Maybe you can find something to give you some proper sexual organs soon?", false);
         outputText("  Though he cums for minutes on end, the machinery doesn't seem to have much problem keeping up.  Eventually the hose pops off and drags back towards the wall, leaking a small trail of mouse-spunk on the floor.\n\n", false);
 
@@ -775,7 +775,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("Giving your furry slut's clenching ass a smack, you walk around in front of him, nearly tripping over the bouncing tube as you change position.  Jojo's panting with his eyes nearly rolled back into his head.  Every fifteen seconds or so his body will clench, only to have the cock-sucker's motions slow torturously.  He squeals and squeaks each time as if it was the first time.  You scratch him behind his large, dish-shaped ears as words bubble up from within you.  \"<i>Good pet.  You love being milked.  Your balls get so full and heavy... so full of spunk.  They ache, don't they?  Yes... they hurt you so bad.  You get so much cum pent up in there, and you can't let it out, not without being sucked like this.  Shhh... shhh... it's okay.  Just enjoy how perfectly swollen your balls are getting.  You can let it out eventually.</i>\"\n\n", false);
 
             outputText("Jojo's eyes roll the whole way back for a moment, and his mouth begins to froth as he utterly caves in to his animal, pleasure-seeking instincts.  You lean back against a smooth part of the wall and shed your clothes, beginning to masturbate directly in front of your stall.  In time, your own pleasured moans draw your pet from his pleasure-induced stupor, and he watches with wide, bloodshot eyes as you bring yourself off to climax after climax", false);
-            if (!player.cocks.length > 0 && !player.hasVagina()) outputText(", even though to do so you're forced to stimulate your " + assholeDescript(player), false);
+            if (!player.cocks.length > 0 && !player.vaginas.length > 0) outputText(", even though to do so you're forced to stimulate your " + assholeDescript(player), false);
             outputText(".  His twitching rodent-nose sniffs at the air wildly as he pants, inhaling your scent between long, forlorn sounding moans.\n\n", false);
 
             outputText("Jojo's muscles seize, and you can tell his orgasm has arrived.  You smirk and lean closer, tugging an ear close to your mouth for another dose of 'encouragement'.  \"<i>Cum for me, pet.  Let all that spunk clogging up your balls boil out into the milker.  Give it all up for me.  Just let out every... thick... pent-up... liter of your seed.  Empty it all!  Cum and squirt until your balls are as empty as your virtue!</i>\"\n\n", false);
@@ -984,7 +984,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nJojo grabs her hair and pulls as he fucks her, growling against her ear.  You can see his balls bobbing and twitching through their bondage.  They're trying so hard to cum, and yet, Amily's vice-tight tail is keeping all that spooge bottled up inside them.  Jojo's sack even appears to be swelling under the pressure of their liquid weight.  In his frenzied desperation, the male mouse begins to nip and bite Amily's ears, bringing her to heel with the feral gesture of dominance.  It seems to pay off, as the corrupted mouse-girl begins to shiver and shake, losing a bit of her muscle control as she orgasms.  Her tail loosens, not completely, but enough for Jojo's visibly-pulsating nut-sack to unleash the tidal-wave of spooge that's been backing up inside and force it open.  You see his eyes clench, and then Amily's belly begins to bulge slightly.  His hips shiver, and the bulge grows.  It goes for what seems like ages - Jojo giving little shifts and sighs of pleasure, Amily's belly becoming more and more pregnant with cum.  It doesn't really sink in just how big she's gotten until you realize her belly has touched the ground.  It trembles and wobbles with fluid girth before the former monk has finally had enough and withdraws to hose her down with the last few thick strands of his seed.");
         outputText("\n\nJojo stands back and smiles, observing his handwork.  His dick never even goes soft.  If anything, you see his balls swelling back up to their normal size - well, the norm since you changed him.  He starts leaking pre again, and as he runs off towards the woods, you have to wonder if he's off to visit the flower in the corrupted glade.  Amily lies on her side and cradles her cum-stuffed belly, squeaking soft bleats of happiness as she tries to recover.");
         outputText("\n\nYou stealthily slide down the rock and get dressed.");
-        if (player.hasVagina()) outputText(" It isn't until you notice how wet your crotch is that you come to the realization that you've masturbated yourself through a few orgasms as well.");
+        if (player.vaginas.length > 0) outputText(" It isn't until you notice how wet your crotch is that you come to the realization that you've masturbated yourself through a few orgasms as well.");
         else outputText(" It isn't until you notice how clearheaded you are that you come to the relaization that you've masturbated while watching the pair.");
         outputText(" Maybe you'll get to catch them in the act again?");
         player.orgasm();
@@ -1123,7 +1123,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         else if (player.gender == 2) {
             outputText("You smack the back of his head hard, dazing him.  You spin him around as you take his feet out from under him, one hand pulling his pants while the other slashes his belt.  He literally 'falls out of his pants' and onto the soft earth of the forest.  You pounce on the stunned monk, shedding your own clothes and pinning him to the ground.  He begins to resist, squirming under you, ");
 
-            if (player.wetness() < 2) {
+            if (player.vaginas.wetness() < 2) {
                 outputText("but the sensation of you grinding your folds against him momemtarily breaks his will.  ");
             }
             else {
@@ -1224,7 +1224,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) outputText("Milk squirts from  your nipples, spraying him down with small droplets of your creamy tit-treat.  ");
             if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() < 3) outputText("Streams of milk spray from your nipples in time with your pussy contractions, hosing the poor mouse down and puddling on his fur.  ");
             if (player.breasts.biggestLactation() >= 3) outputText("Gouts of milk erupt from your nipples, spraying continually as you cum.  The poor mouse is soaked from head to toe, your cream utterly drenching the monk.  ");
-            if (player.averageVaginalWetness() == 5) outputText("Your " + vaginaDescript(player, 0) + " drenches him with your squirting girl-cum, mixed with his own seed.");
+            if (player.vaginas.averageVaginalWetness() == 5) outputText("Your " + vaginaDescript(player, 0) + " drenches him with your squirting girl-cum, mixed with his own seed.");
             if (player.cocks.length == 1) outputText("Jizz sprays onto his chest from your " + cockDescript(game.player, 0) + ".  ");
             if (player.cocks.length == 2) outputText("A hail of jizz splatters over Jojo from your " + multiCockDescriptLight(game.player) + ".  ");
             if (player.cocks.length == 3) outputText("A multitude of thick cum-streams splatter over Jojo from head to waist as your " + multiCockDescriptLight(game.player) + " hose him down.  ");
@@ -1280,10 +1280,10 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             else if (player.lowerBody == LOWER_BODY_TYPE_GOO) outputText("your jiggling goo ");
             else outputText("your thighs ");
             outputText("around his head and quiver with passion, ");
-            if (player.averageVaginalWetness() <= 1) outputText("squeezing him tightly into your " + vaginaDescript(player, 0) + ".");
-            if (player.averageVaginalWetness() > 1 && player.averageVaginalWetness() <= 3) outputText("creaming his tongue liberally with girlcum.");
-            if (player.averageVaginalWetness() == 4) outputText("creaming all over him with your slobbering pussy.");
-            if (player.averageVaginalWetness() == 5) outputText("splattering him with girlcum from your " + vaginaDescript(player, 0) + ".");
+            if (player.vaginas.averageVaginalWetness() <= 1) outputText("squeezing him tightly into your " + vaginaDescript(player, 0) + ".");
+            if (player.vaginas.averageVaginalWetness() > 1 && player.vaginas.averageVaginalWetness() <= 3) outputText("creaming his tongue liberally with girlcum.");
+            if (player.vaginas.averageVaginalWetness() == 4) outputText("creaming all over him with your slobbering pussy.");
+            if (player.vaginas.averageVaginalWetness() == 5) outputText("splattering him with girlcum from your " + vaginaDescript(player, 0) + ".");
             outputText("\n\nYou pull the cunt-dazed mouse away reluctantly, and bend over,");
             if (player.isBiped()) outputText(" spreading your legs and");
             outputText(" shaking your rump.  ");
@@ -1318,10 +1318,10 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             }
             if (player.breasts.biggestLactation() >= 1.5 && player.breasts.biggestTitSize() > 2 && player.breasts.mostBreastsPerRow() >= 2 && player.breastRows.length >= 1) outputText("Every sensual peak within you is mirrored with small spurts of milk from your nipples.  It eventually trickles down to Jojo's tongue, spurring his efforts on.  ");
             outputText("The mousey gets more and more into eating your box, making it harder and harder to stave off an orgasm.  You wrap your thighs around his head and quiver with passion, ");
-            if (player.averageVaginalWetness() <= 1) outputText("squeezing him tightly into your " + vaginaDescript(player, 0) + ".");
-            if (player.averageVaginalWetness() > 1 && player.averageVaginalWetness() < 4) outputText("creaming his tongue liberally with girlcum.");
-            if (player.averageVaginalWetness() == 4) outputText("creaming all over him with your slobbering pussy.");
-            if (player.averageVaginalWetness() >= 5) outputText("splattering him with you girlcum from your " + vaginaDescript(player, 0) + ".");
+            if (player.vaginas.averageVaginalWetness() <= 1) outputText("squeezing him tightly into your " + vaginaDescript(player, 0) + ".");
+            if (player.vaginas.averageVaginalWetness() > 1 && player.vaginas.averageVaginalWetness() < 4) outputText("creaming his tongue liberally with girlcum.");
+            if (player.vaginas.averageVaginalWetness() == 4) outputText("creaming all over him with your slobbering pussy.");
+            if (player.vaginas.averageVaginalWetness() >= 5) outputText("splattering him with you girlcum from your " + vaginaDescript(player, 0) + ".");
             if (player.cocks.length > 0) outputText("  Thick runners of your pre dribble down his neck, sticking to his fur.  ");
             outputText("\n\nYou pull the cunt-dazed mouse away reluctantly, and bend over,");
             if (player.isBiped()) outputText(" spreading your legs and");
@@ -1395,21 +1395,21 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             outputText(".  You get a devilish idea, ");
             if (player.lowerBody == LOWER_BODY_TYPE_GOO) outputText("and push his " + cockDescriptShort(monster, 0) + " in between folds of slime, sandwiching it in a mass of slippery, gooey tightness.  Holding his shoulder for balance, you slowly squeeze him, gently milking out small dribbles of pre.  He redoubles his efforts, burying his nose into your " + vaginaDescript(player, 0) + ", tongue swirling over your folds and around your " + clitDescription(player) + ".  For every effort on his part you step up your own, squeezing and stroking him with your goo, doing your best to impart a fetish for being masturbated with someone's lower body on his slowly warping mind.  You feel a hot wetness in your slime, and it grows slicker and wetter every second. Jojo's cum drips out of you, glazing your jello-like form white.  ");
             else outputText("and push his " + cockDescriptShort(monster, 0) + " with your " + foot(player) + ", sandwiching it under one " + foot(player) + " and on top of the other.  Holding his shoulder for balance, you slowly squeeze him, gently milking out small dribbles of pre.  He redoubles his efforts, burying his nose into your " + vaginaDescript(player, 0) + ", tongue swirling over your folds and around your " + clitDescription(player) + ".  For every effort on his part you step up your own, squeezing and stroking him with your " + feet(player) + ", doing your best to impart a " + foot(player) + " fetish on his slowly warping mind.  You feel a hot wetness on your " + feet(player) + ", and they grow slicker and wetter every second. Jojo's cum drips out from between them, glazing them white.  ");
-            if (player.averageVaginalWetness() <= 1) outputText("You clamp down on his muzzle as you writhe in orgasm.  ");
-            if (player.averageVaginalWetness() > 1 && player.averageVaginalWetness() <= 3) outputText("Your legs trap his muzzle in your " + vaginaDescript(player, 0) + " as orgasm wracks your body.  ");
-            if (player.averageVaginalWetness() == 4) outputText("Your legs trap his muzzle in your " + vaginaDescript(player, 0) + ", slicking his muzzle with girlcum as you spasm with bliss.  ");
-            if (player.averageVaginalWetness() == 5) outputText("Your legs squeeze him against your " + vaginaDescript(player, 0) + ", girlcum erupting over his face and soaking him as you bliss out with orgasm  ");
+            if (player.vaginas.averageVaginalWetness() <= 1) outputText("You clamp down on his muzzle as you writhe in orgasm.  ");
+            if (player.vaginas.averageVaginalWetness() > 1 && player.vaginas.averageVaginalWetness() <= 3) outputText("Your legs trap his muzzle in your " + vaginaDescript(player, 0) + " as orgasm wracks your body.  ");
+            if (player.vaginas.averageVaginalWetness() == 4) outputText("Your legs trap his muzzle in your " + vaginaDescript(player, 0) + ", slicking his muzzle with girlcum as you spasm with bliss.  ");
+            if (player.vaginas.averageVaginalWetness() == 5) outputText("Your legs squeeze him against your " + vaginaDescript(player, 0) + ", girlcum erupting over his face and soaking him as you bliss out with orgasm  ");
             if (player.cocks.length == 1) outputText("Your " + cockDescript(game.player, 0) + " drizzles cum in his hair, some dripping off by his ear.  ");
             if (player.cocks.length > 1) outputText("Your " + cockDescript(game.player, 0) + "s drizzle him with cum, covering his head with thick white streams of your jizz.  ");
             outputText("Twitching weakly with pleasure, you fall back.\n\n");
             // Fux!
             outputText("The pleasure was magnificent... but you want MORE.  You push yourself up, feeling pleased as you spy Jojo stroking his cum-slick " + cockDescriptShort(monster, 0) + ", thick streams of cum leaking from the tip.  You pounce on him, pushing him down on the ground, and position your " + vaginaDescript(player, 0) + " over him, allowing him to scent your sex.  With a triumphant smile, you sink down onto him, impaling yourself on his " + cockDescriptShort(monster, 0) + ".  ");
-            if (player.averageVaginalLooseness() == 0) outputText("He is painfully large, so much so that you feel more pain than pleasure.  ");
-            if (player.averageVaginalLooseness() == 1) outputText("He stretches you around him like a latex glove, pulling your " + vaginaDescript(player, 0) + " taught with his " + cockDescriptShort(monster, 0) + ", the sensation riding a razor's edge between pleasure and pain.  ");
-            if (player.averageVaginalLooseness() == 2) outputText("His " + cockDescriptShort(monster, 0) + " stuffs you completely, filling your " + vaginaDescript(player, 0) + " to capacity.  ");
-            if (player.averageVaginalLooseness() == 3) outputText("His " + cockDescriptShort(monster, 0) + " fits you perfectly, burying deep inside your folds.  ");
-            if (player.averageVaginalLooseness() == 4) outputText("You easily accomadate his member into your " + vaginaDescript(player, 0) + ".  ");
-            if (player.averageVaginalLooseness() == 5) outputText("His " + cockDescriptShort(monster, 0) + " slips inside your " + vaginaDescript(player, 0) + " with little resistance, easily sinking in to the hilt.  You muse to yourself, \"<i>If only he were thicker...</i>\"  ");
+            if (player.vaginas.averageVaginalLooseness() == 0) outputText("He is painfully large, so much so that you feel more pain than pleasure.  ");
+            if (player.vaginas.averageVaginalLooseness() == 1) outputText("He stretches you around him like a latex glove, pulling your " + vaginaDescript(player, 0) + " taught with his " + cockDescriptShort(monster, 0) + ", the sensation riding a razor's edge between pleasure and pain.  ");
+            if (player.vaginas.averageVaginalLooseness() == 2) outputText("His " + cockDescriptShort(monster, 0) + " stuffs you completely, filling your " + vaginaDescript(player, 0) + " to capacity.  ");
+            if (player.vaginas.averageVaginalLooseness() == 3) outputText("His " + cockDescriptShort(monster, 0) + " fits you perfectly, burying deep inside your folds.  ");
+            if (player.vaginas.averageVaginalLooseness() == 4) outputText("You easily accomadate his member into your " + vaginaDescript(player, 0) + ".  ");
+            if (player.vaginas.averageVaginalLooseness() == 5) outputText("His " + cockDescriptShort(monster, 0) + " slips inside your " + vaginaDescript(player, 0) + " with little resistance, easily sinking in to the hilt.  You muse to yourself, \"<i>If only he were thicker...</i>\"  ");
             outputText("You ride him slowly, gyrating your hips in tiny grinding circles while you run your hands through his fur.  His hips bounce you gently with tiny twitching thrusts, cum pooling out of your " + vaginaDescript(player, 0) + " as it continues to drip from him.  ");
             outputText("He gradually ups the tempo, and you are forced to go along for the ride as you begin to bounce on his " + cockDescriptShort(monster, 0) + ".  You grab fistfuls of his fur and hang on as he begins pounding your " + vaginaDescript(player, 0) + ", his huge balls slapping against you.  Cum squirts from your pussy with each of his violent thrusts, more pouring deep inside you continually.  Jojo squeals with glee and slams his hips into yours a final time, triggering an eruption of seed in your channel.  You feel it pouring into your womb, slowly distending your belly with every shuddering pump of cum.  You orgasm helplessly, fingering your " + clitDescription(player) + " the whole time.  ");
             // Futacawk here
@@ -1540,7 +1540,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
     private corruptJojoSexMenu(): void {
         menu();
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             addButton(2, "Gentle Vaginal", corruptJojoVaginalGentle);
             addButton(7, "Vag. Smother", corruptJojoVaginalSmother);
             addButton(8, "Anal Smother", corruptJojoAnalSmother);
@@ -1569,7 +1569,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         else if (player.cocks[x].cArea() < 36)
             outputText("You grip the fur on his head tightly in one hand and pull his mouth over your " + cockDescript(game.player, x) + ", thrusting into his muzzle with little concern for letting him catch his breath. The girth of your " + cockDescript(player, x) + " nearly dislocates his jaw. You can feel his throat stretching around you, like a hot, wet, tight sleeve, trembling with the pulse of his racing heart as you grind in and out of his mouth.  ");
         else outputText("You grip the fur on his head tightly in one hand and pull his mouth over your " + cockDescript(player, x) + ", thrusting against his muzzle with your " + cockDescript(player, x) + ". You can feel his buck teeth scratching against the top and bottom of your " + cockDescript(player, x) + "'s crown, but it does nothing to prevent what is to come. He lifts his hands to try to push your huge erection away, and since you can't fit your girth in his mouth, you decide to use that; grabbing hold of his hands and using them to stroke your length.  ");
-        outputText("His eyes turn to you in fear and his body shudders for lack of breath, but it does nothing more than stoke the fires of your lust. You groan in pleasure as your balls draw up tight, churning with your corrupted seed, and in a rush you feed it to him, your orgasm overtaking you as surge after hot surge of cum flares through your flesh and into his throat.  " + (player.hasVagina() ? "A sympathetic orgasm hits your pussy, causing a surge of feminine juices to splash against his chest and dribble down your thighs lewdly.  " : ""));
+        outputText("His eyes turn to you in fear and his body shudders for lack of breath, but it does nothing more than stoke the fires of your lust. You groan in pleasure as your balls draw up tight, churning with your corrupted seed, and in a rush you feed it to him, your orgasm overtaking you as surge after hot surge of cum flares through your flesh and into his throat.  " + (player.vaginas.length > 0 ? "A sympathetic orgasm hits your pussy, causing a surge of feminine juices to splash against his chest and dribble down your thighs lewdly.  " : ""));
         outputText("Your orgasm seems to last forever, filling his belly with your corrupted essence, causing his stomach to bulge slightly with the sheer volume of it. You pull away at last, letting him gasp for breath and fall to the ground, curling around his bloated belly.  ");
         outputText("You sneer at him and shake your head, hissing out, \"<i>It would be so much better for you if you didn't try to resist, my slut.</i>\"  ");
         player.orgasm();
@@ -1588,7 +1588,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         else if (player.cocks[x].cArea() < 36)
             outputText("He opens his mouth to protest, but you never give him the chance, forcing your " + cockDescript(player, x) + " between his lips and nearly dislocating his jaw with the girth of it. You can feel his throat stretching around you, like a hot, wet, tight sleeve, trembling with the pulse of his racing heart as you grind in and out of his mouth.  " + (player.breasts.biggestTitSize() >= 2 ? "Your hands lift to massage your breasts and tug at your nipples, and you can see him watching transfixed as you fuck his throat.  " : ""));
         else outputText("He opens his mouth to protest, only to have your " + cockDescript(player, x) + " mute him. You can feel his buck teeth scratching against the top and bottom of your " + cockDescript(player, x) + "'s crown, but it does nothing to prevent what is to come. He lifts his hands to try to push your huge erection away, and since you can't fit your girth in his mouth, you decide to use that; grabbing hold of his hands and using them to stroke your length.  " + (player.breasts.biggestTitSize() >= 2 ? "His eyes move from your massive member to your bouncing breasts above with a look of wanton desire that makes you laugh softly.  " : ""));
-        outputText("His eyes turn to you in fear and awe, pleading for release, and a slip of your foot to his own straining erection lets you know how in need of an orgasm he is, but this time is yours. You groan in pleasure as your balls draw up tight, churning with your corrupted seed, and in a rush you feed it to him, your orgasm overtaking you as surge after hot surge of cum flares through your flesh and into his throat.  " + (player.hasVagina() ? "A sympathetic orgasm hits your pussy, causing a surge of feminine juices to splash against his chest and dribble down your thighs lewdly.  " : ""));
+        outputText("His eyes turn to you in fear and awe, pleading for release, and a slip of your foot to his own straining erection lets you know how in need of an orgasm he is, but this time is yours. You groan in pleasure as your balls draw up tight, churning with your corrupted seed, and in a rush you feed it to him, your orgasm overtaking you as surge after hot surge of cum flares through your flesh and into his throat.  " + (player.vaginas.length > 0 ? "A sympathetic orgasm hits your pussy, causing a surge of feminine juices to splash against his chest and dribble down your thighs lewdly.  " : ""));
         outputText("Your orgasm seems to last forever, filling his belly with your corrupted essence, causing his stomach to bulge slightly with the sheer volume of it. You pull away at last, letting him gasp for breath and fall to the ground, curling around his bloated belly.  ");
         if (player.breasts.biggestTitSize() >= 2)
             outputText("You draw him to your bosom and kiss his forehead and then stand and go about your duties, leaving him to recover from the intense encounter and then retreat back into the jungle.  ");
@@ -2134,7 +2134,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nLaying eggs feels so goddamn good!  ");
         if (player.gender > 0) {
             outputText("Your ");
-            if (player.hasVagina()) outputText("pussy ");
+            if (player.vaginas.length > 0) outputText("pussy ");
             if (player.gender == 3) outputText(" and [eachCock] ");
             if (player.gender == 1) outputText(multiCockDescriptLight(game.player) + " ");
             if (player.gender == 3 || player.cocks.length > 1) outputText("are");

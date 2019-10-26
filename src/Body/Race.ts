@@ -204,7 +204,7 @@ export function sandTrapScore(char: Character): number {
     let counter: number = 0;
     if (char.effects.findByType(StatusAffects.BlackNipples) >= 0)
         counter++;
-    if (char.hasVagina() && char.vaginaType() == 5)
+    if (char.vaginas.length > 0 && char.vaginaType() == 5)
         counter++;
     if (char.eyeType == 2)
         counter++;
@@ -514,7 +514,7 @@ export function goblinScore(char: Character): number {
             horseCounter++;
         if (char.tallness < 48)
             horseCounter++;
-        if (char.hasVagina())
+        if (char.vaginas.length > 0)
             horseCounter++;
         if (char.lowerBody == 0)
             horseCounter++;
@@ -638,7 +638,7 @@ export function mutantScore(char: Character): number {
         mutantCounter++;
     if (char.cocks.length > 1)
         mutantCounter++;
-    if (char.cocks.length > 0 && char.hasVagina())
+    if (char.cocks.length > 0 && char.vaginas.length > 0)
         mutantCounter++;
     if (char.breasts.hasFuckableNipples())
         mutantCounter++;

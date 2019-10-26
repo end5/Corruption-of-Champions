@@ -16,7 +16,7 @@ export class HermCentaur extends Monster {
         // Rather than doing something smart, like usiing the mf() function to set the gender prounouns in checkMonster, instead, each create<x> function sets them to something. So if you createVag then createCock, you get male pronouns. Fuck off.
         this.breasts.createBreastRow(Appearance.breastCupInverse("E"));
         this.cocks.createCock(36, 5, CockTypesEnum.HORSE);
-        this.createVagina(false, 4, 5);
+        this.vaginas.createVagina(false, 4, 5);
 
         this.balls = 2;
         this.ballSize = 3;
@@ -93,7 +93,7 @@ export class HermCentaur extends Monster {
         else {
             outputText(" blood rushes to your loins, invigorating");
             if (player.cocks.length > 0) outputText(" [eachCock] with the desire to plunge inside that juicy-hot hole.");
-            else if (player.hasVagina()) outputText(" your [vagina] with the desire to submit while juices pool between your [legs].");
+            else if (player.vaginas.length > 0) outputText(" your [vagina] with the desire to submit while juices pool between your [legs].");
             else outputText(" your anus until it puckers, craving something to fill it - anything.");
         }
 
@@ -112,7 +112,7 @@ export class HermCentaur extends Monster {
         else if (player.lust < 70) {
             outputText("\n\nYou groan in disappointment when you realize what's going to happen, but as soon as you're slicked with the aphrodisiac,");
             if (player.cocks.length > 0) outputText(" [eachCock] awakens, filling itself towards full erection.");
-            else if (player.hasVagina()) outputText(" a wet heat answers in your loins, growing more insistent from moment to moment.");
+            else if (player.vaginas.length > 0) outputText(" a wet heat answers in your loins, growing more insistent from moment to moment.");
             else outputText(" your [asshole] tingles, craving something to fill it.");
         }
         else if (player.lust < 80) {
@@ -124,7 +124,7 @@ export class HermCentaur extends Monster {
         else if (player.lust < 90) {
             outputText("\n\nPanting feverishly, you try to ignore the blush-colored downfall, but it's a futile gesture.  It makes your " + skinFurScales(player) + " burn hot, wicking inside you with devilish efficiency to stoke the fires of your lust beyond normal limits.");
             if (player.cocks.length > 0) outputText("  Pre begins to dribble from your hot-and-ready cum-slit, eager to pour out in a deluge of sperm.");
-            else if (player.hasVagina()) outputText("  A flood of sopping moisture dribbles down your [legs], the proof of your unholy desire to breed.");
+            else if (player.vaginas.length > 0) outputText("  A flood of sopping moisture dribbles down your [legs], the proof of your unholy desire to breed.");
             outputText(" You NEED to fuck soon.  You can barely contain yourself!");
         }
         else if (player.lust < 100) outputText("\n\nMoaning out loud, you smear the stuff across your [chest] as it sprinkles you, the mounting desire almost at your limit.  You want to touch yourself SO BADLY, but you know that if you do, you'll wind up a mare to this centaur, perhaps forever.  You have to resist!  You can't fall victim to this... alluring creature.");

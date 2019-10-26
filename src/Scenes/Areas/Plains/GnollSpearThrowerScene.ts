@@ -85,7 +85,7 @@ export class GnollSpearThrowerScene {
         else if (!player.isTaur()) {
             outputText("Panting from your struggles, you look down in time to see the gnoll twine a second leather strap around your ankle, tying it to the base of one of the javelins.  You attempt to keep her from securing your second ankle when a spotted paw reaches up, ", false);
             if (player.balls > 0) outputText("clamping onto your " + sackDescript(player) + " and squeezing until ", false);
-            else if (player.hasVagina()) outputText("grabbing your " + clitDescription(player) + " until ", false);
+            else if (player.vaginas.length > 0) outputText("grabbing your " + clitDescription(player) + " until ", false);
             else outputText("plunging into your " + assholeDescript(player) + " and pinching until ", false);
             outputText("you cry out and let her tie your second leg to the post.\n\n", false);
         }
@@ -93,7 +93,7 @@ export class GnollSpearThrowerScene {
         else {
             outputText("Panting from your struggles, you look down in time to see the amazon tie a length of leather cord around one hind ankle.  She stands up, tugging at the cord and demands that you lift your leg.  You refuse, preparing to deliver a devastating kick to her torso when she reaches one spotted paw forward, ", false);
             if (player.balls > 0) outputText("clamping onto your " + sackDescript(player) + " and squeezing until ", false);
-            else if (player.hasVagina()) outputText("grabbing your " + clitDescription(player) + " until ", false);
+            else if (player.vaginas.length > 0) outputText("grabbing your " + clitDescription(player) + " until ", false);
             else outputText("plunging into your " + assholeDescript(player) + " and pinching until ", false);
             outputText("you cry out and lift your leg.  She quickly ties the leg to the post, lifted off the ground, leaving you unable to kick or move easily.\n\n", false);
         }
@@ -124,7 +124,7 @@ export class GnollSpearThrowerScene {
         // <Male>
         if (player.cocks.length > 0) outputText("Your cum spurts from your " + multiCockDescriptLight(game.player) + ", spraying your seed over the dry ground, giving life to the savanna.", false);
         // <Females>
-        else if (player.hasVagina()) outputText("Your own juices flow freely from your " + vaginaDescript(player) + ", coating your thighs and dripping onto the dry grass below you.", false);
+        else if (player.vaginas.length > 0) outputText("Your own juices flow freely from your " + vaginaDescript(player) + ", coating your thighs and dripping onto the dry grass below you.", false);
         outputText("  Muscles deep within you ripple, spasming around the strange intruder buried deep within you.  The hyena roars her pleasure, slamming deep into your " + assholeDescript(player) + " as your body milks her hard cunt for the juices flowing from her.\n\n", false);
 
         outputText("With a grunt, the hyena pulls away from your trapped form, filling the air with the scent of the hyena musk that now drips from your abused hole.  With one deft motion of her paw, the bindings on your hands suddenly slip free, ", false);
@@ -149,7 +149,7 @@ export class GnollSpearThrowerScene {
         else outputText(" aroused");
         outputText(" to fight further.  One spotted paw holds tight to the shaft while the tawny warrior slowly falls to her knees, the will to fight completely gone.  Her head bows to you in submission as you slowly approach the defeated hyena.", false);
         let vagoo: () => void = null;
-        if (player.hasVagina()) vagoo = victoryRapeHyenaCunnilingus;
+        if (player.vaginas.length > 0) vagoo = victoryRapeHyenaCunnilingus;
         let penor: () => void = null;
         if (player.cocks.length > 0) penor = hyenaVictoryRapeFellatio;
         if (player.lust >= 33 && player.gender > 0) {

@@ -50,7 +50,7 @@ export class DemonPack extends Monster {
                 if (player.cocks.length > 1) outputText("Each of y", false);
                 else outputText("Y", false);
                 outputText("our " + multiCockDescriptLight(player) + " throbs ", false);
-                if (player.hasVagina()) outputText(" and your ", false);
+                if (player.vaginas.length > 0) outputText(" and your ", false);
             }
             if (player.vaginas.length > 0) {
                 if (!player.cocks.length > 0) outputText("Your ", false);
@@ -86,7 +86,7 @@ export class DemonPack extends Monster {
         this.ballSize = 1;
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
-        this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
+        this.vaginas.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
         this.breasts.createBreastRow(0);
         this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
         this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;

@@ -9,7 +9,7 @@ export class OvipositionElixir extends Consumable {
     }
 
     public canUse(): boolean {
-        if (game.player.hasVagina()) return true;
+        if (game.player.vaginas.length > 0) return true;
         outputText("You pop the cork and prepare to drink the stuff, but the smell nearly makes you gag.  You cork it hastily.\n\n");
         return false;
     }

@@ -169,7 +169,7 @@ export class Isabella extends Monster {
         this.imageName = "isabella";
         this.long = "Isabella is a seven foot tall, red-headed tower of angry cow-girl.  She's snarling at you from behind her massive shield, stamping her hooves in irritation as she prepares to lay into you.  Her skin is dusky, nearly chocolate except for a few white spots spattered over her body.  She wears a tight silk shirt and a corset that barely supports her bountiful breasts, but it's hard to get a good look at them behind her giant shield.";
         // this.plural = false;
-        this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
+        this.vaginas.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING);
         this.effects.create(StatusAffects.BonusVCapacity, 45, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("EE+"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;

@@ -127,7 +127,7 @@ export class Essrayle {
         outputText("\n\nBeing rather large, it takes a moment to reorient yourself, but you manage to almost deepthroat the entirety of it.  Essy squeaks in surprise, moaning out as you take her nipple all the way and more as one hand kneads and squeezes through the almost doughy flesh of her other breast.  Clamping down with your lips, you begin to tug and suck as hard as you can.  You're briefly surprised when a long, loud, pleasured 'Moo' comes from the plant girl, and thick, syrupy, milky sap spills into your mouth almost instantly.");
 
         outputText("\n\nHer milk is a delightful substance, tasting like sweet cream, and you eagerly gulp it down, nursing hungrily for more.  The bovine utterances continue as Essy's lowest hand moves further down your waist, eventually coming to rest upon your crotch.  Though she's obviously highly distracted by your attentions to her breast, those lithe fingers ");
-        if (player.cocks.length > 0 && player.hasVagina()) outputText("find the dual sexes there.  Another hand joins the first, one gripping and tugging on your hardening cock as the other cups and squeezes over your pussy.");
+        if (player.cocks.length > 0 && player.vaginas.length > 0) outputText("find the dual sexes there.  Another hand joins the first, one gripping and tugging on your hardening cock as the other cups and squeezes over your pussy.");
         else if (player.cocks.length > 0) {
             outputText("circle about ");
             if (player.cocks.length > 1) outputText("one of ");

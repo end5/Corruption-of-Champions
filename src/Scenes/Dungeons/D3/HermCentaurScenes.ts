@@ -35,7 +35,7 @@ export class HermCentaurScenes {
         menu();
 
         if (player.cocks.length > 0) addButton(0, "Fuck Her", maleFuckHer);
-        if (player.hasVagina()) addButton(1, "Get Fucked", femFuckHer);
+        if (player.vaginas.length > 0) addButton(1, "Get Fucked", femFuckHer);
         addButton(5, "Release", letHerGo);
         addButton(6, "Kill", killHer);
     }
@@ -215,7 +215,7 @@ export class HermCentaurScenes {
             player.cuntChange(player.vaginalCapacity(), true, true, false);
 
             outputText("\n\nAfter taking all that, you begin to bounce up and down atop it, even though your [legs] are shaking and your [vagina] is");
-            if (player.wetness() < 4) outputText(" practically");
+            if (player.vaginas.wetness() < 4) outputText(" practically");
             else outputText(" liberally");
             outputText(" squirting fluids. The mare... or is that stallion?  Whatever, her legs are kicking feebly, twitching from the abuse her still-sensitive organ is forced to endure in your tight twat's tremendous grip.  You work your muscles to squeeze that thick equine rod, milking it with your pussy's slick walls until it yields up another fresh bounty of cum to fill your womb.  Squealing in absolute rapture, you quake about your lover's perfectly-sized cock, blissed from the fireworks each of your nerves is setting off.");
 
@@ -230,14 +230,14 @@ export class HermCentaurScenes {
     }
 
     public inSovietCoCPonyRidesYou(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (player.cocks.length > 0 && player.hasVagina()) {
+        if (player.cocks.length > 0 && player.vaginas.length > 0) {
             if (rand(2) == 0) maleLoss(hpVictory);
             else femLoss(hpVictory);
         }
 
-        if (player.cocks.length > 0 && !player.hasVagina()) maleLoss(hpVictory);
-        else if (player.hasVagina() && !player.cocks.length > 0) femLoss(hpVictory);
-        else if (!player.hasVagina() && !player.cocks.length > 0) femLoss(hpVictory);
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) maleLoss(hpVictory);
+        else if (player.vaginas.length > 0 && !player.cocks.length > 0) femLoss(hpVictory);
+        else if (!player.vaginas.length > 0 && !player.cocks.length > 0) femLoss(hpVictory);
     }
 
     private femLoss(hpVictory: boolean): void {
@@ -246,7 +246,7 @@ export class HermCentaurScenes {
         if (hpVictory) outputText(" try to pull yourself up with on your palms, utterly defeated in spite of the centaur's complete lack of physical attacks.");
         else {
             outputText("put your rump up in the air, fully exposing your");
-            if (player.hasVagina()) outputText(" [vagina]");
+            if (player.vaginas.length > 0) outputText(" [vagina]");
             else outputText("self");
             if (player.cocks.length > 0) {
                 outputText(" and");
@@ -265,9 +265,9 @@ export class HermCentaurScenes {
 
         outputText("\n\nThat burgeoning heat that's soothing away your worries builds hotter and higher with every swallow, but it isn't until the lactation slows to a trickle that you notice something else - it's gathering in your groin.");
 
-        if (!player.hasVagina()) {
+        if (!player.vaginas.length > 0) {
             outputText(" The pleasant warmth builds with alarming speed, the diffused sensation pooling toward a focused point in your crotch. The heat seems to tunnel deeper into your core before returning to the surface, and with each iteration, the pulsating, almost liquid sensation feels hotter. The warmth quickly makes way to raw, unadulterated heat, which in turn rapidly transforms into a deeply rooted, scalding fire- but it takes on a subtly different tone; a different kind of heat. It’s only when the first traces of wetness begins to roll down the inside of your thigh that you put all the pieces together. <b>The centaur's milk has rooted a cunt into your previously genitalia-void crotch.</b>");
-            player.createVagina();
+            player.vaginas.createVagina();
             outputText("\n\n");
         }
         else outputText(" ");
@@ -362,7 +362,7 @@ export class HermCentaurScenes {
         outputText("\n\n\"<i>Ahh, you can be taught,</i>\" your captor sighs.");
 
         outputText("\n\nThat burgeoning heat that's soothing away your worries builds hotter and higher with every swallow, but it isn't until the lactation slows to a trickle that you notice something else - the warmth is gathering in your groin.  [EachCock] is so hard, so throbbingly turgid, that it presses painfully at your [armor], dribbling so much pre-cum that feel it'll start to run down your [legs] any second now.");
-        if (player.hasVagina()) outputText(" Your [vagina] fares no better, puffing up and drooling like its big brother while your [clit] grows taut and sensitive.");
+        if (player.vaginas.length > 0) outputText(" Your [vagina] fares no better, puffing up and drooling like its big brother while your [clit] grows taut and sensitive.");
         outputText(" That wonderful warmth excites you sexually, moulding your loins into a simmering blaze of desire just looking for a something to cool its ache.");
 
         outputText("\n\nYou're moved to the other side, with a fresh, juicy nipple for you to nuzzle.  You do so without thought, effortlessly clasping your lips in a tight seal around the heavenly nub and suckling, even as you rest your cheek against the pale, freckled skin of the melon-sized tit.  The fluid begins to flow almost effortlessly, flooding out in response to the slightest hint of suction from your hungry mouth.  Bubbling, almost boiling over, your lust mounts to higher and higher levels, your loins seeming to simmer with molten desire to breed.  In response, you begin peeling away your [armor].  You know this delicious milk will be gone soon, and when you finish, you'll need to mount something... hard.");

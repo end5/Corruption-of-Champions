@@ -81,7 +81,7 @@ export class NagaScene {
                 player.orgasm();
             }
             // chick secks
-            else if (player.hasVagina()) {
+            else if (player.vaginas.length > 0) {
                 outputText("The kiss continues and you can feel your " + breastDescript(game.player, 0) + " pressing against her own. You kiss her harder, pressing your body as close to her as you can, enjoying the feeling of your two bodies entwined together. You wrap your tail around hers, trying to make every part of your body touch every part of hers.  The feeling of her scaled tail rubbing against your body sends shivers of ecstasy down your spine. You pull away from her mouth and move your head to kiss at her neck, ", false);
                 // (if player has fangs)
                 if (player.faceType == FACE_SNAKE_FANGS) outputText("carefully nibbling at it so as to not break the skin.  ", false);
@@ -327,7 +327,7 @@ export class NagaScene {
     private nagaVictoryFemale(): void {
         outputText("", true);
         // 4) Victory female
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             // c) Centaur
             if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
                 // For inspiration in this noble venture:
@@ -425,7 +425,7 @@ export class NagaScene {
         outputText("", true);
         // BIMBO!  LIKE, TOTALLY AWESOME AND CUM!
         // [Naga-on-Female Bimbo Loss Scene]
-        if ((player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0) && player.hasVagina()) {
+        if ((player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0) && player.vaginas.length > 0) {
             outputText("You fall to your knees, like usual, your sexy form shaking with desire.\n\n", false);
 
             outputText("The naga slowly approaches you with a smile of delight, devouring you with her eyes like the easy little thing you are. When she is close enough, she slides her tail under you and brings you closer to her. As she hisses in your ear, a chill goes down your spine: You don't understand a word she is saying. That seems to happen a lot with your tiny brain, but at least you can tell by the tones that she won't be going easy on you. Your nipples harden at the thought, and your " + vaginaDescript(player, 0) + " agrees. Now astride the base of her tail and facing towards her, your eyes are directed to her crotch where a scaly covering rests where you would guess -- if you had the brains -- that a vagina should be. The naga brings a hand down and gently starts caressing this nether region. You know exactly what she is doing, and you, like, totally feel the need for sex with her burn inside you. You quickly strip yourself of your " + player.armorName + " and throw yourself brainlessly onto her awaiting pussy. Without any complaints whatsoever, you pull her lips apart and start licking, looking up at her wide-eyed and 'O'-lipped between licks.\n\n", false);
@@ -544,7 +544,7 @@ export class NagaScene {
             }
         }
         // b) female //http://nekomimichan.org/mg/src/12844585127.jpg
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             // (If defeated by lust)
             if (player.lust > 99) {
                 outputText("You fall to your knees, your body shaking with desire.\n\n", false);
@@ -917,7 +917,7 @@ export class NagaScene {
             outputText(", ");
             if (player.cocks.length > 0) outputText("jizz");
             if (player.gender == 3) outputText(" and ");
-            if (player.hasVagina()) outputText("femcum");
+            if (player.vaginas.length > 0) outputText("femcum");
             outputText(" raining down on the prone naga");
         }
         outputText(".  You crumple into a heap on top of your reptilian lover, unconscious before you hit the sand.  Her eyes drift closed as well, as she coils around you, settling in for a well-deserved rest.");
@@ -946,12 +946,12 @@ export class NagaScene {
         outputText("\n\nPOP!  The first egg exits your tubular psuedo-wang with a gush of honey to lubricate its passage, and like magic, it wicks away into the naga's body, beyond your feeling.  The snake's eyelashes flutter crazily, and her fingernails dig into your " + skinFurScales(player) + " brutally hard.  You find it difficult to notice any pain from it though; any discomfort is easily blunted by the pleasure of thick eggs sliding through your organ.  There really is no way to compare it to anything else - you have a tight cunt wrapped around your shaft, like a cock, but you also have hard objects sliding through your interior passage, like a vagina.  You can feel all of this along with the gentle stretching of your tube as each round orb squeezes out, accompanied by spurts of honey.  The alternately building and releasing tension repeats over and over, like a half-dozen tiny orgasms.  It is divine.");
         outputText("\n\nYour body, reacting to the mounting pleasure, begins to squeeze and push your remaining eggs out rapid fire.  The muscles you flexed to start the action seem entirely out of your control now, contracting crazily to fill your tube with heavy thickness.  Pressure builds up, and you try to relax, but you wind up arching your back and groping the naga's tits, crying out with orgasmic bliss.  Your prong twists and wiggles inside your partner, and then, with a triumphant pulsation, it opens wide, spraying out a string of eggs and honey with such rapidity that your eyes roll back and your [hips] begin to shake.  Splort, squish, splort!  Over and over, your body squirts eggs into the equally orgasming naga, sliding the eggs home into her roomy womb.");
         if (player.cocks.length > 0) outputText("  [EachCock] erupts to splatter her with white");
-        if (player.cocks.length > 0 && player.hasVagina()) outputText(" and y");
-        else if (player.hasVagina()) outputText("  Y");
-        if (player.hasVagina()) {
+        if (player.cocks.length > 0 && player.vaginas.length > 0) outputText(" and y");
+        else if (player.vaginas.length > 0) outputText("  Y");
+        if (player.vaginas.length > 0) {
             outputText("our [vagina] ");
-            if (player.wetness() < 3) outputText("drools");
-            else if (player.wetness() < 5) outputText("gushes");
+            if (player.vaginas.wetness() < 3) outputText("drools");
+            else if (player.vaginas.wetness() < 5) outputText("gushes");
             else outputText("splatters");
             outputText(" clear femcum over the Naga's tight belly");
             if (player.cocks.length > 0) outputText(" as well");

@@ -26,10 +26,10 @@ export class Masturbation {
         if (player.cocks.length > 0 && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
             addButton(button++, "Lick Cock", catAutoLick);
         }
-        if (player.hasVagina() && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
+        if (player.vaginas.length > 0 && (player.perks.findByType(PerkLib.Flexibility) >= 0 || flags[kFLAGS.TIMES_AUTOFELLATIO_DUE_TO_CAT_FLEXABILITY] > 0)) {
             addButton(button++, "Lick 'Gina", lickYerGirlParts);
         }
-        if (player.cocks.tentacleCocks() > 0 && player.hasVagina()) {
+        if (player.cocks.tentacleCocks() > 0 && player.vaginas.length > 0) {
             addButton(button++, "Tentapussy", tentacleSelfFuck);
         }
         if (player.cocks.tentacleCocks() > 0) {
@@ -60,7 +60,7 @@ export class Masturbation {
         let button: number = 0; // Will be greater than zero by the end if the player owns any fapping items
         const canReachCock: boolean = player.cocks.length > 0 && (!player.isTaur() || player.cocks[player.cocks.longestCock()].cockLength >= player.tallness * (5 / 6));
 
-        if (player.keyItems.has("Deluxe Dildo") >= 0 && player.hasVagina() && !player.isTaur()) {
+        if (player.keyItems.has("Deluxe Dildo") >= 0 && player.vaginas.length > 0 && !player.isTaur()) {
             if (menus) addButton(button, "D. Dildo", deluxeDildo);
             button++;
         }
@@ -92,14 +92,14 @@ export class Masturbation {
             if (menus) addButton(button, "Fake Mare", centaurDudesGetHorseAids);
             button++;
         }
-        if (player.keyItems.has("Centaur Pole") >= 0 && player.hasVagina() && player.isTaur()) {
+        if (player.keyItems.has("Centaur Pole") >= 0 && player.vaginas.length > 0 && player.isTaur()) {
             if (menus) addButton(button, "C. Pole", centaurGirlsGetHorseAids);
             button++;
         }
         if (player.keyItems.has("Dildo") >= 0) {
             if (menus) addButton(button, "Anal Dildo", dildoButts);
             button++;
-            if (player.hasVagina()) addButton(button, "Dildo", stickADildoInYourVagooSlut);
+            if (player.vaginas.length > 0) addButton(button, "Dildo", stickADildoInYourVagooSlut);
         }
         if (menus) addButton(9, "Back", masturbateMenu);
         return button > 0;
@@ -674,7 +674,7 @@ export class Masturbation {
         else if (player.cor < 80)
             outputText("You strip naked in an exaggerated fashion, hoping someone might be watching.\n\n");
         else {
-            if (player.cocks.length > 0 || player.hasVagina())
+            if (player.cocks.length > 0 || player.vaginas.length > 0)
                 outputText("You strip naked, fondling your naughty bits as you do so and casting seductive looks around, hoping someone or something is nearby to fuck you.\n\n");
             else outputText("You strip naked, casting seductive looks around, hoping someone or something is nearby to fuck you.\n\n");
         }
@@ -793,9 +793,9 @@ export class Masturbation {
                 outputText(". Hesitantly, you rub your fingers across the ");
             else outputText(". Eagerly, you begin to roughly stroke the ");
             // Different description based on vag looseness
-            if (player.averageVaginalLooseness() < 2)
+            if (player.vaginas.averageVaginalLooseness() < 2)
                 outputText("small, delicate openings at the tip of each nipple. ");
-            else if (player.averageVaginalLooseness() < 4)
+            else if (player.vaginas.averageVaginalLooseness() < 4)
                 outputText("puckered holes at the tip of each nipple. ");
             // add "many if lots of nips
             else if (player.breasts.averageNipplesPerBreast() > 1)
@@ -808,9 +808,9 @@ export class Masturbation {
                 outputText("You moan lewdly as ");
             else outputText("You squeal with pleasure as ");
             // Different description based on wetness
-            if (player.averageVaginalWetness() < 2)
+            if (player.vaginas.averageVaginalWetness() < 2)
                 outputText("you feel your nipples loosen up. ");
-            else if (player.averageVaginalWetness() < 4)
+            else if (player.vaginas.averageVaginalWetness() < 4)
                 outputText("you begin to slowly spread the slippery secretions leaking from your engorged nipples all over your " + breastDescript(player, 0) + ". ");
             else {
                 outputText("little spurts of ");
@@ -866,9 +866,9 @@ export class Masturbation {
         //More than 1 nip per boob?
         if(player.breasts.averageNipplesPerBreast() > 1) outputText("many ", false);
         //Different based on looseness (again)
-        if(player.averageVaginalLooseness() < 2) outputText("painfully stretched nipples", false);
-        if(player.averageVaginalLooseness() >= 2 && player.averageVaginalLooseness() < 4) outputText("freakishly swollen nipples", false);
-        if(player.averageVaginalLooseness() >= 4) outputText("huge, bloated cunt-nipples", false);
+        if(player.vaginas.averageVaginalLooseness() < 2) outputText("painfully stretched nipples", false);
+        if(player.vaginas.averageVaginalLooseness() >= 2 && player.vaginas.averageVaginalLooseness() < 4) outputText("freakishly swollen nipples", false);
+        if(player.vaginas.averageVaginalLooseness() >= 4) outputText("huge, bloated cunt-nipples", false);
         if(player.breastRows.length > 1) outputText(" on one of your lower breasts",false);
         outputText(". ", false);*/
 
@@ -955,18 +955,18 @@ export class Masturbation {
         // More than 1 nip per boob?
         if (player.breasts.averageNipplesPerBreast() > 1) outputText("many ");
         // Different based on looseness (again)
-        if (player.averageVaginalLooseness() < 2)
+        if (player.vaginas.averageVaginalLooseness() < 2)
             outputText("painfully stretched nipples");
-        else if (player.averageVaginalLooseness() < 4)
+        else if (player.vaginas.averageVaginalLooseness() < 4)
             outputText("freakishly swollen nipples");
         else outputText("huge, bloated cunt-nipples");
         if (player.breastRows.length > 1) outputText(" on one of your lower breasts");
         outputText(". ");
         // How wet/milky is this procedure?
         if (player.breasts.averageLactation() == 0) {
-            if (player.averageVaginalWetness() < 2)
+            if (player.vaginas.averageVaginalWetness() < 2)
                 outputText("Y");
-            else if (player.averageVaginalWetness() < 4) {
+            else if (player.vaginas.averageVaginalWetness() < 4) {
                 outputText("Slick juices dribble ");
                 switch (player.cocks[0].cockType) { // Different way of choosing cock to use, results in consistent description of cock[0]
                     case CockTypesEnum.ANEMONE:
@@ -1117,17 +1117,17 @@ export class Masturbation {
                 outputText("ou blink back tears as you attempt to stuff your " + cockDescript(player) + " into ");
             else outputText("ou scream with a combination of pain and pleasure as you attempt to stuff your " + cockDescript(player) + " into ");
             // Different based on looseness
-            if (player.averageVaginalLooseness() < 2)
+            if (player.vaginas.averageVaginalLooseness() < 2)
                 outputText("the small, over-stretched opening of your swollen nipple. ");
-            else if (player.averageVaginalLooseness() < 4)
+            else if (player.vaginas.averageVaginalLooseness() < 4)
                 outputText("the engorged and distended opening of your fat, swollen nipple. ");
             else outputText("the gaping fuck-mouth of your inhuman nipple-cunt. ");
             // Compare cockthickness and vaglooseness more specifically
             // if it barely fits
             if (Math.round(player.cocks.cockArea(0)) == player.vaginalCapacity()) {
-                if (player.averageVaginalLooseness() < 2)
+                if (player.vaginas.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipple is barely up to the task of accepting the " + cockDescript(player) + ", but accept it it does. ");
-                else if (player.averageVaginalLooseness() < 4)
+                else if (player.vaginas.averageVaginalLooseness() < 4)
                     outputText("The engorged opening at the end of your swollen nipple is stretched to its limit as you shove your " + cockDescript(player) + " home. ");
                 else {
                     switch (player.cocks[0].cockType) { // Different way of choosing cock to use, results in consistent description of cock[0]
@@ -1179,9 +1179,9 @@ export class Masturbation {
             }
             // if it doesnt really fit
             if (Math.round(player.cocks.cockArea(0)) > player.vaginalCapacity()) {
-                if (player.averageVaginalLooseness() < 2)
+                if (player.vaginas.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipple is woefully insufficient compared to your " + cockDescript(player) + ", delerious with arousal, you keep trying anyway. ");
-                else if (player.averageVaginalLooseness() < 4)
+                else if (player.vaginas.averageVaginalLooseness() < 4)
                     outputText("The engorged opening at the end of your swollen nipple is stretched to its limits and beyond as you shove your " + cockDescript(player) + " home. ");
                 else {
                     switch (player.cocks[0].cockType) { // Different way of choosing cock to use, results in consistent description of cock[0]
@@ -1234,8 +1234,8 @@ export class Masturbation {
             if (player.breasts.averageLactation() > 0)
                 outputText("Milky ");
             else outputText("Slick ");
-            if (player.averageVaginalWetness() < 2) outputText("girl-lube quickly coats the whole length of your " + cockDescript(player) + " in a glistening layer of fuck juice. ");
-            else if (player.averageVaginalWetness() < 4) {
+            if (player.vaginas.averageVaginalWetness() < 2) outputText("girl-lube quickly coats the whole length of your " + cockDescript(player) + " in a glistening layer of fuck juice. ");
+            else if (player.vaginas.averageVaginalWetness() < 4) {
                 outputText("girl-lube drizzles down the length of your " + cockDescript(player) + " in thick streams, ");
                 switch (player.cocks[0].cockType) { // Different way of choosing cock to use, results in consistent description of cock[0]
                     case CockTypesEnum.ANEMONE:
@@ -1287,9 +1287,9 @@ export class Masturbation {
             else outputText("ou scream with delight");
             outputText(" as your " + cockDescript(player) + " slides into ");
             // Different based on looseness
-            if (player.averageVaginalLooseness() < 2)
+            if (player.vaginas.averageVaginalLooseness() < 2)
                 outputText("the small, over-stretched opening of your swollen nipple. Your " + cockDescript(player) + " penetrates your swollen nipple easily, sliding halfway in on your first thrust. ");
-            else if (player.averageVaginalLooseness() < 4)
+            else if (player.vaginas.averageVaginalLooseness() < 4)
                 outputText("the engorged and distended opening of your fat, swollen nipple. Your " + cockDescript(player) + " plunges deeply into your freakishly engorged nipple, penetrating it easily. ");
             else {
                 outputText("the gaping fuck-mouth of your inhuman nipple-cunt.  The swollen lips of your bloated nipple engulf the ");
@@ -1335,9 +1335,9 @@ export class Masturbation {
             if (player.breasts.averageLactation() > 0)
                 outputText("milky ");
             else outputText("slippery ");
-            if (player.averageVaginalWetness() < 2)
+            if (player.vaginas.averageVaginalWetness() < 2)
                 outputText("girl-lube quickly coats the whole length of your " + cockDescript(player) + " in a glistening layer of fuck juice. ");
-            else if (player.averageVaginalWetness() < 4)
+            else if (player.vaginas.averageVaginalWetness() < 4)
                 outputText("girl-lube drizzles down the length of your " + cockDescript(player) + " in thick streams, pooling at your crotch. ");
             else {
                 if (player.cocks.normalCocks() > 0)
@@ -1391,9 +1391,9 @@ export class Masturbation {
         }
         // How wet/milky is this procedure?
         if (player.breasts.averageLactation() == 0) {
-            if (player.averageVaginalWetness() < 2)
+            if (player.vaginas.averageVaginalWetness() < 2)
                 outputText("Y");
-            else if (player.averageVaginalWetness() < 4)
+            else if (player.vaginas.averageVaginalWetness() < 4)
                 outputText("Slick juices dribble down your shafts, and y");
             else outputText("Slick juices squirt out from around your shafts and y");
         }
@@ -1411,26 +1411,26 @@ export class Masturbation {
                 outputText("ou blink back tears as you attempt to stuff your cocks into ");
             else outputText("ou scream with a combination of pain and pleasure as you attempt to stuff your cocks into ");
             // Different based on looseness
-            if (player.averageVaginalLooseness() < 2)
+            if (player.vaginas.averageVaginalLooseness() < 2)
                 outputText("the small, over-stretched openings of your swollen nipples. ");
-            else if (player.averageVaginalLooseness() < 4)
+            else if (player.vaginas.averageVaginalLooseness() < 4)
                 outputText("the engorged and distended openings of your fat, swollen nipples. ");
             else outputText("the gaping fuck-mouths of your inhuman nipple-cunts. ");
             // Compare cockthickness and vaglooseness more specifically
             // if it barely fits
             if (Math.round(player.cocks.cockArea(randomCock)) == player.vaginalCapacity()) {
-                if (player.averageVaginalLooseness() < 2)
+                if (player.vaginas.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipples are barely up to the task of accepting your swollen rods, but accept them they do. ");
-                else if (player.averageVaginalLooseness() < 4)
+                else if (player.vaginas.averageVaginalLooseness() < 4)
                     outputText("The puckered openings that cap your engorged nipples are stretched to their limits as you shove your fat rods home. ");
                 else outputText("The swollen lips of your bloated nipples stretch around your throbbing cocks, swallowing them whole. ");
                 outputText("With each thrust, you bury your shafts deeper into your greedy tits. Overwhelmed by the combined sensations, your mind is barely able to cope with the intense feelings of fullness where no such feelings should be possible. ");
             }
             // if it doesnt really fit well
             if (Math.round(player.cocks.cockArea(randomCock)) > player.vaginalCapacity()) {
-                if (player.averageVaginalLooseness() < 2)
+                if (player.vaginas.averageVaginalLooseness() < 2)
                     outputText("Your poor, tortured nipples are woefully insufficient compared to the width of your swollen rods. Delirious with arousal, you keep pushing them in anyway. ");
-                else if (player.averageVaginalLooseness() < 4)
+                else if (player.vaginas.averageVaginalLooseness() < 4)
                     outputText("The puckered openings that cap your engorged nipples are stretched to their limits and beyond as you shove your fat rods home. ");
                 else outputText("The swollen lips of your bloated nipples gape wide, but the enormous girth of your throbbing members spread them even wider. ");
                 outputText("Grunting and sweating with effort, you stuff as much cock into each of your overstretched nipples as you can fit. The feeling of incredible tightness around your tools combines with the pain of your distended nipples to form a blizzard of mindbending sensations that makes your head spin. ");
@@ -1438,9 +1438,9 @@ export class Masturbation {
             if (player.breasts.averageLactation() > 0)
                 outputText("Milky ");
             else outputText("Slick ");
-            if (player.averageVaginalWetness() < 2)
+            if (player.vaginas.averageVaginalWetness() < 2)
                 outputText("girl-lube drizzles down your shafts, coating them in glistening layers of fuck juice. ");
-            else if (player.averageVaginalWetness() < 4)
+            else if (player.vaginas.averageVaginalWetness() < 4)
                 outputText("girl-lube drools from your tortured nipples in thick streams, pooling beneath your ass. ");
             else outputText("girl-lube spurts out of your tortured nipples with each thrust of your hips, spattering your arms and face with your secretions. ");
         }
@@ -1453,18 +1453,18 @@ export class Masturbation {
                     outputText("ou moan with pleasure as your stiff cocks slide into ");
                 else outputText("ou scream with delight as your stiff cocks slide into ");
                 // Different based on looseness
-                if (player.averageVaginalLooseness() < 2)
+                if (player.vaginas.averageVaginalLooseness() < 2)
                     outputText("the small, over-stretched openings on your swollen nipples. Your hard rods penetrate your engorged nipples easily, sliding halfway in on your first thrust. ");
-                else if (player.averageVaginalLooseness() < 4)
+                else if (player.vaginas.averageVaginalLooseness() < 4)
                     outputText("the engorged and distended openings on your fat, swollen nipples. Your hard rods plunge deeply into your freakishly engorged nipples, penetrating them easily. ");
                 else outputText("the gaping fuck-mouths of your inhuman nipple-cunts. The swollen lips of your bloated nipples engulf your hard rods and begin to slide down their length, swallowing them completely. ");
                 outputText("You revel in the sensation as you slowly stroke your shafts in and out of your distended nipples. Your cocks are enveloped in the warm, wet embrace of your freakish tits, and ");
                 if (player.breasts.averageLactation() > 0)
                     outputText("milky ");
                 else outputText("slippery ");
-                if (player.averageVaginalWetness() < 2)
+                if (player.vaginas.averageVaginalWetness() < 2)
                     outputText("girl-lube drizzles down your shafts, coating them in glistening layers of fuck juice. ");
-                else if (player.averageVaginalWetness() < 4)
+                else if (player.vaginas.averageVaginalWetness() < 4)
                     outputText("girl-lube drools from your fat nipples in thick streams, pooling beneath your ass. ");
                 else outputText("girl-lube pours out of your swollen nipples in a constant deluge of sticky fluid, creating a large puddle beneath you. ");
             }
@@ -1476,18 +1476,18 @@ export class Masturbation {
                     outputText("ou moan with pleasure as your stiff cocks slide into ");
                 else outputText("ou scream with delight as your stiff cocks slide into ");
                 // if you have really small dicks or HUGE nipples - THIS I LIKE
-                if (4 * Math.round(player.cocks.averageCockThickness()) < player.averageVaginalLooseness()) {
-                    if (player.averageVaginalLooseness() < 2)
+                if (4 * Math.round(player.cocks.averageCockThickness()) < player.vaginas.averageVaginalLooseness()) {
+                    if (player.vaginas.averageVaginalLooseness() < 2)
                         outputText("the over-stretched openings on your swollen nipples. Though they are reletively small and delicate, you can easily slide two of your tiny cocks into each of their slippery passages.");
-                    else if (player.averageVaginalLooseness() < 4)
+                    else if (player.vaginas.averageVaginalLooseness() < 4)
                         outputText("the engorged and distended openings on your fat, swollen nipples. Stretching easily, they can engulf two cocks each with surprising ease, stretching around your turgid rods with little difficulty. ");
                     else outputText("the gaping fuck-mouths of your inhuman nipple-cunts. The swollen lips of your bloated nipples squish open as they swallow your fat dicks with little difficulty. ");
                     outputText("With each thrust, you bury your shafts deeper into your greedy tits. The feeling of your cocks rubbing together inside the warm, wet embrace of your inhuman breasts pushes you towards the edge of insanity, and you are briefly unable to comprehend the world around you. ");
                 }
                 else { // otherwise, its a tight fit
-                    if (player.averageVaginalLooseness() < 2)
+                    if (player.vaginas.averageVaginalLooseness() < 2)
                         outputText("the small, over-stretched openings on your swollen nipples. Your poor, tortured nipples are stretched painfully as you cram two of your throbbing cocks into one. ");
-                    else if (player.averageVaginalLooseness() < 4)
+                    else if (player.vaginas.averageVaginalLooseness() < 4)
                         outputText("the engorged and distended openings on your fat, swollen nipples. They are stretched to their limits as you shove two of your fat dicks into one. ");
                     else outputText("the gaping fuck-mouths of your inhuman nipple-cunts. The swollen lips of your bloated nipples are stretched to their limits as you push two of your fat dicks into one. ");
                     outputText("Grunting and sweating with effort, you stuff as much cock into each of your overstretched nipples as you can fit. The feeling of your cocks being crushed together inside the warm, wet embrace of your inhuman breasts pushes you towards the edge of insanity, and you are briefly unable to comprehend the world around you. ");
@@ -1495,9 +1495,9 @@ export class Masturbation {
                 if (player.breasts.averageLactation() > 0)
                     outputText("Milky ");
                 else outputText("Slick ");
-                if (player.averageVaginalWetness() < 2)
+                if (player.vaginas.averageVaginalWetness() < 2)
                     outputText("girl-lube drizzles down your shafts, coating them in glistening layers of fuck juice. ");
-                else if (player.averageVaginalWetness() < 4)
+                else if (player.vaginas.averageVaginalWetness() < 4)
                     outputText("girl-lube drools from your tortured nipples in thick streams, pooling beneath your ass. ");
                 else outputText("girl-lube spurts out of your tortured nipples with each thrust of your hips, spattering your arms and face with your secretions. ");
             }
@@ -1558,9 +1558,9 @@ export class Masturbation {
         else outputText("one of your ");
         if (player.breasts.averageNipplesPerBreast() > 1) outputText("many ");
         // Different based on looseness (again)
-        if (player.averageVaginalLooseness() < 2)
+        if (player.vaginas.averageVaginalLooseness() < 2)
             outputText("painfully stretched nipple");
-        else if (player.averageVaginalLooseness() < 4)
+        else if (player.vaginas.averageVaginalLooseness() < 4)
             outputText("freakishly swollen nipple");
         else outputText("huge, bloated cunt-nipple");
         if (player.breastRows.length > 1)
@@ -1737,9 +1737,9 @@ export class Masturbation {
             if (player.sens < 70) outputText("moan with ecstacy as your freakishly swollen nipples ");
             if (player.sens >= 70) outputText("scream with ecstacy as your freakishly swollen nipples ");
             // Different description based on wetness
-            if (player.averageVaginalWetness() < 2) outputText("dribble ");
-            if (player.averageVaginalWetness() >= 2 && player.averageVaginalWetness() < 4) outputText("spray ");
-            if (player.averageVaginalWetness() >= 4) outputText("gush ");
+            if (player.vaginas.averageVaginalWetness() < 2) outputText("dribble ");
+            if (player.vaginas.averageVaginalWetness() >= 2 && player.vaginas.averageVaginalWetness() < 4) outputText("spray ");
+            if (player.vaginas.averageVaginalWetness() >= 4) outputText("gush ");
             // Lactating?
             if (player.breasts.averageLactation() > 0) outputText("milk and ");
             outputText("pussy juice everywhere.");
@@ -1751,7 +1751,7 @@ export class Masturbation {
         player.slimeFeed();
         clearOutput();
         // [USE FEMALE]
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             // (highcor)
             if (player.cor > 66)
                 outputText("You retrieve the floppy pink dildo from your possessions and strip down in the middle of your camp, shivering with the sexual thrill of your exhibitionism.");
@@ -2246,20 +2246,20 @@ export class Masturbation {
         outputText("Shivering with pleasure, you kneel down to prevent your legs from going out from underneath you.   Your " + face(player) + " flushes hotter as you toy with the slippery nipple-cunts, feeling them growing hard and puffy as you turn yourself on more and more.  ");
         if (player.breasts.biggestLactation() > 1)
             outputText("Thick, milky lubricant races down the curvature of your breasts as your self-pleasure inadvertently lets your milk down.");
-        else if (player.wetness() >= 3)
+        else if (player.vaginas.wetness() >= 3)
             outputText("Rivulets of lubricant race down the curvature of your breasts as your chest-pussies clench around your intruding fingers.");
         else outputText("Slick lubricant squishes around your fingers as you finger-fuck your chest-pussies.");
         outputText("  You moan and lean over, shoving a second finger inside each of them and rubbing your thumbs over the miniature clits as you near orgasm.\n\n");
 
-        if (player.hasVagina() || player.cocks.length > 0) {
+        if (player.vaginas.length > 0 || player.cocks.length > 0) {
             let plural: boolean = false;
             outputText("Denied a single touch, your ");
             if (player.cocks.length > 0) {
-                if (player.hasVagina())
+                if (player.vaginas.length > 0)
                     outputText(multiCockDescriptLight(player) + " and " + vaginaDescript(player));
                 else outputText(cockDescript(player));
                 // Set as plural if multi dick or dick and vag.
-                if (player.hasVagina() || player.cocks.length > 1) plural = true;
+                if (player.vaginas.length > 0 || player.cocks.length > 1) plural = true;
             }
             else outputText(vaginaDescript(player));
             if (plural)
@@ -2283,18 +2283,18 @@ export class Masturbation {
             else if (player.cumQ() < 2000) outputText("A frothing puddle of thick cum has formed below you, soaking your legs and underbelly, ");
             else outputText("A small lake of semen surrounds you, ");
             outputText("released from your " + multiCockDescriptLight(player) + " by the intense climax.");
-            if (player.hasVagina()) outputText("  ");
+            if (player.vaginas.length > 0) outputText("  ");
         }
-        if (player.hasVagina()) {
-            if (player.wetness() < 2)
+        if (player.vaginas.length > 0) {
+            if (player.vaginas.wetness() < 2)
                 outputText("The scent of pussy hangs in the air, clinging to your moist, puffy cunt-lips.");
-            else if (player.wetness() < 4)
+            else if (player.vaginas.wetness() < 4)
                 outputText("The air is full of the scent of horny horse-pussy.  If the moist feeling between your hind-legs is any indication, your back-half probably looks and smells like a mare in heat.");
-            else if (player.wetness() < 5)
+            else if (player.vaginas.wetness() < 5)
                 outputText("The air is saturated with the heady scent of aroused horse-pussy, and if the wetness between your hind-legs is any indication, your hind-quarters would be a slip 'n slide of pleasure for any daring enough to penetrate you.");
             else outputText("The air is filled with the thick musk of your bestial horse-pussy.  If the rivulets of moisture dripping down to your hooves are any indication, you might need to get used to the smell.");
         }
-        if (player.cocks.length > 0 || player.hasVagina()) outputText("\n\n");
+        if (player.cocks.length > 0 || player.vaginas.length > 0) outputText("\n\n");
 
         // Real aftermath
         outputText("Judging by the sky, at least an hour has passed.  You sigh and pry your cramped fingers from your aching " + nippleDescription(player, 0) + "s, rubbing the sore entrances with your palm before you climb back up onto your " + feet(player) + ".  As you get dressed, you're very conscious of how much better you feel from the wonderful finger-fuck.  ");
@@ -2355,7 +2355,7 @@ export class Masturbation {
             else if (player.cumQ() > 100)
                 outputText("A dribble of pre-cum starts to leak from the tip as you get more into the act.");
             else outputText("A tiny dollop of pre-cum slowly builds on your tip as you get into the act.");
-            if (player.hasVagina()) outputText("  Your neglected " + vaginaDescript(player) + " aches for penetration, but there's no way you'll be able to reach it in your current state.");
+            if (player.vaginas.length > 0) outputText("  Your neglected " + vaginaDescript(player) + " aches for penetration, but there's no way you'll be able to reach it in your current state.");
             outputText("  You sigh, delighted that you're able to caress at least one of your sexual organs with this body");
             if (player.cor < 40) outputText(", but you're also worried that you're falling into the perversion that lurks in this strange world");
             outputText(".  It feels so good that you close your eyes and whinny with delight.\n\n");
@@ -2379,7 +2379,7 @@ export class Masturbation {
             else if (player.cumQ() > 100)
                 outputText("  A dribble of pre-cum starts to leak from the tip as you get more into the act.");
             else outputText("  A tiny dollop of pre-cum slowly builds on your tip as you get into the act.");
-            if (player.hasVagina()) outputText("  Your neglected " + vaginaDescript(player) + " aches for penetration, but there's no way you'll be able to reach it in your current state.");
+            if (player.vaginas.length > 0) outputText("  Your neglected " + vaginaDescript(player) + " aches for penetration, but there's no way you'll be able to reach it in your current state.");
             outputText("  You sigh, delighted that you're able to caress your sexual organs with this body");
             if (player.cor < 33) outputText(", but you're also worried that you're falling into the perversion that lurks in this strange world");
             outputText(".  It feels so good that you close your eyes and whinny with delight as your hands fondle your massive length.\n\n");
@@ -2434,14 +2434,14 @@ export class Masturbation {
         }
         outputText("\n\n");
         // Cunt cums
-        if (player.hasVagina()) {
-            if (player.wetness() <= 1)
+        if (player.vaginas.length > 0) {
+            if (player.vaginas.wetness() <= 1)
                 outputText("A trickle of wetness oozes down your thighs, filling the air with the scent of centaur sex from your orgasm.");
-            else if (player.wetness() == 2)
+            else if (player.vaginas.wetness() == 2)
                 outputText("Fluids leak down your thighs, filling the air with the scent of centaur sex as you orgasm.");
-            else if (player.wetness() == 3)
+            else if (player.vaginas.wetness() == 3)
                 outputText("Thick, clear fluid soaks your thighs, filling the air with the scent of liquid centaur sex as you orgasm.");
-            else if (player.wetness() == 4)
+            else if (player.vaginas.wetness() == 4)
                 outputText("Thick fluid coats your thighs and drips into a puddle on the ground, filling the air with the pungent aroma of liquid centaur sex as you orgasm.");
             else outputText("Spatters of fluids gush out from between your thighs, coating your upper legs in a thick coat of clear feminine lubricant as you orgasm.  The air is filled from the scent of your liquid centaur lust as more and more drips into a rapidly expanding puddle between your rear legs.");
             if (player.breasts.hasFuckableNipples()) {
@@ -2449,9 +2449,9 @@ export class Masturbation {
                     outputText("All");
                 else outputText("Both");
                 outputText(" of your " + num2Text(player.breasts.totalNipples()) + " " + nippleDescription(player, 0) + "s quiver, ");
-                if (player.wetness() < 4 && player.breasts.biggestLactation() < 2)
+                if (player.vaginas.wetness() < 4 && player.breasts.biggestLactation() < 2)
                     outputText("leaking");
-                else if (player.wetness() < 5 && player.breasts.biggestLactation() < 3)
+                else if (player.vaginas.wetness() < 5 && player.breasts.biggestLactation() < 3)
                     outputText("dripping");
                 else outputText("squirting");
                 outputText(" equal quantities of ");
@@ -2471,7 +2471,7 @@ export class Masturbation {
     private centaurCantMasturbate(): void {
         if (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] == 0) {
             outputText("No matter how you twist and turn, you can't reach anywhere close to your ");
-            if (player.cocks.length > 0 || player.hasVagina())
+            if (player.cocks.length > 0 || player.vaginas.length > 0)
                 outputText("genitalia");
             else outputText("anything remotely sexual");
             outputText("!  It seems that being a centaur has a rather crippling downside – you can't reach around to get yourself off and sate your lusts!\n\n");
@@ -2813,7 +2813,7 @@ export class Masturbation {
             else if (player.cocks.length == 1)
                 outputText("  Your [cock], while still erect, does little more than dribble cum over your breasts and tubes, devoid of the force and power that usually comes with orgasm.");
             // [if (hasVagina = true)]
-            if (player.hasVagina()) outputText("  Your [vagina] lets sticky fluids out slowly around your thighs; you are only able to tell by the damp feel of your [legs].  It feels fantastic!");
+            if (player.vaginas.length > 0) outputText("  Your [vagina] lets sticky fluids out slowly around your thighs; you are only able to tell by the damp feel of your [legs].  It feels fantastic!");
             outputText("\n\nAll too soon, the eggs come to a stop, with your breasts feeling as if they've gained numerous cup sizes, at least in weight, from the orbs of your children.  You remove the ovipositors from your [nipples] with a gentle awe, both to the euphoria and to Exgartuan.");
             outputText("\n\nSeeming much more subdued, and slightly muffled, Exgartuan says \"<i>That was an interesting experience, even by my standards.  I'm not going to make the double ovipositor thing work for you whenever, so I'll just be taking that back.</i>\"");
             outputText("\n\nYour hands automatically pull your ovipositors between your mammaries, and the experience of it fusing back into itself is far less painful than the split.  You relax as your ovipositor withdraws back into your abdomen.");
@@ -2826,7 +2826,7 @@ export class Masturbation {
             outputText("\n\nCertain that you will not be interrupted, you quickly remove your [armor] and lie on your side against a comfortable rock, having sorted out that being on your back will involve twisting your ovipositor uncomfortably and on all fours will risk your eggs.  Your [chest] squash softly down on the loam next to you, and you begin to tease and stretch your [nipples] in preparation for your insane plan.");
 
             outputText("\n\nWith mounting anticipation for the main event, your twisted body quickly reacts to your ministrations. [if (cocks > 1) Your cocks begin ][if (cocks = 1) Your cock begins ][if (cocks > 0) to harden and rise toward your [chest], a veritable promised land for male organs, but that is not your concern today.]");
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 if (player.balls > 0)
                     outputText("  Behind your [balls], y");
                 else outputText("Y");
@@ -2841,9 +2841,9 @@ export class Masturbation {
             outputText("squirts out of you under the sudden pressure from your penetration.");
 
             outputText("\n\nOverwhelmed with a sexual glee, you begin to jackknife, driving your ovipositor from the tip to deep inside your breast.  Holding everything in place with one hand, your other begins to toy with a spare [nipple].  [if (cocks > 0)   [EachCock] hardens to the full extent, forcing you to take a moment to rearrange yourself, and leaving you jacking off [oneCock] with your spare hand instead.]");
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  Meanwhile, your [vagina] has fully parted and begun to drool ");
-                if (player.wetness() >= 4) outputText("liberally ");
+                if (player.vaginas.wetness() >= 4) outputText("liberally ");
                 outputText("onto your [legs] and abdomen.");
             }
 
@@ -2925,11 +2925,11 @@ export class Masturbation {
         else outputText("You strip naked, fondling your naughty bits as you do so and casting seductive looks around, hoping someone or something is nearby to fuck you.\n\n");
 
         outputText("Almost immediately, your " + cockDescript(game.player, x) + " perks up like a pet expecting to be fed, and you have to admit that you plan to give that squirming tentacle exactly what it desires - a hot, slippery slit to nestle inside of.  Already, your [vagina] has grown ");
-        if (player.wetness() <= 2)
+        if (player.vaginas.wetness() <= 2)
             outputText("moist");
-        else if (player.wetness() <= 3)
+        else if (player.vaginas.wetness() <= 3)
             outputText("wet");
-        else if (player.wetness() <= 4)
+        else if (player.vaginas.wetness() <= 4)
             outputText("sloppy and wet");
         else outputText("beyond soaked");
         outputText(".  The slick slit is slowly parting as you reach to wrangle the wiggly cock");
@@ -3198,11 +3198,11 @@ export class Masturbation {
 
     private stickADildoInYourVagooSlut(): void {
         clearOutput();
-        if (player.hasVirginVagina()) { // LOW CORRUPTION DEFLOWER
+        if (player.vaginas.hasVirginVagina()) { // LOW CORRUPTION DEFLOWER
             if (player.cor <= 50) {
                 outputText("You blush nervously as you grasp your phallic toy. The firm dildo bends slightly as you hold it in your hand. You feel perverse to consider doing this, and shakingly undo the bottom of your [armor].");
                 outputText("\n\nSitting on your [butt], you begin to rub the length of the slender tube against your [vagina], the gentle stimulation calming your nerves and helping to relax the tension.  As you pick up the pace, moans begin to escape your lips.  Your [clit] fills with blood and twitches as the faux cock slides against it.  You tenderly caress your [chest] with your other hand, becoming more breathy as you do so. ");
-                if (player.wetness() <= 2)
+                if (player.vaginas.wetness() <= 2)
                     outputText("The toy slides easier as your juices cover it.");
                 else outputText("The toy slides effortlessly thanks to your copious, almost inhuman lubrication.");
 
@@ -3250,13 +3250,13 @@ export class Masturbation {
         if (silly()) outputText(", the alliteration of the experience further arousing you");
         outputText(". Your toes curl as you begin to pull in and out, pumping the dildo with smooth motions. Your tongue hangs from your mouth, your breathing becomes heavy, and your moans lewdly express pure lust as you increase your tempo. Before too long, you feel your pucker becoming more sensitive and know an orgasm is quickly approaching.");
         player.buttChange(8, true, true, false);
-        if (player.cocks.length > 0 && player.hasVagina())
+        if (player.cocks.length > 0 && player.vaginas.length > 0)
             outputText("\n\nYou moan in ecstasy while your [vagina] and " + multiCockDescriptLight(player) + " erupt with sex juices. ");
         else if (player.cocks.length > 0)
             outputText("\n\nYou moan in ecstasy while cum spurts from your " + multiCockDescriptLight(player) + ". ");
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("\n\nYou moan in ecstasy while juices ");
-            if (player.wetness() >= 4)
+            if (player.vaginas.wetness() >= 4)
                 outputText("squirt");
             else outputText("trickle");
             outputText(" from your [vagina]. ");

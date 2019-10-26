@@ -43,7 +43,7 @@ export class SuccubusGardenerScenes {
         clearOutput();
         // Start setting up to fuck the succubus -> surprise tentacle grape, idiot.
         outputText("There's no way you're going to pass up an opportunity to put a succubus's lips to use. Pillowy");
-        if (player.hasVagina()) outputText(" cunt-kissers");
+        if (player.vaginas.length > 0) outputText(" cunt-kissers");
         else outputText(" cock-suckers");
         outputText(" like those are one in a million.");
 
@@ -51,13 +51,13 @@ export class SuccubusGardenerScenes {
         else if (telAdre.dominika.fellatrixSucked() > 0) outputText(" Perhaps Dominika's all-consuming mouth could give her a run for her money, but there's only one way to be sure.");
         outputText(" You grab hold of the blubbering slut by her curled horns, admiring the way the tentacle-juice on her lips shines in the light, and pull her against your crotch, pressing her against");
         if (player.cocks.length > 0) outputText(" [oneCock]");
-        else if (player.hasVagina()) outputText(" your [vagina]");
+        else if (player.vaginas.length > 0) outputText(" your [vagina]");
         else outputText(" the sensitive skin of your groin");
         outputText(". She eagerly goes to work, moaning from the attentions of the tentacle down below, and licking with such fervor that you'd think this is what she wanted all along.");
 
         outputText("\n\nRocking your [hips] to the pace of her short, frenzied lips, you lose yourself in the moment. Here in the garden with a succubus to serve your every whim, it's easy to just stop and enjoy the little things in life. Lethice can sit on her throne for the few minutes it will take you to");
         if (player.cocks.length > 0) outputText(" blow a wad down this slut's throat");
-        else if (player.hasVagina()) outputText(" cream yourself on this slut's face");
+        else if (player.vaginas.length > 0) outputText(" cream yourself on this slut's face");
         else outputText(" teach this bitch how to pleasure an asshole");
         outputText(". None-too-quiet slurps hang in the steamy air, accompanied by your own " + mf(player, "grunts", "coos") + " of enjoyment. You reach down to cup one of her breasts, ignorant of the shadows creeping nearer.");
 
@@ -72,16 +72,16 @@ export class SuccubusGardenerScenes {
         }
 
         let createdVag: boolean = false;
-        if (!player.cocks.length > 0 && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             // Genderless
             outputText("\n\nInterestingly, the new arrival descends towards your featureless cross, dripping neon orange goo as it goes. Where the stuff lands on you, your flesh alights with tingles of raw, pure sensation, somewhere stuck between pain and pleasure and yet neither. Then, that column of pulsating, phallic meat is pressing down against you, ramming itself into you, and there is not you nor your flesh can do but yield to its touches. You gasp, opening... no, <i>blossoming</i>, revealing sensitive lips and folds.");
 
             outputText("\n\n<b>This thing is turning you into woman!</b>");
 
-            player.createVagina();
+            player.vaginas.createVagina();
             createdVag = true;
         }
-        else if (player.hasVagina() && !player.cocks.length > 0) {
+        else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
             // Cooches only
             outputText("\n\nThe new arrival descends towards your already well-lubricated pussy, dripping neon orange goo as it goes. Where the stuff lands on you, you alight with raw, deviously pleasurable sensation, particularly on your pussy lips. They burn with raw, unfiltered sensation, both pleasure and pain all in one. Then, that column of pulsating, phallic meat presses down against you, too fat for any normal pussy to take, and yet somehow, it's ramming itself into you. You spread to accept it... and then spread some more, blossoming.");
 
@@ -177,22 +177,22 @@ export class SuccubusGardenerScenes {
 
     public surrenderToTheGardener(hpVictory: boolean = false): void {
         // Male
-        if (player.cocks.length > 0 && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             maleLoss(hpVictory);
         }
 
         // Genderless
-        if (!player.cocks.length > 0 && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             femGenderlessLoss(hpVictory);
         }
 
         // Fems
-        if (player.hasVagina() && !player.cocks.length > 0) {
+        if (player.vaginas.length > 0 && !player.cocks.length > 0) {
             femGenderlessLoss(hpVictory);
         }
 
         // Herms can have either!
-        if (player.hasVagina() && player.cocks.length > 0) {
+        if (player.vaginas.length > 0 && player.cocks.length > 0) {
             if (rand(2) == 0) femGenderlessLoss(hpVictory);
             else maleLoss(hpVictory);
         }
@@ -213,20 +213,20 @@ export class SuccubusGardenerScenes {
         outputText("\n\nHer garden?");
         if (!hpVictory) {
             outputText(" You cast a furtive glance towards the writhing vines.");
-            if (player.hasVagina()) outputText(" Your underthings were already swampy with need, but the sight of watching those eager vines squirm elicits fresh trickles of lube to course down your [legs].");
+            if (player.vaginas.length > 0) outputText(" Your underthings were already swampy with need, but the sight of watching those eager vines squirm elicits fresh trickles of lube to course down your [legs].");
             else outputText(" You were already horny, but you find yourself wishing you had a pussy, just so you could take even more of them inside you.");
         }
         else outputText(" You cast a worried look towards the writhing vines. They seem so eager, yet they hold back for now, perhaps waiting for their mistress to finish. No... you can't go down like this!");
 
         outputText("\n\nGently removing your [armor] a piece at a time, the succubus coos, <i>\"Are you looking forward to it yet, [name]? Being wholly, totally embraced, every hole filled with pulsing, eager lengths?\"</i> She strokes your cheek in a gesture that you would mistake for affection from anyone but a demon.");
-        if (player.hasVagina()) outputText(" Against your better judgment, you're starting to get wet from the promises of her words. You know you're being given to a neverending hell of sexual stimulation, but you can't stop your body's libido from responding to the idea.");
+        if (player.vaginas.length > 0) outputText(" Against your better judgment, you're starting to get wet from the promises of her words. You know you're being given to a neverending hell of sexual stimulation, but you can't stop your body's libido from responding to the idea.");
         outputText(" <i>\"Yeah, you want it, doncha?\"</i> Slim fingers deftly press at your");
-        if (!player.hasVagina()) {
+        if (!player.vaginas.length > 0) {
             outputText(" bare crotch, sinking into a crease that didn't exist a moment before. Her skilled touches and dark powers mold your body like a sculptor's clay, crafting a magnificent cunt on your crotch while simultaneously bringing it to a dripping wet state.");
-            player.createVagina();
+            player.vaginas.createVagina();
         }
         else {
-            if (player.wetness() <= 2) outputText(" moistening");
+            if (player.vaginas.wetness() <= 2) outputText(" moistening");
             else outputText(" soaked");
             outputText(" crease, and it's all you can do not to cry out and thrust back against her.");
         }
@@ -301,7 +301,7 @@ export class SuccubusGardenerScenes {
         else outputText(" to fill your womb, to make it round with life so that others can feel what you're feeling.");
 
         outputText("\n\nYour girlhoney squirts, splattering over the ground.");
-        if (player.wetness() < 4) outputText(" You may not normally be capable of such soaking orgasms, but that seems of little concern to you.");
+        if (player.vaginas.wetness() < 4) outputText(" You may not normally be capable of such soaking orgasms, but that seems of little concern to you.");
         outputText(" You're a fountain of wetness now, fit only for cumming and taking cum in. The thought triggers a second orgasm on the back of the first while the spent tentacle exits.");
 
         outputText("\n\nAnother, larger tentacle takes its place, sealing most of the first's load inside. There's no waiting, only fucking and climbing to one orgasm after another. The space between climaxes narrows with each one until your world becomes a constant, irresistible tide of bliss.");
@@ -393,7 +393,7 @@ export class SuccubusGardenerScenes {
         outputText("\n\nPerhaps best, and worst, of all, you aren't going soft in spite of the lack of attention to your bone. It merely hangs under your");
         if (player.isPregnant()) outputText(" pregnant");
         outputText(" belly, dripping and drooling");
-        if (player.hasVagina()) outputText(", lubricated with a sheen vaginal juices from your forgotten sex organ");
+        if (player.vaginas.length > 0) outputText(", lubricated with a sheen vaginal juices from your forgotten sex organ");
         outputText(", more ready for use than ever but obedient... waiting for someone, perhaps a mistress, to allow you to use it. Most of the milk is gone now, but your tongue is perfect for prizing the last of the honeyed amber from its muddy bowl. Having such a useful muscle allows you the perfect chance to look up at her while you drink.");
 
         outputText("\n\nWhy are her hands glowing? Coronas of amber energy are flicking around her hands. There's even flashes of the stuff at the corners of your eyes. Maybe it's just too bright. Whatever the case, she's smiling, so you must be doing well. You never thought a succubus could be this nice! The pain of the kick has already faded, and you're feeling very 'in the moment.' She's most definitely in a position of power over you. Perhaps owner is the right word. The corners of your mouth quirk up at how right that sounds. Yes, she's definitely your owner... your mistress.");
@@ -583,7 +583,7 @@ export class SuccubusGardenerScenes {
         if (player.balls == 0) outputText(" prostate");
         else outputText(" ball");
         outputText("-draining spurts of plant-food. The cradling vines squirm over your touch-heightened skin, grinding the whole of your body. It's like your entire being is being fucked");
-        if (player.hasVagina()) outputText(", and once a thick, cock-shaped plant slides inside your [vagina], you truly are");
+        if (player.vaginas.length > 0) outputText(", and once a thick, cock-shaped plant slides inside your [vagina], you truly are");
         outputText(".");
 
         // Fuckable nipples

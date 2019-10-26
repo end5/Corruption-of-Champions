@@ -267,7 +267,7 @@ export class Gargoyle {
             addButton(0, "Wake Her", returnToCathedral, true);
             if (player.lust >= 33) {
                 if (player.cocks.length > 0) addButton(1, "Use Her", useGargoyleMaleHerm);
-                else if (player.hasVagina()) addButton(1, "Use Her", useHerGargoyleFemale);
+                else if (player.vaginas.length > 0) addButton(1, "Use Her", useHerGargoyleFemale);
             }
             addButton(3, "Appearance", gargoyleAppearance);
         }
@@ -421,7 +421,7 @@ export class Gargoyle {
         // Else, continued from above paragraph:
         else outputText("you giver her a good show, putting on a brief striptease for the gargoyle.  You strip your [armor] slowly, sensually, showing only the barest hints of your privates until the last moment, when the last piece of your clothing falls to the floor.");
         // (From Both, if has Vagina:)
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\n" + flags[kFLAGS.GAR_NAME] + " is panting with lust by the time you're done teasing and stripping for her. Now nude, you drop back to your knees over her holy rod-cock, straddling her hips and lining her up with your [vagina]. You lower yourself until the tip of the rod is pressing against your lower lips – you're pleasantly surprised by the warm tingling sensation that quickly spreads out around the point of contact, and your cunny responds immediately by letting loose a little trickle of moisture that beads down on the gargoyle's shaft.");
 
             outputText("\n\nWithout further ado, you drop down on the strap-on, lowering yourself onto the tingling metal rod until your groin is pressed against " + flags[kFLAGS.GAR_NAME] + "'s.  She, all the while, is biting her lower lip and whimpering with pleasure as your [vagina] swallows her length. Once you've taken all she has to offer, you begin grinding your hips against her, rocking back and forth atop the gargoyle.  To your surprise, " + flags[kFLAGS.GAR_NAME] + " grabs you, squeezing her long fingers into your [hips] and pulling you up, almost off her rod. You decide to go with it; you grab her tits for support and start to bounce on her cock.");
@@ -703,7 +703,7 @@ export class Gargoyle {
         outputText("\n\nShe plays easily within you, running her cool appendage over your own tongue, letting it slide across your teeth and cheeks as she slides a hand down to your ");
         // if Male/Herm:
         if (player.cocks.length > 0) outputText(cockDescript(game.player, 0));
-        else if (player.hasVagina()) outputText(vaginaDescript(player));
+        else if (player.vaginas.length > 0) outputText(vaginaDescript(player));
         else outputText("barren crotch");
         outputText(".  She breaks the kiss and steps back, laying on one last time – CRACK! with the crop, stinging you again with an intense mix of pain and pleasure.  Gasping and panting from stimulation, you nearly collapse when " + flags[kFLAGS.GAR_NAME] + " unbinds you, though she's quick to catch you before you fall.");
 

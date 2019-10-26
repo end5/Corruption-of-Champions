@@ -187,11 +187,11 @@ export class Frosty extends TelAdreAbstractContent {
     // [Hands]
     public frostysHandsAreColdHolyShitWhyDontYouWarmTHoseMitsUp(): void {
         clearOutput();
-        if (!player.cocks.length > 0 && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             genderlessCatchAllForFrosty();
             return;
         }
-        if (player.cocks.length > 0 && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             outputText("“<i>Okay, one tug-and-pull comin' right up.</i>” she giggles at her own name for a hand-job and ducks under the table, pulling up a big, fancy, cushioned chair that looks like it belongs to a noble. It barely fits in the tiny space under her booth. She throws the chair right next to her stand and it lands perfectly, hardly making a sound. In one moment Frosty disappears and reappears on the chair, sitting on its arm and waving her hand over to the seat, gesturing for you to sit. You follow her gesture and take a seat in the comfy chair. Just sitting there makes you feel like the ruler of a land. Placing your arms on the armrests, you feel like a boss.");
             outputText("\n\nYou didn’t even that notice Frosty has moved from the armrest and is now on her knees at level with your groin, her hands rubbing together, making a suggestive sound of rubbing flesh.");
             outputText("\n\n“♪<i>As soon as I get my syrup rubbed all over my hands, we’ll begin.</i>♪”");
@@ -224,7 +224,7 @@ export class Frosty extends TelAdreAbstractContent {
             // [Player is back at camp]}
         }
         // [If player is female]
-        else if (player.hasVagina() && !player.cocks.length > 0) {
+        else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
             outputText("“<i>Okay, one dig-dug comin' right up.</i>” she giggles at her own name for a fingering. She ducks under the table and pulls up a big, fancy cushioned chair that looks like it belongs to a noble and also shouldn’t be able to fit in the tiny space under her booth. She throws the chair right next to her stand and it lands perfectly, hardly making a sound. In one moment Frosty just disappears and reappears on the chair, sitting on its arm and waving her hand over to the seat, gesturing for you to sit. You follow her gesture and take a seat in the comfy chair; just sitting there makes you feel like the ruler of a land. Placing your arms on the armrests, you feel like a boss.");
             outputText("\n\nFrosty has moved from the armrest and is now pulling at the bottom half of your [armor]. With one quick hard tug, she exposes your [butt] and [vagina] to the busy city street; a few people stop to gawk at the both of you. She places her thumbs on both sides of your cunt and stretches the lips wide and hard.");
             outputText("\n\nFrosty takes a peek inside you, wondering how far she can see inside, then hovers her mouth over your fuck-hole and yells “<i>Hellllllllllllllo!!!</i>” like she was expecting the sound of her voice to echo back from your cunt. But the vibrations of her voice do ring through your [clit], causing your [vagina] to get a little moist.");
@@ -285,13 +285,13 @@ export class Frosty extends TelAdreAbstractContent {
 
     // [Mouth]
     public useFrostysMouth(): void {
-        if (!player.cocks.length > 0 && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             genderlessCatchAllForFrosty();
             return;
         }
         clearOutput();
         // [If player is male]
-        if (player.cocks.length > 0 && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             outputText("“<i>One banana-licking comin' right up.\"</i> You roll your eyes at the comment as Frosty blurs away her display then vaults over the counter with ease and is suddenly behind you. You quickly turn around just as she pushes your backside against her stand and falls to her knees. She’s about to pull the lower half your [armor] off but decides not to. You wonder what she’s going to do as she stretches her jaw and sticks out her tongue for a few minutes. After she’s done with that, she cracks her neck and looks at your pants, like it’s a challenge. Then, in an instant, she’s able to undo your [armor] with just her tongue and teeth and has you standing waist-down naked. Now you have second thoughts of having any of your naughty bits near that mouth.");
             outputText("\n\nJust before Frosty starts her mouth sex, she raises a finger up like she’s remembering something and quickly crawls around to the back of the booth, wiggling her tush in the air. You hear her rummaging under the counter and then she’s suddenly back in front of you; did she even crawl back around? In her hands is a yellow bottle shaped like a bee-girl and a thin black rope. She plops back down on her ass with her boobs doing a little jiggle when she lands. She holds the black rope up and tells you what it’s for.");
             outputText("\n\n“<i>Sometimes I forget to not use my hands when I do this, so I tie them behind my back. And the honey... well,</i>\" she giggles \"<i>you’ll find out soon.</i>”");
@@ -313,7 +313,7 @@ export class Frosty extends TelAdreAbstractContent {
             // [Player is back at camp]
         }
         // [If player is female]
-        else if (player.hasVagina() && !player.cocks.length > 0) {
+        else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
             outputText("“<i>One sundae-eating coming right up!</i>\" You roll your eyes at the comment as Frosty blurs away her display then vaults over the counter with ease and is suddenly behind you. You quickly turn around just as she pushes your backside against her stand and falls to her knees. She’s about to pull the lower half of your [armor] off but decides not to. You wonder what she’s going to do as she stretches her jaw and sticks out her tongue for a few minutes. After she’s done with that, she cracks her neck and looks at your pants, like it’s a challenge. Then, in an instant, she’s able to undo your [armor] with just her tongue and teeth and has you standing waist-down naked. Now you have second thoughts of having any of your naughty bits near that mouth. Just before Frosty starts her mouth sex, she raises a finger like she’s remembering something and quickly crawls around to the back of the booth, wiggling her tush in the air.");
             outputText("\n\nYou hear her rummaging under the counter and then she’s suddenly back in front of you; did she even crawl back around? In her hands is a yellow bottle shaped like a bee-girl and a thin black rope. She plops back down on her ass with her boobs doing a little jiggle when she lands. She holds the black rope up and tells you what it’s for.");
             outputText("\n\n“<i>Sometimes I forget to not use my hands when I do this, so I tie them behind my back. And the honey... well,</i>\" she giggles, \"<i>you’ll find out soon.</i>”");

@@ -234,7 +234,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             changed = true;
         }
         // (+Big Clit)
-        if (rand(4) == 0 && player.hasVagina()) {
+        if (rand(4) == 0 && player.vaginas.length > 0) {
             outputText("\n\nYour " + clitDescription(player) + " plumps up, visibly parting your lips even when you aren't turned on.  It probably ", false);
             player.clitLength += 2;
             if (player.clitLength < 6) outputText("gets as big as a cock", false);
@@ -368,7 +368,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
             outputText(", pausing to gently squeeze and caress any particularly sensitive spots.  Soft sighs escape your lips from the self-imposed pleasure-assault.  Your body relaxes totally, slouching down against a rock while you continue to happily play with your " + allBreastsDescript(player) + ".  The entire time your hands never touch one of your " + nippleDescription(player, 0) + "s, merely circling them from time to time, making you arch your back in need.\n\n", false);
             outputText("A voice taunts, \"<i>Oh, does my champion tit-massager need a little nipple-play?  And to think I thought I was the one needing to get off.  Go ahead then, submit to your desires and play with your nipples.  Wallow in the pleasure that I can give you and remember who your true master is!</i>\"\n\n", false);
             outputText("At last, fingers wrap themselves about your " + nippleDescription(player, 0) + "s, squeezing them gently and forcing happy gasps from your mouth.  ", false);
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("Juice", false);
                 if (player.cocks.length > 0) outputText(" and pre-cum", false);
                 outputText(" soaks your groin", false);
@@ -414,7 +414,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 outputText("It's getting harder to concentrate... Exgartuan is ", false);
                 if (player.balls > 0) outputText("teasing your ballsack", false);
                 // [if vagina, no balls]
-                else if (player.hasVagina()) outputText("poking your labia", false);
+                else if (player.vaginas.length > 0) outputText("poking your labia", false);
                 else outputText("stroking your perineum", false);
                 outputText(", \"<i>Come on, champion. You know you can't go on ignoring me much longer.</i>\"", false);
             }
@@ -491,7 +491,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
                 return true;
             }
             // (+Lust in combat) for girls
-            else if (monster.hasVagina()) {
+            else if (monster.vaginas.length > 0) {
                 select = rand(10);
                 switch (select) {
                     case 0:
@@ -965,7 +965,7 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         if (player.armorName == "crotch-hugging practically indecent steel armor" || player.armorName == "crotch-hugging full-body chainmail" || player.armorName == "crotch-hugging revealing chainmail bikini") outputText("your " + player.armorName + " feels as if it's become incredibly dense, refusing to neither budge your package or impart any sense of feeling or vibration to what lies underneath.  What's worse, the links that make up your armor have narrowed and sealed shut.", false);
         else outputText("your " + player.armorName + " feels as if it were made from 6</i>\" thick steel, refusing to neither budge your package or impart any sense of feeling or vibration to what lies underneath.  You continue to run your hands across it, having trouble believing that the material has become so incredibly dense and rigid despite its appearance.", false);
         outputText("  A little more pushing, pulling, knocking, groping, and stroking confirms what you feared: your " + cockDescript(game.player, 0) + " has been cordoned off from you", false);
-        if (player.balls > 0 || player.hasVagina()) outputText(" along with anything else unlucky enough to reside within", false);
+        if (player.balls > 0 || player.vaginas.length > 0) outputText(" along with anything else unlucky enough to reside within", false);
         outputText(".\n\n", false);
 
         outputText("Damnable demon.  He doesn't even have the decency to taunt you- or even acknowledge your presence.  You bang your fists against your blighted dick, still unable to register any contact through the tightly-fitted obstruction (and secretly relieved you didn't injure yourself.)  You flop back down onto your back, determined to find some other way to satiate your lust.  Invigorated with their new mission, your hands begin to scour the remaining surface of your body, willing fingertips gently brushing your skin in search of a target.", false);
@@ -1237,11 +1237,11 @@ export class Exgartuan extends NPCAwareContent implements TimeAwareInterface {
         if (player.gender > 0) {
             outputText("  Your " + hipDescription(player) + " begin grinding together, moist with ", false);
             // [if cock >0]
-            if (player.cocks.length > 0 && !player.hasVagina()) outputText("pre-cum", false);
+            if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText("pre-cum", false);
             // [if vagina >0]
-            if (player.hasVagina() && !player.cocks.length > 0) outputText("juice", false);
+            if (player.vaginas.length > 0 && !player.cocks.length > 0) outputText("juice", false);
             // [if cock >0, vagina >0]
-            if (player.cocks.length > 0 && player.hasVagina()) outputText("an aromatic cocktail of pre and juice", false);
+            if (player.cocks.length > 0 && player.vaginas.length > 0) outputText("an aromatic cocktail of pre and juice", false);
             outputText(" as your tit massage begins to excite your nether regions.", false);
         }
         outputText("  The demoness continues her work, though never touching your nipples; the closest she draws your hands is around your areolas.  The circling is no less irritating as when you haven't neglected her, your back arching in need yet again.\n\n", false);

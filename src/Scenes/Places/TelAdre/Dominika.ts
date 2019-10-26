@@ -345,7 +345,7 @@ export class Dominika extends TelAdreAbstractContent {
         }
         if (x < 0) x = 0;
         // [If \"<i>Yes</i>\" and vagina]
-        if (player.hasVagina() && (player.gender == 2 || rand(2) == 0)) {
+        if (player.vaginas.length > 0 && (player.gender == 2 || rand(2) == 0)) {
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00153] == 0) {
                 outputText("Dominika's dark lips curve up in a wicked grin and she leads you by the hand to another room. Within is a bed that looks to be more comfortable than any piece of furniture you've seen since leaving your village. You are more than happy to sit upon it when she gestures. The pale mage removes the bottom of your " + player.armorName + " and claps her hands together in a giggling laugh when she sees your vagina. \"<i>Oh my goodness!</i>\" she grins, \"<i>You actually have a cute little vagina! That's SO HARD TO FIND here!</i>\" Climbing onto the bed with you she gives a surprising embrace, planting her ebony lips on your cheek. \"<i>Here, lay back,</i>\" she insists, leaning on your shoulders to have you lay down.\n\n", false);
                 outputText("She straddles your belly, looking down at you with a mischievous grin. Curiously you feel metal rubbing against your bare skin, much like you saw between her legs earlier. Is she wearing a chastity belt? The tattooed teacher leans down and drags her darkened lips sensually over your own, sucking on your lower lip. The connection of flesh is almost electric in its stimulation – you quickly have to admit to yourself that her lips feel pretty damn good. Her tongue flicks out over the curves on your face and though you try to catch it her body is already sliding down your own. Her bare breasts tease your flesh as her nipples bump and catch against your skin.\n\n", false);
@@ -583,7 +583,7 @@ export class Dominika extends TelAdreAbstractContent {
             else outputText("pushes herself up", false);
             outputText(", biting your lip just barely lightly enough to not draw blood.  Her hand caresses down the side of your head and your neck almost possessively.  You can feel her knee pressing in between your legs, grinding into your ", false);
             if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player), false);
-            else if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
+            else if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0), false);
             else outputText("groin", false);
             outputText(".  The action turns into a kiss of some small passion, the smell of your crotch still fresh on her breath as those slippery ebon pillows graze over your own inferior display.  She breathes heavily against you, looking in your eyes and filling your vision with her own blue eyes.\n\n", false);
 

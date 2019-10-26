@@ -408,14 +408,14 @@ export class Salon implements TimeAwareInterface {
         player.minoCumAddiction(10);
         player.slimeFeed();
         outputText("As the salon door swings closed behind you, a familiar, heavenly scent catches your nose and wicks into your brain, flooding you with need and molten-hot lust.  Lynnette saunters over with her lips slightly pursed and her body jiggling, but you brush her aside.  She's completely forgotten as you close in on the source of your olfactory bliss.  Your sigh dreamily while your pupils slowly dilate from the familiar chemicals pounding through your bloodstream", false);
-        if (player.hasVagina()) outputText(" and puffing up your twat with liquid arousal.\n\n", false);
+        if (player.vaginas.length > 0) outputText(" and puffing up your twat with liquid arousal.\n\n", false);
         else if (player.cocks.length > 0) outputText(" and turning " + sMultiCockDesc(game.player) + " into a turgid, pulsating mass.\n\n", false);
         else outputText("\n\n", false);
 
         outputText("You push your way past a few more staring goblin sluts, tearing off your " + player.armorName + " as you go.  The animal part of your brain recognizes that such needless trapping would just get in the way of all the thick, dripping, minotaur spunk just waiting to pump inside you.  Another door swings closed behind you while the scent drags you heedlessly deeper into the salon, closing in on the secluded glory-holes the goblins keep hidden away in the back.  You drool spittle down your neck while you lose yourself in the memory of that taste on your tongue, letting your body seek it out on autopilot.", false);
-        if (player.hasVagina() || player.cocks.length > 0) {
+        if (player.vaginas.length > 0 || player.cocks.length > 0) {
             outputText("  A trail of ", false);
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("female slime ", false);
                 if (player.cocks.length > 0) outputText("and ", false);
             }
@@ -461,7 +461,7 @@ export class Salon implements TimeAwareInterface {
         outputText("You pull off and bounce faster, lost to your lust and the haze of sex-musk permeating the air, intent on seeing just how much this huge stud can spray onto you.\n\n", false);
 
         outputText("The minotaur does not disappoint.  His hole dilates from the size of the approaching cum-blast, and you sink down his shaft slowly until it's aimed directly at your face.  You close your eyes and feel the first explosion splatter over your " + hairDescription(player) + " and forehead.  The next takes you full in the face, making it difficult to breathe through the mask of drug-like goo, but a few quick licks gives you a fix and makes it easy to breathe again.  On and on, the minotaur pumps fat ropes of spooge over your body until you're a syrupy, sticky mess that reeks of minotaur pheromones so strongly that dizziness overwhelms you and you fall free of the still-orgasming mino-cock, taking a few final blasts of seed on your " + chestDesc(game.player) + " and crotch.  Your hands instinctively shovel a few loads into your " + assholeOrPussy(player), false);
-        if (player.hasVagina()) outputText(" while the animal part of your brain hopes it makes you pregnant with an equally girthy son", false);
+        if (player.vaginas.length > 0) outputText(" while the animal part of your brain hopes it makes you pregnant with an equally girthy son", false);
         outputText(".\n\n", false);
         // ADD PREG CHECK
         // Preggers chance!

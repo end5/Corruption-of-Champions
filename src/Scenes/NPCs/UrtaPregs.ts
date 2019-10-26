@@ -670,7 +670,7 @@ export class UrtaPregs extends NPCAwareContent {
         flags[kFLAGS.NEW_BABY_ANNOUNCED] = 0;
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.genderCheck();
         }
         outputText("You double over in pain as you feel a rush of fluids escape your [pussy].  Looks like your water broke.  You recall promising Urta that you'd go to the hospital before actually going into labor, but right now there's nothing you can do.  It hurts and you know you won't make it there in time, so you rush to your tent and lay down on your bedroll, silently praying that Urta will swing by to assist you.");
@@ -1343,13 +1343,13 @@ export class UrtaPregs extends NPCAwareContent {
         outputText("You tell Urta that you're getting close; if she keeps up with this you won't last much longer.");
 
         outputText("\n\nIf she hears you, Urta isn't put off - instead, she redoubles her efforts, gurgling and moaning as she deepthroats your cock as best she can");
-        if (player.balls > 0 || player.hasVagina()) {
+        if (player.balls > 0 || player.vaginas.length > 0) {
             outputText(", a hand playing expertly with ");
             if (player.balls > 0) {
                 outputText("your balls");
-                if (player.hasVagina()) outputText(" and another with ");
+                if (player.vaginas.length > 0) outputText(" and another with ");
             }
-            if (player.hasVagina()) outputText("your pussy");
+            if (player.vaginas.length > 0) outputText("your pussy");
         }
         outputText(".  She suddenly pops free, licking her lips.  \"<i>Come on, lover.  I thought you offered to help me with my craving?  And yet you won't give me any of that salty load of yours?  So hungry... gimme!</i>\"  She pleads, looking up at you with hopeful eyes even as she continues to stroke your shaft.");
         menu();
@@ -1525,7 +1525,7 @@ export class UrtaPregs extends NPCAwareContent {
 
         outputText("\n\nYou can feel pleasure build up inside you as she pumps you.  ");
         if (player.cocks.length > 0) outputText("Every time her swollen tip rubs against your prostate you feel droplets of pre escape your dilating cum-hole.  ");
-        if (player.hasVagina()) outputText("Each slap of her balls against your [vagina] sends electric waves of pleasure that expand throughout your body.  ");
+        if (player.vaginas.length > 0) outputText("Each slap of her balls against your [vagina] sends electric waves of pleasure that expand throughout your body.  ");
         outputText("You moan audibly, making it pretty clear you're getting off from this kind of treatment.  \"<i>See?  I knew you'd enjoy this too, now that I'm not so tense...</i>\"  She draws out the last word as she makes a particularly deep thrust inside of you.  \"<i>Mmm...  I can feel your sexy ass squeezing my dick; you're enjoying this, really, aren't you?</i>\"");
 
         outputText("\n\nShe suddenly giggles, and you realize you can feel something strange - a light, fluttering sensation, emanating from the bulging belly pressed against your back.  \"<i>It's kicking - I wonder if it can feel how much mommy is enjoying doing this to its daddy?</i>\"  She laughs.  \"<i>Isn't this just a weird, kinky sort of situation?  Here I am, a pregnant woman, fucking the father of my baby with a great big horse-cock of my own!  Does that turn you on, lover?  Because I don't know if it turns me on or weirds me out,</i>\" she confesses.");
@@ -1546,12 +1546,12 @@ export class UrtaPregs extends NPCAwareContent {
                 outputText(", splashing against the floor with such force that you form veritable streams of enjoyment in the rapidly expanding lake of perversion.  The pleasure of the kinky act, aided by your earlier drink, ensures you feel nothing but ultimate happiness for this brief moment.  By the time you've spilled the last drop, the lake has reached Urta's knees, and you pity the poor soul in charge of cleaning the back rooms.");
             }
         }
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nYour pussy grips at nothing, ");
-            if (player.wetness() >= 4) outputText("squirting");
+            if (player.vaginas.wetness() >= 4) outputText("squirting");
             else outputText("leaking");
             outputText(" juices that paint Urta's balls, which are resting flush against your [vagina].  The spilled juice slides down Urta's balls");
-            if (player.wetness() >= 4) outputText(" to join your previous discharge on");
+            if (player.vaginas.wetness() >= 4) outputText(" to join your previous discharge on");
             else outputText(" and down towards");
             outputText(" the floor, where it gathers in a ");
             outputText("puddle of its own.");
@@ -1568,8 +1568,8 @@ export class UrtaPregs extends NPCAwareContent {
 
         outputText("\n\nUnable to remain awake after your explosive orgasm, you lay down on the ");
         let puddle: number = 0;
-        if (player.hasVagina()) {
-            if (player.wetness() >= 4) puddle += 2;
+        if (player.vaginas.length > 0) {
+            if (player.vaginas.wetness() >= 4) puddle += 2;
             else puddle++;
         }
         if (player.cocks.length > 0) {
@@ -1602,7 +1602,7 @@ export class UrtaPregs extends NPCAwareContent {
             if (!player.isTaur()) outputText("  So close that you can almost feel its heat against your [cockHead].");
             outputText("  \"<i>Oh, don't feel embarrassed; I know what it's like to wake up with morning wood,</i>\" she jests, clearly unphased by your erect state.");
         }
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nYour [vagina], still moist after your session, quivers in envy at the delicious pounding your [ass] was treated to mere moments ago.  A little awkwardly, given her belly, Urta reaches down to gently stroke your pussy with practiced ease, smirking confidently at your reaction.  \"<i>Maybe I should do this hole sometime soon, hmm?</i>\" she jokes.");
         }
 
@@ -1646,7 +1646,7 @@ export class UrtaPregs extends NPCAwareContent {
         outputText("\n\n\"<i>Right...</i>\"  With that, she leans in and gently begins to run the tip of her warm, wet tongue around your back passage, gently applying saliva to the soreness.  It still hurts a bit, but the feel of Urta's wet tongue on your ass does help you get over the pain, though the kinkiness of the act does not go unnoticed.");
         if (player.cocks.length > 1) outputText("  Especially not if your " + multiCockDescriptLight(game.player) + " have anything to say about it, throbbing at the mere feeling of Urta's wet tongue.");
         else if (player.cocks.length == 1) outputText("  Especially not if your [cock] has anything to say about it, throbbing at the mere feeling of Urta's wet tongue.");
-        else if (player.hasVagina()) outputText("  Especially not if your [pussy] has any say in the matter, winking at Urta, hoping for a licking of its own.");
+        else if (player.vaginas.length > 0) outputText("  Especially not if your [pussy] has any say in the matter, winking at Urta, hoping for a licking of its own.");
         outputText("  She slowly begins deepening the pseudo-kiss, pressing more and more of her wet tongue against you until she is taking slow, languid licks up and down the lengths of the chasm, slathering your burning skin with her cooling goo.");
 
         outputText("\n\nYou shake your ass at Urta's face, moaning in relief as her wet tongue laps away all the soreness in your ass.  All too soon though, she stops.  \"<i>Okay, somebody might be enjoying this a little too much... besides, you're not dripping any more.  I think that's as better as I can kiss it.</i>\"  Urta announces.  With a hand on your ass for support, she straightens fully up with a groan.  \"<i>I guess I'm lucky you at least keep yourself so clean there... I can even taste myself on you,</i>\" and she punctuates that remark with a flirty slap on one asscheek.  \"<i>So, feeling better now?</i>\"");
@@ -2560,7 +2560,7 @@ export class UrtaPregs extends NPCAwareContent {
         if (player.gender == 3) outputText("\n\n\"<i>A herm, huh?  That's interesting.  I'll be sure to note that in my experiments.</i>\"  She crosses her arms.  \"<i>So which part will you be using to help me?</i>\"");
         // (Display sex options)
         menu();
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             if (player.pregnancyIncubation == 0) addButton(0, "HarvestGirly", getEggsHarvested);
             else outputText("\n\n<b>She's not willing to have sex with you until your womb is unfilled.</b>");
         }
@@ -2631,7 +2631,7 @@ export class UrtaPregs extends NPCAwareContent {
                 }
                 player.breastRows[0].breastRating = 1;
             }
-            player.createVagina();
+            player.vaginas.createVagina();
             player.clitLength = 0.25;
             outputText("\n\nYou sigh in relief, examining your new endowments; well, that wasn't as bad as it could have been.");
             outputText("\n\n\"<i>Excellent!  The reactions were exactly as I expected.  I would have you help me right now, but it's better if you get some rest first.  So return here when you're feeling rested and I'll see about breaking into that cute little pussy of yours.</i>\"");
@@ -2643,7 +2643,7 @@ export class UrtaPregs extends NPCAwareContent {
             outputText("\n\nYou feel like your groin is on fire and you eagerly knead the flesh there, trying your best to quench the flames, but it's useless.  The more you stroke it, the more it burns.  A scream of pained pleasure forces itself out of your mouth as a lump forms under your hands, erupting into a searing hot, four inch erection.  You quickly stroke yourself, trying to put out the flames that torment your sensitive new organ, but all you manage to do is make it harder... and the harder it gets, the bigger it grows.  It's not until your cock grows another inch that you finally cum, finally dousing the flames and Lianna in ropy spunk.");
             outputText("\n\nYou sigh in relief, glad that your torment is over.  But before you get too comfortable, the feeling of something boiling makes itself known between your legs, and you set forth to stroke the flesh anew.  For a moment you're worried that you might actually be melting; the flesh there grows softer the more you knead and stroke it.  Suddenly there is wetness, a cascade of juices exploding from within, wetting your hands and Lianna's carpet, as the flesh there grows plump, wet and slick.  The heat concentrates on a small point, that quickly forms into a nub; your clit.");
             outputText("\n\nWeak after these violent transformations, you don't even process that you've grown both sets of genders; instead you walk over to Lianna's bed and plop down there.");
-            player.createVagina();
+            player.vaginas.createVagina();
             player.clitLength = 0.25;
             player.cocks.createCock();
             player.cocks[0].cockLength = 5;

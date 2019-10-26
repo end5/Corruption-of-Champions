@@ -244,7 +244,7 @@ export class FetishCultistScene extends AbstractLakeContent {
                 outputText("The smile disappears from her lips and she says, 'Now if I understand it correctly, you are beset by random panic attacks due to an unusually sized clitoris, coupled with a lack of breasts.  To address this issue, I will be giving you a special injection at the site.'  She briefly steps out of the room before returning with a syringe.  'It'll be ok, the good news is that the pain for this injection will quickly subside, just take nice easy breaths and you'll be fine.  In fact, you might find this quite enjoyable after the first hurdle.'  She leans down and pushes the needle into your clitoris.  The pain is quite intense, but thankfully it does not last long.  'This injection will address your unnatural body shape by turning your clitoris into a penis. It even has the added benefit of removing the unneeded vagina.' she says to you in a pleasant voice while pulling the needle out.  You look down to see that you " + clitDescription(player) + " is indeed growing larger, and you can feel your womb disappearing within you.\n\n", false);
                 player.knockUpForce(); // The only event I can find anywhere that removes a pregnancy
                 player.cocks.createCock();
-                player.removeVagina(0, 1);
+                player.vaginas.removeVagina(0, 1);
                 outputText("Soon you have a fully formed " + cockDescript(game.player, 0) + " standing tall and proud where your old femininity used to lie.  The nurse sets the syringe aside and climbs on top of your legs. She giggles softly before lowering herself and taking your " + cockDescript(game.player, 0) + " between her breasts and starts rubbing and playing with them while running your " + cockDescript(game.player, 0) + " between them.  It is an exquisite experience having her tit fuck your brand new " + cockDescript(game.player, 0) + ", and you notice that she seems to be enjoying it just as much as you are.  It doesn't take long for her ministrations to make you cum between her breasts, and cum you do.  Satisfied, the nurse rises from you and says \"<i>Looks to me like its working properly.  For now, I've got to go take care of another patient. Don't you do anymore running about until I get back, ok?  I'll be back to check on your progress as soon as I'm able!</i>\"  She gives you a wink, and turns to walk out the door.", false);
                 dynStats("sen", 3);
                 changed = true;
@@ -442,7 +442,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             if (player.cocks.length > 0) {
                 outputText("Her eyes lock onto your very erect maleness.  \"<i>I got that thing that hard?  Oh fuck yes!</i>\"  She wraps her arms around her body and rocks back and forth.  ", false);
                 // if (PC has a vagina)
-                if (player.hasVagina()) outputText("Then, she hesitates for some reason, before saying, \"<i>Um, I'm not sure why I'm asking this since you've got a good tool there already, but... I've got some vibrators, if you want to play with them instead...</i>\"\n\n", false);
+                if (player.vaginas.length > 0) outputText("Then, she hesitates for some reason, before saying, \"<i>Um, I'm not sure why I'm asking this since you've got a good tool there already, but... I've got some vibrators, if you want to play with them instead...</i>\"\n\n", false);
                 else outputText("\"<i>I want this so damn much!</i>\"\n\n", false);
             }
             // if you ain't got a cock, break out the vibrators
@@ -454,7 +454,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             // player chooses between; penetrate vagina, vibrator vagina, nevermind.  Options as appropriate.
             let vibe: () => void = null;
             let fuckVag: () => void = null;
-            if (player.hasVagina()) vibe = swimsuitVibrators;
+            if (player.vaginas.length > 0) vibe = swimsuitVibrators;
             if (player.cocks.length > 0) fuckVag = plugSwimsuitVag;
             simpleChoices("FuckHerVag", fuckVag, "Vibrator", vibe, "", null, "", null, "Leave", cleanupAfterCombat);
             return;
@@ -492,7 +492,7 @@ export class FetishCultistScene extends AbstractLakeContent {
     private plugSwimsuitVag(): void {
         const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
-        if (player.hasVagina()) outputText("You decline the vibrators; you'd much rather take her incredibly wet pussy.  ", false);
+        if (player.vaginas.length > 0) outputText("You decline the vibrators; you'd much rather take her incredibly wet pussy.  ", false);
         else outputText("You tell her you're gonna fuck her.  ", false);
         outputText("She nods at you and turns around shivering even harder.  You step forward and put your hands on her shoulders, then start to run them over her body, while your " + multiCockDescriptLight(game.player) + " pokes her in the back.  \"<i>Oh fuck me, I need you to fuck me now!</i>\" she screams.  Grinning, you push her to the ground and grip her pert, bouncing breasts.  You push her bathing suit to the side so that you have access to her waiting snatch.  You assure her that you'll be fucking her all right, all while you tease and play with her exposed body.\n\n", false);
 
@@ -570,8 +570,8 @@ export class FetishCultistScene extends AbstractLakeContent {
             outputText("\"<i>Oh wow, you're totally loving this, even though you just put it inside you!</i>\" the cultist squeals with glee.  \"<i>Just wait, it gets better,</i>\" she continues, taking a firm grip on the handle again while playing with her breasts with her free hand.  She starts to twist the toy around a bit, and then starts to pull it in and out.  You mimic her motions, wondering what might make this even better.  You soon realize just what she was getting at, and are surprised when the sensations start to make you squeal with glee as well.\n\n", false);
 
             outputText("It doesn't take much longer for you to let loose the proof of your orgasm onto the magically humming rod between your legs.  At the same time, you suddenly feel a cool liquid spray the inside of the furnace that is your " + vaginaDescript(player, 0) + " and the vibrator spills out of you along with ", false);
-            if (player.wetness() < 3) outputText("a trickle", false);
-            else if (player.wetness() <= 4) outputText("a wave", false);
+            if (player.vaginas.wetness() < 3) outputText("a trickle", false);
+            else if (player.vaginas.wetness() <= 4) outputText("a wave", false);
             else outputText("a torrent", false);
             outputText(" of your lady juices.  You shudder for a moment and look down at it on the ground.  It seems to have, deflated a bit?  There is a clear fluid flowing out of the top of the toy.  A thump sound brings the cultist back to your attention, but only briefly as you see she is writhing on the ground in pleasure from the toy still inside her.  You shake your head and get dressed again.", false);
             // end scene
@@ -632,7 +632,7 @@ export class FetishCultistScene extends AbstractLakeContent {
             outputText("our " + multiCockDescriptLight(game.player) + " becomes fully erect as it rubs up against her warm ass cheeks, which is enough to fulfill its desire.   Her cum bubbles into the palm of your hand while your cum drizzles her ass with sticky whiteness.\n\n", false);
         }
         // [ELSE Pussy]
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("Your pussy becomes fully aroused as you continue to play with each other. Her nice, warm ass against it is enough to fulfill its desire as you feel her cum in the palm of your hand.  You get off underneath her, twitching and dripping with release.\n\n", false);
         }
         // [Genderless]

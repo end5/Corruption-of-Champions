@@ -969,7 +969,7 @@ export class HelFollower extends NPCAwareContent {
                 buttons++;
             }
         }
-        if (player.hasVagina() && player.lust >= 33 && buttons < 9) {
+        if (player.vaginas.length > 0 && player.lust >= 33 && buttons < 9) {
             addButton(buttons, "GetLicked", helScene.getLickedByHel);
             buttons++;
         }
@@ -985,7 +985,7 @@ export class HelFollower extends NPCAwareContent {
                     buttons++;
                 }
             }
-            if (player.keyItems.has("Centaur Pole") >= 0 && player.hasVagina() && buttons < 9) {
+            if (player.keyItems.has("Centaur Pole") >= 0 && player.vaginas.length > 0 && buttons < 9) {
                 addButton(buttons, "CentaurToy", femtaurPlusCampHel);
                 buttons++;
             }
@@ -1000,7 +1000,7 @@ export class HelFollower extends NPCAwareContent {
         }
         if (player.lust >= 33 && player.isNaga()) {
             // "Rough" Sex -- Naga Coil (Female w/ Naga Lower Body)
-            if (player.hasVagina() && buttons < 9) {
+            if (player.vaginas.length > 0 && buttons < 9) {
                 addButton(buttons, "NagaCoilF", nagaCoilForHelCampWithGirls);
                 buttons++;
             }
@@ -1344,7 +1344,7 @@ export class HelFollower extends NPCAwareContent {
 
         outputText("\n\n\"<i>Aww, he likes it,</i>\" Hel laughs, clutching your girth between her clawed, scaled toes.  Slowly, she moves her foot along your length with tantalizing slowness, her soft, warm soles made slick by the thick mud now slathered on your dick.  Her actions are smooth and fluid, her well-lubricated underside gliding easily down to the base of your prick, ");
         if (player.balls > 0) outputText("her heel coming to caress your taut sack");
-        else if (player.hasVagina()) outputText("her heel brushing against the nub of your [clit]");
+        else if (player.vaginas.length > 0) outputText("her heel brushing against the nub of your [clit]");
         else outputText("her heel going so low as to brush your taint, making your [asshole] clench in surprise before she moves back up your length");
         outputText(".  You groan lustily as her toes and soft sole jerk you off, gently urging the tight knot of pleasure in your gut to fruition.  Cupping one of her hefty tits, Hel licks her lips as the first thick smears of pre leak from your cock's [cockHead biggest], smearing onto her long-clawed toes.");
 
@@ -1522,7 +1522,7 @@ export class HelFollower extends NPCAwareContent {
         if (followerKiha() && player.lust >= 33 && player.gender > 0) {
             addButton(0, "Kiha", campHelAndKihaThreeSome);
         }
-        if ((player.armorName == "goo armor" || flags[kFLAGS.VALARIA_AT_CAMP] == 1) && player.lust >= 33 && player.hasVagina()) {
+        if ((player.armorName == "goo armor" || flags[kFLAGS.VALARIA_AT_CAMP] == 1) && player.lust >= 33 && player.vaginas.length > 0) {
             addButton(2, "Valeria", helAndValeriaCampThreesomes);
         }
         if (player.lust >= 33 && bimboSophie()) {
@@ -2046,7 +2046,7 @@ export class HelFollower extends NPCAwareContent {
         // Drinks
         outputText("You saunter up to the bar, where the staff have laid out more than enough beers for the entire party.  Edryn and a handful of phoenixes are milling around, exchanging tips for swordsmanship: Edryn advocating charging in with a greatweapon swinging, as the phoenixes try and explain their shield-wall tactics.  You knock back a drink and listen in, watching with interest as the phoenix girls get progressively more and more flustered");
         // if PC is male:
-        if (player.cocks.length > 0 && player.hasVagina()) outputText(" just as you do");
+        if (player.cocks.length > 0 && player.vaginas.length > 0) outputText(" just as you do");
         outputText(" in the presence of the steadily mounting pheromone cloud around the lusty centauress.  Before you've finished your drink, all the half-harpies are sporting sizable tents in their britches and are subtly sniffing around, trying to figure out what's happening to them... just before Edryn grabs the lead phoenix by the arm and leads her off into one of the back rooms, shooting the others a wink and a flicking tail over her drooling horse-sex.  The others are quick to follow.");
         flags[kFLAGS.HELIA_BDAY_DRINKS] = 1;
         helPartyMenu();
@@ -2138,15 +2138,15 @@ export class HelFollower extends NPCAwareContent {
     }
 
     private helAndSluttyHarpy(): void {
-        if (!player.cocks.length > 0 && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             helAndSluttyHarpyGenderless();
             return;
         }
-        else if (player.cocks.length > 0 && !player.hasVagina()) {
+        else if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             helAndSluttyHarpyMale();
             return;
         }
-        else if (!player.cocks.length > 0 && player.hasVagina()) {
+        else if (!player.cocks.length > 0 && player.vaginas.length > 0) {
             helAndSluttyHarpyFemale();
             return;
         }

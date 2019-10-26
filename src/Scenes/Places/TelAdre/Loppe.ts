@@ -797,7 +797,7 @@ export class Loppe extends TelAdreAbstractContent {
             }
             // [(any cock)
             if (player.cocks.length > 0) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
-            if (player.hasVagina()) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
+            if (player.vaginas.length > 0) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
             // [(boobs >= boobjob req)
             if (player.breasts.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
             outputText("There's always the option to receive her anally, though with her vaunted libido, you'd probably end up so flooded with her cum that it would wash from your mouth.  Or you could be a prick-tease and leave.");
@@ -841,7 +841,7 @@ export class Loppe extends TelAdreAbstractContent {
             }
             // [(any cock)
             if (player.cocks.length > 0) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
-            if (player.hasVagina()) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
+            if (player.vaginas.length > 0) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
             // [(boobs >= boobjob req)
             if (player.breasts.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
             outputText("There's always the option to receive her anally, though with her vaunted libido, you'd probably end up so flooded with her cum that it would wash from your mouth.  Or you could be a prick-tease and leave.");
@@ -865,7 +865,7 @@ export class Loppe extends TelAdreAbstractContent {
         }
         if (player.cocks.length > 0 && player.lust >= 33)
             addButton(1, "Get BJ", loppeWorshipsDicks);
-        if (player.hasVagina() && player.lust >= 33)
+        if (player.vaginas.length > 0 && player.lust >= 33)
             addButton(2, "TakeVaginal", getFuckedInYerTwatYaCunt);
         if (player.breasts.biggestTitSize() >= 4) addButton(3, "Boob-job", boobjobLoppe);
         if (flags[kFLAGS.LOPPE_TIMES_SEXED] > 0) addButton(4, "SqueezeJob", loppeSqueezedickWhateverThatIs);
@@ -1005,14 +1005,14 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText(images.showImage("loppe-rides-your-cock"));
         outputText("\n\nYour " + cockDescript(game.player, x) + " gushes fluids into her hungry womb");
-        if (y >= 0 || player.hasVagina()) {
+        if (y >= 0 || player.vaginas.length > 0) {
             outputText(", while ");
             if (y >= 0) outputText("your second " + cockDescript(game.player, y) + " just as easily pumps her perverted ass full of baby juice");
-            if (y >= 0 && player.hasVagina()) outputText(" and ");
-            if (player.hasVagina()) {
+            if (y >= 0 && player.vaginas.length > 0) outputText(" and ");
+            if (player.vaginas.length > 0) {
                 outputText("your [vagina] ");
-                if (player.wetness() < 3) outputText("drizzles");
-                else if (player.wetness() < 5) outputText("spatters");
+                if (player.vaginas.wetness() < 3) outputText("drizzles");
+                else if (player.vaginas.wetness() < 5) outputText("spatters");
                 else outputText("gushes");
                 outputText(" femcum onto the bed below you, forgotten during the act but not unsympathetic to her ministrations");
             }
@@ -1415,10 +1415,10 @@ export class Loppe extends TelAdreAbstractContent {
             outputText(", cock");
             if (player.cocks.length > 1) outputText("s");
             outputText(" dripping pre");
-            if (player.hasVagina()) outputText(" and");
+            if (player.vaginas.length > 0) outputText(" and");
         }
-        else if (player.hasVagina()) outputText(", ");
-        if (player.hasVagina()) outputText(" pussy oozing femlube");
+        else if (player.vaginas.length > 0) outputText(", ");
+        if (player.vaginas.length > 0) outputText(" pussy oozing femlube");
         outputText("... you beg her to go faster, to do it harder!");
 
         outputText("\n\nLoppe happily complies, thrusting herself deeper and stronger.  ");
@@ -1431,11 +1431,11 @@ export class Loppe extends TelAdreAbstractContent {
         outputText(".  Loppe lays down on top of you, panting hotly on your neck, moaning in pleasure each time your sphincter contracts.");
 
         outputText("\n\nWith a groan, she jams herself as far in as she can, grasping your [hips] tightly.  You can feel her balls churning against your butt, her throbbing dick seemingly growing fatter as cum travels up her urethra; finally, with a moan, she explodes inside you, filling you up with hot laquine cream.  You gasp and shudder as shot after shot of herm-spunk rushes in; you'd almost swear you can hear it slurping and splashing as it cascades into your belly, and you're positive you can feel your stomach start to distend from the glutinous mass of semen building up inside of you.  You struggle to hold back your own orgasm but finally lose the battle, crying out as it rocks through you.");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("  A gush of sexual fluids from your crotch ");
-            if (player.wetness() < 3) outputText("spatters");
-            else if (player.wetness() < 4) outputText("splashes");
-            else if (player.wetness() < 5) outputText("drenches");
+            if (player.vaginas.wetness() < 3) outputText("spatters");
+            else if (player.vaginas.wetness() < 4) outputText("splashes");
+            else if (player.vaginas.wetness() < 5) outputText("drenches");
             else outputText("completely soaks");
             outputText(" the bed-linen under you.");
         }
@@ -1558,13 +1558,13 @@ export class Loppe extends TelAdreAbstractContent {
         }
         outputText("\n\nA hand grips either of your hips; the half-breed grinds her crotch against your ass before she pulls herself out and then thrusts back in.  It's a little awkward, but soon she starts to pick up her rhythm, her flared head scraping against your inner walls, her balls slapping meatily against you");
         if (player.balls > 0) outputText("rs");
-        else if (player.hasVagina()) outputText("r pussy");
+        else if (player.vaginas.length > 0) outputText("r pussy");
         outputText(".");
 
         outputText("\n\nYou moan as she gets into her task");
         if (player.cocks.length > 0) outputText(", feeling your erect [cock] press against your underbelly, mashed between your centaur half and the soft carpet of Loppe's room.  You hope she doesn't mind a few stains...  ");
         // (else vag)
-        else if (player.hasVagina()) outputText("; your cunt is sopping, making a small pool of juices one the floor.  ");
+        else if (player.vaginas.length > 0) outputText("; your cunt is sopping, making a small pool of juices one the floor.  ");
         else outputText(".  ");
         outputText("She seems more worked up than usual, perhaps because you have a horse-like lower body?  \"<i>Are your instincts acting up?</i>\" you tease her.  \"<i>Or do you just love ass that much?</i>\"");
 
@@ -1580,7 +1580,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\nYou clench your ass and groan, shuddering as you try to stop Loppe's movements with your gripping sphincter.  The ferocious climax brought by your anal stimulation sends waves of pleasure coursing along your body, rattling your teeth and making you see stars.");
         if (player.cocks.length > 0) outputText("  [EachCock] spasms and unloads beneath you, smearing you and the carpet below and pooling thickly with fluid forced out by the prostate stimulation.");
-        if (player.hasVagina()) outputText("  Your vagina contracts, trying to grip at a phantom member as you spill your fluids on the carpet beneath you.");
+        if (player.vaginas.length > 0) outputText("  Your vagina contracts, trying to grip at a phantom member as you spill your fluids on the carpet beneath you.");
 
         outputText("\n\nThe scent of your orgasm and the feeling of your sphincter clenching around her cock as tightly as it can is too much for Loppe, who roughly slams into you one last time and whinnies with glee as she floods your ass with cum.  She continues to thrust and rut and buck as she fills you with splurt after gush of hot, thick herm spunk.  The liquid warmth of Loppe's orgasm only enhances your afterglow, and slowly you feel yourself filled until you");
         if (player.skinType != SKIN_TYPE_SCALES) outputText(" have goosebumps all over your body");

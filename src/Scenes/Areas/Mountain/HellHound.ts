@@ -87,7 +87,7 @@ export class HellHound extends Monster {
         if (hpVictory) {
             outputText("The hellhound's flames dim and the heads let out a whine before the creature slumps down, defeated and nearly unconscious.", true);
             // Rape if not naga, turned on, and girl that can fit!
-            if (player.hasVagina() && player.lust >= 33 && !player.isNaga()) {
+            if (player.vaginas.length > 0 && player.lust >= 33 && !player.isNaga()) {
                 outputText("  You find yourself musing that you could probably take advantage of the poor 'doggy'.  Do you fuck it?", false);
                 simpleChoices("Fuck it", game.mountain.hellHoundScene.hellHoundPropahRape, "", null, "", null, "", null, "Leave", cleanupAfterCombat);
             } else {
@@ -99,7 +99,7 @@ export class HellHound extends Monster {
             if (player.gender > 0 && player.lust >= 33) {
                 outputText("You realize your desires aren't quite sated.  You could let it please you", false);
                 // Rape if not naga, turned on, and girl that can fit!
-                if (player.hasVagina() && player.lust >= 33 && !player.isNaga()) {
+                if (player.vaginas.length > 0 && player.lust >= 33 && !player.isNaga()) {
                     outputText(" or make it fuck you", false);
                     temp2 = game.mountain.hellHoundScene.hellHoundPropahRape;
                 }

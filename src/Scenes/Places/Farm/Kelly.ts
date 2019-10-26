@@ -1069,7 +1069,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         else outputText("  You gyrate your [butt] this way and that, moving her head in rhythm with your own movements.");
 
         // [Pussy:
-        if (player.hasVagina()) outputText("\n\nYou feel thin fingers brush against your [vagina], slowly rubbing against the sensitive folds of your labia before circling your [clit] in virtually the same motion you used upon her earlier.  You decide to allow this; she's learnt a valuable lesson you weren't even aware you were teaching, and the dual movements of her tongue in your ass and her warm fingers slicking across your wet pussy are delightful.");
+        if (player.vaginas.length > 0) outputText("\n\nYou feel thin fingers brush against your [vagina], slowly rubbing against the sensitive folds of your labia before circling your [clit] in virtually the same motion you used upon her earlier.  You decide to allow this; she's learnt a valuable lesson you weren't even aware you were teaching, and the dual movements of her tongue in your ass and her warm fingers slicking across your wet pussy are delightful.");
 
         outputText("\n\nHer tongue probes deeper and deeper into you, her plump lips pressing into your [asshole] until she touches something sensitive.  Your " + cockDescript(game.player, x) + " immediately reacts, twitching upwards restlessly.");
 
@@ -1081,14 +1081,14 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
 
         outputText("\n\n\"<i>Oh, you're soooo good at that,</i>\" you sigh.  \"<i>You are just as good an asslicker as you are a cocksucker.  Maybe we'll do it this way every time from now on.  Would you like that? Worshipping your [Master]'s ass for your cumfix?  Should I keep you around just for when I need the sweat cleaned from my crack");
         if (player.balls > 0) outputText(" and balls");
-        if (player.hasVagina()) outputText(" and pussy");
+        if (player.vaginas.length > 0) outputText(" and pussy");
         outputText("?  I can't say it's something you don't deserve for being such a shameless slut, and I don't doubt you'd enjoy every minute of it.</i>\"");
 
         outputText("\n\nIf anything your harsh words make Kelly work harder; she wriggles her tongue this way and that with your rough movements and moans, the vibrations translating straight down your cock");
-        if (player.hasVagina()) outputText("; she slides as many fingers as she can into your [vagina] and frigs you as best she can");
+        if (player.vaginas.length > 0) outputText("; she slides as many fingers as she can into your [vagina] and frigs you as best she can");
         outputText(".  Grunting, you reach your peak.  Your " + cockDescript(game.player, x) + " opens wide and you ejaculate streams of cum, splattering into the dust in front of you, your whole body clenching and seizing around the warm, wet muscle wedged in your [butt].");
         // [Pussy:]
-        if (player.hasVagina()) outputText("  Your female sex orgasms in tandem, your wet flesh seizing up around Kelly's fingers and spattering her arm and chest with girl juices.");
+        if (player.vaginas.length > 0) outputText("  Your female sex orgasms in tandem, your wet flesh seizing up around Kelly's fingers and spattering her arm and chest with girl juices.");
 
         outputText("\n\nYou give three final thrusts against Kelly's face to work out every last drop and then, spent, you slowly pull away, spit trailing from your ass to your slave's lips.  You insouciantly flare your cheeks in front of her after she has withdrawn, waiting, and grin when you feel a hesitant lick against one.  You turn around to take a good look at her.  She is panting for breath, her pupils dilated as she stares back up at you; her own arousal, of course, is unabated.  Finally, she finds some words.");
 
@@ -1618,7 +1618,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         if (temp == 0) {
             outputText("\n\nYou ask what happened to the wives she mentioned she had.");
             outputText("\n\n\"<i>Who?</i>\" Kelly says, stopping her pumping for a moment.  \"<i>Oh, those two.  I wouldn't worry about them, [Master].  I never told them where I worked, because I never wanted them to know I worked for a woman.  Funny, isn't it.");
-            if (!player.hasVagina()) {
+            if (!player.vaginas.length > 0) {
                 // Male:
                 outputText("  Now I </i>do<i> work for a man, and I spend most days polishing his [cock biggest]!");
             }
@@ -1628,7 +1628,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             // 1< cock:
             if (player.cocks.length > 1) outputText("imagining thrusting every single one of your cocks into a wet, willing hole, ");
             // vagina:
-            else if (player.hasVagina()) outputText("imagining one of them tongue-fucking your [vagina] as you buck into another's tight cunt, ");
+            else if (player.vaginas.length > 0) outputText("imagining one of them tongue-fucking your [vagina] as you buck into another's tight cunt, ");
             outputText("imagining the symphony of feminine squeals and moans as you cum....  Kelly coos as you bark wordlessly, jizz surging powerfully out of your " + multiCockDescriptLight(game.player) + ".  She keeps masturbating you, pumping you with gentle, insistent pressure until you are spent.  Once you're done, she bends in and licks you clean, humming happily as she laps at your [cockHead] with her soothing, seeking tongue.");
 
             outputText("\n\nAble to think slightly clearer with your blood settled, you decide against telling Kelly to go fetch her erstwhile harem - it's dangerous to send such a vulnerable slave wandering around in the wilderness for something that's probably long gone, and taking care of just one centaur cumslut is draining enough as it is.");
@@ -1825,14 +1825,14 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\nYou grab a smooth stone, wipe it clean, and then begin to mash the apples in the bowl, picking out the stalks and seeds where you can.  You look critically at the mush you've created.  Yep, you're definitely going to need some form of syrupy substance to make this work.  ");
             if (!player.isTaur()) {
                 outputText("You remove the bottom half of your [armor] and grip your [cock].  You close your eyes, begin to stroke yourself and sigh as you think of Kelly- her fine, bountiful curves, her cute, dimpling face, how she unconsciously licks her cock-sucking lips when she sees you coming, how she begs for it, how sweetly she moans when you thrust deep into her tight, wet holes... your body clenches as you orgasm, spurting streamer after streamer of spunk into the apple mash.");
-                if (player.hasVagina()) outputText("\n\nYour [vagina] quivers and clenches, and gasping with the dual orgasm which is clutching your body you stand over the bowl and let some of your femcum drip into it.  Taste my summer flavor Kelly, you think wildly, and laugh with a slightly manic edge.");
+                if (player.vaginas.length > 0) outputText("\n\nYour [vagina] quivers and clenches, and gasping with the dual orgasm which is clutching your body you stand over the bowl and let some of your femcum drip into it.  Taste my summer flavor Kelly, you think wildly, and laugh with a slightly manic edge.");
                 // [High cum:]
                 if (player.cumQ() >= 750) outputText("  The bowl quickly begins to brim as your [cock] torrents out cum, and eventually you have to turn away, grunting out the last jets of filth into the undergrowth.");
             }
             // [Centaur:]
             else {
                 outputText("You position your lower half over the bowl.  Your [cock] is already semi-turgid with the idea of what you're going to do, and it begins to bulge as you close your eyes, sigh and think of Kelly- her fine, bountiful curves, her cute, dimpling face, how she unconsciously licks her cock-sucking lips when she sees you coming, how she begs for it, how sweetly she moans when you thrust deep into her tight, wet holes... your body clenches as you orgasm, spurting streamer after streamer of spunk into the apple mash.");
-                if (player.hasVagina()) outputText("\n\nYour [vagina] quivers and clenches, and gasping with the dual orgasm which is clutching your body you stand over the bowl and let some of your femcum drip into it.  Taste my summer flavor Kelly, you think wildly, and laugh with a slightly manic edge.");
+                if (player.vaginas.length > 0) outputText("\n\nYour [vagina] quivers and clenches, and gasping with the dual orgasm which is clutching your body you stand over the bowl and let some of your femcum drip into it.  Taste my summer flavor Kelly, you think wildly, and laugh with a slightly manic edge.");
                 // [High cum:
                 if (player.cumQ() >= 750) outputText("  Your [cock] torrents out cum, and eventually you have to clop away, grunting out the last jets of filth onto the ground to avoid overflowing the bowl.");
             }
@@ -1852,14 +1852,14 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\nYou take your time picking the best apples which catch your eye before mashing them up, once again removing the seeds and stalks.  Then, with a wicked smile, you ");
             if (!player.isTaur()) {
                 outputText("grasp your semi-turgid cock and drift into a fond reverie of Kelly- the way her boobs bounce when she canters towards you, the way her green eyes burn when they fall upon your [eachCock], the way she gasps when you slap her ass, how sweetly she moans when you thrust deep into her tight, wet holes, the galaxy of filthy things you still have left to do to her....  Your body clenches as you orgasm, spurting streamer after streamer of spunk into the apple mash.");
-                if (player.hasVagina()) outputText("  Your [vagina] quivers and clenches, and once again, gasping with the dual orgasm which is clutching your body, you stand over the bowl and let some of your femcum drip into it.");
+                if (player.vaginas.length > 0) outputText("  Your [vagina] quivers and clenches, and once again, gasping with the dual orgasm which is clutching your body, you stand over the bowl and let some of your femcum drip into it.");
                 // [High cum:
                 if (player.cumQ() >= 750) outputText("  The bowl quickly begins to brim as your [cock] torrents out cum, and eventually you have to turn away, grunting out the last jets of filth into the undergrowth.");
             }
             // [Centaur:
             else {
                 outputText("position your lower half over the bowl, your [cock] already semi-turgid as you drift into a fond reverie of Kelly- the way her boobs bounce when she canters towards you, the way her green eyes burn when they fall upon your [eachCock], how sweetly she moans when you thrust deep into her tight, wet holes, the galaxy of filthy things you still have left to do to her....  Your body clenches as you orgasm, spurting streamer after streamer of spunk into the apple mash.");
-                if (player.hasVagina()) outputText("  Your [vagina] quivers and clenches, and once again, gasping with the dual orgasm which is clutching your body, you stand over the bowl and let some of your femcum drip into it.");
+                if (player.vaginas.length > 0) outputText("  Your [vagina] quivers and clenches, and once again, gasping with the dual orgasm which is clutching your body, you stand over the bowl and let some of your femcum drip into it.");
                 // High cum:
                 if (player.cumQ() >= 750) outputText("  Your [cock] torrents out cum, and eventually you have to clop away, grunting out the last jets of filth onto the ground to avoid overflowing the bowl.");
             }
@@ -1966,10 +1966,10 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
 
             outputText("\n\n\"<i>Go on then,</i>\" you say, trying to keep the amused tone out of your voice.  \"<i>Show me why you deserve it.  Nice and slow.</i>\"  Her hands still holding up her gorgeous fuck udders, Kelly lets out a small whinny of pleasure and bends into your crotch, kissing the base of your bulging [cock biggest] longingly as she gets to work.");
             // If PC has anything else aside from cock:
-            if (player.hasVagina()) outputText("  You're in no hurry, and with a slight roll of your [hips] you direct her to start at the back and work her way up.");
+            if (player.vaginas.length > 0) outputText("  You're in no hurry, and with a slight roll of your [hips] you direct her to start at the back and work her way up.");
 
             // Vagina and balls:
-            if (player.balls > 0 && player.hasVagina()) {
+            if (player.balls > 0 && player.vaginas.length > 0) {
                 outputText("\n\nKelly brushes your [balls] out of the way as she burrows deep into your groin, her hot tongue finally pressing against your [vagina], oozing already in sympathy to the lust which has gripped your male sex.  She is a bit of a stranger to your female anatomy but she's a quick and eager learner, tracing your entrance with the tip of her tongue before pushing her plush lips into your opening, covering your outer lips and your clit in shifting softness as she burrows into your tunnel with her tongue, curling deep into you as she worships every inch she can reach with her flexible mouth muscle, lapping up every trace of sweet moisture she finds with vocal pleasure.");
                 outputText("\n\nYou close your eyes and lose yourself for a while, very gently thrusting your [hips] into her hot mouth as she makes your [vagina] glow with pleasure, sending small spasms of ecstasy shooting through your core, keeping your [cock biggest] straining.  It'd be so easy to ride her face to orgasm... but no, you signed up for the whole ten yards here and she isn't even close to being finished.  With a bit of encouragement with your hips, you get her to pull away from your beading muff and move on to your balls.  She sighs as she begins to lavish them with worshipful attention.");
                 // [Normal balls:
@@ -1992,7 +1992,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
                 }
             }
             // Vagina:
-            else if (player.hasVagina()) {
+            else if (player.vaginas.length > 0) {
                 outputText("\n\nKelly's hot tongue presses against your [vagina], oozing already in sympathy to the lust which has gripped your male sex.  She is a bit of a stranger to your female anatomy but she's a quick and eager learner, tracing your entrance with the tip of her tongue before pushing her plush lips into your opening, covering your outer lips and your clit in shifting softness as she burrows into your tunnel with her tongue, curling deep into you as she worships every inch she can reach with her flexible mouth muscle, lapping up every trace of sweet moisture she finds with vocal pleasure.");
                 outputText("\n\nYou close your eyes and lose yourself for a while, very gently thrusting your [hips] into her hot mouth as she makes your [vagina] glow with pleasure, sending small spasms of ecstasy shooting through your core, keeping your [cock biggest] straining.  It'd be so easy to ride her face to orgasm, but no, you signed up for the whole ten yards here and she isn't close to being finished.  With a bit of encouragement with your hips, you get her to pull away from your beading muff and move up to your cock.");
             }
@@ -2038,7 +2038,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             if (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] > 0) outputText(" onto all four of her tits");
             outputText(".  The sensation of deep release is ecstatic, the sight of your cock cream pasting your slave's softness delicious.");
             if (player.cumQ() >= 750) outputText("\n\nAs ever you can barely control yourself once you get going, and it feels like you cum for minutes on end, painting not just her chest but her face and stomach, not stopping until she is absolutely caked and dripping with your potent sex.");
-            if (player.hasVagina()) outputText("\n\nYour female sex clenches and orgasms in sympathy, and you feel fluid dribble down your [hips] as you continue to paint Kelly.  Your only dim regret is that there's no way of soaking her with that, too.");
+            if (player.vaginas.length > 0) outputText("\n\nYour female sex clenches and orgasms in sympathy, and you feel fluid dribble down your [hips] as you continue to paint Kelly.  Your only dim regret is that there's no way of soaking her with that, too.");
             outputText("  Finally you are spent.");
         }
         // Centaur:
@@ -2053,10 +2053,10 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText("\n\nYou let a long second go by.");
             outputText("\n\n\"<i>Go on then,</i>\" you say, trying to keep the amused tone out of your voice. \"<i>Show me why you deserve it.  Nice and slow.  And keep your hands where they are.</i>\"  Kelly lets out a small whinny of pleasure and bends into your crotch, kissing the base of your [cock biggest] longingly as she gets to work.");
             // If PC has anything else aside from a single cock:
-            if (player.cocks.length > 1 || player.hasVagina()) outputText("  You're in no hurry, and with a slight roll of your [hips] you direct her to start at the front and work her way down.");
+            if (player.cocks.length > 1 || player.vaginas.length > 0) outputText("  You're in no hurry, and with a slight roll of your [hips] you direct her to start at the front and work her way down.");
 
             // Vagina and balls:
-            if (player.hasVagina() && player.balls > 0) {
+            if (player.vaginas.length > 0 && player.balls > 0) {
                 outputText("\n\nKelly brushes your [balls] out of the way as she burrows deep into your groin, her hot tongue finally pressing against your [vagina], oozing already in sympathy to the lust which has gripped your male sex.  She is a bit of a stranger to your female anatomy but she's a quick and eager learner, tracing your entrance with the tip of her tongue before pushing her plush lips into your opening, covering your outer lips and your clit in shifting softness as she burrows into your tunnel with her tongue, curling deep into you as she worships every inch she can reach with her flexible mouth muscle, lapping up every trace of sweet moisture she finds with vocal pleasure.");
                 outputText("\n\nYou close your eyes and lose yourself for a while, very gently thrusting your [hips] into her hot mouth as she makes your [vagina] glow with pleasure, sending small spasms of ecstasy shooting through your core, keeping your [cock biggest] straining.  It'd be so easy to ride her face to orgasm... but no, you signed up for the whole ten yards here and she isn't even close to being finished.  With a bit of encouragement with your hips, you get her to pull away from your beading muff and move on to your balls.  She sighs as she begins to lavish them with worshipful attention.");
                 // [Normal balls:
@@ -2078,7 +2078,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
                 }
             }
             // Vagina:
-            else if (player.hasVagina()) {
+            else if (player.vaginas.length > 0) {
                 outputText("\n\nKelly's hot tongue presses against your [vagina], oozing already in sympathy to the lust which has gripped your male sex.  She is a bit of a stranger to your female anatomy but she's a quick and eager learner, tracing your entrance with the tip of her tongue before pushing her plush lips into your opening. She covers your outer lips and your clit in shifting softness as she burrows into your tunnel with her tongue, curling deep into you as she worships every inch she can reach with her flexible mouth muscle.  Lapping up every trace of sweet moisture she finds, Kelly hums with vocal pleasure.");
                 outputText("\n\nYou close your eyes and lose yourself for a while, very gently thrusting your [hips] into her hot mouth as she makes your [vagina] glow with pleasure, sending small spasms of ecstasy shooting through your core, keeping your [cock biggest] straining.  It'd be so easy to ride her face to orgasm... but no, you signed up for the whole ten yards here, and she isn't close to being finished.  With a bit of encouragement with your hips, you get her to pull away from your beading muff and move down to your cock.");
             }
@@ -2130,14 +2130,14 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             outputText(", you pull out and point your [cock biggest] downwards.  She 'aww's in deep disappointment as the dick is torn away from her, but you shush her.");
 
             outputText("\n\n\"<i>I'm going to cum now,</i>\" you grit out, your pulse as heavy and hard in your head as the load in your cock is.  \"<i>If you want to drink my leavings down like a shameless, whimpering, ");
-            if (player.hasVagina()) outputText("pussy-licking, ");
+            if (player.vaginas.length > 0) outputText("pussy-licking, ");
             if (player.balls > 0) outputText("ball-sucking ");
             outputText("cock addict, you will have to do a good job of catching it on those whore pillows of yours.</i>\"  With that, you thrust your hindquarters forward.  Her breathy groan is what you hear as orgasm clenches you.");
             outputText("\n\nYour cock slit dilates and you spurt out rope after rope of jizz");
             if (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] > 0) outputText(" onto all four of her tits");
             outputText(".  The sensation of deep release is ecstatic, the sound of your cock cream spattering onto your slave's softness delicious.");
             // [Vagina:
-            if (player.hasVagina()) outputText("  Your female sex clenches and orgasms in sympathy, and you feel fluid dribble down your [hips] as you continue to paint Kelly.  Your only dim regret is that there's no way of soaking her with that, too.");
+            if (player.vaginas.length > 0) outputText("  Your female sex clenches and orgasms in sympathy, and you feel fluid dribble down your [hips] as you continue to paint Kelly.  Your only dim regret is that there's no way of soaking her with that, too.");
             outputText("\n\nFinally you are spent.  You clop around to admire your handiwork.");
             // Low cum:
             if (player.cumQ() < 750) outputText("  Kelly has done a sterling job of catching your load; you've frosted her boobs with long strokes quite convincingly.");
@@ -2164,7 +2164,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
         // Libido >50:
         else {
             outputText("\n\nYou stroke yourself languidly to the obscene display, and your [cock biggest] is straining urgently again before she's even half done.  Although your intention was to leave once she had finished, you find yourself letting her gaze hungrily into your eyes again, letting her press her hands on your [chest]");
-            if (player.hasVagina()) outputText(", letting her sensually lick you out again until your [vagina] is gleaming with arousal");
+            if (player.vaginas.length > 0) outputText(", letting her sensually lick you out again until your [vagina] is gleaming with arousal");
             if (player.balls > 0) outputText(", letting her needily suckle on your [balls] again until they are inflamed with renewed pressure");
             outputText(", letting her engulf your [cock biggest] with her plump lips again, letting her soft, muffled moans fill your ears as her head bobs over your groin until you clench and cum again, jetting every last drop you have remaining into that beautiful, filthy, juicy little mouth.  Kelly swallows it all down, and goes on licking your clean [cockHead biggest] until you order her with a slight groan to stop.");
 

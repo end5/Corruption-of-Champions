@@ -192,7 +192,7 @@ export class CharCreation {
         }
         // Clear vaginas
         while (player.vaginas.length > 0) {
-            player.removeVagina(0, 1);
+            player.vaginas.removeVagina(0, 1);
             trace("1 vagina purged.");
         }
         // Clear breasts
@@ -358,7 +358,7 @@ export class CharCreation {
         player.tone = 30;
 
         player.breasts.createBreastRow();
-        player.createVagina();
+        player.vaginas.createVagina();
         player.gender = GENDER_FEMALE;
         clearOutput();
         outputText("You are a woman.  Your upbringing has provided you an advantage in speed and intellect.\n\nWhat type of build do you have?");
@@ -764,7 +764,7 @@ export class CharCreation {
     private setHistory(choice: PerkType): void {
         player.perks.create(choice, 0, 0, 0, 0);
         if (choice == PerkLib.HistorySlut || choice == PerkLib.HistoryWhore) {
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 player.vaginas[0].virgin = false;
                 player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
             }
@@ -844,7 +844,7 @@ export class CharCreation {
         // Penis: 13 inch long 3 inch wide penis, dog shaped, 6.5 inch knot
         // Balls: Four 5 inch wide
         // Vagina: Tight, virgin, 0.5 inch clitoris
-        player.createVagina();
+        player.vaginas.createVagina();
         player.cocks.createCock();
         player.breasts.createBreastRow();
         player.clitLength = 0.5;
@@ -890,7 +890,7 @@ export class CharCreation {
         outputText("It's really no surprise that you were sent through the portal to deal with the demons - you look enough like one as-is.  Your numerous fetish-inducing piercings, magical fox-tails, and bimbo-licious personality were all the motivation the elders needed to keep you from corrupting the village youth.");
         // 2/26/2013 8:18:21	rdolave@gmail.com	Character Creation	"female DD breasts feminity 100 butt size 5 hip size 5 body thickness 10 clit I would like her nipples pierced with Ceraphs piercing
         // (on a side note how much do you think it would cost to add bell nipple,labia and clit piercings as well as an option for belly button piercings would like to see belly button piecings with a few different options as well.  Also would love to have handcuff ear piercings.)"	Would like the bimbo brain and bimbo body perks as well as the nine tail PerkLib.  demonic high heels, pink skin, obscenely long pink hair  would like her to be a kitsune with the nine tails.  pink fur.  starting equipment would like to be the succubus whip and nurse's outfit.  Also would like the xmas perk and all three Vday perks	Aria
-        if (!player.hasVagina()) player.createVagina();
+        if (!player.vaginas.length > 0) player.vaginas.createVagina();
         if (player.femininity < 80) player.femininity = 80;
         player.perks.create(PerkLib.BimboBody, 0, 0, 0, 0);
         player.perks.create(PerkLib.BimboBrains, 0, 0, 0, 0);
@@ -945,8 +945,8 @@ export class CharCreation {
             player.cocks[0].cockThickness = 1;
             player.cocks[0].knotMultiplier = 1.4;
         }
-        if (!player.hasVagina()) {
-            player.createVagina();
+        if (!player.vaginas.length > 0) {
+            player.vaginas.createVagina();
             player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
             player.clitLength = 0.25;
         }
@@ -1019,7 +1019,7 @@ export class CharCreation {
         outputText("As a gifted fox with a juicy, thick knot, a wet cunt, and magical powers, you have no problems with being chosen as champion.");
         // Herm, Fox Cock: (27"l x 1.4"w, knot multiplier 3.6), No Balls, Cum Multiplier: 7,500, Vaginal Wetness: 5, Clit length: 0.5, Virgin, Fertility: 15	9-tailed "enlightened" kitsune( a pure-blooded kitsune with the "Enlightened Nine-tails" perk and magic specials)
         if (!player.cocks.length > 0) player.cocks.createCock();
-        if (!player.hasVagina()) player.createVagina();
+        if (!player.vaginas.length > 0) player.vaginas.createVagina();
         player.gender = 3;
         player.cocks[0].cockLength = 27;
         player.cocks[0].cockThickness = 1.4;
@@ -1161,8 +1161,8 @@ export class CharCreation {
     private customGalatea(): void {
         // "(Dangit Fenoxo!  Stop adding sexy must-have things to the game!  If it's not too late to update it I've added in that sexy new armor.  Thanks!)
         // Other:
-        if (!player.hasVagina()) {
-            player.createVagina();
+        if (!player.vaginas.length > 0) {
+            player.vaginas.createVagina();
             if (player.clitLength == 0) player.clitLength = 0.25;
         }
         genderCheck();
@@ -1218,7 +1218,7 @@ export class CharCreation {
         player.cocks[0].cockType = CockTypesEnum.CAT;
         player.cocks[0].cockLength = 10;
         player.cocks[0].cockThickness = 4;
-        if (!player.hasVagina()) player.createVagina();
+        if (!player.vaginas.length > 0) player.vaginas.createVagina();
         player.breastRows[0].breastRating = 4;
         player.hairLength = 10;
         player.setArmor(armors.GELARMR);
@@ -1300,8 +1300,8 @@ export class CharCreation {
     private customKatti(): void {
         outputText("You have big breasts with big, fuckable nipples on them, and no matter what, your vagina always seems to be there to keep you company.");
         // Gender: Female
-        if (!player.hasVagina()) {
-            player.createVagina();
+        if (!player.vaginas.length > 0) {
+            player.vaginas.createVagina();
             genderCheck();
         }
         // "Ears: Bunny
@@ -1323,7 +1323,7 @@ export class CharCreation {
         player.itemSlot2.setItemAndQty(consumables.W__BOOK, 2);
 
         player.breasts.createBreastRow();
-        player.createVagina();
+        player.vaginas.createVagina();
         player.breastRows[0].breastRating = 4;
         player.clitLength = .5;
         player.fertility = 10;
@@ -1375,7 +1375,7 @@ export class CharCreation {
     private customLucina(): void {
         // 428347355782040	Character Creation	Female,wetness=wet, Looseness=normal,not a virgin, Fertility high i guess i dont really care can be up to you.	for her face normal human, ears i want Elvin, no tails, just normal skin, body thickness i want to be slender, body tone kinda athletic but not too much, hair i want really long i think like a 30 on the codex number i think and her hair color light blonde, i want her to have normal D size breast with you can choose how you want them really though i dont think i really care, nipple size i dont care, her skin color a fair light light color but not too pale, for her starting equipment i want im not sure what i want her to wear but basically i want a Elvin archer with a bow. so maybe you can do something about the clothing. i just want a Elvin character in the game since theres goblins plus another archer besides kelt a female one add to that.	Lucina
         outputText("You're a blond, fair-skinned lass with a well-made bow and the skills to use it.  You have D-cup breasts and a very moist cunt that's seen a little action.  You're fit and trim, but not too thin, nor too well-muscled.  All in all, you're a good fit for championing your village's cause.");
-        if (!player.hasVagina()) player.createVagina();
+        if (!player.vaginas.length > 0) player.vaginas.createVagina();
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
         player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
         player.vaginas[0].virgin = false;
@@ -1471,7 +1471,7 @@ export class CharCreation {
         player.fertility = 10;
         player.hairLength = 15;
         player.breasts.createBreastRow();
-        player.createVagina();
+        player.vaginas.createVagina();
         player.tallness = 67;
         player.breastRows[0].breastRating = 7;
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
@@ -1512,7 +1512,7 @@ export class CharCreation {
         // -nipplesPerBreast: 1
         player.breastRows[0].breastRating = 5;
         player.buttRating = 2;
-        player.createVagina();
+        player.vaginas.createVagina();
         player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
         player.vaginas[0].virgin = true;
@@ -1564,7 +1564,7 @@ export class CharCreation {
         player.fertility = 20;
         player.hairLength = 15;
         player.breasts.createBreastRow();
-        player.createVagina();
+        player.vaginas.createVagina();
         player.cocks.createCock();
         player.tallness = 73;
         player.breastRows[0].breastRating = 5;
@@ -1622,7 +1622,7 @@ export class CharCreation {
         // Wetness- Above Average
         // Looseness- Normal Starting Value
         // Clit-size- Normal Value"
-        player.createVagina();
+        player.vaginas.createVagina();
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
         player.clitLength = 0.25;
         player.vaginas[0].type = 5;
@@ -1758,7 +1758,7 @@ export class CharCreation {
         // Muscle: 75/100"
         player.tone = 75;
         // for wetness a squirter, looseness a 2 and capacity at 140.
-        if (!player.hasVagina()) player.createVagina();
+        if (!player.vaginas.length > 0) player.vaginas.createVagina();
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
         player.effects.create(StatusAffects.BonusVCapacity, 132, 0, 0, 0);
         // Virgin, high fertility like in the email I sent before.  dragon wings, nine fox tails,  dragon legs, eight DD breasts with four fuckable nipples each, dragon tongue, waist length hair, large dragon wings.
@@ -1802,7 +1802,7 @@ export class CharCreation {
         player.cocks[0].cockType = CockTypesEnum.DOG;
         player.balls = 0;
         player.breasts.createBreastRow();
-        player.createVagina();
+        player.vaginas.createVagina();
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
         // 1 pair DD's, 0.5"" nipples"
         player.breastRows[0].breastRating = 5;
@@ -1871,7 +1871,7 @@ export class CharCreation {
 
     private customPrismere(): void {
         // Specific Character	Female, virgin, high fertility, tight with standard wetness and clit.
-        player.createVagina();
+        player.vaginas.createVagina();
         player.clitLength = 0.25;
         player.fertility = 4;
         player.spe += 20;
@@ -1903,7 +1903,7 @@ export class CharCreation {
     private customRannRayla(): void {
         // Specific Character	Virgin female.	Max femininity. Thin with a little muscle. Size C breasts. Long red hair. Light colored skin. 5'5" tall. 	Rann Rayla
         outputText("You're a young, fiery redhead who\'s utterly feminine.  You've got C-cup breasts and long red hair.  Being a champion can\'t be that bad, right?");
-        player.createVagina();
+        player.vaginas.createVagina();
         player.clitLength = 0.25;
         player.breasts.createBreastRow();
         player.breastRows[0].breastRating = 3;
@@ -1923,7 +1923,7 @@ export class CharCreation {
         // 529315025394020	Character Creation	Neuter (no genitals) "50-50 masculine-feminine ratio. Shark teeth."	Rope
         outputText("Despite outward appearances, you're actually something of a neuter, with shark-like teeth, an androgynous face, and a complete lack of genitalia.");
         if (player.cocks.length > 0) player.cocks.removeCock(0, 1);
-        if (player.hasVagina()) player.removeVagina();
+        if (player.vaginas.length > 0) player.vaginas.removeVagina();
         player.gender = 0;
         player.femininity = 50;
         player.faceType = FACE_SHARK_TEETH;
@@ -1988,7 +1988,7 @@ export class CharCreation {
         // Female
         // Virgin
         player.gender = 2;
-        player.createVagina();
+        player.vaginas.createVagina();
         player.clitLength = 0.25;
         // has a self-repairing hymen in her cunt"	"Angel
         // (means feathered wings on her back)
@@ -2030,7 +2030,7 @@ export class CharCreation {
 
     private customSora(): void {
         // Character Creation	Female,virgin	A kitsune with a snake-like tongue	Sora
-        if (player.hasVagina()) player.vaginas[0].virgin = true;
+        if (player.vaginas.length > 0) player.vaginas[0].virgin = true;
         player.tongueType = TONUGE_SNAKE;
         player.earType = EARS_FOX;
         player.tailType = TAIL_TYPE_FOX;
@@ -2045,7 +2045,7 @@ export class CharCreation {
         player.XP = 500000;
         player.level = 20;
         player.breasts.createBreastRow();
-        player.createVagina();
+        player.vaginas.createVagina();
         player.breastRows[0].breastRating = 5;
         player.breastRows[0].lactationMultiplier = 2;
 
@@ -2218,7 +2218,7 @@ export class CharCreation {
         // "Gender: Female
         player.gender = 2;
         // Vagina: Ridiculously loose, 3 inch clitoris, dripping constantly, fertile like a bunny on steroids and non-virgin
-        player.createVagina();
+        player.vaginas.createVagina();
         player.clitLength = 3;
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
         player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LEVEL_CLOWN_CAR;
@@ -2263,7 +2263,7 @@ export class CharCreation {
 
     private customVahdunbrii(): void {
         player.breasts.createBreastRow();
-        player.createVagina();
+        player.vaginas.createVagina();
         player.breastRows[0].breastRating = 3;
         player.clitLength = .5;
         player.fertility = 10;
@@ -2406,7 +2406,7 @@ export class CharCreation {
             player.fertility = 10;
             player.hairLength=10;
             player.breasts.createBreastRow();
-            player.createVagina();
+            player.vaginas.createVagina();
             player.tallness = 67;
             player.breastRows[0].breastRating = 3;
             outputText("\n\n\n\n\nYou are a woman.  Your upbringing has provided you an advantage in speed and intellect.\n\nWhat type of build do you have?", true);
@@ -2820,7 +2820,7 @@ export class CharCreation {
             else if(temp == 10042) historyPerk = PerkLib.HistorySlacker;
             else if(temp == 10046) {
                 historyPerk = PerkLib.HistorySlut;
-                if(player.hasVagina()) {
+                if(player.vaginas.length > 0) {
                     player.vaginas[0].virgin = false;
                     player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
                 }
@@ -2828,7 +2828,7 @@ export class CharCreation {
             }
             else if(temp == 10047) {
                 historyPerk = PerkLib.HistoryWhore;
-                if(player.hasVagina()) {
+                if(player.vaginas.length > 0) {
                     player.vaginas[0].virgin = false;
                     player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
                 }

@@ -39,7 +39,7 @@ export class HighMountains {
             return;
         }
         // 25% minotaur sons!
-        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] >= 3 && rand(4) == 0 && player.hasVagina()) {
+        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] >= 3 && rand(4) == 0 && player.vaginas.length > 0) {
             spriteSelect(44);
             minotaurMobScene.meetMinotaurSons();
             return;

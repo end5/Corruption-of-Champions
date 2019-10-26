@@ -159,7 +159,7 @@ export class Helspawn extends Monster {
             }[weapon] +
             ".  Pacing around you, the well-built young warrior intently studies her mentor's defenses, readying for your next attack.";
         // this.plural = false;
-        this.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 85, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("E+"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;

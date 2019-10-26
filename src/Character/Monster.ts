@@ -153,7 +153,7 @@ export class Monster extends Creature {
         /// *OPTIONAL*/ //this.cumMultiplier = ; // default 1
         /// *OPTIONAL*/ //this.hoursSinceCum = ; // default 0
         //// 2.2. Female
-        /// *REQUIRED*/ this.createVagina(virgin=true|false,VAGINA_WETNESS_,VAGINA_LOOSENESS_); // default true,normal,tight
+        /// *REQUIRED*/ this.vaginas.createVagina(virgin=true|false,VAGINA_WETNESS_,VAGINA_LOOSENESS_); // default true,normal,tight
         /// *OPTIONAL*/ //this.effects.create(StatusAffects.BonusVCapacity, bonus, 0, 0, 0);
         //// 2.3. Hermaphrodite
         //// Just create cocks and vaginas. Last call determines pronouns.
@@ -391,7 +391,7 @@ export class Monster extends Creature {
                 this.pronoun3 = "her";
             }
         }
-        const result: boolean = super.createVagina(virgin, vaginalWetness, vaginalLooseness);
+        const result: boolean = super.vaginas.createVagina(virgin, vaginalWetness, vaginalLooseness);
         this.genderCheck();
         return result;
     }

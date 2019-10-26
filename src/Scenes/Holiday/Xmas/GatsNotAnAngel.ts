@@ -172,7 +172,7 @@ export function theWorstEndingEverDotJPG(): void {
     outputText("\n\nIt's hard to get a read on just what's going on in that tin-covered head of his.  In a last ditch effort to reign in the situation, you strip free of your [armor], accentuating ");
     if (player.cocks.length > 0) outputText("[eachCock]");
     if (player.gender == 3) outputText(" and ");
-    if (player.hasVagina()) outputText("your [vagina]");
+    if (player.vaginas.length > 0) outputText("your [vagina]");
     outputText(" to try and convince the confused soldier.  You look North over, figuring the best way to work him under your spell.  It isn't a long search, as you decide that his ");
     // [if (hasCock = true)
     if (player.cocks.length > 0) outputText("keyhole");
@@ -348,7 +348,7 @@ export function stayForPretendNTRGoodWinjobSex(): void {
     // IF LUST 100:
     if (player.lust >= 100) {
         outputText("\n\nHer powerful climax nearly shakes the very bluff you're standing on, and the event is enough to force you over the edge");
-        if (player.wetness() >= 4 || player.cumQ() >= 1000) outputText(" - figuratively, and literally, as well, as your fluids drip off the edge to add to the rain of sexual fluids the giantess is laying in the midst of");
+        if (player.vaginas.wetness() >= 4 || player.cumQ() >= 1000) outputText(" - figuratively, and literally, as well, as your fluids drip off the edge to add to the rain of sexual fluids the giantess is laying in the midst of");
         outputText(".");
     }
     outputText("\n\nFor many heartbeats she lays panting, basking in the afterglow of her and her lover's first outing in a long, long time.  Eventually, a stirring in the breast-milk coating her and the ground around her rouses her from her peaceful contemplations.  Just as you suspected, North had internally traveled from her vaginal passage to her enormous breasts, and escaped with the boobgasm that followed.  His shadow-essence separates from its milky prison to reform near the giantess's cheek.  She smiles warmly at him, and he hugs her cheek in response.");

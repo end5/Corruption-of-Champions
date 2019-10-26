@@ -129,7 +129,7 @@ function dungeonMenu(): void {
                 else outputText("sexy", false);
                 outputText("!  You haven't seen a confused human about calling itself a champion have you?</i>\"\n\nShe shakes her more-than-ample bosom from side to side as she licks her lips and offers, \"<i>If you do, be sure and bring them back here ok?  We've got their spot all ready for them, but that little prick Zetaz fucked up the pickup.  Tell you what – if you bring me the 'champion' I'll ", false);
                 if (player.cocks.length > 0) outputText("give you the blowjob of a lifetime", false);
-                else if (player.hasVagina()) outputText("lick your honeypot 'til you soak my face", false);
+                else if (player.vaginas.length > 0) outputText("lick your honeypot 'til you soak my face", false);
                 else outputText("give you a new addition and show you how to use it", false);
                 outputText(".</i>\"\n\nThe succubus turns away from you and makes a show of tweaking her make-up, ignoring you for the moment.", false);
                 // 				text1 = "Fight";
@@ -1012,7 +1012,7 @@ function dungeonMenu(): void {
                 outputText("The curtain pulls to the side easily, and as soon as you enter, you're greeted by the sound of flesh slapping on flesh from somewhere to your left.  Briefly, you note a number of desks as you turn towards the sexual audio, but what really catches your eyes are the two girls locked in coitus.  One, a normal-looking sand witch, is bent over a bench and taking quite the fucking.  Milk drips in huge beads from her four fat teats while fresh rivulets of cum run down past the dried-cum on her thighs.  Above her is something else entirely, a taller woman with a single pair of obscenely large breasts.  She's so dark skinned that at first you have difficulty picking out her features in the dim lighting.  Glittering sweat runs down her form, dripping from her pendulous breasts as she throws back her head and moans, \"<i>Gonna... just... take it!  Take my gift!</i>\"");
                 outputText("\n\nBeneath the ebony woman, you see the sand witch begin to quiver and moan, thick gouts of semen back-flooding from her packed cunny as her belly rounds with delicious fecundity.  Her muscles lock, then twitch feebly for a few seconds before she slides off into the new-born cum-puddle, slipping along the floor in an insensate pile of orgasmic bliss.  You're so enraptured by the sight, that you don't even try to hide when the ebony futanari turns to face you, putting on a pointed, wide-brimmed hat and black robe.  For the slightest second you see a pair of orange-sized balls and one thick, cum-lubed member, but those quickly disappear into the voluminous robes.");
                 outputText("\n\n\"<i>Well now, surely you aren't one of the witches here to receive my seed,</i>\" the odd witch muses, \"<i>I'm afraid you must be an interloper then.  Pity, ");
-                if (player.hasVagina()) outputText("but then, maybe you can come to serve us as a mother.  Our tribe is not wasteful.");
+                if (player.vaginas.length > 0) outputText("but then, maybe you can come to serve us as a mother.  Our tribe is not wasteful.");
                 else if (player.cocks.length > 0) outputText("but perhaps, once you have been disabused of your notions of freedom, you could serve as my loyal cum-pump.  It does get so tiring inseminating all these girls alone.");
                 else outputText("but then, perhaps you could be made to serve in other ways.");
                 outputText("</i>\"");
@@ -2310,7 +2310,7 @@ export function omnibusLossRape2(): void {
         outputText("In her hand is a seamless pair of panties.  Their surface reflects light perfectly, as if its bright pink surface were coated in slippery oil or made from latex.  ", false);
         if (player.gender == 0) {
             outputText("The demoness smiles with wicked intent and yanks the bottoms of your " + player.armorName + " the rest of the way off.  Your lack of genetalia does not faze her, and she responds by swiftly pulling out a needle and injecting your groin.  In seconds your crotch splits open, revealing a fresh virgin vagina.  Licking her perfect lips with anticipation, she inverts the panties and holds them up for you to see.\n\n", false);
-            player.createVagina();
+            player.vaginas.createVagina();
         }
         else outputText("The demoness smiles with wicked intent and yanks your " + player.armorName + "'s bottom the rest of the way off.  She leans close, smiling and inhaling the scent of your sex, savoring it like a aroma of a fine wine.  Licking her perfect lips with anticipation, she inverts the panties and holds them up for you to see.\n\n", false);
         outputText("They aren't panties at all, but instead some living creature.  The entire inside surface of the living garment is covered with fleshy pink nodules that wriggle constantly, practically dripping with a pungent lubricant that smells not unlike your own juices.  Horrifyingly, there is a large lump of flesh towards the front.  Its surface is ribbed and pulses, constantly swelling and shrinking.  It's clearly designed to enter the passage of anyone who wears it.  Worse yet is a smaller narrower protrusion on the backside.  This... creature... will certainly do its best to plug both your holes.\n\n", false);
@@ -2372,7 +2372,7 @@ export function demonBadEnd(): void {
         else {
             outputText("gushing with fluids as it shapes itself into a hungry demonic cunt.", false);
             player.gender = 2;
-            player.createVagina();
+            player.vaginas.createVagina();
             player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
         }
         outputText("\n\n\"<i>Much better,</i>\" the demon coos, licking her lips as your ", false);

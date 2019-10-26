@@ -610,13 +610,13 @@ export class MarblePurification extends NPCAwareContent {
         outputText("\n\nHer hand moves down your body, and finds itself on your [chest].  She toys a bit with the nipples, giggling at your reaction, then moves down to your stomach and pokes you.  Your reaction only promotes more laughter.  You guess that she wants to get a <i>feel</i> for her new toy, and your thoughts are confirmed when she grips your legs, continuing to test you for any places that might be suitable targets for tickling you.");
         outputText("\n\nEventually the pokings and proddings wind down, and the young cow-girl becomes more interested in your naughty bits now.  ");
         // if (player is male)
-        if (player.cocks.length > 0 && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             outputText("At this point your " + multiCockDescriptLight(game.player) + " is rock hard, and Clara gives it a few strokes.  She does seem to lose interest surprisingly quick though.");
         }
-        else if (player.hasVagina() && !player.cocks.length > 0) {
+        else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
             outputText("You’ve become quite wet at this point, and Clara gives your " + vaginaDescript(player) + " a few rubs, before tugging on your " + clitDescription(player) + " once.");
         }
-        else if (player.cocks.length > 0 && player.hasVagina()) {
+        else if (player.cocks.length > 0 && player.vaginas.length > 0) {
             outputText("Your arousal at this point is quite apparent on the whole of your genitals.  Clara gives you a few touches and caresses, but doesn’t seem all that interested.");
         }
         else {
@@ -834,9 +834,9 @@ export class MarblePurification extends NPCAwareContent {
         outputText("\n\nClara doesn't stand a chance.  In a matter of moments, she's brought to the ground once more, tightly bound up in a thick rope.  \"<i>Time to teach you a lesson!</i>\"  Marble yells with a look of rage in her eyes.");
         outputText("\n\nHow should you punish Clara?  You could let Marble spank Clara, ");
         // (if PC either has a cock with an area under 20 or a vagina)
-        if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.hasVagina()) outputText("use Marble's unstable state of mind to get her into a forceful threesome with Clara, ");
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.vaginas.length > 0) outputText("use Marble's unstable state of mind to get her into a forceful threesome with Clara, ");
         // (if PC either has a cock that will fit Marble, or has a vagina)
-        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.hasVagina()) outputText("have sex in front of Clara so she can see what your love really is, ");
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.vaginas.length > 0) outputText("have sex in front of Clara so she can see what your love really is, ");
         // (if Marble is a futa)
         if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) outputText("egg Marble into violating Clara with her cock, ");
         outputText(" or try to calm Marble down so that she doesn't do anything to her sister.");
@@ -845,8 +845,8 @@ export class MarblePurification extends NPCAwareContent {
         // PC chooses what kind of victory scene they want to do to Clara.
         // options are: Spank (can always do), Threesome (if the PC has a cock that is under 20 area, or a vagina), "NTR" (if PC has a cock that will fit Marble, or a vagina), Marble cock (if Marble has a cock), and Calm down (always possible).
         addButton(0, "Spank", murbleSpanksCowCunt);
-        if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.hasVagina()) addButton(1, "Threesome", pcAndMurbleDoubleTeamCowButt);
-        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.hasVagina()) addButton(2, "NTR", NTRIsClearlyTheWorstFetishWhyWouldYouWriteThisOMG);
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.vaginas.length > 0) addButton(1, "Threesome", pcAndMurbleDoubleTeamCowButt);
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.vaginas.length > 0) addButton(2, "NTR", NTRIsClearlyTheWorstFetishWhyWouldYouWriteThisOMG);
         if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) addButton(3, "Marble Cock", futaMarbleIsAHugeCowToCowCuntAndStuffsCowCuntsCuntFullOfCowCock);
         addButton(4, "Calm Down", calmMurblesFatAssDown);
     }
@@ -956,12 +956,12 @@ export class MarblePurification extends NPCAwareContent {
             outputText("\n\nThere is no hesitation after you've been mounted.  Instantly you're being roughly ridden by a beast that has been awakened in Marble, and there is nothing that can stop it.  A loud slapping sound fills the air with each drop of her hips, then they rise up again and drop once more.  What is essentially a hollow jackhammer seems to be running on your lap right now, and its operator's hands are holding firm to your shoulders to make sure you stay in place.");
         }
         // else if (PC has a vagina and Marble has a cock)
-        else if (player.hasVagina() && flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
+        else if (player.vaginas.length > 0 && flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
             outputText("she drops herself onto the ground next to you.  Abruptly, she lifts you up and drops your womanhood onto the member you gave her.  Since your bovine mate isn't in the habit of wearing any form of undergarments, her skirt doesn't really do much to get in the way of penetration.  A shriek of dismay accompanies this act.");
             outputText("\n\nThere is no hesitation after you've been invaded, instantly you're being roughly lifted and dropped by a beast that has been awakened in Marble, and there is nothing that can stop it.  A loud slapping sound fills the air with each drop of your hips, only for them to be lifted up and dropped once more.  Your " + hipDescription(player) + " have been essentially turned into a jackhammer right now, and its operator shows no signs allowing you to stray from your place on her lap.");
         }
         // else if (PC has a vagina and Marble does not have a cock)
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("she drops herself onto your legs, and grabs one of them.  Instantly, your two womanhoods are being grinded against one another with great force and urgency.  Since your bovine mate isn't in the habit of wearing any form of undergarments, her skirt doesn't really do much to get in the way of tribadism.  A shriek of dismay accompanies this act.");
             outputText("\n\nThere has been a beast awakened in Marble, and there is nothing that can stop it.  Loud squelching noises can be heard coming from your combined pussies as she roughly scissors you.  What is essentially a high speed vibrator seems to be running on your [legs] right now, and its operator's hands are firmly holding your them to make sure you stay in place.");
         }

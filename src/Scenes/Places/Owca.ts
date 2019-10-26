@@ -158,8 +158,8 @@ export class Owca {
         // [[if corr >70 and have gender]
         if (player.cor > 70 && player.gender > 0) {
             outputText("\n\nYou lick your lips in anticipation, your ");
-            if (player.hasVagina()) outputText(vaginaDescript(player, 0));
-            if (player.hasVagina() && player.cocks.length > 0) outputText(" and ");
+            if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0));
+            if (player.vaginas.length > 0 && player.cocks.length > 0) outputText(" and ");
             if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
             outputText(" already slickening with sexual juices; the sight of these restraints brings all kinds of perverted thoughts to your mind: dozens of ways to be used and deliciously abused like a sex-toy by wretched and well-endowed beings.");
         }
@@ -241,7 +241,7 @@ export class Owca {
     public loseOrSubmitToVapula(): void {
         clearOutput();
         outputText("Vapula taunts you as she circles around you.  \"<i>Look at the slutty pet!  Ain't you a slutty pet?  Yes, you are!  Don't pretend you're not hungry for some fat demon cock, I know you are.</i>\"  As she speaks, the crowd gathers closer.  A few creatures show some temerity, giving you pinches and gropes as they near.  The cock-belted imp unties his tentacle; the horror wriggles and squirms as it drops to the ground and slithers toward you.  The tip of the absurdly long pecker inspects your body, pressing itself against your flesh, massaging you in the most sensual places, wetting you with sap-like pre-cum and teasingly grinding itself against your mouth, and then your " + assholeDescript(player));
-        if (player.hasVagina()) outputText(", followed by your " + vaginaDescript(player, 0));
+        if (player.vaginas.length > 0) outputText(", followed by your " + vaginaDescript(player, 0));
         if (player.cocks.length > 0) outputText(", before finally wrapping around your " + cockDescript(game.player, 0) + " and stroking it; the friction uncontrollably arouses you, and you find yourself reaching full erectness");
         outputText(".  As more and more hands start playing with your flesh, the succubus grabs your head and gives you a fierce kiss, literally crushing your lips under hers; her mouth tastes like wine and her tongue is driving you over the edge as it intertwines with yours.  Her strong natural scent makes you dizzy and you gradually lose control over your body.  \"<i>Don't worry, darling, it'll be all right...</i>\"");
         outputText("\n\nSoon you find yourself completely overwhelmed by hot demon hands and dicks touching every part of your body.  In no time at all two imps bend you over and forcefully ram your " + assholeDescript(player) + " with their mammoth peckers.");
@@ -259,7 +259,7 @@ export class Owca {
         // [if horns]
         if (player.horns > 0) outputText("  You feel your horns being used as leverage to slap your head with even more rock-hard dick.  The impacts stun you until your whole forehead feels numb and coated with a mixture of ballsweat and pre-cum.");
         // [if vagina
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nYou suddenly feel a sharp sensation: your womanhood is finally being penetrated.");
             player.cuntChange(60, true, true, false);
             outputText("  A dick found a way into your " + vaginaDescript(player, 0) + " and is pushing further inside.  Wait, what's this?  A second, and then a third!  There's no way these titanic columns of flesh will... this is too much... you fear you will be torn in half, but at the last moment, you feel someone spilling the content of a flask over your nether-lips.  As if you had lost control of your " + vaginaDescript(player, 0) + ", it automatically starts leaking girl-cum in prodigious amounts, and you let out a stifled moan as a delicious shiver runs teasingly across your body.  Your fuck-hole widens under the corrupting effect of the weird mixture you were administered.  ");
@@ -268,7 +268,7 @@ export class Owca {
             if (player.effects.getValue1Of(StatusAffects.BonusVCapacity) < 200) player.effects.addValue(StatusAffects.BonusVCapacity, 1, 15);
             outputText("As soon as new space is created, it is immediately filled by a pussy-hungry cock.  The three cocks slide effortlessly inside you and start thrusting energetically, vying in intensity and ferocity with the peckers ramming your " + assholeDescript(player) + ".  The penetration of both holes is almost too much too handle, but you finally get used to it as your own anal and vaginal muscles try their best to milk as much spunk as possible from these cum-tubes.  Even though you are being violated in every hole, the raw and powerful sensation is quite pleasurable; it feels so right to be used this way, so full of demon wang.  You don't have to focus on anything, just to enjoy the sheer amazing feeling of being pounded by many pistons at once.  You squirt over and over again as the dicks and the fluid force you into a series of wild female orgasms.");
             // [crank up vaginal wetness one level, why not?]
-            if (player.wetness() < 5) player.vaginas[0].vaginalWetness++;
+            if (player.vaginas.wetness() < 5) player.vaginas[0].vaginalWetness++;
         }
         // [if cocks]
         if (player.cocks.length > 0) {
@@ -303,10 +303,10 @@ export class Owca {
             if (player.cumQ() > 1500) outputText("  The effort appears to be vain, as the absurdly high volume you've ejected is enough to completely pack every hole; the remaining jism spills on the tainted ground, soaking it further.");
         }
         outputText("\n\nAfter what seems like hours of forceful penetration, the gigantic members inside you release a milky torrent of corrupted seed, completely packing your colon through your " + assholeDescript(player));
-        if (player.hasVagina()) outputText(" and filling your womb to its maximum capacity");
+        if (player.vaginas.length > 0) outputText(" and filling your womb to its maximum capacity");
         outputText(".  The remaining cum spurts outside and dribbles onto your [legs].  Your asshole clenches, squeezing the dongs inside you and milking their very last drops of spunk.");
         // [if vagina]
-        if (player.hasVagina()) outputText("\n\nYour own " + vaginaDescript(player, 0) + " clenches too, doing its best to waste as little semen as possible.  Your muscles quiver as they feel the incoming last release.  Then, in climax, you squirt your own girl-cum, splattering the demon dicks with your juice.");
+        if (player.vaginas.length > 0) outputText("\n\nYour own " + vaginaDescript(player, 0) + " clenches too, doing its best to waste as little semen as possible.  Your muscles quiver as they feel the incoming last release.  Then, in climax, you squirt your own girl-cum, splattering the demon dicks with your juice.");
         // [if lactating breasts]
         if (player.lactationQ() > 0) outputText("\n\nThe combined efforts of a dozen demons proves too much for your poor " + chestDesc(game.player) + " and your nipples let out a white creamy flood, which is immediately gobbled by thirsty imps.  ");
         else outputText("\n\n");
@@ -386,12 +386,12 @@ export class Owca {
             // [if cocks]
             if (player.cocks.length > 0) outputText("\n\nYou gently stroke your " + cockDescript(game.player, 0) + ", bringing it to full erectness.  ");
             // [if vagina]
-            if (player.hasVagina()) outputText("You stick a finger in your own " + vaginaDescript(player) + " in order to lubricate it.  ");
+            if (player.vaginas.length > 0) outputText("You stick a finger in your own " + vaginaDescript(player) + " in order to lubricate it.  ");
             outputText("The defeated horde watches you touch yourself with avid, almost desperate eyes.  You keep teasing yourself, saving your lust for the torrid storm of rape you're about to unleash on the poor creatures who dared attack you.  You walk among the battered bodies, looking for the prey that will best suit you; then you find her.  Vapula is lying here, her purple skin masking ");
             if (monster.HP < 1) outputText("the many bruises she's received");
             else outputText("the constant flushing due to intense arousal");
             outputText(".  You harshly grab her hand and grunt, \"<i>On your feet, cunt.</i>\"  She is too stunned to protest and weakly stands up, her leather straps torn to completely reveal her voluptuous body.  You feel the sudden urge to take her right now and fuck her like a ");
-            if (player.hasVagina()) outputText("bitch in heat");
+            if (player.vaginas.length > 0) outputText("bitch in heat");
             else outputText("centaur in rut, abusing and filling her teasing cunt and ass with every protuberance you have");
             outputText(".  However, you have better plans for her.");
 
@@ -451,12 +451,12 @@ export class Owca {
             // [if cocks]
             if (player.cocks.length > 0) outputText("\n\nYou gently stroke your " + cockDescript(game.player, 0) + ", bringing it to full erectness.  ");
             // [if vagina]
-            if (player.hasVagina()) outputText("You stick a finger in your own " + vaginaDescript(player) + " in order to lubricate it.  ");
+            if (player.vaginas.length > 0) outputText("You stick a finger in your own " + vaginaDescript(player) + " in order to lubricate it.  ");
             outputText("The defeated horde watches you touch yourself with avid, almost desperate eyes.  You keep teasing yourself, saving your lust for the torrid storm of rape you're about to unleash on the poor creatures who dared attack you.  You walk among the battered bodies, looking for the prey that will best suit you; then you find her.  Vapula is lying here, her purple skin masking ");
             if (monster.HP < 1) outputText("the many bruises she's received");
             else outputText("the constant flushing due to intense arousal");
             outputText(".  You harshly grab her hand and grunt, \"<i>On your feet, cunt.</i>\"  She is too stunned to protest and weakly stands up, her leather straps torn to completely reveal her voluptuous body.  You feel the sudden urge to take her right now and fuck her like a ");
-            if (player.hasVagina()) outputText("bitch in heat");
+            if (player.vaginas.length > 0) outputText("bitch in heat");
             else outputText("centaur in rut, abusing and filling her teasing cunt and ass with every protuberance you have");
             outputText(".  However, you have better plans for her.");
 
@@ -470,7 +470,7 @@ export class Owca {
             outputText("You keep thrusting back and forth, treating the worthless horned boy like a disposable dildo.  As you pump him, you look at Vapula, warning her, \"<i>Don't turn your head.  If you ever look away or close your eyes you will regret it.</i>\" Overwhelmed by your dominance and subdued by the defeat, Vapula can only nod.");
             outputText("\n\nYou keep working the incubus's hot cock in front of the once-powerful dominatrix, panting as you accelerate the pace until you finally reach your climax, clenching your thighs tightly to his fit body as your " + vaginaDescript(player) + " clenches and spasms.  ");
             // [if squirter]
-            if (player.wetness() >= 5) outputText("The sound of spattering fluid fills the air as your cunt spurts its juices around the incubus's cock, coating him in your fragrant slime.  ");
+            if (player.vaginas.wetness() >= 5) outputText("The sound of spattering fluid fills the air as your cunt spurts its juices around the incubus's cock, coating him in your fragrant slime.  ");
             outputText("Against your relentless milking pressure he stands no chance and he moans raggedly as he cums in tandem, still incapable of moving his body as your mixed juices dribble down him.");
             outputText("\n\nNeedless to say, watching this rough session has brought Vapula to a new level of arousal; she is struggling to free her arms and finger herself, but her tight restraints only allow her to wriggle uncomfortably.  Her pussy is gushing of its own accord and she whimpers from time to time, unable to control her lust.");
             outputText("\n\nYou throw your expendable cock toy to one side and grab another slut, this time a succubus.  Your semen-dribbling cunt is now in need of a cleaning, and without any ado you sit yourself straight down onto her face, banging the back of her head against the ground.  She whines into your " + vaginaDescript(player) + ", to which you respond by pulling her hair.  \"<i>You fucking bitch!  You worthless slut!  What good are you if you can't even munch rug properly?  Lick, you whore!  I want your tongue to clean up what your useless fuckhead of a friend couldn't keep to himself.</i>\"  The poor demoness mutters an apology and proceeds to lap up the juices drooling out of your hole, licking your labia and mons clean of what the incubus left, darting her wet muscle across your " + clitDescription(player) + " before reaching into your vagina, carefully teasing out and drinking every drop of jizz she can find, making your own juices run afresh.  You enjoy her ministrations while staring Vapula in the eyes; she has trouble looking back at you as her body trembles and her eyes widen at your sheer display of depravity.  Your " + nippleDescription(player, 0) + "s harden");
@@ -683,9 +683,9 @@ export class Owca {
         else {
             // [if cock]
             if (player.cocks.length > 0) outputText("; your " + cockDescript(game.player, 0) + " grows to full erect size");
-            if (player.hasVagina() && player.cocks.length > 0) outputText(" and ");
-            else if (player.hasVagina()) outputText("; ");
-            if (player.hasVagina()) outputText("your " + vaginaDescript(player) + " leaks a little trickle of girl-juice");
+            if (player.vaginas.length > 0 && player.cocks.length > 0) outputText(" and ");
+            else if (player.vaginas.length > 0) outputText("; ");
+            if (player.vaginas.length > 0) outputText("your " + vaginaDescript(player) + " leaks a little trickle of girl-juice");
             outputText(".  She doesn't seem to notice the effect she has on you - or so you think.  Suddenly, you feel a hand darting between your legs.");
         }
         outputText("\n\n\"<i>Oooh, so you really like this, don't you?</i>\"");

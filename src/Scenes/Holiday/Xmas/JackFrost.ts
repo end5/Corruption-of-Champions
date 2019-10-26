@@ -189,7 +189,7 @@ export function processJackFrostEvent(): void {
             // [Pen Ass] [Ride Cock] [Spank and Finger Ass]
             menu();
             if (player.cocks.length > 0) addButton(0, "Pen Ass", penetradeCorruptJojoAss);
-            if (player.hasVagina()) addButton(1, "Ride Cock", rideCorruptJojoCock);
+            if (player.vaginas.length > 0) addButton(1, "Ride Cock", rideCorruptJojoCock);
             addButton(2, "Spank n Finger", spankNFingerCorruptJojoAss);
         }
         return;
@@ -239,7 +239,7 @@ export function processJackFrostEvent(): void {
                     outputText("\n\nAmily bows respectfully.  \"<i>Right away, [master].</i>\"");
                     outputText("\n\nShe promptly takes hold of your [cock] with awe-filled respect, her long, dextrous fingers quickly falling into the familiar rhythym of dancing along your cock to fill you with the most wonderous sensations.  Her spaded tail wiggles idly for several moments, then slithers through the air to brush its feather-like tip against the tip and underside of your shaft");
                     if (player.balls > 0) outputText(", even tickling your [balls]");
-                    else if (player.hasVagina()) outputText(", even tickling your [cunt] for added tantalization");
+                    else if (player.vaginas.length > 0) outputText(", even tickling your [cunt] for added tantalization");
                     outputText(".");
 
                     outputText("\n\nFeeling yourself getting close, you pull away from the corrupt mousette and aim yourself at a particularly soft-looking mound of snow.  With a few more pumps you moan and blast your load, soaking the snow in spunk.  You tell Amily there she has it... her cum-cone is ready for the picking.");
@@ -419,8 +419,8 @@ export function processJackFrostEvent(): void {
             outputText(", as evidenced by ");
             if (player.cocks.length > 0) outputText("your erect " + multiCockDescriptLight(player));
             if (player.gender == 3) outputText(" and ");
-            else if (player.hasVagina()) outputText("your ");
-            if (player.hasVagina()) outputText("dripping [vagina]");
+            else if (player.vaginas.length > 0) outputText("your ");
+            if (player.vaginas.length > 0) outputText("dripping [vagina]");
         }
         outputText(".");
 
@@ -437,7 +437,7 @@ export function processJackFrostEvent(): void {
         // (If PC has a cock)
         if (player.cocks.length > 0) outputText("  A torrent of seed splashes against Helia's taut belly, as [eachCock] throbs and spews its seed while sandwiched between the two of you.");
         // (if PC has a pussy)
-        if (player.hasVagina()) outputText("  Your [vagina] quivers and spill your juices with the force of a wave.  Moisture falls on the ground to join in with Helia's own discharge.");
+        if (player.vaginas.length > 0) outputText("  Your [vagina] quivers and spill your juices with the force of a wave.  Moisture falls on the ground to join in with Helia's own discharge.");
 
         outputText("\n\nAs you finally finish cumming, Helia lifts her head and starts to laugh.  \"<i>Oh, man, not how I'd usually do it, but whoo, what a ride, huh?</i>\" she laughs.  You laugh as well.  It certainly felt good, though this is far from what you're used to.  You have to give Helia's wrestling idea some credit.  Rolling around with her, grinding together was pretty hot - in more ways than one.");
 

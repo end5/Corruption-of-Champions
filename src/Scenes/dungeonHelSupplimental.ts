@@ -258,7 +258,7 @@ export function gooArmorBeatsUpPC(): void {
     outputText("\n\nYou collapse, unable to resist the goo-armor's onslaught.  Laughing, she slithers out from underneath her armor, completely encasing you before you can do anything more than scream.  Laughing maniacally, the goo looms over you, hands on her hips.  \"<i>Tsk, tsk, tsk.  Not so eager to steal my armor now, are you?  Well... what am I to do with you, hmm?</i>\"  You struggle, but wrapped snugly in her goo, you can do little more than wiggle your hips and chest, accidentally moving yourself seductively.");
     outputText("\n\nAs you realize your mistake, a little smile spreads on her face.  \"<i>Ah, I know... I haven't had my precious fluids in so very long...</i>\"");
     // (PC has Vagina)
-    if (player.hasVagina()) {
+    if (player.vaginas.length > 0) {
         outputText("\n\nShe begins to use her goo to peel back your [armor], soon revealing your defenseless [vagina], and makes a show of licking her lips as tendrils of goo seep into your cunt, filling you utterly.  You writhe and struggle against your gooey bonds, but your efforts are futile.  The goo-girl inside the armor only shakes her head at you, and withdraws herself from your [vagina].");
         outputText("\n\nYou have only a moment to figure out what's coming before her goo -- now perfectly shaped like the inside of your cunt -- slams back into you like a stiff cock. You can't help yourself as a moan escapes your lips, barely audible through the goop covering your mouth.");
         outputText("\n\n\"<i>Oh, you like that do you?</i>\" the armor-goo asks, smiling evilly.  \"<i>Well, maybe this can be mutually... beneficial.</i>\"  Still grinning, she begins to hammer her cock-like appendage into your pussy, fucking you fast and hard with her goo-dildo.");
@@ -365,8 +365,8 @@ export function takeGooArmorAndWearIt(): void {
     outputText("\n\nWith an ecstatic smile, the goo-armor jumps to her feet and throws her arms around your shoulders.  \"<i>Oh, this is going to be so much fun!  Thank you thank you thank you!  I promise I'll keep you nice and snug and safe, don't you worry.  Oooh, a real adventure again!  WHEEE!</i>\"");
     outputText("\n\nBefore she can get too excited, you remind the goo that she's supposed to be your armor right about now.  Clasping her hands over her mouth in embarrassment, she utters a muted apology and urges you to just \"<i>put me on!</i>\"  Awkwardly, you strip out of your [armor] and open up the platemail armor and clamber in.  It's wet and squishy, making you shudder and squirm as you squash your new friend flat against the metal armor.");
     outputText("\n\nEventually, the two of you get situated. The goo-girl slips around your body inside the heavy armor, maneuvering so that your face is unobstructed and your joints, not protected by the armor, are soundly clad in squishy goo.  She even forms a gooey beaver on your new helm, allowing you to open and close her like a visor in battle.  Eventually, her goo settles around your ");
-    if (player.hasVagina()) outputText("[vagina]");
-    if (player.hasVagina() && player.cocks.length > 0) outputText(" and ");
+    if (player.vaginas.length > 0) outputText("[vagina]");
+    if (player.vaginas.length > 0 && player.cocks.length > 0) outputText(" and ");
     if (player.cocks.length > 0) outputText(multiCockDescriptLight(player));
     if (player.gender == 0) outputText("groin");
     outputText(", encasing your loins in case you need a little mid-battle release, she says.");
@@ -535,7 +535,7 @@ export function kiriSexIntro(): void {
     menu();
     if (player.gender == 0) outputText("Unfortunately, there's not much she can do for you...");
     if (player.cocks.length > 0) addButton(0, "Anal", kiriSexAnal);
-    if (player.hasVagina()) addButton(1, "Get Licked", kiriSexGetLicked);
+    if (player.vaginas.length > 0) addButton(1, "Get Licked", kiriSexGetLicked);
     addButton(4, "Back", playerMenu);
 }
 
@@ -747,7 +747,7 @@ export function checkOutDemBirdBitches(): void {
             else outputText("\n\nYou're too big to fuck one of them properly.");
             wanked = phoenixWanking;
         }
-        if (player.hasVagina()) rideVaginal = phoenixAginal;
+        if (player.vaginas.length > 0) rideVaginal = phoenixAginal;
         // If Female: [Ride Vaginal] [Ride Anal]
         // If Genderless: [Ride Anal]
         rideAnal = gitButtRoadPhoenix;

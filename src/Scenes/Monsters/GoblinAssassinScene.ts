@@ -56,7 +56,7 @@ export class GoblinAssassinScene {
         if (player.lust <= 99) outputText("You collapse, utterly beaten. To make sure you'll be easier to handle, the victorious assassin saunters up, a pair of fluid filled needles in her hands. She jams them into your [player.legs], emptying the contents into you before you can so much as stammer a protest. Burning lust pours through your veins unbidden, and you moan out loud as the chemicals have their way with you as easily as the goblin soon will.\n\n");
         // i. *Lust Loss – Male/Herm (Fits)(FENCRAFTED)
         // 50% odds for herms
-        if (player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0 && player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
+        if (player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0 && player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
             x = player.cocks.cockThatFits(monster.vaginalCapacity());
             if (x < 0) x = player.cocks.smallestCockIndex();
             outputText("You tear through your " + player.armorName + " in a rush, anything to release [eachCock] from its hellish confinement.  You’re so aroused, so horny.  Any passing thoughts of modesty are immediately discarded and forgotten, washed away under the wave of your all-consuming lust as your fingers slide home around [oneCock] and begin to play with the turgid tool.  You immediately buck from the sensation of incredible, pent-up need, nearly cumming on the spot.  Looking up, you meet the emerald-skinned woman’s eyes pleadingly.");
@@ -68,7 +68,7 @@ export class GoblinAssassinScene {
             outputText(mf(player, "strapping young man", "sexy breeder") + " will have enough jizz to pay for " + mf(player, "his", "her") + " trespass?</i>\"");
             outputText("  Those delightful, dancing fingers pirouette down to your ");
             if (player.balls > 0) outputText("[sack], giving it a gentle caress before vanishing.");
-            else if (player.hasVagina()) outputText(vaginaDescript(player) + ", the tips giving your soaked mound only the barest ghost of a touch.");
+            else if (player.vaginas.length > 0) outputText(vaginaDescript(player) + ", the tips giving your soaked mound only the barest ghost of a touch.");
             else outputText("taint, the tips giving your sensitive skin only the barest ghost of a touch.");
 
             outputText("\n\nShe explains, \"<i>I won’t help with that until you give me an answer.  Be honest with yourself - you don’t care about other girls at all.  You just came up here to fuck a goblin assassin.  Am I right?</i>\"");
@@ -104,7 +104,7 @@ export class GoblinAssassinScene {
             outputText("\n\nStanding up with your white goo dripping from her nethers, the goblin gives you a wink and disappears around a corner, leaving you alone to slumber.");
         }
         // ii. Lust Loss - Male - No Fit
-        else if (player.cocks.biggestCockArea() > monster.vaginalCapacity() && player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
+        else if (player.cocks.biggestCockArea() > monster.vaginalCapacity() && player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
             x = player.cocks.biggestCockIndex();
             outputText("You tear through your [armor] in a rush, anything to release [eachCock] from its hellish confinement.  You’re so aroused, so horny.  Any passing thoughts of modesty are immediately discarded and forgotten, washed away under the wave of your all-consuming lust as your fingers slide home around [oneCock] and begin to play with the turgid tool.  You immediately buck from the sensation of incredible, pent-up need, nearly cumming on the spot.  Looking up, you meet the emerald-skinned woman’s eyes pleadingly.");
             outputText("\n\nThe assassin sighs and grumbles, \"<i>Another one with a fucking tree-trunk for a cock.</i>\"  She begrudgingly slips out of her straps, perky, dark-green nipples popping free from their confinement to jut proudly from her chest.  “The downside of being a goblin,” explains the athletic green-skinned beauty, \'<i>is that around a dick like that... a heaving, pulsating tower of cock-flesh like that... I’ve just gotta TRY it.</i>\"  Now nude, your captor saunters up, wide hips shaking from side to side with every step.  \"<i>Being a size-queen is suffering,</i>\" she finishes with a wry smile.");
@@ -194,7 +194,7 @@ export class GoblinAssassinScene {
             eggs = laySomeDriderEggsInGobboTwat;
         }
         // cunt stuff
-        if (player.hasVagina()) cuntFuck = gobboGetsRapedFem;
+        if (player.vaginas.length > 0) cuntFuck = gobboGetsRapedFem;
         // Dick stuff:
         if (player.cocks.length > 0) {
             // Corrupt too big scene
@@ -428,7 +428,7 @@ export class GoblinAssassinScene {
         if (player.breasts.biggestLactation() >= 1) outputText(" milk and", false);
         outputText(" the sweat of the both of you, and the only sound she makes is an occasional gurgle of ecstasy every few orgasms.\n\n", false);
         outputText("\"<i>Alright, whore. You wanted my babies? Here. They. CUM!</i>\" you yell. However, ", false);
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("while your " + vaginaDescript(player, 0) + " ", false);
             if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_SLICK) outputText("juices ", false);
             else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_DROOLING) outputText("floods ", false);
@@ -650,7 +650,7 @@ export class GoblinAssassinScene {
         // Play standard goblin victory text
         outputText("The pitiful struggling of the little green-skinned creature as she tries to scramble away from you gives you a rather generous view of her drooling box.  While you feel yourself ");
         if (player.cocks.length > 0) outputText("harden");
-        else if (player.hasVagina()) outputText("moisten");
+        else if (player.vaginas.length > 0) outputText("moisten");
         else outputText("twitch");
         outputText(" slightly,  you can't help but register the growing weight of your spider half.  Looking down at the goblin again, you decide that maybe you can both get something... <i>similar</i> to what you want.");
 
@@ -675,10 +675,10 @@ export class GoblinAssassinScene {
         outputText("\n\nYou feel its slow path up into the goblin, your egg-tube flaring out around it, until it stops just short of her womb's entrance.  She looks up from her stomach, her wide-eyed stare meeting yours for only a second before a powerful spasm forces the egg past her clenched cervix.  The miniature whore convulses, her eyes rolling back, tongue lolling as she cums hard, a torrent of girlcum spraying across your chitin.");
         if (player.cocks.length > 0) {
             outputText("  Your own orgasm is just as strong, [eachCock] spraying powerfully across your torso");
-            if (player.hasVagina()) outputText("and y");
+            if (player.vaginas.length > 0) outputText("and y");
         }
-        else if (player.hasVagina()) outputText("  Y");
-        if (player.hasVagina()) outputText("our [vagina] clenching in time with hers as your copious fluids drench your spider half.");
+        else if (player.vaginas.length > 0) outputText("  Y");
+        if (player.vaginas.length > 0) outputText("our [vagina] clenching in time with hers as your copious fluids drench your spider half.");
 
         outputText("\n\nThen the next egg rolls forward, and the next, and the next...");
 

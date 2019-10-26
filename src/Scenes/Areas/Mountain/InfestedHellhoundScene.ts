@@ -98,7 +98,7 @@ export class InfestedHellhoundScene {
             cleanupAfterCombat();
         }
         // [HAS PUSSY AND NO DICK BIG ENOUGH TO BE INFECTED]
-        else if (player.hasVagina() && player.cocks.biggestCockArea() < 40 && player.lowerBody != LOWER_BODY_TYPE_NAGA) {
+        else if (player.vaginas.length > 0 && player.cocks.biggestCockArea() < 40 && player.lowerBody != LOWER_BODY_TYPE_NAGA) {
             // (LUST)
             if (player.lust > 99) {
                 outputText("No amount of shame from the act of submitting to such a beast can overpower the furnace of lust raging in your loins.  ", false);

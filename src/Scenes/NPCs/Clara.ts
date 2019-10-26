@@ -61,9 +61,9 @@ export class Clara extends Monster {
     }
     public claraGropesBlindPCs(): void {
         // Clara gropes the PC while they're blinded.  Damage is based on corruption + sensitivity.
-        if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) outputText("Suddenly Clara wraps an arm around you, and sticks a hand into your " + player.armorName + "!  She is able to give your " + multiCockDescriptLight + " a good fondle before you can push her away.  \"<i>Admit it - I make you soo hard, don't I?</i>\" she taunts you behind your dazzled vision.");
+        if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) outputText("Suddenly Clara wraps an arm around you, and sticks a hand into your " + player.armorName + "!  She is able to give your " + multiCockDescriptLight + " a good fondle before you can push her away.  \"<i>Admit it - I make you soo hard, don't I?</i>\" she taunts you behind your dazzled vision.");
         // Vagina:
-        else if (player.hasVagina()) outputText("A sudden rush of Clara's hoofs clopping is the only warning you get before her attack comes, and you try to bring up your guard, only for her to deftly move past your defense and stick a hand into your " + player.armorName + "!  She manages to worm her way to your [vagina] and pinches your [clit] before you can push her back out!  \"<i>Hmm, yeah, you're soo wet for me.</i>\" she taunts you behind your dazzled vision.");
+        else if (player.vaginas.length > 0) outputText("A sudden rush of Clara's hoofs clopping is the only warning you get before her attack comes, and you try to bring up your guard, only for her to deftly move past your defense and stick a hand into your " + player.armorName + "!  She manages to worm her way to your [vagina] and pinches your [clit] before you can push her back out!  \"<i>Hmm, yeah, you're soo wet for me.</i>\" she taunts you behind your dazzled vision.");
         // Bum:
         else outputText("Thanks to Clara robbing you of your sight, you lose track of her.  She takes advantage of this, and grabs you from behind, and rubs her considerable curvy cans against your undefended back!  You manage to get her off you after a moment, but not before she gives your [ass] a smack.  \"<i>Everyone will be soo much happier when yoou finally stop fighting me!</i>\" she taunts you behind your dazzled vision.");
         dynStats("lus", 7 + player.lib / 15);
@@ -121,7 +121,7 @@ export class Clara extends Monster {
         this.imageName = "marble";
         this.long = "You are fighting Marble’s little sister Clara!  The cow-girl looks spitting mad, determined to steal you from her sister and make you into her milk slave, with her breasts hanging out for all to see.  Fortunately, she doesn’t look as big or strong as her sister, and you don’t think she’s been trained to fight like Marble has either.  Still, there is no telling what tricks she has up her sleeves, and she is holding a very angry looking heavy mace.";
         // this.plural = false;
-        this.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
         this.breasts.createBreastRow(Appearance.breastCupInverse("F"));
         this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
         this.ass.analWetness = ANAL_WETNESS_DRY;

@@ -1159,7 +1159,7 @@ export class Scylla extends TelAdreAbstractContent {
             let submit: () => void = null;
             let rapeWorld: () => void = null;
             if (flags[kFLAGS.KATHERINE_UNLOCKED] < 1) {
-                if (player.hasVagina()) submit = Scylla6NoMilkSubmit;
+                if (player.vaginas.length > 0) submit = Scylla6NoMilkSubmit;
                 rapeWorld = Scylla6NoMilkRAPETHEWORLD;
             }
             // [Get Help] [Submit (VAGINA+DICk ONLY)] [Rape]

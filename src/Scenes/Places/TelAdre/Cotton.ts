@@ -268,7 +268,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             // (If PC is male:
             else if (player.cocks.length > 0) outputText("  She cradles your " + cockDescript(game.player, 0) + " and smiles at you, \"<i>Well, we might find a use for that later.</i>\"", false);
             // (If PC is female:
-            else if (player.hasVagina()) outputText("  She pats your groin and says, \"<i>Y'know, I know some good exercises that really work the vaginal muscles... perhaps we'll talk about that later.</i>\"", false);
+            else if (player.vaginas.length > 0) outputText("  She pats your groin and says, \"<i>Y'know, I know some good exercises that really work the vaginal muscles... perhaps we'll talk about that later.</i>\"", false);
             outputText("\n\n", false);
 
             outputText("She then helps you into an outfit identical to her own and you both return to the gym proper.\n\n", false);
@@ -583,7 +583,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
                 else if (player.cocks.length > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath your large body, while you watch Cotton's do the same. Her cock rubs against your stomach while your group of cocks strains for attention.", false);
             }
             // (If PC has a pussy, add the following)
-            if (player.hasVagina()) outputText("  Meanwhile, your " + vaginaDescript(player, 0) + " behind you moistens both from the steam and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
+            if (player.vaginas.length > 0) outputText("  Meanwhile, your " + vaginaDescript(player, 0) + " behind you moistens both from the steam and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
             outputText("\n\n", false);
 
             // (If PC has breasts)
@@ -627,7 +627,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Finally you just can't take any more. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
             // (If PC has a pussy)
-            if (player.hasVagina()) outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
+            if (player.vaginas.length > 0) outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
             // (else)
             else outputText("   Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt which clenches you tightly.", false);
             // (regardless or above, add)
@@ -660,7 +660,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
                 else if (player.cocks.length > 1) outputText("You feel your " + multiCockDescriptLight(game.player) + " stirring beneath you, slowly coming to attention alongside Cotton's equine member. The group of cocks rubs together as you make out, sending ripples of pleasure up your spine.", false);
             }
             // (If PC has a pussy, add the following)
-            if (player.hasVagina()) outputText("Your " + vaginaDescript(player, 0) + " meanwhile moistens both from the water and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
+            if (player.vaginas.length > 0) outputText("Your " + vaginaDescript(player, 0) + " meanwhile moistens both from the water and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
             outputText("\n\n", false);
 
             // (If PC has breasts)
@@ -704,7 +704,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Finally you just can't take anymore. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
             // (If PC has a pussy)
-            if (player.hasVagina()) outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt, which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
+            if (player.vaginas.length > 0) outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt, which clenches you tightly, while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
             // (else)
             else outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt, which clenches you tightly.", false);
             // (regardless or above, add)
@@ -739,7 +739,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
                 // (If PC has a pussy, add the following)
             }
 
-            if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " moistens both from the water and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
+            if (player.vaginas.length > 0) outputText("  Your " + vaginaDescript(player, 0) + " moistens both from the water and from arousal, and your " + clitDescription(player) + " aches, craving attention.", false);
             outputText("\n\n", false);
 
             // (If PC has breasts)
@@ -783,7 +783,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Finally you just can't take any more. You give one last thrust into your partner and audibly gasp in relief as an orgasm rolls across your body, hitting your nerves with bolts of ecstatic lightning.", false);
             // (If PC has a pussy)
-            if (player.hasVagina()) outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt, which clenches you tightly while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
+            if (player.vaginas.length > 0) outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt, which clenches you tightly while your own femme sex twinges and clenches on air, drooling juices down your legs.", false);
             // (else)
             else outputText("  Your " + cockDescript(game.player, x) + " erupts inside Cotton's warm cunt, which clenches you tightly.", false);
             // (regardless or above, add)
@@ -874,7 +874,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
                 else outputText("Cotton puts a hand under your embarrassingly limp cock and smiles, \"<i>You know how to show a girl you like her... There's only room for one cock right now.</i>\"", false);
             }
             // (If PC has a vagina)
-            if (player.hasVagina()) outputText("  Spying your " + vaginaDescript(player, 0) + ", Cotton smiles and flicks your " + clitDescription(player) + " teasingly before slipping two fingers inside your folds and bringing them to her mouth, licking them clean. \"<i>Mmm... I love the taste of your juices, pet...</i>\"", false);
+            if (player.vaginas.length > 0) outputText("  Spying your " + vaginaDescript(player, 0) + ", Cotton smiles and flicks your " + clitDescription(player) + " teasingly before slipping two fingers inside your folds and bringing them to her mouth, licking them clean. \"<i>Mmm... I love the taste of your juices, pet...</i>\"", false);
             // (if PC is genderless)
             if (player.gender == 0) outputText("  She places a hand on your bare crotch and quirks an eyebrow. \"<i>Well this is new... Certainly not bad though.</i>\" She runs a hand along your bare mound, which somehow manages to send ripples of pleasure up your spine.", false);
             outputText("\n\n", false);
@@ -882,7 +882,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             outputText("Cotton continues the kisses down to your " + legs(player) + " and stands, dragging over a bench from the locker room before standing on it and giving your " + buttDescription(player) + " a good smack. You turn back and give her a coy look, which she returns and gives your flank another smack.", false);
             outputText("  She takes a moment to get some water from the shower over your rear end before pressing her cock against your " + assholeOrPussy(player) + ", slipping it in gently, careful not to go too quick. You moan slightly and blush, whispering back at her, urging her to continue.", false);
             // (Stretch and appropriate virginity check)
-            if (player.hasVagina()) player.cuntChange(72, true, true, false);
+            if (player.vaginas.length > 0) player.cuntChange(72, true, true, false);
             else player.buttChange(72, true, true, false);
             outputText("\n\n", false);
 
@@ -933,7 +933,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
                 else outputText("  Cotton puts a hand under your embarrassingly limp cock and smiles, \"<i>You know how to show a girl you like her... There's only room for one cock right now.</i>\"", false);
             }
             // (If PC has a vagina)
-            if (player.hasVagina()) outputText("  Spying your " + vaginaDescript(player, 0) + ", Cotton smiles and flicks your " + clitDescription(player) + " teasingly before slipping two fingers inside your folds and bringing them to her mouth, licking them clean. \"<i>Mmm... I love the taste of your juices, pet...</i>\"", false);
+            if (player.vaginas.length > 0) outputText("  Spying your " + vaginaDescript(player, 0) + ", Cotton smiles and flicks your " + clitDescription(player) + " teasingly before slipping two fingers inside your folds and bringing them to her mouth, licking them clean. \"<i>Mmm... I love the taste of your juices, pet...</i>\"", false);
             // (if PC is genderless)
             if (player.gender == 0) outputText("  She places a hand on your bare crotch and quirks an eyebrow. \"<i>Well this is new... Certainly not bad though.</i>\" She runs a hand along your bare mound, which somehow manages to send ripples of pleasure up your spine.", false);
             outputText("\n\n", false);
@@ -952,7 +952,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
             }
             outputText("  She gives you a quick kiss and moves her cock to your " + assholeOrPussy(player) + ", slipping it in gently, careful not to go too quick. You give her a submissive, but encouraging kiss, and whisper in her ear, urging her to continue.", false);
             // (Stretch and appropriate virginity check)
-            if (player.hasVagina()) player.cuntChange(72, true, true, false);
+            if (player.vaginas.length > 0) player.cuntChange(72, true, true, false);
             else player.buttChange(72, true, true, false);
             outputText("\n\n", false);
 
@@ -967,7 +967,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
 
             outputText("Exhausted, Cotton sets you down on the shower floor under the spray of water, though cum leaks from your abused hole and your " + legs(player) + " quivering so much you nearly collapse. Your partner steadies you, however, and you regain your footing quickly. You return to the task of cleaning yourselves, sensually washing each other's most intimate areas. Yoga, sex and cleanup done, you get dressed and leave the gym, giving Cotton's hand a final squeeze before departing.", false);
         }
-        if (player.hasVagina()) cottonPregPCChance();
+        if (player.vaginas.length > 0) cottonPregPCChance();
         player.orgasm();
         dynStats("sen", -1);
         doNext(camp.returnToCampUseOneHour);
@@ -1017,7 +1017,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("\n\n", false);
 
         outputText("Though there's no real thrusting or vulgar movements of any kind, the feelings are intense, likely heightened by your tantric link. You can simultaneously feel Cotton's long equine cock pulse within you, as well as feel your own " + assholeOrPussy(player) + " clamping down on a cock that is not your own.", false);
-        if (player.hasVagina()) player.cuntChange(72, true, true, false);
+        if (player.vaginas.length > 0) player.cuntChange(72, true, true, false);
         else player.buttChange(72, true, true, false);
         // (If PC has a penis, add)
         if (player.cocks.length > 0) outputText("  Meanwhile, your own " + cockDescript(game.player, 0) + " hangs limply in front of you, tingling with arousal, but unable to harden. Cotton gives it a pat and says, \"<i>Worry not, pet, there's only room for one cock right now, but I'll want it some other time.</i>\"", false);
@@ -1057,7 +1057,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         // (If PC has a penis)
         if (player.cocks.length > 0) outputText("  Your " + cockDescript(game.player, 0) + " twitches and tingles, releasing its pent up seed in a dribbling torrent down your belly and chest, right into your face and pooling around your head.", false);
         // (If PC has a vagina)
-        if (player.hasVagina()) outputText("  Your " + vaginaDescript(player, 0) + " shivers and clamps down hard on the invading cock, pulsing and milking it as it unloads directly into your womb.", false);
+        if (player.vaginas.length > 0) outputText("  Your " + vaginaDescript(player, 0) + " shivers and clamps down hard on the invading cock, pulsing and milking it as it unloads directly into your womb.", false);
         // (If PC doesn't have a vagina)
         else outputText("  Your " + assholeDescript(player) + " shivers and clamps down hard on the invading cock, pulsing and milking it as it unloads directly into your intestines.", false);
         // (regardless of above, add)
@@ -1069,7 +1069,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("After a few minutes, you feel your strength ebbing back into you and you get up. Cotton does the same, and you both spend the time to clean the mat of the results of your escapades, before retreating to the showers to clean each other up. Once that's over, you both leave the gym hand-in-hand, with Cotton giving your hand a final squeeze before you depart to your camp.", false);
         player.orgasm();
         dynStats("tou", .25, "spe", .25, "lib", -.25, "sen", -.25);
-        if (player.hasVagina()) cottonPregPCChance();
+        if (player.vaginas.length > 0) cottonPregPCChance();
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -1445,7 +1445,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("\nYou wake up suddenly to strong pains and pressures in your gut.  As your eyes shoot wide open, you look down to see your belly absurdly full and distended.  ");
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.genderCheck();
         }
         outputText("You can feel movement underneath the skin, and watch as it bulges and shifts as another living being moves independently inside you.");

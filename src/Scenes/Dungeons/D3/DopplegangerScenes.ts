@@ -36,7 +36,7 @@ export class DopplegangerScenes {
         outputText("\n\n“<i>No...</i>” your mirror image snivels in front of you. “<i>Ten years, ten years I waited for this. You can’t put me back in there, you can’t!</i>” You gaze down at what you look like when you are defeated: mouth open, eyes glazed, " + player.hairDescription(player) + " muddled, your flesh trembling and clenching, the very picture of a bitch awaiting further subjugation. No wonder 90% of Mareth is so keen on wanting to make this sight happen. The doppelganger chances a look up, catches your expression, and freezes. “<i>You... you wouldn’t.</i>”");
 
         menu();
-        if (!player.isTaur() && (player.cocks.length > 0 || player.hasVagina())) addButton(0, "Oh Really?", fuckYourself);
+        if (!player.isTaur() && (player.cocks.length > 0 || player.vaginas.length > 0)) addButton(0, "Oh Really?", fuckYourself);
         addButton(1, "End It", killYourself);
     }
 
@@ -44,15 +44,15 @@ export class DopplegangerScenes {
         clearOutput();
         outputText("This, you feel, is an opportunity which is not likely to arise again.");
 
-        if (player.hasVirginVagina()) outputText("  You smile widely at your clone as you undress. Now neither of you will be virgins.");
+        if (player.vaginas.hasVirginVagina()) outputText("  You smile widely at your clone as you undress. Now neither of you will be virgins.");
         else outputText("  You smile widely at your clone as you begin to shake off your [armor].");
         outputText("  [He] moans lowly in miserable disbelief, but [he]’s not capable of resisting you as, butt naked, you sit yourself down and methodically repeat the action, sliding your hands over and into [his] replicated clothing, finding [his] warm flesh, clutching and testing it curiously. Obviously you’ve laid your fingers upon this many times before, but touching it now second hand causes an emotion you cannot name to rise in your breast. Is this getting you hot? Yes. In the strangest, most perverse way imaginable, it is.");
 
         if (player.vaginas.length == 0 && player.cocks.length == 0) {
             outputText("\n\nStrangely, the more you think about fucking this strange creature, the hotter your groin becomes. In moments, you find your fingers pushing against a dampening slit with feather-light caresses. <b>Somehow this place's magic has given you a vagina to match your duplicate!</b> You pull away with a shuddering breath and marvel at the glittering wetness oozing down your fingertips. This is going to be fun.");
-            player.createVagina();
+            player.vaginas.createVagina();
         }
-        if (player.cocks.length >= 1 && !player.hasVagina()) {
+        if (player.cocks.length >= 1 && !player.vaginas.length > 0) {
             outputText("\n\nYou turn the mirror demon’s wild stare and ragged breath away from you, laying a comforting but firm hand upon his shoulder as, grinning, you lower your eyes to his [butt]. Nice.");
             if (player.isNaga()) outputText("  You sigh at the smooth, pleasurable feeling of your scales rubbing over each other as you sensuously wind yourself around his tail until you are tightly bound together. Twin lithe snake boys wound around each other- all you really need is a paying audience. Or a stick and a hospital. You laugh with a similar tinge of madness that your partner did a short while ago and he groans raggedly in response.");
             else if (player.isDrider()) outputText("  The tangle of spindly legs in front of you initially puts you off, but then your arachnid instincts take over and you find yourself eagerly clambering onto his bulging back before you know it, your hardening dick pressing against the human softness which rises above the gleaming chitin as your monstrous body presses heavily down onto its mirror counterpart, making him groan raggedly.");
@@ -89,7 +89,7 @@ export class DopplegangerScenes {
 
             outputText("\n\nThere is an emphatic shattering sound behind you, the high noise mingling with the demon’s defeated wail, climbing together to an unbearable pitch. You squeeze your eyes shut as you bury yourself one last time into your defeated buttslut- and then stagger forward, the flesh you’re clenched into parting like smoke, almost falling straight into the mess you forced him to create. Except that’s not there anymore, either. All that you are suddenly left with is you, your oozing, gently aching [cock], and a great deal of broken glass lying in front of you. You slowly get to your feet and gaze at the shattered mirror. It’s difficult to believe looking at it now that it could be in any way an object of dread- indeed, standing here naked in this shabby storage room, you feel more than a little ridiculous. Was this all just a really weird fugue? Well, whatever just happened, there’s no mistaking the warm fuzz of deepest sexual satisfaction. Shaking your head you redress, make sure the protective glasses you came in here for are still in your pocket before heading to the door and leaving.");
         }
-        else if (player.cocks.length > 0 && player.hasVagina()) {
+        else if (player.cocks.length > 0 && player.vaginas.length > 0) {
             outputText("\n\nYour gaze drops from the mirror demon’s wild stare, down to her [chest]. Nice. You lay a comforting but firm hand upon her shoulder as you sink down on top of your clone, your own [chest] pushing into hers, your hardening [cock] pressing and rubbing impatiently against its supple, turgid clone. You find yourself intensely aware of every sensation- exactly how your perverse, hermaphroditic body feels to your own touch.");
             if (player.isNaga()) outputText("  You sigh at the smooth, pleasurable feeling of your scales rubbing over each other as you sensuously wind yourself around her tail until you are tightly bound together. Twin lithe snake futa wound around each other- all you really need is a paying audience. Or a stick and a hospital. You laugh with a similar tinge of madness that your partner did a short while ago and she groans raggedly in response.");
             if (player.isDrider()) outputText("  For a moment you consider mounting her from behind, allowing your monstrous instincts to take over and fuck her ovipositor in a deathly arachnid craze, but the tangle of spindly legs in front of you puts you off. Better to do it face-to-face. You want to drink in your mirror image’s every reaction. Your prick pressing against the human softness which rises above her gleaming chitin as your body presses heavily down onto its mirror counterpart, making her groan raggedly.");
@@ -101,12 +101,12 @@ export class DopplegangerScenes {
             outputText("\n\n“<i>Oh, shut up,</i>” you reply breezily. “<i>You’re the one who wouldn’t shut up about how much you wanted this body. I’m giving you exactly what you wished for.</i>” You roll her [hips], her cock");
             if (player.cocks.length > 1) outputText("s");
             outputText(" batting back into her stomach as you expose her [vagina], ");
-            if (player.averageVaginalWetness() < 3) outputText(" gleaming invitingly");
+            if (player.vaginas.averageVaginalWetness() < 3) outputText(" gleaming invitingly");
             else outputText(" drooling lubricant eagerly");
             outputText("- as you knew it would be. You glory in your decision to transform yourself so that you could enjoy the best of both genders. If this isn’t clear vindication of being a hermaphrodite, what is? Your doppelganger wriggles and whines but can’t resist as you push your bulging head against her pussy, slowly pushing her oily lips wide and into her warm, tight depths.");
 
             outputText("\n\nYou go slowly, enjoying the warmth and syncopated clenching of the mirror demon’s juicy cunt at leisure.");
-            if (player.hasVirginVagina()) outputText("  You grunt as something gives in front of your cock and the doppelganger gasps and tightens up in momentary pain. Looking down at your withdrawing cock, you see spots of blood mingling with the demon’s wet. Dreamily you consider that, having somehow managed to experience taking your own virginity, whether there’s anyone else in the world it’s worth gifting that sensation to.");
+            if (player.vaginas.hasVirginVagina()) outputText("  You grunt as something gives in front of your cock and the doppelganger gasps and tightens up in momentary pain. Looking down at your withdrawing cock, you see spots of blood mingling with the demon’s wet. Dreamily you consider that, having somehow managed to experience taking your own virginity, whether there’s anyone else in the world it’s worth gifting that sensation to.");
             outputText("  Although she is initially frozen with sheer disbelief the need to relax in order to take your insistent [cock] softens the doppelganger up, moving her in time with your thrusting. She moans in a combination of defeated misery and from the intensity of the sensation you’re pushing upon her, your dick smoothing against her [clit] as you extend and recede. Now you’re locked into your defeated clone you feel no real wish to cause her pain; indeed, as you lose yourself to the rhythm of the slow, sensual missionary a desire to force her to feel pleasure grows. Where is the fun in seeing your mirror image suffer, after all?");
 
             outputText("\n\nYou place your palm upon her ribs, sliding slowly upwards, enjoying the give and take of her heaving flesh before letting your fingers graze across one of her nipples teasingly. She gasps, her pussy tightening up around your [cock] delightfully.");
@@ -127,7 +127,7 @@ export class DopplegangerScenes {
 
             outputText("\n\nThere is an emphatic shattering sound behind you, the high noise mingling with the demon’s defeated wail, climbing together to an unbearable pitch. You squeeze your eyes shut as you thrust one last time into your defeated clone- and then stagger forward, the flesh you’re clenched into parting like smoke, almost falling straight into the mess you forced the doppelganger to create. Except that’s not there anymore, either- all that you are suddenly left with is you, your oozing, gently aching [cock], and a great deal of broken glass. You slowly get to your feet and gaze at the shattered mirror. It’s difficult to believe looking at it now that it could in any way be an object of dread- indeed, standing here naked in this shabby storage room, you feel faintly ridiculous. Was this all just a really weird fugue? There’s no mistaking the warm fuzz of deep sexual satisfaction at least. Shaking your head, you redress, make sure the protective glasses you came in here for are still in your pocket before heading to the door and leaving.");
         }
-        else if (player.hasVagina() && !player.cocks.length > 0) {
+        else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
             outputText("\n\nYour gaze drops from the mirror demon’s wild stare, down to her [chest]. Nice. You lay a comforting but firm hand upon her shoulder as you sit yourself down in front of your clone, your own [chest] pushing into hers as, almost mockingly, you cuddle her.");
             if (player.isNaga()) outputText("  You sigh at the smooth, pleasurable feeling of scales rubbing over each other as you sensuously wind yourself around her tail until you are tightly bound together. Twin lithe snake girls wound around each other- all you really need is a paying audience. Or a stick and a hospital. You laugh with a similar tinge of madness that your partner did a short while ago and she groans raggedly in response.");
             else if (player.isDrider()) outputText("  You are momentarily thrown by your sixteen spindly legs tangling together, a creepy twitching maze devolving across the floor- but this is definitely the way to do it. Face-to-face. You want to drink in your mirror image’s every reaction. Your [vagina] presses against the human softness which rises above her gleaming chitin as your body presses heavily into its mirror counterpart, eliciting a ragged groan.");
@@ -137,7 +137,7 @@ export class DopplegangerScenes {
             outputText("\n\n“<i>I cannot believe you are doing this. There- there are demons who wouldn’t do this. What kind of sick bitch are you?</i>”");
 
             outputText("\n\n“<i>Oh, shut up,</i>” you reply breezily. “<i>You’re the one who wouldn’t shut up about how much you wanted this body. I’m giving you exactly what you wished for.</i>” With your [hips] wrapped around hers she cannot stop you bending her open, exposing the mirror image of your [vagina],");
-            if (player.averageVaginalWetness() < 3) outputText(" gleaming invitingly");
+            if (player.vaginas.averageVaginalWetness() < 3) outputText(" gleaming invitingly");
             else outputText(" drooling lubricant eagerly");
             outputText(" - as you knew it would be. Your doppelganger wriggles and whines but can’t resist as you push your pussy into hers, the mirrored sex meeting with a pleasingly wet sound.");
 
@@ -187,17 +187,17 @@ export class DopplegangerScenes {
 
         outputText("\n\n“<i>Beautiful,</i>” you and [he] breathe. “<i>I will do great things with this body, [name], things you couldn’t have imagined, poor soulful innocent that you were. I will take my revenge with it, but first...</i>” [He] stares at [his] reflection smoulderingly as [he] raises [his] hands to [his] armor. [He] forces you to take off your clothes with [him], and you feel it just as clearly as if you were controlling the actions; the way your underclothes whisper off you, the way your naked flesh goose bumps in the coolness of the room");
         if (player.cocks.length > 0) outputText(", the way your turgid [cock] feels when you grasp it at the base.");
-        else if (player.hasVagina()) outputText(", the way your [vagina] feels when you slide your fingers along its lips.");
+        else if (player.vaginas.length > 0) outputText(", the way your [vagina] feels when you slide your fingers along its lips.");
         else {
             outputText(", the way your");
-            player.createVagina();
+            player.vaginas.createVagina();
             outputText(" [vagina] feels when you slide your fingers against your... Wait, where did that come from? You push your fingers in more forcefully, determined to see through this illusion, but all you manage to do is arouse yourself beyond all reasonable measure. Somehow, <b>you've grown a tight, wet pussy to match your duplicate's!</b>");
         }
-        if (player.cocks.length > 0 && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             outputText("\n\nYou masturbate with him, forced to stand there and repeat his every pleasurable stroke, growing less gloating and more urgent with each jerk of the wrist as ten years of chastity step into the room and set their weight upon his groin. You feel that weight, terrible for an incubus to endure, and you cannot possibly last long against it. Your face contorts into one of unspeakable joy and release as you tap that urge, your cock contracting and then unleashing a font of cum, your body caught in orgasm for what seems like an eternity.");
             if (player.cocks.length > 1) outputText("  Your other cocks deliriously tighten and spurt their own loads at the same time, an uncontrollable storm of a high.");
         }
-        else if (player.cocks.length > 0 && player.hasVagina()) {
+        else if (player.cocks.length > 0 && player.vaginas.length > 0) {
             outputText("\n\nYou masturbate with her, forced to stand there and repeat her every pleasurable stroke, growing less gloating and more urgent with each jerk of the wrist as ten years of chastity step into the room and set their weight upon her groin. You feel that weight, terrible for an omnibus to endure, and you cannot possibly last long against it- your female sex, caught in the impetus, softens and drips to the movement of your hand. Your face contorts into one of unspeakable joy and release as you tap the urge, your cock contracting and then unleashing a font of cum. Your [vagina] quivers, tightens and wets itself at the same time, your whole body caught in orgasm for what seems like an eternity.");
             if (player.cocks.length > 1) outputText("  Your other cocks deliriously tighten and spurt their own loads at the same time, an uncontrollable storm of a high.");
         }

@@ -36,7 +36,7 @@ export class MinotaurScene {
         }
         if (player.cocks.length > 0 && x >= 0) dickRape = bumRapeaMinotaur;
         if (x >= 0 && player.cocks.length > 1 && player.cocks.tentacleCocks() > 0) tentaRape = rapeMinotaurTentacles;
-        if (player.hasVagina()) cuntRape = girlRapeAMinotaur;
+        if (player.vaginas.length > 0) cuntRape = girlRapeAMinotaur;
         // Centaurs can't do the herm scene
         if (player.gender == 3 && x >= 0 && !player.isTaur()) hermRape = minotaurGetsRapedByHerms;
         // Enable feeder scene if appropriate
@@ -47,7 +47,7 @@ export class MinotaurScene {
             feedposit = "Lay Eggs";
             temp2 = layEggsInAMinotaurSpiderLike;
         }
-        if ((temp2 == null || rand(2) == 0) && player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor) {
+        if ((temp2 == null || rand(2) == 0) && player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor) {
             feedposit = "B.Titfuck";
             temp2 = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
         }
@@ -541,7 +541,7 @@ export class MinotaurScene {
         // Normal RAEP
         if (player.vaginas.length > 0) {
             outputText("The bull-man roughly grabs your hair and begins rubbing the flared head of his penis along your " + vaginaDescript(player, 0) + ".  ", false);
-            if (player.averageVaginalWetness() < 2) outputText("You aren't very wet, and fear the damage this beast will inflict on your " + vaginaDescript(player, 0) + ".  ", false);
+            if (player.vaginas.averageVaginalWetness() < 2) outputText("You aren't very wet, and fear the damage this beast will inflict on your " + vaginaDescript(player, 0) + ".  ", false);
             else outputText("You're shamefully wet by this point, and your knees are ready to buckle.  ", false);
             minoCumAddiction(5);
         }
@@ -555,7 +555,7 @@ export class MinotaurScene {
         else outputText("\n\nHe lifts you into the air, hefting your insignificant weight with little effort, and roughly impales you onto his shaft, forcing himself as far into you as he can manage. You cry out, and looking down you can see your stomach distending to accommodate his incredible size. Using you like a human cock-sleeve, he simply holds you by the torso and begins lifting you up and down.  ", false);
 
         // Vag stretch texts
-        if (player.hasVagina()) player.cuntChange((24 * 3), true, false, true);
+        if (player.vaginas.length > 0) player.cuntChange((24 * 3), true, false, true);
 
         // Continue
         if (player.breasts.biggestTitSize() > 0 && player.breasts.mostBreastsPerRow() > 1 && player.breastRows.length > 0) {
@@ -572,14 +572,14 @@ export class MinotaurScene {
         outputText("\n\nFinally, you can feel he's ready to cum. His thrusts become shorter and faster, and just when you think you can't stand it anymore he starts shooting his sperm into you. Your stomach begins to round out from the sheer amount of bull seed being pumped into your belly.  ", false);
         dynStats("lib", 1, "sen", -.5, "cor", 1);
         if (player.vaginas.length > 0) {
-            if (player.averageVaginalWetness() >= 2) {
-                if (player.averageVaginalWetness() < 4) outputText("You squirm and quiver, orgasming from the beast's rough usage.  ", false);
-                if (player.averageVaginalWetness() == 4) outputText("You squirm and quiver, orgasming from the beast's rough usage, soaking him with your " + vaginaDescript(player, 0) + ".  ", false);
-                if (player.averageVaginalWetness() == 5) outputText("You orgasm on his massive rod, splattering the beast with girlcum.  ", false);
+            if (player.vaginas.averageVaginalWetness() >= 2) {
+                if (player.vaginas.averageVaginalWetness() < 4) outputText("You squirm and quiver, orgasming from the beast's rough usage.  ", false);
+                if (player.vaginas.averageVaginalWetness() == 4) outputText("You squirm and quiver, orgasming from the beast's rough usage, soaking him with your " + vaginaDescript(player, 0) + ".  ", false);
+                if (player.vaginas.averageVaginalWetness() == 5) outputText("You orgasm on his massive rod, splattering the beast with girlcum.  ", false);
                 player.orgasm();
                 dynStats("lib", .5, "sen", 1, "cor", 1);
             }
-            if (player.averageVaginalWetness() < 2) {
+            if (player.vaginas.averageVaginalWetness() < 2) {
                 outputText("You gasp in pain, your cunt rubbed raw by the rough and violent penetration.  ", false);
                 dynStats("tou", -.5, "sen", 1, "lus", -5, "cor", 1);
             }
@@ -596,7 +596,7 @@ export class MinotaurScene {
             dynStats("lib", .5, "sen", 1, "cor", 1);
         }
         outputText("The bull-man relaxes for a moment, then shoves you off of him and to the cold ground. You pass out as a strange sense of euphoria washes over you while copious quantities of monstrous cum escape your distended ", false);
-        if (player.hasVagina()) outputText("pussy.", false);
+        if (player.vaginas.length > 0) outputText("pussy.", false);
         else outputText("asshole.", false);
         if (game.inCombat) cleanupAfterCombat();
         else doNext(camp.returnToCampUseFourHours);
@@ -656,11 +656,11 @@ export class MinotaurScene {
         outputText("ou lean over him, feeling your generous breast-flesh jiggle, your " + nippleDescription(player, 0) + "s tingling with desire as they rub across the horse-like minotaur dong.   The beast's pre starts forming into large drops along his flared head, and you waste no time smearing it through your cleavage, lubricating the space between your tits and breathing deeply of its perfect scent.", false);
         if (player.cocks.length > 0) outputText("  Your " + cockDescript(game.player, 0) + " grows harder and more aroused than ever before while your ", false);
         else outputText("  Your body aches with arousal while your ", false);
-        if (player.hasVagina()) outputText(vaginaDescript(player, 0) + " grows hotter and hotter, begging to be taken.", false);
+        if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0) + " grows hotter and hotter, begging to be taken.", false);
         else outputText(assholeDescript(player) + " puckers slightly, as if begging to be taken by another monstrous beast.", false);
         outputText("\n\n", false);
         outputText("He moos out pitifully, clearly understanding what you're up to and frustrated he won't get to sate his desire in a tight mortal ", false);
-        if (player.hasVagina()) outputText("cunt.  ", false);
+        if (player.vaginas.length > 0) outputText("cunt.  ", false);
         else outputText("ass.  ", false);
         outputText("Out to prove him wrong by letting him release all over your face, you wrap your " + allBreastsDescript(player) + " tightly around him and begin sliding your body along his length.  The constant drizzling pre-cum easily lubricates you, and soon your orbs are shiny and slick with his drug-like fluid.\n\n", false);
         outputText("As you begin shaking your breasts up and down, stroking his length, you feel the skin of his three rings of prepuce sliding the soaked skin of your tits.   You lick around the edge of his crown when it presents itself to your lips, making sure to take in a nice fat dollop of his thick cream.  It makes you dizzy for a moment, and you nearly slide off, but the sensation passes.  You need more.  You squeeze your " + allBreastsDescript(player) + " tighter around him, squeezing out a few more drops as you feel the manhood begin to swell, growing harder and larger as the minotaur's orgasm approaches.\n\n", false);
@@ -841,7 +841,7 @@ export class MinotaurScene {
         spriteSelect(44);
         outputText("", true);
         outputText("You grin and stumble up the mountain, inhaling deep breaths from moment to moment to make sure you're on the right track.  The scent gets stronger and stronger, making you ", false);
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("wet ", false);
             if (player.cocks.length > 0) {
                 outputText("and hard ", false);
@@ -945,7 +945,7 @@ export class MinotaurScene {
         if (player.gender > 0) {
             outputText("\n\n");
             if (player.cocks.length > 0) outputText("Forcing [oneCock] between his bound thighs, you frot his flared bull-cock, your mixed pre soaking into the fur of his belly as you thrust against him.");
-            if (player.hasVagina()) outputText("Grasping his bull-cock, you pull it against your pussy, rubbing your juices up and down his impressive length as your lips and clit grind on him, adding to your pleasure.");
+            if (player.vaginas.length > 0) outputText("Grasping his bull-cock, you pull it against your pussy, rubbing your juices up and down his impressive length as your lips and clit grind on him, adding to your pleasure.");
         }
 
         // (If male or herm:
@@ -957,7 +957,7 @@ export class MinotaurScene {
             else outputText("nearly drowning");
             outputText(" your helpless prey.  ");
         }
-        if (player.hasVagina()) outputText("Your femcum sprays across his cock.  ");
+        if (player.vaginas.length > 0) outputText("Your femcum sprays across his cock.  ");
         outputText("Simultaneously, your ovipositor pulses and throbs, forcing egg after egg between his beefy buns and deep into him.  The ");
         if (player.gender > 0) outputText("combination of the scent of your fluids and the ");
         outputText("sensation of eggs forcing their way past his sphincter proves too much for your bovine bitch to resist, and he helplessly sprays his musky cum, stream after stream jetting up his chest and across his face as his eyes roll back in his head.");
@@ -1004,7 +1004,7 @@ export class MinotaurScene {
             else outputText("back with your cum, before it covers him and spreads across the floor of his cave.");
         }
         // (if female:
-        else if (player.hasVagina()) outputText("you rub your pussy hard against the minotaur's muscular ass, marking him with the scent of your fem-cum.");
+        else if (player.vaginas.length > 0) outputText("you rub your pussy hard against the minotaur's muscular ass, marking him with the scent of your fem-cum.");
 
         outputText("\n\nFinally, you feel powerful pulses moving through your bee-like abdomen as your eggs move down your ovipositor into their bovine incubator, each one feeling like a mini-climax of its own.  You're beginning to understand why the bee girls are so keen on laying eggs in you when you pass through the forest.  You could definitely get used to this.");
 
@@ -1030,7 +1030,7 @@ export class MinotaurScene {
             // If Herm:
             if (player.gender == 3) outputText("  Your other hand races to your ");
             // (If Female or Herm:
-            if (player.hasVagina()) outputText("[vagina], which is dripping and drooling your arousal down the insides of your [armor].  You manage to apply some pressure to your [clit] through your [armor], which sends a shock of pleasure through you.");
+            if (player.vaginas.length > 0) outputText("[vagina], which is dripping and drooling your arousal down the insides of your [armor].  You manage to apply some pressure to your [clit] through your [armor], which sends a shock of pleasure through you.");
         }
         // If PC lost by damage, and Minotaur has axe:
         else if (monster.weaponName == "axe") outputText("The last great blow from the Minotaur's giant, man-slaughtering axe is just a little off, thankfully - the flat of the axe, rather than the blade, hits you upside the flat of your head, sending you tumbling into the dirt.");
@@ -1039,7 +1039,7 @@ export class MinotaurScene {
 
         outputText("\n\nThe clopping sounds of the Minotaur's footsteps barely register in your mind as you sit there, too broken to properly care, and its massive bull-cock grows harder and harder as it eyes you up, snorting.  The brown-furred beastman hauls you up by the neck, his grip forcing your hands to grab onto his arm lest he choke you, and he quickly strips you of your [armor], baring more and more of your naked flesh and vulnerable holes.");
         outputText("\n\nThe Minotaur's enormous cockhead spews a thick load of pre onto your crotch as he finally strips you bare, and the warm, slick wetness of his juices on your genitals sends a shiver through your spine.  The minotaur turns you over like a common trollop, eager to take his prize, and adjusts his grip so that one of his burly hands is wrapped around your waist instead of your neck.");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nHe lines up his cock with your drooling cunt, your body betraying you as it gets turned on by the rough treatment, and his hips slowly but surely arch forward as his cockhead presses up against your drippy little snatch, making you bite your lip.  The feeling of his fat head rubbing up against your [vagina] is almost too much to bear, and it sends your toes curling underneath of you in pure pleasure.");
             outputText("\n\nFortunately or unfortunately, just as it seems he's about to crown his way into the depths of your [vagina] - he is rebuffed by your tightness, unable to advance any further.  The Minotaur lines up and tries again, making you bite your lip as he forcefully pushes against your slit... but it's no good.  He grunts in frustration, stamping a hoofed foot into the dirt - and then he pauses, getting a look at your [butt] for the first time.");
         }
@@ -1050,7 +1050,7 @@ export class MinotaurScene {
         outputText("\n\nThe minotaur's broad tongue licks and laps at your [butthole] as you writhe and moan, each lick twice as pleasant as the last, and you feel ");
         if (player.cocks.length > 0) outputText("[eachCock] twitching beneath you, painting the floor with dribbles of your pre.");
         if (player.gender == 3) outputText("  You also feel ");
-        if (player.hasVagina()) outputText("your [vagina] clenching and unclenching as your entire hips try to push against the Minotaur's searching tongue, dripping with his spit - along with your own juices.");
+        if (player.vaginas.length > 0) outputText("your [vagina] clenching and unclenching as your entire hips try to push against the Minotaur's searching tongue, dripping with his spit - along with your own juices.");
 
         outputText("\n\nYour body starts to shiver as he keeps up the anal attention, your asshole quite slick with his saliva as he lets out a approving, rumbling moo - and then he stops, withdrawing his muzzle from your [butt] and its oversized cheeks - which slap wetly back together, your crack still wet with his spit.  A moment later you're hauled back down again, the minotaur's hand wrapping once more around your waist, and it isn't long before his flared head starts to push against the crack between your cheeks, the thick cock demanding entry.");
         outputText("\n\nHis spittling and licking has lubed your fat butt up, treating you to the sound of a wet 'slorp' as his cock dives into your [butt], and you can feel his cock pressing deeper and deeper into you.  Any second now he'll hit your [asshole], and you'll be wrapping your insides around that monster cock of his, moaning like a whore for him.  You feel a gush of his pre splatter all over the flesh at the 'bottom' of your ass-crack, dripping onto your asshole, and you bite your lip in preparation.");

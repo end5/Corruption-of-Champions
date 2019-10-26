@@ -44,13 +44,13 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText(".\n\nUrta giggles.  “<i>Frisky [boy]... mmm, you always did know how to get me ready, didn’t you?</i>” she asks, tail wagging softly behind her, indirectly patting you with its soft, fluffy mass.  Through all this her hand remains firmly attached to Kath’s dick, and she begins to gently slide it up and down, stroking with the ease of someone who has a lot of practice on their own dick.\n\n");
         outputText("Urta’s fluffy tail patting you down is enough to get you in the mood");
         if (player.cocks.length > 0) outputText("; [eachCock] erects, nice and ready for what’s to come");
-        else if (player.hasVagina()) outputText("; your pussy is drenched with your juices, some of it dripping on Urta’s tail");
+        else if (player.vaginas.length > 0) outputText("; your pussy is drenched with your juices, some of it dripping on Urta’s tail");
         outputText(".");
         outputText(" Feeling it’s time to join them, you circle around and sit in front of them.  Smiling at both girls, you gently reach out and grip Urta’s cock in your hands, making sure to stroke her sensually over her entire length and smear her pre all over her flared tip.  You look at Kath, smiling seductively, teasing her with your eyes.\n\n");
         outputText("“<i>Is that a challenge, " + player.short + "?  That you can get vixxy here to cum before she gets me to cum, hmm?</i>” Kath asks, grinning and showing needle-like teeth.  “<i>Well, since you went and got so obligingly naked for us, I’m gonna make this a little more challenging...</i>”  She reaches out, her fingers ");
         if (player.cocks.length > 0)
-            outputText("wrapping around your cock" + (player.hasVagina() ? " and " : ""));
-        if (player.hasVagina()) outputText("gently teasing around your cunt");
+            outputText("wrapping around your cock" + (player.vaginas.length > 0 ? " and " : ""));
+        if (player.vaginas.length > 0) outputText("gently teasing around your cunt");
         outputText(".  “<i>Winner is whoever cums last?</i>” she jokes.\n\n");
         outputText("“<i>Sounds fine by me, kitty,</i>” Urta says, her breathing already harsh with lustful anticipation.  You join in on the fun, saying that sounds all right for you... then ask the girls what you get after you win?\n\n");
         outputText("The words “<i>what do you want?</i>” pour from both girls simultaneously, each pair of lips curled into its own distinctive half-lustful, half-teasing smile.  They look at each other in surprise at speaking in unison like that, and then manage to give a small, but friendly, smile to each other.  Hmm... there is so much you could ask for... but for now you tell them you just want them to get along, and maybe later... a double service is in order?\n\n");
@@ -60,7 +60,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText("The vixen yelps in shock, trailing off into a throaty moan of pleasure, but shakes her head, eager to win as well.  Her hand promptly starts sliding up and down Katherine’s prick, but her lack of familiarity with the " + katherine.cockType("canine shape, especially the swelling knot at its base,", "feline shape and the swelling knot at its base") + " means it’s not as effective as it might have been.  Still, she struggles admirably, fingers flexing and caressing even as her palm glides up and down, stroking and teasing " + katherine.cockType("the canine-cocked cat", "Kath's shaft and knot") + ".\n\n");
         outputText("You moan yourself as Kath starts struggling through her pleasure haze, not willing to be beaten without a fight.");
         if (player.cocks.length > 0) outputText("   Her hand teases your [cock] with the soft pads on the tips of her fingers; every once in awhile, she reaches up to collect a dollop of pre and smear it along your shaft, making it easier for her to tease you into defeat.");
-        if (player.hasVagina()) outputText("   Her " + (player.cocks.length > 0 ? "other " : "") + "hand teases your labia by gently circling it, the fur tickling your entrance so deliciously, you can’t help but buck against her wandering finger, trying to capture it within your moist walls.");
+        if (player.vaginas.length > 0) outputText("   Her " + (player.cocks.length > 0 ? "other " : "") + "hand teases your labia by gently circling it, the fur tickling your entrance so deliciously, you can’t help but buck against her wandering finger, trying to capture it within your moist walls.");
         outputText("\n\nThe three of you moan, groan, growl, yowl and buck in a chorus of sounds that leaves no doubt about what is taking place within the watch’s safe-house.  For a moment you let the pleasure of the moment overtake you... here you are, pleasuring and being pleasured by two sexy herms... they look so beautiful, moaning in pleasure at your mutual ministrations, naked and exposed, their differences bare before your eyes... as well as their similarities... but that is enough musing for now; you have a contest to win.\n\n");
         outputText("You reach down to fondle Urta’s balls, rubbing and caressing the heavy orbs in your palms, then with a smirk, you extend your middle finger... and suddenly plunge it into Urta’s opening.  The fox lets out a very wolf-like howl of equal parts shock and pleasure at your bold action, her walls eagerly clamping down on the intruding digit and trying to suck you further inside.  “<i>T-that’s cheating, " + player.short + "!</i>” she whimpers.\n\n");
         outputText("Smiling, you retort that what wouldn’t be fair is stroking only her cock, when she clearly has a sweet, tight honeypot just yearning for some attention.  With that said you wiggle your finger inside her, feeling her walls contract and grasp at your intruding digit.  Wriggling in her seat, femcum now beginning to ooze forth to join the puddle of pre already spreading out from around her balls, she shifts to better face Katherine, her free hand spearing through the space between them and schlicking its way wetly into the kitty-cat’s cunt.  The cat yowls in pleasured shock, and unthinkingly removes her hands from your " + genderText(player, "cock", "cunt", "cock and cunt") + ", apparently so she can brace herself on the floor with greater ease.\n\n");
@@ -79,10 +79,10 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText("“<i>Yeah, what she said!</i>” Kath agrees.\n\n");
         outputText("Cheated!?  Feigning hurt, you tell them you would never do something like that!  Especially not when it involves a special prize, such as their undivided attention as they focus on YOUR orgasm... speaking of which...  you will be taking your prize right now if they don’t mind.  Getting up and stepping up towards Urta and Kath you raise a brow as if questioning when they intend to get started.\n\n");
         outputText("They look at each other, look at you, then look at each other again and grin.  “<i>Alright... if you insist...</i>” they say, their tones ringing with blatantly false innocence, before they suddenly get on all fours, slinking towards you.  Uh oh... you barely have time to turn tail and run before you see a pair of blurs, one " + katherine.catGirl("of pale flesh and " + katherine.hairColor + "hair", "black") + " and the other " + katherine.catGirl("gray", "of gray fur") + ", jump right at you; with a scream you’re dragged to the ground in a frenzy of cum-slickened limbs, touched, caressed, and kissed.  You moan as a pair of lips close on your own, so overwhelmed you are that you can’t tell who it is until a canine tongue intrudes upon your mouth.  You kiss Urta back with abandon; moments later she breaks the kiss, only for her lips to be replaced with Kath’s as she kisses and humps you.\n\nYou feel the cum soaking their bodies rubbing off on your own, their breasts massaging your " + (player.breasts.breasts.hasBreasts() ? breastDescript(player, 0) : "chest") + ".  For a moment you feel utter bliss, and then ");
-        if (player.cocks.length > 0 && player.hasVagina()) { // Herm
+        if (player.cocks.length > 0 && player.vaginas.length > 0) { // Herm
             outputText("you're overcome.  Your pussy and hips lock up and you dribble femcum as Urta and Kath's efforts pay off.  You feel hot liquid rushing up from your " + (player.balls > 0 ? "balls" : "prostate") + ", then an explosion...\n\n");
         }
-        else if (player.hasVagina()) { // Female
+        else if (player.vaginas.length > 0) { // Female
             outputText("you're overcome.  Your pussy and hips lock up and you dribble femcum as Urta and Kath's efforts pay off.\n\n");
         }
         else { // Male
@@ -192,7 +192,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
             outputText("“<i>OK, Kath - subdue the perpetrator.</i>”  You look around just in time to get pounced by Kath.  She’s horny too and isn’t pulling her punches.  “<i>Ha ha, yeah, she’s really getting good at catching her prey,</i>” says Urta, standing over the two of you.\n\n");
             outputText("Urta grabs your arms while Kath gets to work removing your clothes.  You’re so close you can see the precum oozing from the tip of Urta’s cock and wetting the lower part of her shirt.  Urta whispers “<i>You come in here, you get us both warmed up and then you try to sneak out?</i>”\n\n");
             outputText("Katherine chimes in with “<i>Yeah, what gives?</i>”  Urta looks you in the eye and says “<i>This is our turn.  I’m going to feed you this monster and Kath is going to fuck ");
-            if (!player.hasVagina())
+            if (!player.vaginas.length > 0)
                 outputText("your ass");
             else outputText(katherine.cockMultiple("your pussy", "both your pussy and your ass"));
             outputText(".  May Marae help your innards.</i>”");
@@ -202,17 +202,17 @@ export class KatherineThreesome extends TelAdreAbstractContent {
             outputText("massages the sides of your breasts");
         else if (player.balls > 0)
             outputText("massages your nutsack");
-        else if (player.hasVagina())
+        else if (player.vaginas.length > 0)
             outputText("runs her finger up and down your slit");
         else outputText("plays with your asshole");
         outputText(", warming you up.  Soon you see the last of Kath’s clothes hit the wall in front of you and the head");
         if (katherine.cockNumber > 1)
-            outputText("s of her cocks press firmly against " + (player.hasVagina() ? "both your holes" : "your ass"));
-        else outputText(" of her cock presses firmly against your " + (player.hasVagina() ? "cunt" : "ass"));
+            outputText("s of her cocks press firmly against " + (player.vaginas.length > 0 ? "both your holes" : "your ass"));
+        else outputText(" of her cock presses firmly against your " + (player.vaginas.length > 0 ? "cunt" : "ass"));
         outputText(".\n\nKath pushes your legs apart with her knees and starts to force ");
         if (katherine.cockNumber == 1)
-            outputText("her " + katherine.cockLength + " inch " + katherine.cockType("doggy dick", "cat cock") + " into your " + (player.hasVagina() ? "pussy" : "rectum"));
-        else if (player.hasVagina())
+            outputText("her " + katherine.cockLength + " inch " + katherine.cockType("doggy dick", "cat cock") + " into your " + (player.vaginas.length > 0 ? "pussy" : "rectum"));
+        else if (player.vaginas.length > 0)
             outputText("her twin " + katherine.cockType() + " shafts into your body");
         else outputText("her " + katherine.cockType() + "  cocks into your body, caring little that your ass wasn’t built to take her twin " + katherine.cockLength + " inch shafts");
         outputText(".  Kath gets a firm grip on your hips and starts to rock gently, slowly opening you up.  From her purring you know she’s enjoying every second.\n\n");
@@ -221,7 +221,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText("She moves close enough and gestures toward her glistening horsecock.  “<i>Salted enough for your tastes?</i>” she asks.  By now Kath’s " + katherine.cockMultiple("shaft has done its work", "twin shafts have done their work") + " and you’re too horny to resist.  You wrap your mouth around Urta’s spooge cannon and suck on it like a hot, meaty saltlick.\n\n");
         outputText("“<i>Oh yeah, that’s a good " + mf(player, "boy", "girl") + "!</i>” Urta shouts, loud enough for " + (katherine.isAt(Katherine.KLOC_BAR) || katherine.isAt(Katherine.KLOC_BAR_DRUNK) ? "anyone at the bar" : "people on the street") + " to hear.  The two herms start to work in tandem - Kath pulling out as Urta shoves her cock deeper and then Urta pulling back far enough for you to tongue the tip of her cock while Kath sinks in up to her knot" + katherine.cockMultiple("", "s") + ".\n\n");
         outputText("They keep up this pace until you decide to push some of Urta’s buttons.  Reaching up blind your hand finds her balls and you begin to rub her sperm filled sack.  Urta shudders, reverses herself and thrusts forward at the same time as Kath.  All of a sudden you’ve got a foot of horsecock down your throat and Katherine’s " + katherine.cockType() + katherine.cockMultiple(" shlong", " meatsticks") + " buried knot deep in");
-        if (!player.hasVagina())
+        if (!player.vaginas.length > 0)
             outputText(" your ass");
         else if (katherine.cockNumber > 1)
             outputText(" both your other holes");
@@ -229,7 +229,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText(".\n\nAfter that it’s a wild ride.  Kath and Urta start hammering in and out, concentrating on cumming.  You get used as a living cocksleeve and you enjoy it.  Urta’s monster cock is so wide and thrusts in and out so quickly that it overwhelms your gag reflex, your throat deciding that it’s normal to be packed full of salami.  Down below, Kath’s ");
         let wasButtStretched: boolean = false;
         if (katherine.cockNumber > 1) {
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 wasButtStretched = player.buttChange(katherine.cocks.cockArea(), false);
                 outputText("knots seat themselves inside both your pussy and ass");
             }
@@ -240,15 +240,15 @@ export class KatherineThreesome extends TelAdreAbstractContent {
             outputText(", sealing you up");
         }
         else {
-            if (player.hasVagina())
+            if (player.vaginas.length > 0)
                 outputText("knot slides inside your pussy and expands to full size just as nature intended, sealing up your pussy");
             else {
                 wasButtStretched = player.buttChange(katherine.cocks.cockArea(), false);
                 outputText("knot squeezes past your sphincter and pops into your rectum.  It quickly expands to full size, sealing up your colon");
             }
         }
-        outputText(" for her coming deposit" + (player.hasVagina() && !player.isPregnant() ? " and ensuring your uterus will be awash with her seed" : "") + ".\n\n");
-        if (player.hasVagina()) if (player.cuntChange(katherine.cocks.cockArea(), true)) outputText("\n\n");
+        outputText(" for her coming deposit" + (player.vaginas.length > 0 && !player.isPregnant() ? " and ensuring your uterus will be awash with her seed" : "") + ".\n\n");
+        if (player.vaginas.length > 0) if (player.cuntChange(katherine.cocks.cockArea(), true)) outputText("\n\n");
         if (wasButtStretched) {
             player.buttChangeDisplay();
             outputText("\n\n");
@@ -373,11 +373,11 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText("You stroke your fingers up and down ");
         if (player.cocks.length > 0)
             outputText("your cock");
-        else if (player.hasVagina())
+        else if (player.vaginas.length > 0)
             outputText("your slit");
         else
             outputText("the barren flesh between your legs");
-        outputText(", looking over your partners.  The sight of Katherine drilling Urta has you ever so horny" + (player.cocks.length > 0 && player.hasVagina() ? ", you just have to figure out what you’re going to do about it.  Both your lovers are spent and happy, so it’s a toss up as to which one should receive your attention." : " and it’s time for you to take your fill."));
+        outputText(", looking over your partners.  The sight of Katherine drilling Urta has you ever so horny" + (player.cocks.length > 0 && player.vaginas.length > 0 ? ", you just have to figure out what you’re going to do about it.  Both your lovers are spent and happy, so it’s a toss up as to which one should receive your attention." : " and it’s time for you to take your fill."));
         katherine.katherineAndUrtaHadSex(true);
         katherine.orgasm();
         urta.urtaLove(1);
@@ -389,10 +389,10 @@ export class KatherineThreesome extends TelAdreAbstractContent {
 
     private pinAndFuckMountUrta(): void { // Plays for anyone without a cock and for herms who select this option
         clearOutput();
-        outputText("You roll Kath and Urta over so you can get access to Urta’s equine cock.  It’s a little soft but a couple of strokes along its cum slicked length start to change that.  Urta opens her eyes and tries to focus on you but you’re already " + (player.hasVagina() ? "sliding your pussy against her shaft" : "rubbing her horsecock against your anus") + ".  Underneath you both Kath lets out a happy “<i>Oh!</i>”  You’re guessing Urta’s muscles are clamping down on Kath’s cock" + katherine.cockMultiple("", "s") + ".\n\n");
+        outputText("You roll Kath and Urta over so you can get access to Urta’s equine cock.  It’s a little soft but a couple of strokes along its cum slicked length start to change that.  Urta opens her eyes and tries to focus on you but you’re already " + (player.vaginas.length > 0 ? "sliding your pussy against her shaft" : "rubbing her horsecock against your anus") + ".  Underneath you both Kath lets out a happy “<i>Oh!</i>”  You’re guessing Urta’s muscles are clamping down on Kath’s cock" + katherine.cockMultiple("", "s") + ".\n\n");
 
         outputText("As you sink onto Urta’s cock ");
-        if (!player.hasVagina())
+        if (!player.vaginas.length > 0)
             outputText("you enjoy the sensation of your colon stretching and straightening to take Urta’s enormous girth and length.  You feel a pulse of hot pre soaking into your deepest depths.");
         else {
             outputText("and it grinds against your cervix you ");
@@ -414,10 +414,10 @@ export class KatherineThreesome extends TelAdreAbstractContent {
                 outputText("lose yourself in the sensation.  You hope her big dick can fill every crevice of your pussy.");
             outputText("  You pause and feel just above your pussy where Urta’s girth stretches your flesh into a bulge.");
         }
-        outputText("  Urta starts to moan; now that her oversensitive dick is buried in your " + (player.hasVagina() ? "pussy" : "rectum") + " she’s really getting into it.  You flex the muscles of your " + (player.hasVagina() ? "vagina" : "ass") + " to please her more.  Kath helps out by reaching around Urta and playing with her nipples while you massage her balls and tell her you want to be filled.\n\n");
+        outputText("  Urta starts to moan; now that her oversensitive dick is buried in your " + (player.vaginas.length > 0 ? "pussy" : "rectum") + " she’s really getting into it.  You flex the muscles of your " + (player.vaginas.length > 0 ? "vagina" : "ass") + " to please her more.  Kath helps out by reaching around Urta and playing with her nipples while you massage her balls and tell her you want to be filled.\n\n");
 
         outputText("Urta’s legs lock around you and she tries to force her horsecock even deeper.  You feel a bulge moving along the underside and when the hot cum erupts inside you");
-        if (!player.hasVagina())
+        if (!player.vaginas.length > 0)
             outputText(", filling your colon like a balloon,");
         else if (player.pregnancyType == PregnancyStore.PREGNANCY_GOO_STUFFED)
             outputText("it forces its way inside your womb.  You hope the goo in you enjoys the bath.  As more of Urta’s seed fills your pussy");
@@ -431,7 +431,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
 
         outputText("“<i>Again?</i>” says Urta, “<i>No, no, I can’t do it again!  I’ve already cum twice.</i>”\n\n");
 
-        outputText("Kath laughs and continues to gently fuck Urta.  You pull off Urta’s cock and wait for her massive load to finish gushing from your " + (player.hasVagina() ? "pussy" : "ass") + " before putting on your clothes.  Before you leave you give Urta a kiss and squeeze her belly a little.  Her only reply is to moan.  You tell Kath to take good care of Urta and then leave.  You know that if you stay much longer their display will get you excited enough that you’d stay around all afternoon and unfortunately you’ve got things you need to do.\n\n");
+        outputText("Kath laughs and continues to gently fuck Urta.  You pull off Urta’s cock and wait for her massive load to finish gushing from your " + (player.vaginas.length > 0 ? "pussy" : "ass") + " before putting on your clothes.  Before you leave you give Urta a kiss and squeeze her belly a little.  Her only reply is to moan.  You tell Kath to take good care of Urta and then leave.  You know that if you stay much longer their display will get you excited enough that you’d stay around all afternoon and unfortunately you’ve got things you need to do.\n\n");
         player.orgasm();
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 8 + rand(2);
@@ -632,7 +632,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         if (katherine.cumQ() <= 1500)
             outputText("grow warm as it fills with Katherine's seed.  Urta stops for just a moment, sighing contentedly, before she once again grips your " + (player.isTaur() ? "flanks" : "hips"));
         else
-            outputText("expanding against " + (player.isTaur() ? "your rump" : "the small of your back") + ".  The air is forced from Urta’s lungs and you get pushed to the ground as both your lovers collapse against you.\n\nYou smile to yourself and flex " + (player.hasVagina() ? "the muscles in your pussy" : "your sphincter") + ", milking Urta’s cock.  She may be packed with Kath’s sperm but Urta is still Urta.  She responds by gripping your " + (player.isTaur() ? "flanks" : "hips") + " once more");
+            outputText("expanding against " + (player.isTaur() ? "your rump" : "the small of your back") + ".  The air is forced from Urta’s lungs and you get pushed to the ground as both your lovers collapse against you.\n\nYou smile to yourself and flex " + (player.vaginas.length > 0 ? "the muscles in your pussy" : "your sphincter") + ", milking Urta’s cock.  She may be packed with Kath’s sperm but Urta is still Urta.  She responds by gripping your " + (player.isTaur() ? "flanks" : "hips") + " once more");
         outputText(".\n\nDespite her cum-stuffed belly she starts fucking you at a blistering pace, determined to fill you as she has been filled.  The feeling is exquisite and when you look " + (player.isNaga() ? "down" : "back") + " you see that Kath has taken Urta’s balls in hand.  She grins at you and starts massaging them while she whispers encouragement in Urta’s ear.\n\n");
         outputText("At last you feel the delightful blast of cum inside you.  Urta pulls your body against hers and floods you with her hot, sticky juices.  Your stomach muscles give out, unable to contain the load Urta pumps inside you.  Her throbbing cock brings you release and you cum, joining your lovers in ecstasy." + (player.cocks.length > 0 ? "  Your own cock contributes to the mess by spraying the floorboards with your wasted seed." : ""));
         sandwichCommonEnd(); // Play the common end
@@ -764,7 +764,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
             }
         }
         outputText("After that things get out of hand.  You lose track of both time and people.  Certainly you, Katherine" + (valaHere ? ", Urta and Vala" : " and Urta") + " tend to be at the center of things, but there’s a mess of other people involved.  You’re sure some extras participants came in from the street.  Over an hour later you find yourself lying in a pool of slowly cooling spunk.\n\n");
-        if (player.hasVagina())
+        if (player.vaginas.length > 0)
             outputText("You, Kath" + (valaHere ? ", Urta and Vala" : " and Urta") + " all");
         else
             outputText("Kath" + (valaHere ? ", Urta and Vala all" : " and Urta both"));
@@ -775,7 +775,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText("... A heavily pregnant drider fisting a centaur and at the same time forcing her eggs into an eager looking canine-morph... a tiny little spider girl, no more than 4’4\" tall, taking three huge horse-morphs in a row, her chitin creaking as her belly expands far past her normal limits... a woman who looked demonic, lost in ecstasy, sucking on a pair of dog cocks and jerking them off onto herself while riding Urta’s monster prick... and of course the moment when Katherine ");
         if (player.cocks.length > 0)
             outputText("deepthroated your cock");
-        else outputText(player.hasVagina() ? "licked you out" : "fisted your ass");
+        else outputText(player.vaginas.length > 0 ? "licked you out" : "fisted your ass");
         outputText(" while she was bent over the table and getting fucked from behind by Urta.\n\n");
         if (valaHere) {
             outputText("Vala manages to pull herself free from the sticky floor.  Her wings flap wetly, splattering gobs of cum across the bar.  She gives you a kiss and turns to inspect Katherine and Urta.  “<i>You sure know how to start a party,</i>” she says, pressing on her belly to force out some of the cum.\n\n");
@@ -893,7 +893,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
         outputText("You ask your two " + (katherine.cocks.length > 0 ? "herms" : "sluts") + " if it’s time to commandeer one of the back rooms.\n\n");
         outputText("Urta " + katherine.clothesLowerChoice("runs her hand up Kath’s thigh", "slides her hand under Kath’s skirt", "rubs the " + (katherine.cocks.length > 0 ? katherine.cockAdj() + "bulge in the " : "") + "crotch of Kath’s bodysuit", "slides her hand under Kath’s dress", "slides her hand between the folds of Kath’s robe") + " and gives you a wolfish smile.\n\n");
         outputText("You have to help them both to one of the backrooms and you can feel the eyes of many of the bar’s patrons on your back.  As soon as the door is closed and barred Urta presses Kath against the wall and starts giving her tongue.\n\n");
-        outputText("You watch the show, your cock beginning to strain against the confines of your clothes" + (player.hasVagina() ? " as your pussy begins to wet them" : "") + ".  Katherine starts to tug at Urta’s clothes and despite her drunkenness she does a good job of removing them.\n\n");
+        outputText("You watch the show, your cock beginning to strain against the confines of your clothes" + (player.vaginas.length > 0 ? " as your pussy begins to wet them" : "") + ".  Katherine starts to tug at Urta’s clothes and despite her drunkenness she does a good job of removing them.\n\n");
         outputText("Urta rips off the last few bits of her own clothing and then starts on Kath’s garments.  She looks over at you and says, “<i>Better hurry up " + player.short + ".  I don’t think you want to get left out of this.</i>”  Just as she says the final word she pulls off the last of Kath’s clothes and cups both Kath’s " + katherine.breasts.adj() + " breasts in her hands.\n\n");
         outputText("Kath lets out a happy moan as her ");
         if (katherine.cocks.length > 0)

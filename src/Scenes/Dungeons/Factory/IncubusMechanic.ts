@@ -28,7 +28,7 @@ export class IncubusMechanic extends Monster {
             else {
                 outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
                 let titfuck: () => void = null;
-                if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
+                if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
                     titfuck = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
                 }
                 simpleChoices("Rape", game.incubusVictoryRapeSex, "Service Him", game.incubusVictoryService, "Anal", game.incubusVictoryRapeBackdoor, "B.Titfuck", titfuck, "Nothing", cleanupAfterCombat);

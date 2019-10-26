@@ -605,7 +605,7 @@ export class LatexGirl extends NPCAwareContent {
         clearOutput();
         outputText("How will you use your pet?");
         menu();
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             addButton(0, "DomWithVag", femalePCDomFucksLatexGoo);
             if (flags[kFLAGS.GOO_DICK_LENGTH] > 0) addButton(1, "RideGooCock", femalePCDomFucksLatexGooFuta);
         }
@@ -831,7 +831,7 @@ export class LatexGirl extends NPCAwareContent {
             addButton(0, "Cum, Indirect", feedLatexyCumIndirectly);
             addButton(1, "Cum, Direct", feedLatexyCumDirectly);
         }
-        if (player.hasVagina() && player.lust >= 33) {
+        if (player.vaginas.length > 0 && player.lust >= 33) {
             addButton(2, "GirlCum, Ind.", feedLatexyGirlCumIndirectly);
             addButton(3, "GirlCum, Dir.", feedLatexyGirlCumDirect);
         }
@@ -914,23 +914,23 @@ export class LatexGirl extends NPCAwareContent {
         if (player.clitLength >= 3.5) outputText("  Soon, it stands out proud and erect, a column of glistening femme-flesh that tingles with every stray breeze.");
         outputText("\n\nEnraptured by the arousing view, your latex pet is unable to resist echoing your motions.  One after another, her rubbery fingertips disappear from sight, each nestled deeply into the onyx crevasse below.  The only visible digit is the tip of her thumb, which lewdly circles at her buzzer through the thick, ebony lubricant that oozes out around her palm.  Her " + flags[kFLAGS.GOO_EYES] + " eyes look up at you pleadingly from under sable eyelids, her mouth wordlessly begging you for your girl-cum.  A climax rips through her sensitive body, a living fetish shuddering in climax.  Squirts of liquid latex erupt around her wrist as she orgasms.");
         outputText("\n\nYou groan, equally enraptured by the display she's putting on for you.  Soon, you're ");
-        if (player.wetness() < 3) outputText("absolutely soaked with your girlish moisture");
-        else if (player.wetness() < 4) outputText("dripping strings of girlish liquid with abandon");
+        if (player.vaginas.wetness() < 3) outputText("absolutely soaked with your girlish moisture");
+        else if (player.vaginas.wetness() < 4) outputText("dripping strings of girlish liquid with abandon");
         else outputText("practically gushing girlish moisture into the bowl");
         outputText(".  You instinctively rock your [hips] forward, slowly pumping them to an instinctive, animalistic beat.  " + flags[kFLAGS.GOO_NAME] + " watches raptly, still masturbating herself with relentless finger-fucks.  She watches expectantly, waiting for the first sign of your orgasm with spellbound attention.");
         outputText("\n\nRather than disappoint those eager eyes, you cum.  A bolt of electric intensity explodes in your [clit].");
         if (player.clitLength >= 3.5) outputText("  You wrap your hand around it without meaning to, caressing the slick, womanly shaft so fast that it floods your mind with white waves of unthinking pleasure.");
         outputText("  Mounting higher and higher, a wave of liquid ecstasy rises from inside the core of your being.  It grows to a mountainous peak before crashing out through your birth canal, setting off earthquakes of muscular contractions in its wake.  Those tumultuous clenches squeeze down on your fingers like a vice, only relaxing when a flow of girl-cum washes out to greet them.  You nearly tumble over in orgasmic delight but hold the bowl close, nearly spilling it as it fills.  ");
-        if (player.wetness() < 3) outputText("Your dribbling cunny paints a thin film of lady-spunk on the bowl, filling it slowly as you drip and squirm.");
-        else if (player.wetness() < 4) outputText("Your ludicrously wet cunt oozes thick flows of lady-spunk into the bowl, rapidly filling it with the proof of your orgasm.");
+        if (player.vaginas.wetness() < 3) outputText("Your dribbling cunny paints a thin film of lady-spunk on the bowl, filling it slowly as you drip and squirm.");
+        else if (player.vaginas.wetness() < 4) outputText("Your ludicrously wet cunt oozes thick flows of lady-spunk into the bowl, rapidly filling it with the proof of your orgasm.");
         else outputText("Your gushing cunny sprays a lurid flow of lady-spunk into the bowl, immediately filling it beyond its rim.  It does a fine job of muddying the ground with the proof of your orgasm as your bliss drags on.");
         outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " dives into the bowl with gusto, greedily devouring every drop.  Her tongue hangs free, thrashing against the polished wood as more and more of her latex mouth-muscle spools free to help with the feeding.  In seconds, the bowl is emptied.");
-        if (player.wetness() >= 4) outputText("  Sadly, the copious vaginal lube that muddied the ground is already absorbed.  It seems the dirt can eat faster than your pet.");
+        if (player.vaginas.wetness() >= 4) outputText("  Sadly, the copious vaginal lube that muddied the ground is already absorbed.  It seems the dirt can eat faster than your pet.");
         // {Boost her fluid quantity, bonus for over 250mL.}
         temp = 10;
-        if (player.wetness() >= 3) temp += 5;
-        if (player.wetness() >= 4) temp += 5;
-        if (player.wetness() >= 5) temp += 5;
+        if (player.vaginas.wetness() >= 3) temp += 5;
+        if (player.vaginas.wetness() >= 4) temp += 5;
+        if (player.vaginas.wetness() >= 5) temp += 5;
         player.orgasm();
         gooFluid(temp);
         // {Boost her happiness a tiny amount.}
@@ -1167,16 +1167,16 @@ export class LatexGirl extends NPCAwareContent {
             outputText(".</i>\"");
         }
         outputText("\n\nYou confidently approach, stopping just in front of your latex pet.  She immediately drops to her knees, placing her nose a scant few inches from your vulva.  Her " + flags[kFLAGS.GOO_EYES] + " eyes lock onto the ");
-        if (player.wetness() >= 3) outputText("glistening ");
+        if (player.vaginas.wetness() >= 3) outputText("glistening ");
         outputText("outer lips with excitement, dilating slightly as she leans closer.  " + flags[kFLAGS.GOO_NAME] + "'s nostrils flare as she breathes deeply of your scent, inhaling thick lungfuls of your feminine odor, the heady musk of an aroused woman.  Her mouth hangs open slightly, as if in awe of what she sees, and undirected by her conscious mind, she lazily drifts closer.");
         outputText("\n\nA shiver of indecent pleasure writhes up your spine when her nose casually crashes into your slit.  Jolting slightly, " + flags[kFLAGS.GOO_NAME] + " is roused from her cunt-induced stupor by the hot wetness on her proboscis.  She glances up at you, blushing just the slightest amount of violet, and hesitantly cranes her head to bring her lips in contact with your labia.  At first, she kisses and licks around the outer edges of your vulva, smearing their surface with her inky saliva.  The slick fluid thickens on contact with the air, even as she dives deeper into your [vagina], slowly spreading your inner lips with her exotic tongue.");
         outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " quickly loses herself in her own artful ministrations, her world narrowed down to the simmering cleft at the joint of your [hips] and [legs].  Slithering out, snakelike, her tongue burrows into your [vagina].  Its length is as large as it is slick, shiny and so smooth that it glides through your gates with ease.  " + flags[kFLAGS.GOO_NAME] + " skillfully twists it around inside you, forcing more of her sable spit into your channel as her lubricated muscle squirms inside you, pressing hard against every tender area.  It's so smooth that if it weren't pushing so pleasantly against you, you'd barely feel it.  As it is, a slick snake is writhing in your cunt and it's set your loins afire.");
-        if (player.wetness() < 3) outputText("  Drizzling wetness pours down your pet's chin as she pleases you.  She swallows most of it with eager bobs of her throat, happy to have such a... moist [master].");
-        else if (player.wetness() < 4) outputText("  Drops of wetness beat on your pet's chin as she pleases you.  She swallows most of it with eager bobs of her throat, pleased to have an appetizer before the main course.");
+        if (player.vaginas.wetness() < 3) outputText("  Drizzling wetness pours down your pet's chin as she pleases you.  She swallows most of it with eager bobs of her throat, happy to have such a... moist [master].");
+        else if (player.vaginas.wetness() < 4) outputText("  Drops of wetness beat on your pet's chin as she pleases you.  She swallows most of it with eager bobs of her throat, pleased to have an appetizer before the main course.");
         else outputText("  Lubricant shines on your pet's glossy chin as she pleases you.  She swallows every now and again with eager bobs of her throat, sampling your flavor.");
         outputText("\n\nPulling back, the hungry latex woman smiles up at you, though she's muted by the tongue that hangs over the intervening distance, still locked to your pussy by her undulating oral appendage.  Her long lashes blink innocently while that potent mouth muscle massages your box's inner walls.  Taken in by the sensual assault and innocent visage accompanying it, you grab hold of " + flags[kFLAGS.GOO_NAME] + "'s face and cram it into your cunt, mashing her mouth up into your nethers hard enough to make an audible squelch.  The corners of " + flags[kFLAGS.GOO_NAME] + "'s eyes crinkle merrily.  She's still meeting your gaze, even as you hump her mouth, using her like a living latex sextoy.");
         outputText("\n\nHolding as tightly to that thought as your slave's head, you aggressively grind against her, letting the ecstatic pleasure haze your thought processes as it crests into a wave.  She twists and presses her tongue up hard, squeezing a supremely sensitive spot.  The ensuing explosion of heavenly indulgence echoes in your brain, short-circuiting your motor control.  Your limbs thrash freely, though your fingers and arms stay locked on " + flags[kFLAGS.GOO_NAME] + ", mashing her tightly into your gash.");
-        if (player.wetness() >= 4) outputText("  You squirt a small river of gushing juices directly into her mouth, her cheeks flooded by the copious outpouring of lubricant.");
+        if (player.vaginas.wetness() >= 4) outputText("  You squirt a small river of gushing juices directly into her mouth, her cheeks flooded by the copious outpouring of lubricant.");
         else outputText("  You gradually fill her mouth with your free-flowing orgasmic lubricants.");
         outputText("  Her tongue is squished tight when your [vagina] clamps closed, convulsing around the mouth muscle as if it was a dick it could somehow milk.  Your [legs] lock as you endure the tidal wave of release.");
         outputText("\n\nThe pleasure doesn't fade fast.  In fact, the aftershocks that wrack your muscles continue to assault you with every kiss of your pet's eager lips.  She doesn't slow or stop after your orgasm.  If anything, she suckles your nether-lips and [clit] that much harder, greedy more of your delectable juices.  You wriggle and squirm, putting a hand to " + flags[kFLAGS.GOO_NAME] + "'s forehead and commanding her to stop.");
@@ -1195,9 +1195,9 @@ export class LatexGirl extends NPCAwareContent {
             outputText(" oily wetness onto the ground below at your affirmation, and she shudders with a submissive thrill.  You pat her on the head for a job well done and depart, secure in her obedience.");
             // {Boost her fluid quantity, bonus for over 250mL.}
             temp = 10;
-            if (player.wetness() >= 3) temp += 5;
-            if (player.wetness() >= 4) temp += 5;
-            if (player.wetness() >= 5) temp += 5;
+            if (player.vaginas.wetness() >= 3) temp += 5;
+            if (player.vaginas.wetness() >= 4) temp += 5;
+            if (player.vaginas.wetness() >= 5) temp += 5;
             gooFluid(temp);
 
             // {Boost her happiness a tiny amount.}
@@ -1234,7 +1234,7 @@ export class LatexGirl extends NPCAwareContent {
     private feedCumDirectEpilogueGirls(): void {
         clearOutput();
         outputText("You wake with your mouth so dry that it feels like sandpaper.  Looking around, you see " + flags[kFLAGS.GOO_NAME] + " slumbering in the corner, looking rather... full and fecund, plump with weight.  You feel equally, obnoxiously empty.  Your groin is tingling painfully from the forceful suckling.  Staggering away toward some water, you realize you'll have to raise her obedience if you want her to stop on command.  Letting her drink so deeply probably didn't help either.");
-        gooFluid(50 + player.wetness() * 8);
+        gooFluid(50 + player.vaginas.wetness() * 8);
         // {Boost her happiness a tiny amount.}
         gooHappiness(4);
         gooObedience(-4);
@@ -1270,7 +1270,7 @@ export class LatexGirl extends NPCAwareContent {
         else outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " nuzzles against you, her head coming to rest on your [chest].  \"<i>Sorry, [name]. I didn't mean to try and force you.  I love you when you're so assertive, so... dominant.</i>\"");
         player.orgasm();
         dynStats("sen", -2);
-        gooFluid(30 + player.wetness() * 5);
+        gooFluid(30 + player.vaginas.wetness() * 5);
         // {Boost her happiness a tiny amount.}
         gooHappiness(5);
         gooObedience(5);
@@ -1381,7 +1381,7 @@ export class LatexGirl extends NPCAwareContent {
         }
         player.orgasm();
         dynStats("sen", -2);
-        gooFluid(5 + player.wetness() * 2);
+        gooFluid(5 + player.vaginas.wetness() * 2);
         gooObedience(5);
         gooHappiness(2);
         doNext(camp.returnToCampUseOneHour);
@@ -1481,7 +1481,7 @@ export class LatexGirl extends NPCAwareContent {
         dynStats("sen", -2);
         player.slimeFeed();
         flags[kFLAGS.LATEX_GOO_TIMES_FEMDOMMED_BY_PC]++;
-        gooFluid(5 + player.wetness() * 2);
+        gooFluid(5 + player.vaginas.wetness() * 2);
         gooObedience(4);
         gooHappiness(2);
         doNext(camp.returnToCampUseOneHour);
@@ -1609,20 +1609,20 @@ export class LatexGirl extends NPCAwareContent {
         outputText("\n\n\"<i>Delicious,</i>\" " + flags[kFLAGS.GOO_NAME] + " says with a grin, popping off one of your teats to tend to the other, leaving thick trails of sable saliva connecting her lips to your nipple until you brush them away with your thumb, your finger caressing her chin and cheek.  She nuzzles your hand, a sound not unlike a purr escaping her lips before she slips down, rubbing her cheek against your other breast.  \"<i>Mmm, I love the taste,</i>\" she giggles girlishly, resting her head a moment on your chest.  \"<i>You're wonderful, [name].  So good.</i>\"");
         outputText("\n\nYou smile and ruffle " + flags[kFLAGS.GOO_NAME] + "'s hair, giving her a gentle nudge toward your other needy tit.  Rather than suckle, she plants a quick kiss right on the tip of your [nipple], sending a shiver of pleasure rolling through you.  Before you've recovered, " + flags[kFLAGS.GOO_NAME] + "'s attached herself to you, her hands wrapped tight around your breast as her tongue flicks across your teat, teasing the first droplets of milk from you.  As she urges your first drops into a proper stream of warm, wonderful milk, you curl your fingers through " + flags[kFLAGS.GOO_NAME] + "'s hair and pull her tight against you, gently arching your back so that her face is wholly buried in your milky bosom.  She giggles into your titflesh, her laugh letting tiny rivulets of milk trickle down her chin and onto her own massive bosom, the contrast of white smearing onto black catching your eye even as her ebony tongue swirls around your sensitive bud.");
         // {elseif PC has both}
-        if (player.cocks.length > 0 && player.hasVagina()) outputText("\n\nAs she suckles, " + flags[kFLAGS.GOO_NAME] + "'s hands wander downward, her fingers brushing tantalizingly across your supple flesh until her smooth tips find your dual genitals.  One hand quickly wraps around your half-turgid shaft as the other plunges into your slick and eager fuckhole, both aroused and ready by the teasing and suckling you're getting.  " + flags[kFLAGS.GOO_NAME] + " moves her hands in unison, one drawing up to the crown of your [cock biggest] as the other plunges deep into your vaginal depths before both release, pulling down to the base or withdrawing to the tips before going again and again.");
+        if (player.cocks.length > 0 && player.vaginas.length > 0) outputText("\n\nAs she suckles, " + flags[kFLAGS.GOO_NAME] + "'s hands wander downward, her fingers brushing tantalizingly across your supple flesh until her smooth tips find your dual genitals.  One hand quickly wraps around your half-turgid shaft as the other plunges into your slick and eager fuckhole, both aroused and ready by the teasing and suckling you're getting.  " + flags[kFLAGS.GOO_NAME] + " moves her hands in unison, one drawing up to the crown of your [cock biggest] as the other plunges deep into your vaginal depths before both release, pulling down to the base or withdrawing to the tips before going again and again.");
         // {If PC has a cock}
         else if (player.cocks.length > 0) {
             outputText("\n\nAs she suckles, " + flags[kFLAGS.GOO_NAME] + "'s hand wanders downward, her fingers brushing tantalizingly across your supple flesh until her smooth tips rub against the half-hard shaft of your [cock biggest].  You stifle a gasp as the latex girl wraps her fingers around your prick, needing only the slightest touch to get you nice and turgid.  She moves her hand in slow, languid motions, slowly drawing her unnaturally smooth hands up and down your shaft, from crown to base, giving gentle twists and squeezes in time with her suckling upon your teat.");
         }
         // {elseif PC has cunt}
-        else if (player.hasVagina()) outputText("\n\nAs she suckles, " + flags[kFLAGS.GOO_NAME] + "'s hand wanders downward, her fingers brushing tantalizingly across your supple flesh until her smooth tips rub against the outer folds of your [vagina].  You only just stifle a gasp as her long fingers slip into your ready hole, already aroused and eager to fuck.  Her hand moves into you, feeling like an unnaturally flexible dildo as she pushes inches of latex into you, each thrust in time with a suckle of your teat.");
+        else if (player.vaginas.length > 0) outputText("\n\nAs she suckles, " + flags[kFLAGS.GOO_NAME] + "'s hand wanders downward, her fingers brushing tantalizingly across your supple flesh until her smooth tips rub against the outer folds of your [vagina].  You only just stifle a gasp as her long fingers slip into your ready hole, already aroused and eager to fuck.  Her hand moves into you, feeling like an unnaturally flexible dildo as she pushes inches of latex into you, each thrust in time with a suckle of your teat.");
         // {elseif PC ain't got shit, captain}
         else outputText("\n\nAs she suckles, " + flags[kFLAGS.GOO_NAME] + "'s hands wander downward, her fingers brushing tantalizingly across your supple flesh until her smooth tips send a shiver up your spine, her knuckles running across your exposed [asshole] as she works her fingers into your [butt].  With no other genitalia on offer, you grit your teeth as " + flags[kFLAGS.GOO_NAME] + " slithers a smooth finger into your rectum, pushing into your ass with agonizing slowness, tiny thrusts in and out timed with her suckling from your teat.");
         // {Combine, next paragraph}
         outputText("\n\nUnder the latex girl's combined milking and sexual advances, you feel an orgasm rising deep in your gut.  You steel yourself, trying to hold out a moment longer as " + flags[kFLAGS.GOO_NAME] + " intensifies her assault, suckling every last drop from you as her fingers work wonders upon your ");
         if (player.gender == 3) outputText("double genitals");
         else if (player.cocks.length > 0) outputText("cock");
-        else if (player.hasVagina()) outputText("cunt");
+        else if (player.vaginas.length > 0) outputText("cunt");
         else outputText("asshole");
         outputText(".  You don't last long, and soon throw your head back and cum, ");
         if (player.gender > 0) outputText("smearing her fingers with a liberal spattering of your cum");

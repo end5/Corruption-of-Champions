@@ -146,7 +146,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             // New Years
             if (isHolidays() && date.date >= 31) {
                 outputText("\n\n\"<i>Cor, well ah'll be.  Sweetie, you be leaking Champagne.</i>\"  She gives your other nipple a tweak to fill a second shot glass.  The same clear liquid pours out, and the little champagne bubbles tickle your nipples to new heights of sensitivity, causing your ");
-                if (player.hasVagina()) outputText("pussy to wetten");
+                if (player.vaginas.length > 0) outputText("pussy to wetten");
                 if (player.gender == 3) outputText(" and ");
                 if (player.cocks.length > 0) outputText("[eachCock] to stiffen");
                 outputText(".  \"<i>Ye know, I got's an idea.  How's about ye stick by me for the next hour.  I'm sure ye must be diein' to drain those big'uns of yours.  We might as well sell your champagne ta the patrons.  Whaddaya say Lassie?</i>\"");
@@ -458,8 +458,8 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
                 player.breastRows[0].breastRating = 5;
             }
             // (Player does not have vagina:
-            if (!player.hasVagina()) {
-                player.createVagina();
+            if (!player.vaginas.length > 0) {
+                player.vaginas.createVagina();
                 player.genderCheck();
                 outputText("\n\nYou can feel ");
                 if (player.cocks.length > 0) outputText("the flesh under your cock[if (hasBalls = true)  and behind your [balls]]");
@@ -488,7 +488,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         }
         if (player.effects.getValue3Of(StatusAffects.BimboChampagne) > 0) {
             outputText("  At the same time, your [vagina] slowly seals itself up, disappearing as quickly as it came.  Goodbye womanhood.");
-            player.removeVagina();
+            player.vaginas.removeVagina();
         }
         if (player.effects.getValue4Of(StatusAffects.BimboChampagne) > 0) {
             player.buttRating -= player.effects.getValue4Of(StatusAffects.BimboChampagne);
@@ -668,7 +668,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // If player has four or six breasts.
         else outputText("Niamh giggles as you try to move your breasts closer to the bar to be milked by the patrons, but it's obvious only the top pair of your tits can easily rest on the counter top.  \"<i>Lassie, it might be unconventional, but givin' the circumstance mayhaps it'd be best if ye laid down on the bar.</i>\"");
         outputText("\n\nIt isn't long before patrons start lining up for mugs of your particular brand of booze.  They tug on your nipples, teasing the beverage from your teats.  Each drunken tug however encourages your libido, arousing you further.");
-        if (player.hasVagina()) outputText("  You feel your excitement dripping down the inside of your thighs as your pussy wettens.");
+        if (player.vaginas.length > 0) outputText("  You feel your excitement dripping down the inside of your thighs as your pussy wettens.");
         dynStats("lus", 10 + player.sens / 5, "resisted", false);
         // [If player has cocks]
         if (player.cocks.length > 0) outputText("  You start to feel sympathetic sensations in [eachCock] as the hands and paws of the bar goers milk your nipples.  With their fingers sliding over your sensitive nubs you can easily imagine them sliding up and down your cock");
@@ -685,7 +685,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         else {
             outputText("\n\nYou're not sure how much more you can give before it becomes impossible to ignore your raging hormones.");
             outputText("\n\nNiamh notices your condition, as does several other patrons in the bar.  ");
-            if (player.hasVagina()) outputText("You can feel your labia dripping with need.  ");
+            if (player.vaginas.length > 0) outputText("You can feel your labia dripping with need.  ");
             if (player.cocks.length > 0) {
                 outputText("pre-cum drizzles down your " + multiCockDescriptLight(game.player) + " as the need to fuck a pussy grows stronger.  A few wandering hands reveals some apparent interest amongst the folks in the bar in seeing your genitals as active as your nipples.");
             }
@@ -701,7 +701,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
     private barBeerOrgyTits(): void {
         clearOutput();
         // If [player has pussy]
-        if (player.hasVagina()) outputText("The drooling of your [vagina] gets worse as the constant \"tapping of your kegs\" drives your sense of self-restraint to its limits.  The hands of various drunks start moving more aggressively over your breasts, eventually winding their way down between your thighs.");
+        if (player.vaginas.length > 0) outputText("The drooling of your [vagina] gets worse as the constant \"tapping of your kegs\" drives your sense of self-restraint to its limits.  The hands of various drunks start moving more aggressively over your breasts, eventually winding their way down between your thighs.");
         // IF [player has cock/s]
         if (player.cocks.length > 0) {
             outputText("[EachCock] grows to its full length.  You try to keep ");
@@ -728,13 +728,13 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         // Third Paragraph
         // ===============
         // IF player has pussy and Urta is in the bar and sex with her is unlocked.
-        if (game.time.hours < 15 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0 && player.hasVagina()) {
+        if (game.time.hours < 15 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0 && player.vaginas.length > 0) {
             outputText("\n\nA pair of familiar paws grab your ankles and spread your legs wide.  Your labia practically spurt out girl cum in anticipation of what's about to happen.  \"<i>Oh, looks like someone's overly eager.</i>\"  You struggle to look over the mounds of your own tits to see who's standing between your legs.  The familiar sight of an oversized horse-cock waving in the air catches your attention shortly before the grinning smile of Urta comes into view.  \"<i>My, aren't you going to get reamed, lover.</i>\"  No sooner than she says that does the flared head of her cock plunges with a wet squish between your nether lips.  You feel her stretching your entrance apart as her massive horse meat bores into your body.  Blissful screams of pleasure are heard and it isn't until the head of Urta's cock breaks into your womb that you realize it's you that's screaming in ecstasy.");
             if (player.pregnancyIncubation == 0) outputText("  Some folks give yelps and cheers when they see the bulge that repeatedly forms in your abdomen each time Urta thrusts herself inside you.");
             player.cuntChange(60, true, true, false);
         }
         // ELSE IF player has pussy and Urta is not in the bar.
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("\n\nHands grip your legs and spread you apart while slathering your thighs with your own pussy juices until every square inch of your lower body is slick and slippery.  A pair of dog morphs clamor for position between your thighs.");
             // IF [player has less than a gaping pussy]
             if (player.vaginalCapacity() < 60) outputText("  One is sporting a cock that is obviously too massive for your pussy, and eventually backs down so that the other one, despite still being on the large size, can take the honor of fucking your cunt silly.");
@@ -823,7 +823,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             player.growTits(2, player.breasts.length, false, 2);
         }
         // IF [Urta but not Edryn is present in the bar and sex with her is unlocked and character has pussy]
-        else if (player.hasVagina() && game.time.hours < 15 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0) {
+        else if (player.vaginas.length > 0 && game.time.hours < 15 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0) {
             outputText("\n\nYou hear passionate cries of lustful need from Urta as her horse-cock reams you with greater ferocity.  Her orgasm nearly knocks her off her feet as her shaft swells wider, stretching you apart as the cum surges up through it.");
             // IF [player is not pregnant]
             if (player.pregnancyIncubation == 0) outputText("  The eruption of cum from her horsecock out does every other ejaculating dick in the room.  Your belly button pops outward as your stomach swells from the surging torrent of sperm pumping directly into your womb.  The hands of strangers grab your legs to keep you pinned in place while Urta struggles to keep her gushing cock inside your cunt despite the building pressure.  A couple voices call out, \"<i>She's gonna pop!  Is she gonna pop?  I think she is!</i>\"  Niamh is forced to sit up higher as your cum bloated belly pushes up against her.  Urta looks as if she's having a seizure from the sheer effort of unloading herself into you.  You scream out loud from the ecstasy of swelling but your cries of pleasure are lost within Niamh's pussy folds, urging her to come again.  Her girl cum squirts down your throat, making your belly feel all the more tight and fit to burst.");
@@ -844,12 +844,12 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         else {
             outputText("\n\nFor what seems like forever your body is used as a cum dump and fuck toy.");
             // IF [player has pussy]
-            if (player.hasVagina()) outputText("  The giant knot of the dog morph finally breaks its way inside causing your pussy to become overstretched.  The pleasurable torture only gets worse as he begins unloading a river of his cum inside you.  It begins squirting out around his cock and soaks both of your thighs in the process.");
+            if (player.vaginas.length > 0) outputText("  The giant knot of the dog morph finally breaks its way inside causing your pussy to become overstretched.  The pleasurable torture only gets worse as he begins unloading a river of his cum inside you.  It begins squirting out around his cock and soaks both of your thighs in the process.");
             player.cuntChange(60, true, true, false);
 
             outputText("  Niamh finally has her fill and dismounts you, but no sooner has her pussy left your face than a determined cock belonging to some sort of cat morph fills your mouth.  Your eyes bug out as it thrusts down your throat.");
             // If [player has pussy]
-            if (player.hasVagina()) outputText("  You gag on it at the same time a new cock fills your cunt, ready to renew the thrusting that's been causing your tits to bounce all over the place.");
+            if (player.vaginas.length > 0) outputText("  You gag on it at the same time a new cock fills your cunt, ready to renew the thrusting that's been causing your tits to bounce all over the place.");
 
             // IF [player has single cock small-med cock]
             if (player.cocks.length == 1 && player.cocks.cockArea(0) < 75) outputText("\n\nA cat girl with six C-cup breasts jumps up onto the table and mounts you.  She grabs your cock and proceeds to shove it up between the folds of her tight pussy.");
@@ -872,7 +872,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
             // IF [player has multiple cocks]
             else if (player.cocks.length > 1) outputText("  Various girls around the room are patting their bellies and giving you sultry looks while your cum continues to drip from their pussies.  You passively wonder if any of them might indeed be hauling around some larger pregnant bellies in a few days, but you try to push those thoughts from your head.  At the moment they seem happy.");
             // IF [player has pussy]
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  You walk slightly bow legged out of the bar.  Cum is still dripping from your snatch and will likely continue to do so for a while.");
                 // IF [player is not pregnant]
                 if (player.pregnancyType == 0) outputText("  You can't help but wonder how virile those dog morphs might have been as their cum and the cum of other customers sloshes around inside your uterus.");

@@ -1512,7 +1512,7 @@ export class Appearance  {
                 haveDescription = true;
             }
         }
-        if (i_creature.hasVagina()) {
+        if (i_creature.vaginas.length > 0) {
             if (!haveDescription && i_creature.vaginas[0].clitPierced > 0) {
                 description += "pierced ";
                 haveDescription = true;
@@ -2588,7 +2588,7 @@ export class Appearance  {
     */
 
     public static assholeOrPussy(creature: Creature): string {
-        if (creature.hasVagina()) return vaginaDescript(creature, 0);
+        if (creature.vaginas.length > 0) return vaginaDescript(creature, 0);
         return assholeDescript(creature);
     }
 

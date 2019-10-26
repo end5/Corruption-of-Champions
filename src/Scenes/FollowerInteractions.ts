@@ -672,7 +672,7 @@ export class FollowerInteractions extends NPCAwareContent {
         // Watch (only game in town for now, so suppress the choice buttons and route right to this)
         let dick: () => void = null;
         let vag: () => void = null;
-        if (player.hasVagina()) vag = amilyScene.urtaXAmilyCuntPussyVagSQUICK;
+        if (player.vaginas.length > 0) vag = amilyScene.urtaXAmilyCuntPussyVagSQUICK;
         if (player.cocks.length > 0) dick = amilyScene.threesomeAmilUrtaCAWKS;
         simpleChoices("Use Dick", dick, "Use Vag", vag, "", null, "", null, "Watch", amilyUrtaSexWatch);
     }

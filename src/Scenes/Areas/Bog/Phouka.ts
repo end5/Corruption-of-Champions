@@ -133,13 +133,13 @@ export class Phouka extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\nThe " + this.short + " looks on, amused. <i>“Kinky! But those wee things can't handle whiskey, so I’m safe from ‘em. Now be a good ");
-            if (player.hasVagina())
+            if (player.vaginas.length > 0)
                 outputText("lass and spread yer legs for me.”</i>\n\n");
             else outputText("lad and spread yer asscheeks for me.”</i>\n\n");
             doNext(game.endLustLoss);
         }
         else {
-            if (player.hasVagina()) { // Phouka prefer vaginal if they can get it
+            if (player.vaginas.length > 0) { // Phouka prefer vaginal if they can get it
                 if (player.isTaur() || rand(2) == 0)
                     game.bog.phoukaScene.phoukaSexHorse(true, !hpVictory); // And they love mating with female or herm centaurs in their horse form
                 else game.bog.phoukaScene.phoukaSexBunny(true, !hpVictory);

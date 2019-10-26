@@ -20,7 +20,7 @@ export function genderText(creature: Creature, male: string = "man", female: str
 export function manWoman(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Futa";
             else
@@ -34,7 +34,7 @@ export function manWoman(creature: Creature, caps: boolean = false): string {
         }
     }
     else {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Woman";
             else
@@ -52,7 +52,7 @@ export function manWoman(creature: Creature, caps: boolean = false): string {
 export function guyGirl(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Girl";
             else
@@ -66,7 +66,7 @@ export function guyGirl(creature: Creature, caps: boolean = false): string {
         }
     }
     else {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Girl";
             else
@@ -97,13 +97,13 @@ export function mfn(creature: Creature, male: string, female: string, neuter: st
 export function mf(creature: Creature, male: string, female: string): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina())
+        if (creature.vaginas.length > 0)
             return female;
         else
             return male;
     }
     else {
-        if (creature.hasVagina())
+        if (creature.vaginas.length > 0)
             return female;
         else {
             if (creature.breasts.biggestTitSize() >= 3)
@@ -117,7 +117,7 @@ export function mf(creature: Creature, male: string, female: string): string {
 export function boyGirl(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Girl";
             else
@@ -131,7 +131,7 @@ export function boyGirl(creature: Creature, caps: boolean = false): string {
         }
     }
     else {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Girl";
             else
@@ -155,7 +155,7 @@ export function boyGirl(creature: Creature, caps: boolean = false): string {
 export function heShe(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "She";
             else
@@ -169,7 +169,7 @@ export function heShe(creature: Creature, caps: boolean = false): string {
         }
     }
     else {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "She";
             else
@@ -193,7 +193,7 @@ export function heShe(creature: Creature, caps: boolean = false): string {
 export function himHer(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Her";
             else
@@ -207,7 +207,7 @@ export function himHer(creature: Creature, caps: boolean = false): string {
         }
     }
     else {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Her";
             else
@@ -231,7 +231,7 @@ export function himHer(creature: Creature, caps: boolean = false): string {
 export function maleFemale(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Female";
             else
@@ -245,7 +245,7 @@ export function maleFemale(creature: Creature, caps: boolean = false): string {
         }
     }
     else {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Female";
             else
@@ -269,7 +269,7 @@ export function maleFemale(creature: Creature, caps: boolean = false): string {
 export function hisHer(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Her";
             else
@@ -283,7 +283,7 @@ export function hisHer(creature: Creature, caps: boolean = false): string {
         }
     }
     else {
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Her";
             else
@@ -309,7 +309,7 @@ export function sirMadam(creature: Creature, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         // herm
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             // Boy unless has tits!
             if (creature.breasts.biggestTitSize() >= 2) {
                 if (caps)
@@ -335,7 +335,7 @@ export function sirMadam(creature: Creature, caps: boolean = false): string {
     // No dicks
     else {
         // Girl
-        if (creature.hasVagina()) {
+        if (creature.vaginas.length > 0) {
             if (caps)
                 return "Madam";
             else

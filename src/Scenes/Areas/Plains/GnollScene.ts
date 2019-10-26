@@ -23,14 +23,14 @@ export class GnollScene {
         outputText("The sound of the gnoll's mocking laughter grates in your ears as you collapse down on your knees before her.  She circles you with the last scrap of her wariness and then surges forward to knock you over, exposing your ", false);
         if (player.cocks.length > 0) {
             outputText(multiCockDescriptLight(game.player), false);
-            if (player.hasVagina()) outputText(" and ", false);
+            if (player.vaginas.length > 0) outputText(" and ", false);
         }
-        if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
+        if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0), false);
         if (player.gender > 0) outputText(".  ", false);
         else outputText("flat, featureless groin.  ", false);
         //  (if cockTotal=0 AND vaginas=1)
         if (!player.cocks.length > 0) {
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("The gnoll looks a little disappointed at the void between your legs.  \"<i>Aw, I was hoping for something substantial,</i>\" she titters.  That doesn't stop her from hefting her engorged clit-dick and slapping its tip onto the entrance of your " + vaginaDescript(player, 0) + ".  With one jittery lurch forward, she shoves her clit up inside you, her pubic mound mashing up against your " + clitDescription(player) + ".", false);
                 player.cuntChange(9, true, true, false);
                 outputText("\n\n", false);

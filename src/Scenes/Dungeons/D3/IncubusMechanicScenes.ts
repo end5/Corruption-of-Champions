@@ -135,10 +135,10 @@ export class IncubusMechanicScenes {
         outputText("\n\nStiffening further at your declaration, the demon agrees. \"<i>It's probably the best idea you've had since coming through the portal. Come on then.</i>\" He slumps down against a bare spot on the console, edging his narrow hips forward to place his large cock at the perfect height for you to kneel and pleasure. \"<i>It ain’t gonna suck itself.</i>\"");
 
         outputText("\n\nScowling a little, you go ahead and get down off your [feet], bringing your [face] level with the pulsating, sexual monstrosity that seems to be growing larger by the second. This close, you can make out every fast-pumping vein. His tumescent crown pulsates, the helmet thickening and darkening with pleased engorgement. The demonic nodules that line the head fill, becoming more distinct: so hard, sensitive, and ready to stimulate you with their exotic texture.");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText(" You find your crotch becoming");
-            if (player.wetness() <= 2) outputText(" even more soaked than normal");
-            else if (player.wetness() <= 4) outputText(" wet with fresh lust");
+            if (player.vaginas.wetness() <= 2) outputText(" even more soaked than normal");
+            else if (player.vaginas.wetness() <= 4) outputText(" wet with fresh lust");
             else outputText(" sticky with lust");
             outputText(" at his masculine scent and appearance.");
         }
@@ -190,7 +190,7 @@ export class IncubusMechanicScenes {
         addButton(0, "Kill", killMechanic);
         addButton(1, "Let Go", letMechanicGo, hpVictory);
         if (player.cocks.length > 0) addButton(2, "Buttfuck", buttfuckTheMechanic, hpVictory);
-        if (player.hasVagina()) addButton(3, "Ride Cock", rideMechanicsCock);
+        if (player.vaginas.length > 0) addButton(3, "Ride Cock", rideMechanicsCock);
     }
 
     private killMechanic(): void {
@@ -379,8 +379,8 @@ export class IncubusMechanicScenes {
 
         // ALL CONTINUE TO THIS:
         outputText("\n\nYou dare not delay any further. Your [vagina] is so hot and slick with lube that it feels almost like it's steaming. It aches for penetration. Lifting yourself up off your [legs], you guide your wanton honeypot up until it's poised just above the " + cockDescriptShort(monster));
-        if (player.wetness() <= 2) outputText(", letting your free-flowing pussyjuice wash over it, lubricating it with your glorious girlcum");
-        else if (player.wetness() <= 3) outputText(", letting your oh-so-juicy vagina drip and dribble, soaking it with your copious girlcum");
+        if (player.vaginas.wetness() <= 2) outputText(", letting your free-flowing pussyjuice wash over it, lubricating it with your glorious girlcum");
+        else if (player.vaginas.wetness() <= 3) outputText(", letting your oh-so-juicy vagina drip and dribble, soaking it with your copious girlcum");
         else outputText(", letting your lubricant drip over it");
         outputText(". You stuff two fingers inside and stroke deep before pulling them out and using them to spread you wide open. The " + cockDescriptShort(monster) + " pulsates with every beat of its demonic owner's heart, needing you every bit as much as you now need it.");
 
@@ -459,7 +459,7 @@ export class IncubusMechanicScenes {
         }
 
         outputText("\n\nThe feeling triggers your own climax. Your [vagina] clenches down around his " + cockDescriptShort(monster) + " and gushes out around it, splattering the demon's crotch and legs the whole way down to his hooves. Arcs of femcum actually jet across the air");
-        if (player.wetness() < 4) outputText(", even though you aren't normally a squirter");
+        if (player.vaginas.wetness() < 4) outputText(", even though you aren't normally a squirter");
         outputText(". The pleasure is so great that you can feel electric impulses arcing between neurons, short-circuiting your throughs into involuntary ecstasy. Your eyes roll back, and your [hips] twitch and shake, vibrating around the object that brough you to this perfect");
         if (!player.isPregnant()) outputText(" insemination");
         else outputText(" tryst");
@@ -480,7 +480,7 @@ export class IncubusMechanicScenes {
     }
 
     public mechanicFuckedYouUp(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (player.cocks.length > 0 && !player.hasVagina()) {
+        if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             maleLossToMechanic(hpVictory);
         }
         else {
@@ -634,14 +634,14 @@ export class IncubusMechanicScenes {
 
         // Get turned into girl-lube pot.
         // Genderless Lust Loss
-        if (!player.hasVagina() && !hpVictory) {
+        if (!player.vaginas.length > 0 && !hpVictory) {
             outputText("You stagger about drunkenly, stuffing your hand down your [armor] to get at your needy, aching [asshole]. You feel like a molten-hot font of lust and a delirious, jizz-craving slut all at the same time. Nothing short of hours of endlessly rutting on a virile, demonic cock for hours will quench the flames of your ardor and give you the pleasure you now crave. You whimper, looking up at the incubus imploringly as you try to get him to take you, yanking open your [armor] to show off your ready sphincter and busily pumping fingers. You even spread yourself open, beckoning him to stuff you.");
             outputText("\n\nThe demon uncaps a bottle of something and presses it into your spread-open sphincter, pouring something into you. Before you try to push it out, you feel buzzing heat in your groin, so strong that it's practically disabling. Slowly, that heat focusing into an incredible, wet sensation. <b>You've grown a pussy!</b> The empty bottle falls to the ground.");
-            player.createVagina();
+            player.vaginas.createVagina();
             outputText("\n\n");
         }
         // Genderless HP Loss
-        else if (!player.hasVagina() && hpVictory) {
+        else if (!player.vaginas.length > 0 && hpVictory) {
             outputText("Collapsing onto the ground, you look up at the demonic aggressor with hate in your eyes, unwilling to admit defeat even when staring full-on into its face. The incubus, for his part, simply smiles down at you as he steps closer, claws clicking noisily on the smooth, tiled pavement.");
 
             outputText("\n\n\"<i>Is that all the mighty champion is capable of? Feeble resistance that ends itself before lust can be properly awakened? I am... disappointed in you,</i>\" the incubus admits as he kneels down to look at conquered prize. \"<i>Still, Lethice will be pleased to have you at hand at last. I think I might get to keep you.</i>\" He playfully manhandles his foot-long meat to smack against your [face], forcing you to get a good feel for his tainted cock, to smell lurid, sexual scent.");
@@ -652,7 +652,7 @@ export class IncubusMechanicScenes {
 
             outputText("\n\nWhile you are distracted, he unhooked your [armor], casting it aside, already forgotten. Like this... he can take you more easily. No! You've got to fight this. He gently strokes your [hair] and laughs. You clench needily, aching to feel him inside you. Acting while you're distracted, the incubus suddenly presses something smooth and cold against your exposed ass. Something flows out of it into you! It was a bottle. You squeeze down, trying to force it out, but it stays stubbornly inside you. The incubus pulls it out a moment later, but the damage is done. Increadible warmth gathers in your crotch. With it comes arousal. In seconds, you're panting, and lurid wetness spreads out from your crotch, leaking from <b>your new vagina.</b>");
 
-            player.createVagina();
+            player.vaginas.createVagina();
 
             outputText("\n\nGods, your pussy is wet, but you've got to fight it! You have to hold on, maybe bite him or something to give you the time to recover and get back on the offensive! Yeah... biting might do the trick. You inhale to steel yourself for the oral assault, getting a nice, long whiff of his supremely potent pheromones in the process. Your [clit] gets so stiff that you start writhing your [hips] in order to squish your cunt-lips tight around. <i>Mmmm, gotta attack...</i> you think, but your heart just isn't in it anymore. You open your mouth, letting him push his tip inside, so that you can bite him, of course. Oh, the flavor is so intense... so strong and masculine and perfect on your tongue that you decide NOT to chomp down. Not yet. You can spend a little time recovering first, with his wonderfully tasty, throbbing-hot demon-cock on your happily licking tongue.");
 
@@ -668,7 +668,7 @@ export class IncubusMechanicScenes {
             outputText("\n\nYou give a mewl of disappointment and open your eyes to see the incubus standing back a few feet, smirking at you, his cock hard, jutting, and leaking. That simply won't do! A dick like that... it needs to be sucked... tended to... until it can cum! You struggle out of your [armor] and up onto your [feet], staggering towards it with your hand still firmly lodged in your [vagina]. You've got to tempt him back to you, or catch him at the very least.");
         }
         // Lust Lawss
-        else if (player.hasVagina() && !hpVictory) {
+        else if (player.vaginas.length > 0 && !hpVictory) {
             outputText("You stagger about drunkenly, stuffing your hand down your [armor] to get at your needy, aching [vagina]. You feel like a molten-hot font of lust and a delirious, jizz-craving slut all at the same time. Nothing short of hours of endlessly rutting on a virile, demonic cock for hours will quench the flames of your ardor and give you the pleasure you now crave. You whimper, looking up at the incubus imploringly as you try to get him to take you, yanking open your [armor] to show off your splayed-open twat and busily pumping fingers. You even pull them out lick clean, hoping he'll enjoy the show as much as you enjoy your own taste.");
         }
         // HP Lawss:

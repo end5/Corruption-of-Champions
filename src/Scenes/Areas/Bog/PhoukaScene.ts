@@ -158,12 +158,12 @@ export class PhoukaScene implements TimeAwareInterface {
                 case 5:
                 case 6: // Offers you a chance to submit, which leads to the various defeat sex scenes
                     outputText(" considers for a moment and then says, <i>“You can't get away from me right now, so why don't you enjoy it?  Otherwise, maybe I bring in some of my friends an we all have at ya.”</i> The confidence in the " + phoukaName() + "'s gaze suggests he isn't bluffing.  He slowly circles you, hovering a few feet out of reach.  His eyes seem to be drinking in every detail of your body in a way that [if (corruption < 50)makes shivers run down your spine][if (corruption >= 50)makes your heart beat faster].\n\nThe " + phoukaName() + " continues, ");
-                    if (player.hasVagina())
+                    if (player.vaginas.length > 0)
                         outputText("<i>“Maybe yer inta bunnies, hrm?  Big bunny with a nice hard cock and strong legs, I can do that fer ya.  Fill that tight little muff o' yers up with a big load o' spunk!”\n\n“Or maybe ");
                     else
                         outputText("<i>“");
                     outputText("I could change inta a goat for ya.  That suit yer fancy?  Is it a fond dream o' yers to let a goat blow its load in yer cornhole?");
-                    if (player.hasVagina())
+                    if (player.vaginas.length > 0)
                         outputText("\n\nOh, there's one more ye might like.  Ever rode a stallion?  Ever wondered what it'd be like ta pack what a horse has between its legs inta what you've got tween yers?  Just say the word missy an' I'll change inta a stallion an split ye wide open.”</i>");
                     else
                         outputText("  If it ain't then tough shite, cause that's what I want.”</i>");
@@ -323,8 +323,8 @@ export class PhoukaScene implements TimeAwareInterface {
             else {
                 outputText("\n\nYou look at the sleeping phouka");
                 if (player.cocks.length > 0)
-                    outputText(", [eachCock] beginning to swell" + (player.hasVagina() ? " and your [vagina] starting to moisten" : "") + ".");
-                else if (player.hasVagina())
+                    outputText(", [eachCock] beginning to swell" + (player.vaginas.length > 0 ? " and your [vagina] starting to moisten" : "") + ".");
+                else if (player.vaginas.length > 0)
                     outputText(", your [vagina] starting to moisten.");
                 else outputText("and you feel your sphincter twitch as your brain thinks about what you could do with this phouka now."); // Genderless
             }
@@ -435,7 +435,7 @@ export class PhoukaScene implements TimeAwareInterface {
         outputText("\n<b>You feel something give way inside your belly...</b>\n\n");
         if (player.vaginas.length == 0) {
             outputText("There's a painful pressure in your groin... then you nearly black out and feel your crotch pull apart.  At first you assume it's some kind of hernia, then you realize you have a vagina once more.\n\n");
-            player.createVagina();
+            player.vaginas.createVagina();
             player.genderCheck();
         }
         if (flags[kFLAGS.PREGNANCY_CORRUPTION] > 6) { // You’ve been drinking like a fish, haven’t you?
@@ -502,7 +502,7 @@ export class PhoukaScene implements TimeAwareInterface {
     }
 
     protected phoukaSexAddStandardMenuChoices(): void { // This happens several times so it's broken out here in case additional options get added later
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             addButton(1, "Bunny", phoukaSexBunnyChoice);
             addButton(2, "Horse", phoukaSexHorseChoice);
         }
@@ -541,7 +541,7 @@ export class PhoukaScene implements TimeAwareInterface {
         else
             outputText(" You are powerless to stop the bunny-morph as he undoes the last few straps holding your [armor] in place.");
         outputText("\n\nThe bunny's large feet take up position on either side of your [if (isNaga = true)tail][if (isNaga = false)rump] and you feel the tip of his cock brush against your cunt.  The bunny whispers <i>“[if (isPregnant = true)Time te feed the baby][if (isPregnant = false)Maybe today I'll leave ye a present].”</i>\n\nThe " + phoukaName() + " [if (isNaga = true)bends you over backwards, exposing your slit.  He][if (isTaur = true)strokes your flanks with his paws.  Next he] begins to grind his cock [if (isNaga = true)against your exposed underbelly][if (isNaga = false)between your legs], sliding it against your [clit] each time.  Shivers run up your spine as his fur tickles your [if (isNaga = true)scales from the top to the tip of your tail][if (isNaga = false)legs, back, butt and thighs].  When the bunny-morph is good and ready, he lines up and jams his pole into your moist pussy.  ");
-        if (player.hasVirginVagina())
+        if (player.vaginas.hasVirginVagina())
             outputText("You scream as the " + phoukaName() + "'s cock tears your hymen apart.  He stops thrusting and says <i>“A virgin? Here? Good goddess, missy, ya should have told me.”</i> In a lower tone he adds <i>“so I could have enjoyed it more.”</i> Your whole vagina burns as every fold is stretched and widened by the passage of the rabbit's cock.");
         else if (postCombat && (player.vaginas[0].vaginalLooseness < 2))
             outputText("You nearly pass out from the pain as the " + phoukaName() + "'s cock lengthens and thickens inside you.");
@@ -572,7 +572,7 @@ export class PhoukaScene implements TimeAwareInterface {
             else outputText("Then you put on a show, taking your clothes off piece by piece.  You strip off your final undergarment, bend over and wink your asshole at the goat.");
         }
         phoukaForm = PHOUKA_FORM_GOAT;
-        if (player.hasVagina())
+        if (player.vaginas.length > 0)
             outputText("\n\n<i>“Aw missy, why’d ye have te be so cruel? Ye’ve got that sexy cunt there just beggin’ fer a cock,”</i> says the goat, wrapping his front legs around your [if (isTaur = true)flanks][if (isTaur = false)upper body]. When you stare at him he laughs and adds <i>“I’ll give yer ass a good poundin if that’s what ye want - don’t worry about that. I just don’t know why ye don’t want me in here.”</i> His smooth hoof slides up and down your slit before he gets down to business.\n\n");
         else
             outputText("\n\n<i>“I can't wait to plunder that [butt] of yours.”</i> says the goat, wrapping his front legs around your [if (isTaur = true)flanks][if (isTaur = false)upper body].\n\n");
@@ -642,7 +642,7 @@ export class PhoukaScene implements TimeAwareInterface {
             outputText("  You hear the " + phoukaName() + " say <i>“Now line me up with yer cunt lass, or I'll lay down on top of ya and have a nap.”</i> Not wanting to be crushed under that kind of bulk, you reach [if (isNaga = true)up][if (isNaga = false)behind you] and grab his member.  You place his cock at the entrance to your [vagina] and the stallion steps forward.  [if (vagCapacity < 50)His cock bends and then snaps free of your cunt, slapping against his belly. <i>“Again! And do it right this time!”</i> he shouts.  You line it up once more and press against it with your hands so it has nowhere to go but in.]");
         }
         outputText("  You're convinced you're going to be split in half by this monster horse cock.\n\n");
-        if (player.hasVirginVagina())
+        if (player.vaginas.hasVirginVagina())
             outputText("You scream as the " + phoukaName() + "'s cock tears your hymen apart.  He stops mid-thrust and asks <i>“A virgin? Here? Good goddess missy ya should have told me.”</i> In a lower tone he adds <i>“so I could have enjoyed it more.”</i> Your whole vagina burns as every fold is stretched and widened by the passage of the " + phoukaName() + "'s huge horse cock.  You think he's delighted to have taken a woman from virgin to gaping in just one thrust.  ");
         else if ((postCombat) && (player.vaginas[0].vaginalLooseness < 3))
             outputText("You nearly pass out from the pain as the " + phoukaName() + "'s cock drives deeper and deeper inside you.  With such a wide head forcing its way in, you're sure the stretching will be permanent.  ");
@@ -674,7 +674,7 @@ export class PhoukaScene implements TimeAwareInterface {
             outputText("You know you can’t really keep control of him.  Once he’s behind your rear legs he’ll be able to do whatever he wants.  Before he realizes that, you spin round and flick your tail at him.  He grins and slides his fingers over your rump.  You let your belly settle against the thick mire of the bog and your partner gently slides his cock inside you.  He must know a thing or two about centaurs thanks to being able to take the form of a stallion.  His fingers start to massage some sensitive areas on the insides of your rear thighs.  Then he starts to nibble at the base of your tail with his teeth.  You can’t help but moan and he takes that as a sign to pick up the pace.  Soon enough his human-sized cock is slamming in and out of your ");
         else
             outputText("Not wanting him to think he's an equal partner in all this, you shove him onto his back and [if (isNaga = true)coil your tail over][if (isNaga = false)straddle] your full sized faerie lover while you strip off the last of your armor.  You can feel his hot and hard cock rubbing against your [if (isNaga = true)scales][if (isNaga = false)ass].  Maybe this isn't getting through to him.  Oh well, you're primed for a good fuck anyway.  He's already leaked enough pre for lubrication so you guide his dick to your waiting [vagOrAss].\n\nThe " + phoukaName() + " thrusts upward, trying to spear you from the ground.  'No more of that' you think, planting one hand on his belly.  You lower yourself slowly onto the oversized faerie's cock, hoping to get more out of this than him.  Now that you're holding him down you set the pace.  You also control the angle of his cock, making sure it hits all the high notes inside your ");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("[vagina].");
             player.cuntChange(20, true);
             outputText("\n\nYou're getting closer and closer to cumming when you feel the " + phoukaName() + "'s cock twitch inside you.  The bastard is already there!");

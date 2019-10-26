@@ -325,7 +325,7 @@ export class Lake {
                 if (player.cocks.shortestCockLength() > 48) outputText("\n\nUnfortunately, you don't think she can quite handle your cock.");
                 else addButton(0, "Fuck Her", ottergirlLikesDongs);
             }
-            if (player.hasVagina() || !player.cocks.length > 0) addButton(1, "Facesitting", ottersForGals);
+            if (player.vaginas.length > 0 || !player.cocks.length > 0) addButton(1, "Facesitting", ottersForGals);
         }
         if (flags[kFLAGS.MET_OTTERGIRL] > 1) addButton(2, "Get Fish", getSomeFishYaFatty);
         addButton(4, "Leave", avoidZeOtterPussy);
@@ -383,9 +383,9 @@ export class Lake {
         else if (player.cocks[x].cockType == CockTypesEnum.ANEMONE) outputText("to the little wriggling tentacles ringing the head and base of your cock, ");
         else outputText("to the sensitive little spot on the underside of the head, ");
         outputText("lavishing it with attention.  Precum and saliva practically pour down the length of your shaft, tickling your ");
-        if (player.balls > 0 && player.hasVagina()) outputText("balls and cunt");
+        if (player.balls > 0 && player.vaginas.length > 0) outputText("balls and cunt");
         else if (player.balls > 0) outputText("balls");
-        else if (player.hasVagina()) outputText("cunt");
+        else if (player.vaginas.length > 0) outputText("cunt");
         else outputText("ass");
         outputText(" as they dribble down and form a small puddle between your [legs].");
 
@@ -449,12 +449,12 @@ export class Lake {
         outputText("\n\nStrange, but you oblige, stripping off your [armor] and gear and tossing them aside.  Callu instructs you to lay down on the beach next to her fishing pole, which you likewise oblige.  The otter-girl straddles your stomach, facing away from you, though her thick, heavy tail is thankfully kept away from your face.");
 
         outputText("\n\nCallu leans down, laying her body across yours so that her warm, sweet-smelling cunt is positioned just in front of your face.  Meanwhile, you feel delicate, powerful fingers probing at your [vagOrAss].  A long wet tongue licks over your ");
-        if (player.hasVagina()) outputText("folds");
+        if (player.vaginas.length > 0) outputText("folds");
         else outputText("pucker");
         outputText(", and you feel compelled to do the same to her.  You let your tongue extend and lap at her delicate pussy lips.  In no time at all, they become puffy and flushed, blossoming outwards like a perverse flower.  You run your tongue up and down each and every fold, occasionally stopping to flick your tongue over her rapidly hardening clitoris.");
 
         outputText("\n\nLikewise, her tongue and lips dance across your flesh like a trio of dancers.  They twirl, spin, hop and tease.  Not one inch is left untouched.  From your ");
-        if (player.hasVagina()) outputText("clit");
+        if (player.vaginas.length > 0) outputText("clit");
         else outputText("unnatural bare crotch");
         outputText(" down to your pucker, she leaves a trail of sloppy smooches.  You mirror her movements, attempting to give her the same experience she's giving you.  A low murr escapes her lips, and she squirms above you slightly as your tongue hits the right spots.");
 
@@ -470,19 +470,19 @@ export class Lake {
         outputText("\n\nGrinning down at you, your face plastered in girlcum, the fisherwoman leans down and gives you a great big kiss.  \"<i>Mmm, ain't that a tasty treat,</i>\" she notes.  \"<i>Now since ya been so good to me, I just wanna return the favor.</i>\"  Callu gets back in the sixty-nine position that started this all off, but grabs hold of you and flips over onto her back.");
 
         outputText("\n\nYou sit up, straddling her face this time, as she dives nose first into your ");
-        if (player.hasVagina()) outputText("quivering quim");
+        if (player.vaginas.length > 0) outputText("quivering quim");
         else outputText("rump");
         outputText(".  Her lips are like magic as they go, sucking and lavishing your entire crotch with delightful attention.  You find your entire body shivering with pleasure as she attends to you, your body quickly heating up as her tongue presses all of your buttons.  Everything from your fingertips down to your toes tingles and shudders under Callu's ministrations, leaving you squirming and undulating on her face, a deeply satisfied growl rising in your throat.");
 
         outputText("\n\nGrabbing hold of your [nipples], you start playing with them while Callu does her thing.  Your fingers deftly tweak and tease them, knowing all the right techniques to really get you going.  ");
         if (player.breasts.hasFuckableNipples()) outputText("You even slip a finger or two inside, stretching your nipple-cunts out with deliciously pleasurable results.  ");
         outputText("Combined with Callu's tender tongue ");
-        if (player.hasVagina()) outputText("paying lip service to your wet cunt");
+        if (player.vaginas.length > 0) outputText("paying lip service to your wet cunt");
         else outputText("doing a cave dive in your rear");
         outputText(", you can't hold out much longer.  All the tingling in your body seems to get forced through your veins, coalescing in a single spot within your groin.  The pressure builds and builds as orgasmic energies begin overflowing.  Your legs and arms tremble, your head wobbles uncertainly, and you can't even guess at what your spine is attempting to do.");
 
         outputText("\n\nThe pleasure within you finally bursts outwards, shooting through every nerve, inflaming every fiber of your being.  ");
-        if (player.hasVagina()) outputText("Your snatch clenches and clamps down on thin air, flooding Callu's face with your feminine juices in a tasty, refreshing spray.");
+        if (player.vaginas.length > 0) outputText("Your snatch clenches and clamps down on thin air, flooding Callu's face with your feminine juices in a tasty, refreshing spray.");
         else outputText("Your asshole clenches and spasms randomly, aching to be filled by something, anything in your quest for release.");
         outputText("  The orgasmic bliss makes you collapse forwards, dropping you onto all fours. However, your blonde lover grips your thighs firmly, clearly intent on fully repaying her debt.");
 

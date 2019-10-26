@@ -251,7 +251,7 @@ export class Sophie extends Harpy {
         this.imageName = "sophie";
         this.long = "Sophie is approximately the size of a normal human woman, not counting the large feathery wings that sprout from her back.  Her face is gorgeous, with large rounded eyes and glimmering amber lip-gloss painted on her lush, kissable lips.  In spite of her beauty, it's clear from the barely discernible laugh lines around her mouth that she's been around long to enough to have quite a few children.  Her feathers are light pink, though the downy plumage that comprises her 'hair' is brighter than the rest.  She moves with practiced grace despite the large, jiggling breasts that hang from her chest.  Judging from her confident movements, she's an experienced fighter.";
         // this.plural = false;
-        this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING_WIDE);
+        this.vaginas.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_GAPING_WIDE);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;

@@ -77,12 +77,12 @@ export class AbstractSpiderMorph extends Monster {
             outputText("The arachnid aggressor slowly saunters forward while you struggle under the heaps of webbing, gently placing " + mf("his", "her") + " arms around your back in a tender hug.  " + mf("His", "Her") + " fangs slide into your neck with agonizing slowness, immediately setting off a burning heat inside you that makes you dizzy and weak.  ", false);
             if (player.cocks.length > 0) {
                 outputText(SMultiCockDesc(player) + " turns rock hard and squirts weakly, suddenly so aroused that it starts soaking your " + player.armorName, false);
-                if (player.hasVagina()) outputText(" along with your " + vaginaDescript(player), false);
+                if (player.vaginas.length > 0) outputText(" along with your " + vaginaDescript(player), false);
                 outputText(".  ", false);
             }
-            else if (player.hasVagina()) outputText("Your " + vaginaDescript(player) + " grows wet as hell and so sensitive that every step and movement reminds you of the powerful need for something between your sopping nether-lips.  ", false);
+            else if (player.vaginas.length > 0) outputText("Your " + vaginaDescript(player) + " grows wet as hell and so sensitive that every step and movement reminds you of the powerful need for something between your sopping nether-lips.  ", false);
             outputText("While " + mf("his", "her") + " venom pours into you, the spider-" + mf("boy", "girl") + " reaches into your gear to play with your " + nippleDescription(player, 0) + ", and you moan like a whore from the dual stimulation of " + mf("his", "her") + " venom and nipple-play.\n\n", false);
-            if (hasVagina()) outputText("The saucy dominatrix exhausts her supply of aphrodisiac toxin for the moment and finally steps back, admiring her work and giving you a lewd wink.  You ", false);
+            if (this.vaginas.length > 0) outputText("The saucy dominatrix exhausts her supply of aphrodisiac toxin for the moment and finally steps back, admiring her work and giving you a lewd wink.  You ", false);
             else outputText("The confident male exhausts his supply of aphrodisiac toxin for the moment and finally steps back, admiring his work and giving you a lewd wink.  You ", false);
             dynStats("lus", 60);
             if (player.lust > 99) outputText("wobble, utterly defeated and about to cave in to your lust.", false);
@@ -115,7 +115,7 @@ export class AbstractSpiderMorph extends Monster {
         else {
             if (rand(5) == 0) {
                 outputText("You react far too slowly, and before you can even think to dodge, " + mf("he", "she") + "'s bitten deep into you, pumping large squirts of venom deep into your body.  Unnatural heat rolls through you, pooling in your groin until you're lewdly bucking your hips against the spider-morph's thigh.  " + mf("He", "She") + " pulls out and steps back, ", false);
-                if (hasVagina()) outputText("casually cupping her breasts while you watch with venom-dilated eyes, slowly touching yourself.  Once she stops, you shake your head and master yourself, remembering that you're supposed to be fighting this " + mf("boy", "girl") + "!\n", false);
+                if (this.vaginas.length > 0) outputText("casually cupping her breasts while you watch with venom-dilated eyes, slowly touching yourself.  Once she stops, you shake your head and master yourself, remembering that you're supposed to be fighting this " + mf("boy", "girl") + "!\n", false);
                 else outputText("casually tugging on his relatively short, girthy dick as you watch with venom-dilated eyes, slowly touching yourself.  Once he stops, you shake your head and master yourself, remembering that you're supposed to be fighting this " + mf("boy", "girl") + "!\n", false);
                 dynStats("lus", 50);
             }

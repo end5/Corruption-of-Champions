@@ -186,7 +186,7 @@ export class Ifris extends TelAdreAbstractContent {
 
                 outputText("Suddenly it seems she loses her patience for teasing, much to your delight, and the hard, long pull on your cock as she pulls back is like heaven, her cheeks caved inward. She descends quickly, all but face-fucking herself on your rod again and again, lewd, wet squelching rising up from her stuffed throat. It isn't long before you're groaning in ecstasy, wishing you had the strength to grip her head, make her slow down so you can draw it out and enjoy it, but all too soon the pleasure is rushing up to meet you, your " + ballsDescriptLight(player) + " tightening, even as she cups ", false);
                 if (player.balls > 0) outputText("them and gently squeezes the sack.\n\n", false);
-                else if (player.hasVagina()) outputText("your lower lips and gently squeezes.\n\n", false);
+                else if (player.vaginas.length > 0) outputText("your lower lips and gently squeezes.\n\n", false);
                 else outputText("your taint and gently squeezes.\n\n", false);
 
                 outputText("Just as you can take no more, the pretty devil buries her face in your crotch, swallowing around your dick desperately. You give a shout of pleasure as your length swells and twitches, the hot bursts of your seed pumping down into her belly. She waits patiently, almost looking like she's smiling around the base of your dick, even as her eyes flutter, almost rolling back in her head. Finally the bursts of your cum subside and she slowly pulls up off your shaft, giving the oversensitive tip one last hard, almost painful suckle before parting from your flesh with a lewd plop. She licks her lips slowly, leaving you panting and feeling light-headed as she rises, only giving your cock a gentle pat as she passes by, leaving with a spring in her step and a trail of glistening wetness down her thighs...", false);
@@ -211,7 +211,7 @@ export class Ifris extends TelAdreAbstractContent {
             flags[kFLAGS.TIMES_FUCKED_IFRIS_BLOWJOB]++;
         }
         // 4b4-PC succeeds! Is female!-
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             if (flags[kFLAGS.TIMES_FUCKED_IFRIS_LICKED] == 0) {
                 outputText("Gripping the bars tightly, you grit your teeth and give a mighty push upwards! Your muscles strain and you grunt with effort, a little amazed gasp leaving the red beauty's lips as the weights lift slowly but surely. You can't help but grin proudly as your elbows lock, the weight completely lifted, and you bring it back down, only to push again.\n\n", false);
 

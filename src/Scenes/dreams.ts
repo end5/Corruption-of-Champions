@@ -189,7 +189,7 @@ export function dreamSelect(): boolean {
         // cat
         else if (daydream == 4) {
             // FEMALE
-            if (player.hasVagina() && (!player.cocks.length > 0 || rand(2) == 0))
+            if (player.vaginas.length > 0 && (!player.cocks.length > 0 || rand(2) == 0))
                 outputText("being a full cat and getting pounded by another as you mewl with pleasure.  He comes and pulls out, the barbs on his cock rake your insides as you yowl from the sensation. You clean yourself before searching for another cat to pound you, then another, and another...  ", false);
             // MALE
             else
@@ -316,7 +316,7 @@ export function dreamSelect(): boolean {
                     outputText("\n\nIt all sinks in now, you are just like them.  As they pull off your fancy, girly clothing your bulging panties come into view and they begin to play with your body in ways that feel so wonderful.  You begin to reach out and play with their little trap cocks as they begin to pound away at your tiny hole.  So many cute little erections around you as you suckle and lick at them all like candy.");
                     outputText("\n\nYou awake with a moan, right where you went to sleep in the middle of your camp.  ");
                     if (player.cocks.length > 0) outputText("  [EachCock] is fully erect and throbbing.");
-                    else if (player.hasVagina()) outputText("  Your [vagina] dripping wet with need.");
+                    else if (player.vaginas.length > 0) outputText("  Your [vagina] dripping wet with need.");
                     outputText("  You shudder as you recall the erotic dream you were just having, a hand caressing your aching loins.");
                     // end dream
                     // lust increase

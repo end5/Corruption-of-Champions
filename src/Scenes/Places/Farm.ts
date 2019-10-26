@@ -684,11 +684,11 @@ export class Farm {
             if (milksplosion == 2) {
                 outputText("Fat drops of milk pour out of your " + nippleDescription(player, 0) + "s, pooling in the milking-cups as the machine begins to extract your creamy breast-milk.   The milk flow begins streaming out of you it bursts of fluid as the machinery switches to a pulsating suction.  You groan happily as your " + allBreastsDescript(player) + " empty, relieving you of pent up pressure.   The feeling is enjoyable in more than just that way, and you feel yourself getting ", false);
                 if (player.cocks.length == 0) {
-                    if (player.hasVagina()) outputText("wet", false);
+                    if (player.vaginas.length > 0) outputText("wet", false);
                     else outputText("horny", false);
                 }
                 else {
-                    if (player.hasVagina()) outputText("wet and ", false);
+                    if (player.vaginas.length > 0) outputText("wet and ", false);
                     outputText("hard", false);
                 }
                 outputText(" from the sensation.  Over the next hour you're drained totally dry, until the only answer to the machine's effort is a tiny trickle of whiteness.  The harness gently lowers you to the ground and releases you, leaving you feeling sore.\n\n", false);
@@ -705,11 +705,11 @@ export class Farm {
             if (milksplosion == 1) {
                 outputText("Your " + nippleDescription(player, 0) + " swell up like tiny balloons for a moment before they unleash a torrent of your milk.  The nipple-cylinders instantly flood to capacity, and the milking machinery chugs loudly as it tries to suck it all down the tubes, barely keeping up with you.  You pant and writhe in the harness, each pulse of milk sending a growing sensation of your warmth to your groin that makes you ", false);
                 if (player.cocks.length == 0) {
-                    if (player.hasVagina()) outputText("wet", false);
+                    if (player.vaginas.length > 0) outputText("wet", false);
                     else outputText("horny", false);
                 }
                 else {
-                    if (player.hasVagina()) outputText("wet and ", false);
+                    if (player.vaginas.length > 0) outputText("wet and ", false);
                     outputText("hard", false);
                 }
                 outputText(" with excitement.  The milking drags on for an hour, but your output only slows slightly, forcing the machinery to work at maximum capacity the entire time.  At last it ends, and the harnesses lower you to the ground.  The milk cups pop off, leaving your leaky tits to make a puddle on the floor.\n\n", false);
@@ -725,7 +725,7 @@ export class Farm {
             milksplosion = rand(2);
             if (milksplosion == 0) {
                 outputText("Your " + nippleDescription(player, 0) + "s twitch and pulse for but a moment, then unleash a torrent of milk, totally filling the tubes.  The machinery lurches, struggling to keep up as you flood the tubes.   An alarm starts blaring as milk begins leaking out around the edges – Whitney's machinery just can't keep up!  You can hear footsteps in the barn, and a pair of soft hands hold the cups against your chest.   The machinery is shut down, but another pair of hands begins massaging your " + allBreastsDescript(player) + ", pumping wave after wave of milk through the tubes, unaided by the machinery.  You practically ", false);
-                if (player.hasVagina()) outputText("cream yourself", false);
+                if (player.vaginas.length > 0) outputText("cream yourself", false);
                 else if (player.cocks.length) outputText("jizz yourself", false);
                 else outputText("orgasm", false);
                 outputText(" from the attentions of your mysterious helper as the milking continues, so hot and horny that you try and wriggle in your harness to press against them.   After an hour of non-stop squeezing and spurting, your milking is over, and the hands release you.  The cups fall to the ground, and the harness lowers you to the ground.  By the time you can crane your head around, your helper has left.\n\n", false);
@@ -1133,7 +1133,7 @@ export class Farm {
         outputText(" reaches your ears as your second deposit is massed, but your attention is drawn to the new tube", false);
         /// (if vag/nipplecunts/lactation)
         let tubes: boolean = false;
-        if (player.hasVagina() || player.breasts.hasFuckableNipples() || player.breasts.biggestLactation() > 1) {
+        if (player.vaginas.length > 0 || player.breasts.hasFuckableNipples() || player.breasts.biggestLactation() > 1) {
             outputText("s", false);
             tubes = true;
         }
@@ -1142,7 +1142,7 @@ export class Farm {
         else outputText("one of them", false);
         outputText(" inserts a rod-like end into your mouth and begins trickling salty fluids down your throat.", false);
         // [(if vag)
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("  Another tube, likewise capped with a thick, firm end instead of a suction cup, reaches your " + vaginaDescript(player, 0) + " and pushes inside, secreting more of the fluid.  ", false);
             player.cuntChange(15, true);
             // [(bigclit)
@@ -1170,7 +1170,7 @@ export class Farm {
         if (cumQ > 1000) outputText(", spraying out of the overflow valve and coating your entire lower body", false);
         outputText(".", false);
         // [(if vag)
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("  Your cunt spasms around its invader, milking the pseudo-cock and drawing the tainted semen it emits even deeper into your womb", false);
             // [(big clit)
             if (player.clitLength > 3) outputText(", and your clitoris twitches under the cup, threatening to black you out from the pleasure", false);
@@ -1193,7 +1193,7 @@ export class Farm {
         if (player.cor > 90) {
             outputText("After literally hundreds of orgasms, the machine once again begins carefully regulating its suction, denying your release.  Repeatedly it teases your " + multiCockDescriptLight(game.player), false);
             // [(vag)
-            if (player.hasVagina()) outputText(" and " + vaginaDescript(player, 0), false);
+            if (player.vaginas.length > 0) outputText(" and " + vaginaDescript(player, 0), false);
             outputText(" to the edge of orgasm and then backs off.  All the pumping in the world can't seem to get you over it, and your frustration mounts as the minutes roll by.  A sharper pressure than usual forms at the base of your " + multiCockDescriptLight(game.player) + " as you fruitlessly grind into the tubes, wishing more than anything to climax; the green light on the wall steadfastedly refuses to light up, mocking your attempts.  From the new pressure an odd strength flows through the rest of your body, increasing your sexual fervor and giving you a second wind, and you finally manage to get a good grip on the tubes, nearly slamming them back and forth on your shaft", false);
             if (player.cocks.length > 1) outputText("s", false);
             outputText(".  This damn demon machine can't stop you from getting off anymore; with a violent shove you bury " + sMultiCockDesc(game.player) + " into the mouth", false);

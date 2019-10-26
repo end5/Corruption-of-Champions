@@ -428,7 +428,7 @@ export class MilkWaifu extends NPCAwareContent {
             outputText(".  Leaning over the two titanic teats between you, she traces a line of kisses down your back, licking up stray drops of milk between affectionate caresses.");
         }
         // {If PC has cooch:
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nHer hands shift downwards, delicate fingertips slipping across the slit of your [vagina].  You gasp, shivering as her milk-slick fingers easily slip into your sodden box, her thumb swirling gently around your [clit].  Her other hand traces upwards, carressing your [hips] and [butt] before finally arriving at your [chest], which she massages with well-practiced skill.");
             // If PC has tits:
             if (player.breasts.biggestTitSize() >= 1) {
@@ -440,7 +440,7 @@ export class MilkWaifu extends NPCAwareContent {
         menu();
         addButton(4, "Don't", dontFuckTheMilkWaifu);
         if (player.cocks.length > 0) addButton(0, "Fuck Her", fuckTheMilkWaifu);
-        if (player.hasVagina() && player.breasts.biggestTitSize() >= 3) addButton(1, "LesboFuck", beARugMunchingMilkDyke);
+        if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 3) addButton(1, "LesboFuck", beARugMunchingMilkDyke);
 
     }
 
@@ -510,7 +510,7 @@ export class MilkWaifu extends NPCAwareContent {
         if (flags[kFLAGS.MILK_SIZE] == 0) outputText("a dinner plate");
         else outputText("an open palm");
         outputText(" but far more exciting.  After taking a few swallows of her body's milky treat, you reach down to your ");
-        if (player.hasVagina()) outputText("[vagina] and idly stroke your puffy, lust-engorged vulva");
+        if (player.vaginas.length > 0) outputText("[vagina] and idly stroke your puffy, lust-engorged vulva");
         else {
             outputText("[cock] and idly stroke the turgid mass");
         }
@@ -527,7 +527,7 @@ export class MilkWaifu extends NPCAwareContent {
             outputText("With your off-hand, you rub your cream-lubricated fingers through your sodden gash, the flesh parting easily to allow a few of your questing fingers inside.  Delicious bliss unfolds from your [clit] as it pushes free of its hood, fully engorging, faintly throbbing from aching need.  You brush the button a few times before going back to fingering your box, yet you make sure to strum your thumb across your clit every few moments to keep yourself as close to peak as possible.  Truly, being a hermaphrodite is bliss.");
         }
         // (DA SCHLICKS)
-        else if (player.hasVagina()) outputText("Your pussy juices mix freely with the tub's white-colored 'waters', allowing your cream-lubed fingers to plunge into your [vagina] with ease.  You stroke your lips and caress the interior of your birth canal with the intimate familiarity of a skilled lover, playing with your body until you feel your control slipping, so wound up with lust that you feel like an over-tightened guitar string vibrating out of control.");
+        else if (player.vaginas.length > 0) outputText("Your pussy juices mix freely with the tub's white-colored 'waters', allowing your cream-lubed fingers to plunge into your [vagina] with ease.  You stroke your lips and caress the interior of your birth canal with the intimate familiarity of a skilled lover, playing with your body until you feel your control slipping, so wound up with lust that you feel like an over-tightened guitar string vibrating out of control.");
         // (DA DUDES)
         else {
             outputText("[OneCock] throbs painfully in your hand, so hot and hard that you're sure you must have begun to leak precum, but any fluid is swiftly washed away by the ever-present milk.");
@@ -543,7 +543,7 @@ export class MilkWaifu extends NPCAwareContent {
             if (player.cumQ() >= 1500) outputText("  With every torrent of seed you release, you can see it lift partway out of the tub, propelled by your incredible virility towards the nearest female specimen.");
             if (player.cumQ() >= 4000) outputText("  Soon, the tub's fluid contents break out of their confines to stain your companion's dusky flesh white, an alabaster glaze that would entice you to further feats of debauchery were it not for the pleased contentment your maleness now radiates.");
         }
-        if (player.hasVagina()) outputText("  Meanwhile, your juiced-up cunny feels like it's doing backflips inside you, contorting and squeezing as it gushes with fluid, feminine joy.  One brush on your [clit] knocks your [legs] out from underneath you, but thankfully, you float out the rest of your orgasm.");
+        if (player.vaginas.length > 0) outputText("  Meanwhile, your juiced-up cunny feels like it's doing backflips inside you, contorting and squeezing as it gushes with fluid, feminine joy.  One brush on your [clit] knocks your [legs] out from underneath you, but thankfully, you float out the rest of your orgasm.");
 
         outputText("\n\nA drawn out, low coo of contentment emanates from the other girl as you separate from her, and she bashfully whispers, \"<i>Thank you,</i>\" as she ");
         if (flags[kFLAGS.MILK_SIZE] == 0) outputText("drags her gigantic tits over the puddly, milk-slicked floor");

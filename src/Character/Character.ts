@@ -110,7 +110,7 @@ export class Character extends Creature {
         if (arg <= -1)
             bonus = -9000;
         // If unpregnant and fertility wins out:
-        if (pregnancyIncubation == 0 && totalFertility() + bonus > Math.floor(Math.random() * beat) && hasVagina()) {
+        if (pregnancyIncubation == 0 && totalFertility() + bonus > Math.floor(Math.random() * beat) && this.vaginas.length > 0) {
             knockUpForce(type, incubation);
             trace("PC Knocked up with pregnancy type: " + type + " for " + incubation + " incubation.");
         }

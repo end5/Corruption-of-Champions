@@ -215,7 +215,7 @@ export class SophieBimbo extends NPCAwareContent {
 
                         outputText("\"<i>Enjoying the show?</i>\" she purrs in one breathy exhalation.  You look up, straight into her plush, amber-colored lips and shudder, unconsciously imagining those", false);
                         if (player.cocks.length > 0) outputText(" cock-pillows slurping around your member.", false);
-                        else if (player.hasVagina()) outputText(", fuckable pussy-pillows crushing against your quim.", false);
+                        else if (player.vaginas.length > 0) outputText(", fuckable pussy-pillows crushing against your quim.", false);
                         else outputText(", fuckable pillows locking you in their embrace.", false);
                         if (player.cor < 33) outputText("  You find yourself nodding and blushing heavily as you drink in the bimbo's body.", false);
                         else if (player.cor < 66) outputText("  You find yourself nodding and giving a lewd grin as you drink in the bimbo's body.", false);
@@ -458,7 +458,7 @@ export class SophieBimbo extends NPCAwareContent {
                 addButton(6, "Big Impreg", giantCocksImpregnateSophie);
             }
         }
-        if (player.hasVagina()) addButton(3, "Get Licked", bimboSophieLicksRugs);
+        if (player.vaginas.length > 0) addButton(3, "Get Licked", bimboSophieLicksRugs);
         if (flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] > 0 && (player.gender > 0) && !pregnancy.isPregnant) {
             if (player.hasItem(consumables.OVIELIX) || inventory.hasItemInStorage(consumables.OVIELIX)) {
                 addButton(4, "Ovi Elixir", sophieEggApocalypse);
@@ -522,7 +522,7 @@ export class SophieBimbo extends NPCAwareContent {
             else {
                 dynStats("lus", 10);
                 outputText("While standing there, drinking a sip of water, strong hands pull down your " + player.armorName + ".  Plump lips slide over your ");
-                if (player.hasVagina()) outputText("vulva, sucking at your clitoral hood.  Those gold, slobbery pussy-lickers look good on your groin, and you find yourself releasing your wetness from her oral attentions.  It might be time to fuck her soon...", false);
+                if (player.vaginas.length > 0) outputText("vulva, sucking at your clitoral hood.  Those gold, slobbery pussy-lickers look good on your groin, and you find yourself releasing your wetness from her oral attentions.  It might be time to fuck her soon...", false);
                 else outputText("smooth groin, eventually licking at your [asshole].  Those gold, slobbery lickers look good pressed against you.  It might be time to fuck her soon...", false);
             }
             sophieScene.luststickApplication(5);
@@ -586,9 +586,9 @@ export class SophieBimbo extends NPCAwareContent {
         else if (player.cor < 66) outputText("You nod and smile, blushing a bit in anticipation of feeling your bimbo-slut's fat, pussy-licking lips against your slit.", false);
         else outputText("You confidently smile and scoot your " + hipDescription(player) + " forward, anticipating the feeling of your bimbo-bitch's fat, pussy-licking lips on your slit.", false);
         outputText("  Sophie just looks at you, her wide-eyed gaze never leaving your engorged labia.  After what feels like a full minute of her watching you, she finally remembers that a nod means 'yes', and she bounces up and down in excitement, clapping and cheering while her tits jiggle ludicrously.  She leans in close, nearly brushing her nose into your ", false);
-        if (player.wetness() < 3) outputText("moist", false);
-        else if (player.wetness() < 4) outputText("wet", false);
-        else if (player.wetness() < 5) outputText("sloppy", false);
+        if (player.vaginas.wetness() < 3) outputText("moist", false);
+        else if (player.vaginas.wetness() < 4) outputText("wet", false);
+        else if (player.vaginas.wetness() < 5) outputText("sloppy", false);
         else outputText("soaked", false);
         outputText(" folds.  The harpy stops to look up at you with wide eyes, then slowly extends her tongue.\n\n", false);
 
@@ -612,10 +612,10 @@ export class SophieBimbo extends NPCAwareContent {
         if (player.clitLength < 3) outputText("hums on your clit and doubles the speed of her licking while you watch her finger-fucking her sloppy cunt.", false);
         else outputText("pumps on your clit with her hand and doubles the speed of her lashing tongue while you watch her finger-fucking her sloppy cunt.", false);
         outputText("  The sight pushes you over the edge in a climax of body-shaking, muscle-locking proportions.  You seize up and ", false);
-        if (player.wetness() >= 5) outputText("squirt", false);
-        else if (player.wetness() >= 4) outputText("gush", false);
-        else if (player.wetness() >= 3) outputText("leak", false);
-        else if (player.wetness() >= 2) outputText("dribble", false);
+        if (player.vaginas.wetness() >= 5) outputText("squirt", false);
+        else if (player.vaginas.wetness() >= 4) outputText("gush", false);
+        else if (player.vaginas.wetness() >= 3) outputText("leak", false);
+        else if (player.vaginas.wetness() >= 2) outputText("dribble", false);
         else outputText("drool", false);
         outputText(" fem-spunk all over Sophie's face, marking the bimbo with your love.  The horny harpy seems to be getting off on it as well, as she's moaning luridly into your labia, letting the fluid bubble up and muffle her outbursts.\n\n", false);
 
@@ -838,7 +838,7 @@ export class SophieBimbo extends NPCAwareContent {
         let mommy: () => void = null;
         flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR]++;
         if (player.cocks.length > 0) daddy = beBimboSophiesSugarDaddy;
-        if (player.hasVagina()) mommy = beBimboSophiesSugarMommy;
+        if (player.vaginas.length > 0) mommy = beBimboSophiesSugarMommy;
         simpleChoices("Daddy", daddy, "Mommy", mommy, "", null, "", null, "Leave", playerMenu);
     }
 
@@ -1038,9 +1038,9 @@ export class SophieBimbo extends NPCAwareContent {
             else outputText("\n\n[EachCock] burst all at once, your heated, spasming lengths unloading their seed all together - and as a result you not only spray Sophie's insides white and start to flood her womb with your hot cream, you also coat her thighs and belly with it, liberally spraying her thighs with your seed as you do your level best to knock up the kinky bird bitch.  Sophie screeches out her pleasure, arching her back as you let out spray after spray of your spunk in and out of her - and your [cock " + (x + 1) + "] finds itself squeezed and clamped down on as Sophie's orgasm only makes yours stronger.\n\nYour [balls] refuse to empty as your load makes Sophie's belly bloat with it all, the harpy squawking as she comes again off of the maternal high, and you find yourself moaning against her chest as your seed continues to spurt, helpless to stop your own orgasm.  You try to clamp down on it, the pleasure too much, the heat running straight up your spine, but you can't; each massive gout of your seed overloads your control, forcing you to keep coming all in and all over the fat harpy.\n\nFinally you end up biting onto the harpy's nipple, making her cry out as you try to ride out the waves of your own pleasure, and she shudders and moans and gushes her own juices to add to yours, the excess cream and juices showering your crotch and the dirt around the both of you.  Her excited squawking and screeching is loud enough that you're sure the rest of the camp can hear it, but you don't care; your orgasm is finally starting to taper off, Sophie's belly so bloated with your spunk that she looks pregnant with <i>several</i> eggs.");
         }
         // [if (hasVagina = true)
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nLike an afterthought, your neglected [vagina] is still tingling and shivering after your powerful orgasm, ");
-            if (player.wetness() >= 4) outputText("squirting ");
+            if (player.vaginas.wetness() >= 4) outputText("squirting ");
             else outputText("dripping and drooling ");
             outputText("with its own juices; you barely notice it over the orgasm from your male half, but, as you readjust your position, the slickness dripping down your thighs is unmistakable.");
         }

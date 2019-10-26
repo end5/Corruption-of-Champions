@@ -462,7 +462,7 @@ export class AntsScene implements TimeAwareInterface {
         // simpleChoices("UseYourPenis",0,"UseYourVagina",0,"",0,"",0,"",0);
         menu();
         if (player.cocks.length > 0) addButton(0, "Use Penis", gigititigitigitigitigityAntGirl);
-        if (player.hasVagina()) addButton(1, "Use Vagina", femalePhyllaFirstFuckGooooo);
+        if (player.vaginas.length > 0) addButton(1, "Use Vagina", femalePhyllaFirstFuckGooooo);
     }
 
     // ►Male Continuation
@@ -1039,7 +1039,7 @@ export class AntsScene implements TimeAwareInterface {
             if (flags[kFLAGS.ANT_KIDS] > 10 && player.cor >= 75) addButton(3, "Orgy (Male)", orgyWithDatColonyCorruptDudes);
         }
         // Straight Sex (Lesbian/Fisting) - Written
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             addButton(2, "Lesbian Sex", lesbianFisting);
             // While Giving Birth (Female) - Written
             if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && flags[kFLAGS.ANT_KIDS] >= 10) addButton(2, "Lesbian Sex", birfingSexWithAntsForDasLadies);
@@ -1440,7 +1440,7 @@ export class AntsScene implements TimeAwareInterface {
             outputText(".  Phylla mumbles something but absentmindedly realizes she still has your cock in her mouth and gives up on whatever it was she was trying to say.");
         }
         // Vagina:
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nYou ask Phylla if she can take care of your womanhood while she's at it.  Phylla moves one of her small arms in between your legs and rubs against your " + clitDescription(player) + ".  She caresses your labia in between her fingers before inserting them inside of you.  Phylla begins working her wrist diligently in conjunction with her head bobbing.");
         }
         // (Transitions to Continuation, below)
@@ -1569,7 +1569,7 @@ export class AntsScene implements TimeAwareInterface {
             outputText(" if she would be \"<i>so kind</i>\".  With gusto, her four hands shoot up and take your cocks into their firm grips.  Phylla mumbles something but absentmindedly realizes she still has your cock in her mouth and gives up on whatever it was she was trying to say.");
         }
         // Vagina:
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("\n\nYou ask Phylla if she can take care of your womanhood while she's at it.  Phylla moves one of her small arms in between your legs and rubs against your " + clitDescription(player) + ".  She caresses your labia in between her fingers before inserting them inside of you.  Phylla begins working her wrist diligently in conjunction with her head bobbing.");
         }
         // Continuation:
@@ -1655,7 +1655,7 @@ export class AntsScene implements TimeAwareInterface {
 
         // PC has only two to four dicks, and a vagina:
         if (player.cocks.length >= 2 && player.cocks.length <= 5) {
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("\n\nAs Phylla pleasures your cocks she uses another hand to make sure your lady parts are seen to as well.");
                 // (Transitions to Vagina Dialog)
             }
@@ -1669,7 +1669,7 @@ export class AntsScene implements TimeAwareInterface {
         }
         // PC has over five dicks:
         if (player.cocks.length > 5) {
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 // PC has over four dicks and a vagina:
                 outputText("\n\nAlthough she attempts to use all of her hands to pleasure as many cocks as she can, even switching between them proves to be too much for the ant morph.  \"<i>There's too many; I can't take care of all of them!</i>\"  You gesture to your [vagina], as if to tell her she can at least take care of three of your cocks and your wet pussy.");
                 // (Transitions to Vagina Dialog)
@@ -1680,7 +1680,7 @@ export class AntsScene implements TimeAwareInterface {
             }
         }
         // Vagina Dialog:
-        if (player.hasVagina()) outputText("\n\n\"<i>Let's see how you like it!</i>\" Phylla whispers being playfully aggressive.  She reaches down with one of her uncocked hands and pinches your [clit].  Immediately a wave of euphoria washes over you and you respond by giving her long clit a pinch back.  You both moan in unison, then look at each other and chuckle, breathing heavily.");
+        if (player.vaginas.length > 0) outputText("\n\n\"<i>Let's see how you like it!</i>\" Phylla whispers being playfully aggressive.  She reaches down with one of her uncocked hands and pinches your [clit].  Immediately a wave of euphoria washes over you and you respond by giving her long clit a pinch back.  You both moan in unison, then look at each other and chuckle, breathing heavily.");
         // First Time, PC is multi-genitaled:
         if (player.gender >= 3) {
             if (flags[kFLAGS.PHYLLA_FUCKS] == 0) outputText("\n\n\"<i>God I have to get better at this, leaving my lover's sex all alone...  L-let me fix that.</i>\"  She spits out between moans of pleasure, slightly embarrassed that she forgot her lover's OTHER genitalia. Wasting no time in order to make up for her \"<i>mistake,</i>\" Phylla does her best to please every part of your body.");
@@ -1752,7 +1752,7 @@ export class AntsScene implements TimeAwareInterface {
         outputText("\n\nIn your mind's eye you see your fingers make a spear-like formation and you instantly understand what Phylla wants.  You smile wickedly as you heed her wish, making your hand like the tip of a spear, knowing full well what will happen next, and in that moment Phylla drops her hips.  You feel her excitement as all four fingers enter her with alarming speed and force, stretching the walls of her pussy wide, happening upon her G-spot in a sheer stroke of luck.  The link, sharing all of its intricacies and sensations, floods your body with the wild satisfaction this shy little woman has, and you scream in ecstatic pleasure.  One of Phylla's larger hands");
 
         // (If pussy is Virgin or tight:)
-        if (player.hasVirginVagina() || player.vaginalCapacity() <= 10) outputText(" tries to fit itself into you, only managing to insert her fingers into your pussy.  Despite the \"<i>setback,</i>\" Phylla");
+        if (player.vaginas.hasVirginVagina() || player.vaginalCapacity() <= 10) outputText(" tries to fit itself into you, only managing to insert her fingers into your pussy.  Despite the \"<i>setback,</i>\" Phylla");
         // (If pussy is loose or gaping: Continues as follows...)
         outputText(" thrusts into your cunt simultaneously.  You feel her hit the right spot, and an explosion of ecstasy floods your bodies as your minds join together in shared orgasm.  She squirts her warm girl cum all over you, coating your stomach in the sweet smelling liquid.  In return you cum into her hand and release what girl cum you can, but it's nowhere close to as much as Phylla produces.  You slowly remove each others' hands from their respective vaginas and collapse into each other's arms.");
 
@@ -2252,7 +2252,7 @@ export class AntsScene implements TimeAwareInterface {
         outputText("\n\nYour own oragasm rocks your whole body as you try your best not to black out due to the sheer volume of pleasures your shared minds are experiencing.");
 
         // If player is squirter:
-        if (player.wetness() >= 4) outputText("\n\nYou roar in climatic bliss as you feel your already soaked cunt release its fury as you squirt your juices all over the ant mounting you.");
+        if (player.vaginas.wetness() >= 4) outputText("\n\nYou roar in climatic bliss as you feel your already soaked cunt release its fury as you squirt your juices all over the ant mounting you.");
         // If player has dick(s)
         if (player.cocks.length > 0) {
             outputText("\n\nAlthough you wish someone had been under you to catch your cum as it erupts from your dick");

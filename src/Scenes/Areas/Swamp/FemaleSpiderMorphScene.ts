@@ -153,9 +153,9 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
                     outputText(" twitches powerfully as you wonder how the spider-girl will 'do' you, trembling in anticipation of the coming sexual contact.", false);
                 }
             }
-            else if (player.hasVagina()) {
+            else if (player.vaginas.length > 0) {
                 outputText("  Meanwhile, your " + vaginaDescript(player, 0) + " ", false);
-                if (player.wetness() < 4) outputText("moistens", false);
+                if (player.vaginas.wetness() < 4) outputText("moistens", false);
                 else outputText("drips", false);
                 outputText(" while your labia engorge, growing more sensitive and ready to be touched.", false);
             }
@@ -196,8 +196,8 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         outputText(".\n\n", false);
 
         outputText("You wriggle underneath your spidery dominatrix, helplessly caught within her web while she torments each of your " + nippleDescription(player, 0) + "s.  Your lust builds ever higher, and while your loins ache for the slightest touch, she tactfully avoids your ", false);
-        if (player.wetness() < 3) outputText("moist", false);
-        else if (player.wetness() < 5) outputText("drooling", false);
+        if (player.vaginas.wetness() < 3) outputText("moist", false);
+        else if (player.vaginas.wetness() < 5) outputText("drooling", false);
         else outputText("gushing", false);
         outputText(" nether-lips, leaving them to stew in their own juices.  You moan, unable to remain silent under such stimulation.  The lusty arachnid-girl finally pops off your puffed-up nipples and looks up past the red scratches to your face.\n\n", false);
 
@@ -208,7 +208,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         else if (player.breasts.totalBreasts() == 2) outputText("your other breast", false);
         else outputText("another one of your many breasts", false);
         outputText(".  By now, your body is thrumming with sexual need and even the pain of her fangs penetrating your flesh registers as nothing more than a burst of masochistic pleasure.  A ", false);
-        if (player.wetness() >= 4) outputText("gush", false);
+        if (player.vaginas.wetness() >= 4) outputText("gush", false);
         else outputText("tiny squirt", false);
         outputText(" of girl-cum splatters out of your " + vaginaDescript(player) + ", the poor, aphrodisiac-laden box having a tiny orgasm from the liquid lust the spider is dumping into your veins. You don't even try to stifle the needy whines you're making anymore, resorting to moaning like a wanton slut... anything to entice the spider to hurry up and fuck you already.\n\n", false);
 
@@ -237,7 +237,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         outputText("Each of her love-bites hurts less than the last, completely replacing the sensation of pain with agonizing pleasure.  Your " + vaginaDescript(player) + " grows so sensitive that you can feel each of the puffed up, soaked lips rubbing against the other with every contraction and twitch that ripples down your " + legs(player) + ".  The sated arachnid woman brushes her hand over your sweating forehead as she whispers, \"<i>Shhhh, one more bite ought to give you some release.</i>\"\n\n", false);
 
         outputText("Her fangs sheath themselves in your neck, pouring the potent aphrodisiacs straight into your arteries and setting off fireworks of pleasure in what's left of your psyche.  Your pussy throbs and ", false);
-        if (player.wetness() >= 5) outputText("erupts like a fountain, spraying over and over", false);
+        if (player.vaginas.wetness() >= 5) outputText("erupts like a fountain, spraying over and over", false);
         else outputText("puddles juice on the ground over and over", false);
         outputText(", each climax triggering off the contractions of the previous until your eyes roll back, your mouth drapes open, and you moan in mindless, absolute pleasure.  You cum, and cum, and cum for what seems like hours, and though you feel the taste of the spider's pussy on your lips a few more times, your mind is too busy drowning in bliss to record anything more than tiny, fragmented bursts of sensation into your memory.\n\n", false);
 
@@ -434,7 +434,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
             if (player.cocks.cockThatFits(monster.vaginalCapacity()) == -1) femaleSpiderMorphTooBigWebRape();
             else spiderMorphFemaleRidesACawk();
         }
-        else if (player.hasVagina()) defeatFemale();
+        else if (player.vaginas.length > 0) defeatFemale();
         else {
             outputText("The spider-girl knocks you out, muttering something about 'genderless freaks' the entire time.", true);
             cleanupAfterCombat();
@@ -453,7 +453,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
             let scissor: () => void = null;
             let pussyFuck: () => void = null;
             let analFuck: () => void = null;
-            if (player.hasVagina()) scissor = fSpiderMorphRape;
+            if (player.vaginas.length > 0) scissor = fSpiderMorphRape;
             if (player.cocks.length > 0) {
                 if (player.cocks.cockThatFits(monster.vaginalCapacity()) != -1) pussyFuck = fSpiderMorphRapeDude;
                 else outputText("  <b>You don't have a dick small enough to fuck her vagina.</b>", false);

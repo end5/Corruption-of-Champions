@@ -1502,10 +1502,10 @@ export class UmasShop extends TelAdreAbstractContent {
             outputText("from [eachcock] ");
         }
         if (player.gender == 3) outputText("and ");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("femcum ");
-            if (player.wetness() <= 2) outputText("dripping ");
-            else if (player.wetness() <= 4) outputText("streaming ");
+            if (player.vaginas.wetness() <= 2) outputText("dripping ");
+            else if (player.vaginas.wetness() <= 4) outputText("streaming ");
             else outputText("gushing ");
             outputText("from your [vagina]. ");
         }
@@ -1514,7 +1514,7 @@ export class UmasShop extends TelAdreAbstractContent {
 
         if (player.cocks.length > 0) outputText("cum ");
         if (player.gender == 3) outputText("and ");
-        if (player.hasVagina()) outputText("juices ");
+        if (player.vaginas.length > 0) outputText("juices ");
 
         outputText("covering her hand and arm.  She smiles knowingly.\n\n");
         outputText("\"<i>How was it dear?  Let me guess, you feel like you just exploded and had the longest orgasm, quite possibly dirtying the whole room, right?</i>\"\n\n");
@@ -1565,7 +1565,7 @@ export class UmasShop extends TelAdreAbstractContent {
 
         if (player.cocks.length > 0) outputText("past [eachCock], and ");
 
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("down towards the honeypot ");
             if (player.isNaga()) outputText("on your [legs].  ");
             else outputText("nestled between your [legs].  ");
@@ -1577,7 +1577,7 @@ export class UmasShop extends TelAdreAbstractContent {
         outputText("You moan, already shivering in anticipation, waiting to see what a skilled lesbian can do with your most precious feminine treasure.  \"<i>Just a heads up, dear.  I'm pretty confident no one can hear what takes place here, and I'm not above getting myself a little dirty, so feel free to let loose and enjoy it as much and as loudly as you want, okay?</i>\"\n\n");
         outputText("The mare's hands gently circle your netherlips, sometimes brushing against your [clit], but only enough to send small jolts of electric pleasure running up your spine.  Slowly one questing finger begins prodding your entrance, before driving itself in.\n\n");
 
-        if (player.hasVirginVagina()) {
+        if (player.vaginas.hasVirginVagina()) {
             outputText("\"<i>Oh, so tight!  Tell me something, dear.  Are you, perhaps, a virgin?  No, wait!  Don't tell me.  I'll just find out myself,</i>\"  wiggling her finger to slowly inch her way inside, Uma explores your nethers as deep as she can, deep enough to reach your hymen.  \"<i>Oh!  So you are!  How rare!  I don't even remember how long it's been since I last had the pleasure of helping a virgin, ah, Nothing quite like it,</i>\"  the milf mare chuckles, reminiscing over old times.  \"<i>Oh, dear, just thinking about it makes me wet.  A pussy that's never known the pleasure of a cock, ripe to be plumbed by my fingers.  I can't grant you the same pleasure as a skilled lover can dear,  but I assure you that by the time I'm finished with you, you will be as sated as you can be,</i>\" the mare delivers a gentle kiss to your neck.\n\n");
             outputText("You murmur and wriggle in your seat, telling her that you don't doubt her in the slightest.  \"<i>Good, now let's make some room for me to work with,</i>\" she replies, gently thrusting her finger in and out of you in a circular motion, hoping to loosen you so she can add more digits.\n\n");
             outputText("You cry out - that feels wonderful, you tell her.  Uma chuckles, \"<i>But we haven't even gotten started, dear,</i>\" she says melodically, slowly working another finger against your passage, wiggling it until it slips in with a wet squelch.  You buck back against her with a cry of delight; this feels so good!  \"<i>Now, now, don't get too excited dear.  I still haven't even found your special place,</i>\" Uma laughs.  She begins probing your depths, pressing against key spots, searching for something.\n\n");
@@ -1586,8 +1586,8 @@ export class UmasShop extends TelAdreAbstractContent {
             outputText("You moan and babble, vaguely spitting out something about definitely promising to come back to her in the future.  Waves of pleasure wash through you, rippling through your clenching, squeezing netherwalls, building a strange tightness in your belly. Oh - you're going to - going to...\n\n");
             outputText("With an ecstatic cry, you orgasm, your virginal cunt spasming as it ");
 
-            if (player.wetness() <= 2) outputText("spatters ");
-            else if (player.wetness() <= 4) outputText("soaks ");
+            if (player.vaginas.wetness() <= 2) outputText("spatters ");
+            else if (player.vaginas.wetness() <= 4) outputText("soaks ");
             else outputText("drenches ");
 
             outputText(" Uma's probing hand in your female juices");
@@ -1896,7 +1896,7 @@ export class UmasShop extends TelAdreAbstractContent {
         outputText("You approach the mare and kneel before her, inhaling her scent as you do so.  It smells sweet, enticing and arousing, a fragrance that sends your head reeling with Uma's arousal.  You find the fires of your arousal burn even hotter now.  ");
 
         if (player.cocks.length > 0) outputText("Blood engorges [eachCock],  ");
-        if (player.hasVagina()) outputText("moisture gathers on your netherlips, drops of your arousal sliding out of your [pussy] and down towards your [feet].  ");
+        if (player.vaginas.length > 0) outputText("moisture gathers on your netherlips, drops of your arousal sliding out of your [pussy] and down towards your [feet].  ");
         outputText("You gaze up at Uma, silently asking for permission.\n\n");
 
         outputText("With a gentle smile and a seductive wiggle, she gently rubs her sweet cunt.  \"<i>Go on, dear,</i>\" she urges you on letting out a girly giggle immediately afterwards. \n\n");

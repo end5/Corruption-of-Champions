@@ -67,9 +67,9 @@ export class MinotaurMob extends Monster {
         // (high damage taken)
         else {
             outputText("All that potent pre-ejaculate makes your cunny ", false);
-            if (player.wetness() <= 1) outputText("moisten", false);
-            else if (player.wetness() <= 2) outputText("drip", false);
-            else if (player.wetness() <= 3) outputText("drool", false);
+            if (player.vaginas.wetness() <= 1) outputText("moisten", false);
+            else if (player.vaginas.wetness() <= 2) outputText("drip", false);
+            else if (player.vaginas.wetness() <= 3) outputText("drool", false);
             else outputText("juice itself", false);
             outputText(" in need.", false);
             if (player.minotaurNeed()) {

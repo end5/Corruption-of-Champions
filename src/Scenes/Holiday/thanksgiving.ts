@@ -518,7 +518,7 @@ export function getARoastPiggueOinkOinkOinkMotherfucker(): void {
     outputText("\n\nYou open the door, the smell of sex wafting out in dizzying amounts: hungry pussy, eager asshole, meaty shafts, and hairy balls all mixing together to create a truly arousing aroma. The room is foggy with lusty fumes, working themselves into your [armor] and finding a home in your [hair].");
 
     outputText("\n\n");
-    if (player.hasVagina()) outputText("\n\nYour [vagina] drools pussy juice down your [legs] as y");
+    if (player.vaginas.length > 0) outputText("\n\nYour [vagina] drools pussy juice down your [legs] as y");
     else outputText("Y");
     outputText("our nostrils flare, taking in great amounts of the salacious stench.");
 

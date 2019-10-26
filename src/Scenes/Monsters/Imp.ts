@@ -33,9 +33,9 @@ export class Imp extends Monster {
                 outputText("Your " + cockDescript(player, 0) + " hardens, distracting you further.");
             else if (player.lust >= 30 && player.cocks.length > 1)
                 outputText("Your " + multiCockDescriptLight(player) + " harden uncomfortably.");
-            if (player.hasVagina()) outputText("  ");
+            if (player.vaginas.length > 0) outputText("  ");
         }
-        if (player.lust >= 60 && player.hasVagina()) {
+        if (player.lust >= 60 && player.vaginas.length > 0) {
             switch (player.vaginas[0].vaginalWetness) {
                 case VAGINA_WETNESS_NORMAL:
                     outputText("Your " + allVaginaDescript(player) + " dampen" + (player.vaginas.length > 1 ? "" : "s") + " perceptibly.");

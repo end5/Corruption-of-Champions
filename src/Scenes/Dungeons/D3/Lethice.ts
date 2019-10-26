@@ -7,7 +7,7 @@ export class Lethice extends Monster {
 
         this.tallness = 12 * 9;
 
-        this.createVagina(false, 3, 3);
+        this.vaginas.createVagina(false, 3, 3);
         this.breasts.createBreastRow(8);
 
         this.balls = 2;
@@ -405,7 +405,7 @@ export class Lethice extends Monster {
         outputText("\n\nWhile the demons are down, and Lethice is still recovering from your first skirmish, you have a much-needed moment to relieve the tensions starting to grow within you. Or you could press the attack, and take the fight to the queen.");
 
         menu();
-        if (player.cocks.length > 0 || player.hasVagina()) addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
+        if (player.cocks.length > 0 || player.vaginas.length > 0) addButton(0, "DemonFuck", p2DemonFuck, hpVictory);
         if (player.effects.findByType(StatusAffects.KnowsHeal) >= 0) addButton(1, "Heal", p2Heal);
         addButton(2, "Next", p2Next);
     }
@@ -483,11 +483,11 @@ export class Lethice extends Monster {
         outputText("\n\nDamn right you are. You grab her tits, sinking your fingers into the soft, crimson udders as you straddle her hips and grind your [vagOrAss] against the demon’s tumescent shaft. She’s hung like a stud, rock hard and ready to roll before you even get near her pointed crown. You feel her hands grasp your [hips], guiding you down until your [vagOrAss] is sinking onto her thick rod. Your belly bulges with the sheer length of cockflesh sliding into you, and your mind goes blank with overwhelming pleasure.");
         outputText("\n\nIt takes you a moment to recover from the initial shock, but when you do, you start moving with a vengeance, bouncing on the demonic doggy-cock with mounting speed. Its owner moans and squirms beneath you, too weakened from your fight to do anything but go along for the ride. Still, her big, black nipples are hard as rocks in your hand, and her pussy soaks both your thighs in her ever-rising excitement.");
         outputText("\n\nSuddenly, your entire body tenses, shivering with new sensation. You look over your shoulder in time to see another succubus crawling up behind you,");
-        if (player.hasVagina()) outputText(" licking at your [cunt]");
+        if (player.vaginas.length > 0) outputText(" licking at your [cunt]");
         else outputText(" reaching around to give your unused [cocks] a tug}. Another demoness snuggles up behind you, pressing a hefty pair of jugs into your back and murmuring about how she wants to see you get bred by that hermaphroditic stud under you.");
         outputText("\n\nWith more and more demons crawling up over you, urging you to cement your victory on their companion or adding to your pleasure with mouths and corrupted tongues, it’s not long before you surrender to your body’s carnal demands. You grind your hips hard and fast against the demoness’s mis-matched crotch, loving the way her churning black balls ride in your ass, the way her fist-thick knot hammers against your [vagOrAss]. With so many sensations assaulting your body, it’s impossible to hold back. Screaming your ecstasy for the whole hall to hear, you climax, body shuddering and clenching hard around the thick demonic cock spreading you open.");
         outputText("\n\nThe demoness isn’t far behind. She grabs your hips hard enough that her nails score your flesh, and you feel a rush of sticky, wet heat flooding your");
-        if (player.hasVagina()) outputText(" womb");
+        if (player.vaginas.length > 0) outputText(" womb");
         else outputText(" bowels");
         outputText(". You only barely keep your wits about you enough to push her back down before she can force her knot inside you, though you’re treated to a veritable waterfall of white spunk pouring out of your well-bred hole instead.");
         outputText("\n\n<i>“I can see why they call you ‘Champion,’”</i> the demon purrs as her spunk-slathered red prick flops against her belly. <i>“Maybe after our queen beats you down, I’ll come visit you in the breaking tanks... I could always use another eager little broodmare.”</i>");

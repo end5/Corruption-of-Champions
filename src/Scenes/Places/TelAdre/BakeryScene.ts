@@ -442,7 +442,7 @@ export class BakeryScene extends TelAdreAbstractContent {
         // (if the pc is male)
         if (player.gender == 1) outputText("[eachCock] jumps to full hardness.");
         // (if the pc is female)
-        else if (player.hasVagina()) outputText("your nipples stiffening noticeably, while your [vagina] prepares for what's to come.");
+        else if (player.vaginas.length > 0) outputText("your nipples stiffening noticeably, while your [vagina] prepares for what's to come.");
         // (if the pc is a herm)
         else outputText("[eachCock jumping to full hardness, your nipples and [vagina] not far behind in getting ready for your encounter.");
         outputText("\n\nThe euphoria from your earlier drink fades, replaced by a more animalistic need.");

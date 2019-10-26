@@ -178,7 +178,7 @@ export class Forest {
             // Dicks + lots of cum boosts goblin probability
             // Vags + Fertility boosts imp probability
             if (player.cocks.length > 0) impGob--;
-            if (player.hasVagina()) impGob++;
+            if (player.vaginas.length > 0) impGob++;
             if (player.totalFertility() >= 30) impGob++;
             if (player.cumQ() >= 200) impGob--;
             if (player.perks.findByType(PerkLib.PiercedLethite) >= 0) {

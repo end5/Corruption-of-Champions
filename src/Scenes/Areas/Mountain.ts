@@ -39,7 +39,7 @@ export class Mountain {
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] < 3) {
                 trace("CHANCE AT HELLHOUND GAO");
                 // Requires canine face, [either two dog dicks, or a vag and pregnant with a hellhound], at least two other hellhound features (black fur, dog legs, dog tail), and corruption >=60.
-                if (player.faceType == FACE_DOG && (player.cocks.dogCocks() >= 2 || (player.hasVagina() && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND)) && player.cor >= 60 && player.tailType == TAIL_TYPE_DOG && (player.lowerBody == LOWER_BODY_TYPE_DOG || player.hairColor == "midnight black")) {
+                if (player.faceType == FACE_DOG && (player.cocks.dogCocks() >= 2 || (player.vaginas.length > 0 && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND)) && player.cor >= 60 && player.tailType == TAIL_TYPE_DOG && (player.lowerBody == LOWER_BODY_TYPE_DOG || player.hairColor == "midnight black")) {
                     trace("PASS BODYCHECK");
                     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] == 0) {
                         hellHoundScene.HellHoundMasterEncounter();
@@ -102,7 +102,7 @@ export class Mountain {
             // Dicks + lots of cum boosts goblin probability
             // Vags + Fertility boosts imp probability
             if (player.cocks.length > 0) impGob--;
-            if (player.hasVagina()) impGob++;
+            if (player.vaginas.length > 0) impGob++;
             if (player.totalFertility() >= 30) impGob++;
             if (player.cumQ() >= 200) impGob--;
             // Imptacular Encounter
@@ -173,7 +173,7 @@ export class Mountain {
                     outputText("As you pass a shadowy cleft in the mountainside, you hear the now-familiar call of a cowgirl echoing from within.  Knowing what's in store, you carefully inch closer and peek around the corner.");
                     outputText("\n\nTwo humanoid shapes come into view, both with pronounced bovine features - tails, horns and hooves instead of feet.  Their genders are immediately apparent due to their stark nudity.  The first is the epitome of primal femininity, with a pair of massive, udder-like breasts and wide child-bearing hips. The other is the pinnacle of masculinity, with a broad, muscular chest, a huge horse-like penis and a heavy set of balls more appropriate on a breeding stud than a person.  You have once again stumbled upon a cow-girl engaging in a not-so-secret rendezvous with her minotaur lover.");
                     outputText("\n\nYou settle in behind an outcropping, predicting what comes next.  You see the stark silhouettes of imps and goblins take up similar positions around this makeshift theatre, this circular clearing surrounded on the edge by boulders and nooks where all manner of creatures might hide. You wonder if they're as eager for the upcoming show as you are.  The heady scent of impending sex rises in the air... and with it comes something masculine, something that makes your stomach rumble in anticipation.  The mouth-watering aroma of fresh minotaur cum wafts up to your nose, making your whole body quiver in need.  Your [vagOrAss] immediately ");
-                    if (player.hasVagina()) outputText("dampens");
+                    if (player.vaginas.length > 0) outputText("dampens");
                     else outputText("twinges");
                     outputText(", aching to be filled");
                     if (player.cocks.length > 0) outputText(", while [eachCock] rises to attention, straining at your [armor]");
@@ -279,10 +279,10 @@ export class Mountain {
             outputText(" entirely, ");
         }
         outputText("slipping a finger into your moistening ");
-        if (player.hasVagina()) outputText("pussy");
+        if (player.vaginas.length > 0) outputText("pussy");
         else outputText("asshole");
         outputText(".  A low moan escapes your lips as a second finger slips in while the busty bovine woman's thumb ");
-        if (player.hasVagina()) outputText("swirls around your clitoris");
+        if (player.vaginas.length > 0) outputText("swirls around your clitoris");
         else outputText("presses against your perineum");
         outputText(".");
 
@@ -291,10 +291,10 @@ export class Mountain {
         outputText("\n\nWithout wasting any time, the girl leans down and");
         if (player.cocks.length > 0) outputText(", once again ignoring your manhood completely");
         outputText(", dives tongue first into your wet ");
-        if (player.hasVagina()) outputText("quim");
+        if (player.vaginas.length > 0) outputText("quim");
         else outputText("back door");
         outputText(".  The movement is so quick that you can't even suppress the sudden, perverted moan that leaves your lips... a moan that sounds shockingly like a cow's moo.  The surprise at your sudden bovine outburst quickly dissipates as the cow-girl's large tongue dips in and out of your ");
-        if (player.hasVagina()) outputText("sodden box");
+        if (player.vaginas.length > 0) outputText("sodden box");
         else outputText("moist butthole");
         outputText(".  Any remaining fears of joining this very public sex show are gone, and you wonder why you didn't join in sooner.");
 
@@ -307,20 +307,20 @@ export class Mountain {
         outputText("\n\nHis rough, strong hands grasp your legs and draw you closer.  You squirm half-heartedly, not really trying to get away.  Though your mind tries to fight it, you know all you really want is that warm, sticky cum inside you one way or another.  You want to be just like the half-unconscious girl beside you, stuffed with cock and turned into this rugged man's breeding bitch.");
 
         outputText("\n\n\"<i>Eager for a fucking, huh slut?</i>\" he taunts, his turgid member resting along your stomach.  You nod slowly.  You feel a deep burning in your core. You want that cock inside you.  You want to be filled to bursting with this bull's seed, to feel it churn ");
-        if (player.hasVagina()) outputText("within your womb, knocked up by this manly beast");
+        if (player.vaginas.length > 0) outputText("within your womb, knocked up by this manly beast");
         else outputText("within your bowels");
         outputText(".  \"<i>That's a good slut,</i>\" he grunts, pulling his cock off your belly and rubbing the slick, flat head against your awaiting [vagOrAss].  He teases you with the slight contact until you open your mouth to voice your complaints, then he suddenly thrusts inside.  Any words forming on your tongue fly away, replaced by a whine of relief as your hole gets stretched wide by the invading member.");
-        if (player.hasVagina()) player.cuntChange(36, true, true, false);
+        if (player.vaginas.length > 0) player.cuntChange(36, true, true, false);
         else player.buttChange(36, true, true, false);
 
         outputText("\n\n\"<i>Ahh, yeah.  That's some good ");
-        if (player.hasVagina()) outputText("cow-pussy");
+        if (player.vaginas.length > 0) outputText("cow-pussy");
         else outputText("ass");
         outputText(" right there,</i>\" he groans, more of his bombastic cock slipping deep inside you.  The minotaur hooks an arm under each of your knees, lifting up your lower body, pressing even deeper.  Powerful sensations drift up from your ");
-        if (player.hasVagina()) outputText("g-spot");
+        if (player.vaginas.length > 0) outputText("g-spot");
         else outputText("prostate");
         outputText(" as the minotaur's wide flare strokes it through your ");
-        if (player.hasVagina()) outputText("vaginal");
+        if (player.vaginas.length > 0) outputText("vaginal");
         else outputText("anal");
         outputText(" walls.  Biting your lip with barely contained pleasure, you bring your hands to your breasts, playing with your milk-sodden nipples in between each orgasmic thrust of the bull's hips.");
 
@@ -333,22 +333,22 @@ export class Mountain {
         outputText("tongue inside her, eagerly licking out and guzzling down the remnants of the minotaur's present.");
 
         outputText("\n\nThe minotaur, for his part, is in no rush to give you a cream pie of your own. His thrusts are slow and deliberate, with a rhythm that has you writhing with pleasure.  The three of you moan together like some kind of erotic pyramid.  The bull's assault on your ");
-        if (player.hasVagina()) outputText("womb");
+        if (player.vaginas.length > 0) outputText("womb");
         else outputText("back door");
         outputText(" increases slowly, and you can feel your limbs tingling at the prospect of your mino-cum-induced orgasm.");
 
         outputText("\n\nIt starts in your fingers, where your nerves seethe, gathering up fistfuls of grass like one might grab a sheet.  The heat continues down your arms and strikes your body like a lightning bolt, your belly suddenly spiking up, back arching as the orgasmic thunderstorm rolls over you.  The flames don't stop there, however.  They travel down into your crotch, suddenly lighting up every nerve in your ");
-        if (player.hasVagina()) outputText("[vagina]");
+        if (player.vaginas.length > 0) outputText("[vagina]");
         else outputText("[asshole]");
         outputText(" like a Christmas tree.  You're acutely aware of every single movement, every pulse, every little bit of contact between you and the huge cock living inside you.");
 
         outputText("\n\nYour muscles spasm and clench as the minotaur lets loose a powerful roar.  His own member twitches, suddenly releasing a flood of hot cum into your awaiting ");
-        if (player.hasVagina()) outputText("womb");
+        if (player.vaginas.length > 0) outputText("womb");
         else outputText("bowels");
         outputText(".  The moment that long-awaited jism hits your walls, it's like another lightning bolt hits.  It travels up your spine and sets your entire brain aglow.  Ecstasy wrapped in bliss with a side of euphoric rapture consumes your thoughts.  Your vision goes white, pearly white like the seed filling your body, and your lips part as a primal \"<i>moo</i>\" slips out.");
 
         outputText("\n\nFor the longest time, the only thing your cum-addled mind can think about is cocks and cunts, of pregnant bellies and stomachs filled to capacity.  You mind fills itself with visions of yourself on your knees, servicing this minotaur daily, hoping to please him enough that he might grace your ");
-        if (!player.hasVagina()) outputText("new ");
+        if (!player.vaginas.length > 0) outputText("new ");
         outputText("womb with his divine dick.");
 
         outputText("\n\nIt takes several minutes for you to come down from this orgasmic high, and when you do, you see your minotaur lover has yet to recover from his.  He lays on his back in the midst of this clearing, his still-rock-hard cock jutting upwards, coating in a mixture of various juices.  The cow-girl sits beside him, carefully licking the towering pillar of cock clean.  You sit up, wobbly and clutch your stomach.  Filled with cum in two ends, you can't help but feel oddly unsatisfied.  Perhaps guzzling down some second-hand cum isn't quite enough to sate your hunger.  Perhaps you need it straight from the tap, as it were.");

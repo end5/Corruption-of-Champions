@@ -99,7 +99,7 @@ export class BasiliskScene {
             outputText("You look beatifically down at it when you are finished and notice that despite itself the basilisk has got more than a bit turned on by your fairly callous treatment of it; the creature is finding it difficult to kneel properly with its long, purple erection poking against the ground.  You smile with satisfaction at how successfully you've managed to paint its face white with your seed.  \"<i>That's a good look for you.  We really must do this again,</i>\" you say as you loosen its blindfold just a little before taking your leave.  You chance a look back.  The creature is staggering in the opposite direction, wiping its face with a claw and trying not to bump its cock into anything, looking very dazed indeed.  You grin and make your way back to camp.", false);
         }
         // Female:
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("\"<i>Lick me,</i>\" you tell the basilisk brusquely, as you push your hips out and present your " + vaginaDescript(player, 0) + " to its tongue.  You decide you'll take your reward standing up; the sight of the beast on its knees in front of you is quite pleasing.\n\n", false);
 
             outputText("The basilisk slowly does as you ask, leaning forward and pushing its long, slick tongue against your lips.  It is clumsy at first; unable to see, it has to feel with its slick mouth muscle, licking around the limits of your " + vaginaDescript(player, 0) + " before pushing inside.  The creature inadvertently frustrates you, and so when it finally finds your hole it is welcoming and wet.\n\n", false);
@@ -191,7 +191,7 @@ export class BasiliskScene {
             return;
         }
         // choose between loss rapes
-        if (player.hasVagina() && (player.inHeat || player.perks.findByType(PerkLib.Oviposition) >= 0 || player.perks.findByType(PerkLib.BasiliskWomb) >= 0 || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS))
+        if (player.vaginas.length > 0 && (player.inHeat || player.perks.findByType(PerkLib.Oviposition) >= 0 || player.perks.findByType(PerkLib.BasiliskWomb) >= 0 || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS))
             basiliskHasVagEggStuff();
         else defaultBasiliskRape();
     }
@@ -202,11 +202,11 @@ export class BasiliskScene {
         // Male/Herm:
         if (player.cocks.length > 0) {
             outputText("With surprising gentleness and deftness, the basilisk rubs your " + cockDescript(game.player, 0) + " with one palm", false);
-            if (player.hasVagina()) outputText(" and sticks some of the smaller fingers of its other hand in your " + vaginaDescript(player, 0), false);
+            if (player.vaginas.length > 0) outputText(" and sticks some of the smaller fingers of its other hand in your " + vaginaDescript(player, 0), false);
             outputText(", thankfully angling its sickle claw away.  You can't do anything against it, and some of its mental compulsion remains; a backwash of erotic images from your past fill your head, and you can't even grit your teeth as the gentle, insistent pressure brushing your prick makes you rock hard.  It stops when you are erect and then, with the very faintest of smiles playing over its cruel mouth, leaves. You're naked, your " + cockDescript(game.player, 0) + " is begging for release; you're utterly helpless... you can only hope that the spell will wear off, and before anything else in the mountain finds you.\n\n", false);
         }
         // Female:
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("With surprising gentleness and deftness, the basilisk slips the smaller fingers of one hand into your " + vaginaDescript(player, 0) + ", and carefully flicks at your " + clitDescription(player) + " with the other, thankfully holding its sickle claws away from you.  You can't do anything against it, and some of its mental compulsion remains; a backwash of erotic images from your past fill your head, and you can't even grit your teeth as the gentle, insistent caresses make you wet.  It stops when you are beading moisture involuntarily onto its hand and then, with the very faintest of smiles playing over its cruel mouth, leaves. You're naked, your " + vaginaDescript(player, 0) + " begs to be filled; you're utterly helpless. You can only hope that its spell will wear off, and before anything else in the mountain finds you...\n\n", false);
         }
         // Genderless:
@@ -278,7 +278,7 @@ export class BasiliskScene {
         outputText("\n");
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n\n", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             player.genderCheck();
         }
         if (player.perks.findByType(PerkLib.BasiliskWomb) >= 0) {
@@ -434,7 +434,7 @@ export class BasiliskScene {
             player.orgasm();
         }
         // Female:
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             spriteSelect(75);
             outputText("The harpy comes to a halt behind you and begins to eagerly run her cold but soft hands over your bottom half, stroking your thighs and squeezing your " + buttDescription(player) + " as if appraising a piece of meat.  Whilst caressing your neck she runs her hands between your legs and grabs around your moistened delta impatiently, searching for something that isn't there.  She lets loose a squawk of pure frustration and wheels around you to glare in your eyes angrily.  The sex-crazed harridan is clearly deeply pissed off with you for lacking a cock she can abuse.  She shifts her eyes to your mouth, but quickly arrives at the same conclusion you've already come to: unable to move your mouth, you can't even be forced to give oral pleasure.  You feel a bizarre sense of triumph over the creature; you stare into space smugly as the harpy paces in front of you, glaring, thwarted but unwilling to give up her prize.  Perhaps eventually she will leave you alone...?\n\n", false);
 
@@ -495,7 +495,7 @@ export class BasiliskScene {
             player.orgasm();
         }
         // Unsexed:
-        else if (!player.hasVagina()) {
+        else if (!player.vaginas.length > 0) {
             outputText("At the corner of your vision, you see a small, familiar green shape hover into view.  The goblin is so busy sorting through her inventory of drugs that you actually manage to see her before she sees you.  When she does lift her head up and notices the petrified, naked individual in front of her, she is so surprised she drops her satchel.\n\n", false);
 
             outputText("\"<i>A " + race(player) + "!</i>\" she yelps.  Hesitantly at first, then with increasing confidence as how vulnerable you are sinks in, she does a round circuit of you, taking in every angle of your frozen, helpless flesh.\n\n", false);
@@ -591,7 +591,7 @@ export class BasiliskScene {
         outputText("you plaster the web across his face, neatly blindfolding the irritating lizard.  The creature lets out a frightened hiss, which you completely ignore as you bodily toss him atop the rock before clambering after him, your spider limbs allowing you to easily traverse the stone.  A bit of artful rearrangement and a lot of webbing sees the creature spread-eagled across the boulder, limbs pulled taut by the thick, sticky strings.");
 
         outputText("\n\nYou feel your breath quicken and your cheeks flush as your ovipositor slides free, dripping lube, leaving trails across the stone as you ready yourself to give the egg-thief what he wanted.  Maybe not <i>exactly</i>, but you have no intention of allowing him to complain, in any case.  Spreading your eight legs wide, you lower yourself down until your ");
-        if (player.hasVagina()) outputText("already-dripping pussy");
+        if (player.vaginas.length > 0) outputText("already-dripping pussy");
         if (player.gender == 3) outputText(" and ");
         if (player.cocks.length > 0) outputText("[eachCock]");
         outputText(" hangs");
@@ -678,7 +678,7 @@ export class BasiliskScene {
             outputText("is more than you can take, and ropes of thick semen coat the basilisk from the cheeks of its ass to the back of its head.  You give a guttural groan as your orgasm hurries the last of your eggs up the long black organ that is your ovipositor to be deposited into the tightly packed cavern that you've made the basilisk's intestines into.");
         }
         // (no-horse vag:
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("\n\nYour body demanding more feeling to push it over the edge, you begin simultaneously massaging your [nipple] and frigging your [clit] joy buzzer.  More of your juices drip out and leak down your thighs; the basilisk shudders again and you imagine how bizarre it must feel for the beast to be invaded in such a way.  You lick your lower lip before biting into it gently, then pinch and tug at your hardened nipples, moaning as you climb higher and higher towards your peak.  Your lower lips try to clench around empty air, wanting fulfillment.  Today's orgasm is meant for something else though, and you let out a cry as you forcefully jam shut the basilisk's back door and leak girl cum all over the floor.");
         }
         outputText("\n\nAs you remove your depleted appendage from the violated basilisk's ass, he falls to the side, no longer able to keep himself upright.  Laying like this, you can see the beast's horribly-distended stomach, almost able to make out the outline of each individual egg but for the scales in the way. You nod approvingly and bend down to give to the lizard a quick kiss on the cheek for being such a good sport about the whole thing - though, not being an idiot, you don't untie him.  After that, you buzz away contentedly, idly thinking about returning the next time you'll need a receptacle for your eggs.");

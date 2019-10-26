@@ -124,7 +124,7 @@ export function helpValentinesDayIII(): void {
     menu();
     addButton(0, "Scylla", goVisitScyllaVday);
     addButton(1, "Abby", goVisitAbbyVday);
-    if (player.cocks.cockThatFits(28) >= 0 || player.hasVagina()) addButton(2, "Pastie", goVisitPastyVDay);
+    if (player.cocks.cockThatFits(28) >= 0 || player.vaginas.length > 0) addButton(2, "Pastie", goVisitPastyVDay);
     addButton(4, "Leave", goHomeFromVDay);
 }
 
@@ -185,7 +185,7 @@ export function cuddleWithScyllaVDay(): void {
 
     outputText("\n\nThe two of you spend some time cuddled up like that, watching the sun set.  Scylla's soft curves, especially her breasts, are overwhelming; you don't even have the willpower to resist copping a few feels, and initially, it's hard to stay still, aroused as you are.");
     // [if (hasVagina = true)]
-    if (player.hasVagina()) outputText("  Your [vagina] is starting to get moist, making a small mess in your underclothes.");
+    if (player.vaginas.length > 0) outputText("  Your [vagina] is starting to get moist, making a small mess in your underclothes.");
     // [if (hasCock = true)]
     if (player.cocks.length > 0) outputText("  You realize it'd probably be a done deal if you didn't resist the pull of your hardening cock towards one of Scylla's orifices, but you decide to spare her any temptations and endure yourself.");
     outputText("  In time, your ignited lust slowly changes to constant arousal, and Scylla just sitting there, watching the sun with a beautiful smile on her face, clearly content to just have someone in her arms on this evening is helping you control yourself a lot better.");
@@ -319,7 +319,7 @@ export function goVisitAbby(): void {
         }
     }
     // [if (hasVagina = false)
-    else if (player.hasVagina()) outputText("\"<i>Well, that's unexpected. I have certain doubts about you showing me such a good time,</i>\" she says.  You tell her you don't actually require a cock at all to do this, and she seems surprised.");
+    else if (player.vaginas.length > 0) outputText("\"<i>Well, that's unexpected. I have certain doubts about you showing me such a good time,</i>\" she says.  You tell her you don't actually require a cock at all to do this, and she seems surprised.");
     addButton(0, "PleasureHer", pleasureAbbyVDay);
 
 }
@@ -389,12 +389,12 @@ export function goVisitPastyVDay(): void {
 
     // Check inventory for Goblin Ale, Black Cat Beer, Bimbo Champagne; failing this, check if PC has female genitalia.
     // [BCBeer] [BimboCham][GoblinAle][vagina]
-    if (player.hasItem(consumables.BIMBOCH) || player.hasItem(consumables.BC_BEER) || player.hasItem(consumables.GOB_ALE) || player.hasVagina()) {
+    if (player.hasItem(consumables.BIMBOCH) || player.hasItem(consumables.BC_BEER) || player.hasItem(consumables.GOB_ALE) || player.vaginas.length > 0) {
         menu();
         if (player.hasItem(consumables.BIMBOCH)) addButton(0, "BimboCham", pastieValentineIntro, consumables.BIMBOCH.id);
         if (player.hasItem(consumables.BC_BEER)) addButton(1, "B.Cat Beer ", pastieValentineIntro, consumables.BC_BEER.id);
         if (player.hasItem(consumables.GOB_ALE)) addButton(2, "Gob. Ale", pastieValentineIntro, consumables.GOB_ALE.id);
-        if (player.hasVagina()) addButton(3, "Pussy", pastieValentineIntro, "vag");
+        if (player.vaginas.length > 0) addButton(3, "Pussy", pastieValentineIntro, "vag");
     }
     else {
         outputText("\n\nYou tell Pastie that, regrettably, you only have what she sees.  She nods and says, \"<i>Too bad.  I think I'll better get going, then.  It's been somewhat fun, and I finally get a chance to go to sleep sober and wake up without a hangover.");
@@ -468,7 +468,7 @@ export function valentineDayGetPastieDrink(itype: ItemType): void {
     menu();
     if (player.cocks.cockThatFits(8) >= 0) addButton(0, "Fuck", fuckPastieForVDay);
     if (player.cocks.length > 0) addButton(1, "RubOnDick", rubPastieOnYourWangDawg);
-    if (player.hasVagina()) addButton(2, "Go In Pussy", goForAPushayDivePasty);
+    if (player.vaginas.length > 0) addButton(2, "Go In Pussy", goForAPushayDivePasty);
 }
 
 // [Fuck]
@@ -565,7 +565,7 @@ export function goForAPushayDivePasty(): void {
     // [if (hascock = true)]
     if (player.cocks.length > 0) outputText("  At the same time, your cock deposits its own load onto the ground as your hermaphrodite genitals achieve a simultaneous orgasm.");
     // [if (isSquirter = true)
-    if (player.wetness() >= 4) outputText("  She doesn't have much to say in the matter when your female ejaculation truly shoots in, though, sending her rolling out of your [vagina] and onto the ground.");
+    if (player.vaginas.wetness() >= 4) outputText("  She doesn't have much to say in the matter when your female ejaculation truly shoots in, though, sending her rolling out of your [vagina] and onto the ground.");
 
     outputText("\n\nPastie giggles as she flies onto the nearby wall, heavily, completely soaked in your secretions.  As you look to her, she answers.  \"<i>I'm fine!  It's all okay.  Justtt.... too much to drink.  Feels gooood, though, hehe!  We should try that again.</i>\"  You nod and smile at her, gently wiping her with a finger and letting her taste your pussy juice off it before going back to camp.");
 

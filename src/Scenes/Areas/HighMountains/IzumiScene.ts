@@ -500,7 +500,7 @@ export class IzumiScene {
             else surrenderLargeCock();
         }
         // Female
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             surrenderOhGodTheFemaleSurrenderContentIsFuckingHugeSendHelp();
         }
         // Genderless
@@ -545,7 +545,7 @@ export class IzumiScene {
         outputText("“<i>So, you’re ashamed of this, are you?</i>”  Izumi suddenly asks.  You don’t respond, so she stares down at you.  “<i>Answer.</i>”  She commands, her tone imperious.  You can’t bring yourself to speak, so you simply nod, burying your face in her silk-covered bust.  “<i>Good.  You answer when I ask you something, " + this.heightDesc() + "</i>”  She nods approvingly and resumes her slow, gentle strokes.  The casual, unhurried pace of her handjob is beginning to drive you insane; it’s certainly pleasurable, but it’s also agonizingly slow, and you long for her to just speed up even the tiniest bit...\n\n");
 
         outputText("“<i>Well, I can certainly see why you </i>would<i> be ashamed of it.  It’s pretty tiny, you know?  In fact, I think this is probably the smallest I’ve </i>ever<i> seen.</i>”  She announces, and you wince. Part of you wishes she would just shut up, but somewhere deep inside you, another part of you feels almost... curious?  Part of you, some dark, treacherous part, wants her to continue.  Part of you wants to know more");
-        if (player.hasVagina()) outputText(", sticky moisture dribbling across your thigh, your [vagina] clenching in lust - fueled harmony with your cock");
+        if (player.vaginas.length > 0) outputText(", sticky moisture dribbling across your thigh, your [vagina] clenching in lust - fueled harmony with your cock");
         outputText("... “<i>Hey, don’t get upset.  After all, </i>” She pauses for a moment, her hand lingering in place.  “<i>Some women </i>like<i> ‘em small...</i>”\n\n");
 
         outputText("“<i>So, let me guess.  In a place like this, it’s gotta be weird having something this small, right?  I mean, it’s a pretty unique trait, given the circumstances.</i>”  She continues.  “<i>Hey, tell me something.  Do the harpies leave you alone?  Are you so small that they think you’re ");
@@ -554,7 +554,7 @@ export class IzumiScene {
         outputText(" girl?</i>”  Suddenly, her hand bottoms out around your [cock biggest]");
 
         if (player.balls > 0) outputText(" and her free fingers reach out to gently stroke against your [balls].");
-        else if (player.hasVagina()) outputText(" and her free fingers reach out to gently stroke against your [vag].");
+        else if (player.vaginas.length > 0) outputText(" and her free fingers reach out to gently stroke against your [vag].");
         else outputText(".");
 
         outputText("  At the same time, she leans in close to your ear.  “<i>Do the </i>Minotaurs?”  She hisses suggestively, eyes flashing.\n\n");
@@ -608,11 +608,11 @@ export class IzumiScene {
         outputText(" down here... or are you just a little ‘gifted’?</i>”  She says, giving you a lopsided grin.  You attempt to stammer out a reply, but she ignores you, instead focusing her attention completely on your [cock biggest].  Still restraining you with one hand, her other hand glides across your cock, easily bringing it to hardness.  You can’t help but gasp as you feel her talented fingers playing across your flesh; from the way she seems to naturally gravitate to all of your most sensitive spots in turn, you can’t help but think she must have done this kind of thing before.\n\n");
 
         outputText("In mere moments, you’re fully erect, as hard as you’ve ever been");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText(", your [vagina]");
-            if (player.wetness() == 0) outputText(" moistening");
-            else if (player.wetness() == 1) outputText(" dribbling runnels of sticky fem-juice");
-            else if (player.wetness() == 2) outputText(" constantly oozing feminine arousal");
+            if (player.vaginas.wetness() == 0) outputText(" moistening");
+            else if (player.vaginas.wetness() == 1) outputText(" dribbling runnels of sticky fem-juice");
+            else if (player.vaginas.wetness() == 2) outputText(" constantly oozing feminine arousal");
             else outputText(" a soppy mess, gushing a veritable lake of fem-slime");
             outputText(" in lust-fueled harmony with your cock.");
         }
@@ -657,7 +657,7 @@ export class IzumiScene {
         outputText(" to the very last drop.\n\n");
 
         outputText("Finally, she relents, and your extended orgasm mercifully subsides.  Izumi stares indulgently down at your shivering form for a moment, before muttering a quiet “<i>Heh,</i>” and wandering back over to her tent.  You can only manage to rest there, laid prone in a");
-        if (player.hasVagina()) outputText(" mixed puddle of your own fem-slime and");
+        if (player.vaginas.length > 0) outputText(" mixed puddle of your own fem-slime and");
         else outputText(" puddle of your own");
         outputText(" cum, staring at the cavern roof and panting madly for a good few minutes afterwards.  Once you regain the use of your legs, you retrieve your clothes and wander back to camp in a daze.\n\n");
 
@@ -680,7 +680,7 @@ export class IzumiScene {
         outputText("The insane feeling is just too much, and you feel your orgasm boiling up within you.  Just as you feel yourself rising to crest the orgamsic wave and hit sweet release... Izumi lets go.\n\n");
 
         outputText("You cry out in anger and pain as you find your impending orgasm so cruelly denied, your [cock biggest] twitching and throbbing painfully");
-        if (player.hasVagina()) outputText(", [vagina] spasming in sympathy");
+        if (player.vaginas.length > 0) outputText(", [vagina] spasming in sympathy");
         outputText(", desperate for release.  Somehow, she could sense you were on the verge of orgasm, and she chose to deny you that pleasure, you just <b>know</b> it.  You shoot Izumi a vicious, hateful glare, only to see her laying there quite calmly, her expression blank.\n\n");
 
         outputText("“<i>Hm?</i>”  She grunts, looking surprised.  “<i>Oh, do you want some help?  Sure; here, let me handle this for you.</i>”  She says, her tone even.  She reaches out and, very deliberately, softly flicks your [cockhead] with a single finger.\n\n");
@@ -715,9 +715,9 @@ export class IzumiScene {
         outputText("“<i>Five!</i>”  She yells, and her left hand joins the first in gripping your cock, this time about halfway down your shaft.  Again, her wrist rotates gently as she massages the area, but her hand doesn’t actually go anywhere.  Her grin widens into a truly ominous smile as she leans forwards conspiratorially.\n\n");
 
         outputText("“<i>Four.</i>”  She whispers, and without warning her legs unfold, both feet flying out from beneath her and latching onto the [sheath] of your [cock biggest]!  Izumi leers at you with undisguised amusement as she watches your reaction to the sensation of her bare soles rolling over the [sheath] of your shaft");
-        if (player.balls > 0 && !player.hasVagina()) outputText(", occasionally sliding down to massage your [balls] before returning to your cock.");
-        else if (player.balls == 0 && player.hasVagina()) outputText(", occasionally sliding down to tease at the lips of your [vagina].");
-        else if (player.balls > 0 && player.hasVagina()) outputText(", occasionally sliding down, alternating between a gentle massage of your [balls] and teasing caresses of your [vagina].");
+        if (player.balls > 0 && !player.vaginas.length > 0) outputText(", occasionally sliding down to massage your [balls] before returning to your cock.");
+        else if (player.balls == 0 && player.vaginas.length > 0) outputText(", occasionally sliding down to tease at the lips of your [vagina].");
+        else if (player.balls > 0 && player.vaginas.length > 0) outputText(", occasionally sliding down, alternating between a gentle massage of your [balls] and teasing caresses of your [vagina].");
         outputText("\n\n");
 
         outputText("The strange sensation causes you to quiver, your towering erection twitching ominously.  “<i>Hey, don’t give up just yet!</i>” Izumi quips. “<i>We’re just about to get to the fun part...</i>”  Already beginning to sweat as the mind-addling smoke fogs your brain with lust, you briefly wonder what exactly ‘the fun part’ entails....\n\n");
@@ -1086,15 +1086,15 @@ export class IzumiScene {
             addButton(1, "Vaginal", fuckhugeOniWantsYourBabiesOrSomeShit);
         }
 
-        if (player.hasVagina() && !player.cocks.length > 0) {
+        if (player.vaginas.length > 0 && !player.cocks.length > 0) {
             addButton(2, "69", littleChampLittleChampFuckhugeOniIsCominTaEatcha);
         }
 
-        if (!player.cocks.length > 0 && !player.hasVagina()) {
+        if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             addButton(0, "Next", noDickNoVagNoService);
         }
 
-        if (player.hasVagina() || player.cocks.length > 0) {
+        if (player.vaginas.length > 0 || player.cocks.length > 0) {
             addButton(9, "Leave", lossSceneLeave);
         }
 
@@ -1479,7 +1479,7 @@ export class IzumiScene {
 
         flags[kFLAGS.IZUMI_SEEN_PC_GENDER] = player.gender;
 
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             addButton(1, "TribHorn", tribThatRockyHornGirl);
         }
 

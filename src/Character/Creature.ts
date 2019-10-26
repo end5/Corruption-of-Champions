@@ -396,15 +396,6 @@ export class Creature {
             return vaginas[0].vaginalWetness;
     }
 
-    public vaginaType(newType: number = -1): number {
-        if (!hasVagina())
-            return -1;
-        if (newType != -1) {
-            vaginas[0].type = newType;
-        }
-        return vaginas[0].type;
-    }
-
     public looseness(vag: boolean = true): number {
         if (vag) {
             if (vaginas.length == 0)
@@ -663,60 +654,16 @@ export class Creature {
 
     }
 
-    // check for vagoo
-    public hasVagina(): boolean {
-        return vaginas.length > 0;
-
-    }
-
-    public hasVirginVagina(): boolean {
-        if (vaginas.length > 0)
-            return vaginas[0].virgin;
-        return false;
-    }
-
-    // create vagoo
-    public createVagina(virgin: boolean = true, vaginalWetness: number = 1, vaginalLooseness: number = 0): boolean {
-        if (vaginas.length >= 2)
-            return false;
-        const newVagina: VaginaClass = new VaginaClass(vaginalWetness, vaginalLooseness, virgin);
-        vaginas.push(newVagina);
-        return true;
-    }
-
     public genderCheck(): void {
-        if (this.cocks.length > 0 && hasVagina())
+        if (this.cocks.length > 0 && this.vaginas.length > 0)
             gender = GENDER_HERM;
         else if (this.cocks.length > 0)
             gender = GENDER_MALE;
-        else if (hasVagina())
+        else if (this.vaginas.length > 0)
             gender = GENDER_FEMALE;
         else
             gender = GENDER_NONE;
     }
-
-    // REmove vaginas
-    public removeVagina(arraySpot: number = 0, totalRemoved: number = 1): void {
-        // Various Errors preventing action
-        if (arraySpot < -1 || totalRemoved <= 0) {
-            // trace("ERROR: removeVagina called but arraySpot is negative or totalRemoved is 0.");
-            return;
-        }
-        if (vaginas.length == 0) {
-            // trace("ERROR: removeVagina called but cocks do not exist.");
-        }
-        else {
-            if (arraySpot > vaginas.length - 1) {
-                // trace("ERROR: removeVagina failed - array location is beyond the bounds of the array.");
-            }
-            else {
-                vaginas.splice(arraySpot, totalRemoved);
-                // trace("Attempted to remove " + totalRemoved + " vaginas.");
-            }
-        }
-        genderCheck();
-    }
-
 
     public buttChangeNoDisplay(cArea: number): boolean {
         let stretched: boolean = false;
@@ -944,32 +891,6 @@ export class Creature {
         else
             this.perks.setValue(PerkLib.BeeOvipositor, 2, eggs());
         return fertilizedEggs();
-    }
-
-    public averageVaginalLooseness(): number {
-        let counter: number = vaginas.length;
-        let average: number = 0;
-        // If the player has no vaginas
-        if (vaginas.length == 0)
-            return 2;
-        while (counter > 0) {
-            counter--;
-            average += vaginas[counter].vaginalLooseness;
-        }
-        return (average / vaginas.length);
-    }
-
-    public averageVaginalWetness(): number {
-        // If the player has no vaginas
-        if (vaginas.length == 0)
-            return 2;
-        let counter: number = vaginas.length;
-        let average: number = 0;
-        while (counter > 0) {
-            counter--;
-            average += vaginas[counter].vaginalWetness;
-        }
-        return (average / vaginas.length);
     }
 
 

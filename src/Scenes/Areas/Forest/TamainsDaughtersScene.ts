@@ -303,7 +303,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
             }
             outputText("A third goblin suddenly attacks your taint, licking between your " + assholeDescript(player) + " and ", false);
             if (player.balls > 0) outputText(ballsDescriptLight(player), false);
-            else if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
+            else if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0), false);
             else outputText("shaft", false);
             outputText(" as she presses her hard nipples up against your " + legs(player) + ". ", false);
             // (No Tamani:
@@ -517,7 +517,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 else outputText(allBreastsDescript(player), false);
                 outputText(", sending a fresh surge of arousal through your " + multiCockDescriptLight(game.player) + ".   Another one of the girls leans down between your " + legs(player) + " licking your ", false);
                 if (player.balls > 0) outputText("balls", false);
-                else if (player.hasVagina()) outputText("pussy", false);
+                else if (player.vaginas.length > 0) outputText("pussy", false);
                 else outputText("taint", false);
                 outputText(", massaging your ", false);
                 if (player.cocks.hasSheath()) outputText("sheath", false);

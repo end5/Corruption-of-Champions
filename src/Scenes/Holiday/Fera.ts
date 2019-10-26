@@ -19,7 +19,7 @@ export function pumpkinFuckEncounter(): void {
     }
     /* UNUSED DUE TO FEN LAZINESS {PC has tits}{NIPNUMBER} of the corrupted growth's vines rise up, slowly waving, snake-like in the air.  As if hypnotized, they lazily bob back and forth, drawing a few inches closer at the culmination of each movement.  You ready your [weapon], reading to defend yourself, but the slimy green tentacles pause at the new development, their tips opening to reveal plush green lips and slobbery purple tongues.  They lick at their lips, hungrily watching your {allChest] and waiting, biding their time.  They seem hungry for tits, and at the sight you feel your burgeoning milk readying to let down.  You could feed the plant, if you want to.  The idea is oddly compelling.  Do you?*/
     // Chick sauce
-    if (player.hasVagina()) {
+    if (player.vaginas.length > 0) {
         outputText("\n\nThe stem of the pumpkin is long and proud, as well as knotted, barbed, ribbed, and flared like someone crafted the world's most perverted dildo to simultaneously resemble every type of cock in existence.  The tip bubbles constantly with slime like pre-cum oozing out of an erect phallus.");
         outputText("\n\nAs you gaze upon the stem, you can see it twitching like an actual penis and the aroma that comes from it is as enticing as what any incubus could produce.  You take a deep breath of the fruit's musk and find yourself wondering: should you mount it?");
         mount = mountPumpkin;
@@ -128,7 +128,7 @@ export function mountPumpkin(): void {
     clearOutput();
     flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE] = date.fullYear;
     // >Yes [Player is pregnant, has low vaginal wetness, or has low fertility and is not in heat]
-    if (player.pregnancyIncubation > 0 || (player.wetness() < 2 && player.totalFertility() < 30)) {
+    if (player.pregnancyIncubation > 0 || (player.vaginas.wetness() < 2 && player.totalFertility() < 30)) {
         outputText("Well, fuck it.  You're horny, and this little pumpkin doesn't look like it could stop you from fucking that gushing stem-rod.  As you shed your [armor], a few of the rough, slime-sweating vines feebly rise up to embrace you, but you brush them away, having no time for corrupt foolishness.  You're going to mount this fruit's hard, pulsing phallus, not let some malformed tentacle-horror molest you.");
         outputText("\n\nYou kneel down before your target and examine the leaking cock before you.  The stem is softer and smoother than human skin, hard as wood, yet oddly supple.  As soon as your fingers grace the surface of the phallic protrusion, a splash of ooze squirts from the stem to puddle at your feet.  Curiously, you stroke the pumpkin's dick with your fingers, feeling the stiff rod twitch under your fingers even as you gander at the compellingly vibrant shaft.  The air seems thick with the plant's sweet smell, and your pussy, regardless of your reason, seems as wet as a riverbed.");
         outputText("\n\nTentatively, you raise a juice-soaked fingertip to your lips and taste it.  The flavor is exactly what you would expect from a pumpkin, though it has a sweet, cinnamony aftertaste, just like the pies your village would make around harvest!  Shuddering at the memories of your distant past and budding lust, you shift position to line your [vagina] up with the hard green phallus.  Smiling at the absurdity of it all, you push downward, anticipating the slimy thickness of your pumpkin's pie goo.\n\n");
@@ -259,9 +259,9 @@ export function exploreFerasWonderland(): void {
     outputText("\n\nThe petals themselves are scarlet red near the center and a dusky, iridescent purple near their edges.  While you look, the colors seem to shift and change, slowly washing in towards the middle in an almost hypnotic pattern.  New hues scroll in from the tips of the bloom, turning it a psychedelic yellow-orange briefly before it too is pulled into the core, briefly staining the lips and stamen with its tawny hue before the next color in line washes it away.  You watch it for a few minutes, losing yourself in the flashing, changing colors, letting your eyes be guided to the unmistakably sexual accoutrements at the flower's core, watching and appreciating its unnatural beauty until you are roused by your [legs] starting to feel a little sore.");
     outputText("\n\nYou gather some of the nectar without thinking, compelled to lift it to your nose and take a sniff, heedlessly sampling its delicate bouquet, letting it tickle the back of your sinuses with its pheromonal payload while you enjoy the ambrosial levels of sweetness that come with it.  Your head swims a little... at least, until you lick your fingers clean and steady yourself against a nearby stalk.");
     if (player.gender > 0) outputText("  Your heart is hammering");
-    if (player.cocks.length > 0 && !player.hasVagina()) outputText(", and there's a telltale tightness building in your groin, expanding and pressing oh-so-hard on your [armor]. You look up at those sweet lips and ponder what they would feel like wrapped around your " + multiCockDescriptLight(player) + ", a thought that only makes your gear that much harder to bear as it constrains you.");
-    else if (player.hasVagina() && !player.cocks.length > 0) outputText(", and there's a telltale heat building in your groin, practically dripping out to stain your [armor] with your leaking girl-honey. You look up at those leaky stamen and idly wonder what it would feel like to let one or two inside you, stirring your insides with their sticky-sweet lovejuices.");
-    else if (player.hasVagina() && player.cocks.length > 0) outputText(", and there's a telltale sticky tightness in your [armor], keeping your " + multiCockDescriptLight(player) + " tightly compressed while your [vagina] practically juices itself all over everything, so hot, wet, and unmistakably eager to feel something inside of it. You look up at those leaky stamen and the plump lips between them and wonder what it would feel like to stick yourself in between the lips and let the stamen go to town on your exposed holes.");
+    if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText(", and there's a telltale tightness building in your groin, expanding and pressing oh-so-hard on your [armor]. You look up at those sweet lips and ponder what they would feel like wrapped around your " + multiCockDescriptLight(player) + ", a thought that only makes your gear that much harder to bear as it constrains you.");
+    else if (player.vaginas.length > 0 && !player.cocks.length > 0) outputText(", and there's a telltale heat building in your groin, practically dripping out to stain your [armor] with your leaking girl-honey. You look up at those leaky stamen and idly wonder what it would feel like to let one or two inside you, stirring your insides with their sticky-sweet lovejuices.");
+    else if (player.vaginas.length > 0 && player.cocks.length > 0) outputText(", and there's a telltale sticky tightness in your [armor], keeping your " + multiCockDescriptLight(player) + " tightly compressed while your [vagina] practically juices itself all over everything, so hot, wet, and unmistakably eager to feel something inside of it. You look up at those leaky stamen and the plump lips between them and wonder what it would feel like to stick yourself in between the lips and let the stamen go to town on your exposed holes.");
     else {
         outputText("\n\nWell, that was nice, but you don't see much reason to stick around.  You head back to camp with a wistful look over your shoulder.");
         dynStats("lib", 1, "lus", 20, "cor", 1);
@@ -282,7 +282,7 @@ export function exploreFerasWonderland(): void {
         if (player.cocks.length > 0) addButton(0, "Next", fuckDemCorruptFlowerLips);
         else addButton(0, "Next", stickAStamenInIt);
     }
-    if (player.cocks.length > 0 && player.hasVagina()) {
+    if (player.cocks.length > 0 && player.vaginas.length > 0) {
         outputText("\n\nThe only ");
         if (player.inte >= 40) outputText("other ");
         outputText("question left to you is, are you more concerned with slipping [oneCock] into those subliminally-whispering lips or guiding a writhing stamen into your [vagina] and [asshole] so that you can take in as much nectar as possible?");
@@ -478,7 +478,7 @@ export function gapeMePleaseFera(): void {
     else if (player.tailType > TAIL_TYPE_NONE) outputText("tail");
     else outputText("[foot]");
     outputText(" as you climax, arching your back and making guttural, beast-like sounds of pleasure.  Your eyelids hang low, lazily obscuring some of those wonderful colors from your view as the pleasure and plant-sap work on you.  Shuddering, you gush girlcum harder than ever, spraying a thick wave of lady-spunk across the tentacles, shining them with your juices");
-    if (player.wetness() < 4) outputText(" even though you're not a squirter");
+    if (player.vaginas.wetness() < 4) outputText(" even though you're not a squirter");
     outputText(".  They pump on with intense, unrelenting energy, squishing wetly with every thrust, splattering juice everywhere as they ruin your poor, convulsing cunny.");
     player.cuntChange(90000, true, true, false);
 

@@ -77,8 +77,8 @@ export class CorruptedDriderScene {
         let rideCock: () => void = null;
         let rideOvi: () => void = null;
         let bikiniTits: () => void = null;
-        if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
-        if (player.hasVagina() && player.lust >= 33) {
+        if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
+        if (player.vaginas.length > 0 && player.lust >= 33) {
             rideCock = winVSDriderTakeItsCockInCunt;
             rideOvi = victoryVSDriderRideOviVaginal;
             outputText("\nYou could ride the drider's retractible demon-cock or her ovipositor.", false);
@@ -104,7 +104,7 @@ export class CorruptedDriderScene {
         // Build array of choices
         const select: any[] = [];
         if (player.cocks.length > 0) select[select.length] = 0;
-        if (player.hasVagina()) select[select.length] = 1;
+        if (player.vaginas.length > 0) select[select.length] = 1;
         // Genderless scene has low chance for gendered folks
         if (player.gender == 0 || (player.gender > 0 && rand(3) == 0)) select[select.length] = 2;
 
@@ -430,15 +430,15 @@ export class CorruptedDriderScene {
             else outputText("stream", false);
             outputText(" of pre-cum down its length.", false);
         }
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("  Your " + vaginaDescript(player, 0) + " quivers", false);
-            if (player.wetness() >= 3) outputText(" and drips", false);
+            if (player.vaginas.wetness() >= 3) outputText(" and drips", false);
             outputText(" sympathetically with the sensation, and your " + clitDescription(player) + " peeks from the wet lips.", false);
         }
         outputText("  Yet you are not denied the anal pleasure you crave, as the widening bands now filling you are each pushing out harder than the one before.  At the stimulation, her own demonic clit swells as if posessed, nodulates, and hardens into dick form, poking up from her pussy and drooling a slime of pre-cum onto her abdomen.  The second ring rolls over your anal g-spot and you gasp, nearly losing your grip.  The third knocks your " + legs(player) + " out from under you, and you collapse atop your partner, squeezing oozing dick", false);
         if (player.cocks.length > 0) outputText("s", false);
         outputText(" between you", false);
-        if (player.clitLength >= 4 && player.hasVagina()) outputText(", and pressing your monster chick-stick into it; the gooey heat sends a tingle of shock up your spine and your pussy convulses", false);
+        if (player.clitLength >= 4 && player.vaginas.length > 0) outputText(", and pressing your monster chick-stick into it; the gooey heat sends a tingle of shock up your spine and your pussy convulses", false);
         outputText(".", false);
         player.buttChange(50, true, true, false);
         outputText("\n\n", false);
@@ -453,11 +453,11 @@ export class CorruptedDriderScene {
         outputText("With a final hard shove, the last few segments pop inside you", false);
         if (player.cocks.length > 0) outputText(", nearly crushing your prostate from the tight squeeze", false);
         outputText(".  ", false);
-        if (!player.cocks.length > 0 && player.hasVagina()) outputText("You gasp and dribble a few strands of girl-goo, the contractions of your achingly empty pussy intensifying.  ", false);
+        if (!player.cocks.length > 0 && player.vaginas.length > 0) outputText("You gasp and dribble a few strands of girl-goo, the contractions of your achingly empty pussy intensifying.  ", false);
         if (player.cocks.length > 0) outputText("You gasp and squirt a few weak ropes of cum, having a miniature orgasm on the spot.  ", false);
         outputText("Writhing happily, you sigh ", false);
         if (player.cocks.length > 0) outputText("while your " + multiCockDescriptLight(game.player) + " dribbles white, wasted goo onto the black and " + monster.hairColor + " striped carapace below", false);
-        else if (player.hasVagina()) outputText("while your " + vaginaDescript(player, 0) + " dribbles fem-slime onto the black and " + monster.hairColor + " striped carapace below", false);
+        else if (player.vaginas.length > 0) outputText("while your " + vaginaDescript(player, 0) + " dribbles fem-slime onto the black and " + monster.hairColor + " striped carapace below", false);
         else outputText("while your fingers tweak your " + nippleDescription(player, 0) + "s and your starved sphincter sucks at its slimy, squirming stuffing", false);
         outputText(".  Without warning, the ovipositor dilates, pulling your " + assholeDescript(player) + " even wider.  An explosion of warmth goes off in your guts, and you realize that your term as an incubator has begun with a sense of perverse delight.\n\n", false);
 
@@ -474,7 +474,7 @@ export class CorruptedDriderScene {
                 outputText("a storm of semen-squirting spurts from your shaft", false);
                 if (player.cocks.length > 1) outputText("s", false);
             }
-            else if (player.hasVagina()) outputText("a siege of spray-scattering spasms from your snatch", false);
+            else if (player.vaginas.length > 0) outputText("a siege of spray-scattering spasms from your snatch", false);
             outputText(" and", false);
         }
         outputText(" squirts of slippery spooge from her shuddering spunk-stick.  While you shriek, squirm and shiver shamelessly, you see the spider-slut suspended in the same, similarly a slave to the sensation of shoving and slamming her stalk into your straining sacrum and stuffing you with her strange spawn.\n\n", false);
@@ -560,7 +560,7 @@ export class CorruptedDriderScene {
 
         outputText("\"<i>Ungh, if I knew your ass was this eager to s-swallow my cock I wouldn't have wasted my time tying you up...</i>\"  She gasps, clearly the more impassioned of the two of you as she manages to bottom out inside of your " + buttDescription(player) + ".  You have very little time to regain your breath as the horny drider-woman begins to thrust in and out of your " + assholeDescript(player) + " with fevered abandon, tongue lolling out of her open mouth while you're forced to bounce against her crotch, your ", false);
         if (player.balls > 0) outputText(ballsDescriptLight(player), false);
-        else if (player.hasVagina()) outputText(vaginaDescript(player, 0), false);
+        else if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0), false);
         else outputText("taint", false);
         outputText(" slapping against her slavering cunt.  She grabs on to your " + hipDescription(player) + ", using you as leverage to pump her pole inside of you while you jerk against the ground, eyes closed tight while your cheek rubs against the cold dirt.\n\n", false);
 
@@ -758,11 +758,11 @@ export class CorruptedDriderScene {
 
         outputText("Clenching and relaxing, your slime-dripping asshole slowly narrows, gaping less visibly while you shudder and sigh, so happy and blissful that you don't even care about the crackling egg-shells hatching beneath you.  ", false);
         if (player.cocks.length > 0) outputText(SMultiCockDesc(game.player) + " stays limp, but drools a heavy flow of semen, puddling up a nice thick batch of your pleasure alongside your goo-pile.  ", false);
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("Your pussy clenches and ", false);
-            if (player.wetness() < 3) outputText("drips", false);
-            else if (player.wetness() < 4) outputText("dribbles", false);
-            else if (player.wetness() < 5) outputText("gives a tiny squirt", false);
+            if (player.vaginas.wetness() < 3) outputText("drips", false);
+            else if (player.vaginas.wetness() < 4) outputText("dribbles", false);
+            else if (player.vaginas.wetness() < 5) outputText("gives a tiny squirt", false);
             else outputText("gushes a river of lady-spunk", false);
             outputText(" into the dirt, getting off along with your " + assholeDescript(player) + ".  ", false);
         }
@@ -824,7 +824,7 @@ export class CorruptedDriderScene {
 
         outputText("Without warning, the drider cums.  She cries out and grabs her fully-engaged corrupted cock, hosing down the trees in front of her with spider-cum as her butt squeezes down on your " + cockDescript(game.player, x) + ", milking your dick with her anal passage.  You pick up the tempo of your fucking to break-pelvis speeds, ramming your cock into her backdoor and letting loose a torrent of your spunk, shooting it deep inside her", false);
         // (if Vagina:
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText(" while your unused cunt spurts girlcum across her carapace", false);
             if (player.cocks.length > 1) outputText(" and", false);
         }

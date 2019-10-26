@@ -170,7 +170,7 @@ export class TamaniScene implements TimeAwareInterface {
             }
             else {
                 if (player.balls > 0) outputText("licks all over your balls", false);
-                else if (player.hasVagina()) outputText("sneaks between your folds to tease your now-hardening clit", false);
+                else if (player.vaginas.length > 0) outputText("sneaks between your folds to tease your now-hardening clit", false);
                 else outputText("licks the sensitive " + player.skinTone + " " + player.skinDesc + " of your inner thighs", false);
             }
             outputText("\n\n", false);
@@ -401,7 +401,7 @@ export class TamaniScene implements TimeAwareInterface {
                 if (player.balls > 0) outputText("lifts up your " + ballsDescriptLight(player), false);
                 else outputText("leans forwards, looking between your legs", false);
                 outputText(", and places the dildo's leaking tip against your " + assholeOrPussy(player) + ".  You feel it stretching you out, reacting with your body's own fluids to swell up inside you like a pervert's balloon as Tamani pushes it further and further inside you.", false);
-                if (player.hasVagina()) {
+                if (player.vaginas.length > 0) {
                     outputText("  ", false);
                     player.cuntChange(player.vaginalCapacity() * .95, true);
                     outputText("Your walls squeeze tightly around it in an unconscious milking motion as your body reacts to it as if it were a real dick.", false);
@@ -413,7 +413,7 @@ export class TamaniScene implements TimeAwareInterface {
                 outputText("  A burning heat radiates through your body, making your " + nippleDescription(player, 0) + " tingle and grow ever more sensitive.\n\n", false);
                 outputText("Tamani rocks back and forth, sliding herself against your " + cockDescript(game.player, 0) + ", humping it lewdly as your veins rub her hard little nub of a clit.  She pants, making sure to keep giving you sultry looks over her shoulder, licking her glossy lips as she brutally teases you.  You can feel her getting off over and over as she grinds, sliding faster and faster on your shaft.   For your part, your " + cockDescript(game.player, 0) + " begins making a puddle of pre-cum on your belly as the dildo's drug-like cum affects you, making you feel horny and hot.\n\n", false);
                 outputText("The kinky goblin dominatrix on your " + cockDescript(game.player, 0) + " leans even further forwards, angling the dildo in your " + assholeOrPussy(player) + " upwards to squeeze your ", false);
-                if (player.hasVagina()) outputText("cock's base ", false);
+                if (player.vaginas.length > 0) outputText("cock's base ", false);
                 else outputText("prostate ", false);
                 outputText(" with delicious intensity.  You quiver underneath her, panting and moaning, totally subservient to the tiny girl giving your body the sexual workout of a life-time.  She slides back, her cunt squishing back and forth against your prick-head, driving you wild.  She coos, \"<i>Go ahead and cum stud,</i>\" while squeezing your ", false);
                 if (player.balls > 0) outputText("balls", false);

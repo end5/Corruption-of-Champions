@@ -658,7 +658,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("  Sophie's immense thighs squeeze tighter in response, shutting out any last vestiges of light and pushing you harder into her sopping-wet mound.  You let your lower lip graze her rigid clitty and savor the lubricating fluid that she leaks into your waiting mouth.");
 
         outputText("\n\nHer tongue and yours seem to be the only things that matter anymore.  Hers circles the entirety of your " + cockDescript(game.player, x) + ", accompanied by golden lips that leave behind their drugged, amber residue.  The enjoyable tingling that those chemicals induce is driving you wild with desire.  Your heart is hammering like crazy in your chest, each thrumming beat reinforcing the thickness of your erection in the bird-woman's mouth.");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("  She tenderly");
             if (player.balls > 0) outputText(" reaches under your [balls] and");
             outputText(" explores your [vagina] with two fingers, her thumb brushing across your [clit] every few seconds.  It seems the harpy is considerate of even your feminine needs - ones that serve to make you even harder, so full it almost hurts.");

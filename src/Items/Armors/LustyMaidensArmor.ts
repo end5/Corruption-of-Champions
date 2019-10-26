@@ -9,7 +9,7 @@ export class LustyMaidensArmor extends Armor {
     }
 
     public get def(): number {
-        if (game.player.hasVirginVagina()) return 9 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
+        if (game.player.vaginas.hasVirginVagina()) return 9 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
         return 6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
     }
 
@@ -34,7 +34,7 @@ export class LustyMaidensArmor extends Armor {
             outputText(" at all!  <b>You put your old gear back on with a sigh</b>.");
             return false;
         }
-        else if (!game.player.hasVagina()) {
+        else if (!game.player.vaginas.length > 0) {
             outputText("that it will dig uncomfortably into your featureless groin.  <b>You put your old gear back on with a sigh</b>.");
             return false;
         }
@@ -47,7 +47,7 @@ export class LustyMaidensArmor extends Armor {
         else {
             outputText("a tight seal over your previously-claimed cunt.  Regret fills you when you realize you could have kept your chastity intact simply by servicing the lusty studs and monsters with your ass and tits.");
         }
-        if (game.player.wetness() >= 3) outputText("  The moisture you normally drip seems to soak right into the gusset instead of running down your [legs] like normal, giving you a much more chaste appearance in spite of the lewd garments that even now seem to shape your femininity and [butt] into perfectly arousing shapes.");
+        if (game.player.vaginas.wetness() >= 3) outputText("  The moisture you normally drip seems to soak right into the gusset instead of running down your [legs] like normal, giving you a much more chaste appearance in spite of the lewd garments that even now seem to shape your femininity and [butt] into perfectly arousing shapes.");
 
         outputText("\n\nLast is the chain skirt - perhaps the easiest part to put on.  It's barely three inches long, such that it exposes your [butt] almost entirely, and when you bend over, fully.  The bottom of your vaginal crease can be spied as well, and should you desire to show yourself off, a simple stretch or tug would put you completely on display.  You wiggle about, watching the reflective material ripple almost hypnotically, one hand still on your boobs, mauling at your own tits with passion.  THIS is how a chaste champion should dress - perfectly modest but full of erotic energy to overwhelm her enemies with!\n\n");
         return true;
@@ -55,7 +55,7 @@ export class LustyMaidensArmor extends Armor {
 
     public playerEquip(): Armor {
         while (game.player.perks.findByType(PerkLib.SluttySeduction) >= 0) game.player.perks.remove(PerkLib.SluttySeduction);
-        if (game.player.hasVirginVagina()) {
+        if (game.player.vaginas.hasVirginVagina()) {
             game.player.perks.create(PerkLib.SluttySeduction, 10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS], 0, 0, 0);
         }
         else {
@@ -83,7 +83,7 @@ export class LustyMaidensArmor extends Armor {
         outputText("\n\n\"<i>Such lascivious behavior!  I'll have to make sure you're thoroughly purified,</i>\" you state matter-of-factly with a feigned serious look on your blushing [face].  To put proof to your taunt, you grab the throbbing shaft by the base and aim it straight up, dropping your [chest] down on either side.  The slippery, self-lubricating leather that joins the cups of your sexy, chainmail bra together loops over the top of the " + cockDescriptShort(monster, 0) + " to properly restrain it, pinned in the slick, sweaty valley you call your cleavage.  It thrums happily against your " + skin(player) + " when you compress the jiggly flesh around it, leaning down to let it feel pleasure that rivals any pussy, no matter how wet or skilled.");
 
         outputText("\n\nYou smile at your defeated foe as you begin to bob over " + monster.pronoun2 + ", and you find more words coming from your lips without meaning to speak.  \"<i>That's better.  You really shouldn't go around trying to fuck everyone like that!  Pussies are ");
-        if (!player.hasVirginVagina()) outputText("a gift too fine for a selfish brute like you");
+        if (!player.vaginas.hasVirginVagina()) outputText("a gift too fine for a selfish brute like you");
         else outputText("sacred and to be shared only with a cherished loved one");
         outputText("!  Now, I'm going to squeeze all the impure thoughts out of you through your cock, so you just lie there and focus on letting them out all over my breasts.</i>\"");
 
@@ -98,7 +98,7 @@ export class LustyMaidensArmor extends Armor {
         outputText("\n\nUp and down, up and down, you slide across the expansive member with unhurried, slow strokes, each time making your [chest] bounce beautifully.  Your [nipples] are so hard");
         if (player.breasts.hasFuckableNipples() || player.lactationQ() >= 100) outputText(", dripping,");
         outputText(" and sensitive, scraping around the nebulous inner lining of your bikini and occasionally catching on the metal that feels even warmer than normal.  Behind you, your [butt] is bouncing happily to the rhythm your corruption-devouring breasts have set, the thong digging tightly into your [vagina] in the most exquisite way.  You feel so hot and sensual, but still secure in the knowledge that you won't have to worry about such a creature ravaging your ");
-        if (player.hasVirginVagina()) outputText("maidenhead");
+        if (player.vaginas.hasVirginVagina()) outputText("maidenhead");
         else outputText("sloppy gash");
         outputText(".  Still, you're not sure how much hotter you can get before you're cumming all over your g-string, letting your own dark thoughts seep into your magical underwear.");
 
@@ -118,7 +118,7 @@ export class LustyMaidensArmor extends Armor {
         if (game.flags[kFLAGS.BIKINI_ARMOR_BONUS] > 8) game.flags[kFLAGS.BIKINI_ARMOR_BONUS] = 8;
         player.orgasm();
         dynStats("sen", 2);
-        if (player.hasVirginVagina()) dynStats("cor", -1);
+        if (player.vaginas.hasVirginVagina()) dynStats("cor", -1);
         // If minotaur, increase addiction slightly.
         if (monster instanceof Minotaur || monster instanceof MinotaurMob) player.minoCumAddiction(3);
         if (monster.short == "Ceraph") game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
@@ -141,7 +141,7 @@ export class LustyMaidensArmor extends Armor {
                 Special Bonus: Every time you use the special titfuck scene, you gain two defense and 2 tease damage up to a max of 8.  Every night you lose half your bonus (minimum 1).
                 Min lust: 30
                 Min libido: 50*/
-    /*			if(wearer.hasVirginVagina()) {
+    /*			if(wearer.vaginas.hasVirginVagina()) {
                     while(wearer.perks.findByType(PerkLib.SluttySeduction) >= 0) wearer.perks.remove(PerkLib.SluttySeduction);
                     wearer.perks.create(PerkLib.SluttySeduction,10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
                 }

@@ -71,7 +71,7 @@ export let singleArgConverters: Record<string, any> =
     tongue(thisPtr: any): any { return tongueDescription(player); },
     vag(thisPtr: any): any { return vaginaDescript(player); },
     vagina(thisPtr: any): any { return vaginaDescript(player); },
-    vagorass(thisPtr: any): any { return (game.player.hasVagina() ? vaginaDescript(player) : assholeDescript(player)); },
+    vagorass(thisPtr: any): any { return (game.player.vaginas.length > 0 ? vaginaDescript(player) : assholeDescript(player)); },
     weapon(thisPtr: any): any { return game.player.weaponName; },
     weaponname(thisPtr: any): any { return game.player.weaponName; },
 

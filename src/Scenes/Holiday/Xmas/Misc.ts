@@ -360,14 +360,14 @@ export function takeItRooButtStyle(): void {
     outputText("\n\n\"<i>Oh shit!</i>\" she cries, her plump hips pistoning into your [asshole] recklessly.  You estimate at least eight inches of her meaty member are inside with the first few thrusts alone, not including however many she's already trying to squeeze in. You feel her thick tail brush along your thighs, shivering as she whispers into your ear. \"<i>I'm going to pump you so full of cum, you'll be out of commission for weeks, doll.</i>\"   You try to focus your attention on absorbing her powerful thrusts, gradually easing into it as her lubricants soften up your hot passage.  Eventually, at least 14 inches of pure cock slams deep into your pucker. With every buck, her balls ricochet off ");
     if (player.balls > 0) outputText("your own");
     // [Else if have vagina]
-    else if (player.hasVagina()) outputText("your pussy");
+    else if (player.vaginas.length > 0) outputText("your pussy");
     // [Else if neither]
     else outputText("your taint");
     outputText(".  Each time, the waitress fondles your form with her eager hands.  ");
 
     outputText("\n\n");
     // [If player has pussy]
-    if (player.hasVagina()) outputText("Your cunt oozes in return, envious of the tenderized hole above it.  ");
+    if (player.vaginas.length > 0) outputText("Your cunt oozes in return, envious of the tenderized hole above it.  ");
     outputText("You dedicate a few more minutes to soaking up every moment of her animalistic romping, savoring the feeling of a hung rod in your punished posterior.  Your climax quickly comes to loom over you, however, the potent, ");
     if (player.cocks.length > 0) outputText("prostate");
     else outputText("ass");
@@ -376,8 +376,8 @@ export function takeItRooButtStyle(): void {
     if (player.cocks.length > 0) outputText("  Your pent-up cock ejaculates there and then, shamelessly gushing sloppy semen against the wall in front of you.");
     // [If female]
     if (player.gender == 3) outputText("  Meanwhile, y");
-    else if (player.hasVagina()) outputText("Y");
-    if (player.hasVagina()) outputText("our eager pussy buckles in arousal, gushing fem-juices on the floor below you.");
+    else if (player.vaginas.length > 0) outputText("Y");
+    if (player.vaginas.length > 0) outputText("our eager pussy buckles in arousal, gushing fem-juices on the floor below you.");
     outputText("  You're truly spent.");
 
     outputText("\n\nKami, on the other hand, needs a tad more encouragement.  She desperately diddles her unused slit for as long as she can take it, her own belated orgasm finally erupting messily into your asshole moments later.  \"<i>Oh doll, I - ungh - needed that more than anything.  If you come back before the end of winter, we should definitely try this again.</i>\"  You give a thumbs up in approval of Kami's idea, turning around to head back to camp. Before you go, however, you take the opportunity to get a good squeeze of her ample tits, quickly taking off with complete satisfaction.");
@@ -514,7 +514,7 @@ export function unwrapPolarPete(): void {
     outputText("\n\n\"<i>Yes, that's it. Don't be shy now.</i>\"  Pete gives a jolly laugh as he starts pushing more past your lips.  You give a muffled moan, your lips wrapped tight around the giant confection.  The heat in your body grows, and your loins began to ache.");
     if (player.cocks.length > 0) outputText("  [EachCock] grows stiff and soaks your [armor] with precum.");
     // (if vagina)
-    if (player.hasVagina()) outputText("  Your [vagina] grows moist, dripping eager juices and soaking your [armor].");
+    if (player.vaginas.length > 0) outputText("  Your [vagina] grows moist, dripping eager juices and soaking your [armor].");
 
     outputText("\n\n\"<i>Oh ho ho ho, seems like you're really enjoying your gift.  Let ol' Polar Pete lend you a hand,</i>\" he says with a twinkle in his eyes as he lays you down in the snow, his free hand stripping you of your [armor].  Despite the cold you can only sigh in relief, your skin so hot it feels like you could melt the ice and snow with ease.  Pete begins to thrust the massive candy cane into your mouth, the flexible treat dipping down inside your throat with ease.");
 
@@ -528,7 +528,7 @@ export function unwrapPolarPete(): void {
     outputText("\n\n\"<i>Mmm, I'll definitely have to go down your chimney every year.  You're so very good,</i>\" he pants, clouds of mist fogging his face as he exhales deep breaths in the cold air.  He suddenly takes on a brutal pace, the sound of flesh slapping flesh filling your ears as he leans forward and begins to pound away at you with refocused intent.");
     // [(if cock)
     if (player.cocks.length > 0) outputText("  His continued ramming of your prostate mixed with the addictive candy crammed in your mouth sends you over the edge, [eachCock] shooting out ropes of snow white all over your chest.  Pete eyes you over with a lurid gaze, your face covered in his cum and your body covered in your own.");
-    else if (player.hasVagina()) outputText("  Your [vagina] quivers, the rough thrusting into your [asshole] mixed with the addictive candy in your mouth sending you over the edge.  With a low muffled moan your mound spills your lust over your groin, dripping down to lube Pete's thrusts as well as your [legs].  Pete gives you a lurid gaze.");
+    else if (player.vaginas.length > 0) outputText("  Your [vagina] quivers, the rough thrusting into your [asshole] mixed with the addictive candy in your mouth sending you over the edge.  With a low muffled moan your mound spills your lust over your groin, dripping down to lube Pete's thrusts as well as your [legs].  Pete gives you a lurid gaze.");
 
     outputText("\n\nWatching you writhe in pleasure filled bliss, Pete pounds away at you with a few sharp thrusts.  His ballsack nestles in between your ass cheeks as he buries as much of his south pole into you as possible.  With his ebony cock twitching and unloading into you, he groans loudly, and he pumps your stomach full of his creamy Holiday cheer.  You feel a bit bloated as your stomach bulges.  Pete pulls out as his hot minty spunk spills from your abused [asshole].");
 
@@ -839,7 +839,7 @@ export function nieveSexMenu(): void {
     // Female Nieve
     // Must have a penis or at least a 3.5 inch clit
     // Nieve's capacity is about 130.
-    if ((player.cocks.length > 0 || (player.hasVagina() && player.clitLength >= 3.5)) && player.lust >= 33) {
+    if ((player.cocks.length > 0 || (player.vaginas.length > 0 && player.clitLength >= 3.5)) && player.lust >= 33) {
         if (flags[kFLAGS.NIEVE_GENDER] == 2) addButton(1, "Fuck Her", fuckNieve);
     }
     // Get Fucked by Gurumash
@@ -934,7 +934,7 @@ export function fuckNieve(): void {
     let x: number = -1;
     if (player.cocks.length > 0) {
         x = player.cocks.cockThatFits(130);
-        if (x <= 0 && player.hasVagina() && player.clitLength >= 3.5 && rand(2) == 0) x = -1;
+        if (x <= 0 && player.vaginas.length > 0 && player.clitLength >= 3.5 && rand(2) == 0) x = -1;
         else x = player.cocks.smallestCockIndex();
     }
     outputText("You look your naked, icy lover up and down, thinking of all the things you could do to her.  She raises a white eyebrow at you curiously while you take in her statuesque form.  A thin layer of frost covers her flesh, giving her pale blue skin a sparkling, shimmering appearance.  You find yourself getting aroused at all the potentialities.  Your " + cockClit(player, x) + " rises to attention as you ponder it, and with a smirk, you finally settle on something.");
@@ -1085,7 +1085,7 @@ export function nieveFucksYou(): void {
     // {Silly Mode:}
     if (silly()) outputText("   He did say that his kind were effectively love slaves, and boy does this prove it!");
     // [if (hasVagina = true)
-    if (player.hasVagina()) outputText("  Your [vag] is a sodden box so soon after he started, and you start to want more, much more!");
+    if (player.vaginas.length > 0) outputText("  Your [vag] is a sodden box so soon after he started, and you start to want more, much more!");
     // [if (hasCock = true)
     if (player.cocks.length > 0) outputText("  Your [cock biggest] is also rock hard in a short while and you quickly desire some more stimulation from your icy love slave.");
 
@@ -1093,7 +1093,7 @@ export function nieveFucksYou(): void {
     // [Anal][Vaginal][(tits >3) Tit-Fuck]
     menu();
     addButton(0, "Anal", takeNieveAnal);
-    if (player.hasVagina()) addButton(1, "Vaginal", takeNieveVaginal);
+    if (player.vaginas.length > 0) addButton(1, "Vaginal", takeNieveVaginal);
 }
 // Anal
 export function takeNieveAnal(): void {
@@ -1106,7 +1106,7 @@ export function takeNieveAnal(): void {
     // [if (hasCock = true)
     if (player.cocks.length > 0) outputText("  Nieve then bends forward while keeping his pace to give you a reach-around.  Grabbing your own [cock biggest] in one hand, he starts to pump it to the speed of his thrusts, torturing you with the extra-stimulation in such a good way.");
     // [if (hasVagina = true)
-    else if (player.hasVagina()) outputText("  As Nieve continues to pound away, he places one hand on your sopping wet cunt and begins to finger you in time with his assault, making you lust-drunk with the stimulation as he finger bangs you.");
+    else if (player.vaginas.length > 0) outputText("  As Nieve continues to pound away, he places one hand on your sopping wet cunt and begins to finger you in time with his assault, making you lust-drunk with the stimulation as he finger bangs you.");
 
     outputText("\n\nNieve continues to grunt as he prods and plunges into your ");
     // if (silly mode)
@@ -1124,7 +1124,7 @@ export function takeNieveAnal(): void {
             else if (player.cumQ() < 500) outputText(", as you cum you start to dress your arms and hands with your own cream as you shoot your stuff out onto the floor");
         }
         // [if (hasVagina = true)
-        if (player.hasVagina()) outputText(".  Your soaking vagina makes your body quake and shudder as you orgasm, splashing your femcum all over Nieve and the ground");
+        if (player.vaginas.length > 0) outputText(".  Your soaking vagina makes your body quake and shudder as you orgasm, splashing your femcum all over Nieve and the ground");
     }
     outputText(".");
 

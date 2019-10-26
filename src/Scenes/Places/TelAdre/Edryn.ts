@@ -212,7 +212,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         // Catch all
         else {
             // Turned on chicks can hit on her
-            if (player.hasVagina() && player.lust > 70) {
+            if (player.vaginas.length > 0 && player.lust > 70) {
                 outputText("and as wet as you are right now, you find her scent to be intriguing.  Some part of you is curious what it would taste like.  When the centauress returns you compliment her on her shapely backside, but she only smiles politely and informs you that she \"<i>doesn't swing for your team,</i>\" whatever that means.  The rest of the conversation is quite pleasant, but all good things must come to an end.", false);
                 cheatTime(1);
                 doNext(telAdre.barTelAdre);
@@ -961,7 +961,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("  Her button, like her pussy, is many sizes larger than a human's, and it's as big around as a golfball and several inches long.  You suck it into your lips and plunge a hand inside her slippery channel, fisting her while you suckle and bob on her clit.  Edryn whinnies and clenches around the invading fist.  Her cunt erupts and splatters your face with fluid, soaking you with her fragrant scent.\n\n", false);
 
         outputText("Startled from your sexual fog, you jerk back and gasp.  The smell – it's like sex distilled into orgasm and fired straight into your brain.  Your " + hipDescription(player) + " shake uncontrollably, spasming wildly as your scent-addled mind sets off a full-body orgasm.  ", false);
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("Your " + vaginaDescript(player, 0) + " contracts and spasms with the rest of you, ", false);
             if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) outputText("squirting", false);
             else outputText("leaking", false);

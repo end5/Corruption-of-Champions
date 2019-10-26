@@ -26,7 +26,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
             femaleVapulaRecruitmentPartII();
             return true;
         }
-        if (game.time.hours == 2 && vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] >= 5 && (player.cocks.length > 0 || (player.keyItems.has("Demonic Strap-On") >= 0 && player.hasVagina()))) {
+        if (game.time.hours == 2 && vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] >= 5 && (player.cocks.length > 0 || (player.keyItems.has("Demonic Strap-On") >= 0 && player.vaginas.length > 0))) {
             vapulaForceFeeds();
             return true;
         }
@@ -197,7 +197,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
             if (player.lust >= 33) mFeed = feedVapulaACupOfJizz;
             else if (output) outputText("\n\nYou aren't suitably aroused to feed Vapula right now.");
         }
-        if (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0) {
+        if (player.vaginas.length > 0 && player.keyItems.has("Demonic Strap-On") >= 0) {
             if (player.lust >= 33) fFeed = chixFeedVapulaBlehblehIVantToZuckYourSpooo;
             else if (output && !player.cocks.length > 0) outputText("\n\nYou aren't suitably aroused to feed Vapula right now.");
         }
@@ -413,7 +413,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         let jojo: () => void = null;
         // Option: Izma
         let izma: () => void = null;
-        if (player.cocks.length > 0 || (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0)) {
+        if (player.cocks.length > 0 || (player.vaginas.length > 0 && player.keyItems.has("Demonic Strap-On") >= 0)) {
             if (jojoScene.campCorruptJojo()) jojo = vapulaJojoThreesomes;
             if (amilyScene.amilyFollower() && amilyScene.amilyCorrupt() && player.cocks.length > 0) amily = vapulaAndAmilyThreesome;
             if (ceraphFollowerScene.ceraphIsFollower() && player.cocks.length > 0) ceraph = vapulaCeraphThreesome;
@@ -698,7 +698,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         if (player.cocks.length > 0) outputText("\n\nYou could initiate a butt-fuck train, and ram his asshole while he fucks Vapula's; this way he would get what he clearly wants.");
         let tease: () => void = null;
         let train: () => void = null;
-        if (player.hasVagina() || player.keyItems.has("Demonic Strap-On") >= 0) tease = NTRSomeJojos;
+        if (player.vaginas.length > 0 || player.keyItems.has("Demonic Strap-On") >= 0) tease = NTRSomeJojos;
         if (!player.cocks.length > 0) { } else {
             tease = NTRSomeJojos;
             train = jojoButtFuckTrain;
@@ -806,7 +806,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         if (jojoScene.tentacleJojo()) {
             outputText("\n\nBetween two butt-assaults, you order your pet to put his pretty appendages to some use for once: your ass needs to be taken care of too.  Jojo doesn't seem to react.  You first think he didn't hear you over Vapula's screams and the mad thuds of groins being clasped against butts, but you are soon relieved as you feel some tubular appendage tickling your buttocks.  Encouraging him, you thrust deeper in his own butt, inviting him to return the favor.  Your efforts are rewarded as you feel your own anus being savagely violated by some fat penile flora, sap-like slime being spilled down your legs.  The cock fucks you hard and rough, speeding up and slowing down irregularly as Jojo tries to muster his stamina.  At the same time, another of these green rods finds its way toward your mouth; you eagerly suck the tip like a popsickle and it immediately shoves itself down your throat.  Your neck bulges obscenely from the huge dick-intrusion, but you don't care; his cock tastes too sweet.");
             // [if vagina]
-            if (player.hasVagina()) outputText("  Last but not least, a soft cock-knock at the entrance of your " + vaginaDescript(player) + " signals an incoming intrusion.  If your mouth weren't so full of cock you would sigh in relief as your aching pussy is thoroughly penetrated.");
+            if (player.vaginas.length > 0) outputText("  Last but not least, a soft cock-knock at the entrance of your " + vaginaDescript(player) + " signals an incoming intrusion.  If your mouth weren't so full of cock you would sigh in relief as your aching pussy is thoroughly penetrated.");
         }
         // [if PC has extra long tentacle cock, variable is n1]
         let n1: number = -1;
@@ -1014,7 +1014,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
 
     // Forcefeed
     public vapulaForceFeeds(): void {
-        if (player.hasVagina() && player.keyItems.has("Demonic Strap-On") >= 0 && !player.cocks.length > 0) {
+        if (player.vaginas.length > 0 && player.keyItems.has("Demonic Strap-On") >= 0 && !player.cocks.length > 0) {
             outputText("\n<b>In the night...</b>\nArousal blooms in your dreams, and you are relentlessly pushed into increasingly juicier and filthier fantasies; feeling hopelessly wet, you half awaken and hazily slide a hand down towards your crotch, to try and find release and rest.  Your fingers touch leather and latex where your vagina should be; bewildered, you rise to see Vapula working around your crotch, tightening the final harnesses of your strap-on, locking you into the pink dildo throbbing in your " + vaginaDescript(player, 0) + " whilst she licks hungrily at the tip of the opposite end.  You try to sit up but the ferocious succubus pins you down ruthlessly, her strength increased by her state of hunger.  She smirks at you wickedly and whispers, \"<i>So you don't want me to use any dick but the one I gave you, yet you won't feed me?  That's very bad of you, " + player.short + "... really, really bad...  Do you want to starve me?  Do you want me to beg you for cum?  You naughty slut, you better be ready because I'm going to get what is rightfully mine.  I'm HUNGRY!</i>\"");
             outputText("\n\nWith a wolfish groan she swallows the purple dildo up to the hilt and begins to work it savagely, slurping and grunting obscenely.  Before you can properly react, she catches the base of the dildo with her teeth and pushes it into you as hard as she can.  You gasp as the pink end reacts, growing by several inches and sliding further into your moist cunt.  In and out Vapula drags the dildo, slapping it into your groin as she fucks you whilst blowing the purple end for all she is worth, her saliva running down your thighs.  For a moment you think about getting up, asserting your authority and making her stop... but then the warm length wedged in your depths makes you coo with pleasure as Vapula shakes the cock in her mouth around like a bear with a salmon, making your end twist and spasm delightfully.  Deciding it is worth taking advantage of her insane hunger, ");
             // Naga:
@@ -1062,7 +1062,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         clearOutput();
         outputText("Without any warning, you grab the lusty succubus by the wrists and pull her into you, easily manhandling her surprised form until she's bent over your [leg], vulnerable and squealing like the gutter-slut she is.  Her wings batter at your face and chest, but after a little wrangling, you pin them flat against her back.  The best she can manage now is a few weak twitches at her wing-tips.  Her large, well-formed breasts jiggle and shake as she struggles, but all the trembling purple mountains accomplish is bringing a ready flush to your " + skin(player));
         if (player.cocks.length > 0) outputText(" and a healthy surge of blood to [eachCock]");
-        else if (player.hasVagina()) outputText(" and a teltale moistness to your nethers");
+        else if (player.vaginas.length > 0) outputText(" and a teltale moistness to your nethers");
         outputText(".");
         outputText("\n\n\"<i>Be still, you whimpering, useless excuse for a demon!</i>\" you command.  Unsurprisingly, she continues to struggle.");
         outputText("\n\nVapula cries,  \"<i>Lemme go!  Can't we just go double team some people and forget about all this?</i>\"  Her violet eyes crane hopefully towards you, and she wears a winning smile across the smooth curves of her lips.  For a moment, you reconsider your plans, but then again, she earned this when she forced herself on you.  Upon seeing the resolve in your gaze, her struggles start anew, but you have her firm - she's not going anywhere.");
@@ -1080,7 +1080,7 @@ export class Vapula extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nThe succubus is panting, gasping really, and while you assume it to be pain at first, when you touch her warm, flushed skin to dab away one of her tears, you realize that she's actually turned on.  The bitch IS getting off on it.  You aren't sure if she's actually a natural painslut or just obeying your masochistic suggestions, but a quick dip into the violet crevasse between her legs confirms the presence of copious lubricants and a hard, aroused clitty.  Vapula shudders when you stroke her pussy and begs, \"<i>Please, let's fuck!  I'm so wet for you!  You can spank me while we fuck until my ass is bruised and swollen!  Don't you wanna feel my pussy clench each time you punish me for being a disobedient little skank?</i>\"");
         outputText("\n\nWhile that's certainly an appealing offer, it would defeat the point of this little exercise.  You shake your head sadly, ignoring the heat in your ");
         if (player.cocks.length > 0) outputText("maleness");
-        else if (player.hasVagina()) outputText("vagina");
+        else if (player.vaginas.length > 0) outputText("vagina");
         else outputText("tingling anus");
         outputText(", and bring your palm back down again to start a fresh wave of punishment.  Vapula actually does begin to make vocalizations at this point, but they sound closer to moans and whimpers of pleasure than cries of pain.  As a matter of fact, you can feel the hard nubs of her nipples dragging across your [leg] every time she contorts in pain.  A few blows later and stray drops of feminine lubricants spatter off your [foot].  Vapula's tail stabs towards her vulnerable sex, but you immediately yank it away and give her a harder than usual slap for punishment.");
         outputText("\n\nIf she's going to cum, it's going to be because of you.  There's no masturbating your way out of punishment.  You pound away at that reddened bottom with renewed vigor, and soon, those drops of enjoyment turn into a tide of lubricated pleasure.  Vapula's head begins to thrash with each spank, and her body quakes, not from orgasm but from being on the edge for so long.  You double the pace, and as the entirety of her bottom goes red, Vapula cums, unleashing a tide of succubus-spunk to stain your [leg].  You give her a few gentle swats to see her orgasm through and release her once it's over.");

@@ -404,7 +404,7 @@ export function appearance(e: MouseEvent = null): void {
                         outputText("balls plenty of room to breathe", false);
                     else if (player.cocks.length > 0)
                         outputText(multiCockDescript(player) + " plenty of room to swing", false);
-                    else if (player.hasVagina())
+                    else if (player.vaginas.length > 0)
                         outputText(vaginaDescript(player) + " a nice, wide berth", false);
                     else outputText("vacant groin plenty of room", false);
                     outputText(", and", false);
@@ -1093,7 +1093,7 @@ export function appearance(e: MouseEvent = null): void {
     }
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00286] == 1)
         outputText("\nA magical, ruby-studded bar pierces your belly button, allowing you to summon Ceraph on a whim.", false);
-    if (player.hasVagina()) {
+    if (player.vaginas.length > 0) {
         if (player.vaginas[0].labiaPierced > 0)
             outputText("\nYour " + vaginaDescript(player, 0) + " glitters with the " + player.vaginas[0].labiaPShort + " hanging from your lips.", false);
         if (player.vaginas[0].clitPierced > 0)

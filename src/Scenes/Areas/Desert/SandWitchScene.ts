@@ -350,11 +350,11 @@ export class SandWitchScene implements TimeAwareInterface {
             // [has breasts]
             if (player.breasts.biggestTitSize() > 0) outputText("; your " + nippleDescription(player, 0) + "s  become stiff", false);
             // [cock only]
-            if (player.cocks.length > 0 && !player.hasVagina()) outputText(" and your " + cockDescript(game.player, 0) + " hardens.", false);
+            if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens.", false);
             // [cunt only]
-            if (player.hasVagina() && player.cocks.length == 0) outputText(" and your " + vaginaDescript(player, 0) + " begins to drip with moisture.", false);
+            if (player.vaginas.length > 0 && player.cocks.length == 0) outputText(" and your " + vaginaDescript(player, 0) + " begins to drip with moisture.", false);
             // [cock and cunt]
-            if (player.hasVagina() && player.cocks.length > 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens as your " + vaginaDescript(player, 0) + " begins to drip with moisture.", false);
+            if (player.vaginas.length > 0 && player.cocks.length > 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens as your " + vaginaDescript(player, 0) + " begins to drip with moisture.", false);
             if (player.gender == 0) outputText(" her.", false);
             outputText(" She seems hesitant at first, but soon approaches and begins to run her hands along your stomach and your " + hipDescription(player), false);
             // [has breasts]
@@ -517,10 +517,10 @@ export class SandWitchScene implements TimeAwareInterface {
             else {
                 outputText("Finished with your games ", false);
                 // [has cunt]
-                if (player.hasVagina()) outputText("and your " + vaginaDescript(player, 0) + " dripping with desire", false);
+                if (player.vaginas.length > 0) outputText("and your " + vaginaDescript(player, 0) + " dripping with desire", false);
                 outputText(", you push the witch unceremoniously to the ground and deliver a slap to her breasts.  She cries out in pain as milk splashes out onto the sand.  A cruel smile is brought to your face and you start slapping them even harder, alternatively smacking her pair of cunts for good measure.  Surprisingly, her cries of pain begin to turn into moans of pleasure with every slap.  She might even be pushing into the blows slightly, though it is difficult to tell.  After a sizable pool of milk and her juices has drained into the sands beneath her, you reach down and start to drive your fingers hard into one of the sand witch's cunts.  The first few thrusts are enough to violently bring her to orgasm.  You trot forward slowly until you are over her and the witch suddenly hops up. Driving her face into your ", false);
                 // [has cunt]
-                if (player.hasVagina()) {
+                if (player.vaginas.length > 0) {
                     outputText(vaginaDescript(player, 0) + ", she fingers herself even harder than you had been a moment ago.  Her lips lock unto your " + clitDescription(player) + " and she suckles on it, drawing a pained gasp from you and causing your pussy juices to gush over her face. You feel ", false);
                     // [cunt size is small]
                     if (player.vaginalCapacity() < 10) outputText("one of her fingers ", false);
@@ -729,7 +729,7 @@ export class SandWitchScene implements TimeAwareInterface {
         outputText("The sand witch slows to a dead stop as she assesses your intentions, which are made all the more clear as you disrobe and toss your [armor] aside, exposing your ");
         if (player.cocks.length > 0) outputText("hardened  " + multiCockDescriptLight(game.player));
         if (player.gender == 3) outputText(" and ");
-        if (player.hasVagina()) outputText(clitDescription(player));
+        if (player.vaginas.length > 0) outputText(clitDescription(player));
         outputText(" for her viewing consumption.  Making quite the persuasive argument of non-hostility as you do, the sand witch finally relents, removing her cloak and exposing her four-breasted, ");
         if (player.cocks.length > 1) outputText(num2Text(player.cocks.length + 1));
         else outputText("two");
@@ -846,7 +846,7 @@ export class SandWitchScene implements TimeAwareInterface {
         outputText(" while you slowly pump her full of eggs, her girlish little moans resonating through your body as she orally stimulates your ");
         if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
         if (player.gender == 3) outputText(" and ");
-        if (player.hasVagina()) outputText("your " + vaginaDescript(player, 0));
+        if (player.vaginas.length > 0) outputText("your " + vaginaDescript(player, 0));
         outputText(".  At long last her enthusiastic efforts bring you to a more 'traditional' release, lathering ");
         const facial: number = rand(2);
         if (facial == 0) outputText("her facial features with proof of your climax");
@@ -991,7 +991,7 @@ export class SandWitchScene implements TimeAwareInterface {
         outputText("\n\nToo late, you see the witch's hands glowing, and before you can react, a club of solid stone whomps you upside the head, flinging you wholesale onto your side.  You try to stagger up, but your balance isn't working, and you fall back down, ears ringing.  The witch, seemingly recovered, is towering over you.  She screams, \"<i>My milk is not a toy!</i>\" and throws her arms up over her head.  From below, a torso-sized block of sandstone rumbles up out of the dune, striking you square in the plexus and lifting you up, [legs] and arms dangling uselessly.  A few whispered incantations later and your wrists and [foot] are sucked into the block, binding you into a helpless, restrained pose.");
         outputText("\n\n\"<i>Now who is laid low?!</i>\" she snaps with magic crackling in the air.  \"<i>You need to be taught a lesson, off-worlder!</i>\"  The witch grabs at the bottom of your [armor] and yanks it down, exposing your [butt] to the hot desert air.  ");
         if (player.cocks.length > 0) outputText("Worse still, [eachCock] is now unprotected and pressed against the rough stone by your body-weight.  It's less than pleasant.  ");
-        else if (player.hasVagina()) outputText("Worse still, your [vagina] is pressed up against the rough stone.  It's less than pleasant.  ");
+        else if (player.vaginas.length > 0) outputText("Worse still, your [vagina] is pressed up against the rough stone.  It's less than pleasant.  ");
         outputText("You bristle at your helplessness");
         if (player.perks.findByType(PerkLib.FireLord) >= 0 || player.perks.findByType(PerkLib.Hellfire) >= 0 || player.perks.findByType(PerkLib.Dragonfire) >= 0) outputText(", breathing out a gout of flame in rage, but you can't even direct the blast properly like this.  All it does is melt some of the sand below into glass");
         else outputText(", but there's nothing you can do");
@@ -1001,9 +1001,9 @@ export class SandWitchScene implements TimeAwareInterface {
         if (player.cor < 50) outputText("She sounds almost fanatical in her dedication to her order.");
         else outputText("What the hell is she on about?  Does she actually think her little torture session is going change your attitude?");
         outputText("\n\nPicking up the pieces of her tattered robe, the sand witch makes to leave.  She stops after a few paces and turns back your way, \"<i>Perhaps this will ease the wait.</i>\"  Your eyes widen in anger when she makes familiar motions, but there's nothing you can do.  Soon, smooth stone orbs are sliding into through your cheeks and into your [butt]");
-        if (player.hasVagina()) outputText(" and [vagina]");
+        if (player.vaginas.length > 0) outputText(" and [vagina]");
         outputText(".  All of them are vibrating to slightly different tempos, and you get so focused on the oscillating anal symphony, that you miss the enchantress's departure.  You ride the vibrating stones to so many orgasms that you lose count.  Eventually, the magic column fades, receding into the sand.  At the same time, the lifeless stone orbs roll out of your [asshole]");
-        if (player.hasVagina()) outputText(" and [vagina]");
+        if (player.vaginas.length > 0) outputText(" and [vagina]");
         outputText(".  Bruised and orgasmed into exhaustion, you pass out in the sand with your [armor] around your ankles.  Maybe next time you won't waste your chances gloating.");
         monster.lust = 98;
         monster.HP = 2;

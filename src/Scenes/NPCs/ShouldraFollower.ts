@@ -154,7 +154,7 @@ export class ShouldraFollower extends NPCAwareContent {
 
         outputText("\n\nDripping with her lusty leavings, you vigorously nod and crane your head back up to the randy passage.  Your plus-sized poltergeist wastes no time in returning you to her box's moist embrace, stuffing you most of the way in with a simple motion.  A finger as big as your [legs] pushes your [feet] the rest of the way inside, stuffing you so high up you bump your head on the narrow entrance of her womb.  It's dark inside her, but you quickly get to work, sliding and squirming around, humping your ");
         if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player));
-        else if (player.hasVagina()) outputText(vaginaDescript(player));
+        else if (player.vaginas.length > 0) outputText(vaginaDescript(player));
         else outputText("[butt]");
         outputText(" against the slick walls.  You push your way towards the pinkish slit in the distance begin to slide your [legs] over the inner edges of her lips, pressing your arms up above you for stability.");
         outputText("\n\nYou must have hit her g-spot, because as soon as you do, a rush of lady-spunk envelops you.  The walls squeeze around you, this time rippling in waves up and down your body, squeezing you affectionately as your temporary shelter vents thick flows of girl-goo all around you.  You hold onto the pulsing walls for dear life, moaning into the steamy cunt while it gives you a full-body massage.");
@@ -162,9 +162,9 @@ export class ShouldraFollower extends NPCAwareContent {
             outputText("  [EachCock] is quickly brought to orgasm by the exotic situation, and you fire off your own load into the deluge of sex-juice.");
             if (player.cumQ() >= 1000) outputText("  Somehow, you pour out almost as much spunk as Vala's orgasm, turning the inside of her honeypot into an off-white mess.");
         }
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("  Your [vagina] can scarcely resist the allure of the sweet, female flesh pressing against it, and with an explosion of hot bliss, you climax");
-            if (player.wetness() >= 4) outputText(", squirting with joy");
+            if (player.vaginas.wetness() >= 4) outputText(", squirting with joy");
             outputText(".");
         }
         outputText("\n\nSlowly, the tumultuous orgasm concludes, but no sooner than it finishes, your pink prison begins to sway back and forth.  The possessed faerie is walking somewhere!  Shouldra's face peeps out of the tunnel's soaked edge, illuminated by its own inner radiance.  She says, \"<i>Don't stop now, Champ!  You were doing so well!</i>\"  Her hand appears to flick one of your [nipples], and suddenly, your lust washes through you.  You try to grab hold of your ghost by the head to fuck her");
@@ -216,7 +216,7 @@ export class ShouldraFollower extends NPCAwareContent {
     public sandWitchGetsGhostly(): void {
         spriteSelect(67);
         clearOutput();
-        if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) {
+        if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
             outputText("As you admire your latest victory, a familiar specter pokes her head out from your torso.  The sand witch shuffles backward on the ground, her face an amalgamation of dread, confusion, and curiosity.  \"<i>What say we have a little fun with this one, eh, Champ?</i>\" Shouldra suggests, licking her lips in anticipation.  You wave an arm outwards, giving the antsy apparition the go ahead to pursue her prey.  The desert denizen unearths a second breath, climbing to her feet in an attempt to escape.  She doesn't make it too far before the ghost girl dives into her back, hurling the witch to the dunes.");
             outputText("\n\n\"<i>Get out of my head!</i>\" the sorceress screams, thrashing around in the sand clinging to her cranium.  She eventually calms down and faces you, her brown eyes now the customary glowing shade of yellow you've come to welcome.  \"<i>Now all we need is a skeleton, a wolf man, and some bats.  Then we'll have ourselves a holiday!</i>\" Shouldra jokes while climbing to her new feet, her voice replacing that of her quarry.  The ghost girl begins exploring the sand witch's body; it doesn't take long for her to fixate on the witch's quartet of lactating lovelies.  Reassured that the ghost girl is in control, you strip free of your [armor] and approach the bewitched witch.");
             outputText("\n\n\"<i>I haven't done anything yet and these factories are already working at over-capacity,</i>\" the spirit points out.  She takes a moment to jab a finger into one of the milky teats and samples her host's product.  Her reaction is like that of a gourmet chef enjoying a fine delicacy.  \"<i>Mmmm... invigorating.  But I think we can do something about the modest proportions of the source,</i>\" Shouldra teases, circling the witches' hands around the churning cantaloupes.  The ghost girl wastes no time in getting right to her own variety of spell casting, doing her best to keep from wavering as she continues to grope the sorceress' silos.");
@@ -271,7 +271,7 @@ export class ShouldraFollower extends NPCAwareContent {
             shouldraAndWormsYoureGonnaHaveABadTime();
         }
         else if (player.gender == 0) genderlessShouldraMasturbation();
-        else if (player.cocks.length > 0 && (!player.hasVagina() || rand(2) == 0)) maleMasturbationProper();
+        else if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) maleMasturbationProper();
         else {
             if (rand(2) == 0) girlyMasturbationWithGhosts();
             else shouldraTongueLicksPCs();
@@ -926,7 +926,7 @@ export class ShouldraFollower extends NPCAwareContent {
         const nipples: () => void = shouldraGivesYaSomeFukkinTeats;
         if (player.balls > 0) balls = groBallsBiggaGHOSTYSTYLE;
         if (player.cocks.length > 0) cock = shouldraCockBloating101;
-        if (player.hasVagina()) clit = shouldraGrowsYoClit;
+        if (player.vaginas.length > 0) clit = shouldraGrowsYoClit;
         choices("Balls", balls, "Breasts", breast, "Clit", clit, "Cock", cock, "Nipples", nipples, "Butt", butt, "", null, "", null, "", null, "Back", shouldraTalkMenu);
     }
 
@@ -1067,7 +1067,7 @@ export class ShouldraFollower extends NPCAwareContent {
         if (player.buttRating >= 2) butt = shrinkDatBootyForYoGhost;
         if (player.balls > 0 && player.ballSize > 1) balls = shouldraReductosYourBallsUpInsideYa;
         if (player.cocks.length > 0 && player.cocks.longestCockLength() > 4) cock = shouldraMakesCocksDisappear;
-        if (player.hasVagina() && player.clitLength > .25) clit = clittyVanishingActShouldra;
+        if (player.vaginas.length > 0 && player.clitLength > .25) clit = clittyVanishingActShouldra;
         choices("Balls", balls, "Breasts", breasts, "Clit", clit, "Cock", cock, "Nipples", nipples, "Butt", butt, "", null, "", null, "", null, "Back", shouldraTalkMenu);
     }
     // Balls
@@ -1296,7 +1296,7 @@ export class ShouldraFollower extends NPCAwareContent {
             outputText("\n\nThe calculated shade works her way over to your [cock], a vacant expression dominating her face.  You're unsure just what that means, but it becomes the least of your concerns when she jabs her thumb into your [cockHead]!  You instinctively wince in pain, but the sensation never comes.  Not much of anything registers, really.  This soon becomes a blessing as you witness the eidolon stretch your cock away from you, insert BOTH her hands into it, and stretch your slit high into the air.  She then casually slips inside it as if it were a sleeping bag, disappearing into its distended depths.  It all happened so fast, nothing really had time to register.  You try and touch your magnified member, only to discover that it's now rock solid.  No, not erect, but literally made of stone!");
         }
         // if PC has no cock, but has vagina
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("\n\nThe calculated shade bends her way down to your [cunt], a vacant expression dominating her face.  You're unsure just what that means, but your concern is quickly forgotten as the spirit grasps your vaginal walls with both hands!  Oddly enough, you feel nothing.  No pain, but no pleasure either.  This soon becomes a blessing when the eidolon works her way around your canal, shaping it into a gaping wide hole!  Once its large enough, she casually slips inside and disappears into your depths.  It all happened so fast, nothing really had time to register.  You try and touch your stretched cunt, only to discover that it's sealed shut and rock solid.  Like, literally made of stone!");
         }
         outputText("\n\nYour groggy daze isn't helping matters much as you panic, hands exploring your solidified genitalia.  It doesn't feel any more dense or heavier than before, but there's a disconcerting texture alongside impossible rigidity.  \"<i>Tonight we're focusing on something of my own design,</i>\" Shouldra says, her voice reverberating in your head.  Her tone mirrors the stony-eyed demeanor you witnessed earlier.  Whatever she has in store probably won't be too kosher.");
@@ -1387,7 +1387,7 @@ export class ShouldraFollower extends NPCAwareContent {
             choices[choices.length] = 4;
         }
         // 5 PC with vagina
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             choices[choices.length] = 5;
             choices[choices.length] = 5;
             choices[choices.length] = 5;
@@ -1879,9 +1879,9 @@ export class ShouldraFollower extends NPCAwareContent {
             outputText(" as your heart races and blood rushes down towards your ");
             if (player.cocks.length > 0) {
                 outputText("drowsy member");
-                if (player.hasVagina()) outputText(" and ");
+                if (player.vaginas.length > 0) outputText(" and ");
             }
-            if (player.hasVagina()) outputText("trembling nether-lips");
+            if (player.vaginas.length > 0) outputText("trembling nether-lips");
             if (player.gender == 0) outputText("groin");
         }
         outputText(", before you realize that nobody seems to notice your predicament.  Shouldra reads your thoughts and responds, \"<i>Thought you might appreciate some privacy");

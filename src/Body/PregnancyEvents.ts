@@ -974,7 +974,7 @@ export function updatePregnancy(): boolean {
             }
             if (player.pregnancyIncubation == 120) {
                 outputText("\n<b>Your larger, squirming belly makes your pregnancy obvious for those around you", false);
-                if (player.hasVagina()) outputText(" and keeps your " + vaginaDescript(player, 0) + " aroused from the constant tingling in your womb", false);
+                if (player.vaginas.length > 0) outputText(" and keeps your " + vaginaDescript(player, 0) + " aroused from the constant tingling in your womb", false);
                 outputText(".</b>\n", false);
                 dynStats("lus", (10 + player.lib / 20));
                 displayedUpdate = true;
@@ -1072,10 +1072,10 @@ export function updatePregnancy(): boolean {
         else if (player.pregnancyType == PregnancyStore.PREGNANCY_FROG_GIRL) {
             if (player.pregnancyIncubation == 8) {
                 // Egg Maturing
-                if (player.hasVagina()) {
+                if (player.vaginas.length > 0) {
                     outputText("\nYour gut churns, and with a squelching noise, a torrent of transparent slime gushes from your [vagina].  You immediately fall to your knees, landing wetly amidst the slime.  The world around briefly flashes with unbelievable colors, and you hear someone giggling.\n\nAfter a moment, you realize that it’s you.");
                     // pussy:
-                    if (player.hasVagina()) outputText("  Against your [vagina], the slime feels warm and cold at the same time, coaxing delightful tremors from your [clit].");
+                    if (player.vaginas.length > 0) outputText("  Against your [vagina], the slime feels warm and cold at the same time, coaxing delightful tremors from your [clit].");
                     // [balls:
                     else if (player.balls > 0) outputText("  Slathered in hallucinogenic frog slime, your balls tingle, sending warm pulses of pleasure all the way up into your brain.");
                     // genderless:
@@ -1098,7 +1098,7 @@ export function updatePregnancy(): boolean {
                 // Egg Maturing
                 outputText("\nYour gut churns, and with a squelching noise, a torrent of transparent slime gushes from your ass.  You immediately fall to your knees, landing wetly amidst the slime.  The world around briefly flashes with unbelievable colors, and you hear someone giggling.\n\nAfter a moment, you realize that it’s you.");
                 // pussy:
-                if (player.hasVagina()) outputText("  Against your [vagina], the slime feels warm and cold at the same time, coaxing delightful tremors from your [clit].");
+                if (player.vaginas.length > 0) outputText("  Against your [vagina], the slime feels warm and cold at the same time, coaxing delightful tremors from your [clit].");
                 // [balls:
                 else if (player.balls > 0) outputText("  Slathered in hallucinogenic frog slime, your balls tingle, sending warm pulses of pleasure all the way up into your brain.");
                 // [cock:
@@ -1391,7 +1391,7 @@ export function updatePregnancy(): boolean {
         displayedUpdate = true;
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         outputText("A dangerous rumble comes from your womb, signaling that it's time to birth your body's cargo at last.  Your " + legs(player) + " wobble unsteadily as your strength ebbs with every gush that erupts  from your now-broken water until you collapse on your " + buttDescription(player) + ", grunting and groaning.  At first it goes slow – there's just a few small contractions that are more strange than anything else, rippling down your " + vaginaDescript(player, 0) + " and squirting out more of your pregnancy's fluid.  All too soon the tempo kicks up, and you feel something starting to stretch you wider and wider.\n\n", false);
@@ -1424,7 +1424,7 @@ export function updatePregnancy(): boolean {
         displayedUpdate = true;
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         outputText("Your " + player.armorName + " feels damp around the groin and you reach down to check the area.  The  " + vaginaDescript(player, 0) + " you feel is dilated and slick with unusual wetness; your water must have broken!\n\n", false);
@@ -1509,7 +1509,7 @@ export function updatePregnancy(): boolean {
         else player.effects.create(StatusAffects.BirthedImps, 1, 0, 0, 0);
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         outputText("A sudden gush of fluids erupts from your vagina - your water just broke.  You grunt painfully as you feel wriggling and squirming inside your belly, muscle contractions forcing it downwards.  ", false);
@@ -1567,7 +1567,7 @@ export function updatePregnancy(): boolean {
         player.boostLactation(.01);
         if (player.vaginas.length == 0) {
             outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.\n", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         // If you like terrible outcomes
@@ -1639,7 +1639,7 @@ export function updatePregnancy(): boolean {
     if (player.pregnancyIncubation == 1 && player.pregnancyType == PregnancyStore.PREGNANCY_MINOTAUR) {
         if (player.vaginas.length == 0) {
             outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         player.boostLactation(.01);
@@ -1689,7 +1689,7 @@ export function updatePregnancy(): boolean {
         outputText("\n", false);
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         // FUCKING BIRTH SHIT HERE.
@@ -1708,7 +1708,7 @@ export function updatePregnancy(): boolean {
         outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.\n\n", false);
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         // Main Text here
@@ -1745,7 +1745,7 @@ export function updatePregnancy(): boolean {
         outputText("\nYou blink, feeling a sudden ache of need radiating from your massive stomach. You can't even get off the ground, it is so heavy... you simply lie on your side, panting with desire, as the convulsions start. New life moves beneath your stomach, ready to be born, and it is time to do your part.\n\n", false);
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         // Main Text here
@@ -1788,7 +1788,7 @@ export function updatePregnancy(): boolean {
         outputText("\nYou are suddenly awoken by the heat inside your womb suddenly flaring up rather intensely.  It gives you a sudden charge of energy and you feel a strong need to stand up.  You can feel the two heads moving inside of you and you know that a hellhound will soon be born.  Guided by your instincts, you spread your legs and squat down, but wonder how exactly you are going to pass a creature with two heads?\n\n", false);
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n\n", false);
-            player.createVagina();
+            player.vaginas.createVagina();
             genderCheck();
         }
         outputText("Hearing a hiss, you look down to see drops of water hitting the ground and instantly turning to steam.  There is unnatural heat filling you, it's hot enough to boil water; but thanks to the creature inside you, you're barely feeling a thing!  More energy fills you and you begin to push down on the child within in earnest.  The process is painful, but satisfying; you feel like you could push out a mountain with the energy you have right now.  Within a minute, you can feel the heads emerge.  The heads are quickly followed by the rest of the body and you catch your hellhound child in your hands and lift it up to look at it.\n\n", false);
@@ -1835,7 +1835,7 @@ export function updatePregnancy(): boolean {
             outputText("\n", false);
             if (player.vaginas.length == 0) {
                 outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n\n", false);
-                player.createVagina();
+                player.vaginas.createVagina();
                 genderCheck();
             }
             // Small egg scenes

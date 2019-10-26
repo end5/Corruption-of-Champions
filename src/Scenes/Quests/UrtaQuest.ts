@@ -41,7 +41,7 @@ export class UrtaQuest extends NPCAwareContent {
             if (player.short == "Urta") {
                 if (player.cocks.length > 0) {
                     if (player.cocks[0].cockLength == 20 && player.cocks[0].cockThickness == 3) {
-                        if (player.hasVagina()) {
+                        if (player.vaginas.length > 0) {
                             if (player.breastRows[0].breastRating == 7) return true;
                         }
                     }
@@ -226,7 +226,7 @@ export class UrtaQuest extends NPCAwareContent {
         player.buttRating = 12;
         player.ass.analLooseness = 2;
         player.effects.create(StatusAffects.BonusVCapacity, 58, 0, 0, 0);
-        player.createVagina();
+        player.vaginas.createVagina();
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
         player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_NORMAL;
         player.clitLength = 1;
@@ -541,7 +541,7 @@ export class UrtaQuest extends NPCAwareContent {
         menu();
         addButton(0, "Cuddle", snuggleWithUrta, truth);
         // Put Urta dick in girl PC's vag(C)*
-        if (player2.hasVagina())
+        if (player2.vaginas.length > 0)
             addButton(1, "FuckHerVag", putUrtasWangInPCsCunt, truth);
         // Put a PC dick in Urta's vag(C)*
         if (player2.cocks.cockThatFits(urta.urtaCapacity()) >= 0)
@@ -570,7 +570,7 @@ export class UrtaQuest extends NPCAwareContent {
         else if (player2.tallness < 84) outputText(" and let your tits smash into " + player2.mf("his", "her"));
         else outputText(" and let your tits sway over " + player2.mf("his", "her") + " belly");
         outputText(", giving " + player2.mf("him", "her") + " something to enjoy while you begin to shift position, dragging your dick down " + player2.mf("his", "her") + " length");
-        if (player2.hasVagina()) outputText(", past " + player2.mf("his", "her") + " pussy,");
+        if (player2.vaginas.length > 0) outputText(", past " + player2.mf("his", "her") + " pussy,");
         outputText(" and towards the prize you've been wanting since you got here - " + player2.mf("his", "her") + " asshole.");
         outputText("\n\nYou glance up at " + player2.mf("his", "her") + " face when your oozing, fat cock-tip presses into " + player2.mf("his", "her") + " sphincter, looking for assent.  " + player2.mf("He", "She") + " gives it a moment later, moaning and rubbing " + player2.mf("his", "her") + " butt back into you, butthole clenching and relaxing a little more with every contact.");
         if (player2.analCapacity() > 70) outputText("  Thankfully, " + player2.mf("he", "she") + "'s nice and stretched from all the butt-fucking " + player2.mf("he", "she") + "'s had to take, and you easily pop inside.  It feels so good that your flare grows wider, pulling you deeper into that welcoming, tight anal heat.");
@@ -591,7 +591,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nYou ram your turgid mass in until your sheath is smashed flat against your abdominals, almost painfully.  Below, your taut sack expands slightly before shrinking, pumping hot pleasure through your abdomen and down your rapidly dilating urethra.  You can feel it dilate the base of your cock, stopped up for a second by " + player2.short + "'s sphincter, and then it pushes through, widening " + player2.mf("his", "her") + " butthole in the process.  Your flare feels as wide as one of Aunt Nancy's plates back at the bar, immobilizingly thick and pulsing with every hammering heartbeat that pounds through it.  You release some of your pent-up, achingly hot seed into " + player2.mf("his", "her") + " butt with a cry of joy.  Wriggling down against " + player2.mf("him", "her") + ", you squeeze " + player2.mf("his", "her") + " pulsing erection");
         if (player2.cocks.length > 1) outputText("s");
         outputText(" between your bodies, " + player2.mf("his", "her") + " liquid love exploding all over your cock-locked forms.  Each time you cum, a fresh-squeezed spurt of semen splatters into your tits, " + player2.mf("his", "her") + " prostate violently being milked by the heady flows of vixen-spunk you force inside " + player2.mf("his", "her") + " rectum.");
-        if (player2.hasVagina()) outputText("  You don't notice the female fluids that drip from her sodden slit - they soak into your big balls, already forgotten.");
+        if (player2.vaginas.length > 0) outputText("  You don't notice the female fluids that drip from her sodden slit - they soak into your big balls, already forgotten.");
         outputText("\n\n" + player2.short + " kisses you, or at least tries to - " + player2.mf("his", "her") + " body wiggles " + player2.mf("him", "her") + " away with every blissful spurt that " + player2.mf("he", "she") + " makes");
         if (player2.cumQ() >= 500) {
             outputText(", made worse by the sheer volume of spunk " + player2.mf("his", "her") + " cock");
@@ -677,7 +677,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nYour cock throbs in tune with your heartbeat, each pulsation causing a thick gobbet of anticipatory precum to splat wetly onto your lover's belly, but you aren't in the mood to indulge it this time.  If you're risking the possibility of never returning to your lover's arms again, then you want to remind yourself yet again of the first man ");
         if (player2.gender == 3) outputText("...well, close enough... ");
         outputText("to ever fuck you like a woman.  Grabbing " + player2.mf("his", "her") + " face, you pull " + player2.mf("him", "her") + " into a deep, passionate kiss, unthinkingly grinding your dripping cock and steadily-wettening gash into " + player2.mf("his", "her") + " belly and rubbing your own pebbly onyx nipples against " + player2.mf("his", "her") + " nipples.  " + player2.mf("His", "Her") + " own " + cockDescript(player2, x) + " begins to drool precum");
-        if (player2.hasVagina()) outputText(", her cunt dripping wetly onto the ground from the stimulus");
+        if (player2.vaginas.length > 0) outputText(", her cunt dripping wetly onto the ground from the stimulus");
         outputText(", the fluid rolling down its length to puddle with yours on " + player2.mf("his", "her") + " belly and filling your writhing, passionate embrace with hot, sticky sweetness.");
 
         outputText("\n\nBut this isn't all you intend to settle for, and you break the kiss with some reluctance, a glistening streamer tentatively linking your lips together.  You growl in your throat and nuzzle your cheek against your lover's, before you rise up and take a step back.");
@@ -700,7 +700,7 @@ export class UrtaQuest extends NPCAwareContent {
             outputText("\n\nYour balls begin to tingle with warmth in that familiar way that they do just before you cum, rising slightly involuntarily as your sack starts to pull tight and release.  Your cock flexes, bulging in your fingers as the climax builds up within the cumvein and stretches it out, and with an exultant moan, you declare, \"<i>I'm gonna...  CUUUUUUM!</i>\"  " + player2.short + " answers you with a moan of " + player2.mf("his", "her") + " own, ramming with increasing speed and force into your cunt.");
 
             outputText("\n\nYour equine cock-head flares wider and wider as that oh-so-familiar feeling of hot pleasure begins pumping its way up from your swaying balls and along your fat dick, your heart hammering inside your chest and your flare seeming to pulse with every beat of your heart.  Thick, hot, salty jizz spurts and sprays in load after load from your cock, gushing onto the earth below you and rapidly saturating it, leaving you kneeling over an ever-growing puddle of sex-scented mud.  As you arch your back and thrust out your dick, your cunt tightens, anchoring " + player2.short + " inside of you and giving " + player2.mf("him", "her") + " no choice but to cum in turn");
-            if (player2.hasVagina()) outputText(", her female jizz spattering unnoticed onto the ground behind the pair of you");
+            if (player2.vaginas.length > 0) outputText(", her female jizz spattering unnoticed onto the ground behind the pair of you");
             outputText(".");
 
             // PC Cum=Normal or lower:
@@ -733,7 +733,7 @@ export class UrtaQuest extends NPCAwareContent {
             outputText("\n\nYour balls begin to tingle with warmth in that familiar way that they do just before you cum, rising slightly involuntarily as your sack starts to pull tight and release.  Your cock flexes, bulging in " + player2.short + "'s fingers as the climax builds up within the cumvein and stretches it out.  With an exultant moan, you declare, \"<i>I'm gonna...  CUUUUUUM!</i>\"  " + player2.short + " answers you with a moan of " + player2.mf("his", "her") + " own, ramming with increasing speed and force into your cunt.");
 
             outputText("\n\nYour equine cock-head just flares wider and wider as that oh-so-familiar feeling of hot pleasure begins pumping its way up from your swaying balls and along your fat dick, your heart hammering inside your chest and your flare seeming to pulse with every beat.  Thick, hot, salty jizz spurts and sprays in load after load from your cock, rising up into the air and then falling back onto you, completely plastering your tits and belly in your own spunk, smearing your face with it and forcing you to lick it up.  As you arch your back and thrust up your dick, your cunt tightens, anchoring " + player2.short + " inside of you and giving " + player2.mf("him", "her") + " no choice but to cum in turn");
-            if (player2.hasVagina()) outputText(", her female jizz spattering unnoticed onto the ground beneath the pair of you");
+            if (player2.vaginas.length > 0) outputText(", her female jizz spattering unnoticed onto the ground beneath the pair of you");
             outputText(".");
 
             // (PC Cum=Normal or lower:
@@ -791,8 +791,8 @@ export class UrtaQuest extends NPCAwareContent {
             if (player2.tailType > TAIL_TYPE_NONE) outputText("  You stroke her tail as you shift it aside");
             else outputText("  You stroke her swollen sex as you admire it");
             outputText(", making sure you've got the perfect view of her lube-slimed horse-cunt.  Unbidden, your cock thickens, disgorging a potent trail of animal-pre down its underside in anticipation.");
-            if (player2.wetness() >= 4) outputText("  Fuck, she's wetter than Edryn!  Just look at those heavy trails of slick moisture as they run down her rump and hindlegs.");
-            else if (player2.wetness() >= 2) outputText("  Fuck, she's as wet as Edryn!  Beads of moisture are forming on her clit, ready to drop to the ground.");
+            if (player2.vaginas.wetness() >= 4) outputText("  Fuck, she's wetter than Edryn!  Just look at those heavy trails of slick moisture as they run down her rump and hindlegs.");
+            else if (player2.vaginas.wetness() >= 2) outputText("  Fuck, she's as wet as Edryn!  Beads of moisture are forming on her clit, ready to drop to the ground.");
             else outputText("  Fuck, she's almost as wet as Edryn!  Just getting a sniff of her horny horse-snatch has your head swimming!");
             outputText("  You give it a lick and shudder, taking in a few deep lungfuls of her scent.");
             if (player2.tallness >= 84) outputText("  Before you know what you're doing, you've pulled her back to a rock and climbed atop it, bringing your cock level with that heavenly hole.");
@@ -808,15 +808,15 @@ export class UrtaQuest extends NPCAwareContent {
         // {nagas}
         else if (player2.isNaga()) {
             outputText("and roll the snake-woman over so she's prostrate on the ground, barely holding her front half up with her arms.  Her loins are flat on the ground, undulating slightly as she grinds her moist clit against it for sensation.  Your lover's anatomy poses a problem for your choice of positions, but then, inspiration strikes.  You come up under the hind part of her snake-tail, and hoisting it up, you support half over your shoulder.  As expected, she has all the flexibility of the serpent she so resembles, and her tail bends down just far enough for her cunt to hang a mere inch above your rigid tool, right where her body changes from snake to person.");
-            if (player2.wetness() >= 3) outputText("  Her moisture drizzles from that wanton slit, basting you with her fragrant femininity, and you have a hard time not taking her here and now.");
+            if (player2.vaginas.wetness() >= 3) outputText("  Her moisture drizzles from that wanton slit, basting you with her fragrant femininity, and you have a hard time not taking her here and now.");
             outputText("  The tail you're holding up coils in, sliding around your arm and middle, wrapping you up in snakey snugness.  With impeccable control, she squeezes a little bit, bringing her cunt close enough to breathe foggy moisture on your equine tool.");
         }
         // {biped}
         else {
             outputText("and roll her over on her hands and knees, lifting that sweet butt up in the air where you can admire it.  You kneel behind her and, pressing your nose into her fragrant quim, you extend your tongue, letting the smooth oral muscle taste her juices and tease at her engorging clit.  " + player2.short + " moans and presses back into you, crying out like a true bitch in heat, one in need of a thorough rutting.  The thought hits your cock like a lightning bolt, and it fills out to painful proportions, every vein and bulge standing out in stark relief, thumping obscenely to the tune of your insatiable lust.  You moan into her lovely-tasting snatch, gulping down ");
-            if (player2.wetness() < 3) outputText("every drop of nectar that she gives up");
-            else if (player2.wetness() < 4) outputText("the copious drops of nectar she gives up");
-            else if (player2.wetness() < 5) outputText("the drizzling moisture that oozes from her twat");
+            if (player2.vaginas.wetness() < 3) outputText("every drop of nectar that she gives up");
+            else if (player2.vaginas.wetness() < 4) outputText("the copious drops of nectar she gives up");
+            else if (player2.vaginas.wetness() < 5) outputText("the drizzling moisture that oozes from her twat");
             else outputText("the rivers of girl-lube that run unimpeded from her sopping twat");
             outputText(".  You sniff in great lungfuls of her, your head swimming with need, and before you know it, you've risen behind her, your oozing flare just inches from that delectable opening.");
         }
@@ -2749,7 +2749,7 @@ export class UrtaQuest extends NPCAwareContent {
         menu();
         // [KnockUrta] [KnockMe] [Edryn]
         if (player.cocks.length > 0) addButton(0, "KnockUrta", knockUpUrtaWithGodChild);
-        if (player.hasVagina()) addButton(1, "KnockMe", getKnockedUpWithGodChild);
+        if (player.vaginas.length > 0) addButton(1, "KnockMe", getKnockedUpWithGodChild);
         addButton(2, "Edryn", urtaAndEdrynGodChild);
 
     }
@@ -2862,7 +2862,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("glistening interior.  Urta whines, high pitched and keening, and she doubles over, pumping her cock with both hands, unashamedly masturbating at the sight of your exposed, vulnerable womanhood.  She grunts, swinging her hips lewdly back and forth, actually fucking her hands now, mouth open and panting, \"<i>Gonna... gonna fuck ya!  Fullofbabies!</i>\"");
 
         outputText("\n\nThe rutting prick-vixen thrusts so hard that the momentum carries her closer, and in her almost drunken haste, she tumbles head over heels.  With a ");
-        if (player.wetness() >= 4) outputText("wet ");
+        if (player.vaginas.wetness() >= 4) outputText("wet ");
         outputText("squish, she lands nose-deep in your vagina, immediately licking at it and tickling you with her smooth, slippery tongue.  \"<i>Mmmmm,</i>\" she purrs as she suckles your [clit].  Inching upward, the dripping wet fox-girl licks higher and higher, her tongue smearing across the " + skinFurScales(player) + " that covers your ");
         if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 150) outputText("rounded ");
         outputText("belly.  Urta's rigid onyx nipples tickle your [legs] as they drag upward, each immensely erect and engorged, just a little pebbly in texture.  She reaches your [chest], kissing up the ");
@@ -2947,9 +2947,9 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nFrom behind, the hot, familiar head of your lover's member pierces your womanly view.  It slides through your slick, cum-soaked passage with ease, butting right up against your cervix as it bottoms out again.  Urta kneads the " + skinFurScales(player) + " on your [butt], happily beginning to hump you all over again.  The wet squishes are much louder, wetter, and noisier than ever before.  Voraciously, the fox-girl pounds you, a brutal, wet fuck that sends leftover cum, pre and girlish lube splattering everywhere.  Your blankets, if they weren't already, are now ruined, soaked in an inch-deep puddle of sex.");
 
         outputText("\n\nWhen her massive shaft bottoms out again, it scrapes across your g-spot in just the right way, and the fireworks going off in your [vagina] push you so far past the point of orgasm that your muscles seize.  ");
-        if (player.wetness() >= 5) outputText("Lady-spunk showers out of your spasming twat, glazing Urta's bouncy ballsack with your lusty liquid.");
-        else if (player.wetness() >= 3) outputText("Lady-spunk drools out of your spasming twat in thick streams, glazing Urta's bouncy ballsack with your liquid lust.");
-        else if (player.wetness() >= 1) outputText("Lady-spunk drips from your spasming twat in steady trickles, glazing Urta's bouncy ballsack with your liquid lust.");
+        if (player.vaginas.wetness() >= 5) outputText("Lady-spunk showers out of your spasming twat, glazing Urta's bouncy ballsack with your lusty liquid.");
+        else if (player.vaginas.wetness() >= 3) outputText("Lady-spunk drools out of your spasming twat in thick streams, glazing Urta's bouncy ballsack with your liquid lust.");
+        else if (player.vaginas.wetness() >= 1) outputText("Lady-spunk drips from your spasming twat in steady trickles, glazing Urta's bouncy ballsack with your liquid lust.");
         outputText("  The hungry mouth between her legs wastes no time in cleaning them.");
         outputText("  Again and again, muscular contractions wiggle through your canal, wringing Urta's swollen staff of impregnation, milking it for more, even though your womb is STILL slightly distended from her last deposit.");
         outputText("\n\n\"<i>You're gonna be so pregnant, " + player.short + "!</i>\" she cries, smacking her hand across your [butt] hard enough to feel the ripple through your middle.  \"<i>You're going to be the mother of a god, and then... then I'll knock you up with kits!  We'll have so many babies, " + player.short + "...</i>\"  Her hand caresses your rump as she rambles, plowing your wet pussy again and again.  \"<i>You're so hot, lover...  Mmmm, your tight little box already knows my dick doesn't it?  I think it's gonna... ooooohhhh...  I'm gonna cum again!</i>\"");

@@ -231,7 +231,7 @@ export class SexMachine extends TelAdreAbstractContent {
             flags[kFLAGS.TIMES_USED_SEX_MACHINE_AS_HERM]++;
         }
         // PREG IT UP!
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             temp = rand(6);
             switch (temp) {
                 case 0:

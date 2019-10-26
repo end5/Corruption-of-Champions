@@ -48,7 +48,7 @@ export class MinotaurKingScenes {
             addButton(3, "Titfuck", titfuckCowslut);
             addButton(4, "SloppySeconds", sloppySeconds);
         }
-        if (player.hasVagina()) addButton(5, "Ride Him", mechanicalbullhue);
+        if (player.vaginas.length > 0) addButton(5, "Ride Him", mechanicalbullhue);
     }
 
     private murderhobo(): void {
@@ -173,15 +173,15 @@ export class MinotaurKingScenes {
         clearOutput();
 
         outputText("Well, you’ve been handed a prize bull on a silver platter, why not help yourself to his delectable meat? It’s right there, trembling with need and polished to perfection by his erstwhile lover’s affections. It’d slip right in");
-        if (player.averageVaginalLooseness() <= 3) outputText(", probably");
+        if (player.vaginas.averageVaginalLooseness() <= 3) outputText(", probably");
         outputText(".");
-        if (player.averageVaginalLooseness() == 4) outputText(" One of the perks of having experience with well-endowed lovers is not having to second-guess yourself when you come upon a real treat like this one.");
-        else if (player.averageVaginalLooseness() < 4) outputText(" You’re not the most experienced at handling such well-endowed studs, but even if you’re wrong, nothing beats trying.");
+        if (player.vaginas.averageVaginalLooseness() == 4) outputText(" One of the perks of having experience with well-endowed lovers is not having to second-guess yourself when you come upon a real treat like this one.");
+        else if (player.vaginas.averageVaginalLooseness() < 4) outputText(" You’re not the most experienced at handling such well-endowed studs, but even if you’re wrong, nothing beats trying.");
         else outputText(" A big thing like that would stretch you so wonderfully. You barely manage to swallow before you start to drool.");
         outputText(" All you have to do is climb on. Excellia doesn’t look like she’d mind.");
         outputText("\n\nAnd the King still smells like sex filtered through an angel’s veil, like endless hours of bareback plowing in a pristine, flowering field. You nose twitches as you approach, and your cunny");
-        if (player.wetness() >= 4) outputText(" gushes, drenching your thighs");
-        else if (player.wetness() >= 3) outputText(" drools rivulets of desire down your thighs");
+        if (player.vaginas.wetness() >= 4) outputText(" gushes, drenching your thighs");
+        else if (player.vaginas.wetness() >= 3) outputText(" drools rivulets of desire down your thighs");
         else outputText(" drenches itself anew");
         outputText(". Part of you is tempted to drop to");
         if (!player.isNaga() && !player.isGoo()) outputText(" your knees");
@@ -196,15 +196,15 @@ export class MinotaurKingScenes {
             outputText(" along with the eager beats of your heart, and in a moment of weakness, you lean down to drag your [cockHeadBiggest] along the Minotaur King’s length. It is but a brief dalliance - foreplay before you put him where he belongs. With a regretful sigh, you stop frotting and line him back up.");
         }
 
-        if (player.averageVaginalLooseness() >= 5) {
+        if (player.vaginas.averageVaginalLooseness() >= 5) {
             outputText("\n\nEasing his tremendous dick into your gaping cunt feels like the most natural thing in the world. All your previous encounters were nothing more than practice to take this bestial rod deep inside yourself. It’s flaring too, imbued with more lust than any mere mortal was meant to handle, swelling to push and stroke against your straining walls as it nestles its way inside of you. It’s perfect. To find such a perfectly-shaped lover so close to your goal... you couldn’t have planned it any better.");
         }
-        else if (player.averageVaginalLooseness() >= 1) {
+        else if (player.vaginas.averageVaginalLooseness() >= 1) {
             outputText("\n\nThe first attempt to guide the King’s cock into your anxious slit is nearly a failure. The flaring, flat-headed tip spreads you open, but not nearly far enough for it to slide into your honey-coated cavern. Grunting in distress, you give it a little wiggle, slipping the left side of the horse-like cock inside before working in the other. You have to stop, gasping and panting at the raw sensation of it, struggling to come to grips with it before you can continue your delectable descent. Never before have you been so wholly filled with cock, and you’re just now lowering yourself down the rest of the way.");
         }
         else {
             outputText("\n\nYour first attempt to force the fleshy totem into your virginal");
-            if (!player.hasVirginVagina()) outputText("-looking");
+            if (!player.vaginas.hasVirginVagina()) outputText("-looking");
             outputText(" gates meets with about as much success as one could expect. Despite the almost hilarious mismatch in the sizes of your genitalia, you’re determined to take it all. Holding it in both hands, you press against the flared tip, gyrating your lips against the blunt crown until his pre and your juices are intermingled into a fuck-happy slurry. Then, one of your lips catches on the edge of his beastly flesh, pulled apart with surprising elasticity.");
             outputText("\n\nYou repeat the action on the other side and gasp in delight as your entrance blooms like an exotic flower, opening up to reveal its pink-tinged interior to its mate. Somehow, your [vagina] is opening wider and wider, and it doesn’t hurt in the slightest. Perhaps the bath of royal pre-spunk is loosening it up, or maybe the Minotaur King is blessed with some sort of inherent magic that allows him to claim even the smallest of willing females as his own. Either way, it’s for the best.");
             outputText("\n\nYou go from a needful vacuum of sensuous hunger to more stuffed than a Christmas turkey in all of about five seconds, and you couldn’t be happier. The torment of an empty, unfilled pussy has been replaced with a seductive pleasure that steals your breath and addles your reason. You wish you could somehow be even wetter, even hotter, to wring still greater surges of bliss from your sex.");
@@ -236,7 +236,7 @@ export class MinotaurKingScenes {
         if (player.pregnancyIncubation != 0) outputText(" force its way past your cervix");
         else outputText(" tear open your womb");
         outputText(". Your insides stretch like they’re made of rubber");
-        if (player.averageVaginalLooseness() >= 5) outputText(", which isn’t far from the truth,");
+        if (player.vaginas.averageVaginalLooseness() >= 5) outputText(", which isn’t far from the truth,");
         outputText(" in order to accommodate the swelling intrusion. The beast below roars. You can feel the bass rumble in your bones - and your [clit].");
         if (player.cocks.length > 0) {
             outputText(" Hell, you can feel it surging through your [cocks], vibrationally expelling the last few unspent drops from your urethra");

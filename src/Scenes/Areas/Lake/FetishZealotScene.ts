@@ -97,7 +97,7 @@ export class FetishZealotScene extends AbstractLakeContent {
             outputText("He starts to look up, but then his gazes fixes directly on your ", false);
             if (player.cocks.length > 0) {
                 outputText(multiCockDescriptLight(game.player) + ".  You feel yourself grow hard ", false);
-                if (player.hasVagina()) {
+                if (player.vaginas.length > 0) {
                     outputText("and wet ", false);
                 }
                 outputText("under his gaze, ", false);
@@ -111,7 +111,7 @@ export class FetishZealotScene extends AbstractLakeContent {
         }
         else {
             outputText("He starts to look up, but his gazes fixes on your skirt, just barely covering your ", false);
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText(vaginaDescript(player, 0) + " ", false);
                 if (player.cocks.length > 0) {
                     outputText("and your " + multiCockDescriptLight(game.player) + " ", false);
@@ -144,7 +144,7 @@ export class FetishZealotScene extends AbstractLakeContent {
                 outputText("You take a hold of his nicely sized balls in one hand and the base of his cock in the other.  You give the tip a few licks before running your tongue down its length, making sure to coat every bit of it in your saliva along the way.  His aroused groans let you know that you are giving a good demonstration.  You give his balls a soft rub as you stick the end inside your mouth and run your tongue around it; the taste of his pre is almost like candy to you.\n\n", false);
                 // now the favor is returned
                 outputText("You stand up and indicate to him that it is now his turn, and while he is disappointed that the blowjob ended before he came, he still eagerly kneels down in front of your exposed " + multiCockDescriptLight(game.player) + " and licks his lips eagerly.  He tries to imitate your performance on his manhood onto your " + cockDescript(game.player, 0) + ", but he sometimes messes up the order, or does something too fast or slow.  Fortunately, he is a good student, and under your guidance he is soon sucking cock like a pro.  He tickles you with his tongue in just the right way, and gives just the right amount of attention to each part of your length.  ", false);
-                if (player.hasVagina()) outputText("You slip one of your fingers inside your " + vaginaDescript(player, 0) + ", wishing that it could get some attention, but this lesson is about pleasing <i>men</i>.  ", false);
+                if (player.vaginas.length > 0) outputText("You slip one of your fingers inside your " + vaginaDescript(player, 0) + ", wishing that it could get some attention, but this lesson is about pleasing <i>men</i>.  ", false);
                 outputText("You feel yourself getting close to the edge and tell him to stop.  He looks up at you uncertain for a moment, and you tell him \"<i>It's time for the main event.</i>\"\n\n", false);
                 // jerking off contest
                 outputText("He eagerly stands up and wraps his hands around his fine cock, you quickly try to do the same with your " + multiCockDescript(game.player) + ".  \"<i>I won't lose to you so easily, professor!</i>\" he declares to you, \"<i>Don't act so confidently on your first time.</i>\" you reply.  Then the two of you are madly jerking yourselves off in a mad effort to get off before the other, your respective cocks already moist from the blowjobs they just received.  ", false);
@@ -237,7 +237,7 @@ export class FetishZealotScene extends AbstractLakeContent {
         if (player.lust >= 33 && player.gender > 0) {
             outputText("\n\nDo you want to take advantage of his vulnerable state to sate your lusts?", false);
             let bikiniTits: () => void = null;
-            if (player.hasVagina() && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+            if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
             simpleChoices("Yes", zealotWinRape, "", null, "", null, "B.Titfuck", bikiniTits, "Leave", cleanupAfterCombat);
         }
         else cleanupAfterCombat();
@@ -258,7 +258,7 @@ export class FetishZealotScene extends AbstractLakeContent {
             outputText("Your lusts sated for now, you rise up off of him and put your " + player.armorName + " back on.  You decide to leave him lying there, still doubled over in pain from the damage you did to his balls.\n\n", false);
         }
         // If player has a vagina, again, if both, chose one at random
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("As you move towards him, he lays back onto the ground, his cock almost pointing straight up in the air.  He clasps his hands in front of his face and starts praying: \"<i>Forgive me my lord, for I have failed to protect your holdings and will now accept your punishment by being violated by the one who defeated me.</i>\" ", false);
             if (player.cor < 50) outputText("You stop and stare at him for a moment, in complete disbelief at this bizarre 'prayer'.  You consider just leaving him alone, but sensing your hesitation, the zealot looks up to you with a horrified expression.  \"<i>You must violate me!</i>\"  He cries out at you, \"<i>Please, let me finish my prayer, take me within your " + vaginaDescript(player, 0) + " for your own pleasure.</i>\"  Well, he did ask you...\n\n", false);
             else outputText("You chuckle at him, he <i>accepts</i> his punishment?  Oh, you are going to enjoy this so much.\n\n", false);

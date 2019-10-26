@@ -102,7 +102,7 @@ export class FapArena extends BazaarAbstractContent {
         outputText("You continue stroking the pecker vigorously while trying to ignore the handjob your own " + cockDescript(game.player, x) + " is getting, and your efforts are rewarded: soon pre-cum starts dribbling from the tip of the tool you're jerking off, and your hand proceeds to smear that cock in its own juice; you notice it grows slightly bigger.  There is a profound silence in the tent; you only hear a few soft thuds resulting from dick skin being stretched: FAP FAP FAP FAP FAP FAP FAP FAP...  Occasionally a player will break the silence as their lips let a loud, pleasure-filled moan.\n\n", false);
 
         outputText("The pace accelerates more and more; in fear of losing, everyone's handjobs become rougher and rougher, each player hoping that they will make their right partner climax before thy themselves succumb.  Everyone looks deeply concentrated, trying to betray as little as possible of their current tension, raging inside when a muffled moan finds its way through their lips.  How long have you been here, handling a stranger's cock?  You don't know, but the session seems to be coming to an end: almost everyone's dong is now flowing with pre-cum, and the faint jerking sounds are gradually replaced with squelching and slicking noises.  There are ", false);
-        if (player.hasVagina()) outputText("other ", false);
+        if (player.vaginas.length > 0) outputText("other ", false);
         outputText("dick-girls in that room: cute face, jiggling breasts, curvy body, squeezable hips; they would almost look like normal females if it weren't for that huge pre-cum-spilling, protruding cock.  They seem as deep in concentration as the others, the only difference being their feminine fluids spilling freely from their wet cunts and the occasional girlish moans that escape their lips.  The warm, musky smell of male genitalia starts impregnating the whole room as the temperature rises higher and higher and you find yourself all the more aroused.  You close your eyes in order to stop torturing yourself with the sight of hot, horny, naked bodies. You don't know if you will be able to hold on much longer.\n\n", false);
 
         let winner: boolean = true;
@@ -156,10 +156,10 @@ export class FapArena extends BazaarAbstractContent {
             outputText("  Your whole body shivers, clenches and relaxes several times as you completely lose control of your muscles, your mind only focusing on the cum cannon located between your legs.\n\n", false);
 
             outputText("Your left partner is very professional.  At the very moment your " + cockDescript(game.player, x) + " starts shooting its goo, your cock-milker yells in a thundering voice: \"<i>NUMBER " + (num - 1) + " SCORING!</i>\"  For a moment, lost in your pleasure, you pay little attention to the world outside of your " + cockDescript(game.player, x) + ".  Then you remember the game and shout in a whorish, pleasure-filled voice: \"<i>NUMBER " + num + " CUMMING!</i>\"", false);
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  Your thighs tense a few seconds before your " + vaginaDescript(player, 0) + " squirts too, forming a ", false);
-                if (player.wetness() >= 4) outputText("large puddle", false);
-                else if (player.wetness() >= 2) outputText("puddle", false);
+                if (player.vaginas.wetness() >= 4) outputText("large puddle", false);
+                else if (player.vaginas.wetness() >= 2) outputText("puddle", false);
                 else outputText("smear", false);
                 outputText(" of girl-jizz on the floor.", false);
             }
@@ -196,10 +196,10 @@ export class FapArena extends BazaarAbstractContent {
             else if (player.cumQ() >= 500) outputText("pollute", false);
             else outputText("wet", false);
             outputText(" the floor with your sexual juices and yell in a whorish voice, \"<i>NUMBER " + (num + 4) + " CUMMING!</i>\"; you're almost immediately followed by the scoring announcement from your left neighbor.  With a half-closed eye you notice the referee nodding in acknowledgement and you point your " + cockDescript(game.player, x) + " at her, trying to soak her too.  She hardly dodges it and some lands on her arms, but she doesn't seem to notice.", false);
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  Your thighs tense a few seconds before your " + vaginaDescript(player, 0) + " squirts too, forming a ", false);
-                if (player.wetness() >= 4) outputText("large puddle", false);
-                else if (player.wetness() >= 2) outputText("puddle", false);
+                if (player.vaginas.wetness() >= 4) outputText("large puddle", false);
+                else if (player.vaginas.wetness() >= 2) outputText("puddle", false);
                 else outputText("smear", false);
                 outputText(" of girl-jizz on the floor.", false);
             }
@@ -233,10 +233,10 @@ export class FapArena extends BazaarAbstractContent {
             else if (player.cumQ() >= 500) outputText("pollute", false);
             else outputText("wet", false);
             outputText(" the floor with your sexual juices and yell in a whorish voice: \"<i>NUMBER " + num + " CUMMING!</i>\"  With a half-closed eye you notice the referee nodding in acknowledgement and you point your " + cockDescript(game.player, x) + " at her, trying to soak her too.  She hardly dodges it and some lands on her arms, but she doesn't seem to notice.", false);
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  Your thighs tense a few seconds before your " + vaginaDescript(player, 0) + " squirts too, forming a ", false);
-                if (player.wetness() >= 4) outputText("large puddle", false);
-                else if (player.wetness() >= 2) outputText("puddle", false);
+                if (player.vaginas.wetness() >= 4) outputText("large puddle", false);
+                else if (player.vaginas.wetness() >= 2) outputText("puddle", false);
                 else outputText("smear", false);
                 outputText(" of girl-jizz on the floor.", false);
             }
@@ -309,10 +309,10 @@ export class FapArena extends BazaarAbstractContent {
                 outputText("own, unhindered by the tight colon holding your first " + cockDescript(game.player, x) + ".", false);
             }
             // [if player has vagina]
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  Your feminine part squirts a ", false);
-                if (player.wetness() >= 5) outputText("titanic", false);
-                else if (player.wetness() >= 3) outputText("massive", false);
+                if (player.vaginas.wetness() >= 5) outputText("titanic", false);
+                else if (player.vaginas.wetness() >= 3) outputText("massive", false);
                 else outputText("nice", false);
                 outputText(" load of girl-cum too, as if to compete with its male counterpart.", false);
             }
@@ -348,10 +348,10 @@ export class FapArena extends BazaarAbstractContent {
                 outputText("own, unhindered by the tight colon holding your first " + cockDescript(game.player, x) + ".", false);
             }
             // [if player has vagina]
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  Your feminine part squirts a ", false);
-                if (player.wetness() >= 5) outputText("titanic", false);
-                else if (player.wetness() >= 3) outputText("massive", false);
+                if (player.vaginas.wetness() >= 5) outputText("titanic", false);
+                else if (player.vaginas.wetness() >= 3) outputText("massive", false);
                 else outputText("nice", false);
                 outputText(" load of girl-cum too, as if to compete with its male counterpart.", false);
             }
@@ -369,10 +369,10 @@ export class FapArena extends BazaarAbstractContent {
             outputText("You feel that towering rod grinding against the rough insides of your colon, the friction providing a shamefully amazing sensation of violation.  The large hands are gripping, pinching and groping your " + buttDescription(player) + " with ease and feverish lust, and your abused flesh feels every tingle, every prickle of it, bringing you to the edge every time.  You know you are being ferociously dominated by that cock, but the pleasure is too good for you to care.  The raw feelings eventually prove too much for your horny body, and you simply lay there in the dust, waiting for the incoming orgasm.  Eventually you feel an enormous spray of spooge being released in your insides.  Almost instantly, you start unloading thick ropes of jism at a steady rate.  Wallowing in a pool of dirt muddied with sexual juices like a worthless slut, you grind your " + buttDescription(player) + " against the cock harder, in order to milk every drop of semen coming out of it.  But your colon soon reaches its limits and spooge starts dribbling out in small spurts.", false);
             tentacleFapCum();
             // [if player has vagina]
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 outputText("  Your feminine part squirts a ", false);
-                if (player.wetness() >= 5) outputText("titanic", false);
-                else if (player.wetness() >= 3) outputText("massive", false);
+                if (player.vaginas.wetness() >= 5) outputText("titanic", false);
+                else if (player.vaginas.wetness() >= 3) outputText("massive", false);
                 else outputText("nice", false);
                 outputText(" load of girl-cum too, as if to compete with its male counterpart.", false);
             }

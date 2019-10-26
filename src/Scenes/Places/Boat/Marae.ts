@@ -238,7 +238,7 @@ export class Marae extends AbstractBoatContent implements TimeAwareInterface {
                 outputText("She extends a hand expectantly, watching with detached concentration while a tentacle lowers from the tree into her palm.  A swift slash of her free hand cuts your " + player.armorName + " free, exposing your ", false);
                 if (player.gender == 0) {
                     outputText("hairless crotch.  She holds the tentacle back a moment and raises her free hand.  It begins to glow and shimmer as she points to your groin.  Warmth explodes in your crotch as a wriggling wet gash opens up - <b>your new vagina</b>.  ", false);
-                    player.createVagina();
+                    player.vaginas.createVagina();
                     player.genderCheck();
                 }
                 else outputText(vaginaDescript(player, 0) + ".  ", false);

@@ -222,7 +222,7 @@ export class KihaScene extends NPCAwareContent {
         outputText("\n\nYou could forcibly masturbate her.", false);
         // Fems
         let useHerTail: () => void = null;
-        if (player.lust >= 33 && player.hasVagina()) {
+        if (player.lust >= 33 && player.vaginas.length > 0) {
             outputText("\n\nYou could use her tail as a dildo.", false);
             useHerTail = kihaVictoryPomfTail;
         }
@@ -268,8 +268,8 @@ export class KihaScene extends NPCAwareContent {
 
             outputText("Leaving her axe to rest a few feet away, stuck on the ground, Kiha strips off your " + player.armorName + " revealing your ", false);
             if (player.cocks.length > 0) outputText(multiCockDescriptLight(game.player), false);
-            if (player.cocks.length > 0 && player.hasVagina()) outputText(" and ", false);
-            if (player.hasVagina()) outputText(vaginaDescript(player), false);
+            if (player.cocks.length > 0 && player.vaginas.length > 0) outputText(" and ", false);
+            if (player.vaginas.length > 0) outputText(vaginaDescript(player), false);
             outputText(".\n\n", false);
             // TO THE RAPES!
 
@@ -304,7 +304,7 @@ export class KihaScene extends NPCAwareContent {
 
         outputText("The scaly woman leans down to tug on your " + nippleDescription(player, 0) + "s in turn, laughing every time a spurt of milk erupts from one of your tits.  Each rough squeeze sends shivers of erotic sensation through your body, and you quickly grow aroused from the rough treatment.  Kiha keeps going, ", false);
         if (player.cocks.length > 0) outputText("not noticing the stiffening in your loins", false);
-        else if (player.hasVagina()) outputText("not noticing the scent of your growing need", false);
+        else if (player.vaginas.length > 0) outputText("not noticing the scent of your growing need", false);
         else outputText("not noticing the flush of your skin", false);
         outputText(" as she callowly milks your breasts.  She isn't even blushing; if anything, her expression reminds you of a child playing with a new toy.  Kiha isn't aroused by this at all!\n\n", false);
 
@@ -431,7 +431,7 @@ export class KihaScene extends NPCAwareContent {
         // If Cock
         else if (player.cocks.length > 0) outputText("\"<i>G-get that away from me!  As if I'd want anything to do with your hard, juicy cock!  Idiot!</i>\"", false);
         // If Vagina
-        else if (player.hasVagina()) outputText("\"<i>What do you think you're going to do with that pathetic, dripping pussy, huh?  I swear, if you make me l-lick that thing...</i>\"", false);
+        else if (player.vaginas.length > 0) outputText("\"<i>What do you think you're going to do with that pathetic, dripping pussy, huh?  I swear, if you make me l-lick that thing...</i>\"", false);
         // If Genderless
         else outputText("\"<i>H-huh?  Why the hell are you coming closer?  How can you possibly do anything when you're as smooth as a board down there, you loser!</i>\"", false);
 
@@ -489,8 +489,8 @@ export class KihaScene extends NPCAwareContent {
         outputText(" and sweat-soaked underwear.  The black, crimson-embedded slits of her eyes narrow in barely suppressed rage, but as she is now, she's no threat to you.\n\n", false);
 
         outputText("You reach back down and once again take hold of the rebellious dragon's tail.  \"<i>I'm going to get myself off.  Perhaps if you had been more agreeable I might have considered helping you out too.  Now, if you don't mind, I think this nice, ribbed tail-dildo should work just fine.</i>\"  You twist her squirming appendage about and rub the thicker bottom scales over your lower lips, your body shivering from the pleasure.  As you slide the hot, scaled pretend-penis along your femininity, it ", false);
-        if (player.wetness() <= 3) outputText("grows wet", false);
-        else if (player.wetness() <= 4) outputText("quickly grows slimy", false);
+        if (player.vaginas.wetness() <= 3) outputText("grows wet", false);
+        else if (player.vaginas.wetness() <= 4) outputText("quickly grows slimy", false);
         else outputText("immediately becomes soaked from your constant drippings", false);
         outputText(".\n\n", false);
 
@@ -503,9 +503,9 @@ export class KihaScene extends NPCAwareContent {
         outputText("Moaning, you look at her and meet her gaze.  She still looks mad, but her face also carries a hint of confusion.  Peeking down, you see she's dripping even faster, as evidenced by a massive puddle of lady-spunk that pools between her muscular, tightly-clenched thighs.  She must be turned on beyond belief, but she's still resisting!\n\n", false);
 
         outputText("Well, that's her loss.  You keep fucking yourself on her ridged posterior, enjoying the rapid twitches, hard wiggles, and other constant movements.  It almost feels like it's attacking your pussy, battering your womanhood with pleasurable strikes.  Your " + hipDescription(player) + " push back against the welcome intrusion, stuffing another inch or two inside yourself as you move closer and closer to the release you oh-so-desperately crave.  It feels so good!  You scream out in bliss and undulate your entire body, pumping, thrusting, and squirming yourself to the absolute highest peak of pleasure, the summit of sensation.  ", false);
-        if (player.wetness() < 3) outputText("Dripping", false);
-        else if (player.wetness() < 4) outputText("Leaking", false);
-        else if (player.wetness() < 5) outputText("Gushing", false);
+        if (player.vaginas.wetness() < 3) outputText("Dripping", false);
+        else if (player.vaginas.wetness() < 4) outputText("Leaking", false);
+        else if (player.vaginas.wetness() < 5) outputText("Gushing", false);
         else outputText("Spraying", false);
         outputText(" girl-cum, your " + vaginaDescript(player) + " cums hard.  It squeezes down with clenching, rippling action that finally stop the tail's frantic struggles, immobilizing it in your womanhood.\n\n", false);
 
@@ -536,7 +536,7 @@ export class KihaScene extends NPCAwareContent {
         outputText(".  Her rear-most extremity yanks out of your grip to cover her femininity once more and you let it, for now.\n\n", false);
 
         outputText("Pausing for a moment, you set to removing your " + player.armorName + " and unleashing " + sMultiCockDesc(game.player) + " ", false);
-        if (player.hasVagina()) outputText("and " + vaginaDescript(player) + " ", false);
+        if (player.vaginas.length > 0) outputText("and " + vaginaDescript(player) + " ", false);
         outputText("to the humid air.  Kiha's eyes widen slightly at the sight of your exposed body, but she gives no other reaction.  She seems utterly resigned and yet composed at the same time.  From her expression, you'd have to wager she anticipates violation from any losses.  Well, she's going to get exactly what she expects.\n\n", false);
 
         outputText("You advance on her helpless form and repeat your actions, raising her leg and shoving her tail aside.  She resists, but not as fiercely as before.  Her tail is easily kept at bay while you lower yourself to align your " + hipDescription(player) + " with the Kiha's moist cunt.  The heat rolling out of her loins is unreal.  Her pussy seems to fog the air with its combination of warmth and wetness, and as you press your " + cockDescript(game.player, x) + " closer, it feels almost like a woman is about to give you head, with her hot breath washing over your genitals.\n\n", false);
@@ -635,7 +635,7 @@ export class KihaScene extends NPCAwareContent {
         outputText("You shudder in ecstasy tinged with fear and redouble your efforts, slurping down the now steadily flowing juices of your reptilian tormentor like a woman dying of thirst who is suddently confronted with a fresh spring of water. With another moan, Kiha looses a gasp of heated air that nearly feels like agonizingly wonderful flames into your aching snatch and you nearly go over the edge, your juices evaporating into a lewd puff of lusty perfume that wafts into the dragoness' nostrils. \"<i>Yes, cum for me,</i>\" she coos, as she grinds her pussy against your " + face(player) + ", flooding your mouth and nose with her own smoldering fragrance.\n\n", false);
 
         outputText("Unable and unwilling to do anything but obey, you climax with a shuddering tensing of your muscles that vibrates the dragon lying atop you.", false);
-        if (player.wetness() >= 5) outputText("  Your juices spray into her face like cum from a cock, your quantity of lubricants unable to resist cascading from the pressure of your orgasm.", false);
+        if (player.vaginas.wetness() >= 5) outputText("  Your juices spray into her face like cum from a cock, your quantity of lubricants unable to resist cascading from the pressure of your orgasm.", false);
         outputText("  She responds in kind, gushing her unspoken attraction across your clenched features. Drowning in dragon juices and shuddering in pleasure, you finally pass out.\n\n", false);
 
         outputText("By the time you come to, Kiha is long gone.", false);
@@ -757,7 +757,7 @@ export class KihaScene extends NPCAwareContent {
                 if (player.cocks.length == 3) outputText("; your remaining cock tarnishes the ground with your cum", false);
                 else outputText("; your remaining cocks tarnish the ground with your cum", false);
             }
-            else if (player.hasVagina()) outputText("; your " + vaginaDescript(player) + " pulses with pleasure, soaking your thighs with girl-cum as your cocks unload", false);
+            else if (player.vaginas.length > 0) outputText("; your " + vaginaDescript(player) + " pulses with pleasure, soaking your thighs with girl-cum as your cocks unload", false);
             outputText(".\n\n", false);
 
             outputText("The dragoness slumps and falls to the ground, drawing your spent shaft from her ass's depths.  It appears that she has fainted from overwhelming pain, pleasure, and exhaustion. Deciding that you're done here, you retrieve your " + player.armorName + " and leave the girl in a mixed puddle of your cum and hers.  Perhaps now she'll treat you with a little more respect.  You return to camp.", false);
@@ -771,7 +771,7 @@ export class KihaScene extends NPCAwareContent {
             outputText("You give her nipples one more rub, not realizing that she was fighting off her own orgasm.  Her spasming walls clench hard against your cock, eagerly milking you while her thick girl-cum soaks her thighs.\n\n", false);
 
             outputText("Grunting, you thrust one last time and spill your seed into her, filling her rectum with sticky cum.  ", false);
-            if (player.hasVagina()) outputText("Your " + vaginaDescript(player) + " pulses with pleasure, but it's an empty orgasm, leaving you wishing you had something to fill that aching void.  Still, you cannot help but marvel at the superior feeling of cumming with a multitude of sexual organs.  ", false);
+            if (player.vaginas.length > 0) outputText("Your " + vaginaDescript(player) + " pulses with pleasure, but it's an empty orgasm, leaving you wishing you had something to fill that aching void.  Still, you cannot help but marvel at the superior feeling of cumming with a multitude of sexual organs.  ", false);
             outputText("With a contented sigh, you pull out of the dragon and thank her for the good time.  She sits back against the tree and glares at you angrily, though you can easily tell she's been utterly sated.\n\n", false);
 
             outputText("Deciding that you are done here, you retrieve your " + player.armorName + " and leave the girl. Perhaps now she'll treat you with a little more respect. You return to camp.", false);

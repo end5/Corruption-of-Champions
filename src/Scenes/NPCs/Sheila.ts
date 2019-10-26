@@ -280,7 +280,7 @@ export class Sheila extends Monster {
         }
 
         // this.plural = false;
-        this.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 30, 0, 0, 0);
         this.breasts.createBreastRow(game.flags[kFLAGS.SHEILA_CORRUPTION] / 10);
         this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;

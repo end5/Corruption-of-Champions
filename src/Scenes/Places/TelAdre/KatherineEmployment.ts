@@ -337,7 +337,7 @@ export class KatherineEmployment extends TelAdreAbstractContent {
             penAnal = katherine.pcPenetratesKatAnally;
             if (player.cocks.cockThatFits2(70) > -1) penBoth = katherine.pcPenetratesKatDoubly;
         }
-        if (player.hasVagina() && player.vaginalCapacity() >= 100) { // Don't want to get knotted together out here at the lake
+        if (player.vaginas.length > 0 && player.vaginalCapacity() >= 100) { // Don't want to get knotted together out here at the lake
             takeVag = katherine.letKatKnotYourCuntPussyFuck;
             if (katherine.knotSize < 4 && katherine.cockNumber > 1) takeVagAndAss = katherine.getDoublePennedByKat;
         }
@@ -413,7 +413,7 @@ export class KatherineEmployment extends TelAdreAbstractContent {
             if (katherine.knotSize <= 4) suckNFucks = katherine.suckNFuck;
         }
         if (player.cocks.length > 0 && flags[kFLAGS.KATHERINE_TIMES_SEXED] > 0) suckNFucked = katherine.suckedNFuckedByKat;
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             takeVag = katherine.letKatKnotYourCuntPussyFuck;
             if (katherine.knotSize < 4 && katherine.cockNumber > 1) takeVagAndAss = katherine.getDoublePennedByKat;
         }

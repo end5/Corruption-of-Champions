@@ -68,7 +68,7 @@ export class HolliScene extends NPCAwareContent {
             if (output) outputText("Before you is a large, waist-high plant of questionable origin.  A huge, violet bloom sits atop a strong, central stalk, and the obscene flower looks positively female in every sense, right down to a clit-shaped bump and moist, gently parted lips.  Inside that central passage, you can see a bevy of wiggling staman surrounding a larger, flared stalk.  The scent that wafts out of that opening is sweet and floral, but undoubtedly sexual.  It looks like an organic sex toy and is clearly corrupt.  It wouldn't be hard to get rid of right now, assuming you don't let it grow larger.");
             if (player.cocks.length > 0 && player.cocks.cockThatFits(100) >= 0 && player.lust >= 33) fuck = fuckFuckingFuckFlowerP2;
 
-            if (player.hasVagina() && player.lust >= 33) ride = rideDatFuckingFukkFlowerP2;
+            if (player.vaginas.length > 0 && player.lust >= 33) ride = rideDatFuckingFukkFlowerP2;
             simpleChoices("Fuck It", fuck, "Ride Stamen", ride, "", null, "Destroy It", destroyDatFuckingPlantAtP2, "Back", inventory.inventoryMenu);
         }
         else if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 3) {
@@ -78,7 +78,7 @@ export class HolliScene extends NPCAwareContent {
                 burnIt = torchP3Tree;
             }
             if (player.cocks.length > 0 && player.lust >= 33) fuck = fuckTheFlower;
-            if (player.hasVagina() && player.lust >= 33) ride = rideTheWalrusP3;
+            if (player.vaginas.length > 0 && player.lust >= 33) ride = rideTheWalrusP3;
             // [Fuck flower] [Drink Sap] [Ride Tentacles] [{Torch It}] [Leave It]
             simpleChoices("Fuck Flower", fuck, "Drink Sap", drinkThePlantGirlsSap, "Ride Tentacle", ride, "Torch It", burnIt, "Leave It", inventory.inventoryMenu);
         }
@@ -115,7 +115,7 @@ export class HolliScene extends NPCAwareContent {
                 let eat: () => void = null;
                 if (flags[kFLAGS.HOLLI_FRUIT] > 0) eat = eatHolliFruit;
                 if (player.cocks.length > 0 && player.lust >= 33) fuck = fuckHolliInZeFlowerPuss;
-                if (player.hasVagina() && player.lust >= 33) ride = level4RideHollisTentacruels;
+                if (player.vaginas.length > 0 && player.lust >= 33) ride = level4RideHollisTentacruels;
 
                 let guardT: string = "";
                 if (flags[kFLAGS.HOLLI_DEFENSE_ON] == 1) guardT = "Stop Guarding";
@@ -130,7 +130,7 @@ export class HolliScene extends NPCAwareContent {
                 menu();
                 if (player.cocks.length > 0 && player.lust >= 33) addButton(0, "Fuck Holli", holliGetsDickDommed);
                 if (player.cocks.tentacleCocks() >= 10 && player.lust >= 33) addButton(1, "TentacleBone", fullOnTentacleTasticGangBangForHolli);
-                if (player.hasVagina() && player.lust >= 33) addButton(2, "Ride Holli", vaginalDomHollisTentacruels);
+                if (player.vaginas.length > 0 && player.lust >= 33) addButton(2, "Ride Holli", vaginalDomHollisTentacruels);
                 addButton(3, "Drink Sap", haveAMapleSyrupSnack);
                 if (flags[kFLAGS.HOLLI_FRUIT] > 0) addButton(4, "Eat A Fruit", eatHolliFruit);
                 addButton(5, "Guarding", askBrokenHolliToGuard);
@@ -192,7 +192,7 @@ export class HolliScene extends NPCAwareContent {
             if (player.perks.findByType(PerkLib.FerasBoonAlpha) >= 0) odds += 10;
             if (player.perks.findByType(PerkLib.ElvenBounty) >= 0) odds += 2;
         }
-        if (!cock && player.hasVagina()) {
+        if (!cock && player.vaginas.length > 0) {
             odds += player.totalFertility() / 5;
             if (odds > 40) odds = 40;
             if (player.perks.findByType(PerkLib.MaraesGiftFertility) >= 0) odds += 10;
@@ -255,7 +255,7 @@ export class HolliScene extends NPCAwareContent {
         let fuck: () => void = null;
         if (player.cocks.length > 0 && player.cocks.cockThatFits(100) >= 0 && player.lust >= 33) fuck = fuckFuckingFuckFlowerP2;
         let ride: () => void = null;
-        if (player.hasVagina() && player.lust >= 33) ride = rideDatFuckingFukkFlowerP2;
+        if (player.vaginas.length > 0 && player.lust >= 33) ride = rideDatFuckingFukkFlowerP2;
         simpleChoices("Fuck It", fuck, "Ride Stamen", ride, "Do Nothing", playerMenu, "Destroy It", destroyDatFuckingPlantAtP2, "", null);
     }
 
@@ -366,7 +366,7 @@ export class HolliScene extends NPCAwareContent {
         let fuck: () => void = null;
         let ride: () => void = null;
         if (player.cocks.length > 0 && player.lust >= 33) fuck = fuckTheFlower;
-        if (player.hasVagina() && player.lust >= 33) ride = rideTheWalrusP3;
+        if (player.vaginas.length > 0 && player.lust >= 33) ride = rideTheWalrusP3;
         // [Fuck flower] [Drink Sap] [Ride Tentacles] [{Torch It}] [Leave It]
         simpleChoices("Fuck Flower", fuck, "Drink Sap", drinkThePlantGirlsSap, "Ride Tentacle", ride, "Torch It", burnIt, "Leave It", playerMenu);
     }
@@ -378,7 +378,7 @@ export class HolliScene extends NPCAwareContent {
         // (Similar to stage 2 fuck, but no cock limits, wetter, and more aggressive.
         outputText("Smiling to yourself, you shed your [armor] like a snake wriggling free of useless, old skin and expose yourself.  Of course, the tree doesn't react - it's just a tree, right?  So, feeling a little cocky (in more than one way), you prowl up to the flower, intent on venting some frustration in the best way possible.  The petals are as violet as ever and glittering with the moisture you've grown used to seeing appear whenever you approach, as if by magic.  The inner folds look even softer, if a bit redder, and they drip steadily with sweet nectar.");
         outputText("\n\nYou bend down for a sniff - nothing like a little foreplay, after all.  The flower-cunt's scent is spicy-sweet and undeniably potent.  The air visibly steams with the wood-bound box's honeyed heat, and you close your eyes to better appreciate it.  There's a distinct, feminine undercurrent to the odor, a cloying aroma that clings to your nostrils, sending a pleasant tingle to your loins.");
-        if (player.hasVagina()) outputText("  Wetness builds in your [vagina] as well, but you're focusing on your maleness just now.  Your neglected twat will have to wait its turn.");
+        if (player.vaginas.length > 0) outputText("  Wetness builds in your [vagina] as well, but you're focusing on your maleness just now.  Your neglected twat will have to wait its turn.");
         outputText("  A feverish sweat breaks out on your brow, though whether from your own arousal, the plant's heat, or some chemical in its juices, you cannot tell.");
 
         outputText("\n\nBefore you can pull back, the hiss of something cutting through the air with lightning speed hits your eardrums.  Almost at the same time, tentacles (stamen?) snap around your neck, head, and ears, going taut in an instant.  Your " + face(player) + " is pulled roughly into the glossy hole, the soft folds of the petals smearing your nose and mouth with their saccharine sweetness.  You cannot help but breathe in more deeply as you struggle for your freedom, and with every struggle, every struggling gasp, [eachCock] grows hotter and harder, pulsating with tactile hunger.  With each moment that passes the motivation for your struggles shifts from freedom to fucking.  You don't care about getting away so much as getting your dick in this aromatic fuck-pot.");
@@ -409,9 +409,9 @@ export class HolliScene extends NPCAwareContent {
         outputText(".");
         if (player.cumQ() > 500) outputText("  Pearly ropes big enough to fill a flask lurch out from your cum-slit, propelled by your quivering orgasmic muscles deep into the trunk, and you swear you can hear the pitch of your sexual pumping rising in tone, changed by the flooded vessel.");
         if (player.cumQ() > 1500) outputText("  A wave of your thick gunk rolls out from under your pumping cock - you've filled the tree beyond even its capacity, and the thick puddle forming beneath your [feet] is all the proof you need of your virility.");
-        if (player.hasVagina()) {
+        if (player.vaginas.length > 0) {
             outputText("  Your hungry cunt, long denied in this exchange, trembles as it ");
-            if (player.wetness() < 4) outputText("leaks");
+            if (player.vaginas.wetness() < 4) outputText("leaks");
             else outputText("sprays");
             outputText(" your own female fluids in sympathy.");
         }
@@ -992,7 +992,7 @@ export class HolliScene extends NPCAwareContent {
         outputText("\n\nThe tentacles go rigid, completely, absolutely hard.  The swollen heads pulsate while bulges of cum ripple down the lengths behind them, eventually bursting out.  You hold them firmly and direct them across the demon-dryad's striking face, burying it in thick flows of white.  Her shiny green hair quickly comes to wear an alabaster bonnet, dripping thick spunk over her eyes toward her tits.  Jism pours out of Holli's nostrils unhindered while her throat works to swallow it all, but no matter how much she gulps, she can't seem to keep up.");
         outputText("\n\nA warm wave washes into your womb at the same time, easily injected past your cervix's unresisting entrance.  Some of it sputters out to the sides to further lubricate your tunnel.  It sets you off like a bomb, and you fall back onto the ground, trying to lift your [hips] higher.  With gravity assisting, the jism floods your uterus even faster.  The squeezing tightness of your involuntary muscle spasms don't help.  If anything, your body is holding even more of the spooge inside, forcing you to take another few blasts of jizz straight into your well-packed reproductive system.");
         outputText("\n\nThe still spurting cock begins to withdraw, dragging its over-sized head through your sensitive, quavering gates.  It bumps your tender clit on the way, soaking it with a fresh flow of semen.  Then it ascends into the canopy, leaving your [vagina] empty of everything but the gallon of creme it left behind.  You hum in satisfaction and try to stand.  Your [legs] wobble and give out, dropping you back ");
-        if (player.wetness() < 4) outputText("onto the ground");
+        if (player.vaginas.wetness() < 4) outputText("onto the ground");
         else outputText("into the leavings of your squirting orgasm");
         outputText(".  The second time, you make it up.  Holli is a mess.  Everything from the shoulders up is glazed white, while the rest of her body has strings of seed dangling like obscene Christmas ornaments.  Around you, there's small puddles of seed rapidly vanishing into the wasted earth - each of the other tentacles erupted with its brothers, spurting uselessly as you ignored it.");
         outputText("\n\nYou give Holli a peck on her cheek, savoring the flavor and say, \"<i>Good girl.</i>\"  Then, you get dressed, trying to ignore the squishing wetness between your thighs.");
@@ -1183,7 +1183,7 @@ export class HolliScene extends NPCAwareContent {
             addButton(0, "Next", holliPlaysWithPenisesBadEnd);
         }
         // branch of vagina-having
-        else if (player.hasVagina()) {
+        else if (player.vaginas.length > 0) {
             outputText("\n\nShe pulls impatiently at your [armor], ripping the fastenings and tearing it off of you to expose your crotch.  With a caress between your legs, she murmurs, \"<i>Oh, my pet, we are going to plant something beautiful in this little furrow of yours.</i>\"  Raising you above her head");
             if (player.isTaur()) outputText(" and turning you around");
             outputText(", the demon buries her face in your [vagina], penetrating it with her wet, flexible tongue.");
@@ -1425,8 +1425,8 @@ export class HolliScene extends NPCAwareContent {
         // (vagina and no cock)
         else {
             outputText("\n\nA ");
-            if (player.wetness() < 3) outputText("gush");
-            else if (player.wetness() < 4) outputText("rush");
+            if (player.vaginas.wetness() < 3) outputText("gush");
+            else if (player.vaginas.wetness() < 4) outputText("rush");
             else outputText("torrent");
             outputText(" of female orgasm pours from her pussy, and her mouth opens wide in pleasure.  The tree branches surrounding the young man seem to close in, pushing him toward her.  Getting the message, he leans in and kisses his lover; her tongue probes his mouth with abandon as her body shakes out its fit and her [vagina] wrings his prick.  ");
         }

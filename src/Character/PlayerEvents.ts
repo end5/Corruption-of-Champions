@@ -92,7 +92,7 @@ export class PlayerEvents implements TimeAwareInterface {
             dynStats("lust", 10); // Always gain 10 lust each hour
             needNext = true;
         }
-        if (!player.hasVagina() && player.perks.findByType(PerkLib.Diapause) >= 0) { // Lose diapause
+        if (!player.vaginas.length > 0 && player.perks.findByType(PerkLib.Diapause) >= 0) { // Lose diapause
             outputText("\n<b>With the loss of your womb, you lose your kangaroo-like diapause ability.</b>\n");
             player.perks.remove(PerkLib.Diapause);
             needNext = true;
@@ -104,7 +104,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
         }
-        if (player.perks.findByType(PerkLib.WetPussy) >= 0 && player.hasVagina()) {
+        if (player.perks.findByType(PerkLib.WetPussy) >= 0 && player.vaginas.length > 0) {
             if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) {
                 outputText("\n<b>Your " + vaginaDescript(player, 0) + " returns to its normal, wet state.</b>\n");
                 player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
@@ -208,7 +208,7 @@ export class PlayerEvents implements TimeAwareInterface {
                     }
                     else {
                         outputText("\nYou feel a certain fullness building in your insectile abdomen.  You have some eggs ready... and you feel a strange urge to have them fertilized.");
-                        if (!player.hasVagina()) outputText("  Wait, how would you even go about that?");
+                        if (!player.vaginas.length > 0) outputText("  Wait, how would you even go about that?");
                     }
                     outputText("  <b>You have enough eggs to lay!</b>\n");
                     needNext = true;
@@ -216,7 +216,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 else if (prevEggs < 20 && player.eggs() >= 20) { // Stage 2 egg message
                     if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
                         outputText("\nYour spider body feels like it's stretched taut, and a heavy warmth has spread throughout it.  The sensation of eggs piling up inside you is enough to drive you to distraction.  It would be a good idea to find somewhere to deposit them - but, oh, how great it would feel to get them fertilized by a nice hard cock first!");
-                        if (!player.hasVagina()) outputText("  Wait, that's not right...");
+                        if (!player.vaginas.length > 0) outputText("  Wait, that's not right...");
                     }
                     else {
                         outputText("\nYour abdomen feels like it's stretched taut, and a heavy warmth has spread throughout it.  It swings pendulously with every movement you make, and the sensation of eggs piling up inside you is enough to drive you to distraction.");
@@ -247,7 +247,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 player.perks.remove(PerkLib.BunnyEggs);
                 needNext = true;
             }
-            else if (player.pregnancyIncubation < 1 && player.hasVagina() && game.time.hours == 1) { // Otherwise pregger check, once every morning
+            else if (player.pregnancyIncubation < 1 && player.vaginas.length > 0 && game.time.hours == 1) { // Otherwise pregger check, once every morning
                 if ((player.totalFertility() > 50 && game.time.days % 15 == 0) || game.time.days % 30 == 0) { // every 15 days if high fertility get egg preg
                     outputText("\n<b>Somehow you know that eggs have begun to form inside you.  You wonder how long it will be before they start to show?</b>\n");
                     player.knockUp(PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, PregnancyStore.INCUBATION_OVIELIXIR_EGGS, 1, 1);
@@ -352,8 +352,8 @@ export class PlayerEvents implements TimeAwareInterface {
                 dynStats("int", -1, "lus", 15);
                 needNext = true;
             }
-            if (!player.hasVagina()) { // Vagoo
-                player.createVagina();
+            if (!player.vaginas.length > 0) { // Vagoo
+                player.vaginas.createVagina();
                 if (player.perks.findByType(PerkLib.FutaFaculties) >= 0)
                     outputText("\n<b>Your crotch is like, all itchy an' stuff.  Damn!  There's a wet little slit opening up, and it's all tingly!  It feels so good, why would you have ever gotten rid of it?</b>\n");
                 else outputText("\n<b>Your crotch tingles for a second, and when you reach down to feel, your " + legs(player) + " fold underneath you, limp.  You've got a vagina - the damned thing won't go away and it feels twice as sensitive this time.  Fucking bimbo liquer.</b>\n");
@@ -370,8 +370,8 @@ export class PlayerEvents implements TimeAwareInterface {
                 dynStats("int", -1, "lus", 15);
                 needNext = true;
             }
-            if (!player.hasVagina()) { // Vagoo
-                player.createVagina();
+            if (!player.vaginas.length > 0) { // Vagoo
+                player.vaginas.createVagina();
                 if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.effects.findByType(StatusAffects.BimboChampagne) >= 0)
                     outputText("\n<b>Your crotch is like, all itchy an' stuff.  Omigawsh!  There's a wet little slit opening up, and it's all tingly!  It feels so good, maybe like, someone could put something inside there!</b>\n");
                 else outputText("\n<b>Your crotch tingles for a second, and when you reach down to feel, your " + legs(player) + " fold underneath you, limp.  You've got a vagina - the damned thing won't go away and it feels twice as sensitive this time.  Fucking bimbo liquer.</b>\n");
@@ -449,7 +449,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.effects.findByType(StatusAffects.WormPlugged) >= 0 && flags[kFLAGS.PLAYER_PREGGO_WITH_WORMS] == 0) { // Update worm drippy-cooch
-            if (player.hasVagina()) {
+            if (player.vaginas.length > 0) {
                 if (rand(5) == 0) {
                     flags[kFLAGS.PLAYER_PREGGO_WITH_WORMS] = 1;
                     outputText("\nA sudden gush of semen-coated worms noisily slurps out of your womb.  It runs down your legs as the worms do their damnedest to escape.  The feeling of so many squiggling forms squirting through your cunt-lips turns you on more than you'd like to admit.  You wonder why they stayed as long as they did, and some part of you worries that their stay may have reduced your capacity to bear children, though in a place like this that might be a blessing.\n");
@@ -778,11 +778,11 @@ export class PlayerEvents implements TimeAwareInterface {
             }
             if (player.cocks.length > 0 && player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Drider dreams proc
                 outputText("\nIn a moonlit forest, you hang upside down from a thick tree branch suspended by only a string of webbing.  You watch with rising lust as a hapless traveler strolls along below, utterly unaware of the trap you've set.  Your breath catches as " + mf(player, "he", "she") + " finally encounters your web, flailing against the sticky strands in a futile attempt to free " + mf(player, "him", "her") + "self.  Once the traveller's struggles slow in fatigue, you descend easily to the forest floor, wrapping " + mf(player, "him", "her") + " in an elegant silk cocoon before pulling " + mf(player, "him", "her") + " up into the canopy.  Positioning your catch against the tree's trunk, you sink your fangs through the web and into flesh, feeling " + mf(player, "his", "her") + " body heat with every drop of venom.  Cutting " + mf(player, "his", "her") + " crotch free of your webbing, you open " + mf(player, "his", "her") + " [armor] and release the ");
-                if (player.hasVagina()) outputText(vaginaDescript(player, 0) + " and ");
+                if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0) + " and ");
                 outputText(cockDescript(game.player, 0) + " therein; you lower yourself onto " + mf(player, "him", "her") + " over and over again, spearing your eager pussy with " + mf(player, "him", "her") + " prick");
-                if (player.hasVagina()) outputText(" while you bend and force your own into her cunt");
+                if (player.vaginas.length > 0) outputText(" while you bend and force your own into her cunt");
                 outputText(".  It's not long until you feel ");
-                if (player.hasVagina()) outputText("her pussy clenching around you as you orgasm explosively inside, followed by ");
+                if (player.vaginas.length > 0) outputText("her pussy clenching around you as you orgasm explosively inside, followed by ");
                 outputText("the sensation of warm wetness in your own vagina.  Your prisoner groans as " + mf(player, "his", "her") + " cock twitches and spasms inside you, spraying your insides with seed; warm, delicious, sticky seed for your eggs.  You can feel it drawing closer to your unfertilized clutch, and as the gooey heat pushes toward them, your head swims, and you finally look into your prey's [face]...");
 
                 outputText("\n\nYour eyes flutter open.  What a strange dream... aw, dammit.  You can feel your [armor] rubbing against your crotch, sodden with cum.  ");
