@@ -122,7 +122,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         else return false;
     }
 
-    public urtaAvailableForSex(): boolean { return urtaFuckbuddy() && telAdre.scylla.action != Scylla.SCYLLA_ACTION_FUCKING_URTA && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0; }
+    public urtaAvailableForSex(): boolean { return urtaFuckbuddy() && Scylla.action != Scylla.SCYLLA_ACTION_FUCKING_URTA && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0; }
 
     public urtaFuckbuddy(): boolean { // Returns true if Urta is either the player's fuckbuddy or lover
         if (urtaQuest.urtaBusy() || flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == -1) return false;
@@ -327,8 +327,8 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
             urtaChewsOutPC();
             return;
         }
-        if (telAdre.katherineEmployment.canTalkToUrta()) { // Katherine training discussion
-            telAdre.katherineEmployment.talkToUrta();
+        if (KatherineEmployment.canTalkToUrta()) { // Katherine training discussion
+            KatherineEmployment.talkToUrta();
             return;
         }
         // PREGNANT URTA
@@ -3436,10 +3436,10 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
             outputText("“<i>Oh Katherine?</i>” she asks.  “<i>Really well.  I mean she still needs to brush up on the laws of the land and a few other things, but she’s doing fine.  Plus it’s nice to have a cat in the watch.  I had thought about saving her for undercover work, but I figure it’s better for everyone to see a cat who’s a good upright citizen.  There really aren’t that many and maybe some of the ones in gangs will rethink things when they see her on patrol.</i>”");
         }
         else if (affection == 1) { // They’ve never had sex together but each is aware you’re sleeping with the other if you're not in friends mode with Urta
-            outputText("“<i>Heh, you really have a thing for " + (telAdre.katherine.cocks.length > 0 ? "herms" : "girls in need") + ", don’t ya?</i>” she says with a smile.  “<i>Not that I’m complaining.  Anyway, in terms of her work she still needs to brush up on the laws of the land and a few other things, but she’s doing fine.  Plus it’s nice to have a cat in the watch.  I had thought about saving her for undercover work, but I figure it’s better for everyone to see a cat who’s a good upright citizen.  There really aren’t that many and maybe some of the ones in gangs will rethink things when they see her on patrol.</i>”");
+            outputText("“<i>Heh, you really have a thing for " + (Katherine.cocks.length > 0 ? "herms" : "girls in need") + ", don’t ya?</i>” she says with a smile.  “<i>Not that I’m complaining.  Anyway, in terms of her work she still needs to brush up on the laws of the land and a few other things, but she’s doing fine.  Plus it’s nice to have a cat in the watch.  I had thought about saving her for undercover work, but I figure it’s better for everyone to see a cat who’s a good upright citizen.  There really aren’t that many and maybe some of the ones in gangs will rethink things when they see her on patrol.</i>”");
         }
         else if (affection < 11) { // They’ve had drunken sex with you (can't get to this point in friend mode)
-            outputText("“<i>Yeah Kath.  Well I can see why you like her.  Hot girl" + (telAdre.katherine.cocks.length > 0 ? " with a decent sized cock" : "") + ", gets a bit horny when she’s drunk.  What’s not to like?</i>”\n\n");
+            outputText("“<i>Yeah Kath.  Well I can see why you like her.  Hot girl" + (Katherine.cocks.length > 0 ? " with a decent sized cock" : "") + ", gets a bit horny when she’s drunk.  What’s not to like?</i>”\n\n");
             outputText("She takes a swig of her drink and gives you a hug.  “<i>So, I just want to say I’m not unhappy having sex with you.  I mean that’s always great.  But, um, I gotta admit it’s really fun when you get the three of us together.  If you decide to do that again ... I’m in.</i>”");
         }
         else if (affection < 32) { // Willing to have sober sex
@@ -4502,7 +4502,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\nYour mind reels, how many times have you gone through this?  Twelve?  Fifteen?  Hours upon hours lost within these two balls.  Anything either of you try to do simply doesn't work.  Urta's tried masturbating with either hand, then both.  She's tried it in the shower, and though the warm water felt good running over your cage, it was no more useful.  She's tried every possible position, every possible method...");
 
         outputText("\n\nThere's a knock at the door and you hear a ");
-        const edrynAvailable: boolean = !telAdre.edryn.pregnancy.isPregnant;
+        const edrynAvailable: boolean = !Edryn.pregnancy.isPregnant;
         if (edrynAvailable) outputText("set of hoofsteps");
         else outputText("pair of footsteps");
         outputText(" enter whatever room you're in. \"<i>Hey, Urta, you haven't shown up for your shift today so...  Great googily moogily!  What happened to you?!</i>\" a voice you ");

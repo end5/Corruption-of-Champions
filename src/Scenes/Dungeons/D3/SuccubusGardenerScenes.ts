@@ -48,7 +48,7 @@ export class SuccubusGardenerScenes {
         outputText(" like those are one in a million.");
 
         if (flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] > 0) outputText(" Perhaps Scylla's ruby mouth could give her a run for her money, but there's only one way to be sure.");
-        else if (telAdre.dominika.fellatrixSucked() > 0) outputText(" Perhaps Dominika's all-consuming mouth could give her a run for her money, but there's only one way to be sure.");
+        else if (Dominika.fellatrixSucked() > 0) outputText(" Perhaps Dominika's all-consuming mouth could give her a run for her money, but there's only one way to be sure.");
         outputText(" You grab hold of the blubbering slut by her curled horns, admiring the way the tentacle-juice on her lips shines in the light, and pull her against your crotch, pressing her against");
         if (player.cocks.length > 0) outputText(" [oneCock]");
         else if (player.vaginas.length > 0) outputText(" your [vagina]");

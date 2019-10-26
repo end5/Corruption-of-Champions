@@ -37,8 +37,8 @@ export class Heckel extends TelAdreAbstractContent {
         }
         // Brooke + Heckel 3some
         // Affection = 70, after first-time sex, talk to Heckel between 13:00 and 15:00, must not be a first-time encounter with Heckel, requires a gender
-        else if (telAdre.brooke.brookeAffection() >= 70 && flags[kFLAGS.BROOKE_MEDIUM_SCENE] > 0 && flags[kFLAGS.MET_HECKEL] > 0 && game.time.hours >= 13 && game.time.hours <= 15 && (player.vaginas.length > 0 || player.cocks.cockThatFits(telAdre.brooke.brookeCapacity()) >= 0)) {
-            telAdre.brooke.specialHeckelAndBrookeEncounter();
+        else if (Brooke.brookeAffection() >= 70 && flags[kFLAGS.BROOKE_MEDIUM_SCENE] > 0 && flags[kFLAGS.MET_HECKEL] > 0 && game.time.hours >= 13 && game.time.hours <= 15 && (player.vaginas.length > 0 || player.cocks.cockThatFits(Brooke.brookeCapacity()) >= 0)) {
+            Brooke.specialHeckelAndBrookeEncounter();
             return;
         }
         // Repeat post sex

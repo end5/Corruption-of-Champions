@@ -1754,8 +1754,8 @@ export class Saves {
 
         const flagData: any[] = String(flags[kFLAGS.KATHERINE_BREAST_SIZE]).split("^");
         if (flagData.length < 7 && flags[kFLAGS.KATHERINE_BREAST_SIZE] > 0) { // Older format only stored breast size or zero if not yet initialized
-            telAdre.katherine.breasts.cupSize = flags[kFLAGS.KATHERINE_BREAST_SIZE];
-            telAdre.katherine.breasts.lactationLevel = BreastStore.LACTATION_DISABLED;
+            Katherine.breasts.cupSize = flags[kFLAGS.KATHERINE_BREAST_SIZE];
+            Katherine.breasts.lactationLevel = BreastStore.LACTATION_DISABLED;
         }
 
         if (flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] < 816) {

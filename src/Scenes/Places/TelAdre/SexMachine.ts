@@ -23,7 +23,7 @@ export class SexMachine extends TelAdreAbstractContent {
         }
         // Go directly to sex if you know what's in store!
         else {
-            if (flags[kFLAGS.BROOKE_MET] == 0) telAdre.brooke.meetBrookeFirstTime();
+            if (flags[kFLAGS.BROOKE_MET] == 0) Brooke.meetBrookeFirstTime();
             else useTheSexMachine();
         }
     }

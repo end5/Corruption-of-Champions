@@ -17,12 +17,12 @@ export class BakeryScene extends TelAdreAbstractContent {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00243] = Math.round(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00243]);
         // Chef meetings
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00243] % 8 == 0) {
-            telAdre.maddie.procMaddieOneIntro();
+            Maddie.procMaddieOneIntro();
             return;
         }
         // Maddie Epilogue trigger!
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] == 3) {
-            telAdre.maddie.bakeryEpilogue();
+            Maddie.bakeryEpilogue();
             return;
         }
         outputText("", true);
@@ -281,7 +281,7 @@ export class BakeryScene extends TelAdreAbstractContent {
         // I guess it just wouldn't do anything?
         // FWIW, the flag that has to be set to get rubiIntros to return zero is set in a function that has the comment:
         // (Will no longer encounter Rubi at the bakery.)
-        const rubiB: () => void = telAdre.rubi.rubiIntros();
+        const rubiB: () => void = Rubi.rubiIntros();
         if (rubiB != null) addButton(1, rubiT, rubiB);
 
         if (nieveHoliday()) {
@@ -295,8 +295,8 @@ export class BakeryScene extends TelAdreAbstractContent {
             }
         }
         outputText("\nYou see a bubblegum-pink girl at the bakery, walking around and eagerly trying to hand out fliers to people. Her “uniform” is more like a yellow bikini with frills circling the waist of the bottom half. If this didn’t make her stand out from the crowd then her hair certainly would; it’s a big, poofy, curly, dark pink mess that reaches down to her ass with a huge cupcake hat sitting on top.\n");
-        if (flags[kFLAGS.MET_FROSTY] != 0) addButton(3, "Frosty", telAdre.frosty.approachFrosty);
-        else addButton(3, "PinkGirl", telAdre.frosty.approachFrosty);
+        if (flags[kFLAGS.MET_FROSTY] != 0) addButton(3, "Frosty", FrostyapproachFrosty);
+        else addButton(3, "PinkGirl", FrostyapproachFrosty);
         addButton(9, "Leave", bakeryuuuuuu);
     }
 
@@ -417,7 +417,7 @@ export class BakeryScene extends TelAdreAbstractContent {
     private easterBakeSale(): void {
         clearOutput();
         outputText("You make your way to the bakery only to find that it's so full you can barely squeeze inside.  ");
-        if (telAdre.rubi.rubiAffection() >= 40) outputText("An extremely busy Rubi can only manage a wave in your direction before going back to attending customers.  ");
+        if (Rubi.rubiAffection() >= 40) outputText("An extremely busy Rubi can only manage a wave in your direction before going back to attending customers.  ");
         outputText("Seeing all of the holiday bustle hits you with a pang of homesickness, remembering times from Ingnam.  Shaking these feelings off, you make your way to the front of the queue determined to see what the fuss is about.  The normally absent minotaurus chef greets you, adding fuel to your notion that they are understaffed.");
         outputText("\n\n\"<i>Hello.  You come here often?  We busy.  Will try to do good.</i>\"");
         // [Check Menu] [Offer Help]

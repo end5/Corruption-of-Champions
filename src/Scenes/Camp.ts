@@ -342,7 +342,7 @@ export class Camp extends NPCAwareContent {
         // Cotton preg freakout
         if (player.pregnancyIncubation <= 280 && player.pregnancyType == PregnancyStore.PREGNANCY_COTTON &&
             flags[kFLAGS.COTTON_KNOCKED_UP_PC_AND_TALK_HAPPENED] == 0 && (game.time.hours == 6 || game.time.hours == 7)) {
-            telAdre.cotton.goTellCottonShesAMomDad();
+            Cotton.goTellCottonShesAMomDad();
             hideMenus();
             return;
         }

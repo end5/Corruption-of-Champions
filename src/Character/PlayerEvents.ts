@@ -811,7 +811,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00157] > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00157] < 4) { // Dominika Dream
                 outputText("\n<b>Your rest is somewhat troubled with odd dreams...</b>\n");
-                telAdre.dominika.fellatrixDream();
+                Dominika.fellatrixDream();
                 return true;
             }
             if (anemoneScene.kidAXP() >= 40 && flags[kFLAGS.HAD_KID_A_DREAM] == 0 && player.gender > 0) {

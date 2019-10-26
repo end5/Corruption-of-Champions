@@ -503,7 +503,7 @@ export class Rubi extends TelAdreAbstractContent {
         else outputText("\n<b>You cannot afford milk.</b>");
         if (flags[kFLAGS.RUBI_ADMITTED_GENDER] >= 1) place = rubisFuckingHouseYouPervert;
         // [Milk] [Tea] [Chat] [Rubi's Place (Relationship 20+)] [Leave]
-        simpleChoices("Milk", milk, "Tea", tea, "Chat", chatWithRubi, "Rubi's Place", place, "Leave", telAdre.bakeryScene.bakeryuuuuuu);
+        simpleChoices("Milk", milk, "Tea", tea, "Chat", chatWithRubi, "Rubi's Place", place, "Leave", BakeryScene.bakeryuuuuuu);
     }
 
     // Choose Milk?

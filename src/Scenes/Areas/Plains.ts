@@ -32,7 +32,7 @@ export class Plains {
         }
         // Find Niamh
         if (flags[kFLAGS.NIAMH_MOVED_OUT_COUNTER] == 1) {
-            telAdre.niamh.niamhPostTelAdreMoveOut();
+            Niamh.niamhPostTelAdreMoveOut();
             return;
         }
         // Find Owca

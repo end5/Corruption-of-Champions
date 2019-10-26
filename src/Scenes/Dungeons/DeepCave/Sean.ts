@@ -33,7 +33,7 @@ function incubusNoDeal(): void {
 export function incubusShop(): void {
     spriteSelect(52);
     if (flags[kFLAGS.NIAMH_SEAN_BREW_BIMBO_LIQUEUR_COUNTER] == 1) {
-        telAdre.niamh.getBimboozeFromSean();
+        Niamh.getBimboozeFromSean();
         return;
     }
     clearOutput();
@@ -47,7 +47,7 @@ export function incubusShop(): void {
         outputText("\n\nSean could probably do something with the Bimbo Champagne if you had enough of it...");
         if (player.hasItem(consumables.BIMBOCH, 5)) {
             outputText("  Luckily, you do!");
-            addButton(4, consumables.BIMBOLQ.shortName, telAdre.niamh.seanBimboBrewing);
+            addButton(4, consumables.BIMBOLQ.shortName, Niamh.seanBimboBrewing);
         }
     }
     addButton(9, "Leave", playerMenu);

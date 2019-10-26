@@ -583,7 +583,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         clearOutput();
         outputText(images.showImage("katherine-visit-alley"));
         if (flags[kFLAGS.KATHERINE_UNLOCKED] == 1) {
-            if (telAdre.katherineEmployment.initiateTraining()) return;
+            if (KatherineEmployment.initiateTraining()) return;
         }
         // If Back Alley button is selected
         outputText("The back alley behind Oswald's pawnshop is quite unremarkable, except that it's reasonably clean.  A number of empty crates, old blankets and torn strips of cloth have been assembled into a makeshift “<i>nest</i>”, the kind of place that a homeless vagrant would use as a resting place.\n\n");
@@ -602,7 +602,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         if (flags[kFLAGS.KATHERINE_UNLOCKED] == 1) { // Regular menu
             outputText(", and she smiles when she sees you.  “<i>" + player.short + "!  Did you come to see me?</i>”");
             if (checkTraining && flags[kFLAGS.KATHERINE_TRAINING] > 2) { // You have talked to at least one of Edryn, Urta or the desk sargeant
-                telAdre.katherineEmployment.talkToKath();
+                KatherineEmployment.talkToKath();
                 return;
             }
             katherineMenu();
@@ -610,12 +610,12 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         else { // You are training her alone
             outputText(".\n\n");
             if (flags[kFLAGS.KATHERINE_TRAINING] >= 100)
-                telAdre.katherineEmployment.katherineTrainingComplete();
+                KatherineEmployment.katherineTrainingComplete();
             else if (flags[kFLAGS.KATHERINE_TRAINING] >= 66)
-                telAdre.katherineEmployment.katherineTrainingStage3();
+                KatherineEmployment.katherineTrainingStage3();
             else if (flags[kFLAGS.KATHERINE_TRAINING] >= 33)
-                telAdre.katherineEmployment.katherineTrainingStage2();
-            else telAdre.katherineEmployment.katherineTrainingStage1(false);
+                KatherineEmployment.katherineTrainingStage2();
+            else KatherineEmployment.katherineTrainingStage1(false);
         }
     }
 
@@ -631,11 +631,11 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
                 flags[kFLAGS.KATHERINE_URTA_AFFECTION] = 32;
                 let button: number = 0;
                 menu();
-                if (player.cocks.length > 0) addButton(button++, "369", telAdre.katherineThreesome.threeSixtyNine);
+                if (player.cocks.length > 0) addButton(button++, "369", KatherineThreesome.threeSixtyNine);
                 if (hasCock())
-                    addButton(button++, "Roast You", telAdre.katherineThreesome.roastYou);
-                else addButton(button++, "Watch", telAdre.katherineThreesome.watch, false); // A non-drunk version of this scene deals with the difficult ones if Kath can't pound you
-                if (player.cocks.length > 0 || player.vaginas.length > 0) addButton(button++, "Spitr Kath", telAdre.katherineThreesome.spitroastKath);
+                    addButton(button++, "Roast You", KatherineThreesome.roastYou);
+                else addButton(button++, "Watch", KatherineThreesome.watch, false); // A non-drunk version of this scene deals with the difficult ones if Kath can't pound you
+                if (player.cocks.length > 0 || player.vaginas.length > 0) addButton(button++, "Spitr Kath", KatherineThreesome.spitroastKath);
             }
             else {
                 outputText("It looks like Kath heard you coming.  You find her waiting in her bedroom with a sexy smile that suggests she’s up for anything.");
@@ -831,11 +831,11 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         flags[kFLAGS.KATHERINE_URTA_AFFECTION] = 32;
         let button: number = 0;
         menu();
-        if (player.cocks.length > 0) addButton(button++, "369", telAdre.katherineThreesome.threeSixtyNine);
+        if (player.cocks.length > 0) addButton(button++, "369", KatherineThreesome.threeSixtyNine);
         if (hasCock())
-            addButton(button++, "Roast You", telAdre.katherineThreesome.roastYou);
-        else addButton(button++, "Watch", telAdre.katherineThreesome.watch, false); // A non-drunk version of this scene deals with the difficult ones if Kath can't pound you
-        if (player.cocks.length > 0 || player.vaginas.length > 0) addButton(button++, "Spitr Kath", telAdre.katherineThreesome.spitroastKath);
+            addButton(button++, "Roast You", KatherineThreesome.roastYou);
+        else addButton(button++, "Watch", KatherineThreesome.watch, false); // A non-drunk version of this scene deals with the difficult ones if Kath can't pound you
+        if (player.cocks.length > 0 || player.vaginas.length > 0) addButton(button++, "Spitr Kath", KatherineThreesome.spitroastKath);
     }
 
     // Main menu for Kath while she lives in the alley behind Oswald's
@@ -862,7 +862,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         if (isAt(KLOC_STREETS)) {
             outputText("The pink-haired black cat looks shy, but excited at that.  “<i>Okay... what do you want to talk about?</i>” she asks, nervously looking at her feet.");
             let employmentTalk: () => void = null;
-            if (flags[kFLAGS.KATHERINE_UNLOCKED] == 1 && flags[kFLAGS.KATHERINE_TRAINING] == 1) employmentTalk = telAdre.katherineEmployment.employmentTalk;
+            if (flags[kFLAGS.KATHERINE_UNLOCKED] == 1 && flags[kFLAGS.KATHERINE_TRAINING] == 1) employmentTalk = KatherineEmployment.employmentTalk;
             // [Racial Tension] [Her History] [Gang] [Dog Cock] [Vagrancy] [Love & Lust]
             choices("RacialTension", katherineDefur, "Her History", katherinesHistory, "Gang", askKatherineAboutGang, "Dog Cock", askKatherineAboutDogCock, "Vagrancy", askKatherineAboutVagrancy, "LoveAndLust", askKatherineAboutLoveAndLust, "Employment", employmentTalk, "", null, "", null, "Back", katherineMenu);
             return;
@@ -3300,25 +3300,25 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             let button: number = 0;
             menu();
             if (submissiveness() < 3) {
-                addButton(button++, "Orgy", telAdre.katherineThreesome.orgy);
+                addButton(button++, "Orgy", KatherineThreesome.orgy);
                 outputText("\n\nYou");
             }
             else outputText("  On the other hand everyone enjoys an orgy.\n\nOtherwise you");
             if (player.gender == GENDER_NONE) {
                 outputText(" could let the two of them fuck.  Unfortunately, you really aren't equipped for more than that.");
-                addButton(button++, "Watch", telAdre.katherineThreesome.watchNoIntro, true);
+                addButton(button++, "Watch", KatherineThreesome.watchNoIntro, true);
             }
             else {
                 outputText(" could let the two of them fuck and then help yourself or you and Urta could work together to fill Kath's needy holes.");
-                addButton(button++, "Let 'em fuck", telAdre.katherineThreesome.doubleStuffKath);
-                if (player.cocks.length > 0) addButton(button++, "Dbl Pen Kath", telAdre.katherineThreesome.doublePenetrateKath);
+                addButton(button++, "Let 'em fuck", KatherineThreesome.doubleStuffKath);
+                if (player.cocks.length > 0) addButton(button++, "Dbl Pen Kath", KatherineThreesome.doublePenetrateKath);
             }
         }
         else if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] > 10) { // Willing to bang Kath (when sober)
             outputText("Urta hugs her back and asks, “<i>" + player.short + ", Kath - Looking to get in a little trouble?</i>” before scratching behind Kath’s ears.\n\n");
             outputText("Kath winks at you, gives Urta a kiss and says, “<i>only the best kind of trouble,</i>” in a slightly slurred voice.");
-            simpleChoices("Lick Out", telAdre.katherineThreesome.kathLicksOutUrta, "Sandwich", (hasCock() ? telAdre.katherineThreesome.sandwich : null),
-                "Knothole", (player.gender != GENDER_NONE && hasCock() ? telAdre.katherineThreesome.knothole : null), "", null, "", null); // Do not show knothole button for genderless
+            simpleChoices("Lick Out", KatherineThreesome.kathLicksOutUrta, "Sandwich", (hasCock() ? KatherineThreesome.sandwich : null),
+                "Knothole", (player.gender != GENDER_NONE && hasCock() ? KatherineThreesome.knothole : null), "", null, "", null); // Do not show knothole button for genderless
         }
         else { // Not willing to bang Kath (while sober) just yet
             outputText("Urta pushes Kath back gently.  “<i>Whoa - " + player.short + " I think someone’s had a bit much.</i>”\n\n");
@@ -3338,8 +3338,8 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             outputText("Kath stands up and offers you her hand.  “<i>I guess I’d better bring you along.  I might need help and besides, you always have some fun ideas.</i>”\n\n");
             outputText("Urta looks up as the two of you cross the open floor, her horse cock rising rapidly.");
             menu();
-            addButton(0, "Watch", telAdre.katherineThreesome.watch, true);
-            if (hasCock()) addButton(1, "Pin & Fuck", telAdre.katherineThreesome.pinAndFuck);
+            addButton(0, "Watch", KatherineThreesome.watch, true);
+            if (hasCock()) addButton(1, "Pin & Fuck", KatherineThreesome.pinAndFuck);
         }
         else {
             outputText("Katherine looks over at Urta’s table.  Urta catches her looking and gestures for both of you to come over.\n\n");
@@ -3348,14 +3348,14 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             menu();
             if (player.gender == GENDER_NONE) {
                 if (hasCock())
-                    addButton(0, "Roast You", telAdre.katherineThreesome.roastYou);
-                else addButton(0, "Watch", telAdre.katherineThreesome.watch, false); // A non-drunk version of this scene deals with the difficult ones if Kath can't pound you
+                    addButton(0, "Roast You", KatherineThreesome.roastYou);
+                else addButton(0, "Watch", KatherineThreesome.watch, false); // A non-drunk version of this scene deals with the difficult ones if Kath can't pound you
             }
             else {
-                addButton(0, "Circlejeck", telAdre.katherineThreesome.circlejerk);
-                addButton(1, "Roast Kath", telAdre.katherineThreesome.spitroastKath);
-                if (hasCock()) addButton(2, "Roast You", telAdre.katherineThreesome.roastYou);
-                if (player.cocks.length > 0) addButton(3, "369", telAdre.katherineThreesome.threeSixtyNine);
+                addButton(0, "Circlejeck", KatherineThreesome.circlejerk);
+                addButton(1, "Roast Kath", KatherineThreesome.spitroastKath);
+                if (hasCock()) addButton(2, "Roast You", KatherineThreesome.roastYou);
+                if (player.cocks.length > 0) addButton(3, "369", KatherineThreesome.threeSixtyNine);
             }
         }
     }
@@ -3365,10 +3365,10 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("Kath looks like she’s ready for some fun but before you get started something else catches your eye.  You note that Vala is sitting at one end of the bar, her tray propped up beside her.  It looks like a slow night and Vala seems bored.  " + (flags[kFLAGS.KATHERINE_VALA_AFFECTION] < 5 ? "You decide it’s time to expand their horizons and" : "You know they enjoy each other’s company so you") + " motion for her to come over.\n\n");
         outputText("Vala flies over quickly.  When she arrives you pat the seat next to you. You’re sitting between your submissive cat " + catGirl("girl", "morph") + " on one side and your supersized faerie on the other.  You certainly walked a strange path to wind up here.");
         menu();
-        addButton(0, "Fist Them", telAdre.katherineThreesome.fistKathAndVala);
+        addButton(0, "Fist Them", KatherineThreesome.fistKathAndVala);
         if (hasCock()) { // All but the fisting scene require Kath be a herm
-            addButton(1, "Eat Out", telAdre.katherineThreesome.eatOutVala);
-            if (!player.isTaur() && player.cocks.length > 0) addButton(2, "Dbl Stuff", telAdre.katherineThreesome.doubleStuffVala);
+            addButton(1, "Eat Out", KatherineThreesome.eatOutVala);
+            if (!player.isTaur() && player.cocks.length > 0) addButton(2, "Dbl Stuff", KatherineThreesome.doubleStuffVala);
         }
     }
 

@@ -1343,7 +1343,7 @@ export function updatePregnancy(): boolean {
     if (player.pregnancyType == PregnancyStore.PREGNANCY_COTTON && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy
         displayedUpdate = true;
-        telAdre.cotton.birthingCottonsKids();
+        Cotton.birthingCottonsKids();
     }
     // GOO BIRF
     if (player.pregnancyType == PregnancyStore.PREGNANCY_GOO_GIRL && player.pregnancyIncubation == 1) {

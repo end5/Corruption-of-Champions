@@ -33,16 +33,16 @@ export let arianLookups: Record<string, any> = // For subject: "arian"
 
 export let rubiLookups: Record<string, any> = // For subject: "rubi"
 {
-    man(thisPtr: CoC): string { return telAdre.rubi.rubiMF("man", "woman"); },
+    man(thisPtr: CoC): string { return Rubi.rubiMF("man", "woman"); },
 
-    ey(thisPtr: CoC): string { return telAdre.rubi.rubiMF("he", "she"); },
-    em(thisPtr: CoC): string { return telAdre.rubi.rubiMF("him", "her"); },
-    eir(thisPtr: CoC): string { return telAdre.rubi.rubiMF("his", "her"); },
-    eirs(thisPtr: CoC): string { return telAdre.rubi.rubiMF("his", "hers"); },
-    emself(thisPtr: CoC): string { return telAdre.rubi.rubiMF("himself", "herself"); },
+    ey(thisPtr: CoC): string { return Rubi.rubiMF("he", "she"); },
+    em(thisPtr: CoC): string { return Rubi.rubiMF("him", "her"); },
+    eir(thisPtr: CoC): string { return Rubi.rubiMF("his", "her"); },
+    eirs(thisPtr: CoC): string { return Rubi.rubiMF("his", "hers"); },
+    emself(thisPtr: CoC): string { return Rubi.rubiMF("himself", "herself"); },
 
-    cock(thisPtr: CoC): string { return telAdre.rubi.rubiCock(); },
-    breasts(thisPtr: CoC): string { return telAdre.rubi.rubiBreasts(); }
+    cock(thisPtr: CoC): string { return Rubi.rubiCock(); },
+    breasts(thisPtr: CoC): string { return Rubi.rubiBreasts(); }
 
 };
 		// Rubi unhandled terms :

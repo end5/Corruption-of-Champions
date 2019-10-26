@@ -76,7 +76,7 @@ export class Scylla extends TelAdreAbstractContent {
                 if (!urta.urtaDrunk()) return; // So she has to be drunk
             }
             else if (urta.urtaDrunk() && player.balls == 0) return; // Otherwise she has to be sober and you need to have balls (I'm not sure why, but it is so)
-            if (telAdre.katherine.needIntroductionFromScylla()) return;
+            if (Katherine.needIntroductionFromScylla()) return;
             if (rand(3) == 0) scyllaAction = SCYLLA_ACTION_FUCKING_URTA; // And after all that there's still just a 1/3 chance it will happen
             // Yay, Foursomes! - unless you're Scylla special
             if (rand(2) == 0 && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && player.keyItems.has("Opal Ring") < 0 && urta.urtaAtBar() && player.cocks.longestCockLength() >= 8 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) scyllaAction = SCYLLA_ACTION_FURRY_FOURSOME;

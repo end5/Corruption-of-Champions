@@ -1147,7 +1147,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         outputText("\"<i>Hello, pet,</i>\" she says, and you notice worry in her voice.  There are slight bags under her eyes, and her crimson ponytail is a little unkempt, with hair jutting out at odd angles.  Something clearly has her frazzled.");
         outputText("\n\n\"<i>I'll just come right out with it. I went to the Covenant today...  I'm pregnant,</i>\" she says, matter-of-factly, \"<i>and it's yours.</i>\"");
         outputText("\n\n\"<i>I'd been taking some herbs to counteract pregnancy, but I guess it was just no match for you.");
-        if (flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] > 0 || (telAdre.edryn.pregnancy.isPregnant && flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] != 0)) outputText("  Should have figured as much after you got Edryn pregnant.");
+        if (flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] > 0 || (Edryn.pregnancy.isPregnant && flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] != 0)) outputText("  Should have figured as much after you got Edryn pregnant.");
         outputText("</i>\"  She wrenches her hands nervously and looks you in the eye. The cool, confident yoga instructor has clearly melted away, revealing the real her.  \"<i>I know we're not serious, but ");
         if (flags[kFLAGS.EDRYN_NEVER_SEE_AGAIN] == 0) outputText("you'll stick with me through this, right?");
         else outputText("you won't abandon me like you did Edryn, will you?");

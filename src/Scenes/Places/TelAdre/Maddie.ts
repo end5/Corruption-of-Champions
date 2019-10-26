@@ -23,7 +23,7 @@ export class Maddie extends TelAdreAbstractContent {
         else {
             outputText("You walk into the bakery and a burly, hair-covered arm grabs your shoulder.  The familiar voice of a minotaur barks, \"<i>You.  You can help.  Come.</i>\"  You turn, but he's already walking towards an 'employees only' door.  Do you follow?", false);
         }
-        doYesNo(followMinotaurIntoBackroom, telAdre.bakeryScene.bakeryuuuuuu);
+        doYesNo(followMinotaurIntoBackroom, BakeryScene.bakeryuuuuuu);
     }
     // [Follow]
     private followMinotaurIntoBackroom(): void {
@@ -59,7 +59,7 @@ export class Maddie extends TelAdreAbstractContent {
         if (player.cor > 50) outputText("starting a fight inside Tel'Adre", false);
         else outputText("overstaying your welcome", false);
         outputText(" – you depart.", false);
-        doNext(telAdre.bakeryScene.bakeryuuuuuu);
+        doNext(BakeryScene.bakeryuuuuuu);
     }
     // [Yes – baking]
     public handOverIngredientsItBeBakingTimeYo(): void {
@@ -237,6 +237,6 @@ export class Maddie extends TelAdreAbstractContent {
         outputText("\"<i>Thanks.  Figured out what went wrong with Maddie's help.  Made masterpiece.  Buy giant cupcake sometime.  Delicious!  Promise it's safe and non-addictive.  Expensive though.  Ingredients rare.\n\n", false);
         outputText("-X</i>\"", false);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] = 4;
-        doNext(telAdre.bakeryScene.bakeryuuuuuu);
+        doNext(BakeryScene.bakeryuuuuuu);
     }
 }

@@ -709,7 +709,7 @@ export class Loppe extends TelAdreAbstractContent {
         menu();
 
         if (flags[kFLAGS.LOPPE_PC_MET_UMA] == 0) {
-            addButton(0, "Visit Mom", telAdre.umasShop.firstVisitPart1);
+            addButton(0, "Visit Mom", UmasShop.firstVisitPart1);
             addButton(1, "Mebbe Later", camp.returnToCampUseOneHour);
         }
         else {

@@ -3,7 +3,7 @@ export class KatherineThreesome extends TelAdreAbstractContent {
 
     public constructor() { }
 
-    public get edryn(): Edryn { return telAdre.edryn; }
+    public get edryn(): Edryn { return Edryn; }
 
     public get katherine(): Katherine { return telAdre.katherine; }
 

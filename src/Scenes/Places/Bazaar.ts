@@ -103,7 +103,7 @@ export class Bazaar {
         let niamh: () => void = null;
         if (flags[kFLAGS.NIAMH_STATUS] > 0 && flags[kFLAGS.NIAMH_MOVED_OUT_COUNTER] == -1) {
             if (flags[kFLAGS.NIAMH_STATUS] == 2) outputText("\n\nThe sounds of voices raised in song and girlish laughter makes it obvious where Niamh is holding a perpetual party.");
-            niamh = telAdre.niamh.bazaarNiamh;
+            niamh = Niamh.bazaarNiamh;
         }
         /*[S. Squeeze] [][][] [Leave]
         choices(benoitT,benoit,rat,cinnabarAppearance(),"GripingDemons",demon,lilium,LiliumText(false),"Niamh",niamh,roxanneT,roxanne,"S. Squeeze",theSlipperySqueeze,"Tent",tent,"",0,"Leave",13);*/

@@ -56,8 +56,8 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         // If no cocks fit, set to primary
         if (x < 0) x = 0;
 
-        if (telAdre.katherineEmployment.canTalkToEdryn()) { // Katherine training discussion
-            telAdre.katherineEmployment.talkToEdryn();
+        if (KatherineEmployment.canTalkToEdryn()) { // Katherine training discussion
+            KatherineEmployment.talkToEdryn();
             return;
         }
         // Talk about latest birth

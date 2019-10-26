@@ -685,7 +685,7 @@ export function goNext(time: number, needNext: boolean): boolean {
     }
 
     // Hanging the Uma massage update here, I think it should work...
-    telAdre.umasShop.updateBonusDuration(time);
+    UmasShop.updateBonusDuration(time);
     if (player.effects.findByType(StatusAffects.UmasMassage) >= 0) {
         trace("Uma's massage bonus time remaining: " + player.effects.getValue3Of(StatusAffects.UmasMassage));
     }

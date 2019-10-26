@@ -1652,7 +1652,7 @@ export function displayStats(e: MouseEvent = null): void {
         interpersonStats += "<b>" + bazaar.benoit.benoitMF("Benoit", "Benoite") + " Affection:</b> " + Math.round(bazaar.benoit.benoitAffection()) + "%\n";
 
     if (flags[kFLAGS.BROOKE_MET] > 0)
-        interpersonStats += "<b>Brooke Affection:</b> " + Math.round(telAdre.brooke.brookeAffection()) + "\n";
+        interpersonStats += "<b>Brooke Affection:</b> " + Math.round(Brooke.brookeAffection()) + "\n";
 
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00219] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00220] > 0)
         interpersonStats += "<b>Body Parts Taken By Ceraph:</b> " + (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00219] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00220]) + "\n";
@@ -1675,7 +1675,7 @@ export function displayStats(e: MouseEvent = null): void {
     }
 
     if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 4) {
-        interpersonStats += "<b>Katherine Submissiveness:</b> " + telAdre.katherine.submissiveness() + "\n";
+        interpersonStats += "<b>Katherine Submissiveness:</b> " + Katherine.submissiveness() + "\n";
     }
 
     if (player.effects.findByType(StatusAffects.Kelt) >= 0 && flags[kFLAGS.KELT_BREAK_LEVEL] == 0) {
@@ -1696,7 +1696,7 @@ export function displayStats(e: MouseEvent = null): void {
     }
     // Lottie stuff
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00281] > 0)
-        interpersonStats += "<b>Lottie's Encouragement:</b> " + telAdre.lottie.lottieMorale() + " (higher is better)\n" + "<b>Lottie's Figure:</b> " + telAdre.lottie.lottieTone() + " (higher is better)\n";
+        interpersonStats += "<b>Lottie's Encouragement:</b> " + Lottie.lottieMorale() + " (higher is better)\n" + "<b>Lottie's Figure:</b> " + Lottie.lottieTone() + " (higher is better)\n";
 
     if (mountain.salon.lynnetteApproval() != 0)
         interpersonStats += "<b>Lynnette's Approval:</b> " + mountain.salon.lynnetteApproval() + "\n";
@@ -1704,8 +1704,8 @@ export function displayStats(e: MouseEvent = null): void {
     if (flags[kFLAGS.OWCAS_ATTITUDE] > 0)
         interpersonStats += "<b>Owca's Attitude:</b> " + flags[kFLAGS.OWCAS_ATTITUDE] + "\n";
 
-    if (telAdre.rubi.rubiAffection() > 0)
-        interpersonStats += "<b>Rubi's Affection:</b> " + Math.round(telAdre.rubi.rubiAffection()) + "%\n" + "<b>Rubi's Orifice Capacity:</b> " + Math.round(telAdre.rubi.rubiCapacity()) + "%\n";
+    if (Rubi.rubiAffection() > 0)
+        interpersonStats += "<b>Rubi's Affection:</b> " + Math.round(Rubi.rubiAffection()) + "%\n" + "<b>Rubi's Orifice Capacity:</b> " + Math.round(Rubi.rubiCapacity()) + "%\n";
 
     if (flags[kFLAGS.SHEILA_XP] != 0) {
         interpersonStats += "<b>Sheila's Corruption:</b> " + sheilaScene.sheilaCorruption();
