@@ -107,7 +107,7 @@ export class FetishCultist extends Monster {
 
     public defeated(hpVictory: boolean): void {
         let temp2: () => void = null;
-        if (player.effects.findByType(StatusAffects.Feeder) >= 0) temp2 = game.lake.fetishCultistScene.fetishCultistHasAMilkFetish;
+        if (player.effects.findByType(StatusAffects.Feeder) >= 0) temp2 = FetishCultistScene.fetishCultistHasAMilkFetish;
         if (hpVictory) {
             outputText("Hurt too much to continue controlling her powers, the cultist collapses helplessly.", true);
         } else {
@@ -115,7 +115,7 @@ export class FetishCultist extends Monster {
         }
         if (player.lust >= 33 && player.gender > 0) {
             outputText("  You realize she'd make a perfect receptacle for your lusts.  Do you have your way with her?", false);
-            simpleChoices("Sex", game.lake.fetishCultistScene.playerRapesCultist, "", null, "", null, "B. Feed", temp2, "Leave", cleanupAfterCombat);
+            simpleChoices("Sex", FetishCultistScene.playerRapesCultist, "", null, "", null, "B. Feed", temp2, "Leave", cleanupAfterCombat);
         }
         else {
             if (temp2 != null) {
@@ -133,7 +133,7 @@ export class FetishCultist extends Monster {
             if (pcCameWorms) {
                 outputText("\n\nThe cultist giggles as she watches you struggling.\n\n", false);
             }
-            game.lake.fetishCultistScene.cultistRapesYou();
+            FetishCultistScene.cultistRapesYou();
         }
     }
 

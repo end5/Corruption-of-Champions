@@ -1349,7 +1349,7 @@ export function updatePregnancy(): boolean {
     if (player.pregnancyType == PregnancyStore.PREGNANCY_GOO_GIRL && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy
         displayedUpdate = true;
-        lake.gooGirlScene.gooPregVagBirth();
+        GooGirlScene.gooPregVagBirth();
     }
     if (player.pregnancyType == PregnancyStore.PREGNANCY_BASILISK && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy

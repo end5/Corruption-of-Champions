@@ -108,7 +108,7 @@ export class GooGirl extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.lake.gooGirlScene.beatUpGoo();
+        GooGirlScene.beatUpGoo();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -116,7 +116,7 @@ export class GooGirl extends Monster {
             outputText("\n\nThe goo-girl seems confused but doesn't mind.");
             doNext(game.endLustLoss);
         } else {
-            game.lake.gooGirlScene.getBeatByGooGirl();
+            GooGirlScene.getBeatByGooGirl();
         }
     }
 

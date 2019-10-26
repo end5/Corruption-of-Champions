@@ -204,7 +204,7 @@ export class FetishZealotScene extends AbstractLakeContent {
         // Trigger bad end if player's intelligence is less than 10 after being drained.
         if (player.inte < 10) {
             outputText("You find that your mind is unable to return to reality, and it moves on to another, then another.  Later you feel a female body come and pick you up, but you are too messed up to react to it...", false);
-            doNext(lake.fetishCultistScene.cultistBadEnd2);
+            doNext(FetishCultistScene.cultistBadEnd2);
             return;
         }
         // Otherwise, continue on here

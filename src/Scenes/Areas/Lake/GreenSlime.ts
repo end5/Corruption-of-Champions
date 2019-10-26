@@ -8,18 +8,18 @@ export class GreenSlime extends Monster {
             // Eligable to rape
             if (player.lust >= 33 && player.gender > 0) {
                 outputText("\n\nYou're horny enough to try and rape it, though you'd rather see how much milk you can squirt into it.  What do you do?", false);
-                simpleChoices("B.Feed", game.lake.greenSlimeScene.rapeOozeWithMilk, "Rape", game.lake.greenSlimeScene.slimeVictoryRape, "", null, "", null, "Leave", cleanupAfterCombat);
+                simpleChoices("B.Feed", GreenSlimeScene.rapeOozeWithMilk, "Rape", GreenSlimeScene.slimeVictoryRape, "", null, "", null, "Leave", cleanupAfterCombat);
             }
             // Rapes not on the table.
             else {
                 outputText("\n\nYour nipples ache with the desire to forcibly breastfeed the gelatinous beast.  Do you?", false);
-                doYesNo(game.lake.greenSlimeScene.rapeOozeWithMilk, cleanupAfterCombat);
+                doYesNo(GreenSlimeScene.rapeOozeWithMilk, cleanupAfterCombat);
             }
         }
         // Not a breastfeeder
         else if (player.lust >= 33 && player.gender > 0) {
             outputText("  Sadly you realize your own needs have not been met.  Of course, you could always play with the poor thing... Do you rape it?", false);
-            doYesNo(game.lake.greenSlimeScene.slimeVictoryRape, cleanupAfterCombat);
+            doYesNo(GreenSlimeScene.slimeVictoryRape, cleanupAfterCombat);
         }
         else cleanupAfterCombat();
     }
@@ -28,7 +28,7 @@ export class GreenSlime extends Monster {
         if (pcCameWorms) {
             outputText("\n\nThe slime doesn't even seem to notice.\n\n");
         }
-        doNext(game.lake.greenSlimeScene.slimeLoss);
+        doNext(GreenSlimeScene.slimeLoss);
     }
 
     private lustAttack(): void {

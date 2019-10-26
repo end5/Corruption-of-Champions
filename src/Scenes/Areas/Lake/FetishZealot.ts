@@ -118,16 +118,16 @@ export class FetishZealot extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.lake.fetishZealotScene.zealotDefeated();
+        FetishZealotScene.zealotDefeated();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (pcCameWorms) {
             outputText("\n\nThe fetish cultist ignores the perverse display and continues on as if nothing had happened...", false);
             player.orgasm();
-            doNext(game.lake.fetishZealotScene.zealotLossRape);
+            doNext(FetishZealotScene.zealotLossRape);
         } else {
-            game.lake.fetishZealotScene.zealotLossRape();
+            FetishZealotScene.zealotLossRape();
         }
     }
 

@@ -62,7 +62,7 @@ export class Boat extends AbstractLakeContent {
                 SharkGirlScene.sharkGirlEncounter(1);
                 return;
             case 4:
-                lake.fetishZealotScene.zealotBoat();
+                FetishZealotScene.zealotBoat();
                 return;
             case 5:
                 anemoneScene.mortalAnemoneeeeee();

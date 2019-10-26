@@ -828,7 +828,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.effects.getValue1Of(StatusAffects.SlimeCraving) >= 18 && player.str <= 1) { // Bad end!
-            lake.gooGirlScene.slimeBadEnd();
+            GooGirlScene.slimeBadEnd();
             return true;
         }
         if (player.cocks.length > 0 && player.cocks[0].cockType == CockTypesEnum.BEE && player.lust >= 100) {

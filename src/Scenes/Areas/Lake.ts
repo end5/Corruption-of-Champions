@@ -3,12 +3,6 @@
  */
 
 export class Lake {
-    public fetishCultistScene: FetishCultistScene = new FetishCultistScene();
-    public fetishZealotScene: FetishZealotScene = new FetishZealotScene();
-    public gooGirlScene: GooGirlScene = new GooGirlScene();
-    public greenSlimeScene: GreenSlimeScene = new GreenSlimeScene();
-    public kaiju: Kaiju = new Kaiju();
-    public swordInStone: SwordInStone = new SwordInStone();
     // Explore Lake
     public exploreLake(): void {
         // Increment exploration count
@@ -96,7 +90,7 @@ export class Lake {
         }
         // Pre-emptive chance of discovering the Beautiful Sword
         else if (select == 10) {
-            swordInStone.findSwordInStone();
+            SwordInStone.findSwordInStone();
         }
         // Pre-emptive chance of finding the boat
         else if (select == 11) {
@@ -115,12 +109,12 @@ export class Lake {
             // Chance of seeing ooze convert goo!
             // More common if factory blew up
             if (player.effects.findByType(StatusAffects.FactoryOverload) >= 0 && rand(10) == 0) {
-                gooGirlScene.spyOnGooAndOozeSex();
+                GooGirlScene.spyOnGooAndOozeSex();
                 return;
             }
             // Else pretty rare.
             else if (rand(25) == 0) {
-                gooGirlScene.spyOnGooAndOozeSex();
+                GooGirlScene.spyOnGooAndOozeSex();
                 return;
             }
             let girlOdds: number = 50;
@@ -131,7 +125,7 @@ export class Lake {
                 girlOdds -= 25;
             // Slimegirl!
             if (rand(100) <= girlOdds) {
-                gooGirlScene.encounterGooGirl();
+                GooGirlScene.encounterGooGirl();
             }
             // OOZE!
             else {
@@ -181,7 +175,7 @@ export class Lake {
         else if (select == 1) {
             // No boat, no kaiju
             if (player.level >= 5 && flags[kFLAGS.KAIJU_DISABLED] == 0 && player.effects.findByType(StatusAffects.BoatDiscovery) >= 0) {
-                kaiju.kaijuMeeting();
+                Kaiju.kaijuMeeting();
                 return;
             }
             outputText("Your stroll around the lake increasingly bores you, leaving your mind to wander.  ", true);
@@ -232,7 +226,7 @@ export class Lake {
                 doNext(camp.returnToCampUseOneHour);
                 return;
             }
-            fetishCultistScene.fetishCultistEncounter();
+            FetishCultistScene.fetishCultistEncounter();
         }
         else if (select == 6) {
             rathazul.encounterRathazul();
