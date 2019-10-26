@@ -1250,7 +1250,7 @@ export function updatePregnancy(): boolean {
     }
     // Give birf if its time... to ANAL EGGS
     if (player.buttPregnancyIncubation == 1 && player.buttPregnancyType == PregnancyStore.PREGNANCY_DRIDER_EGGS) {
-        swamp.corruptedDriderScene.birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY();
+        CorruptedDriderScene.birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY();
         displayedUpdate = true;
         player.buttKnockUpForce(); // Clear Butt Pregnancy
     }
@@ -1332,13 +1332,13 @@ export function updatePregnancy(): boolean {
     if (player.pregnancyType == PregnancyStore.PREGNANCY_SPIDER && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy
         displayedUpdate = true;
-        swamp.maleSpiderMorphScene.spiderPregVagBirth();
+        MaleSpiderMorphScene.spiderPregVagBirth();
     }
     // DRIDER BIRF
     if (player.pregnancyType == PregnancyStore.PREGNANCY_DRIDER_EGGS && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy
         displayedUpdate = true;
-        swamp.corruptedDriderScene.driderPregVagBirth();
+        CorruptedDriderScene.driderPregVagBirth();
     }
     if (player.pregnancyType == PregnancyStore.PREGNANCY_COTTON && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy

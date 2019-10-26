@@ -3,10 +3,6 @@
  */
 
 export class Swamp {
-    public corruptedDriderScene: CorruptedDriderScene = new CorruptedDriderScene();
-    public femaleSpiderMorphScene: FemaleSpiderMorphScene = new FemaleSpiderMorphScene();
-    public maleSpiderMorphScene: MaleSpiderMorphScene = new MaleSpiderMorphScene();
-    public rogar: Rogar = new Rogar();
     public exploreSwamp(): void {
         // Discover 'Bog' at after 25 explores of swamp
         if ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] >= 25) && flags[kFLAGS.BOG_EXPLORED] == 0) {
@@ -49,16 +45,16 @@ export class Swamp {
         const choice: number = choices[rand(choices.length)];
         switch (choice) {
             case 0:
-                femaleSpiderMorphScene.fSpiderMorphGreeting();
+                FemaleSpiderMorphScene.fSpiderMorphGreeting();
                 break;
             case 1:
-                maleSpiderMorphScene.greetMaleSpiderMorph();
+                MaleSpiderMorphScene.greetMaleSpiderMorph();
                 break;
             case 2:
-                corruptedDriderScene.driderEncounter();
+                CorruptedDriderScene.driderEncounter();
                 break;
             case 3:
-                rogar.encounterRogarSwamp();
+                Rogar.encounterRogarSwamp();
                 break;
             case 4:
                 // Kiha follower gets to explore her territory!

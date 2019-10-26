@@ -2,7 +2,7 @@
 export class MaleSpiderMorph extends AbstractSpiderMorph {
 
     public defeated(hpVictory: boolean): void {
-        game.swamp.maleSpiderMorphScene.defeatSpiderBoy();
+        MaleSpiderMorphScene.defeatSpiderBoy();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -10,7 +10,7 @@ export class MaleSpiderMorph extends AbstractSpiderMorph {
             outputText("\n\nThe spider flashes a predatory grin while she waits it out...");
             doNext(game.endLustLoss);
         } else {
-            game.swamp.maleSpiderMorphScene.loseToMaleSpiderMorph();
+            MaleSpiderMorphScene.loseToMaleSpiderMorph();
         }
     }
 

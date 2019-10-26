@@ -123,7 +123,7 @@ export class CorruptedDrider extends AbstractSpiderMorph {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.swamp.corruptedDriderScene.defeatDriderIntro();
+        CorruptedDriderScene.defeatDriderIntro();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -131,7 +131,7 @@ export class CorruptedDrider extends AbstractSpiderMorph {
             outputText("\n\nThe drider licks her lips in anticipation...");
             doNext(game.endLustLoss);
         } else {
-            game.swamp.corruptedDriderScene.loseToDrider();
+            CorruptedDriderScene.loseToDrider();
         }
     }
 

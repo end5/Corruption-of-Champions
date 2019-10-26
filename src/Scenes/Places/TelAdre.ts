@@ -1116,13 +1116,13 @@ export class TelAdre {
         }
         // ROGAR #1
         if (flags[kFLAGS.ROGAR_PHASE] == 3 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-            button = anotherButton(button, "HoodedFig", swamp.rogar.rogarThirdPhase);
+            button = anotherButton(button, "HoodedFig", Rogar.rogarThirdPhase);
             // Wet Bitch screen text when Ro'gar phase = 3:
             outputText("\n\nYou notice a cloaked figure at the bar, though you're quite unable to discern anything else as its back is turned to you.", false);
         }
         // ROGAR #2
         else if (flags[kFLAGS.ROGAR_PHASE] >= 4 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-            button = anotherButton(button, "Rogar", swamp.rogar.rogarPhaseFour);
+            button = anotherButton(button, "Rogar", Rogar.rogarPhaseFour);
             // Wet Bitch bar text when Ro'gar phase = 4:
             outputText("\n\nRo'gar is here with his back turned to the door, wearing his usual obscuring cloak.", false);
         }
@@ -1361,12 +1361,12 @@ export class TelAdre {
         var rogarB:Function = null;
         var rogarT:String = "HoodedFig";
         if(flags[kFLAGS.ROGAR_PHASE] == 3 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-            rogarB = swamp.rogar.rogarThirdPhase;
+            rogarB = Rogar.rogarThirdPhase;
             //Wet Bitch screen text when Ro'gar phase = 3:
             outputText("\n\nYou notice a cloaked figure at the bar, though you're quite unable to discern anything else as its back is turned to you.", false);
         }
         else if(flags[kFLAGS.ROGAR_PHASE] >= 4 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
-            rogarB = swamp.rogar.rogarPhaseFour;
+            rogarB = Rogar.rogarPhaseFour;
             rogarT = "Rogar";
             //Wet Bitch bar text when Ro'gar phase = 4:
             outputText("\n\nRo'gar is here with his back turned to the door, wearing his usual obscuring cloak.", false);
