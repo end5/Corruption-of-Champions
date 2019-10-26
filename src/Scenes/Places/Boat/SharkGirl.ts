@@ -18,7 +18,7 @@ export class SharkGirl extends Monster {
         combatRoundOver();
     }
     public defeated(hpVictory: boolean): void {
-        game.boat.sharkGirlScene.sharkWinChoices();
+        SharkGirlScene.sharkWinChoices();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -26,7 +26,7 @@ export class SharkGirl extends Monster {
             outputText("\n\nYour foe doesn't seem disgusted enough to leave...");
             doNext(game.endLustLoss);
         } else {
-            game.boat.sharkGirlScene.sharkLossRape();
+            SharkGirlScene.sharkLossRape();
         }
     }
 

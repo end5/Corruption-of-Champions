@@ -3,8 +3,6 @@
  */
 
 export class Boat extends AbstractLakeContent {
-    public sharkGirlScene: SharkGirlScene = new SharkGirlScene();
-    public marae: Marae = new Marae();
     public discoverBoat(): void {
         player.effects.create(StatusAffects.BoatDiscovery, 0, 0, 0, 0);
         outputText("You journey around the lake, seeking demons to fight", true);
@@ -32,12 +30,12 @@ export class Boat extends AbstractLakeContent {
         outputText("You set out, wondering if you'll find any strange islands or creatures in the lake.\n\n", false);
         // 20% chance if not done with marae of meeting her.
         if (rand(10) <= 2 && player.effects.findByType(StatusAffects.MaraeComplete) < 0 && player.effects.findByType(StatusAffects.MetCorruptMarae) < 0) {
-            marae.encounterMarae();
+            Marae.encounterMarae();
             return;
         }
         // 10% chance of corrupt Marae followups
         if ((game.debug || rand(10) == 0) && flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] == 0 && player.effects.findByType(StatusAffects.MetCorruptMarae) >= 0 && player.gender > 0) {
-            marae.level2MaraeEncounter();
+            Marae.level2MaraeEncounter();
             return;
         }
         // BUILD LIST OF CHOICES
@@ -58,10 +56,10 @@ export class Boat extends AbstractLakeContent {
                 doNext(camp.returnToCampUseOneHour);
                 return;
             case 2:
-                sharkGirlScene.sharkGirlEncounter(1);
+                SharkGirlScene.sharkGirlEncounter(1);
                 return;
             case 3:
-                sharkGirlScene.sharkGirlEncounter(1);
+                SharkGirlScene.sharkGirlEncounter(1);
                 return;
             case 4:
                 lake.fetishZealotScene.zealotBoat();
