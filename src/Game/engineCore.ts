@@ -1648,8 +1648,8 @@ export function displayStats(e: MouseEvent = null): void {
     if (flags[kFLAGS.ARIAN_VIRGIN] > 0)
         interpersonStats += "<b>Arian Sex Counter:</b> " + Math.round(flags[kFLAGS.ARIAN_VIRGIN]) + "\n";
 
-    if (bazaar.benoit.benoitAffection() > 0)
-        interpersonStats += "<b>" + bazaar.benoit.benoitMF("Benoit", "Benoite") + " Affection:</b> " + Math.round(bazaar.benoit.benoitAffection()) + "%\n";
+    if (Benoit.benoitAffection() > 0)
+        interpersonStats += "<b>" + Benoit.benoitMF("Benoit", "Benoite") + " Affection:</b> " + Math.round(Benoit.benoitAffection()) + "%\n";
 
     if (flags[kFLAGS.BROOKE_MET] > 0)
         interpersonStats += "<b>Brooke Affection:</b> " + Math.round(Brooke.brookeAffection()) + "\n";

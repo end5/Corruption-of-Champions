@@ -1375,7 +1375,7 @@ export function updatePregnancy(): boolean {
         else {
             player.knockUpForce(); // Clear Pregnancy
             displayedUpdate = true;
-            bazaar.benoit.popOutBenoitEggs();
+            Benoit.popOutBenoitEggs();
         }
     }
     // Give birf if its time... to FROG EGGS

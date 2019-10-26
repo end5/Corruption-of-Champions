@@ -12,12 +12,6 @@ export class Bazaar {
     public constructor() {
     }
 
-    public benoit: Benoit = new Benoit();
-    public cinnabar: Cinnabar = new Cinnabar();
-    public fapArena: FapArena = new FapArena();
-    public lilium: Lilium = new Lilium();
-    public roxanne: Roxanne = new Roxanne();
-
     // [Find Travelling Bazaar]
     public findBazaar(): void {
         outputText("", true);
@@ -69,7 +63,7 @@ export class Bazaar {
         if (flags[kFLAGS.BAZAAR_ENTERED] == 0) flags[kFLAGS.BAZAAR_ENTERED] = 1;
         outputText("You breeze past the crimson guard and enter the interior of the Bizarre Bazaar.  The ground is hard-packed, trampled as if walked over by hundreds of hooves, paws, and feet.  A massive bonfire rages in the center of the clearing, crackling and popping as it consumes its fuel gluttonously.  Surrounding the blazing behemoth are tiny, wheeled food-carts with vendors hawking everything from sausage to something called a 'marshmallow'.  Huge wagons ring the clearing, many set up to display exotic wares or services.  You can see everything from dancing centaurs to demons browsing the wares, but it seems an uneasy truce of sorts reigns here.  Then again, maybe the demons have just not had the chance to openly attack this place yet.", false);
         outputText("\n\nOne of the wagons proudly proclaims itself to be \"Greta's Garments,\" though both 'G's are emphasized with cute, stylized devil horns, and the 'S' is shaped in the form of a spaded, demonic tail.  Obviously it must some kind of clothing shop.");
-        const roxanne2: () => void = roxanne.RoxanneAppearance();
+        const roxanne2: () => void = Roxanne.RoxanneAppearance();
         let roxanneT: string = "Lizans";
         let demon: () => void = null;
         let tent: () => void;
@@ -81,14 +75,14 @@ export class Bazaar {
                     outputText("\n\nYou notice a large market stall wedged between two wagons, swaddled in carpets and overflowing with all manner of objects.  On top of its looming fabric canopy is a wooden sign with the words \"<b>Geckos Garbidg</b>\" crudely scrawled upon them.  You wonder what that's all about.");
                 }
                 else {
-                    outputText("\n\n" + benoit.benoitMF("Benoit", "Benoite") + " the basilisk's stall looks open for business.  You could go see what's on offer.");
-                    benoitT = benoit.benoitMF("Benoit", "Benoite");
+                    outputText("\n\n" + Benoit.benoitMF("Benoit", "Benoite") + " the basilisk's stall looks open for business.  You could go see what's on offer.");
+                    benoitT = Benoit.benoitMF("Benoit", "Benoite");
                 }
-                benoit2 = benoit.benoitIntro;
+                benoit2 = Benoit.benoitIntro;
             }
         }
-        tent = fapArena.fapArenaGOOOO;
-        fapArena.fapAppearance();
+        tent = FapArena.fapArenaGOOOO;
+        FapArena.fapAppearance();
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00221] > 0) roxanneT = "Roxanne";
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00267] > 0) lilium2 = "Lilium";
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00292] == 0 && rand(4) == 0 && demons) {
@@ -109,10 +103,10 @@ export class Bazaar {
         choices(benoitT,benoit,rat,cinnabarAppearance(),"GripingDemons",demon,lilium,LiliumText(false),"Niamh",niamh,roxanneT,roxanne,"S. Squeeze",theSlipperySqueeze,"Tent",tent,"",0,"Leave",13);*/
         menu();
         addButton(0, benoitT, benoit2);
-        addButton(1, rat, cinnabar.cinnabarAppearance(false));
+        addButton(1, rat, Cinnabar.cinnabarAppearance(false));
         addButton(2, "Greta's", gretasGarments);
         addButton(3, "GripingDemons", demon);
-        if (lilium.LiliumText(false) != null) addButton(4, lilium2, lilium.LiliumText(false));
+        if (Lilium.LiliumText(false) != null) addButton(4, lilium2, Lilium.LiliumText(false));
         addButton(5, "Niamh", niamh);
         addButton(6, roxanneT, roxanne2);
         addButton(7, "S. Squeeze", theSlipperySqueeze);
