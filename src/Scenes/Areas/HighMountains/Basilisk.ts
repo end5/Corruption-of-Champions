@@ -57,7 +57,7 @@ export class Basilisk extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.highMountains.basiliskScene.defeatBasilisk();
+        BasiliskScene.defeatBasilisk();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -65,7 +65,7 @@ export class Basilisk extends Monster {
             outputText("\n\nThe basilisk smirks, but waits for you to finish...");
             doNext(game.endLustLoss);
         } else {
-            game.highMountains.basiliskScene.loseToBasilisk();
+            BasiliskScene.loseToBasilisk();
         }
     }
 

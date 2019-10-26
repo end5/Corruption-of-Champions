@@ -122,7 +122,7 @@ export class MinotaurMob extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.highMountains.minotaurMobScene.victoryMinotaurGang();
+        MinotaurMobScene.victoryMinotaurGang();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -130,7 +130,7 @@ export class MinotaurMob extends Monster {
             outputText("\n\nThe minutaurs share a laugh while you cum, but their throbbing erections don't subside in the slightest.");
             doNext(game.endLustLoss);
         } else {
-            game.highMountains.minotaurMobScene.minotaurDeFeet();
+            MinotaurMobScene.minotaurDeFeet();
         }
     }
 

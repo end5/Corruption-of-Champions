@@ -3,11 +3,6 @@
  */
 
 export class HighMountains {
-    public basiliskScene: BasiliskScene = new BasiliskScene();
-    public harpyScene: HarpyScene = new HarpyScene();
-    public minervaScene: MinervaScene = new MinervaScene();
-    public minotaurMobScene: MinotaurMobScene = new MinotaurMobScene();
-    public izumiScenes: IzumiScene = new IzumiScene();
 
     // Explore High Mountain
     public exploreHighMountain(): void {
@@ -35,13 +30,13 @@ export class HighMountains {
         }
         // Minerva
         if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] % 8 == 0 && flags[kFLAGS.MET_MINERVA] < 4) {
-            minervaScene.encounterMinerva();
+            MinervaScene.encounterMinerva();
             return;
         }
         // 25% minotaur sons!
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] >= 3 && rand(4) == 0 && player.vaginas.length > 0) {
             spriteSelect(44);
-            minotaurMobScene.meetMinotaurSons();
+            MinotaurMobScene.meetMinotaurSons();
             return;
         }
         // Harpy odds!
@@ -83,7 +78,7 @@ export class HighMountains {
         }
         // Basilisk!
         if (chooser == 1) {
-            basiliskScene.basiliskGreeting();
+            BasiliskScene.basiliskGreeting();
             return;
         }
         // Sophie
@@ -99,7 +94,7 @@ export class HighMountains {
             }
         }
         if (chooser == 3) {
-            this.izumiScenes.encounter();
+            this.IzumiScene.encounter();
             return;
         }
     }

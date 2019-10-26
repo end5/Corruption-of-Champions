@@ -38,7 +38,7 @@ export class Izumi extends Monster {
     // Override won/lost calls
     public defeated(hpVictory: boolean): void {
         this.cleanup();
-        game.highMountains.izumiScenes.touchThatFluffyHorn();
+        IzumiScene.touchThatFluffyHorn();
     }
 
     // Monster won, not player, gg for descriptive method names
@@ -46,12 +46,12 @@ export class Izumi extends Monster {
         flags[kFLAGS.IZUMI_TIMES_LOST_FIGHT]++;
         if (player.effects.findByType(StatusAffects.Titsmother) >= 0) {
             this.cleanup();
-            game.highMountains.izumiScenes.deathBySnuSnuIMeanGiantOniTits();
+            IzumiScene.deathBySnuSnuIMeanGiantOniTits();
             return;
         }
         else {
             this.cleanup();
-            game.highMountains.izumiScenes.fuckedUpByAFuckhugeOni();
+            IzumiScene.fuckedUpByAFuckhugeOni();
             return;
         }
     }

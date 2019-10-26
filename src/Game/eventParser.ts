@@ -690,7 +690,7 @@ export function goNext(time: number, needNext: boolean): boolean {
         trace("Uma's massage bonus time remaining: " + player.effects.getValue3Of(StatusAffects.UmasMassage));
     }
 
-    highMountains.izumiScenes.updateSmokeDuration(time);
+    IzumiScene.updateSmokeDuration(time);
     if (player.effects.findByType(StatusAffects.IzumisPipeSmoke) >= 0) {
         trace("Izumis pipe smoke time remaining: " + player.effects.getValue1Of(StatusAffects.IzumisPipeSmoke));
     }

@@ -1354,7 +1354,7 @@ export function updatePregnancy(): boolean {
     if (player.pregnancyType == PregnancyStore.PREGNANCY_BASILISK && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy
         displayedUpdate = true;
-        highMountains.basiliskScene.basiliskBirth();
+        BasiliskScene.basiliskBirth();
     }
     // Satyr vag preg
     if (player.pregnancyType == PregnancyStore.PREGNANCY_SATYR && player.pregnancyIncubation == 1) {

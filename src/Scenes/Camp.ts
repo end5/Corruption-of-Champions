@@ -1295,7 +1295,7 @@ export class Camp extends NPCAwareContent {
         flags[kFLAGS.PLACES_PAGE] = 1;
         // turn on ruins
         if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(0, "TownRuins", amilyScene.exploreVillageRuin);
-        if (flags[kFLAGS.MET_MINERVA] >= 4) addButton(1, "Oasis Tower", highMountains.minervaScene.encounterMinerva);
+        if (flags[kFLAGS.MET_MINERVA] >= 4) addButton(1, "Oasis Tower", MinervaScene.encounterMinerva);
         addButton(4, "Previous", placesToPage1);
         addButton(9, "Back", playerMenu);
     }

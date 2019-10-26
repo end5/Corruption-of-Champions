@@ -166,11 +166,11 @@ export class Minerva extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.highMountains.minervaScene.beatUpDatSharpie();
+        MinervaScene.beatUpDatSharpie();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.highMountains.minervaScene.loseToMinerva();
+        MinervaScene.loseToMinerva();
     }
 
     public constructor() {

@@ -50,7 +50,7 @@ export class Harpy extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.highMountains.harpyScene.harpyVictoryuuuuu();
+        HarpyScene.harpyVictoryuuuuu();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -58,7 +58,7 @@ export class Harpy extends Monster {
             outputText("\n\nYour foe doesn't seem disgusted enough to leave...");
             doNext(game.endLustLoss);
         } else {
-            game.highMountains.harpyScene.harpyLossU();
+            HarpyScene.harpyLossU();
         }
     }
 
