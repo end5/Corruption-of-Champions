@@ -833,7 +833,7 @@ export class PlayerEvents implements TimeAwareInterface {
         }
         if (player.cocks.length > 0 && player.cocks[0].cockType == CockTypesEnum.BEE && player.lust >= 100) {
             outputText("\nYou can’t help it anymore, you need to find the bee girl right now.  You rush off to the forest to find the release that you absolutely must have.  Going on instinct you soon find the bee girl's clearing and her in it.\n\n");
-            forest.beeGirlScene.beeSexForCocks(false);
+            BeeGirlScene.beeSexForCocks(false);
             return true;
         }
         return false;

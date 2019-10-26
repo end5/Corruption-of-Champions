@@ -1636,7 +1636,7 @@ export class Saves {
                 game.giacomo = 0;
             else
                 game.giacomo = saveFile.data.giacomo;
-            if (saveFile.data.beeProgress != undefined && saveFile.data.beeProgress == 1) game.forest.beeGirlScene.setTalked(); // Bee Progress update is now in a flag
+            if (saveFile.data.beeProgress != undefined && saveFile.data.beeProgress == 1) BeeGirlScene.setTalked(); // Bee Progress update is now in a flag
             // The flag will be zero for any older save that still uses beeProgress and newer saves always store a zero in beeProgress, so we only need to update the flag on a value of one.
 
             // ITEMZ. Item1

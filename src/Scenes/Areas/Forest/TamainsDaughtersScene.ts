@@ -240,7 +240,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
                 if (tamaniPresent) {
                     outputText("Tamani pushes the slut on your face off and plants herself there, smearing your " + face(player) + " with a mixture of cum and vaginal wetness.  ", false);
-                    if (forest.tamaniScene.pregnancy.isPregnant) {
+                    if (TamaniScene.pregnancy.isPregnant) {
                         outputText("She rubs her pregnancy swollen belly", false);
                     }
                     else outputText("She fondles her nipples", false);
@@ -342,7 +342,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("lib", 1, "cor", 1);
         // Knock the bitches up, boost libido, corruption
-        if (tamaniPresent) forest.tamaniScene.tamaniKnockUp(); // If she wasn't pregnant she will be now
+        if (tamaniPresent) TamaniScene.tamaniKnockUp(); // If she wasn't pregnant she will be now
         knockUpDaughters();
         player.cumMultiplier += .3;
         if (game.inCombat) cleanupAfterCombat();
@@ -434,7 +434,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
                 // increase hypno value
                 flags[kFLAGS.TAMANI_TIMES_HYPNOTISED]++;
                 // preggo up tamani
-                forest.tamaniScene.tamaniKnockUp();
+                TamaniScene.tamaniKnockUp();
             }
             // NO TAMANI:
             else {
@@ -688,7 +688,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
 
                 outputText("Your mistress steps away, swaying her more-than ample hips from side to side as she saunters off.  You shake your head, feeling a little out of sorts, but before you get a chance to puzzle it out, the exhaustion of the encounter overwhelms you, blacking you out.", false);
                 // knock up tamani chance
-                forest.tamaniScene.tamaniKnockUp();
+                TamaniScene.tamaniKnockUp();
                 // increase hypno value
                 flags[kFLAGS.TAMANI_TIMES_HYPNOTISED]++;
             }
@@ -696,7 +696,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         // knock bitches up, slight libido gain, slight strength/toughness loss.
         player.orgasm();
         dynStats("str", -.5, "int", -.5, "lib", 1, "cor", 1);
-        if (tamaniPresent) forest.tamaniScene.tamaniKnockUp(); // If she wasn't pregnant she will be now
+        if (tamaniPresent) TamaniScene.tamaniKnockUp(); // If she wasn't pregnant she will be now
         knockUpDaughters();
         if (game.inCombat) cleanupAfterCombat();
         else doNext(camp.returnToCampUseFourHours);
@@ -1005,7 +1005,7 @@ export class TamainsDaughtersScene implements TimeAwareInterface {
         }
         // Chance of tamani pregnancy, chance of daughter preggers
         knockUpDaughters();
-        forest.tamaniScene.tamaniKnockUp();
+        TamaniScene.tamaniKnockUp();
         flags[kFLAGS.TAMANI_TIMES_HYPNOTISED]++;
         // daughter countdown reset.
         player.orgasm();

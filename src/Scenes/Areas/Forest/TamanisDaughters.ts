@@ -70,7 +70,7 @@ export class TamanisDaughters extends Goblin {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.forest.tamaniDaughtersScene.combatWinAgainstDaughters();
+        TamaniDaughtersScene.combatWinAgainstDaughters();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -78,7 +78,7 @@ export class TamanisDaughters extends Goblin {
             outputText("\n\nYour foes seem visibly disgusted and leave, telling you to, \"<i>quit being so fucking gross...</i>\"");
             cleanupAfterCombat();
         } else {
-            game.forest.tamaniDaughtersScene.loseToDaughters();
+            TamaniDaughtersScene.loseToDaughters();
         }
     }
 

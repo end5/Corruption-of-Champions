@@ -209,12 +209,12 @@ export function dungeonRoom() {
             flags[kFLAGS.ESSY_MET_IN_DUNGEON] = 1;
             if (flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] > 0) {
                 outputText("\n\n<b>Your attention is immediately drawn to Essrayle...</b>");
-                addButton(0, "Next", forest.essrayle.essyWitchVictory);
+                addButton(0, "Next", Essrayle.essyWitchVictory);
                 flags[kFLAGS.ESSRAYLE_ESCAPED_DUNGEON] = 1;
                 return;
             }
             outputText("\n\nQuite an unusual sight awaits you in this chamber.  Sitting in an oversized pot is what looks to be the overly busty, plant girl you encountered earlier, Essrayle.  She's changed quite a bit since you last saw her, however.  While her inhumanly smooth, elfin face seems to be unchanged, the rest of her verdant body seems to have been warped into a hyper-sexual parody of a fertility idol, with features that echo the nomadic sand witch tribe.");
-            addButton(2, "Essrayle", forest.essrayle.approachTrappedEssy);
+            addButton(2, "Essrayle", Essrayle.approachTrappedEssy);
         }
         addButton(0, "North", dungeonEnterRoom, DUNGEON_WITCH_NURSERY);
         addButton(1, "East", dungeonEnterRoom, DUNGEON_WITCH_WEST_WARRENS_MAIN);

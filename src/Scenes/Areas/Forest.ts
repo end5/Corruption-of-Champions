@@ -3,16 +3,6 @@
  */
 
 export class Forest {
-    public akbalScene: AkbalScene = new AkbalScene();
-    public beeGirlScene: BeeGirlScene = new BeeGirlScene();
-    public corruptedGlade: CorruptedGlade = new CorruptedGlade();
-    public essrayle: Essrayle = new Essrayle();
-    public faerie: Faerie = new Faerie();
-    public kitsuneScene: KitsuneScene = new KitsuneScene();
-    public tamaniDaughtersScene: TamainsDaughtersScene = new TamainsDaughtersScene();
-    public tamaniScene: TamaniScene = new TamaniScene();
-    public tentacleBeastScene: TentacleBeastScene = new TentacleBeastScene();
-    public erlkingScene: ErlKingScene = new ErlKingScene();
     public exploreDeepwoods(): void {
         player.effects.addValue(StatusAffects.ExploredDeepwoods, 1, 1);
 
@@ -54,16 +44,16 @@ export class Forest {
         // Tamani 20% encounter rate
         if (flags[kFLAGS.TAMANI_TIME_OUT] == 0 && rand(5) == 0 && player.gender > 0 && (player.cocks.length > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
             if (player.cocks.length > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
-                tamaniDaughtersScene.encounterTamanisDaughters();
+                TamaniDaughtersScene.encounterTamanisDaughters();
             }
             else
-                tamaniScene.encounterTamani();
+                TamaniScene.encounterTamani();
             return;
         }
 
         if (flags[kFLAGS.ERLKING_DISABLED] == 0 && flags[kFLAGS.ERLKING_ENCOUNTER_COUNTER] == 4) {
             flags[kFLAGS.ERLKING_ENCOUNTER_COUNTER] = 0;
-            erlkingScene.encounterWildHunt();
+            ErlkingScene.encounterWildHunt();
             return;
         }
         else {
@@ -72,7 +62,7 @@ export class Forest {
 
         // Faerie
         if (chooser == 0) {
-            faerie.encounterFaerie();
+            Faerie.encounterFaerie();
             return;
         }
         // Tentacle monster
@@ -83,11 +73,11 @@ export class Forest {
             if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
                 trace("TENTACLE'S AVOIDED DUE TO BOOK!");
                 outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", true);
-                simpleChoices("Continue", tentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                simpleChoices("Continue", TentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
                 return;
             }
             else {
-                tentacleBeastScene.encounter();
+                TentacleBeastScene.encounter();
                 return;
             }
         }
@@ -97,14 +87,14 @@ export class Forest {
                 trappedSatyr();
                 return;
             }
-            corruptedGlade.intro();
+            CorruptedGlade.intro();
         }
         if (chooser == 3) {
-            akbalScene.supahAkabalEdition();
+            AkbalScene.supahAkabalEdition();
         }
         else if (chooser == 4) {
-            if (rand(3) == 0) kitsuneScene.kitsuneShrine();
-            else kitsuneScene.enterTheTrickster();
+            if (rand(3) == 0) KitsuneScene.kitsuneShrine();
+            else KitsuneScene.enterTheTrickster();
         }
     }
 
@@ -148,7 +138,7 @@ export class Forest {
         }
         // Essy every 20 explores or so
         if ((rand(100) <= 1) && player.gender > 0 && (flags[kFLAGS.ESSY_MET_IN_DUNGEON] == 0 || flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 1)) {
-            essrayle.essrayleMeetingI();
+            Essrayle.essrayleMeetingI();
             return;
         }
         // Chance of dick-dragging! 10% + 10% per two foot up to 30%
@@ -202,10 +192,10 @@ export class Forest {
                 // Tamani 25% of all goblin encounters encounter rate
                 if (rand(4) <= 0 && flags[kFLAGS.TAMANI_TIME_OUT] == 0 && player.gender > 0 && (player.cocks.length > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
                     if (player.cocks.length > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
-                        tamaniDaughtersScene.encounterTamanisDaughters();
+                        TamaniDaughtersScene.encounterTamanisDaughters();
                     }
                     else
-                        tamaniScene.encounterTamani();
+                        TamaniScene.encounterTamani();
                     return;
                 }
                 // 50% of the time, goblin assassin!
@@ -299,11 +289,11 @@ export class Forest {
                 if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
                     trace("TENTACLE'S AVOIDED DUE TO BOOK!");
                     outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", false);
-                    simpleChoices("Continue", tentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                    simpleChoices("Continue", TentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
                     return;
                 }
                 else {
-                    tentacleBeastScene.encounter();
+                    TentacleBeastScene.encounter();
                     return;
                 }
             }
@@ -330,7 +320,7 @@ export class Forest {
                     trappedSatyr();
                     return;
                 }
-                corruptedGlade.intro();
+                CorruptedGlade.intro();
             }
             // Trip on a root!
             if (temp == 3) {
@@ -348,7 +338,7 @@ export class Forest {
                 inventory.takeItem(useables.B_CHITN, camp.returnToCampUseOneHour);
                 return;
             }
-            beeGirlScene.beeEncounter();
+            BeeGirlScene.beeEncounter();
         }
     }
     // [FOREST]

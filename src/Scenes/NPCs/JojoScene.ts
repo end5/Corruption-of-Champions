@@ -1806,7 +1806,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 player.orgasm();
                 dynStats("cor", 0.5);
                 if (player.cocks.length > 0 && player.perks.findByType(PerkLib.Whispered) >= 0 && rand(4) == 0) {
-                    forest.akbalScene.whisperJojobait();
+                    AkbalScene.whisperJojobait();
                     return;
                 }
                 var storage:int = 0;

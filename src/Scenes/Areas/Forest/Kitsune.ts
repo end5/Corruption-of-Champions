@@ -155,7 +155,7 @@ export class Kitsune extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.forest.kitsuneScene.defeatTheKitsunes();
+        KitsuneScene.defeatTheKitsunes();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -163,7 +163,7 @@ export class Kitsune extends Monster {
             outputText("\n\nThe kitsune recoils before running off, no longer interested in you...");
             cleanupAfterCombat();
         } else {
-            game.forest.kitsuneScene.loseToKitsunes();
+            KitsuneScene.loseToKitsunes();
         }
     }
 

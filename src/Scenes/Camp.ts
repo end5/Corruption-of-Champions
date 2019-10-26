@@ -62,7 +62,7 @@ export class Camp extends NPCAwareContent {
         mainView.showMenuButton(MainView.MENU_NEW_MAIN);
         if (player.effects.findByType(StatusAffects.PostAkbalSubmission) >= 0) {
             player.effects.remove(StatusAffects.PostAkbalSubmission);
-            forest.akbalScene.akbalSubmissionFollowup();
+            AkbalScene.akbalSubmissionFollowup();
             return;
         }
         if (player.effects.findByType(StatusAffects.PostAnemoneBeatdown) >= 0) {

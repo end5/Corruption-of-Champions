@@ -34,7 +34,7 @@ export function sandWitchMotherFriendlyMenu(): void {
 
 export function slavesDiscussion(): void {
     menu();
-    if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) addButton(0, "Essrayle", forest.essrayle.askMotherToReleaseEssy);
+    if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) addButton(0, "Essrayle", Essrayle.askMotherToReleaseEssy);
     if (flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] instanceof Number) addButton(1, "Milk-Slave", freeSlaves);
 }
 // Getting a Milk Slut, Purity Style
@@ -172,7 +172,7 @@ export function sandMotherPOMenu(): void {
         addButton(5, "Get LaBova", takeLaBovaOrLactaid, false);
         addButton(6, "Get Lactaid", takeLaBovaOrLactaid);
     }
-    if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) addButton(7, "Essrayle", forest.essrayle.askMotherToReleaseEssy);
+    if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) addButton(7, "Essrayle", Essrayle.askMotherToReleaseEssy);
     addButton(9, "Leave", playerMenu);
 }
 

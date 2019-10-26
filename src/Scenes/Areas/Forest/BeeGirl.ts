@@ -12,9 +12,9 @@ export class BeeGirl extends Monster {
             }
             player.lust = 98;
             dynStats("lus", 1);
-            const dildoRape: () => void = (player.keyItems.has("Deluxe Dildo") >= 0 ? game.forest.beeGirlScene.beeGirlsGetsDildoed : null);
-            const milkAndHoney: () => void = (player.effects.findByType(StatusAffects.Feeder) >= 0 ? game.forest.beeGirlScene.milkAndHoneyAreKindaFunny : null);
-            simpleChoices("Rape", game.forest.beeGirlScene.rapeTheBeeGirl, "Dildo Rape", dildoRape, "", null, "B. Feed", milkAndHoney, "Leave", leaveAfterDefeating);
+            const dildoRape: () => void = (player.keyItems.has("Deluxe Dildo") >= 0 ? BeeGirlScene.beeGirlsGetsDildoed : null);
+            const milkAndHoney: () => void = (player.effects.findByType(StatusAffects.Feeder) >= 0 ? BeeGirlScene.milkAndHoneyAreKindaFunny : null);
+            simpleChoices("Rape", BeeGirlScene.rapeTheBeeGirl, "Dildo Rape", dildoRape, "", null, "B. Feed", milkAndHoney, "Leave", leaveAfterDefeating);
         }
         else if (player.effects.findByType(StatusAffects.Feeder) >= 0) { // Genderless can still breastfeed
             if (hpVictory) {
@@ -23,7 +23,7 @@ export class BeeGirl extends Monster {
             else {
                 outputText("You smile in satisfaction as the " + short + " spreads her legs and starts frigging her honey-soaked cunt.  The sweet scent oozing from between her legs is too much to bear, arousing you painfully.\n\nWhat do you do?");
             }
-            simpleChoices("B. Feed", game.forest.beeGirlScene.milkAndHoneyAreKindaFunny, "", null, "", null, "", null, "Leave", leaveAfterDefeating);
+            simpleChoices("B. Feed", BeeGirlScene.milkAndHoneyAreKindaFunny, "", null, "", null, "", null, "Leave", leaveAfterDefeating);
         }
         else {
             game.finishCombat();
@@ -46,7 +46,7 @@ export class BeeGirl extends Monster {
             cleanupAfterCombat();
         }
         else {
-            game.forest.beeGirlScene.beeRapesYou();
+            BeeGirlScene.beeRapesYou();
         }
     }
 

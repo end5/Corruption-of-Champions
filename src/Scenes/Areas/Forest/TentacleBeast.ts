@@ -52,7 +52,7 @@ export class TentacleBeast extends Monster {
         else {
             if (!hpVictory && player.gender > 0) {
                 outputText("  Perhaps you could use it to sate yourself?", true);
-                doYesNo(game.forest.tentacleBeastScene.tentacleVictoryRape, cleanupAfterCombat);
+                doYesNo(TentacleBeastScene.tentacleVictoryRape, cleanupAfterCombat);
             } else {
                 cleanupAfterCombat();
             }
@@ -67,7 +67,7 @@ export class TentacleBeast extends Monster {
                 outputText("...and make it into the nearby tunnel.  ");
                 game.desert.antsScene.phyllaTentaclePCLoss();
             } else
-                game.forest.tentacleBeastScene.tentacleLossRape();
+                TentacleBeastScene.tentacleLossRape();
         } else {
             outputText("You give up on fighting, too aroused to resist any longer.  Shrugging, you walk into the writhing mass...\n\n");
             if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
@@ -75,7 +75,7 @@ export class TentacleBeast extends Monster {
                 outputText("...but an insistent voice rouses you from your stupor.  You manage to run into a nearby tunnel.  ");
                 game.desert.antsScene.phyllaTentaclePCLoss();
             } else
-                doNext(game.forest.tentacleBeastScene.tentacleLossRape);
+                doNext(TentacleBeastScene.tentacleLossRape);
         }
     }
 

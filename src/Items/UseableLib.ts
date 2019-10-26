@@ -10,7 +10,7 @@ export class UseableLib {
         "You look over the scale carefully but cannot find a use for it.  Maybe someone else will know how to use it.");
     public GLDSTAT: SimpleUseable = new SimpleUseable("GldStat", "GldStat", "a golden statue", 600,
         "An intricate golden idol of an androgynous humanoid figure with nine long tails.  It probably had some spiritual significance to its owner.",
-        "", forest.kitsuneScene.kitsuneStatue);
+        "", KitsuneScene.kitsuneStatue);
     public GREENGL: SimpleUseable = new SimpleUseable("GreenGl", "GreenGl", "a clump of green gel", 6,
         "This tough substance has no obvious use that you can discern.",
         "You examine the gel thoroughly, noting it is tough and resiliant, yet extremely pliable.  Somehow you know eating it would not be a good idea.");

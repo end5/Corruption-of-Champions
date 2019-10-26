@@ -64,11 +64,11 @@ export class Akbal extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.forest.akbalScene.akbalDefeated(hpVictory);
+        AkbalScene.akbalDefeated(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.forest.akbalScene.akbalWon(hpVictory, pcCameWorms);
+        AkbalScene.akbalWon(hpVictory, pcCameWorms);
         cleanupAfterCombat();
     }
 
