@@ -3,10 +3,6 @@
  */
 
 export class Plains {
-    public bunnyGirl: BunnyGirl = new BunnyGirl();
-    public gnollScene: GnollScene = new GnollScene();
-    public gnollSpearThrowerScene: GnollSpearThrowerScene = new GnollSpearThrowerScene();
-    public satyrScene: SatyrScene = new SatyrScene();
     public explorePlains(): void {
         outputText("", true);
         flags[kFLAGS.TIMES_EXPLORED_PLAINS]++;
@@ -60,9 +56,9 @@ export class Plains {
         }
 
         const choices: any[] = [plainsLoot, plainsLoot,
-            gnollSpearThrowerScene.gnoll2Encounter,
-            gnollScene.gnollEncounter,
-            bunnyGirl.bunnbunbunMeet, bunnyGirl.bunnbunbunMeet];
+            GnollSpearThrowerScene.gnoll2Encounter,
+            GnollScene.gnollEncounter,
+            BunnyGirl.bunnbunbunMeet, BunnyGirl.bunnbunbunMeet];
 
         if (flags[kFLAGS.ISABELLA_PLAINS_DISABLED] == 0) {
             choices[choices.length] = isabellaScene.isabellaGreeting;
@@ -72,8 +68,8 @@ export class Plains {
             choices[choices.length] = helScene.encounterAJerkInThePlains;
             choices[choices.length] = helScene.encounterAJerkInThePlains;
         }
-        choices[choices.length] = satyrScene.satyrEncounter;
-        choices[choices.length] = satyrScene.satyrEncounter;
+        choices[choices.length] = SatyrScene.satyrEncounter;
+        choices[choices.length] = SatyrScene.satyrEncounter;
         if (flags[kFLAGS.SHEILA_DISABLED] == 0 && flags[kFLAGS.SHEILA_CLOCK] >= 0) { // Aparently Sheila was supposed to be disabled after certain events - now fixed
             choices[choices.length] = sheilaScene.sheilaEncounterRouter;
             choices[choices.length] = sheilaScene.sheilaEncounterRouter;

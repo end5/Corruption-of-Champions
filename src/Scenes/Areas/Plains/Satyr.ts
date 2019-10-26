@@ -108,7 +108,7 @@ export class Satyr extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.plains.satyrScene.defeatASatyr();
+        SatyrScene.defeatASatyr();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -116,7 +116,7 @@ export class Satyr extends Monster {
             outputText("\n\nThe satyr laughs heartily at your eagerness...");
             doNext(game.endLustLoss);
         } else {
-            game.plains.satyrScene.loseToSatyr();
+            SatyrScene.loseToSatyr();
         }
     }
 

@@ -55,7 +55,7 @@ export class GnollSpearThrowerScene {
         spriteSelect(54);
         // Oh shit get anal raped.
         if (player.hasItem(consumables.S_DREAM)) {
-            plains.gnollScene.yoDawgIHeardULiekGNollBallzzzdahdakjldh();
+            GnollScene.yoDawgIHeardULiekGNollBallzzzdahdakjldh();
             return;
         }
         outputText("", true);

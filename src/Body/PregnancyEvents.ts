@@ -1360,13 +1360,13 @@ export function updatePregnancy(): boolean {
     if (player.pregnancyType == PregnancyStore.PREGNANCY_SATYR && player.pregnancyIncubation == 1) {
         player.knockUpForce(); // Clear Pregnancy
         displayedUpdate = true;
-        plains.satyrScene.satyrBirth(true);
+        SatyrScene.satyrBirth(true);
     }
     // Satyr butt preg
     if (player.buttPregnancyType == PregnancyStore.PREGNANCY_SATYR && player.buttPregnancyIncubation == 1) {
         player.buttKnockUpForce(); // Clear Butt Pregnancy
         displayedUpdate = true;
-        plains.satyrScene.satyrBirth(false);
+        SatyrScene.satyrBirth(false);
     }
     if (player.pregnancyType == PregnancyStore.PREGNANCY_BENOIT && player.pregnancyIncubation <= 2) {
         if (game.time.hours != 5 && game.time.hours != 6) {

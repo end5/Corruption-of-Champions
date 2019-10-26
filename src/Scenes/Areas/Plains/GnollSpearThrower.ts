@@ -307,7 +307,7 @@ export class GnollSpearThrower extends Monster {
             addButton(1, "Succ Milk", game.urtaQuest.useSuccubiMilkOnGnollPrincesses);
             addButton(4, "Leave", game.urtaQuest.urtaNightSleep);
         } else {
-            game.plains.gnollSpearThrowerScene.hyenaVictory();
+            GnollSpearThrowerScene.hyenaVictory();
         }
     }
 
@@ -318,7 +318,7 @@ export class GnollSpearThrower extends Monster {
             outputText("\n\nYour foe doesn't seem put off enough to leave...");
             doNext(game.endLustLoss);
         } else {
-            game.plains.gnollSpearThrowerScene.hyenaSpearLossAnal();
+            GnollSpearThrowerScene.hyenaSpearLossAnal();
         }
     }
 

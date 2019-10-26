@@ -344,7 +344,7 @@ export class Gnoll extends Monster {
             game.desert.antsScene.phyllaPCBeatsGnoll();
             return;
         }
-        game.plains.gnollScene.defeatHyena();
+        GnollScene.defeatHyena();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -355,7 +355,7 @@ export class Gnoll extends Monster {
             outputText("\n\nYour foe doesn't seem put off enough to leave...");
             doNext(game.endLustLoss);
         } else {
-            game.plains.gnollScene.getRapedByGnoll();
+            GnollScene.getRapedByGnoll();
         }
     }
 

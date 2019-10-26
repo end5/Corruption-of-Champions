@@ -243,7 +243,7 @@ export class CoC extends MovieClip {
 
     // holidayz
     public isEaster(): boolean {
-        return plains.bunnyGirl.isItEaster();
+        return BunnyGirl.isItEaster();
     }
 
     public constructor() {
