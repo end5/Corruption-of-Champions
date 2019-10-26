@@ -39,7 +39,7 @@ export function updatePregnancy(): boolean {
     // IF INCUBATION IS VAGINAL
     if (player.pregnancyIncubation > 1) {
         if (player.pregnancyType == PregnancyStore.PREGNANCY_FAERIE) {
-            displayedUpdate = bog.phoukaScene.phoukaPregUpdate();
+            displayedUpdate = PhoukaScene.phoukaPregUpdate();
         }
         if (player.pregnancyType == PregnancyStore.PREGNANCY_SAND_WITCH) {
             displayedUpdate = sandPregUpdate();
@@ -1238,13 +1238,13 @@ export function updatePregnancy(): boolean {
     }
     // Give birth to either a faerie or a phouka
     if (player.pregnancyIncubation == 1 && player.pregnancyType == PregnancyStore.PREGNANCY_FAERIE) {
-        bog.phoukaScene.phoukaPregBirth();
+        PhoukaScene.phoukaPregBirth();
         displayedUpdate = true;
         player.knockUpForce(); // Clear Pregnancy
     }
     // Give birf if its time... to ANAL EGGS
     if (player.buttPregnancyIncubation == 1 && player.buttPregnancyType == PregnancyStore.PREGNANCY_FROG_GIRL) {
-        bog.frogGirlScene.birthFrogEggsAnal();
+        FrogGirlScene.birthFrogEggsAnal();
         displayedUpdate = true;
         player.buttKnockUpForce(); // Clear Butt Pregnancy
     }
@@ -1380,7 +1380,7 @@ export function updatePregnancy(): boolean {
     }
     // Give birf if its time... to FROG EGGS
     if (player.pregnancyIncubation == 1 && player.pregnancyType == PregnancyStore.PREGNANCY_FROG_GIRL) {
-        bog.frogGirlScene.layFrogEggs();
+        FrogGirlScene.layFrogEggs();
         displayedUpdate = true;
         player.knockUpForce(); // Clear Pregnancy
     }

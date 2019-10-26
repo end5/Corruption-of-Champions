@@ -67,7 +67,7 @@ export class ChameleonGirl extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.bog.chameleonGirlScene.defeatChameleonGirl();
+        ChameleonGirlScene.defeatChameleonGirl();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -75,7 +75,7 @@ export class ChameleonGirl extends Monster {
             outputText("\n\nThe chameleon girl recoils.  \"<i>Ew, gross!</i>\" she screetches as she runs away, leaving you to recover from your defeat alone.");
             cleanupAfterCombat();
         } else {
-            game.bog.chameleonGirlScene.loseToChameleonGirl();
+            ChameleonGirlScene.loseToChameleonGirl();
         }
     }
 

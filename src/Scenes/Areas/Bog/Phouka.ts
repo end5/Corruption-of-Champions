@@ -127,7 +127,7 @@ export class Phouka extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.bog.phoukaScene.phoukaPlayerWins(hpVictory);
+        PhoukaScene.phoukaPlayerWins(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -141,10 +141,10 @@ export class Phouka extends Monster {
         else {
             if (player.vaginas.length > 0) { // Phouka prefer vaginal if they can get it
                 if (player.isTaur() || rand(2) == 0)
-                    game.bog.phoukaScene.phoukaSexHorse(true, !hpVictory); // And they love mating with female or herm centaurs in their horse form
-                else game.bog.phoukaScene.phoukaSexBunny(true, !hpVictory);
+                    PhoukaScene.phoukaSexHorse(true, !hpVictory); // And they love mating with female or herm centaurs in their horse form
+                else PhoukaScene.phoukaSexBunny(true, !hpVictory);
             }
-            else game.bog.phoukaScene.phoukaSexGoat(true, !hpVictory);
+            else PhoukaScene.phoukaSexGoat(true, !hpVictory);
         }
     }
 
