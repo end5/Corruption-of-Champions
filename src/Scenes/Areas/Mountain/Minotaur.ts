@@ -11,7 +11,7 @@ export class Minotaur extends Monster {
         if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
             this.effects.remove(StatusAffects.PhyllaFight);
             outputText("You defeat a minotaur!  ", true);
-            game.desert.antsScene.phyllaBeatAMino();
+            AntsScene.phyllaBeatAMino();
         } else {
             MinotaurScene.minoVictoryRapeChoices();
         }
@@ -20,7 +20,7 @@ export class Minotaur extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
             this.effects.remove(StatusAffects.PhyllaFight);
-            game.desert.antsScene.phyllaPCLostToMino();
+            AntsScene.phyllaPCLostToMino();
         } else if (pcCameWorms) {
             outputText("\n\nThe minotaur picks you up and forcibly tosses you from his cave, grunting in displeasure.", false);
             cleanupAfterCombat();

@@ -341,7 +341,7 @@ export class Gnoll extends Monster {
     public defeated(hpVictory: boolean): void {
         if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
             this.effects.remove(StatusAffects.PhyllaFight);
-            game.desert.antsScene.phyllaPCBeatsGnoll();
+            AntsScene.phyllaPCBeatsGnoll();
             return;
         }
         GnollScene.defeatHyena();
@@ -350,7 +350,7 @@ export class Gnoll extends Monster {
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
             this.effects.remove(StatusAffects.PhyllaFight);
-            game.desert.antsScene.phyllaGnollBeatsPC();
+            AntsScene.phyllaGnollBeatsPC();
         } else if (pcCameWorms) {
             outputText("\n\nYour foe doesn't seem put off enough to leave...");
             doNext(game.endLustLoss);

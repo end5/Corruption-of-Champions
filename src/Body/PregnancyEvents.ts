@@ -1262,7 +1262,7 @@ export function updatePregnancy(): boolean {
     }
     // GIVE BIRF TO TRAPS
     if (player.buttPregnancyIncubation == 1 && player.buttPregnancyType == PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
-        desert.sandTrapScene.birfSandTarps();
+        SandTrapScene.birfSandTarps();
         player.buttKnockUpForce(); // Clear Butt Pregnancy
         if (player.buttRating < 17) {
             // Guaranteed increase up to level 10

@@ -175,9 +175,9 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         addButton(5, "Wait", wait);
     }
     else if (monster.effects.findByType(StatusAffects.Constricted) >= 0) {
-        addButton(0, "Squeeze", desert.nagaScene.naggaSqueeze);
-        addButton(1, "Tease", desert.nagaScene.naggaTease);
-        addButton(4, "Release", desert.nagaScene.nagaLeggoMyEggo);
+        addButton(0, "Squeeze", NagaScene.naggaSqueeze);
+        addButton(1, "Tease", NagaScene.naggaTease);
+        addButton(4, "Release", NagaScene.nagaLeggoMyEggo);
     }
     else if (player.effects.findByType(StatusAffects.Bound) >= 0) {
         addButton(0, "Struggle", (monster as Ceraph).ceraphBindingStruggle);
@@ -3604,7 +3604,7 @@ export function combatRoundOver(): boolean { // Called after the monster's actio
     }
     if (monster.effects.findByType(StatusAffects.Level) >= 0) {
         if ((monster as SandTrap).trapLevel() <= 1) {
-            desert.sandTrapScene.sandtrapmentLoss();
+            SandTrapScene.sandtrapmentLoss();
             return true;
         }
     }
@@ -5265,7 +5265,7 @@ export function physicalSpecials(): void {
     }
     // Constrict
     if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
-        addButton(3, "Constrict", desert.nagaScene.nagaPlayerConstrict);
+        addButton(3, "Constrict", NagaScene.nagaPlayerConstrict);
     }
     // Kick attackuuuu
     else if (player.isTaur() || player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_BUNNY || player.lowerBody == LOWER_BODY_TYPE_KANGAROO) {

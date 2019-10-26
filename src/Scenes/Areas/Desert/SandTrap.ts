@@ -85,7 +85,7 @@ export class SandTrap extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.desert.sandTrapScene.pcBeatsATrap();
+        SandTrapScene.pcBeatsATrap();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -93,7 +93,7 @@ export class SandTrap extends Monster {
             outputText("\n\nThe sand trap seems bemused by the insects your body houses...");
             doNext(game.endLustLoss);
         } else {
-            game.desert.sandTrapScene.sandtrapmentLoss(true);
+            SandTrapScene.sandtrapmentLoss(true);
         }
     }
 

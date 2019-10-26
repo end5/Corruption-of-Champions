@@ -73,7 +73,7 @@ export class Naga extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.desert.nagaScene.nagaRapeChoice();
+        NagaScene.nagaRapeChoice();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -82,7 +82,7 @@ export class Naga extends Monster {
             player.orgasm();
             doNext(cleanupAfterCombat);
         } else {
-            game.desert.nagaScene.nagaFUCKSJOOOOOO();
+            NagaScene.nagaFUCKSJOOOOOO();
         }
     }
 

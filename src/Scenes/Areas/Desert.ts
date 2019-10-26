@@ -3,12 +3,6 @@
  */
 
 export class Desert {
-    public antsScene: AntsScene = new AntsScene();
-    public nagaScene: NagaScene = new NagaScene();
-    public oasis: Oasis = new Oasis();
-    public sandTrapScene: SandTrapScene = new SandTrapScene();
-    public sandWitchScene: SandWitchScene = new SandWitchScene();
-    public wanderer: Wanderer = new Wanderer();
     // Explore desert
     public exploreDesert(): void {
         player.exploredDesert++;
@@ -32,14 +26,14 @@ export class Desert {
             telAdre.discoverTelAdre();
             return;
         }
-        if (sandWitchScene.pregnancy.event == 2 && rand(4) == 0) {
-            if (flags[kFLAGS.EGG_WITCH_TYPE] == PregnancyStore.PREGNANCY_DRIDER_EGGS) sandWitchScene.sammitchBirthsDriders();
-            else sandWitchScene.witchBirfsSomeBees();
+        if (SandWitchScene.pregnancy.event == 2 && rand(4) == 0) {
+            if (flags[kFLAGS.EGG_WITCH_TYPE] == PregnancyStore.PREGNANCY_DRIDER_EGGS) SandWitchScene.sammitchBirthsDriders();
+            else SandWitchScene.witchBirfsSomeBees();
             return;
         }
         // Ant colony debug chances
         if (player.level >= 5 && flags[kFLAGS.ANT_WAIFU] == 0 && (player.exploredDesert % 8 == 0) && flags[kFLAGS.ANTS_PC_FAILED_PHYLLA] == 0 && flags[kFLAGS.ANT_COLONY_KEPT_HIDDEN] == 0) {
-            antsScene.antColonyEncounter();
+            AntsScene.antColonyEncounter();
             return;
         }
         // int over 50?  Chance of alice encounter!
@@ -78,7 +72,7 @@ export class Desert {
 
         // Encounter Sandwitch
         if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] == 0) {
-            choices[choices.length] = sandWitchScene.encounter;
+            choices[choices.length] = SandWitchScene.encounter;
             args[args.length] = -8008;
         }
         if (flags[kFLAGS.CUM_WITCHES_FIGHTABLE] > 0) {
@@ -86,7 +80,7 @@ export class Desert {
             args[args.length] = -8008;
         }
         // Encounter Marcus
-        choices[choices.length] = wanderer.wandererRouter;
+        choices[choices.length] = Wanderer.wandererRouter;
         args[args.length] = -8008;
         choices[choices.length] = walkingDesertStatBoost;
         args[args.length] = -8008;
@@ -96,14 +90,14 @@ export class Desert {
                 args[args.length] = -8008;
             }
             else {
-                choices[choices.length] = oasis.oasisEncounter;
+                choices[choices.length] = Oasis.oasisEncounter;
                 args[args.length] = -8008;
             }
         }
-        choices[choices.length] = nagaScene.nagaEncounter;
+        choices[choices.length] = NagaScene.nagaEncounter;
         args[args.length] = -8008;
         if (rand(2) == 0) {
-            choices[choices.length] = sandTrapScene.encounterASandTarp;
+            choices[choices.length] = SandTrapScene.encounterASandTarp;
             args[args.length] = -8008;
         }
         const select: number = rand(choices.length);

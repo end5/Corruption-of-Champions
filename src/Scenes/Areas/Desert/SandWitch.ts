@@ -7,7 +7,7 @@ export class SandWitch extends Monster {
         }
 
         if (player.lust >= 33) {
-            game.desert.sandWitchScene.beatSandwitch();
+            SandWitchScene.beatSandwitch();
         } else {
             game.finishCombat();
         }
@@ -18,7 +18,7 @@ export class SandWitch extends Monster {
             outputText("\n\nThe witch blanches and backs away, leaving you to your fate.");
             cleanupAfterCombat();
         } else {
-            game.desert.sandWitchScene.sandwitchRape();
+            SandWitchScene.sandwitchRape();
         }
     }
 

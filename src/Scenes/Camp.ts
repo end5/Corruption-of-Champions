@@ -634,7 +634,7 @@ export class Camp extends NPCAwareContent {
             outputText("\n\n", false);
         }
         // ►[Added Campsite Description]
-        if (desert.antsScene.phyllaWaifu()) {
+        if (AntsScene.phyllaWaifu()) {
             outputText("You see Phylla's anthill in the distance.  Every now and then you see");
             // If PC has children w/ Phylla:
             if (flags[kFLAGS.ANT_KIDS] > 0) outputText(" one of your many children exit the anthill to unload some dirt before continuing back down into the colony.  It makes you feel good knowing your offspring are so productive.");
@@ -903,7 +903,7 @@ export class Camp extends NPCAwareContent {
         addButton(5, "Kiha", kihaButt);
         if (marbleEvent != null) addButton(6, "Marble", marbleEvent);
         if (nieve != null) addButton(7, "Nieve", nieve);
-        if (flags[kFLAGS.ANT_WAIFU] > 0) addButton(8, "Phylla", desert.antsScene.introductionToPhyllaFollower);
+        if (flags[kFLAGS.ANT_WAIFU] > 0) addButton(8, "Phylla", AntsScene.introductionToPhyllaFollower);
         addButton(9, "Back", playerMenu);
     }
 

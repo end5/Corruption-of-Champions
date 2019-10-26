@@ -47,7 +47,7 @@ export class TentacleBeast extends Monster {
         }
         if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
             this.effects.remove(StatusAffects.PhyllaFight);
-            game.desert.antsScene.phyllaTentacleDefeat();
+            AntsScene.phyllaTentacleDefeat();
         }
         else {
             if (!hpVictory && player.gender > 0) {
@@ -65,7 +65,7 @@ export class TentacleBeast extends Monster {
             if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
                 this.effects.remove(StatusAffects.PhyllaFight);
                 outputText("...and make it into the nearby tunnel.  ");
-                game.desert.antsScene.phyllaTentaclePCLoss();
+                AntsScene.phyllaTentaclePCLoss();
             } else
                 TentacleBeastScene.tentacleLossRape();
         } else {
@@ -73,7 +73,7 @@ export class TentacleBeast extends Monster {
             if (this.effects.findByType(StatusAffects.PhyllaFight) >= 0) {
                 this.effects.remove(StatusAffects.PhyllaFight);
                 outputText("...but an insistent voice rouses you from your stupor.  You manage to run into a nearby tunnel.  ");
-                game.desert.antsScene.phyllaTentaclePCLoss();
+                AntsScene.phyllaTentaclePCLoss();
             } else
                 doNext(TentacleBeastScene.tentacleLossRape);
         }
