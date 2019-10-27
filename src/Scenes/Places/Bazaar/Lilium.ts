@@ -1,5 +1,5 @@
 
-export class Lilium extends BazaarAbstractContent {
+export class Lilium {
 
     // I dunno about the term 'satanic streetwalker', and it
     // probably needs to increment your corruption if you're fucking
@@ -62,7 +62,7 @@ export class Lilium extends BazaarAbstractContent {
             outputText("\"<i>Look, I'm sorry, but I can't really do anything for you right now.  If your, uh, situation changes, come see me again.</i>\"  Lilium then walks off, leaving you alone and naked.\n\n", false);
 
             outputText("Bummer.", false);
-            doNext(bazaar.enterTheBazaar);
+            doNext(Bazaar.enterTheBazaar);
             return;
         }
         // First time - Pay:
@@ -98,7 +98,7 @@ export class Lilium extends BazaarAbstractContent {
         spriteSelect(93);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00267] == 0) outputText("\"<i>I'm deathly allergic to fun, unfortunately,</i>\" you reply before moving on to examine more of the bazaar.", false);
         else outputText("\"<i>Just passing through, and I thought I'd see how you were doing,</i>\" you reply, and leave Lilium alone at her post.", false);
-        doNext(bazaar.enterTheBazaar);
+        doNext(Bazaar.enterTheBazaar);
     }
 
     // #########BUTTFUCK + TONGUEJOB SCENE######### REQUIRES PENIS AND LONG DEMONIC TONGUE

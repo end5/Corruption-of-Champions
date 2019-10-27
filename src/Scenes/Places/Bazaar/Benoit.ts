@@ -16,7 +16,7 @@
 //  BENOIT_TESTED_BASILISK_WOMB:int = 577;
 //  BENOIT_GENERIC_EGGS:int = 632;
 // (Shop open between 9:00 and 17:00)
-export class Benoit extends BazaarAbstractContent {
+export class Benoit {
 
     // Fen, you'll need a function to determine gendered pronouns and version of name for this character. I've formatted all the eligible places I found in the order of [male/female]. -Z
     public benoitMF(stringM: string, stringF: string): string {
@@ -267,7 +267,7 @@ export class Benoit extends BazaarAbstractContent {
             }
         }
         choices("Buy", benoitsBuyMenu, "Sell", benoitSellMenu, "Talk", talkToBenoit, suggestText, suggest, "Basil. Womb", womb,
-            "Feminize", fem, "", null, "", null, "", null, "Leave", bazaar.enterTheBazaar);
+            "Feminize", fem, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
     }
 
     // Buy or Sell First Time, only if prelover/prefem: You ask him what the deal is with his shop.

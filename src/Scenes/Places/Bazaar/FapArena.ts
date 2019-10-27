@@ -1,5 +1,5 @@
 
-export class FapArena extends BazaarAbstractContent {
+export class FapArena {
 
     public fapAppearance(display: boolean = true): void {
         if (display) {
@@ -29,7 +29,7 @@ export class FapArena extends BazaarAbstractContent {
             // , or consider buying products in our local shop.</i>\"\n\n", false);
             // outputText("She redirects you to a small stall near the entrance with various potions stored on shelves.  A poster placed on it reads: "Your dick must qualify to the house's standards.  80 gems for a vial of Gro+, 80 for the session of your life!"
             // Do you buy products? (Yes/No) //Yes gives you a vial of Gro+, No does nothing. In both cases, the PC is redirected to the Bazaar.
-            doNext(bazaar.enterTheBazaar);
+            doNext(Bazaar.enterTheBazaar);
             return;
         }
         // [if dick size >= 8 inches: 1st time]
@@ -63,7 +63,7 @@ export class FapArena extends BazaarAbstractContent {
             else outputText("By gods, what are you doing here?", false);
             // end of condition about PC's corr
             outputText("\n\nDo you stay?", false);
-            doYesNo(fapArenaPageII, bazaar.enterTheBazaar);
+            doYesNo(fapArenaPageII, Bazaar.enterTheBazaar);
         }
         // [if dick size > 8 inches: after first time]
         else {

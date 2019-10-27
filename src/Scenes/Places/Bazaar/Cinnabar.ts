@@ -13,7 +13,7 @@
 // Lips - black
 // Fur – rust red/'ruddy'
 // Tail – Barely touches the ground, but is prehensile and capable of being lengthened at will.
-export class Cinnabar extends BazaarAbstractContent {
+export class Cinnabar {
 
     // Appearnace
     public cinnabarAppearance(output: boolean = true): () => void {
@@ -38,13 +38,13 @@ export class Cinnabar extends BazaarAbstractContent {
             if (!player.cocks.length > 0) {
                 outputText("You walk over towards the rat-morph, and as you near, she places her hands on her hips, sizing you up with her intense, blood-red eyes.  She licks her lips and sidles alongside you, caressing your body as she offers, \"<i>50 gems for an hour.  That's all it takes to have Cinnabar be your companion...</i>\"  Her voice trails off into a husky vibration as she awaits your response.\n\n", false);
                 // [Buy an hour] [Leave]
-                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", bazaar.enterTheBazaar);
+                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
             }
             // (Small Cock)
             else if (player.cocks.biggestCockArea() < 100) {
                 outputText("You walk over towards the rat-morph, and as you near she places her hands on her hips, sizing you up with her intense, blood-red eyes.  She sidles up alongside you, caressing your body until she feels your bulge.  Her hand stops in place and licks her black, glossy lips,  giggling, \"<i>I see you've still got a little boy-cock, huh? Well, 50 gems will get you an hour of my time.  That's all it takes to have Cinnabar be your companion...</i>\"  The slutty rat-girl's voice trails off into a husky vibration while she awaits your response.", false);
                 // [Buy an hour] [Leave]
-                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", bazaar.enterTheBazaar);
+                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
             }
             // (Big enough Cock)
             else {
@@ -55,8 +55,8 @@ export class Cinnabar extends BazaarAbstractContent {
                 outputText(" inside me... the name's Cinnabar, but I'd rather you plug me and call me whatever you want.</i>\"  Her voice trails off into a husky, barely heard vibration as she awaits your response.", false);
                 // [Fuck] [Leave]
                 if (player.cocks.length > 2 && player.cocks.biggestCockArea2() >= 75)
-                    simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "Multi-Fuck", cinnabarMultiCockPortalFuckFest, "", null, "", null, "Leave", bazaar.enterTheBazaar);
-                else simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "", null, "", null, "", null, "Leave", bazaar.enterTheBazaar);
+                    simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "Multi-Fuck", cinnabarMultiCockPortalFuckFest, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
+                else simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
             }
         }
         // Not first time
@@ -65,13 +65,13 @@ export class Cinnabar extends BazaarAbstractContent {
             if (!player.cocks.length > 0) {
                 outputText("You walk over towards Cinnabar, and as you near, she places her hands on her hips, sizing you up with her intense, blood-red eyes.  She licks her lips and sidles alongside you, caressing your body as she offers, \"<i>50 gems for an hour.  That's all it takes to have a companion...</i>\"  Her voice trails off into a husky vibration as she awaits your response.\n\n", false);
                 // [Buy an hour] [Leave]
-                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", bazaar.enterTheBazaar);
+                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
             }
             // (Small Cock)
             else if (player.cocks.biggestCockArea() < 100) {
                 outputText("You walk over towards Cinnabar, and as you near, she places her hands on her hips, sizing you up with her intense, blood-red eyes.  She sidles up alongside you, caressing your body until she feels your bulge.  Her hand stops in place and licks her black, glossy lips,  giggling, \"<i>I see you've still got a little boy, huh? Well, 50 gems will get you an hour of my time.  That's all it takes to have a VERY skilled companion...</i>\"  The slutty rat-girl's voice trails off into a husky vibration while she awaits your response.", false);
                 // [Buy an hour] [Leave]
-                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", bazaar.enterTheBazaar);
+                simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
             }
             // (Big enough Cock)
             else {
@@ -82,8 +82,8 @@ export class Cinnabar extends BazaarAbstractContent {
                 outputText(" inside me... We could sit here and talk, but I'd rather you plug me and call me your slut.</i>\"  Her voice trails off into a husky, barely heard vibration as she awaits your response.", false);
                 // [Fuck] [Leave]
                 if (player.cocks.length > 2 && player.cocks.biggestCockArea2() >= 75)
-                    simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "Multi-Fuck", cinnabarMultiCockPortalFuckFest, "", null, "", null, "Leave", bazaar.enterTheBazaar);
-                else simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "", null, "", null, "", null, "Leave", bazaar.enterTheBazaar);
+                    simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "Multi-Fuck", cinnabarMultiCockPortalFuckFest, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
+                else simpleChoices("Fuck Her", cinnabarGetsFUKKKKED, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
             }
         }
     }
@@ -98,7 +98,7 @@ export class Cinnabar extends BazaarAbstractContent {
         // (Too poor)
         if (player.gems < 50) {
             outputText("\"<i>Ooooh... I'm sorry, but you don't have the gems to hire a companion, babe.   You should get some practice spreading your thighs and earn a REAL living,</i>\" Cinnabar teases.", false);
-            doNext(bazaar.enterTheBazaar);
+            doNext(Bazaar.enterTheBazaar);
             return;
         }
         // (Enough cash)

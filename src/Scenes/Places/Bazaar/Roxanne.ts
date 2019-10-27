@@ -1,5 +1,5 @@
 
-export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface {
+export class Roxanne implements TimeAwareInterface {
 
     // Roxanne Poisontail
     // -no hair,
@@ -91,7 +91,7 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         outputText("You hesitantly approach the drinking lizard-folk, taking note of their unusual garments and appearance.  They all wear black jackets with silver trim, tight-fitting leather pants, and tall, black boots.  Oddly, the most feminine of them appears to be the leader.  Her jacket is filled out with large, well-rounded DD-cup breasts, and her boots forgo the traditional shape for a sluttier, higher heel.  Her scales are a dark purple, glittering darkly in the light, and while her head has a lizard-like shape, a pair of dragon-like horns bulge from the back of her skull in place of hair.  The other lizans all appear to be males, but they act as if they're quite intimidated by the feminine leader.\n\n", false);
         outputText("Suddenly, the alpha-lizan glances up and meets your eye, her expression turning into a leering sneer as she asks, \"<i>See something you like " + mf(player, "buddy", "girly") + "?  Come on over, tell us your story!</i>\"\n\n", false);
         outputText("Do you approach?", false);
-        doYesNo(RoxanneChooseApproachOrRepeat, bazaar.enterTheBazaar);
+        doYesNo(RoxanneChooseApproachOrRepeat, Bazaar.enterTheBazaar);
     }
 
     // [Approach] – Flag as Met
@@ -153,11 +153,11 @@ export class Roxanne extends BazaarAbstractContent implements TimeAwareInterface
         if (game.time.hours == 19 || game.time.hours == 20) {
             flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE]++;
             if (flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE] % 4 == 0 && player.gender == 1) {
-                bazaar.nightBazaarButtfuck();
+                Bazaar.nightBazaarButtfuck();
                 return;
             }
         }
-        bazaar.enterTheBazaarAndMenu();
+        Bazaar.enterTheBazaarAndMenu();
     }
 
     private roxanneDrinkingContestLoseDeliberately(): void {
