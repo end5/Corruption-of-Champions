@@ -61,11 +61,11 @@ export class Marble extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.marbleScene.marbleFightWin();
+        MarbleScene.marbleFightWin();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.marbleScene.marbleFightLose();
+        MarbleScene.marbleFightLose();
     }
 
     public constructor() {

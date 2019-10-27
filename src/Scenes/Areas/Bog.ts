@@ -6,8 +6,8 @@ export class Bog {
     public exploreBog(): void {
         flags[kFLAGS.BOG_EXPLORED]++;
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helFollower.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelFollower.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         if ((isHalloween() && (date.fullYear > flags[kFLAGS.TREACLE_MINE_YEAR_DONE]) && flags[kFLAGS.BOG_EXPLORED] % 4 == 0) && (flags[kFLAGS.PHOUKA_LORE] > 0)) {

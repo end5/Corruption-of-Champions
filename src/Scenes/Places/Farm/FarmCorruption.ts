@@ -12,13 +12,13 @@ export class FarmCorruption {
     public corruptFollowers(): number {
         let count: number = 0;
 
-        if (jojoScene.campCorruptJojo()) count++;
-        if (amilyScene.amilyCorrupt()) count++;
-        if (izmaScene.izmaFollower()) count++;
-        if (sophieBimbo.bimboSophie()) count++;
-        if (vapula.vapulaSlave()) count++;
-        if (ceraphScene.ceraphIsFollower()) count++;
-        if (latexGirl.latexGooFollower()) count++;
+        if (JojoScene.campCorruptJojo()) count++;
+        if (AmilyScene.amilyCorrupt()) count++;
+        if (IzmaScene.izmaFollower()) count++;
+        if (SophieBimbo.bimboSophie()) count++;
+        if (Vapula.vapulaSlave()) count++;
+        if (CeraphScene.ceraphIsFollower()) count++;
+        if (LatexGirl.latexGooFollower()) count++;
 
         return count;
     }
@@ -183,7 +183,7 @@ export class FarmCorruption {
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) modValue += 2;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) modValue += 2;
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && sophieBimbo.bimboSophie()) modValue += 1;
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && SophieBimbo.bimboSophie()) modValue += 1;
         // Izmael if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) modValue += 1;
         // Bimbo if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) modValue += 2;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) modValue += 4;
@@ -208,7 +208,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_JOJO] == 1 && flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1) {
             if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO_GIBS_DRAFT] == 0) flags[kFLAGS.FOLLOWER_AT_FARM_JOJO_GIBS_DRAFT] = 1;
             flags[kFLAGS.FARM_INCUDRAFT_STORED]++;
-            if (jojoScene.tentacleJojo()) flags[kFLAGS.FARM_INCUDRAFT_STORED]++;
+            if (JojoScene.tentacleJojo()) flags[kFLAGS.FARM_INCUDRAFT_STORED]++;
         }
 
         // If Sophie is producing, count up time since last egg and gib a new one when ready
@@ -243,8 +243,8 @@ export class FarmCorruption {
 
         // If Latexy is at the farm, further modify her status values
         if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) {
-            latexGirl.gooHappiness(-0.5, false);
-            latexGirl.gooObedience(0.5, false);
+            LatexGirl.gooHappiness(-0.5, false);
+            LatexGirl.gooObedience(0.5, false);
         }
 
         // If Ceraph is doing her thing
@@ -328,7 +328,7 @@ export class FarmCorruption {
     private getItemObj(flag: number): SimpleConsumable {
         if (flag == kFLAGS.FARM_SUCCUMILK_STORED) return consumables.SUCMILK;
         if (flag == kFLAGS.FARM_INCUDRAFT_STORED) return consumables.INCUBID;
-        if (flag == kFLAGS.FARM_EGG_STORED) return sophieBimbo.eggTypes[sophieBimbo.eggColors.indexOf(flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE])];
+        if (flag == kFLAGS.FARM_EGG_STORED) return SophieBimbo.eggTypes[SophieBimbo.eggColors.indexOf(flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE])];
         if (flag == kFLAGS.FARM_CONTRACEPTIVE_STORED) return consumables.HRBCNT;
 
         trace("No valid argument given.");
@@ -357,7 +357,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) protection += 2;
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1) {
-            if (sophieBimbo.bimboSophie()) protection += 1;
+            if (SophieBimbo.bimboSophie()) protection += 1;
             else protection += 2;
         }
 
@@ -396,7 +396,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) fValue += 2;
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1) {
-            if (sophieBimbo.bimboSophie()) fValue += 4;
+            if (SophieBimbo.bimboSophie()) fValue += 4;
             else fValue += 3;
         }
 
@@ -467,9 +467,9 @@ export class FarmCorruption {
         outputText("\n\nNow you feel nothing but contempt. How <b>dare</b> that bitch kick you off her land as if you were some common vagrant, simply because you took your rightful revenge on the centaur cunt she allowed to hang around and do as he pleased? Would she have stepped in if he had done to you what you have done to him? You think not, no, not Whitney, she’d have quite happily sat on the hill and read her book whilst her pet asshole raped the hell out of you.");
 
         outputText("\n\nOnce it affects her, well skies above, we can’t be doing with that can we? Does she have any idea how lucky she is? Who she is dealing with? How easy it would be to do to her as you have done to Kelt");
-        if (amilyScene.amilyCorrupt() || jojoScene.campCorruptJojo()) {
+        if (AmilyScene.amilyCorrupt() || JojoScene.campCorruptJojo()) {
             outputText(" and the rodent slut");
-            if (amilyScene.amilyCorrupt() && jojoScene.campCorruptJojo()) {
+            if (AmilyScene.amilyCorrupt() && JojoScene.campCorruptJojo()) {
                 outputText("s");
             }
             outputText(" before him");
@@ -483,9 +483,9 @@ export class FarmCorruption {
         outputText("\n\nNow you feel nothing but contempt. How <b>dare</b> that bitch kick you off her land, as if you were some common vagrant, simply because you took what was rightfully yours from the cow bitch. Would Whitney have stepped in if Marble had done to you what you did to her? You think not, no, not Whitney, she’d have quite happily sat on the hill and read her book whilst the cow bitch did what she felt like to you, probably forcing her damn milk down your throat. But once it affects her, well skies above, we can’t be doing with that can we?");
 
         outputText("\n\nDoes she have any idea how lucky she is? Who she is dealing with? How easy it would be to break her will and make her your willing slave");
-        if (amilyScene.amilyCorrupt() || jojoScene.campCorruptJojo()) {
+        if (AmilyScene.amilyCorrupt() || JojoScene.campCorruptJojo()) {
             outputText(" and the rodent slut");
-            if (amilyScene.amilyCorrupt() && jojoScene.campCorruptJojo()) {
+            if (AmilyScene.amilyCorrupt() && JojoScene.campCorruptJojo()) {
                 outputText("s");
             }
             outputText(" before her");
@@ -677,12 +677,12 @@ export class FarmCorruption {
         }
 
         // Bimbo Sophie
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && sophieBimbo.bimboSophie()) {
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && SophieBimbo.bimboSophie()) {
             outputText("\n\nYou cannot see Sophie but distinctive coos and giggles are coming from the hen coop.");
         }
 
         // Regular Sophie
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !sophieBimbo.bimboSophie()) {
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !SophieBimbo.bimboSophie()) {
             outputText("\n\nSophie has put together a huge nest on top of the hen coop from which she pensively stares out at the lake. When she sees you looking she brightens noticeably and begins to preen her plumage.");
         }
 
@@ -802,7 +802,7 @@ export class FarmCorruption {
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) count++;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) count++;
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && sophieBimbo.bimboSophie()) count++;
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && SophieBimbo.bimboSophie()) count++;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) count++;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) count++;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) count++;
@@ -818,17 +818,17 @@ export class FarmCorruption {
     private slavesAtFarmMenu(): void {
         menu();
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) addButton(0, "Amily", amilyScene.amilyFollowerEncounter);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) addButton(0, "Amily", AmilyScene.amilyFollowerEncounter);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) addButton(1, "Jojo", jojoScene.corruptCampJojo);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) addButton(1, "Jojo", JojoScene.corruptCampJojo);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && sophieBimbo.bimboSophie()) addButton(2, "Sophie", sophieBimbo.approachBimboSophieInCamp);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && SophieBimbo.bimboSophie()) addButton(2, "Sophie", SophieBimbo.approachBimboSophieInCamp);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(3, "Vapula", vapula.callSlaveVapula);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(3, "Vapula", Vapula.callSlaveVapula);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(4, flags[kFLAGS.GOO_NAME], latexGirl.approachLatexy);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(4, flags[kFLAGS.GOO_NAME], LatexGirl.approachLatexy);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) addButton(5, flags[kFLAGS.MILK_NAME], milkWaifu.milkyMenu);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) addButton(5, flags[kFLAGS.MILK_NAME], MilkWaifu.milkyMenu);
 
         addButton(9, "Back", farmMenu);
     }
@@ -836,7 +836,7 @@ export class FarmCorruption {
     private numFollowersAtFarm(): number {
         let count: number = 0;
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !sophieBimbo.bimboSophie()) count++;
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !SophieBimbo.bimboSophie()) count++;
 
         return count;
     }
@@ -849,7 +849,7 @@ export class FarmCorruption {
     private followersAtFarmMenu(): void {
         menu();
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !sophieBimbo.bimboSophie()) addButton(0, "Sophie", sophieFollowerScene.followerSophieMainScreen);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !SophieBimbo.bimboSophie()) addButton(0, "Sophie", SophieFollowerScene.followerSophieMainScreen);
 
         addButton(9, "Back", farmMenu);
     }
@@ -871,10 +871,10 @@ export class FarmCorruption {
     private loversAtFarmMenu(): void {
         menu();
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) addButton(0, "Izma", izmaScene.izmaFollowerMenu);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) addButton(0, "Izma", IzmaScene.izmaFollowerMenu);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 2) addButton(0, "Izmael", gameOver);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(1, "Isabella", isabellaFollowerScene.callForFollowerIsabella);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(1, "Isabella", IsabellaFollowerScene.callForFollowerIsabella);
 
         addButton(9, "Back", farmMenu);
     }
@@ -1059,7 +1059,7 @@ export class FarmCorruption {
         if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) return true;
         if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] == 0) return true;
         if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] == 0) return true;
-        if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) return true;
+        if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && MilkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) return true;
         return false;
     }
 
@@ -1136,7 +1136,7 @@ export class FarmCorruption {
         if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) addButton(1, "Cock Milker", investmentCockMilker);
         if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] == 0) addButton(2, "Refinery", investmentRefinery);
         if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] == 0) addButton(3, "Contraceptive", investmentContraceptive);
-        if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) addButton(4, "MilkTank", investmentMilktank);
+        if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && MilkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) addButton(4, "MilkTank", investmentMilktank);
 
         if (!whitneyCorrupt()) addButton(9, "Back", dogeNotCorruptYetMenu);
         else addButton(9, "Back", dogeCorruptedMissionComplete);
@@ -2856,7 +2856,7 @@ export class FarmCorruption {
         outputText("\n\nIn a position of complete supplication, your face and [chest] forced down into the bed, you look up in trepidation as your monstrously skilled slave mistress shifts around to your front end. She’s smiling her fanged smile down at you as she dangles the last two items she retrieved from her dressing table.");
 
         // PC female & has Vapula
-        if (player.vaginas.length > 0 && !player.cocks.length > 0 && vapula.vapulaSlave()) {
+        if (player.vaginas.length > 0 && !player.cocks.length > 0 && Vapula.vapulaSlave()) {
             outputText("\n\nThe wooden paddle in one hand perhaps isn’t much of a surprise, but the other... it’s a double ended strap-on, one end relatively small and flexible-looking, the other a purple monster with garish leopard spots painted across its bumps. It’s immediately recognizable to you and you look up at Whitney with a kind of horror, whose grin only widens.");
 
             outputText("\n\n“<i>Oh yes. Your succubus was only too glad to let me borrow this when I asked her for help in the bedroom with you. D’you know, she seemed to have the darndest idea you were going to use it on me? Shows how much she knows. Oh c’mon, [name],</i>” she croons, waggling the demonic dildo in front of you teasingly. “<i>As if you never fantasized about gettin it from the other end. And as if you’ve got a choice at this point anyway.</i>”");
@@ -2939,7 +2939,7 @@ export class FarmCorruption {
         outputText("\n\nA " + ((whitneyDefurred()) ? "hand" : "paw") + " reaches around and clutches your [chest] for anchorage as she finally begins to pound into your tenderized hole with all she’s got. She catches a [nipple] between her fingers and you find yourself being forced towards orgasm again, your ears full of her harsh breathing, your nose full of her heavy scent. She’s no longer thrusting into you for your pleasure though, if she ever was; the hard, feral thrusting of the strap-on into your " + ((player.vaginas.length > 0) ? "oozing cunt" : "ass") + " is all about her, all about working the smaller, teasing end in her own pussy as hard as she can. You are simply a vehicle for her own lusts, and when you come again with a juddering cry into her panties, " + ((player.vaginas.length > 0) ? "wetting the bed this time with the jackhammer force of it" : "") + " she keeps going, hammering into your hapless " + ((player.vaginas.length > 0) ? "[vagina]" : "butt") + ".");
 
         outputText("\n\nThe relentless pounding forces your eyes to roll and your hands to grip uselessly at the air until finally, with a breathless, ecstatic bark and a final, hard paddle blow to your [butt], she reaches her own peak. You feel utterly dissolved as she thumps into you deliriously, caught in her own sumptuous orgasm for long seconds; you catch yourself thinking you should try timing your orgasms to better suit your mistress.");
-        if (player.vaginas.length > 0 && !player.cocks.length > 0 && vapula.vapulaSlave()) outputText(" You feel the end of the dildo tense deep within you before releasing, filling you full of warm demon spunk until it pools out onto the bed. The feeling is horribly, disgustingly satisfying, and for a moment you can see exactly how Vapula views the world.");
+        if (player.vaginas.length > 0 && !player.cocks.length > 0 && Vapula.vapulaSlave()) outputText(" You feel the end of the dildo tense deep within you before releasing, filling you full of warm demon spunk until it pools out onto the bed. The feeling is horribly, disgustingly satisfying, and for a moment you can see exactly how Vapula views the world.");
 
         outputText("\n\nAt long last she comes to a halt. She lays herself on top of you as she gathers her breath, still holstered in you, her small, peachy breasts pushing into your shoulders, her soft stomach against your hands, her breath on the nape of your neck. After a short rest spooned together like this she rolls over and slowly goes about undoing your restraints. You roll onto your back when she’s done, staring at the ceiling as she possessively snuggles into you, feeling distinctly pulverized. You can’t say for sure why you signed on for this, but there’s no question letting Whitney do to you as she may is a strange, intense release you can’t find anywhere else, or at least anywhere else where they let you walk away at the end.");
 
@@ -3107,7 +3107,7 @@ export class FarmCorruption {
                 if (hasFreeTattooSlot("whitney")) addButton(0, "Whitney", brandWhitney);
                 if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1 && hasFreeTattooSlot("amily")) addButton(1, "Amily", brandAmily);
                 if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1 && hasFreeTattooSlot("jojo")) addButton(2, "Jojo", brandJojo);
-                if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && sophieBimbo.bimboSophie() && hasFreeTattooSlot("sophie")) addButton(3, "Sophie", brandBimboSophie);
+                if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && SophieBimbo.bimboSophie() && hasFreeTattooSlot("sophie")) addButton(3, "Sophie", brandBimboSophie);
                 if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1 && hasFreeTattooSlot("vapula")) addButton(4, "Vapula", brandVapula);
                 if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4 && hasFreeTattooSlot("kelly")) addButton(5, "Kelly", brandKelly);
                 if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1 && flags[kFLAGS.MILK_SIZE] > 0 && hasFreeTattooSlot("milky")) addButton(6, flags[kFLAGS.MILK_NAME], brandSmallMilky);

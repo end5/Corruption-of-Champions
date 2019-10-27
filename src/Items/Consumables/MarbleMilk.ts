@@ -24,7 +24,7 @@ export function useMarbleMilk(player: Player): void {
         }
     }
     // Increases addiction by 5, up to a max of 50 before the player becomes addicted, no max after the player is addicted.
-    marbleScene.marbleStatusChange(0, 5);
+    MarbleScene.marbleStatusChange(0, 5);
     // Does not apply the 'Marble's Milk' effect
     // Purge withdrawl
     if (player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) {

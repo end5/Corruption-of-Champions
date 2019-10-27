@@ -2,7 +2,7 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class CeraphScene extends NPCAwareContent {
+export class CeraphScene {
 
     // VARS
     //  ZETSUKO_MET:int = 406;
@@ -79,7 +79,7 @@ export class CeraphScene extends NPCAwareContent {
         spriteSelect(7);
         outputText("", true);
         // UBER-Fullbodypenetration
-        if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR && player.cocks.biggestCockArea() > 500 && (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 || monk >= 5)) {
+        if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR && player.cocks.biggestCockArea() > 500 && (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 || game.monk >= 5)) {
             hugeCorruptionForceFuckCeraph();
             return;
         }
@@ -605,7 +605,7 @@ export class CeraphScene extends NPCAwareContent {
         if (!game.inCombat) {
             // Load ceraph and set up win conditions
             startCombat(new Ceraph());
-            leave = ceraphFollowerScene.ceraphFollowerAppearance;
+            leave = CeraphFollowerScene.ceraphFollowerAppearance;
             // Exit combat
             game.inCombat = false;
             monster.lust = 100;
@@ -613,7 +613,7 @@ export class CeraphScene extends NPCAwareContent {
             if (player.lust < 34) player.lust = 34;
         }
         else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291] >= 4) {
-            ceraphFollowerScene.submissiveCeraphOffer();
+            CeraphFollowerScene.submissiveCeraphOffer();
             return;
         }
         // Normal stuff here
@@ -647,7 +647,7 @@ export class CeraphScene extends NPCAwareContent {
         else {
             if (game.inCombat)
                 cleanupAfterCombat();
-            else doNext(ceraphFollowerScene.ceraphFollowerAppearance);
+            else doNext(CeraphFollowerScene.ceraphFollowerAppearance);
         }
     }
 

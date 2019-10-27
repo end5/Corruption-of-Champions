@@ -2,7 +2,7 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class CeraphFollowerScene extends NPCAwareContent {
+export class CeraphFollowerScene {
 
     // CERAPH_ROLEPLAY_AS_DOMINIKA_COUNT:int = 389;
     // CERAPH_HIDING_DICK:int = 288;
@@ -150,8 +150,8 @@ export class CeraphFollowerScene extends NPCAwareContent {
         if (player.lust < 33) outputText("\n\n<b>You aren't turned on enough for sex.</b>", false);
         menu();
         if (player.gender > 0) addButton(8, "Be A Pet", sumissivenessToCeraphFollower);
-        addButton(0, "Defeat Her", ceraphScene.winRapeChoices);
-        addButton(1, "Lose to Her", ceraphScene.ceraphRapesYouBADDAWGYODIGGITY);
+        addButton(0, "Defeat Her", CeraphScene.winRapeChoices);
+        addButton(1, "Lose to Her", CeraphScene.ceraphRapesYouBADDAWGYODIGGITY);
         addButton(5, "Dominika", dominika);
         addButton(6, "Marble Play", marbles);
         addButton(7, "Urta Play", urta);
@@ -187,12 +187,12 @@ export class CeraphFollowerScene extends NPCAwareContent {
             let buttsmexing: () => void = null;
             // Dickings ahoyu!
             if (player.cocks.length > 0) {
-                dicking = ceraphScene.maleFuckCeraphsPussy;
-                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttsmexing = ceraphScene.buttRapeCeraph;
+                dicking = CeraphScene.maleFuckCeraphsPussy;
+                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttsmexing = CeraphScene.buttRapeCeraph;
                 else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
             }
             let cunting: () => void = null;
-            if (player.vaginas.length > 0) cunting = ceraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
+            if (player.vaginas.length > 0) cunting = CeraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
 
             simpleChoices("Collar Her", collarCeraph, "Fuck Her", dicking, "Ride Her", cunting, "FuckHerAss", buttsmexing, "Leave", cleanupAfterCombat);
         }
@@ -246,12 +246,12 @@ export class CeraphFollowerScene extends NPCAwareContent {
             let buttsmexing: () => void = null;
             // Dickings ahoyu!
             if (player.cocks.length > 0) {
-                dicking = ceraphScene.maleFuckCeraphsPussy;
-                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttsmexing = ceraphScene.buttRapeCeraph;
+                dicking = CeraphScene.maleFuckCeraphsPussy;
+                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttsmexing = CeraphScene.buttRapeCeraph;
                 else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
             }
             let cunting: () => void = null;
-            if (player.vaginas.length > 0) cunting = ceraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
+            if (player.vaginas.length > 0) cunting = CeraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
             simpleChoices("Fuck Her", dicking, "Ride Her", cunting, "FuckHerAss", buttsmexing, "", null, "Leave", cleanupAfterCombat);
         }
         else {
@@ -282,12 +282,12 @@ export class CeraphFollowerScene extends NPCAwareContent {
             let buttsmexing: () => void = null;
             // Dickings ahoyu!
             if (player.cocks.length > 0) {
-                dicking = ceraphScene.maleFuckCeraphsPussy;
-                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttsmexing = ceraphScene.buttRapeCeraph;
+                dicking = CeraphScene.maleFuckCeraphsPussy;
+                if (player.cocks.cockThatFits(monster.analCapacity()) != -1) buttsmexing = CeraphScene.buttRapeCeraph;
                 else outputText("  <b>There's no way you could fit inside her ass - you're too big.</b>", false);
             }
             let cunting: () => void = null;
-            if (player.vaginas.length > 0) cunting = ceraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
+            if (player.vaginas.length > 0) cunting = CeraphScene.rideCeraphsCockLikeaBAWSSexclamation11eleven;
             simpleChoices("Fuck Her", dicking, "Ride Her", cunting, "FuckHerAss", buttsmexing, "", null, "Leave", cleanupAfterCombat);
         }
         else {
@@ -739,7 +739,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
     }
 
     private ceraphUrtaRoleplay(): void {
-        urta.urtaSprite();
+        Urta.urtaSprite();
         outputText("", true);
         outputText("\"<i>Roleplay? My " + mf(player, "Master", "Mistress") + " is wonderfully exploitative with " + mf(player, "his", "her") + " pet's lewd body,</i>\" Ceraph purrs, lips curling into a sly smile. Holding your arms at your sides, you nod at the subjugated demon, indicating that she should strip you. Keeping her eyes averted, she obediently complies, removing your " + player.armorName + " piece by piece until you stand nude, in all your splendor. Turning upon her, you issue your curt command, briefly describing the form that she is to take. Surprisingly, she knows exactly who you're talking about. \"<i>Ah, the fox-bitch,</i>\" she muses, eyes flashing solid black again for a moment. \"<i>She's been such a thorn in my side for so long... letting you defile her will be a particularly intense pleasure, " + mf(player, "Master", "Mistress") + ".</i>\"\n\n", false);
 
@@ -761,7 +761,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
     // [Drunk] (female/herm only. No centaurs)
     private ceraphUrtaRoleplayDrunk(): void {
         outputText("", true);
-        urta.urtaSprite();
+        Urta.urtaSprite();
         outputText("You wish her a cheerful 'bottom's up,' relief washing over her face as she seeks shelter in the blissful oblivion of alcohol. Lifting the bottle's fluted neck to her polished lips, Urta throws back her head and begins swallowing. Her throat bulges in rhythmic gulps, air bubbling up through the liquor as the whiskey steadily vanishes into her shame-thirsty gullet. Her face flushes deeper, the bitter sting of booze taking her mind off of the embarrassment of her equine attributes. Her cock throbs in the open air with each noisy glug, dollops of cum still drooling from her engorged member. Finishing the entire bottle, the fox-morph wetly sucks down a fresh lungful of air, her expression floating somewhere between stimulated joy and dazed confusion. She looks closely at the bottle and blinks several times. \"<i>Wh- what did you put in this?</i>\"\n\n", false);
 
         outputText("With a shrug, you admit that you're impressed she noticed the little additive. It seemed unlikely she would've tasted much of anything with how quickly she slurped down her liquid vice.  Grinning, you ask her how the black egg tasted. Urta's mouth hangs open, inebriation sinking its talons into her brain one by one, but after a moment, the realization dawns on her. Before she can voice her outrage, the change begins, Urta's body cringing with twisting spasms. She drops the bottle and clutches at her stomach, but when she raises her hands again, strands of light grey fur scatter into the wind from between her fingers. Falling to her knees, she begins itching, frantically, more of her ashen hair sloughing off as if she were shedding uncontrollably. Watching the girl paw at herself wildly, you bend down, close to her face, and when her head turns up to speak, you give the vixen a flick across her nose. She snatches her sensitive muzzle with a whine, hands wrapping around it as she writhes on the ground, fur falling away with each trembling shake.\n\n", false);
@@ -776,7 +776,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
 
     private ceraphUrtaRoleplayDrunk2(): void {
         outputText("", true);
-        urta.urtaSprite();
+        Urta.urtaSprite();
         outputText("The cock sliding up your backside throbs in anticipation and you realize that Urta's over-stimulated herself. Lips parting in a whorish moan, she climaxes, her fingers digging into her soft, smooth skin as her massive shaft flares thicker than you've seen before, gouts of thick jizz arcing from her head. You can feel the voluminous loads surging between your cheeks before bursting from her tip and cresting through the air before splattering down in cords of creamy cum. All along your back, neck, hair, and face, sticky wads of spunk douse you in the fox-girl's excitement and you squeeze your rear as tightly as you can to massage out every last ladle of her rich seed. She bathes you a pale off-white but to your surprise, she's still moaning and stroking the skin of her changed body. \"<i>It's not enough,</i>\" she mumbles, \"<i>I need more.</i>\" You start to rise, but the drunk girl slams her palms onto your shoulders, planting you back into the ground, body horizontal beneath her. Sliding backwards, her engorged cockhead presses insistently against the juncture of your hips, still bubbling with dollops of cum.  \"<i>It's too sensitive,</i>\" she whines, pinning your lower body between her muscled legs.  Your struggles to get out from under the drunk, horny girl are fruitless, so you turn your head and see that her throbbing sac is- if anything- even larger than before, her cock still rock hard as she guides it up against your " + vaginaDescript(player) + ".\n\n", false);
 
         outputText("\"<i>Oh damnit, damnit, damnit,</i>\" Utra chants as she presses her erection against your drooling slit, the equine inches slipping along the sweat-oiled plumpness of your thighs. Inching forward, she presses the flared tip of her head against your tender lips, the distended flesh struggling against the tightness of your snatch, lubricated depths unwillingly parting bit by bit until finally, the bulbous cockhead slips into you, your cunt tightening down around it, firmly locking the guard captain inside you. \"<i>Ah! Ffffffuck!</i>\" she curses.  \"<i>How are you always so tight?</i>\" she groans, happily. Unable to restrain herself, she begins bucking in place, sliding the first three inches of her throbbing member back and forth inside you, savoring the ripples her rocking motion sends through your " + buttDescription(player) + ", your hypnotic hips mesmerizing the girl riding you. Raising an amber hand, she cracks an open palm against your tender ass as she drives another two inches inside you, your gut lurching with the force. You try to ", false);
@@ -787,7 +787,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
         outputText("\n\n", false);
 
         outputText("Pounding you faster and faster, you can feel her cock swelling within you dangerously. Rutting frantically, she leans down, pressing her smooth sienna skin against your jizz-soaked back, her tits rubbing the fox-girl's spunk into your " + skin(player) + ". Lowering her head, she whispers into your ear, \"<i>No condoms for sneaky bitches who spike drinks,</i>\" her husky voice right on the edge.  \"<i>Fur isn't the only thing I've lost. I'm potent again,</i>\" she drunkenly insists. \"<i>I can feel it in my big, swollen balls.", false);
-        if (amilyFollower() || marbleFollower() || izmaFollower()) outputText("  After I knock you up, try explaining the fox tails on your kids to those other bitches.", false);
+        if (AmilyScene.amilyFollower() || MarbleScene.marbleFollower() || IzmaScene.izmaFollower()) outputText("  After I knock you up, try explaining the fox tails on your kids to those other bitches.", false);
         outputText("</i>\"  Reaching out to brace herself, Urta grabs your shoulder with her left hand, but her right goes wild and she ends up hooking her fingers in your mouth, jerking your cheek to the side. With the added grip, she wriggles deeper, the remaining inches snaking into your uterus until the elephantine flare rubs against your cervix, the bottom ridge of her fleshy sheath teasingly flicking against your swollen clit. Sensations crash over you: the gentle curves of her fit abdomen stroking your ass, her wobbling chest pressing button-stiff nipples into your back, the sweet taste of your tongue stroking the fingers in your mouth. It is too much and your body clenches down in a gushing orgasm on the invading member, drool leaking from your gaping mouth as your heavily lidded eyes lose focus, allowing the fox-girl to use you to her heart's content.\n\n", false);
 
         outputText("When she cums for the third time, you can feel the blast directly on your cervix, the force of her load parting the muscled sphincter, ropes of newly virile seed flooding your womb.  The weight of her distended scrotum pulses between your thighs and your belly bulges under the impregnating torrent. Urta's body tenses as she inundates your depths with the excess of her loins, the influx cascading through your uterus to burst like a tide, your body flush with her pouring jizz.", false);
@@ -807,7 +807,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
 
     // [Sober]
     private ceraphUrtaRoleplaySober(): void {
-        urta.urtaSprite();
+        Urta.urtaSprite();
         outputText("", true);
         outputText("You tell Urta to put the bottle down. She won't need that, not any more. She looks at you in confusion, setting the whiskey to one side, curling her tail between her legs to cover her throbbing member. Closing the distance between the two of you, she stiffens when you wrap an arm around the small of her back and bring the other hand up to her chin. She doesn't have to be ashamed any more, you explain, because you know the cure for her curse. The fox-morph's eyes light up, her mouth parting but not daring to speak or even breathe. Stroking a thumb along the line of her jaw, you close your eyes and nod slowly, pulling her into an embrace tight enough for you to feel the fluttering pulse of her body heat sinking through your " + skinFurScales(player) + ". You can tell by the wobbling of her lower lip that she is dying to ask how, but you merely brush the dappled-grey bangs from her eyes, staring into the guard's emerald irises. You can feel the soft intake of her breath as it catches in her throat and she leans toward you ever so slightly, blushing. You meet her halfway, obsidian-warm lips pressing against yours tentatively at first, before gaining confidence. She sinks deeper into the embrace, the tight tension knotting her back slowly easing as surrenders her self-conscious shame for unabashed passion, relishing the intimacy of your caress. When you draw back from the intoxicating fever of the fox girl, you whisper one word to her: \"<i>Love.</i>\"\n\n", false);
 
@@ -824,7 +824,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
 
     private ceraphUrtaRoleplaySober2(): void {
         hideUpDown();
-        urta.urtaSprite();
+        Urta.urtaSprite();
         outputText("", true);
         outputText("You rise and run your hands along the lighter fur of her toned abs. \"<i>Please,</i>\" she whispers, \"<i>I want to feel you inside me.</i>\"  Your " + cockDescript(game.player, 0) + " is all too willing, throbbing meat sliding up and down her lubricated lips as you slowly rock back and forth. Bracing your tip at the pucker of her honey-slick passage, you take one of her hands in yours, entwining your fingers with a squeeze as you push into her. Urta jolts with a sharp intake of breath before relaxing herself and closing her eyes to focus on the sensation of your inflamed shaft parting her inner walls. You push in deeper, amazed at how wet she is already, the strength of her love for you intensifying every motion. Despite all the sexual encounters she's had before this moment, in this single instant, it's as if she's experiencing pleasure for the first time. Aching bliss coursing through her limbs, it's all she can do to gasp and slowly toss her head side to side as you sink deeper into the girl, her recesses filling with the almost liquid heat of your throbbing member.", false);
         if (player.cocks.cockArea(0) > 150) outputText("  Even your tremendous size is no impediment to blessing the girl with your passion- every inch of her body gives way as you sink into her beyond the limits you would normally expect, as if her body were perfectly tailored to yours.", false);
@@ -1910,9 +1910,9 @@ export class CeraphFollowerScene extends NPCAwareContent {
         // Choose one of the following at random
         if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0)
             choices[choices.length] = 0;
-        if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2)
+        if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2)
             choices[choices.length] = 1;
-        else if (campCorruptJojo())
+        else if (JojoScene.campCorruptJojo())
             choices[choices.length] = 1;
         choices[choices.length] = 2;
 
@@ -1958,7 +1958,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
         // Corrupt Jojo or Amily
         else if (select == 1) {
             // Both
-            if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && campCorruptJojo()) {
+            if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && JojoScene.campCorruptJojo()) {
                 // Both Corrupt Jojo & Amily
                 outputText("\n\nBefore long, you come across both of your corrupt, mouse-like slaves.  They stop fondling each other's genitals long enough to ask, \"<i>[Master], what are you doing?</i>\"");
                 outputText("\n\nCeraph looks down at you with her hand tight on your leash.");
@@ -1969,7 +1969,7 @@ export class CeraphFollowerScene extends NPCAwareContent {
                 outputText("\n\n\"<i>[Master] is Ceraph's pet?  Then... then, we're her pets too...</i>\" Amily says as the spokeswoman for the group.  They both proceed to drop down on all fours and crawl up alongside you.  Ceraph nonchalantly tears off strips of Amily's clothing and fixes them into a pair of improvised collars, connected to her whip with simple knots.  The four of you then continue the walk together, though you're scolded again and again when you let the mice rub up against you sensually.  Having sister and brother pets is somewhat comforting, but being constantly exposed to their sexual scent is more than distracting.  Ceraph squirts the two of you with water a half-dozen times to keep you from fucking, and each time the shame is greater.  You really are a pet, one that can't even keep " + mf(player, "his", "her") + " most basic needs in check.");
             }
             else {
-                const jojo: boolean = campCorruptJojo();
+                const jojo: boolean = JojoScene.campCorruptJojo();
                 outputText("Before long, your corrupt, mouse-like slave sees you awkwardly clambering after the purple-hued dominatrix.  ");
                 if (jojo) outputText("He");
                 else outputText("She");
@@ -2000,17 +2000,17 @@ export class CeraphFollowerScene extends NPCAwareContent {
             }
             // Mice finisher
             outputText("\n\nYou go for an exhausting walk around the nearby wasteland with your companion");
-            if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && campCorruptJojo()) outputText("s");
+            if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && JojoScene.campCorruptJojo()) outputText("s");
             outputText(", and you thoroughly enjoy the degrading experience.  Lust and humiliation are all jumbled up inside you into one big mass of sex, such that getting turned on from this humiliates you, and being humiliated gets you even more aroused");
             outputText(".  It's an endless feedback loop of sexual excitement that has you about to blow, except you're back in camp.  The collar is untied, and your owner's sweet voice whispers, \"<i>Good walk, pet.</i>\" before vanishing into the wind.");
 
             outputText("\n\n");
-            if (campCorruptJojo()) {
+            if (JojoScene.campCorruptJojo()) {
                 outputText("Jojo");
-                if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) outputText(" and ");
+                if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) outputText(" and ");
             }
-            if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) outputText("Amily");
-            if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && campCorruptJojo()) outputText("look around uncertainly before darting back to their usual places, knowing you'll give the command if you want them to take care of your desires.");
+            if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) outputText("Amily");
+            if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && JojoScene.campCorruptJojo()) outputText("look around uncertainly before darting back to their usual places, knowing you'll give the command if you want them to take care of your desires.");
             else outputText("looks around uncertainly before darting back to the usual places, knowing you'll give the command if you want a slave to take care of your desires.");
         }
         // Generic

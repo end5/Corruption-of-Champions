@@ -1,5 +1,5 @@
 
-export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
+export class Rathazul implements TimeAwareInterface {
 
     // const RATHAZUL_DEBIMBO_OFFERED:int = 744;
 
@@ -39,7 +39,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         spriteSelect(49);
 
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.effects.findByType(StatusAffects.MetRathazul) >= 0) {
-            marblePurification.visitRathazulToPurifyMarbleAfterLaBovaStopsWorkin();
+            MarblePurification.visitRathazulToPurifyMarbleAfterLaBovaStopsWorkin();
             return;
         }
         let offered: boolean;
@@ -87,7 +87,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
     public campRathazul(): void {
         spriteSelect(49);
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.effects.findByType(StatusAffects.MetRathazul) >= 0) {
-            marblePurification.visitRathazulToPurifyMarbleAfterLaBovaStopsWorkin();
+            MarblePurification.visitRathazulToPurifyMarbleAfterLaBovaStopsWorkin();
             return;
         }
         if (flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] == 1 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] > 0) {
@@ -99,19 +99,19 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
             flags[kFLAGS.RATHAZUL_CAMP_INTERACTION_COUNTDOWN] = 3;
             // Pure jojo
             if (flags[kFLAGS.JOJO_RATHAZUL_INTERACTION_COUNTER] == 0 && player.effects.findByType(StatusAffects.PureCampJojo) >= 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
-                finter.jojoOffersRathazulMeditation();
+                FollowerInteractions.jojoOffersRathazulMeditation();
                 return;
             }
-            if (flags[kFLAGS.AMILY_MET_RATHAZUL] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower()) {
-                finter.AmilyIntroducesSelfToRathazul();
+            if (flags[kFLAGS.AMILY_MET_RATHAZUL] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower()) {
+                FollowerInteractions.AmilyIntroducesSelfToRathazul();
                 return;
             }
-            if (flags[kFLAGS.AMILY_MET_RATHAZUL] == 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower()) {
-                finter.amilyIngredientDelivery();
+            if (flags[kFLAGS.AMILY_MET_RATHAZUL] == 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower()) {
+                FollowerInteractions.amilyIngredientDelivery();
                 return;
             }
-            if (flags[kFLAGS.AMILY_MET_RATHAZUL] == 2 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower()) {
-                finter.amilyAsksAboutRathazulsVillage();
+            if (flags[kFLAGS.AMILY_MET_RATHAZUL] == 2 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower()) {
+                FollowerInteractions.amilyAsksAboutRathazulsVillage();
                 return;
             }
         }
@@ -239,7 +239,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
             lethiciteDefense = growLethiciteDefense;
         }
         if (player.effects.findByType(StatusAffects.CampRathazul) >= 0) {
-            if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] == 0 && (sophieBimbo.bimboSophie() || player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0)) {
+            if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] == 0 && (SophieBimbo.bimboSophie() || player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0)) {
                 rathazulDebimboOffer();
                 return true;
             }
@@ -362,7 +362,7 @@ export class Rathazul extends NPCAwareContent implements TimeAwareInterface {
         spriteSelect(49);
         clearOutput();
         if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] == 0) {
-            if (sophieBimbo.bimboSophie()) {
+            if (SophieBimbo.bimboSophie()) {
                 outputText("Rathazul glances your way as you approach his lab, a thoughtful expression on his age-lined face.  \"<i>Tell me, [name], do you truly enjoy having that vacuous idiot around, lusting after you at all hours of the day?</i>\" he asks, shaking his head in frustration.  \"<i>She's clearly been subjected to the effects of Bimbo Liqueur, which as you can plainly see are quite indeed potent.  However, like most things in Mareth, it can be countered - at least partially.</i>\"  Rathazul folds his long, clawed fingers together, his tail lashing behind him as he thinks.  \"<i>Perhaps with a sufficient quantity of something called Scholar's Tea... I could counter the stupefying effects of the elixir... oh my, yes... hmm...</i>\"  Rathazul nods, stroking at the few long wisps of fur that hang from his chin.");
                 outputText("\n\nYou await");
                 if (silly()) outputText(" getGoodPost()"); // C# await joke ;_; http://msdn.microsoft.com/en-gb/library/hh156528.aspx

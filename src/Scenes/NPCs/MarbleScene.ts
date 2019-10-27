@@ -1,5 +1,5 @@
 
-export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
+export class MarbleScene implements TimeAwareInterface {
 
     // Farm cow-girl Marble:
     // Marble is a resident of Whitney's farm, who resides in the barn.  She is a cow anthropomorph who is mostly human in appearance, but has numerous cow-like features such as a tail, horns, ears, and hoofs.  The player can strike up a relationship with her based on tenderness and being friendly to each other.  Her favorite activity is to give her milk to the player if she likes them enough, or if they help her with her chores.  The only problem is that her milk is addictive; of course, when the player meets her she doesn't know this.  While the player doesn't get high from drinking it, Marble's milk makes the player character feel good as strengthening them for awhile as well after they drink it (in the form of Marble's Milk status effect), this is to encourage the player to consume it.  Once the player has become addicted, they can try to find a way to combat their addiction, or choose to live with her because of it.  Getting out of the addiction is really hard on the player since their character's stats fall whenever they fight it.  I deliberately wrote her to appear as harmless and nice as possible, just a friendly face that likes the player.  However, she can change considerably once she finds out her milk is addictive, either becoming really depressed and hating herself for what she unconsciously did to the player; or she may start to take advantage of her new found power and become slowly corrupted by it.  She is also very strong and can wield a mean hammer.  If she likes the player enough, she can join them at their camp once they either become completely dependent or get out of their addiction.
@@ -82,7 +82,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.effects.getValue4Of(StatusAffects.Marble) > 50) flags[kFLAGS.MARBLE_LUST] += .3;
             if (player.effects.getValue4Of(StatusAffects.Marble) > 70) flags[kFLAGS.MARBLE_LUST] += .3;
             // If bitch-bin is in construction
-            if (flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] > 0 && flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] < 100 && marbleScene.marbleAtCamp()) {
+            if (flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] > 0 && flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] < 100 && MarbleScene.marbleAtCamp()) {
                 flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION]++;
                 if (flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] >= 100) {
                     spriteSelect(41);
@@ -92,7 +92,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 }
             }
             // Marble find items check
-            else if (player.effects.findByType(StatusAffects.MarbleHasItem) < 0 && marbleScene.marbleAtCamp()) {
+            else if (player.effects.findByType(StatusAffects.MarbleHasItem) < 0 && MarbleScene.marbleAtCamp()) {
                 // Off cooldown
                 if (player.effects.findByType(StatusAffects.MarbleItemCooldown) < 0) {
                     if (rand(10) == 0) {
@@ -224,7 +224,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                     // (Marble now appears at the camp)
                     player.effects.create(StatusAffects.CampMarble, 0, 0, 0, 0);
                     flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
-                    if (isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
+                    if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
                     // if amily is there, tag it for freakout
                     if (flags[kFLAGS.AMILY_FOLLOWER] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
                         flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;
@@ -264,7 +264,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                     outputText("\n", false);
                     player.effects.create(StatusAffects.CampMarble, 0, 0, 0, 0);
                     flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
-                    if (isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
+                    if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
                     // if amily is there, tag it for freakout
                     if (flags[kFLAGS.AMILY_FOLLOWER] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
                         flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;
@@ -328,7 +328,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                     // (Marble now appears at the camp)
                     player.effects.create(StatusAffects.CampMarble, 0, 0, 0, 0);
                     flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
-                    if (isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
+                    if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
                     player.effects.create(StatusAffects.NoMoreMarble, 0, 0, 0, 0);
                     // (every morning, the player goes to Marble for milk, since she is at the camp, it does not cost them the first hour of the day)
                     // if amily is there, tag it for freakout
@@ -367,7 +367,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                     // (Marble now appears at the camp)
                     player.effects.create(StatusAffects.CampMarble, 0, 0, 0, 0);
                     flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
-                    if (isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
+                    if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
                     player.effects.create(StatusAffects.NoMoreMarble, 0, 0, 0, 0);
                     // (every morning, the player goes to Marble for milk, since she is at the camp, it does not cost them the first hour of the day)
                     // if amily is there, tag it for freakout
@@ -1967,11 +1967,11 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.MARBLE_KIDS] > 0) playtime = marbleKidsPlaytime;
 
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 3 && flags[kFLAGS.MARBLE_RATHAZUL_COUNTER_1] == 0) {
-            marbleGoEvent = marblePurification.murbleShouldGoRunAlongAndGetHerCuntySisterSoTheyCanBeCuntsTogether;
+            marbleGoEvent = MarblePurification.murbleShouldGoRunAlongAndGetHerCuntySisterSoTheyCanBeCuntsTogether;
             goEventString = "Go";
         }
         else if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5) {
-            marbleGoEvent = marblePurification.nursingFromPureMarble;
+            marbleGoEvent = MarblePurification.nursingFromPureMarble;
             goEventString = "Nurse";
         }
         // appearnace/info - always there
@@ -2111,7 +2111,7 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
             return;
         }
         if (select == 6) {
-            anemoneScene.repeatCowSitting();
+            AnemoneScene.repeatCowSitting();
         }
         if (flags[kFLAGS.MARBLE_PLAYED_WITH_KIDS_TODAY] > 0) dynStats("lus", -10);
         else dynStats("lib", -1, "lus", -10, "cor", -1);
@@ -2347,11 +2347,11 @@ export class MarbleScene extends NPCAwareContent implements TimeAwareInterface {
                 if (player.hasItem(consumables.L_PNKEG, 1)) addButton(4, "L.Pink Egg", MarbleLPinkEgg);
             }
         if (player.hasItem(consumables.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) addButton(5, "Pro Bova", giveMarbleTheProBovas4Sho);
-        if (player.hasItem(consumables.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) addButton(6, "P.LaBova", marblePurification.giveMarblePureQuestLabova);
+        if (player.hasItem(consumables.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) addButton(6, "P.LaBova", MarblePurification.giveMarblePureQuestLabova);
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5) {
-            if (player.hasItem(consumables.P_S_MLK, 1)) addButton(7, "P.SuccMilk", marblePurification.purifiedSuccubusMilkForPureMarbles);
-            if (player.hasItem(consumables.REDUCTO, 1)) addButton(8, "ReductoBust", marblePurification.pureMurbleUsesReducto);
-            if (player.hasItem(consumables.LACTAID, 1)) addButton(0, "Lactaid", marblePurification.lactaidForPureMurble);
+            if (player.hasItem(consumables.P_S_MLK, 1)) addButton(7, "P.SuccMilk", MarblePurification.purifiedSuccubusMilkForPureMarbles);
+            if (player.hasItem(consumables.REDUCTO, 1)) addButton(8, "ReductoBust", MarblePurification.pureMurbleUsesReducto);
+            if (player.hasItem(consumables.LACTAID, 1)) addButton(0, "Lactaid", MarblePurification.lactaidForPureMurble);
         }
         // else if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) addButton(0, "Lactaid", giveMarbleLactaid);
         addButton(9, "Back", interactWithMarbleAtCamp);

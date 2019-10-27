@@ -15,7 +15,7 @@ flags[kFLAGS.MARBLE_PURIFICATION_STAGE] : 4 = Marble is out getting her sister
 flags[kFLAGS.MARBLE_PURIFICATION_STAGE] : 5 = QUEST COMPLETE
 */
 
-export class MarblePurification extends NPCAwareContent {
+export class MarblePurification {
 
 	/*Purifying Marble
 	Quest starts a few days after recruiting Marble to camp if they’re not addicted to her.  She will approach the PC and tell them that not nursing her is a real burden for her, and ask them to help her purify herself.  This quest will not start if the PC’s corruption is over 50, or has any corrupt character in camp (corrupt Jojo, corrupt Amily, Vapula).
@@ -50,10 +50,10 @@ export class MarblePurification extends NPCAwareContent {
         else outputText("bovine");
         outputText(" head still in her hands, and sighs loudly. <i>\"I’m sorry, sweetie, I just... I’ve tried to ignore it, but I just don’t feel comfortable here.\"</i>");
         outputText("\n\nYou ask her what’s wrong; doesn’t she like being with you?");
-        if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt() || followerKiha() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1) {
+        if (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt() || KihaFollower.followerKiha() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1) {
             outputText("  ...Has she been fighting with ");
-            if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()) outputText("Amily");
-            else if (followerKiha()) outputText("Kiha");
+            if (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt()) outputText("Amily");
+            else if (KihaFollower.followerKiha()) outputText("Kiha");
             else outputText("Izma");
             outputText("?");
         }
@@ -255,7 +255,7 @@ export class MarblePurification extends NPCAwareContent {
             outputText("\n\nMarble suggests that you should gather up the others while Clara is still making it, it shouldn’t take too long.  You nod, and head off, leaving Clara and Marble at the campfire.");
             // Go to each of the followers you have in turn, and ask them if they want some morning tea.  All followers capable of fighting must agree to the tea, non-fighters can agree or refuse.  Remember that this scene cannot come up if the PC is very corrupted, and scenes for the very corrupt followers don’t necessarily need to be written.
             // (Amily is in camp)
-            if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()) {
+            if (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt()) {
                 // Amily’s response to being asked to have tea
                 outputText("\n\nWhen you approach Amily about having tea with Clara, she smiles brightly. \"<i>I haven’t enjoyed something like that in ages... it kind of reminds me of the old days.</i>\" She trails off, looking a little sad, but then shakes it off. \"<i>Sure, I’m game.</i>\"");
                 // temp follower variable ++
@@ -263,23 +263,23 @@ export class MarblePurification extends NPCAwareContent {
             }
             // if (Bimbo Sophie is in camp)
             // Bimbo Sophie’s response to being asked to have tea
-            if (bimboSophie()) {
+            if (SophieBimbo.bimboSophie()) {
                 outputText("\n\nYou aren’t sure why you’re bothering, but you find Sophie off doing her thing and ask her if she wants to have some tea.  \"<i>Sure thing, sounds fun,</i>\" she giggles.  Well, you suppose that wasn’t exactly the response you were expecting, but you tell her where to go anyway and continue on.");
                 // temp follower variable ++
                 teaDrinkers++;
             }
             // if (Helia is in camp)
             // Helia’s response to being asked to have tea
-            if (followerHel()) {
+            if (HelScene.followerHel()) {
                 outputText("\n\nYou walk over to Hel's hammock at the edge of camp and ask the fiery berserker if she'd like to join you for a cup of tea.  She cocks an eyebrow, \"<i>Don't you have something a little, uh, stronger somewhere?</i>\"  Still, with a little urging, she agrees to go to the campfire.");
                 // temp follower variable ++
                 teaDrinkers++;
             }
             // if (isabella is in camp)
-            if (isabellaFollower()) {
+            if (IsabellaFollowerScene.isabellaFollower()) {
                 outputText("\n\nYou head towards the corner of the camp that Isabella claims as her own and ask if the cow-girl warrioress would like to share some tea with the rest of you.");
 
-                if (isabellaAccent()) {
+                if (IsabellaFollowerScene.isabellaAccent()) {
                     outputText("  Isabella jumps from her chair, “<i>Tea?  Ooh, ja!  I hear tea und milk iz sehr gut combination, ja?</i>”  Well, she seems rather enthusiastic if nothing else.");
                 }
                 else {
@@ -303,7 +303,7 @@ export class MarblePurification extends NPCAwareContent {
             }
             // if (Kiha is in camp)
             // Kiha’s response to being asked to have tea
-            if (followerKiha()) {
+            if (KihaFollower.followerKiha()) {
                 outputText("\n\nKiha rolls her eyes. \"<i>Tea, doofus? Next you're going to be offering me crumpets and scones while we discuss economics. Shouldn't we be getting ready to battle Lethice instead?</i>\" Seeing the disappointment on your face, she relents. <i>\"Oh all right, I'll come along, but only because I'm feeling a little thirsty.</i>\"");
                 // temp follower variable ++
                 teaDrinkers++;
@@ -484,15 +484,15 @@ export class MarblePurification extends NPCAwareContent {
         if (camp.companionsCount() >= 3) {
             outputText("\n\nClara starts to advance on you with her mace out, and eyes in rage, but hesitates when she realizes that other guests to the tea party have stood up as well, and readied their weapons.");
             // if (Amily is in camp)
-            if (amilyScene.amilyFollower()) {
+            if (AmilyScene.amilyFollower()) {
                 outputText("\n\nSnarling with a surprisingly savage expression for such a normally meek mouse, Amily whips out her familiar blowgun and loads it with a dart from somewhere about her person, falling back to ensure she is a safe distance for firing.");
             }
             // if (Helia is in camp)
-            if (followerHel()) {
+            if (HelScene.followerHel()) {
                 outputText("\n\n\"<i>You bitch, you'll pay for that,</i>\" Hel growls, drawing the scimitar from her hip and leveling it right at the woman in defiant challenge.");
             }
             // if (Isabella is in camp)
-            if (isabellaFollower()) {
+            if (IsabellaFollowerScene.isabellaFollower()) {
                 outputText("\n\n\"<i>Little bitch!</i>\"  The cowgirl snarls, standing up to her full impressive height.  \"<i>I will teach you not to try something like this again.</i>\"  Isabella grabs her shield and brandishes it prominently, ready to use it for defense and to bludgeon.");
             }
             // if (Jojo is in camp)
@@ -500,7 +500,7 @@ export class MarblePurification extends NPCAwareContent {
                 outputText("\n\n\"<i>I wouldn’t have done that if I were you,</i>\" Jojo says, rising off the ground and retrieving his staff.  Falling into a combat pose, his face contorts into an almost uncharacteristic visage of anger directed at the woman before you.");
             }
             // if (Kiha is in camp)
-            if (followerKiha()) {
+            if (KihaFollower.followerKiha()) {
                 outputText("\n\nThe dragon-girl Kiha wastes no time; unceremoniously spitting flames and swinging her axe with murderously brutal intent, radiating threat even as she waits for the moment to spring into attack.");
             }
             outputText("\n\nYou stand up as well and ready your " + player.weaponName + ", since even with such opposition it looks like the mad cow-girl still plans on fighting you.  A few minutes and bruises later, her beaten body proves this to have been a bit of a mistake on her part.");
@@ -670,7 +670,7 @@ export class MarblePurification extends NPCAwareContent {
         else outputText("Your penis is");
         outputText(" too big for a virgin like me to fit!  How the hell am I suppose to get that inside me?</i>\"  Clara stands up and starts stomping around the room.  ");
         // if (PC has at least one dick that will fit inside Marble’s current capacity)
-        if (player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) {
+        if (player.cocks.cockThatFits(MarbleScene.marbleCuntCapacity()) >= 0) {
             outputText("\"<i>‘It’s not a flaw, it’s a feature,’ she said, ‘This is why we train ourselves to take big endowments,’ she said!  Fuck you Marble!  I’m not sticking that stupid big thing inside me.</i>\"  ");
         }
         else {
@@ -836,7 +836,7 @@ export class MarblePurification extends NPCAwareContent {
         // (if PC either has a cock with an area under 20 or a vagina)
         if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.vaginas.length > 0) outputText("use Marble's unstable state of mind to get her into a forceful threesome with Clara, ");
         // (if PC either has a cock that will fit Marble, or has a vagina)
-        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.vaginas.length > 0) outputText("have sex in front of Clara so she can see what your love really is, ");
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(MarbleScene.marbleCuntCapacity()) >= 0) || player.vaginas.length > 0) outputText("have sex in front of Clara so she can see what your love really is, ");
         // (if Marble is a futa)
         if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) outputText("egg Marble into violating Clara with her cock, ");
         outputText(" or try to calm Marble down so that she doesn't do anything to her sister.");
@@ -846,7 +846,7 @@ export class MarblePurification extends NPCAwareContent {
         // options are: Spank (can always do), Threesome (if the PC has a cock that is under 20 area, or a vagina), "NTR" (if PC has a cock that will fit Marble, or a vagina), Marble cock (if Marble has a cock), and Calm down (always possible).
         addButton(0, "Spank", murbleSpanksCowCunt);
         if ((player.cocks.length > 0 && player.cocks.cockThatFits(20) >= 0) || player.vaginas.length > 0) addButton(1, "Threesome", pcAndMurbleDoubleTeamCowButt);
-        if ((player.cocks.length > 0 && player.cocks.cockThatFits(marbleScene.marbleCuntCapacity()) >= 0) || player.vaginas.length > 0) addButton(2, "NTR", NTRIsClearlyTheWorstFetishWhyWouldYouWriteThisOMG);
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(MarbleScene.marbleCuntCapacity()) >= 0) || player.vaginas.length > 0) addButton(2, "NTR", NTRIsClearlyTheWorstFetishWhyWouldYouWriteThisOMG);
         if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) addButton(3, "Marble Cock", futaMarbleIsAHugeCowToCowCuntAndStuffsCowCuntsCuntFullOfCowCock);
         addButton(4, "Calm Down", calmMurblesFatAssDown);
     }
@@ -950,7 +950,7 @@ export class MarblePurification extends NPCAwareContent {
         outputText("\n\nFrom there, you decide it is time to let your partner lead for a while.  She is quite happy to roll her massive melons around your face while you snuggle against the wonderfully smooth skin.  Abruptly, you feel the woman whose breasts you're trapped within turn around.  \"<i>The fuck is this, sis?</i>\"  The voice is spitting mad now.  You can hear that it's behind you, evidently someone wants to make sure the audience gets a full view of your sexual escapade.");
         outputText("\n\nAfter a little more rack riding, Marble decides that it is time to get onto the main event.  She uncharacteristically violently forces you into a sitting position and tears the rest of your garments off.  You don't even get a chance to pull off her skirt before ");
         // if (PC has a cock that fits)
-        const x: number = player.cocks.cockThatFits(marbleScene.marbleCuntCapacity());
+        const x: number = player.cocks.cockThatFits(MarbleScene.marbleCuntCapacity());
         if (player.cocks.length > 0 && x >= 0) {
             outputText("she drops herself onto your " + cockDescript(game.player, x) + ".  Since your bovine mate isn't in the habit of wearing any form of undergarments, her skirt doesn't really do much to get in the way of penetration.  A shriek of dismay accompanies this act.");
             outputText("\n\nThere is no hesitation after you've been mounted.  Instantly you're being roughly ridden by a beast that has been awakened in Marble, and there is nothing that can stop it.  A loud slapping sound fills the air with each drop of her hips, then they rise up again and drop once more.  What is essentially a hollow jackhammer seems to be running on your lap right now, and its operator's hands are holding firm to your shoulders to make sure you stay in place.");
@@ -1252,7 +1252,7 @@ export class MarblePurification extends NPCAwareContent {
         // PC chooses yes or no
         menu();
         addButton(0, "Yes", actuallyGrowPureMarblesTittiesForFunzies);
-        addButton(1, "No", marbleScene.giveItem);
+        addButton(1, "No", MarbleScene.giveItem);
     }
     // if yes
     public actuallyGrowPureMarblesTittiesForFunzies(): void {
@@ -1260,10 +1260,10 @@ export class MarblePurification extends NPCAwareContent {
         outputText("You offer Marble a bottle of purified succubus milk and tell her that you'd like her to make her bust bigger.");
         // if (Marble's breast size < 3)
         if (flags[kFLAGS.MARBLE_BREAST_SIZE] < 3) {
-            outputText("\n\n\"<i>Alright, if you say so.</i>\"  Marble lifts the bottle to her mouth, and drinks the substance down.  She lets out a soft sigh and starts massaging her bouncy tit flesh as it expands outwards.  Through her shirt, you can see her " + marbleScene.marbleBreastSize() + " breasts balloon into ");
+            outputText("\n\n\"<i>Alright, if you say so.</i>\"  Marble lifts the bottle to her mouth, and drinks the substance down.  She lets out a soft sigh and starts massaging her bouncy tit flesh as it expands outwards.  Through her shirt, you can see her " + MarbleScene.marbleBreastSize() + " breasts balloon into ");
             // increase Marble's breast size by 1
             flags[kFLAGS.MARBLE_BREAST_SIZE]++;
-            outputText(marbleScene.marbleBreastSize() + " melons!");
+            outputText(MarbleScene.marbleBreastSize() + " melons!");
             // if (Marble's breast size == 1)
             if (flags[kFLAGS.MARBLE_BREAST_SIZE] == 1) {
                 outputText("\n\nYour mate examines her now larger bust, and gets a feel for it.  \"<i>Hmm, not quite what I'm used too, but it's better than those tiny things that I used to have.  Thank you sweetie!</i>\"");
@@ -1285,7 +1285,7 @@ export class MarblePurification extends NPCAwareContent {
             outputText("\n\n\"<i>Sorry sweetie,</i>\" she says handing the bottle back to you, \"<i>I think my breasts are big enough as they are.</i>\"");
             // no effect
         }
-        doNext(marbleScene.giveItem);
+        doNext(MarbleScene.giveItem);
     }
 
     // Reducto
@@ -1295,7 +1295,7 @@ export class MarblePurification extends NPCAwareContent {
         outputText("Do you want to ask Marble to shrink her breasts down?");
         menu();
         addButton(0, "Yes", pureMurblePCChoosesYesToShrinkeyTits);
-        addButton(1, "No", marbleScene.giveItem);
+        addButton(1, "No", MarbleScene.giveItem);
     }
 
     // if yes
@@ -1303,10 +1303,10 @@ export class MarblePurification extends NPCAwareContent {
         clearOutput();
         outputText("You offer Marble a jar of reducto and tell her you'd like her to reduce her bust's size a bit.");
         if (flags[kFLAGS.MARBLE_BREAST_SIZE] > 0) {
-            outputText("\n\n\"<i>Alright, if you say so.</i>\"  Marble opens the jar of reducto, lifts up her top, and slathers the green gel onto her breasts.  She lets out a soft sigh as the substance takes effect, and her tremendous " + marbleScene.marbleBreastSize() + " tits slowly shrink in size, becoming a pair of more modest ");
+            outputText("\n\n\"<i>Alright, if you say so.</i>\"  Marble opens the jar of reducto, lifts up her top, and slathers the green gel onto her breasts.  She lets out a soft sigh as the substance takes effect, and her tremendous " + MarbleScene.marbleBreastSize() + " tits slowly shrink in size, becoming a pair of more modest ");
             // decrease Marble's breast size by 1
             flags[kFLAGS.MARBLE_BREAST_SIZE]--;
-            outputText(marbleScene.marbleBreastSize() + " sized breasts.");
+            outputText(MarbleScene.marbleBreastSize() + " sized breasts.");
             if (flags[kFLAGS.MARBLE_BREAST_SIZE] == 0) {
                 outputText("\n\nYour mate grips one of her sizable DDs, and gives an exaggerated sigh.  \"<i>This is just so tiny.  Remember that I'm only doing this because I care about you sweetie.  I'm not going to shrink them any further.</i>\"");
             }
@@ -1326,7 +1326,7 @@ export class MarblePurification extends NPCAwareContent {
         else {
             outputText("\n\n\"<i>What?  Sweetie, I'm already so tiny, I'm afraid I couldn't bring myself to get any smaller.  Sorry.</i>\"  She hands you back the jar of reducto.");
         }
-        doNext(marbleScene.giveItem);
+        doNext(MarbleScene.giveItem);
     }
 
     // Lactaid
@@ -1340,7 +1340,7 @@ export class MarblePurification extends NPCAwareContent {
         flags[kFLAGS.MARBLE_LUST] += 20;
         if (flags[kFLAGS.MARBLE_LUST] < 0) flags[kFLAGS.MARBLE_LUST] = 0;
         player.consumeItem(consumables.LACTAID);
-        doNext(marbleScene.giveItem);
+        doNext(MarbleScene.giveItem);
     }
 
     // Nursing from Pure Marble
@@ -1349,11 +1349,11 @@ export class MarblePurification extends NPCAwareContent {
         // if(time since last nursing is < 4 hours)
         if (flags[kFLAGS.MARBLE_TIME_SINCE_NURSED_IN_HOURS] < 4) {
             outputText("Feeling a bit thirsty, you ask Marble if there’s any chance she has some milk for you.  She gives you a sad look and informs you that no, she hasn't yet built up enough milk for you to have more.  Purifying her has made it take a bit longer for her to produce milk.");
-            doNext(marbleScene.interactWithMarbleAtCamp);
+            doNext(MarbleScene.interactWithMarbleAtCamp);
         }
         else {
             outputText("Feeling a bit thirsty, you ask Marble if theres any chance she has some milk for you.  She smiles at you and tells you she was worried you'd never ask, then leads you to a familiar, secluded part of the rocks around the camp.");
-            outputText("\n\nOnce you arrive, your lover teases you a bit by grabbing her " + marbleScene.marbleBreastSize() + " breasts through her top and playing around with them for a moment.  The bouncy flesh rolls around her hands in a very pleasant manner, and you feel your mouth water in anticipation of the delicious milk hidden within.");
+            outputText("\n\nOnce you arrive, your lover teases you a bit by grabbing her " + MarbleScene.marbleBreastSize() + " breasts through her top and playing around with them for a moment.  The bouncy flesh rolls around her hands in a very pleasant manner, and you feel your mouth water in anticipation of the delicious milk hidden within.");
             outputText("\n\nYou're given a sultry smile, and Marble hooks her shirt with her thumb pulling it up over her chest, letting her bovine bust spill forth.  The invitation to partake in her revitalizing and rich fluids comes not long after, and you waste no time in doing just that.  ");
             if (player.tallness < 65) {
                 outputText("The tall cow-lady takes a seat on the rocks and you jump onto her lap, ");

@@ -1,5 +1,5 @@
 
-export class UrtaPregs extends NPCAwareContent {
+export class UrtaPregs {
     // const URTA_INCUBATION:int = 789;
     // const URTA_TIMES_BIRTHED:int = 790;
     // const URTA_TIMES_PC_BIRTHED:int = 791;
@@ -34,7 +34,7 @@ export class UrtaPregs extends NPCAwareContent {
     URTA_LATESTBORN_COCKTYPE
     */
 
-    private get pregnancy(): PregnancyStore { return urta.pregnancy; }
+    private get pregnancy(): PregnancyStore { return Urta.pregnancy; }
 
     // Urta Pregnancy Stages
     // Urta takes 2 days to progress from one pregnancy stage to the next
@@ -45,51 +45,51 @@ export class UrtaPregs extends NPCAwareContent {
 
     private urtaSexMenu(): void {
         let spank: () => void = null;
-        if ((player.cocks.length > 0 && player.cocks.cockThatFits(urta.urtaCapacity()) >= 0) || player.keyItems.has("Deluxe Dildo") >= 0) spank = urta.spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs;
+        if ((player.cocks.length > 0 && player.cocks.cockThatFits(Urta.urtaCapacity()) >= 0) || player.keyItems.has("Deluxe Dildo") >= 0) spank = Urta.spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs;
         // NOT Drunk
-        if (!urta.urtaDrunk()) {
+        if (!Urta.urtaDrunk()) {
             // Lover
             if (flags[kFLAGS.URTA_PC_LOVE_COUNTER] == 1) {
                 menu();
-                addButton(0, "Her Place", urta.goBackToUrtasForLuvinz);
-                if (flags[kFLAGS.URTA_CUM_NO_CUM_DAYS] >= 5) addButton(1, "Suck Off", urta.slurpFawkesCocksForFunAndInflation);
-                else addButton(1, "Suck Off", urta.blowUrtaUnderTheTableLuv);
-                addButton(2, "Eat Out", urta.eatUrtaOutNomNomPussy);
+                addButton(0, "Her Place", Urta.goBackToUrtasForLuvinz);
+                if (flags[kFLAGS.URTA_CUM_NO_CUM_DAYS] >= 5) addButton(1, "Suck Off", Urta.slurpFawkesCocksForFunAndInflation);
+                else addButton(1, "Suck Off", Urta.blowUrtaUnderTheTableLuv);
+                addButton(2, "Eat Out", Urta.eatUrtaOutNomNomPussy);
             }
             // FRIEND
             else {
                 menu();
-                if (flags[kFLAGS.URTA_CUM_NO_CUM_DAYS] >= 5) addButton(0, "Hidden BJ", urta.slurpFawkesCocksForFunAndInflation);
-                else addButton(0, "Hidden BJ", urta.blowUrtaUnderTable);
-                addButton(1, "Urta's Place", urta.goBackToUrtasForLuvinz);
-                addButton(4, "Leave", telAdre.barTelAdre);
+                if (flags[kFLAGS.URTA_CUM_NO_CUM_DAYS] >= 5) addButton(0, "Hidden BJ", Urta.slurpFawkesCocksForFunAndInflation);
+                else addButton(0, "Hidden BJ", Urta.blowUrtaUnderTable);
+                addButton(1, "Urta's Place", Urta.goBackToUrtasForLuvinz);
+                addButton(4, "Leave", TelAdre.barTelAdre);
             }
         }
         // DRUNK
         else {
             // LOVER
-            if (urtaLove()) {
+            if (Urta.urtaLove()) {
                 menu();
-                addButton(0, "Jerkoff", urta.getAPublicFacialFromUrta);
-                addButton(1, "Anal Ride", urta.takeUrtaInTheButtPublically);
-                if (player.canOviposit()) addButton(2, "Lay Eggs", urta.giveTheFoxSomeEggs);
+                addButton(0, "Jerkoff", Urta.getAPublicFacialFromUrta);
+                addButton(1, "Anal Ride", Urta.takeUrtaInTheButtPublically);
+                if (player.canOviposit()) addButton(2, "Lay Eggs", Urta.giveTheFoxSomeEggs);
                 addButton(3, "Spank Her", spank);
-                if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
-                    addButton(8, "3SomeSurprise", urta.urtaAndRaphaelSurprise);
+                if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
+                    addButton(8, "3SomeSurprise", Urta.urtaAndRaphaelSurprise);
                 }
-                addButton(9, "Leave", telAdre.barTelAdre);
+                addButton(9, "Leave", TelAdre.barTelAdre);
             }
             // FRIEND
             else {
                 menu();
-                addButton(0, "Jerkoff", urta.getAPublicFacialFromUrta);
-                addButton(1, "Anal Ride", urta.takeUrtaInTheButtPublically);
-                if (player.canOviposit()) addButton(2, "Lay Eggs", urta.giveTheFoxSomeEggs);
+                addButton(0, "Jerkoff", Urta.getAPublicFacialFromUrta);
+                addButton(1, "Anal Ride", Urta.takeUrtaInTheButtPublically);
+                if (player.canOviposit()) addButton(2, "Lay Eggs", Urta.giveTheFoxSomeEggs);
                 addButton(3, "Spank Her", spank);
-                if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
-                    addButton(8, "3SomeSurprise", urta.urtaAndRaphaelSurprise);
+                if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
+                    addButton(8, "3SomeSurprise", Urta.urtaAndRaphaelSurprise);
                 }
-                addButton(9, "Leave", telAdre.barTelAdre);
+                addButton(9, "Leave", TelAdre.barTelAdre);
             }
         }
     }
@@ -125,9 +125,9 @@ export class UrtaPregs extends NPCAwareContent {
                 else {
                     outputText("  The lack of cock-on-wood sounds or motion on Urta's part makes it clear she's not feeling amorous right this moment.  Breaking the kiss, she licks her glossy lips clean and looks at you with a good-natured smirk.  \"<i>Feeling up to talking for a little while?</i>\"");
                     // Display Urta Sexings or Urta Talking as appropriate
-                    addButton(0, "Talk", urta.urtaDialogueMenu);
+                    addButton(0, "Talk", Urta.urtaDialogueMenu);
                 }
-                    addButton(9, "Leave", telAdre.barTelAdre);
+                    addButton(9, "Leave", TelAdre.barTelAdre);
                     break;
             case 2:
             case 3: if (rand(2) == 0) outputText("Urta's sitting side-saddled in her usual seat, dress bulging in a way that makes it clear she's at least half-erect already, a small paunch of a belly stretching out her dress.  She gives you a somewhat embarrassed smile when she sees you looking at it.  \"<i>I just feel horny all the time now,</i>\" she professes.  \"<i>I think it might be something to do with the hormones, though if you'd rather talk instead, I'd be happy to do that.</i>\"");
@@ -135,8 +135,8 @@ export class UrtaPregs extends NPCAwareContent {
             else outputText("Urta's sitting side-saddle in her usual seat, belly subtly swollen and dress clearly tenting, more than a little moist at the tip of where her cock is obviously poking.  She gives you a dazzlingly eager smile when she sees notice it.  \"<i>Hey, lover.  Did you come to give this knocked-up, horny vixen some sugar?</i>\"  She pouts.  \"<i>Or just talk?  I think you know which I'd prefer...</i>\"  Her finger dances in little circles around the tent, causing it to widen with her growing flare.");
                 // Display both Urta Sex Options and Urta Talk Options
                     addButton(0, "Sex", urtaSexMenu);
-                    addButton(1, "Talk", urta.urtaDialogueMenu);
-                    addButton(9, "Leave", telAdre.barTelAdre);
+                    addButton(1, "Talk", Urta.urtaDialogueMenu);
+                    addButton(9, "Leave", TelAdre.barTelAdre);
                     break;
             case 4: outputText("Urta's moved from her usual table to a private booth, luxuriating in the high-backed chairs and the cushions padding seat and back alike.  The reason for this is obvious; she's quite obviously pregnant now, with her belly visibly rounded and swollen, bulging out into her lap but not truly big enough to interfere with her movements yet.  She rubs her belly and gives you a proudly self-satisfied smirk.  \"<i>We did it, [name]; we're going to have a baby.  After all these years... it's so wonderful.</i>\"  She visibly pats the bump stretching her dress; she's big, but not so big as to need a change of clothes yet. ");
                     if (flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0) outputText("\n\nHer dress stretches even more as her cock swells out of its sheath, precum already darkening the fabric.  \"<i>Wanna fuck, lover?  Because I sure do...</i>\" She licks her lips at the prospect.");
@@ -144,8 +144,8 @@ export class UrtaPregs extends NPCAwareContent {
                 else outputText("\n\n\"<i>You're in luck; I'm not currently in the mood to throw you onto the table and fuck you 'til you can't walk... but give me a minute, and I could probably fix that.</i>\"  Urta says.  She smiles, as if trying to prove it's a joke, but there's a gleam in her eyes that suggests she really could do that if you let her...");
                 // Pregnant Sex options should probably start displaying either here or in the next stage.
                     addButton(0, "Sex", preggoUrtaSmexOrSomething);
-                    addButton(1, "Talk", urta.urtaDialogueMenu);
-                    addButton(9, "Leave", telAdre.barTelAdre);
+                    addButton(1, "Talk", Urta.urtaDialogueMenu);
+                    addButton(9, "Leave", TelAdre.barTelAdre);
                     break;
             case 5:
                 outputText("Urta's still in the private booth she's moved to, and for a good, reason, too - her pregnancy is so obvious you'd have to be blind to miss it, adding what easily has to be around ten inches to her waistline - and straight out, at that.  The black dress she wears is stretching to its limit around her distended belly, pulled tight across the spherical bulge.  She is tucking away eagerly into a glass of fizzy, sweet-smelling orange drink, a picked-clean plate resting before her.  She spots you and nods even as she continues to drink.");
@@ -153,8 +153,8 @@ export class UrtaPregs extends NPCAwareContent {
                 // Else:
                 else outputText("She places the glass down and licks her lips.  \"<i>Mmm... that stuff tastes a lot better than you think, especially when you're pregnant.  So, sexy, what brings you here?  Wanted to check up on us?</i>\"  She pats her belly with a smile.  \"<i>Or did you maybe want to talk?  ...Or perhaps <b>talk</b> a little?</i>\"  She grins wickedly.");
                 addButton(0, "Sex", preggoUrtaSmexOrSomething);
-                addButton(1, "Talk", urta.urtaDialogueMenu);
-                addButton(9, "Leave", telAdre.barTelAdre);
+                addButton(1, "Talk", Urta.urtaDialogueMenu);
+                addButton(9, "Leave", TelAdre.barTelAdre);
                 break;
             case 6:
                 outputText("The pregnant fox's normal skimpy black dress has given up the ghost; her belly's just too big for her to squeeze into it without tearing it apart.  Instead, she's adopted a much more casual look; a knee-length pleated skirt and a midriff-baring t-shirt that has wispy strands of fishnet trailing under it and resting on the gray-furred expanse of her belly.  The shirt itself looks a little on the damp side where her nipples are; the milk must be coming in.  She rubs her stomach and smiles triumphantly at you.  \"<i>Look at me, lover; I'm really starting to get big now.  This just feels so wonderful; you don't know how long I've been dreaming about this happening to me.</i>\"");
@@ -162,15 +162,15 @@ export class UrtaPregs extends NPCAwareContent {
                 // Not Horny:
                 else outputText("\n\nShe's got a few glasses of milk next to her, but when she sees you, her expression turns a trifle embarrassed.  \"<i>Hey, [name].  You just missed me tending to my hormones,</i>\" she admits, more than a little sheepishly while pointing at the half-dozen glasses.  Your eyes widen when you realize just what the \"milk\" is.  Urta smirks, a little cockiness showing as she asks, \"<i>So did you want to talk, or see if we can fill up a few more?</i>\"");
                 addButton(0, "Sex", preggoUrtaSmexOrSomething);
-                addButton(1, "Talk", urta.urtaDialogueMenu);
-                addButton(9, "Leave", telAdre.barTelAdre);
+                addButton(1, "Talk", Urta.urtaDialogueMenu);
+                addButton(9, "Leave", TelAdre.barTelAdre);
                 break;
             case 7:
                 outputText("Urta's belly just keeps getting bigger and bigger; not that she seems to care. Indeed, she proudly flaunts her growing belly, and she's forever rubbing and stroking it.  You can see the occasional bulge or ripple as your child kicks in her womb, growing strong and healthy.  Damp spots have grown on her t-shirt from her budding milk supply, though Urta seems oblivious to it as of yet.  Her pleated skirt has risen high enough to fall back onto itself, leaving her groin totally immodest and undoubtedly aroused.");
                 outputText("\n\nMore pre drips from her length, and she notices you with a start, \"<i>Oh, [name]!  I was just thinking of you!  I never knew pregnancy could make me feel so... sexual.  Being so full of life just seems to make my male half want to make even more, if you know what I mean.  Please, tell me you're here for a quickie?</i>\"  She fidgets.  \"<i>I guess we could talk too... if you want.</i>\"");
                 addButton(0, "Sex", preggoUrtaSmexOrSomething);
-                addButton(1, "Talk", urta.urtaDialogueMenu);
-                addButton(9, "Leave", telAdre.barTelAdre);
+                addButton(1, "Talk", Urta.urtaDialogueMenu);
+                addButton(9, "Leave", TelAdre.barTelAdre);
                 break;
             case 8:
                 outputText("Urta's finally outgrown even her booth, her belly now looking like she swallowed a prize-winning watermelon whole.  She's taken to sitting in a shapeless, very well-stuffed couch in an out-of-the-way nook of the bar.  Her hands stroke her gut and her erect dick at more or less the same time, precum dripping noisily into a bucket positioned under her erection.  She sees you coming and her cock bounces eagerly, belching another spurt of precum into the bucket from a surge in arousal.");
@@ -823,7 +823,7 @@ export class UrtaPregs extends NPCAwareContent {
         flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] = 1;
         // (Return to TA menu.)
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
 
     // New Talk Topic: Her House
@@ -864,10 +864,10 @@ export class UrtaPregs extends NPCAwareContent {
         outputText("\n\nFishing out a key from her wallet, Urta unhooks herself from your arm to open the door and then saunters inside, flirtatiously flicking her tail at you as she goes.  You eagerly follow after her.");
 
         // (Rest of the scene is like default scene.)
-        if (!urtaLove()) urta.goBackToUrtasForLuvinzII();
+        if (!Urta.urtaLove()) Urta.goBackToUrtasForLuvinzII();
         else {
             outputText("\n\n");
-            urta.urtaHomeLuvLuvinsMenu();
+            Urta.urtaHomeLuvLuvinsMenu();
         }
     }
     // [=No=]
@@ -1248,14 +1248,14 @@ export class UrtaPregs extends NPCAwareContent {
         outputText("\n\nYou resume your pumping.  Ecstatic moos and groans promptly result.  \"<i>Mooo!  Oh, [name], I-I'm so close!</i>\" she whimpers around the hose, then moos again.");
 
         // If PC has a dick and is not a centaur:
-        if (player.cocks.length > 0 && !player.isTaur() && player.cocks.cockThatFits(urta.urtaCapacity())) {
+        if (player.cocks.length > 0 && !player.isTaur() && player.cocks.cockThatFits(Urta.urtaCapacity())) {
             outputText("\n\nYou jump on the bed, spreading her legs and aligning your [cock biggest] with her slick labia.  You ask if she knows what's next.  \"<i>MooOoo!</i>\" she replies, nodding her head fiercely even as she continues to thrust.  You hand her the pumps and grab her hips, then sink yourself into her folds with one fell swoop.  \"<i>MOOO!</i>\" she cries, making one final thrust and then exploding into orgasm, cum fountaining from her pump-embraced dick.");
             outputText("\n\nHer vaginal walls contract and grip your shaft, milking you to your own orgasm.  Jet after jet of cum spills into her.  She moos and moans and pants, eagerly accepting your deposits of cum into her bulging, overstuffed womb, though most of it just spills back out.");
         }
         outputText("\n\nUrta gurgles as she drinks her own cum, the bottle almost completely filled with milk as Urta's inflamed nipples continue depositing their payload.  \"<i>Moooo...</i>\" Urta moans, making a few last weak thrusts before collapsing bonelessly onto the bed, the last of her jizz being sucked away into the pump.");
 
         // if PC has a dick and ain't a centaur:
-        if (player.cocks.length > 0 && !player.isTaur() && player.cocks.cockThatFits(urta.urtaCapacity())) {
+        if (player.cocks.length > 0 && !player.isTaur() && player.cocks.cockThatFits(Urta.urtaCapacity())) {
             outputText("\n\nYou pump into her a few more times, finishing off; then you  pull yourself out of her, dropping her hips on the mattress and panting.  \"<i>Are you supposed to be the farmer or the bull?</i>\" Urta chuckles softly, patting her swollen belly.");
             player.orgasm();
             dynStats("sen", -1);
@@ -1923,7 +1923,7 @@ export class UrtaPregs extends NPCAwareContent {
         outputText("\"<i>I see, in that case excuse me,</i>\"  She says with a blank expression.  Looks like you don't have any business here for now, so you decide to leave.");
         // (Back to TA/Camp)
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
     private urtaKidsText(male: string = "", female: string = "", plural: string = ""): string {
         if (urtaKids() == 1) {
@@ -2334,7 +2334,7 @@ export class UrtaPregs extends NPCAwareContent {
         addButton(2, "Sex", sexWithLianna);
         addButton(4, "Kids", pickKidSceneHere);
 
-        addButton(9, "Back", telAdre.telAdreMenu);
+        addButton(9, "Back", TelAdre.telAdreMenu);
     }
 
     // Lianna

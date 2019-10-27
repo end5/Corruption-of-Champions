@@ -46,7 +46,7 @@ export class Anemone extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.anemoneScene.defeatAnemone();
+        AnemoneScene.defeatAnemone();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -54,7 +54,7 @@ export class Anemone extends Monster {
             outputText("\n\nYour foe doesn't seem to mind at all...");
             doNext(game.endLustLoss);
         } else {
-            game.anemoneScene.loseToAnemone();
+            AnemoneScene.loseToAnemone();
         }
     }
 

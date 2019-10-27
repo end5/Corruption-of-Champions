@@ -1,5 +1,5 @@
 
-export class ShouldraScene extends NPCAwareContent implements TimeAwareInterface {
+export class ShouldraScene implements TimeAwareInterface {
 
     // const TIMES_MET_SHOULDRA:int = 351;
     // const TIMES_BEATEN_SHOULDRA:int = 352;
@@ -26,21 +26,21 @@ export class ShouldraScene extends NPCAwareContent implements TimeAwareInterface
     public timeChange(): boolean {
         let needNext: boolean = false;
         if (flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN] >= 1) flags[kFLAGS.SHOULDRA_MAGIC_COOLDOWN]--;
-        if (shouldraFollower.followerShouldra()) {
+        if (ShouldraFollower.followerShouldra()) {
             if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.cocks.length > 0 && rand(10) == 0) {
                 if (flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == 1) {
-                    shouldraFollower.exgartumonAndShouldraFightPartII();
+                    ShouldraFollower.exgartumonAndShouldraFightPartII();
                     needNext = true;
                 }
                 else if (flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == 2) {
-                    shouldraFollower.exgartumonAndShouldraFightPartIII();
+                    ShouldraFollower.exgartumonAndShouldraFightPartIII();
                     needNext = true;
                 }
             }
             flags[kFLAGS.SHOULDRA_SLEEP_TIMER]--;
-            if (shouldraFollower.shouldersWarnings()) needNext = true;
+            if (ShouldraFollower.shouldersWarnings()) needNext = true;
             if (flags[kFLAGS.SHOULDRA_SLEEP_TIMER] == 0 || (flags[kFLAGS.SHOULDRA_SLEEP_TIMER] < 0 && flags[kFLAGS.SHOULDRA_SLEEP_TIMER] % 16 == 0)) {
-                shouldraFollower.shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMakeThisFunctionNameQuestionMark();
+                ShouldraFollower.shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMakeThisFunctionNameQuestionMark();
                 needNext = true;
             }
             if (flags[kFLAGS.SHOULDRA_PLOT_COUNTDOWN] > 0 && game.time.hours == 3) flags[kFLAGS.SHOULDRA_PLOT_COUNTDOWN]--;
@@ -49,19 +49,19 @@ export class ShouldraScene extends NPCAwareContent implements TimeAwareInterface
     }
 
     public timeChangeLarge(): boolean {
-        if (shouldraFollower.followerShouldra() && flags[kFLAGS.SHOULDRA_PLOT_COUNTDOWN] == 0 && game.time.hours == 3) {
+        if (ShouldraFollower.followerShouldra() && flags[kFLAGS.SHOULDRA_PLOT_COUNTDOWN] == 0 && game.time.hours == 3) {
             flags[kFLAGS.SHOULDRA_PLOT_COUNTDOWN] = -1;
-            shouldraFollower.shouldraDream1();
+            ShouldraFollower.shouldraDream1();
             return true;
         }
         // Ghostgirl recruitment priority
         if (flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] == .5 && game.time.hours == 6) {
-            shouldraFollower.morningShouldraAlert();
+            ShouldraFollower.morningShouldraAlert();
             return true;
         }
         // Ghostgirl pissed off dreams
-        if (shouldraFollower.followerShouldra() && flags[kFLAGS.SHOULDRA_SLEEP_TIMER] <= -236 && game.time.hours == 3 && player.gender > 0) {
-            shouldraFollower.nightTimeShouldraRapesThePC();
+        if (ShouldraFollower.followerShouldra() && flags[kFLAGS.SHOULDRA_SLEEP_TIMER] <= -236 && game.time.hours == 3 && player.gender > 0) {
+            ShouldraFollower.nightTimeShouldraRapesThePC();
             return true;
         }
         // Ghostgirl madness
@@ -105,7 +105,7 @@ export class ShouldraScene extends NPCAwareContent implements TimeAwareInterface
         // (after three encounters with her)
         else {
             if (flags[kFLAGS.TIMES_BEATEN_SHOULDRA] >= 3 && flags[kFLAGS.TIMES_MET_SHOULDRA] % 10 == 0) {
-                shouldraFollower.initialShouldersRecruitment();
+                ShouldraFollower.initialShouldersRecruitment();
                 flags[kFLAGS.TIMES_MET_SHOULDRA]++;
                 return;
             }

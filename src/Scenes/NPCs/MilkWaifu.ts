@@ -1,5 +1,5 @@
 
-export class MilkWaifu extends NPCAwareContent {
+export class MilkWaifu {
     // New Variables
     // " + flags[kFLAGS.MILK_NAME] + ": This slut's name. Can't call her Bath Slut forever. Unless you do.
     // [MilkySize]: Does Milky have GIANT HUGE BOOBS that she can't fucking walk with, does she have a big plump set of HHH cups you can smother yourself and your big fat cock with, or a more reasonable DD bust, the perfect size to drink from, titfuck, and play with all day long.
@@ -256,7 +256,7 @@ export class MilkWaifu extends NPCAwareContent {
         }
         else {
             outputText("\n\n" + flags[kFLAGS.MILK_NAME] + "'s got cowgirl-sized tits right now");
-            if (isabellaFollowerScene.isabellaFollower()) {
+            if (IsabellaFollowerScene.isabellaFollower()) {
                 outputText(", enough to give Isabella");
                 if (player.effects.findByType(StatusAffects.CampMarble) >= 0) outputText(" and Marble");
                 outputText(" pause");
@@ -325,15 +325,15 @@ export class MilkWaifu extends NPCAwareContent {
         addButton(1, "Milk Girl", pullInZeMilkGirl);
         if (player.gender > 0 && player.lust >= 33) addButton(0, "DrinkNFap", drinkAndFapturbate);
         let count: number = 0;
-        if (sophieFollowerScene.sophieFollower()) count++;
+        if (SophieFollowerScene.sophieFollower()) count++;
         if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) count++;
-        if (latexGirl.latexGooFollower()) count++;
+        if (LatexGirl.latexGooFollower()) count++;
         if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) count++;
-        if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()) count++;
-        if (helScene.followerHel()) count++;
+        if (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt()) count++;
+        if (HelScene.followerHel()) count++;
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1) count++;
-        if (emberScene.followerEmber()) count++;
-        if (kihaFollower.followerKiha()) count++;
+        if (EmberScene.followerEmber()) count++;
+        if (KihaFollower.followerKiha()) count++;
         if (count >= 3) {
             outputText("  Then again, if you're getting a bath, maybe the rest of your friends might like to join you?");
             addButton(2, "Comm.Bath", communalBath);
@@ -356,38 +356,38 @@ export class MilkWaifu extends NPCAwareContent {
         clearOutput();
         outputText("As you relax in the tub, you decide it's hardly fair to have all this milk and just hog it to yourself.  You sit up and give a sharp whistle, getting the attention of the rest of camp.  \"<i>Jump on in, everyone!</i>\" you shout, quickly grabbing " + flags[kFLAGS.MILK_NAME] + " by the waist and dragging her in.  She tumbles into her own lactation with a sharp cry of surprise, breaching a moment later with a splutter.");
         // If PC has Isabella:
-        if (isabellaFollowerScene.isabellaFollower()) {
+        if (IsabellaFollowerScene.isabellaFollower()) {
             outputText("\n\nA moment later, the towering form of Isabella saunters over, already tossing aside her skirts.  \"<i>");
-            if (isabellaFollowerScene.isabellaAccent()) outputText("Vhat, ist Isabella's milk not gut enough fur you, [name].  Still, I could be using with a bath.");
+            if (IsabellaFollowerScene.isabellaAccent()) outputText("Vhat, ist Isabella's milk not gut enough fur you, [name].  Still, I could be using with a bath.");
             else outputText("What, is my milk not good enough for you, [name]?  Still, I could use a bath.");
             outputText("</i>\"");
         }
         // If PC has Sophie:
-        if (sophieFollowerScene.sophieFollower()) outputText("\n\n\"<i>Oh, fresh milk!</i>\" Sophie exclaims cheerily.  She drops down by the edge of the pool and scoops up a handful, bringing the thick, creamy milk up to her lips.  Her wings flutter happily as she laps it up, rubbing more into her fair skin between clumps of downy feathers.");
+        if (SophieFollowerScene.sophieFollower()) outputText("\n\n\"<i>Oh, fresh milk!</i>\" Sophie exclaims cheerily.  She drops down by the edge of the pool and scoops up a handful, bringing the thick, creamy milk up to her lips.  Her wings flutter happily as she laps it up, rubbing more into her fair skin between clumps of downy feathers.");
 
         // If PC has Pure!Jojo:
         if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) outputText("\n\nThe white-furred monk Jojo approaches the pool with some hesitation, eyeing the tub full of cream.  \"<i>How...  lewd.  Though it would be a shame for such a bounty to go to waste.</i>\"  Slowly, the monk disrobes down to his undergarments, and lowers himself into the pool nearby.");
 
         // {If PC has Latexy:
-        if (latexGirl.latexGooFollower()) outputText("\n\nYou wave over your ebony-skinned latex goo, telling her to drink up.  \"<i>M-[master]?</i>\" she says, pausing at the poolside.  You repeat your command, patting the surface of the milky waves.  It looks like her primal hunger takes over a moment later as she slips into the vast sea of lactation, soaking it up.");
+        if (LatexGirl.latexGooFollower()) outputText("\n\nYou wave over your ebony-skinned latex goo, telling her to drink up.  \"<i>M-[master]?</i>\" she says, pausing at the poolside.  You repeat your command, patting the surface of the milky waves.  It looks like her primal hunger takes over a moment later as she slips into the vast sea of lactation, soaking it up.");
 
         // {If PC has Valeria:
         if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) outputText("\n\nThe gooey mass of Valeria materializes a few feet away, assuming her human shape as she surveys the milkbath awaiting her.  \"<i>Damn, [name].  This girl's got some faucets on her.  Ought to get some of the girls from the lake on up here to finish the job when we're done.</i>\"  Chuckling, Val slips into the pool, turning a brighter shade of blue as cream rushes through her porous body.");
 
         // If PC has Pure!Amily:
-        if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()) outputText("\n\nThe mouse-girl, Amily, is quick to respond to your call.  Happy for the luxury of a simple bath, even a milky one, she quickly tosses her clothes aside and dives in beside you, laughing and splashing playfully even as her brown hair is soaked.");
+        if (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt()) outputText("\n\nThe mouse-girl, Amily, is quick to respond to your call.  Happy for the luxury of a simple bath, even a milky one, she quickly tosses her clothes aside and dives in beside you, laughing and splashing playfully even as her brown hair is soaked.");
 
         // If PC has Helia:
-        if (helScene.followerHel()) outputText("\n\nWith a gleeful shout, Hel rushes the pool.  In one swift motion, she tosses her scale bikini aside and cannon-balls in, splashing everyone with a creamy tidal wave.  Chuckling, you clear your eyes - just in time for her bikini bottom to land on your face.");
+        if (HelScene.followerHel()) outputText("\n\nWith a gleeful shout, Hel rushes the pool.  In one swift motion, she tosses her scale bikini aside and cannon-balls in, splashing everyone with a creamy tidal wave.  Chuckling, you clear your eyes - just in time for her bikini bottom to land on your face.");
 
         // If PC has Izma:
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1) outputText("\n\nYou didn't even notice Izma getting into the pool.  The first sign of her is the sudden appearance of a bright red fin sticking above the water, closing in on you.  She breaches at the last moment, laughing gaily as she gives her alpha a kiss.");
 
         // {If PC has Ember:
-        if (emberScene.followerEmber()) outputText("\n\nEmber approaches the pool, reptilian tail swishing eagerly.  " + emberScene.emberMF("He", "She") + " lowers " + emberScene.emberMF("himself", "herself") + " in with ease, sighing contentedly as milk washes over " + emberScene.emberMF("his", "her") + " scaled body.  \"<i>Is this how you humans bathe normally?</i>\"  " + emberScene.emberMF("He", "She") + " muses.  \"<i>How bizarre.</i>\"");
+        if (EmberScene.followerEmber()) outputText("\n\nEmber approaches the pool, reptilian tail swishing eagerly.  " + EmberScene.emberMF("He", "She") + " lowers " + EmberScene.emberMF("himself", "herself") + " in with ease, sighing contentedly as milk washes over " + EmberScene.emberMF("his", "her") + " scaled body.  \"<i>Is this how you humans bathe normally?</i>\"  " + EmberScene.emberMF("He", "She") + " muses.  \"<i>How bizarre.</i>\"");
 
         // {If PC has Kiha:
-        if (kihaFollower.followerKiha()) outputText("\n\nKiha, your dear dusky dragoness, wanders over to see what the commotion is, but turns her nose up at the sight of you bathing in breastmilk.  \"<i>Ew.  How the hell can you just...  wallow in that?  Disgusting!</i>\"");
+        if (KihaFollower.followerKiha()) outputText("\n\nKiha, your dear dusky dragoness, wanders over to see what the commotion is, but turns her nose up at the sight of you bathing in breastmilk.  \"<i>Ew.  How the hell can you just...  wallow in that?  Disgusting!</i>\"");
 
         // [Combine]
         outputText("\n\nSurrounded by friends and lovers, you relax in the pool, leaning your arms back over the rim and closing your eyes, sighing contentedly.  Your friends splash and play with each other, happy to enjoy a few blissful, normal moments away from the cares of the world, away from the demons, and the monsters, and the horror their world has become.  The waves displace beside you, milk parting as a pair of giant jugs move over to you; you look down to see " + flags[kFLAGS.MILK_NAME] + " curling up in your arm.  Her giant teats float atop the waters, boyantly swaying with a strange grace atop the sea of their own making.");
@@ -565,26 +565,26 @@ export class MilkWaifu extends NPCAwareContent {
             outputText("\n\nIn a matter of moments, you coax out the first explosive spurt of milk from your friend's teats, two hot streams of white cream blasting you in the face and drenching you before you can blink.  \"<i>S-sorryyyyyyyy,</i>\" she whines, voice turning into an ecstatic moan as you grip her nipples and start working vigorously, not letting the milky stream die down for an instant.  " + flags[kFLAGS.MILK_NAME] + " moans and groans as you roughly milk her, rewarded with gallon after gallon of delightful motherly milk.");
 
             // If PC has Smart/Normal Sophie:
-            if (sophieFollowerScene.sophieFollower()) outputText("\n\nAs you milk " + flags[kFLAGS.MILK_NAME] + ", you see a shadow flash overhead.  You look up in time to see your harpy broodmother perching at the rim of the pool, just beside " + flags[kFLAGS.MILK_NAME] + "'s quivering body.  \"<i>Fresh milk!</i>\" Sophie laughs, cupping up a handful and bringing it to her mouth.  \"<i>You don't mind if Momma Sophie has a taste, do you honey?</i>\"\n\nThe milky girl shakes her head, barely paying attention as Sophie flops down beside her, avian tongue lapping at the stream pouring down into the pool.");
+            if (SophieFollowerScene.sophieFollower()) outputText("\n\nAs you milk " + flags[kFLAGS.MILK_NAME] + ", you see a shadow flash overhead.  You look up in time to see your harpy broodmother perching at the rim of the pool, just beside " + flags[kFLAGS.MILK_NAME] + "'s quivering body.  \"<i>Fresh milk!</i>\" Sophie laughs, cupping up a handful and bringing it to her mouth.  \"<i>You don't mind if Momma Sophie has a taste, do you honey?</i>\"\n\nThe milky girl shakes her head, barely paying attention as Sophie flops down beside her, avian tongue lapping at the stream pouring down into the pool.");
 
             // If PC has Kiha:
-            if (kihaFollower.followerKiha()) outputText("\n\nFeeling like you're being watched, you cast a glance over your shoulder in time to see the dusky form of Kiha standing behind you.  She simply says \"<i>Ew,</i>\" before walking off.");
+            if (KihaFollower.followerKiha()) outputText("\n\nFeeling like you're being watched, you cast a glance over your shoulder in time to see the dusky form of Kiha standing behind you.  She simply says \"<i>Ew,</i>\" before walking off.");
 
             // If PC has Isabella:
-            if (isabellaFollowerScene.isabellaFollower()) {
-                if (isabellaFollowerScene.isabellaAccent()) outputText("\n\n\"<i>Tsk, [name].  Vhat are you doing to zhat poor voman?");
+            if (IsabellaFollowerScene.isabellaFollower()) {
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n\"<i>Tsk, [name].  Vhat are you doing to zhat poor voman?");
                 else outputText("\n\n\"<i>Tsk, [name], what're you doing to that poor girl?");
                 outputText("</i>\" You look up from your task to see Isabella looming over the pool, hands on her wide hips.  \"<i>You are going MUCH too hard on her, poor ");
-                if (isabellaFollowerScene.isabellaAccent()) outputText("zing");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("zing");
                 else outputText("thing");
                 outputText(".  Let Isabella show you how ");
-                if (isabellaFollowerScene.isabellaAccent()) outputText("es ist");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("es ist");
                 else outputText("it's");
                 outputText(" done.</i>\"  You find yourself roughly pushed aside as Isabella jumps in with you, tossing her skirt and blouse aside as she grasps " + flags[kFLAGS.MILK_NAME] + "'s teats, massaging them much more gently.  The milk girl's eyes roll back in her head as Isabella sets to work, though it gets harder and harder as the milk flows up to her thighs and chest.");
             }
 
             // If PC has ONLY KIha or if PC dun have Izzy, Sophie, OR Kiha:
-            if (!isabellaFollowerScene.isabellaFollower() || !sophieFollowerScene.sophieFollower()) outputText("\n\nIt takes a good long while to get " + flags[kFLAGS.MILK_NAME] + "'s bloated tits under control, but nearly an hour later you've milked her as well as you can for now.  Sopping wet, you pull yourself out of the pool and grab a towel.  With her tits lightened for the moment, " + flags[kFLAGS.MILK_NAME] + " reaches up and pulls you down to her, just long enough to plant a kiss on your cheek and whisper, \"<i>Thank you, [name].  That felt good.</i>\"");
+            if (!IsabellaFollowerScene.isabellaFollower() || !SophieFollowerScene.sophieFollower()) outputText("\n\nIt takes a good long while to get " + flags[kFLAGS.MILK_NAME] + "'s bloated tits under control, but nearly an hour later you've milked her as well as you can for now.  Sopping wet, you pull yourself out of the pool and grab a towel.  With her tits lightened for the moment, " + flags[kFLAGS.MILK_NAME] + " reaches up and pulls you down to her, just long enough to plant a kiss on your cheek and whisper, \"<i>Thank you, [name].  That felt good.</i>\"");
 
             // If PC has Sophie or Isabella:
             else outputText("\n\nThough you didn't intend for this to turn communal, " + flags[kFLAGS.MILK_NAME] + " certainly has more than enough to share.  You relax as the last trickles of milk pour into the pool, her breasts looking positively deflated.  You decide to leave the plug in for your friends as you clamber out, figuring they'll want to stockpile a little for the day before you drain it.  With her tits lightened for the moment, " + flags[kFLAGS.MILK_NAME] + " reaches up and pulls you down to her, just long enough to plant a kiss on your cheek and whisper, \"<i>Thank you, [name].  That felt good.</i>\"");

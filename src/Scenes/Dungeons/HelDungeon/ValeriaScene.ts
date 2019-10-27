@@ -62,7 +62,7 @@ export function struggleAtGooBind(): void {
         // (If fail 5 times, go to defeat scene)
         player.effects.addValue(StatusAffects.GooArmorBind, 1, 1);
         if (player.effects.getValue1Of(StatusAffects.GooArmorBind) >= 5) {
-            if (monster.effects.findByType(StatusAffects.Spar) >= 0) valeria.pcWinsValeriaSparDefeat();
+            if (monster.effects.findByType(StatusAffects.Spar) >= 0) Valeria.pcWinsValeriaSparDefeat();
             else gooArmorBeatsUpPC();
             return;
         }

@@ -517,7 +517,7 @@ export class Edryn implements TimeAwareInterface {
         if (game.time.totalTime == edrynHeliaLastThreesomeCheck || game.time.totalTime == -edrynHeliaLastThreesomeCheck) // Only choose action once per visit to the bar
             return edrynHeliaLastThreesomeCheck > 0;
         edrynHeliaLastThreesomeCheck = game.time.totalTime;
-        if (player.gender == 0 || game.time.hours < 14 || game.time.hours >= 20 || rand(2) == 0 || (flags[kFLAGS.HEL_FUCKBUDDY] == 0 && !helFollower.followerHel())
+        if (player.gender == 0 || game.time.hours < 14 || game.time.hours >= 20 || rand(2) == 0 || (flags[kFLAGS.HEL_FUCKBUDDY] == 0 && !HelFollower.followerHel())
             || (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0)) {
             edrynHeliaLastThreesomeCheck = -edrynHeliaLastThreesomeCheck; // Make the saved time negative to indicate Helia is not at the bar right now
             return false;
@@ -564,7 +564,7 @@ export class Edryn implements TimeAwareInterface {
             outputText("  Eventually, though, Hel gives you a sultry look and asks if you're up for a little group activity.  Are you?\n\n", false);
         }
         // (Display Options: [Threesome] [Leave]
-        simpleChoices("Edryn3Some", edryn, "Fox Girls", helScene.heliaPlusFoxyFluffs, "", null, "", null, "Leave", leaveHelInZeBitch);
+        simpleChoices("Edryn3Some", edryn, "Fox Girls", HelScene.heliaPlusFoxyFluffs, "", null, "", null, "Leave", leaveHelInZeBitch);
     }
 
     // First Time - Leave
@@ -640,7 +640,7 @@ export class Edryn implements TimeAwareInterface {
 
         outputText("\"<i>Oh yeah. We... We gotta go again sometime,</i>\" Hel agrees, nearly falling off Edryn's back.  You give each of the girls a long kiss before collecting your " + player.armorName + " and walking off back to camp.\n\n", false);
         player.orgasm();
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         doNext(camp.returnToCampUseOneHour);
     }
 

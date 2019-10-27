@@ -2,7 +2,7 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
+export class EmberScene implements TimeAwareInterface {
 
     // import flash.media.Video;
 
@@ -352,7 +352,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         player.gems -= 200;
         statScreenRefresh();
         player.keyItems.remove("Dragon Eggshell");
-        inventory.takeItem(weapons.DRGNSHL, telAdre.armorShop);
+        inventory.takeItem(weapons.DRGNSHL, TelAdre.armorShop);
     }
 
     // Suggested Reward:
@@ -1099,7 +1099,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             // (If player has not yet impregnated Tamani)
             else if (subChoice == 3 && !TamaniScene.pregnancy.isPregnant) outputText("one goblin being teased by a bunch of pregnant goblins for not being pregnant yet.  She just spat back that she wanted a 'better catch' to be her baby-maker than a mere imp and wandered off.");
             // (If Jojo isn't in the camp & not corrupt)
-            else if (rand(2) == 0 && monk <= 1 && player.effects.findByType(StatusAffects.PureCampJojo) < 0) outputText("this mouse-morph monk, sitting in a glade and meditating. A goblin tried to proposition him; he just gave her a lecture and sent her running away in tears.  When an imp tried to attack him, he crushed its skull with a staff he had.  Not bad moves for such a weedy little thing...");
+            else if (rand(2) == 0 && game.monk <= 1 && player.effects.findByType(StatusAffects.PureCampJojo) < 0) outputText("this mouse-morph monk, sitting in a glade and meditating. A goblin tried to proposition him; he just gave her a lecture and sent her running away in tears.  When an imp tried to attack him, he crushed its skull with a staff he had.  Not bad moves for such a weedy little thing...");
             else outputText("one glade I touched down in to catch myself a nice brace of plump coneys, when all of a sudden this... this thing made out of flailing vines and fruit attacks me.  It went up in a puff of smoke once I torched it, of course.");
         }
         else if (choice == 2) {
@@ -1343,7 +1343,7 @@ export class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\nYou try to hold a conversation with Ember, but it's hard for you to concentrate; you keep thinking about the delicious, soul-burning taste of hot, salty minotaur cum, straight from the bull-man's cock.  Inevitably, Ember asks you what the matter is and, salivating, you paint the picture for her.");
         outputText("\n\nEmber suddenly throws back " + emberMF("his", "her") + " head with a terrible roar of fury that rattles the very rocks underfoot.  \"<i>I'll kill them!  I'll bash their brains out - I'll rip off their stinking hairy hides!  I'll gorge myself on their flesh and pick my teeth with their horns!  Nobody will poison you like that - nobody!</i>\"");
         outputText("\n\nBefore you can do anything, the livid dragon spreads " + emberMF("his", "her") + " wings.  \"<i>When I return I will watch you carefully, to see that you beat this... addiction.</i>\" " + emberMF("He", "She") + " flies away, heading in the direction of the mountains.  You've never seen " + emberMF("him", "her") + " so mad before...");
-        if (followerKiha()) outputText("\n\nKiha saunters up and smirks.  \"<i>I thought I had a temper.</i>\"");
+        if (KihaFollower.followerKiha()) outputText("\n\nKiha saunters up and smirks.  \"<i>I thought I had a temper.</i>\"");
         flags[kFLAGS.EMBER_CURRENTLY_FREAKING_ABOUT_MINOCUM] = 1;
         outputText("\n");
     }

@@ -196,11 +196,11 @@ export class Holli extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.holliScene.defeatHolli();
+        HolliScene.defeatHolli();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.holliScene.enjoyYourBadEndBIYAAAATCH();
+        HolliScene.enjoyYourBadEndBIYAAAATCH();
     }
 
     public teased(lustDelta: number): void {

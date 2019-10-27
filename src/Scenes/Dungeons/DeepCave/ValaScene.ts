@@ -548,7 +548,7 @@ export function leftValaAlone(): void {
         addButton(1, "Use", useValaOHYEAHSNAPINTOASLIMJIM);
         addButton(2, "Wake", wakeValaUpBeforeYouGoGo);
     }
-    if (player.lust >= 33 && shouldraFollower.followerShouldra()) addButton(3, "ShouldraVala", shouldraFollower.shouldraMeetsCorruptVala);
+    if (player.lust >= 33 && ShouldraFollower.followerShouldra()) addButton(3, "ShouldraVala", ShouldraFollower.shouldraMeetsCorruptVala);
     addButton(4, "Leave", playerMenu);
 }
 

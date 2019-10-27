@@ -19,8 +19,8 @@ export class HighMountains {
             chooser = 1;
         }
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelScene.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         // Gats xmas adventure!
@@ -83,14 +83,14 @@ export class HighMountains {
         }
         // Sophie
         if (chooser == 2) {
-            if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || sophieFollowerScene.sophieFollower()) {
+            if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || SophieFollowerScene.sophieFollower()) {
                 outputText("A harpy wings out of the sky and attacks!", true);
                 startCombat(new Harpy());
                 spriteSelect(26);
             }
             else {
-                if (flags[kFLAGS.MET_SOPHIE_COUNTER] == 0) sophieScene.meetSophie();
-                else sophieScene.meetSophieRepeat();
+                if (flags[kFLAGS.MET_SOPHIE_COUNTER] == 0) SophieScene.meetSophie();
+                else SophieScene.meetSophieRepeat();
             }
         }
         if (chooser == 3) {

@@ -256,7 +256,7 @@ export class Ceraph extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.ceraphScene.winRapeChoices();
+        CeraphScene.winRapeChoices();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -264,7 +264,7 @@ export class Ceraph extends Monster {
             outputText("\n\nYour foe doesn't seem disgusted enough to leave...");
             doNext(game.endLustLoss);
         } else {
-            game.ceraphScene.loseFUCKME();
+            CeraphScene.loseFUCKME();
         }
     }
 

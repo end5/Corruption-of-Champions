@@ -1,5 +1,5 @@
 
-export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
+export class JojoScene implements TimeAwareInterface {
 
     public pregnancy: PregnancyStore;
 
@@ -74,7 +74,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
     }
     public campCorruptJojo(): boolean {
-        return monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
+        return game.monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
     }
 
     private jojoMutationOffer(): void {
@@ -96,20 +96,20 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         jojoSprite();
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) {
             // Corrupt Amily and Jojo sexings
-            if (flags[kFLAGS.AMILY_FOLLOWER] == 2 && amilyScene.amilyFollower() && campCorruptJojo() && flags[kFLAGS.AMILY_X_JOJO_COOLDOWN] <= 0 && rand(5) == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
+            if (flags[kFLAGS.AMILY_FOLLOWER] == 2 && AmilyScene.amilyFollower() && campCorruptJojo() && flags[kFLAGS.AMILY_X_JOJO_COOLDOWN] <= 0 && rand(5) == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
                 flags[kFLAGS.AMILY_X_JOJO_COOLDOWN] = 7;
                 hideMenus();
                 amilyTeachingJojoBJ();
                 return;
             }
             // Oh shit goes down! (Wiv Tentacles)
-            if (amilyScene.amilyFollower && flags[kFLAGS.AMILY_DISCOVERED_TENTATLE_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.effects.findByType(StatusAffects.TentacleJojo) >= 0) {
-                finter.amilyDiscoversJojoWithTentaclesAndShitOhBoy();
+            if (AmilyScene.amilyFollower && flags[kFLAGS.AMILY_DISCOVERED_TENTATLE_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.effects.findByType(StatusAffects.TentacleJojo) >= 0) {
+                FollowerInteractions.amilyDiscoversJojoWithTentaclesAndShitOhBoy();
                 return;
             }
             // Oh shit goes down! (No tentacles)
-            else if (flags[kFLAGS.AMILY_PISSED_PC_CORRUPED_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower() && player.effects.findByType(StatusAffects.TentacleJojo) < 0) {
-                finter.amilyIsPissedAtYouForRuiningJojo();
+            else if (flags[kFLAGS.AMILY_PISSED_PC_CORRUPED_JOJO] == 0 && rand(10) <= 1 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower() && player.effects.findByType(StatusAffects.TentacleJojo) < 0) {
+                FollowerInteractions.amilyIsPissedAtYouForRuiningJojo();
                 return;
             }
             // Offer lethicite jojo tf if the player is ready
@@ -898,7 +898,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     }
     // Scene 1 Result: Male Gets BJ (Z)
     private BJRidesGETYOUONE(): void {
-        amilyScene.amilySprite();
+        AmilyScene.amilySprite();
         clearOutput();
         outputText("You step into view and knowingly ask just what all the fuss is about.  Amily meekly prostrates herself before you, apologizing, \"<i>I'm sorry, [master], I merely wanted to help your boyslut learn to satisfy your needs better.</i>\"  You wait, just long enough to make her nervous.  The pregnant pause hangs in the air as both your murine whores look increasingly worried, their large, radar-like ears twitching fitfully about as they await your response.  Laughing, you undo your [armor] and ask Amily how she planned to teach without a proper 'teaching tool'.");
         outputText("\n\nThe succubus-tainted mouse looks up at you with lust pooling in her large, languid eyes.  \"<i>As you command, [master],</i>\" she whispers eagerly as she rises her feet, her spaded tail curling behind Jojo's neck, dragging him closer to you.  Flopping free, [oneCock] dangles enticingly in the air before them, swaying back and forth to a rhythm that seems almost hypnotic to your poor, corrupted sluts.  They zero in on your [cock biggest] as if it were the only thing in the world.  Even Jojo's reluctant attitude evaporates when faced with the irresistable allure of your swinging manhood.  He sits at your [feet] as eagerly as his teacher, his expression an ecstatic portrait of mesmeric cock-worship.");
@@ -930,7 +930,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     }
     // Fill Amily's Mouth (Z)
     private fillAmilysMouth(): void {
-        amilyScene.amilySprite();
+        AmilyScene.amilySprite();
         clearOutput();
         outputText("You tell Amily to open wide, and she gleefully yanks your [cock biggest] away from Jojo.  He whines pathetically but, servile as he is, the mouse-boy");
         if (player.balls > 0) outputText(" leans down to desperately suckle at your [sack], subserviently worshipping your bloated testes and their liquid bliss one after another; tonguing, sucking, and moaning into the spunk - bloated mass of your ambrosial scrotum.");
@@ -944,7 +944,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     }
     // Fill Amily's Twat (requires not short-ass, weak-ass nigga) (Z)
     private stuffAmilysMouthWithPostBJCUM(): void {
-        amilyScene.amilySprite();
+        AmilyScene.amilySprite();
         clearOutput();
         outputText("You tell Amily to hurry up and climb on.  With a squeak of joy, she bounds up into your arms, immediately sinking her plush little pussy onto your lap and swallowing your cocktip.  Surprising you with her control, she holds herself like that, restraining herself from taking in your whole [cock biggest] and instead bouncing up and down atop your peak while Jojo attends to the lower portion of your manhood with his eager tongue.  He tentatively licks along the swell of your shaft, sucking at the sensitive underside and planting desperate kisses over your length, lapping up Amily's freely flowing juices as she rides the crest of your pulsing tip.  The mouse-girl's ears tickle as they brush against you, her voice husky with desperate need.  \"<i>Please, [master], give slut your seed.  Her cunny needs to be filled sooo badly.  Make me your pregnant, baby-bloated whore, [master]!</i>\"");
         outputText("\n\nAs if you'd resist such an invitation!  You squeeze your demon mouse tightly and push her further down, impaling her juicy snatch ");
@@ -955,7 +955,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -1);
         // {DONT FORGET PREGNANCY CHECK}
-        amilyScene.amilyPreggoChance();
+        AmilyScene.amilyPreggoChance();
         doNext(camp.returnToCampUseOneHour);
     }
     // Fill Jojo's Mouth (Z)
@@ -1063,7 +1063,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     private postCombatRape(): void {
         jojoSprite();
         outputText("  You disrobe and prepare to ");
-        if (monk == 5)
+        if (game.monk == 5)
             outputText("fuck your violent little slut senseless.  ");
         else outputText("teach the uppity monk a lesson...\n\n");
         menu();
@@ -1079,7 +1079,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.effects.findByType(StatusAffects.EverRapedJojo) < 0)
             player.effects.create(StatusAffects.EverRapedJojo, 1, 0, 0, 0);
         else player.effects.addValue(StatusAffects.EverRapedJojo, 1, 1);
-        switch (monk) {
+        switch (game.monk) {
             case 1:
                 jojosFirstRape();
                 break;
@@ -1110,14 +1110,14 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("With a satisfied sigh, you pull your " + cockDescript(game.player, 0) + " out with an audible 'pop'.  Your cum begins leaking out, pooling under him and mixing with his own.  The little guy must have cum hard; he seems fairly comatose.  As you leave your senseless victim, you realize  you feel more satisfied than you have in a while, almost like you've cum so hard it took some of your libido with it.");
                 player.orgasm();
                 dynStats("lib", -10, "cor", 4);
-                monk += 1;
+                game.monk += 1;
             }
             else {
                 outputText("You grin and press your " + multiCockDescriptLight(game.player) + " against him, making him squeal in protest.  You press on, eager to violate his tight asshole, reveling in the crushing tightness.  His muscles quiver nervelessly as you pound him raw, his muted protests getting weaker as you notice a rapidly swelling bulge under him.  You reach around and begin jerking him off as you fuck him, fantasizing about pouring him full of corruptive demon power, making him your slave.  The dirty thoughts make your balls feel full, a pulsing squeezing tightness building in your nethers as your " + cockDescript(game.player, 0) + " flexes and bulges inside your prey.  You cum hard, pressing his muzzle into the dirt as you pump glob after glob of cum up his ass, violating him to his core.  Cum sprays over his ass, the rest of your equipment soaking him as it cums as hard as the one you sank up into the mouse-hole.\n\n");
                 outputText("With a satisfied sigh, you pull your " + cockDescript(game.player, 0) + " out with an audible 'pop'.  Your cum begins leaking out, pooling under him and mixing with his own.  The little guy must have cum hard, he seems fairly comatose.  As you leave your senseless victim, you realize  you feel more satisfied than you have in a while, almost like you've cum so hard it took some of your libido with it.");
                 player.orgasm();
                 dynStats("lib", -10, "cor", 4);
-                monk += 1;
+                game.monk += 1;
             }
         }
         else if (player.gender == 2) {
@@ -1154,7 +1154,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
             player.orgasm();
             dynStats("lib", -10, "cor", 4);
-            monk += 1;
+            game.monk += 1;
 
             // Preggers chance!
             player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); // Jojo's kids take longer for some reason
@@ -1180,7 +1180,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\nWith a satisfied sigh, you pull your " + cockDescript(game.player, 0) + " out with an audible 'pop'.  Your cum begins leaking out, pooling under him and mixing with his own.  The little guy must have cum hard, he seems fairly comatose.  As you leave your senseless victim, you realize  you feel more satisfied than you have in a while, almost like you've cum so hard it took some of your libido with it.");
                 player.orgasm();
                 dynStats("lib", -10, "cor", 4);
-                monk += 1;
+                game.monk += 1;
             }
             else {
                 outputText("You grin and press your " + multiCockDescriptLight(game.player) + " against him, making him squeal in protest.  You press on, eager to violate his tight asshole, reveling in the crushing tightness.  His muscles quiver nervelessly as you pound him raw, his muted protests getting weaker as you notice a rapidly swelling bulge under him.  You reach around and begin jerking him off as you fuck him, fantasizing about pouring him full of corruptive demon power, making him your slave.  The dirty thoughts make your balls feel full, a pulsing squeezing tightness building in your nethers as your " + cockDescript(game.player, 0) + " flexes and bulges inside your prey.  You cum hard, pressing his muzzle into the dirt as you pump glob after glob of cum up his ass, violating him to his core.  Cum sprays over his ass, the rest of your equipment soaking him as it cums as hard as the one you sank up into the mouse-hole.  Your pussy quivers, cumming as well, feeling empty.  Mentally you resolve to take his cock's virginity next time.");
@@ -1199,7 +1199,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\nWith a satisfied sigh, you pull your " + cockDescript(game.player, 0) + " out with an audible 'pop'.  Your cum begins leaking out, pooling under him and mixing with his own.  The little guy must have cum hard, he seems fairly comatose.  As you leave your senseless victim, you realize  you feel more satisfied than you have in a while, almost like you've cum so hard it took some of your libido with it.");
                 player.orgasm();
                 dynStats("lib", -10, "cor", 4);
-                monk += 1;
+                game.monk += 1;
             }
         }
     }
@@ -1207,7 +1207,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     private jojosSecondRape(): void {
         clearOutput();
         outputText("The poor mouse is already hard... his cock is throbbing eagerly as it protrudes through the opening in his robe, looking nearly eight inches long.  You're pretty sure it wasn't that big last time.\n\n");
-        monk += 1;
+        game.monk += 1;
         player.orgasm();
         dynStats("lib", -10, "cor", 4);
         if (player.gender == 1) {
@@ -1260,7 +1260,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             player.orgasm();
             if (player.lib > 60 && player.cor > 40) {
                 outputText("You smile as you hear him begin masturbating in the background.  There can be no doubt, you are tainting him more and more...");
-                monk += 1;
+                game.monk += 1;
                 dynStats("lib", -10, "cor", 4);
             }
             else {
@@ -1298,7 +1298,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             player.orgasm();
             if (player.lib > 60 && player.cor > 50) {
                 outputText("You lean down and whisper strange un-words as you stroke his cock.  It spasms and grows, cum pumping from it slowly but constantly.  You walk away, leaving him in a growing puddle of what was once his morals.  You don't know where the words came from, but you do know you're getting better at tempting and corrupting.");
-                monk += 1;
+                game.monk += 1;
                 dynStats("lib", -10, "cor", 4);
             }
             else {
@@ -1339,7 +1339,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             player.orgasm();
             if (player.lib > 60 && player.cor > 50) {
                 outputText("You lean down and whisper strange un-words as you stroke his cock.  It spasms and grows, cum pumping from it slowly but constantly.  You walk away, leaving him in a growing puddle of what was once his morals.  You don't know where the words came from, but you do know you're getting better at tempting and corrupting.");
-                monk += 1;
+                game.monk += 1;
                 dynStats("lib", -10, "cor", 4);
             }
             else {
@@ -1374,7 +1374,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("<b>You feel a familiar power growing within you and decide to unleash it.</b>  You grab the prayer beads from his outfit and spit on them, making them slick and wet.  Holding them below your flagging cock, you focus on the demonic visions in your mind, slowly but constantly milking larger and larger dollops of cum onto the once holy beads.  Jojo moans as he comes to understand your intent, and turns around, shaking his lithe mouse-bum at you.  You lean over him, whispering into his ear, \"<i>Each defiled bead I push into you is going to make you more of a willing slut.  More of a willing receptacle for demon cum.  More of a fountain of desire waiting to be tapped by Succubi.  More my toy.</i>\"\n\n");
                 outputText("He whimpers as you slide the first bead in, his eyes growing foggy and his bum wiggling more eagerly.  You push the second bead inside him, and feel his asshole stretch and loosen, welcoming the corruption.  The third bead slips right in, and he moans, \"<i>sluuuut</i>,\" His cock grows longer and thicker throughout the moan, stopping at over a foot long and 3 inches thick, dribbling cum.  You whisper, \"<i>Cum, my Toy,</i>\" and push the remaining beads inside him.  His eyes roll back as his paws frantically milk his " + cockDescriptShort(monster, 0) + ", cum spraying from him like a fountain.  Jojo trembles, losing complete control and falling away from you.  You still hold the end of his beads, and smile as they pop out, stained almost as dark as the poor mouse's soul.\n\n");
                 outputText("You walk away, leaving your new pet to explore his outlook on life, and to test your awakened powers.  ");
-                monk += 1;
+                game.monk += 1;
                 player.orgasm();
                 dynStats("lib", -10, "cor", 10);
             }
@@ -1458,7 +1458,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\n<b>You feel a familiar power growing within you and decide to unleash it.</b>  You grab the prayer beads from his outfit and spit on them, making them slick and wet.  Holding them below his flagging cock, you focus on the demonic visions in your mind, slowly but constantly milking larger and larger dollops of cum onto the once holy beads.  Jojo moans as he comes to understand your intent, and turns around, shaking his lithe mouse-bum at you.  You lean over him, whispering into his ear, \"<i>Each defiled bead I push into you is going to make you more of a willing slut.  More of a willing receptacle for demon cum.  More of a fountain of desire waiting to be tapped by Succubi.  More my toy.</i>\"\n\n");
                 outputText("He whimpers as you slide the first bead in, his eyes growing foggy and his bum wiggling more eagerly.  You push the second bead inside him, and feel his asshole stretch and loosen, welcoming the corruption.  The third bead slips right in, and he moans, \"<i>sluuuut</i>,\" His cock grows longer and thicker throughout the moan, stopping at over a foot long and 3 inches thick, dribbling cum.  You whisper, \"<i>Cum, my Toy,</i>\" and push the remaining beads inside him.  His eyes roll back as his paws frantically milk his " + cockDescriptShort(monster, 0) + ", cum spraying from him like a fountain.  Jojo trembles, losing complete control and falling away from you.  You still hold the end of his beads, and smile as they pop out, stained almost as dark as the poor mouse's soul.\n\n");
                 outputText("You walk away, leaving your new pet to explore his outlook on life, and to test your awakened powers.  ");
-                monk += 1;
+                game.monk += 1;
                 player.orgasm();
                 dynStats("lib", -10, "cor", 10);
             }
@@ -1485,7 +1485,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
     public loseToJojo(): void {
         clearOutput();
-        if (monk == 2 || monk == 3) {
+        if (game.monk == 2 || game.monk == 3) {
             outputText("Jojo glares down at you, and begins praying, slowly laying prayer papers all over your battered form.  You feel rage that quickly dissipates, replaced with a calm sense of peace.  You quickly lose consciousness, but are happy he defeated you.\n\nWhen you wake, you discover a note:\n\"<i>The fighting allowed me to exorcise most of your inner demons.  A part of me wanted to seek revenge for what you had done to me, but I know it was the taint on your soul that was responsible.  If we meet again I would be happy to meditate with you.\n\n          -Jojo.</i>\"");
             player.orgasm();
             dynStats("lib", -10., "cor", -15);
@@ -1499,7 +1499,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             if (player.cocks.horseCocks() > 0) player.lib += 3;
             if (player.cocks.dogCocks() > 0) player.lib += 2;
             if (player.breasts.biggestLactation() >= 1) player.lib += 2;
-            monk = 0;
+            game.monk = 0;
         }
         else {
             outputText("Jojo grins wickedly as he senses your defeat, " + cockDescriptShort(monster, 0) + " throbbing hard.  ");
@@ -2281,7 +2281,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
         }
         if (player.effects.getValue1Of(StatusAffects.JojoMeditationCount) % 5 == 0) {
             outputText("\n\nYou ponder and get an idea - the mouse could stay at your camp.  There's safety in numbers, and it would be easier for the two of you to get together for meditation sessions.  Do you want Jojo's company at camp?", false);
-            doYesNo(jojoScene.acceptJojoIntoYourCamp, camp.returnToCampUseTwoHours);
+            doYesNo(JojoScene.acceptJojoIntoYourCamp, camp.returnToCampUseTwoHours);
             return;
         }
         else
@@ -2330,7 +2330,7 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
     public jojoCamp(): void {
         clearOutput();
         jojoSprite();
-        if (flags[kFLAGS.AMILY_MET_PURE_JOJO] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower()) {
+        if (flags[kFLAGS.AMILY_MET_PURE_JOJO] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower()) {
             followerInteractions.amilyMeetsPureJojo();
             return;
         }
@@ -2815,11 +2815,11 @@ export class JojoScene extends NPCAwareContent implements TimeAwareInterface {
             // Lookit all these different ways followers are tracked! fml.
             if (player.effects.findByType(StatusAffects.CampMarble) >= 0) enlightenedBlurbs.push("You can hear Marble humming a song to herself you can’t place.");
             if (flags[kFLAGS.AMILY_FOLLOWER] > 0) enlightenedBlurbs.push("You can hear Amily changing the bedding to her nest.");
-            if (emberScene.followerEmber()) enlightenedBlurbs.push("You can hear Ember cleaning" + emberScene.emberMF("his", "her") + "scales.");
+            if (EmberScene.followerEmber()) enlightenedBlurbs.push("You can hear Ember cleaning" + EmberScene.emberMF("his", "her") + "scales.");
             if (player.effects.findByType(StatusAffects.CampRathazul) >= 0) enlightenedBlurbs.push("You can hear Rathazul experimenting with surprisingly nimble fingers.");
-            if (sophieFollower()) enlightenedBlurbs.push("You can hear Sophie breathing as she sleeps.");
+            if (SophieFollowerScene.sophieFollower()) enlightenedBlurbs.push("You can hear Sophie breathing as she sleeps.");
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] > 0) enlightenedBlurbs.push("You can hear Izma flipping through the pages of a book."); // TODO: (if Izmael gets put in) you can hear Izmael doing push ups to stay fit.
-            if (helScene.followerHel()) enlightenedBlurbs.push("You can hear Helia throwing her fists at nothing.");
+            if (HelScene.followerHel()) enlightenedBlurbs.push("You can hear Helia throwing her fists at nothing.");
 
             outputText(enlightenedBlurbs[rand(enlightenedBlurbs.length)] + "\n\n");
         }

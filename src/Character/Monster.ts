@@ -618,7 +618,7 @@ export class Monster extends Creature {
         }
         // Exgartuan gets to do stuff!
         if (game.player.effects.findByType(StatusAffects.Exgartuan) >= 0 && game.player.effects.getValue2Of(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
-            if (game.exgartuan.exgartuanCombatUpdate()) outputText("\n\n", false);
+            if (Exgartuan.exgartuanCombatUpdate()) outputText("\n\n", false);
         }
         if (this.effects.findByType(StatusAffects.Constricted) >= 0) {
             if (!handleConstricted()) return;

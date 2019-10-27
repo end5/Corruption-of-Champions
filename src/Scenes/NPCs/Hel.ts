@@ -141,8 +141,8 @@ export class Hel extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        if (this.effects.findByType(StatusAffects.Sparring) >= 0) game.helFollower.PCBeatsUpSalamanderSparring();
-        else game.helScene.beatUpHel();
+        if (this.effects.findByType(StatusAffects.Sparring) >= 0) HelFollower.PCBeatsUpSalamanderSparring();
+        else HelScene.beatUpHel();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -150,8 +150,8 @@ export class Hel extends Monster {
             outputText("\n\nHelia waits it out in stoic silence...");
             doNext(game.endLustLoss);
         } else {
-            if (this.effects.findByType(StatusAffects.Sparring) >= 0) game.helFollower.loseToSparringHeliaLikeAButtRapedChump();
-            else game.helScene.loseToSalamander();
+            if (this.effects.findByType(StatusAffects.Sparring) >= 0) HelFollower.loseToSparringHeliaLikeAButtRapedChump();
+            else HelScene.loseToSalamander();
         }
     }
 

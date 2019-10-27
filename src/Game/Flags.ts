@@ -536,7 +536,7 @@ export class kFLAGS {
     public static EMBER_ROUNDFACE: number = 531; // 0 for anthro Ember, 1 for dragon-girl Ember. (You might want to control this with the Type flag since only default Embers use this variable.)
     public static EMBER_EGG_FLUID_COUNT: number = 532; // This controls when it's time to hatch. Every item use and every time you use the egg as a masturbation aid, this will be incremented. Threshold for birthing is 5, but the birthing process can only be triggered when using as a masturbatory aid. This is done to allow players the chance to modify Ember before actually hatching.
     public static EMBER_STAT: number = 533; // All Embers have a hidden stat, Corrupt has Ego, Pure has Confidence, Tainted has Affection, and hybrids vary. There is a need to track this, but only 1 special stat for every Ember.
-    public static EMBER_INTERNAL_DICK: number = 534; // Dragon-girl Ember can have either a internal sheath to keep " + emberMF("his","her") + " dick in or have it be more human-like. 0 = internal, 1 = external.
+    public static EMBER_INTERNAL_DICK: number = 534; // Dragon-girl Ember can have either a internal sheath to keep " + EmberScene.emberMF("his","her") + " dick in or have it be more human-like. 0 = internal, 1 = external.
     public static TIMES_EQUIPPED_EMBER_SHIELD: number = 535; //
     public static TOOK_EMBER_EGG: number = 536; // PC Take ember's egg home?
     public static EGG_BROKEN: number = 537; // PC Smash!? ember's egg?

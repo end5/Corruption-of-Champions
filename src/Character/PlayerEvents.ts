@@ -158,7 +158,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00285] >= 50 && player.perks.findByType(PerkLib.LuststickAdapted) < 0) { // Luststick resistance unlock
-            sophieBimbo.unlockResistance();
+            SophieBimbo.unlockResistance();
             if (player.effects.findByType(StatusAffects.Luststick) >= 0) player.effects.remove(StatusAffects.Luststick);
             needNext = true;
         }
@@ -679,12 +679,12 @@ export class PlayerEvents implements TimeAwareInterface {
             }
             if (game.time.days % 7 == 0) flags[kFLAGS.WHITNEY_GEMS_PAID_THIS_WEEK] = 0; // Clear Whitney's Weekly limit
             if (flags[kFLAGS.USED_MILKER_TODAY] > 0) flags[kFLAGS.USED_MILKER_TODAY] = 0; // Clear 'has fucked milker today'
-            if (latexGirl.latexGooFollower()) { // Latex goo follower daily updates
-                latexGirl.gooFluid(-2, false);
-                if (latexGirl.gooFluid() < 50) latexGirl.gooHappiness(-1, false);
-                if (latexGirl.gooFluid() < 25) latexGirl.gooHappiness(-1, false);
-                if (latexGirl.gooHappiness() < 75) latexGirl.gooObedience(-1, false);
-                if (latexGirl.gooHappiness() >= 90) latexGirl.gooObedience(1, false);
+            if (LatexGirl.latexGooFollower()) { // Latex goo follower daily updates
+                LatexGirl.gooFluid(-2, false);
+                if (LatexGirl.gooFluid() < 50) LatexGirl.gooHappiness(-1, false);
+                if (LatexGirl.gooFluid() < 25) LatexGirl.gooHappiness(-1, false);
+                if (LatexGirl.gooHappiness() < 75) LatexGirl.gooObedience(-1, false);
+                if (LatexGirl.gooHappiness() >= 90) LatexGirl.gooObedience(1, false);
             }
             FarmCorruption.updateFarmCorruption(); // Farm Corruption updating
             if (player.effects.findByType(StatusAffects.Contraceptives) >= 0) { // Herbal contraceptives countdown
@@ -806,7 +806,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 default: ceraph = 3;
             }
             if (ceraph > 0 && game.time.days % ceraph == 0) {
-                ceraphScene.ceraphBodyPartDreams();
+                CeraphScene.ceraphBodyPartDreams();
                 return true;
             }
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00157] > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00157] < 4) { // Dominika Dream
@@ -814,8 +814,8 @@ export class PlayerEvents implements TimeAwareInterface {
                 Dominika.fellatrixDream();
                 return true;
             }
-            if (anemoneScene.kidAXP() >= 40 && flags[kFLAGS.HAD_KID_A_DREAM] == 0 && player.gender > 0) {
-                anemoneScene.kidADreams();
+            if (AnemoneScene.kidAXP() >= 40 && flags[kFLAGS.HAD_KID_A_DREAM] == 0 && player.gender > 0) {
+                AnemoneScene.kidADreams();
                 flags[kFLAGS.HAD_KID_A_DREAM] = 1;
                 return true;
             }

@@ -280,7 +280,7 @@ export class GooGirlScene extends AbstractLakeContent {
             let sex3N: () => void = null;
             let sex4S: string = "";
             let sex4N: () => void = null;
-            let valeria: () => void = valeria.valeriaAndGooThreeStuff;
+            let valeria: () => void = Valeria.valeriaAndGooThreeStuff;
             if (player.armorName != "goo armor" || player.isButtPregnant() || player.isPregnant()) valeria = null;
             let eggs: () => void = null;
             if (player.canOvipositBee()) eggs = layBeeEggsInGoo;
@@ -314,7 +314,7 @@ export class GooGirlScene extends AbstractLakeContent {
             // corrupt chances
             if ((flags[kFLAGS.GOO_TFED_MEAN] == 0 && flags[kFLAGS.GOO_TFED_NICE] == 0) && flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS] >= 2) {
                 if (player.cor < 50 && (player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && (player.hasItem(consumables.BLACKEG) || player.hasItem(consumables.L_BLKEG))) {
-                    latexGirl.pureGooRecruitmentStart();
+                    LatexGirl.pureGooRecruitmentStart();
                     return;
                 }
                 else if (flags[kFLAGS.PC_KNOWS_ABOUT_BLACK_EGGS] > 0) {
@@ -330,7 +330,7 @@ export class GooGirlScene extends AbstractLakeContent {
                     }
                     if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && (player.hasItem(consumables.BLACKEG) || player.hasItem(consumables.L_BLKEG))) {
                         outputText("  Good thing you have those handy!");
-                        gooTF = latexGirl.meanGooGirlRecruitment;
+                        gooTF = LatexGirl.meanGooGirlRecruitment;
                     }
                 }
             }

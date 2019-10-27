@@ -242,7 +242,7 @@ export class Amily extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.amilyScene.conquerThatMouseBitch();
+        AmilyScene.conquerThatMouseBitch();
     }
 
     public constructor() {

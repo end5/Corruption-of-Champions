@@ -382,7 +382,7 @@ function wait(): void {
         player.effects.addValue(StatusAffects.GooArmorBind, 1, 1);
         if (player.effects.getValue1Of(StatusAffects.GooArmorBind) >= 5) {
             if (monster.effects.findByType(StatusAffects.Spar) >= 0)
-                valeria.pcWinsValeriaSparDefeat();
+                Valeria.pcWinsValeriaSparDefeat();
             else gooArmorBeatsUpPC();
             return;
         }
@@ -580,7 +580,7 @@ function fireBow(): void {
         if (monster.effects.findByType(StatusAffects.Blind) >= 0)
             outputText("Isabella hears the shot and turns her shield towards it, completely blocking it with her wall of steel.\n\n");
         else outputText("You arrow thunks into Isabella's shield, completely blocked by the wall of steel.\n\n");
-        if (isabellaFollowerScene.isabellaAccent())
+        if (IsabellaFollowerScene.isabellaAccent())
             outputText("\"<i>You remind me of ze horse-people.  They cannot deal vith mein shield either!</i>\" cheers Isabella.\n\n");
         else outputText("\"<i>You remind me of the horse-people.  They cannot deal with my shield either!</i>\" cheers Isabella.\n\n");
         enemyAI();
@@ -1390,7 +1390,7 @@ export function dropItem(monster: Monster): void {
             flags[kFLAGS.FORCE_BEE_TO_PRODUCE_HONEY] = 0;
         }
     }
-    if (monster instanceof Jojo && monk > 4) {
+    if (monster instanceof Jojo && game.monk > 4) {
         if (rand(2) == 0) itype = consumables.INCUBID;
         else {
             if (rand(2) == 0) itype = consumables.B__BOOK;
@@ -1404,7 +1404,7 @@ export function dropItem(monster: Monster): void {
     }
     // Chance of armor if at level 1 pierce fetish
     if (!plotFight && !(monster instanceof Ember) && !(monster instanceof Kiha) && !(monster instanceof Hel) && !(monster instanceof Isabella)
-        && flags[kFLAGS.PC_FETISH] == 1 && rand(10) == 0 && !player.hasItem(armors.SEDUCTA, 1) && !ceraphFollowerScene.ceraphIsFollower()) {
+        && flags[kFLAGS.PC_FETISH] == 1 && rand(10) == 0 && !player.hasItem(armors.SEDUCTA, 1) && !CeraphFollowerScene.ceraphIsFollower()) {
         itype = armors.SEDUCTA;
     }
 
@@ -1934,9 +1934,9 @@ export function startCombat(monster_: Monster, plotFight_: boolean = false): voi
     game.inCombat = true;
     monster = monster_;
     if (monster.short == "Ember") {
-        monster.pronoun1 = emberScene.emberMF("he", "she");
-        monster.pronoun2 = emberScene.emberMF("him", "her");
-        monster.pronoun3 = emberScene.emberMF("his", "her");
+        monster.pronoun1 = EmberScene.emberMF("he", "she");
+        monster.pronoun2 = EmberScene.emberMF("him", "her");
+        monster.pronoun3 = EmberScene.emberMF("his", "her");
     }
     // Reduce enemy def if player has precision!
     if (player.perks.findByType(PerkLib.Precision) >= 0 && player.inte >= 25) {
@@ -1955,9 +1955,9 @@ export function startCombatImmediate(monster_: Monster, _plotFight: boolean): vo
     game.inCombat = true;
     monster = monster_;
     if (monster.short == "Ember") {
-        monster.pronoun1 = emberScene.emberMF("he", "she");
-        monster.pronoun2 = emberScene.emberMF("him", "her");
-        monster.pronoun3 = emberScene.emberMF("his", "her");
+        monster.pronoun1 = EmberScene.emberMF("he", "she");
+        monster.pronoun2 = EmberScene.emberMF("him", "her");
+        monster.pronoun3 = EmberScene.emberMF("his", "her");
     }
     // Reduce enemy def if player has precision!
     if (player.perks.findByType(PerkLib.Precision) >= 0 && player.inte >= 25) {
@@ -3947,7 +3947,7 @@ export function spellBlind(): void {
         else outputText("is blinded!</b>", false);
         monster.effects.create(StatusAffects.Blind, 5 * spellMod(), 0, 0, 0);
         if (monster.short == "Isabella")
-            if (isabellaFollowerScene.isabellaAccent()) outputText("\n\n\"<i>Nein! I cannot see!</i>\" cries Isabella.", false);
+            if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n\"<i>Nein! I cannot see!</i>\" cries Isabella.", false);
             else outputText("\n\n\"<i>No! I cannot see!</i>\" cries Isabella.", false);
         if (monster.short == "Kiha") outputText("\n\n\"<i>You think blindness will slow me down?  Attacks like that are only effective on those who don't know how to see with their other senses!</i>\" Kiha cries defiantly.", false);
         if (monster.short == "plain girl") {
@@ -4161,7 +4161,7 @@ export function hellFire(): void {
     }
     if (monster.short == "Isabella") {
         outputText("  Isabella shoulders her shield into the path of the crimson flames.  They burst over the wall of steel, splitting around the impenetrable obstruction and washing out harmlessly to the sides.\n\n", false);
-        if (isabellaFollowerScene.isabellaAccent()) outputText("\"<i>Is zat all you've got?  It'll take more than a flashy magic trick to beat Izabella!</i>\" taunts the cow-girl.\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>Is zat all you've got?  It'll take more than a flashy magic trick to beat Izabella!</i>\" taunts the cow-girl.\n\n", false);
         else outputText("\"<i>Is that all you've got?  It'll take more than a flashy magic trick to beat Isabella!</i>\" taunts the cow-girl.\n\n", false);
         enemyAI();
         return;
@@ -4723,7 +4723,7 @@ export function fireballuuuuu(): void {
 
     if (monster.short == "Isabella") {
         outputText("Isabella shoulders her shield into the path of the emerald flames.  They burst over the wall of steel, splitting around the impenetrable obstruction and washing out harmlessly to the sides.\n\n", false);
-        if (isabellaFollowerScene.isabellaAccent()) outputText("\"<i>Is zat all you've got?  It'll take more than a flashy magic trick to beat Izabella!</i>\" taunts the cow-girl.\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>Is zat all you've got?  It'll take more than a flashy magic trick to beat Izabella!</i>\" taunts the cow-girl.\n\n", false);
         else outputText("\"<i>Is that all you've got?  It'll take more than a flashy magic trick to beat Isabella!</i>\" taunts the cow-girl.\n\n", false);
         enemyAI();
         return;
@@ -5048,7 +5048,7 @@ export function runAway(callHook: boolean = true): void {
         }
         // Fail:
         else {
-            outputText("Despite some impressive jinking, " + emberScene.emberMF("he", "she") + " catches you, tackling you to the ground.\n\n");
+            outputText("Despite some impressive jinking, " + EmberScene.emberMF("he", "she") + " catches you, tackling you to the ground.\n\n");
             enemyAI();
         }
         return;
@@ -5506,7 +5506,7 @@ export function immolationSpell(): void {
     temp = doDamage(temp);
     outputText(" (" + temp + ")\n\n");
     player.effects.remove(StatusAffects.ImmolationSpell);
-    arianScene.clearTalisman();
+    ArianScene.clearTalisman();
     enemyAI();
 }
 
@@ -5515,6 +5515,6 @@ export function shieldingSpell(): void {
     outputText("You gather energy in your Talisman and unleash the spell contained within.  A barrier of light engulfs you, before turning completely transparent.  Your defense has been increased.\n\n");
     player.effects.create(StatusAffects.Shielding, 0, 0, 0, 0);
     player.effects.remove(StatusAffects.ShieldingSpell);
-    arianScene.clearTalisman();
+    ArianScene.clearTalisman();
     enemyAI();
 }

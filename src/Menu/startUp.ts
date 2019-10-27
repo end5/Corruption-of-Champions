@@ -110,7 +110,7 @@ Also go play <u><a href='http://www.furaffinity.net/view/9830293/'>Nimin</a></u>
         outputText("\n\n<b>It's Easter!  Enjoy the eggs!</b>");
     if (isValentine())
         outputText("\n\n<b>It's Valentine's!</b>");
-    if (helFollower.isHeliaBirthday())
+    if (HelFollower.isHeliaBirthday())
         outputText("\n\n<b>It's Helia's Birthday Month!</b>");
 
 }

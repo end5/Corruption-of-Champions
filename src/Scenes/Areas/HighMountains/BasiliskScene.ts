@@ -430,7 +430,7 @@ export class BasiliskScene {
 
             // (add harpy lipstick effect, add 20 fatigue and lose 100 lust if M/H, or add 100 lust if F/U)
             fatigue(20);
-            sophieScene.luststickApplication(20);
+            SophieScene.luststickApplication(20);
             player.orgasm();
         }
         // Female:

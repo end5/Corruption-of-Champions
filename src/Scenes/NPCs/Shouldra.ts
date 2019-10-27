@@ -77,11 +77,11 @@ export class Shouldra extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.shouldraScene.defeatDannyPhantom();
+        ShouldraScene.defeatDannyPhantom();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.shouldraScene.loseToShouldra();
+        ShouldraScene.loseToShouldra();
     }
 
     public constructor() {

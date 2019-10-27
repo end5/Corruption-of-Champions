@@ -1,5 +1,5 @@
 
-export class HolliScene extends NPCAwareContent {
+export class HolliScene {
 
     // VARS
     // const TIMES_FUCKED_FLOWER:int = 594;
@@ -1108,7 +1108,7 @@ export class HolliScene extends NPCAwareContent {
             }
             statScreenRefresh();
             // [(if no Vapula)]
-            if (!vapulaSlave()) {
+            if (!Vapula.vapulaSlave()) {
                 outputText("\n\nThe monk nods to you.  With the demon gone, you could probably invite him to remain in camp - after all, you are quite a good team.  Do you offer to let Jojo stay?");
                 // [yes][no]
                 menu();

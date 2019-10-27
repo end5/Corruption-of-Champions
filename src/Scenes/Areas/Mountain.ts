@@ -8,8 +8,8 @@ export class Mountain {
         player.exploredMountain++;
         let chooser: number = rand(4);
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelScene.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         // Discover 'high mountain' at level 5 or 40 explores of mountain
@@ -51,13 +51,13 @@ export class Mountain {
         }
         // Rarer 'nice' Ceraph encounter
         // Overlaps half the old encounters once pierced.
-        if (!ceraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 30 == 0) && flags[kFLAGS.PC_FETISH] > 0) {
-            ceraphScene.friendlyNeighborhoodSpiderManCeraph();
+        if (!CeraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 30 == 0) && flags[kFLAGS.PC_FETISH] > 0) {
+            CeraphScene.friendlyNeighborhoodSpiderManCeraph();
             return;
         }
         // 15% chance of Ceraph
-        if (!ceraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 15 == 0) && flags[kFLAGS.PC_FETISH] != 1) {
-            ceraphScene.encounterCeraph();
+        if (!CeraphFollowerScene.ceraphIsFollower() && player.level > 2 && (player.exploredMountain % 15 == 0) && flags[kFLAGS.PC_FETISH] != 1) {
+            CeraphScene.encounterCeraph();
             return;
         }
         // 10% chance of hairdresser encounter if not found yet

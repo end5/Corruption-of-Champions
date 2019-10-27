@@ -1,7 +1,7 @@
 
-export class SophieBimbo extends NPCAwareContent {
+export class SophieBimbo {
 
-    private get pregnancy(): PregnancyStore { return sophieScene.pregnancy; } // Quick way to access sophie's pregnancyStore
+    private get pregnancy(): PregnancyStore { return SophieScene.pregnancy; } // Quick way to access sophie's pregnancyStore
 
     // VARS
     // 282	Sophie Bimbo Follower?
@@ -140,15 +140,15 @@ export class SophieBimbo extends NPCAwareContent {
             if (flags[kFLAGS.AMILY_FOLLOWER] == 1) outputText("flushes hotly and denies the bimbo's request with a terse 'no'.", false);
             else outputText("flushes hotly and wiggles her hips Sophie's way.  The slutty, corrupted mouse and Sophie will clearly be helping to sate each other's needs in your absence.", false);
         }
-        else if (monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
+        else if (game.monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
             outputText("  Afterwards, she offers to suck Jojo's cock.  The corrupted slut-mouse nods and stiffens in delight, though he keeps glancing back your way.  Those two will probably spend a lot of time together...", false);
         }
         else if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) {
             outputText("  Afterwards, she offers to suck Jojo's cock.  The chaste mouse's jaw drops, but when he picks it up, he answers, \"<i>Never.  My body is as pure as my soul!</i>\"", false);
         }
-        else if (isabellaFollowerScene.isabellaFollower()) {
+        else if (IsabellaFollowerScene.isabellaFollower()) {
             outputText("  Afterwards, she offers to lick Isabella's cunt.  Isabella answers sternly, ");
-            if (isabellaAccent()) outputText("\"<i> Nein!  But you can drink mein milk from time to time.</i>\"");
+            if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i> Nein!  But you can drink mein milk from time to time.</i>\"");
             else outputText("“<i>No! But you can still drink my milk from time to time.</i>”");
             outputText("  The cow-girl is blushing hotly.  You've no doubt after a few nipple-licks she'll be spreading her thick thighs for the bimbo harpy.", false);
         }
@@ -242,7 +242,7 @@ export class SophieBimbo extends NPCAwareContent {
             addButton(0, "Sex", bimboSophieSexMenu);
         }
         if (player.hasItem(consumables.DEBIMBO)) {
-            addButton(4, "Debimbo", sophieFollowerScene.unbimboSophie);
+            addButton(4, "Debimbo", SophieFollowerScene.unbimboSophie);
             if (output) outputText("\n\n<b>You could use the bottle of debimbo to return Sophie's intellect...</b>");
         }
         if (flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] > 0 && output) outputText("\n\n<b>Sophie's egg is sitting nearby.</b>");
@@ -470,7 +470,7 @@ export class SophieBimbo extends NPCAwareContent {
             addButton(7, "Visit Izma", tellSophieToVisitIzma);
         }
         if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 && flags[kFLAGS.SOPHIE_FAMILY_INCEST] > 0 && player.cocks.cockThatFits(sophieCapacity()) >= 0 && player.cocks.length > 0)
-            addButton(8, "DaughterFuck", sophieFollowerScene.sophieIncestInHerCooterOrSomethingIDunno);
+            addButton(8, "DaughterFuck", SophieFollowerScene.sophieIncestInHerCooterOrSomethingIDunno);
         addButton(9, "Leave", approachBimboSophieInCamp);
     }
 
@@ -498,7 +498,7 @@ export class SophieBimbo extends NPCAwareContent {
                 outputText("You shiver, " + sMultiCockDesc(game.player) + " growing hard and ready to submit to the feathery blond's love.  Perhaps you'll take care of that soon...", false);
                 dynStats("lus", 15);
             }
-            sophieScene.luststickApplication(5);
+            SophieScene.luststickApplication(5);
         }
         else if (select == 1) {
             sophieSprite();
@@ -511,7 +511,7 @@ export class SophieBimbo extends NPCAwareContent {
                 outputText("Pushing her back, you try not to make contact against her with " + oMultiCockDesc(game.player) + ".  Your lips tingle dangerously, and you know you'll be lusting after harpies for at least a few hours.", false);
                 dynStats("lus", 15);
             }
-            sophieScene.luststickApplication(5);
+            SophieScene.luststickApplication(5);
         }
         else if (select == 2) {
             sophieSprite();
@@ -525,7 +525,7 @@ export class SophieBimbo extends NPCAwareContent {
                 if (player.vaginas.length > 0) outputText("vulva, sucking at your clitoral hood.  Those gold, slobbery pussy-lickers look good on your groin, and you find yourself releasing your wetness from her oral attentions.  It might be time to fuck her soon...", false);
                 else outputText("smooth groin, eventually licking at your [asshole].  Those gold, slobbery lickers look good pressed against you.  It might be time to fuck her soon...", false);
             }
-            sophieScene.luststickApplication(5);
+            SophieScene.luststickApplication(5);
         }
         else {
             sophieSprite();
@@ -536,7 +536,7 @@ export class SophieBimbo extends NPCAwareContent {
             }
             outputText("You nod and Sophie gets up, beaming a radiant smile as she prances away, her booty swaying enticingly behind her.", false);
             dynStats("lus", 2);
-            sophieScene.luststickApplication(5);
+            SophieScene.luststickApplication(5);
         }
         outputText("\n", false);
     }
@@ -561,7 +561,7 @@ export class SophieBimbo extends NPCAwareContent {
         }
         menu();
         if (bimboSophie()) addButton(4, "Back", approachBimboSophieInCamp);
-        else addButton(4, "Back", sophieFollowerScene.followerSophieMainScreen);
+        else addButton(4, "Back", SophieFollowerScene.followerSophieMainScreen);
     }
 
     // Unlock resistance:
@@ -635,7 +635,7 @@ export class SophieBimbo extends NPCAwareContent {
         outputText("again!  You want to tackle her onto the ground and smash your crotch into her face!  Fuck, is she trying to use her compulsion on you? It's working!\n\n", false);
         player.orgasm();
         dynStats("sen", -1);
-        sophieScene.luststickApplication(4);
+        SophieScene.luststickApplication(4);
         if (player.inte * 2 < player.cor + player.lib) {
             outputText("There's no way you could ever turn her down at this point... just look at her lips... they'd never lie to you.  It'll feel so good...", false);
             doNext(bimboSophieSixtyNineAfterCunnilingus);
@@ -676,7 +676,7 @@ export class SophieBimbo extends NPCAwareContent {
             outputText(".  \"<i>That was sooo fun!  Like, we'll totally do this sometime soon, but I need a drink, and you smell like pussy.  Mmmm, I like that smell.  It means fun stuff!</i>\"  Sophie kisses you full on the mouth, her puffy, quim-stained lips coloring your own with her amber lipstick.  \"<i>You're like, the best pussy-licker ever, ya know?</i>\"\n\n", false);
 
             outputText("Sophie struts off, touching a finger to her cunt before licking it, tasting the remnants of your saliva.", false);
-            sophieScene.luststickApplication(5);
+            SophieScene.luststickApplication(5);
             player.orgasm();
             dynStats("sen", -1);
         }
@@ -718,7 +718,7 @@ export class SophieBimbo extends NPCAwareContent {
             outputText("Sophie leans down to kiss you on the lips, smearing more of her lust-enhancing lipstick over your mouth.  " + SMultiCockDesc(game.player) + " stays hard as a rock, but the need to service her pussy with your tongue slowly fades.  You feel oddly sated in spite of your erection, yet you know that a peek at your vapid harpy mistress will likely throw you into a rutting frenzy all over again thanks to the properties of her lipstick.", false);
             player.orgasm();
             dynStats("lib", 1, "sen", -1);
-            sophieScene.luststickApplication(5);
+            SophieScene.luststickApplication(5);
         }
         doNext(camp.returnToCampUseOneHour);
     }
@@ -814,7 +814,7 @@ export class SophieBimbo extends NPCAwareContent {
         outputText("Once the thought passes, you sag back, utterly spent and more than a little parched.  Blinking the haze from your eyes, you look over at Sophie.  She's on her back, frigging herself non-stop and utterly lost to the world.  Her pretty blonde hair is plastered against her, her boobs are covered in a thick layer of white, ");
         if (pregnancy.event >= 2) outputText("her swollen midriff is glazed, ");
         outputText("and her eyes are closed, held shut by a thick layer of your sperm.  She's been well and truly bukkaked, drenched in ejaculate, and judging by how furiously she's schlicking away at her pussy, she couldn't be happier.  As for you, " + sMultiCockDesc(game.player) + " is still erect, even though you feel like you don't have a drop left in you.  Of course, the drugs soaking into your gold-tinted cock will probably keep you hard and ready to breed for hours.\n\n", false);
-        sophieScene.luststickApplication(5);
+        SophieScene.luststickApplication(5);
         player.orgasm();
         dynStats("sen", -1);
         doNext(camp.returnToCampUseOneHour);
@@ -866,7 +866,7 @@ export class SophieBimbo extends NPCAwareContent {
 
         player.orgasm();
         dynStats("sen", -1);
-        sophieScene.luststickApplication(2);
+        SophieScene.luststickApplication(2);
         // [player gains random large egg]
         inventory.takeItem(consumables.LARGE_EGGS[rand(consumables.LARGE_EGGS.length)], camp.returnToCampUseOneHour);
     }
@@ -891,7 +891,7 @@ export class SophieBimbo extends NPCAwareContent {
         player.orgasm();
         dynStats("sen", -1);
         // [player gains random large egg]
-        sophieScene.luststickApplication(2);
+        SophieScene.luststickApplication(2);
         inventory.takeItem(consumables.LARGE_EGGS[rand(consumables.LARGE_EGGS.length)], camp.returnToCampUseOneHour);
     }
 
@@ -1051,7 +1051,7 @@ export class SophieBimbo extends NPCAwareContent {
         player.orgasm();
         dynStats("lib", .5, "sen", -4);
         if (!nice && player.cor < 50) dynStats("cor", 1);
-        sophieScene.luststickApplication(5);
+        SophieScene.luststickApplication(5);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -1235,7 +1235,7 @@ export class SophieBimbo extends NPCAwareContent {
         player.orgasm();
         dynStats("lib", 1);
         if (player.cumQ() < 5000) player.cumMultiplier += 3;
-        sophieScene.luststickApplication(8);
+        SophieScene.luststickApplication(8);
         menu();
         addButton(0, "Next", postSophieImpreg);
     }
@@ -1280,7 +1280,7 @@ export class SophieBimbo extends NPCAwareContent {
         player.orgasm();
         dynStats("lib", 1);
         if (player.cumQ() < 5000) player.cumMultiplier += 3;
-        sophieScene.luststickApplication(8);
+        SophieScene.luststickApplication(8);
         // [Next]
         menu();
         addButton(0, "Next", postSophieTooBigImpreg);
@@ -1554,7 +1554,7 @@ export class SophieBimbo extends NPCAwareContent {
         outputText("\n\n\"<i>Ooooh, like, thank you!</i>\" she calls after you, \"<i>Give my pussy some next time, okay?  It totally misses you!</i>\"");
         player.orgasm();
         dynStats("lib", 1, "sen", -2);
-        sophieScene.luststickApplication(8);
+        SophieScene.luststickApplication(8);
         doNext(camp.returnToCampUseOneHour);
     }
 
@@ -1620,7 +1620,7 @@ export class SophieBimbo extends NPCAwareContent {
         }
         player.orgasm();
         dynStats("lib", 1, "sen", -2);
-        sophieScene.luststickApplication(8);
+        SophieScene.luststickApplication(8);
         doNext(camp.returnToCampUseOneHour);
     }
 

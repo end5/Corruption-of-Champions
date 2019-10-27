@@ -1,5 +1,5 @@
 
-export class HelFollower extends NPCAwareContent {
+export class HelFollower {
 
     // const HELIA_FOLLOWER_DISABLED:int = 696
     // const HEL_INTROS_LEVEL:int = 697;
@@ -40,7 +40,7 @@ export class HelFollower extends NPCAwareContent {
             if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] >= 100) flags[kFLAGS.HEL_AFFECTION_FOLLOWER] = 100;
             if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] < 0) flags[kFLAGS.HEL_AFFECTION_FOLLOWER] = 0;
         }
-        else if (followerHel()) {
+        else if (HelScene.followerHel()) {
             flags[kFLAGS.HEL_AFFECTION_FOLLOWER] = 100;
             flags[kFLAGS.HEL_BONUS_POINTS] += diff * 3;
             if (diff > 0) if (flags[kFLAGS.HEL_BONUS_POINTS] > 150) flags[kFLAGS.HEL_BONUS_POINTS] = 150;
@@ -163,7 +163,7 @@ export class HelFollower extends NPCAwareContent {
     public helFollowersIntro(): void {
         clearOutput();
         // (If Kiha is at camp & has "met" Hel before)
-        if (followerKiha() && flags[kFLAGS.HEL_INTROS_LEVEL] < 1) {
+        if (KihaFollower.followerKiha() && flags[kFLAGS.HEL_INTROS_LEVEL] < 1) {
             flags[kFLAGS.HEL_INTROS_LEVEL] = 1;
             outputText("You pace around camp, awaiting the return of your new companion.  After several minutes, you notice Kiha sitting behind you, eyeing you with an eyebrow cocked.  Suddenly self-conscious, you stop and face the dragon-girl.");
             outputText("\n\nKiha smirks slightly. <i>\"What the hell are you doing, doofus?  Expecting someone?\"</i>");
@@ -191,23 +191,23 @@ export class HelFollower extends NPCAwareContent {
             outputText("\n\n<i>\"Catch you later, hot wings!\"</i>  Hel yells after her, giggling girlishly before asking you to show her around.");
         }
         // If Isabella
-        else if (isabellaFollower() && flags[kFLAGS.HEL_INTROS_LEVEL] < 2) {
+        else if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.HEL_INTROS_LEVEL] < 2) {
             flags[kFLAGS.HEL_INTROS_LEVEL] = 2;
             // is at Camp (She and Hel are cool)
             if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] > 0) {
                 outputText("Showing Hel around, you eventually come to the part of your camp inhabited by the towering cowgirl Isabella.  When you arrive, you find Isabella reclining in her armchair, humming a sweet melody as she cleans her tower shield.");
 
                 // (If you suppressed Isabella's main character trait:)
-                if (!isabellaAccent()) outputText("\n\n<i>\"Ah!</i>\"  Isabella says with a slight smile as you and Hel walk by arm in arm.  <i>\"And what have we here?  My little Hel come to pay a visit?\"</i>");
+                if (!IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Ah!</i>\"  Isabella says with a slight smile as you and Hel walk by arm in arm.  <i>\"And what have we here?  My little Hel come to pay a visit?\"</i>");
                 else outputText("\n\n<i>\"Ah!</i>\"  Isabella says with a slight smile as you and Hel walk by arm in arm.  <i>\"And vat have we here?  Mein little Helia come to pay a visit?\"</i>");
 
                 outputText("\n\n<i>\"Heyya, Izzy!\"</i> Hel yells gleefully, leaping into the cowgirl's lap.  Isabella makes an exaggerated <i>\"OOMPH\"</i> as Hel jumps onto her, though she manages to laugh and wrap her arms around the smaller salamander, letting Hel snuggle into her lap.");
                 outputText("\n\nGrinning at the two of them, you mention to Isabella that no, Hel isn't just paying a visit...  She's going to be a permanent addition.");
-                if (isabellaAccent()) outputText("\n\n<i>\"Oh, ja?  Iz zis true, Helia?\"</i>");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Oh, ja?  Iz zis true, Helia?\"</i>");
                 else outputText("\n\n<i>\"Oh, really?  Is that true, Helia?\"</i>");
 
                 outputText("\n\n<i>\"Mmhm,\"</i> the salamander nods, using the motion to further nestle her head between Isabella's massive mammaries until she practically disappears between them.  Muffled by titflesh, she adds, <i>\"[name] invited me to stick around, so...  Looks like I won't have to walk so far to get my favorite milk!\"</i>");
-                if (isabellaAccent()) outputText("\n\n<i>\"Vell, I look forward to having you around, mein Hel,\"</i> the warrior-cow laughs, running her hand through Hel's hair.  You seat yourself on the arm of Isabella's chair and join in, giving both girls a bit of (heavy) petting until you practically have to drag Hel out from the canyon of Isabella's cleavage.  The tour still needs to be finished, and Hel needs to get settled.");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Vell, I look forward to having you around, mein Hel,\"</i> the warrior-cow laughs, running her hand through Hel's hair.  You seat yourself on the arm of Isabella's chair and join in, giving both girls a bit of (heavy) petting until you practically have to drag Hel out from the canyon of Isabella's cleavage.  The tour still needs to be finished, and Hel needs to get settled.");
                 else outputText("\n\n<i>\"Well, I look forward to having you around, Hel,\"</i> the warrior-cow laughs, running her hand through Hel's hair.  You seat yourself on the arm of Isabella's chair and join in, giving both girls a bit of (heavy) petting until you practically have to drag Hel out from the canyon of Isabella's cleavage.  The tour still needs to be finished, and Hel needs to get settled.");
             }
             // If Isabella is at Camp (And she and Hel are NOT cool)
@@ -215,7 +215,7 @@ export class HelFollower extends NPCAwareContent {
                 outputText("Showing Hel around, you eventually come to the part of your camp inhabited by the towering cowgirl Isabella.  When you arrive, you find Isabella reclining in her armchair, humming a sweet melody as she cleans her tower shield.");
                 outputText("\n\nYou only have a moment to remember Hel's disdain for the cowgirl before...");
                 outputText("\n\n<i>\"Oh, what the fuck is SHE doing here!?  OI, BITCH!\"</i>  Hel yells, dropping her shit and grabbing her scimitar.  Isabella has only a moment to react before Hel sinks her blade into the cowgirl's shield, nearly punching through it.");
-                if (isabellaAccent()) outputText("\n\n<i>\"Y-You!\"</i>  Isabella stammers.  She recovers from her surprise a moment later, throwing Hel back and slinging her arm through the shield's straps.  <i>\"Vhat are YOU doing here?\"</i>");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Y-You!\"</i>  Isabella stammers.  She recovers from her surprise a moment later, throwing Hel back and slinging her arm through the shield's straps.  <i>\"Vhat are YOU doing here?\"</i>");
                 else outputText("\n\n<i>\"Y-You!\"</i>  Isabella stammers.  She recovers from her surprise a moment later, throwing Hel back and slinging her arm through the shield's straps.  <i>\"What are YOU doing here?\"</i>");
 
                 outputText("\n\nBefore the two of them can come to further violence, you leap between them and try to hold them apart.  You suffer the brunt of their aggression for a few moments, but manage to hold them off for the moment until they come down off their combat high.");
@@ -238,19 +238,19 @@ export class HelFollower extends NPCAwareContent {
                 // (corruption = high enough to call bitches out when they're hypocrites)
                 else outputText("glower balefully at them, as if to challenge either to invite your opinion of their own sexual 'résumé' with an ill-considered comment.");
 
-                if (isabellaAccent()) outputText("\n\n<i>\"Zo,\"</i> Isabella finally says, shifting her gaze from you to the salamander.  <i>\"You two are... lovers, ja?  Und here Isabella vas about to thrash you!\"</i>");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Zo,\"</i> Isabella finally says, shifting her gaze from you to the salamander.  <i>\"You two are... lovers, ja?  Und here Isabella vas about to thrash you!\"</i>");
                 else outputText("\n\n<i>\"So,\"</i> Isabella finally says, shifting her gaze from you to the salamander.  <i>\"You two are... lovers, huh?  And here I was about to thrash you!\"</i>");
 
                 outputText("\n\n\"<i>Yeah,</i>\" Hel answers with a little scoff, <i>\"And, I guess if you're [name]'s friend...  you're probably alright.  Although I was winning, you impertinent bitch.\"</i>");
 
                 outputText("\n\nA dopey smile spreads across your face as Hel offers Isabella her hand.  Warily, the cow-girl shakes it.  The girls increase the tempo of the handshake competitively until both their pairs of massive tits are jiggling.");
 
-                if (isabellaAccent()) outputText("\n\n<i>\"Oh... und here,\"</i> Isabella says, breaking the (milk)shake to pull the blue bow from her tail and hand it over to Hel.  With a happy gasp, Hel grabs it and ties it around her forehead - making herself look like some kind of half-naked commando in the process - though it's quickly hidden under her long red hair.");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Oh... und here,\"</i> Isabella says, breaking the (milk)shake to pull the blue bow from her tail and hand it over to Hel.  With a happy gasp, Hel grabs it and ties it around her forehead - making herself look like some kind of half-naked commando in the process - though it's quickly hidden under her long red hair.");
                 else outputText("\n\n<i>\"Oh... and here,\"</i> Isabella says, breaking the (milk)shake to pull the blue bow from her tail and hand it over to Hel.  With a happy gasp, Hel grabs it and ties it around her forehead - making herself look like some kind of half-naked commando in the process - though it's quickly hidden under her long red hair.");
 
                 outputText("\n\n<i>\"Yeah.  You're alright.\"</i>  Hel says, finally sheathing her sword.  <i>\"Thanks for giving me my mom's bandana back.\"</i>");
 
-                if (isabellaAccent()) outputText("<i>\"You are... velcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("<i>\"You are... velcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
                 else outputText("<i>\"You're... welcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
                 flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] = 1;
             }
@@ -280,7 +280,7 @@ export class HelFollower extends NPCAwareContent {
             outputText("\n\nLaughing, you lead Hel along towards her new home.");
         }
         // If Bimbo Sophie is at Camp:
-        else if (flags[kFLAGS.HEL_INTROS_LEVEL] < 4 && bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+        else if (flags[kFLAGS.HEL_INTROS_LEVEL] < 4 && SophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
             flags[kFLAGS.HEL_INTROS_LEVEL] = 4;
             outputText("As you help Hel string up her hammock between a few of the rocks inside your perimeter, you hear the tell-tale flapping of useless wings and a clattering of claws on the hard-packed dirt.  You brace for impact as your bimbo harpy prances up to you, planting a big, wet kiss on your cheek");
             // {PC lust goes up if not immunized to luststick}
@@ -417,7 +417,7 @@ export class HelFollower extends NPCAwareContent {
         outputText("\n\n<i>\"Oh, what the fuck is SHE doing here!?  OI, BITCH!\"</i>  Hel yells, dropping her whetstone and grabbing her scimitar.  Isabella has only a moment to react before Hel sinks her blade into the cowgirl's shield, nearly punching through it.");
 
         outputText("\n\n<i>\"Y-you!\"</i> Isabella stammers.  She recovers from her surprise a moment later, throwing Hel back and slinging her arm through the shield's straps.  <i>\"");
-        if (isabellaAccent()) outputText("V");
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("V");
         else outputText("W");
         outputText("hat are YOU doing here?!\"</i>");
 
@@ -434,7 +434,7 @@ export class HelFollower extends NPCAwareContent {
 
         outputText("\n\n<i>\"And what the fuck is SHE doing here anyway!?\"</i>  Hel demands.");
 
-        if (isabellaAccent()) outputText("\n\nThe cow-girl's brow furrows.  <i>\"Ja!  I could ask much ze same question.\"</i>");
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\nThe cow-girl's brow furrows.  <i>\"Ja!  I could ask much ze same question.\"</i>");
         else outputText("\n\nThe cow-girl's brow furrows.  <i>\"Yeah!  I could ask you much the same question.\"</i>");
 
         outputText("\n\nYou spend the next few minutes explaining how you met each of the women in turn, receiving suspicious nods from Hel and Isabella.  Once you've explained yourself to the pair attempting to intimidate you, you ");
@@ -443,19 +443,19 @@ export class HelFollower extends NPCAwareContent {
         // (corruption = high enough to call bitches out when they're hypocrites)
         else outputText("glower balefully at them, as if to challenge either to invite your opinion of their own sexual 'résumé' with an ill-considered comment.");
 
-        if (isabellaAccent()) outputText("\n\n<i>\"Zo,\"</i> Isabella finally says, shifting her gaze from you to the salamander.  <i>\"You two are... lovers, ja?  Und here Isabella vas about to thrash you!\"</i>");
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Zo,\"</i> Isabella finally says, shifting her gaze from you to the salamander.  <i>\"You two are... lovers, ja?  Und here Isabella vas about to thrash you!\"</i>");
         else outputText("\n\n<i>\"So,\"</i> Isabella finally says, shifting her gaze from you to the salamander.  <i>\"You two are... lovers, huh?  And here I was about to thrash you!\"</i>");
 
         outputText("\n\n\"<i>Yeah,</i>\" Hel answers with a little scoff, <i>\"And, I guess if you're [name]'s friend...  you're probably alright.  Although I was winning, you impertinent bitch.\"</i>");
 
         outputText("\n\nA dopey smile spreads across your face as Hel offers Isabella her hand.  Warily, the cow-girl shakes it.  The girls increase the tempo of the handshake competitively until both their pairs of massive tits are jiggling.");
 
-        if (isabellaAccent()) outputText("\n\n<i>\"Oh... und here,\"</i> Isabella says, breaking the (milk)shake to pull the blue bow from her tail and hand it over to Hel.  With a happy gasp, Hel grabs it and ties it around her forehead - making herself look like some kind of half-naked commando in the process - though it's quickly hidden under her long red hair.");
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Oh... und here,\"</i> Isabella says, breaking the (milk)shake to pull the blue bow from her tail and hand it over to Hel.  With a happy gasp, Hel grabs it and ties it around her forehead - making herself look like some kind of half-naked commando in the process - though it's quickly hidden under her long red hair.");
         else outputText("\n\n<i>\"Oh... and here,\"</i> Isabella says, breaking the (milk)shake to pull the blue bow from her tail and hand it over to Hel.  With a happy gasp, Hel grabs it and ties it around her forehead - making herself look like some kind of half-naked commando in the process - though it's quickly hidden under her long red hair.");
 
         outputText("\n\n<i>\"Yeah.  You're alright.\"</i>  Hel says, finally sheathing her sword.  <i>\"Thanks for giving me my mom's bandana back.\"</i>");
 
-        if (isabellaAccent()) outputText("<i>\"You are... velcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("<i>\"You are... velcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
         else outputText("<i>\"You're... welcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
         flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] = 1;
         doNext(camp.returnToCampUseOneHour);
@@ -485,16 +485,16 @@ export class HelFollower extends NPCAwareContent {
             // Threesomes
             // Take a Bath
             // Appearance
-            addButton(0, "Appearance", helSpawnScene.heliasAppearanceScreen);
+            addButton(0, "Appearance", HelSpawnScene.heliasAppearanceScreen);
             addButton(1, "Sex", heliaRoughSex);
             addButton(2, "Threesomes", heliaThreesomes);
             addButton(4, "Talk", heliaOptions);
-            if (!helScene.pregnancy.isPregnant) addButton(5, "Spar", sparWithHeliaFirebuttsAreHot);
+            if (!HelScene.pregnancy.isPregnant) addButton(5, "Spar", sparWithHeliaFirebuttsAreHot);
             else outputText("\n\n<b>Helia will not spar or box while pregnant.</b>");
-            if (!helScene.pregnancy.isPregnant) addButton(6, "Box", boxWithInCampHel);
+            if (!HelScene.pregnancy.isPregnant) addButton(6, "Box", boxWithInCampHel);
             if (flags[kFLAGS.HEL_LOVE] == 1 || flags[kFLAGS.HEL_LOVE] == -1) {
                 if (player.cocks.length > 0 && player.cocks.cockThatFits(heliaCapacity()) >= 0 && player.lust >= 33 &&
-                    !helPregnant() && flags[kFLAGS.HELSPAWN_AGE] == 0) addButton(7, "Have A Kid", helSpawnScene.haveAKid);
+                    !HelSpawnScene.helPregnant() && flags[kFLAGS.HELSPAWN_AGE] == 0) addButton(7, "Have A Kid", HelSpawnScene.haveAKid);
             }
             addButton(9, "Back", camp.campLoversMenu);
         }
@@ -512,12 +512,12 @@ export class HelFollower extends NPCAwareContent {
     }
 
     private heliaOptions(): void {
-        if (helScene.pregnancy.event >= 3 && flags[kFLAGS.HELIA_TALK_SEVEN] == 0) {
-            helSpawnScene.heliaTalkSeven();
+        if (HelScene.pregnancy.event >= 3 && flags[kFLAGS.HELIA_TALK_SEVEN] == 0) {
+            HelSpawnScene.heliaTalkSeven();
             return;
         }
         if (flags[kFLAGS.HELSPAWN_AGE] == 1 && flags[kFLAGS.HEL_TALK_EIGHT] == 0) {
-            helSpawnScene.heliaTalkEight();
+            HelSpawnScene.heliaTalkEight();
             return;
         }
         menu();
@@ -526,7 +526,7 @@ export class HelFollower extends NPCAwareContent {
         else addButton(2, "Hug", hugASmokeyTail);
         if (flags[kFLAGS.HELIA_ANAL_TRAINING_OFFERED] > 0 && flags[kFLAGS.HELIA_ANAL_TRAINING] < 2 && player.cocks.biggestCockArea() > heliaAnalCapacity() && player.hasItem(consumables.GOB_ALE, 1)) addButton(3, "Anal Train", heliaGapeSceneChoices);
         addButton(5, "Bathe", takeABath);
-        if (flags[kFLAGS.HELSPAWN_AGE] == 1) addButton(7, flags[kFLAGS.HELSPAWN_NAME], helSpawnScene.playWithYourKid);
+        if (flags[kFLAGS.HELSPAWN_AGE] == 1) addButton(7, flags[kFLAGS.HELSPAWN_NAME], HelSpawnScene.playWithYourKid);
         if (flags[kFLAGS.HEL_GUARDING] == 0) addButton(8, "GuardCamp", helGuardToggle);
         else addButton(8, "NoGuarding", helGuardToggle);
         addButton(9, "Back", heliaFollowerMenu);
@@ -642,7 +642,7 @@ export class HelFollower extends NPCAwareContent {
             outputText("\n\n\"<i>What?  That's how it ended -- I'm just a spooky ghost come to haunt sexy adventurers!</i>\"");
 
             // If Shouldra follower:
-            if (shouldraFollower.followerShouldra()) outputText("\n\nSuddenly, Shouldra pops out, seemingly from nowhere, and snaps, \"<i>Hey!  That's my job!</i>\" before vanishing.");
+            if (ShouldraFollower.followerShouldra()) outputText("\n\nSuddenly, Shouldra pops out, seemingly from nowhere, and snaps, \"<i>Hey!  That's my job!</i>\" before vanishing.");
 
             outputText("\n\nYou give her a little punch on the shoulder.");
 
@@ -691,24 +691,24 @@ export class HelFollower extends NPCAwareContent {
             outputText("\n\n<i>\"Sure,\"</i> you say, following Hel over to her still.");
 
             outputText("\n\nShe pours out two tankards of ");
-            if (helSpawnScene.helPregnant()) outputText("beer ");
+            if (HelSpawnScene.helPregnant()) outputText("beer ");
             else outputText("fizzy, non-alcoholic beer ");
             outputText("and, swinging onto your lap, clinks her glass against yours.  <i>\"To loving friends and an awesome new home,\"</i> she says, raising her tankard high before knocking it back.  Before you can finish yours, Hel belches loudly and violently shakes her head");
-            if (!helSpawnScene.helPregnant()) outputText(", her eyes crossing a little.  Looks like she was dipping in before you got here...");
+            if (!HelSpawnScene.helPregnant()) outputText(", her eyes crossing a little.  Looks like she was dipping in before you got here...");
             else outputText(".");
 
             outputText("\n\nHel laughs ");
-            if (!helSpawnScene.helPregnant()) outputText("drunkenly");
+            if (!HelSpawnScene.helPregnant()) outputText("drunkenly");
             else outputText("happily");
-            if (!helSpawnScene.helPregnant()) {
+            if (!HelSpawnScene.helPregnant()) {
                 outputText(", filling her cup up again and, with a wide smile, jumping out of your lap.  <i>\"Hey, lover, check this out!\"</i> she shouts, grabbing her fiery tail in one hand and swirling a mouth-full of alcohol.  You have just enough time to take cover before Hel swings her tail around and spits a stream of pure-grain over it, resulting in a great gout of flame that streaks into the heavens.");
                 // if Kiha is in camp:
-                if (kihaFollower.followerKiha()) outputText("  From across camp, you hear a certain dusky dragoness shout <i>\"HEY! That's MY trick, firebutt!\"</i>");
+                if (KihaFollower.followerKiha()) outputText("  From across camp, you hear a certain dusky dragoness shout <i>\"HEY! That's MY trick, firebutt!\"</i>");
 
                 outputText("\n\nHel giggles, and spews another fireball into the sky.  <i>\"Heh.  Hey, this is pretty fun.  C'mere, [name], try it!\"</i>");
 
                 outputText("\n\nWith a little encouragement from your salamander lover, you gulp down a bit of booze and, lining your mouth up with her tail, spit out a combustible spray.  You stumble back as the sky alights with fire, ");
-                if (kihaFollower.followerKiha()) outputText("further pissing off Kiha, who throws a rock at Hel, and ");
+                if (KihaFollower.followerKiha()) outputText("further pissing off Kiha, who throws a rock at Hel, and ");
                 outputText("shooting up like a beacon over the wasteland.");
             }
             else {
@@ -722,7 +722,7 @@ export class HelFollower extends NPCAwareContent {
             outputText("\n\n<i>\"Mmm, you're a cutie, you know that?\"</i>  Hel giggles, planting a kiss on your brow before letting you go.  By the time you get turned around again, Hel's already breathing fire again.");
         }
         // Hel Talk 6 (Needs Isabella and Kiha at camp; at least 1 gem)(C)
-        else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 5 && player.gems >= 1 && isabellaFollower() && kihaFollower.followerKiha()) {
+        else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 5 && player.gems >= 1 && IsabellaFollowerScene.isabellaFollower() && KihaFollower.followerKiha()) {
             let gems: number = 0;
             outputText("<i>\"Hey, [name],\"</i> Hel says with a sly grin.  <i>\"Me, Izzy, and spitfire were just playing a little game.  Wanna deal in?\"</i>");
 
@@ -736,14 +736,14 @@ export class HelFollower extends NPCAwareContent {
 
             outputText("\n\nYou shrug and follow Hel over to Kiha's nest.  The dragoness's table has been cleared off and stacked full of glittering gems, paper cards, and half-empty glasses of beer and wine.  Hel clears a spot for you before joining the other two busty redheads around the table and picking up a hand of five ancient-looking cards.");
 
-            if (isabellaAccent()) outputText("\n\n<i>\"Ze game ist Poker, mein freunds,\"</i> Isabella says, passing you a set of cards.");
+            if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Ze game ist Poker, mein freunds,\"</i> Isabella says, passing you a set of cards.");
             else outputText("\n\n<i>\"The game is Poker, my friends,\"</i> Isabella says, passing you a set of cards.");
 
             outputText("\n\n<i>\"Polkawha?\"</i> Kiha asks, turning her cards one way and her head the other");
-            if (!isabellaAccent()) outputText(", obviously only somewhat interested");
+            if (!IsabellaFollowerScene.isabellaAccent()) outputText(", obviously only somewhat interested");
             outputText(".");
 
-            if (isabellaAccent()) outputText("\n\n<i>\"Poker, zilly girl!\"</i> Isabella snaps.");
+            if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Poker, zilly girl!\"</i> Isabella snaps.");
             else outputText("\n\n<i>\"Poker, silly girl!\"</i> Isabella snaps.");
 
             outputText("\n\n<i>\"SILLY GIRL!?\"</i>");
@@ -759,7 +759,7 @@ export class HelFollower extends NPCAwareContent {
 
                 outputText("\n\n<i>\"Fucking shit cunt bitch,\"</i> Hel declares, covering her chest with her scaly arms.");
 
-                if (isabellaAccent()) outputText("\n\n<i>\"Und I thought you vere a beginner...\"</i> Isabella moans, her milky mammaries quivering in the cool air.");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Und I thought you vere a beginner...\"</i> Isabella moans, her milky mammaries quivering in the cool air.");
                 else outputText("\n\n<i>\"And I thought you were a beginner...\"</i> Isabella moans, her milky mammaries quivering in the cool air.");
                 outputText("\n\n<i>\"I got no shame, bitches.\"</i>  Kiha, nude before you got to her, laughs drunkenly before face-planting into her empty gem-pouch.");
                 gems = 40 + rand(40);
@@ -768,7 +768,7 @@ export class HelFollower extends NPCAwareContent {
             else if (rand(3) == 0) {
                 outputText("\n\n<i>\"Booyah, bitches,\"</i> Hel yells an hour later, raking in the last of the gems you cared to wager.  Isabella and Kiha glower at the salamander as she scoops her new wealth into a haversack.");
                 outputText("\n\n<i>\"Y-you cheated!\"</i> Kiha yells, lurching to her feet.");
-                if (isabellaAccent()) outputText("\n\n<i>\"Nein, zilly girl,\"</i> Isabella groans, crossing her arms, <i>\"Ve vere beaten by ze luck of ze draw.\"</i>");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Nein, zilly girl,\"</i> Isabella groans, crossing her arms, <i>\"Ve vere beaten by ze luck of ze draw.\"</i>");
                 else outputText("\n\n<i>\"No, silly girl,\"</i> Isabella groans, crossing her arms, <i>\"We were beaten by the luck of the draw.\"</i>");
 
                 outputText("\n\n<i>\"Literally,\"</i> you add, flicking your last losing hand away.");
@@ -776,7 +776,7 @@ export class HelFollower extends NPCAwareContent {
             }
             // [Fail 2]
             else if (rand(2) == 0) {
-                if (isabellaAccent()) {
+                if (IsabellaFollowerScene.isabellaAccent()) {
                     outputText("\n\n<i>\"Ja, ja, come to mama Isabella,\"</i> your feisty cow-girl laughs, throwing down a stunning, crushing hand.  Groaning, you, Hel, and Kiha all relinquish the last of the gems you can spare for the game.");
                     outputText("\n\n<i>\"Oh, I zee ein new skirt in ze future!\"</i> Isabella laughs, dumping your gems into her pouch before sauntering off.");
                 }
@@ -796,7 +796,7 @@ export class HelFollower extends NPCAwareContent {
                 outputText("\n\n<i>\"I won?\"</i>  Kiha says, staring incredulously at the cards laid down on the table.  <i>\"Er, of course I won!  You idiots never had a chance!\"</i>");
                 outputText("\n\n<i>\"Wax on, wax off, take my gems and piss off,\"</i> Hel grumbles, shoving her pile of currency to the dragoness.");
 
-                if (isabellaAccent()) outputText("\n\n<i>\"Nein, you cannot rhyme a vord vith ze zame vord,\"</i> Isabella huffs, crossing her arms as Kiha rakes up all of the gems the three of you cared to lose that night.");
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\n\n<i>\"Nein, you cannot rhyme a vord vith ze zame vord,\"</i> Isabella huffs, crossing her arms as Kiha rakes up all of the gems the three of you cared to lose that night.");
                 else outputText("\n\n<i>\"No!  You can't rhyme a word with the same word!\"</i> Isabella huffs, crossing her arms as Kiha rakes up all of the gems the three of you cared to lose that night.");
 
                 outputText("\n\nLaughing merrily, Kiha scoops up the last of the gems into her pack and walks off, humming a jaunty tune to herself, her tail wagging happily.");
@@ -948,33 +948,33 @@ export class HelFollower extends NPCAwareContent {
         if (player.cocks.length > 0 && player.lust >= 33) {
             // 85 vag capacity by base
             if (player.cocks.cockThatFits(heliaCapacity()) >= 0 && buttons < 9) {
-                addButton(buttons, "FuckVag", helScene.beatUpHelAndStealHerWalletFromHerVagina);
+                addButton(buttons, "FuckVag", HelScene.beatUpHelAndStealHerWalletFromHerVagina);
                 buttons++;
             }
             // 85 ass capacity
             if (player.cocks.cockThatFits(heliaAnalCapacity()) >= 0 && buttons < 9) {
-                addButton(buttons, "Anal", helScene.fuckHelsAss);
+                addButton(buttons, "Anal", HelScene.fuckHelsAss);
                 buttons++;
             }
             if (buttons < 9) {
-                addButton(buttons, "Get Blown", helScene.helBlowsYou);
+                addButton(buttons, "Get Blown", HelScene.helBlowsYou);
                 buttons++;
             }
             if (player.cocks.cockThatFits(heliaCapacity()) >= 0 && player.cocks.cockThatFits2(heliaCapacity()) >= 0 && buttons < 9) {
-                addButton(buttons, "DoublePen", helScene.dpHel);
+                addButton(buttons, "DoublePen", HelScene.dpHel);
                 buttons++;
             }
             if (buttons < 9) {
-                addButton(buttons, "Tail Wank", helScene.helTailWanksYourDickBecauseSheLovesYouDesuDesuHoraHora);
+                addButton(buttons, "Tail Wank", HelScene.helTailWanksYourDickBecauseSheLovesYouDesuDesuHoraHora);
                 buttons++;
             }
         }
         if (player.vaginas.length > 0 && player.lust >= 33 && buttons < 9) {
-            addButton(buttons, "GetLicked", helScene.getLickedByHel);
+            addButton(buttons, "GetLicked", HelScene.getLickedByHel);
             buttons++;
         }
         if (player.lust >= 33 && buttons < 9) {
-            addButton(buttons, "TailPeg", helScene.helTailPegging);
+            addButton(buttons, "TailPeg", HelScene.helTailPegging);
             buttons++;
         }
         // Morph-based: [Possession] [Mount Her] [Hanging 69] [Coil Her Up] [Tentafuck])
@@ -990,7 +990,7 @@ export class HelFollower extends NPCAwareContent {
                 buttons++;
             }
         }
-        if (player.lust >= 33 && player.perks.findByType(PerkLib.Incorporeality) >= 0 && izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0 && buttons < 9) {
+        if (player.lust >= 33 && player.perks.findByType(PerkLib.Incorporeality) >= 0 && IzmaScene.izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0 && buttons < 9) {
             addButton(buttons, "Possess", heliaCampPossession);
             buttons++;
         }
@@ -1480,7 +1480,7 @@ export class HelFollower extends NPCAwareContent {
         outputText("\n\nBy the time you arrive at the riverbed, you've already helped Helia out of her skimpy clothes, leaving her in a surprisingly bashful pose, covering her bare breasts with her arm as she approaches the river.  With a bit of urging, the salamander gingerly sticks her foot out, the long pale claw touching the water for the briefest instant before she recoils.");
 
         // If PC has Izma follower:
-        if (izmaFollower()) {
+        if (IzmaScene.izmaFollower()) {
             outputText("\n\nJust as Hel is about to put her foot in, a large red fin pokes out of the water.  You have just enough time to grab Hel and yank her back before a familiar shark-girl breaches the water, leaping onto shore with a wolfish grin.  \"<i>Heyya, Alpha,</i>\" Izma says, inclining her head to you as she wrings her hair out, grabbing a towel from behind a nearby rock.  \"<i>Oh, hi, Hel.  Don't see you around here much!</i>\"");
             outputText("\n\n\"<i>Uh, yeah,</i>\" Hel groans, blushing a brighter shade of red.  With a chuckle, Izma gives the two of you a wink and wanders off back to camp, leaving you alone with Hel once more.");
         }
@@ -1513,19 +1513,19 @@ export class HelFollower extends NPCAwareContent {
         // [Vapula]
         // [Kiha]
         menu();
-        if (vapulaSlave() && player.lust >= 33 && player.cocks.length > 0) {
+        if (Vapula.vapulaSlave() && player.lust >= 33 && player.cocks.length > 0) {
             if (player.cocks.cockThatFits(heliaCapacity()) >= 0) {
                 addButton(1, "Vapula", heliaAndVapula);
             }
             else outputText("\n\nYou're too big to fuck Helia and Vapula with your cock.");
         }
-        if (followerKiha() && player.lust >= 33 && player.gender > 0) {
+        if (KihaFollower.followerKiha() && player.lust >= 33 && player.gender > 0) {
             addButton(0, "Kiha", campHelAndKihaThreeSome);
         }
         if ((player.armorName == "goo armor" || flags[kFLAGS.VALARIA_AT_CAMP] == 1) && player.lust >= 33 && player.vaginas.length > 0) {
             addButton(2, "Valeria", helAndValeriaCampThreesomes);
         }
-        if (player.lust >= 33 && bimboSophie()) {
+        if (player.lust >= 33 && SophieBimbo.bimboSophie()) {
             addButton(3, "Sophie", helAndSluttyHarpy);
         }
         if (player.lust < 33) outputText("\n\n<b>You aren't horny enough to start a threesome.</b>");
@@ -1599,7 +1599,7 @@ export class HelFollower extends NPCAwareContent {
         outputText("\n\nSince your salamander lover wants your cum so much, you keep your " + cockDescript(game.player, x) + " buried in her until it stops pulsing, her anal hotness accelerating and intensifying your orgasm.  At last, you pull out and plunge your cum-coated junk in Vapula's waiting mouth below.  The two girls had been squirting so often that the succubus' face is now sopping with juices.  In her current state of pleasure, Vapula doesn't protest and engulfs all your dickflesh at once, sucking the remaining bits of goo out of your urethra.  You let the demoness feed until she is sated and your " + cockDescript(game.player, x) + " is only covered with her saliva.");
 
         outputText("\n\nSatisfied, you help your salamander lover to her feet.  She is still dazed from the two violent fucks and keeps chuckling softly as sexual juices are dribbling down every part of her body.");
-        if (!followerHel()) {
+        if (!HelScene.followerHel()) {
             outputText("  You kiss her and ask if she'll be able to find her way back to her home.");
 
             outputText("\n\n\"<i>Don't worry, I can take care of myself.  And if I get stuck in your camp, who cares?  If we did this every time I stumbled upon your place I would get lost more often!</i>\" she says with a cute little wink; she's still limping and giggling as she heads toward the plains.  Meanwhile, Vapula is a sorry mess.  Still digesting her copious cum-meal, she doesn't seem to mind the sexual filth coating her face.  You shrug and leave your pet to her digestion.");
@@ -1961,7 +1961,7 @@ export class HelFollower extends NPCAwareContent {
         clearOutput();
         outputText("\"<i>Sounds like fun.  Let's go,</i>\" you say, offering your arm to Hel.  She grins and takes it, holding herself close as she takes the lead, steady paces quickly drawing you out into the vast deserts of Mareth beside your lover.");
         // {If Kiha, Isabella, and/or Valeria are at camp:}
-        if (isabellaFollower() || followerKiha() || flags[kFLAGS.VALARIA_AT_CAMP] == 1) {
+        if (IsabellaFollowerScene.isabellaFollower() || KihaFollower.followerKiha() || flags[kFLAGS.VALARIA_AT_CAMP] == 1) {
             outputText("  Looking over your shoulder as you depart, though, you notice that camp looks particularly... empty. Perhaps your other camp-mate");
             if (camp.companionsCount() > 1) outputText("s are");
             else outputText(" is");
@@ -1991,8 +1991,8 @@ export class HelFollower extends NPCAwareContent {
         outputText("\n\nHel jumps back, practically falling into your arms as the bar lights up, filled with people: Hakon and Kiri at the forefront, her family smiling wide.  Behind them, surrounding a great big cake practically as tall as Hel is, stands ");
         const list: any[] = ["Edryn"];
         if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) list.push("Valeria");
-        if (followerKiha()) list.push("Kiha");
-        if (isabellaFollower()) list.push("Isabella");
+        if (KihaFollower.followerKiha()) list.push("Kiha");
+        if (IsabellaFollowerScene.isabellaFollower()) list.push("Isabella");
         list.push("a handful of her wide-hipped and winged half-sisters, the phoenixes");
         outputText(formatStringArray(list) + ". You turn to Helia and cock a grin as you see the surprise etched on her face, followed by the growing smile.  \"<i>Happy birthday, Helia!</i>\" they all shout out at once, raising mugs frothing over with beer.");
         /*
@@ -2000,10 +2000,10 @@ export class HelFollower extends NPCAwareContent {
             if(flags[kFLAGS.VALARIA_AT_CAMP] == 1) {
                 addToList("Valeria");
             }
-            if(followerKiha()) {
+            if(KihaFollower.followerKiha()) {
                 addToList("Kiha");
             }
-            if(isabellaFollower()) {
+            if(IsabellaFollowerScene.isabellaFollower()) {
                 addToList("Isabella");
             }
             addToList("a handful of her wide-hipped and winged half-sisters, the phoenixes");
@@ -2080,7 +2080,7 @@ export class HelFollower extends NPCAwareContent {
         outputText(", he thought it would be good to try and at least... know each other.  I'm not complaining.  Things like this party... never would have seen anything like this under Queen Calais.  It's nice to see new things, meet new people.</i>\"");
 
         outputText("\n\nYou see a few glances going toward Edryn and the fox twins");
-        if (followerKiha() && isabellaFollower()) outputText(", then to the fiery dragoness and the ultra-busty cowgirl talking in the corner");
+        if (KihaFollower.followerKiha() && IsabellaFollowerScene.isabellaFollower()) outputText(", then to the fiery dragoness and the ultra-busty cowgirl talking in the corner");
         outputText(", and you figure you know what they mean.");
         flags[kFLAGS.HELIA_BDAY_PHOENIXES] = 1;
         helPartyMenu();
@@ -2131,10 +2131,10 @@ export class HelFollower extends NPCAwareContent {
         if (player.gender == 3) {
             outputText("\n\n\"<i>So what parts do you want to use?</i>\" she asks, looking to your mixed endowments.", false);
             // (Display Options: [As Male] [As Female])
-            simpleChoices("As Male", helScene.foxyFluffsFoursomeAsMale, "As Female", helScene.foxyFluffGirlsFuckSex, "", null, "", null, "", null);
+            simpleChoices("As Male", HelScene.foxyFluffsFoursomeAsMale, "As Female", HelScene.foxyFluffGirlsFuckSex, "", null, "", null, "", null);
         }
-        else if (player.gender == 2) doNext(helScene.foxyFluffGirlsFuckSex);
-        else doNext(helScene.foxyFluffsFoursomeAsMale);
+        else if (player.gender == 2) doNext(HelScene.foxyFluffGirlsFuckSex);
+        else doNext(HelScene.foxyFluffsFoursomeAsMale);
     }
 
     private helAndSluttyHarpy(): void {

@@ -1,5 +1,5 @@
 
-export class LatexGirl extends NPCAwareContent {
+export class LatexGirl {
 
     // const GOO_TFED_MEAN:int = 654;
     // const GOO_TFED_NICE:int = 655;

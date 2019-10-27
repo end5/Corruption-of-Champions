@@ -484,23 +484,23 @@ export function goNext(time: number, needNext: boolean): boolean {
         if (temp > 7) temp = 7;
         if (player.perks.findByType(PerkLib.PiercedLethite) >= 0) temp += 4;
         if (player.inHeat) temp += 2;
-        if (vapula.vapulaSlave()) temp += 7;
+        if (Vapula.vapulaSlave()) temp += 7;
         if (game.time.hours == 2) {
             if (game.time.days % 30 == 0 && flags[kFLAGS.ANEMONE_KID] > 0 && player.cocks.length > 0 && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
-                anemoneScene.goblinNightAnemone();
+                AnemoneScene.goblinNightAnemone();
                 needNext = true;
             }
             else if (temp > rand(100) && player.effects.findByType(StatusAffects.DefenseCanopy) < 0) {
-                if (player.gender > 0 && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !kihaFollower.followerKiha())) {
+                if (player.gender > 0 && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !HelFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !KihaFollower.followerKiha())) {
                     impScene.impGangabangaEXPLOSIONS();
                     doNext(playerMenu);
                     return true;
                 }
-                else if (flags[kFLAGS.KIHA_CAMP_WATCH] > 0 && kihaFollower.followerKiha()) {
+                else if (flags[kFLAGS.KIHA_CAMP_WATCH] > 0 && KihaFollower.followerKiha()) {
                     outputText("\n<b>You find charred imp carcasses all around the camp once you wake.  It looks like Kiha repelled a swarm of the little bastards.</b>\n");
                     needNext = true;
                 }
-                else if (flags[kFLAGS.HEL_GUARDING] > 0 && helFollower.followerHel()) {
+                else if (flags[kFLAGS.HEL_GUARDING] > 0 && HelFollower.followerHel()) {
                     outputText("\n<b>Helia informs you over a mug of beer that she whupped some major imp asshole last night.  She wiggles her tail for emphasis.</b>\n");
                     needNext = true;
                 }
@@ -519,11 +519,11 @@ export function goNext(time: number, needNext: boolean): boolean {
             }
             // wormgasms
             else if (flags[kFLAGS.EVER_INFESTED] == 1 && rand(100) <= 4 && player.cocks.length > 0 && player.effects.findByType(StatusAffects.Infested) < 0) {
-                if (player.cocks.length > 0 && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0) {
+                if (player.cocks.length > 0 && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !HelFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0) {
                     nightTimeInfestation();
                     return true;
                 }
-                else if (flags[kFLAGS.HEL_GUARDING] > 0 && helFollower.followerHel()) {
+                else if (flags[kFLAGS.HEL_GUARDING] > 0 && HelFollower.followerHel()) {
                     outputText("\n<b>Helia informs you over a mug of beer that she stomped a horde of gross worms into paste.  She shudders after at the memory.</b>\n");
                     needNext = true;
                 }

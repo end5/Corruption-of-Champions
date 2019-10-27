@@ -1,5 +1,5 @@
 
-export class FollowerInteractions extends NPCAwareContent {
+export class FollowerInteractions {
 
     // [Amily meets pure Jojo - ]
     public amilyMeetsPureJojo(): void {
@@ -16,7 +16,7 @@ export class FollowerInteractions extends NPCAwareContent {
         dynStats("lus", 5);
 
         // [To jojo camp interaction]
-        doNext(jojoScene.jojoCamp);
+        doNext(JojoScene.jojoCamp);
     }
 
     // [Amily and Pure Jojo spar – occurs when going to amily, requires 'amily meets jojo']
@@ -26,7 +26,7 @@ export class FollowerInteractions extends NPCAwareContent {
         outputText("Amily and Jojo appear to be sparring.  Amily has a pair of knives in her hands, and Jojo has a staff.  The twin blurs of fur are whirling about in a frenzy of movement.  Jojo is deflecting most of the smaller mouse's strikes, and even manages to get in the occasional strike with his staff.  He's undone the top of his robe, and sweat is pouring off of his fur.  It's clear he's working himself harder than the female.  The match-up is remarkably even, but they spot you and wrap up the intense sparring session for now.  Jojo gives you a respectful nod and departs, guzzling water from a skin as he pulls his robes back into their normal places.\n\n", false);
 
         // [To amily screen]
-        doNext(amilyScene.amilyFollowerEncounter);
+        doNext(AmilyScene.amilyFollowerEncounter);
     }
 
     // [Amily rages at what you've done to jojo (corrupted after she met pure jojo) – encountered when visiting corrupt jojo for faps]
@@ -47,7 +47,7 @@ export class FollowerInteractions extends NPCAwareContent {
 
     // [Tell Amily to fuck off]
     private tellAmilyToFuckOffRuinedJojo(): void {
-        jojoScene.jojoSprite();
+        JojoScene.jojoSprite();
         clearOutput();
         outputText("You chuckle, \"<i>He's a better fuck like this than you ever were.  Why don't you piss off and leave us alone?</i>\"\n\n");
 
@@ -67,7 +67,7 @@ export class FollowerInteractions extends NPCAwareContent {
 
     // [Fix Him]
     private agreeToHelpAmilyFixJojo(): void {
-        jojoScene.jojoSprite();
+        JojoScene.jojoSprite();
         clearOutput();
         outputText("You nod, ");
         if (player.cor < 33) outputText("feeling genuinely sorry for what you've done.");
@@ -186,7 +186,7 @@ export class FollowerInteractions extends NPCAwareContent {
 
     // [STOP – in the name of love]
     private stopJojoDeathInTheNameOfLove(): void {
-        jojoScene.jojoSprite();
+        JojoScene.jojoSprite();
         clearOutput();
         outputText("You grab her by the shoulders and say, \"");
         if (player.inte < 40) {
@@ -211,7 +211,7 @@ export class FollowerInteractions extends NPCAwareContent {
     }
     // [Let Her Kill Jojo]
     private whyWouldDoThis(): void {
-        jojoScene.jojoSprite();
+        JojoScene.jojoSprite();
         clearOutput();
         outputText("You can't watch the grisly deed and avert your eyes.  She slits the once-pious monk's throat and it's done.  The two of you build a cairn of rocks over the mouse's body, as fitting a burial as you're able to provide for him.");
 
@@ -238,7 +238,7 @@ export class FollowerInteractions extends NPCAwareContent {
 
         // (+5 lust!)/
         dynStats("lus", 5);
-        doNext(rathazul.returnToRathazulMenu);
+        doNext(Rathazul.returnToRathazulMenu);
     }
     // [Amily delivers ingredients to Rathazul – happens at Rathazul]
     public amilyIngredientDelivery(): void {
@@ -254,7 +254,7 @@ export class FollowerInteractions extends NPCAwareContent {
         dynStats("lus", 4);
         // [Prices reduced for reducto!
         flags[kFLAGS.AMILY_MET_RATHAZUL]++;
-        doNext(rathazul.returnToRathazulMenu);
+        doNext(Rathazul.returnToRathazulMenu);
     }
 
     // [Amily ask Rathazul what happened to his village]
@@ -266,7 +266,7 @@ export class FollowerInteractions extends NPCAwareContent {
         outputText("Rathazul sighs and shuffles around uncomfortably as he wraps it up, \"<i>'What-ifs' will get us nowhere.  Our villages are gone, and we must look to the future, child.</i>\"\n\n", false);
 
         outputText("Amily nods solemnly and says her farewells.  She looks a little bleary-eyed as you pass her, and you give her a comforting squeeze on the shoulder.   The mouse gives you a tight smile and continues away, leaving you alone with the rat.", false);
-        doNext(rathazul.returnToRathazulMenu);
+        doNext(Rathazul.returnToRathazulMenu);
     }
 
     // [Rathazul and Corrupt/Tentacle Jojo] – Occurs instead of camp
@@ -283,7 +283,7 @@ export class FollowerInteractions extends NPCAwareContent {
     }
     // 	[Jojo is yours]
     private tellRathazulYouOwnJojo(): void {
-        jojoScene.jojoSprite();
+        JojoScene.jojoSprite();
         clearOutput();
         outputText("You tell Rathazul, \"<i>Oh that's just Jojo.  He's been corrupted, but he isn't evil and he hangs around because he knows I like to sleep with him.</i>\"\n\n");
 
@@ -294,7 +294,7 @@ export class FollowerInteractions extends NPCAwareContent {
     }
     // [I can handle it]
     private tellRathazulYouCanHandleIt(): void {
-        jojoScene.jojoSprite();
+        JojoScene.jojoSprite();
         clearOutput();
         outputText("You tell Rathazul, \"<i>Don't worry about it.  I've been all over the woods and fought that mouse before.  He's a pushover, and if he tries to sneak up on either of us I'll take care of it.</i>\"\n\n");
 
@@ -307,7 +307,7 @@ export class FollowerInteractions extends NPCAwareContent {
     }
     // [Its harmless]
     private TellRathazulJojoIsHarmless(): void {
-        jojoScene.jojoSprite();
+        JojoScene.jojoSprite();
         clearOutput();
         outputText("You explain to Rathazul, \"<i>That's just Jojo.  He got pretty fucked up and is hoping I'll let him fuck me.  The little mouse is a push-over, and nothing to worry about.</i>\"\n\n");
 
@@ -327,7 +327,7 @@ export class FollowerInteractions extends NPCAwareContent {
 
         outputText("Jojo turns to you, gives a quick bow, and departs.", false);
         // [To rathazul]
-        doNext(rathazul.returnToRathazulMenu);
+        doNext(Rathazul.returnToRathazulMenu);
     }
     // [Rathazul Napping]
     public catchRathazulNapping(): void {
@@ -338,7 +338,7 @@ export class FollowerInteractions extends NPCAwareContent {
 
         outputText("The mouse quietly rises and walks a fair distance away from the sleeping rat, letting his elder rest.  He motions for you to follow and leave Rathazul in peace.", false);
         // [NEXT – to normal jojo]
-        doNext(jojoScene.jojoCamp);
+        doNext(JojoScene.jojoCamp);
     }
 
     public marbleVsAmilyFreakout(): void {
@@ -498,7 +498,7 @@ export class FollowerInteractions extends NPCAwareContent {
     // Must have "UrtaSexed" flagged
 
     // Must have Lover Urta?
-    // urtaLove()
+    // Urta.urtaLove()
 
     // AMILY_VISITING_URTA = 346;
     public amilyUrtaReaction(): void {
@@ -518,7 +518,7 @@ export class FollowerInteractions extends NPCAwareContent {
         // after 1400 and Urta's on duty:
         if (game.time.hours > 14) {
             outputText("You ask the assembled bar patrons if anybody has seen either a strange mouse-woman or Urta around, but don't get much of a response.  One cat-boy drinking at the bar haltingly suggests he may have noticed someone like that earlier in the day, but that was before Urta went on duty.  You thank him for the info.", false);
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         // before Urta goes on duty at 1400:
@@ -532,10 +532,10 @@ export class FollowerInteractions extends NPCAwareContent {
             outputText("This is met with a chittering squeal you distinctly recognize as Amily's.  \"<i>Oooohhh... I see why " + player.short + " - yeah, gimme all you got! - fell for you!</i>\"\n\n", false);
 
             outputText("Curious, you ease open the door.  Inside, you see Urta and Amily, both naked, sitting on one of the cushioned couches along the wall.  Well, Urta is sitting there; Amily is perched in her lap, Urta's girthy prick visibly stuffed into her folds, with", false);
-            if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText(" her " + amilyScene.amilyCock() + " half-erect and drooling pre and", false);
+            if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText(" her " + AmilyScene.amilyCock() + " half-erect and drooling pre and", false);
             outputText(" her stomach swollen from the fox-morph's prodigious cum output to the point she looks ", false);
-            if (amilyScene.pregnancy.event >= 3) outputText("almost twice as ", false);
-            outputText("pregnant.  The mouse is holding a half-full bottle of what you think is Barkardi 151, waving it enthusiastically through the air even as she thumps up and down in Urta's lap, trying to coax one last orgasm from the visibly-drained hermaphrodite.  She giggles with delight and takes a messy swig from her bottle, spilling some of the booze onto her " + amilyScene.amilyTits() + " before twisting around and sloppily kissing Urta, trying to feed the contents of her mouth to the fox but dribbling half down her neck.\n\n", false);
+            if (AmilyScene.pregnancy.event >= 3) outputText("almost twice as ", false);
+            outputText("pregnant.  The mouse is holding a half-full bottle of what you think is Barkardi 151, waving it enthusiastically through the air even as she thumps up and down in Urta's lap, trying to coax one last orgasm from the visibly-drained hermaphrodite.  She giggles with delight and takes a messy swig from her bottle, spilling some of the booze onto her " + AmilyScene.amilyTits() + " before twisting around and sloppily kissing Urta, trying to feed the contents of her mouth to the fox but dribbling half down her neck.\n\n", false);
 
             outputText("Do you leave them to get acquainted (and possibly be up for threesomes in the future), or do you barge in and stop these cheating sluts?", false);
             // [Leave Them (finishes as normal] [Interrupt]
@@ -588,7 +588,7 @@ export class FollowerInteractions extends NPCAwareContent {
             outputText("Urta scowls and straightens, sobering noticably as an angry emerald fire seems to light in her eyes.  The vixen mutters, \"<i>You seduce both of us with kind words and affection, and now that we get together and realize we can love each other too, you have the nerve to accuse US of cheating?  You idiot!  This was all for you!  This was us learning to love each other the same way we learned to love you, so that together, we could make all three of us happy.</i>\"\n\n", false);
 
             outputText("The angry vixen snatches her clothes from a peg on the wall and slides out the door, too pissed to care that she's standing naked.  \"<i>I won't be a problem for you any more.  Just stay away from me.</i>\"\n\n", false);
-            urtaLove(-100);
+            Urta.urtaLove(-100);
             flags[kFLAGS.URTA_PC_LOVE_COUNTER] = -1;
             flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] = -1;
         }
@@ -659,7 +659,7 @@ export class FollowerInteractions extends NPCAwareContent {
         outputText("\n\n", false);
 
         outputText("With a gesture, the two of you set off.  As soon as you pass through the gates, you head towards the Wet Bitch.  Sure enough, Urta is at her usual table, and she smiles in delight to see you.  \"<i>" + player.short + ", Amily, hello!</i>\"  You take seats at the same table, as she ", false);
-        if (!urtaLove()) outputText("blushes softly at the clunk of her erection against the table", false);
+        if (!Urta.urtaLove()) outputText("blushes softly at the clunk of her erection against the table", false);
         else outputText("turns sideways to let her dress tent without banging into the table", false);
         outputText(".\n\n", false);
 
@@ -672,8 +672,8 @@ export class FollowerInteractions extends NPCAwareContent {
         // Watch (only game in town for now, so suppress the choice buttons and route right to this)
         let dick: () => void = null;
         let vag: () => void = null;
-        if (player.vaginas.length > 0) vag = amilyScene.urtaXAmilyCuntPussyVagSQUICK;
-        if (player.cocks.length > 0) dick = amilyScene.threesomeAmilUrtaCAWKS;
+        if (player.vaginas.length > 0) vag = AmilyScene.urtaXAmilyCuntPussyVagSQUICK;
+        if (player.cocks.length > 0) dick = AmilyScene.threesomeAmilUrtaCAWKS;
         simpleChoices("Use Dick", dick, "Use Vag", vag, "", null, "", null, "Watch", amilyUrtaSexWatch);
     }
     private amilyUrtaSexWatch(): void {
@@ -691,9 +691,9 @@ export class FollowerInteractions extends NPCAwareContent {
 
         outputText("Amily smiles back and approaches Urta, giving her a small peck on the lips and gently stroking her cock.\n\n", false);
 
-        outputText("Urta groans, unable to resist groping Amily's " + amilyScene.amilyTits() + ".  \"<i>Let me sit down, first, squeaky; I've never been one for sex while standing up</i>\".  She slowly lowers herself to the ground and then pulls Amily down into her lap, idly grinding her mare-cock against Amily's torso", false);
+        outputText("Urta groans, unable to resist groping Amily's " + AmilyScene.amilyTits() + ".  \"<i>Let me sit down, first, squeaky; I've never been one for sex while standing up</i>\".  She slowly lowers herself to the ground and then pulls Amily down into her lap, idly grinding her mare-cock against Amily's torso", false);
         if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText(", up the underside of her penis,", false);
-        outputText(" and between her " + amilyScene.amilyTits() + ".\n\n", false);
+        outputText(" and between her " + AmilyScene.amilyTits() + ".\n\n", false);
 
         outputText("Amily slides her cleavage down Urta's length to gently give her flared tip a small lick, before rising", false);
         if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText(", a bead of pre-cum stretching into a line connecting their two members", false);

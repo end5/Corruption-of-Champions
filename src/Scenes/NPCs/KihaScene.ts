@@ -1,5 +1,5 @@
 
-export class KihaScene extends NPCAwareContent {
+export class KihaScene {
 
     /*FLAGS STUFF*/
     // 1 = PC asked her about it, past that it counts the times paid
@@ -17,27 +17,27 @@ export class KihaScene extends NPCAwareContent {
         let temp: () => void;
         outputText("", true);
         spriteSelect(72);
-        if (kihaFollower.followerKiha() && flags[kFLAGS.KIHA_NEEDS_TO_REACT_TO_HORSECOCKING] == 1) {
-            kihaFollower.kihaReactsToHorseDicking();
+        if (KihaFollower.followerKiha() && flags[kFLAGS.KIHA_NEEDS_TO_REACT_TO_HORSECOCKING] == 1) {
+            KihaFollower.kihaReactsToHorseDicking();
             return;
         }
         // kihaBitchesOutCorruptPCs()
         if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] > 0 && player.cor >= 66 && flags[kFLAGS.KIHA_CORRUPTION_BITCH] != 1) {
-            kihaFollower.kihaBitchesOutCorruptPCs();
+            KihaFollower.kihaBitchesOutCorruptPCs();
             return;
         }
         // kihaUnBitchesOutCorruptPCs()
         if (player.cor < 66 && flags[kFLAGS.KIHA_CORRUPTION_BITCH] == 1) {
-            kihaFollower.kihaUnbitchesUncorruptedFolks();
+            KihaFollower.kihaUnbitchesUncorruptedFolks();
             return;
         }
         // Friendly+ meeting
         if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.KIHA_CORRUPTION_BITCH] != 1) {
             if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] == 2 && flags[kFLAGS.KIHA_AFFECTION] >= 100 && flags[kFLAGS.KIHA_MOVE_IN_OFFER] == 0) {
-                kihaFollower.kihaOffersToMoveIn();
+                KihaFollower.kihaOffersToMoveIn();
                 return;
             }
-            kihaFollower.kihaFriendlyGreeting();
+            KihaFollower.kihaFriendlyGreeting();
             return;
         }
         // If currently paid up on toll, don't run into her!
@@ -49,7 +49,7 @@ export class KihaScene extends NPCAwareContent {
         flags[kFLAGS.TIMES_MET_KIHA]++;
         // PLOT FIGHT TIME!
         if (player.cor < 66 && flags[kFLAGS.KIHA_AFFECTION_LEVEL] == 0 && flags[kFLAGS.KIHA_TALK_STAGE] >= 3 && player.gender > 0) {
-            kihaFollower.kihaSpiderEventIntro();
+            KihaFollower.kihaSpiderEventIntro();
             return;
         }
         // First time

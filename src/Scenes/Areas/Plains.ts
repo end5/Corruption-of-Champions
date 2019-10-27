@@ -8,7 +8,7 @@ export class Plains {
         flags[kFLAGS.TIMES_EXPLORED_PLAINS]++;
         // Dem Kangasluts!  Force Sheila relationship phase!
         if (flags[kFLAGS.SHEILA_DEMON] == 0 && flags[kFLAGS.SHEILA_XP] == 3 && game.time.hours == 20 && flags[kFLAGS.SHEILA_CLOCK] >= 0) {
-            sheilaScene.sheilaXPThreeSexyTime();
+            SheilaScene.sheilaXPThreeSexyTime();
             return;
         }
         // Add some holiday cheer
@@ -22,8 +22,8 @@ export class Plains {
             return;
         }
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelScene.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         // Find Niamh
@@ -42,15 +42,15 @@ export class Plains {
             return;
         }
         // Chance of threesomes!
-        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00256] != 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00257] != 0 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00260] == 0 && !isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.TIMES_EXPLORED_PLAINS] % 21 == 0 && !(player.tallness > 78 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00258] == 0)) {
+        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00256] != 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00257] != 0 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00260] == 0 && !IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.TIMES_EXPLORED_PLAINS] % 21 == 0 && !(player.tallness > 78 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00258] == 0)) {
             // Hell/Izzy threesome intro
             if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 0) {
-                helScene.salamanderXIsabellaPlainsIntro();
+                HelScene.salamanderXIsabellaPlainsIntro();
                 return;
             }
             // Propah threesomes here!
             else if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 1) {
-                helScene.isabellaXHelThreeSomePlainsStart();
+                HelScene.isabellaXHelThreeSomePlainsStart();
                 return;
             }
         }
@@ -61,18 +61,18 @@ export class Plains {
             BunnyGirl.bunnbunbunMeet, BunnyGirl.bunnbunbunMeet];
 
         if (flags[kFLAGS.ISABELLA_PLAINS_DISABLED] == 0) {
-            choices[choices.length] = isabellaScene.isabellaGreeting;
-            choices[choices.length] = isabellaScene.isabellaGreeting;
+            choices[choices.length] = IsabellaScene.isabellaGreeting;
+            choices[choices.length] = IsabellaScene.isabellaGreeting;
         }
-        if (!helScene.followerHel()) {
-            choices[choices.length] = helScene.encounterAJerkInThePlains;
-            choices[choices.length] = helScene.encounterAJerkInThePlains;
+        if (!HelScene.followerHel()) {
+            choices[choices.length] = HelScene.encounterAJerkInThePlains;
+            choices[choices.length] = HelScene.encounterAJerkInThePlains;
         }
         choices[choices.length] = SatyrScene.satyrEncounter;
         choices[choices.length] = SatyrScene.satyrEncounter;
         if (flags[kFLAGS.SHEILA_DISABLED] == 0 && flags[kFLAGS.SHEILA_CLOCK] >= 0) { // Aparently Sheila was supposed to be disabled after certain events - now fixed
-            choices[choices.length] = sheilaScene.sheilaEncounterRouter;
-            choices[choices.length] = sheilaScene.sheilaEncounterRouter;
+            choices[choices.length] = SheilaScene.sheilaEncounterRouter;
+            choices[choices.length] = SheilaScene.sheilaEncounterRouter;
         }
         // Pick one
         choices[rand(choices.length)]();

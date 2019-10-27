@@ -56,7 +56,7 @@ export function noDungeon(): void {
     flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE] = 1;
     flags[kFLAGS.HEL_FUCKBUDDY] = 0;
     flags[kFLAGS.HEL_AFFECTION] = 0;
-    helFollower.helAffection(-70);
+    HelFollower.helAffection(-70);
     doNext(playerMenu);
 }
 

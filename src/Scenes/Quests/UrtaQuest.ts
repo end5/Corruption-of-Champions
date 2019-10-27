@@ -1,5 +1,5 @@
 
-export class UrtaQuest extends NPCAwareContent {
+export class UrtaQuest {
 
 	/**
  * Urta's Quest
@@ -92,14 +92,14 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("You lean over the table and take Urta's hands in your own.  Her downy fur ruffles as you give her a comforting squeeze, the tension oozing from her body at your touch.  Urta sniffles a little and wipes her moistened cheek on her shoulder, muttering, \"<i>Oh, " + player.short + ", you're too good for me.</i>\"  She pulls back and gives you a knowing smile.  \"<i>You don't have to worry, really.  You turned this down on her luck lush into a happy woman.</i>\"");
 
         outputText("\n\nUrta pauses then gives you a wry smile as her voice turns husky.  \"<i>Or should I say you've made me a happy herm?  A VERY happy herm.</i>\"  A cylindrical distension begins to rise up her dress.  The sheer fabric strains, but contains it for now.  The tip of the distortion disappears into the foxy fox's ample bust.  You can see the flare peaking out of that simple valley, already oozing slightly.  Urta follows your gaze down and smirks.  \"<i>You know, I used to hate having this happen,</i>\" she says as she stands up and stretches, showing the bulge off to you and anyone else lucky enough to glance in her direction.  Sliding into your arms, the vixen plants a ");
-        if (urta.urtaDrunk()) outputText("boozy ");
+        if (Urta.urtaDrunk()) outputText("boozy ");
         outputText("kiss on your lips as she hugs you tight - tight enough that you feel every vein through the concealing silk of her outfit.  \"<i>I'm a lucky girl.</i>\"");
 
         outputText("\n\nYou return the hug with every fiber of your being, holding her tight.  Nuzzling at your neck, Urta lets her head come to rest on your shoulder.  Her eyes slowly close as she says, \"<i>Just... hold me, " + player.short + ".</I>\"  As if you were going to do anything else!  You cradle the abused vixen for as long as she needs, which turns out to be long enough for her throbbing erection to actually recede, forgotten for the time being.");
         outputText("\n\n\"<i>Thanks, " + player.short + ",</i>\" Urta says as she pulls back, giving your hand a gentle squeeze, \"<i>I didn't know how badly I needed that.</i>\"  She sits back down and explains, \"<i>I'll be fine now, I think.  Thanks again.</i>\"");
 
         outputText("\n\nNodding, you give the girl a smile as you stand up to depart.  Her eyes twinkle happily as she watches you go.");
-        urta.urtaLove(5);
+        Urta.urtaLove(5);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] += 3;
         doNext(camp.returnToCampUseOneHour);
     }
@@ -118,7 +118,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nYou answer with a negative declaration.  You have things to do, but you hope she learned not to be such a sad sack - she's awesome, and she should act like it.");
         outputText("\n\nUrta nods slowly and throws back a swig from her drink.  \"<i>I will.</i>\"");
         outputText("\n\nGood bitch...");
-        urta.urtaLove(1);
+        Urta.urtaLove(1);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] += 1;
         doNext(camp.returnToCampUseOneHour);
     }
@@ -131,7 +131,7 @@ export class UrtaQuest extends NPCAwareContent {
         outputText("\n\nYou rise to leave and  glance over your shoulder at her.  \"<i>I don't care about your tragic history.  I really don't, and I doubt anyone else would either.</i>\"");
         outputText("\n\nUrta growls, \"<i>You asked!</i>\"");
         outputText("\n\nYou tell her that you asked about her parents, not a summary of every misfortune to ever befall her.  Then, you leave, sending a barmaid her way with a drink.  The whiny cunt will likely need it to get over her bruised pride.  You doubt it will stop her from jumping your bones the next time you visit.  Her libido's too high for her to resist.");
-        urta.urtaLove(-10);
+        Urta.urtaLove(-10);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] -= 5;
         if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] < 1) flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] = 1;
         doNext(camp.returnToCampUseOneHour);
@@ -475,7 +475,7 @@ export class UrtaQuest extends NPCAwareContent {
         // If PC has a cock:
         if (player2.cocks.length > 0) {
             outputText("  \"<i>I've got a better one ");
-            if (helFollower.followerHel()) outputText("at home");
+            if (HelFollower.followerHel()) outputText("at home");
             else outputText("at my beck and call");
             outputText(", you know...  But we've got that in common, don't we?  Mmm, maybe we can share it some day?  A horny girl like you'd just love that, woudn't you? Getting to worship " + player2.mf("his", "her") + " cock beside me while my tail fills your ass so full you scream....</i>");
         }
@@ -544,7 +544,7 @@ export class UrtaQuest extends NPCAwareContent {
         if (player2.vaginas.length > 0)
             addButton(1, "FuckHerVag", putUrtasWangInPCsCunt, truth);
         // Put a PC dick in Urta's vag(C)*
-        if (player2.cocks.cockThatFits(urta.urtaCapacity()) >= 0)
+        if (player2.cocks.cockThatFits(Urta.urtaCapacity()) >= 0)
             addButton(2, "Ride Dick", putAPCDickInUrtaCoochies, truth);
         // Put Urta dick in the PC's asshole [Cocked PCs](C)*
         if (player2.cocks.length > 0)
@@ -671,7 +671,7 @@ export class UrtaQuest extends NPCAwareContent {
     // Put a PC dick in Urta's vag(C)*
     private putAPCDickInUrtaCoochies(truth: boolean): void {
         clearOutput();
-        let x: number = player2.cocks.cockThatFits(urta.urtaCapacity());
+        let x: number = player2.cocks.cockThatFits(Urta.urtaCapacity());
         outputText("You push " + player2.short + " down onto the ground, glad that " + player2.mf("he", "she") + "'s not wearing " + player2.mf("his", "her") + " gear right now.  Unfortunately, you've still got to get out of yours, an action made all that more difficult by the heat welling up in your groin.  Your rebellious cock is already half-stiff, lifting the hem of your armored skirt away from your thighs.  Fingers scrabbling, you struggle with your chestpiece's bindings.  Your nipples stiffen, scraping against the inside of it while you fight with to remove it.  You straddle " + player2.short + "'s waist to hold " + player2.mf("him", "her") + " down while you work the bothersome, restraining material free, practically grinding your semi-rigid dick against " + player2.mf("his", "hers") + " in excitement.  " + player2.mf("His", "Her") + " hands begin aiding you in your task, allowing your tightly compressed breasts to finally, happily breathe.");
 
         outputText("\n\nYour cock throbs in tune with your heartbeat, each pulsation causing a thick gobbet of anticipatory precum to splat wetly onto your lover's belly, but you aren't in the mood to indulge it this time.  If you're risking the possibility of never returning to your lover's arms again, then you want to remind yourself yet again of the first man ");
@@ -2756,7 +2756,7 @@ export class UrtaQuest extends NPCAwareContent {
     // PC Knocks Up Urta with God Child*
     private knockUpUrtaWithGodChild(): void {
         clearOutput();
-        let x: number = player.cocks.cockThatFits(urta.urtaCapacity());
+        let x: number = player.cocks.cockThatFits(Urta.urtaCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("Well, this problem seems like it can solved the same way you've dealt with most of Urta's issues - with the judicious application of sperm.  You strip out of your [armor], which causes the lust-crazed vixen's eyes to bulge in appreciation, her mouth beginning to drool nearly as much as her genitals.  She whimpers needily, \"<i>Now?  Can we do it now?</i>\"  One after another, she takes trembling steps towards you, each movement a shuffling half-step, as if she's afraid you'll run away.  Feverish sweat drips from her forehead, and her ears are constantly twitching this way and that.");
         outputText("\n\nYou admit to her that you'll fuck her and fill her, whatever it takes to help her through this.");
@@ -2898,11 +2898,11 @@ export class UrtaQuest extends NPCAwareContent {
         outputText(" balls, slathering them with slick spunk.");
 
         let ballWorship: any[] = [];
-        if ((amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) && jojoScene.campCorruptJojo()) ballWorship[ballWorship.length] = 0;
-        if ((amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) || jojoScene.campCorruptJojo()) ballWorship[ballWorship.length] = 1;
-        if (sophieBimbo.bimboSophie()) ballWorship[ballWorship.length] = 2;
-        if (helFollower.followerHel()) ballWorship[ballWorship.length] = 3;
-        if (latexGirl.latexGooFollower()) ballWorship[ballWorship.length] = 4;
+        if ((AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) && JojoScene.campCorruptJojo()) ballWorship[ballWorship.length] = 0;
+        if ((AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) || JojoScene.campCorruptJojo()) ballWorship[ballWorship.length] = 1;
+        if (SophieBimbo.bimboSophie()) ballWorship[ballWorship.length] = 2;
+        if (HelFollower.followerHel()) ballWorship[ballWorship.length] = 3;
+        if (LatexGirl.latexGooFollower()) ballWorship[ballWorship.length] = 4;
         if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) ballWorship[ballWorship.length] = 5;
         let choice: number;
         if (ballWorship.length > 0) choice = ballWorship[rand(ballWorship.length)];
@@ -2915,7 +2915,7 @@ export class UrtaQuest extends NPCAwareContent {
         // {If Jojo/Amily pet}
         else if (choice == 1) {
             outputText("\n\nUrta gasps when a tongue finds its way around her balls.  Looking back, she sees a visage you'd recognize anywhere; the mousy head of your pet, ");
-            if (jojoScene.campCorruptJojo()) outputText("Jojo");
+            if (JojoScene.campCorruptJojo()) outputText("Jojo");
             else outputText("Amily");
             outputText(".  The smooth mouse-tongue hungrily devours Urta's excess seed, accompanied by pleased giggles when the weighty orbs twitch with barely restrained pleasure.  Again and again, the mouth muscle smears itself over every messy, slime-soaked fold, leaving nothing but a polished veneer of mouse-spit in its wake.  The sounds of masturbation accompany the ball-worship, leaving you no doubt about your pet's current state.  They love it, and when Urta turns back to you with a smile, you realize she doesn't mind either.");
         }

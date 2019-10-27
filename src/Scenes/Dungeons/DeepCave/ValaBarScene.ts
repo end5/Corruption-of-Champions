@@ -54,17 +54,17 @@ export function chooseValaInBar(): void {
         if (flags[kFLAGS.WEEKLY_FAIRY_ORGY_COUNTDOWN] == 0) {
             outputText("\n\nA thought occurs to her and she leans in, conspiratorially. \"<i>Actually, some of my sisters are visiting from the forest today. Should we spend some time with them, or do I get you all for myself?</i>\"", false);
             // [Fairies][You][Leave]
-            simpleChoices("Faeries", faerieOrgyFuck, "You", cleansedValaRepeatBrainFucking, "Cum Bath", cumBath, "", null, "Leave", telAdre.barTelAdre);
+            simpleChoices("Faeries", faerieOrgyFuck, "You", cleansedValaRepeatBrainFucking, "Cum Bath", cumBath, "", null, "Leave", TelAdre.barTelAdre);
         }
-        else simpleChoices("You", cleansedValaRepeatBrainFucking, "", null, "Cum Bath", cumBath, "", null, "Leave", telAdre.barTelAdre);
+        else simpleChoices("You", cleansedValaRepeatBrainFucking, "", null, "Cum Bath", cumBath, "", null, "Leave", TelAdre.barTelAdre);
         if (flags[kFLAGS.WEEKLY_FAIRY_ORGY_COUNTDOWN] == 0)
             addButton(1, "Faeries", faerieOrgyFuck);
     }
-    if (flags[kFLAGS.SHOULDRA_MET_VALA] > 0 && shouldraFollower.followerShouldra())
+    if (flags[kFLAGS.SHOULDRA_MET_VALA] > 0 && ShouldraFollower.followerShouldra())
         addButton(3, "Big You", valaBigYou);
     addButton(0, "You", cleansedValaRepeatBrainFucking);
     addButton(2, "Cum Bath", cumBath);
-    addButton(4, "Leave", telAdre.barTelAdre);
+    addButton(4, "Leave", TelAdre.barTelAdre);
 }
 
 export function cleansedFirstRemeet(): void {
@@ -80,7 +80,7 @@ export function cleansedFirstRemeet(): void {
 
     outputText("\"<i>I've been looking forward to this,</i>\" she whispers, flying up to steal a kiss from you, her soft, fey lips leaving a taste of pure, spring rain on the tip of your tongue. Piece by piece, she strips the clothes from your shoulders and hips, leaving warm kisses on your exposed skin with every piece she removes. When your body is laid bare before her, the pixie raises her hands to her own dress. She hesitates to expose the permanent scars the imps left on her, but sighing, she laughs and a sweet wind sweeps through the storeroom. \"<i>Silly to be bashful around you, of all people,</i>\" she chuckles, sliding out of her verdant silk, pulling pins from her bun to let long, violet tresses spill down her shoulders with a shake of her head. She bats her eyes at you over one shoulder and flashes a wry little smile. \"<i>If we can replace every hash mark on my back with one of your visits, I'll switch to backless dresses,</i>\" she teases. Flying over you, she lands her delicate legs and plump, breeder's rear in your lap, wrapping her arms around your shoulders and hugging you tightly. \"<i>So, what's on your mind, hero?</i>\"", false);
     // [You][Leave]
-    simpleChoices("You", cleansedValaFuckHerBrainsOut, "", null, "", null, "", null, "Leave", telAdre.barTelAdre);
+    simpleChoices("You", cleansedValaFuckHerBrainsOut, "", null, "", null, "", null, "Leave", TelAdre.barTelAdre);
 }
 
 // [You]
@@ -199,7 +199,7 @@ export function cleansedValaFuckHerBrainsOutPtII(): void {
     }
     // [End Encounter]
     cheatTime(1);
-    doNext(telAdre.barTelAdre);
+    doNext(TelAdre.barTelAdre);
 }
 
 // [You]
@@ -253,7 +253,7 @@ export function faerieOrgyFuckMaleContinue(): void {
     outputText("\"<i>You see?</i>\" Vala asks, holding the organic device aloft with a mischievous smile. \"<i>They don't last forever, but while they do, these little toys give us a very intimate connection to loved ones. This way, I can go all week with a reminder of you inside me.</i>\" She gives you a kiss on the lips and the fairies give you a tiny chorus of applause for the entertaining show. It's good that her little friends aren't around more often, you pant to yourself, or you'd be a drooling vegetable in no time.\n\n", false);
     cheatTime(1);
     player.orgasm();
-    doNext(telAdre.barTelAdre);
+    doNext(TelAdre.barTelAdre);
 }
 
 // [Female]
@@ -272,7 +272,7 @@ export function faerieOrgyFuckFemaleContinue(): void {
     outputText("\"<i>You see?</i>\" Vala asks, holding the organic device aloft with a mischievous smile. \"<i>They don't last forever, but while they do, these little toys give us a very intimate connection to loved ones. This way, I can go about all week with a reminder of you inside me.</i>\" She gives you a kiss on the lips and the fairies give you a tiny chorus of applause for the entertaining show. It's good that her little friends aren't around more often, you gasp to yourself, or you'd be a drooling vegetable in no time.", false);
     cheatTime(1);
     player.orgasm();
-    doNext(telAdre.barTelAdre);
+    doNext(TelAdre.barTelAdre);
 }
 
 
@@ -376,7 +376,7 @@ export function valaBigYou(): void {
     menu();
     addButton(0, "Dom Me", bigValaDomsPC);
     if (player.cocks.length > 0) addButton(1, "Lick Me", bigValaLicksOffDudes);
-    if (vapula.vapulaSlave() && player.gender > 0 && (player.cocks.length > 0 || (player.vaginas.length > 0 && player.keyItems.has("Demonic Strap-On") >= 0))) {
+    if (Vapula.vapulaSlave() && player.gender > 0 && (player.cocks.length > 0 || (player.vaginas.length > 0 && player.keyItems.has("Demonic Strap-On") >= 0))) {
         addButton(2, "Dom Vapula", valaDommyVapula3Some);
         addButton(3, "Vapula3Some", valaLoveyVapula3Some);
     }

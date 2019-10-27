@@ -1789,7 +1789,7 @@ export class Saves {
             }
 
             if (flags[kFLAGS.HELSPAWN_AGE] > 0) {
-                helScene.pregnancy.knockUpForce(); // Clear Pregnancy, also removed any old value from HEL_PREGNANCY_NOTICES
+                HelScene.pregnancy.knockUpForce(); // Clear Pregnancy, also removed any old value from HEL_PREGNANCY_NOTICES
             }
             else if (flags[kFLAGS.HEL_PREGNANCY_INCUBATION] > 0) {
                 if (flags[kFLAGS.HELIA_PREGNANCY_TYPE] > 3) return; // Must be a new format save

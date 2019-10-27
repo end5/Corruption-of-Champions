@@ -13,18 +13,18 @@
 
 export let arianLookups: Record<string, any> = // For subject: "arian"
 {
-    man(thisPtr: CoC): string { return arianScene.arianMF("man", "woman"); },
+    man(thisPtr: CoC): string { return ArianScene.arianMF("man", "woman"); },
     // argh! "Man" is the mass-noun for humanity, and I'm loathe to choose an even more esoteric variant.
     // Elverson/Spivak terminology is already esoteric enough, and it lacks a ungendered mass noun.
 
-    ey(thisPtr: CoC): string { return arianScene.arianMF("he", "she"); },
-    em(thisPtr: CoC): string { return arianScene.arianMF("him", "her"); },
-    eir(thisPtr: CoC): string { return arianScene.arianMF("his", "her"); },
-    eirs(thisPtr: CoC): string { return arianScene.arianMF("his", "hers"); },
-    emself(thisPtr: CoC): string { return arianScene.arianMF("himself", "herself"); },
+    ey(thisPtr: CoC): string { return ArianScene.arianMF("he", "she"); },
+    em(thisPtr: CoC): string { return ArianScene.arianMF("him", "her"); },
+    eir(thisPtr: CoC): string { return ArianScene.arianMF("his", "her"); },
+    eirs(thisPtr: CoC): string { return ArianScene.arianMF("his", "hers"); },
+    emself(thisPtr: CoC): string { return ArianScene.arianMF("himself", "herself"); },
 
-    chestadj(thisPtr: CoC): string { return arianScene.arianChestAdjective(); },
-    chest(thisPtr: CoC): string { return arianScene.arianChest(); }
+    chestadj(thisPtr: CoC): string { return ArianScene.arianChestAdjective(); },
+    chest(thisPtr: CoC): string { return ArianScene.arianChest(); }
 };
 // Arian unhandled terms (I have not decided how to support them yet):
 // arianMF("mas","mis")

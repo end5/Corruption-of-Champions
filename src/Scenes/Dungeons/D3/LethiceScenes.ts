@@ -1015,7 +1015,7 @@ export class LethiceScenes {
         if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 || flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 0) return true;
         if (flags[kFLAGS.SOPHIE_EGGS_LAID] > 0) return true;
         if (flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] > 0) return true;
-        if (urtaPregs.urtaKids() > 0) return true;
+        if (UrtaPregs.urtaKids() > 0) return true;
         return false;
     }
 

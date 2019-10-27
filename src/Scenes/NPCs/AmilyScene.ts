@@ -2,7 +2,7 @@
  * Created by aimozg on 02.01.14.
  */
 
-export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
+export class AmilyScene implements TimeAwareInterface {
     /*Amily the Mousegirl Breeder
      * Plus human stuff
     =============================================
@@ -118,12 +118,12 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         if (game.time.hours == 6) {
             // Pure amily flips her shit and moves out!
             if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.cor >= 66 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00173] > 0) {
-                amilyScene.farewellNote();
+                AmilyScene.farewellNote();
                 needNext = true;
             }
             // Amily moves back in once uncorrupt.
             if (flags[kFLAGS.AMILY_TREE_FLIPOUT] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00173] > 0 && player.cor <= 25 && flags[kFLAGS.AMILY_FOLLOWER] == 0) {
-                amilyScene.amilyReturns();
+                AmilyScene.amilyReturns();
                 needNext = true;
             }
         }
@@ -192,8 +192,8 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
     public exploreVillageRuin(): void {
         outputText("", true);
         // 50% chance of ghost-girl
-        if ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00365] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] > 0 && rand(10) <= 3) && !followerShouldra() && flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] != .5) {
-            shouldraScene.shouldraGreeting();
+        if ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00365] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] > 0 && rand(10) <= 3) && !ShouldraFollower.followerShouldra() && flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] != .5) {
+            ShouldraScene.shouldraGreeting();
             return;
         }
         // 20% chance of playing with a rack
@@ -329,7 +329,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                     outputText("\"<i>Don't make any sudden moves!</i>\" A voice calls out, high pitched and a little squeaky, but firm and commanding. You freeze to avoid giving your assailant a reason to shoot at you again. \"<i>Stand up and turn around, slowly,</i>\" it commands again. You do as you are told.\n\n", false);
 
                     // [Jojo previously encountered]
-                    if (monk > 0) {
+                    if (game.monk > 0) {
                         outputText("The creature that has cornered you is clearly of the same race as Jojo, though notably a female member of his species. Her fur is thick with dust, but you can still easily make out its auburn color. Her limbs and midriff are wiry, hardened as much by meals that are less than frequent as by constant exercise and physical exertion. Her buttocks are non-existent, and her breasts can't be any larger than an A-cup. She wears a tattered pair of pants and an equally ragged-looking shirt. A very large and wicked-looking dagger – more of a short sword really – is strapped to her hip, and she is menacing you with a blowpipe.\n\n", false);
                     }
                     // [Jojo not previously encountered]
@@ -391,7 +391,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                     outputText("\"<i>Don't make any sudden moves!</i>\" A voice calls out, high pitched and a little squeaky, but firm and commanding. You freeze to avoid giving your assailant a reason to shoot at you again. \"<i>Stand up and turn around, slowly,</i>\" it commands again. You do as you are told.\n\n", false);
 
                     // [Jojo previously encountered]
-                    if (monk > 0) {
+                    if (game.monk > 0) {
                         outputText("The creature that has cornered you is clearly of the same race as Jojo, though notably a female member of his species. Her fur is thick with dust, but you can still easily make out its auburn color. Her limbs and midriff are wiry, hardened as much by meals that are less than frequent as by constant exercise and physical exertion. Her buttocks are non-existent, and her breasts can't be any larger than an A-cup. She wears a tattered pair of pants and an equally ragged-looking shirt. A very large and wicked-looking dagger – more of a short sword really – is strapped to her hip, and she is menacing you with a blowpipe.\n\n", false);
                     }
                     // [Jojo not previously encountered]
@@ -447,7 +447,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                     outputText("\"<i>Don't make any sudden moves!</i>\" A voice calls out, high pitched and a little squeaky, but firm and commanding. You freeze to avoid giving your assailant a reason to shoot at you again. \"<i>Stand up and turn around, slowly,</i>\" it commands again. You do as you are told.\n\n", false);
 
                     // [Jojo previously encountered]
-                    if (monk > 0) {
+                    if (game.monk > 0) {
                         outputText("The creature that has cornered you is clearly of the same race as Jojo, though notably a female member of his species. Her fur is thick with dust, but you can still easily make out its auburn color. Her limbs and midriff are wiry, hardened as much by meals that are less than frequent as by constant exercise and physical exertion. Her buttocks are non-existent, and her breasts can't be any larger than an A-cup. She wears a tattered pair of pants and an equally ragged-looking shirt. A very large and wicked-looking dagger – more of a short sword really – is strapped to her hip, and she is menacing you with a blowpipe.\n\n", false);
                     }
                     // [Jojo not previously encountered]
@@ -499,7 +499,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                     outputText("\"<i>Don't make any sudden moves!</i>\" A voice calls out, high pitched and a little squeaky, but firm and commanding. You freeze to avoid giving your assailant a reason to shoot at you again. \"<i>Stand up and turn around, slowly,</i>\" it commands again. You do as you are told.\n\n", false);
 
                     // [Jojo previously encountered]
-                    if (monk > 0) {
+                    if (game.monk > 0) {
                         outputText("The creature that has cornered you is clearly of the same race as Jojo, though notably a female member of his species. Her fur is thick with dust, but you can still easily make out its auburn color. Her limbs and midriff are wiry, hardened as much by meals that are less than frequent as by constant exercise and physical exertion. Her buttocks are non-existent, and her breasts can't be any larger than an A-cup. She wears a tattered pair of pants and an equally ragged-looking shirt. A very large and wicked-looking dagger – more of a short sword really – is strapped to her hip, and she is menacing you with a blowpipe.\n\n", false);
                     }
                     // [Jojo not previously encountered]
@@ -1711,7 +1711,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("\"<i>Shark Girls? Near as I can tell, they used to be a village of humans who lived right here on the lake... then the lake got polluted, and turned them all into... well, what they are now.</i>\"\n\n", false);
 
-            if (!izmaFollower()) outputText("She looks pensive.  \"<i>Odd... I don't think they have any males left, but on very rare occasions I've seen these weird tiger-striped Shark Girls... and they always had huge cocks and balls as well.  But, whether female or herm, they seem to only care about fighting and fucking... and from the way I've seen them going at it, I don't think they see any difference between the two any more.</i>\"\n\n", false);
+            if (!IzmaScene.izmaFollower()) outputText("She looks pensive.  \"<i>Odd... I don't think they have any males left, but on very rare occasions I've seen these weird tiger-striped Shark Girls... and they always had huge cocks and balls as well.  But, whether female or herm, they seem to only care about fighting and fucking... and from the way I've seen them going at it, I don't think they see any difference between the two any more.</i>\"\n\n", false);
 
             outputText("You ask her if she has any advice on fighting them.\n\n", false);
 
@@ -2489,12 +2489,12 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // Jojo + Amily Spar
         if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_MET_PURE_JOJO] == 1 && flags[kFLAGS.AMILY_SPAR_WITH_PURE_JOJO] == 0 && player.effects.findByType(StatusAffects.PureCampJojo) >= 0) {
-            finter.pureJojoAndAmilySpar();
+            FollowerInteractions.pureJojoAndAmilySpar();
             return;
         }
         // Amily
         if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_WAIT_FOR_PC_FIX_JOJO] == 1 && player.hasItem(consumables.PURHONY) && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.JOJO_FIXED_STATUS] == 0) {
-            finter.fixJojoOOOOHYEEEEAHSNAPINTOASLIMJIM();
+            FollowerInteractions.fixJojoOOOOHYEEEEAHSNAPINTOASLIMJIM();
             return;
         }
         outputText("", true);
@@ -2554,7 +2554,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
     private amilyMenu(output: boolean = true): void {
         let date: () => void = null;
         // If no fight yet, have option to introduce Urta and Amily
-        if (player.gender > 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] >= 5 || urtaLove()) && !urtaQuest.urtaBusy()) {
+        if (player.gender > 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] >= 5 || Urta.urtaLove()) && !urtaQuest.urtaBusy()) {
             if (output) outputText("<b>You could take Amily on a date to Tel'Adre, and perhaps even introduce her to Urta!</b>\n\n", false);
             date = dateNightFirstTime;
         }
@@ -2767,7 +2767,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
                 bText = "MakeBabies";
                 babies = makeChildren;
                 // Send make babies to an appropriate override
-                if (izmaFollower() && flags[kFLAGS.AMILY_X_IZMA_POTION_3SOME] == 0 && player.cocks.length > 0 && !izmaScene.pregnancy.isPregnant && !pregnancy.isPregnant) {
+                if (IzmaScene.izmaFollower() && flags[kFLAGS.AMILY_X_IZMA_POTION_3SOME] == 0 && player.cocks.length > 0 && !IzmaScene.pregnancy.isPregnant && !pregnancy.isPregnant) {
                     babies = amilyXIzmaSuperPregOptions;
                 }
             }
@@ -2784,7 +2784,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         let swim: () => void = null;
         if (flags[kFLAGS.AMILY_OWNS_BIKINI] > 0 && player.cocks.length > 0 && !amilyCorrupt()) swim = amilySwimFuckIntro;
         let threesome: () => void = null;
-        if (izmaFollower() && flags[kFLAGS.AMILY_X_IZMA_POTION_3SOME] > 0 && player.cocks.length > 0) {
+        if (IzmaScene.izmaFollower() && flags[kFLAGS.AMILY_X_IZMA_POTION_3SOME] > 0 && player.cocks.length > 0) {
             outputText("You could see if Amily and Izma are up for another round of Amily's fertility potion, though contraceptives won't matter at all once she takes that.\n");
             threesome = drinkThePotion;
         }
@@ -4408,7 +4408,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\"<i>Torturing myself you say? I think you're right. Maybe I should see if ", false);
         // [(if Jojo's corrupt)
-        if (monk >= 5 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) outputText("Jojo wants to play,", false);
+        if (game.monk >= 5 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) outputText("Jojo wants to play,", false);
         // (else)
         else outputText("I can't find someone else to play with,", false);
         outputText("</i>\" you say, nonchalantly attempting to pull away from her. \"<i>No!</i>\" Amily screams; her legs tighten about your waist with such force that she actually lifts herself off of the ground in her eagerness to plant herself firmly against your crotch, rubbing her slavering pussy against you. \"<i>Mine! My fuck! Mine!</i>\" she squeaks indignantly. You laugh at how far you've pushed your little mouse slave.  Sliding your " + cockDescript(game.player, 0) + " against her pussy, you bend down and grope her breasts roughly, drawing a desperate moan from her; slowly you get closer to her ears, then whisper, \"<i>Go ahead,</i>\" while humping against her to further excite her.\n\n", false);
@@ -4624,7 +4624,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         amilySprite();
         outputText("", true);
         /*(If player is already locked into a relationship):
-        if(player.hasStatusAffect(StatusAffects.CampMarble) >= 0 || urtaLove()) {
+        if(player.hasStatusAffect(StatusAffects.CampMarble) >= 0 || Urta.urtaLove()) {
             outputText("You put a hand on her shoulder, bringing her to a stop. She looks so hopeful at you that it's almost painful, but you tell her that, while you do care for her and you like her as a friend, you're already in a relationship with somebody.\n\n", false);
 
             outputText("\"<i>Are you? ...I see. Well, I'm happy that you, at least, found somebody. I... You're still welcome to come by and talk, but I'll respect your wishes.</i>\" Amily tells you. Evidently still quite embarrassed, she apologises and then melts away into the ruins again.", false);
@@ -5782,7 +5782,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("\"<i>Those are Shark Girls, " + mf(player, "master", "mistress") + ". I think they used to be a village of humans who lived on the lake... then the lake was contaminated, and they all turned into the lovely sharks they are now,</i>\" Amily says with a smile.\n\n", false);
 
-            if (!izmaFollower()) outputText("Amily looks pensive, trying to recall something. \"<i>I don't think they have any males left, but on very rare occasions I've seen these weird tiger-striped Shark Girls.</i>\" Her tail begins moving from side to side, moisture beginning to drip from her. \"<i>They have these huge cock and huge balls, and the only thing they care about is fighting and fucking. I think both things are the same for them,</i>\" she says, panting a bit.\n\n", false);
+            if (!IzmaScene.izmaFollower()) outputText("Amily looks pensive, trying to recall something. \"<i>I don't think they have any males left, but on very rare occasions I've seen these weird tiger-striped Shark Girls.</i>\" Her tail begins moving from side to side, moisture beginning to drip from her. \"<i>They have these huge cock and huge balls, and the only thing they care about is fighting and fucking. I think both things are the same for them,</i>\" she says, panting a bit.\n\n", false);
 
             outputText("She looks at you with lust-filled eyes. \"<i>" + mf(player, "Master", "Mistress") + ", let's fuck like them; spank me, hit me and then fuck me. Cum all over me, make me feel like the cumslut that I am,</i>\" she begs, openly panting.\n\n", false);
 
@@ -7569,7 +7569,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nThe pretty tigershark-girl comes sashaying around the rocks, putting a bookmark in her reading material as she answers the high-pitched call.  She glances between the two of you and huffs, \"<i>Oh, couldn't think of having a little fun without me?</i>\" with a wry grin.  Her skirt rustles slightly as she closes the intervening distance");
             if (flags[kFLAGS.IZMA_NO_COCK] == 0) outputText(", barely concealing the half-swollen bulge beneath");
             outputText(".  Izma says, \"<i>What the hell, I ");
-            if (izmaScene.pregnancy.isPregnant) outputText("suppose I can do it for fun, since I'm already pregnant.");
+            if (IzmaScene.pregnancy.isPregnant) outputText("suppose I can do it for fun, since I'm already pregnant.");
             else outputText("suppose we can have another kid.");
             outputText("</i>\"");
             outputText("\n\nThe potions are passed around, and the three of you quickly get to drinking them.  The girls finish their half-filled bottles first, leaving them with nothing to do but slowly undress you while you try to devour the last of the sweet, lust-inducing stuff.  It's very hard to focus on swallowing your part of the equation with four hands roaming across your body, and you nearly choke on it when the two girls start hugging you from each side, mismatched hands diving into your crotch to fondle [oneCock] with eager grasps.  The artificial warmth that's gathering in your midsection slowly spreads throughout your body, though it seems like the bulk of it winds up in [eachCock] where it can be properly stimulated by the needy females' pleasant fingers.");
@@ -7596,8 +7596,8 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.balls > 0) outputText(", one that has your [sack] swelling slightly, the skin growing smooth and glossy as it fills with the heavy, comfortable weight of your sloshing seed");
         else outputText(", one that has you feeling comfortably swollen with pent-up seed just waiting to erupt");
         outputText(".  Droplets of pre-cum slowly trickle from [eachCock] onto the busy ladies' hands and forearms, turning their fondles into strokes so wet and lubricated that you could almost mistake them for a succubus's twat.  There's something wonderfully right about being served by these docile woman");
-        if (!pregnancy.isPregnant && !izmaScene.pregnancy.isPregnant) outputText(", with their hungry wombs just waiting to be impregnated at your leisure");
-        else if (pregnancy.isPregnant && izmaScene.pregnancy.isPregnant) outputText(", with their ripe wombs stuffed full of your offspring already");
+        if (!pregnancy.isPregnant && !IzmaScene.pregnancy.isPregnant) outputText(", with their hungry wombs just waiting to be impregnated at your leisure");
+        else if (pregnancy.isPregnant && IzmaScene.pregnancy.isPregnant) outputText(", with their ripe wombs stuffed full of your offspring already");
         else outputText(", with at least one of their wombs already ripe with your offspring");
         outputText(".");
 
@@ -7632,7 +7632,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         outputText(".  The sapphic kiss is shattered by your slit-moistening hardness, and Amily looks back at you, disentangling her tail from Izma's to caress you as she asks, \"<i>You aren't going to waste it outside, are you?  Please, cum in me!</i>\"");
 
         outputText("\n\n\"<i>No, give it to me!  ");
-        if (izmaScene.pregnancy.isPregnant) outputText("My pussy is the obvious, stronger choice.");
+        if (IzmaScene.pregnancy.isPregnant) outputText("My pussy is the obvious, stronger choice.");
         else outputText("I'm the stronger, obvious breeding choice.  Knock me up and you'll have fitter, better offspring.");
         outputText("  Besides, can't you feel how wet my cunt is, and how those little tentacles inside are going to feel around you when you give me your cum?  That is your job as Alpha after all, to dominate my pussy and fill it full of you...  Ooooh...</i>\" Izma moans, pleading her own case as she starts to finger Amily's asshole.  \"<i>Besides, this little - ohgods - thing couldn't handle your babies, [name].</i>\"");
         outputText("\n\nAmily squeaks in surprise at the sudden intrusion before stabbing her tail tip into the shark's rectum as well, turning Izma's demands into a lewd moan.  \"<i>Come on, [name].  I'm the one that figured out-ooouuuhhhh... uh, how to make the potion.  ");
@@ -7642,10 +7642,10 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         else outputText("blushing so hard her whole face is almost beet-red, a fine look on her with her tongue dangling so erotically out of her gasping mouth");
         outputText(".");
         outputText("\n\nYou push and pull on the two girls, fucking both sets of mons without care for who eventually gets jizz inside them.  You're definitely going to flood a ");
-        if (!pregnancy.isPregnant || !izmaScene.pregnancy.isPregnant) outputText("womb");
+        if (!pregnancy.isPregnant || !IzmaScene.pregnancy.isPregnant) outputText("womb");
         else outputText("cunt");
         outputText(", judging by how full your genitals are feeling, but it doesn't matter greatly one way or the other.  There's a calm, confident surety in the back of your mind that keeps reminding you that you're in charge here, and that both these women WILL be ");
-        if (!pregnancy.isPregnant || !izmaScene.pregnancy.isPregnant) outputText("pregnant");
+        if (!pregnancy.isPregnant || !IzmaScene.pregnancy.isPregnant) outputText("pregnant");
         else outputText("squirting");
         outputText(" for you.  Each time you slam your ");
         if (player.cocks.length > 1) outputText("doubled dicks");
@@ -7674,12 +7674,12 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
     private izmaAmilyDrugThreeWaySex2(): void {
         clearOutput();
         outputText("Time goes hazy, for a bit, but the cool air on your sopping boner is enough to rouse you back to full consciousness.  The scene is unreal.  Amily rolled off of Izma at some point and is laying flat on her back, cradling her ");
-        if (!izmaScene.pregnancy.isPregnant) outputText("cum-");
+        if (!IzmaScene.pregnancy.isPregnant) outputText("cum-");
         outputText("pregnant belly and murmuring, \"<i>Babies,</i>\" while her fingers mindlessly diddle her alabaster-painted cunt.  She shudders as aftershocks of pleasure torture her lust-wracked brain, keeping her in a horny, docile state.");
         outputText("\n\nIzma seems to have taken advantage of your lapse in consciousness - you're on your back, and she's straddling your chest");
         if (flags[kFLAGS.IZMA_NO_COCK] == 0) outputText(", dick and balls flopping lamely on top of you");
         outputText(".  She pants, \"<i>Dunno why I didn't just fuck ya while you were out of it...  Didn't seem right.</i>\"  Rubbing her breast one-handed, the shark-girl begs, \"<i>Can I have it now?  Can you cum in me like you did her, [name]?  Please, I'm so... so wet for you, I'll make you feel so good.</i>\"  She keeps scooting back and forth just above your [hips], the hard lump of her clit pressing into you as she awaits permission to ");
-        if (!izmaScene.pregnancy.isPregnant) outputText("be inseminated");
+        if (!IzmaScene.pregnancy.isPregnant) outputText("be inseminated");
         else outputText("have her pregnant-pussy packed full again");
         outputText(".");
 
@@ -7714,18 +7714,18 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         if (player.cocks.length == 2) outputText(", taking a hand away from your extra dick to support herself,");
         if (player.cocks.length > 2) outputText(", taking a hand away from one of your extra dicks to support herself,");
         outputText(" and kisses you passionately.  The fervent kiss is as short as it is frenzied, but as you're recovering from it, Izma starts to talk, \"<i>You like that, Alpha?  You like having my cunt suckling on your dick?</i>\"  She swivels her hips with her words, the inner tentacles all pulling on you in concerted waves, actually lifting your penis to press deeper inside her, right up against her ");
-        if (izmaScene.pregnancy.isPregnant) outputText("closed");
+        if (IzmaScene.pregnancy.isPregnant) outputText("closed");
         else outputText("dilated");
         outputText(" cervix.  \"<i>");
-        if (izmaScene.pregnancy.isPregnant) outputText("I know I'm pregnant, but I want you to cum as deeply inside me as possible, okay?  I just... I have to have your cum. I NEED to feel that warmth flooding inside me.  It'll... ohh, yes... it'll make me feel so good, so loved.");
+        if (IzmaScene.pregnancy.isPregnant) outputText("I know I'm pregnant, but I want you to cum as deeply inside me as possible, okay?  I just... I have to have your cum. I NEED to feel that warmth flooding inside me.  It'll... ohh, yes... it'll make me feel so good, so loved.");
         else outputText("I don't know how, but I just know that you're going to make me pregnant when you cum inside me.  It's going to get me oh-ohhhhh... so heavy with your child, and it'll be perfect and blissful.  You're going to fucking flood me with jizz, aren't you, Alpha?");
         outputText("</i>\"  Izma's eyes twinkle with a mixture of obscene hunger and overbearing affection.  She whispers, \"<i>Will you please");
-        if (!izmaScene.pregnancy.isPregnant) outputText(" make me your gravid, jizz-slurping beta-wife?");
+        if (!IzmaScene.pregnancy.isPregnant) outputText(" make me your gravid, jizz-slurping beta-wife?");
         else outputText(" cum in your pregnant, jizz-hungry wife?");
         outputText("</i>\"");
 
         outputText("\n\nFuck, it's like she's telling you to do exactly what you want to do!  There's nothing hotter than ");
-        if (!izmaScene.pregnancy.isPregnant) outputText("watching a bitch's belly bloat as it's packed to a full, fertile dome");
+        if (!IzmaScene.pregnancy.isPregnant) outputText("watching a bitch's belly bloat as it's packed to a full, fertile dome");
         else outputText("stuffing a cunt so full she'll never stop dripping your seed");
         outputText(".  Getting to lie back and watch her cum her brains out while you do it?  That's just icing on the cake.  Izma's feelers flutter erotically about you, spastically stroking with uncoordinated, individual slithers that remind you of a hundred tiny tongues.  She gets infinitely wetter, something you didn't think possible, and her whole body begins to go scarlet, coloring as she climaxes.");
         if (flags[kFLAGS.IZMA_NO_COCK] == 0) outputText("  Her four balls quake atop you, and you watch her urethra bulge, ready to splatter your [chest] with her own, lesser climax.");
@@ -7733,7 +7733,7 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.IZMA_NO_COCK] == 0) outputText("  The smell of her hot, inferior seed hits your nostrils, exciting you even further as it rolls off of you in thick globs.");
 
         outputText("\n\nYou feel like an over-pressurized tank that's just been tapped.  One moment, there's indescribable force all bottled up inside you, and the next you're letting it spray out in long waves, each one guided through your urethra by contractions so violent they cause your whole body to shake each time.  You pump long lances of seed into the shark-girl's ready snatch.  She screams, \"<i>Yes!  Give it to me!  Ohhh, gods, YES!</i>\" as you fill her.");
-        if (izmaScene.pregnancy.isPregnant) {
+        if (IzmaScene.pregnancy.isPregnant) {
             outputText("  Her womb remains steadfastly closed, already seeded to capacity, so your salty deposit quickly floods the smaller canal.  The tendrils go lax as they're dipped in your baby-batter, each limp in the heady flow.");
             if (player.hasKnot(player.cocks.biggestCockIndex())) outputText("  Your knot balloons explosively inside her, but the seal on her womb is tighter.");
             outputText("  Jism rushes out around your cock in a river.  The nest was already soaked with liquid lust from your last tryst, moments ago, but now it's soaked completely white.  After a while, Izma's actually forced off you by the incredible potency of your eruptions, falling flat on her back.");
@@ -7773,16 +7773,16 @@ export class AmilyScene extends NPCAwareContent implements TimeAwareInterface {
         dynStats("sen", -3);
         outputText("<b>Some time later...</b>\n");
         outputText("You come to in a daze.  You're soaked in sexual juices of all kinds from the waist down, though for once, [eachCock] has gone soft.  Izma is snuggled up under your left arm and Amily under your right.  They're still asleep, but they're even more soaked than you, and hugging each other across your body.  The potion may have worked a little differently than Amily designed it to, but you can't really complain about the results.");
-        if (!izmaScene.pregnancy.isPregnant || !pregnancy.isPregnant) {
+        if (!IzmaScene.pregnancy.isPregnant || !pregnancy.isPregnant) {
             outputText("\n\n(<b>");
             if (!pregnancy.isPregnant) {
                 outputText("Amily");
                 pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_MOUSE - 182); // Amily carries babies to term way faster than a regular player
-                if (!izmaScene.pregnancy.isPregnant) outputText(" and ");
+                if (!IzmaScene.pregnancy.isPregnant) outputText(" and ");
             }
-            if (!izmaScene.pregnancy.isPregnant) {
+            if (!IzmaScene.pregnancy.isPregnant) {
                 outputText("Izma");
-                izmaScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_IZMA);
+                IzmaScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_IZMA);
             }
             outputText(" definitely got pregnant.</b>)");
         }

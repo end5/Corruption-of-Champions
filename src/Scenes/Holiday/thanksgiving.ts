@@ -498,7 +498,7 @@ export function pigSlutRoastingGreet(): void {
     dynStats("lus", 5);
     menu();
     if (player.gems >= 1) addButton(0, "Throw gem", getARoastPiggueOinkOinkOinkMotherfucker);
-    addButton(1, "Nah", telAdre.barTelAdre);
+    addButton(1, "Nah", TelAdre.barTelAdre);
 }
 // [ In For A Gem... ] [ Not My Style ]
 

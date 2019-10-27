@@ -13,8 +13,8 @@ export class Boat extends AbstractLakeContent {
     }
     public boatExplore(): void {
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelScene.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         outputText("You reach the dock without any incident and board the small rowboat.  The water is calm and placid, perfect for rowing.  ", true);
@@ -23,8 +23,8 @@ export class Boat extends AbstractLakeContent {
             if (player.inte > 40) outputText("You realize what it smells like – sex.  ", false);
         }
         // 3% chance of finding lost daughters
-        if (rand(100) <= 3 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00412] > 0 && izmaScene.izmaFollower()) {
-            izmaScene.findLostIzmaKids();
+        if (rand(100) <= 3 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00412] > 0 && IzmaScene.izmaFollower()) {
+            IzmaScene.findLostIzmaKids();
             return;
         }
         outputText("You set out, wondering if you'll find any strange islands or creatures in the lake.\n\n", false);
@@ -65,7 +65,7 @@ export class Boat extends AbstractLakeContent {
                 FetishZealotScene.zealotBoat();
                 return;
             case 5:
-                anemoneScene.mortalAnemoneeeeee();
+                AnemoneScene.mortalAnemoneeeeee();
                 return;
         }
 

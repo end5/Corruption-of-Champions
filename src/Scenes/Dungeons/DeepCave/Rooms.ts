@@ -135,8 +135,8 @@ export function dungeonRoom() {
                 if (player.gender > 0) {
                     addButton(3, "Use", useVala);
                 }
-                if (player.lust >= 33 && shouldraFollower.followerShouldra()) {
-                    addButton(4, "ShouldraVala", shouldraFollower.shouldraMeetsCorruptVala);
+                if (player.lust >= 33 && ShouldraFollower.followerShouldra()) {
+                    addButton(4, "ShouldraVala", ShouldraFollower.shouldraMeetsCorruptVala);
                 }
             }
             // Zetaz defeated

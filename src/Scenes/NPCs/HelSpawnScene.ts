@@ -1,5 +1,5 @@
 
-export class HelSpawnScene extends NPCAwareContent {
+export class HelSpawnScene {
 
     // Helia Expansion 4: The Edge of Paradise
     // A CoC Multi-Character Expansion
@@ -53,7 +53,7 @@ export class HelSpawnScene extends NPCAwareContent {
     }
 
     public helPregnant(): boolean {
-        return (helScene.pregnancy.isPregnant);
+        return (HelScene.pregnancy.isPregnant);
     }
 
     // Hel’s New Appearance Screen: Taking Things Into Account
@@ -71,7 +71,7 @@ export class HelSpawnScene extends NPCAwareContent {
             outputText("  A dark trio of scars run down Hel’s thighs, left by " + flags[kFLAGS.HELSPAWN_NAME] + "’s youthful claws.");
         }
         else {
-            switch (helScene.pregnancy.event) {
+            switch (HelScene.pregnancy.event) {
                 case 1: // She's pregnant, but no special text yet
                     break;
                 case 2: outputText("  Hel's just starting to show a little bulge of pregnancy.");
@@ -88,7 +88,7 @@ export class HelSpawnScene extends NPCAwareContent {
         outputText("\n\nShe has a warm, wet, and accommodating pussy between her legs.");
         outputText("\n\nHel has a single cock-draining asshole between her buttcheeks, right where it belongs.");
         menu();
-        addButton(0, "Next", helFollower.heliaFollowerMenu);
+        addButton(0, "Next", HelFollower.heliaFollowerMenu);
     }
 
     // " + flags[kFLAGS.HELSPAWN_NAME] + "’s Appearance Screen
@@ -188,7 +188,7 @@ export class HelSpawnScene extends NPCAwareContent {
         }
         outputText("  So what do you say, [name]?  Let's have a kid!</i>\"");
         menu();
-        if (player.cocks.length > 0 && player.cocks.cockThatFits(helFollower.heliaCapacity()) >= 0) addButton(0, "Have A Kid", haveAKid);
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(HelFollower.heliaCapacity()) >= 0) addButton(0, "Have A Kid", haveAKid);
         else if (player.cocks.length > 0) outputText("  <b>Unfortunately, you're too big to squeeze inside Helia to do the business yourself.  You might need to shrink down some.</b>");
         addButton(1, "Another Dad", getAnotherDad);
         addButton(2, "No Or Later", noKidsHel);
@@ -198,7 +198,7 @@ export class HelSpawnScene extends NPCAwareContent {
     public haveAKid(): void {
         clearOutput();
         spriteSelect(68);
-        helScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SALAMANDER);
+        HelScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SALAMANDER);
         outputText("You tell Hel that you're in this with her, that you want to give her that child she seems so desperate for.  She beams at you, smiling from eye to eye before leaping into your arms, pressing her lips hard to yours.  You kiss her back, wrapping your arms around her hips to support her as her powerful legs wrap around your waist; you push her up against the ruined wall, hands searching across her taut, hot flesh until you toss her bikini top aside, letting her hefty tits free.  \"<i>Oh god yes,</i>\" she moans as you trail kisses from her lips, down her neck to her stiffening nipple.  \"<i>I want this so much, more than anything.  Give it to me, [name].  Don't hold back!</i>\"  Your fingers sink into her pliant flesh as you suckle on her exposed teat, groping her other tit and soft ass as she moans and squirms in your arms.  Clumsily, Hel's claws brush down your body, peeling off your [armor] until your " + cockDescript(game.player, 0) + " flops into her lap.  She locks her scaled fingers around your manhood, roughly stroking you until you're stiff as diamonds in her grasp.");
 
         outputText("\n\nYou shudder as her fingers work your " + cockDescript(game.player, 0) + ", but don't let up on your end for a second.  You brush and knead Hel's nipple between your teeth, letting your hands drift down to her wide hips and gropable ass, slowly stripping her of her scale bottom and pulling it off her legs.  With your lover bare and naked, you slip down between her legs, letting her hook them over your shoulder to give you a good view of her dripping cunt.  Your tongue laps across her labia, drawing a long, lewd moan from Hel.  She runs her fingers through your [hair], urging you onward; at her lusty moans, you dig in, sucking on her prominent clit and drilling your tongue between her inner folds.  You gasp into her when Hel's lengthy tail wraps around your shoulders, the pale flame soothingly warm on your " + skinFurScales(player) + " as her leathery appendage works its way down to the " + cockDescript(game.player, 0) + " dangling between your [legs].  You groan with sudden need as the tip of her tail brushes your most sensitive flesh, tickling ");
@@ -293,7 +293,7 @@ export class HelSpawnScene extends NPCAwareContent {
         // [Spiderboy]
         addButton(1, "Spiderboy", spiderboyWouldBeBestDad);
         // [I will] (If PC has a dick)
-        if (player.cocks.length > 0 && player.cocks.cockThatFits(helFollower.heliaCapacity()) >= 0) addButton(2, "I Will", haveAKid);
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(HelFollower.heliaCapacity()) >= 0) addButton(2, "I Will", haveAKid);
         else if (!player.cocks.length > 0) addButton(2, "I Will", growingDicks4Hel);
         addButton(3, "No Or Later", noKidsHel);
     }
@@ -304,7 +304,7 @@ export class HelSpawnScene extends NPCAwareContent {
         spriteSelect(68);
         outputText("You tell Hel that you think Mai would make a lovely father.  Helia nods her agreement, saying, \"<i>Yeah, I agree.  She's a beauty, and I'm sure our child will be stunning... you wouldn't mind if she visited, right?  I mean, you and I will be raising our kid - and he'll be ours for sure - but I'm sure Mai will want to at least visit her kid.</i>\"");
         outputText("\n\nYou nod, and say that's fine.  Hel beams at you, giving you a peck on the cheek before running back to camp, saying she's going to go track down the foxy sisters as soon as she can.  You suppose the next time you see her, Hel's probably going to be pregnant with the child you'll be helping to raise.");
-        helScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SALAMANDER); // Yes, it's Mai's baby, but that's already tracked separately
+        HelScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SALAMANDER); // Yes, it's Mai's baby, but that's already tracked separately
         flags[kFLAGS.HEL_NTR_TRACKER] = 1;
         flags[kFLAGS.HELSPAWN_DADDY] = 2;
         doNext(playerMenu);
@@ -314,7 +314,7 @@ export class HelSpawnScene extends NPCAwareContent {
         clearOutput();
         spriteSelect(68);
         outputText("You tell Helia to go find a spider boy to jump.  She beams at you, and skips off toward the swamp calling, \"<i>Thank you, thank you thank you, [name]!</i>\" over her shoulder as she goes.  You suppose the next time you see her, Hel's probably going to be pregnant with the child you'll be helping to raise.");
-        helScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SALAMANDER); // Yes, it's the spider's baby, but that's already tracked separately
+        HelScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SALAMANDER); // Yes, it's the spider's baby, but that's already tracked separately
         flags[kFLAGS.HEL_NTR_TRACKER] = 1;
         flags[kFLAGS.HELSPAWN_DADDY] = 1;
         doNext(playerMenu);
@@ -336,7 +336,7 @@ export class HelSpawnScene extends NPCAwareContent {
         clearOutput();
         spriteSelect(68);
         outputText("You shake you head and say no, you don't want to have children.  Not right now, anyway.  ");
-        if (player.cocks.length > 0 && player.cocks.cockThatFits(helFollower.heliaCapacity()) >= 0) outputText("You couldn't if you wanted to anyway - you're too big to fit.  ");
+        if (player.cocks.length > 0 && player.cocks.cockThatFits(HelFollower.heliaCapacity()) >= 0) outputText("You couldn't if you wanted to anyway - you're too big to fit.  ");
         outputText("As the words leave your lips, you can see Hel's shoulders slump, a crestfallen look spreading across her face.  \"<i>A-are you sure?  Please, [name], I really, really want a child.  For </i>us<i> to have one.</i>\"");
         outputText("\n\nYou tell her that no, at least for now you aren't interested.  She begs and pleads for several minutes, but you hold your ground.  Finally, she relents.  \"<i>Alright, [name].  I... I'll respect that, I guess.  Dad gave me some herbs, said as long as I take them, I should go back to normal.  If that's what you want, I'll start on them.  Just tell me if - when - you're ready, [name].  I will be.</i>\"");
 
@@ -376,7 +376,7 @@ export class HelSpawnScene extends NPCAwareContent {
         clearOutput();
         spriteSelect(68);
         outputText("Hel chuckles, shaking her head.  \"<i>So I go to the swamp and just shout out 'Who wants to fuck a baby into this fertile womb, you chitiny bastards,' and sure enough, I got plenty of volunteers.  Whole horde of creepy crawlies came out of the woodwork, but I saw the looks in their eyes: corrupt, all of 'em.  I don't want my kid half way to cumming out his soul before he's had a chance, you know?  So I did my berzerker thing, fought 'em off.  The swamp's getting more and more dangerous every month, I think.  Something in the water maybe, who knows.  Anyway, after I dispatched the crazies, I went deeper, just a little");
-        if (followerKiha()) outputText(", toward hotwings' old place");
+        if (KihaFollower.followerKiha()) outputText(", toward hotwings' old place");
         outputText(". Took a while, but eventually I just sort of stumbled on this couple of spidergirls, just as cute as could be.  They wander up to me, all cautious, and ask if I was serious about the whole baby thing.  So I say, 'Yeah, sure,' and they get this big, dopey grin, the both of 'em.</i>\"");
 
         outputText("\n\n\"<i>They tell me they're sisters, and they've got a little brother who's looking for his first mate.  But he's terrified of just jumping people to fuck 'em (kind of old fashioned, but hey, what're you gonna do?), and the girls are afraid he'll get dragged off by some demon drider thing and raped to death.  So the girls say if I'm looking to breed, they've got a plan: let me pretend to be all helpless, and they'll sic their brother on me; he gets to feel like the big predator man, and I get fucked full of seed.  Win-win.  So they take me to a clearing, tell me to wait.  Few minutes later, and this little bitty spiderboy wanders out of the jungle - and I mean, his mother must've been a goblin, cuz he's a runty little shit, wrapped up in this silk shift down to his knees when his sisters have their tits hanging out in the wind.  Poor thing's shy as can be, but he blabbers something about tying me up and having his way with me, you know the drill.  So I swoon and drop my sword and get all dramatic and beg him not to hurt me.</i>\"");
@@ -722,7 +722,7 @@ export class HelSpawnScene extends NPCAwareContent {
         }
         flags[kFLAGS.HELSPAWN_AGE] = 1;
         flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] = 1;
-        helScene.pregnancy.knockUpForce(); // Clear Pregnancy
+        HelScene.pregnancy.knockUpForce(); // Clear Pregnancy
         // >If the two scores tie at the end somehow, Sluttymandergirl prevails!
     }
 
@@ -742,7 +742,7 @@ export class HelSpawnScene extends NPCAwareContent {
         outputText("\n\nHel's right. Your little girl looks like she's five, maybe six years old already.");
 
         // If Amily is at camp:
-        if (amilyScene.amilyFollower()) outputText("\n\nYou mention how Amily managed to reverse-engineer a goblin's potion to accelerate her childrens' growth.  Hel grimaces, running a hand over her belly.  \"<i>God damn green menaces.  I never - almost never - drank any of their shit.  Succubus milk?  Sure, why not.  Snake oil, bring it on... But goblin potions?  I'm not that stupid, [name].  It couldn't have been...</i>\"");
+        if (AmilyScene.amilyFollower()) outputText("\n\nYou mention how Amily managed to reverse-engineer a goblin's potion to accelerate her childrens' growth.  Hel grimaces, running a hand over her belly.  \"<i>God damn green menaces.  I never - almost never - drank any of their shit.  Succubus milk?  Sure, why not.  Snake oil, bring it on... But goblin potions?  I'm not that stupid, [name].  It couldn't have been...</i>\"");
 
         outputText("\n\nSighing, Hel leans her head on your shoulder, wrapping her tail around your waist.  \"<i>Well, I guess we get even less time to learn how to be parents, huh?  I guess it doesn't matter how it happened - what matters is that ");
         if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("our");
@@ -914,7 +914,7 @@ export class HelSpawnScene extends NPCAwareContent {
         if (player.effects.findByType(StatusAffects.CampRathazul) >= 0) outputText("  You hear your old alchemist friend suddenly putting up a ruckus as the sounds of breaking glass echo throughout camp.  " + flags[kFLAGS.HELSPAWN_NAME] + " looks up at you nervously, but you ruffle her fiery hair and tell her to try again. Rath is probably just fine.");
         // else if Valeria/Latexy is at camp:
         else if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) outputText("  You hear a sudden yelp of pain from across camp. Valeria slithers up to you with an irritated look on her gooey face, pointing an accusing finger at an arrow sticking out of her tit.  \"<i>Dammit, [name], I'm a googirl, not a pin cushion!</i>\"  You wave her off, and tell " + flags[kFLAGS.HELSPAWN_NAME] + " to try again.");
-        else if (latexGooFollower()) outputText("  You hear a sudden yelp of pain from across camp.  " + flags[kFLAGS.GOO_NAME] + " slithers up to you with an irritated look on her gooey face, pointing an accusing finger at an arrow sticking out of her tit.  \"<i>Dammit, [name], I'm a googirl, not a pin cushion!</i>\"  You wave her off, and tell " + flags[kFLAGS.HELSPAWN_NAME] + " to try again.");
+        else if (LatexGirl.latexGooFollower()) outputText("  You hear a sudden yelp of pain from across camp.  " + flags[kFLAGS.GOO_NAME] + " slithers up to you with an irritated look on her gooey face, pointing an accusing finger at an arrow sticking out of her tit.  \"<i>Dammit, [name], I'm a googirl, not a pin cushion!</i>\"  You wave her off, and tell " + flags[kFLAGS.HELSPAWN_NAME] + " to try again.");
 
         outputText("\n\n\"<i>I-I dunno, " + championRef() + ",</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " whines, biting her lip as she traces the arrow's path with her eyes.  \"<i>Maybe mom was right. I should just stick to a sword. That's easy....</i>\"");
 
@@ -1178,7 +1178,7 @@ export class HelSpawnScene extends NPCAwareContent {
         }
         // Talk 2
         // {Kiha must be at camp}
-        else if (temp <= 0 && followerKiha()) {
+        else if (temp <= 0 && KihaFollower.followerKiha()) {
             outputText("\"<i>Oh hey, " + championRef() + "!  You gotta come see what I was making!</i>\"");
             outputText("\n\nShe grabs you by the [armor], pulling you back toward where she had been standing, near the center of camp.  A large cast-iron cauldron’s sitting on your firepit, full of a dark-green substance that’s bubbling along.  Your dusky dragoness lover, Kiha, is sitting on the edge of the pot, apparently immune to the scalding heat, a long wooden ladle grasped between her dexterous claws.  She grins up at you as you and your daughter wander over.  \"<i>Hey, Doofus, come for an early taste?</i>\"");
             outputText("\n\n\"<i>C'mon, " + championRef() + ", try it!</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " adds happily.  \"<i>It's aunt Kiha's favorite recipe.</i>\"");
@@ -1199,7 +1199,7 @@ export class HelSpawnScene extends NPCAwareContent {
             outputText("\n\nChuckling, you nod and follow " + flags[kFLAGS.HELSPAWN_NAME] + " as she returns to Rath's makeshift laboratory and seats herself on one of his tables.  Grumbling about kids, the old rat proceeds to rap his little hammer on her knee - nearly getting kicked in the face for his trouble - before asking her to hold her breath as he listens to her heartbeat.  She's nearly blue in the face before he nods approvingly and tells her she can go. " + flags[kFLAGS.HELSPAWN_NAME] + " goes running, happy to get away as Rath turns to you, shaking his head.");
 
             outputText("\n\n\"<i>Just checking up on her, [name].  Her meteoric growth is of some concern - and scientific interest, I might add, if I could determine what caused it.  If I could mass-produce it.  ");
-            if ((amilyScene.amilyFollower() && !amilyScene.amilyCorrupt())) outputText("Little Amily's solution was makeshift at best, and the children are beyond my reach to study.  Still.  ");
+            if ((AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt())) outputText("Little Amily's solution was makeshift at best, and the children are beyond my reach to study.  Still.  ");
             outputText("Imagine whole legions of children reared and raised in the time it takes a goblin to do the same. We might have a fighting chance for once, with numbers to match the demons.</i>\"");
 
             outputText("\n\n\"<i>But I suppose that's still out of reach, [name].  She's finished growing, and there's no sign of the exact chemical needed to synthesize the compound.  I'll keep checking up on her for health, though perhaps one day I'll find the means to make accelerated growth safe and widespread.  An old man can hope, yes?</i>\"");
@@ -1207,7 +1207,7 @@ export class HelSpawnScene extends NPCAwareContent {
         }
         // Talk 4
         // {Bath Slut w/ DD or HHH must be at camp}
-        else if (temp <= 2 && milkSlave() && flags[kFLAGS.MILK_SIZE] > 0) {
+        else if (temp <= 2 && MilkWaifu.milkSlave() && flags[kFLAGS.MILK_SIZE] > 0) {
             outputText("\"<i>Hey, have you seen " + flags[kFLAGS.MILK_NAME] + " around anywhere, " + championRef() + "?</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " asks, looking around the camp.  \"<i>Mom asked me to milk her, but I haven't seen her around.  She wouldn't have run off, would she?</i>\"");
             if (flags[kFLAGS.MILK_SIZE] == 1) outputText("\n\nYou tell her it'd be more of a wobble, but");
             else outputText("\n\nYou doubt she would have; " + flags[kFLAGS.MILK_NAME] + " seems to have a fancy for you, but");
@@ -1219,7 +1219,7 @@ export class HelSpawnScene extends NPCAwareContent {
         }
         // Talk 5
         // {Isabella must be at camp}
-        else if (temp <= 3 && isabellaFollower()) {
+        else if (temp <= 3 && IsabellaFollowerScene.isabellaFollower()) {
             outputText("\"<i>Oh hey, " + championRef() + "!</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " says, suddenly grinning, \"<i>Mom bought me a new guitar in town.  Wanna come listen?</i>\"");
 
             outputText("\n\n\"<i>Sure, kiddo,</i>\" you say, absently wondering how she plays a guitar with those giant claws of hers as she leads you back to her and Helia's part of camp, where she quickly produces a dinged up guitar.  Looks like Hel's been visiting the pawn shop, but hey, " + flags[kFLAGS.HELSPAWN_NAME] + " doesn't seem to mind.  She hops up onto a nearby rock and gives the instrument a few experimental strums, pausing to adjust the tuning or fix a string that snaps a little too easily.  But after a moment of preparation, she's ready.");
@@ -1231,7 +1231,7 @@ export class HelSpawnScene extends NPCAwareContent {
             outputText(".  You smile as Isabella seats herself beside " + flags[kFLAGS.HELSPAWN_NAME] + ", joining their voices together for the final chorus that leaves them both shaking as " + flags[kFLAGS.HELSPAWN_NAME] + " strums the last, desperate notes, nearly clawing through the strings in her passion.");
 
             outputText("\"<i>");
-            if (!isabellaAccent()) outputText("Sehr gut");
+            if (!IsabellaFollowerScene.isabellaAccent()) outputText("Sehr gut");
             else outputText("Very good");
             outputText(" little " + flags[kFLAGS.HELSPAWN_NAME] + ",</i>\" Isabella says, pulling the young 'mander into a great big hug that threatens to smother her betwixt the cowgirl's massive bosoms.  Grinning, you congratulate " + flags[kFLAGS.HELSPAWN_NAME] + " on her performance, showering your girl in praise before you depart, leaving her to Isabella's instruction.  As you walk away, you can't help but notice Helia standing a short ways off, rubbing her eyes.");
 
@@ -1477,7 +1477,7 @@ export class HelSpawnScene extends NPCAwareContent {
 
         outputText("\n\nShe grins, hugging the scarf to herself.  \"<i>I don't know, I woke up and there it was, right next to me.  I think mom bought it for me");
         // if Isabella:
-        if (isabellaFollower()) outputText(", or aunt Isabella might have knitted me a new one, I don't know");
+        if (IsabellaFollowerScene.isabellaFollower()) outputText(", or aunt Isabella might have knitted me a new one, I don't know");
         outputText(".</i>\"");
 
         outputText("\n\nYou shrug, but as she turns away, you grab the corner of the scarf and feel it.  Spider silk, if ever you've felt it.  A grin spreads across your face as you realize who must have made this.");

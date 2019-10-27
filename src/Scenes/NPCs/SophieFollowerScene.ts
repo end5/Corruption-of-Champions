@@ -1,7 +1,7 @@
 
-export class SophieFollowerScene extends NPCAwareContent {
+export class SophieFollowerScene {
 
-    private get pregnancy(): PregnancyStore { return sophieScene.pregnancy; } // Quick way to access sophie's pregnancyStore
+    private get pregnancy(): PregnancyStore { return SophieScene.pregnancy; } // Quick way to access sophie's pregnancyStore
 
     // Make Sophie \"smart\" again: Doing the Deed
     // Visit Rathazul and he bitches.
@@ -21,14 +21,14 @@ export class SophieFollowerScene extends NPCAwareContent {
 
     public sophieFollower(): boolean {
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0) return false;
-        if (sophieBimbo.bimboSophie()) return false;
+        if (SophieBimbo.bimboSophie()) return false;
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 && flags[kFLAGS.SOPHIE_DEBIMBOED] > 0) return true;
         if (flags[kFLAGS.SOPHIE_RECRUITED_PURE] > 0) return true;
         return false;
     }
 
     public sophieSprite(): void {
-        sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
     }
 
     // Un-Bimbo*
@@ -47,7 +47,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("You shrug and put the potion back in your pack.  Maybe later...  A mad Sophie isn't something you particularly want to deal with right now.");
         // (Return to Sophie menu.  You monster)
         menu();
-        addButton(0, "Next", sophieBimbo.approachBimboSophieInCamp);
+        addButton(0, "Next", SophieBimbo.approachBimboSophieInCamp);
     }
 
     // Yes (God dammit what the fuck did I just say)*
@@ -89,7 +89,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         player.consumeItem(consumables.BIMBOLQ);
         if (game.inCombat)
             cleanupAfterCombat(); // (Display Sophie's normal options.You monster)
-        else sophieBimbo.approachBimboSophieInCamp(false);
+        else SophieBimbo.approachBimboSophieInCamp(false);
     }
 
     // Beat Her (You Monster)*
@@ -234,14 +234,14 @@ export class SophieFollowerScene extends NPCAwareContent {
     // BimboBody Sophie Follower, Main Screen
     public followerSophieMainScreen(): void {
         clearOutput();
-        sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
         // Sophie is in season
-        if (sophieBimbo.sophieIsInSeason() && player.cocks.length > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+        if (SophieBimbo.sophieIsInSeason() && player.cocks.length > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
             // Replacement Greeting Screen For In Season
             // Similar to bimbo sophie
             outputText("Sophie's entire soft body jiggles and shudders visibly when she hears you call her.  Her walk towards you is a bit too fast to be sensuous, despite her best attempts, and her tail feathers twitch, fanning a breeze towards you that reeks of pheromones and her needy sex.  She puts a hand on her hip, making a small show of her jiggling butt and immense mammaries as she gives you a wink and stares at you with lowered eyelids, bedroom eyes seeking to provoke more arousal from you.  Her finger presses against your [chest] as she speaks, slowly and seductively, trying to accentuate every word by adding the power of her lips to it.  \"<i>Sooo, you wanted to see me?  That's good, because Momma Sophie wanted to see you as well.</i>\"");
             outputText("\n\nHer hand travels down your belly all the way to your [oneCock], rubbing against it affectionately as she presses her prodigious bosom against you.  \"<i>You see, you need to put \"momma\" back into Momma Sophie, [name].  You really have to do it, it's <b>very</b> important, wouldn't you agree?</i>\"  When she grabs at your [cockHead biggest], you stiffen immediately, and almost catch yourself nodding to her words.  \"<i>Your cock seems to agree, [name].  It pulls you towards me, egging you on to pump me full of eggs, right?</i>\"  She chuckles as she continues to rub your member.  \"<i>To just put it in and squirt until I'm totally full of your cum, and then your baby.</i>\"  She continues to caress you, and you realize that with her being more needy than usual, it's natural that she'd try to compel you to have sex with her, and ");
-            if (sophieBimbo.bimboSophie()) outputText("restoring her intellect made her quite skilled at it again");
+            if (SophieBimbo.bimboSophie()) outputText("restoring her intellect made her quite skilled at it again");
             else outputText("she's quite skilled at it");
             outputText(".  \"<i>Ohhh, come on, [name]!  Just give it to me like a good " + mf(player, "boy", "girl") + ", would you?  I could even give you a special treat.  <b>Just give. It. To. Me.</b></i>\"");
             outputText("\n\nYou guess there's no way Sophie would really accept any non-impregnating kind of sex right now, but you could refuse... or pick that special treat over your usual sex.");
@@ -251,7 +251,7 @@ export class SophieFollowerScene extends NPCAwareContent {
             menu();
             addButton(0, "Appearance", sophieAppearance);
             if (player.cocks.length > 0) {
-                if (player.cocks.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) {
+                if (player.cocks.cockThatFits(SophieBimbo.sophieCapacity()) >= 0) {
                     addButton(1, "Vaginal", fuckFollowerSophie);
                     addButton(2, "Special", sophieSpecial);
                 }
@@ -288,7 +288,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         }
         if (flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) outputText("\n\n<b>Sophie's egg is sitting nearby.</b>");
         if (flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 0) {
-            addButton(7, "Daughter", sophieBimbo.daughterCheckup);
+            addButton(7, "Daughter", SophieBimbo.daughterCheckup);
         }
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(9, "Back", camp.campFollowers);
         else addButton(9, "Back", FarmCorruption.rootScene);
@@ -424,10 +424,10 @@ export class SophieFollowerScene extends NPCAwareContent {
 
         // [Usual] [Nurse] [YouMove] [IMove] [Titfuck] [GetDMilked] [Extra1] [....]
         if (player.cocks.length > 0) {
-            if (player.cocks.cockThatFits(sophieBimbo.sophieCapacity()) >= 0) addButton(0, "Vaginal", fuckFollowerSophie);
+            if (player.cocks.cockThatFits(SophieBimbo.sophieCapacity()) >= 0) addButton(0, "Vaginal", fuckFollowerSophie);
             addButton(1, "Blowjob", sophieFollowerGivesBlowjobs);
         }
-        if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 && flags[kFLAGS.SOPHIE_FAMILY_INCEST] > 0 && player.cocks.cockThatFits(sophieBimbo.sophieCapacity()) >= 0)
+        if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] > 0 && flags[kFLAGS.SOPHIE_FAMILY_INCEST] > 0 && player.cocks.cockThatFits(SophieBimbo.sophieCapacity()) >= 0)
             addButton(8, "DaughterFuck", sophieIncestInHerCooterOrSomethingIDunno);
         addButton(9, "Back", followerSophieMainScreen);
     }
@@ -514,12 +514,12 @@ export class SophieFollowerScene extends NPCAwareContent {
     // vaginal Fuck*
     // Needs some mods for when she's in season!
     private fuckFollowerSophie(): void {
-        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(SophieBimbo.sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
-        const y: number = player.cocks.cockThatFits2(sophieBimbo.sophieCapacity());
+        const y: number = player.cocks.cockThatFits2(SophieBimbo.sophieCapacity());
         clearOutput();
         // In season intro
-        if (sophieBimbo.sophieIsInSeason()) {
+        if (SophieBimbo.sophieIsInSeason()) {
             outputText("Sophie pulls you into her feathery embrace, her fingertips sensually exploring every inch of your form.  Her voice coos huskily, \"<i>So you want to help make a momma out of Momma Sophie, huh?</i>\"  She grabs your hand and stuffs it between her luscious thighs, right into the dripping-wet delta of her mons.  \"<i>Don't keep me waiting... you got me all... hot and bothered...</i>\"");
         }
         // Regular Intro
@@ -534,7 +534,7 @@ export class SophieFollowerScene extends NPCAwareContent {
             outputText("\n\nShe snickers, \"<i>That little thing is going to fuck me?  " + mf(player, "I thought you were a man, but that looks like a little girl-clit!", "I know you're a herm, but maybe you should just turn that little thing into a proper clit!") + "</i>\"  Prodding your girlish member, she comments, \"<i>It's kind of cute in its own way, though I don't think I'll feel much.</i>\"  Her fingers tickle along the underside of it as she giggles, \"<i>I could just play with this dainty girl-cock all day long...</i>\"");
         }
         // Medium
-        else if (player.cocks.cockArea(x) <= sophieBimbo.sophieCapacity() / 2) {
+        else if (player.cocks.cockArea(x) <= SophieBimbo.sophieCapacity() / 2) {
             outputText("\n\nShe asks, \"<i>So this is what you want to fuck me with, huh?  It's not THAT impressive.</i>\"  Her hand wraps around your " + cockDescript(game.player, x) + ", squeezing it softly until it rises in her palms.  \"<i>Oooh, it does seem nice and virile, though, doesn't it?</i>\"  She strokes the underside and coos to it, watching raptly as you fully erect.");
         }
         // Big
@@ -544,7 +544,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText("\n\nSophie gives your " + cockDescript(game.player, x) + " an appreciative swat before pirouetting around, bent over with her hands on her knees and her butt up in the air.  She wiggles back and forth, her lasciviously luscious backside jiggling, the cheeks clapping audibly at the apex of each sway.  Her voice purrs, \"<i>Come and get it, if you think you're " + mf(player, "man", "woman") + " enough!</i>\"");
 
         outputText("\n\nYou prowl forward, but Sophie backs up, wings flapping, her rump pushing right into you.  Her bubble-butt drives you back against one of the many standing stones, pinned between a cunt and a hard place.  Squishing noisily, your " + cockDescript(game.player, x) + " slides right into Sophie's ");
-        if (sophieBimbo.sophieIsInSeason()) outputText("gushing, sperm-hungry");
+        if (SophieBimbo.sophieIsInSeason()) outputText("gushing, sperm-hungry");
         else outputText("slippery");
         outputText(" cunt.  You moan out load at the sudden penetration and grab onto Sophie's ass for dear life.  Her ass practically devours your fingertips, the expansive backside sinking exquisitely under your touch.  It's a detail you barely have time to register, as most of your attention is riveted on the tight walls gripping you, sliding along with well-practiced sexual skill.  Sophie's hips roll slowly, pinning you against the rock in the most pleasant of ways.");
 
@@ -569,7 +569,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         if (y >= 0) outputText(" and anal walls");
         outputText(".  Your fingers dig into her plush butt, no longer kneading, but instead curling possessively, claiming absolute ownership of that supple behind and the rapidly-filling cunt below.");
         if (y >= 0) outputText("  You pack her intestines full of cum at the same time that you sperm up her clingy cunny tunnel.");
-        if (sophieBimbo.sophieIsInSeason()) outputText("  Her pussy seems to drink the spunky deposit down, her cervix opening to allow in as much in as possible.  You can feel the suction, and if you weren't already riding out a mind-bending orgasm, you're sure you'd be cumming harder than normal right now.");
+        if (SophieBimbo.sophieIsInSeason()) outputText("  Her pussy seems to drink the spunky deposit down, her cervix opening to allow in as much in as possible.  You can feel the suction, and if you weren't already riding out a mind-bending orgasm, you're sure you'd be cumming harder than normal right now.");
         outputText("  Your body slacks over her, the only muscles that are actually working are the ones spasming in your loins, pumping out fresh batches of sperm.  You whimper with primal pleasure, spittle frothing at the corners of your mouth.");
         if (player.cumQ() >= 500) {
             outputText("  Sophie's belly ");
@@ -579,7 +579,7 @@ export class SophieFollowerScene extends NPCAwareContent {
             if (player.cumQ() >= 4000) outputText(" and it's still growing larger");
             outputText(".");
         }
-        if (player.cumQ() >= 5000 || (player.cumQ() >= 500 && sophieBimbo.sophieIsInSeason())) {
+        if (player.cumQ() >= 5000 || (player.cumQ() >= 500 && SophieBimbo.sophieIsInSeason())) {
             outputText("  A huge wash of white rushes out from her well-sexed fuck-hole, soaking your legs with the mixed cum.");
         }
         outputText("  Then, you black out, with your " + cockDescript(game.player, x));
@@ -587,7 +587,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         outputText(" still pulsing in ecstasy.  It was such a good cum...");
         player.orgasm();
         dynStats("sen", -2);
-        if (sophieBimbo.sophieIsInSeason()) sophieBimbo.sophiePregChance();
+        if (SophieBimbo.sophieIsInSeason()) SophieBimbo.sophiePregChance();
         menu();
         addButton(0, "Next", sophieVagFollowerFollowup);
     }
@@ -595,12 +595,12 @@ export class SophieFollowerScene extends NPCAwareContent {
     // [Next]
     private sophieVagFollowerFollowup(): void {
         clearOutput();
-        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(SophieBimbo.sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
-        const y: number = player.cocks.cockThatFits2(sophieBimbo.sophieCapacity());
+        const y: number = player.cocks.cockThatFits2(SophieBimbo.sophieCapacity());
 
         outputText("You're roused a few moments later by a smiling Sophie, the proof of your union dripping between her thighs.  She quips, \"<i>");
-        if (sophieBimbo.sophieIsInSeason()) outputText("If that didn't take, I don't know what will!");
+        if (SophieBimbo.sophieIsInSeason()) outputText("If that didn't take, I don't know what will!");
         else if (player.cocks.cockArea(x) <= 5) outputText("Not too bad for a tiny girl-dick!");
         else outputText("It's always better when you have to wait for it, isn't it?");
         outputText("</i>\"");
@@ -612,12 +612,12 @@ export class SophieFollowerScene extends NPCAwareContent {
     // Sucking dicks.
     private sophieFollowerGivesBlowjobs(): void {
         clearOutput();
-        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(SophieBimbo.sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
 
         outputText("Sophie cocks her head to the side and chuckles, \"<i>You wanna feel Momma Sophie's lips around that ");
         if (player.cocks.cockArea(x) <= 5) outputText("tiny clit you call a penis");
-        else if (player.cocks.cockArea(x) <= sophieBimbo.sophieCapacity() / 2) outputText("needy boy-cock");
+        else if (player.cocks.cockArea(x) <= SophieBimbo.sophieCapacity() / 2) outputText("needy boy-cock");
         else outputText("over-swollen engorgement you call a cock");
         outputText("?</i>\"  She saunters up with her hips swaying seductively, her juicy mound squelching noisily, webs of lubricant dangling between her thighs whenever they spread.  The harpy's fingertip punches into your chest");
         if (player.breasts.biggestTitSize() >= 1) outputText(", right between your [chest]");
@@ -633,7 +633,7 @@ export class SophieFollowerScene extends NPCAwareContent {
 
     // Blow Sixtynine*
     private sophieBlowsSixtyNine(): void {
-        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(SophieBimbo.sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         outputText("You nod eagerly, something that gets the busty harpy smiling as her whole body flushes.  She rushes at you, leaping and flapping, speeding towards you faster as old feathers kick up in a wake behind her.  You spread your arms and let her slam into you, the impact cushioned by her weighty breasts and large, soft thighs.  Both of you roll end over end through the dirt, eventually coming to rest with her straddling your [chest] and rubbing a finger through her slippery folds.  She adds another finger to spread them wide, the pink interior pulsing wetly and dripping with female moisture.");
@@ -690,7 +690,7 @@ export class SophieFollowerScene extends NPCAwareContent {
         // Slimefeed
         player.slimeFeed();
         // 8 hours lust stick
-        sophieScene.luststickApplication(8);
+        SophieScene.luststickApplication(8);
         // +10 lust
         player.orgasm();
         dynStats("sen", 1);
@@ -700,7 +700,7 @@ export class SophieFollowerScene extends NPCAwareContent {
 
     // Forceful Blowjob*
     private forceSophieBlowjob(): void {
-        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(SophieBimbo.sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
         // Increments a displeasure counter - doing enough of these causes her to leave in the night if it gets too high.
@@ -871,7 +871,7 @@ export class SophieFollowerScene extends NPCAwareContent {
     // [special]
     private sophieSpecial(): void {
         clearOutput();
-        const x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        const x: number = player.cocks.cockThatFits(SophieBimbo.sophieCapacity());
         if (x < 0) player.cocks.smallestCockIndex();
         outputText("\"<i>Ahhh, so you do want a bit of Momma Sophie's special treatment... such a brave " + mf(player, "boy", "girl") + ", aren't you?</i>\" She leans in closer as she starts to get rid of your [armor].  \"<i>Very brave... we might have to put you back into place.  Momma Sophie will milk this " + cockDescript(game.player, x) + " until the only thing that even allows you to cum anytime in the future will be the fact I drugged you with my lipstick.</i>\"");
 
@@ -954,7 +954,7 @@ export class SophieFollowerScene extends NPCAwareContent {
 
         outputText("\n\nYou feel like you may need to rest a few hours.");
         player.orgasm();
-        if (sophieBimbo.sophieIsInSeason()) sophieBimbo.sophiePregChance();
+        if (SophieBimbo.sophieIsInSeason()) SophieBimbo.sophiePregChance();
         fatigue(15);
         doNext(camp.returnToCampUseOneHour);
     }
@@ -1107,7 +1107,7 @@ export class SophieFollowerScene extends NPCAwareContent {
 
     private phaseTwoOfIncest(daughter: number): void {
         clearOutput();
-        let x: number = player.cocks.cockThatFits(sophieBimbo.sophieCapacity());
+        let x: number = player.cocks.cockThatFits(SophieBimbo.sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
         daughter++;
         outputText("Tightening your hold on your curvaceous daughter, you shove her down onto the ground.  Growling with an almost primal edge, you lean down and inspect your prize, hands running over her ");

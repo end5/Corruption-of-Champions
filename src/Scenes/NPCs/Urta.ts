@@ -1,5 +1,5 @@
 
-export class Urta extends NPCAwareContent implements TimeAwareInterface {
+export class Urta implements TimeAwareInterface {
 
     // Urta variables
     // flags[kFLAGS.TIMES_FUCKED_URTA] = times fucked
@@ -56,7 +56,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         drainedByKath = false; // This var will only be set true after Kath licks Urta out - it stops you from going back immediately for more Urta sex
         pregnancy.pregnancyAdvance();
         trace("\nUrta time change: Time is " + game.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
-        if (flags[kFLAGS.NEED_URTA_LETTER] == 1 && game.time.hours == 6) urtaPregs.getUrtaLetter(); // Urta Letters
+        if (flags[kFLAGS.NEED_URTA_LETTER] == 1 && game.time.hours == 6) UrtaPregs.getUrtaLetter(); // Urta Letters
         if (pregnancy.incubation == 0 && (pregnancy.type == PregnancyStore.PREGNANCY_BEE_EGGS || PregnancyStore.PREGNANCY_DRIDER_EGGS)) {
             pregnancy.knockUpForce(); // Silently clear Urta's egg pregnancy
             flags[kFLAGS.URTA_EGGS] = 0;
@@ -116,7 +116,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.URTA_PC_LOVE_COUNTER] == 1) {
             // Queue up Amily madness
             // Only happens if freakout hasn't happened yet.
-            if (love > 0 && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) flags[kFLAGS.AMILY_NEED_TO_FREAK_ABOUT_URTA] = 1;
+            if (love > 0 && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) flags[kFLAGS.AMILY_NEED_TO_FREAK_ABOUT_URTA] = 1;
             return true;
         }
         else return false;
@@ -213,7 +213,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         // PREGNANT URTA
         if (pregnancy.isPregnant) {
             if (pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
-                urtaPregs.urtaPregAppearance();
+                UrtaPregs.urtaPregAppearance();
             }
             else { // Egg-Stuffed Urta:
                 // This replaces the normal "display" for Urta in the Wet Bitch screen
@@ -296,7 +296,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == -1) {
             outputText("You approach Urta, but she slams her bottle down on the table hard enough to make it rattle.  She slurs, \"<i>Jusht... stay away from me.  I don't want any company right now.</i>\"\n\n", false);
             outputText("There's nothing to do but leave....", false);
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         // Post Scylla discussion
@@ -333,21 +333,21 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         }
         // PREGNANT URTA
         if (pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
-            urtaPregs.urtaPreggoApproached();
+            UrtaPregs.urtaPreggoApproached();
             return;
         }
         // HERE WE GOEZ!
         if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] >= 5 && ((player.inRut && player.cocks.length > 0) || (player.inHeat && player.vaginas.length > 0))) {
 
-            if (urtaDrunk()) urtaHeatRut.approachDrunkenUrta();
-            else urtaHeatRut.approachSoberUrtaHeatRutProc();
+            if (urtaDrunk()) UrtaHeatRut.approachDrunkenUrta();
+            else UrtaHeatRut.approachSoberUrtaHeatRutProc();
             return;
         }
         // [URTA FRIEND FUCKBUDDY BUT UNHORNY]
         if (flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] > 0 && !urtaDrunk()) {
             outputText(images.showImage("urta-bar"), false);
             // Cockblock marble convo
-            if (marbleScene.marbleAtCamp() && flags[kFLAGS.URTA_KNOWS_PC_HAS_MARBLE_FOLLOWER] == 0) {
+            if (MarbleScene.marbleAtCamp() && flags[kFLAGS.URTA_KNOWS_PC_HAS_MARBLE_FOLLOWER] == 0) {
                 flags[kFLAGS.URTA_KNOWS_PC_HAS_MARBLE_FOLLOWER] = 1;
                 marbleCockuBlockuUrta();
                 return;
@@ -400,11 +400,11 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
                 addButton(1, "Anal Ride", takeUrtaInTheButtPublically);
                 addButton(2, "Lay Eggs", temp);
                 addButton(3, "Spank Her", spank);
-                if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
+                if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
                     outputText("\n\nYou know Urta and Raphael get along about as well as cats and dogs, but it might be fun to have them double-team you in the dark.");
                     addButton(8, "3SomeSurprise", urtaAndRaphaelSurprise);
                 }
-                addButton(9, "Leave", telAdre.barTelAdre);
+                addButton(9, "Leave", TelAdre.barTelAdre);
                 return;
             }
         }
@@ -416,7 +416,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
             outputText("You spend a moment looking over your shoulder, but can't for the life of you figure out what she was freaking out about.  She must be really drunk!  You turn back to scold her, but Urta has vanished!  She must have left in a hurry – she left her bottle of \"<i>John Doe</i>\" behind, and still half-full.  The bar's back-door swings closed, maybe she went that way.  What do you do?", false);
 
             // (LEAVE HER TABLE) (DRINK HER BOOZE) (BACKDOOR)
-            simpleChoices("Backdoor", urtaFollowedOutBack, "Drink Booze", drinkUrtasBooze, "", null, "", null, "Leave", telAdre.barTelAdre);
+            simpleChoices("Backdoor", urtaFollowedOutBack, "Drink Booze", drinkUrtasBooze, "", null, "", null, "Leave", TelAdre.barTelAdre);
             return;
         }
         // [URTA FRIEND APPROACH]
@@ -439,11 +439,11 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
             addButton(1, "Anal Ride", takeUrtaInTheButtPublically);
             addButton(2, "Lay Eggs", temp);
             addButton(3, "Spank Her", spank);
-            if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
+            if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
                 outputText("\n\nYou know Urta and Raphael get along about as well as cats and dogs, but it might be fun to have them double-team you in the dark.");
                 addButton(8, "3SomeSurprise", urtaAndRaphaelSurprise);
             }
-            addButton(9, "Leave", telAdre.barTelAdre);
+            addButton(9, "Leave", TelAdre.barTelAdre);
             return;
         }
         // [URTA COMFORTABLE WITH HOR-COCK]
@@ -471,7 +471,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.URTA_CUM_NO_CUM_DAYS] >= 5) addButton(0, "Hidden BJ", slurpFawkesCocksForFunAndInflation);
         else addButton(0, "Hidden BJ", blowUrtaUnderTable);
         addButton(1, "Urta's Place", goBackToUrtasForLuvinz);
-        addButton(4, "Leave", telAdre.barTelAdre);
+        addButton(4, "Leave", TelAdre.barTelAdre);
     }
 
     private drinkUrtasBooze(): void {
@@ -609,7 +609,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         outputText("You guess you'd better head back into the bar...", false);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] = -1;
         cheatTime(1);
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
 
     // [MASTURBATE WITH HER]
@@ -919,7 +919,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         let tooBig: boolean = false;
         if (player.cor < 30 && flags[kFLAGS.PC_FETISH] == 0) {
             outputText("No way!  You're not going to do that in front of EVERYONE.", false);
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         player.slimeFeed();
@@ -2260,7 +2260,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         }
         outputText("  Whatever you do, with Scylla involved, it's sure to get out of hand.");
         // [Fuck Nun Nipple] [Fuck Urta] [Get Worshipped]
-        simpleChoices("Fuck Fox", fuck, "Worshipped", worship, "", null, "", null, "Back", telAdre.barTelAdre);
+        simpleChoices("Fuck Fox", fuck, "Worshipped", worship, "", null, "", null, "Back", TelAdre.barTelAdre);
     }
     // Fuck Urta while scylla sucks sober
     private fuckUrtaWhileScyllaSucksSober(): void {
@@ -2737,10 +2737,10 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
         addButton(2, "The Watch", urtaDiscussesTheWatch);
         if (!urtaJustFriends()) addButton(3, "Alcoholism", urtaDiscussesAlcholism);
         if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 4) addButton(5, "Katherine", urtaDiscussessKatherine);
-        if (urtaPregs.urtaKids() > 0 && player.keyItems.has("Spare Key to Urta's House") < 0)
-            addButton(4, "Visit Kids", urtaPregs.visitKidsFirstTime);
+        if (UrtaPregs.urtaKids() > 0 && player.keyItems.has("Spare Key to Urta's House") < 0)
+            addButton(4, "Visit Kids", UrtaPregs.visitKidsFirstTime);
         else
-            if (flags[kFLAGS.FIRST_TIME_AT_URTA_HOUSE] > 0) addButton(4, "Her House", urtaPregs.talkToUrtaAboutHerHouse);
+            if (flags[kFLAGS.FIRST_TIME_AT_URTA_HOUSE] > 0) addButton(4, "Her House", UrtaPregs.talkToUrtaAboutHerHouse);
         addButton(9, "Leave", camp.returnToCampUseOneHour);
     }
 
@@ -3220,7 +3220,7 @@ export class Urta extends NPCAwareContent implements TimeAwareInterface {
                 // (If Edryn has had at least one baby:
                 if (flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] > 0) {
                     if (flags[kFLAGS.URTA_QUEST_STATUS] == 1) {
-                        if (urtaPregs.urtaKids() == 0) outputText("  \"<i>...I still can't believe that you actually get her pregnant, though.  It's just not fair that Edryn's got little hooves running around, and after everything I went through, I don't have kits of my own... yet.</i>\" She gives you a slightly predatory smile along with the last word.");
+                        if (UrtaPregs.urtaKids() == 0) outputText("  \"<i>...I still can't believe that you actually get her pregnant, though.  It's just not fair that Edryn's got little hooves running around, and after everything I went through, I don't have kits of my own... yet.</i>\" She gives you a slightly predatory smile along with the last word.");
                         else outputText("  \"<i>...I still can't believe that you actually got her pregnant, though.  I guess I'll have to keep you busy in the sack if we're going to keep up, huh?</i>\" She gives you a slightly predatory smile along with the last word.");
                     }
                     else outputText("  \"<i>...I still can't believe that you actually got her pregnant, though. It's just not fair that Edryn's got little hooves running around, and you and I can't have any.</i>\"  Urta sighs.");

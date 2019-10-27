@@ -2,11 +2,11 @@
 export class Jojo extends Monster {
 
     public defeated(hpVictory: boolean): void {
-        game.jojoScene.defeatedJojo(hpVictory);
+        JojoScene.defeatedJojo(hpVictory);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.jojoScene.loseToJojo();
+        JojoScene.loseToJojo();
     }
 
     protected performCombatAction(): void {

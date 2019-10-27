@@ -33,7 +33,7 @@ export function xmasBitchEncounter(): void {
         outputText(".</i>\"\n\n", false);
     }
     outputText("You wonder out loud, \"<i>So this... present is mine?</i>\"\n\n", false);
-    if (player.cor >= 90 || monk >= 5 || player.effects.findByType(StatusAffects.Exgartuan) >= 0 || amilyScene.amilyCorrupt() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.NIAMH_STATUS] > 0) {
+    if (player.cor >= 90 || game.monk >= 5 || player.effects.findByType(StatusAffects.Exgartuan) >= 0 || AmilyScene.amilyCorrupt() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.NIAMH_STATUS] > 0) {
         outputText("She nods, bouncing up and down in excitement and flushing slightly, \"<i>Yup, just tear the lid off and get your gift!</i>\"\n\n", false);
         if (flags[kFLAGS.PC_ENCOUNTERED_CHRISTMAS_ELF_BEFORE] > 0) outputText("Here we go again...\n\n");
         // [Open Present] [Unwrap Elf] [Decline]
@@ -65,7 +65,7 @@ export function openXmasPresent(): void {
     spriteSelect(9);
     outputText("", true);
     outputText("You easily rip through the ribbons holding the box together and pull off the top.   You gasp in ", false);
-    if (player.cor >= 90 || monk >= 5 || player.effects.findByType(StatusAffects.Exgartuan) >= 0 || amilyScene.amilyCorrupt() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.NIAMH_STATUS] > 0) {
+    if (player.cor >= 90 || game.monk >= 5 || player.effects.findByType(StatusAffects.Exgartuan) >= 0 || AmilyScene.amilyCorrupt() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0 || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 || flags[kFLAGS.NIAMH_STATUS] > 0) {
         // [Bad Present]
         outputText("shock at the box's contents – a nine inch cock with damn near a dozen buzzing, elliptical devices taped to it.  A pair of coal lumps rattles around underneath it, positioned as if they were the dick's testicles.\n\n", false);
 

@@ -103,7 +103,7 @@ export class TelAdre {
     private telAdreTour(): void {
         player.effects.setValue(StatusAffects.TelAdre, 1, 1);
         outputText("", true);
-        urta.urtaSprite();
+        Urta.urtaSprite();
         outputText("Urta leads you into the streets of Tel'Adre, giving you a brief run-down of her and her city, \"<i>You see, about two decades back, the demons were chewing their way through every settlement and civilization in Mareth.  The covenant, a group of powerful magic-users, realized direct confrontation was doomed to fail.  They hid us in the desert with their magic, and the demons can't corrupt what they can't find.  So we're safe, for now.</i>\"\n\n", false);
         outputText("The two of you find yourselves in the center of a busy intersection.  Urta explains that this is the main square of the city, and that, although the city is large, a goodly portion of it remains empty.  Much of the population left to assist other settlements in resisting the demons and was lost.  She brushes a lock of stray hair from her eye and guides you down the road, making sure to point out her favorite pub - \"The Wet Bitch\".  You ", false);
         if (player.cor < 25) outputText("blush", false);
@@ -124,8 +124,8 @@ export class TelAdre {
             urtaIsABadass();
             return;
         }
-        if (!urtaQuest.urtaBusy() && urta.pregnancy.event > 5 && rand(30) == 0) {
-            urtaPregs.urtaIsAPregnantCopScene();
+        if (!urtaQuest.urtaBusy() && Urta.pregnancy.event > 5 && rand(30) == 0) {
+            UrtaPregs.urtaIsAPregnantCopScene();
             return;
         }
         switch (flags[kFLAGS.KATHERINE_UNLOCKED]) {
@@ -153,7 +153,7 @@ export class TelAdre {
                 }
         }
         if (flags[kFLAGS.ARIAN_PARK] == 0 && player.level >= 4 && rand(10) == 0 && flags[kFLAGS.NOT_HELPED_ARIAN_TODAY] == 0) {
-            arianScene.meetArian();
+            ArianScene.meetArian();
             return;
         }
         // Display Tel'adre menu options//
@@ -162,8 +162,8 @@ export class TelAdre {
         // Must have Urta's Key.
         // Urta must be pregnant to trigger this scene.
         // Play this scene upon entering Tel'Adre.
-        if (urta.pregnancy.event > 2 && rand(4) == 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] == 0 && player.keyItems.has("Spare Key to Urta's House") >= 0) {
-            urtaPregs.urtaSpecialDeliveries();
+        if (Urta.pregnancy.event > 2 && rand(4) == 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] == 0 && player.keyItems.has("Spare Key to Urta's House") >= 0) {
+            UrtaPregs.urtaSpecialDeliveries();
             return;
         }
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] == -1) {
@@ -173,7 +173,7 @@ export class TelAdre {
         spriteSelect(-1);
         outputText("Tel'Adre is a massive city, though most of its inhabitants tend to hang around the front few city blocks.  It seems the fall of Mareth did not leave the city of Tel'Adre totally unscathed.  A massive tower rises up in the center of the city, shimmering oddly.  From what you overhear in the streets, the covenant's magic-users slave away in that tower, working to keep the city veiled from outside dangers.  There does not seem to be a way to get into the unused portions of the city, but you'll keep your eyes open.\n\n", true);
         outputText("A sign depicting a hermaphroditic centaur covered in piercings hangs in front of one of the sandstone buildings, and bright pink lettering declares it to be the 'Piercing Studio'.  You glance over and see the wooden facade of Urta's favorite bar, 'The Wet Bitch'.  How strange that those would be what she talks about during a tour.  In any event you can also spot some kind of wolf-man banging away on an anvil in a blacksmith's stand, and a foppishly-dressed dog-man with large floppy ears seems to be running some kind of pawnshop in his stand.  Steam boils from the top of a dome-shaped structure near the far end of the street, and simple lettering painted on the dome proclaims it to be a bakery.  Perhaps those shops will be interesting as well.", false);
-        if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && !raphael.RaphaelLikes()) {
+        if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && !Raphael.RaphaelLikes()) {
             outputText("\n\nYou remember Raphael's offer about the Orphanage, but you might want to see about shaping yourself more to his tastes first.  He is a picky fox, after all, and you doubt he would take well to seeing you in your current state.");
         }
         telAdreMenuShow();
@@ -181,13 +181,13 @@ export class TelAdre {
 
     public telAdreMenuShow(): void { // Just displays the normal Tel'Adre menu options, no special events, no description. Useful if a special event has already played
         let homes: boolean = false;
-        if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && raphael.RaphaelLikes())
+        if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes())
             homes = true;
         else if (player.keyItems.has("Spare Key to Urta's House") >= 0)
             homes = true;
         else if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 5)
             homes = true;
-        else if (flags[kFLAGS.ARIAN_PARK] >= 4 && !arianScene.arianFollower())
+        else if (flags[kFLAGS.ARIAN_PARK] >= 4 && !ArianScene.arianFollower())
             homes = true;
         menu();
         addButton(0, "Shops", armorShops);
@@ -195,7 +195,7 @@ export class TelAdre {
         addButton(2, "Bar", enterBarTelAdre);
         addButton(3, "Gym", gymDesc);
         if (homes) addButton(4, "Homes", houses);
-        if (flags[kFLAGS.ARIAN_PARK] > 0 && flags[kFLAGS.ARIAN_PARK] < 4) addButton(5, "Park", arianScene.visitThePark);
+        if (flags[kFLAGS.ARIAN_PARK] > 0 && flags[kFLAGS.ARIAN_PARK] < 4) addButton(5, "Park", ArianScene.visitThePark);
         addButton(6, "Pawn", oswaldPawn);
         addButton(7, "Tower", Library.visitZeMagesTower);
         addButton(8, "Weapons", weaponShop);
@@ -220,18 +220,18 @@ export class TelAdre {
         outputText("Whose home will you visit?");
         let orphanage: () => void = null;
         if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2) {
-            if (raphael.RaphaelLikes()) {
-                orphanage = raphael.orphanageIntro;
+            if (Raphael.RaphaelLikes()) {
+                orphanage = Raphael.orphanageIntro;
             }
             else {
                 outputText("\n\nYou remember Raphael's offer about the Orphanage, but you might want to see about shaping yourself more to his tastes first.  He is a picky fox, after all, and you doubt he would take well to seeing you in your current state.");
             }
         }
         menu();
-        if (flags[kFLAGS.ARIAN_PARK] >= 4 && !arianScene.arianFollower()) addButton(0, "Arian's", arianScene.visitAriansHouse);
+        if (flags[kFLAGS.ARIAN_PARK] >= 4 && !ArianScene.arianFollower()) addButton(0, "Arian's", ArianScene.visitAriansHouse);
         addButton(1, "Orphanage", orphanage);
-        if (urtaPregs.urtaKids() > 0 && player.keyItems.has("Spare Key to Urta's House") >= 0)
-            addButton(2, "Urta's House", (Katherine.isAt(Katherine.KLOC_URTAS_HOME) ? Katherine.katherineAtUrtas : urtaPregs.visitTheHouse));
+        if (UrtaPregs.urtaKids() > 0 && player.keyItems.has("Spare Key to Urta's House") >= 0)
+            addButton(2, "Urta's House", (Katherine.isAt(Katherine.KLOC_URTAS_HOME) ? Katherine.katherineAtUrtas : UrtaPregs.visitTheHouse));
         if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 5) addButton(3, "Kath's Apt", Katherine.visitAtHome);
         addButton(9, "Back", telAdreMenu);
     }
@@ -1085,7 +1085,7 @@ export class TelAdre {
                 Katherine.barFirstEncounter();
                 return;
             }
-            if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] == 31 && urta.urtaAtBar() && !urta.urtaDrunk() && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0) {
+            if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] == 31 && Urta.urtaAtBar() && !Urta.urtaDrunk() && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0) {
                 Katherine.barKathUrtaLoveAnnounce();
                 return;
             }
@@ -1095,7 +1095,7 @@ export class TelAdre {
         // trace("HEL FOLLOWER LEVEL: " + flags[kFLAGS.HEL_FOLLOWER_LEVEL] + " HEL FUCKBUDDY: " + flags[kFLAGS.HEL_FUCKBUDDY] + " HARPY QUEEN DEFEATED: " + flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]);
         // trace("REDUCED ENCOUNTER RATE (DISPLINED): " + flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE]);
         // HELIA
-        // 	if(player.gender > 0 && game.time.hours >= 14 && rand(2) == 0 && game.time.hours < 20 && (flags[kFLAGS.HEL_FUCKBUDDY] != 0 || helFollower.followerHel()) && !(flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]== 0)) {
+        // 	if(player.gender > 0 && game.time.hours >= 14 && rand(2) == 0 && game.time.hours < 20 && (flags[kFLAGS.HEL_FUCKBUDDY] != 0 || HelFollower.followerHel()) && !(flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]== 0)) {
         if (Edryn.edrynHeliaThreesomePossible()) {
             Edryn.helAppearance();
             button = anotherButton(button, "Helia", Edryn.approachHelAtZeBitch);
@@ -1161,7 +1161,7 @@ export class TelAdre {
             button = anotherButton(button, "ScyllaCats", Katherine.katherineGreeting);
         }
         // URTA
-        if (urta.urtaAtBar()) {
+        if (Urta.urtaAtBar()) {
             // Scylla & The Furries Foursome
             if (Scylla.action == Scylla.SCYLLA_ACTION_FURRY_FOURSOME) {
                 trace("SCYLLA ACTION: " + Scylla.action);
@@ -1175,14 +1175,14 @@ export class TelAdre {
                 else
                     outputText("\n\nUrta's usual place is vacant, though her table still holds a half-drank mug of something potent and alcoholic.  If it's anything like the last time this happened, she's snuck into a back room with Scylla to relieve some pressure.  It might not hurt to join in...");
                 flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 4;
-                button = anotherButton(button, "Back Room", urta.scyllaAndUrtaSittingInATree);
+                button = anotherButton(button, "Back Room", Urta.scyllaAndUrtaSittingInATree);
             }
-            else if (urta.urtaBarDescript()) {
-                if (AuntNancy.auntNancy(false) && flags[kFLAGS.URTA_INCUBATION_CELEBRATION] == 0 && urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
-                    urtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
+            else if (Urta.urtaBarDescript()) {
+                if (AuntNancy.auntNancy(false) && flags[kFLAGS.URTA_INCUBATION_CELEBRATION] == 0 && Urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
+                    UrtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
                     return;
                 }
-                button = anotherButton(button, "Urta", urta.urtaBarApproach);
+                button = anotherButton(button, "Urta", Urta.urtaBarApproach);
             }
         }
         // VALA
@@ -1298,7 +1298,7 @@ export class TelAdre {
             misc1 = Niamh.approachNiamh;
         }
         var hel:Function = null;
-        if(player.gender > 0 && game.time.hours >= 14 && rand(2) == 0 && game.time.hours < 20 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && (!helFollower.followerHel() || flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 1)) {
+        if(player.gender > 0 && game.time.hours >= 14 && rand(2) == 0 && game.time.hours < 20 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && (!HelFollower.followerHel() || flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 1)) {
             Edryn.helAppearance();
             hel = Edryn.approachHelAtZeBitch;
         }
@@ -1311,7 +1311,7 @@ export class TelAdre {
         if(!urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] != 1 && game.time.hours < 15) {
             //Scylla + Urta sitting in a tree
             // SOME COMFORT     FUCKED URTA      NOT PISSED      DRUNK TIME    SCYLLA TO LV4    RANDOM CHANCE  HAS THIS HAPPENED BEFORE? SCYLLA REQS ->
-            if(flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 2 && flags[kFLAGS.TIMES_FUCKED_URTA] > 0 && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] < 1 && (urta.urtaDrunk() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && rand(3) == 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] == 0 || (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] > 0)) && ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0 && !urta.urtaDrunk()) || player.balls > 0) && player.cocks.length > 0 && misc1Name != "Scylla") {
+            if(flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 2 && flags[kFLAGS.TIMES_FUCKED_URTA] > 0 && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] < 1 && (Urta.urtaDrunk() || flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 3 && rand(3) == 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] == 0 || (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] > 0)) && ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0 && !Urta.urtaDrunk()) || player.balls > 0) && player.cocks.length > 0 && misc1Name != "Scylla") {
                 if(flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] > 0) {
                     outputText("\n\nUrta's usual place is vacant, though her table still holds a half-drank glass of water.  If it's anything like the last time this happened, she's snuck into a back room with Scylla to relieve some pressure.  It might not hurt to join in...", false);
                 }
@@ -1326,15 +1326,15 @@ export class TelAdre {
                 flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 4;
                 if(misc1Name == "Scylla") misc1 = null;
                 urta2 = null;
-                backroom = urta.scyllaAndUrtaSittingInATree;
+                backroom = Urta.scyllaAndUrtaSittingInATree;
                 flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 4;
             }
-            else if(urta.urtaBarDescript()) {
+            else if(Urta.urtaBarDescript()) {
                 if(flags[kFLAGS.URTA_INCUBATION_CELEBRATION] == 0 && flags[kFLAGS.URTA_INCUBATION] > 0) {
-                    urtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
+                    UrtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
                     return;
                 }
-                urta2 = urta.urtaBarApproach;
+                urta2 = Urta.urtaBarApproach;
             }
             else urta2 = null;
         }
@@ -1448,7 +1448,7 @@ export class TelAdre {
             if (player.gems < 200) {
                 outputText("\n\nYou can't afford that!");
             }
-            else egg = emberScene.getSomeStuff;
+            else egg = EmberScene.getSomeStuff;
         }
         choices(armors.CHBIKNI.shortName, createCallBackFunction(armorBuy, armors.CHBIKNI),
             armors.FULLCHN.shortName, createCallBackFunction(armorBuy, armors.FULLCHN),
@@ -1530,7 +1530,7 @@ export class TelAdre {
     // [Invetigate]
     private watchUrtaBeABadass(): void {
         outputText("", true);
-        urta.urtaSprite();
+        Urta.urtaSprite();
         outputText("You shoulder past the bulky centaurs, ignore the rough fur of the nearby wolves and hounds as it brushes against you, and press your way through to the center of the crowd.  Eventually the throng parts, revealing the embattled combatants.  A snarling wolf, nearly eight feet tall, towers over Urta.  The comparatively diminutive fox-woman is girded in light leather armor and dripping with sweat.  The larger wolf-man is staggering about, and his dark brown fur is matted with blood.\n\n", false);
 
         outputText("The bigger canid charges, snarling, with his claws extended.  Urta sidesteps and pivots, her momentum carrying her foot around in a vicious kick.  Her foot hits the side of the beast's knee hard enough to buckle it, and the wolf goes down on his knees with an anguished cry.  Urta slips under his arm and twists, turning his slump into a fall.  A cloud of dust rises from the heavy thud of the beast's body as it slams into the cobblestone street.\n\n", false);

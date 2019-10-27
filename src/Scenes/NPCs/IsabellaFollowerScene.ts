@@ -1,5 +1,5 @@
 
-export class IsabellaFollowerScene extends NPCAwareContent {
+export class IsabellaFollowerScene {
 
 	/*===========================
 Izzy Affection stat.
@@ -94,10 +94,10 @@ Optional Morning Oral for small-membered males*/
             let suck: () => void = null;
             if (player.cocks.length > 0) {
                 if (player.cocks[player.cocks.shortestCockIndex()].cockLength < 9)
-                    suck = isabellaScene.izzyGivesSmallWangsFreeOral;
+                    suck = IsabellaScene.izzyGivesSmallWangsFreeOral;
             }
-            choices("Talk", isabellaScene.talkWithIsabella, "Drink", isabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
-                "Fight 4 Rape", isabellaScene.fightIsabella, "Offer Oral", isabellaScene.volunteerToSlurpCowCunt, "Accept Offer", moveTheBitchIn,
+            choices("Talk", IsabellaScene.talkWithIsabella, "Drink", IsabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
+                "Fight 4 Rape", IsabellaScene.fightIsabella, "Offer Oral", IsabellaScene.volunteerToSlurpCowCunt, "Accept Offer", moveTheBitchIn,
                 "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
         }
         flags[kFLAGS.ISABELLA_TIMES_OFFERED_FOLLOWER]++;
@@ -113,10 +113,10 @@ Optional Morning Oral for small-membered males*/
         let suck: () => void = null;
         if (player.cocks.length > 0) {
             if (player.cocks[player.cocks.shortestCockIndex()].cockLength < 9)
-                suck = isabellaScene.izzyGivesSmallWangsFreeOral;
+                suck = IsabellaScene.izzyGivesSmallWangsFreeOral;
         }
-        choices("Talk", isabellaScene.talkWithIsabella, "Drink", isabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
-            "Fight 4 Rape", isabellaScene.fightIsabella, "Offer Oral", isabellaScene.volunteerToSlurpCowCunt, "", null,
+        choices("Talk", IsabellaScene.talkWithIsabella, "Drink", IsabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
+            "Fight 4 Rape", IsabellaScene.fightIsabella, "Offer Oral", IsabellaScene.volunteerToSlurpCowCunt, "", null,
             "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
     }
     // Move Ze Bitch In!
@@ -236,7 +236,7 @@ Optional Morning Oral for small-membered males*/
                 bjTogText = "Plz BJs";
             }
             bjToggle = toggleIsabellasMorningWoodChopping;
-            if (player.cocks.shortestCockLength() <= 9 && player.lust >= 33) getSucked = isabellaScene.izzyGivesSmallWangsFreeOral;
+            if (player.cocks.shortestCockLength() <= 9 && player.lust >= 33) getSucked = IsabellaScene.izzyGivesSmallWangsFreeOral;
         }
         outputText("\n\n", false);
         outputText("You could get a drink of Isabella's delicious milk, straight from the tap.", false);
@@ -247,7 +247,7 @@ Optional Morning Oral for small-membered males*/
         if (player.cocks.length > 0 && player.lust >= 33) hotdog = repeatGermanBratwurstInCamp;
         let fuckHer: () => void = null;
         if (player.cocks.cockThatFits(164) >= 0 && player.lust >= 33) fuckHer = fuckIsabella;
-        choices(bjTogText, bjToggle, "Drink Milk", isabellaScene.nomOnMommaIzzysTits, "Hotdog", hotdog, "Service Her", isabellaScene.volunteerToSlurpCowCunt, "TentacleSex", tentacle,
+        choices(bjTogText, bjToggle, "Drink Milk", IsabellaScene.nomOnMommaIzzysTits, "Hotdog", hotdog, "Service Her", IsabellaScene.volunteerToSlurpCowCunt, "TentacleSex", tentacle,
             "Get Sucked", getSucked, "Fuck Her", fuckHer, "", null, "", null, "Back", callForFollowerIsabella);
     }
 

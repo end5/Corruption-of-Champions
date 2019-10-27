@@ -10,8 +10,8 @@ export class Lake {
         if (poniesYN()) return;
 
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelScene.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         if (player.exploredLake % 20 == 0) {
@@ -59,7 +59,7 @@ export class Lake {
         // UNCOMMON EVENTS
         // Goo finding!
         if (rand(30) == 0 && flags[kFLAGS.GOO_TFED_MEAN] + flags[kFLAGS.GOO_TFED_NICE] > 0 && flags[kFLAGS.GOO_SLAVE_RECRUITED] == 0) {
-            latexGirl.encounterLeftBehindGooSlave();
+            LatexGirl.encounterLeftBehindGooSlave();
             return;
         }
         // Chance of dick-dragging! OLD:10% + 10% per two foot up to 30%
@@ -86,7 +86,7 @@ export class Lake {
         // ==============================
         // Pre-emptive chance of discovering Amily the stupidshit mouse
         if (select == 9) {
-            amilyScene.discoverAmilyVillage();
+            AmilyScene.discoverAmilyVillage();
         }
         // Pre-emptive chance of discovering the Beautiful Sword
         else if (select == 10) {
@@ -98,7 +98,7 @@ export class Lake {
         }
         // Meet Izma every 8 attempts
         else if (select == 5) {
-            izmaScene.meetIzmaAtLake();
+            IzmaScene.meetIzmaAtLake();
         }
         // Chance of dick-dragging! 10% + 10% per two foot up to 30%
         else if (select == 8) {
@@ -229,7 +229,7 @@ export class Lake {
             FetishCultistScene.fetishCultistEncounter();
         }
         else if (select == 6) {
-            rathazul.encounterRathazul();
+            Rathazul.encounterRathazul();
         }
         else {
             outputText("OH SHIT! LAKE EXPLORE BE BROKED.  SELECT: " + select + ".  You should probably go to fenoxo.com and click the link to report a bug and tell Fen about it.");

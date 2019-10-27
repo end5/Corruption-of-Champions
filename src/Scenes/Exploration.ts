@@ -60,8 +60,8 @@ export class Exploration {
         // goblinAssassinScene.goblinAssassinEncounter();
         // return;
 
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helFollower.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelFollower.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         if (player.explored > 1) {

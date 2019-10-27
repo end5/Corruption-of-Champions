@@ -71,7 +71,7 @@ export class SpiderMorphMob extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.kihaFollower.beatSpiderMob();
+        KihaFollower.beatSpiderMob();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -79,7 +79,7 @@ export class SpiderMorphMob extends Monster {
             outputText("\n\nThe spiders smile to one at another as they watch your display, then close in...");
             doNext(game.endLustLoss);
         } else {
-            game.kihaFollower.loseToSpiderMob();
+            KihaFollower.loseToSpiderMob();
         }
     }
 

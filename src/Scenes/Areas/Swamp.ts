@@ -14,17 +14,17 @@ export class Swamp {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272]++;
         /*  SPECIAL SCENE OVERWRITES */
         // KIHA X HEL THREESOME!
-        if (!kihaFollower.followerKiha() && player.cor < 60 && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.cocks.length > 0 && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0) {
-            kihaFollower.kihaXSalamander();
+        if (!KihaFollower.followerKiha() && player.cor < 60 && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.cocks.length > 0 && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0) {
+            KihaFollower.kihaXSalamander();
             return;
         }
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helFollower.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelFollower.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         if (flags[kFLAGS.TOOK_EMBER_EGG] == 0 && flags[kFLAGS.EGG_BROKEN] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] > 0 && (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] % 40 == 0)) {
-            emberScene.findEmbersEgg();
+            EmberScene.findEmbersEgg();
             return;
         }
         /*  STANDARD SCENE SELECTION  */
@@ -58,8 +58,8 @@ export class Swamp {
                 break;
             case 4:
                 // Kiha follower gets to explore her territory!
-                if (kihaFollower.followerKiha()) kihaScene.kihaExplore();
-                else kihaScene.encounterKiha();
+                if (KihaFollower.followerKiha()) KihaScene.kihaExplore();
+                else KihaScene.encounterKiha();
                 break;
             default:
                 outputText("New explore code fucked up.  YOU BONED (TELL FEN)");

@@ -135,11 +135,11 @@ export class Helspawn extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.helSpawnScene.beatUpYourDaughter();
+        HelSpawnScene.beatUpYourDaughter();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.helSpawnScene.loseSparringToDaughter();
+        HelSpawnScene.loseSparringToDaughter();
     }
 
     public constructor() {

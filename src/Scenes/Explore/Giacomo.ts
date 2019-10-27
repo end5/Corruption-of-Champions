@@ -43,8 +43,8 @@ export class Giacomo implements TimeAwareInterface {
     public timeChangeLarge(): boolean {
         if (checkedSuccubi++ == 0 && game.time.hours == 4 && player.effects.findByType(StatusAffects.SuccubiNight) >= 0 && (player.cocks.length > 0 || player.gender == 0)) { // Call secksins!
             if (player.effects.findByType(StatusAffects.RepeatSuccubi) >= 0) {
-                if (vapula.vapulaSlave() && player.cocks.length > 0 && flags[kFLAGS.VAPULA_THREESOMES] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) // VapulaSurprise
-                    vapula.vapulaAssistsCeruleanSuccubus();
+                if (Vapula.vapulaSlave() && player.cocks.length > 0 && flags[kFLAGS.VAPULA_THREESOMES] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) // VapulaSurprise
+                    Vapula.vapulaAssistsCeruleanSuccubus();
                 else nightSuccubiRepeat(); // Normal night succubi shit
             }
             else {

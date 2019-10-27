@@ -1,5 +1,5 @@
 
-export class HelScene extends NPCAwareContent implements TimeAwareInterface {
+export class HelScene implements TimeAwareInterface {
 
     public pregnancy: PregnancyStore;
 
@@ -22,7 +22,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             if (flags[kFLAGS.HEL_RAPED_TODAY] == 1) flags[kFLAGS.HEL_RAPED_TODAY] = 0;
         }
         if (game.time.hours == 3 && followerHel() && flags[kFLAGS.SLEEP_WITH] == "Helia" && rand(10) == 0) {
-            helFollower.sleepyNightMareHel();
+            HelFollower.sleepyNightMareHel();
             return true;
         }
         return false;
@@ -30,17 +30,17 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
 
     public timeChangeLarge(): boolean {
         // Helia's morning surprise!
-        if (game.time.hours == 23 && helFollower.followerHel() && flags[kFLAGS.HEL_BONUS_POINTS] >= 150 && flags[kFLAGS.HELIA_KIDS_CHAT] == 0) {
-            helSpawnScene.heliaBonusPointsAward();
+        if (game.time.hours == 23 && HelFollower.followerHel() && flags[kFLAGS.HEL_BONUS_POINTS] >= 150 && flags[kFLAGS.HELIA_KIDS_CHAT] == 0) {
+            HelSpawnScene.heliaBonusPointsAward();
             return true;
         }
-        if (game.time.hours == 8 && helFollower.followerHel() && flags[kFLAGS.HEL_NTR_TRACKER] == 1) {
-            helSpawnScene.helGotKnockedUp();
+        if (game.time.hours == 8 && HelFollower.followerHel() && flags[kFLAGS.HEL_NTR_TRACKER] == 1) {
+            HelSpawnScene.helGotKnockedUp();
             return true;
         }
-        if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] > 0 && helFollower.helAffection() >= 100 &&
+        if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] > 0 && HelFollower.helAffection() >= 100 &&
             flags[kFLAGS.HELIA_FOLLOWER_DISABLED] == 0 && game.time.hours == 2) {
-            helFollower.heliaFollowerIntro();
+            HelFollower.heliaFollowerIntro();
             return true;
         }
         if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == -1 && game.time.hours == 6) {
@@ -49,11 +49,11 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // Helspawn night smex!
         if (flags[kFLAGS.HELSPAWN_AGE] == 2 && (game.time.hours == 2 || game.time.hours == 3 || game.time.hours == 4) && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] == 7 && flags[kFLAGS.HELSPAWN_FUCK_INTERRUPTUS] == 0) {
-            helSpawnScene.helspawnIsASlut();
+            HelSpawnScene.helspawnIsASlut();
             return true;
         }
         // Chance of threesomes!
-        if (checkedHeliaIsabellaThreesome++ == 0 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && isabellaFollowerScene.isabellaFollower() && game.time.hours == 2 && game.time.days % 11 == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) {
+        if (checkedHeliaIsabellaThreesome++ == 0 && flags[kFLAGS.HEL_FUCKBUDDY] == 1 && IsabellaFollowerScene.isabellaFollower() && game.time.hours == 2 && game.time.days % 11 == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) {
             trace("ISABELLA/HELL TEST");
             if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 0) { // Hell/Izzy threesome intro
                 spriteSelect(31);
@@ -246,7 +246,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         cleanupAfterCombat();
     }
 
@@ -418,7 +418,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     public beatUpHelAndStealHerWalletFromHerVagina(): void {
         spriteSelect(68);
         outputText("", true);
-        const x: number = player.cocks.cockThatFits(helFollower.heliaCapacity());
+        const x: number = player.cocks.cockThatFits(HelFollower.heliaCapacity());
         outputText("You tell her that, sure, you could blow off some steam.  Still grinning, she tosses off her skimpy scale bikini and flops down on her back, already starting to finger her cunt.  You follow suit, stripping off your " + player.armorName + " and straddling her hips.  She reaches forward and grasps your " + cockDescript(game.player, x) + " in her scaly, clawed hands, causing you to miss a heartbeat before, smiling, she starts to pump it.  Her other hand continues to finger her cunt, preparing it for your " + cockDescript(game.player, x) + "'s penetration.  Content to let her lead for the moment, you grasp her wide hips just above where the crimson scales turn to soft flesh, tensing up as she begins to guide you into her slit.\n\n", false);
 
         outputText("The tip of your cock brushes against the lips of her cunt – it's burning hot, making you recoil a bit in her grasp.  But the salamander doesn't let up, instead guiding your cock head into her burning cunt, and then grasping your " + buttDescription(player) + " and pushing you the rest of the way in with one mighty pull!  You gasp as the explosive heat of her innermost depths overwhelms you, numbing your mind to any sensation but her burning cunt and the muscles contracting over your cock, already starting to milk you.\n\n", false);
@@ -438,7 +438,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -448,7 +448,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     public fuckHelsAss(): void {
         spriteSelect(68);
         outputText("", true);
-        const x: number = player.cocks.cockThatFits(helFollower.heliaAnalCapacity());
+        const x: number = player.cocks.cockThatFits(HelFollower.heliaAnalCapacity());
         outputText("You tell her that, yes, you want to blow off some steam, and motion for her to get on hands and knees.\n\n", false);
 
         outputText("\"<i>Oh, I think I know what we both want,</i>\" she says, grinning wolfishly as she strips out of her skimpy bikini and gets down on her hands and knees, turning so that her muscular ass is facing you.  Seductively, she lifts her tail in the air and waggles it in a 'come hither' motion before getting it out of your way, revealing your prize beneath it – her tight little pucker.\n\n", false);
@@ -473,7 +473,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -502,7 +502,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -511,8 +511,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
     // Player Win – DP(Multicock Only) (edited)
     public dpHel(): void {
         spriteSelect(68);
-        const x: number = player.cocks.cockThatFits(helFollower.heliaCapacity());
-        const y: number = player.cocks.cockThatFits2(helFollower.heliaCapacity());
+        const x: number = player.cocks.cockThatFits(HelFollower.heliaCapacity());
+        const y: number = player.cocks.cockThatFits2(HelFollower.heliaCapacity());
         outputText("", true);
         outputText("You tell her that, yes, you want to blow off some steam.  You start to undo your " + player.armorName + ", and quickly her eyes go wide.  \"<i>You've got something extra, don't ya!</i>\" she laughs, looking mighty impressed.  \"<i>Well, I think we can take care of that " + cockDescript(game.player, y) + ", too. Just sit back and relax, lover!</i>\"\n\n", false);
 
@@ -536,7 +536,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_AFFECTION]++;
         flags[kFLAGS.TIMES_HELIA_DOUBLE_DONGED]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -565,7 +565,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -594,7 +594,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -632,7 +632,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -674,7 +674,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -704,7 +704,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -753,7 +753,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -805,7 +805,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -863,7 +863,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -900,7 +900,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]--;
         // Bump down follower tracking affection too
-        helFollower.helAffection(-15);
+        HelFollower.helAffection(-15);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -930,7 +930,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         flags[kFLAGS.HEL_AFFECTION]--;
         // Bump up follower tracking affection too
-        helFollower.helAffection(-15);
+        HelFollower.helAffection(-15);
         if (game.inCombat)
             cleanupAfterCombat();
         else doNext(postHelFuckBuddyFollowup);
@@ -999,7 +999,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         dynStats("sen", -2);
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         // POST THREESOME RESULT
         doNext(postMinoThreesomeDecisionTime);
@@ -1030,7 +1030,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         dynStats("sen", -2);
         flags[kFLAGS.HEL_AFFECTION]++;
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         flags[kFLAGS.HEL_FUCK_COUNTER]++;
         // POST THREESOME RESULT
         doNext(postMinoThreesomeDecisionTime);
@@ -1260,8 +1260,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\"<i>You are... velcome,</i>\" Isabella says before bidding the two of you goodbye.  You soon follow suit, saying goodbye to the girls and making your way back to camp, proud to have fostered what could well be a friendship between the two.", false);
         // (Return PC to camp, advance time 1 hour)
         // (Increase Isabella's affection)
-        isabellaFollowerScene.isabellaAffection(5);
-        helFollower.helAffection(5);
+        IsabellaFollowerScene.isabellaAffection(5);
+        HelFollower.helAffection(5);
         flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] = 1;
         doNext(camp.returnToCampUseOneHour);
     }
@@ -1312,7 +1312,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("You pick up the pace, and soon come to your camp's perimeter.  There, Isabella is standing stark naked save for her shield, facing down an opponent wreathed in darkness but for the long, curved blade he or she wields.\n\n", false);
 
         outputText("\"<i>" + player.short + "!</i>\" Isabella gasps, relieved to see you approach. \"<i>", false);
-        if (isabellaAccent()) outputText("Good, now ve can take ze fight to zis uncouth barbarian!</i>\"\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("Good, now ve can take ze fight to zis uncouth barbarian!</i>\"\n\n", false);
         else outputText("Good, now we can take the fight to this uncouth barbarian!</i>\"\n\n", false);
 
         outputText("You raise your " + player.weaponName + " and prepare to fight the shadowy villain... only to see Hel the salamander step forward, staring at you with wide eyes.\n\n", false);
@@ -1320,7 +1320,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\"<i>" + player.short + "!  What the fuck!?</i>\" Hel demands, looking from you to the redheaded cow-girl.\n\n", false);
 
         outputText("Taken off guard, you start to introduce Hel to your companion.  Scowling, Isabella says, ", false);
-        if (isabellaAccent()) outputText("\"<i>I know ze little beech, " + player.short + ".</i>\"\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>I know ze little beech, " + player.short + ".</i>\"\n\n", false);
         else outputText("\"<i>I know the little bitch, " + player.short + ".</i>\"\n\n", false);
 
         outputText("Hel sneers, \"<i>Well, you damn well better, cow.  We've been at this for months.  Now, give me back my mother's bandanna or I am going to shove my clawed foot right up your fat ass!</i>\"\n\n", false);
@@ -1334,14 +1334,14 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("Glaring at Isabella, Hel says, \"<i>This... cow... stole my bandanna a few months ago and won't give it back.</i>\"\n\n", false);
 
         outputText("Isabella makes an indignant huff and turns her nose up at the salamander. ", false);
-        if (isabellaAccent()) outputText("\"<i>Do not listen to ze little liar, " + player.short + ".  I found it in ze hands of ze gnolls, and most certainly did not steal it.</i>\"\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>Do not listen to ze little liar, " + player.short + ".  I found it in ze hands of ze gnolls, and most certainly did not steal it.</i>\"\n\n", false);
         else outputText("\"<i>Do not listen to the little liar, " + player.short + ".  I found it in the hands of the gnolls, and most certainly did not steal it.</i>\"\n\n", false);
 
         outputText("\"<i>Yes you fucking well did!</i>\" Hel snaps, waving her sword around.  \"<i>" + player.short + ", why the hell are you protecting that fat cow, huh?  Lemme at her!</i>\"\n\n", false);
 
         outputText("You roll your eyes and explain that Isabella is your companion now, and that as much as you like Hel, you can't abide violence coming to your friends.  It takes a couple of minutes to penetrate the salamander's combat-high mind, but when it does, she slowly backs down and lowers her sword.  Cautiously, Isabella lowers her shield to match.\n\n", false);
 
-        if (isabellaAccent()) outputText("\"<i>So,</i>\" Isabella finally says, shifting her gaze from you to the salamander. \"<i>You two are... lovers, ja?  And here I vas about to thrash you!</i>\"\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>So,</i>\" Isabella finally says, shifting her gaze from you to the salamander. \"<i>You two are... lovers, ja?  And here I vas about to thrash you!</i>\"\n\n", false);
         else outputText("\"<i>So,</i>\" Isabella finally says, shifting her gaze from you to the salamander. \"<i>You two are... lovers, huh?  And here I was about to thrash you!</i>\"\n\n", false);
 
         outputText("\"<i>Yeah,</i>\" Hel answers with a little scoff, \"<i>And, I guess if you're " + player.short + "'s friend... you're probably all right.</i>\"\n\n", false);
@@ -1384,7 +1384,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("You push the scrub aside, revealing the cow-girl sitting on the ground, running a hand through the hair of Hel the salamander, who's currently sitting on the cow-girl's lap, her hands on Isabella's hefty breasts and one of the quad-nipples locked in her mouth.  Seeing you approach, Isabella lifts her hand from Hel's head and gives you a somewhat-abashed wave.\n\n", false);
 
         outputText("\"<i>" + player.short + "... it is –moo– good to see youuuuu.</i>\"  She trails off into a long, ecstatic moan as Hel continues to suckle from her massive teat, acknowledging your presence only with a little waggle of her tail and a wink.  ", false);
-        if (isabellaAccent()) outputText("\"<i>Perhaps you vould like a drink as vell, no?</i>\" Isabella offers, patting the chocolate-colored tit that Hel is not actively suckling from.\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>Perhaps you vould like a drink as vell, no?</i>\" Isabella offers, patting the chocolate-colored tit that Hel is not actively suckling from.\n\n", false);
         else outputText("\"<i>Perhaps you would like a drink as well, no?</i>\" Isabella offers, patting the chocolate-colored tit that Hel is not actively suckling from.\n\n", false);
 
         outputText("You certainly do feel thirsty, and Isabella's invitation is certainly... enticing, and is made all the more exciting by the busty salamander you'll be sharing a meal with.", false);
@@ -1415,7 +1415,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("You withhold comment, though, as she's grabbing the back of both your heads and smashing your faces into her milky teats, forcing you and Hel to drink or suffocate.  You open wide, taking the four nipples into your mouth all at once, and are immediately rewarded with a stream of creamy, delicious milk at the first suck.  You have to chug to keep up with the massive flow coming from her breasts, seeming to make no dent in her nigh-endless supply no matter how long you suckle from her.  What you do succeed in doing is causing Isabella to roll her head back and let out an ecstatic moan, smashing your face further into her leaking milk-jug.\n\n", false);
 
         outputText("Suddenly, you're rocketing toward the ground!  Isabella lands on her back with a thud and a low moo, soon joined by you and Hel, who is still locked onto Isabella's teat with a ferocious determination.  Panting, the busty shield maiden gasps out, ", false);
-        if (isabellaAccent()) outputText("\"<i>I vant you.  I need you.  Both of you.  Here and now.</i>\"\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>I vant you.  I need you.  Both of you.  Here and now.</i>\"\n\n", false);
         else outputText("\"<i>I want you.  I need you.  Both of you.  Here and now.</i>\"\n\n", false);
 
         outputText("That finally serves to get Hel off of Isabella's tit.  With a smirk that's still drooling breast milk, the salamander says, \"<i>Oooh, a three-way.  Now we're talking!  What do you say, lover?  Want to join in on a little girl-on-girl?</i>\"\n\n", false);
@@ -1513,7 +1513,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("Feeling bad for the thus-far-neglected needs of Isabella, you pull out of Hel with a wet squelch and slap your cock against the cow-girl's pussy. She gasps, looking over the salamander's shoulder at the large member pressing against her slit.\n\n", false);
             // (if PC cock > 9 inches:
             if (player.cocks[x].cockLength > 9) {
-                if (isabellaAccent()) outputText("\"<i>I normally do not play vith such... large... zings, but for you, I vill make an exception.  Give me your cock!</i>\"\n\n", false);
+                if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>I normally do not play vith such... large... zings, but for you, I vill make an exception.  Give me your cock!</i>\"\n\n", false);
                 else outputText("\"<i>I normally don't play with such... clumsy... things, but for you, I'll make an exception.  Give me your cock!</i>\"\n\n", false);
             }
             outputText("Still grasping Hel's hips, you slide into Isabella.  She's tighter than you expected, and you have to fight to push your " + cockDescript(game.player, x) + " into her despite how wet she is.  When you're half-way buried inside her, you begin to pull out, making her moan as Hel adds a good tit-sucking to the experience.  You slam home again, this time ramming your cock up to the hilt inside her.  Isabella lets out a near-orgasmic MOOOOOO as you start to fuck her in earnest, using Hel's hips for leverage as you pound the cow-girl's box with your " + cockDescript(game.player, x) + ".\n\n", false);
@@ -1540,7 +1540,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("Grinning over Isabella's shoulder, Hel grabs the cow-girl's milky udders and takes one of her quad-nipples between her thumbs and forefingers.  \"<i>Isabella, I think our dear " + player.short + " is getting pretty sweaty...</i>\"\n\n", false);
 
-            if (isabellaAccent()) outputText("\"<i>Oh, ja!</i>\" Isabella says, now grinning too.  You're starting to worry, but between the two large women pinning you down and the intense pleasure of having all your cocks ridden at once, you're virtually helpless against whatever's coming.  \"<i>Oh, ja,</i>\" Isabella repeats, \"<i>And I think our Champion needs a bath!</i>\"\n\n", false);
+            if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>Oh, ja!</i>\" Isabella says, now grinning too.  You're starting to worry, but between the two large women pinning you down and the intense pleasure of having all your cocks ridden at once, you're virtually helpless against whatever's coming.  \"<i>Oh, ja,</i>\" Isabella repeats, \"<i>And I think our Champion needs a bath!</i>\"\n\n", false);
             else outputText("\"<i>Oh, yes!</i>\" Isabella says, now grinning too.  You're starting to worry, but between the two large women pinning you down and the intense pleasure of having all your cocks ridden at once, you're virtually helpless against whatever's coming.  \"<i>Oh, yes,</i>\" Isabella repeats, \"<i>And I think our Champion needs a bath!</i>\"\n\n", false);
 
             outputText("Before you can even say a word, Hel pinches down on Isabella's puffy nipples, and you're instantly washed by a waterfall of thick, creamy milk pouring from the cow-girls teats, flowing onto you seemingly without end.  You gasp and cough, and soon have your mouth full of breast milk as Hel aims Isabella's milk streams toward your face.  You can't help but laugh under the milk bath, trying desperately to lap up the tremendous quantity of milk flowing onto you.\n\n", false);
@@ -1571,7 +1571,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         dynStats("sen", -3);
         // (Scene End)
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         doNext(izzySallyThreeSomeFollowup);
     }
 
@@ -1582,7 +1582,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\"<i>That was amazing.  Seriously,</i>\" the salamander says, still panting from the experience.  \"<i>I mean, holy shit you two.  We... we really need to do this more often.</i>\"\n\n", false);
 
-        if (isabellaAccent()) outputText("\"<i>Mmm, ja,</i>\" Isabella says with a long yawn.  \"<i>Ve must indeed.  But for now, ve must rest.</i>\"\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>Mmm, ja,</i>\" Isabella says with a long yawn.  \"<i>Ve must indeed.  But for now, ve must rest.</i>\"\n\n", false);
         else outputText("\"<i>Mmm, yes,</i>\" Isabella says with a long yawn.  \"<i>We must indeed.  But for now, we must rest.</i>\"\n\n", false);
 
         outputText("\"<i>Yeah.  Resting is... resting is good,</i>\" Hel says, trying and failing to suppress a yawn of her own.  Smiling, you wrap your arms around your two beautiful, busty redheads and let sleep overcome you.", false);
@@ -1620,7 +1620,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\"<i>That was amazing.  Seriously,</i>\" the salamander says, still panting from the experience.  \"<i>I mean, holy shit, you two.  We... we really need to do this more often.</i>\"\n\n", false);
 
-        if (isabellaAccent()) outputText("\"<i>Mmm, ja,</i>\" Isabella says with a long yawn.  \"<i>Ve must indeed.  But for now, ve must rest.</i>\"\n\n", false);
+        if (IsabellaFollowerScene.isabellaAccent()) outputText("\"<i>Mmm, ja,</i>\" Isabella says with a long yawn.  \"<i>Ve must indeed.  But for now, ve must rest.</i>\"\n\n", false);
         else outputText("\"<i>Mmm, yes,</i>\" Isabella says with a long yawn.  \"<i>We must indeed.  But for now, we must rest.</i>\"\n\n", false);
 
         outputText("\"<i>Yeah.  Resting is... resting is good,</i>\" Hel says, trying and failing to suppress a yawn of her own.  Smiling, you wrap your arms around your two beautiful, busty redheads and let sleep overcome you.", false);
@@ -1628,8 +1628,8 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -3);
         // Bump up follower tracking affection too
-        isabellaFollowerScene.isabellaAffection(4);
-        helFollower.helAffection(5);
+        IsabellaFollowerScene.isabellaAffection(4);
+        HelFollower.helAffection(5);
         if (game.time.hours < 6) doNext(playerMenu);
         else doNext(camp.returnToCampUseFourHours);
     }
@@ -1663,7 +1663,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         spriteSelect(68);
         outputText("", true);
         outputText("You graciously excuse yourself, saying that you forgot something back at camp.  All three girls say \"<i>Awwww</i>\" in unison, but don't make any special effort to keep you from going.  As you head out, you look over your shoulder in time to see Hel give you a little wink as the fox-herms clamber into her lap.  At least someone's getting laid today.\n\n", false);
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
 
     // Foursome Scene Intro (First & Repeat)
@@ -1755,7 +1755,7 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("You awake to find yourself tucked into the bed, your clothes folded neatly next to you.  It looks like someone cleaned you up and tucked you in after your little orgy.  When you hear a loud snore beside you, you don't even need to guess who it was that took care of you.  You pull up the covers, and of course find Helia curled up beside you, her warm tail acting like a pillow for the two of you.  You smile, give her a long kiss, and collect your things.  You leave the salamander to sleep it off, and head back to camp.", false);
         // Bump up follower tracking affection too
-        helFollower.helAffection(5);
+        HelFollower.helAffection(5);
         doNext(camp.returnToCampUseFourHours);
     }
 
@@ -1851,6 +1851,6 @@ export class HelScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("\n\n\"<i>I.  But.  What.  You said.  We.  But.... WELL FUCK YOU ANYWAY.</i>\"");
         outputText("\n\nYou shrug and head back to camp as Hel, half-mad with lust, starts masturbating, glaring at your back as you leave.");
         doNext(camp.returnToCampUseOneHour);
-        helFollower.helAffection(-20);
+        HelFollower.helAffection(-20);
     }
 }

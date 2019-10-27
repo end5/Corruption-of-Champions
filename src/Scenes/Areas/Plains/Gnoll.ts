@@ -226,7 +226,7 @@ export class Gnoll extends Monster {
         const rando: number = 1;
         // Exgartuan gets to do stuff!
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0 && rand(3) == 0) {
-            game.exgartuan.exgartuanCombatUpdate();
+            Exgartuan.exgartuanCombatUpdate();
             outputText("\n\n", false);
         }
         if (this.effects.findByType(StatusAffects.Constricted) >= 0) {

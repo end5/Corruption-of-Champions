@@ -67,12 +67,12 @@ export class Inventory {
             }
             if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1) {
                 if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 4) outputText("\nHolli is in her tree at the edges of your camp.  You could go visit her if you want.\n");
-                addButton(7, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), holliScene.treeMenu);
+                addButton(7, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), HolliScene.treeMenu);
                 foundItem = true;
             }
             if (player.keyItems.has("Dragon Egg") >= 0) {
-                emberScene.emberCampDesc();
-                addButton(8, "Egg", emberScene.emberEggInteraction);
+                EmberScene.emberCampDesc();
+                addButton(8, "Egg", EmberScene.emberEggInteraction);
                 foundItem = true;
             }
         }
@@ -102,8 +102,8 @@ export class Inventory {
         spriteSelect(-1);
         menu();
         if (flags[kFLAGS.ANEMONE_KID] > 0) {
-            anemoneScene.anemoneBarrelDescription();
-            if (game.time.hours >= 6) addButton(4, "Anemone", anemoneScene.approachAnemoneBarrel);
+            AnemoneScene.anemoneBarrelDescription();
+            if (game.time.hours >= 6) addButton(4, "Anemone", AnemoneScene.approachAnemoneBarrel);
         }
         if (player.keyItems.has("Camp - Chest") >= 0) {
             outputText("You have a large wood and iron chest to help store excess items located near the portal entrance.\n\n");

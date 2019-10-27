@@ -515,7 +515,7 @@ export class Owca {
     private owcaMainScreenOn(): void {
         clearOutput();
 
-        if (flags[kFLAGS.REBECCS_LAST_PLEA] == 1 && !vapula.vapulaSlave()) {
+        if (flags[kFLAGS.REBECCS_LAST_PLEA] == 1 && !Vapula.vapulaSlave()) {
             rebeccsLastPlea();
             return;
         }

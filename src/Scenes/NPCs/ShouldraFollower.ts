@@ -1,5 +1,5 @@
 
-export class ShouldraFollower extends NPCAwareContent {
+export class ShouldraFollower {
 
     /*Follower Shouldra tracks hours since her last fuck, similar to Exgartuan. Each sex scene involving her resets this counter and also puts her to "sleep" (length of sleep at least 16 hours). Shouldra will gradually fuck with the PC the longer they go without involving her in sex (length of time below)*/
 
@@ -1418,7 +1418,7 @@ export class ShouldraFollower extends NPCAwareContent {
         // 13 (is Naga)
         if (player.isNaga()) choices[choices.length] = 13;
         // 14 (Amily is a follower)
-        if (amilyScene.amilyFollower()) choices[choices.length] = 14;
+        if (AmilyScene.amilyFollower()) choices[choices.length] = 14;
         // 15 (Pure Jojo is a follower)
         if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) choices[choices.length] = 15;
         // 16 (has any of Marae's gift perks)

@@ -1,5 +1,5 @@
 
-export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
+export class IzmaScene implements TimeAwareInterface {
 
     // const IZMA_NO_COCK:int = 439;
     // const ASKED_IZMA_ABOUT_WANG_REMOVAL:int = 440;
@@ -32,7 +32,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         pregnancy.pregnancyAdvance();
         trace("\nIzma time change: Time is " + game.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
         if (flags[kFLAGS.IZMA_TIME_TILL_NEW_BOOK_AVAILABLE] > 0) flags[kFLAGS.IZMA_TIME_TILL_NEW_BOOK_AVAILABLE]--; // BOOKURYUUUU COUNTAH For IZMA
-        if (izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0 && flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] > 0 && latexGirl.latexGooFollower() && flags[kFLAGS.IZMA_X_LATEXY_DISABLED] == 0) {
+        if (izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0 && flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] > 0 && LatexGirl.latexGooFollower() && flags[kFLAGS.IZMA_X_LATEXY_DISABLED] == 0) {
             flags[kFLAGS.GOO_FLUID_AMOUNT] = 100;
         }
         if (game.time.hours > 23 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00246] > 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00246] = 0;
@@ -40,12 +40,12 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
     }
 
     public timeChangeLarge(): boolean {
-        if (checkedIzmaSophie++ == 0 && sophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && izmaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0 && flags[kFLAGS.IZMA_NO_COCK] == 0 && ((flags[kFLAGS.TIMES_SOPHIE_AND_IZMA_FUCKED] == 0 && rand(10) == 0) || flags[kFLAGS.TOLD_SOPHIE_TO_IZMA] == 1)) {
+        if (checkedIzmaSophie++ == 0 && SophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && izmaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0 && flags[kFLAGS.IZMA_NO_COCK] == 0 && ((flags[kFLAGS.TIMES_SOPHIE_AND_IZMA_FUCKED] == 0 && rand(10) == 0) || flags[kFLAGS.TOLD_SOPHIE_TO_IZMA] == 1)) {
             flags[kFLAGS.TOLD_SOPHIE_TO_IZMA] = 0;
-            sophieBimbo.sophieAndIzmaPlay();
+            SophieBimbo.sophieAndIzmaPlay();
             return true;
         }
-        if (checkedIzmaLatexy++ == 0 && izmaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0 && flags[kFLAGS.IZMA_NO_COCK] == 0 && latexGirl.latexGooFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0 && flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] == 0 && (game.debug || rand(10) == 0)) {
+        if (checkedIzmaLatexy++ == 0 && izmaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0 && flags[kFLAGS.IZMA_NO_COCK] == 0 && LatexGirl.latexGooFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0 && flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] == 0 && (game.debug || rand(10) == 0)) {
             izmaDomsLatexy();
             return true;
         }
@@ -1721,7 +1721,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         addButton(5, "RideIzmaCock", getVagooFucked);
         addButton(6, "Sixtynine", sixty);
         addButton(7, "Kids", childToggle);
-        if (flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] > 0 && flags[kFLAGS.IZMA_NO_COCK] == 0 && latexGirl.latexGooFollower()) addButton(8, flags[kFLAGS.GOO_NAME], izmaLatexySubmenu);
+        if (flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] > 0 && flags[kFLAGS.IZMA_NO_COCK] == 0 && LatexGirl.latexGooFollower()) addButton(8, flags[kFLAGS.GOO_NAME], izmaLatexySubmenu);
         addButton(9, "Back", izmaFollowerMenu);
 
     }
@@ -2551,7 +2551,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         // Select correct scene!
         const choice: number = choices[rand(choices.length)];
         if (game.time.hours < 10 && flags[kFLAGS.ANEMONE_KID] > 0 && rand(2) == 0) {
-            anemoneScene.kidAWatchesSharks();
+            AnemoneScene.kidAWatchesSharks();
             return;
         }
 
@@ -3345,7 +3345,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         outputText("Izma growls while she pumps away at her erection, saying, \"<i>Yeah, you like that, don't ya ink-slut?</i>\"");
 
         outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " bites her lower lip and ");
-        if (latexGirl.gooObedience() > 50) outputText("eagerly");
+        if (LatexGirl.gooObedience() > 50) outputText("eagerly");
         else outputText("sheepishly");
         outputText(" nods, gushing a few fresh dribbles of moisture around her wrist at the admission.");
         outputText("\n\n\"<i>Oh really?</i>\" Izma teases, \"<i>I should've known.</i>\"  Crinkling her nose, the tigershark-girl continues, \"<i>You can practically smell how much of a beta you are.  I bet when you used to be a goo-girl you probably fantasized about being stuck in a bottle for herms and dudes to fuck, didn'tcha?</i>\"  Izma flicks your goo-slut's bulging, black ");
@@ -3353,8 +3353,8 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
         else outputText("clit");
         outputText(" with a toe, drawing a pleasured gasp from the submissive.");
         outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " shudders as she pushes her hand in and out of herself.  Her whole forearm is dripping with onyx moisture, and the noisy squelches are easy to hear from where you're watching.  \"<i>Yes... I'm a slutty, submissive girl...  Can I have your cum, mistress Izma?  Please?  I'm putting on such a good show!</i>\"");
-        if (latexGirl.gooObedience() < 50) outputText("  A look of annoyance flashes across her face as soon as she says it, like she didn't really want to say that so openly.");
-        else if (latexGirl.gooObedience() <= 80) outputText("  A conflicted look flashes across her face as soon as the words slip out, but there's no taking them back.");
+        if (LatexGirl.gooObedience() < 50) outputText("  A look of annoyance flashes across her face as soon as she says it, like she didn't really want to say that so openly.");
+        else if (LatexGirl.gooObedience() <= 80) outputText("  A conflicted look flashes across her face as soon as the words slip out, but there's no taking them back.");
         else outputText("  A hungry look flashes in her eyes as soon as the words leave her mouth, and she licks her lips hungrily.");
         outputText("  A particularly powerful thrust inside herself has " + flags[kFLAGS.GOO_NAME] + " whining, her eyelids fluttering closed as she cries, \"<i>Oh, [name]!</i>\"");
 
@@ -3365,7 +3365,7 @@ export class IzmaScene extends NPCAwareContent implements TimeAwareInterface {
 
         outputText("\n\n\"<i>Oooh, fuck, quit sucking so hard,</i>\" Izma tries to command, but it winds up sounding more like begging.  ");
         // OBEDIENCE FAIL
-        if (latexGirl.gooObedience() / 5 + latexGirl.gooFluid() / 5 + rand(20) < 10) {
+        if (LatexGirl.gooObedience() / 5 + LatexGirl.gooFluid() / 5 + rand(20) < 10) {
             outputText("" + flags[kFLAGS.GOO_NAME] + " grows and sucks harder, cheeks hollowed with suckling hunger.  You can see them stretch and go even more concave with rhythmic pulsations, vacuum-tight around the orange shaft.  Izma moans and tries to pull out, but she barely manages to extract an inch before her whole length is noisily pulled back in.  The shark-girl tries to pry the slutty, hungry little goo off of herself again and again, but each time, all she winds up doing is getting sensuously devoured again and again.  " + flags[kFLAGS.GOO_NAME] + " gives her four balls another appreciative squeeze, and Izma's eyes suddenly roll back, helpless again the hungry sluts impressive oral talents.");
 
             outputText("\n\n\"<i>C-c-cumming!  Ohhhh by the gods, yes!  Ungh!</i>\" Izma cries as her hips begin to weakly thrust against their onyx prison, smushing " + flags[kFLAGS.GOO_NAME] + "'s lips into her toned middle.  The smooth, latex sheath around her sack trembles, wrinkling as Izma's balls pull tight against her, and then, " + flags[kFLAGS.GOO_NAME] + " is gurgling noisily, massaging all four of those cum factories as they pour their cargo straight into her throat, feeding her the warm, soupy cum she craves.  They stay locked like that for upwards of a minute, Izma occassionally trying to talk but usually just babbling contently while she's milked for every drop.");

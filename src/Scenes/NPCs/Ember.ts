@@ -1,7 +1,7 @@
 
 export class Ember extends Monster {
     private emberMF(male: string, female: string): string {
-        return game.emberScene.emberMF(male, female);
+        return EmberScene.emberMF(male, female);
     }
     // The Actual Ember Fight (Z)
     // PC can't use any sexual moves in this battle. This means anything that deals or affects Ember's lust in any way.
@@ -124,12 +124,12 @@ export class Ember extends Monster {
 
     public defeated(hpVictory: boolean): void {
         // Hackers gonna hate. Tested and working as intended.
-        if (hpVictory) game.emberScene.beatEmberSpar();
+        if (hpVictory) EmberScene.beatEmberSpar();
         else emberReactsToLustiness();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.emberScene.loseToEmberSpar();
+        EmberScene.loseToEmberSpar();
     }
 
     public constructor() {

@@ -1,5 +1,5 @@
 
-export class Valeria extends NPCAwareContent implements TimeAwareInterface {
+export class Valeria implements TimeAwareInterface {
 
     public constructor() {
         CoC.timeAwareClassAdd(this);
@@ -10,7 +10,7 @@ export class Valeria extends NPCAwareContent implements TimeAwareInterface {
         if (player.effects.getValue1Of(StatusAffects.GooStuffed) > 0) {
             player.effects.addValue(StatusAffects.GooStuffed, 1, -1);
             if (player.effects.getValue1Of(StatusAffects.GooStuffed) <= 0) {
-                valeria.birthOutDatGooSlut();
+                Valeria.birthOutDatGooSlut();
                 return true;
             }
         }

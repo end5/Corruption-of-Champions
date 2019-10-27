@@ -356,7 +356,7 @@ export class BeeGirlScene {
             outputText("Your " + cockDescript(game.player, 0) + " wriggles free of your " + player.armorName + ", as you keep walking forward.  A bodiless voice yells, \"<i>Honeypot, honeypot, ME LOOOOVE HONEYPOOOOOT!</i>\"\n\n");
             outputText("The bee-girl's eyes widen at the sight, shocked by your over-endowed form being dragged towards her as if there were a magnet in your " + cockDescript(game.player, 0) + ".  She presses herself against the flower's petals, terrified and afraid to put up any meaningful resistance.  The nagging voice pipes up, \"<i>So are we gonna rape her or what, " + player.short + "?  I need some honeyyy!</i>\"\n\n");
             outputText("She seems too surprised to resist.  Will you go along with Exgartuan and rape her?");
-            doYesNo(exgartuan.exgartuanBeeRape, camp.returnToCampUseOneHour);
+            doYesNo(Exgartuan.exgartuanBeeRape, camp.returnToCampUseOneHour);
         }
         else {
             outputText("The bee-girl's eyes widen at the sight,  shocked by your over-endowed form being dragged towards her as if there were a magnet in your " + cockDescript(game.player, 0) + ".   She flutters into the air and aims her stinger towards you, ready to fight!");

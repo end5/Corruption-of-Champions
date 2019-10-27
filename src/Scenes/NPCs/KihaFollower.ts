@@ -1,5 +1,5 @@
 
-export class KihaFollower extends NPCAwareContent {
+export class KihaFollower {
 
     // Requirements:
     // -PC has achieved \"<i>Fuckbuddy</i>\" status with Hel (because threesomes)
@@ -875,7 +875,7 @@ export class KihaFollower extends NPCAwareContent {
         let dickWorship: () => void = null;
         let fuckVag: () => void = null;
         let dom: () => void = null;
-        const backFunc: () => void = (allowBack ? kihaScene.encounterKiha : camp.returnToCampUseOneHour);
+        const backFunc: () => void = (allowBack ? KihaScene.encounterKiha : camp.returnToCampUseOneHour);
         if (display) outputText("\n");
         // REQUIRES CAMP FOLLOWER:
         if (followerKiha()) {
@@ -926,7 +926,7 @@ export class KihaFollower extends NPCAwareContent {
         }
         // Req Vag
         if (player.vaginas.length > 0) sixtyNine = kihaGirlGirlSex;
-        choices("Anal", anal, "Dominate", dom, "FuckVag", fuckVag, "Get HJ", dickWorship, "Girl69", sixtyNine, "GroPlusTits", gro, "Give I.Drft", incu, "LustyDicking", horse, "TentacleFuck", tent, (allowBack ? "Back" : "Leave"), (allowBack ? kihaScene.encounterKiha : camp.returnToCampUseOneHour));
+        choices("Anal", anal, "Dominate", dom, "FuckVag", fuckVag, "Get HJ", dickWorship, "Girl69", sixtyNine, "GroPlusTits", gro, "Give I.Drft", incu, "LustyDicking", horse, "TentacleFuck", tent, (allowBack ? "Back" : "Leave"), (allowBack ? KihaScene.encounterKiha : camp.returnToCampUseOneHour));
     }
 
     // Savage Every Hole With A Bigass Horsecock
@@ -1283,13 +1283,13 @@ export class KihaFollower extends NPCAwareContent {
             else outputText("  You wonder what would happen if she got jumped by your tiger-shark children.");
         }
         outputText("[pg]Wiping up as best you can, you don your [armor] and walk back");
-        if (monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
-            if (!jojoScene.tentacleJojo()) outputText(", ignoring the sounds of Jojo feverishly masturbating in the woods");
+        if (game.monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0) {
+            if (!JojoScene.tentacleJojo()) outputText(", ignoring the sounds of Jojo feverishly masturbating in the woods");
             else outputText(", ignoring the sound of Jojo vigorously fucking himself with all his tentacles in the trees");
         }
         outputText(".");
-        if (sophieBimbo.bimboSophie()) outputText("  Sophie greets you when you return, though she seems crestfallen once she smells the sex on you and realizes how thoroughly you've been sated.");
-        if (amilyScene.amilyCorrupt()) outputText("  Amily begs, \"<i>May I help to service you next time, " + mf(player, "master", "mistress") + "?</i>\"");
+        if (SophieBimbo.bimboSophie()) outputText("  Sophie greets you when you return, though she seems crestfallen once she smells the sex on you and realizes how thoroughly you've been sated.");
+        if (AmilyScene.amilyCorrupt()) outputText("  Amily begs, \"<i>May I help to service you next time, " + mf(player, "master", "mistress") + "?</i>\"");
         player.orgasm();
         dynStats("sen", -1);
         doNext(camp.returnToCampUseOneHour);
@@ -1604,7 +1604,7 @@ export class KihaFollower extends NPCAwareContent {
             outputText("[pg]\"<i>[name].</i>\"  She says flatly, planting the haft of her axe in the ground, leaning heavily upon it.");
             outputText("[pg]You say hello, looking nervously around.  Something isn't right here, and your hand drifts toward your [weaponName].");
             outputText("[pg]\"<i>Listen, [name],</i>\" Kiha says, eyeing you from behind her axe.  \"<i>Maybe we've gotten to be friends lately, but... something's changed about you.  I can SMELL the corruption on you, the lust... I-I can't do it, [name].  I can't be around someone that could turn into someTHING at any moment, someone who's just letting themselves go like... like you are. Please j-just go, [name].</i>\"  You try to protest, to reason with the fiery warrior, but she only lifts up her axe and levels it at you...  \"<i>J-JUST GO!</i>\"");
-            simpleChoices("Fight", kihaScene.meetKihaAndFight, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Fight", KihaScene.meetKihaAndFight, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
         }
         else {
             outputText("Kiha approaches you, her belongings gathered in her hands.  The sexy dragoness seems visibly upset, and before you can say a word, she interrupts, \"<i>Don't say a word, [name].  You're corrupt.  I can smell the corruption rolling off you from over here.  I won't be here when you turn into a demon, and I don't want to fight you... but if you come after me, I won't hesitate to defend myself!</i>\"");
@@ -1643,7 +1643,7 @@ export class KihaFollower extends NPCAwareContent {
         outputText("[pg]She has a pair of dusky, soft D-cup tits, with a single 0.5 inch nipple on each breast.");
         outputText("[pg]Kiha has a loose twat between her legs which constantly drips a warm, wet lubricant that stains her thighs.");
         outputText("[pg]Between her gropable butt-cheeks, Kiha has a single tight asshole, right where it belongs.");
-        doNext(kihaScene.encounterKiha);
+        doNext(KihaScene.encounterKiha);
     }
 
     // New option added to Kiha's \"<i>In-camp/warm</i>\" dialogue menu, ['dominance' during sex]

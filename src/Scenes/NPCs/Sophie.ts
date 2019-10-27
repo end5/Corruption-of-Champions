@@ -12,7 +12,7 @@ export class Sophie extends Harpy {
     // +20 lust.  Each kiss adds 2 hours to length of status
     // affect.
     private sophieKissAttack(): void {
-        game.sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
         outputText("Sophie bobs and weaves as she closes the distance between you in an instant.  ", false);
         // Blind dodge change
         if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
@@ -45,7 +45,7 @@ export class Sophie extends Harpy {
         // Already affected by it
         if (player.effects.findByType(StatusAffects.Luststick) >= 0) {
             outputText("  Blood rushes to " + sMultiCockDesc(player) + " as you grow so hard so fast that it hurts.  ", false);
-            game.sophieScene.luststickApplication(2);
+            SophieScene.luststickApplication(2);
             dynStats("lus", (12 + player.lib / 10));
             if (player.lust < 70) outputText("The drugged lip-gloss is starting to get to you!\n", false);
             else if (player.lust < 80) outputText("Her curvy thighs look so inviting.  You barely stop yourself before you climb in between them!\n", false);
@@ -55,7 +55,7 @@ export class Sophie extends Harpy {
         }
         else {
             outputText("  Your whole body blushes as your lips tingle with some unnatural sensation.  Her lips were drugged!  Your whole body flushes as arousal begins to course through your veins.  ", false);
-            game.sophieScene.luststickApplication(2);
+            SophieScene.luststickApplication(2);
             dynStats("lus", 8 + player.lib / 10);
             if (player.lust < 70) outputText("The drugged lip-gloss is starting to get to you!\n", false);
             else if (player.lust < 80) outputText("Her curvy thighs look so inviting.  You barely stop yourself before you climb in between them!\n", false);
@@ -71,7 +71,7 @@ export class Sophie extends Harpy {
     // for a few moments.
     // Easily dodged with evade or flexibility.
     private sophieHarpyBoatsPC(): void {
-        game.sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
         outputText(capitalA + short + " flaps her wings and launches herself forwards with her talons up.  ", false);
         // Blind dodge change
         if (this.effects.findByType(StatusAffects.Blind) >= 0 && rand(3) < 2) {
@@ -107,7 +107,7 @@ export class Sophie extends Harpy {
 
     // Compulsion (Male Only)
     private sophieCompulsionAttack(): void {
-        game.sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
         outputText("Sophie spreads her thick thighs and slips four fingers into her slippery sex.  She commands, \"<i>Touch yourself for me.  Be a good pet and masturbate for me.</i>\"  ", false);
         // Autosucceeds if player inte < 40
         // autofails if player inte > 80
@@ -127,7 +127,7 @@ export class Sophie extends Harpy {
     // Talons (Female Only)
     // High damage attack easily avoided by evade/flexibility.
     private talonsSophie(): void {
-        game.sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
         outputText("Sophie pulls her leg up, cocking her thigh dangerously.  Look out!  ", false);
         let damage: number = 0;
         // Blind dodge change
@@ -167,7 +167,7 @@ export class Sophie extends Harpy {
     // Batter (Female Only)
     // Batters PC with wings – 4x attack impossible to dodge.*/
     private batterAttackSophie(): void {
-        game.sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
         let damage: number = 0;
         outputText("Sophie comes at you in a flurry of beating wings!  There's no way to dodge the flurry of strikes!\n", false);
 
@@ -195,7 +195,7 @@ export class Sophie extends Harpy {
 
     protected performCombatAction(): void {
         // Sophie has special AI in harpySophie.as
-        game.sophieBimbo.sophieSprite();
+        SophieBimbo.sophieSprite();
         const select: number = 1;
         let rando: number = 1;
         // Update attacks for girls/neuters
@@ -226,19 +226,19 @@ export class Sophie extends Harpy {
 
     public defeated(hpVictory: boolean): void {
         if (this.effects.findByType(StatusAffects.BimboBrawl) >= 0)
-            game.sophieFollowerScene.beatUpDebimboSophie();
+            SophieFollowerScene.beatUpDebimboSophie();
         else
-            game.sophieScene.sophieLostCombat();
+            SophieScene.sophieLostCombat();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (this.effects.findByType(StatusAffects.BimboBrawl) >= 0)
-            game.sophieFollowerScene.debimboSophieBeatsYouUp();
+            SophieFollowerScene.debimboSophieBeatsYouUp();
         else if (pcCameWorms) {
             outputText("\n\nYour foe seems disgusted by the display and leaves you to recover alone...");
             cleanupAfterCombat();
         } else {
-            game.sophieScene.sophieWonCombat();
+            SophieScene.sophieWonCombat();
         }
     }
 

@@ -9,8 +9,8 @@ export class BakeryScene {
             easterBakeSale();
             return;
         }
-        if (rand(10) <= 1 && shouldraFollower.followerShouldra() && player.gender > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] == 4) {
-            shouldraFollower.shouldraBakeryIntro();
+        if (rand(10) <= 1 && ShouldraFollower.followerShouldra() && player.gender > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] == 4) {
+            ShouldraFollower.shouldraBakeryIntro();
             return;
         }
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00243]++;

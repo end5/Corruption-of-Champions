@@ -6,7 +6,7 @@ export class GooArmor extends GooGirl {
     }
 
     public defeated(hpVictory: boolean): void {
-        if (this.effects.findByType(StatusAffects.Spar) >= 0) game.valeria.pcWinsValeriaSpar();
+        if (this.effects.findByType(StatusAffects.Spar) >= 0) Valeria.pcWinsValeriaSpar();
         else game.beatUpGooArmor();
     }
 
@@ -15,7 +15,7 @@ export class GooArmor extends GooGirl {
             outputText("\n\nThe armored goo sighs while you exhaust yourself...");
             doNext(game.endLustLoss);
         } else {
-            if (this.effects.findByType(StatusAffects.Spar) >= 0) game.valeria.pcWinsValeriaSparDefeat();
+            if (this.effects.findByType(StatusAffects.Spar) >= 0) Valeria.pcWinsValeriaSparDefeat();
             else game.gooArmorBeatsUpPC();
         }
     }

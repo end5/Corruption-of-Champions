@@ -465,8 +465,8 @@ export class Farm {
             return;
         }
         // Free Isabella Milkings!
-        if (player.cocks.length > 0 && flags[kFLAGS.FOUND_ISABELLA_AT_FARM_TODAY] == 0 && flags[kFLAGS.ISABELLA_MILKED_YET] < 0 && isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.ISABELLA_MILK_COOLDOWN] == 0 && rand(2) == 0) {
-            isabellaFollowerScene.findIzzyMilking();
+        if (player.cocks.length > 0 && flags[kFLAGS.FOUND_ISABELLA_AT_FARM_TODAY] == 0 && flags[kFLAGS.ISABELLA_MILKED_YET] < 0 && IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.ISABELLA_MILK_COOLDOWN] == 0 && rand(2) == 0) {
+            IsabellaFollowerScene.findIzzyMilking();
             return;
         }
         // Meet Marble First Time

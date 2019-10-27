@@ -512,7 +512,7 @@ export function buildPerkList(): any[] {
         _add(new PerkClass(PerkLib.CorruptedLibido, 20, 0, 0, 0));
     }
     // Slot 7 - Seduction (Must have seduced Jojo
-    if (player.perks.findByType(PerkLib.Seduction) < 0 && player.cor >= 50 && monk >= 5) {
+    if (player.perks.findByType(PerkLib.Seduction) < 0 && player.cor >= 50 && game.monk >= 5) {
         _add(new PerkClass(PerkLib.Seduction));
     }
     // Slot 7 - Nymphomania
@@ -760,7 +760,7 @@ export function getButtonToolTipText(buttonText: string): string {
         toolTipText = "This is what is called an 'onahole'.  This device is a simple textured sleeve designed to fit around the male anatomy in a pleasurable way.";
     }
     if (buttonText == "Jojo") {
-        if (monk >= 5) toolTipText = "Call your corrupted pet into camp in order to relieve your desires in a variety of sexual positions?  He's ever so willing after your last encounter with him.";
+        if (game.monk >= 5) toolTipText = "Call your corrupted pet into camp in order to relieve your desires in a variety of sexual positions?  He's ever so willing after your last encounter with him.";
         else toolTipText = "Go find Jojo around the edges of your camp and meditate with him or talk about watch duty.";
     }
     if (buttonText == "Marble") {
@@ -1512,8 +1512,8 @@ export function displayStats(e: MouseEvent = null): void {
     if (flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] > 0)
         childStats += "<b>Children With Tamani:</b> " + flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] + " (after all forms of natural selection)\n";
 
-    if (urtaPregs.urtaKids() > 0)
-        childStats += "<b>Children With Urta:</b> " + urtaPregs.urtaKids() + "\n";
+    if (UrtaPregs.urtaKids() > 0)
+        childStats += "<b>Children With Urta:</b> " + UrtaPregs.urtaKids() + "\n";
 
     // Mino sons
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] > 0)
@@ -1643,7 +1643,7 @@ export function displayStats(e: MouseEvent = null): void {
     let interpersonStats: string = "";
 
     if (flags[kFLAGS.ARIAN_PARK] > 0)
-        interpersonStats += "<b>Arian's Health:</b> " + Math.round(arianScene.arianHealth()) + "\n";
+        interpersonStats += "<b>Arian's Health:</b> " + Math.round(ArianScene.arianHealth()) + "\n";
 
     if (flags[kFLAGS.ARIAN_VIRGIN] > 0)
         interpersonStats += "<b>Arian Sex Counter:</b> " + Math.round(flags[kFLAGS.ARIAN_VIRGIN]) + "\n";
@@ -1657,18 +1657,18 @@ export function displayStats(e: MouseEvent = null): void {
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00219] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00220] > 0)
         interpersonStats += "<b>Body Parts Taken By Ceraph:</b> " + (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00219] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00220]) + "\n";
 
-    if (emberScene.emberAffection() > 0)
-        interpersonStats += "<b>Ember Affection:</b> " + Math.round(emberScene.emberAffection()) + "%\n";
+    if (EmberScene.emberAffection() > 0)
+        interpersonStats += "<b>Ember Affection:</b> " + Math.round(EmberScene.emberAffection()) + "%\n";
 
-    if (helFollower.helAffection() > 0)
-        interpersonStats += "<b>Helia Affection:</b> " + Math.round(helFollower.helAffection()) + "%\n";
-    if (helFollower.helAffection() >= 100)
+    if (HelFollower.helAffection() > 0)
+        interpersonStats += "<b>Helia Affection:</b> " + Math.round(HelFollower.helAffection()) + "%\n";
+    if (HelFollower.helAffection() >= 100)
         interpersonStats += "<b>Helia Bonus Points:</b> " + Math.round(flags[kFLAGS.HEL_BONUS_POINTS]) + "\n";
 
     if (flags[kFLAGS.ISABELLA_AFFECTION] > 0) {
         interpersonStats += "<b>Isabella Affection:</b> ";
 
-        if (!isabellaFollowerScene.isabellaFollower())
+        if (!IsabellaFollowerScene.isabellaFollower())
             interpersonStats += Math.round(flags[kFLAGS.ISABELLA_AFFECTION]) + "%\n", false;
         else
             interpersonStats += "100%\n";
@@ -1686,10 +1686,10 @@ export function displayStats(e: MouseEvent = null): void {
     }
 
     if (flags[kFLAGS.ANEMONE_KID] > 0)
-        interpersonStats += "<b>Kid A's Confidence:</b> " + anemoneScene.kidAXP() + "%\n";
+        interpersonStats += "<b>Kid A's Confidence:</b> " + AnemoneScene.kidAXP() + "%\n";
 
     if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] == 2) {
-        if (kihaFollower.followerKiha())
+        if (KihaFollower.followerKiha())
             interpersonStats += "<b>Kiha Affection:</b> " + 100 + "%\n";
         else
             interpersonStats += "<b>Kiha Affection:</b> " + Math.round(flags[kFLAGS.KIHA_AFFECTION]) + "%\n";
@@ -1708,14 +1708,14 @@ export function displayStats(e: MouseEvent = null): void {
         interpersonStats += "<b>Rubi's Affection:</b> " + Math.round(Rubi.rubiAffection()) + "%\n" + "<b>Rubi's Orifice Capacity:</b> " + Math.round(Rubi.rubiCapacity()) + "%\n";
 
     if (flags[kFLAGS.SHEILA_XP] != 0) {
-        interpersonStats += "<b>Sheila's Corruption:</b> " + sheilaScene.sheilaCorruption();
-        if (sheilaScene.sheilaCorruption() > 100)
+        interpersonStats += "<b>Sheila's Corruption:</b> " + SheilaScene.sheilaCorruption();
+        if (SheilaScene.sheilaCorruption() > 100)
             interpersonStats += " (Yes, it can go above 100)";
         interpersonStats += "\n";
     }
 
     if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] != 0) {
-        if (urta.urtaLove())
+        if (Urta.urtaLove())
             interpersonStats += "<b>Urta Status:</b> Lover\n";
         else if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == -1)
             interpersonStats += "<b>Urta Status:</b> Ashamed\n";

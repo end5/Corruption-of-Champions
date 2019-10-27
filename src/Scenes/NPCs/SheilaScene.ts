@@ -1,5 +1,5 @@
 
-export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
+export class SheilaScene implements TimeAwareInterface {
 
     // const SHEILA_CORRUPTION:int = 760;
     // const SHEILA_XP:int = 761
@@ -2730,7 +2730,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             }
             outputText("Or I could take you home and give you personal training myself, whenever I feel like it, and invite travelers to do the same");
             // [(PC has Izma with cock)
-            if (izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0) outputText("; I personally know fifteen inches of fat, orange dick and four heavy balls that'd love to get in at your other end while I ride your face");
+            if (IzmaScene.izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0) outputText("; I personally know fifteen inches of fat, orange dick and four heavy balls that'd love to get in at your other end while I ride your face");
             outputText(".</i>\"");
 
             outputText("\n\nYour [vagOrAss] squeezes around Sheila's hesitant tongue, turned on more by the spectacle of selling her body than by any of her poor efforts.  She squirms under you, rubbing her thighs together as you paint the worst pictures of her future you can imagine, and you climax");
@@ -3401,7 +3401,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
             // [Stay With Her][To Camp(excluded for PCs with Vapula or Holli)][Welp]
             menu();
             addButton(0, "StayWithHer", normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE);
-            if (!(flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0) && !vapulaSlave())
+            if (!(flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0) && !Vapula.vapulaSlave())
                 addButton(1, "To Camp", normalSheilaPregNotifREPEATEDEDHelpABitchOutTOCAMP);
             addButton(2, "Welp", normalSheilaPregNotifREPEATEDEDHelpABitchOutANDWELP);
         }
@@ -4561,7 +4561,7 @@ export class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
         // [Tear Her Up][Call Jojo]
         menu();
         addButton(0, "TearHerUp", sheilaAnalHateFuckAGoGo);
-        if (jojoScene.campCorruptJojo()) addButton(1, "Call Jojo", analHateFucksWithJojo);
+        if (JojoScene.campCorruptJojo()) addButton(1, "Call Jojo", analHateFucksWithJojo);
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Tear Her Up]

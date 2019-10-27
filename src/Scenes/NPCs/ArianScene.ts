@@ -83,7 +83,7 @@ Naga TF
 Corruption Path (Arian's body is drastically altered, but [Arian eir] personality only suffers minor alterations.)
 (Unlikely) Boon and Laika
 */
-export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
+export class ArianScene implements TimeAwareInterface {
     public constructor() {
         CoC.timeAwareClassAdd(this);
     }
@@ -92,7 +92,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
     public timeChange(): boolean {
         if (flags[kFLAGS.ARIAN_EGG_COUNTER] > 0) flags[kFLAGS.ARIAN_EGG_COUNTER]++;
         if (game.time.hours > 23) {
-            if (arianScene.arianFollower() && flags[kFLAGS.ARIAN_VAGINA] > 0) flags[kFLAGS.ARIAN_EGG_EVENT]++;
+            if (ArianScene.arianFollower() && flags[kFLAGS.ARIAN_VAGINA] > 0) flags[kFLAGS.ARIAN_EGG_EVENT]++;
             flags[kFLAGS.ARIAN_LESSONS] = 0;
             flags[kFLAGS.ARIAN_TREATMENT] = 0;
         }
@@ -199,7 +199,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
         }
         // Player enters Tel'Adre main screen
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
 
     // [=Help=]
@@ -565,7 +565,7 @@ export class ArianScene extends NPCAwareContent implements TimeAwareInterface {
             if (flags[kFLAGS.ARIAN_S_DIALOGUE] >= 5) addButton(4, "Treat Corr.", treatCorruption);
             if (game.time.hours >= 17 && arianFollower()) addButton(8, "Sleep With", sleepWithArian, true);
             if (flags[kFLAGS.SLEEP_WITH] == "Arian") addButton(8, "NoSleepWith", dontSleepWithArian);
-            if (!arianFollower()) addButton(9, "Back", telAdre.telAdreMenu);
+            if (!arianFollower()) addButton(9, "Back", TelAdre.telAdreMenu);
             else addButton(9, "Back", camp.campLoversMenu);
         }
     }

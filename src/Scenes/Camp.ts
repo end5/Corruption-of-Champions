@@ -1,5 +1,5 @@
 
-export class Camp extends NPCAwareContent {
+export class Camp {
 
     protected set timeQ(value: number): void {
         timeQ = value;
@@ -89,60 +89,60 @@ export class Camp extends NPCAwareContent {
             // 		fixHistory();
             return;
         }
-        if (!marbleScene.marbleFollower()) {
+        if (!MarbleScene.marbleFollower()) {
             if (flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 1 && player.cor <= 40) {
                 hideMenus();
-                marblePurification.pureMarbleDecidesToBeLessOfABitch();
+                MarblePurification.pureMarbleDecidesToBeLessOfABitch();
                 return;
             }
         }
-        if (marbleScene.marbleFollower()) {
+        if (MarbleScene.marbleFollower()) {
             // Cor < 50
             // No corrupt: Jojo, Amily, or Vapula
             // Purifying Murble
-            if (player.cor < 50 && !campCorruptJojo() && !amilyScene.amilyCorrupt() && !vapulaSlave()
+            if (player.cor < 50 && !JojoScene.campCorruptJojo() && !AmilyScene.amilyCorrupt() && !Vapula.vapulaSlave()
                 && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 0 && flags[kFLAGS.MARBLE_COUNTUP_TO_PURIFYING] >= 200
                 && player.perks.findByType(PerkLib.MarblesMilk) < 0) {
                 hideMenus();
-                marblePurification.BLUHBLUH();
+                MarblePurification.BLUHBLUH();
                 return;
             }
             if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5) {
                 if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 0 && player.cor >= 50) {
                     hideMenus();
-                    marblePurification.marbleWarnsPCAboutCorruption();
+                    MarblePurification.marbleWarnsPCAboutCorruption();
                     return;
                 }
                 if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 1 && flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 0 && player.cor >= 60) {
                     hideMenus();
-                    marblePurification.marbleLeavesThePCOverCorruption();
+                    MarblePurification.marbleLeavesThePCOverCorruption();
                     return;
                 }
             }
             if (flags[kFLAGS.MARBLE_RATHAZUL_COUNTER_1] == 1 && (time.hours == 6 || time.hours == 7)) {
                 hideMenus();
-                marblePurification.rathazulsMurbelReport();
+                MarblePurification.rathazulsMurbelReport();
                 return;
             }
             if (flags[kFLAGS.MARBLE_RATHAZUL_COUNTER_2] == 1) {
                 hideMenus();
-                marblePurification.claraShowsUpInCampBECAUSESHESACUNT();
+                MarblePurification.claraShowsUpInCampBECAUSESHESACUNT();
                 return;
             }
         }
-        if (arianFollower() && flags[kFLAGS.ARIAN_MORNING] == 1) {
+        if (ArianScene.arianFollower() && flags[kFLAGS.ARIAN_MORNING] == 1) {
             hideMenus();
-            arianScene.wakeUpAfterArianSleep();
+            ArianScene.wakeUpAfterArianSleep();
             return;
         }
-        if (arianFollower() && flags[kFLAGS.ARIAN_EGG_EVENT] >= 30) {
+        if (ArianScene.arianFollower() && flags[kFLAGS.ARIAN_EGG_EVENT] >= 30) {
             hideMenus();
-            arianScene.arianEggingEvent();
+            ArianScene.arianEggingEvent();
             return;
         }
-        if (arianFollower() && flags[kFLAGS.ARIAN_EGG_COUNTER] >= 24 && flags[kFLAGS.ARIAN_VAGINA] > 0) {
+        if (ArianScene.arianFollower() && flags[kFLAGS.ARIAN_EGG_COUNTER] >= 24 && flags[kFLAGS.ARIAN_VAGINA] > 0) {
             hideMenus();
-            arianScene.arianLaysEggs();
+            ArianScene.arianLaysEggs();
             return;
         }
         if (flags[kFLAGS.JACK_FROST_PROGRESS] > 0) {
@@ -150,9 +150,9 @@ export class Camp extends NPCAwareContent {
             processJackFrostEvent();
             return;
         }
-        if (player.keyItems.has("Super Reducto") < 0 && milkSlave() && player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.effects.getValue2Of(StatusAffects.MetRathazul) >= 4) {
+        if (player.keyItems.has("Super Reducto") < 0 && MilkWaifu.milkSlave() && player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.effects.getValue2Of(StatusAffects.MetRathazul) >= 4) {
             hideMenus();
-            milkWaifu.ratducto();
+            MilkWaifu.ratducto();
             return;
         }
         if (nieveHoliday() && game.time.hours == 6) {
@@ -172,27 +172,27 @@ export class Camp extends NPCAwareContent {
                 return;
             }
         }
-        if (helScene.followerHel()) {
-            if (helFollower.isHeliaBirthday() && flags[kFLAGS.HEL_FOLLOWER_LEVEL] >= 2 && flags[kFLAGS.HELIA_BIRTHDAY_OFFERED] == 0) {
+        if (HelScene.followerHel()) {
+            if (HelFollower.isHeliaBirthday() && flags[kFLAGS.HEL_FOLLOWER_LEVEL] >= 2 && flags[kFLAGS.HELIA_BIRTHDAY_OFFERED] == 0) {
                 hideMenus();
-                helFollower.heliasBirthday();
+                HelFollower.heliasBirthday();
                 return;
             }
-            if (helScene.pregnancy.isPregnant) {
-                switch (helScene.pregnancy.eventTriggered()) {
+            if (HelScene.pregnancy.isPregnant) {
+                switch (HelScene.pregnancy.eventTriggered()) {
                     case 2: hideMenus();
-                            helSpawnScene.bulgyCampNotice();
+                            HelSpawnScene.bulgyCampNotice();
                             return;
                     case 3: hideMenus();
-                            helSpawnScene.heliaSwollenNotice();
+                            HelSpawnScene.heliaSwollenNotice();
                             return;
                     case 4: hideMenus();
-                            helSpawnScene.heliaGravidity();
+                            HelSpawnScene.heliaGravidity();
                             return;
                     default:
-                        if (helScene.pregnancy.incubation == 0 && (game.time.hours == 6 || game.time.hours == 7)) {
+                        if (HelScene.pregnancy.incubation == 0 && (game.time.hours == 6 || game.time.hours == 7)) {
                             hideMenus();
-                            helSpawnScene.heliaBirthtime();
+                            HelSpawnScene.heliaBirthtime();
                             return;
                         }
                 }
@@ -200,48 +200,48 @@ export class Camp extends NPCAwareContent {
         }
         if (flags[kFLAGS.HELSPAWN_AGE] == 1 && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] == 7) {
             hideMenus();
-            helSpawnScene.helSpawnGraduation();
+            HelSpawnScene.helSpawnGraduation();
             return;
         }
-        if (game.time.hours >= 10 && game.time.hours <= 18 && (game.time.days % 20 == 0 || game.time.hours == 12) && flags[kFLAGS.HELSPAWN_DADDY] == 2 && helSpawnScene.helspawnFollower()) {
+        if (game.time.hours >= 10 && game.time.hours <= 18 && (game.time.days % 20 == 0 || game.time.hours == 12) && flags[kFLAGS.HELSPAWN_DADDY] == 2 && HelSpawnScene.helspawnFollower()) {
             hideMenus();
-            helSpawnScene.maiVisitsHerKids();
+            HelSpawnScene.maiVisitsHerKids();
             return;
         }
-        if (game.time.hours == 6 && flags[kFLAGS.HELSPAWN_DADDY] == 1 && game.time.days % 30 == 0 && flags[kFLAGS.SPIDER_BRO_GIFT] == 0 && helSpawnScene.helspawnFollower()) {
+        if (game.time.hours == 6 && flags[kFLAGS.HELSPAWN_DADDY] == 1 && game.time.days % 30 == 0 && flags[kFLAGS.SPIDER_BRO_GIFT] == 0 && HelSpawnScene.helspawnFollower()) {
             hideMenus();
-            helSpawnScene.spiderBrosGift();
+            HelSpawnScene.spiderBrosGift();
             return;
         }
-        if (game.time.hours >= 10 && game.time.hours <= 18 && (game.time.days % 15 == 0 || game.time.hours == 12) && helSpawnScene.helspawnFollower() && flags[kFLAGS.HAKON_AND_KIRI_VISIT] == 0) {
+        if (game.time.hours >= 10 && game.time.hours <= 18 && (game.time.days % 15 == 0 || game.time.hours == 12) && HelSpawnScene.helspawnFollower() && flags[kFLAGS.HAKON_AND_KIRI_VISIT] == 0) {
             hideMenus();
-            helSpawnScene.hakonAndKiriComeVisit();
+            HelSpawnScene.hakonAndKiriComeVisit();
             return;
         }
         if (flags[kFLAGS.HELSPAWN_AGE] == 2 && flags[kFLAGS.HELSPAWN_DISCOVER_BOOZE] == 0 && (rand(10) == 0 || flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] == 6)) {
             hideMenus();
-            helSpawnScene.helspawnDiscoversBooze();
+            HelSpawnScene.helspawnDiscoversBooze();
             return;
         }
         if (flags[kFLAGS.HELSPAWN_AGE] == 2 && flags[kFLAGS.HELSPAWN_WEAPON] == 0 && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] == 3 && game.time.hours >= 10 && game.time.hours <= 18) {
             hideMenus();
-            helSpawnScene.helSpawnChoosesAFightingStyle();
+            HelSpawnScene.helSpawnChoosesAFightingStyle();
             return;
         }
         if (flags[kFLAGS.HELSPAWN_AGE] == 2 && (game.time.hours == 6 || game.time.hours == 7) && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] == 7 && flags[kFLAGS.HELSPAWN_FUCK_INTERRUPTUS] == 1) {
-            helSpawnScene.helspawnAllGrownUp();
+            HelSpawnScene.helspawnAllGrownUp();
             return;
         }
-        if ((sophieFollower() || bimboSophie()) && flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] == 1) {
+        if ((SophieFollowerScene.sophieFollower() || SophieBimbo.bimboSophie()) && flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] == 1) {
             flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] = 0;
-            sophieBimbo.sophieKidMaturation();
+            SophieBimbo.sophieKidMaturation();
             hideMenus();
             return;
         }
         // Bimbo Sophie Move In Request!
-        if (bimboSophie() && flags[kFLAGS.SOPHIE_BROACHED_SLEEP_WITH] == 0 && sophieScene.pregnancy.event >= 2) {
+        if (SophieBimbo.bimboSophie() && flags[kFLAGS.SOPHIE_BROACHED_SLEEP_WITH] == 0 && SophieScene.pregnancy.event >= 2) {
             hideMenus();
-            sophieBimbo.sophieMoveInAttempt();
+            SophieBimbo.sophieMoveInAttempt();
             return;
         }
         if (!nieveHoliday() && game.time.hours == 6 && flags[kFLAGS.NIEVE_STAGE] > 0) {
@@ -250,7 +250,7 @@ export class Camp extends NPCAwareContent {
         }
         // Amily followup!
         if (flags[kFLAGS.PC_PENDING_PREGGERS] == 1) {
-            amilyScene.postBirthingEndChoices();
+            AmilyScene.postBirthingEndChoices();
             flags[kFLAGS.PC_PENDING_PREGGERS] = 2;
             return;
         }
@@ -272,41 +272,41 @@ export class Camp extends NPCAwareContent {
         }
         if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] > 0) {
             if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 0 && flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] >= 8) {
-                holliScene.getASprout();
+                HolliScene.getASprout();
                 hideMenus();
                 return;
             }
             if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 1 && flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] >= 7) {
-                holliScene.fuckPlantGrowsToLevel2();
+                HolliScene.fuckPlantGrowsToLevel2();
                 hideMenus();
                 return;
             }
             if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 2 && flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] >= 25) {
-                holliScene.flowerGrowsToP3();
+                HolliScene.flowerGrowsToP3();
                 hideMenus();
                 return;
             }
             // Level 4 growth
             if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 3 && flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] >= 40) {
-                holliScene.treePhaseFourGo();
+                HolliScene.treePhaseFourGo();
                 hideMenus();
                 return;
             }
         }
         // Jojo treeflips!
         if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && player.effects.findByType(StatusAffects.PureCampJojo) >= 0) {
-            holliScene.JojoTransformAndRollOut();
+            HolliScene.JojoTransformAndRollOut();
             hideMenus();
             return;
         }
         // Amily flips out
-        if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt() && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0) {
-            holliScene.amilyHatesTreeFucking();
+        if (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt() && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0) {
+            HolliScene.amilyHatesTreeFucking();
             hideMenus();
             return;
         }
-        if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 1 && flags[kFLAGS.AMILY_TREE_FLIPOUT] == 1 && !amilyScene.amilyFollower() && flags[kFLAGS.AMILY_VISITING_URTA] == 0) {
-            holliScene.amilyComesBack();
+        if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 1 && flags[kFLAGS.AMILY_TREE_FLIPOUT] == 1 && !AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_VISITING_URTA] == 0) {
+            HolliScene.amilyComesBack();
             flags[kFLAGS.AMILY_TREE_FLIPOUT] = 2;
             hideMenus();
             return;
@@ -314,7 +314,7 @@ export class Camp extends NPCAwareContent {
         // Anemone birth followup!
         if (player.effects.findByType(StatusAffects.CampAnemoneTrigger) >= 0) {
             player.effects.remove(StatusAffects.CampAnemoneTrigger);
-            anemoneScene.anemoneKidBirthPtII();
+            AnemoneScene.anemoneKidBirthPtII();
             hideMenus();
             return;
         }
@@ -328,14 +328,14 @@ export class Camp extends NPCAwareContent {
             return;
         }
         // Izzys tits asplode
-        if (isabellaFollower() && flags[kFLAGS.ISABELLA_MILKED_YET] >= 10 && player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) {
-            isabellaFollowerScene.milktasticLacticLactation();
+        if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.ISABELLA_MILKED_YET] >= 10 && player.keyItems.has("Breast Milker - Installed At Whitney's Farm") >= 0) {
+            IsabellaFollowerScene.milktasticLacticLactation();
             hideMenus();
             return;
         }
         // Marble meets follower izzy when moving in
-        if (flags[kFLAGS.ISABELLA_MURBLE_BLEH] == 1 && isabellaFollower() && player.effects.findByType(StatusAffects.CampMarble) >= 0) {
-            isabellaFollowerScene.angryMurble();
+        if (flags[kFLAGS.ISABELLA_MURBLE_BLEH] == 1 && IsabellaFollowerScene.isabellaFollower() && player.effects.findByType(StatusAffects.CampMarble) >= 0) {
+            IsabellaFollowerScene.angryMurble();
             hideMenus();
             return;
         }
@@ -347,68 +347,68 @@ export class Camp extends NPCAwareContent {
             return;
         }
         // Bimbo Sophie finds ovi elixer in chest!
-        if (bimboSophie() && hasItemInStorage(consumables.OVIELIX) && rand(5) == 0 && flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] == 0 && player.gender > 0) {
-            sophieBimbo.sophieEggApocalypse();
+        if (SophieBimbo.bimboSophie() && hasItemInStorage(consumables.OVIELIX) && rand(5) == 0 && flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] == 0 && player.gender > 0) {
+            SophieBimbo.sophieEggApocalypse();
             hideMenus();
             return;
         }
         // Amily + Urta freakout!
-        if (!urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && rand(10) == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00146] >= 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.AMILY_NEED_TO_FREAK_ABOUT_URTA] == 1 && amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && !amilyScene.pregnancy.isPregnant) {
-            finter.amilyUrtaReaction();
+        if (!urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && rand(10) == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00146] >= 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.AMILY_NEED_TO_FREAK_ABOUT_URTA] == 1 && AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && !AmilyScene.pregnancy.isPregnant) {
+            FollowerInteractions.amilyUrtaReaction();
             hideMenus();
             return;
         }
         // Find jojo's note!
         if (flags[kFLAGS.JOJO_FIXED_STATUS] == 1 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0) {
-            finter.findJojosNote();
+            FollowerInteractions.findJojosNote();
             hideMenus();
             return;
         }
         // Rathazul freaks out about jojo
-        if (flags[kFLAGS.RATHAZUL_CORRUPT_JOJO_FREAKOUT] == 0 && rand(5) == 0 && player.effects.findByType(StatusAffects.CampRathazul) >= 0 && campCorruptJojo()) {
-            finter.rathazulFreaksOverJojo();
+        if (flags[kFLAGS.RATHAZUL_CORRUPT_JOJO_FREAKOUT] == 0 && rand(5) == 0 && player.effects.findByType(StatusAffects.CampRathazul) >= 0 && JojoScene.campCorruptJojo()) {
+            FollowerInteractions.rathazulFreaksOverJojo();
             hideMenus();
             return;
         }
         // Izma/Marble freakout - marble moves in
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00237] == 1) {
-            izmaScene.newMarbleMeetsIzma();
+            IzmaScene.newMarbleMeetsIzma();
             hideMenus();
             return;
         }
         // Izma/Amily freakout - Amily moves in
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00236] == 1) {
-            izmaScene.newAmilyMeetsIzma();
+            IzmaScene.newAmilyMeetsIzma();
             hideMenus();
             return;
         }
         // Amily/Marble Freakout
-        if (flags[kFLAGS.AMILY_NOT_FREAKED_OUT] == 0 && player.effects.findByType(StatusAffects.CampMarble) >= 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && amilyScene.amilyFollower() && marbleScene.marbleAtCamp()) {
-            finter.marbleVsAmilyFreakout();
+        if (flags[kFLAGS.AMILY_NOT_FREAKED_OUT] == 0 && player.effects.findByType(StatusAffects.CampMarble) >= 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower() && MarbleScene.marbleAtCamp()) {
+            FollowerInteractions.marbleVsAmilyFreakout();
             hideMenus();
             return;
         }
         // Amily and/or Jojo freakout about Vapula!!
-        if (vapulaSlave() && (player.effects.findByType(StatusAffects.PureCampJojo) >= 0 || (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()))) {
+        if (Vapula.vapulaSlave() && (player.effects.findByType(StatusAffects.PureCampJojo) >= 0 || (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt()))) {
             // Jojo but not Amily
-            if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0 && !(amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()))
-                vapula.mouseWaifuFreakout(false, true);
+            if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0 && !(AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt()))
+                Vapula.mouseWaifuFreakout(false, true);
             // Amily but not Jojo
-            else if ((amilyScene.amilyFollower() && !amilyScene.amilyCorrupt())) vapula.mouseWaifuFreakout(true, false);
+            else if ((AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt())) Vapula.mouseWaifuFreakout(true, false);
             // Both
-            else vapula.mouseWaifuFreakout(true, true);
+            else Vapula.mouseWaifuFreakout(true, true);
             hideMenus();
             return;
         }
         // Go through Helia's first time move in interactions if  you haven't yet.
-        if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 2 && helScene.followerHel() && flags[kFLAGS.HEL_INTROS_LEVEL] == 0) {
-            helFollower.helFollowersIntro();
+        if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 2 && HelScene.followerHel() && flags[kFLAGS.HEL_INTROS_LEVEL] == 0) {
+            HelFollower.helFollowersIntro();
             hideMenus();
             return;
         }
         // If you've gone through Hel's first time actions and Issy moves in without being okay with threesomes.
-        if (flags[kFLAGS.HEL_INTROS_LEVEL] > 9000 && helScene.followerHel() && isabellaFollower() && flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 0) {
-            helFollower.angryHelAndIzzyCampHelHereFirst();
+        if (flags[kFLAGS.HEL_INTROS_LEVEL] > 9000 && HelScene.followerHel() && IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 0) {
+            HelFollower.angryHelAndIzzyCampHelHereFirst();
             hideMenus();
             return;
         }
@@ -458,7 +458,7 @@ export class Camp extends NPCAwareContent {
         outputText(images.showImage("camping"), false);
         // Isabella upgrades camp level!
 
-        if (isabellaFollower()) {
+        if (IsabellaFollowerScene.isabellaFollower()) {
             outputText("Your campsite got a lot more comfortable once Isabella moved in.  Carpets cover up much of the barren ground, simple awnings tied to the rocks provide shade, and hand-made wooden furniture provides comfortable places to sit and sleep.", false);
             if (game.time.days >= 20) outputText("  You've even managed to carve some artwork into the rocks around the camp's perimeter.", false);
         }
@@ -469,7 +469,7 @@ export class Camp extends NPCAwareContent {
             else outputText("Your new home is as comfy as a camp site can be.  The fire-pit and tent are both set up perfectly, and in good repair, and you've even managed to carve some artwork into the rocks around the camp's perimeter.", false);
         }
         if (flags[kFLAGS.CLARA_IMPRISONED] > 0) {
-            marblePurification.claraCampAddition();
+            MarblePurification.claraCampAddition();
         }
         // Nursery
         if (flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] == 100 && player.effects.findByType(StatusAffects.CampMarble) >= 0) {
@@ -523,7 +523,7 @@ export class Camp extends NPCAwareContent {
         // Ember's anti-minotaur crusade!
         if (flags[kFLAGS.EMBER_CURRENTLY_FREAKING_ABOUT_MINOCUM] == 1) {
             // Modified Camp Description
-            outputText("Since Ember began " + emberMF("his", "her") + " 'crusade' against the minotaur population, skulls have begun to pile up on either side of the entrance to " + emberScene.emberMF("his", "her") + " den.  There're quite a lot of them.\n\n");
+            outputText("Since Ember began " + EmberScene.emberMF("his", "her") + " 'crusade' against the minotaur population, skulls have begun to pile up on either side of the entrance to " + EmberScene.emberMF("his", "her") + " den.  There're quite a lot of them.\n\n");
         }
         // Dat tree!
         if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0) {
@@ -533,7 +533,7 @@ export class Camp extends NPCAwareContent {
             // claraCampAddition();
         }
         // BIMBO SOPHAH
-        if (bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) sophieBimbo.sophieCampLines();
+        if (SophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) SophieBimbo.sophieCampLines();
         if (player.effects.findByType(StatusAffects.CampMarble) >= 0) {
             temp = rand(5);
             outputText("A second bedroll rests next to yours; a large two-handed hammer sometimes rests against it, depending on whether or not its owner needs it at the time.  ", false);
@@ -604,12 +604,12 @@ export class Camp extends NPCAwareContent {
             else outputText("Tucked into a shaded corner of the rocks is a bevy of alchemical devices and equipment.  The alchemist Rathazul looks to be hard at work on the silken equipment you've commissioned him to craft.\n\n", false);
         }
         // MOUSEBITCH
-        if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
+        if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
             if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4) outputText("Amily has relocated her grass bedding to the opposite side of the camp from the strange tree; every now and then, she gives it a suspicious glance, as if deciding whether to move even further.");
             else outputText("A surprisingly tidy nest of soft grasses and sweet-smelling herbs has been built close to your bedroll. A much-patched blanket draped neatly over the top is further proof that Amily sleeps here. She changes the bedding every few days, to ensure it stays as nice as possible.\n\n", false);
         }
         // Corrupt mousebitch!
-        else if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
+        else if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
             outputText("Sometimes you hear a faint moan from not too far away. No doubt the result of your slutty toy mouse playing with herself.\n\n", false);
         }
         // Amily out freaking Urta?
@@ -618,11 +618,11 @@ export class Camp extends NPCAwareContent {
         }
         // JOJO
         // If Jojo is corrupted, add him to the masturbate menu.
-        if (campCorruptJojo() && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) outputText("From time to time you can hear movement from around your camp, and you routinely find thick puddles of mouse semen.  You are sure Jojo is here if you ever need to sate yourself.\n\n", false);
+        if (JojoScene.campCorruptJojo() && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) outputText("From time to time you can hear movement from around your camp, and you routinely find thick puddles of mouse semen.  You are sure Jojo is here if you ever need to sate yourself.\n\n", false);
         // Pure Jojo
         if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) outputText("There is a small bedroll for Jojo near your own, though the mouse is probably hanging around the camp's perimeter.\n\n", false);
         // Izma
-        if (izmaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0) {
+        if (IzmaScene.izmaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0) {
             outputText("Neatly laid near the base of your own is a worn bedroll belonging to Izma, your tigershark lover.  It's a snug fit for her toned body, though it has some noticeable cuts and tears in the fabric.  Close to her bed is her old trunk, almost as if she wants to have it at arms length if anyone tries to rob her in her sleep.  ", false);
             temp = rand(3);
             // Text 1} I
@@ -711,39 +711,39 @@ export class Camp extends NPCAwareContent {
 
     public followersCount(): number {
         let counter: number = 0;
-        if (emberScene.followerEmber()) counter++;
+        if (EmberScene.followerEmber()) counter++;
         if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) counter++;
         if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) counter++;
         if (player.effects.findByType(StatusAffects.CampRathazul) >= 0) counter++;
-        if (followerShouldra()) counter++;
-        if (sophieFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) counter++;
-        if (helspawnFollower()) counter++;
+        if (ShouldraFollower.followerShouldra()) counter++;
+        if (SophieFollowerScene.sophieFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) counter++;
+        if (HelSpawnScene.helspawnFollower()) counter++;
         return counter;
     }
 
     public slavesCount(): number {
         let counter: number = 0;
-        if (latexGooFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0) counter++;
-        if (vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) counter++;
-        if (campCorruptJojo() && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) counter++;
-        if (amilyScene.amilyFollower() && amilyScene.amilyCorrupt() && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) counter++;
+        if (LatexGirl.latexGooFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0) counter++;
+        if (Vapula.vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) counter++;
+        if (JojoScene.campCorruptJojo() && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) counter++;
+        if (AmilyScene.amilyFollower() && AmilyScene.amilyCorrupt() && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) counter++;
         // Bimbo sophie
-        if (bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) counter++;
-        if (ceraphIsFollower()) counter++;
-        if (milkSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) counter++;
+        if (SophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) counter++;
+        if (CeraphFollowerScene.ceraphIsFollower()) counter++;
+        if (MilkWaifu.milkSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) counter++;
         return counter;
     }
 
     public loversCount(): number {
         let counter: number = 0;
-        if (arianScene.arianFollower()) counter++;
-        if (followerHel()) counter++;
+        if (ArianScene.arianFollower()) counter++;
+        if (HelScene.followerHel()) counter++;
         // Izma!
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0) counter++;
-        if (isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) counter++;
+        if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) counter++;
         if (player.effects.findByType(StatusAffects.CampMarble) >= 0 && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 0) counter++;
-        if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()) counter++;
-        if (followerKiha()) counter++;
+        if (AmilyScene.amilyFollower() && !AmilyScene.amilyCorrupt()) counter++;
+        if (KihaFollower.followerKiha()) counter++;
         if (flags[kFLAGS.NIEVE_STAGE] == 5) counter++;
         if (flags[kFLAGS.ANT_WAIFU] > 0) counter++;
         return counter;
@@ -763,7 +763,7 @@ export class Camp extends NPCAwareContent {
             outputText("\n\n");
             nieve = approachNieve;
         }
-        if (helScene.followerHel()) {
+        if (HelScene.followerHel()) {
             if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 2) {
                 // Hel @ Camp: Follower Menu
                 // (6-7)
@@ -783,19 +783,19 @@ export class Camp extends NPCAwareContent {
                     outputText("<b>You see the salamander Helia pacing around camp, anxiously awaiting your departure to the harpy roost. Seeing you looking her way, she perks up, obviously ready to get underway.</b>\n\n");
                 }
             }
-            hel = helFollower.heliaFollowerMenu;
+            hel = HelFollower.heliaFollowerMenu;
         }
         // Kiha!
-        if (followerKiha()) {
+        if (KihaFollower.followerKiha()) {
             // (6-7)
             if (game.time.hours < 7) outputText("Kiha is sitting near the fire, her axe laying across her knees as she polishes it.[pg]");
             else if (game.time.hours < 19) outputText("Kiha's out right now, likely patrolling for demons to exterminate.  You're sure a loud call could get her attention.\n\n");
             else outputText("Kiha is utterly decimating a set of practice dummies she's set up out on the edge of camp.  All of them have crudely drawn horns. Most of them are on fire.\n\n");
-            kihaButt = kihaScene.encounterKiha;
+            kihaButt = KihaScene.encounterKiha;
         }
         // Isabella
-        if (isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) {
-            isabellaButt = isabellaFollowerScene.callForFollowerIsabella;
+        if (IsabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) {
+            isabellaButt = IsabellaFollowerScene.callForFollowerIsabella;
             if (game.time.hours >= 21 || game.time.hours <= 5) outputText("Isabella is sound asleep in her bunk and quietly snoring.", false);
             else if (game.time.hours == 6) outputText("Isabella is busy eating some kind of grain-based snack for breakfast.  The curly-haired cow-girl gives you a smile when she sees you look her way.", false);
             else if (game.time.hours == 7) outputText("Isabella, the red-headed cow-girl, is busy with a needle and thread, fixing up some of her clothes.", false);
@@ -812,9 +812,9 @@ export class Camp extends NPCAwareContent {
                     izzyCreeps[izzyCreeps.length] = 0;
                 if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0)
                     izzyCreeps[izzyCreeps.length] = 1;
-                if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0)
+                if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0)
                     izzyCreeps[izzyCreeps.length] = 2;
-                if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0)
+                if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0)
                     izzyCreeps[izzyCreeps.length] = 3;
                 if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0)
                     izzyCreeps[izzyCreeps.length] = 4;
@@ -847,7 +847,7 @@ export class Camp extends NPCAwareContent {
         // Izma
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0) {
             outputText("Neatly laid near the base of your own is a worn bedroll belonging to Izma, your tigershark lover. It's a snug fit for her toned body, though it has some noticeable cuts and tears in the fabric. Close to her bed is her old trunk, almost as if she wants to have it at arms length if anyone tries to rob her in her sleep.\n\n", false);
-            izmaEvent = izmaScene.izmaFollowerMenu;
+            izmaEvent = IzmaScene.izmaFollowerMenu;
         }
         // MARBLE
         if (player.effects.findByType(StatusAffects.CampMarble) >= 0 && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 0) {
@@ -866,14 +866,14 @@ export class Camp extends NPCAwareContent {
                     outputText("Marble herself is wandering around the camp right now.", false);
                 }
                 if (temp < 3) outputText("  You're sure she'd be back in moments if you needed her.", false);
-                marbleEvent = marbleScene.interactWithMarbleAtCamp;
+                marbleEvent = MarbleScene.interactWithMarbleAtCamp;
             }
             // Out getting family
             else outputText("Marble is out in the wilderness right now, searching for a relative.");
             outputText("\n\n", false);
         }
         // AMILY
-        if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0) {
+        if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0) {
             outputText("Amily is currently strolling around your camp, ", false);
             temp = rand(6);
             if (temp == 0) {
@@ -886,17 +886,17 @@ export class Camp extends NPCAwareContent {
             else if (temp == 4) outputText("and she flops down on her nest to have a rest", false);
             else outputText("peeling the last strips of flesh off of an imp's skull and putting it on a particularly flat, sun-lit rock to bleach as a trophy", false);
             outputText(".\n\n", false);
-            amilyEvent = amilyScene.amilyFollowerEncounter;
+            amilyEvent = AmilyScene.amilyFollowerEncounter;
         }
         // Amily out freaking Urta?
         else if (flags[kFLAGS.AMILY_VISITING_URTA] == 1 || flags[kFLAGS.AMILY_VISITING_URTA] == 2) {
             outputText("Amily's bed of grass and herbs lies empty, the mouse-woman still absent from her sojourn to meet your other lover.\n\n", false);
         }
-        if (arianScene.arianFollower()) outputText("Arian's tent is here, if you'd like to go inside.\n\n");
+        if (ArianScene.arianFollower()) outputText("Arian's tent is here, if you'd like to go inside.\n\n");
         // choices("Amily",amilyEvent,"Helia",hel,"Isabella",isabellaButt,"Izma",izmaEvent,"Kiha",kihaButt,"Marble",marbleEvent,"Nieve",nieve,"",0,"",0,"Back",1);
         menu();
         if (amilyEvent != null) addButton(0, "Amily", amilyEvent);
-        if (arianScene.arianFollower()) addButton(1, "Arian", arianScene.visitAriansHouse);
+        if (ArianScene.arianFollower()) addButton(1, "Arian", ArianScene.visitAriansHouse);
         if (hel != null) addButton(2, "Helia", hel);
         if (isabellaButt != null) addButton(3, "Isabella", isabellaButt);
         if (izmaEvent != null) addButton(4, "Izma", izmaEvent);
@@ -915,33 +915,33 @@ export class Camp extends NPCAwareContent {
         let sophieEvent: () => void = null;
         let jojoEvent: () => void = null;
         let goo: () => void = null;
-        if (vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) {
-            vapula.vapulaSlaveFlavorText();
+        if (Vapula.vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) {
+            Vapula.vapulaSlaveFlavorText();
             outputText("\n\n");
-            vapula2 = vapula.callSlaveVapula;
+            vapula2 = Vapula.callSlaveVapula;
         }
         // Bimbo Sophie
-        if (bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
-            sophieBimbo.sophieCampLines();
-            sophieEvent = sophieBimbo.approachBimboSophieInCamp;
+        if (SophieBimbo.bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+            SophieBimbo.sophieCampLines();
+            sophieEvent = SophieBimbo.approachBimboSophieInCamp;
         }
-        if (latexGooFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0) {
+        if (LatexGirl.latexGooFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0) {
             outputText(flags[kFLAGS.GOO_NAME] + " lurks in a secluded section of rocks, only venturing out when called for or when she needs to gather water from the stream.\n\n");
-            goo = latexGirl.approachLatexy;
+            goo = LatexGirl.approachLatexy;
         }
-        if (ceraphIsFollower()) ceraph = ceraphFollowerScene.ceraphFollowerEncounter;
+        if (CeraphFollowerScene.ceraphIsFollower()) ceraph = CeraphFollowerScene.ceraphFollowerEncounter;
         // JOJO
         // If Jojo is corrupted, add him to the masturbate menu.
-        if (campCorruptJojo() && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) {
+        if (JojoScene.campCorruptJojo() && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) {
             outputText("From time to time you can hear movement from around your camp, and you routinely find thick puddles of mouse semen.  You are sure Jojo is here if you ever need to sate yourself.\n\n", false);
-            jojoEvent = jojoScene.corruptCampJojo;
+            jojoEvent = JojoScene.corruptCampJojo;
         }
         // Modified Camp/Follower List Description:
-        if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
+        if (AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
             outputText("Sometimes you hear a faint moan from not too far away. No doubt the result of your slutty toy mouse playing with herself.\n\n", false);
-            amilyEvent = amilyScene.amilyFollowerEncounter;
+            amilyEvent = AmilyScene.amilyFollowerEncounter;
         }
-        if (milkSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) {
+        if (MilkWaifu.milkSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) {
             outputText("Your well-endowed, dark-skinned milk-girl is here.  She flicks hopeful eyes towards you whenever she thinks she has your attention.\n\n");
         }
         // choices("Amily",amilyEvent,"Ceraph",ceraph,"Jojo",jojoEvent,"Sophie",sophieEvent,"Vapula",vapula,"",0,"",0,"",0,flags[kFLAGS.GOO_NAME],goo,"Back",1);
@@ -951,7 +951,7 @@ export class Camp extends NPCAwareContent {
         if (jojoEvent != null) addButton(2, "Jojo", jojoEvent);
         if (sophieEvent != null) addButton(3, "Sophie", sophieEvent);
         if (vapula2 != null) addButton(4, "Vapula", vapula2);
-        if (milkSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) addButton(7, flags[kFLAGS.MILK_NAME], milkWaifu.milkyMenu);
+        if (MilkWaifu.milkSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) addButton(7, flags[kFLAGS.MILK_NAME], MilkWaifu.milkyMenu);
         if (goo != null) addButton(8, flags[kFLAGS.GOO_NAME], goo);
         addButton(9, "Back", playerMenu);
     }
@@ -966,22 +966,22 @@ export class Camp extends NPCAwareContent {
         game.inCombat = false;
         // ADD MENU FLAGS/INDIVIDUAL FOLLOWER TEXTS
         menu();
-        if (emberScene.followerEmber()) {
-            emberScene.emberCampDesc();
-            ember = emberScene.emberCampMenu;
+        if (EmberScene.followerEmber()) {
+            EmberScene.emberCampDesc();
+            ember = EmberScene.emberCampMenu;
         }
-        if (followerShouldra()) {
-            shouldra = shouldraFollower.shouldraFollowerScreen;
+        if (ShouldraFollower.followerShouldra()) {
+            shouldra = ShouldraFollower.shouldraFollowerScreen;
         }
         // Pure Jojo
         if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) {
             outputText("There is a small bedroll for Jojo near your own, though the mouse is probably hanging around the camp's perimeter.\n\n", false);
-            jojoEvent = jojoScene.jojoCamp;
+            jojoEvent = JojoScene.jojoCamp;
         }
         // RATHAZUL
         // if rathazul has joined the camp
         if (player.effects.findByType(StatusAffects.CampRathazul) >= 0) {
-            rathazulEvent = rathazul.returnToRathazulMenu;
+            rathazulEvent = Rathazul.returnToRathazulMenu;
             if (flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] <= 1) {
                 outputText("Tucked into a shaded corner of the rocks is a bevy of alchemical devices and equipment.  The alchemist Rathazul looks to be hard at work with his chemicals, working on who knows what.", false);
                 if (flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] == 1) outputText("  Some kind of spider-silk-based equipment is hanging from a nearby rack.  He's finished with the task you gave him!", false);
@@ -989,7 +989,7 @@ export class Camp extends NPCAwareContent {
             }
             else outputText("Tucked into a shaded corner of the rocks is a bevy of alchemical devices and equipment.  The alchemist Rathazul looks to be hard at work on the silken equipment you've commissioned him to craft.\n\n", false);
         }
-        if (sophieFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+        if (SophieFollowerScene.sophieFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
             if (rand(5) == 0) outputText("Sophie is sitting by herself, applying yet another layer of glittering lip gloss to her full lips.\n\n");
             else if (rand(4) == 0) outputText("Sophie is sitting in her nest, idly brushing out her feathers.  Occasionally, she looks up from her work to give you a sultry wink and a come-hither gaze.\n\n");
             else if (rand(3) == 0) outputText("Sophie is fussing around in her nest, straightening bits of straw and grass, trying to make it more comfortable.  After a few minutes, she flops down in the middle and reclines, apparently satisfied for the moment.\n\n");
@@ -1009,11 +1009,11 @@ export class Camp extends NPCAwareContent {
                 else outputText("them");
                 outputText(" about hunting and gathering techniques.  Considering their unusual upbringing, it can't be as easy for them...\n\n");
             }
-            addButton(5, "Sophie", sophieFollowerScene.followerSophieMainScreen);
+            addButton(5, "Sophie", SophieFollowerScene.followerSophieMainScreen);
         }
-        if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) valeria2 = valeria.valeriaFollower;
+        if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) valeria2 = Valeria.valeriaFollower;
         addButton(0, "Ember", ember);
-        if (helspawnFollower()) addButton(1, flags[kFLAGS.HELSPAWN_NAME], helSpawnScene.helspawnsMainMenu);
+        if (HelSpawnScene.helspawnFollower()) addButton(1, flags[kFLAGS.HELSPAWN_NAME], HelSpawnScene.helspawnsMainMenu);
         addButton(2, "Jojo", jojoEvent);
         addButton(3, "Rathazul", rathazulEvent);
         addButton(4, "Shouldra", shouldra);
@@ -1079,8 +1079,8 @@ export class Camp extends NPCAwareContent {
     }
 
     public doSleep(clrScreen: boolean = true): void {
-        if (urta.pregnancy.incubation == 0 && urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER && game.time.hours >= 20 && game.time.hours < 2) {
-            urtaPregs.preggoUrtaGivingBirth();
+        if (Urta.pregnancy.incubation == 0 && Urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER && game.time.hours >= 20 && game.time.hours < 2) {
+            UrtaPregs.preggoUrtaGivingBirth();
             return;
         }
         campQ = true;
@@ -1106,26 +1106,26 @@ export class Camp extends NPCAwareContent {
             /*       ONE TIME SPECIAL EVENTS                                  */
             /******************************************************************/
             // HEL SLEEPIES!
-            if (helFollower.helAffection() >= 70 && flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE] == 0 && flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 0) {
+            if (HelFollower.helAffection() >= 70 && flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE] == 0 && flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 0) {
                 heliaDiscovery();
                 sleepRecovery(false);
                 return;
             }
             // Shouldra xgartuan fight
-            if (player.cocks.length > 0 && followerShouldra() && player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) {
+            if (player.cocks.length > 0 && ShouldraFollower.followerShouldra() && player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) {
                 if (flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == 0) {
-                    shouldraFollower.shouldraAndExgartumonFightGottaCatchEmAll();
+                    ShouldraFollower.shouldraAndExgartumonFightGottaCatchEmAll();
                     sleepRecovery(false);
                     return;
                 }
                 else if (flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == 3) {
-                    shouldraFollower.exgartuMonAndShouldraShowdown();
+                    ShouldraFollower.exgartuMonAndShouldraShowdown();
                     sleepRecovery(false);
                     return;
                 }
             }
-            if (player.cocks.length > 0 && followerShouldra() && flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == -0.5) {
-                shouldraFollower.keepShouldraPartIIExgartumonsUndeatH();
+            if (player.cocks.length > 0 && ShouldraFollower.followerShouldra() && flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == -0.5) {
+                ShouldraFollower.keepShouldraPartIIExgartumonsUndeatH();
                 sleepRecovery(false);
                 return;
             }
@@ -1133,17 +1133,17 @@ export class Camp extends NPCAwareContent {
             /*       SLEEP WITH SYSTEM GOOOO                                  */
             /******************************************************************/
             // Marble Sleepies
-            if (marbleScene.marbleAtCamp() && player.effects.findByType(StatusAffects.CampMarble) >= 0 && flags[kFLAGS.SLEEP_WITH] == "Marble" && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 0) {
-                if (marbleScene.marbleNightSleepFlavor()) {
+            if (MarbleScene.marbleAtCamp() && player.effects.findByType(StatusAffects.CampMarble) >= 0 && flags[kFLAGS.SLEEP_WITH] == "Marble" && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 0) {
+                if (MarbleScene.marbleNightSleepFlavor()) {
                     sleepRecovery(false);
                     return;
                 }
             }
-            else if (flags[kFLAGS.SLEEP_WITH] == "Arian" && arianScene.arianFollower()) {
-                arianScene.sleepWithArian();
+            else if (flags[kFLAGS.SLEEP_WITH] == "Arian" && ArianScene.arianFollower()) {
+                ArianScene.sleepWithArian();
                 return;
             }
-            else if (flags[kFLAGS.SLEEP_WITH] == "Sophie" && (bimboSophie() || sophieFollower()) && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+            else if (flags[kFLAGS.SLEEP_WITH] == "Sophie" && (SophieBimbo.bimboSophie() || SophieFollowerScene.sophieFollower()) && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
                 // Night Time Snuggle Alerts!*
                 // (1)
                 if (rand(4) == 0) {
@@ -1172,7 +1172,7 @@ export class Camp extends NPCAwareContent {
                 outputText("\n");
             }
             else {
-                if (flags[kFLAGS.SLEEP_WITH] == "Helia" && helScene.followerHel()) {
+                if (flags[kFLAGS.SLEEP_WITH] == "Helia" && HelScene.followerHel()) {
                     outputText("You curl up next to Helia, planning to sleep for " + num2Text(timeQ) + " ");
                 }
                 // Normal sleep message
@@ -1286,7 +1286,7 @@ export class Camp extends NPCAwareContent {
         if (farmFound()) addButton(5, "Farm", farm.farmExploreEncounter);
         if (flags[kFLAGS.OWCA_UNLOCKED] == 1) addButton(6, "Owca", owca.gangbangVillageStuff);
         if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) addButton(7, "Salon", Salon.salonGreeting);
-        if (player.effects.getValue1Of(StatusAffects.TelAdre) >= 1) addButton(8, "Tel'Adre", telAdre.telAdreMenu);
+        if (player.effects.getValue1Of(StatusAffects.TelAdre) >= 1) addButton(8, "Tel'Adre", TelAdre.telAdreMenu);
         addButton(9, "Back", playerMenu);
     }
 
@@ -1294,7 +1294,7 @@ export class Camp extends NPCAwareContent {
         menu();
         flags[kFLAGS.PLACES_PAGE] = 1;
         // turn on ruins
-        if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(0, "TownRuins", amilyScene.exploreVillageRuin);
+        if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(0, "TownRuins", AmilyScene.exploreVillageRuin);
         if (flags[kFLAGS.MET_MINERVA] >= 4) addButton(1, "Oasis Tower", MinervaScene.encounterMinerva);
         addButton(4, "Previous", placesToPage1);
         addButton(9, "Back", playerMenu);

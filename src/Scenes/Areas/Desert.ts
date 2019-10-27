@@ -14,16 +14,16 @@ export class Desert {
             return;
         }
         if (rand(40) == 0) {
-            exgartuan.fountainEncounter();
+            Exgartuan.fountainEncounter();
             return;
         }
         // Helia monogamy fucks
-        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !helScene.followerHel()) {
-            helScene.helSexualAmbush();
+        if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelScene.followerHel()) {
+            HelScene.helSexualAmbush();
             return;
         }
         if ((player.exploredDesert == 20 && player.effects.findByType(StatusAffects.TelAdre) < 0) || (rand(20) == 0 && player.effects.getValue1Of(StatusAffects.TelAdre) == 0)) {
-            telAdre.discoverTelAdre();
+            TelAdre.discoverTelAdre();
             return;
         }
         if (SandWitchScene.pregnancy.event == 2 && rand(4) == 0) {

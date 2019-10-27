@@ -118,7 +118,7 @@ export class Izma extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.izmaScene.defeatIzma();
+        IzmaScene.defeatIzma();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -126,7 +126,7 @@ export class Izma extends Monster {
             outputText("\n\n\"<i>Gross!</i>\" Izma cries as she backs away, leaving you to recover alone.");
             cleanupAfterCombat();
         } else {
-            game.izmaScene.IzmaWins();
+            IzmaScene.IzmaWins();
         }
     }
 

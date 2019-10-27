@@ -105,7 +105,7 @@ export function helpValentinesDayII(): void {
 
     outputText("\n\nThrough the small crowd, you even see an oddly familiar flash of black and gray vulpine fur.");
     // ([Fuckbuddy or Heartbroken Urta])
-    // if(!urtaLove()) outputText("\n\nThe bearer of it seems to just come here to look uncomfortably but, perhaps, longingly at the stall for a few moments, before practically leaping back into the Wet Bitch.");
+    // if(!Urta.urtaLove()) outputText("\n\nThe bearer of it seems to just come here to look uncomfortably but, perhaps, longingly at the stall for a few moments, before practically leaping back into the Wet Bitch.");
     // else outputText("\n\nYou see a flash of said fur as the person with said characteristic moves away from the stall, clearly carrying a confection or two and some other pink, red, or heart-shaped things into the Wet Bitch.");
 
     // [next]
