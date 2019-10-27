@@ -1,5 +1,5 @@
 
-export class Dominika extends TelAdreAbstractContent {
+export class Dominika {
     public constructor() {
 
     }
@@ -36,7 +36,7 @@ export class Dominika extends TelAdreAbstractContent {
             outputText("You nod slightly, glancing back at Dominika, then shrug.", false);
             // TO THE BAR
             cheatTime(1);
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         // [First encounter]
@@ -68,7 +68,7 @@ export class Dominika extends TelAdreAbstractContent {
                 outputText("You make your way over to Dominika's table and start up a conversation with the modestly dressed woman. You share exploits and knowledge, but can't help but feel like she's being somewhat distant. She glances out to the distance more than once, and drums her fingers on the table. You make conversation for a little while longer, but realize that it's not really going to go anywhere, and excuse yourself.", false);
             }
             cheatTime(1);
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         // Second encounter]
@@ -97,7 +97,7 @@ export class Dominika extends TelAdreAbstractContent {
         outputText("", true);
         outputText("\"<i>Fair enough,</i>\" Dominika nods. \"<i>Let me know if you change your mind.</i>\" The two of you make small talk for a while longer, before you decide to get back to work and excuse yourself.\n\n", false);
         cheatTime(1);
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
     // [\"<i>Sure</i>\"]
     private acceptDominikasKnowledge(): void {
@@ -291,7 +291,7 @@ export class Dominika extends TelAdreAbstractContent {
         // (Dominika does not appear again.)
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] = -1;
         cheatTime(1);
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
 
     private acceptFellatrixOral(): void {

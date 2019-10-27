@@ -1,5 +1,5 @@
 
-export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface {
+export class Cotton implements TimeAwareInterface {
 
     // 176 TIMES HAD YOGA
     // 177 MET/FUCKED - 0 = never met.  1 = met but not fucked. 2 = fucked
@@ -232,7 +232,7 @@ export class Cotton extends TelAdreAbstractContent implements TimeAwareInterface
         const option4: () => void = null;
         if (player.fatigue > 80) {
             outputText("You're way too tired to do any yoga right now.", false);
-            doNext(telAdre.telAdreMenu);
+            doNext(TelAdre.telAdreMenu);
             return;
         }
         if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0 && player.gems < 10) {

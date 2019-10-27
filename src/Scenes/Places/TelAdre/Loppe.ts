@@ -1,5 +1,5 @@
 
-export class Loppe extends TelAdreAbstractContent {
+export class Loppe {
     public constructor() {
 
     }
@@ -79,7 +79,7 @@ export class Loppe extends TelAdreAbstractContent {
         // (disable repeat and NPC)
         flags[kFLAGS.LOPPE_DISABLED] = 1;
         menu();
-        addButton(0, "Next", telAdre.barTelAdre);
+        addButton(0, "Next", TelAdre.barTelAdre);
     }
 
     // [=Not Now=]
@@ -88,7 +88,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText("You're not really in the mood for this right now, so you leave the bar.");
         // (go to T'A main menu, repeat event in 15 days.)
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
 
     // [=Yes=]
@@ -150,7 +150,7 @@ export class Loppe extends TelAdreAbstractContent {
 
         outputText("\n\n\"<i>Dammit, came on too strong...</i>\"");
         menu();
-        addButton(0, "Next", telAdre.barTelAdre);
+        addButton(0, "Next", TelAdre.barTelAdre);
     }
 
     // [=Sure=]
@@ -283,7 +283,7 @@ export class Loppe extends TelAdreAbstractContent {
         addButton(0, "Appearance", appearanceOfLoppe);
         addButton(1, "Talk", talkWithLoppe);
         addButton(2, "Sex", loppeSexChoice);
-        addButton(4, "Leave", telAdre.telAdreMenu);
+        addButton(4, "Leave", TelAdre.telAdreMenu);
         // Leave (Return to Tel'Adre menu)
     }
 
@@ -1942,7 +1942,7 @@ export class Loppe extends TelAdreAbstractContent {
         outputText("\n\nYou nod your head, quietly redress yourself, and exit.");
         dynStats("lus", 5 + rand(5));
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
 
     // Fondle&Tease (rewritten and edited)(C)

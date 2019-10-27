@@ -1,5 +1,5 @@
 
-export class Ifris extends TelAdreAbstractContent {
+export class Ifris {
     public constructor() {
 
     }
@@ -48,7 +48,7 @@ export class Ifris extends TelAdreAbstractContent {
         }
         outputText("(You could go ahead and work out while she watches, ask her to join you, or leave.)", false);
         // Work out || Ask Her To Join || Leave?
-        simpleChoices("Work Out", workOutForIfris, "Join Me?", askIfrisToJoinYou, "", null, "", null, "Leave", telAdre.gymDesc);
+        simpleChoices("Work Out", workOutForIfris, "Join Me?", askIfrisToJoinYou, "", null, "", null, "Leave", TelAdre.gymDesc);
     }
     // 3a-PC responds they want to work out-
     private workOutForIfris(): void {
@@ -56,7 +56,7 @@ export class Ifris extends TelAdreAbstractContent {
         outputText("", true);
         if (player.fatigue > 70) {
             outputText("There's no way you could work out as tired as you are.  Maybe you could come back to flirt with the demonic-looking girl during your next workout.", false);
-            doNext(telAdre.gymDesc);
+            doNext(TelAdre.gymDesc);
             return;
         }
         outputText("You smile to the devil-looking-girl and tell her you're just here to get your work-out on.\n\n", false);
@@ -73,7 +73,7 @@ export class Ifris extends TelAdreAbstractContent {
         outputText("", true);
         if (player.fatigue > 70) {
             outputText("There's no way you could work out as tired as you are.  Maybe you could come back to flirt with the demonic-looking girl during your next workout.", false);
-            doNext(telAdre.gymDesc);
+            doNext(TelAdre.gymDesc);
             return;
         }
         outputText("You ask Ifris if she'd like to join you in some exercises. Her eyes glint mischievously, obviously finding unintended meaning in your words, and you can't help but blush.\n\n", false);

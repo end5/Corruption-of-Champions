@@ -1,5 +1,5 @@
 
-export class KatherineEmployment extends TelAdreAbstractContent {
+export class KatherineEmployment {
     // This class holds all the employment quest specific content for Katherine. It's split off to reduce the size of Katherine.as
 
     private static KBIT_TRAINING_TALK_EDRYN: number = 4;
@@ -107,11 +107,11 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         const cockFitIndex: number = player.cocks.cockThatFits(300);
         if ((cockFitIndex >= 0 && player.cocks.cockArea(cockFitIndex) >= 24) && (player.lowerBody == LOWER_BODY_TYPE_CENTAUR || player.cocks.horseCocks() > 0 || player.cor > 50 || player.effects.getValue1Of(StatusAffects.Edryn) > 0)) {
             outputText("“<i>So... I don’t suppose there’s anything else you might have on your mind...?</i>”  She gives you a coy look and fiddles with a nipple through her shirt.");
-            doYesNo((Edryn.pregnancy.isPregnant ? pregnantEdrynSexSelector : Edryn.edrynSexSelecter), telAdre.barTelAdre);
+            doYesNo((Edryn.pregnancy.isPregnant ? pregnantEdrynSexSelector : Edryn.edrynSexSelecter), TelAdre.barTelAdre);
         }
         else {
             outputText("Your business done, you leave the bar; now, how to tell Katherine that if she wants a job, she’ll need to join the Watch...?");
-            doNext(telAdre.telAdreMenu);
+            doNext(TelAdre.telAdreMenu);
         }
     }
 
@@ -141,7 +141,7 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         }
         else { // Fuckbuddy Urta
             outputText("She then sullenly starts gulping her mug down, one hand already waving to a bar attendant for a refill.  Looks like she might be a little jealous... You decide not to push your luck, instead thanking her for the advice and leaving her to her drinking.  Now, all you need to do is figure out how to convince Katherine to join the Watch...");
-            doNext(telAdre.telAdreMenu);
+            doNext(TelAdre.telAdreMenu);
         }
     }
 
@@ -1076,7 +1076,7 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_KATHS_APT; // Once again she disappears for the rest of the day so we don't find her at the bar right after seeing this encounter
         Katherine.giveClothing(Katherine.KBIT_CLOTHES_UNIFORM);
         Katherine.giveClothing(Katherine.KBIT_CLOTHES_C_CLOTH);
-        telAdre.telAdreMenuShow();
+        TelAdre.telAdreMenuShow();
     }
 
     public postTrainingAlleyDescription(): void {
@@ -1092,7 +1092,7 @@ export class KatherineEmployment extends TelAdreAbstractContent {
         else {
             outputText("You're guessing that her guard detail at the gate will last all day.");
         }
-        telAdre.telAdreMenuShow();
+        TelAdre.telAdreMenuShow();
     }
 
 }

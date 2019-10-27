@@ -4,7 +4,7 @@
 // 264 - Nancy relationship level
 // 265 - Talk Nancy
 // 266 - Times boned
-export class AuntNancy extends TelAdreAbstractContent {
+export class AuntNancy {
     public constructor() {
     }
     // [Introduction Blurb:
@@ -57,7 +57,7 @@ export class AuntNancy extends TelAdreAbstractContent {
             // [If MetNancy < 1, MetNancy += 1]
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00263] < 1) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00263] = 1;
             // [Choice: Strong, Light]
-            simpleChoices("Strong", strongStuff, "Light", lightStuff, "", null, "", null, "Leave", telAdre.barTelAdre);
+            simpleChoices("Strong", strongStuff, "Light", lightStuff, "", null, "", null, "Leave", TelAdre.barTelAdre);
         }
     }
 

@@ -1,5 +1,5 @@
 
-export class Frosty extends TelAdreAbstractContent {
+export class Frosty {
 
     public constructor() {
 
@@ -66,7 +66,7 @@ export class Frosty extends TelAdreAbstractContent {
         if (player.gems >= 200) addButton(3, "x20", cupcakeBuy, 20);
         if (flags[kFLAGS.SIGNED_FROSTYS_CONTRACT] == 0) addButton(8, "Contract", getAFuckingFuckContractFromFucks);
         else addButton(8, "Specials", frostysLimitedSpecialMenu);
-        addButton(9, "Leave", telAdre.telAdreMenu);
+        addButton(9, "Leave", TelAdre.telAdreMenu);
 
     }
 
@@ -125,7 +125,7 @@ export class Frosty extends TelAdreAbstractContent {
         clearOutput();
         outputText("You’re too busy right now, so you deny the free service. “<i>Okeydokey, see you around, [name]!</i>” Frosty does a twirl on one foot and runs back to her stand. Such a nice girl.");
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
 
     // [No](for the contract)
@@ -135,7 +135,7 @@ export class Frosty extends TelAdreAbstractContent {
         outputText("\n\n“<i>Well, you can still buy my tasty cupcakes. You just won’t get any perks for buying them, but eating them is a benefit in its own way. Join the BETA if you change your mind on the whole thing.</i>”");
         outputText("\n\nYou nod at her suggestion and make your way back to the main street.");
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
 
     // [Choosing Buttons 1-4]

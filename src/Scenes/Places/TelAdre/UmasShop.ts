@@ -17,7 +17,7 @@
  * I'm also VERY tempted to say the bonuses from massages and acpuncture sessions should be dropped, and they should be turned into like a HP recovery/fatigue recovery deal.
  * Massage recovers 50% of missing health in an hour, Acpuncture recovers 30% of current fatigue in an hour?
  */
-export class UmasShop extends TelAdreAbstractContent {
+export class UmasShop {
     private _loppeTalks: any[];
 
     public constructor() {
@@ -183,7 +183,7 @@ export class UmasShop extends TelAdreAbstractContent {
         }
 
         // addButton(4, "Train Loppe", trainLoppe); // Unfinished in the doc
-        addButton(9, "Leave", telAdre.telAdreMenu);
+        addButton(9, "Leave", TelAdre.telAdreMenu);
     }
 
     /**

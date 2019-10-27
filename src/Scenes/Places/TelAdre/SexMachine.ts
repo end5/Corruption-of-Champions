@@ -1,5 +1,5 @@
 
-export class SexMachine extends TelAdreAbstractContent {
+export class SexMachine {
 
     public exploreShowers(): void {
         outputText("", true);

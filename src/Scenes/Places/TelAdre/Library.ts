@@ -1,5 +1,5 @@
 
-export class Library extends TelAdreAbstractContent {
+export class Library {
 
     // const TIMES_VISITED_MALI:int = 860
     // const TIMES_BEEN_TO_LIBRARY:int = 861;
@@ -18,7 +18,7 @@ export class Library extends TelAdreAbstractContent {
         if (flags[kFLAGS.TIMES_VISITED_MALI] > 0) addButton(2, "Mali", talkToMali);
         addButton(0, "Study", studyInTA);
         flags[kFLAGS.TIMES_BEEN_TO_LIBRARY]++;
-        addButton(4, "Back", telAdre.telAdreMenu);
+        addButton(4, "Back", TelAdre.telAdreMenu);
     }
 
     // (first visit)
@@ -94,7 +94,7 @@ export class Library extends TelAdreAbstractContent {
             outputText("\n\n\"<i>I'm afraid that I may have not made myself clear earlier, the library is not presently open,</i>\" Quinn sighs, rubbing his forehead.  \"<i>This means that it is closed, which is the opposite state of open.  While it is in this state its services are unavailable to the general public.  The general public in this particular instance are also the ones directly responsible for the necessity of it closing, leading to further hesitation in the Covenant's willingness to hasten the opening.  Your interest is noted, filed, and considered, but will be regarded as a data point and not the quote unquote voice of the people.</i>\"");
             outputText("\n\nQuinn pauses for a few more moments, looking you in the eye thoughtfully before finishing with \"<i>That means no, in case we're unclear.</i>\"");
             menu();
-            addButton(4, "Back", telAdre.telAdreMenu);
+            addButton(4, "Back", TelAdre.telAdreMenu);
         }
         // [Study, 18:00-20:00]
         else {

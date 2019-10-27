@@ -1,5 +1,5 @@
 
-export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface {
+export class Edryn implements TimeAwareInterface {
     // VARS
     // player.effects.getValue1Of(StatusAffects.Edryn) >= 4 = FREE SEX
     // EDRYN_TIMES_HEL_THREESOMED:int = 404;
@@ -88,7 +88,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("You stay with her and chat, learning more about your newborn child and otherwise having a pleasant time with your quadruped lover.", false);
             cheatTime(1);
             flags[kFLAGS.EDRYN_NEEDS_TO_TALK_ABOUT_KID] = 0;
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         // Mid-pregnancy talk
@@ -107,7 +107,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             if (player.cocks.length == 0) {
                 outputText("She looks down, eyes fixing on your crotch for a moment before she sighs, \"<i>Why did you get rid of your dick?  I like you a lot, but I don't really want to have sex with you like you are now.</i>\"\n\nIt looks like you won't get to have any fun with her right now.", false);
                 cheatTime(1);
-                doNext(telAdre.barTelAdre);
+                doNext(TelAdre.barTelAdre);
                 return;
             }
             // (WANG FITS)
@@ -137,7 +137,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 else {
                     outputText("I'd love to help you, but I don't have any supplies for you.  I'm sure you'll find a way.</i>\"\n\n", false);
                     cheatTime(1);
-                    doNext(telAdre.barTelAdre);
+                    doNext(TelAdre.barTelAdre);
                     return;
                 }
                 inventory.takeItem(itype, camp.returnToCampUseOneHour);
@@ -156,7 +156,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 else {
                     outputText("She says, \"<i>You should find some Reducto or something to shrink that down.  I haven't come across any more so you'll have to get it yourself.</i>\"\n\n", false);
                     cheatTime(1);
-                    doNext(telAdre.barTelAdre);
+                    doNext(TelAdre.barTelAdre);
                     return;
                 }
             }
@@ -205,7 +205,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 else {
                     outputText("\n\nYou wait until she returns, wishing for once that things could be normal.  Though the remaining conversation is pleasant, you have a hard time enjoying yourself, and eventually bid the pretty centaur farewell.", false);
                     cheatTime(1);
-                    doNext(telAdre.barTelAdre);
+                    doNext(TelAdre.barTelAdre);
                 }
             }
         }
@@ -215,14 +215,14 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             if (player.vaginas.length > 0 && player.lust > 70) {
                 outputText("and as wet as you are right now, you find her scent to be intriguing.  Some part of you is curious what it would taste like.  When the centauress returns you compliment her on her shapely backside, but she only smiles politely and informs you that she \"<i>doesn't swing for your team,</i>\" whatever that means.  The rest of the conversation is quite pleasant, but all good things must come to an end.", false);
                 cheatTime(1);
-                doNext(telAdre.barTelAdre);
+                doNext(TelAdre.barTelAdre);
             }
             // Everybody else is all "BLEH"
             else {
                 outputText("but the potent musky scent only reminds you of how different things are here.", false);
                 outputText("\n\nYou wait until she returns, wishing for once that things could be normal.  Though the remaining conversation is pleasant, you have a hard time enjoying yourself, and eventually bid the pretty centaur farewell.", false);
                 cheatTime(1);
-                doNext(telAdre.barTelAdre);
+                doNext(TelAdre.barTelAdre);
             }
         }
     }
@@ -262,7 +262,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 outputText("Oh my, you're a little bit small for my tastes love.  Maybe you should try some of the local delicacies and trot back here so I can help you out, ok?</i>\"\n\n", false);
                 outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                 cheatTime(1);
-                doNext(telAdre.barTelAdre);
+                doNext(TelAdre.barTelAdre);
                 return;
             }
             // Too big
@@ -270,7 +270,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                 outputText("Oh wow, you're a little bit too big for me to handle, love.  Maybe you should try to find something to shrink that down a little, not too much, and trot back here so I can help you out, ok?</i>\"\n\n", false);
                 outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                 cheatTime(1);
-                doNext(telAdre.barTelAdre);
+                doNext(TelAdre.barTelAdre);
                 return;
             }
             // Big enough
@@ -282,7 +282,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("She releases your " + cockDescript(game.player, x) + " and looks expectantly at you.  Your body is ready to do anything for a chance to breed her.  What will you do?\n\n", false);
             if (cost > 0) outputText("(Do you pay " + num2Text(cost) + " gems to fuck her?)", false);
             else outputText("(Do you fuck her?)", false);
-            doYesNo(edrynSexSelecter, telAdre.barTelAdre);
+            doYesNo(edrynSexSelecter, TelAdre.barTelAdre);
         }
         else if (player.cocks.length > 0) {
             // (HORSE CONT)
@@ -292,7 +292,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                     outputText("\"<i>Wow, that's huge!  Sweetheart, you'll need to be a bit smaller if you want to play with me.  Why not go out and find something to shrink it down to something a horse like me can handle, then maybe we can play, ok?</i>\"\n\n", false);
                     outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                     cheatTime(1);
-                    doNext(telAdre.barTelAdre);
+                    doNext(TelAdre.barTelAdre);
                     return;
                 }
                 if (player.cocks.cockArea(x) >= 24) {
@@ -306,14 +306,14 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                     outputText(cockDescript(game.player, x) + " twitch.  Will you accept her proposition and give her what she wants?\n\n", false);
                     if (cost > 0) outputText("(Do you pay " + num2Text(cost) + " gems to fuck her?)", false);
                     else outputText("(Do you fuck her?)", false);
-                    doYesNo(edrynSexSelecter, telAdre.barTelAdre);
+                    doYesNo(edrynSexSelecter, TelAdre.barTelAdre);
                 }
                 // (HORSE TOO SMALL)
                 else {
                     outputText("\"<i>Ouch, is that all?  Sweetheart, you'll need to be a bit bigger if you want to play with me.  Why not go out and try some of the local delicacies, then maybe we can play, ok?</i>\"\n\n", false);
                     outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                     cheatTime(1);
-                    doNext(telAdre.barTelAdre);
+                    doNext(TelAdre.barTelAdre);
                     return;
                 }
             }
@@ -324,7 +324,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                     outputText("\"<i>Wow, that's huge!  Sweetheart, you'll need to be a bit smaller if you want to play with me.  Why not go out and find something to shrink it down to something a horse like me can handle, then maybe we can play, ok?</i>\"\n\n", false);
                     outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                     cheatTime(1);
-                    doNext(telAdre.barTelAdre);
+                    doNext(TelAdre.barTelAdre);
                     return;
                 }
                 // (cont Normal)
@@ -337,14 +337,14 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
                     outputText("gets you the ride of a lifetime.  So what do you say " + player.short + "?  Do you want to be my sex-toy?</i>\"\n\n", false);
                     outputText("She stands up and turns, exposing her exotic hind-end to you.  A drop of fluid slips from her folds and splatters under the table, reminding you just how wet this trick would be.  Do you really want to do her?", false);
                     if (cost > 0) outputText("\n\n(Do you pay " + num2Text(cost) + " gems to fuck her?)", false);
-                    doYesNo(edrynSexSelecter, telAdre.barTelAdre);
+                    doYesNo(edrynSexSelecter, TelAdre.barTelAdre);
                 }
                 // (rejected)
                 else {
                     outputText("\"<i>Wow, that's it?  I'm sorry but you'll have to be a bit bigger before you can play with me.  Why not try some of the local specialties and come back when you're a bit bigger?</i>\"\n\n", false);
                     outputText("You're a bit disappointed with the outcome. It doesn't look like you'll be getting any centaur tail tonight.", false);
                     cheatTime(1);
-                    doNext(telAdre.barTelAdre);
+                    doNext(TelAdre.barTelAdre);
                 }
             }
         }
@@ -376,7 +376,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         if (cost > player.gems) {
             outputText("You realize you can't afford to stay with the sexy centaur, and leave full of disappointment and arousal.", true);
             cheatTime(1);
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         // Pay gems and update sidebar
@@ -578,7 +578,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
 
             outputText("You spend the rest of the hour quietly chatting with Helia before giving her a friendly kiss goodbye and stepping away.", false);
         }
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
 
     // First Time -- Threesome
@@ -694,7 +694,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("<b>(Edryn will no longer speak with you.)</b>", false);
         flags[kFLAGS.EDRYN_NEVER_SEE_AGAIN] = 1;
         // Use the 1 hour cheat thinger
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
     // Pleased
     private pleasedbyPregdryn(): void {
@@ -777,7 +777,7 @@ export class Edryn extends TelAdreAbstractContent implements TimeAwareInterface 
             outputText("She looks down, eyes fixing on your crotch for a moment before she sighs, \"<i>Why did you get rid of your dick?  I like you a lot, but I don't really want to have sex with you like you are now.</i>\"\n\nEdryn leaves looking a little depressed.", false);
             // Bar menu?
             cheatTime(1);
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
             return;
         }
         // (MEETS SIZE REQUIREMENTS)

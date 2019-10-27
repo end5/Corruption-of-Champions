@@ -1,5 +1,5 @@
 
-export class BakeryScene extends TelAdreAbstractContent {
+export class BakeryScene {
     // LAST_EASTER_YEAR:int = 823;
 
     // [First time approach]
@@ -46,7 +46,7 @@ export class BakeryScene extends TelAdreAbstractContent {
         outputText("What do you do?");
         addButton(0, "Check Menu", checkBakeryMenu);
         addButton(1, "Talk", talkBakeryMenu);
-        addButton(9, "Leave", telAdre.telAdreMenu);
+        addButton(9, "Leave", TelAdre.telAdreMenu);
     }
 
     private checkBakeryMenu(): void {
@@ -424,7 +424,7 @@ export class BakeryScene extends TelAdreAbstractContent {
         menu();
         addButton(3, "Check Menu", checkBakeryMenu);
         addButton(0, "Offer Help", easterBakeSaleHelp);
-        addButton(4, "Leave", telAdre.telAdreMenu);
+        addButton(4, "Leave", TelAdre.telAdreMenu);
     }
 
     private easterBakeSaleHelp(): void {

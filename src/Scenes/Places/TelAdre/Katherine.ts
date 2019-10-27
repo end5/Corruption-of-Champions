@@ -1,5 +1,5 @@
 
-export class Katherine extends TelAdreAbstractContent implements TimeAwareInterface {
+export class Katherine implements TimeAwareInterface {
 
     // CAPACITY: 70
     // const KATHERINE_UNLOCKED:int = 398;
@@ -654,7 +654,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         }
         else {
             outputText("It looks like Kath is out somewhere.  She's probably still at the Wet Bitch.");
-            doNext(telAdre.telAdreMenu);
+            doNext(TelAdre.telAdreMenu);
         }
     }
 
@@ -664,12 +664,12 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         if (playerMaster())
             outputText("Yes [master].  Please come back soon.</i>”\n\n");
         else outputText("Alright " + player.short + " but next time I want to have some fun.</i>”\n\n");
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     private katherineApartmentEmptyLeave(): void {
         outputText("You lock up and walk back toward the market, looking for something else to do while you wait for Katherine to finish her shift.");
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     public katherineAtUrtas(): void {
@@ -678,7 +678,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             outputText("apartment.  A few knocks on the door and " + (hasCock() ? "a sheepish looking pair of herms" : "your sheepish lovers") + " answer the door.\n\n");
             outputText("“<i>" + player.short + ", speak of the devil,</i>” Urta says, sounding relieved.  “<i>For a second there I thought we had actually been loud enough that a neighbour came over to complain.</i>”\n\n");
             outputText("Kath says, “<i>We just finished cleaning up, so I was just about to head home for the night.  Where did you want to go?</i>”");
-            simpleChoices("To Kath's", dateGotoKaths, "To the Lake", dateKathBath, "To the Bar", dateGotoBar, "", null, "Leave", telAdre.telAdreMenu);
+            simpleChoices("To Kath's", dateGotoKaths, "To the Lake", dateKathBath, "To the Bar", dateGotoBar, "", null, "Leave", TelAdre.telAdreMenu);
         }
         else { // At Urta's House
             switch (rand(4)) {
@@ -686,7 +686,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
                     outputText("house.  Letting yourself in with the spare key you sneak upstairs and peek into the master bedroom.\n\n");
                     outputText("You can smell the sex from the doorway.  On the bed you can see both your girls, " + (hasCock() ? "each bloated with the other's cum" : "Urta's horsecock still buried inside Kath; Kath's belly still bloated with Urta's seed") + ".  They're hugging each other tight and their tails are moving back and forth lazily.\n\n");
                     outputText("You could say hello or you could just let yourself out quietly.");
-                    simpleChoices("Say Hello", urtaPlusKathCuddle, "", null, "", null, "", null, "Leave", telAdre.telAdreMenu);
+                    simpleChoices("Say Hello", urtaPlusKathCuddle, "", null, "", null, "", null, "Leave", TelAdre.telAdreMenu);
                     break;
                 case 1:
                     outputText("house.  Letting yourself in with the spare key you sneak upstairs and peek into the master bedroom.\n\n");
@@ -746,7 +746,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         }
         outputText("“<i>I'm feeling really good right now " + playerText() + ", but if you want to do something, I'm game.</i>”\n\n");
         outputText("Urta laughs and says, “<i>Oh yeah, and leave me with this mess, huh?</i>”  She scoops a little cum up from the bed and rubs it between her fingers.  “<i>I suppose I could take care of it tomorrow morning if it means you get a good dose of pussy, " + player.short + ".</i>”");
-        simpleChoices("Back to Kath's", dateGotoKaths, "To the Lake", dateKathBath, "Back to the Bar", dateGotoBar, "", null, "Leave", telAdre.telAdreMenu);
+        simpleChoices("Back to Kath's", dateGotoKaths, "To the Lake", dateKathBath, "Back to the Bar", dateGotoBar, "", null, "Leave", TelAdre.telAdreMenu);
     }
 
     public katherineOnDuty(): void {
@@ -777,7 +777,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
     private katherineOnDutyLeave(): void {
         outputText("It’s probably best that you don’t get Kath in trouble.  You bid her farewell, promising that you’ll come and see her once she’s off duty.\n\n");
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     /* First, some assumptions I’ve made:
@@ -843,14 +843,14 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         // One menu to rule them all (so the code never gets confused about what it should go back to
         if (flags[kFLAGS.KATHERINE_UNLOCKED] < 4) { // Behind Oswald's pawn shop
             // [Sex] [Talk] [Appearance] [Give Item]
-            simpleChoices("Sex", katherineSex, "Talk", talkToKatherine, "Appearance", katherinesAppearance, "Give Item", giveKatherineAnItem, "Back", telAdre.telAdreMenu);
+            simpleChoices("Sex", katherineSex, "Talk", talkToKatherine, "Appearance", katherinesAppearance, "Give Item", giveKatherineAnItem, "Back", TelAdre.telAdreMenu);
         }
         else if (isAt(KLOC_KATHS_APT)) {
             choices("Appearance", katherinesAppearance, "Sex", katherineSex, "Give Item", giveKatherineAnItem, "", null, "Leave", katherineApartmentLeave,
                 "Date", katherineDate, "Talk", talkToKatherine, "", null, "", null, "", null);
         }
         else {
-            choices("Drink", (pregSize() == 0 ? katherineDrinkUp : null), "Sex", katherineSex, "", null, "", null, "Leave", telAdre.telAdreMenu,
+            choices("Drink", (pregSize() == 0 ? katherineDrinkUp : null), "Sex", katherineSex, "", null, "", null, "Leave", TelAdre.telAdreMenu,
                 "Date", katherineDate, "Talk", talkToKatherine, "", null, "", null, "", null);
         }
     }
@@ -895,7 +895,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("You click your tongue reflexively.  Politely thanking Katherine for the talk, you turn and walk away.");
         // Player returns to Tel'Adre Menu Screen or to camp, if code insists on it
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // Her History
@@ -915,7 +915,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("You're skeptical, but reason there's nothing you can do about it right now.  Politely thanking Katherine for the talk, you turn and walk away.");
         // Player returns to Tel'Adre Menu Screen or to camp, if code insists on it
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // Gang
@@ -961,7 +961,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("Politely thanking Katherine for the talk, you turn and walk away.\n\n");
         // Player returns to Tel'Adre Menu Screen or to camp, if code insists on it
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // Dog Cock
@@ -983,7 +983,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("Politely thanking Katherine for the chat, you turn and walk away.");
         // Player returns to Tel'Adre Menu Screen or to camp, if code insists on it
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // Vagrancy
@@ -996,7 +996,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("You can't help wondering how much of that is true and how much of that is prejudice.  Politely thanking Katherine for the talk, you turn and walk away.");
         // Player returns to Tel'Adre Menu Screen or to camp, if code insists on it
         flags[kFLAGS.KATHERINE_TRAINING] = 1; // Now you can talk about Kath getting a job
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // Love & Lust
@@ -1012,7 +1012,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
 
         outputText("Politely thanking Katherine for the talk, you turn and walk away.");
         // Player returns to Tel'Adre Menu Screen or to camp, if code insists on it
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     private talkGangs(): void {
@@ -2887,7 +2887,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
             player.consumeItem(consumables.PINKEGG);
             player.consumeItem(consumables.REDUCTO);
             addSubmissive(KBIT_SUB_REM_BALLS); // Have removed her balls at least once
-            doNext(telAdre.telAdreMenu);
+            doNext(TelAdre.telAdreMenu);
         }
     }
 
@@ -4929,7 +4929,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("\n\nYou race to the nearest intersection and call out.  A tall lizard morph in a watch uniform pushes through a throng of people and asks you, “<i>What seems to be the problem?</i>”");
         outputText("\n\nYou explain what you saw and lead him back to the mouth of the alleyway.  It’s empty.  The lizard takes down your description of the situation and thanks you for doing the right thing.  He says, “<i>We’ve had a few similar reports in the past, though strangely it’s always the same woman.  I’ll get the description back to the Watch houses and all the officers will keep a sharp eye open.</i>”");
         outputText("\n\nFeeling you’ve done a good deed today you press on.");
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // Intervene:
@@ -5016,7 +5016,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         outputText("You decide you’re better off not getting involved with some weird sort of hermaphroditic chimera.  She's obviously more trouble than she's worth and best avoided.");
         outputText("\n\nPutting it out of your mind you walk deeper into the city.  You’ve got things to take care of.");
         flags[kFLAGS.KATHERINE_RANDOM_RECRUITMENT_DISABLED] = 1;
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     private helpKathAfterInterruptu(): void {
@@ -5043,7 +5043,7 @@ export class Katherine extends TelAdreAbstractContent implements TimeAwareInterf
         clearOutput();
         outputText("You decide you’re better off not getting involved.  After all, who knows what she’s done?  She’s obviously a stray and could have stolen something from one of the others.  Heck, with all the perverts you’ve seen in this land she could have a rape fetish.  Surely she would scream to attract the guard if she were in real trouble.");
         outputText("\n\nPutting it out of your mind you walk deeper into the city.  You’ve got things to take care of.");
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // Second Ambush - First time with Katherine

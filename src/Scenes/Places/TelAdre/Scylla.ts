@@ -1,5 +1,5 @@
 
-export class Scylla extends TelAdreAbstractContent {
+export class Scylla {
 
     public static SCYLLA_NOT_PRESENT: number = 0;
     public static SCYLLA_ACTION_FIRST_TALK: number = 1;
@@ -595,7 +595,7 @@ export class Scylla extends TelAdreAbstractContent {
         if (player.cor > 30) dynStats("cor", -1);
         outputText("You just don't feel right about interrupting and opt to take the high road, leaving them to their counseling. Nearly-forgotten warmth fills your chest and you smile with pride, despite yourself. You came here as a Champion to purge corruption and- despite every temptation- you acted like a good friend ought to. You walk back downstairs, with your head held high, and order a drink.", false);
         cheatTime(1);
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
 
     // [Take Advantage]	(First time and Repeat)
@@ -1567,7 +1567,7 @@ export class Scylla extends TelAdreAbstractContent {
         // [Feed] [Leave]
         menu();
         addButton(0, "Feed", feedScyllaSomeJizzDatJunkieNeedsIt);
-        addButton(4, "Back", telAdre.barTelAdre);
+        addButton(4, "Back", TelAdre.barTelAdre);
     }
 
     // [Feed]

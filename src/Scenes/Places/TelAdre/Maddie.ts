@@ -1,5 +1,5 @@
 
-export class Maddie extends TelAdreAbstractContent {
+export class Maddie {
     public constructor() {
 
     }
@@ -128,7 +128,7 @@ export class Maddie extends TelAdreAbstractContent {
         outputText("", true);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] = -2;
         outputText("You return to a strange sight indeed.  Urta and Edryn are leading a procession of over thirty city guards, arranged in a loose circle around the cupcake-girl.  Her comparatively tiny, tin-foil fez is gone, along with most of her blue-iced 'armor'.  She looks weak, pathetic, and beaten as she's prodded with spears and escorted from the city, never to return again.  Vanilla-scented tears stain the pavement behind her, leaving a trail the whole way back to the bakery.\n\n", false);
-        doNext(telAdre.telAdreMenu);
+        doNext(TelAdre.telAdreMenu);
     }
 
     // [TRY TO TALK]

@@ -1,5 +1,5 @@
 
-export class KatherineThreesome extends TelAdreAbstractContent {
+export class KatherineThreesome {
 
     public constructor() { }
 

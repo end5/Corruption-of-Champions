@@ -8,7 +8,7 @@
 //  BROOKE_MET_TODAY:int = 921;
 //  BROOKE_GRUMPS_ABOUT_TA:int = 922;
 
-export class Brooke extends TelAdreAbstractContent {
+export class Brooke {
     // Introduction
     // Go to the showers; no Brooke
     // Second scene
@@ -1153,7 +1153,7 @@ export class Brooke extends TelAdreAbstractContent {
         outputText("Well, whatever.  You came here looking for Heckel, and she's not here, as far as you can tell.  You turn around and leave the gym, without investigating the cause of the commotion.");
         // Return to Tel'Adre, no time loss
         menu();
-        addButton(0, "Next", telAdre.telAdreMenu);
+        addButton(0, "Next", TelAdre.telAdreMenu);
     }
 
     // [=Butterfly=]

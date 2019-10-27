@@ -1,5 +1,5 @@
 
-export class Rubi extends TelAdreAbstractContent {
+export class Rubi {
     public constructor() {
 
     }

@@ -1,5 +1,5 @@
 
-export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface {
+export class Niamh implements TimeAwareInterface {
     // const MET_NIAMH:int = 446;
     // const GOT_NIAMH_BEER:int = 447;
     // const TALKED_NIAMH:int = 448;
@@ -209,7 +209,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         outputText("\n\n");
         flags[kFLAGS.MET_NIAMH]++;
         // PC gains 1x BCB
-        inventory.takeItem(consumables.BC_BEER, telAdre.barTelAdre);
+        inventory.takeItem(consumables.BC_BEER, TelAdre.barTelAdre);
     }
 
     // Talk
@@ -247,7 +247,7 @@ export class Niamh extends TelAdreAbstractContent implements TimeAwareInterface 
         clearOutput();
         outputText("You decide that you don't really want to talk to this strange cat-girl and, as politely as possible, excuse yourself.");
         // Player returns to Wet Bitch menu
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
 
     // Black Cat Beer
