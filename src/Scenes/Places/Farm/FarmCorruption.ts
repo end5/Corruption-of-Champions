@@ -3,10 +3,10 @@
  * ...
  * @author Gedan
  */
-export class FarmCorruption extends AbstractFarmContent {
+export class FarmCorruption {
 
     public whitneySprite(): void {
-        farm.whitneySprite();
+        Farm.whitneySprite();
     }
 
     public corruptFollowers(): number {
@@ -727,7 +727,7 @@ export class FarmCorruption extends AbstractFarmContent {
             else addButton(0, "Whitney", dogeCorruptedMissionComplete);
         }
 
-        if (player.effects.findByType(StatusAffects.MarbleRapeAttempted) < 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0 && player.effects.findByType(StatusAffects.Marble) >= 0 && flags[kFLAGS.MARBLE_WARNING] == 0) addButton(1, "Marble", farm.meetMarble);
+        if (player.effects.findByType(StatusAffects.MarbleRapeAttempted) < 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0 && player.effects.findByType(StatusAffects.Marble) >= 0 && flags[kFLAGS.MARBLE_WARNING] == 0) addButton(1, "Marble", Farm.meetMarble);
 
         if (player.effects.findByType(StatusAffects.Kelt) >= 0 && player.effects.findByType(StatusAffects.KeltOff) < 0) {
             if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(2, "Kelly", Kelly.breakingKeltOptions);
@@ -740,11 +740,11 @@ export class FarmCorruption extends AbstractFarmContent {
                 outputText("\n\n<b>Your " + nippleDescription(player, 0) + "s are currently too sore to be milked.  You'll have to wait a while.</b>", false);
             }
 
-            addButton(3, "Get Milked", farm.getMilked);
+            addButton(3, "Get Milked", Farm.getMilked);
         }
 
         if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cocks.length > 0) {
-            addButton(4, "Milk Cock", farm.cockPumping);
+            addButton(4, "Milk Cock", Farm.cockPumping);
         }
 
         addButton(5, "Farm", corruptingTheFarmExplore);
@@ -759,8 +759,8 @@ export class FarmCorruption extends AbstractFarmContent {
     private corruptingTheFarmExplore(): void {
         menu();
 
-        addButton(0, "Explore", farm.exploreFarm);
-        addButton(1, "Work", farm.workFarm);
+        addButton(0, "Explore", Farm.exploreFarm);
+        addButton(1, "Work", Farm.workFarm);
 
         if (flags[kFLAGS.FARM_CORRUPTION_DAYS_SINCE_LAST_PAYOUT] >= 7 || flags[kFLAGS.FARM_SUCCUMILK_STORED] > 0 || flags[kFLAGS.FARM_INCUDRAFT_STORED] > 0 || flags[kFLAGS.FARM_EGG_STORED] > 0 || flags[kFLAGS.FARM_CONTRACEPTIVE_STORED] > 0) addButton(2, "Collect", collectTheGoodies);
 

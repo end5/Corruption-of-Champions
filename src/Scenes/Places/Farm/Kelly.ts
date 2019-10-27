@@ -1,5 +1,5 @@
 
-export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
+export class Kelly implements TimeAwareInterface {
 
     // const KELT_BREAK_LEVEL:int = 725;
     // const KELLY_CUNT_TYPE:int = 726;
@@ -80,7 +80,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             if (!player.cocks.length > 0) {
                 outputText("You can't keep trying to break Kelt without the proper tool to do it with.");
                 menu();
-                addButton(0, "Next", farm.farmExploreEncounter);
+                addButton(0, "Next", Farm.farmExploreEncounter);
                 return;
             }
             resistKeltsBSBreakHimIntro();
@@ -103,14 +103,14 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             if (!(player.hasItem(consumables.SUCMILK, 15) || (player.hasItem(consumables.SUCMILK, 10) && hasPinkEgg()) || (player.hasItem(consumables.P_S_MLK, 10) && hasPinkEgg()) || player.hasItem(consumables.P_S_MLK, 15))) {
                 outputText(" Unfortunately, you don't have anything that could be useful to tame his arrogant maleness.  You want items that would make his disgracious horsecock and balls shrink.  A nice set of breasts on his human chest would be fine, too.  You know you're going to need A LOT of such items - or very potent ones.");
                 menu();
-                addButton(0, "Next", farm.farmExploreEncounter);
+                addButton(0, "Next", Farm.farmExploreEncounter);
             }
             else {
                 outputText("\n\nDo you take his maleness down and teach him the lesson he deserves?");
                 // Yes/Not Yet/Never
                 menu();
                 addButton(0, "Yes", breakKeltGo);
-                addButton(1, "Not Yet", farm.farmExploreEncounter);
+                addButton(1, "Not Yet", Farm.farmExploreEncounter);
                 addButton(2, "Never", neverBreakKeltIntoKelly);
             }
         }
@@ -122,7 +122,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
                 outputText("\n\nYou'd gladly teach him another lesson so he can keep his true gender and learn his place, but you don't have anything to turn him female again.  You should fetch appropriate items to begin the 'lesson'.</i>\"");
                 // back to farm]
                 menu();
-                addButton(0, "Next", farm.farmExploreEncounter);
+                addButton(0, "Next", Farm.farmExploreEncounter);
                 return;
             }
             menu();
@@ -135,7 +135,7 @@ export class Kelly extends AbstractFarmContent implements TimeAwareInterface {
             if (!(player.hasItem(consumables.SUCMILK, 5) || player.hasItem(consumables.P_S_MLK, 5))) {
                 outputText("You must acquire enough Succubi Milk to remove any male remnants off Kelly's body before confronting 'him' again.");
                 menu();
-                addButton(0, "Next", farm.farmExploreEncounter);
+                addButton(0, "Next", Farm.farmExploreEncounter);
                 return;
             }
             outputText("\n\nYou casually approach the centaur, shaking a vial of Succubi milk with a broad grin; your intentions are clear.  Kelt whinnies, his voice higher than ever, \"<i>Not again!</i>\"  A puff of a very feminine odor reaches your nostrils - nothing at all like the masculine scent he usually exudes.  Is he coming to like this?");

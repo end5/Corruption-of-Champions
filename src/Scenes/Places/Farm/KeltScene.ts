@@ -1,5 +1,5 @@
 
-export class KeltScene extends AbstractFarmContent {
+export class KeltScene {
 
 	/*Kelt the Centaur Archer
 A Corruption of Champions Event by Ourakun
