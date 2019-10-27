@@ -1,5 +1,5 @@
 
-export class TamainsDaughtersScene implements TimeAwareInterface {
+export class TamanisDaughtersScene implements TimeAwareInterface {
 
     // New Status:
     // +Tamani's Husband – (Still need too big loss scene and centaur version)

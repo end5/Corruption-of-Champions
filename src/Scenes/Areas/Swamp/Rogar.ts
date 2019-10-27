@@ -1,10 +1,6 @@
 
 export class Rogar {
 
-    private get telAdre(): TelAdre {
-        return telAdre;
-    }
-
 	/*Ro'gar encounter in the swamp; Ro'gar phase flag = 0 (edited)
 ((Second Encounter, Ro'gar phase = 1)) (edited)
 ((Third encounter; Ro'gar phase = 2)) (edited)
@@ -353,7 +349,7 @@ export class Rogar {
             }
 
             // return to bar menu
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
         }
         // ((androgynous or masculine and breasts <= A-cup))
         else {
@@ -438,7 +434,7 @@ export class Rogar {
         else if ((player.breasts.biggestTitSize() >= 2) && flags[kFLAGS.ROGAR_WARNING] == 1) {
             outputText("Ro'gar the orc is here drinking again, but as you catch his eye, a pained expression flashes across his face as he looks over your form.  It's clear he doesn't relish the prospect of talking to you right now, but knowing him, he's too polite to say so.  The wind spills from your sails and your icebreaker slips from your mind - answering him with a simple glance of resignation is the most you can manage.  He gives you a weak smile and returns to his drink.", false);
             // return to bar menu
-            doNext(telAdre.barTelAdre);
+            doNext(TelAdre.barTelAdre);
         }
         // (andro or masculine with tits <= A)
         else {
@@ -502,7 +498,7 @@ export class Rogar {
         spriteSelect(86);
         outputText("You smile at the orc, but tell him that you're not really in the mood to hang out right now.  He looks crestfallen, but nods at you.  \"<i>Well, I understan'.  I'll be seein' ya later, then.</i>\"", false);
         // Bar menu!
-        doNext(telAdre.barTelAdre);
+        doNext(TelAdre.barTelAdre);
     }
 
     // (([Get Anal], Scenario 1a: give up the buttcherry (buttvirgins only)))

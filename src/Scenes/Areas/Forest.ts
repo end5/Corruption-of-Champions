@@ -44,7 +44,7 @@ export class Forest {
         // Tamani 20% encounter rate
         if (flags[kFLAGS.TAMANI_TIME_OUT] == 0 && rand(5) == 0 && player.gender > 0 && (player.cocks.length > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
             if (player.cocks.length > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
-                TamaniDaughtersScene.encounterTamanisDaughters();
+                TamanisDaughtersScene.encounterTamanisDaughters();
             }
             else
                 TamaniScene.encounterTamani();
@@ -192,7 +192,7 @@ export class Forest {
                 // Tamani 25% of all goblin encounters encounter rate
                 if (rand(4) <= 0 && flags[kFLAGS.TAMANI_TIME_OUT] == 0 && player.gender > 0 && (player.cocks.length > 0 || player.keyItems.has("Deluxe Dildo") < 0)) {
                     if (player.cocks.length > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
-                        TamaniDaughtersScene.encounterTamanisDaughters();
+                        TamanisDaughtersScene.encounterTamanisDaughters();
                     }
                     else
                         TamaniScene.encounterTamani();
