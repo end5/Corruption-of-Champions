@@ -1,5 +1,5 @@
 
-export class Marae extends AbstractBoatContent implements TimeAwareInterface {
+export class Marae implements TimeAwareInterface {
 
     public constructor() {
         CoC.timeAwareClassAdd(this);

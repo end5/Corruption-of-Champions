@@ -1,5 +1,5 @@
 
-export class SharkGirlScene extends AbstractBoatContent {
+export class SharkGirlScene {
 
 	/*Codex: Shark girls and tiger shark girls
 
