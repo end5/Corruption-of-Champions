@@ -68,7 +68,7 @@ export class Owca {
     private dontGoToZeVillage(): void {
         clearOutput();
         flags[kFLAGS.DECLINED_TO_VISIT_REBECCS_VILLAGE]++;
-        camp.returnToCampUseOneHour();
+        Camp.returnToCampUseOneHour();
     }
     // First plea (Z)
     private agreeToFollowRebecFirstTime(): void {
@@ -145,7 +145,7 @@ export class Owca {
         // [Attitude is set to 50]
         if (flags[kFLAGS.OWCAS_ATTITUDE] > 5) flags[kFLAGS.OWCAS_ATTITUDE] -= 5;
         flags[kFLAGS.TIMES_REFUSED_REBECCS_OFFER]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Accept plea (Z)
     private acceptRebeccsPlea(firstTime: boolean = false, sacrificed: boolean = false): void {
@@ -334,7 +334,7 @@ export class Owca {
         dynStats("str", -2, "tou", -2, "spe", -1, "int", -1, "lib", 1, "sen", 1, "lus=", 100, "cor", 3);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
         // PC is redirected to camp, next morning. No nightly camp scenes or dreams.
     }
 
@@ -573,29 +573,29 @@ export class Owca {
             tavern = owcaTavern;
         }
         // [Pit][Herds][Rebecc][Tavern]
-        simpleChoices("Pit", pit, "Herds", herd, "Rebecc", rebeccMenu, "Tavern", tavern, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Pit", pit, "Herds", herd, "Rebecc", rebeccMenu, "Tavern", tavern, "Leave", Camp.returnToCampUseOneHour);
     }
     // Tavern (Z)
     public owcaTavern(): void {
         clearOutput();
         outputText("The tavern is nice and cozy; there are a few tables and chairs scattered around in no ordered pattern, and most clients here appear to belong to the same species.  By the crude wooden bar, you see a list of all the current drinks on sale:\n<i>");
         // SheepMk
-        let milk: () => void = createCallBackFunction(owcaBuySetup, consumables.SHEEPMK);
+        let milk: () => void = createCallBackFunction(owcaBuySetup, ConsumableLib.SHEEPMK);
         outputText("\nSheep Milk Bottle: " + (180 - flags[kFLAGS.OWCAS_ATTITUDE]) + " gems");
         if ((180 - flags[kFLAGS.OWCAS_ATTITUDE]) > player.gems) milk = null;
 
-        let goblin: () => void = createCallBackFunction(owcaBuySetup, consumables.GOB_ALE);
+        let goblin: () => void = createCallBackFunction(owcaBuySetup, ConsumableLib.GOB_ALE);
         outputText("\nGoblin Ale: " + (60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE] / 2)) + " gems");
         if ((60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE] / 2)) > player.gems) goblin = null;
 
-        let brew: () => void = createCallBackFunction(owcaBuySetup, consumables.BROBREW);
+        let brew: () => void = createCallBackFunction(owcaBuySetup, ConsumableLib.BROBREW);
         if (rand(10) > flags[kFLAGS.OWCAS_ATTITUDE] / 10) {
             outputText("\nBro Brew: 2000 gems");
             if ((2000) > player.gems) brew = null;
         }
         else brew = null;
 
-        let cum: () => void = createCallBackFunction(owcaBuySetup, consumables.MINOCUM);
+        let cum: () => void = createCallBackFunction(owcaBuySetup, ConsumableLib.MINOCUM);
         outputText("\nMinotaur Cum: " + (300 - flags[kFLAGS.OWCAS_ATTITUDE]) + " gems");
         if ((300 - flags[kFLAGS.OWCAS_ATTITUDE]) > player.gems) cum = null;
         outputText("</i>");
@@ -603,9 +603,9 @@ export class Owca {
     }
 
     private owcaBuySetup(item: ItemType): void {
-        if (item == consumables.SHEEPMK) buyOwcaShit(item, (180 - flags[kFLAGS.OWCAS_ATTITUDE]));
-        else if (item == consumables.GOB_ALE) buyOwcaShit(item, (60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE] / 2)));
-        else if (item == consumables.BROBREW) buyOwcaShit(item, 2000);
+        if (item == ConsumableLib.SHEEPMK) buyOwcaShit(item, (180 - flags[kFLAGS.OWCAS_ATTITUDE]));
+        else if (item == ConsumableLib.GOB_ALE) buyOwcaShit(item, (60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE] / 2)));
+        else if (item == ConsumableLib.BROBREW) buyOwcaShit(item, 2000);
         else buyOwcaShit(item, (300 - flags[kFLAGS.OWCAS_ATTITUDE]));
     }
 
@@ -614,7 +614,7 @@ export class Owca {
         player.gems -= price;
         statScreenRefresh();
         outputText("The bartender hands you a bottle and grabs your gems before attending other clients, leaving you to your own business.\n\n");
-        inventory.takeItem(bleh, owcaTavern);
+        Inventory.takeItem(bleh, owcaTavern);
     }
 
     // Herds (Z)
@@ -629,9 +629,9 @@ export class Owca {
         // [if attitude > 70]
         if (flags[kFLAGS.OWCAS_ATTITUDE] > 70) {
             outputText("\n\nThe villagers thank you for your hard work and one of them hands you a bottle of sheep milk.  \"<i>'Tis good for your health.  Don't worry, it won't... mutate you.</i>\"\n\n");
-            inventory.takeItem(consumables.SHEEPMK, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.SHEEPMK, Camp.returnToCampUseOneHour);
         }
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pit (Z)
@@ -694,7 +694,7 @@ export class Owca {
         // Lust +30, Corr -2, Lib +1, slimefeed
         dynStats("lib", 1, "lus", 30, "cor", -2);
         player.slimeFeed();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Rebecc Rape scene (for discerning penises) (Z)
     private rapeRebecc(outside: boolean = false): void {
@@ -754,7 +754,7 @@ export class Owca {
 
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Desperate Villagers (Z)
@@ -872,7 +872,7 @@ export class Owca {
         flags[kFLAGS.REBECCS_LAST_PLEA] = 1;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
     // Rebecc's Last Plea (Z)
     private rebeccsLastPlea(): void {
@@ -893,7 +893,7 @@ export class Owca {
         // [Owca Village removed from "Places" menu.]
         outputText("\n\n(Owca has been removed from the places menu.)");
         flags[kFLAGS.OWCA_UNLOCKED] = -1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Option: Face Down the World (Z)
     private faceDownHordes(): void {

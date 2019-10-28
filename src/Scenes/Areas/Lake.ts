@@ -94,7 +94,7 @@ export class Lake {
         }
         // Pre-emptive chance of finding the boat
         else if (select == 11) {
-            boat.discoverBoat();
+            Boat.discoverBoat();
         }
         // Meet Izma every 8 attempts
         else if (select == 5) {
@@ -103,7 +103,7 @@ export class Lake {
         // Chance of dick-dragging! 10% + 10% per two foot up to 30%
         else if (select == 8) {
             // True sets to use lake scene!
-            forest.bigJunkForestScene(true);
+            Forest.bigJunkForestScene(true);
         }
         else if (select == 4) {
             // Chance of seeing ooze convert goo!
@@ -170,7 +170,7 @@ export class Lake {
                 outputText("  You bet you could cover the same distance even faster next time.\n", false);
                 dynStats("spe", .75);
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else if (select == 1) {
             // No boat, no kaiju
@@ -190,7 +190,7 @@ export class Lake {
                 outputText("into daydreams of raunchy perverted sex, flooding your groin with warmth.", false);
                 dynStats("lus", (player.cor / 10 + player.lib / 10));
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
 
         }
         // Find whitney or equinum
@@ -209,10 +209,10 @@ export class Lake {
                         findLakeLoot();
                     }
                     // If you havent met whitney enough to know the farm....
-                    else farm.farmExploreEncounter();
+                    else Farm.farmExploreEncounter();
                 }
                 // If you havent met whitney, you can find the farm....
-                else farm.farmExploreEncounter();
+                else Farm.farmExploreEncounter();
             }
         }
         else if (select == 3) {
@@ -223,7 +223,7 @@ export class Lake {
 
                 // (increase player lust from the sights they saw)
                 dynStats("lus", 5);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             FetishCultistScene.fetishCultistEncounter();
@@ -240,11 +240,11 @@ export class Lake {
         clearOutput();
         if (rand(2) == 0) {
             outputText("You find a long and oddly flared vial half-buried in the sand.  Written across the middle band of the vial is a single word: 'Equinum'.\n");
-            inventory.takeItem(consumables.EQUINUM, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.EQUINUM, Camp.returnToCampUseOneHour);
         }
         else {
             outputText("You find an odd, fruit-bearing tree growing near the lake shore.  One of the fruits has fallen on the ground in front of you.  You pick it up.\n");
-            inventory.takeItem(consumables.W_FRUIT, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.W_FRUIT, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -261,13 +261,13 @@ export class Lake {
         }
         outputText(" light.  Immediately it flows into your skin, glowing through your arm as if it were translucent.  It rushes through your shoulder and torso, down into your pregnant womb.  The other lights vanish.");
         player.effects[player.effects.findByType(StatusAffects.Eggs)].value1 = eggType; // Value 1 is the egg type. If pregnant with OviElixir then StatusAffects.Eggs must exist
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private eggChooseEscape(): void {
         clearOutput();
         outputText("You throw yourself into a roll and take off, leaving the ring of lights hovering in the distance behind you.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Just want to do a quick Ottergirl event submission after you mentioned it!
@@ -430,7 +430,7 @@ export class Lake {
         outputText("\n\nYou take a minute to recover before doing the same.  ");
         player.orgasm();
         dynStats("sen", -1);
-        inventory.takeItem(consumables.FISHFIL, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.FISHFIL, Camp.returnToCampUseOneHour);
     }
 
     // For Chicks
@@ -488,7 +488,7 @@ export class Lake {
 
         player.orgasm();
         dynStats("sen", -1);
-        inventory.takeItem(consumables.FISHFIL, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.FISHFIL, Camp.returnToCampUseOneHour);
     }
 
     // For Pansies
@@ -497,7 +497,7 @@ export class Lake {
         outputText("You shake your head and explain you can't.  She simply shrugs, \"<i>Ain't no skin off my back.</i>\"");
 
         outputText("\n\nThe two of you sit in silence for a little while.  It doesn't feel like an awkward silence, just a serene, relaxing void of noise.  The gentle lapping of the water almost puts you to sleep.  Eventually, you stand, say your goodbyes and leave.  As you're leaving, Callu shouts, \"<i>Come round any time, ya hear?</i>\"  You nod absently, then make your way back to camp.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // For Fatties
@@ -510,6 +510,6 @@ export class Lake {
         outputText("\n\nYou thank Callu for the food and take your leave.  ");
 
         // (You have gained Fish Fillet!)
-        inventory.takeItem(consumables.FISHFIL, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.FISHFIL, Camp.returnToCampUseOneHour);
     }
 }

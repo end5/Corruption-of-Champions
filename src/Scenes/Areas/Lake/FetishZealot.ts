@@ -162,9 +162,9 @@ export class FetishZealot extends Monster {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 5;
         this.gems = 5 + rand(10);
-        this.drop = new WeightedDrop().add(armors.C_CLOTH, 1)
-            .add(consumables.L_DRAFT, 4)
-            .add(weapons.L_DAGGR, 1)
+        this.drop = new WeightedDrop().add(ArmorLib.C_CLOTH, 1)
+            .add(ConsumableLib.L_DRAFT, 4)
+            .add(WeaponLib.L_DAGGR, 1)
             .add(null, 4);
         this.special1 = zealotSpecial1;
         this.special2 = zealotSpecial2;

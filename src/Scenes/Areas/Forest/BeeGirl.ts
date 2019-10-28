@@ -138,7 +138,7 @@ export class BeeGirl extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 4;
         this.gems = rand(15) + 1;
-        this.drop = new WeightedDrop().add(consumables.BEEHONY, 4).addMany(1, consumables.OVIELIX, consumables.W__BOOK, useables.B_CHITN, null);
+        this.drop = new WeightedDrop().add(ConsumableLib.BEEHONY, 4).addMany(1, ConsumableLib.OVIELIX, ConsumableLib.W__BOOK, UseableLib.B_CHITN, null);
         this.antennae = ANTENNAE_BEE;
         this.wingType = WING_TYPE_BEE_LIKE_SMALL;
         this.tailType = TAIL_TYPE_BEE_ABDOMEN;

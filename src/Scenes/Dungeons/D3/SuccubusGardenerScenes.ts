@@ -162,7 +162,7 @@ export class SuccubusGardenerScenes {
         flags[kFLAGS.D3_GARDENER_DEFEATED] = GARDENER_KILLED;
 
         menu();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private leaveHer(): void {
@@ -172,7 +172,7 @@ export class SuccubusGardenerScenes {
         flags[kFLAGS.D3_GARDENER_DEFEATED] = GARDENER_LEFT;
 
         menu();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     public surrenderToTheGardener(hpVictory: boolean = false): void {

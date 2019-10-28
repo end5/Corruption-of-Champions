@@ -458,7 +458,7 @@ export class MarbleScene implements TimeAwareInterface {
         // player.effects.create(StatusAffects.No_More_Marble,0,0,0,0);
         flags[kFLAGS.MARBLE_WARNING] = 1;
         outputText("Considering the way the cow-girl lovingly cradles her hefty breasts as if they were the only things in the world, you decide you'd rather not get involved with her right now.  You inform her politely that Whitney must have been mistaken - there's nothing you can think to do that would help.  \"<i>Oh,</i>\" she says, surprised... and also nonplussed when she sees your reaction to her swollen jugs.  \"<i>Odd, but okay.  I guess I'll just lie back down then while you show yourself out.</i>\"");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Initial non-friends state (Z)
@@ -475,7 +475,7 @@ export class MarbleScene implements TimeAwareInterface {
         spriteSelect(41);
         outputText("Smiling politely and just as insincerely as Marble, you beg her pardon and excuse yourself.");
         // end event, initial non-friends event can repeat in future explorations
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Leave forever (Z)
     private leaveNonFriendsMarble4EVERRRR(): void {
@@ -486,7 +486,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("Answering the cow-girl with a blank look, you shake your head and walk away, resolving to avoid Marble from now on.");
         // Marble is removed from the game
         // end event
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private apologizetoWalkingTitsIMEANMARBLE(): void {
@@ -516,7 +516,7 @@ export class MarbleScene implements TimeAwareInterface {
         fatigue(-50);
         // increase PC lust (5+ lib/10), health (100), and lib (0.2), reduce fatigue by (50)
         // end event
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Pick a Fight (Z)
     private pickAFight(): void {
@@ -542,7 +542,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("The hell you will... the truth is the truth no matter how many talking hammers show up.  Catharsis completed, you leave the farm and its cows behind.");
         // makes the battle available as the next Marble encounter, as if PC had raped her
         flags[kFLAGS.MARBLE_WARNING] = 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // New After-Battle shiz: (Z)
     public marbleFightWin(): void {
@@ -705,7 +705,7 @@ export class MarbleScene implements TimeAwareInterface {
         marbleStatusChange(30, 10);
         // (apply the stat effect 'Marble's Milk' to the player)
         applyMarblesMilk();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chose caress)
@@ -715,7 +715,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("You offer to gently rub her breasts, saying it should be a lot less painful than the milking machine's sucking.  \"<i>Oh no,</i>\" she retorts, \"<i>nothing is more wonderful than being sucked, but right now I guess I could use a break and get a good rub.</i>\"  You move around behind her and reach up under her arms, firmly grasping her breasts.  She gasps sharply at first, but as you start to gently massage and caress them, she lets out a sigh and starts breathing deeply.  You begin to feel milk leaking out onto your hands as you rub her.  \"<i>This is nice,</i>\" she says, \"<i>not as good as being suckled, but nice.</i>\"  After a few minutes of gently massaging her breasts, she pulls your hands off of them and turns to you. \"<i>Thanks,</i>\" she says, \"<i>I'm still a little sore, but thank you for your touch, sweetie.  Feel free to come back later; I'll be happy to visit with you any time.</i>\"  Just before you leave, you notice that Marble is rubbing her breasts the same way you were, a slight smile on her face.", false);
         dynStats("lus", 15);
         marbleStatusChange(5, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player chose suckle)
     private suckleMarble(): void {
@@ -731,7 +731,7 @@ export class MarbleScene implements TimeAwareInterface {
         // (apply the stat effect 'Marble's Milk' to the player)
         applyMarblesMilk();
         dynStats("lus", 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chose rape)
@@ -741,7 +741,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("You decide that rather than helping her, you are going to roughly manhandle her breasts and rape her.  You suddenly grab at her breasts and squeeze them roughly, at which point she screams and slaps you.  While you are still reeling from the blow, she uses a surprising amount of strength to force you out the door.  She slams it behind you and yells, \"<i>Don't you ever come back!</i>\" through the door. You hear her start to cry as you walk away.  Aw well, you didn't like her anyway.", true);
         // -player never encounters Marble again
         player.effects.create(StatusAffects.NoMoreMarble, 0, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pre-addiction events(explore events take 1 hour, working ones take 3)
@@ -757,7 +757,7 @@ export class MarbleScene implements TimeAwareInterface {
         // [affection <30]
         if (player.effects.getValue1Of(StatusAffects.Marble) < 30) {
             outputText("\n\nIt seems that she is looking forward to it and doesn't want to put it off to talk.  She hurries off and you're left to look around some more.  <b>Maybe if you got her to like you a little more while doing some work around the farm?</b>", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // [affection >=30]
         else {
@@ -805,14 +805,14 @@ export class MarbleScene implements TimeAwareInterface {
         dynStats("lib", 1, "lus", 20);
         if (player.lust > 60) {
             marbleMilkSex(false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // [if addiction is under 50]
         if (player.effects.getValue2Of(StatusAffects.Marble) < 50)
             outputText("After drinking Marble's milk, a feeling of euphoria spreads through you as you leave the farm in high spirits.", false);
         applyMarblesMilk();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chooses no)
@@ -824,7 +824,7 @@ export class MarbleScene implements TimeAwareInterface {
         // (reduce addiction by 5)
         marbleStatusChange(-5, -5);
         dynStats("lus", -10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Meet Marble while exploring version 2 (can occur anytime before the player becomes addicted):
@@ -837,7 +837,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("She is happy to see you and treats you to a small meal while you have a pleasant chat.  ");
         if (flags[kFLAGS.MURBLE_FARM_TALK_LEVELS] < 7) {
             extendedMurbelFarmTalkz();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         else outputText("While you talk mostly about unimportant things, there is some discussion about the world and the dangers within.");
@@ -855,7 +855,7 @@ export class MarbleScene implements TimeAwareInterface {
             if (player.inte < 30) dynStats("int", 4);
             else if (player.inte < 40) dynStats("int", 2);
             else if (player.inte < 60) dynStats("int", 1);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else {
             // [affection >=60, player has not had sex with Marble]
@@ -883,7 +883,7 @@ export class MarbleScene implements TimeAwareInterface {
         player.effects.setValue(StatusAffects.Marble, 1, 50);
         // (increase player inte)
         dynStats("int", 4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player chose no, player has had sex with Marble)
     private turnDownMarbleSexRepeat(): void {
@@ -893,7 +893,7 @@ export class MarbleScene implements TimeAwareInterface {
         // (affection is unchanged)
         // (increase player inte)
         dynStats("int", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chose yes)
@@ -906,7 +906,7 @@ export class MarbleScene implements TimeAwareInterface {
         marbleStatusChange(10, 0);
         // (increase player inte)
         dynStats("int", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Help out Marble, version 1 (can occur anytime before the player becomes addicted):
@@ -932,7 +932,7 @@ export class MarbleScene implements TimeAwareInterface {
         // (increase player lust)
         dynStats("lus", 10);
         // (player receives a bottle of Marble's milk)
-        inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
     }
 
     // Help out Marble, version 2 (can occur anytime before Marble knows about her milk):
@@ -957,7 +957,7 @@ export class MarbleScene implements TimeAwareInterface {
         if (afterMarbleHelp()) return;
         outputText("When the two of you finish and you start to leave, Marble calls out to you, \"<i>Wait, let me give you something!</i>\" You turn and look back at her as she rushes up to you.  Smiling brilliantly, the cow-girl hands you a bottle full of warm milk, \"<i>My gift to you for your help, fresh from the source,</i>\" she says, patting her sizable chest.\n\n", false);
         // (player receives a bottle of Marble's milk)
-        inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
     }
 
     // After both helping Marble work events:
@@ -1008,7 +1008,7 @@ export class MarbleScene implements TimeAwareInterface {
         dynStats("cor", 5);
         // (apply Marble's Milk effect to the player)
         applyMarblesMilk();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chose don't want)
@@ -1023,7 +1023,7 @@ export class MarbleScene implements TimeAwareInterface {
         dynStats("cor", 5);
         // (apply Marble's Milk effect to the player)
         applyMarblesMilk();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Once Addicted:
@@ -1091,7 +1091,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (3 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 8, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player chose no to drinking bottled milk)
     private playerRefusesToDrinkBottledMilk(): void {
@@ -1109,7 +1109,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chose yes, or failed check)
@@ -1131,7 +1131,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("\n\nMarble gives you a kiss on the forehead before sending you on your way.", false);
         // (apply Marble's Milk effect)
         applyMarblesMilk();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player chose no)
     private playerDeclinesToDrinkMarbleMilk(): void {
@@ -1148,7 +1148,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chose milk)
@@ -1157,7 +1157,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("", true);
         outputText("With the possibility of getting some relief, you eagerly get to work and do whatever you can to help Marble.  It is tough work, but the idea of getting milk seems to give you strength you didn't realize you had.  Afterwards, Marble is so impressed with your efforts that she gives you a large bottle of her milk.  As you are leaving, you realize that you don't have to drink it right away; just having worked for it has soothed your withdrawal a little.", false);
         // (player gets a large bottle of Marble's milk)
-        inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
         // (decrease affection by 5)
         marbleStatusChange(-5, 0);
         // (delay withdrawal for a few hours)
@@ -1173,7 +1173,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("", true);
         outputText("You agree to help Marble, but not for the milk.  She seems confused for a moment and you tell her that you want to help her for the sake of helping her, not just because you'll be getting milk.  She gives you a genuine smile at this and the two of you work well together for the next few hours.  At the end, Marble thanks you for your help and hands you the bottle of milk she promised, even if you didn't work solely for it.  As you are leaving, you realize that you don't have to drink it right away; just having worked for it has soothed your withdrawal a little.", false);
         // (player gets a bottle of Marble's milk)
-        inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
         // (increase affection by 5)
         marbleStatusChange(5, 0);
         // (delay withdrawal for a few hours)
@@ -1181,7 +1181,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (player chose to refuse)
@@ -1199,7 +1199,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Exploration event while addicted (event triggered while addicted, but not suffering withdrawal):
@@ -1213,7 +1213,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("After you finish, she thanks you for treating her to your company and asks you to come back soon.  You return to your camp, knowing you will probably be seeing her again soon for something less pleasant.", false);
         // (increase affection by 10)
         marbleStatusChange(5, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // While Addicted Events type 2 (Marble is ashamed):
@@ -1257,7 +1257,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player chose to comfort her)
     private AshamedAddictionComfort(): void {
@@ -1272,7 +1272,7 @@ export class MarbleScene implements TimeAwareInterface {
         // (increase affection by 10)
         marbleStatusChange(10, 0);
         // (delay withdrawal effect)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private withdrawalDelay(): void {
@@ -1304,7 +1304,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player gives in)
     private addictionGiveIn(): void {
@@ -1325,7 +1325,7 @@ export class MarbleScene implements TimeAwareInterface {
             outputText("\n\n", false);
             marbleMilkSex(false);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ashamed Addiction Event #2 Choices
@@ -1344,7 +1344,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player chose refuse)
     private refuseMarblesMilkAddiction(): void {
@@ -1361,7 +1361,7 @@ export class MarbleScene implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (player chose beg)
     private ashamedAddictionBegForIt(): void {
@@ -1369,13 +1369,13 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("", true);
         outputText("You look at her in horror at the suggestion of wasting her delicious milk in such a way. You snatch the milk bottle and hold it tightly to your chest.  You beg her not to talk about it like that and not to throw her milk away so easily.  She seems to be even more upset by your declaration and grabs hold of your hands.  Marble looks into your eyes for a moment and tells you that there is always hope to change before she runs off.  You are left with the milk bottle, but you think that you can wait until later to drink it.  It just felt right to make that bold declaration and it seems to have made you feel better, if only for now.", false);
         // (player gets a bottle of Marble's Milk)
-        inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
         // (delay withdrawal for a few hours)
         if (player.effects.findByType(StatusAffects.BottledMilk) >= 0) {
             player.effects.addValue(StatusAffects.BottledMilk, 1, (1 + rand(6)));
         }
         else player.effects.create(StatusAffects.BottledMilk, 3, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Exploration event while addicted (event triggered while addicted, but not suffering withdrawal):
@@ -1397,7 +1397,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("After you finish, she thanks you for thinking of her like this, even with what you are going through.  You return to your camp, knowing you will probably be seeing her again soon for something less pleasant.", false);
         // increase affection by 10)
         marbleStatusChange(10, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Post addiction farm scenes:
@@ -1413,7 +1413,7 @@ export class MarbleScene implements TimeAwareInterface {
             dynStats("cor", 1);
         }
         // (event takes an hour)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (meet Marble when exploring)
     public postAddictionFarmExplorings(): void {
@@ -1425,7 +1425,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("She is happy to see you and treats you to a small meal while you have a pleasant chat.  ");
         if (flags[kFLAGS.MURBLE_FARM_TALK_LEVELS] < 7) {
             extendedMurbelFarmTalkz();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         else outputText("While you talk mostly about unimportant things, there is some discussion about the world and the dangers within.");
@@ -1434,7 +1434,7 @@ export class MarbleScene implements TimeAwareInterface {
         if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) outputText("uncomfortably ", false);
         outputText("aware of the smell of Marble's milk.", false);
         dynStats("int", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Murble farm talks
     private extendedMurbelFarmTalkz(): void {
@@ -1569,7 +1569,7 @@ export class MarbleScene implements TimeAwareInterface {
         // (randomly raise either str or spd)
         dynStats("str", rand(2), "spe", rand(2));
         // (player gets a bottle of Marble's milk)
-        inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
     }
 
     // Post addiction Camp Text:
@@ -1587,12 +1587,12 @@ export class MarbleScene implements TimeAwareInterface {
         player.slimeFeed();
         if (!extra) return;
         // (if the player has less than 5 bottles of milk in their inventory or storage containers)
-        if (!player.hasItem(consumables.M__MILK, 5)) {
+        if (!player.hasItem(ConsumableLib.M__MILK, 5)) {
             outputText("\n\nAs you are about to leave, Marble hands you a bottle of her milk.  ", false);
             // [if the player is no longer addicted]
             if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) outputText("She assures you that you'll be fine as long as you don't drink directly from her breasts.", false);
             // (player gains a bottle of Marble's milk)
-            inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1605,7 +1605,7 @@ export class MarbleScene implements TimeAwareInterface {
         }
         if (player.gender == 0) {
             marbleGenderlessNoFuck();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // OH GOD MISSIONARIES?
@@ -1659,7 +1659,7 @@ export class MarbleScene implements TimeAwareInterface {
             // female
             if (player.gender == 2) marbleSex2Continued(2);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public marbleSex2Continued(genders: number): void {
@@ -1718,7 +1718,7 @@ export class MarbleScene implements TimeAwareInterface {
         spriteSelect(41);
         if (newpage) {
             outputText("", true);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         if (player.gender == 0) {
             marbleGenderlessNoFuck();
@@ -1809,7 +1809,7 @@ export class MarbleScene implements TimeAwareInterface {
         spriteSelect(41);
         if (newpage) {
             outputText("", true);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         if (player.gender == 0) {
             marbleGenderlessNoFuck();
@@ -1961,7 +1961,7 @@ export class MarbleScene implements TimeAwareInterface {
         bottom row, the milk and gathered buttons do not appear if Marble has
         nothing to give for them, the talk button does not appear if the player's
         corruption is >=50, or if Marble's corruption is >=60.*/
-        if (player.itemCount(consumables.M__MILK) < 5) milkEvent = gotMilk;
+        if (player.itemCount(ConsumableLib.M__MILK) < 5) milkEvent = gotMilk;
         // Determine if marble has an item for the player
         if (player.effects.findByType(StatusAffects.MarbleHasItem) >= 0) gatherEvent = marbleGathered;
         if (flags[kFLAGS.MARBLE_KIDS] > 0) playtime = marbleKidsPlaytime;
@@ -1986,7 +1986,7 @@ export class MarbleScene implements TimeAwareInterface {
             "Playtime", playtime,
             "Break Up", breakUpWithMarble,
             goEventString, marbleGoEvent,
-            "Back", camp.campLoversMenu);
+            "Back", Camp.campLoversMenu);
     }
 
     private marbleTalkOverhaul(): void {
@@ -2106,7 +2106,7 @@ export class MarbleScene implements TimeAwareInterface {
             // increase fatigue by 15, decrease lust by 10, and decrease libido by 1
             fatigue(15);
             // Takes 1-2 hours?
-            inventory.takeItem(consumables.W_FRUIT, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.W_FRUIT, Camp.returnToCampUseOneHour);
             // end event
             return;
         }
@@ -2115,7 +2115,7 @@ export class MarbleScene implements TimeAwareInterface {
         }
         if (flags[kFLAGS.MARBLE_PLAYED_WITH_KIDS_TODAY] > 0) dynStats("lus", -10);
         else dynStats("lib", -1, "lus", -10, "cor", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Break up with Marble (Z)
@@ -2267,7 +2267,7 @@ export class MarbleScene implements TimeAwareInterface {
     private marbleSexExpanded(): void {
         spriteSelect(41);
         marbleCampFuckFUCKFUCKFUCK();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Milk
@@ -2275,9 +2275,9 @@ export class MarbleScene implements TimeAwareInterface {
     // It is important that I can check if there is an item in the player's inventory, if this can't be done, I intend to have inventory items be tied to purifying Marble.
     private gotMilk(): void {
         spriteSelect(41);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         outputText("You ask Marble for a bottle of her milk, and she happily hands you one.  ", true);
-        inventory.takeItem(consumables.M__MILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.M__MILK, Camp.returnToCampUseOneHour);
     }
 
     private marbleGathered(): void {
@@ -2289,12 +2289,12 @@ export class MarbleScene implements TimeAwareInterface {
         // items that Marble can find for the player, more to be added later (there aren't many items in the game right now that Marble would bring back for the player):
         // Vitality potion (12 hours or one day)
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] != 1 && player.effects.getValue1Of(StatusAffects.MarbleHasItem) <= 4)
-            inventory.takeItem(consumables.VITAL_T, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.VITAL_T, Camp.returnToCampUseOneHour);
         // Tanned Leather clothes, armor, def: 5 (three days)
         else if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] != 1 && player.effects.getValue1Of(StatusAffects.MarbleHasItem) <= 7)
-            inventory.takeItem(armors.LEATHRA, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ArmorLib.LEATHRA, Camp.returnToCampUseOneHour);
         // LaBova, cow girl transformation item (if you'll let me put it here, I'd like to use it as part of the purification quest, the player can still get it if they are addicted)
-        else inventory.takeItem(consumables.LABOVA_, camp.returnToCampUseOneHour);
+        else Inventory.takeItem(ConsumableLib.LABOVA_, Camp.returnToCampUseOneHour);
         player.effects.remove(StatusAffects.MarbleHasItem);
     }
 
@@ -2317,19 +2317,19 @@ export class MarbleScene implements TimeAwareInterface {
     }
 
     private canGiveItem(): boolean {
-        if (player.hasItem(consumables.OVIELIX, 1)) return true;
+        if (player.hasItem(ConsumableLib.OVIELIX, 1)) return true;
         if (flags[kFLAGS.MARBLE_DICK_TYPE] == 0)
-            if (player.hasItem(consumables.P_DRAFT, 1)) return true;
+            if (player.hasItem(ConsumableLib.P_DRAFT, 1)) return true;
             else if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
-                if (player.hasItem(consumables.PINKEGG, 1)) return true;
-                if (player.hasItem(consumables.L_PNKEG, 1)) return true;
+                if (player.hasItem(ConsumableLib.PINKEGG, 1)) return true;
+                if (player.hasItem(ConsumableLib.L_PNKEG, 1)) return true;
             }
-        if (player.hasItem(consumables.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) return true;
-        if (player.hasItem(consumables.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) return true;
+        if (player.hasItem(ConsumableLib.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) return true;
+        if (player.hasItem(ConsumableLib.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) return true;
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5) {
-            if (player.hasItem(consumables.P_S_MLK, 1)) return true;
-            if (player.hasItem(consumables.REDUCTO, 1)) return true;
-            if (player.hasItem(consumables.LACTAID, 1)) return true;
+            if (player.hasItem(ConsumableLib.P_S_MLK, 1)) return true;
+            if (player.hasItem(ConsumableLib.REDUCTO, 1)) return true;
+            if (player.hasItem(ConsumableLib.LACTAID, 1)) return true;
         }
         else if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) return true;
         return false;
@@ -2339,19 +2339,19 @@ export class MarbleScene implements TimeAwareInterface {
         clearOutput();
         outputText("What item do you want to give Marble?");
         menu();
-        if (player.hasItem(consumables.OVIELIX, 1)) addButton(1, "OviElixir", marbleOvulatesLikeMadDawg);
+        if (player.hasItem(ConsumableLib.OVIELIX, 1)) addButton(1, "OviElixir", marbleOvulatesLikeMadDawg);
         if (flags[kFLAGS.MARBLE_DICK_TYPE] == 0)
-            if (player.hasItem(consumables.P_DRAFT, 1)) addButton(2, "P.Incub Dr", MarbleDigsDraftsYo);
+            if (player.hasItem(ConsumableLib.P_DRAFT, 1)) addButton(2, "P.Incub Dr", MarbleDigsDraftsYo);
             else if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
-                if (player.hasItem(consumables.PINKEGG, 1)) addButton(3, "Pink Egg", MarblepinkEgg);
-                if (player.hasItem(consumables.L_PNKEG, 1)) addButton(4, "L.Pink Egg", MarbleLPinkEgg);
+                if (player.hasItem(ConsumableLib.PINKEGG, 1)) addButton(3, "Pink Egg", MarblepinkEgg);
+                if (player.hasItem(ConsumableLib.L_PNKEG, 1)) addButton(4, "L.Pink Egg", MarbleLPinkEgg);
             }
-        if (player.hasItem(consumables.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) addButton(5, "Pro Bova", giveMarbleTheProBovas4Sho);
-        if (player.hasItem(consumables.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) addButton(6, "P.LaBova", MarblePurification.giveMarblePureQuestLabova);
+        if (player.hasItem(ConsumableLib.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) addButton(5, "Pro Bova", giveMarbleTheProBovas4Sho);
+        if (player.hasItem(ConsumableLib.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) addButton(6, "P.LaBova", MarblePurification.giveMarblePureQuestLabova);
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5) {
-            if (player.hasItem(consumables.P_S_MLK, 1)) addButton(7, "P.SuccMilk", MarblePurification.purifiedSuccubusMilkForPureMarbles);
-            if (player.hasItem(consumables.REDUCTO, 1)) addButton(8, "ReductoBust", MarblePurification.pureMurbleUsesReducto);
-            if (player.hasItem(consumables.LACTAID, 1)) addButton(0, "Lactaid", MarblePurification.lactaidForPureMurble);
+            if (player.hasItem(ConsumableLib.P_S_MLK, 1)) addButton(7, "P.SuccMilk", MarblePurification.purifiedSuccubusMilkForPureMarbles);
+            if (player.hasItem(ConsumableLib.REDUCTO, 1)) addButton(8, "ReductoBust", MarblePurification.pureMurbleUsesReducto);
+            if (player.hasItem(ConsumableLib.LACTAID, 1)) addButton(0, "Lactaid", MarblePurification.lactaidForPureMurble);
         }
         // else if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) addButton(0, "Lactaid", giveMarbleLactaid);
         addButton(9, "Back", interactWithMarbleAtCamp);
@@ -2361,7 +2361,7 @@ export class MarbleScene implements TimeAwareInterface {
     public giveMarbleLactaid(): void {
         spriteSelect(41);
         // Lactaid
-        player.consumeItem(consumables.LACTAID);
+        player.consumeItem(ConsumableLib.LACTAID);
         // Give Marble a dose of Lactaid to gain powerful but temporary boost to your stats, it takes an hour to do.
         outputText("You show Marble the bottle of Lactaid that you found and ask her if she could drink it.  She gives you a knowing smile. \"<i>So you want a special treat?  Ok sweetie, give it here.</i>\"  She takes the bottle from you and easily drinks the liquid.  Within moments, she gasps and ", true);
         if (player.tallness < 60) outputText("lifts you up to her chest before saying breathlessly saying \"<i>Drink now!</i>\"  You waste no time obliging her.\n\n", false);
@@ -2370,7 +2370,7 @@ export class MarbleScene implements TimeAwareInterface {
         outputText("What meets your lips surprises you; it feels tastier, healthier, and just plain better than normal.  With an effort, you manage to empty her breasts, even though they seemed to have been filled with more milk than usual.  You feel even more powerful than normal and the whole world seems clearer.  However, Marble seems a little disappointed; it seems the Lactaid's effects on her were only temporary.\n\n", false);
         // Give the player an increase to their stats of 10 str, 5 tou, and 10 inte for about 24 hours
         dynStats("str", 1, "tou", 1, "int", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /*
@@ -2774,7 +2774,7 @@ export class MarbleScene implements TimeAwareInterface {
             // Pass several hours
             outputText("\n\nYou wake up a few hours later laying on the ground, your head feeling like it's been squeezed in a vice.  With some effort, you manage to get yourself to a sitting position and look around.  It looks like you're laying just outside the barn.  Whitney is standing nearby.  She has something akin to a smile on her animalistic face as she tells you: \"<i>Well hun, it seems you've managed to get Marble rather upset.  I reckon you should leave her alone from now on, as I'm sure you've found out the hard way, she is one tough customer.</i>\"  Your aching head is telling you that may be a good idea; but then again, maybe you should teach that cow-girl a lesson for the pain first.", false);
         }
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
         // The follow up fight event can now be triggered, regardless of whether the rape was successful or not.
         player.effects.create(StatusAffects.MarbleRapeAttempted, 0, 0, 0, 0);
     }
@@ -2825,7 +2825,7 @@ export class MarbleScene implements TimeAwareInterface {
     private marbleAfterRapeNo(): void {
         spriteSelect(41);
         outputText("You shake your head. It's just not worth the headache to deal with this cow.  You turn around and leave; you aren't going to be seeing her anymore.", true);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public marbleBadEndFollowup(): void {
@@ -3034,15 +3034,15 @@ export class MarbleScene implements TimeAwareInterface {
             let itype: ItemType;
             // Large eggs
             if (rand(3) == 1) {
-                itype = consumables.LARGE_EGGS[rand(consumables.LARGE_EGGS.length)];
+                itype = ConsumableLib.LARGE_EGGS[rand(ConsumableLib.LARGE_EGGS.length)];
             }
             // Small eggs
             else {
-                itype = consumables.SMALL_EGGS[rand(consumables.SMALL_EGGS.length)];
+                itype = ConsumableLib.SMALL_EGGS[rand(ConsumableLib.SMALL_EGGS.length)];
             }
             if (timeQ > 0)
-                inventory.takeItem(itype, camp.doSleep);
-            else inventory.takeItem(itype, playerMenu);
+                Inventory.takeItem(itype, Camp.doSleep);
+            else Inventory.takeItem(itype, playerMenu);
         }
     }
 
@@ -3484,7 +3484,7 @@ export class MarbleScene implements TimeAwareInterface {
         // Set PC lust to 0
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.doSleep);
+        doNext(Camp.doSleep);
     }
 
     // Pleasing Marble
@@ -3539,7 +3539,7 @@ export class MarbleScene implements TimeAwareInterface {
     public MarbleDigsDraftsYo(): void {
         spriteSelect(41);
         outputText("", true);
-        player.consumeItem(consumables.P_DRAFT);
+        player.consumeItem(ConsumableLib.P_DRAFT);
         // gives Marble a 7 inch long, 2 inch thick dick by default, no other effect.  Can only be given while she does not have a dick.
         outputText("You hand Marble the bottle.  She looks at it for a moment before ", false);
         if (player.effects.getValue4Of(StatusAffects.Marble) > 60) {
@@ -3552,7 +3552,7 @@ export class MarbleScene implements TimeAwareInterface {
         if (player.effects.getValue4Of(StatusAffects.Marble) > 50) outputText("big ", false);
         else outputText("nervous ", false);
         outputText("smile.  <b>Marble is now a hermaphrodite.</b>  ", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         flags[kFLAGS.MARBLE_DICK_TYPE] = 1;
         flags[kFLAGS.MARBLE_DICK_LENGTH] = 7;
         flags[kFLAGS.MARBLE_DICK_THICKNESS] = 2;
@@ -3561,11 +3561,11 @@ export class MarbleScene implements TimeAwareInterface {
 
     // Pink egg or large pink egg
     public MarblepinkEgg(): void {
-        player.consumeItem(consumables.PINKEGG);
+        player.consumeItem(ConsumableLib.PINKEGG);
         MarblePEggEffects();
     }
     public MarbleLPinkEgg(): void {
-        player.consumeItem(consumables.L_PNKEG);
+        player.consumeItem(ConsumableLib.L_PNKEG);
         MarblePEggEffects();
     }
     private MarblePEggEffects(): void {
@@ -3583,7 +3583,7 @@ export class MarbleScene implements TimeAwareInterface {
         flags[kFLAGS.MARBLE_DICK_TYPE] = 0;
         flags[kFLAGS.MARBLE_DICK_LENGTH] = 0;
         flags[kFLAGS.MARBLE_DICK_THICKNESS] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ovi-elixir
@@ -3594,7 +3594,7 @@ export class MarbleScene implements TimeAwareInterface {
         // Marble is visibly pregnant with non-eggs, and the nursery has not been built yet) {
         if (flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] < 100 && pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
             outputText("Marble refuses to take the elixir to speed up her pregnancy until after she has finished the nursery. ", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         else if (pregnancy.isPregnant) {
@@ -3607,8 +3607,8 @@ export class MarbleScene implements TimeAwareInterface {
             outputText("After taking the elixir, Marble tells you that her belly feels full.  It sounds like she'll be laying eggs soon.  ", false);
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, PregnancyStore.INCUBATION_OVIELIXIR_EGGS + 46);
         }
-        player.consumeItem(consumables.OVIELIX);
-        doNext(camp.returnToCampUseOneHour);
+        player.consumeItem(ConsumableLib.OVIELIX);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /*
@@ -3646,7 +3646,7 @@ export class MarbleScene implements TimeAwareInterface {
     public giveMarbleTheProBovas4Sho(): void {
         clearOutput();
         spriteSelect(41);
-        player.consumeItem(consumables.PROBOVA);
+        player.consumeItem(ConsumableLib.PROBOVA);
 
         if (flags[kFLAGS.MARBLE_BOVA_LEVEL] == 0) {
             outputText("Marble nods and downs the contents.  Nothing happens for a moment... then she gasps and grabs at her chest, stumbling forward slightly.  The cow-girl straightens up and releases her grip, then pulls open her top to look at her breasts.  <b>Each is now decorated with sets of four nipples, like the teats of a cow.  She has also gained about 4 inches in height, judging against the backdrop of the camp.</b>  Marble takes a few minutes to test her new nipples, squeezing them gently and sighing as dribbles of milk decorate her areolae in fours instead of one, then looks at you and says, \"<i>This isn't really so bad.  Actually, it feels nice.  If you find another dose, I'm willing to drink it - just to see what happens, of course.</i>\"");
@@ -3662,7 +3662,7 @@ export class MarbleScene implements TimeAwareInterface {
             // increase Marble corruption by 4
             flags[kFLAGS.MARBLE_BOVA_LEVEL] = 2;
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private marbleNip(): string {
@@ -3863,7 +3863,7 @@ export class MarbleScene implements TimeAwareInterface {
         const pLust: number = int(20 + ((player.lib + player.cor) / 10));
         dynStats("lus", pLust);
         dynStats("sen", 1);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private milkMarbleFuckDatCowPussy(): void {
@@ -3965,7 +3965,7 @@ export class MarbleScene implements TimeAwareInterface {
             dynStats("sen", -2);
             marblePreggoChance(1);
         }
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private milkMarbleTakeHerDick(): void {
@@ -4013,7 +4013,7 @@ export class MarbleScene implements TimeAwareInterface {
         flags[kFLAGS.MARBLE_LUST] = 10;
         dynStats("lib", .5);
         player.knockUp(PregnancyStore.PREGNANCY_MARBLE, PregnancyStore.INCUBATION_MARBLE, 150);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private milkMarbleOnTheBar(): void {
@@ -4117,7 +4117,7 @@ export class MarbleScene implements TimeAwareInterface {
             const pLust: number = int(10 + player.lib / 10);
             dynStats("lus", pLust);
         }
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private milkMarbleBarCunnilingling(): void {
@@ -4158,7 +4158,7 @@ export class MarbleScene implements TimeAwareInterface {
         dynStats("lus", pLust);
         dynStats("sen", 1);
         game.time.hours++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private milkMarbleBarPullTail(): void {
@@ -4242,7 +4242,7 @@ export class MarbleScene implements TimeAwareInterface {
         flags[kFLAGS.MARBLE_LUST] = 15;
         dynStats("sen", -2);
         marblePreggoChance(1);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private milkMarbleLeaveAfterBar(): void {
@@ -4255,7 +4255,7 @@ export class MarbleScene implements TimeAwareInterface {
         const pLust: number = int(5 + player.lib / 20);
         dynStats("lus", pLust);
         flags[kFLAGS.MARBLE_LUST] += 5;
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private milkMarbleNoMilking(): void {
@@ -4264,7 +4264,7 @@ export class MarbleScene implements TimeAwareInterface {
 
         outputText("[pg]\"<i>Oh, alright then sweetie, I'll see you later.</i>\"  She takes a seat in the chair in the middle of the room and picks up where she left off in her book.  You excuse yourself and return back to camp.");
 
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
 }

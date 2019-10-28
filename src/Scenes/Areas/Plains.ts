@@ -33,12 +33,12 @@ export class Plains {
         }
         // Find Owca
         if (player.level >= 8 && flags[kFLAGS.TIMES_EXPLORED_PLAINS] % 25 == 0 && flags[kFLAGS.OWCA_UNLOCKED] == 0) {
-            owca.gangbangVillageStuff();
+            Owca.gangbangVillageStuff();
             return;
         }
         // Bazaar!
         if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] % 10 == 0 && flags[kFLAGS.BAZAAR_ENTERED] == 0) {
-            bazaar.findBazaar();
+            Bazaar.findBazaar();
             return;
         }
         // Chance of threesomes!
@@ -81,11 +81,11 @@ export class Plains {
     private plainsLoot(): void {
         if (rand(2) == 0) { // OVI
             outputText("While exploring the plains you nearly trip over a discarded, hexagonal bottle.  ");
-            inventory.takeItem(consumables.OVIELIX, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.OVIELIX, Camp.returnToCampUseOneHour);
         }
         else { // FIND KANGAAA
             outputText("While exploring the plains you come across a strange-looking plant.  As you peer at it, you realize it has some fruit you can get at.  ");
-            inventory.takeItem(consumables.KANGAFT, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.KANGAFT, Camp.returnToCampUseOneHour);
         }
     }
 }

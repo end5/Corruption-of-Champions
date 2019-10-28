@@ -125,7 +125,7 @@ export class LustyMaidensArmor extends Armor {
         // Usable on: Imps, Minotaurs, Satyrs, Incubus Mechanic, Anemones, Spider Guys, Akbal, Drider, Fetish Zealot, Sand Trap, Very Corrupt Jojo (Maybe slight decorruption to him), Ceraph, Red Kitsune if cock out.
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     /*

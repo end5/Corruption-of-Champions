@@ -46,7 +46,7 @@ export class HermCentaurScenes {
         flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_KILLED;
 
         menu();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private letHerGo(): void {
@@ -55,7 +55,7 @@ export class HermCentaurScenes {
         flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_RELEASED;
 
         menu();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private maleFuckHer(): void {
@@ -102,7 +102,7 @@ export class HermCentaurScenes {
         player.orgasm();
         dynStats("cor+", 5);
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private HORZGOG: number = 0;
@@ -226,7 +226,7 @@ export class HermCentaurScenes {
         dynStats("cor+", 5);
         player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
         menu();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     public inSovietCoCPonyRidesYou(hpVictory: boolean, pcCameWorms: boolean): void {

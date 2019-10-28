@@ -280,7 +280,7 @@ export class Frosty {
         // [Player is back at camp]
         dynStats("sen", -1);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Mouth]
@@ -351,7 +351,7 @@ export class Frosty {
         // [Player is back at camp]
         dynStats("sen", -1);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Back to Frosty’s Special Menu.]
@@ -456,7 +456,7 @@ export class Frosty {
         // [Player is back at camp]
         frostyPoints(-1);
         dynStats("lus", 33);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /*Anal (One service genderless can have) -WIP-

@@ -32,7 +32,7 @@ export class SexMachine {
     private leaveShowers(): void {
         outputText("", true);
         outputText("You shake your head.  You've had enough of a workout for the day, and you remember you're in a land where curiosity almost certainly kills (well, more thoroughly rapes) the cat.  You leave the room and continue to search for the showers, eventually finding them and heading back to camp.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private useTheSexMachine(): void {
@@ -250,6 +250,6 @@ export class SexMachine {
         }
         fatigue(10);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

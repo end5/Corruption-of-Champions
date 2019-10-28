@@ -33,7 +33,7 @@ export class Valeria implements TimeAwareInterface {
         let sex: () => void = null;
         if (player.lust > 33) sex = followersValeriaSex;
         // (Display Options: [Appearance] [Spar] [Sex] [Talk])
-        choices("Appearance", valeriaAppearance, "Spar", valeriaSpar, "Sex", sex, "Talk", talkWithValeria, "Take", takeValeria, "", null, "", null, "", null, "", null, "Back", camp.campFollowers);
+        choices("Appearance", valeriaAppearance, "Spar", valeriaSpar, "Sex", sex, "Talk", talkWithValeria, "Take", takeValeria, "", null, "", null, "", null, "", null, "Back", Camp.campFollowers);
     }
 
     // [Valeria] -- [Appearance]
@@ -248,7 +248,7 @@ export class Valeria implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -1);
         HPChange(25, false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private gooFlation(clearText: boolean = true): void {
@@ -277,7 +277,7 @@ export class Valeria implements TimeAwareInterface {
             player.orgasm();
             dynStats("sen", 1);
             HPChange(25, false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -302,7 +302,7 @@ export class Valeria implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", 1);
         HPChange(25, false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Valeria] -- [Sex] -- [Get Dominated]
@@ -365,7 +365,7 @@ export class Valeria implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", 1);
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -421,17 +421,17 @@ export class Valeria implements TimeAwareInterface {
         outputText("You grimace and push the goo-girl away.  You've got no interest in her corrupted 'needs,' especially with a look like that on her face.  She gasps as you push her, nearly falling over; she catches herself and glowers angrily.");
         outputText("\n\n\"<i>Well, fuck you kindly, [name],</i>\" she says with a huff.  \"<i>Pardon me for being... me.</i>\"  She turns up her chin and saunters off to a part of camp about as far away from you as possible.");
         // (Disable Valeria sex for 6 hours)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private takeValeria(): void {
         spriteSelect(79);
-        armors.GOOARMR.useText();
+        ArmorLib.GOOARMR.useText();
         player.armor.removeText();
-        const item: Armor = player.setArmor(armors.GOOARMR); // Item is now the player's old armor
+        const item: Armor = player.setArmor(ArmorLib.GOOARMR); // Item is now the player's old armor
         if (item == null)
             doNext(playerMenu);
-        else inventory.takeItem(item, playerMenu);
+        else Inventory.takeItem(item, playerMenu);
     }
 
     public valeriaAndGooThreeStuff(): void {

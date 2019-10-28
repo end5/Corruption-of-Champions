@@ -740,7 +740,7 @@ export function menFuckUpSomeCumWitch(): void {
     else {
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 }
 // *Male "Too Big" Victory Sex
@@ -785,7 +785,7 @@ export function maleTooBigVictorySex(): void {
     else {
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 }
 
@@ -826,7 +826,7 @@ export function ladyVictorySex(): void {
     else {
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 }
 
@@ -868,7 +868,7 @@ export function tentacleVictoryGangbangCumWitch(): void {
     else {
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 }
 

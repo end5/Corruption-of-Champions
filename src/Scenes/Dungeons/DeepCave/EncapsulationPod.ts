@@ -94,7 +94,7 @@ export class EncapsulationPod extends Monster {
         this.level = 12;
         this.gems = 1;
         this.additionalXP = 80;
-        this.drop = new WeightedDrop(weapons.JRAPIER, 1);
+        this.drop = new WeightedDrop(WeaponLib.JRAPIER, 1);
         this.special1 = special1;
         this.special2 = special2;
         this.special3 = special3;

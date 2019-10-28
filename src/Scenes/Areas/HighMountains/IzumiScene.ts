@@ -108,7 +108,7 @@ export class IzumiScene {
         outputText("Spelunking in random caves around these parts is probably not the best idea; especially considering the kinds of creatures that you keep tripping over whenever you <i>do</i> decide to poke your nose somewhere it doesn't belong.\n\n");
 
         outputText("You head back to camp, having found nothing else of interest.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Already met, dun wanna get oniraepd again plz
@@ -116,7 +116,7 @@ export class IzumiScene {
         clearOutput();
 
         outputText("You decide discretion is the better part of valour and choose not to barge into the strange woman's cave again, opting to slip away before she notices you hanging around outside her home.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Introduce the fuckhuge oni
@@ -425,7 +425,7 @@ export class IzumiScene {
 
         outputText("Spotting an opening, you decide to beat a hasty retreat, as far away from the immense woman as possible.\n\n");
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     /**
      * FIGHT SHIT
@@ -597,7 +597,7 @@ export class IzumiScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Male/Herm scene for cocks <= 10"
@@ -664,7 +664,7 @@ export class IzumiScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Male/Herm be a jerk about it split
@@ -697,7 +697,7 @@ export class IzumiScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Urtadicks itt
@@ -748,7 +748,7 @@ export class IzumiScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected surrenderOhGodTheFemaleSurrenderContentIsFuckingHugeSendHelp(): void {
@@ -974,7 +974,7 @@ export class IzumiScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Female surrender, ask player if which variant they want
@@ -1034,7 +1034,7 @@ export class IzumiScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /**

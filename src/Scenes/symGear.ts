@@ -10,7 +10,7 @@ export function inquisitorRobesDiscovery(): void {
     if (player.inte < 60) {
         outputText("Unfortunately, try as you might, you cannot seem to figure the lock out.  You spin the stone circles around multiple times to try and discern the pattern to them, but find yourself continually disappointed.  Eventually you resort to trying to listen for the sound of tumblers behind the door indicating a shifting lock.  It is not as successful as you hope.  Disappointed but not undeterred, you resolve to return to the mysterious lock at a later point, when you are more capable of handling its clever riddle.", false);
         // [Player leaves, room can be re-encountered]
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         return;
     }
     // [Intelligence greater than 60]
@@ -60,7 +60,7 @@ export function noThankYouSirIDontWantAwesomeArmors(): void {
     outputText("", true);
     outputText("Uninterested in the proffered reward, you turn and leave the way you came.  At the entrance, you replace the moss, doing your best to conceal the portal in the event you wish to return, or at least to keep any items of power inside from the hands of hostile swamp denizens.  You may as well not have spent the effort, for as you're walking away, you hear the stones grinding and shifting behind you.  Sure enough, an inspection affirms that the door has sealed itself again.\n\n", false);
     // allows player to find again later, like the B.Sword
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // [Retribution]
@@ -73,7 +73,7 @@ export function retributionArmorIsCoolShit(): void {
     outputText("The display makes you feel righteous.\n\n", false);
     // [Player receives: 1x Inquisitor's Robes]
     flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] = 1;
-    inventory.takeItem(armors.I_ROBES, camp.returnToCampUseOneHour);
+    Inventory.takeItem(ArmorLib.I_ROBES, Camp.returnToCampUseOneHour);
 }
 
 // [Carnality]
@@ -88,7 +88,7 @@ export function carnalityArmorIsCoolShitToo(): void {
     outputText("The display makes you feel like a badass.\n\n", false);
     // [Player receives 1x Inquisitor's Corset]
     flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] = 1;
-    inventory.takeItem(armors.I_CORST, camp.returnToCampUseOneHour);
+    Inventory.takeItem(ArmorLib.I_CORST, Camp.returnToCampUseOneHour);
 }
 
 // Item details:
@@ -135,6 +135,6 @@ export function dominikaSpellblade(): void {
         outputText("Well, getting beer and a sword in one night is good enough you suppose, though you sure would've liked a triple combo of head in there too.  A good evening nonetheless.  You bid farewell to Dominika, thanking her once more for the drink and the blade before heading on your way.  She watches you go with an unreadable expression on her face.\n\n", false);
     }
     // (Player receives Spellblade)
-    inventory.takeItem(weapons.S_BLADE, camp.returnToCampUseOneHour);
+    Inventory.takeItem(WeaponLib.S_BLADE, Camp.returnToCampUseOneHour);
     flags[kFLAGS.DOMINIKAS_SWORD_GIVEN] = 1;
 }

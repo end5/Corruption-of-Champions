@@ -2,7 +2,7 @@ export function Hummus(player: Player): void {
     outputText("", true);
     if (game.debug) {
         outputText("You're about to eat the humus when you see it has bugs in it. Not wanting to eat bugged humus or try to debug it you throw it into the portal and find something else to eat.", false);
-        player.destroyItems(consumables.HUMMUS_, 1);
+        player.destroyItems(ConsumableLib.HUMMUS_, 1);
         return;
     }
     outputText("You shovel the stuff into your face, not sure WHY you're eating it, but once you start, you just can't stop.  It tastes incredibly bland, and with a slight hint of cheese.", false);

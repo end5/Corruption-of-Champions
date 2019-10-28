@@ -212,7 +212,7 @@ export class Minerva extends Monster {
         this.level = 16;
         this.gems = rand(25) + 10;
         this.additionalXP = 50;
-        this.drop = new WeightedDrop(consumables.PURPEAC, 1);
+        this.drop = new WeightedDrop(ConsumableLib.PURPEAC, 1);
         this.wingType = WING_TYPE_HARPY;
         this.wingDesc = "fluffy feathery";
         checkMonster();

@@ -52,25 +52,25 @@ export class Marae implements TimeAwareInterface {
                     outputText("You nod, understanding.  She commands, \"<i>Now go, there is nothing to be gained by your presence here.  Return if you manage to close that vile place.</i>\"\n\n", false);
                     if (player.lib + player.cor > 80) {
                         outputText("You could leave, but the desire to feel her breast will not go away.  What do you do?", false);
-                        simpleChoices("Boob", grabHerBoob, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                        simpleChoices("Boob", grabHerBoob, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
                     }
-                    else doNext(camp.returnToCampUseOneHour);
+                    else doNext(Camp.returnToCampUseOneHour);
                     return;
                 }
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
             // Second meeting
             else {
                 outputText("You approach Marae's tree, watching the goddess flow out of the tree's bark as if it was made of liquid.   Just as before, she appears as the top half of a woman, naked from the waist up, with her back merging into the tree's trunk.\n\n", false);
                 if (player.cor > 66) {
                     outputText("She bellows in rage, \"<i>I told you, begone!</i>\"\n\nYou turn tail and head back to your boat, knowing you cannot compete with her power directly.", false);
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 else {
                     // If youve taken her quest already
                     if (player.effects.findByType(StatusAffects.MaraesQuestStart) >= 0) {
                         outputText("Marae reminds you, \"<i>You need to disable the demonic factory!  It's located in the foothills of the mountain.  Please, I do not know how long I can resist.</i>\"", false);
-                        doNext(camp.returnToCampUseOneHour);
+                        doNext(Camp.returnToCampUseOneHour);
                     }
                     // If not
                     else {
@@ -88,9 +88,9 @@ export class Marae implements TimeAwareInterface {
                         outputText("You nod, understanding.  She commands, \"<i>Now go, there is nothing to be gained by your presence here.  Return if you manage to close that vile place.</i>\"\n\n", false);
                         if (player.lib + player.cor > 80) {
                             outputText("You could leave, but the desire to feel her breast will not go away.  What do you do?", false);
-                            simpleChoices("Boob", grabHerBoob, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                            simpleChoices("Boob", grabHerBoob, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
                         }
-                        else doNext(camp.returnToCampUseOneHour);
+                        else doNext(Camp.returnToCampUseOneHour);
                     }
                 }
             }
@@ -104,7 +104,7 @@ export class Marae implements TimeAwareInterface {
                 outputText("\"<i>Thank you,</i>\" she says, breaking the hug and turning back to her tree, \"<i>The onslaught has lessened, and I feel more myself already.  Let me thank you for your heroic deeds.</i>\"\n\n", false);
                 outputText("She plunges a hand inside the tree and pulls out a small pearl.  \"<i>This is a pearl from the very depths of the lake, infused with my purity.  If you eat it, it will grant you my aid in resisting the lust and corruption of this land.</i>\"\n\n", false);
                 outputText("Marae pushes the pearl into your hand, and closes your fingers over it gently.  \"<i>Go now, there is still much to be done.  With luck we will not need each other again,</i>\" commands the goddess as she slips back into her tree.  ", false);
-                inventory.takeItem(consumables.P_PEARL, camp.returnToCampUseOneHour);
+                Inventory.takeItem(ConsumableLib.P_PEARL, Camp.returnToCampUseOneHour);
                 player.effects.create(StatusAffects.MaraeComplete, 0, 0, 0, 0);
             }
             // Corrupt!
@@ -135,13 +135,13 @@ export class Marae implements TimeAwareInterface {
         clearOutput();
         outputText("You reach forward to cop a feel.  The goddess' eyes go wide with fury as a massive branch swings down, catching you in the sternum.  It hits you hard enough that you land in your boat and float back a few feet into the water.  Nothing to do but leave and hope for another chance at her breasts...");
         player.takeDamage(player.HP - 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private runFromPervertedGoddess(): void {
         clearOutput();
         outputText("You turn and run for the boat, leaving the corrupt goddess behind.  High pitched laugher seems to chase you as you row away from the island.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private maraeBadEnd(): void {
@@ -201,7 +201,7 @@ export class Marae implements TimeAwareInterface {
         if ((player.spe > 35 && (rand(player.spe / 3 + 30) > 20)) || (player.spe > 35 && player.perks.findByType(PerkLib.Evade) >= 0 && rand(3) < 2)) {
             outputText("You dart to the side, diving into a roll that brings you up behind the tree.  You evade the gauntlet of grabbing tentacles that hang from the branches, snatch the large gem in both arms and run for the beach.  You do not hear the sounds of pursuit, only a disappointed sigh.", false);
             player.keyItems.create("Marae's Lethicite", 0, 0, 0, 0);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // (FAIL)
         else {
@@ -231,7 +231,7 @@ export class Marae implements TimeAwareInterface {
                 outputText("Marae steps into your field of view, and pulls the tentacle free.  Your " + cockDescript(game.player, 0) + " twitches pitifully, blasting a few massive loads onto your belly as your orgasm withers and dies from lack of stimulation.\n\n", false);
                 outputText("\"<i>Sorry about the pain, I had to tweak your body to make you a true breeder.  You can go now stud.  I expect the monsters ought to worry about you now, or they'll all have dripping twats and swollen bellies,</i>\" apologizes Marae.  She turns away from you, returning to the embrace of her tree's tentacles, sinking into debauchery.  You stagger into your boat and row away, oblivious to the stream to pre-cum dripping from your " + multiCockDescript(game.player) + ".", false);
                 player.perks.create(PerkLib.MaraesGiftStud, 0, 0, 0, 0);
-                doNext(camp.returnToCampUseTwoHours);
+                doNext(Camp.returnToCampUseTwoHours);
             }
             // FEM)
             else {
@@ -249,7 +249,7 @@ export class Marae implements TimeAwareInterface {
                 outputText("She giggles at your expression of horror, \"<i>No, not literally, but it won't take much to make you a mommy, and you'll find the gestation to be quite a bit... shorter.  Now get out of here before I change my mind and lock in an orgasm for the rest of your life.</i>\"\n\n", false);
                 outputText("You are dropped from the tree, and with little choice, you waddle to your boat, doing your best to cover up your violated " + vaginaDescript(player, 0) + ".", false);
                 player.perks.create(PerkLib.MaraesGiftFertility, 0, 0, 0, 0);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
         }
     }
@@ -547,13 +547,13 @@ export class Marae implements TimeAwareInterface {
                 outputText("<b>(New Perk Gained: Marae's Gift - Fertility)</b>", false);
             }
         }
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private MaraeIIFlyAway(): void {
         spriteSelect(40);
         outputText("", true);
         outputText("You launch into the air and beat your wings, taking to the skies.  The tentacle-tree lashes at you, but comes up short.  You've escaped!  Something large whooshes by, and you glance up to see your boat sailing past you.  She must have hurled it at you!  It lands with a splash near the mooring, somehow surviving the impact.  You dive down and drag it back to the dock before you return to camp.  That was close!", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

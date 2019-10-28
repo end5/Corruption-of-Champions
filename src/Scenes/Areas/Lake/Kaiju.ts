@@ -34,7 +34,7 @@ export class Kaiju extends AbstractLakeContent {
         clearOutput();
         outputText("You continue rowing on, away from the hilly island.");
         // [There is still a chance of finding the hill later]
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If yes]
@@ -84,7 +84,7 @@ export class Kaiju extends AbstractLakeContent {
             outputText("Perhaps not the smartest thing to do towards such a giant, you decide to mock her obvious insecurities over her body image.  The word 'fat' barely has time to leave your lips when in a rage she puffs up her lips and blows, sending you and your boat racing through the lake out of sight.  Sometime later the boat crashes back on shore, your hair and nerves a little windswept from the fast ride.");
             // [Giant turtle no longer encounter-able]
             flags[kFLAGS.KAIJU_DISABLED] = 1;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -97,7 +97,7 @@ export class Kaiju extends AbstractLakeContent {
         // [Lust is increased and giant turtle girl is no longer encounter-able][End whitefire scene]
         dynStats("lus", 15);
         flags[kFLAGS.KAIJU_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If no] (Scene returns to regular blowjob/urethral insertion scene.)
@@ -115,7 +115,7 @@ export class Kaiju extends AbstractLakeContent {
         // [Corruption increases slightly and giant turtle girl is no longer encounter-able]
         dynStats("lus", 50, "cor", 1);
         flags[kFLAGS.KAIJU_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If compliment]
@@ -137,7 +137,7 @@ export class Kaiju extends AbstractLakeContent {
         spriteSelect(103);
         outputText("You cry out and wave the inquisitive hand away.  You tell her that you mean no offense, but at such a size and strength disparity you are afraid of what a grip from such a woman could do accidentally.  She seems a bit saddened at that, but makes no further attempt to grab you.");
         // [Giant turtle girl is still encounter-able]
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If let her]
@@ -186,7 +186,7 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\n\n\"<i>My, that was a mighty big hug.  I think I'll need another nap.  Come visit me again some time,</i>\" she says, slowly putting you down in your boat.  You slowly roll away as the jolly green giantess giggles and slowly wades off.");
         // [Giant turtle girl now encounter-able at Boat and Swamp, corruption increases slightly]
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If flirt]
@@ -259,7 +259,7 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\n\nYou wave goodbye to the giant green girl as you begin to row away.");
         // [Corruption increases, giant turtle girl now encounter-able at Boat and Swamp]
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Second/Repeatable encounter/s at Boat
@@ -270,7 +270,7 @@ export class Kaiju extends AbstractLakeContent {
         menu();
         const drafts: number = 0;
         // [If PC has 15 incubus drafts (regular or pure) and Venus is not already a herm]
-        if (player.itemCount(consumables.INCUBID) + player.itemCount(consumables.P_DRAFT) >= 10 && !kaijuCock()) {
+        if (player.itemCount(ConsumableLib.INCUBID) + player.itemCount(ConsumableLib.P_DRAFT) >= 10 && !kaijuCock()) {
             outputText("\n\nIt occurs to you that you have enough Incubi Drafts on you to even affect someone of the turtle girl’s great size.  Maybe you could give her a cock?");
             addButton(5, "Give Cock", yesTurnKaijuFuta);
         }
@@ -326,7 +326,7 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\n\n\"<i>My, that was a mighty big hug.  I think I'll need another nap. Come visit me again some time,</i>\" she says, slowly putting you down in your boat.  You slowly roll away as the jolly green giantess giggles and slowly wades off.");
         // [Giant turtle girl now encounter-able at Boat and Swamp, corruption increases slightly]
         flags[kFLAGS.KAIJU_BAD_END_COUNTER]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Fuck]
@@ -404,7 +404,7 @@ export class Kaiju extends AbstractLakeContent {
         // [Corruption increases]
         flags[kFLAGS.KAIJU_BAD_END_COUNTER]++;
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Urethra Fuck]
@@ -435,7 +435,7 @@ export class Kaiju extends AbstractLakeContent {
         flags[kFLAGS.KAIJU_BAD_END_COUNTER]++;
         player.orgasm();
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Leave]
@@ -443,7 +443,7 @@ export class Kaiju extends AbstractLakeContent {
         clearOutput();
         spriteSelect(103);
         outputText("You politely decline any options and bid the green girl goodbye as you row away.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Talk]
@@ -485,7 +485,7 @@ export class Kaiju extends AbstractLakeContent {
             outputText("\n\nShe sighs, the conversation seeming to be at an end.");
             flags[kFLAGS.KAIJU_TALK_CYCLE] = 0;
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         if (player.inte < 50) dynStats("int", 1);
         if (player.lib > 50) dynStats("lib", -1);
     }
@@ -530,7 +530,7 @@ export class Kaiju extends AbstractLakeContent {
         outputText("You make your appreciation of her exhibition known, indicating that you would like her to continue on.  Smiling at your suggestion, and more than willing to give an encore performance, she brings her hands down to her trembling cock, slowly tracing a finger up the length of her shaft before grabbing onto it with one hand while the other begins to rub the tip of the head with her palm.  Her hand, still slick with her own cunt juice, slides easily across her cock.  She begins to moan again, even more lewdly than last time.  Her hips begin to buck as she practically begins to fuck her hand.  Beads of precum begin to bubble up from her cock head, and she quickly wipes it on the palm of her free hand before bringing it towards her face to lick the mess off her palm, her body trembling from the sheer delight of drinking her own pre.  \"<i>Oh that's good!</i>\" she pants, bringing her hand back down to begin stroking her throbbing dick with both hands.  \"<i>Please, please watch me cum!</i>\" the giantess begs of you as she goes into high gear, giving her cock everything she's got left.  It isn't much longer before she erupts like a geyser, spraying hermy turtle girl cum high into the air, only for it to rain back down on the green girl.  Her hands begin to slide across her torso, gently massaging the sperm into her skin.");
         // [Increase lust further, end corrupt/herm scene]
         dynStats("lib", 1, "lus", 33);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If no] (Skip corrupt/herm scene)
@@ -540,7 +540,7 @@ export class Kaiju extends AbstractLakeContent {
         outputText("\"<i>My goodness, it's so much better with a captivated audience!</i>\" she says, breathing heavily.  You thank her for the show as she places you back into your boat and giving it a push.  You row away, considering perhaps coming back for another show.");
         // [Libido is increased by 1]
         dynStats("lib", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // One off scenes
@@ -568,7 +568,7 @@ export class Kaiju extends AbstractLakeContent {
         clearOutput();
         spriteSelect(103);
         outputText("You shake your head no, politely responding that you do not want to get her off right now.  \"<i>Oh, okay. I understand,</i>\" the giantess states, looking somewhat crestfallen.  You row away, leaving her and her new addition to themselves for the time being.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Mock]
@@ -599,7 +599,7 @@ export class Kaiju extends AbstractLakeContent {
         player.orgasm();
         dynStats("cor", 1);
         flags[kFLAGS.KAIJU_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If yes]
@@ -628,7 +628,7 @@ export class Kaiju extends AbstractLakeContent {
         // [Corruption increases slightly, lust is decreased]
         player.orgasm();
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Incubi Drafts]
@@ -650,8 +650,8 @@ export class Kaiju extends AbstractLakeContent {
         let counter: number = 10;
         while (counter > 0) {
             counter--;
-            if (player.hasItem(consumables.P_DRAFT)) player.consumeItem(consumables.P_DRAFT);
-            else if (player.hasItem(consumables.INCUBID)) player.consumeItem(consumables.INCUBID);
+            if (player.hasItem(ConsumableLib.P_DRAFT)) player.consumeItem(ConsumableLib.P_DRAFT);
+            else if (player.hasItem(ConsumableLib.INCUBID)) player.consumeItem(ConsumableLib.INCUBID);
         }
         outputText("You wouldn’t have offered if you didn’t want to see a giant green futa-cock dangling between her legs.  Your declaration seems to have deepened her blush to almost beet red, but the lustful look in her eyes betrays her desire.");
         outputText("\n\nSince her hands are too large to fiddle with the small containers she has you stand on her bottom lip while she lies down, you pouring draft after draft into her open mouth.  By the time the tenth draft has been emptied the green girl can barely keep still, writhing in sexual pleasure and excitement.  She picks you up into one hand as she sits up spread legged, her other hand clasped to her pink nether regions, her palm rubbing furiously at her clit.  \"<i>Oh my goddess it feels too good!  I’m going to cum, I got to cum,</i>\" she cries out as her hand is pushed out away from her crotch by her expanding clitoris, the pink nub taking on a green color and a much more phallic shape.  As her clit-cock expands and changes she grabs it with her hand, getting in two good strokes before the change is complete and she ejaculates for the first time with her new green turtle herm cock!");
@@ -678,7 +678,7 @@ export class Kaiju extends AbstractLakeContent {
         // [Corruption increases slightly, lust is decreased]
         player.orgasm();
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Improved Bad End
@@ -715,7 +715,7 @@ export class Kaiju extends AbstractLakeContent {
         clearOutput();
         spriteSelect(103);
         outputText("Flapping your wings at max speed you beat a hasty retreat!");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [End wings]

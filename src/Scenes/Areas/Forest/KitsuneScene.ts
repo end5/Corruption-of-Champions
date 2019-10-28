@@ -123,7 +123,7 @@ export class KitsuneScene {
         outputText("There's no way you're going to go gallivanting off into the woods after some flame.  You shake your head to clear your thoughts, and warily turn away to head back toward camp.  You could almost swear for a moment the flame looked disappointed, and you chuckle lightly at such a silly thought.");
         // Advance time 1 hour, return to camp.
         if (game.inCombat) cleanupAfterCombat();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Follow] (C)
@@ -205,12 +205,12 @@ export class KitsuneScene {
         outputText("She holds out a small white package tied with string, grinning eagerly.  You hesitate, wondering whether it would be wise to take a gift from this strange woman, but before you can protest, she shoves the package into your hands.  When you look up from the featureless wrapping, there is no sign of her save for the echo of a mischievous giggle through the trees.\n\n");
         outputText("<b>You have received a Kitsune's Gift!</b>\n");
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.KITGIFT.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.KITGIFT.id;
             cleanupAfterCombat();
         }
         else {
             // add Kitsune's Gift to inventory
-            inventory.takeItem(consumables.KITGIFT, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.KITGIFT, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -628,7 +628,7 @@ export class KitsuneScene {
             game.time.hours = 6;
             game.time.days++;
             if (!game.inCombat)
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             else cleanupAfterCombat();
         }
     }
@@ -1031,17 +1031,17 @@ export class KitsuneScene {
         if (monster.hairColor == "blonde") {
             if (player.cocks.length > 0) {
                 // [Fuck Draft]
-                if (player.hasItem(consumables.F_DRAFT)) {
+                if (player.hasItem(ConsumableLib.F_DRAFT)) {
                     if (display) outputText("  You could dose her with a fuck draft...");
                     button = kitsuneButton(button, "Use F.Draft", fuckDraftBlond);
                 }
                 // [Lactaid]
-                if (player.hasItem(consumables.LACTAID)) {
+                if (player.hasItem(ConsumableLib.LACTAID)) {
                     if (display) outputText("  You could dose her with lactad...");
                     button = kitsuneButton(button, "Use L-Aid", lactaidDoseAKitSune);
                 }
                 // [Ovi Elixir]
-                if (player.hasItem(consumables.OVIELIX)) {
+                if (player.hasItem(ConsumableLib.OVIELIX)) {
                     if (display) outputText("  You could use an oviposition elixir on her...");
                     button = kitsuneButton(button, "Use OviElix", doseAKitsuneWithOviElixirs);
                 }
@@ -1489,7 +1489,7 @@ export class KitsuneScene {
         // Advance time 1hr and return to camp. +Sensitivity, +Libido
         player.orgasm();
         dynStats("lib", 1, "sen", 1);
-        player.consumeItem(consumables.F_DRAFT);
+        player.consumeItem(ConsumableLib.F_DRAFT);
         cleanupAfterCombat();
     }
 
@@ -1550,14 +1550,14 @@ export class KitsuneScene {
         let itype: ItemType;
         // Large eggs
         if (rand(3) == 0) {
-            itype = consumables.LARGE_EGGS[rand(consumables.LARGE_EGGS.length)];
+            itype = ConsumableLib.LARGE_EGGS[rand(ConsumableLib.LARGE_EGGS.length)];
         }
         // Small eggs
         else {
-            itype = consumables.SMALL_EGGS[rand(consumables.SMALL_EGGS.length)];
+            itype = ConsumableLib.SMALL_EGGS[rand(ConsumableLib.SMALL_EGGS.length)];
         }
         outputText(" about the size of ostrich eggs.  You pick one up and examine it, rolling it in your hand a bit.  A rustling in the bushes brings your focus back to the kitsune, but by the time you look up, all you see is a set of golden tails slipping into the underbrush.\n\n");
-        player.consumeItem(consumables.OVIELIX);
+        player.consumeItem(ConsumableLib.OVIELIX);
         outputText("\"<i>Take good care of my little eggies, darling!</i>\"");
         // {replace normal kitsune loot tables with randomly colored eggs}
         flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = itype.id;
@@ -1623,7 +1623,7 @@ export class KitsuneScene {
         player.orgasm();
         dynStats("lib", 1, "sen", 1);
         // consume lactaid
-        player.consumeItem(consumables.LACTAID);
+        player.consumeItem(ConsumableLib.LACTAID);
         cleanupAfterCombat();
     }
 
@@ -2187,8 +2187,8 @@ export class KitsuneScene {
         menu();
         addButton(0, "Read Books", readKitsuneBooks);
         if (flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) addButton(1, "Meditate", meditateLikeAKitsuneEhQuestionMark);
-        if (player.hasItem(useables.GLDSTAT) || flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) addButton(2, "Statue", stealAStatue);
-        addButton(4, "Leave", camp.returnToCampUseOneHour);
+        if (player.hasItem(UseableLib.GLDSTAT) || flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) addButton(2, "Statue", stealAStatue);
+        addButton(4, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [Read Books]
@@ -2201,26 +2201,26 @@ export class KitsuneScene {
             outputText("It's a rather dry read, but informative.  Chapter after chapter explains the underlying theory of magic, going to almost excruciating levels of detail.  " + ((player.inte < 50) ? "Much of it flies over your head, but the book does manage to clarify a few points.  You close the book and set it back on the shelf, feeling like you've learned something." : "Much of it is merely review, but you do manage to glean a few facts before closing the book and setting it back on the shelf."));
             // +2 INT, Advance 1hr and return to camp
             dynStats("int", 2);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else if (choice == 1) {
             outputText("It seems to be a religious text of some sort.  As you flip through the pages, you read about various rituals and scriptures, familiarizing yourself with the spirits and gods of this land.  You close the tome at last, setting it reverently back on the shelf and reflecting upon the teachings housed within.");
             // -1 COR, Advance 1hr and return to camp
             dynStats("cor", -1);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else {
             outputText("You start to flip through the pages, a deep blush slowly forming on your cheeks the further you read into what is clearly an erotic novella of some form.  Graphic descriptions of women being violated by tentacle beasts abound on almost every page, " + ((player.lib < 50) ? "and you slam the book shut before reading further, already feeling a heat building in your groin." : "and you lick your lips hungrily, poring over every line and word of lascivious prose."));
             // + 1 LIB, + 5 LUST, Advance 1hr and return to camp
             dynStats("lib", 1, "lus", 5);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
     // [Meditate]
     private meditateLikeAKitsuneEhQuestionMark(): void {
         clearOutput();
-        if (player.hasItem(consumables.FOXJEWL) && player.tailType == TAIL_TYPE_FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.earType == EARS_FOX && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
+        if (player.hasItem(ConsumableLib.FOXJEWL) && player.tailType == TAIL_TYPE_FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.earType == EARS_FOX && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
             // 20% chance if PC has fox ears, 1 or more fox tails, carries a Fox Jewel, and meets level & INT requirements for the next tail:
             outputText("You sit down carefully on a small mat in front of the shrine and clear your mind.  Closing your eyes, you meditate on the things you've learned in your journey thus far, and resolve to continue fighting against the forces of corruption that permeate the land.\n\n");
 
@@ -2240,15 +2240,15 @@ export class KitsuneScene {
                 player.perks.create(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
                 dynStats("int", 2, "lus", -20, "cor", -2);
             }
-            player.consumeItem(consumables.FOXJEWL);
-            doNext(camp.returnToCampUseOneHour);
+            player.consumeItem(ConsumableLib.FOXJEWL);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else {
             // Normal:
             outputText("You sit down carefully on a small mat in front of the shrine and clear your mind.  Closing your eyes, you meditate on the things you've learned in your journey thus far, and resolve to continue fighting against the forces of corruption that permeate the land.  As you open your eyes again, you feel as if a great burden has been lifted from your shoulders.\n\nWith a renewed vigor for your quest, you stand up and set off for camp.");
             // -2 COR, -20 LUST, +1 INT, Advance 1hr and return to camp.
             dynStats("int", 1, "lus", -20, "cor", -2);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -2274,7 +2274,7 @@ export class KitsuneScene {
         outputText("The thought of how many gems you'll be able to get for it is enough to quickly suppress those feelings, avarice winning out over guilt.");
         // +10 COR, add Gold Statue to inventory, Advance 1hr and return to camp
         dynStats("lus", 10);
-        inventory.takeItem(useables.GLDSTAT, camp.returnToCampUseOneHour);
+        Inventory.takeItem(UseableLib.GLDSTAT, Camp.returnToCampUseOneHour);
         flags[kFLAGS.TOOK_KITSUNE_STATUE] = 1;
     }
 
@@ -2284,8 +2284,8 @@ export class KitsuneScene {
         outputText("Regretting your decision, you replace the statue on the pedestal, your guilty conscience winning out over greed today.");
         // Advance 1hr and return to camp.
         flags[kFLAGS.TOOK_KITSUNE_STATUE] = 0;
-        player.consumeItem(useables.GLDSTAT);
-        doNext(camp.returnToCampUseOneHour);
+        player.consumeItem(UseableLib.GLDSTAT);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Use:

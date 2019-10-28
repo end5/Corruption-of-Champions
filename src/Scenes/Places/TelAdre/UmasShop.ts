@@ -129,7 +129,7 @@ export class UmasShop {
 
         // Player returns to Camp
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /**
@@ -355,7 +355,7 @@ export class UmasShop {
             outputText("Wishing her well, you calmly let yourself out of the shop and head back to camp.");
 
             menu();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -416,7 +416,7 @@ export class UmasShop {
         // Apply bonus & back to camp!
         applyMassageBonus(selectedMassage);
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public static MAX_MASSAGE_BONUS_DURATION: number = 24;			// Duration of the bonus
@@ -721,7 +721,7 @@ export class UmasShop {
             outputText("Uma sighs, \"It's okay, dear.  Just come back when you do, my doors are always open.\"");
 
             menu();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -810,7 +810,7 @@ export class UmasShop {
         applyNeedlework(selectedSession);
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /**
@@ -856,7 +856,7 @@ export class UmasShop {
         outputText("You promise you'll try, and then head back to camp.");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /**
@@ -883,7 +883,7 @@ export class UmasShop {
         outputText("You promise that you will, and then head out of the quaint little clinic and back to camp.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /**
@@ -907,7 +907,7 @@ export class UmasShop {
      */
     public talkLoppeJoiner(): void {
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // addButton(1, "Debugz", talkMenu);
     }
 
@@ -1361,7 +1361,7 @@ export class UmasShop {
         outputText("You tell her to keep hoping; as strong a warrior as Uma described her to be, you're sure that the bunny-herm is still out there, somewhere.  You politely withdraw to give Uma a chance to compose herself, heading back to camp.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /**
@@ -1529,7 +1529,7 @@ export class UmasShop {
         player.hoursSinceCum = Math.ceil(hoursSinceCum * 0.75);
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public sexGetFingered(): void {
@@ -1633,7 +1633,7 @@ export class UmasShop {
         dynStats("lust=", 0);
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private sexHandjob(): void {
@@ -1706,7 +1706,7 @@ export class UmasShop {
         dynStats("lust=", 0);
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Needs Cock.
     private sexGetABJFromDisMilfyLesboSlut(): void {
@@ -1876,7 +1876,7 @@ export class UmasShop {
         dynStats("lust=", 0);
         flags[kFLAGS.UMA_TIMES_SUCKED_YOU]++;
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private sexEatHerOut(): void {
         clearOutput();
@@ -1923,7 +1923,7 @@ export class UmasShop {
         dynStats("lust", 30);
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
 
     }
     /**

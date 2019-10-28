@@ -166,9 +166,9 @@ export class GooGirl extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 3;
         this.gems = rand(5) + 1;
-        this.drop = new ChainedDrop().add(weapons.PIPE, 1 / 10)
-            .add(consumables.WETCLTH, 1 / 2)
-            .elseDrop(useables.GREENGL);
+        this.drop = new ChainedDrop().add(WeaponLib.PIPE, 1 / 10)
+            .add(ConsumableLib.WETCLTH, 1 / 2)
+            .elseDrop(UseableLib.GREENGL);
         /* These are actually green slime functions and were never called in GooGirl due to override of performCombatAction
                     this.special1 = 5040;
                     this.special2 = 5039;

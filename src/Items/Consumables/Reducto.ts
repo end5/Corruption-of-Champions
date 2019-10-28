@@ -36,7 +36,7 @@ export class Reducto extends Consumable {
         if (game.player.ballSize < 1) game.player.ballSize = 1;
         outputText("You feel your scrotum shift, shrinking down along with your " + ballsDescriptLight(game.player) + ".  Within a few seconds the paste has been totally absorbed and the shrinking stops.");
         dynStats("lib", -2, "lus", -10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private reductoBreasts(): void {
@@ -49,7 +49,7 @@ export class Reducto extends Consumable {
         }
         outputText("\nThe last of it wicks away into your skin, completing the changes.");
         dynStats("sen", -2, "lus", -5);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private reductoButt(): void {
@@ -69,7 +69,7 @@ export class Reducto extends Consumable {
             outputText("After a few seconds your " + buttDescription(game.player) + " has shrunk to a much smaller size!");
         }
         dynStats("lib", -2, "lus", -10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private reductoClit(): void {
@@ -80,7 +80,7 @@ export class Reducto extends Consumable {
         game.player.clitLength = int(game.player.clitLength * 100) / 100;
         outputText("Your " + clitDescription(game.player) + " shrinks rapidly, dwindling down to almost half its old size before it finishes absorbing the paste.");
         dynStats("sen", 2, "lus", 10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private reductoCock(): void {
@@ -105,7 +105,7 @@ export class Reducto extends Consumable {
             }
         }
         dynStats("sen", -2, "lus", -10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private reductoHips(): void {
@@ -125,7 +125,7 @@ export class Reducto extends Consumable {
             outputText("After a few seconds your [hips] have shrunk to a much smaller size!");
         }
         dynStats("lib", -2, "lus", -10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private reductoNipples(): void {
@@ -141,12 +141,12 @@ export class Reducto extends Consumable {
             game.player.nippleLength /= 2;
         }
         dynStats("sen", -5, "lus", -5);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private reductoCancel(): void {
         clearOutput();
         outputText("You put the salve away.\n\n");
-        inventory.returnItemToInventory(this);
+        Inventory.returnItemToInventory(this);
     }
 }

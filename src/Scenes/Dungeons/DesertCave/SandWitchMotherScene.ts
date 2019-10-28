@@ -1213,7 +1213,7 @@ export function getLactaidFromWitches(): void {
     outputText("\n\nYou decline the offer and repeat your request for Lactaid, which sours the woman's expression slightly.  The corners of her mouth are still upturned in a half smirk when she procures a bottle and hands it to you.  After, she smooths her hand across her robed lap, and for a split second, you wonder if she's trying to beckon you to take a seat there...  You shake your head as you examine the bottle in your hand.  You got what you came for.\n\n");
     flags[kFLAGS.SAND_WITCH_LOOT_TAKEN]++;
     // Receive one lactaid
-    inventory.takeItem(consumables.LACTAID, playerMenu);
+    Inventory.takeItem(ConsumableLib.LACTAID, playerMenu);
 }
 // *Labova
 // >Get Labova
@@ -1231,7 +1231,7 @@ export function getLaBova(): void {
     outputText("\n\n\"<i>That is good.  The ways of beasts offer many boons.  This one is quite useful for enhancing lactation, for instance.  However, there is great risk in reveling in such transformation.  Be sure that you don't lose yourself to it,</i>\" the statuesque sorceress warns.");
     outputText("\n\nYou nod, and she gives you the La Bova.\n\n");
     flags[kFLAGS.SAND_WITCH_LOOT_TAKEN]++;
-    inventory.takeItem(consumables.LABOVA_, playerMenu);
+    Inventory.takeItem(ConsumableLib.LABOVA_, playerMenu);
 }
 
 // TURN EM OFF!
@@ -1264,10 +1264,10 @@ export function takeLaBovaOrLactaid(lactaid: boolean = true): void {
     outputText("Smirking, you circle around the Sand Mother's throne towards the secure chests behind her.  She stiffens when you come close but doesn't make a move.  The poor little witch is afraid of you, and with good reason.  You gather the item you came for, condescending patting the sorceress's platinum tresses on your way back in front of her throne.  She glares at you.\n\n");
     // New lines and take appropriate item.
     if (lactaid) {
-        inventory.takeItem(consumables.LACTAID, playerMenu);
+        Inventory.takeItem(ConsumableLib.LACTAID, playerMenu);
     }
     else {
-        inventory.takeItem(consumables.LABOVA_, playerMenu);
+        Inventory.takeItem(ConsumableLib.LABOVA_, playerMenu);
     }
 
 }

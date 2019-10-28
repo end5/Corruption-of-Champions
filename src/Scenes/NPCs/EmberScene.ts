@@ -194,7 +194,7 @@ export class EmberScene implements TimeAwareInterface {
         if (flags[kFLAGS.EMBER_OVIPOSITION] > 0 && flags[kFLAGS.EMBER_GENDER] >= 2 && !pregnancy.isPregnant) egg = emberIsAnEggFactory;
         if (flags[kFLAGS.EMBER_MILK] > 0) milk = getMilkFromEmber;
         choices("Appearance", embersAppearance, "Talk", talkToEmber, "DrinkBlood", bloodForTheBloodGod, "Drink Milk", milk, "Get Egg", egg,
-            "Sex", emberSexMenu, "Spar", decideToSparEmbra, "", null, "", null, "Back", camp.campFollowers);
+            "Sex", emberSexMenu, "Spar", decideToSparEmbra, "", null, "", null, "Back", Camp.campFollowers);
     }
 
     // Approach for sex - initial output when selecting [Sex] menu (Z)
@@ -273,7 +273,7 @@ export class EmberScene implements TimeAwareInterface {
         addButton(5, "Get Eaten Out", getEatenOut);
         addButton(6, "Penetrate Her", penetrateHer);
         addButton(7, "Get Penetrated", getPenetrated);
-        if (emberAffection() >= 95 && player.cocks.length > 0 && player.cocks.cockThatFits(emberVaginalCapacity()) >= 0 && (player.hasItem(consumables.L_DRAFT) || player.lib >= 50 || player.minLust() >= 40))
+        if (emberAffection() >= 95 && player.cocks.length > 0 && player.cocks.cockThatFits(emberVaginalCapacity()) >= 0 && (player.hasItem(ConsumableLib.L_DRAFT) || player.lib >= 50 || player.minLust() >= 40))
             addButton(8, "LustyFuck", highAffectionEmberLustFuck);
         addButton(9, "Leave", emberCampMenu);
 
@@ -309,7 +309,7 @@ export class EmberScene implements TimeAwareInterface {
         clearOutput();
         outputText("You can't decide what to do right now, so you leave the egg where it is and return to your camp.");
         // (You can restart this quest by randomly encountering this chamber again. It continues to reappear until you either Destroy or Take the egg.)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Destroy it=] (Z)
@@ -320,7 +320,7 @@ export class EmberScene implements TimeAwareInterface {
         outputText("\n\nWith nothing else in the cave, you prepare to leave, but find yourself stopped by a sudden thought.  The egg yolk, though raw, looks strangely appetizing...");
         flags[kFLAGS.EGG_BROKEN] = 1;
         // [Eat][Leave]
-        simpleChoices("Eat It", eatEmbersYolkLikeAnEvenBiggerDick, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Eat It", eatEmbersYolkLikeAnEvenBiggerDick, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [=Eat=]
@@ -337,7 +337,7 @@ export class EmberScene implements TimeAwareInterface {
         // (also slimefeed!)
         dynStats("str", 5 + rand(5), "tou", 5 + rand(5), "int", 5 + rand(5), "cor", 20);
         player.slimeFeed();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Yes]
@@ -352,7 +352,7 @@ export class EmberScene implements TimeAwareInterface {
         player.gems -= 200;
         statScreenRefresh();
         player.keyItems.remove("Dragon Eggshell");
-        inventory.takeItem(weapons.DRGNSHL, TelAdre.armorShop);
+        Inventory.takeItem(WeaponLib.DRGNSHL, TelAdre.armorShop);
     }
 
     // Suggested Reward:
@@ -387,7 +387,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\n\nYou look around over and over and over... but no matter how much you look you don't see anything at all that could even resemble some kind of magic rune, or activation button, or anything that could disable the ward.  You groan in frustration.");
             outputText("\n\nIt looks like you will have to leave the egg for now until you're better versed in magical methods... or strong enough to knock down a mountain!  You roll it back down the corridor into its shrine to prevent its being seen from the cave entrance.");
             // Same as taking the Leave option. Must find the egg again to take it.
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("\n\n(<b>You have now begun the Mysterious Egg quest.  The Mysterious Egg is added to the <i>Items</i> at the Camp.</b>)");
@@ -395,7 +395,7 @@ export class EmberScene implements TimeAwareInterface {
         player.keyItems.create("Dragon Egg", 0, 0, 0, 0);
         flags[kFLAGS.TOOK_EMBER_EGG] = 1;
         flags[kFLAGS.EMBER_COR] = 50;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Modified Camp Description (Z)
@@ -508,19 +508,19 @@ export class EmberScene implements TimeAwareInterface {
         let fap: () => void = null;
         if (player.lust >= 33) fap = masturbateOntoAnEgg;
         let draft: () => void = null;
-        if (player.hasItem(consumables.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
+        if (player.hasItem(ConsumableLib.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
         let pDraft: () => void = null;
-        if (player.hasItem(consumables.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
+        if (player.hasItem(ConsumableLib.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
         let milk: () => void = null;
-        if (player.hasItem(consumables.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
+        if (player.hasItem(ConsumableLib.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
         let pMilk: () => void = null;
-        if (player.hasItem(consumables.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
+        if (player.hasItem(ConsumableLib.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
         let hair: () => void = null;
-        if (player.hasItem(consumables.EXTSERM)) hair = hairExtensionSerum;
+        if (player.hasItem(ConsumableLib.EXTSERM)) hair = hairExtensionSerum;
         let ovi: () => void = null;
-        if (player.hasItem(consumables.OVIELIX)) ovi = useOviElixerOnEmber;
+        if (player.hasItem(ConsumableLib.OVIELIX)) ovi = useOviElixerOnEmber;
         let lactaid: () => void = null;
-        if (player.hasItem(consumables.LACTAID)) lactaid = useLactaidOnEmber;
+        if (player.hasItem(ConsumableLib.LACTAID)) lactaid = useLactaidOnEmber;
         let hatch: () => void = null;
         if (flags[kFLAGS.EMBER_EGG_FLUID_COUNT] >= 5 && flags[kFLAGS.EMBER_JACKED_ON] > 0 && flags[kFLAGS.EMBER_GENDER] > 0) {
             hatch = hatchZeMuzzles;
@@ -540,19 +540,19 @@ export class EmberScene implements TimeAwareInterface {
         let fap: () => void = null;
         if (player.lust >= 33) fap = masturbateOntoAnEgg;
         let draft: () => void = null;
-        if (player.hasItem(consumables.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
+        if (player.hasItem(ConsumableLib.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
         let pDraft: () => void = null;
-        if (player.hasItem(consumables.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
+        if (player.hasItem(ConsumableLib.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
         let milk: () => void = null;
-        if (player.hasItem(consumables.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
+        if (player.hasItem(ConsumableLib.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
         let pMilk: () => void = null;
-        if (player.hasItem(consumables.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
+        if (player.hasItem(ConsumableLib.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
         let hair: () => void = null;
-        if (player.hasItem(consumables.EXTSERM)) hair = hairExtensionSerum;
+        if (player.hasItem(ConsumableLib.EXTSERM)) hair = hairExtensionSerum;
         let ovi: () => void = null;
-        if (player.hasItem(consumables.OVIELIX)) ovi = useOviElixerOnEmber;
+        if (player.hasItem(ConsumableLib.OVIELIX)) ovi = useOviElixerOnEmber;
         let lactaid: () => void = null;
-        if (player.hasItem(consumables.LACTAID)) lactaid = useLactaidOnEmber;
+        if (player.hasItem(ConsumableLib.LACTAID)) lactaid = useLactaidOnEmber;
         let hatch: () => void = null;
         if (flags[kFLAGS.EMBER_EGG_FLUID_COUNT] >= 5 && flags[kFLAGS.EMBER_JACKED_ON] > 0 && flags[kFLAGS.EMBER_GENDER] > 0) hatch = hatchZeMuzzles;
 
@@ -569,19 +569,19 @@ export class EmberScene implements TimeAwareInterface {
     private leaveWithoutUsingAnEmberItem(): void {
         clearOutput();
         outputText("You shake your head; it would probably be best not to tamper with it. Returning the items to your pockets, you leave the egg alone.  As you put them away, the egg's glow slows down dramatically, almost as if it were feeling... disappointment?");
-        doNext(inventory.inventoryMenu);
+        doNext(Inventory.inventoryMenu);
     }
 
     // Incubus Draft/Purified Incubus Draft (Z)
     private useIncubusDraftOnEmber(purified: boolean = false): void {
         clearOutput();
         if (purified) {
-            player.consumeItem(consumables.P_DRAFT);
+            player.consumeItem(ConsumableLib.P_DRAFT);
             flags[kFLAGS.EMBER_COR] -= 10;
             if (flags[kFLAGS.EMBER_COR] < 0) flags[kFLAGS.EMBER_COR] = 0;
         }
         else {
-            player.consumeItem(consumables.INCUBID);
+            player.consumeItem(ConsumableLib.INCUBID);
             flags[kFLAGS.EMBER_COR] += 10;
             if (flags[kFLAGS.EMBER_COR] > 100) flags[kFLAGS.EMBER_COR] = 100;
         }
@@ -602,12 +602,12 @@ export class EmberScene implements TimeAwareInterface {
     private useSuccubiMilkOnEmber(purified: boolean = false): void {
         clearOutput();
         if (purified) {
-            player.consumeItem(consumables.P_S_MLK);
+            player.consumeItem(ConsumableLib.P_S_MLK);
             flags[kFLAGS.EMBER_COR] -= 10;
             if (flags[kFLAGS.EMBER_COR] < 0) flags[kFLAGS.EMBER_COR] = 0;
         }
         else {
-            player.consumeItem(consumables.SUCMILK);
+            player.consumeItem(ConsumableLib.SUCMILK);
             flags[kFLAGS.EMBER_COR] += 10;
             if (flags[kFLAGS.EMBER_COR] > 100) flags[kFLAGS.EMBER_COR] = 100;
         }
@@ -629,7 +629,7 @@ export class EmberScene implements TimeAwareInterface {
     // Ovi Elixir (Z)
     private useOviElixerOnEmber(): void {
         clearOutput();
-        player.consumeItem(consumables.OVIELIX);
+        player.consumeItem(ConsumableLib.OVIELIX);
         // max uses 1
         outputText("Uncorking the crystalline bottle, you pour the strange green liquid inside onto the egg, briefly wondering what on earth it could want with this stuff, before catching your fallacy.  It's an egg, right?  It can't want things...  The fluid spills all over the shell, coating it, and then seeps inside, leaving the egg's previously pale surface marked with small green splotches.");
         flags[kFLAGS.EMBER_OVIPOSITION] = 1;
@@ -640,7 +640,7 @@ export class EmberScene implements TimeAwareInterface {
     // Lactaid (Z)
     private useLactaidOnEmber(): void {
         clearOutput();
-        player.consumeItem(consumables.LACTAID);
+        player.consumeItem(ConsumableLib.LACTAID);
         // max uses 1
         outputText("Feeling a little bemused, you pour the creamy fluid onto the egg.  It is absorbed through the shell, and a spiderwork of creamy yellow vein-like markings suddenly forms on the shell's surface.");
         flags[kFLAGS.EMBER_MILK] = 1;
@@ -651,7 +651,7 @@ export class EmberScene implements TimeAwareInterface {
     // Hair Extension Serum (Z)
     private hairExtensionSerum(): void {
         clearOutput();
-        player.consumeItem(consumables.EXTSERM);
+        player.consumeItem(ConsumableLib.EXTSERM);
         // max uses 2
         outputText("Wondering at your motivations, you pour the goblin gunk onto the egg.  Most rolls harmlessly off of the shell, leaving you annoyed at the waste... until you see ");
         if (flags[kFLAGS.EMBER_HAIR] == 0) {
@@ -695,7 +695,7 @@ export class EmberScene implements TimeAwareInterface {
         clearOutput();
         if (player.gender == 0) {
             outputText("The light pulses decrease in speed as you disrobe and expose your bare crotch, leaving you disappointed after summoning your perversity to bring you this far.  You feel as if you've let it down somehow...  This is confusing!  You decide to go away and deal with this fickle egg another time.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Nothing changes. PC can go do something else, lose no time.
@@ -760,7 +760,7 @@ export class EmberScene implements TimeAwareInterface {
         flags[kFLAGS.EMBER_JACKED_ON] = 1;
         // INCREMENT EMBER FEEDINZ
         flags[kFLAGS.EMBER_EGG_FLUID_COUNT]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // HATCH DAT BITCH
@@ -862,7 +862,7 @@ export class EmberScene implements TimeAwareInterface {
         outputText("\n\n(<b>Ember has been gained as a follower!</b>)");
         flags[kFLAGS.EMBER_HATCHED] = 1;
         player.keyItems.remove("Dragon Egg");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Appearance (shows Ember's appearance, always available)
@@ -995,23 +995,23 @@ export class EmberScene implements TimeAwareInterface {
         if (player.isPregnant()) { // Extra check might protect against inappropriate Ember complaints
             if (flags[kFLAGS.EMBER_OVI_BITCHED_YET] == 0 && player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS) {
                 emberBitchesAboutPCBeingFullOfEggs();
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             if (player.pregnancyIncubation < 200 && player.pregnancyType != PregnancyStore.PREGNANCY_EMBER && flags[kFLAGS.EMBER_BITCHES_ABOUT_PREGNANT_PC] == 0) {
                 manEmberBitchesAboutPCPregnancy();
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             if (player.pregnancyType == PregnancyStore.PREGNANCY_EMBER && player.pregnancyType < 300 && flags[kFLAGS.EMBER_TALKS_TO_PC_ABOUT_PC_MOTHERING_DRAGONS] == 0) {
                 emberTalksToPCAboutPCDragoNPregnancy();
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
         }
         if (flags[kFLAGS.EMBER_PREGNANT_TALK] == 0 && pregnancy.event > 1) {
             emberIsPregnantFirstTimeTalkScene();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         clearOutput();
         outputText("What will you talk about?");
@@ -1063,7 +1063,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\n\nYou ask if " + emberMF("he", "she") + "'s all right.  \"<i>Huh?  Yes, I'm fine!  Anyways, lesson's over.</i>\"  Ember hurriedly goes back inside " + emberMF("his", "her") + " den.");
             emberAffection(5);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Exploration (Z)
@@ -1135,7 +1135,7 @@ export class EmberScene implements TimeAwareInterface {
             }
         }
         outputText("</i>\"");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Talk about Yourself (Z)
@@ -1146,7 +1146,7 @@ export class EmberScene implements TimeAwareInterface {
         // (Low Affection)
         if (emberAffection() <= 25) {
             outputText("\n\n\"<i>You're a waste of time,</i>\" Ember says nonchalantly.  " + emberMF("He", "She") + " walks past you and then flies off.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // There's a points system here, that can range from 0 to 8, this is used to check Ember's final answer after " + emberMF("he","she") + "'s done examining the PC.
@@ -1234,7 +1234,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\"<i>You're quite a catch... if you strolled down the street you'd have dragons fawning all over you...</i>\"  Realizing what " + emberMF("he", "she") + " just said, Ember coughs furiously.  \"<i>I-I mean... lesser dragons might fawn all over you.  You don't meet my standards!</i>\"");
             emberAffection(5);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ember Interactions: Special Events (edited, but pending modifications -Z)
@@ -1453,7 +1453,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\n\nYou gently ask what " + emberMF("he", "she") + " means by \"<i>strange ideas</i>\".");
             outputText("\n\n\"<i>The ones you're getting!</i>\" Ember blurts out, before spinning on " + emberMF("his", "her") + " heels and leaving you alone. You watch " + emberMF("him", "her") + " go and smile.");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private drinkDeeplyOfDagronBlud(): void {
@@ -1472,7 +1472,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\n\nAs you break the kiss; Ember leans over, supporting " + emberMF("him", "her") + "self on your shoulders.  \"<i>Ugh... I guess we overdid it... I feel woozy.</i>\"");
             outputText("\n\nYou quickly offer " + emberMF("him", "her") + " a helping hand, inquiring if " + emberMF("he", "she") + " is all right.  Ember accepts your help, using your hand to balance " + emberMF("him", "her") + "self.  \"<i>I-I'll be fine... just, no more sharing for the day...</i>\"");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // TF messages (Z)
@@ -1738,7 +1738,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\n\nEmber mumbles quietly, \"<i>Next time, fertilize it for me will you?</i>\"  You start at that; did she really just say it aloud?  But, knowing her temper, you decide against asking.  ");
             // git a dragon egg, small libido-based lust damage
             dynStats("lus", 10 + player.lib / 10);
-            inventory.takeItem(consumables.DRGNEGG, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.DRGNEGG, Camp.returnToCampUseOneHour);
         }
         // (Medium Affection)
         else if (emberAffection() < 75) {
@@ -1788,7 +1788,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\n\nYou just smile and tell her you understand exactly what she meant.  One quick kiss and you head back to the camp proper, leaving one adorably flustered dragon behind you.  ");
             // git a dragon egg, small libido-based lust damage
             dynStats("lus", 10 + player.lib / 10);
-            inventory.takeItem(consumables.DRGNEGG, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.DRGNEGG, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1800,7 +1800,7 @@ export class EmberScene implements TimeAwareInterface {
         if (flags[kFLAGS.EMBER_GENDER] == 3) outputText(".. it even drips with some kind of off-white fluid.");
         outputText("  \"<i>H-here's your egg.  Use it while it's fresh, okay?</i>\"  Her eyes glaze over a bit at the suggestion, and she giggles.  ");
         // git a dragon egg, no Ember affection change
-        inventory.takeItem(consumables.DRGNEGG, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.DRGNEGG, Camp.returnToCampUseOneHour);
     }
 
     // [Watch]
@@ -1846,7 +1846,7 @@ export class EmberScene implements TimeAwareInterface {
         outputText("\n\nYes, you did, because she asked and she seemed to need your help, as you point out.  Ember doesn't bother coming up with something to say, she just unfurls her wings and jumps into the air with a gust of wind.");
         outputText("\n\nYou shake your head and sigh softly.  ");
         // git an egg, moderate lib-based lust damage, Ember affection up
-        inventory.takeItem(consumables.DRGNEGG, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.DRGNEGG, Camp.returnToCampUseOneHour);
         emberAffection(5);
     }
 
@@ -2088,7 +2088,7 @@ export class EmberScene implements TimeAwareInterface {
             }
         }
         emberAffection(1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // reset Dragonbreath counter to ready, increase lust slightly if low or med affection, add heat/rut if high dragon-score, damage toughness slightly if high affection and low PC corruption
         if (emberAffection() < 75) dynStats("lus", 20);
         fatigue(-50);
@@ -2196,7 +2196,7 @@ export class EmberScene implements TimeAwareInterface {
         // (Low affection)
         if (emberAffection() <= 25) {
             outputText("\n\n\"<i>What!?  That is just gross!  Not to mention, it'd never fit!</i>\"  Ember doesn't bother waiting for your reply, shooing you out of " + emberMF("his", "her") + " den.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (Moderate affection)
@@ -2329,7 +2329,7 @@ export class EmberScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", 3);
         player.slimeFeed();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Blow Ember] - your shipment of dragon dildoes has arrived
@@ -2432,7 +2432,7 @@ export class EmberScene implements TimeAwareInterface {
         player.slimeFeed();
         emberAffection(6);
         dynStats("lus", 10 + player.lib / 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Blown - put your dick in the knife drawer, it'll be fun! (Z, with reservation)
@@ -2444,7 +2444,7 @@ export class EmberScene implements TimeAwareInterface {
         // (Low Affection)
         if (emberAffection() <= 25) {
             outputText("\n\n\"<i>Ah.  And... what makes you think I would ever consider that?</i>\"  Ember huffs indignantly and walks away.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (Medium Affection)
@@ -2544,7 +2544,7 @@ export class EmberScene implements TimeAwareInterface {
         // lose lust, reset hours since cum
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pitch Anal - horses are terrible people, so no centaurs unless rewritten (Z)
@@ -2556,7 +2556,7 @@ export class EmberScene implements TimeAwareInterface {
         // (Low Affection)
         if (emberAffection() <= 25) {
             outputText("\n\n" + emberMF("His", "Her") + " eyes widen.  \"<i>Never!  N-E-V-E-R!  Not even over my dead body!</i>\" Ember exclaims.  The dragon unfurls " + emberMF("his", "her") + " wings and lifts off, beating the air furiously.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (Medium Affection)
@@ -2698,7 +2698,7 @@ export class EmberScene implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Eat Ember Out - b-baka! (Z)
@@ -2778,7 +2778,7 @@ export class EmberScene implements TimeAwareInterface {
         player.slimeFeed();
         emberAffection(6);
         dynStats("lus", 10 + player.lib / 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Eaten Out - actually halfway likeable
@@ -2790,7 +2790,7 @@ export class EmberScene implements TimeAwareInterface {
         if (emberAffection() <= 25) {
             outputText("\n\n\"<i>No way!  I have no idea what's been there!  Plus, that is just gross!</i>\"  Ember spins on " + emberMF("his", "her") + " heels and walks away.");
             // End scene
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (Medium Affection)
@@ -2845,7 +2845,7 @@ export class EmberScene implements TimeAwareInterface {
         outputText("\n\nYou smile, hating to see " + emberMF("him", "her") + " go, but so loving to watch " + emberMF("him", "her") + " leave.  Shaking off your pleasurable fantasies, you manage to pull yourself back upright, redress yourself, and return to camp.");
         // minus some fukkin' lust, reset hours since cum
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Penetrate Her - seems not to accommodate centaurs, more's the pity (Z)
@@ -2859,7 +2859,7 @@ export class EmberScene implements TimeAwareInterface {
         // (Low Affection)
         if (emberAffection() <= 25) {
             outputText("\n\n\"<i>By you?  Ha!  Funny joke!</i>\"  Ember laughs forcibly as she walks away.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (Medium Affection)
@@ -2918,7 +2918,7 @@ export class EmberScene implements TimeAwareInterface {
             if (player.cocks.length == 1) outputText("that");
             else outputText("those");
             outputText(" and then come back!</i>\"  Ember turns on her heels and walks away, moodier than usual.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (else if PC has multiple fit cocks){
@@ -3005,7 +3005,7 @@ export class EmberScene implements TimeAwareInterface {
             player.orgasm();
             dynStats("sen", -2);
             emberAffection(-5);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT]++;
             return;
         }
@@ -3063,7 +3063,7 @@ export class EmberScene implements TimeAwareInterface {
 
         outputText("\n\nYour decency restored, you return to camp.");
         flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT]++;
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     // Get Penetrated - also horse-proof, sorry folks! (Z)
@@ -3078,7 +3078,7 @@ export class EmberScene implements TimeAwareInterface {
         // (Low Affection)
         if (emberAffection() <= 25) {
             outputText("\n\n\"<i>Ha!  I'm much more than you can handle!  Talk to me when you have something that can take even half of me.</i>\"  Ember mocks you, as " + emberMF("he", "she") + " walks away.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (Medium Affection)
@@ -3194,7 +3194,7 @@ export class EmberScene implements TimeAwareInterface {
 
         outputText("\n\nEmber's eyes widen in terror.  \"<i>What!?  No!  Not again!</i>\" Ember screams, getting up and wasting no time in bolting away, setting into a unsteady flight as soon as " + emberMF("he", "she") + "'s gotten far enough.  You wait until " + emberMF("he", "she") + "'s gone, and then burst out laughing.  Totally worth it... even if you are, as the saying goes, going to be sleeping on the couch for a week as a result.");
         // slimefeed, preg check, reduce lust, reset hours since cum, drain massive libido
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Breeding Setup
@@ -3923,7 +3923,7 @@ export class EmberScene implements TimeAwareInterface {
             }
             else {
                 outputText("\n\nEven if you can't, stamina won't be a problem.  You casually rummage through your pouches and fetch a vial of Lust Draft, displaying it to the dragon.");
-                player.consumeItem(consumables.L_DRAFT);
+                player.consumeItem(ConsumableLib.L_DRAFT);
             }
         }
         else {
@@ -3932,7 +3932,7 @@ export class EmberScene implements TimeAwareInterface {
             outputText("\n\nYou nod");
             if (player.lib < 50 && player.minLust() < 40) {
                 outputText(", grabbing a vial of Lust Draft from your pouches");
-                player.consumeItem(consumables.L_DRAFT);
+                player.consumeItem(ConsumableLib.L_DRAFT);
             }
             outputText(".");
         }
@@ -4183,7 +4183,7 @@ export class EmberScene implements TimeAwareInterface {
         if (player.cor < 50) outputText("thank her for being so understanding");
         else outputText("grunt an acknowledgement");
         outputText(" and then gather your things before heading off to wash yourself down.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Yes=]
@@ -4388,6 +4388,6 @@ export class EmberScene implements TimeAwareInterface {
         // 2 hours pass, PC's fatigue is healed some, Libido is reduced.
         fatigue(-20);
         dynStats("lib", -1);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 }

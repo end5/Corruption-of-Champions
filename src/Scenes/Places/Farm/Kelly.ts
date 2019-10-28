@@ -64,7 +64,7 @@ export class Kelly implements TimeAwareInterface {
     // End of Interface Implementation
 
     private hasPinkEgg(): boolean {
-        return (player.hasItem(consumables.PINKEGG) || player.hasItem(consumables.L_PNKEG));
+        return (player.hasItem(ConsumableLib.PINKEGG) || player.hasItem(ConsumableLib.L_PNKEG));
     }
 
     // Encounters
@@ -100,7 +100,7 @@ export class Kelly implements TimeAwareInterface {
         if (flags[kFLAGS.KELT_BREAK_LEVEL] == 0) {
             outputText("You are more and more annoyed by Kelt's rudeness and dick-waving.  The centaur may be imposing at first and his archery skills are impressive, but you're sure that behind his false display of virility, there's nothing an experienced champion like you can't deal with.  With your superior strength and speed, you could probably take him by surprise and teach him a good lesson.  Of course, you won't ever be able to learn archery from him after that.");
             // [if (PC doesn't have items)
-            if (!(player.hasItem(consumables.SUCMILK, 15) || (player.hasItem(consumables.SUCMILK, 10) && hasPinkEgg()) || (player.hasItem(consumables.P_S_MLK, 10) && hasPinkEgg()) || player.hasItem(consumables.P_S_MLK, 15))) {
+            if (!(player.hasItem(ConsumableLib.SUCMILK, 15) || (player.hasItem(ConsumableLib.SUCMILK, 10) && hasPinkEgg()) || (player.hasItem(ConsumableLib.P_S_MLK, 10) && hasPinkEgg()) || player.hasItem(ConsumableLib.P_S_MLK, 15))) {
                 outputText(" Unfortunately, you don't have anything that could be useful to tame his arrogant maleness.  You want items that would make his disgracious horsecock and balls shrink.  A nice set of breasts on his human chest would be fine, too.  You know you're going to need A LOT of such items - or very potent ones.");
                 menu();
                 addButton(0, "Next", Farm.farmExploreEncounter);
@@ -118,7 +118,7 @@ export class Kelly implements TimeAwareInterface {
             outputText("You set out to go get Kelt, eager to teach this slut another lesson of your own.  You explore the farm for a bit before spotting the centaur behind the barn.  However, Kelt seems to have changed since last time: he somehow changed back his gender.  That rebellious little bitch!  Although he doesn't look as aggressively masculine as before, and his chest still bears some man-tits, he has gotten back his stern, rude face and you can clearly see a fat prick hanging from his backside.  It doesn't seem to be as big as it was before, though.  He must have grown it in a hurry.");
             // back to farm]
             // [if you don't have the items:
-            if (!(player.hasItem(consumables.SUCMILK, 10) || player.hasItem(consumables.P_S_MLK, 10) || (player.hasItem(consumables.SUCMILK, 5) && hasPinkEgg()) || (player.hasItem(consumables.P_S_MLK, 5) && hasPinkEgg()))) {
+            if (!(player.hasItem(ConsumableLib.SUCMILK, 10) || player.hasItem(ConsumableLib.P_S_MLK, 10) || (player.hasItem(ConsumableLib.SUCMILK, 5) && hasPinkEgg()) || (player.hasItem(ConsumableLib.P_S_MLK, 5) && hasPinkEgg()))) {
                 outputText("\n\nYou'd gladly teach him another lesson so he can keep his true gender and learn his place, but you don't have anything to turn him female again.  You should fetch appropriate items to begin the 'lesson'.</i>\"");
                 // back to farm]
                 menu();
@@ -132,7 +132,7 @@ export class Kelly implements TimeAwareInterface {
         else if (flags[kFLAGS.KELT_BREAK_LEVEL] == 2) {
             outputText("You saunter up to the back of the farm, eager to meet the centaur-slut for another 'lesson'.  The creature is quite a weird sight when you spot her: instead of the gorgeous woman whose face you had splattered with spooge, what you see is an androgynous hybrid sporting a tiny, ridiculous microdick and a little pair of tits that can't fill more than a B-cup bra.  Even the face is ambiguous about its gender.  Although Kelly is now strong in the centaur's body, Kelt seems to have regained a little control.  You have to fix this.");
             // [if (less than 5 succubi milk)
-            if (!(player.hasItem(consumables.SUCMILK, 5) || player.hasItem(consumables.P_S_MLK, 5))) {
+            if (!(player.hasItem(ConsumableLib.SUCMILK, 5) || player.hasItem(ConsumableLib.P_S_MLK, 5))) {
                 outputText("You must acquire enough Succubi Milk to remove any male remnants off Kelly's body before confronting 'him' again.");
                 menu();
                 addButton(0, "Next", Farm.farmExploreEncounter);
@@ -165,7 +165,7 @@ export class Kelly implements TimeAwareInterface {
         outputText("You decide that trying to break Kelt is something you'd never want to do.  Besides, he's teaching you a useful skill, and there's just something charming about that bastard...");
         menu();
         addButton(0, "Go To Kelt", KeltScene.keltEncounter);
-        addButton(1, "Go Home", camp.returnToCampUseOneHour);
+        addButton(1, "Go Home", Camp.returnToCampUseOneHour);
     }
 
     private breakKeltGo(): void {
@@ -276,25 +276,25 @@ export class Kelly implements TimeAwareInterface {
         outputText("\n\nYou walk away before she can uncover her eyes; you don't have any business here now that you've used her.");
         // consume items for 1x scene.
         if (hasPinkEgg()) {
-            if (player.hasItem(consumables.PINKEGG)) player.consumeItem(consumables.PINKEGG);
-            else player.consumeItem(consumables.L_PNKEG);
-            if (player.hasItem(consumables.SUCMILK, 10))
-                player.consumeItem(consumables.SUCMILK, 10);
+            if (player.hasItem(ConsumableLib.PINKEGG)) player.consumeItem(ConsumableLib.PINKEGG);
+            else player.consumeItem(ConsumableLib.L_PNKEG);
+            if (player.hasItem(ConsumableLib.SUCMILK, 10))
+                player.consumeItem(ConsumableLib.SUCMILK, 10);
             else
-                player.consumeItem(consumables.P_S_MLK, 10);
+                player.consumeItem(ConsumableLib.P_S_MLK, 10);
 
         }
         else {
-            if (player.hasItem(consumables.SUCMILK, 15))
-                player.consumeItem(consumables.SUCMILK, 15);
+            if (player.hasItem(ConsumableLib.SUCMILK, 15))
+                player.consumeItem(ConsumableLib.SUCMILK, 15);
             else
-                player.consumeItem(consumables.P_S_MLK, 15);
+                player.consumeItem(ConsumableLib.P_S_MLK, 15);
         }
 
         player.orgasm();
         dynStats("cor", 5);
         flags[kFLAGS.KELT_BREAK_LEVEL] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Second encounter
@@ -402,20 +402,20 @@ export class Kelly implements TimeAwareInterface {
         dynStats("cor", 5);
         // consume items for 1x scene.
         if (hasPinkEgg()) {
-            if (player.hasItem(consumables.PINKEGG)) player.consumeItem(consumables.PINKEGG);
-            else player.consumeItem(consumables.L_PNKEG);
-            if (player.hasItem(consumables.SUCMILK, 5))
-                player.consumeItem(consumables.SUCMILK, 5);
+            if (player.hasItem(ConsumableLib.PINKEGG)) player.consumeItem(ConsumableLib.PINKEGG);
+            else player.consumeItem(ConsumableLib.L_PNKEG);
+            if (player.hasItem(ConsumableLib.SUCMILK, 5))
+                player.consumeItem(ConsumableLib.SUCMILK, 5);
             else
-                player.consumeItem(consumables.P_S_MLK, 5);
+                player.consumeItem(ConsumableLib.P_S_MLK, 5);
 
         }
         else {
 
-            if (player.hasItem(consumables.SUCMILK, 10))
-                player.consumeItem(consumables.SUCMILK, 10);
+            if (player.hasItem(ConsumableLib.SUCMILK, 10))
+                player.consumeItem(ConsumableLib.SUCMILK, 10);
             else
-                player.consumeItem(consumables.P_S_MLK, 10);
+                player.consumeItem(ConsumableLib.P_S_MLK, 10);
         }
 
         player.orgasm();
@@ -500,10 +500,10 @@ export class Kelly implements TimeAwareInterface {
         outputText("\n\n\"<i>Ohhh...</i>\" Her breasts expand further, her pussy drips even more rivulets in sheer arousal.  Her eyes roll back and her breath grows short as she stares longingly at you.  You marvel at the effects: she's finally being turned into a horny cumslut!  Now all you have to do is wait for her to digest the hefty potion and come back to deliver the last dose.");
         // consume items for 1x scene.
 
-        if (player.hasItem(consumables.SUCMILK, 5))
-            player.consumeItem(consumables.SUCMILK, 5);
+        if (player.hasItem(ConsumableLib.SUCMILK, 5))
+            player.consumeItem(ConsumableLib.SUCMILK, 5);
         else
-            player.consumeItem(consumables.P_S_MLK, 5);
+            player.consumeItem(ConsumableLib.P_S_MLK, 5);
 
         player.orgasm();
         dynStats("cor", 5);
@@ -587,7 +587,7 @@ export class Kelly implements TimeAwareInterface {
         player.orgasm();
         dynStats("cor", 8);
         flags[kFLAGS.KELT_BREAK_LEVEL] = 4;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Kelt Defeats PC after 1st Breaking But Before Last
@@ -601,7 +601,7 @@ export class Kelly implements TimeAwareInterface {
     private keltFucksShitUpII(): void {
         clearOutput();
         outputText("You awaken at the periphery of the farm, thankful to be alive.  Kelt is nowhere to be seen.  You have to wonder if Whitney saved you or the dumb beast was too stupid to finish you off.  Whatever the case, you head back to camp to lick your wounds.  <b>The worst indignity of all is that he broke a lot of your succubi milks.</b>  He'll likely have regained some more of his maleness by the time you're ready to attempt teaching him another lesson.");
-        player.consumeItem(consumables.SUCMILK, 5);
+        player.consumeItem(ConsumableLib.SUCMILK, 5);
 
         // Roll Kelt back one obedience level - at the worst he drops to the level of the first fight
         flags[kFLAGS.KELT_BREAK_LEVEL]--;
@@ -702,7 +702,7 @@ export class Kelly implements TimeAwareInterface {
         else if (game.time.hours >= 15 && game.time.hours <= 16 && flags[kFLAGS.KELLY_KIDS] >= 4) {
             outputText("\n\nYou see Kelly standing in the middle of her field, surrounded by her children.  She has the butts set up and, judging by the way she is talking and gesturing with the bow in her hand, is teaching your brood how to shoot.  Trying to, anyway: her big, bare boobs make things a bit difficult.  You see she's actually gone to the trouble of constructing adorable little mini-bows, which the group of centaur children are all threading mini-arrows on as she points, and with expressions of deep concentration, pulling tight, taking aim, and... there's a cacophony of whistling, and arrows wind up everywhere but the target.  The sound of shouting and crying echoes across the field as Kelly begins to ball out the one who somehow managed to shoot an arrow through her braid.");
             outputText("\n\nYou decide to come back a bit later.  Your kids need all the help they can get.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Standard:
@@ -715,20 +715,20 @@ export class Kelly implements TimeAwareInterface {
         if (player.lust < 33) outputText("\n<b>You aren't aroused enough to pursue sex with your toy right now.</b>");
         else addButton(1, "Sex", kellySexMenu);
         if (flags[kFLAGS.KELLY_CUNT_TYPE] == 0) {
-            if (player.hasItem(consumables.EQUINUM)) {
+            if (player.hasItem(ConsumableLib.EQUINUM)) {
                 addButton(5, "Give Equinum", giveKellyEquinum);
                 outputText("\nYou could give her equinum to gift her with a proper horse-cunt.");
             }
             else outputText("\nIf you had equinum, you could give her a proper horse-cunt.");
         }
         else if (flags[kFLAGS.KELLY_CUNT_TYPE] == 1) {
-            if (player.hasItem(consumables.SUCMILK)) {
+            if (player.hasItem(ConsumableLib.SUCMILK)) {
                 addButton(5, "Give SucMilk", giveKellySuccubiMilk);
                 outputText("\nYou could give her a succubi milk to get rid of that horse-pussy you gave her before.");
             }
             else outputText("\nIf you had succubi milk, you could use that to give her a more human-like vagina.");
         }
-        if (player.hasItem(consumables.CANINEP)) {
+        if (player.hasItem(ConsumableLib.CANINEP)) {
             outputText("\nYou could give her a canine pepper");
             if (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] == 0) outputText(", but who knows how it will change her");
             outputText(".");
@@ -746,7 +746,7 @@ export class Kelly implements TimeAwareInterface {
         // Showing up resets Kelly's desire not to fap without you
         flags[kFLAGS.KELLY_DISOBEYING_COUNTER] = 0;
 
-        if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 0) addButton(9, "Leave", camp.returnToCampUseOneHour);
+        if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 0) addButton(9, "Leave", Camp.returnToCampUseOneHour);
         else addButton(9, "Back", FarmCorruption.rootScene);
     }
 
@@ -838,7 +838,7 @@ export class Kelly implements TimeAwareInterface {
         outputText("\n\nYou slide back off, landing with a fresh spring in your step.  Then, you pick up your [armor] and head off to find Kelly's blanket - you need something to wipe all the cum and slime off your [legs] with.");
         player.orgasm();
         kellyPreggers();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Centaur on Centaur Sex
@@ -889,7 +889,7 @@ export class Kelly implements TimeAwareInterface {
         else outputText("  You snicker and walk away - she's already served her purpose.");
         kellyPreggers();
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Tentacle
@@ -954,7 +954,7 @@ export class Kelly implements TimeAwareInterface {
         kellyPreggers();
         player.orgasm();
         dynStats("sen", -3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Makes her cunt become horse-like.
@@ -973,7 +973,7 @@ export class Kelly implements TimeAwareInterface {
         outputText("\n\nAt first, all you observe is a disappointed moan.  Kelly backs up, hooves stamping impatiently as she tries to bring her pussy closer to you, eager for more.  \"<i>What did you put in me, [Master]?  That didn't feel like cum,</i>\"  she dares to ask.  You swat her square across her equine ass, sending her scampering a few feet away, still trailing dripping fem-slime.  She moans immediately, her plump pussy lips shining with a reflective sheen.  Her feminine odor gets slightly stronger as well, though each time you catch a whiff of it, it's a little bit different - less human and somehow more... potent.  Her glossy pink lips begin to bulge, thickening before your eyes.  Her slit lengthens as well, the clit growing bigger and harder than before to match the larger curtains that are her labia.  Bigger and bigger, her vulvae swell, until those plump, soaked outer lips leave you no doubt that they were designed to part for the biggest, fattest erections possible.  Their coloration darkens to purple, then jet black, a sloppy onyx veil just begging for a cock.");
         flags[kFLAGS.KELLY_CUNT_TYPE] = 1;
         outputText("\n\n<b>Kelly has now has a soaking-wet horsecunt!</b>");
-        player.consumeItem(consumables.EQUINUM);
+        player.consumeItem(ConsumableLib.EQUINUM);
         menu();
         addButton(0, "Next", approachKelly);
     }
@@ -991,7 +991,7 @@ export class Kelly implements TimeAwareInterface {
         outputText("\n\nYou swat her rump affectionately and nod, not deigning to give her the pleasure of your praise.");
         flags[kFLAGS.KELLY_CUNT_TYPE] = 0;
         outputText("\n\n<b>Kelly now has a human-like pussy.</i>");
-        player.consumeItem(consumables.SUCMILK);
+        player.consumeItem(ConsumableLib.SUCMILK);
         menu();
         addButton(0, "Next", approachKelly);
     }
@@ -1109,7 +1109,7 @@ export class Kelly implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", 3, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ride(C)
@@ -1335,7 +1335,7 @@ export class Kelly implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", -1, "cor", .5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private takeKellysVirginity(): void {
@@ -1413,7 +1413,7 @@ export class Kelly implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -3, "cor", .5);
         flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // TFs
@@ -1453,8 +1453,8 @@ export class Kelly implements TimeAwareInterface {
             flags[kFLAGS.KELLY_HEAT_TIME] += 48;
         }
         flags[kFLAGS.KELLY_TIMES_PEPPERED]++;
-        player.consumeItem(consumables.CANINEP);
-        doNext(camp.returnToCampUseOneHour);
+        player.consumeItem(ConsumableLib.CANINEP);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Titjob
@@ -1507,7 +1507,7 @@ export class Kelly implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", -3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Preggers
@@ -1545,7 +1545,7 @@ export class Kelly implements TimeAwareInterface {
 
         player.orgasm();
         dynStats("sen", -4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Giving birth
@@ -1719,7 +1719,7 @@ export class Kelly implements TimeAwareInterface {
             }
         }
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Reward
     // Requirements: PC used “punish” at least once, 3+ days have gone by and “punish” has not proced*
@@ -1744,11 +1744,11 @@ export class Kelly implements TimeAwareInterface {
         // Hair Dye/Apple Sauce
         // [chestnut brown/sable black/garish purple/bright pink/slutty blonde)
         if (player.cocks.cockThatFits(300) >= 0 && player.cocks.length > 0) addButton(0, "Applesauce", giveKellyAppleSauce);
-        if (player.hasItem(consumables.BLACK_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "sable black") addButton(1, "Black Dye", dyeKellysBitchAssHair, consumables.BLACK_D);
-        if (player.hasItem(consumables.BLOND_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "slutty blonde") addButton(2, "Blond Dye", dyeKellysBitchAssHair, consumables.BLOND_D);
-        if (player.hasItem(consumables.PURPDYE) && flags[kFLAGS.KELLY_HAIR_COLOR] != "garish purple") addButton(3, "Purple Dye", dyeKellysBitchAssHair, consumables.PURPDYE);
-        if (player.hasItem(consumables.PINKDYE) && flags[kFLAGS.KELLY_HAIR_COLOR] != "bright pink") addButton(4, "Pink Dye", dyeKellysBitchAssHair, consumables.PINKDYE);
-        if (player.hasItem(consumables.BROWN_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "chestnut brown") addButton(5, "Brown Dye", dyeKellysBitchAssHair, consumables.BROWN_D);
+        if (player.hasItem(ConsumableLib.BLACK_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "sable black") addButton(1, "Black Dye", dyeKellysBitchAssHair, ConsumableLib.BLACK_D);
+        if (player.hasItem(ConsumableLib.BLOND_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "slutty blonde") addButton(2, "Blond Dye", dyeKellysBitchAssHair, ConsumableLib.BLOND_D);
+        if (player.hasItem(ConsumableLib.PURPDYE) && flags[kFLAGS.KELLY_HAIR_COLOR] != "garish purple") addButton(3, "Purple Dye", dyeKellysBitchAssHair, ConsumableLib.PURPDYE);
+        if (player.hasItem(ConsumableLib.PINKDYE) && flags[kFLAGS.KELLY_HAIR_COLOR] != "bright pink") addButton(4, "Pink Dye", dyeKellysBitchAssHair, ConsumableLib.PINKDYE);
+        if (player.hasItem(ConsumableLib.BROWN_D) && flags[kFLAGS.KELLY_HAIR_COLOR] != "chestnut brown") addButton(5, "Brown Dye", dyeKellysBitchAssHair, ConsumableLib.BROWN_D);
 
         addButton(9, "Back", approachKelly);
     }
@@ -1765,42 +1765,42 @@ export class Kelly implements TimeAwareInterface {
         outputText("This'll be so much fun!</i>\"  You walk over to the barn with her and pour some water into a wide bucket.  She lets down her braid and you spend a pleasant quarter of an hour or so helping her work the sharp-smelling substance into her long, luscious hair.  When you're done, you step back to admire the effect.  Amazingly the color is not only sinking into her hair but also into her tail, her demon spade slowly bleaching with the hue you chose.");
         flags[kFLAGS.KELLY_TIMES_DIED_HAIR]++;
         // Black dye:
-        if (color == consumables.BLACK_D) {
+        if (color == ConsumableLib.BLACK_D) {
             outputText("\n\nKelly whips her jet black hair to look at it, trotting back and forth and considering, swishing her equally black tail.\n\n\"<i>Mmm.  Not sure how much I like this, [Master],</i>\" she says eventually.  \"<i>It's very... severe, isn't it?</i>\"  You say you picked it because you think it will contrast well with the substance she's most often covered in.  Kelly laughs fondly as she begins the long process of retying her braid.\n\n\"<i>Oh, [Master].  Always thinking two moves ahead.  Thank you for your reward!</i>\"");
             flags[kFLAGS.KELLY_HAIR_COLOR] = "sable black";
-            player.consumeItem(consumables.BLACK_D);
+            player.consumeItem(ConsumableLib.BLACK_D);
         }
         // Blonde dye:
-        else if (color == consumables.BLOND_D) {
+        else if (color == ConsumableLib.BLOND_D) {
             outputText("\n\nKelly whips her bonny, flaxen hair to look at it, and then bounces it happily with her hands.  Her blonde tail whips back and forth briskly.");
             outputText("\n\n\"<i>This feels... right, [Master].  Very right.</i>\"  She looks at you lustfully.  \"<i>Wanna see if we have more fun?</i>\"  You say you'll definitely be back later to test that theory out.");
 
             outputText("\n\n\"<i>Don't stay away too long,</i>\" she purrs, as she begins the long process of retying her braid.  You feel your bottle blonde bitch's eyes on you for a long time after you head out of the field.");
-            player.consumeItem(consumables.BLOND_D);
+            player.consumeItem(ConsumableLib.BLOND_D);
             flags[kFLAGS.KELLY_HAIR_COLOR] = "slutty blonde";
         }
         // Purple dye:
-        else if (color == consumables.PURPDYE) {
+        else if (color == ConsumableLib.PURPDYE) {
             outputText("\n\nKelly whips her virulently purple hair to look at it, trotting back and forth and considering, wagging her equally purple tail.");
             outputText("\n\n\"<i>Like the goblins, I guess?  I don't know how much I like this color, [Master].</i>\"  You say it'll serve as a constant reminder to her that she's a cock hungry breeding machine.  Kelly nods thoughtfully as she begins the long process of retying her braid.");
             outputText("\n\n\"<i>You're right [Master], I would hate to ever forget that.  Thank you for your reward!</i>\"");
             flags[kFLAGS.KELLY_HAIR_COLOR] = "garish purple";
-            player.consumeItem(consumables.PURPDYE);
+            player.consumeItem(ConsumableLib.PURPDYE);
         }
         // Pink dye:
-        else if (color == consumables.PINKDYE) {
+        else if (color == ConsumableLib.PINKDYE) {
             outputText("\n\nKelly smiles with delight as she whips her bubblegum pink hair around to look at it, even prancing a bit so that her equally pink tail bounces.");
             outputText("\n\n\"<i>Ooh I like this, it makes me feel so... girly.  I feel pink inside!</i>\"  You certainly do, you say.  Kelly giggles as she begins the long process of retying her braid.  She even sounds bubblier.");
             outputText("\n\n\"<i>Thank you for your reward, [Master]!</i>\"");
-            player.consumeItem(consumables.PINKDYE);
+            player.consumeItem(ConsumableLib.PINKDYE);
             flags[kFLAGS.KELLY_HAIR_COLOR] = "bright pink";
         }
         // Brown dye: Kelly smiles as she examines the regained chestnut brown color of her hair and tail.
-        else if (color == consumables.BROWN_D) {
+        else if (color == ConsumableLib.BROWN_D) {
             outputText("\n\n\"<i>I'd almost forgotten what it looked like.</i>\"  She sighs, twisting a lock of it in a finger.  She looks quite different with her hair down - it reaches almost to her flanks.  \"<i>You'll bring more dye, right?  I'd love to do more colors.</i>\"  That depends, you say, on her being good.  Kelly sets her jaw determinedly as she begins the long process of retying her braid.");
             outputText("\n\n\"<i>Of course, [Master].  Thank you for your reward!</i>\"");
             flags[kFLAGS.KELLY_HAIR_COLOR] = "chestnut brown";
-            player.consumeItem(consumables.BROWN_D);
+            player.consumeItem(ConsumableLib.BROWN_D);
         }
         else outputText("\n\nYO dog, " + color + " is definitely not working right. Please report this to fenoxo using the report a bug link on the site.");
         menu();
@@ -1943,7 +1943,7 @@ export class Kelly implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -2);
         flags[kFLAGS.KELLY_TIMES_APPLESAUCED]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Blowjob
@@ -2172,6 +2172,6 @@ export class Kelly implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

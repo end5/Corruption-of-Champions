@@ -599,7 +599,7 @@ export class MinotaurScene {
         if (player.vaginas.length > 0) outputText("pussy.", false);
         else outputText("asshole.", false);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseFourHours);
+        else doNext(Camp.returnToCampUseFourHours);
     }
 
     private getOralRapedByMinotaur(): void {
@@ -635,7 +635,7 @@ export class MinotaurScene {
         dynStats("sen", 1);
         minoCumAddiction(10);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseFourHours);
+        else doNext(Camp.returnToCampUseFourHours);
     }
 
     private minoGetsTitFucked(): void {
@@ -833,7 +833,7 @@ export class MinotaurScene {
             if (player.inte > 40) outputText("A tiny voice speaks up, warning you that it would be hard to get away from such a gathering.  ", false);
             outputText("Do you follow the minotaur-scent like the addict that you are?", false);
             // [Yes] [No]
-            doYesNo(minoAddictionBadEnd2, camp.returnToCampUseOneHour);
+            doYesNo(minoAddictionBadEnd2, Camp.returnToCampUseOneHour);
         }
     }
 

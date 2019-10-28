@@ -49,8 +49,8 @@ export class MaleSpiderMorph extends AbstractSpiderMorph {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 13;
         this.gems = rand(10) + 10;
-        this.drop = new WeightedDrop().add(consumables.S_GOSSR, 5)
-            .add(useables.T_SSILK, 1)
+        this.drop = new WeightedDrop().add(ConsumableLib.S_GOSSR, 5)
+            .add(UseableLib.T_SSILK, 1)
             .add(null, 4);
         this.tailType = TAIL_TYPE_SPIDER_ADBOMEN;
         this.tailRecharge = 0;

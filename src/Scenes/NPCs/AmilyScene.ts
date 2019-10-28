@@ -134,8 +134,8 @@ export class AmilyScene implements TimeAwareInterface {
     }
 
     public timeChangeLarge(): boolean {
-        if (!urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] == 2 && game.time.hours == 6) {
-            followerInteractions.amilyUrtaMorningAfter();
+        if (!UrtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] == 2 && game.time.hours == 6) {
+            FollowerInteractions.amilyUrtaMorningAfter();
             return true;
         }
         return false;
@@ -175,7 +175,7 @@ export class AmilyScene implements TimeAwareInterface {
     private dontExploreAmilyVillage(): void {
         outputText("", true);
         outputText("Standing up, you turn and walk away. You presume from the state of the pathway that the village at the other end must either be in dire straits, abandoned, or overwhelmed by demons. In other words, it's no safe place for a traveler like you.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Yes]
@@ -185,7 +185,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("(<b>\"TownRuins\" added to Places menu.</b>)", false);
         // set village unlock flag
         flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Exploring the Ruined Village]
@@ -220,7 +220,7 @@ export class AmilyScene implements TimeAwareInterface {
                 player.keyItems.create("Equipment Rack - Armor", 0, 0, 0, 0);
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00255] = 1;
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Initialize saved gender:
@@ -228,14 +228,14 @@ export class AmilyScene implements TimeAwareInterface {
         // Amily gone/hiding super hard
         if (flags[kFLAGS.AMILY_IS_BATMAN] > 0 || flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] == 1 || flags[kFLAGS.AMILY_TREE_FLIPOUT] > 0) {
             outputText("You enter the ruined village cautiously. There are burnt-down houses, smashed-in doorways, ripped-off roofs... everything is covered with dust and grime. You explore for an hour, but you cannot find any sign of another living being, or anything of value. The occasional footprint from an imp or a goblin turns up in the dirt, but you don't see any of the creatures themselves. It looks like time and passing demons have stripped the place bare since it was originally abandoned. Finally, you give up and leave. You feel much easier when you're outside of the village.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Schrödinger Amily corrupted that damn place!
         else if (flags[kFLAGS.AMILY_FOLLOWER] == 2) {
             amilySprite();
             outputText("You enter the ruined village, still laughing at your past nefarious deeds. Maybe it's just your imagination, but you feel like this entire place reeks of corruption now... You explore for an hour, then go back to your camp, knowing your tainted slave will be more than happy to satisfy your urges.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Remove worm block if player got rid of worms.
@@ -266,7 +266,7 @@ export class AmilyScene implements TimeAwareInterface {
         // Amily Un-encounterable (worms):
         if (flags[kFLAGS.AMILY_GROSSED_OUT_BY_WORMS] == 1 || player.cor > 25 || flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] > 0) {
             outputText("You enter the ruined village cautiously. There are burnt-down houses, smashed-in doorways, ripped-off roofs... everything is covered with dust and grime. For hours you explore, but you cannot find any sign of another living being, or anything of value. The occasional footprint from an imp or a goblin turns up in the dirt, but you don't see any of the creatures themselves. It looks like time and passing demons have stripped the place bare since it was originally abandoned. Finally, you give up and leave. You feel much easier when you're outside of the village – you had the strangest sensation of being watched while you were in there.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         amilySprite();
@@ -414,7 +414,7 @@ export class AmilyScene implements TimeAwareInterface {
                     outputText("\"<i>Hey, us girls gotta stick together, right?</i>\" She winks at you then wanders off behind a partially collapsed wall, disappearing into the rubble.", false);
                     // Set flag for 'last gender met as'
                     flags[kFLAGS.AMILY_PC_GENDER] = player.gender;
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                     return;
                 }
                 // Lesbo lovin confession!
@@ -473,7 +473,7 @@ export class AmilyScene implements TimeAwareInterface {
                     outputText("She turns and walks away, vanishing into the dust and the rubble like magic.", false);
                     // Set flag for 'last gender met as'
                     flags[kFLAGS.AMILY_PC_GENDER] = player.gender;
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                     return;
                 }
                 // Medium affection 33% chance, guaranteed by 20.
@@ -551,7 +551,7 @@ export class AmilyScene implements TimeAwareInterface {
                     }
                     // Set flag for 'last gender met as'
                     flags[kFLAGS.AMILY_PC_GENDER] = player.gender;
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                     return;
                 }
             }
@@ -647,13 +647,13 @@ export class AmilyScene implements TimeAwareInterface {
         // Sex / Talk / Talk then sex
         let efficiency: () => void = null;
         // Amily is not a herm but is ok with herm-daddying!
-        if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
+        if (player.hasItem(ConsumableLib.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
             efficiency = makeAmilyAHerm;
             outputText("You could probably bring up the efficiency of having two hermaphrodite mothers, particularly since you have this purified incubi draft handy.\n\n", false);
         }
 
         const sex: () => void = determineAmilySexEvent();
-        simpleChoices("Sex", sex, "Talk", talkToAmily, "Both", (sex == null ? null : talkThenSexWithAmily), "Efficiency", efficiency, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Sex", sex, "Talk", talkToAmily, "Both", (sex == null ? null : talkThenSexWithAmily), "Efficiency", efficiency, "Leave", Camp.returnToCampUseOneHour);
         // Set flag for 'last gender met as'
         flags[kFLAGS.AMILY_PC_GENDER] = player.gender;
 
@@ -811,7 +811,7 @@ export class AmilyScene implements TimeAwareInterface {
         flags[kFLAGS.AMILY_AFFECTION] += 10;
         // {-5 Libido}
         dynStats("lib", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Announce yourself]
@@ -845,7 +845,7 @@ export class AmilyScene implements TimeAwareInterface {
         amilySprite();
         outputText("\"<i>So, have you changed your mind? Have you come to help me out?</i>\" Amily asks curiously.\n\n", false);
         // Accept / Politely refuse / Here to talk / Get lost
-        simpleChoices("Accept", secondTimeAmilyOfferedAccepted, "RefusePolite", secondTimeAmilyRefuseAgain, "Just Talk", repeatAmilyTalk, "Get Lost", tellAmilyToGetLost, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Accept", secondTimeAmilyOfferedAccepted, "RefusePolite", secondTimeAmilyRefuseAgain, "Just Talk", repeatAmilyTalk, "Get Lost", tellAmilyToGetLost, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [Accept]
@@ -868,7 +868,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("\"<i>All right; it is your choice. But my offer still stands, you know,</i>\" she tells you.\n\n", false);
 
         outputText("You let her know you'll remember that, and then turn and leave.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Here to talk]
@@ -893,7 +893,7 @@ export class AmilyScene implements TimeAwareInterface {
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
         // {Ruined Village removed from Places list}
         // I think one variable can handle both these...
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Sex]
@@ -914,7 +914,7 @@ export class AmilyScene implements TimeAwareInterface {
                     outputText("Amily can still move quickly despite her pregnancy, and you are very promptly left all alone. Perhaps it would be better not to broach the subject that bluntly with her while she's in this state.\n\n", false);
                     // Reduce affection. DERP
                     flags[kFLAGS.AMILY_AFFECTION] -= 3;
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 // [Medium Affection]
                 else if (flags[kFLAGS.AMILY_AFFECTION] < 40) {
@@ -939,7 +939,7 @@ export class AmilyScene implements TimeAwareInterface {
                     outputText("Annoyed, she turns and waddles off. You do not give chase; you can tell that you've offended her.\n\n", false);
                     // Reduce affection
                     flags[kFLAGS.AMILY_AFFECTION] -= 3;
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 // [Medium Affection]
                 else if (flags[kFLAGS.AMILY_AFFECTION] < 40) {
@@ -950,7 +950,7 @@ export class AmilyScene implements TimeAwareInterface {
                     outputText("\"<i>It's not that I don't like you, " + player.short + ", it's just... well, I don't feel comfortable doing that,</i>\" she explains apologetically.\n\n", false);
                     outputText("You apologize back for confronting her with something she's uncomfortable with, and leave for your own camp, lest you insult her seriously.", false);
                     flags[kFLAGS.AMILY_AFFECTION] -= 3;
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 // [High Affection]
                 else {
@@ -1275,7 +1275,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("Feeling the weight of the empty village pressing in on you, you quickly retreat yourself. There's no point coming back here.\n\n", false);
         // turn off village.
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Turn her down bluntly]
@@ -1296,7 +1296,7 @@ export class AmilyScene implements TimeAwareInterface {
         // {Amily can no longer be encountered}
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
         // {Ruined Village removed from Places list}
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Birth]
@@ -1320,7 +1320,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("The next morning, you find a note scratched onto a slab of bark beside your sleeping roll, reading, \"<i>The babies and I are both fine. No thanks to you!</i>\"\n\n", false);
         // {Affection goes down}
         flags[kFLAGS.AMILY_AFFECTION] -= 10;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Watch]
@@ -1344,7 +1344,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("  Their color patterns vary considerably; white, black and brown are most common, and you even see one or two with your hair color. Amily flops back onto her rump and then topples over onto her back, clearly too tired to stand up. Her offspring crowd around, cuddling up to her, and she gives them a tired but happy smile.\n\n", false);
 
         outputText("Making sure that there doesn't seem to be any danger, you quietly let yourself out. It seems that she's too concerned about the children to notice you leave.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Help]
@@ -1397,7 +1397,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("As the rambunctious little mouselets burn up their energy and curl up beside Amily to sleep, you gently excuse yourself and return to camp.", false);
         // {Affection goes up}
         flags[kFLAGS.AMILY_AFFECTION] += 5;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Bad End]
@@ -1421,7 +1421,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("Amily inclines her head towards you in a respectful nod, and then joins her vast brood as they begin to march away purposefully. You watch them go until they have vanished from sight, then shake your head with a sneer. Like you need her or her brats, anyway! Spinning on your heel, you stride purposefully out of this dump of a village; you don't intend to come back here again.\n\n", false);
 
         outputText("Amily has left the region with her children to found a new colony elsewhere.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // {Amily can no longer be encountered}
         // {Ruined Village removed from Places list}
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
@@ -1497,7 +1497,7 @@ export class AmilyScene implements TimeAwareInterface {
         }
         // Disable amily encounters in the village!
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Conversations - talk wif da bitch.
@@ -1525,66 +1525,66 @@ export class AmilyScene implements TimeAwareInterface {
             if (player.itemSlot1.quantity == 0) {
                 outputText("Promising you'll keep that in mind, you take your leave of Amily.\n\n", false);
                 if (sexAfter) doNext(determineAmilySexEvent());
-                else doNext(camp.returnToCampUseOneHour);
+                else doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // (If player has an item:)
             else {
                 outputText("You remember that you have something in your pockets that might be of interest, and show it to Amily.\n\n", false);
             }
-            if (player.itemSlot1.itype == consumables.EQUINUM) {
+            if (player.itemSlot1.itype == ConsumableLib.EQUINUM) {
                 outputText("\"<i>That's a distillation of horse essence, I think.</i>\" Amily says.  \"<i>I guess it would probably make you stronger and tougher... but horses aren't smart, and it might be too strong for a human to handle without changing them,</i>\" she warns you.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.CANINEP) {
+            else if (player.itemSlot1.itype == ConsumableLib.CANINEP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.LARGEPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.LARGEPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.DBLPEPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.DBLPEPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.BLACKPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.BLACKPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.KNOTTYP) {
+            else if (player.itemSlot1.itype == ConsumableLib.KNOTTYP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.BULBYPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.BULBYPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
             }
             // Succubus Milk/Incubus Draft:
-            else if (player.itemSlot1.itype == consumables.INCUBID || player.itemSlot1.itype == consumables.SUCMILK) {
+            else if (player.itemSlot1.itype == ConsumableLib.INCUBID || player.itemSlot1.itype == ConsumableLib.SUCMILK) {
                 outputText("She recoils with a hiss.  \"<i>That's demon fluid, it is - like drinking liquid corruption! Avoid that stuff if you can; it'll turn you into a demon, and supercharge your sex-drive.  I've heard it can even mess with your gender if you drink too much of the opposite stuff.</i>\"\n\n", false);
             }
             // Succubi's Delight:
-            else if (player.itemSlot1.itype == consumables.SDELITE) {
+            else if (player.itemSlot1.itype == ConsumableLib.SDELITE) {
                 outputText("\"<i>Full of taint, no question of that.  Succubi give it to males who haven't become demons yet; makes them better able to produce cum, and pushes them towards demonhood.</i>\"\n\n", false);
             }
             // Wet Cloth:
-            else if (player.itemSlot1.itype == consumables.WETCLTH) {
+            else if (player.itemSlot1.itype == ConsumableLib.WETCLTH) {
                 outputText("\"<i>I... have no idea what that is.</i>\" she says, looking confused.  \"<i>I guess it's... slimey?  Concentrate of goo?  I think it's got something to do with whatever's been polluting the lake, so I wouldn't rub it into your skin.</i>\"\n\n", false);
             }
             // Bee Honey:
-            else if (player.itemSlot1.itype == consumables.BEEHONY) {
+            else if (player.itemSlot1.itype == ConsumableLib.BEEHONY) {
                 outputText("\"<i>Honey from a giant bee?</i>\" she asks eagerly, perking up.  \"<i>Oh, that stuff's delicious! I hear it's full of special essences secreted by the giant bees, though, so it could have transformative effects.</i>\"\n\n", false);
             }
             // Pure Honey:
-            else if (player.itemSlot1.itype == consumables.PURHONY) {
+            else if (player.itemSlot1.itype == ConsumableLib.PURHONY) {
                 outputText("\"<i>You managed to get your hands on ultra-pure giant bee honey?</i>\" she asks, sounding impressed.  \"<i>I hear that stuff's so pure it can actually help purge the eater of demonic taint - but it's probably otherwise the same as regular bee honey.</i>\"\n\n", false);
             }
             // Green Glob:
-            else if (player.itemSlot1.itype == useables.GREENGL) {
+            else if (player.itemSlot1.itype == UseableLib.GREENGL) {
                 outputText("\"<i>A blob of slime from a green gel?  Hmm...</i>\" she looks thoughtful.  \"<i>I think I remember my dad once telling me you could make a really strong armor out of a special distillation of green oozes.  I can't say for sure, and I wouldn't have the equipment even if I did remember.</i>\"\n\n", false);
             }
             // Bee Chitin:
-            else if (player.itemSlot1.itype == useables.B_CHITN) {
+            else if (player.itemSlot1.itype == UseableLib.B_CHITN) {
                 outputText("\"<i>If you had a sufficient mass of this stuff, you could make a suit of armor out of it.  It needs special alchemical reagents, though, otherwise it'll just get all brittle and smashed up.</i>\"\n\n", false);
             }
             else {
@@ -1916,7 +1916,7 @@ export class AmilyScene implements TimeAwareInterface {
         if (sexAfter) {
             doNext(determineAmilySexEvent(true));
         }
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // First Time Sekksin:
@@ -1986,7 +1986,7 @@ export class AmilyScene implements TimeAwareInterface {
         // Affection downer
         flags[kFLAGS.AMILY_AFFECTION] -= 5;
         amilyPreggoChance();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [=Wait for Her=]
     private beSomeKindofNervousDoucheAndWaitForAmily(): void {
@@ -2007,7 +2007,7 @@ export class AmilyScene implements TimeAwareInterface {
         flags[kFLAGS.AMILY_AFFECTION] -= 2;
         amilyPreggoChance();
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [=Kiss Her=]
     private kissAmilyInDaMoufFirstTimeIsSomehowBetterThatWay(): void {
@@ -2037,7 +2037,7 @@ export class AmilyScene implements TimeAwareInterface {
         // Affection boost?
         flags[kFLAGS.AMILY_AFFECTION] += 3;
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         amilyPreggoChance();
     }
 
@@ -2049,7 +2049,7 @@ export class AmilyScene implements TimeAwareInterface {
         if (x == -1 && player.cocks.length > 0) {
             outputText("Amily looks between your legs and doubles over laughing, \"<i>There is no way that thing is fitting inside of me!  You need to find a way to shrink that thing down before we get in bed!</i>\"", false);
             flags[kFLAGS.AMILY_AFFECTION]--;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (flags[kFLAGS.AMILY_FUCK_COUNTER] == 0) {
@@ -2114,7 +2114,7 @@ export class AmilyScene implements TimeAwareInterface {
         // worm infested reaction
         if (player.effects.findByType(StatusAffects.Infested) >= 0) {
             outputText("\"<i>EWWWW!  You're infested!</i>\" she shrieks, \"<i>Get out!  Don't come back 'til you get rid of the worms!</i>\"\n\nYou high tail it out of there.  It looks like Amily doesn't want much to do with you until you're cured.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             flags[kFLAGS.AMILY_AFFECTION] -= 3;
             flags[kFLAGS.AMILY_GROSSED_OUT_BY_WORMS] = 1;
             return;
@@ -2190,7 +2190,7 @@ export class AmilyScene implements TimeAwareInterface {
         flags[kFLAGS.AMILY_AFFECTION] += 1 + rand(2);
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Enjoy The Show]
@@ -2279,7 +2279,7 @@ export class AmilyScene implements TimeAwareInterface {
         amilySprite();
         outputText("", true);
         outputText("You smile at her and give her a kiss before saying goodbye and returning to your camp.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Stay A While]
@@ -2289,7 +2289,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("You decide you'd rather stay with her a little longer, so you get up, go to her and with a kiss and some caresses draw her down again. She doesn't really put up any resistance, so you both lie there kissing and caressing each other for some time before you finally say goodbye and return to your camp.", false);
         // Bonus affection mayhapz?
         flags[kFLAGS.AMILY_AFFECTION] += 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [High Affection - Non-Pregnant/Slightly Pregnant]
@@ -2388,7 +2388,7 @@ export class AmilyScene implements TimeAwareInterface {
         flags[kFLAGS.AMILY_FUCK_COUNTER]++;
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // preggo chance
         amilyPreggoChance();
     }
@@ -2432,7 +2432,7 @@ export class AmilyScene implements TimeAwareInterface {
         flags[kFLAGS.AMILY_FUCK_COUNTER]++;
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // preggo chance
         amilyPreggoChance();
     }
@@ -2484,7 +2484,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("", true);
             amilyPopsOutKidsInCamp();
             pregnancy.knockUpForce(); // Clear Pregnancy
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Jojo + Amily Spar
@@ -2493,7 +2493,7 @@ export class AmilyScene implements TimeAwareInterface {
             return;
         }
         // Amily
-        if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_WAIT_FOR_PC_FIX_JOJO] == 1 && player.hasItem(consumables.PURHONY) && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.JOJO_FIXED_STATUS] == 0) {
+        if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_WAIT_FOR_PC_FIX_JOJO] == 1 && player.hasItem(ConsumableLib.PURHONY) && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.JOJO_FIXED_STATUS] == 0) {
             FollowerInteractions.fixJojoOOOOHYEEEEAHSNAPINTOASLIMJIM();
             return;
         }
@@ -2514,7 +2514,7 @@ export class AmilyScene implements TimeAwareInterface {
 
                     outputText("\n\n“<i>I'll leave my regular production with the rest of the payment Whitney owes you [master].</i>”\n\n");
 
-                    inventory.takeItem(consumables.SUCMILK, amilyFollowerEncounter);
+                    Inventory.takeItem(ConsumableLib.SUCMILK, amilyFollowerEncounter);
                     return;
                 }
                 else {
@@ -2554,7 +2554,7 @@ export class AmilyScene implements TimeAwareInterface {
     private amilyMenu(output: boolean = true): void {
         let date: () => void = null;
         // If no fight yet, have option to introduce Urta and Amily
-        if (player.gender > 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] >= 5 || Urta.urtaLove()) && !urtaQuest.urtaBusy()) {
+        if (player.gender > 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] >= 5 || Urta.urtaLove()) && !UrtaQuest.urtaBusy()) {
             if (output) outputText("<b>You could take Amily on a date to Tel'Adre, and perhaps even introduce her to Urta!</b>\n\n", false);
             date = dateNightFirstTime;
         }
@@ -2567,14 +2567,14 @@ export class AmilyScene implements TimeAwareInterface {
             let eggs: () => void = null;
             if (flags[kFLAGS.AMILY_OVIPOSITION_UNLOCKED] > 0 && player.canOviposit()) eggs = layEggsInAmily;
             choices("Appearance", amilyAppearance, "Talk", talkToAmilyCamp, "Make Love", fuckTheMouseBitch, "Give Present", giveAmilyAPresent, "Date", date,
-                "Lay Eggs", eggs, "Defur", defur, "", null, "", null, "Back", camp.campLoversMenu);
+                "Lay Eggs", eggs, "Defur", defur, "", null, "", null, "Back", Camp.campLoversMenu);
         }
         // Corrupt
         else {
             // outputText("Options:\nAppearance\nGive Item\nSex\nTalk\n", false);
             //  [Sex] [Give Item] [Talk] [Call Jojo]
             choices("Appearance", amilyAppearance, "Give Item", giveAmilyAPresent, "Sex", fuckTheMouseBitch, "Talk", talkWithCORRUPTCUNT, "Defur", defur,
-                "", null, "", null, "", null, "", null, "Back", camp.campSlavesMenu);
+                "", null, "", null, "", null, "", null, "Back", Camp.campSlavesMenu);
 
             if (!pregnancy.isPregnant && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) {
                 addButton(5, "Farm Work", sendCorruptCuntToFarm);
@@ -2726,7 +2726,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("You tell Amily you'd like to talk about things. She grins, happy at the prospect, and takes a seat, inviting you to sit down as well.\n\n", false);
         // (Random camp discussion takes place)
         talkWithCuntIMeanAmily();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public talkToAmilyWithSexAfter(): void { talkWithCuntIMeanAmily(true); }
@@ -2779,8 +2779,8 @@ export class AmilyScene implements TimeAwareInterface {
             }
         }
         let urta: () => void = null;
-        if (flags[kFLAGS.AMILY_VISITING_URTA] == 4 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] >= 0 && !urtaQuest.urtaBusy())
-            urta = followerInteractions.amilyUrtaSex;
+        if (flags[kFLAGS.AMILY_VISITING_URTA] == 4 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] >= 0 && !UrtaQuest.urtaBusy())
+            urta = FollowerInteractions.amilyUrtaSex;
         let swim: () => void = null;
         if (flags[kFLAGS.AMILY_OWNS_BIKINI] > 0 && player.cocks.length > 0 && !amilyCorrupt()) swim = amilySwimFuckIntro;
         let threesome: () => void = null;
@@ -2859,7 +2859,7 @@ export class AmilyScene implements TimeAwareInterface {
 
         outputText("Grinning at each other with obvious satisfaction in your eyes, you slowly relax and cuddle in the afterglow for some time, before you decide that you'll definitely repeat this soon.", false);
         amilyPreggoChance();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.orgasm();
         dynStats("sen", -1);
     }
@@ -2887,7 +2887,7 @@ export class AmilyScene implements TimeAwareInterface {
 
             outputText("\"<i>All that came out of me?</i>\" She asks, curious. She gently rubs your belly, and you moan as the milk sloshes uncomfortably inside your sensitive stomach. Amily sits down, your head in her lap, and lets you rest there until you recover your strength and digest a good portion of the milk. Still feeling uncomfortably full, you get up and go for a walk to help work off your titanic liquid meal.\n\n", false);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         dynStats("spe", .3, "lus", 10, "cor", -.5);
     }
     // Take Charge 3: - eat out
@@ -2919,7 +2919,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText(".\n\n", false);
 
         outputText("She lies there, gasping for breath, even as you pick yourself up and start to clean yourself off. \"<i>Not my favorite...</i>\" She squeaks. \"<i>But definitely can't argue with the results.</i>\" You smile, and leave her in her nest to get her strength back.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         dynStats("int", .25, "lus", 10);
     }
     // Take Charge 4 - amily sucks off
@@ -2949,7 +2949,7 @@ export class AmilyScene implements TimeAwareInterface {
 
         // (If Amily is herm:
         if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText("She turns halfway back to you as she goes. \"<i>I hope you'll remember this and return the favor someday,</i>\" she calls out to you. She then resumes walking off.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.orgasm();
         dynStats("sen", -1);
     }
@@ -2968,7 +2968,7 @@ export class AmilyScene implements TimeAwareInterface {
 
         outputText("With a contented sigh and a broad, satisfied smile, Amily murmurs, \"<i>That felt great...</i>\" She switches her position again so that her head is again next to yours, puts her arms around you and nuzzles you a bit. You embrace her too, and enjoy the afterglow with her for some time, before you both go back to work.\n\n", false);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Take Charge: Mount Amily
@@ -3017,7 +3017,7 @@ export class AmilyScene implements TimeAwareInterface {
         if (flags[kFLAGS.AMILY_ALLOWS_FERTILITY] == 1) {
             player.knockUp(PregnancyStore.PREGNANCY_AMILY, PregnancyStore.INCUBATION_MOUSE);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.orgasm();
         dynStats("sen", -1);
     }
@@ -3060,7 +3060,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("You'd never have expected the little mousegirl to do something like this - and you certainly would never have thought it would feel so good. Sure enough, you soon feel yourself reaching the \"<i>point of no return</i>\", but any attempts to tell her that you won't be able to hold back much longer are made futile by her enduring kisses. You're quite sure she's smiling at your predicament - she probably planned for this to happen. Shrugging mentally, you decide to go with the flow and worry about it later. So you try to relax (as much as you can do that while Amily is giving you an incredible tailjob...) and simply enjoy the feeling. Sure enough, it doesn't take her much longer to finally make you cum. Breaking the kiss, she steps back and with a broad grin asks: \"<i>Did you enjoy that, you naughty " + mf(player, "man", "girl") + "?</i>\"\n\n", false);
 
             outputText("Naturally, you tell her that you enjoyed it very much, and with a smile, Amily helps you clean up. \"<i>If you liked it that much...</i>\" she says over her shoulder and winks at you as she goes to take care of something else.\n\n", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             player.orgasm();
             dynStats("sen", -1);
             return;
@@ -3074,7 +3074,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("Looking at her hands and feet covered by your cum, Amily jokingly accuses you of forcing her to clean herself yet again, just because you have no control. Your eyes widen a bit in surprise when the mousegirl lightly licks one of her hands and comments \"<i>Mmhhmm... not bad, actually...</i>\" With a grin, she cleans up the results of her hand-and-foot-job before pulling you to your feet again. \"<i>Back to work, Champion!</i>\"\n\n", false);
 
             outputText("With a satisfied smile, you turn to other things.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             player.orgasm();
             dynStats("sen", -1);
             return;
@@ -3102,7 +3102,7 @@ export class AmilyScene implements TimeAwareInterface {
             // (if Amily is herm:
             if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText("and limp cock ", false);
             outputText("across your chest as she repositions herself so that she is looking you in the eyes, laying atop you. \"<i>You always know how to make a girl feel special, don't you?</i>\" she says, softly. Then she kisses you, probing her tongue deep into your mouth to get a good taste of her juices, before wriggling off of you, grabbing her pants and running merrily away. You watch her go, then clean yourself off.\n\n", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             dynStats("int", .25, "lus", 10);
             return;
         }
@@ -3126,7 +3126,7 @@ export class AmilyScene implements TimeAwareInterface {
 
             outputText("Exhausted, you feel a quick nap is in order yourself. When you wake up, you're alone in the nest but Amily is nearby; she hands you some food and then points you in the direction of the stream to wash up.\n\n", false);
             amilyPreggoChance();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             player.orgasm();
             dynStats("sen", -1);
             return;
@@ -3146,7 +3146,7 @@ export class AmilyScene implements TimeAwareInterface {
             else outputText("For a guy?</i>\"\n\n", false);
 
             outputText("You shrug, uncertain. Slowly, Amily sits up and gets off of you. \"<i>I... um... thank you.</i>\" She says, then quickly steals a kiss from you before running off. She's in such a hurry that she's clear over on the other side of the camp before you can tell her that she left her pants behind.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             dynStats("int", .25, "lus", 10);
             return;
         }
@@ -3189,7 +3189,7 @@ export class AmilyScene implements TimeAwareInterface {
             player.orgasm();
             dynStats("sen", -1);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Give Present:
@@ -3206,56 +3206,56 @@ export class AmilyScene implements TimeAwareInterface {
         else {
             outputText("You look at the horny cum-bucket and wonder what you should make her take this time.\n\n");
         }
-        if (player.hasItem(consumables.INCUBID) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
+        if (player.hasItem(ConsumableLib.INCUBID) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
             addButton(0, "Incubus D.", giveAmilyPureIncubusDraft);
             haveGift = true;
         }
-        else if (player.hasItem(consumables.P_DRAFT)) {
+        else if (player.hasItem(ConsumableLib.P_DRAFT)) {
             addButton(0, "P. Incubus D.", giveAmilyPureIncubusDraft);
             haveGift = true;
         }
-        if (player.hasItem(consumables.P_S_MLK) || (player.hasItem(consumables.SUCMILK) && flags[kFLAGS.AMILY_FOLLOWER] == 2)) {
+        if (player.hasItem(ConsumableLib.P_S_MLK) || (player.hasItem(ConsumableLib.SUCMILK) && flags[kFLAGS.AMILY_FOLLOWER] == 2)) {
             addButton(1, "Succ Milk", giveAmilyPurifiedSuccubusMilk);
             haveGift = true;
         }
-        if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0 && (player.hasItem(consumables.PINKEGG) || player.hasItem(consumables.L_PNKEG))) {
+        if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0 && (player.hasItem(ConsumableLib.PINKEGG) || player.hasItem(ConsumableLib.L_PNKEG))) {
             addButton(2, "Pink Egg", giveAmilyAPinkEgg);
             haveGift = true;
         }
-        if (player.hasItem(consumables.WHITEEG) || player.hasItem(consumables.L_WHTEG)) {
+        if (player.hasItem(ConsumableLib.WHITEEG) || player.hasItem(ConsumableLib.L_WHTEG)) {
             addButton(3, "White Egg", giveAmilyAWhiteEgg);
             haveGift = true;
         }
-        if (player.hasItem(consumables.BROWNEG) || player.hasItem(consumables.L_BRNEG)) {
+        if (player.hasItem(ConsumableLib.BROWNEG) || player.hasItem(ConsumableLib.L_BRNEG)) {
             addButton(4, "Brown Egg", giveAmilyABrownEgg);
             haveGift = true;
         }
-        if (player.hasItem(consumables.PURPLEG) || player.hasItem(consumables.L_PRPEG)) {
+        if (player.hasItem(ConsumableLib.PURPLEG) || player.hasItem(ConsumableLib.L_PRPEG)) {
             addButton(5, "Purple Egg", giveAmilyAPurpleEgg);
             haveGift = true;
         }
         // Reducto not yet implemented
         // Lactaid not yet implemented
-        if (player.hasItem(consumables.SDELITE) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
+        if (player.hasItem(ConsumableLib.SDELITE) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
             addButton(7, "Suc. Delite", giveCorruptAmilySuccubusDelight);
             haveGift = true;
         }
-        if (player.hasItem(armors.C_CLOTH)) {
+        if (player.hasItem(ArmorLib.C_CLOTH)) {
             addButton(8, "Clothes", giveAmilySomePants);
             haveGift = true;
         }
-        else if (player.hasItem(armors.S_SWMWR) && flags[kFLAGS.AMILY_OWNS_BIKINI] == 0 && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0 && !amilyCorrupt()) {
+        else if (player.hasItem(ArmorLib.S_SWMWR) && flags[kFLAGS.AMILY_OWNS_BIKINI] == 0 && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0 && !amilyCorrupt()) {
             outputText("You could give her a bikini, then invite her for a swim in the stream to show it off.\n\n");
             addButton(8, "Bikini", amilySwimFuckIntro);
             haveGift = true;
         }
         else if (flags[kFLAGS.GIVEN_AMILY_NURSE_OUTFIT] == 0 && !amilyCorrupt()) {
-            if (player.hasItem(armors.NURSECL) && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0) {
+            if (player.hasItem(ArmorLib.NURSECL) && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0) {
                 outputText("You could give Amily the nurse's outfit you got, though it barely covers anything at all, and would likely be inviting some roleplay from the kinky mouse-girl.\n\n");
                 addButton(8, "NurseClothes", amilyNurseCheckup);
                 haveGift = true;
             }
-            else if (player.hasItem(armors.NURSECL))
+            else if (player.hasItem(ArmorLib.NURSECL))
                 outputText("You have a hunch if you had a penis that wasn't too big, giving Amily a nurse's outfit might set off some kinky roleplay.\n\n");
             else {
                 outputText("You have a hunch that if you had a nurse's outfit you could get Amily to give you a rather erotic checkup, provided ");
@@ -3312,7 +3312,7 @@ export class AmilyScene implements TimeAwareInterface {
                 }
                 // [Purified Incubus Draft - If Amily is Hermaphrodite]
                 outputText("She looks disdainfully at the vial in your hand. \"<i>What, am I not big enough for you already? Oh well, I suppose if it makes you happy.</i>\" She snatches it from your hand and gulps it down. She tries her best to look apathetic, but is unable to help either the pleased moan or the dribbles of pre-cum that stain her clothes as her penis grows erect and then longer, at least a full inch so.  Breathing heavily, she pants, \"<i>Why does this have to actually feel good?</i>\"  Then she turns and lurches drunkenly away. You decide against following her and wander off in the other direction.\n\n", false);
-                player.consumeItem(consumables.P_DRAFT);
+                player.consumeItem(ConsumableLib.P_DRAFT);
                 amilyDickGrow();
                 doNext(amilyFollowerEncounter);
             }
@@ -3333,8 +3333,8 @@ export class AmilyScene implements TimeAwareInterface {
             // No wang yet
             if (flags[kFLAGS.AMILY_WANG_LENGTH] == 0) {
                 // Consume dah goodies!
-                if (player.hasItem(consumables.INCUBID)) player.consumeItem(consumables.INCUBID);
-                else player.consumeItem(consumables.P_DRAFT);
+                if (player.hasItem(ConsumableLib.INCUBID)) player.consumeItem(ConsumableLib.INCUBID);
+                else player.consumeItem(ConsumableLib.P_DRAFT);
                 outputText("You pick up a vial of incubus draft and show it to Amily. \"<i>Drink this,</i>\" you tell her, passing the bottle to her. \"<i>" + mf(player, "Master", "Mistress") + ", this will make me grow a cock. Are you sure you wish to do that?</i>\"\n\n", false);
 
                 outputText("You tell her yes, this is exactly what you want. Amily smiles and replies seductively, \"<i>As you wish " + mf(player, "master", "mistress") + ".</i>\"\n\n", false);
@@ -3350,8 +3350,8 @@ export class AmilyScene implements TimeAwareInterface {
             }
             else if (flags[kFLAGS.AMILY_WANG_LENGTH] < maxSizeCorr && flags[kFLAGS.AMILY_WANG_GIRTH] < 3) {
                 // Consume dah goodies!
-                if (player.hasItem(consumables.INCUBID)) player.consumeItem(consumables.INCUBID);
-                else player.consumeItem(consumables.P_DRAFT);
+                if (player.hasItem(ConsumableLib.INCUBID)) player.consumeItem(ConsumableLib.INCUBID);
+                else player.consumeItem(ConsumableLib.P_DRAFT);
 
                 outputText("You pick up a vial of incubus draft and show it to Amily. \"<i>I want you to have a bigger cock; drink this.</i>\" You order her, passing the bottle to her. Amily smiles and says, \"<i>As you wish, " + mf(player, "master", "mistress") + ", your orders are my pleasure.</i>\"\n\n", false);
 
@@ -3408,7 +3408,7 @@ export class AmilyScene implements TimeAwareInterface {
     private giveAmilyPureIncubusDraft4Realz(): void {
         outputText("", true);
         amilySprite();
-        player.consumeItem(consumables.P_DRAFT);
+        player.consumeItem(ConsumableLib.P_DRAFT);
 
         outputText("Assuring her that this is what you want, you pass it over. Amily takes it reluctantly, then downs it, shuddering - first in disgust at what she actually drank, then with pleasure. Moaning ecstatically, she pulls off her pants to give you a full view as her clitoris swells, longer and thicker; finally, skin peels back at the tip to reveal what is unmistakably the glans of a penis, complete with a cum-gouting slit as she experiences her first male orgasm.\n\n", false);
 
@@ -3473,7 +3473,7 @@ export class AmilyScene implements TimeAwareInterface {
             if ((flags[kFLAGS.AMILY_CUP_SIZE] < maxSizePure) || (flags[kFLAGS.AMILY_CUP_SIZE] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
                 outputText("She smiles at you. \"<i>I always did kind of want bigger breasts.</i>\" She admits, sheepishly. She takes it from you and eagerly chugs. She then drops the empty bottle, allowing it to smash on the ground, clutching her breasts and moaning ecstatically as they visibly swell, her clothes growing tighter as they do. When they finish, she squeezes them with glee. \"<i>Mmm... That feels nice. Did you want something else?</i>\"\n\n", false);
                 flags[kFLAGS.AMILY_CUP_SIZE]++;
-                player.consumeItem(consumables.P_S_MLK);
+                player.consumeItem(ConsumableLib.P_S_MLK);
             }
             // (If Amily's breast size is DD-cup):
             else {
@@ -3485,8 +3485,8 @@ export class AmilyScene implements TimeAwareInterface {
         // CORRUPT UNZ
         else {
             // [Give Succubi's Milk]
-            if (player.hasItem(consumables.SUCMILK)) player.consumeItem(consumables.SUCMILK);
-            else player.consumeItem(consumables.P_S_MLK);
+            if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
+            else player.consumeItem(ConsumableLib.P_S_MLK);
             // Doesn't matter if purified or not, she takes it the same way.
             // Amily's vagina is already at wetness 1, goes up to 4 (squirter).
             // You can give it Amily more Succubi's Milk after she's at 4, but it'll have no effect.
@@ -3526,7 +3526,7 @@ export class AmilyScene implements TimeAwareInterface {
         if (flags[kFLAGS.AMILY_NOT_FURRY] == 0)
             footpaw += "paw";
         if (flags[kFLAGS.AMILY_HAS_BALLS_AND_SIZE] == 0) {
-            player.consumeItem(consumables.SDELITE);
+            player.consumeItem(ConsumableLib.SDELITE);
             outputText("You tell her you need her to be able to cum more, so balls would help with that. Amily smiles and says, \"<i>Of course, " + mf(player, "master", "mistress") + ". Forgive your stupid mouse slut for questioning you.</i>\"\n\n", false);
             outputText("She opens her legs so you can watch and downs the bottle in one go.", false);
             if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText("Her cock grows hard, but nothing else seems to happen...", false);
@@ -3560,7 +3560,7 @@ export class AmilyScene implements TimeAwareInterface {
         }
         // [Give Succubus' Delight - repeat]
         else {
-            player.consumeItem(consumables.SDELITE);
+            player.consumeItem(ConsumableLib.SDELITE);
             outputText("You pick up a vial of Succubi's Delight and show it to Amily. \"<i>Drink this; you need bigger balls,</i>\" you order her, passing the bottle to her. Amily replies, \"<i>Yes, " + mf(player, "master", "mistress") + "</i>.\" Then she opens her legs and downs the bottle. She moans as her balls grow bigger and denser, churning with the extra cum her sack now holds.", false);
             flags[kFLAGS.AMILY_HAS_BALLS_AND_SIZE]++;
         }
@@ -3596,8 +3596,8 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("You offer her a pink egg, explaining that it will remove her penis.  Amily looks completely devastated as she says, \"<i>Did fuck-slut not use her dick well enough?  Cum-bucket is so sorry " + mf(player, "master", "mistress") + ", it won't happen again!</i>\"  Before you can respond she snatches the egg from your hand and begins to eat it, messily devouring it until she's licking her fingers.  Once she has finished, she drops her pants to watch as <b>her penis shrinks and blurs, eventually resolving itself once more into the dainty form of her clitoris</b>.\n\n", false);
             outputText("\"<i>Well, is there something else this worthless cum-collector can do to please her " + mf(player, "master", "mistress") + "?  Slut is so sorry she disappointed you,</i>\" she squeaks sadly, still trying to entice you into sex.", false);
         }
-        if (player.hasItem(consumables.PINKEGG)) player.consumeItem(consumables.PINKEGG);
-        else player.consumeItem(consumables.L_PNKEG);
+        if (player.hasItem(ConsumableLib.PINKEGG)) player.consumeItem(ConsumableLib.PINKEGG);
+        else player.consumeItem(ConsumableLib.L_PNKEG);
         flags[kFLAGS.AMILY_WANG_LENGTH] = 0;
         flags[kFLAGS.AMILY_WANG_GIRTH] = 0;
         doNext(amilyFollowerEncounter);
@@ -3617,13 +3617,13 @@ export class AmilyScene implements TimeAwareInterface {
             // (If Nipples are smaller than 4 inches:
             if (flags[kFLAGS.AMILY_NIPPLE_LENGTH] < maxSizePure || (flags[kFLAGS.AMILY_NIPPLE_LENGTH] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
                 outputText("She looks at it skeptically. \"<i>I guess bigger nipples would be more sensitive...</i>\" She mutters, but she takes it from you all the same. Unthinkingly biting off the top, she sucks down the contents in a practiced gulp. Crushing the shell in her hand, she pulls at her top, allowing you to see her nipples swell and grow until they stop. She experimentally tweaks one, squeaking in shock at the sensation. \"<i>Well... I guess that they do feel kind of nice... Was there anything else?</i>\"\n\n", false);
-                if (player.hasItem(consumables.WHITEEG)) {
-                    player.consumeItem(consumables.WHITEEG);
+                if (player.hasItem(ConsumableLib.WHITEEG)) {
+                    player.consumeItem(ConsumableLib.WHITEEG);
                     flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .25;
                     flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
                 }
                 else {
-                    player.consumeItem(consumables.L_WHTEG);
+                    player.consumeItem(ConsumableLib.L_WHTEG);
                     flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .7;
                     flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
                 }
@@ -3641,13 +3641,13 @@ export class AmilyScene implements TimeAwareInterface {
             // (If Nipples are smaller than 4 inches:
             if (flags[kFLAGS.AMILY_NIPPLE_LENGTH] < maxSizeCorr) outputText("She looks at it and smiles knowingly. \"<i>Is " + mf(player, "master", "mistress") + " going to make this one's nipples into obscene toys?</i>\" she asks while accepting the egg.  She bites off the top and sucks down the contents in a practiced gulp.  Crushing the shell in her hand, she pulls at her top, allowing you to see her nipples swell and grow until they stop. She experimentally tweaks one, squeaking in shock at the sensation. \"<i>Thank you " + mf(player, "master", "mistress") + " for giving your slut such wonderful nipple-toys.  Would you like to abuse your slut's needy fuck-hole now?</i>\"\n\n", false);
             else outputText("She looks at it and moans lewdly, \"<i>My nipples are going to be sure huge for you " + mf(player, "master", "mistress") + ".  No, nipples isn't right.  They're teats now.  Huge, swollen cow-teats on your mousey fuck-pet.  Lets make them bigger!</i>\" She bites off the top and sucks down the contents in a practiced gulp.  Crushing the shell in her hand, she pulls at her top, allowing you to see her nipples swell and hang even lower. She experimentally tweaks one, squeaking in shock at the sensation. \"<i>Thank you " + mf(player, "master", "mistress") + " for making your slut's body useless for anything but sex.  Would you like to abuse your slut's needy fuck-hole now?</i>\"\n\n", false);
-            if (player.hasItem(consumables.WHITEEG)) {
-                player.consumeItem(consumables.WHITEEG);
+            if (player.hasItem(ConsumableLib.WHITEEG)) {
+                player.consumeItem(ConsumableLib.WHITEEG);
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .25;
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
             }
             else {
-                player.consumeItem(consumables.L_WHTEG);
+                player.consumeItem(ConsumableLib.L_WHTEG);
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .7;
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
             }
@@ -3671,12 +3671,12 @@ export class AmilyScene implements TimeAwareInterface {
             if (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizePure || (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
                 outputText("\"<i>So, you want me to have a little more junk in the trunk, huh?</i>\" She giggles. \"<i>Well, I guess a little padding down there wouldn't hurt...</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, her hands then press themselves to her butt as she spins around so that it faces you, trying to look over her shoulder as it visibly swells, straining her pants. She pats it a few times, then shakes her head. \"<i>I'm going to have to go and let these pants out a little now.</i>\" She apologizes, and then walks away.\n\n", false);
                 dynStats("lus", 5);
-                if (player.hasItem(consumables.BROWNEG)) {
-                    player.consumeItem(consumables.BROWNEG);
+                if (player.hasItem(ConsumableLib.BROWNEG)) {
+                    player.consumeItem(ConsumableLib.BROWNEG);
                     flags[kFLAGS.AMILY_ASS_SIZE] += 1 + rand(2);
                 }
                 else {
-                    player.consumeItem(consumables.L_BRNEG);
+                    player.consumeItem(ConsumableLib.L_BRNEG);
                     flags[kFLAGS.AMILY_ASS_SIZE] += 2 + rand(3);
                 }
                 if (flags[kFLAGS.HYPER_HAPPY] && flags[kFLAGS.AMILY_ASS_SIZE] > maxSizeHypr) {
@@ -3698,12 +3698,12 @@ export class AmilyScene implements TimeAwareInterface {
             if (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizeCorr || (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
                 outputText("\"<i>So, " + mf(player, "master", "mistress") + " would like " + mf(player, "his", "her") + " toy to have a little more padding around her horny puss and asshole?</i>\" she giggles. \"<i>I obey.</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, her hands then press themselves to her butt as she spins around so that it faces you, trying to look over her shoulder as it visibly swells, jiggling slightly. She pats it a few times, then shakes her head. \"<i>Will you be using your newly-improved cum-dumpster now?</i>\" she asks.\n\n", false);
                 dynStats("lus", 5);
-                if (player.hasItem(consumables.BROWNEG)) {
-                    player.consumeItem(consumables.BROWNEG);
+                if (player.hasItem(ConsumableLib.BROWNEG)) {
+                    player.consumeItem(ConsumableLib.BROWNEG);
                     flags[kFLAGS.AMILY_ASS_SIZE] += 1 + rand(2);
                 }
                 else {
-                    player.consumeItem(consumables.L_BRNEG);
+                    player.consumeItem(ConsumableLib.L_BRNEG);
                     flags[kFLAGS.AMILY_ASS_SIZE] += 2 + rand(3);
                 }
                 if (flags[kFLAGS.AMILY_ASS_SIZE] > maxSizeHypr) {
@@ -3731,12 +3731,12 @@ export class AmilyScene implements TimeAwareInterface {
             // (If Amily doesn't have "full, womanly hips":
             if (flags[kFLAGS.AMILY_HIP_RATING] < maxSizePure || (flags[kFLAGS.AMILY_HIP_RATING] < maxSizeCorr && flags[kFLAGS.HYPER_HAPPY])) {
                 outputText("She looks at it thoughtfully. \"<i>Wider hips...? Well, if you really want, I guess I can try it.</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, she almost loses her balance as her hips suddenly jut wider, the growth happening much faster than she expected. \"<i>I'm going to have to get used to walking like this, now.</i>\" She mutters, and then she awkwardly walks away.\n\n", false);
-                if (player.hasItem(consumables.PURPLEG)) {
-                    player.consumeItem(consumables.PURPLEG);
+                if (player.hasItem(ConsumableLib.PURPLEG)) {
+                    player.consumeItem(ConsumableLib.PURPLEG);
                     flags[kFLAGS.AMILY_HIP_RATING] += 1 + rand(2);
                 }
                 else {
-                    player.consumeItem(consumables.L_PRPEG);
+                    player.consumeItem(ConsumableLib.L_PRPEG);
                     flags[kFLAGS.AMILY_HIP_RATING] += 2 + rand(3);
                 }
 
@@ -3758,12 +3758,12 @@ export class AmilyScene implements TimeAwareInterface {
             // (If Amily doesn't have "full, womanly hips":
             if (flags[kFLAGS.AMILY_HIP_RATING] < maxSizeCorr) {
                 outputText("She looks at it thoughtfully. \"<i>" + mf(player, "Master", "Mistress") + " wants my hips even wider?  Are you going to use me as your private breeding stock?  Mmm, that turns me on!</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, she almost loses her balance as her hips suddenly jut wider, the growth happening much faster than she expected. \"<i>Gods that made me wet!  Take me... let's fuck right now, please!</i>\" she begs.\n\n", false);
-                if (player.hasItem(consumables.PURPLEG)) {
-                    player.consumeItem(consumables.PURPLEG);
+                if (player.hasItem(ConsumableLib.PURPLEG)) {
+                    player.consumeItem(ConsumableLib.PURPLEG);
                     flags[kFLAGS.AMILY_HIP_RATING] += 1 + rand(2);
                 }
                 else {
-                    player.consumeItem(consumables.L_PRPEG);
+                    player.consumeItem(ConsumableLib.L_PRPEG);
                     flags[kFLAGS.AMILY_HIP_RATING] += 2 + rand(3);
                 }
                 if (flags[kFLAGS.AMILY_HIP_RATING] > 16) flags[kFLAGS.AMILY_ASS_SIZE] = 16;
@@ -3802,7 +3802,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("\"<i>More new clothes? Ooh, you're spoiling me, " + player.short + "</i>!\" she teases you. Unabashed in the slightest at being naked in front of you, she strips down, doing her best to give you a little show as she does so. She then redresses herself in her new offering. \"<i>How do I look?</i>\" she giggles.\n\n", false);
             outputText("You assure her that she looks beautiful. \"<i>Flatterer.</i>\" She smirks, and then wanders off to the stream.", false);
         }
-        player.consumeItem(armors.C_CLOTH);
+        player.consumeItem(ArmorLib.C_CLOTH);
         doNext(amilyFollowerEncounter);
     }
     /*
@@ -4222,7 +4222,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText(" Finally, the flow of cum ebbs; Amily rubs her distended belly and inhales sharply, pulling back slightly. With a brutal thrust, she blows on your cock; sending a shock of pleasure running through you and milking a few more spurts of cum. Now completely spent, you pull back; Amily tries to keep your cock inside her mouth by sucking on it with all her might, but it's useless. With a <b>POP</b> you pull your " + cockDescript(game.player, 0) + " free of Amily's hungry jaws; it is clean, without a single trace of cum and barely any spit on it. You look at Amily and she looks back, smiling happily and licking her lips. \"<i>Thank you for the meal, " + mf(player, "master", "mistress") + ",</i>\" she says before a small burp escapes her. You pat her on the head, get dressed, and leave Amily, satisfied with her good work.", false);
         player.orgasm();
         dynStats("sen", 1, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private corruptAmilyLickPussiesLikeAPro(): void {
         amilySprite();
@@ -4297,7 +4297,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("You chuckle and dismiss her with a wave.", false);
         player.orgasm();
         dynStats("sen", -1, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Corrupt scissortastrophie!
@@ -4376,7 +4376,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("Amily beams with happiness, \"<i>Yes mistress!</i>\" then proceeds to clean you up, licking every single drop she can out of your body.  To finish it all up, she licks your " + feet(player) + " clean of whatever juices remained on them. Satisfied, you dismiss Amily with a wave, heading back to the camp, while Amily rubs the results of your coupling on her body.", false);
         player.orgasm();
         dynStats("sen", -1, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Fuck corrupt Amily's pussaaaaaayyyyy
     private corruptAmilysPussyGetsMotherfuckingFucked(): void {
@@ -4471,7 +4471,7 @@ export class AmilyScene implements TimeAwareInterface {
         amilyPreggoChance();
         player.orgasm();
         dynStats("sen", -2, "cor", 2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Let corrupt Amily bone you with her cock
@@ -4541,7 +4541,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -2, "cor", 2);
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // CAMP CORRUPT AMILY SEX
@@ -4591,7 +4591,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("; stopping only when you're completely clean. You pat her head and praise her, \"<i>That's a good cumdumpster.</i>\" She responds by smiling tiredly, still panting a bit, and swaying her tail in happiness. You wipe the remaining saliva off your dick on her face and dress yourself. \"<i>Don't waste a single drop, cunt,</i>\" you tell her.  You leave the tired mouse alone to recompose herself.", false);
         player.orgasm();
         dynStats("sen", -2, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Amily Female Stuff Start
@@ -4633,7 +4633,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("You watch her go, feeling a little guilty, but you just don't swing that way. You can only hope she'll be all right.\n\n", false);
         // (Amily's affection drops back down to Low)
         if (flags[kFLAGS.AMILY_AFFECTION] > 10) flags[kFLAGS.AMILY_AFFECTION] = 10;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Amily's Surprise:
@@ -4673,7 +4673,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("Amily stops, her new cock wilting, her expression making it quite obvious that she's heartbroken. Her head falls, tears dripping from her eyes, and she turns and runs away. You glare after her as she vanishes, sobbing, into the ruins, hoping she never comes back.", false);
         // no moar amily in village
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Yuri:
@@ -4705,7 +4705,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("Your own strength returning to you, you sit up and smile at your mousey lover before giving her a deep kiss, tasting your juices and letting her get a taste of her own. Then you redress yourself and return to your camp.", false);
         player.orgasm();
         flags[kFLAGS.AMILY_TIMES_FUCKED_FEMPC]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Herm Amily on Female:
@@ -4758,7 +4758,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
         flags[kFLAGS.AMILY_HERM_TIMES_FUCKED_BY_FEMPC]++;
         flags[kFLAGS.AMILY_FUCK_COUNTER]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Player gives Birth (quest version):
@@ -5126,7 +5126,7 @@ export class AmilyScene implements TimeAwareInterface {
                 dynStats("lus", 25 + player.sens / 10);
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // "Why Not Herms?" (Req medium 'like')
     private whyNotHerms(): void {
@@ -5155,7 +5155,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("\"<i>But it's unnatural!</i>\" She barks... well, squeaks indignantly, anyway. \"<i>Women with cocks, men with cunts - before those fucking demons, you never saw creatures like that! They're not normal! I mean, you don't seem to be a bad person, but I could never have sex with someone like that!</i>\"\n\n", false);
 
         outputText("At that, she turns and runs off, quickly vanishing into the rubble. You choose not to pursue; it seems she's clearly not in the mood to talk about it.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         flags[kFLAGS.AMILY_HERM_QUEST]++;
     }
 
@@ -5196,7 +5196,7 @@ export class AmilyScene implements TimeAwareInterface {
 
         outputText("Looking deeply sad, she turns and walks away, vanishing into the urban wilderness in that way only she can. Instinctively, you realize that you will never see her again.", false);
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Conversation: Efficiency
@@ -5223,7 +5223,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("You agree, and allow her to begin leading you to the \"<i>bedroom</i>\".", false);
         flags[kFLAGS.AMILY_WANG_LENGTH] = 4;
         flags[kFLAGS.AMILY_WANG_GIRTH] = 1;
-        player.consumeItem(consumables.P_DRAFT);
+        player.consumeItem(ConsumableLib.P_DRAFT);
         // [Herm Amily on Female PC, First Time, scene plays]
         doNext(hermilyOnFemalePC);
     }
@@ -5419,7 +5419,7 @@ export class AmilyScene implements TimeAwareInterface {
             else outputText("You think about some of the more interesting potions you found while exploring; perhaps you could use some of them...", false);
         }
         dynStats("lus", 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // FLAG THAT THIS SHIT WENT DOWN
         flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] = 1;
     }
@@ -5438,15 +5438,15 @@ export class AmilyScene implements TimeAwareInterface {
             // Potent Mixture key-item added to inventory.
             // Takes 1 hour.
             // (if PC doesn't have the required items)
-            if (!(player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT)) || !player.hasItem(consumables.GOB_ALE)) {
+            if (!(player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT)) || !player.hasItem(ConsumableLib.GOB_ALE)) {
                 outputText("You think about going into the Ruined Village, but you don't have the ingredients to create more of Amily's medicine. You return to your camp.", false);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // (if PC is genderless and has the ingredients.)
             else if (player.gender == 0) {
                 outputText("You think about going into the Ruined Village, but without a cock or a pussy you can't complete the mixture. You return to your camp.", false);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // (else)
@@ -5473,9 +5473,9 @@ export class AmilyScene implements TimeAwareInterface {
                 }
                 outputText("After taking a few minutes to rest you look inside the bowl; the mixture has become pinkish-white in color and it bubbles omniously. You take one of the empty bottles and fill it with as much of the mixture as you can, before putting the cork back and putting it back into your pouch. Now all you have to do is find Amily... You smile wickedly as you head back to camp.", false);
                 // Consume items
-                if (player.hasItem(consumables.L_DRAFT)) player.consumeItem(consumables.L_DRAFT);
-                else player.consumeItem(consumables.F_DRAFT);
-                player.consumeItem(consumables.GOB_ALE);
+                if (player.hasItem(ConsumableLib.L_DRAFT)) player.consumeItem(ConsumableLib.L_DRAFT);
+                else player.consumeItem(ConsumableLib.F_DRAFT);
+                player.consumeItem(ConsumableLib.GOB_ALE);
                 player.keyItems.create("Potent Mixture", 0, 0, 0, 0);
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00169]++;
             }
@@ -5483,21 +5483,21 @@ export class AmilyScene implements TimeAwareInterface {
         // First Time
         else {
             // (if PC doesn't have the required items and has >= 25 Corruption)
-            if (!(player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT)) || !player.hasItem(consumables.GOB_ALE)) {
+            if (!(player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT)) || !player.hasItem(ConsumableLib.GOB_ALE)) {
                 outputText("You think about going into the Ruined Village, but decide it's best to wait until you have a plan underway (maybe some lust draft and a goblin ale to get the ball rolling... you return to your camp.", false);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // (else if the PC is genderless)
             else if (player.gender == 0) {
                 outputText("You think about going into the Ruined Village, but decide to turn back; right now, you just don't have the proper 'parts' to get the job done, and so you return to your camp.\n\n", false);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // (else)
             else {
                 outputText("You pick up a bowl and carefully pour the contents of the ", false);
-                if (player.hasItem(consumables.L_DRAFT)) outputText("Lust Draft ", false);
+                if (player.hasItem(ConsumableLib.L_DRAFT)) outputText("Lust Draft ", false);
                 else outputText("Fuck Draft ", false);
                 outputText("and Goblin Ale inside, then you produce a wooden branch and begin stirring the contents until they are mixed together. Slowly you dip a finger and take a experimental lick; you're almost knocked back by the strong taste, your ", false);
                 if (player.cocks.length > 0) outputText(cockDescript(game.player, 0) + " jumps up to attention", false);
@@ -5525,15 +5525,15 @@ export class AmilyScene implements TimeAwareInterface {
                 }
                 outputText("After taking a few minutes to rest you look inside the bowl; the mixture has become pinkish-white in color and it bubbles omniously. You take one of the empty bottles and fill it with as much of the mixture as you can, before putting the cork back and putting it back into your pouch. Now all you have to do is find Amily... You smile wickedly as you head back to camp.\n\n", false);
                 // Consume items
-                if (player.hasItem(consumables.L_DRAFT)) player.consumeItem(consumables.L_DRAFT);
-                else player.consumeItem(consumables.F_DRAFT);
-                player.consumeItem(consumables.GOB_ALE);
+                if (player.hasItem(ConsumableLib.L_DRAFT)) player.consumeItem(ConsumableLib.L_DRAFT);
+                else player.consumeItem(ConsumableLib.F_DRAFT);
+                player.consumeItem(ConsumableLib.GOB_ALE);
                 player.keyItems.create("Potent Mixture", 0, 0, 0, 0);
                 flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00169]++;
             }
         }
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private sendCorruptCuntToFarm(): void {
@@ -5549,7 +5549,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("\n\nShe will make a hard worker for Whitney, you think, but you doubt she will be much use protection wise.");
 
         flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -5614,66 +5614,66 @@ export class AmilyScene implements TimeAwareInterface {
             if (player.itemSlot1.quantity == 0) {
                 outputText("You tell her that you'll call for her, if you ever need her knowledge.\n\n", false);
                 if (sexAfter) doNext(amilySexHappens);
-                else doNext(camp.returnToCampUseOneHour);
+                else doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // (If player has an item:)
             else {
                 outputText("You remember that you have something in your pockets that might be of interest, and show it to Amily.\n\n", false);
             }
-            if (player.itemSlot1.itype == consumables.EQUINUM) {
+            if (player.itemSlot1.itype == ConsumableLib.EQUINUM) {
                 outputText("\"<i>That's a distillation of horse essence, I think,</i>\" Amily says. \"<i>It would probably make you stronger and tougher... Perhaps it could also give you a horse cock. Or perhaps give you a pussy as wet as mine,</i>\" she giggles. \"<i>Whatever happens, could you come test it on me?</i>\" she asks seductively.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.CANINEP) {
+            else if (player.itemSlot1.itype == ConsumableLib.CANINEP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.LARGEPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.LARGEPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.DBLPEPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.DBLPEPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.BLACKPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.BLACKPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you tried this black one?  It looks yummy...</i>\" she says, licking her lips.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.KNOTTYP) {
+            else if (player.itemSlot1.itype == ConsumableLib.KNOTTYP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
             }
             // Canine Pepper & Variants:
-            else if (player.itemSlot1.itype == consumables.BULBYPP) {
+            else if (player.itemSlot1.itype == ConsumableLib.BULBYPP) {
                 outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
             }
             // Succubus Milk/Incubus Draft:
-            else if (player.itemSlot1.itype == consumables.INCUBID || player.itemSlot1.itype == consumables.SUCMILK) {
+            else if (player.itemSlot1.itype == ConsumableLib.INCUBID || player.itemSlot1.itype == ConsumableLib.SUCMILK) {
                 outputText("She hums at the scent. \"<i>That's demon fluid, " + mf(player, "master", "mistress") + ". It'd be like drinking liquid corruption. It could turn you into a demon, or supercharge your feminity or masculinity. I've heard it can even mess with your gender if you drink too much of the opposite stuff. But none of that is important, I'd be happy to drink from you no matter what gender you are " + mf(player, "master", "mistress") + ",</i>\" she says with a grin.\n\n", false);
             }
             // Succubi's Delight:
-            else if (player.itemSlot1.itype == consumables.SDELITE) {
+            else if (player.itemSlot1.itype == ConsumableLib.SDELITE) {
                 outputText("\"<i>Full of taint, no question of that. Succubi give it to males who haven't become demons yet; makes them better able to produce cum, and pushes them towards demonhood. Why don't you try some?</i>\" she asks with a smile.\n\n", false);
             }
             // Wet Cloth:
-            else if (player.itemSlot1.itype == consumables.WETCLTH) {
+            else if (player.itemSlot1.itype == ConsumableLib.WETCLTH) {
                 outputText("\"<i>Forgive your useless cumslut for her ignorance, " + mf(player, "master", "mistress") + ",</i>\" she says, looking down. \"<i>I don't really know what this is; but it looks like some sort of... concentrate of goo?  I think it's got something to do with whatever's been polluting the lake, but it does smell great, doesn't it?</i>\" she asks, smiling at you.\n\n", false);
             }
             // Bee Honey:
-            else if (player.itemSlot1.itype == consumables.BEEHONY) {
+            else if (player.itemSlot1.itype == ConsumableLib.BEEHONY) {
                 outputText("\"<i>That is honey from a giant bee, " + mf(player, "master", "mistress") + "!</i>\" she tells you eagerly, perking up. \"<i>Oh, that stuff's delicious!</i>\" Then she diverts her stare to you, looking at you with half-lidded eyes, idly sucking on a clawed finger. \"<i>But I prefer having your honey, " + mf(player, "master", "mistress") + ",</i>\" she says seductively, licking at her finger, a tiny strand of saliva connecting it to her mouth.\n\n", false);
             }
             // Pure Honey:
-            else if (player.itemSlot1.itype == consumables.PURHONY) {
+            else if (player.itemSlot1.itype == ConsumableLib.PURHONY) {
                 outputText("\"<i>You managed to get your hands on ultra-pure giant bee honey?</i>\" she asks, sounding impressed. \"<i>I hear that stuff's so pure it can actually help purge the eater of demonic taint - but why would you want to do that?</i>\" she asks mockingly.\n\n", false);
             }
             // Green Glob:
-            else if (player.itemSlot1.itype == useables.GREENGL) {
+            else if (player.itemSlot1.itype == UseableLib.GREENGL) {
                 outputText("\"<i>A blob of slime from a green gel? Hmm...</i>\" She looks thoughtful. \"<i>I think I remember my dad once telling  me you could make a really strong armor out of a special distillation of green oozes. Slut doesn't remember for sure, but she thinks you look better naked " + mf(player, "master", "mistress") + "</i>,\" she says seductively.</i>\"\n\n", false);
             }
             // Bee Chitin:
-            else if (player.itemSlot1.itype == useables.B_CHITN) {
+            else if (player.itemSlot1.itype == UseableLib.B_CHITN) {
                 outputText("\"<i>If you had a sufficient mass of this stuff, you could make a suit of armor out of it. It needs special alchemical reagents, though, otherwise it'll just get all brittle and smashed up. But why bother? That would hide your perfect body, " + mf(player, "master", "mistress") + "</i>,\" she says seductively.\n\n", false);
             }
             else {
@@ -5898,7 +5898,7 @@ export class AmilyScene implements TimeAwareInterface {
 
             outputText("You chuckle a little and tell her you'll think about it.  As you leave, she begins to masturbate, no doubt fantasizing about being used by a tentacle beast.");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (Winning Messages)
@@ -6000,7 +6000,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("lib", -2, "cor", 5);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
     // [Female]
     private rapeCorruptAmily1Female(): void {
@@ -6038,7 +6038,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("lib", -2, "cor", 5);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Raping Amily 2]
@@ -6140,7 +6140,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
 
         dynStats("lib", -2, "cor", 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Raping Amily 3]
@@ -6165,7 +6165,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("Satisfied for the moment, you leave the smiling mouse lying in a pool of cum and return to the camp.", false);
             player.orgasm();
             dynStats("cor", 2);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (else)
@@ -6221,7 +6221,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("Satisfied for the moment, you leave the smiling mouse lying in a pool of juices and return to the camp.", false);
             player.orgasm();
             dynStats("cor", 2);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("That was good, but now it's time to reward Amily for her efforts, besides you could really use a proper licking.\n\n", false);
@@ -6263,7 +6263,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
 
         dynStats("lib", -2, "cor", 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Raping Amily 4]
@@ -6274,7 +6274,7 @@ export class AmilyScene implements TimeAwareInterface {
         // (if PC is genderless)
         if (player.gender == 0) {
             outputText("You would love to play with your mouse bitch, but you don't have the parts for that; so you return to the camp.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("You enter the ruined village hoping to find your corrupted mouse cumbucket. It doesn't take long until you spot her; she's stroking her pussy and blowing a wood carved dildo, practicing like you told her to.\n\n", false);
@@ -6340,7 +6340,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("You return to the camp.", false);
             player.orgasm();
             dynStats("cor", 3);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("You push her back and withdraw, not yet satisfied. <b>A familiar power gathers inside you, and you decide to tap into it.</b>\n\n", false);
@@ -6417,7 +6417,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("You feel like you should continue, but are too weak to do so... \"<i>Go and keep practicing, I'll come to feed you later,</i>\" you tell her.  Amily smiles, licks her lips and gives your pussy a parting kiss before running away to one of her hideouts.\n\n", false);
 
             outputText("You return to the camp.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             player.orgasm();
             dynStats("cor", 3);
             return;
@@ -6489,7 +6489,7 @@ export class AmilyScene implements TimeAwareInterface {
         else flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;
         // Disable amily encounters in the village!
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Stalking Amily (Corrupt)]
@@ -6539,7 +6539,7 @@ export class AmilyScene implements TimeAwareInterface {
         }
         else {
             outputText("You search for Amily high and low, but can't find a single trace of her. Frustrated, you return to the camp.  Maybe if you were smarter or faster you could find her.", false);
-            doNext(camp.returnToCampUseTwoHours);
+            doNext(Camp.returnToCampUseTwoHours);
         }
     }
 
@@ -6549,7 +6549,7 @@ export class AmilyScene implements TimeAwareInterface {
         // (if PC is genderless)
         if (player.gender == 0) {
             outputText("You think about going into the ruined village, but playing with Amily is not going to be possible if you don't have the parts for it... You return to your camp.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // (else)
         else {
@@ -6577,7 +6577,7 @@ export class AmilyScene implements TimeAwareInterface {
                 outputText("Amily shakes her head and yells, \"<i>No! I can't!</i>\" before darting off.\n\n", false);
 
                 outputText("You laugh and put the bottle away, then return to your camp.\n\n(Not corrupt enough...)", false);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             outputText("You begin stripping off your " + player.armorName + " and show her your ", false);
@@ -6611,7 +6611,7 @@ export class AmilyScene implements TimeAwareInterface {
         // (if PC is genderless)
         if (player.gender == 0) {
             outputText("You think about going into the ruined village, but playing with Amily is not going to be possible if you don't have the parts for it... You return to your camp.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         amilySprite();
@@ -6651,7 +6651,7 @@ export class AmilyScene implements TimeAwareInterface {
         amilySprite();
         outputText("Amily approaches you, looking concerned.  \"<i>Darling... I don't know what's been going on, but you need to start taking better care of yourself.  I can smell the corruption taking root in you - if you don't stop, you'll soon start acting like any other demon.</i>\"\n\n", false);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00173] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Farewell Note:
@@ -6707,7 +6707,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("There's a long pause while Amily digests your implication.  \"<i>You want me to... change?</i>\" she asks quietly.  \"<i>Would that... make you want to mate with me?</i>\"  You can't make any promises, but it would definitely change your considerations, you explain.\n\n", false);
         outputText("After another long silence, she sighs.  \"<i>I don't know.  What would my family say if I just... went and made myself a completely different person, all for the sake of a human?</i>\"  You slowly move to her and lay a hand on her shoulder, forcing her to look once more into your eyes.  It's not the fact that she won't be a mouse, you insist.  It's the fact that she's moving on for the sake of her race.  She manages a little smile at that, her expression brightening just a bit.  \"<i>I'll think about it,</i>\" she finally decides.  \"<i>If you can find some non-demonic reagents, perhaps we can give it a try.  If anything bad happens, though,</i>\" she warns, wagging a finger at you threateningly.  She backs off and stands awkwardly for a second.\n\n", false);
         outputText("\"<i>Well, uh... bye,</i>\" Amily concludes, whirling around and walking away.  You can't be sure, but it seems like she's exaggerating the sway of her hips a bit.  You don't think much of it, heading back toward camp and beginning to formulate a concoction to de-mouse your potential breeding partner.  Perhaps... a <b>golden seed</b> for a human face, a <b>black egg</b> to get rid of the fur, and some <b>purified succubus milk</b> to round things off.  You make a mental note to remember those ingredients, for they won't show up again and you'd feel positively silly if you somehow completely forgot them.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Check if we have all the shit we need
     private amilyCanHaveTFNow(): boolean {
@@ -6716,20 +6716,20 @@ export class AmilyScene implements TimeAwareInterface {
         // some purified <b>succubus milk</b> to round things off
         return flags[kFLAGS.AMILY_NOT_FURRY] == 0  // Amily isn't already defurried
             && flags[kFLAGS.AMILY_OFFERED_DEFURRY] == 1  // Amily has been offered to be dehaired
-            && player.hasItem(consumables.GLDSEED)     // And we have all the shit we need
-            && (player.hasItem(consumables.BLACKEG) || player.hasItem(consumables.L_BLKEG))
-            && (player.hasItem(consumables.P_S_MLK) || (amilyCorrupt() && player.hasItem(consumables.SUCMILK)));
+            && player.hasItem(ConsumableLib.GLDSEED)     // And we have all the shit we need
+            && (player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG))
+            && (player.hasItem(ConsumableLib.P_S_MLK) || (amilyCorrupt() && player.hasItem(ConsumableLib.SUCMILK)));
     }
     // Arrive with all the stuff you need to make Amily not look completely rediculous.
     private amilyDefurrify(): void {
-        player.consumeItem(consumables.GLDSEED);
-        if (player.hasItem(consumables.BLACKEG)) player.consumeItem(consumables.BLACKEG);
-        else player.consumeItem(consumables.L_BLKEG);
+        player.consumeItem(ConsumableLib.GLDSEED);
+        if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
+        else player.consumeItem(ConsumableLib.L_BLKEG);
         if (amilyCorrupt()) {
-            if (player.hasItem(consumables.SUCMILK)) player.consumeItem(consumables.SUCMILK);
-            else player.consumeItem(consumables.P_S_MLK);
+            if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
+            else player.consumeItem(ConsumableLib.P_S_MLK);
         }
-        else player.consumeItem(consumables.P_S_MLK);
+        else player.consumeItem(ConsumableLib.P_S_MLK);
         flags[kFLAGS.AMILY_OFFERED_DEFURRY] = 2; // We're now completing this dumb little quest.
         flags[kFLAGS.AMILY_NOT_FURRY] = 1;
         flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
@@ -6741,7 +6741,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("A cry brings your attention from the hair-pile back up to her face.  As if by magic, her rodent snout simply recedes back into her face, the nose reforming into a more human model.  She gently reaches up and brushes a fingertip across her new lips, eyes glazing over as tears begin to form.  \"<i>So... different,</i>\" she whispers as the transformation continues.  You move to her and wrap her in a warm, comforting hug, and after a moment's pause, she wraps her arms around you as well.\n\n", false);
         outputText("Finally, the process comes to a close.  You break from each other and stand at arm's length, both of you studying the changes to her previously-animalistic self.  Her auburn-colored ears and bare tail remain unchanged, but other than that, Amily's completely human.  Though a bit conflicted, Amily seems happy enough with her decision.  \"<i>Well, I guess that's all there is to it,</i>\" she says, scratching her newly bare cheek idly.  \"<i>I'll let you think for a bit... see you later.</i>\"\n\n", false);
         outputText("She stalks off into the ruins once more, humming a little tune as she goes.  You note a little more spring in her step, now that hope is restored in repopulating her race.\n\n", false);
-        doNext(camp.returnToCampUseOneHour); // To camp
+        doNext(Camp.returnToCampUseOneHour); // To camp
     }
 
     // NOTE: Not sure how this ties in.
@@ -6762,14 +6762,14 @@ export class AmilyScene implements TimeAwareInterface {
             return;
         }
         // EAT ZE ITEMS!
-        player.consumeItem(consumables.GLDSEED);
-        if (player.hasItem(consumables.BLACKEG)) player.consumeItem(consumables.BLACKEG);
-        else player.consumeItem(consumables.L_BLKEG);
+        player.consumeItem(ConsumableLib.GLDSEED);
+        if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
+        else player.consumeItem(ConsumableLib.L_BLKEG);
         if (amilyCorrupt()) {
-            if (player.hasItem(consumables.SUCMILK)) player.consumeItem(consumables.SUCMILK);
-            else player.consumeItem(consumables.P_S_MLK);
+            if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
+            else player.consumeItem(ConsumableLib.P_S_MLK);
         }
-        else player.consumeItem(consumables.P_S_MLK);
+        else player.consumeItem(ConsumableLib.P_S_MLK);
 
         if (amilyCorrupt()) {
             const master: string = mf(player, "master", "mistress");
@@ -6855,7 +6855,7 @@ export class AmilyScene implements TimeAwareInterface {
         outputText("You watch Urta take a nice long drink from the proffered bottle, but before she gets well and truly smashed, you politely excuse yourself and, helping an inebriated Amily to her feet, exit the Wet Bitch.  The two of you make your way back to camp and, putting the drunken mouse-girl to bed, you give her a kiss on the cheek and soon fall asleep.", false);
         // Disable threesomes between them forever.
         flags[kFLAGS.AMILY_VISITING_URTA] = 3;
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // Amily/Urta -- DRINK!
@@ -6892,7 +6892,7 @@ export class AmilyScene implements TimeAwareInterface {
         if (player.gender == 1) simpleChoices("Use Cock", threesomeAmilUrtaCAWKS, "", null, "", null, "", null, "", null);
         if (player.gender == 2) simpleChoices("", null, "Use Vagina", urtaXAmilyCuntPussyVagSQUICK, "", null, "", null, "", null);
         if (player.gender == 3) simpleChoices("Use Cock", threesomeAmilUrtaCAWKS, "Use Vagina", urtaXAmilyCuntPussyVagSQUICK, "", null, "", null, "", null);
-        if (player.gender == 0) simpleChoices("Nevermind", camp.returnToCampUseOneHour, "", null, "", null, "", null, "", null);
+        if (player.gender == 0) simpleChoices("Nevermind", Camp.returnToCampUseOneHour, "", null, "", null, "", null, "", null);
     }
 
     // Amily/Urta -- Use Cock
@@ -6981,7 +6981,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("\n\n(<b>Urta unlocked in Amily's sex menu!</b>)", false);
             flags[kFLAGS.AMILY_VISITING_URTA] = 4;
         }
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
     public pureAmilyPutsItInYourRectumDamnNearKilledEm(): void {
         outputText("", true);
@@ -7066,7 +7066,7 @@ export class AmilyScene implements TimeAwareInterface {
         flags[kFLAGS.AMILY_TIMES_BUTTFUCKED_PC]++;
         player.orgasm();
         dynStats("sen", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private fuckPureAmilysHeiny(): void {
@@ -7144,7 +7144,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -2);
         flags[kFLAGS.TIMES_FUCKED_AMILYBUTT]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Scene 2: Amily Teaches Grown Corrupt Mice How To Sex (Z)
@@ -7235,7 +7235,7 @@ export class AmilyScene implements TimeAwareInterface {
         amilyPreggoChance();
         player.orgasm();
         dynStats("lib", -1, "sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // First talk: Finished (Bagpuss)(Zedited, but no followups are ready yet)
@@ -7382,7 +7382,7 @@ export class AmilyScene implements TimeAwareInterface {
     private layEggsInAmilysButtPt2(): void {
         clearOutput();
         outputText("You wake up almost an hour later, Amily still dozing on top of you.  Gently picking her up, you take her to her nest and lay the girl down in the soft bedding, smiling at the bulge in her stomach.  It takes you a little while to clean yourself off and redress, though you can't help but feel that getting a little bit of slime on your [armor] was a price worth paying.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Amily Laying
@@ -7429,7 +7429,7 @@ export class AmilyScene implements TimeAwareInterface {
             outputText("\n\n\"<i>How do I look,</i>\" your lover asks demurely, toeing at the dirt.  The usually confident little mouse is clearly out of her element but excited as well.");
             outputText("\n\n\"<i>Stunning,</i>\" you answer, and remembering your earlier offer, you ask, \"<i>Shall we hit the water, then?</i>\"");
             outputText("\n\nAmily seductively sashays up to your side and takes your hand, leaning heavily against you as the two of you head toward the stream.");
-            player.consumeItem(armors.S_SWMWR);
+            player.consumeItem(ArmorLib.S_SWMWR);
             flags[kFLAGS.AMILY_OWNS_BIKINI] = 1;
         }
         // Repeat Swim Intro
@@ -7505,7 +7505,7 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -1);
         amilyPreggoChance();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // PC - dicked.
@@ -7786,7 +7786,7 @@ export class AmilyScene implements TimeAwareInterface {
             }
             outputText(" definitely got pregnant.</b>)");
         }
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // Amily Nurse RP
@@ -7804,7 +7804,7 @@ export class AmilyScene implements TimeAwareInterface {
         clearOutput();
         // First Time
         if (flags[kFLAGS.GIVEN_AMILY_NURSE_OUTFIT] == 0) {
-            player.consumeItem(armors.NURSECL);
+            player.consumeItem(ArmorLib.NURSECL);
             flags[kFLAGS.GIVEN_AMILY_NURSE_OUTFIT] = 1;
             outputText("You hand Amily the enticing garments with a roguish smile.  Her eyes seem confused at first, but a knowing, playful grin spreads over her features.  Slapping you with the costume, she teases, \"<i>What is this supposed to be, [name]?</i>\"  The fabric stretches across her as she holds it up in front of her 'assets'.  \"<i>This is barely modest!</i>\"");
             outputText("\n\nShe rounds on you, her tail rubbing on your leg as she steps closer, holding the thin fabric tight to her lithe body.  \"<i>Did you want me to look obscene for you?  To look like a naughty nurse?</i>\"  Her ears twitch as she mulls it over.");
@@ -7929,6 +7929,6 @@ export class AmilyScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -2);
         amilyPreggoChance();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

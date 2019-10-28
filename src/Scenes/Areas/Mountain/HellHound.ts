@@ -160,12 +160,12 @@ export class HellHound extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 5;
         this.gems = 10 + rand(10);
-        this.drop = new WeightedDrop().add(consumables.CANINEP, 3)
-            .addMany(1, consumables.BULBYPP,
-                consumables.KNOTTYP,
-                consumables.BLACKPP,
-                consumables.DBLPEPP,
-                consumables.LARGEPP);
+        this.drop = new WeightedDrop().add(ConsumableLib.CANINEP, 3)
+            .addMany(1, ConsumableLib.BULBYPP,
+                ConsumableLib.KNOTTYP,
+                ConsumableLib.BLACKPP,
+                ConsumableLib.DBLPEPP,
+                ConsumableLib.LARGEPP);
         this.tailType = TAIL_TYPE_DOG;
         this.special1 = hellhoundFire;
         this.special2 = hellhoundScent;

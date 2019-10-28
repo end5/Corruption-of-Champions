@@ -303,9 +303,9 @@ export class GnollSpearThrower extends Monster {
             clearOutput();
             outputText("The gnoll alpha is defeated!  You could use her for a quick, willing fuck to sate your lusts before continuing on.  Hell, you could even dose her up with that succubi milk you took from the goblin first - it might make her even hotter.  Do you?");
             menu();
-            addButton(0, "Fuck", game.urtaQuest.winRapeHyenaPrincess);
-            addButton(1, "Succ Milk", game.urtaQuest.useSuccubiMilkOnGnollPrincesses);
-            addButton(4, "Leave", game.urtaQuest.urtaNightSleep);
+            addButton(0, "Fuck", UrtaQuest.winRapeHyenaPrincess);
+            addButton(1, "Succ Milk", UrtaQuest.useSuccubiMilkOnGnollPrincesses);
+            addButton(4, "Leave", UrtaQuest.urtaNightSleep);
         } else {
             GnollSpearThrowerScene.hyenaVictory();
         }
@@ -313,7 +313,7 @@ export class GnollSpearThrower extends Monster {
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
         if (short == "alpha gnoll") {
-            game.urtaQuest.loseToGnollPrincessAndGetGangBanged();
+            UrtaQuest.loseToGnollPrincessAndGetGangBanged();
         } else if (pcCameWorms) {
             outputText("\n\nYour foe doesn't seem put off enough to leave...");
             doNext(game.endLustLoss);
@@ -356,7 +356,7 @@ export class GnollSpearThrower extends Monster {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 10;
         this.gems = 10 + rand(5);
-        this.drop = new ChainedDrop().add(consumables.GROPLUS, 1 / 5).add(consumables.INCUBID, 1 / 2).elseDrop(consumables.BROWN_D);
+        this.drop = new ChainedDrop().add(ConsumableLib.GROPLUS, 1 / 5).add(ConsumableLib.INCUBID, 1 / 2).elseDrop(ConsumableLib.BROWN_D);
         this.special1 = hyenaJavelinAttack;
         this.special2 = hyenaSnapKicku;
         this.special3 = hyenaArousalAttack;

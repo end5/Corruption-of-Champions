@@ -108,7 +108,7 @@ export class KatherineThreesome {
         Urta.urtaLove(1);
         if (flags[kFLAGS.KATHERINE_UNLOCKED] != 3) {
             if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-            doNext(camp.returnToCampUseOneHour); // An additional scene plays afterward if Kath is still being trained by Urta
+            doNext(Camp.returnToCampUseOneHour); // An additional scene plays afterward if Kath is still being trained by Urta
         }
     }
 
@@ -173,7 +173,7 @@ export class KatherineThreesome {
         Urta.urtaLove(1);
         if (flags[kFLAGS.KATHERINE_UNLOCKED] != 3)
             if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public roastYou(): void { // Not available if Kath has no cock
@@ -279,7 +279,7 @@ export class KatherineThreesome {
         Urta.urtaLove(1);
         if (flags[kFLAGS.KATHERINE_UNLOCKED] != 3)
             if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public spitroastKath(): void { // Works for all except genderless characters
@@ -343,7 +343,7 @@ export class KatherineThreesome {
         Urta.urtaLove(1);
         if (flags[kFLAGS.KATHERINE_UNLOCKED] != 3)
             if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public pinAndFuck(): void { // Kath is sober, Urta is drunk //Not available if Kath has no cock
@@ -430,7 +430,7 @@ export class KatherineThreesome {
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 8 + rand(2);
         if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private pinAndFuckStuffKath(): void { // Plays for any males and for herms who select this option
@@ -477,7 +477,7 @@ export class KatherineThreesome {
         outputText("You lock the door on the way out, " + (flags[kFLAGS.KATHERINE_URTA_AFFECTION] >= 31 ? "knowing that with those two the sex option will eventually win out." : "hoping your sated girlfriends will bond over this."));
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
         if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public watch(urtaIsDrunk: boolean): void { // Kath is sober (or drunk), Urta is drunk
@@ -538,7 +538,7 @@ export class KatherineThreesome {
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
         dynStats("lus", 20 + player.lib / 20);
         if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public kathLicksOutUrta(): void { // Kath is drunk, Urta is sober
@@ -599,7 +599,7 @@ export class KatherineThreesome {
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
         Urta.urtaLove(1);
         if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public sandwich(): void { // Kath is drunk, Urta is sober //Not available if Kath has no cock
@@ -729,7 +729,7 @@ export class KatherineThreesome {
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
         Urta.urtaLove(1);
         if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public orgy(): void { // Both Kath and Urta are drunk
@@ -787,7 +787,7 @@ export class KatherineThreesome {
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 10 + rand(2);
         Urta.urtaLove(1);
         if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     public doubleStuffKath(): void { // Both Kath and Urta are drunk
@@ -879,7 +879,7 @@ export class KatherineThreesome {
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
         Urta.urtaLove(1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public doublePenetrateKath(): void { // Both Kath and Urta are drunk
@@ -978,7 +978,7 @@ export class KatherineThreesome {
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
         Urta.urtaLove(1);
         if (game.time.hours >= 13) flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_URTAS_APT; // Katherine.timeChange will sort out whether Kath actually stays with Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public doubleStuffVala(): void { // Not available if Kath has no cock
@@ -1013,7 +1013,7 @@ export class KatherineThreesome {
         Katherine.orgasm();
         Katherine.katherineAndValaHadSex();
         flags[kFLAGS.VALA_TIMES_CONSENSUAL_SEX]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public eatOutVala(): void { // Not available if Kath has no cock
@@ -1033,7 +1033,7 @@ export class KatherineThreesome {
         Katherine.orgasm();
         Katherine.katherineAndValaHadSex();
         flags[kFLAGS.VALA_TIMES_CONSENSUAL_SEX]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public fistKathAndVala(): void {
@@ -1058,7 +1058,7 @@ export class KatherineThreesome {
         Katherine.orgasm();
         Katherine.katherineAndValaHadSex();
         flags[kFLAGS.VALA_TIMES_CONSENSUAL_SEX]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private valaCommonStart(): void {

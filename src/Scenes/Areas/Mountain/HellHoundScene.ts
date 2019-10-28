@@ -108,7 +108,7 @@ export class HellHoundScene {
         outputText("", true);
         outputText("You force the presence out of your mind.  You feel almost a bit lost after it disappears, but giving yourself over to foreign control can never be a good idea, can it?", false);
         // end event, A can repeat later.
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // choose yes (C)
@@ -136,7 +136,7 @@ export class HellHoundScene {
         if (player.keyItems.has("Marae's Lethicite") >= 0 && player.keyItems.getValue2Of("Marae's Lethicite") < 3) outputText(" You extract Marae's lethicite from your pack, and wonder if you really want to trade it for the hellfire he offered.", false);
         // advance to repeat version
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Choose no (E)
@@ -144,7 +144,7 @@ export class HellHoundScene {
         outputText("", true);
         outputText("You push the presence out of your mind.  Maybe later you'll collect the hellfire, but for now you'd rather keep the lethicite.", false);
         // end event, D can repeat.
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Choose yes (F)
@@ -193,7 +193,7 @@ export class HellHoundScene {
         player.perks.create(PerkLib.Hellfire, 0, 0, 0, 0);
         // Hellhounds no longer encounterable.
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Merae's Lethicite

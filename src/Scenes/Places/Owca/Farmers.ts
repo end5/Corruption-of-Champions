@@ -8,11 +8,11 @@ export class Farmers extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.owca.beatUpOwca();
+        Owca.beatUpOwca();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.owca.loseToOwca();
+        Owca.loseToOwca();
     }
 
     public constructor() {

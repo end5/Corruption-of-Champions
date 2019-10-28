@@ -23,7 +23,7 @@ export function endLustLoss(): void {
 
 // combat is over. Clear shit out and go to main
 export function cleanupAfterCombat(nextFunc: () => void = null): void {
-    if (nextFunc == null) nextFunc = camp.returnToCampUseOneHour;
+    if (nextFunc == null) nextFunc = Camp.returnToCampUseOneHour;
     if (game.inCombat) {
         // clear status
         clearStatuses(false);
@@ -73,9 +73,9 @@ export function cleanupAfterCombat(nextFunc: () => void = null): void {
             // Bonus lewts
             if (flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] != "") {
                 outputText("  Somehow you came away from the encounter with " + ItemType.lookupItem(flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID]).longName + ".\n\n");
-                inventory.takeItem(ItemType.lookupItem(flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID]), createCallBackFunction(camp.returnToCamp, timePasses));
+                Inventory.takeItem(ItemType.lookupItem(flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID]), createCallBackFunction(Camp.returnToCamp, timePasses));
             }
-            else doNext(createCallBackFunction(camp.returnToCamp, timePasses));
+            else doNext(createCallBackFunction(Camp.returnToCamp, timePasses));
         }
     }
     // Not actually in combat
@@ -135,7 +135,7 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         addButton(0, "Attack", (monster as DriderIncubus).taintedMindAttackAttempt);
         addButton(1, "Tease", teaseAttack);
         addButton(2, "Spells", magic);
-        addButton(3, "Items", inventory.inventoryMenu);
+        addButton(3, "Items", Inventory.inventoryMenu);
         addButton(4, "Run", runAway);
         addButton(5, "P. Specials", (monster as DriderIncubus).taintedMindAttackAttempt);
         addButton(6, "M. Specials", magicalSpecials);
@@ -151,7 +151,7 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         addButton(0, "Approach", approachAfterKnockback);
         addButton(1, "Tease", teaseAttack);
         addButton(2, "Spells", magic);
-        addButton(3, "Items", inventory.inventoryMenu);
+        addButton(3, "Items", Inventory.inventoryMenu);
         addButton(4, "Run", runAway);
         if (player.keyItems.has("Bow") >= 0) addButton(5, "Bow", fireBow);
         addButton(6, "M. Specials", magicalSpecials);
@@ -223,7 +223,7 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         addButton(0, "Attack", attacks);
         addButton(1, "Tease", teaseAttack);
         addButton(2, "Spells", magic);
-        addButton(3, "Items", inventory.inventoryMenu);
+        addButton(3, "Items", Inventory.inventoryMenu);
         addButton(4, "Run", runAway);
         addButton(5, "P. Specials", pSpecials);
         addButton(6, "M. Specials", magicalSpecials);
@@ -798,7 +798,7 @@ export function attack(): void {
         enemyAI();
         return;
     }
-    if (flags[kFLAGS.PC_FETISH] >= 3 && !urtaQuest.isUrta()) {
+    if (flags[kFLAGS.PC_FETISH] >= 3 && !UrtaQuest.isUrta()) {
         outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n", false);
         enemyAI();
         return;
@@ -824,7 +824,7 @@ export function attack(): void {
     }
     // "Brawler perk". Urta only. Thanks to Fenoxo for pointing this out... Even though that should have been obvious :<
     // Urta has fists and the Brawler perk. Don't check for that because Urta can't drop her fists or lose the perk!
-    else if (urtaQuest.isUrta()) {
+    else if (UrtaQuest.isUrta()) {
         if (player.effects.findByType(StatusAffects.FirstAttack) >= 0) {
             player.effects.remove(StatusAffects.FirstAttack);
         }
@@ -1361,71 +1361,71 @@ export function dropItem(monster: Monster): void {
     }
     let itype: ItemType = monster.dropLoot();
     if (monster.short == "tit-fucked Minotaur") {
-        itype = consumables.MINOCUM;
+        itype = ConsumableLib.MINOCUM;
     }
     if (monster instanceof Minotaur) {
         if (monster.weaponName == "axe") {
             if (rand(2) == 0) {
                 // 50% breakage!
                 if (rand(2) == 0) {
-                    itype = weapons.L__AXE;
+                    itype = WeaponLib.L__AXE;
                     if (player.tallness < 78) {
                         outputText("\nYou find a large axe on the minotaur, but it is too big for a person of your stature to comfortably carry.  ", false);
                         if (rand(2) == 0) itype = null;
-                        else itype = consumables.SDELITE;
+                        else itype = ConsumableLib.SDELITE;
                     }
                     // Not too tall, dont rob of axe!
                     else plotFight = true;
                 }
                 else outputText("\nThe minotaur's axe appears to have been broken during the fight, rendering it useless.  ", false);
             }
-            else itype = consumables.MINOBLO;
+            else itype = ConsumableLib.MINOBLO;
         }
     }
     if (monster instanceof BeeGirl) {
         // force honey drop if milked
         if (flags[kFLAGS.FORCE_BEE_TO_PRODUCE_HONEY] == 1) {
-            if (rand(2) == 0) itype = consumables.BEEHONY;
-            else itype = consumables.PURHONY;
+            if (rand(2) == 0) itype = ConsumableLib.BEEHONY;
+            else itype = ConsumableLib.PURHONY;
             flags[kFLAGS.FORCE_BEE_TO_PRODUCE_HONEY] = 0;
         }
     }
     if (monster instanceof Jojo && game.monk > 4) {
-        if (rand(2) == 0) itype = consumables.INCUBID;
+        if (rand(2) == 0) itype = ConsumableLib.INCUBID;
         else {
-            if (rand(2) == 0) itype = consumables.B__BOOK;
-            else itype = consumables.SUCMILK;
+            if (rand(2) == 0) itype = ConsumableLib.B__BOOK;
+            else itype = ConsumableLib.SUCMILK;
         }
     }
     if (monster instanceof Harpy || monster instanceof Sophie) {
-        if (rand(10) == 0) itype = armors.W_ROBES;
-        else if (rand(3) == 0 && player.perks.findByType(PerkLib.LuststickAdapted) >= 0) itype = consumables.LUSTSTK;
-        else itype = consumables.GLDSEED;
+        if (rand(10) == 0) itype = ArmorLib.W_ROBES;
+        else if (rand(3) == 0 && player.perks.findByType(PerkLib.LuststickAdapted) >= 0) itype = ConsumableLib.LUSTSTK;
+        else itype = ConsumableLib.GLDSEED;
     }
     // Chance of armor if at level 1 pierce fetish
     if (!plotFight && !(monster instanceof Ember) && !(monster instanceof Kiha) && !(monster instanceof Hel) && !(monster instanceof Isabella)
-        && flags[kFLAGS.PC_FETISH] == 1 && rand(10) == 0 && !player.hasItem(armors.SEDUCTA, 1) && !CeraphFollowerScene.ceraphIsFollower()) {
-        itype = armors.SEDUCTA;
+        && flags[kFLAGS.PC_FETISH] == 1 && rand(10) == 0 && !player.hasItem(ArmorLib.SEDUCTA, 1) && !CeraphFollowerScene.ceraphIsFollower()) {
+        itype = ArmorLib.SEDUCTA;
     }
 
-    if (!plotFight && rand(200) == 0 && player.level >= 7) itype = consumables.BROBREW;
-    if (!plotFight && rand(200) == 0 && player.level >= 7) itype = consumables.BIMBOLQ;
+    if (!plotFight && rand(200) == 0 && player.level >= 7) itype = ConsumableLib.BROBREW;
+    if (!plotFight && rand(200) == 0 && player.level >= 7) itype = ConsumableLib.BIMBOLQ;
     // Chance of eggs if Easter!
     if (!plotFight && rand(6) == 0 && isEaster()) {
         temp = rand(13);
-        if (temp == 0) itype = consumables.BROWNEG;
-        if (temp == 1) itype = consumables.L_BRNEG;
-        if (temp == 2) itype = consumables.PURPLEG;
-        if (temp == 3) itype = consumables.L_PRPEG;
-        if (temp == 4) itype = consumables.BLUEEGG;
-        if (temp == 5) itype = consumables.L_BLUEG;
-        if (temp == 6) itype = consumables.PINKEGG;
-        if (temp == 7) itype = consumables.NPNKEGG;
-        if (temp == 8) itype = consumables.L_PNKEG;
-        if (temp == 9) itype = consumables.L_WHTEG;
-        if (temp == 10) itype = consumables.WHITEEG;
-        if (temp == 11) itype = consumables.BLACKEG;
-        if (temp == 12) itype = consumables.L_BLKEG;
+        if (temp == 0) itype = ConsumableLib.BROWNEG;
+        if (temp == 1) itype = ConsumableLib.L_BRNEG;
+        if (temp == 2) itype = ConsumableLib.PURPLEG;
+        if (temp == 3) itype = ConsumableLib.L_PRPEG;
+        if (temp == 4) itype = ConsumableLib.BLUEEGG;
+        if (temp == 5) itype = ConsumableLib.L_BLUEG;
+        if (temp == 6) itype = ConsumableLib.PINKEGG;
+        if (temp == 7) itype = ConsumableLib.NPNKEGG;
+        if (temp == 8) itype = ConsumableLib.L_PNKEG;
+        if (temp == 9) itype = ConsumableLib.L_WHTEG;
+        if (temp == 10) itype = ConsumableLib.WHITEEG;
+        if (temp == 11) itype = ConsumableLib.BLACKEG;
+        if (temp == 12) itype = ConsumableLib.L_BLKEG;
     }
     // Bonus loot overrides others
     if (flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] != "") {
@@ -1434,8 +1434,8 @@ export function dropItem(monster: Monster): void {
     monster.handleAwardItemText(itype); // Each monster can now override the default award text
     if (itype != null) {
         if (game.inDungeon)
-            inventory.takeItem(itype, playerMenu);
-        else inventory.takeItem(itype, camp.returnToCampUseOneHour);
+            Inventory.takeItem(itype, playerMenu);
+        else Inventory.takeItem(itype, Camp.returnToCampUseOneHour);
     }
 }
 export function awardPlayer(): void {
@@ -1448,7 +1448,7 @@ export function awardPlayer(): void {
     }
     monster.handleAwardText(); // Each monster can now override the default award text
     if (!game.inDungeon && !game.inRoomedDungeon)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     else doNext(playerMenu);
     dropItem(monster);
     game.inCombat = false;
@@ -2712,7 +2712,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 41;
     }
     // 42 Urta teases!
-    if (urtaQuest.isUrta()) {
+    if (UrtaQuest.isUrta()) {
         choices[choices.length] = 42;
         choices[choices.length] = 42;
         choices[choices.length] = 42;
@@ -3557,18 +3557,18 @@ export function tease(justText: boolean = false): void {
         else if (monster instanceof Doppleganger && monster.effects.findByType(StatusAffects.Stunned) < 0) (monster as Doppleganger).mirrorTease(damage, true);
         else if (!justText) monster.teased(damage);
 
-        if (flags[kFLAGS.PC_FETISH] >= 1 && !urtaQuest.isUrta()) {
+        if (flags[kFLAGS.PC_FETISH] >= 1 && !UrtaQuest.isUrta()) {
             if (player.lust < 75) outputText("\nFlaunting your body in such a way gets you a little hot and bothered.", false);
             else outputText("\nIf you keep exposing yourself you're going to get too horny to fight back.  This exhibitionism fetish makes it hard to resist just stripping naked and giving up.", false);
             if (!justText) dynStats("lus", 2 + rand(3));
         }
 
         // Similar to fetish check, only add XP if the player IS the player...
-        if (!justText && !urtaQuest.isUrta()) teaseXP(1);
+        if (!justText && !UrtaQuest.isUrta()) teaseXP(1);
     }
     // Nuttin honey
     else {
-        if (!justText && !urtaQuest.isUrta()) teaseXP(5);
+        if (!justText && !UrtaQuest.isUrta()) teaseXP(5);
 
         if (monster instanceof JeanClaude) (monster as JeanClaude).handleTease(0, false);
         else if (monster instanceof Doppleganger) (monster as Doppleganger).mirrorTease(0, false);
@@ -4918,10 +4918,10 @@ export function runAway(callHook: boolean = true): void {
         outputText("You flex the muscles in your back and, shaking clear of the sand, burst into the air!  Wasting no time you fly free of the sandtrap and its treacherous pit.  \"One day your wings will fall off, little ant,\" the snarling voice of the thwarted androgyne carries up to you as you make your escape.  \"And I will be waiting for you when they do!\"");
         game.inCombat = false;
         clearStatuses(false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         return;
     }
-    if (monster.effects.findByType(StatusAffects.GenericRunDisabled) >= 0 || urtaQuest.isUrta()) {
+    if (monster.effects.findByType(StatusAffects.GenericRunDisabled) >= 0 || UrtaQuest.isUrta()) {
         outputText("You can't escape from this fight!");
         // Pass false to combatMenu instead:		menuLoc = 3;
         // 		doNext(combatMenu);
@@ -4951,7 +4951,7 @@ export function runAway(callHook: boolean = true): void {
         outputText("You slink away while the pack of brutes is arguing.  Once they finish that argument, they'll be sorely disappointed!", true);
         game.inCombat = false;
         clearStatuses(false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         return;
     }
     else if (monster.short == "minotaur tribe" && monster.HPRatio() >= 0.75) {
@@ -5011,7 +5011,7 @@ export function runAway(callHook: boolean = true): void {
             outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.", true);
             game.inCombat = false;
             clearStatuses(false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Speed dependent
@@ -5021,7 +5021,7 @@ export function runAway(callHook: boolean = true): void {
                 game.inCombat = false;
                 clearStatuses(false);
                 outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.", true);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // Run failed:
@@ -5044,7 +5044,7 @@ export function runAway(callHook: boolean = true): void {
             outputText("\n\nNot to be outdone, you call back, \"Sucks to you!  If even the mighty Last Ember of Hope can't catch me, why do I need to train?  Later, little bird!\"");
             game.inCombat = false;
             clearStatuses(false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Fail:
         else {
@@ -5068,7 +5068,7 @@ export function runAway(callHook: boolean = true): void {
         }
         game.inCombat = false;
         clearStatuses(false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         return;
     }
     // Runner perk chance
@@ -5079,7 +5079,7 @@ export function runAway(callHook: boolean = true): void {
             outputText("\n\nAs you leave the tigershark behind, her taunting voice rings out after you.  \"<i>Oooh, look at that fine backside!  Are you running or trying to entice me?  Haha, looks like we know who's the superior specimen now!  Remember: next time we meet, you owe me that ass!</i>\"  Your cheek tingles in shame at her catcalls.", false);
         }
         clearStatuses(false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         return;
     }
     // FAIL FLEE
@@ -5234,8 +5234,8 @@ export function magicalSpecials(): void {
 }
 
 export function physicalSpecials(): void {
-    if (urtaQuest.isUrta()) {
-        urtaQuest.urtaSpecials();
+    if (UrtaQuest.isUrta()) {
+        UrtaQuest.urtaSpecials();
         return;
     }
     // Pass false to combatMenu instead:	menuLoc = 3;

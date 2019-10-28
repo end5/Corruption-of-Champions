@@ -185,9 +185,9 @@ export class Akbal extends Monster {
         this.level = 6;
         this.gems = 15;
         this.drop = new WeightedDrop().
-            add(consumables.INCUBID, 6).
-            add(consumables.W_FRUIT, 3).
-            add(weapons.PIPE, 1);
+            add(ConsumableLib.INCUBID, 6).
+            add(ConsumableLib.W_FRUIT, 3).
+            add(WeaponLib.PIPE, 1);
         this.special1 = akbalLustAttack;
         this.special2 = akbalSpecial;
         this.special3 = akbalHeal;

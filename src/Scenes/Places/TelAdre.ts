@@ -1127,7 +1127,7 @@ export class TelAdre {
             outputText("\n\nRo'gar is here with his back turned to the door, wearing his usual obscuring cloak.", false);
         }
 
-        switch (Scylla.action) { // Scylla - requires dungeon shut down
+        switch (Scylla.scyllaAction) { // Scylla - requires dungeon shut down
             case Scylla.SCYLLA_ACTION_FIRST_TALK:
                 outputText("\n\nThere is one nun sitting in a corner booth who catches your eye.  She sits straight-backed against the dark, wood chair, her thin waist accentuating the supple curve of her breasts. She's dressed in a black robe that looks a few sizes too small for her hips and wears a black and white cloth over her head.");
                 button = anotherButton(button, "Nun", Scylla.talkToScylla);

@@ -737,7 +737,7 @@ export class Monster extends Creature {
         if (temp > player.gems) temp = player.gems;
         outputText("\n\nYou'll probably wake up in eight hours or so, missing " + temp + " gems.", false);
         player.gems -= temp;
-        doNext(camp.returnToCampUseEightHours);
+        doNext(Camp.returnToCampUseEightHours);
     }
 
     /**
@@ -933,7 +933,7 @@ export class Monster extends Creature {
 
     public combatRoundUpdate(): void {
         if (this.effects.findByType(StatusAffects.MilkyUrta) >= 0) {
-            game.urtaQuest.milkyUrtaTic();
+            UrtaQuest.milkyUrtaTic();
         }
         // Countdown
         if (this.effects.findByType(StatusAffects.TentacleCoolDown) >= 0) {

@@ -108,7 +108,7 @@ export class Ifris {
         // Muscleness boost!
         outputText(modTone(player, 85, 5 + rand(5)), false);
         fatigue(30);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // 4b-PC decides to show off, possible strength requirement?-
     private showOffForIfris(): void {
@@ -135,7 +135,7 @@ export class Ifris {
             // Reset 'shown off for ifris'
             flags[kFLAGS.IFRIS_SHOWED_OFF] = 0;
             player.takeDamage(10);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // 4b1-PC fails strength requirement!-
@@ -145,7 +145,7 @@ export class Ifris {
             outputText("\"<i>Oh well...</i>\" She sighs, clearly crestfallen. Cocking one fist on her hip, she gives your " + leg(player) + " a light pat as she leaves your presence, vanishing out the door within moments.\n\n", false);
 
             outputText("Well, at least you had the good sense to stop before you hurt yourself...\n\n", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             flags[kFLAGS.IFRIS_SHOWED_OFF] = 0;
             return;
         }
@@ -158,7 +158,7 @@ export class Ifris {
             // Body changes here
             // Muscleness boost!
             outputText(modTone(player, 85, 5 + rand(5)), false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // 4b3-PC succeeds! Is male/herm-
@@ -254,7 +254,7 @@ export class Ifris {
         // Body changes here
         // Muscleness boost!
         outputText(modTone(player, 85, 5 + rand(5)), false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ifrs double-penetrates herself on you while you work out.
@@ -336,6 +336,6 @@ export class Ifris {
         // Body changes here
         // Muscleness boost!
         outputText(modTone(player, 85, 5 + rand(5)), false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

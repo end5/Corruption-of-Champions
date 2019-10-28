@@ -14,7 +14,7 @@ export class KitsuneGift extends Consumable {
             case 0:
                 outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, sitting in the center is a small teardrop-shaped jewel!");
                 outputText("\n\n<b>You've received a shining Fox Jewel from the kitsune's gift!  How generous!</b>  ");
-                inventory.takeItem(consumables.FOXJEWL, inventory.inventoryMenu);
+                Inventory.takeItem(ConsumableLib.FOXJEWL, Inventory.inventoryMenu);
                 return (true);
 
             // [Fox Berries]
@@ -22,7 +22,7 @@ export class KitsuneGift extends Consumable {
                 outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, there is a small cluster of orange-colored berries sitting in the center!");
                 outputText("\n\n<b>You've received a fox berry from the kitsune's gift!  How generous!</b>  ");
                 // add Fox Berries to inventory
-                inventory.takeItem(consumables.FOXBERY, inventory.inventoryMenu);
+                Inventory.takeItem(ConsumableLib.FOXBERY, Inventory.inventoryMenu);
                 return (true);
 
             // [Gems]
@@ -40,22 +40,22 @@ export class KitsuneGift extends Consumable {
                 outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it contains a small bag of dried tea leaves!");
                 outputText("\n\n<b>You've received a bag of tea from the kitsune's gift!  How thoughtful!</b>  ");
                 // add Kitsune Tea/Scholar's Tea to inventory
-                inventory.takeItem(consumables.SMART_T, inventory.inventoryMenu);
+                Inventory.takeItem(ConsumableLib.SMART_T, Inventory.inventoryMenu);
                 return (true);
 
             // [Hair Dye]
             case 4:
                 outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it contains a small vial filled with hair dye!");
                 const itype: Consumable = [
-                    consumables.RED_DYE,
-                    consumables.BLOND_D,
-                    consumables.BLACK_D,
-                    consumables.WHITEDY
+                    ConsumableLib.RED_DYE,
+                    ConsumableLib.BLOND_D,
+                    ConsumableLib.BLACK_D,
+                    ConsumableLib.WHITEDY
                 ][rand(4)];
 
                 outputText("\n\n<b>You've received " + itype.longName + " from the kitsune's gift!  How generous!</b>  ");
                 // add <color> Dye to inventory
-                inventory.takeItem(itype, inventory.inventoryMenu);
+                Inventory.takeItem(itype, Inventory.inventoryMenu);
                 return (true);
 
             // [Knowledge Spell]
@@ -111,7 +111,7 @@ export class KitsuneGift extends Consumable {
             case 11:
                 outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, but to your disappointment, the only other contents appear to be nothing more than twigs, leaves, and other forest refuse.  Upon further investigation, though, you find a shard of shiny black chitinous plating mixed in with the other useless junk.");
                 outputText("\n\n<b>At least you managed to salvage a shard of black chitin from it...</b>  ");
-                inventory.takeItem(useables.B_CHITN, inventory.inventoryMenu);
+                Inventory.takeItem(UseableLib.B_CHITN, Inventory.inventoryMenu);
                 return (true);
 
             default: trace("Kitsune's gift roll foobar...");

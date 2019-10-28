@@ -77,7 +77,7 @@ export function letZeTurkeyApproach(): void {
 export function noThanksTurkeyGal(): void {
     clearOutput();
     outputText("You reluctantly push her away.  You've no need to ram your dick down some new monstrosity's gullet.  The girl forlornly gobbles one last time, then prances off into the fading evening light, globular ass jiggling.");
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 // Baste Her -McGirt, reluctantly
 export function basteThatTurkeyBooty(): void {
@@ -182,7 +182,7 @@ export function thatllDoTurkey(): void {
         player.perks.create(PerkLib.PilgrimsBounty, 0, 0, 0, 0);
         outputText("\n\n(<b>Perk Gained: Pilgrim's Bounty - Lower lust values no longer reduce the size of your orgasm.</b>)");
     }
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // Let her Approach:
@@ -297,7 +297,7 @@ export function haveTurkeyGirlDesertInYourCunt(): void {
     // HP set to full, fatigue to 0?
     fatigue(-100);
     HPChange(3000, false);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // Turkey Girl II: Return of the Cockgobbler (Cockwielders)
@@ -314,7 +314,7 @@ export function turkeyGirlTwoTheTurkeningBySavinWhatADickInAButt(): void {
     // [Shoo Off] [Let her Come] [Hello again!]
     menu();
     if (player.cocks.length > 0) {
-        if (player.keyItems.has("Deluxe Dildo") >= 0 || player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT)) {
+        if (player.keyItems.has("Deluxe Dildo") >= 0 || player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT)) {
             outputText("\n\n<b>You could let her come, like last year, or great her in a whole new way (by clicking 'Hello Again')</b>");
             addButton(2, "Hello Again", helloAgain);
             flags[kFLAGS.MORE_TURKEY] = 0;
@@ -394,8 +394,8 @@ export function seasonHerDatTurkeyBitch(): void {
 
     outputText("\n\nBut what's a turkey without a little seasoning, hmm? Sweet as she is, and as eager to gobble your cock as can be, things could still turn up a notch.  Still servicing her box, you reach an arm out to your discarded pack, searching through it until you feel the familiar shape of ");
     if (player.keyItems.has("Deluxe Dildo") >= 0) outputText("Tamani's dildo");
-    else if (player.hasItem(consumables.L_DRAFT)) outputText("a bottle of Lust draft");
-    else if (player.hasItem(consumables.F_DRAFT)) outputText("a bottle of Fuck draft");
+    else if (player.hasItem(ConsumableLib.L_DRAFT)) outputText("a bottle of Lust draft");
+    else if (player.hasItem(ConsumableLib.F_DRAFT)) outputText("a bottle of Fuck draft");
     else outputText("A FUCKIN ERROR");
     outputText(".  You pull it out and squeeze a copious load of the bubblegum pink aphrodisiac out into your hand.  The second it touches your skin, you feel a palpable warmth spreading out through your nerves, skin burning with sensitivity as the roiling, viscous substance pools in your cupped hand.  You can't help but shudder as the pink veno's effect reaches out through your body, setting your whole person to tingling - and especially your " + multiCockDescriptLight(player) + ", which rises to an almost painful hardness.");
 
@@ -476,7 +476,7 @@ export function turkeyDesertBitches(): void {
 
     outputText("\n\n“<i>That’ll do, turkey,</i>” you say, patting her jiggling tit and scrapign soem of the excess gravy out of your lunch.  “<i>That’ll do.</i>”");
     player.orgasm();
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // Ham Roast: Getting All Up In A Honey Pot (Female and Genderless only)
@@ -716,5 +716,5 @@ export function getDoneEatingOutPigSlut(): void {
     outputText("\n\nYou sigh");
     if (changed) outputText(", feeling your body expand as you waddle out back towards camp with belly full of sweet syrup");
     outputText(". For only one gem, that was a pretty good time...");
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }

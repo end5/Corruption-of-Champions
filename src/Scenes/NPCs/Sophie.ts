@@ -278,8 +278,8 @@ export class Sophie extends Harpy {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 11;
         this.gems = 20 + rand(25);
-        this.drop = new ChainedDrop().add(armors.W_ROBES, 1 / 10)
-            .elseDrop(consumables.GLDSEED);
+        this.drop = new ChainedDrop().add(ArmorLib.W_ROBES, 1 / 10)
+            .elseDrop(ConsumableLib.GLDSEED);
         this.wingType = WING_TYPE_HARPY;
         this.wingDesc = "large feathery";
         this.special1 = harpyUberCharge;

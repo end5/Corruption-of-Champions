@@ -9,7 +9,7 @@ export class HighMountains {
         flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
         doNext(playerMenu);
 
-        if (d3.discoverD3() == true) {
+        if (D3.discoverD3() == true) {
             return;
         }
 
@@ -40,8 +40,8 @@ export class HighMountains {
             return;
         }
         // Harpy odds!
-        if (player.hasItem(consumables.OVIELIX)) {
-            if (player.hasItem(consumables.OVIELIX, 2)) {
+        if (player.hasItem(ConsumableLib.OVIELIX)) {
+            if (player.hasItem(ConsumableLib.OVIELIX, 2)) {
                 if (rand(4) == 0) {
                     chickenHarpy();
                     return;
@@ -125,8 +125,8 @@ export class HighMountains {
         flags[kFLAGS.TIMES_MET_CHICKEN_HARPY]++;
         // [Give Two][Give Three]		[Not Really, No]
         menu();
-        if (player.hasItem(consumables.OVIELIX, 2)) addButton(0, "Give Two", giveTwoOviElix);
-        if (player.hasItem(consumables.OVIELIX, 3)) addButton(1, "Give Three", giveThreeOviElix);
+        if (player.hasItem(ConsumableLib.OVIELIX, 2)) addButton(0, "Give Two", giveTwoOviElix);
+        if (player.hasItem(ConsumableLib.OVIELIX, 3)) addButton(1, "Give Three", giveThreeOviElix);
         addButton(4, "Leave", leaveChickenx);
     }
 
@@ -134,33 +134,33 @@ export class HighMountains {
     public giveTwoOviElix(): void {
         clearOutput();
         spriteSelect(90);
-        player.consumeItem(consumables.OVIELIX);
-        player.consumeItem(consumables.OVIELIX);
+        player.consumeItem(ConsumableLib.OVIELIX);
+        player.consumeItem(ConsumableLib.OVIELIX);
         outputText("You hand over two elixirs, the harpy more than happy to take them from you.  In return, she unties a corner of the sheet atop the cart, allowing you to take a look at her collection of eggs.");
         // [Black][Blue][Brown][Pink][Purple]
         menu();
-        addButton(0, "Black", getHarpyEgg, consumables.BLACKEG);
-        addButton(1, "Blue", getHarpyEgg, consumables.BLUEEGG);
-        addButton(2, "Brown", getHarpyEgg, consumables.BROWNEG);
-        addButton(3, "Pink", getHarpyEgg, consumables.PINKEGG);
-        addButton(4, "Purple", getHarpyEgg, consumables.PURPLEG);
-        addButton(5, "White", getHarpyEgg, consumables.WHITEEG);
+        addButton(0, "Black", getHarpyEgg, ConsumableLib.BLACKEG);
+        addButton(1, "Blue", getHarpyEgg, ConsumableLib.BLUEEGG);
+        addButton(2, "Brown", getHarpyEgg, ConsumableLib.BROWNEG);
+        addButton(3, "Pink", getHarpyEgg, ConsumableLib.PINKEGG);
+        addButton(4, "Purple", getHarpyEgg, ConsumableLib.PURPLEG);
+        addButton(5, "White", getHarpyEgg, ConsumableLib.WHITEEG);
     }
 
     // If Give Three
     public giveThreeOviElix(): void {
         clearOutput();
         spriteSelect(90);
-        player.consumeItem(consumables.OVIELIX, 3);
+        player.consumeItem(ConsumableLib.OVIELIX, 3);
         outputText("You hand over three elixirs, the harpy ecstatic over the fact that you're willing to part with them.  In return, she unties a side of the sheet atop the cart, allowing you to take a look at a large collection of her eggs.");
         // [Black][Blue][Brown][Pink][Purple]
         menu();
-        addButton(0, "Black", getHarpyEgg, consumables.L_BLKEG);
-        addButton(1, "Blue", getHarpyEgg, consumables.L_BLUEG);
-        addButton(2, "Brown", getHarpyEgg, consumables.L_BRNEG);
-        addButton(3, "Pink", getHarpyEgg, consumables.L_PNKEG);
-        addButton(4, "Purple", getHarpyEgg, consumables.L_PRPEG);
-        addButton(5, "White", getHarpyEgg, consumables.L_WHTEG);
+        addButton(0, "Black", getHarpyEgg, ConsumableLib.L_BLKEG);
+        addButton(1, "Blue", getHarpyEgg, ConsumableLib.L_BLUEG);
+        addButton(2, "Brown", getHarpyEgg, ConsumableLib.L_BRNEG);
+        addButton(3, "Pink", getHarpyEgg, ConsumableLib.L_PNKEG);
+        addButton(4, "Purple", getHarpyEgg, ConsumableLib.L_PRPEG);
+        addButton(5, "White", getHarpyEgg, ConsumableLib.L_WHTEG);
     }
 
     // All Text
@@ -169,7 +169,7 @@ export class HighMountains {
         spriteSelect(90);
         flags[kFLAGS.EGGS_BOUGHT]++;
         outputText("You take " + itype.longName + ", and the harpy nods in regards to your decision.  Prepping her cart back up for the road, she gives you a final wave goodbye before heading back down through the mountains.\n\n");
-        inventory.takeItem(itype, chickenHarpy);
+        Inventory.takeItem(itype, chickenHarpy);
     }
 
     // If No
@@ -178,6 +178,6 @@ export class HighMountains {
         spriteSelect(90);
         outputText("At the polite decline of her offer, the chicken harpy gives a warm smile before picking her cart back up and continuing along the path through the mountains.");
         outputText("\n\nYou decide to take your own path, heading back to camp while you can.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

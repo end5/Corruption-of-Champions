@@ -27,7 +27,7 @@ export class Edryn implements TimeAwareInterface {
     public timeChangeLarge(): boolean {
         if (pregnancy.isPregnant && pregnancy.incubation == 0) {
             if (pregnancy.type == PregnancyStore.PREGNANCY_TAOTH) {
-                urtaQuest.urtaAndEdrynGodChildEpilogue();
+                UrtaQuest.urtaAndEdrynGodChildEpilogue();
                 // Since these flag can't be in use prior to Taoth's arrival I abused them to store Edryn's previous pregnancy type and incubation
                 // Did it so that if Edryn is someday made able to carry someone else's baby this will still work properly
                 pregnancy.knockUpForce(flags[kFLAGS.URTA_FERTILE], flags[kFLAGS.URTA_PREG_EVERYBODY]);
@@ -125,14 +125,14 @@ export class Edryn implements TimeAwareInterface {
                 let itype: ItemType;
                 if (flags[kFLAGS.EDRYN_GIFT_COUNTER] < 2) {
                     outputText("Here, take some of this stuff.  We confiscated it off one of the miscreants we kicked out the other day, and I KNOW it'll get you to be big enough for me.  Just don't go too nuts with it, okay?</i>\"\n\n", false);
-                    itype = consumables.GROPLUS;
+                    itype = ConsumableLib.GROPLUS;
                     flags[kFLAGS.EDRYN_GIFT_COUNTER]++;
                 }
                 else if (flags[kFLAGS.EDRYN_GIFT_COUNTER] < 5) {
                     outputText("Here, take some of this stuff.  We confiscated it off one of the miscreants we kicked out the other day, and I KNOW it'll get you to be big enough for me.  Just don't go too nuts with it, okay?</i>\"\n\n", false);
                     flags[kFLAGS.EDRYN_GIFT_COUNTER]++;
-                    if (rand(2) == 0) itype = consumables.MINOBLO;
-                    else itype = consumables.INCUBID;
+                    if (rand(2) == 0) itype = ConsumableLib.MINOBLO;
+                    else itype = ConsumableLib.INCUBID;
                 }
                 else {
                     outputText("I'd love to help you, but I don't have any supplies for you.  I'm sure you'll find a way.</i>\"\n\n", false);
@@ -140,7 +140,7 @@ export class Edryn implements TimeAwareInterface {
                     doNext(TelAdre.barTelAdre);
                     return;
                 }
-                inventory.takeItem(itype, camp.returnToCampUseOneHour);
+                Inventory.takeItem(itype, Camp.returnToCampUseOneHour);
                 return;
             }
             // (Too big)
@@ -149,7 +149,7 @@ export class Edryn implements TimeAwareInterface {
                 if (flags[kFLAGS.EDRYN_GIFT_COUNTER] < 2) {
                     outputText("Her eyes light up and she suggests, \"<i>Take some of this; it ought to take down some of that swelling.</i>\"\n\n", false);
                     flags[kFLAGS.EDRYN_GIFT_COUNTER]++;
-                    inventory.takeItem(consumables.REDUCTO, camp.returnToCampUseOneHour);
+                    Inventory.takeItem(ConsumableLib.REDUCTO, Camp.returnToCampUseOneHour);
                     return;
                 }
                 // (ALT)
@@ -432,7 +432,7 @@ export class Edryn implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -3);
         if (player.lust < 30) player.lust = 30;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private fuckEdrynNonTaur(): void {
         spriteSelect(14);
@@ -489,7 +489,7 @@ export class Edryn implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -3);
         if (player.lust < 30) player.lust = 30;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public edrynBar(): boolean {
@@ -641,7 +641,7 @@ export class Edryn implements TimeAwareInterface {
         outputText("\"<i>Oh yeah. We... We gotta go again sometime,</i>\" Hel agrees, nearly falling off Edryn's back.  You give each of the girls a long kiss before collecting your " + player.armorName + " and walking off back to camp.\n\n", false);
         player.orgasm();
         HelFollower.helAffection(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pregdryn:
@@ -920,7 +920,7 @@ export class Edryn implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", -.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // EAT THE BITCH'S CUNT OUT
@@ -985,7 +985,7 @@ export class Edryn implements TimeAwareInterface {
         outputText("\"<i>Turn-about is fair play!</i>\" she exclaims. You leave, unable to dispute the logic.", false);
         player.orgasm();
         dynStats("lib", 1, "sen", 2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private edrynPregChance(): void {
@@ -1167,6 +1167,6 @@ export class Edryn implements TimeAwareInterface {
         edrynPregChance();
         edrynPregChance();
         flags[kFLAGS.TIMES_EATEN_EDRYN_PUSSY_RUT]++;
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 }

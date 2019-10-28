@@ -81,7 +81,7 @@ export function helpValentinesDay(): void {
 export function leaveValentinesDayForever(): void {
     clearOutput();
     outputText("Ultimately, this is not worth your time.  You wish Scylla good luck, but tell her you won't help her make the holiday more popular in Tel'Adre, as you have other things to do.  Her expression turns sad and she nods in understanding as you turn away and go back into the streets of Tel'Adre.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // [next]
@@ -135,7 +135,7 @@ export function goHomeFromVDay(): void {
     // With no other things to do, you go back to camp to rest.
     // {Small Lust Increase, return to camp, go to sleep}
     dynStats("lus", 10);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // ([Scylla])
@@ -195,7 +195,7 @@ export function cuddleWithScyllaVDay(): void {
 
     outputText("\n\n(<b>You have gained the Pure and Loving perk!</b>");
     player.perks.create(PerkLib.PureAndLoving, 0, 0, 0, 0);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // [Make out]
@@ -252,7 +252,7 @@ export function makeOutWithScyllaVDayII(): void {
         player.perks.create(PerkLib.SensualLover, 0, 0, 0, 0);
     }
 
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // [Feed Her!]
@@ -264,7 +264,7 @@ export function feedScyllaVDay(): void {
     player.orgasm();
     outputText("\n\n(<b>You have gained the One Track Mind perk.</b>");
     player.perks.create(PerkLib.OneTrackMind, 0, 0, 0, 0);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // ([Abby]
@@ -348,7 +348,7 @@ export function fuckAbbyVDay(): void {
 
     player.orgasm();
     dynStats("sen", -3);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // {PLEASURE HER}
@@ -378,7 +378,7 @@ export function pleasureAbbyVDay(): void {
     outputText("\n\n(<b>You've received the Pure and Loving Perk!</b>)");
     player.perks.create(PerkLib.PureAndLoving, 0, 0, 0, 0);
     dynStats("lus", 80);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // ([Pastie])
@@ -389,16 +389,16 @@ export function goVisitPastyVDay(): void {
 
     // Check inventory for Goblin Ale, Black Cat Beer, Bimbo Champagne; failing this, check if PC has female genitalia.
     // [BCBeer] [BimboCham][GoblinAle][vagina]
-    if (player.hasItem(consumables.BIMBOCH) || player.hasItem(consumables.BC_BEER) || player.hasItem(consumables.GOB_ALE) || player.vaginas.length > 0) {
+    if (player.hasItem(ConsumableLib.BIMBOCH) || player.hasItem(ConsumableLib.BC_BEER) || player.hasItem(ConsumableLib.GOB_ALE) || player.vaginas.length > 0) {
         menu();
-        if (player.hasItem(consumables.BIMBOCH)) addButton(0, "BimboCham", pastieValentineIntro, consumables.BIMBOCH.id);
-        if (player.hasItem(consumables.BC_BEER)) addButton(1, "B.Cat Beer ", pastieValentineIntro, consumables.BC_BEER.id);
-        if (player.hasItem(consumables.GOB_ALE)) addButton(2, "Gob. Ale", pastieValentineIntro, consumables.GOB_ALE.id);
+        if (player.hasItem(ConsumableLib.BIMBOCH)) addButton(0, "BimboCham", pastieValentineIntro, ConsumableLib.BIMBOCH.id);
+        if (player.hasItem(ConsumableLib.BC_BEER)) addButton(1, "B.Cat Beer ", pastieValentineIntro, ConsumableLib.BC_BEER.id);
+        if (player.hasItem(ConsumableLib.GOB_ALE)) addButton(2, "Gob. Ale", pastieValentineIntro, ConsumableLib.GOB_ALE.id);
         if (player.vaginas.length > 0) addButton(3, "Pussy", pastieValentineIntro, "vag");
     }
     else {
         outputText("\n\nYou tell Pastie that, regrettably, you only have what she sees.  She nods and says, \"<i>Too bad.  I think I'll better get going, then.  It's been somewhat fun, and I finally get a chance to go to sleep sober and wake up without a hangover.");
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 }
 
@@ -441,14 +441,14 @@ export function valentineDrinkPastie(itype: ItemType): void {
 
 export function valentineDayGetPastieDrink(itype: ItemType): void {
     // {Black Cat Beer}
-    if (itype == consumables.BC_BEER) {
+    if (itype == ConsumableLib.BC_BEER) {
         outputText("\n\nPastie suddenly starts running her hands along her body, licking her lips as she does so. \"<i>Odd... Imma bit of a horny drunk, yah know, but thish ish... overkill...</i>\"  The little fairy-drunkard complains as she reaches between her legs and starts fingering herself, while rubbing a nipple.  \"<i>Daaaamnnnn, I'm sooo horny! I need more... to, uhhh, to driiink!</i>\"");
         outputText("\n\nWell, that was an expected effect, to be honest.  You guess you could also comply with her request, and horny as she is, she'd probably degrade herself with whatever sex bits you want her to... although, too big of a member can definitely be a problem for her.");
         // [RubDick][PussyDive]
         // {Rub Dick option is present if a character has a member underneath 28 cock area. Pussy Dive is obviously present if a character has a pussy of any kind.}
     }
     // {Bimbo Champagne}
-    else if (itype == consumables.BIMBOCH) {
+    else if (itype == ConsumableLib.BIMBOCH) {
         outputText("\n\nPastie giggles as her body starts to slowly show the effects of the liquid she just drank.  \"<i>Hihihi... I feel kinda funny,</i>\" she says, and you start to see the changes the champagne is starting to have on her body.  Her hair starts turning blonde, and her position in mid-air changes somewhat... almost as if she was imitating standing on \"<i>fuck-me</i>\" pumps, and, slowly, her little cupid dress stretches, as you become aware that her body is starting to become curvier, especially in the chest area.  \"<i>Hahaha... it's, like, I'm hitting three puberties at once!  Ummm... pu... puber, ah, nevermind.  Look, look!  It's gonna rip!</i>\" The seams in the little dress indeed pop, exposing a significant amount of the little girl's cleavage, now very significant.  True, compared to your body size her breasts are still nothing, but on her little body they're very prominent.  She even seems to have trouble flying from the added mass!  Her hips gained the slightest bit of curve, too, and Pastie's hair is now completely blonde.");
         outputText("\n\n\"<i>Uhh, like... baby, you know, the usual drink gets me hot, and this one is as special as my new titties!  Would you mind helping me out?</i>\"");
 
@@ -458,7 +458,7 @@ export function valentineDayGetPastieDrink(itype: ItemType): void {
         // {Fuck is only present if a character has a cock under 8 cock area, Rub Dick option is present if a character has a member underneath 28 cock area. Pussy Dive is obviously present if a character has a pussy of any kind.}
     }
     // {Goblin Ale}
-    else if (itype == consumables.GOB_ALE) {
+    else if (itype == ConsumableLib.GOB_ALE) {
         outputText("\n\n\"<i>Huuuh? Feels weird!</i>\" Pastie says, as she runs her hands over her body, and then slips a finger into her little pussy... four fingers... her hand, and then, reaches halfway up to her elbow before she cannot bend any more in her drunken state.  \"<i>Thissh... got me more horny than usual, and I feel so... stretchy, hehehe!</i>\"");
 
         outputText("\n\nHer body's still totally diminutive, but you guess someone with a small enough endowment might actually be able to take advantage of her now.  You doubt she'd refuse a little cum or pussy juice, either.");
@@ -506,7 +506,7 @@ export function fuckPastieForVDay(): void {
     player.perks.create(PerkLib.OneTrackMind, 0, 0, 0, 0);
     player.orgasm();
     dynStats("sen", -2);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // [RubDick]
@@ -542,7 +542,7 @@ export function rubPastieOnYourWangDawg(): void {
     player.perks.create(PerkLib.OneTrackMind, 0, 0, 0, 0);
     player.orgasm();
     dynStats("sen", -2);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 // [Pussy Dive]
@@ -578,7 +578,7 @@ export function goForAPushayDivePasty(): void {
 
     player.orgasm();
     dynStats("sen", -2);
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }
 
 /*END!

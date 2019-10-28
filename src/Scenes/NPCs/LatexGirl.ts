@@ -122,10 +122,10 @@ export class LatexGirl {
         clearOutput();
         flags[kFLAGS.GOO_TFED_MEAN] = 1;
         flags[kFLAGS.GOO_EYES] = monster.skinTone;
-        if (player.hasItem(consumables.SUCMILK)) player.consumeItem(consumables.SUCMILK);
-        else player.consumeItem(consumables.P_S_MLK);
-        if (player.hasItem(consumables.BLACKEG)) player.consumeItem(consumables.BLACKEG);
-        else player.consumeItem(consumables.L_BLKEG);
+        if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
+        else player.consumeItem(ConsumableLib.P_S_MLK);
+        if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
+        else player.consumeItem(ConsumableLib.L_BLKEG);
         outputText("You approach the horny gel-girl, admiring the marvelous, refractive hue of her soluble body for the last time.  Pulling the black egg from your pouches, you ");
         if (player.spe > 60) outputText("idly spin it on your finger, tossing it into the air and catching it on the next as you advance");
         else outputText("firmly grasp it in your hand as you approach");
@@ -148,7 +148,7 @@ export class LatexGirl {
             outputText("\n\nYou heave her up over your shoulder, straining your capable muscles to hold up those giant mammaries and remain upright.  The task is arduous, but you're strong enough for anything!  ");
             if (player.tou < 40) {
                 outputText("Halfway there, you get too tired to continue.  You may be strong, but you don't have the endurance to heft a burden like this long term.  You'll have to leave her for now and try to recapture her once she's conscious.");
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 fatigue(30);
                 return;
             }
@@ -159,7 +159,7 @@ export class LatexGirl {
         // Too weak and dumb:
         else {
             outputText("\n\nYou try to lift her, but she's too heavy!  Drat!  There's no way you'll get her back to camp like this, and you can't leave the portal undefended long enough to wait for her to wake.  You'll have to leave her for now and try to recapture her once she's awake.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // [Next] (Go to aftermath)
@@ -172,7 +172,7 @@ export class LatexGirl {
     private PCCarriedGooBackHome(): void {
         clearOutput();
         outputText("You set the once-goo down in a secluded section of your camp");
-        if (camp.companionsCount() > 0) outputText(", away from prying eyes");
+        if (Camp.companionsCount() > 0) outputText(", away from prying eyes");
         outputText(".  She looks almost alien in a way... more than she did before, when she was just an aqueous blob with tits and faux hair.  Now, every facet of her being is shiny, reflective latex.  Even her vaginal secretions, which dribble freely, are liquid latex, glossy black juices that slowly harden into a flexible solid once freed from her body.");
         if (player.cocks.length > 1) outputText("  You can't help but wonder what it would feel like to let her sheath your " + multiCockDescriptLight(game.player) + " with her juices.");
         outputText("\n\nSurprisingly, she has hair, or what passes for hair for a woman made entirely of supple, inorganic semi-solids.  Her tresses hang down past her shoulders, slender strands that are as reflective as her skin.  Unlike her skin, the latex-goo's hair seems perpetually oily, slippery and lubricated.  Hesitantly, you extend a hand to touch, carefully caressing a few of the rubbery strands.  Their texture is smooth and slick, unlike any hair you've ever had the pleasure of touching.");
@@ -260,7 +260,7 @@ export class LatexGirl {
         flags[kFLAGS.GOO_HAPPINESS] = 1;
         flags[kFLAGS.GOO_OBEDIENCE] = 1;
         flags[kFLAGS.GOO_FLUID_AMOUNT] = 100;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // PC Couldn't Bring Her Back
     public encounterLeftBehindGooSlave(): void {
@@ -316,10 +316,10 @@ export class LatexGirl {
         clearOutput();
         flags[kFLAGS.GOO_TFED_NICE] = 1;
         flags[kFLAGS.GOO_EYES] = monster.skinTone;
-        if (player.hasItem(consumables.SUCMILK)) player.consumeItem(consumables.SUCMILK);
-        else player.consumeItem(consumables.P_S_MLK);
-        if (player.hasItem(consumables.BLACKEG)) player.consumeItem(consumables.BLACKEG);
-        else player.consumeItem(consumables.L_BLKEG);
+        if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
+        else player.consumeItem(ConsumableLib.P_S_MLK);
+        if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
+        else player.consumeItem(ConsumableLib.L_BLKEG);
         // Play after having defeated a Googirl, when you have a Black Egg & Succubi Milk in your inventory. Corruption less than 50.
         // NOTE: Starts with Obedience 30, Happiness 60~?
         outputText("The excitement of your scuffle proves too much for the goo-girl to keep up with and she collapses into the slime of her lower torso, her skin wiggling as she struggles to maintain cohesion.  Her expression is one of disappointment, and she looks at you with big, hopeful eyes, reaching out a hand, as if to offer an apology for her overexuberance.");
@@ -336,7 +336,7 @@ export class LatexGirl {
     private leaveTheLatexGooGirl(): void {
         clearOutput();
         outputText("You don't have the time to deal with this... thing.  You put the girl down on the shore and head on back to camp.  Hopefully, whatever finds her won't be TOO horrible.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Take her Home(F)
     private niceGuysTakeLatexHome(): void {
@@ -353,7 +353,7 @@ export class LatexGirl {
             if (player.tou < 40) {
                 outputText("Halfway there, you get too tired to continue.  You may be strong, but you don't have the endurance to heft a burden like this long term.  You'll have to leave her for now and try to find her once she's conscious.");
                 fatigue(30);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             outputText("You're out of breath when you get to camp, but you made it!  It'll take awhile for you to catch your wind after all that work...  Your arms and legs are still burning from the exertion!");
@@ -362,7 +362,7 @@ export class LatexGirl {
         // {Too weak and dumb:}
         else {
             outputText("You try to lift her, but she's too heavy!  Drat!  There's no way you'll get her back to camp like this, and you can't leave the portal undefended long enough to wait for her to wake.  You'll have to leave her for now and try finding her again once she's awake.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // [Next] (Go to PURE aftermath)
@@ -450,7 +450,7 @@ export class LatexGirl {
         outputText("You did your civic duty bringing her back with you, but taking care of her in the long term... that's asking too much.  \"<i>I understand,</i>\" she says, bowing her head sadly as she struggles unsteadily to her feet.  \"<i>It's all right.  You've done more than enough, really.  I'll go.  Hopefully some of my sisters in the lake will be willing to help me, even if I'm so... so different... from them, now.  Goodbye, my friend.  Maybe we'll meet again sometime.</i>\"");
         outputText("\n\nShe's gone a moment later, waving over her shoulder as she unsteadily walks back toward the lake.");
         flags[kFLAGS.GOO_TOSSED_AFTER_NAMING] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Keep Her(F):
@@ -466,7 +466,7 @@ export class LatexGirl {
         flags[kFLAGS.GOO_HAPPINESS] = 60;
         flags[kFLAGS.GOO_OBEDIENCE] = 20;
         flags[kFLAGS.GOO_FLUID_AMOUNT] = 100;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Approach Her (Select From Slaves Tab)(F)
@@ -562,7 +562,7 @@ export class LatexGirl {
         outputText("\n<b>Happiness %:</b> " + Math.round(gooHappiness()));
         outputText("\n<b>Obedience %:</b> " + Math.round(gooObedience()));
         menu();
-        addButton(9, "Back", camp.campSlavesMenu);
+        addButton(9, "Back", Camp.campSlavesMenu);
         addButton(0, "Feed Her", feedLatexy);
         if (player.gender > 0 && player.lust >= 33) addButton(1, "Use Her", useLatexy);
         addButton(3, "Breast Size", setLatexysBustSize);
@@ -585,7 +585,7 @@ export class LatexGirl {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -652,18 +652,18 @@ export class LatexGirl {
         }
         menu();
         if (flags[kFLAGS.GOO_DICK_LENGTH] > 0) {
-            if (player.hasItem(consumables.CANINEP) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DOG) addButton(2, "Canine Pepper", latexyEatsADickItem, consumables.CANINEP);
-            if (player.hasItem(consumables.EQUINUM) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(3, "Equinum", latexyEatsADickItem, consumables.EQUINUM);
-            if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HUMAN) addButton(4, "Pure Draft", latexyEatsADickItem, consumables.P_DRAFT);
-            if (player.hasItem(consumables.W_FRUIT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.CAT) addButton(5, "Whisker Fruit", latexyEatsADickItem, consumables.W_FRUIT);
-            if (player.hasItem(consumables.INCUBID) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DEMON) addButton(0, "Incubi Draft", latexyEatsADickItem, consumables.INCUBID);
-            if (player.hasItem(consumables.MINOBLO) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(1, "Mino Blood", latexyEatsADickItem, consumables.MINOBLO);
-            if (player.hasItem(consumables.GROPLUS)) addButton(6, "Gro Plus", latexyEatsADickItem, consumables.GROPLUS);
-            if (player.hasItem(consumables.REDUCTO) && flags[kFLAGS.GOO_DICK_LENGTH] >= 5) addButton(7, "Reducto", latexyEatsADickItem, consumables.REDUCTO);
+            if (player.hasItem(ConsumableLib.CANINEP) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DOG) addButton(2, "Canine Pepper", latexyEatsADickItem, ConsumableLib.CANINEP);
+            if (player.hasItem(ConsumableLib.EQUINUM) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(3, "Equinum", latexyEatsADickItem, ConsumableLib.EQUINUM);
+            if (player.hasItem(ConsumableLib.P_DRAFT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HUMAN) addButton(4, "Pure Draft", latexyEatsADickItem, ConsumableLib.P_DRAFT);
+            if (player.hasItem(ConsumableLib.W_FRUIT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.CAT) addButton(5, "Whisker Fruit", latexyEatsADickItem, ConsumableLib.W_FRUIT);
+            if (player.hasItem(ConsumableLib.INCUBID) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DEMON) addButton(0, "Incubi Draft", latexyEatsADickItem, ConsumableLib.INCUBID);
+            if (player.hasItem(ConsumableLib.MINOBLO) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(1, "Mino Blood", latexyEatsADickItem, ConsumableLib.MINOBLO);
+            if (player.hasItem(ConsumableLib.GROPLUS)) addButton(6, "Gro Plus", latexyEatsADickItem, ConsumableLib.GROPLUS);
+            if (player.hasItem(ConsumableLib.REDUCTO) && flags[kFLAGS.GOO_DICK_LENGTH] >= 5) addButton(7, "Reducto", latexyEatsADickItem, ConsumableLib.REDUCTO);
         }
         else {
-            if (player.hasItem(consumables.INCUBID)) addButton(0, "Incubi Draft", latexyEatsADickItem, consumables.INCUBID);
-            if (player.hasItem(consumables.MINOBLO)) addButton(1, "Mino Blood", latexyEatsADickItem, consumables.MINOBLO);
+            if (player.hasItem(ConsumableLib.INCUBID)) addButton(0, "Incubi Draft", latexyEatsADickItem, ConsumableLib.INCUBID);
+            if (player.hasItem(ConsumableLib.MINOBLO)) addButton(1, "Mino Blood", latexyEatsADickItem, ConsumableLib.MINOBLO);
         }
         addButton(9, "Back", approachLatexy);
     }
@@ -674,26 +674,26 @@ export class LatexGirl {
         outputText(flags[kFLAGS.GOO_NAME] + " uses your proffered item without a second though.  Surprisingly she doesn't seem to react in any way, aside from closing her eyes and taking on a look of incredible concentration.  ");
         if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) {
             outputText("Her onyx mound bulges, the luscious lips spreading around something internal.  Gradually, they part like a silken veil to reveal a ");
-            if (item == consumables.MINOBLO) outputText("flattened head");
+            if (item == ConsumableLib.MINOBLO) outputText("flattened head");
             else outputText("bulbous crown");
             outputText(".  The newborn cock-tip thickens, spreading her wider as it gradually droops out of the female flesh surrounding it.  ");
             flags[kFLAGS.GOO_DICK_LENGTH] = 8;
-            if (item == consumables.MINOBLO) {
+            if (item == ConsumableLib.MINOBLO) {
                 outputText("On and on it comes.  She's truly going to be hung like a stallion at this rate!   ");
                 flags[kFLAGS.GOO_DICK_LENGTH] = 13;
             }
             outputText("Then, it begins to stiffen, arching up into full arousal.  The new-grown cock appears to have grown from her clit, but as you lean down to examine her vagina, you realize her cunt has shifted down slightly, and a new clit has grown to replace the old.");
             outputText("\n\n\"<i>You're making it harder!</i>\" " + flags[kFLAGS.GOO_NAME] + " whines, trying to cover it with her hands.  Of course, that only makes it harder, and a bead of oily pre-cum beads at the tip.  You could get used to this.  <b>" + flags[kFLAGS.GOO_NAME] + " now has a " + num2Text(flags[kFLAGS.GOO_DICK_LENGTH]) + "-inch ");
-            if (item == consumables.MINOBLO) outputText("horse-");
+            if (item == ConsumableLib.MINOBLO) outputText("horse-");
             outputText("cock!</b>");
             gooObedience(5);
         }
         else {
-            if (item == consumables.GROPLUS) {
+            if (item == ConsumableLib.GROPLUS) {
                 outputText("Her " + gooCock() + " shivers, and starts to sprout outward from the base, lengthening before your very eyes.  One... two... three... new inches of gleaming prick reveal themselves to you!\n\n" + flags[kFLAGS.GOO_NAME] + " giggles, \"<i>You sure do like them big!</i>\"");
                 flags[kFLAGS.GOO_DICK_LENGTH] += 3;
             }
-            else if (item == consumables.REDUCTO) {
+            else if (item == ConsumableLib.REDUCTO) {
                 outputText("Her " + gooCock() + " trembles, and starts to shrink inward, disappearing into her polished abdomen.  The effect is so startling profound that you have to do a double-take.  " + flags[kFLAGS.GOO_NAME] + "'s penis is barely two thirds its original size!\n\nShe giggles, \"<i>Not a fan of the big boys, huh?</i>\"");
                 flags[kFLAGS.GOO_DICK_LENGTH] = Math.round(flags[kFLAGS.GOO_DICK_LENGTH] * .66);
             }
@@ -704,12 +704,12 @@ export class LatexGirl {
             gooObedience(2);
         }
 
-        if (item == consumables.CANINEP) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DOG;
-        if (item == consumables.EQUINUM) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
-        if (item == consumables.P_DRAFT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
-        if (item == consumables.W_FRUIT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.CAT;
-        if (item == consumables.INCUBID) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DEMON;
-        if (item == consumables.MINOBLO) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+        if (item == ConsumableLib.CANINEP) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DOG;
+        if (item == ConsumableLib.EQUINUM) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+        if (item == ConsumableLib.P_DRAFT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
+        if (item == ConsumableLib.W_FRUIT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.CAT;
+        if (item == ConsumableLib.INCUBID) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DEMON;
+        if (item == ConsumableLib.MINOBLO) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
 
         menu();
         addButton(0, "Next", approachLatexy);
@@ -814,7 +814,7 @@ export class LatexGirl {
         }
         flags[kFLAGS.GOO_PREFERRED_TIT_SIZE] = arg;
         if (gooObedience() < 75) gooObedience(3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Feeding Her(F)
@@ -836,8 +836,8 @@ export class LatexGirl {
             addButton(3, "GirlCum, Dir.", feedLatexyGirlCumDirect);
         }
         if (gooHappiness() >= 50 && player.lactationQ() >= 100 && player.breasts.biggestTitSize() >= 3) addButton(4, "Milk", feedLatexySomeMilk);
-        if (player.hasItem(consumables.MINOCUM)) addButton(5, "MinoCum Nic", minotaurCumFeedingGoo, true);
-        if (player.hasItem(consumables.MINOCUM)) addButton(6, "MinoCum Ruf", minotaurCumFeedingGoo, false);
+        if (player.hasItem(ConsumableLib.MINOCUM)) addButton(5, "MinoCum Nic", minotaurCumFeedingGoo, true);
+        if (player.hasItem(ConsumableLib.MINOCUM)) addButton(6, "MinoCum Ruf", minotaurCumFeedingGoo, false);
 
         addButton(9, "Back", approachLatexy);
     }
@@ -892,7 +892,7 @@ export class LatexGirl {
         // {Boost her happiness a tiny amount.}
         gooHappiness(4);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Feed Lady-Cum Indirectly(F)
     private feedLatexyGirlCumIndirectly(): void {
@@ -935,12 +935,12 @@ export class LatexGirl {
         gooFluid(temp);
         // {Boost her happiness a tiny amount.}
         gooHappiness(4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Feed Her Minotaur Cum {Nice Vs Hard}:(F)
     private minotaurCumFeedingGoo(nice: boolean = false): void {
         clearOutput();
-        player.consumeItem(consumables.MINOCUM);
+        player.consumeItem(ConsumableLib.MINOCUM);
         outputText("You pull a vial of minotaur cum from the pouches at your waist");
         if (player.minotaurNeed() || player.minotaurAddicted()) outputText(" and hungrily lick at your lips, always eager to take such a treat yourself");
         outputText(".  The latex woman ");
@@ -976,7 +976,7 @@ export class LatexGirl {
                     outputText("\n\nStaggering onto her feet, " + flags[kFLAGS.GOO_NAME] + " growls, \"<i>Fuck it, I'm not that thirsty!</i>\"  She turns away from you, unwilling to even talk at this point.");
                     gooObedience(-5);
                     gooHappiness(-3);
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                     return;
                 }
                 outputText("\n\nStaggering up on her feet, " + flags[kFLAGS.GOO_NAME] + " looks about ready to quit.  Then, she licks her lips and shudders, as if remembering her own hunger.  She slumps down onto her knees and tips her head back, shaking a few strands of latex out of her face as she opens her mouth.  Then, her onyx lips mouth, \"<i>Feed me, please.</i>\"");
@@ -1004,7 +1004,7 @@ export class LatexGirl {
         gooHappiness(15);
         if (nice) gooObedience(-1);
         else gooObedience(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Feed Cum Directly(F)
@@ -1073,7 +1073,7 @@ export class LatexGirl {
             gooObedience(5);
             player.orgasm();
             dynStats("sen", -2);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // {DISOBEDIENT:}
         else {
@@ -1134,7 +1134,7 @@ export class LatexGirl {
         // {Boost her happiness a tiny amount.}
         gooHappiness(5);
         gooObedience(-4);
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
     // Feed Lady-Cum Direct(F)
     private feedLatexyGirlCumDirect(): void {
@@ -1204,7 +1204,7 @@ export class LatexGirl {
             gooObedience(4);
             player.orgasm();
             dynStats("sen", -2);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // {DISOBEDIENT; chose not to/could not Assert Control}
         else {
@@ -1238,7 +1238,7 @@ export class LatexGirl {
         // {Boost her happiness a tiny amount.}
         gooHappiness(4);
         gooObedience(-4);
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     /*Savin Says: Disobedient Pets get Punished with Gentle Loving PC-Dom (FEMALE)(F)*/
@@ -1274,7 +1274,7 @@ export class LatexGirl {
         // {Boost her happiness a tiny amount.}
         gooHappiness(5);
         gooObedience(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Savin Says: Disobedient Pets get Punished with Gentle Loving PC-Dom (MALE)
@@ -1311,7 +1311,7 @@ export class LatexGirl {
         // {Boost her happiness a tiny amount.}
         gooHappiness(5);
         gooObedience(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Dominant Fucking Her(F)
@@ -1338,7 +1338,7 @@ export class LatexGirl {
             else outputText(" has");
             outputText(" you doubting that claim, but she seems resolute in her desire to avoid direct sex, for now.");
             if (gooFluid() < 15) outputText("  Her hunger is palpable, perhaps it would be best if you simply 'fed' her soon?");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             gooObedience(-3);
             return;
         }
@@ -1384,7 +1384,7 @@ export class LatexGirl {
         gooFluid(5 + player.vaginas.wetness() * 2);
         gooObedience(5);
         gooHappiness(2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Female Dominant Fuck (Goo IS Futa)(F)
     private femalePCDomFucksLatexGooFuta(): void {
@@ -1403,7 +1403,7 @@ export class LatexGirl {
             outputText(", \"<i>No.  You can't make me.  I may be stuck in this camp and separated from my people, but I will not let myself be some sexual toy.</i>\"  A trickle of inky lubricant between her legs and the rigidity of her " + gooCock() + " have you doubting that claim, but she seems resolute in her desire to avoid direct sex, for now.");
             if (gooFluid() < 10) outputText("  Her hunger is palpable, perhaps it would be best if you simply 'fed' her soon?");
             gooObedience(-3);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // {OBEDIENT ENOUGH}
@@ -1484,7 +1484,7 @@ export class LatexGirl {
         gooFluid(5 + player.vaginas.wetness() * 2);
         gooObedience(4);
         gooHappiness(2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Male Dominant Fuck(F)
@@ -1511,7 +1511,7 @@ export class LatexGirl {
             outputText(" you doubting that claim, but she seems resolute in her desire to avoid direct sex, at least until you train her a bit better.");
             if (gooFluid() < 10) outputText("  Her hunger is palpable, perhaps it would be best if you simply 'fed' her soon?");
             gooObedience(-3);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // {OBEDIENT ENOUGH}
@@ -1589,7 +1589,7 @@ export class LatexGirl {
         fatigue(10);
         gooObedience(4);
         gooHappiness(2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Savin Really Wants to Breastfeed Latexy Because He's a Weird Milk Fetishist Like That
@@ -1648,7 +1648,7 @@ export class LatexGirl {
         fatigue(5);
         player.orgasm();
         dynStats("sen", 2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
 
     }
 }

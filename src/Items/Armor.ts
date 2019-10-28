@@ -64,7 +64,7 @@ export class Armor extends Useable // Equipable
                         game.itemSwapping = true;
                         if (output && itype == this)
                             outputText("You have your old set of " + longName + " left over.  ");
-                        inventory.takeItem(this, false);
+                        Inventory.takeItem(this, false);
                     }
                 }
                 player.setArmorHiddenField(ArmorLib.COMFORTABLE_UNDERCLOTHES);

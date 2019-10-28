@@ -116,12 +116,12 @@ export class TamanisDaughters extends Goblin {
         this.level = 8 + (Math.floor(flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 20));
         this.gems = rand(15) + 5;
         this.drop = new WeightedDrop().
-            add(consumables.GOB_ALE, 5).
-            addMany(1, consumables.L_DRAFT,
-                consumables.PINKDYE,
-                consumables.BLUEDYE,
-                consumables.ORANGDY,
-                consumables.PURPDYE);
+            add(ConsumableLib.GOB_ALE, 5).
+            addMany(1, ConsumableLib.L_DRAFT,
+                ConsumableLib.PINKDYE,
+                ConsumableLib.BLUEDYE,
+                ConsumableLib.ORANGDY,
+                ConsumableLib.PURPDYE);
         this.special1 = goblinDrugAttack;
         this.special2 = goblinTeaseAttack;
         checkMonster();

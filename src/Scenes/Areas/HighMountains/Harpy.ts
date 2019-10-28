@@ -110,8 +110,8 @@ export class Harpy extends Monster {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 10;
         this.gems = 10 + rand(4);
-        this.drop = new ChainedDrop().add(armors.W_ROBES, 1 / 10)
-            .elseDrop(consumables.GLDSEED);
+        this.drop = new ChainedDrop().add(ArmorLib.W_ROBES, 1 / 10)
+            .elseDrop(ConsumableLib.GLDSEED);
         this.wingType = WING_TYPE_HARPY;
         this.special1 = harpyUberCharge;
         this.special2 = harpyTease;

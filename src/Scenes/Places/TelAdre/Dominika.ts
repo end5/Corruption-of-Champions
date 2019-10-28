@@ -50,7 +50,7 @@ export class Dominika {
             outputText("The two of you chat for a while longer, making small talk about the things you've seen in the Demon Realm. Eventually you can't help but observe that she doesn't seem to be sporting massive breasts, or thirty cocks, or be mad with lust, and you ask why. She looks you up and down once and laughs. \"<i>You don't have to put everything you find in your mouth, you know,</i>\" she finally answers.\n\n", false);
 
             outputText("After a bit more conversation she glances outside and says she should go. \"<i>It has been nice, though,</i>\" she adds, \"<i>I would enjoy speaking with you again.</i>\" She rests a hand on your shoulder as she leaves. Her eyes tell you she's smiling at you before she goes.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150]++;
             return;
         }
@@ -89,7 +89,7 @@ export class Dominika {
             return;
         }
         outputText("ERROR, ERROR, ALERT THE FENFEN!", true);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [\"<i>No thanks</i>\"]
     private turnDownDominikasKnowledge(): void {
@@ -242,7 +242,7 @@ export class Dominika {
             outputText("You politely explain that you don't actually have any genitals. Dominika blinks, looks at you, then grabs your crotch. \"<i>Oh. Oh. My uh, my apologies.</i>\" She coughs awkwardly and backs up, rubbing the back of her neck. \"<i>That... that is unfortunate.</i>\" She lowers her skirt slightly, letting you see the top of a chastity belt. \"<i>I can understand to a certain degree but uh... Yikes. At least I can get this taken off if I want.</i>\"\n\n", false);
 
             outputText("She walks up to you and kisses your cheek. Her full dark lips are devilishly soft and perfectly moist, and you think of the sensation for longer than you expected.  Patting your shoulder, she gives you a half-smile. \"<i>If you solve that, come back some time, eh?</i>\" She helps you out the door and waves goodbye, but you can't help but feel particularly awkward.\n\n", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         simpleChoices("Yes", acceptFellatrixOral, "No", declineFellatrixOral, "", null, "", null, "", null);
@@ -561,7 +561,7 @@ export class Dominika {
         dynStats("lib", -1, "sen", 1);
 
         if (timesFellatrixSucked() >= 4 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00175] == 0) doNext(dominidrama);
-        else doNext(camp.returnToCampUseTwoHours);
+        else doNext(Camp.returnToCampUseTwoHours);
     }
 
     // [Agree with her]
@@ -593,7 +593,7 @@ export class Dominika {
         }
         dynStats("lus", 25);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00157] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Non-committal]
@@ -606,7 +606,7 @@ export class Dominika {
 
         outputText("Still, that was some magnificent oral. You idly recall the sensations of those dark lips as you walk through Tel'Adre.\n\n", false);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00157] = 2;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Disagree with her]
     private disagreeDominika(): void {
@@ -627,7 +627,7 @@ export class Dominika {
             outputText("On the streets of Tel'adre, you wonder about what she said.  Should you tell someone about that?  You're not certain how much of it was bluster and how much was genuine malice.  There seems to be far more to the sorceress-fellatrix than you first thought, but you're not sure you want to learn the rest.  You don't want to push an issue without justification, though...\n\n", false);
             outputText("Conflicted, you find yourself walking away from Dominika's apartment without ever thinking about her lips for the first time.", false);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Dream after above scene]
@@ -676,7 +676,7 @@ export class Dominika {
 
         outputText("Weary, you continue on your way out of Tel'Adre.", false);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00175] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [No]
     private dominidramaNo(): void {
@@ -690,7 +690,7 @@ export class Dominika {
         outputText("You feel warm inside, filled with a confidence that seemed to come out of nowhere. You can imagine Dominika's dark lips in your mind smiling, opening and curving as if to say \"<i>Good work.</i>\" The thought empowers you. It feels good to protect her, you think to yourself. You stride confidently out of the city.", false);
         dynStats("lus", 10, "cor", 1);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00175] = 2;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Binding scene]
@@ -857,6 +857,6 @@ export class Dominika {
         game.time.days++;
         game.time.hours = 7;
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

@@ -93,7 +93,7 @@ export class GoblinAssassin extends Monster {
         combatRoundOver();
     }
     public defeated(hpVictory: boolean): void {
-        game.goblinAssassinScene.gobboAssassinRapeIntro();
+        GoblinAssassinScene.gobboAssassinRapeIntro();
 
     }
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -102,7 +102,7 @@ export class GoblinAssassin extends Monster {
             cleanupAfterCombat();
         }
         else {
-            game.goblinAssassinScene.gobboAssassinBeatYaUp();
+            GoblinAssassinScene.gobboAssassinBeatYaUp();
         }
     }
     public constructor(noInit: boolean = false) {
@@ -135,12 +135,12 @@ export class GoblinAssassin extends Monster {
         this.level = 10;
         this.gems = rand(50) + 25;
         this.drop = new WeightedDrop().
-            add(consumables.GOB_ALE, 5).
-            addMany(1, consumables.L_DRAFT,
-                consumables.PINKDYE,
-                consumables.BLUEDYE,
-                consumables.ORANGDY,
-                consumables.PURPDYE); // TODO this is a copy of goblin drop. consider replacement with higher-lever stuff
+            add(ConsumableLib.GOB_ALE, 5).
+            addMany(1, ConsumableLib.L_DRAFT,
+                ConsumableLib.PINKDYE,
+                ConsumableLib.BLUEDYE,
+                ConsumableLib.ORANGDY,
+                ConsumableLib.PURPDYE); // TODO this is a copy of goblin drop. consider replacement with higher-lever stuff
         checkMonster();
     }
 

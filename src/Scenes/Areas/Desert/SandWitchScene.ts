@@ -103,7 +103,7 @@ export class SandWitchScene implements TimeAwareInterface {
             outputText("She smiles wickedly and intones, \"<i>nuf erutuf rof riah ydnas, nus tresed eht sa ydnas.</i>\"\n\nYou feel a tingling in your scalp, and realize your hair has become a sandy blonde!", false);
             player.hairColor = "sandy blonde";
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private refuseSandWitchMagic(): void {
@@ -233,7 +233,7 @@ export class SandWitchScene implements TimeAwareInterface {
         spriteSelect(50);
         outputText("", true);
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             sandwitchCentaurBoning();
             cleanupAfterCombat();
             return;
@@ -551,7 +551,7 @@ export class SandWitchScene implements TimeAwareInterface {
                     outputText("\n\n", false);
                     // [SW_1]
                     SWCentaurMore(1);
-                    doNext(camp.returnToCampUseTwoHours);
+                    doNext(Camp.returnToCampUseTwoHours);
                     // Return true to indicate not to continue the scene.
                     return true;
                 }
@@ -709,7 +709,7 @@ export class SandWitchScene implements TimeAwareInterface {
 
         outputText("It is like fucking christmas up in here.", false);
         // {Player gains about as many gems experience points as they would from a Sand Witch encounter, and the Champion is returned to camp.}
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Either type on Sandwich: Finished (Radar)(edited)
@@ -955,7 +955,7 @@ export class SandWitchScene implements TimeAwareInterface {
         // [(corr >= 60)
         if (player.cor >= 60) outputText("\n\n\"<i>Just, use your common sense next time.</i>\"");
         pregnancy.knockUpForce(); // Clear Pregnancy
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // irthing scene: Bees (Radar) (edited)
@@ -970,7 +970,7 @@ export class SandWitchScene implements TimeAwareInterface {
 
         outputText("\n\nContent with how things turned out, you head back to camp and decide on the next course of action for today.");
         pregnancy.knockUpForce(); // Clear Pregnancy
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private sandwitchSpanking(): void {

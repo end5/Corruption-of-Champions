@@ -77,10 +77,10 @@ export class Minotaur extends Monster {
         this.level = hasAxe ? 6 : 5;
         this.gems = rand(5) + 5;
         if (hasAxe) {
-            this.drop = new WeightedDrop(consumables.MINOBLO, 1);
+            this.drop = new WeightedDrop(ConsumableLib.MINOBLO, 1);
         } else {
-            this.drop = new ChainedDrop().add(consumables.MINOCUM, 1 / 5)
-                .add(consumables.MINOBLO, 1 / 2)
+            this.drop = new ChainedDrop().add(ConsumableLib.MINOCUM, 1 / 5)
+                .add(ConsumableLib.MINOBLO, 1 / 2)
                 .elseDrop(null);
         }
         this.special1 = MinotaurScene.minoPheromones;

@@ -66,7 +66,7 @@ export class Essrayle {
         clearOutput();
         outputText("Essy pouts, ears flattening to the sides a bit.  \"<i>I see,</i>\" she nods, looking at you with thinly masked disappointment.  She seems to instantly put on a false smile and move aside, gesturing to the path ahead with a sweep of the arm.  \"<i>Well, in that case, you must be going somewhere important.  Best not keep you waiting.  I do wish you luck in your adventures!</i>\" She continues to beam as you head on off, leaving her behind you in no time.  Though as you leave, you swear you hear a mumbled, \"<i>Leave it to me to find the prudish ones.</i>\"");
         flags[kFLAGS.TURNED_DOWN_ESSY_FIRST_MEETING] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // >If Yes
@@ -215,7 +215,7 @@ export class Essrayle {
         dynStats("lib", 1);
         // Slimefeed!
         player.slimeFeed();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Look Closer
@@ -398,7 +398,7 @@ export class Essrayle {
 
         essyRewardEpilogueOUTTIES();
         // [gain purple fruit] [Next]
-        inventory.takeItem(consumables.PRFRUIT, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.PRFRUIT, Camp.returnToCampUseOneHour);
     }
 
     // [No]

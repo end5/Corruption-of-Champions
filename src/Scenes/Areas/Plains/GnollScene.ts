@@ -15,7 +15,7 @@ export class GnollScene {
     // Gnoll Rape
     public getRapedByGnoll(): void {
         // Oh shit get anal raped.
-        if (player.hasItem(consumables.S_DREAM)) {
+        if (player.hasItem(ConsumableLib.S_DREAM)) {
             yoDawgIHeardULiekGNollBallzzzdahdakjldh();
             return;
         }
@@ -256,7 +256,7 @@ export class GnollScene {
 
     public yoDawgIHeardULiekGNollBallzzzdahdakjldh(): void {
         outputText("", true);
-        player.consumeItem(consumables.S_DREAM);
+        player.consumeItem(ConsumableLib.S_DREAM);
         // [either Gnoll loss, if the player has a succubi's dream in inventory]
 
         outputText("A rolling, harsh laughter surrounds you as you sink to ground, no longer strong enough to remain upright.  The gnoll's mocking bark fills the air as she disposes of your " + player.armorName, false);

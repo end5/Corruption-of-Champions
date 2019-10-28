@@ -98,7 +98,7 @@ Optional Morning Oral for small-membered males*/
             }
             choices("Talk", IsabellaScene.talkWithIsabella, "Drink", IsabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
                 "Fight 4 Rape", IsabellaScene.fightIsabella, "Offer Oral", IsabellaScene.volunteerToSlurpCowCunt, "Accept Offer", moveTheBitchIn,
-                "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
         }
         flags[kFLAGS.ISABELLA_TIMES_OFFERED_FOLLOWER]++;
     }
@@ -117,7 +117,7 @@ Optional Morning Oral for small-membered males*/
         }
         choices("Talk", IsabellaScene.talkWithIsabella, "Drink", IsabellaScene.nomOnMommaIzzysTits, "Get Licked", suck,
             "Fight 4 Rape", IsabellaScene.fightIsabella, "Offer Oral", IsabellaScene.volunteerToSlurpCowCunt, "", null,
-            "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
     // Move Ze Bitch In!
     private moveTheBitchIn(): void {
@@ -126,13 +126,13 @@ Optional Morning Oral for small-membered males*/
         outputText("As soon as you nod, Isabella smiles and tears her shield out of the ground, setting off a small avalanche of dirt and pebbles across her rugs.  The industrious cow-girl starts packing up her things immediately.  \"<i>It vas time to move out of zis little camp any how,</i>\" she declares as she folds her chair into a chest.  You get an eyeful of her generous backside, the plump rump swaying and jiggling back and forth with every movement Isabella's efforts generate.  It's almost hypnotizing, even half-hidden as it is under her olive-toned skirt.  A breeze blows the hem partway up, and though it doesn't go far, you watch with an intrigued, vacant stare.\n\n", false);
 
         outputText("Isabella catches you staring and gives you a sultry, seductive look as she ask, \"<i>Mmm, do you see something you like, " + player.short + "?  Do you like to watch mein butt while I work?  If zat is ze case zen ve vill never get anything done once I move in!</i>\"  You hesitantly look up at her face, and she laughs with a voice that tinkles like ringing bells.  \"<i>You can vatch me like zat if you want, but I vould rather you help me move all zis,</i>\" the cow-girl mentions.  You smile ruefully and help your ", false);
-        if (camp.hasCompanions()) outputText("newest ", false);
+        if (Camp.hasCompanions()) outputText("newest ", false);
         outputText("camp follower gather and move her possessions to your camp.  It takes the better part of an hour, but the entire decor is coming with you, so it may just be worth it.\n\n", false);
         outputText("\n\n(<b>Isabella now available in the lovers menu.</b>)");
         flags[kFLAGS.ISABELLA_AFFECTION] = 100;
         flags[kFLAGS.ISABELLA_FOLLOWER_ACCEPTED] = 1;
         flags[kFLAGS.ISABELLA_PLAINS_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Follower Summoned Text:
@@ -177,12 +177,12 @@ Optional Morning Oral for small-membered males*/
         let milk: () => void = null;
         if (flags[kFLAGS.ISABELLA_MILKED_YET] < 0) milk = getMilk;
         let pro: () => void = null;
-        if (player.hasItem(consumables.PROBOVA) && player.gender > 0) {
+        if (player.hasItem(ConsumableLib.PROBOVA) && player.gender > 0) {
             pro = isabellaBurps;
             outputText("\n\n<b>Isabella would probably drink a bottle of Pro Bova if you gave it to her.</b>", false);
         }
         choices("Accent Coach", accent, "Get Milk", milk, "GiveProBova", pro, "Sex", campIzzySexMenu, "Spar", isabellaSparMenu,
-            "", null, "", null, "", null, "", null, "Back", camp.campLoversMenu);
+            "", null, "", null, "", null, "", null, "Back", Camp.campLoversMenu);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(5, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(5, "Go Camp", backToCamp);
@@ -203,7 +203,7 @@ Optional Morning Oral for small-membered males*/
 
         flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -330,7 +330,7 @@ Optional Morning Oral for small-membered males*/
         if (flags[kFLAGS.ISABELLA_ACCENT_TRAINING_PERCENT] > 100) flags[kFLAGS.ISABELLA_ACCENT_TRAINING_PERCENT] = 100;
         // 4 to 12 hour cooldown
         flags[kFLAGS.ISABELLA_ACCENT_TRAINING_COOLDOWN] = 4 + rand(13);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Morning Wakeup Call
@@ -502,7 +502,7 @@ Optional Morning Oral for small-membered males*/
             if (silly() && (player.lust < 50 || player.lib <= 20)) {
                 outputText("  Your cock immediately deflates from her laughable doujin-tier pillow talk and falls out of her buttcheeks.  You'll be posting that line to 4chan later for laughs.", false);
                 dynStats("lus", -99);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             outputText("  She doesn't even let you answer.  Her back-and-forth flexing abruptly halts as she switches to an up and down motion, hotdogging your " + cockDescript(game.player, x) + " in the tight vice of her spotted backside.\n\n", false);
@@ -560,7 +560,7 @@ Optional Morning Oral for small-membered males*/
         flags[kFLAGS.ISABELLA_TIMES_HOTDOGGED]++;
         player.orgasm();
         dynStats("lib", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private izzyTentacleRapeBool(): boolean {
@@ -707,7 +707,7 @@ Optional Morning Oral for small-membered males*/
         outputText("You keep holding her with " + sMultiCockDesc(game.player) + " for a moment, both of you enjoying the powerful embrace as you literally dick-hug her.  The entirety of her body is dripping with your jism but she doesn't seem to care.  Eventually, you put her down, letting her splat in the puddle of juices that formed below your junk-prison.  At last, you unfold your arms.\n\n", false);
         player.orgasm();
         dynStats("lib", -1, "sen", -1, "cor", .3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Milking Isabella (dey terk Merble's jerb!)
@@ -732,7 +732,7 @@ Optional Morning Oral for small-membered males*/
         // set Izzy Milked Yet flag to 0
         // in other words, she handles it herself somehow but it repeats after another ten days without milking her
         flags[kFLAGS.ISABELLA_MILKED_YET] = 0;
-        camp.returnToCampUseOneHour();
+        Camp.returnToCampUseOneHour();
     }
     // [Yes]
     private izzyMilkingMeinMilkersMya(): void {
@@ -813,7 +813,7 @@ Optional Morning Oral for small-membered males*/
         if (player.cocks.length > 0) outputText("(You have a hunch that you might be able to catch her using the milkers at the farm if you 'explore' there, provided she hasn't been recently milked.)\n\n");
         // get 1 Izzit Milk or Cream? item, set Izzy Milked Yet flag to -1, which adds [GetMilk] button to follower menu
         flags[kFLAGS.ISABELLA_MILKED_YET] = -1;
-        inventory.takeItem(consumables.IZYMILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.IZYMILK, Camp.returnToCampUseOneHour);
     }
 
     // [Mine Mine MINE!]
@@ -828,7 +828,7 @@ Optional Morning Oral for small-membered males*/
         outputText("arousal at your touch, blushing at putting on such a show in front of Whitney.  The farmer shrugs.  \"<i>Y'all please yourselves.  Milker'll be here if you need it.</i>\"\n\n", false);
         // get 1 Izzit Milk or Cream? item, set Izzy Milked Yet flag to -2, which adds [GetMilk] button to follower menu
         flags[kFLAGS.ISABELLA_MILKED_YET] = -2;
-        inventory.takeItem(consumables.IZYMILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.IZYMILK, Camp.returnToCampUseOneHour);
     }
 
     // [GetMilk]
@@ -866,7 +866,7 @@ Optional Morning Oral for small-membered males*/
         // get 1 Izzit Milk or Cream? item, lose some fatigue and gain some lust if Izzy Milked Yet flag = -2
         flags[kFLAGS.ISABELLA_MILKED_YET] = -2;
         flags[kFLAGS.ISABELLA_MILK_COOLDOWN] = 7 + rand(4);
-        inventory.takeItem(consumables.IZYMILK, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.IZYMILK, Camp.returnToCampUseOneHour);
     }
     // TDM's Angry Murble
     public angryMurble(): void {
@@ -925,7 +925,7 @@ Optional Morning Oral for small-membered males*/
 
     // first time (Z)
     private isabellaBurps(): void {
-        player.consumeItem(consumables.PROBOVA);
+        player.consumeItem(ConsumableLib.PROBOVA);
         spriteSelect(31);
         outputText("", true);
         // First time
@@ -1140,7 +1140,7 @@ Optional Morning Oral for small-membered males*/
         else {
             outputText("Despite your strangely inspired lust, you turn the cow-girl down.  Though crestfallen, she takes the news well, apologizing - sincerely and soberly - once more before moving back to her designated camping spot.  Happily, after about an hour, you get back to normal.", false);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // yes
@@ -1216,7 +1216,7 @@ Optional Morning Oral for small-membered males*/
                 outputText("A few minutes later both of you stir from your post-orgasmic lethargy, lying in the aftermath of your short-but-sweet adventure.  Without words, Isabella blows a kiss at you and rolls to her feet, shambling back to her bunk.  You lie there for the rest of the hour, feeling the effects of her burpy influence fade slowly away.", false);
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Licked in Return (seems incompatible with centaurs/driders due to lap-sitting)
@@ -1266,7 +1266,7 @@ Optional Morning Oral for small-membered males*/
         if (isabellaAccent()) outputText("  A bit confused, she nonetheless leaves and returns with a drink, setting it beside you before leaving you to your rest.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ey bitch u wan sum fuk? (Or, how Isabella learned to love the dick regardless of size and shape) (Z)
@@ -1344,7 +1344,7 @@ Optional Morning Oral for small-membered males*/
         outputText("\n\nYou grin and rub the big cow's hair before getting dressed.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Isabella at the Farm
@@ -1359,7 +1359,7 @@ Optional Morning Oral for small-membered males*/
         flags[kFLAGS.FOUND_ISABELLA_AT_FARM_TODAY] = 1;
         // [Fuck her] [Leave]
         addButton(0, "Fuck Her", fuckIsabellaInTheBarn);
-        addButton(4, "Leave", camp.returnToCampUseOneHour);
+        addButton(4, "Leave", Camp.returnToCampUseOneHour);
 
     }
 
@@ -1454,6 +1454,6 @@ Optional Morning Oral for small-membered males*/
         player.orgasm();
         dynStats("lib", -1, "sen", -3);
         fatigue(-25);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 }

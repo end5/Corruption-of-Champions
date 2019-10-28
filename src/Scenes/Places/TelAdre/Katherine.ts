@@ -575,7 +575,7 @@ export class Katherine implements TimeAwareInterface {
             flags[kFLAGS.KATHERINE_BALL_SIZE] = 1; */
         // Player can now encounter Katherine by using the Back Alley button at the Pawn Shop
         flags[kFLAGS.KATHERINE_UNLOCKED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Seeing Katherine
@@ -1980,40 +1980,40 @@ export class Katherine implements TimeAwareInterface {
         outputText("You tell Katherine that you have a present for her.\n\n");
         outputText("The cat-morph's face lights up, but then she guiltily lowers her eyes.  “<i>I can't - you're too good to me already...</i>”  You cut her off, insisting that you want to give it to her.  “<i>Okay, if you're sure... what is it?</i>”\n\n");
         const hasJob: boolean = flags[kFLAGS.KATHERINE_UNLOCKED] >= 4;
-        const blackEgg: boolean = player.hasItem(consumables.BLACKEG) || player.hasItem(consumables.L_BLKEG);
-        const honey: boolean = player.hasItem(consumables.BEEHONY) || player.hasItem(consumables.PURHONY);
-        const pinkEgg: boolean = player.hasItem(consumables.PINKEGG) || player.hasItem(consumables.L_PNKEG);
+        const blackEgg: boolean = player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG);
+        const honey: boolean = player.hasItem(ConsumableLib.BEEHONY) || player.hasItem(ConsumableLib.PURHONY);
+        const pinkEgg: boolean = player.hasItem(ConsumableLib.PINKEGG) || player.hasItem(ConsumableLib.L_PNKEG);
         let button: number = 0;
         menu();
-        if (hasJob && hairColor != "rich auburn" && player.hasItem(consumables.AUBURND)) addButton(button++, "Auburn Dye", giveKatDyeAuburn);
-        if (hasJob && hairColor != "jet black" && player.hasItem(consumables.BLACK_D)) addButton(button++, "Black Dye", giveKatDyeBlack);
-        if (hasJob && hairColor != "light blonde" && player.hasItem(consumables.BLOND_D)) addButton(button++, "Blonde Dye", giveKatDyeBlonde);
-        if (hasJob && hairColor != "bright blue" && player.hasItem(consumables.BLUEDYE)) addButton(button++, "Blue Dye", giveKatDyeBlue);
-        if (hasJob && !hasClothing(KBIT_CLOTHES_BODYSUIT) && player.hasItem(armors.T_BSUIT)) addButton(button++, "Bodysuit", giveKatClothesBodysuit);
-        if (player.hasItem(consumables.BULBYPP)) addButton(button++, "BulbPepper", giveKatABulbousPepper);
-        if (player.hasItem(consumables.CANINEP)) addButton(button++, "Canine Pep", giveKatACaninePepper);
-        if (hasJob && furry && blackEgg && player.hasItem(consumables.P_S_MLK) && player.hasItem(consumables.GLDSEED)) addButton(button++, "Defur", giveKatDefurFormula);
-        if (player.hasItem(consumables.DBLPEPP)) addButton(button++, "DblPeppr", giveKatADoublePepper);
-        if (hasJob && player.hasItem(consumables.KNOTTYP)) addButton(button++, "KnotPepp", giveKatAKnottyPepper);
-        if (player.hasItem(consumables.LARGEPP)) addButton(button++, "LrgPepp", giveKatAOverlyLargePepper);
-        if (hasJob && player.hasItem(consumables.LACTAID)) addButton(button++, "Lactaid", giveKatTheGiftOFMilk);
-        if (hasJob && !hasClothing(KBIT_CLOTHES_B_DRESS) && player.hasItem(armors.B_DRESS)) addButton(button++, "Long Dress", giveKatClothesLongDress);
-        if (hasJob && !hasClothing(KBIT_CLOTHES_NURSECL) && player.hasItem(armors.NURSECL)) addButton(button++, "NurseClothes", giveKatClothesNurseOutfit);
-        if (hasJob && hairColor != "vibrant orange" && player.hasItem(consumables.ORANGDY)) addButton(button++, "Orange Dye", giveKatDyeOrange);
-        if (hasJob && hairColor != "neon pink" && player.hasItem(consumables.PINKDYE)) addButton(button++, "Pink Dye", giveKatDyePink);
+        if (hasJob && hairColor != "rich auburn" && player.hasItem(ConsumableLib.AUBURND)) addButton(button++, "Auburn Dye", giveKatDyeAuburn);
+        if (hasJob && hairColor != "jet black" && player.hasItem(ConsumableLib.BLACK_D)) addButton(button++, "Black Dye", giveKatDyeBlack);
+        if (hasJob && hairColor != "light blonde" && player.hasItem(ConsumableLib.BLOND_D)) addButton(button++, "Blonde Dye", giveKatDyeBlonde);
+        if (hasJob && hairColor != "bright blue" && player.hasItem(ConsumableLib.BLUEDYE)) addButton(button++, "Blue Dye", giveKatDyeBlue);
+        if (hasJob && !hasClothing(KBIT_CLOTHES_BODYSUIT) && player.hasItem(ArmorLib.T_BSUIT)) addButton(button++, "Bodysuit", giveKatClothesBodysuit);
+        if (player.hasItem(ConsumableLib.BULBYPP)) addButton(button++, "BulbPepper", giveKatABulbousPepper);
+        if (player.hasItem(ConsumableLib.CANINEP)) addButton(button++, "Canine Pep", giveKatACaninePepper);
+        if (hasJob && furry && blackEgg && player.hasItem(ConsumableLib.P_S_MLK) && player.hasItem(ConsumableLib.GLDSEED)) addButton(button++, "Defur", giveKatDefurFormula);
+        if (player.hasItem(ConsumableLib.DBLPEPP)) addButton(button++, "DblPeppr", giveKatADoublePepper);
+        if (hasJob && player.hasItem(ConsumableLib.KNOTTYP)) addButton(button++, "KnotPepp", giveKatAKnottyPepper);
+        if (player.hasItem(ConsumableLib.LARGEPP)) addButton(button++, "LrgPepp", giveKatAOverlyLargePepper);
+        if (hasJob && player.hasItem(ConsumableLib.LACTAID)) addButton(button++, "Lactaid", giveKatTheGiftOFMilk);
+        if (hasJob && !hasClothing(KBIT_CLOTHES_B_DRESS) && player.hasItem(ArmorLib.B_DRESS)) addButton(button++, "Long Dress", giveKatClothesLongDress);
+        if (hasJob && !hasClothing(KBIT_CLOTHES_NURSECL) && player.hasItem(ArmorLib.NURSECL)) addButton(button++, "NurseClothes", giveKatClothesNurseOutfit);
+        if (hasJob && hairColor != "vibrant orange" && player.hasItem(ConsumableLib.ORANGDY)) addButton(button++, "Orange Dye", giveKatDyeOrange);
+        if (hasJob && hairColor != "neon pink" && player.hasItem(ConsumableLib.PINKDYE)) addButton(button++, "Pink Dye", giveKatDyePink);
         if (hasJob && hasCock() && pinkEgg) addButton(button++, "Pink Egg", usePinkEggOnKath);
-        if (hasJob && player.hasItem(consumables.P_DRAFT)) addButton(button++, (hasCock() ? consumables.P_DRAFT.shortName : "Grow Cock"), useIncubiDraftOnKath);
-        if (hasJob && hasCock() && player.hasItem(consumables.PSDELIT)) addButton(button++, "P. Suc Delight", giveKatPureSuccubusDelight);
-        if (hasJob && player.hasItem(consumables.P_S_MLK)) addButton(button++, "P. Suc Milk", giveKatPureSuccubusMilk);
-        if (hasJob && hairColor != "deep purple" && player.hasItem(consumables.PURPDYE)) addButton(button++, "Purple Dye", giveKatDyePurple);
-        if (hasJob && hairColor != "flaming red" && player.hasItem(consumables.RED_DYE)) addButton(button++, "Red Dye", giveKatDyeRed);
-        if (player.hasItem(consumables.REDUCTO)) addButton(button++, "Reducto", useReductoOnKat);
-        if (hasJob && !furry && honey && player.hasItem(consumables.W_FRUIT) && player.hasItem(consumables.EXTSERM)) addButton(button++, "Refuzz", giveKatRefuzzFormula);
-        if (hasJob && hasCock() && ballSize == 1 && pinkEgg && player.hasItem(consumables.REDUCTO)) addButton(button++, "Rem Balls", useReductoAndPinkEgg);
-        if (hasJob && !hasClothing(KBIT_CLOTHES_SS_ROBE) && player.hasItem(armors.SS_ROBE)) addButton(button++, "Silk Robe", giveKatClothesSilkRobe);
-        if (hasJob && !hasClothing(KBIT_CLOTHES_TUBETOP) && player.hasItem(armors.TUBETOP)) addButton(button++, "Tube Top", giveKatClothesTubeTop);
-        if (hasJob && player.hasItem(consumables.W_FRUIT)) addButton(button++, "W. Fruit", giveKatWhiskerFruit);
-        if (hasJob && hairColor != "snow white" && player.hasItem(consumables.WHITEDY)) addButton(button++, "White Dye", giveKatDyeWhite);
+        if (hasJob && player.hasItem(ConsumableLib.P_DRAFT)) addButton(button++, (hasCock() ? ConsumableLib.P_DRAFT.shortName : "Grow Cock"), useIncubiDraftOnKath);
+        if (hasJob && hasCock() && player.hasItem(ConsumableLib.PSDELIT)) addButton(button++, "P. Suc Delight", giveKatPureSuccubusDelight);
+        if (hasJob && player.hasItem(ConsumableLib.P_S_MLK)) addButton(button++, "P. Suc Milk", giveKatPureSuccubusMilk);
+        if (hasJob && hairColor != "deep purple" && player.hasItem(ConsumableLib.PURPDYE)) addButton(button++, "Purple Dye", giveKatDyePurple);
+        if (hasJob && hairColor != "flaming red" && player.hasItem(ConsumableLib.RED_DYE)) addButton(button++, "Red Dye", giveKatDyeRed);
+        if (player.hasItem(ConsumableLib.REDUCTO)) addButton(button++, "Reducto", useReductoOnKat);
+        if (hasJob && !furry && honey && player.hasItem(ConsumableLib.W_FRUIT) && player.hasItem(ConsumableLib.EXTSERM)) addButton(button++, "Refuzz", giveKatRefuzzFormula);
+        if (hasJob && hasCock() && ballSize == 1 && pinkEgg && player.hasItem(ConsumableLib.REDUCTO)) addButton(button++, "Rem Balls", useReductoAndPinkEgg);
+        if (hasJob && !hasClothing(KBIT_CLOTHES_SS_ROBE) && player.hasItem(ArmorLib.SS_ROBE)) addButton(button++, "Silk Robe", giveKatClothesSilkRobe);
+        if (hasJob && !hasClothing(KBIT_CLOTHES_TUBETOP) && player.hasItem(ArmorLib.TUBETOP)) addButton(button++, "Tube Top", giveKatClothesTubeTop);
+        if (hasJob && player.hasItem(ConsumableLib.W_FRUIT)) addButton(button++, "W. Fruit", giveKatWhiskerFruit);
+        if (hasJob && hairColor != "snow white" && player.hasItem(ConsumableLib.WHITEDY)) addButton(button++, "White Dye", giveKatDyeWhite);
         addButton(9, "Back", katherineMenu);
     }
 
@@ -2076,7 +2076,7 @@ export class Katherine implements TimeAwareInterface {
         knotSize -= 2;
         if (knotSize < 2) knotSize = 2;
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.REDUCTO);
+        player.consumeItem(ConsumableLib.REDUCTO);
         katSexMenu();
     }
 
@@ -2110,7 +2110,7 @@ export class Katherine implements TimeAwareInterface {
         const dickMin: number = (flags[kFLAGS.KATHERINE_UNLOCKED] >= 4 ? 6 : 8); // If she's employed she'll go as low as 6 inches
         if (cockLength < dickMin) cockLength = dickMin;
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.REDUCTO);
+        player.consumeItem(ConsumableLib.REDUCTO);
         katSexMenu();
     }
 
@@ -2125,7 +2125,7 @@ export class Katherine implements TimeAwareInterface {
         ballSize -= 2;
         if (ballSize < 1) ballSize = 1;
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.REDUCTO);
+        player.consumeItem(ConsumableLib.REDUCTO);
         katSexMenu();
     }
 
@@ -2153,7 +2153,7 @@ export class Katherine implements TimeAwareInterface {
         else outputText("“<i>Yes, I think I’ll get used to these smaller sweater puppies pretty quickly.</i>”");
         outputText("\n\nShe lies back on the bed and spreads her legs wide, her cock" + cockMultiple("", "s") + " aimed at the ceiling.  “<i>Now since you’ve pawed my breasts and got me all excited I hope you aren’t planning on leaving anytime soon.</i>”");
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.REDUCTO);
+        player.consumeItem(ConsumableLib.REDUCTO);
         katSexMenu();
     }
 
@@ -2165,7 +2165,7 @@ export class Katherine implements TimeAwareInterface {
             outputText("“<i>I'm pretty sure that won't have any effect on me,</i>” she replies.  “<i>But they do taste nice, so as long as you don't mind...</i>”  She smiles and and takes the pepper, munching it down.  With a moan she " + clothesLowerChoice("pushes a hand down her shorts", "hikes up her skirt", "opens the folds of her bodysuit", "hikes up her dress", "parts her robe") + " and starts rubbing her clit.\n\n");
             outputText("“<i>Oh please " + playerText() + ", don't leave me to deal with this feeling on my own.</i>”");
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.BULBYPP);
+            player.consumeItem(ConsumableLib.BULBYPP);
             katSexMenu();
         }
         else if (!hasBalls()) {
@@ -2179,7 +2179,7 @@ export class Katherine implements TimeAwareInterface {
             outputText("\n\nKath rubs her newly formed balls and you see a " + cockAdj() + "bulge developing as her " + cockMultiple("cock stands", "twin cocks stand") + " to attention.  She gives you a toothy smile and asks, “<i>So... you wanna give them a test run?</i>”\n\n");
             ballSize = 1;
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.BULBYPP);
+            player.consumeItem(ConsumableLib.BULBYPP);
             katSexMenu();
         }
         else if (ballSize < 5) {
@@ -2194,7 +2194,7 @@ export class Katherine implements TimeAwareInterface {
             ballSize += 2;
             if (ballSize > 5) ballSize = 5;
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.BULBYPP);
+            player.consumeItem(ConsumableLib.BULBYPP);
             katSexMenu();
         }
         else if (submissiveness() >= 4 && ballSize < 9) {
@@ -2216,7 +2216,7 @@ export class Katherine implements TimeAwareInterface {
             ballSize += 2;
             if (ballSize > 9) ballSize = 9;
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.BULBYPP);
+            player.consumeItem(ConsumableLib.BULBYPP);
             katSexMenu();
         }
         else { // Too big
@@ -2247,7 +2247,7 @@ export class Katherine implements TimeAwareInterface {
             outputText("You feed the canine pepper into her mouth and Kath rolls it around before snapping her jaws shut and giving you a spicy peck on the cheek.  Quickly, she " + clothesLowerChoice("slips off her pants", "raises her skirt and slips off her panties", "open the folds of her bodysuit", "raises her skirt and slips off her panties", "unties her robe and slips off her panties") + ", exposing her barbed prick" + cockMultiple("", "s") + ".\n\n");
             outputText("The pepper doesn't disappoint and you watch the magic stretch her cock" + cockMultiple("", "s") + " outwards, absorbing " + cockMultiple("its", "their") + " barbs.  Kath once again sports a " + cockMultiple("", "pair of") + cockAdj() + " canine cock" + cockMultiple("", "s") + " and a happy, horny grin to go with " + cockMultiple("it", "them") + ".");
             flags[kFLAGS.KATHERINE_DICK_FORM] = 0;
-            player.consumeItem(consumables.CANINEP);
+            player.consumeItem(ConsumableLib.CANINEP);
         }
         katSexMenu();
     }
@@ -2289,7 +2289,7 @@ export class Katherine implements TimeAwareInterface {
             outputText(".\n\n“<i>Oh dear...  I think that was maybe a bit too spicy.  You want to help me out with this?</i>” she purrs, already starting to stroke her twin shafts.\n\n");
         }
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.DBLPEPP);
+        player.consumeItem(ConsumableLib.DBLPEPP);
         katSexMenu();
     }
 
@@ -2302,7 +2302,7 @@ export class Katherine implements TimeAwareInterface {
             outputText("“<i>I'm pretty sure that won't have any effect on me,</i>” she says.  “<i>But they do taste nice, so as long as you don't mind...</i>”  She smiles and and takes the pepper, munching it down.  With a moan she " + clothesLowerChoice("pushes a hand down her shorts", "hikes up her skirt", "opens the folds of her bodysuit", "hikes up her dress", "parts her robe") + " and starts rubbing her clit.\n\n");
             outputText("“<i>Oh please " + playerText() + ", don't leave me to deal with this feeling on my own.</i>”");
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.LARGEPP);
+            player.consumeItem(ConsumableLib.LARGEPP);
             katSexMenu();
         }
         else if (cockLength < 16) {
@@ -2318,7 +2318,7 @@ export class Katherine implements TimeAwareInterface {
             dynStats("lus", 10 + player.lib / 20);
             cockLength += 2;
             if (cockLength > 16) cockLength = 16;
-            player.consumeItem(consumables.LARGEPP);
+            player.consumeItem(ConsumableLib.LARGEPP);
             katSexMenu();
         }
         else if (cockLength < 20 && kathSubEnough) {
@@ -2348,7 +2348,7 @@ export class Katherine implements TimeAwareInterface {
             addSubmissive(KBIT_SUB_GROW_BIG_DICK); // Have made her supersize her cock(s) at least once
             cockLength += 2;
             if (cockLength > 20) cockLength = 20;
-            player.consumeItem(consumables.LARGEPP);
+            player.consumeItem(ConsumableLib.LARGEPP);
             katSexMenu();
         }
         else if (kathSubEnough) { // Too big, even for submissive Kath
@@ -2417,11 +2417,11 @@ export class Katherine implements TimeAwareInterface {
         furry = false;
         addSubmissive(KBIT_SUB_CAT_GIRL); // Have defurred her at least once
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.P_S_MLK);
-        player.consumeItem(consumables.GLDSEED);
-        if (player.hasItem(consumables.BLACKEG))
-            player.consumeItem(consumables.BLACKEG);
-        else player.consumeItem(consumables.L_BLKEG);
+        player.consumeItem(ConsumableLib.P_S_MLK);
+        player.consumeItem(ConsumableLib.GLDSEED);
+        if (player.hasItem(ConsumableLib.BLACKEG))
+            player.consumeItem(ConsumableLib.BLACKEG);
+        else player.consumeItem(ConsumableLib.L_BLKEG);
         katSexMenu();
     }
 
@@ -2433,7 +2433,7 @@ export class Katherine implements TimeAwareInterface {
             outputText("“<i>I'm pretty sure that won't have any effect on me,</i>” she says.  “<i>But they do taste nice, so as long as you don't mind...</i>”  She smiles and and takes the pepper, munching it down.  With a moan she " + clothesLowerChoice("pushes a hand down her shorts", "hikes up her skirt", "opens the folds of her bodysuit", "hikes up her dress", "parts her robe") + " and starts rubbing her clit.\n\n");
             outputText("“<i>Oh please " + playerText() + ", don't leave me to deal with this feeling on my own.</i>”");
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.KNOTTYP);
+            player.consumeItem(ConsumableLib.KNOTTYP);
         }
         else if (knotSize >= 6) { // Original size - it won’t grow any further
             outputText("Kath gestures towards her cock" + cockMultiple("", "s") + " and says, “<i>I don’t think it can get any bigger.  I ate a ton of those peppers all at once and they never pushed me past this.</i>”\n\n");
@@ -2448,7 +2448,7 @@ export class Katherine implements TimeAwareInterface {
                 flags[kFLAGS.KATHERINE_DICK_FORM] = 0;
             }
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.KNOTTYP);
+            player.consumeItem(ConsumableLib.KNOTTYP);
         }
         else if (knotSize >= 4) { // Need submissiveness 1+ to grow
             outputText("Kath takes the pepper a little uncertainly.  “<i>It brings back some good memories, from after I met you; it also brings back memories of being an outcast among my own kind.</i>”\n\n");
@@ -2474,7 +2474,7 @@ export class Katherine implements TimeAwareInterface {
                 if (knotSize > 6) knotSize = 6;
                 addSubmissive(KBIT_SUB_GROW_KNOT); // Have regrown her knot to full size at least once
                 dynStats("lus", 10 + player.lib / 20);
-                player.consumeItem(consumables.KNOTTYP);
+                player.consumeItem(ConsumableLib.KNOTTYP);
             }
         }
         else { // Knot is < 4", Always willing to grow if you ask
@@ -2492,7 +2492,7 @@ export class Katherine implements TimeAwareInterface {
             knotSize += 2;
             if (knotSize > 4) knotSize = 4;
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.KNOTTYP);
+            player.consumeItem(ConsumableLib.KNOTTYP);
         }
         if (hasCock()) outputText("\n\nHer tail flicks against your leg.  She looks down at her erection" + cockMultiple("", "s") + ", looks to you and then looks back at her erection" + cockMultiple("", "s") + " again.");
         katSexMenu();
@@ -2534,9 +2534,9 @@ export class Katherine implements TimeAwareInterface {
             outputText("“<i>Wow - I thought that would hurt at least a little.  It just tickled like crazy and now it feels like someone’s been rubbing my cock.</i>”  Katherine smiles at you and adds, “<i>I could really use a hand getting this thing back under control " + playerText() + ".</i>”");
             cockNumber = 1;
         }
-        if (player.hasItem(consumables.PINKEGG))
-            player.consumeItem(consumables.PINKEGG);
-        else player.consumeItem(consumables.L_PNKEG);
+        if (player.hasItem(ConsumableLib.PINKEGG))
+            player.consumeItem(ConsumableLib.PINKEGG);
+        else player.consumeItem(ConsumableLib.L_PNKEG);
         katSexMenu();
     }
 
@@ -2610,7 +2610,7 @@ export class Katherine implements TimeAwareInterface {
             }
         }
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.P_DRAFT);
+        player.consumeItem(ConsumableLib.P_DRAFT);
         katSexMenu();
     }
 
@@ -2662,7 +2662,7 @@ export class Katherine implements TimeAwareInterface {
         }
         dynStats("lus", 10 + player.lib / 20);
         flags[kFLAGS.KATHERINE_HOURS_SINCE_CUM] += 24;
-        player.consumeItem(consumables.PSDELIT);
+        player.consumeItem(ConsumableLib.PSDELIT);
         katSexMenu();
     }
 
@@ -2699,7 +2699,7 @@ export class Katherine implements TimeAwareInterface {
             }
             outputText("Kath seems to be in a loving mood, why disappoint her?\n\n");
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.P_S_MLK);
+            player.consumeItem(ConsumableLib.P_S_MLK);
         }
         else if (breasts.cupSize < CoC.BREAST_CUP_EE && kathSubEnough) { // Allows E-Cup, big E-Cup and EE-Cup
             outputText("You tell Katherine to disrobe.  You have a present for her.  She hops on the bed and takes her clothes off slowly, giving you a nice little striptease.  When she’s finished you place the bottle of succubi’ milk in her hand.\n\n");
@@ -2711,7 +2711,7 @@ export class Katherine implements TimeAwareInterface {
             breasts.cupSize++;
             addSubmissive(KBIT_SUB_GROW_BIG_BOOBS); // Have grown her breasts to E-Cup or larger
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.P_S_MLK);
+            player.consumeItem(ConsumableLib.P_S_MLK);
         }
         else if (kathSubEnough) { // Too big, even for more submissive Kath
             outputText("You tell Katherine to disrobe.  You have a present for her.  She hops on the bed and takes her clothes off slowly, teasing you with her striptease.  When she’s finished you place the bottle of succubus’ milk in her hand.\n\n");
@@ -2764,7 +2764,7 @@ export class Katherine implements TimeAwareInterface {
             if (!doneSubmissive(KBIT_SUB_HIGH_LACTATION)) breasts.preventLactationIncrease == BreastStore.LACTATION_MODERATE;
             // This limit will remain in place until you are able to feed her enough Lactaid to push her up to strong lactation.
             breasts.lactationLevel++;
-            player.consumeItem(consumables.LACTAID);
+            player.consumeItem(ConsumableLib.LACTAID);
         }
         else if (submissiveness() < 3) { // Not sub enough to go higher
             outputText("Kath cups her mammaries and gives them a gentle squeeze.  A few droplets of creamy liquid dribble from her nipples.  Kath sighs and wipes away the wetness with her fingers, saying, “<i>I don't think I should, " + playerText() + ".  I'm already so full all the time - even bumping into someone is enough for me to start leaking.  If I have any more of that stuff I'll smell like milk all the time, my bras will be soaked with it.  Any time I walk down the street I'll be a target for milk thieves.</i>”\n\n");
@@ -2784,7 +2784,7 @@ export class Katherine implements TimeAwareInterface {
                 default:
             }
             breasts.lactationLevel++;
-            player.consumeItem(consumables.LACTAID);
+            player.consumeItem(ConsumableLib.LACTAID);
             if (!doneSubmissive(KBIT_SUB_HIGH_LACTATION)) { // First time turbocharging her mammaries
                 outputText("Kath cups her mammaries and gives them a gentle squeeze.  A few droplets of creamy liquid dribble from her nipples.  Kath sighs and wipes away the wetness with her fingers, saying, “<i>I don't think I should, " + playerText() + ".  I'm already so full all the time - even bumping into someone is enough for me to start leaking.  If I have any more of that stuff I'll smell like milk all the time, my bras will be soaked with it.  Any time I walk down the street I'll be a target for milk thieves.</i>”\n\n");
                 outputText("She tries to hand the bottle back but you ignore her and " + clothesLowerChoice("slide your hand under her belt and into her pants", "slip your hand under her skirt", "push your fingers into the crotch of her bodysuit", "slip your hand under her dress", "slide your hand inside her her robe") + ".  You start to play with her clit and find Kath's pussy is already wet.  She squirms at your touch and bites her lower lip.  You ask her if the idea of spilling milk everywhere is turning her on.\n\n");
@@ -2793,7 +2793,7 @@ export class Katherine implements TimeAwareInterface {
                 outputText("Kath's eyes open part way and she looks at the bottle, then at you before ripping the cork free and gulping down the contents.  As soon as she swallows the last of it she says, “<i>Oh Marae - why?  Why did I just do that?  It's going to be so much trouble.</i>”\n\n");
                 outputText("With your free hand you cup one of her breasts just in time to feel a great warmth develop inside it.  Her nipples produce a hefty spray of cream and Kath arches her back until her head is nearly touching the bed.\n\n");
                 outputText("When the effects die down Katherine slumps into a pile and you hear deep, contented snoring.  You scratch her ears a few times, but when even that doesn't rouse her you decide to leave your favorite kitty to recover.\n\n");
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 addSubmissive(KBIT_SUB_HIGH_LACTATION);
                 return;
             }
@@ -2836,11 +2836,11 @@ export class Katherine implements TimeAwareInterface {
         outputText("pussy’s drenched.</i>”\n\n");
         furry = true;
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(consumables.W_FRUIT);
-        player.consumeItem(consumables.EXTSERM);
-        if (player.hasItem(consumables.BEEHONY))
-            player.consumeItem(consumables.BEEHONY);
-        else player.consumeItem(consumables.PURHONY);
+        player.consumeItem(ConsumableLib.W_FRUIT);
+        player.consumeItem(ConsumableLib.EXTSERM);
+        if (player.hasItem(ConsumableLib.BEEHONY))
+            player.consumeItem(ConsumableLib.BEEHONY);
+        else player.consumeItem(ConsumableLib.PURHONY);
         katSexMenu();
     }
 
@@ -2884,8 +2884,8 @@ export class Katherine implements TimeAwareInterface {
             outputText("You let yourself out quietly, hoping she'll soon be ready for a trial run.");
             orgasm();
             ballSize = 0;
-            player.consumeItem(consumables.PINKEGG);
-            player.consumeItem(consumables.REDUCTO);
+            player.consumeItem(ConsumableLib.PINKEGG);
+            player.consumeItem(ConsumableLib.REDUCTO);
             addSubmissive(KBIT_SUB_REM_BALLS); // Have removed her balls at least once
             doNext(TelAdre.telAdreMenu);
         }
@@ -2900,7 +2900,7 @@ export class Katherine implements TimeAwareInterface {
         if (!hasCock() || !hasDogCock()) {
             outputText("She takes the fruit and gives you a big grin as she bites into it, sucking up all the juices.  Kath leans back on the bed and thrusts her chest toward you.  “<i>Oh Marae, do those ever put me in the mood.</i>”  She licks her lips seductively, closes her eyes and shudders with pent up energy.  In a barely controlled whisper she asks, “<i>How do you want me?</i>”");
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.W_FRUIT);
+            player.consumeItem(ConsumableLib.W_FRUIT);
             katSexMenu();
             return;
         }
@@ -2937,7 +2937,7 @@ export class Katherine implements TimeAwareInterface {
             knotSize -= 2;
             if (knotSize < 2) knotSize = 2;
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(consumables.W_FRUIT);
+            player.consumeItem(ConsumableLib.W_FRUIT);
         }
         katSexMenu();
     }
@@ -2960,7 +2960,7 @@ export class Katherine implements TimeAwareInterface {
         outputText("Her tail swishes back and forth and Kath gives in to the feeling of your hands massaging her body.  Her nipples tent the gossamer fabric and you realize that you could probably make her cum while she’s still wearing the outfit.\n\n");
         outputText("“<i>Do you really want me to walk around town like this?</i>” she pants.  “<i>Everyone will " + (hasCock() ? "know I’m a herm" : "see everything") + ".</i>”");
         giveClothing(KBIT_CLOTHES_BODYSUIT);
-        player.consumeItem(armors.T_BSUIT);
+        player.consumeItem(ArmorLib.T_BSUIT);
         simpleChoices("Yes", giveKatClothesBodysuitYes, "No", giveKatClothesBodysuitNo, "Always", (submissiveness() >= 2 ? giveKatClothesBodysuitAlways : null), "", null, "", null);
     }
 
@@ -3001,7 +3001,7 @@ export class Katherine implements TimeAwareInterface {
         outputText("“<i>I’ve never gone to a big party, but now I’ve got the perfect dress for it.  I think I was wrong before, princesses are going to be jealous,</i>” she says as she twirls left and right, watching the long dress flow in the mirror.  “<i>It’s perfect - it really is." + (hasCock() ? "  I bet even if I was rock hard under this gown no one could tell I’m a herm." : "") + "</i>”\n\n");
         outputText("She twirls a few more times before grabbing your arms and leading you in a silent dance.  “<i>" + (hasCock() ? "I am all woman, but in this dress I finally feel like it" : "In this dress I feel like I’m all woman, just like I wanted to be when I was really young and kids picked on me") + ".</i>”  You don’t know the slow dance she’s taking you through, but it doesn’t seem to matter.  Kath finally snaps out of her fantasy and says, “<i>This dress is so special; I don’t want anything to happen to it.  Maybe I should only put it on for special occasions.</i>”");
         giveClothing(KBIT_CLOTHES_B_DRESS);
-        player.consumeItem(armors.B_DRESS);
+        player.consumeItem(ArmorLib.B_DRESS);
         simpleChoices("Wear It", giveKatClothesDressWearIt, "Agree", giveKatClothesDressAgree, "Always Wear", (submissiveness() >= 2 ? giveKatClothesDressAlways : null), "", null, "", null);
     }
 
@@ -3053,7 +3053,7 @@ export class Katherine implements TimeAwareInterface {
         outputText(".  When she’s finished a vision of naughtiness stands before you.\n\n");
         outputText("She walks toward you, her hips swaying from side to side.  “<i>I know it’s racy, skimpy, probably even outright slutty, but I love how it looks.  " + catGirl("It feels nice walking around with all this exposed skin", "I really like how the whiteness of the outfit contrasts with the blackness of my fur") + ".  She slides her arms around your waist and you feel a great deal of heat radiating from under that skirt.  Mmmm, you’re too good to me " + playerText() + ".  Let me show you how much I appreciate you...</i>”\n\n");
         giveClothing(KBIT_CLOTHES_NURSECL);
-        player.consumeItem(armors.NURSECL);
+        player.consumeItem(ArmorLib.NURSECL);
         katSexMenu();
     }
 
@@ -3066,7 +3066,7 @@ export class Katherine implements TimeAwareInterface {
         outputText("You convince her to put it on anyway.  She strips and then pulls on the robe.  “<i>It’s so smooth!  It feels like the wind brushing against my " + catGirl("skin", "fur") + ".  It makes me feel like I’m completely naked.</i>”\n\n");
         outputText("Katherine strikes a commanding pose and looks at herself in the mirror, then she seems to deflate slightly.  Looking very shy she says, “<i>I don’t know if I should wear this around town.  It seems way too special.</i>”");
         giveClothing(KBIT_CLOTHES_SS_ROBE);
-        player.consumeItem(armors.SS_ROBE);
+        player.consumeItem(ArmorLib.SS_ROBE);
         simpleChoices("Wear It", giveKatClothesRobeWear, "Don’t Wear", giveKatClothesRobeDontWear, "Always Wear", (submissiveness() >= 2 ? giveKatClothesRobeAlways : null), "", null, "", null);
     }
 
@@ -3125,7 +3125,7 @@ export class Katherine implements TimeAwareInterface {
         else outputText((flags[kFLAGS.KATHERINE_CLOTHES_WORN] == KBIT_CLOTHES_C_CLOTH ? "blouse" : "clothes, quickly slips on her knee length skirt") + " and then struggles with the tube top.  When it’s finally on right she starts posing in the mirror, her " + breasts.adj() + " breasts on display in the stretchy, clingy fabric.");
         outputText("\n\nYou come up behind her and rub her exposed" + (pregSize() > 4 ? ", bulging" : "") + " midriff.  Kath’s tail starts to dance and she falls back against you, purring.  “<i>Oh " + playerText() + ", I just got into this lovely outfit you gave me.  Do you want me out of it so soon?</i>”\n\n");
         giveClothing(KBIT_CLOTHES_TUBETOP);
-        player.consumeItem(armors.TUBETOP);
+        player.consumeItem(ArmorLib.TUBETOP);
         katSexMenu();
     }
 
@@ -3145,14 +3145,14 @@ export class Katherine implements TimeAwareInterface {
 
     private giveKatDyeAuburn(): void {
         giveKatDyeBegin("rich auburn");
-        player.consumeItem(consumables.AUBURND);
+        player.consumeItem(ConsumableLib.AUBURND);
         outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>It’s not that flashy, but it looks good on me.  There’s a nice contrast with my " + catGirl("skin", "fur") + ".</i>”\n\n");
         giveKatDyeEnd();
     }
 
     private giveKatDyeBlack(): void {
         giveKatDyeBegin("jet black");
-        player.consumeItem(consumables.BLACK_D);
+        player.consumeItem(ConsumableLib.BLACK_D);
         outputText(", matching the fur ");
         if (furry) {
             outputText("that covers the rest of her body.\n\n");
@@ -3174,49 +3174,49 @@ export class Katherine implements TimeAwareInterface {
 
     private giveKatDyeBlonde(): void {
         giveKatDyeBegin("light blonde");
-        player.consumeItem(consumables.BLOND_D);
+        player.consumeItem(ConsumableLib.BLOND_D);
         outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>When I was a little kitty I was always jealous of felines with lighter colored fur.  " + catGirl("Now I’ve got blonde hair and no fur, except on my ears and tail.  They’re the ones who ought to be jealous now", "I think it looks good on me, especially since there’s such a contrast with my fur") + ".</i>”\n\n");
         giveKatDyeEnd();
     }
 
     private giveKatDyeBlue(): void {
         giveKatDyeBegin("bright blue");
-        player.consumeItem(consumables.BLUEDYE);
+        player.consumeItem(ConsumableLib.BLUEDYE);
         outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>Wow.  Nice and bright.  Really appropriate for an officer who’s part of the thin blue line.</i>”  She giggles a bit and says, “<i>This is a color I always wanted to try and I think it looks great!</i>”\n\n");
         giveKatDyeEnd();
     }
 
     private giveKatDyeOrange(): void {
         giveKatDyeBegin("vibrant orange");
-        player.consumeItem(consumables.ORANGDY);
+        player.consumeItem(ConsumableLib.ORANGDY);
         outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>Wow.  Nice and bright.  No one is going to miss me now.  This is almost the same color the Watch paints on doors to mark dangerously unstable houses.</i>”  She giggles a bit and says, “<i>I always wanted to try orange and I think it looks great on me!</i>”\n\n");
         giveKatDyeEnd();
     }
 
     private giveKatDyePink(): void {
         giveKatDyeBegin("neon pink");
-        player.consumeItem(consumables.PINKDYE);
+        player.consumeItem(ConsumableLib.PINKDYE);
         outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>Back to the old classic.  Nothing wrong with hot pink.  I always used to wear it so people thought I was a girl, or at least a really girly herm.</i>”\n\n");
         giveKatDyeEnd();
     }
 
     private giveKatDyePurple(): void {
         giveKatDyeBegin("deep purple");
-        player.consumeItem(consumables.PURPDYE);
+        player.consumeItem(ConsumableLib.PURPDYE);
         outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>It’s not as bright as the colors I would have picked, but it looks does look good.  " + catGirl("I guess it’s the opposite of the black fur and bright pink hair I used to have.  Now I’ve got dark purple hair and light skin", "My fur is so dark the purple still stands out.  Not many girls could say that") + ".</i>”\n\n");
         giveKatDyeEnd();
     }
 
     private giveKatDyeRed(): void {
         giveKatDyeBegin("flaming red");
-        player.consumeItem(consumables.RED_DYE);
+        player.consumeItem(ConsumableLib.RED_DYE);
         outputText(".\n\nKath looks in the mirror and starts to pose.  “<i>I don’t know about you, but I’m getting turned on.  Everyone says redheads have more fun.  Maybe it’s attitude, maybe it’s something in this dye.  But who cares why?  I just plan to prove them right.</i>”\n\n");
         giveKatDyeEnd();
     }
 
     private giveKatDyeWhite(): void {
         giveKatDyeBegin("snow white");
-        player.consumeItem(consumables.WHITEDY);
+        player.consumeItem(ConsumableLib.WHITEDY);
         outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>When I was a little kitty I was always jealous of felines with lighter colored fur.  " + catGirl("Now I’ve got snow white hair and only a little bit of black fur on my ears and tail.  They’re the ones who ought to be jealous now.  In this desert heat I win!", "I think it looks good on me but the contrast is something else.  It almost hurts my eyes looking at my shoulders and it’s going to be even worse in sunlight.  No one is going to walk into me now.") + "</i>”\n\n");
         giveKatDyeEnd();
     }
@@ -3445,7 +3445,7 @@ export class Katherine implements TimeAwareInterface {
         orgasm();
         dynStats("sen", -1);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // PC Penetrates Kath: Anal
@@ -3524,7 +3524,7 @@ export class Katherine implements TimeAwareInterface {
         dynStats("sen", -1);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_RECEIVE_ANAL);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public pcPenetratesKatDoubly(): void {
@@ -3681,7 +3681,7 @@ export class Katherine implements TimeAwareInterface {
         orgasm();
         dynStats("sen", -1);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private pcPenetratesKatDoublyHighCumCorrupt(): void {
@@ -3738,7 +3738,7 @@ export class Katherine implements TimeAwareInterface {
         orgasm();
         dynStats("sen", -1);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Suck 'n' Fuck (unavailable if knot > 4")
@@ -3820,7 +3820,7 @@ export class Katherine implements TimeAwareInterface {
         dynStats("sen", -1);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_RECEIVE_SUCK_N_FUCK);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Penetrated
@@ -3955,7 +3955,7 @@ export class Katherine implements TimeAwareInterface {
         player.slimeFeed();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_GIVE_VAGINAL);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Penetrated (Anal)
@@ -4041,7 +4041,7 @@ export class Katherine implements TimeAwareInterface {
         player.slimeFeed();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_GIVE_ANAL);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Penetrated (Double)
@@ -4113,7 +4113,7 @@ export class Katherine implements TimeAwareInterface {
         dynStats("sen", -2);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_GIVE_DOUBLE_PEN);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Sucked 'n' Fucked
@@ -4197,7 +4197,7 @@ export class Katherine implements TimeAwareInterface {
         dynStats("sen", -1);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_GIVE_SUCK_N_FUCK);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Oral
@@ -4408,7 +4408,7 @@ export class Katherine implements TimeAwareInterface {
         experience(KBIT_TRIED_RECEIVE_ORAL);
         player.slimeFeed();
         dynStats("lus", 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public giveKatOralPussyLicking(): void { // This version assumes Kath has no cock
@@ -4471,7 +4471,7 @@ export class Katherine implements TimeAwareInterface {
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         player.slimeFeed();
         dynStats("lus", 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Katherine performs Oral on PC:
@@ -4499,7 +4499,7 @@ export class Katherine implements TimeAwareInterface {
         outputText("Your pleasure finished, you release her, gasping for breath as she daintly wipes her face clean with her fingers.  “<i>Was it good for you?</i>” she asks, mischief in her eyes.  When you reply, she smirks.  “<i>Did you expect a pussy to be good at eating a pussy?</i>”\n\n");
 
         outputText("You simply groan at the absolutely terrible pun and get back up, redressing yourself and heading back into the streets after a quick peck to thank her for the time.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         player.orgasm();
     }
@@ -4540,7 +4540,7 @@ export class Katherine implements TimeAwareInterface {
         // lust -100 regardless of sex, return to wherever
         player.orgasm();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Double Helix
@@ -4676,7 +4676,7 @@ export class Katherine implements TimeAwareInterface {
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_DOUBLE_HELIX);
         dynStats("lib", -1, "sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Suckle
@@ -4841,7 +4841,7 @@ export class Katherine implements TimeAwareInterface {
         else { // Alleyway, on duty
             outputText("When she sees one of the other members of her patrol at the end of the alley she hops to her feet, grabs her stuff and gives you a quick peck on the cheek.  As she leaves she says, “<i>Gotta run - but thanks again.  Stop by at the bar, my place, somewhere, just please see me again soon.</i>”\n\n");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // PC must lactate to have this option
@@ -4898,7 +4898,7 @@ export class Katherine implements TimeAwareInterface {
         dynStats("sen", -2, "lus", -40);
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         player.milked();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // With Quiet Browser and Adjatha’s permission I have been working on finishing Katherine’s Employment Expansion so that it can be coded into CoC. This document covers a part of that. It has been mentioned before that meeting Katherine is quite complex. Many have suggested having an alternate recruitment route. Since I’m writing even more content for Kath I decided to tackle the recruitment route too.
@@ -5035,7 +5035,7 @@ export class Katherine implements TimeAwareInterface {
         outputText("\n\nYou stride out of the alley, hoping that you’ll meet Katherine again.");
         // [Next]
         // Proceed to normal Tel’Adre menu
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Leave:
@@ -5280,7 +5280,7 @@ export class Katherine implements TimeAwareInterface {
         dynStats("lus", 33);
         if (flags[kFLAGS.KATHERINE_UNLOCKED] == - 1)
             doNext(firstTimeWithKatherinePartTwoUltraChampionshipEditionHyperTurbo);
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // First Time with Katherine (Part 2):
@@ -5314,7 +5314,7 @@ export class Katherine implements TimeAwareInterface {
             flags[kFLAGS.KATHERINE_BALL_SIZE] = 1; */
 
         outputText("\n\n(<b>Katherine can now be encountered behind Oswald's!</b>)");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public bathTime(): void {
@@ -5382,7 +5382,7 @@ export class Katherine implements TimeAwareInterface {
         orgasm();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_BATH);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bathTimeCentaurPenetrated(): void {
@@ -5449,7 +5449,7 @@ export class Katherine implements TimeAwareInterface {
         fatigue(15); // Some extra fatigue for dragging your girlfriend's ass halfway home
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_BATH);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bathTimeFuckKath(): void {
@@ -5532,7 +5532,7 @@ export class Katherine implements TimeAwareInterface {
         orgasm();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_BATH);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bathTimeFrustrated(): void { // You took away her cock. This is your fault
@@ -5544,7 +5544,7 @@ export class Katherine implements TimeAwareInterface {
         outputText("By the time you drag yourself and Kath out of the frigid water and towel yourselves off any thoughts of lovemaking are pushed aside in favor of warmth.  You wrap your arms around Kath and the two of you shiver until you can sense your fingers and toes once more.\n\n");
         outputText("The sun has moved a decent distance across the sky and you decide that despite the unsatisfying expedition there's nothing for it but to return Kath to Tel'Adre and then head back to camp.\n\n");
         dynStats("lus", 20 + player.lib / 20);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bathTimePenetrated(): void {
@@ -5624,7 +5624,7 @@ export class Katherine implements TimeAwareInterface {
             orgasm();
             flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
             experience(KBIT_TRIED_BATH);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else { // Female or Herm
             outputText("\n\nIn response you roll your hips so that Kath’s " + cockMultiple("", "uppermost ") + " cock sinks into your folds.  She purrs and tries to drive her shaft deeper but you hold her still and smile at her.  You fully intend to take the reigns on this little outing and Kath is going to have to fall in line.\n\n");
@@ -5684,7 +5684,7 @@ export class Katherine implements TimeAwareInterface {
         orgasm();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_BATH);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bathTimePenetratedDenial(): void {
@@ -5719,7 +5719,7 @@ export class Katherine implements TimeAwareInterface {
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         experience(KBIT_TRIED_BATH);
         addSubmissive(KBIT_SUB_ORGASM_DENIAL);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bedroomBondage(): void {
@@ -5900,7 +5900,7 @@ export class Katherine implements TimeAwareInterface {
         orgasm();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
         addSubmissive(KBIT_SUB_BED_BOND);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private drunkFuck(): void {
@@ -6017,7 +6017,7 @@ export class Katherine implements TimeAwareInterface {
         player.orgasm();
         orgasm();
         flags[kFLAGS.KATHERINE_TIMES_SEXED]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Leave 'dese

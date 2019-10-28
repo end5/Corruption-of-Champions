@@ -47,7 +47,7 @@ export class Raphael implements TimeAwareInterface {
                             return true;
                         }
                         // Dress followup - Call picnic date prologue!
-                        if (player.armor == armors.R_BDYST && (flags[kFLAGS.RAPHAEL_DRESS_TIMER] > 1 && flags[kFLAGS.RAPHAEL_DRESS_TIMER] <= 4)) {
+                        if (player.armor == ArmorLib.R_BDYST && (flags[kFLAGS.RAPHAEL_DRESS_TIMER] > 1 && flags[kFLAGS.RAPHAEL_DRESS_TIMER] <= 4)) {
                             outputText("<b>\nSomething unusual happens that morning...</b>\n");
                             doNext(RaphaelEncounterIIDressFollowup);
                             return true;
@@ -63,7 +63,7 @@ export class Raphael implements TimeAwareInterface {
                     }
                     // PC get ready for the 2nd encounter and hasn't been
                     // shot down yet?
-                    if (player.armor == armors.R_BDYST && flags[kFLAGS.RAPHAEL_DISGUSTED_BY_PC_APPEARANCE] == 0) {
+                    if (player.armor == ArmorLib.R_BDYST && flags[kFLAGS.RAPHAEL_DISGUSTED_BY_PC_APPEARANCE] == 0) {
                         outputText("<b>\nSomething unusual happens that morning...</b>\n");
                         doNext(RaphaelEncounterIIDressFollowup);
                         return true;
@@ -260,7 +260,7 @@ export class Raphael implements TimeAwareInterface {
         // {Third encounter unlocked}
         // Set 'time to wear dress' countdown.
         flags[kFLAGS.RAPHAEL_DRESS_TIMER] = 7;
-        inventory.takeItem(armors.R_BDYST, playerMenu);
+        Inventory.takeItem(ArmorLib.R_BDYST, playerMenu);
     }
 
     /*DRESS HERE
@@ -811,7 +811,7 @@ export class Raphael implements TimeAwareInterface {
         if (flags[kFLAGS.RAPHAEL_RAPIER_TRANING] == 4) {
             outputText("The only thing left behind is his rapier, sticking out of the moss.  He's bound it with his red sash around the length like a ribbon, as though he has now gifted it to you.  Perhaps it is his way of congratulating you.\n\n", false);
             // [Weapon: Rapier. Speed, instead of strength, influences the damage rating. Never as strong as the heavier weapons or sword, but works great with speed & evasion, encouraged by the rapier.])
-            inventory.takeItem(weapons.RRAPIER, playerMenu);
+            Inventory.takeItem(WeaponLib.RRAPIER, playerMenu);
         }
         // ({When player has reached the INT Conversation apex}
         if (flags[kFLAGS.RAPHAEL_INTELLIGENCE_TRAINING] == 4) {
@@ -851,7 +851,7 @@ export class Raphael implements TimeAwareInterface {
         if (flags[kFLAGS.RAPHAEL_RAPIER_TRANING] == 4) {
             outputText("The only thing left behind is his rapier, sticking out of the moss. He's bound it with his red sash around the length like a ribbon, like he has now gifted it to you. Perhaps it is his way of congratulating you.\n\n", false);
             // [Weapon: Rapier. Speed, instead of strength, influences the damage rating. Never as strong as the heavier weapons or sword, but works great with speed & evasion, encouraged by the rapier.])
-            inventory.takeItem(weapons.RRAPIER, playerMenu);
+            Inventory.takeItem(WeaponLib.RRAPIER, playerMenu);
 
         }
         // ({When player has reached the INT Conversation apex}
@@ -1056,7 +1056,7 @@ export class Raphael implements TimeAwareInterface {
         if (flags[kFLAGS.RAPHAEL_RAPIER_TRANING] == 4) {
             outputText("The only thing left behind is his rapier, sticking out of the moss.  He's bound it with his red sash around the length like a ribbon, as though he has now gifted it to you.  Perhaps it is his way of congratulating you.\n\n", false);
             // [Weapon: Rapier. Speed, instead of strength, influences the damage rating. Never as strong as the heavier weapons or sword, but works great with speed & evasion, encouraged by the rapier.])
-            inventory.takeItem(weapons.RRAPIER, playerMenu);
+            Inventory.takeItem(WeaponLib.RRAPIER, playerMenu);
         }
         // ({When player has reached the INT Conversation apex}
         if (flags[kFLAGS.RAPHAEL_INTELLIGENCE_TRAINING] == 4) {
@@ -1354,7 +1354,7 @@ export class Raphael implements TimeAwareInterface {
         clearOutput();
         outputText("You politely inform Raphael that you have to go, and though he seems crestfallen, he demurs, \"<i>Very well then, ma chère.  I shall await you in the hours of late evening, in case you change your mind.</i>\"");
         outputText("\n\nWell, that went well.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // RaphSex
@@ -1395,7 +1395,7 @@ export class Raphael implements TimeAwareInterface {
         outputText("\n\n\"<i>Do you think you can remember which rope I pulled?</i>\" he asks you.  You think you can and Raphael nods.  \"<i>Good.  I wouldn't recommend pulling any other when you want to visit me in the meantime.</i>\" he winks.  \"<i>The russet rogue, he never leaves a lady wanting.  Visit me whenever you see this room lit at dusk, when it's still light enough for you to make your way back to camp afterwards and already dark enough for me to have woken up and prepare to leave for work.</i>\"  He turns his head and upper body around enough for him to look you in the eyes.  \"<i>I would be looking forward to it if you could make it.  Who knows?  Maybe this is your chance to steal into my room for a change and take me by surprise instead, no?</i>\"");
 
         outputText("With a wink, Raphael disappears as he lets himself drop from the window.  You walk after him, to see where he went.  It's quite the way down, but he appears to have vanished.  With your promise in hand, you decide you'd better do the same and head back to the portal by way of a nearby extendable ladder that pops right back up the building the moment you remove your weight.  You take care to memorize what room you came from and confirm which rope it was, cleverly hidden alongside a drainpipe.  You may not have gotten much closer to uncovering the secrets of the orphanage, but at least this won't be the last you see of him.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Cunnilingus
@@ -1417,7 +1417,7 @@ export class Raphael implements TimeAwareInterface {
         outputText(".  Raphael backs off a bit afterwards, giving you a few more laps of admiration around the throbbing fissure and cleaning you of any spillage. He ends with a tiny kiss, just inside your inner thigh.");
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Second Raphael variable sex scene: Girl on top:
@@ -1439,7 +1439,7 @@ export class Raphael implements TimeAwareInterface {
         outputText("\n\nLooking him in the eyes again, you slaver on top of the fox.  Raphael simply lays back, lazily fondles your breasts and ass and looks at you to put in the effort around his cock.  Only after minutes of this, almost driving yourself towards the brink, does Raphael suddenly sit up sharply - an anguished snarl on his face - to hold you in a tight embrace and groan conceitedly.  You can feel his cock jerk up and grow an inch in size, before his passion escapes into your womanhood.  Allowing yourself as well, you follow him with a lazy orgasm and join him in his growl, while he squeezes you on your waist.");
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Available side by side to having sex: Dialogue scenes.
     private talkWithRedFoxLooksOutHesASpy(): void {
@@ -1461,7 +1461,7 @@ export class Raphael implements TimeAwareInterface {
         outputText("\n\nRaphael smirks and turns towards you, leans on one paw and gazes into your eyes.  \"<i>I just can't get enough of tweaking knobs, hitting a lock's sweet spot, or getting my fingers in places where they don't belong, amidst all that splendor.</i>\"");
         menu();
         raphaelOrphanageSexMenu();
-        addButton(4, "Leave", camp.returnToCampUseOneHour);
+        addButton(4, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private raphaelOrphanageSexMenu(): void {

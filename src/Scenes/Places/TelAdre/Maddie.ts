@@ -35,16 +35,16 @@ export class Maddie {
             if (player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) outputText("You lick your lips when you realize you're meeting the source of the 'special' éclairs.", false);
             else outputText("You blush when you realize what he must be using for cream filling.", false);
             // [Give Them] [Leave]
-            if (player.hasItem(consumables.BEEHONY) && player.hasItem(consumables.L_DRAFT))
+            if (player.hasItem(ConsumableLib.BEEHONY) && player.hasItem(ConsumableLib.L_DRAFT))
                 simpleChoices("Give Them", handOverIngredientsItBeBakingTimeYo, "", null, "", null, "", null, "Leave", nopeAintGotNoneODemSpeculIngredimathings);
-            else simpleChoices("", null, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            else simpleChoices("", null, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00241] = 1;
         }
         // (Explained)
         else {
             outputText("You follow the burly chef through the door, winding through the familiar ovens.  By the time you reach his work area, you're both covered in a fine sheen of sweat and you find yourself responding to the minotaur musk unconsciously.  The strange chef turns to ask, \"<i>You have special ingredients now, yes?</i>\"", false);
             // [Yes] [Lie – No/Not Yet]
-            if (player.hasItem(consumables.BEEHONY) && player.hasItem(consumables.L_DRAFT))
+            if (player.hasItem(ConsumableLib.BEEHONY) && player.hasItem(ConsumableLib.L_DRAFT))
                 simpleChoices("Yes", handOverIngredientsItBeBakingTimeYo, "Lie - No", nopeAintGotNoneODemSpeculIngredimathings, "", null, "", null, "", null);
             else simpleChoices("No", nopeAintGotNoneODemSpeculIngredimathings, "", null, "", null, "", null, "", null);
         }
@@ -64,8 +64,8 @@ export class Maddie {
     // [Yes – baking]
     public handOverIngredientsItBeBakingTimeYo(): void {
         outputText("", true);
-        player.consumeItem(consumables.BEEHONY);
-        player.consumeItem(consumables.L_DRAFT);
+        player.consumeItem(ConsumableLib.BEEHONY);
+        player.consumeItem(ConsumableLib.L_DRAFT);
         outputText("You hand the lust draft and bottled honey to the minotaur, doing your best to ignore his potent, lust-inducing pheromones as you watch him work.  He grabs the batch of dough he had been kneading and pours in the lust draft, snorting aggressively once the bubbling drug's smell reaches his bovine nostrils.  Next, the bull-like chef reaches over to grab a bottle marked 'P.S.M.', uncorking and pouring it in one practiced motion.   The white fluid froths dangerously on contact with the pink lust draft, and a second later the honey is in there too.  Finally, he flips up his loincloth and reaches for the onahole.\n\n", false);
 
         outputText("The sex-toy drips with lubricant and twists in the minotaur's hands, indicating magical enhancement or goblin manufacture.  He slides in, sighing as his four, basketball-sized testes pull close to his body, twitching.  Two quick pumps later, he's howling, hips twitching as spurts of white leak from the onahole into the bowl.  With remarkable restraint, he stops himself after adding a cup of spunk, even though his balls are still huge and quivering.", false);
@@ -87,7 +87,7 @@ export class Maddie {
         outputText("You get out before he can find you again.  Whatever he's making is nothing you ever want to taste.", false);
         // (No more mino chef)
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] = -2;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Wait/Next]
     private waitForSlutCake(): void {
@@ -120,7 +120,7 @@ export class Maddie {
         outputText("", true);
         outputText("You turn tail to run, evacuating the room before that culinary catastrophe can have her way with you.  A high-pitched whine chases you away as the cupcake-girl cries, \"<i>Nooooo... come back!  I'm making so much filling for you!</i>\"  Her words lend you even greater speed, and you vacate the city in record time.\n\n", false);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] = -1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Followup to run away]
     public runAwayMaddieFollowup(): void {
@@ -227,7 +227,7 @@ export class Maddie {
             outputText(modTone(player, 0, 10), false);
         }
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00242] = 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Next visit to the bakery...]

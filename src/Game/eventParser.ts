@@ -5,7 +5,7 @@
 
 export function playerMenu(): void {
     if (!game.inCombat) spriteSelect(-1);
-    mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", charCreation.newGameGo);
+    mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", CharCreation.newGameGo);
     mainView.nameBox.visible = false;
     if (gameState == 1 || gameState == 2) {
         combatMenu();
@@ -42,7 +42,7 @@ public function eventParser(eventNo:Function):void {
 		//Clear pic if not in combat
 		//if(!inCombat() && eventNo != cleanupAfterCombat) clearImages();
 		//Reset newgame buttons till back at camp
-		mainView.setMenuButton( MainView.MENU_NEW_MAIN, "New Game", charCreation.newGameGo );
+		mainView.setMenuButton( MainView.MENU_NEW_MAIN, "New Game", CharCreation.newGameGo );
 		if (eventNo != 1) {
 			hideMenus();
 		}
@@ -67,10 +67,10 @@ if (eventNo == 9999) // Game over event; overriding whatever the fuck has been d
 
 /*
 		if(eventNo < 1000) doSystem(eventNo);
-		if(eventNo >=1000 && eventNo < 2000) errorPrint(eventNo); //No events should be in this range anymore. Previously called inventory.doItems(eventNo);
+		if(eventNo >=1000 && eventNo < 2000) errorPrint(eventNo); //No events should be in this range anymore. Previously called Inventory.doItems(eventNo);
 		if(eventNo >=2000 && eventNo < 5000) errorPrint(eventNo); //No events should be in this range anymore. Previously called doEvent(eventNo);
 		if(eventNo >=5000 && eventNo < 7000) errorPrint(eventNo); //No events should be in this range anymore. Previously called doCombat(eventNo);
-		if(eventNo >= 10000 && eventNo < 10999) errorPrint(eventNo); //No events should be in this range anymore. Previously called charCreation.doCreation(eventNo);
+		if(eventNo >= 10000 && eventNo < 10999) errorPrint(eventNo); //No events should be in this range anymore. Previously called CharCreation.doCreation(eventNo);
 		if(eventNo >= 11000) errorPrint(eventNo); //No events should be in this range anymore. Previously called doDungeon(eventNo);
 	}
 
@@ -83,14 +83,14 @@ if (eventNo == 9999) // Game over event; overriding whatever the fuck has been d
 
 export function gameOver(clear: boolean = false): void { // Leaves text on screen unless clear is set to true
     if (testingBlockExiting) {
-        doNext(camp.returnToCampUseOneHour); // Prevent ChaosMonkah instances from getting stuck
+        doNext(Camp.returnToCampUseOneHour); // Prevent ChaosMonkah instances from getting stuck
     }
     else {
         if (clear) clearOutput();
         outputText("\n\n<b>GAME OVER</b>");
         menu();
         addButton(0, "Game Over", gameOverMenuOverride);
-        addButton(3, "NewGamePlus", charCreation.newGamePlus);
+        addButton(3, "NewGamePlus", CharCreation.newGamePlus);
         if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 || debug) addButton(4, "Debug Cheat", playerMenu);
         gameOverMenuOverride();
 
@@ -145,23 +145,23 @@ public function doSystem(eventNo:Number):void {
 
 /* Now called directly
 		case 2:
-			exploration.doExplore();
+			Exploration.doExplore();
 			return;
 
 		case 3:
-			desert.exploreDesert();
+			Desert.exploreDesert();
 			return;
 
 		case 4:
-			forest.exploreForest();
+			Forest.exploreForest();
 			return;
 
 		case 5:
-			lake.exploreLake();
+			Lake.exploreLake();
 			return;
 
 		case 6:
-			mountain.exploreMountain();
+			Mountain.exploreMountain();
 			return;
 
 		case 10:
@@ -175,12 +175,12 @@ public function doSystem(eventNo:Number):void {
 
 		case 12:
 			//Explore new zones
-			exploration.tryDiscover();
+			Exploration.tryDiscover();
 			return;
 */
 
 // 		case 13:
-// 			camp.returnToCampUseOneHour();
+// 			Camp.returnToCampUseOneHour();
 /*			//Pass an hour
 			outputText("An hour passes...\n", true);
 			timeQ = 1;
@@ -188,21 +188,21 @@ public function doSystem(eventNo:Number):void {
 // 			return;
 
 // 		case 14:
-// 			camp.returnToCampUseTwoHours();
+// 			Camp.returnToCampUseTwoHours();
 /*			outputText("Two hours pass...\n", true);
 			timeQ = 2;
 			goNext(2, false); */
 // 			return;
 
 // 		case 15:
-// 			camp.returnToCampUseFourHours();
+// 			Camp.returnToCampUseFourHours();
 /*			outputText("Four hours pass...\n", true);
 			timeQ = 4;
 			goNext(4, false); */
 // 			return;
 
 // 		case 16:
-// 			camp.returnToCampUseEightHours();
+// 			Camp.returnToCampUseEightHours();
 /*			outputText("Eight hours pass...\n", true);
 			timeQ = 8;
 			goNext(8, false); */
@@ -250,7 +250,7 @@ public function doSystem(eventNo:Number):void {
 		case 41:
 			//Use sleep command
 			//in camp.as
-			camp.doSleep();
+			Camp.doSleep();
 			return;
 
 		case 42:
@@ -325,7 +325,7 @@ public function doSystem(eventNo:Number):void {
 		case 74:
 			//Camp followers screen
 			doNext(1);
-			camp.campFollowers();
+			Camp.campFollowers();
 			return;
 
 		case 79:
@@ -333,7 +333,7 @@ public function doSystem(eventNo:Number):void {
 			return;
 
 		case 80:
-			forest.exploreDeepwoods();
+			Forest.exploreDeepwoods();
 			return;
 
 		case 82:
@@ -341,19 +341,19 @@ public function doSystem(eventNo:Number):void {
 			return;
 
 		case 94:
-			exploration.debugOptions();
+			Exploration.debugOptions();
 			return;
 
 		case 95:
-			highMountains.exploreHighMountain();
+			HighMountains.exploreHighMountain();
 			return;
 
 		case 97:
-			plains.explorePlains();
+			Plains.explorePlains();
 			return;
 
 		case 111:
-			swamp.exploreSwamp();
+			Swamp.exploreSwamp();
 			return;
 */
 /* Both moved to engineCore alongside the other perk selection code
@@ -430,7 +430,7 @@ export function errorPrint(details: any = null): void {
         rawOutputText(" (including the above stack trace copy&pasted into the details),");
     rawOutputText(" to make tracking the issue down easier. Thanks!");
 
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Argument is time passed.  Pass to event parser if nothing happens.
@@ -492,7 +492,7 @@ export function goNext(time: number, needNext: boolean): boolean {
             }
             else if (temp > rand(100) && player.effects.findByType(StatusAffects.DefenseCanopy) < 0) {
                 if (player.gender > 0 && (player.effects.findByType(StatusAffects.JojoNightWatch) < 0 || player.effects.findByType(StatusAffects.PureCampJojo) < 0) && (flags[kFLAGS.HEL_GUARDING] == 0 || !HelFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !KihaFollower.followerKiha())) {
-                    impScene.impGangabangaEXPLOSIONS();
+                    ImpScene.impGangabangaEXPLOSIONS();
                     doNext(playerMenu);
                     return true;
                 }
@@ -640,20 +640,20 @@ export function goNext(time: number, needNext: boolean): boolean {
 
             const itypes: any[] = [
                 [
-                    consumables.BROWNEG,
-                    consumables.PURPLEG,
-                    consumables.BLUEEGG,
-                    consumables.PINKEGG,
-                    consumables.WHITEEG,
-                    consumables.BLACKEG
+                    ConsumableLib.BROWNEG,
+                    ConsumableLib.PURPLEG,
+                    ConsumableLib.BLUEEGG,
+                    ConsumableLib.PINKEGG,
+                    ConsumableLib.WHITEEG,
+                    ConsumableLib.BLACKEG
                 ],
                 [
-                    consumables.L_BRNEG,
-                    consumables.L_PRPEG,
-                    consumables.L_BLUEG,
-                    consumables.L_PNKEG,
-                    consumables.L_WHTEG,
-                    consumables.L_BLKEG
+                    ConsumableLib.L_BRNEG,
+                    ConsumableLib.L_PRPEG,
+                    ConsumableLib.L_BLUEG,
+                    ConsumableLib.L_PNKEG,
+                    ConsumableLib.L_WHTEG,
+                    ConsumableLib.L_BLKEG
                 ]
             ];
 
@@ -671,13 +671,13 @@ export function goNext(time: number, needNext: boolean): boolean {
                 sEgg = itypes[size][col];
             }
             else {
-                sEgg = consumables.BROWNEG;
+                sEgg = ConsumableLib.BROWNEG;
             }
 
             player.effects.remove(StatusAffects.LootEgg);
             player.effects.remove(StatusAffects.Eggs);
             trace("TAKEY NAU");
-            inventory.takeItem(sEgg, playerMenu);
+            Inventory.takeItem(sEgg, playerMenu);
             return true;
         }
         // Benoit preggers update
@@ -696,30 +696,30 @@ export function goNext(time: number, needNext: boolean): boolean {
     }
 
     // Drop axe if too short!
-    if (player.tallness < 78 && player.weapon == weapons.L__AXE) {
+    if (player.tallness < 78 && player.weapon == WeaponLib.L__AXE) {
         outputText("<b>\nThis axe is too large for someone of your stature to use, though you can keep it in your inventory until you are big enough.</b>\n");
-        inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
+        Inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
         return true;
     }
-    if (player.weapon == weapons.L_HAMMR && player.tallness < 60) {
+    if (player.weapon == WeaponLib.L_HAMMR && player.tallness < 60) {
         outputText("<b>\nYou've become too short to use this hammer anymore.  You can still keep it in your inventory, but you'll need to be taller to effectively wield it.</b>\n");
-        inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
+        Inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
         return true;
     }
-    if (player.weapon == weapons.CLAYMOR && player.str < 40) {
+    if (player.weapon == WeaponLib.CLAYMOR && player.str < 40) {
         outputText("\n<b>You aren't strong enough to handle the weight of your weapon any longer, and you're forced to stop using it.</b>\n");
-        inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
+        Inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
         return true;
     }
-    if (player.weapon == weapons.WARHAMR && player.str < 80) {
+    if (player.weapon == WeaponLib.WARHAMR && player.str < 80) {
         outputText("\n<b>You aren't strong enough to handle the weight of your weapon any longer!</b>\n");
-        inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
+        Inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
         return true;
     }
     // Drop beautiful sword if corrupted!
     if (player.weaponPerk == "holySword" && player.cor >= 35) {
         outputText("<b>\nThe <u>" + player.weaponName + "</u> grows hot in your hand, until you are forced to drop it.  Whatever power inhabits this blade appears to be unhappy with you.  Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the hilt, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
-        inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
+        Inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
         return true;
     }
     // Unequip Lusty maiden armor
@@ -731,19 +731,19 @@ export function goNext(time: number, needNext: boolean): boolean {
             if (player.cocks.length > 0) outputText("maleness");
             else outputText("bulgy balls");
             outputText(" within the imprisoning leather, and it actually hurts to wear it.  <b>You'll have to find some other form of protection!</b>\n\n");
-            inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
+            Inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
             return true;
         }
         // Lost pussy
         else if (!player.vaginas.length > 0) {
             outputText("\nYou fidget uncomfortably as the crease in the gusset of your lewd bikini digs into your sensitive, featureless loins.  There's simply no way you can continue to wear this outfit in comfort - it was expressly designed to press in on the female mons, and without a vagina, <b>you simply can't wear this exotic armor.</b>\n\n");
-            inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
+            Inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
             return true;
         }
         // Tits gone or too small
         else if (player.breasts.biggestTitSize() < 4) {
             outputText("\nThe fine chain that makes up your lewd bikini-top is dangling slack against your flattened chest.  Every movement and step sends it jangling noisily, slapping up against your [nipples], uncomfortably cold after being separated from your " + skinFurScales(player) + " for so long.  <b>There's no two ways about it - you'll need to find something else to wear.</b>\n\n");
-            inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
+            Inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
             return true;
         }
     }

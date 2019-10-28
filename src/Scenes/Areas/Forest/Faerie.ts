@@ -32,7 +32,7 @@ export class Faerie {
                 player.orgasm();
             }
             else outputText("\n\nYou try in vain to jump and catch her, but she's too high above you and much too fast.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("The faerie slows the beating of her wings and hovers towards you. You dismiss your fearful notions, certain a small faerie is quite harmless to you.\n\n", false);
@@ -133,13 +133,13 @@ export class Faerie {
         }
         player.orgasm();
         dynStats("lib", -2, "cor", .5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private faerieShooAway(): void {
         spriteSelect(17);
         outputText("You shake your hands, shooing away the tiny faerie.  She's clearly been touched by the magics of this land and you want nothing to do with her. With a pouting look, she turns and buzzes away.", true);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private faerieDoNothing(): void {
@@ -157,7 +157,7 @@ export class Faerie {
             if (player.breasts.biggestLactation() > 1.5) outputText("\n\nA copious gout of your milk escapes her rosy folds.", false);
             player.orgasm();
             dynStats("lib", -2);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (player.clitLength >= 1.0 && player.clitLength <= 4.5 && player.vaginas.length > 0 && rand(2) == 0) {
@@ -167,13 +167,13 @@ export class Faerie {
             outputText("Time skips a beat and you eventually come down, gently relaxing your grip and disengaging the worn out faerie from your softening female parts. The faerie regains consciousness slowly and thanks you before flying off.", false);
             player.orgasm();
             dynStats("lib", -1);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (player.clitLength > 4.5) {
             outputText("The faerie flies close to your ear and speaks in a volume that would be a whisper from another human, \"You've got some sexy parts girl, but you're too big for me. I hope you find someone to get you off so I can watch.\" Then she flies in front of you, cutely kisses the bridge of your nose, and flies off.", false);
             dynStats("lus", 5);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("The faerie flies close to your nipple and sucks it gingerly.  You pant in pleasure as you feel it pucker tight in her mouth, tingling with her saliva.  She lets it pop free, swollen with arousal.  Her hand flicks it playfully, the sudden sensation fluttering through you as you close your eyes in pleasure.  You recover and find she has flown high into the trees, waving playfully as she escapes.\n\nYou frown and begin to dress yourself, flushing irritably as your nipples protrude further into your clothes than you remember.", false);
@@ -183,7 +183,7 @@ export class Faerie {
             player.nippleLength -= .25;
         }
         dynStats("sen", 1, "lus", 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         return;
     }
 
@@ -192,7 +192,7 @@ export class Faerie {
         spriteSelect(17);
         outputText("", true);
         outputText("You apologize and release her, letting her fly away on gossamer wings.  She thanks you, buzzing up to your lips and planting a chaste kiss on your mouth.  She zips away into the woods without a glance back...", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [YES] *make her pleasure you
     private faerieCaptureHJ(): void {
@@ -260,6 +260,6 @@ export class Faerie {
             dynStats("lib", -.5);
             if (player.effects.findByType(StatusAffects.Jizzpants) < 0) player.effects.create(StatusAffects.Jizzpants, 1, 0, 0, 0);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

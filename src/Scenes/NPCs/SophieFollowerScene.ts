@@ -53,7 +53,7 @@ export class SophieFollowerScene {
     // Yes (God dammit what the fuck did I just say)*
     private yesDebimboSophie(): void {
         clearOutput();
-        player.consumeItem(consumables.DEBIMBO);
+        player.consumeItem(ConsumableLib.DEBIMBO);
 
         outputText("You grab the air-headed harpy and pull her over to you, pressing her impressive chest against you as you ready your intellectual beverage.  \"<i>Oooh! Hey, babe, what'cha got there?</i>\" Sophie asks, staring wide-eyed at the tincture.  Telling her not to worry about it, you pop the cork and bring the vial's neck up to Sophie's mouth, her big, full lips parting eagerly.  \"<i>Hey, is it wine?  I could just <b>DIE</b> for some wine!  Then maybe, like, a good hard fucking afterwards!</i>\" she declares, jumping excitedly in your grasp - almost making you spill the drink.  You grasp her chin, steadying the harpy's head just long enough to upend the liquid into her mouth, making sure to drain every last drop into her before you tickle her throat, forcing her to swallow it all in one audible gulp.");
 
@@ -72,7 +72,7 @@ export class SophieFollowerScene {
             addButton(2, "WhyIDidIt", whyIDidItToDebimboSophie);
         }
         addButton(3, "Let Her Go", letDebimboSophieGo);
-        if (player.hasItem(consumables.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
+        if (player.hasItem(ConsumableLib.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
 
     }
 
@@ -86,7 +86,7 @@ export class SophieFollowerScene {
         outputText("\n\nWell then, crisis averted!");
         flags[kFLAGS.SOPHIE_DEBIMBOED] = 0;
         flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] = 0;
-        player.consumeItem(consumables.BIMBOLQ);
+        player.consumeItem(ConsumableLib.BIMBOLQ);
         if (game.inCombat)
             cleanupAfterCombat(); // (Display Sophie's normal options.You monster)
         else SophieBimbo.approachBimboSophieInCamp(false);
@@ -115,7 +115,7 @@ export class SophieFollowerScene {
         addButton(1, "Apologize", apologizeToDebimboSophie);
         addButton(2, "WhyIDidIt", whyIDidItToDebimboSophie);
         addButton(3, "Let Her Go", letDebimboSophieGo);
-        if (player.hasItem(consumables.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
+        if (player.hasItem(ConsumableLib.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
 
     }
     // Get the Shit Beaten Out of You by a God-damn Bimbo (You (weakling) Monster)
@@ -167,7 +167,7 @@ export class SophieFollowerScene {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] = 1;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Why I Did It (I'm a Monster, you see)*
@@ -189,7 +189,7 @@ export class SophieFollowerScene {
         outputText("\n\n(<b>Sophie has been moved to the \"Followers\" tab!</b>)");
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Apologize (Sorry I'm a Monster)*
@@ -214,7 +214,7 @@ export class SophieFollowerScene {
         outputText("\n\n(<b>Sophie has been moved to the \"Followers\" tab!</b>)");
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Catch Sophie Teaching Her Daughters Not To Talk Like Idiots*
@@ -263,7 +263,7 @@ export class SophieFollowerScene {
                 addButton(8, "NoSleepWith", sleepWithSophieToggle);
                 outputText("\n\nYou're currently sharing your bed with Sophie at night, but you could kick her out, if you wanted.");
             }
-            addButton(9, "Back", camp.campFollowers);
+            addButton(9, "Back", Camp.campFollowers);
             return;
         }
         else if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
@@ -290,7 +290,7 @@ export class SophieFollowerScene {
         if (flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 0) {
             addButton(7, "Daughter", SophieBimbo.daughterCheckup);
         }
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(9, "Back", camp.campFollowers);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(9, "Back", Camp.campFollowers);
         else addButton(9, "Back", FarmCorruption.rootScene);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(2, "Farm Work", sendToFarm);
@@ -316,7 +316,7 @@ export class SophieFollowerScene {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -357,12 +357,12 @@ export class SophieFollowerScene {
     public get eggTypes(): any[] {
         if (_eggTypes == null) {
             _eggTypes = [
-                consumables.L_BLKEG,
-                consumables.L_BLUEG,
-                consumables.L_BRNEG,
-                consumables.L_PNKEG,
-                consumables.L_PRPEG,
-                consumables.L_WHTEG,
+                ConsumableLib.L_BLKEG,
+                ConsumableLib.L_BLUEG,
+                ConsumableLib.L_BRNEG,
+                ConsumableLib.L_PNKEG,
+                ConsumableLib.L_PRPEG,
+                ConsumableLib.L_WHTEG,
             ];
         }
         return _eggTypes;
@@ -605,7 +605,7 @@ export class SophieFollowerScene {
         else outputText("It's always better when you have to wait for it, isn't it?");
         outputText("</i>\"");
         outputText("\n\nYou'd come up with a snarky reply, but you're just so fucking tired.  You sigh and try to get dressed, having some difficulty getting on your [feet] until Sophie lends a hand.  She kisses you on the cheek and mouths \"<i>thanks</i>\" before flouncing off, fluttering happily.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Blowjob*
@@ -695,7 +695,7 @@ export class SophieFollowerScene {
         player.orgasm();
         dynStats("sen", 1);
         dynStats("lus", 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Forceful Blowjob*
@@ -753,7 +753,7 @@ export class SophieFollowerScene {
         outputText("\n\nYou get dressed with a self-satisfied sigh.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // SixtyNine (* Temp until someone writes dis shit)
@@ -956,7 +956,7 @@ export class SophieFollowerScene {
         player.orgasm();
         if (SophieBimbo.sophieIsInSeason()) SophieBimbo.sophiePregChance();
         fatigue(15);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Regular Sophie Follower
@@ -1019,7 +1019,7 @@ export class SophieFollowerScene {
         outputText("\n\n\"<i>I know you're probably busy championing and all, so I'll try and stay out of your hair.  Just be sure to show Momma Sophie some sugar, okay?</i>\"");
 
         outputText("\n\nYou nod and welcome her to your camp");
-        if (camp.companionsCount() >= 3) outputText(", sure to introduce her to the other denizens along the way and smooth over any ruffled feathers before things escalate.  Sophie does a good job helping with that.  She seems to have a natural ability to defuse angry situations, something she attributes to raising her many daughters");
+        if (Camp.companionsCount() >= 3) outputText(", sure to introduce her to the other denizens along the way and smooth over any ruffled feathers before things escalate.  Sophie does a good job helping with that.  She seems to have a natural ability to defuse angry situations, something she attributes to raising her many daughters");
         outputText(".");
         outputText("\n\n(<b>Sophie is now available in the followers tab!</b>)");
         flags[kFLAGS.SOPHIE_RECRUITED_PURE] = 1;
@@ -1170,6 +1170,6 @@ export class SophieFollowerScene {
         // pass time 1 hour//
         // return PC to camp interface//
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

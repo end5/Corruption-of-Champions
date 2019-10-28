@@ -294,7 +294,7 @@ export class Roxanne implements TimeAwareInterface {
         // (-100 lust, -1 int)
         player.orgasm();
         dynStats("int", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Receive Oral – Vaginalingus]
     private roxanneCunnilingus(): void {
@@ -340,7 +340,7 @@ export class Roxanne implements TimeAwareInterface {
         // (-100 lust, -1 int)
         player.orgasm();
         dynStats("int", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Receive Oral – SkyrRimjoooooooob]
     private roxanneRimjob(): void {
@@ -393,7 +393,7 @@ export class Roxanne implements TimeAwareInterface {
         // (-100 lust, -1 int
         player.orgasm();
         dynStats("int", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [OH SHIT YOU SO DRUNK AND GETTING REAMED BY LIZARD CAWK]
@@ -475,7 +475,7 @@ export class Roxanne implements TimeAwareInterface {
         player.orgasm();
         dynStats("int", -1);
         applyHangover();
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // [Roxanne HAS A FUCKING TORPEDO DICK BUTTFUCK]
@@ -539,7 +539,7 @@ export class Roxanne implements TimeAwareInterface {
         player.orgasm();
         dynStats("int", -1);
         applyHangover();
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     private applyHangover(): void {
@@ -629,6 +629,6 @@ export class Roxanne implements TimeAwareInterface {
         player.orgasm();
         dynStats("int", -1);
         applyHangover();
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 }

@@ -62,7 +62,7 @@ export class MarblePurification {
         outputText("\n\nYou tell her that you appreciate how strong she’s being, and ask if there’s any way you can help her to get over this problem of hers.");
         outputText("\n\nMarble hesitantly looks up at you, brows furrowed in thought. \"<i>Well, it’s the corruption that makes my milk addictive in the first place, so we need to find a way to purify me.  The most corrupted part of me is my milk, so that’s where we should start,</i>\" she suggests, rubbing her chin in thought.");
         outputText("\n\nYou contemplate the possibilities, and make some suggestions on things that could reduce her corruption.");
-        if (player.hasItem(consumables.PURHONY)) outputText("  You then recall that bottle of honey the bee-girl gave you, and ask if maybe it might work?");
+        if (player.hasItem(ConsumableLib.PURHONY)) outputText("  You then recall that bottle of honey the bee-girl gave you, and ask if maybe it might work?");
         if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) outputText("  You remember how Jojo helped you become pure, and suggest maybe his meditations could assist Marble?");
 
         outputText("\n\nMarble shakes her head before continuing, \"<i>No, I think we should focus on something linked to my race.  Maybe we can use the LaBova stuff that my mother taught me to drink if I was ever turned into something else.  It’s probably corrupted in its raw form, but maybe there is some way it could be purified to counter the corrupt effects? I think you’d need an alchemist to purify it, though...</i>\" she trails off, musing at the possibility.");
@@ -73,7 +73,7 @@ export class MarblePurification {
         // While on her Purification Route, Marble’s Presents will always be LaBova
         // Once Marble is purified, the "get presents" option reverts to its default options.
         flags[kFLAGS.MARBLE_PURIFICATION_STAGE] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // PC Gives P.Labova
@@ -82,7 +82,7 @@ export class MarblePurification {
     // This option is only available if the PC’s corruption is under 50, and the purification quest is active.
     public giveMarblePureQuestLabova(): void {
         clearOutput();
-        player.consumeItem(consumables.P_LBOVA);
+        player.consumeItem(ConsumableLib.P_LBOVA);
         outputText("You tell Marble that you managed to get some LaBova alchemically purified, and you want her to drink some.");
         // First time
         if (flags[kFLAGS.TIMES_GIVEN_MARBLE_PURE_LABOVA] == 0) {
@@ -116,7 +116,7 @@ export class MarblePurification {
             outputText(" nipples begin spray milk everywhere - you have to take a step back to avoid being squirted yourself. Finally, Marble’s breasts stop their spraying, leaving the two of you standing in a milky puddle of mud. The cowgirl pulls her shirt back on over her body. \"<i>That stuff still tastes vile, but I guess it’s worth it. I just hope it finishes working soon.</i>\" she tells you. You assure her that you believe in her ability to get through this, and then head back to the main part of your camp.");
         }
         flags[kFLAGS.TIMES_GIVEN_MARBLE_PURE_LABOVA]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Display default Marble interaction options
@@ -159,7 +159,7 @@ export class MarblePurification {
         flags[kFLAGS.MARBLE_PURIFICATION_STAGE] = 3;
         flags[kFLAGS.MARBLE_RATHAZUL_COUNTER_1] = 24;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Rathazul’s Report
@@ -168,7 +168,7 @@ export class MarblePurification {
         clearOutput();
         flags[kFLAGS.MARBLE_RATHAZUL_COUNTER_1] = 0;
         outputText("When you wake and join Marble ");
-        if (camp.companionsCount() > 2) outputText("and your other followers ");
+        if (Camp.companionsCount() > 2) outputText("and your other followers ");
         outputText("for breakfast this morning, you find a bleary-eyed Rathazul waiting at the campfire. Marble clucks her tongue and gives him a mug of something strong, which he accepts gratefully, noisily slurping down a mouthful. He takes a seat, staring into his mug, and then sighs softly.");
         outputText("\n\n\"<i>I’m afraid I have some bad news... while that one sample you gave me was very useful and I do have a prototype formula finished, I’m not entirely sure it is safe for Marble to drink.  I’d like some milk from another lacta bovine, preferably one who hasn’t been purified the way you have, so I can complete my work.</i>\" he tells Marble, who looks thoughtful.");
         outputText("\n\n\"<i>Hmm... I have two sisters; would milk from one of them work?</i>\" she asks.");
@@ -189,7 +189,7 @@ export class MarblePurification {
         outputText("\n\nWith that said, the three of you finish your meals.  Rathazul shambles off to get some much-needed sleep.  Marble prepares for her morning training, and you prepare yourself for another day in Mareth.");
         // Marble now has the "Go" option in her buttons when interacting with her through the "followers" menu
         // The "Go" button links to the same "Go" scene as choosing "Go" when Rathazul first makes his report
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [=Go=]
     public murbleShouldGoRunAlongAndGetHerCuntySisterSoTheyCanBeCuntsTogether(): void {
@@ -201,7 +201,7 @@ export class MarblePurification {
         flags[kFLAGS.MARBLE_PURIFICATION_STAGE] = 4;
         flags[kFLAGS.MARBLE_RATHAZUL_COUNTER_2] = 240;
         flags[kFLAGS.SLEEP_WITH] = "";
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Clara Appears in Camp
@@ -251,7 +251,7 @@ export class MarblePurification {
         // Set a temp integer variable that will track the number of followers agreeing to come for tea.
         // if (any of the following followers are in camp)
         let teaDrinkers: number = 0;
-        if (camp.companionsCount() >= 3) {
+        if (Camp.companionsCount() >= 3) {
             outputText("\n\nMarble suggests that you should gather up the others while Clara is still making it, it shouldn’t take too long.  You nod, and head off, leaving Clara and Marble at the campfire.");
             // Go to each of the followers you have in turn, and ask them if they want some morning tea.  All followers capable of fighting must agree to the tea, non-fighters can agree or refuse.  Remember that this scene cannot come up if the PC is very corrupted, and scenes for the very corrupt followers don’t necessarily need to be written.
             // (Amily is in camp)
@@ -427,7 +427,7 @@ export class MarblePurification {
         clearOutput();
         outputText("You can’t shake the feeling that there is something wrong with this tea, and just consider it for a few moments.  \"<i>Uh, aren’t you going to drink your tea, charmer?  It is really goood,</i>\" your server says slowly, looking over at you with a nervous expression on her face.  You start to say something, but are interrupted when you hear Marble suddenly gasp and cry out, \"<i>Clara, what the hell did you put in this stuff?</i>\" before gasping for breath a few more times and falling over.");
 
-        if (camp.companionsCount()) outputText("\n\nYou rush over to your fallen companion");
+        if (Camp.companionsCount()) outputText("\n\nYou rush over to your fallen companion");
         else outputText("\n\nYou rush over to one of your fallen companions");
         outputText(" to see what has happened, only to find that she has passed out.  Noticing the tea cup again, you turn around to face the person who prepared it.  Clara stands behind you with a disturbing smile on her face.  You demand to know what was in the tea, like Marble did before.");
 
@@ -481,7 +481,7 @@ export class MarblePurification {
 
         // Other fighters in camp
         // if there are any other fighting companions in camp, they overwhelm Clara with the PC resulting in an auto-win.
-        if (camp.companionsCount() >= 3) {
+        if (Camp.companionsCount() >= 3) {
             outputText("\n\nClara starts to advance on you with her mace out, and eyes in rage, but hesitates when she realizes that other guests to the tea party have stood up as well, and readied their weapons.");
             // if (Amily is in camp)
             if (AmilyScene.amilyFollower()) {
@@ -568,7 +568,7 @@ export class MarblePurification {
         outputText("This woman is nothing like her sister, she loves the power she has over you, and loves to show you just how much she has.");
 
         outputText("\n\nClara leans down and puts her face right in front of yours.  \"<i>I think that if you want to drink some of my milk, you’re going to have to do some things for me.</i>  Her voice is soft, but the meaning couldn’t be harder.  \"<i>From now on, you aren’t allowed to go anywhere without my say so, and I’m the only one you’re allowed to love.  Either emotionally or physically.  Understand?</i>\"  You shudder, and think of ");
-        if (camp.loversCount() == 1) outputText("Marble");
+        if (Camp.loversCount() == 1) outputText("Marble");
         else outputText("the others");
         outputText(".  Then your eyes drop down to Clara’s chest, and you think of your need.");
 
@@ -776,7 +776,7 @@ export class MarblePurification {
             // PC gets to rape Clara with Marble, if they wish to.
             else {
                 // if (PC either stopped Clara from drugging everyone, or Marble was the only one drugged)
-                if (camp.companionsCount() <= 2) {
+                if (Camp.companionsCount() <= 2) {
                     outputText("With Clara incapacitated for now, you go to check on Marble and make sure she is all right.  Thankfully she seems to be fine.  You don't plan on underestimating a bovine's fortitude again in the near future.  Since her sister won't be going anywhere soon, you wait for a while to let her recover.  This doesn't take too long, and soon you and your lover are standing over the defeated form of the young bovine.");
                 }
                 else {
@@ -804,7 +804,7 @@ export class MarblePurification {
         outputText("\n\nYour cow-girl companion continues to shake in anger, but also fear and frustration.  \"<i>I, I, YES!  I want to addict " + player.short + " to my milk!  I want to so much!  I'm so afraid that " + mf(player, "he", "she") + " won't stay by my side, but I also feel so bottled up.  "); // no new paragraph
 
         // if (PC has another lover in camp)
-        if (camp.loversCount() > 1) {
+        if (Camp.loversCount() > 1) {
             outputText("I'm not even " + player.short + "'s only mate.  " + mf(player, "He", "She") + " can satisfy their needs, but can't satisfy mine?  "); // no new paragraph
         }
         outputText("The frustration of not being able to nurse, someone, anyone, but especially my mate is tearing me apart!</i>\"  Marble stops screaming and her head drops.  All that's coming out of her now is heavy breathing.");
@@ -1241,7 +1241,7 @@ export class MarblePurification {
         // Marble's breast size is set to 0 (integer, 0=DD cups, 1=G cups, 2=HH, 3=J)
         // advance time of day by 4 hours
         // end event
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // Purified Succubus milk
@@ -1276,7 +1276,7 @@ export class MarblePurification {
                 outputText("\n\nYour mate tentatively grips her massive mammaries.  \"<i>Wow, sweetie, isn't this a bit much?  I don't think I'll grow my girls any more than this.</i>\"  She stretches her shoulders a bit.  \"<i>Ow, I hope this pain in my shoulders doesn't last...</i>\"");
             }
             // remove a bottle of pure succubus milk from the PC's inventory
-            player.consumeItem(consumables.P_S_MLK);
+            player.consumeItem(ConsumableLib.P_S_MLK);
             // increase Marble's lust by 5
             flags[kFLAGS.MARBLE_LUST] += 5;
             if (flags[kFLAGS.MARBLE_LUST] > 100) flags[kFLAGS.MARBLE_LUST] = 100;
@@ -1318,7 +1318,7 @@ export class MarblePurification {
                 outputText("\n\nYou mate gives her shoulders a roll, then stretches her back.  \"<i>Oh, that's such a relief!</i>\" she says to you with a huge smile, \"<i>Thank you so much sweetie, this is about the right size for me.</i>\"");
             }
             // remove a jar of reducto from the PC's inventory
-            player.consumeItem(consumables.REDUCTO);
+            player.consumeItem(ConsumableLib.REDUCTO);
             // decrease Marble's lust by 5
             flags[kFLAGS.MARBLE_LUST] -= 5;
             if (flags[kFLAGS.MARBLE_LUST] < 0) flags[kFLAGS.MARBLE_LUST] = 0;
@@ -1339,7 +1339,7 @@ export class MarblePurification {
         // increase Marble's lust by 20
         flags[kFLAGS.MARBLE_LUST] += 20;
         if (flags[kFLAGS.MARBLE_LUST] < 0) flags[kFLAGS.MARBLE_LUST] = 0;
-        player.consumeItem(consumables.LACTAID);
+        player.consumeItem(ConsumableLib.LACTAID);
         doNext(MarbleScene.giveItem);
     }
 
@@ -1380,7 +1380,7 @@ export class MarblePurification {
             flags[kFLAGS.MARBLE_LUST] += 10;
             flags[kFLAGS.MARBLE_TIME_SINCE_NURSED_IN_HOURS] = 0;
             if (flags[kFLAGS.MARBLE_LUST] > 0) flags[kFLAGS.MARBLE_LUST] = 100;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1415,7 +1415,7 @@ export class MarblePurification {
         // Marble and her kids (if any) are removed from the farm and camp, she will only return once the PC's corruption is below 40, and Vapula, Holi, Corrupted Jojo, and Corrupted Amily are not in camp.
         flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] = 1;
         player.effects.remove(StatusAffects.CampMarble);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Marble comes back after your corruption drops below 40
     public pureMarbleDecidesToBeLessOfABitch(): void {
@@ -1434,7 +1434,7 @@ export class MarblePurification {
         flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] = 0;
         flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] = 0;
         flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Clara prison camp descriptions
     // displayed in the camp description if Clara was imprisoned in camp.

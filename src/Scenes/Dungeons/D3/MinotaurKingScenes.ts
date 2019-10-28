@@ -55,7 +55,7 @@ export class MinotaurKingScenes {
         flags[kFLAGS.MINOTAURKING_KILLED] = 1;
         clearOutput();
         outputText("You make it quick, then straighten to stare Lethice in the eye. You’ll purge every single ounce of corruption from this world by any means necessary.");
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private dockucocku(cockIdx: number): void {
@@ -93,7 +93,7 @@ export class MinotaurKingScenes {
             outputText("\n\nSatisfied at last, you pull out with lurid ‘schliiiick’ sound. A few of the assembled demons clap and catcall, but most surprising of all is the monarch’s own roar of bliss, followed shortly after by his powerful hips lifting up off the floor. The well-fucked horse-cock erupts like a long-dormant volcano, spraying jizz from its sloppy, stretched slit until minotaur spunk is raining over the assembled crowd. Many of the demons immediately fall into fucking one another, but you have the good sense to avoid the bulk of it.");
             outputText("\n\nAgain and again, those powerful, shaggy hips lift, and each time, more cow-cream explodes into the air, mixed with something else. Something better. Champion cum. Excellia is revitalized by erotic monsoon and manages to climb on top before he finishes, riding him like the bucking bronco that he is.");
             outputText("\n\nNeither of them will be standing in your way any time soon. Time to deal with Lethice.");
-            cleanupAfterCombat(d3.resumeFromFight);
+            cleanupAfterCombat(D3.resumeFromFight);
         }
         else {
             menu();
@@ -164,7 +164,7 @@ export class MinotaurKingScenes {
         player.orgasm();
         dynStats("lus", 10);
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private mechanicalbullhue(): void {
@@ -253,7 +253,7 @@ export class MinotaurKingScenes {
         dynStats("lus", 5, "resisted", false);
         player.effects.create(StatusAffects.MinotaurKingsTouch, 0, 0, 0, 0);
         flags[kFLAGS.MINOTAURKINGS_TOUCH] = 1;
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private titfuckCowslut(): void {
@@ -284,7 +284,7 @@ export class MinotaurKingScenes {
 
         player.orgasm();
         player.HP = player.maxHP();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private sloppySeconds(): void {
@@ -336,7 +336,7 @@ export class MinotaurKingScenes {
         outputText("\n\nLethice looks bored, drumming her fingers on the edge of her throne. Time to deal with her.");
 
         player.orgasm();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     public hailToTheKingBaby(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -411,6 +411,6 @@ export class MinotaurKingScenes {
         else outputText("Not all of us are as enslaved by our desires as you.");
         outputText("”</i>");
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 }

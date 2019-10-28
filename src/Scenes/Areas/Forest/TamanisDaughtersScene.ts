@@ -133,7 +133,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         if (player.inte / 2 + 25 > rand(75)) {
             outputText("The leader looks you up and down for a moment.  Her face slowly contorts to puzzlement, then rage, \"<i>Tammi you ditz!  I thought you said this was his trail?  Come on girls, we've got a dad to hunt.</i>\"\n\n", false);
             if (flags[kFLAGS.TIMES_ENCOUNTED_TAMANIS_DAUGHTERS] > 1) outputText("They really must not be paying much attention to what you look like.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -346,7 +346,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         knockUpDaughters();
         player.cumMultiplier += .3;
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseFourHours);
+        else doNext(Camp.returnToCampUseFourHours);
     }
 
     // [Let them]
@@ -699,7 +699,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         if (tamaniPresent) TamaniScene.tamaniKnockUp(); // If she wasn't pregnant she will be now
         knockUpDaughters();
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseFourHours);
+        else doNext(Camp.returnToCampUseFourHours);
     }
 
     // [Lose Combat, Get Your Dick DRAINED]
@@ -1011,7 +1011,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("str", -.5, "int", -.5, "lib", 1, "sen", 1, "cor", 1);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     private knockUpDaughters(): void {

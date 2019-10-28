@@ -167,10 +167,10 @@ export class FetishCultist extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 2;
         this.gems = 5 + rand(10);
-        this.drop = new WeightedDrop().add(consumables.LABOVA_, 1)
-            .add(weapons.RIDINGC, 1)
-            .add(consumables.OVIELIX, 2)
-            .add(consumables.L_DRAFT, 6);
+        this.drop = new WeightedDrop().add(ConsumableLib.LABOVA_, 1)
+            .add(WeaponLib.RIDINGC, 1)
+            .add(ConsumableLib.OVIELIX, 2)
+            .add(ConsumableLib.L_DRAFT, 6);
         this.special1 = cultistRaisePlayerLust;
         this.special2 = cultistLustTransfer;
         checkMonster();

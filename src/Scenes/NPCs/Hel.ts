@@ -193,8 +193,8 @@ export class Hel extends Monster {
         this.level = 16;
         this.gems = 10 + rand(5);
         this.drop = new ChainedDrop().
-            add(armors.CHBIKNI, 1 / 20).
-            add(consumables.REPTLUM, 0.7);
+            add(ArmorLib.CHBIKNI, 1 / 20).
+            add(ConsumableLib.REPTLUM, 0.7);
         this.tailType = TAIL_TYPE_LIZARD;
         this.tailRecharge = 0;
         this.effects.create(StatusAffects.Keen, 0, 0, 0, 0);

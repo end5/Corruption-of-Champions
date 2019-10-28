@@ -425,12 +425,12 @@ export class ShouldraScene implements TimeAwareInterface {
         outputText("The oozy evacuation keeps up for many long, pleasure-filled heartbeats, your breasts deflating as the slime spurts out of your body. Eventually, the spurts turn to a drizzle, and you push out the remainder of the goo with a compression of your back-to-normal boobs. Reaching into the diluted sage substance, you feel around for any signs of life for the poor ghost girl. You feel a slender hand wrap around your wrist, and you easily heave the spirit free of the twitching mess. Free of the mostly-empty influence of the green slime, she whimsically floats about you. \"<i>It took you long enough!</i>\" she berates you angrily. \"<i>...But, you managed to get me out of there with my sanity intact... and I DID have a good time, so...</i>\"  She substantiates in front of you, smiling radiantly. \"<i>Thanks,</i>\" she says amiably. \"<i>I'm gonna go home. Oh, before I go...</i>\"  She brazenly undoes her leggings, pulling them away from her crotch and reaching into her box. She extricates a good amount of ectoplasm, then pulls a small bottle from a pocket inside her tunic and squeezes the goop inside. With an amiable grin, she hands the bottle to you, and you nod your appreciation. You part ways there, with you redressing and heading back to your campsite, and the ghost girl beginning her trek back to the town ruins.", false);
         player.orgasm();
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
         flags[kFLAGS.SLIMEGINAED]++;
     }
@@ -484,12 +484,12 @@ export class ShouldraScene implements TimeAwareInterface {
         player.orgasm();
         flags[kFLAGS.SHOULDRA_SLIME_PENOR_TIMES]++;
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -603,12 +603,12 @@ export class ShouldraScene implements TimeAwareInterface {
         player.orgasm();
         flags[kFLAGS.SHOULDRA_PENIS_DEFEAT_TIMES]++;
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -645,12 +645,12 @@ export class ShouldraScene implements TimeAwareInterface {
             outputText("She wobbles almost exaggeratedly before falling sideways, smacking her head against the ground and sending up a small splash of cum.  If she felt any pain, however, she doesn't react to it at all, staring vacantly at a dilapidated building and drooling slightly.  That outta teach her to try to pull a fast one on you twice, you figure.  As you stride past her, you tug her pants down to her knees and scoop out a good amount of ectoplasm from her vagina.  You reach into her pocket and grab a bottle (honking her boob for good measure and eliciting an aroused twitch), dumping the goo in and stuffing it in your pack.  She'll probably find a goblin eventually, you figure as you begin your journey back to the camp.", false);
         }
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
     // Penis With Worm Infestation Scene
@@ -668,7 +668,7 @@ export class ShouldraScene implements TimeAwareInterface {
         outputText("There's silence for a moment, then you are almost rendered unconscious as she cries, \"<i>NOOOOOOOOPE,</i>\" telepathically, surging out of your body in record time. She corporealizes and backs away from you until she bumps into one of the ruined buildings. Then, she's off, booking it down the street to get as far away from you as possible. You shrug, figuring at the very least you dealt with her arousal, albeit in an unexpected way, and begin your trek back to your camp.", false);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
         flags[kFLAGS.SHOULDRA_WORM_SCENE_COUNTER]++;
     }
 
@@ -712,7 +712,7 @@ export class ShouldraScene implements TimeAwareInterface {
         flags[kFLAGS.SHOULDRA_EXGARTUAN_SPIRIT_SEX_COUNT]++;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Vagina Scene
@@ -738,7 +738,7 @@ export class ShouldraScene implements TimeAwareInterface {
         flags[kFLAGS.SHOULDRA_VAGINAL_POSSESSIONS]++;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
     // Hermaphrodite Scene
     private hermaphroditeGhostsCumEctoplasm(): void {
@@ -811,7 +811,7 @@ export class ShouldraScene implements TimeAwareInterface {
         flags[kFLAGS.SHOULDRA_HERMSEX_COUNT]++;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Loss Introduction
@@ -870,12 +870,12 @@ export class ShouldraScene implements TimeAwareInterface {
         dynStats("sen", 1);
         flags[kFLAGS.SHOULDRA_PENIS_DEFEAT_TIMES]++;
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -913,12 +913,12 @@ export class ShouldraScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", 1);
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -942,12 +942,12 @@ export class ShouldraScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", 1);
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1044,12 +1044,12 @@ export class ShouldraScene implements TimeAwareInterface {
         dynStats("lib", 1, "sen", 1);
         flags[kFLAGS.SHOULDRA_USES_YOUR_GIANT_COCK_COUNT]++;
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
     // Genderless Scene
@@ -1098,12 +1098,12 @@ export class ShouldraScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", 1);
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1165,7 +1165,7 @@ export class ShouldraScene implements TimeAwareInterface {
         spriteSelect(66);
         outputText("", true);
         outputText("You quickly tell her that there's been a misunderstanding; surely your order would not allow such a relationship. She nods, not seeming very bothered by the dismissal. \"<i>What a shame. Farewell, then, paladin friend,</i>\" she says, turning back towards her shack. \"<i>Perhaps we will meet again.</i>\"  You're left to watch her go, and you soon depart as well.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (yup)
     private courtCrazyGirlsDotCom(): void {
@@ -1173,7 +1173,7 @@ export class ShouldraScene implements TimeAwareInterface {
         outputText("", true);
         outputText("Her smile widens as she regards your venerable visage. \"<i>Is that so?</i>\" she says softly. \"<i>Interesting. I'll be back in a moment.</i>\" She returns to her \"<i>house,</i>\" rummaging around for some time before returning to you, hands hidden behind her. \"<i>If I am to be sought by a paladin, we must do things right,</i>\" she explains, handing you a small silk handkerchief. The white fabric slides around your fingers like a sacrosanct flow of holy water, and you reverently tuck her gift into your " + player.armorName + ", laying it over your heart. \"<i>Come back in two days' time, please,</i>\" she asks softly. Your eyes meet for a long moment, and it appears as if she's struggling to say something. She instead breaks away and starts back towards her shelter. \"<i>Be safe,</i>\" she advises, and with a smile and a wave, she's gone. For moments you stand silently, then you turn and start away with long, saintly strides. There's more work to do.\n\n", false);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00365] = 48;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (two days later)
@@ -1215,12 +1215,12 @@ export class ShouldraScene implements TimeAwareInterface {
         outputText("\n\nThough exhausted and a little sore from Exgartuan's treatment of your body, you keep the presence of mind to lean down -- pushing your " + breastDescript(game.player, 0) + " out of the way -- and scoop up a little ectoplasm from her still-gaping box.  You make a point to ignore Exgartuan's triumphant chortle as you leave the ghost girl to her sleep and walk back to camp.  What a day.");
         player.orgasm();
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1296,12 +1296,12 @@ export class ShouldraScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("sen", -1);
         if (game.inCombat) {
-            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.ECTOPLS.id;
+            flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.ECTOPLS.id;
             cleanupAfterCombat();
         }
         else {
             outputText("\n\n", false);
-            inventory.takeItem(consumables.ECTOPLS, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.ECTOPLS, Camp.returnToCampUseOneHour);
         }
         flags[kFLAGS.GHOST_GIRL_SLIME_X_SHOULDRA_COUNTER]++;
     }

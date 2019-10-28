@@ -50,7 +50,7 @@ export class Zetaz extends Monster {
         this.level = 12;
         this.gems = rand(55) + 150;
         this.additionalXP = 100;
-        this.drop = new WeightedDrop(consumables.BIMBOLQ, 1);
+        this.drop = new WeightedDrop(ConsumableLib.BIMBOLQ, 1);
         this.wingType = WING_TYPE_IMP;
         this.wingDesc = "small";
         checkMonster();

@@ -55,7 +55,7 @@ export class MinervaScene {
         addButton(3, "Eat", eatSomethingYouCunt);
         addButton(4, "Drink", getADrinkYouBitch);
         addButton(5, "Spar", fightMinerva);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     public encounterMinerva(): void {
@@ -92,7 +92,7 @@ export class MinervaScene {
         clearOutput();
         outputText("Deciding to play it safe, you turn away from the new path and continue your search elsewhere.");
         // PC returns to camp.
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Take Path]
     private takeMinervasPath(): void {
@@ -186,7 +186,7 @@ export class MinervaScene {
         spriteSelect(95);
         outputText("You decide that you don't want to risk going into Minerva's lair as, for all you know, it could be a trap.  Therefore, you turn around and skedaddle back down the mountain.  As you leave, Minerva turns and watches you for a bit, a sad look on her face before she turns back and heads inside her home, alone.");
         // PC returns to camp.
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // 1-2 Repeat Encounter 1.  Use any time.
@@ -208,7 +208,7 @@ export class MinervaScene {
         addButton(3, "Eat", eatSomethingYouCunt);
         addButton(4, "Drink", getADrinkYouBitch);
         addButton(5, "Spar", fightMinerva);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // 1-3 Repeat Encounter 2.  Use if 3rd+ time visiting Minerva.
@@ -231,7 +231,7 @@ export class MinervaScene {
         addButton(3, "Eat", eatSomethingYouCunt);
         addButton(4, "Drink", getADrinkYouBitch);
         addButton(5, "Spar", fightMinerva);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // Romancing scenes encounter with all sub scenes.
@@ -332,7 +332,7 @@ export class MinervaScene {
         outputText("\n\nSlowly, you get up, looking away from the curvy siren as you step out of the pool and leaving Minerva's tower.  Hopefully she won't be upset for too long, it would be best to check up on her later.  As you go, you swear you hear her let out a sob, the pain of your rejection clear as the mist that floats around the mountain.");
         // PC returns to camp.
         flags[kFLAGS.MINERVA_LOVE] = -1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Land]
@@ -351,7 +351,7 @@ export class MinervaScene {
         addButton(3, "Eat", eatSomethingYouCunt);
         addButton(4, "Drink", getADrinkYouBitch);
         addButton(5, "Spar", fightMinerva);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private fightMinerva(): void {
@@ -376,7 +376,7 @@ export class MinervaScene {
         addButton(3, "Eat", eatSomethingYouCunt);
         addButton(4, "Drink", getADrinkYouBitch);
         addButton(5, "Spar", fightMinerva);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private minervaTalkSelect(bath: boolean = true): void {
@@ -487,7 +487,7 @@ export class MinervaScene {
             // PC returns to camp.
             flags[kFLAGS.MINERVA_BACKSTORY_LEARNED] = 1;
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // 3-2 Talk Scene 2 - talks about the spring
@@ -507,7 +507,7 @@ export class MinervaScene {
         outputText("\n\nReturning her shining smile, you promise to come back and visit soon, then head out and start the hike back toward your camp.");
         // PC returns to camp.
         dynStats("lus", 10 + player.lib / 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // 3-3 Talking Scene 3 - talks about her shark girl daughter
@@ -534,7 +534,7 @@ export class MinervaScene {
             outputText("\n\n\"<i>Thank you for listening to me, hun, I'm so happy to have someone like you in my life,</i>\" Minerva whispers to you with a genuine smile on her black lips.");
             outputText("\n\nThe two of you stay like this for a while, just spending a little time together before you decide you must return to camp and your quest.  Saying your goodbyes, you give Minerva a kiss before heading home.");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // 3-4 Talk Scene 4 - talks about her corruption
@@ -553,7 +553,7 @@ export class MinervaScene {
         outputText("\n\nCuddling up to you, the siren slips her arms around you, hugging you tightly.  \"<i>Thank you for listening to me, hun, I'm so happy to have someone like you in my life,</i>\" Minerva whispers to you with a genuine smile on her black lips.  \"<i>Sharing one of my hopes and dreams like that, I can't help but feel closer to you.</i>\"");
         outputText("\n\nThe two of you stay like this for a while, just spending some time together, before you decide you must return to camp and your quest.  Saying your goodbyes, you give Minerva a kiss before heading home.");
         // PC returns to camp
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // 3-5 Motherhood
@@ -601,7 +601,7 @@ export class MinervaScene {
 
         outputText("\n\nLooking around, you see how late it has gotten and swiftly get up, Minerva's right; you have to get back to your great quest!  Looking at the siren one last time, you tell her that you will be sure to come and visit again later.");
         // PC returns to camp.
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // 3-6 Bath Time - romance only
@@ -641,7 +641,7 @@ export class MinervaScene {
         // PC returns to camp.
         dynStats("lus", 10 + player.lib / 10);
         fatigue(-30);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // SEX SCENES!!!!!!!!!
@@ -764,7 +764,7 @@ export class MinervaScene {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // 4-2= sex scene 2:  Cowgirl
@@ -869,7 +869,7 @@ export class MinervaScene {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // SEX SCENE 2.5 female/herm: LAP SEX
@@ -958,7 +958,7 @@ export class MinervaScene {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // 4-5= sex scene 4: Hermy oral
@@ -1037,7 +1037,7 @@ export class MinervaScene {
         dynStats("lus", 20);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // 4-6= sex scene 6: Blow job!
@@ -1114,7 +1114,7 @@ export class MinervaScene {
 
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // 4-4= sex scene 4:  hand held behind
@@ -1182,7 +1182,7 @@ export class MinervaScene {
         player.orgasm();
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // 4-9= sex scene 9: lesing out
@@ -1261,7 +1261,7 @@ export class MinervaScene {
         player.orgasm();
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     public loseToMinerva(): void {
@@ -1274,7 +1274,7 @@ export class MinervaScene {
             // return PC to options- no combat option
             // PC gains 1 Purity peach
             monster.effects.create(StatusAffects.PeachLootLoss, 0, 0, 0, 0);
-            inventory.takeItem(consumables.PURPEAC, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.PURPEAC, Camp.returnToCampUseOneHour);
             cleanupAfterCombat();
         }
         // PC loss by Lust
@@ -1314,7 +1314,7 @@ export class MinervaScene {
         spriteSelect(95);
         // Acquiring:
         outputText("You walk over to the fruit trees surrounding the spring, examining the strange treats.  You decide that one ripe fruit, one resembling a peach, is the best choice, and pluck it from the tree.  Thanking Minerva for letting you have it, you stow it away safely and head back to camp.\n\n");
-        inventory.takeItem(consumables.PURPEAC, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.PURPEAC, Camp.returnToCampUseOneHour);
     }
 
     /*
@@ -1338,7 +1338,7 @@ export class MinervaScene {
         dynStats("lus", -25, "cor", -.5, "resisted", false);
         if (player.cor > 50) dynStats("cor", -1);
         if (player.cor > 75) dynStats("cor", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     /*
     [Bottle] Pulling out a small waterskin, you dip it into the crystal clear water, filling the container with the cool, clean spring water before placing it in your pack

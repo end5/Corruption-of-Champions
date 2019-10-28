@@ -97,13 +97,13 @@ export class MinotaurLord extends Monster {
         outputText("The minotaur lord is defeated!  ");
         outputText("  You could use him for a quick fuck to sate your lusts before continuing on.  Do you?");
         menu();
-        addButton(0, "Fuck", game.urtaQuest.winRapeAMinoLordAsUrta);
-        addButton(4, "Leave", game.urtaQuest.beatMinoLordOnToSuccubi);
+        addButton(0, "Fuck", UrtaQuest.winRapeAMinoLordAsUrta);
+        addButton(4, "Leave", UrtaQuest.beatMinoLordOnToSuccubi);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        if (hpVictory) game.urtaQuest.urtaLosesToMinotaurRoughVersion();
-        else game.urtaQuest.urtaSubmitsToMinotaurBadEnd();
+        if (hpVictory) UrtaQuest.urtaLosesToMinotaurRoughVersion();
+        else UrtaQuest.urtaSubmitsToMinotaurBadEnd();
     }
 
     public constructor() {

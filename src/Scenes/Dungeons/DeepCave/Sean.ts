@@ -39,15 +39,15 @@ export function incubusShop(): void {
     clearOutput();
     outputText("Sean nods at you and slicks his hair back into place, threading it carefully around the small nubs of his horns before asking, \"<i>What can I do for you?</i>\"");
     menu();
-    addButton(0, consumables.NUMBROX.shortName, incubusBuy, consumables.NUMBROX);
-    addButton(1, consumables.SENSDRF.shortName, incubusBuy, consumables.SENSDRF);
-    addButton(2, consumables.REDUCTO.shortName, incubusBuy, consumables.REDUCTO);
-    addButton(3, weapons.SUCWHIP.shortName, incubusBuy, weapons.SUCWHIP);
-    if (player.hasItem(consumables.BIMBOCH) && flags[kFLAGS.NIAMH_SEAN_BREW_BIMBO_LIQUEUR_COUNTER] == 0) {
+    addButton(0, ConsumableLib.NUMBROX.shortName, incubusBuy, ConsumableLib.NUMBROX);
+    addButton(1, ConsumableLib.SENSDRF.shortName, incubusBuy, ConsumableLib.SENSDRF);
+    addButton(2, ConsumableLib.REDUCTO.shortName, incubusBuy, ConsumableLib.REDUCTO);
+    addButton(3, WeaponLib.SUCWHIP.shortName, incubusBuy, WeaponLib.SUCWHIP);
+    if (player.hasItem(ConsumableLib.BIMBOCH) && flags[kFLAGS.NIAMH_SEAN_BREW_BIMBO_LIQUEUR_COUNTER] == 0) {
         outputText("\n\nSean could probably do something with the Bimbo Champagne if you had enough of it...");
-        if (player.hasItem(consumables.BIMBOCH, 5)) {
+        if (player.hasItem(ConsumableLib.BIMBOCH, 5)) {
             outputText("  Luckily, you do!");
-            addButton(4, consumables.BIMBOLQ.shortName, Niamh.seanBimboBrewing);
+            addButton(4, ConsumableLib.BIMBOLQ.shortName, Niamh.seanBimboBrewing);
         }
     }
     addButton(9, "Leave", playerMenu);
@@ -70,5 +70,5 @@ function incubusTransact(itype: ItemType): void {
     clearOutput();
     player.gems -= itype.value * 3;
     statScreenRefresh();
-    inventory.takeItem(itype, incubusShop);
+    Inventory.takeItem(itype, incubusShop);
 }

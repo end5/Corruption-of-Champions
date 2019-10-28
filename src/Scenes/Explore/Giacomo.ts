@@ -90,7 +90,7 @@ export class Giacomo implements TimeAwareInterface {
             outputText("Giacomo's grin is nothing short of creepy as he offers his wares to you. What are you interested in?");
         }
         const deworm: () => void = (player.effects.findByType(StatusAffects.WormOffer) >= 0 && player.effects.findByType(StatusAffects.Infested) >= 0 ? wormRemovalOffer : null);
-        simpleChoices("Potions", potionMenu, "Books", bookMenu, "Erotica", eroticaMenu, "Worm Cure", deworm, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Potions", potionMenu, "Books", bookMenu, "Erotica", eroticaMenu, "Worm Cure", deworm, "Leave", Camp.returnToCampUseOneHour);
         statScreenRefresh();
     }
 
@@ -154,7 +154,7 @@ export class Giacomo implements TimeAwareInterface {
         }
         else {
             player.gems -= 15;
-            inventory.takeItem(consumables.VITAL_T, potionMenu);
+            Inventory.takeItem(ConsumableLib.VITAL_T, potionMenu);
             statScreenRefresh();
         }
     }
@@ -175,7 +175,7 @@ export class Giacomo implements TimeAwareInterface {
         }
         else {
             player.gems -= 15;
-            inventory.takeItem(consumables.SMART_T, potionMenu);
+            Inventory.takeItem(ConsumableLib.SMART_T, potionMenu);
             statScreenRefresh();
         }
     }
@@ -195,7 +195,7 @@ export class Giacomo implements TimeAwareInterface {
             doNext(potionMenu);
         }
         else {
-            inventory.takeItem(consumables.CERUL_P, potionMenu);
+            Inventory.takeItem(ConsumableLib.CERUL_P, potionMenu);
             player.gems -= 75;
             statScreenRefresh();
         }
@@ -532,7 +532,7 @@ export class Giacomo implements TimeAwareInterface {
         dynStats("lib", -1, "lus", -99, "cor", -4);
         player.gems -= 175;
         statScreenRefresh();
-        inventory.takeItem(consumables.VITAL_T, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.VITAL_T, Camp.returnToCampUseOneHour);
     }
 
     private wormRemovalOffer(): void {
@@ -644,7 +644,7 @@ export class Giacomo implements TimeAwareInterface {
             outputText("She gives a giggle and disappears before your eyes.  At that moment the fatigue from the massive fucking you received catches up with you and you pass out in a slump.");
             dynStats("str", .5, "lus", 4);
         }
-        inventory.takeItem(consumables.CERUL_P, playerMenu);
+        Inventory.takeItem(ConsumableLib.CERUL_P, playerMenu);
     }
 
     private nightSuccubiRepeat(): void {
@@ -784,6 +784,6 @@ export class Giacomo implements TimeAwareInterface {
         outputText("\n", false);
         player.orgasm();
         dynStats("str", rand(2), "tou", rand(2), "spe", rand(2), "int", rand(2), "cor", 1);
-        inventory.takeItem(consumables.CERUL_P, playerMenu);
+        Inventory.takeItem(ConsumableLib.CERUL_P, playerMenu);
     }
 }

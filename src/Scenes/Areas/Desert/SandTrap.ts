@@ -135,7 +135,7 @@ export class SandTrap extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 4;
         this.gems = 2 + rand(5);
-        this.drop = new ChainedDrop(consumables.TRAPOIL).add(consumables.OVIELIX, 1 / 3);
+        this.drop = new ChainedDrop(ConsumableLib.TRAPOIL).add(ConsumableLib.OVIELIX, 1 / 3);
         this.tailType = TAIL_TYPE_DEMONIC;
         this.effects.create(StatusAffects.Level, 4, 0, 0, 0);
         checkMonster();

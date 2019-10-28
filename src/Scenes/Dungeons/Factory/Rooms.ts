@@ -24,7 +24,7 @@ export function enterFactory(): void {
             player.effects.create(StatusAffects.FoundFactory, 0, 0, 0, 0);
         }
     }
-    simpleChoices("Enter", actuallyEnterFactory, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+    simpleChoices("Enter", actuallyEnterFactory, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
 }
 
 function dungeonEnterRoom(room: number): void {
@@ -43,7 +43,7 @@ export function leaveFactory(): void {
     game.dungeonLoc = 0;
     clearOutput();
     outputText("You slip out the door and disappear, heading back towards your camp, leaving the hellish factory behind.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 export function factoryShutdown(): void {
@@ -253,14 +253,14 @@ export function storageTakeLactaid(): void {
     if (player.effects.findByType(StatusAffects.TakenLactaid) >= 0)
         player.effects.addValue(StatusAffects.TakenLactaid, 1, -1);
     else player.effects.create(StatusAffects.TakenLactaid, 4, 0, 0, 0);
-    inventory.takeItem(consumables.LACTAID, playerMenu);
+    Inventory.takeItem(ConsumableLib.LACTAID, playerMenu);
 }
 
 export function storageTakeGroPlus(): void {
     if (player.effects.findByType(StatusAffects.TakenGroPlus) >= 0)
         player.effects.addValue(StatusAffects.TakenGroPlus, 1, -1);
     else player.effects.create(StatusAffects.TakenGroPlus, 4, 0, 0, 0);
-    inventory.takeItem(consumables.GROPLUS, playerMenu);
+    Inventory.takeItem(ConsumableLib.GROPLUS, playerMenu);
 }
 
 export function dungeonRoom() {

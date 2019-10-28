@@ -246,7 +246,7 @@ export class DriderIncubusScenes {
 
     public afterDriderbuttFight(): void {
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     public killDrider(): void {
@@ -308,9 +308,9 @@ export class DriderIncubusScenes {
         outputText("\n\nJust looking at the goblin’s smiling face as you smear it back and forth through puddles of demon-cum has you almost ready to go off. You swat her cushy heiny in between rapid-fire thrusts, wondering if you should keep her while your orgasm rises up like a slumbering beast.");
 
         // Followers
-        if (camp.companionsCount() > 0) {
+        if (Camp.companionsCount() > 0) {
             outputText("\n\nYour other follower");
-            if (camp.companionsCount() > 1) outputText("s");
+            if (Camp.companionsCount() > 1) outputText("s");
             outputText(" wouldn’t mind having a well-practiced goblin cooze around, would they? You certainly wouldn’t.");
         }
         // No Followers

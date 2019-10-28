@@ -184,7 +184,7 @@ export class CeraphScene {
         dynStats("lib", 3, "sen", 3, "cor", 1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Female] Ride 'Dat Cawk
@@ -240,7 +240,7 @@ export class CeraphScene {
         player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); // Ceraph causes faster pregnancies
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [OH SHIT SON YOU LOST GET EARS PIERCED]
@@ -367,7 +367,7 @@ export class CeraphScene {
         outputText("You tell Ceraph no, emphatically, over and over.  She gives you a smirk and says, \"<i>Whatever.  It's only a matter of time.  You'll join me soon, pet.</i>\"\n\n", false);
 
         outputText("With that declaration she departs, leaving you confused and horny.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [fight]
@@ -472,7 +472,7 @@ export class CeraphScene {
         player.earsPShort = "green gem-stone ear-studs";
         player.earsPLong = "Green gem-stone ear-studs";
         flags[kFLAGS.PC_FETISH] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [PC 'BEAT OFF' Ceraph the first time...]
@@ -563,12 +563,12 @@ export class CeraphScene {
         outputText("\"<i>So, I take it you like it?  You'll never be able to raise a hand in anger again.  I guess if you want to win fights you'll have to tease your foes into submission with that luscious body.  I suppose that might be hard to do when you're getting off on exposing yourself and cumming from the thought of being tied down,</i>\" she laughs.\n\n", false);
         outputText("You tremble with barely restrained lust as the demoness flounces away.  You'd pursue her, but between her ideas and exposing your crotch to the entire area, you need to cum more than anything in the world.  You scurry back to camp, too horny to think straight and your new piercing aching just enough to keep you from forgetting about it.", false);
         flags[kFLAGS.PC_FETISH] = 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public encounterCeraph(): void {
         // Just in case set up next button for 1 hr + camp
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // If havent met her
         if (flags[kFLAGS.PC_MET_CERAPH] == 0) {
             spriteSelect(7);
@@ -706,7 +706,7 @@ export class CeraphScene {
         dynStats("lus", 200);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // (REQ's – HUGE WANG, Exgartuan or Jojo corruption, and !centaur)
@@ -774,7 +774,7 @@ export class CeraphScene {
             outputText("</i>\"", false);
             player.orgasm();
             dynStats("lib", 3, "sen", 3, "cor", 1);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("  That's rarer than you know, so I'm feeling a little generous.  ", false);
@@ -868,7 +868,7 @@ export class CeraphScene {
         outputText("beat a hasty retreat from the trickster of fetishes.  Her masturbatory moans chase you down the mountainside back towards your camp, spiking the already-burning furnace of your lust.", false);
         // (+10 lust + 10lust/piercing)
         dynStats("lus", (10 + flags[kFLAGS.PC_FETISH] * 10));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Trade]
@@ -880,7 +880,7 @@ export class CeraphScene {
         let armor: () => void = null;
         outputText("Ceraph looks you up and down like an appraiser examining an antique, never stopping her languid masturbation.  You stand there, hands on your hips, waiting for her to finish while you try not to stare too long at her beading pre-cum or dripping twat-juice.\n\n", false);
         // (BIMBO LIQUER)
-        if (player.hasItem(consumables.BIMBOLQ)) {
+        if (player.hasItem(ConsumableLib.BIMBOLQ)) {
             outputText("She finishes and smiles widely.  \"<i>Is that bimbo liqueur?  That stuff is so hard to find, even for a demon like me.  I tell you what, I'll release you from ", false);
             if (flags[kFLAGS.PC_FETISH] > 1) outputText("all the fetishes", false);
             else outputText("the fetish", false);
@@ -916,7 +916,7 @@ export class CeraphScene {
         spriteSelect(7);
         outputText("Ceraph smiles knowingly at your response.  \"<i>You'll find this to be quite sexy.  Just be careful putting it on.  If you don't fit it right it'll pinch,</i>\" the demoness instructs while tossing you a set of armor.\n\n", false);
         // (Get trapped armor and go home)
-        inventory.takeItem(armors.SEDUCTA, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ArmorLib.SEDUCTA, Camp.returnToCampUseOneHour);
     }
 
     // [Trade Bimbo Liquer]
@@ -926,11 +926,11 @@ export class CeraphScene {
         outputText("Ceraph grins as wide as the Cheshire Cat, groaning with happiness as she pulls her dripping tail from her snatch.  The pungent scent of her lusty, tainted puss hangs in the air while her tail extends towards you, looping around the liquer's top and pulling it from your pouch.  Ceraph plucks the bottle from her lust-drenched tail with great care and undoes the top.  She gives the liquer a tiny sniff, but it rocks her back on her heels all the same.  The demon starts giggling as she corks it, smiling with a slightly dopy look.  \"<i>Wheeeeeewww... heheheheee.. that stuff has got some kick!</i>\"\n\n", false);
 
         outputText("You mention the deal and she glares back at you in irritation.  Her beautiful features curl with anger, a hand coming out of nowhere to slap you squarely on the side of the temple.  \"<i>Don't interrupt me, pet.</i>\"  Ears ringing, you stagger back, clutching at your head in surprise.  By the time you glare back at her, she's walking away.  You briefly consider giving her payback, but you realize your head feels clearer, more normal.  The artificial fetishes are gone!  While you catalogue lewd acts in your head and marvel at how little they affect you, Ceraph makes good on her escape.", false);
-        player.consumeItem(consumables.BIMBOLQ);
+        player.consumeItem(ConsumableLib.BIMBOLQ);
         player.takeDamage(4);
         flags[kFLAGS.PC_FETISH] = 0;
         dynStats("lus", -20);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Trade Genitals]
@@ -942,7 +942,7 @@ export class CeraphScene {
             outputText("A disembodied voice roars out, \"<i>FUCK NO!  You are NOT giving me to that crazy bitch!</i>\"  Exgartuan doesn't seem to want to run the risk of being taken by Ceraph, and he completely assumes control of your " + legs(player) + " to make you flee with all due haste.  He taunts, \"<i>Rip off your own little dick, why doncha!  You'd look better with just a pussy anyhow ya dried out old sow!</i>\"\n\n", false);
             outputText("Ceraph seems perturbed but doesn't bother to pursue you.", false);
             dynStats("lus", -20);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Create array for choosing bits!
@@ -1034,7 +1034,7 @@ export class CeraphScene {
         outputText("", true);
         spriteSelect(7);
         outputText("You let her know that you've changed your mind and take off before Ceraph can try to take your beloved body parts.  You hear her laugh and tease as you run, yelling, \"<i>What, can't handle the thought of an Omnibus touching your fun bits?  Poor baby!</i>\"\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Yes]
@@ -1137,7 +1137,7 @@ export class CeraphScene {
         }
         // Fix any gender mixmatches
         player.genderCheck();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // NIGHTTIME
@@ -1404,7 +1404,7 @@ export class CeraphScene {
         player.orgasm();
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
 }

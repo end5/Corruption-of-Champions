@@ -63,7 +63,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         // Selecting has a 50% chance of displaying the following:
         if (rand(2) == 0) {
             outputText("You turn around and flee before she can get any closer.  After running for a few moments, you realize the spider-woman isn't trying to pursue you at all.  The last image you see of her is her looking down at the ground with an expression of incredible melancholy.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // The other 50% will start combat and then immediately attempt to run.
         else {
@@ -84,7 +84,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
                 outputText("After you've both had your fill of talk, the spider-girl asks, \"<i>I-I w-was wondering if you'd do me a favor... I have certain... urges, and", false);
                 if (player.gender == 0) {
                     outputText(" o-oh nevermind, you're genderless... crap.</i>\"  She blushes and lifts her abdomen, shooting a web into the trees that she uses to escape from the awkward situation.  You're left utterly alone, once again.", false);
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                     return;
                 }
                 outputText(" well, you're the first sane person I've had a chance to ask.  Oh fuck it, can I tie you up and fuck you? Please?</i>\"\n\n", false);
@@ -94,7 +94,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
             // (OPTION 2 - GIFT)
             else {
                 outputText("After you've both had your fill of talk, the spider-girl smiles and gives you a gentle hug.  She trills, \"<i>Thank you so much for talking to me!  It feels so good to actually... communicate with someone again.  I can't thank you enough, but here, take this.  Maybe it will help you on your journey.</i>\"\n\n", false);
-                inventory.takeItem(consumables.S_GOSSR, camp.returnToCampUseOneHour);
+                Inventory.takeItem(ConsumableLib.S_GOSSR, Camp.returnToCampUseOneHour);
             }
         }
         // *Try to Talk - Aggressive Variant
@@ -119,7 +119,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     private declinedCrazyFemaleSpiderMorphSexFunTimes(): void {
         outputText("", true);
         outputText("You tell the lusty spider-morph that you're not interested in having sex with her now, and though she looks crestfallen, she nods understandingly and zips up a line of webbing into the trees before the situation can become any more awkward.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // *Defeat Female
@@ -246,7 +246,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("lib", 2, "sen", 1);
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -350,7 +350,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("lib", 2, "sen", 1);
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -425,7 +425,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         player.orgasm();
         dynStats("lib", 2, "sen", 1);
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -520,7 +520,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         else outputText("You leave her there with her hands and feet completely restrained.  Sucks to be her.", false);
         player.orgasm();
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -586,7 +586,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         player.orgasm();
         pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SPIDER - 200); // Spiders carry for half as long as the player does for some reason
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -654,7 +654,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         if (y != 1) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SPIDER - 200); // Spiders carry for half as long as the player does for some reason
         player.orgasm();
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -666,7 +666,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
 
         outputText("You're left scratching your head when you realize they were your own children, birthed by the spider-morph you fucked not so long ago.\n\n", false);
         pregnancy.knockUpForce(); // Clear Spidermorph pregnancy
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /*Joke Shit

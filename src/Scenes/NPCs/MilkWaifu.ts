@@ -87,7 +87,7 @@ export class MilkWaifu {
             // [Next time Rath's at camp and PC accesses Milky's meny, play the Arrival w/ Rath scene, sans first sentence]
         }
         // Set before this function is called:	inDungeon = false;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public ratducto(): void {
@@ -161,7 +161,7 @@ export class MilkWaifu {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0 && flags[kFLAGS.MILK_SIZE] > 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(5, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1 && flags[kFLAGS.MILK_SIZE] > 0) addButton(5, "Go Camp", backToCamp);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) addButton(9, "Back", camp.campSlavesMenu);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) addButton(9, "Back", Camp.campSlavesMenu);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
@@ -178,7 +178,7 @@ export class MilkWaifu {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -285,7 +285,7 @@ export class MilkWaifu {
             // If no Rath: "You tell " + flags[kFLAGS.MILK_NAME] + " to wait a moment, and go digging through your possessions.  It takes a few minutes, but eventually you find some comfortable-looking clothing.  She takes them eagerly, saying she'll trim them down to her size as soon as she's got herself settled down: it's a lot to take in all at once, and she seems eager to experiment with her new, slender body, walking all over camp with a gay smile.  You leave her to exercise, but not before she draws you into a long kiss, holding you tight once again and whispering her heartfelt thanks."}
         }
         flags[kFLAGS.MILK_SIZE]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Milk Bath (HHH or Giant boobs only)
@@ -348,7 +348,7 @@ export class MilkWaifu {
         // (+Lust, -Fatigue)
         dynStats("lus", 10 + player.sens / 10, "resisted", false);
         fatigue(-34);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Communal Bath] (PC must have 3+ of the following followers)
@@ -398,7 +398,7 @@ export class MilkWaifu {
 
         fatigue(-40);
         HPChange(player.maxHP() * .33, false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Milk Girl]
@@ -452,7 +452,7 @@ export class MilkWaifu {
         dynStats("lus", 10 + player.sens / 10, "resisted", false);
         HPChange(player.maxHP() * .33, false);
         fatigue(-20);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Fuck Her] (PC has a Dick)
@@ -475,7 +475,7 @@ export class MilkWaifu {
         // [+Lust, +HP, -Fatigue]
         player.orgasm();
         HPChange(player.maxHP() * .33, false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Fuck Her] (PC has Cooch & C+cups)
@@ -497,7 +497,7 @@ export class MilkWaifu {
         // [+Lust, +HP, -Fatigue]
         player.orgasm();
         HPChange(player.maxHP() * .33, false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Drink & Masturbate]
@@ -551,7 +551,7 @@ export class MilkWaifu {
         outputText(".  Smirking and sexually sated, you pop the drain in the tub and stand there while the sex-scented lactic bathwater runs out the drain.  A quick toweling off later, and you're ready to go, feeling slightly refreshed and fairly sated.  It does take you a little longer to get your [armor] equally dry and back in place, but you manage.");
         player.orgasm();
         fatigue(-33);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private nyanCatMilkTime(): void {
@@ -590,7 +590,7 @@ export class MilkWaifu {
             else outputText("\n\nThough you didn't intend for this to turn communal, " + flags[kFLAGS.MILK_NAME] + " certainly has more than enough to share.  You relax as the last trickles of milk pour into the pool, her breasts looking positively deflated.  You decide to leave the plug in for your friends as you clamber out, figuring they'll want to stockpile a little for the day before you drain it.  With her tits lightened for the moment, " + flags[kFLAGS.MILK_NAME] + " reaches up and pulls you down to her, just long enough to plant a kiss on your cheek and whisper, \"<i>Thank you, [name].  That felt good.</i>\"");
             fatigue(-50);
             dynStats("lus", 10 + player.sens / 10, "resisted", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Milk Time!  (DD Boobs Ver.)
         else {
@@ -618,7 +618,7 @@ export class MilkWaifu {
         outputText("\n\n\"<i>Thank you, [name],</i>\" she says simply as you dry yourself off.");
         fatigue(-50);
         dynStats("lus", 10 + player.sens / 10, "resisted", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Suckle]
     private suckleDatMilk(): void {
@@ -634,7 +634,7 @@ export class MilkWaifu {
         outputText("\n\nEventually, the boobgasm subsides, leaving " + flags[kFLAGS.MILK_NAME] + " a quivering, panting pile of lust in your arms, her fingers absently rubbing through her panties as the last dribbles of milk trickle down her chest and your chin.  Taking the first deep breath you've managed to get in the last few minutes, you grab a towel from nearby and try to dry yourself and the leaky girl off as best you can, brushing off the gallons of milk that have washed over you both.  When you're done, " + flags[kFLAGS.MILK_NAME] + " leans over and plants a long, lusty kiss on your lips, her tongue lapping up little drops of her own milk still inside your mouth.  She breaks the kiss after a long, pleasant moment, whispering \"<i>Thank you, [name].</i>\"");
         fatigue(-50);
         dynStats("lus", 10 + player.sens / 10, "resisted", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Fuck Her] (Needs a dick what fits)
     private fuckDatMilkSlat(): void {
@@ -653,7 +653,7 @@ export class MilkWaifu {
         player.orgasm();
         dynStats("sen", -1);
         fatigue(-10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Titfuck (ie, an Excuse for Savin to use "Lactic Lust" because Fen just taught him that and he has fallen in love) (Requires DD or HHH tittehs & a dick)
@@ -684,7 +684,7 @@ export class MilkWaifu {
         player.orgasm();
         dynStats("sen", -1);
         fatigue(-10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
 
     }
 }

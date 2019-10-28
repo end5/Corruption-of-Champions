@@ -168,7 +168,7 @@ export class DopplegangerScenes {
         outputText("\n\n<b>(Key Item Acquired: Laybans!)</b>");
 
         player.orgasm();
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     public killYourself(): void {
@@ -177,7 +177,7 @@ export class DopplegangerScenes {
 
         cleanupAfterCombat();
         menu();
-        addButton(0, "Next", d3.resumeFromFight);
+        addButton(0, "Next", D3.resumeFromFight);
     }
 
     public inSovietCoCSelfFucksYou(): void {

@@ -8,7 +8,7 @@ export class Lumi {
             // placeholder text for outside the cathedral
             outputText("You spot an anomaly in the barren wastes; a door that seems to be standing out in the middle of nowhere. Somehow, you figure that it must lead to some other part of the world, and the only reason it's here is because you can't get to where the door should be right now.\n\n", false);
             outputText("Do you open it?", false);
-            doYesNo(lumiLabChoices, camp.returnToCampUseOneHour);
+            doYesNo(lumiLabChoices, Camp.returnToCampUseOneHour);
         }
         else {
             // placeholder text for outside the cathedral
@@ -40,7 +40,7 @@ export class Lumi {
         let enhance: () => void = null;
         if (lumiEnhance(true))
             enhance = lumiEnhance;
-        simpleChoices("Shop", lumiShop, "Enhance", enhance, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Shop", lumiShop, "Enhance", enhance, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     public lumiShop(): void {
@@ -51,9 +51,9 @@ export class Lumi {
         outputText("Lust Draft - 15 gems\nGoblin Ale - 20 gems\nOviposition Elixir - 45 gems\n", false);
 
         // The player is given a list of choices, clicking on one gives the description and the price, like Giacomo.
-        simpleChoices(consumables.L_DRAFT.shortName, lumiLustDraftPitch,
-            consumables.GOB_ALE.shortName, lumiPitchGobboAle,
-            consumables.OVIELIX.shortName, lumiPitchOviElixer,
+        simpleChoices(ConsumableLib.L_DRAFT.shortName, lumiLustDraftPitch,
+            ConsumableLib.GOB_ALE.shortName, lumiPitchGobboAle,
+            ConsumableLib.OVIELIX.shortName, lumiPitchOviElixer,
             "", null, "Leave", lumiLabChoices);
     }
 
@@ -63,7 +63,7 @@ export class Lumi {
         clearOutput();
         outputText("You point at the bottle filled with bubble-gum pink fluid.\n\n\"<i>De lust dwaft? Always a favowite, with it you nevar have to worwy about not bein weady for sexy time; one of my fiwst creations. 15 gems each.</i>\"\n\n", false);
         outputText("Will you buy the lust draft?", false);
-        doYesNo(curry(lumiPurchase, consumables.L_DRAFT), lumiShop);
+        doYesNo(curry(lumiPurchase, ConsumableLib.L_DRAFT), lumiShop);
     }
     // Goblin Ale
     private lumiPitchGobboAle(): void {
@@ -71,7 +71,7 @@ export class Lumi {
         clearOutput();
         outputText("You point at the flagon. \"<i>Oh? Oh thats Lumi's... actually no, dat tispsy stuff for 20 gems. You'll like if you want to be like Lumi. Do you like it?</i>\"\n\n", false);
         outputText("Will you buy the goblin ale?", false);
-        doYesNo(curry(lumiPurchase, consumables.GOB_ALE), lumiShop);
+        doYesNo(curry(lumiPurchase, ConsumableLib.GOB_ALE), lumiShop);
     }
     // Ovi Elixir
     private lumiPitchOviElixer(): void {
@@ -79,7 +79,7 @@ export class Lumi {
         clearOutput();
         outputText("You point at the curious hexagonal bottle. \"<i>De Oviposar Elixir? Made baithsed on da giant bee's special stuff dey give deir queen. It will help make de burfing go faster, an if you dwink it while you awen pweggy, iw will give you some eggs to burf later. More dwinks, eqwals more and biggar eggs. Lumi charges 45 gems for each dose.</i>\"\n\n", false);
         outputText("Will you buy the Ovi Elixir?", false);
-        doYesNo(curry(lumiPurchase, consumables.OVIELIX), lumiShop);
+        doYesNo(curry(lumiPurchase, ConsumableLib.OVIELIX), lumiShop);
     }
 
     private lumiPurchase(itype: ItemType): void {
@@ -87,17 +87,17 @@ export class Lumi {
         clearOutput();
         // After choosing, and PC has enough gems
         let cost: number = 0;
-        if (itype == consumables.OVIELIX)
+        if (itype == ConsumableLib.OVIELIX)
             cost = 45;
-        if (itype == consumables.GOB_ALE)
+        if (itype == ConsumableLib.GOB_ALE)
             cost = 20;
-        if (itype == consumables.L_DRAFT)
+        if (itype == ConsumableLib.L_DRAFT)
             cost = 15;
         if (player.gems >= cost) {
             outputText("You pay Lumi the gems, and she hands you " + itype.longName + " saying, \"<i>Here ya go!</i>\"\n\n", false);
             player.gems -= cost;
             statScreenRefresh();
-            inventory.takeItem(itype, lumiShop, lumiLabChoices);
+            Inventory.takeItem(itype, lumiShop, lumiLabChoices);
         }
         else {
             // After choosing, and PC doesn't have enough gems
@@ -110,28 +110,28 @@ export class Lumi {
     public lumiEnhance(justCheck: boolean = false): boolean {
         spriteSelect(37);
         let fox: () => void = null;
-        if (player.hasItem(consumables.FOXBERY))
+        if (player.hasItem(ConsumableLib.FOXBERY))
             fox = lumiEnhanceFox;
         let laBova: () => void = null;
-        if (player.hasItem(consumables.LABOVA_))
+        if (player.hasItem(ConsumableLib.LABOVA_))
             laBova = lumiEnhanceLaBova;
         let succuDelight: () => void = null;
-        if (player.hasItem(consumables.SDELITE))
+        if (player.hasItem(ConsumableLib.SDELITE))
             succuDelight = lumiEnhanceSDelight;
         const oviElix: () => void = null;
-        // if(player.hasItem(consumables.OVIELIX))
+        // if(player.hasItem(ConsumableLib.OVIELIX))
         // 	oviElix = lumiEnhanceOviElix;
         let lustDraft: () => void = null;
-        if (player.hasItem(consumables.L_DRAFT))
+        if (player.hasItem(ConsumableLib.L_DRAFT))
             lustDraft = lumiEnhanceDraft;
         let seed: () => void = null;
-        if (player.hasItem(consumables.GLDSEED))
+        if (player.hasItem(ConsumableLib.GLDSEED))
             seed = lumiEnhanceGoldenSeed;
         let kanga: () => void = null;
-        if (player.hasItem(consumables.KANGAFT))
+        if (player.hasItem(ConsumableLib.KANGAFT))
             kanga = lumiEnhanceKanga;
         let kitsune: () => void = null;
-        if (player.hasItem(consumables.FOXJEWL))
+        if (player.hasItem(ConsumableLib.FOXJEWL))
             kitsune = lumiEnhanceFoxJewel;
         if (justCheck) {
             return fox != null || kanga != null || seed != null || laBova != null || succuDelight != null || oviElix != null || lustDraft != null || kitsune != null;
@@ -148,70 +148,70 @@ export class Lumi {
         else {
             outputText("You nod and Lumi gives an excited yell, \"<i>Yay! Lumi loves to do enhancement, what you want to be bettar?</i>\"\n\n", false);
             // The player chooses an item that can be enhanced from a list, regardless of which is chosen, the text for the next part is the same.
-            choices(consumables.FOXBERY.shortName, fox,
-                consumables.FOXJEWL.shortName, kitsune,
-                consumables.GLDSEED.shortName, seed,
-                consumables.KANGAFT.shortName, kanga,
-                consumables.L_DRAFT.shortName, lustDraft,
-                consumables.LABOVA_.shortName, laBova,
-                consumables.OVIELIX.shortName, oviElix,
-                consumables.SDELITE.shortName, succuDelight,
+            choices(ConsumableLib.FOXBERY.shortName, fox,
+                ConsumableLib.FOXJEWL.shortName, kitsune,
+                ConsumableLib.GLDSEED.shortName, seed,
+                ConsumableLib.KANGAFT.shortName, kanga,
+                ConsumableLib.L_DRAFT.shortName, lustDraft,
+                ConsumableLib.LABOVA_.shortName, laBova,
+                ConsumableLib.OVIELIX.shortName, oviElix,
+                ConsumableLib.SDELITE.shortName, succuDelight,
                 "", null, "Back", lumiLabChoices);
             return true;
         }
     }
     private lumiEnhanceLaBova(): void {
-        lumiEnhanceGo(consumables.LABOVA_);
+        lumiEnhanceGo(ConsumableLib.LABOVA_);
     }
     private lumiEnhanceSDelight(): void {
-        lumiEnhanceGo(consumables.SDELITE);
+        lumiEnhanceGo(ConsumableLib.SDELITE);
     }
     private lumiEnhanceOviElix(): void {
-        lumiEnhanceGo(consumables.OVIELIX);
+        lumiEnhanceGo(ConsumableLib.OVIELIX);
     }
     private lumiEnhanceDraft(): void {
-        lumiEnhanceGo(consumables.L_DRAFT);
+        lumiEnhanceGo(ConsumableLib.L_DRAFT);
     }
     private lumiEnhanceGoldenSeed(): void {
-        lumiEnhanceGo(consumables.GLDSEED);
+        lumiEnhanceGo(ConsumableLib.GLDSEED);
     }
     private lumiEnhanceKanga(): void {
-        lumiEnhanceGo(consumables.KANGAFT);
+        lumiEnhanceGo(ConsumableLib.KANGAFT);
     }
     private lumiEnhanceFox(): void {
-        lumiEnhanceGo(consumables.FOXBERY);
+        lumiEnhanceGo(ConsumableLib.FOXBERY);
     }
     private lumiEnhanceFoxJewel(): void {
-        lumiEnhanceGo(consumables.FOXJEWL);
+        lumiEnhanceGo(ConsumableLib.FOXJEWL);
     }
 
     private lumiEnhanceGo(itype: ItemType): void {
         spriteSelect(37);
         trace("LUMI ENHANCE");
         let nextItem: ItemType = ItemType.NOTHING;
-        if (itype == consumables.LABOVA_) {
-            nextItem = consumables.PROBOVA;
+        if (itype == ConsumableLib.LABOVA_) {
+            nextItem = ConsumableLib.PROBOVA;
         }
-        else if (itype == consumables.KANGAFT) {
-            nextItem = consumables.MGHTYVG;
+        else if (itype == ConsumableLib.KANGAFT) {
+            nextItem = ConsumableLib.MGHTYVG;
         }
-        else if (itype == consumables.SDELITE) {
-            nextItem = consumables.S_DREAM;
+        else if (itype == ConsumableLib.SDELITE) {
+            nextItem = ConsumableLib.S_DREAM;
         }
-        /*else if(itype == consumables.OVIELIX) {
-            nextItem = consumables.OVIMAX_;
+        /*else if(itype == ConsumableLib.OVIELIX) {
+            nextItem = ConsumableLib.OVIMAX_;
         } */
-        else if (itype == consumables.L_DRAFT) {
-            nextItem = consumables.F_DRAFT;
+        else if (itype == ConsumableLib.L_DRAFT) {
+            nextItem = ConsumableLib.F_DRAFT;
         }
-        else if (itype == consumables.GLDSEED) {
-            nextItem = consumables.MAGSEED;
+        else if (itype == ConsumableLib.GLDSEED) {
+            nextItem = ConsumableLib.MAGSEED;
         }
-        else if (itype == consumables.FOXBERY) {
-            nextItem = consumables.VIXVIGR;
+        else if (itype == ConsumableLib.FOXBERY) {
+            nextItem = ConsumableLib.VIXVIGR;
         }
-        else if (itype == consumables.FOXJEWL) {
-            nextItem = consumables.MYSTJWL;
+        else if (itype == ConsumableLib.FOXJEWL) {
+            nextItem = ConsumableLib.MYSTJWL;
         }
         player.gems -= 100;
         statScreenRefresh();
@@ -220,12 +220,12 @@ export class Lumi {
         outputText("Lumi grabs the item from you and runs over to her table, stopping for only a second to put her apron on.  ", false);
         // start list of possible enhancement texts
         temp = rand(3);
-        if (itype == consumables.GLDSEED) outputText("She fiddles with it, coating it in exotic powders before she tosses the whole mess onto a hotplate.  It explodes, knocking the goblin flat on her ass.  She sits bolt upright and snatches up the now-glowing seed with a gloved hand.\n\n", false);
-        else if (itype == consumables.FOXJEWL) outputText("Lumi stares wide-eyed into the fathoms of its depths.  She remains like that for several moments before you clear your throat, and then hurries off to work.  Flitting back and forth between the various beakers and test tubes that litter the workshop, she mixes chemicals seemingly at random, many of which bubble or explode rather violently.\n\nAfter several minutes of this, she pours all of the reagents into a large beaker over an open flame.  The contents boil up through the neck of the flask and drip slowly down the condenser.  A ponderously large drop of black liquid builds up at the tip of the condenser, wobbling precipitously for a moment before finally falling onto the jewel with a splash.\n\nThe jewel soaks up the black fluid like a sponge, veins of sickening purple spreading across the surface like a spider's web.  A few moments later, the jewel is entirely purple, the mystic flames inside glowing a bright violet.\n\nYou reach out hesitantly and place the mystically enhanced teardrop-shaped jewel into your pouch.\n\n");
-        else if (itype == consumables.KANGAFT) outputText("She fiddles with it, coating it in exotic powders before she tosses the whole mess onto a hotplate.  It explodes, knocking the goblin flat on her ass.  She sits bolt upright and snatches up the now-glowing fruit with a gloved hand.\n\n", false);
+        if (itype == ConsumableLib.GLDSEED) outputText("She fiddles with it, coating it in exotic powders before she tosses the whole mess onto a hotplate.  It explodes, knocking the goblin flat on her ass.  She sits bolt upright and snatches up the now-glowing seed with a gloved hand.\n\n", false);
+        else if (itype == ConsumableLib.FOXJEWL) outputText("Lumi stares wide-eyed into the fathoms of its depths.  She remains like that for several moments before you clear your throat, and then hurries off to work.  Flitting back and forth between the various beakers and test tubes that litter the workshop, she mixes chemicals seemingly at random, many of which bubble or explode rather violently.\n\nAfter several minutes of this, she pours all of the reagents into a large beaker over an open flame.  The contents boil up through the neck of the flask and drip slowly down the condenser.  A ponderously large drop of black liquid builds up at the tip of the condenser, wobbling precipitously for a moment before finally falling onto the jewel with a splash.\n\nThe jewel soaks up the black fluid like a sponge, veins of sickening purple spreading across the surface like a spider's web.  A few moments later, the jewel is entirely purple, the mystic flames inside glowing a bright violet.\n\nYou reach out hesitantly and place the mystically enhanced teardrop-shaped jewel into your pouch.\n\n");
+        else if (itype == ConsumableLib.KANGAFT) outputText("She fiddles with it, coating it in exotic powders before she tosses the whole mess onto a hotplate.  It explodes, knocking the goblin flat on her ass.  She sits bolt upright and snatches up the now-glowing fruit with a gloved hand.\n\n", false);
         else if (temp == 0) outputText("She starts grabbing things from around the table, seemingly at random, and adds them to " + itype.longName + ".  To your alarm, there is soon a large cloud of smoke coming off it! There is a strong smell to the smoke and it makes it hard to breathe.  Lumi grabs a mask out of a drawer and puts it on, continuing with her work unperturbed.  She suddenly stops and you wonder if she is done, but she takes off her mask and inhales deeply of the smoke, then keels over!  As you go over to help her she suddenly stands up, waves away some of the smoke, and says, \"<i>All dun!</i>\"\n\n", false);
         else if (temp == 1) outputText("Taking hold of one of the bottles that were sitting where she put the tray, she seems to think for a moment before tossing the bottle into one of the corners of the room.  It shatters just behind the table, and a small puff of smoke goes up into the air.  You're a little nervous about that bottle, but before you have a chance to say anything, two more bottles fly off and join it; this time causing a small explosion. You ask her what she is thinking tossing those aside, and she simply responds, \"<i>Dey were in my way.</i>\"\n\n\"<i>What?!  So you just toss things that explode to the side?</i>\"\n\n<i>\"Don worry, I'll put counter agents in dere at de end of de day.  An I never throw stuff da'll do any damage.  Done!</i>\"\n\n", false);
         else if (temp == 2) outputText("She adds a few things to the tray before moving down the table.  She adds some reagents to a bubbling chemical reaction, and then adds some more ingredients to that.  You wonder why she just left " + itype.longName + " there to work on something else.  Then Lumi moves back across the table, past where " + itype.longName + " sits, to start adding things to something else.  Before you have a chance to complain, she moves back to " + itype.longName + " and continues.  You decide that it's probably best not to ask about her work ethic and just let her do her thing; she has more experience than you, after all.\n\nPOP! You look over in surprise as the first thing she worked on makes a small explosion.  POW! Now the second experiment has blown up!  You start to move in alarm, wondering if Lumi really knows what she's doing; just before " + itype.longName + " seems to explode with an incredible BOOM.  Lumi stops moving for a moment, looking straight ahead before saying, \"<i>Dat was a gud one, Lumi dun!</i>\"\n\n", false);
-        inventory.takeItem(nextItem, lumiEnhance, lumiLabChoices);
+        Inventory.takeItem(nextItem, lumiEnhance, lumiLabChoices);
     }
 }

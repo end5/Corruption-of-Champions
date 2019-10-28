@@ -25,7 +25,7 @@ export class Oasis {
         // Run away successfully if fast enough.  80 speed = autosuccess.
         if (player.spe > 15 && player.spe / 2 > rand(40)) {
             outputText("You bolt out from under your bush and scramble away over the sand. Before long the swishing sounds of pursuit fade away and looking back you see the few demons with the gusto to follow you tramping back to the oasis.", true);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else {
             outputText("You scramble away from the demons, but are too late. A swift demon with canine features tackles you to the ground.  Luckily he loses his grip as you tumble onto the sand and you slither free, stand up and wheel to face the host of leering demons which begin to advance with malicious intent.", true);

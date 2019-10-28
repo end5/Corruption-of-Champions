@@ -205,7 +205,7 @@ export class Inventory {
             return;
         }
         outputText("I AM NOT A CROOK.  BUT YOU ARE!  <b>CHEATER</b>!\n\n", true);
-        inventory.takeItem(consumables.HUMMUS_, playerMenu);
+        Inventory.takeItem(ConsumableLib.HUMMUS_, playerMenu);
         flags[kFLAGS.TIMES_CHEATED_COUNTER]++;
     }
 
@@ -424,7 +424,7 @@ export class Inventory {
         clearOutput();
         const itype: ItemType = storage[slotNum].itype;
         storage[slotNum].quantity--;
-        inventory.takeItem(itype, callNext, callNext, storage[slotNum]);
+        Inventory.takeItem(itype, callNext, callNext, storage[slotNum]);
     }
 
     private pickItemToPlaceInCampStorage(): void { pickItemToPlaceInStorage(placeInCampStorage, allAcceptable, "storage containers", false); }

@@ -154,7 +154,7 @@ export class Satyr extends Monster {
         this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
         this.level = 14;
         this.gems = rand(25) + 25;
-        this.drop = new ChainedDrop().add(consumables.INCUBID, 1 / 2);
+        this.drop = new ChainedDrop().add(ConsumableLib.INCUBID, 1 / 2);
         this.tailType = TAIL_TYPE_COW;
         checkMonster();
     }

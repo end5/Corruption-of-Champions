@@ -103,7 +103,7 @@ export function eventTester(): void {
 
 "Paste test event text here."
 
-[button urtaQuest.infertilityQuestions | infertilityQuestions]
+[button UrtaQuest.infertilityQuestions | infertilityQuestions]
 [button KitsuneScene.enterTheTrickster | enterTheTrickster]
 [button KitsuneScene.kitsuneShrine | kitsuneShrine]
 [button KitsuneScene.defeatTheKitsunes | defeatTheKitsunes]

@@ -43,7 +43,7 @@ export class BeeGirlScene {
         if (player.keyItems.has("Traveler's Guide") >= 0 && player.inte / 2 > rand(40)) {
             outputText("You suddenly remember a passage from the Traveler's Guide about monstrous bees that lay eggs in unmentionable places.  Of course, a brave champion would face any danger.\n\n<b>Do you proceed?</b>");
             // Yes goes to beeEncounterLevel2(), no goes to camp
-            simpleChoices("Yes", beeEncounterSelect, "", null, "", null, "", null, "Back", camp.returnToCampUseOneHour);
+            simpleChoices("Yes", beeEncounterSelect, "", null, "", null, "", null, "Back", Camp.returnToCampUseOneHour);
         }
         // If not smart enough, proceed.
         else beeEncounterSelect(false);
@@ -97,7 +97,7 @@ export class BeeGirlScene {
                     // Chance to avoid raaaaeeeeep
                     if ((player.lib + player.cor < 140) || rand(2) == 0) {
                         outputText("You barely stop yourself from gleefully throwing yourself into her arms.  You realize the harmonic buzzing of her wings and the unearthly scent of her honey briefly robbed you of your reason.  Feeling momentarily more clear-headed, what do you do?");
-                        simpleChoices("Fight", fightTheBeeGirl, "Talk", beeTalk, "Seduce", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                        simpleChoices("Fight", fightTheBeeGirl, "Talk", beeTalk, "Seduce", null, "", null, "Leave", Camp.returnToCampUseOneHour);
                     }
                     else beeEncounterClassic(false);
             }
@@ -114,7 +114,7 @@ export class BeeGirlScene {
         // Chance to avoid raaaaeeeeep
         if ((player.lib + player.cor < 140) || rand(2) == 0) {
             outputText("\n\nYou just barely hold yourself back and shake your head to clear the smell and buzzing from your mind.  Something about your " + (isBeeMorph ? "new bee body seems to have drawn" : "massive member has attracted") + " her attention, and she is staring at your crotch in anticipation.  You steady yourself and decide what you should do next.");
-            simpleChoices("Fight", fightTheBeeGirl, "Sex", beeSexForCocks, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Fight", fightTheBeeGirl, "Sex", beeSexForCocks, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
         }
         else beeSexForCocks(false);
     }
@@ -134,13 +134,13 @@ export class BeeGirlScene {
     private beeEncounterAsBeeMorphFemaleLeave(): void {
         spriteSelect(6);
         outputText("\n\nYou shake your head at her, and she gives you a look of disappointment.  You’re a little disappointed yourself, but you already decided to leave.  You turn away from the bee and resume your explorations.  Nothing else of note happens over the rest of the hour.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterAfraid(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a smile at the sight of you.  Her buzzing dies down and you notice that the mind numbing smell in the glade isn’t as strong as you were last here.  The handmaiden turns to the side and shows you that her bee abdomen is quite slender today; it doesn’t look like she has any eggs this time.  <i>“Zzzo, the queen hazzz zzzaid that we can try a little experiment with you, if thingzzz work out, maybe we won’t use zzzo much buzzzing and honey.”</i>  She giggles, <i>“Firzzzt time, no eggzzz, zzzo you don’t have to worry.  Are you ready to have zzzome fun?”</i>");
-        simpleChoices("Fight", fightTheBeeGirl, "Have Sex", beeEncounterAfraidFirstTimeSex, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Fight", fightTheBeeGirl, "Have Sex", beeEncounterAfraidFirstTimeSex, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterAfraidFirstTimeSex(): void {
@@ -177,13 +177,13 @@ export class BeeGirlScene {
             outputText("You aren’t able to regain your wits until she has pulled back out of you and sent you on your way back to camp.  The whole situation was very vivid now that you’ve had a chance to think about it.  You know you came at least 3 times from her tongue, that she told you to come back soon for the full experience next time, and that you actually feel better than you have in a long time!\n\n");
         }
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterAfraidRepeat(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a smile at the sight of you and her buzzing dies down.  Once again, the smell in the grove is much weaker than it was when you first came to this grove.  Those same flowers have been scattered around to ease off on the scent’s mind affecting powers.  She turns to the side to give you a full view of her now swollen abdomen and gives it a gentle pat.  <i>“Are you ready to carry zzzome eggzzz now?  I won’t hurt you, and I promizzzizz I won’t uzzze my buzzzing and honey to make you do it.  Thezzze where zzzaved zzzpecially for you, and I’ve got a little gift for you too if you zzzay yezzz.  Are you up for a little zzzex and eggzzz up your butt?”</i>");
-        simpleChoices("Fight", fightTheBeeGirl, "Have Sex", beeEncounterAfraidRepeatSex, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Fight", fightTheBeeGirl, "Have Sex", beeEncounterAfraidRepeatSex, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterAfraidRepeatSex(): void {
@@ -229,25 +229,25 @@ export class BeeGirlScene {
         player.orgasm();
         player.slimeFeed();
         switch (rand(10)) {
-            case 0: inventory.takeItem(consumables.W__BOOK, camp.returnToCampUseOneHour); break;
+            case 0: Inventory.takeItem(ConsumableLib.W__BOOK, Camp.returnToCampUseOneHour); break;
             case 1:
-            case 2: inventory.takeItem(consumables.OVIELIX, camp.returnToCampUseOneHour); break;
+            case 2: Inventory.takeItem(ConsumableLib.OVIELIX, Camp.returnToCampUseOneHour); break;
             case 3:
-            case 4: inventory.takeItem(useables.B_CHITN, camp.returnToCampUseOneHour); break;
-            default: inventory.takeItem(consumables.PURHONY, camp.returnToCampUseOneHour);
+            case 4: Inventory.takeItem(UseableLib.B_CHITN, Camp.returnToCampUseOneHour); break;
+            default: Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
         }
     }
 
     private beeEncounterDisgusted(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a frown at the sight of you.  At once her buzzing stops and she looks at you and says <i>“Oh, it’zzz you again, juzzzt go away; I need to find zzzomeone that actually will carry my queen’zzz eggzzz.”</i>  Your mind is pulled from its stupor, as she directs you out of the clearing with a dismissive look.");
-        simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterDuty(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a smile and her buzzing dies down.  You shake your head slightly to clear away the effect that you were under and look back at the smiling bee girl.");
-        simpleChoices("Fight", fightTheBeeGirl, "Talk", beeEncounterDutyTalk, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Fight", fightTheBeeGirl, "Talk", beeEncounterDutyTalk, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterDutyTalk(): void {
@@ -262,21 +262,21 @@ export class BeeGirlScene {
         clearOutput();
         spriteSelect(6);
         outputText("You decline her offer, and shortly afterwards you take your leave to return to camp.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterSheFearsYou(): void {
         outputText(" in the light.\n\n");
         outputText("Her mouth opens wide in panic as she catches sight of you.  She drops the flower and starts to draw back yelling <i>“Pleazzze don't hurt me again!  I won't try to lay eggzzz in you any more, just let me go!”</i>\n\n");
         outputText("What will you do with her?");
-        simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterSheDesiresYou(): void {
         outputText(" in the light.\n\n");
         outputText("Her mouth opens wide in panic as she catches sight of you.  She drops the flower and starts to draw back yelling <i>“No!  I won't give in to the dezzzire!  Go away!”</i>\n\n");
         outputText("What will you do with her?");
-        simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterSheBeatsYouRegularly(): void {
@@ -284,7 +284,7 @@ export class BeeGirlScene {
         outputText("Her mouth breaks out in a grin at the sight of you.  <i>“Hello again naughty " + mf(player, "boy", "girl") + ",”</i> her buzzing really starting to get inside your head as she stands up and beckons to you.  <i>“Juzzzt make it eazzier on yourzzzelf and let me lay my eggzzz in you.  No fuzzzzz, no fighting.  Just let yourzzzelf be carried away.”</i>\n\n");
         if ((player.lib + player.cor < 70) || rand(4) == 0) { // Chance to avoid raaaaeeeeep
             outputText("With great difficulty you manage to stop yourself from throwing yourself into her arms.  Losing to this girl isn’t helping you resist her charms at all.  You’re finding It harder and harder to fight the call of her incredible song and unnatural scent, it may be wise to run now; but what will you do now that you have your senses again?");
-            simpleChoices("Fight", fightTheBeeGirl, "Talk", beeEncounterSheBeatsYouRegularlyTalk, "", null, "", null, "Run", camp.returnToCampUseOneHour);
+            simpleChoices("Fight", fightTheBeeGirl, "Talk", beeEncounterSheBeatsYouRegularlyTalk, "", null, "", null, "Run", Camp.returnToCampUseOneHour);
         }
         else {
             outputText("Unable to control yourself in her presence, you throw yourself into her arms and she lifts you up a little into the air before setting you face down onto the flower and landing on your back.  <i>“That’zzz the way it should be, it’zzz zzzo much easier when you juzzzt let go.  Are you ready?”</i>");
@@ -313,7 +313,7 @@ export class BeeGirlScene {
         clearOutput();
         spriteSelect(6);
         outputText("You barely manage to shake off her wiles and roll to the side.  You give her one last look before picking yourself up and running away from the clearing.  That really could have gone better.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs(clearScreen: boolean = true): void {
@@ -347,7 +347,7 @@ export class BeeGirlScene {
         player.slimeFeed();
         if (rand(2) == 0) player.buttKnockUp(PregnancyStore.PREGNANCY_BEE_EGGS, PregnancyStore.INCUBATION_BEE, 1, 1); // Anal bee pregnancy!
         player.buttChange(25, true);
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     private beeEncounterWithExgartuan(): void {
@@ -356,7 +356,7 @@ export class BeeGirlScene {
             outputText("Your " + cockDescript(game.player, 0) + " wriggles free of your " + player.armorName + ", as you keep walking forward.  A bodiless voice yells, \"<i>Honeypot, honeypot, ME LOOOOVE HONEYPOOOOOT!</i>\"\n\n");
             outputText("The bee-girl's eyes widen at the sight, shocked by your over-endowed form being dragged towards her as if there were a magnet in your " + cockDescript(game.player, 0) + ".  She presses herself against the flower's petals, terrified and afraid to put up any meaningful resistance.  The nagging voice pipes up, \"<i>So are we gonna rape her or what, " + player.short + "?  I need some honeyyy!</i>\"\n\n");
             outputText("She seems too surprised to resist.  Will you go along with Exgartuan and rape her?");
-            doYesNo(Exgartuan.exgartuanBeeRape, camp.returnToCampUseOneHour);
+            doYesNo(Exgartuan.exgartuanBeeRape, Camp.returnToCampUseOneHour);
         }
         else {
             outputText("The bee-girl's eyes widen at the sight,  shocked by your over-endowed form being dragged towards her as if there were a magnet in your " + cockDescript(game.player, 0) + ".   She flutters into the air and aims her stinger towards you, ready to fight!");
@@ -374,7 +374,7 @@ export class BeeGirlScene {
         outputText("She lifts off, hovering a few feet off the ground.  <i>“Good luck getting rid of thozzze thingzzz.  When you do, come find me and I'll fill you zzzo full of lovely eggzzz,”</i> she promises, her fingers idly stroking her sex.  She shakes her head, deliberately getting control of herself and forcing her fingers away from her slit, then flies up through a hole in the canopy.\n\n");
         outputText("Alone and aroused, all you can do is put your clothes back on and travel back to your camp, hoping no imps ambush you on the way.");
         dynStats("lus", 0.5 * player.lib + 20);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private fightTheBeeGirl(): void {
@@ -601,8 +601,8 @@ export class BeeGirlScene {
             player.buttChange(25, true);
         }
         if (postCombat)
-            cleanupAfterCombat(camp.returnToCampUseFourHours);
-        else doNext(camp.returnToCampUseFourHours);
+            cleanupAfterCombat(Camp.returnToCampUseFourHours);
+        else doNext(Camp.returnToCampUseFourHours);
     }
 
     public beeSexForCocks(clearScreen: boolean = true): void {
@@ -638,7 +638,7 @@ export class BeeGirlScene {
             outputText("In moments, her hands are covered with your usual level of cum, though this gets not much more than a nod of approval from the giver of your pleasure.  She gently sets you to the side of her and pulls the bottle from her lower lips and puts a cork on the bottle before setting it down on your stomach.  <i>“Take thizzz after it hazzz had an hour to zzzet.”</i> she tells you before picking up her bag and flying away.  Thanks to the after effects of her scent, you don’t really have a chance to react before you drift off to sleep for several hours.\n\n");
             player.orgasm();
             dynStats("lib", 3, "cor", -2);
-            inventory.takeItem(consumables.SPHONEY, camp.returnToCampUseFourHours);
+            Inventory.takeItem(ConsumableLib.SPHONEY, Camp.returnToCampUseFourHours);
         }
     }
 
@@ -675,7 +675,7 @@ export class BeeGirlScene {
         outputText("”</i> she says handing you the bottle with a wink.  Then she wipes off some of the dried cum from her face, takes her bag, and flies off.  Just before she is out of sight she calls back to you, <i>“I look forward to zzzeeing you again zzzoon!”</i>  After cumming so many times it's no surprise that you wake up hours later, having drifted off to sleep.\n\n");
         player.orgasm();
         dynStats("lib", 2, "sen", 2, "cor", -3);
-        inventory.takeItem(consumables.SPHONEY, camp.returnToCampUseFourHours);
+        Inventory.takeItem(ConsumableLib.SPHONEY, Camp.returnToCampUseFourHours);
     }
 
     private beeDroneBadEnd(): void {
@@ -749,13 +749,13 @@ export class BeeGirlScene {
             if (player.cor > 66) outputText("Looking at her through lust-tinted eyes, you're sure she can deliver on her offer.  Getting closer to her scent alone would be worth bearing a few eggs...");
             outputText("\n\nDo you accept her offer?");
             attitude = BEE_GIRL_TALKED; // Replaced beeProgress
-            doYesNo(beeEncounterClassic, camp.returnToCampUseOneHour);
+            doYesNo(beeEncounterClassic, Camp.returnToCampUseOneHour);
         }
         else {
             // If you get lucky, chance for free honey and -corruption in exchange for lust.
             if (rand(2) == 0) {
                 outputText("\"<i>Awww, it zzzeemz you've caught me with my 'pants' down,</i>\" she giggles, \"<i>I'm all out of eggzzz.</i>\"  She pats her smaller-sized abdomen for a moment, thinking.\n\nHer eyes light up with inspiration, \"<i>Zzzince I'm ztill zzzo horny, would you like pure undiluted honey? Itzzz very good,</i>\" she says, spreading her legs and exposing the source of the scent – her puffy black vulva dripping with sticky amber fluid.\n\nDo you collect her honey?");
-                doYesNo(freeHoneyEvent, camp.returnToCampUseOneHour);
+                doYesNo(freeHoneyEvent, Camp.returnToCampUseOneHour);
             }
             // If you get unlucky you just get the choice of getting egg-laid.
             else {
@@ -788,7 +788,7 @@ export class BeeGirlScene {
         }
         outputText("\n\nHer face falls at your refusal, but she makes no move against you.  <i>“Okay, I won’t try to forzzze you, maybe you’ll be more willing next time?”</i>  You give a half hearted chuckle before going back to your camp.");
         dynStats("lus", 5 + player.lib / 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterRefusedHerEggsAfraid(): void {
@@ -796,7 +796,7 @@ export class BeeGirlScene {
         attitude = BEE_GIRL_PLAYER_AFRAID;
         outputText("\n\nYou move away from her and explain that it isn’t that you don’t like the idea of bearing the eggs, it’s that you’re afraid of the effect she has on your mind.  You’re uncomfortable that you can’t think clearly around her, and you really can’t agree to anything when you can’t remember it and thus can’t really enjoy it.  She tips her head to the side in surprise, before pursing her glossy lips in worry and saying, <i>“Really?  You mean there are people who don’t like it when they lozzze themzzzelvezzz?  Hmm, maybe I should tell my queen about thizzz.”</i>  She smiles back at you and starts to fly away, before stopping in midair and floating over to you and saying <i>“Come back another time, and maybe I can work out zzzomething you’ll be comfortable with, ok?”</i>");
         dynStats("lus", 5 + player.lib / 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterRefusedHerEggsDisgusted(): void {
@@ -804,7 +804,7 @@ export class BeeGirlScene {
         attitude = BEE_GIRL_PLAYER_DISGUSTED;
         outputText("\n\nYou tell her that you find the idea of her laying eggs in you repulsive, and that you’re tired of her trying to constantly tempt you into accepting against your will.  She gives you an annoyed look before stomping her foot down on the flower she is standing on, almost causing her to tumble over to the side while saying, <i>“Fine, ah!”</i> before righting herself with her wings.  <i>“If I ever zzzee you again, you can forget about getting a good time.”</i>  Before directing you away from the clearing.  You smile as you leave, now you don’t have to worry about her song getting to you anymore.");
         dynStats("lus", 5 + player.lib / 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterRefusedHerEggsDuty(): void {
@@ -814,14 +814,14 @@ export class BeeGirlScene {
 
         outputText("The bee girl nods and seems to smile in understanding.  <i>“I zzzee, I’m bound to a duty too.  I have to find people to lay my queen’zzz eggzzz.  If you have a duty too, I won’t get in your way, and I won’t forzzze you to carry them.”</i>  You thank the bee girl for her considerations and apologize that you can’t help her more directly.  She smiles at you and says, <i>“That’zzz ok champion; if you ever want to just talk, feel free to come vizzzit.  Our queen is againzzzt the demon, zzzo we will zzzuport you in our heartzzz.”</i>");
         dynStats("lus", 5 + player.lib / 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beeEncounterRefusedHerEggsLeave(): void {
         spriteSelect(6);
         outputText("\n\nYou aren’t going to deal with this girl right now, so you just turn and walk away.");
         dynStats("lus", 5 + player.lib / 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     /* Not called anywhere
@@ -830,7 +830,7 @@ export class BeeGirlScene {
                 spriteSelect(6);
                 outputText("She pouts and returns to her sing-song buzzing.  Her fingers trace circles between her thighs and the sweet scent intensifies.  You beat a hasty retreat before her efforts overcome your reason.", true);
                 dynStats("lus", (20 + player.lib / 15));
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
     */
 
@@ -876,12 +876,12 @@ export class BeeGirlScene {
             case 0:
                 conversation = 1;
                 outputText("After giving you a chance to recover from the ordeal, your chitinous partner turns to you.  <i>“That wazzz fun, wazzzn’t it?  We zzzhoud do thizzz again zzzome time, maybe get to know each other too?”</i> she says before handing you a small bottle filled with honey.  <i>“Zzzome of mine for you, take it.”</i>  With that, she spreads her wings and flies off giving you one last wave.\n\n");
-                inventory.takeItem(consumables.PURHONY, camp.returnToCampUseOneHour);
+                Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
                 break;
             case 1:
                 conversation = 2;
                 outputText("Once you’ve recovered, she gives a happy stretch.  <i>“It’zzz alwayzzz zzzo fun playing with zzzomeone more than onzzze.  Don’t you agree?”</i> she says as she puts one of her arms around your shoulders.  You don’t hesitate to tell her that it certainly was a fun experience.  <i>“Hey, what hive are you from?”</i> she asks you, <i>“Maybe I could come bring you a zzzurprise zzzome time?”</i>  You hesitate for a moment before telling her that you aren’t actually from a hive, you aren’t even actually a full bee girl.  Her eyes go wide before clapping her hand to her forehead in realization, <i>“Right!  Of course, no wonder you zzzeemed a bit off to me.”</i>  Suddenly she freezes, <i>“Zzzomeone is coming, they probably want my eggzzz and honey, let’zzz talk again zzzome other time.”</i>  She hands you another bottle of amber liquid before shooing you off.  You put your " + player.armorName + " back on before going too far.  You turn back just in time to see an imp jump into the bee’s arms.\n\n");
-                inventory.takeItem(consumables.PURHONY, camp.returnToCampUseOneHour);
+                Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
                 break;
             case 2:
                 conversation = 3;
@@ -893,7 +893,7 @@ export class BeeGirlScene {
                     outputText("<i>“I’ve been thinking zzzizzzter, I feel zzzo bad that you don’t know the joy of hearing the mother’zzz voizzze.”</i>  You look at her confused and ask her what she means.  <i>“All uzzz beezzz can hear the voizzze of our mother, the queen.  It makezzz me feel zzzo bad when I think about how you can’t hear her voizzze.”</i>  She looks down with a sad expression on her face.  You wonder if maybe you should say something to her, but her feelings are so alien to you that you aren’t sure what exactly you should say.\n\n");
                     outputText("She looks back up at you with an excited look on her face and hands you another bottle of her honey before saying, <i>“Don’t worry zzzizzzter, I’ll try to think of zzzomthing!”</i>   With that she spreads her wings and flies off.  You’re surprised to see she left so suddenly like that.  Her abdomen is still full of eggs and she left her bag behind (you take a look inside it, but all you find is a bottle of her honey)...  She’ll probably be back for that before too long.  You shrug your shoulders, get dressed, gather up your things, and head back towards camp.\n\n");
                 }
-                inventory.takeItem(consumables.PURHONY, camp.returnToCampUseOneHour);
+                Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
                 break;
             case 3:
                 conversation = 4;
@@ -960,7 +960,7 @@ export class BeeGirlScene {
 
     private beeMaidenConversationRejectCandy(): void {
         outputText("\n\nSomething about this whole thing just felt off to you, so you turn her down.  She almost bursts into tears.  <i>“But why?  Why do you want to be zzzo lonely?  I don’t underzzztand!”</i>  You try to offer up an explanation, but after a little while it’s clear that the two of you have fundamentally different mindsets.  To her, the most horrible thing imaginable is to not be a part of a hive, and it’s unlikely that you’ll be changing her opinion any time soon.  In the end all you can tell her that she’ll accept is that you don’t want this right now, but you hope you can continue your loving rendezvous if she’s feeling up to it.  She does perk up at this and gives you a nod, <i>“Okay, I’ll zzzee you around then.”</i>  Before you once again put your " + player.armorName + " back on and head away from her flower.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private freeHoneyEvent(): void {
@@ -971,7 +971,7 @@ export class BeeGirlScene {
         outputText("You take the vial absently as you kneel between her legs and take in deep breaths of the scent.  It fills your head and groin with its warmth and sticky sweetness.  You part your lips, leaning ever closer to her delicate flower, tensing with anticipation.  When your tongue finally meets the slickened surface of her vulva you swoon.  The taste is better than anything you've ever experienced - sweet, pure, and yet totally sexual.  You dart over her clit, and are rewarded with a burst of heavenly sweetness.  The maddening taste of her ambrosia gets in your veins – you NEED more and you attack her honeypot mercilessly, until at last she squeals in orgasm, clamping her fuzz-covered thighs around your head.\n\n", false);
         outputText("The force of her orgasm splatters you with the honey, far more than you could possibly try to lap up. You dimly remember the vial she gave to you, and steady it under the dripping fluid.  You catch as much of her sweetness as you can while still mashing your face against her quivering cunt.  You are in heaven, but after a time she pushes you back, smiling contentedly.  Her free hand offers you a small cork.   You reluctantly accept it and cap off the pure honey to save for later.\n\n", false);
         outputText("She waves and stretches, picking up her pack and buzzing her wings as she takes off.  She blows a kiss over her shoulder and flies away, leaving you to return to your camp...", false);
-        inventory.takeItem(consumables.PURHONY, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
     }
 
     private seduceBeeGirl(): void {
@@ -995,7 +995,7 @@ export class BeeGirlScene {
             player.slimeFeed();
             player.orgasm();
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public beeRapesYou(): void {
@@ -1784,7 +1784,7 @@ export class BeeGirlScene {
             outputText(" and leave the completely exhausted and drenched woman on the forest floor, wings and legs still twitching slightly, sending a fine mist of cum across the ground around her.", false);
         }
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         cleanupAfterCombat();
     }
 
@@ -1916,7 +1916,7 @@ export class BeeGirlScene {
         if (player.gender > 0) {
             player.orgasm();
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         cleanupAfterCombat();
     }
 

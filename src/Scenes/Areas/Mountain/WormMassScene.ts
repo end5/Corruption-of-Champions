@@ -34,7 +34,7 @@ export function wormEncounter(): void {
         outputText("You stop dead in your tracks, wondering what this swarm will do. After a few tense moments, the mass crawls away in a direction opposite of both you and your current path. You breathe a sigh of relief as you are confident that no good could have come from confronting such a zoological travesty.");
         dynStats("lus", -10);
         player.effects.create(StatusAffects.MetWorms, 0, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     else if (player.cocks.length > 0) {
         outputText("Minding your own business, you make your way through the mountain and you find yourself stopped by another mass of the sickly worms. The collective stops, apparently sensing your presence and briefly ebbs in your direction. After a few tense moments, the mass begins moving again... straight towards you at an alarming rate!\n\n");
@@ -43,7 +43,7 @@ export function wormEncounter(): void {
     }
     else {
         outputText("Making your way, you stumble on another gross mass of worms. The countless struggling creatures bar the path before you. Again, you freeze in place as the horror gropes about on the ground. It appears to have no real interest in your presence and it makes its way in a direction other than yours, much to your relief.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }
 
@@ -58,7 +58,7 @@ function wormsOn(): void {
     clearOutput();
     outputText("You actually think it's kind of a hot idea, and wonder if such creatures actually exist in this land as you make your way back to camp.");
     player.effects.create(StatusAffects.WormsOn, 0, 0, 0, 0);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 function wormsPartiallyOn(): void {
@@ -66,14 +66,14 @@ function wormsPartiallyOn(): void {
     outputText("You shrug and keep walking, not sure how you feel about the strange sign.");
     player.effects.create(StatusAffects.WormsOn, 0, 0, 0, 0);
     player.effects.create(StatusAffects.WormsHalf, 0, 0, 0, 0);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 function wormsOff(): void {
     clearOutput();
     outputText("You shudder in revulsion and figure the sign to be the result of someone's perverted fantasy.");
     player.effects.create(StatusAffects.WormsOff, 0, 0, 0, 0);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 function wormsConfront(): void {
@@ -94,7 +94,7 @@ function wormsRun(): void {
     clearOutput();
     if (player.spe > rand(35)) {
         outputText("Your instincts overwhelm you and you immediately turn around and run like hell in the opposite direction. You look behind you as your heart feels as if it is about to burst only to discover that the creature did not follow you. You take a moment to catch your breath and consider yourself fortunate.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     else {
         outputText("You turn to run, but before your " + feet(player) + " can get you away, the worms are upon you!  You turn to face them, lest they launch onto your unprotected back.");
@@ -147,7 +147,7 @@ export function infestOrgasm(): void {
             }
         }
     }
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 
 }
 
@@ -229,7 +229,7 @@ export function playerInfest(): void {
         // clear status
         game.inCombat = false;
         clearStatuses(false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         return;
     }
     if (monster.effects.findByType(StatusAffects.TwuWuv) >= 0) {

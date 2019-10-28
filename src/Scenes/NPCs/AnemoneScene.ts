@@ -97,13 +97,13 @@ export class AnemoneScene implements TimeAwareInterface {
     public mortalAnemoneeeeee(): void {
         spriteSelect(4);
         outputText("", true);
-        if (flags[kFLAGS.TIMES_MET_ANEMONE] == 0 || player.hasItem(consumables.MINOCUM)) {
+        if (flags[kFLAGS.TIMES_MET_ANEMONE] == 0 || player.hasItem(ConsumableLib.MINOCUM)) {
             flags[kFLAGS.TIMES_MET_ANEMONE]++;
             outputText("You step into the boat and begin to slip off the mooring rope when you are distracted by a swirl of bright colors under the surface of the lake.  As you peer over the side to get a better look at the oscillating mass of greens and purples, the swirl begins drawing closer to the boat as if reciprocating your interest; it grows larger and brighter as it closes the distance.  The cloud parts to reveal an attractive feminine face cast in a deep blue shade.  It lightens responsively as its gaze takes you in from the depths of two opaque eyes.  The confusing mass of colors resolves itself into tresses of two-inch-thick anemone tentacles sprouting from the head in place of hair!\n\n", false);
 
             outputText("The anemone girl smiles at you flirtatiously as she bobs up to the surface.  More out of politeness than anything you smile back, not sure of what to make of her and unused to such unaggressive approaches by the denizens of this place.  A bloom of vibrant color offset by the blue outline of her body causes you to lean farther out as your attention refocuses below her waist, where you perceive a smaller ring of tentacles waving at you from behind the head of a hardening penis!  Turned on by the attention, the anemone grabs onto the saxboard in an attempt to pull herself up to you, but her added weight on the side overbalances you and pitches you overboard into her waiting tentacles!\n\n", false);
 
-            if (player.hasItem(consumables.MINOCUM)) {
+            if (player.hasItem(ConsumableLib.MINOCUM)) {
                 minoCumForAnemonieeeeez();
                 return;
             }
@@ -625,7 +625,7 @@ export class AnemoneScene implements TimeAwareInterface {
     private giveMino(): void {
         spriteSelect(4);
         outputText("", true);
-        player.consumeItem(consumables.MINOCUM);
+        player.consumeItem(ConsumableLib.MINOCUM);
         outputText("You nod at the girl and she smiles and responds with a very quiet \"<i>Yay.</i>\"  As you pick up the rest of your stuff, she takes the top off of the bottle and chugs it like a champ, without even stopping to breathe.  Her eyes widen a bit as the drug hits her system, then narrow into a heavy-lidded stare.  Dropping the bottle with a splash, she falls to her knees with another.  She looks at you and licks her lips as she begins playing with her nipples. Obviously, she's feelin' good.  ", false);
         // [(lust<30)
         if (player.lust < 30) {
@@ -644,10 +644,10 @@ export class AnemoneScene implements TimeAwareInterface {
             // Normal male: -requires dick of area < 36
             if (player.cocks.length > 0) cockRape = rapeAnemoneWithDick;
             if (player.vaginas.length > 0) vaginaRape = rapeAnemoneWithPussy;
-            simpleChoices("Your ass", victoryButtholeRape, "Your Cock", cockRape, "Your Vagina", vaginaRape, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Your ass", victoryButtholeRape, "Your Cock", cockRape, "Your Vagina", vaginaRape, "", null, "Leave", Camp.returnToCampUseOneHour);
             return;
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // anal
@@ -1131,7 +1131,7 @@ export class AnemoneScene implements TimeAwareInterface {
             }
 
         }
-        addButton(9, "Back", inventory.stash);
+        addButton(9, "Back", Inventory.stash);
     }
 
     // [Item](only appears if hourssinceKiditem flag >= 16)
@@ -1141,54 +1141,54 @@ export class AnemoneScene implements TimeAwareInterface {
         let choice: number;
         let itype: ItemType;
         outputText("You reach down and pick up her present.  Today, she's left you ");
-        if (kidAXP() == 0) itype = consumables.DRYTENT;
+        if (kidAXP() == 0) itype = ConsumableLib.DRYTENT;
         else if (kidAXP() < 50) {
             /// [IncubusDraft/SuccubusMilk/ImpFood/MinoBlood/LargeAxe]
             choice = rand(8);
-            if (choice == 0) itype = consumables.INCUBID;
-            else if (choice == 1) itype = consumables.SUCMILK;
-            else if (choice == 2) itype = consumables.IMPFOOD;
-            else if (choice == 3) itype = consumables.GOB_ALE;
-            else if (choice == 4) itype = consumables.WETCLTH;
-            else if (choice == 5) itype = consumables.L_DRAFT;
-            else if (choice == 6) itype = consumables.W_FRUIT;
-            else itype = consumables.EQUINUM;
+            if (choice == 0) itype = ConsumableLib.INCUBID;
+            else if (choice == 1) itype = ConsumableLib.SUCMILK;
+            else if (choice == 2) itype = ConsumableLib.IMPFOOD;
+            else if (choice == 3) itype = ConsumableLib.GOB_ALE;
+            else if (choice == 4) itype = ConsumableLib.WETCLTH;
+            else if (choice == 5) itype = ConsumableLib.L_DRAFT;
+            else if (choice == 6) itype = ConsumableLib.W_FRUIT;
+            else itype = ConsumableLib.EQUINUM;
         }
         else if (kidAXP() < 75) {
             // White Book/Bee Honey/Ovi Elixir/Shark Tooth/S. Swimwear/Lust Draft/Bimbo Liqueur(same odds as player drop)
             choice = rand(6);
-            if (choice == 0) itype = consumables.W__BOOK;
-            else if (choice == 1) itype = consumables.BEEHONY;
-            else if (choice == 2) itype = consumables.OVIELIX;
-            else if (choice == 3) itype = consumables.SHARK_T;
-            else if (choice == 4) itype = armors.S_SWMWR;
-            else if (choice == 5) itype = consumables.L_DRAFT;
-            if (rand(100) == 0) itype = consumables.BIMBOLQ;
+            if (choice == 0) itype = ConsumableLib.W__BOOK;
+            else if (choice == 1) itype = ConsumableLib.BEEHONY;
+            else if (choice == 2) itype = ConsumableLib.OVIELIX;
+            else if (choice == 3) itype = ConsumableLib.SHARK_T;
+            else if (choice == 4) itype = ArmorLib.S_SWMWR;
+            else if (choice == 5) itype = ConsumableLib.L_DRAFT;
+            if (rand(100) == 0) itype = ConsumableLib.BIMBOLQ;
         }
         else if (kidAXP() < 100) {
             // Mino Blood/Large Axe/Comfortable Clothes/Lust Draft/Lust Dagger/Bro Brew(same odds as player drop)
             choice = rand(5);
-            if (choice == 0) itype = consumables.MINOBLO;
-            else if (choice == 1) itype = weapons.L__AXE;
-            else if (choice == 2) itype = armors.C_CLOTH;
-            else if (choice == 3) itype = consumables.L_DRAFT;
-            else if (choice == 4) itype = weapons.L_DAGGR;
-            if (rand(100) == 0) itype = consumables.BROBREW;
+            if (choice == 0) itype = ConsumableLib.MINOBLO;
+            else if (choice == 1) itype = WeaponLib.L__AXE;
+            else if (choice == 2) itype = ArmorLib.C_CLOTH;
+            else if (choice == 3) itype = ConsumableLib.L_DRAFT;
+            else if (choice == 4) itype = WeaponLib.L_DAGGR;
+            if (rand(100) == 0) itype = ConsumableLib.BROBREW;
         }
         else {
             // T.Shark Tooth/Pink Gossamer/Black Gossamer/Reptilum
             choice = rand(4);
-            if (choice == 0) itype = consumables.TSTOOTH;
-            else if (choice == 1) itype = consumables.S_GOSSR;
-            else if (choice == 2) itype = consumables.B_GOSSR;
-            else if (choice == 3) itype = consumables.REPTLUM;
-            if (rand(100) == 0) itype = consumables.BROBREW;
-            if (rand(100) == 0) itype = consumables.BIMBOLQ;
+            if (choice == 0) itype = ConsumableLib.TSTOOTH;
+            else if (choice == 1) itype = ConsumableLib.S_GOSSR;
+            else if (choice == 2) itype = ConsumableLib.B_GOSSR;
+            else if (choice == 3) itype = ConsumableLib.REPTLUM;
+            if (rand(100) == 0) itype = ConsumableLib.BROBREW;
+            if (rand(100) == 0) itype = ConsumableLib.BIMBOLQ;
         }
         outputText(itype.longName + ".");
-        if (itype == weapons.L__AXE) outputText("  Holy... how did she drag this thing home!?");
+        if (itype == WeaponLib.L__AXE) outputText("  Holy... how did she drag this thing home!?");
         outputText("\n\n");
-        inventory.takeItem(itype, playerMenu);
+        Inventory.takeItem(itype, playerMenu);
         // (set hourssinceKiditem = 0)
         flags[kFLAGS.KID_ITEM_FIND_HOURS] = 0;
     }
@@ -1199,7 +1199,7 @@ export class AnemoneScene implements TimeAwareInterface {
         spriteSelect(71);
         outputText("What do you want to give her?");
         function giveableToAnemone(item: ItemType): boolean {
-            return item == consumables.W__BOOK || item == consumables.B__BOOK || item == consumables.W_STICK || item instanceof Weapon;
+            return item == ConsumableLib.W__BOOK || item == ConsumableLib.B__BOOK || item == ConsumableLib.W_STICK || item instanceof Weapon;
         }
         menu();
         hideUpDown();
@@ -1211,7 +1211,7 @@ export class AnemoneScene implements TimeAwareInterface {
             }
         }
         if (!foundItem) outputText("\n<b>You have no appropriate items to have your offspring hold.</b>");
-        addButton(9, "Back", inventory.stash);
+        addButton(9, "Back", Inventory.stash);
     }
 
     private placeInAnemone(slot: number): void {
@@ -1234,7 +1234,7 @@ export class AnemoneScene implements TimeAwareInterface {
             outputText("Your anemone daughter will not be able to guard you at night without a weapon.  If you want her to guard, you'll need to give her a new weapon and tell her to watch at night again.  ");
             flags[kFLAGS.ANEMONE_WATCH] = 0;
         }
-        inventory.takeItem(itype, playerMenu);
+        Inventory.takeItem(itype, playerMenu);
         // (add weapon to inventory, then revert Kidweapon to empty)
         flags[kFLAGS.ANEMONE_WEAPON_ID] = 0;
     }
@@ -1267,7 +1267,7 @@ export class AnemoneScene implements TimeAwareInterface {
         // (if lust > 99, output)
         if (player.lust > 99) {
             outputText("You're way too horny to focus on any sort of weapon instruction right now, and the anemone can see it in your expression as your gaze wanders over her body; she blushes a deep blue and shrinks into her barrel with a shy glance.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("The anemone obediently climbs out of her barrel, ");
@@ -1281,17 +1281,17 @@ export class AnemoneScene implements TimeAwareInterface {
 
         // duel effects by weapon, output in new PG
         // [Pipe] or [Wizard Staff] or [Eldritch Staff]
-        if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.PIPE.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.W_STAFF.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.E_STAFF.id) {
+        if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.PIPE.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.W_STAFF.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.E_STAFF.id) {
             outputText("\n\nThough she acts like she's not serious and pulls her swings more often than not, the heft of the ");
-            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.PIPE.id) outputText("pipe");
+            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.PIPE.id) outputText("pipe");
             else outputText("stick");
             outputText(" is still enough to bruise you a bit.");
         }
         // (HP - 5, KidXP + 1)
         // [Riding Crop]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.RIDINGC.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.RIDINGC.id) {
             outputText("\n\nShe seems to enjoy smacking you with the riding crop, making sultry eyes at you and pursing her lips whenever she lands a crack on your [butt] or [chest].  So much so, in fact, that her own penis is betraying her arousal, bobbing in time as she swishes the weapon around.  The humiliation ");
             if (player.lib < 50) outputText("is");
             else outputText("isn't");
@@ -1302,7 +1302,7 @@ export class AnemoneScene implements TimeAwareInterface {
             kidAXP(6);
         }
         // [Lust Dagger]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L_DAGGR.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.L_DAGGR.id) {
             outputText("\n\nThe enchanted dagger is light enough for the anemone to use one-handed, and she makes a good practice of turning aside your mock blows with it while reaching in to stimulate you with her other hand.  For good measure, she nicks you with the blade itself whenever her caress elicits a distracted flush.");
             // (HP -5, lust +10, KidXP + 3)
             HPChange(-5, false);
@@ -1310,7 +1310,7 @@ export class AnemoneScene implements TimeAwareInterface {
             kidAXP(5);
         }
         // [Beautiful Sword]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.B_SWORD.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.B_SWORD.id) {
             outputText("\n\nThe sword seems to dance in the air, as though it were the perfect weight and balance for your daughter.  She delivers several playful thrusts at you and though you deflect all but the last, that one slips by your guard.  The girl's eyes widen as the point lunges at your breast, but it delivers barely a scratch before twisting away.");
             outputText("\n\nPerhaps anemones are a bit too corrupt to use the sword effectively?");
             // (HP -1, KidXP - 2)
@@ -1318,55 +1318,55 @@ export class AnemoneScene implements TimeAwareInterface {
             kidAXP(-2);
         }
         // [Jeweled Rapier] or [Raphael's Rapier]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.RRAPIER.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.JRAPIER.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.RRAPIER.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.JRAPIER.id) {
             outputText("\n\nThe rapier is light enough for the girl, but it takes a multitude of reminders before she handles the slender blade with the care and style it deserves.  She seems to regard it as little more than a tool for thwacking you in the butt that, coincidentally, has a pointy end.");
             // (no effect, señorita)
         }
         // [Large Axe], [Large Hammer], [Large Claymore], or [Huge Warhammer]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L__AXE.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L_HAMMR.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.WARHAMR.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L__AXE.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.L__AXE.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.L_HAMMR.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.WARHAMR.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.L__AXE.id) {
             outputText("\n\nShe can barely lift the weapon you've given her, although for a while she does manage to support one end with the ground and tilt it by the haft to ward off your blows with cleverness.  Distracting her by way of a feint, you part her from it and advance with a smile full of playful menace... whereupon she shrieks and pushes you backwards, causing you to trip over the weapon and fall with a crash.");
             // (HP - 5, KidXP - 4)
             kidAXP(-4);
             HPChange(-5, false);
         }
         // [Katana] or [Spellsword]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.KATANA.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.S_BLADE.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.KATANA.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.S_BLADE.id) {
             outputText("\n\nThe light sword and the light anemone seem to be a good match, and she actually manages to make several deft moves with it after your instruction.  One is a bit too deft, as she fails to rein in her swing and delivers a long, drawing cut that connects with your [leg].");
             // (HP - 20, KidXP + 2)
             kidAXP(4);
             HPChange(-20, false);
         }
         // [Spear]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SPEAR.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.SPEAR.id) {
             outputText("\n\nThe natural length of the spear and the anemone racial mindset to get close and communicate by touch don't mesh well; she chokes up well past halfway on the haft despite your repeated instruction and pokes at you from close range with very little force, the idle end of the weapon waggling through the air behind her.");
             // (HP -5, KidXP - 1)
             kidAXP(-1);
             HPChange(-5, false);
         }
         // [Whip] or [Succubi's Whip]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.WHIP.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SUCWHIP.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.WHIP.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.SUCWHIP.id) {
             outputText("\n\nThe whip seems almost like an extension of her hand once she decides its purpose is to tangle things up as opposed to lashing and lacerating flesh.  One of her overzealous swings finds you <i>both</i> tied in its coils; her petite body presses against yours as she colors in embarrassment.  Her distracted struggles to loosen the bonds accomplish little except to rub her sensitive parts along yours.");
-            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SUCWHIP.id) outputText("  The demonic enchantment chooses then to activate, and her color deepens as her lust peaks, as does your own.");
+            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.SUCWHIP.id) outputText("  The demonic enchantment chooses then to activate, and her color deepens as her lust peaks, as does your own.");
             outputText("  You feel a point digging into your groin as her prick hardens and her struggles cease; she begins to moan openly in arousal.  As she relaxes, the coils of the whip finally loosen enough for you to extricate yourself.");
             // (HP -0, lust +10 if normal whip or +20 if succubus, KidXP + 3)
             dynStats("lus", 10, "resisted", false);
-            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SUCWHIP.id) dynStats("lus", 10, "resisted", false);
+            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.SUCWHIP.id) dynStats("lus", 10, "resisted", false);
             kidAXP(6);
         }
         // [Spiked Gauntlets] or [Hooked Gauntlets]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.S_GAUNT.id ||
-            flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.H_GAUNT.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.S_GAUNT.id ||
+            flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.H_GAUNT.id) {
             outputText("\n\nThe anemone wears the gauntlets easily and comfortably, but doesn't seem to understand that to attack she needs to ball up her fists and swing them, no matter how many times you tell her.  The most she manages is to deflect a few of your mock lunges by batting them aside with the metal atop her knuckles.");
             // (no tigereffect)
         }
         // [Wingstick]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W_STICK.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == ConsumableLib.W_STICK.id) {
             outputText("\n\nThe girl stares at the stick, still uncomprehending how you intend her to use it.  One last time, you take the weapon from her and make a throwing motion, then return it.  She looks from it back to you once more, then tosses it at your head.  As it impacts with a clunk and your vision jars, she clutches her stomach in laughter.");
             // (HP - 10, set Kidweapon to empty, KidXP + 1)
             HPChange(-10, false);
@@ -1374,7 +1374,7 @@ export class AnemoneScene implements TimeAwareInterface {
             kidAXP(5);
         }
         // [Dragonshell Shield]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.DRGNSHL.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == WeaponLib.DRGNSHL.id) {
             outputText("\n\nYour protégé takes to the shield quite well, hiding behind it like... well, like a portable water barrel.  Even the way she peeks over the top is reminiscent.  She makes effective use of her cover, pushing forward relentlessly and delivering soft headbutts to spread venom to unprotected areas.");
             // (lust + 5, temp str/spd down, KidXP + 5)
             // str/spd loss reverts after clicking Next button
@@ -1382,13 +1382,13 @@ export class AnemoneScene implements TimeAwareInterface {
             dynStats("lus", 10, "resisted", false);
         }
         // [White Book]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W__BOOK.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == ConsumableLib.W__BOOK.id) {
             outputText("\n\nPart literacy training and part magic instruction, your progress through the book is painstakingly slow.  After almost an hour of trying to get the anemone to concentrate on the words, she finally manages to cause a small flash of white light on the page in front of her - whereupon she shrieks and drops the book, covering her head with her arms and backing away.");
             // (KidXP - 5)
             kidAXP(-5);
         }
         // [Black Book]
-        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.B__BOOK.id) {
+        else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == ConsumableLib.B__BOOK.id) {
             outputText("\n\nThe girl sits attentively with you, resting her head against your arm, as you teach her the words needed to evoke the formulae in the book.  When you suggest she try one out, however, she shakes her head with wide eyes.  Insisting, you stand apart from her and fold your arms.  Blushing a deep blue, the anemone resigns herself to focusing on your crotch as she mouths quiet syllables.  After a few moments, you actually feel a small glow of lust where she's staring.  The girl giggles nervously and looks away as you flush and your garments ");
             if (player.cocks.length > 0) outputText("tighten");
             else if (player.vaginas.length > 0) outputText("dampen");
@@ -1419,15 +1419,15 @@ export class AnemoneScene implements TimeAwareInterface {
         // if hp = 0 after tutor, override any other result and output new PG:
         if (player.HP < 1) {
             outputText("\n\nWith a groan, you fall flat on your back and close your eyes.  As if from far away, you hear ");
-            if (flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.S_GAUNT.id &&
-                flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.H_GAUNT.id) outputText("the thump of something hitting the ground and ");
+            if (flags[kFLAGS.ANEMONE_WEAPON_ID] != WeaponLib.S_GAUNT.id &&
+                flags[kFLAGS.ANEMONE_WEAPON_ID] != WeaponLib.H_GAUNT.id) outputText("the thump of something hitting the ground and ");
             outputText("the anemone gasp, and then the world slips away from you.");
 
             outputText("\n\n<b>Eight hours later...</b>");
             outputText("\nYour bleary eyes open to a familiar-looking upside-down blue face.  It takes a minute before your brain can reconstruct the events preceding your lapse in consciousness; as soon as your expression gives a hint of understanding, Kid A sheepishly greets you.");
             outputText("\n\n\"<i>Um... hi.</i>\"");
             // (lose 8 hours, restore HP amount consonant with 8hrs rest)
-            doNext(camp.returnToCampUseEightHours);
+            doNext(Camp.returnToCampUseEightHours);
             player.effects.create(StatusAffects.PostAnemoneBeatdown, 0, 0, 0, 0);
             return;
         }
@@ -1444,14 +1444,14 @@ export class AnemoneScene implements TimeAwareInterface {
 
                 outputText("\n\nAppearing to reach a decision, she reaches out and pats you apologetically on the head, then stands up and heads back to her barrel.");
                 // no effect on lust, pass 1 hour
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
         }
         // else if no HP or lust outcome triggered: pass 1 hour, gain 40 xp, increment fatigue by 10
         else {
             if (player.level < 10) player.XP += 30;
             fatigue(10);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1490,7 +1490,7 @@ export class AnemoneScene implements TimeAwareInterface {
             player.orgasm();
             dynStats("lus", 30);
             if (flags[kFLAGS.ANEMONE_KID] < 3) flags[kFLAGS.ANEMONE_KID] = 3;
-            doNext(camp.returnToCampUseTwoHours);
+            doNext(Camp.returnToCampUseTwoHours);
             return true;
         }
         // sex revisited, for when KidXP >= 40 and confidence is mounting
@@ -1573,7 +1573,7 @@ export class AnemoneScene implements TimeAwareInterface {
             // lose 100 lust, pass 2 hr, if Kidswag = 1, set Kidswag = 2
             player.orgasm();
             if (flags[kFLAGS.ANEMONE_KID] == 1) flags[kFLAGS.ANEMONE_KID] = 2;
-            doNext(camp.returnToCampUseTwoHours);
+            doNext(Camp.returnToCampUseTwoHours);
             return true;
         }
         // femsex
@@ -1602,7 +1602,7 @@ export class AnemoneScene implements TimeAwareInterface {
             player.slimeFeed();
             player.orgasm();
             if (flags[kFLAGS.ANEMONE_KID] == 1) flags[kFLAGS.ANEMONE_KID] = 2;
-            doNext(camp.returnToCampUseEightHours);
+            doNext(Camp.returnToCampUseEightHours);
             return true;
         }
         return false;
@@ -1629,7 +1629,7 @@ export class AnemoneScene implements TimeAwareInterface {
         outputText("\n\nThe two girls continue to greet each other in this fashion as their attention shifts away from you, and you wonder exactly what kind of pernicious meme you've inflicted on the anemone community.");
         // set Kidswag to -1, pass 1 hour
         flags[kFLAGS.ANEMONE_KID] = -1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // dreams: possible once KidXP >= 40; function as visible notice of sex-readiness
@@ -1722,9 +1722,9 @@ export class AnemoneScene implements TimeAwareInterface {
         if (kidAXP() < 40 || flags[kFLAGS.ANEMONE_WEAPON_ID] == 0) outputText("\n\nThe sharks notice as well and stand up, baring their teeth in wide, unwelcoming smiles.  Kid A whimpers and shuffles behind you, placing her hands on your back and attempting to push you in front of her.  Your shark-daughters watch in amusement as she tries to maneuver close enough to fill her waterskins while still using you as cover.  Awkwardly, she manages to cap them off and then departs as fast as she can.");
 
         // (else KidXP < 75 and Kidweapon = White Book or Black Book)
-        else if (kidAXP() < 40 && (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.B__BOOK.id || flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W__BOOK.id)) {
+        else if (kidAXP() < 40 && (flags[kFLAGS.ANEMONE_WEAPON_ID] == ConsumableLib.B__BOOK.id || flags[kFLAGS.ANEMONE_WEAPON_ID] == ConsumableLib.W__BOOK.id)) {
             outputText("\n\nThe anemone watches carefully for a bit, then hangs the skins over her shoulders and opens her book.  Focusing on the few words she can understand, she gestures toward the shark family and ");
-            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W__BOOK.id) outputText("blinds them with a sudden flash of white light");
+            if (flags[kFLAGS.ANEMONE_WEAPON_ID] == ConsumableLib.W__BOOK.id) outputText("blinds them with a sudden flash of white light");
             else outputText("turns deep blue as the various shark-girls clap their thighs together and look away from one another in embarrassment");
             outputText(".  Before any of them can react, she dives into the water and fills the waterskins, then hightails it away.");
         }
@@ -1734,7 +1734,7 @@ export class AnemoneScene implements TimeAwareInterface {
         }
         // (else)
         else outputText("\n\nThe anemone doesn't hesitate, but bursts into the middle of the shark-girls like a bomb, shrieking and making huge splashes, scattering them in multiple directions.  She quickly scoops up both skins' worth of water and then runs, giggling giddily with the shark-girls dogging her heels until she's halfway back to camp.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // goblins at night:

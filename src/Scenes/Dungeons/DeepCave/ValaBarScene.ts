@@ -343,7 +343,7 @@ export function valaCumBath2(): void {
     flags[kFLAGS.VALA_TIMES_CONSENSUAL_SEX]++;
     player.orgasm();
     dynStats("lib", -1.5);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Big Vala Intro
@@ -431,7 +431,7 @@ export function bigValaDomsPC(): void {
     outputText("\n\nYou lift her up out of the mess and carry her to the stream where you both clean up.  Vala murmurs, \"<i>My hero...</i>\" as you wash her, too wiped out to do it herself.  Vala recovers by the time you're getting re-dressed, and she gives you a surprisingly chaste, blushing kiss before she gets ready to depart.  The faerie seems to have some degree of magical affinity, as she's able to knit her dress back together with a bit of mental effort, and then she's fluttering away, calling out her goodbyes to you as she journeys back to Tel'Adre.");
     player.slimeFeed();
     player.orgasm();
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Big Vala: Lick Me (Requires Penor)
@@ -484,7 +484,7 @@ export function bigValaLicksOffDudes(): void {
     outputText("\n\nYou lift her up out of the mess and carry her to the stream where you both clean up.  Vala murmurs, \"<i>My hero...</i>\" as you wash her, too wiped out to do it herself.  Vala recovers by the time you're getting re-dressed, and she gives you a surprisingly chaste, blushing kiss before she gets ready to depart.  The faerie seems to have some degree of magical affinity, as she's able to knit her dress and your [armor] back together with a bit of mental effort, and then she's fluttering away, calling out her goodbyes to you as she journeys back to Tel'Adre.");
 
     player.orgasm();
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Intro to Vala + Vapula Threesomes
@@ -549,7 +549,7 @@ export function valaDommyVapula3Some(): void {
     player.orgasm();
     dynStats("cor", 1);
     player.slimeFeed();
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 // Giant Vala + Vapula Threesome - Vala Lovey Dovey
 export function valaLoveyVapula3Some(): void {
@@ -582,7 +582,7 @@ export function valaLoveyVapula3Some(): void {
     player.orgasm();
     dynStats("cor", 1);
     player.slimeFeed();
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 export function kinathisValaStuff(): void {
@@ -675,7 +675,7 @@ export function valaPartIIWaifuLove(): void {
     clearOutput();
     game.time.hours = 6;
     game.time.days++;
-    camp.sleepRecovery(false);
+    Camp.sleepRecovery(false);
     statScreenRefresh();
     outputText("Letting out a yawn, you curl up in the warm covers of the bed.  You sigh and smile as the smell of food wafts over you; it reminds you of your time back home.  The scent of frying meat and eggs soon becomes too much for your sleeping mind and rouses you from your slumber.  Stretching your body out, you look around and remember your night with Vala; you must have fallen asleep in her bed.  Unable to help yourself, you follow the mouth watering aroma to the kitchen and find the loving fairy-girl there.  Her gossamer wings flutter as she hovers at the stove, naked save for the apron she wears.  The sound of grease popping and crackling fills the air along with the smell of a savory, home cooked breakfast.");
 
@@ -686,5 +686,5 @@ export function valaPartIIWaifuLove(): void {
     outputText("\n\nWith her being as affectionate she is, you can't help but smile and stroke her.  This really was nice; you could see yourself enjoying many more times like this, but unfortunately you do have to get back to your duty.  Pulling Vala into a kiss, you squeeze her and hold her tightly against you for a moment before lifting her off you, telling the girl that you have to go.  She sighs, knowing that you have to get back to being her hero.  \"<i>I know, go and be the big strong hero I know you are, just make sure you come and visit me at the bar whenever you want,</i>\" she says before kissing you one last time and showing you to the door.  Breathing in the morning air, you head back to camp to check up on the place.");
 
     // [return to camp][set clock to 7am]
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }

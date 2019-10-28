@@ -61,7 +61,7 @@ export class SophieBimbo {
     public bimbotizeMeCaptainSophie(): void {
         sophieSprite();
         outputText("", true);
-        player.consumeItem(consumables.BIMBOLQ);
+        player.consumeItem(ConsumableLib.BIMBOLQ);
         outputText("A wicked idea takes hold of you while you watch the harpy ", false);
         if (monster.lust > 99) outputText("touch herself", false);
         else outputText("squirm in the dirt around her nest", false);
@@ -241,7 +241,7 @@ export class SophieBimbo {
         else if (player.lust >= 33) {
             addButton(0, "Sex", bimboSophieSexMenu);
         }
-        if (player.hasItem(consumables.DEBIMBO)) {
+        if (player.hasItem(ConsumableLib.DEBIMBO)) {
             addButton(4, "Debimbo", SophieFollowerScene.unbimboSophie);
             if (output) outputText("\n\n<b>You could use the bottle of debimbo to return Sophie's intellect...</b>");
         }
@@ -271,7 +271,7 @@ export class SophieBimbo {
 
         addButton(7, "Appearance", sophieBimboAppearance);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(9, "Leave", camp.campSlavesMenu);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(9, "Leave", Camp.campSlavesMenu);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
@@ -351,12 +351,12 @@ export class SophieBimbo {
     public get eggTypes(): any[] {
         if (_eggTypes == null) {
             _eggTypes = [
-                consumables.L_BLKEG,
-                consumables.L_BLUEG,
-                consumables.L_BRNEG,
-                consumables.L_PNKEG,
-                consumables.L_PRPEG,
-                consumables.L_WHTEG,
+                ConsumableLib.L_BLKEG,
+                ConsumableLib.L_BLUEG,
+                ConsumableLib.L_BRNEG,
+                ConsumableLib.L_PNKEG,
+                ConsumableLib.L_PRPEG,
+                ConsumableLib.L_WHTEG,
             ];
         }
         return _eggTypes;
@@ -412,7 +412,7 @@ export class SophieBimbo {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -460,7 +460,7 @@ export class SophieBimbo {
         }
         if (player.vaginas.length > 0) addButton(3, "Get Licked", bimboSophieLicksRugs);
         if (flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] > 0 && (player.gender > 0) && !pregnancy.isPregnant) {
-            if (player.hasItem(consumables.OVIELIX) || inventory.hasItemInStorage(consumables.OVIELIX)) {
+            if (player.hasItem(ConsumableLib.OVIELIX) || Inventory.hasItemInStorage(ConsumableLib.OVIELIX)) {
                 addButton(4, "Ovi Elixir", sophieEggApocalypse);
             }
             else outputText("\n\n<b>If you had an Oviposition Elixir in your inventory or camp storage, Sophie could have some fun with it...</b>", false);
@@ -479,7 +479,7 @@ export class SophieBimbo {
         outputText("You suggest she visit Izma again.  Maybe this time she won't get tied up again?");
         outputText("\n\nSophie squeals, \"<i>REAAALLY?</i>\" before taking off towards the other side of camp.  This should be good.");
         flags[kFLAGS.TOLD_SOPHIE_TO_IZMA] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Lipstick Resistance Building
@@ -642,7 +642,7 @@ export class SophieBimbo {
         }
         else {
             outputText("What do you do?", false);
-            simpleChoices("Sixtynine", bimboSophieSixtyNineAfterCunnilingus, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Sixtynine", bimboSophieSixtyNineAfterCunnilingus, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
         }
     }
     // SixtyNine Continuation - GOILS you're a wreckin' machine
@@ -720,7 +720,7 @@ export class SophieBimbo {
             dynStats("lib", 1, "sen", -1);
             SophieScene.luststickApplication(5);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private buttFuckBimboSophie(): void {
@@ -774,7 +774,7 @@ export class SophieBimbo {
         if (sophieIsInSeason()) sophiePregChance();
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // TitFuck
@@ -817,7 +817,7 @@ export class SophieBimbo {
         SophieScene.luststickApplication(5);
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Bimbo Sophie Camp Event – (If the player has an Ovi Elixir)
@@ -848,8 +848,8 @@ export class SophieBimbo {
         outputText("", true);
         let x: number = player.cocks.cockThatFits(sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
-        if (player.hasItem(consumables.OVIELIX)) player.consumeItem(consumables.OVIELIX);
-        else if (inventory.hasItemInStorage(consumables.OVIELIX)) inventory.consumeItemInStorage(consumables.OVIELIX);
+        if (player.hasItem(ConsumableLib.OVIELIX)) player.consumeItem(ConsumableLib.OVIELIX);
+        else if (Inventory.hasItemInStorage(ConsumableLib.OVIELIX)) Inventory.consumeItemInStorage(ConsumableLib.OVIELIX);
         outputText("Giving Sophie a sly smile, you pluck the Ovi Elixir from her talons and run a fingertip along her sharp jaw line as you move around her in slow, contemplative circles. The anticipation drives the slutty harpy mad, her chest heaving and mouth agape as she puffs moist breath over her thickly-lacquered, golden lips. Pausing behind her, you seize the enraptured woman's feathery hair with one hand, jerking her head back so suddenly she gasps before giggling uncontrollably. Popping the delicate glass stopper from the hexagonal bottle, you hold it several feet above her waiting mouth, tilting the vial ever so slowly until a tiny drop of the viridian ichor bubbles at the elixir's tip. Sophie sticks out her tongue, impatiently, wriggling it in the air, as if her sheer, lascivious desire could pull the potion into her gullet. Finally, agonizingly, you upend the potent brew into her gluttonous maw, the whore's expertly honed instincts catching the emerald fluid in her drool-slick mouth without missing a single drop. She rolls the mixture over her tongue, savoring the promise of the concoction before sealing her glistening mouth in the pleased pucker of a kiss, swallowing the load with a single, satisfied gulp.\n\n", false);
 
         outputText("Settling down next to Sophie, you can't help but notice that she looks thicker already. \"<i>OoOoOo...</i>\" she moans, \"<i>I can feel them inside my tummy! Sweet little eggs growing in mommy's belly.</i>\" She guides your hand to her midsection, your fingers stroking the soft flesh of her pouting abdomen. Sure enough, you can feel a tremor rippling through her womb as it expands with the surging growth of eggs. Cupping her dripping sex, you delight in the heat pouring off of her pussy, the promise of pregnancy thrilling the simple, sex-starved slut to vulgar wetness. You slip a few fingers into her creaming cunny, provoking a high-pitched squeal of pleasure from the squirming milf. She grinds her hips into you, drawing your honey-slick hand out from between her legs and pressing it against her belly again. It seems the eggs are still growing, and quite rapidly! Her gut has already expanded into an unmistakable bulge and every gurgling grumble from her body adds another inch to her waistline. \"<i>You have to fertilize me,</i>\" she begs with half-lidded eyes. \"<i>Mommy needs that thick spunk inside her,</i>\" she moans, face flushed, hands sliding between her legs, frantically rubbing her sopping snatch with both thumbs.\n\n", false);
@@ -868,15 +868,15 @@ export class SophieBimbo {
         dynStats("sen", -1);
         SophieScene.luststickApplication(2);
         // [player gains random large egg]
-        inventory.takeItem(consumables.LARGE_EGGS[rand(consumables.LARGE_EGGS.length)], camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.LARGE_EGGS[rand(ConsumableLib.LARGE_EGGS.length)], Camp.returnToCampUseOneHour);
     }
 
     // [Mommy]
     private beBimboSophiesSugarMommy(): void {
         sophieSprite();
         outputText("", true);
-        if (player.hasItem(consumables.OVIELIX)) player.consumeItem(consumables.OVIELIX);
-        else if (inventory.hasItemInStorage(consumables.OVIELIX)) inventory.consumeItemInStorage(consumables.OVIELIX);
+        if (player.hasItem(ConsumableLib.OVIELIX)) player.consumeItem(ConsumableLib.OVIELIX);
+        else if (Inventory.hasItemInStorage(ConsumableLib.OVIELIX)) Inventory.consumeItemInStorage(ConsumableLib.OVIELIX);
         outputText("Grinning, you playfully shrug. You suppose you can make a gift of it, if she's a good girl. Nodding energetically, Sophie puffs out her chest and stretches out her arms and wings, displaying her silvery plumage, vainly. \"<i>Don't you worry, Momma Sophie's done this a hundred times!</i>\" She flicks the bottle open and pours the green fluid into her mouth, her expression one of intense delight as the thick liquid splashes across her tongue, full of promise. She flutters into the air, barely able to lift her tremendous tits, and wraps her arms around your shoulders, legs hooking around your waist. Smiling sweetly, she leans in for a kiss and presses her glistening lips against yours, the heat of her aphrodisiac-laced lipstick coursing through your body instantly. You part your mouth to gasp softly and she uses the opening to deepen the kiss. Through the drugged excitement, you almost don't notice the cool elixir trickling into your mouth. You start to back away, but Sophie's muscular tongue forces your lips open and she eagerly snowballs more of the potion past your teeth, into your throat. Then, taking a big gulp herself, she nuzzles your nose with hers, gleefully. \"<i>Now we'll both be mommies!</i>\"\n\n", false);
 
         outputText("You try to throw the bimbo off of you in annoyance, but a trembling lurch from your abdomen robs you of your anger. Something strange is going on with the Ovi Elixir- the gradual process of its effects seem to be wildly accelerated. You're not sure if it's the drugged lipstick or something about Harpy saliva, but Sophie's kiss has clearly affected the potion. It seems she's suffering the same effects, at least: the harpy's belly swells against your skin with every passing moment, the skinny slut's waist ballooning under the impregnating draft. Your own tummy grows against hers and a wave of contentment thrills down your " + skin(player) + ", the weight of your swelling womb making your " + vaginaDescript(player, 0) + " drool in anticipation. Even your " + allBreastsDescript(player) + " feels heavier as your body is kicked into the depths of pregnancy in a matter of minutes. The mischievous harpy moans, stroking her belly with one hand while she grinds her pert nipples into your " + nippleDescription(player, 0) + ", getting off on the tension of your jutting bellies, distended with eggs, mushrooming against each other. Through her groping contact, you can feel the contents of your stretching womb gaining shape and firmness within you, the suddenness of the conception robbing you of your restraint. Despite yourself, you let out a whorish moan, your body clenching down in orgasm at your bloating growth.\n\n", false);
@@ -892,7 +892,7 @@ export class SophieBimbo {
         dynStats("sen", -1);
         // [player gains random large egg]
         SophieScene.luststickApplication(2);
-        inventory.takeItem(consumables.LARGE_EGGS[rand(consumables.LARGE_EGGS.length)], camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.LARGE_EGGS[rand(ConsumableLib.LARGE_EGGS.length)], Camp.returnToCampUseOneHour);
     }
 
     // Butts McGee
@@ -1052,7 +1052,7 @@ export class SophieBimbo {
         dynStats("lib", .5, "sen", -4);
         if (!nice && player.cor < 50) dynStats("cor", 1);
         SophieScene.luststickApplication(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // PREGNANCY EXPACK
@@ -1244,7 +1244,7 @@ export class SophieBimbo {
         clearOutput();
         sophieSprite();
         outputText("When you wake, Sophie is snuggled up next to you, her arms and legs wrapped around you affectionately.  A cup full of water, along with several strips of dried meat sit nearby... apparently she got them while you were out, knowing how thirsty and hungry you'd be.  You run your fingers through her platinum, down-soft hair.  Having a live-in bimbo isn't really all that bad.");
-        doNext(camp.returnToCampUseEightHours);
+        doNext(Camp.returnToCampUseEightHours);
     }
     // Too Big Impregnation Sex*
     // Sophie starts grinding on top, hypno-compelling you to get hornier and hornier until you flip her over and full-body titfuck her.  After the first jizz, you get a little winded and lay back, she remounts you and gets you to cum against her entrance, then she snuggles with you and slowly teases and orgasm denials you until you fucking explode and pass out cuddling with her.
@@ -1290,7 +1290,7 @@ export class SophieBimbo {
         clearOutput();
         sophieSprite();
         outputText("Sophie milks you through three more orgasms before she finally tires, and by that point, you're equally exhausted.  You snuggle up next to her and pass out, barely rousing when she begins kissing your manhood during the nap for a fourth helping of your spillable seed.  When you awaken nearly eight hours later, she's snoring soundly, with a skin of water and strips of dried meat left nearby for you to restore yourself.  Life with a bimbo isn't so bad!");
-        doNext(camp.returnToCampUseEightHours);
+        doNext(Camp.returnToCampUseEightHours);
     }
 
     // Sophie Move In Request Scene*
@@ -1323,7 +1323,7 @@ export class SophieBimbo {
         }
         outputText(" midriff and cushiony tits against you.  \"<i>You're awesome, [name], you know that?  You're totally " + mf(player, "hunky", "cute") + " AND awesome!</i>\"  She spins about, dancing happily and shaking her voluptuous backside in your direction as she goes.");
         flags[kFLAGS.SLEEP_WITH] = "Sophie";
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // No (Also Used To Kick Her Out Of Bed)*
     private noSophieSleepWith(): void {
@@ -1331,7 +1331,7 @@ export class SophieBimbo {
         sophieSprite();
         outputText("Sophie casts her eyes down and says, \"<i>I get it...  I'll just... sleep over in my nest then.  Alone...</i>\"  She shambles away, her tail feathers limp against her big, bouncing butt as she goes, clearly unhappy with the decision.  You can hear her sniffling even after she vanishes around a rock, trying not to cry.");
         if (flags[kFLAGS.SLEEP_WITH] == "Sophie") flags[kFLAGS.SLEEP_WITH] = "";
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Option To Move Her In Any Time If Initially Declined*
@@ -1345,7 +1345,7 @@ export class SophieBimbo {
         outputText("\n\n\"<i>Really?  Like, I can snuggle up next to you when you sleep while you use my boobs as pillows?!</i>\" she asks, unable to keep a girlish squeal of delight out of her voice.  Sophie bounces up and down; her wings flapping with wild excitement, nearly blinding you from the cloud of dust they kick up.  \"<i>I promise I won't bother while you sleep or anything, but maybe we could like, have quickies in the morning?</i>\"");
         outputText("\n\nYou roll your eyes and give her a thumbs up.  After all, you can't really sleep with a sex-crazed bimbo and NOT expect to be 'mounted' at some point.");
         flags[kFLAGS.SLEEP_WITH] = "Sophie";
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Sophie Morning Sex*
@@ -1402,7 +1402,7 @@ export class SophieBimbo {
         player.orgasm();
         dynStats("sen", -2);
         if (morning) doNext(playerMenu);
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pregnant Sophie Morning Sex*
@@ -1471,7 +1471,7 @@ export class SophieBimbo {
         player.orgasm();
         dynStats("sen", -2);
         if (morning) doNext(playerMenu);
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Very Pregnant Sophie Tit Jobs*
@@ -1555,7 +1555,7 @@ export class SophieBimbo {
         player.orgasm();
         dynStats("lib", 1, "sen", -2);
         SophieScene.luststickApplication(8);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Let Her*
@@ -1621,7 +1621,7 @@ export class SophieBimbo {
         player.orgasm();
         dynStats("lib", 1, "sen", -2);
         SophieScene.luststickApplication(8);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Sophie Births Egg*
@@ -1811,7 +1811,7 @@ export class SophieBimbo {
             else {
                 outputText("\n\nYou smile ruefully and direct her to turn her attentions back to her mother, who even now is flapping her wings excitedly, promising her daughter the many delights of adulthood she'll get to sample, once she gets her own mate.  You just hope she doesn't cause any trouble in camp.");
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // FIRST TIME:
         else {
@@ -1834,14 +1834,14 @@ export class SophieBimbo {
         outputText("is more than happy to return the sudden affection, her hands running over your body as she grinds against you teasingly.  With a firm open-palm spank to her rump, you release her, telling both harpies that you will play with them again very soon.  The two horny girls giggle together before talking about all the fun they will have.");
         dynStats("lus", 5);
         flags[kFLAGS.SOPHIE_FAMILY_INCEST] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [nono]
     private noToSophieIncest(): void {
         clearOutput();
         sophieSprite();
         outputText("Sliding your hand up to your daughter's cheek, you stroke her softly before running your fingers through her feathery hair.  Your soft touch draws a gentle, bird-like coo from your daughter.  You guide her down and tell her she should rest after such a transformation.  She should seek mates outside her family.  You don't want to encourage such blatantly sexual behavior so soon, and you sit her down in Sophie's nest to rest.  Instantly, her mother is at her side, fluttering excitedly and drawing her daughter into a conversation about you and all the fun she can have once she finds a mate of her own.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Izma dominating Sophie bondage.

@@ -75,11 +75,11 @@ export class Sirius extends Naga {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.urtaQuest.urtaBeatsUpSiriusRadio();
+        UrtaQuest.urtaBeatsUpSiriusRadio();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.urtaQuest.urtaLosesToSirriusSnakeRadio();
+        UrtaQuest.urtaLosesToSirriusSnakeRadio();
     }
 
     public constructor() {

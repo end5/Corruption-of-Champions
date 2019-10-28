@@ -187,8 +187,8 @@ export class CorruptedDrider extends AbstractSpiderMorph {
             this.level = 14;
             this.gems = rand(10) + 20;
         }
-        this.drop = new WeightedDrop().add(consumables.B_GOSSR, 5)
-            .add(useables.T_SSILK, 1)
+        this.drop = new WeightedDrop().add(ConsumableLib.B_GOSSR, 5)
+            .add(UseableLib.T_SSILK, 1)
             .add(null, 4);
         checkMonster();
     }

@@ -36,7 +36,7 @@ export class MinotaurKing extends Monster {
         this.level = 22;
 
         this.drop = NO_DROP;
-        drop = new WeightedDrop(consumables.PROMEAD, 1);
+        drop = new WeightedDrop(ConsumableLib.PROMEAD, 1);
 
         // I don’t know if we ever got multiple item drops set up for CoC. If we did, have this guy drop a five-stack of God’s Mead for the Lethice fight. Otherwise, perhaps drop a single item that will full heal once?
 

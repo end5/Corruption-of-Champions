@@ -57,11 +57,11 @@ export class MilkySuccubus extends AbstractSuccubus {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.urtaQuest.urtaBeatsUpCowcubi();
+        UrtaQuest.urtaBeatsUpCowcubi();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.urtaQuest.urtaLosesToCowCubi();
+        UrtaQuest.urtaLosesToCowCubi();
     }
 
     public teased(lustDelta: number): void {

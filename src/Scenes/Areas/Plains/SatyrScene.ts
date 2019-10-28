@@ -30,8 +30,8 @@ export class SatyrScene {
             else outputText("sodden expanse of the swamp");
             outputText(" when you hear strange music emanating not far from where you are.  Do you investigate?");
             // [Yes][No]
-            if (location == 0) doYesNo(createCallBackFunction(consensualSatyrFuck, 0), camp.returnToCampUseOneHour);
-            else doYesNo(createCallBackFunction(consensualSatyrFuck, 0), camp.returnToCampUseOneHour);
+            if (location == 0) doYesNo(createCallBackFunction(consensualSatyrFuck, 0), Camp.returnToCampUseOneHour);
+            else doYesNo(createCallBackFunction(consensualSatyrFuck, 0), Camp.returnToCampUseOneHour);
         }
     }
 
@@ -101,7 +101,7 @@ export class SatyrScene {
         outputText(".  This must be the work of that satyr!  Mentally, you remind yourself to watch out for him next time.  You clean yourself up as best as you can and redress, then wobble your way towards your camp, trying to stifle the pain, in your head and elsewhere, along the way.");
         // (8 hours lost) (PC is pregnant (either vagina or ass) with a satyr, slimefeed)
         satyrPreggo();
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // [=Leave=]
@@ -138,7 +138,7 @@ export class SatyrScene {
 
         player.gems += 10 + rand(10);
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [=Skip Foreplay=]
     private skipForeplay(): void {
@@ -230,7 +230,7 @@ export class SatyrScene {
             if (player.vaginas.length > 0) faces = femaleTakesAdvantageOfSatyr;
         }
         let bikiniTits: () => void = null;
-        if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
+        if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armor == ArmorLib.LMARMOR) bikiniTits = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
         simpleChoices("FuckHisButt", butt, "Ride Face", faces, "B.Titfuck", bikiniTits, "", null, "Leave", cleanupAfterCombat);
     }
     // Female (Z)
@@ -378,7 +378,7 @@ export class SatyrScene {
         player.slimeFeed();
         player.orgasm();
         satyrPreggo();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pregnancy Stuff (Z)

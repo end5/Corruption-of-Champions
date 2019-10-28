@@ -62,7 +62,7 @@ export class SecretarialSuccubus extends AbstractSuccubus {
         this.level = 7;
         this.gems = rand(25) + 10;
         this.additionalXP = 50;
-        this.drop = new WeightedDrop(consumables.LACTAID, 1);
+        this.drop = new WeightedDrop(ConsumableLib.LACTAID, 1);
         this.wingType = WING_TYPE_BAT_LIKE_TINY;
         this.wingDesc = "tiny hidden";
         this.tailType = TAIL_TYPE_DEMONIC;

@@ -71,12 +71,12 @@ export class SandWitch extends Monster {
         this.level = 3;
         this.gems = rand(15) + 5;
         this.drop = new WeightedDrop().addMany(1,
-            consumables.TSCROLL,
-            consumables.OVIELIX,
-            consumables.LACTAID,
-            consumables.LABOVA_,
-            consumables.W__BOOK,
-            consumables.B__BOOK,
+            ConsumableLib.TSCROLL,
+            ConsumableLib.OVIELIX,
+            ConsumableLib.LACTAID,
+            ConsumableLib.LABOVA_,
+            ConsumableLib.W__BOOK,
+            ConsumableLib.B__BOOK,
             null);
         this.special1 = lustMagicAttack;
         this.special2 = special2;

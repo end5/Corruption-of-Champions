@@ -54,7 +54,7 @@ export class GnollSpearThrowerScene {
     public hyenaSpearLossAnal(): void {
         spriteSelect(54);
         // Oh shit get anal raped.
-        if (player.hasItem(consumables.S_DREAM)) {
+        if (player.hasItem(ConsumableLib.S_DREAM)) {
             GnollScene.yoDawgIHeardULiekGNollBallzzzdahdakjldh();
             return;
         }

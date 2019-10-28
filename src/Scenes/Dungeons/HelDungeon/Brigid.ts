@@ -43,11 +43,11 @@ export class Brigid extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.brigidScene.pcDefeatsBrigid();
+        BrigidScene.pcDefeatsBrigid();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.brigidScene.pcDefeatedByBrigid();
+        BrigidScene.pcDefeatedByBrigid();
     }
 
     public constructor() {

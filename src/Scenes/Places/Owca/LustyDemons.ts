@@ -16,7 +16,7 @@ export class LustyDemons extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.owca.defeetVapulasHorde();
+        Owca.defeetVapulasHorde();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -24,7 +24,7 @@ export class LustyDemons extends Monster {
             outputText("\n\nThe demons smile to one at another as they watch your display, then close in...");
             doNext(game.endLustLoss);
         } else {
-            game.owca.loseOrSubmitToVapula();
+            Owca.loseOrSubmitToVapula();
         }
     }
 

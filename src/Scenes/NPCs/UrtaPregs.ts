@@ -194,7 +194,7 @@ export class UrtaPregs {
         clearOutput();
         outputText("You apologize to Urta, but you just really don't feel in the mood right now, and step away from her and start heading towards the door as quickly as politeness allows; if she really is as horny as she claims to be, you're not eager to give her too much temptation.  You pause at the door and look back; Urta looks a little hurt, but mostly resigned, and is clearly trying to calm herself down with breathing exercises.  Given the way one of the staff is approaching with a fresh bucket for her cock to drip into, you don't think it's working too well.");
         // PC leaves the Wet Bitch as per choosing to Leave ordinary Urta
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Urta Gives Birth
@@ -236,7 +236,7 @@ export class UrtaPregs {
             flags[kFLAGS.URTA_FIRSTBORN_COCKTYPE] = flags[kFLAGS.URTA_LATESTBORN_COCKTYPE];
         }
         flags[kFLAGS.NEED_URTA_LETTER] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Play new day begins text, plus the following:
@@ -411,7 +411,7 @@ export class UrtaPregs {
         game.time.hours = 6;
         statScreenRefresh();
         player.orgasm();
-        camp.sleepRecovery(false);
+        Camp.sleepRecovery(false);
         // PC Wakes with Urta
         outputText("As the morning sun shines on the blinds, you open your eyes.  Then you remember the events of the last day.  You spent the whole day with Urta, not having sex, just walking together and buying stuff for your newborn ");
         if (flags[kFLAGS.URTA_KIDS_MALES] == 1) outputText("son");
@@ -482,7 +482,7 @@ export class UrtaPregs {
         clearOutput();
         outputText("It's better if you don't.  You kiss Urta on the cheek and let her know you should really be going. \"<i>Sure you don't want to stick around for breakfast, lover?  It's no trouble to set an extra plate at the table,</i>\" Urta asks, even as she continues rocking the baby.  The idea is tempting but... you shake your head.  \"<i>All right, lover; be safe out there, and come back to us when you can.</i>\"  Urta says, cuddling her child a little more enthusiastically as you quietly see yourself out of the house.");
         // (Start day 1 hour later due to having to walk back to camp.)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Drink=]
@@ -504,7 +504,7 @@ export class UrtaPregs {
         outputText(" together... but that's a poor substitute if you don't ever come back.  Please, be careful with yourself, [name],</i>\" she tells you solemnly.  You kiss her goodbye, giving her shaft a teasing grope then step out of the room.");
         // Maybe lower Libido by -1?//
         dynStats("lib", -1, "lus", 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // PC Pregnancy Stages
@@ -596,7 +596,7 @@ export class UrtaPregs {
     private noHelpForUrtaPreggoPC(): void {
         clearOutput();
         outputText("You caress her cheek before saying a flat, \"<i>No</i>\".  Urta actually gives you puppy dogs eyes at that, then lets out a wounded-sounding huff.  \"<i>All right, [name]; I guess I better get back to work, then.  Now you take care of yourself; you've got a little one on board, now.</i>\"  She chastises you.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Yes=]
@@ -636,7 +636,7 @@ export class UrtaPregs {
         outputText("\n\n\"<i>Well, if you moved to civilization with me, then maybe I could practice on you,</i>\" the herm vixen grumbles, but it's obviously half-hearted at best.  You jokingly tell her that you're much too young to start having back problems due to being manhandled by her foxy paws.");
 
         outputText("\n\n\"<i>I'll remember that when you're swollen up like a melon and begging me to ease your cramps,</i>\" Urta retorts, poking her tongue at you and then laughing at her own silliness.  She hugs you and nuzzles against your neck.  \"<i>Take care, lover; you two are too important to me to vanish into these wastelands.</i>\"  She gently scolds you.  You wave her goodbye.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Decline=]
@@ -647,7 +647,7 @@ export class UrtaPregs {
         outputText("\n\nUrta sighs and nods her head.  \"<i>You're right, [name].  Still... I really don't feel comfortable leaving you alone out here, not in your condition.</i>\"  You confidently tell Urta that you can handle yourself.  \"<i>Still...</i>\" Urta says, almost whining in her unease.  Then she shakes her head.  \"<i>All right, I'm sorry, but, really, can you blame me?</i>\"");
 
         outputText("\n\nYou shake your head and pat her in the back, assuring her, one more time, that you'll be safe... and so will the baby.  Urta still looks like she has her doubts, but stays silent, kissing you goodbye before vanishing into the wilderness.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Accept=]
@@ -657,10 +657,10 @@ export class UrtaPregs {
 
         outputText("\n\nUrta smiles and throws her arms around you in a loving embrace.  \"<i>All right, [name], now let's get you back to your tent to lie down; you're getting too big to be up and about at all hours of the day now...</i>\"");
         outputText("\n\nThere's no need for her to be so worried, you're feeling fine... but you go along with what she's planning anyway.  The day is quite a blissful one for you; you get to spend it doing nothing but lounging around and enjoying yourself while Urta waits on you hand and foot, cooks meals, does the laundry, and otherwise handles everything that needs to be done.  When night comes, she insistently parks her furry butt right in your bedroll alongside you and won't be budged, so you have little choice but to cuddle with her for the night.  The next morning, you wake to a cooked breakfast, with Urta hand-feeding you more than half of it before she kisses you, says her goodbyes, and heads off again.");
-        camp.sleepRecovery(false);
+        Camp.sleepRecovery(false);
         game.time.days++;
         game.time.hours = 6;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // PC Gives Birth
@@ -769,7 +769,7 @@ export class UrtaPregs {
         outputText("\n\n\"<i>Once they found out I was pregnant, Nancy insisted on throwing a little celebration for me.  It's kind of flattering, really... I just wish I could enjoy the free drinks.</i>\"  She says, sighing and licking her lips as the drider begins dishing out yet more drinks to the thirsty crowd of regulars.");
 
         outputText("\n\nYou spend a little time celebrating with your vulpine lover, then politely excuse yourself and leave.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pregnant Cop is still Cop
@@ -786,7 +786,7 @@ export class UrtaPregs {
         outputText("\n\n\"<i>Just because I look like I ate a silver-winning pig all by myself does not mean I am some kind of pushover.  I didn't lose track of my skills when I lost sight of my feet.  Now, I suggest for both our sakes you just give up; you don't want to be known as the crook who got whipped by a pregnant woman, now do you?</i>\" she casually proclaims.");
 
         outputText("\n\nEdryn promptly trots up and helps Urta get back on her feet, promptly cantering off with a very sheepish (and slightly squished) prisoner in tow.  Urta gives you a playful wink and then wanders off, leaving you right back where you started.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Display Tel'adre menu options//
@@ -878,7 +878,7 @@ export class UrtaPregs {
         outputText("\n\nUrta pouts in disappointment.  \"<i>Fooey.</i>\"  She declares glumly.  \"<i>And here I was getting all worked up... you're such a tease.</i>\"  She heaves a sigh.  \"<i>All right, you go and do whatever... I'll just have to sit here and wait for this to go down.</i>\"");
 
         outputText("\n\nYou promise to help her with that some other time.  \"<i>All right, but I'll hold you to that, lover,</i>\"  Urta promises you.  You give the vixen a loving kiss and make your way out of the bar.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // New Talk Topic: Lianna
@@ -913,7 +913,7 @@ export class UrtaPregs {
         outputText("\n\n\"<i>Thanks, lover.  I'm sure you'll see that I didn't choose her for the wrong reasons, plus I'll be keeping a close eye on her.</i>\"  She winks at you.  \"<i>Now if you'll excuse me, I think I'll go check up on her, see you later?</i>\"   Urta kisses you goodbye and leaves the bar. You watch her go, order yourself a drink for the road, and set off yourself.");
 
         // (Back to camp/TA)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Pregnant Urta Sex
@@ -1040,7 +1040,7 @@ export class UrtaPregs {
         else outputText("You walk up to her with a smirk and remove her condom, then pour down its contents over her belly, chuckling to yourself.  Now that's a great cream topping for your lovely fox-herm.");
         outputText("  You walk out of her house, taking care to lock the door on your way out.");
         dynStats("lus", 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Boob Worship
@@ -1125,7 +1125,7 @@ export class UrtaPregs {
         outputText("\n\nYou kiss her goodbye");
         if (player.cocks.length > 0) outputText(", tasting a bit of yourself,");
         outputText(" and tell her you'll be back to check up on her later.  She gives you a sleepy smile and nods absently, already practically asleep.  You quickly find your [armor] and don them, leaving Urta to rest for a spell in her apartment.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Nurse
@@ -1201,7 +1201,7 @@ export class UrtaPregs {
         outputText("\n\nYou'll keep that in mind.  Having said that, you kiss her goodbye and find your [armor], then excuse yourself.");
         dynStats("lus", 20);
         fatigue(40);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Milk
@@ -1274,7 +1274,7 @@ export class UrtaPregs {
     private goHomeHorsecock(): void {
         clearOutput();
         outputText("You nod at Urta and gather your clothes, redressing in an instant.  Before going you ask if Urta needs anything.  She smiles and shakes her head, a soft smile on her face.  You bid her a good rest and leave her apartment.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Stay=]
@@ -1296,7 +1296,7 @@ export class UrtaPregs {
         outputText("\n\nShrugging, you find your clothes and redress yourself.  Once you're ready, you leave the apartment, remembering to lock the door as per Urta's request.");
 
         // (Consume 1 extra hour if you go this route.)
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
         fatigue(-50);
     }
 
@@ -1494,7 +1494,7 @@ export class UrtaPregs {
         outputText("tongue.  She yips in surprise, then moans as she eagerly sinks into your embrace, kissing you back with equal passion.  She suddenly breaks it, looking apologetic.  \"<i>Sorry, [name], but if we keep that up, I'll be wanting another round, and I have things to do.</i>\"  She pats your face apologetically and shifts herself, somewhat clumsily, out of the bed, gathering her clothes and starting to dress herself.");
         outputText("\n\nTaking that as your cue, you do likewise, and the two of you go your separate ways after locking the apartment up behind you.");
         dynStats("lib", -.5);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     // RapeFest
@@ -1627,7 +1627,7 @@ export class UrtaPregs {
         // Both choices converge here.
         outputText("\n\nIt takes a little work, but eventually the pair of you manage to get yourselves looking decent, though you've little doubt you still smell fairly strongly of sex.  Urta smiles, cuddles up against you and kisses you, then yawns.  \"<i>Well, I'm not pent up any more, but now I'm tired.  This baby could come any day now, so I need my sleep - I'm going home to take a nap, [name].  Take care of yourself, all right?</i>\" she tells you.");
         outputText("\n\nYou kiss her goodbye and step out.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Accept=]
@@ -1657,7 +1657,7 @@ export class UrtaPregs {
         outputText("\n\nIt takes a little work, but eventually the pair of you manage to get yourselves looking decent, though you've little doubt you still smell fairly strongly of sex.  Urta smiles, cuddles up against you and kisses you, then yawns.  \"<i>Well, I'm not pent up any more, but now I'm tired.  This baby could come any day now, so I need my sleep - I'm going home to take a nap, [name].  Take care of yourself, all right?</i>\" she tells you.");
         outputText("\n\nYou kiss her goodbye and step out.");
         dynStats("lus", player.sens / 10, "resisted", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (Urta's) Children Option - Required to visit her house
@@ -1713,7 +1713,7 @@ export class UrtaPregs {
         outputText("\n\n<b>You got the Key item: Urta's Key (Used at the 'Homes' menu in Tel'Adre.)</b>");
         // Description:  Spare key to Urta's house.  It is adorned with a small fox crest.
         player.keyItems.create("Spare Key to Urta's House", 0, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Kid Interactions
@@ -1817,7 +1817,7 @@ export class UrtaPregs {
             outputText("\n\nUrta all but blushes crimson in embarrassment.  \"<i>Give that here - you're too young to be playing with those!</i>\" she commands, lunging at the young fox-morph... who promptly skips away with a laugh, then runs for it, their siblings laughing as Urta gives quick chase, leaving you shaking your head at the strange family you've put together.");
         }
         flags[kFLAGS.NEW_BABY_ANNOUNCED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Hug Attack - (Special thanks to DeceivedTadpole)
@@ -1852,7 +1852,7 @@ export class UrtaPregs {
         outputText("You shake your head, telling your family that you're sorry but you have to go.  \"<i>Really?  All right... but, you should at least hang around long enough to take some on the go.</i>\"  Urta insists.  You tell her you'll be fine, but you'll definitely stop by to eat with them sometime.  Urta gives a melodramatic sigh and rolls her eyes, then nods and smiles.  \"<i>All right... just make sure you do.</i>\"  She tells you, then gives you a quick hug and a kiss.  \"<i>We worry about you out there; come home safe to us.</i>\"  She says, then lets you go.");
         outputText("\n\nYou give your lover a kiss, and wave goodbye as you step out.");
         // (Back to camp)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Yes=]
@@ -1884,7 +1884,7 @@ export class UrtaPregs {
             fatigue(-10);
             player.takeDamage(10);
             // Recover some fatigue due to excellent food, by Lianna.
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Repeat:
         else {
@@ -1898,7 +1898,7 @@ export class UrtaPregs {
             fatigue(-10);
             player.takeDamage(10);
             // Recover some fatigue due to excellent food, by Lianna.
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -2172,7 +2172,7 @@ export class UrtaPregs {
 
         outputText("\n\nYou tell her that you're sure; besides, it's probably time you got going anyway.  \"<i>All right then.</i>\"  She goes to the shower to rinse off.  Seeing no point in waiting after what you were just doing, you follow after her.  Once rinsed and dressed, you politely say your goodbyes to the skunkette and head off.");
         fatigue(-25);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     // [=Yes=]
@@ -2196,7 +2196,7 @@ export class UrtaPregs {
         outputText("\n\n\"<i>If you'll excuse me, I gotta go rinse off,</i>\" She says moving towards the shower.  Seeing no point in waiting after what you were just doing, you follow after her.  Once rinsed and dressed, you politely say your goodbyes to the skunkette and head off.");
         fatigue(-30);
         dynStats("lus", player.sens / 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Take the kids for a walk - Special thanks to Belin
@@ -2266,7 +2266,7 @@ export class UrtaPregs {
 
         outputText("\n\nGiven that the skunk is heading up to the bath herself, you decide to show yourself out and quietly leave.");
         fatigue(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Lianna/Urta's House
@@ -2573,7 +2573,7 @@ export class UrtaPregs {
         clearOutput();
         outputText("Lianna's face falls at your refusal, but she sighs.  \"<i>All right, I can understand; I mean, you must have your reasons.  Still, if ever you get a gender, remember that I'd be happy to use some of your seed, please.</i>\"");
         outputText("\n\nYou promise to keep that in mind, not necessarily meaning that, and then quietly redress and leave; there's no point to your being here, you can see.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [=Accept=]
     private acceptARandomGenderFromASkunk(): void {
@@ -2674,7 +2674,7 @@ export class UrtaPregs {
             outputText("\n\nShe swipes one of the ropes of cum sticking to her body and pops it into her mouth.  \"<i>Tasty.  I wonder if that was an effect of the potion or if you naturally taste good.  Something to test for sometime...</i>\"  By this point you've already gotten dressed, and you promptly leave as quickly as you can.  \"<i>See ya!</i>\"  You hear her yell after you, as you hurriedly make your way out.");
         }
         player.genderCheck();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Dildo-syringe
@@ -2730,7 +2730,7 @@ export class UrtaPregs {
         outputText("\n\nAs you lay there to savor the afterglow, the skunk suddenly sticks something hard and sweet in your mouth - it's a lollipop, just like the one she was using.  \"<i>You were very helpful and cooperative, so you deserve a lollipop.  Enjoy yourself and feel free to use my bed.  Now I have to go store and test your juices.</i>\"  She shakes the bottle, now filled with your juices, at you and enters her bathroom; a click indicating she's locked herself in.");
         outputText("\n\nYou sigh and shake your head.  When the strength comes back to your limbs, you redress yourself and leave; what a strange woman.  Still, this lollipop is quite nice - ooh!  Your favorite flavor, too!");
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Handjob
@@ -2797,6 +2797,6 @@ export class UrtaPregs {
 
         outputText("\n\nYou sigh and shake your head.  When the strength comes back to your limbs, you redress yourself and leave; what a strange woman.  Still, this lollipop is quite nice - ooh!  Your favorite flavor, too!");
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

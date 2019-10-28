@@ -22,7 +22,7 @@ export class Farm {
         if (flags[kFLAGS.FARM_DISABLED] == 1) {
             outputText("Whitney marches up to you as soon as you approach the farm, a stoic expression plastered across her face.");
             outputText("\n\n\"<i>What the fuck do you think you're doing here [name]? After what you did to Marble you still think you're welcome here? Leave. <b>Now</b>.</i>\"");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -39,7 +39,7 @@ export class Farm {
                 player.effects.addValue(StatusAffects.MetWhitney, 1, 1);
                 if (player.effects.getValue1Of(StatusAffects.MetWhitney) == 2) outputText("<b>You've been to the farm enough to easily find it.  You can return by selecting it from the places menu (and will no longer encounter it during random lake exploration)</b>.\n\n", false);
             }
-            inventory.takeItem(consumables.CANINEP, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.CANINEP, Camp.returnToCampUseOneHour);
         }
         // Repeat Offender
         else {
@@ -85,7 +85,7 @@ export class Farm {
             if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(0, "Explore", exploreFarm);
             if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(6, "Talk", talkWhitney);
             if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(7, "Work", workFarm);
-            addButton(9, "Leave", camp.returnToCampUseOneHour);
+            addButton(9, "Leave", Camp.returnToCampUseOneHour);
         }
     }
 
@@ -101,14 +101,14 @@ export class Farm {
             player.keyItems.create("Cock Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
             player.keyItems.remove("Cock Milker");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [NO]
     private whitneyMilkerRefusal(): void {
         spriteSelect(62);
         clearOutput();
         outputText("Whitney shrugs and the two of you resume your conversation.  But like all good things, it has to come to an end.  The two of you go your separate ways.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // TALK
     private talkWhitney(): void {
@@ -131,7 +131,7 @@ export class Farm {
 
             outputText("\n\n“<i>Those two are hard workers, in their own different ways. Doubt I’d be able to keep the farm going without them.</i>” She sighs. “<i>When you are out in the sticks like this, you have to make allowances for the people you find yourself lumped together with. Be understanding, and look for the good in everyone. If you set boundaries and stand firm by 'em you can get by with most anyone.</i>” She looks you in the eye. “<i>You should be careful how much time you spend around just anyone, though. Some folks don’t have your best interests at heart. Some others think they do, and they’re even more dangerous. Know what I mean?</i>” Not particularly, but you get the distinct impression you’re being warned about something. Feeling slightly unsettled, you politely take your leave. Whitney nods once and returns to her book, the picture of placidity.");
 
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -147,7 +147,7 @@ export class Farm {
 
             outputText("\n\n“<i> I had my reasons. I grew up in the country, </i>” she goes on after a short pause, “<i>and never held much with city life. Particularly not hot, dusty, close ‘n stinky city life. Course farm life is stinky too,</i>” she acknowledges as she heaves up the milk pail and starts to walk it towards a barn. You offer to help, but she shakes her head. “<i> But least here it’s stink you’ve created yourself. I moved out here eight years ago, and never regretted it. As for Urta... well, she was finding better friends at the bottom of bottles by then. </i>” She disappears into the barn with the milk, and you decide to leave it at that.");
 
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -190,7 +190,7 @@ export class Farm {
                 outputText("You notice a number of smaller bottles filled with a creamy fluid on the table, arranged in a cargo container. It takes you a moment to realize what it is. “<i>Why d’you think I pay you for it?</i> ” says Whitney with a laugh, catching your expression. “<i>I kin use some of it for my herd, but it’s just as easy to sell it to goblins ‘n harpies. Much better to buy it from me than to waste energy catching and beating it out of a satyr. 'Sides, how'd ya think I kept my hair so luxurious? Goblin hairdressers are top notch.</i>”");
             }
 
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -208,7 +208,7 @@ export class Farm {
 
             outputText("\n\nShe stops for such a long while that you wonder whether she’s finished. “<i>Could- could you recognise any of those prisoners? The ones from your town. You said some of em stayed even when you freed em. What did you think about that? I often wonder- is it better never to know what happened to somebody, or find em and discover nothing but a twisted shell of what you remember: a soulless monster who even likes what’s been done to em?</i>” She stops and you think you see tears glittering in eyes still gazing at the lake. You wait a little longer but evidently that’s all you’re getting. You put a hand on her shoulder and then quietly walk away.");
 
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -226,7 +226,7 @@ export class Farm {
 
             outputText("\n\nYou say goodbye with a hug and leave with a funny feeling in your gut.");
 
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
 
@@ -263,7 +263,7 @@ export class Farm {
                 }
                 else {
                     outputText("You don't have enough money for the milker.  You apologize and head back to camp, maybe you can get one later.", false);
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 return;
             }
@@ -290,20 +290,20 @@ export class Farm {
         if (player.inte < 30) dynStats("int", .5);
         if (player.inte < 40) dynStats("int", .5);
         dynStats("lus", -5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // +3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
     }
 
     private breastMilkerPurchase(): void {
         outputText("Whitney takes the gems and leaves with the promise of having your gear set up within the hour.  She calls back over her shoulder with a cryptic warning, \"<i>Watch how much time you spend getting milked like an animal, lest you wind up like one.</i>\"", true);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.keyItems.create("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
         player.gems -= 250;
         statScreenRefresh();
     }
 
     private breastMilkerNoPurchase(): void {
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         outputText("Whitney shrugs and the two of you chat about other things, just passing the time and enjoying a relatively normal chat.", true);
         // +3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
         if (player.inte < 15) dynStats("int", 1);
@@ -386,7 +386,7 @@ export class Farm {
             // always +1 str till 50, then 50% chance.
             if (player.str <= 50) dynStats("str", 1);
             else dynStats("str", rand(2));
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         spriteSelect(62);
@@ -395,22 +395,22 @@ export class Farm {
         // (75% chance normal pepper, 25% chance \"<i>rare</i>\" pepper)
         const pepper: number = rand(4);
         let itype: ItemType;
-        if (pepper <= 2) itype = consumables.CANINEP;
+        if (pepper <= 2) itype = ConsumableLib.CANINEP;
         else {
             temp = rand(5);
             // -Oversized Pepper (+size, thickness)
-            if (temp == 0) itype = consumables.LARGEPP;
+            if (temp == 0) itype = ConsumableLib.LARGEPP;
             // -Double Pepper (+grows second cock or changes two cocks to dogcocks)
-            if (temp == 1) itype = consumables.DBLPEPP;
+            if (temp == 1) itype = ConsumableLib.DBLPEPP;
             // -Black Pepper (Dark Fur, +corruption/libido)
-            if (temp == 2) itype = consumables.BLACKPP;
+            if (temp == 2) itype = ConsumableLib.BLACKPP;
             // -Knotty Pepper (+Knot + Cum Multiplier)
-            if (temp == 3) itype = consumables.KNOTTYP;
+            if (temp == 3) itype = ConsumableLib.KNOTTYP;
             // -Bulbous Pepper (+ball size or fresh balls)
-            if (temp == 4) itype = consumables.BULBYPP;
+            if (temp == 4) itype = ConsumableLib.BULBYPP;
         }
         trace("FARM SHIT: " + itype.shortName);
-        inventory.takeItem(itype, camp.returnToCampUseTwoHours);
+        Inventory.takeItem(itype, Camp.returnToCampUseTwoHours);
     }
 
     public meetMarble(): void {
@@ -471,13 +471,13 @@ export class Farm {
         }
         // Meet Marble First Time
         if (player.effects.findByType(StatusAffects.Marble) < 0 && player.effects.findByType(StatusAffects.NoMoreMarble) < 0) {
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             MarbleScene.encounterMarbleInitially();
             return;
         }
         // Meet kelt 1st time
         if (rand(2) == 0 && player.effects.findByType(StatusAffects.Kelt) < 0 && player.effects.findByType(StatusAffects.KeltOff) < 0) {
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             KeltScene.keltEncounter();
             return;
         }
@@ -513,14 +513,14 @@ export class Farm {
                 outputText("Whitney falls behind, unable to cope with your speed as you tear around the farm.", false);
             }
             outputText("\n\nAfterwards, the both of you lie back against a tree, panting heavily and exchanging pleasantries.  Once you've both had a chance to rest, she bids you farewell and returns to her labors, leaving you to journey home to camp.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Other stuff
         if (explore == 1) {
             outputText("After wandering around for a while, you find yourself atop a slight rise looking out over the farm and the distant lake. Despite the corruption you know is slowly consuming this land, being here now makes you feel so at peace you wish it could go on forever.", true);
             dynStats("cor", -rand(3));
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Cows
@@ -549,7 +549,7 @@ export class Farm {
                 dynStats("lus", 3);
             }
             outputText("Shaking your head, you clear your thoughts and turn away from the pasture. Cows don't have your problems.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (explore == 3) {
@@ -558,7 +558,7 @@ export class Farm {
         // [NOTHING]
         else {
             outputText("You wander around, unable to find anything entertaining on this patch of rural bliss.", true);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -805,7 +805,7 @@ export class Farm {
         if (player.effects.getValue1Of(StatusAffects.LactationEndurance) < 1.5) player.effects.addValue(StatusAffects.LactationEndurance, 1, .05);
         player.effects.addValue(StatusAffects.LactationEndurance, 1, .05);
         player.effects.create(StatusAffects.Milked, 8, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public cockPumping(): void {
@@ -1084,7 +1084,7 @@ export class Farm {
         }
         outputText(" on your way, whistling happily and feeling like taking a nap.", false);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private cowBadEnd1(): void {
@@ -1243,6 +1243,6 @@ export class Farm {
         outputText("(<b>Key Items Gained: Fake Mare and Centaur Pole</b>)", false);
         player.keyItems.create("Fake Mare", 0, 0, 0, 0);
         player.keyItems.create("Centaur Pole", 0, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

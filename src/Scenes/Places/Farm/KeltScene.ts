@@ -79,7 +79,7 @@ STATUSES:
                     player.effects.create(StatusAffects.KeltBadEndWarning, 0, 0, 0, 0);
                     outputText("You approach the farm, ready for another archery lesson.  Kelt is oblivious to your presence, busy practicing with his own bow for the moment.  The wind shifts and blows his musk your way.  Unconsciously, you breathe deeply, sending heat racing between your rear legs.  Alarm bells go off in your mind as you realize what his presence is doing to you, and you run away to your camp before he can notice you.  It's clear to you that you can't resist him much longer; the next time you meet him, you'll probably volunteer to become his brood-mare.  Perhaps you should avoid Kelt and the farm until you feel his influence less keenly.", true);
                     dynStats("lus", player.lib / 5 + 10);
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 else keltCentaurBadEnd();
                 return;
@@ -111,7 +111,7 @@ STATUSES:
         outputText("He touches a longbow that is strung around his chest.  The size of the bow is enough to convince you.  If he can draw back a bow that thick, he would surely have enough power to hit you from almost across the field.  A weapon like that could be very useful in fending off some of the monsters in this land.  The centaur notices you looking, and grins arrogantly.\r\r", false);
         outputText("\"<i>Like my bow?  As well you should.  This is a real warrior's weapon!  If you want to learn someday, visit me again.  Maybe if you're not too stupid, you will be able to learn something.  I won't cross my fingers.</i>\"\r\r", false);
         outputText("He laughs again derisively, and trots off.  You bristle slightly... he is irritatingly arrogant.  But if he can teach you to use a weapon like that, it may be worth putting up with his company...", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Naked Requirement
     private keltRequiresNakedness(): void {
@@ -140,11 +140,11 @@ STATUSES:
         outputText("You adamantly refuse, determined to not give this arrogant centaur the satisfaction.  Kelt sneers at you derisively, and gives you several pieces of advice as to what could fit up your rear end.  As his insults grow more colorful, you turn and leave; his mocking laughter follows behind you.  You resolve to not bother with him anymore.\r\r(Somehow you know you'll never encounter him again.)", true);
         // (Kelt never encountered again)
         player.effects.create(StatusAffects.KeltOff, 0, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Naked Requirement, Eagerly
     private keltEagerlyGetNaked(): void {
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         spriteSelect(35);
         outputText("", true);
         outputText("You have no problem stripping down naked in front of Kelt, even enjoying the process a little bit.  Judging by his leer, Kelt is enjoying it too.  He seems aroused by his power over you more than anything else... and you find yourself admitting that you're a little aroused by it as well.\r\r", false);
@@ -200,7 +200,7 @@ STATUSES:
     // Naked Requirement, Reluctantly
     private keltReluctantlyGetNaked(): void {
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         spriteSelect(35);
         outputText("", true);
         outputText("You are uncomfortable with the idea of being naked in front of this crude, cruel taskmaster.  But he is good at what he does, and if this is the only way to convince him to teach you, then you'll just have to get it over with.  You agree to his terms reluctantly, and begin to strip off your clothes.\r\r", false);
@@ -297,7 +297,7 @@ STATUSES:
         outputText("But the feeling is weaker now.  Whatever is was that kept you bound to him seems to be fading now, albeit slowly.  A shiver of desire runs through you, even so.  It may be a long recovery.\r\r", false);
         // (Kelt never encountered again)
         player.effects.create(StatusAffects.KeltOff, 0, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Blowjob Requirement, Shamefully
@@ -325,7 +325,7 @@ STATUSES:
         // (Blowjob Off, but activated.)
         // (+7 Submissiveness)
         player.effects.addValue(StatusAffects.Kelt, 2, 7);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Blowjob Requirement, Eagerly
@@ -355,7 +355,7 @@ STATUSES:
         player.effects.create(StatusAffects.BlowjobOn, 0, 0, 0, 0);
         // (+15 Submissiveness)
         player.effects.addValue(StatusAffects.Kelt, 2, 15);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Normal Encounter
@@ -530,7 +530,7 @@ STATUSES:
                 player.knockUp(PregnancyStore.PREGNANCY_KELT, PregnancyStore.INCUBATION_CENTAUR, 50);
                 // Should be equivalent to the old way, but now Kelt does all the usual things like checking for contraceptives and fertilizing eggs if PC can oviposit
                 if (player.pregnancyType == PregnancyStore.PREGNANCY_KELT) trace("PLAYER GOT KNOCKED UP BY KELT");
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             temporary = rand(5);
@@ -546,7 +546,7 @@ STATUSES:
                 dynStats("lus", 10);
                 // player.effects.addValue(StatusAffects.Kelt,1,4);
                 bowSkill(4);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // (No Breasts—Do standard Naked event)
@@ -578,7 +578,7 @@ STATUSES:
                 }
                 outputText("\"<i>Take it from me, bitch.  Know your place.  Breasts are for women, and women are for fucking until their bellies are full of foals.  'Teach me archery, Kelt!'  Ha!  Now that's a joke.</i>\"\r\r", false);
                 outputText("Flicking your erect teats painfully one last time, Kelt walks away, laughing loudly to himself.", false);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 // (+5 Submissive)
                 player.effects.addValue(StatusAffects.Kelt, 2, 5);
                 // player.effects.addValue(StatusAffects.Kelt,1,4);
@@ -602,11 +602,11 @@ STATUSES:
                 player.effects.addValue(StatusAffects.Kelt, 2, 5);
                 // player.effects.addValue(StatusAffects.Kelt,1,4);
                 bowSkill(4);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private keltMainEncounterPostBlowjob(): void {
@@ -647,7 +647,7 @@ STATUSES:
                 outputText("When Kelt pulls out, he leaves behind your ravaged asshole, spread wide and filled with cum.  You whimper as he withdraws, but are unable to move, unable to think.  You dimly hear him laughing at you again, and taste his cum once more as he dips a finger into your gaping asshole and presses it to your lips.\r\r", false);
                 outputText("\"<i>Now stay there for a while, bitch.  Let it get good and stuck up there.  Come back tomorrow, and maybe, if you're lucky, I'll fuck you again.  You do, after all, make a pretty good cumdump.</i>\"\r\r", false);
                 outputText("It's some hours later before you rouse yourself, clenching your ass as best as you can to keep the tide inside.  Despite your efforts, a steady trail oozes down your leg, marking your path as you slowly, happily trudge back to your camp.", false);
-                doNext(camp.returnToCampUseTwoHours);
+                doNext(Camp.returnToCampUseTwoHours);
                 player.slimeFeed();
                 // (+10 Submissiveness)
                 if (player.buttChange(70, true)) outputText("\r\r", false);
@@ -672,7 +672,7 @@ STATUSES:
                 // player.effects.addValue(StatusAffects.Kelt,1,3);
                 bowSkill(3);
                 dynStats("lus", 20, "cor", 1);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
         }
@@ -709,7 +709,7 @@ STATUSES:
         // (-5 Submissiveness)
         player.effects.addValue(StatusAffects.Kelt, 2, -5);
         dynStats("lus", 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (Submit)
     private keltSubmitGivingBJ(): void {
@@ -745,7 +745,7 @@ STATUSES:
         dynStats("lus", 5);
         // (+5 Submissiveness)*/
         player.effects.addValue(StatusAffects.Kelt, 2, 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Bad Ends
@@ -849,7 +849,7 @@ STATUSES:
         outputText("You suppress your anger for now.  Yes; Kelt's an asshole, but he's taught you a lot, and would it hurt to humor the cute stud?  You shake your head, uncomfortable with the out-of-place thought.  You leave in a hurry, unable to face your master.", true);
         // (+2 submission)
         player.effects.addValue(StatusAffects.Kelt, 2, 2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private fuckKeltsShitUp(): void {
@@ -980,6 +980,6 @@ STATUSES:
         player.orgasm();
         dynStats("int", 2, "cor", 4);
         player.effects.create(StatusAffects.KeltOff, 0, 0, 0, 0);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

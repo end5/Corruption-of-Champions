@@ -101,7 +101,7 @@ export class UrtaQuest {
         outputText("\n\nNodding, you give the girl a smile as you stand up to depart.  Her eyes twinkle happily as she watches you go.");
         Urta.urtaLove(5);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] += 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Yeesh(C)*
@@ -120,7 +120,7 @@ export class UrtaQuest {
         outputText("\n\nGood bitch...");
         Urta.urtaLove(1);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] += 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Who Cares(C)*
@@ -134,7 +134,7 @@ export class UrtaQuest {
         Urta.urtaLove(-10);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] -= 5;
         if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] < 1) flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Infertility Discussion(C)*
@@ -156,7 +156,7 @@ export class UrtaQuest {
         outputText("\n\n(<b>Encouraging her to visit the Covenant will begin a segment where you play as Urta for a time, and saving will be disabled.  It is recommended you decline and save first if you have not saved in some time.</b>)");
         menu();
         addButton(0, "Look Into It", startUrtaQuest);
-        addButton(1, "Maybe Later", camp.returnToCampUseOneHour);
+        addButton(1, "Maybe Later", Camp.returnToCampUseOneHour);
 
         mainView.hideMenuButton(MainView.MENU_DATA);
         mainView.hideMenuButton(MainView.MENU_APPEARANCE);
@@ -263,10 +263,10 @@ export class UrtaQuest {
         player.perks.create(PerkLib.HistoryFighter, 0, 0, 0, 0);
 
         // GEAR!
-        player.setWeapon(weapons.URTAHLB);
-        player.setArmor(armors.URTALTA);
-        // 	player.weapon = weapons.URTAHLB;
-        // 	player.armor = armors.URTALTA;
+        player.setWeapon(WeaponLib.URTAHLB);
+        player.setArmor(ArmorLib.URTALTA);
+        // 	player.weapon = WeaponLib.URTAHLB;
+        // 	player.armor = ArmorLib.URTALTA;
 
         // DISPLAY SOME SHIT YO
         clearOutput();
@@ -516,7 +516,7 @@ export class UrtaQuest {
             outputText("A confused-looking anemone with a " + ItemType.lookupItem(flags[kFLAGS.ANEMONE_WEAPON_ID]).longName + " nearly sees you, but you duck around a rock and escape her notice.  ");
         if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.HOLLI_DEFENSE_ON] > 0)
             outputText("A dangling tentacle nearly hits you in the dark.  You roll aside at the last moment, looking up to see dozens of the things idly dangling around.  When did this camp get such a corrupt tree in it?  You suppose it must have its uses in defending against foes from the sky...  ");
-        if (camp.companionsCount() > 2) outputText("There are a number of people in the camp, but you avoid them as you head towards " + player2.short + "'s bunk.  ");
+        if (Camp.companionsCount() > 2) outputText("There are a number of people in the camp, but you avoid them as you head towards " + player2.short + "'s bunk.  ");
         outputText("The camp looks pretty nice actually.  Living out here must have given " + player2.mf("him", "her") + " plenty of time to improve it.");
         outputText("\n\n" + player2.short + " is slumbering fitfully on " + player2.mf("his", "her") + " blanket.  " + player2.mf("He", "She") + " looks so cute, sleeping like this.  It's amazing how " + player2.mf("he", "she") + " has the courage to stay out here, day after day, month after month, guarding this portal to keep " + player2.mf("his", "her") + " village safe");
         if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) outputText(", no matter why " + player2.mf("he", "she") + " was sent here");
@@ -1085,7 +1085,7 @@ export class UrtaQuest {
         resetToPC();
         game.time.hours = 6;
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Urta's Attacks
@@ -2484,8 +2484,8 @@ export class UrtaQuest {
 
         outputText("\n\n<b>It's a fight!</b>");
         clearStatuses(false);
-        player.setWeapon(weapons.URTAHLB);
-        // player.weapon = weapons.URTAHLB;
+        player.setWeapon(WeaponLib.URTAHLB);
+        // player.weapon = WeaponLib.URTAHLB;
         startCombat(new MilkySuccubus(), true);
     }
 
@@ -2805,7 +2805,7 @@ export class UrtaQuest {
         outputText("\n\nYou give the matter some thought, and decide that the risk is worth it");
         if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) outputText(" - besides, given you know that you're nothing but a sacrifice the demons are too lazy to collect, it's not like they'll really send an invasion through");
         outputText(".  Urta's joyous expression makes it quite clear that you chose the right choice.  The two of you gather your things, dress Urta in her clothes as best you can (adding a blanket for extra protection and modesty), ");
-        if (camp.followersCount() >= 2) outputText("leave instructions to your fellow camp-dwellers to look after the place, ");
+        if (Camp.followersCount() >= 2) outputText("leave instructions to your fellow camp-dwellers to look after the place, ");
         outputText("and set off into the wasteland in the direction of Tel'Adre.  Urta needs to stop and rest on several occasions, weighed down by her sudden and highly advanced pregnancy, but she soldiers on without complaint, taking whatever support you give to her.  You can feel the strange god-child kicking incessantly inside her belly as you walk together.");
 
         outputText("\n\nBefore you know it, the two of you are being waved through the gates.  Edryn boggles at the sight of her friend swollen up with pregnancy, but doesn't protest as you assist Urta in clambering up onto the centauress' back. Together, the two of you manage to haul the unnaturally gravid fox to the Covenant's tower.  Countless guards have to be addressed at each step of the journey, but eventually, you're both brought to a comfortable chamber and allowed to rest... when the mages aren't busily probing Urta with magic, that is.  Urta has you stay by her side the entire time, and you do your best to continue supporting her, not leaving even when she falls asleep on your shoulder, completely tuckered out.  You snuggle up against her once the mages finally agree to let you snooze with her, under the vigilant eyes of your guards.  Rest comes surprisingly easy, despite the tensions of your present situation, and you drift off wondering how long it will take Urta to give birth.");
@@ -2844,7 +2844,7 @@ export class UrtaQuest {
         outputText("\n\nYou help her leave the tower, arm in arm, saying goodbye to her only after she's tucked tightly into her bed at home, to rest.  Urta gives you a teary kiss before you leave with a little swagger in your step.  You wonder if Taoth will help the Covenant, or if they've bitten off more than they can chew?  Either way, it seems there's a potent new ally on the field.");
         flags[kFLAGS.URTA_QUEST_STATUS] = 1;
         game.inCombat = false;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Urta Knocks Up PC with God Child
@@ -3014,7 +3014,7 @@ export class UrtaQuest {
         outputText("\n\nShe helps leave the tower, arm in arm, saying her goodbye only after she's tucked you in to take a rest.  Urta gives you a teary kiss and trots back towards the city with a swagger in her step.  You wonder if Taoth will help the Covenant, or if they've bitten off more than they can chew?  Either way, it seems there's a potent new ally on the field.");
         flags[kFLAGS.URTA_QUEST_STATUS] = 1;
         game.inCombat = false;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Urta Goes to Knock Up Edryn with God Child*
@@ -3026,7 +3026,7 @@ export class UrtaQuest {
         flags[kFLAGS.URTA_PREG_EVERYBODY] = Edryn.pregnancy.incubation; // Since they can't be in use prior to Taoth being born this is fine.
         Edryn.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_TAOTH, 24);
         game.inCombat = false;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Urta & Edryn God-child epilogue:*
@@ -3075,6 +3075,6 @@ export class UrtaQuest {
         // set completed tags!
         flags[kFLAGS.URTA_QUEST_STATUS] = 1;
         game.inCombat = false;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

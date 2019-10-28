@@ -394,9 +394,9 @@ export class Gnoll extends Monster {
         this.level = 14;
         this.gems = 10 + rand(5);
         this.drop = new ChainedDrop().
-            add(consumables.REDUCTO, 1 / 5).
-            add(consumables.SUCMILK, 1 / 2).
-            elseDrop(consumables.BLACK_D);
+            add(ConsumableLib.REDUCTO, 1 / 5).
+            add(ConsumableLib.SUCMILK, 1 / 2).
+            elseDrop(ConsumableLib.BLACK_D);
         checkMonster();
     }
 

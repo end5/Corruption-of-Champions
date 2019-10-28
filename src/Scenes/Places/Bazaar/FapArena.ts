@@ -386,33 +386,33 @@ export class FapArena {
             outputText("You quickly stand back up and start dressing yourself.  Before you go, the cute little referee hands you a small box, her coy smile and nude body somehow awakening " + sMultiCockDesc(game.player) + " again. Ye Gods, it never ends.  \"<i>Here's a little something for being the winner of this session.  Hope you enjoy your prize.  Come and play again!</i>\"", false);
             // You find [random item from the list: gro+, succubi's dream, large blue egg].
 
-            let itype: ItemType = consumables.GROPLUS;
+            let itype: ItemType = ConsumableLib.GROPLUS;
             switch (rand(3)) {
                 case 0:
-                    itype = consumables.GROPLUS;
+                    itype = ConsumableLib.GROPLUS;
                     break;
                 case 1:
-                    itype = consumables.S_DREAM;
+                    itype = ConsumableLib.S_DREAM;
                     break;
                 case 2:
-                    itype = consumables.L_BLUEG;
+                    itype = ConsumableLib.L_BLUEG;
                     break;
             }
             flags[kFLAGS.FAP_ARENA_VICTORIES]++;
             player.orgasm();
-            inventory.takeItem(itype, camp.returnToCampUseOneHour);
+            Inventory.takeItem(itype, Camp.returnToCampUseOneHour);
         }
         // [if you didn't win]
         else if (place == 2) {
             outputText("You awkwardly remove the dick from your ass and start dressing yourself.  Before you go, the cute little referee waves at you, her coy smile and nude body somehow awakening " + sMultiCockDesc(game.player) + " again.  Ye Gods, it never ends.  \"<i>I hope you enjoyed this session. Better luck next time...</i>\"", false);
             player.orgasm();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // [if you lost]
         else {
             outputText("You awkwardly remove the dick from your ass, start cleaning yourself from all the dirt and cum before leaving the tent.  Before you go, the nude referee approaches you and gently squeezes your " + cockDescript(game.player, x) + "; you still wince from the pounding it took earlier.  \"<i>Awww, looks like you had a rough time, didn't you?  Well, it happens sometimes.  Hopefully you will get better at this.  See you next game!</i>\"", false);
             player.orgasm();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
 
     }

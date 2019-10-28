@@ -172,7 +172,7 @@ export class IncubusMechanic extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 8;
         this.gems = rand(25) + 10;
-        this.drop = new WeightedDrop(consumables.GROPLUS, 1);
+        this.drop = new WeightedDrop(ConsumableLib.GROPLUS, 1);
         this.special1 = cockTripAttack;
         this.special2 = spoogeAttack;
         this.tailType = TAIL_TYPE_DEMONIC;

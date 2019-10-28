@@ -313,7 +313,7 @@ export class GooGirlScene extends AbstractLakeContent {
             let gooTF: () => void = null;
             // corrupt chances
             if ((flags[kFLAGS.GOO_TFED_MEAN] == 0 && flags[kFLAGS.GOO_TFED_NICE] == 0) && flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS] >= 2) {
-                if (player.cor < 50 && (player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && (player.hasItem(consumables.BLACKEG) || player.hasItem(consumables.L_BLKEG))) {
+                if (player.cor < 50 && (player.hasItem(ConsumableLib.SUCMILK) || player.hasItem(ConsumableLib.P_S_MLK)) && (player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG))) {
                     LatexGirl.pureGooRecruitmentStart();
                     return;
                 }
@@ -328,7 +328,7 @@ export class GooGirlScene extends AbstractLakeContent {
                     else {
                         outputText("\n\nAs you survey your victory, you remember the idea you had before - maybe if you drugged one of these things with a black egg and some succubi milk, you could make it your pet?");
                     }
-                    if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && (player.hasItem(consumables.BLACKEG) || player.hasItem(consumables.L_BLKEG))) {
+                    if ((player.hasItem(ConsumableLib.SUCMILK) || player.hasItem(ConsumableLib.P_S_MLK)) && (player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG))) {
                         outputText("  Good thing you have those handy!");
                         gooTF = LatexGirl.meanGooGirlRecruitment;
                     }
@@ -495,7 +495,7 @@ export class GooGirlScene extends AbstractLakeContent {
 
         outputText("You hurry away before the five oozes take an interest in you next.", false);
         dynStats("lus", (4 + player.cor / 10));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private layBeeEggsInGoo(): void {

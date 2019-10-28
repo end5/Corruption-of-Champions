@@ -40,7 +40,7 @@ export function leaveBeforeMeetingCandyCaneBun(): void {
     outputText("You're not willing to run the risk of getting a foreign cock stuffed up your [butt].");
     // (If corruption or libido>50)
     if (player.cor > 50 || player.lib > 50) outputText("  At least not right now.  You turn back, navigating your way back to your camp.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // INVESTIGATE
@@ -80,7 +80,7 @@ export function investigateCandyCaneBun(): void {
 export function declineCandyCaneCawks(): void {
     clearOutput();
     outputText("Turning around a tad awkwardly, you stumble out of the glade.  Tempting as he is, you don't have time to help the random bunny orgasm.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // YES
@@ -106,7 +106,7 @@ export function helpWithTheCandyCane(): void {
     else outputText("  Despite your rising urge to take advantage of the unknowing bunny, you decide to retire and return to camp.");
     // (Lust set to 100, hour passes.)
     dynStats("lib", 1, "sen", 1, "lus=", 100, "cor", -5, "resisted", false);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // 2. Abraxas's Christmas Chicken
@@ -124,7 +124,7 @@ export function getAChristmasChicken(): void {
 export function leaveXmasChicken(): void {
     clearOutput();
     outputText("Too exasperated by the plain absurdity of the situation to deal with it, you bury your face in your hands and decide to leave her to it.  Maybe some imps will shut her up for you.  You head back to camp with her piercing cries following you all the way, and prepare for the day ahead.  Her cries fade a while later; the snow thaws and the air warms soon after.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // [Talk]
@@ -297,7 +297,7 @@ export function skipOutAfterOpeningKamisBox(): void {
     outputText("You politely decline Kami's sexual advances, apologizing before making a turn for the door. You begin to wonder why you didn't buy anything at the bakery.");
     // [Return to Tel Adre, KamiEnc = 1]
     flags[kFLAGS.KAMI_ENCOUNTER] = 1;
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // [Player chooses 'Let's go!']
@@ -348,7 +348,7 @@ export function giveKamiTheChristmasRooAnal(): void {
     flags[kFLAGS.KAMI_ENCOUNTER] = 1;
     player.orgasm();
     dynStats("sen", -2);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // [Player selects 'Receive Anal']
@@ -384,7 +384,7 @@ export function takeItRooButtStyle(): void {
     // [Player heads back to camp, An hour passes, Asshole tightness is reduced, Lust is reduced to zero and KamiEnc = 1]
     player.orgasm();
     dynStats("sen", 1);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
     flags[kFLAGS.KAMI_ENCOUNTER] = 1;
 }
 
@@ -404,7 +404,7 @@ export function KamiBlowJob(): void {
     dynStats("lus", 20 + player.lib / 10 + player.sens / 10);
     // [Player heads back to camp, An hour passes, Lust = + 40 and KamiEnc = 1]
     flags[kFLAGS.KAMI_ENCOUNTER] = 1;
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 export function KamiDoubleDickFuck(): void {
@@ -424,7 +424,7 @@ export function KamiDoubleDickFuck(): void {
     player.orgasm();
     dynStats("sen", -3);
     flags[kFLAGS.KAMI_ENCOUNTER] = 1;
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // [Player can choose 'Winter Pudding']
@@ -540,7 +540,7 @@ export function unwrapPolarPete(): void {
     // end encounter
     // Receive \"<i>Peppermint White</i>\"
     player.orgasm();
-    inventory.takeItem(consumables.PEPPWHT, camp.returnToCampUseOneHour);
+    Inventory.takeItem(ConsumableLib.PEPPWHT, Camp.returnToCampUseOneHour);
 }
 
 // Leave
@@ -550,7 +550,7 @@ export function leaveDisFukkinPolarBear(): void {
 
     outputText("\n\n\"<i>A little something from me,</i>\" he says with a bright smile.  Despite your hesitation, something about this gesture seems genuine.  You nod your head taking the gift from him and leaving after a simple word of thanks.  You unwrap the gift after returning to a normal climate, inside you find a small crystal bottle filled with a white liquid that looks strangely familiar.  Popping the cork and smelling the contents fills your nose with the refreshing scent of mint. It smells delicious, though you resist the temptation and cork the bottle again.  You take it with you back to camp.\n\n");
     // Receive \"<i>Peppermint White</i>\"
-    inventory.takeItem(consumables.PEPPWHT, camp.returnToCampUseOneHour);
+    Inventory.takeItem(ConsumableLib.PEPPWHT, Camp.returnToCampUseOneHour);
 }
 
 // Sell \"<i>Peppermint White</i>\" for 50 gems or Drink it
@@ -617,9 +617,9 @@ export function nieveBuilding(): void {
         outputText("\n\nIt still needs eyes and a mouth.  Coal is the best option, but who knows how common that is around here?  Gems, you decide, are an acceptable stand-by.  It'd probably take 9 gems to complete, two for the eyes and seven for the mouth.");
         // [Coal (Only available if PC has coal)] [Gems]
         menu();
-        if (player.hasItem(consumables.COAL___)) addButton(0, "Coal", nieveCoalEyes);
+        if (player.hasItem(ConsumableLib.COAL___)) addButton(0, "Coal", nieveCoalEyes);
         addButton(1, "Gems", nieveGemEyes);
-        addButton(4, "Back", camp.returnToCampUseOneHour);
+        addButton(4, "Back", Camp.returnToCampUseOneHour);
     }
     // Fourth Step: The Nose
     else if (flags[kFLAGS.NIEVE_STAGE] == 3) {
@@ -636,23 +636,23 @@ export function nieveBuilding(): void {
         else {
             outputText("Unfortunately, you've yet to find one in your adventures.  You suppose you'll have to look more carefully.  Who knows, there might be a farm right under your nose.");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     else {
         outputText("Your snowman is done!  There's nothing more to add to it.  It looks mighty fine however, and just looking at it brings a nostalgia-fueled smile to your lips.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }
 // Coal
 // Add to previous text if possible?
 export function nieveCoalEyes(): void {
     clearOutput();
-    player.consumeItem(consumables.COAL___);
+    player.consumeItem(ConsumableLib.COAL___);
     outputText("Luckily, you happen to have two lumps of coal.");
     outputText("\n\nYou split the coal into smaller chunks, and place them evenly around the Snowman's face, creating a nice, vacant smile.  It still needs a nose, however, and for that, you'll need a carrot.  Perhaps there's a farm nearby, or maybe you could buy one somewhere?");
     flags[kFLAGS.NIEVE_MOUTH] = "coal";
     flags[kFLAGS.NIEVE_STAGE] = 3;
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 // Gems
 // Add to previous text if possible?
@@ -669,7 +669,7 @@ export function nieveGemEyes(): void {
     else {
         outputText("You open up your pouch, and frown.  Unfortunately, you don't have enough gems to create the eyes and mouth. With a sigh you march your broke ass back to camp.");
     }
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Snowwoman
@@ -678,7 +678,7 @@ export function nieveSnowWoman(): void {
     // Add to existing text if possible, rather than a new window?
     outputText("You grin mischievously to yourself and set about making two more balls of powdery snow.  It takes less time than any of the others, and before you know it you've attached two icy-breasts to the snowman.  They aren't terribly big, any heavier and you're sure they'd fall off, but they get the point across.");
     outputText("\n\nYour snowwoman still needs a face, of course, but you'll leave that until later.  For now, you head back into the main part of camp.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
     flags[kFLAGS.NIEVE_STAGE] = 2;
     flags[kFLAGS.NIEVE_GENDER] = 2;
 }
@@ -688,7 +688,7 @@ export function nieveSnowMan(): void {
     clearOutput();
     outputText("You decide to leave it as is. Not everything has to have breasts, of course, even in Mareth.");
     outputText("\n\nYour snowman still needs a face, of course, but you'll leave that until later.  For now, you head back into the main part of camp.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
     flags[kFLAGS.NIEVE_STAGE] = 2;
     flags[kFLAGS.NIEVE_GENDER] = 1;
 }
@@ -703,7 +703,7 @@ export function findACarrot(): void {
     outputText("\n\nYou stash the carrot away with a smile.  You've got a nose for your snowman!");
     outputText("\n\n(Gained Key Item: Carrot)");
     player.keyItems.create("Carrot", 0, 0, 0, 0);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 export function nieveMF(Man: string = "", Woman: string = ""): string {
@@ -757,7 +757,7 @@ export function yesKeepNieve(): void {
     outputText("  " + nieveMF("He", "She") + " doesn't seem to be a threat, and indeed seems sincere in the fact that " + nieveMF("he", "she") + " was sent here to be your lover.");
     outputText("\n\nNieve beams at you, \"<i>You won't regret it, [name]!  Just give me a little while to set up a cozy place here... then we can get cozy.</i>\"");
     outputText("\n\nYou return to your camp proper with a goofy smirk on your face.\n\n(<b>Nieve is now available in the Lovers menu.</b>)");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // No, because I'm an idiot.
@@ -769,7 +769,7 @@ export function noNoKeepNieve(): void {
     flags[kFLAGS.NIEVE_STAGE] = -1;
     flags[kFLAGS.NIEVE_GENDER] = 0;
     flags[kFLAGS.NIEVE_MOUTH] = "";
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Followers Menu
@@ -824,7 +824,7 @@ export function approachNieve(): void {
     outputText("\n\nNieve stops, gives you a friendly hug, and asks, \"<i>What can I do for you, [Master]?</i>\"");
     menu();
     addButton(0, "Sex", nieveSexMenu);
-    addButton(4, "Back", camp.campLoversMenu);
+    addButton(4, "Back", Camp.campLoversMenu);
 }
 
 // Sex Menu
@@ -847,7 +847,7 @@ export function nieveSexMenu(): void {
     // Any Gender
     // Nieve's cock is 9x1.5
     if (flags[kFLAGS.NIEVE_GENDER] == 1 && player.lust >= 33) addButton(1, "Get Fucked", nieveFucksYou);
-    addButton(9, "Back", camp.campLoversMenu);
+    addButton(9, "Back", Camp.campLoversMenu);
 }
 
 // Lick Her
@@ -898,7 +898,7 @@ export function lickNieve(): void {
         outputText("\n\nThe both of you thoroughly flustered, Nieve returns to the winter paradise and you go back to your duties.");
         dynStats("lus", -5 - player.sens / 5);
     }
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Suck Him by Kinathis
@@ -921,7 +921,7 @@ export function suckNieveOff(): void {
 
     outputText("\n\nLetting out a deep sigh you grin and look up, wanting to see the look on Nieve's face.  The iceborn man looks like he couldn't be happier, a silly smile on his face as he looks down at you.  \"<i>Oh [Master]... that was amazing, I've never met someone so skilled before.  I hope you're not too cold now,</i>\" he says with a hint of worry, knowing that his body and by extension, his cum, must be quite cold.  Reassuring him you tell your frosty friend you're fine and that he actually tasted pretty good. Looking quite pleased Nieve helps you up before sweeping you up into a squeezing hug.  \"<i>Thank you so much for this, but next time let me do you though, you need to be pleasured as well,</i>\" the elemental spirit says gently before helping you get cleaned up and ready for your adventures.");
     dynStats("lus", 10 + player.lib / 10, "resisted", false);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Fuck Her
@@ -1067,7 +1067,7 @@ export function fuckNieve(): void {
     outputText("\n\n\"<i>So messy, [Master],</i>\" she notes with a smile.  \"<i>Allow me to clean you up.</i>\"  Her cool mouth descends on your member, licking and sucking away all of your juices and hers, leaving you spotless.  She seems to delight in the flavor, and once she's done, she leans in and gives you a big, sloppy kiss that tastes more like mint than anything else.  She then cuddles up next to you, her cold body somehow comforting, until you've recuperated enough to head back to the camp proper.");
     player.orgasm();
     dynStats("sen", -2);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Get Fucked by Gurumash
@@ -1131,7 +1131,7 @@ export function takeNieveAnal(): void {
     outputText("\n\nYou both rest in that position, Nieve still trickling cum into you even though he stopped moving minutes ago.  You turn your head to look at him and notice his face a few inches from yours.  It's clear that at the moment he's barely conscious, and you shift a bit to kiss him, thanking him for a job well done.  After a little while you both recover, redress, and silently go back to business.  Looking back at him as you leave, you know you want to do it again real soon.");
     player.orgasm();
     dynStats("sen", -2);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Vaginal
@@ -1162,7 +1162,7 @@ export function takeNieveVaginal(): void {
     outputText("\n\nAnother hour passes and you wake up clean and dressed, laying next to Nieve.  You noticed he's probably been watching you for the last several minutes.  You get up, pat yourself off, then with one hand tussle his snow-white hair, while uttering the words, \"<i>Good boy.</i>\"");
     player.orgasm();
     dynStats("sen", -2);
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 // Goodbye (Outline by PyroJenkins)
@@ -1259,7 +1259,7 @@ function nieveReturnsPartII(): void {
     outputText("\n\n\"<i>I... I can still only stay the winter, at least for now, but it's something, right?</i>\" the snow spirit says, clasping your hand in theirs.");
     outputText("\n\nYou nod.  You'll take what you can get, even if it is such a brief moment.  The two of you share stories, well, you share stories while Nieve listens with rapt attention, for the next hour or so.  It's been a long time since you've seen each other, and there's a lot to catch up on...");
     flags[kFLAGS.NIEVE_STAGE] = 5;
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 /*Credits

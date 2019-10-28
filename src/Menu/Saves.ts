@@ -1054,8 +1054,8 @@ export class Saves {
 
             // trace("Type of saveFile.data = ", getClass(saveFile.data));
 
-            inventory.clearStorage();
-            inventory.clearGearStorage();
+            Inventory.clearStorage();
+            Inventory.clearGearStorage();
             player.short = saveFile.data.short;
             player.a = saveFile.data.a;
             game.notes = saveFile.data.notes;
@@ -1563,7 +1563,7 @@ export class Saves {
                 // Populate storage slot array
                 for (i = 0; i < saveFile.data.itemStorage.length; i++) {
                     // trace("Populating a storage slot save with data");
-                    inventory.createStorage();
+                    Inventory.createStorage();
                     const storage: ItemSlotClass = itemStorageGet()[i];
                     const savedIS: any = saveFile.data.itemStorage[i];
                     if (savedIS.shortName) {
@@ -1582,7 +1582,7 @@ export class Saves {
             // Set gear slot array
             if (saveFile.data.gearStorage == undefined || saveFile.data.gearStorage.length < 18) {
                 // trace("OLD SAVES DO NOT CONTAIN ITEM STORAGE ARRAY - Creating new!");
-                inventory.initializeGearStorage();
+                Inventory.initializeGearStorage();
             }
             else {
                 for (i = 0; i < saveFile.data.gearStorage.length && gearStorageGet().length < 20; i++) {

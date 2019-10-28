@@ -197,7 +197,7 @@ export class Cinnabar {
 
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [FUCK] – tracks if last fuck was huger + corrupteded version
@@ -329,7 +329,7 @@ export class Cinnabar {
         player.orgasm();
         dynStats("sen", 3, "cor", -2);
         player.takeDamage(25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (HUGER)
@@ -380,7 +380,7 @@ export class Cinnabar {
         outputText(".", false);
         player.orgasm();
         dynStats("sen", -4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (HUGE)
@@ -431,7 +431,7 @@ export class Cinnabar {
         outputText(".", false);
         player.orgasm();
         dynStats("sen", -3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Multi Cock Portals] – Requires 2 75+ cock area members and at least 3 total.
@@ -529,6 +529,6 @@ export class Cinnabar {
         outputText("While you're getting dressed, the repeated slurps and moans pause enough for Cinnabar to say, \"<i>I didn't mean to be rude... those dicks... those wonderful, plump cocks... they're a gift.  Come back soon " + mf(player, "stud", "baby") + ", your cream filling tastes gooood.</i>\"  She goes back to licking herself, and you can't help but have a huge grin as you walk out.", false);
         player.orgasm();
         dynStats("sen", -6);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

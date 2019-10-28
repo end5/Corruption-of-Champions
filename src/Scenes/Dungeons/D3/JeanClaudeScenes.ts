@@ -65,7 +65,7 @@ export class JeanClaudeScenes {
                 outputText("\n\nYou’re free to continue- but you will have to find an alternative route if you want to go back, unless you’re crazy enough to unlock the door and try the catwalk dash again.");
 
                 menu();
-                addButton(0, "Next", d3.move, "magpiehalln");
+                addButton(0, "Next", D3.move, "magpiehalln");
             }
         }
     }
@@ -182,7 +182,7 @@ export class JeanClaudeScenes {
 
         flags[kFLAGS.D3_BASILISKS_REMOVED_FROM_MAGPIE_HALL] = 1;
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
 
     }
 

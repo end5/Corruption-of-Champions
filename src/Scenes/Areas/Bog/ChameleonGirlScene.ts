@@ -183,8 +183,8 @@ export class ChameleonGirlScene {
         if (player.vaginas.length > 0) pussy = femaleHasWinSexWithChamCham;
         if (player.gender == 3) herm = fuckDatChameleonAsACoolGuyGirlHerm;
         // let PC use item
-        if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.cocks.length > 0) item = useAnItemOnTheChamcham;
-        else if (player.hasItem(consumables.SENSDRF) && (player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT))) item = useAnItemOnTheChamcham;
+        if ((player.hasItem(ConsumableLib.SUCMILK) || player.hasItem(ConsumableLib.P_S_MLK)) && player.cocks.length > 0) item = useAnItemOnTheChamcham;
+        else if (player.hasItem(ConsumableLib.SENSDRF) && (player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT))) item = useAnItemOnTheChamcham;
         simpleChoices("Use Dick", dick, "Use Pussy", pussy, "Herm Style", herm, "Use Item", item, "Leave", cleanupAfterCombat);
     }
 
@@ -279,8 +279,8 @@ export class ChameleonGirlScene {
         // optionz go herez
         let milk: () => void = null;
         let drafts: () => void = null;
-        if ((player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && player.cocks.length > 0) milk = giveTheChameleonASuccubiMilk;
-        if (player.hasItem(consumables.SENSDRF) && (player.hasItem(consumables.L_DRAFT) || player.hasItem(consumables.F_DRAFT))) drafts = doseDatChameleonWithLustAndSensitivityDrafts;
+        if ((player.hasItem(ConsumableLib.SUCMILK) || player.hasItem(ConsumableLib.P_S_MLK)) && player.cocks.length > 0) milk = giveTheChameleonASuccubiMilk;
+        if (player.hasItem(ConsumableLib.SENSDRF) && (player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT))) drafts = doseDatChameleonWithLustAndSensitivityDrafts;
 
         simpleChoices("SuccMilk", milk, "LustnSensD.", drafts, "", null, "", null, "Back", defeatChameleonGirl);
     }
@@ -308,9 +308,9 @@ export class ChameleonGirlScene {
 
         // send player back to camp, remove 1 succubi milk or p.milk, add gems and exp and time
         player.orgasm();
-        if (player.hasItem(consumables.P_S_MLK)) player.consumeItem(consumables.P_S_MLK);
+        if (player.hasItem(ConsumableLib.P_S_MLK)) player.consumeItem(ConsumableLib.P_S_MLK);
         else {
-            player.consumeItem(consumables.SUCMILK);
+            player.consumeItem(ConsumableLib.SUCMILK);
             dynStats("cor", 5);
         }
         cleanupAfterCombat();
@@ -354,9 +354,9 @@ export class ChameleonGirlScene {
             dynStats("lus", 20);
         }
         // send player back to camp, remove sens/fuck draft, reset hours since cum, add gems and exp and time
-        player.consumeItem(consumables.SENSDRF);
-        if (player.hasItem(consumables.L_DRAFT)) player.consumeItem(consumables.L_DRAFT);
-        else player.consumeItem(consumables.F_DRAFT);
+        player.consumeItem(ConsumableLib.SENSDRF);
+        if (player.hasItem(ConsumableLib.L_DRAFT)) player.consumeItem(ConsumableLib.L_DRAFT);
+        else player.consumeItem(ConsumableLib.F_DRAFT);
         cleanupAfterCombat();
     }
 }

@@ -140,7 +140,7 @@ export class Lilium {
 
         player.orgasm();
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // #########DICK RIDE SCENE######### REQUIRES VAGINA
@@ -196,7 +196,7 @@ export class Lilium {
         dynStats("cor", 1);
         // (imp preg check)
         player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14, 61); // Lilium causes faster pregnancies
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // #########NIPPLE FUCK SCENE######### REQUIRES PENIS
@@ -254,6 +254,6 @@ export class Lilium {
 
         outputText("You get dressed again and begin to leave; as you look back over shoulder, Lilium - still seated and leaning against the wall - blows you a kiss.", false);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

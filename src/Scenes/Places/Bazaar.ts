@@ -28,7 +28,7 @@ export class Bazaar {
         }
         outputText("\n\nDo you approach?", false);
         // [YES] [NOOOO]
-        doYesNo(approachBazaarGuard, camp.returnToCampUseOneHour);
+        doYesNo(approachBazaarGuard, Camp.returnToCampUseOneHour);
     }
 
     // [FUCK YES I WILL PUT IT IN YOUR BIZARRE ANUS]
@@ -38,8 +38,8 @@ export class Bazaar {
         if (player.cor < 33) outputText("Leave at once.  You are not yet ready for the wonders of the Bazaar.", false);
         else outputText("Welcome to the Bizarre Bazaar.  Enter, but be mindful of your actions within.", false);
         outputText("</i>\"", false);
-        if (player.cor < 33) simpleChoices("", null, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
-        else simpleChoices("Enter", enterTheBazaar, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        if (player.cor < 33) simpleChoices("", null, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
+        else simpleChoices("Enter", enterTheBazaar, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     public enterTheBazaar(): void {
@@ -111,7 +111,7 @@ export class Bazaar {
         addButton(6, roxanneT, roxanne2);
         addButton(7, "S. Squeeze", theSlipperySqueeze);
         addButton(8, "Tent", tent);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // Semen Bukkake and Massage Parlor
@@ -229,7 +229,7 @@ export class Bazaar {
         outputText("Thanking the cute bunny-boy for his help, you hand over the payment and head back to check on camp.", false);
         player.perks.create(PerkLib.Androgyny, 0, 0, 0, 0);
         dynStats("lus", 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Joey]
     private joeyMassage(): void {
@@ -327,7 +327,7 @@ export class Bazaar {
         if (player.lib > 80) dynStats("lib", -1);
         if (player.lib > 60) dynStats("lib", -1);
         if (player.sens > 40) dynStats("lib", -.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [CONTINUE – DRANK JOEY'S SPECIAL POTION]
@@ -379,7 +379,7 @@ export class Bazaar {
         if (player.lib > 80) dynStats("lib", -1);
         if (player.lib > 60) dynStats("lib", -1);
         if (player.sens > 40) dynStats("sen", -4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private joeyBigBalls(): void {
         outputText("", true);
@@ -410,9 +410,9 @@ export class Bazaar {
         outputText("", true);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00349] == 0) {
             outputText("You tell Joey that if he masturbates to erectness, his body should be able to shoot it out faster.  He smacks his forehead and runs into a back room, his thong disintegrating around his growing testes as he runs. The door slams, leaving you in peace.  A little freaked out, you head back to camp for now.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
-        else camp.returnToCampUseOneHour();
+        else Camp.returnToCampUseOneHour();
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00349]++;
     }
     // Suck Cum Out (not your garden-variety hoes)
@@ -446,7 +446,7 @@ export class Bazaar {
         outputText("\"<i>I cleaned out your balls; you can clean up the floor,</i>\" you joke as you leave, kissing him one last time on the mouth before you go.\n\n", false);
         outputText("Joey blushes again and begins looking for a mop.", false);
         dynStats("lus", 70);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private overHearDemonsAboutSyrena(): void {
@@ -563,7 +563,7 @@ export class Bazaar {
         outputText("\n\nYou nod and pull out your gems, counting out the exact amount for her.  As soon as you finish, Greta pulls you over the counter and kisses you on the lips, her tongue sensually assaulting your surprised palate. Before you can react, she pulls back with a hum of pleasure.");
         outputText("\n\n\"<i>Thanks, sugar!  Have fun and be safe, and if you don't want to be safe, come visit me sometime!</i>\"");
         outputText("\n\nYou'll have to keep that in mind...  ");
-        inventory.takeItem(armors.LMARMOR, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ArmorLib.LMARMOR, Camp.returnToCampUseOneHour);
     }
 
     // Cock-socks Available - First Time
@@ -918,7 +918,7 @@ export class Bazaar {
         outputText("\n\nJoey leaves, his rabbit tail bobbing to and fro.  You see his thong is distended, practically packed to the brim with more of his still-drooling chocolatey cum.  As usual, the waterproof thong seems to be pumping it all between his soft thighs and right into his already egg-filled asshole.  He really does like feeling full back there.  Kinky.");
         player.orgasm();
         dynStats("lib", -2, "sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Visit the Bizarre Bazaar at night.
@@ -1177,7 +1177,7 @@ export class Bazaar {
             game.time.hours = 6;
             // Lust sated
             // Gained 1 lust draft, lost a few gems(9 or so?)
-            inventory.takeItem(consumables.L_DRAFT, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.L_DRAFT, Camp.returnToCampUseOneHour);
             // Time set to morning
             statScreenRefresh();
         }
@@ -1209,7 +1209,7 @@ export class Bazaar {
             game.time.hours = 6;
             // Lust sated
             // Gained 1 lust draft, lost a few gems(9 or so?)
-            inventory.takeItem(consumables.L_DRAFT, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.L_DRAFT, Camp.returnToCampUseOneHour);
             // Time set to morning
             statScreenRefresh();
         }
@@ -1241,7 +1241,7 @@ export class Bazaar {
             game.time.hours = 6;
             // Lust sated
             // Gained 1 lust draft, lost a few gems(9 or so?)
-            inventory.takeItem(consumables.BIMBOLQ, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.BIMBOLQ, Camp.returnToCampUseOneHour);
             statScreenRefresh();
             // Time set to morning
         }

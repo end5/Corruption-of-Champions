@@ -68,7 +68,7 @@ export class TentacleBeastScene {
             outputText("The beast slaps you squarely on the ass as if to push you along. \"<i>Get the fuck out of here!</i>\" it screams. \"<i>Get lost so I can hunt me a REAL meal!!!</i>\"", false);
             outputText("You walk away from the creature, which hides back in the brush. After you trek a bit, you wonder if what happened really DID happen...", false);
             dynStats("lus", -5);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Combat starter
@@ -80,7 +80,7 @@ export class TentacleBeastScene {
         // Worms get nothing!
         if (player.effects.findByType(StatusAffects.Infested) >= 0) {
             outputText("It stops itself completely in a moment and twitches, as if sniffing the air, before turning around and disappearing into the underbrush.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (player.cor > 50) {
@@ -229,7 +229,7 @@ export class TentacleBeastScene {
                 outputText("\n\nThe beast slaps you squarely on the ass as if to push you along. \"<i>Get the fuck out of here!</i>\" it screams.  \"<i>Get lost so I can hunt me a REAL meal!!!</i>\"  ", false);
                 outputText("You walk away from the creature, which hides back in the brush. After you trek a bit, you wonder if what happened really DID happen...", false);
                 if (game.inCombat) cleanupAfterCombat();
-                else doNext(camp.returnToCampUseOneHour);
+                else doNext(Camp.returnToCampUseOneHour);
                 return;
             }
         }
@@ -254,7 +254,7 @@ export class TentacleBeastScene {
             monster.HP = 0;
             if (player.HP == 0) player.HP++;
             if (game.inCombat) cleanupAfterCombat();
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Bad end + counter here
@@ -340,7 +340,7 @@ export class TentacleBeastScene {
                 monster.HP = 0;
                 if (player.HP == 0) player.HP++;
                 if (game.inCombat) cleanupAfterCombat();
-                else doNext(camp.returnToCampUseOneHour);
+                else doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // has cock:
@@ -364,7 +364,7 @@ export class TentacleBeastScene {
                 player.orgasm();
                 dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
                 if (game.inCombat) cleanupAfterCombat();
-                else doNext(camp.returnToCampUseTwoHours);
+                else doNext(Camp.returnToCampUseTwoHours);
                 return;
             }
             // has cock, normal cum amount, anus == gaping:
@@ -374,7 +374,7 @@ export class TentacleBeastScene {
                 player.orgasm();
                 dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
                 if (game.inCombat) cleanupAfterCombat();
-                else doNext(camp.returnToCampUseTwoHours);
+                else doNext(Camp.returnToCampUseTwoHours);
                 return;
             }
             // { has vagina, anus < gaping:
@@ -386,7 +386,7 @@ export class TentacleBeastScene {
                 player.orgasm();
                 dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
                 if (game.inCombat) cleanupAfterCombat();
-                else doNext(camp.returnToCampUseTwoHours);
+                else doNext(Camp.returnToCampUseTwoHours);
                 return;
             }
             // { has cock, huge cum amount:
@@ -404,14 +404,14 @@ export class TentacleBeastScene {
                 monster.HP = 0;
                 if (player.HP == 0) player.HP++;
                 if (game.inCombat) cleanupAfterCombat();
-                else doNext(camp.returnToCampUseOneHour);
+                else doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // end (loss)
             player.orgasm();
             dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
             if (game.inCombat) cleanupAfterCombat();
-            else doNext(camp.returnToCampUseTwoHours);
+            else doNext(Camp.returnToCampUseTwoHours);
             return;
         }
         // Milk surprise!
@@ -469,7 +469,7 @@ export class TentacleBeastScene {
             monster.HP = 0;
             if (player.HP == 0) player.HP++;
             if (game.inCombat) cleanupAfterCombat();
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (player.gender == 1) {
@@ -589,7 +589,7 @@ export class TentacleBeastScene {
         }
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     private tentacleRapeContinuationForFemales(): void {
@@ -634,7 +634,7 @@ export class TentacleBeastScene {
         player.slimeFeed();
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Centaur v. Tentacle Monster: (display if pc is unsexed centaur)
@@ -701,7 +701,7 @@ export class TentacleBeastScene {
         }
         player.takeDamage(5);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Naga v. Tentacle Monster:
@@ -721,7 +721,7 @@ export class TentacleBeastScene {
         outputText("\"<i>Fucking tourists.</i>\"  It slams its tentacles down in a brutal blow, knocking you out.", false);
         player.takeDamage(15);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Goo v. Tentacle Monster:
@@ -750,6 +750,6 @@ export class TentacleBeastScene {
 
         outputText("It slams its tentacles down in a brutal blow, knocking you out.", false);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 }

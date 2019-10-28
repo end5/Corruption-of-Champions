@@ -31,7 +31,7 @@ const DUNGEON_HEL_MEZZANINE: number = 21;
 const DUNGEON_HEL_THRONE_ROOM: number = 22;
 
 export function takeGodsMead(): void {
-    inventory.takeItem(consumables.GODMEAD, playerMenu);
+    Inventory.takeItem(ConsumableLib.GODMEAD, playerMenu);
     flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED]++;
 }
 
@@ -62,17 +62,17 @@ export function tortureGear(): void {
 }
 
 function takeWhip(): void {
-    inventory.takeItem(weapons.SUCWHIP, playerMenu);
+    Inventory.takeItem(WeaponLib.SUCWHIP, playerMenu);
     flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] = 1;
 }
 
 function takeStraps(): void {
-    inventory.takeItem(armors.BONSTRP, playerMenu);
+    Inventory.takeItem(ArmorLib.BONSTRP, playerMenu);
     flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] = 1;
 }
 
 function takeDagger(): void {
-    inventory.takeItem(weapons.L_DAGGR, playerMenu);
+    Inventory.takeItem(WeaponLib.L_DAGGR, playerMenu);
     flags[kFLAGS.HEL_DUNGEON_TAKEN_DAGGER] = 1;
 }
 

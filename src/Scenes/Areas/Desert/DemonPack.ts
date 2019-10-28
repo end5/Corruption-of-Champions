@@ -107,10 +107,10 @@ export class DemonPack extends Monster {
         this.level = 6;
         this.gems = rand(25) + 10;
         this.drop = new WeightedDrop().addMany(1,
-            consumables.SUCMILK,
-            consumables.INCUBID,
-            consumables.OVIELIX,
-            consumables.B__BOOK);
+            ConsumableLib.SUCMILK,
+            ConsumableLib.INCUBID,
+            ConsumableLib.OVIELIX,
+            ConsumableLib.B__BOOK);
         this.special1 = game.packAttack;
         this.special2 = game.lustAttack;
         this.tailType = TAIL_TYPE_DEMONIC;

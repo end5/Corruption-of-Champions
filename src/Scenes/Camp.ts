@@ -13,16 +13,16 @@ export class Camp {
     }
 
     protected hasItemInStorage(itype: ItemType): boolean {
-        return inventory.hasItemInStorage(itype);
+        return Inventory.hasItemInStorage(itype);
     }
     /*
             protected function hasItemsInStorage():Boolean
             {
-                return inventory.hasItemsInStorage();
+                return Inventory.hasItemsInStorage();
             }
             protected function hasItemsInRacks(armor:Boolean = false):Boolean
             {
-                return inventory.hasItemsInRacks(armor);
+                return Inventory.hasItemsInRacks(armor);
             }
     */
 
@@ -85,7 +85,7 @@ export class Camp {
         if (flags[kFLAGS.HISTORY_PERK_SELECTED] == 0) {
             flags[kFLAGS.HISTORY_PERK_SELECTED] = 2;
             hideMenus();
-            charCreation.chooseHistory();
+            CharCreation.chooseHistory();
             // 		fixHistory();
             return;
         }
@@ -347,13 +347,13 @@ export class Camp {
             return;
         }
         // Bimbo Sophie finds ovi elixer in chest!
-        if (SophieBimbo.bimboSophie() && hasItemInStorage(consumables.OVIELIX) && rand(5) == 0 && flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] == 0 && player.gender > 0) {
+        if (SophieBimbo.bimboSophie() && hasItemInStorage(ConsumableLib.OVIELIX) && rand(5) == 0 && flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] == 0 && player.gender > 0) {
             SophieBimbo.sophieEggApocalypse();
             hideMenus();
             return;
         }
         // Amily + Urta freakout!
-        if (!urtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && rand(10) == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00146] >= 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.AMILY_NEED_TO_FREAK_ABOUT_URTA] == 1 && AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && !AmilyScene.pregnancy.isPregnant) {
+        if (!UrtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] == 0 && rand(10) == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00146] >= 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] == 0 && flags[kFLAGS.AMILY_NEED_TO_FREAK_ABOUT_URTA] == 1 && AmilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1 && !AmilyScene.pregnancy.isPregnant) {
             FollowerInteractions.amilyUrtaReaction();
             hideMenus();
             return;
@@ -421,7 +421,7 @@ export class Camp {
         let lovers: () => void = null;
         let slaves: () => void = null;
         let storage: () => void = null;
-        if (inventory.showStash()) storage = inventory.stash;
+        if (Inventory.showStash()) storage = Inventory.stash;
         // Clear stuff
         if (player.effects.findByType(StatusAffects.SlimeCravingOutput) >= 0) player.effects.remove(StatusAffects.SlimeCravingOutput);
         // Reset luststick display status (see event parser)
@@ -451,8 +451,8 @@ export class Camp {
             mainView.statsView.hideLevelUp();
         }
         // Build main menu
-        let exploreEvent: () => void = exploration.doExplore;
-        const masturbate: () => void = (player.lust > 30 ? masturbation.masturbateMenu : null);
+        let exploreEvent: () => void = Exploration.doExplore;
+        const masturbate: () => void = (player.lust > 30 ? Masturbation.masturbateMenu : null);
         clearOutput();
 
         outputText(images.showImage("camping"), false);
@@ -694,7 +694,7 @@ export class Camp {
         }
         // Menu
 
-        choices("Explore", exploreEvent, "Places", placesEvent, "Inventory", inventory.inventoryMenu, "Stash", storage, "Followers", followers,
+        choices("Explore", exploreEvent, "Places", placesEvent, "Inventory", Inventory.inventoryMenu, "Stash", storage, "Followers", followers,
             "Lovers", lovers, "Slaves", slaves, "", null, baitText, masturbate, restName, restEvent);
         // Lovers
         // Followers
@@ -1274,17 +1274,17 @@ export class Camp {
             return;
         }
         menu();
-        if (flags[kFLAGS.BAZAAR_ENTERED] > 0) addButton(0, "Bazaar", bazaar.enterTheBazaar);
-        if (player.effects.findByType(StatusAffects.BoatDiscovery) >= 0) addButton(1, "Boat", boat.boatExplore);
+        if (flags[kFLAGS.BAZAAR_ENTERED] > 0) addButton(0, "Bazaar", Bazaar.enterTheBazaar);
+        if (player.effects.findByType(StatusAffects.BoatDiscovery) >= 0) addButton(1, "Boat", Boat.boatExplore);
         if (flags[kFLAGS.FOUND_CATHEDRAL] == 1) {
             if (flags[kFLAGS.GAR_NAME] == 0)
-                addButton(2, "Cathedral", gargoyle.gargoylesTheShowNowOnWBNetwork);
-            else addButton(2, "Cathedral", gargoyle.returnToCathedral);
+                addButton(2, "Cathedral", Gargoyle.gargoylesTheShowNowOnWBNetwork);
+            else addButton(2, "Cathedral", Gargoyle.returnToCathedral);
         }
         if (dungeonFound()) addButton(3, "Dungeons", dungeons);
         addButton(4, "Next", placesPage2);
-        if (farmFound()) addButton(5, "Farm", farm.farmExploreEncounter);
-        if (flags[kFLAGS.OWCA_UNLOCKED] == 1) addButton(6, "Owca", owca.gangbangVillageStuff);
+        if (farmFound()) addButton(5, "Farm", Farm.farmExploreEncounter);
+        if (flags[kFLAGS.OWCA_UNLOCKED] == 1) addButton(6, "Owca", Owca.gangbangVillageStuff);
         if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) addButton(7, "Salon", Salon.salonGreeting);
         if (player.effects.getValue1Of(StatusAffects.TelAdre) >= 1) addButton(8, "Tel'Adre", TelAdre.telAdreMenu);
         addButton(9, "Back", playerMenu);
@@ -1311,7 +1311,7 @@ export class Camp {
         if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) addButton(0, "Deep Cave", enterZetazsLair);
         if (player.effects.findByType(StatusAffects.FoundFactory) >= 0) addButton(1, "Factory", enterFactory);
         if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] > 0) addButton(2, "Desert Cave", enterBoobsDungeon);
-        if (flags[kFLAGS.D3_DISCOVERED] > 0) addButton(3, "Stronghold", d3.enterD3);
+        if (flags[kFLAGS.D3_DISCOVERED] > 0) addButton(3, "Stronghold", D3.enterD3);
         addButton(9, "Back", places);
     }
 

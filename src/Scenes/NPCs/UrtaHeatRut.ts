@@ -257,7 +257,7 @@ export class UrtaHeatRut {
 
         outputText("\n\nSeeing her lying there so still makes you concerned and you quickly approach; you didn't want to kill her!  Thankfully, she's still breathing; she just passed out from the overload and from drinking too much.  Looking around you, you can see that an orgy is starting to break out around you, and you quickly make a break for it.  As you go, you can't help but wonder what in the world you were thinking...");
         dynStats("lust+", 20 + player.lib / 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Keep Teasing=]
@@ -283,7 +283,7 @@ export class UrtaHeatRut {
 
         // PC loses 1 hour, returns to TelâAdre, gains 15 lust, heat/rut unaffected//
         dynStats("lust+", 15 + player.lib / 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Sober Urta Variants
@@ -422,7 +422,7 @@ export class UrtaHeatRut {
         dynStats("lust=", 0);
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] += 6;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Quote:[=Sate Rut with Sober Urta: Cock Too Big=]
@@ -467,7 +467,7 @@ export class UrtaHeatRut {
         }
         dynStats("lib+", 1, "sen-", 2, "lust=", 0);
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] += 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         /// Player returns to Tel'Adre Menu, usual one hor passes//
     }
 
@@ -533,7 +533,7 @@ export class UrtaHeatRut {
         flags[kFLAGS.TIMES_RUT_FUCKED_URTAS_CUNT]++;
         dynStats("lib+", 1, "sen-", 2, "lust=", 0);
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] += 6;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Drunken Urta Variants
@@ -614,7 +614,7 @@ export class UrtaHeatRut {
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] += 24;
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
         Urta.urtaLove(1);
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // [Sate Rut with Drunken Urta â Cock too big]
@@ -663,7 +663,7 @@ export class UrtaHeatRut {
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] += 1;
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
         Urta.urtaLove(1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Quote:[Drunken Urta Fucks Cock]
@@ -872,7 +872,7 @@ export class UrtaHeatRut {
         Urta.urtaLove(1);
         flags[kFLAGS.TIMES_RUT_FUCKED_URTAS_CUNT]++;
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] += 24;
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     /*

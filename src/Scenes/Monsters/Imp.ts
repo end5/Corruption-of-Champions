@@ -4,7 +4,7 @@ export class Imp extends Monster {
         if (this.effects.findByType(StatusAffects.KitsuneFight) >= 0) {
             KitsuneScene.winKitsuneImpFight();
         } else {
-            game.impScene.impVictory();
+            ImpScene.impVictory();
         }
     }
 
@@ -14,9 +14,9 @@ export class Imp extends Monster {
         } else if (pcCameWorms) {
             outputText("\n\nThe imp grins at your already corrupted state...", false);
             player.lust = 100;
-            doNext(game.impScene.impRapesYou);
+            doNext(ImpScene.impRapesYou);
         } else {
-            game.impScene.impRapesYou();
+            ImpScene.impRapesYou();
         }
     }
 
@@ -91,9 +91,9 @@ export class Imp extends Monster {
         this.level = 1;
         this.gems = rand(5) + 5;
         this.drop = new WeightedDrop().
-            add(consumables.SUCMILK, 3).
-            add(consumables.INCUBID, 3).
-            add(consumables.IMPFOOD, 4);
+            add(ConsumableLib.SUCMILK, 3).
+            add(ConsumableLib.INCUBID, 3).
+            add(ConsumableLib.IMPFOOD, 4);
         this.special1 = lustMagicAttack;
         this.wingType = WING_TYPE_IMP;
         checkMonster();

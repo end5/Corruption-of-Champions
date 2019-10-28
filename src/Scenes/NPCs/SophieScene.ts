@@ -312,7 +312,7 @@ export class SophieScene implements TimeAwareInterface {
                 outputText("Your climb manages to take you back into the harpy nests again.  Sophie flutters down next to you and warns, \"<i>Cutey, a " + mf(player, "neuter", "girl") + " like you doesn't belong up here.  The younger harpies don't really get the idea of conversation and see you as competition.</i>\"\n\n", false);
 
                 outputText("Do you see the wisdom of her words and climb back down the mountain, fight Sophie, or keep climbing?", false);
-                simpleChoices("Fight Sophie", FirstTimeSophieForceSex, "Keep Climbing", PCIgnoresSophieAndHarpyIsFought, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                simpleChoices("Fight Sophie", FirstTimeSophieForceSex, "Keep Climbing", PCIgnoresSophieAndHarpyIsFought, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
                 return;
             }
             // (LACTATE)
@@ -325,7 +325,7 @@ export class SophieScene implements TimeAwareInterface {
                 return;
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         outputText("SOMETHING SCREWY HAPPENED IN SOPHIE'S MEETING", true);
         return;
     }
@@ -370,7 +370,7 @@ export class SophieScene implements TimeAwareInterface {
         // Otherwise leave.
         else {
             outputText("  You gulp and nod, understanding quite clearly that the harpies don't care for demons in their nesting grounds.  Sophie smiles and turns about, fluffing purple-tinted tail-feathers at you in what is clearly a dismissal.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("\"<i>Mmmm, have you gotten bored of the talk, ", false);
@@ -388,7 +388,7 @@ export class SophieScene implements TimeAwareInterface {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("Sophie pouts for a moment, leaning forward to better display her cleavage. \"<i>Really?  Well if you change your mind, come back and visit me.</i>\"  She turns around and fluffs her tail-feathers at you in what is clearly a dismissal.  You climb down, careful to avoid any other nests as you head back to check on your camp and its portal.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         if (player.lib > 25) dynStats("lib", -1);
         if (player.lust > 50) dynStats("lus", -5);
     }
@@ -405,10 +405,10 @@ export class SophieScene implements TimeAwareInterface {
             if (player.vaginas.length > 0) {
                 outputText("  What do you do?", false);
                 // [Stay&Sex] [Leave]
-                simpleChoices("Force Sex", FirstTimeSophieForceSex, "Leave", camp.returnToCampUseOneHour, "", null, "", null, "", null);
+                simpleChoices("Force Sex", FirstTimeSophieForceSex, "Leave", Camp.returnToCampUseOneHour, "", null, "", null, "", null);
                 return;
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // (Haz dick (male futa))
@@ -457,7 +457,7 @@ export class SophieScene implements TimeAwareInterface {
             dynStats("lus", (10 + player.lib / 4));
             if (player.inte < 50) dynStats("int", 1);
             // [Go to camp if neither of the above]
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -472,7 +472,7 @@ export class SophieScene implements TimeAwareInterface {
         // (+10 + libmod lust, +1 int up to 50 int))
         dynStats("lus", (10 + player.lib / 4));
         if (player.inte < 50) dynStats("int", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Harpy Breastfeeding]
@@ -577,7 +577,7 @@ export class SophieScene implements TimeAwareInterface {
         flags[kFLAGS.BREASTFEAD_SOPHIE_COUNTER]++;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
         // You've now been milked, reset the timer for that
         if (player.effects.findByType(StatusAffects.Feeder) >= 0) {
             player.effects.addValue(StatusAffects.Feeder, 1, 1);
@@ -746,7 +746,7 @@ export class SophieScene implements TimeAwareInterface {
         dynStats("lib", 1, "sen", 1);
 
         // 4 hours pass
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // [No]
@@ -756,7 +756,7 @@ export class SophieScene implements TimeAwareInterface {
         outputText("You turn down her offer and assure her that you'll be fine.  Sophie giggles while you try to get dressed, and you see her amber eyes watching you as try to climb back down the mountain with a stiffy.  She seems greatly amused by your predicament.", false);
         // (+sensitivity, +libido
         dynStats("lib", 1, "sen", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Consentual Sex No Fito]
@@ -919,7 +919,7 @@ export class SophieScene implements TimeAwareInterface {
                 // big clit girls
                 if (player.clitLength >= 5) clitFuck = fuckDatClit;
             }
-            if (player.hasItem(consumables.BIMBOLQ)) bimbo = SophieBimbo.bimbotizeMeCaptainSophie;
+            if (player.hasItem(ConsumableLib.BIMBOLQ)) bimbo = SophieBimbo.bimbotizeMeCaptainSophie;
         }
         if (dickRape != null || cuntFuck != null || clitFuck != null || bimbo != null) {
             outputText("  What do you do to her?", false);

@@ -326,10 +326,10 @@ export class FarmCorruption {
     }
 
     private getItemObj(flag: number): SimpleConsumable {
-        if (flag == kFLAGS.FARM_SUCCUMILK_STORED) return consumables.SUCMILK;
-        if (flag == kFLAGS.FARM_INCUDRAFT_STORED) return consumables.INCUBID;
+        if (flag == kFLAGS.FARM_SUCCUMILK_STORED) return ConsumableLib.SUCMILK;
+        if (flag == kFLAGS.FARM_INCUDRAFT_STORED) return ConsumableLib.INCUBID;
         if (flag == kFLAGS.FARM_EGG_STORED) return SophieBimbo.eggTypes[SophieBimbo.eggColors.indexOf(flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE])];
-        if (flag == kFLAGS.FARM_CONTRACEPTIVE_STORED) return consumables.HRBCNT;
+        if (flag == kFLAGS.FARM_CONTRACEPTIVE_STORED) return ConsumableLib.HRBCNT;
 
         trace("No valid argument given.");
         return null;
@@ -340,7 +340,7 @@ export class FarmCorruption {
 
         if (flag == kFLAGS.FARM_EGG_STORED) flags[kFLAGS.FARM_EGG_COUNTDOWN] = 7;
         flags[flag]--;
-        inventory.takeItem(item, afterTakeItems);
+        Inventory.takeItem(item, afterTakeItems);
     }
 
     private afterTakeItems(): void {
@@ -595,7 +595,7 @@ export class FarmCorruption {
 
         if (player.effects.findByType(StatusAffects.NoMoreMarble) < 0) flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0; // Don't have to care about recruitment paths -- she'll fuck off based on corruption before the player can corrupt the farm.
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected takeoverPromptLater(): void {
@@ -603,7 +603,7 @@ export class FarmCorruption {
 
         outputText("You stare for a moment longer, then turn and head back to camp. You will show mercy she does not deserve... for now.");
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected takeoverPromptNever(): void {
@@ -614,7 +614,7 @@ export class FarmCorruption {
 
         // (Option never displayed again, -5 Corruption)
         dynStats("cor-", 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public rootScene(): void {
@@ -753,7 +753,7 @@ export class FarmCorruption {
         if (loversAtFarm()) addButton(7, "Lovers", loversAtFarmMenu);
         if (followersAtFarm()) addButton(8, "Followers", followersAtFarmMenu);
 
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private corruptingTheFarmExplore(): void {
@@ -794,7 +794,7 @@ export class FarmCorruption {
         flags[kFLAGS.KELT_TALKED_FARM_MANAGEMENT] = 1;
         flags[kFLAGS.FOLLOWER_AT_FARM_KELLY] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private numSlavesAtFarm(): number {
@@ -893,7 +893,7 @@ export class FarmCorruption {
             flags[kFLAGS.WHITNEY_CORRUPTION_0_30_DROP_MESSAGE] = 1;
 
             if (flags[kFLAGS.WHITNEY_LEAVE_0_60] == 0) doNext(dogeNotCorruptLeaveFirstTime);
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
 
             return;
         }
@@ -906,7 +906,7 @@ export class FarmCorruption {
             outputText("\n\nYou wave in exasperation and leave; if that’s the way she wants it. If she’s working with you and your followers for any length of time, she’ll have to loosen up eventually.");
 
             if (flags[kFLAGS.WHITNEY_LEAVE_0_60] == 0) doNext(dogeNotCorruptLeaveFirstTime);
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
 
             return;
         }
@@ -1398,7 +1398,7 @@ export class FarmCorruption {
         flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] = 1;
         flags[kFLAGS.WHITNEY_DEFURRED] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private dontDeFurDoge(): void {
@@ -1468,7 +1468,7 @@ export class FarmCorruption {
 
         outputText("\n\n“<i>At once, [master]!</i>” The dog girl is on her feet and off towards the farm in one swift movement, new determination etched into her posture. Your take-over of the farm is complete; you should expect to see a larger share of the profits now that Whitney is your slave taskmaster, entirely bent on serving you.");
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private makeDogeDommy(): void {
@@ -1509,7 +1509,7 @@ export class FarmCorruption {
 
         flags[kFLAGS.WHITNEY_DOM] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private dogeCorruptedMissionComplete(output: boolean = true): void {
@@ -1689,7 +1689,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private cockOralTrainingStageOne(): void {
@@ -1724,7 +1724,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private firstCockOralTrainingStageTwo(): void {
@@ -1871,7 +1871,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private cockOralTrainingStageTwo(): void {
@@ -1928,7 +1928,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private firstCockOralTrainingStageThree(): void {
@@ -2063,7 +2063,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private cockOralTrainingStageThree(): void {
@@ -2209,7 +2209,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private cockOralTrainingMaxed(): void {
@@ -2331,7 +2331,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private firstVaginaOralTraining(): void {
@@ -2366,7 +2366,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vaginaOralTrainingStageOne(): void {
@@ -2395,7 +2395,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private firstVaginaOralTrainingStageTwo(): void {
@@ -2460,7 +2460,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vaginaOralTrainingStageTwo(): void {
@@ -2497,7 +2497,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private firstVaginaOralTrainingStageThree(): void {
@@ -2547,7 +2547,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vaginaOralTrainingStageThree(): void {
@@ -2615,7 +2615,7 @@ export class FarmCorruption {
 
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vaginaOralTrainingMaxed(): void {
@@ -2675,7 +2675,7 @@ export class FarmCorruption {
         player.orgasm();
         dynStats("sen-", 1);
         if (player.vaginas.wetness() < 5 && rand(4) == 0) player.vaginas[0].vaginalWetness++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private whitneyDomPleasure(): void {
@@ -2834,7 +2834,7 @@ export class FarmCorruption {
 
         player.orgasm();
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private whitneyDomStraponDoggy(): void {
@@ -2948,7 +2948,7 @@ export class FarmCorruption {
         outputText("\n\n“<i>I hope you feel suitably relaxed, [master],</i>” she says. “<i>Ready to take on the world and bring it to your heel? Me an’ this room will always be here when you need to get in touch with your true self.</i>”");
 
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public whitneyDomRide(): void {
@@ -3077,7 +3077,7 @@ export class FarmCorruption {
             player.orgasm();
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private brandingMenu(): void {
@@ -3406,7 +3406,7 @@ export class FarmCorruption {
 
         flags[kFLAGS.QUEUE_BRANDING_UPGRADE] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private dontGetBrandingStuff(): void {
@@ -3859,7 +3859,7 @@ export class FarmCorruption {
 
         outputText("\n\nYou tell her she’s done very well, before turning and leaving.");
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private tribalTattoo(slot: number): void {
@@ -3920,7 +3920,7 @@ export class FarmCorruption {
             flags[kFLAGS.AMILY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private jojoTribalTattoo(slot: number): void {
@@ -3949,7 +3949,7 @@ export class FarmCorruption {
             flags[kFLAGS.JOJO_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bimboSophieTribalTattoo(slot: number): void {
@@ -3981,7 +3981,7 @@ export class FarmCorruption {
             flags[kFLAGS.SOPHIE_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vapulaTribalTattoo(slot: number): void {
@@ -4011,7 +4011,7 @@ export class FarmCorruption {
             flags[kFLAGS.VAPULA_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private kellyTribalTattoo(slot: number): void {
@@ -4041,7 +4041,7 @@ export class FarmCorruption {
             flags[kFLAGS.KELLY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private smallMilkyTribalTattoo(slot: number): void {
@@ -4080,7 +4080,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bigMilkyTribalTattoo(slot: number): void {
@@ -4109,7 +4109,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bigMilkyHeartTattoo(slot: number): void {
@@ -4138,7 +4138,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bigMilkyPropertyOfTattoo(slot: number): void {
@@ -4167,7 +4167,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bigMilkyBathToyTattoo(slot: number): void {
@@ -4196,7 +4196,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bigMilkyMegaMilkTattoo(slot: number): void {
@@ -4206,7 +4206,7 @@ export class FarmCorruption {
         bigMilkyCollarboneIntro();
         flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bigMilkyCockCozyTattoo(slot: number): void {
@@ -4216,7 +4216,7 @@ export class FarmCorruption {
         bigMilkyCollarboneIntro();
         flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private heartTattoo(slot: number): void {
@@ -4277,7 +4277,7 @@ export class FarmCorruption {
             flags[kFLAGS.AMILY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private jojoHeartTattoo(slot: number): void {
@@ -4306,7 +4306,7 @@ export class FarmCorruption {
             flags[kFLAGS.JOJO_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bimboSophieHeartTattoo(slot: number): void {
@@ -4338,7 +4338,7 @@ export class FarmCorruption {
             flags[kFLAGS.SOPHIE_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vapulaHeartTattoo(slot: number): void {
@@ -4368,7 +4368,7 @@ export class FarmCorruption {
             flags[kFLAGS.VAPULA_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private kellyHeartTattoo(slot: number): void {
@@ -4398,7 +4398,7 @@ export class FarmCorruption {
             flags[kFLAGS.KELLY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private smallMilkyHeartTattoo(slot: number): void {
@@ -4437,7 +4437,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private smallMilkyPropertyOfTattoo(slot: number): void {
@@ -4476,7 +4476,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private smallMilkyBathToyTattoo(slot: number): void {
@@ -4515,7 +4515,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private smallMilkyMegaMilkTattoo(slot: number): void {
@@ -4527,7 +4527,7 @@ export class FarmCorruption {
         outputText("“<i>[name],</i>” [bathgirlName] groans with laughter, deep embarrassment coloring her tan cheeks as she looks down at what you’ve written. “<i>Everyone can see that!</i>” That’s the whole point you reply, with a rakish grin. She sighs in exasperation as you kiss her fondly on the forehead and take your leave.");
         flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private smallMilkyCockCozyTattoo(): void {
@@ -4539,7 +4539,7 @@ export class FarmCorruption {
         outputText("“<i>[name],</i>” [bathgirlName] groans with laughter, deep embarrassment coloring her tan cheeks as she looks down at what you’ve written. “<i>Everyone can see that!</i>” That’s the whole point you reply, with a rakish grin. She sighs in exasperation as you kiss her fondly on the forehead and take your leave.");
         flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public numMilkyButterflyTats(): number {
@@ -4633,7 +4633,7 @@ export class FarmCorruption {
             flags[kFLAGS.MILKY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private kellyHorseshoeTattoo(slot: number): void {
@@ -4644,7 +4644,7 @@ export class FarmCorruption {
         kellyShouldersIntro();
         flags[kFLAGS.KELLY_TATTOO_SHOULDERS] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private kellyPropertyOfTattoo(slot: number): void {
@@ -4674,7 +4674,7 @@ export class FarmCorruption {
             flags[kFLAGS.KELLY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private kellyNo1FillyTattoo(slot: number): void {
@@ -4704,7 +4704,7 @@ export class FarmCorruption {
             flags[kFLAGS.KELLY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private kellyDickWonTattoo(slot: number): void {
@@ -4734,7 +4734,7 @@ export class FarmCorruption {
             flags[kFLAGS.KELLY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private propertyTattoo(slot: number): void {
@@ -4795,7 +4795,7 @@ export class FarmCorruption {
             flags[kFLAGS.AMILY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private jojoPropertyTattoo(slot: number): void {
@@ -4824,7 +4824,7 @@ export class FarmCorruption {
             flags[kFLAGS.JOJO_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private jojoSissySlutTattoo(slot: number): void {
@@ -4853,7 +4853,7 @@ export class FarmCorruption {
             flags[kFLAGS.JOJO_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bimboSophiePropertyOfTattoo(slot: number): void {
@@ -4885,7 +4885,7 @@ export class FarmCorruption {
             flags[kFLAGS.SOPHIE_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vapulaPropertyOfTattoo(slot: number): void {
@@ -4915,7 +4915,7 @@ export class FarmCorruption {
             flags[kFLAGS.VAPULA_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vapulaCumAddictTattoo(slot: number): void {
@@ -4945,7 +4945,7 @@ export class FarmCorruption {
             flags[kFLAGS.VAPULA_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vapulaButtslutTattoo(slot: number): void {
@@ -4956,7 +4956,7 @@ export class FarmCorruption {
         vapulaLowerBackIntro();
         flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vapulaDildoPolisherTattoo(slot: number): void {
@@ -4986,7 +4986,7 @@ export class FarmCorruption {
             flags[kFLAGS.VAPULA_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bimboSophieSwallowTattoo(slot: number): void {
@@ -5018,7 +5018,7 @@ export class FarmCorruption {
             flags[kFLAGS.SOPHIE_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bimboSophieBreedingBitchTattoo(slot: number): void {
@@ -5050,7 +5050,7 @@ export class FarmCorruption {
             flags[kFLAGS.SOPHIE_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bimboSophieCockGoesHereTattoo(slot: number): void {
@@ -5061,7 +5061,7 @@ export class FarmCorruption {
         bimboSophieLowerBackIntro();
         flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private bimboSophieWideLoadTattoo(slot: number): void {
@@ -5072,7 +5072,7 @@ export class FarmCorruption {
         bimboSophieButtIntro();
         flags[kFLAGS.SOPHIE_TATTOO_BUTT] = tText;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private no1Tattoo(slot: number): void {
@@ -5133,7 +5133,7 @@ export class FarmCorruption {
             flags[kFLAGS.AMILY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private champCocksuckerTattoo(slot: number): void {
@@ -5194,7 +5194,7 @@ export class FarmCorruption {
             flags[kFLAGS.AMILY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private jojoCockGoesHereTattoo(slot: number): void {
@@ -5223,7 +5223,7 @@ export class FarmCorruption {
             flags[kFLAGS.JOJO_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private amilyMommysGirlTattoo(slot: number): void {
@@ -5253,7 +5253,7 @@ export class FarmCorruption {
             flags[kFLAGS.AMILY_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private jojoMommysBoyTattoo(slot: number): void {
@@ -5282,7 +5282,7 @@ export class FarmCorruption {
             flags[kFLAGS.JOJO_TATTOO_BUTT] = tText;
         }
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private champPussylickerTattoo(slot: number): void {
@@ -5326,7 +5326,7 @@ export class FarmCorruption {
 
         outputText("\n\nYou tell her she’s done very well, before turning and leaving.");
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private numAmilyTribalTats(): number {
@@ -5544,7 +5544,7 @@ export class FarmCorruption {
 
         flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private noOrgyRoomPlz(): void {
@@ -5594,7 +5594,7 @@ export class FarmCorruption {
 
         outputText("\n\nReluctantly you pull away before you get too involved, telling her as you head to the door you tell her she had better be prepared for when you come back later to give it a thorough test drive. She just bites her lip to this, and you feel her eyes burning into your back as you leave the farmhouse.");
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private orgyRoomSubMassage(): void {
@@ -5689,10 +5689,10 @@ export class FarmCorruption {
         menu();
         if (player.lust >= 33 && (player.cocks.length > 0 && player.cocks.cockThatFits(whitneyVagCapacity() * 1.33) != -1 || player.vaginas.length > 0)) {
             addButton(0, "Happy Ending", orgyRoomSubMassageHappyEnding);
-            addButton(1, "Leave", camp.returnToCampUseOneHour);
+            addButton(1, "Leave", Camp.returnToCampUseOneHour);
         }
         else {
-            addButton(0, "Next", camp.returnToCampUseOneHour);
+            addButton(0, "Next", Camp.returnToCampUseOneHour);
         }
     }
 
@@ -5826,7 +5826,7 @@ export class FarmCorruption {
         flags[kFLAGS.MASSAGE_HAPPY_ENDINGS]++;
         player.orgasm();
         dynStats("sen-", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
 }

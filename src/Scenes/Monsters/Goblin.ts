@@ -79,7 +79,7 @@ export class Goblin extends Monster {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.goblinScene.gobboRapeIntro();
+        GoblinScene.gobboRapeIntro();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
@@ -91,7 +91,7 @@ export class Goblin extends Monster {
             player.orgasm();
             doNext(cleanupAfterCombat);
         } else {
-            game.goblinScene.goblinRapesPlayer();
+            GoblinScene.goblinRapesPlayer();
         }
     }
 
@@ -123,12 +123,12 @@ export class Goblin extends Monster {
         this.level = 1;
         this.gems = rand(5) + 5;
         this.drop = new WeightedDrop().
-            add(consumables.GOB_ALE, 5).
-            addMany(1, consumables.L_DRAFT,
-                consumables.PINKDYE,
-                consumables.BLUEDYE,
-                consumables.ORANGDY,
-                consumables.PURPDYE);
+            add(ConsumableLib.GOB_ALE, 5).
+            addMany(1, ConsumableLib.L_DRAFT,
+                ConsumableLib.PINKDYE,
+                ConsumableLib.BLUEDYE,
+                ConsumableLib.ORANGDY,
+                ConsumableLib.PURPDYE);
         this.special1 = goblinDrugAttack;
         this.special2 = goblinTeaseAttack;
         checkMonster();

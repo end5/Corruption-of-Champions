@@ -74,9 +74,9 @@ export class GreenSlime extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 2;
         this.gems = rand(5) + 1;
-        this.drop = new ChainedDrop().add(weapons.PIPE, 1 / 10)
-            .add(consumables.WETCLTH, 1 / 2)
-            .elseDrop(useables.GREENGL);
+        this.drop = new ChainedDrop().add(WeaponLib.PIPE, 1 / 10)
+            .add(ConsumableLib.WETCLTH, 1 / 2)
+            .elseDrop(UseableLib.GREENGL);
         this.special1 = lustReduction;
         this.special2 = lustAttack;
         this.special3 = lustAttack;

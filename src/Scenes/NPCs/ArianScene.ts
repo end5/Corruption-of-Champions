@@ -239,7 +239,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\n(<b>The park has been added to Tel'Adre's menu.</b>)");
 
         arianHealth(1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Further Park Visits
@@ -335,7 +335,7 @@ export class ArianScene implements TimeAwareInterface {
         }
         arianHealth(1);
         flags[kFLAGS.ARIAN_PARK]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // First Visit
@@ -439,7 +439,7 @@ export class ArianScene implements TimeAwareInterface {
                 // PC returns to Tel'Adre menu screen
                 // PC begins Arian romance quest
                 // 1 hour passes.
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
             else {
                 // Subsequent Visits
@@ -566,7 +566,7 @@ export class ArianScene implements TimeAwareInterface {
             if (game.time.hours >= 17 && arianFollower()) addButton(8, "Sleep With", sleepWithArian, true);
             if (flags[kFLAGS.SLEEP_WITH] == "Arian") addButton(8, "NoSleepWith", dontSleepWithArian);
             if (!arianFollower()) addButton(9, "Back", TelAdre.telAdreMenu);
-            else addButton(9, "Back", camp.campLoversMenu);
+            else addButton(9, "Back", Camp.campLoversMenu);
         }
     }
 
@@ -614,7 +614,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\n\"<i>Busy, huh?  Well if you want I could call him for you; master Arian is always happy to see you any time.</i>\"  Boon smiles starting on his way towards Arian's bedroom.  You quickly stop him though, explaining that it's best to let Arian have some privacy for now. \"<i> Are you sure, [name]?  It's no trouble at all, I assure you.</i>\"  You insist that he shouldn't bother Arian right now.  Boon shrugs.  \"<i>If you say so... anyways, do come visit later.  Ever since you started visiting master Arian, he has been a lot less rebellious, not to mention he seems to be getting healthier and happier.</i>\"");
         outputText("\n\nYou promise to return later and bid him farewell.  You step outside and make your way back to your camp.");
         // Return to camp
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Barge in=]
@@ -802,7 +802,7 @@ export class ArianScene implements TimeAwareInterface {
         // ArianSDialogue++;
         flags[kFLAGS.ARIAN_S_DIALOGUE]++;
         // player returns to camp.
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     //// ((if ArianHealth >= 20) && (ArianSDialogue == 1))
@@ -835,7 +835,7 @@ export class ArianScene implements TimeAwareInterface {
         clearOutput();
         outputText("Though you do feel a little curious, you decide to stop making him uncomfortable, and tell him that it's okay, you'll let him get some sleep now.");
         outputText("\n\n\"<i>Thanks, [name].  I'll see you later then.</i>\"  Arian tucks himself in.  You watch until he's settled in, and then start the trek back to your home-away-from home in the Marethian wilderness.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // =Pry=
@@ -846,7 +846,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText(".");
         outputText("\n\nArian closes [Arian eir] eyes and admits.  \"<i>It's someone close!</i>\"  He blurts out, hiding himself under the covers.");
         outputText("\n\nWell, now, that's intriguing... still, no matter how you try, he won't say anything more and he won't come out.  It's quite clear what's going on so all you can do is sigh, do your best to pat [Arian eir] head through the covers, and tell him you'll come back another day and that you're sorry for being so nosey.  You then turn and walk out the door, heading down the stairs and back to camp.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // ((if ArianHealth >= 30) && (ArianSDialogue == 2))
@@ -976,7 +976,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou explain to Arian about the portal, and your mission as the champion - how due to your duties, you cannot just move here and live with [Arian em].");
 
         outputText("\n\nArian quickly adds, \"<i>Oh... no....  You wouldn't be moving here.  I would be the one moving in with you....");
-        if (camp.companionsCount() > 1) outputText("  There are other people living with you already, so what's one more?  Right?");
+        if (Camp.companionsCount() > 1) outputText("  There are other people living with you already, so what's one more?  Right?");
         outputText("</i>\"");
 
         outputText("\n\nYou ponder [Arian eir] request...  On one hand, having someone who understands magic would be of great help for your quest, and you've come to enjoy Arian's company, but what about Boon and Laika?");
@@ -1037,7 +1037,7 @@ export class ArianScene implements TimeAwareInterface {
             outputText("\n\nArian raises [Arian eir] hand, stopping you in your tracks.  \"<i>I appreciate your enthusiasm, [name].  But first you must rest and let the lessons of the day sink in.  I promise I'll teach you more tomorrow.</i>\"  Arian smiles at you.");
 
             outputText("\n\nMaybe [Arian ey]'s right... you tell [Arian em] you'll ask [Arian em] to teach you more tomorrow and excuse yourself.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         outputText("\n\nArian nods.  \"<i>Of course!  Now where do I begin....</i>\"");
@@ -1124,7 +1124,7 @@ export class ArianScene implements TimeAwareInterface {
         dynStats("int", 1);
         if (player.inte < 75) dynStats("int", 1);
         if (player.inte < 50) dynStats("int", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Sex:
     // Available after the first time you have sex. (ArianVirgin > 0)
@@ -1259,7 +1259,7 @@ export class ArianScene implements TimeAwareInterface {
         if (newl) clearOutput();
         else outputText("\n\n");
         outputText("Satisfied with your little chat, you pat the lizan's head and excuse yourself, heading back to camp.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Invite to Camp:
@@ -1328,7 +1328,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nAs you walk inside you can't help but gasp in amazement... clearly you have underestimated the lizan.  The inside of the tent is pretty big comparing to the outside, and you see all the tools and facilities one would need to live in the wilderness with relative comfort.");
 
         outputText("\n\nIn one corner you see what looks like a small kitchen of sorts, complete with a wide assortment of utensils.  In the opposite corner you see a work desk much like the one Arian had set up in [Arian eir] house.  Sitting in the middle of the room is a comfy-looking couch with a small table in front of it.  Further inside you see a comfortable looking bed with a few bookshelves and a small wardrobe sitting nearby.  A soft rug covers the floor of the tent and looking up you see what looks like a small magic lamp, lighting up the whole tent so you can clearly see how comfortable Arian is going to be compared to you");
-        if (camp.followersCount() > 1) outputText(" and your other companions");
+        if (Camp.followersCount() > 1) outputText(" and your other companions");
         outputText(".");
 
         outputText("\n\n\"<i>So what do you think?  Cozy?</i>\" Arian asks.");
@@ -1340,7 +1340,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou politely excuse yourself, saying you should let the lizan make [Arian emself] comfortable in [Arian eir] new home, and step back outside.");
         // flag arian as follower
         flags[kFLAGS.ARIAN_FOLLOWER] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Sex
@@ -1703,7 +1703,7 @@ export class ArianScene implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Blown:
@@ -1791,7 +1791,7 @@ export class ArianScene implements TimeAwareInterface {
         else outputText(" out of Arian's tent.");
         player.orgasm();
         flags[kFLAGS.ARIAN_HAS_BLOWN]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Penetrate:
@@ -1915,7 +1915,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nEventually, though, you announce that you should probably get going.  As nice as it is to stay here with her, you have duties to attend to.  Arian smiles at you, and gives you a little peck on the lips.  \"<i>I understand, but come see me again soon, please.</i>\"  You promise her you will and extract yourself from the affectionate lizan's embrace.  You quickly find your clothes and get dressed, then leave.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Anal:
@@ -2061,7 +2061,7 @@ export class ArianScene implements TimeAwareInterface {
                 menu();
                 if (player.cocks.cockThatFits(50) >= 0 && player.cocks.length > 0) addButton(0, "Yes", giveArianAnal);
                 else outputText(".  You're too big to fit inside Arian's ass, though.");
-                addButton(1, "No", camp.returnToCampUseOneHour);
+                addButton(1, "No", Camp.returnToCampUseOneHour);
                 return;
             }
             else {
@@ -2073,7 +2073,7 @@ export class ArianScene implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", 2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Blow:
@@ -2167,7 +2167,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou throw [Arian em] a smirk over your shoulder, shake your [ass] for [Arian eir] benefit, and head on out.");
 
         dynStats("lus", 10 + player.lib / 5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Get Penetrated:
@@ -2324,7 +2324,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nGrinning, you pull [Arian em] into a final kiss, telling [Arian em] this is just something for [Arian em] to think about.  Having said that, you quickly redress and excuse yourself, leaving one flustered lizan behind to rest.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Double Pen Arian:
@@ -2461,7 +2461,7 @@ export class ArianScene implements TimeAwareInterface {
         }
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Docking
@@ -2564,7 +2564,7 @@ export class ArianScene implements TimeAwareInterface {
         // Player returns to camp
         player.orgasm();
         dynStats("sen", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Give Item
@@ -2585,7 +2585,7 @@ export class ArianScene implements TimeAwareInterface {
             outputText("\n\n\"<i>Is it medicine you've brought me?  If so I'll be happy to take it; otherwise I think we should wait until I'm better; especially after that scolding you gave me earlier...</i>\"");
 
             // If PC has Vitality T. go to Give VT section. Otherwise, play below:
-            if (!player.hasItem(consumables.VITAL_T)) {
+            if (!player.hasItem(ConsumableLib.VITAL_T)) {
                 outputText("\n\nYou admit you don't have any medicine on you at the moment, and change the subject.");
                 arianHomeMenu();
                 return;
@@ -2605,13 +2605,13 @@ export class ArianScene implements TimeAwareInterface {
         else if (flags[kFLAGS.ARIAN_S_DIALOGUE] == 4 && arianHealth() >= 75) arianPlot4();
         else if (flags[kFLAGS.ARIAN_S_DIALOGUE] == 5 && arianHealth() >= 100) arianPlot5();
         else {
-            if (player.hasItem(consumables.VITAL_T)) addButton(0, "Vital Tinct", arianVitalityTincture);
+            if (player.hasItem(ConsumableLib.VITAL_T)) addButton(0, "Vital Tinct", arianVitalityTincture);
             if (flags[kFLAGS.ARIAN_HEALTH] >= 20) {
-                if (player.hasItem(consumables.P_DRAFT)) addButton(1, "P. Incubi D", giveIncubusDraftToArian);
-                if (player.hasItem(consumables.P_S_MLK)) addButton(2, "P. Suc.Milk", succubiMilkForArian);
-                if (player.hasItem(consumables.LACTAID)) addButton(3, "Lactaid", giveArianLactaid);
-                if (player.hasItem(consumables.REDUCTO)) addButton(4, "Reducto", giveArianReducto);
-                if (player.hasItem(consumables.REPTLUM)) addButton(5, "Reptilum", giveArianReptilum);
+                if (player.hasItem(ConsumableLib.P_DRAFT)) addButton(1, "P. Incubi D", giveIncubusDraftToArian);
+                if (player.hasItem(ConsumableLib.P_S_MLK)) addButton(2, "P. Suc.Milk", succubiMilkForArian);
+                if (player.hasItem(ConsumableLib.LACTAID)) addButton(3, "Lactaid", giveArianLactaid);
+                if (player.hasItem(ConsumableLib.REDUCTO)) addButton(4, "Reducto", giveArianReducto);
+                if (player.hasItem(ConsumableLib.REPTLUM)) addButton(5, "Reptilum", giveArianReptilum);
             }
             addButton(9, "Back", arianHomeMenu);
         }
@@ -2640,7 +2640,7 @@ export class ArianScene implements TimeAwareInterface {
 
         outputText("\n\nYou smile and stroke the lizan gently on [Arian eir] head, telling [Arian em] that [Arian ey]'s welcome.  Now, you think it's time [Arian ey] laid [Arian em]self back down and got some rest; give the medicine time to work.  You promise you'll try and come back to see [Arian em] later, but right now, [Arian ey] needs to get some more rest.  Arian nods and settles [Arian em]self on [Arian eir] bed.");
 
-        player.consumeItem(consumables.VITAL_T);
+        player.consumeItem(ConsumableLib.VITAL_T);
         arianHealth(10);
         menu();
         addButton(0, "Next", giveArianAnItem);
@@ -2652,7 +2652,7 @@ export class ArianScene implements TimeAwareInterface {
     // If at min breast size, next dose reverts Arian to male. (Lose breasts and vagina.)
     private giveIncubusDraftToArian(): void {
         clearOutput();
-        player.consumeItem(consumables.P_DRAFT);
+        player.consumeItem(ConsumableLib.P_DRAFT);
         outputText("Fishing around in your pockets, your hand closes on the vial of purified incubus draft.  You offer this to Arian, asking ");
         if (flags[kFLAGS.ARIAN_COCK_SIZE] > 0) outputText("if [Arian ey] would like to make [Arian eir] cock bigger");
         else outputText("if she'd like to have a touch of her old malehood back");
@@ -2790,7 +2790,7 @@ export class ArianScene implements TimeAwareInterface {
     // If breasts is at maximum size, extra doses reduce Cock Size. Removing first the second cock and then the first one if necessary.
     private succubiMilkForArian(): void {
         clearOutput();
-        player.consumeItem(consumables.P_S_MLK);
+        player.consumeItem(ConsumableLib.P_S_MLK);
         outputText("Fishing out the bottle of purified demon's milk, you ask if Arian is willing to get ");
         if (flags[kFLAGS.ARIAN_VAGINA] > 0) outputText("further ");
         outputText("in touch with [Arian eir] feminine side.  For you?");
@@ -2910,7 +2910,7 @@ export class ArianScene implements TimeAwareInterface {
     // If Arian has breasts, Increases breasts size by 1.
     private giveArianLactaid(): void {
         clearOutput();
-        player.consumeItem(consumables.LACTAID);
+        player.consumeItem(ConsumableLib.LACTAID);
         outputText("Your hand closes around the vial of lactation-inducing potion that is Lactaid.  You almost reject it automatically, but then you stop and think.  There's odder things in this world, after all.  You remove the vial and ask Arian if [Arian ey] would be willing to let you see what lizan milk tastes like.");
 
         outputText("\n\n\"<i>I don't know.  Lizans don't actually lactate, since we lay eggs, so I don't know if this...</i>\"  Arian squints [Arian eir] eyes to read the label on the vial you're holding.  \"<i>...Lactaid will even work.  But if you want to try, I suppose it couldn't hurt... right?</i>\"  Arian smiles nervously.");
@@ -2972,7 +2972,7 @@ export class ArianScene implements TimeAwareInterface {
             outputText("\n\nYou agree, and ask if she'll be okay if you show yourself out.  Arian nods and yawns.  \"<i>I'll see you later then, [name].</i>\"");
 
             outputText("\n\nYou leave her to get some sleep and quietly show yourself out, planning to work off your meal elsewhere.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -2995,7 +2995,7 @@ export class ArianScene implements TimeAwareInterface {
     // Cannot go flat
     private useReductoOnAriansBreasts(): void {
         clearOutput();
-        player.consumeItem(consumables.REDUCTO);
+        player.consumeItem(ConsumableLib.REDUCTO);
         outputText("You point at Arian's ");
         if (flags[kFLAGS.ARIAN_BREASTS] == 1) outputText("small");
         else if (flags[kFLAGS.ARIAN_BREASTS] == 2) outputText("generous");
@@ -3023,7 +3023,7 @@ export class ArianScene implements TimeAwareInterface {
     // Cannot remove cocks.
     private useReductoOnArianCocks(): void {
         clearOutput();
-        player.consumeItem(consumables.REDUCTO);
+        player.consumeItem(ConsumableLib.REDUCTO);
         outputText("You point at [Arian eir] crotch, mentioning that you'd like [Arian em] to be smaller.");
         outputText("\n\n\"<i>Oh, ok then.</i>\"  Arian opens [Arian eir] robes and squeezes the tube of Reducto on an open palm.");
 
@@ -3086,7 +3086,7 @@ export class ArianScene implements TimeAwareInterface {
     // How much AnalXP should be lost per use is up to Fen.
     private useReductoOnAriansAsshole(): void {
         clearOutput();
-        player.consumeItem(consumables.REDUCTO);
+        player.consumeItem(ConsumableLib.REDUCTO);
         outputText("You ask Arian to hand the tube of reducto back over to you, telling [Arian em] that you want to make [Arian em] a little tighter when you do [Arian em] from behind.  The lizard-");
         if (flags[kFLAGS.ARIAN_COCK_SIZE] > 0) {
             if (flags[kFLAGS.ARIAN_VAGINA] == 0) outputText("man");
@@ -3155,7 +3155,7 @@ export class ArianScene implements TimeAwareInterface {
     // Chance to make Arian grow a second dick, if [Arian ey] has only one. (high chance: 50%)
     private giveArianReptilum(): void {
         clearOutput();
-        player.consumeItem(consumables.REPTLUM);
+        player.consumeItem(ConsumableLib.REPTLUM);
         outputText("Fingering the vial of reptilium, you smirk to yourself.  Quickly wiping it off your face, you instruct Arian to close [Arian eir] eyes and open [Arian eir] mouth, as you have a special surprise for [Arian em].");
 
         outputText("\n\nArian, quickly complies.  \"<i>Okay, but can you at least tell me what is this about?</i>\"  [Arian ey] asks in curiosity.");
@@ -3282,7 +3282,7 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou gently pull the covers up over the tired lizan, stroke [Arian eir] head fondly, and quietly excuse yourself from [Arian eir] sleeping quarters.");
 
         // Player gains Lust.
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Treat Corruption
@@ -3325,7 +3325,7 @@ export class ArianScene implements TimeAwareInterface {
 
             outputText("\n\nYou acknowledge what [Arian ey] is saying, promise you'll try and be more careful in the future, thank [Arian em] once more, and then excuse yourself.");
             flags[kFLAGS.ARIAN_TREATMENT]++;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -3355,8 +3355,8 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\n<b>Shielding Spell:</b> Two Black Chitin and One Tough Silk - Increases defense for the duration of the battle.");
         outputText("\n<b>Immolation Spell:</b> 2x Goblin Ale and 1x Sweet Gossamer - Deals damage over time.");
         menu();
-        if (player.hasItem(useables.B_CHITN, 2) && player.hasItem(useables.T_SSILK)) addButton(0, "Shielding", arianSpellPlace, "Shielding Spell");
-        if (player.hasItem(consumables.GOB_ALE, 2) && player.hasItem(consumables.S_GOSSR)) addButton(1, "Immolation", arianSpellPlace, "Immolation Spell");
+        if (player.hasItem(UseableLib.B_CHITN, 2) && player.hasItem(UseableLib.T_SSILK)) addButton(0, "Shielding", arianSpellPlace, "Shielding Spell");
+        if (player.hasItem(ConsumableLib.GOB_ALE, 2) && player.hasItem(ConsumableLib.S_GOSSR)) addButton(1, "Immolation", arianSpellPlace, "Immolation Spell");
         addButton(9, "Back", arianHomeMenu);
     }
 
@@ -3381,21 +3381,21 @@ export class ArianScene implements TimeAwareInterface {
         if (spell == "Shielding Spell") {
             player.effects.create(StatusAffects.ShieldingSpell, 0, 0, 0, 0);
             // Shielding Spell: 2x Black Chitin and 1x Tough Silk. - Increases defense for the duration of the battle.
-            player.consumeItem(useables.B_CHITN, 2);
-            player.consumeItem(useables.T_SSILK);
+            player.consumeItem(UseableLib.B_CHITN, 2);
+            player.consumeItem(UseableLib.T_SSILK);
         }
         if (spell == "Immolation Spell") {
             player.effects.create(StatusAffects.ImmolationSpell, 0, 0, 0, 0);
             // Immolation Spell: 2x Goblin Ale and 1x Sweet Gossamer. - Deals damage over time.
-            player.consumeItem(consumables.GOB_ALE, 2);
-            player.consumeItem(consumables.S_GOSSR);
+            player.consumeItem(ConsumableLib.GOB_ALE, 2);
+            player.consumeItem(ConsumableLib.S_GOSSR);
         }
         // If charged, stay chargggggeeed
         if (player.keyItems.has("Arian's Talisman") >= 0) {
             player.keyItems.remove("Arian's Talisman");
             player.keyItems.create("Arian's Charged Talisman", 0, 0, 0, 0);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private clearCharges(): void {
         if (player.effects.findByType(StatusAffects.ShieldingSpell) >= 0) player.effects.remove(StatusAffects.ShieldingSpell);
@@ -3485,7 +3485,7 @@ export class ArianScene implements TimeAwareInterface {
         clearOutput();
         outputText("You gently stroke the lizan's side and plant a soft, gentle kiss on [Arian eir] neck.  At your ministrations, Arian sighs and slowly falls still again.  You wait, but it seems that whatever dreams [Arian ey] was having have faded and [Arian ey]'s truly asleep now, allowing you to go back to sleep yourself.");
         menu();
-        addButton(0, "Next", camp.sleepWrapper);
+        addButton(0, "Next", Camp.sleepWrapper);
     }
 
     // [=Listen=]
@@ -3509,16 +3509,16 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou wonder if maybe Arian always dreamed of being a baker instead of a wizard... or if [Arian ey] just had a midnight craving for pastries  With a soft sigh, you make yourself settle down and try to get back to sleep.");
         dynStats("lus", 15);
         menu();
-        addButton(0, "Next", camp.sleepWrapper);
+        addButton(0, "Next", Camp.sleepWrapper);
     }
 
     // [=Sleep=]
     private dontListenToMediumAnalXPArian(): void {
         clearOutput();
         outputText("You gently stroke the lizan's side and plant a soft, gentle kiss on [Arian eir] neck.  At your ministrations, Arian sighs and slowly falls still again.  You wait, but it seems that whatever dreams [Arian ey] was having have faded and [Arian ey]'s truly asleep now, allowing you to go back to sleep yourself.");
-        camp.sleepRecovery(false);
+        Camp.sleepRecovery(false);
         menu();
-        addButton(0, "Next", camp.sleepWrapper);
+        addButton(0, "Next", Camp.sleepWrapper);
     }
     // [=Listen=]
     private listenToMediumAnalXPArian(): void {
@@ -3553,7 +3553,7 @@ export class ArianScene implements TimeAwareInterface {
         }
         dynStats("lus", 15);
         menu();
-        addButton(0, "Next", camp.sleepWrapper);
+        addButton(0, "Next", Camp.sleepWrapper);
     }
 
     // [=Sleep=]
@@ -3561,7 +3561,7 @@ export class ArianScene implements TimeAwareInterface {
         clearOutput();
         outputText("You gently stroke the lizan's side and plant a soft, gentle kiss on [Arian eir] neck.  At your ministrations, Arian sighs and slowly falls still again.  You wait, but it seems that whatever dreams [Arian ey] was having have faded and [Arian ey]'s truly asleep now, allowing you to go back to sleep yourself.");
         menu();
-        addButton(0, "Next", camp.sleepWrapper);
+        addButton(0, "Next", Camp.sleepWrapper);
     }
 
     // [=Tease=]
@@ -3605,7 +3605,7 @@ export class ArianScene implements TimeAwareInterface {
             dynStats("lus", 15);
         }
         menu();
-        addButton(0, "Next", camp.sleepWrapper);
+        addButton(0, "Next", Camp.sleepWrapper);
     }
     // Waking up
     // Always happens the morning after sleeping with Arian.
@@ -3857,13 +3857,13 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou thank her for her efforts, give her a quick peck on the cheek, and then encourage her to get some rest.  Arian nods.  \"<i>I should be ready to lay tomorrow, so don't forget to visit.</i>\"");
         outputText("\n\nYou nod in understanding and wave to her as you leave her tent.");
         flags[kFLAGS.ARIAN_EGG_COUNTER] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Leave
     private leaveEggs(): void {
         clearOutput();
         outputText("You tell her that you don't want any colored eggs from her this month.  The lizan nods, deciding it's not necessary for her to spell out that this means she'll just produce ordinary eggs and eat them for breakfast after she's laid them.  \"<i>So, do you want something?</i>\" she asks.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Display Arian options
@@ -3921,13 +3921,13 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou laugh at Arian's reaction, telling her that you don't mind.  You should go right now.  You turn to pocket the egg and leave Arian's tent, bidding the lizan farewell before you do.\n\n");
         // (PC obtains (Large) Egg of the [color] asked message.)
         let itype: ItemType;
-        if (flags[kFLAGS.ARIAN_EGG_COLOR] == "brown") itype = consumables.L_BRNEG;
-        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "purple") itype = consumables.L_PRPEG;
-        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "blue") itype = consumables.L_BLUEG;
-        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "pink") itype = consumables.L_PNKEG;
-        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "white") itype = consumables.L_WHTEG;
-        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "rubbery black") itype = consumables.L_BLKEG;
-        inventory.takeItem(itype, camp.returnToCampUseOneHour);
+        if (flags[kFLAGS.ARIAN_EGG_COLOR] == "brown") itype = ConsumableLib.L_BRNEG;
+        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "purple") itype = ConsumableLib.L_PRPEG;
+        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "blue") itype = ConsumableLib.L_BLUEG;
+        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "pink") itype = ConsumableLib.L_PNKEG;
+        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "white") itype = ConsumableLib.L_WHTEG;
+        else if (flags[kFLAGS.ARIAN_EGG_COLOR] == "rubbery black") itype = ConsumableLib.L_BLKEG;
+        Inventory.takeItem(itype, Camp.returnToCampUseOneHour);
     }
     // DildoFun
     private arianDildoFun(): void {
@@ -4037,6 +4037,6 @@ export class ArianScene implements TimeAwareInterface {
         outputText("\n\nYou heave a sigh of contentment and authoritatively drag your little lizan slut into your arms, wrapping yourself around her in a cuddle and making it quite clear you don't intend to let her go anywhere any time soon.  Fortunately, she seems quite eager to be there, and so you shut your eyes and allow yourself to slowly drift off to sleep.  Before you fully embrace unconsciousness, though, you place a gentle hand on Arian's pussy, stroking her softly - not to arouse her yet again, but just to let her feel a loving touch there, in the place that brings you both such pleasures....");
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

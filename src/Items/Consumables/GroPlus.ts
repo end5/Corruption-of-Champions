@@ -42,7 +42,7 @@ export class GroPlus extends Consumable {
         }
         if (game.player.ballSize > 10) outputText("Walking gets even tougher with the swollen masses between your legs.  Maybe this was a bad idea.");
         dynStats("lus", 10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private growPlusBreasts(): void {
@@ -54,7 +54,7 @@ export class GroPlus extends Consumable {
         else
             game.player.growTits(rand(2) + 1, game.player.breastRows.length, true, 1);
         dynStats("lus", 10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private growPlusClit(): void {
@@ -64,7 +64,7 @@ export class GroPlus extends Consumable {
         game.player.clitLength++;
         outputText("Your " + clitDescription(game.player) + " stops growing after an inch of new flesh surges free of your netherlips.  It twitches, feeling incredibly sensitive.");
         dynStats("sen", 2, "lus", 10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private growPlusCock(): void {
@@ -90,7 +90,7 @@ export class GroPlus extends Consumable {
             outputText("sheath.");
         else outputText("crotch.");
         dynStats("sen", 2, "lus", 10);
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private growPlusNipples(): void {
@@ -113,12 +113,12 @@ export class GroPlus extends Consumable {
             // Talk about if anything was changed.
             if (nowFuckable) outputText("Your " + allBreastsDescript(game.player) + " tingle with warmth that slowly migrates to your nipples, filling them with warmth.  You pant and moan, rubbing them with your fingers.  A trickle of wetness suddenly coats your finger as it slips inside the nipple.  Shocked, you pull the finger free.  <b>You now have fuckable nipples!</b>\n\n");
         }
-        inventory.itemGoNext();
+        Inventory.itemGoNext();
     }
 
     private growPlusCancel(): void {
         clearOutput();
         outputText("You put the vial away.\n\n");
-        inventory.returnItemToInventory(this);
+        Inventory.returnItemToInventory(this);
     }
 }

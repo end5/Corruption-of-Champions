@@ -92,7 +92,7 @@ export class AuntNancy {
             // [+5 Relationship with Aunt Nancy]
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00264] += 5;
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Light:]
     private lightStuff(): void {
@@ -160,7 +160,7 @@ export class AuntNancy {
             if (rand(2) == 0) dynStats("int", 1 + rand(2));
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00264] += 20;
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Decline]
@@ -170,7 +170,7 @@ export class AuntNancy {
 
         outputText("Aunt Nancy raises one of her black-covered hands in front of her mouth, and blows you a kiss before scuttling away.", false);
         // [Gain 20 Lust.]
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [If Agree]
@@ -475,6 +475,6 @@ export class AuntNancy {
         }
         // Increment times boned!
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00266] += 1;
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 }

@@ -75,7 +75,7 @@ export class Gargoyle {
 
         outputText("\n\nIf you change your mind, you can always come back.  The statue's been here for decades, it can wait a while longer.");
         // (Return player to Camp, advance time an hour)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Break Chains[/b]
@@ -200,7 +200,7 @@ export class Gargoyle {
         outputText("\n\n" + flags[kFLAGS.GAR_NAME] + " recoils, flinching from you in expectation of assault. Instead, you spit on the ground and start for the exit.  You shout over your shoulder for her to stay here and wallow in her failure until you deign to use her.");
         outputText("\n\nYou storm out of the cathedral with a knot of disdain in your gut.  From behind you, you're not quite sure, but perhaps you heard \"<i>I couldn't leave here if I wanted to.</i>\"");
         // (Player is returned to camp; advance time 1 hour)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Reassure[/b]
@@ -217,7 +217,7 @@ export class Gargoyle {
 
         outputText("\n\nYou rustle " + flags[kFLAGS.GAR_NAME] + "'s hair and assure her you will before you take your leave and return to camp.");
         // (Return to camp, advance time 1 hour)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [i](Whenever the player returns to the Cathedral, play one of the following introductions, then the “Cathedral Interior” scenes. )[/i]
@@ -271,7 +271,7 @@ export class Gargoyle {
             }
             addButton(3, "Appearance", gargoyleAppearance);
         }
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [b]Sex[/b]
@@ -343,7 +343,7 @@ export class Gargoyle {
         }
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Vaginal[/b]
@@ -375,7 +375,7 @@ export class Gargoyle {
         outputText("\n\nYou give her a pat on the head and head on back to camp.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Tit-Fuck[/b]
@@ -402,7 +402,7 @@ export class Gargoyle {
         outputText("\n\nYou give her a little pat on the head and tell her it was more than pleasing.  Gratified, the little gargoyle sets to slurping up your cum as your clean yourself up and head back to camp.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Strap-On[/b]
@@ -442,7 +442,7 @@ export class Gargoyle {
         }
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Tail Fuck[/b]
@@ -470,7 +470,7 @@ export class Gargoyle {
         outputText("\n\nYou rub her head and tell her that oh, yes you were. You leave her with a gratified smile on her thin lips.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Use Her – Male/Herm[/b]
@@ -487,7 +487,7 @@ export class Gargoyle {
         outputText("\n\nYou give the gargoyle a little pat on the head for a job well done before heading on out.");
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Use Her (Female)[/b]
@@ -503,7 +503,7 @@ export class Gargoyle {
 
         outputText("\n\nContented, you spend a few minutes recovering before slowly dressing back up into your [armor]. You head on out, making sure to give " + flags[kFLAGS.GAR_NAME] + " a little pat on the head on your way out.");
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Ritual (First Time)[/b]
@@ -551,7 +551,7 @@ export class Gargoyle {
     private noReactionToBodyRitual(): void {
         clearOutput();
         outputText("You simply lie still and try to recover from " + flags[kFLAGS.GAR_NAME] + "'s \"gentle ministrations.\"  After a few minutes, you've caught your breath and, gathering your possessions, make your way out of the Cathedral without another word.  Damn, you're sore.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // (Return PC to camp, advance time 1 hour)
     }
 
@@ -562,7 +562,7 @@ export class Gargoyle {
         outputText("Seeing " + flags[kFLAGS.GAR_NAME] + " just standing over you, gloating, causes you to sneer and lash out.  You strike her dead-center in the chest, throwing her back against the tree-idol at the church's head.  She slumps to the floor, looking meekly away from you.  While she's stunned, you gather your [armor] and stagger out of the Cathedral.");
         // (Return PC to camp, advance time 1 hour)
         gargoyleConfidence(-5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Cuddle[/b]
@@ -572,7 +572,7 @@ export class Gargoyle {
         outputText("Despite the pain she's caused you, you know " + flags[kFLAGS.GAR_NAME] + " did it at your command – and hell, it could only have helped you.  Before she can react, you reach up and pull the gray gargoyle down into a kiss, pressing firmly against her soft, cold lips.  She makes a cute little gasp, but soon relaxes into your hold, allowing you to shift her weight so that she's nearly lying atop you.  You sigh contentedly and wrap your gargoyle in a tight hug, holding her close for the few minutes it takes you to recover.  When you're feeling up to it, you rustle her hair and thank her for her... gentle ministrations.  If she could blush, you're sure she would be as she looks upon you with gleaming fiery eyes.  You gather your belongings and exit the Cathedral.");
         // (Return PC to camp, advance time 1 hour)
         gargoyleConfidence(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]“Mind”[/b]
@@ -587,7 +587,7 @@ export class Gargoyle {
         dynStats("lus", -10, "cor", -.5);
         // player.takeDamage(Math.round(player.maxHP()/2));
         fatigue(50);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Banishment[/b]
@@ -640,7 +640,7 @@ export class Gargoyle {
         clearOutput();
         outputText("You simply lie still and try to recover from " + flags[kFLAGS.GAR_NAME] + "'s “gentle ministrations. ” After a few minutes, you've caught your breath and, gathering your possessions, make your way out of the Cathedral without another word. Damn, you're sore.");
         // (Return PC to camp, advance time 1 hour)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Revenge[/b]
@@ -650,7 +650,7 @@ export class Gargoyle {
         outputText("Seeing " + flags[kFLAGS.GAR_NAME] + " just standing over you, gloating, causes you to sneer and lash out.  You strike her dead-center in the chest, throwing her back against the tree-idol at the church's head.  She slumps to the floor, looking meekly away from you.  While she's stunned, you gather your [armor] and stagger out of the Cathedral.");
         // (Return PC to camp, advance time 1 hour)
         gargoyleConfidence(-5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Cuddle[/b]
@@ -660,7 +660,7 @@ export class Gargoyle {
         outputText("Despite the pain she's caused you, you know " + flags[kFLAGS.GAR_NAME] + " did it at your command – and hell, it could only have helped you.  Before she can react, you reach up and pull the gray gargoyle down into your lap, hugging her around the waist and putting a quick kiss into the nape of her neck.  Giggling, she wraps her tail around you, giving you a gentle squeeze as she nuzzles into your chest.  You stay like that for a few minutes, cuddling the cute gargoyle, but eventually you know you need to check on things back at camp.  When you're feeling up to it, you rustle her hair and thank her for her... gentle ministrations.  If she could blush, you're sure she would be as she looks upon you with gleaming fiery eyes.  You gather your belongings and exit the Cathedral.");
         // (Return PC to camp, advance time 1 hour)
         gargoyleConfidence(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [b]Kinky Rituals (First Time)[/b]
     // (While Confidence 70+)
@@ -716,7 +716,7 @@ export class Gargoyle {
         dynStats("tou", .5, "lib", -.5, "sen", -2);
         gargoyleConfidence(2);
         player.takeDamage(Math.round(player.maxHP() / 2));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Mind[/b]
@@ -739,7 +739,7 @@ export class Gargoyle {
         // (Return PC to camp, advance time 1 hour)
         dynStats("int", .5, "lus", -10, "cor", -.5);
         fatigue(50);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Banish[/b]
@@ -794,7 +794,7 @@ export class Gargoyle {
         player.takeDamage(Math.round(player.maxHP() / 3));
         fatigue(10);
         gargoyleConfidence(2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Talk[/b]
@@ -854,7 +854,7 @@ export class Gargoyle {
         gargoyleConfidence(-5);
         outputText("\n\nYou attempt to give " + flags[kFLAGS.GAR_NAME] + " a none-too-gentle swat on the head, and tell her off for presuming to refuse you information.  The harshness of your voice only causes her to sob openly, however, and recoil away from you before you can hit her.  You sigh with frustration, and storm out of the cathedral before you have to listen to a moment more of your servant's cries.");
         // (Return PC to camp, advance time 1 hour.)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Comfort[/b]
@@ -985,7 +985,7 @@ export class Gargoyle {
         outputText("Well, really, what is she but a slave?  She's just a toy when you want sexual release, a servant to perform rituals at your demand, and a bit of eye-candy besides.  She's not even a real person – not really.  You tell her that, quite bluntly.  She makes no response, verbally at least, but she does give off a sob-like shudder and curls up into a little ball where she sits, hiding her face from you.");
         outputText("\n\nSince you've temporarily broken the gargoyle, you mosey on back to camp.");
         // (Return PC to camp, advance time 1 hour)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [b]Girlfriend[/b]
     private gargoylesAreGirlfriends(): void {
@@ -1002,7 +1002,7 @@ export class Gargoyle {
         menu();
         if (player.cocks.length > 0) addButton(0, "Vaginal", gargoyleCoochiiGetsPlowed);
         else addButton(1, "Strap-on", strapOnGargoyle);
-        addButton(4, "Leave", camp.returnToCampUseOneHour);
+        addButton(4, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private cathedralTalks(): void {
@@ -1058,7 +1058,7 @@ export class Gargoyle {
         outputText("\n\nWithin the hour, the two of you have made a sizable dent in the debris of the Cathedral, and " + flags[kFLAGS.GAR_NAME] + " has even managed to hang one of the candelabras back up in the rafters.  Exhausted, you say goodbye to the happy little gargoyle and head on back to camp.");
         // (Return PC to camp, advance time 1 hour, +10 fatigue.
         fatigue(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Cathedral B[/b]
@@ -1109,7 +1109,7 @@ export class Gargoyle {
         outputText("\n\nYou realize this is the first time you've ever seen her outside the sanctuary, and proudly give her a kiss on the lips at the gate.  When you part, she shyly tells you to take care on the way back, and that she'll be here waiting for you when you return.");
         // (Return PC to camp, advance time 1 hour)
         gargoyleConfidence(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]Berate[/b]
@@ -1119,7 +1119,7 @@ export class Gargoyle {
         outputText("Right.  Because becoming a living footstool for you was TOTALLY worth everyone she ever knew being raped out of their minds.  You give " + flags[kFLAGS.GAR_NAME] + " a hard swat and remind her exactly how moronic she's being.  She recoils, shying away from you as you stand up and head for the door.  Over your shoulder, you tell her you're glad she's bound here – that way she can't fuck up and get you killed, too.");
         // (Return PC to camp, advance time 1 hour)
         gargoyleConfidence(-10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private talkAboutGarName(): void {
@@ -1166,7 +1166,7 @@ export class Gargoyle {
         outputText("\n\nYou consider pressing the issue, but remember that you've been away from camp a bit too long.  You resolve to ask her next time, and take your leave of the gargoyle.");
         // (Return PC to camp, advance time 1 hour)
         gargoyleConfidence(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [b]" + flags[kFLAGS.GAR_NAME] + " B[/b]

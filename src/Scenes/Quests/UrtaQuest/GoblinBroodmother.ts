@@ -8,12 +8,12 @@ export class GoblinBroodmother extends Goblin {
         outputText("The goblin broodmother is defeated!  You find a bottle of succubi milk on her.  That stuff is banned in Tel'Adre - and for good reason, but it might come in handy.  You pocket the foul fluid for now.");
         outputText("  You could use her for a quick, willing fuck to sate your lusts before continuing on.  Do you?");
         menu();
-        addButton(0, "Fuck", game.urtaQuest.winFuckAGoblinBroodmotherAsUrta);
-        addButton(4, "Leave", game.urtaQuest.nagaPleaseNagaStoleMyDick);
+        addButton(0, "Fuck", UrtaQuest.winFuckAGoblinBroodmotherAsUrta);
+        addButton(4, "Leave", UrtaQuest.nagaPleaseNagaStoleMyDick);
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.urtaQuest.urtaLosesToGoblin();
+        UrtaQuest.urtaLosesToGoblin();
     }
 
     public constructor() {
@@ -48,12 +48,12 @@ export class GoblinBroodmother extends Goblin {
         this.level = 10;
         this.gems = rand(5) + 5;
         this.drop = new WeightedDrop().
-            add(consumables.GOB_ALE, 5).
-            addMany(1, consumables.L_DRAFT,
-                consumables.PINKDYE,
-                consumables.BLUEDYE,
-                consumables.ORANGDY,
-                consumables.PURPDYE);
+            add(ConsumableLib.GOB_ALE, 5).
+            addMany(1, ConsumableLib.L_DRAFT,
+                ConsumableLib.PINKDYE,
+                ConsumableLib.BLUEDYE,
+                ConsumableLib.ORANGDY,
+                ConsumableLib.PURPDYE);
         this.special1 = goblinDrugAttack;
         this.special2 = goblinTeaseAttack;
         checkMonster();

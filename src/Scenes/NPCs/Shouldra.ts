@@ -112,7 +112,7 @@ export class Shouldra extends Monster {
         this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
         this.level = 4;
         this.gems = 0;
-        this.drop = new ChainedDrop().add(consumables.ECTOPLS, 1 / 3);
+        this.drop = new ChainedDrop().add(ConsumableLib.ECTOPLS, 1 / 3);
         checkMonster();
     }
 

@@ -37,7 +37,7 @@ export class Forest {
         if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] == 0 && player.effects.getValue1Of(StatusAffects.ExploredDeepwoods) % 5 == 0 && player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) {
             outputText("While you explore the deepwoods, you do your best to forge into new, unexplored locations.  While you're pushing away vegetation and slapping at plant-life, you spot a half-overgrown orifice buried in the side of a ravine.  There's a large number of imp-tracks around the cavern's darkened entryway.  Perhaps this is where the imp, Zetaz, makes his lair?  In any event, it's past time you checked back on the portal.  You make a mental note of the cave's location so that you can return when you're ready.", true);
             outputText("\n\n<b>You've discovered the location of Zetaz's lair!</b>", false);
-            simpleChoices("Enter", enterZetazsLair, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Enter", enterZetazsLair, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
             flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ]++;
             return;
         }
@@ -73,7 +73,7 @@ export class Forest {
             if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
                 trace("TENTACLE'S AVOIDED DUE TO BOOK!");
                 outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", true);
-                simpleChoices("Continue", TentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                simpleChoices("Continue", TentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
                 return;
             }
             else {
@@ -133,7 +133,7 @@ export class Forest {
         if ((player.exploredForest >= 20) && player.effects.findByType(StatusAffects.ExploredDeepwoods) < 0) {
             player.effects.create(StatusAffects.ExploredDeepwoods, 0, 0, 0, 0);
             outputText("After exploring the forest so many times, you decide to really push it, and plunge deeper and deeper into the woods.  The further you go the darker it gets, but you courageously press on.  The plant-life changes too, and you spot more and more lichens and fungi, many of which are luminescent.  Finally, a wall of tree-trunks as wide as houses blocks your progress.  There is a knot-hole like opening in the center, and a small sign marking it as the entrance to the 'Deepwoods'.  You don't press on for now, but you could easily find your way back to explore the Deepwoods.\n\n<b>Deepwoods exploration unlocked!</b>", true);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Essy every 20 explores or so
@@ -156,7 +156,7 @@ export class Forest {
             outputText("\n\nShe goes up to the imp, and kicks it once.  Satisfied that the creature isn't moving, she turns around to face you and gives you a smile.  \"<i>Sorry about that, but I prefer to take care of these buggers quickly.  If they get the chance to call on their friends, they can actually become a nuisance.</i>\"  She disappears back into the foliage briefly before reappearing holding two large pile of logs under her arms, with a fire axe and her hammer strapped to her back.  \"<i>I'm gathering firewood for the farm, as you can see; what brings you to the forest, sweetie?</i>\"  You inform her that you're just exploring.");
             outputText("\n\nShe gives a wistful sigh. \"<i>I haven't really explored much since getting to the farm.  Between the jobs Whitney gives me, keeping in practice with my hammer, milking to make sure I don't get too full, cooking, and beauty sleep, I don't get a lot of free time to do much else.</i>\"  She sighs again.  \"<i>Well, I need to get this back, so I'll see you later!</i>\"");
             // end event
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (chooser == 0) {
@@ -178,7 +178,7 @@ export class Forest {
             // Imptacular Encounter
             if (rand(10) < impGob) {
                 if (player.level >= 8 && rand(2) == 0) {
-                    impScene.impLordEncounter();
+                    ImpScene.impLordEncounter();
                 }
                 else {
                     outputText("An imp leaps out of the bushes and attacks!", true);
@@ -200,7 +200,7 @@ export class Forest {
                 }
                 // 50% of the time, goblin assassin!
                 if (player.level >= 10 && rand(2) == 0) {
-                    goblinAssassinScene.goblinAssassinEncounter();
+                    GoblinAssassinScene.goblinAssassinEncounter();
                     return;
                 }
                 if (player.gender > 0) {
@@ -220,7 +220,7 @@ export class Forest {
             }
         }
         if (chooser == 1) {
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             outputText("", true);
 
             if (game.monk == 0) {
@@ -233,7 +233,7 @@ export class Forest {
                     else {
                         outputText("You enjoy a peaceful walk in the woods.  It gives you time to think over the recent, disturbing events.", true);
                         dynStats("tou", .5, "int", 1);
-                        doNext(camp.returnToCampUseOneHour);
+                        doNext(Camp.returnToCampUseOneHour);
                         return;
                     }
                 }
@@ -246,11 +246,11 @@ export class Forest {
                 outputText("\n\nJojo sighs sadly, \"<i>Enough of my woes.  You are very corrupted.  If you cannot be sufficiently purified you WILL become one of them in time.  Will you let me help you?", false);
                 if (player.gender > 0) {
                     trace("Gender != 0");
-                    simpleChoices("Accept", JojoScene.meditateInForest, "Rape Him", JojoScene.jojoRape, "BWUH?", null, "Decline", camp.returnToCampUseOneHour, "", null);
+                    simpleChoices("Accept", JojoScene.meditateInForest, "Rape Him", JojoScene.jojoRape, "BWUH?", null, "Decline", Camp.returnToCampUseOneHour, "", null);
                 }
                 else {
                     trace("Gender == 0");
-                    simpleChoices("Accept", JojoScene.meditateInForest, "Rape Him", null, "BWUH?", null, "Decline", camp.returnToCampUseOneHour, "", null);
+                    simpleChoices("Accept", JojoScene.meditateInForest, "Rape Him", null, "BWUH?", null, "Decline", Camp.returnToCampUseOneHour, "", null);
                 }
                 return;
             }
@@ -259,14 +259,14 @@ export class Forest {
                     JojoScene.jojoSprite();
                     outputText("As you approach the serene monk, you see his nose twitch, disturbing his meditation.\n\n", true);
                     outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body.</i>\", Jojo says flatly. \"<i>This is a most unfortunate development. There is no reason to despair as there are always ways to fight the corruption. However, great effort will be needed to combat this form of corruption and may leave lasting impressions upon you. If you are ready, we can purge your being of the rogue creatures of lust.</i>\"\n\n", false);
-                    if (player.gender > 0) simpleChoices("Purge", JojoScene.wormRemoval, "Meditate", JojoScene.meditateInForest, "Rape", JojoScene.jojoRape, "", null, "Leave", camp.returnToCampUseOneHour);
-                    else simpleChoices("Purge", JojoScene.wormRemoval, "Meditate", JojoScene.meditateInForest, "Rape", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                    if (player.gender > 0) simpleChoices("Purge", JojoScene.wormRemoval, "Meditate", JojoScene.meditateInForest, "Rape", JojoScene.jojoRape, "", null, "Leave", Camp.returnToCampUseOneHour);
+                    else simpleChoices("Purge", JojoScene.wormRemoval, "Meditate", JojoScene.meditateInForest, "Rape", null, "", null, "Leave", Camp.returnToCampUseOneHour);
                     return;
                 }
                 JojoScene.jojoSprite();
                 outputText("Jojo the monk appears before you, robes and soft white fur fluttering in the breeze.  He asks, \"<i>Are you ready for a meditation session?</i>\"", false);
-                if (player.gender > 0) simpleChoices("Yes", JojoScene.meditateInForest, "No", camp.returnToCampUseOneHour, "BWUH", null, "Rape Him", JojoScene.jojoRape, "", null);
-                else simpleChoices("Yes", JojoScene.meditateInForest, "No", camp.returnToCampUseOneHour, "BWUH", null, "Rape Him", null, "", null);
+                if (player.gender > 0) simpleChoices("Yes", JojoScene.meditateInForest, "No", Camp.returnToCampUseOneHour, "BWUH", null, "Rape Him", JojoScene.jojoRape, "", null);
+                else simpleChoices("Yes", JojoScene.meditateInForest, "No", Camp.returnToCampUseOneHour, "BWUH", null, "Rape Him", null, "", null);
             }
             if (game.monk >= 2) {
                 JojoScene.jojoSprite();
@@ -289,7 +289,7 @@ export class Forest {
                 if (player.keyItems.has("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
                     trace("TENTACLE'S AVOIDED DUE TO BOOK!");
                     outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", false);
-                    simpleChoices("Continue", TentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+                    simpleChoices("Continue", TentacleBeastScene.encounter, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
                     return;
                 }
                 else {
@@ -311,7 +311,7 @@ export class Forest {
                     outputText("", false);
                     dynStats("tou", .5, "lib", .25, "lus", player.lib / 5);
                 }
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // CORRUPTED GLADE
@@ -326,7 +326,7 @@ export class Forest {
             if (temp == 3) {
                 outputText("You trip on an exposed root, scraping yourself somewhat, but otherwise the hour is uneventful.", false);
                 player.takeDamage(10);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 trace("FIX MEEEEE");
                 return;
             }
@@ -335,7 +335,7 @@ export class Forest {
         if (chooser == 3) {
             if (rand(10) == 0) {
                 outputText("You find a large piece of insectile carapace obscured in the ferns to your left.  It's mostly black with a thin border of bright yellow along the outer edge.  There's still a fair portion of yellow fuzz clinging to the chitinous shard.  It feels strong and flexible - maybe someone can make something of it.  ", true);
-                inventory.takeItem(useables.B_CHITN, camp.returnToCampUseOneHour);
+                Inventory.takeItem(UseableLib.B_CHITN, Camp.returnToCampUseOneHour);
                 return;
             }
             BeeGirlScene.beeEncounter();
@@ -440,7 +440,7 @@ export class Forest {
         }
         dynStats("lus", 25 + rand(player.cor / 5), "resisted", false);
         fatigue(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Catch a Satyr using the corrupt glade and either leave or have your way with him.
     // Suggested to Fen as the MaleXMale submission.
@@ -455,7 +455,7 @@ export class Forest {
         // (Player lacks a penis:
         if (!player.cocks.length > 0) {
             outputText("You can't really see any way to take advantage of this scenario, so you simply turn back and leave the way you came.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Player returns to camp)
         // (Player has penis:
@@ -475,7 +475,7 @@ export class Forest {
         else outputText("not feeling inclined to rape some satyr butt right now", false);
         outputText(", and silently leave him to his pleasures.", false);
         dynStats("lus", 5 + player.lib / 20);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Player returns to camp
     private rapeSatyr(): void {
@@ -537,7 +537,7 @@ export class Forest {
         outputText("", true);
         spriteSelect(99);
         outputText("You've had your fun, and you don't really want to fool around in the forest all day, so you grab your " + player.armorName + " and leave the rutting satyr behind.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [=Again=]
     private secondSatyrFuck(): void {
@@ -555,6 +555,6 @@ export class Forest {
         outputText("You give your sensitive member a few trembling, almost-painful strokes... maybe you overdid it a bit.  Shrugging, you gather your " + player.armorName + " and leave the passed-out satyr behind as you go back to your camp.", false);
         player.orgasm();
         dynStats("lib", 1, "sen", -5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

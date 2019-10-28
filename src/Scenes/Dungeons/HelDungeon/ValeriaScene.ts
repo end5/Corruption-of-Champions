@@ -210,8 +210,8 @@ export function takeGooArmorAndWearIt(): void {
     // (\"<i>You put a (previous armorName) in your X pouch)
     outputText("\n\nTo your surprise, you feel rather invigorated after the battle, thanks to Valeria's strange healing properties, and with a smirk, you turn your attention back to the dungeon ahead.\n\n");
     // (PC regains HP)
-    inventory.takeItem(player.setArmor(armors.GOOARMR), playerMenu);
-    // armors.GOOARMR.equip(player,true,false);
+    Inventory.takeItem(player.setArmor(ArmorLib.GOOARMR), playerMenu);
+    // ArmorLib.GOOARMR.equip(player,true,false);
     flags[kFLAGS.MET_VALERIA] = 1;
     HPChange(1000, false);
     flags[kFLAGS.TOOK_GOO_ARMOR] = 1;

@@ -236,7 +236,7 @@ export class BakeryScene {
         outputText("You pay ten gems for some cocoa.  ");
         player.gems -= 10;
         statScreenRefresh();
-        inventory.takeItem(consumables.MOUSECO, ingredientsMenu);
+        Inventory.takeItem(ConsumableLib.MOUSECO, ingredientsMenu);
     }
 
     private buyFerretFruit(): void {
@@ -250,7 +250,7 @@ export class BakeryScene {
         outputText("You pay twenty gems for a single ferret fruit.  ");
         player.gems -= 20;
         statScreenRefresh();
-        inventory.takeItem(consumables.FRRTFRT, ingredientsMenu);
+        Inventory.takeItem(ConsumableLib.FRRTFRT, ingredientsMenu);
     }
 
     private buyFig(): void {
@@ -264,7 +264,7 @@ export class BakeryScene {
         outputText("You pay five gems for a fig.  ");
         player.gems -= 5;
         statScreenRefresh();
-        inventory.takeItem(consumables.RINGFIG, ingredientsMenu);
+        Inventory.takeItem(ConsumableLib.RINGFIG, ingredientsMenu);
     }
 
     private talkBakeryMenu(): void {
@@ -397,7 +397,7 @@ export class BakeryScene {
         outputText("The minotaur chef emerges from the backroom bearing a box that contains your cupcake.  It's too big to scarf down immediately.\n\n", false);
         player.gems -= 500;
         statScreenRefresh();
-        inventory.takeItem(consumables.CCUPCAK, bakeryuuuuuu);
+        Inventory.takeItem(ConsumableLib.CCUPCAK, bakeryuuuuuu);
     }
 
     private buyFoxBerry(): void {
@@ -411,7 +411,7 @@ export class BakeryScene {
         outputText("You pay five gems for a fox berry.  ");
         player.gems -= 5;
         statScreenRefresh();
-        inventory.takeItem(consumables.FOXBERY, ingredientsMenu);
+        Inventory.takeItem(ConsumableLib.FOXBERY, ingredientsMenu);
     }
 
     private easterBakeSale(): void {
@@ -478,6 +478,6 @@ export class BakeryScene {
         player.orgasm();
         dynStats("lib", 1);
         player.cumMultiplier += 2;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

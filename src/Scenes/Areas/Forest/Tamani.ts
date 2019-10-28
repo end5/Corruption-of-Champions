@@ -143,16 +143,16 @@ export class Tamani extends Goblin {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 4;
         this.gems = rand(25) + 5;
-        this.drop = new WeightedDrop().add(consumables.GOB_ALE, 4)
+        this.drop = new WeightedDrop().add(ConsumableLib.GOB_ALE, 4)
             .addMany(1,
-                consumables.L_DRAFT,
-                consumables.PINKDYE,
-                consumables.BLUEDYE,
-                consumables.ORANGDY,
-                consumables.PURPDYE,
-                consumables.INCUBID,
-                consumables.REDUCTO,
-                consumables.L_BLUEG,
+                ConsumableLib.L_DRAFT,
+                ConsumableLib.PINKDYE,
+                ConsumableLib.BLUEDYE,
+                ConsumableLib.ORANGDY,
+                ConsumableLib.PURPDYE,
+                ConsumableLib.INCUBID,
+                ConsumableLib.REDUCTO,
+                ConsumableLib.L_BLUEG,
                 null);
         this.special1 = goblinDrugAttack;
         this.special2 = goblinTeaseAttack;

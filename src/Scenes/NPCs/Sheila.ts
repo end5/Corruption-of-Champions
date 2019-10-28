@@ -325,11 +325,11 @@ export class Sheila extends Monster {
         this.level = 14;
         this.gems = rand(5) + 5;
         if (game.flags[kFLAGS.SHEILA_DEMON] == 0) {
-            this.drop = new WeightedDrop(consumables.KANGAFT, 1);
+            this.drop = new WeightedDrop(ConsumableLib.KANGAFT, 1);
         } else {
-            this.drop = new ChainedDrop(consumables.KANGAFT).
-                add(consumables.SUCMILK, 1 / 3).
-                add(consumables.INCUBID, 1 / 2);
+            this.drop = new ChainedDrop(ConsumableLib.KANGAFT).
+                add(ConsumableLib.SUCMILK, 1 / 3).
+                add(ConsumableLib.INCUBID, 1 / 2);
         }
         this.tailType = TAIL_TYPE_KANGAROO;
         checkMonster();

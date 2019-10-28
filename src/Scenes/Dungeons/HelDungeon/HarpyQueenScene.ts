@@ -239,7 +239,7 @@ export function takeQueensStaff(): void {
     clearOutput();
     outputText("You pick up the Harpy Queen's staff.  It is a tall whitewood staff, nearly six feet in length, and covered in glowing eldritch runes, with a singular shimmering sphere of crystal at its head, which seems to have a swirling mist within.");
     // (New Weapon: EldritchStaff)
-    inventory.takeItem(weapons.E_STAFF, playerMenu);
+    Inventory.takeItem(WeaponLib.E_STAFF, playerMenu);
     // Similar stats to the Wizard's Staff, but with a better Fatigue reduction and a bonus to Magic damage/effect.
     flags[kFLAGS.TOOK_QUEEN_STAFF] = 1;
 }
@@ -377,5 +377,5 @@ export function towerOutro(): void {
     // (PC returns to Camp)
     // (If PC has Valeria: add \"<i>Valeria</i>\" to Followers menu)
     // 	inDungeon = false;
-    doNext(camp.returnToCampUseTwoHours);
+    doNext(Camp.returnToCampUseTwoHours);
 }

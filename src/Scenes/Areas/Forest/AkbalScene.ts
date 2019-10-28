@@ -659,7 +659,7 @@ export class AkbalScene {
 
         outputText("The aura pouring forth from this 'Akbal' is anything but god-like; you recognize the demon for what it truly is.  Yet its ivory teeth and sharp claws prove to you that it can make good on its threat.  What do you do?", false);
         // Talk / Fight / Run
-        simpleChoices("Talk", superAkbalioTalk, "Fight", startuAkabalFightomon, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Talk", superAkbalioTalk, "Fight", startuAkabalFightomon, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [Talk]
@@ -688,7 +688,7 @@ export class AkbalScene {
         outputText("", true);
         outputText("You shake your head and rub the lust-filled jaguar behind the ear as you tell him you're busy.  The demon's eyes roll, and he licks your " + leg(player) + " before his eyes find an imp in the trees above the two of you.\n\n", false);
         outputText("Knowing he's found a new toy, Akbal allows you to leave unmolested.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Encounter if previously fought and won/raped him]
@@ -701,7 +701,7 @@ export class AkbalScene {
         else
             outputText("dodging roll places you a good distance away from him.  Do you fight or flee?\n\n", false);
         // Fight / Flee
-        simpleChoices("Fight", startuAkabalFightomon, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Fight", startuAkabalFightomon, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [Encounter if previously fought and lost]
@@ -711,7 +711,7 @@ export class AkbalScene {
         outputText("A chorus of laughter sounds inside your mind as the jaguar demon, Akbal, drops to the ground in front of you.  His masculine voice says, \"<i>Well, if it isn't the defiant welp who, in all their great idiocy, has wandered into my territory again.  Will you submit, or do I have to teach you another harsh lesson?</i>\"\n\n", false);
 
         // Submit / Fight / Run
-        simpleChoices("Submit", akbalSubmit, "Fight", startuAkabalFightomon, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Submit", akbalSubmit, "Fight", startuAkabalFightomon, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [Fight]
@@ -791,7 +791,7 @@ export class AkbalScene {
                 player.buttRating++;
             }
             player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
-            doNext(camp.returnToCampUseEightHours);
+            doNext(Camp.returnToCampUseEightHours);
             return;
         }
         // Taur variant goez here
@@ -864,7 +864,7 @@ export class AkbalScene {
                 player.buttRating++;
             }
             player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
-            doNext(camp.returnToCampUseEightHours);
+            doNext(Camp.returnToCampUseEightHours);
             return;
         }
 
@@ -938,7 +938,7 @@ export class AkbalScene {
             player.buttRating++;
         }
         player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
-        doNext(camp.returnToCampUseEightHours);
+        doNext(Camp.returnToCampUseEightHours);
     }
 
     // [General End]
@@ -1063,7 +1063,7 @@ export class AkbalScene {
         dynStats("cor", 5);
         player.slimeFeed();
         player.effects.create(StatusAffects.PostAkbalSubmission, 0, 0, 0, 0);
-        doNext(camp.returnToCampUseEightHours);
+        doNext(Camp.returnToCampUseEightHours);
     }
 
     // 2. AKBAL'S MY BITCH
@@ -1094,7 +1094,7 @@ export class AkbalScene {
         outputText("You turn back, allowing the demon to finish cleaning himself and thankful he didn’t ambush you this time.");
         if (player.lust < 33)
             outputText("  Besides, you aren't aroused right now, anyway.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // {Choose Rape}
@@ -1227,7 +1227,7 @@ export class AkbalScene {
 
         player.orgasm();
         dynStats("cor", 3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private topAkbitchFromDaBottom(): void {
@@ -1290,7 +1290,7 @@ export class AkbalScene {
         dynStats("cor", 3);
         if (player.vaginas.length > 0)
             player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP, 101);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // AMB Strength Scene
@@ -1358,7 +1358,7 @@ export class AkbalScene {
                 outputText("\n\nYou stand and Akbal’s legs flop from where you had them pinned to his chest.  You gather your [armor] and dress before aiming a wicked slap at Akbal’s tender cheeks and leaving him tied up for the imps and goblins you spy watching the two of you from the trees.\n\nYou tell him he is all theirs and share a conspiratorial grin as you head back to camp.");
             player.orgasm();
             dynStats("cor", 3);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else {
             outputText(images.showImage("akbal-deepwoods-female-highstrength"));
@@ -1409,7 +1409,7 @@ export class AkbalScene {
             dynStats("cor", 3);
             if (player.vaginas.length > 0)
                 player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP, 101);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1500,7 +1500,7 @@ export class AkbalScene {
         }
         player.orgasm();
         dynStats("cor", 3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // AMB Toughness Scene
@@ -1646,6 +1646,6 @@ export class AkbalScene {
             player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP, 101);
         player.orgasm();
         dynStats("cor", 3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

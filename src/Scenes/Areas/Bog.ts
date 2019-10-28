@@ -20,7 +20,7 @@ export class Bog {
         else {
             clearOutput();
             outputText("You wander around through the humid muck, but you don't run into anything interesting.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 }

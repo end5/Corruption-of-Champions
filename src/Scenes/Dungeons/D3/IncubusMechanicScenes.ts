@@ -111,7 +111,7 @@ export class IncubusMechanicScenes {
         outputText("\n\nThe platform touches down roughly thirty minutes after your departure, and you head back to camp with all due haste.");
 
         menu();
-        addButton(0, "Next", d3.exitD3);
+        addButton(0, "Next", D3.exitD3);
     }
 
     private useLiftPostDefeat(): void {
@@ -121,7 +121,7 @@ export class IncubusMechanicScenes {
 
         outputText("\n\nThe platform touches down roughly thirty minutes after your departure, and you head back to camp with all due haste.");
 
-        addButton(0, "Next", d3.exitD3);
+        addButton(0, "Next", D3.exitD3);
     }
 
     public suckIncubusDick(): void {
@@ -174,7 +174,7 @@ export class IncubusMechanicScenes {
         dynStats("lib+", 5, "cor+", 5, "lus+", 100);
 
         menu();
-        addButton(0, "Next", d3.exitD3);
+        addButton(0, "Next", D3.exitD3);
     }
 
     public beatDaMechanic(hpVictory: boolean): void {
@@ -197,7 +197,7 @@ export class IncubusMechanicScenes {
         flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_KILLED;
         clearOutput();
         outputText("He proves blessedly easy to kill, and you roll the body off the cliffs to avoid alerting any of Lethice's other ilk.");
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private letMechanicGo(hpVictory: boolean): void {
@@ -212,7 +212,7 @@ export class IncubusMechanicScenes {
 
         outputText("\n\nThe incubus mechanic flies away for good, though you can’t can say whether he will wreak havoc or live quietly.");
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private buttfuckTheMechanic(hpVictory: boolean): void {
@@ -303,7 +303,7 @@ export class IncubusMechanicScenes {
         player.orgasm();
         dynStats("cor+", 5);
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     private MECHANIC_DEMON_COCK: number = 0;
@@ -476,7 +476,7 @@ export class IncubusMechanicScenes {
         player.orgasm();
         dynStats("cor+", 5);
 
-        cleanupAfterCombat(d3.resumeFromFight);
+        cleanupAfterCombat(D3.resumeFromFight);
     }
 
     public mechanicFuckedYouUp(hpVictory: boolean, pcCameWorms: boolean): void {

@@ -189,8 +189,8 @@ export class ErlKingScene {
         fatigue(10);
 
         if (waited)
-            inventory.takeItem(consumables.CANINEP, camp.returnToCampUseOneHour);
-        else inventory.takeItem(consumables.FOXBERY, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.CANINEP, Camp.returnToCampUseOneHour);
+        else Inventory.takeItem(ConsumableLib.FOXBERY, Camp.returnToCampUseOneHour);
     }
 
     public repeatWildHuntEncounter(): void {
@@ -225,7 +225,7 @@ export class ErlKingScene {
         if (player.inte < 80) player.inte++;
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected repeatWildHuntChase(): void {
@@ -264,7 +264,7 @@ export class ErlKingScene {
         }
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected repeatWildHuntCaught(pScore: number): void {
@@ -346,7 +346,7 @@ export class ErlKingScene {
         player.gems -= gemLoss;
 
         outputText("<b>You’ve lost " + gemLoss + " gems.</b>\n\n");
-        inventory.takeItem(consumables.CANINEP, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.CANINEP, Camp.returnToCampUseOneHour);
         dynStats("sen-", 2, "lib+", 2, "cor+", 1, "lus=", 0);
         fatigue(10);
         player.orgasm();
@@ -399,9 +399,9 @@ export class ErlKingScene {
 
         const selector: number = rand(3);
 
-        if (selector == 0) inventory.takeItem(consumables.CANINEP, camp.returnToCampUseOneHour);
-        if (selector == 1) inventory.takeItem(consumables.FOXBERY, camp.returnToCampUseOneHour);
-        if (selector == 2) inventory.takeItem(consumables.NPNKEGG, camp.returnToCampUseOneHour);
+        if (selector == 0) Inventory.takeItem(ConsumableLib.CANINEP, Camp.returnToCampUseOneHour);
+        if (selector == 1) Inventory.takeItem(ConsumableLib.FOXBERY, Camp.returnToCampUseOneHour);
+        if (selector == 2) Inventory.takeItem(ConsumableLib.NPNKEGG, Camp.returnToCampUseOneHour);
     }
 
     protected stopTheMadness(): void {
@@ -423,7 +423,7 @@ export class ErlKingScene {
         outputText("You get the feeling you won’t be seeing him anymore.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected surrenderToTheHounds(): void {
@@ -616,7 +616,7 @@ export class ErlKingScene {
         player.slimeFeed();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected howDareYou(): void {
@@ -695,7 +695,7 @@ export class ErlKingScene {
         dynStats("lust=", 0);
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected encounterPrincessGwynn(): void {
@@ -768,7 +768,7 @@ export class ErlKingScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected gwynnGetsButtfuxed(): void {
@@ -793,7 +793,7 @@ export class ErlKingScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected gwynnNomsDaCunts(): void {
@@ -818,7 +818,7 @@ export class ErlKingScene {
         player.orgasm();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected gwynnGetsDickmilked(): void {
@@ -849,7 +849,7 @@ export class ErlKingScene {
         // [Lust +20, Libido +2]
         dynStats("lus+", 20, "lib+", 2);
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     protected gwynnGibsGifts(): void {
@@ -867,6 +867,6 @@ export class ErlKingScene {
 
         outputText("Before you can stop her, she’s gone, and you pocket the small bottle for later.\n\n");
 
-        inventory.takeItem(consumables.PRNPKR, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.PRNPKR, Camp.returnToCampUseOneHour);
     }
 }

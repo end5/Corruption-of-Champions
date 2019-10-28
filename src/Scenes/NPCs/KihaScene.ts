@@ -127,7 +127,7 @@ export class KihaScene {
         outputText("", true);
         spriteSelect(72);
         outputText("You nod and step back, retreating back towards camp.  You've no desire to fight such a fiery opponent.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Fight]
     public meetKihaAndFight(): void {
@@ -175,16 +175,16 @@ export class KihaScene {
         }
         if (event < 5) {
             outputText("You wander around through the swamp for a while, but you don't find anything.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Reducto
-        else if (event < 7) itype = consumables.REDUCTO;
-        else if (event < 8) itype = consumables.GROPLUS;
-        else if (event < 9) itype = consumables.COAL___;
-        else if (event < 10) itype = useables.T_SSILK;
+        else if (event < 7) itype = ConsumableLib.REDUCTO;
+        else if (event < 8) itype = ConsumableLib.GROPLUS;
+        else if (event < 9) itype = ConsumableLib.COAL___;
+        else if (event < 10) itype = UseableLib.T_SSILK;
         outputText("While exploring, you find an item on the ground!  ", false);
-        inventory.takeItem(itype, camp.returnToCampUseOneHour);
+        Inventory.takeItem(itype, Camp.returnToCampUseOneHour);
     }
 
     // [This was my idea!]
@@ -397,9 +397,9 @@ export class KihaScene {
         let dicked: boolean = false;
 
         // [If the player has an incubus draft:
-        if (player.hasItem(consumables.INCUBID)) {
+        if (player.hasItem(ConsumableLib.INCUBID)) {
             outputText("As the two of you entwine yourselves against Kiha's honey-slick tail, she notices your belongings in a heap next to the two of you. \"<i>What kind of s-s-shitty gifts did you bring me,</i>\" she pants through a toothy grin.  Scattering your belongings with one hand, she notices the phallic shape of your incubus draft, and snatches the bottle between her thumb and forefinger.  \"<i>Demon trash, of course.  You wouldn't even know how to use this right.  Let me show you.</i>\"  She flicks the cork from the vial and upends the concoction down her gullet in one swallow.  You don't have time to protest as the hood over her clitoris slides back, the fingertip-sized bead above her engorged vulva swelling thicker by the second. With a lurching spasm, the flesh of her joy buzzer rises into the air, growing three, then six inches before finally settling at nine inches long.  The two-inch-thick shaft of her massive clit throbs, the underside bulging outward as rectangular, interlocking plates harden into a ladder from base to summit. The featureless, rounded tip of her draconic phallus swells and juts obscenely as it curves into a sloping crest, tinted with the flush of arousal as a thin slit opens at the very crown of her newly grown cock.\n\n", false);
-            player.consumeItem(consumables.INCUBID);
+            player.consumeItem(ConsumableLib.INCUBID);
             // [Incubus Draft cont.:
             outputText("Without breaking her stride, Kiha threads more of her tail between the gushing lips of your spurting nethers and loops the long, flexible tip around your " + cockDescript(game.player, 0) + ", pulling it against her new shaft.  Completing the circle, the dexterous limb, varnished in girl-cum, tightens around the organs, sliding up and down frantically.  The feeling of her long, smooth cock-plates against the sensitive underside of your shaft is delicious and you reach a hand out to help the dragon's tail with its rapid, coiled jerking. Kiha kicks her leg up, smacking your arm back with the heel of her padded foot.  \"<i>This is for me,</i>\" she practically screams, \"<i>You're just here for the ride!  I don't even like your h-h-hot cock rubbing against mine or your gushing pussy sucking my t-ta-tail.  So just lie back like the little ssssSHIT you are and fucking... CUM!</i>\"  At that, the dragoness loses herself to the sensations, her virginal dick erupting in a shower of seething spunk that arcs backward, splattering her face and tits with her own creamy seed.\n\n", false);
             dicked = true;

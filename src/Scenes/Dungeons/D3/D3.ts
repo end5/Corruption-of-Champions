@@ -221,7 +221,7 @@ export class D3 {
 
             menu();
             addButton(0, "Enter", enterD3);
-            addButton(1, "Leave", camp.returnToCampUseOneHour);
+            addButton(1, "Leave", Camp.returnToCampUseOneHour);
 
             return true;
         }
@@ -237,7 +237,7 @@ export class D3 {
     public exitD3(): void {
         game.inRoomedDungeon = false;
         game.inRoomedDungeonResume = null;
-        camp.returnToCampUseOneHour();
+        Camp.returnToCampUseOneHour();
     }
 
     public resumeFromFight(): void {
@@ -273,8 +273,8 @@ export class D3 {
             addButton(5, "Exit", exitD3);
         }
 
-        addButton(8, "Items", inventory.inventoryMenu);
-        addButton(9, "Masturbate", masturbation.masturbateGo);
+        addButton(8, "Items", Inventory.inventoryMenu);
+        addButton(9, "Masturbate", Masturbation.masturbateGo);
     }
 
     public move(roomName: string): void {
@@ -421,12 +421,12 @@ export class D3 {
     private takeEgg(eggMask: number): void {
         let item: SimpleConsumable;
 
-        if (eggMask == BLACK) item = consumables.L_BLKEG;
-        if (eggMask == BLUE) item = consumables.L_BLUEG;
-        if (eggMask == WHITE) item = consumables.L_WHTEG;
-        if (eggMask == PINK) item = consumables.L_PNKEG;
-        if (eggMask == BROWN) item = consumables.L_BRNEG;
-        if (eggMask == PURPLE) item = consumables.L_PRPEG;
+        if (eggMask == BLACK) item = ConsumableLib.L_BLKEG;
+        if (eggMask == BLUE) item = ConsumableLib.L_BLUEG;
+        if (eggMask == WHITE) item = ConsumableLib.L_WHTEG;
+        if (eggMask == PINK) item = ConsumableLib.L_PNKEG;
+        if (eggMask == BROWN) item = ConsumableLib.L_BRNEG;
+        if (eggMask == PURPLE) item = ConsumableLib.L_PRPEG;
 
         // menuLoc = 9999;
         // Should actually be handled by the fallthrough of doNext(1) in the takeItem shit
@@ -435,7 +435,7 @@ export class D3 {
         outputText("You pluck out " + item.longName + " ");
 
         flags[kFLAGS.D3_EGGS_AVAILABLE] += eggMask;
-        inventory.takeItem(item, playerMenu); // playerMenu is equivalent to doNext(1)
+        Inventory.takeItem(item, playerMenu); // playerMenu is equivalent to doNext(1)
     }
 
     private fallbackFromMagpieHallS(): void {

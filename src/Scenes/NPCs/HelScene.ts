@@ -151,18 +151,18 @@ export class HelScene implements TimeAwareInterface {
     private postHelFuckBuddyFollowup(): void {
         spriteSelect(68);
         if (followerHel()) {
-            camp.returnToCampUseOneHour();
+            Camp.returnToCampUseOneHour();
             return;
         }
         if (flags[kFLAGS.HEL_FUCKBUDDY] == 0) {
-            camp.returnToCampUseOneHour();
+            Camp.returnToCampUseOneHour();
             return;
         }
         outputText("", true);
         outputText("You wake up an hour or so later, still snuggled up to Hel, entwined in a post-coitus repose.  You spend a few moments basking in the warmth of her presence, but you know you have duties to attend to.  You give her a peck on the cheek, waking her, and she's quick to escalate your gesture into a long, tongue-entwining kiss.\n\n", false);
 
         outputText("The two of you redress, teasing and flirting all the while – you give her ample ass a little smack, and she coyly brushes your thighs with her tail – but soon you must part.  Giving Hel another deep kiss, you make your way back to camp as she saunters off into the heart of the plains.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // FIRST COMBAT – PLAYER LOSES
@@ -411,7 +411,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("You nod, and return the wave before heading back to your camp.", false);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Player Win – Victory Fuck – Fuck her Vag
@@ -972,7 +972,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("You shake your head with a deprecating smile, and turn to leave her to her pleasures.", false);
         // (reset Helgate flag to 0)
         flags[kFLAGS.HEL_AFFECTION] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // THREESOME – FUCK HER ASS (wang of area =< 85) (edited)
@@ -1055,7 +1055,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("On second thought, you'd rather keep it simple for now, even if it means battling back her future advances with force of arms instead of words.  You kiss her once more and give her breasts a squeeze for the road, then wordlessly get up and take your leave.\n\n", false);
         // (reset Helgate to 0)
         flags[kFLAGS.HEL_AFFECTION] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Berserker Mode]
@@ -1172,7 +1172,7 @@ export class HelScene implements TimeAwareInterface {
 
         outputText("You tell her to count on it, and make your way back to camp.", false);
         dynStats("lus", 2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // ===================
     // THREESOMES AHOY!
@@ -1263,7 +1263,7 @@ export class HelScene implements TimeAwareInterface {
         IsabellaFollowerScene.isabellaAffection(5);
         HelFollower.helAffection(5);
         flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Watch (edited)
@@ -1287,7 +1287,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("\"<i>Count on it, naughty girl!</i>\" Isabella shouts before the two of them break apart and disappear into the brush to elude the hunting party.", false);
 
         // (Return PC to camp, advance time 1 hour. 10% chance of Intro Scene playing whenever Isabella or Hel would normally be encountered until PC chooses Leave or Diplomacy in the future)
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Leave (edited)
@@ -1297,7 +1297,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("Well, you're sure as hell not going to get involved in this – better to let them duke it out between themselves rather than risk your relationship with either girl.  You head on back to camp, not terribly surprised to hear sharp moos, grunts, and cries for some time in the distance.\n\n", false);
         // (Return PC to camp, advance time 1 hour. Intro scene will not play again.)
         flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] = -1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Isabella x salamander Threesome – Camp Version Intro (edited)
@@ -1398,7 +1398,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("", true);
         outputText("You decline the cow-girl's offer, but tell the redheads to have fun without you.  Though a bit disappointed, they both wave as you make your way back to camp.", false);
         if (game.time.hours < 6) doNext(playerMenu);
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Drink]
@@ -1458,7 +1458,7 @@ export class HelScene implements TimeAwareInterface {
         if (player.balls > 0) outputText(" and balls bluer than the lake", false);
         outputText(".", false);
         if (game.time.hours < 6) doNext(playerMenu);
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // DICK (edited)
@@ -1588,7 +1588,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("\"<i>Yeah.  Resting is... resting is good,</i>\" Hel says, trying and failing to suppress a yawn of her own.  Smiling, you wrap your arms around your two beautiful, busty redheads and let sleep overcome you.", false);
         // (Either return PC to camp or advance to the next day, if in plains or camp, respectively)
         if (game.time.hours < 6) doNext(playerMenu);
-        else doNext(camp.returnToCampUseFourHours);
+        else doNext(Camp.returnToCampUseFourHours);
     }
     // VAGINA (edited)
     private izzySallyThreeSomeVagoozlaz(): void {
@@ -1631,7 +1631,7 @@ export class HelScene implements TimeAwareInterface {
         IsabellaFollowerScene.isabellaAffection(4);
         HelFollower.helAffection(5);
         if (game.time.hours < 6) doNext(playerMenu);
-        else doNext(camp.returnToCampUseFourHours);
+        else doNext(Camp.returnToCampUseFourHours);
     }
     // Fox Girls -- First Time Intro
     public heliaPlusFoxyFluffs(): void {
@@ -1756,7 +1756,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("You awake to find yourself tucked into the bed, your clothes folded neatly next to you.  It looks like someone cleaned you up and tucked you in after your little orgy.  When you hear a loud snore beside you, you don't even need to guess who it was that took care of you.  You pull up the covers, and of course find Helia curled up beside you, her warm tail acting like a pillow for the two of you.  You smile, give her a long kiss, and collect your things.  You leave the salamander to sleep it off, and head back to camp.", false);
         // Bump up follower tracking affection too
         HelFollower.helAffection(5);
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     // Telling Hel to Not Get Hooked on Some Random Dude's Dickjuice (Or, How Hel Learned to Love Monogamy. Kind of.)
@@ -1850,7 +1850,7 @@ export class HelScene implements TimeAwareInterface {
         outputText("\n\n\"<i>No sex for you,</i>\" you answer.");
         outputText("\n\n\"<i>I.  But.  What.  You said.  We.  But.... WELL FUCK YOU ANYWAY.</i>\"");
         outputText("\n\nYou shrug and head back to camp as Hel, half-mad with lust, starts masturbating, glaring at your back as you leave.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         HelFollower.helAffection(-20);
     }
 }

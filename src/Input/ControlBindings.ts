@@ -409,7 +409,7 @@ inputManager.AddBindableControl(
         else if (flags[kFLAGS.CHEAT_ENTERING_COUNTER] == 3) {
             if (keyCode == 39) {
                 if (player.str > 0 && mainView.getButtonText(0).indexOf("Game Over") == -1) {
-                    inventory.giveHumanizer();
+                    Inventory.giveHumanizer();
                 }
             }
             else {

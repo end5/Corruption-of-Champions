@@ -16,7 +16,7 @@ export class CorruptedGlade {
                 outputText("  Disgusted by this perversion of nature, you turn away to leave, narrowly avoiding a sudden dripping of thick white fluid from the vines overhead.");
                 dynStats("lus", 2);
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else if (player.cor <= 66) { // intrigued reaction
             outputText("  You explore the glade with equal parts caution and curiosity.  ");
@@ -31,11 +31,11 @@ export class CorruptedGlade {
                     outputText("A cluster of huge breast-like knots on a nearby tree draws your attention.  Unable to resist, you poke one, and burst into giggles as it jiggles like a real breast!  You cautiously begin groping the tree-tit, and smile as it begins leaking sweet-smelling sap.  The scent conjures memories of helping to make maple syrup back home, and before you realize it, you've gathered a drop of the sap on your finger and tasted it.  It's powerfully sweet, making your tongue tingle and heart beat faster.  Unbidden, the thought of suckling the teat dry of its sweet treat comes to mind, but you manage to reject it and stumble away from the corrupted glade.  You have trouble with your tongue for the next hour: it won't stay in your mouth, and keeps licking your lips, seeking any leftover sweetness.  It almost distracts you from the palpable heat gathering between your thighs.");
             }
             dynStats("lus", 20 + player.lib / 5, "cor", .5);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else { // drink sap/lick flower reaction
             outputText("  You smile as you enter the glade, wondering which of the forbidden fruits you should try...\n\nThere are flowers that bear more than a passing resemblance to pussies,\nvines with absurdly large penis-like tips,\nand trees covered in breast-like knots, leaking sap.");
-            simpleChoices("Flowers", flowerFun, "Vines", tentacleFun, "Trees", treeBoobFun, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Flowers", flowerFun, "Vines", tentacleFun, "Trees", treeBoobFun, "", null, "Leave", Camp.returnToCampUseOneHour);
         }
         // Wallow in decadence reaction - UNFINISHED
     }
@@ -97,7 +97,7 @@ export class CorruptedGlade {
             player.orgasm();
             dynStats("sen", 4, "cor", 1);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private tentacleFun(): void {
@@ -216,7 +216,7 @@ export class CorruptedGlade {
             }
         }
         player.slimeFeed();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private treeBoobFun(): void {
@@ -250,6 +250,6 @@ export class CorruptedGlade {
                 }
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

@@ -16,7 +16,7 @@ export class Mountain {
         if ((player.level >= 5 || player.exploredMountain >= 40) && flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] == 0) {
             outputText("While exploring the mountain, you come across a relatively safe way to get at its higher reaches.  You judge that with this route you'll be able to get about two thirds of the way up the mountain.  With your newfound discovery fresh in your mind, you return to camp.\n\n(<b>High Mountain exploration location unlocked!</b>)", true);
             flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (isHolidays()) {
@@ -104,7 +104,7 @@ export class Mountain {
             // Imptacular Encounter
             if (rand(10) < impGob) {
                 if (player.level >= 8 && rand(2) == 0) {
-                    impScene.impLordEncounter();
+                    ImpScene.impLordEncounter();
                 }
                 else {
                     outputText("An imp leaps out from behind a rock and attacks!", true);
@@ -117,7 +117,7 @@ export class Mountain {
             else {
                 // 50% of the time, goblin assassin!
                 if (player.level >= 10 && rand(2) == 0) {
-                    goblinAssassinScene.goblinAssassinEncounter();
+                    GoblinAssassinScene.goblinAssassinEncounter();
                     return;
                 }
                 if (player.gender > 0) {
@@ -158,7 +158,7 @@ export class Mountain {
                     outputText("You stumble in your attempt to escape and realize that you are completely helpless.  The minotaur towers over you and heaves his ax for a <i>coup de grace</i>.  As he readies the blow, another beast-man slams into him from the side.  The two of them begin to fight for the honor of raping you, giving you the opening you need to escape.  You quietly sneak away while they fight – perhaps you should avoid the mountains for now?\n\n", false);
                 }
                 player.effects.create(StatusAffects.TF2, 0, 0, 0, 0);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // Mino gangbang
@@ -218,7 +218,7 @@ export class Mountain {
                         outputText("During your hike into the mountains, your depraved mind keeps replaying your most obcenely warped sexual encounters, always imagining new perverse ways of causing pleasure.\n\nIt is a miracle no predator picked up on the strong sexual scent you are emitting.", true);
                         dynStats("tou", .25, "spe", .5, "lib", .25, "lus", player.lib / 10);
                     }
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                     return;
                 }
                 wormEncounter();
@@ -234,7 +234,7 @@ export class Mountain {
                         outputText("During your hike into the mountains, your depraved mind keeps replaying your most obcenely warped sexual encounters, always imagining new perverse ways of causing pleasure.\n\nIt is a miracle no predator picked up on the strong sexual scent you are emitting.", true);
                         dynStats("tou", .25, "spe", .5, "lib", .25, "lus", player.lib / 10);
                     }
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 else {
                     wormToggle();
@@ -384,7 +384,7 @@ export class Mountain {
         }
         // (Acquired minotaur cum!)
         game.time.hours++;
-        inventory.takeItem(consumables.MINOCUM, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.MINOCUM, Camp.returnToCampUseOneHour);
     }
 
     private watchAMinoCumSlut(): void {
@@ -405,7 +405,7 @@ export class Mountain {
         outputText("\n\nAs you look at the two cum-covered creatures laying there in their exhausted sex-induced stupors, the minotaur's thick horse-cock now slowly deflating, you realize that you've been touching yourself.  You make yourself stop in disgust.");
         outputText("\n\nOnly now do you notice other faces peeking over ledges and ridges.  You count at least two goblins and one imp who quickly pull back.  From the sounds, they were busy getting themselves off.  Apparently this isn't an uncommon show, and the locals enjoy it immensely.");
         dynStats("lus", 25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private continueMinoVoyeurism(): void {
@@ -424,6 +424,6 @@ export class Mountain {
             outputText("  Apparently this isn't an uncommon show, and the locals enjoy it immensely.", false);
         // Lust!
         dynStats("lus", 5 + player.lib / 20 + minoScore(player) + cowScore(player));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

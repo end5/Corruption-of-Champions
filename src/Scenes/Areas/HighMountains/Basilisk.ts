@@ -106,7 +106,7 @@ export class Basilisk extends Monster {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 12;
         this.gems = rand(10) + 10;
-        this.drop = new ChainedDrop().add(consumables.REPTLUM, 0.9);
+        this.drop = new ChainedDrop().add(ConsumableLib.REPTLUM, 0.9);
         this.tailType = TAIL_TYPE_COW;
         this.tailRecharge = 0;
         checkMonster();

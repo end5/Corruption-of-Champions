@@ -94,7 +94,7 @@ export class Anemone extends Monster {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 4;
         this.gems = rand(5) + 1;
-        this.drop = new WeightedDrop(consumables.DRYTENT, 1);
+        this.drop = new WeightedDrop(ConsumableLib.DRYTENT, 1);
         checkMonster();
     }
 

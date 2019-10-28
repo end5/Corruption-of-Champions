@@ -57,11 +57,11 @@ export class HolliScene {
             menu();
             addButton(0, "Fight", fightHolli);
             if (player.keyItems.has("Jojo's Talisman") >= 0) addButton(1, "Call Jojo", callDatJojo);
-            addButton(4, "Back", inventory.inventoryMenu);
+            addButton(4, "Back", Inventory.inventoryMenu);
         }
         else if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 1) {
             if (output) outputText("The sprout looks about the same as when you first noticed it.  It's a simple, leafy shoot that only goes to about knee height.  It looks healthy and strong, with a few dozen branches and shiny green leaves.  If you look closely, the veins on the undersides of the leaf are purplish and pulse slightly with corruption.  You could easily destroy it.");
-            simpleChoices("Burn It", destroyDatFukkinTree, "", null, "", null, "", null, "Back", inventory.inventoryMenu);
+            simpleChoices("Burn It", destroyDatFukkinTree, "", null, "", null, "", null, "Back", Inventory.inventoryMenu);
         }
         else if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 2) {
             // [Fuck It] [Ride Stamen] [Do Nothing] [Destroy It]
@@ -69,7 +69,7 @@ export class HolliScene {
             if (player.cocks.length > 0 && player.cocks.cockThatFits(100) >= 0 && player.lust >= 33) fuck = fuckFuckingFuckFlowerP2;
 
             if (player.vaginas.length > 0 && player.lust >= 33) ride = rideDatFuckingFukkFlowerP2;
-            simpleChoices("Fuck It", fuck, "Ride Stamen", ride, "", null, "Destroy It", destroyDatFuckingPlantAtP2, "Back", inventory.inventoryMenu);
+            simpleChoices("Fuck It", fuck, "Ride Stamen", ride, "", null, "Destroy It", destroyDatFuckingPlantAtP2, "Back", Inventory.inventoryMenu);
         }
         else if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 3) {
             if (output) outputText("The familiar plant has blossomed into a nicely sized tree, though you doubt it has finished growing just yet.  It sports an outstretched canopy with nice, green leaves.  Unfortunately, you can still trace the corrupted veins on their undersides from below.  The vaginal flower is still there and is in full bloom, now several feet across and practically dripping with moisture.  Just up the trunk, there's a pair of small, roughly b-cup breasts bulging out of the bark.  They're exquisitely smooth and soft, and they ooze sweet-smelling sap that your tongue would love to taste.  In the canopy above, tentacle vines idly writhe about, though they show no sizes of aggression.");
@@ -80,7 +80,7 @@ export class HolliScene {
             if (player.cocks.length > 0 && player.lust >= 33) fuck = fuckTheFlower;
             if (player.vaginas.length > 0 && player.lust >= 33) ride = rideTheWalrusP3;
             // [Fuck flower] [Drink Sap] [Ride Tentacles] [{Torch It}] [Leave It]
-            simpleChoices("Fuck Flower", fuck, "Drink Sap", drinkThePlantGirlsSap, "Ride Tentacle", ride, "Torch It", burnIt, "Leave It", inventory.inventoryMenu);
+            simpleChoices("Fuck Flower", fuck, "Drink Sap", drinkThePlantGirlsSap, "Ride Tentacle", ride, "Torch It", burnIt, "Leave It", Inventory.inventoryMenu);
         }
         else {
             // Camp Menu (edited)
@@ -124,7 +124,7 @@ export class HolliScene {
 
                 // [Fuck Her] [Drink] [Tentacle Ride] {Guard Camp} {Threaten} [Leave]
                 choices("Fuck Holli", fuck, "Drink Sap", haveAMapleSyrupSnack, "Ride Tentacles", ride, guardT, burnIt, "Eat A Fruit", eat,
-                    "", null, "", null, "", null, "", null, "Leave", inventory.inventoryMenu);
+                    "", null, "", null, "", null, "", null, "Leave", Inventory.inventoryMenu);
             }
             else {
                 menu();
@@ -134,7 +134,7 @@ export class HolliScene {
                 addButton(3, "Drink Sap", haveAMapleSyrupSnack);
                 if (flags[kFLAGS.HOLLI_FRUIT] > 0) addButton(4, "Eat A Fruit", eatHolliFruit);
                 addButton(5, "Guarding", askBrokenHolliToGuard);
-                addButton(9, "Leave", inventory.inventoryMenu);
+                addButton(9, "Leave", Inventory.inventoryMenu);
             }
 
             if (flags[kFLAGS.FOLLOWER_AT_FARM_HOLLI] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(6, "Farm Help", helpWithFarm);
@@ -171,7 +171,7 @@ export class HolliScene {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_HOLLI] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private noPlzDontFuckWithFarm(): void {
@@ -226,7 +226,7 @@ export class HolliScene {
         // (-5 corruption)
         dynStats("cor", -5);
         flags[kFLAGS.FUCK_FLOWER_KILLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [No] (edited)
     private letZeFuckingSproutLive(): void {
@@ -267,7 +267,7 @@ export class HolliScene {
         // (-5 corruption)
         dynStats("cor", -5);
         flags[kFLAGS.FUCK_FLOWER_KILLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Fuck It (skimmed)
@@ -299,7 +299,7 @@ export class HolliScene {
         flags[kFLAGS.TIMES_FUCKED_FLOWER] = 1;
         if (flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 4;
         fatigue(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ride It (skimmed)(coded)
@@ -344,7 +344,7 @@ export class HolliScene {
         fatigue(5);
         flags[kFLAGS.TIMES_RIDDEN_FLOWER] = 1;
         if (flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 4;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Phase 3 Intro: (edited)
@@ -424,7 +424,7 @@ export class HolliScene {
         if (flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 5;
         flags[kFLAGS.TIMES_FUCKED_FLOWER]++;
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Drink Sap (edited)
@@ -438,7 +438,7 @@ export class HolliScene {
         if (silly()) outputText(", tree hugger that you are");
         outputText(".  The thick 'milk' quickly fills your body with energy, though it runs out nearly as soon as it started.");
         outputText("\n\nYou wipe your slightly sticky mouth on your arm and sigh with the act done, admiring the slightly rosy tinge of the now-smaller breasts.  This whole thing is weird as hell, but you're as full of energy as ever after the snack.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Ride Tentacles (C)
@@ -464,7 +464,7 @@ export class HolliScene {
         if (flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 5;
         flags[kFLAGS.TIMES_RIDDEN_FLOWER]++;
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Torch It (edited)(C)
@@ -485,7 +485,7 @@ export class HolliScene {
         outputText("\n\nThis time, it stays suitably lit.  The tree makes a handy torch for a few hours while it burns to ash, but leaves behind a thick, cloying smoke that takes forever to dissipate.  At least that nuisance plant is gone for good.");
         fatigue(100);
         flags[kFLAGS.FUCK_FLOWER_KILLED] = 1;
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     // Phase Four (edited)
@@ -671,7 +671,7 @@ export class HolliScene {
         fertilizeHolli();
         player.orgasm();
         dynStats("sen", -1, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Drink From Her (edited)(C)
@@ -691,7 +691,7 @@ export class HolliScene {
         // stat changes n' shit
         dynStats("lib", .5, "sen", 1, "lus", 15, "cor", 1);
         fatigue(-60);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Tentacle Ride (looks ok)(C)
@@ -729,7 +729,7 @@ export class HolliScene {
         fertilizeHolli(false);
         player.slimeFeed();
         flags[kFLAGS.TIMES_RIDDEN_FLOWER]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Bear Fruit(C)
@@ -765,7 +765,7 @@ export class HolliScene {
         dynStats("cor", 1);
         if (player.tou < 50) dynStats("tou", 1);
         if (player.str < 50) dynStats("str", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Beg Her To Guard (edited)(C)
@@ -828,7 +828,7 @@ export class HolliScene {
         // {fail}
         if (domPowah < 20) {
             outputText("\n\nRolling her eyes, Holli sinks back into her arboreal core, the bark 'lips' slowly pulling together, creaking ominously.  You grab hold of them and try to wrench them open, but inexorably, each continues on to meet the other.  An inch before the wood crushes around your fingers, you let go, reminded of a tree back home that somehow split a stone with its growth.  The demonic dryad's home is closed to you.  Perhaps, if you were a little more intimidating, it would have worked.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // {success}
@@ -918,7 +918,7 @@ export class HolliScene {
         flags[kFLAGS.TIMES_FUCKED_FLOWER]++;
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
         fertilizeHolli();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // .PC Has 10 Tentacle Go Full On Monster With Her
@@ -953,7 +953,7 @@ export class HolliScene {
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
         fertilizeHolli();
         fertilizeHolli();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Vaginally Dominate Tentacles
     private vaginalDomHollisTentacruels(): void {
@@ -1002,7 +1002,7 @@ export class HolliScene {
         player.slimeFeed();
         player.orgasm();
         dynStats("sen", -2, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private threatenHolli(): void {
@@ -1021,7 +1021,7 @@ export class HolliScene {
         // {No option to beg for night watch till PC has been imp raped}
         outputText("\n\n<b>Maybe you should just slap her the next time she refuses to guard the camp and try your luck anyway.</b>");
         flags[kFLAGS.THREATENED_HOLLI] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Hit Her With Your Hand (requires failing to threaten) -Z

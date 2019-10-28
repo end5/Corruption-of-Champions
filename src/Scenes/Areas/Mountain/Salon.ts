@@ -27,7 +27,7 @@ export class Salon implements TimeAwareInterface {
     // const SALON_PAID:int = 441;
     public hairDresser(): void {
         outputText("While exploring the mountain, you find a cleverly concealed doorway.  From inside you can hear the sound of blades being sharpened.  Do you enter the doorway?", true);
-        doYesNo(salonGreeting, camp.returnToCampUseOneHour);
+        doYesNo(salonGreeting, Camp.returnToCampUseOneHour);
     }
     public salonGreeting(): void {
         if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) {
@@ -72,7 +72,7 @@ export class Salon implements TimeAwareInterface {
         addButton(3, "Minotaur", gloryholeMinotaur);
         addButton(4, "Incubus", gloryholeIncubus);
         addButton(8, "Buy MinoCum", minoCum);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
         // choices("Goblin Blow",blow,"Canine",gloryholeDoggie,"Imp",gloryholeImp,"Minotaur",gloryholeMinotaur,"Incubus",gloryholeIncubus,"",0,"",0,"",0,"Buy MinoCum",minoCum,"Leave",13);
     }
     private buyMinoCum(): void {
@@ -87,7 +87,7 @@ export class Salon implements TimeAwareInterface {
             player.gems -= 60;
             outputText("You happily give Lynnette 60 gems and pick up the bottle full of glistening, heavenly cum.  ", true);
             statScreenRefresh();
-            inventory.takeItem(consumables.MINOCUM, camp.returnToCampUseOneHour);
+            Inventory.takeItem(ConsumableLib.MINOCUM, Camp.returnToCampUseOneHour);
         }
     }
     public salonPurchaseMenu(): void {
@@ -123,7 +123,7 @@ export class Salon implements TimeAwareInterface {
         addButton(5, "Buy MinoCum", minoCum);
         addButton(7, "Mud Facial", mudFacial2);
         addButton(8, "Sand Facial", sandFacial2);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     private hairDresserGreeting(): void {
@@ -341,7 +341,7 @@ export class Salon implements TimeAwareInterface {
         outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescription(player) + ".  When they've finished, you're left with ", true);
         player.hairLength = 1;
         outputText(hairDescription(player) + ".", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private cutMedium(): void {
         spriteSelect(38);
@@ -354,7 +354,7 @@ export class Salon implements TimeAwareInterface {
         outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescription(player) + ".  When they've finished, you're left with ", true);
         player.hairLength = 10;
         outputText(hairDescription(player) + ".", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private cutLong(): void {
         spriteSelect(38);
@@ -367,7 +367,7 @@ export class Salon implements TimeAwareInterface {
         outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + hairDescription(player) + ".  When they've finished, you're left with ", true);
         player.hairLength = 25;
         outputText(hairDescription(player) + ".", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private hairGrow(): void {
         spriteSelect(38);
@@ -382,11 +382,11 @@ export class Salon implements TimeAwareInterface {
         flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
         player.hairLength += temp;
         outputText(num2Text(temp) + " more inches of " + player.hairColor + " hair.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private buyDye(itype: ItemType): void {
         outputText("", true);
-        inventory.takeItem(itype, camp.returnToCampUseOneHour);
+        Inventory.takeItem(itype, Camp.returnToCampUseOneHour);
     }
 
     private dyeMenu(): void {
@@ -394,12 +394,12 @@ export class Salon implements TimeAwareInterface {
         outputText("", true);
         outputText("Lynnette pulls open a cabinet in the corner, displaying a wide array of exotic hair-dyes.  Which kind do you want?", false);
         menu();
-        addButton(0, "Blue", buyDye, consumables.BLUEDYE);
-        addButton(1, "Orange", buyDye, consumables.ORANGDY);
-        addButton(2, "Pink", buyDye, consumables.PINKDYE);
-        addButton(3, "Purple", buyDye, consumables.PURPDYE);
-        addButton(4, "Green", buyDye, consumables.GREEN_D);
-        addButton(5, "Ext.Serum", buyDye, consumables.EXTSERM);
+        addButton(0, "Blue", buyDye, ConsumableLib.BLUEDYE);
+        addButton(1, "Orange", buyDye, ConsumableLib.ORANGDY);
+        addButton(2, "Pink", buyDye, ConsumableLib.PINKDYE);
+        addButton(3, "Purple", buyDye, ConsumableLib.PURPDYE);
+        addButton(4, "Green", buyDye, ConsumableLib.GREEN_D);
+        addButton(5, "Ext.Serum", buyDye, ConsumableLib.EXTSERM);
         addButton(9, "Back", hairDressingMainMenu);
     }
 
@@ -511,7 +511,7 @@ export class Salon implements TimeAwareInterface {
 
         outputText("With that finished, the crowd of busty, green-skinned women disperses to leave you in peace.  Time drags on, but eventually the mud hardens and cracks.  As if on cue, tiny hands emerge with wet rags to scrub your face clean.  Once they've finished, you feel like a whole new you! (+10 femininity)", false);
         modFem(player, 100, 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private sandFacial(): void {
@@ -521,7 +521,7 @@ export class Salon implements TimeAwareInterface {
 
         outputText("After a while the goblin girls come back and clean the stuff from your face. (+10 masculinity)", false);
         modFem(player, 0, 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     /*
     public static const LYNNETTE_PREGNANCY_CYCLE:int                                    = 1022; //0-3 = pregnant. 4-6 = not.

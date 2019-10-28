@@ -343,7 +343,7 @@ export class Benoit {
 
         player.gems -= int(buyMod * itype.value);
         statScreenRefresh();
-        inventory.takeItem(itype, benoitsBuyMenu);
+        Inventory.takeItem(itype, benoitsBuyMenu);
     }
 
     private benoitSellTransact(slot: number, sellMod: number): void {
@@ -382,54 +382,54 @@ export class Benoit {
     public updateBenoitInventory(): void {
         temp = rand(8);
         // Slot 1 Any one of the following: Incubus Draft, Minotaur Blood, Minotaur Cum, Equinuum, Black Pepper, Vitalitea, Scholar's Tea, Double Pepper
-        if (temp == 0) flags[kFLAGS.BENOIT_1] = consumables.INCUBID.id;
-        else if (temp == 1) flags[kFLAGS.BENOIT_1] = consumables.MINOBLO.id;
-        else if (temp == 2) flags[kFLAGS.BENOIT_1] = consumables.MINOCUM.id;
-        else if (temp == 3) flags[kFLAGS.BENOIT_1] = consumables.EQUINUM.id;
-        else if (temp == 4) flags[kFLAGS.BENOIT_1] = consumables.BLACKPP.id;
-        else if (temp == 5) flags[kFLAGS.BENOIT_1] = consumables.SMART_T.id;
-        else if (temp == 6) flags[kFLAGS.BENOIT_1] = consumables.VITAL_T.id;
-        else flags[kFLAGS.BENOIT_1] = consumables.DBLPEPP.id;
+        if (temp == 0) flags[kFLAGS.BENOIT_1] = ConsumableLib.INCUBID.id;
+        else if (temp == 1) flags[kFLAGS.BENOIT_1] = ConsumableLib.MINOBLO.id;
+        else if (temp == 2) flags[kFLAGS.BENOIT_1] = ConsumableLib.MINOCUM.id;
+        else if (temp == 3) flags[kFLAGS.BENOIT_1] = ConsumableLib.EQUINUM.id;
+        else if (temp == 4) flags[kFLAGS.BENOIT_1] = ConsumableLib.BLACKPP.id;
+        else if (temp == 5) flags[kFLAGS.BENOIT_1] = ConsumableLib.SMART_T.id;
+        else if (temp == 6) flags[kFLAGS.BENOIT_1] = ConsumableLib.VITAL_T.id;
+        else flags[kFLAGS.BENOIT_1] = ConsumableLib.DBLPEPP.id;
 
         // If the player discarded a unique item, the first time they arrive at the Salvage Shop after a week has passed it will appear in Slot 1.
         if (rand(10) == 0) {
-            flags[kFLAGS.BENOIT_1] = consumables.GODMEAD.id;
+            flags[kFLAGS.BENOIT_1] = ConsumableLib.GODMEAD.id;
         }
 
         // Slot 2 Any one of the following: Succubus Milk, Whisker Fruit, Wet Cloth, Golden Seed, LaBova, Snake Oil, Pink Gossamer, Black Gossamer
         temp = rand(7);
-        if (temp == 0) flags[kFLAGS.BENOIT_2] = consumables.SUCMILK.id;
-        else if (temp == 1) flags[kFLAGS.BENOIT_2] = consumables.W_FRUIT.id;
-        else if (temp == 2) flags[kFLAGS.BENOIT_2] = consumables.WETCLTH.id;
-        else if (temp == 3) flags[kFLAGS.BENOIT_2] = consumables.GLDSEED.id;
-        else if (temp == 4) flags[kFLAGS.BENOIT_2] = consumables.LABOVA_.id;
-        else if (temp == 5) flags[kFLAGS.BENOIT_2] = consumables.SNAKOIL.id;
-        else if (temp == 6) flags[kFLAGS.BENOIT_2] = consumables.S_GOSSR.id;
-        else flags[kFLAGS.BENOIT_2] = consumables.B_GOSSR.id;
+        if (temp == 0) flags[kFLAGS.BENOIT_2] = ConsumableLib.SUCMILK.id;
+        else if (temp == 1) flags[kFLAGS.BENOIT_2] = ConsumableLib.W_FRUIT.id;
+        else if (temp == 2) flags[kFLAGS.BENOIT_2] = ConsumableLib.WETCLTH.id;
+        else if (temp == 3) flags[kFLAGS.BENOIT_2] = ConsumableLib.GLDSEED.id;
+        else if (temp == 4) flags[kFLAGS.BENOIT_2] = ConsumableLib.LABOVA_.id;
+        else if (temp == 5) flags[kFLAGS.BENOIT_2] = ConsumableLib.SNAKOIL.id;
+        else if (temp == 6) flags[kFLAGS.BENOIT_2] = ConsumableLib.S_GOSSR.id;
+        else flags[kFLAGS.BENOIT_2] = ConsumableLib.B_GOSSR.id;
 
         // There is a 4% chance the following items will appear in Slot 2: Bimbo Liqueur, Large Pink Egg, Large Blue Egg, Bro Brew, T. Shark Tooth.
         if (rand(100) < 4) {
             temp = rand(5);
-            if (temp == 0) flags[kFLAGS.BENOIT_2] = consumables.BIMBOLQ.id;
-            else if (temp == 1) flags[kFLAGS.BENOIT_2] = consumables.L_PNKEG.id;
-            else if (temp == 2) flags[kFLAGS.BENOIT_2] = consumables.L_BLUEG.id;
-            else if (temp == 3) flags[kFLAGS.BENOIT_2] = consumables.BROBREW.id;
-            else flags[kFLAGS.BENOIT_2] = consumables.TSTOOTH.id;
+            if (temp == 0) flags[kFLAGS.BENOIT_2] = ConsumableLib.BIMBOLQ.id;
+            else if (temp == 1) flags[kFLAGS.BENOIT_2] = ConsumableLib.L_PNKEG.id;
+            else if (temp == 2) flags[kFLAGS.BENOIT_2] = ConsumableLib.L_BLUEG.id;
+            else if (temp == 3) flags[kFLAGS.BENOIT_2] = ConsumableLib.BROBREW.id;
+            else flags[kFLAGS.BENOIT_2] = ConsumableLib.TSTOOTH.id;
         }
 
         // Slot 3 Any one of the following: Maid's Clothes, Wizard Robes, Tough Silk, Slutty Swimwear, Goo Chunk, Chitin Plate
         temp = rand(5);
-        if (temp == 0) flags[kFLAGS.BENOIT_3] = armors.W_ROBES.id;
-        else if (temp == 1) flags[kFLAGS.BENOIT_3] = useables.T_SSILK.id;
-        else if (temp == 2) flags[kFLAGS.BENOIT_3] = armors.S_SWMWR.id;
-        else if (temp == 3) flags[kFLAGS.BENOIT_3] = useables.GREENGL.id;
-        else flags[kFLAGS.BENOIT_3] = useables.B_CHITN.id;
+        if (temp == 0) flags[kFLAGS.BENOIT_3] = ArmorLib.W_ROBES.id;
+        else if (temp == 1) flags[kFLAGS.BENOIT_3] = UseableLib.T_SSILK.id;
+        else if (temp == 2) flags[kFLAGS.BENOIT_3] = ArmorLib.S_SWMWR.id;
+        else if (temp == 3) flags[kFLAGS.BENOIT_3] = UseableLib.GREENGL.id;
+        else flags[kFLAGS.BENOIT_3] = UseableLib.B_CHITN.id;
 
         if (rand(10) == 0) {
             // There is a 10% chance the following items will appear in Slot 3: Bondage Straps, Nurse Outfit, Red Party Dress
             temp = rand(2);
-            if (temp == 0) flags[kFLAGS.BENOIT_3] = armors.BONSTRP.id;
-            else flags[kFLAGS.BENOIT_3] = armors.NURSECL.id;
+            if (temp == 0) flags[kFLAGS.BENOIT_3] = ArmorLib.BONSTRP.id;
+            else flags[kFLAGS.BENOIT_3] = ArmorLib.NURSECL.id;
         }
         // Slot 4 Herbal Contraceptive - 30 gems.  Only becomes available through PC fem path.  Reduces fertility by 90% for a week if taken.
     }
@@ -461,7 +461,7 @@ export class Benoit {
                 outputText("\n\nYou rack your brain but can't think of anything that could help Benoit, so you end up simply sympathising with him.  \"<i>Do not beat yourself up over it,</i>\" says the basilisk, touching the tips of your fingers and smiling warmly.  \"<i>It is just foolishness.  And anyway, I told you: we are a race of bastards.  We are ze last guys who deserve someone sinking after us.</i>\"");
                 // don't trigger event again until the PC is smart enough!
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // First time Talk:
         else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] == 0) {
@@ -493,7 +493,7 @@ export class Benoit {
         }
         else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] != 0 && benoitAffection() >= 40 && flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] == 0 && flags[kFLAGS.FEMOIT_UNLOCKED] == 0) {
             femoitInitialTalk();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Subsequent Talk
@@ -643,7 +643,7 @@ export class Benoit {
                 outputText("\n\n“<i>Well, of course I can, zilly,</i>” she says teasingly. “<i>When you end up smelling like someone else for several hours, it is a difficult sing to mistake.  It is a memento of you and it reminds me of appiness; I wish I could smell zat way for longer.  My sexy little shaved monkey.</i>”");
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Male Benoit x Female PC Interactions
@@ -786,7 +786,7 @@ export class Benoit {
         else {
             outputText("  I cannot give you babies unless you 'ave eggs.  I guess I should think a bit more before I go digging for things...</i>\"");
             // , but if your body goes into 'eat again and you are afraid of 'aving... unwanted experiences... I can sell it to you.</i>\"]
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
 
         }
 
@@ -796,7 +796,7 @@ export class Benoit {
         clearOutput();
         outputText("You gladly accept the herbal contraceptive and push it into your mouth, enjoying the pleasantly sharp, citrus flavour.");
         //  \"<i>I can sell you ze stuff too,</i>\" he says, twiddling his claws.  \"<i>If you want.</i>\"
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // No:
@@ -808,7 +808,7 @@ export class Benoit {
         // [Herbal Contraceptive added to slot 4 of shop]
         // Standard basilisk preg odds
         benoitKnocksUpPCCheck();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Subsequent visit to the shop:
@@ -879,7 +879,7 @@ export class Benoit {
         benoitKnocksUpPCCheck();
         benoitAffection(2);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Take charge:
@@ -963,7 +963,7 @@ export class Benoit {
         benoitAffection(2);
         flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS]++;
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Bas. Womb (not for horses)
@@ -971,7 +971,7 @@ export class Benoit {
         clearOutput();
         // [Ingredients not in inventory: ]
         // A double dose of ovi-elixer, a bottle of reptilum, goblin ale and some basilisk blood would probably do...
-        if (!(player.hasItem(consumables.OVIELIX, 2) && player.hasItem(consumables.REPTLUM) && player.hasItem(consumables.GOB_ALE))) {
+        if (!(player.hasItem(ConsumableLib.OVIELIX, 2) && player.hasItem(ConsumableLib.REPTLUM) && player.hasItem(ConsumableLib.GOB_ALE))) {
             outputText("You don't have the necessary ingredients to attempt this yet.  You recall " + benoitMF("Benoit", "Benoite") + " mentioning that you would need Reptilum, two Ovi Elixirs, and Goblin Ale.");
             doNext(benoitIntro);
         }
@@ -983,9 +983,9 @@ export class Benoit {
         }*/
         // Ingredients in inventory:
         else {
-            player.consumeItem(consumables.OVIELIX, 2);
-            player.consumeItem(consumables.REPTLUM);
-            player.consumeItem(consumables.GOB_ALE);
+            player.consumeItem(ConsumableLib.OVIELIX, 2);
+            player.consumeItem(ConsumableLib.REPTLUM);
+            player.consumeItem(ConsumableLib.GOB_ALE);
             outputText("You ferret out the ingredients you have collected and begin to bang them onto the counter in front of Benoit, telling him that you've got what he needs.  Pierre barks excitedly at the noise.");
 
             outputText("\n\n\"<i>And what is zat?</i>\" the basilisk says, bewildered. You explain you can whip something up which will give you a basilisk womb - and hence, female basilisk kids.  Benoit opens his mouth then closes it again; it takes him a while to properly compute these words.  \"<i>But... but zat is completely impossible, [name]!</i>\" he says eventually, wringing his hands.  \"<i>'Ow do you know you won't just poison yourself?  Or, or turn yourself into a newt or somesing?  Please... don't 'urt... I should never 'ave said...</i>\"  He lapses into silence as you grab a pewter bowl from a nearby shelf and a wooden spoon from a container full of old utensils, and begin to mix the various ingredients together.  You pour the ovi-elixers into the goblin ale, beating them together until a fairly unpleasant sulfuric smell fills the close market stall.  Carefully you dribble the reptilum in whilst continuing to stir, until the smell changes to that of cooking sherry.  You frown at the mixture.  It feels like it's missing something...  Casually, you ask Benoit to open his hand to you, whilst plucking a kitchen knife from the utensil container.  He barks in pain as you run the blade across his palm and then hold his hand firmly over the bowl.  Drops of dark red blossom into the mixture, and as you carefully stir the potion turns a green-grey color: the color of Benoit's scales.");
@@ -1013,7 +1013,7 @@ export class Benoit {
                 return;
             }
             else outputText("  You grin and say you're not even sure it worked... but you'll be back at some point to try it out, and he'd better be ready for when you do.  You gently pry yourself out of his grip and leave as deliberately as you can, aware of the beguiling, invisible scent you are leaving for the stunned, silent basilisk to simmer in.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1075,7 +1075,7 @@ export class Benoit {
             outputText("\n(<b>Perk Unlocked: Oviposition - You will now regularly lay unfertilized eggs.</b>)");
         }
         if (player.pregnancyType == PregnancyStore.PREGNANCY_BASILISK) player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, player.pregnancyIncubation);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.orgasm();
         dynStats("sen", -2);
     }
@@ -1146,7 +1146,7 @@ export class Benoit {
         outputText("\n\nThe basilisk is silent for a time, running his claws along the counter pensively.  \"<i>Yes,</i>\" he says eventually, in a quiet tone.  \"<i>I 'ave.  Away from ze mountains, I 'ave 'ad time to sink.  I am not ze demons' slave anymore, and I am a funny joke of a basilisk anyway, so I 'ave often thought about making certain... zacrifices.  If we 'ad just one female, away from zeir corruption, zen...</i>\" he tails off, shrugging unhappily.  \"<i>But I just torment myself sinking about zis, [name].  Ze demons made us very resistant to change.  I would need somesing very powerful for me to become... somesing useful.</i>\"");
 
         /*
-            if (player.hasItem(consumables.BIMBOLQ))
+            if (player.hasItem(ConsumableLib.BIMBOLQ))
             {
                 outputText("\n\nA certain pink, effervescent liqueur suddenly feels very heavy in your pouch.  That would certainly be powerful enough to give Benoit what he wants... along with a lot of side effects.");
 
@@ -1176,16 +1176,16 @@ export class Benoit {
         clearOutput();
 
         // Ingredients not in inventory
-        if (!player.hasItem(consumables.P_S_MLK, 2) || !player.hasItem(consumables.L_PNKEG) || !player.hasItem(consumables.OVIELIX) || !player.hasItem(consumables.REPTLUM)) {
+        if (!player.hasItem(ConsumableLib.P_S_MLK, 2) || !player.hasItem(ConsumableLib.L_PNKEG) || !player.hasItem(ConsumableLib.OVIELIX) || !player.hasItem(ConsumableLib.REPTLUM)) {
             outputText("You don't have the necessary ingredients to attempt this yet.");
             outputText("\n\n<b>(Requires 2x Purified Succubus Milk, 1x Large Pink Egg, 1x Ovi Elixir, 1x Reptilium.)</b>");
             this.flushOutputTextToGUI();
         }
         else {
-            player.destroyItems(consumables.P_S_MLK, 2);
-            player.destroyItems(consumables.L_PNKEG, 1);
-            player.destroyItems(consumables.OVIELIX, 1);
-            player.destroyItems(consumables.REPTLUM, 1);
+            player.destroyItems(ConsumableLib.P_S_MLK, 2);
+            player.destroyItems(ConsumableLib.L_PNKEG, 1);
+            player.destroyItems(ConsumableLib.OVIELIX, 1);
+            player.destroyItems(ConsumableLib.REPTLUM, 1);
 
             outputText("You ferret out the ingredients you have collected and begin to bang them onto the counter in front of Benoit, telling him that you've got what he needs.  Pierre barks excitedly at the noise.");
 
@@ -1205,7 +1205,7 @@ export class Benoit {
             flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] = 1;
 
             menu();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1236,7 +1236,7 @@ export class Benoit {
         outputText("\n\n“<i>No, you are right,</i>” she says in a casual tone, although the color is still very high in her scales. “<i>It would be way too weird zat, wouldn’t it? I will find someone though, never fear.  As I said before...</i>” Benoite points two fingers at her blind eyes and then at the stall entrance.  There’s a distinct gleam in those cloudy grey depths you think would scare the hell out of most things with a penis. “<i>I ‘ave a purpose now.</i>”");
         outputText("\n\nCatching a subtle tone of dissapointment in Benoite's voice, you bid her a quick farewell and head back to camp, deciding to give her some time to recover.");
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public femoitFirstTimeYes(): void {
@@ -1289,7 +1289,7 @@ export class Benoit {
 
         player.orgasm();
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Subsequent Sex
@@ -1414,7 +1414,7 @@ export class Benoit {
         }
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Benoite Gives Birth
@@ -1497,6 +1497,6 @@ export class Benoit {
         clearBenoitPreggers();
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

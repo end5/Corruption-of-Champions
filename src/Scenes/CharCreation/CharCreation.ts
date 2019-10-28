@@ -162,14 +162,14 @@ export class CharCreation {
                 player.setArmor(oldPlayer.armor);
             }
             else {
-                player.setArmor(armors.C_CLOTH);
+                player.setArmor(ArmorLib.C_CLOTH);
             }
 
             player.setWeapon(oldPlayer.weapon);
         }
         // Clothes clear
         else {
-            player.setArmor(armors.C_CLOTH);
+            player.setArmor(ArmorLib.C_CLOTH);
             player.setWeapon(WeaponLib.FISTS);
         }
         // Clear plot storage array!
@@ -203,10 +203,10 @@ export class CharCreation {
             player.effects.clear();
         }
         // Clear old camp slots
-        inventory.clearStorage();
-        inventory.clearGearStorage();
+        Inventory.clearStorage();
+        Inventory.clearGearStorage();
         // Initialize gearStorage
-        inventory.initializeGearStorage();
+        Inventory.initializeGearStorage();
     }
 
     private chooseName(): void {
@@ -878,7 +878,7 @@ export class CharCreation {
         player.breastRows[0].lactationMultiplier += 20;
 
         // Equipment: Starts with spiked fist
-        player.setWeapon(weapons.S_GAUNT);
+        player.setWeapon(WeaponLib.S_GAUNT);
         // Perks: Fighter and Lotsa Jizz"	Annetta
         player.perks.create(PerkLib.HistoryFighter, 0, 0, 0, 0);
         player.perks.create(PerkLib.MessyOrgasms, 1.25, 0, 0, 0);
@@ -926,8 +926,8 @@ export class CharCreation {
         player.perks.create(PerkLib.PureAndLoving, 0, 0, 0, 0);
         player.perks.create(PerkLib.SensualLover, 0, 0, 0, 0);
         player.perks.create(PerkLib.OneTrackMind, 0, 0, 0, 0);
-        player.setWeapon(weapons.SUCWHIP);
-        player.setArmor(armors.NURSECL);
+        player.setWeapon(WeaponLib.SUCWHIP);
+        player.setArmor(ArmorLib.NURSECL);
     }
 
     private customBetram(): void {
@@ -988,9 +988,9 @@ export class CharCreation {
 
         player.skinTone = "ghostly pale";
         player.perks.create(PerkLib.Incorporeality, 0, 0, 0, 0);
-        player.setArmor(armors.I_CORST);
+        player.setArmor(ArmorLib.I_CORST);
         player.level = 5;
-        player.setWeapon(weapons.W_STAFF);
+        player.setWeapon(WeaponLib.W_STAFF);
 
         player.perks.create(PerkLib.Regeneration, 0, 0, 0, 0);
         player.perks.create(PerkLib.Smart, 0, 0, 0, 0);
@@ -1059,8 +1059,8 @@ export class CharCreation {
         player.tongueType = TONUGE_DEMONIC;
         player.nippleLength = 0.1;
         // Starting with an Inscribed Spellblade and Bondage Straps.	Charaun
-        player.setArmor(armors.BONSTRP);
-        player.setWeapon(weapons.S_BLADE);
+        player.setArmor(ArmorLib.BONSTRP);
+        player.setWeapon(WeaponLib.S_BLADE);
     }
 
     private customCharlie(): void {
@@ -1090,8 +1090,8 @@ export class CharCreation {
 
         // While we're on the subject, would glowing eyes be possible? I'll take normal eyes if not.
         // Beautiful Sword
-        player.setWeapon(weapons.B_SWORD);
-        player.setArmor(armors.SSARMOR);
+        player.setWeapon(WeaponLib.B_SWORD);
+        player.setArmor(ArmorLib.SSARMOR);
         // Beautiful Armor (Or just Spider Silk Armor)
         // Pure Pearl
         // Tallness 84 (8 feet 0 inches)
@@ -1152,10 +1152,10 @@ export class CharCreation {
         player.skinType = SKIN_TYPE_FUR;
         player.skinDesc = "fur";
         // -Chainmail armor
-        player.setArmor(armors.FULLCHN);
+        player.setArmor(ArmorLib.FULLCHN);
         // -Large Claymore (i understand 40 Strength is need so if he could start with that would be great if not hit the gyms)"
         player.str = 41;
-        player.setWeapon(weapons.CLAYMOR);
+        player.setWeapon(WeaponLib.CLAYMOR);
     }
 
     private customGalatea(): void {
@@ -1184,9 +1184,9 @@ export class CharCreation {
 
         // Equipment:
         // Weapon: Warhammer
-        player.setWeapon(weapons.WARHAMR);
+        player.setWeapon(WeaponLib.WARHAMR);
         // Armor: Lusty shit
-        player.setArmor(armors.LMARMOR);
+        player.setArmor(ArmorLib.LMARMOR);
         // player.perks.create(PerkLib.SluttySeduction, 10 + flags[kFLAGS.BIKINI_ARMOR_BONUS], 0, 0, 0);
 
         // Stats: (if possible)
@@ -1196,11 +1196,11 @@ export class CharCreation {
         player.fertility = 100;
         player.cor = 25;
         // Inventory: Lactaid, GroPlus, BimboLq
-        player.itemSlot1.setItemAndQty(consumables.LACTAID, 5);
-        player.itemSlot2.setItemAndQty(consumables.GROPLUS, 5);
-        player.itemSlot3.setItemAndQty(consumables.BIMBOLQ, 1);
+        player.itemSlot1.setItemAndQty(ConsumableLib.LACTAID, 5);
+        player.itemSlot2.setItemAndQty(ConsumableLib.GROPLUS, 5);
+        player.itemSlot3.setItemAndQty(ConsumableLib.BIMBOLQ, 1);
         player.itemSlot4.unlocked = true;
-        player.itemSlot4.setItemAndQty(armors.BIMBOSK, 1);
+        player.itemSlot4.setItemAndQty(ArmorLib.BIMBOSK, 1);
         player.itemSlot5.unlocked = true;
         outputText("You've got large breasts prone to lactation.  You aren't sure WHY you got chosen as a champion, but with your considerable strength, you're sure you'll do a good job protecting Ingnam.");
     }
@@ -1221,7 +1221,7 @@ export class CharCreation {
         if (!player.vaginas.length > 0) player.vaginas.createVagina();
         player.breastRows[0].breastRating = 4;
         player.hairLength = 10;
-        player.setArmor(armors.GELARMR);
+        player.setArmor(ArmorLib.GELARMR);
         player.gender = 3;
     }
 
@@ -1292,9 +1292,9 @@ export class CharCreation {
         // equipment;
         // - katana (don't suppose you could rename the katana 'Zon'ith' could you? ~.^)
         // Items: Katana, Leather Armor
-        player.setWeapon(weapons.KATANA);
+        player.setWeapon(WeaponLib.KATANA);
         // - robes
-        player.setArmor(armors.M_ROBES);
+        player.setArmor(ArmorLib.M_ROBES);
     }
 
     private customKatti(): void {
@@ -1316,11 +1316,11 @@ export class CharCreation {
     }
 
     private customLeah(): void {
-        player.setArmor(armors.LEATHRA);
+        player.setArmor(ArmorLib.LEATHRA);
         // 		if(player.perks.findByType(PerkLib.WizardsEndurance) < 0) player.perks.create(PerkLib.WizardsEndurance,30,0,0,0);
-        player.setWeapon(weapons.W_STAFF);
-        player.itemSlot1.setItemAndQty(consumables.B__BOOK, 1);
-        player.itemSlot2.setItemAndQty(consumables.W__BOOK, 2);
+        player.setWeapon(WeaponLib.W_STAFF);
+        player.itemSlot1.setItemAndQty(ConsumableLib.B__BOOK, 1);
+        player.itemSlot2.setItemAndQty(ConsumableLib.W__BOOK, 2);
 
         player.breasts.createBreastRow();
         player.vaginas.createVagina();
@@ -1549,8 +1549,8 @@ export class CharCreation {
         // Posted everything above sorry if it wasn't supposed to go there.
         // starting equipment: black leather armor surrounded by voluminous robes
         // starting weapon: Spellblade if not gamebreaking otherwise spear is fine.
-        player.setArmor(armors.LTHRROB);
-        player.setWeapon(weapons.S_BLADE);
+        player.setArmor(ArmorLib.LTHRROB);
+        player.setWeapon(WeaponLib.S_BLADE);
     }
 
     private customMirvanna(): void {
@@ -1606,8 +1606,8 @@ export class CharCreation {
         // Vulva Type = Equine
 
         // Beautiful Sword & Wizard Robe
-        player.setWeapon(weapons.B_SWORD);
-        player.setArmor(armors.W_ROBES);
+        player.setWeapon(WeaponLib.B_SWORD);
+        player.setArmor(ArmorLib.W_ROBES);
         // Herm, lots of jizz.
         player.femininity -= 2;
         player.cumMultiplier = 5.5;
@@ -1654,15 +1654,15 @@ export class CharCreation {
         player.skinTone = "light";
         // Starting Equipment: Wizard's Robe, Wizards Staff, and one White and one Black book in inventory.
         // equipArmor("inquisitor's corset",false);
-        player.setArmor(armors.W_ROBES);
+        player.setArmor(ArmorLib.W_ROBES);
 
-        player.setWeapon(weapons.W_STAFF);
+        player.setWeapon(WeaponLib.W_STAFF);
         // Gift Perk- Smarts
         player.perks.create(PerkLib.Smart, 0, 0, 0, 0);
         // History- Schooling
         player.perks.create(PerkLib.HistoryScholar, 0, 0, 0, 0);
-        player.itemSlot1.setItemAndQty(consumables.W__BOOK, 1);
-        player.itemSlot2.setItemAndQty(consumables.B__BOOK, 1);
+        player.itemSlot1.setItemAndQty(ConsumableLib.W__BOOK, 1);
+        player.itemSlot2.setItemAndQty(ConsumableLib.B__BOOK, 1);
 
         player.gender = 2;
         player.tallness = 64;
@@ -1685,9 +1685,9 @@ export class CharCreation {
         player.perks.create(PerkLib.Dragonfire, 0, 0, 0, 0);
         // equipment: Large claymore, and platemail
         // -Chainmail armor
-        player.setArmor(armors.FULLPLT);
+        player.setArmor(ArmorLib.FULLPLT);
         // -Large Claymore (i understand 40 Strength is need so if he could start with that would be great if not hit the gyms)"
-        player.setWeapon(weapons.CLAYMOR);
+        player.setWeapon(WeaponLib.CLAYMOR);
 
         player.str = 41;
         // femininity: 95
@@ -1862,10 +1862,10 @@ export class CharCreation {
         player.earType = EARS_DOG;
         //// "	"I'm picturing a tall, feminine German-Shepherd morph, solid white and gorgeous. She has both sets of genitals, with no balls, and a large set of breasts. She wields a large claymore and is dressed in a full chain vest and pants.
         // large claymore (and the strength to use it)
-        player.setWeapon(weapons.CLAYMOR);
+        player.setWeapon(WeaponLib.CLAYMOR);
         player.str = 40;
         // full chain
-        player.setArmor(armors.FULLCHN);
+        player.setArmor(ArmorLib.FULLCHN);
         outputText("As a German-Shepherd morph, the rest of the village never really knew what to do with you... until they sent you through the portal to face whatever's on the other side...");
     }
 
@@ -1978,8 +1978,8 @@ export class CharCreation {
         player.wingType = WING_TYPE_BAT_LIKE_LARGE;
         player.wingDesc = "large, bat-like";
         // Items: Katana, Leather Armor
-        player.setWeapon(weapons.KATANA);
-        player.setArmor(armors.URTALTA);
+        player.setWeapon(WeaponLib.KATANA);
+        player.setArmor(ArmorLib.URTALTA);
         // Key Item: Deluxe Dildo
         player.keyItems.create("Deluxe Dildo", 0, 0, 0, 0);
     }
@@ -2012,7 +2012,7 @@ export class CharCreation {
         // Fallen Angel gear (complete with flaming sword and light arrows)
         // dark skin tone
         player.skinTone = "dark";
-        player.setWeapon(weapons.S_BLADE);
+        player.setWeapon(WeaponLib.S_BLADE);
 
         // Elfin ears
         player.earType = EARS_ELFIN;
@@ -2104,12 +2104,12 @@ export class CharCreation {
 
         player.keyItems.create("Zetaz's Map", 0, 0, 0, 0);
 
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
         player.keyItems.create("Camp - Chest", 0, 0, 0, 0);
         player.keyItems.create("Equipment Rack - Weapons", 0, 0, 0, 0);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] = 1;
@@ -2150,10 +2150,10 @@ export class CharCreation {
 
         player.itemSlot4.unlocked = true;
         player.itemSlot5.unlocked = true;
-        player.itemSlot1.setItemAndQty(consumables.P_LBOVA, 5);
-        player.itemSlot2.setItemAndQty(consumables.L_PNKEG, 1);
-        player.itemSlot3.setItemAndQty(consumables.OVIELIX, 1);
-        player.itemSlot4.setItemAndQty(consumables.REPTLUM, 1);
+        player.itemSlot1.setItemAndQty(ConsumableLib.P_LBOVA, 5);
+        player.itemSlot2.setItemAndQty(ConsumableLib.L_PNKEG, 1);
+        player.itemSlot3.setItemAndQty(ConsumableLib.OVIELIX, 1);
+        player.itemSlot4.setItemAndQty(ConsumableLib.REPTLUM, 1);
 
         player.effects.create(StatusAffects.TelAdre, 1, 0, 0, 0);
         // player.effects.create(StatusAffects.MetWhitney, 2, 0, 0, 0);
@@ -2331,17 +2331,17 @@ export class CharCreation {
         player.clitLength = 0.2;
         player.femininity = 85;
         // Beautiful Sword
-        player.setWeapon(weapons.B_SWORD);
-        player.setArmor(armors.SSARMOR);
+        player.setWeapon(WeaponLib.B_SWORD);
+        player.setArmor(ArmorLib.SSARMOR);
         // Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
         player.effects.create(StatusAffects.Kelt, 100, 0, 0, 0);
         player.keyItems.create("Bow", 0, 0, 0, 0);
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
-        inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
+        Inventory.createStorage();
         player.keyItems.create("Camp - Chest", 0, 0, 0, 0);
         player.keyItems.create("Equipment Rack - Weapons", 0, 0, 0, 0);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00254] = 1;

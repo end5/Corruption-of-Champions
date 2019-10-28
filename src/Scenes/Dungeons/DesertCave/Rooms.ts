@@ -52,7 +52,7 @@ export function leaveBoobsDungeon(): void {
     game.dungeonLoc = 0;
     clearOutput();
     outputText("You leave the door behind and take off through the desert back towards camp.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 export function fightCumWitch(): void {

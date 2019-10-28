@@ -125,14 +125,14 @@ export class Masturbation {
         }
         if (player.isTaur()) {
             if (centaurMasturbation())
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             else doNext(playerMenu);
             return;
         }
         if (player.gender == 0) {
             genderlessMasturbate();
             dynStats("lus", -50);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0) {
@@ -658,7 +658,7 @@ export class Masturbation {
                 outputText("You sigh softly and drift off into a quick nap, smelling of sex."); // Girl ending
             else outputText("You sigh and drift off to sleep."); // Genderless ending
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Genderless people suck!
@@ -1820,7 +1820,7 @@ export class Masturbation {
                 else outputText("splattering himself with mouse-spunk as he finishes enjoying your inadvertent show.  He runs off before you have a chance to react.");
             }
             player.orgasm();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             outputText("\n");
             player.cuntChange(player.vaginalCapacity() * 0.9, true);
         }
@@ -1889,7 +1889,7 @@ export class Masturbation {
             doNext(onaholeFutaContinuation);
         else {
             player.orgasm();
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1900,7 +1900,7 @@ export class Masturbation {
         else outputText("you pass out with " + multiCockDescriptLight(player) + " sore from exertion.");
         dynStats("sen", -1);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private onaholeFutaContinuation(): void {
@@ -1910,7 +1910,7 @@ export class Masturbation {
         outputText(" As your orgasms fade, you find yourself a well-fucked mess, and pass out.");
         dynStats("sen", -1);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private allNaturalOnaholeUse(): void {
@@ -1945,7 +1945,7 @@ export class Masturbation {
 
         dynStats("lib", -1.5, "sen", .75, "cor", .5);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private stimBeltUse(): void {
@@ -1960,7 +1960,7 @@ export class Masturbation {
                 outputText(" tits as your body convulses with multiple orgasms. Savoring every moment, you relish in the pangs of delight searing your body. Eventually, the belt moves slower and slower, until it comes to a stop, along with your fun. You realize that the gears have wound down and the box needs to be wound for your pleasure to continue. Deciding not to overwhelm yourself, you carefully remove your toy and save it for another time.");
                 player.orgasm();
                 dynStats("sen", -1);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
             // Repeated use!
             else {
@@ -1970,7 +1970,7 @@ export class Masturbation {
                 outputText("Fortunately, you locate the key near your feet, saving you the money of having another made for the device. You put aside your machine, your lusts slaked, for now.");
                 player.orgasm();
                 dynStats("sen", -1);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
             player.cuntChange(1, true, true, false);
         }
@@ -1995,7 +1995,7 @@ export class Masturbation {
                     outputText("You cry in shock as the creature pushes past your cervix and begins injecting your womb with hot, thick cum... or whatever it is that it shoots inside you.  Unlike before, the very sensation of the fluid acts upon your brain and body strangely. The pain dulls and eventually filters from your mind and only the pleasure of the experience remains. The fluid continues pumping in until it overflows. The flooding of your insides leaves you paradoxically ecstatic and revolted. After an unknown amount of time, the thing stops fucking you and it releases its grip of your pelvis, leaving you a sticky, exhausted mess. A part of you wants to try the belt again, but you are too tired to bother cleaning yourself up.");
                     player.orgasm();
                     dynStats("lib", -1, "sen", .75, "cor", 1);
-                    doNext(camp.returnToCampUseOneHour);
+                    doNext(Camp.returnToCampUseOneHour);
                 }
                 // High corruption variant
                 else {
@@ -2006,7 +2006,7 @@ export class Masturbation {
                     // Game over if fully corrupt!
                     if (player.cor >= 100) doNext(allNaturalSelfStimulationBeltBadEnd);
                     // Otherwise, 4 hours pass!
-                    else doNext(camp.returnToCampUseFourHours);
+                    else doNext(Camp.returnToCampUseFourHours);
                 }
             }
         }
@@ -2023,7 +2023,7 @@ export class Masturbation {
         player.slimeFeed();
         player.orgasm();
         dynStats("lib", 1, "sen", (-0.5));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private allNaturalSelfStimulationBeltBadEnd(): void {
@@ -2044,7 +2044,7 @@ export class Masturbation {
         if (player.perks.findByType(PerkLib.Flexibility) < 0) {
             outputText("You undress from your " + player.armorName + " and take a seat down on the ground. You spread your legs and look down at your sex. It's aching for something more than just your fingers, and you have a craving to taste the lustful juices leaking out. A very perverted idea of cats flashes through your brain, putting a naughty smile on your face. You lay on your side and spread your legs, giving you a perfect view of your " + vaginaDescript(player) + " You lean your head down towards the pleasure-hole, only to be stopped half-way there. You stick your tongue out, trying to add a few more inches, but this doesn't do anything except increase your appetite and your lust as a drop of warm saliva falls onto your " + vaginaDescript(player) + ". You stretch and wriggle your tongue out in a fruitless effort to taste your dripping wet cunt, craving the feeling of your tongue caressing your lips and penetrating into your depths... but it is not to be. You sit back up, frustrated and even more aroused than you were before.");
             dynStats("lus", 15);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // [1st time doing this]
@@ -2068,7 +2068,7 @@ export class Masturbation {
         // DONE!
         player.orgasm();
         dynStats("sen", -0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private catAutoLick(): void { // Male cat masturbation
@@ -2079,7 +2079,7 @@ export class Masturbation {
             // [Male]
             outputText("You undress from your " + player.armorName + " and take a seat down on the ground, your " + cockDescript(player) + " pointing straight at your face. You stroke the erect member a few times, but then remember the cats back at the village. You stare at your " + cockDescript(player) + "; the more you look at the cock, the more your mouth craves to suck on it. You open your mouth as wide as you can and lean towards your cock, only to be stopped halfway to the tip. You stick your tongue out and try to lick the head. You pretend you're rolling your tongue around the head, but this only makes your cock harder in eagerness. You throw your head forward in an attempt to flick your tongue against it, but the " + cockDescript(player) + " is pulled back as you go forward. You slump your back onto the ground and let out a frustrated groan. The only thing you've managed to do is make yourself more aroused than when you started.");
             dynStats("lus", 15);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // 1st time
@@ -2165,7 +2165,7 @@ export class Masturbation {
         // DONE!
         player.orgasm();
         dynStats("sen", (-0.5));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private meditate(): void {
@@ -2174,7 +2174,7 @@ export class Masturbation {
 
         dynStats("lus", -50, "cor", -.3 - 0.3 * player.cocks.countCockSocks("alabaster"));
         if (player.perks.findByType(PerkLib.Enlightened) >= 0 && player.cor < 10) HPChange(50, true);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     private dualBeltMasturbation(): void {
@@ -2204,7 +2204,7 @@ export class Masturbation {
         if (player.sens > 80) player.sens -= 1;
         if (player.tou > 50) dynStats("tou", -1);
         if (player.tou > 75) dynStats("tou", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private centaurMasturbation(): boolean {
@@ -2542,7 +2542,7 @@ export class Masturbation {
 
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.keyItems.addValue("Fake Mare", 1, 1);
     }
 
@@ -2573,7 +2573,7 @@ export class Masturbation {
         outputText("When your climax finally passes, you've collapsed on all fours, swaying light-headed as the statue continues to leak a steady trickle of spooge onto your " + buttDescription(player) + ".  You stagger to your legs and begin to disassemble the pole.  You drag it back to your stash, your hips making a lewd squishing noise with every step as globs of fake cum leak out of your horsecunt.");
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.keyItems.addValue("Centaur Pole", 1, 1);
         trace("Times Ridden Pole" + player.keyItems.getValue1Of("Centaur Pole"));
     }
@@ -2589,7 +2589,7 @@ export class Masturbation {
             outputText("\n\nRemoving your [armor], you settle down ");
             if (player.cor < 33) {
                 outputText("in your bedroll");
-                if (camp.hasCompanions()) outputText(", hoping one of your companions sees");
+                if (Camp.hasCompanions()) outputText(", hoping one of your companions sees");
             }
             else if (player.cor < 66)
                 outputText("behind a rock to hide your sight if not sound");
@@ -2721,7 +2721,7 @@ export class Masturbation {
         player.dumpEggs();
         player.orgasm();
         flags[kFLAGS.TIMES_EGGED_IN_COCK]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Birth Bee Eggs Out Your Wang: Finished (Slywyn)(edited)
@@ -2887,7 +2887,7 @@ export class Masturbation {
         player.orgasm();
         dynStats("sen", 1);
         player.dumpEggs();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Tentacle In Gina Faps.
@@ -3074,7 +3074,7 @@ export class Masturbation {
         // (-2 sens + 1 per tentacle dick, -100 lust)
         player.orgasm();
         dynStats("sen", (-1 * (1 + player.cocks.tentacleCocks())));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Upon selecting the option to masturbate you should have the option to fuck your own ass if you have a tentacle dick
@@ -3149,7 +3149,7 @@ export class Masturbation {
         }
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Unique Masturbation Scene (by Frogapus)
@@ -3193,7 +3193,7 @@ export class Masturbation {
         player.gems += gems;
         flags[kFLAGS.GILDED_JERKED]++;
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private stickADildoInYourVagooSlut(): void {
@@ -3234,7 +3234,7 @@ export class Masturbation {
         player.orgasm();
         dynStats("sen", -1.5);
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Dildo in the butt because why not?
@@ -3267,7 +3267,7 @@ export class Masturbation {
         player.orgasm();
         dynStats("sen", 0.5);
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private midasCockJackingGemsRoll(): number {

@@ -236,7 +236,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         // ESCAPE!
         if ((player.canFly() && player.spe > rand(40)) || (!player.canFly() && player.spe > rand(60))) {
             outputText("A furry arm nearly catches your " + leg(player) + ", but you slip free and quickly escape your lusty brood.", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // FAIL:
         else {
@@ -380,7 +380,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         }
         outputText("You black out at that point, but when you wake up soaked in cum with a bottle of it next to you, you know it was a good night.", false);
         // Force cum bottle loot!
-        flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.MINOCUM.id;
+        flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.MINOCUM.id;
         // Preggers chance!
         player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR, 75);
         player.orgasm();
@@ -390,7 +390,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         if (game.inCombat) cleanupAfterCombat();
         else {
             outputText("\n\n", false);
-            inventory.takeItem(ItemType.lookupItem(flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID]), camp.returnToCampUseEightHours);
+            Inventory.takeItem(ItemType.lookupItem(flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID]), Camp.returnToCampUseEightHours);
         }
     }
 
@@ -483,7 +483,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         player.slimeFeed();
         player.minoCumAddiction(15);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseEightHours);
+        else doNext(Camp.returnToCampUseEightHours);
     }
 
     // *[Loss Anal And BJ Spearing, Somewhat Preg?] (feels almost the same as the standard loss, added a demi-scene for nipcunts) (otherwise, edited)
@@ -587,7 +587,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         player.slimeFeed();
         player.minoCumAddiction(15);
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseEightHours);
+        else doNext(Camp.returnToCampUseEightHours);
     }
 
     // *[Victory - Generic Text]
@@ -712,7 +712,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
             }
         }
         // Force cum bottle loot!
-        flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = consumables.MINOCUM.id;
+        flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ConsumableLib.MINOCUM.id;
         player.orgasm();
         dynStats("spe", -.5, "int", -.5, "lib", .5, "sen", .5, "cor", .5);
         player.slimeFeed();
@@ -720,7 +720,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         if (game.inCombat) cleanupAfterCombat();
         else {
             outputText("\n\n", false);
-            inventory.takeItem(ItemType.lookupItem(flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID]), camp.returnToCampUseOneHour);
+            Inventory.takeItem(ItemType.lookupItem(flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID]), Camp.returnToCampUseOneHour);
         }
     }
 
@@ -816,7 +816,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         player.minoCumAddiction(20);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // *[Victory - Make minitaur oral (M/F/H)]
@@ -932,7 +932,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // *[Victory- BJ + Nipplefucking] (boring, samey, not actually punishment again, could have been shoving very long nipples into urethras) (edited)
@@ -1000,7 +1000,7 @@ export class MinotaurMobScene implements TimeAwareInterface {
         player.slimeFeed();
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Bad End Scene:

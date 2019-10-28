@@ -210,7 +210,7 @@ export class Kitsune extends Monster {
         this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
         this.level = 6;
         this.gems = rand(10) + 10;
-        this.drop = new WeightedDrop(consumables.FOXJEWL, 1);
+        this.drop = new WeightedDrop(ConsumableLib.FOXJEWL, 1);
         this.tailType = TAIL_TYPE_FOX;
         checkMonster();
     }

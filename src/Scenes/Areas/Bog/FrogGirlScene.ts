@@ -65,7 +65,7 @@ export class FrogGirlScene {
         outputText("\n\nYou don your [armor] with some difficulty over your massive stomach, and venture back towards your camp, a little sore, but wiser for the ordeal.");
         dynStats("int", 1);
         player.buttKnockUp(PregnancyStore.PREGNANCY_FROG_GIRL, PregnancyStore.INCUBATION_FROG_GIRL, 1, 1);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     // [Anal stretch +1/Anal Moistness +1, sensitivity +1, int +1]
@@ -90,7 +90,7 @@ export class FrogGirlScene {
     private leaveFrogBe(): void {
         clearOutput();
         outputText("You shrug and leave the pouting frog girl in her pond, hopping back down the terrace of pools and walking back towards your camp, hoping that your [hair] will dry by the time you get back.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Question the frog girl:
     private questDatFrogGirl(): void {
@@ -115,7 +115,7 @@ export class FrogGirlScene {
         clearOutput();
         outputText("You nod in sympathy, patting the frog girl on her head, but decide not to inquire any further.  She sighs and sinks down further into the water, resigned to her maternal duties.");
         outputText("\n\nYou leave down the terrace of pools, heading back to your camp.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Offer to carry her eggs:
@@ -157,7 +157,7 @@ export class FrogGirlScene {
         // [Anal stretch +1/Anal Moistness +1, sensitivity +1, corruption -1]
         player.buttKnockUp(PregnancyStore.PREGNANCY_FROG_GIRL, PregnancyStore.INCUBATION_FROG_GIRL, 1, 1);
         dynStats("sen", 1, "cor", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Teach Her a Lesson
     private teachDatFrogALesson(): void {
@@ -179,7 +179,7 @@ export class FrogGirlScene {
         outputText("You wake up two hours later, floating alone in the pool, with a migraine and soggy clothes.  You slog your way out, clutching your head, and head back to camp.");
         // [Toughness -1]
         dynStats("tou", -1);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     // Laying the Eggs
@@ -223,7 +223,7 @@ export class FrogGirlScene {
         player.orgasm();
         dynStats("sen", 1);
         player.knockUp(PregnancyStore.PREGNANCY_FROG_GIRL, PregnancyStore.INCUBATION_FROG_GIRL, 1, 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Vaginal Egg birth
@@ -271,6 +271,6 @@ export class FrogGirlScene {
         }
         player.orgasm();
         dynStats("sen", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

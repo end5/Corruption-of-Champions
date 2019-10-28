@@ -63,9 +63,9 @@ export class SharkGirl extends Monster {
         this.level = 4;
         this.gems = rand(15) + 5;
         this.drop = new WeightedDrop().
-            add(consumables.L_DRAFT, 3).
-            add(armors.S_SWMWR, 1).
-            add(consumables.SHARK_T, 5).
+            add(ConsumableLib.L_DRAFT, 3).
+            add(ArmorLib.S_SWMWR, 1).
+            add(ConsumableLib.SHARK_T, 5).
             add(null, 1);
         this.special1 = sharkTease;
         this.special2 = sharkTease;

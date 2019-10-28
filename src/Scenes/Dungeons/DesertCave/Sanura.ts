@@ -92,7 +92,7 @@ export function lionpaws(skipped: boolean = false): void {
     menu();
     if (skipped) {
         game.dungeonLoc = 0; // Replaces inDungeon = false;
-        addButton(0, "Next", camp.returnToCampUseOneHour);
+        addButton(0, "Next", Camp.returnToCampUseOneHour);
     }
     else {
         menu();
@@ -438,7 +438,7 @@ export function getBlown(submit: boolean = false): void {
     menu();
     if (submit) {
         game.dungeonLoc = 0; // Replaces inDungeon = false;
-        addButton(0, "Next", camp.returnToCampUseOneHour);
+        addButton(0, "Next", Camp.returnToCampUseOneHour);
     }
     else {
         menu();
@@ -653,5 +653,5 @@ export function fenPutsHisShittyFetishInYoSphinx(): void {
     player.orgasm();
     game.dungeonLoc = 0; // Replaces inDungeon = false;
     menu();
-    addButton(0, "Next", camp.returnToCampUseOneHour);
+    addButton(0, "Next", Camp.returnToCampUseOneHour);
 }

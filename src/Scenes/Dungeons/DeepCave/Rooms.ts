@@ -30,7 +30,7 @@ export function leaveZetazsLair(): void {
     game.dungeonLoc = 0;
     clearOutput();
     outputText("You leave the cave behind and take off through the deepwoods back towards camp.");
-    doNext(camp.returnToCampUseOneHour);
+    doNext(Camp.returnToCampUseOneHour);
 }
 
 export function impHordeStartCombat(): void {
@@ -51,7 +51,7 @@ export function enterZetazsRoomFromTheSouth(): void {
 export function takeBondageStraps(): void {
     clearOutput();
     flags[kFLAGS.ZETAZ_LAIR_TOOK_BONDAGE_STRAPS]++;
-    inventory.takeItem(armors.BONSTRP, playerMenu);
+    Inventory.takeItem(ArmorLib.BONSTRP, playerMenu);
 }
 
 export function dungeonRoom() {

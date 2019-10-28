@@ -62,7 +62,7 @@ export class Weapon extends Useable // Equipable
                         if (output && itype == this)
                             outputText("You still have " + itype.longName + " left over.  ");
                         game.itemSwapping = true;
-                        inventory.takeItem(this, false);
+                        Inventory.takeItem(this, false);
                     }
                 }
                 player.setWeaponHiddenField(WeaponLib.FISTS);

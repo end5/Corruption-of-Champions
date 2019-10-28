@@ -175,7 +175,7 @@ export class Exgartuan implements TimeAwareInterface {
         outputText("You come closer and discover a placard.  It reads, \"Fountain of Endowment\".  Well, clearly it's supposed to enhance something, but at what cost?\n\n", false);
         outputText("Do you drink from the fountain?", false);
         // [Yes] [No]
-        doYesNo(drinkFountainEndowment, camp.returnToCampUseOneHour);
+        doYesNo(drinkFountainEndowment, Camp.returnToCampUseOneHour);
     }
 
     private drinkFountainEndowment(): void {
@@ -242,7 +242,7 @@ export class Exgartuan implements TimeAwareInterface {
             outputText(" now!", false);
             changed = true;
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     private exgartuanInfestDick(): void {
         spriteSelect(15);
@@ -385,7 +385,7 @@ export class Exgartuan implements TimeAwareInterface {
             outputText("You blush and redress, noting that Exgartuan seems to be silent and sleeping...  maybe you'll get a little peace now?", false);
         }
         player.effects.setValue(StatusAffects.Exgartuan, 2, (12 + rand(7)));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (NOT PLAYED WITH RECENTLY: +LUST MESSAGE)
@@ -623,82 +623,82 @@ export class Exgartuan implements TimeAwareInterface {
     // (ARMOR CHANGE)
     public exgartuanArmorShift(): void {
         let changed: boolean = false;
-        if (player.armor == armors.BEEARMR) {
+        if (player.armor == ArmorLib.BEEARMR) {
             outputText("The silken loin-cloth of your chitin armor cinches up, tightening against your groin until it displays the prominent bulge of your demon-possessed dick clearly.", false);
             player.modArmorName = "crotch-hugging sexy black chitin armor-plating";
             changed = true;
         }
-        else if (player.armor == armors.GELARMR) {
+        else if (player.armor == ArmorLib.GELARMR) {
             outputText("The green gel-plate protecting your groin thins and presses tightly against you, molding around your " + cockDescript(game.player, 0) + " in an incredibly lewd way.", false);
             player.modArmorName = "crotch-hugging glistening gel-armor plates";
             changed = true;
         }
-        else if (player.armor == armors.LEATHRA) {
+        else if (player.armor == ArmorLib.LEATHRA) {
             outputText("Your leather armor shifts, pressing tightly against your upper " + legs(player) + " and molding itself around your " + cockDescript(game.player, 0) + " to prominently display it.", false);
             player.modArmorName = "crotch-hugging leather armor segments";
             changed = true;
         }
-        else if (player.armor == armors.INDECST) {
+        else if (player.armor == ArmorLib.INDECST) {
             outputText("The chainmail bikini of your indecent steel armor rearranges and bends its interlocking rings to best shape itself around your " + cockDescript(game.player, 0) + ", leaving very little else to the imagination.", false);
             player.modArmorName = "crotch-hugging practically indecent steel armor";
             changed = true;
         }
-        else if (player.armor == armors.R_BDYST) {
+        else if (player.armor == ArmorLib.R_BDYST) {
             outputText("The thin, transparent material of your red bodysuit begins to firmly press against your groin, perfectly shaping to your " + cockDescript(game.player, 0) + " and every last one of its nubs and nodules.", false);
             player.modArmorName = "crotch-hugging red, high-society bodysuit";
             changed = true;
         }
-        else if (player.armor == armors.SSARMOR) {
+        else if (player.armor == ArmorLib.SSARMOR) {
             outputText("The fine silk that makes up your armor suddenly undoes itself around your crotch, exposing your " + cockDescript(game.player, 0) + " to the open air. The thin strands in the air begin to re-weave themselves around your enormous member, forming a prominent new addition to your protection.", false);
             player.modArmorName = "crotch-hugging spider-silk armor";
             changed = true;
         }
-        else if (player.armor == armors.S_SWMWR) {
+        else if (player.armor == ArmorLib.S_SWMWR) {
             outputText("The miniscule piece of swimwear that doubles as a tent to your " + cockDescript(game.player, 0) + " begins to grow and encapsulate it, molding itself perfectly to your manhood.", false);
             player.modArmorName = "crotch-hugging slutty swimwear";
             changed = true;
         }
-        else if (player.armor == armors.FULLCHN) {
+        else if (player.armor == ArmorLib.FULLCHN) {
             outputText("You\'re taken by surprise as the binds of your chainmail begin to flatten and rearrange themselves, doing their best to match the curves of your " + cockDescript(game.player, 0) + " and make its presence known.", false);
             player.modArmorName = "crotch-hugging full-body chainmail";
             changed = true;
         }
-        else if (player.armor == armors.CHBIKNI) {
+        else if (player.armor == ArmorLib.CHBIKNI) {
             outputText("Your chainmail bikini rearranges and bends its interlocking rings to best shape itself around your " + cockDescript(game.player, 0) + ", leaving very little else to the imagination.", false);
             player.modArmorName = "crotch-hugging revealing chainmail bikini";
             changed = true;
         }
-        else if (player.armor == armors.FULLPLT) {
+        else if (player.armor == ArmorLib.FULLPLT) {
             outputText("You begin to clench your fists as your steel platemail heats up around your " + legs(player) + " and crotch. Slowly it begins to press itself against your " + cockDescript(game.player, 0) + " and match its every feature.", false);
             player.modArmorName = "crotch-hugging full platemail";
             changed = true;
         }
-        else if (player.armor == armors.SCALEML) {
+        else if (player.armor == ArmorLib.SCALEML) {
             outputText("The steel scales that make up your armor begin to flap wildly around your crotch. They bend and shift as they attempt to match the profile of your " + cockDescript(game.player, 0) + ".", false);
             player.modArmorName = "crotch-hugging scale-mail armor";
             changed = true;
         }
-        else if (player.armor == armors.LTHRROB) {
+        else if (player.armor == ArmorLib.LTHRROB) {
             outputText("Your leather armor shifts, pressing tightly against your upper " + legs(player) + " and molding itself around your " + cockDescript(game.player, 0) + " to prominently display it through your robes.", false);
             player.modArmorName = "crotch-hugging black leather armor surrounded by voluminous robes";
             changed = true;
         }
-        else if (player.armor == armors.RBBRCLT) {
+        else if (player.armor == ArmorLib.RBBRCLT) {
             outputText("You begin to feel your rubber outfit compressing itself against your upper " + legs(player) + " and " + cockDescript(game.player, 0) + ", eliminating any pockets of air or wrinkles that may have existed before.", false);
             player.modArmorName = "crotch-hugging rubber fetish clothes";
             changed = true;
         }
-        else if (player.armor == armors.ADVCLTH) {
+        else if (player.armor == ArmorLib.ADVCLTH) {
             outputText("The layer beneath your tunic begins to compress against your " + cockDescript(game.player, 0) + ", highlighting every curve and nodule while lifting your package to be clearly visible beneath your outer layers.", false);
             player.modArmorName = "crotch-hugging green adventurer's clothes";
             changed = true;
         }
-        else if (player.armor == armors.OVERALL) {
+        else if (player.armor == ArmorLib.OVERALL) {
             outputText("The denim of your overalls begins to press tightly against your " + cockDescript(game.player, 0) + ", molding itself around your member and its every facet.", false);
             player.modArmorName = "crotch-hugging white shirt and overalls";
             changed = true;
         }
-        else if (player.armor == armors.C_CLOTH) {
+        else if (player.armor == ArmorLib.C_CLOTH) {
             outputText("Your clothing shifts, tightening up about your crotch until every curve and nodule of your " + cockDescript(game.player, 0) + " is visible through the fabric.", false);
             player.modArmorName = "crotch-hugging clothes";
             changed = true;
@@ -788,7 +788,7 @@ export class Exgartuan implements TimeAwareInterface {
     private freeBeePostRape(): void {
         outputText("", true);
         outputText("You take pity on the slut and untie her.  Hopefully she'll recover before something worse finds her.  You'd hate to let a tentacle-beast get your sloppy seconds.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         dynStats("cor", -1);
     }
 
@@ -796,7 +796,7 @@ export class Exgartuan implements TimeAwareInterface {
     private leaveBeePostRape(): void {
         outputText("", true);
         outputText("You smile cruelly and give her glittering vulva a gentle smack before you walk away, leaving her tied up there.  Maybe some lonely imps will find a use for her...", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         dynStats("cor", .5);
     }
 
@@ -1063,7 +1063,7 @@ export class Exgartuan implements TimeAwareInterface {
             outputText("the single piece of your " + player.armorName, false);
         outputText(".  As you rise to your feet, a few streams of cum run down your " + legs(player) + ".", false);
         // [If any followers]
-        if (camp.hasCompanions()) outputText("  For a moment, you consider asking someone outside if they remember anything from last night.  But you decide it's better to just keep it to yourself, afraid of what you might find out.", false);
+        if (Camp.hasCompanions()) outputText("  For a moment, you consider asking someone outside if they remember anything from last night.  But you decide it's better to just keep it to yourself, afraid of what you might find out.", false);
         // [else]
         else outputText("  You glance around at your tent, searching for anything that may clue you in on what transpired last night.  After a few moments, however, you decide it better to just move on with your day.", false);
         outputText("  You pay one more glance to Exgartuan, the " + cockDescript(game.player, 0) + " comfortably resting away in your outfit.\n\n", false);
@@ -1415,6 +1415,6 @@ export class Exgartuan implements TimeAwareInterface {
         player.effects.setValue(StatusAffects.Exgartuan, 2, (16 + rand(7)));
         player.orgasm();
         dynStats("lib", .25);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

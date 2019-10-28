@@ -156,7 +156,7 @@ export class HelFollower {
 
         outputText("\n\nYou wave as Hel retreats back toward her own home.");
         flags[kFLAGS.HELIA_FOLLOWER_DISABLED] = .5;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Hel Comes to Camp -- Intro Scenes (Play in Order)
@@ -365,7 +365,7 @@ export class HelFollower {
             outputText("\n\nGod DAMMIT, Hel.");
         }
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Boot Hel]
@@ -389,7 +389,7 @@ export class HelFollower {
         // Block future move ins
         flags[kFLAGS.HELIA_FOLLOWER_DISABLED] = 1;
         // Reduces her encounter rate
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Work it Out]
@@ -406,7 +406,7 @@ export class HelFollower {
         outputText("\n\nHel sighs, and rolls her eyes.  <i>\"I dunno, [name]. I don't like having her around, but - hey, get off - I guess if you're sure she's harmle- DAMMIT woman get your tits out of my face - I guess I can live with he- okay, okay, gimme a minute to settle in and I'll fuck ya already!  Damn!\"</i>");
         outputText("\n\nWell, maybe they'll get along after all...");
         flags[kFLAGS.KEEP_HELIA_AND_SOPHIE] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // If Hel is at Camp and Isabella Arrives, neither are cool
@@ -458,7 +458,7 @@ export class HelFollower {
         if (IsabellaFollowerScene.isabellaAccent()) outputText("<i>\"You are... velcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
         else outputText("<i>\"You're... welcome,\"</i> Isabella says before collecting some of the scattered belongings from the ground.  You continue your tour, now that the girls are...  not going to murder each other in the middle of the night, at least.");
         flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Introduction -- Followers -> Helia
@@ -496,7 +496,7 @@ export class HelFollower {
                 if (player.cocks.length > 0 && player.cocks.cockThatFits(heliaCapacity()) >= 0 && player.lust >= 33 &&
                     !HelSpawnScene.helPregnant() && flags[kFLAGS.HELSPAWN_AGE] == 0) addButton(7, "Have A Kid", HelSpawnScene.haveAKid);
             }
-            addButton(9, "Back", camp.campLoversMenu);
+            addButton(9, "Back", Camp.campLoversMenu);
         }
         else if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1) {
             if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 1) {
@@ -524,7 +524,7 @@ export class HelFollower {
         addButton(0, "Discuss", talkToHel);
         if (game.time.hours >= 21) addButton(1, "Cuddle", hugASmokeyTail);
         else addButton(2, "Hug", hugASmokeyTail);
-        if (flags[kFLAGS.HELIA_ANAL_TRAINING_OFFERED] > 0 && flags[kFLAGS.HELIA_ANAL_TRAINING] < 2 && player.cocks.biggestCockArea() > heliaAnalCapacity() && player.hasItem(consumables.GOB_ALE, 1)) addButton(3, "Anal Train", heliaGapeSceneChoices);
+        if (flags[kFLAGS.HELIA_ANAL_TRAINING_OFFERED] > 0 && flags[kFLAGS.HELIA_ANAL_TRAINING] < 2 && player.cocks.biggestCockArea() > heliaAnalCapacity() && player.hasItem(ConsumableLib.GOB_ALE, 1)) addButton(3, "Anal Train", heliaGapeSceneChoices);
         addButton(5, "Bathe", takeABath);
         if (flags[kFLAGS.HELSPAWN_AGE] == 1) addButton(7, flags[kFLAGS.HELSPAWN_NAME], HelSpawnScene.playWithYourKid);
         if (flags[kFLAGS.HEL_GUARDING] == 0) addButton(8, "GuardCamp", helGuardToggle);
@@ -817,7 +817,7 @@ export class HelFollower {
         }
 
         flags[kFLAGS.FOLLOWER_HEL_TALKS]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Shut up, slut
@@ -837,7 +837,7 @@ export class HelFollower {
             outputText("\n\nAfter a moment, Hel adds, <i>\"Sorry, lover. I just... get carried away with stories.  Wanted to be a bard, once.  Anyway, uh, sorry.  Didn't wanna make you uncomfortable... I'm sorry, lover.  I'll just, uh, wander off, then.\"</I.  Excusing herself, Hel gets up and heads off to attend to something else.  You don't really know how to feel about Hel's little romp with a gnoll village.  Perhaps it's best that you not dwell on it for too long.");
         }
         flags[kFLAGS.FOLLOWER_HEL_TALKS]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Listen In
     private listenToHelTalkAboutGnolls(): void {
@@ -879,7 +879,7 @@ export class HelFollower {
         // Sex options here maybe?
         flags[kFLAGS.FOLLOWER_HEL_TALKS]++;
         heliaRoughSex(false);
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
         // 	doNext(13);
     }
 
@@ -899,7 +899,7 @@ export class HelFollower {
             outputText("\n\nHel smiles prettily as you give your assent.  <i>\"On a night like this, there's no one I'd rather be with, [name]...\"</i>\n\n");
             flags[kFLAGS.SLEEP_WITH] = "Helia";
             menu();
-            addButton(0, "Next", camp.doSleep);
+            addButton(0, "Next", Camp.doSleep);
             return;
         }
         // [If PC is >8ft tall]
@@ -918,7 +918,7 @@ export class HelFollower {
             outputText("\n\nAfter a few moments, Hel puts a hand on your back and leans you back, like a gentleman in a storybook, cupping your cheek before pressing her lips to yours.  She holds you in a long, affectionate kiss, her slender tongue wrapping playfully around your own.");
             outputText("\n\n<i>\"Oh, [name],\"</i> Hel sighs happily, holding you back against her bosom.  <i>\"My cute little [name].\"</i>");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // What a horrible night to have a canyon vagina
@@ -1113,7 +1113,7 @@ export class HelFollower {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // "Rough" Sex (Well, it's in the menu, if not in spirit) -- Naga Coil (Male w/ Naga Lower Body)
@@ -1151,7 +1151,7 @@ export class HelFollower {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // "Rough" Sex -- Naga Coil (Female w/ Naga Lower Body)
@@ -1181,7 +1181,7 @@ export class HelFollower {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // "Rough" Sex -- Centaur Mounts Hel (PC has Centaur body & a dick)
@@ -1222,7 +1222,7 @@ export class HelFollower {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // "Rough Sex" -- Centauress-PC & Hel (PC must have Centaur Pole)
@@ -1255,7 +1255,7 @@ export class HelFollower {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Rough Sex -- Tentafuck
@@ -1280,7 +1280,7 @@ export class HelFollower {
         dynStats("sen", -1);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Boxing
@@ -1301,7 +1301,7 @@ export class HelFollower {
             // [Display Rough Sex menu]
             dynStats("str", 1, "tou", 1);
             heliaRoughSex(false);
-            addButton(9, "Leave", camp.returnToCampUseOneHour);
+            addButton(9, "Leave", Camp.returnToCampUseOneHour);
         }
         // If STR check succeeds:
         else if (player.str / 20 + 1 + rand(20) >= 13) {
@@ -1312,7 +1312,7 @@ export class HelFollower {
             // Display Rough Sex menu
             dynStats("str", 2);
             heliaRoughSex(false);
-            addButton(9, "Leave", camp.returnToCampUseOneHour);
+            addButton(9, "Leave", Camp.returnToCampUseOneHour);
         }
         // If PC fails the Check:
         else {
@@ -1327,7 +1327,7 @@ export class HelFollower {
                 }
             }
             heliaRoughSex(false);
-            addButton(9, "Leave", camp.returnToCampUseOneHour);
+            addButton(9, "Leave", Camp.returnToCampUseOneHour);
         }
     }
 
@@ -1399,7 +1399,7 @@ export class HelFollower {
 
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Take a Bath
@@ -1449,7 +1449,7 @@ export class HelFollower {
             // Swim With Hel -- Lust less than 33
             else {
                 outputText("\n\nYou and Helia cuddle in the steaming river, the minutes passing pleasantly in each other's embrace.  Eventually Hel looks up at you, her bright eyes shining in the misty air, a small smile on her lips.  You kiss her, leaning in as the salamander presses herself against you, ardently returning your show of passion.  \"<i>I wish we could stay like this forever,</i>\" Hel whispers, breaking the kiss to nuzzle against your neck. You stroke her hair and hold her close until your duties as Champion call you back to your work.");
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
         }
     }
@@ -1498,7 +1498,7 @@ export class HelFollower {
         outputText("\n\nBefore you know it, you and Hel are splashing each other with abandon, her former fears utterly forgotten as the two of you play happily in the water...");
         outputText("\n\n(You can now go swimming with Hel!)");
         flags[kFLAGS.HEL_CAN_SWIM] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Threesomes
@@ -1606,7 +1606,7 @@ export class HelFollower {
         }
         player.orgasm();
         dynStats("sen", -2, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Helia + Kiha
@@ -1671,7 +1671,7 @@ export class HelFollower {
         outputText("\n\nWith the two lizard-girls distracted, you languidly pull their limp tails out of your holes, relishing the blessedly empty feeling left before you collapse into a pool of your own juices... just to catch your breath, you insist.");
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Male Helia + Kiha Threesome (Episode III: Revenge of the Footjobs)
     private dudeHeliaAndKihaThreeSome(): void {
@@ -1710,7 +1710,7 @@ export class HelFollower {
         outputText("\n\n\"<i>FIREBUUUUUUUTTT!!!</i>\"");
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Hel x Valeria Threesome
@@ -1764,7 +1764,7 @@ export class HelFollower {
         outputText("\n\nHanging her head, Hel moves with you so that you can both get on all fours. Hel swings a leg over your ass, making it so that you're sitting butt-to-butt, the knots in both your asses slowly deflating - a bit too realistically for comfort...");
         player.orgasm();
         dynStats("sen", -3);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Guard Camp / Unguard Camp
@@ -1852,10 +1852,10 @@ export class HelFollower {
         }
         outputText("</i>”");
 
-        player.consumeItem(consumables.GOB_ALE, 1);
+        player.consumeItem(ConsumableLib.GOB_ALE, 1);
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private heliaGapeSceneChoices(): void {
@@ -1865,7 +1865,7 @@ export class HelFollower {
 
     // Anal Training #2
     private heliaAnalTrainingPartTwo(): void {
-        player.consumeItem(consumables.GOB_ALE, 1);
+        player.consumeItem(ConsumableLib.GOB_ALE, 1);
         clearOutput();
         outputText("Pulling out another bottle of ale you dangle it before the slutty salamander, saying, “<i>A present for my favorite buttslut.</i>”");
         outputText("\n\nHelia grabs it out of your hand and produces one of her own, clinking the two bottles together with a wink. “<i>Thanks lover mine, but I bumped into a goblin myself not long ago. Being spit on my tail loosened her pouch strings nearly as much as her twat. She had so much fun that she even helped me modify this beasty with the features my other plug had.</i>” Helia kicks an absolutely massive equine dong with her foot. “<i>Got it from a shop in Tel’Adre. Supposedly it’s designed as a toy for centaur mares that have had gotten a bit big after a few births.... I’m told it’s a life size mold taken off some green imp-morph. Crazy rght?</i>”");
@@ -1883,7 +1883,7 @@ export class HelFollower {
         outputText("You step up and kiss Helia, telling her that she doesn’t have to this for you, at least not right now.");
         outputText("\n\n“<i>Seriously, lover mine? I thought you’d like to do a little anal adventuring with that massive pole you’re packin’,</i>” the salamander asks while looking at you with some concern. A huge smile suddenly spreads across her mouth as she realizes just what’s going on. “<i>You’re worried about me!</i>” Helia slugs you on the shoulder none too softly before slamming you into a tight hug, pressing you into her heavy breasts and lifting you off the ground, her face nuzzling tenderly against you.");
         outputText("\n\nYour [feet] hit the ground when the confident salamander drops you, and she says, “<i>Your call. I’m gonna pour these into my still to give it a little extra kick. Don’t fret, the transformative shit should burn off right quick.</i>” She turns and depart, her tail giving you a heat slap on the [butt]. “<i>Catch ya later, [name].</i>”");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Buttdevastation Ahoy!
@@ -1911,7 +1911,7 @@ export class HelFollower {
         outputText(" Helia burps. “<i>Fuck me that was awesome! Whoah, don’t mind me, but I, uh... I think I’m gonna stay here for a little while, maybe just rock up and down till I come down off this buzz. She blushes and begins to finger her snatch again. Just let me... just let me get used to.</i>” She shoos you away and goes back to toying with herself, getting used to her new “flexibility”.");
         outputText("\n\n“<i>You’re gonna fall in love with my asshole, lover mine,</i>” Helia calls after you.");
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // It's Helia's Birthday, Bitch (Or, how Helia officially crossed the Mary Sue line)
@@ -1963,7 +1963,7 @@ export class HelFollower {
         // {If Kiha, Isabella, and/or Valeria are at camp:}
         if (IsabellaFollowerScene.isabellaFollower() || KihaFollower.followerKiha() || flags[kFLAGS.VALARIA_AT_CAMP] == 1) {
             outputText("  Looking over your shoulder as you depart, though, you notice that camp looks particularly... empty. Perhaps your other camp-mate");
-            if (camp.companionsCount() > 1) outputText("s are");
+            if (Camp.companionsCount() > 1) outputText("s are");
             else outputText(" is");
             outputText(" out, too? You shrug. You and Hel aren't the only ones with lives, you suppose.");
         }
@@ -2115,7 +2115,7 @@ export class HelFollower {
         outputText("\n\nThere's a general murmur of approval as Hel picks up another beer, kicks it back, and then takes your hand. You follow your lover through the crowd, shaking hands and getting patted on the shoulder - and hearing more than a few immature catcalls from the increasingly drunk phoenixes and fox-girls.");
 
         outputText("\n\nWhen you get to the door, Hel holds you close, snuggling against you as you walk.  \"<i>Thanks for coming, [name].  I love you.</i>\"");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Leave w/ Girls
@@ -2234,7 +2234,7 @@ export class HelFollower {
 
         player.orgasm();
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private helAndSluttyHarpyFemale(): void {
@@ -2293,7 +2293,7 @@ export class HelFollower {
 
         player.orgasm();
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private helAndSluttyHarpyGenderless(): void {
@@ -2317,6 +2317,6 @@ export class HelFollower {
 
         player.orgasm();
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

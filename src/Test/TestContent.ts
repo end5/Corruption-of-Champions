@@ -98,7 +98,7 @@ export class TestContent {
         outputText("\nweaponname [weaponname]");
 
         trace("Spammed!");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
 }

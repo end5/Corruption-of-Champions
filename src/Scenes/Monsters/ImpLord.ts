@@ -48,11 +48,11 @@ export class ImpLord extends Imp {
     }
 
     public defeated(hpVictory: boolean): void {
-        game.impScene.defeatImpLord();
+        ImpScene.defeatImpLord();
     }
 
     public won(hpVictory: boolean, pcCameWorms: boolean): void {
-        game.impScene.loseToAnImpLord();
+        ImpScene.loseToAnImpLord();
     }
 
     public constructor() {
@@ -92,10 +92,10 @@ export class ImpLord extends Imp {
         this.level = 7;
         this.gems = rand(15) + 25;
         this.drop = new WeightedDrop().
-            add(consumables.MINOBLO, 1).
-            add(consumables.LABOVA_, 1).
-            add(consumables.INCUBID, 6).
-            add(consumables.SUCMILK, 6);
+            add(ConsumableLib.MINOBLO, 1).
+            add(ConsumableLib.LABOVA_, 1).
+            add(ConsumableLib.INCUBID, 6).
+            add(ConsumableLib.SUCMILK, 6);
         this.wingType = WING_TYPE_IMP;
         this.special1 = lustMagicAttack;
         checkMonster();

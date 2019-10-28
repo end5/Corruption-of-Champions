@@ -25,22 +25,22 @@ export class Exploration {
         }
         menu();
         addButton(0, "Explore", tryDiscover);
-        if (player.exploredDesert > 0) addButton(1, "Desert", desert.exploreDesert);
-        if (player.exploredForest > 0) addButton(2, "Forest", forest.exploreForest);
-        if (player.exploredLake > 0) addButton(3, "Lake", lake.exploreLake);
+        if (player.exploredDesert > 0) addButton(1, "Desert", Desert.exploreDesert);
+        if (player.exploredForest > 0) addButton(2, "Forest", Forest.exploreForest);
+        if (player.exploredLake > 0) addButton(3, "Lake", Lake.exploreLake);
         addButton(4, "Next", explorePageII);
-        if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(5, "Plains", plains.explorePlains);
-        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] > 0) addButton(6, "Swamp", swamp.exploreSwamp);
-        if (player.effects.findByType(StatusAffects.ExploredDeepwoods) >= 0) addButton(7, "Deepwoods", forest.exploreDeepwoods);
-        if (player.exploredMountain > 0) addButton(8, "Mountain", mountain.exploreMountain);
+        if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(5, "Plains", Plains.explorePlains);
+        if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] > 0) addButton(6, "Swamp", Swamp.exploreSwamp);
+        if (player.effects.findByType(StatusAffects.ExploredDeepwoods) >= 0) addButton(7, "Deepwoods", Forest.exploreDeepwoods);
+        if (player.exploredMountain > 0) addButton(8, "Mountain", Mountain.exploreMountain);
         addButton(9, "Back", playerMenu);
     }
 
     private explorePageII(): void {
         flags[kFLAGS.EXPLORATION_PAGE] = 2;
         menu();
-        if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(0, "High Mountain", highMountains.exploreHighMountain);
-        if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(1, "Bog", bog.exploreBog);
+        if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(0, "High Mountain", HighMountains.exploreHighMountain);
+        if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(1, "Bog", Bog.exploreBog);
         addButton(4, "Previous", goBackToPageI);
         if (game.debug) addButton(8, "Debug", ExploreDebug.doExploreDebug);
         addButton(9, "Back", playerMenu);
@@ -54,7 +54,7 @@ export class Exploration {
     // Try to find a new location - called from doExplore once the first location is found
     public tryDiscover(): void {
 
-        // goblinAssassinScene.goblinAssassinEncounter();
+        // GoblinAssassinScene.goblinAssassinEncounter();
         // return;
 
         if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelFollower.followerHel()) {
@@ -66,7 +66,7 @@ export class Exploration {
                 outputText("Your wanderings take you far and wide across the barren wasteland that surrounds the portal, until the smell of humidity and fresh water alerts you to the nearby lake.  With a few quick strides you find a lake so massive the distant shore cannot be seen.  Grass and a few sparse trees grow all around it.\n\n<b>You have discovered the Lake!</b>", true);
                 player.exploredLake = 1;
                 player.explored++;
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             if (player.exploredLake >= 1 && rand(3) == 0 && player.exploredDesert == 0) {
@@ -78,21 +78,21 @@ export class Exploration {
                 outputText(".\n\n<b>You've discovered the Desert!</b>", false);
                 player.exploredDesert = 1;
                 player.explored++;
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             if (player.exploredDesert >= 1 && rand(3) == 0 && player.exploredMountain == 0) {
                 outputText("Thunder booms overhead, shaking you out of your thoughts.  High above, dark clouds encircle a distant mountain peak.  You get an ominous feeling in your gut as you gaze up at it.\n\n<b>You have discovered the mountain!</b>", true);
                 player.explored++;
                 player.exploredMountain = 1;
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             if (player.exploredMountain >= 1 && rand(3) == 0 && flags[kFLAGS.TIMES_EXPLORED_PLAINS] == 0) {
                 flags[kFLAGS.TIMES_EXPLORED_PLAINS] = 1;
                 player.explored++;
                 outputText("You find yourself standing in knee-high grass, surrounded by flat plains on all sides.  Though the mountain, forest, and lake are all visible from here, they seem quite distant.\n\n<b>You've discovered the plains!</b>", true);
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
                 return;
             }
             // EXPLOOOOOOORE
@@ -103,7 +103,7 @@ export class Exploration {
                 outputText("All things considered, you decide you wouldn't mind a change of scenery.  Gathering up your belongings, you begin a journey into the wasteland.  The journey begins in high spirits, and you whistle a little traveling tune to pass the time.  After an hour of wandering, however, your wanderlust begins to whittle away.  Another half-hour ticks by.  Fed up with the fruitless exploration, you're nearly about to head back to camp when a faint light flits across your vision.  Startled, you whirl about to take in three luminous will-o'-the-wisps, swirling around each other whimsically.  As you watch, the three ghostly lights begin to move off, and though the thought of a trap crosses your mind, you decide to follow.\n\n", false);
                 outputText("Before long, you start to detect traces of change in the environment.  The most immediate difference is the increasingly sweltering heat.  A few minutes pass, then the will-o'-the-wisps plunge into the boundaries of a dark, murky, stagnant swamp; after a steadying breath you follow them into the bog.  Once within, however, the gaseous balls float off in different directions, causing you to lose track of them.  You sigh resignedly and retrace your steps, satisfied with your discovery.  Further exploration can wait.  For now, your camp is waiting.\n\n", false);
                 outputText("<b>You've discovered the swamp!</b>", false);
-                doNext(camp.returnToCampUseTwoHours);
+                doNext(Camp.returnToCampUseTwoHours);
                 return;
             }
             // Used for chosing 'repeat' encounters.
@@ -121,13 +121,13 @@ export class Exploration {
             }
             else if (choosey == 1) {
                 player.explored++;
-                lumi.lumiEncounter();
+                Lumi.lumiEncounter();
                 return;
             }
             else if (choosey == 2) {
                 player.explored++;
-                if (flags[kFLAGS.GAR_NAME] == 0) gargoyle.gargoylesTheShowNowOnWBNetwork();
-                else gargoyle.returnToCathedral();
+                if (flags[kFLAGS.GAR_NAME] == 0) Gargoyle.gargoylesTheShowNowOnWBNetwork();
+                else Gargoyle.returnToCathedral();
                 return;
             }
             // Monster - 50/50 imp/gob split.
@@ -137,7 +137,7 @@ export class Exploration {
                 // Imptacular Encounter
                 if (rand(10) < impGob) {
                     if (player.level >= 8 && rand(2) == 0) {
-                        impScene.impLordEncounter();
+                        ImpScene.impLordEncounter();
                         spriteSelect(29);
                         return;
                     }
@@ -152,7 +152,7 @@ export class Exploration {
                 else {
                     // 50% of the time, goblin assassin!
                     if (player.level >= 10 && rand(2) == 0) {
-                        goblinAssassinScene.goblinAssassinEncounter();
+                        GoblinAssassinScene.goblinAssassinEncounter();
                         return;
                     }
                     if (player.gender > 0) {
@@ -175,11 +175,11 @@ export class Exploration {
             outputText("You wander around, fruitlessly searching for new places.", true);
         }
         player.explored++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public debugOptions(): void {
-        inventory.takeItem(consumables.W_FRUIT, playerMenu);
+        Inventory.takeItem(ConsumableLib.W_FRUIT, playerMenu);
     }
 
     // Massive bodyparts scene
@@ -243,7 +243,7 @@ export class Exploration {
         else outputText("  You struggle and push with your " + legs(player) + " as hard as you can, but it's no use.  You do the only thing you can and begin stroking your " + multiCockDescriptLight(game.player) + " with as much vigor as you can muster.  Eventually your body tenses and a light load of jizz erupts from your body, but the orgasm is truly mild compared to what you need.  You're simply too weary from struggling to give yourself the masturbation you truly need, but you continue to try.  Nearly an hour later " + sMultiCockDesc(game.player) + " softens enough to allow you to stand again, and you make your way back to camp, still dragging your genitals across the warm sand.", false);
         dynStats("lus", 25 + rand(player.cor / 5), "resisted", false);
         fatigue(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
 }

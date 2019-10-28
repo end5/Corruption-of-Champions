@@ -181,7 +181,7 @@ export class Vapula implements TimeAwareInterface {
                 if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] == 1) {
                     flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] = 2;
                     outputText("\n\nYou wordlessly hold out your hand. Leering, Vapula places some bottled succubus milk into it.\n\n");
-                    inventory.takeItem(consumables.SUCMILK, callSlaveVapula);
+                    Inventory.takeItem(ConsumableLib.SUCMILK, callSlaveVapula);
                     return;
                 }
             }
@@ -213,7 +213,7 @@ export class Vapula implements TimeAwareInterface {
         else threesome = vapulaThreesomeMenu;
 
         choices("Appearance", fapulaFapfapfapAppearance, "Talk", talkToVapulaForSomeReason, "Feed", mFeed, "Feed(Dildo)", fFeed, "Threesome", threesome,
-            "Spank", spank, "", null, "", null, "", null, "Leave", camp.campSlavesMenu);
+            "Spank", spank, "", null, "", null, "", null, "Leave", Camp.campSlavesMenu);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(6, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(6, "Go Camp", backToCamp);
@@ -237,7 +237,7 @@ export class Vapula implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -396,7 +396,7 @@ export class Vapula implements TimeAwareInterface {
         dynStats("cor", .5);
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Threesome
@@ -497,7 +497,7 @@ export class Vapula implements TimeAwareInterface {
         if (player.lib > 70) dynStats("lib", -1);
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Option: Butt-fuck train. Requires Ceraph to be herm.
@@ -529,7 +529,7 @@ export class Vapula implements TimeAwareInterface {
         dynStats("sen", -2, "cor", 1);
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Vapula-Sophie threesome
@@ -577,7 +577,7 @@ export class Vapula implements TimeAwareInterface {
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
         if (player.lust < 50) player.lust = 50;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Vapula-Sophie threesome (as female)
@@ -600,7 +600,7 @@ export class Vapula implements TimeAwareInterface {
         dynStats("cor", 2);
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Vapula-Amily threesome
@@ -636,7 +636,7 @@ export class Vapula implements TimeAwareInterface {
         dynStats("cor", 2);
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Vapula/Night Succubus
@@ -680,7 +680,7 @@ export class Vapula implements TimeAwareInterface {
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
         player.orgasm();
         dynStats("str", rand(2), "tou", rand(2), "spe", rand(2), "int", rand(2), "cor", 2.5);
-        inventory.takeItem(consumables.CERUL_P, playerMenu);
+        Inventory.takeItem(ConsumableLib.CERUL_P, playerMenu);
     }
 
     // Vapula/Jojo threesome
@@ -784,7 +784,7 @@ export class Vapula implements TimeAwareInterface {
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
         player.orgasm();
         dynStats("sen", -2, "cor", 4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Vapula/Jojo Butt-fuck train
@@ -848,7 +848,7 @@ export class Vapula implements TimeAwareInterface {
         dynStats("lib", -1, "sen", -2, "cor", 2);
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private vapulaAndIzmaThreeSome(): void {
@@ -901,7 +901,7 @@ export class Vapula implements TimeAwareInterface {
         dynStats("sen", -2, "cor", 2);
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Feed (as female)
@@ -988,7 +988,7 @@ export class Vapula implements TimeAwareInterface {
             flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
         }
         dynStats("cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Feed (as female)
@@ -1006,7 +1006,7 @@ export class Vapula implements TimeAwareInterface {
         outputText("\n\nYou shake your head in wonder at your succubus slave; she really is just hungry for dick.  You decide to give her what she evidently needs. You take hold of her hair and piston into her, driving down her tight throat and then back out again, using the outward pull to thrust your end further into yourself, sending rivulets of girlcum down your thighs.");
         outputText("\n\nShe works on it for what seems like hours.  You look down at your slut; she keeps staring at you with avid yet playful eyes, never breaking eye contact as she relentlessly throatfucks herself; you feel her lips curve a little as the shape of a ravenous smile appears on her face, and her eyes are glittering with an insatiable need.  The sight is enough to increase your own arousal, and you begin to move your dildo around more freely, sawing into her face as you push it backwards, forwards, grow it, shrink it, and then eventually just make it vibrate with violent force.  Your stamina is rapidly overwhelmed and you decide to reward her effort; you savagely press Vapula's head against your groin, burying all eight inches of your false cock into her waiting throat; deliriously you will your throbbing dildo to expand to pack you mercilessly tight, finally pushing you over the edge.  Your " + clitDescription(player) + " throbs as your vagina spasms ecstatically around the bulging sex toy; vaguely you feel release at the other end, and you hear Vapula loudly and shamelessly enjoy what the dildo pumps out.  You abandon yourself to the climax and keep thrusting your " + hipDescription(player) + " into her face, girlcum spurting around your harness.");
         outputText("\n\nAfter a long haze of mindless bliss, you feel long fingers undoing the strap-on and lifting it away, before curling around your thighs.  You peacefully look down to find Vapula bending into your crotch, her warm, slimy tongue touching your belly.  She looks about six months pregnant with the amount of spooge she has managed to milk from the dildo, but she is still intent upon licking you clean.  You sigh and let her, her tongue expertly gliding across your skin and exploring every corner of your dripping sex; she smacks her lips and happily hums as she goes about it, evidently enjoying you like a dessert to the fine main course she just received.  Eventually she finishes her mutually pleasurable task, and the two of you slowly get to your feet. Without a word you send her on her way to digest her lavish meal with a slap on the ass.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         player.orgasm();
         flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
         flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -1067,8 +1067,8 @@ export class Vapula implements TimeAwareInterface {
         outputText("\n\n\"<i>Be still, you whimpering, useless excuse for a demon!</i>\" you command.  Unsurprisingly, she continues to struggle.");
         outputText("\n\nVapula cries,  \"<i>Lemme go!  Can't we just go double team some people and forget about all this?</i>\"  Her violet eyes crane hopefully towards you, and she wears a winning smile across the smooth curves of her lips.  For a moment, you reconsider your plans, but then again, she earned this when she forced herself on you.  Upon seeing the resolve in your gaze, her struggles start anew, but you have her firm - she's not going anywhere.");
         outputText("\n\nOnce you have the rebellious succubus well in hand, you lift your right palm high in the air, upraised and ready to drop.  The moment seems to drag on for a while, and once your female slave is trembling with worry, you bring it down hard.  SMACK!  The hit rings out through your camp");
-        if (camp.companionsCount() > 2) outputText(", drawing the eyes of your other companions.");
-        else if (camp.companionsCount() == 2) outputText(", drawing the attention of your other companion.");
+        if (Camp.companionsCount() > 2) outputText(", drawing the eyes of your other companions.");
+        else if (Camp.companionsCount() == 2) outputText(", drawing the attention of your other companion.");
         else outputText(", echoing off the sentinel-like rocks that seem to ring your encampment.");
         outputText("  Her tail goes wild at the impact, whipping around in a frenzy and actually managing to slap your cheek!  That bitch!");
         outputText("\n\nThis time, your hand cocks and releases in a split-second, coming down with even more force than before.  Vapula screams, \"<i>Ow! Stop it, by Lethice, please!</i>\"  This time, her thrashing, spaded tail stays obediently low, harmlessly cutting through the air so as not to irritate you.");
@@ -1090,6 +1090,6 @@ export class Vapula implements TimeAwareInterface {
         // {Sadist: + 20 lust}
         if (player.perks.findByType(PerkLib.Sadist) >= 0) dynStats("lus", (10 + player.lib / 7));
         flags[kFLAGS.VAPULA_EARNED_A_SPANK] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

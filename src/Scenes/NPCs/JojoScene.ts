@@ -150,7 +150,7 @@ export class JojoScene implements TimeAwareInterface {
 
                 outputText("\n\n“<i>M-mistress Whitney says s-she'll put the rest with your cut of the farm profits [master].</i>”\n\n");
 
-                inventory.takeItem(consumables.INCUBID, corruptCampJojo);
+                Inventory.takeItem(ConsumableLib.INCUBID, corruptCampJojo);
                 return;
             }
             else {
@@ -176,7 +176,7 @@ export class JojoScene implements TimeAwareInterface {
         let sex: () => void = null;
         if (player.gender > 0 && player.lust >= 33) sex = corruptJojoSexMenu;
         if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) hairCare = jojoPaysForPerms;
-        choices("Sex", sex, "TentacleSex", tent, "Milk Him", milkHim, "TentacleMilk", tentaMilk, "HairCare", hairCare, "Lay Eggs", eggs, "", null, "", null, "", null, "Back", camp.campSlavesMenu);
+        choices("Sex", sex, "TentacleSex", tent, "Milk Him", milkHim, "TentacleMilk", tentaMilk, "HairCare", hairCare, "Lay Eggs", eggs, "", null, "", null, "", null, "Back", Camp.campSlavesMenu);
 
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) addButton(6, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) addButton(6, "Go Camp", backToCamp);
@@ -234,7 +234,7 @@ export class JojoScene implements TimeAwareInterface {
 
         flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] = 1;
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private backToCamp(): void {
@@ -598,7 +598,7 @@ export class JojoScene implements TimeAwareInterface {
         player.cuntChange(40, true);
         player.orgasm();
         dynStats("cor", .5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Jojo milk payments
@@ -749,7 +749,7 @@ export class JojoScene implements TimeAwareInterface {
         jojoMilkPay();
 
         outputText("o on your way, dragging an exhausted mouse behind you as you head back towards camp.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private repeatMilkJojo(tentacle: boolean = false): void {
@@ -838,7 +838,7 @@ export class JojoScene implements TimeAwareInterface {
             outputText("o on your way, dragging an exhausted mouse behind you as you head back towards camp.", false);
         }
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Use Jojo to pay for Hair Care
     private jojoPaysForPerms(): void {
@@ -940,7 +940,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("\n\nThe sperm-filled girl burps and turns to kiss Jojo, the once-pure monk eagerly returning the embrace and getting a good taste for your seed as Amily fervently tongues it into his mouth.  She eventually pulls back to encourage him with an overwrought sigh. \"<i>Maybe if you service [master] better you'll be allowed to receive [his] seed next time.</i>\"  Jojo pants and licks at his lips, hands darting down to tend to his long-neglected phallus.");
         outputText("\n\nYour personal whore laughs and hugs your leg, whispering, \"<i>Cum-slut thanks you, [master].</i>\"  You pull her up and smile at her, glad she's working to make your budding harem as sexually adept as possible.  She beams and grabs Jojo with her tail, no doubt eager to drag him off for more training.");
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Fill Amily's Twat (requires not short-ass, weak-ass nigga) (Z)
     private stuffAmilysMouthWithPostBJCUM(): void {
@@ -956,7 +956,7 @@ export class JojoScene implements TimeAwareInterface {
         dynStats("sen", -1);
         // {DONT FORGET PREGNANCY CHECK}
         AmilyScene.amilyPreggoChance();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Fill Jojo's Mouth (Z)
     private fillJojosMouthWithHotStickyCum(): void {
@@ -967,7 +967,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("\n\nWhile one of your mouse-toys is polishing your rod, the other is masturbating and panting.  \"<i>Please, [master], may I... may I have some cum?  Can I... I lick him clean?  He's so...</i>\"  She inhales and luridly moans, \"<i>...messy.</i>\"  You give her your assent as you withdraw your spit-shined pecker from Jojo's maw, not caring how the two of them get their rocks off so long as your harem is kept well-trained and willing.");
         player.orgasm();
         dynStats("lib", -1, "cor", 1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Scene 2: Amily And Jojo Fuck (w/o Tentacles) (Z)
@@ -990,7 +990,7 @@ export class JojoScene implements TimeAwareInterface {
         player.orgasm();
         // {DONT FORGET PREGNANCY CHECK}
         // amilyPreggoChance();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public jojoFollowerMeditate(): void {
@@ -1018,7 +1018,7 @@ export class JojoScene implements TimeAwareInterface {
             if (player.lib > 15) dynStats("lib", -1); // Libido lower to 15
             player.effects.create(StatusAffects.Meditated, 1, 0, 0, 0);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public jojoDefenseToggle(): void {
@@ -1095,7 +1095,7 @@ export class JojoScene implements TimeAwareInterface {
             default:
                 jojosFifthRape();
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         if (postCombat) cleanupAfterCombat();
     }
 
@@ -1574,7 +1574,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("You sneer at him and shake your head, hissing out, \"<i>It would be so much better for you if you didn't try to resist, my slut.</i>\"  ");
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoBJGentle(): void {
@@ -1595,7 +1595,7 @@ export class JojoScene implements TimeAwareInterface {
         else outputText("You give him one last fond caress, running your fingers through his fur in an almost patronizing petting motion, then turn without another word and leave him to retreat back into the jungle.  ");
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoCunnilingus(): void {
@@ -1615,7 +1615,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("You work until your slut explodes, and then, keeping all his seed in your mouth, you lift your head and press your lips to his in a firm kiss, feeding him the load of cum that he just released. He blushes as you do so, but obediently takes it all in, swallowing it down as you feed it to him.  ");
         outputText("Once the vulgar kiss is finished, you stand and smile, dismissing him with a casual wave of your hand.  ");
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoVaginalGentle(): void {
@@ -1643,7 +1643,7 @@ export class JojoScene implements TimeAwareInterface {
         player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); // Jojo's kids take longer for some reason
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoVaginalSmother(): void {
@@ -1660,7 +1660,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("He gasps for breath and coughs a few times, and once you are sure that he is safe, you laugh softly and walk back to your camp.  ");
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoAnalCruel(): void {
@@ -1678,7 +1678,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("You pull out of Jojo's ass once your orgasm has subsided and wipe your " + cockDescript(player, x) + " off on the fur of his back, then walk away to leave him to his own devices.  ");
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoAnalGentle(): void {
@@ -1697,7 +1697,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("You can't help but laugh at the scene, and draw out of his ass with a groan of pleasure. You watch as he crawls back into the jungle in shame, leaving a trail of your cum the whole way.  ");
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoAnalSmother(): void {
@@ -1719,7 +1719,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("He gasps for breath and coughs a few times, and once you are sure that he is safe, you laugh softly and walk back to your camp.");
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private corruptJojoBreasts(): void { // Should only be available to players with biggestBreastSize > 2
@@ -1743,7 +1743,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("He slinks back into the woods, chased by your amused laughter.");
         player.orgasm();
         dynStats("cor", 0.5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Extra Scenes
@@ -1795,7 +1795,7 @@ export class JojoScene implements TimeAwareInterface {
             outputText("As you move away from the mouse, you step into a huge puddle of Jojo's creamy rodent cum and look back. You see that his dick, still trapped under his body and pointing behind the two of you, blasted long ropes of thick mouse spunk far into the depths of the forest.  Feeling beyond satisfied, you give your mouse slut a quick scratch behind the ear as he passes out – cum splattered and smiling.");
         }
         player.orgasm();
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     /* The old code for sex with corrupt Jojo
@@ -2103,7 +2103,7 @@ export class JojoScene implements TimeAwareInterface {
                         player.cuntChange(36.4, true);
                     }
                 }
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
     */
 
@@ -2241,7 +2241,7 @@ export class JojoScene implements TimeAwareInterface {
 
         menu();
         addButton(0, "Meditate", meditateInForest); // OH GOD NO SEND HELP
-        addButton(1, "Leave", camp.returnToCampUseOneHour);
+        addButton(1, "Leave", Camp.returnToCampUseOneHour);
         addButton(4, "Rape", jojoRape);
     }
 
@@ -2273,7 +2273,7 @@ export class JojoScene implements TimeAwareInterface {
                     // get a small talisman if not have one
                     player.keyItems.create("Jojo's Talisman", 0, 0, 0, 0);
                 }
-                doNext(camp.returnToCampUseTwoHours);
+                doNext(Camp.returnToCampUseTwoHours);
                 return;
             }
             else
@@ -2281,12 +2281,12 @@ export class JojoScene implements TimeAwareInterface {
         }
         if (player.effects.getValue1Of(StatusAffects.JojoMeditationCount) % 5 == 0) {
             outputText("\n\nYou ponder and get an idea - the mouse could stay at your camp.  There's safety in numbers, and it would be easier for the two of you to get together for meditation sessions.  Do you want Jojo's company at camp?", false);
-            doYesNo(JojoScene.acceptJojoIntoYourCamp, camp.returnToCampUseTwoHours);
+            doYesNo(JojoScene.acceptJojoIntoYourCamp, Camp.returnToCampUseTwoHours);
             return;
         }
         else
             outputText("\n\nHe bows his head sadly and dismisses you.", false);
-        doNext(camp.returnToCampUseTwoHours);
+        doNext(Camp.returnToCampUseTwoHours);
     }
 
     // Some hacky shit to be able to control the text clearing mechanics of the doEvent system... OH GOD WHY. //Gone, gone forever
@@ -2302,7 +2302,7 @@ export class JojoScene implements TimeAwareInterface {
             outputText("You offer Jojo the chance to stay at your camp.  He cocks his head to the side and thinks, stroking his mousey whiskers.\n\n\"<i>Yes, it would be wise.   We would be safer together, and if you like I could keep watch at night to keep some of the creatures away.  I'll gather my things and be right there!</i>\"\n\nJojo scurries into the bushes, disappearing in a flash.  Knowing him, he'll be at camp before you!");
             player.effects.create(StatusAffects.PureCampJojo, 0, 0, 0, 0);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Jojo In Camp
@@ -2331,11 +2331,11 @@ export class JojoScene implements TimeAwareInterface {
         clearOutput();
         jojoSprite();
         if (flags[kFLAGS.AMILY_MET_PURE_JOJO] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower()) {
-            followerInteractions.amilyMeetsPureJojo();
+            FollowerInteractions.amilyMeetsPureJojo();
             return;
         }
         if (flags[kFLAGS.JOJO_RATHAZUL_INTERACTION_COUNTER] == 1 && rand(2) == 0) {
-            followerInteractions.catchRathazulNapping();
+            FollowerInteractions.catchRathazulNapping();
             return;
         }
         if (player.effects.findByType(StatusAffects.Infested) >= 0) { // Worms overrides everything else
@@ -2383,7 +2383,7 @@ export class JojoScene implements TimeAwareInterface {
         addButton(4, jojoDefense, jojoDefenseToggle);
         if (player.effects.findByType(StatusAffects.Infested) >= 0) addButton(5, "Purge", wormRemoval);
         addButton(8, "Rape", (player.cor > 10 && player.lust >= 33 && player.gender > 0 ? jojoAtCampRape : null));
-        addButton(9, "Leave", camp.campFollowers);
+        addButton(9, "Leave", Camp.campFollowers);
     }
 
     // Appearance
@@ -2440,7 +2440,7 @@ export class JojoScene implements TimeAwareInterface {
         }
 
         menu();
-        doNext(camp.returnToCampUseOneHour); // Dunno where exactly to kick back to, fuck it, back to camp yo!
+        doNext(Camp.returnToCampUseOneHour); // Dunno where exactly to kick back to, fuck it, back to camp yo!
     }
 
     // Joining the Monks convo
@@ -2457,7 +2457,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("Jojo wears this quiet little smile as he finishes.  Then he chuckles and says, “<i>Thank you for the memories, [name].  I enjoy our talks.</i>”\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Fall of the Monks convo
@@ -2475,7 +2475,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("You can tell the story has affected him, but you’re surprised to hear the resolve in his voice and see the defiant strength in his eyes. Excusing yourself, you rise and leave him to do as he will.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Forest Convo
@@ -2521,7 +2521,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("Looking renewed and at peace despite the emotional storm you know must be raging within his tiny frame Jojo returns to what he was doing after thanking you for giving him new purpose.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Yourself
@@ -2574,7 +2574,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("Jojo smiles now that he has gotten to know you a little better. After a little bit more small talk, the two of you decide the conversation is over and part ways.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Dungeon Convo: Factory
@@ -2601,7 +2601,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("Once the two of you are done discussing the demonic factory Jojo excuses himself to think on what you’ve told him.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Dungeon Convo: Sand Cave
@@ -2685,7 +2685,7 @@ export class JojoScene implements TimeAwareInterface {
         outputText("Having concluded the conversation the two of you stand and Jojo gives you an appreciative pat on the shoulder, seeming more fond of you.\n\n");
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Training
@@ -2825,7 +2825,7 @@ export class JojoScene implements TimeAwareInterface {
         }
 
         menu();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public wormRemoval(): void {
@@ -2843,6 +2843,6 @@ export class JojoScene implements TimeAwareInterface {
         player.sens = 11;
         player.effects.remove(StatusAffects.Infested);
         dynStats("sen", -1, "lus", -99, "cor", -15);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

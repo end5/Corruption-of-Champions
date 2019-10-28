@@ -279,11 +279,11 @@ export class Phouka extends Monster {
 
         this.level = 14;
         this.gems = 0;
-        this.drop = new WeightedDrop().add(consumables.BLACK_D, 20)
-            .add(consumables.RIZZART, 10)
-            .add(consumables.GROPLUS, 2)
-            .add(consumables.SDELITE, 13)
-            .add(consumables.P_WHSKY, 35)
+        this.drop = new WeightedDrop().add(ConsumableLib.BLACK_D, 20)
+            .add(ConsumableLib.RIZZART, 10)
+            .add(ConsumableLib.GROPLUS, 2)
+            .add(ConsumableLib.SDELITE, 13)
+            .add(ConsumableLib.P_WHSKY, 35)
             .add(null, 20);
 
         this.wingType = WING_TYPE_GIANT_DRAGONFLY; // Maybe later, if the PC can get them, make a Faerie wing type.

@@ -91,7 +91,7 @@ export class Heckel {
                 dom = dominateHeckel;
             }
             // ORAL or LEAVE
-            simpleChoices("Oral", heckelOrallyFixated, "Anal", null, "Be Top Dog", dom, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Oral", heckelOrallyFixated, "Anal", null, "Be Top Dog", dom, "", null, "Leave", Camp.returnToCampUseOneHour);
         }
         // FOLLOWUP SECKZ
         else {
@@ -110,7 +110,7 @@ export class Heckel {
                 dom = dominateHeckel;
             }
             // ORAL or LEAVE
-            simpleChoices("Oral", heckelOrallyFixated, "Anal", heckelLovesDaAnal, "Be Top Dog", dom, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Oral", heckelOrallyFixated, "Anal", heckelLovesDaAnal, "Be Top Dog", dom, "", null, "Leave", Camp.returnToCampUseOneHour);
         }
     }
 
@@ -166,7 +166,7 @@ export class Heckel {
             outputText("\"<i>By Marae, " + player.short + ", you've got quite the mouth. I'm impressed, and that doesn't happen often.</i>\" She brings a paw to her chin as if thinking, before finally reaching it out and ruffling your hair. \"<i>You know, you aren't half bad to be around, and not just for the sex. Don't be a stranger around here, alright?</i>\" With that she stands and heads back into the showers, giving you time to clean up and head back to camp.", false);
             player.orgasm();
             dynStats("sen", 4);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Increment BJ count
         flags[kFLAGS.TIMES_FUCKED_HECKEL_BLOWJOB]++;
@@ -182,7 +182,7 @@ export class Heckel {
 
         outputText("When she's finally emptied herself on your face, she falls down onto the bench in front of you. Before you can say anything, she extends a paw and ruffles your semen-streaked hair. \"<i>Heh, not bad fresh meat. If you can learn your place on the food chain here, we might have a beautiful partnership ahead of us. If you still think you can keep up, that is.</i>\" She winks at you as she stands again, tossing you her towel from earlier as she heads towards the showers.\n\n", false);
         dynStats("lib", 1, "sen", 4, "lus", (10 + player.lib / 10 + player.sens / 10));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // anal
@@ -191,7 +191,7 @@ export class Heckel {
         // rejection - ass not loose enough
         if (player.analCapacity() <= 20 && !loss) {
             outputText("Heckel lets out a barking laugh when you suggest using your " + buttDescription(player) + ", ruffling your hair playfully. \"<i>Know your limits, " + player.short + ", I'd tear you apart down there. I'm sure there are plenty of others in this realm who can help you out with that.</i>\"\n\n", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // success - requires ass to be 'a little loose'
@@ -279,7 +279,7 @@ export class Heckel {
         outputText("She laughs as she stands and heads for the shower, letting you clean yourself up and head back to camp.", false);
         player.orgasm();
         dynStats("sen", 4);
-        doNext(camp.returnToCampUseFourHours);
+        doNext(Camp.returnToCampUseFourHours);
     }
 
     public dominateHeckel(): void {
@@ -397,6 +397,6 @@ export class Heckel {
         }
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

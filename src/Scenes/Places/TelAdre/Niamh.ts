@@ -77,7 +77,7 @@ export class Niamh implements TimeAwareInterface {
         clearOutput();
 
         outputText(images.showImage("niamh-approach-in-bar"));
-        if (rand(5) == 0 && flags[kFLAGS.MET_NIAMH] > 0 && (player.hasItem(consumables.BIMBOLQ) || player.hasItem(consumables.SUCMILK))) {
+        if (rand(5) == 0 && flags[kFLAGS.MET_NIAMH] > 0 && (player.hasItem(ConsumableLib.BIMBOLQ) || player.hasItem(ConsumableLib.SUCMILK))) {
             corruptOrBimboNiamhIntro();
             return;
         }
@@ -188,7 +188,7 @@ export class Niamh implements TimeAwareInterface {
             outputText(" breasts have had the last of their beer squeezed from them.  She sighs in relief, caressing her shrunken breasts; while still hovering at around G-cup size, they're much smaller than they are when the day starts for her.  \"<i>Me thanks for the business; ye got the last mug for today.  Still, I'll be here tomorrow, full as ever.</i>\" She sighs softly.  \"<i>I regret to say that Niamh's Black Cat Beer doesn't look to be going out of business anytime soon.</i>\"  She stands and gathers her coat, slipping her arms into the sleeves.  The nimble girl draws the garment across her buxom chest, buttoning the slightly strained buttons with deceptive ease.  Dressed properly, she starts away, a bag full of gems bouncing against her swaying hips. You watch her go, staring at her back until she walks out the door.");
         }
         flags[kFLAGS.MET_NIAMH]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [To Go]
@@ -209,7 +209,7 @@ export class Niamh implements TimeAwareInterface {
         outputText("\n\n");
         flags[kFLAGS.MET_NIAMH]++;
         // PC gains 1x BCB
-        inventory.takeItem(consumables.BC_BEER, TelAdre.barTelAdre);
+        Inventory.takeItem(ConsumableLib.BC_BEER, TelAdre.barTelAdre);
     }
 
     // Talk
@@ -240,7 +240,7 @@ export class Niamh implements TimeAwareInterface {
         let beer: () => void = null;
         if (player.gems >= 2)
             beer = getANiamhBeer;
-        simpleChoices("Beer", beer, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+        simpleChoices("Beer", beer, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
     // Leave
     private leaveNiamh(): void {
@@ -301,7 +301,7 @@ export class Niamh implements TimeAwareInterface {
         outputText("\"<i>Heya, favored customer,</i>\" the busty kitty greets as you approach.  \"<i>I have a favor to ask!  My drink's empty, and I get bored of me own brew,</i>\" Niamh explains.  \"<i>Would ya mind fetchin' me somethin', or are ye gonna force me to sample me own goods once more?</i>\"");
 
         outputText("\n\nYou pause, contemplating your options.  While you know of many drinks The Wet Bitch sells, most of them... aren't exactly fit for human - or feline - consumption, in your opinion.  You're stricken with a particularly naughty thought.  Perhaps you could fetch something... ");
-        if (player.hasItem(consumables.BIMBOLQ))
+        if (player.hasItem(ConsumableLib.BIMBOLQ))
             outputText("'bubbly' for her, in the form of the Bimbo Liqueur you got from the imp lord, or ");
         outputText("maybe even a Succubus Milk?  You'll have to consider your options.  On the other hand, of course, something that corruptive would probably mutate her booze-filled boobs, most likely forcing her out of Tel'Adre altogether... and may fall back on your own head, to boot.  What do you do?");
 
@@ -310,8 +310,8 @@ export class Niamh implements TimeAwareInterface {
         outputText("\n\n(Editors Note: Succubi Milk Option Currently in beta)\n\n\n");
 
         menu();
-        if (player.hasItem(consumables.BIMBOLQ)) addButton(0, "Bimbo", giveNiamphBimboLiquer);
-        if (player.hasItem(consumables.SUCMILK)) addButton(1, "S.Milk", giveNiamphSuccubiMilk);
+        if (player.hasItem(ConsumableLib.BIMBOLQ)) addButton(0, "Bimbo", giveNiamphBimboLiquer);
+        if (player.hasItem(ConsumableLib.SUCMILK)) addButton(1, "S.Milk", giveNiamphSuccubiMilk);
         addButton(4, "Back", maybeLaterNiamh);
     }
     // [Maybe Later]
@@ -331,14 +331,14 @@ export class Niamh implements TimeAwareInterface {
         outputText("You grab Niamh's glass and one more and head off, making sure to turn a corner before commandeering an empty table.  Plunking the mugs down in front of you, you mutter to yourself as she moves away.");
         // [if sucmilk]
         if (!bimbo) {
-            player.consumeItem(consumables.SUCMILK);
+            player.consumeItem(ConsumableLib.SUCMILK);
             outputText("\n\nYou uncork your bottle of Succubus Milk and pour half into each mug, loving the way the thick, creamy fluid flows.  With each containing a good amount of the stuff, you scoop them up and start towards Niamh.  Her expression brightens when she notices your approach, and she giggles when she regards the two glasses of milk in your hands.  \"<i>Are ye making fun of me?</i>\" she remarks coyly, patting one of her beer-filled boobs gently.  \"<i>Ah well, I haven't had a good glass o' milk in too long... this is milk, yeah?</i>\"");
             outputText("\n\nNiamh reaches for a mug, but you draw it away from her questing hand, instead sinking it into her considerable expanse of cleavage.  A devious grin flits across your features as she subsequently shivers from the cold glass between her fluid-filled bosom.  \"<i>Wh-why you...</i>\" she gasps, quickly snatching the drink and rubbing warmth back into her goosebumped flesh.  \"<i>You scoundrel...</i>\"");
             outputText("\n\nYou respond by raising your glass in toast, and she grudgingly complies.  Your mugs clink together, and she wastes no time in downing the creamy milk.  You raise your own drink to your lips and pretend to sip, not wanting anything to do with what's about to happen.  \"<i>Went down smooth,</i>\" she comments, licking her lips.  \"<i>Say, there... mind if I have a swig o' yours, too?</i>\"  You readily hand the flagon over, marveling at how fast she chugs it.  Niamh gives a happy little burp, and you scoot back a bit in anticipation.");
         }
         // [if bimbo liqueur]
         else {
-            player.consumeItem(consumables.BIMBOLQ);
+            player.consumeItem(ConsumableLib.BIMBOLQ);
             outputText("\n\nYou pop the seal of your bottle of Bimbo Liqueur, recoiling at the cloying, spiced scent that paints visions of a slutty slave-girl's slightly spread folds.  With a grimace, you pour the potent stuff evenly into the glasses.  Hefting the mugs, you rise and start towards Niamh.");
             outputText("\n\nHer expression brightens when she notices your approach, and she giggles when she regards the quarter-full mugs of liqueur.  \"<i>What, that's it?</i>\" she quips curiously.  \"<i>This stuff had better pack some punch, " + mf(player, "lad", "lass") + ".</i>\"  You assure her that it will knock her socks off.");
             outputText("\n\nNiamh reaches for a mug, but you draw it away from her questing hand, instead sinking it into her considerable expanse of cleavage.  A devious grin flits across your features as she subsequently shivers from the cold glass between her fluid-filled bosom.  \"<i>Wh-why you...</i>\" she gasps, quickly snatching the drink and rubbing warmth back into her goosebumped flesh.  \"<i>You scoundrel...</i>\"");
@@ -363,7 +363,7 @@ export class Niamh implements TimeAwareInterface {
         }
         flags[kFLAGS.NIAMH_MOVED_OUT_COUNTER] = 25;
         dynStats("cor", 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // 24 hours later, random encounter on the Plains
@@ -396,7 +396,7 @@ export class Niamh implements TimeAwareInterface {
     private niamhCorruptMobileSnackTurnDown(): void {
         clearOutput();
         outputText("You turn her down, fabricating a little tale about how you just got done drinking a delicious beverage, and you couldn't possibly have anything more.  She nods sagely, pauses, and loudly belches.  Even in her soused state, she retains some semblance of manners, so she chuckles nervously while moving a hand to her lips.  \"<i>Sorry 'bout tha'...</i>\" she mutters, slinking off.  You have a feeling you'll see her again.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [yup]
     private niamhCorruptedMobileSnackDrinkTime(): void {
@@ -434,7 +434,7 @@ export class Niamh implements TimeAwareInterface {
             blackCatBeerEffects(player, false, true);
             // [end encounter]*/
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     public bimboChampagne(player: Player, clearScreen: boolean, intro: boolean): void {
         if (clearScreen) clearOutput();
@@ -531,7 +531,7 @@ export class Niamh implements TimeAwareInterface {
         let fuck: () => void = null;
         if (player.cocks.length > 0)
             fuck = bazaarSex;
-        simpleChoices("Get A Drink", drink, "Tit-Fuck", fuck, "", null, "", null, "Back", bazaar.enterTheBazaar);
+        simpleChoices("Get A Drink", drink, "Tit-Fuck", fuck, "", null, "", null, "Back", Bazaar.enterTheBazaar);
     }
 
     // [bimbo/corrupted beer drink texts]
@@ -548,7 +548,7 @@ export class Niamh implements TimeAwareInterface {
         // Corrupt
         else {
             outputText("Succubus milk Niamh Not implemented yet");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
     // {If player drinks from the tap:}
@@ -561,7 +561,7 @@ export class Niamh implements TimeAwareInterface {
 
         outputText("\n\nYou push yourself upright and assure the pretty catgirl that you feel, like, super-duper wonderful!  You punctuate this declaration with a burp as the sudden motion makes all the yummy bubbles in your belly dance, and then you giggle at how naughty that was.");
         bimboChampagne(player, false, false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // grabbing Bim Cham in a to-go box
@@ -572,7 +572,7 @@ export class Niamh implements TimeAwareInterface {
         outputText("\n\nPushing that slightly scary thought to the side, you lean in, firmly grasping one stiff nipple and forcing it to the mouth of your container.  Ignoring her increasingly loud and frequent groans, you dutifully milk the bubbly into the flask, stopper it up, and rise.  Niamh tries to follow you, too aroused by the milking to resist her carnal urges, but you easily push her to the side, her ponderous melons throwing her off balance.");
         outputText("\n\nShe lands into a big pile of similarly blonde and giggling girls who waste no time in swarming her.  You chuckle and shake your head.  Perhaps you'll come back later.\n\n");
         // bimbo champagne aqua-aired
-        inventory.takeItem(consumables.BIMBOCH, camp.returnToCampUseOneHour);
+        Inventory.takeItem(ConsumableLib.BIMBOCH, Camp.returnToCampUseOneHour);
     }
 
     // [Bazaar sex]
@@ -597,7 +597,7 @@ export class Niamh implements TimeAwareInterface {
         {
             outputText("\n\nSuccubi Milk Niamph not implemnted yet.");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Meet Sean with bimbo champagne in inventory]
@@ -621,11 +621,11 @@ export class Niamh implements TimeAwareInterface {
         outputText("\n\n\"<i>Now shoo, I must do work!</i>\" he scolds, ushering you out of the cave.  \"<i>Come back tomorrow!</i>\"  Satisfied, you leave his shop.");
         doNext(playerMenu);
         player.gems -= 500;
-        player.consumeItem(consumables.BIMBOCH);
-        player.consumeItem(consumables.BIMBOCH);
-        player.consumeItem(consumables.BIMBOCH);
-        player.consumeItem(consumables.BIMBOCH);
-        player.consumeItem(consumables.BIMBOCH);
+        player.consumeItem(ConsumableLib.BIMBOCH);
+        player.consumeItem(ConsumableLib.BIMBOCH);
+        player.consumeItem(ConsumableLib.BIMBOCH);
+        player.consumeItem(ConsumableLib.BIMBOCH);
+        player.consumeItem(ConsumableLib.BIMBOCH);
         statScreenRefresh();
         flags[kFLAGS.NIAMH_SEAN_BREW_BIMBO_LIQUEUR_COUNTER] = 25;
     }
@@ -641,7 +641,7 @@ export class Niamh implements TimeAwareInterface {
         outputText("You drop the vial into a pouch on your person.\n\n");
         // bimbo liqueur aqcquired
         flags[kFLAGS.NIAMH_SEAN_BREW_BIMBO_LIQUEUR_COUNTER] = 0;
-        inventory.takeItem(consumables.BIMBOLQ, incubusShop);
+        Inventory.takeItem(ConsumableLib.BIMBOLQ, incubusShop);
     }
 
     // [LEAVE]
@@ -649,7 +649,7 @@ export class Niamh implements TimeAwareInterface {
         clearOutput();
         outputText("The offer is tempting but right now you'd much rather deal with your boozy boobs privately.  You take off while trying to keep your [armor] modestly in place over your tits but it's difficult.  Your nipples constantly leak and drip a trail of alcohol all the way back to camp.  Thankfully by the time you arrive the effects seem to have mostly worn off.  Your nipples return to dripping milk, but although they've shrunk back down a bit they don't quite shrink all the way, leaving you with somewhat larger endowments than you had before.");
         player.growTits(2, player.breasts.length, false, 2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [SELL YOUR BOOZE]
@@ -679,7 +679,7 @@ export class Niamh implements TimeAwareInterface {
             player.growTits(2, player.breasts.length, false, 2);
             outputText("\n\nYou feel flushed from the sensations, but finally you run dry.  Your breasts have shrunk back down, but they still feel a little larger than they were earlier.  As little droplets of milk instead of booze return to dripping from your nipples, Niamh hands you your cut of the gems you earned from the sales.");
             // [LEAVE]
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // If lust is high
         else {
@@ -895,7 +895,7 @@ export class Niamh implements TimeAwareInterface {
             player.growTits(2, player.breasts.length, false, 2);
         }
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private boozeBoobsType(): string {

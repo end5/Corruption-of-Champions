@@ -89,7 +89,7 @@ export class FollowerInteractions {
         outputText("", true);
         outputText("\"<i>You brought it!  Yes!</i>\" cheers Amily.  She reaches into your pouches and pulls out the bottle of pure honey and takes off for the woods.  You're forced to chase after her, and by the time you catch up, she's already hit Jojo with a knock-out dart.  The corrupted mouse is still hard and dripping with spunk, even while unconscious.  Amily moans, \"<i>You poor dear... here, drink up.  This will help make you better.</i>\"\n\n", false);
         // She noms your honey
-        player.consumeItem(consumables.PURHONY);
+        player.consumeItem(ConsumableLib.PURHONY);
 
         outputText("She only gives him a few sips before she turns back to you and says, \"<i>This is going to take me a few hours.  It would be best if you weren't here when he wakes up.  I doubt he'll want anything to do with you after this.  I'll give him directions to find our children.  I'm sure they'll be able to help him recover the rest of the way.</i>\"\n\n", false);
 
@@ -108,7 +108,7 @@ export class FollowerInteractions {
         flags[kFLAGS.AMILY_WAIT_FOR_PC_FIX_JOJO] = 0;
         // Jojo 'fixed'
         flags[kFLAGS.JOJO_FIXED_STATUS] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Find note from jojo @ followers menu after pufying him]
@@ -207,7 +207,7 @@ export class FollowerInteractions {
             dynStats("int", 1);
             // (YAY SAVED JOJO), and amily didn't leave.
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Let Her Kill Jojo]
     private whyWouldDoThis(): void {
@@ -219,7 +219,7 @@ export class FollowerInteractions {
         dynStats("lus", -99);
         // (You suck and Jojo died.)
         flags[kFLAGS.JOJO_DEAD_OR_GONE] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Amily introduces herself to Rathazul – happens at Rathazul]
@@ -290,7 +290,7 @@ export class FollowerInteractions {
         outputText("Rathazul scratches his head in confusion and stutters, \"<i>You, uh, f-fuck the creature?  Well, umm... okay.  I guess I don't have to worry about it then...</i>\"\n\n");
 
         outputText("He blushes red and lurches back towards his laboratory, muttering under his breath about crazy kids.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [I can handle it]
     private tellRathazulYouCanHandleIt(): void {
@@ -303,7 +303,7 @@ export class FollowerInteractions {
         outputText("You answer, \"<i>Do I look like a demon to you?  I don't kill my enemies if I can help it.  Trust me, we're safe.</i>\"\n\n");
 
         outputText("The rat seems satisfied by your response and nods respectfully.  He lurches back towards his laboratory, wringing his clawed hands with worry.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Its harmless]
     private TellRathazulJojoIsHarmless(): void {
@@ -316,7 +316,7 @@ export class FollowerInteractions {
         outputText("You snort disdainfully and answer, \"<i>It's fine.  He's not interested in you – it's me he wants, and he won't be getting any of me unless I decide to let him.</i>\"\n\n");
 
         outputText("With the conversation concluded, Rathazul wanders off, murmuring, \"<i>Oh my, no...</i>\"");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Rathazul and non-corrupt Jojo]
@@ -386,7 +386,7 @@ export class FollowerInteractions {
             // end event, Marble leaves the camp for good
             player.effects.remove(StatusAffects.CampMarble);
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     private beAPimpMarbleLovesIt(): void {
@@ -420,9 +420,9 @@ export class FollowerInteractions {
         player.itemSlot3.quantity = 0;
         player.itemSlot4.quantity = 0;
         player.itemSlot5.quantity = 0;
-        player.setArmor(armors.C_CLOTH); // Old armor disappears unless it's Valeria
+        player.setArmor(ArmorLib.C_CLOTH); // Old armor disappears unless it's Valeria
         player.setWeapon(WeaponLib.FISTS);
-        // 	player.armor = armors.C_CLOTH;
+        // 	player.armor = ArmorLib.C_CLOTH;
         // 	player.weapon.unequip(player,false,true);
         player.effects.remove(StatusAffects.CampMarble);
         outputText("\n\nNo doubt Amily ran back to the ruins.  Perhaps you could gather some appropriate drugs to teach her a lesson?", false);
@@ -432,7 +432,7 @@ export class FollowerInteractions {
         flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] = 1;
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 0;
         flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] = 1;
-        doNext(camp.returnToCampUseEightHours);
+        doNext(Camp.returnToCampUseEightHours);
     }
     // Pimp -> PC is not addicted -> just joking (B5)
     private jokeAboutPimpularness(): void {
@@ -452,7 +452,7 @@ export class FollowerInteractions {
             outputText("Right away, you realize that this situation isn't really something that you can talk your way out of.  You start to tell the two of them why you like them and why you were with them.  You tell Marble about Amily's desire to repopulate her people, and you tell Amily about Marble's desire to find someone and the difficulties that her species brings with it.  At the end of your talk, the two of them are just looking at each other.  After a few moments Amily says, \"<i>So, you're corrupt huh?  I guess you seem nice enough...</i>\"  Marble responds, \"<i>You're really cute yourself, little mousy, and you definitely needed someone for a good reason.  The real problem is that " + player.short + " didn't get the two of us to talk to each other before now.</i>\"  The two of them then turn back to you with dirty looks in their eyes.  It looks like things aren't going to be all that nice for you for a while, but at least they don't seem to hate each other.", false);
             // end event, set lust or other sex values to minimum to make it so that Marble and Amily "punish" the player a little for awhile.
             flags[kFLAGS.MARBLE_LUST] = -100;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         // Explain -> fail (C3)
@@ -479,7 +479,7 @@ export class FollowerInteractions {
         player.effects.remove(StatusAffects.CampMarble);
         // Marble goes back to farm
         player.effects.remove(StatusAffects.NoMoreMarble);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Explain -> blame Amily
@@ -489,7 +489,7 @@ export class FollowerInteractions {
         // end event, Amily leaves the camp permanently
         flags[kFLAGS.AMILY_FOLLOWER] = 0;
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Amily/Urta Interaction
@@ -549,7 +549,7 @@ export class FollowerInteractions {
 
         outputText("With a soft sigh, you shut the door and leave them to sleep it off.  While you can't predict that they will be quite so magnanimous about all this when they wake up, right now, it looks like neither of them is inclined to declare war over you.", false);
         dynStats("lus", 75);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // Progress to next stage!
         flags[kFLAGS.AMILY_VISITING_URTA] = 2;
         // Tag that Urta needs to freak out!
@@ -568,7 +568,7 @@ export class FollowerInteractions {
         outputText("", true);
         outputText("You chuckle and tell them you understand, though they had better include you in the future.  Drunken relief spreads across their faces when you give them a wink and step out.  Soon you hear the sloppy sounds of sex and giggles about how great their lover is.", false);
         dynStats("lus", 75);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         flags[kFLAGS.AMILY_VISITING_URTA] = 4;
     }
     private endThisMadness(): void {
@@ -594,7 +594,7 @@ export class FollowerInteractions {
         }
         flags[kFLAGS.AMILY_VISITING_URTA] = 3;
         outputText("You shrug.  Well, that puts an end to that.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Next Morning
@@ -717,6 +717,6 @@ export class FollowerInteractions {
 
         outputText("By this point, you are feeling very turned on indeed, but you can't bring yourself to disturb them.  Instead, you simply grin again and leave them to recover.", false);
         dynStats("lus", 50);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

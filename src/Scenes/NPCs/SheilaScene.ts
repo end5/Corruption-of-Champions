@@ -204,7 +204,7 @@ export class SheilaScene implements TimeAwareInterface {
             else if (flags[kFLAGS.SHEILA_XP] == 4) fuckBuddySheilaMeeting();
             else {
                 outputText("A BUG HAPPENED.  YOUR SHEILA_XP: " + flags[kFLAGS.SHEILA_XP] + ". <b>Value should be between -3 to 4.</b>");
-                doNext(camp.returnToCampUseOneHour);
+                doNext(Camp.returnToCampUseOneHour);
             }
         }
         // DEMONS!
@@ -293,7 +293,7 @@ export class SheilaScene implements TimeAwareInterface {
         clearOutput();
         outputText("You regulate your breathing and hold yourself still to avoid rustling anything softly, waiting for the creature to finish its business and leave.");
         // no change in sheila xp
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP0 - Look Closer]
@@ -348,7 +348,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\"<i>Good onya.  Maybe I'll see you around.</i>\"  With that, you take your leave of the strange woman.");
         // set sheila xp = 1
         flags[kFLAGS.SHEILA_XP] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP0 - Look Closer - Talk]
@@ -371,7 +371,7 @@ export class SheilaScene implements TimeAwareInterface {
         clearOutput();
         outputText("Wordlessly, you get up and back away from the woman... though not without a dirty glance.  She follows you with her eyes until you judge yourself far enough away to turn your back to her.");
         // go to camp
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP0 - Look Closer - Talk - Fight]
@@ -410,7 +410,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\n\"<i>Well... I expect I could arrange that if you'll play along,</i>\" she says, ears twitching in irritation.  \"<i>Take care of yourself, mate.</i>\"  She resets the trap and lays down in her spot in the tall grass again, pointedly turning over on her side to show you her back.");
         // set sheilapreg = -1
         flags[kFLAGS.SHEILA_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP-1 - Apologize]
@@ -426,7 +426,7 @@ export class SheilaScene implements TimeAwareInterface {
 
         // set sheila xp = 1
         flags[kFLAGS.SHEILA_XP] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP-1 - Slap'n'sult]
@@ -458,7 +458,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\nYou grunt and watch her resume her cover in the long grass, then turn about and head back to camp.");
 
         // no change in sheila xp
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // XP-2 Sheila's apology (sheila xp = -2 and demon sheila = 0):
@@ -486,7 +486,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("You shake your head and turn away, dismissing Sheila with a pointed gesture.  \"<i>H-hey!</i>\" the girl calls angrily from behind you.  \"<i>Dammit, I said I was sorry, you bastard!  Screw you!  See if I talk to you again!</i>\"");
         // set sheilapreg = -1
         flags[kFLAGS.SHEILA_DISABLED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [XP-2 - Forgive]
     private sheilaIsSorryAndYouForgive(): void {
@@ -502,7 +502,7 @@ export class SheilaScene implements TimeAwareInterface {
         // set sheila xp to 4 if joeycount > 0, else set sheila xp to 1
         if (flags[kFLAGS.SHEILA_JOEYS] > 0) flags[kFLAGS.SHEILA_XP] = 4;
         else flags[kFLAGS.SHEILA_XP] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP-2 - Fight]
@@ -563,7 +563,7 @@ export class SheilaScene implements TimeAwareInterface {
         flags[kFLAGS.SHEILA_DEMON] = 1;
         flags[kFLAGS.SHEILA_CITE] = -1;
         dynStats("cor", 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP-2 - Cast Arouse - Let Her]
@@ -603,7 +603,7 @@ export class SheilaScene implements TimeAwareInterface {
         clearOutput();
         outputText("Huffing, you throw the animals down and turn away.  What a display.");
         // go to camp, reincarnate as something slightly better next life
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP-3 - Stand]
@@ -654,7 +654,7 @@ export class SheilaScene implements TimeAwareInterface {
 
         outputText("\n\n\"<i>Guess it's bodgy bikkie again today...</i>\"");
         // no change in sheila xp
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP1 - Kay]
@@ -706,7 +706,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\nA broad smile lets you know she's just joking as she scatters the cooling fire with her spit, stirring and dispersing the ashes.  \"<i>Thanks for the chatter.  Maybe I'll see you again.</i>\"  Picking up her catch, she turns and lopes off.");
         // set sheila xp to 2
         flags[kFLAGS.SHEILA_XP] = 2;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // XP2: Familiarizing (Sheila XP = 2; or Sheila XP = 3 AND time =/= 20:00 and demon sheila = 0):
@@ -729,7 +729,7 @@ export class SheilaScene implements TimeAwareInterface {
         addButton(2, "Curfew?", sheilaFriendlyCurfew);
         addButton(3, "No Questions", sheilaFriendlyNoQuestions);
 
-        addButton(9, "Leave", camp.returnToCampUseOneHour);
+        addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
     // [XP2 - No Questions]
@@ -745,7 +745,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\n\"<i>Yeah.</i>\"  Sheila turns and departs with her long-legged gait.");
         // set sheila xp to 3
         flags[kFLAGS.SHEILA_XP] = 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP2 - Come Here Often?]
@@ -763,7 +763,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\nExplanation concluded, she folds her hands over her stomach and resumes staring at the clouds.  You join her for a while, then get up and depart.");
         // set sheila xp to 3
         flags[kFLAGS.SHEILA_XP] = 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP2 - Her People]
@@ -817,7 +817,7 @@ export class SheilaScene implements TimeAwareInterface {
             // set sheila xp to 3
         }
         flags[kFLAGS.SHEILA_XP] = 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP2 - Curfew?]
@@ -837,7 +837,7 @@ export class SheilaScene implements TimeAwareInterface {
 
         // set sheila xp to 3
         flags[kFLAGS.SHEILA_XP] = 3;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // XP3: Sexy Time (sheila xp = 3 AND time = 20:00 and demon sheila = 0):
@@ -880,7 +880,7 @@ export class SheilaScene implements TimeAwareInterface {
         flags[kFLAGS.SHEILA_CORRUPTION] = 100;
         flags[kFLAGS.SHEILA_DEMON] = 1;
         flags[kFLAGS.SHEILA_CITE] = -1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP3 - Sex]
@@ -904,7 +904,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("Pulling away from you, Sheila gathers her clothing and departs, looking satisfied.  The glance she gives you over her shoulder is even a little warmer than before.");
         // i had snoo-snoo!
         flags[kFLAGS.SHEILA_XP] = 4;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP3 - Sex - any sex scene - Stay With Her]
@@ -1277,7 +1277,7 @@ export class SheilaScene implements TimeAwareInterface {
         flags[kFLAGS.SHEILA_XP] = 4;
         if (player.lib < 40) dynStats("lus", 5);
         else dynStats("lus", 15);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // XP4: Fancy meeting you here (sheila xp >= 4 and demon sheila = 0):
@@ -1310,7 +1310,7 @@ export class SheilaScene implements TimeAwareInterface {
 
         outputText("\n\n\"<i>Okay,</i>\" she agrees, subdued.  \"<i>Maybe later.</i>\"");
         // wow, it's fucking nothing!
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Just Hang]
@@ -1334,7 +1334,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\n\"<i>Maybe I'll be up for some fun when you catch me next time,</i>\" she declares.  \"<i>Stay safe.</i>\"");
         // minus small lust and corruption
         dynStats("lus", -10, "cor", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Chat]
@@ -1412,7 +1412,7 @@ export class SheilaScene implements TimeAwareInterface {
             outputText("\n\nSheila's skin blooms with red and her lips compress to a thin line; she about-faces and walks off without another word.");
         }
         // oh gosh someone dropped a dollar here how lucky
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Chat - Old Loves]
@@ -1471,7 +1471,7 @@ export class SheilaScene implements TimeAwareInterface {
             outputText("\n\nSheila frowns unhappily and doesn't answer... but she does play with your hand, articulating the fingers and rubbing it against her warm cheek until it's time for her to go.");
         }
         // you no touch candle!
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Chat - Why Hide?]
@@ -1491,7 +1491,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\nSheila shivers a bit and lifts your arm to place it around her shoulder, then looks gloomily out across the plains.  She doesn't seem to be in the mood to talk anymore.");
 
         // blood on the sand
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Chat - Live With Me]
@@ -1504,7 +1504,7 @@ export class SheilaScene implements TimeAwareInterface {
 
         outputText("\n\nSheila gets to her feet and balances her catch on her shoulders, looking wistful.  When you ask about it, however, she just shakes her head and tells you it's nothing, then walks off subdued.  Seems like she really wanted to say 'yes', instead.");
         // ancient Chinese secret, eh?
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Chat - Kids] - requires joeycount >= 1
@@ -1642,7 +1642,7 @@ export class SheilaScene implements TimeAwareInterface {
                 return;
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Chat - Kids - joeycount >= 10 - lib >= 50 - Rest For Now]
@@ -1658,7 +1658,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\nYou nod and she dozes off; her face looks much more placid in sleep.  After an hour you gently nudge her awake, and she picks herself up and leaves you with a hug.  \"<i>Love you, [name].</i>\"");
         // corruption down
         dynStats("cor", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [XP4 - Sex]
@@ -1935,7 +1935,7 @@ export class SheilaScene implements TimeAwareInterface {
             if (cock && player.cocks.cockThatFits(32) >= 0) outputText(", smearing your dangling hand into the mess on her tits");
             outputText(".  The two of you lie like that for a while, until she gets up.  \"<i>I should really go... need to cure my catch.  Not to mention I'll have to clean up before I can even put my damn clothes back on.</i>\"  Sheila picks up her stuff.  \"<i>Hehe... see you soon.</i>\"");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Consensual - Vaginal Sex] (req. cock <= 32 area):
@@ -2126,7 +2126,7 @@ export class SheilaScene implements TimeAwareInterface {
             if (player.cumQ() < 500) outputText("as she strokes the " + skinFurScales(player) + " of your chest");
             else outputText("as she wipes off as much jizz as she can");
             outputText(", then get up and collect your gear.  \"<i>Um... see you later, ok?</i>\" she says.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // minus lust, minus small libido, if PC corr > sheila corruption then -10 PC corr and +10 sheila corruption, else if PC corr < sheila corruption then +10 PC corr and -10 sheila corruption, low chance of sheilapreg +1 if non-dog cock or med-high chance if dog cock
         // sheilaPreg stuff
@@ -2167,7 +2167,7 @@ export class SheilaScene implements TimeAwareInterface {
         if (choices.length == 0) {
             CoC_Settings.error("");
             outputText("ERROR - SHEILA MASTURBATE BROKE, SON");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         target = choices[rand(choices.length)];
 
@@ -2335,7 +2335,7 @@ export class SheilaScene implements TimeAwareInterface {
                 outputText("\n\nShe nuzzles you in the affection borne of climax, until she pulls away and gets up.  \"<i>I wish I could stay and talk, but my civic duty's making me walk,</i>\" Sheila offers apologetically.  She gathers her scattered clothing and, with a little wave, leaves.");
             }
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // corruption warning texts (redirected from here when Sheila corruption is about to hit 90)
@@ -2357,7 +2357,7 @@ export class SheilaScene implements TimeAwareInterface {
         flags[kFLAGS.SHEILA_XP] = -3;
         flags[kFLAGS.SHEILA_CORRUPTION] = 90;
         dynStats("cor", -10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Any Corruption Warning - Listen to Her]
@@ -2373,7 +2373,7 @@ export class SheilaScene implements TimeAwareInterface {
         // no change in sheila corruption (remains at 80), PC corr -10, set sheila clock = -13
         dynStats("lus", -10);
         flags[kFLAGS.SHEILA_CLOCK] = -4;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // normal Sheila combat aftermath quick reference:
@@ -3191,7 +3191,7 @@ export class SheilaScene implements TimeAwareInterface {
         // set sheilapreg = -1, and set joeycount + 1 if you plan to track that stat even after Sheila's disabled
         flags[kFLAGS.SHEILA_DISABLED] = 2;
         flags[kFLAGS.SHEILA_JOEYS]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Normal Preg Notif #1 - Nah]
@@ -3215,7 +3215,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
         if (flags[kFLAGS.SHEILA_XP] < 4) flags[kFLAGS.SHEILA_XP] = 4;
         flags[kFLAGS.SHEILA_JOEYS]++;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         // if sheila xp < 4, set sheila xp = 4; increment joeycount + 1
     }
 
@@ -3260,7 +3260,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\nPicking it up and seating it on her head, she nods curtly and shuffles off again.");
 
         // wow, it's fucking nothing!
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Normal Preg Subsequent - Walk With Her]
@@ -3282,7 +3282,7 @@ export class SheilaScene implements TimeAwareInterface {
         outputText("\n\n\"<i>Have a squizz over there, mate,</i>\" she says, pointing at a patch of tall weeds.  \"<i>Good cover for me to catch a wink.  This should be okay.</i>\"  She pulls her hand from yours and finally sets her hat atop her head, then shrugs off her pack.  \"<i>I'm gonna get set up now.  Thanks again... see you soon.</i>\"");
         // get slightly lowered corruption and a warm fuzzy
         dynStats("cor", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Normal Preg Subsequent - Help]
@@ -3390,7 +3390,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
         // pass 4 hours and reduce corruption or something, give 3 hrs rest if naga, increase archery skill and increase fatigue by a lot (50-60+) if angel of death
         dynStats("cor", -2);
-        if (game.time.hours + 4 < 21) doNext(camp.returnToCampUseFourHours);
+        if (game.time.hours + 4 < 21) doNext(Camp.returnToCampUseFourHours);
         else {
             // (if time after adding 4 hours >= 21:00 or = 0:00, additionally output)
             outputText("\n\n<b>\"<i>Oh, god dammit.</i>\"</b>");
@@ -3421,7 +3421,7 @@ export class SheilaScene implements TimeAwareInterface {
 
         outputText("\n\n\"<I>You're right,</i>\" Sheila sniffles finally, wiping her red eyes.  \"<i>I just... let it get the better of me for a moment.  I'm okay now.  Thanks, mate.</i>\"  She hugs you weakly and picks up her catch.  \"<i>I'll see ya later...</i>\"");
         // suck it up, marine
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Normal Preg Subsequent - Help - 21:00 hours - Stay With Her]
@@ -3563,7 +3563,7 @@ export class SheilaScene implements TimeAwareInterface {
             sheilaXP4Sex(false);
             addButton(9, "LeaveHerBe", normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDEREBUTLEAVEHERBE);
         }
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Normal Preg Subsequent - Help - 21:00 hours - Stay Up With Her - Lust >= 30 - Leave Her Be]
@@ -3571,7 +3571,7 @@ export class SheilaScene implements TimeAwareInterface {
         clearOutput();
         outputText("You relent, allowing the woman to free herself with a peck on your cheek.  She loads up her catch, and then turns to you.  \"<i>Thanks, [name].  Owe you one.</i>\"");
         // This is your Protoshield! I can't take this!
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Normal Preg Subsequent - Help - 21:00 hours - To Camp]
@@ -3624,7 +3624,7 @@ export class SheilaScene implements TimeAwareInterface {
         // if nightwatch, normal night's sleep
         // if no nightwatch, 4 hours sleep and suppress any imp rapes
         // lparchive.org/Deadly-Premonition
-        camp.sleepRecovery(false);
+        Camp.sleepRecovery(false);
         game.time.hours = 7;
         game.time.days++;
         doNext(playerMenu);
@@ -3674,7 +3674,7 @@ export class SheilaScene implements TimeAwareInterface {
         flags[kFLAGS.SHEILA_DEMON] = 1;
         // good place to cut off content if you don't have time to code it all in one go
         if (!game.inCombat)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         else cleanupAfterCombat();
     }
 
@@ -3691,7 +3691,7 @@ export class SheilaScene implements TimeAwareInterface {
         if (player.lust >= 33) addButton(1, "LetHerFuck", sheilaLetHerFuckYou);
         addButton(2, "Resist", demonSheilaResist);
         // run simply returns to camp and should be the default spacebar option
-        addButton(4, "Run", camp.returnToCampUseOneHour);
+        addButton(4, "Run", Camp.returnToCampUseOneHour);
     }
 
     // [Demon Sheila - Resist]
@@ -3745,7 +3745,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
         else {
             outputText("but she remasters herself with effort.  \"<i>No worries.  I'm sorry to hear you don't have any time for love, my special one.  I'll be here until you do, thinking about you and touching myself.</i>\"  She releases you and steps away, then crudely shoves her spade through her thighs, grabs it, and half-moans as she thrusts her pelvis back and forth, jerking the thick black flesh in her hand.  With a wink, she abruptly releases it, then turns her back and departs.");
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // go to fight if bitch is crazy, else plus lust and return to camp
         dynStats("lus", 10);
@@ -3953,7 +3953,7 @@ export class SheilaScene implements TimeAwareInterface {
 
         // plus more lust if cock, go to camp
         if (player.cocks.length > 0) dynStats("lus", 10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Preg Demon Sheila - Other Sex]
@@ -3975,7 +3975,7 @@ export class SheilaScene implements TimeAwareInterface {
             dynStats("lus", 15);
             beatUpDemonSheila(false);
         } else {
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -4111,7 +4111,7 @@ export class SheilaScene implements TimeAwareInterface {
             sheilaCorruption(-10);
             if (game.inCombat)
                 cleanupAfterCombat();
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
         }
         // (else if no balls)
         else {
@@ -4168,7 +4168,7 @@ export class SheilaScene implements TimeAwareInterface {
             sheilaCorruption(-10);
             if (game.inCombat)
                 cleanupAfterCombat();
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -4212,7 +4212,7 @@ export class SheilaScene implements TimeAwareInterface {
         sheilaCorruption(-10);
         if (game.inCombat)
             cleanupAfterCombat();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Loss - clit-swelling and clit-sounding or clit-anal
@@ -4363,7 +4363,7 @@ export class SheilaScene implements TimeAwareInterface {
         dynStats("lib", -1, "sen", -2);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Loss - unsexed joke scene
@@ -4385,7 +4385,7 @@ export class SheilaScene implements TimeAwareInterface {
         dynStats("lus", 20 + player.lib / 4, "resisted", false);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Win against demon Sheila
@@ -4491,7 +4491,7 @@ export class SheilaScene implements TimeAwareInterface {
             // if short scene, sheilapreg check, reduce PC lust and libido
             if (game.inCombat)
                 cleanupAfterCombat();
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
         }
         // (else if RNG doesn't end scene)
         else {
@@ -4548,7 +4548,7 @@ export class SheilaScene implements TimeAwareInterface {
             }
             if (game.inCombat)
                 cleanupAfterCombat();
-            else doNext(camp.returnToCampUseOneHour);
+            else doNext(Camp.returnToCampUseOneHour);
         }
     }
 
@@ -4637,7 +4637,7 @@ export class SheilaScene implements TimeAwareInterface {
         dynStats("lib", -1, "cor", 2);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Tear Her Up - Worms Suit You]
@@ -4672,7 +4672,7 @@ export class SheilaScene implements TimeAwareInterface {
         flags[kFLAGS.SHEILA_DISABLED] = 3;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Call Jojo] - corrupted mouse version:
@@ -4734,7 +4734,7 @@ export class SheilaScene implements TimeAwareInterface {
         dynStats("lus", player.lib / 3, "cor", 2);
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Call Jojo - Ruin Them]
@@ -4784,7 +4784,7 @@ export class SheilaScene implements TimeAwareInterface {
         flags[kFLAGS.JOJO_DEAD_OR_GONE] = 1;
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Win - [Big Dick+Thighs] (usable for dicks with cockarea > 56) (all 10 of them)
@@ -4926,7 +4926,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // Win - [Penetration, in Spades] - for self-loathing vaginas
@@ -5005,7 +5005,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
         if (game.inCombat)
             cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     /*Sheila's Lethicite:

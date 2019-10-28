@@ -58,7 +58,7 @@ export class IsabellaScene implements TimeAwareInterface {
             outputText("While walking through the high grasses you hear a rich, high voice warbling out a melodious tune in a language you don't quite understand.  Do you approach or avoid it?", false);
             // [Approach – to meeting] [Avoid – camp] – dont flag as met yet
             // Approach - sets flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00256] to 1 and calls this function
-            simpleChoices("Approach", isabellaGreetingFirstTime, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            simpleChoices("Approach", isabellaGreetingFirstTime, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
             return;
         }
         // CAMP MEETING – UMAD BRAH!?
@@ -102,7 +102,7 @@ export class IsabellaScene implements TimeAwareInterface {
                     else outputText("  The cow's eyes close, disappointment visible on her face when she sees the sheer size of your bulge.", false);
                 }
                 // [Talk – real conversations] [Drink – leads to breastfeeding] [Get Licks – leads to oral for small fries] [Rape?]
-                simpleChoices("Talk", talkWithIsabella, "Drink", nomOnMommaIzzysTits, "Get Licked", suck, "Fight", fightIsabella, "Leave", camp.returnToCampUseOneHour);
+                simpleChoices("Talk", talkWithIsabella, "Drink", nomOnMommaIzzysTits, "Get Licked", suck, "Fight", fightIsabella, "Leave", Camp.returnToCampUseOneHour);
             }
             return;
         }
@@ -175,7 +175,7 @@ export class IsabellaScene implements TimeAwareInterface {
             }
         }
         choices("Talk", talkWithIsabella, "Drink", nomOnMommaIzzysTits, "Get Licked", suck, "Fight 4 Rape", fightIsabella, "Offer Oral", volunteerToSlurpCowCunt,
-            "", null, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+            "", null, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
         // outputText("ISABELLA HAS BROKEN.  PLEASE TELL FENOXO.", true);
     }
 
@@ -189,7 +189,7 @@ export class IsabellaScene implements TimeAwareInterface {
         spriteSelect(31);
         outputText("", true);
         outputText("You shrug and make it quite clear you're leaving.  Crazy cow.  She shouts, \"<i>And stay avay, demon!  Izabella has no need of your foul tricks!</i>\"", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [Fight]
     public unwelcomeFightCowGal(): void {
@@ -245,7 +245,7 @@ export class IsabellaScene implements TimeAwareInterface {
             outputText("You sit down in the dirt and impart your tale, explaining how you came here as a 'champion', chosen by your village.  You go on to speak of your encounters and how strange everything is here, and Isabella nods quite knowingly as you go on and on.  Now that you've begun to tell your tale, the words fall out of your mouth, one after another.  Like an unbroken chain, they spool out of your maw until nearly an hour later, you finally run out of things to say.  You rub your jaw, your throat a little sore from the diatribe, and look on to Isabella to see how she reacts.\n\n", false);
             outputText("The busty cow-girl has moisture glimmering in the corners of her big brown eyes, and she nods emphatically to you as she vocalizes her feelings, \"<i>I, too, know how you feel, Champion " + player.short + ".  Mein own story is similar, though mein fate vas not thrust upon me so.  Perhaps I vill tell you sometime, but for now, ve should part.  You are velcome to return in ze future.</i>\"\n\n", false);
             outputText("You smile to yourself, glad to have made a friend.\n\n", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             if (!IsabellaFollowerScene.isabellaFollower()) IsabellaFollowerScene.isabellaAffection(10);
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00258]++;
         }
@@ -397,7 +397,7 @@ export class IsabellaScene implements TimeAwareInterface {
         // (Chance of thickening body to 75, chance of softening body if PC has a vag)
         if (rand(2) == 0) outputText(modThickness(player, 75, 4), false);
         if (rand(2) == 0 && player.vaginas.length > 0) outputText(modTone(player, 0, 4), false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [GET ORAL'ED AS A SMALL MALE]
@@ -537,7 +537,7 @@ export class IsabellaScene implements TimeAwareInterface {
         }
         if (!IsabellaFollowerScene.isabellaFollower()) IsabellaFollowerScene.isabellaAffection(2);
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Give Isy Oral]
@@ -596,20 +596,20 @@ export class IsabellaScene implements TimeAwareInterface {
                 outputText("before offering something else.  \"<i>Perhaps you could undress?  I ");
                 if (IsabellaFollowerScene.isabellaAccent()) outputText("vould like to return ze favor.</i>\"", false);
                 else outputText("would like to return the favor.</i>\"", false);
-                doYesNo(izzyGivesSmallWangsFreeOral, camp.returnToCampUseOneHour);
+                doYesNo(izzyGivesSmallWangsFreeOral, Camp.returnToCampUseOneHour);
                 return;
             }
         }
         IsabellaFollowerScene.isabellaAffection(2);
         if (!IsabellaFollowerScene.isabellaFollower() || !player.vaginas.length > 0 || player.breasts.biggestTitSize() < 1) {
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         else {
             // (Change the ending of the \"Service Her\" option on an affectionate Isabella to the following; PC must NOT have a dick that suits her and MUST have a vagina)
             if (!IsabellaFollowerScene.isabellaAccent()) outputText("Seeing the ardent desire your sexual service has so visibly inspired in your body - in your slick, ready cunt and erect nipples - the cow-girl smiles slightly, and asks, \"<i>Perhaps you would like me to return the favor?  It seems only fair...</i>\"");
             else outputText("Seeing the ardent desire your sexual service has so visibly inspired in your body - in your slick, ready cunt and erect nipples - the cow-girl smiles slightly, and asks, \"<i>Perhaps you vould like me to return ze favor?  It seems only fair...</i>\"");
             // [Leave] [Get Cowlicked]
-            simpleChoices("Get Licked", IsabellaFollowerScene.receiveAllTheCowTOngues, "Leave", camp.returnToCampUseOneHour, "", null, "", null, "", null);
+            simpleChoices("Get Licked", IsabellaFollowerScene.receiveAllTheCowTOngues, "Leave", Camp.returnToCampUseOneHour, "", null, "", null, "", null);
         }
     }
 
@@ -1278,7 +1278,7 @@ export class IsabellaScene implements TimeAwareInterface {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00260] = 0;
         player.slimeFeed();
         if (game.inCombat) cleanupAfterCombat();
-        else doNext(camp.returnToCampUseOneHour);
+        else doNext(Camp.returnToCampUseOneHour);
     }
 
     // ['Too Big' Victory Titfucking Funtimes With Milk]
@@ -1510,6 +1510,6 @@ export class IsabellaScene implements TimeAwareInterface {
         }
         // [Discuss Isabella Repeat]
         else outputText("You sit down with Isabella and share tales of your recent adventures.  While the companionship is nice, after an hour or so of discussion you decide to go your separate ways.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 }

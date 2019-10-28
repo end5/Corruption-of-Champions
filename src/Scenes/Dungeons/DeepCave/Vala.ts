@@ -127,7 +127,7 @@ export class Vala extends Monster {
         this.special2 = special2;
         this.special3 = special3;
         const wingDesc: string = "shimmering wings";
-        if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(consumables.NUMBROX);
+        if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(ConsumableLib.NUMBROX);
         else this.drop = NO_DROP;
         this.wingType = WING_TYPE_BEE_LIKE_LARGE;
         this.wingDesc = wingDesc;

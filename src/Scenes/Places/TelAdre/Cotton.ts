@@ -189,18 +189,18 @@ export class Cotton implements TimeAwareInterface {
             outputText("\"<i>I'd love to teach you, but I'm afraid I don't know any good routines for your... body type. Sorry, pet...</i>\" she trails off, as if considering something, and then turns back to you, saying, \"<i>Actually, I think I might know where you could find a book of exercises that would work for you. A traveling salesman came by once, and I saw it in his wares, a book of advanced yoga techniques, aimed at the more exotically shaped denizens of Mareth. I didn't pick it up, of course, because I didn't need it. But if you could find the salesman and bring the book back to me, I'd most definitely be able to coach you.</i>\"", false);
             // (Adds Yoga Book to Giacomo's inventory under Books)
             flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER]++;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Come back wtih book first time
         else if (flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] == 1 && player.keyItems.has("Yoga Guide") >= 0) {
             outputText("\"<i>Have you retrieved the book I mentioned?</i>\" You nod and hand the leather-bound book over to her. She grins and flicks through the pages. \"<i>Oooh, yes I thought as much... Mm-hm... Oh my, nagas can stretch like that?</i>\" Suddenly remembering you're here, she says, \"<i>I'll study this quickly. Come back later and I'll be able to give you a great workout.</i>\"", false);
             flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER]++;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Been told about the book but dont have it.
         else if (flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] == 1) {
             outputText("\"<i>Have you retrieved the book I mentioned?</i>\" You shake your head sadly, and she sighs. \"<i>Well, until you do there's not much I can do for you.</i>\"", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // First time with book
         else if (flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] == 2) {
@@ -218,7 +218,7 @@ export class Cotton implements TimeAwareInterface {
         spriteSelect(12);
         outputText("", true);
         outputText("\"<i>That's all right, to each their own.  I'll be here if you ever change your mind.</i>\"  With that, Cotton returns to her mat and continues stretching in various poses.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (If Yes. Improves muscle tone up to 50, speed and feminine features.)
@@ -237,7 +237,7 @@ export class Cotton implements TimeAwareInterface {
         }
         if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0 && player.gems < 10) {
             outputText("Before you can start the yogo the centauress steps in and says, \"<i>Ten gems for gym fees.</i>\"\n\nYou fish around in your pouches, but you just don't have enough.  Maybe some other time!", false);
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             return;
         }
         if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {
@@ -390,7 +390,7 @@ export class Cotton implements TimeAwareInterface {
         spriteSelect(12);
         outputText("", true);
         outputText("\"<i>Suit yourself. You can run around all stinky, meanwhile I'm going to go wash. Feel free to drop by later for some more yoga if you'd like.</i>\"  With that, Cotton heads off to the showers and you leave the gym.\n\n", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (If Shower)
@@ -436,7 +436,7 @@ export class Cotton implements TimeAwareInterface {
         pregCottonChance();
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (Get fucked, as Male)
     private cottonFucksYou(): void {
@@ -514,7 +514,7 @@ export class Cotton implements TimeAwareInterface {
             dynStats("sen", -1);
             cottonPregPCChance();
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (Service her, any gender)
     private serviceFirstTimeCotton(): void {
@@ -537,14 +537,14 @@ export class Cotton implements TimeAwareInterface {
 
         outputText("Cotton helps you up and gives you a warm kiss, tasting her own seed in your mouth. Wordlessly, you finish your shower, redress and head out of the gym. Cotton takes you by the arm and says, \"<i>That was great, little pet. Come by the gym anytime. I'll be waiting.</i>\"  Then, she heads back home.  With a little grin on your face, you do the same.", false);
         dynStats("sen", 1, "lus", (10 + player.lib / 20 + player.sens / 20));
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (If Refuse)
     private refuseFirstTimeCotton(): void {
         spriteSelect(12);
         outputText("", true);
         outputText("She looks at you a little sad, \"<i>You certain pet? Well, all right. But you don't know what you're missing.</i>\" The two of you continue your shower with no funny business, then redress and leave the gym. Cotton stops you before you go too far and says, \"<i>Hey, if you want to stop by the gym later for some more yoga, I'd be happy to help.</i>\" Then she heads off down the street, and you head back to camp.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (Shower Sex, Fuck Her)
@@ -800,7 +800,7 @@ export class Cotton implements TimeAwareInterface {
         pregCottonChance();
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (Shower Sex, Get Fucked as Male or Herm)
@@ -970,7 +970,7 @@ export class Cotton implements TimeAwareInterface {
         if (player.vaginas.length > 0) cottonPregPCChance();
         player.orgasm();
         dynStats("sen", -1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (Tantric Sex)
@@ -1070,7 +1070,7 @@ export class Cotton implements TimeAwareInterface {
         player.orgasm();
         dynStats("tou", .25, "spe", .25, "lib", -.25, "sen", -.25);
         if (player.vaginas.length > 0) cottonPregPCChance();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // (Leave)
@@ -1078,7 +1078,7 @@ export class Cotton implements TimeAwareInterface {
         spriteSelect(12);
         outputText("", true);
         outputText("You thank Cotton for her time, shower and head back to camp.", false);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // New repeating scene where Cotton visit's the PC at camp
@@ -1171,7 +1171,7 @@ export class Cotton implements TimeAwareInterface {
         // bold
         outputText("<b>(Cotton will no longer speak with you.)</b>");
         flags[kFLAGS.PC_IS_A_DEADBEAT_COTTON_DAD] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // (Stay)*
     private beAGoodCottonDad(): void {
@@ -1180,7 +1180,7 @@ export class Cotton implements TimeAwareInterface {
         outputText("\n\nA smile spreads across her face and she hugs you, squeezing tightly, \"<i>Oh thank Marae.  I don't expect you to just pack up and move in, I'm totally fine with our current arrangement, but just having you around for emotional support would be wonderful.</i>\"");
         outputText("\n\nShe plants a kiss on your lips, and returns to the yoga section of the gym.");
         flags[kFLAGS.PC_IS_A_GOOD_COTTON_DAD] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // Alternate Approach Cotton Scenes*
     // (New scenes to show off Cotton's pregnancy)
@@ -1262,7 +1262,7 @@ export class Cotton implements TimeAwareInterface {
             pregnancy.knockUpForce(); // Clear Pregnancy
             flags[kFLAGS.COTTON_KID_COUNT]++;
             if (flags[kFLAGS.COTTON_KID_COUNT] == 1) flags[kFLAGS.COTTON_OLDEST_KID_AGE] = 1;
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // Cotton Repeat Births*
         // (Replaces the Approach scenes)
@@ -1437,7 +1437,7 @@ export class Cotton implements TimeAwareInterface {
 
         outputText("\n\nYou thank her for breakfast and politely excuse yourself.  It's clear that she's got quite a bit of work ahead of her, and you've got to get back.  You exit the little apartment, closing the door softly behind you, and strike off back towards camp.");
         flags[kFLAGS.COTTON_KNOCKED_UP_PC_AND_TALK_HAPPENED] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Birthing*
@@ -1759,7 +1759,7 @@ export class Cotton implements TimeAwareInterface {
 
             outputText("\n\nYou hold your child close and allow yourself to be embraced in turn, simply enjoying the moment of closeness, as odd as your relationship may be.  Eventually, the foal drifts off to sleep in your embrace and you quietly tell Cotton that she needs to let go.  Instead, she playfully squeezes you and whispers, \"<i>Mine...</i>\" in your ear.  Turning your neck, you look into her eyes, whereupon she gives you a soft, playful grin and lets you go, allowing you to put the sleepy foal back to bed.  She just smiles at you without saying a word, and you nod your head and excuse yourself without a word.");
         }
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Feed
@@ -1836,7 +1836,7 @@ export class Cotton implements TimeAwareInterface {
         }
         player.boostLactation(0.5);
 
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Stay Quiet
@@ -1865,7 +1865,7 @@ export class Cotton implements TimeAwareInterface {
         outputText(" hair and tell Cotton that she makes some gorgeous little foals.  She just nods and gives your shoulder a little squeeze, content to watch in silence for a moment.");
 
         outputText("\n\nEventually, and apologetically, you tell her that you have to go; places to go, monsters to fight, she knows how it is.  She nods, understanding, and you give her a quick kiss before departing back to camp.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
 }

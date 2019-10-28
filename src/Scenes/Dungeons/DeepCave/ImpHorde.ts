@@ -52,7 +52,7 @@ export class ImpHorde extends Monster {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 10;
         this.gems = 20 + rand(25);
-        this.drop = new WeightedDrop(armors.NURSECL, 1);
+        this.drop = new WeightedDrop(ArmorLib.NURSECL, 1);
         this.wingType = WING_TYPE_IMP;
         this.wingDesc = "imp wings";
         checkMonster();

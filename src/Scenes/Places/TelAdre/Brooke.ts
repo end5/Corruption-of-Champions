@@ -84,7 +84,7 @@ export class Brooke {
         brookeAffection(5);
         flags[kFLAGS.BROOKE_MET_TODAY] = 1;
         flags[kFLAGS.BROOKE_MET] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public repeatChooseShower(): void {
@@ -106,7 +106,7 @@ export class Brooke {
                 outputText("You head your way back to the showers, feeling the sweet ache of your muscles as you easily find your way there.  The showers are completely empty when you arrive.  You know exactly when Brooke will and won't be in the shower, and you've specifically chosen to avoid her this time.  As fond as you are of her and as fun as the sex is, you've been leaving the shower dirtier than when you've gone in!  It'd be nice to actually get clean this time.");
                 outputText("\n\nYour shower proceeds uneventfully.  While the cleanliness is nice, occasionally a rogue wish wants her to show up and 'ruin' your shower time.  Brooke is nowhere to be found, though, and just a short while later, you're clean as a whistle and out the door.");
             }
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
             fatigue(-5);
         }
         // Between 16:00 and 18:00
@@ -152,7 +152,7 @@ export class Brooke {
         outputText("\n\nThe rest of your shower is cold and uneasy.  Have you done something wrong?");
         brookeAffection(5);
         flags[kFLAGS.BROOKE_GRUMPS_ABOUT_TA] = 1;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Between 16:00 and 18:00, Affection <= 19
@@ -162,7 +162,7 @@ export class Brooke {
 
         outputText("\n\nThe shower goes by smoothly, the both of you talking idly about whatever happens to come to mind.  Learning from your previous encounter, you try to keep the topics away from Tel'Adre while still asking her about herself, and answer her own questions about yourself whenever she asks.  All in all, things go by rather well, and once again she leaves the showers before you, giving you a wave before she leaves.");
         outputText("\n\nYour shower proceeds uneventfully, and just a short while later, you're clean as a whistle and out the door.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         brookeAffection(5);
     }
 
@@ -179,7 +179,7 @@ export class Brooke {
             outputText("\n\nThe shower proceeds as it normally would, although you can't really get what she was about to ask you out of your head.  As usual, she leaves before you, leaving you curious and somewhat unfulfilled.");
             outputText("\n\nMaybe it was something personal, and you're just not her type?");
             // (Brooke's affection now caps at 20 until the PC is no longer a centaur.  This scene will re-proc until this condition is met, and then will proceed normally)
-            doNext(camp.returnToCampUseOneHour);
+            doNext(Camp.returnToCampUseOneHour);
         }
         // [if (isTaur = false)
         else {
@@ -199,7 +199,7 @@ export class Brooke {
         outputText("\n\nYour shower proceeds uneventfully, and just a short while later, you're clean as a whistle and out the door.");
         // (Brooke's affection resets to zero)
         flags[kFLAGS.BROOKE_AFFECTION] = 0;
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Help=]
@@ -245,7 +245,7 @@ export class Brooke {
         dynStats("lus", 15 + player.lib / 20, "resisted", false);
         flags[kFLAGS.BROOKE_SHOWERED_WITH] = 1;
         brookeAffection(4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Between 16:00 and 18:00, Affection >= 20, <= 39
@@ -314,7 +314,7 @@ export class Brooke {
         dynStats("lus", 10, "resisted", false);
         if (player.inte < 50) dynStats("int", .5);
         brookeAffection(4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Gym Members=]
@@ -361,7 +361,7 @@ export class Brooke {
         // (Lust increases by 15)
         dynStats("lus", 15, "resisted", false);
         brookeAffection(4);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Her Rockin Bod=]
@@ -391,7 +391,7 @@ export class Brooke {
         // (Lust increases by 15)
         dynStats("lus", 15, "resisted", false);
         brookeAffection(15);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Grope=]
@@ -475,7 +475,7 @@ export class Brooke {
         player.orgasm();
         dynStats("sen", -2);
         brookeAffection(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Anal=]
@@ -553,7 +553,7 @@ export class Brooke {
         fatigue(15);
         flags[kFLAGS.TIMES_IN_BROOKES_BUTT]++;
         brookeAffection(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Tribadism=]
@@ -608,7 +608,7 @@ export class Brooke {
         dynStats("sen", -2);
         fatigue(15);
         brookeAffection(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Down on her=]
@@ -666,7 +666,7 @@ export class Brooke {
         // Lust increased by 30.
         dynStats("lus", 30);
         brookeAffection(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Get laid=]
@@ -782,7 +782,7 @@ export class Brooke {
         brookeAffection(10);
         player.orgasm();
         dynStats("sen", -2);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
     // [=Double-dicked=]
     // Requires at least two penises
@@ -877,7 +877,7 @@ export class Brooke {
         outputText("\n\nThe rest of your drying continues without much incident, and before long, you have your [armor] back on you and you're out of the gym, heading back towards camp.");
         // Lust reduced to 0
         player.orgasm();
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         brookeAffection(10);
     }
 
@@ -1132,7 +1132,7 @@ export class Brooke {
             fatigue(10);
         }
         brookeAffection(10);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // Affection = 70, after first-time sex, talk to Heckel between 13:00 and 15:00, must not be a first-time encounter with Heckel, requires a gender
@@ -1199,7 +1199,7 @@ export class Brooke {
         outputText("\n\n\"<i>Save yourself while you still can; I'll catch up in a bit.\"</i>  You ask if she's sure, and in response, she lovingly kisses the inside of your thigh.  <i>\"Sure I'm sure, sweet thing.  You have things to do, I bet.  Just get going.\"</i>");
         outputText("\n\nYou leave, chased out by lewd, lusty slurps.");
         brookeAffection(1);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     public submitHeckelXBrookeThreesome(): void {
@@ -1278,7 +1278,7 @@ export class Brooke {
         outputText("\n\nYou take her advice and leave the gym before Heckel wakes up and decides to run on her dominance rush some more.");
         // Lust reduced to 0, sensitivity increased by 1
         brookeAffection(5);
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
     }
 
     // [=Leg Press=]
@@ -1433,7 +1433,7 @@ export class Brooke {
         outputText(".  Bow-legged, you make your way to your gear and slip it back on.  You turn back to Brooke and Heckel, to see that Brooke's laid herself flat on Heckel, kissing and sucking gently on the hyena's tits, already working herself back up for a second round.");
 
         outputText("\n\nYou take her advice and leave the gym before Brooke changes her mind decides to make you stay to play on her dominance rush some more.");
-        doNext(camp.returnToCampUseOneHour);
+        doNext(Camp.returnToCampUseOneHour);
         brookeAffection(5);
     }
 }
