@@ -3,9 +3,6 @@
  */
 
 export class Exploration {
-    public exploreDebug: ExploreDebug = new ExploreDebug();
-    public giacomo: Giacomo = new Giacomo();
-
     // const MET_OTTERGIRL:int = 777;
     // const HAS_SEEN_MINO_AND_COWGIRL:int = 892;
     // const EXPLORATION_PAGE:int = 1015;
@@ -45,7 +42,7 @@ export class Exploration {
         if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(0, "High Mountain", highMountains.exploreHighMountain);
         if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(1, "Bog", bog.exploreBog);
         addButton(4, "Previous", goBackToPageI);
-        if (game.debug) addButton(8, "Debug", exploreDebug.doExploreDebug);
+        if (game.debug) addButton(8, "Debug", ExploreDebug.doExploreDebug);
         addButton(9, "Back", playerMenu);
     }
 
@@ -119,7 +116,7 @@ export class Exploration {
             // Chance of encountering Giacomo!
             if (choosey == 0) {
                 player.explored++;
-                giacomo.giacomoEncounter(); // eventParser(2015);
+                Giacomo.giacomoEncounter(); // eventParser(2015);
                 return;
             }
             else if (choosey == 1) {
